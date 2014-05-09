@@ -113,12 +113,28 @@ public class StreamBuilder
 		Integer tempVar2 = options.getMaxBitrate();
 		Integer maxBitrateSetting = (tempVar2 != null) ? tempVar2 : options.getProfile().getMaxBitrate();
 
-		MediaStream audioStream = item.getMediaStreams().FirstOrDefault(i => i.Type == MediaStreamType.Audio);
+		MediaStream audioStream = null;
+		for (MediaStream i : item.getMediaStreams())
+		{
+			if (i.getType() == MediaStreamType.Audio)
+			{
+				audioStream = i;
+				break;
+			}
+		}
 
 		// Honor the max bitrate setting
 		if (IsAudioEligibleForDirectPlay(item, maxBitrateSetting))
 		{
-			DirectPlayProfile directPlay = options.getProfile().getDirectPlayProfiles().FirstOrDefault(i => i.Type == playlistItem.getMediaType() && IsAudioDirectPlaySupported(i, item, audioStream));
+			DirectPlayProfile directPlay = null;
+			for (DirectPlayProfile i : options.getProfile().getDirectPlayProfiles())
+			{
+				if (i.getType() == playlistItem.getMediaType() && IsAudioDirectPlaySupported(i, item, audioStream))
+				{
+					directPlay = i;
+					break;
+				}
+			}
 
 			if (directPlay != null)
 			{
@@ -129,13 +145,29 @@ public class StreamBuilder
 				{
 					ConditionProcessor conditionProcessor = new ConditionProcessor();
 
-//C# TO JAVA CONVERTER TODO TASK: There is no Java equivalent to LINQ queries:
-					Iterable<ProfileCondition> conditions = options.getProfile().getCodecProfiles().Where(i => i.Type == CodecType.Audio && i.ContainsCodec(audioCodec)).SelectMany(i => i.Conditions);
+					java.util.ArrayList<ProfileCondition> conditions = new java.util.ArrayList<ProfileCondition>();
+					for (CodecProfile i : options.getProfile().getCodecProfiles())
+					{
+						if (i.getType() == CodecType.Audio && i.ContainsCodec(audioCodec))
+						{
+							conditions.addAll(i.getConditions());
+						}
+					}
 
 					Integer audioChannels = audioStream.getChannels();
 					Integer audioBitrate = audioStream.getBitRate();
 
-					if (conditions.All(c => conditionProcessor.IsAudioConditionSatisfied(c, audioChannels, audioBitrate)))
+					boolean all = true;
+					for (ProfileCondition c : conditions)
+					{
+						if (!conditionProcessor.IsAudioConditionSatisfied(c, audioChannels, audioBitrate))
+						{
+							all = false;
+							break;
+						}
+					}
+
+					if (all)
 					{
 						playlistItem.setIsDirectStream(true);
 						playlistItem.setContainer(item.getContainer());
@@ -146,7 +178,15 @@ public class StreamBuilder
 			}
 		}
 
-		TranscodingProfile transcodingProfile = options.getProfile().getTranscodingProfiles().FirstOrDefault(i => i.Type == playlistItem.getMediaType());
+		TranscodingProfile transcodingProfile = null;
+		for (TranscodingProfile i : options.getProfile().getTranscodingProfiles())
+		{
+			if (i.getType() == playlistItem.getMediaType())
+			{
+				transcodingProfile = i;
+				break;
+			}
+		}
 
 		if (transcodingProfile != null)
 		{
@@ -157,8 +197,25 @@ public class StreamBuilder
 			playlistItem.setAudioCodec(transcodingProfile.getAudioCodec());
 			playlistItem.setProtocol(transcodingProfile.getProtocol());
 
-//C# TO JAVA CONVERTER TODO TASK: There is no Java equivalent to LINQ queries:
-			Iterable<ProfileCondition> audioTranscodingConditions = options.getProfile().getCodecProfiles().Where(i => i.Type == CodecType.Audio && i.ContainsCodec(transcodingProfile.getAudioCodec())).Take(1).SelectMany(i => i.Conditions);
+			java.util.ArrayList<CodecProfile> audioCodecProfiles = new java.util.ArrayList<CodecProfile>();
+			for (CodecProfile i : options.getProfile().getCodecProfiles())
+			{
+				if (i.getType() == CodecType.Audio && i.ContainsCodec(transcodingProfile.getAudioCodec()))
+				{
+					audioCodecProfiles.add(i);
+				}
+
+				if (audioCodecProfiles.size() >= 1)
+				{
+					break;
+				}
+			}
+
+			java.util.ArrayList<ProfileCondition> audioTranscodingConditions = new java.util.ArrayList<ProfileCondition>();
+			for (CodecProfile i : audioCodecProfiles)
+			{
+					audioTranscodingConditions.addAll(i.getConditions());
+			}
 
 			ApplyTranscodingConditions(playlistItem, audioTranscodingConditions);
 
@@ -193,8 +250,25 @@ public class StreamBuilder
 		tempVar.setRunTimeTicks(item.getRunTimeTicks());
 		StreamInfo playlistItem = tempVar;
 
-		MediaStream audioStream = item.getMediaStreams().FirstOrDefault(i => i.Type == MediaStreamType.Audio);
-		MediaStream videoStream = item.getMediaStreams().FirstOrDefault(i => i.Type == MediaStreamType.Video);
+		MediaStream audioStream = null;
+		for (MediaStream i : item.getMediaStreams())
+		{
+			if (i.getType() == MediaStreamType.Audio)
+			{
+				audioStream = i;
+				break;
+			}
+		}
+
+		MediaStream videoStream = null;
+		for (MediaStream i : item.getMediaStreams())
+		{
+			if (i.getType() == MediaStreamType.Video)
+			{
+				videoStream = i;
+				break;
+			}
+		}
 
 		Integer tempVar2 = options.getMaxBitrate();
 		Integer maxBitrateSetting = (tempVar2 != null) ? tempVar2 : options.getProfile().getMaxBitrate();
@@ -236,14 +310,26 @@ public class StreamBuilder
 			playlistItem.setAudioStreamIndex(options.getAudioStreamIndex());
 			playlistItem.setSubtitleStreamIndex(options.getSubtitleStreamIndex());
 
-//C# TO JAVA CONVERTER TODO TASK: There is no Java equivalent to LINQ queries:
-			Iterable<ProfileCondition> videoTranscodingConditions = options.getProfile().getCodecProfiles().Where(i => i.Type == CodecType.Video && i.ContainsCodec(transcodingProfile.getVideoCodec())).Take(1).SelectMany(i => i.Conditions);
-
+			java.util.ArrayList<ProfileCondition> videoTranscodingConditions = new java.util.ArrayList<ProfileCondition>();
+			for (CodecProfile i : options.getProfile().getCodecProfiles())
+			{
+				if (i.getType() == CodecType.Video && i.ContainsCodec(transcodingProfile.getVideoCodec()))
+				{
+					videoTranscodingConditions.addAll(i.getConditions());
+					break;
+				}
+			}
 			ApplyTranscodingConditions(playlistItem, videoTranscodingConditions);
 
-//C# TO JAVA CONVERTER TODO TASK: There is no Java equivalent to LINQ queries:
-			Iterable<ProfileCondition> audioTranscodingConditions = options.getProfile().getCodecProfiles().Where(i => i.Type == CodecType.VideoAudio && i.ContainsCodec(transcodingProfile.getAudioCodec())).Take(1).SelectMany(i => i.Conditions);
-
+			java.util.ArrayList<ProfileCondition> audioTranscodingConditions = new java.util.ArrayList<ProfileCondition>();
+			for (CodecProfile i : options.getProfile().getCodecProfiles())
+			{
+				if (i.getType() == CodecType.VideoAudio && i.ContainsCodec(transcodingProfile.getAudioCodec()))
+				{
+					audioTranscodingConditions.addAll(i.getConditions());
+					break;
+				}
+			}
 			ApplyTranscodingConditions(playlistItem, audioTranscodingConditions);
 
 			// Honor requested max channels
@@ -304,8 +390,14 @@ public class StreamBuilder
 
 		String container = mediaSource.getContainer();
 
-//C# TO JAVA CONVERTER TODO TASK: There is no Java equivalent to LINQ queries:
-		Iterable<ProfileCondition> conditions = profile.getContainerProfiles().Where(i => i.Type == DlnaProfileType.Video && i.GetContainers().Contains(container, StringComparer.OrdinalIgnoreCase)).SelectMany(i => i.Conditions);
+		java.util.ArrayList<ProfileCondition> conditions = new java.util.ArrayList<ProfileCondition>();
+		for (ContainerProfile i : profile.getContainerProfiles())
+		{
+			if (i.getType() == DlnaProfileType.Video && i.GetContainers().contains(container, StringComparer.OrdinalIgnoreCase))
+			{
+				conditions.addAll(i.getConditions());
+			}
+		}
 
 		ConditionProcessor conditionProcessor = new ConditionProcessor();
 
@@ -326,9 +418,12 @@ public class StreamBuilder
 		Integer packetLength = videoStream == null ? null : videoStream.getPacketLength();
 
 		// Check container conditions
-		if (!conditions.All(i => conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp)))
+		for (ProfileCondition i : conditions)
 		{
-			return null;
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp))
+			{
+				return null;
+			}
 		}
 
 		String videoCodec = videoStream == null ? null : videoStream.getCodec();
@@ -338,12 +433,21 @@ public class StreamBuilder
 			return null;
 		}
 
-//C# TO JAVA CONVERTER TODO TASK: There is no Java equivalent to LINQ queries:
-		conditions = profile.getCodecProfiles().Where(i => i.Type == CodecType.Video && i.ContainsCodec(videoCodec)).SelectMany(i => i.Conditions);
-
-		if (!conditions.All(i => conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp)))
+		conditions = new java.util.ArrayList<ProfileCondition>();
+		for (CodecProfile i : profile.getCodecProfiles())
 		{
-			return null;
+			if (i.getType() == CodecType.Video && i.ContainsCodec(videoCodec))
+			{
+				conditions.addAll(i.getConditions());
+			}
+		}
+
+		for (ProfileCondition i : conditions)
+		{
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp))
+			{
+				return null;
+			}
 		}
 
 		if (audioStream != null)
@@ -355,12 +459,21 @@ public class StreamBuilder
 				return null;
 			}
 
-//C# TO JAVA CONVERTER TODO TASK: There is no Java equivalent to LINQ queries:
-			conditions = profile.getCodecProfiles().Where(i => i.Type == CodecType.VideoAudio && i.ContainsCodec(audioCodec)).SelectMany(i => i.Conditions);
-
-			if (!conditions.All(i => conditionProcessor.IsVideoAudioConditionSatisfied(i, audioChannels, audioBitrate, audioProfile)))
+			conditions = new java.util.ArrayList<ProfileCondition>();
+			for (CodecProfile i : profile.getCodecProfiles())
 			{
-				return null;
+				if (i.getType() == CodecType.VideoAudio && i.ContainsCodec(audioCodec))
+				{
+					conditions.addAll(i.getConditions());
+				}
+			}
+
+			for (ProfileCondition i : conditions)
+			{
+				if (!conditionProcessor.IsVideoAudioConditionSatisfied(i, audioChannels, audioBitrate, audioProfile))
+				{
+					return null;
+				}
 			}
 		}
 
@@ -425,10 +538,14 @@ public class StreamBuilder
 
 	private void ApplyTranscodingConditions(StreamInfo item, Iterable<ProfileCondition> conditions)
 	{
-//C# TO JAVA CONVERTER TODO TASK: There is no Java equivalent to LINQ queries:
-		for (ProfileCondition condition : conditions.Where(i => !tangible.DotNetToJavaStringHelper.isNullOrEmpty(i.Value)))
+		for (ProfileCondition condition : conditions)
 		{
 			String value = condition.getValue();
+
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(value))
+			{
+				continue;
+			}
 
 			switch (condition.getProperty())
 			{
@@ -543,7 +660,16 @@ public class StreamBuilder
 			// Check container type
 			String tempVar = item.getContainer();
 			String mediaContainer = (tempVar != null) ? tempVar : "";
-			if (!profile.GetContainers().Any(i => String.equals(i, mediaContainer, StringComparison.OrdinalIgnoreCase)))
+			boolean any = false;
+			for (String i : profile.GetContainers())
+			{
+				if (String.equals(i, mediaContainer, StringComparison.OrdinalIgnoreCase))
+				{
+					any = true;
+					break;
+				}
+			}
+			if (!any)
 			{
 				return false;
 			}
@@ -565,7 +691,16 @@ public class StreamBuilder
 			// Check container type
 			String tempVar = item.getContainer();
 			String mediaContainer = (tempVar != null) ? tempVar : "";
-			if (!profile.GetContainers().Any(i => String.equals(i, mediaContainer, StringComparison.OrdinalIgnoreCase)))
+			boolean any = false;
+			for (String i : profile.GetContainers())
+			{
+				if (String.equals(i, mediaContainer, StringComparison.OrdinalIgnoreCase))
+				{
+					any = true;
+					break;
+				}
+			}
+			if (!any)
 			{
 				return false;
 			}

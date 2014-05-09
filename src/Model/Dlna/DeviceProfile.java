@@ -403,142 +403,230 @@ public class DeviceProfile
 	{
 		container = ((container != null) ? container : "").TrimStart('.');
 
-		return getTranscodingProfiles().FirstOrDefault(i =>
+		for (TranscodingProfile i : getTranscodingProfiles())
 		{
-			if (i.Type != DlnaProfileType.Audio)
+			if (i.getType() != DlnaProfileType.Audio)
 			{
-				return false;
+				continue;
 			}
-			if (!String.equals(container, i.Container, StringComparison.OrdinalIgnoreCase))
+
+			if (!String.equals(container, i.getContainer(), StringComparison.OrdinalIgnoreCase))
 			{
-				return false;
+				continue;
 			}
-			if (!i.GetAudioCodecs().Contains((audioCodec != null) ? audioCodec : ""))
+
+			if (!i.GetAudioCodecs().contains((audioCodec != null) ? audioCodec : "", StringComparer.OrdinalIgnoreCase))
 			{
-				return false;
+				continue;
 			}
-			return true;
-		});
+
+			return i;
+		}
+		return null;
 	}
 
 	public final TranscodingProfile GetVideoTranscodingProfile(String container, String audioCodec, String videoCodec)
 	{
 		container = ((container != null) ? container : "").TrimStart('.');
 
-		return getTranscodingProfiles().FirstOrDefault(i =>
+		for (TranscodingProfile i : getTranscodingProfiles())
 		{
-			if (i.Type != DlnaProfileType.Video)
+			if (i.getType() != DlnaProfileType.Video)
 			{
-				return false;
+				continue;
 			}
-			if (!String.equals(container, i.Container, StringComparison.OrdinalIgnoreCase))
+
+			if (!String.equals(container, i.getContainer(), StringComparison.OrdinalIgnoreCase))
 			{
-				return false;
+				continue;
 			}
-			if (!i.GetAudioCodecs().Contains((audioCodec != null) ? audioCodec : ""))
+
+			if (!i.GetAudioCodecs().contains((audioCodec != null) ? audioCodec : ""))
 			{
-				return false;
+				continue;
 			}
-			if (!String.equals(videoCodec, i.VideoCodec, StringComparison.OrdinalIgnoreCase))
+
+			if (!String.equals(videoCodec, i.getVideoCodec(), StringComparison.OrdinalIgnoreCase))
 			{
-				return false;
+				continue;
 			}
-			return true;
-		});
+
+			return i;
+		}
+		return null;
 	}
 
 	public final ResponseProfile GetAudioMediaProfile(String container, String audioCodec, Integer audioChannels, Integer audioBitrate)
 	{
 		container = ((container != null) ? container : "").TrimStart('.');
 
-		return getResponseProfiles().FirstOrDefault(i =>
+		for (ResponseProfile i : getResponseProfiles())
 		{
-			if (i.Type != DlnaProfileType.Audio)
+			if (i.getType() != DlnaProfileType.Audio)
 			{
-				return false;
+				continue;
 			}
-			java.util.ArrayList<String> containers = i.GetContainers().ToList();
-			if (containers.size() > 0 && !containers.contains(container))
+
+			java.util.ArrayList<String> containers = i.GetContainers();
+			if (containers.size() > 0 && !containers.contains(container, StringComparer.OrdinalIgnoreCase))
 			{
-				return false;
+				continue;
 			}
-			java.util.ArrayList<String> audioCodecs = i.GetAudioCodecs().ToList();
-			if (audioCodecs.size() > 0 && !audioCodecs.contains((audioCodec != null) ? audioCodec : ""))
+
+			java.util.ArrayList<String> audioCodecs = i.GetAudioCodecs();
+			if (audioCodecs.size() > 0 && !audioCodecs.contains((audioCodec != null) ? audioCodec : "", StringComparer.OrdinalIgnoreCase))
 			{
-				return false;
+				continue;
 			}
+
 			ConditionProcessor conditionProcessor = new ConditionProcessor();
-			return i.Conditions.All(c => conditionProcessor.IsAudioConditionSatisfied(c, audioChannels, audioBitrate));
-		});
+
+			boolean anyOff = false;
+			for (ProfileCondition c : i.getConditions())
+			{
+				if (!conditionProcessor.IsAudioConditionSatisfied(c, audioChannels, audioBitrate))
+				{
+					anyOff = true;
+					break;
+				}
+			}
+
+			if (anyOff)
+			{
+				continue;
+			}
+
+			return i;
+		}
+		return null;
 	}
 
 	public final ResponseProfile GetImageMediaProfile(String container, Integer width, Integer height)
 	{
 		container = ((container != null) ? container : "").TrimStart('.');
 
-		return getResponseProfiles().FirstOrDefault(i =>
+		for (ResponseProfile i : getResponseProfiles())
 		{
-			if (i.Type != DlnaProfileType.Photo)
+			if (i.getType() != DlnaProfileType.Photo)
 			{
-				return false;
+				continue;
 			}
-			java.util.ArrayList<String> containers = i.GetContainers().ToList();
-			if (containers.size() > 0 && !containers.contains(container))
+
+			java.util.ArrayList<String> containers = i.GetContainers();
+			if (containers.size() > 0 && !containers.contains(container, StringComparer.OrdinalIgnoreCase))
 			{
-				return false;
+				continue;
 			}
+
 			ConditionProcessor conditionProcessor = new ConditionProcessor();
-			return i.Conditions.All(c => conditionProcessor.IsImageConditionSatisfied(c, width, height));
-		});
+
+			boolean anyOff = false;
+			for (ProfileCondition c : i.getConditions())
+			{
+				if (!conditionProcessor.IsImageConditionSatisfied(c, width, height))
+				{
+					anyOff = true;
+					break;
+				}
+			}
+
+			if (anyOff)
+			{
+				continue;
+			}
+
+			return i;
+		}
+		return null;
 	}
 
 	public final ResponseProfile GetVideoMediaProfile(String container, String audioCodec, String videoCodec, Integer audioBitrate, Integer audioChannels, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Double videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp)
 	{
 		container = ((container != null) ? container : "").TrimStart('.');
 
-		return getResponseProfiles().FirstOrDefault(i =>
+		for (ResponseProfile i : getResponseProfiles())
 		{
-			if (i.Type != DlnaProfileType.Video)
+			if (i.getType() != DlnaProfileType.Video)
 			{
-				return false;
+				continue;
 			}
-			java.util.ArrayList<String> containers = i.GetContainers().ToList();
-			if (containers.size() > 0 && !containers.contains(container))
+
+			java.util.ArrayList<String> containers = i.GetContainers();
+			if (containers.size() > 0 && !containers.contains(container, StringComparer.OrdinalIgnoreCase))
 			{
-				return false;
+				continue;
 			}
-			java.util.ArrayList<String> audioCodecs = i.GetAudioCodecs().ToList();
-			if (audioCodecs.size() > 0 && !audioCodecs.contains((audioCodec != null) ? audioCodec : ""))
+
+			java.util.ArrayList<String> audioCodecs = i.GetAudioCodecs();
+			if (audioCodecs.size() > 0 && !audioCodecs.contains((audioCodec != null) ? audioCodec : "", StringComparer.OrdinalIgnoreCase))
 			{
-				return false;
+				continue;
 			}
-			java.util.ArrayList<String> videoCodecs = i.GetVideoCodecs().ToList();
-			if (videoCodecs.size() > 0 && !videoCodecs.contains((videoCodec != null) ? videoCodec : ""))
+
+			java.util.ArrayList<String> videoCodecs = i.GetVideoCodecs();
+			if (videoCodecs.size() > 0 && !videoCodecs.contains((videoCodec != null) ? videoCodec : "", StringComparer.OrdinalIgnoreCase))
 			{
-				return false;
+				continue;
 			}
+
 			ConditionProcessor conditionProcessor = new ConditionProcessor();
-			return i.Conditions.All(c => conditionProcessor.IsVideoConditionSatisfied(c, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp));
-		});
+
+			boolean anyOff = false;
+			for (ProfileCondition c : i.getConditions())
+			{
+				if (!conditionProcessor.IsVideoConditionSatisfied(c, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp))
+				{
+					anyOff = true;
+					break;
+				}
+			}
+
+			if (anyOff)
+			{
+				continue;
+			}
+
+			return i;
+		}
+		return null;
 	}
 
 	public final ResponseProfile GetPhotoMediaProfile(String container, Integer width, Integer height)
 	{
 		container = ((container != null) ? container : "").TrimStart('.');
 
-		return getResponseProfiles().FirstOrDefault(i =>
+		for (ResponseProfile i : getResponseProfiles())
 		{
-			if (i.Type != DlnaProfileType.Photo)
+			if (i.getType() != DlnaProfileType.Photo)
 			{
-				return false;
+				continue;
 			}
+
 			java.util.ArrayList<String> containers = i.GetContainers().ToList();
-			if (containers.size() > 0 && !containers.contains(container))
+			if (containers.size() > 0 && !containers.contains(container, StringComparer.OrdinalIgnoreCase))
 			{
-				return false;
+				continue;
 			}
+
 			ConditionProcessor conditionProcessor = new ConditionProcessor();
-			return i.Conditions.All(c => conditionProcessor.IsImageConditionSatisfied(c, width, height));
-		});
+
+			boolean anyOff = false;
+			for (ProfileCondition c : i.getConditions())
+			{
+				if (!conditionProcessor.IsImageConditionSatisfied(c, width, height))
+				{
+					anyOff = true;
+					break;
+				}
+			}
+
+			if (anyOff)
+			{
+				continue;
+			}
+
+			return i;
+		}
+		return null;
 	}
 }
