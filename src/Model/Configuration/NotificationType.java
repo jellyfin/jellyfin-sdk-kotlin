@@ -6,6 +6,10 @@ public enum NotificationType
 	ApplicationUpdateInstalled,
 	AudioPlayback,
 	GamePlayback,
+	VideoPlayback,
+	AudioPlaybackStopped,
+	GamePlaybackStopped,
+	VideoPlaybackStopped,
 	InstallationFailed,
 	PluginError,
 	PluginInstalled,
@@ -14,8 +18,7 @@ public enum NotificationType
 	NewLibraryContent,
 	NewLibraryContentMultiple,
 	ServerRestartRequired,
-	TaskFailed,
-	VideoPlayback;
+	TaskFailed;
 
 	public int getValue()
 	{

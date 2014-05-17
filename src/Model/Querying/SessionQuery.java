@@ -17,17 +17,4 @@ public class SessionQuery
 	{
 		privateControllableByUserId = value;
 	}
-
-	/** 
-	 Filter by sessions that either do or do not support remote control. Default returns all sessions.
-	*/
-	private Boolean privateSupportsRemoteControl;
-	public final Boolean getSupportsRemoteControl()
-	{
-		return privateSupportsRemoteControl;
-	}
-	public final void setSupportsRemoteControl(Boolean value)
-	{
-		privateSupportsRemoteControl = value;
-	}
 }

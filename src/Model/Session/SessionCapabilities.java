@@ -22,6 +22,16 @@ public class SessionCapabilities
 		privateSupportedCommands = value;
 	}
 
+	private boolean privateSupportsMediaControl;
+	public final boolean getSupportsMediaControl()
+	{
+		return privateSupportsMediaControl;
+	}
+	public final void setSupportsMediaControl(boolean value)
+	{
+		privateSupportsMediaControl = value;
+	}
+
 	public SessionCapabilities()
 	{
 		setPlayableMediaTypes(new java.util.ArrayList<String>());

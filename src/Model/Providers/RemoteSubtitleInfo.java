@@ -2,14 +2,14 @@ package MediaBrowser.Model.Providers;
 
 public class RemoteSubtitleInfo
 {
-	private String privateLanguage;
-	public final String getLanguage()
+	private String privateThreeLetterISOLanguageName;
+	public final String getThreeLetterISOLanguageName()
 	{
-		return privateLanguage;
+		return privateThreeLetterISOLanguageName;
 	}
-	public final void setLanguage(String value)
+	public final void setThreeLetterISOLanguageName(String value)
 	{
-		privateLanguage = value;
+		privateThreeLetterISOLanguageName = value;
 	}
 	private String privateId;
 	public final String getId()

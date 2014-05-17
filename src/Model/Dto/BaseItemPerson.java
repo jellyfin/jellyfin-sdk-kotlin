@@ -23,6 +23,21 @@ public class BaseItemPerson implements INotifyPropertyChanged
 	}
 
 	/** 
+	 Gets or sets the identifier.
+	 
+	 <value>The identifier.</value>
+	*/
+	private String privateId;
+	public final String getId()
+	{
+		return privateId;
+	}
+	public final void setId(String value)
+	{
+		privateId = value;
+	}
+
+	/** 
 	 Gets or sets the role.
 	 
 	 <value>The role.</value>

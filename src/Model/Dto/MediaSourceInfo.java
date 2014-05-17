@@ -149,4 +149,75 @@ public class MediaSourceInfo
 		setFormats(new java.util.ArrayList<String>());
 		setMediaStreams(new java.util.ArrayList<MediaStream>());
 	}
+
+	private Integer privateDefaultAudioStreamIndex = new Integer();
+	public final Integer getDefaultAudioStreamIndex()
+	{
+		return privateDefaultAudioStreamIndex;
+	}
+	public final void setDefaultAudioStreamIndex(Integer value)
+	{
+		privateDefaultAudioStreamIndex = value;
+	}
+	private Integer privateDefaultSubtitleStreamIndex = new Integer();
+	public final Integer getDefaultSubtitleStreamIndex()
+	{
+		return privateDefaultSubtitleStreamIndex;
+	}
+	public final void setDefaultSubtitleStreamIndex(Integer value)
+	{
+		privateDefaultSubtitleStreamIndex = value;
+	}
+
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [IgnoreDataMember] public MediaStream DefaultAudioStream
+	public final MediaStream getDefaultAudioStream()
+	{
+		if (getDefaultAudioStreamIndex() != null)
+		{
+			int val = getDefaultAudioStreamIndex();
+
+			for (MediaStream i : getMediaStreams())
+			{
+				if (i.getType() == MediaStreamType.Audio && i.getIndex() == val)
+				{
+					return i;
+				}
+			}
+		}
+
+		for (MediaStream i : getMediaStreams())
+		{
+			if (i.getType() == MediaStreamType.Audio && i.getIsDefault())
+			{
+				return i;
+			}
+		}
+
+		for (MediaStream i : getMediaStreams())
+		{
+			if (i.getType() == MediaStreamType.Audio)
+			{
+				return i;
+			}
+		}
+
+		return null;
+	}
+
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [IgnoreDataMember] public MediaStream VideoStream
+	public final MediaStream getVideoStream()
+	{
+		for (MediaStream i : getMediaStreams())
+		{
+			String tempVar = i.getCodec();
+			if (i.getType() == MediaStreamType.Video && ((tempVar != null) ? tempVar : "").indexOf("jpeg", StringComparison.OrdinalIgnoreCase) == -1)
+			{
+				return i;
+			}
+		}
+
+		return null;
+	}
 }

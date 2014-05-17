@@ -316,15 +316,7 @@ public class StreamInfo
 				return null;
 			}
 
-			for (MediaStream stream : getMediaSource().getMediaStreams())
-			{
-				if (stream.getType() == MediaStreamType.Audio)
-				{
-					return stream;
-				}
-			}
-
-			return null;
+			return getMediaSource().getDefaultAudioStream();
 		}
 
 		return null;
@@ -337,15 +329,7 @@ public class StreamInfo
 	{
 		if (getMediaSource() != null)
 		{
-			for (MediaStream i : getMediaSource().getMediaStreams())
-			{
-				String tempVar = i.getCodec();
-				if (i.getType() == MediaStreamType.Video && ((tempVar != null) ? tempVar : "").indexOf("jpeg", StringComparison.OrdinalIgnoreCase) == -1)
-				{
-					return i;
-				}
-			}
-			return null;
+			return getMediaSource().getVideoStream();
 		}
 
 		return null;

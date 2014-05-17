@@ -182,15 +182,6 @@ public class ItemCounts
 	{
 		privateUniqueTypes = value;
 	}
-	private int privateChannelCount;
-	public final int getChannelCount()
-	{
-		return privateChannelCount;
-	}
-	public final void setChannelCount(int value)
-	{
-		privateChannelCount = value;
-	}
 
 	public ItemCounts()
 	{

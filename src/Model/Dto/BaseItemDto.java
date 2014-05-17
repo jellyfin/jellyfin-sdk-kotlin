@@ -866,21 +866,6 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	}
 
 	/** 
-	 Gets or sets the recently added item count.
-	 
-	 <value>The recently added item count.</value>
-	*/
-	private Integer privateRecentlyAddedItemCount = new Integer();
-	public final Integer getRecentlyAddedItemCount()
-	{
-		return privateRecentlyAddedItemCount;
-	}
-	public final void setRecentlyAddedItemCount(Integer value)
-	{
-		privateRecentlyAddedItemCount = value;
-	}
-
-	/** 
 	 Gets or sets the played percentage.
 	 
 	 <value>The played percentage.</value>

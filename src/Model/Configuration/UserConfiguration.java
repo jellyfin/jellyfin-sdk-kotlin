@@ -51,6 +51,21 @@ public class UserConfiguration
 	}
 
 	/** 
+	 Gets or sets a value indicating whether [play default audio track].
+	 
+	 <value><c>true</c> if [play default audio track]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean privatePlayDefaultAudioTrack;
+	public final boolean getPlayDefaultAudioTrack()
+	{
+		return privatePlayDefaultAudioTrack;
+	}
+	public final void setPlayDefaultAudioTrack(boolean value)
+	{
+		privatePlayDefaultAudioTrack = value;
+	}
+
+	/** 
 	 Gets or sets the subtitle language preference.
 	 
 	 <value>The subtitle language preference.</value>
@@ -210,6 +225,16 @@ public class UserConfiguration
 		privateBlockUnratedItems = value;
 	}
 
+	private SubtitlePlaybackMode privateSubtitleMode = SubtitlePlaybackMode.values()[0];
+	public final SubtitlePlaybackMode getSubtitleMode()
+	{
+		return privateSubtitleMode;
+	}
+	public final void setSubtitleMode(SubtitlePlaybackMode value)
+	{
+		privateSubtitleMode = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="UserConfiguration" /> class.
 	*/
@@ -217,6 +242,7 @@ public class UserConfiguration
 	{
 		setIsAdministrator(true);
 
+		setPlayDefaultAudioTrack(true);
 		setEnableRemoteControlOfOtherUsers(true);
 		setEnableLiveTvManagement(true);
 		setEnableMediaPlayback(true);

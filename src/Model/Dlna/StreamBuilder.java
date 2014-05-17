@@ -113,15 +113,7 @@ public class StreamBuilder
 		Integer tempVar2 = options.getMaxBitrate();
 		Integer maxBitrateSetting = (tempVar2 != null) ? tempVar2 : options.getProfile().getMaxBitrate();
 
-		MediaStream audioStream = null;
-		for (MediaStream i : item.getMediaStreams())
-		{
-			if (i.getType() == MediaStreamType.Audio)
-			{
-				audioStream = i;
-				break;
-			}
-		}
+		MediaStream audioStream = item.getDefaultAudioStream();
 
 		// Honor the max bitrate setting
 		if (IsAudioEligibleForDirectPlay(item, maxBitrateSetting))
@@ -250,25 +242,8 @@ public class StreamBuilder
 		tempVar.setRunTimeTicks(item.getRunTimeTicks());
 		StreamInfo playlistItem = tempVar;
 
-		MediaStream audioStream = null;
-		for (MediaStream i : item.getMediaStreams())
-		{
-			if (i.getType() == MediaStreamType.Audio)
-			{
-				audioStream = i;
-				break;
-			}
-		}
-
-		MediaStream videoStream = null;
-		for (MediaStream i : item.getMediaStreams())
-		{
-			if (i.getType() == MediaStreamType.Video)
-			{
-				videoStream = i;
-				break;
-			}
-		}
+		MediaStream audioStream = item.getDefaultAudioStream();
+		MediaStream videoStream = item.getVideoStream();
 
 		Integer tempVar2 = options.getMaxBitrate();
 		Integer maxBitrateSetting = (tempVar2 != null) ? tempVar2 : options.getProfile().getMaxBitrate();
@@ -307,8 +282,10 @@ public class StreamBuilder
 			playlistItem.setAudioCodec(transcodingProfile.getAudioCodec().split("[,]", -1)[0]);
 			playlistItem.setVideoCodec(transcodingProfile.getVideoCodec());
 			playlistItem.setProtocol(transcodingProfile.getProtocol());
-			playlistItem.setAudioStreamIndex(options.getAudioStreamIndex());
-			playlistItem.setSubtitleStreamIndex(options.getSubtitleStreamIndex());
+			Integer tempVar3 = options.getAudioStreamIndex();
+			playlistItem.setAudioStreamIndex((tempVar3 != null) ? tempVar3 : item.getDefaultAudioStreamIndex());
+			Integer tempVar4 = options.getSubtitleStreamIndex();
+			playlistItem.setSubtitleStreamIndex((tempVar4 != null) ? tempVar4 : item.getDefaultSubtitleStreamIndex());
 
 			java.util.ArrayList<ProfileCondition> videoTranscodingConditions = new java.util.ArrayList<ProfileCondition>();
 			for (CodecProfile i : options.getProfile().getCodecProfiles())
@@ -335,8 +312,8 @@ public class StreamBuilder
 			// Honor requested max channels
 			if (options.getMaxAudioChannels() != null)
 			{
-				Integer tempVar3 = playlistItem.getMaxAudioChannels();
-				int currentValue = (tempVar3 != null) ? tempVar3 : options.getMaxAudioChannels();
+				Integer tempVar5 = playlistItem.getMaxAudioChannels();
+				int currentValue = (tempVar5 != null) ? tempVar5 : options.getMaxAudioChannels();
 
 				playlistItem.setMaxAudioChannels(Math.min(options.getMaxAudioChannels(), currentValue));
 			}
@@ -344,8 +321,8 @@ public class StreamBuilder
 			// Honor requested max bitrate
 			if (options.getMaxAudioTranscodingBitrate() != null)
 			{
-				Integer tempVar4 = playlistItem.getAudioBitrate();
-				int currentValue = (tempVar4 != null) ? tempVar4 : options.getMaxAudioTranscodingBitrate();
+				Integer tempVar6 = playlistItem.getAudioBitrate();
+				int currentValue = (tempVar6 != null) ? tempVar6 : options.getMaxAudioTranscodingBitrate();
 
 				playlistItem.setAudioBitrate(Math.min(options.getMaxAudioTranscodingBitrate(), currentValue));
 			}
@@ -360,8 +337,8 @@ public class StreamBuilder
 					videoBitrate -= playlistItem.getAudioBitrate();
 				}
 
-				Integer tempVar5 = playlistItem.getVideoBitrate();
-				int currentValue = (tempVar5 != null) ? tempVar5 : videoBitrate;
+				Integer tempVar7 = playlistItem.getVideoBitrate();
+				int currentValue = (tempVar7 != null) ? tempVar7 : videoBitrate;
 
 				playlistItem.setVideoBitrate(Math.min(videoBitrate, currentValue));
 			}
@@ -483,11 +460,6 @@ public class StreamBuilder
 	private boolean IsEligibleForDirectPlay(MediaSourceInfo item, VideoOptions options, Integer maxBitrate)
 	{
 		if (options.getSubtitleStreamIndex() != null)
-		{
-			return false;
-		}
-
-		if (options.getAudioStreamIndex() != null && item.getMediaStreams().size()(i => i.Type == MediaStreamType.Audio) > 1)
 		{
 			return false;
 		}
