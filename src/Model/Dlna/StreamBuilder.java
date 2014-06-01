@@ -2,12 +2,11 @@ package MediaBrowser.Model.Dlna;
 
 import MediaBrowser.Model.Dto.*;
 import MediaBrowser.Model.Entities.*;
+import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.MediaInfo.*;
 
 public class StreamBuilder
 {
-	private final CultureInfo _usCulture = new CultureInfo("en-US");
-
 	public final StreamInfo BuildAudioItem(AudioOptions options)
 	{
 		ValidateAudioInput(options);
@@ -23,7 +22,7 @@ public class StreamBuilder
 			mediaSources = new java.util.ArrayList<MediaSourceInfo>();
 			for (MediaSourceInfo i : mediaSources)
 			{
-				if (String.equals(i.getId(), mediaSourceId, StringComparison.OrdinalIgnoreCase))
+				if (StringHelper.EqualsIgnoreCase(i.getId(), mediaSourceId))
 				{
 					mediaSources.add(i);
 				}
@@ -60,7 +59,7 @@ public class StreamBuilder
 			mediaSources = new java.util.ArrayList<MediaSourceInfo>();
 			for (MediaSourceInfo i : mediaSources)
 			{
-				if (String.equals(i.getId(), mediaSourceId, StringComparison.OrdinalIgnoreCase))
+				if (StringHelper.EqualsIgnoreCase(i.getId(), mediaSourceId))
 				{
 					mediaSources.add(i);
 				}
@@ -525,7 +524,7 @@ public class StreamBuilder
 				{
 						int num = 0;
 						tangible.RefObject<Integer> tempRef_num = new tangible.RefObject<Integer>(num);
-						boolean tempVar = Integer.TryParse(value, NumberStyles.Any, _usCulture, tempRef_num);
+						boolean tempVar = IntHelper.TryParseCultureInvariant(value, tempRef_num);
 							num = tempRef_num.argValue;
 						if (tempVar)
 						{
@@ -537,7 +536,7 @@ public class StreamBuilder
 				{
 						int num = 0;
 						tangible.RefObject<Integer> tempRef_num2 = new tangible.RefObject<Integer>(num);
-						boolean tempVar2 = Integer.TryParse(value, NumberStyles.Any, _usCulture, tempRef_num2);
+						boolean tempVar2 = IntHelper.TryParseCultureInvariant(value, tempRef_num2);
 							num = tempRef_num2.argValue;
 						if (tempVar2)
 						{
@@ -563,7 +562,7 @@ public class StreamBuilder
 				{
 						int num = 0;
 						tangible.RefObject<Integer> tempRef_num3 = new tangible.RefObject<Integer>(num);
-						boolean tempVar3 = Integer.TryParse(value, NumberStyles.Any, _usCulture, tempRef_num3);
+						boolean tempVar3 = IntHelper.TryParseCultureInvariant(value, tempRef_num3);
 							num = tempRef_num3.argValue;
 						if (tempVar3)
 						{
@@ -575,7 +574,7 @@ public class StreamBuilder
 				{
 						int num = 0;
 						tangible.RefObject<Integer> tempRef_num4 = new tangible.RefObject<Integer>(num);
-						boolean tempVar4 = Integer.TryParse(value, NumberStyles.Any, _usCulture, tempRef_num4);
+						boolean tempVar4 = IntHelper.TryParseCultureInvariant(value, tempRef_num4);
 							num = tempRef_num4.argValue;
 						if (tempVar4)
 						{
@@ -585,9 +584,9 @@ public class StreamBuilder
 				}
 				case VideoFramerate:
 				{
-						int num = 0;
-						tangible.RefObject<Integer> tempRef_num5 = new tangible.RefObject<Integer>(num);
-						boolean tempVar5 = Integer.TryParse(value, NumberStyles.Any, _usCulture, tempRef_num5);
+						double num = 0;
+						tangible.RefObject<Double> tempRef_num5 = new tangible.RefObject<Double>(num);
+						boolean tempVar5 = DoubleHelper.TryParseCultureInvariant(value, tempRef_num5);
 							num = tempRef_num5.argValue;
 						if (tempVar5)
 						{
@@ -599,7 +598,7 @@ public class StreamBuilder
 				{
 						int num = 0;
 						tangible.RefObject<Integer> tempRef_num6 = new tangible.RefObject<Integer>(num);
-						boolean tempVar6 = Integer.TryParse(value, NumberStyles.Any, _usCulture, tempRef_num6);
+						boolean tempVar6 = IntHelper.TryParseCultureInvariant(value, tempRef_num6);
 							num = tempRef_num6.argValue;
 						if (tempVar6)
 						{
@@ -611,7 +610,7 @@ public class StreamBuilder
 				{
 						int num = 0;
 						tangible.RefObject<Integer> tempRef_num7 = new tangible.RefObject<Integer>(num);
-						boolean tempVar7 = Integer.TryParse(value, NumberStyles.Any, _usCulture, tempRef_num7);
+						boolean tempVar7 = IntHelper.TryParseCultureInvariant(value, tempRef_num7);
 							num = tempRef_num7.argValue;
 						if (tempVar7)
 						{
@@ -635,7 +634,7 @@ public class StreamBuilder
 			boolean any = false;
 			for (String i : profile.GetContainers())
 			{
-				if (String.equals(i, mediaContainer, StringComparison.OrdinalIgnoreCase))
+				if (StringHelper.EqualsIgnoreCase(i, mediaContainer))
 				{
 					any = true;
 					break;
@@ -666,7 +665,7 @@ public class StreamBuilder
 			boolean any = false;
 			for (String i : profile.GetContainers())
 			{
-				if (String.equals(i, mediaContainer, StringComparison.OrdinalIgnoreCase))
+				if (StringHelper.EqualsIgnoreCase(i, mediaContainer))
 				{
 					any = true;
 					break;

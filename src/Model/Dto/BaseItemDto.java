@@ -1,6 +1,7 @@
 package MediaBrowser.Model.Dto;
 
 import MediaBrowser.Model.Entities.*;
+import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.Library.*;
 import MediaBrowser.Model.Providers.*;
 
@@ -383,6 +384,30 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	public final void setCustomRating(String value)
 	{
 		privateCustomRating = value;
+	}
+
+	/** 
+	 Gets or sets the channel identifier.
+	 
+	 <value>The channel identifier.</value>
+	*/
+	private String privateChannelId;
+	public final String getChannelId()
+	{
+		return privateChannelId;
+	}
+	public final void setChannelId(String value)
+	{
+		privateChannelId = value;
+	}
+	private String privateChannelName;
+	public final String getChannelName()
+	{
+		return privateChannelName;
+	}
+	public final void setChannelName(String value)
+	{
+		privateChannelName = value;
 	}
 
 	/** 
@@ -1327,7 +1352,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	*/
 	public final boolean IsType(String type)
 	{
-		return getType().equals(type, StringComparison.OrdinalIgnoreCase);
+		return StringHelper.EqualsIgnoreCase(getType(), type);
 	}
 
 	/** 
@@ -1947,7 +1972,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 //ORIGINAL LINE: [IgnoreDataMember] public bool IsVideo
 	public final boolean getIsVideo()
 	{
-		return String.equals(getMediaType(), Entities.MediaType.Video, StringComparison.OrdinalIgnoreCase);
+		return StringHelper.EqualsIgnoreCase(getMediaType(), Entities.MediaType.Video);
 	}
 
 	/** 
@@ -1959,7 +1984,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 //ORIGINAL LINE: [IgnoreDataMember] public bool IsAudio
 	public final boolean getIsAudio()
 	{
-		return String.equals(getMediaType(), Entities.MediaType.Audio, StringComparison.OrdinalIgnoreCase);
+		return StringHelper.EqualsIgnoreCase(getMediaType(), Entities.MediaType.Audio);
 	}
 
 	/** 
@@ -1971,7 +1996,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 //ORIGINAL LINE: [IgnoreDataMember] public bool IsGame
 	public final boolean getIsGame()
 	{
-		return String.equals(getMediaType(), Entities.MediaType.Game, StringComparison.OrdinalIgnoreCase);
+		return StringHelper.EqualsIgnoreCase(getMediaType(), Entities.MediaType.Game);
 	}
 
 	/** 
@@ -1983,7 +2008,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 //ORIGINAL LINE: [IgnoreDataMember] public bool IsPerson
 	public final boolean getIsPerson()
 	{
-		return String.equals(getType(), "Person", StringComparison.OrdinalIgnoreCase);
+		return StringHelper.EqualsIgnoreCase(getType(), "Person");
 	}
 
 	/** 
@@ -1995,42 +2020,42 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 //ORIGINAL LINE: [IgnoreDataMember] public bool IsRoot
 	public final boolean getIsRoot()
 	{
-		return String.equals(getType(), "AggregateFolder", StringComparison.OrdinalIgnoreCase);
+		return StringHelper.EqualsIgnoreCase(getType(), "AggregateFolder");
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [IgnoreDataMember] public bool IsMusicGenre
 	public final boolean getIsMusicGenre()
 	{
-		return String.equals(getType(), "MusicGenre", StringComparison.OrdinalIgnoreCase);
+		return StringHelper.EqualsIgnoreCase(getType(), "MusicGenre");
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [IgnoreDataMember] public bool IsGameGenre
 	public final boolean getIsGameGenre()
 	{
-		return String.equals(getType(), "GameGenre", StringComparison.OrdinalIgnoreCase);
+		return StringHelper.EqualsIgnoreCase(getType(), "GameGenre");
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [IgnoreDataMember] public bool IsGenre
 	public final boolean getIsGenre()
 	{
-		return String.equals(getType(), "Genre", StringComparison.OrdinalIgnoreCase);
+		return StringHelper.EqualsIgnoreCase(getType(), "Genre");
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [IgnoreDataMember] public bool IsArtist
 	public final boolean getIsArtist()
 	{
-		return String.equals(getType(), "Artist", StringComparison.OrdinalIgnoreCase);
+		return StringHelper.EqualsIgnoreCase(getType(), "Artist");
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [IgnoreDataMember] public bool IsStudio
 	public final boolean getIsStudio()
 	{
-		return String.equals(getType(), "Studio", StringComparison.OrdinalIgnoreCase);
+		return StringHelper.EqualsIgnoreCase(getType(), "Studio");
 	}
 
 	/** 

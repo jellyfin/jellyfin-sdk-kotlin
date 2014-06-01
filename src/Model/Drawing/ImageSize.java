@@ -1,5 +1,7 @@
 package MediaBrowser.Model.Drawing;
 
+import MediaBrowser.Model.Extensions.*;
+
 /** 
  Struct ImageSize
 */
@@ -7,8 +9,6 @@ package MediaBrowser.Model.Drawing;
 //ORIGINAL LINE: public struct ImageSize
 public final class ImageSize
 {
-	private static final CultureInfo UsCulture = new CultureInfo("en-US");
-
 	private double _height;
 	private double _width;
 
@@ -75,7 +75,7 @@ public final class ImageSize
 				double val = 0;
 
 				tangible.RefObject<Double> tempRef_val = new tangible.RefObject<Double>(val);
-				boolean tempVar = Double.TryParse(parts[0], NumberStyles.Any, UsCulture, tempRef_val);
+				boolean tempVar = DoubleHelper.TryParseCultureInvariant(parts[0], tempRef_val);
 					val = tempRef_val.argValue;
 				if (tempVar)
 				{
@@ -83,7 +83,7 @@ public final class ImageSize
 				}
 
 				tangible.RefObject<Double> tempRef_val2 = new tangible.RefObject<Double>(val);
-				boolean tempVar2 = Double.TryParse(parts[1], NumberStyles.Any, UsCulture, tempRef_val2);
+				boolean tempVar2 = DoubleHelper.TryParseCultureInvariant(parts[1], tempRef_val2);
 					val = tempRef_val2.argValue;
 				if (tempVar2)
 				{

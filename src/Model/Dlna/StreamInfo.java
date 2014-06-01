@@ -3,6 +3,7 @@ package MediaBrowser.Model.Dlna;
 import MediaBrowser.Model.Drawing.*;
 import MediaBrowser.Model.Dto.*;
 import MediaBrowser.Model.Entities.*;
+import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.MediaInfo.*;
 
 /** 
@@ -178,12 +179,12 @@ public class StreamInfo
 		privateMaxHeight = value;
 	}
 
-	private Integer privateMaxFramerate = new Integer();
-	public final Integer getMaxFramerate()
+	private Double privateMaxFramerate = new Double();
+	public final Double getMaxFramerate()
 	{
 		return privateMaxFramerate;
 	}
-	public final void setMaxFramerate(Integer value)
+	public final void setMaxFramerate(Double value)
 	{
 		privateMaxFramerate = value;
 	}
@@ -275,15 +276,13 @@ public class StreamInfo
 			return String.format("%1$s/audio/%2$s/stream%3$s?%4$s", baseUrl, getItemId(), extension, dlnaCommand);
 		}
 
-		if (String.equals(getProtocol(), "hls", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(getProtocol(), "hls"))
 		{
 			return String.format("%1$s/videos/%2$s/stream.m3u8?%3$s", baseUrl, getItemId(), dlnaCommand);
 		}
 
 		return String.format("%1$s/videos/%2$s/stream%3$s?%4$s", baseUrl, getItemId(), extension, dlnaCommand);
 	}
-
-	private static final CultureInfo UsCulture = new CultureInfo("en-US");
 
 	private static String BuildDlnaParam(StreamInfo item)
 	{
@@ -292,7 +291,7 @@ public class StreamInfo
 		String tempVar3 = item.getMediaSourceId();
 		String tempVar4 = item.getVideoCodec();
 		String tempVar5 = item.getAudioCodec();
-		java.util.ArrayList<String> list = new java.util.ArrayList<String>(java.util.Arrays.asList(new String[] {(tempVar != null) ? tempVar : "", (tempVar2 != null) ? tempVar2 : "", (tempVar3 != null) ? tempVar3 : "", (new Boolean(item.getIsDirectStream())).toString().toLowerCase(), (tempVar4 != null) ? tempVar4 : "", (tempVar5 != null) ? tempVar5 : "", item.getAudioStreamIndex() != null ? item.getAudioStreamIndex().toString(UsCulture) : "", item.getSubtitleStreamIndex() != null ? item.getSubtitleStreamIndex().toString(UsCulture) : "", item.getVideoBitrate() != null ? item.getVideoBitrate().toString(UsCulture) : "", item.getAudioBitrate() != null ? item.getAudioBitrate().toString(UsCulture) : "", item.getMaxAudioChannels() != null ? item.getMaxAudioChannels().toString(UsCulture) : "", item.getMaxFramerate() != null ? item.getMaxFramerate().toString(UsCulture) : "", item.getMaxWidth() != null ? item.getMaxWidth().toString(UsCulture) : "", item.getMaxHeight() != null ? item.getMaxHeight().toString(UsCulture) : "", (new Long(item.getStartPositionTicks())).toString(UsCulture), item.getVideoLevel() != null ? item.getVideoLevel().toString(UsCulture) : ""}));
+		java.util.ArrayList<String> list = new java.util.ArrayList<String>(java.util.Arrays.asList(new String[] {(tempVar != null) ? tempVar : "", (tempVar2 != null) ? tempVar2 : "", (tempVar3 != null) ? tempVar3 : "", (new Boolean(item.getIsDirectStream())).toString().toLowerCase(), (tempVar4 != null) ? tempVar4 : "", (tempVar5 != null) ? tempVar5 : "", item.getAudioStreamIndex() != null ? StringHelper.ToStringCultureInvariant(item.getAudioStreamIndex()) : "", item.getSubtitleStreamIndex() != null ? StringHelper.ToStringCultureInvariant(item.getSubtitleStreamIndex()) : "", item.getVideoBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getVideoBitrate()) : "", item.getAudioBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getAudioBitrate()) : "", item.getMaxAudioChannels() != null ? StringHelper.ToStringCultureInvariant(item.getMaxAudioChannels()) : "", item.getMaxFramerate() != null ? StringHelper.ToStringCultureInvariant(item.getMaxFramerate()) : "", item.getMaxWidth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxWidth()) : "", item.getMaxHeight() != null ? StringHelper.ToStringCultureInvariant(item.getMaxHeight()) : "", StringHelper.ToStringCultureInvariant(item.getStartPositionTicks()), item.getVideoLevel() != null ? StringHelper.ToStringCultureInvariant(item.getVideoLevel()) : ""}));
 
 		return String.format("Params=%1$s", tangible.DotNetToJavaStringHelper.join(";", list.toArray(new String[0])));
 	}
@@ -449,7 +448,7 @@ public class StreamInfo
 
 	public final TransportStreamTimestamp getTargetTimestamp()
 	{
-		TransportStreamTimestamp defaultValue = String.equals(getContainer(), "m2ts", StringComparison.OrdinalIgnoreCase) ? TransportStreamTimestamp.Valid : TransportStreamTimestamp.None;
+		TransportStreamTimestamp defaultValue = StringHelper.EqualsIgnoreCase(getContainer(), "m2ts") ? TransportStreamTimestamp.Valid : TransportStreamTimestamp.None;
 
 		TransportStreamTimestamp tempVar = getMediaSource().getTimestamp();
 		return !getIsDirectStream() ? defaultValue : getMediaSource() == null ? defaultValue : (tempVar != null) ? tempVar : TransportStreamTimestamp.None;

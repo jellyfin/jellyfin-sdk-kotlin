@@ -1,5 +1,7 @@
 package MediaBrowser.Model.Configuration;
 
+import MediaBrowser.Model.Extensions.*;
+
 public class NotificationOptions
 {
 	private NotificationOption[] privateOptions;
@@ -57,7 +59,7 @@ public class NotificationOptions
 	{
 		for (NotificationOption i : getOptions())
 		{
-			if (String.equals(type, i.getType(), StringComparison.OrdinalIgnoreCase))
+			if (StringHelper.EqualsIgnoreCase(type, i.getType()))
 			{
 				return i;
 			}

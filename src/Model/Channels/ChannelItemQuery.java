@@ -25,14 +25,14 @@ public class ChannelItemQuery
 	 
 	 <value>The category identifier.</value>
 	*/
-	private String privateCategoryId;
-	public final String getCategoryId()
+	private String privateFolderId;
+	public final String getFolderId()
 	{
-		return privateCategoryId;
+		return privateFolderId;
 	}
-	public final void setCategoryId(String value)
+	public final void setFolderId(String value)
 	{
-		privateCategoryId = value;
+		privateFolderId = value;
 	}
 
 	/** 

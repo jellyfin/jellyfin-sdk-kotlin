@@ -3,7 +3,7 @@ package MediaBrowser.Model.LiveTv;
 /** 
  Class ChannelQuery.
 */
-public class ChannelQuery
+public class LiveTvChannelQuery
 {
 	/** 
 	 Gets or sets the type of the channel.
@@ -33,6 +33,36 @@ public class ChannelQuery
 	public final void setIsFavorite(Boolean value)
 	{
 		privateIsFavorite = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance is liked.
+	 
+	 <value><c>null</c> if [is liked] contains no value, <c>true</c> if [is liked]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean privateIsLiked;
+	public final Boolean getIsLiked()
+	{
+		return privateIsLiked;
+	}
+	public final void setIsLiked(Boolean value)
+	{
+		privateIsLiked = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance is disliked.
+	 
+	 <value><c>null</c> if [is disliked] contains no value, <c>true</c> if [is disliked]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean privateIsDisliked;
+	public final Boolean getIsDisliked()
+	{
+		return privateIsDisliked;
+	}
+	public final void setIsDisliked(Boolean value)
+	{
+		privateIsDisliked = value;
 	}
 
 	/** 

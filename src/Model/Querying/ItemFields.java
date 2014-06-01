@@ -96,11 +96,6 @@ public enum ItemFields
 	Overview,
 
 	/** 
-	 The overview HTML
-	*/
-	OverviewHtml,
-
-	/** 
 	 The id of the item's parent
 	*/
 	ParentId,

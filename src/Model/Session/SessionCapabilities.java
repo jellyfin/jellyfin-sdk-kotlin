@@ -32,6 +32,16 @@ public class SessionCapabilities
 		privateSupportsMediaControl = value;
 	}
 
+	private String privateMessageCallbackUrl;
+	public final String getMessageCallbackUrl()
+	{
+		return privateMessageCallbackUrl;
+	}
+	public final void setMessageCallbackUrl(String value)
+	{
+		privateMessageCallbackUrl = value;
+	}
+
 	public SessionCapabilities()
 	{
 		setPlayableMediaTypes(new java.util.ArrayList<String>());

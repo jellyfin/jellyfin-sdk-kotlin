@@ -1,67 +1,68 @@
 package MediaBrowser.Model.Dlna;
 
+import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.MediaInfo.*;
 
 public class MediaFormatProfileResolver
 {
 	public final Iterable<MediaFormatProfile> ResolveVideoFormat(String container, String videoCodec, String audioCodec, Integer width, Integer height, TransportStreamTimestamp timestampType)
 	{
-		if (String.equals(container, "asf", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "asf"))
 		{
 			MediaFormatProfile val = ResolveVideoASFFormat(videoCodec, audioCodec, width, height);
 			return val != null ? new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {val})) : new java.util.ArrayList<MediaFormatProfile>();
 		}
 
-		if (String.equals(container, "mp4", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "mp4"))
 		{
 			MediaFormatProfile val = ResolveVideoMP4Format(videoCodec, audioCodec, width, height);
 			return val != null ? new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {val})) : new java.util.ArrayList<MediaFormatProfile>();
 		}
 
-		if (String.equals(container, "avi", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "avi"))
 		{
 			return new Object[] {MediaFormatProfile.AVI};
 		}
 
-		if (String.equals(container, "mkv", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "mkv"))
 		{
 			return new Object[] {MediaFormatProfile.MATROSKA};
 		}
 
-		if (String.equals(container, "mpeg2ps", StringComparison.OrdinalIgnoreCase) || String.equals(container, "ts", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "mpeg2ps") || StringHelper.EqualsIgnoreCase(container, "ts"))
 
 		{
 			return new Object[] {MediaFormatProfile.MPEG_PS_NTSC, MediaFormatProfile.MPEG_PS_PAL};
 		}
 
-		if (String.equals(container, "mpeg1video", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "mpeg1video"))
 		{
 			return new Object[] {MediaFormatProfile.MPEG1};
 		}
 
-		if (String.equals(container, "mpeg2ts", StringComparison.OrdinalIgnoreCase) || String.equals(container, "mpegts", StringComparison.OrdinalIgnoreCase) || String.equals(container, "m2ts", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "mpeg2ts") || StringHelper.EqualsIgnoreCase(container, "mpegts") || StringHelper.EqualsIgnoreCase(container, "m2ts"))
 		{
 
 			return ResolveVideoMPEG2TSFormat(videoCodec, audioCodec, width, height, timestampType);
 		}
 
-		if (String.equals(container, "flv", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "flv"))
 		{
 			return new Object[] {MediaFormatProfile.FLV};
 		}
 
-		if (String.equals(container, "wtv", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "wtv"))
 		{
 			return new Object[] {MediaFormatProfile.WTV};
 		}
 
-		if (String.equals(container, "3gp", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "3gp"))
 		{
 			MediaFormatProfile val = ResolveVideo3GPFormat(videoCodec, audioCodec);
 			return val != null ? new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {val})) : new java.util.ArrayList<MediaFormatProfile>();
 		}
 
-		if (String.equals(container, "ogv", StringComparison.OrdinalIgnoreCase) || String.equals(container, "ogg", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "ogv") || StringHelper.EqualsIgnoreCase(container, "ogg"))
 		{
 			return new Object[] {MediaFormatProfile.OGV};
 		}
@@ -89,7 +90,7 @@ public class MediaFormatProfileResolver
 			resolution = "H";
 		}
 
-		if (String.equals(videoCodec, "mpeg2video", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(videoCodec, "mpeg2video"))
 		{
 			java.util.ArrayList<MediaFormatProfile> list = new java.util.ArrayList<MediaFormatProfile>();
 
@@ -97,20 +98,20 @@ public class MediaFormatProfileResolver
 			list.add(ValueOf("MPEG_TS_SD_EU" + suffix));
 			list.add(ValueOf("MPEG_TS_SD_KO" + suffix));
 
-			if ((timestampType == TransportStreamTimestamp.Valid) && String.equals(audioCodec, "aac", StringComparison.OrdinalIgnoreCase))
+			if ((timestampType == TransportStreamTimestamp.Valid) && StringHelper.EqualsIgnoreCase(audioCodec, "aac"))
 			{
 				list.add(MediaFormatProfile.MPEG_TS_JP_T);
 			}
 			return list;
 		}
-		if (String.equals(videoCodec, "h264", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(videoCodec, "h264"))
 		{
-			if (String.equals(audioCodec, "lpcm", StringComparison.OrdinalIgnoreCase))
+			if (StringHelper.EqualsIgnoreCase(audioCodec, "lpcm"))
 			{
 				return new Object[] {MediaFormatProfile.AVC_TS_HD_50_LPCM_T};
 			}
 
-			if (String.equals(audioCodec, "dts", StringComparison.OrdinalIgnoreCase))
+			if (StringHelper.EqualsIgnoreCase(audioCodec, "dts"))
 			{
 				if (timestampType == TransportStreamTimestamp.None)
 				{
@@ -119,7 +120,7 @@ public class MediaFormatProfileResolver
 				return new Object[] {MediaFormatProfile.AVC_TS_HD_DTS_T};
 			}
 
-			if (String.equals(audioCodec, "mp3", StringComparison.OrdinalIgnoreCase))
+			if (StringHelper.EqualsIgnoreCase(audioCodec, "mp3"))
 			{
 				if (timestampType == TransportStreamTimestamp.None)
 				{
@@ -129,24 +130,24 @@ public class MediaFormatProfileResolver
 				return new MediaFormatProfile[] {ValueOf(String.format("AVC_TS_HP_%1$sD_MPEG1_L2_T", resolution))};
 			}
 
-			if (String.equals(audioCodec, "aac", StringComparison.OrdinalIgnoreCase))
+			if (StringHelper.EqualsIgnoreCase(audioCodec, "aac"))
 			{
 				return new MediaFormatProfile[] {ValueOf(String.format("AVC_TS_MP_%1$sD_AAC_MULT5%2$s", resolution, suffix))};
 			}
 
-			if (String.equals(audioCodec, "mp3", StringComparison.OrdinalIgnoreCase))
+			if (StringHelper.EqualsIgnoreCase(audioCodec, "mp3"))
 			{
 				return new MediaFormatProfile[] {ValueOf(String.format("AVC_TS_MP_%1$sD_MPEG1_L3%2$s", resolution, suffix))};
 			}
 
-			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || String.equals(audioCodec, "ac3", StringComparison.OrdinalIgnoreCase))
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || StringHelper.EqualsIgnoreCase(audioCodec, "ac3"))
 			{
 				return new MediaFormatProfile[] {ValueOf(String.format("AVC_TS_MP_%1$sD_AC3%2$s", resolution, suffix))};
 			}
 		}
-		else if (String.equals(videoCodec, "vc1", StringComparison.OrdinalIgnoreCase))
+		else if (StringHelper.EqualsIgnoreCase(videoCodec, "vc1"))
 		{
-			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || String.equals(audioCodec, "ac3", StringComparison.OrdinalIgnoreCase))
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || StringHelper.EqualsIgnoreCase(audioCodec, "ac3"))
 			{
 				if ((width != null && width > 720) || (height != null && height > 576))
 				{
@@ -154,29 +155,29 @@ public class MediaFormatProfileResolver
 				}
 				return new Object[] {MediaFormatProfile.VC1_TS_AP_L1_AC3_ISO};
 			}
-			if (String.equals(audioCodec, "dts", StringComparison.OrdinalIgnoreCase))
+			if (StringHelper.EqualsIgnoreCase(audioCodec, "dts"))
 			{
-				suffix = String.equals(suffix, "_ISO") ? suffix : "_T";
+				suffix = StringHelper.EqualsIgnoreCase(suffix, "_ISO") ? suffix : "_T";
 
 				return new MediaFormatProfile[] {ValueOf(String.format("VC1_TS_HD_DTS%1$s", suffix))};
 			}
 
 		}
-		else if (String.equals(videoCodec, "mpeg4", StringComparison.OrdinalIgnoreCase) || String.equals(videoCodec, "msmpeg4", StringComparison.OrdinalIgnoreCase))
+		else if (StringHelper.EqualsIgnoreCase(videoCodec, "mpeg4") || StringHelper.EqualsIgnoreCase(videoCodec, "msmpeg4"))
 		{
-			if (String.equals(audioCodec, "aac", StringComparison.OrdinalIgnoreCase))
+			if (StringHelper.EqualsIgnoreCase(audioCodec, "aac"))
 			{
 				return new MediaFormatProfile[] {ValueOf(String.format("MPEG4_P2_TS_ASP_AAC%1$s", suffix))};
 			}
-			if (String.equals(audioCodec, "mp3", StringComparison.OrdinalIgnoreCase))
+			if (StringHelper.EqualsIgnoreCase(audioCodec, "mp3"))
 			{
 				return new MediaFormatProfile[] {ValueOf(String.format("MPEG4_P2_TS_ASP_MPEG1_L3%1$s", suffix))};
 			}
-			if (String.equals(audioCodec, "mp2", StringComparison.OrdinalIgnoreCase))
+			if (StringHelper.EqualsIgnoreCase(audioCodec, "mp2"))
 			{
 				return new MediaFormatProfile[] {ValueOf(String.format("MPEG4_P2_TS_ASP_MPEG2_L2%1$s", suffix))};
 			}
-			if (String.equals(audioCodec, "ac3", StringComparison.OrdinalIgnoreCase))
+			if (StringHelper.EqualsIgnoreCase(audioCodec, "ac3"))
 			{
 				return new MediaFormatProfile[] {ValueOf(String.format("MPEG4_P2_TS_ASP_AC3%1$s", suffix))};
 			}
@@ -194,17 +195,17 @@ public class MediaFormatProfileResolver
 
 	private MediaFormatProfile ResolveVideoMP4Format(String videoCodec, String audioCodec, Integer width, Integer height)
 	{
-		if (String.equals(videoCodec, "h264", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(videoCodec, "h264"))
 		{
-			if (String.equals(audioCodec, "lpcm", StringComparison.OrdinalIgnoreCase))
+			if (StringHelper.EqualsIgnoreCase(audioCodec, "lpcm"))
 			{
 				return MediaFormatProfile.AVC_MP4_LPCM;
 			}
-			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || String.equals(audioCodec, "ac3", StringComparison.OrdinalIgnoreCase))
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || StringHelper.EqualsIgnoreCase(audioCodec, "ac3"))
 			{
 				return MediaFormatProfile.AVC_MP4_MP_SD_AC3;
 			}
-			if (String.equals(audioCodec, "mp3", StringComparison.OrdinalIgnoreCase))
+			if (StringHelper.EqualsIgnoreCase(audioCodec, "mp3"))
 			{
 				return MediaFormatProfile.AVC_MP4_MP_SD_MPEG1_L3;
 			}
@@ -212,46 +213,46 @@ public class MediaFormatProfileResolver
 			{
 				if ((width <= 720) && (height <= 576))
 				{
-					if (String.equals(audioCodec, "aac", StringComparison.OrdinalIgnoreCase))
+					if (StringHelper.EqualsIgnoreCase(audioCodec, "aac"))
 					{
 						return MediaFormatProfile.AVC_MP4_MP_SD_AAC_MULT5;
 					}
 				}
 				else if ((width <= 1280) && (height <= 720))
 				{
-					if (String.equals(audioCodec, "aac", StringComparison.OrdinalIgnoreCase))
+					if (StringHelper.EqualsIgnoreCase(audioCodec, "aac"))
 					{
 						return MediaFormatProfile.AVC_MP4_MP_HD_720p_AAC;
 					}
 				}
 				else if ((width <= 1920) && (height <= 1080))
 				{
-					if (String.equals(audioCodec, "aac", StringComparison.OrdinalIgnoreCase))
+					if (StringHelper.EqualsIgnoreCase(audioCodec, "aac"))
 					{
 						return MediaFormatProfile.AVC_MP4_MP_HD_1080i_AAC;
 					}
 				}
 			}
 		}
-		else if (String.equals(videoCodec, "mpeg4", StringComparison.OrdinalIgnoreCase) || String.equals(videoCodec, "msmpeg4", StringComparison.OrdinalIgnoreCase))
+		else if (StringHelper.EqualsIgnoreCase(videoCodec, "mpeg4") || StringHelper.EqualsIgnoreCase(videoCodec, "msmpeg4"))
 		{
 			if (width != null && height != null && width <= 720 && height <= 576)
 			{
-				if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || String.equals(audioCodec, "aac", StringComparison.OrdinalIgnoreCase))
+				if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || StringHelper.EqualsIgnoreCase(audioCodec, "aac"))
 				{
 					return MediaFormatProfile.MPEG4_P2_MP4_ASP_AAC;
 				}
-				if (String.equals(audioCodec, "ac3", StringComparison.OrdinalIgnoreCase) || String.equals(audioCodec, "mp3", StringComparison.OrdinalIgnoreCase))
+				if (StringHelper.EqualsIgnoreCase(audioCodec, "ac3") || StringHelper.EqualsIgnoreCase(audioCodec, "mp3"))
 				{
 					return MediaFormatProfile.MPEG4_P2_MP4_NDSD;
 				}
 			}
-			else if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || String.equals(audioCodec, "aac", StringComparison.OrdinalIgnoreCase))
+			else if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || StringHelper.EqualsIgnoreCase(audioCodec, "aac"))
 			{
 				return MediaFormatProfile.MPEG4_P2_MP4_SP_L6_AAC;
 			}
 		}
-		else if (String.equals(videoCodec, "h263", StringComparison.OrdinalIgnoreCase) && String.equals(audioCodec, "aac", StringComparison.OrdinalIgnoreCase))
+		else if (StringHelper.EqualsIgnoreCase(videoCodec, "h263") && StringHelper.EqualsIgnoreCase(audioCodec, "aac"))
 		{
 			return MediaFormatProfile.MPEG4_H263_MP4_P0_L10_AAC;
 		}
@@ -261,25 +262,25 @@ public class MediaFormatProfileResolver
 
 	private MediaFormatProfile ResolveVideo3GPFormat(String videoCodec, String audioCodec)
 	{
-		if (String.equals(videoCodec, "h264", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(videoCodec, "h264"))
 		{
-			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || String.equals(audioCodec, "aac", StringComparison.OrdinalIgnoreCase))
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || StringHelper.EqualsIgnoreCase(audioCodec, "aac"))
 			{
 				return MediaFormatProfile.AVC_3GPP_BL_QCIF15_AAC;
 			}
 		}
-		else if (String.equals(videoCodec, "mpeg4", StringComparison.OrdinalIgnoreCase) || String.equals(videoCodec, "msmpeg4", StringComparison.OrdinalIgnoreCase))
+		else if (StringHelper.EqualsIgnoreCase(videoCodec, "mpeg4") || StringHelper.EqualsIgnoreCase(videoCodec, "msmpeg4"))
 		{
-			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || String.equals(audioCodec, "wma", StringComparison.OrdinalIgnoreCase))
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || StringHelper.EqualsIgnoreCase(audioCodec, "wma"))
 			{
 				return MediaFormatProfile.MPEG4_P2_3GPP_SP_L0B_AAC;
 			}
-			if (String.equals(audioCodec, "amrnb", StringComparison.OrdinalIgnoreCase))
+			if (StringHelper.EqualsIgnoreCase(audioCodec, "amrnb"))
 			{
 				return MediaFormatProfile.MPEG4_P2_3GPP_SP_L0B_AMR;
 			}
 		}
-		else if (String.equals(videoCodec, "h263", StringComparison.OrdinalIgnoreCase) && String.equals(audioCodec, "amrnb", StringComparison.OrdinalIgnoreCase))
+		else if (StringHelper.EqualsIgnoreCase(videoCodec, "h263") && StringHelper.EqualsIgnoreCase(audioCodec, "amrnb"))
 		{
 			return MediaFormatProfile.MPEG4_H263_3GPP_P0_L10_AMR;
 		}
@@ -289,14 +290,14 @@ public class MediaFormatProfileResolver
 
 	private MediaFormatProfile ResolveVideoASFFormat(String videoCodec, String audioCodec, Integer width, Integer height)
 	{
-		if (String.equals(videoCodec, "wmv", StringComparison.OrdinalIgnoreCase) && (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || String.equals(audioCodec, "wma", StringComparison.OrdinalIgnoreCase) || String.equals(videoCodec, "wmapro", StringComparison.OrdinalIgnoreCase)))
+		if (StringHelper.EqualsIgnoreCase(videoCodec, "wmv") && (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || StringHelper.EqualsIgnoreCase(audioCodec, "wma") || StringHelper.EqualsIgnoreCase(videoCodec, "wmapro")))
 		{
 
 			if (width != null && height != null)
 			{
 				if ((width <= 720) && (height <= 576))
 				{
-					if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || String.equals(audioCodec, "wma", StringComparison.OrdinalIgnoreCase))
+					if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || StringHelper.EqualsIgnoreCase(audioCodec, "wma"))
 					{
 						return MediaFormatProfile.WMVMED_FULL;
 					}
@@ -304,14 +305,14 @@ public class MediaFormatProfileResolver
 				}
 			}
 
-			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || String.equals(audioCodec, "wma", StringComparison.OrdinalIgnoreCase))
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || StringHelper.EqualsIgnoreCase(audioCodec, "wma"))
 			{
 				return MediaFormatProfile.WMVHIGH_FULL;
 			}
 			return MediaFormatProfile.WMVHIGH_PRO;
 		}
 
-		if (String.equals(videoCodec, "vc1", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(videoCodec, "vc1"))
 		{
 			if (width != null && height != null)
 			{
@@ -329,7 +330,7 @@ public class MediaFormatProfileResolver
 				}
 			}
 		}
-		else if (String.equals(videoCodec, "mpeg2video", StringComparison.OrdinalIgnoreCase))
+		else if (StringHelper.EqualsIgnoreCase(videoCodec, "mpeg2video"))
 		{
 			return MediaFormatProfile.DVR_MS;
 		}
@@ -339,37 +340,37 @@ public class MediaFormatProfileResolver
 
 	public final MediaFormatProfile ResolveAudioFormat(String container, Integer bitrate, Integer frequency, Integer channels)
 	{
-		if (String.equals(container, "asf", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "asf"))
 		{
 			return ResolveAudioASFFormat(bitrate);
 		}
 
-		if (String.equals(container, "mp3", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "mp3"))
 		{
 			return MediaFormatProfile.MP3;
 		}
 
-		if (String.equals(container, "lpcm", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "lpcm"))
 		{
 			return ResolveAudioLPCMFormat(frequency, channels);
 		}
 
-		if (String.equals(container, "mp4", StringComparison.OrdinalIgnoreCase) || String.equals(container, "aac", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "mp4") || StringHelper.EqualsIgnoreCase(container, "aac"))
 		{
 			return ResolveAudioMP4Format(bitrate);
 		}
 
-		if (String.equals(container, "adts", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "adts"))
 		{
 			return ResolveAudioADTSFormat(bitrate);
 		}
 
-		if (String.equals(container, "flac", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "flac"))
 		{
 			return MediaFormatProfile.FLAC;
 		}
 
-		if (String.equals(container, "oga", StringComparison.OrdinalIgnoreCase) || String.equals(container, "ogg", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "oga") || StringHelper.EqualsIgnoreCase(container, "ogg"))
 		{
 			return MediaFormatProfile.OGG;
 		}
@@ -433,22 +434,22 @@ public class MediaFormatProfileResolver
 
 	public final MediaFormatProfile ResolveImageFormat(String container, Integer width, Integer height)
 	{
-		if (String.equals(container, "jpeg", StringComparison.OrdinalIgnoreCase) || String.equals(container, "jpg", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "jpeg") || StringHelper.EqualsIgnoreCase(container, "jpg"))
 		{
 			return ResolveImageJPGFormat(width, height);
 		}
 
-		if (String.equals(container, "png", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "png"))
 		{
 			return MediaFormatProfile.PNG_LRG;
 		}
 
-		if (String.equals(container, "gif", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "gif"))
 		{
 			return MediaFormatProfile.GIF_LRG;
 		}
 
-		if (String.equals(container, "raw", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(container, "raw"))
 		{
 			return MediaFormatProfile.RAW;
 		}

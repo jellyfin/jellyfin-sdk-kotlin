@@ -1,5 +1,7 @@
 package MediaBrowser.Model.Entities;
 
+import MediaBrowser.Model.Extensions.*;
+
 /** 
  Class MediaStream
 */
@@ -320,7 +322,7 @@ public class MediaStream
 //C# TO JAVA CONVERTER TODO TASK: There is no equivalent to implicit typing in Java:
 		var codec = (tempVar != null) ? tempVar : "";
 
-		return codec.indexOf("pgs", StringComparison.OrdinalIgnoreCase) != -1 || codec.indexOf("dvd", StringComparison.OrdinalIgnoreCase) != -1;
+		return StringHelper.IndexOfIgnoreCase(codec, "pgs") != -1 || StringHelper.IndexOfIgnoreCase(codec, "dvd") != -1;
 	}
 
 	/** 

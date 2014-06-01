@@ -1,6 +1,7 @@
 package MediaBrowser.Model.Dto;
 
 import MediaBrowser.Model.Entities.*;
+import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.MediaInfo.*;
 
 public class MediaSourceInfo
@@ -212,7 +213,7 @@ public class MediaSourceInfo
 		for (MediaStream i : getMediaStreams())
 		{
 			String tempVar = i.getCodec();
-			if (i.getType() == MediaStreamType.Video && ((tempVar != null) ? tempVar : "").indexOf("jpeg", StringComparison.OrdinalIgnoreCase) == -1)
+			if (i.getType() == MediaStreamType.Video && StringHelper.IndexOfIgnoreCase(((tempVar != null) ? tempVar : ""), "jpeg") == -1)
 			{
 				return i;
 			}

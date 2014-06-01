@@ -1,5 +1,6 @@
 package MediaBrowser.Model.Dlna;
 
+import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.MediaInfo.*;
 
 public class ConditionProcessor
@@ -82,7 +83,6 @@ public class ConditionProcessor
 		}
 	}
 
-	private static final CultureInfo UsCulture = new CultureInfo("en-US");
 	private boolean IsConditionSatisfied(ProfileCondition condition, Integer currentValue)
 	{
 		if (currentValue == null)
@@ -93,7 +93,7 @@ public class ConditionProcessor
 
 		int expected = 0;
 		tangible.RefObject<Integer> tempRef_expected = new tangible.RefObject<Integer>(expected);
-		boolean tempVar = Integer.TryParse(condition.getValue(), NumberStyles.Any, UsCulture, tempRef_expected);
+		boolean tempVar = IntHelper.TryParseCultureInvariant(condition.getValue(), tempRef_expected);
 			expected = tempRef_expected.argValue;
 		if (tempVar)
 		{
@@ -128,9 +128,9 @@ public class ConditionProcessor
 		switch (condition.getCondition())
 		{
 			case Equals:
-				return String.equals(currentValue, expected, StringComparison.OrdinalIgnoreCase);
+				return StringHelper.EqualsIgnoreCase(currentValue, expected);
 			case NotEquals:
-				return !String.equals(currentValue, expected, StringComparison.OrdinalIgnoreCase);
+				return !StringHelper.EqualsIgnoreCase(currentValue, expected);
 			default:
 				throw new UnsupportedOperationException("Unexpected ProfileConditionType");
 		}
@@ -146,7 +146,7 @@ public class ConditionProcessor
 
 		double expected = 0;
 		tangible.RefObject<Double> tempRef_expected = new tangible.RefObject<Double>(expected);
-		boolean tempVar = Double.TryParse(condition.getValue(), NumberStyles.Any, UsCulture, tempRef_expected);
+		boolean tempVar = DoubleHelper.TryParseCultureInvariant(condition.getValue(), tempRef_expected);
 			expected = tempRef_expected.argValue;
 		if (tempVar)
 		{

@@ -1,5 +1,6 @@
 package MediaBrowser.Model.Dlna;
 
+import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.MediaInfo.*;
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -410,7 +411,7 @@ public class DeviceProfile
 				continue;
 			}
 
-			if (!String.equals(container, i.getContainer(), StringComparison.OrdinalIgnoreCase))
+			if (!StringHelper.EqualsIgnoreCase(container, i.getContainer()))
 			{
 				continue;
 			}
@@ -436,7 +437,7 @@ public class DeviceProfile
 				continue;
 			}
 
-			if (!String.equals(container, i.getContainer(), StringComparison.OrdinalIgnoreCase))
+			if (!StringHelper.EqualsIgnoreCase(container, i.getContainer()))
 			{
 				continue;
 			}
@@ -446,7 +447,7 @@ public class DeviceProfile
 				continue;
 			}
 
-			if (!String.equals(videoCodec, i.getVideoCodec(), StringComparison.OrdinalIgnoreCase))
+			if (!StringHelper.EqualsIgnoreCase(videoCodec, i.getVideoCodec()))
 			{
 				continue;
 			}
@@ -575,45 +576,6 @@ public class DeviceProfile
 			for (ProfileCondition c : i.getConditions())
 			{
 				if (!conditionProcessor.IsVideoConditionSatisfied(c, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp))
-				{
-					anyOff = true;
-					break;
-				}
-			}
-
-			if (anyOff)
-			{
-				continue;
-			}
-
-			return i;
-		}
-		return null;
-	}
-
-	public final ResponseProfile GetPhotoMediaProfile(String container, Integer width, Integer height)
-	{
-		container = ((container != null) ? container : "").TrimStart('.');
-
-		for (ResponseProfile i : getResponseProfiles())
-		{
-			if (i.getType() != DlnaProfileType.Photo)
-			{
-				continue;
-			}
-
-			java.util.ArrayList<String> containers = i.GetContainers().ToList();
-			if (containers.size() > 0 && !containers.contains(container, StringComparer.OrdinalIgnoreCase))
-			{
-				continue;
-			}
-
-			ConditionProcessor conditionProcessor = new ConditionProcessor();
-
-			boolean anyOff = false;
-			for (ProfileCondition c : i.getConditions())
-			{
-				if (!conditionProcessor.IsImageConditionSatisfied(c, width, height))
 				{
 					anyOff = true;
 					break;

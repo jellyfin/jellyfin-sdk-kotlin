@@ -418,23 +418,23 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		privateEnableFanArtUpdates = value;
 	}
 
-	private boolean privateRequireManualLoginForMobileApps;
-	public final boolean getRequireManualLoginForMobileApps()
+	private boolean privateRequireMobileManualLogin;
+	public final boolean getRequireMobileManualLogin()
 	{
-		return privateRequireManualLoginForMobileApps;
+		return privateRequireMobileManualLogin;
 	}
-	public final void setRequireManualLoginForMobileApps(boolean value)
+	public final void setRequireMobileManualLogin(boolean value)
 	{
-		privateRequireManualLoginForMobileApps = value;
+		privateRequireMobileManualLogin = value;
 	}
-	private boolean privateRequireManualLoginForOtherApps;
-	public final boolean getRequireManualLoginForOtherApps()
+	private boolean privateRequireNonMobileManualLogin;
+	public final boolean getRequireNonMobileManualLogin()
 	{
-		return privateRequireManualLoginForOtherApps;
+		return privateRequireNonMobileManualLogin;
 	}
-	public final void setRequireManualLoginForOtherApps(boolean value)
+	public final void setRequireNonMobileManualLogin(boolean value)
 	{
-		privateRequireManualLoginForOtherApps = value;
+		privateRequireNonMobileManualLogin = value;
 	}
 
 	/** 
@@ -666,6 +666,20 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		privateSubtitleOptions = value;
 	}
 
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [Obsolete] public string[] ManualLoginClients {get;set;}
+	private String[] privateManualLoginClients;
+	@Deprecated
+	public final String[] getManualLoginClients()
+	{
+		return privateManualLoginClients;
+	}
+	@Deprecated
+	public final void setManualLoginClients(String[] value)
+	{
+		privateManualLoginClients = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
 	*/
@@ -705,6 +719,8 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setSortReplaceCharacters(new String[] {".", "+", "%"});
 		setSortRemoveCharacters(new String[] {",", "&", "-", "{", "}", "'"});
 		setSortRemoveWords(new String[] {"the", "a", "an"});
+
+		setManualLoginClients(new String[] { });
 
 		setSeasonZeroDisplayName("Specials");
 

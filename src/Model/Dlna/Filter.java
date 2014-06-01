@@ -1,5 +1,7 @@
 package MediaBrowser.Model.Dlna;
 
+import MediaBrowser.Model.Extensions.*;
+
 public class Filter
 {
 	private java.util.ArrayList<String> _fields;
@@ -13,7 +15,7 @@ public class Filter
 
 	public Filter(String filter)
 	{
-		_all = String.equals(filter, "*", StringComparison.OrdinalIgnoreCase);
+		_all = StringHelper.EqualsIgnoreCase(filter, "*");
 
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>();
 		for (String s : ((filter != null) ? filter : "").split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))

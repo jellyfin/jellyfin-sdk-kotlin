@@ -5,8 +5,8 @@ import MediaBrowser.Model.Entities.*;
 import MediaBrowser.Model.Library.*;
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, StartTime = {StartDate}, EndTime = {EndDate}")] public class ProgramInfoDto : INotifyPropertyChanged
-public class ProgramInfoDto implements INotifyPropertyChanged
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, StartTime = {StartDate}, EndTime = {EndDate}")] public class ProgramInfoDto : INotifyPropertyChanged, IItemDto
+public class ProgramInfoDto implements INotifyPropertyChanged, IItemDto
 {
 	/** 
 	 Id of the program.
@@ -19,6 +19,36 @@ public class ProgramInfoDto implements INotifyPropertyChanged
 	public final void setId(String value)
 	{
 		privateId = value;
+	}
+
+	/** 
+	 Gets or sets the primary image aspect ratio.
+	 
+	 <value>The primary image aspect ratio.</value>
+	*/
+	private Double privatePrimaryImageAspectRatio = new Double();
+	public final Double getPrimaryImageAspectRatio()
+	{
+		return privatePrimaryImageAspectRatio;
+	}
+	public final void setPrimaryImageAspectRatio(Double value)
+	{
+		privatePrimaryImageAspectRatio = value;
+	}
+
+	/** 
+	 Gets or sets the original primary image aspect ratio.
+	 
+	 <value>The original primary image aspect ratio.</value>
+	*/
+	private Double privateOriginalPrimaryImageAspectRatio = new Double();
+	public final Double getOriginalPrimaryImageAspectRatio()
+	{
+		return privateOriginalPrimaryImageAspectRatio;
+	}
+	public final void setOriginalPrimaryImageAspectRatio(Double value)
+	{
+		privateOriginalPrimaryImageAspectRatio = value;
 	}
 
 	/** 

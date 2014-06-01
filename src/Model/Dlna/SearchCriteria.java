@@ -1,5 +1,7 @@
 package MediaBrowser.Model.Dlna;
 
+import MediaBrowser.Model.Extensions.*;
+
 public class SearchCriteria
 {
 	private SearchType privateSearchType = getSearchType().values()[0];
@@ -21,21 +23,21 @@ public class SearchCriteria
 
 		setSearchType(SearchType.Unknown);
 
-		if (search.indexOf("upnp:class", StringComparison.OrdinalIgnoreCase) != -1 && search.indexOf("derivedfrom", StringComparison.OrdinalIgnoreCase) != -1)
+		if (StringHelper.IndexOfIgnoreCase(search, "upnp:class") != -1 && StringHelper.IndexOfIgnoreCase(search, "derivedfrom") != -1)
 		{
-			if (search.indexOf("object.item.audioItem", StringComparison.OrdinalIgnoreCase) != -1)
+			if (StringHelper.IndexOfIgnoreCase(search, "object.item.audioItem") != -1)
 			{
 				setSearchType(SearchType.Audio);
 			}
-			else if (search.indexOf("object.item.imageItem", StringComparison.OrdinalIgnoreCase) != -1)
+			else if (StringHelper.IndexOfIgnoreCase(search, "object.item.imageItem") != -1)
 			{
 				setSearchType(SearchType.Image);
 			}
-			else if (search.indexOf("object.item.videoItem", StringComparison.OrdinalIgnoreCase) != -1)
+			else if (StringHelper.IndexOfIgnoreCase(search, "object.item.videoItem") != -1)
 			{
 				setSearchType(SearchType.Video);
 			}
-			else if (search.indexOf("object.container.playlistContainer", StringComparison.OrdinalIgnoreCase) != -1)
+			else if (StringHelper.IndexOfIgnoreCase(search, "object.container.playlistContainer") != -1)
 			{
 				setSearchType(SearchType.Playlist);
 			}
