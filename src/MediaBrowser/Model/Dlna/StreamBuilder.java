@@ -369,7 +369,7 @@ public class StreamBuilder
 		java.util.ArrayList<ProfileCondition> conditions = new java.util.ArrayList<ProfileCondition>();
 		for (ContainerProfile i : profile.getContainerProfiles())
 		{
-			if (i.getType() == DlnaProfileType.Video && i.GetContainers().contains(container, StringComparer.OrdinalIgnoreCase))
+			if (i.getType() == DlnaProfileType.Video && ListHelper.ContainsIgnoreCase(i.GetContainers(), container))
 			{
 				conditions.addAll(i.getConditions());
 			}
@@ -682,7 +682,7 @@ public class StreamBuilder
 		if (videoCodecs.size() > 0)
 		{
 			String videoCodec = videoStream == null ? null : videoStream.getCodec();
-			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(videoCodec) || !videoCodecs.contains(videoCodec, StringComparer.OrdinalIgnoreCase))
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(videoCodec) || !ListHelper.ContainsIgnoreCase(videoCodecs, videoCodec))
 			{
 				return false;
 			}
@@ -693,7 +693,7 @@ public class StreamBuilder
 		{
 			// Check audio codecs
 			String audioCodec = audioStream == null ? null : audioStream.getCodec();
-			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || !audioCodecs.contains(audioCodec, StringComparer.OrdinalIgnoreCase))
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || !ListHelper.ContainsIgnoreCase(audioCodecs, audioCodec))
 			{
 				return false;
 			}

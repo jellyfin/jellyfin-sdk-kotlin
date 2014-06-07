@@ -680,6 +680,16 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		privateManualLoginClients = value;
 	}
 
+	private ChannelOptions privateChannelOptions;
+	public final ChannelOptions getChannelOptions()
+	{
+		return privateChannelOptions;
+	}
+	public final void setChannelOptions(ChannelOptions value)
+	{
+		privateChannelOptions = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
 	*/
@@ -749,5 +759,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setNotificationOptions(new NotificationOptions());
 
 		setSubtitleOptions(new SubtitleOptions());
+
+		setChannelOptions(new ChannelOptions());
 	}
 }

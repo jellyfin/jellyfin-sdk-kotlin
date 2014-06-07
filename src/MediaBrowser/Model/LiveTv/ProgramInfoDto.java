@@ -52,6 +52,21 @@ public class ProgramInfoDto implements INotifyPropertyChanged, IItemDto
 	}
 
 	/** 
+	 Gets or sets the type of the media.
+	 
+	 <value>The type of the media.</value>
+	*/
+	private String privateMediaType;
+	public final String getMediaType()
+	{
+		return privateMediaType;
+	}
+	public final void setMediaType(String value)
+	{
+		privateMediaType = value;
+	}
+
+	/** 
 	 Gets or sets the timer identifier.
 	 
 	 <value>The timer identifier.</value>

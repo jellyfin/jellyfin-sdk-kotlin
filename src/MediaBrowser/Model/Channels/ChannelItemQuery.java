@@ -55,7 +55,7 @@ public class ChannelItemQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex;
+	private Integer privateStartIndex = new Integer();
 	public final Integer getStartIndex()
 	{
 		return privateStartIndex;
@@ -70,7 +70,7 @@ public class ChannelItemQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit;
+	private Integer privateLimit = new Integer();
 	public final Integer getLimit()
 	{
 		return privateLimit;
@@ -80,7 +80,7 @@ public class ChannelItemQuery
 		privateLimit = value;
 	}
 
-	private SortOrder privateSortOrder;
+	private SortOrder privateSortOrder = new SortOrder();
 	public final SortOrder getSortOrder()
 	{
 		return privateSortOrder;
@@ -107,10 +107,20 @@ public class ChannelItemQuery
 	{
 		privateFilters = value;
 	}
+	private java.util.ArrayList<ItemFields> privateFields;
+	public final java.util.ArrayList<ItemFields> getFields()
+	{
+		return privateFields;
+	}
+	public final void setFields(java.util.ArrayList<ItemFields> value)
+	{
+		privateFields = value;
+	}
 
 	public ChannelItemQuery()
 	{
 		setFilters(new ItemFilter[] { });
 		setSortBy(new String[] { });
+		setFields(new java.util.ArrayList<ItemFields>());
 	}
 }

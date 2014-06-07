@@ -27,6 +27,6 @@ public class Filter
 
 	public final boolean Contains(String field)
 	{
-		return _all || _fields.contains(field, StringComparer.OrdinalIgnoreCase);
+		return _all || ListHelper.ContainsIgnoreCase(_fields, field);
 	}
 }

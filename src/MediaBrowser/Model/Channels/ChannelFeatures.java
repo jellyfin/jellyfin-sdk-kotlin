@@ -3,6 +3,36 @@ package MediaBrowser.Model.Channels;
 public class ChannelFeatures
 {
 	/** 
+	 Gets or sets the name.
+	 
+	 <value>The name.</value>
+	*/
+	private String privateName;
+	public final String getName()
+	{
+		return privateName;
+	}
+	public final void setName(String value)
+	{
+		privateName = value;
+	}
+
+	/** 
+	 Gets or sets the identifier.
+	 
+	 <value>The identifier.</value>
+	*/
+	private String privateId;
+	public final String getId()
+	{
+		return privateId;
+	}
+	public final void setId(String value)
+	{
+		privateId = value;
+	}
+
+	/** 
 	 Gets or sets a value indicating whether this instance can search.
 	 
 	 <value><c>true</c> if this instance can search; otherwise, <c>false</c>.</value>
@@ -101,6 +131,21 @@ public class ChannelFeatures
 	public final void setCanFilter(boolean value)
 	{
 		privateCanFilter = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance can download all media.
+	 
+	 <value><c>true</c> if this instance can download all media; otherwise, <c>false</c>.</value>
+	*/
+	private boolean privateCanDownloadAllMedia;
+	public final boolean getCanDownloadAllMedia()
+	{
+		return privateCanDownloadAllMedia;
+	}
+	public final void setCanDownloadAllMedia(boolean value)
+	{
+		privateCanDownloadAllMedia = value;
 	}
 
 	public ChannelFeatures()

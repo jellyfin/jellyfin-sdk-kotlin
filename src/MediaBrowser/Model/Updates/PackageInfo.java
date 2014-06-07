@@ -81,6 +81,21 @@ public class PackageInfo
 	}
 
 	/** 
+	 Gets or sets a value indicating whether this instance is adult only content.
+	 
+	 <value><c>true</c> if this instance is adult; otherwise, <c>false</c>.</value>
+	*/
+	private boolean privateadult;
+	public final boolean getadult()
+	{
+		return privateadult;
+	}
+	public final void setadult(boolean value)
+	{
+		privateadult = value;
+	}
+
+	/** 
 	 Gets or sets the rich desc URL.
 	 
 	 <value>The rich desc URL.</value>

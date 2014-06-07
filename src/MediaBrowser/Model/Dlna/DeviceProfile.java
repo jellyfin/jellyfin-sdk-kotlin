@@ -416,7 +416,7 @@ public class DeviceProfile
 				continue;
 			}
 
-			if (!i.GetAudioCodecs().contains((audioCodec != null) ? audioCodec : "", StringComparer.OrdinalIgnoreCase))
+			if (!ListHelper.ContainsIgnoreCase(i.GetAudioCodecs(), (audioCodec != null) ? audioCodec : ""))
 			{
 				continue;
 			}
@@ -469,13 +469,13 @@ public class DeviceProfile
 			}
 
 			java.util.ArrayList<String> containers = i.GetContainers();
-			if (containers.size() > 0 && !containers.contains(container, StringComparer.OrdinalIgnoreCase))
+			if (containers.size() > 0 && !ListHelper.ContainsIgnoreCase(containers, container))
 			{
 				continue;
 			}
 
 			java.util.ArrayList<String> audioCodecs = i.GetAudioCodecs();
-			if (audioCodecs.size() > 0 && !audioCodecs.contains((audioCodec != null) ? audioCodec : "", StringComparer.OrdinalIgnoreCase))
+			if (audioCodecs.size() > 0 && !ListHelper.ContainsIgnoreCase(audioCodecs, audioCodec))
 			{
 				continue;
 			}
@@ -514,7 +514,7 @@ public class DeviceProfile
 			}
 
 			java.util.ArrayList<String> containers = i.GetContainers();
-			if (containers.size() > 0 && !containers.contains(container, StringComparer.OrdinalIgnoreCase))
+			if (containers.size() > 0 && !ListHelper.ContainsIgnoreCase(containers, container))
 			{
 				continue;
 			}
@@ -553,19 +553,19 @@ public class DeviceProfile
 			}
 
 			java.util.ArrayList<String> containers = i.GetContainers();
-			if (containers.size() > 0 && !containers.contains(container, StringComparer.OrdinalIgnoreCase))
+			if (containers.size() > 0 && !ListHelper.ContainsIgnoreCase(containers, container))
 			{
 				continue;
 			}
 
 			java.util.ArrayList<String> audioCodecs = i.GetAudioCodecs();
-			if (audioCodecs.size() > 0 && !audioCodecs.contains((audioCodec != null) ? audioCodec : "", StringComparer.OrdinalIgnoreCase))
+			if (audioCodecs.size() > 0 && !ListHelper.ContainsIgnoreCase(audioCodecs, audioCodec))
 			{
 				continue;
 			}
 
 			java.util.ArrayList<String> videoCodecs = i.GetVideoCodecs();
-			if (videoCodecs.size() > 0 && !videoCodecs.contains((videoCodec != null) ? videoCodec : "", StringComparer.OrdinalIgnoreCase))
+			if (videoCodecs.size() > 0 && !ListHelper.ContainsIgnoreCase(videoCodecs, videoCodec))
 			{
 				continue;
 			}

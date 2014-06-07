@@ -26,6 +26,16 @@ public class MediaSourceInfo
 		privatePath = value;
 	}
 
+	private MediaSourceType privateType = MediaSourceType.values()[0];
+	public final MediaSourceType getType()
+	{
+		return privateType;
+	}
+	public final void setType(MediaSourceType value)
+	{
+		privateType = value;
+	}
+
 	private String privateContainer;
 	public final String getContainer()
 	{
@@ -144,11 +154,21 @@ public class MediaSourceInfo
 	{
 		privateTimestamp = value;
 	}
+	private java.util.HashMap<String, String> privateRequiredHttpHeaders;
+	public final java.util.HashMap<String, String> getRequiredHttpHeaders()
+	{
+		return privateRequiredHttpHeaders;
+	}
+	public final void setRequiredHttpHeaders(java.util.HashMap<String, String> value)
+	{
+		privateRequiredHttpHeaders = value;
+	}
 
 	public MediaSourceInfo()
 	{
 		setFormats(new java.util.ArrayList<String>());
 		setMediaStreams(new java.util.ArrayList<MediaStream>());
+		setRequiredHttpHeaders(new java.util.HashMap<String, String>());
 	}
 
 	private Integer privateDefaultAudioStreamIndex = new Integer();

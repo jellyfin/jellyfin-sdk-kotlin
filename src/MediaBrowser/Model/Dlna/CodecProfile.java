@@ -1,5 +1,7 @@
 package MediaBrowser.Model.Dlna;
 
+import MediaBrowser.Model.Extensions.*;
+
 public class CodecProfile
 {
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -58,6 +60,6 @@ public class CodecProfile
 	{
 		java.util.ArrayList<String> codecs = GetCodecs();
 
-		return codecs.isEmpty() || codecs.contains(codec, StringComparer.OrdinalIgnoreCase);
+		return codecs.isEmpty() || ListHelper.ContainsIgnoreCase(codecs, codec);
 	}
 }

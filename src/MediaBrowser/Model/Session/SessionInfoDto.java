@@ -331,6 +331,16 @@ public class SessionInfoDto implements INotifyPropertyChanged
 		privatePlayState = value;
 	}
 
+	private TranscodingInfo privateTranscodingInfo;
+	public final TranscodingInfo getTranscodingInfo()
+	{
+		return privateTranscodingInfo;
+	}
+	public final void setTranscodingInfo(TranscodingInfo value)
+	{
+		privateTranscodingInfo = value;
+	}
+
 //C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
 //	public event PropertyChangedEventHandler PropertyChanged;
 

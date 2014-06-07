@@ -215,6 +215,16 @@ public class UserConfiguration
 		privateBlockedChannels = value;
 	}
 
+	private String[] privateExcludeFoldersFromGrouping;
+	public final String[] getExcludeFoldersFromGrouping()
+	{
+		return privateExcludeFoldersFromGrouping;
+	}
+	public final void setExcludeFoldersFromGrouping(String[] value)
+	{
+		privateExcludeFoldersFromGrouping = value;
+	}
+
 	private UnratedItem[] privateBlockUnratedItems;
 	public final UnratedItem[] getBlockUnratedItems()
 	{
@@ -247,10 +257,11 @@ public class UserConfiguration
 		setEnableLiveTvManagement(true);
 		setEnableMediaPlayback(true);
 		setEnableLiveTvAccess(true);
-		setGroupMoviesIntoBoxSets(true);
 
 		setBlockedMediaFolders(new String[] { });
 		setBlockedChannels(new String[] { });
 		setBlockUnratedItems(new UnratedItem[] { });
+
+		setExcludeFoldersFromGrouping(new String[] { });
 	}
 }

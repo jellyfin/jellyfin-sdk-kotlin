@@ -1,5 +1,8 @@
 package MediaBrowser.Model.Extensions;
 
+/** 
+ Isolating these helpers allow this entire project to be easily converted to Java
+*/
 public final class StringHelper
 {
 	/** 
