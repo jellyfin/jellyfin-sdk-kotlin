@@ -119,6 +119,21 @@ public class ChannelFeatures
 	}
 
 	/** 
+	 Gets or sets a value indicating whether [supports latest media].
+	 
+	 <value><c>true</c> if [supports latest media]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean privateSupportsLatestMedia;
+	public final boolean getSupportsLatestMedia()
+	{
+		return privateSupportsLatestMedia;
+	}
+	public final void setSupportsLatestMedia(boolean value)
+	{
+		privateSupportsLatestMedia = value;
+	}
+
+	/** 
 	 Gets or sets a value indicating whether this instance can filter.
 	 
 	 <value><c>true</c> if this instance can filter; otherwise, <c>false</c>.</value>
@@ -134,18 +149,18 @@ public class ChannelFeatures
 	}
 
 	/** 
-	 Gets or sets a value indicating whether this instance can download all media.
+	 Gets or sets a value indicating whether [supports content downloading].
 	 
-	 <value><c>true</c> if this instance can download all media; otherwise, <c>false</c>.</value>
+	 <value><c>true</c> if [supports content downloading]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateCanDownloadAllMedia;
-	public final boolean getCanDownloadAllMedia()
+	private boolean privateSupportsContentDownloading;
+	public final boolean getSupportsContentDownloading()
 	{
-		return privateCanDownloadAllMedia;
+		return privateSupportsContentDownloading;
 	}
-	public final void setCanDownloadAllMedia(boolean value)
+	public final void setSupportsContentDownloading(boolean value)
 	{
-		privateCanDownloadAllMedia = value;
+		privateSupportsContentDownloading = value;
 	}
 
 	public ChannelFeatures()

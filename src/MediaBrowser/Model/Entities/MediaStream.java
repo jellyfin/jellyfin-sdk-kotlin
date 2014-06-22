@@ -309,11 +309,9 @@ public class MediaStream
 		privateIsExternal = value;
 	}
 
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public bool IsGraphicalSubtitleStream
-	public final boolean getIsGraphicalSubtitleStream()
+	public final boolean getIsTextSubtitleStream()
 	{
-		if (getIsExternal())
+		if (getType() != MediaStreamType.Subtitle)
 		{
 			return false;
 		}
@@ -322,8 +320,9 @@ public class MediaStream
 //C# TO JAVA CONVERTER TODO TASK: There is no equivalent to implicit typing in Java:
 		var codec = (tempVar != null) ? tempVar : "";
 
-		return StringHelper.IndexOfIgnoreCase(codec, "pgs") != -1 || StringHelper.IndexOfIgnoreCase(codec, "dvd") != -1;
+		return StringHelper.IndexOfIgnoreCase(codec, "pgs") == -1 && StringHelper.IndexOfIgnoreCase(codec, "dvd") == -1;
 	}
+
 
 	/** 
 	 Gets or sets the filename.
@@ -368,5 +367,20 @@ public class MediaStream
 	public final void setLevel(Double value)
 	{
 		privateLevel = value;
+	}
+
+	/** 
+	 Gets a value indicating whether this instance is anamorphic.
+	 
+	 <value><c>true</c> if this instance is anamorphic; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean privateIsAnamorphic = new Boolean();
+	public final Boolean getIsAnamorphic()
+	{
+		return privateIsAnamorphic;
+	}
+	public final void setIsAnamorphic(Boolean value)
+	{
+		privateIsAnamorphic = value;
 	}
 }

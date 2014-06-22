@@ -56,6 +56,11 @@ public class ChannelInfoDto implements INotifyPropertyChanged, IItemDto
 		privateExternalId = value;
 	}
 
+	/** 
+	 Gets or sets the media sources.
+	 
+	 <value>The media sources.</value>
+	*/
 	private java.util.ArrayList<MediaSourceInfo> privateMediaSources;
 	public final java.util.ArrayList<MediaSourceInfo> getMediaSources()
 	{

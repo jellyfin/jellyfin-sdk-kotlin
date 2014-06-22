@@ -6,6 +6,15 @@ import MediaBrowser.Model.MediaInfo.*;
 
 public class MediaSourceInfo
 {
+	private MediaProtocol privateProtocol = MediaProtocol.values()[0];
+	public final MediaProtocol getProtocol()
+	{
+		return privateProtocol;
+	}
+	public final void setProtocol(MediaProtocol value)
+	{
+		privateProtocol = value;
+	}
 	private String privateId;
 	public final String getId()
 	{
@@ -53,16 +62,6 @@ public class MediaSourceInfo
 	public final void setSize(Long value)
 	{
 		privateSize = value;
-	}
-
-	private LocationType privateLocationType = getLocationType().values()[0];
-	public final LocationType getLocationType()
-	{
-		return privateLocationType;
-	}
-	public final void setLocationType(LocationType value)
-	{
-		privateLocationType = value;
 	}
 
 	private String privateName;
@@ -124,6 +123,15 @@ public class MediaSourceInfo
 	{
 		privateMediaStreams = value;
 	}
+	private java.util.ArrayList<String> privatePlayableStreamFileNames;
+	public final java.util.ArrayList<String> getPlayableStreamFileNames()
+	{
+		return privatePlayableStreamFileNames;
+	}
+	public final void setPlayableStreamFileNames(java.util.ArrayList<String> value)
+	{
+		privatePlayableStreamFileNames = value;
+	}
 
 	private java.util.ArrayList<String> privateFormats;
 	public final java.util.ArrayList<String> getFormats()
@@ -169,6 +177,7 @@ public class MediaSourceInfo
 		setFormats(new java.util.ArrayList<String>());
 		setMediaStreams(new java.util.ArrayList<MediaStream>());
 		setRequiredHttpHeaders(new java.util.HashMap<String, String>());
+		setPlayableStreamFileNames(new java.util.ArrayList<String>());
 	}
 
 	private Integer privateDefaultAudioStreamIndex = new Integer();

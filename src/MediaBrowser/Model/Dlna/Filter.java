@@ -27,6 +27,8 @@ public class Filter
 
 	public final boolean Contains(String field)
 	{
-		return _all || ListHelper.ContainsIgnoreCase(_fields, field);
+		// Don't bother with this. Some clients (media monkey) use the filter and then don't display very well when very little data comes back.
+		return true;
+		//return _all || ListHelper.ContainsIgnoreCase(_fields, field);
 	}
 }

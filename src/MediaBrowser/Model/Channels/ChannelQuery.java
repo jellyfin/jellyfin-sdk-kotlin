@@ -1,5 +1,7 @@
 package MediaBrowser.Model.Channels;
 
+import MediaBrowser.Model.Querying.*;
+
 public class ChannelQuery
 {
 	/** 
@@ -22,7 +24,7 @@ public class ChannelQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex;
+	private Integer privateStartIndex = new Integer();
 	public final Integer getStartIndex()
 	{
 		return privateStartIndex;
@@ -37,7 +39,7 @@ public class ChannelQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit;
+	private Integer privateLimit = new Integer();
 	public final Integer getLimit()
 	{
 		return privateLimit;
@@ -45,5 +47,20 @@ public class ChannelQuery
 	public final void setLimit(Integer value)
 	{
 		privateLimit = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether [supports latest items].
+	 
+	 <value><c>true</c> if [supports latest items]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean privateSupportsLatestItems = new Boolean();
+	public final Boolean getSupportsLatestItems()
+	{
+		return privateSupportsLatestItems;
+	}
+	public final void setSupportsLatestItems(Boolean value)
+	{
+		privateSupportsLatestItems = value;
 	}
 }

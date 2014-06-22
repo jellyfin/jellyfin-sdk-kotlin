@@ -21,4 +21,6 @@ public final class CollectionType
 	public static final String Books = "books";
 	public static final String Photos = "photos";
 	public static final String Games = "games";
+	public static final String Channels = "channels";
+	public static final String LiveTv = "livetv";
 }

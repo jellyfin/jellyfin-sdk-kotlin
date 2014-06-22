@@ -1,7 +1,14 @@
 package MediaBrowser.Model.Channels;
 
+import MediaBrowser.Model.Querying.*;
+
 public class AllChannelMediaQuery
 {
+	/** 
+	 Gets or sets the channel ids.
+	 
+	 <value>The channel ids.</value>
+	*/
 	private String[] privateChannelIds;
 	public final String[] getChannelIds()
 	{
@@ -32,7 +39,7 @@ public class AllChannelMediaQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex;
+	private Integer privateStartIndex = new Integer();
 	public final Integer getStartIndex()
 	{
 		return privateStartIndex;
@@ -47,7 +54,7 @@ public class AllChannelMediaQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit;
+	private Integer privateLimit = new Integer();
 	public final Integer getLimit()
 	{
 		return privateLimit;
@@ -77,5 +84,27 @@ public class AllChannelMediaQuery
 		setChannelIds(new String[] { });
 
 		setContentTypes(new ChannelMediaContentType[] { });
+
+		setFilters(new ItemFilter[] { });
+		setFields(new java.util.ArrayList<ItemFields>());
+	}
+
+	private ItemFilter[] privateFilters;
+	public final ItemFilter[] getFilters()
+	{
+		return privateFilters;
+	}
+	public final void setFilters(ItemFilter[] value)
+	{
+		privateFilters = value;
+	}
+	private java.util.ArrayList<ItemFields> privateFields;
+	public final java.util.ArrayList<ItemFields> getFields()
+	{
+		return privateFields;
+	}
+	public final void setFields(java.util.ArrayList<ItemFields> value)
+	{
+		privateFields = value;
 	}
 }

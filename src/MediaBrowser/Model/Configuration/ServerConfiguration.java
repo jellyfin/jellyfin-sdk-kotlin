@@ -492,34 +492,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		privateAllowVideoUpscaling = value;
 	}
 
-	private boolean privateEnableMovieChapterImageExtraction;
-	public final boolean getEnableMovieChapterImageExtraction()
-	{
-		return privateEnableMovieChapterImageExtraction;
-	}
-	public final void setEnableMovieChapterImageExtraction(boolean value)
-	{
-		privateEnableMovieChapterImageExtraction = value;
-	}
-	private boolean privateEnableEpisodeChapterImageExtraction;
-	public final boolean getEnableEpisodeChapterImageExtraction()
-	{
-		return privateEnableEpisodeChapterImageExtraction;
-	}
-	public final void setEnableEpisodeChapterImageExtraction(boolean value)
-	{
-		privateEnableEpisodeChapterImageExtraction = value;
-	}
-	private boolean privateEnableOtherVideoChapterImageExtraction;
-	public final boolean getEnableOtherVideoChapterImageExtraction()
-	{
-		return privateEnableOtherVideoChapterImageExtraction;
-	}
-	public final void setEnableOtherVideoChapterImageExtraction(boolean value)
-	{
-		privateEnableOtherVideoChapterImageExtraction = value;
-	}
-
 	private MetadataOptions[] privateMetadataOptions;
 	public final MetadataOptions[] getMetadataOptions()
 	{
@@ -689,6 +661,15 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		privateChannelOptions = value;
 	}
+	private ChapterOptions privateChapterOptions;
+	public final ChapterOptions getChapterOptions()
+	{
+		return privateChapterOptions;
+	}
+	public final void setChapterOptions(ChapterOptions value)
+	{
+		privateChapterOptions = value;
+	}
 
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
@@ -703,9 +684,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setEnableHttpLevelLogging(true);
 		setEnableDashboardResponseCaching(true);
 
-		setEnableMovieChapterImageExtraction(true);
-		setEnableEpisodeChapterImageExtraction(false);
-		setEnableOtherVideoChapterImageExtraction(false);
 		setEnableAutomaticRestart(true);
 		setEnablePeoplePrefixSubFolders(true);
 
@@ -761,5 +739,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setSubtitleOptions(new SubtitleOptions());
 
 		setChannelOptions(new ChannelOptions());
+		setChapterOptions(new ChapterOptions());
 	}
 }

@@ -48,6 +48,21 @@ public class RemoteChapterResult
 	}
 
 	/** 
+	 Gets or sets the name of the provider.
+	 
+	 <value>The name of the provider.</value>
+	*/
+	private String privateProviderName;
+	public final String getProviderName()
+	{
+		return privateProviderName;
+	}
+	public final void setProviderName(String value)
+	{
+		privateProviderName = value;
+	}
+
+	/** 
 	 Gets or sets the community rating.
 	 
 	 <value>The community rating.</value>

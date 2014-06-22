@@ -56,14 +56,16 @@ public class StreamBuilder
 			// Avoid implicitly captured closure
 			String mediaSourceId = options.getMediaSourceId();
 
-			mediaSources = new java.util.ArrayList<MediaSourceInfo>();
+			java.util.ArrayList<MediaSourceInfo> newMediaSources = new java.util.ArrayList<MediaSourceInfo>();
 			for (MediaSourceInfo i : mediaSources)
 			{
 				if (StringHelper.EqualsIgnoreCase(i.getId(), mediaSourceId))
 				{
-					mediaSources.add(i);
+					newMediaSources.add(i);
 				}
 			}
+
+			mediaSources = newMediaSources;
 		}
 
 		java.util.ArrayList<StreamInfo> streams = new java.util.ArrayList<StreamInfo>();
@@ -385,6 +387,7 @@ public class StreamBuilder
 		String videoProfile = videoStream == null ? null : videoStream.getProfile();
 		Float tempVar = videoStream.getAverageFrameRate();
 		Float videoFramerate = videoStream == null ? null : (tempVar != null) ? tempVar : videoStream.getAverageFrameRate();
+		Boolean isAnamorphic = videoStream == null ? null : videoStream.getIsAnamorphic();
 
 		Integer audioBitrate = audioStream == null ? null : audioStream.getBitRate();
 		Integer audioChannels = audioStream == null ? null : audioStream.getChannels();
@@ -396,7 +399,7 @@ public class StreamBuilder
 		// Check container conditions
 		for (ProfileCondition i : conditions)
 		{
-			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp))
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic))
 			{
 				return null;
 			}
@@ -420,7 +423,7 @@ public class StreamBuilder
 
 		for (ProfileCondition i : conditions)
 		{
-			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp))
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic))
 			{
 				return null;
 			}
@@ -545,6 +548,7 @@ public class StreamBuilder
 						break;
 				}
 				case AudioProfile:
+				case IsAnamorphic:
 				case Has64BitOffsets:
 				case PacketLength:
 				case VideoTimestamp:

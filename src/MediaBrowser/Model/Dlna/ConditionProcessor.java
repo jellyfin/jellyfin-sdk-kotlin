@@ -5,7 +5,7 @@ import MediaBrowser.Model.MediaInfo.*;
 
 public class ConditionProcessor
 {
-	public final boolean IsVideoConditionSatisfied(ProfileCondition condition, Integer audioBitrate, Integer audioChannels, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Double videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp)
+	public final boolean IsVideoConditionSatisfied(ProfileCondition condition, Integer audioBitrate, Integer audioChannels, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Double videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic)
 	{
 		switch (condition.getProperty())
 		{
@@ -15,6 +15,8 @@ public class ConditionProcessor
 			case Has64BitOffsets:
 				// TODO: Implement
 				return true;
+			case IsAnamorphic:
+				return IsConditionSatisfied(condition, isAnamorphic);
 			case VideoFramerate:
 				return IsConditionSatisfied(condition, videoFramerate);
 			case VideoLevel:
@@ -134,6 +136,34 @@ public class ConditionProcessor
 			default:
 				throw new UnsupportedOperationException("Unexpected ProfileConditionType");
 		}
+	}
+
+	private boolean IsConditionSatisfied(ProfileCondition condition, Boolean currentValue)
+	{
+		if (currentValue == null)
+		{
+			// If the value is unknown, it satisfies if not marked as required
+			return !condition.getIsRequired();
+		}
+
+		boolean expected = false;
+		tangible.RefObject<Boolean> tempRef_expected = new tangible.RefObject<Boolean>(expected);
+		boolean tempVar = BoolHelper.TryParseCultureInvariant(condition.getValue(), tempRef_expected);
+			expected = tempRef_expected.argValue;
+		if (tempVar)
+		{
+			switch (condition.getCondition())
+			{
+				case Equals:
+					return currentValue == expected;
+				case NotEquals:
+					return currentValue != expected;
+				default:
+					throw new UnsupportedOperationException("Unexpected ProfileConditionType");
+			}
+		}
+
+		return false;
 	}
 
 	private boolean IsConditionSatisfied(ProfileCondition condition, Double currentValue)

@@ -461,6 +461,16 @@ public class StreamInfo
 		return ((tempVar != null) ? tempVar : 0) + ((tempVar2 != null) ? tempVar2 : 0);
 	}
 
+	public final Boolean getIsTargetAnamorphic()
+	{
+		if (getIsDirectStream())
+		{
+			return getTargetVideoStream() == null ? null : getTargetVideoStream().getIsAnamorphic();
+		}
+
+		return false;
+	}
+
 	public final Integer getTargetWidth()
 	{
 		MediaStream videoStream = getTargetVideoStream();
