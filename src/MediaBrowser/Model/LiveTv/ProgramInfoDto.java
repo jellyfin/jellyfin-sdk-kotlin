@@ -26,7 +26,7 @@ public class ProgramInfoDto implements INotifyPropertyChanged, IItemDto
 	 
 	 <value>The primary image aspect ratio.</value>
 	*/
-	private Double privatePrimaryImageAspectRatio = new Double();
+	private Double privatePrimaryImageAspectRatio = null;
 	public final Double getPrimaryImageAspectRatio()
 	{
 		return privatePrimaryImageAspectRatio;
@@ -41,7 +41,7 @@ public class ProgramInfoDto implements INotifyPropertyChanged, IItemDto
 	 
 	 <value>The original primary image aspect ratio.</value>
 	*/
-	private Double privateOriginalPrimaryImageAspectRatio = new Double();
+	private Double privateOriginalPrimaryImageAspectRatio = null;
 	public final Double getOriginalPrimaryImageAspectRatio()
 	{
 		return privateOriginalPrimaryImageAspectRatio;
@@ -176,7 +176,7 @@ public class ProgramInfoDto implements INotifyPropertyChanged, IItemDto
 	 
 	 <value>The community rating.</value>
 	*/
-	private Float privateCommunityRating = new Float();
+	private Float privateCommunityRating = null;
 	public final Float getCommunityRating()
 	{
 		return privateCommunityRating;
@@ -286,7 +286,7 @@ public class ProgramInfoDto implements INotifyPropertyChanged, IItemDto
 	 
 	 <value><c>true</c> if this instance is hd; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsHD = new Boolean();
+	private Boolean privateIsHD = null;
 	public final Boolean getIsHD()
 	{
 		return privateIsHD;
@@ -301,7 +301,7 @@ public class ProgramInfoDto implements INotifyPropertyChanged, IItemDto
 	 
 	 <value>The audio.</value>
 	*/
-	private ProgramAudio privateAudio = new ProgramAudio();
+	private ProgramAudio privateAudio = null;
 	public final ProgramAudio getAudio()
 	{
 		return privateAudio;
@@ -316,7 +316,7 @@ public class ProgramInfoDto implements INotifyPropertyChanged, IItemDto
 	 
 	 <value>The original air date.</value>
 	*/
-	private java.util.Date privateOriginalAirDate = new java.util.Date();
+	private java.util.Date privateOriginalAirDate = null;
 	public final java.util.Date getOriginalAirDate()
 	{
 		return privateOriginalAirDate;
@@ -466,7 +466,7 @@ public class ProgramInfoDto implements INotifyPropertyChanged, IItemDto
 	 
 	 <value>The run time ticks.</value>
 	*/
-	private Long privateRunTimeTicks = new Long();
+	private Long privateRunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{
 		return privateRunTimeTicks;

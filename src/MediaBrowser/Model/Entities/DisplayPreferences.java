@@ -220,7 +220,7 @@ public class DisplayPreferences implements INotifyPropertyChanged
 	{
 		double newWidth = getPrimaryImageWidth() / ImageScale;
 
-		ImageSize size = DrawingUtils.Resize(getPrimaryImageWidth(), getPrimaryImageHeight(), newWidth, new Double(), new Double(), new Double());
+		ImageSize size = DrawingUtils.Resize(getPrimaryImageWidth(), getPrimaryImageHeight(), newWidth, null, null, null);
 
 		setPrimaryImageWidth((int)size.getWidth());
 		setPrimaryImageHeight((int)size.getHeight());

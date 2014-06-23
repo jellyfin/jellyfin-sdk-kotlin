@@ -10,7 +10,7 @@ public class HttpException extends RuntimeException
 	 
 	 <value>The status code.</value>
 	*/
-	private HttpStatusCode privateStatusCode = new HttpStatusCode();
+	private HttpStatusCode privateStatusCode = null;
 	public final HttpStatusCode getStatusCode()
 	{
 		return privateStatusCode;

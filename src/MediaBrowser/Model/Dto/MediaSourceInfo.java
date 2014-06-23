@@ -54,7 +54,7 @@ public class MediaSourceInfo
 	{
 		privateContainer = value;
 	}
-	private Long privateSize = new Long();
+	private Long privateSize = null;
 	public final Long getSize()
 	{
 		return privateSize;
@@ -74,7 +74,7 @@ public class MediaSourceInfo
 		privateName = value;
 	}
 
-	private Long privateRunTimeTicks = new Long();
+	private Long privateRunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{
 		return privateRunTimeTicks;
@@ -84,7 +84,7 @@ public class MediaSourceInfo
 		privateRunTimeTicks = value;
 	}
 
-	private VideoType privateVideoType = new VideoType();
+	private VideoType privateVideoType = null;
 	public final VideoType getVideoType()
 	{
 		return privateVideoType;
@@ -94,7 +94,7 @@ public class MediaSourceInfo
 		privateVideoType = value;
 	}
 
-	private IsoType privateIsoType = new IsoType();
+	private IsoType privateIsoType = null;
 	public final IsoType getIsoType()
 	{
 		return privateIsoType;
@@ -104,7 +104,7 @@ public class MediaSourceInfo
 		privateIsoType = value;
 	}
 
-	private Video3DFormat privateVideo3DFormat = new Video3DFormat();
+	private Video3DFormat privateVideo3DFormat = null;
 	public final Video3DFormat getVideo3DFormat()
 	{
 		return privateVideo3DFormat;
@@ -143,7 +143,7 @@ public class MediaSourceInfo
 		privateFormats = value;
 	}
 
-	private Integer privateBitrate = new Integer();
+	private Integer privateBitrate = null;
 	public final Integer getBitrate()
 	{
 		return privateBitrate;
@@ -153,7 +153,7 @@ public class MediaSourceInfo
 		privateBitrate = value;
 	}
 
-	private TransportStreamTimestamp privateTimestamp = new TransportStreamTimestamp();
+	private TransportStreamTimestamp privateTimestamp = null;
 	public final TransportStreamTimestamp getTimestamp()
 	{
 		return privateTimestamp;
@@ -180,7 +180,7 @@ public class MediaSourceInfo
 		setPlayableStreamFileNames(new java.util.ArrayList<String>());
 	}
 
-	private Integer privateDefaultAudioStreamIndex = new Integer();
+	private Integer privateDefaultAudioStreamIndex = null;
 	public final Integer getDefaultAudioStreamIndex()
 	{
 		return privateDefaultAudioStreamIndex;
@@ -189,7 +189,7 @@ public class MediaSourceInfo
 	{
 		privateDefaultAudioStreamIndex = value;
 	}
-	private Integer privateDefaultSubtitleStreamIndex = new Integer();
+	private Integer privateDefaultSubtitleStreamIndex = null;
 	public final Integer getDefaultSubtitleStreamIndex()
 	{
 		return privateDefaultSubtitleStreamIndex;

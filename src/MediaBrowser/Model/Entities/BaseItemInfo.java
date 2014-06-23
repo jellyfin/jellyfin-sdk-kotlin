@@ -74,7 +74,7 @@ public class BaseItemInfo
 	 
 	 <value>The run time ticks.</value>
 	*/
-	private Long privateRunTimeTicks = new Long();
+	private Long privateRunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{
 		return privateRunTimeTicks;
@@ -209,7 +209,7 @@ public class BaseItemInfo
 	 
 	 <value>The premiere date.</value>
 	*/
-	private java.util.Date privatePremiereDate = new java.util.Date();
+	private java.util.Date privatePremiereDate = null;
 	public final java.util.Date getPremiereDate()
 	{
 		return privatePremiereDate;
@@ -224,7 +224,7 @@ public class BaseItemInfo
 	 
 	 <value>The production year.</value>
 	*/
-	private Integer privateProductionYear = new Integer();
+	private Integer privateProductionYear = null;
 	public final Integer getProductionYear()
 	{
 		return privateProductionYear;
@@ -239,7 +239,7 @@ public class BaseItemInfo
 	 
 	 <value>The index number.</value>
 	*/
-	private Integer privateIndexNumber = new Integer();
+	private Integer privateIndexNumber = null;
 	public final Integer getIndexNumber()
 	{
 		return privateIndexNumber;
@@ -254,7 +254,7 @@ public class BaseItemInfo
 	 
 	 <value>The index number end.</value>
 	*/
-	private Integer privateIndexNumberEnd = new Integer();
+	private Integer privateIndexNumberEnd = null;
 	public final Integer getIndexNumberEnd()
 	{
 		return privateIndexNumberEnd;
@@ -269,7 +269,7 @@ public class BaseItemInfo
 	 
 	 <value>The parent index number.</value>
 	*/
-	private Integer privateParentIndexNumber = new Integer();
+	private Integer privateParentIndexNumber = null;
 	public final Integer getParentIndexNumber()
 	{
 		return privateParentIndexNumber;

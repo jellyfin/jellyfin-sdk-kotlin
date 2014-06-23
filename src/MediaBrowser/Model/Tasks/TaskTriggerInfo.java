@@ -25,7 +25,7 @@ public class TaskTriggerInfo
 	 
 	 <value>The time of day.</value>
 	*/
-	private Long privateTimeOfDayTicks = new Long();
+	private Long privateTimeOfDayTicks = null;
 	public final Long getTimeOfDayTicks()
 	{
 		return privateTimeOfDayTicks;
@@ -40,7 +40,7 @@ public class TaskTriggerInfo
 	 
 	 <value>The interval.</value>
 	*/
-	private Long privateIntervalTicks = new Long();
+	private Long privateIntervalTicks = null;
 	public final Long getIntervalTicks()
 	{
 		return privateIntervalTicks;
@@ -55,7 +55,7 @@ public class TaskTriggerInfo
 	 
 	 <value>The system event.</value>
 	*/
-	private SystemEvent privateSystemEvent = new SystemEvent();
+	private SystemEvent privateSystemEvent = null;
 	public final SystemEvent getSystemEvent()
 	{
 		return privateSystemEvent;
@@ -70,7 +70,7 @@ public class TaskTriggerInfo
 	 
 	 <value>The day of week.</value>
 	*/
-	private DayOfWeek privateDayOfWeek = new DayOfWeek();
+	private DayOfWeek privateDayOfWeek = null;
 	public final DayOfWeek getDayOfWeek()
 	{
 		return privateDayOfWeek;

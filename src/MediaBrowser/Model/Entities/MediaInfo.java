@@ -32,7 +32,7 @@ public class MediaInfo
 		privateFormat = value;
 	}
 
-	private Integer privateTotalBitrate = new Integer();
+	private Integer privateTotalBitrate = null;
 	public final Integer getTotalBitrate()
 	{
 		return privateTotalBitrate;

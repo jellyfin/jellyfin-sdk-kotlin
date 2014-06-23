@@ -67,7 +67,7 @@ public class FileOrganizationResult
 	 
 	 <value>The extracted year.</value>
 	*/
-	private Integer privateExtractedYear = new Integer();
+	private Integer privateExtractedYear = null;
 	public final Integer getExtractedYear()
 	{
 		return privateExtractedYear;
@@ -82,7 +82,7 @@ public class FileOrganizationResult
 	 
 	 <value>The extracted season number.</value>
 	*/
-	private Integer privateExtractedSeasonNumber = new Integer();
+	private Integer privateExtractedSeasonNumber = null;
 	public final Integer getExtractedSeasonNumber()
 	{
 		return privateExtractedSeasonNumber;
@@ -97,7 +97,7 @@ public class FileOrganizationResult
 	 
 	 <value>The extracted episode number.</value>
 	*/
-	private Integer privateExtractedEpisodeNumber = new Integer();
+	private Integer privateExtractedEpisodeNumber = null;
 	public final Integer getExtractedEpisodeNumber()
 	{
 		return privateExtractedEpisodeNumber;
@@ -112,7 +112,7 @@ public class FileOrganizationResult
 	 
 	 <value>The extracted ending episode number.</value>
 	*/
-	private Integer privateExtractedEndingEpisodeNumber = new Integer();
+	private Integer privateExtractedEndingEpisodeNumber = null;
 	public final Integer getExtractedEndingEpisodeNumber()
 	{
 		return privateExtractedEndingEpisodeNumber;

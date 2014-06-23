@@ -62,7 +62,7 @@ public class AudioOptions
 	 Allows an override of supported number of audio channels
 	 Example: DeviceProfile supports five channel, but user only has stereo speakers
 	*/
-	private Integer privateMaxAudioChannels = new Integer();
+	private Integer privateMaxAudioChannels = null;
 	public final Integer getMaxAudioChannels()
 	{
 		return privateMaxAudioChannels;
@@ -75,7 +75,7 @@ public class AudioOptions
 	/** 
 	 The application's configured quality setting
 	*/
-	private Integer privateMaxBitrate = new Integer();
+	private Integer privateMaxBitrate = null;
 	public final Integer getMaxBitrate()
 	{
 		return privateMaxBitrate;

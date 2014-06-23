@@ -24,7 +24,7 @@ public class ChannelQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex = new Integer();
+	private Integer privateStartIndex = null;
 	public final Integer getStartIndex()
 	{
 		return privateStartIndex;
@@ -39,7 +39,7 @@ public class ChannelQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit = new Integer();
+	private Integer privateLimit = null;
 	public final Integer getLimit()
 	{
 		return privateLimit;
@@ -54,7 +54,7 @@ public class ChannelQuery
 	 
 	 <value><c>true</c> if [supports latest items]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateSupportsLatestItems = new Boolean();
+	private Boolean privateSupportsLatestItems = null;
 	public final Boolean getSupportsLatestItems()
 	{
 		return privateSupportsLatestItems;

@@ -85,7 +85,7 @@ public class InstallationInfo
 	 
 	 <value>The percent complete.</value>
 	*/
-	private Double privatePercentComplete = new Double();
+	private Double privatePercentComplete = null;
 	public final Double getPercentComplete()
 	{
 		return privatePercentComplete;

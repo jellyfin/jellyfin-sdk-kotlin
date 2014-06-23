@@ -55,7 +55,7 @@ public class ChannelItemQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex = new Integer();
+	private Integer privateStartIndex = null;
 	public final Integer getStartIndex()
 	{
 		return privateStartIndex;
@@ -70,7 +70,7 @@ public class ChannelItemQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit = new Integer();
+	private Integer privateLimit = null;
 	public final Integer getLimit()
 	{
 		return privateLimit;
@@ -80,7 +80,7 @@ public class ChannelItemQuery
 		privateLimit = value;
 	}
 
-	private SortOrder privateSortOrder = new SortOrder();
+	private SortOrder privateSortOrder = null;
 	public final SortOrder getSortOrder()
 	{
 		return privateSortOrder;

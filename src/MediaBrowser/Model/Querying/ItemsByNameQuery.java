@@ -225,7 +225,8 @@ public class ItemsByNameQuery
 	{
 		privateNameStartsWith = value;
 	}
-	/** Gets or sets the name less than.
+	/** 
+	 Gets or sets the name less than.
 	 
 	 <value>The name less than.</value>
 	*/

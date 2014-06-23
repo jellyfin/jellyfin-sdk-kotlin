@@ -65,7 +65,7 @@ public class RemoteSubtitleInfo
 	{
 		privateComment = value;
 	}
-	private java.util.Date privateDateCreated = new java.util.Date();
+	private java.util.Date privateDateCreated = null;
 	public final java.util.Date getDateCreated()
 	{
 		return privateDateCreated;
@@ -74,7 +74,7 @@ public class RemoteSubtitleInfo
 	{
 		privateDateCreated = value;
 	}
-	private Float privateCommunityRating = new Float();
+	private Float privateCommunityRating = null;
 	public final Float getCommunityRating()
 	{
 		return privateCommunityRating;
@@ -83,7 +83,7 @@ public class RemoteSubtitleInfo
 	{
 		privateCommunityRating = value;
 	}
-	private Integer privateDownloadCount = new Integer();
+	private Integer privateDownloadCount = null;
 	public final Integer getDownloadCount()
 	{
 		return privateDownloadCount;
@@ -92,7 +92,7 @@ public class RemoteSubtitleInfo
 	{
 		privateDownloadCount = value;
 	}
-	private Boolean privateIsHashMatch = new Boolean();
+	private Boolean privateIsHashMatch = null;
 	public final Boolean getIsHashMatch()
 	{
 		return privateIsHashMatch;

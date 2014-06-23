@@ -80,7 +80,7 @@ public class ChannelFeatures
 	/** 
 	 Represents the maximum number of records the channel allows retrieving at a time
 	*/
-	private Integer privateMaxPageSize = new Integer();
+	private Integer privateMaxPageSize = null;
 	public final Integer getMaxPageSize()
 	{
 		return privateMaxPageSize;

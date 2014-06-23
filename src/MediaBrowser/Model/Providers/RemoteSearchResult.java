@@ -37,7 +37,7 @@ public class RemoteSearchResult implements IHasProviderIds
 	 
 	 <value>The year.</value>
 	*/
-	private Integer privateProductionYear = new Integer();
+	private Integer privateProductionYear = null;
 	public final Integer getProductionYear()
 	{
 		return privateProductionYear;
@@ -46,7 +46,7 @@ public class RemoteSearchResult implements IHasProviderIds
 	{
 		privateProductionYear = value;
 	}
-	private Integer privateIndexNumber = new Integer();
+	private Integer privateIndexNumber = null;
 	public final Integer getIndexNumber()
 	{
 		return privateIndexNumber;
@@ -55,7 +55,7 @@ public class RemoteSearchResult implements IHasProviderIds
 	{
 		privateIndexNumber = value;
 	}
-	private Integer privateIndexNumberEnd = new Integer();
+	private Integer privateIndexNumberEnd = null;
 	public final Integer getIndexNumberEnd()
 	{
 		return privateIndexNumberEnd;
@@ -64,7 +64,7 @@ public class RemoteSearchResult implements IHasProviderIds
 	{
 		privateIndexNumberEnd = value;
 	}
-	private Integer privateParentIndexNumber = new Integer();
+	private Integer privateParentIndexNumber = null;
 	public final Integer getParentIndexNumber()
 	{
 		return privateParentIndexNumber;
@@ -74,7 +74,7 @@ public class RemoteSearchResult implements IHasProviderIds
 		privateParentIndexNumber = value;
 	}
 
-	private java.util.Date privatePremiereDate = new java.util.Date();
+	private java.util.Date privatePremiereDate = null;
 	public final java.util.Date getPremiereDate()
 	{
 		return privatePremiereDate;

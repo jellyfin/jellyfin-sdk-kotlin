@@ -35,7 +35,7 @@ public class ProgramQuery
 		privateUserId = value;
 	}
 
-	private java.util.Date privateMinStartDate = new java.util.Date();
+	private java.util.Date privateMinStartDate = null;
 	public final java.util.Date getMinStartDate()
 	{
 		return privateMinStartDate;
@@ -45,7 +45,7 @@ public class ProgramQuery
 		privateMinStartDate = value;
 	}
 
-	private java.util.Date privateMaxStartDate = new java.util.Date();
+	private java.util.Date privateMaxStartDate = null;
 	public final java.util.Date getMaxStartDate()
 	{
 		return privateMaxStartDate;
@@ -55,7 +55,7 @@ public class ProgramQuery
 		privateMaxStartDate = value;
 	}
 
-	private java.util.Date privateMinEndDate = new java.util.Date();
+	private java.util.Date privateMinEndDate = null;
 	public final java.util.Date getMinEndDate()
 	{
 		return privateMinEndDate;
@@ -65,7 +65,7 @@ public class ProgramQuery
 		privateMinEndDate = value;
 	}
 
-	private java.util.Date privateMaxEndDate = new java.util.Date();
+	private java.util.Date privateMaxEndDate = null;
 	public final java.util.Date getMaxEndDate()
 	{
 		return privateMaxEndDate;

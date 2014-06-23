@@ -48,7 +48,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The date created.</value>
 	*/
-	private java.util.Date privateDateCreated = new java.util.Date();
+	private java.util.Date privateDateCreated = null;
 	public final java.util.Date getDateCreated()
 	{
 		return privateDateCreated;
@@ -58,7 +58,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 		privateDateCreated = value;
 	}
 
-	private java.util.Date privateDateLastMediaAdded = new java.util.Date();
+	private java.util.Date privateDateLastMediaAdded = null;
 	public final java.util.Date getDateLastMediaAdded()
 	{
 		return privateDateLastMediaAdded;
@@ -68,7 +68,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 		privateDateLastMediaAdded = value;
 	}
 
-	private Integer privateAirsBeforeSeasonNumber = new Integer();
+	private Integer privateAirsBeforeSeasonNumber = null;
 	public final Integer getAirsBeforeSeasonNumber()
 	{
 		return privateAirsBeforeSeasonNumber;
@@ -77,7 +77,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	{
 		privateAirsBeforeSeasonNumber = value;
 	}
-	private Integer privateAirsAfterSeasonNumber = new Integer();
+	private Integer privateAirsAfterSeasonNumber = null;
 	public final Integer getAirsAfterSeasonNumber()
 	{
 		return privateAirsAfterSeasonNumber;
@@ -86,7 +86,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	{
 		privateAirsAfterSeasonNumber = value;
 	}
-	private Integer privateAirsBeforeEpisodeNumber = new Integer();
+	private Integer privateAirsBeforeEpisodeNumber = null;
 	public final Integer getAirsBeforeEpisodeNumber()
 	{
 		return privateAirsBeforeEpisodeNumber;
@@ -95,7 +95,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	{
 		privateAirsBeforeEpisodeNumber = value;
 	}
-	private Integer privateAbsoluteEpisodeNumber = new Integer();
+	private Integer privateAbsoluteEpisodeNumber = null;
 	public final Integer getAbsoluteEpisodeNumber()
 	{
 		return privateAbsoluteEpisodeNumber;
@@ -104,7 +104,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	{
 		privateAbsoluteEpisodeNumber = value;
 	}
-	private Boolean privateDisplaySpecialsWithSeasons = new Boolean();
+	private Boolean privateDisplaySpecialsWithSeasons = null;
 	public final Boolean getDisplaySpecialsWithSeasons()
 	{
 		return privateDisplaySpecialsWithSeasons;
@@ -143,7 +143,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 		privateAwardSummary = value;
 	}
 
-	private Float privateMetascore = new Float();
+	private Float privateMetascore = null;
 	public final Float getMetascore()
 	{
 		return privateMetascore;
@@ -163,7 +163,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 		privateIsUnidentified = value;
 	}
 
-	private Integer privateAnimeSeriesIndex = new Integer();
+	private Integer privateAnimeSeriesIndex = null;
 	public final Integer getAnimeSeriesIndex()
 	{
 		return privateAnimeSeriesIndex;
@@ -178,7 +178,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The DVD season number.</value>
 	*/
-	private Integer privateDvdSeasonNumber = new Integer();
+	private Integer privateDvdSeasonNumber = null;
 	public final Integer getDvdSeasonNumber()
 	{
 		return privateDvdSeasonNumber;
@@ -192,7 +192,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The DVD episode number.</value>
 	*/
-	private Float privateDvdEpisodeNumber = new Float();
+	private Float privateDvdEpisodeNumber = null;
 	public final Float getDvdEpisodeNumber()
 	{
 		return privateDvdEpisodeNumber;
@@ -231,7 +231,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The video3 D format.</value>
 	*/
-	private Video3DFormat privateVideo3DFormat = new Video3DFormat();
+	private Video3DFormat privateVideo3DFormat = null;
 	public final Video3DFormat getVideo3DFormat()
 	{
 		return privateVideo3DFormat;
@@ -246,7 +246,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The premiere date.</value>
 	*/
-	private java.util.Date privatePremiereDate = new java.util.Date();
+	private java.util.Date privatePremiereDate = null;
 	public final java.util.Date getPremiereDate()
 	{
 		return privatePremiereDate;
@@ -291,7 +291,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The critic rating.</value>
 	*/
-	private Float privateCriticRating = new Float();
+	private Float privateCriticRating = null;
 	public final Float getCriticRating()
 	{
 		return privateCriticRating;
@@ -475,7 +475,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The community rating.</value>
 	*/
-	private Float privateCommunityRating = new Float();
+	private Float privateCommunityRating = null;
 	public final Float getCommunityRating()
 	{
 		return privateCommunityRating;
@@ -490,7 +490,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The vote count.</value>
 	*/
-	private Integer privateVoteCount = new Integer();
+	private Integer privateVoteCount = null;
 	public final Integer getVoteCount()
 	{
 		return privateVoteCount;
@@ -505,7 +505,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The cumulative run time ticks.</value>
 	*/
-	private Long privateCumulativeRunTimeTicks = new Long();
+	private Long privateCumulativeRunTimeTicks = null;
 	public final Long getCumulativeRunTimeTicks()
 	{
 		return privateCumulativeRunTimeTicks;
@@ -520,7 +520,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The original run time ticks.</value>
 	*/
-	private Long privateOriginalRunTimeTicks = new Long();
+	private Long privateOriginalRunTimeTicks = null;
 	public final Long getOriginalRunTimeTicks()
 	{
 		return privateOriginalRunTimeTicks;
@@ -535,7 +535,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The run time ticks.</value>
 	*/
-	private Long privateRunTimeTicks = new Long();
+	private Long privateRunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{
 		return privateRunTimeTicks;
@@ -580,7 +580,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The production year.</value>
 	*/
-	private Integer privateProductionYear = new Integer();
+	private Integer privateProductionYear = null;
 	public final Integer getProductionYear()
 	{
 		return privateProductionYear;
@@ -595,7 +595,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The season count.</value>
 	*/
-	private Integer privateSeasonCount = new Integer();
+	private Integer privateSeasonCount = null;
 	public final Integer getSeasonCount()
 	{
 		return privateSeasonCount;
@@ -610,7 +610,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The players.</value>
 	*/
-	private Integer privatePlayers = new Integer();
+	private Integer privatePlayers = null;
 	public final Integer getPlayers()
 	{
 		return privatePlayers;
@@ -625,7 +625,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value><c>null</c> if [is place holder] contains no value, <c>true</c> if [is place holder]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsPlaceHolder = new Boolean();
+	private Boolean privateIsPlaceHolder = null;
 	public final Boolean getIsPlaceHolder()
 	{
 		return privateIsPlaceHolder;
@@ -640,7 +640,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The index number.</value>
 	*/
-	private Integer privateIndexNumber = new Integer();
+	private Integer privateIndexNumber = null;
 	public final Integer getIndexNumber()
 	{
 		return privateIndexNumber;
@@ -655,7 +655,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The index number end.</value>
 	*/
-	private Integer privateIndexNumberEnd = new Integer();
+	private Integer privateIndexNumberEnd = null;
 	public final Integer getIndexNumberEnd()
 	{
 		return privateIndexNumberEnd;
@@ -670,7 +670,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The parent index number.</value>
 	*/
-	private Integer privateParentIndexNumber = new Integer();
+	private Integer privateParentIndexNumber = null;
 	public final Integer getParentIndexNumber()
 	{
 		return privateParentIndexNumber;
@@ -730,7 +730,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value><c>null</c> if [is HD] contains no value, <c>true</c> if [is HD]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsHD = new Boolean();
+	private Boolean privateIsHD = null;
 	public final Boolean getIsHD()
 	{
 		return privateIsHD;
@@ -865,7 +865,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The local trailer count.</value>
 	*/
-	private Integer privateLocalTrailerCount = new Integer();
+	private Integer privateLocalTrailerCount = null;
 	public final Integer getLocalTrailerCount()
 	{
 		return privateLocalTrailerCount;
@@ -895,7 +895,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The played percentage.</value>
 	*/
-	private Double privatePlayedPercentage = new Double();
+	private Double privatePlayedPercentage = null;
 	public final Double getPlayedPercentage()
 	{
 		return privatePlayedPercentage;
@@ -910,7 +910,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The recursive item count.</value>
 	*/
-	private Integer privateRecursiveItemCount = new Integer();
+	private Integer privateRecursiveItemCount = null;
 	public final Integer getRecursiveItemCount()
 	{
 		return privateRecursiveItemCount;
@@ -925,7 +925,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The recursive unplayed item count.</value>
 	*/
-	private Integer privateRecursiveUnplayedItemCount = new Integer();
+	private Integer privateRecursiveUnplayedItemCount = null;
 	public final Integer getRecursiveUnplayedItemCount()
 	{
 		return privateRecursiveUnplayedItemCount;
@@ -940,7 +940,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The child count.</value>
 	*/
-	private Integer privateChildCount = new Integer();
+	private Integer privateChildCount = null;
 	public final Integer getChildCount()
 	{
 		return privateChildCount;
@@ -1000,7 +1000,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The special feature count.</value>
 	*/
-	private Integer privateSpecialFeatureCount = new Integer();
+	private Integer privateSpecialFeatureCount = null;
 	public final Integer getSpecialFeatureCount()
 	{
 		return privateSpecialFeatureCount;
@@ -1030,7 +1030,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The status.</value>
 	*/
-	private SeriesStatus privateStatus = new SeriesStatus();
+	private SeriesStatus privateStatus = null;
 	public final SeriesStatus getStatus()
 	{
 		return privateStatus;
@@ -1120,7 +1120,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The primary image aspect ratio.</value>
 	*/
-	private Double privatePrimaryImageAspectRatio = new Double();
+	private Double privatePrimaryImageAspectRatio = null;
 	public final Double getPrimaryImageAspectRatio()
 	{
 		return privatePrimaryImageAspectRatio;
@@ -1135,7 +1135,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The original primary image aspect ratio.</value>
 	*/
-	private Double privateOriginalPrimaryImageAspectRatio = new Double();
+	private Double privateOriginalPrimaryImageAspectRatio = null;
 	public final Double getOriginalPrimaryImageAspectRatio()
 	{
 		return privateOriginalPrimaryImageAspectRatio;
@@ -1284,7 +1284,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The type of the video.</value>
 	*/
-	private VideoType privateVideoType = new VideoType();
+	private VideoType privateVideoType = null;
 	public final VideoType getVideoType()
 	{
 		return privateVideoType;
@@ -1314,7 +1314,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The part count.</value>
 	*/
-	private Integer privatePartCount = new Integer();
+	private Integer privatePartCount = null;
 	public final Integer getPartCount()
 	{
 		return privatePartCount;
@@ -1323,7 +1323,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	{
 		privatePartCount = value;
 	}
-	private Integer privateMediaSourceCount = new Integer();
+	private Integer privateMediaSourceCount = null;
 	public final Integer getMediaSourceCount()
 	{
 		return privateMediaSourceCount;
@@ -1540,7 +1540,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The type of the iso.</value>
 	*/
-	private IsoType privateIsoType = new IsoType();
+	private IsoType privateIsoType = null;
 	public final IsoType getIsoType()
 	{
 		return privateIsoType;
@@ -1585,7 +1585,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The end date.</value>
 	*/
-	private java.util.Date privateEndDate = new java.util.Date();
+	private java.util.Date privateEndDate = null;
 	public final java.util.Date getEndDate()
 	{
 		return privateEndDate;
@@ -1630,7 +1630,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The budget.</value>
 	*/
-	private Double privateBudget = new Double();
+	private Double privateBudget = null;
 	public final Double getBudget()
 	{
 		return privateBudget;
@@ -1645,7 +1645,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The revenue.</value>
 	*/
-	private Double privateRevenue = new Double();
+	private Double privateRevenue = null;
 	public final Double getRevenue()
 	{
 		return privateRevenue;
@@ -1670,7 +1670,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 		privateLockedFields = value;
 	}
 
-	private Integer privateAdultVideoCount = new Integer();
+	private Integer privateAdultVideoCount = null;
 	public final Integer getAdultVideoCount()
 	{
 		return privateAdultVideoCount;
@@ -1684,7 +1684,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The movie count.</value>
 	*/
-	private Integer privateMovieCount = new Integer();
+	private Integer privateMovieCount = null;
 	public final Integer getMovieCount()
 	{
 		return privateMovieCount;
@@ -1698,7 +1698,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The series count.</value>
 	*/
-	private Integer privateSeriesCount = new Integer();
+	private Integer privateSeriesCount = null;
 	public final Integer getSeriesCount()
 	{
 		return privateSeriesCount;
@@ -1712,7 +1712,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The episode count.</value>
 	*/
-	private Integer privateEpisodeCount = new Integer();
+	private Integer privateEpisodeCount = null;
 	public final Integer getEpisodeCount()
 	{
 		return privateEpisodeCount;
@@ -1726,7 +1726,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The game count.</value>
 	*/
-	private Integer privateGameCount = new Integer();
+	private Integer privateGameCount = null;
 	public final Integer getGameCount()
 	{
 		return privateGameCount;
@@ -1740,7 +1740,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The trailer count.</value>
 	*/
-	private Integer privateTrailerCount = new Integer();
+	private Integer privateTrailerCount = null;
 	public final Integer getTrailerCount()
 	{
 		return privateTrailerCount;
@@ -1754,7 +1754,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The song count.</value>
 	*/
-	private Integer privateSongCount = new Integer();
+	private Integer privateSongCount = null;
 	public final Integer getSongCount()
 	{
 		return privateSongCount;
@@ -1768,7 +1768,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The album count.</value>
 	*/
-	private Integer privateAlbumCount = new Integer();
+	private Integer privateAlbumCount = null;
 	public final Integer getAlbumCount()
 	{
 		return privateAlbumCount;
@@ -1782,7 +1782,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value>The music video count.</value>
 	*/
-	private Integer privateMusicVideoCount = new Integer();
+	private Integer privateMusicVideoCount = null;
 	public final Integer getMusicVideoCount()
 	{
 		return privateMusicVideoCount;
@@ -1797,7 +1797,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	 
 	 <value><c>true</c> if [enable internet providers]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateLockData = new Boolean();
+	private Boolean privateLockData = null;
 	public final Boolean getLockData()
 	{
 		return privateLockData;

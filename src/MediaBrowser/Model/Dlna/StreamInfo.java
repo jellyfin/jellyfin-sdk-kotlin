@@ -100,7 +100,7 @@ public class StreamInfo
 		privateAudioCodec = value;
 	}
 
-	private Integer privateAudioStreamIndex = new Integer();
+	private Integer privateAudioStreamIndex = null;
 	public final Integer getAudioStreamIndex()
 	{
 		return privateAudioStreamIndex;
@@ -110,7 +110,7 @@ public class StreamInfo
 		privateAudioStreamIndex = value;
 	}
 
-	private Integer privateSubtitleStreamIndex = new Integer();
+	private Integer privateSubtitleStreamIndex = null;
 	public final Integer getSubtitleStreamIndex()
 	{
 		return privateSubtitleStreamIndex;
@@ -120,7 +120,7 @@ public class StreamInfo
 		privateSubtitleStreamIndex = value;
 	}
 
-	private Integer privateMaxAudioChannels = new Integer();
+	private Integer privateMaxAudioChannels = null;
 	public final Integer getMaxAudioChannels()
 	{
 		return privateMaxAudioChannels;
@@ -130,7 +130,7 @@ public class StreamInfo
 		privateMaxAudioChannels = value;
 	}
 
-	private Integer privateAudioBitrate = new Integer();
+	private Integer privateAudioBitrate = null;
 	public final Integer getAudioBitrate()
 	{
 		return privateAudioBitrate;
@@ -140,7 +140,7 @@ public class StreamInfo
 		privateAudioBitrate = value;
 	}
 
-	private Integer privateVideoBitrate = new Integer();
+	private Integer privateVideoBitrate = null;
 	public final Integer getVideoBitrate()
 	{
 		return privateVideoBitrate;
@@ -150,7 +150,7 @@ public class StreamInfo
 		privateVideoBitrate = value;
 	}
 
-	private Integer privateVideoLevel = new Integer();
+	private Integer privateVideoLevel = null;
 	public final Integer getVideoLevel()
 	{
 		return privateVideoLevel;
@@ -160,7 +160,7 @@ public class StreamInfo
 		privateVideoLevel = value;
 	}
 
-	private Integer privateMaxWidth = new Integer();
+	private Integer privateMaxWidth = null;
 	public final Integer getMaxWidth()
 	{
 		return privateMaxWidth;
@@ -169,7 +169,7 @@ public class StreamInfo
 	{
 		privateMaxWidth = value;
 	}
-	private Integer privateMaxHeight = new Integer();
+	private Integer privateMaxHeight = null;
 	public final Integer getMaxHeight()
 	{
 		return privateMaxHeight;
@@ -179,7 +179,7 @@ public class StreamInfo
 		privateMaxHeight = value;
 	}
 
-	private Double privateMaxFramerate = new Double();
+	private Double privateMaxFramerate = null;
 	public final Double getMaxFramerate()
 	{
 		return privateMaxFramerate;
@@ -208,7 +208,7 @@ public class StreamInfo
 		privateDeviceId = value;
 	}
 
-	private Long privateRunTimeTicks = new Long();
+	private Long privateRunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{
 		return privateRunTimeTicks;
@@ -482,7 +482,7 @@ public class StreamInfo
 			tempVar.setHeight(videoStream.getHeight());
 			ImageSize size = tempVar;
 
-			ImageSize newSize = DrawingUtils.Resize(size.clone(), new Double(), new Double(), getMaxWidth(), getMaxHeight());
+			ImageSize newSize = DrawingUtils.Resize(size.clone(), null, null, getMaxWidth(), getMaxHeight());
 
 			return (int)newSize.getWidth();
 		}
@@ -501,7 +501,7 @@ public class StreamInfo
 			tempVar.setHeight(videoStream.getHeight());
 			ImageSize size = tempVar;
 
-			ImageSize newSize = DrawingUtils.Resize(size.clone(), new Double(), new Double(), getMaxWidth(), getMaxHeight());
+			ImageSize newSize = DrawingUtils.Resize(size.clone(), null, null, getMaxWidth(), getMaxHeight());
 
 			return (int)newSize.getHeight();
 		}

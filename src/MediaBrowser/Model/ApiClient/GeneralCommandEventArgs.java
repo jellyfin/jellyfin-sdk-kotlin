@@ -27,7 +27,7 @@ public class GeneralCommandEventArgs extends EventArgs
 	 
 	 <value>The type of the known command.</value>
 	*/
-	private GeneralCommandType privateKnownCommandType = new GeneralCommandType();
+	private GeneralCommandType privateKnownCommandType = null;
 	public final GeneralCommandType getKnownCommandType()
 	{
 		return privateKnownCommandType;

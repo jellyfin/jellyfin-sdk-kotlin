@@ -74,7 +74,7 @@ public class MediaStream
 	 
 	 <value>The bit rate.</value>
 	*/
-	private Integer privateBitRate = new Integer();
+	private Integer privateBitRate = null;
 	public final Integer getBitRate()
 	{
 		return privateBitRate;
@@ -89,7 +89,7 @@ public class MediaStream
 	 
 	 <value>The bit depth.</value>
 	*/
-	private Integer privateBitDepth = new Integer();
+	private Integer privateBitDepth = null;
 	public final Integer getBitDepth()
 	{
 		return privateBitDepth;
@@ -104,7 +104,7 @@ public class MediaStream
 	 
 	 <value>The length of the packet.</value>
 	*/
-	private Integer privatePacketLength = new Integer();
+	private Integer privatePacketLength = null;
 	public final Integer getPacketLength()
 	{
 		return privatePacketLength;
@@ -119,7 +119,7 @@ public class MediaStream
 	 
 	 <value>The channels.</value>
 	*/
-	private Integer privateChannels = new Integer();
+	private Integer privateChannels = null;
 	public final Integer getChannels()
 	{
 		return privateChannels;
@@ -134,7 +134,7 @@ public class MediaStream
 	 
 	 <value>The sample rate.</value>
 	*/
-	private Integer privateSampleRate = new Integer();
+	private Integer privateSampleRate = null;
 	public final Integer getSampleRate()
 	{
 		return privateSampleRate;
@@ -179,7 +179,7 @@ public class MediaStream
 	 
 	 <value>The height.</value>
 	*/
-	private Integer privateHeight = new Integer();
+	private Integer privateHeight = null;
 	public final Integer getHeight()
 	{
 		return privateHeight;
@@ -194,7 +194,7 @@ public class MediaStream
 	 
 	 <value>The width.</value>
 	*/
-	private Integer privateWidth = new Integer();
+	private Integer privateWidth = null;
 	public final Integer getWidth()
 	{
 		return privateWidth;
@@ -209,7 +209,7 @@ public class MediaStream
 	 
 	 <value>The average frame rate.</value>
 	*/
-	private Float privateAverageFrameRate = new Float();
+	private Float privateAverageFrameRate = null;
 	public final Float getAverageFrameRate()
 	{
 		return privateAverageFrameRate;
@@ -224,7 +224,7 @@ public class MediaStream
 	 
 	 <value>The real frame rate.</value>
 	*/
-	private Float privateRealFrameRate = new Float();
+	private Float privateRealFrameRate = null;
 	public final Float getRealFrameRate()
 	{
 		return privateRealFrameRate;
@@ -359,7 +359,7 @@ public class MediaStream
 	 
 	 <value>The level.</value>
 	*/
-	private Double privateLevel = new Double();
+	private Double privateLevel = null;
 	public final Double getLevel()
 	{
 		return privateLevel;
@@ -374,7 +374,7 @@ public class MediaStream
 	 
 	 <value><c>true</c> if this instance is anamorphic; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsAnamorphic = new Boolean();
+	private Boolean privateIsAnamorphic = null;
 	public final Boolean getIsAnamorphic()
 	{
 		return privateIsAnamorphic;

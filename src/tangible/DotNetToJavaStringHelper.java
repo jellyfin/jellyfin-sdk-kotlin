@@ -4,7 +4,7 @@ package tangible;
 //	Copyright © 2007 - 2014 Tangible Software Solutions Inc.
 //	This class can be used by anyone provided that the copyright notice remains intact.
 //
-//	This class is used to simulate some .NET string functions in Java.
+//	This class is used to simulate some .NET string methods in Java.
 //----------------------------------------------------------------------------------------
 public final class DotNetToJavaStringHelper
 {
@@ -14,6 +14,9 @@ public final class DotNetToJavaStringHelper
 	//------------------------------------------------------------------------------------
 	public static String substring(String string, int start, int length)
 	{
+		if (length < 0)
+			throw new IndexOutOfBoundsException("Parameter length cannot be negative.");
+
 		return string.substring(start, start + length);
 	}
 
@@ -169,6 +172,181 @@ public final class DotNetToJavaStringHelper
 			return true;
 		else
 			return s1 != null && s1.equals(s2);
+	}
+
+	//------------------------------------------------------------------------------------
+	//	This method replaces the .NET string method 'PadRight' (1 parameter version).
+	//------------------------------------------------------------------------------------
+	public static String padRight(String string, int totalWidth)
+	{
+		return padRight(string, totalWidth, ' ');
+	}
+
+	//------------------------------------------------------------------------------------
+	//	This method replaces the .NET string method 'PadRight' (2 parameter version).
+	//------------------------------------------------------------------------------------
+	public static String padRight(String string, int totalWidth, char paddingChar)
+	{
+		StringBuilder sb = new StringBuilder(string);
+
+		while (sb.length() < totalWidth)
+		{
+			sb.append(paddingChar);
+		}
+
+		return sb.toString();
+	}
+
+	//------------------------------------------------------------------------------------
+	//	This method replaces the .NET string method 'PadLeft' (1 parameter version).
+	//------------------------------------------------------------------------------------
+	public static String padLeft(String string, int totalWidth)
+	{
+		return padLeft(string, totalWidth, ' ');
+	}
+
+	//------------------------------------------------------------------------------------
+	//	This method replaces the .NET string method 'PadLeft' (2 parameter version).
+	//------------------------------------------------------------------------------------
+	public static String padLeft(String string, int totalWidth, char paddingChar)
+	{
+		StringBuilder sb = new StringBuilder("");
+
+		while (sb.length() + string.length() < totalWidth)
+		{
+			sb.append(paddingChar);
+		}
+
+		sb.append(string);
+		return sb.toString();
+	}
+
+	//------------------------------------------------------------------------------------
+	//	This method replaces the .NET string method 'LastIndexOf' (char version).
+	//------------------------------------------------------------------------------------
+	public static int lastIndexOf(String string, char value, int startIndex, int count)
+	{
+		int leftMost = startIndex + 1 - count;
+		int rightMost = startIndex + 1;
+		String substring = string.substring(leftMost, rightMost);
+		int lastIndexInSubstring = substring.lastIndexOf(value);
+		if (lastIndexInSubstring < 0)
+			return -1;
+		else
+			return lastIndexInSubstring + leftMost;
+	}
+
+	//------------------------------------------------------------------------------------
+	//	This method replaces the .NET string method 'LastIndexOf' (string version).
+	//------------------------------------------------------------------------------------
+	public static int lastIndexOf(String string, String value, int startIndex, int count)
+	{
+		int leftMost = startIndex + 1 - count;
+		int rightMost = startIndex + 1;
+		String substring = string.substring(leftMost, rightMost);
+		int lastIndexInSubstring = substring.lastIndexOf(value);
+		if (lastIndexInSubstring < 0)
+			return -1;
+		else
+			return lastIndexInSubstring + leftMost;
+	}
+
+	//------------------------------------------------------------------------------------
+	//	This method replaces the .NET string method 'IndexOfAny' (1 parameter version).
+	//------------------------------------------------------------------------------------
+	public static int indexOfAny(String string, char[] anyOf)
+	{
+		int lowestIndex = -1;
+		for (char c : anyOf)
+		{
+			int index = string.indexOf(c);
+			if (index > -1)
+			{
+				if (lowestIndex == -1 || index < lowestIndex)
+				{
+					lowestIndex = index;
+
+					if (index == 0)
+						break;
+				}
+			}
+		}
+
+		return lowestIndex;
+	}
+
+	//------------------------------------------------------------------------------------
+	//	This method replaces the .NET string method 'IndexOfAny' (2 parameter version).
+	//------------------------------------------------------------------------------------
+	public static int indexOfAny(String string, char[] anyOf, int startIndex)
+	{
+		int indexInSubstring = indexOfAny(string.substring(startIndex), anyOf);
+		if (indexInSubstring == -1)
+			return -1;
+		else
+			return indexInSubstring + startIndex;
+	}
+
+	//------------------------------------------------------------------------------------
+	//	This method replaces the .NET string method 'IndexOfAny' (3 parameter version).
+	//------------------------------------------------------------------------------------
+	public static int indexOfAny(String string, char[] anyOf, int startIndex, int count)
+	{
+		int endIndex = startIndex + count;
+		int indexInSubstring = indexOfAny(string.substring(startIndex, endIndex), anyOf);
+		if (indexInSubstring == -1)
+			return -1;
+		else
+			return indexInSubstring + startIndex;
+	}
+
+	//------------------------------------------------------------------------------------
+	//	This method replaces the .NET string method 'LastIndexOfAny' (1 parameter version).
+	//------------------------------------------------------------------------------------
+	public static int lastIndexOfAny(String string, char[] anyOf)
+	{
+		int highestIndex = -1;
+		for (char c : anyOf)
+		{
+			int index = string.lastIndexOf(c);
+			if (index > highestIndex)
+			{
+				highestIndex = index;
+
+				if (index == string.length() - 1)
+					break;
+			}
+		}
+
+		return highestIndex;
+	}
+
+	//------------------------------------------------------------------------------------
+	//	This method replaces the .NET string method 'LastIndexOfAny' (2 parameter version).
+	//------------------------------------------------------------------------------------
+	public static int lastIndexOfAny(String string, char[] anyOf, int startIndex)
+	{
+		String substring = string.substring(0, startIndex + 1);
+		int lastIndexInSubstring = lastIndexOfAny(substring, anyOf);
+		if (lastIndexInSubstring < 0)
+			return -1;
+		else
+			return lastIndexInSubstring;
+	}
+
+	//------------------------------------------------------------------------------------
+	//	This method replaces the .NET string method 'LastIndexOfAny' (3 parameter version).
+	//------------------------------------------------------------------------------------
+	public static int lastIndexOfAny(String string, char[] anyOf, int startIndex, int count)
+	{
+		int leftMost = startIndex + 1 - count;
+		int rightMost = startIndex + 1;
+		String substring = string.substring(leftMost, rightMost);
+		int lastIndexInSubstring = lastIndexOfAny(substring, anyOf);
+		if (lastIndexInSubstring < 0)
+			return -1;
+		else
+			return lastIndexInSubstring + leftMost;
 	}
 
 }

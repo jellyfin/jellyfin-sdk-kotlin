@@ -40,7 +40,7 @@ public class TaskInfo
 	 
 	 <value>The progress.</value>
 	*/
-	private Double privateCurrentProgressPercentage = new Double();
+	private Double privateCurrentProgressPercentage = null;
 	public final Double getCurrentProgressPercentage()
 	{
 		return privateCurrentProgressPercentage;

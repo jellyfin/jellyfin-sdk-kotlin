@@ -182,7 +182,7 @@ public class DeviceProfile
 		privateAlbumArtPn = value;
 	}
 
-	private Integer privateMaxAlbumArtWidth = new Integer();
+	private Integer privateMaxAlbumArtWidth = null;
 	public final Integer getMaxAlbumArtWidth()
 	{
 		return privateMaxAlbumArtWidth;
@@ -191,7 +191,7 @@ public class DeviceProfile
 	{
 		privateMaxAlbumArtWidth = value;
 	}
-	private Integer privateMaxAlbumArtHeight = new Integer();
+	private Integer privateMaxAlbumArtHeight = null;
 	public final Integer getMaxAlbumArtHeight()
 	{
 		return privateMaxAlbumArtHeight;
@@ -201,7 +201,7 @@ public class DeviceProfile
 		privateMaxAlbumArtHeight = value;
 	}
 
-	private Integer privateMaxIconWidth = new Integer();
+	private Integer privateMaxIconWidth = null;
 	public final Integer getMaxIconWidth()
 	{
 		return privateMaxIconWidth;
@@ -210,7 +210,7 @@ public class DeviceProfile
 	{
 		privateMaxIconWidth = value;
 	}
-	private Integer privateMaxIconHeight = new Integer();
+	private Integer privateMaxIconHeight = null;
 	public final Integer getMaxIconHeight()
 	{
 		return privateMaxIconHeight;
@@ -220,7 +220,7 @@ public class DeviceProfile
 		privateMaxIconHeight = value;
 	}
 
-	private Integer privateMaxBitrate = new Integer();
+	private Integer privateMaxBitrate = null;
 	public final Integer getMaxBitrate()
 	{
 		return privateMaxBitrate;

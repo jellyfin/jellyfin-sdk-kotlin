@@ -55,7 +55,7 @@ public class ItemReview
 	 
 	 <value>The score.</value>
 	*/
-	private Float privateScore = new Float();
+	private Float privateScore = null;
 	public final Float getScore()
 	{
 		return privateScore;
@@ -70,7 +70,7 @@ public class ItemReview
 	 
 	 <value><c>null</c> if [likes] contains no value, <c>true</c> if [likes]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateLikes = new Boolean();
+	private Boolean privateLikes = null;
 	public final Boolean getLikes()
 	{
 		return privateLikes;

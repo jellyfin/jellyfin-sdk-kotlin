@@ -38,7 +38,7 @@ public class MBRegistrationRecord
 	{
 		privateRegError = value;
 	}
-	private Boolean _isInTrial = new Boolean();
+	private Boolean _isInTrial = null;
 	public final boolean getTrialVersion()
 	{
 		if (_isInTrial == null)

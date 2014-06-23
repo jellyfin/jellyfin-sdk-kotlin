@@ -39,7 +39,7 @@ public class AllChannelMediaQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex = new Integer();
+	private Integer privateStartIndex = null;
 	public final Integer getStartIndex()
 	{
 		return privateStartIndex;
@@ -54,7 +54,7 @@ public class AllChannelMediaQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit = new Integer();
+	private Integer privateLimit = null;
 	public final Integer getLimit()
 	{
 		return privateLimit;

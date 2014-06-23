@@ -211,7 +211,7 @@ public class ChannelInfoDto implements INotifyPropertyChanged, IItemDto
 	 
 	 <value>The primary image aspect ratio.</value>
 	*/
-	private Double privatePrimaryImageAspectRatio = new Double();
+	private Double privatePrimaryImageAspectRatio = null;
 	public final Double getPrimaryImageAspectRatio()
 	{
 		return privatePrimaryImageAspectRatio;
@@ -226,7 +226,7 @@ public class ChannelInfoDto implements INotifyPropertyChanged, IItemDto
 	 
 	 <value>The original primary image aspect ratio.</value>
 	*/
-	private Double privateOriginalPrimaryImageAspectRatio = new Double();
+	private Double privateOriginalPrimaryImageAspectRatio = null;
 	public final Double getOriginalPrimaryImageAspectRatio()
 	{
 		return privateOriginalPrimaryImageAspectRatio;

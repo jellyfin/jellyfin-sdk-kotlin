@@ -55,7 +55,7 @@ public class SearchHint
 	 
 	 <value>The index number.</value>
 	*/
-	private Integer privateIndexNumber = new Integer();
+	private Integer privateIndexNumber = null;
 	public final Integer getIndexNumber()
 	{
 		return privateIndexNumber;
@@ -70,7 +70,7 @@ public class SearchHint
 	 
 	 <value>The production year.</value>
 	*/
-	private Integer privateProductionYear = new Integer();
+	private Integer privateProductionYear = null;
 	public final Integer getProductionYear()
 	{
 		return privateProductionYear;
@@ -85,7 +85,7 @@ public class SearchHint
 	 
 	 <value>The parent index number.</value>
 	*/
-	private Integer privateParentIndexNumber = new Integer();
+	private Integer privateParentIndexNumber = null;
 	public final Integer getParentIndexNumber()
 	{
 		return privateParentIndexNumber;
@@ -190,7 +190,7 @@ public class SearchHint
 	 
 	 <value>The run time ticks.</value>
 	*/
-	private Long privateRunTimeTicks = new Long();
+	private Long privateRunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{
 		return privateRunTimeTicks;
@@ -295,7 +295,7 @@ public class SearchHint
 	 
 	 <value>The song count.</value>
 	*/
-	private Integer privateSongCount = new Integer();
+	private Integer privateSongCount = null;
 	public final Integer getSongCount()
 	{
 		return privateSongCount;
@@ -310,7 +310,7 @@ public class SearchHint
 	 
 	 <value>The episode count.</value>
 	*/
-	private Integer privateEpisodeCount = new Integer();
+	private Integer privateEpisodeCount = null;
 	public final Integer getEpisodeCount()
 	{
 		return privateEpisodeCount;

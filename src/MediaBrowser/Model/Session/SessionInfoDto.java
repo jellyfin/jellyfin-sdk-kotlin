@@ -281,7 +281,7 @@ public class SessionInfoDto implements INotifyPropertyChanged
 	 
 	 <value>The now playing position ticks.</value>
 	*/
-	private Long privateNowPlayingPositionTicks = new Long();
+	private Long privateNowPlayingPositionTicks = null;
 	public final Long getNowPlayingPositionTicks()
 	{
 		return privateNowPlayingPositionTicks;

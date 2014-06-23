@@ -87,7 +87,7 @@ public class NotificationRequest
 		privateVariables = value;
 	}
 
-	private SendToUserType privateSendToUserMode = new SendToUserType();
+	private SendToUserType privateSendToUserMode = null;
 	public final SendToUserType getSendToUserMode()
 	{
 		return privateSendToUserMode;

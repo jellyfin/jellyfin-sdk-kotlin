@@ -74,7 +74,7 @@ public class UserDto implements INotifyPropertyChanged, IItemDto
 	 
 	 <value>The last login date.</value>
 	*/
-	private java.util.Date privateLastLoginDate = new java.util.Date();
+	private java.util.Date privateLastLoginDate = null;
 	public final java.util.Date getLastLoginDate()
 	{
 		return privateLastLoginDate;
@@ -89,7 +89,7 @@ public class UserDto implements INotifyPropertyChanged, IItemDto
 	 
 	 <value>The last activity date.</value>
 	*/
-	private java.util.Date privateLastActivityDate = new java.util.Date();
+	private java.util.Date privateLastActivityDate = null;
 	public final java.util.Date getLastActivityDate()
 	{
 		return privateLastActivityDate;
@@ -119,7 +119,7 @@ public class UserDto implements INotifyPropertyChanged, IItemDto
 	 
 	 <value>The primary image aspect ratio.</value>
 	*/
-	private Double privatePrimaryImageAspectRatio = new Double();
+	private Double privatePrimaryImageAspectRatio = null;
 	public final Double getPrimaryImageAspectRatio()
 	{
 		return privatePrimaryImageAspectRatio;
@@ -134,7 +134,7 @@ public class UserDto implements INotifyPropertyChanged, IItemDto
 	 
 	 <value>The original primary image aspect ratio.</value>
 	*/
-	private Double privateOriginalPrimaryImageAspectRatio = new Double();
+	private Double privateOriginalPrimaryImageAspectRatio = null;
 	public final Double getOriginalPrimaryImageAspectRatio()
 	{
 		return privateOriginalPrimaryImageAspectRatio;

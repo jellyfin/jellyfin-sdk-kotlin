@@ -27,7 +27,7 @@ public class ImageInfo
 	 
 	 <value>The index of the image.</value>
 	*/
-	private Integer privateImageIndex = new Integer();
+	private Integer privateImageIndex = null;
 	public final Integer getImageIndex()
 	{
 		return privateImageIndex;

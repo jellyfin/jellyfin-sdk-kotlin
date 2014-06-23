@@ -28,7 +28,7 @@ public class ImageOptions
 	 
 	 <value>The index of the image.</value>
 	*/
-	private Integer privateImageIndex = new Integer();
+	private Integer privateImageIndex = null;
 	public final Integer getImageIndex()
 	{
 		return privateImageIndex;
@@ -43,7 +43,7 @@ public class ImageOptions
 	 
 	 <value>The width.</value>
 	*/
-	private Integer privateWidth = new Integer();
+	private Integer privateWidth = null;
 	public final Integer getWidth()
 	{
 		return privateWidth;
@@ -58,7 +58,7 @@ public class ImageOptions
 	 
 	 <value>The height.</value>
 	*/
-	private Integer privateHeight = new Integer();
+	private Integer privateHeight = null;
 	public final Integer getHeight()
 	{
 		return privateHeight;
@@ -73,7 +73,7 @@ public class ImageOptions
 	 
 	 <value>The width of the max.</value>
 	*/
-	private Integer privateMaxWidth = new Integer();
+	private Integer privateMaxWidth = null;
 	public final Integer getMaxWidth()
 	{
 		return privateMaxWidth;
@@ -88,7 +88,7 @@ public class ImageOptions
 	 
 	 <value>The height of the max.</value>
 	*/
-	private Integer privateMaxHeight = new Integer();
+	private Integer privateMaxHeight = null;
 	public final Integer getMaxHeight()
 	{
 		return privateMaxHeight;
@@ -103,7 +103,7 @@ public class ImageOptions
 	 
 	 <value>The quality.</value>
 	*/
-	private Integer privateQuality = new Integer();
+	private Integer privateQuality = null;
 	public final Integer getQuality()
 	{
 		return privateQuality;
@@ -134,7 +134,7 @@ public class ImageOptions
 	 
 	 <value><c>null</c> if [crop whitespace] contains no value, <c>true</c> if [crop whitespace]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateCropWhitespace = new Boolean();
+	private Boolean privateCropWhitespace = null;
 	public final Boolean getCropWhitespace()
 	{
 		return privateCropWhitespace;
@@ -194,7 +194,7 @@ public class ImageOptions
 	 
 	 <value>The percent played.</value>
 	*/
-	private Integer privatePercentPlayed = new Integer();
+	private Integer privatePercentPlayed = null;
 	public final Integer getPercentPlayed()
 	{
 		return privatePercentPlayed;

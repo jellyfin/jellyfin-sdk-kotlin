@@ -10,7 +10,7 @@ public class UserItemDataDto implements INotifyPropertyChanged
 	 
 	 <value>The rating.</value>
 	*/
-	private Double privateRating = new Double();
+	private Double privateRating = null;
 	public final Double getRating()
 	{
 		return privateRating;
@@ -70,7 +70,7 @@ public class UserItemDataDto implements INotifyPropertyChanged
 	 
 	 <value><c>null</c> if [likes] contains no value, <c>true</c> if [likes]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateLikes = new Boolean();
+	private Boolean privateLikes = null;
 	public final Boolean getLikes()
 	{
 		return privateLikes;
@@ -85,7 +85,7 @@ public class UserItemDataDto implements INotifyPropertyChanged
 	 
 	 <value>The last played date.</value>
 	*/
-	private java.util.Date privateLastPlayedDate = new java.util.Date();
+	private java.util.Date privateLastPlayedDate = null;
 	public final java.util.Date getLastPlayedDate()
 	{
 		return privateLastPlayedDate;

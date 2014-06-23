@@ -42,7 +42,7 @@ public class ItemQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex = new Integer();
+	private Integer privateStartIndex = null;
 	public final Integer getStartIndex()
 	{
 		return privateStartIndex;
@@ -57,7 +57,7 @@ public class ItemQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit = new Integer();
+	private Integer privateLimit = null;
 	public final Integer getLimit()
 	{
 		return privateLimit;
@@ -102,7 +102,7 @@ public class ItemQuery
 	 
 	 <value>The sort order.</value>
 	*/
-	private SortOrder privateSortOrder = new SortOrder();
+	private SortOrder privateSortOrder = null;
 	public final SortOrder getSortOrder()
 	{
 		return privateSortOrder;
@@ -162,7 +162,7 @@ public class ItemQuery
 	 
 	 <value>The video formats.</value>
 	*/
-	private Boolean privateIs3D = new Boolean();
+	private Boolean privateIs3D = null;
 	public final Boolean getIs3D()
 	{
 		return privateIs3D;
@@ -432,7 +432,7 @@ public class ItemQuery
 	 
 	 <value>The min index number.</value>
 	*/
-	private Integer privateMinIndexNumber = new Integer();
+	private Integer privateMinIndexNumber = null;
 	public final Integer getMinIndexNumber()
 	{
 		return privateMinIndexNumber;
@@ -447,7 +447,7 @@ public class ItemQuery
 	 
 	 <value><c>null</c> if [has parental rating] contains no value, <c>true</c> if [has parental rating]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateHasParentalRating = new Boolean();
+	private Boolean privateHasParentalRating = null;
 	public final Boolean getHasParentalRating()
 	{
 		return privateHasParentalRating;
@@ -462,7 +462,7 @@ public class ItemQuery
 	 
 	 <value><c>null</c> if [is HD] contains no value, <c>true</c> if [is HD]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsHD = new Boolean();
+	private Boolean privateIsHD = null;
 	public final Boolean getIsHD()
 	{
 		return privateIsHD;
@@ -477,7 +477,7 @@ public class ItemQuery
 	 
 	 <value>The parent index number.</value>
 	*/
-	private Integer privateParentIndexNumber = new Integer();
+	private Integer privateParentIndexNumber = null;
 	public final Integer getParentIndexNumber()
 	{
 		return privateParentIndexNumber;
@@ -492,7 +492,7 @@ public class ItemQuery
 	 
 	 <value>The min players.</value>
 	*/
-	private Integer privateMinPlayers = new Integer();
+	private Integer privateMinPlayers = null;
 	public final Integer getMinPlayers()
 	{
 		return privateMinPlayers;
@@ -507,7 +507,7 @@ public class ItemQuery
 	 
 	 <value>The max players.</value>
 	*/
-	private Integer privateMaxPlayers = new Integer();
+	private Integer privateMaxPlayers = null;
 	public final Integer getMaxPlayers()
 	{
 		return privateMaxPlayers;
@@ -612,7 +612,7 @@ public class ItemQuery
 	 
 	 <value><c>null</c> if [is missing episode] contains no value, <c>true</c> if [is missing episode]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsMissing = new Boolean();
+	private Boolean privateIsMissing = null;
 	public final Boolean getIsMissing()
 	{
 		return privateIsMissing;
@@ -627,7 +627,7 @@ public class ItemQuery
 	 
 	 <value><c>null</c> if [is unaired episode] contains no value, <c>true</c> if [is unaired episode]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsUnaired = new Boolean();
+	private Boolean privateIsUnaired = null;
 	public final Boolean getIsUnaired()
 	{
 		return privateIsUnaired;
@@ -637,7 +637,7 @@ public class ItemQuery
 		privateIsUnaired = value;
 	}
 
-	private Boolean privateIsVirtualUnaired = new Boolean();
+	private Boolean privateIsVirtualUnaired = null;
 	public final Boolean getIsVirtualUnaired()
 	{
 		return privateIsVirtualUnaired;
@@ -647,7 +647,7 @@ public class ItemQuery
 		privateIsVirtualUnaired = value;
 	}
 
-	private Boolean privateIsInBoxSet = new Boolean();
+	private Boolean privateIsInBoxSet = null;
 	public final Boolean getIsInBoxSet()
 	{
 		return privateIsInBoxSet;
@@ -657,7 +657,7 @@ public class ItemQuery
 		privateIsInBoxSet = value;
 	}
 
-	private Boolean privateCollapseBoxSetItems = new Boolean();
+	private Boolean privateCollapseBoxSetItems = null;
 	public final Boolean getCollapseBoxSetItems()
 	{
 		return privateCollapseBoxSetItems;
@@ -667,7 +667,7 @@ public class ItemQuery
 		privateCollapseBoxSetItems = value;
 	}
 
-	private Boolean privateIsPlayed = new Boolean();
+	private Boolean privateIsPlayed = null;
 	public final Boolean getIsPlayed()
 	{
 		return privateIsPlayed;
@@ -692,7 +692,7 @@ public class ItemQuery
 		privateExcludeLocationTypes = value;
 	}
 
-	private Double privateMinCommunityRating = new Double();
+	private Double privateMinCommunityRating = null;
 	public final Double getMinCommunityRating()
 	{
 		return privateMinCommunityRating;
@@ -701,7 +701,7 @@ public class ItemQuery
 	{
 		privateMinCommunityRating = value;
 	}
-	private Double privateMinCriticRating = new Double();
+	private Double privateMinCriticRating = null;
 	public final Double getMinCriticRating()
 	{
 		return privateMinCriticRating;
@@ -711,7 +711,7 @@ public class ItemQuery
 		privateMinCriticRating = value;
 	}
 
-	private Integer privateAiredDuringSeason = new Integer();
+	private Integer privateAiredDuringSeason = null;
 	public final Integer getAiredDuringSeason()
 	{
 		return privateAiredDuringSeason;
@@ -721,7 +721,7 @@ public class ItemQuery
 		privateAiredDuringSeason = value;
 	}
 
-	private java.util.Date privateMinPremiereDate = new java.util.Date();
+	private java.util.Date privateMinPremiereDate = null;
 	public final java.util.Date getMinPremiereDate()
 	{
 		return privateMinPremiereDate;
@@ -731,7 +731,7 @@ public class ItemQuery
 		privateMinPremiereDate = value;
 	}
 
-	private java.util.Date privateMaxPremiereDate = new java.util.Date();
+	private java.util.Date privateMaxPremiereDate = null;
 	public final java.util.Date getMaxPremiereDate()
 	{
 		return privateMaxPremiereDate;

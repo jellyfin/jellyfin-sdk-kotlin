@@ -27,7 +27,7 @@ public class BlurayDiscInfo
 	 
 	 <value>The run time ticks.</value>
 	*/
-	private Long privateRunTimeTicks = new Long();
+	private Long privateRunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{
 		return privateRunTimeTicks;

@@ -71,7 +71,7 @@ public class SeriesTimerInfoDto extends BaseTimerInfoDto
 	 
 	 <value>The day pattern.</value>
 	*/
-	private DayPattern privateDayPattern = new DayPattern();
+	private DayPattern privateDayPattern = null;
 	public final DayPattern getDayPattern()
 	{
 		return privateDayPattern;
