@@ -71,7 +71,7 @@ public class ContentFeatureBuilder
 		return (contentFeatures + orgOp + orgCi + dlnaflags).trim(';');
 	}
 
-	public final String BuildVideoHeader(String container, String videoCodec, String audioCodec, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, Integer audioChannels, Integer audioBitrate, TransportStreamTimestamp timestamp, boolean isDirectStream, Long runtimeTicks, String videoProfile, Double videoLevel, Double videoFramerate, Integer packetLength, TranscodeSeekInfo transcodeSeekInfo, Boolean isAnamorphic)
+	public final String BuildVideoHeader(String container, String videoCodec, String audioCodec, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, Integer audioChannels, Integer audioBitrate, TransportStreamTimestamp timestamp, boolean isDirectStream, Long runtimeTicks, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TranscodeSeekInfo transcodeSeekInfo, Boolean isAnamorphic)
 	{
 		// first bit means Time based seek supported, second byte range seek supported (not sure about the order now), so 01 = only byte seek, 10 = time based, 11 = both, 00 = none
 		String orgOp = ";DLNA.ORG_OP=" + DlnaMaps.GetOrgOpValue(runtimeTicks != null, isDirectStream, transcodeSeekInfo);

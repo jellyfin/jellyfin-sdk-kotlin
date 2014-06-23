@@ -1,6 +1,7 @@
 package MediaBrowser.Model.Configuration;
 
 import MediaBrowser.Model.Entities.*;
+import MediaBrowser.Model.Extensions.*;
 
 /** 
  Class MetadataOptions.
@@ -144,6 +145,6 @@ public class MetadataOptions
 
 	public final boolean IsMetadataSaverEnabled(String name)
 	{
-		return !getDisabledMetadataSavers().Contains(name, StringComparer.OrdinalIgnoreCase);
+		return !ListHelper.ContainsIgnoreCase(getDisabledMetadataSavers(), name);
 	}
 }

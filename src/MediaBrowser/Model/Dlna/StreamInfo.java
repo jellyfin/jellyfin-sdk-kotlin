@@ -179,12 +179,12 @@ public class StreamInfo
 		privateMaxHeight = value;
 	}
 
-	private Double privateMaxFramerate = null;
-	public final Double getMaxFramerate()
+	private Float privateMaxFramerate = null;
+	public final Float getMaxFramerate()
 	{
 		return privateMaxFramerate;
 	}
-	public final void setMaxFramerate(Double value)
+	public final void setMaxFramerate(Float value)
 	{
 		privateMaxFramerate = value;
 	}
@@ -355,7 +355,7 @@ public class StreamInfo
 	/** 
 	 Predicts the audio sample rate that will be in the output stream
 	*/
-	public final Double getTargetFramerate()
+	public final Float getTargetFramerate()
 	{
 		MediaStream stream = getTargetVideoStream();
 		Float tempVar = stream.getAverageFrameRate();

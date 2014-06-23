@@ -442,12 +442,13 @@ public class DeviceProfile
 				continue;
 			}
 
-			if (!i.GetAudioCodecs().contains((audioCodec != null) ? audioCodec : ""))
+			if (!ListHelper.ContainsIgnoreCase(i.GetAudioCodecs(), (audioCodec != null) ? audioCodec : ""))
 			{
 				continue;
 			}
 
-			if (!StringHelper.EqualsIgnoreCase(videoCodec, i.getVideoCodec()))
+			String tempVar = i.getVideoCodec();
+			if (!StringHelper.EqualsIgnoreCase(videoCodec, (tempVar != null) ? tempVar : ""))
 			{
 				continue;
 			}
@@ -475,7 +476,7 @@ public class DeviceProfile
 			}
 
 			java.util.ArrayList<String> audioCodecs = i.GetAudioCodecs();
-			if (audioCodecs.size() > 0 && !ListHelper.ContainsIgnoreCase(audioCodecs, audioCodec))
+			if (audioCodecs.size() > 0 && !ListHelper.ContainsIgnoreCase(audioCodecs, (audioCodec != null) ? audioCodec : ""))
 			{
 				continue;
 			}
@@ -541,7 +542,7 @@ public class DeviceProfile
 		return null;
 	}
 
-	public final ResponseProfile GetVideoMediaProfile(String container, String audioCodec, String videoCodec, Integer audioBitrate, Integer audioChannels, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Double videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic)
+	public final ResponseProfile GetVideoMediaProfile(String container, String audioCodec, String videoCodec, Integer audioBitrate, Integer audioChannels, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic)
 	{
 		container = ((container != null) ? container : "").TrimStart('.');
 
@@ -553,19 +554,19 @@ public class DeviceProfile
 			}
 
 			java.util.ArrayList<String> containers = i.GetContainers();
-			if (containers.size() > 0 && !ListHelper.ContainsIgnoreCase(containers, container))
+			if (containers.size() > 0 && !ListHelper.ContainsIgnoreCase(containers, (container != null) ? container : ""))
 			{
 				continue;
 			}
 
 			java.util.ArrayList<String> audioCodecs = i.GetAudioCodecs();
-			if (audioCodecs.size() > 0 && !ListHelper.ContainsIgnoreCase(audioCodecs, audioCodec))
+			if (audioCodecs.size() > 0 && !ListHelper.ContainsIgnoreCase(audioCodecs, (audioCodec != null) ? audioCodec : ""))
 			{
 				continue;
 			}
 
 			java.util.ArrayList<String> videoCodecs = i.GetVideoCodecs();
-			if (videoCodecs.size() > 0 && !ListHelper.ContainsIgnoreCase(videoCodecs, videoCodec))
+			if (videoCodecs.size() > 0 && !ListHelper.ContainsIgnoreCase(videoCodecs, (videoCodec != null) ? videoCodec : ""))
 			{
 				continue;
 			}

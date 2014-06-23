@@ -5,7 +5,7 @@ import MediaBrowser.Model.MediaInfo.*;
 
 public class MediaFormatProfileResolver
 {
-	public final Iterable<MediaFormatProfile> ResolveVideoFormat(String container, String videoCodec, String audioCodec, Integer width, Integer height, TransportStreamTimestamp timestampType)
+	public final java.util.ArrayList<MediaFormatProfile> ResolveVideoFormat(String container, String videoCodec, String audioCodec, Integer width, Integer height, TransportStreamTimestamp timestampType)
 	{
 		if (StringHelper.EqualsIgnoreCase(container, "asf"))
 		{
@@ -21,23 +21,23 @@ public class MediaFormatProfileResolver
 
 		if (StringHelper.EqualsIgnoreCase(container, "avi"))
 		{
-			return new Object[] {MediaFormatProfile.AVI};
+			return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {MediaFormatProfile.AVI}));
 		}
 
 		if (StringHelper.EqualsIgnoreCase(container, "mkv"))
 		{
-			return new Object[] {MediaFormatProfile.MATROSKA};
+			return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {MediaFormatProfile.MATROSKA}));
 		}
 
 		if (StringHelper.EqualsIgnoreCase(container, "mpeg2ps") || StringHelper.EqualsIgnoreCase(container, "ts"))
 
 		{
-			return new Object[] {MediaFormatProfile.MPEG_PS_NTSC, MediaFormatProfile.MPEG_PS_PAL};
+			return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {MediaFormatProfile.MPEG_PS_NTSC, MediaFormatProfile.MPEG_PS_PAL}));
 		}
 
 		if (StringHelper.EqualsIgnoreCase(container, "mpeg1video"))
 		{
-			return new Object[] {MediaFormatProfile.MPEG1};
+			return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {MediaFormatProfile.MPEG1}));
 		}
 
 		if (StringHelper.EqualsIgnoreCase(container, "mpeg2ts") || StringHelper.EqualsIgnoreCase(container, "mpegts") || StringHelper.EqualsIgnoreCase(container, "m2ts"))
@@ -48,12 +48,12 @@ public class MediaFormatProfileResolver
 
 		if (StringHelper.EqualsIgnoreCase(container, "flv"))
 		{
-			return new Object[] {MediaFormatProfile.FLV};
+			return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {MediaFormatProfile.FLV}));
 		}
 
 		if (StringHelper.EqualsIgnoreCase(container, "wtv"))
 		{
-			return new Object[] {MediaFormatProfile.WTV};
+			return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {MediaFormatProfile.WTV}));
 		}
 
 		if (StringHelper.EqualsIgnoreCase(container, "3gp"))
@@ -64,13 +64,13 @@ public class MediaFormatProfileResolver
 
 		if (StringHelper.EqualsIgnoreCase(container, "ogv") || StringHelper.EqualsIgnoreCase(container, "ogg"))
 		{
-			return new Object[] {MediaFormatProfile.OGV};
+			return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {MediaFormatProfile.OGV}));
 		}
 
 		return new java.util.ArrayList<MediaFormatProfile>();
 	}
 
-	private Iterable<MediaFormatProfile> ResolveVideoMPEG2TSFormat(String videoCodec, String audioCodec, Integer width, Integer height, TransportStreamTimestamp timestampType)
+	private java.util.ArrayList<MediaFormatProfile> ResolveVideoMPEG2TSFormat(String videoCodec, String audioCodec, Integer width, Integer height, TransportStreamTimestamp timestampType)
 	{
 		String suffix = "";
 
@@ -108,41 +108,41 @@ public class MediaFormatProfileResolver
 		{
 			if (StringHelper.EqualsIgnoreCase(audioCodec, "lpcm"))
 			{
-				return new Object[] {MediaFormatProfile.AVC_TS_HD_50_LPCM_T};
+				return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {MediaFormatProfile.AVC_TS_HD_50_LPCM_T}));
 			}
 
 			if (StringHelper.EqualsIgnoreCase(audioCodec, "dts"))
 			{
 				if (timestampType == TransportStreamTimestamp.None)
 				{
-					return new Object[] {MediaFormatProfile.AVC_TS_HD_DTS_ISO};
+					return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {MediaFormatProfile.AVC_TS_HD_DTS_ISO}));
 				}
-				return new Object[] {MediaFormatProfile.AVC_TS_HD_DTS_T};
+				return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {MediaFormatProfile.AVC_TS_HD_DTS_T}));
 			}
 
 			if (StringHelper.EqualsIgnoreCase(audioCodec, "mp3"))
 			{
 				if (timestampType == TransportStreamTimestamp.None)
 				{
-					return new MediaFormatProfile[] {ValueOf(String.format("AVC_TS_HP_%1$sD_MPEG1_L2_ISO", resolution))};
+					return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {ValueOf(String.format("AVC_TS_HP_%1$sD_MPEG1_L2_ISO", resolution))}));
 				}
 
-				return new MediaFormatProfile[] {ValueOf(String.format("AVC_TS_HP_%1$sD_MPEG1_L2_T", resolution))};
+				return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {ValueOf(String.format("AVC_TS_HP_%1$sD_MPEG1_L2_T", resolution))}));
 			}
 
 			if (StringHelper.EqualsIgnoreCase(audioCodec, "aac"))
 			{
-				return new MediaFormatProfile[] {ValueOf(String.format("AVC_TS_MP_%1$sD_AAC_MULT5%2$s", resolution, suffix))};
+				return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {ValueOf(String.format("AVC_TS_MP_%1$sD_AAC_MULT5%2$s", resolution, suffix))}));
 			}
 
 			if (StringHelper.EqualsIgnoreCase(audioCodec, "mp3"))
 			{
-				return new MediaFormatProfile[] {ValueOf(String.format("AVC_TS_MP_%1$sD_MPEG1_L3%2$s", resolution, suffix))};
+				return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {ValueOf(String.format("AVC_TS_MP_%1$sD_MPEG1_L3%2$s", resolution, suffix))}));
 			}
 
 			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || StringHelper.EqualsIgnoreCase(audioCodec, "ac3"))
 			{
-				return new MediaFormatProfile[] {ValueOf(String.format("AVC_TS_MP_%1$sD_AC3%2$s", resolution, suffix))};
+				return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {ValueOf(String.format("AVC_TS_MP_%1$sD_AC3%2$s", resolution, suffix))}));
 			}
 		}
 		else if (StringHelper.EqualsIgnoreCase(videoCodec, "vc1"))
@@ -151,15 +151,15 @@ public class MediaFormatProfileResolver
 			{
 				if ((width != null && width > 720) || (height != null && height > 576))
 				{
-					return new Object[] {MediaFormatProfile.VC1_TS_AP_L2_AC3_ISO};
+					return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {MediaFormatProfile.VC1_TS_AP_L2_AC3_ISO}));
 				}
-				return new Object[] {MediaFormatProfile.VC1_TS_AP_L1_AC3_ISO};
+				return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {MediaFormatProfile.VC1_TS_AP_L1_AC3_ISO}));
 			}
 			if (StringHelper.EqualsIgnoreCase(audioCodec, "dts"))
 			{
 				suffix = StringHelper.EqualsIgnoreCase(suffix, "_ISO") ? suffix : "_T";
 
-				return new MediaFormatProfile[] {ValueOf(String.format("VC1_TS_HD_DTS%1$s", suffix))};
+				return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {ValueOf(String.format("VC1_TS_HD_DTS%1$s", suffix))}));
 			}
 
 		}
@@ -167,19 +167,19 @@ public class MediaFormatProfileResolver
 		{
 			if (StringHelper.EqualsIgnoreCase(audioCodec, "aac"))
 			{
-				return new MediaFormatProfile[] {ValueOf(String.format("MPEG4_P2_TS_ASP_AAC%1$s", suffix))};
+				return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {ValueOf(String.format("MPEG4_P2_TS_ASP_AAC%1$s", suffix))}));
 			}
 			if (StringHelper.EqualsIgnoreCase(audioCodec, "mp3"))
 			{
-				return new MediaFormatProfile[] {ValueOf(String.format("MPEG4_P2_TS_ASP_MPEG1_L3%1$s", suffix))};
+				return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {ValueOf(String.format("MPEG4_P2_TS_ASP_MPEG1_L3%1$s", suffix))}));
 			}
 			if (StringHelper.EqualsIgnoreCase(audioCodec, "mp2"))
 			{
-				return new MediaFormatProfile[] {ValueOf(String.format("MPEG4_P2_TS_ASP_MPEG2_L2%1$s", suffix))};
+				return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {ValueOf(String.format("MPEG4_P2_TS_ASP_MPEG2_L2%1$s", suffix))}));
 			}
 			if (StringHelper.EqualsIgnoreCase(audioCodec, "ac3"))
 			{
-				return new MediaFormatProfile[] {ValueOf(String.format("MPEG4_P2_TS_ASP_AC3%1$s", suffix))};
+				return new java.util.ArrayList<MediaFormatProfile>(java.util.Arrays.asList(new MediaFormatProfile[] {ValueOf(String.format("MPEG4_P2_TS_ASP_AC3%1$s", suffix))}));
 			}
 		}
 

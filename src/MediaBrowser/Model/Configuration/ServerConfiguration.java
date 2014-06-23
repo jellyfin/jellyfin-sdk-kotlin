@@ -692,7 +692,9 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 
 		setMinResumePct(5);
 		setMaxResumePct(90);
-		setMinResumeDurationSeconds((int)java.lang.Math.round(TimeSpan.FromMinutes(5).TotalSeconds));
+
+		// 5 minutes
+		setMinResumeDurationSeconds(300);
 
 		setRealtimeMonitorDelay(30);
 

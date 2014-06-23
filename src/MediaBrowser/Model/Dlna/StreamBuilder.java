@@ -588,9 +588,9 @@ public class StreamBuilder
 				}
 				case VideoFramerate:
 				{
-						double num = 0;
-						tangible.RefObject<Double> tempRef_num5 = new tangible.RefObject<Double>(num);
-						boolean tempVar5 = DoubleHelper.TryParseCultureInvariant(value, tempRef_num5);
+						float num = 0F;
+						tangible.RefObject<Float> tempRef_num5 = new tangible.RefObject<Float>(num);
+						boolean tempVar5 = FloatHelper.TryParseCultureInvariant(value, tempRef_num5);
 							num = tempRef_num5.argValue;
 						if (tempVar5)
 						{
