@@ -1,6 +1,8 @@
 package MediaBrowser.Model.LiveTv;
 
-public class BaseTimerInfoDto implements INotifyPropertyChanged
+import MediaBrowser.Model.Extensions.*;
+
+public class BaseTimerInfoDto implements IHasPropertyChangedEvent
 {
 	/** 
 	 Occurs when a property value changes.

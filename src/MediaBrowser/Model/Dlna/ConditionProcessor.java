@@ -166,6 +166,38 @@ public class ConditionProcessor
 		return false;
 	}
 
+	private boolean IsConditionSatisfied(ProfileCondition condition, Float currentValue)
+	{
+		if (currentValue == null)
+		{
+			// If the value is unknown, it satisfies if not marked as required
+			return !condition.getIsRequired();
+		}
+
+		float expected = 0F;
+		tangible.RefObject<Float> tempRef_expected = new tangible.RefObject<Float>(expected);
+		boolean tempVar = FloatHelper.TryParseCultureInvariant(condition.getValue(), tempRef_expected);
+			expected = tempRef_expected.argValue;
+		if (tempVar)
+		{
+			switch (condition.getCondition())
+			{
+				case Equals:
+					return currentValue.equals(expected);
+				case GreaterThanEqual:
+					return currentValue >= expected;
+				case LessThanEqual:
+					return currentValue <= expected;
+				case NotEquals:
+					return !currentValue.equals(expected);
+				default:
+					throw new UnsupportedOperationException("Unexpected ProfileConditionType");
+			}
+		}
+
+		return false;
+	}
+
 	private boolean IsConditionSatisfied(ProfileCondition condition, Double currentValue)
 	{
 		if (currentValue == null)

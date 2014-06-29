@@ -343,6 +343,12 @@ public class StreamBuilder
 
 				playlistItem.setVideoBitrate(Math.min(videoBitrate, currentValue));
 			}
+
+			// Hate to hard-code this, but it's still probably better than being subjected to encoder defaults
+			if (playlistItem.getVideoBitrate() == null)
+			{
+				playlistItem.setVideoBitrate(5000000);
+			}
 		}
 
 		return playlistItem;

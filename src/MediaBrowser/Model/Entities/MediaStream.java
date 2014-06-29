@@ -317,8 +317,7 @@ public class MediaStream
 		}
 
 		String tempVar = getCodec();
-//C# TO JAVA CONVERTER TODO TASK: There is no equivalent to implicit typing in Java:
-		var codec = (tempVar != null) ? tempVar : "";
+		String codec = (tempVar != null) ? tempVar : "";
 
 		return StringHelper.IndexOfIgnoreCase(codec, "pgs") == -1 && StringHelper.IndexOfIgnoreCase(codec, "dvd") == -1;
 	}

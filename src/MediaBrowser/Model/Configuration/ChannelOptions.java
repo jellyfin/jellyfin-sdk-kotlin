@@ -1,10 +1,8 @@
 package MediaBrowser.Model.Configuration;
 
-import MediaBrowser.Model.Weather.*;
-
 public class ChannelOptions
 {
-	private Integer privatePreferredStreamingWidth = null;
+	private Integer privatePreferredStreamingWidth;
 	public final Integer getPreferredStreamingWidth()
 	{
 		return privatePreferredStreamingWidth;
@@ -23,7 +21,7 @@ public class ChannelOptions
 	{
 		privateDownloadPath = value;
 	}
-	private Integer privateMaxDownloadAge = null;
+	private Integer privateMaxDownloadAge;
 	public final Integer getMaxDownloadAge()
 	{
 		return privateMaxDownloadAge;

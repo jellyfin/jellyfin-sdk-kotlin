@@ -1,11 +1,12 @@
 package MediaBrowser.Model.Entities;
 
 import MediaBrowser.Model.Drawing.*;
+import MediaBrowser.Model.Extensions.*;
 
 /** 
  Defines the display preferences for any item that supports them (usually Folders)
 */
-public class DisplayPreferences implements INotifyPropertyChanged
+public class DisplayPreferences implements IHasPropertyChangedEvent
 {
 	/** 
 	 Occurs when [property changed].

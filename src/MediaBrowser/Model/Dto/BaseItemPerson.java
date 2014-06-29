@@ -1,11 +1,13 @@
 package MediaBrowser.Model.Dto;
 
+import MediaBrowser.Model.Extensions.*;
+
 /** 
  This is used by the api to get information about a Person within a BaseItem
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, Role = {Role}, Type = {Type}")] public class BaseItemPerson : INotifyPropertyChanged
-public class BaseItemPerson implements INotifyPropertyChanged
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, Role = {Role}, Type = {Type}")] public class BaseItemPerson : IHasPropertyChangedEvent
+public class BaseItemPerson implements IHasPropertyChangedEvent
 {
 	/** 
 	 Gets or sets the name.

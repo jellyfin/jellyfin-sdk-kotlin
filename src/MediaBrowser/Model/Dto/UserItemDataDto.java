@@ -1,9 +1,11 @@
 package MediaBrowser.Model.Dto;
 
+import MediaBrowser.Model.Extensions.*;
+
 /** 
  Class UserItemDataDto
 */
-public class UserItemDataDto implements INotifyPropertyChanged
+public class UserItemDataDto implements IHasPropertyChangedEvent
 {
 	/** 
 	 Gets or sets the rating.

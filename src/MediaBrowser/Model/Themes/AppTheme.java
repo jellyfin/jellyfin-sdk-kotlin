@@ -44,7 +44,7 @@ public class AppTheme
 
 	public AppTheme()
 	{
-		setOptions(new java.util.HashMap<String, String>(StringComparer.Ordinal));
+		setOptions(new java.util.HashMap<String, String>());
 
 		setImages(new java.util.ArrayList<ThemeImage>());
 	}

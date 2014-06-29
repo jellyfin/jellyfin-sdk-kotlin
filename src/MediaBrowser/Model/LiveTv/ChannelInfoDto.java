@@ -2,14 +2,15 @@ package MediaBrowser.Model.LiveTv;
 
 import MediaBrowser.Model.Dto.*;
 import MediaBrowser.Model.Entities.*;
+import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.Library.*;
 
 /** 
  Class ChannelInfoDto
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, Number = {Number}")] public class ChannelInfoDto : INotifyPropertyChanged, IItemDto
-public class ChannelInfoDto implements INotifyPropertyChanged, IItemDto
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, Number = {Number}")] public class ChannelInfoDto : IHasPropertyChangedEvent, IItemDto
+public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 {
 	/** 
 	 Gets or sets the name.

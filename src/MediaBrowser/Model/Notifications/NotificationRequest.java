@@ -112,7 +112,7 @@ public class NotificationRequest
 		setUserIds(new java.util.ArrayList<String>());
 		setDate(java.util.Date.UtcNow);
 
-		setVariables(new java.util.HashMap<String, String>(StringComparer.OrdinalIgnoreCase));
+		setVariables(new java.util.HashMap<String, String>());
 
 		setExcludeUserIds(new java.util.ArrayList<String>());
 	}

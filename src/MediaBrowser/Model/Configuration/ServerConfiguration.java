@@ -598,11 +598,15 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		privateUICulture = value;
 	}
 
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [Obsolete] public DlnaOptions DlnaOptions {get;set;}
 	private DlnaOptions privateDlnaOptions;
+	@Deprecated
 	public final DlnaOptions getDlnaOptions()
 	{
 		return privateDlnaOptions;
 	}
+	@Deprecated
 	public final void setDlnaOptions(DlnaOptions value)
 	{
 		privateDlnaOptions = value;
@@ -661,11 +665,16 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		privateChannelOptions = value;
 	}
+
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [Obsolete] public ChapterOptions ChapterOptions {get;set;}
 	private ChapterOptions privateChapterOptions;
+	@Deprecated
 	public final ChapterOptions getChapterOptions()
 	{
 		return privateChapterOptions;
 	}
+	@Deprecated
 	public final void setChapterOptions(ChapterOptions value)
 	{
 		privateChapterOptions = value;
@@ -714,11 +723,9 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 
 		setSeasonZeroDisplayName("Specials");
 
-		setLiveTvOptions(new LiveTvOptions());
-
-		setTvFileOrganizationOptions(new TvFileOrganizationOptions());
-
 		setEnableRealtimeMonitor(true);
+
+		setUICulture("en-us");
 
 		MetadataOptions tempVar = new MetadataOptions(1, 1280);
 		tempVar.setItemType("Book");
@@ -728,19 +735,15 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		tempVar3.setItemType("MusicArtist");
 		MetadataOptions tempVar4 = new MetadataOptions(0, 1280);
 		tempVar4.setItemType("Season");
-		java.util.ArrayList<MetadataOptions> options = new java.util.ArrayList<MetadataOptions>(java.util.Arrays.asList(new MetadataOptions[] {tempVar, tempVar2, tempVar3, tempVar4}));
-
-		setMetadataOptions(options.toArray(new MetadataOptions[0]));
-
-		setDlnaOptions(new DlnaOptions());
-
-		setUICulture("en-us");
+		setMetadataOptions(new java.util.ArrayList<MetadataOptions>(java.util.Arrays.asList(new MetadataOptions[] {tempVar, tempVar2, tempVar3, tempVar4})).ToArray());
 
 		setNotificationOptions(new NotificationOptions());
 
 		setSubtitleOptions(new SubtitleOptions());
 
 		setChannelOptions(new ChannelOptions());
-		setChapterOptions(new ChapterOptions());
+
+		setLiveTvOptions(new LiveTvOptions());
+		setTvFileOrganizationOptions(new TvFileOrganizationOptions());
 	}
 }

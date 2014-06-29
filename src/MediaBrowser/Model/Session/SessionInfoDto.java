@@ -1,10 +1,11 @@
 package MediaBrowser.Model.Session;
 
 import MediaBrowser.Model.Entities.*;
+import MediaBrowser.Model.Extensions.*;
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Client = {Client}, Username = {UserName}")] public class SessionInfoDto : INotifyPropertyChanged
-public class SessionInfoDto implements INotifyPropertyChanged
+//ORIGINAL LINE: [DebuggerDisplay("Client = {Client}, Username = {UserName}")] public class SessionInfoDto : IHasPropertyChangedEvent
+public class SessionInfoDto implements IHasPropertyChangedEvent
 {
 	/** 
 	 Gets or sets a value indicating whether this instance can seek.

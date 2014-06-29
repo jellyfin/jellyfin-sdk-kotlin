@@ -131,6 +131,11 @@ public enum ItemFields
 	Revenue,
 
 	/** 
+	 The short overview
+	*/
+	ShortOverview,
+
+	/** 
 	 The screenshot image tags
 	*/
 	ScreenshotImageTags,

@@ -1,13 +1,14 @@
 package MediaBrowser.Model.Dto;
 
 import MediaBrowser.Model.Configuration.*;
+import MediaBrowser.Model.Extensions.*;
 
 /** 
  Class UserDto
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, HasPassword = {HasPassword}")] public class UserDto : INotifyPropertyChanged, IItemDto
-public class UserDto implements INotifyPropertyChanged, IItemDto
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, HasPassword = {HasPassword}")] public class UserDto : IHasPropertyChangedEvent, IItemDto
+public class UserDto implements IHasPropertyChangedEvent, IItemDto
 {
 	/** 
 	 Gets or sets the name.

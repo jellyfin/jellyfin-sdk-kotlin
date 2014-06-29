@@ -10,8 +10,8 @@ import MediaBrowser.Model.Providers.*;
  This holds information about a BaseItem in a format that is convenient for the client.
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, Type = {Type}")] public class BaseItemDto : IHasProviderIds, INotifyPropertyChanged, IItemDto
-public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IItemDto
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, Type = {Type}")] public class BaseItemDto : IHasProviderIds, IHasPropertyChangedEvent, IItemDto
+public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, IItemDto
 {
 	/** 
 	 Gets or sets the name.
@@ -423,6 +423,21 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 	public final void setOverview(String value)
 	{
 		privateOverview = value;
+	}
+
+	/** 
+	 Gets or sets the short overview.
+	 
+	 <value>The short overview.</value>
+	*/
+	private String privateShortOverview;
+	public final String getShortOverview()
+	{
+		return privateShortOverview;
+	}
+	public final void setShortOverview(String value)
+	{
+		privateShortOverview = value;
 	}
 
 	/** 
@@ -1972,7 +1987,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 //ORIGINAL LINE: [IgnoreDataMember] public bool IsVideo
 	public final boolean getIsVideo()
 	{
-		return StringHelper.EqualsIgnoreCase(getMediaType(), Entities.MediaType.Video);
+		return StringHelper.EqualsIgnoreCase(getMediaType(), MediaBrowser.Model.Entities.MediaType.Video);
 	}
 
 	/** 
@@ -1984,7 +1999,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 //ORIGINAL LINE: [IgnoreDataMember] public bool IsAudio
 	public final boolean getIsAudio()
 	{
-		return StringHelper.EqualsIgnoreCase(getMediaType(), Entities.MediaType.Audio);
+		return StringHelper.EqualsIgnoreCase(getMediaType(), MediaBrowser.Model.Entities.MediaType.Audio);
 	}
 
 	/** 
@@ -1996,7 +2011,7 @@ public class BaseItemDto implements IHasProviderIds, INotifyPropertyChanged, IIt
 //ORIGINAL LINE: [IgnoreDataMember] public bool IsGame
 	public final boolean getIsGame()
 	{
-		return StringHelper.EqualsIgnoreCase(getMediaType(), Entities.MediaType.Game);
+		return StringHelper.EqualsIgnoreCase(getMediaType(), MediaBrowser.Model.Entities.MediaType.Game);
 	}
 
 	/** 

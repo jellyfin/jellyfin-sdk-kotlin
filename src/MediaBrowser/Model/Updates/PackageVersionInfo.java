@@ -51,35 +51,6 @@ public class PackageVersionInfo
 	}
 
 	/** 
-	 The _version
-	*/
-	private Version _version;
-	/** 
-	 Gets or sets the version.
-	 Had to make this an interpreted property since Protobuf can't handle Version
-	 
-	 <value>The version.</value>
-	*/
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public Version version
-	public final Version getversion()
-	{
-		return (_version != null) ? _version : (_version = new Version(ValueOrDefault(getversionStr(), "0.0.0.1")));
-	}
-
-	/** 
-	 Values the or default.
-	 
-	 @param str The STR.
-	 @param def The def.
-	 @return System.String.
-	*/
-	private static String ValueOrDefault(String str, String def)
-	{
-		return tangible.DotNetToJavaStringHelper.isNullOrEmpty(str) ? def : str;
-	}
-
-	/** 
 	 Gets or sets the classification.
 	 
 	 <value>The classification.</value>

@@ -1,11 +1,13 @@
 package MediaBrowser.Model.LiveTv;
 
+import MediaBrowser.Model.Extensions.*;
+
 /** 
  Class RecordingGroupDto.
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, Count = {RecordingCount}")] public class RecordingGroupDto : INotifyPropertyChanged
-public class RecordingGroupDto implements INotifyPropertyChanged
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, Count = {RecordingCount}")] public class RecordingGroupDto : IHasPropertyChangedEvent
+public class RecordingGroupDto implements IHasPropertyChangedEvent
 {
 	/** 
 	 Gets or sets the name.

@@ -34,6 +34,6 @@ public class GeneralCommand
 
 	public GeneralCommand()
 	{
-		setArguments(new java.util.HashMap<String, String>(StringComparer.OrdinalIgnoreCase));
+		setArguments(new java.util.HashMap<String, String>());
 	}
 }

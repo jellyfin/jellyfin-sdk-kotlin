@@ -1,7 +1,5 @@
 package MediaBrowser.Model.Configuration;
 
-import MediaBrowser.Model.Weather.*;
-
 public class ChapterOptions
 {
 	private boolean privateEnableMovieChapterImageExtraction;

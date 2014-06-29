@@ -25,11 +25,11 @@ public class CheckForUpdateResult
 	 
 	 <value>The available version.</value>
 	*/
-	public final Version getAvailableVersion()
+	public final String getAvailableVersion()
 	{
-		return getPackage() != null ? getPackage().getversion() : new Version(0, 0);
+		return getPackage() != null ? getPackage().getversionStr() : "0.0.0.1";
 	}
-	public final void setAvailableVersion(Version value)
+	public final void setAvailableVersion(String value)
 	{
 	}
 
