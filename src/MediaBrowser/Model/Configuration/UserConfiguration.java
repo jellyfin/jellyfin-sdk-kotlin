@@ -215,6 +215,16 @@ public class UserConfiguration
 		privateBlockedChannels = value;
 	}
 
+	private String[] privateDisplayChannelsWithinViews;
+	public final String[] getDisplayChannelsWithinViews()
+	{
+		return privateDisplayChannelsWithinViews;
+	}
+	public final void setDisplayChannelsWithinViews(String[] value)
+	{
+		privateDisplayChannelsWithinViews = value;
+	}
+
 	private String[] privateExcludeFoldersFromGrouping;
 	public final String[] getExcludeFoldersFromGrouping()
 	{
@@ -244,6 +254,15 @@ public class UserConfiguration
 	{
 		privateSubtitleMode = value;
 	}
+	private boolean privateDisplayCollectionsView;
+	public final boolean getDisplayCollectionsView()
+	{
+		return privateDisplayCollectionsView;
+	}
+	public final void setDisplayCollectionsView(boolean value)
+	{
+		privateDisplayCollectionsView = value;
+	}
 
 	/** 
 	 Initializes a new instance of the <see cref="UserConfiguration" /> class.
@@ -259,9 +278,12 @@ public class UserConfiguration
 		setEnableLiveTvAccess(true);
 
 		setBlockedMediaFolders(new String[] { });
+		setDisplayChannelsWithinViews(new String[] { });
 		setBlockedChannels(new String[] { });
 		setBlockUnratedItems(new UnratedItem[] { });
 
 		setExcludeFoldersFromGrouping(new String[] { });
+
+		setDisplayCollectionsView(true);
 	}
 }

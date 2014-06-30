@@ -143,7 +143,10 @@ public class StreamBuilder
 					{
 						if (i.getType() == CodecType.Audio && i.ContainsCodec(audioCodec))
 						{
-							conditions.addAll(i.getConditions());
+							for (ProfileCondition c : i.getConditions())
+							{
+								conditions.add(c);
+							}
 						}
 					}
 
@@ -207,7 +210,10 @@ public class StreamBuilder
 			java.util.ArrayList<ProfileCondition> audioTranscodingConditions = new java.util.ArrayList<ProfileCondition>();
 			for (CodecProfile i : audioCodecProfiles)
 			{
-					audioTranscodingConditions.addAll(i.getConditions());
+				for (ProfileCondition c : i.getConditions())
+				{
+					audioTranscodingConditions.add(c);
+				}
 			}
 
 			ApplyTranscodingConditions(playlistItem, audioTranscodingConditions);
@@ -293,7 +299,10 @@ public class StreamBuilder
 			{
 				if (i.getType() == CodecType.Video && i.ContainsCodec(transcodingProfile.getVideoCodec()))
 				{
-					videoTranscodingConditions.addAll(i.getConditions());
+					for (ProfileCondition c : i.getConditions())
+					{
+						videoTranscodingConditions.add(c);
+					}
 					break;
 				}
 			}
@@ -304,7 +313,10 @@ public class StreamBuilder
 			{
 				if (i.getType() == CodecType.VideoAudio && i.ContainsCodec(transcodingProfile.getAudioCodec()))
 				{
-					audioTranscodingConditions.addAll(i.getConditions());
+					for (ProfileCondition c : i.getConditions())
+					{
+						audioTranscodingConditions.add(c);
+					}
 					break;
 				}
 			}
@@ -379,7 +391,10 @@ public class StreamBuilder
 		{
 			if (i.getType() == DlnaProfileType.Video && ListHelper.ContainsIgnoreCase(i.GetContainers(), container))
 			{
-				conditions.addAll(i.getConditions());
+				for (ProfileCondition c : i.getConditions())
+				{
+					conditions.add(c);
+				}
 			}
 		}
 
@@ -423,7 +438,10 @@ public class StreamBuilder
 		{
 			if (i.getType() == CodecType.Video && i.ContainsCodec(videoCodec))
 			{
-				conditions.addAll(i.getConditions());
+				for (ProfileCondition c : i.getConditions())
+				{
+					conditions.add(c);
+				}
 			}
 		}
 
@@ -449,7 +467,10 @@ public class StreamBuilder
 			{
 				if (i.getType() == CodecType.VideoAudio && i.ContainsCodec(audioCodec))
 				{
-					conditions.addAll(i.getConditions());
+					for (ProfileCondition c : i.getConditions())
+					{
+						conditions.add(c);
+					}
 				}
 			}
 

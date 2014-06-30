@@ -158,21 +158,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
-	 Gets or sets the metadata refresh days.
-	 
-	 <value>The metadata refresh days.</value>
-	*/
-	private int privateMetadataRefreshDays;
-	public final int getMetadataRefreshDays()
-	{
-		return privateMetadataRefreshDays;
-	}
-	public final void setMetadataRefreshDays(int value)
-	{
-		privateMetadataRefreshDays = value;
-	}
-
-	/** 
 	 Gets or sets a value indicating whether [save local meta].
 	 
 	 <value><c>true</c> if [save local meta]; otherwise, <c>false</c>.</value>
@@ -185,21 +170,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setSaveLocalMeta(boolean value)
 	{
 		privateSaveLocalMeta = value;
-	}
-
-	/** 
-	 Gets or sets a value indicating whether [refresh item images].
-	 
-	 <value><c>true</c> if [refresh item images]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean privateRefreshItemImages;
-	public final boolean getRefreshItemImages()
-	{
-		return privateRefreshItemImages;
-	}
-	public final void setRefreshItemImages(boolean value)
-	{
-		privateRefreshItemImages = value;
 	}
 
 	/** 
@@ -598,15 +568,11 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		privateUICulture = value;
 	}
 
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [Obsolete] public DlnaOptions DlnaOptions {get;set;}
 	private DlnaOptions privateDlnaOptions;
-	@Deprecated
 	public final DlnaOptions getDlnaOptions()
 	{
 		return privateDlnaOptions;
 	}
-	@Deprecated
 	public final void setDlnaOptions(DlnaOptions value)
 	{
 		privateDlnaOptions = value;
@@ -665,19 +631,24 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		privateChannelOptions = value;
 	}
-
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [Obsolete] public ChapterOptions ChapterOptions {get;set;}
 	private ChapterOptions privateChapterOptions;
-	@Deprecated
 	public final ChapterOptions getChapterOptions()
 	{
 		return privateChapterOptions;
 	}
-	@Deprecated
 	public final void setChapterOptions(ChapterOptions value)
 	{
 		privateChapterOptions = value;
+	}
+
+	private boolean privateDefaultMetadataSettingsApplied;
+	public final boolean getDefaultMetadataSettingsApplied()
+	{
+		return privateDefaultMetadataSettingsApplied;
+	}
+	public final void setDefaultMetadataSettingsApplied(boolean value)
+	{
+		privateDefaultMetadataSettingsApplied = value;
 	}
 
 	/** 
@@ -711,7 +682,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 
 		setPathSubstitutions(new PathSubstitution[] { });
 
-		setMetadataRefreshDays(30);
 		setPreferredMetadataLanguage("en");
 		setMetadataCountryCode("US");
 
@@ -735,13 +705,11 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		tempVar3.setItemType("MusicArtist");
 		MetadataOptions tempVar4 = new MetadataOptions(0, 1280);
 		tempVar4.setItemType("Season");
-		setMetadataOptions(new java.util.ArrayList<MetadataOptions>(java.util.Arrays.asList(new MetadataOptions[] {tempVar, tempVar2, tempVar3, tempVar4})).ToArray());
+		setMetadataOptions(new MetadataOptions[] {tempVar, tempVar2, tempVar3, tempVar4});
 
 		setNotificationOptions(new NotificationOptions());
 
 		setSubtitleOptions(new SubtitleOptions());
-
-		setChannelOptions(new ChannelOptions());
 
 		setLiveTvOptions(new LiveTvOptions());
 		setTvFileOrganizationOptions(new TvFileOrganizationOptions());
