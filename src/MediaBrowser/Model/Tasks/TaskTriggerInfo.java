@@ -70,12 +70,12 @@ public class TaskTriggerInfo
 	 
 	 <value>The day of week.</value>
 	*/
-	private DayOfWeek privateDayOfWeek = null;
-	public final DayOfWeek getDayOfWeek()
+	private java.time.DayOfWeek privateDayOfWeek = null;
+	public final java.time.DayOfWeek getDayOfWeek()
 	{
 		return privateDayOfWeek;
 	}
-	public final void setDayOfWeek(DayOfWeek value)
+	public final void setDayOfWeek(java.time.DayOfWeek value)
 	{
 		privateDayOfWeek = value;
 	}

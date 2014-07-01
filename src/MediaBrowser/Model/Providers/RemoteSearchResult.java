@@ -116,6 +116,6 @@ public class RemoteSearchResult implements IHasProviderIds
 
 	public RemoteSearchResult()
 	{
-		setProviderIds(new java.util.HashMap<String, String>(StringComparer.OrdinalIgnoreCase));
+		setProviderIds(new java.util.HashMap<String, String>());
 	}
 }

@@ -402,7 +402,7 @@ public class DeviceProfile
 
 	public final TranscodingProfile GetAudioTranscodingProfile(String container, String audioCodec)
 	{
-		container = ((container != null) ? container : "").TrimStart('.');
+		container = StringHelper.TrimStart(((container != null) ? container : ""), '.');
 
 		for (TranscodingProfile i : getTranscodingProfiles())
 		{
@@ -428,7 +428,7 @@ public class DeviceProfile
 
 	public final TranscodingProfile GetVideoTranscodingProfile(String container, String audioCodec, String videoCodec)
 	{
-		container = ((container != null) ? container : "").TrimStart('.');
+		container = StringHelper.TrimStart(((container != null) ? container : ""), '.');
 
 		for (TranscodingProfile i : getTranscodingProfiles())
 		{
@@ -460,7 +460,7 @@ public class DeviceProfile
 
 	public final ResponseProfile GetAudioMediaProfile(String container, String audioCodec, Integer audioChannels, Integer audioBitrate)
 	{
-		container = ((container != null) ? container : "").TrimStart('.');
+		container = StringHelper.TrimStart(((container != null) ? container : ""), '.');
 
 		for (ResponseProfile i : getResponseProfiles())
 		{
@@ -505,7 +505,7 @@ public class DeviceProfile
 
 	public final ResponseProfile GetImageMediaProfile(String container, Integer width, Integer height)
 	{
-		container = ((container != null) ? container : "").TrimStart('.');
+		container = StringHelper.TrimStart(((container != null) ? container : ""), '.');
 
 		for (ResponseProfile i : getResponseProfiles())
 		{
@@ -544,7 +544,7 @@ public class DeviceProfile
 
 	public final ResponseProfile GetVideoMediaProfile(String container, String audioCodec, String videoCodec, Integer audioBitrate, Integer audioChannels, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic)
 	{
-		container = ((container != null) ? container : "").TrimStart('.');
+		container = StringHelper.TrimStart(((container != null) ? container : ""), '.');
 
 		for (ResponseProfile i : getResponseProfiles())
 		{

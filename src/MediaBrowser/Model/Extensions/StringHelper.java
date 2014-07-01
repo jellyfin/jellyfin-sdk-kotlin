@@ -61,4 +61,16 @@ public final class StringHelper
 	{
 		return (new Double(val)).toString(CultureInfo.InvariantCulture);
 	}
+
+	/** 
+	 Trims the start.
+	 
+	 @param str The string.
+	 @param c The c.
+	 @return System.String.
+	*/
+	public static String TrimStart(String str, char c)
+	{
+		return tangible.DotNetToJavaStringHelper.trimStart(str, c);
+	}
 }

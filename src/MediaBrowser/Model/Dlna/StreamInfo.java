@@ -433,7 +433,13 @@ public class StreamInfo
 		{
 			Integer totalBitrate = getTargetTotalBitrate();
 
-			return totalBitrate != null ? java.lang.Math.round(totalBitrate * TimeSpan.FromTicks(getRunTimeTicks()).TotalSeconds) : (Long)null;
+			double totalSeconds = getRunTimeTicks();
+				// Convert to ms
+			totalSeconds /= 10000;
+				// Convert to seconds
+			totalSeconds /= 1000;
+
+			return totalBitrate != null ? java.lang.Math.round(totalBitrate * totalSeconds) : (Long)null;
 		}
 
 		return null;
@@ -482,7 +488,10 @@ public class StreamInfo
 			tempVar.setHeight(videoStream.getHeight());
 			ImageSize size = tempVar;
 
-			ImageSize newSize = DrawingUtils.Resize(size.clone(), null, null, getMaxWidth(), getMaxHeight());
+			Double maxWidth = getMaxWidth() != null ? (double)getMaxWidth() : (Double)null;
+			Double maxHeight = getMaxHeight() != null ? (double)getMaxHeight() : (Double)null;
+
+			ImageSize newSize = DrawingUtils.Resize(size.clone(), null, null, maxWidth, maxHeight);
 
 			return (int)newSize.getWidth();
 		}
@@ -501,7 +510,10 @@ public class StreamInfo
 			tempVar.setHeight(videoStream.getHeight());
 			ImageSize size = tempVar;
 
-			ImageSize newSize = DrawingUtils.Resize(size.clone(), null, null, getMaxWidth(), getMaxHeight());
+			Double maxWidth = getMaxWidth() != null ? (double)getMaxWidth() : (Double)null;
+			Double maxHeight = getMaxHeight() != null ? (double)getMaxHeight() : (Double)null;
+
+			ImageSize newSize = DrawingUtils.Resize(size.clone(), null, null, maxWidth, maxHeight);
 
 			return (int)newSize.getHeight();
 		}
