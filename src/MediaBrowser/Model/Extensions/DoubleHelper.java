@@ -14,6 +14,12 @@ public final class DoubleHelper
 	*/
 	public static boolean TryParseCultureInvariant(String s, tangible.RefObject<Double> result)
 	{
-		return Double.TryParse(s, NumberStyles.Any, CultureInfo.InvariantCulture, result);
+        try {
+            result.argValue = Double.parseDouble(s);
+            return true;
+        }
+        catch (NumberFormatException ex) {
+            return false;
+        }
 	}
 }

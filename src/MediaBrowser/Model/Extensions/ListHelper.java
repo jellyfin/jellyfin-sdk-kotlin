@@ -9,7 +9,11 @@ public final class ListHelper
 			throw new IllegalArgumentException("value");
 		}
 
-		return list.contains(value, StringComparer.OrdinalIgnoreCase);
+        for  (String s : list) {
+            if (s.equalsIgnoreCase(value)) return true;
+        }
+
+		return false;
 	}
 	public static boolean ContainsIgnoreCase(String[] list, String value)
 	{
@@ -18,6 +22,10 @@ public final class ListHelper
 			throw new IllegalArgumentException("value");
 		}
 
-		return list.Contains(value, StringComparer.OrdinalIgnoreCase);
+        for  (String s : list) {
+            if (s.equalsIgnoreCase(value)) return true;
+        }
+
+        return false;
 	}
 }

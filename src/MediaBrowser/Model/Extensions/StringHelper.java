@@ -14,7 +14,9 @@ public final class StringHelper
 	*/
 	public static boolean EqualsIgnoreCase(String str1, String str2)
 	{
-		return String.equals(str1, str2, StringComparison.OrdinalIgnoreCase);
+		if (str1 == null && str2 == null) return true;
+
+        return str1.equalsIgnoreCase(str2);
 	}
 
 	/** 
@@ -26,7 +28,7 @@ public final class StringHelper
 	*/
 	public static int IndexOfIgnoreCase(String str, String value)
 	{
-		return str.indexOf(value, StringComparison.OrdinalIgnoreCase);
+		return str.toLowerCase().indexOf(value.toLowerCase());
 	}
 
 	/** 
@@ -37,7 +39,7 @@ public final class StringHelper
 	*/
 	public static String ToStringCultureInvariant(int val)
 	{
-		return (new Integer(val)).toString(CultureInfo.InvariantCulture);
+        return String.valueOf(val);
 	}
 
 	/** 
@@ -48,7 +50,7 @@ public final class StringHelper
 	*/
 	public static String ToStringCultureInvariant(long val)
 	{
-		return (new Long(val)).toString(CultureInfo.InvariantCulture);
+		return String.valueOf(val);
 	}
 
 	/** 
@@ -59,7 +61,7 @@ public final class StringHelper
 	*/
 	public static String ToStringCultureInvariant(double val)
 	{
-		return (new Double(val)).toString(CultureInfo.InvariantCulture);
+		return String.valueOf(val);
 	}
 
 	/** 

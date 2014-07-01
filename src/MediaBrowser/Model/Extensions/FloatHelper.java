@@ -11,6 +11,12 @@ public final class FloatHelper
 	*/
 	public static boolean TryParseCultureInvariant(String s, tangible.RefObject<Float> result)
 	{
-		return Float.TryParse(s, NumberStyles.Any, CultureInfo.InvariantCulture, result);
+        try {
+            result.argValue = Float.parseFloat(s);
+            return true;
+        }
+        catch (NumberFormatException ex) {
+            return false;
+        }
 	}
 }

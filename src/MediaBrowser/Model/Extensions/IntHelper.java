@@ -14,6 +14,12 @@ public final class IntHelper
 	*/
 	public static boolean TryParseCultureInvariant(String s, tangible.RefObject<Integer> result)
 	{
-		return Integer.TryParse(s, NumberStyles.Any, CultureInfo.InvariantCulture, result);
+        try {
+            result.argValue = Integer.parseInt(s);
+            return true;
+        }
+        catch (NumberFormatException ex) {
+            return false;
+        }
 	}
 }

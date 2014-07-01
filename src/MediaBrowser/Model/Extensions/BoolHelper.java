@@ -11,6 +11,7 @@ public final class BoolHelper
 	*/
 	public static boolean TryParseCultureInvariant(String s, tangible.RefObject<Boolean> result)
 	{
-		return Boolean.TryParse(s, result);
+        result.argValue = Boolean.parseBoolean(s);
+        return true;
 	}
 }
