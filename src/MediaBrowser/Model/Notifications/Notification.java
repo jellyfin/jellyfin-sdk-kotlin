@@ -81,9 +81,4 @@ public class Notification
 	{
 		privateLevel = value;
 	}
-
-	public Notification()
-	{
-		setDate(java.util.Date.UtcNow);
-	}
 }

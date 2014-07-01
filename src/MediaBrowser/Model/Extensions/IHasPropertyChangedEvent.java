@@ -1,5 +1,5 @@
 package MediaBrowser.Model.Extensions;
 
-public interface IHasPropertyChangedEvent extends INotifyPropertyChanged
+public interface IHasPropertyChangedEvent
 {
 }
