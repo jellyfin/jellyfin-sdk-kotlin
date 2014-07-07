@@ -41,11 +41,22 @@ public class XbmcMetadataOptions
 		privateEnablePathSubstitution = value;
 	}
 
+	private boolean privateEnableExtraThumbsDuplication;
+	public final boolean getEnableExtraThumbsDuplication()
+	{
+		return privateEnableExtraThumbsDuplication;
+	}
+	public final void setEnableExtraThumbsDuplication(boolean value)
+	{
+		privateEnableExtraThumbsDuplication = value;
+	}
+
 	public XbmcMetadataOptions()
 	{
 		setReleaseDateFormat("yyyy-MM-dd");
 
 		setSaveImagePathsInNfo(true);
 		setEnablePathSubstitution(true);
+		setEnableExtraThumbsDuplication(true);
 	}
 }

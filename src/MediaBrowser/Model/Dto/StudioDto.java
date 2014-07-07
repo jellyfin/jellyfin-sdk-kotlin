@@ -23,6 +23,21 @@ public class StudioDto
 	}
 
 	/** 
+	 Gets or sets the identifier.
+	 
+	 <value>The identifier.</value>
+	*/
+	private String privateId;
+	public final String getId()
+	{
+		return privateId;
+	}
+	public final void setId(String value)
+	{
+		privateId = value;
+	}
+
+	/** 
 	 Gets or sets the primary image tag.
 	 
 	 <value>The primary image tag.</value>

@@ -23,6 +23,36 @@ public class UserItemDataDto implements IHasPropertyChangedEvent
 	}
 
 	/** 
+	 Gets or sets the played percentage.
+	 
+	 <value>The played percentage.</value>
+	*/
+	private Double privatePlayedPercentage = null;
+	public final Double getPlayedPercentage()
+	{
+		return privatePlayedPercentage;
+	}
+	public final void setPlayedPercentage(Double value)
+	{
+		privatePlayedPercentage = value;
+	}
+
+	/** 
+	 Gets or sets the unplayed item count.
+	 
+	 <value>The unplayed item count.</value>
+	*/
+	private Integer privateUnplayedItemCount = null;
+	public final Integer getUnplayedItemCount()
+	{
+		return privateUnplayedItemCount;
+	}
+	public final void setUnplayedItemCount(Integer value)
+	{
+		privateUnplayedItemCount = value;
+	}
+
+	/** 
 	 Gets or sets the playback position ticks.
 	 
 	 <value>The playback position ticks.</value>

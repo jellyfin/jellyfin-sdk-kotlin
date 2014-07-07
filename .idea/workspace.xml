@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dae6a154-b809-4288-9061-1df57fc66abe" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/BoolHelper.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/BoolHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/DoubleHelper.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/DoubleHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/FloatHelper.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/FloatHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/IntHelper.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/IntHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/ListHelper.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/ListHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/StringHelper.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/StringHelper.java" />
+      <change type="DELETED" beforePath="D:\Development\MediaBrowser.ApiClient.Java\src\MediaBrowser\Model\Configuration\NotificationOption.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Development\MediaBrowser.ApiClient.Java\src\MediaBrowser\Model\Configuration\NotificationOptions.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Development\MediaBrowser.ApiClient.Java\src\MediaBrowser\Model\Configuration\NotificationType.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Development\MediaBrowser.ApiClient.Java\src\MediaBrowser\Model\Configuration\SendToUserType.java" afterPath="" />
+      <change type="DELETED" beforePath="D:\Development\MediaBrowser.ApiClient.Java\src\MediaBrowser\Model\Notifications\NotificationRequest.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Users/AuthenticationResult.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Users/AuthenticationResult.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MediaBrowser.ApiClient.Java.iml" afterPath="$PROJECT_DIR$/MediaBrowser.ApiClient.Java.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Configuration/ServerConfiguration.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Configuration/ServerConfiguration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Session/SessionInfoDto.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Session/SessionInfoDto.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Dlna/StreamInfo.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Dlna/StreamInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Dto/StudioDto.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Dto/StudioDto.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Configuration/UserConfiguration.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Configuration/UserConfiguration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Dto/UserItemDataDto.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Dto/UserItemDataDto.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Configuration/XbmcMetadataOptions.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Configuration/XbmcMetadataOptions.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MediaBrowser.ApiClient.Java.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,23 +42,18 @@
       <file leaf-file-name="TaskTriggerInfo.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Tasks/TaskTriggerInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
-              <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
-              <folding>
-                <element signature="e#1368#1369#0" expanded="true" />
-                <element signature="e#1398#1399#0" expanded="true" />
-                <element signature="e#1460#1461#0" expanded="true" />
-                <element signature="e#1491#1492#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
+              <caret line="72" column="16" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeviceProfile.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Dlna/DeviceProfile.java">
+      <file leaf-file-name="PackageVersionInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Updates/PackageVersionInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3044" max-vertical-offset="6664">
-              <caret line="412" column="0" selection-start-line="412" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="1581">
+              <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -58,31 +62,30 @@
       <file leaf-file-name="BaseItemDto.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Dto/BaseItemDto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="10264" max-vertical-offset="21692">
-              <caret line="1082" column="72" selection-start-line="1082" selection-start-column="53" selection-end-line="1082" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="10319" max-vertical-offset="21692">
+              <caret line="1093" column="23" selection-start-line="1093" selection-start-column="23" selection-end-line="1093" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RemoteSearchResult.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Providers/RemoteSearchResult.java">
+      <file leaf-file-name="ServerConfiguration.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Configuration/ServerConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
-              <caret line="118" column="62" selection-start-line="118" selection-start-column="62" selection-end-line="118" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.4509804" vertical-offset="0" max-vertical-offset="6902">
+              <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
               <folding>
-                <element signature="e#2512#2513#0" expanded="true" />
-                <element signature="e#2574#2575#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FloatHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/FloatHelper.java">
+      <file leaf-file-name="ItemQuery.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Querying/ItemQuery.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="19" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3463" max-vertical-offset="7956">
+              <caret line="373" column="6" selection-start-line="373" selection-start-column="6" selection-end-line="373" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -91,7 +94,7 @@
       <file leaf-file-name="BoolHelper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/BoolHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+            <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="374">
               <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
               <folding />
             </state>
@@ -101,18 +104,18 @@
       <file leaf-file-name="IntHelper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/IntHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-              <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="510">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListHelper.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ListHelper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/ListHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2964367" vertical-offset="0" max-vertical-offset="1319">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="612">
+              <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -121,26 +124,9 @@
       <file leaf-file-name="DoubleHelper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/DoubleHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-              <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="510">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StringHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/StringHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="41" max-vertical-offset="1360">
-              <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-              <folding>
-                <element signature="e#874#875#0" expanded="true" />
-                <element signature="e#913#914#0" expanded="true" />
-                <element signature="e#1071#1072#0" expanded="true" />
-                <element signature="e#1104#1105#0" expanded="true" />
-                <element signature="e#1264#1265#0" expanded="true" />
-                <element signature="e#1297#1298#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -160,18 +146,15 @@
       <list>
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Dlna/EventSubscription.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/IO/IZipClient.java" />
-        <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Dto/BaseItemDto.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Session/GeneralCommand.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/Helpers.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Dlna/StreamBuilder.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Notifications/Notification.java" />
-        <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Querying/ItemQuery.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/IHasPropertyChangedEvent.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Entities/ProviderIdsExtensions.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Querying/QueryResult.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Dlna/StreamInfo.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Dlna/DeviceProfile.java" />
-        <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Tasks/TaskTriggerInfo.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Providers/RemoteSearchResult.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/StringHelper.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/FloatHelper.java" />
@@ -179,14 +162,18 @@
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/DoubleHelper.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/BoolHelper.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/ListHelper.java" />
+        <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Tasks/TaskTriggerInfo.java" />
+        <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Updates/PackageVersionInfo.java" />
+        <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Querying/ItemQuery.java" />
+        <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Dto/BaseItemDto.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="54" />
     <option name="y" value="-8" />
-    <option name="width" value="2514" />
-    <option name="height" value="1456" />
+    <option name="width" value="1234" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -214,7 +201,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -286,6 +272,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -336,19 +323,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -374,6 +348,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -449,7 +436,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="2514" height="1456" extended-state="6" />
+    <frame x="54" y="-8" width="1234" height="1040" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -462,19 +449,19 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3266518" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3265306" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13851081" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22331691" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -501,17 +488,90 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Tasks/TaskTriggerInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1479">
+          <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Dlna/DeviceProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7004" max-vertical-offset="10200">
+          <caret line="412" column="0" selection-start-line="412" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Dto/BaseItemDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="18394" max-vertical-offset="35462">
+          <caret line="1082" column="72" selection-start-line="1082" selection-start-column="53" selection-end-line="1082" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Providers/RemoteSearchResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2006" max-vertical-offset="2142">
+          <caret line="118" column="62" selection-start-line="118" selection-start-column="62" selection-end-line="118" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/FloatHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="459">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="19" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/BoolHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="374">
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/IntHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="510">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/ListHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="612">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/DoubleHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="510">
+          <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/StringHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1411">
+          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/ApiClient/SessionUpdatesEventArgs.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <marker date="1404182941208" expanded="true" signature="-1:-1" placeholder="/**...*/" />
-            <marker date="1404182941208" expanded="false" signature="-1:-1" placeholder=" { " />
-            <marker date="1404182941208" expanded="false" signature="-1:-1" placeholder=" }" />
-            <marker date="1404182941208" expanded="false" signature="-1:-1" placeholder=" { " />
-            <marker date="1404182941208" expanded="false" signature="-1:-1" placeholder=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -519,38 +579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2046" max-vertical-offset="2652">
           <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-          <folding>
-            <marker date="1404182941206" expanded="false" signature="-1:-1" placeholder="..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="/**...*/" />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1404182941206" expanded="true" signature="-1:-1" placeholder="/**...*/" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -558,19 +586,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <marker date="1404182941203" expanded="true" signature="-1:-1" placeholder="/**...*/" />
-            <marker date="1404182941203" expanded="true" signature="-1:-1" placeholder="/**...*/" />
-            <marker date="1404182941203" expanded="false" signature="-1:-1" placeholder=" { " />
-            <marker date="1404182941203" expanded="false" signature="-1:-1" placeholder=" }" />
-            <marker date="1404182941203" expanded="false" signature="-1:-1" placeholder=" { " />
-            <marker date="1404182941203" expanded="false" signature="-1:-1" placeholder=" }" />
-            <marker date="1404182941203" expanded="true" signature="-1:-1" placeholder="/**...*/" />
-            <marker date="1404182941203" expanded="false" signature="-1:-1" placeholder=" { " />
-            <marker date="1404182941203" expanded="false" signature="-1:-1" placeholder=" }" />
-            <marker date="1404182941203" expanded="false" signature="-1:-1" placeholder=" { " />
-            <marker date="1404182941203" expanded="false" signature="-1:-1" placeholder=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -578,19 +593,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <marker date="1404182941202" expanded="true" signature="-1:-1" placeholder="/**...*/" />
-            <marker date="1404182941202" expanded="true" signature="-1:-1" placeholder="/**...*/" />
-            <marker date="1404182941202" expanded="false" signature="-1:-1" placeholder=" { " />
-            <marker date="1404182941202" expanded="false" signature="-1:-1" placeholder=" }" />
-            <marker date="1404182941202" expanded="false" signature="-1:-1" placeholder=" { " />
-            <marker date="1404182941202" expanded="false" signature="-1:-1" placeholder=" }" />
-            <marker date="1404182941202" expanded="true" signature="-1:-1" placeholder="/**...*/" />
-            <marker date="1404182941202" expanded="false" signature="-1:-1" placeholder=" { " />
-            <marker date="1404182941202" expanded="false" signature="-1:-1" placeholder=" }" />
-            <marker date="1404182941202" expanded="false" signature="-1:-1" placeholder=" { " />
-            <marker date="1404182941202" expanded="false" signature="-1:-1" placeholder=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -598,26 +600,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14026402" vertical-offset="0" max-vertical-offset="833">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Configuration/ServerConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="10648" max-vertical-offset="11254">
-          <caret line="712" column="0" selection-start-line="712" selection-start-column="0" selection-end-line="712" selection-end-column="0" />
-          <folding>
-            <marker date="1404182941280" expanded="true" signature="-1:-1" placeholder="/**...*/" />
-            <marker date="1404182941280" expanded="true" signature="-1:-1" placeholder="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Configuration/NotificationOptions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="19" max-vertical-offset="1887">
-          <caret line="19" column="59" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -625,9 +607,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="687" max-vertical-offset="4403">
           <caret line="63" column="30" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
-          <folding>
-            <element signature="e#3453#3462#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -643,7 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.0775576" vertical-offset="3213" max-vertical-offset="5865">
           <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -655,24 +633,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Querying/ItemQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3549" max-vertical-offset="8058">
-          <caret line="398" column="0" selection-start-line="398" selection-start-column="0" selection-end-line="398" selection-end-column="0" />
-          <folding>
-            <element signature="e#6852#6853#0" expanded="false" />
-            <element signature="e#6880#6881#0" expanded="false" />
-            <element signature="e#6942#6943#0" expanded="false" />
-            <element signature="e#6971#6972#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Tasks/TaskCompletionStatus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -696,7 +660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -740,56 +703,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Dto/BaseItemDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="10264" max-vertical-offset="21692">
-          <caret line="1082" column="72" selection-start-line="1082" selection-start-column="53" selection-end-line="1082" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Tasks/TaskTriggerInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
-          <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
-          <folding>
-            <element signature="e#1368#1369#0" expanded="true" />
-            <element signature="e#1398#1399#0" expanded="true" />
-            <element signature="e#1460#1461#0" expanded="true" />
-            <element signature="e#1491#1492#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Providers/RemoteSearchResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
-          <caret line="118" column="62" selection-start-line="118" selection-start-column="62" selection-end-line="118" selection-end-column="62" />
-          <folding>
-            <element signature="e#2512#2513#0" expanded="true" />
-            <element signature="e#2574#2575#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="2023" max-vertical-offset="2142">
+          <caret line="119" column="5" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/StringHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="41" max-vertical-offset="1360">
+        <state vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1411">
           <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-          <folding>
-            <element signature="e#874#875#0" expanded="true" />
-            <element signature="e#913#914#0" expanded="true" />
-            <element signature="e#1071#1072#0" expanded="true" />
-            <element signature="e#1104#1105#0" expanded="true" />
-            <element signature="e#1264#1265#0" expanded="true" />
-            <element signature="e#1297#1298#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/FloatHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+        <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="459">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="19" selection-end-column="9" />
           <folding />
         </state>
@@ -797,23 +729,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/IntHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="510">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/DoubleHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-          <caret line="17" column="49" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="510">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/BoolHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+        <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="374">
           <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
           <folding />
         </state>
@@ -821,9 +753,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/ListHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2964367" vertical-offset="0" max-vertical-offset="1319">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="612">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Tasks/TaskTriggerInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
+          <caret line="72" column="16" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Updates/PackageVersionInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="1581">
+          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Querying/ItemQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3463" max-vertical-offset="7956">
+          <caret line="373" column="6" selection-start-line="373" selection-start-column="6" selection-end-line="373" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Dto/BaseItemDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="10319" max-vertical-offset="21692">
+          <caret line="1093" column="23" selection-start-line="1093" selection-start-column="23" selection-end-line="1093" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Configuration/ServerConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4509804" vertical-offset="0" max-vertical-offset="6902">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

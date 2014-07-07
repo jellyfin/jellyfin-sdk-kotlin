@@ -1,5 +1,6 @@
 package MediaBrowser.Model.Configuration;
 
+import MediaBrowser.Model.Notifications.*;
 import MediaBrowser.Model.Weather.*;
 
 /** 
@@ -388,25 +389,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		privateEnableFanArtUpdates = value;
 	}
 
-	private boolean privateRequireMobileManualLogin;
-	public final boolean getRequireMobileManualLogin()
-	{
-		return privateRequireMobileManualLogin;
-	}
-	public final void setRequireMobileManualLogin(boolean value)
-	{
-		privateRequireMobileManualLogin = value;
-	}
-	private boolean privateRequireNonMobileManualLogin;
-	public final boolean getRequireNonMobileManualLogin()
-	{
-		return privateRequireNonMobileManualLogin;
-	}
-	public final void setRequireNonMobileManualLogin(boolean value)
-	{
-		privateRequireNonMobileManualLogin = value;
-	}
-
 	/** 
 	 Gets or sets the image saving convention.
 	 
@@ -450,16 +432,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setMediaEncodingQuality(EncodingQuality value)
 	{
 		privateMediaEncodingQuality = value;
-	}
-
-	private boolean privateAllowVideoUpscaling;
-	public final boolean getAllowVideoUpscaling()
-	{
-		return privateAllowVideoUpscaling;
-	}
-	public final void setAllowVideoUpscaling(boolean value)
-	{
-		privateAllowVideoUpscaling = value;
 	}
 
 	private MetadataOptions[] privateMetadataOptions;
@@ -707,10 +679,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		tempVar4.setItemType("Season");
 		setMetadataOptions(new MetadataOptions[] {tempVar, tempVar2, tempVar3, tempVar4});
 
-		setNotificationOptions(new NotificationOptions());
-
 		setSubtitleOptions(new SubtitleOptions());
-
 		setLiveTvOptions(new LiveTvOptions());
 		setTvFileOrganizationOptions(new TvFileOrganizationOptions());
 	}

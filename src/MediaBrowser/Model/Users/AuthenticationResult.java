@@ -34,4 +34,19 @@ public class AuthenticationResult
 	{
 		privateSessionInfo = value;
 	}
+
+	/** 
+	 Gets or sets the authentication token.
+	 
+	 <value>The authentication token.</value>
+	*/
+	private String privateAccessToken;
+	public final String getAccessToken()
+	{
+		return privateAccessToken;
+	}
+	public final void setAccessToken(String value)
+	{
+		privateAccessToken = value;
+	}
 }

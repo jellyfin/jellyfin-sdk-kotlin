@@ -8,21 +8,6 @@ import MediaBrowser.Model.Extensions.*;
 public class SessionInfoDto implements IHasPropertyChangedEvent
 {
 	/** 
-	 Gets or sets a value indicating whether this instance can seek.
-	 
-	 <value><c>true</c> if this instance can seek; otherwise, <c>false</c>.</value>
-	*/
-	private boolean privateCanSeek;
-	public final boolean getCanSeek()
-	{
-		return privateCanSeek;
-	}
-	public final void setCanSeek(boolean value)
-	{
-		privateCanSeek = value;
-	}
-
-	/** 
 	 Gets or sets the supported commands.
 	 
 	 <value>The supported commands.</value>
@@ -35,21 +20,6 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	public final void setSupportedCommands(java.util.ArrayList<String> value)
 	{
 		privateSupportedCommands = value;
-	}
-
-	/** 
-	 Gets or sets the remote end point.
-	 
-	 <value>The remote end point.</value>
-	*/
-	private String privateRemoteEndPoint;
-	public final String getRemoteEndPoint()
-	{
-		return privateRemoteEndPoint;
-	}
-	public final void setRemoteEndPoint(String value)
-	{
-		privateRemoteEndPoint = value;
 	}
 
 	/** 
@@ -233,36 +203,6 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	}
 
 	/** 
-	 Gets or sets a value indicating whether this instance is paused.
-	 
-	 <value><c>true</c> if this instance is paused; otherwise, <c>false</c>.</value>
-	*/
-	private boolean privateIsPaused;
-	public final boolean getIsPaused()
-	{
-		return privateIsPaused;
-	}
-	public final void setIsPaused(boolean value)
-	{
-		privateIsPaused = value;
-	}
-
-	/** 
-	 Gets or sets a value indicating whether this instance is muted.
-	 
-	 <value><c>true</c> if this instance is muted; otherwise, <c>false</c>.</value>
-	*/
-	private boolean privateIsMuted;
-	public final boolean getIsMuted()
-	{
-		return privateIsMuted;
-	}
-	public final void setIsMuted(boolean value)
-	{
-		privateIsMuted = value;
-	}
-
-	/** 
 	 Gets or sets the now playing item.
 	 
 	 <value>The now playing item.</value>
@@ -275,21 +215,6 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	public final void setNowPlayingItem(BaseItemInfo value)
 	{
 		privateNowPlayingItem = value;
-	}
-
-	/** 
-	 Gets or sets the now playing position ticks.
-	 
-	 <value>The now playing position ticks.</value>
-	*/
-	private Long privateNowPlayingPositionTicks = null;
-	public final Long getNowPlayingPositionTicks()
-	{
-		return privateNowPlayingPositionTicks;
-	}
-	public final void setNowPlayingPositionTicks(Long value)
-	{
-		privateNowPlayingPositionTicks = value;
 	}
 
 	/** 

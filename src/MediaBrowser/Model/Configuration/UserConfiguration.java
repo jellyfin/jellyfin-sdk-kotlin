@@ -283,7 +283,5 @@ public class UserConfiguration
 		setBlockUnratedItems(new UnratedItem[] { });
 
 		setExcludeFoldersFromGrouping(new String[] { });
-
-		setDisplayCollectionsView(true);
 	}
 }

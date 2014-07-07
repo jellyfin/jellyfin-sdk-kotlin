@@ -278,7 +278,7 @@ public class StreamInfo
 
 		if (StringHelper.EqualsIgnoreCase(getProtocol(), "hls"))
 		{
-			return String.format("%1$s/videos/%2$s/stream.m3u8?%3$s", baseUrl, getItemId(), dlnaCommand);
+			return String.format("%1$s/videos/%2$s/master.m3u8?%3$s", baseUrl, getItemId(), dlnaCommand);
 		}
 
 		return String.format("%1$s/videos/%2$s/stream%3$s?%4$s", baseUrl, getItemId(), extension, dlnaCommand);
