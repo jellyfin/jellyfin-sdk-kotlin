@@ -374,6 +374,25 @@ public class DeviceProfile
 		privateResponseProfiles = value;
 	}
 
+	private SubtitleProfile[] privateSoftSubtitleProfiles;
+	public final SubtitleProfile[] getSoftSubtitleProfiles()
+	{
+		return privateSoftSubtitleProfiles;
+	}
+	public final void setSoftSubtitleProfiles(SubtitleProfile[] value)
+	{
+		privateSoftSubtitleProfiles = value;
+	}
+	private SubtitleProfile[] privateExternalSubtitleProfiles;
+	public final SubtitleProfile[] getExternalSubtitleProfiles()
+	{
+		return privateExternalSubtitleProfiles;
+	}
+	public final void setExternalSubtitleProfiles(SubtitleProfile[] value)
+	{
+		privateExternalSubtitleProfiles = value;
+	}
+
 	public DeviceProfile()
 	{
 		setDirectPlayProfiles(new DirectPlayProfile[] { });
@@ -381,6 +400,9 @@ public class DeviceProfile
 		setResponseProfiles(new ResponseProfile[] { });
 		setCodecProfiles(new CodecProfile[] { });
 		setContainerProfiles(new ContainerProfile[] { });
+
+		setSoftSubtitleProfiles(new SubtitleProfile[] { });
+		setExternalSubtitleProfiles(new SubtitleProfile[] { });
 
 		setXmlRootAttributes(new XmlAttribute[] { });
 

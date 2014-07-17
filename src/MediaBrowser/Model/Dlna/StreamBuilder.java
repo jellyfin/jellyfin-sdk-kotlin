@@ -177,7 +177,7 @@ public class StreamBuilder
 		TranscodingProfile transcodingProfile = null;
 		for (TranscodingProfile i : options.getProfile().getTranscodingProfiles())
 		{
-			if (i.getType() == playlistItem.getMediaType())
+			if (i.getType() == playlistItem.getMediaType() && i.getContext() == options.getContext())
 			{
 				transcodingProfile = i;
 				break;
@@ -273,7 +273,7 @@ public class StreamBuilder
 		TranscodingProfile transcodingProfile = null;
 		for (TranscodingProfile i : options.getProfile().getTranscodingProfiles())
 		{
-			if (i.getType() == playlistItem.getMediaType())
+			if (i.getType() == playlistItem.getMediaType() && i.getContext() == options.getContext())
 			{
 				transcodingProfile = i;
 				break;

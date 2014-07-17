@@ -66,6 +66,15 @@ public class SubtitleOptions
 	{
 		privateOpenSubtitlesPasswordHash = value;
 	}
+	private boolean privateIsOpenSubtitleVipAccount;
+	public final boolean getIsOpenSubtitleVipAccount()
+	{
+		return privateIsOpenSubtitleVipAccount;
+	}
+	public final void setIsOpenSubtitleVipAccount(boolean value)
+	{
+		privateIsOpenSubtitleVipAccount = value;
+	}
 
 	public SubtitleOptions()
 	{

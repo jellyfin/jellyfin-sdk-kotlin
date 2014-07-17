@@ -84,4 +84,19 @@ public class AudioOptions
 	{
 		privateMaxBitrate = value;
 	}
+
+	/** 
+	 Gets or sets the context.
+	 
+	 <value>The context.</value>
+	*/
+	private EncodingContext privateContext = EncodingContext.values()[0];
+	public final EncodingContext getContext()
+	{
+		return privateContext;
+	}
+	public final void setContext(EncodingContext value)
+	{
+		privateContext = value;
+	}
 }

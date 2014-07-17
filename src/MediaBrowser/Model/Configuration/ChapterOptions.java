@@ -70,10 +70,6 @@ public class ChapterOptions
 
 	public ChapterOptions()
 	{
-		setEnableMovieChapterImageExtraction(true);
-		setEnableEpisodeChapterImageExtraction(false);
-		setEnableOtherVideoChapterImageExtraction(false);
-
 		setDownloadMovieChapters(true);
 
 		setDisabledFetchers(new String[] { });

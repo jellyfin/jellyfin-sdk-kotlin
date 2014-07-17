@@ -110,6 +110,18 @@ public class TranscodingProfile
 		privateVideoProfile = value;
 	}
 
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [XmlAttribute("context")] public EncodingContext Context {get;set;}
+	private EncodingContext privateContext = EncodingContext.values()[0];
+	public final EncodingContext getContext()
+	{
+		return privateContext;
+	}
+	public final void setContext(EncodingContext value)
+	{
+		privateContext = value;
+	}
+
 	public final java.util.ArrayList<String> GetAudioCodecs()
 	{
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>();
