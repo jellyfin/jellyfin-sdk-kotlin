@@ -1,5 +1,7 @@
 package MediaBrowser.Model.Serialization;
 
+import java.io.InputStream;
+
 public interface IXmlSerializer
 {
 	/** 
@@ -9,7 +11,7 @@ public interface IXmlSerializer
 	 @param stream The stream.
 	 @return System.Object.
 	*/
-	Object DeserializeFromStream(java.lang.Class type, Stream stream);
+	Object DeserializeFromStream(java.lang.Class type, InputStream stream);
 
 	/** 
 	 Serializes to stream.
@@ -17,7 +19,7 @@ public interface IXmlSerializer
 	 @param obj The obj.
 	 @param stream The stream.
 	*/
-	void SerializeToStream(Object obj, Stream stream);
+	void SerializeToStream(Object obj, InputStream stream);
 
 	/** 
 	 Serializes to file.

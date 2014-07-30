@@ -1,5 +1,7 @@
 package MediaBrowser.Model.Serialization;
 
+import java.io.InputStream;
+
 public interface IJsonSerializer
 {
 	/** 
@@ -9,7 +11,7 @@ public interface IJsonSerializer
 	 @param stream The stream.
 	 @exception System.ArgumentNullException obj
 	*/
-	void SerializeToStream(Object obj, Stream stream);
+	void SerializeToStream(Object obj, InputStream stream);
 
 	/** 
 	 Serializes to file.
@@ -48,7 +50,7 @@ public interface IJsonSerializer
 	 @return ``0.
 	 @exception System.ArgumentNullException stream
 	*/
-	<T> T DeserializeFromStream(Stream stream);
+	<T> T DeserializeFromStream(InputStream stream);
 
 	/** 
 	 Deserializes from string.
@@ -68,7 +70,7 @@ public interface IJsonSerializer
 	 @return System.Object.
 	 @exception System.ArgumentNullException stream
 	*/
-	Object DeserializeFromStream(Stream stream, java.lang.Class type);
+	Object DeserializeFromStream(InputStream stream, java.lang.Class type);
 
 	/** 
 	 Deserializes from string.
