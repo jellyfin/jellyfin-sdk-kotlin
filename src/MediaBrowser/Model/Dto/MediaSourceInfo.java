@@ -250,4 +250,17 @@ public class MediaSourceInfo
 
 		return null;
 	}
+
+	public final MediaStream GetMediaStream(MediaStreamType type, int index)
+	{
+		for (MediaStream i : getMediaStreams())
+		{
+			if (i.getType() == type && i.getIndex() == index)
+			{
+				return i;
+			}
+		}
+
+		return null;
+	}
 }

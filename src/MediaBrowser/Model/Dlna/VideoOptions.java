@@ -23,18 +23,4 @@ public class VideoOptions extends AudioOptions
 	{
 		privateSubtitleStreamIndex = value;
 	}
-	private Integer privateMaxAudioTranscodingBitrate;
-	public final Integer getMaxAudioTranscodingBitrate()
-	{
-		return privateMaxAudioTranscodingBitrate;
-	}
-	public final void setMaxAudioTranscodingBitrate(Integer value)
-	{
-		privateMaxAudioTranscodingBitrate = value;
-	}
-
-	public VideoOptions()
-	{
-		setMaxAudioTranscodingBitrate(128000);
-	}
 }

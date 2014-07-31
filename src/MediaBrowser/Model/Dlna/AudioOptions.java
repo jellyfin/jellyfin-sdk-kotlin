@@ -99,4 +99,29 @@ public class AudioOptions
 	{
 		privateContext = value;
 	}
+
+	/** 
+	 Gets the maximum bitrate.
+	 
+	 @return System.Nullable&lt;System.Int32&gt;.
+	*/
+	public final Integer GetMaxBitrate()
+	{
+		if (getMaxBitrate() != null)
+		{
+			return getMaxBitrate();
+		}
+
+		if (getProfile() != null)
+		{
+			if (getContext() == EncodingContext.Static)
+			{
+				return getProfile().getMaxStaticBitrate();
+			}
+
+			return getProfile().getMaxStreamingBitrate();
+		}
+
+		return null;
+	}
 }

@@ -1,5 +1,6 @@
 package MediaBrowser.Model.Configuration;
 
+import MediaBrowser.Model.Entities.*;
 import MediaBrowser.Model.Notifications.*;
 import MediaBrowser.Model.Weather.*;
 
@@ -39,21 +40,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
-	 Gets or sets a value indicating whether [enable HTTP level logging].
-	 
-	 <value><c>true</c> if [enable HTTP level logging]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean privateEnableHttpLevelLogging;
-	public final boolean getEnableHttpLevelLogging()
-	{
-		return privateEnableHttpLevelLogging;
-	}
-	public final void setEnableHttpLevelLogging(boolean value)
-	{
-		privateEnableHttpLevelLogging = value;
-	}
-
-	/** 
 	 Gets or sets a value indicating whether [enable u pn p].
 	 
 	 <value><c>true</c> if [enable u pn p]; otherwise, <c>false</c>.</value>
@@ -81,21 +67,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setHttpServerPortNumber(int value)
 	{
 		privateHttpServerPortNumber = value;
-	}
-
-	/** 
-	 Gets or sets the legacy web socket port number.
-	 
-	 <value>The legacy web socket port number.</value>
-	*/
-	private int privateLegacyWebSocketPortNumber;
-	public final int getLegacyWebSocketPortNumber()
-	{
-		return privateLegacyWebSocketPortNumber;
-	}
-	public final void setLegacyWebSocketPortNumber(int value)
-	{
-		privateLegacyWebSocketPortNumber = value;
 	}
 
 	/** 
@@ -623,6 +594,16 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		privateDefaultMetadataSettingsApplied = value;
 	}
 
+	private boolean privateEnableTokenAuthentication;
+	public final boolean getEnableTokenAuthentication()
+	{
+		return privateEnableTokenAuthentication;
+	}
+	public final void setEnableTokenAuthentication(boolean value)
+	{
+		privateEnableTokenAuthentication = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
 	*/
@@ -632,8 +613,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setMediaEncodingQuality(EncodingQuality.Auto);
 		setImageSavingConvention(ImageSavingConvention.Compatible);
 		setHttpServerPortNumber(8096);
-		setLegacyWebSocketPortNumber(8945);
-		setEnableHttpLevelLogging(true);
 		setEnableDashboardResponseCaching(true);
 
 		setEnableAutomaticRestart(true);
@@ -680,7 +659,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setMetadataOptions(new MetadataOptions[] {tempVar, tempVar2, tempVar3, tempVar4});
 
 		setSubtitleOptions(new SubtitleOptions());
-		setLiveTvOptions(new LiveTvOptions());
 		setTvFileOrganizationOptions(new TvFileOrganizationOptions());
 	}
 }

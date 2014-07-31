@@ -156,6 +156,11 @@ public enum ItemFields
 	Studios,
 
 	/** 
+	 The synchronize information
+	*/
+	SyncInfo,
+
+	/** 
 	 The taglines of the item
 	*/
 	Taglines,

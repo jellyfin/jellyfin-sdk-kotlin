@@ -220,14 +220,23 @@ public class DeviceProfile
 		privateMaxIconHeight = value;
 	}
 
-	private Integer privateMaxBitrate = null;
-	public final Integer getMaxBitrate()
+	private Integer privateMaxStreamingBitrate = null;
+	public final Integer getMaxStreamingBitrate()
 	{
-		return privateMaxBitrate;
+		return privateMaxStreamingBitrate;
 	}
-	public final void setMaxBitrate(Integer value)
+	public final void setMaxStreamingBitrate(Integer value)
 	{
-		privateMaxBitrate = value;
+		privateMaxStreamingBitrate = value;
+	}
+	private Integer privateMaxStaticBitrate = null;
+	public final Integer getMaxStaticBitrate()
+	{
+		return privateMaxStaticBitrate;
+	}
+	public final void setMaxStaticBitrate(Integer value)
+	{
+		privateMaxStaticBitrate = value;
 	}
 
 	/** 

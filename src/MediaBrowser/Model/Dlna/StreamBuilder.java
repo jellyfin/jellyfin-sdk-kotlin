@@ -7,6 +7,8 @@ import MediaBrowser.Model.MediaInfo.*;
 
 public class StreamBuilder
 {
+	private String[] _serverTextSubtitleOutputs = new String[] {"srt", "vtt"};
+
 	public final StreamInfo BuildAudioItem(AudioOptions options)
 	{
 		ValidateAudioInput(options);
@@ -50,16 +52,13 @@ public class StreamBuilder
 
 		java.util.ArrayList<MediaSourceInfo> mediaSources = options.getMediaSources();
 
-		// If the client wants a specific media soure, filter now
+		// If the client wants a specific media source, filter now
 		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(options.getMediaSourceId()))
 		{
-			// Avoid implicitly captured closure
-			String mediaSourceId = options.getMediaSourceId();
-
 			java.util.ArrayList<MediaSourceInfo> newMediaSources = new java.util.ArrayList<MediaSourceInfo>();
 			for (MediaSourceInfo i : mediaSources)
 			{
-				if (StringHelper.EqualsIgnoreCase(i.getId(), mediaSourceId))
+				if (StringHelper.EqualsIgnoreCase(i.getId(), options.getMediaSourceId()))
 				{
 					newMediaSources.add(i);
 				}
@@ -111,8 +110,7 @@ public class StreamBuilder
 		tempVar.setRunTimeTicks(item.getRunTimeTicks());
 		StreamInfo playlistItem = tempVar;
 
-		Integer tempVar2 = options.getMaxBitrate();
-		Integer maxBitrateSetting = (tempVar2 != null) ? tempVar2 : options.getProfile().getMaxBitrate();
+		Integer maxBitrateSetting = options.GetMaxBitrate();
 
 		MediaStream audioStream = item.getDefaultAudioStream();
 
@@ -221,19 +219,15 @@ public class StreamBuilder
 			// Honor requested max channels
 			if (options.getMaxAudioChannels() != null)
 			{
-				Integer tempVar3 = playlistItem.getMaxAudioChannels();
-				int currentValue = (tempVar3 != null) ? tempVar3 : options.getMaxAudioChannels();
+				Integer tempVar2 = playlistItem.getMaxAudioChannels();
+				int currentValue = (tempVar2 != null) ? tempVar2 : options.getMaxAudioChannels();
 
 				playlistItem.setMaxAudioChannels(Math.min(options.getMaxAudioChannels(), currentValue));
 			}
 
-			// Honor requested max bitrate
-			if (maxBitrateSetting != null)
+			if (playlistItem.getAudioBitrate() == null)
 			{
-				Integer tempVar4 = playlistItem.getAudioBitrate();
-				int currentValue = (tempVar4 != null) ? tempVar4 : maxBitrateSetting;
-
-				playlistItem.setAudioBitrate(Math.min(maxBitrateSetting, currentValue));
+				playlistItem.setAudioBitrate(128000);
 			}
 		}
 
@@ -249,13 +243,19 @@ public class StreamBuilder
 		tempVar.setRunTimeTicks(item.getRunTimeTicks());
 		StreamInfo playlistItem = tempVar;
 
-		MediaStream audioStream = item.getDefaultAudioStream();
+		Integer tempVar2 = options.getAudioStreamIndex();
+		Integer audioStreamIndex = (tempVar2 != null) ? tempVar2 : item.getDefaultAudioStreamIndex();
+		Integer tempVar3 = options.getSubtitleStreamIndex();
+		playlistItem.setSubtitleStreamIndex((tempVar3 != null) ? tempVar3 : item.getDefaultSubtitleStreamIndex());
+
+		MediaStream audioStream = audioStreamIndex != null ? item.GetMediaStream(MediaStreamType.Audio, audioStreamIndex) : null;
+		MediaStream subtitleStream = playlistItem.getSubtitleStreamIndex() != null ? item.GetMediaStream(MediaStreamType.Subtitle, playlistItem.getSubtitleStreamIndex()) : null;
+
 		MediaStream videoStream = item.getVideoStream();
 
-		Integer tempVar2 = options.getMaxBitrate();
-		Integer maxBitrateSetting = (tempVar2 != null) ? tempVar2 : options.getProfile().getMaxBitrate();
+		Integer maxBitrateSetting = options.GetMaxBitrate();
 
-		if (IsEligibleForDirectPlay(item, options, maxBitrateSetting))
+		if (IsEligibleForDirectPlay(item, maxBitrateSetting, subtitleStream, options))
 		{
 			// See if it can be direct played
 			DirectPlayProfile directPlay = GetVideoDirectPlayProfile(options.getProfile(), item, videoStream, audioStream);
@@ -264,6 +264,11 @@ public class StreamBuilder
 			{
 				playlistItem.setIsDirectStream(true);
 				playlistItem.setContainer(item.getContainer());
+
+				if (subtitleStream != null)
+				{
+					playlistItem.setSubtitleDeliveryMethod(GetDirectStreamSubtitleDeliveryMethod(subtitleStream, options));
+				}
 
 				return playlistItem;
 			}
@@ -282,6 +287,11 @@ public class StreamBuilder
 
 		if (transcodingProfile != null)
 		{
+			if (subtitleStream != null)
+			{
+				playlistItem.setSubtitleDeliveryMethod(GetTranscodedSubtitleDeliveryMethod(subtitleStream, options));
+			}
+
 			playlistItem.setIsDirectStream(false);
 			playlistItem.setContainer(transcodingProfile.getContainer());
 			playlistItem.setEstimateContentLength(transcodingProfile.getEstimateContentLength());
@@ -289,10 +299,7 @@ public class StreamBuilder
 			playlistItem.setAudioCodec(transcodingProfile.getAudioCodec().split("[,]", -1)[0]);
 			playlistItem.setVideoCodec(transcodingProfile.getVideoCodec());
 			playlistItem.setProtocol(transcodingProfile.getProtocol());
-			Integer tempVar3 = options.getAudioStreamIndex();
-			playlistItem.setAudioStreamIndex((tempVar3 != null) ? tempVar3 : item.getDefaultAudioStreamIndex());
-			Integer tempVar4 = options.getSubtitleStreamIndex();
-			playlistItem.setSubtitleStreamIndex((tempVar4 != null) ? tempVar4 : item.getDefaultSubtitleStreamIndex());
+			playlistItem.setAudioStreamIndex(audioStreamIndex);
 
 			java.util.ArrayList<ProfileCondition> videoTranscodingConditions = new java.util.ArrayList<ProfileCondition>();
 			for (CodecProfile i : options.getProfile().getCodecProfiles())
@@ -325,19 +332,15 @@ public class StreamBuilder
 			// Honor requested max channels
 			if (options.getMaxAudioChannels() != null)
 			{
-				Integer tempVar5 = playlistItem.getMaxAudioChannels();
-				int currentValue = (tempVar5 != null) ? tempVar5 : options.getMaxAudioChannels();
+				Integer tempVar4 = playlistItem.getMaxAudioChannels();
+				int currentValue = (tempVar4 != null) ? tempVar4 : options.getMaxAudioChannels();
 
 				playlistItem.setMaxAudioChannels(Math.min(options.getMaxAudioChannels(), currentValue));
 			}
 
-			// Honor requested max bitrate
-			if (options.getMaxAudioTranscodingBitrate() != null)
+			if (playlistItem.getAudioBitrate() == null)
 			{
-				Integer tempVar6 = playlistItem.getAudioBitrate();
-				int currentValue = (tempVar6 != null) ? tempVar6 : options.getMaxAudioTranscodingBitrate();
-
-				playlistItem.setAudioBitrate(Math.min(options.getMaxAudioTranscodingBitrate(), currentValue));
+				playlistItem.setAudioBitrate(GetAudioBitrate(playlistItem.getTargetAudioChannels(), playlistItem.getTargetAudioCodec()));
 			}
 
 			// Honor max rate
@@ -350,20 +353,27 @@ public class StreamBuilder
 					videoBitrate -= playlistItem.getAudioBitrate();
 				}
 
-				Integer tempVar7 = playlistItem.getVideoBitrate();
-				int currentValue = (tempVar7 != null) ? tempVar7 : videoBitrate;
+				Integer tempVar5 = playlistItem.getVideoBitrate();
+				int currentValue = (tempVar5 != null) ? tempVar5 : videoBitrate;
 
 				playlistItem.setVideoBitrate(Math.min(videoBitrate, currentValue));
-			}
-
-			// Hate to hard-code this, but it's still probably better than being subjected to encoder defaults
-			if (playlistItem.getVideoBitrate() == null)
-			{
-				playlistItem.setVideoBitrate(5000000);
 			}
 		}
 
 		return playlistItem;
+	}
+
+	private int GetAudioBitrate(Integer channels, String codec)
+	{
+		if (channels != null)
+		{
+			if (channels >= 5)
+			{
+				return 320000;
+			}
+		}
+
+		return 128000;
 	}
 
 	private DirectPlayProfile GetVideoDirectPlayProfile(DeviceProfile profile, MediaSourceInfo mediaSource, MediaStream videoStream, MediaStream audioStream)
@@ -486,14 +496,96 @@ public class StreamBuilder
 		return directPlay;
 	}
 
-	private boolean IsEligibleForDirectPlay(MediaSourceInfo item, VideoOptions options, Integer maxBitrate)
+	private boolean IsEligibleForDirectPlay(MediaSourceInfo item, Integer maxBitrate, MediaStream subtitleStream, VideoOptions options)
 	{
-		if (options.getSubtitleStreamIndex() != null)
+		if (subtitleStream != null)
 		{
-			return false;
+			if (!subtitleStream.getIsTextSubtitleStream())
+			{
+				return false;
+			}
+
+			SubtitleDeliveryMethod subtitleMethod = GetDirectStreamSubtitleDeliveryMethod(subtitleStream, options);
+
+			if (subtitleMethod != SubtitleDeliveryMethod.External && subtitleMethod != SubtitleDeliveryMethod.Direct)
+			{
+				return false;
+			}
 		}
 
 		return IsAudioEligibleForDirectPlay(item, maxBitrate);
+	}
+
+	private SubtitleDeliveryMethod GetDirectStreamSubtitleDeliveryMethod(MediaStream subtitleStream, VideoOptions options)
+	{
+		if (subtitleStream.getIsTextSubtitleStream())
+		{
+			String subtitleFormat = NormalizeSubtitleFormat(subtitleStream.getCodec());
+
+			boolean supportsDirect = ContainsSubtitleFormat(options.getProfile().getSoftSubtitleProfiles(), new String[] {subtitleFormat});
+
+			if (supportsDirect)
+			{
+				return SubtitleDeliveryMethod.Direct;
+			}
+
+			// See if the device can retrieve the subtitles externally
+			boolean supportsSubsExternally = options.getContext() == EncodingContext.Streaming && ContainsSubtitleFormat(options.getProfile().getExternalSubtitleProfiles(), _serverTextSubtitleOutputs);
+
+			if (supportsSubsExternally)
+			{
+				return SubtitleDeliveryMethod.External;
+			}
+		}
+
+		return SubtitleDeliveryMethod.Encode;
+	}
+
+	private SubtitleDeliveryMethod GetTranscodedSubtitleDeliveryMethod(MediaStream subtitleStream, VideoOptions options)
+	{
+		if (subtitleStream.getIsTextSubtitleStream())
+		{
+			// See if the device can retrieve the subtitles externally
+			boolean supportsSubsExternally = options.getContext() == EncodingContext.Streaming && ContainsSubtitleFormat(options.getProfile().getExternalSubtitleProfiles(), _serverTextSubtitleOutputs);
+
+			if (supportsSubsExternally)
+			{
+				return SubtitleDeliveryMethod.External;
+			}
+
+			// See if the device can retrieve the subtitles externally
+			boolean supportsEmbedded = ContainsSubtitleFormat(options.getProfile().getSoftSubtitleProfiles(), _serverTextSubtitleOutputs);
+
+			if (supportsEmbedded)
+			{
+				return SubtitleDeliveryMethod.Embed;
+			}
+		}
+
+		return SubtitleDeliveryMethod.Encode;
+	}
+
+	private String NormalizeSubtitleFormat(String codec)
+	{
+		if (StringHelper.EqualsIgnoreCase(codec, "subrip"))
+		{
+			return SubtitleFormat.SRT;
+		}
+
+		return codec;
+	}
+
+	private boolean ContainsSubtitleFormat(SubtitleProfile[] profiles, String[] formats)
+	{
+		for (SubtitleProfile profile : profiles)
+		{
+			if (ListHelper.ContainsIgnoreCase(formats, profile.getFormat()))
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	private boolean IsAudioEligibleForDirectPlay(MediaSourceInfo item, Integer maxBitrate)

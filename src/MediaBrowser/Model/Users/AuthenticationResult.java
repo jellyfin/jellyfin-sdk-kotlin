@@ -49,4 +49,19 @@ public class AuthenticationResult
 	{
 		privateAccessToken = value;
 	}
+
+	/** 
+	 Gets or sets the server identifier.
+	 
+	 <value>The server identifier.</value>
+	*/
+	private String privateServerId;
+	public final String getServerId()
+	{
+		return privateServerId;
+	}
+	public final void setServerId(String value)
+	{
+		privateServerId = value;
+	}
 }

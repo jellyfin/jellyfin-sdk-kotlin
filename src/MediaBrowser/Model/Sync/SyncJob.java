@@ -21,28 +21,14 @@ public class SyncJob
 	 
 	 <value>The device identifier.</value>
 	*/
-	private String privateDeviceId;
-	public final String getDeviceId()
+	private String privateTargetId;
+	public final String getTargetId()
 	{
-		return privateDeviceId;
+		return privateTargetId;
 	}
-	public final void setDeviceId(String value)
+	public final void setTargetId(String value)
 	{
-		privateDeviceId = value;
-	}
-	/** 
-	 Gets or sets the item identifier.
-	 
-	 <value>The item identifier.</value>
-	*/
-	private String privateItemId;
-	public final String getItemId()
-	{
-		return privateItemId;
-	}
-	public final void setItemId(String value)
-	{
-		privateItemId = value;
+		privateTargetId = value;
 	}
 	/** 
 	 Gets or sets the quality.
@@ -59,6 +45,34 @@ public class SyncJob
 		privateQuality = value;
 	}
 	/** 
+	 Gets or sets the current progress.
+	 
+	 <value>The current progress.</value>
+	*/
+	private Double privateProgress = null;
+	public final Double getProgress()
+	{
+		return privateProgress;
+	}
+	public final void setProgress(Double value)
+	{
+		privateProgress = value;
+	}
+	/** 
+	 Gets or sets the name.
+	 
+	 <value>The name.</value>
+	*/
+	private String privateName;
+	public final String getName()
+	{
+		return privateName;
+	}
+	public final void setName(String value)
+	{
+		privateName = value;
+	}
+	/** 
 	 Gets or sets the status.
 	 
 	 <value>The status.</value>
@@ -73,45 +87,171 @@ public class SyncJob
 		privateStatus = value;
 	}
 	/** 
-	 Gets or sets the current progress.
+	 Gets or sets the user identifier.
 	 
-	 <value>The current progress.</value>
+	 <value>The user identifier.</value>
 	*/
-	private Double privateCurrentProgress;
-	public final Double getCurrentProgress()
+	private String privateUserId;
+	public final String getUserId()
 	{
-		return privateCurrentProgress;
+		return privateUserId;
 	}
-	public final void setCurrentProgress(Double value)
+	public final void setUserId(String value)
 	{
-		privateCurrentProgress = value;
+		privateUserId = value;
 	}
 	/** 
-	 Gets or sets the synchronize rule identifier.
+	 Gets or sets a value indicating whether [unwatched only].
 	 
-	 <value>The synchronize rule identifier.</value>
+	 <value><c>true</c> if [unwatched only]; otherwise, <c>false</c>.</value>
 	*/
-	private String privateSyncScheduleId;
-	public final String getSyncScheduleId()
+	private boolean privateUnwatchedOnly;
+	public final boolean getUnwatchedOnly()
 	{
-		return privateSyncScheduleId;
+		return privateUnwatchedOnly;
 	}
-	public final void setSyncScheduleId(String value)
+	public final void setUnwatchedOnly(boolean value)
 	{
-		privateSyncScheduleId = value;
+		privateUnwatchedOnly = value;
 	}
 	/** 
-	 Gets or sets the transcoded path.
+	 Gets or sets the limit.
 	 
-	 <value>The transcoded path.</value>
+	 <value>The limit.</value>
 	*/
-	private String privateTranscodedPath;
-	public final String getTranscodedPath()
+	private Long privateLimit = null;
+	public final Long getLimit()
 	{
-		return privateTranscodedPath;
+		return privateLimit;
 	}
-	public final void setTranscodedPath(String value)
+	public final void setLimit(Long value)
 	{
-		privateTranscodedPath = value;
+		privateLimit = value;
+	}
+	/** 
+	 Gets or sets the type of the limit.
+	 
+	 <value>The type of the limit.</value>
+	*/
+	private SyncLimitType privateLimitType = null;
+	public final SyncLimitType getLimitType()
+	{
+		return privateLimitType;
+	}
+	public final void setLimitType(SyncLimitType value)
+	{
+		privateLimitType = value;
+	}
+	/** 
+	 Gets or sets the requested item ids.
+	 
+	 <value>The requested item ids.</value>
+	*/
+	private java.util.ArrayList<String> privateRequestedItemIds;
+	public final java.util.ArrayList<String> getRequestedItemIds()
+	{
+		return privateRequestedItemIds;
+	}
+	public final void setRequestedItemIds(java.util.ArrayList<String> value)
+	{
+		privateRequestedItemIds = value;
+	}
+	/** 
+	 Gets or sets a value indicating whether this instance is dynamic.
+	 
+	 <value><c>true</c> if this instance is dynamic; otherwise, <c>false</c>.</value>
+	*/
+	private boolean privateIsDynamic;
+	public final boolean getIsDynamic()
+	{
+		return privateIsDynamic;
+	}
+	public final void setIsDynamic(boolean value)
+	{
+		privateIsDynamic = value;
+	}
+	/** 
+	 Gets or sets the date created.
+	 
+	 <value>The date created.</value>
+	*/
+	private java.util.Date privateDateCreated = new java.util.Date(0);
+	public final java.util.Date getDateCreated()
+	{
+		return privateDateCreated;
+	}
+	public final void setDateCreated(java.util.Date value)
+	{
+		privateDateCreated = value;
+	}
+	/** 
+	 Gets or sets the date last modified.
+	 
+	 <value>The date last modified.</value>
+	*/
+	private java.util.Date privateDateLastModified = new java.util.Date(0);
+	public final java.util.Date getDateLastModified()
+	{
+		return privateDateLastModified;
+	}
+	public final void setDateLastModified(java.util.Date value)
+	{
+		privateDateLastModified = value;
+	}
+	/** 
+	 Gets or sets the item count.
+	 
+	 <value>The item count.</value>
+	*/
+	private int privateItemCount;
+	public final int getItemCount()
+	{
+		return privateItemCount;
+	}
+	public final void setItemCount(int value)
+	{
+		privateItemCount = value;
+	}
+
+	private String privateParentName;
+	public final String getParentName()
+	{
+		return privateParentName;
+	}
+	public final void setParentName(String value)
+	{
+		privateParentName = value;
+	}
+	private String privatePrimaryImageItemId;
+	public final String getPrimaryImageItemId()
+	{
+		return privatePrimaryImageItemId;
+	}
+	public final void setPrimaryImageItemId(String value)
+	{
+		privatePrimaryImageItemId = value;
+	}
+	private String privatePrimaryImageTag;
+	public final String getPrimaryImageTag()
+	{
+		return privatePrimaryImageTag;
+	}
+	public final void setPrimaryImageTag(String value)
+	{
+		privatePrimaryImageTag = value;
+	}
+	private Double privatePrimaryImageAspectRatio = null;
+	public final Double getPrimaryImageAspectRatio()
+	{
+		return privatePrimaryImageAspectRatio;
+	}
+	public final void setPrimaryImageAspectRatio(Double value)
+	{
+		privatePrimaryImageAspectRatio = value;
+	}
+
+	public SyncJob()
+	{
+		setRequestedItemIds(new java.util.ArrayList<String>());
 	}
 }

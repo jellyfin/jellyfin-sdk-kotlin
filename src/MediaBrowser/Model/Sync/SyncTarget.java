@@ -1,7 +1,21 @@
 package MediaBrowser.Model.Sync;
 
-public class SyncSchedule
+public class SyncTarget
 {
+	/** 
+	 Gets or sets the name.
+	 
+	 <value>The name.</value>
+	*/
+	private String privateName;
+	public final String getName()
+	{
+		return privateName;
+	}
+	public final void setName(String value)
+	{
+		privateName = value;
+	}
 	/** 
 	 Gets or sets the identifier.
 	 

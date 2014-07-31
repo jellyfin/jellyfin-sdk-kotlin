@@ -319,7 +319,9 @@ public class MediaStream
 		String tempVar = getCodec();
 		String codec = (tempVar != null) ? tempVar : "";
 
-		return StringHelper.IndexOfIgnoreCase(codec, "pgs") == -1 && StringHelper.IndexOfIgnoreCase(codec, "dvd") == -1;
+			// sub = external .sub file
+
+		return StringHelper.IndexOfIgnoreCase(codec, "pgs") == -1 && StringHelper.IndexOfIgnoreCase(codec, "dvd") == -1 && !StringHelper.EqualsIgnoreCase(codec, "sub");
 	}
 
 

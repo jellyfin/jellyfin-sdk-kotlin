@@ -3,32 +3,32 @@ package MediaBrowser.Model.Sync;
 public class SyncJobRequest
 {
 	/** 
-	 Gets or sets the device identifier.
+	 Gets or sets the target identifier.
 	 
-	 <value>The device identifier.</value>
+	 <value>The target identifier.</value>
 	*/
-	private java.util.ArrayList<String> privateDeviceIds;
-	public final java.util.ArrayList<String> getDeviceIds()
+	private String privateTargetId;
+	public final String getTargetId()
 	{
-		return privateDeviceIds;
+		return privateTargetId;
 	}
-	public final void setDeviceIds(java.util.ArrayList<String> value)
+	public final void setTargetId(String value)
 	{
-		privateDeviceIds = value;
+		privateTargetId = value;
 	}
 	/** 
-	 Gets or sets the item identifier.
+	 Gets or sets the item ids.
 	 
-	 <value>The item identifier.</value>
+	 <value>The item ids.</value>
 	*/
-	private String privateItemId;
-	public final String getItemId()
+	private java.util.ArrayList<String> privateItemIds;
+	public final java.util.ArrayList<String> getItemIds()
 	{
-		return privateItemId;
+		return privateItemIds;
 	}
-	public final void setItemId(String value)
+	public final void setItemIds(java.util.ArrayList<String> value)
 	{
-		privateItemId = value;
+		privateItemIds = value;
 	}
 	/** 
 	 Gets or sets the quality.
@@ -44,9 +44,79 @@ public class SyncJobRequest
 	{
 		privateQuality = value;
 	}
+	/** 
+	 Gets or sets the name.
+	 
+	 <value>The name.</value>
+	*/
+	private String privateName;
+	public final String getName()
+	{
+		return privateName;
+	}
+	public final void setName(String value)
+	{
+		privateName = value;
+	}
+	/** 
+	 Gets or sets the user identifier.
+	 
+	 <value>The user identifier.</value>
+	*/
+	private String privateUserId;
+	public final String getUserId()
+	{
+		return privateUserId;
+	}
+	public final void setUserId(String value)
+	{
+		privateUserId = value;
+	}
+	/** 
+	 Gets or sets a value indicating whether [unwatched only].
+	 
+	 <value><c>true</c> if [unwatched only]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean privateUnwatchedOnly;
+	public final boolean getUnwatchedOnly()
+	{
+		return privateUnwatchedOnly;
+	}
+	public final void setUnwatchedOnly(boolean value)
+	{
+		privateUnwatchedOnly = value;
+	}
+	/** 
+	 Gets or sets the limit.
+	 
+	 <value>The limit.</value>
+	*/
+	private Long privateLimit = null;
+	public final Long getLimit()
+	{
+		return privateLimit;
+	}
+	public final void setLimit(Long value)
+	{
+		privateLimit = value;
+	}
+	/** 
+	 Gets or sets the type of the limit.
+	 
+	 <value>The type of the limit.</value>
+	*/
+	private SyncLimitType privateLimitType = null;
+	public final SyncLimitType getLimitType()
+	{
+		return privateLimitType;
+	}
+	public final void setLimitType(SyncLimitType value)
+	{
+		privateLimitType = value;
+	}
 
 	public SyncJobRequest()
 	{
-		setDeviceIds(new java.util.ArrayList<String>());
+		setItemIds(new java.util.ArrayList<String>());
 	}
 }
