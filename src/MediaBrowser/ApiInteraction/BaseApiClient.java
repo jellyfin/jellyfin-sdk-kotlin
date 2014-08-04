@@ -9,8 +9,6 @@ import MediaBrowser.Model.Logging.*;
 import MediaBrowser.Model.Querying.*;
 import MediaBrowser.Model.Serialization.*;
 
-import java.util.stream.Stream;
-
 /** 
  Provides api methods that are usable on all platforms
 */
@@ -416,17 +414,42 @@ public abstract class BaseApiClient implements IDisposable
 
 		dict.AddIfNotNull("sortOrder", query.getSortOrder().getValue());
 
-        dict.AddIfNotNull("SeriesStatuses", query.SeriesStatuses.Select(f => f.toString()));
+        String[] SeriesStatuses = new String[0];
+        for (int i = 0; i < query.getSeriesStatuses().length; i++) {
+            SeriesStatuses[i] = query.getSeriesStatuses()[i].toString();
+        }
+        dict.AddIfNotNull("SeriesStatuses", SeriesStatuses);
 
-		dict.AddIfNotNull("fields", query.Fields.Select(f => f.toString()));
-		dict.AddIfNotNull("Filters", query.Filters.Select(f => f.toString()));
+        String[] Fields = new String[0];
+        for (int i = 0; i < query.getFields().length; i++) {
+            Fields[i] = query.getFields()[i].toString();
+        }
+		dict.AddIfNotNull("fields", Fields);
 
-		dict.AddIfNotNull("ImageTypes", query.ImageTypes.Select(f => f.toString()));
+        String[] Filters = new String[0];
+        for (int i = 0; i < query.getFilters().length; i++) {
+            Filters[i] = query.getFilters()[i].toString();
+        }
+        dict.AddIfNotNull("Filters", Filters);
+
+        String[] ImageTypes = new String[0];
+        for (int i = 0; i < query.getImageTypes().length; i++) {
+            ImageTypes[i] = query.getImageTypes()[i].toString();
+        }
+		dict.AddIfNotNull("ImageTypes", ImageTypes);
 		dict.AddIfNotNull("Is3D", query.getIs3D());
 
-		dict.AddIfNotNull("VideoTypes", query.VideoTypes.Select(f => f.toString()));
+        String[] VideoTypes = new String[0];
+        for (int i = 0; i < query.getVideoTypes().length; i++) {
+            VideoTypes[i] = query.getVideoTypes()[i].toString();
+        }
+		dict.AddIfNotNull("VideoTypes", VideoTypes);
 
-		dict.AddIfNotNull("AirDays", query.AirDays.Select(f => f.toString()));
+        String[] AirDays = new String[0];
+        for (int i = 0; i < query.getAirDays().length; i++) {
+            AirDays[i] = query.getAirDays()[i].toString();
+        }
+		dict.AddIfNotNull("AirDays", AirDays);
 		dict.AddIfNotNullOrEmpty("MinOfficialRating", query.getMinOfficialRating());
 		dict.AddIfNotNullOrEmpty("MaxOfficialRating", query.getMaxOfficialRating());
 
@@ -467,11 +490,19 @@ public abstract class BaseApiClient implements IDisposable
 
 		if (query.getLocationTypes() != null && query.getLocationTypes().length > 0)
 		{
-			dict.Add("LocationTypes", query.LocationTypes.Select(f => f.toString()));
+            String[] LocationTypes = new String[0];
+            for (int i = 0; i < query.getLocationTypes().length; i++) {
+                LocationTypes[i] = query.getLocationTypes()[i].toString();
+            }
+			dict.Add("LocationTypes", LocationTypes);
 		}
 		if (query.getExcludeLocationTypes() != null && query.getExcludeLocationTypes().length > 0)
 		{
-			dict.Add("ExcludeLocationTypes", query.ExcludeLocationTypes.Select(f => f.toString()));
+            String[] ExcludeLocationTypes = new String[0];
+            for (int i = 0; i < query.getExcludeLocationTypes().length; i++) {
+                ExcludeLocationTypes[i] = query.getExcludeLocationTypes()[i].toString();
+            }
+            dict.Add("ExcludeLocationTypes", ExcludeLocationTypes);
 		}
 
 		dict.AddIfNotNull("IsMissing", query.getIsMissing());
@@ -498,13 +529,17 @@ public abstract class BaseApiClient implements IDisposable
 
 		QueryStringDictionary dict = new QueryStringDictionary();
 
-		dict.AddIfNotNull("fields", query.Fields.Select(f => f.toString()));
+        String[] Fields = new String[0];
+        for (int i = 0; i < query.getFields().length; i++) {
+            Fields[i] = query.getFields()[i].toString();
+        }
+        dict.AddIfNotNull("fields", Fields);
 
-		dict.AddIfNotNull("Limit", query.getLimit());
+        dict.AddIfNotNull("Limit", query.getLimit());
 
 		dict.AddIfNotNull("StartIndex", query.getStartIndex());
 
-		dict.Add("UserId", query.getUserId());
+		dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
 
 		return GetApiUrl("Shows/NextUp", dict);
 	}
@@ -536,9 +571,13 @@ public abstract class BaseApiClient implements IDisposable
 		dict.AddIfNotNull("Limit", query.getLimit());
 		dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
 
-		dict.AddIfNotNull("fields", query.Fields.Select(f => f.toString()));
+        String[] Fields = new String[0];
+        for (int i = 0; i < query.getFields().length; i++) {
+            Fields[i] = query.getFields()[i].toString();
+        }
+        dict.AddIfNotNull("fields", Fields);
 
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(query.getId()))
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(query.getId()))
 		{
 			throw new IllegalArgumentException("query");
 		}
@@ -573,7 +612,11 @@ public abstract class BaseApiClient implements IDisposable
 		dict.AddIfNotNull("Limit", query.getLimit());
 		dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
 
-        dict.AddIfNotNull("fields", query.Fields.Select(f => f.toString()));
+        String[] Fields = new String[0];
+        for (int i = 0; i < query.getFields().length; i++) {
+            Fields[i] = query.getFields()[i].toString();
+        }
+        dict.AddIfNotNull("fields", Fields);
 
 		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(query.getId()))
 		{
@@ -610,7 +653,11 @@ public abstract class BaseApiClient implements IDisposable
 		dict.AddIfNotNull("Limit", query.getLimit());
 		dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
 
-		dict.AddIfNotNull("fields", query.Fields.Select(f => f.toString()));
+        String[] Fields = new String[0];
+        for (int i = 0; i < query.getFields().length; i++) {
+            Fields[i] = query.getFields()[i].toString();
+        }
+		dict.AddIfNotNull("fields", Fields);
 
 		return GetApiUrl(type + "/" + GetSlugName(query.getName()) + "/InstantMix", dict);
 	}
@@ -633,22 +680,34 @@ public abstract class BaseApiClient implements IDisposable
 
 		dict.AddIfNotNullOrEmpty("ParentId", query.getParentId());
 
-		dict.Add("UserId", query.getUserId());
+		dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
 		dict.AddIfNotNull("StartIndex", query.getStartIndex());
 
 		dict.AddIfNotNull("Limit", query.getLimit());
 
 		dict.AddIfNotNull("SortBy", query.getSortBy());
 
-	    dict.AddIfNotNull("sortOrder",query.getSortOrder().getValue());
+	    dict.AddIfNotNull("sortOrder", query.getSortOrder().getValue());
 
 		dict.AddIfNotNull("IsPlayed", query.getIsPlayed());
 
-		dict.AddIfNotNull("fields", query.Fields.Select(f => f.toString()));
+        String[] Fields = new String[0];
+        for (int i = 0; i < query.getFields().length; i++) {
+            Fields[i] = query.getFields()[i].toString();
+        }
+        dict.AddIfNotNull("fields", Fields);
 
-		dict.AddIfNotNull("Filters", query.Filters.Select(f => f.toString()));
+        String[] Filters = new String[0];
+        for (int i = 0; i < query.getFilters().length; i++) {
+            Filters[i] = query.getFilters()[i].toString();
+        }
+        dict.AddIfNotNull("Filters", Filters);
 
-		dict.AddIfNotNull("ImageTypes", query.ImageTypes.Select(f => f.toString()));
+        String[] ImageTypes = new String[0];
+        for (int i = 0; i < query.getImageTypes().length; i++) {
+            ImageTypes[i] = query.getImageTypes()[i].toString();
+        }
+		dict.AddIfNotNull("ImageTypes",ImageTypes);
 
 		dict.Add("recursive", query.getRecursive());
 
