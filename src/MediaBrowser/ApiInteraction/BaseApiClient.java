@@ -276,8 +276,7 @@ public abstract class BaseApiClient implements IDisposable
 			return "";
 		}
 
-//C# TO JAVA CONVERTER TODO TASK: There is no equivalent to implicit typing in Java:
-		var header = String.format("Client=\"%1$s\", DeviceId=\"%2$s\", Device=\"%3$s\", Version=\"%4$s\"", getClientName(), getDeviceId(), getDeviceName(), getApplicationVersion());
+		String header = String.format("Client=\"%1$s\", DeviceId=\"%2$s\", Device=\"%3$s\", Version=\"%4$s\"", getClientName(), getDeviceId(), getDeviceName(), getApplicationVersion());
 
 		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getCurrentUserId()))
 		{
@@ -292,7 +291,6 @@ public abstract class BaseApiClient implements IDisposable
 	 
 	 @param handler The handler.
 	 @return System.String.
-	 @exception System.ArgumentNullException handler
 	*/
 	public final String GetApiUrl(String handler)
 	{
@@ -353,7 +351,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param handler The handler.
 	 @param queryString The query string.
 	 @return System.String.
-	 @exception System.ArgumentNullException handler
 	*/
 	protected final String GetApiUrl(String handler, QueryStringDictionary queryString)
 	{
@@ -376,28 +373,27 @@ public abstract class BaseApiClient implements IDisposable
 		{
 			throw new IllegalArgumentException("options");
 		}
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(options.MediaSourceId))
+		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(options.getMediaSourceId()))
 		{
 			throw new IllegalArgumentException("options");
 		}
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(options.ItemId))
+		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(options.getItemId()))
 		{
 			throw new IllegalArgumentException("options");
 		}
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(options.Format))
+		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(options.getFormat()))
 		{
 			throw new IllegalArgumentException("options");
 		}
 
-		return GetApiUrl("Videos/" + options.ItemId + "/" + options.MediaSourceId + "/Subtitles/" + options.StreamIndex + "/Stream." + options.Format);
+		return GetApiUrl("Videos/" + options.getItemId() + "/" + options.getMediaSourceId() + "/Subtitles/" + options.getStreamIndex() + "/Stream." + options.getFormat());
 	}
 
-	/** 
+	/**
 	 Creates a url to return a list of items
 	 
 	 @param query The query.
 	 @return System.String.
-	 @exception System.ArgumentNullException query
 	*/
 	protected final String GetItemListUrl(ItemQuery query)
 	{
@@ -406,103 +402,116 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("query");
 		}
 
-		QueryStringDictionary dict = new QueryStringDictionary { };
+		QueryStringDictionary dict = new QueryStringDictionary();
 
-		dict.AddIfNotNullOrEmpty("ParentId", query.ParentId);
+		dict.AddIfNotNullOrEmpty("ParentId", query.getParentId());
 
-		dict.AddIfNotNull("StartIndex", query.StartIndex);
+		dict.AddIfNotNull("StartIndex", query.getStartIndex());
 
-		dict.AddIfNotNull("Limit", query.Limit);
+		dict.AddIfNotNull("Limit", query.getLimit());
 
-		dict.AddIfNotNull("SortBy", query.SortBy);
+		dict.AddIfNotNull("SortBy", query.getSortBy());
 
-		if (query.SortOrder.HasValue)
+		dict.AddIfNotNull("sortOrder", query.getSortOrder().getValue());
+
+        String[] SeriesStatuses = new String[0];
+        for (int i = 0; i < query.getSeriesStatuses().length; i++) {
+            SeriesStatuses[i] = query.getSeriesStatuses()[i].toString();
+        }
+        dict.AddIfNotNull("SeriesStatuses", SeriesStatuses);
+
+        String[] Fields = new String[0];
+        for (int i = 0; i < query.getFields().length; i++) {
+            Fields[i] = query.getFields()[i].toString();
+        }
+		dict.AddIfNotNull("fields", Fields);
+
+        String[] Filters = new String[0];
+        for (int i = 0; i < query.getFilters().length; i++) {
+            Filters[i] = query.getFilters()[i].toString();
+        }
+        dict.AddIfNotNull("Filters", Filters);
+
+        String[] ImageTypes = new String[0];
+        for (int i = 0; i < query.getImageTypes().length; i++) {
+            ImageTypes[i] = query.getImageTypes()[i].toString();
+        }
+		dict.AddIfNotNull("ImageTypes", ImageTypes);
+		dict.AddIfNotNull("Is3D", query.getIs3D());
+
+        String[] VideoTypes = new String[0];
+        for (int i = 0; i < query.getVideoTypes().length; i++) {
+            VideoTypes[i] = query.getVideoTypes()[i].toString();
+        }
+		dict.AddIfNotNull("VideoTypes", VideoTypes);
+
+        String[] AirDays = new String[0];
+        for (int i = 0; i < query.getAirDays().length; i++) {
+            AirDays[i] = query.getAirDays()[i].toString();
+        }
+		dict.AddIfNotNull("AirDays", AirDays);
+		dict.AddIfNotNullOrEmpty("MinOfficialRating", query.getMinOfficialRating());
+		dict.AddIfNotNullOrEmpty("MaxOfficialRating", query.getMaxOfficialRating());
+
+		dict.Add("recursive", query.getRecursive());
+
+		dict.AddIfNotNull("MinIndexNumber", query.getMinIndexNumber());
+
+		dict.AddIfNotNull("MediaTypes", query.getMediaTypes());
+		dict.AddIfNotNull("Genres", query.getGenres(), "|");
+		dict.AddIfNotNull("Genres", query.getAllGenres(), "|");
+		dict.AddIfNotNull("Ids", query.getIds());
+		dict.AddIfNotNull("Studios", query.getStudios(), "|");
+		dict.AddIfNotNull("ExcludeItemTypes", query.getExcludeItemTypes());
+		dict.AddIfNotNull("IncludeItemTypes", query.getIncludeItemTypes());
+		dict.AddIfNotNull("Artists", query.getArtists());
+
+		dict.AddIfNotNull("IsPlayed", query.getIsPlayed());
+		dict.AddIfNotNull("IsInBoxSet", query.getIsInBoxSet());
+
+		dict.AddIfNotNullOrEmpty("Person", query.getPerson());
+		dict.AddIfNotNull("PersonTypes", query.getPersonTypes());
+
+		dict.AddIfNotNull("Years", query.getYears());
+
+		dict.AddIfNotNull("ParentIndexNumber", query.getParentIndexNumber());
+		dict.AddIfNotNull("IsHD", query.getIsHD());
+		dict.AddIfNotNull("HasParentalRating", query.getHasParentalRating());
+
+		dict.AddIfNotNullOrEmpty("SearchTerm", query.getSearchTerm());
+
+		dict.AddIfNotNull("MinCriticRating", query.getMinCriticRating());
+		dict.AddIfNotNull("MinCommunityRating", query.getMinCommunityRating());
+
+		dict.AddIfNotNull("MinPlayers", query.getMinPlayers());
+		dict.AddIfNotNull("MaxPlayers", query.getMaxPlayers());
+		dict.AddIfNotNullOrEmpty("NameStartsWithOrGreater", query.getNameStartsWithOrGreater());
+		dict.AddIfNotNullOrEmpty("AlbumArtistStartsWithOrGreater", query.getAlbumArtistStartsWithOrGreater());
+
+		if (query.getLocationTypes() != null && query.getLocationTypes().length > 0)
 		{
-			dict["sortOrder"] = query.SortOrder.toString();
+            String[] LocationTypes = new String[0];
+            for (int i = 0; i < query.getLocationTypes().length; i++) {
+                LocationTypes[i] = query.getLocationTypes()[i].toString();
+            }
+			dict.Add("LocationTypes", LocationTypes);
+		}
+		if (query.getExcludeLocationTypes() != null && query.getExcludeLocationTypes().length > 0)
+		{
+            String[] ExcludeLocationTypes = new String[0];
+            for (int i = 0; i < query.getExcludeLocationTypes().length; i++) {
+                ExcludeLocationTypes[i] = query.getExcludeLocationTypes()[i].toString();
+            }
+            dict.Add("ExcludeLocationTypes", ExcludeLocationTypes);
 		}
 
-		if (query.SeriesStatuses != null)
-		{
-			dict.Add("SeriesStatuses", query.SeriesStatuses.Select(f => f.toString()));
-		}
+		dict.AddIfNotNull("IsMissing", query.getIsMissing());
+		dict.AddIfNotNull("IsUnaired", query.getIsUnaired());
+		dict.AddIfNotNull("IsVirtualUnaired", query.getIsVirtualUnaired());
 
-		if (query.Fields != null)
-		{
-			dict.Add("fields", query.Fields.Select(f => f.toString()));
-		}
-		if (query.Filters != null)
-		{
-			dict.Add("Filters", query.Filters.Select(f => f.toString()));
-		}
-		if (query.ImageTypes != null)
-		{
-			dict.Add("ImageTypes", query.ImageTypes.Select(f => f.toString()));
-		}
+		dict.AddIfNotNull("AiredDuringSeason", query.getAiredDuringSeason());
 
-		dict.AddIfNotNull("Is3D", query.Is3D);
-		if (query.VideoTypes != null)
-		{
-			dict.Add("VideoTypes", query.VideoTypes.Select(f => f.toString()));
-		}
-		if (query.AirDays != null)
-		{
-			dict.Add("AirDays", query.AirDays.Select(f => f.toString()));
-		}
-
-		dict.AddIfNotNullOrEmpty("MinOfficialRating", query.MinOfficialRating);
-		dict.AddIfNotNullOrEmpty("MaxOfficialRating", query.MaxOfficialRating);
-
-		dict.Add("recursive", query.Recursive);
-
-		dict.AddIfNotNull("MinIndexNumber", query.MinIndexNumber);
-
-		dict.AddIfNotNull("MediaTypes", query.MediaTypes);
-		dict.AddIfNotNull("Genres", query.Genres, "|");
-		dict.AddIfNotNull("Genres", query.AllGenres, "|");
-		dict.AddIfNotNull("Ids", query.Ids);
-		dict.AddIfNotNull("Studios", query.Studios, "|");
-		dict.AddIfNotNull("ExcludeItemTypes", query.ExcludeItemTypes);
-		dict.AddIfNotNull("IncludeItemTypes", query.IncludeItemTypes);
-		dict.AddIfNotNull("Artists", query.Artists);
-
-		dict.AddIfNotNull("IsPlayed", query.IsPlayed);
-		dict.AddIfNotNull("IsInBoxSet", query.IsInBoxSet);
-
-		dict.AddIfNotNullOrEmpty("Person", query.Person);
-		dict.AddIfNotNull("PersonTypes", query.PersonTypes);
-
-		dict.AddIfNotNull("Years", query.Years);
-
-		dict.AddIfNotNull("ParentIndexNumber", query.ParentIndexNumber);
-		dict.AddIfNotNull("IsHD", query.IsHD);
-		dict.AddIfNotNull("HasParentalRating", query.HasParentalRating);
-
-		dict.AddIfNotNullOrEmpty("SearchTerm", query.SearchTerm);
-
-		dict.AddIfNotNull("MinCriticRating", query.MinCriticRating);
-		dict.AddIfNotNull("MinCommunityRating", query.MinCommunityRating);
-
-		dict.AddIfNotNull("MinPlayers", query.MinPlayers);
-		dict.AddIfNotNull("MaxPlayers", query.MaxPlayers);
-		dict.AddIfNotNullOrEmpty("NameStartsWithOrGreater", query.NameStartsWithOrGreater);
-		dict.AddIfNotNullOrEmpty("AlbumArtistStartsWithOrGreater", query.AlbumArtistStartsWithOrGreater);
-
-		if (query.LocationTypes != null && query.LocationTypes.getLength() > 0)
-		{
-			dict.Add("LocationTypes", query.LocationTypes.Select(f => f.toString()));
-		}
-		if (query.ExcludeLocationTypes != null && query.ExcludeLocationTypes.getLength() > 0)
-		{
-			dict.Add("ExcludeLocationTypes", query.ExcludeLocationTypes.Select(f => f.toString()));
-		}
-
-		dict.AddIfNotNull("IsMissing", query.IsMissing);
-		dict.AddIfNotNull("IsUnaired", query.IsUnaired);
-		dict.AddIfNotNull("IsVirtualUnaired", query.IsVirtualUnaired);
-
-		dict.AddIfNotNull("AiredDuringSeason", query.AiredDuringSeason);
-
-		return GetApiUrl("Users/" + query.UserId + "/Items", dict);
+		return GetApiUrl("Users/" + query.getUserId() + "/Items", dict);
 	}
 
 	/** 
@@ -510,7 +519,6 @@ public abstract class BaseApiClient implements IDisposable
 	 
 	 @param query The query.
 	 @return System.String.
-	 @exception System.ArgumentNullException query
 	*/
 	protected final String GetNextUpUrl(NextUpQuery query)
 	{
@@ -519,18 +527,19 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("query");
 		}
 
-		QueryStringDictionary dict = new QueryStringDictionary { };
+		QueryStringDictionary dict = new QueryStringDictionary();
 
-		if (query.Fields != null)
-		{
-			dict.Add("fields", query.Fields.Select(f => f.toString()));
-		}
+        String[] Fields = new String[0];
+        for (int i = 0; i < query.getFields().length; i++) {
+            Fields[i] = query.getFields()[i].toString();
+        }
+        dict.AddIfNotNull("fields", Fields);
 
-		dict.AddIfNotNull("Limit", query.Limit);
+        dict.AddIfNotNull("Limit", query.getLimit());
 
-		dict.AddIfNotNull("StartIndex", query.StartIndex);
+		dict.AddIfNotNull("StartIndex", query.getStartIndex());
 
-		dict.Add("UserId", query.UserId);
+		dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
 
 		return GetApiUrl("Shows/NextUp", dict);
 	}
@@ -541,7 +550,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param query The query.
 	 @param type The type.
 	 @return System.String.
-	 @exception System.ArgumentNullException
 	 query
 	 or
 	 type
@@ -558,22 +566,23 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("type");
 		}
 
-		QueryStringDictionary dict = new QueryStringDictionary { };
+		QueryStringDictionary dict = new QueryStringDictionary();
 
-		dict.AddIfNotNull("Limit", query.Limit);
-		dict.AddIfNotNullOrEmpty("UserId", query.UserId);
+		dict.AddIfNotNull("Limit", query.getLimit());
+		dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
 
-		if (query.Fields != null)
-		{
-			dict.Add("fields", query.Fields.Select(f => f.toString()));
-		}
+        String[] Fields = new String[0];
+        for (int i = 0; i < query.getFields().length; i++) {
+            Fields[i] = query.getFields()[i].toString();
+        }
+        dict.AddIfNotNull("fields", Fields);
 
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(query.Id))
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(query.getId()))
 		{
 			throw new IllegalArgumentException("query");
 		}
 
-		return GetApiUrl(type + "/" + query.Id + "/Similar", dict);
+		return GetApiUrl(type + "/" + query.getId() + "/Similar", dict);
 	}
 
 	/** 
@@ -582,7 +591,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param query The query.
 	 @param type The type.
 	 @return System.String.
-	 @exception System.ArgumentNullException
 	 query
 	 or
 	 type
@@ -599,22 +607,23 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("type");
 		}
 
-		QueryStringDictionary dict = new QueryStringDictionary { };
+		QueryStringDictionary dict = new QueryStringDictionary();
 
-		dict.AddIfNotNull("Limit", query.Limit);
-		dict.AddIfNotNullOrEmpty("UserId", query.UserId);
+		dict.AddIfNotNull("Limit", query.getLimit());
+		dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
 
-		if (query.Fields != null)
-		{
-			dict.Add("fields", query.Fields.Select(f => f.toString()));
-		}
+        String[] Fields = new String[0];
+        for (int i = 0; i < query.getFields().length; i++) {
+            Fields[i] = query.getFields()[i].toString();
+        }
+        dict.AddIfNotNull("fields", Fields);
 
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(query.Id))
+		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(query.getId()))
 		{
 			throw new IllegalArgumentException("query");
 		}
 
-		return GetApiUrl(type + "/" + query.Id + "/InstantMix", dict);
+		return GetApiUrl(type + "/" + query.getId() + "/InstantMix", dict);
 	}
 
 	/** 
@@ -623,7 +632,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param query The query.
 	 @param type The type.
 	 @return System.String.
-	 @exception System.ArgumentNullException
 	 query
 	 or
 	 type
@@ -640,17 +648,18 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("type");
 		}
 
-		QueryStringDictionary dict = new QueryStringDictionary { };
+		QueryStringDictionary dict = new QueryStringDictionary();
 
-		dict.AddIfNotNull("Limit", query.Limit);
-		dict.AddIfNotNullOrEmpty("UserId", query.UserId);
+		dict.AddIfNotNull("Limit", query.getLimit());
+		dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
 
-		if (query.Fields != null)
-		{
-			dict.Add("fields", query.Fields.Select(f => f.toString()));
-		}
+        String[] Fields = new String[0];
+        for (int i = 0; i < query.getFields().length; i++) {
+            Fields[i] = query.getFields()[i].toString();
+        }
+		dict.AddIfNotNull("fields", Fields);
 
-		return GetApiUrl(type + "/" + GetSlugName(query.Name) + "/InstantMix", dict);
+		return GetApiUrl(type + "/" + GetSlugName(query.getName()) + "/InstantMix", dict);
 	}
 
 	/** 
@@ -659,7 +668,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param type The type.
 	 @param query The query.
 	 @return System.String.
-	 @exception System.ArgumentNullException query
 	*/
 	protected final String GetItemByNameListUrl(String type, ItemsByNameQuery query)
 	{
@@ -668,47 +676,47 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("query");
 		}
 
-		QueryStringDictionary dict = new QueryStringDictionary { };
+		QueryStringDictionary dict = new QueryStringDictionary();
 
-		dict.AddIfNotNullOrEmpty("ParentId", query.ParentId);
+		dict.AddIfNotNullOrEmpty("ParentId", query.getParentId());
 
-		dict.Add("UserId", query.UserId);
-		dict.AddIfNotNull("StartIndex", query.StartIndex);
+		dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
+		dict.AddIfNotNull("StartIndex", query.getStartIndex());
 
-		dict.AddIfNotNull("Limit", query.Limit);
+		dict.AddIfNotNull("Limit", query.getLimit());
 
-		dict.AddIfNotNull("SortBy", query.SortBy);
+		dict.AddIfNotNull("SortBy", query.getSortBy());
 
-		if (query.SortOrder.HasValue)
-		{
-			dict["sortOrder"] = query.SortOrder.toString();
-		}
+	    dict.AddIfNotNull("sortOrder", query.getSortOrder().getValue());
 
-		dict.AddIfNotNull("IsPlayed", query.IsPlayed);
+		dict.AddIfNotNull("IsPlayed", query.getIsPlayed());
 
-		if (query.Fields != null)
-		{
-			dict.Add("fields", query.Fields.Select(f => f.toString()));
-		}
+        String[] Fields = new String[0];
+        for (int i = 0; i < query.getFields().length; i++) {
+            Fields[i] = query.getFields()[i].toString();
+        }
+        dict.AddIfNotNull("fields", Fields);
 
-		if (query.Filters != null)
-		{
-			dict.Add("Filters", query.Filters.Select(f => f.toString()));
-		}
+        String[] Filters = new String[0];
+        for (int i = 0; i < query.getFilters().length; i++) {
+            Filters[i] = query.getFilters()[i].toString();
+        }
+        dict.AddIfNotNull("Filters", Filters);
 
-		if (query.ImageTypes != null)
-		{
-			dict.Add("ImageTypes", query.ImageTypes.Select(f => f.toString()));
-		}
+        String[] ImageTypes = new String[0];
+        for (int i = 0; i < query.getImageTypes().length; i++) {
+            ImageTypes[i] = query.getImageTypes()[i].toString();
+        }
+		dict.AddIfNotNull("ImageTypes",ImageTypes);
 
-		dict.Add("recursive", query.Recursive);
+		dict.Add("recursive", query.getRecursive());
 
-		dict.AddIfNotNull("MediaTypes", query.MediaTypes);
-		dict.AddIfNotNull("ExcludeItemTypes", query.ExcludeItemTypes);
-		dict.AddIfNotNull("IncludeItemTypes", query.IncludeItemTypes);
+		dict.AddIfNotNull("MediaTypes", query.getMediaTypes());
+		dict.AddIfNotNull("ExcludeItemTypes", query.getExcludeItemTypes());
+		dict.AddIfNotNull("IncludeItemTypes", query.getIncludeItemTypes());
 
-		dict.AddIfNotNullOrEmpty("NameLessThan", query.NameLessThan);
-		dict.AddIfNotNullOrEmpty("NameStartsWithOrGreater", query.NameStartsWithOrGreater);
+		dict.AddIfNotNullOrEmpty("NameLessThan", query.getNameLessThan());
+		dict.AddIfNotNullOrEmpty("NameStartsWithOrGreater", query.getNameStartsWithOrGreater());
 
 		return GetApiUrl(type, dict);
 	}
@@ -720,7 +728,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param options The options.
 	 @param queryParams The query params.
 	 @return System.String.
-	 @exception System.ArgumentNullException options
 	*/
 	private String GetImageUrl(String baseUrl, ImageOptions options, QueryStringDictionary queryParams)
 	{
@@ -734,33 +741,33 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("queryParams");
 		}
 
-		if (options.ImageIndex.HasValue)
+		if (options.getImageIndex() != null)
 		{
-			baseUrl += "/" + options.ImageIndex.Value;
+			baseUrl += "/" + options.getImageIndex();
 		}
 
-		queryParams.AddIfNotNull("Width", options.Width);
-		queryParams.AddIfNotNull("Height", options.Height);
-		queryParams.AddIfNotNull("MaxWidth", options.MaxWidth);
-		queryParams.AddIfNotNull("MaxHeight", options.MaxHeight);
-		queryParams.AddIfNotNull("Quality", (options.Quality != null) ? options.Quality : getImageQuality());
+		queryParams.AddIfNotNull("Width", options.getWidth());
+		queryParams.AddIfNotNull("Height", options.getHeight());
+		queryParams.AddIfNotNull("MaxWidth", options.getMaxWidth());
+		queryParams.AddIfNotNull("MaxHeight", options.getMaxHeight());
+		queryParams.AddIfNotNull("Quality", (options.getQuality() != null) ? options.getQuality() : getImageQuality());
 
-		queryParams.AddIfNotNullOrEmpty("Tag", options.Tag);
+		queryParams.AddIfNotNullOrEmpty("Tag", options.getTag());
 
-		queryParams.AddIfNotNull("CropWhitespace", options.CropWhitespace);
-		queryParams.Add("EnableImageEnhancers", options.EnableImageEnhancers);
+		queryParams.AddIfNotNull("CropWhitespace", options.getCropWhitespace());
+		queryParams.Add("EnableImageEnhancers", options.getEnableImageEnhancers());
 
-		if (options.Format != ImageOutputFormat.Original)
+		if (options.getFormat() != ImageOutputFormat.Original)
 		{
-			queryParams.Add("Format", options.Format.toString());
+			queryParams.Add("Format", options.getFormat().getValue());
 		}
 
-		if (options.AddPlayedIndicator)
+		if (options.getAddPlayedIndicator())
 		{
 			queryParams.Add("AddPlayedIndicator", true);
 		}
-		queryParams.AddIfNotNull("PercentPlayed", options.PercentPlayed);
-		queryParams.AddIfNotNullOrEmpty("BackgroundColor", options.BackgroundColor);
+		queryParams.AddIfNotNull("PercentPlayed", options.getPercentPlayed());
+		queryParams.AddIfNotNullOrEmpty("BackgroundColor", options.getBackgroundColor());
 
 		return GetApiUrl(baseUrl, queryParams);
 	}
@@ -771,7 +778,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param item The item.
 	 @param options The options.
 	 @return System.String.
-	 @exception System.ArgumentNullException item
 	*/
 	public final String GetImageUrl(BaseItemDto item, ImageOptions options)
 	{
@@ -785,9 +791,9 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("options");
 		}
 
-		options.Tag = GetImageTag(item, options);
+		options.setTag(GetImageTag(item, options));
 
-		return GetImageUrl(item.Id, options);
+		return GetImageUrl(item.getId(), options);
 	}
 
 	public final String GetImageUrl(RecordingInfoDto item, ImageOptions options)
@@ -802,9 +808,9 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("options");
 		}
 
-		options.Tag = item.ImageTags[options.ImageType];
+		options.setTag(item.getImageTags().get(options.getImageType().getValue()));
 
-		return GetImageUrl(item.Id, options);
+		return GetImageUrl(item.getId(), options);
 	}
 
 	public final String GetImageUrl(ChannelInfoDto item, ImageOptions options)
@@ -819,9 +825,9 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("options");
 		}
 
-		options.Tag = item.ImageTags[options.ImageType];
+        options.setTag(item.getImageTags().get(options.getImageType().getValue()));
 
-		return GetImageUrl(item.Id, options);
+        return GetImageUrl(item.getId(), options);
 	}
 
 	public final String GetImageUrl(ProgramInfoDto item, ImageOptions options)
@@ -836,9 +842,9 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("options");
 		}
 
-		options.Tag = item.ImageTags[options.ImageType];
+        options.setTag(item.getImageTags().get(options.getImageType().getValue()));
 
-		return GetImageUrl(item.Id, options);
+        return GetImageUrl(item.getId(), options);
 	}
 
 	/** 
@@ -847,7 +853,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param itemId The Id of the item
 	 @param options The options.
 	 @return System.String.
-	 @exception System.ArgumentNullException itemId
 	*/
 	public final String GetImageUrl(String itemId, ImageOptions options)
 	{
@@ -856,7 +861,7 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("itemId");
 		}
 
-		String url = "Items/" + itemId + "/Images/" + options.ImageType;
+		String url = "Items/" + itemId + "/Images/" + options.getImageType();
 
 		return GetImageUrl(url, options, new QueryStringDictionary());
 	}
@@ -867,7 +872,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param user The user.
 	 @param options The options.
 	 @return System.String.
-	 @exception System.ArgumentNullException user
 	*/
 	public final String GetUserImageUrl(UserDto user, ImageOptions options)
 	{
@@ -881,9 +885,9 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("options");
 		}
 
-		options.Tag = user.PrimaryImageTag;
+		options.setTag(user.getPrimaryImageTag());
 
-		return GetUserImageUrl(user.Id, options);
+		return GetUserImageUrl(user.getId(), options);
 	}
 
 	/** 
@@ -892,7 +896,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param userId The Id of the user
 	 @param options The options.
 	 @return System.String.
-	 @exception System.ArgumentNullException userId
 	*/
 	public final String GetUserImageUrl(String userId, ImageOptions options)
 	{
@@ -901,7 +904,7 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("userId");
 		}
 
-		String url = "Users/" + userId + "/Images/" + options.ImageType;
+		String url = "Users/" + userId + "/Images/" + options.getImageType();
 
 		return GetImageUrl(url, options, new QueryStringDictionary());
 	}
@@ -912,7 +915,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param item The item.
 	 @param options The options.
 	 @return System.String.
-	 @exception System.ArgumentNullException item
 	*/
 	public final String GetPersonImageUrl(BaseItemPerson item, ImageOptions options)
 	{
@@ -926,9 +928,9 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("options");
 		}
 
-		options.Tag = item.PrimaryImageTag;
+		options.setTag(item.getPrimaryImageTag());
 
-		return GetPersonImageUrl(item.Name, options);
+		return GetPersonImageUrl(item.getName(), options);
 	}
 
 	/** 
@@ -940,22 +942,22 @@ public abstract class BaseApiClient implements IDisposable
 	*/
 	private String GetImageTag(BaseItemDto item, ImageOptions options)
 	{
-		if (options.ImageType == ImageType.Backdrop)
+		if (options.getImageType() == ImageType.Backdrop)
 		{
-			return item.BackdropImageTags[(options.ImageIndex != null) ? options.ImageIndex : 0];
+			return item.getBackdropImageTags().get((options.getImageIndex() != null) ? options.getImageIndex() : 0);
 		}
 
-		if (options.ImageType == ImageType.Screenshot)
+		if (options.getImageType() == ImageType.Screenshot)
 		{
-			return item.ScreenshotImageTags[(options.ImageIndex != null) ? options.ImageIndex : 0];
+			return item.getScreenshotImageTags().get((options.getImageIndex() != null) ? options.getImageIndex() : 0);
 		}
 
-		if (options.ImageType == ImageType.Chapter)
+		if (options.getImageType() == ImageType.Chapter)
 		{
-			return item.Chapters[(options.ImageIndex != null) ? options.ImageIndex : 0].ImageTag;
+			return item.getChapters().get((options.getImageIndex() != null) ? options.getImageIndex() : 0).getImageTag();
 		}
 
-		return item.ImageTags[options.ImageType];
+		return item.getImageTags().get(options.getImageType().getValue());
 	}
 
 	/** 
@@ -964,7 +966,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param name The name of the person
 	 @param options The options.
 	 @return System.String.
-	 @exception System.ArgumentNullException name
 	*/
 	public final String GetPersonImageUrl(String name, ImageOptions options)
 	{
@@ -973,7 +974,7 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("name");
 		}
 
-		String url = "Persons/" + GetSlugName(name) + "/Images/" + options.ImageType;
+		String url = "Persons/" + GetSlugName(name) + "/Images/" + options.getImageType().getValue();
 
 		return GetImageUrl(url, options, new QueryStringDictionary());
 	}
@@ -987,7 +988,7 @@ public abstract class BaseApiClient implements IDisposable
 	*/
 	public final String GetYearImageUrl(int year, ImageOptions options)
 	{
-		String url = "Years/" + year + "/Images/" + options.ImageType;
+		String url = "Years/" + year + "/Images/" + options.getImageType().getValue();
 
 		return GetImageUrl(url, options, new QueryStringDictionary());
 	}
@@ -998,7 +999,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param name The name.
 	 @param options The options.
 	 @return System.String.
-	 @exception System.ArgumentNullException name
 	*/
 	public final String GetGenreImageUrl(String name, ImageOptions options)
 	{
@@ -1007,7 +1007,7 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("name");
 		}
 
-		String url = "Genres/" + GetSlugName(name) + "/Images/" + options.ImageType;
+		String url = "Genres/" + GetSlugName(name) + "/Images/" + options.getImageType().getValue();
 
 		return GetImageUrl(url, options, new QueryStringDictionary());
 	}
@@ -1018,7 +1018,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param name The name.
 	 @param options The options.
 	 @return System.String.
-	 @exception System.ArgumentNullException name
 	*/
 	public final String GetMusicGenreImageUrl(String name, ImageOptions options)
 	{
@@ -1027,7 +1026,7 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("name");
 		}
 
-		String url = "MusicGenres/" + GetSlugName(name) + "/Images/" + options.ImageType;
+		String url = "MusicGenres/" + GetSlugName(name) + "/Images/" + options.getImageType().getValue();
 
 		return GetImageUrl(url, options, new QueryStringDictionary());
 	}
@@ -1038,7 +1037,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param name The name.
 	 @param options The options.
 	 @return System.String.
-	 @exception System.ArgumentNullException name
 	*/
 	public final String GetGameGenreImageUrl(String name, ImageOptions options)
 	{
@@ -1047,7 +1045,7 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("name");
 		}
 
-		String url = "GameGenres/" + GetSlugName(name) + "/Images/" + options.ImageType;
+		String url = "GameGenres/" + GetSlugName(name) + "/Images/" + options.getImageType().getValue();
 
 		return GetImageUrl(url, options, new QueryStringDictionary());
 	}
@@ -1058,7 +1056,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param name The name.
 	 @param options The options.
 	 @return System.String.
-	 @exception System.ArgumentNullException name
 	*/
 	public final String GetStudioImageUrl(String name, ImageOptions options)
 	{
@@ -1067,7 +1064,7 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("name");
 		}
 
-		String url = "Studios/" + GetSlugName(name) + "/Images/" + options.ImageType;
+		String url = "Studios/" + GetSlugName(name) + "/Images/" + options.getImageType().getValue();
 
 		return GetImageUrl(url, options, new QueryStringDictionary());
 	}
@@ -1078,7 +1075,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param name The name.
 	 @param options The options.
 	 @return System.String.
-	 @exception System.ArgumentNullException name
 	*/
 	public final String GetArtistImageUrl(String name, ImageOptions options)
 	{
@@ -1087,7 +1083,7 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("name");
 		}
 
-		String url = "Artists/" + GetSlugName(name) + "/Images/" + options.ImageType;
+		String url = "Artists/" + GetSlugName(name) + "/Images/" + options.getImageType().getValue();
 
 		return GetImageUrl(url, options, new QueryStringDictionary());
 	}
@@ -1098,7 +1094,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param item A given item.
 	 @param options The options.
 	 @return System.String[][].
-	 @exception System.ArgumentNullException item
 	*/
 	public final String[] GetBackdropImageUrls(BaseItemDto item, ImageOptions options)
 	{
@@ -1112,20 +1107,20 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("options");
 		}
 
-		options.ImageType = ImageType.Backdrop;
+		options.setImageType(ImageType.Backdrop);
 
 		String backdropItemId;
 		java.util.ArrayList<String> backdropImageTags;
 
-		if (item.BackdropCount == 0)
+		if (item.getBackdropCount() == 0)
 		{
-			backdropItemId = item.ParentBackdropItemId;
-			backdropImageTags = item.ParentBackdropImageTags;
+			backdropItemId = item.getParentBackdropItemId();
+			backdropImageTags = item.getParentBackdropImageTags();
 		}
 		else
 		{
-			backdropItemId = item.Id;
-			backdropImageTags = item.BackdropImageTags;
+			backdropItemId = item.getId();
+			backdropImageTags = item.getBackdropImageTags();
 		}
 
 		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(backdropItemId))
@@ -1135,10 +1130,10 @@ public abstract class BaseApiClient implements IDisposable
 
 		String[] files = new String[backdropImageTags.size()];
 
-		for (var i = 0; i < backdropImageTags.size(); i++)
+		for (int i = 0; i < backdropImageTags.size(); i++)
 		{
-			options.ImageIndex = i;
-			options.Tag = backdropImageTags.get(i);
+			options.setImageIndex(i);
+			options.setTag(backdropImageTags.get(i));
 
 			files[i] = GetImageUrl(backdropItemId, options);
 		}
@@ -1152,7 +1147,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param item A given item.
 	 @param options The options.
 	 @return System.String.
-	 @exception System.ArgumentNullException item
 	*/
 	public final String GetLogoImageUrl(BaseItemDto item, ImageOptions options)
 	{
@@ -1166,16 +1160,14 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("options");
 		}
 
-		options.ImageType = ImageType.Logo;
+		options.setImageType(ImageType.Logo);
 
-//C# TO JAVA CONVERTER TODO TASK: There is no equivalent to implicit typing in Java:
-		var logoItemId = item.HasLogo ? item.Id : item.ParentLogoItemId;
-//C# TO JAVA CONVERTER TODO TASK: There is no equivalent to implicit typing in Java:
-		var imageTag = item.HasLogo ? item.ImageTags[ImageType.Logo] : item.ParentLogoImageTag;
+		String logoItemId = item.getHasLogo() ? item.getId() : item.getParentLogoItemId();
+		String imageTag = item.getHasLogo() ? item.getImageTags().get(ImageType.Logo) : item.getParentLogoImageTag();
 
 		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(logoItemId))
 		{
-			options.Tag = imageTag;
+			options.setTag(imageTag);
 
 			return GetImageUrl(logoItemId, options);
 		}
@@ -1195,16 +1187,14 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("options");
 		}
 
-		options.ImageType = ImageType.Thumb;
+		options.setImageType(ImageType.Thumb);
 
-//C# TO JAVA CONVERTER TODO TASK: There is no equivalent to implicit typing in Java:
-		var itemId = item.HasThumb ? item.Id : item.SeriesThumbImageTag != null ? item.SeriesId : item.ParentThumbItemId;
-//C# TO JAVA CONVERTER TODO TASK: There is no equivalent to implicit typing in Java:
-		var imageTag = item.HasThumb ? item.ImageTags[ImageType.Thumb] : (item.SeriesThumbImageTag != null) ? item.SeriesThumbImageTag : item.ParentThumbImageTag;
+		String itemId = item.getHasThumb() ? item.getId() : item.getSeriesThumbImageTag() != null ? item.getSeriesId() : item.getParentThumbItemId();
+		String imageTag = item.getHasThumb() ? item.getImageTags().get(ImageType.Thumb) : (item.getSeriesThumbImageTag() != null) ? item.getSeriesThumbImageTag() : item.getParentThumbImageTag();
 
 		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId))
 		{
-			options.Tag = imageTag;
+			options.setTag(imageTag);
 
 			return GetImageUrl(itemId, options);
 		}
@@ -1218,7 +1208,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param item A given item.
 	 @param options The options.
 	 @return System.String.
-	 @exception System.ArgumentNullException item
 	*/
 	public final String GetArtImageUrl(BaseItemDto item, ImageOptions options)
 	{
@@ -1232,16 +1221,14 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("options");
 		}
 
-		options.ImageType = ImageType.Art;
+		options.setImageType(ImageType.Art);
 
-//C# TO JAVA CONVERTER TODO TASK: There is no equivalent to implicit typing in Java:
-		var artItemId = item.HasArtImage ? item.Id : item.ParentArtItemId;
-//C# TO JAVA CONVERTER TODO TASK: There is no equivalent to implicit typing in Java:
-		var imageTag = item.HasArtImage ? item.ImageTags[ImageType.Art] : item.ParentArtImageTag;
+		String artItemId = item.getHasArtImage() ? item.getId() : item.getParentArtItemId();
+		String imageTag = item.getHasArtImage() ? item.getImageTags().get(ImageType.Art.getValue()) : item.getParentArtImageTag();
 
 		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(artItemId))
 		{
-			options.Tag = imageTag;
+			options.setTag(imageTag);
 
 			return GetImageUrl(artItemId, options);
 		}
@@ -1256,7 +1243,7 @@ public abstract class BaseApiClient implements IDisposable
 	 @param stream The stream.
 	 @return ``0.
 	*/
-	protected final <T> T DeserializeFromStream(Stream stream)
+	protected final <T> T DeserializeFromStream(java.io.InputStream stream)
 	{
 		return (T)DeserializeFromStream(stream, T.class);
 	}
@@ -1267,9 +1254,8 @@ public abstract class BaseApiClient implements IDisposable
 	 @param stream The stream.
 	 @param type The type.
 	 @return System.Object.
-	 @exception System.NotImplementedException
 	*/
-	protected final Object DeserializeFromStream(Stream stream, java.lang.Class type)
+	protected final Object DeserializeFromStream(java.io.InputStream stream, java.lang.Class type)
 	{
 		return getJsonSerializer().DeserializeFromStream(stream, type);
 	}
