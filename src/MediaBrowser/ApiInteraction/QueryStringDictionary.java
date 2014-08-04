@@ -8,14 +8,6 @@ import tangible.*;
 public class QueryStringDictionary extends java.util.HashMap<String, String>
 {
 	/** 
-	 Initializes a new instance of the <see cref="QueryStringDictionary" /> class.
-	*/
-	public QueryStringDictionary()
-	{
-		super(StringComparer.OrdinalIgnoreCase);
-	}
-
-	/** 
 	 Adds the specified name.
 	 
 	 @param name The name.
@@ -23,7 +15,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	*/
 	public final void Add(String name, int value)
 	{
-		this.put(name, (new Integer(value)).toString(CultureInfo.InvariantCulture));
+		this.put(name, (new Integer(value)).toString());
 	}
 
 	/** 
@@ -34,7 +26,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	*/
 	public final void Add(String name, long value)
 	{
-		this.put(name, (new Long(value)).toString(CultureInfo.InvariantCulture));
+		this.put(name, (new Long(value)).toString());
 	}
 
 	/** 
@@ -45,7 +37,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	*/
 	public final void Add(String name, double value)
 	{
-		this.put(name, (new Double(value)).toString(CultureInfo.InvariantCulture));
+		this.put(name, (new Double(value)).toString());
 	}
 
 	/** 
@@ -72,7 +64,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	{
 		if (value != null)
 		{
-			this.put(name, value);
+			this.put(name, value.toString());
 		}
 	}
 
@@ -86,7 +78,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	{
 		if (value != null)
 		{
-			this.put(name, value);
+			this.put(name, value.toString());
 		}
 	}
 
@@ -100,7 +92,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	{
 		if (value != null)
 		{
-			this.put(name, value);
+			this.put(name, value.toString());
 		}
 	}
 
@@ -112,7 +104,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	*/
 	public final void Add(String name, boolean value)
 	{
-		this.put(name, (new Boolean(value)).toString());
+        this.put(name, (new Boolean(value)).toString());
 	}
 
 	/** 
@@ -125,16 +117,48 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	{
 		if (value != null)
 		{
-			this.put(name, value);
+			Add(name, value);
 		}
 	}
 
-	/** 
+    /**
+     Adds the specified name.
+
+     @param name The name.
+     @param value The value.
+     */
+    public final void Add(String name, int[] value)
+    {
+        //TODO : Change hack!
+        String list = "";
+        for (int v : value) {
+            list = list + v + " ";
+        }
+
+        String[] splitList = list.split(" ");
+
+        this.put(name, tangible.DotNetToJavaStringHelper.join(",", splitList));
+    }
+
+    /**
+     Adds if not null.
+
+     @param name The name.
+     @param value The value.
+     */
+    public final void AddIfNotNull(String name, int[] value)
+    {
+        if (value != null)
+        {
+            Add(name, value);
+        }
+    }
+
+	/**
 	 Adds the specified name.
-	 
+
 	 @param name The name.
 	 @param value The value.
-	 @exception System.ArgumentNullException value
 	*/
 	public final void Add(String name, Iterable<Integer> value)
 	{
@@ -143,12 +167,21 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 			throw new IllegalArgumentException("value");
 		}
 
-		this.put(name, tangible.DotNetToJavaStringHelper.join(",", value.Select(v => v.toString(CultureInfo.InvariantCulture)).ToArray()));
+        //TODO : Change hack!
+        String list = "";
+        for (Integer v : value) {
+            list = list + v + " ";
+        }
+
+        String[] splitList = list.split(" ");
+
+
+		this.put(name, tangible.DotNetToJavaStringHelper.join(",", splitList));
 	}
 
-	/** 
+	/**
 	 Adds if not null.
-	 
+
 	 @param name The name.
 	 @param value The value.
 	*/
@@ -156,7 +189,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	{
 		if (value != null)
 		{
-			this.put(name, value);
+			Add(name, value);
 		}
 	}
 
@@ -165,18 +198,27 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	 
 	 @param name The name.
 	 @param value The value.
-	 @exception System.ArgumentNullException value
 	*/
-	public final void Add(String name, Iterable<String> value)
+	public final void Add(String name, String[] value)
 	{
 		if (value == null)
 		{
 			throw new IllegalArgumentException("value");
 		}
 
-		String paramValue = tangible.DotNetToJavaStringHelper.join(",", value.ToArray());
+        // Can shorten below code with this but the language level isnt high enough
+        //String paramValue = tangible.DotNetToJavaStringHelper.join(",", value.forEach((s) -> s.toString()));
 
-		this.put(name, paramValue);
+        /*//TODO : Change hack!
+        String list = "";
+        for (String v : value) {
+            list = list + v + " ";
+        }
+
+        String[] splitList = list.split(" ");
+        */String paramValue = tangible.DotNetToJavaStringHelper.join(",", value);
+
+        this.put(name, paramValue);
 	}
 
 	/** 
@@ -185,11 +227,11 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	 @param name The name.
 	 @param value The value.
 	*/
-	public final void AddIfNotNull(String name, Iterable<String> value)
+	public final void AddIfNotNull(String name, String[] value)
 	{
 		if (value != null)
 		{
-			this.put(name, value);
+			Add(name, value);
 		}
 	}
 
@@ -199,18 +241,28 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	 @param name The name.
 	 @param value The value.
 	 @param delimiter The delimiter.
-	 @exception ArgumentNullException value
 	*/
-	public final void Add(String name, Iterable<String> value, String delimiter)
+	public final void Add(String name, String[] value, String delimiter)
 	{
 		if (value == null)
 		{
 			throw new IllegalArgumentException("value");
 		}
 
-		String paramValue = tangible.DotNetToJavaStringHelper.join(delimiter, value.ToArray());
+        // Can shorten below code with this but the language level isnt high enough
+        //String paramValue = tangible.DotNetToJavaStringHelper.join(delimiter, value.forEach((s) -> s.toString()));
 
-		this.put(name, paramValue);
+        /*//TODO : Change hack!
+        String list = "";
+        for (String v : value) {
+            list = list + v + " ";
+        }
+
+        String[] splitList = list.split(" ");
+        */
+        String paramValue = tangible.DotNetToJavaStringHelper.join(delimiter, value);
+
+        this.put(name, paramValue);
 	}
 
 	/** 
@@ -220,11 +272,11 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	 @param value The value.
 	 @param delimiter The delimiter.
 	*/
-	public final void AddIfNotNull(String name, Iterable<String> value, String delimiter)
+	public final void AddIfNotNull(String name, String[] value, String delimiter)
 	{
 		if (value != null)
 		{
-			this.put(name, value, delimiter);
+            Add(name, value, delimiter);
 		}
 	}
 
