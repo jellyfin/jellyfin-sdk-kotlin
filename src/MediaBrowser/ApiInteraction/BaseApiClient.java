@@ -1212,6 +1212,11 @@ public abstract class BaseApiClient implements IDisposable
 		return getJsonSerializer().DeserializeFromString(stream, type);
 	}
 
+    protected final <T> T DeserializeFromString(String stream)
+    {
+        return (T)DeserializeFromString(stream, null);
+    }
+
 	/** 
 	 Serializers to json.
 	 

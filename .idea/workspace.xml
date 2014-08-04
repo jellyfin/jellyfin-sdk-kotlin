@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dae6a154-b809-4288-9061-1df57fc66abe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/Response.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/VolleyHttpClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/IAsyncHttpClient.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/IAsyncHttpClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java" />
     </list>
     <ignored path="MediaBrowser.ApiClient.Java.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,10 +49,12 @@
       <file leaf-file-name="BaseApiClient.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="15171" max-vertical-offset="20264">
-              <caret line="997" column="9" selection-start-line="994" selection-start-column="8" selection-end-line="997" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="18882" max-vertical-offset="20349">
+              <caret line="1214" column="47" selection-start-line="1214" selection-start-column="47" selection-end-line="1214" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#31788#31789#0" expanded="true" />
+                <element signature="e#31849#31850#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,16 +83,22 @@
       <file leaf-file-name="ApiClient.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52312356" vertical-offset="126" max-vertical-offset="1445">
-              <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
+            <state vertical-scroll-proportion="-0.73995453" vertical-offset="1520" max-vertical-offset="2839">
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1251#1252#0" expanded="true" />
-                <element signature="e#1312#1313#0" expanded="true" />
-                <element signature="e#1384#1385#0" expanded="true" />
-                <element signature="e#1440#1441#0" expanded="true" />
-                <element signature="e#2221#2455#0" expanded="true" />
-                <element signature="e#2444#2445#0" expanded="true" />
+                <element signature="e#1441#1442#0" expanded="true" />
+                <element signature="e#1502#1503#0" expanded="true" />
+                <element signature="e#1574#1575#0" expanded="true" />
+                <element signature="e#1630#1631#0" expanded="true" />
+                <element signature="e#2411#2653#0" expanded="true" />
+                <element signature="e#2642#2643#0" expanded="true" />
+                <element signature="e#3251#3506#0" expanded="true" />
+                <element signature="e#3495#3496#0" expanded="true" />
+                <element signature="e#4062#4303#0" expanded="true" />
+                <element signature="e#4292#4293#0" expanded="true" />
+                <element signature="e#4712#4954#0" expanded="true" />
+                <element signature="e#4943#4944#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -198,12 +203,12 @@
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Providers/RemoteSearchResult.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Querying/ItemQuery.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/QueryStringDictionary.java" />
-        <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/JsonSerializer.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/Test.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/IAsyncHttpClient.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/Response.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/VolleyHttpClient.java" />
+        <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java" />
       </list>
     </option>
@@ -967,16 +972,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="15171" max-vertical-offset="20264">
-          <caret line="997" column="9" selection-start-line="994" selection-start-column="8" selection-end-line="997" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/Response.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
@@ -993,18 +988,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java">
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52312356" vertical-offset="126" max-vertical-offset="1445">
-          <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="18882" max-vertical-offset="20349">
+          <caret line="1214" column="47" selection-start-line="1214" selection-start-column="47" selection-end-line="1214" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1251#1252#0" expanded="true" />
-            <element signature="e#1312#1313#0" expanded="true" />
-            <element signature="e#1384#1385#0" expanded="true" />
-            <element signature="e#1440#1441#0" expanded="true" />
-            <element signature="e#2221#2455#0" expanded="true" />
-            <element signature="e#2444#2445#0" expanded="true" />
+            <element signature="e#31788#31789#0" expanded="true" />
+            <element signature="e#31849#31850#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.73995453" vertical-offset="1520" max-vertical-offset="2839">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1441#1442#0" expanded="true" />
+            <element signature="e#1502#1503#0" expanded="true" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1630#1631#0" expanded="true" />
+            <element signature="e#2411#2653#0" expanded="true" />
+            <element signature="e#2642#2643#0" expanded="true" />
+            <element signature="e#3251#3506#0" expanded="true" />
+            <element signature="e#3495#3496#0" expanded="true" />
+            <element signature="e#4062#4303#0" expanded="true" />
+            <element signature="e#4292#4293#0" expanded="true" />
+            <element signature="e#4712#4954#0" expanded="true" />
+            <element signature="e#4943#4944#0" expanded="true" />
           </folding>
         </state>
       </provider>
