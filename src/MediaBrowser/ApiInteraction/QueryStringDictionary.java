@@ -8,6 +8,14 @@ import tangible.*;
 public class QueryStringDictionary extends java.util.HashMap<String, String>
 {
 	/** 
+	 Initializes a new instance of the <see cref="QueryStringDictionary" /> class.
+	*/
+	public QueryStringDictionary()
+	{
+		super();
+	}
+
+	/** 
 	 Adds the specified name.
 	 
 	 @param name The name.
@@ -17,6 +25,17 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	{
 		this.put(name, (new Integer(value)).toString());
 	}
+
+    /**
+     Adds the specified name.
+
+     @param name The name.
+     @param value The value.
+     */
+    public final void Add(String name, String value)
+    {
+        this.put(name, (new Integer(value)).toString());
+    }
 
 	/** 
 	 Adds the specified name.
@@ -64,7 +83,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	{
 		if (value != null)
 		{
-			this.put(name, value.toString());
+			this.Add(name, value);
 		}
 	}
 
@@ -78,7 +97,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	{
 		if (value != null)
 		{
-			this.put(name, value.toString());
+			this.Add(name, value);
 		}
 	}
 
@@ -92,7 +111,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	{
 		if (value != null)
 		{
-			this.put(name, value.toString());
+			this.Add(name, value);
 		}
 	}
 
@@ -104,7 +123,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	*/
 	public final void Add(String name, boolean value)
 	{
-        this.put(name, (new Boolean(value)).toString());
+		this.put(name, (new Boolean(value)).toString());
 	}
 
 	/** 
@@ -117,27 +136,61 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	{
 		if (value != null)
 		{
-			Add(name, value);
+			this.Add(name, value);
 		}
 	}
 
-    /**
-     Adds the specified name.
+	/** 
+	 Adds the specified name.
+	 
+	 @param name The name.
+	 @param value The value.
+	 @exception System.ArgumentNullException value
+	*/
+	public final void Add(String name, Integer[] value)
+	{
+		if (value == null)
+		{
+			throw new IllegalArgumentException("value");
+		}
 
-     @param name The name.
-     @param value The value.
-     */
-    public final void Add(String name, int[] value)
+        String attValue = tangible.DotNetToJavaStringHelper.join(",", GetStrings(value));
+
+        this.put(name, attValue);
+	}
+
+    private String[] GetStrings(Integer[] value)
     {
-        //TODO : Change hack!
-        String list = "";
-        for (int v : value) {
-            list = list + v + " ";
+        String[] vals = new String[value.length];
+
+        for (int i=0; i< value.length; i++) {
+            vals[i] = value[i].toString();
         }
 
-        String[] splitList = list.split(" ");
+        return vals;
+    }
 
-        this.put(name, tangible.DotNetToJavaStringHelper.join(",", splitList));
+    public final void Add(String name, int[] value)
+    {
+        if (value == null)
+        {
+            throw new IllegalArgumentException("value");
+        }
+
+        String attValue = tangible.DotNetToJavaStringHelper.join(",", GetStrings(value));
+
+        this.put(name, attValue);
+    }
+
+    private String[] GetStrings(int[] value)
+    {
+        String[] vals = new String[value.length];
+
+        for (int i=0; i< value.length; i++) {
+            vals[i] = new Integer(value[i]).toString();
+        }
+
+        return vals;
     }
 
     /**
@@ -150,46 +203,21 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
     {
         if (value != null)
         {
-            Add(name, value);
+            this.Add(name, value);
         }
     }
 
-	/**
-	 Adds the specified name.
-
-	 @param name The name.
-	 @param value The value.
-	*/
-	public final void Add(String name, Iterable<Integer> value)
-	{
-		if (value == null)
-		{
-			throw new IllegalArgumentException("value");
-		}
-
-        //TODO : Change hack!
-        String list = "";
-        for (Integer v : value) {
-            list = list + v + " ";
-        }
-
-        String[] splitList = list.split(" ");
-
-
-		this.put(name, tangible.DotNetToJavaStringHelper.join(",", splitList));
-	}
-
-	/**
+	/** 
 	 Adds if not null.
-
+	 
 	 @param name The name.
 	 @param value The value.
 	*/
-	public final void AddIfNotNull(String name, Iterable<Integer> value)
+	public final void AddIfNotNull(String name, Integer[] value)
 	{
 		if (value != null)
 		{
-			Add(name, value);
+			this.Add(name, value);
 		}
 	}
 
@@ -198,6 +226,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	 
 	 @param name The name.
 	 @param value The value.
+	 @exception System.ArgumentNullException value
 	*/
 	public final void Add(String name, String[] value)
 	{
@@ -206,19 +235,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 			throw new IllegalArgumentException("value");
 		}
 
-        // Can shorten below code with this but the language level isnt high enough
-        //String paramValue = tangible.DotNetToJavaStringHelper.join(",", value.forEach((s) -> s.toString()));
-
-        /*//TODO : Change hack!
-        String list = "";
-        for (String v : value) {
-            list = list + v + " ";
-        }
-
-        String[] splitList = list.split(" ");
-        */String paramValue = tangible.DotNetToJavaStringHelper.join(",", value);
-
-        this.put(name, paramValue);
+		Add(name, value, ",");
 	}
 
 	/** 
@@ -231,7 +248,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	{
 		if (value != null)
 		{
-			Add(name, value);
+			this.Add(name, value);
 		}
 	}
 
@@ -241,6 +258,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	 @param name The name.
 	 @param value The value.
 	 @param delimiter The delimiter.
+	 @exception ArgumentNullException value
 	*/
 	public final void Add(String name, String[] value, String delimiter)
 	{
@@ -249,20 +267,9 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 			throw new IllegalArgumentException("value");
 		}
 
-        // Can shorten below code with this but the language level isnt high enough
-        //String paramValue = tangible.DotNetToJavaStringHelper.join(delimiter, value.forEach((s) -> s.toString()));
+		String paramValue = tangible.DotNetToJavaStringHelper.join(delimiter, value);
 
-        /*//TODO : Change hack!
-        String list = "";
-        for (String v : value) {
-            list = list + v + " ";
-        }
-
-        String[] splitList = list.split(" ");
-        */
-        String paramValue = tangible.DotNetToJavaStringHelper.join(delimiter, value);
-
-        this.put(name, paramValue);
+		this.put(name, paramValue);
 	}
 
 	/** 
@@ -276,7 +283,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	{
 		if (value != null)
 		{
-            Add(name, value, delimiter);
+			this.Add(name, value, delimiter);
 		}
 	}
 
@@ -287,9 +294,18 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	*/
 	public final String GetQueryString()
 	{
-		String[] queryParams = this.Select(i => String.format("%1$s=%2$s", i.Key, GetEncodedValue(i.Value))).ToArray();
+        int size = this.size();
+        String[] vals = new String[size];
 
-		return tangible.DotNetToJavaStringHelper.join("&", queryParams);
+        int index = 0;
+        for(String key : this.keySet())
+        {
+            String paramValue = this.get(key);
+            vals[index] = String.format("%1$s=%2$s", key, GetEncodedValue(paramValue));
+            index++;
+        }
+
+        return tangible.DotNetToJavaStringHelper.join("&", vals);
 	}
 
 	/** 
@@ -320,4 +336,51 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 
 		return prefix + "?" + query;
 	}
+
+    public final <T extends Enum<T>> void Add(String name, T value)
+    {
+        this.Add(name, value.toString());
+    }
+
+    public final <T extends Enum<T>> void AddIfNotNull(String name, T value)
+    {
+        if (value != null)
+        {
+            this.Add(name, value);
+        }
+    }
+
+    public final <T extends Enum<T>> void Add(String name, T[] values, String delimiter)
+    {
+        this.Add(name, GetStrings(values), delimiter);
+    }
+
+    public final <T extends Enum<T>> void AddIfNotNull(String name, T[] values, String delimiter)
+    {
+        if (values != null)
+        {
+            this.Add(name, values, delimiter);
+        }
+    }
+
+    public final <T extends Enum<T>> void Add(String name, T[] values)
+    {
+        this.Add(name, values, ",");
+    }
+
+    public final <T extends Enum<T>> void AddIfNotNull(String name, T[] values)
+    {
+        this.AddIfNotNull(name, values, ",");
+    }
+
+    private <T extends Enum<T>> String[] GetStrings(T[] value)
+    {
+        String[] vals = new String[value.length];
+
+        for (int i=0; i< value.length; i++) {
+            vals[i] = value[i].toString();
+        }
+
+        return vals;
+    }
 }
