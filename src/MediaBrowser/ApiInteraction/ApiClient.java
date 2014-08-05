@@ -236,4 +236,204 @@ public class ApiClient extends BaseApiClient {
 
         _httpClient.GetAsync(url, jsonResponse);
     }
+
+    public void GetItemsAsync(ItemQuery query, final Response<QueryResult<BaseItemDto>> response)
+    {
+        if (query == null)
+        {
+            throw new IllegalArgumentException("query");
+        }
+
+        String url = GetItemListUrl(query);
+
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                QueryResult<BaseItemDto> obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
+    }
+
+    /// <summary>
+    /// Gets the next up async.
+    /// </summary>
+    /// <param name="query">The query.</param>
+    /// <returns>Task{ItemsResult}.</returns>
+    /// <exception cref="System.ArgumentNullException">query</exception>
+    public void GetNextUpEpisodesAsync(NextUpQuery query, final Response<QueryResult<BaseItemDto>> response)
+    {
+        if (query == null)
+        {
+            throw new IllegalArgumentException("query");
+        }
+
+        String url = GetNextUpUrl(query);
+
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                QueryResult<BaseItemDto> obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
+    }
+
+    public void GetUpcomingEpisodesAsync(NextUpQuery query, final Response<QueryResult<BaseItemDto>> response)
+    {
+        if (query == null)
+        {
+            throw new IllegalArgumentException("query");
+        }
+
+        QueryStringDictionary dict = new QueryStringDictionary ();
+
+        dict.AddIfNotNull("Fields", query.getFields());
+
+        dict.AddIfNotNull("Limit", query.getLimit());
+
+        dict.AddIfNotNull("StartIndex", query.getStartIndex());
+
+        dict.Add("UserId", query.getUserId());
+
+        String url = GetApiUrl("Shows/Upcoming", dict);
+
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                QueryResult<BaseItemDto> obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
+    }
+
+    /// <summary>
+    /// Gets the similar movies async.
+    /// </summary>
+    /// <param name="query">The query.</param>
+    /// <returns>Task{ItemsResult}.</returns>
+    /// <exception cref="System.ArgumentNullException">query</exception>
+    public void GetSimilarMoviesAsync(SimilarItemsQuery query, final Response<QueryResult<BaseItemDto>> response)
+    {
+        if (query == null)
+        {
+            throw new IllegalArgumentException("query");
+        }
+
+        String url = GetSimilarItemListUrl(query, "Movies");
+
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                QueryResult<BaseItemDto> obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
+    }
+
+    /// <summary>
+    /// Gets the similar trailers async.
+    /// </summary>
+    /// <param name="query">The query.</param>
+    /// <returns>Task{ItemsResult}.</returns>
+    /// <exception cref="System.ArgumentNullException">query</exception>
+    public void GetSimilarTrailersAsync(SimilarItemsQuery query, final Response<QueryResult<BaseItemDto>> response)
+    {
+        if (query == null)
+        {
+            throw new IllegalArgumentException("query");
+        }
+
+        String url = GetSimilarItemListUrl(query, "Trailers");
+
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                QueryResult<BaseItemDto> obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
+    }
+
+    /// <summary>
+    /// Gets the similar series async.
+    /// </summary>
+    /// <param name="query">The query.</param>
+    /// <returns>Task{ItemsResult}.</returns>
+    /// <exception cref="System.ArgumentNullException">query</exception>
+    public void GetSimilarSeriesAsync(SimilarItemsQuery query, final Response<QueryResult<BaseItemDto>> response)
+    {
+        if (query == null)
+        {
+            throw new IllegalArgumentException("query");
+        }
+
+        String url = GetSimilarItemListUrl(query, "Shows");
+
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                QueryResult<BaseItemDto> obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
+    }
+
+    public void GetEpisodesAsync(EpisodeQuery query, final Response<QueryResult<BaseItemDto>> response)
+    {
+        if (query == null)
+        {
+            throw new IllegalArgumentException("query");
+        }
+
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        dict.AddIfNotNull("Season", query.getSeasonNumber());
+        dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
+
+        dict.AddIfNotNullOrEmpty("SeasonId", query.getSeasonId());
+
+        dict.AddIfNotNull("Fields", query.getFields());
+
+        dict.AddIfNotNull("IsMissing", query.getIsMissing());
+        dict.AddIfNotNull("IsVirtualUnaired", query.getIsVirtualUnaired());
+
+        String url = GetApiUrl("Shows/" + query.getSeriesId() + "/Episodes", dict);
+
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                QueryResult<BaseItemDto> obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
+    }
 }

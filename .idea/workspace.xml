@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dae6a154-b809-4288-9061-1df57fc66abe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/OkHttpStack.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ServerDiscovery.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ServerDiscoveryResponse.java" />
-      <change type="DELETED" beforePath="D:\Development\MediaBrowser.ApiClient.Java\src\MediaBrowser\Model\ApiClient\GeneralCommandEventArgs.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\MediaBrowser.ApiClient.Java\src\MediaBrowser\Model\ApiClient\HttpResponseEventArgs.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\MediaBrowser.ApiClient.Java\src\MediaBrowser\Model\ApiClient\IServerEvents.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Development\MediaBrowser.ApiClient.Java\src\MediaBrowser\Model\ApiClient\SessionUpdatesEventArgs.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/JsonSerializer.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/JsonSerializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MediaBrowser.ApiClient.Java.iml" afterPath="$PROJECT_DIR$/MediaBrowser.ApiClient.Java.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/VolleyHttpClient.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/VolleyHttpClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MediaBrowser.ApiClient.Java.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,11 +40,66 @@
       <file leaf-file-name="ApiClient.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7123443" vertical-offset="0" max-vertical-offset="3621">
-              <caret line="37" column="32" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.025777103" vertical-offset="0" max-vertical-offset="7565">
+              <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+              <folding>
+                <element signature="e#2036#2037#0" expanded="true" />
+                <element signature="e#2097#2098#0" expanded="true" />
+                <element signature="e#2169#2170#0" expanded="true" />
+                <element signature="e#2225#2226#0" expanded="true" />
+                <element signature="e#3006#3248#0" expanded="true" />
+                <element signature="e#3237#3238#0" expanded="true" />
+                <element signature="e#3846#4101#0" expanded="true" />
+                <element signature="e#4090#4091#0" expanded="true" />
+                <element signature="e#4657#4898#0" expanded="true" />
+                <element signature="e#4887#4888#0" expanded="true" />
+                <element signature="e#5307#5549#0" expanded="true" />
+                <element signature="e#5538#5539#0" expanded="true" />
+                <element signature="e#6005#6245#0" expanded="true" />
+                <element signature="e#6234#6235#0" expanded="true" />
+                <element signature="e#6471#6711#0" expanded="true" />
+                <element signature="e#6700#6701#0" expanded="true" />
+                <element signature="e#7149#7396#0" expanded="true" />
+                <element signature="e#7385#7386#0" expanded="true" />
+                <element signature="e#7749#8004#0" expanded="true" />
+                <element signature="e#7993#7994#0" expanded="true" />
+                <element signature="e#8601#8856#0" expanded="true" />
+                <element signature="e#8845#8846#0" expanded="true" />
+                <element signature="e#9527#9782#0" expanded="true" />
+                <element signature="e#9771#9772#0" expanded="true" />
+                <element signature="e#10410#10665#0" expanded="true" />
+                <element signature="e#10654#10655#0" expanded="true" />
+                <element signature="e#11299#11554#0" expanded="true" />
+                <element signature="e#11543#11544#0" expanded="true" />
+                <element signature="e#12181#12436#0" expanded="true" />
+                <element signature="e#12425#12426#0" expanded="true" />
+                <element signature="e#13292#13547#0" expanded="true" />
+                <element signature="e#13536#13537#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VolleyHttpClient.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/VolleyHttpClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="2788">
+              <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#813#829#0" expanded="true" />
+                <element signature="e#4002#4018#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseApiClient.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="20196">
+              <caret line="1218" column="0" selection-start-line="1218" selection-start-column="0" selection-end-line="1218" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -202,10 +243,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="MediaBrowser" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Model" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -462,7 +499,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32368225" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1484781" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -752,6 +789,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2295" max-vertical-offset="13260">
           <caret line="135" column="27" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -813,14 +851,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10872027" vertical-offset="19233" max-vertical-offset="20196">
-          <caret line="1218" column="0" selection-start-line="1218" selection-start-column="0" selection-end-line="1218" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/OkHttpStack.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23199393" vertical-offset="0" max-vertical-offset="1319">
@@ -831,24 +861,6 @@
             <element signature="e#526#527#0" expanded="true" />
             <element signature="e#826#827#0" expanded="true" />
             <element signature="e#867#868#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/VolleyHttpClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.15402038" vertical-offset="612" max-vertical-offset="2890">
-          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#813#829#0" expanded="true" />
-            <element signature="e#2800#2801#0" expanded="true" />
-            <element signature="e#2846#2847#0" expanded="true" />
-            <element signature="e#2915#2916#0" expanded="true" />
-            <element signature="e#2957#2958#0" expanded="true" />
-            <element signature="e#4002#4018#0" expanded="true" />
-            <element signature="e#4448#4449#0" expanded="true" />
-            <element signature="e#4511#4512#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -871,12 +883,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java">
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/android-studio/sdk/platforms/android-20/android.jar!/android/content/Context.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7123443" vertical-offset="0" max-vertical-offset="3621">
-          <caret line="37" column="32" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
+        <state vertical-scroll-proportion="-0.89885056" vertical-offset="867" max-vertical-offset="5270">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/VolleyHttpClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2788">
+          <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#813#829#0" expanded="true" />
+            <element signature="e#4002#4018#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="20196">
+          <caret line="1218" column="0" selection-start-line="1218" selection-start-column="0" selection-end-line="1218" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.025777103" vertical-offset="0" max-vertical-offset="7565">
+          <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+          <folding>
+            <element signature="e#2036#2037#0" expanded="true" />
+            <element signature="e#2097#2098#0" expanded="true" />
+            <element signature="e#2169#2170#0" expanded="true" />
+            <element signature="e#2225#2226#0" expanded="true" />
+            <element signature="e#3006#3248#0" expanded="true" />
+            <element signature="e#3237#3238#0" expanded="true" />
+            <element signature="e#3846#4101#0" expanded="true" />
+            <element signature="e#4090#4091#0" expanded="true" />
+            <element signature="e#4657#4898#0" expanded="true" />
+            <element signature="e#4887#4888#0" expanded="true" />
+            <element signature="e#5307#5549#0" expanded="true" />
+            <element signature="e#5538#5539#0" expanded="true" />
+            <element signature="e#6005#6245#0" expanded="true" />
+            <element signature="e#6234#6235#0" expanded="true" />
+            <element signature="e#6471#6711#0" expanded="true" />
+            <element signature="e#6700#6701#0" expanded="true" />
+            <element signature="e#7149#7396#0" expanded="true" />
+            <element signature="e#7385#7386#0" expanded="true" />
+            <element signature="e#7749#8004#0" expanded="true" />
+            <element signature="e#7993#7994#0" expanded="true" />
+            <element signature="e#8601#8856#0" expanded="true" />
+            <element signature="e#8845#8846#0" expanded="true" />
+            <element signature="e#9527#9782#0" expanded="true" />
+            <element signature="e#9771#9772#0" expanded="true" />
+            <element signature="e#10410#10665#0" expanded="true" />
+            <element signature="e#10654#10655#0" expanded="true" />
+            <element signature="e#11299#11554#0" expanded="true" />
+            <element signature="e#11543#11544#0" expanded="true" />
+            <element signature="e#12181#12436#0" expanded="true" />
+            <element signature="e#12425#12426#0" expanded="true" />
+            <element signature="e#13292#13547#0" expanded="true" />
+            <element signature="e#13536#13537#0" expanded="true" />
           </folding>
         </state>
       </provider>
