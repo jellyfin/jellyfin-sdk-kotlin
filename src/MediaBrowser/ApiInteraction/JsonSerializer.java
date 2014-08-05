@@ -1,6 +1,9 @@
 package MediaBrowser.ApiInteraction;
 
 import MediaBrowser.Model.Serialization.IJsonSerializer;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.TypeAdapter;
 
 import java.io.InputStream;
 
@@ -33,25 +36,29 @@ public class JsonSerializer implements IJsonSerializer {
     @Override
     public <T> T DeserializeFromString(String text) {
 
-        // TODO: Need this one
         throw new UnsupportedOperationException();
     }
 
     @Override
     public Object DeserializeFromStream(InputStream stream, Class type) {
+
         throw new UnsupportedOperationException();
     }
 
     @Override
     public Object DeserializeFromString(String json, Class type) {
-        throw new UnsupportedOperationException();
+
+        Gson gsonBuilder = new GsonBuilder().create();
+
+        return gsonBuilder.fromJson(json, type);
     }
 
     @Override
     public String SerializeToString(Object obj) {
 
-        // TODO: Need this one
-        throw new UnsupportedOperationException();
+        Gson gsonBuilder = new GsonBuilder().create();
+
+        return gsonBuilder.toJson(obj);
     }
 
     @Override

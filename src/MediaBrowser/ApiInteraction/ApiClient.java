@@ -2,11 +2,11 @@ package MediaBrowser.ApiInteraction;
 
 import MediaBrowser.Model.Dto.BaseItemDto;
 import MediaBrowser.Model.Dto.ItemCounts;
+import MediaBrowser.Model.Dto.UserDto;
 import MediaBrowser.Model.Logging.ILogger;
-import MediaBrowser.Model.Querying.ItemCountsQuery;
-import MediaBrowser.Model.Querying.ItemsResult;
-import MediaBrowser.Model.Querying.QueryResult;
+import MediaBrowser.Model.Querying.*;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
+import MediaBrowser.Model.Session.SessionInfoDto;
 
 public class ApiClient extends BaseApiClient {
 
@@ -29,6 +29,24 @@ public class ApiClient extends BaseApiClient {
 
     protected ApiClient(ILogger logger, IJsonSerializer jsonSerializer, String serverAddress, String clientName, String deviceName, String deviceId, String applicationVersion) {
         super(logger, jsonSerializer, serverAddress, clientName, deviceName, deviceId, applicationVersion);
+    }
+
+   public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String accessToken)
+   {
+        super(logger, new JsonSerializer(), serverAddress, accessToken);
+
+       _httpClient = httpClient;
+
+        ResetHttpHeaders();
+    }
+
+    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String clientName, String deviceName, String deviceId, String applicationVersion)
+    {
+        super(logger, new JsonSerializer(), serverAddress, clientName, deviceName, deviceId, applicationVersion);
+
+        _httpClient = httpClient;
+
+        ResetHttpHeaders();
     }
 
     @Override
@@ -152,6 +170,66 @@ public class ApiClient extends BaseApiClient {
             public void onResponse(String jsonResponse) {
 
                 BaseItemDto obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
+    }
+
+    public void GetUsersAsync(UserQuery query, final Response<UserDto[]> response)
+    {
+        QueryStringDictionary queryString = new QueryStringDictionary();
+
+        queryString.AddIfNotNull("IsDisabled", query.getIsDisabled());
+        queryString.AddIfNotNull("IsHidden", query.getIsHidden());
+
+        String url = GetApiUrl("Users", queryString);
+
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                UserDto[] obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
+    }
+
+    public void GetPublicUsersAsync(final Response<UserDto[]> response)
+    {
+        String url = GetApiUrl("Users/Public");
+
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                UserDto[] obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
+    }
+
+    public void GetClientSessionsAsync(SessionQuery query, final Response<SessionInfoDto[]> response)
+    {
+        QueryStringDictionary queryString = new QueryStringDictionary();
+
+        queryString.AddIfNotNullOrEmpty("ControllableByUserId", query.getControllableByUserId());
+
+        String url = GetApiUrl("Sessions", queryString);
+
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                SessionInfoDto[] obj = DeserializeFromString(jsonResponse);
                 response.onResponse(obj);
             }
         };

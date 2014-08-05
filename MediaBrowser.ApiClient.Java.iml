@@ -4,13 +4,55 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/src/MediaBrowser/Model/ApiClient" />
       <excludeFolder url="file://$MODULE_DIR$/src/MediaBrowser/Model/Events" />
       <excludeFolder url="file://$MODULE_DIR$/src/MediaBrowser/Model/IO" />
       <excludeFolder url="file://$MODULE_DIR$/src/MediaBrowser/Model/Net" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/lib/google-gson-2.2.4" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/lib/google-gson-2.2.4" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/lib/google-gson-2.2.4" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/lib/google-gson-2.2.4" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/lib/okhttp" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/lib/okhttp" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/lib/volley" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/lib/volley" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/lib/okio" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/lib/okio" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>
 
