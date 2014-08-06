@@ -23,4 +23,5 @@ public final class CollectionType
 	public static final String Games = "games";
 	public static final String Channels = "channels";
 	public static final String LiveTv = "livetv";
+	public static final String Playlists = "playlists";
 }

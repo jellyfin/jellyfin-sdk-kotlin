@@ -173,6 +173,16 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 		privateAnimeSeriesIndex = value;
 	}
 
+	private Boolean privateSupportsSync = null;
+	public final Boolean getSupportsSync()
+	{
+		return privateSupportsSync;
+	}
+	public final void setSupportsSync(Boolean value)
+	{
+		privateSupportsSync = value;
+	}
+
 	/** 
 	 Gets or sets the DVD season number.
 	 
@@ -1075,12 +1085,12 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The air days.</value>
 	*/
-	private java.util.ArrayList<java.time.DayOfWeek> privateAirDays;
-	public final java.util.ArrayList<java.time.DayOfWeek> getAirDays()
+	private java.util.ArrayList<String> privateAirDays;
+	public final java.util.ArrayList<String> getAirDays()
 	{
 		return privateAirDays;
 	}
-	public final void setAirDays(java.util.ArrayList<java.time.DayOfWeek> value)
+	public final void setAirDays(java.util.ArrayList<String> value)
 	{
 		privateAirDays = value;
 	}
@@ -1360,6 +1370,21 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	}
 
 	/** 
+	 Gets or sets a value indicating whether [supports playlists].
+	 
+	 <value><c>true</c> if [supports playlists]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean privateSupportsPlaylists;
+	public final boolean getSupportsPlaylists()
+	{
+		return privateSupportsPlaylists;
+	}
+	public final void setSupportsPlaylists(boolean value)
+	{
+		privateSupportsPlaylists = value;
+	}
+
+	/** 
 	 Determines whether the specified type is type.
 	 
 	 @param type The type.
@@ -1521,6 +1546,36 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	}
 
 	/** 
+	 Gets or sets the parent primary image item identifier.
+	 
+	 <value>The parent primary image item identifier.</value>
+	*/
+	private String privateParentPrimaryImageItemId;
+	public final String getParentPrimaryImageItemId()
+	{
+		return privateParentPrimaryImageItemId;
+	}
+	public final void setParentPrimaryImageItemId(String value)
+	{
+		privateParentPrimaryImageItemId = value;
+	}
+
+	/** 
+	 Gets or sets the parent primary image tag.
+	 
+	 <value>The parent primary image tag.</value>
+	*/
+	private String privateParentPrimaryImageTag;
+	public final String getParentPrimaryImageTag()
+	{
+		return privateParentPrimaryImageTag;
+	}
+	public final void setParentPrimaryImageTag(String value)
+	{
+		privateParentPrimaryImageTag = value;
+	}
+
+	/** 
 	 Gets or sets the chapters.
 	 
 	 <value>The chapters.</value>
@@ -1578,21 +1633,6 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setMediaType(String value)
 	{
 		privateMediaType = value;
-	}
-
-	/** 
-	 Gets or sets the overview HTML.
-	 
-	 <value>The overview HTML.</value>
-	*/
-	private String privateOverviewHtml;
-	public final String getOverviewHtml()
-	{
-		return privateOverviewHtml;
-	}
-	public final void setOverviewHtml(String value)
-	{
-		privateOverviewHtml = value;
 	}
 
 	/** 

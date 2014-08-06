@@ -1,44 +1,15 @@
 package MediaBrowser.Model.Configuration;
 
 import MediaBrowser.Model.Entities.*;
+import MediaBrowser.Model.FileOrganization.*;
+import MediaBrowser.Model.LiveTv.*;
 import MediaBrowser.Model.Notifications.*;
-import MediaBrowser.Model.Weather.*;
 
 /** 
  Represents the server configuration.
 */
 public class ServerConfiguration extends BaseApplicationConfiguration
 {
-	/** 
-	 Gets or sets the zip code to use when displaying weather
-	 
-	 <value>The weather location.</value>
-	*/
-	private String privateWeatherLocation;
-	public final String getWeatherLocation()
-	{
-		return privateWeatherLocation;
-	}
-	public final void setWeatherLocation(String value)
-	{
-		privateWeatherLocation = value;
-	}
-
-	/** 
-	 Gets or sets the weather unit to use when displaying weather
-	 
-	 <value>The weather unit.</value>
-	*/
-	private WeatherUnits privateWeatherUnit = WeatherUnits.values()[0];
-	public final WeatherUnits getWeatherUnit()
-	{
-		return privateWeatherUnit;
-	}
-	public final void setWeatherUnit(WeatherUnits value)
-	{
-		privateWeatherUnit = value;
-	}
-
 	/** 
 	 Gets or sets a value indicating whether [enable u pn p].
 	 
@@ -551,20 +522,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		privateSubtitleOptions = value;
 	}
 
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [Obsolete] public string[] ManualLoginClients {get;set;}
-	private String[] privateManualLoginClients;
-	@Deprecated
-	public final String[] getManualLoginClients()
-	{
-		return privateManualLoginClients;
-	}
-	@Deprecated
-	public final void setManualLoginClients(String[] value)
-	{
-		privateManualLoginClients = value;
-	}
-
 	private ChannelOptions privateChannelOptions;
 	public final ChannelOptions getChannelOptions()
 	{
@@ -640,8 +597,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setSortRemoveCharacters(new String[] {",", "&", "-", "{", "}", "'"});
 		setSortRemoveWords(new String[] {"the", "a", "an"});
 
-		setManualLoginClients(new String[] { });
-
 		setSeasonZeroDisplayName("Specials");
 
 		setEnableRealtimeMonitor(true);
@@ -659,6 +614,5 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setMetadataOptions(new MetadataOptions[] {tempVar, tempVar2, tempVar3, tempVar4});
 
 		setSubtitleOptions(new SubtitleOptions());
-		setTvFileOrganizationOptions(new TvFileOrganizationOptions());
 	}
 }

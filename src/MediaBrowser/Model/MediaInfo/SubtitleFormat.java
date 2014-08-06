@@ -8,4 +8,5 @@ public class SubtitleFormat
 	public static final String VTT = "vtt";
 	public static final String SUB = "sub";
 	public static final String SMI = "smi";
+	public static final String TTML = "ttml";
 }

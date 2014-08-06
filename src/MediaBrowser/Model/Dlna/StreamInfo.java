@@ -5,6 +5,7 @@ import MediaBrowser.Model.Dto.*;
 import MediaBrowser.Model.Entities.*;
 import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.MediaInfo.*;
+import MediaBrowser.Model.Session.*;
 
 /** 
  Class StreamInfo.
@@ -21,14 +22,14 @@ public class StreamInfo
 		privateItemId = value;
 	}
 
-	private boolean privateIsDirectStream;
-	public final boolean getIsDirectStream()
+	private PlayMethod privatePlayMethod = getPlayMethod().values()[0];
+	public final PlayMethod getPlayMethod()
 	{
-		return privateIsDirectStream;
+		return privatePlayMethod;
 	}
-	public final void setIsDirectStream(boolean value)
+	public final void setPlayMethod(PlayMethod value)
 	{
-		privateIsDirectStream = value;
+		privatePlayMethod = value;
 	}
 
 	private DlnaProfileType privateMediaType = DlnaProfileType.values()[0];
@@ -257,10 +258,24 @@ public class StreamInfo
 	{
 		privateSubtitleDeliveryMethod = value;
 	}
+	private String privateSubtitleFormat;
+	public final String getSubtitleFormat()
+	{
+		return privateSubtitleFormat;
+	}
+	public final void setSubtitleFormat(String value)
+	{
+		privateSubtitleFormat = value;
+	}
 
 	public final String getMediaSourceId()
 	{
 		return getMediaSource() == null ? null : getMediaSource().getId();
+	}
+
+	public final boolean getIsDirectStream()
+	{
+		return getPlayMethod() == PlayMethod.DirectStream;
 	}
 
 	public final String ToUrl(String baseUrl)
@@ -304,6 +319,42 @@ public class StreamInfo
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>(java.util.Arrays.asList(new String[] {(tempVar != null) ? tempVar : "", (tempVar2 != null) ? tempVar2 : "", (tempVar3 != null) ? tempVar3 : "", (new Boolean(item.getIsDirectStream())).toString().toLowerCase(), (tempVar4 != null) ? tempVar4 : "", (tempVar5 != null) ? tempVar5 : "", item.getAudioStreamIndex() != null ? StringHelper.ToStringCultureInvariant(item.getAudioStreamIndex()) : "", item.getSubtitleStreamIndex() != null && item.getSubtitleDeliveryMethod() != SubtitleDeliveryMethod.External ? StringHelper.ToStringCultureInvariant(item.getSubtitleStreamIndex()) : "", item.getVideoBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getVideoBitrate()) : "", item.getAudioBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getAudioBitrate()) : "", item.getMaxAudioChannels() != null ? StringHelper.ToStringCultureInvariant(item.getMaxAudioChannels()) : "", item.getMaxFramerate() != null ? StringHelper.ToStringCultureInvariant(item.getMaxFramerate()) : "", item.getMaxWidth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxWidth()) : "", item.getMaxHeight() != null ? StringHelper.ToStringCultureInvariant(item.getMaxHeight()) : "", StringHelper.ToStringCultureInvariant(item.getStartPositionTicks()), item.getVideoLevel() != null ? StringHelper.ToStringCultureInvariant(item.getVideoLevel()) : ""}));
 
 		return String.format("Params=%1$s", tangible.DotNetToJavaStringHelper.join(";", list.toArray(new String[0])));
+	}
+
+	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(String baseUrl)
+	{
+		if (getSubtitleDeliveryMethod() != SubtitleDeliveryMethod.External)
+		{
+			return null;
+		}
+
+		if (getSubtitleStreamIndex() == null)
+		{
+			return null;
+		}
+
+		// HLS will preserve timestamps so we can just grab the full subtitle stream
+		long startPositionTicks = StringHelper.EqualsIgnoreCase(getProtocol(), "hls") ? 0 : getStartPositionTicks();
+
+        String url = String.format("%1$s/Videos/%2$s/%3$s/Subtitles/%4$s/%5$s/Stream.%6$s", baseUrl, getItemId(), getMediaSourceId(), StringHelper.ToStringCultureInvariant(getSubtitleStreamIndex()), StringHelper.ToStringCultureInvariant(startPositionTicks), getSubtitleFormat());
+
+		java.util.ArrayList<SubtitleStreamInfo> list = new java.util.ArrayList<SubtitleStreamInfo>();
+
+		for (MediaStream stream : getMediaSource().getMediaStreams())
+		{
+			if (stream.getType() == MediaStreamType.Subtitle && stream.getIndex() == getSubtitleStreamIndex())
+			{
+				String tempVar = stream.getLanguage();
+				SubtitleStreamInfo tempVar2 = new SubtitleStreamInfo();
+				tempVar2.setUrl(url);
+				tempVar2.setIsForced(stream.getIsForced());
+				tempVar2.setLanguage(stream.getLanguage());
+				tempVar2.setName((tempVar != null) ? tempVar : "Unknown");
+				list.add(tempVar2);
+			}
+		}
+
+		return list;
 	}
 
 	/** 
@@ -416,7 +467,7 @@ public class StreamInfo
 		MediaStream stream = getTargetAudioStream();
 		Integer streamChannels = stream == null ? null : stream.getChannels();
 
-		return getMaxAudioChannels() != null && !getIsDirectStream() ? (streamChannels != null ? Math.min(getMaxAudioChannels(), streamChannels) : getMaxAudioChannels()) : stream == null ? null : streamChannels;
+		return getMaxAudioChannels() != null && !getIsDirectStream() ? (streamChannels != null ? Math.min(getMaxAudioChannels(), streamChannels) : getMaxAudioChannels()) : streamChannels;
 	}
 
 	/** 

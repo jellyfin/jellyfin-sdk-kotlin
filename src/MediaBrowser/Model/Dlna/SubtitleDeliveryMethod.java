@@ -5,6 +5,7 @@ import MediaBrowser.Model.Dto.*;
 import MediaBrowser.Model.Entities.*;
 import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.MediaInfo.*;
+import MediaBrowser.Model.Session.*;
 
 public enum SubtitleDeliveryMethod
 {
@@ -13,17 +14,17 @@ public enum SubtitleDeliveryMethod
 	*/
 	Encode(0),
 	/** 
-	 Internal format is supported natively
-	*/
-	Direct(1),
-	/** 
 	 The embed
 	*/
-	Embed(2),
+	Embed(1),
 	/** 
 	 The external
 	*/
-	External(3);
+	External(2),
+	/** 
+	 The HLS
+	*/
+	Hls(3);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, SubtitleDeliveryMethod> mappings;

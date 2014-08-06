@@ -461,6 +461,11 @@ public class MediaFormatProfileResolver
 	{
 		if (width != null && height != null)
 		{
+			if ((width <= 160) && (height <= 160))
+			{
+				return MediaFormatProfile.JPEG_SM;
+			}
+
 			if ((width <= 640) && (height <= 480))
 			{
 				return MediaFormatProfile.JPEG_SM;
@@ -470,8 +475,10 @@ public class MediaFormatProfileResolver
 			{
 				return MediaFormatProfile.JPEG_MED;
 			}
+
+			return MediaFormatProfile.JPEG_LRG;
 		}
 
-		return MediaFormatProfile.JPEG_LRG;
+		return MediaFormatProfile.JPEG_SM;
 	}
 }

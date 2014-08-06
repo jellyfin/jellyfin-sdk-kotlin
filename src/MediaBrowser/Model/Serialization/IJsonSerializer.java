@@ -4,16 +4,16 @@ import java.io.InputStream;
 
 public interface IJsonSerializer
 {
-	/** 
+	/**
 	 Serializes to stream.
-	 
+
 	 @param obj The obj.
 	 @param stream The stream.
 	 @exception System.ArgumentNullException obj
 	*/
 	void SerializeToStream(Object obj, InputStream stream);
 
-	/** 
+	/**
 	 Serializes to file.
 	 
 	 @param obj The obj.
@@ -42,9 +42,9 @@ public interface IJsonSerializer
 	*/
 	<T> T DeserializeFromFile(String file);
 
-	/** 
+	/**
 	 Deserializes from stream.
-	 
+
 	 <typeparam name="T"></typeparam>
 	 @param stream The stream.
 	 @return ``0.
@@ -52,7 +52,7 @@ public interface IJsonSerializer
 	*/
 	<T> T DeserializeFromStream(InputStream stream);
 
-	/** 
+	/**
 	 Deserializes from string.
 	 
 	 <typeparam name="T"></typeparam>
@@ -90,13 +90,4 @@ public interface IJsonSerializer
 	 @exception System.ArgumentNullException obj
 	*/
 	String SerializeToString(Object obj);
-
-	/** 
-	 Serializes to bytes.
-	 
-	 @param obj The obj.
-	 @return System.Byte[][].
-	 @exception System.ArgumentNullException obj
-	*/
-	byte[] SerializeToBytes(Object obj);
 }

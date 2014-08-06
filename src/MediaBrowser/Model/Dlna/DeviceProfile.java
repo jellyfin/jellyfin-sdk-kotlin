@@ -182,21 +182,21 @@ public class DeviceProfile
 		privateAlbumArtPn = value;
 	}
 
-	private Integer privateMaxAlbumArtWidth = null;
-	public final Integer getMaxAlbumArtWidth()
+	private int privateMaxAlbumArtWidth;
+	public final int getMaxAlbumArtWidth()
 	{
 		return privateMaxAlbumArtWidth;
 	}
-	public final void setMaxAlbumArtWidth(Integer value)
+	public final void setMaxAlbumArtWidth(int value)
 	{
 		privateMaxAlbumArtWidth = value;
 	}
-	private Integer privateMaxAlbumArtHeight = null;
-	public final Integer getMaxAlbumArtHeight()
+	private int privateMaxAlbumArtHeight;
+	public final int getMaxAlbumArtHeight()
 	{
 		return privateMaxAlbumArtHeight;
 	}
-	public final void setMaxAlbumArtHeight(Integer value)
+	public final void setMaxAlbumArtHeight(int value)
 	{
 		privateMaxAlbumArtHeight = value;
 	}
@@ -383,23 +383,14 @@ public class DeviceProfile
 		privateResponseProfiles = value;
 	}
 
-	private SubtitleProfile[] privateSoftSubtitleProfiles;
-	public final SubtitleProfile[] getSoftSubtitleProfiles()
+	private SubtitleProfile[] privateSubtitleProfiles;
+	public final SubtitleProfile[] getSubtitleProfiles()
 	{
-		return privateSoftSubtitleProfiles;
+		return privateSubtitleProfiles;
 	}
-	public final void setSoftSubtitleProfiles(SubtitleProfile[] value)
+	public final void setSubtitleProfiles(SubtitleProfile[] value)
 	{
-		privateSoftSubtitleProfiles = value;
-	}
-	private SubtitleProfile[] privateExternalSubtitleProfiles;
-	public final SubtitleProfile[] getExternalSubtitleProfiles()
-	{
-		return privateExternalSubtitleProfiles;
-	}
-	public final void setExternalSubtitleProfiles(SubtitleProfile[] value)
-	{
-		privateExternalSubtitleProfiles = value;
+		privateSubtitleProfiles = value;
 	}
 
 	public DeviceProfile()
@@ -409,9 +400,6 @@ public class DeviceProfile
 		setResponseProfiles(new ResponseProfile[] { });
 		setCodecProfiles(new CodecProfile[] { });
 		setContainerProfiles(new ContainerProfile[] { });
-
-		setSoftSubtitleProfiles(new SubtitleProfile[] { });
-		setExternalSubtitleProfiles(new SubtitleProfile[] { });
 
 		setXmlRootAttributes(new XmlAttribute[] { });
 

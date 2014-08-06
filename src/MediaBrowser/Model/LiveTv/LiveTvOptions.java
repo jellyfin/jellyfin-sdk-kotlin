@@ -1,4 +1,4 @@
-package MediaBrowser.Model.Configuration;
+package MediaBrowser.Model.LiveTv;
 
 public class LiveTvOptions
 {

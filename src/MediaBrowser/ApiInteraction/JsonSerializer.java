@@ -60,9 +60,4 @@ public class JsonSerializer implements IJsonSerializer {
 
         return gsonBuilder.toJson(obj);
     }
-
-    @Override
-    public byte[] SerializeToBytes(Object obj) {
-        return new byte[0];
-    }
 }

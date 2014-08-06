@@ -1,4 +1,4 @@
-package MediaBrowser.Model.Configuration;
+package MediaBrowser.Model.FileOrganization;
 
 public class TvFileOrganizationOptions
 {
