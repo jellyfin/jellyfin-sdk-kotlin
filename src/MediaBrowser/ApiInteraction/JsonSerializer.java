@@ -37,7 +37,9 @@ public class JsonSerializer implements IJsonSerializer {
     @Override
     public <T> T DeserializeFromString(String json) {
 
-        Gson gsonBuilder = new GsonBuilder().create();
+        Gson gsonBuilder = new GsonBuilder()
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                    .create();
 
         Class<T> persistentClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 
@@ -53,7 +55,9 @@ public class JsonSerializer implements IJsonSerializer {
     @Override
     public Object DeserializeFromString(String json, Class type) {
 
-        Gson gsonBuilder = new GsonBuilder().create();
+        Gson gsonBuilder = new GsonBuilder()
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                    .create();
 
         return gsonBuilder.fromJson(json, type);
     }
