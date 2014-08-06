@@ -1,4 +1,14 @@
 #################
+## Intelli J
+#################
+
+.gradle
+/local.properties
+.idea
+.DS_Store
+build
+
+#################
 ## Eclipse
 #################
 
