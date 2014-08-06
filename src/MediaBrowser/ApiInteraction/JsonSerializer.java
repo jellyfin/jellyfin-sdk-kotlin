@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
 
 import java.io.InputStream;
+import java.lang.reflect.ParameterizedType;
 
 public class JsonSerializer implements IJsonSerializer {
     @Override
@@ -34,9 +35,13 @@ public class JsonSerializer implements IJsonSerializer {
     }
 
     @Override
-    public <T> T DeserializeFromString(String text) {
+    public <T> T DeserializeFromString(String json) {
 
-        throw new UnsupportedOperationException();
+        Gson gsonBuilder = new GsonBuilder().create();
+
+        Class<T> persistentClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+
+        return gsonBuilder.fromJson(json, persistentClass);
     }
 
     @Override
