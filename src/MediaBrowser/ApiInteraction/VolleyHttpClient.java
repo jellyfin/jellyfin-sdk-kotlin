@@ -7,6 +7,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -24,6 +25,7 @@ public class VolleyHttpClient implements IAsyncHttpClient {
      * Global request queue for Volley
      */
     private RequestQueue mRequestQueue;
+    private ImageLoader mImageLoader;
 
     private ILogger logger;
     private Context context;
@@ -46,6 +48,15 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         }
 
         return mRequestQueue;
+    }
+
+    public ImageLoader getImageLoader() {
+        getRequestQueue();
+        if (mImageLoader == null) {
+            mImageLoader = new ImageLoader(this.mRequestQueue,
+                    new LruBitmapCache());
+        }
+        return this.mImageLoader;
     }
 
     /**

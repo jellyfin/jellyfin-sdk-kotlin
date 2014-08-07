@@ -1,5 +1,7 @@
 package MediaBrowser.ApiInteraction;
 
+import com.android.volley.toolbox.ImageLoader;
+
 public interface IAsyncHttpClient {
 
     public void SetAuthorizationHeader(String scheme, String parameter);
@@ -13,4 +15,6 @@ public interface IAsyncHttpClient {
     public void DeleteAsync(String url, Response<String> response);
 
     public void PostAsync(String url, String contentType, String postContent, Response<String> response);
+
+    public ImageLoader getImageLoader();
 }

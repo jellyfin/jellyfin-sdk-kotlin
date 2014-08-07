@@ -65,7 +65,9 @@ public class JsonSerializer implements IJsonSerializer {
     @Override
     public String SerializeToString(Object obj) {
 
-        Gson gsonBuilder = new GsonBuilder().create();
+        Gson gsonBuilder = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                .create();
 
         return gsonBuilder.toJson(obj);
     }

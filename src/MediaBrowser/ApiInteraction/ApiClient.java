@@ -7,6 +7,7 @@ import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Querying.*;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.SessionInfoDto;
+import com.android.volley.toolbox.ImageLoader;
 
 public class ApiClient extends BaseApiClient {
 
@@ -26,10 +27,6 @@ public class ApiClient extends BaseApiClient {
     public ApiWebSocket WebSocketConnection { get; set; }*/
 
     private IAsyncHttpClient _httpClient;
-
-    protected ApiClient(ILogger logger, IJsonSerializer jsonSerializer, String serverAddress, String clientName, String deviceName, String deviceId, String applicationVersion) {
-        super(logger, jsonSerializer, serverAddress, clientName, deviceName, deviceId, applicationVersion);
-    }
 
    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String accessToken)
    {
@@ -64,15 +61,9 @@ public class ApiClient extends BaseApiClient {
         _httpClient.ClearHttpRequestHeader(name);
     }
 
-/*    public Task<Stream> GetImageStreamAsync(string url, CancellationToken cancellationToken)
-    {
-        if (string.IsNullOrEmpty(url))
-        {
-            throw new ArgumentNullException("url");
-        }
-
-        return HttpClient.GetAsync(url, cancellationToken);
-    }*/
+    public ImageLoader getImageLoader() {
+        return _httpClient.getImageLoader();
+    }
 
     public void GetItemAsync(String id, String userId, final Response<BaseItemDto> response)
     {
