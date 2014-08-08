@@ -2,7 +2,9 @@ package MediaBrowser.ApiInteraction;
 
 import MediaBrowser.Model.Logging.ILogger;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
+import android.util.LruCache;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -53,8 +55,15 @@ public class VolleyHttpClient implements IAsyncHttpClient {
     public ImageLoader getImageLoader() {
         getRequestQueue();
         if (mImageLoader == null) {
-            mImageLoader = new ImageLoader(this.mRequestQueue,
-                    new LruBitmapCache());
+            mImageLoader = new ImageLoader(mRequestQueue, new ImageLoader.ImageCache() {
+                private final LruCache<String, Bitmap> mCache = new LruCache<String, Bitmap>(10);
+                public void putBitmap(String url, Bitmap bitmap) {
+                    mCache.put(url, bitmap);
+                }
+                public Bitmap getBitmap(String url) {
+                    return mCache.get(url);
+                }
+            });
         }
         return this.mImageLoader;
     }
