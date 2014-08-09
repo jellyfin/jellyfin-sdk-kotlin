@@ -1,16 +1,19 @@
 package MediaBrowser.ApiInteraction;
 
 import MediaBrowser.Model.Configuration.ServerConfiguration;
-import MediaBrowser.Model.Dto.BaseItemDto;
-import MediaBrowser.Model.Dto.GameSystemSummary;
-import MediaBrowser.Model.Dto.ItemCounts;
-import MediaBrowser.Model.Dto.UserDto;
+import MediaBrowser.Model.Dto.*;
+import MediaBrowser.Model.Entities.DisplayPreferences;
 import MediaBrowser.Model.Entities.ParentalRating;
 import MediaBrowser.Model.Globalization.CountryInfo;
 import MediaBrowser.Model.Globalization.CultureDto;
+import MediaBrowser.Model.LiveTv.*;
 import MediaBrowser.Model.Logging.ILogger;
+import MediaBrowser.Model.Notifications.NotificationQuery;
+import MediaBrowser.Model.Notifications.NotificationResult;
 import MediaBrowser.Model.Plugins.PluginInfo;
 import MediaBrowser.Model.Querying.*;
+import MediaBrowser.Model.Search.SearchHintResult;
+import MediaBrowser.Model.Search.SearchQuery;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.SessionInfoDto;
 import MediaBrowser.Model.System.PublicSystemInfo;
@@ -124,6 +127,7 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("Items/Counts", dict);
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -158,6 +162,7 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("Users", queryString);
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -175,6 +180,7 @@ public class ApiClient extends BaseApiClient {
     {
         String url = GetApiUrl("Users/Public");
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -196,6 +202,7 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("Sessions", queryString);
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -211,6 +218,7 @@ public class ApiClient extends BaseApiClient {
 
     private void GetItemsFromUrl(String url, final Response<QueryResult<BaseItemDto>> response) {
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -226,6 +234,7 @@ public class ApiClient extends BaseApiClient {
 
     private void GetItemFromUrl(String url, final Response<BaseItemDto> response) {
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -748,6 +757,7 @@ public class ApiClient extends BaseApiClient {
     {
         String url = GetApiUrl("System/Info");
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -770,6 +780,7 @@ public class ApiClient extends BaseApiClient {
     {
         String url = GetApiUrl("System/Info");
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -838,6 +849,7 @@ public class ApiClient extends BaseApiClient {
     {
         String url = GetApiUrl("System/Configuration");
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -859,6 +871,7 @@ public class ApiClient extends BaseApiClient {
     {
         String url = GetApiUrl("ScheduledTasks");
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -887,6 +900,7 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("ScheduledTasks/" + id);
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -915,6 +929,7 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("Users/" + id);
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -936,6 +951,7 @@ public class ApiClient extends BaseApiClient {
     {
         String url = GetApiUrl("Localization/ParentalRatings");
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -969,6 +985,7 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("Users/" + userId + "/Items/" + itemId + "/LocalTrailers");
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -1002,6 +1019,7 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("Users/" + userId + "/Items/" + itemId + "/SpecialFeatures");
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -1023,6 +1041,7 @@ public class ApiClient extends BaseApiClient {
     {
         String url = GetApiUrl("Localization/Cultures");
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -1044,6 +1063,7 @@ public class ApiClient extends BaseApiClient {
     {
         String url = GetApiUrl("Localization/Countries");
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -1065,6 +1085,7 @@ public class ApiClient extends BaseApiClient {
     {
         String url = GetApiUrl("Games/SystemSummaries");
 
+        url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(){
 
             @Override
@@ -1136,7 +1157,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="isFavorite">if set to <c>true</c> [is favorite].</param>
     /// <returns>Task.</returns>
     /// <exception cref="System.IllegalArgumentException">itemId</exception>
-    public Task<UserItemDataDto> UpdateFavoriteStatusAsync(String itemId, String userId, bool isFavorite)
+    public Task<UserItemDataDto> UpdateFavoriteStatusAsync(String itemId, String userId, Boolean isFavorite)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId))
         {
@@ -1372,7 +1393,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="likes">if set to <c>true</c> [likes].</param>
     /// <returns>Task.</returns>
     /// <exception cref="System.IllegalArgumentException">itemId</exception>
-    public Task<UserItemDataDto> UpdateUserItemRatingAsync(String itemId, String userId, bool likes)
+    public Task<UserItemDataDto> UpdateUserItemRatingAsync(String itemId, String userId, Boolean likes)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId))
         {
@@ -1462,7 +1483,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("ScheduledTasks/" + id + "/Triggers");
 
         return PostAsync<TaskTriggerInfo[], EmptyRequestResult>(url, triggers, CancellationToken.None);
-    }
+    }*/
 
     /// <summary>
     /// Gets the display preferences.
@@ -1471,7 +1492,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="userId">The user id.</param>
     /// <param name="client">The client.</param>
     /// <returns>Task{BaseItemDto}.</returns>
-    public async Task<DisplayPreferences> GetDisplayPreferencesAsync(String id, String userId, String client)
+    public void GetDisplayPreferencesAsync(String id, String userId, String client, final Response<DisplayPreferences> response)
     {
         QueryStringDictionary dict = new QueryStringDictionary();
 
@@ -1480,13 +1501,21 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("DisplayPreferences/" + id, dict);
 
-        using (var stream = await GetSerializedStreamAsync(url, cancellationToken).ConfigureAwait(false))
-        {
-            return DeserializeFromStream<DisplayPreferences>(stream);
-        }
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                DisplayPreferences obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
     }
 
-    /// <summary>
+    /*/// <summary>
     /// Updates display preferences for a user
     /// </summary>
     /// <param name="displayPreferences">The display preferences.</param>
@@ -1604,7 +1633,7 @@ public class ApiClient extends BaseApiClient {
         }
     }
 
-    public Task MarkNotificationsRead(String userId, IEnumerable<String> notificationIdList, bool isRead)
+    public Task MarkNotificationsRead(String userId, IEnumerable<String> notificationIdList, Boolean isRead)
     {
         String url = "Notifications/" + userId;
 
@@ -1619,99 +1648,139 @@ public class ApiClient extends BaseApiClient {
         url = GetApiUrl(url, dict);
 
         return PostAsync<EmptyRequestResult>(url, new Dictionary<String, String>(), CancellationToken.None);
-    }
+    }*/
 
-    public async Task<NotificationResult> GetNotificationsAsync(NotificationQuery query)
+    public void GetNotificationsAsync(NotificationQuery query, final Response<NotificationResult> response)
     {
-        String url = "Notifications/" + query.UserId;
+        String url = "Notifications/" + query.getUserId();
 
         QueryStringDictionary dict = new QueryStringDictionary();
-        dict.AddIfNotNull("ItemIds", query.IsRead);
-        dict.AddIfNotNull("StartIndex", query.StartIndex);
-        dict.AddIfNotNull("Limit", query.Limit);
+        dict.AddIfNotNull("ItemIds", query.getIsRead());
+        dict.AddIfNotNull("StartIndex", query.getStartIndex());
+        dict.AddIfNotNull("Limit", query.getLimit());
 
         url = GetApiUrl(url, dict);
 
-        using (var stream = await GetSerializedStreamAsync(url).ConfigureAwait(false))
-        {
-            return DeserializeFromStream<NotificationResult>(stream);
-        }
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                NotificationResult obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
     }
 
-    public async Task<AllThemeMediaResult> GetAllThemeMediaAsync(String userId, String itemId, bool inheritFromParent)
+    public void GetAllThemeMediaAsync(String userId, String itemId, Boolean inheritFromParent, final Response<AllThemeMediaResult> response)
     {
-        var queryString = new QueryStringDictionary();
+        QueryStringDictionary queryString = new QueryStringDictionary();
 
         queryString.Add("InheritFromParent", inheritFromParent);
         queryString.AddIfNotNullOrEmpty("UserId", userId);
 
         String url = GetApiUrl("Items/" + itemId + "/ThemeMedia", queryString);
 
-        using (var stream = await GetSerializedStreamAsync(url, cancellationToken).ConfigureAwait(false))
-        {
-            return DeserializeFromStream<AllThemeMediaResult>(stream);
-        }
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                AllThemeMediaResult obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
     }
 
-    public async Task<SearchHintResult> GetSearchHintsAsync(SearchQuery query)
+    public void GetSearchHintsAsync(SearchQuery query, final Response<SearchHintResult> response)
     {
-        if (query == null || tangible.DotNetToJavaStringHelper.isNullOrEmpty(query.SearchTerm))
+        if (query == null || tangible.DotNetToJavaStringHelper.isNullOrEmpty(query.getSearchTerm()))
         {
             throw new IllegalArgumentException("query");
         }
 
-        var queryString = new QueryStringDictionary();
+        QueryStringDictionary queryString = new QueryStringDictionary();
 
-        queryString.AddIfNotNullOrEmpty("SearchTerm", query.SearchTerm);
-        queryString.AddIfNotNullOrEmpty("UserId", query.UserId);
-        queryString.AddIfNotNull("StartIndex", query.StartIndex);
-        queryString.AddIfNotNull("Limit", query.Limit);
+        queryString.AddIfNotNullOrEmpty("SearchTerm", query.getSearchTerm());
+        queryString.AddIfNotNullOrEmpty("UserId", query.getUserId());
+        queryString.AddIfNotNull("StartIndex", query.getStartIndex());
+        queryString.AddIfNotNull("Limit", query.getLimit());
 
-        queryString.Add("IncludeArtists", query.IncludeArtists);
-        queryString.Add("IncludeGenres", query.IncludeGenres);
-        queryString.Add("IncludeMedia", query.IncludeMedia);
-        queryString.Add("IncludePeople", query.IncludePeople);
-        queryString.Add("IncludeStudios", query.IncludeStudios);
+        queryString.Add("IncludeArtists", query.getIncludeArtists());
+        queryString.Add("IncludeGenres", query.getIncludeGenres());
+        queryString.Add("IncludeMedia", query.getIncludeMedia());
+        queryString.Add("IncludePeople", query.getIncludePeople());
+        queryString.Add("IncludeStudios", query.getIncludeStudios());
 
         String url = GetApiUrl("Search/Hints", queryString);
 
-        using (var stream = await GetSerializedStreamAsync(url).ConfigureAwait(false))
-        {
-            return DeserializeFromStream<SearchHintResult>(stream);
-        }
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                SearchHintResult obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
     }
 
-    public async Task<ThemeMediaResult> GetThemeSongsAsync(String userId, String itemId, bool inheritFromParent)
+    public void GetThemeSongsAsync(String userId, String itemId, Boolean inheritFromParent, final Response<ThemeMediaResult> response)
     {
-        var queryString = new QueryStringDictionary();
+        QueryStringDictionary queryString = new QueryStringDictionary();
 
         queryString.Add("InheritFromParent", inheritFromParent);
         queryString.AddIfNotNullOrEmpty("UserId", userId);
 
         String url = GetApiUrl("Items/" + itemId + "/ThemeSongs", queryString);
 
-        using (var stream = await GetSerializedStreamAsync(url, cancellationToken).ConfigureAwait(false))
-        {
-            return DeserializeFromStream<ThemeMediaResult>(stream);
-        }
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                ThemeMediaResult obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
     }
 
-    public async Task<ThemeMediaResult> GetThemeVideosAsync(String userId, String itemId, bool inheritFromParent)
+    public void GetThemeVideosAsync(String userId, String itemId, Boolean inheritFromParent, final Response<ThemeMediaResult> response)
     {
-        var queryString = new QueryStringDictionary();
+        QueryStringDictionary queryString = new QueryStringDictionary();
 
         queryString.Add("InheritFromParent", inheritFromParent);
         queryString.AddIfNotNullOrEmpty("UserId", userId);
 
         String url = GetApiUrl("Items/" + itemId + "/ThemeVideos", queryString);
 
-        using (var stream = await GetSerializedStreamAsync(url, cancellationToken).ConfigureAwait(false))
-        {
-            return DeserializeFromStream<ThemeMediaResult>(stream);
-        }
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                ThemeMediaResult obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
     }
 
-    /// <summary>
+    /*/// <summary>
     /// Gets the critic reviews.
     /// </summary>
     /// <param name="itemId">The item id.</param>
@@ -1730,7 +1799,7 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("itemId");
         }
 
-        var queryString = new QueryStringDictionary();
+        QueryStringDictionary queryString = new QueryStringDictionary();
 
         queryString.AddIfNotNull("startIndex", startIndex);
         queryString.AddIfNotNull("limit", limit);
@@ -1741,16 +1810,7 @@ public class ApiClient extends BaseApiClient {
         {
             return DeserializeFromStream<QueryResult<ItemReview>>(stream);
         }
-    }
-
-    public async Task<T> GetAsync<T>(String url)
-    where T : class
-    {
-        using (var stream = await GetSerializedStreamAsync(url, cancellationToken).ConfigureAwait(false))
-        {
-            return DeserializeFromStream<T>(stream);
-        }
-    }
+    }*/
 
     /// <summary>
     /// Gets the index of the game player.
@@ -1758,18 +1818,26 @@ public class ApiClient extends BaseApiClient {
     /// <param name="userId">The user id.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>Task{List{ItemIndex}}.</returns>
-    public async Task<List<ItemIndex>> GetGamePlayerIndex(String userId)
+    public void GetGamePlayerIndex(String userId, final Response<ItemIndex[]> response)
     {
-        var queryString = new QueryStringDictionary();
+        QueryStringDictionary queryString = new QueryStringDictionary();
 
         queryString.AddIfNotNullOrEmpty("UserId", userId);
 
         String url = GetApiUrl("Games/PlayerIndex", queryString);
 
-        using (var stream = await GetSerializedStreamAsync(url, cancellationToken).ConfigureAwait(false))
-        {
-            return DeserializeFromStream<List<ItemIndex>>(stream);
-        }
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                ItemIndex[] obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
     }
 
     /// <summary>
@@ -1779,22 +1847,30 @@ public class ApiClient extends BaseApiClient {
     /// <param name="includeItemTypes">The include item types.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>Task{List{ItemIndex}}.</returns>
-    public async Task<List<ItemIndex>> GetYearIndex(String userId, String[] includeItemTypes)
+    public void GetYearIndex(String userId, String[] includeItemTypes, final Response<ItemIndex[]> response)
     {
-        var queryString = new QueryStringDictionary();
+        QueryStringDictionary queryString = new QueryStringDictionary();
 
         queryString.AddIfNotNullOrEmpty("UserId", userId);
         queryString.AddIfNotNull("IncludeItemTypes", includeItemTypes);
 
         String url = GetApiUrl("Items/YearIndex", queryString);
 
-        using (var stream = await GetSerializedStreamAsync(url, cancellationToken).ConfigureAwait(false))
-        {
-            return DeserializeFromStream<List<ItemIndex>>(stream);
-        }
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                ItemIndex[] obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
     }
 
-    public Task ReportCapabilities(ClientCapabilities capabilities)
+    /*public Task ReportCapabilities(ClientCapabilities capabilities)
     {
         if (capabilities == null)
         {
@@ -1808,19 +1884,27 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Sessions/Capabilities", dict);
 
         return PostAsync<EmptyRequestResult>(url, dict, cancellationToken);
-    }
+    }*/
 
-    public async Task<LiveTvInfo> GetLiveTvInfoAsync()
+    public void GetLiveTvInfoAsync(final Response<LiveTvInfo> response)
     {
         String url = GetApiUrl("LiveTv/Info");
 
-        using (var stream = await GetSerializedStreamAsync(url, cancellationToken).ConfigureAwait(false))
-        {
-            return DeserializeFromStream<LiveTvInfo>(stream);
-        }
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                LiveTvInfo obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
     }
 
-    public async Task<QueryResult<RecordingGroupDto>> GetLiveTvRecordingGroupsAsync(RecordingGroupQuery query)
+    public void GetLiveTvRecordingGroupsAsync(RecordingGroupQuery query, final Response<QueryResult<RecordingGroupDto>> response)
     {
         if (query == null)
         {
@@ -1829,17 +1913,25 @@ public class ApiClient extends BaseApiClient {
 
         QueryStringDictionary dict = new QueryStringDictionary ();
 
-        dict.AddIfNotNullOrEmpty("UserId", query.UserId);
+        dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
 
         String url = GetApiUrl("LiveTv/Recordings/Groups", dict);
 
-        using (var stream = await GetSerializedStreamAsync(url, cancellationToken).ConfigureAwait(false))
-        {
-            return DeserializeFromStream<QueryResult<RecordingGroupDto>>(stream);
-        }
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                QueryResult<RecordingGroupDto> obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
     }
 
-    public async Task<QueryResult<RecordingInfoDto>> GetLiveTvRecordingsAsync(RecordingQuery query)
+    public void GetLiveTvRecordingsAsync(RecordingQuery query, final Response<QueryResult<RecordingInfoDto>> response)
     {
         if (query == null)
         {
@@ -1848,24 +1940,32 @@ public class ApiClient extends BaseApiClient {
 
         QueryStringDictionary dict = new QueryStringDictionary ();
 
-        dict.AddIfNotNullOrEmpty("UserId", query.UserId);
-        dict.AddIfNotNullOrEmpty("ChannelId", query.ChannelId);
-        dict.AddIfNotNullOrEmpty("GroupId", query.GroupId);
-        dict.AddIfNotNullOrEmpty("Id", query.Id);
-        dict.AddIfNotNullOrEmpty("SeriesTimerId", query.SeriesTimerId);
-        dict.AddIfNotNull("IsInProgress", query.IsInProgress);
-        dict.AddIfNotNull("StartIndex", query.StartIndex);
-        dict.AddIfNotNull("Limit", query.Limit);
+        dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
+        dict.AddIfNotNullOrEmpty("ChannelId", query.getChannelId());
+        dict.AddIfNotNullOrEmpty("GroupId", query.getGroupId());
+        dict.AddIfNotNullOrEmpty("Id", query.getUserId());
+        dict.AddIfNotNullOrEmpty("SeriesTimerId", query.getSeriesTimerId());
+        dict.AddIfNotNull("IsInProgress", query.getIsInProgress());
+        dict.AddIfNotNull("StartIndex", query.getStartIndex());
+        dict.AddIfNotNull("Limit", query.getLimit());
 
         String url = GetApiUrl("LiveTv/Recordings", dict);
 
-        using (var stream = await GetSerializedStreamAsync(url, cancellationToken).ConfigureAwait(false))
-        {
-            return DeserializeFromStream<QueryResult<RecordingInfoDto>>(stream);
-        }
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                QueryResult<RecordingInfoDto> obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
     }
 
-    public async Task<QueryResult<ChannelInfoDto>> GetLiveTvChannelsAsync(LiveTvChannelQuery query)
+    public void GetLiveTvChannelsAsync(LiveTvChannelQuery query, final Response<QueryResult<ChannelInfoDto>> response)
     {
         if (query == null)
         {
@@ -1874,24 +1974,32 @@ public class ApiClient extends BaseApiClient {
 
         QueryStringDictionary dict = new QueryStringDictionary ();
 
-        dict.AddIfNotNullOrEmpty("UserId", query.UserId);
-        dict.AddIfNotNull("StartIndex", query.StartIndex);
-        dict.AddIfNotNull("Limit", query.Limit);
+        dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
+        dict.AddIfNotNull("StartIndex", query.getStartIndex());
+        dict.AddIfNotNull("Limit", query.getLimit());
 
-        if (query.ChannelType.HasValue)
+        if (query.getChannelType() != null)
         {
-            dict.Add("ChannelType", query.ChannelType.Value.ToString());
+            dict.Add("ChannelType", query.getChannelType());
         }
 
         String url = GetApiUrl("LiveTv/Channels", dict);
 
-        using (var stream = await GetSerializedStreamAsync(url, cancellationToken).ConfigureAwait(false))
-        {
-            return DeserializeFromStream<QueryResult<ChannelInfoDto>>(stream);
-        }
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                QueryResult<ChannelInfoDto> obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
     }
 
-    public Task CancelLiveTvSeriesTimerAsync(String id)
+    /*public Task CancelLiveTvSeriesTimerAsync(String id)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
         {
@@ -2282,7 +2390,7 @@ public class ApiClient extends BaseApiClient {
 
     public void GetAdditionalParts(String itemId, String userId)
     {
-        var queryString = new QueryStringDictionary();
+        QueryStringDictionary queryString = new QueryStringDictionary();
 
         queryString.AddIfNotNullOrEmpty("UserId", userId);
 
@@ -2306,7 +2414,7 @@ public class ApiClient extends BaseApiClient {
 
     public async Task<QueryResult<BaseItemDto>> GetChannelItems(ChannelItemQuery query)
     {
-        var queryString = new QueryStringDictionary();
+        QueryStringDictionary queryString = new QueryStringDictionary();
 
         queryString.AddIfNotNullOrEmpty("UserId", query.UserId);
         queryString.AddIfNotNull("StartIndex", query.StartIndex);
@@ -2333,7 +2441,7 @@ public class ApiClient extends BaseApiClient {
 
     public async Task<QueryResult<BaseItemDto>> GetChannels(ChannelQuery query)
     {
-        var queryString = new QueryStringDictionary();
+        QueryStringDictionary queryString = new QueryStringDictionary();
 
         queryString.AddIfNotNullOrEmpty("UserId", query.UserId);
         queryString.AddIfNotNull("SupportsLatestItems", query.SupportsLatestItems);
@@ -2351,7 +2459,7 @@ public class ApiClient extends BaseApiClient {
 
     public async Task<SessionInfoDto> GetCurrentSessionAsync()
     {
-        var queryString = new QueryStringDictionary();
+        QueryStringDictionary queryString = new QueryStringDictionary();
 
         queryString.Add("DeviceId", DeviceId);
         String url = GetApiUrl("Sessions", queryString);
@@ -2366,7 +2474,7 @@ public class ApiClient extends BaseApiClient {
 
     public Task StopTranscodingProcesses(String deviceId)
     {
-        var queryString = new QueryStringDictionary();
+        QueryStringDictionary queryString = new QueryStringDictionary();
 
         queryString.Add("DeviceId", DeviceId);
         String url = GetApiUrl("Videos/ActiveEncodings", queryString);
