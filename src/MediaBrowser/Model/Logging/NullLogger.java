@@ -22,7 +22,7 @@ public class NullLogger implements ILogger
 	{
 	}
 
-	public final void FatalException(String message, RuntimeException exception, Object... paramList)
+	public final void FatalException(String message, Exception exception, Object... paramList)
 	{
 	}
 
@@ -30,7 +30,7 @@ public class NullLogger implements ILogger
 	{
 	}
 
-	public final void ErrorException(String message, RuntimeException exception, Object... paramList)
+	public final void ErrorException(String message, Exception exception, Object... paramList)
 	{
 	}
 

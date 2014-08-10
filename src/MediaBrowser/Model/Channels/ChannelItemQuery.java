@@ -107,20 +107,26 @@ public class ChannelItemQuery
 	{
 		privateFilters = value;
 	}
-	private java.util.ArrayList<ItemFields> privateFields;
-	public final java.util.ArrayList<ItemFields> getFields()
-	{
-		return privateFields;
-	}
-	public final void setFields(java.util.ArrayList<ItemFields> value)
-	{
-		privateFields = value;
-	}
+
+    /**
+     Fields to return within the items, in addition to basic information
+
+     <value>The fields.</value>
+     */
+    private ItemFields[] privateFields;
+    public final ItemFields[] getFields()
+    {
+        return privateFields;
+    }
+    public final void setFields(ItemFields[] value)
+    {
+        privateFields = value;
+    }
 
 	public ChannelItemQuery()
 	{
 		setFilters(new ItemFilter[] { });
 		setSortBy(new String[] { });
-		setFields(new java.util.ArrayList<ItemFields>());
+        setFields(new ItemFields[] {});
 	}
 }

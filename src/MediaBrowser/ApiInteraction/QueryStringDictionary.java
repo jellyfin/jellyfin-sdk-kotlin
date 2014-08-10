@@ -2,6 +2,8 @@ package MediaBrowser.ApiInteraction;
 
 import tangible.*;
 
+import java.util.ArrayList;
+
 /** 
  Class QueryStringDictionary
 */
@@ -238,6 +240,25 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 		Add(name, value, ",");
 	}
 
+    /**
+     Adds the specified name.
+
+     @param name The name.
+     @param value The value.
+     @exception System.ArgumentNullException value
+     */
+    public final void Add(String name, ArrayList<String> value)
+    {
+        if (value == null)
+        {
+            throw new IllegalArgumentException("value");
+        }
+
+        String[] stringArray = value.toArray(new String[value.size()]);
+
+        Add(name, stringArray);
+    }
+
 	/** 
 	 Adds if not null.
 	 
@@ -286,6 +307,20 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 			this.Add(name, value, delimiter);
 		}
 	}
+
+    /**
+     Adds if not null.
+
+     @param name The name.
+     @param value The value.
+     */
+    public final void AddIfNotNull(String name, ArrayList<String> value)
+    {
+        if (value != null)
+        {
+            this.Add(name, value);
+        }
+    }
 
 	/** 
 	 Gets the query string.

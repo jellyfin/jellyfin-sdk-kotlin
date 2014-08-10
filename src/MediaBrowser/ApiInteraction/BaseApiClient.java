@@ -10,6 +10,10 @@ import MediaBrowser.Model.Querying.*;
 import MediaBrowser.Model.Serialization.*;
 
 import java.lang.reflect.ParameterizedType;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 /** 
  Provides api methods that are usable on all platforms
@@ -1236,7 +1240,12 @@ public abstract class BaseApiClient implements IDisposable
 	*/
 	protected final String AddDataFormat(String url)
 	{
-		final String format = "json";
+        if (url == null)
+        {
+            throw new IllegalArgumentException("url");
+        }
+
+        final String format = "json";
 
 		if (url.indexOf('?') == -1)
 		{
@@ -1249,6 +1258,20 @@ public abstract class BaseApiClient implements IDisposable
 
 		return url;
 	}
+
+    public String getIsoString(Date date){
+
+        if (date == null)
+        {
+            throw new IllegalArgumentException("date");
+        }
+
+        TimeZone tz = TimeZone.getTimeZone("UTC");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+        df.setTimeZone(tz);
+
+        return df.format(date);
+    }
 
 	/** 
 	 Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.

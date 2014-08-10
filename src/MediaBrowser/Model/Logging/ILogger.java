@@ -52,7 +52,7 @@ public interface ILogger
 	 @param exception The exception.
 	 @param paramList The param list.
 	*/
-	void FatalException(String message, RuntimeException exception, Object... paramList);
+	void FatalException(String message, Exception exception, Object... paramList);
 
 	/** 
 	 Logs the specified severity.
@@ -70,7 +70,7 @@ public interface ILogger
 	 @param exception The exception.
 	 @param paramList The param list.
 	*/
-	void ErrorException(String message, RuntimeException exception, Object... paramList);
+	void ErrorException(String message, Exception exception, Object... paramList);
 
 	/** 
 	 Logs the multiline.

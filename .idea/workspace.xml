@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dae6a154-b809-4288-9061-1df57fc66abe" name="Default" comment="">
+      <change type="DELETED" beforePath="D:\Development\MediaBrowser.ApiClient.Java\src\MediaBrowser\ApiInteraction\NullLogger.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Channels/ChannelItemQuery.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Channels/ChannelItemQuery.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Logging/ILogger.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Logging/ILogger.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/Model/Logging/NullLogger.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/Model/Logging/NullLogger.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/QueryStringDictionary.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/QueryStringDictionary.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ServerDiscovery.java" afterPath="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ServerDiscovery.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MediaBrowser.ApiClient.Java.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,30 +33,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="JsonSerializer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/JsonSerializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1190" max-vertical-offset="1360">
-              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VolleyHttpClient.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/VolleyHttpClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="3230">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="OkHttpStack.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/OkHttpStack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="629">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
               <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
               <folding />
             </state>
@@ -59,17 +47,7 @@
         <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/Response.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseItemDto.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Dto/BaseItemDto.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="18479" max-vertical-offset="36142">
-              <caret line="1087" column="55" selection-start-line="1087" selection-start-column="55" selection-end-line="1087" selection-end-column="55" />
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -78,86 +56,98 @@
       <file leaf-file-name="BaseApiClient.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="18778" max-vertical-offset="20196">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="19444" max-vertical-offset="20519">
+              <caret line="1242" column="15" selection-start-line="1242" selection-start-column="15" selection-end-line="1242" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApiClient.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ApiClient.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1461318" vertical-offset="0" max-vertical-offset="42245">
-              <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+            <state vertical-scroll-proportion="-1061.8928" vertical-offset="0" max-vertical-offset="41888">
+              <caret line="1897" column="5" selection-start-line="1897" selection-start-column="5" selection-end-line="1897" selection-end-column="5" />
               <folding>
-                <element signature="e#2663#2664#0" expanded="true" />
-                <element signature="e#2714#2715#0" expanded="true" />
-                <element signature="e#4296#4537#0" expanded="true" />
-                <element signature="e#4526#4527#0" expanded="true" />
-                <element signature="e#7547#7789#0" expanded="true" />
-                <element signature="e#7778#7779#0" expanded="true" />
-                <element signature="e#24441#24682#0" expanded="true" />
-                <element signature="e#24671#24672#0" expanded="true" />
-                <element signature="e#25187#25434#0" expanded="true" />
-                <element signature="e#25423#25424#0" expanded="true" />
-                <element signature="e#26644#26887#0" expanded="true" />
-                <element signature="e#26876#26877#0" expanded="true" />
-                <element signature="e#27310#27560#0" expanded="true" />
-                <element signature="e#27549#27550#0" expanded="true" />
-                <element signature="e#27942#28183#0" expanded="true" />
-                <element signature="e#28172#28173#0" expanded="true" />
-                <element signature="e#28836#29075#0" expanded="true" />
-                <element signature="e#29064#29065#0" expanded="true" />
-                <element signature="e#29695#29933#0" expanded="true" />
-                <element signature="e#29922#29923#0" expanded="true" />
-                <element signature="e#30353#30600#0" expanded="true" />
-                <element signature="e#30589#30590#0" expanded="true" />
-                <element signature="e#31533#31777#0" expanded="true" />
-                <element signature="e#31766#31767#0" expanded="true" />
-                <element signature="e#32719#32963#0" expanded="true" />
-                <element signature="e#32952#32953#0" expanded="true" />
-                <element signature="e#33349#33592#0" expanded="true" />
-                <element signature="e#33581#33582#0" expanded="true" />
-                <element signature="e#33983#34227#0" expanded="true" />
-                <element signature="e#34216#34217#0" expanded="true" />
-                <element signature="e#34655#34905#0" expanded="true" />
-                <element signature="e#34894#34895#0" expanded="true" />
-                <element signature="e#49456#49705#0" expanded="true" />
-                <element signature="e#49694#49695#0" expanded="true" />
-                <element signature="e#55187#55436#0" expanded="true" />
-                <element signature="e#55425#55426#0" expanded="true" />
-                <element signature="e#55996#56246#0" expanded="true" />
-                <element signature="e#56235#56236#0" expanded="true" />
-                <element signature="e#57422#57669#0" expanded="true" />
-                <element signature="e#57658#57659#0" expanded="true" />
-                <element signature="e#58223#58470#0" expanded="true" />
-                <element signature="e#58459#58460#0" expanded="true" />
-                <element signature="e#59026#59273#0" expanded="true" />
-                <element signature="e#59262#59263#0" expanded="true" />
-                <element signature="e#61104#61346#0" expanded="true" />
-                <element signature="e#61335#61336#0" expanded="true" />
-                <element signature="e#62181#62423#0" expanded="true" />
-                <element signature="e#62412#62413#0" expanded="true" />
-                <element signature="e#63255#63496#0" expanded="true" />
-                <element signature="e#63485#63486#0" expanded="true" />
-                <element signature="e#64069#64330#0" expanded="true" />
-                <element signature="e#64319#64320#0" expanded="true" />
-                <element signature="e#65341#65601#0" expanded="true" />
-                <element signature="e#65590#65591#0" expanded="true" />
-                <element signature="e#66398#66656#0" expanded="true" />
-                <element signature="e#66645#66646#0" expanded="true" />
+                <element signature="e#44133#44371#0" expanded="true" />
+                <element signature="e#44360#44361#0" expanded="true" />
+                <element signature="e#44703#44941#0" expanded="true" />
+                <element signature="e#44930#44931#0" expanded="true" />
+                <element signature="e#45607#45845#0" expanded="true" />
+                <element signature="e#45834#45835#0" expanded="true" />
+                <element signature="e#46252#46490#0" expanded="true" />
+                <element signature="e#46479#46480#0" expanded="true" />
+                <element signature="e#63216#63457#0" expanded="true" />
+                <element signature="e#63446#63447#0" expanded="true" />
+                <element signature="e#64030#64291#0" expanded="true" />
+                <element signature="e#64280#64281#0" expanded="true" />
+                <element signature="e#65302#65562#0" expanded="true" />
+                <element signature="e#65551#65552#0" expanded="true" />
+                <element signature="e#66359#66617#0" expanded="true" />
+                <element signature="e#66606#66607#0" expanded="true" />
+                <element signature="e#77505#77754#0" expanded="true" />
+                <element signature="e#77743#77744#0" expanded="true" />
+                <element signature="e#78039#78288#0" expanded="true" />
+                <element signature="e#78277#78278#0" expanded="true" />
+                <element signature="e#78551#78791#0" expanded="true" />
+                <element signature="e#78780#78781#0" expanded="true" />
+                <element signature="e#79359#79604#0" expanded="true" />
+                <element signature="e#79593#79594#0" expanded="true" />
+                <element signature="e#82426#82672#0" expanded="true" />
+                <element signature="e#82661#82662#0" expanded="true" />
+                <element signature="e#84640#84885#0" expanded="true" />
+                <element signature="e#84874#84875#0" expanded="true" />
+                <element signature="e#85291#85529#0" expanded="true" />
+                <element signature="e#85518#85519#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IAsyncHttpClient.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/IAsyncHttpClient.java">
+      <file leaf-file-name="ServerDiscovery.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ServerDiscovery.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="442">
-              <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.5097674" vertical-offset="591" max-vertical-offset="1666">
+              <caret line="67" column="44" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServerDiscoveryResponse.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ServerDiscoveryResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+              <caret line="6" column="26" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="26" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ILogger.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Logging/ILogger.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1496">
+              <caret line="54" column="49" selection-start-line="54" selection-start-column="49" selection-end-line="54" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QueryStringDictionary.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/QueryStringDictionary.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-227.67857" vertical-offset="0" max-vertical-offset="6885">
+              <caret line="396" column="46" selection-start-line="396" selection-start-column="46" selection-end-line="396" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#7022#7023#0" expanded="true" />
+                <element signature="e#7070#7071#0" expanded="true" />
+                <element signature="e#7683#7684#0" expanded="true" />
+                <element signature="e#7726#7727#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -192,13 +182,10 @@
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/IDisposable.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Serialization/IXmlSerializer.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Entities/ProviderIdsExtensions.java" />
-        <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/QueryStringDictionary.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/Test.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/Response.java" />
-        <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ServerLocator.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ServerDiscoveryResponse.java" />
-        <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ServerDiscovery.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/OkHttpStack.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Configuration/ServerConfiguration.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Dlna/StreamBuilder.java" />
@@ -215,7 +202,15 @@
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/IImageLoader.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/IAsyncHttpClient.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/VolleyHttpClient.java" />
+        <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Channels/ChannelItemQuery.java" />
+        <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java" />
+        <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/EmptyResponse.java" />
         <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java" />
+        <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/QueryStringDictionary.java" />
+        <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Logging/ILogger.java" />
+        <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/NullLogger.java" />
+        <option value="$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ServerDiscovery.java" />
+        <option value="$PROJECT_DIR$/src/MediaBrowser/Model/Logging/NullLogger.java" />
       </list>
     </option>
   </component>
@@ -251,6 +246,21 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -308,6 +318,36 @@
               <option name="myItemId" value="MediaBrowser" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Model" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaBrowser" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Model" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Querying" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -329,21 +369,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="ApiInteraction" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -405,19 +430,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -443,6 +455,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -542,8 +567,8 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32913387" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -564,7 +589,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/JsonSerializer.java</url>
+          <line>28</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -572,51 +605,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/IAsyncHttpClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="442">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/IAsyncHttpClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="442">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="20706" max-vertical-offset="21675">
-          <caret line="1218" column="0" selection-start-line="1218" selection-start-column="0" selection-end-line="1218" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Extensions/StringHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1411">
-          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Net/HttpException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14026402" vertical-offset="0" max-vertical-offset="833">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Dlna/ConditionProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="687" max-vertical-offset="4403">
-          <caret line="63" column="30" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tangible/DotNetToJavaStringHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.0775576" vertical-offset="3213" max-vertical-offset="5865">
@@ -729,13 +717,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/NullLogger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.045333333" vertical-offset="272" max-vertical-offset="1836">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/LiveTv/RecordingInfoDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="9707" max-vertical-offset="10999">
@@ -782,20 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ServerDiscoveryResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07701019" vertical-offset="0" max-vertical-offset="883">
-          <caret line="4" column="36" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ServerDiscovery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28878823" vertical-offset="0" max-vertical-offset="883">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -855,13 +822,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Querying/ItemQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3102" max-vertical-offset="7956">
-          <caret line="359" column="18" selection-start-line="359" selection-start-column="18" selection-end-line="359" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Tasks/TaskTriggerInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
@@ -879,8 +839,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/JsonSerializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1088">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.16755117" vertical-offset="0" max-vertical-offset="1319">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="e#799#800#0" expanded="true" />
+            <element signature="e#856#857#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/VolleyHttpClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2890">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -893,10 +864,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/VolleyHttpClient.java">
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Channels/ChannelItemQuery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2890">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.87348837" vertical-offset="319" max-vertical-offset="1394">
+          <caret line="129" column="39" selection-start-line="129" selection-start-column="39" selection-end-line="129" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/LiveTv/ProgramQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07906977" vertical-offset="0" max-vertical-offset="1075">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -904,99 +883,134 @@
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/Response.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/IAsyncHttpClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+        <state vertical-scroll-proportion="0.28465116" vertical-offset="0" max-vertical-offset="1075">
           <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/QueryStringDictionary.java">
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47287735" vertical-offset="3866" max-vertical-offset="6239">
-          <caret line="269" column="66" selection-start-line="269" selection-start-column="28" selection-end-line="269" selection-end-column="66" />
-          <folding>
-            <element signature="e#6949#6950#0" expanded="true" />
-            <element signature="e#6992#6993#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="19444" max-vertical-offset="20519">
+          <caret line="1242" column="15" selection-start-line="1242" selection-start-column="15" selection-end-line="1242" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/BaseApiClient.java">
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Session/ClientCapabilities.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="18778" max-vertical-offset="20196">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.07906977" vertical-offset="0" max-vertical-offset="1075">
+          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ApiClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1461318" vertical-offset="0" max-vertical-offset="42245">
-          <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+        <state vertical-scroll-proportion="-1061.8928" vertical-offset="0" max-vertical-offset="41888">
+          <caret line="1897" column="5" selection-start-line="1897" selection-start-column="5" selection-end-line="1897" selection-end-column="5" />
           <folding>
-            <element signature="e#2663#2664#0" expanded="true" />
-            <element signature="e#2714#2715#0" expanded="true" />
-            <element signature="e#4296#4537#0" expanded="true" />
-            <element signature="e#4526#4527#0" expanded="true" />
-            <element signature="e#7547#7789#0" expanded="true" />
-            <element signature="e#7778#7779#0" expanded="true" />
-            <element signature="e#24441#24682#0" expanded="true" />
-            <element signature="e#24671#24672#0" expanded="true" />
-            <element signature="e#25187#25434#0" expanded="true" />
-            <element signature="e#25423#25424#0" expanded="true" />
-            <element signature="e#26644#26887#0" expanded="true" />
-            <element signature="e#26876#26877#0" expanded="true" />
-            <element signature="e#27310#27560#0" expanded="true" />
-            <element signature="e#27549#27550#0" expanded="true" />
-            <element signature="e#27942#28183#0" expanded="true" />
-            <element signature="e#28172#28173#0" expanded="true" />
-            <element signature="e#28836#29075#0" expanded="true" />
-            <element signature="e#29064#29065#0" expanded="true" />
-            <element signature="e#29695#29933#0" expanded="true" />
-            <element signature="e#29922#29923#0" expanded="true" />
-            <element signature="e#30353#30600#0" expanded="true" />
-            <element signature="e#30589#30590#0" expanded="true" />
-            <element signature="e#31533#31777#0" expanded="true" />
-            <element signature="e#31766#31767#0" expanded="true" />
-            <element signature="e#32719#32963#0" expanded="true" />
-            <element signature="e#32952#32953#0" expanded="true" />
-            <element signature="e#33349#33592#0" expanded="true" />
-            <element signature="e#33581#33582#0" expanded="true" />
-            <element signature="e#33983#34227#0" expanded="true" />
-            <element signature="e#34216#34217#0" expanded="true" />
-            <element signature="e#34655#34905#0" expanded="true" />
-            <element signature="e#34894#34895#0" expanded="true" />
-            <element signature="e#49456#49705#0" expanded="true" />
-            <element signature="e#49694#49695#0" expanded="true" />
-            <element signature="e#55187#55436#0" expanded="true" />
-            <element signature="e#55425#55426#0" expanded="true" />
-            <element signature="e#55996#56246#0" expanded="true" />
-            <element signature="e#56235#56236#0" expanded="true" />
-            <element signature="e#57422#57669#0" expanded="true" />
-            <element signature="e#57658#57659#0" expanded="true" />
-            <element signature="e#58223#58470#0" expanded="true" />
-            <element signature="e#58459#58460#0" expanded="true" />
-            <element signature="e#59026#59273#0" expanded="true" />
-            <element signature="e#59262#59263#0" expanded="true" />
-            <element signature="e#61104#61346#0" expanded="true" />
-            <element signature="e#61335#61336#0" expanded="true" />
-            <element signature="e#62181#62423#0" expanded="true" />
-            <element signature="e#62412#62413#0" expanded="true" />
-            <element signature="e#63255#63496#0" expanded="true" />
-            <element signature="e#63485#63486#0" expanded="true" />
-            <element signature="e#64069#64330#0" expanded="true" />
-            <element signature="e#64319#64320#0" expanded="true" />
-            <element signature="e#65341#65601#0" expanded="true" />
-            <element signature="e#65590#65591#0" expanded="true" />
-            <element signature="e#66398#66656#0" expanded="true" />
-            <element signature="e#66645#66646#0" expanded="true" />
+            <element signature="e#44133#44371#0" expanded="true" />
+            <element signature="e#44360#44361#0" expanded="true" />
+            <element signature="e#44703#44941#0" expanded="true" />
+            <element signature="e#44930#44931#0" expanded="true" />
+            <element signature="e#45607#45845#0" expanded="true" />
+            <element signature="e#45834#45835#0" expanded="true" />
+            <element signature="e#46252#46490#0" expanded="true" />
+            <element signature="e#46479#46480#0" expanded="true" />
+            <element signature="e#63216#63457#0" expanded="true" />
+            <element signature="e#63446#63447#0" expanded="true" />
+            <element signature="e#64030#64291#0" expanded="true" />
+            <element signature="e#64280#64281#0" expanded="true" />
+            <element signature="e#65302#65562#0" expanded="true" />
+            <element signature="e#65551#65552#0" expanded="true" />
+            <element signature="e#66359#66617#0" expanded="true" />
+            <element signature="e#66606#66607#0" expanded="true" />
+            <element signature="e#77505#77754#0" expanded="true" />
+            <element signature="e#77743#77744#0" expanded="true" />
+            <element signature="e#78039#78288#0" expanded="true" />
+            <element signature="e#78277#78278#0" expanded="true" />
+            <element signature="e#78551#78791#0" expanded="true" />
+            <element signature="e#78780#78781#0" expanded="true" />
+            <element signature="e#79359#79604#0" expanded="true" />
+            <element signature="e#79593#79594#0" expanded="true" />
+            <element signature="e#82426#82672#0" expanded="true" />
+            <element signature="e#82661#82662#0" expanded="true" />
+            <element signature="e#84640#84885#0" expanded="true" />
+            <element signature="e#84874#84875#0" expanded="true" />
+            <element signature="e#85291#85529#0" expanded="true" />
+            <element signature="e#85518#85519#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/AppData/Local/Android/android-studio/sdk/platforms/android-20/android.jar!/java/lang/RuntimeException.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07906977" vertical-offset="0" max-vertical-offset="1075">
+          <caret line="6" column="57" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Logging/ILogger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1496">
+          <caret line="54" column="49" selection-start-line="54" selection-start-column="49" selection-end-line="54" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Querying/ItemQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6418338" vertical-offset="6859" max-vertical-offset="7956">
+          <caret line="755" column="39" selection-start-line="755" selection-start-column="8" selection-end-line="755" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/QueryStringDictionary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-227.67857" vertical-offset="0" max-vertical-offset="6885">
+          <caret line="396" column="46" selection-start-line="396" selection-start-column="46" selection-end-line="396" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7022#7023#0" expanded="true" />
+            <element signature="e#7070#7071#0" expanded="true" />
+            <element signature="e#7683#7684#0" expanded="true" />
+            <element signature="e#7726#7727#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ServerDiscoveryResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/Model/Logging/NullLogger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30932525" vertical-offset="0" max-vertical-offset="1319">
+          <caret line="24" column="62" selection-start-line="24" selection-start-column="62" selection-end-line="24" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MediaBrowser/ApiInteraction/ServerDiscovery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5097674" vertical-offset="591" max-vertical-offset="1666">
+          <caret line="67" column="44" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
