@@ -8,35 +8,17 @@ Usage is very simple:
 
 ``` java
 
-			// Developers should create their own logger implementation
-			ILogger logger = new NullLogger();
+        // Developers should create their own logger implementation
+        logger = new NullLogger();
 
-			// The underlying http stack. Developers can inject their own if desired
-            VolleyHttpClient volleyHttpClient = new VolleyHttpClient(logger, context);
+        // The underlying http stack. Developers can inject their own if desired
+        IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, getApplicationContext());
 
-			ApiClient client = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My client name", "My device", "My device id");
+        apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My app name", "My device", "My device id", "app version 123");
 
-			var authResult = await AuthenticateUserAsync("username", passwordHash);
-
-            // Get the ten most recently added items for the current user
-            var items = await client.GetItemsAsync(new ItemQuery
-            {
-                UserId = client.UserId,
-
-                SortBy = new[] { ItemSortBy.DateCreated },
-                SortOrder = SortOrder.Descending,
-
-                // Get media only, don't return folder items
-                Filters = new[] { ItemFilter.IsNotFolder },
-
-                Limit = 10,
-
-                // Search recursively through the user's library
-                Recursive = true
-            });
-
-			await client.Logout();
 ```
+
+A complete [app example can be found here.](https://github.com/MediaBrowser/MediaBrowser.ApiClient.Java/blob/master/src/MediaBrowser/ApiInteraction/Sample/ExampleApp.java "app example can be found here.")
 
 # Service Apps #
 
@@ -44,30 +26,18 @@ If your app is some kind of service or utility (e.g. Sickbeard), you should cons
 
 ``` java
 
-            // Developers should create their own logger implementation
-			ILogger logger = new NullLogger();
+        // Developers should create their own logger implementation
+        logger = new NullLogger();
 
-            // The underlying http stack. Developers can inject their own if desired
-            VolleyHttpClient volleyHttpClient = new VolleyHttpClient(logger, context);
+        // The underlying http stack. Developers can inject their own if desired
+        IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, getApplicationContext());
 
-			ApiClient client = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "0123456789");
+		// Services should just authenticate using their api key
+        apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My api key");
 
-			// Get the ten most recently added items for the current user
-            client.GetItemsAsync(new ItemQuery
-            {
-                SortBy = new[] { ItemSortBy.DateCreated },
-                SortOrder = SortOrder.Descending,
-
-                // Get media only, don't return folder items
-                Filters = new[] { ItemFilter.IsNotFolder },
-
-                Limit = 10,
-
-                // Search recursively through the user's library
-                Recursive = true
-            });
 ```
 
+A complete [service example can be found here.](https://github.com/MediaBrowser/MediaBrowser.ApiClient.Java/blob/master/src/MediaBrowser/ApiInteraction/Sample/ExampleService.java "service example can be found here.")
 
 
 
