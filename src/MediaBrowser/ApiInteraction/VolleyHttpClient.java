@@ -128,10 +128,15 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         globalHeaders.remove(name);
     }
 
-    private void AddHeaders(HashMap<String, String> headers)
+    private void AddHeaders(HashMap<String, String> headers, String contentType)
     {
         for (String key : globalHeaders.keySet()){
             headers.put(key, globalHeaders.get(key));
+        }
+
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(contentType))
+        {
+            headers.put("Content-Type", contentType);
         }
     }
 
@@ -155,7 +160,7 @@ public class VolleyHttpClient implements IAsyncHttpClient {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String, String>();
-                AddHeaders(headers);
+                AddHeaders(headers, null);
                 return headers;
             }
         };
@@ -177,8 +182,44 @@ public class VolleyHttpClient implements IAsyncHttpClient {
     }
 
     @Override
-    public void PostAsync(String url, String contentType, String postContent, Response<String> response) {
+    public void PostAsync(String url, final String contentType, final String postContent, final Response<String> response) {
 
+        StringRequest req = new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String stringResponse) {
+                logger.Debug("Response:%n %s", stringResponse);
+                response.onResponse(stringResponse);
+            }
+
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                logger.Error("Error: ", error.getMessage());
+                response.onError();
+            }
+        }
+        ){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                AddHeaders(headers, contentType);
+                return headers;
+            }
+
+            @Override
+            /**
+             * Returns the raw POST or PUT body to be sent.
+             *
+             * @throws AuthFailureError in the event of auth failure
+             */
+            public byte[] getBody() throws AuthFailureError {
+
+                return postContent.getBytes();
+            }
+        };
+
+        // add the request object to the queue to be executed
+        addToRequestQueue(req);
     }
 
 }
