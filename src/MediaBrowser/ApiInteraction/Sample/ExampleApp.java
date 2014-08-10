@@ -14,6 +14,7 @@ import MediaBrowser.Model.Querying.ItemQuery;
 import MediaBrowser.Model.Querying.ItemSortBy;
 import MediaBrowser.Model.Querying.QueryResult;
 import android.app.Application;
+import com.android.volley.toolbox.ImageLoader;
 
 public class ExampleApp extends Application {
 
@@ -33,6 +34,10 @@ public class ExampleApp extends Application {
         IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, getApplicationContext());
 
         apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My app name", "My device", "My device id", "app version 123");
+    }
+
+    public ImageLoader getImageLoader() {
+        return apiClient.getImageLoader();
     }
 
     public void GetItems(){
