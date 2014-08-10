@@ -39,6 +39,7 @@ local.properties
 .buildpath
 
 out/
+.idea/
 
 #################
 ## Media Browser
