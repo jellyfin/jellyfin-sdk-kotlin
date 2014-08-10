@@ -38,7 +38,7 @@ local.properties
 # PDT-specific
 .buildpath
 
-out/
+out/production/
 .idea/
 
 #################
