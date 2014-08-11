@@ -8,6 +8,7 @@ import MediaBrowser.Model.Configuration.ServerConfiguration;
 import MediaBrowser.Model.Dto.*;
 import MediaBrowser.Model.Entities.DisplayPreferences;
 import MediaBrowser.Model.Entities.EmptyRequestResult;
+import MediaBrowser.Model.Entities.ItemReview;
 import MediaBrowser.Model.Entities.ParentalRating;
 import MediaBrowser.Model.Extensions.StringHelper;
 import MediaBrowser.Model.Globalization.CountryInfo;
@@ -31,6 +32,7 @@ import android.app.DownloadManager;
 import com.android.volley.toolbox.ImageLoader;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 public class ApiClient extends BaseApiClient {
 
@@ -49,7 +51,7 @@ public class ApiClient extends BaseApiClient {
     /// <value>The web socket connection.</value>
     public ApiWebSocket WebSocketConnection { get; set; }*/
 
-    private IAsyncHttpClient _httpClient;
+   private IAsyncHttpClient _httpClient;
 
    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String accessToken)
    {
@@ -1185,7 +1187,7 @@ public class ApiClient extends BaseApiClient {
         }
 
         return DeleteAsync<UserItemDataDto>(url, CancellationToken.None);
-    }
+    }*/
 
     /// <summary>
     /// Reports to the server that the user has begun playing an item
@@ -1193,23 +1195,23 @@ public class ApiClient extends BaseApiClient {
     /// <param name="info">The information.</param>
     /// <returns>Task{UserItemDataDto}.</returns>
     /// <exception cref="System.IllegalArgumentException">itemId</exception>
-    public Task ReportPlaybackStartAsync(PlaybackStartInfo info)
+    public void ReportPlaybackStartAsync(PlaybackStartInfo info, final Response<EmptyRequestResult> response)
     {
         if (info == null)
         {
             throw new IllegalArgumentException("info");
         }
 
-        Logger.Debug("ReportPlaybackStart: Item {0}", info.ItemId);
+        getLogger().Debug("ReportPlaybackStart: Item {0}", info.getItem());
 
-        if (WebSocketConnection != null && WebSocketConnection.IsConnected)
+        /*if (WebSocketConnection != null && WebSocketConnection.IsConnected)
         {
             return WebSocketConnection.SendAsync("ReportPlaybackStart", JsonSerializer.SerializeToString(info));
-        }
+        }*/
 
         String url = GetApiUrl("Sessions/Playing");
 
-        return PostAsync<PlaybackStartInfo, EmptyRequestResult>(url, info, CancellationToken.None);
+        PostAsync(url, response);
     }
 
     /// <summary>
@@ -1218,21 +1220,21 @@ public class ApiClient extends BaseApiClient {
     /// <param name="info">The information.</param>
     /// <returns>Task{UserItemDataDto}.</returns>
     /// <exception cref="System.IllegalArgumentException">itemId</exception>
-    public Task ReportPlaybackProgressAsync(PlaybackProgressInfo info)
+    public void ReportPlaybackProgressAsync(PlaybackProgressInfo info, final Response<EmptyRequestResult> response)
     {
         if (info == null)
         {
             throw new IllegalArgumentException("info");
         }
 
-        if (WebSocketConnection != null && WebSocketConnection.IsConnected)
+        /*if (WebSocketConnection != null && WebSocketConnection.IsConnected)
         {
             return WebSocketConnection.SendAsync("ReportPlaybackProgress", JsonSerializer.SerializeToString(info));
-        }
+        }*/
 
         String url = GetApiUrl("Sessions/Playing/Progress");
 
-        return PostAsync<PlaybackProgressInfo, EmptyRequestResult>(url, info, CancellationToken.None);
+        PostAsync(url, response);
     }
 
     /// <summary>
@@ -1241,22 +1243,22 @@ public class ApiClient extends BaseApiClient {
     /// <param name="info">The information.</param>
     /// <returns>Task{UserItemDataDto}.</returns>
     /// <exception cref="System.IllegalArgumentException">itemId</exception>
-    public Task ReportPlaybackStoppedAsync(PlaybackStopInfo info)
+    public void ReportPlaybackStoppedAsync(PlaybackStopInfo info, final Response<EmptyRequestResult> response)
     {
         if (info == null)
         {
             throw new IllegalArgumentException("info");
         }
 
-        if (WebSocketConnection != null && WebSocketConnection.IsConnected)
+        /*if (WebSocketConnection != null && WebSocketConnection.IsConnected)
         {
             return WebSocketConnection.SendAsync("ReportPlaybackStopped", JsonSerializer.SerializeToString(info));
-        }
+        }*/
 
         String url = GetApiUrl("Sessions/Playing/Stopped");
 
-        return PostAsync<PlaybackStopInfo, EmptyRequestResult>(url, info, CancellationToken.None);
-    }*/
+        PostAsync(url, response);
+    }
 
     /// <summary>
     /// Instructs another client to browse to a library item.
@@ -1369,7 +1371,7 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("url");
         }
 
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> stringResponse = new Response<String>(){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1379,7 +1381,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.DeleteAsync(url, jsonResponse);
+        _httpClient.DeleteAsync(url, stringResponse);
     }
 
     public void PostAsync(String url, final Response<EmptyRequestResult> response)
@@ -1790,7 +1792,7 @@ public class ApiClient extends BaseApiClient {
         _httpClient.GetAsync(url, jsonResponse);
     }
 
-    /*/// <summary>
+    /// <summary>
     /// Gets the critic reviews.
     /// </summary>
     /// <param name="itemId">The item id.</param>
@@ -1802,7 +1804,7 @@ public class ApiClient extends BaseApiClient {
     /// or
     /// userId
     /// </exception>
-    public async Task<QueryResult<ItemReview>> GetCriticReviews(String itemId, int? startIndex = null, int? limit = null)
+    public void GetCriticReviews(String itemId, Integer startIndex, Integer limit, final Response<QueryResult<ItemReview>> response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId))
         {
@@ -1816,11 +1818,19 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("Items/" + itemId + "/CriticReviews", queryString);
 
-        using (var stream = await GetSerializedStreamAsync(url, cancellationToken).ConfigureAwait(false))
-        {
-            return DeserializeFromStream<QueryResult<ItemReview>>(stream);
-        }
-    }*/
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                QueryResult<ItemReview> obj = DeserializeFromString(jsonResponse);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
+    }
 
     /// <summary>
     /// Gets the index of the game player.
@@ -2594,17 +2604,7 @@ public class ApiClient extends BaseApiClient {
         queryString.Add("DeviceId", getDeviceId());
         String url = GetApiUrl("Videos/ActiveEncodings", queryString);
 
-        Response<String> jsonResponse = new Response<String>(){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                EmptyRequestResult obj = new EmptyRequestResult();
-                response.onResponse(obj);
-            }
-        };
-
-        _httpClient.GetAsync(url, jsonResponse);
+        PostAsync(url, response);
     }
 
     public void GetLatestChannelItems(AllChannelMediaQuery query, final Response<QueryResult<BaseItemDto>> response)
@@ -2612,21 +2612,14 @@ public class ApiClient extends BaseApiClient {
         throw new UnsupportedOperationException();
     }
 
-    /*public async Task Logout()
+    public void Logout(final Response<EmptyRequestResult> response)
     {
-        try
-        {
-            String url = GetApiUrl("Sessions/Logout");
+        String url = GetApiUrl("Sessions/Logout");
 
-            await PostAsync<EmptyRequestResult>(url, new Dictionary<String, String>(), CancellationToken.None);
-        }
-        catch (Exception ex)
-        {
-            Logger.ErrorException("Error logging out", ex);
-        }
+        PostAsync(url, response);
 
         ClearAuthenticationInfo();
-    }*/
+    }
 
     public void GetUserViews(String userId, final Response<QueryResult<BaseItemDto>> response)
     {
