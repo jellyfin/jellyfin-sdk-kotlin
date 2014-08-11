@@ -28,9 +28,13 @@ import MediaBrowser.Model.System.PublicSystemInfo;
 import MediaBrowser.Model.System.SystemInfo;
 import MediaBrowser.Model.Tasks.TaskInfo;
 import MediaBrowser.Model.Tasks.TaskTriggerInfo;
+import MediaBrowser.Model.Users.AuthenticationResult;
 import android.app.DownloadManager;
 import com.android.volley.toolbox.ImageLoader;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -1394,24 +1398,14 @@ public class ApiClient extends BaseApiClient {
         PostAsync(url, new QueryStringDictionary(), response);
     }
 
-    public void PostAsync(String url, QueryStringDictionary postBody, final Response<EmptyRequestResult> response)
+    public void PostAsync(String url, QueryStringDictionary postBody, final Response<String> response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(url))
         {
             throw new IllegalArgumentException("url");
         }
 
-        Response<String> jsonResponse = new Response<String>(){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                EmptyRequestResult obj = new EmptyRequestResult();
-                response.onResponse(obj);
-            }
-        };
-
-        _httpClient.PostAsync(url, "application/x-www-form-urlencoded", postBody.GetQueryString(), jsonResponse);
+        _httpClient.PostAsync(url, "application/x-www-form-urlencoded", postBody.GetQueryString(), response);
     }
 
     public void PostAsync(String url, Object obj, final Response<EmptyRequestResult> response)
@@ -1503,7 +1497,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users/" + userId + "/Items/" + itemId + "/Rating", dict);
 
         return PostAsync<UserItemDataDto>(url, new Dictionary<String, String>(), CancellationToken.None);
-    }
+    }*/
 
     /// <summary>
     /// Authenticates a user and returns the result
@@ -1512,27 +1506,38 @@ public class ApiClient extends BaseApiClient {
     /// <param name="sha1Hash">The sha1 hash.</param>
     /// <returns>Task.</returns>
     /// <exception cref="System.IllegalArgumentException">userId</exception>
-    public async Task<AuthenticationResult> AuthenticateUserAsync(String username, byte[] sha1Hash)
+    public void AuthenticateUserAsync(String username, String password, final Response<AuthenticationResult> response)
+            throws NoSuchAlgorithmException, UnsupportedEncodingException
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(username))
         {
             throw new IllegalArgumentException("username");
         }
 
-        var password = BitConverter.ToString(sha1Hash).Replace("-", String.Empty);
+        String passwordHash = Sha1.getHash(password);
         String url = GetApiUrl("Users/AuthenticateByName");
 
-        var args = new Dictionary<String, String>();
+        QueryStringDictionary dict = new QueryStringDictionary ();
 
-        args["username"] = Uri.EscapeDataString(username);
-        args["password"] = password;
+        dict.Add("username", username);
+        dict.Add("password", passwordHash);
 
-        var result = await PostAsync<AuthenticationResult>(url, args, CancellationToken.None);
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
 
-        SetAuthenticationInfo(result.AccessToken, result.User.Id);
+            @Override
+            public void onResponse(String jsonResponse) {
 
-        return result;
-    }*/
+                AuthenticationResult obj = DeserializeFromString(jsonResponse);
+
+                SetAuthenticationInfo(obj.getAccessToken(), obj.getUser().getId());
+
+                response.onResponse(obj);
+            }
+        };
+
+        PostAsync(url, dict, jsonResponse);
+    }
 
     /// <summary>
     /// Updates the server configuration async.

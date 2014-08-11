@@ -36,7 +36,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
      */
     public final void Add(String name, String value)
     {
-        this.put(name, (new Integer(value)).toString());
+        this.put(name, value);
     }
 
 	/** 

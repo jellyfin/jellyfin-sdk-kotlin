@@ -46,7 +46,8 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         // lazy initialize the request queue, the queue instance will be
         // created when it is accessed for the first time
         if (mRequestQueue == null) {
-            mRequestQueue = Volley.newRequestQueue(context, new OkHttpStack());
+            //mRequestQueue = Volley.newRequestQueue(context, new OkHttpStack());
+            mRequestQueue = Volley.newRequestQueue(context);
         }
 
         return mRequestQueue;
@@ -94,6 +95,8 @@ public class VolleyHttpClient implements IAsyncHttpClient {
 
         // set the default tag if tag is empty
         //req.setTag(TAG);
+
+        logger.Debug("Adding request to queue: %s", req.getUrl());
 
         getRequestQueue().add(req);
     }
