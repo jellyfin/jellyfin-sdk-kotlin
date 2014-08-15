@@ -9,7 +9,7 @@ Usage is very simple:
 ``` java
 
         // Developers should create their own logger implementation
-        logger = new NullLogger();
+        logger = new ConsoleLogger();
 
         // The underlying http stack. Developers can inject their own if desired
         IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, getApplicationContext());
@@ -27,7 +27,7 @@ If your app is some kind of service or utility (e.g. Sickbeard), you should cons
 ``` java
 
         // Developers should create their own logger implementation
-        logger = new NullLogger();
+        logger = new ConsoleLogger();
 
         // The underlying http stack. Developers can inject their own if desired
         IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, getApplicationContext());
@@ -43,7 +43,7 @@ A complete [service example can be found here.](https://github.com/MediaBrowser/
 
 # Logging and Interfaces #
 
-ApiClient and ApiWebSocket both have additional constructors available allowing you to pass in your own implementation of ILogger. The default implementation is NullLogger, which provides no logging. In addition you can also pass in your own implementation of IJsonSerializer, or use our ours which is currently based on Gson, although a switch to Jackson or Boon is planned.
+ApiClient and ApiWebSocket both have additional constructors available allowing you to pass in your own implementation of ILogger. The default implementation is ConsoleLogger, which provides logging using System.Out. In addition you can also pass in your own implementation of IJsonSerializer, or use our ours which is currently based on Gson, although a switch to Jackson or Boon is planned.
 
 
 

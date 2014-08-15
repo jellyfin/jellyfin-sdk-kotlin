@@ -148,7 +148,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                ItemCounts obj = DeserializeFromString(jsonResponse);
+                ItemCounts obj = DeserializeFromString(jsonResponse, ItemCounts.class);
                 response.onResponse(obj);
             }
         };
@@ -183,7 +183,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                UserDto[] obj = DeserializeFromString(jsonResponse);
+                UserDto[] obj = DeserializeFromString(jsonResponse, UserDto[].class);
                 response.onResponse(obj);
             }
         };
@@ -201,7 +201,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                UserDto[] obj = DeserializeFromString(jsonResponse);
+                UserDto[] obj = DeserializeFromString(jsonResponse, UserDto[].class);
                 response.onResponse(obj);
             }
         };
@@ -223,7 +223,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                SessionInfoDto[] obj = DeserializeFromString(jsonResponse);
+                SessionInfoDto[] obj = DeserializeFromString(jsonResponse, SessionInfoDto[].class);
                 response.onResponse(obj);
             }
         };
@@ -239,7 +239,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<BaseItemDto> obj = DeserializeFromString(jsonResponse);
+                QueryResult<BaseItemDto> obj = DeserializeFromString(jsonResponse, new QueryResult<BaseItemDto>().getClass());
                 response.onResponse(obj);
             }
         };
@@ -255,7 +255,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                BaseItemDto obj = DeserializeFromString(jsonResponse);
+                BaseItemDto obj = DeserializeFromString(jsonResponse, BaseItemDto.class);
                 response.onResponse(obj);
             }
         };
@@ -778,7 +778,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                SystemInfo obj = DeserializeFromString(jsonResponse);
+                SystemInfo obj = DeserializeFromString(jsonResponse, SystemInfo.class);
                 response.onResponse(obj);
             }
         };
@@ -801,7 +801,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                PublicSystemInfo obj = DeserializeFromString(jsonResponse);
+                PublicSystemInfo obj = DeserializeFromString(jsonResponse, PublicSystemInfo.class);
                 response.onResponse(obj);
             }
         };
@@ -848,7 +848,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                PluginInfo[] obj = DeserializeFromString(jsonResponse);
+                PluginInfo[] obj = DeserializeFromString(jsonResponse, PluginInfo[].class);
                 response.onResponse(obj);
             }
         };
@@ -870,7 +870,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                ServerConfiguration obj = DeserializeFromString(jsonResponse);
+                ServerConfiguration obj = DeserializeFromString(jsonResponse, ServerConfiguration.class);
                 response.onResponse(obj);
             }
         };
@@ -892,7 +892,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                TaskInfo[] obj = DeserializeFromString(jsonResponse);
+                TaskInfo[] obj = DeserializeFromString(jsonResponse, TaskInfo[].class);
                 response.onResponse(obj);
             }
         };
@@ -921,7 +921,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                TaskInfo obj = DeserializeFromString(jsonResponse);
+                TaskInfo obj = DeserializeFromString(jsonResponse, TaskInfo.class);
                 response.onResponse(obj);
             }
         };
@@ -950,7 +950,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                UserDto obj = DeserializeFromString(jsonResponse);
+                UserDto obj = DeserializeFromString(jsonResponse, UserDto.class);
                 response.onResponse(obj);
             }
         };
@@ -972,7 +972,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                ParentalRating[] obj = DeserializeFromString(jsonResponse);
+                ParentalRating[] obj = DeserializeFromString(jsonResponse, ParentalRating[].class);
                 response.onResponse(obj);
             }
         };
@@ -1006,7 +1006,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                BaseItemDto[] obj = DeserializeFromString(jsonResponse);
+                BaseItemDto[] obj = DeserializeFromString(jsonResponse, BaseItemDto[].class);
                 response.onResponse(obj);
             }
         };
@@ -1040,7 +1040,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                BaseItemDto[] obj = DeserializeFromString(jsonResponse);
+                BaseItemDto[] obj = DeserializeFromString(jsonResponse, BaseItemDto[].class);
                 response.onResponse(obj);
             }
         };
@@ -1062,7 +1062,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                CultureDto[] obj = DeserializeFromString(jsonResponse);
+                CultureDto[] obj = DeserializeFromString(jsonResponse, CultureDto[].class);
                 response.onResponse(obj);
             }
         };
@@ -1084,7 +1084,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                CountryInfo[] obj = DeserializeFromString(jsonResponse);
+                CountryInfo[] obj = DeserializeFromString(jsonResponse, CountryInfo[].class);
                 response.onResponse(obj);
             }
         };
@@ -1106,7 +1106,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                GameSystemSummary[] obj = DeserializeFromString(jsonResponse);
+                GameSystemSummary[] obj = DeserializeFromString(jsonResponse, GameSystemSummary[].class);
                 response.onResponse(obj);
             }
         };
@@ -1528,7 +1528,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                AuthenticationResult obj = DeserializeFromString(jsonResponse);
+                AuthenticationResult obj = DeserializeFromString(jsonResponse, AuthenticationResult.class);
 
                 SetAuthenticationInfo(obj.getAccessToken(), obj.getUser().getId());
 
@@ -1603,7 +1603,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                DisplayPreferences obj = DeserializeFromString(jsonResponse);
+                DisplayPreferences obj = DeserializeFromString(jsonResponse, DisplayPreferences.class);
                 response.onResponse(obj);
             }
         };
@@ -1644,7 +1644,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                NotificationsSummary obj = DeserializeFromString(jsonResponse);
+                NotificationsSummary obj = DeserializeFromString(jsonResponse, NotificationsSummary.class);
                 response.onResponse(obj);
             }
         };
@@ -1684,7 +1684,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                NotificationResult obj = DeserializeFromString(jsonResponse);
+                NotificationResult obj = DeserializeFromString(jsonResponse, NotificationResult.class);
                 response.onResponse(obj);
             }
         };
@@ -1707,7 +1707,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                AllThemeMediaResult obj = DeserializeFromString(jsonResponse);
+                AllThemeMediaResult obj = DeserializeFromString(jsonResponse, AllThemeMediaResult.class);
                 response.onResponse(obj);
             }
         };
@@ -1743,7 +1743,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                SearchHintResult obj = DeserializeFromString(jsonResponse);
+                SearchHintResult obj = DeserializeFromString(jsonResponse, SearchHintResult.class);
                 response.onResponse(obj);
             }
         };
@@ -1766,7 +1766,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                ThemeMediaResult obj = DeserializeFromString(jsonResponse);
+                ThemeMediaResult obj = DeserializeFromString(jsonResponse, ThemeMediaResult.class);
                 response.onResponse(obj);
             }
         };
@@ -1789,7 +1789,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                ThemeMediaResult obj = DeserializeFromString(jsonResponse);
+                ThemeMediaResult obj = DeserializeFromString(jsonResponse, ThemeMediaResult.class);
                 response.onResponse(obj);
             }
         };
@@ -1829,7 +1829,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<ItemReview> obj = DeserializeFromString(jsonResponse);
+                QueryResult<ItemReview> obj = DeserializeFromString(jsonResponse, new QueryResult<ItemReview>().getClass());
                 response.onResponse(obj);
             }
         };
@@ -1857,7 +1857,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                ItemIndex[] obj = DeserializeFromString(jsonResponse);
+                ItemIndex[] obj = DeserializeFromString(jsonResponse, ItemIndex[].class);
                 response.onResponse(obj);
             }
         };
@@ -1887,7 +1887,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                ItemIndex[] obj = DeserializeFromString(jsonResponse);
+                ItemIndex[] obj = DeserializeFromString(jsonResponse, ItemIndex[].class);
                 response.onResponse(obj);
             }
         };
@@ -1922,7 +1922,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                LiveTvInfo obj = DeserializeFromString(jsonResponse);
+                LiveTvInfo obj = DeserializeFromString(jsonResponse, LiveTvInfo.class);
                 response.onResponse(obj);
             }
         };
@@ -1949,7 +1949,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<RecordingGroupDto> obj = DeserializeFromString(jsonResponse);
+                QueryResult<RecordingGroupDto> obj = DeserializeFromString(jsonResponse, new QueryResult<RecordingGroupDto>().getClass());
                 response.onResponse(obj);
             }
         };
@@ -1983,7 +1983,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<RecordingInfoDto> obj = DeserializeFromString(jsonResponse);
+                QueryResult<RecordingInfoDto> obj = DeserializeFromString(jsonResponse, new QueryResult<RecordingInfoDto>().getClass());
                 response.onResponse(obj);
             }
         };
@@ -2017,7 +2017,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<ChannelInfoDto> obj = DeserializeFromString(jsonResponse);
+                QueryResult<ChannelInfoDto> obj = DeserializeFromString(jsonResponse, new QueryResult<ChannelInfoDto>().getClass());
                 response.onResponse(obj);
             }
         };
@@ -2085,7 +2085,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                ChannelInfoDto obj = DeserializeFromString(jsonResponse);
+                ChannelInfoDto obj = DeserializeFromString(jsonResponse, ChannelInfoDto.class);
                 response.onResponse(obj);
             }
         };
@@ -2111,7 +2111,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                RecordingInfoDto obj = DeserializeFromString(jsonResponse);
+                RecordingInfoDto obj = DeserializeFromString(jsonResponse, RecordingInfoDto.class);
                 response.onResponse(obj);
             }
         };
@@ -2137,7 +2137,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                RecordingGroupDto obj = DeserializeFromString(jsonResponse);
+                RecordingGroupDto obj = DeserializeFromString(jsonResponse, RecordingGroupDto.class);
                 response.onResponse(obj);
             }
         };
@@ -2162,7 +2162,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                SeriesTimerInfoDto obj = DeserializeFromString(jsonResponse);
+                SeriesTimerInfoDto obj = DeserializeFromString(jsonResponse, SeriesTimerInfoDto.class);
                 response.onResponse(obj);
             }
         };
@@ -2190,7 +2190,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<SeriesTimerInfoDto> obj = DeserializeFromString(jsonResponse);
+                QueryResult<SeriesTimerInfoDto> obj = DeserializeFromString(jsonResponse, new QueryResult<SeriesTimerInfoDto>().getClass());
                 response.onResponse(obj);
             }
         };
@@ -2215,7 +2215,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                TimerInfoDto obj = DeserializeFromString(jsonResponse);
+                TimerInfoDto obj = DeserializeFromString(jsonResponse, TimerInfoDto.class);
                 response.onResponse(obj);
             }
         };
@@ -2243,7 +2243,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<TimerInfoDto> obj = DeserializeFromString(jsonResponse);
+                QueryResult<TimerInfoDto> obj = DeserializeFromString(jsonResponse, new QueryResult<TimerInfoDto>().getClass());
                 response.onResponse(obj);
             }
         };
@@ -2295,7 +2295,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<ProgramInfoDto> obj = DeserializeFromString(jsonResponse);
+                QueryResult<ProgramInfoDto> obj = DeserializeFromString(jsonResponse, new QueryResult<ProgramInfoDto>().getClass());
                 response.onResponse(obj);
             }
         };
@@ -2325,7 +2325,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<ProgramInfoDto> obj = DeserializeFromString(jsonResponse);
+                QueryResult<ProgramInfoDto> obj = DeserializeFromString(jsonResponse, new QueryResult<ProgramInfoDto>().getClass());
                 response.onResponse(obj);
             }
         };
@@ -2376,7 +2376,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                SeriesTimerInfoDto obj = DeserializeFromString(jsonResponse);
+                SeriesTimerInfoDto obj = DeserializeFromString(jsonResponse, SeriesTimerInfoDto.class);
                 response.onResponse(obj);
             }
         };
@@ -2394,7 +2394,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                SeriesTimerInfoDto obj = DeserializeFromString(jsonResponse);
+                SeriesTimerInfoDto obj = DeserializeFromString(jsonResponse, SeriesTimerInfoDto.class);
                 response.onResponse(obj);
             }
         };
@@ -2412,7 +2412,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                GuideInfo obj = DeserializeFromString(jsonResponse);
+                GuideInfo obj = DeserializeFromString(jsonResponse, GuideInfo.class);
                 response.onResponse(obj);
             }
         };
@@ -2438,7 +2438,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                ProgramInfoDto obj = DeserializeFromString(jsonResponse);
+                ProgramInfoDto obj = DeserializeFromString(jsonResponse, ProgramInfoDto.class);
                 response.onResponse(obj);
             }
         };
@@ -2537,7 +2537,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                ChannelFeatures obj = DeserializeFromString(jsonResponse);
+                ChannelFeatures obj = DeserializeFromString(jsonResponse, ChannelFeatures.class);
                 response.onResponse(obj);
             }
         };
@@ -2594,7 +2594,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                SessionInfoDto obj = DeserializeFromString(jsonResponse);
+                SessionInfoDto obj = DeserializeFromString(jsonResponse, SessionInfoDto.class);
                 response.onResponse(obj);
             }
         };

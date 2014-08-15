@@ -4,9 +4,11 @@ import MediaBrowser.Model.Serialization.IJsonSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 public class JsonSerializer implements IJsonSerializer {
     @Override
@@ -35,31 +37,19 @@ public class JsonSerializer implements IJsonSerializer {
     }
 
     @Override
-    public <T> T DeserializeFromString(String json) {
+    public <T> T DeserializeFromString(String json, Class type) {
 
         Gson gsonBuilder = new GsonBuilder()
                     .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
                     .create();
 
-        Class<T> persistentClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-
-        return gsonBuilder.fromJson(json, persistentClass);
+        return (T)gsonBuilder.fromJson(json, type);
     }
 
     @Override
     public Object DeserializeFromStream(InputStream stream, Class type) {
 
         throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public Object DeserializeFromString(String json, Class type) {
-
-        Gson gsonBuilder = new GsonBuilder()
-                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-                    .create();
-
-        return gsonBuilder.fromJson(json, type);
     }
 
     @Override

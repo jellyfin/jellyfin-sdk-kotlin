@@ -1203,22 +1203,9 @@ public abstract class BaseApiClient implements IDisposable
 		return null;
 	}
 
-	/** 
-	 Deserializes from stream.
-	 
-	 @param stream The stream.
-	 @param type The type.
-	 @return System.Object.
-	 @exception System.NotImplementedException
-	*/
-	protected final Object DeserializeFromString(String stream, java.lang.Class type)
-	{
-		return getJsonSerializer().DeserializeFromString(stream, type);
-	}
-
-    protected final <T> T DeserializeFromString(String stream)
+	protected final <T> T DeserializeFromString(String stream, java.lang.Class type)
     {
-        return getJsonSerializer().DeserializeFromString(stream);
+        return getJsonSerializer().DeserializeFromString(stream, type);
     }
 
 	/** 

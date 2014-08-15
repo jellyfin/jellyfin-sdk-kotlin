@@ -70,26 +70,9 @@ public class VolleyHttpClient implements IAsyncHttpClient {
     }
 
     /**
-     * Adds the specified request to the global queue, if tag is specified
-     * then it is used else Default TAG is used.
-     *
-     * @param req
-     * @param tag
-     */
-    public <T> void addToRequestQueue(Request<T> req, String tag) {
-        // set the default tag if tag is empty
-        req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
-
-        logger.Debug("Adding request to queue: %s", req.getUrl());
-
-        getRequestQueue().add(req);
-    }
-
-    /**
      * Adds the specified request to the global queue using the Default TAG.
      *
      * @param req
-     * @param tag
      */
     public <T> void addToRequestQueue(Request<T> req) {
 

@@ -55,15 +55,6 @@ public interface ILogger
 	void FatalException(String message, Exception exception, Object... paramList);
 
 	/** 
-	 Logs the specified severity.
-	 
-	 @param severity The severity.
-	 @param message The message.
-	 @param paramList The param list.
-	*/
-	void Log(LogSeverity severity, String message, Object... paramList);
-
-	/** 
 	 Logs the exception.
 	 
 	 @param message The message.
@@ -71,13 +62,4 @@ public interface ILogger
 	 @param paramList The param list.
 	*/
 	void ErrorException(String message, Exception exception, Object... paramList);
-
-	/** 
-	 Logs the multiline.
-	 
-	 @param message The message.
-	 @param severity The severity.
-	 @param additionalContent Content of the additional.
-	*/
-	void LogMultiline(String message, LogSeverity severity, StringBuilder additionalContent);
 }

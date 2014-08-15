@@ -60,27 +60,17 @@ public interface IJsonSerializer
 	 @return ``0.
 	 @exception System.ArgumentNullException text
 	*/
-	<T> T DeserializeFromString(String text);
+	<T> T DeserializeFromString(String text, java.lang.Class type);
 
-	/** 
+	/**
 	 Deserializes from stream.
-	 
+
 	 @param stream The stream.
 	 @param type The type.
 	 @return System.Object.
 	 @exception System.ArgumentNullException stream
 	*/
 	Object DeserializeFromStream(InputStream stream, java.lang.Class type);
-
-	/** 
-	 Deserializes from string.
-	 
-	 @param json The json.
-	 @param type The type.
-	 @return System.Object.
-	 @exception System.ArgumentNullException json
-	*/
-	Object DeserializeFromString(String json, java.lang.Class type);
 
 	/** 
 	 Serializes to string.

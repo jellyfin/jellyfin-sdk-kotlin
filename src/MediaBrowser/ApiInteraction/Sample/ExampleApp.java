@@ -1,9 +1,6 @@
 package MediaBrowser.ApiInteraction.Sample;
 
-import MediaBrowser.ApiInteraction.ApiClient;
-import MediaBrowser.ApiInteraction.IAsyncHttpClient;
-import MediaBrowser.ApiInteraction.Response;
-import MediaBrowser.ApiInteraction.VolleyHttpClient;
+import MediaBrowser.ApiInteraction.*;
 import MediaBrowser.Model.Dto.BaseItemDto;
 import MediaBrowser.Model.Dto.ItemCounts;
 import MediaBrowser.Model.Entities.SortOrder;
@@ -28,7 +25,7 @@ public class ExampleApp extends Application {
 
 
         // Developers should create their own logger implementation
-        logger = new NullLogger();
+        logger = new ConsoleLogger();
 
         // The underlying http stack. Developers can inject their own if desired
         IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, getApplicationContext());

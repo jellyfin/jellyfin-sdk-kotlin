@@ -28,9 +28,11 @@ public class ServerDiscovery {
 
             byte[] sendData = "who is MediaBrowserServer_v2?".getBytes();
 
+            int port = 7359;
+
             //Try the 255.255.255.255 first
             try {
-                DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, InetAddress.getByName("255.255.255.255"), 8888);
+                DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, InetAddress.getByName("255.255.255.255"), port);
                 c.send(sendPacket);
                 logger.Debug(getClass().getName() + ">>> Request packet sent to: 255.255.255.255 (DEFAULT)");
             } catch (Exception e) {
@@ -53,7 +55,7 @@ public class ServerDiscovery {
 
                     // Send the broadcast package!
                     try {
-                        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, broadcast, 8888);
+                        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, broadcast, port);
                         c.send(sendPacket);
                     } catch (Exception e) {
                     }
@@ -75,7 +77,9 @@ public class ServerDiscovery {
             //Check if the message is correct
             String message = new String(receivePacket.getData()).trim();
 
-            ServerDiscoveryInfo serverInfo = jsonSerializer.DeserializeFromString(message);
+            logger.Debug(getClass().getName() + ">>> Broadcast response from server: " + message);
+
+            ServerDiscoveryInfo serverInfo = jsonSerializer.DeserializeFromString(message, ServerDiscoveryInfo.class);
 
             ServerDiscoveryInfo[] servers = new ServerDiscoveryInfo[]{ serverInfo};
 
