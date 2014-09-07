@@ -6,7 +6,8 @@ public enum SearchType
 	Audio(1),
 	Image(2),
 	Video(3),
-	Playlist(4);
+	Playlist(4),
+	MusicAlbum(5);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, SearchType> mappings;

@@ -226,10 +226,12 @@ public class StreamBuilder
 				playlistItem.setMaxAudioChannels(Math.min(options.getMaxAudioChannels(), currentValue));
 			}
 
-			if (playlistItem.getAudioBitrate() == null)
-			{
-				playlistItem.setAudioBitrate(128000);
-			}
+			Integer tempVar3 = options.getAudioTranscodingBitrate();
+
+			int configuredBitrate = (tempVar3 != null) ? tempVar3 : ((options.getContext() == EncodingContext.Static ? options.getProfile().getMusicSyncBitrate() : options.getProfile().getMusicStreamingTranscodingBitrate()) != null) ? (options.getContext() == EncodingContext.Static ? options.getProfile().getMusicSyncBitrate() : options.getProfile().getMusicStreamingTranscodingBitrate()) : 128000;
+
+			Integer tempVar4 = playlistItem.getAudioBitrate();
+			playlistItem.setAudioBitrate(Math.min(configuredBitrate, (tempVar4 != null) ? tempVar4 : configuredBitrate));
 		}
 
 		return playlistItem;
@@ -539,16 +541,6 @@ public class StreamBuilder
 		}
 
 		return SubtitleDeliveryMethod.Encode;
-	}
-
-	private String NormalizeSubtitleFormat(String codec)
-	{
-		if (StringHelper.EqualsIgnoreCase(codec, "subrip"))
-		{
-			return SubtitleFormat.SRT;
-		}
-
-		return codec;
 	}
 
 	private boolean ContainsSubtitleFormat(SubtitleProfile[] profiles, SubtitleDeliveryMethod method, String[] formats)

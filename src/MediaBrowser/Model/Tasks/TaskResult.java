@@ -94,4 +94,19 @@ public class TaskResult
 	{
 		privateErrorMessage = value;
 	}
+
+	/** 
+	 Gets or sets the long error message.
+	 
+	 <value>The long error message.</value>
+	*/
+	private String privateLongErrorMessage;
+	public final String getLongErrorMessage()
+	{
+		return privateLongErrorMessage;
+	}
+	public final void setLongErrorMessage(String value)
+	{
+		privateLongErrorMessage = value;
+	}
 }

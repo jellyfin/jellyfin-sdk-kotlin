@@ -323,22 +323,27 @@ public class StreamInfo
 
 	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(String baseUrl)
 	{
+		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(baseUrl))
+		{
+			throw new IllegalArgumentException(baseUrl);
+		}
+
+		java.util.ArrayList<SubtitleStreamInfo> list = new java.util.ArrayList<SubtitleStreamInfo>();
+
 		if (getSubtitleDeliveryMethod() != SubtitleDeliveryMethod.External)
 		{
-			return null;
+			return list;
 		}
 
 		if (getSubtitleStreamIndex() == null)
 		{
-			return null;
+			return list;
 		}
 
 		// HLS will preserve timestamps so we can just grab the full subtitle stream
 		long startPositionTicks = StringHelper.EqualsIgnoreCase(getProtocol(), "hls") ? 0 : getStartPositionTicks();
 
-        String url = String.format("%1$s/Videos/%2$s/%3$s/Subtitles/%4$s/%5$s/Stream.%6$s", baseUrl, getItemId(), getMediaSourceId(), StringHelper.ToStringCultureInvariant(getSubtitleStreamIndex()), StringHelper.ToStringCultureInvariant(startPositionTicks), getSubtitleFormat());
-
-		java.util.ArrayList<SubtitleStreamInfo> list = new java.util.ArrayList<SubtitleStreamInfo>();
+		String url = String.format("%1$s/Videos/%2$s/%3$s/Subtitles/%4$s/%5$s/Stream.%6$s", baseUrl, getItemId(), getMediaSourceId(), StringHelper.ToStringCultureInvariant(getSubtitleStreamIndex()), StringHelper.ToStringCultureInvariant(startPositionTicks), getSubtitleFormat());
 
 		for (MediaStream stream : getMediaSource().getMediaStreams())
 		{
@@ -350,6 +355,7 @@ public class StreamInfo
 				tempVar2.setIsForced(stream.getIsForced());
 				tempVar2.setLanguage(stream.getLanguage());
 				tempVar2.setName((tempVar != null) ? tempVar : "Unknown");
+				tempVar2.setFormat(getSubtitleFormat());
 				list.add(tempVar2);
 			}
 		}

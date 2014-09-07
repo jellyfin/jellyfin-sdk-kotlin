@@ -38,21 +38,22 @@ public class MBRegistrationRecord
 	{
 		privateRegError = value;
 	}
-	private Boolean _isInTrial = null;
+	private boolean privateTrialVersion;
 	public final boolean getTrialVersion()
 	{
-		if (_isInTrial == null)
-		{
-			if (!getRegChecked()) //don't set this until we've successfully obtained exp date
-			{
-				return false;
-			}
-			_isInTrial = getExpirationDate().compareTo(new java.util.Date()) > 0;
-		}
-		return (_isInTrial && !getIsRegistered());
+		return privateTrialVersion;
 	}
+	public final void setTrialVersion(boolean value)
+	{
+		privateTrialVersion = value;
+	}
+	private boolean privateIsValid;
 	public final boolean getIsValid()
 	{
-		return !getRegChecked() || (getIsRegistered() || getTrialVersion());
+		return privateIsValid;
+	}
+	public final void setIsValid(boolean value)
+	{
+		privateIsValid = value;
 	}
 }

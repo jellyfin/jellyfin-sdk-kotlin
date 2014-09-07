@@ -55,7 +55,7 @@ public class ChannelItemQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex = null;
+	private Integer privateStartIndex;
 	public final Integer getStartIndex()
 	{
 		return privateStartIndex;
@@ -70,7 +70,7 @@ public class ChannelItemQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit = null;
+	private Integer privateLimit;
 	public final Integer getLimit()
 	{
 		return privateLimit;
@@ -80,7 +80,7 @@ public class ChannelItemQuery
 		privateLimit = value;
 	}
 
-	private SortOrder privateSortOrder = null;
+	private SortOrder privateSortOrder;
 	public final SortOrder getSortOrder()
 	{
 		return privateSortOrder;
@@ -107,26 +107,20 @@ public class ChannelItemQuery
 	{
 		privateFilters = value;
 	}
-
-    /**
-     Fields to return within the items, in addition to basic information
-
-     <value>The fields.</value>
-     */
-    private ItemFields[] privateFields;
-    public final ItemFields[] getFields()
-    {
-        return privateFields;
-    }
-    public final void setFields(ItemFields[] value)
-    {
-        privateFields = value;
-    }
+	private ItemFields[] privateFields;
+	public final ItemFields[] getFields()
+	{
+		return privateFields;
+	}
+	public final void setFields(ItemFields[] value)
+	{
+		privateFields = value;
+	}
 
 	public ChannelItemQuery()
 	{
 		setFilters(new ItemFilter[] { });
 		setSortBy(new String[] { });
-        setFields(new ItemFields[] {});
+		setFields(new ItemFields[] { });
 	}
 }

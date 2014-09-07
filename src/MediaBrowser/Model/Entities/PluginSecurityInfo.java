@@ -21,21 +21,6 @@ public class PluginSecurityInfo
 	}
 
 	/** 
-	 Gets or sets the legacy supporter key.
-	 
-	 <value><c>The legacy supporter key</value>
-	*/
-	private String privateLegacyKey;
-	public final String getLegacyKey()
-	{
-		return privateLegacyKey;
-	}
-	public final void setLegacyKey(String value)
-	{
-		privateLegacyKey = value;
-	}
-
-	/** 
 	 Gets or sets a value indicating whether this instance is MB supporter.
 	 
 	 <value><c>true</c> if this instance is MB supporter; otherwise, <c>false</c>.</value>

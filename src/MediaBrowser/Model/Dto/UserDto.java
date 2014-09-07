@@ -70,6 +70,16 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto
 		privateHasPassword = value;
 	}
 
+	private boolean privateHasConfiguredPassword;
+	public final boolean getHasConfiguredPassword()
+	{
+		return privateHasConfiguredPassword;
+	}
+	public final void setHasConfiguredPassword(boolean value)
+	{
+		privateHasConfiguredPassword = value;
+	}
+
 	/** 
 	 Gets or sets the last login date.
 	 

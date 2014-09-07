@@ -7,6 +7,11 @@ import MediaBrowser.Model.Dto.*;
 */
 public class AudioOptions
 {
+	public AudioOptions()
+	{
+		setContext(EncodingContext.Streaming);
+	}
+
 	private String privateItemId;
 	public final String getItemId()
 	{
@@ -98,6 +103,21 @@ public class AudioOptions
 	public final void setContext(EncodingContext value)
 	{
 		privateContext = value;
+	}
+
+	/** 
+	 Gets or sets the audio transcoding bitrate.
+	 
+	 <value>The audio transcoding bitrate.</value>
+	*/
+	private Integer privateAudioTranscodingBitrate = null;
+	public final Integer getAudioTranscodingBitrate()
+	{
+		return privateAudioTranscodingBitrate;
+	}
+	public final void setAudioTranscodingBitrate(Integer value)
+	{
+		privateAudioTranscodingBitrate = value;
 	}
 
 	/** 

@@ -15,18 +15,6 @@ public class SubtitleProfile
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [XmlAttribute("protocol")] public string Protocol {get;set;}
-	private String privateProtocol;
-	public final String getProtocol()
-	{
-		return privateProtocol;
-	}
-	public final void setProtocol(String value)
-	{
-		privateProtocol = value;
-	}
-
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("method")] public SubtitleDeliveryMethod Method {get;set;}
 	private SubtitleDeliveryMethod privateMethod = SubtitleDeliveryMethod.values()[0];
 	public final SubtitleDeliveryMethod getMethod()
@@ -37,4 +25,17 @@ public class SubtitleProfile
 	{
 		privateMethod = value;
 	}
+
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [XmlAttribute("didlMode")] public string DidlMode {get;set;}
+	private String privateDidlMode;
+	public final String getDidlMode()
+	{
+		return privateDidlMode;
+	}
+	public final void setDidlMode(String value)
+	{
+		privateDidlMode = value;
+	}
+
 }

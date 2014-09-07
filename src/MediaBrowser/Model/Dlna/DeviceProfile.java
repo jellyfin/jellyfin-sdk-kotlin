@@ -239,6 +239,25 @@ public class DeviceProfile
 		privateMaxStaticBitrate = value;
 	}
 
+	private Integer privateMusicStreamingTranscodingBitrate = null;
+	public final Integer getMusicStreamingTranscodingBitrate()
+	{
+		return privateMusicStreamingTranscodingBitrate;
+	}
+	public final void setMusicStreamingTranscodingBitrate(Integer value)
+	{
+		privateMusicStreamingTranscodingBitrate = value;
+	}
+	private Integer privateMusicSyncBitrate = null;
+	public final Integer getMusicSyncBitrate()
+	{
+		return privateMusicSyncBitrate;
+	}
+	public final void setMusicSyncBitrate(Integer value)
+	{
+		privateMusicSyncBitrate = value;
+	}
+
 	/** 
 	 Controls the content of the X_DLNADOC element in the urn:schemas-dlna-org:device-1-0 namespace.
 	*/
@@ -400,6 +419,7 @@ public class DeviceProfile
 		setResponseProfiles(new ResponseProfile[] { });
 		setCodecProfiles(new CodecProfile[] { });
 		setContainerProfiles(new ContainerProfile[] { });
+		setSubtitleProfiles(new SubtitleProfile[] { });
 
 		setXmlRootAttributes(new XmlAttribute[] { });
 

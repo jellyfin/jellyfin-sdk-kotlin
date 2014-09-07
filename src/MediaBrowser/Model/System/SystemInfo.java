@@ -53,6 +53,21 @@ public class SystemInfo extends PublicSystemInfo
 	}
 
 	/** 
+	 Gets or sets the local address.
+	 
+	 <value>The local address.</value>
+	*/
+	private String privateLocalAddress;
+	public final String getLocalAddress()
+	{
+		return privateLocalAddress;
+	}
+	public final void setLocalAddress(String value)
+	{
+		privateLocalAddress = value;
+	}
+
+	/** 
 	 Gets or sets a value indicating whether this instance has pending restart.
 	 
 	 <value><c>true</c> if this instance has pending restart; otherwise, <c>false</c>.</value>

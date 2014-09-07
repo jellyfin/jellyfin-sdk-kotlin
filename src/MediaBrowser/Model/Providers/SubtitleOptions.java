@@ -1,4 +1,4 @@
-package MediaBrowser.Model.Configuration;
+package MediaBrowser.Model.Providers;
 
 public class SubtitleOptions
 {

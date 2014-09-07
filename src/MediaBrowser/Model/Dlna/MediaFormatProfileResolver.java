@@ -441,7 +441,7 @@ public class MediaFormatProfileResolver
 
 		if (StringHelper.EqualsIgnoreCase(container, "png"))
 		{
-			return MediaFormatProfile.PNG_LRG;
+			return ResolveImagePNGFormat(width, height);
 		}
 
 		if (StringHelper.EqualsIgnoreCase(container, "gif"))
@@ -463,7 +463,7 @@ public class MediaFormatProfileResolver
 		{
 			if ((width <= 160) && (height <= 160))
 			{
-				return MediaFormatProfile.JPEG_SM;
+				return MediaFormatProfile.JPEG_TN;
 			}
 
 			if ((width <= 640) && (height <= 480))
@@ -480,5 +480,18 @@ public class MediaFormatProfileResolver
 		}
 
 		return MediaFormatProfile.JPEG_SM;
+	}
+
+	private MediaFormatProfile ResolveImagePNGFormat(Integer width, Integer height)
+	{
+		if (width != null && height != null)
+		{
+			if ((width <= 160) && (height <= 160))
+			{
+				return MediaFormatProfile.PNG_TN;
+			}
+		}
+
+		return MediaFormatProfile.PNG_LRG;
 	}
 }

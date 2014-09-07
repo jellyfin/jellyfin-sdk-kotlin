@@ -263,6 +263,35 @@ public class UserConfiguration
 	{
 		privateDisplayCollectionsView = value;
 	}
+	private boolean privateDisplayFoldersView;
+	public final boolean getDisplayFoldersView()
+	{
+		return privateDisplayFoldersView;
+	}
+	public final void setDisplayFoldersView(boolean value)
+	{
+		privateDisplayFoldersView = value;
+	}
+
+	private boolean privateEnableLocalPassword;
+	public final boolean getEnableLocalPassword()
+	{
+		return privateEnableLocalPassword;
+	}
+	public final void setEnableLocalPassword(boolean value)
+	{
+		privateEnableLocalPassword = value;
+	}
+
+	private String[] privateOrderedViews;
+	public final String[] getOrderedViews()
+	{
+		return privateOrderedViews;
+	}
+	public final void setOrderedViews(String[] value)
+	{
+		privateOrderedViews = value;
+	}
 
 	/** 
 	 Initializes a new instance of the <see cref="UserConfiguration" /> class.
@@ -277,6 +306,7 @@ public class UserConfiguration
 		setEnableMediaPlayback(true);
 		setEnableLiveTvAccess(true);
 
+		setOrderedViews(new String[] { });
 		setBlockedMediaFolders(new String[] { });
 		setDisplayChannelsWithinViews(new String[] { });
 		setBlockedChannels(new String[] { });
@@ -284,5 +314,6 @@ public class UserConfiguration
 
 		setExcludeFoldersFromGrouping(new String[] { });
 		setDisplayCollectionsView(true);
+		setDisplayFoldersView(true);
 	}
 }

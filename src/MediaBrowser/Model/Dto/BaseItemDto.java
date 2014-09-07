@@ -1,5 +1,6 @@
 package MediaBrowser.Model.Dto;
 
+import MediaBrowser.Model.Drawing.*;
 import MediaBrowser.Model.Entities.*;
 import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.Library.*;
@@ -41,6 +42,21 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setId(String value)
 	{
 		privateId = value;
+	}
+
+	/** 
+	 Gets or sets the playlist item identifier.
+	 
+	 <value>The playlist item identifier.</value>
+	*/
+	private String privatePlaylistItemId;
+	public final String getPlaylistItemId()
+	{
+		return privatePlaylistItemId;
+	}
+	public final void setPlaylistItemId(String value)
+	{
+		privatePlaylistItemId = value;
 	}
 
 	/** 
@@ -616,6 +632,21 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	}
 
 	/** 
+	 Gets or sets the recursive unplayed item count.
+	 
+	 <value>The recursive unplayed item count.</value>
+	*/
+	private Integer privateRecursiveUnplayedItemCount = null;
+	public final Integer getRecursiveUnplayedItemCount()
+	{
+		return privateRecursiveUnplayedItemCount;
+	}
+	public final void setRecursiveUnplayedItemCount(Integer value)
+	{
+		privateRecursiveUnplayedItemCount = value;
+	}
+
+	/** 
 	 Gets or sets the season count.
 	 
 	 <value>The season count.</value>
@@ -916,21 +947,6 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	}
 
 	/** 
-	 Gets or sets the played percentage.
-	 
-	 <value>The played percentage.</value>
-	*/
-	private Double privatePlayedPercentage = null;
-	public final Double getPlayedPercentage()
-	{
-		return privatePlayedPercentage;
-	}
-	public final void setPlayedPercentage(Double value)
-	{
-		privatePlayedPercentage = value;
-	}
-
-	/** 
 	 Gets or sets the recursive item count.
 	 
 	 <value>The recursive item count.</value>
@@ -943,21 +959,6 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setRecursiveItemCount(Integer value)
 	{
 		privateRecursiveItemCount = value;
-	}
-
-	/** 
-	 Gets or sets the recursive unplayed item count.
-	 
-	 <value>The recursive unplayed item count.</value>
-	*/
-	private Integer privateRecursiveUnplayedItemCount = null;
-	public final Integer getRecursiveUnplayedItemCount()
-	{
-		return privateRecursiveUnplayedItemCount;
-	}
-	public final void setRecursiveUnplayedItemCount(Integer value)
-	{
-		privateRecursiveUnplayedItemCount = value;
 	}
 
 	/** 
@@ -1860,6 +1861,133 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setLockData(Boolean value)
 	{
 		privateLockData = value;
+	}
+
+	private Integer privateWidth = null;
+	public final Integer getWidth()
+	{
+		return privateWidth;
+	}
+	public final void setWidth(Integer value)
+	{
+		privateWidth = value;
+	}
+	private Integer privateHeight = null;
+	public final Integer getHeight()
+	{
+		return privateHeight;
+	}
+	public final void setHeight(Integer value)
+	{
+		privateHeight = value;
+	}
+	private String privateCameraMake;
+	public final String getCameraMake()
+	{
+		return privateCameraMake;
+	}
+	public final void setCameraMake(String value)
+	{
+		privateCameraMake = value;
+	}
+	private String privateCameraModel;
+	public final String getCameraModel()
+	{
+		return privateCameraModel;
+	}
+	public final void setCameraModel(String value)
+	{
+		privateCameraModel = value;
+	}
+	private String privateSoftware;
+	public final String getSoftware()
+	{
+		return privateSoftware;
+	}
+	public final void setSoftware(String value)
+	{
+		privateSoftware = value;
+	}
+	private Double privateExposureTime = null;
+	public final Double getExposureTime()
+	{
+		return privateExposureTime;
+	}
+	public final void setExposureTime(Double value)
+	{
+		privateExposureTime = value;
+	}
+	private Double privateFocalLength = null;
+	public final Double getFocalLength()
+	{
+		return privateFocalLength;
+	}
+	public final void setFocalLength(Double value)
+	{
+		privateFocalLength = value;
+	}
+	private ImageOrientation privateImageOrientation = null;
+	public final ImageOrientation getImageOrientation()
+	{
+		return privateImageOrientation;
+	}
+	public final void setImageOrientation(ImageOrientation value)
+	{
+		privateImageOrientation = value;
+	}
+	private Double privateAperture = null;
+	public final Double getAperture()
+	{
+		return privateAperture;
+	}
+	public final void setAperture(Double value)
+	{
+		privateAperture = value;
+	}
+	private Double privateShutterSpeed = null;
+	public final Double getShutterSpeed()
+	{
+		return privateShutterSpeed;
+	}
+	public final void setShutterSpeed(Double value)
+	{
+		privateShutterSpeed = value;
+	}
+	private Double privateLatitude = null;
+	public final Double getLatitude()
+	{
+		return privateLatitude;
+	}
+	public final void setLatitude(Double value)
+	{
+		privateLatitude = value;
+	}
+	private Double privateLongitude = null;
+	public final Double getLongitude()
+	{
+		return privateLongitude;
+	}
+	public final void setLongitude(Double value)
+	{
+		privateLongitude = value;
+	}
+	private Double privateAltitude = null;
+	public final Double getAltitude()
+	{
+		return privateAltitude;
+	}
+	public final void setAltitude(Double value)
+	{
+		privateAltitude = value;
+	}
+	private Integer privateIsoSpeedRating = null;
+	public final Integer getIsoSpeedRating()
+	{
+		return privateIsoSpeedRating;
+	}
+	public final void setIsoSpeedRating(Integer value)
+	{
+		privateIsoSpeedRating = value;
 	}
 
 	/** 

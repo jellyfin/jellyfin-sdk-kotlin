@@ -3,7 +3,6 @@ package MediaBrowser.Model.Configuration;
 import MediaBrowser.Model.Entities.*;
 import MediaBrowser.Model.FileOrganization.*;
 import MediaBrowser.Model.LiveTv.*;
-import MediaBrowser.Model.Notifications.*;
 
 /** 
  Represents the server configuration.
@@ -424,15 +423,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		privateTvFileOrganizationOptions = value;
 	}
-	private LiveTvOptions privateLiveTvOptions;
-	public final LiveTvOptions getLiveTvOptions()
-	{
-		return privateLiveTvOptions;
-	}
-	public final void setLiveTvOptions(LiveTvOptions value)
-	{
-		privateLiveTvOptions = value;
-	}
 
 	private boolean privateEnableRealtimeMonitor;
 	public final boolean getEnableRealtimeMonitor()
@@ -502,45 +492,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		privateDownMixAudioBoost = value;
 	}
 
-	private NotificationOptions privateNotificationOptions;
-	public final NotificationOptions getNotificationOptions()
-	{
-		return privateNotificationOptions;
-	}
-	public final void setNotificationOptions(NotificationOptions value)
-	{
-		privateNotificationOptions = value;
-	}
-
-	private SubtitleOptions privateSubtitleOptions;
-	public final SubtitleOptions getSubtitleOptions()
-	{
-		return privateSubtitleOptions;
-	}
-	public final void setSubtitleOptions(SubtitleOptions value)
-	{
-		privateSubtitleOptions = value;
-	}
-
-	private ChannelOptions privateChannelOptions;
-	public final ChannelOptions getChannelOptions()
-	{
-		return privateChannelOptions;
-	}
-	public final void setChannelOptions(ChannelOptions value)
-	{
-		privateChannelOptions = value;
-	}
-	private ChapterOptions privateChapterOptions;
-	public final ChapterOptions getChapterOptions()
-	{
-		return privateChapterOptions;
-	}
-	public final void setChapterOptions(ChapterOptions value)
-	{
-		privateChapterOptions = value;
-	}
-
 	private boolean privateDefaultMetadataSettingsApplied;
 	public final boolean getDefaultMetadataSettingsApplied()
 	{
@@ -551,14 +502,34 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		privateDefaultMetadataSettingsApplied = value;
 	}
 
-	private boolean privateEnableTokenAuthentication;
-	public final boolean getEnableTokenAuthentication()
+	private PeopleMetadataOptions privatePeopleMetadataOptions;
+	public final PeopleMetadataOptions getPeopleMetadataOptions()
 	{
-		return privateEnableTokenAuthentication;
+		return privatePeopleMetadataOptions;
 	}
-	public final void setEnableTokenAuthentication(boolean value)
+	public final void setPeopleMetadataOptions(PeopleMetadataOptions value)
 	{
-		privateEnableTokenAuthentication = value;
+		privatePeopleMetadataOptions = value;
+	}
+
+	private String[] privateSecureApps1;
+	public final String[] getSecureApps1()
+	{
+		return privateSecureApps1;
+	}
+	public final void setSecureApps1(String[] value)
+	{
+		privateSecureApps1 = value;
+	}
+
+	private boolean privateSaveMetadataHidden;
+	public final boolean getSaveMetadataHidden()
+	{
+		return privateSaveMetadataHidden;
+	}
+	public final void setSaveMetadataHidden(boolean value)
+	{
+		privateSaveMetadataHidden = value;
 	}
 
 	/** 
@@ -586,7 +557,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 
 		setRealtimeMonitorDelay(30);
 
-		setEnableInternetProviders(true); //initial installs will need these
+		setEnableInternetProviders(true);
 
 		setPathSubstitutions(new PathSubstitution[] { });
 
@@ -603,16 +574,16 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 
 		setUICulture("en-us");
 
+		setPeopleMetadataOptions(new PeopleMetadataOptions());
+
+		setSecureApps1(new String[] {"Dashboard", "MBKinect", "NuVue", "Media Browser Theater"});
+
 		MetadataOptions tempVar = new MetadataOptions(1, 1280);
 		tempVar.setItemType("Book");
 		MetadataOptions tempVar2 = new MetadataOptions(1, 1280);
 		tempVar2.setItemType("MusicAlbum");
-		MetadataOptions tempVar3 = new MetadataOptions(1, 1280);
-		tempVar3.setItemType("MusicArtist");
+
 		MetadataOptions tempVar4 = new MetadataOptions(0, 1280);
 		tempVar4.setItemType("Season");
-		setMetadataOptions(new MetadataOptions[] {tempVar, tempVar2, tempVar3, tempVar4});
-
-		setSubtitleOptions(new SubtitleOptions());
 	}
 }

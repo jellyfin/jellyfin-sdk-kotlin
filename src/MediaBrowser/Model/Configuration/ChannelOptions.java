@@ -41,6 +41,16 @@ public class ChannelOptions
 		privateDownloadingChannels = value;
 	}
 
+	private Double privateDownloadSizeLimit;
+	public final Double getDownloadSizeLimit()
+	{
+		return privateDownloadSizeLimit;
+	}
+	public final void setDownloadSizeLimit(Double value)
+	{
+		privateDownloadSizeLimit = value;
+	}
+
 	public ChannelOptions()
 	{
 		setDownloadingChannels(new String[] { });

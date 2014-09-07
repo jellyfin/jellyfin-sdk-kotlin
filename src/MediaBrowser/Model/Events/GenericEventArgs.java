@@ -21,4 +21,21 @@ public class GenericEventArgs<T> extends EventArgs
 	{
 		privateArgument = value;
 	}
+
+	/** 
+	 Initializes a new instance of the <see cref="GenericEventArgs{T}"/> class.
+	 
+	 @param arg The argument.
+	*/
+	public GenericEventArgs(T arg)
+	{
+		setArgument(arg);
+	}
+
+	/** 
+	 Initializes a new instance of the <see cref="GenericEventArgs{T}"/> class.
+	*/
+	public GenericEventArgs()
+	{
+	}
 }
