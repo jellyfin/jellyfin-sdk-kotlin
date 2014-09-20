@@ -16,20 +16,19 @@ public class StreamBuilder
 
 		java.util.ArrayList<MediaSourceInfo> mediaSources = options.getMediaSources();
 
-		// If the client wants a specific media soure, filter now
+		// If the client wants a specific media source, filter now
 		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(options.getMediaSourceId()))
 		{
-			// Avoid implicitly captured closure
-			String mediaSourceId = options.getMediaSourceId();
-
-			mediaSources = new java.util.ArrayList<MediaSourceInfo>();
+			java.util.ArrayList<MediaSourceInfo> newMediaSources = new java.util.ArrayList<MediaSourceInfo>();
 			for (MediaSourceInfo i : mediaSources)
 			{
-				if (StringHelper.EqualsIgnoreCase(i.getId(), mediaSourceId))
+				if (StringHelper.EqualsIgnoreCase(i.getId(), options.getMediaSourceId()))
 				{
-					mediaSources.add(i);
+					newMediaSources.add(i);
 				}
 			}
+
+			mediaSources = newMediaSources;
 		}
 
 		java.util.ArrayList<StreamInfo> streams = new java.util.ArrayList<StreamInfo>();
@@ -227,7 +226,6 @@ public class StreamBuilder
 			}
 
 			Integer tempVar3 = options.getAudioTranscodingBitrate();
-
 			int configuredBitrate = (tempVar3 != null) ? tempVar3 : ((options.getContext() == EncodingContext.Static ? options.getProfile().getMusicSyncBitrate() : options.getProfile().getMusicStreamingTranscodingBitrate()) != null) ? (options.getContext() == EncodingContext.Static ? options.getProfile().getMusicSyncBitrate() : options.getProfile().getMusicStreamingTranscodingBitrate()) : 128000;
 
 			Integer tempVar4 = playlistItem.getAudioBitrate();
@@ -429,11 +427,12 @@ public class StreamBuilder
 
 		TransportStreamTimestamp timestamp = videoStream == null ? TransportStreamTimestamp.None : mediaSource.getTimestamp();
 		Integer packetLength = videoStream == null ? null : videoStream.getPacketLength();
+		Integer refFrames = videoStream == null ? null : videoStream.getRefFrames();
 
 		// Check container conditions
 		for (ProfileCondition i : conditions)
 		{
-			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic))
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames))
 			{
 				return null;
 			}
@@ -460,7 +459,7 @@ public class StreamBuilder
 
 		for (ProfileCondition i : conditions)
 		{
-			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic))
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames))
 			{
 				return null;
 			}

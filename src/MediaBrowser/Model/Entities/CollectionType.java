@@ -57,4 +57,8 @@ public final class CollectionType
 	public static final String MusicGenres = "MusicGenres";
 	public static final String MusicLatest = "MusicLatest";
 	public static final String MusicSongs = "MusicSongs";
+	public static final String MusicFavorites = "MusicFavorites";
+	public static final String MusicFavoriteArtists = "MusicFavoriteArtists";
+	public static final String MusicFavoriteAlbums = "MusicFavoriteAlbums";
+	public static final String MusicFavoriteSongs = "MusicFavoriteSongs";
 }

@@ -1,6 +1,7 @@
 package MediaBrowser.Model.Dto;
 
 import MediaBrowser.Model.Configuration.*;
+import MediaBrowser.Model.Connect.*;
 import MediaBrowser.Model.Extensions.*;
 
 /** 
@@ -23,6 +24,49 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto
 	public final void setName(String value)
 	{
 		privateName = value;
+	}
+
+	/** 
+	 Gets or sets the name of the connect user.
+	 
+	 <value>The name of the connect user.</value>
+	*/
+	private String privateConnectUserName;
+	public final String getConnectUserName()
+	{
+		return privateConnectUserName;
+	}
+	public final void setConnectUserName(String value)
+	{
+		privateConnectUserName = value;
+	}
+	/** 
+	 Gets or sets the connect user identifier.
+	 
+	 <value>The connect user identifier.</value>
+	*/
+	private String privateConnectUserId;
+	public final String getConnectUserId()
+	{
+		return privateConnectUserId;
+	}
+	public final void setConnectUserId(String value)
+	{
+		privateConnectUserId = value;
+	}
+	/** 
+	 Gets or sets the type of the connect link.
+	 
+	 <value>The type of the connect link.</value>
+	*/
+	private UserLinkType privateConnectLinkType = UserLinkType.values()[0];
+	public final UserLinkType getConnectLinkType()
+	{
+		return privateConnectLinkType;
+	}
+	public final void setConnectLinkType(UserLinkType value)
+	{
+		privateConnectLinkType = value;
 	}
 
 	/** 

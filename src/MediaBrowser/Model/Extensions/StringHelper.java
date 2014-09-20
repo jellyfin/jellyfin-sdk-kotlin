@@ -75,4 +75,29 @@ public final class StringHelper
 	{
 		return tangible.DotNetToJavaStringHelper.trimStart(str, c);
 	}
+
+
+
+    /// <summary>
+    /// Splits the specified string.
+    /// </summary>
+    /// <param name="str">The string.</param>
+    /// <param name="term">The term.</param>
+    /// <returns>System.String[].</returns>
+    public static String[] RegexSplit(String str, String term)
+    {
+        return str.split(term);
+    }
+
+    /// <summary>
+    /// Splits the specified string.
+    /// </summary>
+    /// <param name="str">The string.</param>
+    /// <param name="term">The term.</param>
+    /// <param name="limit">The limit.</param>
+    /// <returns>System.String[].</returns>
+    public static String[] RegexSplit(String str, String term, int limit)
+    {
+        return str.split(term, limit);
+    }
 }

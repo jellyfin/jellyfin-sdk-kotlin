@@ -414,16 +414,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		privateEnableAutomaticRestart = value;
 	}
 
-	private TvFileOrganizationOptions privateTvFileOrganizationOptions;
-	public final TvFileOrganizationOptions getTvFileOrganizationOptions()
-	{
-		return privateTvFileOrganizationOptions;
-	}
-	public final void setTvFileOrganizationOptions(TvFileOrganizationOptions value)
-	{
-		privateTvFileOrganizationOptions = value;
-	}
-
 	private boolean privateEnableRealtimeMonitor;
 	public final boolean getEnableRealtimeMonitor()
 	{
@@ -512,14 +502,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		privatePeopleMetadataOptions = value;
 	}
 
-	private String[] privateSecureApps1;
-	public final String[] getSecureApps1()
+	private String[] privateSecureApps2;
+	public final String[] getSecureApps2()
 	{
-		return privateSecureApps1;
+		return privateSecureApps2;
 	}
-	public final void setSecureApps1(String[] value)
+	public final void setSecureApps2(String[] value)
 	{
-		privateSecureApps1 = value;
+		privateSecureApps2 = value;
 	}
 
 	private boolean privateSaveMetadataHidden;
@@ -576,14 +566,16 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 
 		setPeopleMetadataOptions(new PeopleMetadataOptions());
 
-		setSecureApps1(new String[] {"Dashboard", "MBKinect", "NuVue", "Media Browser Theater"});
+		setSecureApps2(new String[] {"Dashboard", "MBKinect", "NuVue", "Media Browser Theater", "MB-Classic"});
 
 		MetadataOptions tempVar = new MetadataOptions(1, 1280);
 		tempVar.setItemType("Book");
 		MetadataOptions tempVar2 = new MetadataOptions(1, 1280);
 		tempVar2.setItemType("MusicAlbum");
-
+		MetadataOptions tempVar3 = new MetadataOptions(1, 1280);
+		tempVar3.setItemType("MusicArtist");
 		MetadataOptions tempVar4 = new MetadataOptions(0, 1280);
 		tempVar4.setItemType("Season");
+		setMetadataOptions(new MetadataOptions[] {tempVar, tempVar2, tempVar3, tempVar4});
 	}
 }

@@ -68,9 +68,20 @@ public class ChapterOptions
 		privateDisabledFetchers = value;
 	}
 
+	private boolean privateExtractDuringLibraryScan;
+	public final boolean getExtractDuringLibraryScan()
+	{
+		return privateExtractDuringLibraryScan;
+	}
+	public final void setExtractDuringLibraryScan(boolean value)
+	{
+		privateExtractDuringLibraryScan = value;
+	}
+
 	public ChapterOptions()
 	{
 		setDownloadMovieChapters(true);
+		setExtractDuringLibraryScan(true);
 
 		setDisabledFetchers(new String[] { });
 		setFetcherOrder(new String[] { });

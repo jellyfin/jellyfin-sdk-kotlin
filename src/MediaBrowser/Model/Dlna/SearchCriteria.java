@@ -23,23 +23,33 @@ public class SearchCriteria
 
 		setSearchType(SearchType.Unknown);
 
-		if (StringHelper.IndexOfIgnoreCase(search, "upnp:class") != -1 && StringHelper.IndexOfIgnoreCase(search, "derivedfrom") != -1)
+		String[] factors = StringHelper.RegexSplit(search, "(and|or)");
+		for (String factor : factors)
 		{
-			if (StringHelper.IndexOfIgnoreCase(search, "object.item.audioItem") != -1)
+			String[] subFactors = StringHelper.RegexSplit(tangible.DotNetToJavaStringHelper.trim(tangible.DotNetToJavaStringHelper.trim(factor.trim(), '('), ')').trim(), "\\s", 3);
+
+			if (subFactors.length == 3)
 			{
-				setSearchType(SearchType.Audio);
-			}
-			else if (StringHelper.IndexOfIgnoreCase(search, "object.item.imageItem") != -1)
-			{
-				setSearchType(SearchType.Image);
-			}
-			else if (StringHelper.IndexOfIgnoreCase(search, "object.item.videoItem") != -1)
-			{
-				setSearchType(SearchType.Video);
-			}
-			else if (StringHelper.IndexOfIgnoreCase(search, "object.container.playlistContainer") != -1)
-			{
-				setSearchType(SearchType.Playlist);
+
+				if (StringHelper.EqualsIgnoreCase("upnp:class", subFactors[0]) && (StringHelper.EqualsIgnoreCase("=", subFactors[1]) || StringHelper.EqualsIgnoreCase("derivedfrom", subFactors[1])))
+				{
+					if (StringHelper.EqualsIgnoreCase("\"object.item.imageItem\"", subFactors[2]) || StringHelper.EqualsIgnoreCase("\"object.item.imageItem.photo\"", subFactors[2]))
+					{
+						setSearchType(SearchType.Image);
+					}
+					else if (StringHelper.EqualsIgnoreCase("\"object.item.videoItem\"", subFactors[2]))
+					{
+						setSearchType(SearchType.Video);
+					}
+					else if (StringHelper.EqualsIgnoreCase("\"object.container.playlistContainer\"", subFactors[2]))
+					{
+						setSearchType(SearchType.Playlist);
+					}
+					else if (StringHelper.EqualsIgnoreCase("\"object.container.album.musicAlbum\"", subFactors[2]))
+					{
+						setSearchType(SearchType.MusicAlbum);
+					}
+				}
 			}
 		}
 	}

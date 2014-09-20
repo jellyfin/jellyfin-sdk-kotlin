@@ -100,6 +100,21 @@ public class MediaStream
 	}
 
 	/** 
+	 Gets or sets the reference frames.
+	 
+	 <value>The reference frames.</value>
+	*/
+	private Integer privateRefFrames = null;
+	public final Integer getRefFrames()
+	{
+		return privateRefFrames;
+	}
+	public final void setRefFrames(Integer value)
+	{
+		privateRefFrames = value;
+	}
+
+	/** 
 	 Gets or sets the length of the packet.
 	 
 	 <value>The length of the packet.</value>

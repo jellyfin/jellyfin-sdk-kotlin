@@ -54,6 +54,7 @@ public class ChannelOptions
 	public ChannelOptions()
 	{
 		setDownloadingChannels(new String[] { });
+		setDownloadSizeLimit(.5);
 		setMaxDownloadAge(30);
 	}
 }

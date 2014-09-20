@@ -293,13 +293,30 @@ public class UserConfiguration
 		privateOrderedViews = value;
 	}
 
+	private boolean privateSyncConnectName;
+	public final boolean getSyncConnectName()
+	{
+		return privateSyncConnectName;
+	}
+	public final void setSyncConnectName(boolean value)
+	{
+		privateSyncConnectName = value;
+	}
+	private boolean privateSyncConnectImage;
+	public final boolean getSyncConnectImage()
+	{
+		return privateSyncConnectImage;
+	}
+	public final void setSyncConnectImage(boolean value)
+	{
+		privateSyncConnectImage = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="UserConfiguration" /> class.
 	*/
 	public UserConfiguration()
 	{
-		setIsAdministrator(true);
-
 		setPlayDefaultAudioTrack(true);
 		setEnableRemoteControlOfOtherUsers(true);
 		setEnableLiveTvManagement(true);
@@ -315,5 +332,8 @@ public class UserConfiguration
 		setExcludeFoldersFromGrouping(new String[] { });
 		setDisplayCollectionsView(true);
 		setDisplayFoldersView(true);
+
+		setSyncConnectName(true);
+		setSyncConnectImage(true);
 	}
 }

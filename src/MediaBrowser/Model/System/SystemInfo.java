@@ -38,6 +38,21 @@ public class SystemInfo extends PublicSystemInfo
 	}
 
 	/** 
+	 Gets or sets a value indicating whether [supports running as service].
+	 
+	 <value><c>true</c> if [supports running as service]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean privateSupportsRunningAsService;
+	public final boolean getSupportsRunningAsService()
+	{
+		return privateSupportsRunningAsService;
+	}
+	public final void setSupportsRunningAsService(boolean value)
+	{
+		privateSupportsRunningAsService = value;
+	}
+
+	/** 
 	 Gets or sets the mac address.
 	 
 	 <value>The mac address.</value>

@@ -1291,6 +1291,21 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	}
 
 	/** 
+	 Gets or sets the name of the season.
+	 
+	 <value>The name of the season.</value>
+	*/
+	private String privateSeasonName;
+	public final String getSeasonName()
+	{
+		return privateSeasonName;
+	}
+	public final void setSeasonName(String value)
+	{
+		privateSeasonName = value;
+	}
+
+	/** 
 	 Gets or sets the media streams.
 	 
 	 <value>The media streams.</value>
