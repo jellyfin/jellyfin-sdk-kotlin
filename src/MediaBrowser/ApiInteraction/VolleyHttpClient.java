@@ -168,6 +168,11 @@ public class VolleyHttpClient implements IAsyncHttpClient {
     }
 
     @Override
+    public void PostAsync(String url, Response<String> response) {
+        SendAsync(Request.Method.POST, url, response);
+    }
+
+    @Override
     public void PostAsync(String url, final String contentType, final String postContent, final Response<String> response) {
 
         StringRequest req = new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {

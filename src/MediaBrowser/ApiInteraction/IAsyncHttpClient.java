@@ -16,5 +16,7 @@ public interface IAsyncHttpClient {
 
     public void PostAsync(String url, String contentType, String postContent, Response<String> response);
 
+    public void PostAsync(String url, Response<String> response);
+
     public ImageLoader getImageLoader();
 }

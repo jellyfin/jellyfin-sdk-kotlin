@@ -18,6 +18,9 @@ import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Notifications.NotificationQuery;
 import MediaBrowser.Model.Notifications.NotificationResult;
 import MediaBrowser.Model.Notifications.NotificationsSummary;
+import MediaBrowser.Model.Playlists.PlaylistCreationRequest;
+import MediaBrowser.Model.Playlists.PlaylistCreationResult;
+import MediaBrowser.Model.Playlists.PlaylistItemQuery;
 import MediaBrowser.Model.Plugins.PluginInfo;
 import MediaBrowser.Model.Querying.*;
 import MediaBrowser.Model.Search.SearchHintResult;
@@ -39,7 +42,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public class ApiClient extends BaseApiClient {
-
+ 
 /*    public event EventHandler<HttpResponseEventArgs> HttpResponseReceived
     {
         add { HttpClient.HttpResponseReceived += value; }
@@ -48,20 +51,20 @@ public class ApiClient extends BaseApiClient {
             HttpClient.HttpResponseReceived -= value;
         }
     }
-
+ 
     /// <summary>
     /// Gets or sets the web socket connection.
     /// </summary>
     /// <value>The web socket connection.</value>
     public ApiWebSocket WebSocketConnection { get; set; }*/
 
-   private IAsyncHttpClient _httpClient;
+    private IAsyncHttpClient _httpClient;
 
-   public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String accessToken)
-   {
+    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String accessToken)
+    {
         super(logger, new JsonSerializer(), serverAddress, accessToken);
 
-       _httpClient = httpClient;
+        _httpClient = httpClient;
 
         ResetHttpHeaders();
     }
@@ -1113,7 +1116,7 @@ public class ApiClient extends BaseApiClient {
 
         _httpClient.GetAsync(url, jsonResponse);
     }
-
+ 
     /*public Task<UserItemDataDto> MarkPlayedAsync(String itemId, String userId, DateTime? datePlayed)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId))
@@ -1124,19 +1127,19 @@ public class ApiClient extends BaseApiClient {
         {
             throw new IllegalArgumentException("userId");
         }
-
+ 
         QueryStringDictionary dict = new QueryStringDictionary();
-
+ 
         if (datePlayed.HasValue)
         {
             dict.Add("DatePlayed", datePlayed.Value.ToString("yyyyMMddHHmmss"));
         }
-
+ 
         String url = GetApiUrl("Users/" + userId + "/PlayedItems/" + itemId, dict);
-
+ 
         return PostAsync<UserItemDataDto>(url, new Dictionary<String, String>(), CancellationToken.None);
     }
-
+ 
     /// <summary>
     /// Marks the unplayed async.
     /// </summary>
@@ -1158,12 +1161,12 @@ public class ApiClient extends BaseApiClient {
         {
             throw new IllegalArgumentException("userId");
         }
-
+ 
         String url = GetApiUrl("Users/" + userId + "/PlayedItems/" + itemId);
-
+ 
         return DeleteAsync<UserItemDataDto>(url, CancellationToken.None);
     }
-
+ 
     /// <summary>
     /// Updates the favorite status async.
     /// </summary>
@@ -1182,14 +1185,14 @@ public class ApiClient extends BaseApiClient {
         {
             throw new IllegalArgumentException("userId");
         }
-
+ 
         String url = GetApiUrl("Users/" + userId + "/FavoriteItems/" + itemId);
-
+ 
         if (isFavorite)
         {
             return PostAsync<UserItemDataDto>(url, new Dictionary<String, String>(), CancellationToken.None);
         }
-
+ 
         return DeleteAsync<UserItemDataDto>(url, CancellationToken.None);
     }*/
 
@@ -1207,7 +1210,7 @@ public class ApiClient extends BaseApiClient {
         }
 
         getLogger().Debug("ReportPlaybackStart: Item {0}", info.getItem());
-
+ 
         /*if (WebSocketConnection != null && WebSocketConnection.IsConnected)
         {
             return WebSocketConnection.SendAsync("ReportPlaybackStart", JsonSerializer.SerializeToString(info));
@@ -1230,7 +1233,7 @@ public class ApiClient extends BaseApiClient {
         {
             throw new IllegalArgumentException("info");
         }
-
+ 
         /*if (WebSocketConnection != null && WebSocketConnection.IsConnected)
         {
             return WebSocketConnection.SendAsync("ReportPlaybackProgress", JsonSerializer.SerializeToString(info));
@@ -1253,7 +1256,7 @@ public class ApiClient extends BaseApiClient {
         {
             throw new IllegalArgumentException("info");
         }
-
+ 
         /*if (WebSocketConnection != null && WebSocketConnection.IsConnected)
         {
             return WebSocketConnection.SendAsync("ReportPlaybackStopped", JsonSerializer.SerializeToString(info));
@@ -1336,7 +1339,7 @@ public class ApiClient extends BaseApiClient {
             cmd.getArguments().put("Timeout", StringHelper.ToStringCultureInvariant(command.getTimeoutMs()));
         }
 
-         SendCommandAsync(sessionId, cmd, response);
+        SendCommandAsync(sessionId, cmd, response);
     }
 
     /// <summary>
@@ -1445,31 +1448,40 @@ public class ApiClient extends BaseApiClient {
 
         PostAsync(url, response);
     }
-
-    /*/// <summary>
+ 
+    /// <summary>
     /// Clears a user's rating for an item
     /// </summary>
     /// <param name="itemId">The item id.</param>
     /// <param name="userId">The user id.</param>
     /// <returns>Task{UserItemDataDto}.</returns>
     /// <exception cref="System.IllegalArgumentException">itemId</exception>
-    public Task<UserItemDataDto> ClearUserItemRatingAsync(String itemId, String userId)
+    public void ClearUserItemRatingAsync(String itemId, String userId, final Response<UserItemDataDto> response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId))
         {
             throw new IllegalArgumentException("itemId");
         }
-
+ 
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(userId))
         {
             throw new IllegalArgumentException("userId");
         }
-
+ 
         String url = GetApiUrl("Users/" + userId + "/Items/" + itemId + "/Rating");
+        Response<String> jsonResponse = new Response<String>(){
 
-        return DeleteAsync<UserItemDataDto>(url, CancellationToken.None);
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                UserItemDataDto obj = DeserializeFromString(jsonResponse, UserDto[].class);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.DeleteAsync(url, jsonResponse);
     }
-
+ 
     /// <summary>
     /// Updates a user's rating for an item, based on likes or dislikes
     /// </summary>
@@ -1478,26 +1490,35 @@ public class ApiClient extends BaseApiClient {
     /// <param name="likes">if set to <c>true</c> [likes].</param>
     /// <returns>Task.</returns>
     /// <exception cref="System.IllegalArgumentException">itemId</exception>
-    public Task<UserItemDataDto> UpdateUserItemRatingAsync(String itemId, String userId, Boolean likes)
+    public void UpdateUserItemRatingAsync(String itemId, String userId, Boolean likes, final Response<UserItemDataDto> response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId))
         {
             throw new IllegalArgumentException("itemId");
         }
-
+ 
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(userId))
         {
             throw new IllegalArgumentException("userId");
         }
-
+ 
         QueryStringDictionary dict = new QueryStringDictionary ();
-
+ 
         dict.Add("likes", likes);
-
+ 
         String url = GetApiUrl("Users/" + userId + "/Items/" + itemId + "/Rating", dict);
+        Response<String> jsonResponse = new Response<String>(){
 
-        return PostAsync<UserItemDataDto>(url, new Dictionary<String, String>(), CancellationToken.None);
-    }*/
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                UserItemDataDto obj = DeserializeFromString(jsonResponse, UserDto[].class);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.PostAsync(url, jsonResponse);
+    }
 
     /// <summary>
     /// Authenticates a user and returns the result
@@ -2636,5 +2657,102 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users/" + userId + "/Views");
 
         GetItemsFromUrl(url, response);
+    }
+
+    public void GetLatestItems(LatestItemsQuery query, final Response<BaseItemDto[]> response)
+    {
+        if (query == null)
+        {
+            throw new IllegalArgumentException("query");
+        }
+
+        QueryStringDictionary queryString = new QueryStringDictionary();
+        queryString.AddIfNotNull("Group", query.getGroupItems());
+        queryString.AddIfNotNull("IncludeItemTypes", query.getIncludeItemTypes());
+        queryString.AddIfNotNullOrEmpty("ParentId", query.getParentId());
+        queryString.AddIfNotNull("IsPlayed", query.getIsPlayed());
+        queryString.AddIfNotNull("StartIndex", query.getStartIndex());
+        queryString.AddIfNotNull("Limit", query.getLimit());
+
+        String url = GetApiUrl("Users/" + query.getUserId() + "/Items/Latest", queryString);
+
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                BaseItemDto[] obj = DeserializeFromString(jsonResponse, BaseItemDto[].class);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.GetAsync(url, jsonResponse);
+    }
+
+    public void AddToPlaylist(String playlistId, String[] itemIds, String userId, final Response<EmptyRequestResult> response)
+    {
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(playlistId))
+        {
+            throw new IllegalArgumentException("playlistId");
+        }
+
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        dict.AddIfNotNull("Ids", itemIds);
+        String url = GetApiUrl("Playlists/"+playlistId+"/Items", dict);
+
+        PostAsync(url, response);
+    }
+
+    public void CreatePlaylist(PlaylistCreationRequest request, final Response<PlaylistCreationResult> response)
+    {
+        QueryStringDictionary queryString = new QueryStringDictionary();
+
+        queryString.Add("UserId", request.getUserId());
+        queryString.Add("Name", request.getName());
+
+        queryString.AddIfNotNullOrEmpty("MediaType", request.getMediaType());
+
+        queryString.AddIfNotNull("Ids", request.getItemIdList());
+
+        String url = GetApiUrl("Playlists/", queryString);
+        Response<String> jsonResponse = new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                PlaylistCreationResult obj = DeserializeFromString(jsonResponse, UserDto[].class);
+                response.onResponse(obj);
+            }
+        };
+
+        _httpClient.PostAsync(url, jsonResponse);
+    }
+
+    public void GetPlaylistItems(PlaylistItemQuery query, final Response<QueryResult<BaseItemDto>> response)
+    {
+        QueryStringDictionary queryString = new QueryStringDictionary();
+
+        queryString.AddIfNotNull("StartIndex", query.getStartIndex());
+
+        queryString.AddIfNotNull("Limit", query.getLimit());
+        queryString.Add("UserId", query.getUserId());
+
+        queryString.AddIfNotNull("fields", query.getFields());
+
+        String url = GetApiUrl("Playlists/" + query.getId() + "/Items", queryString);
+
+        GetItemsFromUrl(url, response);
+    }
+
+    public void RemoveFromPlaylist(String playlistId, String[] entryIds, final Response<EmptyRequestResult> response)
+    {
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        dict.AddIfNotNull("EntryIds", entryIds);
+        String url = GetApiUrl("Playlists/"+playlistId+"/Items", dict);
+
+        DeleteAsync(url, response);
     }
 }
