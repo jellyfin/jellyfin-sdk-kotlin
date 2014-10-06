@@ -68,21 +68,6 @@ public class SystemInfo extends PublicSystemInfo
 	}
 
 	/** 
-	 Gets or sets the local address.
-	 
-	 <value>The local address.</value>
-	*/
-	private String privateLocalAddress;
-	public final String getLocalAddress()
-	{
-		return privateLocalAddress;
-	}
-	public final void setLocalAddress(String value)
-	{
-		privateLocalAddress = value;
-	}
-
-	/** 
 	 Gets or sets a value indicating whether this instance has pending restart.
 	 
 	 <value><c>true</c> if this instance has pending restart; otherwise, <c>false</c>.</value>
@@ -320,21 +305,6 @@ public class SystemInfo extends PublicSystemInfo
 	public final void setHttpServerPortNumber(int value)
 	{
 		privateHttpServerPortNumber = value;
-	}
-
-	/** 
-	 Gets or sets the wan address.
-	 
-	 <value>The wan address.</value>
-	*/
-	private String privateWanAddress;
-	public final String getWanAddress()
-	{
-		return privateWanAddress;
-	}
-	public final void setWanAddress(String value)
-	{
-		privateWanAddress = value;
 	}
 
 	/** 

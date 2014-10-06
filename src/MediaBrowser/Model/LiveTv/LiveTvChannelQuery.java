@@ -66,6 +66,21 @@ public class LiveTvChannelQuery
 	}
 
 	/** 
+	 Gets or sets a value indicating whether [enable favorite sorting].
+	 
+	 <value><c>true</c> if [enable favorite sorting]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean privateEnableFavoriteSorting;
+	public final boolean getEnableFavoriteSorting()
+	{
+		return privateEnableFavoriteSorting;
+	}
+	public final void setEnableFavoriteSorting(boolean value)
+	{
+		privateEnableFavoriteSorting = value;
+	}
+
+	/** 
 	 Gets or sets the user identifier.
 	 
 	 <value>The user identifier.</value>

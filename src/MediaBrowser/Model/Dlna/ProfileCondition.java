@@ -54,4 +54,18 @@ public class ProfileCondition
 	{
 		setIsRequired(true);
 	}
+
+	public ProfileCondition(ProfileConditionType condition, ProfileConditionValue property, String value)
+	{
+		this(condition, property, value, false);
+
+	}
+
+	public ProfileCondition(ProfileConditionType condition, ProfileConditionValue property, String value, boolean isRequired)
+	{
+		setCondition(condition);
+		setProperty(property);
+		setValue(value);
+		setIsRequired(isRequired);
+	}
 }

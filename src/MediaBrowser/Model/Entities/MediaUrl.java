@@ -29,13 +29,4 @@ public class MediaUrl
 	{
 		privateVideoSize = value;
 	}
-	private boolean privateIsDirectLink;
-	public final boolean getIsDirectLink()
-	{
-		return privateIsDirectLink;
-	}
-	public final void setIsDirectLink(boolean value)
-	{
-		privateIsDirectLink = value;
-	}
 }

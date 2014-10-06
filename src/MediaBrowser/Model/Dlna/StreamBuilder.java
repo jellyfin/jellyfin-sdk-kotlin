@@ -638,9 +638,32 @@ public class StreamBuilder
 				case Has64BitOffsets:
 				case PacketLength:
 				case VideoTimestamp:
-				case VideoBitDepth:
 				{
 						// Not supported yet
+						break;
+				}
+				case RefFrames:
+				{
+						int num = 0;
+						tangible.RefObject<Integer> tempRef_num3 = new tangible.RefObject<Integer>(num);
+						boolean tempVar3 = IntHelper.TryParseCultureInvariant(value, tempRef_num3);
+							num = tempRef_num3.argValue;
+						if (tempVar3)
+						{
+							item.setMaxRefFrames(num);
+						}
+						break;
+				}
+				case VideoBitDepth:
+				{
+						int num = 0;
+						tangible.RefObject<Integer> tempRef_num4 = new tangible.RefObject<Integer>(num);
+						boolean tempVar4 = IntHelper.TryParseCultureInvariant(value, tempRef_num4);
+							num = tempRef_num4.argValue;
+						if (tempVar4)
+						{
+							item.setMaxVideoBitDepth(num);
+						}
 						break;
 				}
 				case VideoProfile:
@@ -651,10 +674,10 @@ public class StreamBuilder
 				case Height:
 				{
 						int num = 0;
-						tangible.RefObject<Integer> tempRef_num3 = new tangible.RefObject<Integer>(num);
-						boolean tempVar3 = IntHelper.TryParseCultureInvariant(value, tempRef_num3);
-							num = tempRef_num3.argValue;
-						if (tempVar3)
+						tangible.RefObject<Integer> tempRef_num5 = new tangible.RefObject<Integer>(num);
+						boolean tempVar5 = IntHelper.TryParseCultureInvariant(value, tempRef_num5);
+							num = tempRef_num5.argValue;
+						if (tempVar5)
 						{
 							item.setMaxHeight(num);
 						}
@@ -663,10 +686,10 @@ public class StreamBuilder
 				case VideoBitrate:
 				{
 						int num = 0;
-						tangible.RefObject<Integer> tempRef_num4 = new tangible.RefObject<Integer>(num);
-						boolean tempVar4 = IntHelper.TryParseCultureInvariant(value, tempRef_num4);
-							num = tempRef_num4.argValue;
-						if (tempVar4)
+						tangible.RefObject<Integer> tempRef_num6 = new tangible.RefObject<Integer>(num);
+						boolean tempVar6 = IntHelper.TryParseCultureInvariant(value, tempRef_num6);
+							num = tempRef_num6.argValue;
+						if (tempVar6)
 						{
 							item.setVideoBitrate(num);
 						}
@@ -675,10 +698,10 @@ public class StreamBuilder
 				case VideoFramerate:
 				{
 						float num = 0F;
-						tangible.RefObject<Float> tempRef_num5 = new tangible.RefObject<Float>(num);
-						boolean tempVar5 = FloatHelper.TryParseCultureInvariant(value, tempRef_num5);
-							num = tempRef_num5.argValue;
-						if (tempVar5)
+						tangible.RefObject<Float> tempRef_num7 = new tangible.RefObject<Float>(num);
+						boolean tempVar7 = FloatHelper.TryParseCultureInvariant(value, tempRef_num7);
+							num = tempRef_num7.argValue;
+						if (tempVar7)
 						{
 							item.setMaxFramerate(num);
 						}
@@ -687,10 +710,10 @@ public class StreamBuilder
 				case VideoLevel:
 				{
 						int num = 0;
-						tangible.RefObject<Integer> tempRef_num6 = new tangible.RefObject<Integer>(num);
-						boolean tempVar6 = IntHelper.TryParseCultureInvariant(value, tempRef_num6);
-							num = tempRef_num6.argValue;
-						if (tempVar6)
+						tangible.RefObject<Integer> tempRef_num8 = new tangible.RefObject<Integer>(num);
+						boolean tempVar8 = IntHelper.TryParseCultureInvariant(value, tempRef_num8);
+							num = tempRef_num8.argValue;
+						if (tempVar8)
 						{
 							item.setVideoLevel(num);
 						}
@@ -699,10 +722,10 @@ public class StreamBuilder
 				case Width:
 				{
 						int num = 0;
-						tangible.RefObject<Integer> tempRef_num7 = new tangible.RefObject<Integer>(num);
-						boolean tempVar7 = IntHelper.TryParseCultureInvariant(value, tempRef_num7);
-							num = tempRef_num7.argValue;
-						if (tempVar7)
+						tangible.RefObject<Integer> tempRef_num9 = new tangible.RefObject<Integer>(num);
+						boolean tempVar9 = IntHelper.TryParseCultureInvariant(value, tempRef_num9);
+							num = tempRef_num9.argValue;
+						if (tempVar9)
 						{
 							item.setMaxWidth(num);
 						}

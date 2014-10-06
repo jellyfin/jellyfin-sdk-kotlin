@@ -1,5 +1,6 @@
 package MediaBrowser.Model.Channels;
 
+import MediaBrowser.Model.Entities.*;
 import MediaBrowser.Model.Querying.*;
 
 public class ChannelQuery

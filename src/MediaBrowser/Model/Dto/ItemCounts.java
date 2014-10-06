@@ -5,15 +5,6 @@ package MediaBrowser.Model.Dto;
 */
 public class ItemCounts
 {
-	private int privateAdultVideoCount;
-	public final int getAdultVideoCount()
-	{
-		return privateAdultVideoCount;
-	}
-	public final void setAdultVideoCount(int value)
-	{
-		privateAdultVideoCount = value;
-	}
 	/** 
 	 Gets or sets the movie count.
 	 

@@ -91,6 +91,21 @@ public class ChannelFeatures
 	}
 
 	/** 
+	 Gets or sets the automatic refresh levels.
+	 
+	 <value>The automatic refresh levels.</value>
+	*/
+	private Integer privateAutoRefreshLevels = null;
+	public final Integer getAutoRefreshLevels()
+	{
+		return privateAutoRefreshLevels;
+	}
+	public final void setAutoRefreshLevels(Integer value)
+	{
+		privateAutoRefreshLevels = value;
+	}
+
+	/** 
 	 Gets or sets the default sort orders.
 	 
 	 <value>The default sort orders.</value>

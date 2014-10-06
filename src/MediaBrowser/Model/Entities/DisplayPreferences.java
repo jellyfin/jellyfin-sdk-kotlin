@@ -213,6 +213,18 @@ public class DisplayPreferences implements IHasPropertyChangedEvent
 	{
 		privateShowSidebar = value;
 	}
+	/** 
+	 Gets or sets the client
+	*/
+	private String privateClient;
+	public final String getClient()
+	{
+		return privateClient;
+	}
+	public final void setClient(String value)
+	{
+		privateClient = value;
+	}
 
 	/** 
 	 Increases the size of the image.

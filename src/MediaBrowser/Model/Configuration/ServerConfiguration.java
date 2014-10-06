@@ -502,14 +502,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		privatePeopleMetadataOptions = value;
 	}
 
-	private String[] privateSecureApps2;
-	public final String[] getSecureApps2()
+	private String[] privateInsecureApps;
+	public final String[] getInsecureApps()
 	{
-		return privateSecureApps2;
+		return privateInsecureApps;
 	}
-	public final void setSecureApps2(String[] value)
+	public final void setInsecureApps(String[] value)
 	{
-		privateSecureApps2 = value;
+		privateInsecureApps = value;
 	}
 
 	private boolean privateSaveMetadataHidden;
@@ -520,6 +520,16 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setSaveMetadataHidden(boolean value)
 	{
 		privateSaveMetadataHidden = value;
+	}
+
+	private boolean privateFindInternetTrailers;
+	public final boolean getFindInternetTrailers()
+	{
+		return privateFindInternetTrailers;
+	}
+	public final void setFindInternetTrailers(boolean value)
+	{
+		privateFindInternetTrailers = value;
 	}
 
 	/** 
@@ -548,6 +558,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setRealtimeMonitorDelay(30);
 
 		setEnableInternetProviders(true);
+		setFindInternetTrailers(true);
 
 		setPathSubstitutions(new PathSubstitution[] { });
 
@@ -566,16 +577,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 
 		setPeopleMetadataOptions(new PeopleMetadataOptions());
 
-		setSecureApps2(new String[] {"Dashboard", "MBKinect", "NuVue", "Media Browser Theater", "MB-Classic"});
-
-		MetadataOptions tempVar = new MetadataOptions(1, 1280);
-		tempVar.setItemType("Book");
-		MetadataOptions tempVar2 = new MetadataOptions(1, 1280);
-		tempVar2.setItemType("MusicAlbum");
-		MetadataOptions tempVar3 = new MetadataOptions(1, 1280);
-		tempVar3.setItemType("MusicArtist");
-		MetadataOptions tempVar4 = new MetadataOptions(0, 1280);
-		tempVar4.setItemType("Season");
-		setMetadataOptions(new MetadataOptions[] {tempVar, tempVar2, tempVar3, tempVar4});
+		setInsecureApps(new String[] {"Roku", "Chromecast", "iOS", "Android"});
 	}
 }

@@ -312,6 +312,26 @@ public class UserConfiguration
 		privateSyncConnectImage = value;
 	}
 
+	private boolean privateIncludeTrailersInSuggestions;
+	public final boolean getIncludeTrailersInSuggestions()
+	{
+		return privateIncludeTrailersInSuggestions;
+	}
+	public final void setIncludeTrailersInSuggestions(boolean value)
+	{
+		privateIncludeTrailersInSuggestions = value;
+	}
+
+	private boolean privateEnableCinemaMode;
+	public final boolean getEnableCinemaMode()
+	{
+		return privateEnableCinemaMode;
+	}
+	public final void setEnableCinemaMode(boolean value)
+	{
+		privateEnableCinemaMode = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="UserConfiguration" /> class.
 	*/
@@ -335,5 +355,7 @@ public class UserConfiguration
 
 		setSyncConnectName(true);
 		setSyncConnectImage(true);
+		setIncludeTrailersInSuggestions(true);
+		setEnableCinemaMode(true);
 	}
 }

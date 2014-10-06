@@ -8,31 +8,58 @@ public enum UserDataSaveReason
 	/** 
 	 The playback start
 	*/
-	PlaybackStart,
+	PlaybackStart(1),
 	/** 
 	 The playback progress
 	*/
-	PlaybackProgress,
+	PlaybackProgress(2),
 	/** 
 	 The playback finished
 	*/
-	PlaybackFinished,
+	PlaybackFinished(3),
 	/** 
 	 The toggle played
 	*/
-	TogglePlayed,
+	TogglePlayed(4),
 	/** 
 	 The update user rating
 	*/
-	UpdateUserRating;
+	UpdateUserRating(5),
+	/** 
+	 The import
+	*/
+	Import(6);
+
+	private int intValue;
+	private static java.util.HashMap<Integer, UserDataSaveReason> mappings;
+	private static java.util.HashMap<Integer, UserDataSaveReason> getMappings()
+	{
+		if (mappings == null)
+		{
+			synchronized (UserDataSaveReason.class)
+			{
+				if (mappings == null)
+				{
+					mappings = new java.util.HashMap<Integer, UserDataSaveReason>();
+				}
+			}
+		}
+		return mappings;
+	}
+
+	private UserDataSaveReason(int value)
+	{
+		intValue = value;
+		getMappings().put(value, this);
+	}
 
 	public int getValue()
 	{
-		return this.ordinal();
+		return intValue;
 	}
 
 	public static UserDataSaveReason forValue(int value)
 	{
-		return values()[value];
+		return getMappings().get(value);
 	}
 }

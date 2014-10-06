@@ -125,6 +125,21 @@ public class ActivityLogEntry
 	}
 
 	/** 
+	 Gets or sets the user primary image tag.
+	 
+	 <value>The user primary image tag.</value>
+	*/
+	private String privateUserPrimaryImageTag;
+	public final String getUserPrimaryImageTag()
+	{
+		return privateUserPrimaryImageTag;
+	}
+	public final void setUserPrimaryImageTag(String value)
+	{
+		privateUserPrimaryImageTag = value;
+	}
+
+	/** 
 	 Gets or sets the log severity.
 	 
 	 <value>The log severity.</value>

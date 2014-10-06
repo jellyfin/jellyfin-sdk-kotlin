@@ -1,5 +1,6 @@
 package MediaBrowser.Model.Channels;
 
+import MediaBrowser.Model.Entities.*;
 import MediaBrowser.Model.Querying.*;
 
 public class AllChannelMediaQuery
@@ -79,11 +80,37 @@ public class AllChannelMediaQuery
 		privateContentTypes = value;
 	}
 
+	/** 
+	 Gets or sets the extra types.
+	 
+	 <value>The extra types.</value>
+	*/
+	private ExtraType[] privateExtraTypes;
+	public final ExtraType[] getExtraTypes()
+	{
+		return privateExtraTypes;
+	}
+	public final void setExtraTypes(ExtraType[] value)
+	{
+		privateExtraTypes = value;
+	}
+	private TrailerType[] privateTrailerTypes;
+	public final TrailerType[] getTrailerTypes()
+	{
+		return privateTrailerTypes;
+	}
+	public final void setTrailerTypes(TrailerType[] value)
+	{
+		privateTrailerTypes = value;
+	}
+
 	public AllChannelMediaQuery()
 	{
 		setChannelIds(new String[] { });
 
 		setContentTypes(new ChannelMediaContentType[] { });
+		setExtraTypes(new ExtraType[] { });
+		setTrailerTypes(new TrailerType[] { });
 
 		setFilters(new ItemFilter[] { });
 		setFields(new java.util.ArrayList<ItemFields>());

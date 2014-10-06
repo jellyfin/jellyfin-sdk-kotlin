@@ -5,6 +5,36 @@ import MediaBrowser.Model.Updates.*;
 public class PublicSystemInfo
 {
 	/** 
+	 Gets or sets the local address.
+	 
+	 <value>The local address.</value>
+	*/
+	private String privateLocalAddress;
+	public final String getLocalAddress()
+	{
+		return privateLocalAddress;
+	}
+	public final void setLocalAddress(String value)
+	{
+		privateLocalAddress = value;
+	}
+
+	/** 
+	 Gets or sets the wan address.
+	 
+	 <value>The wan address.</value>
+	*/
+	private String privateWanAddress;
+	public final String getWanAddress()
+	{
+		return privateWanAddress;
+	}
+	public final void setWanAddress(String value)
+	{
+		privateWanAddress = value;
+	}
+
+	/** 
 	 Gets or sets the name of the server.
 	 
 	 <value>The name of the server.</value>

@@ -1741,15 +1741,6 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 		privateLockedFields = value;
 	}
 
-	private Integer privateAdultVideoCount = null;
-	public final Integer getAdultVideoCount()
-	{
-		return privateAdultVideoCount;
-	}
-	public final void setAdultVideoCount(Integer value)
-	{
-		privateAdultVideoCount = value;
-	}
 	/** 
 	 Gets or sets the movie count.
 	 
