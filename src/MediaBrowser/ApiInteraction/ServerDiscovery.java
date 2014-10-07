@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.net.*;
 import java.util.Enumeration;
 
-public class ServerDiscovery {
+public class ServerDiscovery implements IServerLocator {
 
     private ILogger logger;
     private IJsonSerializer jsonSerializer;
@@ -18,7 +18,8 @@ public class ServerDiscovery {
         jsonSerializer = new JsonSerializer();
     }
 
-    public void FindServers(ServerDiscoveryResponse response)
+    @Override
+    public void FindServers(Response<ServerDiscoveryInfo[]> response)
     {
         // Find the server using UDP broadcast
         try {

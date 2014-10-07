@@ -1,19 +1,15 @@
 package MediaBrowser;
 
 import MediaBrowser.ApiInteraction.*;
-import MediaBrowser.Model.ApiClient.ServerDiscoveryInfo;
+import MediaBrowser.ApiInteraction.Http.VolleyHttpClient;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.System.PublicSystemInfo;
-import android.content.Context;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
-import java.util.ArrayList;
-
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 

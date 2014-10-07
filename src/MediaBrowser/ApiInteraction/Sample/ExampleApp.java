@@ -1,11 +1,10 @@
 package MediaBrowser.ApiInteraction.Sample;
 
 import MediaBrowser.ApiInteraction.*;
+import MediaBrowser.ApiInteraction.Http.VolleyHttpClient;
 import MediaBrowser.Model.Dto.BaseItemDto;
-import MediaBrowser.Model.Dto.ItemCounts;
 import MediaBrowser.Model.Entities.SortOrder;
 import MediaBrowser.Model.Logging.ILogger;
-import MediaBrowser.Model.Logging.NullLogger;
 import MediaBrowser.Model.Querying.ItemFilter;
 import MediaBrowser.Model.Querying.ItemQuery;
 import MediaBrowser.Model.Querying.ItemSortBy;

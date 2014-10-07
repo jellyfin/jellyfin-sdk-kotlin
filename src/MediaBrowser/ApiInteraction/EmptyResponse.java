@@ -1,8 +1,8 @@
 package MediaBrowser.ApiInteraction;
 
-public class Response<T> {
+public class EmptyResponse {
 
-    public void onResponse(T response)
+    public void onResponse()
     {
 
     }

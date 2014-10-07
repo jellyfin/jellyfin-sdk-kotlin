@@ -43,21 +43,6 @@ import java.util.logging.Logger;
 
 public class ApiClient extends BaseApiClient {
  
-/*    public event EventHandler<HttpResponseEventArgs> HttpResponseReceived
-    {
-        add { HttpClient.HttpResponseReceived += value; }
-        remove
-        {
-            HttpClient.HttpResponseReceived -= value;
-        }
-    }
- 
-    /// <summary>
-    /// Gets or sets the web socket connection.
-    /// </summary>
-    /// <value>The web socket connection.</value>
-    public ApiWebSocket WebSocketConnection { get; set; }*/
-
     private IAsyncHttpClient _httpClient;
 
     public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String accessToken)
@@ -78,23 +63,28 @@ public class ApiClient extends BaseApiClient {
         ResetHttpHeaders();
     }
 
-    @Override
-    protected void SetAuthorizationHttpRequestHeader(String scheme, String parameter) {
-        _httpClient.SetAuthorizationHeader(scheme, parameter);
-    }
-
-    @Override
-    protected void SetHttpRequestHeader(String name, String value) {
-        _httpClient.SetHttpRequestHeader(name, value);
-    }
-
-    @Override
-    protected void ClearHttpRequestHeader(String name) {
-        _httpClient.ClearHttpRequestHeader(name);
-    }
-
     public ImageLoader getImageLoader() {
         return _httpClient.getImageLoader();
+    }
+
+    private void Send(String url, String method, final Response<String> response)
+    {
+        HttpRequest request = new HttpRequest();
+        request.setUrl(url);
+        request.setMethod(method);
+        request.setRequestHeaders(this.HttpHeaders);
+        _httpClient.Send(request, response);
+    }
+
+    private void Send(String url, String method, String requestContent, String requestContentType, final Response<String> response)
+    {
+        HttpRequest request = new HttpRequest();
+        request.setUrl(url);
+        request.setMethod(method);
+        request.setRequestHeaders(this.HttpHeaders);
+        request.setRequestContent(requestContent);
+        request.setRequestContentType(requestContentType);
+        _httpClient.Send(request, response);
     }
 
     public void GetItemAsync(String id, String userId, final Response<BaseItemDto> response)
@@ -156,7 +146,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetRootFolderAsync(String userId, final Response<BaseItemDto> response)
@@ -191,7 +181,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetPublicUsersAsync(final Response<UserDto[]> response)
@@ -209,7 +199,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetClientSessionsAsync(SessionQuery query, final Response<SessionInfoDto[]> response)
@@ -231,7 +221,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     private void GetItemsFromUrl(String url, final Response<QueryResult<BaseItemDto>> response) {
@@ -247,7 +237,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     private void GetItemFromUrl(String url, final Response<BaseItemDto> response) {
@@ -263,7 +253,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetItemsAsync(ItemQuery query, final Response<QueryResult<BaseItemDto>> response)
@@ -786,7 +776,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -809,7 +799,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -856,7 +846,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -878,7 +868,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -900,7 +890,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -929,7 +919,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -958,7 +948,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -980,7 +970,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -1014,7 +1004,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -1048,7 +1038,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -1070,7 +1060,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -1092,7 +1082,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -1114,7 +1104,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
  
     /*public Task<UserItemDataDto> MarkPlayedAsync(String itemId, String userId, DateTime? datePlayed)
@@ -1368,7 +1358,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void DeleteAsync(String url, final Response<EmptyRequestResult> response)
@@ -1388,7 +1378,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.DeleteAsync(url, stringResponse);
+        Send(url, "DELETE", stringResponse);
     }
 
     public void PostAsync(String url, final Response<EmptyRequestResult> response)
@@ -1408,7 +1398,7 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("url");
         }
 
-        _httpClient.PostAsync(url, "application/x-www-form-urlencoded", postBody.GetQueryString(), response);
+        Send(url, "POST", postBody.GetQueryString(), "application/x-www-form-urlencoded", response);
     }
 
     public void PostAsync(String url, Object obj, final Response<EmptyRequestResult> response)
@@ -1430,7 +1420,7 @@ public class ApiClient extends BaseApiClient {
 
         String json = getJsonSerializer().SerializeToString(obj);
 
-        _httpClient.PostAsync(url, "application/json", json, jsonResponse);
+        Send(url, "POST", json, "application/json", jsonResponse);
     }
 
     /// <summary>
@@ -1479,7 +1469,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.DeleteAsync(url, jsonResponse);
+        Send(url, "DELETE", jsonResponse);
     }
  
     /// <summary>
@@ -1517,7 +1507,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.PostAsync(url, jsonResponse);
+        Send(url, "POST", jsonResponse);
     }
 
     /// <summary>
@@ -1629,7 +1619,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -1670,7 +1660,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void MarkNotificationsRead(String userId, String[] notificationIdList, Boolean isRead, final Response<EmptyRequestResult> response)
@@ -1710,7 +1700,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetAllThemeMediaAsync(String userId, String itemId, Boolean inheritFromParent, final Response<AllThemeMediaResult> response)
@@ -1733,7 +1723,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetSearchHintsAsync(SearchQuery query, final Response<SearchHintResult> response)
@@ -1769,7 +1759,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetThemeSongsAsync(String userId, String itemId, Boolean inheritFromParent, final Response<ThemeMediaResult> response)
@@ -1792,7 +1782,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetThemeVideosAsync(String userId, String itemId, Boolean inheritFromParent, final Response<ThemeMediaResult> response)
@@ -1815,7 +1805,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -1855,7 +1845,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -1883,7 +1873,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     /// <summary>
@@ -1913,7 +1903,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void ReportCapabilities(ClientCapabilities capabilities, final Response<EmptyRequestResult> response)
@@ -1948,7 +1938,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetLiveTvRecordingGroupsAsync(RecordingGroupQuery query, final Response<QueryResult<RecordingGroupDto>> response)
@@ -1975,7 +1965,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetLiveTvRecordingsAsync(RecordingQuery query, final Response<QueryResult<RecordingInfoDto>> response)
@@ -2009,7 +1999,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetLiveTvChannelsAsync(LiveTvChannelQuery query, final Response<QueryResult<ChannelInfoDto>> response)
@@ -2043,7 +2033,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void CancelLiveTvSeriesTimerAsync(String id, final Response<EmptyRequestResult> response)
@@ -2111,7 +2101,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetLiveTvRecordingAsync(String id, String userId, final Response<RecordingInfoDto> response)
@@ -2137,7 +2127,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetLiveTvRecordingGroupAsync(String id, String userId, final Response<RecordingGroupDto> response)
@@ -2163,7 +2153,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetLiveTvSeriesTimerAsync(String id, final Response<SeriesTimerInfoDto> response)
@@ -2188,7 +2178,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetLiveTvSeriesTimersAsync(SeriesTimerQuery query, final Response<QueryResult<SeriesTimerInfoDto>> response)
@@ -2216,7 +2206,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetLiveTvTimerAsync(String id, final Response<TimerInfoDto> response)
@@ -2241,7 +2231,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetLiveTvTimersAsync(TimerQuery query, final Response<QueryResult<TimerInfoDto>> response)
@@ -2269,7 +2259,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetLiveTvProgramsAsync(ProgramQuery query, final Response<QueryResult<ProgramInfoDto>> response)
@@ -2321,7 +2311,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetRecommendedLiveTvProgramsAsync(RecommendedProgramQuery query, final Response<QueryResult<ProgramInfoDto>> response)
@@ -2351,7 +2341,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void CreateLiveTvSeriesTimerAsync(SeriesTimerInfoDto timer, final Response<EmptyRequestResult> response)
@@ -2402,7 +2392,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetDefaultLiveTvTimerInfo(final Response<SeriesTimerInfoDto> response)
@@ -2420,7 +2410,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetLiveTvGuideInfo(final Response<GuideInfo> response)
@@ -2438,7 +2428,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetLiveTvProgramAsync(String id, String userId, final Response<ProgramInfoDto> response)
@@ -2464,7 +2454,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void UpdateLiveTvSeriesTimerAsync(SeriesTimerInfoDto timer, final Response<EmptyRequestResult> response)
@@ -2563,7 +2553,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void GetChannelItems(ChannelItemQuery query, final Response<QueryResult<BaseItemDto>> response)
@@ -2620,7 +2610,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void StopTranscodingProcesses(String deviceId, final Response<EmptyRequestResult> response)
@@ -2687,7 +2677,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.GetAsync(url, jsonResponse);
+        Send(url, "GET", jsonResponse);
     }
 
     public void AddToPlaylist(String playlistId, String[] itemIds, String userId, final Response<EmptyRequestResult> response)
@@ -2727,7 +2717,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        _httpClient.PostAsync(url, jsonResponse);
+        Send(url, "POST", jsonResponse);
     }
 
     public void GetPlaylistItems(PlaylistItemQuery query, final Response<QueryResult<BaseItemDto>> response)

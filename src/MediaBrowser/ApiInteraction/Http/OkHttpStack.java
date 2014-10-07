@@ -1,4 +1,4 @@
-package MediaBrowser.ApiInteraction;
+package MediaBrowser.ApiInteraction.Http;
 
 import com.android.volley.toolbox.HurlStack;
 import com.squareup.okhttp.OkHttpClient;
@@ -27,6 +27,7 @@ public class OkHttpStack extends HurlStack {
     }
 
     @Override protected HttpURLConnection createConnection(URL url) throws IOException {
+
         return mFactory.open(url);
     }
 }

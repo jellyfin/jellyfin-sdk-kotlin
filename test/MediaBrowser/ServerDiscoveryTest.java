@@ -1,8 +1,8 @@
 package MediaBrowser;
 
 import MediaBrowser.ApiInteraction.ConsoleLogger;
+import MediaBrowser.ApiInteraction.Response;
 import MediaBrowser.ApiInteraction.ServerDiscovery;
-import MediaBrowser.ApiInteraction.ServerDiscoveryResponse;
 import MediaBrowser.Model.ApiClient.ServerDiscoveryInfo;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Logging.NullLogger;
@@ -39,7 +39,7 @@ public class ServerDiscoveryTest {
 
         ServerDiscovery discovery = new ServerDiscovery(logger);
 
-        discovery.FindServers(new ServerDiscoveryResponse(){
+        discovery.FindServers(new Response<ServerDiscoveryInfo[]>(){
 
             @Override
             public void onResponse(ServerDiscoveryInfo[] jsonResponse) {

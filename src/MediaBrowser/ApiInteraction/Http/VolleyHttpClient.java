@@ -1,5 +1,9 @@
-package MediaBrowser.ApiInteraction;
+package MediaBrowser.ApiInteraction.Http;
 
+import MediaBrowser.ApiInteraction.HttpHeaders;
+import MediaBrowser.ApiInteraction.HttpRequest;
+import MediaBrowser.ApiInteraction.IAsyncHttpClient;
+import MediaBrowser.ApiInteraction.Response;
 import MediaBrowser.Model.Logging.ILogger;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -32,8 +36,6 @@ public class VolleyHttpClient implements IAsyncHttpClient {
     private ILogger logger;
     private Context context;
 
-    HashMap<String, String> globalHeaders = new HashMap<String, String>();
-
     public VolleyHttpClient(ILogger logger, Context context) {
         this.logger = logger;
         this.context = context;
@@ -46,8 +48,8 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         // lazy initialize the request queue, the queue instance will be
         // created when it is accessed for the first time
         if (mRequestQueue == null) {
-            //mRequestQueue = Volley.newRequestQueue(context, new OkHttpStack());
-            mRequestQueue = Volley.newRequestQueue(context);
+            mRequestQueue = Volley.newRequestQueue(context, new OkHttpStack());
+            //mRequestQueue = Volley.newRequestQueue(context);
         }
 
         return mRequestQueue;
@@ -96,38 +98,42 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         }
     }
 
-    @Override
-    public void SetAuthorizationHeader(String scheme, String parameter) {
-
-        String value = scheme + " " + parameter;
-
-        SetHttpRequestHeader("Authorization", value);
-    }
-
-    @Override
-    public void SetHttpRequestHeader(String name, String value) {
-        globalHeaders.put(name, value);
-    }
-
-    @Override
-    public void ClearHttpRequestHeader(String name) {
-        globalHeaders.remove(name);
-    }
-
-    private void AddHeaders(HashMap<String, String> headers, String contentType)
+    private void AddHeaders(HashMap<String, String> headers, HttpRequest request)
     {
-        for (String key : globalHeaders.keySet()){
-            headers.put(key, globalHeaders.get(key));
+        HttpHeaders requestHeaders = request.getRequestHeaders();
+
+        for (String key : requestHeaders.keySet()){
+            headers.put(key, requestHeaders.get(key));
         }
 
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(contentType))
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(request.getRequestContentType()))
         {
-            headers.put("Content-Type", contentType);
+            headers.put("Content-Type", request.getRequestContentType());
+        }
+
+        String parameter = requestHeaders.getAuthorizationParameter();
+
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(parameter))
+        {
+            String value = requestHeaders.getAuthorizationScheme() + " " + parameter;
+
+            headers.put("Authorization", value);
         }
     }
 
-    private void SendAsync(int method, String url, final Response<String> response)
+    public void Send(final HttpRequest request, final Response<String> response)
     {
+        int method = Request.Method.GET;
+
+        if (request.getMethod() == "POST"){
+            method = Request.Method.POST;
+        }
+        else if (request.getMethod() == "DELETE"){
+            method = Request.Method.DELETE;
+        }
+
+        String url = request.getUrl();
+
         StringRequest req = new StringRequest(method, url, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String stringResponse) {
@@ -146,54 +152,7 @@ public class VolleyHttpClient implements IAsyncHttpClient {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String, String>();
-                AddHeaders(headers, null);
-                return headers;
-            }
-        };
-
-        // add the request object to the queue to be executed
-        addToRequestQueue(req);
-    }
-
-
-    @Override
-    public void GetAsync(String url, final Response<String> response) {
-
-        SendAsync(Request.Method.GET, url, response);
-    }
-
-    @Override
-    public void DeleteAsync(String url, Response<String> response) {
-        SendAsync(Request.Method.DELETE, url, response);
-    }
-
-    @Override
-    public void PostAsync(String url, Response<String> response) {
-        SendAsync(Request.Method.POST, url, response);
-    }
-
-    @Override
-    public void PostAsync(String url, final String contentType, final String postContent, final Response<String> response) {
-
-        StringRequest req = new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
-            @Override
-            public void onResponse(String stringResponse) {
-                logger.Debug("Response:%n %s", stringResponse);
-                response.onResponse(stringResponse);
-            }
-
-        }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                logger.Error("Error: ", error.getMessage());
-                response.onError();
-            }
-        }
-        ){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                AddHeaders(headers, contentType);
+                AddHeaders(headers, request);
                 return headers;
             }
 
@@ -205,6 +164,12 @@ public class VolleyHttpClient implements IAsyncHttpClient {
              */
             public byte[] getBody() throws AuthFailureError {
 
+                String postContent = request.getRequestContent();
+
+                if (postContent == null){
+                    return super.getBody();
+                }
+
                 return postContent.getBytes();
             }
         };
@@ -212,5 +177,4 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         // add the request object to the queue to be executed
         addToRequestQueue(req);
     }
-
 }

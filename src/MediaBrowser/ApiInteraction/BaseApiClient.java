@@ -305,53 +305,55 @@ public abstract class BaseApiClient implements IDisposable
 		return GetApiUrl(handler, new QueryStringDictionary());
 	}
 
-	public final void SetAuthenticationInfo(String accessToken, String userId)
-	{
-		setCurrentUserId(userId);
-		setAccessToken(accessToken);
-		ResetHttpHeaders();
-	}
+    protected  HttpHeaders HttpHeaders = new HttpHeaders();
 
-	public final void ClearAuthenticationInfo()
-	{
-		setCurrentUserId(null);
-		setAccessToken(null);
-		ResetHttpHeaders();
-	}
+    public void SetAuthenticationInfo(String accessToken, String userId)
+    {
+        setCurrentUserId(userId);
+        setAccessToken(accessToken);
+        ResetHttpHeaders();
+    }
 
-	public final void SetAuthenticationInfo(String accessToken)
-	{
-		setCurrentUserId(null);
-		setAccessToken(accessToken);
-		ResetHttpHeaders();
-	}
+    public void ClearAuthenticationInfo()
+    {
+        setCurrentUserId(null);
+        setAccessToken(null);
+        ResetHttpHeaders();
+    }
 
-	protected final void ResetHttpHeaders()
-	{
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(getAccessToken()))
-		{
-			ClearHttpRequestHeader("X-MediaBrowser-Token");
-		}
-		else
-		{
-			SetHttpRequestHeader("X-MediaBrowser-Token", getAccessToken());
-		}
+    public void SetAuthenticationInfo(String accessToken)
+    {
+        setCurrentUserId(null);
+        setAccessToken(accessToken);
+        ResetHttpHeaders();
+    }
 
-		String authValue = getAuthorizationParameter();
+    protected void ResetHttpHeaders()
+    {
+        HttpHeaders.SetAccessToken(getAccessToken());
 
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(authValue))
-		{
-			ClearHttpRequestHeader("Authorization");
-		}
-		else
-		{
-			SetAuthorizationHttpRequestHeader(getAuthorizationScheme(), authValue);
-		}
-	}
+        String authValue = getAuthorizationParameter();
 
-	protected abstract void SetAuthorizationHttpRequestHeader(String scheme, String parameter);
-	protected abstract void SetHttpRequestHeader(String name, String value);
-	protected abstract void ClearHttpRequestHeader(String name);
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(authValue))
+        {
+            ClearHttpRequestHeader("Authorization");
+            SetAuthorizationHttpRequestHeader(null, null);
+        }
+        else
+        {
+            SetAuthorizationHttpRequestHeader(getAuthorizationScheme(), authValue);
+        }
+    }
+
+	protected void SetAuthorizationHttpRequestHeader(String scheme, String parameter){
+        HttpHeaders.setAuthorizationScheme(scheme);
+        HttpHeaders.setAuthorizationParameter(parameter);
+    }
+
+    private void ClearHttpRequestHeader(String name)
+    {
+        HttpHeaders.remove(name);
+    }
 
 	/** 
 	 Gets the API URL.

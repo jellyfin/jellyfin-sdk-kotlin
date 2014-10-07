@@ -4,9 +4,6 @@ import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Logging.LogSeverity;
 import android.util.Log;
 
-/**
- * Created by Luke on 8/15/2014.
- */
 public class ConsoleLogger implements ILogger {
 
     @Override
