@@ -43,7 +43,7 @@ A complete [service example can be found here.](https://github.com/MediaBrowser/
 
 # Logging and Interfaces #
 
-ApiClient and ApiWebSocket both have additional constructors available allowing you to pass in your own implementation of ILogger. The default implementation is ConsoleLogger, which provides logging using System.Out. In addition you can also pass in your own implementation of IJsonSerializer, or use our ours which is currently based on Gson, although a switch to Jackson or Boon is planned.
+ApiClient and ApiWebSocket both have additional constructors available allowing you to pass in your own implementation of ILogger. The default implementation is ConsoleLogger, which provides logging using System.Out. In addition you can also pass in your own implementation of IJsonSerializer, or use ours which is currently based on Gson, although a switch to Jackson or Boon is planned.
 
 
 
