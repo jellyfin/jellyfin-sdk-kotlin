@@ -309,6 +309,13 @@ public class StreamInfo
 			throw new IllegalArgumentException(baseUrl);
 		}
 
+		if (getIsDirectStream() && getMediaSource() != null && getMediaSource().getProtocol() == MediaProtocol.Http)
+		{
+			if (getMediaSource().getRequiredHttpHeaders().isEmpty())
+			{
+			}
+		}
+
 		String dlnaCommand = BuildDlnaParam(this);
 
 		String extension = tangible.DotNetToJavaStringHelper.isNullOrEmpty(getContainer()) ? "" : "." + getContainer();
@@ -337,8 +344,8 @@ public class StreamInfo
 		String tempVar5 = item.getAudioCodec();
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>(java.util.Arrays.asList(new String[] {(tempVar != null) ? tempVar : "", (tempVar2 != null) ? tempVar2 : "", (tempVar3 != null) ? tempVar3 : "", (new Boolean(item.getIsDirectStream())).toString().toLowerCase(), (tempVar4 != null) ? tempVar4 : "", (tempVar5 != null) ? tempVar5 : "", item.getAudioStreamIndex() != null ? StringHelper.ToStringCultureInvariant(item.getAudioStreamIndex()) : "", item.getSubtitleStreamIndex() != null && item.getSubtitleDeliveryMethod() != SubtitleDeliveryMethod.External ? StringHelper.ToStringCultureInvariant(item.getSubtitleStreamIndex()) : "", item.getVideoBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getVideoBitrate()) : "", item.getAudioBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getAudioBitrate()) : "", item.getMaxAudioChannels() != null ? StringHelper.ToStringCultureInvariant(item.getMaxAudioChannels()) : "", item.getMaxFramerate() != null ? StringHelper.ToStringCultureInvariant(item.getMaxFramerate()) : "", item.getMaxWidth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxWidth()) : "", item.getMaxHeight() != null ? StringHelper.ToStringCultureInvariant(item.getMaxHeight()) : "", StringHelper.ToStringCultureInvariant(item.getStartPositionTicks()), item.getVideoLevel() != null ? StringHelper.ToStringCultureInvariant(item.getVideoLevel()) : ""}));
 
-		list.add(item.getIsDirectStream() ? "" : String.valueOf(new java.util.Date().getTime()));
-		list.add(item.getMaxRefFrames() != null ? StringHelper.ToStringCultureInvariant(item.getMaxRefFrames()) : "");
+        list.add(item.getIsDirectStream() ? "" : String.valueOf(new java.util.Date().getTime()));
+        list.add(item.getMaxRefFrames() != null ? StringHelper.ToStringCultureInvariant(item.getMaxRefFrames()) : "");
 		list.add(item.getMaxVideoBitDepth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxVideoBitDepth()) : "");
 
 		return String.format("Params=%1$s", tangible.DotNetToJavaStringHelper.join(";", list.toArray(new String[0])));

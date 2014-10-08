@@ -6,22 +6,34 @@ import MediaBrowser.Model.Dlna.*;
 //ORIGINAL LINE: [XmlRoot("Profile")] public class AndroidProfile : DefaultProfile
 public class AndroidProfile extends DefaultProfile
 {
-	public AndroidProfile()
+	public AndroidProfile(boolean supportsHls, boolean supportsMpegDash)
 	{
 		setName("Android");
+
+		java.util.ArrayList<TranscodingProfile> transcodingProfiles = new java.util.ArrayList<TranscodingProfile>();
 
 		TranscodingProfile tempVar = new TranscodingProfile();
 		tempVar.setContainer("mp3");
 		tempVar.setAudioCodec("mp3");
 		tempVar.setType(DlnaProfileType.Audio);
-		TranscodingProfile tempVar2 = new TranscodingProfile();
-		tempVar2.setProtocol("hls");
-		tempVar2.setContainer("ts");
-		tempVar2.setVideoCodec("h264");
-		tempVar2.setAudioCodec("aac");
-		tempVar2.setType(DlnaProfileType.Video);
-		tempVar2.setVideoProfile("Baseline");
-		tempVar2.setContext(EncodingContext.Streaming);
+		transcodingProfiles.add(tempVar);
+
+		if (supportsMpegDash)
+		{
+
+		}
+		if (supportsHls)
+		{
+			TranscodingProfile tempVar2 = new TranscodingProfile();
+			tempVar2.setProtocol("hls");
+			tempVar2.setContainer("ts");
+			tempVar2.setVideoCodec("h264");
+			tempVar2.setAudioCodec("aac");
+			tempVar2.setType(DlnaProfileType.Video);
+			tempVar2.setVideoProfile("Baseline");
+			tempVar2.setContext(EncodingContext.Streaming);
+			transcodingProfiles.add(tempVar2);
+		}
 		TranscodingProfile tempVar3 = new TranscodingProfile();
 		tempVar3.setContainer("mp4");
 		tempVar3.setVideoCodec("h264");
@@ -29,7 +41,9 @@ public class AndroidProfile extends DefaultProfile
 		tempVar3.setType(DlnaProfileType.Video);
 		tempVar3.setVideoProfile("Baseline");
 		tempVar3.setContext(EncodingContext.Static);
-		setTranscodingProfiles(new TranscodingProfile[] {tempVar, tempVar2, tempVar3});
+		transcodingProfiles.add(tempVar3);
+
+		setTranscodingProfiles(transcodingProfiles.toArray(new TranscodingProfile[0]));
 
 		DirectPlayProfile tempVar4 = new DirectPlayProfile();
 		tempVar4.setContainer("mp4");
@@ -59,30 +73,41 @@ public class AndroidProfile extends DefaultProfile
 
 		CodecProfile tempVar10 = new CodecProfile();
 		tempVar10.setType(CodecType.Video);
+		tempVar10.setCodec("h264");
 		tempVar10.setConditions(new ProfileCondition[]
 		{
+			new ProfileCondition(ProfileConditionType.SubstringOf, ProfileConditionValue.VideoProfile, "baseline"),
 			new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Width, "1920"),
 			new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Height, "1080"),
 			new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoBitDepth, "8"),
 			new ProfileCondition(ProfileConditionType.NotEquals, ProfileConditionValue.IsAnamorphic, "true")
 		});
 		CodecProfile tempVar11 = new CodecProfile();
-		tempVar11.setType(CodecType.VideoAudio);
-		tempVar11.setCodec("aac");
-		tempVar11.setConditions(new ProfileCondition[] {new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.AudioChannels, "2")});
+		tempVar11.setType(CodecType.Video);
+		tempVar11.setConditions(new ProfileCondition[]
+		{
+			new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Width, "1920"),
+			new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Height, "1080"),
+			new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoBitDepth, "8"),
+			new ProfileCondition(ProfileConditionType.NotEquals, ProfileConditionValue.IsAnamorphic, "true")
+		});
 		CodecProfile tempVar12 = new CodecProfile();
-		tempVar12.setType(CodecType.Audio);
+		tempVar12.setType(CodecType.VideoAudio);
 		tempVar12.setCodec("aac");
 		tempVar12.setConditions(new ProfileCondition[] {new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.AudioChannels, "2")});
 		CodecProfile tempVar13 = new CodecProfile();
 		tempVar13.setType(CodecType.Audio);
-		tempVar13.setCodec("mp3");
-		tempVar13.setConditions(new ProfileCondition[]
+		tempVar13.setCodec("aac");
+		tempVar13.setConditions(new ProfileCondition[] {new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.AudioChannels, "2")});
+		CodecProfile tempVar14 = new CodecProfile();
+		tempVar14.setType(CodecType.Audio);
+		tempVar14.setCodec("mp3");
+		tempVar14.setConditions(new ProfileCondition[]
 		{
 			new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.AudioChannels, "2"),
 			new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.AudioBitrate, "320000")
 		});
-		setCodecProfiles(new CodecProfile[] {tempVar10, tempVar11, tempVar12, tempVar13});
+		setCodecProfiles(new CodecProfile[] {tempVar10, tempVar11, tempVar12, tempVar13, tempVar14});
 
 	}
 }

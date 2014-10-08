@@ -131,6 +131,8 @@ public class ConditionProcessor
 
 		switch (condition.getCondition())
 		{
+			case SubstringOf:
+				return StringHelper.IndexOfIgnoreCase(currentValue, expected) != -1;
 			case Equals:
 				return StringHelper.EqualsIgnoreCase(currentValue, expected);
 			case NotEquals:

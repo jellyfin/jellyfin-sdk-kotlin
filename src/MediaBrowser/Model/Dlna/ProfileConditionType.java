@@ -5,7 +5,8 @@ public enum ProfileConditionType
 	Equals(0),
 	NotEquals(1),
 	LessThanEqual(2),
-	GreaterThanEqual(3);
+	GreaterThanEqual(3),
+	SubstringOf(4);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, ProfileConditionType> mappings;

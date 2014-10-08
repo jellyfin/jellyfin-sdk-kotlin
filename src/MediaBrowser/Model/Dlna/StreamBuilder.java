@@ -546,7 +546,7 @@ public class StreamBuilder
 	{
 		for (SubtitleProfile profile : profiles)
 		{
-			if (method == profile.getMethod() && ListHelper.ContainsIgnoreCase(formats, profile.getFormat()))
+			if (method.getValue() == profile.getMethod().getValue() && ListHelper.ContainsIgnoreCase(formats, profile.getFormat()))
 			{
 				return true;
 			}
