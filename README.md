@@ -1,7 +1,7 @@
 MediaBrowser.ApiClient.Java
 ===========================
 
-This library is built with Volley and OkHttp, and allows Android clients to easily access the Media Browser Rest API. The http stack can be swapped out if a pure Java version is needed.
+This library allows Android clients to easily access the Media Browser Rest API. It is built with Volley, OkHttp, Boon and Robolectric. The http stack can be swapped out if a pure Java version is needed.
 
 
 Usage is very simple:

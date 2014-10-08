@@ -6,6 +6,8 @@ import MediaBrowser.ApiInteraction.Response;
 import MediaBrowser.ApiInteraction.Discovery.ServerDiscovery;
 import MediaBrowser.Model.ApiClient.ServerDiscoveryInfo;
 import MediaBrowser.Model.Logging.ILogger;
+import MediaBrowser.Model.Serialization.IJsonSerializer;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +21,7 @@ import static org.junit.Assert.fail;
 public class ServerDiscoveryTest {
 
     private ILogger logger;
+    private IJsonSerializer jsonSerializer = new JsonSerializer();
 
     @Before
     public void setUp() throws Exception {
@@ -28,7 +31,7 @@ public class ServerDiscoveryTest {
     @Test
     public void findServers_shouldReturnResults() throws Exception {
 
-        ServerDiscovery discovery = new ServerDiscovery(logger, new JsonSerializer());
+        ServerDiscovery discovery = new ServerDiscovery(logger, jsonSerializer);
 
         discovery.FindServers(new Response<ServerDiscoveryInfo[]>(){
 
