@@ -33,10 +33,14 @@ public class ServerDiscoveryTest {
         discovery.FindServers(new Response<ServerDiscoveryInfo[]>(){
 
             @Override
-            public void onResponse(ServerDiscoveryInfo[] jsonResponse) {
+            public void onResponse(ServerDiscoveryInfo[] servers) {
 
                 // Do something with response
-                assertThat(jsonResponse.length, equalTo(1));
+                assertThat(servers.length, equalTo(1));
+
+                logger.Info(servers[0].getAddress());
+                logger.Info(servers[0].getId());
+                logger.Info(servers[0].getName());
             }
 
             @Override
