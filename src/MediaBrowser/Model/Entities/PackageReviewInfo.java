@@ -5,79 +5,79 @@ public class PackageReviewInfo
 	/** 
 	 The package id (database key) for this review
 	*/
-	private int privateid;
+	private int id;
 	public final int getid()
 	{
-		return privateid;
+		return id;
 	}
 	public final void setid(int value)
 	{
-		privateid = value;
+		id = value;
 	}
 
 	/** 
 	 The rating value
 	*/
-	private int privaterating;
+	private int rating;
 	public final int getrating()
 	{
-		return privaterating;
+		return rating;
 	}
 	public final void setrating(int value)
 	{
-		privaterating = value;
+		rating = value;
 	}
 
 	/** 
 	 Whether or not this review recommends this item
 	*/
-	private boolean privaterecommend;
+	private boolean recommend;
 	public final boolean getrecommend()
 	{
-		return privaterecommend;
+		return recommend;
 	}
 	public final void setrecommend(boolean value)
 	{
-		privaterecommend = value;
+		recommend = value;
 	}
 
 	/** 
 	 A short description of the review
 	*/
-	private String privatetitle;
+	private String title;
 	public final String gettitle()
 	{
-		return privatetitle;
+		return title;
 	}
 	public final void settitle(String value)
 	{
-		privatetitle = value;
+		title = value;
 	}
 
 	/** 
 	 A full review
 	*/
-	private String privatereview;
+	private String review;
 	public final String getreview()
 	{
-		return privatereview;
+		return review;
 	}
 	public final void setreview(String value)
 	{
-		privatereview = value;
+		review = value;
 	}
 
 	/** 
 	 Time of review
 	*/
-	private java.util.Date privatetimestamp = new java.util.Date(0);
+	private java.util.Date timestamp = new java.util.Date(0);
 	public final java.util.Date gettimestamp()
 	{
-		return privatetimestamp;
+		return timestamp;
 	}
 	public final void settimestamp(java.util.Date value)
 	{
-		privatetimestamp = value;
+		timestamp = value;
 	}
 
 }

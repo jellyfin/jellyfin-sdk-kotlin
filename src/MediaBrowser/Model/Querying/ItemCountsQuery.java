@@ -10,14 +10,14 @@ public class ItemCountsQuery
 	 
 	 <value>The user id.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -25,13 +25,13 @@ public class ItemCountsQuery
 	 
 	 <value><c>null</c> if [is favorite] contains no value, <c>true</c> if [is favorite]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsFavorite;
+	private Boolean IsFavorite;
 	public final Boolean getIsFavorite()
 	{
-		return privateIsFavorite;
+		return IsFavorite;
 	}
 	public final void setIsFavorite(Boolean value)
 	{
-		privateIsFavorite = value;
+		IsFavorite = value;
 	}
 }

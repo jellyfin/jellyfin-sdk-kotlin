@@ -10,14 +10,14 @@ public class VirtualFolderInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class VirtualFolderInfo
 	 
 	 <value>The locations.</value>
 	*/
-	private java.util.ArrayList<String> privateLocations;
+	private java.util.ArrayList<String> Locations;
 	public final java.util.ArrayList<String> getLocations()
 	{
-		return privateLocations;
+		return Locations;
 	}
 	public final void setLocations(java.util.ArrayList<String> value)
 	{
-		privateLocations = value;
+		Locations = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class VirtualFolderInfo
 	 
 	 <value>The type of the collection.</value>
 	*/
-	private String privateCollectionType;
+	private String CollectionType;
 	public final String getCollectionType()
 	{
-		return privateCollectionType;
+		return CollectionType;
 	}
 	public final void setCollectionType(String value)
 	{
-		privateCollectionType = value;
+		CollectionType = value;
 	}
 
 	/** 

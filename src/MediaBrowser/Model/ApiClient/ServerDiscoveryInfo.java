@@ -7,41 +7,41 @@ public class ServerDiscoveryInfo
 	 
 	 <value>The address.</value>
 	*/
-	private String privateAddress;
+	private String Address;
 	public final String getAddress()
 	{
-		return privateAddress;
+		return Address;
 	}
 	public final void setAddress(String value)
 	{
-		privateAddress = value;
+		Address = value;
 	}
 	/** 
 	 Gets or sets the server identifier.
 	 
 	 <value>The server identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 	/** 
 	 Gets or sets the name.
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 }

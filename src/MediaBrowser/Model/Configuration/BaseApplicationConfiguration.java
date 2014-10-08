@@ -14,14 +14,14 @@ public class BaseApplicationConfiguration
 	 
 	 <value><c>true</c> if [enable debug level logging]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateEnableDebugLevelLogging;
+	private boolean EnableDebugLevelLogging;
 	public final boolean getEnableDebugLevelLogging()
 	{
-		return privateEnableDebugLevelLogging;
+		return EnableDebugLevelLogging;
 	}
 	public final void setEnableDebugLevelLogging(boolean value)
 	{
-		privateEnableDebugLevelLogging = value;
+		EnableDebugLevelLogging = value;
 	}
 
 	/** 
@@ -29,27 +29,27 @@ public class BaseApplicationConfiguration
 	 
 	 <value><c>true</c> if [enable auto update]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateEnableAutoUpdate;
+	private boolean EnableAutoUpdate;
 	public final boolean getEnableAutoUpdate()
 	{
-		return privateEnableAutoUpdate;
+		return EnableAutoUpdate;
 	}
 	public final void setEnableAutoUpdate(boolean value)
 	{
-		privateEnableAutoUpdate = value;
+		EnableAutoUpdate = value;
 	}
 
 	/** 
 	 Gets of sets a value indicating the level of system updates (Release, Beta, Dev)
 	*/
-	private PackageVersionClass privateSystemUpdateLevel = PackageVersionClass.values()[0];
+	private PackageVersionClass SystemUpdateLevel = PackageVersionClass.values()[0];
 	public final PackageVersionClass getSystemUpdateLevel()
 	{
-		return privateSystemUpdateLevel;
+		return SystemUpdateLevel;
 	}
 	public final void setSystemUpdateLevel(PackageVersionClass value)
 	{
-		privateSystemUpdateLevel = value;
+		SystemUpdateLevel = value;
 	}
 
 	/** 
@@ -57,14 +57,14 @@ public class BaseApplicationConfiguration
 	 
 	 <value>The log file retention days.</value>
 	*/
-	private int privateLogFileRetentionDays;
+	private int LogFileRetentionDays;
 	public final int getLogFileRetentionDays()
 	{
-		return privateLogFileRetentionDays;
+		return LogFileRetentionDays;
 	}
 	public final void setLogFileRetentionDays(int value)
 	{
-		privateLogFileRetentionDays = value;
+		LogFileRetentionDays = value;
 	}
 
 	/** 
@@ -72,14 +72,14 @@ public class BaseApplicationConfiguration
 	 
 	 <value><c>true</c> if [run at startup]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateRunAtStartup;
+	private boolean RunAtStartup;
 	public final boolean getRunAtStartup()
 	{
-		return privateRunAtStartup;
+		return RunAtStartup;
 	}
 	public final void setRunAtStartup(boolean value)
 	{
-		privateRunAtStartup = value;
+		RunAtStartup = value;
 	}
 
 	/** 
@@ -87,14 +87,14 @@ public class BaseApplicationConfiguration
 	 
 	 <value><c>true</c> if this instance is first run; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsStartupWizardCompleted;
+	private boolean IsStartupWizardCompleted;
 	public final boolean getIsStartupWizardCompleted()
 	{
-		return privateIsStartupWizardCompleted;
+		return IsStartupWizardCompleted;
 	}
 	public final void setIsStartupWizardCompleted(boolean value)
 	{
-		privateIsStartupWizardCompleted = value;
+		IsStartupWizardCompleted = value;
 	}
 
 	/** 
@@ -102,14 +102,14 @@ public class BaseApplicationConfiguration
 	 
 	 <value>The cache path.</value>
 	*/
-	private String privateCachePath;
+	private String CachePath;
 	public final String getCachePath()
 	{
-		return privateCachePath;
+		return CachePath;
 	}
 	public final void setCachePath(String value)
 	{
-		privateCachePath = value;
+		CachePath = value;
 	}
 
 	/** 

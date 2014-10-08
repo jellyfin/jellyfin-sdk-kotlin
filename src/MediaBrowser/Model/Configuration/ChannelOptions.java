@@ -2,53 +2,53 @@ package MediaBrowser.Model.Configuration;
 
 public class ChannelOptions
 {
-	private Integer privatePreferredStreamingWidth;
+	private Integer PreferredStreamingWidth;
 	public final Integer getPreferredStreamingWidth()
 	{
-		return privatePreferredStreamingWidth;
+		return PreferredStreamingWidth;
 	}
 	public final void setPreferredStreamingWidth(Integer value)
 	{
-		privatePreferredStreamingWidth = value;
+		PreferredStreamingWidth = value;
 	}
 
-	private String privateDownloadPath;
+	private String DownloadPath;
 	public final String getDownloadPath()
 	{
-		return privateDownloadPath;
+		return DownloadPath;
 	}
 	public final void setDownloadPath(String value)
 	{
-		privateDownloadPath = value;
+		DownloadPath = value;
 	}
-	private Integer privateMaxDownloadAge;
+	private Integer MaxDownloadAge;
 	public final Integer getMaxDownloadAge()
 	{
-		return privateMaxDownloadAge;
+		return MaxDownloadAge;
 	}
 	public final void setMaxDownloadAge(Integer value)
 	{
-		privateMaxDownloadAge = value;
+		MaxDownloadAge = value;
 	}
 
-	private String[] privateDownloadingChannels;
+	private String[] DownloadingChannels;
 	public final String[] getDownloadingChannels()
 	{
-		return privateDownloadingChannels;
+		return DownloadingChannels;
 	}
 	public final void setDownloadingChannels(String[] value)
 	{
-		privateDownloadingChannels = value;
+		DownloadingChannels = value;
 	}
 
-	private Double privateDownloadSizeLimit;
+	private Double DownloadSizeLimit;
 	public final Double getDownloadSizeLimit()
 	{
-		return privateDownloadSizeLimit;
+		return DownloadSizeLimit;
 	}
 	public final void setDownloadSizeLimit(Double value)
 	{
-		privateDownloadSizeLimit = value;
+		DownloadSizeLimit = value;
 	}
 
 	public ChannelOptions()

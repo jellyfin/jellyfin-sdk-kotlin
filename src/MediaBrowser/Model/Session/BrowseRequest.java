@@ -10,14 +10,14 @@ public class BrowseRequest
 	 
 	 <value>The type of the item.</value>
 	*/
-	private String privateItemType;
+	private String ItemType;
 	public final String getItemType()
 	{
-		return privateItemType;
+		return ItemType;
 	}
 	public final void setItemType(String value)
 	{
-		privateItemType = value;
+		ItemType = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class BrowseRequest
 	 
 	 <value>The item id.</value>
 	*/
-	private String privateItemId;
+	private String ItemId;
 	public final String getItemId()
 	{
-		return privateItemId;
+		return ItemId;
 	}
 	public final void setItemId(String value)
 	{
-		privateItemId = value;
+		ItemId = value;
 	}
 
 	/** 
@@ -40,13 +40,13 @@ public class BrowseRequest
 	 
 	 <value>The name of the item.</value>
 	*/
-	private String privateItemName;
+	private String ItemName;
 	public final String getItemName()
 	{
-		return privateItemName;
+		return ItemName;
 	}
 	public final void setItemName(String value)
 	{
-		privateItemName = value;
+		ItemName = value;
 	}
 }

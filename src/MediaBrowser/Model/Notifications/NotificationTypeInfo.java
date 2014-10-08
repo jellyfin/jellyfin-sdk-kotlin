@@ -2,84 +2,84 @@ package MediaBrowser.Model.Notifications;
 
 public class NotificationTypeInfo
 {
-	private String privateType;
+	private String Type;
 	public final String getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(String value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
-	private boolean privateEnabled;
+	private boolean Enabled;
 	public final boolean getEnabled()
 	{
-		return privateEnabled;
+		return Enabled;
 	}
 	public final void setEnabled(boolean value)
 	{
-		privateEnabled = value;
+		Enabled = value;
 	}
 
-	private String privateCategory;
+	private String Category;
 	public final String getCategory()
 	{
-		return privateCategory;
+		return Category;
 	}
 	public final void setCategory(String value)
 	{
-		privateCategory = value;
+		Category = value;
 	}
 
-	private boolean privateIsBasedOnUserEvent;
+	private boolean IsBasedOnUserEvent;
 	public final boolean getIsBasedOnUserEvent()
 	{
-		return privateIsBasedOnUserEvent;
+		return IsBasedOnUserEvent;
 	}
 	public final void setIsBasedOnUserEvent(boolean value)
 	{
-		privateIsBasedOnUserEvent = value;
+		IsBasedOnUserEvent = value;
 	}
 
-	private String privateDefaultTitle;
+	private String DefaultTitle;
 	public final String getDefaultTitle()
 	{
-		return privateDefaultTitle;
+		return DefaultTitle;
 	}
 	public final void setDefaultTitle(String value)
 	{
-		privateDefaultTitle = value;
+		DefaultTitle = value;
 	}
 
-	private String privateDefaultDescription;
+	private String DefaultDescription;
 	public final String getDefaultDescription()
 	{
-		return privateDefaultDescription;
+		return DefaultDescription;
 	}
 	public final void setDefaultDescription(String value)
 	{
-		privateDefaultDescription = value;
+		DefaultDescription = value;
 	}
 
-	private java.util.ArrayList<String> privateVariables;
+	private java.util.ArrayList<String> Variables;
 	public final java.util.ArrayList<String> getVariables()
 	{
-		return privateVariables;
+		return Variables;
 	}
 	public final void setVariables(java.util.ArrayList<String> value)
 	{
-		privateVariables = value;
+		Variables = value;
 	}
 
 	public NotificationTypeInfo()

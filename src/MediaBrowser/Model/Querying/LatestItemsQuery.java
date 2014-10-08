@@ -7,14 +7,14 @@ public class LatestItemsQuery
 	 
 	 <value>The user id.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class LatestItemsQuery
 	 
 	 <value>The parent id.</value>
 	*/
-	private String privateParentId;
+	private String ParentId;
 	public final String getParentId()
 	{
-		return privateParentId;
+		return ParentId;
 	}
 	public final void setParentId(String value)
 	{
-		privateParentId = value;
+		ParentId = value;
 	}
 
 	/** 
@@ -37,14 +37,14 @@ public class LatestItemsQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex;
+	private Integer StartIndex;
 	public final Integer getStartIndex()
 	{
-		return privateStartIndex;
+		return StartIndex;
 	}
 	public final void setStartIndex(Integer value)
 	{
-		privateStartIndex = value;
+		StartIndex = value;
 	}
 
 	/** 
@@ -52,14 +52,14 @@ public class LatestItemsQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit;
+	private Integer Limit;
 	public final Integer getLimit()
 	{
-		return privateLimit;
+		return Limit;
 	}
 	public final void setLimit(Integer value)
 	{
-		privateLimit = value;
+		Limit = value;
 	}
 
 	/** 
@@ -67,14 +67,14 @@ public class LatestItemsQuery
 	 
 	 <value>The fields.</value>
 	*/
-	private ItemFields[] privateFields;
+	private ItemFields[] Fields;
 	public final ItemFields[] getFields()
 	{
-		return privateFields;
+		return Fields;
 	}
 	public final void setFields(ItemFields[] value)
 	{
-		privateFields = value;
+		Fields = value;
 	}
 
 	/** 
@@ -82,14 +82,14 @@ public class LatestItemsQuery
 	 
 	 <value>The include item types.</value>
 	*/
-	private String[] privateIncludeItemTypes;
+	private String[] IncludeItemTypes;
 	public final String[] getIncludeItemTypes()
 	{
-		return privateIncludeItemTypes;
+		return IncludeItemTypes;
 	}
 	public final void setIncludeItemTypes(String[] value)
 	{
-		privateIncludeItemTypes = value;
+		IncludeItemTypes = value;
 	}
 
 	/** 
@@ -97,14 +97,14 @@ public class LatestItemsQuery
 	 
 	 <value><c>null</c> if [is played] contains no value, <c>true</c> if [is played]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsPlayed;
+	private Boolean IsPlayed;
 	public final Boolean getIsPlayed()
 	{
-		return privateIsPlayed;
+		return IsPlayed;
 	}
 	public final void setIsPlayed(Boolean value)
 	{
-		privateIsPlayed = value;
+		IsPlayed = value;
 	}
 
 	/** 
@@ -112,13 +112,13 @@ public class LatestItemsQuery
 	 
 	 <value><c>true</c> if [group items]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateGroupItems;
+	private boolean GroupItems;
 	public final boolean getGroupItems()
 	{
-		return privateGroupItems;
+		return GroupItems;
 	}
 	public final void setGroupItems(boolean value)
 	{
-		privateGroupItems = value;
+		GroupItems = value;
 	}
 }

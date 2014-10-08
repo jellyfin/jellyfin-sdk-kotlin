@@ -10,14 +10,14 @@ public class TaskInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class TaskInfo
 	 
 	 <value>The state of the task.</value>
 	*/
-	private TaskState privateState = TaskState.values()[0];
+	private TaskState State = TaskState.values()[0];
 	public final TaskState getState()
 	{
-		return privateState;
+		return State;
 	}
 	public final void setState(TaskState value)
 	{
-		privateState = value;
+		State = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class TaskInfo
 	 
 	 <value>The progress.</value>
 	*/
-	private Double privateCurrentProgressPercentage = null;
+	private Double CurrentProgressPercentage = null;
 	public final Double getCurrentProgressPercentage()
 	{
-		return privateCurrentProgressPercentage;
+		return CurrentProgressPercentage;
 	}
 	public final void setCurrentProgressPercentage(Double value)
 	{
-		privateCurrentProgressPercentage = value;
+		CurrentProgressPercentage = value;
 	}
 
 	/** 
@@ -55,14 +55,14 @@ public class TaskInfo
 	 
 	 <value>The id.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -70,14 +70,14 @@ public class TaskInfo
 	 
 	 <value>The last execution result.</value>
 	*/
-	private TaskResult privateLastExecutionResult;
+	private TaskResult LastExecutionResult;
 	public final TaskResult getLastExecutionResult()
 	{
-		return privateLastExecutionResult;
+		return LastExecutionResult;
 	}
 	public final void setLastExecutionResult(TaskResult value)
 	{
-		privateLastExecutionResult = value;
+		LastExecutionResult = value;
 	}
 
 	/** 
@@ -85,14 +85,14 @@ public class TaskInfo
 	 
 	 <value>The triggers.</value>
 	*/
-	private java.util.ArrayList<TaskTriggerInfo> privateTriggers;
+	private java.util.ArrayList<TaskTriggerInfo> Triggers;
 	public final java.util.ArrayList<TaskTriggerInfo> getTriggers()
 	{
-		return privateTriggers;
+		return Triggers;
 	}
 	public final void setTriggers(java.util.ArrayList<TaskTriggerInfo> value)
 	{
-		privateTriggers = value;
+		Triggers = value;
 	}
 
 	/** 
@@ -100,14 +100,14 @@ public class TaskInfo
 	 
 	 <value>The description.</value>
 	*/
-	private String privateDescription;
+	private String Description;
 	public final String getDescription()
 	{
-		return privateDescription;
+		return Description;
 	}
 	public final void setDescription(String value)
 	{
-		privateDescription = value;
+		Description = value;
 	}
 
 	/** 
@@ -115,14 +115,14 @@ public class TaskInfo
 	 
 	 <value>The category.</value>
 	*/
-	private String privateCategory;
+	private String Category;
 	public final String getCategory()
 	{
-		return privateCategory;
+		return Category;
 	}
 	public final void setCategory(String value)
 	{
-		privateCategory = value;
+		Category = value;
 	}
 
 	/** 
@@ -130,14 +130,14 @@ public class TaskInfo
 	 
 	 <value><c>true</c> if this instance is hidden; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsHidden;
+	private boolean IsHidden;
 	public final boolean getIsHidden()
 	{
-		return privateIsHidden;
+		return IsHidden;
 	}
 	public final void setIsHidden(boolean value)
 	{
-		privateIsHidden = value;
+		IsHidden = value;
 	}
 
 	/** 
@@ -145,14 +145,14 @@ public class TaskInfo
 	 
 	 <value>The key.</value>
 	*/
-	private String privateKey;
+	private String Key;
 	public final String getKey()
 	{
-		return privateKey;
+		return Key;
 	}
 	public final void setKey(String value)
 	{
-		privateKey = value;
+		Key = value;
 	}
 
 	/** 

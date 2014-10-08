@@ -14,14 +14,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value><c>true</c> if [enable u pn p]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateEnableUPnP;
+	private boolean EnableUPnP;
 	public final boolean getEnableUPnP()
 	{
-		return privateEnableUPnP;
+		return EnableUPnP;
 	}
 	public final void setEnableUPnP(boolean value)
 	{
-		privateEnableUPnP = value;
+		EnableUPnP = value;
 	}
 
 	/** 
@@ -29,14 +29,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The HTTP server port number.</value>
 	*/
-	private int privateHttpServerPortNumber;
+	private int HttpServerPortNumber;
 	public final int getHttpServerPortNumber()
 	{
-		return privateHttpServerPortNumber;
+		return HttpServerPortNumber;
 	}
 	public final void setHttpServerPortNumber(int value)
 	{
-		privateHttpServerPortNumber = value;
+		HttpServerPortNumber = value;
 	}
 
 	/** 
@@ -44,14 +44,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value><c>true</c> if [enable internet providers]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateEnableInternetProviders;
+	private boolean EnableInternetProviders;
 	public final boolean getEnableInternetProviders()
 	{
-		return privateEnableInternetProviders;
+		return EnableInternetProviders;
 	}
 	public final void setEnableInternetProviders(boolean value)
 	{
-		privateEnableInternetProviders = value;
+		EnableInternetProviders = value;
 	}
 
 	/** 
@@ -59,14 +59,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The item by name path.</value>
 	*/
-	private String privateItemsByNamePath;
+	private String ItemsByNamePath;
 	public final String getItemsByNamePath()
 	{
-		return privateItemsByNamePath;
+		return ItemsByNamePath;
 	}
 	public final void setItemsByNamePath(String value)
 	{
-		privateItemsByNamePath = value;
+		ItemsByNamePath = value;
 	}
 
 	/** 
@@ -74,14 +74,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The metadata path.</value>
 	*/
-	private String privateMetadataPath;
+	private String MetadataPath;
 	public final String getMetadataPath()
 	{
-		return privateMetadataPath;
+		return MetadataPath;
 	}
 	public final void setMetadataPath(String value)
 	{
-		privateMetadataPath = value;
+		MetadataPath = value;
 	}
 
 	/** 
@@ -89,14 +89,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The display name of the season zero.</value>
 	*/
-	private String privateSeasonZeroDisplayName;
+	private String SeasonZeroDisplayName;
 	public final String getSeasonZeroDisplayName()
 	{
-		return privateSeasonZeroDisplayName;
+		return SeasonZeroDisplayName;
 	}
 	public final void setSeasonZeroDisplayName(String value)
 	{
-		privateSeasonZeroDisplayName = value;
+		SeasonZeroDisplayName = value;
 	}
 
 	/** 
@@ -104,14 +104,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value><c>true</c> if [save local meta]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateSaveLocalMeta;
+	private boolean SaveLocalMeta;
 	public final boolean getSaveLocalMeta()
 	{
-		return privateSaveLocalMeta;
+		return SaveLocalMeta;
 	}
 	public final void setSaveLocalMeta(boolean value)
 	{
-		privateSaveLocalMeta = value;
+		SaveLocalMeta = value;
 	}
 
 	/** 
@@ -119,14 +119,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The preferred metadata language.</value>
 	*/
-	private String privatePreferredMetadataLanguage;
+	private String PreferredMetadataLanguage;
 	public final String getPreferredMetadataLanguage()
 	{
-		return privatePreferredMetadataLanguage;
+		return PreferredMetadataLanguage;
 	}
 	public final void setPreferredMetadataLanguage(String value)
 	{
-		privatePreferredMetadataLanguage = value;
+		PreferredMetadataLanguage = value;
 	}
 
 	/** 
@@ -134,14 +134,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The metadata country code.</value>
 	*/
-	private String privateMetadataCountryCode;
+	private String MetadataCountryCode;
 	public final String getMetadataCountryCode()
 	{
-		return privateMetadataCountryCode;
+		return MetadataCountryCode;
 	}
 	public final void setMetadataCountryCode(String value)
 	{
-		privateMetadataCountryCode = value;
+		MetadataCountryCode = value;
 	}
 
 	/** 
@@ -149,14 +149,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The sort replace characters.</value>
 	*/
-	private String[] privateSortReplaceCharacters;
+	private String[] SortReplaceCharacters;
 	public final String[] getSortReplaceCharacters()
 	{
-		return privateSortReplaceCharacters;
+		return SortReplaceCharacters;
 	}
 	public final void setSortReplaceCharacters(String[] value)
 	{
-		privateSortReplaceCharacters = value;
+		SortReplaceCharacters = value;
 	}
 
 	/** 
@@ -164,14 +164,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The sort remove characters.</value>
 	*/
-	private String[] privateSortRemoveCharacters;
+	private String[] SortRemoveCharacters;
 	public final String[] getSortRemoveCharacters()
 	{
-		return privateSortRemoveCharacters;
+		return SortRemoveCharacters;
 	}
 	public final void setSortRemoveCharacters(String[] value)
 	{
-		privateSortRemoveCharacters = value;
+		SortRemoveCharacters = value;
 	}
 
 	/** 
@@ -179,14 +179,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The sort remove words.</value>
 	*/
-	private String[] privateSortRemoveWords;
+	private String[] SortRemoveWords;
 	public final String[] getSortRemoveWords()
 	{
-		return privateSortRemoveWords;
+		return SortRemoveWords;
 	}
 	public final void setSortRemoveWords(String[] value)
 	{
-		privateSortRemoveWords = value;
+		SortRemoveWords = value;
 	}
 
 	/** 
@@ -194,14 +194,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value><c>true</c> if [show log window]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateShowLogWindow;
+	private boolean ShowLogWindow;
 	public final boolean getShowLogWindow()
 	{
-		return privateShowLogWindow;
+		return ShowLogWindow;
 	}
 	public final void setShowLogWindow(boolean value)
 	{
-		privateShowLogWindow = value;
+		ShowLogWindow = value;
 	}
 
 	/** 
@@ -209,14 +209,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The min resume PCT.</value>
 	*/
-	private int privateMinResumePct;
+	private int MinResumePct;
 	public final int getMinResumePct()
 	{
-		return privateMinResumePct;
+		return MinResumePct;
 	}
 	public final void setMinResumePct(int value)
 	{
-		privateMinResumePct = value;
+		MinResumePct = value;
 	}
 
 	/** 
@@ -224,14 +224,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The max resume PCT.</value>
 	*/
-	private int privateMaxResumePct;
+	private int MaxResumePct;
 	public final int getMaxResumePct()
 	{
-		return privateMaxResumePct;
+		return MaxResumePct;
 	}
 	public final void setMaxResumePct(int value)
 	{
-		privateMaxResumePct = value;
+		MaxResumePct = value;
 	}
 
 	/** 
@@ -239,14 +239,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The min resume duration seconds.</value>
 	*/
-	private int privateMinResumeDurationSeconds;
+	private int MinResumeDurationSeconds;
 	public final int getMinResumeDurationSeconds()
 	{
-		return privateMinResumeDurationSeconds;
+		return MinResumeDurationSeconds;
 	}
 	public final void setMinResumeDurationSeconds(int value)
 	{
-		privateMinResumeDurationSeconds = value;
+		MinResumeDurationSeconds = value;
 	}
 
 	/** 
@@ -256,14 +256,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The file watcher delay.</value>
 	*/
-	private int privateRealtimeMonitorDelay;
+	private int RealtimeMonitorDelay;
 	public final int getRealtimeMonitorDelay()
 	{
-		return privateRealtimeMonitorDelay;
+		return RealtimeMonitorDelay;
 	}
 	public final void setRealtimeMonitorDelay(int value)
 	{
-		privateRealtimeMonitorDelay = value;
+		RealtimeMonitorDelay = value;
 	}
 
 	/** 
@@ -272,14 +272,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value><c>true</c> if [enable dashboard response caching]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateEnableDashboardResponseCaching;
+	private boolean EnableDashboardResponseCaching;
 	public final boolean getEnableDashboardResponseCaching()
 	{
-		return privateEnableDashboardResponseCaching;
+		return EnableDashboardResponseCaching;
 	}
 	public final void setEnableDashboardResponseCaching(boolean value)
 	{
-		privateEnableDashboardResponseCaching = value;
+		EnableDashboardResponseCaching = value;
 	}
 
 	/** 
@@ -287,14 +287,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The dashboard source path.</value>
 	*/
-	private String privateDashboardSourcePath;
+	private String DashboardSourcePath;
 	public final String getDashboardSourcePath()
 	{
-		return privateDashboardSourcePath;
+		return DashboardSourcePath;
 	}
 	public final void setDashboardSourcePath(String value)
 	{
-		privateDashboardSourcePath = value;
+		DashboardSourcePath = value;
 	}
 
 	/** 
@@ -302,32 +302,32 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value><c>true</c> if [enable tv db updates]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateEnableTvDbUpdates;
+	private boolean EnableTvDbUpdates;
 	public final boolean getEnableTvDbUpdates()
 	{
-		return privateEnableTvDbUpdates;
+		return EnableTvDbUpdates;
 	}
 	public final void setEnableTvDbUpdates(boolean value)
 	{
-		privateEnableTvDbUpdates = value;
+		EnableTvDbUpdates = value;
 	}
-	private boolean privateEnableTmdbUpdates;
+	private boolean EnableTmdbUpdates;
 	public final boolean getEnableTmdbUpdates()
 	{
-		return privateEnableTmdbUpdates;
+		return EnableTmdbUpdates;
 	}
 	public final void setEnableTmdbUpdates(boolean value)
 	{
-		privateEnableTmdbUpdates = value;
+		EnableTmdbUpdates = value;
 	}
-	private boolean privateEnableFanArtUpdates;
+	private boolean EnableFanArtUpdates;
 	public final boolean getEnableFanArtUpdates()
 	{
-		return privateEnableFanArtUpdates;
+		return EnableFanArtUpdates;
 	}
 	public final void setEnableFanArtUpdates(boolean value)
 	{
-		privateEnableFanArtUpdates = value;
+		EnableFanArtUpdates = value;
 	}
 
 	/** 
@@ -335,14 +335,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The image saving convention.</value>
 	*/
-	private ImageSavingConvention privateImageSavingConvention = getImageSavingConvention().values()[0];
+	private ImageSavingConvention ImageSavingConvention = getImageSavingConvention().values()[0];
 	public final ImageSavingConvention getImageSavingConvention()
 	{
-		return privateImageSavingConvention;
+		return ImageSavingConvention;
 	}
 	public final void setImageSavingConvention(ImageSavingConvention value)
 	{
-		privateImageSavingConvention = value;
+		ImageSavingConvention = value;
 	}
 
 	/** 
@@ -350,14 +350,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value><c>true</c> if [enable people prefix sub folders]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateEnablePeoplePrefixSubFolders;
+	private boolean EnablePeoplePrefixSubFolders;
 	public final boolean getEnablePeoplePrefixSubFolders()
 	{
-		return privateEnablePeoplePrefixSubFolders;
+		return EnablePeoplePrefixSubFolders;
 	}
 	public final void setEnablePeoplePrefixSubFolders(boolean value)
 	{
-		privateEnablePeoplePrefixSubFolders = value;
+		EnablePeoplePrefixSubFolders = value;
 	}
 
 	/** 
@@ -365,171 +365,171 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The encoding quality.</value>
 	*/
-	private EncodingQuality privateMediaEncodingQuality = EncodingQuality.values()[0];
+	private EncodingQuality MediaEncodingQuality = EncodingQuality.values()[0];
 	public final EncodingQuality getMediaEncodingQuality()
 	{
-		return privateMediaEncodingQuality;
+		return MediaEncodingQuality;
 	}
 	public final void setMediaEncodingQuality(EncodingQuality value)
 	{
-		privateMediaEncodingQuality = value;
+		MediaEncodingQuality = value;
 	}
 
-	private MetadataOptions[] privateMetadataOptions;
+	private MetadataOptions[] MetadataOptions;
 	public final MetadataOptions[] getMetadataOptions()
 	{
-		return privateMetadataOptions;
+		return MetadataOptions;
 	}
 	public final void setMetadataOptions(MetadataOptions[] value)
 	{
-		privateMetadataOptions = value;
+		MetadataOptions = value;
 	}
 
-	private boolean privateEnableDebugEncodingLogging;
+	private boolean EnableDebugEncodingLogging;
 	public final boolean getEnableDebugEncodingLogging()
 	{
-		return privateEnableDebugEncodingLogging;
+		return EnableDebugEncodingLogging;
 	}
 	public final void setEnableDebugEncodingLogging(boolean value)
 	{
-		privateEnableDebugEncodingLogging = value;
+		EnableDebugEncodingLogging = value;
 	}
-	private String privateTranscodingTempPath;
+	private String TranscodingTempPath;
 	public final String getTranscodingTempPath()
 	{
-		return privateTranscodingTempPath;
+		return TranscodingTempPath;
 	}
 	public final void setTranscodingTempPath(String value)
 	{
-		privateTranscodingTempPath = value;
+		TranscodingTempPath = value;
 	}
 
-	private boolean privateEnableAutomaticRestart;
+	private boolean EnableAutomaticRestart;
 	public final boolean getEnableAutomaticRestart()
 	{
-		return privateEnableAutomaticRestart;
+		return EnableAutomaticRestart;
 	}
 	public final void setEnableAutomaticRestart(boolean value)
 	{
-		privateEnableAutomaticRestart = value;
+		EnableAutomaticRestart = value;
 	}
 
-	private boolean privateEnableRealtimeMonitor;
+	private boolean EnableRealtimeMonitor;
 	public final boolean getEnableRealtimeMonitor()
 	{
-		return privateEnableRealtimeMonitor;
+		return EnableRealtimeMonitor;
 	}
 	public final void setEnableRealtimeMonitor(boolean value)
 	{
-		privateEnableRealtimeMonitor = value;
+		EnableRealtimeMonitor = value;
 	}
-	private PathSubstitution[] privatePathSubstitutions;
+	private PathSubstitution[] PathSubstitutions;
 	public final PathSubstitution[] getPathSubstitutions()
 	{
-		return privatePathSubstitutions;
+		return PathSubstitutions;
 	}
 	public final void setPathSubstitutions(PathSubstitution[] value)
 	{
-		privatePathSubstitutions = value;
+		PathSubstitutions = value;
 	}
 
-	private String privateServerName;
+	private String ServerName;
 	public final String getServerName()
 	{
-		return privateServerName;
+		return ServerName;
 	}
 	public final void setServerName(String value)
 	{
-		privateServerName = value;
+		ServerName = value;
 	}
-	private String privateWanDdns;
+	private String WanDdns;
 	public final String getWanDdns()
 	{
-		return privateWanDdns;
+		return WanDdns;
 	}
 	public final void setWanDdns(String value)
 	{
-		privateWanDdns = value;
+		WanDdns = value;
 	}
 
-	private String privateUICulture;
+	private String UICulture;
 	public final String getUICulture()
 	{
-		return privateUICulture;
+		return UICulture;
 	}
 	public final void setUICulture(String value)
 	{
-		privateUICulture = value;
+		UICulture = value;
 	}
 
-	private DlnaOptions privateDlnaOptions;
+	private DlnaOptions DlnaOptions;
 	public final DlnaOptions getDlnaOptions()
 	{
-		return privateDlnaOptions;
+		return DlnaOptions;
 	}
 	public final void setDlnaOptions(DlnaOptions value)
 	{
-		privateDlnaOptions = value;
+		DlnaOptions = value;
 	}
 
-	private double privateDownMixAudioBoost;
+	private double DownMixAudioBoost;
 	public final double getDownMixAudioBoost()
 	{
-		return privateDownMixAudioBoost;
+		return DownMixAudioBoost;
 	}
 	public final void setDownMixAudioBoost(double value)
 	{
-		privateDownMixAudioBoost = value;
+		DownMixAudioBoost = value;
 	}
 
-	private boolean privateDefaultMetadataSettingsApplied;
+	private boolean DefaultMetadataSettingsApplied;
 	public final boolean getDefaultMetadataSettingsApplied()
 	{
-		return privateDefaultMetadataSettingsApplied;
+		return DefaultMetadataSettingsApplied;
 	}
 	public final void setDefaultMetadataSettingsApplied(boolean value)
 	{
-		privateDefaultMetadataSettingsApplied = value;
+		DefaultMetadataSettingsApplied = value;
 	}
 
-	private PeopleMetadataOptions privatePeopleMetadataOptions;
+	private PeopleMetadataOptions PeopleMetadataOptions;
 	public final PeopleMetadataOptions getPeopleMetadataOptions()
 	{
-		return privatePeopleMetadataOptions;
+		return PeopleMetadataOptions;
 	}
 	public final void setPeopleMetadataOptions(PeopleMetadataOptions value)
 	{
-		privatePeopleMetadataOptions = value;
+		PeopleMetadataOptions = value;
 	}
 
-	private String[] privateInsecureApps;
+	private String[] InsecureApps;
 	public final String[] getInsecureApps()
 	{
-		return privateInsecureApps;
+		return InsecureApps;
 	}
 	public final void setInsecureApps(String[] value)
 	{
-		privateInsecureApps = value;
+		InsecureApps = value;
 	}
 
-	private boolean privateSaveMetadataHidden;
+	private boolean SaveMetadataHidden;
 	public final boolean getSaveMetadataHidden()
 	{
-		return privateSaveMetadataHidden;
+		return SaveMetadataHidden;
 	}
 	public final void setSaveMetadataHidden(boolean value)
 	{
-		privateSaveMetadataHidden = value;
+		SaveMetadataHidden = value;
 	}
 
-	private boolean privateFindInternetTrailers;
+	private boolean FindInternetTrailers;
 	public final boolean getFindInternetTrailers()
 	{
-		return privateFindInternetTrailers;
+		return FindInternetTrailers;
 	}
 	public final void setFindInternetTrailers(boolean value)
 	{
-		privateFindInternetTrailers = value;
+		FindInternetTrailers = value;
 	}
 
 	/** 

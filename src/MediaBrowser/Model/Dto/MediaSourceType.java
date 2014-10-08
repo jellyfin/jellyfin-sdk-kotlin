@@ -1,9 +1,5 @@
 package MediaBrowser.Model.Dto;
 
-import MediaBrowser.Model.Entities.*;
-import MediaBrowser.Model.Extensions.*;
-import MediaBrowser.Model.MediaInfo.*;
-
 public enum MediaSourceType
 {
 	Default(0),

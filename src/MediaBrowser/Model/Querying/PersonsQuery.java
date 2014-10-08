@@ -10,14 +10,14 @@ public class PersonsQuery extends ItemsByNameQuery
 	 
 	 <value>The person types.</value>
 	*/
-	private String[] privatePersonTypes;
+	private String[] PersonTypes;
 	public final String[] getPersonTypes()
 	{
-		return privatePersonTypes;
+		return PersonTypes;
 	}
 	public final void setPersonTypes(String[] value)
 	{
-		privatePersonTypes = value;
+		PersonTypes = value;
 	}
 
 	/** 

@@ -12,14 +12,14 @@ public class ItemQuery
 	 
 	 <value>The user id.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -27,14 +27,14 @@ public class ItemQuery
 	 
 	 <value>The parent id.</value>
 	*/
-	private String privateParentId;
+	private String ParentId;
 	public final String getParentId()
 	{
-		return privateParentId;
+		return ParentId;
 	}
 	public final void setParentId(String value)
 	{
-		privateParentId = value;
+		ParentId = value;
 	}
 
 	/** 
@@ -42,14 +42,14 @@ public class ItemQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex = null;
+	private Integer StartIndex = null;
 	public final Integer getStartIndex()
 	{
-		return privateStartIndex;
+		return StartIndex;
 	}
 	public final void setStartIndex(Integer value)
 	{
-		privateStartIndex = value;
+		StartIndex = value;
 	}
 
 	/** 
@@ -57,14 +57,14 @@ public class ItemQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit = null;
+	private Integer Limit = null;
 	public final Integer getLimit()
 	{
-		return privateLimit;
+		return Limit;
 	}
 	public final void setLimit(Integer value)
 	{
-		privateLimit = value;
+		Limit = value;
 	}
 
 	/** 
@@ -72,14 +72,14 @@ public class ItemQuery
 	 
 	 <value>The sort by.</value>
 	*/
-	private String[] privateSortBy;
+	private String[] SortBy;
 	public final String[] getSortBy()
 	{
-		return privateSortBy;
+		return SortBy;
 	}
 	public final void setSortBy(String[] value)
 	{
-		privateSortBy = value;
+		SortBy = value;
 	}
 
 	/** 
@@ -87,14 +87,14 @@ public class ItemQuery
 	 
 	 <value>The artists.</value>
 	*/
-	private String[] privateArtists;
+	private String[] Artists;
 	public final String[] getArtists()
 	{
-		return privateArtists;
+		return Artists;
 	}
 	public final void setArtists(String[] value)
 	{
-		privateArtists = value;
+		Artists = value;
 	}
 
 	/** 
@@ -102,14 +102,14 @@ public class ItemQuery
 	 
 	 <value>The sort order.</value>
 	*/
-	private SortOrder privateSortOrder = null;
+	private SortOrder SortOrder = null;
 	public final SortOrder getSortOrder()
 	{
-		return privateSortOrder;
+		return SortOrder;
 	}
 	public final void setSortOrder(SortOrder value)
 	{
-		privateSortOrder = value;
+		SortOrder = value;
 	}
 
 	/** 
@@ -117,14 +117,14 @@ public class ItemQuery
 	 
 	 <value>The filters.</value>
 	*/
-	private ItemFilter[] privateFilters;
+	private ItemFilter[] Filters;
 	public final ItemFilter[] getFilters()
 	{
-		return privateFilters;
+		return Filters;
 	}
 	public final void setFilters(ItemFilter[] value)
 	{
-		privateFilters = value;
+		Filters = value;
 	}
 
 	/** 
@@ -132,14 +132,14 @@ public class ItemQuery
 	 
 	 <value>The fields.</value>
 	*/
-	private ItemFields[] privateFields;
+	private ItemFields[] Fields;
 	public final ItemFields[] getFields()
 	{
-		return privateFields;
+		return Fields;
 	}
 	public final void setFields(ItemFields[] value)
 	{
-		privateFields = value;
+		Fields = value;
 	}
 
 	/** 
@@ -147,14 +147,14 @@ public class ItemQuery
 	 
 	 <value>The media types.</value>
 	*/
-	private String[] privateMediaTypes;
+	private String[] MediaTypes;
 	public final String[] getMediaTypes()
 	{
-		return privateMediaTypes;
+		return MediaTypes;
 	}
 	public final void setMediaTypes(String[] value)
 	{
-		privateMediaTypes = value;
+		MediaTypes = value;
 	}
 
 	/** 
@@ -162,14 +162,14 @@ public class ItemQuery
 	 
 	 <value>The video formats.</value>
 	*/
-	private Boolean privateIs3D = null;
+	private Boolean Is3D = null;
 	public final Boolean getIs3D()
 	{
-		return privateIs3D;
+		return Is3D;
 	}
 	public final void setIs3D(Boolean value)
 	{
-		privateIs3D = value;
+		Is3D = value;
 	}
 
 	/** 
@@ -177,14 +177,14 @@ public class ItemQuery
 	 
 	 <value>The video types.</value>
 	*/
-	private VideoType[] privateVideoTypes;
+	private VideoType[] VideoTypes;
 	public final VideoType[] getVideoTypes()
 	{
-		return privateVideoTypes;
+		return VideoTypes;
 	}
 	public final void setVideoTypes(VideoType[] value)
 	{
-		privateVideoTypes = value;
+		VideoTypes = value;
 	}
 
 	/** 
@@ -192,14 +192,14 @@ public class ItemQuery
 	 
 	 <value><c>true</c> if recursive; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateRecursive;
+	private boolean Recursive;
 	public final boolean getRecursive()
 	{
-		return privateRecursive;
+		return Recursive;
 	}
 	public final void setRecursive(boolean value)
 	{
-		privateRecursive = value;
+		Recursive = value;
 	}
 
 	/** 
@@ -207,14 +207,14 @@ public class ItemQuery
 	 
 	 <value>The genres.</value>
 	*/
-	private String[] privateGenres;
+	private String[] Genres;
 	public final String[] getGenres()
 	{
-		return privateGenres;
+		return Genres;
 	}
 	public final void setGenres(String[] value)
 	{
-		privateGenres = value;
+		Genres = value;
 	}
 
 	/** 
@@ -222,14 +222,14 @@ public class ItemQuery
 	 
 	 <value>The genres.</value>
 	*/
-	private String[] privateAllGenres;
+	private String[] AllGenres;
 	public final String[] getAllGenres()
 	{
-		return privateAllGenres;
+		return AllGenres;
 	}
 	public final void setAllGenres(String[] value)
 	{
-		privateAllGenres = value;
+		AllGenres = value;
 	}
 
 	/** 
@@ -237,14 +237,14 @@ public class ItemQuery
 	 
 	 <value>The studios.</value>
 	*/
-	private String[] privateStudios;
+	private String[] Studios;
 	public final String[] getStudios()
 	{
-		return privateStudios;
+		return Studios;
 	}
 	public final void setStudios(String[] value)
 	{
-		privateStudios = value;
+		Studios = value;
 	}
 
 	/** 
@@ -252,14 +252,14 @@ public class ItemQuery
 	 
 	 <value>The exclude item types.</value>
 	*/
-	private String[] privateExcludeItemTypes;
+	private String[] ExcludeItemTypes;
 	public final String[] getExcludeItemTypes()
 	{
-		return privateExcludeItemTypes;
+		return ExcludeItemTypes;
 	}
 	public final void setExcludeItemTypes(String[] value)
 	{
-		privateExcludeItemTypes = value;
+		ExcludeItemTypes = value;
 	}
 
 	/** 
@@ -267,14 +267,14 @@ public class ItemQuery
 	 
 	 <value>The include item types.</value>
 	*/
-	private String[] privateIncludeItemTypes;
+	private String[] IncludeItemTypes;
 	public final String[] getIncludeItemTypes()
 	{
-		return privateIncludeItemTypes;
+		return IncludeItemTypes;
 	}
 	public final void setIncludeItemTypes(String[] value)
 	{
-		privateIncludeItemTypes = value;
+		IncludeItemTypes = value;
 	}
 
 	/** 
@@ -282,14 +282,14 @@ public class ItemQuery
 	 
 	 <value>The years.</value>
 	*/
-	private int[] privateYears;
+	private int[] Years;
 	public final int[] getYears()
 	{
-		return privateYears;
+		return Years;
 	}
 	public final void setYears(int[] value)
 	{
-		privateYears = value;
+		Years = value;
 	}
 
 	/** 
@@ -297,14 +297,14 @@ public class ItemQuery
 	 
 	 <value>The person.</value>
 	*/
-	private String privatePerson;
+	private String Person;
 	public final String getPerson()
 	{
-		return privatePerson;
+		return Person;
 	}
 	public final void setPerson(String value)
 	{
-		privatePerson = value;
+		Person = value;
 	}
 
 	/** 
@@ -312,14 +312,14 @@ public class ItemQuery
 	 
 	 <value>The type of the person.</value>
 	*/
-	private String[] privatePersonTypes;
+	private String[] PersonTypes;
 	public final String[] getPersonTypes()
 	{
-		return privatePersonTypes;
+		return PersonTypes;
 	}
 	public final void setPersonTypes(String[] value)
 	{
-		privatePersonTypes = value;
+		PersonTypes = value;
 	}
 
 	/** 
@@ -327,14 +327,14 @@ public class ItemQuery
 	 
 	 <value>The index by.</value>
 	*/
-	private String privateSearchTerm;
+	private String SearchTerm;
 	public final String getSearchTerm()
 	{
-		return privateSearchTerm;
+		return SearchTerm;
 	}
 	public final void setSearchTerm(String value)
 	{
-		privateSearchTerm = value;
+		SearchTerm = value;
 	}
 
 	/** 
@@ -342,14 +342,14 @@ public class ItemQuery
 	 
 	 <value>The image types.</value>
 	*/
-	private ImageType[] privateImageTypes;
+	private ImageType[] ImageTypes;
 	public final ImageType[] getImageTypes()
 	{
-		return privateImageTypes;
+		return ImageTypes;
 	}
 	public final void setImageTypes(ImageType[] value)
 	{
-		privateImageTypes = value;
+		ImageTypes = value;
 	}
 
 	/** 
@@ -357,14 +357,14 @@ public class ItemQuery
 	 
 	 <value>The air days.</value>
 	*/
-	private String[] privateAirDays;
+	private String[] AirDays;
 	public final String[] getAirDays()
 	{
-		return privateAirDays;
+		return AirDays;
 	}
 	public final void setAirDays(String[] value)
 	{
-		privateAirDays = value;
+		AirDays = value;
 	}
 
 	/** 
@@ -372,14 +372,14 @@ public class ItemQuery
 	 
 	 <value>The series status.</value>
 	*/
-	private SeriesStatus[] privateSeriesStatuses;
+	private SeriesStatus[] SeriesStatuses;
 	public final SeriesStatus[] getSeriesStatuses()
 	{
-		return privateSeriesStatuses;
+		return SeriesStatuses;
 	}
 	public final void setSeriesStatuses(SeriesStatus[] value)
 	{
-		privateSeriesStatuses = value;
+		SeriesStatuses = value;
 	}
 
 	/** 
@@ -387,14 +387,14 @@ public class ItemQuery
 	 
 	 <value>The ids.</value>
 	*/
-	private String[] privateIds;
+	private String[] Ids;
 	public final String[] getIds()
 	{
-		return privateIds;
+		return Ids;
 	}
 	public final void setIds(String[] value)
 	{
-		privateIds = value;
+		Ids = value;
 	}
 
 	/** 
@@ -402,14 +402,14 @@ public class ItemQuery
 	 
 	 <value>The min official rating.</value>
 	*/
-	private String privateMinOfficialRating;
+	private String MinOfficialRating;
 	public final String getMinOfficialRating()
 	{
-		return privateMinOfficialRating;
+		return MinOfficialRating;
 	}
 	public final void setMinOfficialRating(String value)
 	{
-		privateMinOfficialRating = value;
+		MinOfficialRating = value;
 	}
 
 	/** 
@@ -417,14 +417,14 @@ public class ItemQuery
 	 
 	 <value>The max official rating.</value>
 	*/
-	private String privateMaxOfficialRating;
+	private String MaxOfficialRating;
 	public final String getMaxOfficialRating()
 	{
-		return privateMaxOfficialRating;
+		return MaxOfficialRating;
 	}
 	public final void setMaxOfficialRating(String value)
 	{
-		privateMaxOfficialRating = value;
+		MaxOfficialRating = value;
 	}
 
 	/** 
@@ -432,14 +432,14 @@ public class ItemQuery
 	 
 	 <value>The min index number.</value>
 	*/
-	private Integer privateMinIndexNumber = null;
+	private Integer MinIndexNumber = null;
 	public final Integer getMinIndexNumber()
 	{
-		return privateMinIndexNumber;
+		return MinIndexNumber;
 	}
 	public final void setMinIndexNumber(Integer value)
 	{
-		privateMinIndexNumber = value;
+		MinIndexNumber = value;
 	}
 
 	/** 
@@ -447,14 +447,14 @@ public class ItemQuery
 	 
 	 <value><c>null</c> if [has parental rating] contains no value, <c>true</c> if [has parental rating]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateHasParentalRating = null;
+	private Boolean HasParentalRating = null;
 	public final Boolean getHasParentalRating()
 	{
-		return privateHasParentalRating;
+		return HasParentalRating;
 	}
 	public final void setHasParentalRating(Boolean value)
 	{
-		privateHasParentalRating = value;
+		HasParentalRating = value;
 	}
 
 	/** 
@@ -462,14 +462,14 @@ public class ItemQuery
 	 
 	 <value><c>null</c> if [is HD] contains no value, <c>true</c> if [is HD]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsHD = null;
+	private Boolean IsHD = null;
 	public final Boolean getIsHD()
 	{
-		return privateIsHD;
+		return IsHD;
 	}
 	public final void setIsHD(Boolean value)
 	{
-		privateIsHD = value;
+		IsHD = value;
 	}
 
 	/** 
@@ -477,14 +477,14 @@ public class ItemQuery
 	 
 	 <value>The parent index number.</value>
 	*/
-	private Integer privateParentIndexNumber = null;
+	private Integer ParentIndexNumber = null;
 	public final Integer getParentIndexNumber()
 	{
-		return privateParentIndexNumber;
+		return ParentIndexNumber;
 	}
 	public final void setParentIndexNumber(Integer value)
 	{
-		privateParentIndexNumber = value;
+		ParentIndexNumber = value;
 	}
 
 	/** 
@@ -492,14 +492,14 @@ public class ItemQuery
 	 
 	 <value>The min players.</value>
 	*/
-	private Integer privateMinPlayers = null;
+	private Integer MinPlayers = null;
 	public final Integer getMinPlayers()
 	{
-		return privateMinPlayers;
+		return MinPlayers;
 	}
 	public final void setMinPlayers(Integer value)
 	{
-		privateMinPlayers = value;
+		MinPlayers = value;
 	}
 
 	/** 
@@ -507,14 +507,14 @@ public class ItemQuery
 	 
 	 <value>The max players.</value>
 	*/
-	private Integer privateMaxPlayers = null;
+	private Integer MaxPlayers = null;
 	public final Integer getMaxPlayers()
 	{
-		return privateMaxPlayers;
+		return MaxPlayers;
 	}
 	public final void setMaxPlayers(Integer value)
 	{
-		privateMaxPlayers = value;
+		MaxPlayers = value;
 	}
 
 	/** 
@@ -522,14 +522,14 @@ public class ItemQuery
 	 
 	 <value>The name starts with or greater.</value>
 	*/
-	private String privateNameStartsWithOrGreater;
+	private String NameStartsWithOrGreater;
 	public final String getNameStartsWithOrGreater()
 	{
-		return privateNameStartsWithOrGreater;
+		return NameStartsWithOrGreater;
 	}
 	public final void setNameStartsWithOrGreater(String value)
 	{
-		privateNameStartsWithOrGreater = value;
+		NameStartsWithOrGreater = value;
 	}
 
 	/** 
@@ -537,14 +537,14 @@ public class ItemQuery
 	 
 	 <value>The name starts with or greater.</value>
 	*/
-	private String privateNameStartsWith;
+	private String NameStartsWith;
 	public final String getNameStartsWith()
 	{
-		return privateNameStartsWith;
+		return NameStartsWith;
 	}
 	public final void setNameStartsWith(String value)
 	{
-		privateNameStartsWith = value;
+		NameStartsWith = value;
 	}
 
 	/** 
@@ -552,14 +552,14 @@ public class ItemQuery
 	 
 	 <value>The name lessthan.</value>
 	*/
-	private String privateNameLessThan;
+	private String NameLessThan;
 	public final String getNameLessThan()
 	{
-		return privateNameLessThan;
+		return NameLessThan;
 	}
 	public final void setNameLessThan(String value)
 	{
-		privateNameLessThan = value;
+		NameLessThan = value;
 	}
 
 	/** 
@@ -567,14 +567,14 @@ public class ItemQuery
 	 
 	 <value>The album artist starts with or greater.</value>
 	*/
-	private String privateAlbumArtistStartsWithOrGreater;
+	private String AlbumArtistStartsWithOrGreater;
 	public final String getAlbumArtistStartsWithOrGreater()
 	{
-		return privateAlbumArtistStartsWithOrGreater;
+		return AlbumArtistStartsWithOrGreater;
 	}
 	public final void setAlbumArtistStartsWithOrGreater(String value)
 	{
-		privateAlbumArtistStartsWithOrGreater = value;
+		AlbumArtistStartsWithOrGreater = value;
 	}
 
 	/** 
@@ -582,14 +582,14 @@ public class ItemQuery
 	 
 	 <value><c>true</c> if [include index containers]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIncludeIndexContainers;
+	private boolean IncludeIndexContainers;
 	public final boolean getIncludeIndexContainers()
 	{
-		return privateIncludeIndexContainers;
+		return IncludeIndexContainers;
 	}
 	public final void setIncludeIndexContainers(boolean value)
 	{
-		privateIncludeIndexContainers = value;
+		IncludeIndexContainers = value;
 	}
 
 	/** 
@@ -597,14 +597,14 @@ public class ItemQuery
 	 
 	 <value>The location types.</value>
 	*/
-	private LocationType[] privateLocationTypes;
+	private LocationType[] LocationTypes;
 	public final LocationType[] getLocationTypes()
 	{
-		return privateLocationTypes;
+		return LocationTypes;
 	}
 	public final void setLocationTypes(LocationType[] value)
 	{
-		privateLocationTypes = value;
+		LocationTypes = value;
 	}
 
 	/** 
@@ -612,14 +612,14 @@ public class ItemQuery
 	 
 	 <value><c>null</c> if [is missing episode] contains no value, <c>true</c> if [is missing episode]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsMissing = null;
+	private Boolean IsMissing = null;
 	public final Boolean getIsMissing()
 	{
-		return privateIsMissing;
+		return IsMissing;
 	}
 	public final void setIsMissing(Boolean value)
 	{
-		privateIsMissing = value;
+		IsMissing = value;
 	}
 
 	/** 
@@ -627,54 +627,54 @@ public class ItemQuery
 	 
 	 <value><c>null</c> if [is unaired episode] contains no value, <c>true</c> if [is unaired episode]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsUnaired = null;
+	private Boolean IsUnaired = null;
 	public final Boolean getIsUnaired()
 	{
-		return privateIsUnaired;
+		return IsUnaired;
 	}
 	public final void setIsUnaired(Boolean value)
 	{
-		privateIsUnaired = value;
+		IsUnaired = value;
 	}
 
-	private Boolean privateIsVirtualUnaired = null;
+	private Boolean IsVirtualUnaired = null;
 	public final Boolean getIsVirtualUnaired()
 	{
-		return privateIsVirtualUnaired;
+		return IsVirtualUnaired;
 	}
 	public final void setIsVirtualUnaired(Boolean value)
 	{
-		privateIsVirtualUnaired = value;
+		IsVirtualUnaired = value;
 	}
 
-	private Boolean privateIsInBoxSet = null;
+	private Boolean IsInBoxSet = null;
 	public final Boolean getIsInBoxSet()
 	{
-		return privateIsInBoxSet;
+		return IsInBoxSet;
 	}
 	public final void setIsInBoxSet(Boolean value)
 	{
-		privateIsInBoxSet = value;
+		IsInBoxSet = value;
 	}
 
-	private Boolean privateCollapseBoxSetItems = null;
+	private Boolean CollapseBoxSetItems = null;
 	public final Boolean getCollapseBoxSetItems()
 	{
-		return privateCollapseBoxSetItems;
+		return CollapseBoxSetItems;
 	}
 	public final void setCollapseBoxSetItems(Boolean value)
 	{
-		privateCollapseBoxSetItems = value;
+		CollapseBoxSetItems = value;
 	}
 
-	private Boolean privateIsPlayed = null;
+	private Boolean IsPlayed = null;
 	public final Boolean getIsPlayed()
 	{
-		return privateIsPlayed;
+		return IsPlayed;
 	}
 	public final void setIsPlayed(Boolean value)
 	{
-		privateIsPlayed = value;
+		IsPlayed = value;
 	}
 
 	/** 
@@ -682,63 +682,63 @@ public class ItemQuery
 	 
 	 <value>The exclude location types.</value>
 	*/
-	private LocationType[] privateExcludeLocationTypes;
+	private LocationType[] ExcludeLocationTypes;
 	public final LocationType[] getExcludeLocationTypes()
 	{
-		return privateExcludeLocationTypes;
+		return ExcludeLocationTypes;
 	}
 	public final void setExcludeLocationTypes(LocationType[] value)
 	{
-		privateExcludeLocationTypes = value;
+		ExcludeLocationTypes = value;
 	}
 
-	private Double privateMinCommunityRating = null;
+	private Double MinCommunityRating = null;
 	public final Double getMinCommunityRating()
 	{
-		return privateMinCommunityRating;
+		return MinCommunityRating;
 	}
 	public final void setMinCommunityRating(Double value)
 	{
-		privateMinCommunityRating = value;
+		MinCommunityRating = value;
 	}
-	private Double privateMinCriticRating = null;
+	private Double MinCriticRating = null;
 	public final Double getMinCriticRating()
 	{
-		return privateMinCriticRating;
+		return MinCriticRating;
 	}
 	public final void setMinCriticRating(Double value)
 	{
-		privateMinCriticRating = value;
+		MinCriticRating = value;
 	}
 
-	private Integer privateAiredDuringSeason = null;
+	private Integer AiredDuringSeason = null;
 	public final Integer getAiredDuringSeason()
 	{
-		return privateAiredDuringSeason;
+		return AiredDuringSeason;
 	}
 	public final void setAiredDuringSeason(Integer value)
 	{
-		privateAiredDuringSeason = value;
+		AiredDuringSeason = value;
 	}
 
-	private java.util.Date privateMinPremiereDate = null;
+	private java.util.Date MinPremiereDate = null;
 	public final java.util.Date getMinPremiereDate()
 	{
-		return privateMinPremiereDate;
+		return MinPremiereDate;
 	}
 	public final void setMinPremiereDate(java.util.Date value)
 	{
-		privateMinPremiereDate = value;
+		MinPremiereDate = value;
 	}
 
-	private java.util.Date privateMaxPremiereDate = null;
+	private java.util.Date MaxPremiereDate = null;
 	public final java.util.Date getMaxPremiereDate()
 	{
-		return privateMaxPremiereDate;
+		return MaxPremiereDate;
 	}
 	public final void setMaxPremiereDate(java.util.Date value)
 	{
-		privateMaxPremiereDate = value;
+		MaxPremiereDate = value;
 	}
 
 	/** 

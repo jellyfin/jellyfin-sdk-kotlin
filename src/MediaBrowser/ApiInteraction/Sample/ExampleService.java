@@ -9,6 +9,7 @@ import MediaBrowser.Model.Querying.ItemFilter;
 import MediaBrowser.Model.Querying.ItemQuery;
 import MediaBrowser.Model.Querying.ItemSortBy;
 import MediaBrowser.Model.Querying.QueryResult;
+import MediaBrowser.Model.Session.ClientCapabilities;
 import android.app.Application;
 import com.android.volley.toolbox.ImageLoader;
 
@@ -29,7 +30,11 @@ public class ExampleService extends Application {
         // The underlying http stack. Developers can inject their own if desired
         IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, getApplicationContext());
 
-        apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My api key");
+        ClientCapabilities capabilities = new ClientCapabilities();
+
+        ApiEventListener apiEventListener = new ApiEventListener();
+
+        apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My api key", apiEventListener, capabilities);
     }
 
     public ImageLoader getImageLoader() {

@@ -12,14 +12,14 @@ public class StudioDto
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -27,14 +27,14 @@ public class StudioDto
 	 
 	 <value>The identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -42,14 +42,14 @@ public class StudioDto
 	 
 	 <value>The primary image tag.</value>
 	*/
-	private String privatePrimaryImageTag;
+	private String PrimaryImageTag;
 	public final String getPrimaryImageTag()
 	{
-		return privatePrimaryImageTag;
+		return PrimaryImageTag;
 	}
 	public final void setPrimaryImageTag(String value)
 	{
-		privatePrimaryImageTag = value;
+		PrimaryImageTag = value;
 	}
 
 	/** 

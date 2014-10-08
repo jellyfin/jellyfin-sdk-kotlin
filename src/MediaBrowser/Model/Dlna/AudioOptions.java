@@ -12,82 +12,82 @@ public class AudioOptions
 		setContext(EncodingContext.Streaming);
 	}
 
-	private String privateItemId;
+	private String ItemId;
 	public final String getItemId()
 	{
-		return privateItemId;
+		return ItemId;
 	}
 	public final void setItemId(String value)
 	{
-		privateItemId = value;
+		ItemId = value;
 	}
-	private java.util.ArrayList<MediaSourceInfo> privateMediaSources;
+	private java.util.ArrayList<MediaSourceInfo> MediaSources;
 	public final java.util.ArrayList<MediaSourceInfo> getMediaSources()
 	{
-		return privateMediaSources;
+		return MediaSources;
 	}
 	public final void setMediaSources(java.util.ArrayList<MediaSourceInfo> value)
 	{
-		privateMediaSources = value;
+		MediaSources = value;
 	}
-	private DeviceProfile privateProfile;
+	private DeviceProfile Profile;
 	public final DeviceProfile getProfile()
 	{
-		return privateProfile;
+		return Profile;
 	}
 	public final void setProfile(DeviceProfile value)
 	{
-		privateProfile = value;
+		Profile = value;
 	}
 
 	/** 
 	 Optional. Only needed if a specific AudioStreamIndex or SubtitleStreamIndex are requested.
 	*/
-	private String privateMediaSourceId;
+	private String MediaSourceId;
 	public final String getMediaSourceId()
 	{
-		return privateMediaSourceId;
+		return MediaSourceId;
 	}
 	public final void setMediaSourceId(String value)
 	{
-		privateMediaSourceId = value;
+		MediaSourceId = value;
 	}
 
-	private String privateDeviceId;
+	private String DeviceId;
 	public final String getDeviceId()
 	{
-		return privateDeviceId;
+		return DeviceId;
 	}
 	public final void setDeviceId(String value)
 	{
-		privateDeviceId = value;
+		DeviceId = value;
 	}
 
 	/** 
 	 Allows an override of supported number of audio channels
 	 Example: DeviceProfile supports five channel, but user only has stereo speakers
 	*/
-	private Integer privateMaxAudioChannels = null;
+	private Integer MaxAudioChannels = null;
 	public final Integer getMaxAudioChannels()
 	{
-		return privateMaxAudioChannels;
+		return MaxAudioChannels;
 	}
 	public final void setMaxAudioChannels(Integer value)
 	{
-		privateMaxAudioChannels = value;
+		MaxAudioChannels = value;
 	}
 
 	/** 
 	 The application's configured quality setting
 	*/
-	private Integer privateMaxBitrate = null;
+	private Integer MaxBitrate = null;
 	public final Integer getMaxBitrate()
 	{
-		return privateMaxBitrate;
+		return MaxBitrate;
 	}
 	public final void setMaxBitrate(Integer value)
 	{
-		privateMaxBitrate = value;
+		MaxBitrate = value;
 	}
 
 	/** 
@@ -95,14 +95,14 @@ public class AudioOptions
 	 
 	 <value>The context.</value>
 	*/
-	private EncodingContext privateContext = EncodingContext.values()[0];
+	private EncodingContext Context = EncodingContext.values()[0];
 	public final EncodingContext getContext()
 	{
-		return privateContext;
+		return Context;
 	}
 	public final void setContext(EncodingContext value)
 	{
-		privateContext = value;
+		Context = value;
 	}
 
 	/** 
@@ -110,14 +110,14 @@ public class AudioOptions
 	 
 	 <value>The audio transcoding bitrate.</value>
 	*/
-	private Integer privateAudioTranscodingBitrate = null;
+	private Integer AudioTranscodingBitrate = null;
 	public final Integer getAudioTranscodingBitrate()
 	{
-		return privateAudioTranscodingBitrate;
+		return AudioTranscodingBitrate;
 	}
 	public final void setAudioTranscodingBitrate(Integer value)
 	{
-		privateAudioTranscodingBitrate = value;
+		AudioTranscodingBitrate = value;
 	}
 
 	/** 

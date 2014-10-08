@@ -12,24 +12,24 @@ public class ImageProviderInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
-	private java.util.ArrayList<ImageType> privateSupportedImages;
+	private java.util.ArrayList<ImageType> SupportedImages;
 	public final java.util.ArrayList<ImageType> getSupportedImages()
 	{
-		return privateSupportedImages;
+		return SupportedImages;
 	}
 	public final void setSupportedImages(java.util.ArrayList<ImageType> value)
 	{
-		privateSupportedImages = value;
+		SupportedImages = value;
 	}
 
 	public ImageProviderInfo()

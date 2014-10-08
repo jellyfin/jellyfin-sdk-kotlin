@@ -12,14 +12,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value>The operating sytem.</value>
 	*/
-	private String privateOperatingSystem;
+	private String OperatingSystem;
 	public final String getOperatingSystem()
 	{
-		return privateOperatingSystem;
+		return OperatingSystem;
 	}
 	public final void setOperatingSystem(String value)
 	{
-		privateOperatingSystem = value;
+		OperatingSystem = value;
 	}
 
 	/** 
@@ -27,14 +27,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value><c>true</c> if this instance is running as service; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsRunningAsService;
+	private boolean IsRunningAsService;
 	public final boolean getIsRunningAsService()
 	{
-		return privateIsRunningAsService;
+		return IsRunningAsService;
 	}
 	public final void setIsRunningAsService(boolean value)
 	{
-		privateIsRunningAsService = value;
+		IsRunningAsService = value;
 	}
 
 	/** 
@@ -42,14 +42,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value><c>true</c> if [supports running as service]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateSupportsRunningAsService;
+	private boolean SupportsRunningAsService;
 	public final boolean getSupportsRunningAsService()
 	{
-		return privateSupportsRunningAsService;
+		return SupportsRunningAsService;
 	}
 	public final void setSupportsRunningAsService(boolean value)
 	{
-		privateSupportsRunningAsService = value;
+		SupportsRunningAsService = value;
 	}
 
 	/** 
@@ -57,14 +57,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value>The mac address.</value>
 	*/
-	private String privateMacAddress;
+	private String MacAddress;
 	public final String getMacAddress()
 	{
-		return privateMacAddress;
+		return MacAddress;
 	}
 	public final void setMacAddress(String value)
 	{
-		privateMacAddress = value;
+		MacAddress = value;
 	}
 
 	/** 
@@ -72,14 +72,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value><c>true</c> if this instance has pending restart; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateHasPendingRestart;
+	private boolean HasPendingRestart;
 	public final boolean getHasPendingRestart()
 	{
-		return privateHasPendingRestart;
+		return HasPendingRestart;
 	}
 	public final void setHasPendingRestart(boolean value)
 	{
-		privateHasPendingRestart = value;
+		HasPendingRestart = value;
 	}
 
 	/** 
@@ -87,14 +87,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value><c>true</c> if this instance is network deployed; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsNetworkDeployed;
+	private boolean IsNetworkDeployed;
 	public final boolean getIsNetworkDeployed()
 	{
-		return privateIsNetworkDeployed;
+		return IsNetworkDeployed;
 	}
 	public final void setIsNetworkDeployed(boolean value)
 	{
-		privateIsNetworkDeployed = value;
+		IsNetworkDeployed = value;
 	}
 
 	/** 
@@ -102,14 +102,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value>The in progress installations.</value>
 	*/
-	private java.util.ArrayList<InstallationInfo> privateInProgressInstallations;
+	private java.util.ArrayList<InstallationInfo> InProgressInstallations;
 	public final java.util.ArrayList<InstallationInfo> getInProgressInstallations()
 	{
-		return privateInProgressInstallations;
+		return InProgressInstallations;
 	}
 	public final void setInProgressInstallations(java.util.ArrayList<InstallationInfo> value)
 	{
-		privateInProgressInstallations = value;
+		InProgressInstallations = value;
 	}
 
 	/** 
@@ -117,14 +117,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value>The web socket port number.</value>
 	*/
-	private int privateWebSocketPortNumber;
+	private int WebSocketPortNumber;
 	public final int getWebSocketPortNumber()
 	{
-		return privateWebSocketPortNumber;
+		return WebSocketPortNumber;
 	}
 	public final void setWebSocketPortNumber(int value)
 	{
-		privateWebSocketPortNumber = value;
+		WebSocketPortNumber = value;
 	}
 
 	/** 
@@ -132,14 +132,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value>The completed installations.</value>
 	*/
-	private java.util.ArrayList<InstallationInfo> privateCompletedInstallations;
+	private java.util.ArrayList<InstallationInfo> CompletedInstallations;
 	public final java.util.ArrayList<InstallationInfo> getCompletedInstallations()
 	{
-		return privateCompletedInstallations;
+		return CompletedInstallations;
 	}
 	public final void setCompletedInstallations(java.util.ArrayList<InstallationInfo> value)
 	{
-		privateCompletedInstallations = value;
+		CompletedInstallations = value;
 	}
 
 	/** 
@@ -147,14 +147,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value><c>true</c> if [supports native web socket]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateSupportsNativeWebSocket;
+	private boolean SupportsNativeWebSocket;
 	public final boolean getSupportsNativeWebSocket()
 	{
-		return privateSupportsNativeWebSocket;
+		return SupportsNativeWebSocket;
 	}
 	public final void setSupportsNativeWebSocket(boolean value)
 	{
-		privateSupportsNativeWebSocket = value;
+		SupportsNativeWebSocket = value;
 	}
 
 	/** 
@@ -162,14 +162,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value><c>true</c> if this instance can self restart; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateCanSelfRestart;
+	private boolean CanSelfRestart;
 	public final boolean getCanSelfRestart()
 	{
-		return privateCanSelfRestart;
+		return CanSelfRestart;
 	}
 	public final void setCanSelfRestart(boolean value)
 	{
-		privateCanSelfRestart = value;
+		CanSelfRestart = value;
 	}
 
 	/** 
@@ -177,14 +177,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value><c>true</c> if this instance can self update; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateCanSelfUpdate;
+	private boolean CanSelfUpdate;
 	public final boolean getCanSelfUpdate()
 	{
-		return privateCanSelfUpdate;
+		return CanSelfUpdate;
 	}
 	public final void setCanSelfUpdate(boolean value)
 	{
-		privateCanSelfUpdate = value;
+		CanSelfUpdate = value;
 	}
 
 	/** 
@@ -192,14 +192,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value>The failed assembly loads.</value>
 	*/
-	private java.util.ArrayList<String> privateFailedPluginAssemblies;
+	private java.util.ArrayList<String> FailedPluginAssemblies;
 	public final java.util.ArrayList<String> getFailedPluginAssemblies()
 	{
-		return privateFailedPluginAssemblies;
+		return FailedPluginAssemblies;
 	}
 	public final void setFailedPluginAssemblies(java.util.ArrayList<String> value)
 	{
-		privateFailedPluginAssemblies = value;
+		FailedPluginAssemblies = value;
 	}
 
 	/** 
@@ -207,14 +207,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value>The program data path.</value>
 	*/
-	private String privateProgramDataPath;
+	private String ProgramDataPath;
 	public final String getProgramDataPath()
 	{
-		return privateProgramDataPath;
+		return ProgramDataPath;
 	}
 	public final void setProgramDataPath(String value)
 	{
-		privateProgramDataPath = value;
+		ProgramDataPath = value;
 	}
 
 	/** 
@@ -222,14 +222,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value>The items by name path.</value>
 	*/
-	private String privateItemsByNamePath;
+	private String ItemsByNamePath;
 	public final String getItemsByNamePath()
 	{
-		return privateItemsByNamePath;
+		return ItemsByNamePath;
 	}
 	public final void setItemsByNamePath(String value)
 	{
-		privateItemsByNamePath = value;
+		ItemsByNamePath = value;
 	}
 
 	/** 
@@ -237,14 +237,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value>The cache path.</value>
 	*/
-	private String privateCachePath;
+	private String CachePath;
 	public final String getCachePath()
 	{
-		return privateCachePath;
+		return CachePath;
 	}
 	public final void setCachePath(String value)
 	{
-		privateCachePath = value;
+		CachePath = value;
 	}
 
 	/** 
@@ -252,14 +252,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value>The log path.</value>
 	*/
-	private String privateLogPath;
+	private String LogPath;
 	public final String getLogPath()
 	{
-		return privateLogPath;
+		return LogPath;
 	}
 	public final void setLogPath(String value)
 	{
-		privateLogPath = value;
+		LogPath = value;
 	}
 
 	/** 
@@ -267,14 +267,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value>The internal metadata path.</value>
 	*/
-	private String privateInternalMetadataPath;
+	private String InternalMetadataPath;
 	public final String getInternalMetadataPath()
 	{
-		return privateInternalMetadataPath;
+		return InternalMetadataPath;
 	}
 	public final void setInternalMetadataPath(String value)
 	{
-		privateInternalMetadataPath = value;
+		InternalMetadataPath = value;
 	}
 
 	/** 
@@ -282,14 +282,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value>The transcoding temporary path.</value>
 	*/
-	private String privateTranscodingTempPath;
+	private String TranscodingTempPath;
 	public final String getTranscodingTempPath()
 	{
-		return privateTranscodingTempPath;
+		return TranscodingTempPath;
 	}
 	public final void setTranscodingTempPath(String value)
 	{
-		privateTranscodingTempPath = value;
+		TranscodingTempPath = value;
 	}
 
 	/** 
@@ -297,14 +297,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value>The HTTP server port number.</value>
 	*/
-	private int privateHttpServerPortNumber;
+	private int HttpServerPortNumber;
 	public final int getHttpServerPortNumber()
 	{
-		return privateHttpServerPortNumber;
+		return HttpServerPortNumber;
 	}
 	public final void setHttpServerPortNumber(int value)
 	{
-		privateHttpServerPortNumber = value;
+		HttpServerPortNumber = value;
 	}
 
 	/** 
@@ -312,14 +312,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value><c>true</c> if this instance has update available; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateHasUpdateAvailable;
+	private boolean HasUpdateAvailable;
 	public final boolean getHasUpdateAvailable()
 	{
-		return privateHasUpdateAvailable;
+		return HasUpdateAvailable;
 	}
 	public final void setHasUpdateAvailable(boolean value)
 	{
-		privateHasUpdateAvailable = value;
+		HasUpdateAvailable = value;
 	}
 
 	/** 
@@ -327,14 +327,14 @@ public class SystemInfo extends PublicSystemInfo
 	 
 	 <value><c>true</c> if [supports automatic run at startup]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateSupportsAutoRunAtStartup;
+	private boolean SupportsAutoRunAtStartup;
 	public final boolean getSupportsAutoRunAtStartup()
 	{
-		return privateSupportsAutoRunAtStartup;
+		return SupportsAutoRunAtStartup;
 	}
 	public final void setSupportsAutoRunAtStartup(boolean value)
 	{
-		privateSupportsAutoRunAtStartup = value;
+		SupportsAutoRunAtStartup = value;
 	}
 
 	/** 

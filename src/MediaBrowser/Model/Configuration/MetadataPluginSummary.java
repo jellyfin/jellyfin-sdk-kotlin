@@ -9,14 +9,14 @@ public class MetadataPluginSummary
 	 
 	 <value>The type of the item.</value>
 	*/
-	private String privateItemType;
+	private String ItemType;
 	public final String getItemType()
 	{
-		return privateItemType;
+		return ItemType;
 	}
 	public final void setItemType(String value)
 	{
-		privateItemType = value;
+		ItemType = value;
 	}
 
 	/** 
@@ -24,14 +24,14 @@ public class MetadataPluginSummary
 	 
 	 <value>The plugins.</value>
 	*/
-	private java.util.ArrayList<MetadataPlugin> privatePlugins;
+	private java.util.ArrayList<MetadataPlugin> Plugins;
 	public final java.util.ArrayList<MetadataPlugin> getPlugins()
 	{
-		return privatePlugins;
+		return Plugins;
 	}
 	public final void setPlugins(java.util.ArrayList<MetadataPlugin> value)
 	{
-		privatePlugins = value;
+		Plugins = value;
 	}
 
 	/** 
@@ -39,14 +39,14 @@ public class MetadataPluginSummary
 	 
 	 <value>The supported image types.</value>
 	*/
-	private java.util.ArrayList<ImageType> privateSupportedImageTypes;
+	private java.util.ArrayList<ImageType> SupportedImageTypes;
 	public final java.util.ArrayList<ImageType> getSupportedImageTypes()
 	{
-		return privateSupportedImageTypes;
+		return SupportedImageTypes;
 	}
 	public final void setSupportedImageTypes(java.util.ArrayList<ImageType> value)
 	{
-		privateSupportedImageTypes = value;
+		SupportedImageTypes = value;
 	}
 
 	public MetadataPluginSummary()

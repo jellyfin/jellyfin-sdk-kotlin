@@ -13,14 +13,14 @@ public class RemoteImageInfo
 	 
 	 <value>The name of the provider.</value>
 	*/
-	private String privateProviderName;
+	private String ProviderName;
 	public final String getProviderName()
 	{
-		return privateProviderName;
+		return ProviderName;
 	}
 	public final void setProviderName(String value)
 	{
-		privateProviderName = value;
+		ProviderName = value;
 	}
 
 	/** 
@@ -28,27 +28,27 @@ public class RemoteImageInfo
 	 
 	 <value>The URL.</value>
 	*/
-	private String privateUrl;
+	private String Url;
 	public final String getUrl()
 	{
-		return privateUrl;
+		return Url;
 	}
 	public final void setUrl(String value)
 	{
-		privateUrl = value;
+		Url = value;
 	}
 
 	/** 
 	 Gets a url used for previewing a smaller version
 	*/
-	private String privateThumbnailUrl;
+	private String ThumbnailUrl;
 	public final String getThumbnailUrl()
 	{
-		return privateThumbnailUrl;
+		return ThumbnailUrl;
 	}
 	public final void setThumbnailUrl(String value)
 	{
-		privateThumbnailUrl = value;
+		ThumbnailUrl = value;
 	}
 
 	/** 
@@ -56,14 +56,14 @@ public class RemoteImageInfo
 	 
 	 <value>The height.</value>
 	*/
-	private Integer privateHeight;
+	private Integer Height;
 	public final Integer getHeight()
 	{
-		return privateHeight;
+		return Height;
 	}
 	public final void setHeight(Integer value)
 	{
-		privateHeight = value;
+		Height = value;
 	}
 
 	/** 
@@ -71,14 +71,14 @@ public class RemoteImageInfo
 	 
 	 <value>The width.</value>
 	*/
-	private Integer privateWidth;
+	private Integer Width;
 	public final Integer getWidth()
 	{
-		return privateWidth;
+		return Width;
 	}
 	public final void setWidth(Integer value)
 	{
-		privateWidth = value;
+		Width = value;
 	}
 
 	/** 
@@ -86,14 +86,14 @@ public class RemoteImageInfo
 	 
 	 <value>The community rating.</value>
 	*/
-	private Double privateCommunityRating;
+	private Double CommunityRating;
 	public final Double getCommunityRating()
 	{
-		return privateCommunityRating;
+		return CommunityRating;
 	}
 	public final void setCommunityRating(Double value)
 	{
-		privateCommunityRating = value;
+		CommunityRating = value;
 	}
 
 	/** 
@@ -101,14 +101,14 @@ public class RemoteImageInfo
 	 
 	 <value>The vote count.</value>
 	*/
-	private Integer privateVoteCount;
+	private Integer VoteCount;
 	public final Integer getVoteCount()
 	{
-		return privateVoteCount;
+		return VoteCount;
 	}
 	public final void setVoteCount(Integer value)
 	{
-		privateVoteCount = value;
+		VoteCount = value;
 	}
 
 	/** 
@@ -116,14 +116,14 @@ public class RemoteImageInfo
 	 
 	 <value>The language.</value>
 	*/
-	private String privateLanguage;
+	private String Language;
 	public final String getLanguage()
 	{
-		return privateLanguage;
+		return Language;
 	}
 	public final void setLanguage(String value)
 	{
-		privateLanguage = value;
+		Language = value;
 	}
 
 	/** 
@@ -131,14 +131,14 @@ public class RemoteImageInfo
 	 
 	 <value>The type.</value>
 	*/
-	private ImageType privateType = ImageType.values()[0];
+	private ImageType Type = ImageType.values()[0];
 	public final ImageType getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(ImageType value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
 	/** 
@@ -146,13 +146,13 @@ public class RemoteImageInfo
 	 
 	 <value>The type of the rating.</value>
 	*/
-	private RatingType privateRatingType = getRatingType().values()[0];
+	private RatingType RatingType = getRatingType().values()[0];
 	public final RatingType getRatingType()
 	{
-		return privateRatingType;
+		return RatingType;
 	}
 	public final void setRatingType(RatingType value)
 	{
-		privateRatingType = value;
+		RatingType = value;
 	}
 }

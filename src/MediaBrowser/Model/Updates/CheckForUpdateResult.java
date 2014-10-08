@@ -10,14 +10,14 @@ public class CheckForUpdateResult
 	 
 	 <value><c>true</c> if this instance is update available; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsUpdateAvailable;
+	private boolean IsUpdateAvailable;
 	public final boolean getIsUpdateAvailable()
 	{
-		return privateIsUpdateAvailable;
+		return IsUpdateAvailable;
 	}
 	public final void setIsUpdateAvailable(boolean value)
 	{
-		privateIsUpdateAvailable = value;
+		IsUpdateAvailable = value;
 	}
 
 	/** 
@@ -36,13 +36,13 @@ public class CheckForUpdateResult
 	/** 
 	 Get or sets package information for an available update
 	*/
-	private PackageVersionInfo privatePackage;
+	private PackageVersionInfo Package;
 	public final PackageVersionInfo getPackage()
 	{
-		return privatePackage;
+		return Package;
 	}
 	public final void setPackage(PackageVersionInfo value)
 	{
-		privatePackage = value;
+		Package = value;
 	}
 }

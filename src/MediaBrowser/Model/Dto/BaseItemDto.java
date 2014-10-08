@@ -19,14 +19,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -34,14 +34,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The id.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -49,14 +49,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The playlist item identifier.</value>
 	*/
-	private String privatePlaylistItemId;
+	private String PlaylistItemId;
 	public final String getPlaylistItemId()
 	{
-		return privatePlaylistItemId;
+		return PlaylistItemId;
 	}
 	public final void setPlaylistItemId(String value)
 	{
-		privatePlaylistItemId = value;
+		PlaylistItemId = value;
 	}
 
 	/** 
@@ -64,139 +64,139 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The date created.</value>
 	*/
-	private java.util.Date privateDateCreated = null;
+	private java.util.Date DateCreated = null;
 	public final java.util.Date getDateCreated()
 	{
-		return privateDateCreated;
+		return DateCreated;
 	}
 	public final void setDateCreated(java.util.Date value)
 	{
-		privateDateCreated = value;
+		DateCreated = value;
 	}
 
-	private java.util.Date privateDateLastMediaAdded = null;
+	private java.util.Date DateLastMediaAdded = null;
 	public final java.util.Date getDateLastMediaAdded()
 	{
-		return privateDateLastMediaAdded;
+		return DateLastMediaAdded;
 	}
 	public final void setDateLastMediaAdded(java.util.Date value)
 	{
-		privateDateLastMediaAdded = value;
+		DateLastMediaAdded = value;
 	}
 
-	private Integer privateAirsBeforeSeasonNumber = null;
+	private Integer AirsBeforeSeasonNumber = null;
 	public final Integer getAirsBeforeSeasonNumber()
 	{
-		return privateAirsBeforeSeasonNumber;
+		return AirsBeforeSeasonNumber;
 	}
 	public final void setAirsBeforeSeasonNumber(Integer value)
 	{
-		privateAirsBeforeSeasonNumber = value;
+		AirsBeforeSeasonNumber = value;
 	}
-	private Integer privateAirsAfterSeasonNumber = null;
+	private Integer AirsAfterSeasonNumber = null;
 	public final Integer getAirsAfterSeasonNumber()
 	{
-		return privateAirsAfterSeasonNumber;
+		return AirsAfterSeasonNumber;
 	}
 	public final void setAirsAfterSeasonNumber(Integer value)
 	{
-		privateAirsAfterSeasonNumber = value;
+		AirsAfterSeasonNumber = value;
 	}
-	private Integer privateAirsBeforeEpisodeNumber = null;
+	private Integer AirsBeforeEpisodeNumber = null;
 	public final Integer getAirsBeforeEpisodeNumber()
 	{
-		return privateAirsBeforeEpisodeNumber;
+		return AirsBeforeEpisodeNumber;
 	}
 	public final void setAirsBeforeEpisodeNumber(Integer value)
 	{
-		privateAirsBeforeEpisodeNumber = value;
+		AirsBeforeEpisodeNumber = value;
 	}
-	private Integer privateAbsoluteEpisodeNumber = null;
+	private Integer AbsoluteEpisodeNumber = null;
 	public final Integer getAbsoluteEpisodeNumber()
 	{
-		return privateAbsoluteEpisodeNumber;
+		return AbsoluteEpisodeNumber;
 	}
 	public final void setAbsoluteEpisodeNumber(Integer value)
 	{
-		privateAbsoluteEpisodeNumber = value;
+		AbsoluteEpisodeNumber = value;
 	}
-	private Boolean privateDisplaySpecialsWithSeasons = null;
+	private Boolean DisplaySpecialsWithSeasons = null;
 	public final Boolean getDisplaySpecialsWithSeasons()
 	{
-		return privateDisplaySpecialsWithSeasons;
+		return DisplaySpecialsWithSeasons;
 	}
 	public final void setDisplaySpecialsWithSeasons(Boolean value)
 	{
-		privateDisplaySpecialsWithSeasons = value;
+		DisplaySpecialsWithSeasons = value;
 	}
 
-	private String privatePreferredMetadataLanguage;
+	private String PreferredMetadataLanguage;
 	public final String getPreferredMetadataLanguage()
 	{
-		return privatePreferredMetadataLanguage;
+		return PreferredMetadataLanguage;
 	}
 	public final void setPreferredMetadataLanguage(String value)
 	{
-		privatePreferredMetadataLanguage = value;
+		PreferredMetadataLanguage = value;
 	}
-	private String privatePreferredMetadataCountryCode;
+	private String PreferredMetadataCountryCode;
 	public final String getPreferredMetadataCountryCode()
 	{
-		return privatePreferredMetadataCountryCode;
+		return PreferredMetadataCountryCode;
 	}
 	public final void setPreferredMetadataCountryCode(String value)
 	{
-		privatePreferredMetadataCountryCode = value;
+		PreferredMetadataCountryCode = value;
 	}
 
-	private String privateAwardSummary;
+	private String AwardSummary;
 	public final String getAwardSummary()
 	{
-		return privateAwardSummary;
+		return AwardSummary;
 	}
 	public final void setAwardSummary(String value)
 	{
-		privateAwardSummary = value;
+		AwardSummary = value;
 	}
 
-	private Float privateMetascore = null;
+	private Float Metascore = null;
 	public final Float getMetascore()
 	{
-		return privateMetascore;
+		return Metascore;
 	}
 	public final void setMetascore(Float value)
 	{
-		privateMetascore = value;
+		Metascore = value;
 	}
 
-	private boolean privateIsUnidentified;
+	private boolean IsUnidentified;
 	public final boolean getIsUnidentified()
 	{
-		return privateIsUnidentified;
+		return IsUnidentified;
 	}
 	public final void setIsUnidentified(boolean value)
 	{
-		privateIsUnidentified = value;
+		IsUnidentified = value;
 	}
 
-	private Integer privateAnimeSeriesIndex = null;
+	private Integer AnimeSeriesIndex = null;
 	public final Integer getAnimeSeriesIndex()
 	{
-		return privateAnimeSeriesIndex;
+		return AnimeSeriesIndex;
 	}
 	public final void setAnimeSeriesIndex(Integer value)
 	{
-		privateAnimeSeriesIndex = value;
+		AnimeSeriesIndex = value;
 	}
 
-	private Boolean privateSupportsSync = null;
+	private Boolean SupportsSync = null;
 	public final Boolean getSupportsSync()
 	{
-		return privateSupportsSync;
+		return SupportsSync;
 	}
 	public final void setSupportsSync(Boolean value)
 	{
-		privateSupportsSync = value;
+		SupportsSync = value;
 	}
 
 	/** 
@@ -204,28 +204,28 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The DVD season number.</value>
 	*/
-	private Integer privateDvdSeasonNumber = null;
+	private Integer DvdSeasonNumber = null;
 	public final Integer getDvdSeasonNumber()
 	{
-		return privateDvdSeasonNumber;
+		return DvdSeasonNumber;
 	}
 	public final void setDvdSeasonNumber(Integer value)
 	{
-		privateDvdSeasonNumber = value;
+		DvdSeasonNumber = value;
 	}
 	/** 
 	 Gets or sets the DVD episode number.
 	 
 	 <value>The DVD episode number.</value>
 	*/
-	private Float privateDvdEpisodeNumber = null;
+	private Float DvdEpisodeNumber = null;
 	public final Float getDvdEpisodeNumber()
 	{
-		return privateDvdEpisodeNumber;
+		return DvdEpisodeNumber;
 	}
 	public final void setDvdEpisodeNumber(Float value)
 	{
-		privateDvdEpisodeNumber = value;
+		DvdEpisodeNumber = value;
 	}
 
 	/** 
@@ -233,23 +233,23 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The name of the sort.</value>
 	*/
-	private String privateSortName;
+	private String SortName;
 	public final String getSortName()
 	{
-		return privateSortName;
+		return SortName;
 	}
 	public final void setSortName(String value)
 	{
-		privateSortName = value;
+		SortName = value;
 	}
-	private String privateForcedSortName;
+	private String ForcedSortName;
 	public final String getForcedSortName()
 	{
-		return privateForcedSortName;
+		return ForcedSortName;
 	}
 	public final void setForcedSortName(String value)
 	{
-		privateForcedSortName = value;
+		ForcedSortName = value;
 	}
 
 	/** 
@@ -257,14 +257,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The video3 D format.</value>
 	*/
-	private Video3DFormat privateVideo3DFormat = null;
+	private Video3DFormat Video3DFormat = null;
 	public final Video3DFormat getVideo3DFormat()
 	{
-		return privateVideo3DFormat;
+		return Video3DFormat;
 	}
 	public final void setVideo3DFormat(Video3DFormat value)
 	{
-		privateVideo3DFormat = value;
+		Video3DFormat = value;
 	}
 
 	/** 
@@ -272,14 +272,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The premiere date.</value>
 	*/
-	private java.util.Date privatePremiereDate = null;
+	private java.util.Date PremiereDate = null;
 	public final java.util.Date getPremiereDate()
 	{
-		return privatePremiereDate;
+		return PremiereDate;
 	}
 	public final void setPremiereDate(java.util.Date value)
 	{
-		privatePremiereDate = value;
+		PremiereDate = value;
 	}
 
 	/** 
@@ -287,14 +287,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The external urls.</value>
 	*/
-	private ExternalUrl[] privateExternalUrls;
+	private ExternalUrl[] ExternalUrls;
 	public final ExternalUrl[] getExternalUrls()
 	{
-		return privateExternalUrls;
+		return ExternalUrls;
 	}
 	public final void setExternalUrls(ExternalUrl[] value)
 	{
-		privateExternalUrls = value;
+		ExternalUrls = value;
 	}
 
 	/** 
@@ -302,14 +302,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The media versions.</value>
 	*/
-	private java.util.ArrayList<MediaSourceInfo> privateMediaSources;
+	private java.util.ArrayList<MediaSourceInfo> MediaSources;
 	public final java.util.ArrayList<MediaSourceInfo> getMediaSources()
 	{
-		return privateMediaSources;
+		return MediaSources;
 	}
 	public final void setMediaSources(java.util.ArrayList<MediaSourceInfo> value)
 	{
-		privateMediaSources = value;
+		MediaSources = value;
 	}
 
 	/** 
@@ -317,14 +317,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The critic rating.</value>
 	*/
-	private Float privateCriticRating = null;
+	private Float CriticRating = null;
 	public final Float getCriticRating()
 	{
-		return privateCriticRating;
+		return CriticRating;
 	}
 	public final void setCriticRating(Float value)
 	{
-		privateCriticRating = value;
+		CriticRating = value;
 	}
 
 	/** 
@@ -332,14 +332,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The game system.</value>
 	*/
-	private String privateGameSystem;
+	private String GameSystem;
 	public final String getGameSystem()
 	{
-		return privateGameSystem;
+		return GameSystem;
 	}
 	public final void setGameSystem(String value)
 	{
-		privateGameSystem = value;
+		GameSystem = value;
 	}
 
 	/** 
@@ -347,24 +347,24 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The critic rating summary.</value>
 	*/
-	private String privateCriticRatingSummary;
+	private String CriticRatingSummary;
 	public final String getCriticRatingSummary()
 	{
-		return privateCriticRatingSummary;
+		return CriticRatingSummary;
 	}
 	public final void setCriticRatingSummary(String value)
 	{
-		privateCriticRatingSummary = value;
+		CriticRatingSummary = value;
 	}
 
-	private java.util.ArrayList<String> privateMultiPartGameFiles;
+	private java.util.ArrayList<String> MultiPartGameFiles;
 	public final java.util.ArrayList<String> getMultiPartGameFiles()
 	{
-		return privateMultiPartGameFiles;
+		return MultiPartGameFiles;
 	}
 	public final void setMultiPartGameFiles(java.util.ArrayList<String> value)
 	{
-		privateMultiPartGameFiles = value;
+		MultiPartGameFiles = value;
 	}
 
 	/** 
@@ -372,14 +372,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The path.</value>
 	*/
-	private String privatePath;
+	private String Path;
 	public final String getPath()
 	{
-		return privatePath;
+		return Path;
 	}
 	public final void setPath(String value)
 	{
-		privatePath = value;
+		Path = value;
 	}
 
 	/** 
@@ -387,14 +387,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The official rating.</value>
 	*/
-	private String privateOfficialRating;
+	private String OfficialRating;
 	public final String getOfficialRating()
 	{
-		return privateOfficialRating;
+		return OfficialRating;
 	}
 	public final void setOfficialRating(String value)
 	{
-		privateOfficialRating = value;
+		OfficialRating = value;
 	}
 
 	/** 
@@ -402,14 +402,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The custom rating.</value>
 	*/
-	private String privateCustomRating;
+	private String CustomRating;
 	public final String getCustomRating()
 	{
-		return privateCustomRating;
+		return CustomRating;
 	}
 	public final void setCustomRating(String value)
 	{
-		privateCustomRating = value;
+		CustomRating = value;
 	}
 
 	/** 
@@ -417,23 +417,23 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The channel identifier.</value>
 	*/
-	private String privateChannelId;
+	private String ChannelId;
 	public final String getChannelId()
 	{
-		return privateChannelId;
+		return ChannelId;
 	}
 	public final void setChannelId(String value)
 	{
-		privateChannelId = value;
+		ChannelId = value;
 	}
-	private String privateChannelName;
+	private String ChannelName;
 	public final String getChannelName()
 	{
-		return privateChannelName;
+		return ChannelName;
 	}
 	public final void setChannelName(String value)
 	{
-		privateChannelName = value;
+		ChannelName = value;
 	}
 
 	/** 
@@ -441,14 +441,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The overview.</value>
 	*/
-	private String privateOverview;
+	private String Overview;
 	public final String getOverview()
 	{
-		return privateOverview;
+		return Overview;
 	}
 	public final void setOverview(String value)
 	{
-		privateOverview = value;
+		Overview = value;
 	}
 
 	/** 
@@ -456,14 +456,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The short overview.</value>
 	*/
-	private String privateShortOverview;
+	private String ShortOverview;
 	public final String getShortOverview()
 	{
-		return privateShortOverview;
+		return ShortOverview;
 	}
 	public final void setShortOverview(String value)
 	{
-		privateShortOverview = value;
+		ShortOverview = value;
 	}
 
 	/** 
@@ -471,14 +471,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The name of the TMDB collection.</value>
 	*/
-	private String privateTmdbCollectionName;
+	private String TmdbCollectionName;
 	public final String getTmdbCollectionName()
 	{
-		return privateTmdbCollectionName;
+		return TmdbCollectionName;
 	}
 	public final void setTmdbCollectionName(String value)
 	{
-		privateTmdbCollectionName = value;
+		TmdbCollectionName = value;
 	}
 
 	/** 
@@ -486,14 +486,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The taglines.</value>
 	*/
-	private java.util.ArrayList<String> privateTaglines;
+	private java.util.ArrayList<String> Taglines;
 	public final java.util.ArrayList<String> getTaglines()
 	{
-		return privateTaglines;
+		return Taglines;
 	}
 	public final void setTaglines(java.util.ArrayList<String> value)
 	{
-		privateTaglines = value;
+		Taglines = value;
 	}
 
 	/** 
@@ -501,14 +501,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The genres.</value>
 	*/
-	private java.util.ArrayList<String> privateGenres;
+	private java.util.ArrayList<String> Genres;
 	public final java.util.ArrayList<String> getGenres()
 	{
-		return privateGenres;
+		return Genres;
 	}
 	public final void setGenres(java.util.ArrayList<String> value)
 	{
-		privateGenres = value;
+		Genres = value;
 	}
 
 	/** 
@@ -516,14 +516,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The community rating.</value>
 	*/
-	private Float privateCommunityRating = null;
+	private Float CommunityRating = null;
 	public final Float getCommunityRating()
 	{
-		return privateCommunityRating;
+		return CommunityRating;
 	}
 	public final void setCommunityRating(Float value)
 	{
-		privateCommunityRating = value;
+		CommunityRating = value;
 	}
 
 	/** 
@@ -531,14 +531,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The vote count.</value>
 	*/
-	private Integer privateVoteCount = null;
+	private Integer VoteCount = null;
 	public final Integer getVoteCount()
 	{
-		return privateVoteCount;
+		return VoteCount;
 	}
 	public final void setVoteCount(Integer value)
 	{
-		privateVoteCount = value;
+		VoteCount = value;
 	}
 
 	/** 
@@ -546,14 +546,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The cumulative run time ticks.</value>
 	*/
-	private Long privateCumulativeRunTimeTicks = null;
+	private Long CumulativeRunTimeTicks = null;
 	public final Long getCumulativeRunTimeTicks()
 	{
-		return privateCumulativeRunTimeTicks;
+		return CumulativeRunTimeTicks;
 	}
 	public final void setCumulativeRunTimeTicks(Long value)
 	{
-		privateCumulativeRunTimeTicks = value;
+		CumulativeRunTimeTicks = value;
 	}
 
 	/** 
@@ -561,14 +561,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The original run time ticks.</value>
 	*/
-	private Long privateOriginalRunTimeTicks = null;
+	private Long OriginalRunTimeTicks = null;
 	public final Long getOriginalRunTimeTicks()
 	{
-		return privateOriginalRunTimeTicks;
+		return OriginalRunTimeTicks;
 	}
 	public final void setOriginalRunTimeTicks(Long value)
 	{
-		privateOriginalRunTimeTicks = value;
+		OriginalRunTimeTicks = value;
 	}
 
 	/** 
@@ -576,14 +576,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The run time ticks.</value>
 	*/
-	private Long privateRunTimeTicks = null;
+	private Long RunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{
-		return privateRunTimeTicks;
+		return RunTimeTicks;
 	}
 	public final void setRunTimeTicks(Long value)
 	{
-		privateRunTimeTicks = value;
+		RunTimeTicks = value;
 	}
 
 	/** 
@@ -591,14 +591,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The play access.</value>
 	*/
-	private PlayAccess privatePlayAccess = getPlayAccess().values()[0];
+	private PlayAccess PlayAccess = getPlayAccess().values()[0];
 	public final PlayAccess getPlayAccess()
 	{
-		return privatePlayAccess;
+		return PlayAccess;
 	}
 	public final void setPlayAccess(PlayAccess value)
 	{
-		privatePlayAccess = value;
+		PlayAccess = value;
 	}
 
 	/** 
@@ -606,14 +606,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The aspect ratio.</value>
 	*/
-	private String privateAspectRatio;
+	private String AspectRatio;
 	public final String getAspectRatio()
 	{
-		return privateAspectRatio;
+		return AspectRatio;
 	}
 	public final void setAspectRatio(String value)
 	{
-		privateAspectRatio = value;
+		AspectRatio = value;
 	}
 
 	/** 
@@ -621,14 +621,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The production year.</value>
 	*/
-	private Integer privateProductionYear = null;
+	private Integer ProductionYear = null;
 	public final Integer getProductionYear()
 	{
-		return privateProductionYear;
+		return ProductionYear;
 	}
 	public final void setProductionYear(Integer value)
 	{
-		privateProductionYear = value;
+		ProductionYear = value;
 	}
 
 	/** 
@@ -636,14 +636,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The recursive unplayed item count.</value>
 	*/
-	private Integer privateRecursiveUnplayedItemCount = null;
+	private Integer RecursiveUnplayedItemCount = null;
 	public final Integer getRecursiveUnplayedItemCount()
 	{
-		return privateRecursiveUnplayedItemCount;
+		return RecursiveUnplayedItemCount;
 	}
 	public final void setRecursiveUnplayedItemCount(Integer value)
 	{
-		privateRecursiveUnplayedItemCount = value;
+		RecursiveUnplayedItemCount = value;
 	}
 
 	/** 
@@ -651,14 +651,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The season count.</value>
 	*/
-	private Integer privateSeasonCount = null;
+	private Integer SeasonCount = null;
 	public final Integer getSeasonCount()
 	{
-		return privateSeasonCount;
+		return SeasonCount;
 	}
 	public final void setSeasonCount(Integer value)
 	{
-		privateSeasonCount = value;
+		SeasonCount = value;
 	}
 
 	/** 
@@ -666,14 +666,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The players.</value>
 	*/
-	private Integer privatePlayers = null;
+	private Integer Players = null;
 	public final Integer getPlayers()
 	{
-		return privatePlayers;
+		return Players;
 	}
 	public final void setPlayers(Integer value)
 	{
-		privatePlayers = value;
+		Players = value;
 	}
 
 	/** 
@@ -681,14 +681,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value><c>null</c> if [is place holder] contains no value, <c>true</c> if [is place holder]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsPlaceHolder = null;
+	private Boolean IsPlaceHolder = null;
 	public final Boolean getIsPlaceHolder()
 	{
-		return privateIsPlaceHolder;
+		return IsPlaceHolder;
 	}
 	public final void setIsPlaceHolder(Boolean value)
 	{
-		privateIsPlaceHolder = value;
+		IsPlaceHolder = value;
 	}
 
 	/** 
@@ -696,14 +696,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The index number.</value>
 	*/
-	private Integer privateIndexNumber = null;
+	private Integer IndexNumber = null;
 	public final Integer getIndexNumber()
 	{
-		return privateIndexNumber;
+		return IndexNumber;
 	}
 	public final void setIndexNumber(Integer value)
 	{
-		privateIndexNumber = value;
+		IndexNumber = value;
 	}
 
 	/** 
@@ -711,14 +711,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The index number end.</value>
 	*/
-	private Integer privateIndexNumberEnd = null;
+	private Integer IndexNumberEnd = null;
 	public final Integer getIndexNumberEnd()
 	{
-		return privateIndexNumberEnd;
+		return IndexNumberEnd;
 	}
 	public final void setIndexNumberEnd(Integer value)
 	{
-		privateIndexNumberEnd = value;
+		IndexNumberEnd = value;
 	}
 
 	/** 
@@ -726,14 +726,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The parent index number.</value>
 	*/
-	private Integer privateParentIndexNumber = null;
+	private Integer ParentIndexNumber = null;
 	public final Integer getParentIndexNumber()
 	{
-		return privateParentIndexNumber;
+		return ParentIndexNumber;
 	}
 	public final void setParentIndexNumber(Integer value)
 	{
-		privateParentIndexNumber = value;
+		ParentIndexNumber = value;
 	}
 
 	/** 
@@ -741,14 +741,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The trailer urls.</value>
 	*/
-	private java.util.ArrayList<MediaUrl> privateRemoteTrailers;
+	private java.util.ArrayList<MediaUrl> RemoteTrailers;
 	public final java.util.ArrayList<MediaUrl> getRemoteTrailers()
 	{
-		return privateRemoteTrailers;
+		return RemoteTrailers;
 	}
 	public final void setRemoteTrailers(java.util.ArrayList<MediaUrl> value)
 	{
-		privateRemoteTrailers = value;
+		RemoteTrailers = value;
 	}
 
 	/** 
@@ -756,14 +756,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The soundtrack ids.</value>
 	*/
-	private String[] privateSoundtrackIds;
+	private String[] SoundtrackIds;
 	public final String[] getSoundtrackIds()
 	{
-		return privateSoundtrackIds;
+		return SoundtrackIds;
 	}
 	public final void setSoundtrackIds(String[] value)
 	{
-		privateSoundtrackIds = value;
+		SoundtrackIds = value;
 	}
 
 	/** 
@@ -771,14 +771,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The provider ids.</value>
 	*/
-	private java.util.HashMap<String, String> privateProviderIds;
+	private java.util.HashMap<String, String> ProviderIds;
 	public final java.util.HashMap<String, String> getProviderIds()
 	{
-		return privateProviderIds;
+		return ProviderIds;
 	}
 	public final void setProviderIds(java.util.HashMap<String, String> value)
 	{
-		privateProviderIds = value;
+		ProviderIds = value;
 	}
 
 	/** 
@@ -786,14 +786,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value><c>null</c> if [is HD] contains no value, <c>true</c> if [is HD]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsHD = null;
+	private Boolean IsHD = null;
 	public final Boolean getIsHD()
 	{
-		return privateIsHD;
+		return IsHD;
 	}
 	public final void setIsHD(Boolean value)
 	{
-		privateIsHD = value;
+		IsHD = value;
 	}
 
 	/** 
@@ -801,14 +801,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value><c>true</c> if this instance is folder; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsFolder;
+	private boolean IsFolder;
 	public final boolean getIsFolder()
 	{
-		return privateIsFolder;
+		return IsFolder;
 	}
 	public final void setIsFolder(boolean value)
 	{
-		privateIsFolder = value;
+		IsFolder = value;
 	}
 
 	/** 
@@ -816,14 +816,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The parent id.</value>
 	*/
-	private String privateParentId;
+	private String ParentId;
 	public final String getParentId()
 	{
-		return privateParentId;
+		return ParentId;
 	}
 	public final void setParentId(String value)
 	{
-		privateParentId = value;
+		ParentId = value;
 	}
 
 	/** 
@@ -831,14 +831,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The type.</value>
 	*/
-	private String privateType;
+	private String Type;
 	public final String getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(String value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
 	/** 
@@ -846,14 +846,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The people.</value>
 	*/
-	private BaseItemPerson[] privatePeople;
+	private BaseItemPerson[] People;
 	public final BaseItemPerson[] getPeople()
 	{
-		return privatePeople;
+		return People;
 	}
 	public final void setPeople(BaseItemPerson[] value)
 	{
-		privatePeople = value;
+		People = value;
 	}
 
 	/** 
@@ -861,14 +861,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The studios.</value>
 	*/
-	private StudioDto[] privateStudios;
+	private StudioDto[] Studios;
 	public final StudioDto[] getStudios()
 	{
-		return privateStudios;
+		return Studios;
 	}
 	public final void setStudios(StudioDto[] value)
 	{
-		privateStudios = value;
+		Studios = value;
 	}
 
 	/** 
@@ -876,14 +876,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The parent logo item id.</value>
 	*/
-	private String privateParentLogoItemId;
+	private String ParentLogoItemId;
 	public final String getParentLogoItemId()
 	{
-		return privateParentLogoItemId;
+		return ParentLogoItemId;
 	}
 	public final void setParentLogoItemId(String value)
 	{
-		privateParentLogoItemId = value;
+		ParentLogoItemId = value;
 	}
 
 	/** 
@@ -891,14 +891,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The parent backdrop item id.</value>
 	*/
-	private String privateParentBackdropItemId;
+	private String ParentBackdropItemId;
 	public final String getParentBackdropItemId()
 	{
-		return privateParentBackdropItemId;
+		return ParentBackdropItemId;
 	}
 	public final void setParentBackdropItemId(String value)
 	{
-		privateParentBackdropItemId = value;
+		ParentBackdropItemId = value;
 	}
 
 	/** 
@@ -906,14 +906,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The parent backdrop image tags.</value>
 	*/
-	private java.util.ArrayList<String> privateParentBackdropImageTags;
+	private java.util.ArrayList<String> ParentBackdropImageTags;
 	public final java.util.ArrayList<String> getParentBackdropImageTags()
 	{
-		return privateParentBackdropImageTags;
+		return ParentBackdropImageTags;
 	}
 	public final void setParentBackdropImageTags(java.util.ArrayList<String> value)
 	{
-		privateParentBackdropImageTags = value;
+		ParentBackdropImageTags = value;
 	}
 
 	/** 
@@ -921,14 +921,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The local trailer count.</value>
 	*/
-	private Integer privateLocalTrailerCount = null;
+	private Integer LocalTrailerCount = null;
 	public final Integer getLocalTrailerCount()
 	{
-		return privateLocalTrailerCount;
+		return LocalTrailerCount;
 	}
 	public final void setLocalTrailerCount(Integer value)
 	{
-		privateLocalTrailerCount = value;
+		LocalTrailerCount = value;
 	}
 
 	/** 
@@ -936,14 +936,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The user data.</value>
 	*/
-	private UserItemDataDto privateUserData;
+	private UserItemDataDto UserData;
 	public final UserItemDataDto getUserData()
 	{
-		return privateUserData;
+		return UserData;
 	}
 	public final void setUserData(UserItemDataDto value)
 	{
-		privateUserData = value;
+		UserData = value;
 	}
 
 	/** 
@@ -951,14 +951,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The recursive item count.</value>
 	*/
-	private Integer privateRecursiveItemCount = null;
+	private Integer RecursiveItemCount = null;
 	public final Integer getRecursiveItemCount()
 	{
-		return privateRecursiveItemCount;
+		return RecursiveItemCount;
 	}
 	public final void setRecursiveItemCount(Integer value)
 	{
-		privateRecursiveItemCount = value;
+		RecursiveItemCount = value;
 	}
 
 	/** 
@@ -966,14 +966,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The child count.</value>
 	*/
-	private Integer privateChildCount = null;
+	private Integer ChildCount = null;
 	public final Integer getChildCount()
 	{
-		return privateChildCount;
+		return ChildCount;
 	}
 	public final void setChildCount(Integer value)
 	{
-		privateChildCount = value;
+		ChildCount = value;
 	}
 
 	/** 
@@ -981,14 +981,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The name of the series.</value>
 	*/
-	private String privateSeriesName;
+	private String SeriesName;
 	public final String getSeriesName()
 	{
-		return privateSeriesName;
+		return SeriesName;
 	}
 	public final void setSeriesName(String value)
 	{
-		privateSeriesName = value;
+		SeriesName = value;
 	}
 
 	/** 
@@ -996,14 +996,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The series id.</value>
 	*/
-	private String privateSeriesId;
+	private String SeriesId;
 	public final String getSeriesId()
 	{
-		return privateSeriesId;
+		return SeriesId;
 	}
 	public final void setSeriesId(String value)
 	{
-		privateSeriesId = value;
+		SeriesId = value;
 	}
 
 	/** 
@@ -1011,14 +1011,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The season identifier.</value>
 	*/
-	private String privateSeasonId;
+	private String SeasonId;
 	public final String getSeasonId()
 	{
-		return privateSeasonId;
+		return SeasonId;
 	}
 	public final void setSeasonId(String value)
 	{
-		privateSeasonId = value;
+		SeasonId = value;
 	}
 
 	/** 
@@ -1026,14 +1026,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The special feature count.</value>
 	*/
-	private Integer privateSpecialFeatureCount = null;
+	private Integer SpecialFeatureCount = null;
 	public final Integer getSpecialFeatureCount()
 	{
-		return privateSpecialFeatureCount;
+		return SpecialFeatureCount;
 	}
 	public final void setSpecialFeatureCount(Integer value)
 	{
-		privateSpecialFeatureCount = value;
+		SpecialFeatureCount = value;
 	}
 
 	/** 
@@ -1041,14 +1041,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The display preferences id.</value>
 	*/
-	private String privateDisplayPreferencesId;
+	private String DisplayPreferencesId;
 	public final String getDisplayPreferencesId()
 	{
-		return privateDisplayPreferencesId;
+		return DisplayPreferencesId;
 	}
 	public final void setDisplayPreferencesId(String value)
 	{
-		privateDisplayPreferencesId = value;
+		DisplayPreferencesId = value;
 	}
 
 	/** 
@@ -1056,14 +1056,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The status.</value>
 	*/
-	private SeriesStatus privateStatus = null;
+	private SeriesStatus Status = null;
 	public final SeriesStatus getStatus()
 	{
-		return privateStatus;
+		return Status;
 	}
 	public final void setStatus(SeriesStatus value)
 	{
-		privateStatus = value;
+		Status = value;
 	}
 
 	/** 
@@ -1071,14 +1071,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The air time.</value>
 	*/
-	private String privateAirTime;
+	private String AirTime;
 	public final String getAirTime()
 	{
-		return privateAirTime;
+		return AirTime;
 	}
 	public final void setAirTime(String value)
 	{
-		privateAirTime = value;
+		AirTime = value;
 	}
 
 	/** 
@@ -1086,14 +1086,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The air days.</value>
 	*/
-	private java.util.ArrayList<String> privateAirDays;
+	private java.util.ArrayList<String> AirDays;
 	public final java.util.ArrayList<String> getAirDays()
 	{
-		return privateAirDays;
+		return AirDays;
 	}
 	public final void setAirDays(java.util.ArrayList<String> value)
 	{
-		privateAirDays = value;
+		AirDays = value;
 	}
 
 	/** 
@@ -1101,14 +1101,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The index options.</value>
 	*/
-	private String[] privateIndexOptions;
+	private String[] IndexOptions;
 	public final String[] getIndexOptions()
 	{
-		return privateIndexOptions;
+		return IndexOptions;
 	}
 	public final void setIndexOptions(String[] value)
 	{
-		privateIndexOptions = value;
+		IndexOptions = value;
 	}
 
 	/** 
@@ -1116,14 +1116,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The tags.</value>
 	*/
-	private java.util.ArrayList<String> privateTags;
+	private java.util.ArrayList<String> Tags;
 	public final java.util.ArrayList<String> getTags()
 	{
-		return privateTags;
+		return Tags;
 	}
 	public final void setTags(java.util.ArrayList<String> value)
 	{
-		privateTags = value;
+		Tags = value;
 	}
 
 	/** 
@@ -1131,14 +1131,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The keywords.</value>
 	*/
-	private java.util.ArrayList<String> privateKeywords;
+	private java.util.ArrayList<String> Keywords;
 	public final java.util.ArrayList<String> getKeywords()
 	{
-		return privateKeywords;
+		return Keywords;
 	}
 	public final void setKeywords(java.util.ArrayList<String> value)
 	{
-		privateKeywords = value;
+		Keywords = value;
 	}
 
 	/** 
@@ -1146,14 +1146,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The primary image aspect ratio.</value>
 	*/
-	private Double privatePrimaryImageAspectRatio = null;
+	private Double PrimaryImageAspectRatio = null;
 	public final Double getPrimaryImageAspectRatio()
 	{
-		return privatePrimaryImageAspectRatio;
+		return PrimaryImageAspectRatio;
 	}
 	public final void setPrimaryImageAspectRatio(Double value)
 	{
-		privatePrimaryImageAspectRatio = value;
+		PrimaryImageAspectRatio = value;
 	}
 
 	/** 
@@ -1161,14 +1161,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The original primary image aspect ratio.</value>
 	*/
-	private Double privateOriginalPrimaryImageAspectRatio = null;
+	private Double OriginalPrimaryImageAspectRatio = null;
 	public final Double getOriginalPrimaryImageAspectRatio()
 	{
-		return privateOriginalPrimaryImageAspectRatio;
+		return OriginalPrimaryImageAspectRatio;
 	}
 	public final void setOriginalPrimaryImageAspectRatio(Double value)
 	{
-		privateOriginalPrimaryImageAspectRatio = value;
+		OriginalPrimaryImageAspectRatio = value;
 	}
 
 	/** 
@@ -1176,14 +1176,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The artists.</value>
 	*/
-	private java.util.ArrayList<String> privateArtists;
+	private java.util.ArrayList<String> Artists;
 	public final java.util.ArrayList<String> getArtists()
 	{
-		return privateArtists;
+		return Artists;
 	}
 	public final void setArtists(java.util.ArrayList<String> value)
 	{
-		privateArtists = value;
+		Artists = value;
 	}
 
 	/** 
@@ -1191,14 +1191,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The album.</value>
 	*/
-	private String privateAlbum;
+	private String Album;
 	public final String getAlbum()
 	{
-		return privateAlbum;
+		return Album;
 	}
 	public final void setAlbum(String value)
 	{
-		privateAlbum = value;
+		Album = value;
 	}
 
 	/** 
@@ -1206,14 +1206,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The type of the collection.</value>
 	*/
-	private String privateCollectionType;
+	private String CollectionType;
 	public final String getCollectionType()
 	{
-		return privateCollectionType;
+		return CollectionType;
 	}
 	public final void setCollectionType(String value)
 	{
-		privateCollectionType = value;
+		CollectionType = value;
 	}
 
 	/** 
@@ -1221,14 +1221,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The display order.</value>
 	*/
-	private String privateDisplayOrder;
+	private String DisplayOrder;
 	public final String getDisplayOrder()
 	{
-		return privateDisplayOrder;
+		return DisplayOrder;
 	}
 	public final void setDisplayOrder(String value)
 	{
-		privateDisplayOrder = value;
+		DisplayOrder = value;
 	}
 
 	/** 
@@ -1236,28 +1236,28 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The album id.</value>
 	*/
-	private String privateAlbumId;
+	private String AlbumId;
 	public final String getAlbumId()
 	{
-		return privateAlbumId;
+		return AlbumId;
 	}
 	public final void setAlbumId(String value)
 	{
-		privateAlbumId = value;
+		AlbumId = value;
 	}
 	/** 
 	 Gets or sets the album image tag.
 	 
 	 <value>The album image tag.</value>
 	*/
-	private String privateAlbumPrimaryImageTag;
+	private String AlbumPrimaryImageTag;
 	public final String getAlbumPrimaryImageTag()
 	{
-		return privateAlbumPrimaryImageTag;
+		return AlbumPrimaryImageTag;
 	}
 	public final void setAlbumPrimaryImageTag(String value)
 	{
-		privateAlbumPrimaryImageTag = value;
+		AlbumPrimaryImageTag = value;
 	}
 
 	/** 
@@ -1265,14 +1265,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The series primary image tag.</value>
 	*/
-	private String privateSeriesPrimaryImageTag;
+	private String SeriesPrimaryImageTag;
 	public final String getSeriesPrimaryImageTag()
 	{
-		return privateSeriesPrimaryImageTag;
+		return SeriesPrimaryImageTag;
 	}
 	public final void setSeriesPrimaryImageTag(String value)
 	{
-		privateSeriesPrimaryImageTag = value;
+		SeriesPrimaryImageTag = value;
 	}
 
 	/** 
@@ -1280,14 +1280,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The album artist.</value>
 	*/
-	private String privateAlbumArtist;
+	private String AlbumArtist;
 	public final String getAlbumArtist()
 	{
-		return privateAlbumArtist;
+		return AlbumArtist;
 	}
 	public final void setAlbumArtist(String value)
 	{
-		privateAlbumArtist = value;
+		AlbumArtist = value;
 	}
 
 	/** 
@@ -1295,14 +1295,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The name of the season.</value>
 	*/
-	private String privateSeasonName;
+	private String SeasonName;
 	public final String getSeasonName()
 	{
-		return privateSeasonName;
+		return SeasonName;
 	}
 	public final void setSeasonName(String value)
 	{
-		privateSeasonName = value;
+		SeasonName = value;
 	}
 
 	/** 
@@ -1310,14 +1310,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The media streams.</value>
 	*/
-	private java.util.ArrayList<MediaStream> privateMediaStreams;
+	private java.util.ArrayList<MediaStream> MediaStreams;
 	public final java.util.ArrayList<MediaStream> getMediaStreams()
 	{
-		return privateMediaStreams;
+		return MediaStreams;
 	}
 	public final void setMediaStreams(java.util.ArrayList<MediaStream> value)
 	{
-		privateMediaStreams = value;
+		MediaStreams = value;
 	}
 
 	/** 
@@ -1325,14 +1325,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The type of the video.</value>
 	*/
-	private VideoType privateVideoType = null;
+	private VideoType VideoType = null;
 	public final VideoType getVideoType()
 	{
-		return privateVideoType;
+		return VideoType;
 	}
 	public final void setVideoType(VideoType value)
 	{
-		privateVideoType = value;
+		VideoType = value;
 	}
 
 	/** 
@@ -1340,14 +1340,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The display type of the media.</value>
 	*/
-	private String privateDisplayMediaType;
+	private String DisplayMediaType;
 	public final String getDisplayMediaType()
 	{
-		return privateDisplayMediaType;
+		return DisplayMediaType;
 	}
 	public final void setDisplayMediaType(String value)
 	{
-		privateDisplayMediaType = value;
+		DisplayMediaType = value;
 	}
 
 	/** 
@@ -1355,23 +1355,23 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The part count.</value>
 	*/
-	private Integer privatePartCount = null;
+	private Integer PartCount = null;
 	public final Integer getPartCount()
 	{
-		return privatePartCount;
+		return PartCount;
 	}
 	public final void setPartCount(Integer value)
 	{
-		privatePartCount = value;
+		PartCount = value;
 	}
-	private Integer privateMediaSourceCount = null;
+	private Integer MediaSourceCount = null;
 	public final Integer getMediaSourceCount()
 	{
-		return privateMediaSourceCount;
+		return MediaSourceCount;
 	}
 	public final void setMediaSourceCount(Integer value)
 	{
-		privateMediaSourceCount = value;
+		MediaSourceCount = value;
 	}
 
 	/** 
@@ -1390,14 +1390,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value><c>true</c> if [supports playlists]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateSupportsPlaylists;
+	private boolean SupportsPlaylists;
 	public final boolean getSupportsPlaylists()
 	{
-		return privateSupportsPlaylists;
+		return SupportsPlaylists;
 	}
 	public final void setSupportsPlaylists(boolean value)
 	{
-		privateSupportsPlaylists = value;
+		SupportsPlaylists = value;
 	}
 
 	/** 
@@ -1416,14 +1416,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The image tags.</value>
 	*/
-	private java.util.HashMap<ImageType, String> privateImageTags;
+	private java.util.HashMap<ImageType, String> ImageTags;
 	public final java.util.HashMap<ImageType, String> getImageTags()
 	{
-		return privateImageTags;
+		return ImageTags;
 	}
 	public final void setImageTags(java.util.HashMap<ImageType, String> value)
 	{
-		privateImageTags = value;
+		ImageTags = value;
 	}
 
 	/** 
@@ -1431,14 +1431,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The backdrop image tags.</value>
 	*/
-	private java.util.ArrayList<String> privateBackdropImageTags;
+	private java.util.ArrayList<String> BackdropImageTags;
 	public final java.util.ArrayList<String> getBackdropImageTags()
 	{
-		return privateBackdropImageTags;
+		return BackdropImageTags;
 	}
 	public final void setBackdropImageTags(java.util.ArrayList<String> value)
 	{
-		privateBackdropImageTags = value;
+		BackdropImageTags = value;
 	}
 
 	/** 
@@ -1446,14 +1446,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The screenshot image tags.</value>
 	*/
-	private java.util.ArrayList<String> privateScreenshotImageTags;
+	private java.util.ArrayList<String> ScreenshotImageTags;
 	public final java.util.ArrayList<String> getScreenshotImageTags()
 	{
-		return privateScreenshotImageTags;
+		return ScreenshotImageTags;
 	}
 	public final void setScreenshotImageTags(java.util.ArrayList<String> value)
 	{
-		privateScreenshotImageTags = value;
+		ScreenshotImageTags = value;
 	}
 
 	/** 
@@ -1461,14 +1461,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The parent logo image tag.</value>
 	*/
-	private String privateParentLogoImageTag;
+	private String ParentLogoImageTag;
 	public final String getParentLogoImageTag()
 	{
-		return privateParentLogoImageTag;
+		return ParentLogoImageTag;
 	}
 	public final void setParentLogoImageTag(String value)
 	{
-		privateParentLogoImageTag = value;
+		ParentLogoImageTag = value;
 	}
 
 	/** 
@@ -1476,14 +1476,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The parent art item id.</value>
 	*/
-	private String privateParentArtItemId;
+	private String ParentArtItemId;
 	public final String getParentArtItemId()
 	{
-		return privateParentArtItemId;
+		return ParentArtItemId;
 	}
 	public final void setParentArtItemId(String value)
 	{
-		privateParentArtItemId = value;
+		ParentArtItemId = value;
 	}
 
 	/** 
@@ -1491,14 +1491,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The parent art image tag.</value>
 	*/
-	private String privateParentArtImageTag;
+	private String ParentArtImageTag;
 	public final String getParentArtImageTag()
 	{
-		return privateParentArtImageTag;
+		return ParentArtImageTag;
 	}
 	public final void setParentArtImageTag(String value)
 	{
-		privateParentArtImageTag = value;
+		ParentArtImageTag = value;
 	}
 
 	/** 
@@ -1506,14 +1506,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The series thumb image tag.</value>
 	*/
-	private String privateSeriesThumbImageTag;
+	private String SeriesThumbImageTag;
 	public final String getSeriesThumbImageTag()
 	{
-		return privateSeriesThumbImageTag;
+		return SeriesThumbImageTag;
 	}
 	public final void setSeriesThumbImageTag(String value)
 	{
-		privateSeriesThumbImageTag = value;
+		SeriesThumbImageTag = value;
 	}
 
 	/** 
@@ -1521,14 +1521,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The series studio.</value>
 	*/
-	private String privateSeriesStudio;
+	private String SeriesStudio;
 	public final String getSeriesStudio()
 	{
-		return privateSeriesStudio;
+		return SeriesStudio;
 	}
 	public final void setSeriesStudio(String value)
 	{
-		privateSeriesStudio = value;
+		SeriesStudio = value;
 	}
 
 	/** 
@@ -1536,14 +1536,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The parent thumb item id.</value>
 	*/
-	private String privateParentThumbItemId;
+	private String ParentThumbItemId;
 	public final String getParentThumbItemId()
 	{
-		return privateParentThumbItemId;
+		return ParentThumbItemId;
 	}
 	public final void setParentThumbItemId(String value)
 	{
-		privateParentThumbItemId = value;
+		ParentThumbItemId = value;
 	}
 
 	/** 
@@ -1551,14 +1551,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The parent thumb image tag.</value>
 	*/
-	private String privateParentThumbImageTag;
+	private String ParentThumbImageTag;
 	public final String getParentThumbImageTag()
 	{
-		return privateParentThumbImageTag;
+		return ParentThumbImageTag;
 	}
 	public final void setParentThumbImageTag(String value)
 	{
-		privateParentThumbImageTag = value;
+		ParentThumbImageTag = value;
 	}
 
 	/** 
@@ -1566,14 +1566,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The parent primary image item identifier.</value>
 	*/
-	private String privateParentPrimaryImageItemId;
+	private String ParentPrimaryImageItemId;
 	public final String getParentPrimaryImageItemId()
 	{
-		return privateParentPrimaryImageItemId;
+		return ParentPrimaryImageItemId;
 	}
 	public final void setParentPrimaryImageItemId(String value)
 	{
-		privateParentPrimaryImageItemId = value;
+		ParentPrimaryImageItemId = value;
 	}
 
 	/** 
@@ -1581,14 +1581,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The parent primary image tag.</value>
 	*/
-	private String privateParentPrimaryImageTag;
+	private String ParentPrimaryImageTag;
 	public final String getParentPrimaryImageTag()
 	{
-		return privateParentPrimaryImageTag;
+		return ParentPrimaryImageTag;
 	}
 	public final void setParentPrimaryImageTag(String value)
 	{
-		privateParentPrimaryImageTag = value;
+		ParentPrimaryImageTag = value;
 	}
 
 	/** 
@@ -1596,14 +1596,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The chapters.</value>
 	*/
-	private java.util.ArrayList<ChapterInfoDto> privateChapters;
+	private java.util.ArrayList<ChapterInfoDto> Chapters;
 	public final java.util.ArrayList<ChapterInfoDto> getChapters()
 	{
-		return privateChapters;
+		return Chapters;
 	}
 	public final void setChapters(java.util.ArrayList<ChapterInfoDto> value)
 	{
-		privateChapters = value;
+		Chapters = value;
 	}
 
 	/** 
@@ -1611,14 +1611,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The type of the location.</value>
 	*/
-	private LocationType privateLocationType = getLocationType().values()[0];
+	private LocationType LocationType = getLocationType().values()[0];
 	public final LocationType getLocationType()
 	{
-		return privateLocationType;
+		return LocationType;
 	}
 	public final void setLocationType(LocationType value)
 	{
-		privateLocationType = value;
+		LocationType = value;
 	}
 
 	/** 
@@ -1626,14 +1626,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The type of the iso.</value>
 	*/
-	private IsoType privateIsoType = null;
+	private IsoType IsoType = null;
 	public final IsoType getIsoType()
 	{
-		return privateIsoType;
+		return IsoType;
 	}
 	public final void setIsoType(IsoType value)
 	{
-		privateIsoType = value;
+		IsoType = value;
 	}
 
 	/** 
@@ -1641,14 +1641,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The type of the media.</value>
 	*/
-	private String privateMediaType;
+	private String MediaType;
 	public final String getMediaType()
 	{
-		return privateMediaType;
+		return MediaType;
 	}
 	public final void setMediaType(String value)
 	{
-		privateMediaType = value;
+		MediaType = value;
 	}
 
 	/** 
@@ -1656,14 +1656,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The end date.</value>
 	*/
-	private java.util.Date privateEndDate = null;
+	private java.util.Date EndDate = null;
 	public final java.util.Date getEndDate()
 	{
-		return privateEndDate;
+		return EndDate;
 	}
 	public final void setEndDate(java.util.Date value)
 	{
-		privateEndDate = value;
+		EndDate = value;
 	}
 
 	/** 
@@ -1671,14 +1671,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The home page URL.</value>
 	*/
-	private String privateHomePageUrl;
+	private String HomePageUrl;
 	public final String getHomePageUrl()
 	{
-		return privateHomePageUrl;
+		return HomePageUrl;
 	}
 	public final void setHomePageUrl(String value)
 	{
-		privateHomePageUrl = value;
+		HomePageUrl = value;
 	}
 
 	/** 
@@ -1686,14 +1686,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The production locations.</value>
 	*/
-	private java.util.ArrayList<String> privateProductionLocations;
+	private java.util.ArrayList<String> ProductionLocations;
 	public final java.util.ArrayList<String> getProductionLocations()
 	{
-		return privateProductionLocations;
+		return ProductionLocations;
 	}
 	public final void setProductionLocations(java.util.ArrayList<String> value)
 	{
-		privateProductionLocations = value;
+		ProductionLocations = value;
 	}
 
 	/** 
@@ -1701,14 +1701,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The budget.</value>
 	*/
-	private Double privateBudget = null;
+	private Double Budget = null;
 	public final Double getBudget()
 	{
-		return privateBudget;
+		return Budget;
 	}
 	public final void setBudget(Double value)
 	{
-		privateBudget = value;
+		Budget = value;
 	}
 
 	/** 
@@ -1716,14 +1716,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The revenue.</value>
 	*/
-	private Double privateRevenue = null;
+	private Double Revenue = null;
 	public final Double getRevenue()
 	{
-		return privateRevenue;
+		return Revenue;
 	}
 	public final void setRevenue(Double value)
 	{
-		privateRevenue = value;
+		Revenue = value;
 	}
 
 	/** 
@@ -1731,14 +1731,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The locked fields.</value>
 	*/
-	private java.util.ArrayList<MetadataFields> privateLockedFields;
+	private java.util.ArrayList<MetadataFields> LockedFields;
 	public final java.util.ArrayList<MetadataFields> getLockedFields()
 	{
-		return privateLockedFields;
+		return LockedFields;
 	}
 	public final void setLockedFields(java.util.ArrayList<MetadataFields> value)
 	{
-		privateLockedFields = value;
+		LockedFields = value;
 	}
 
 	/** 
@@ -1746,112 +1746,112 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The movie count.</value>
 	*/
-	private Integer privateMovieCount = null;
+	private Integer MovieCount = null;
 	public final Integer getMovieCount()
 	{
-		return privateMovieCount;
+		return MovieCount;
 	}
 	public final void setMovieCount(Integer value)
 	{
-		privateMovieCount = value;
+		MovieCount = value;
 	}
 	/** 
 	 Gets or sets the series count.
 	 
 	 <value>The series count.</value>
 	*/
-	private Integer privateSeriesCount = null;
+	private Integer SeriesCount = null;
 	public final Integer getSeriesCount()
 	{
-		return privateSeriesCount;
+		return SeriesCount;
 	}
 	public final void setSeriesCount(Integer value)
 	{
-		privateSeriesCount = value;
+		SeriesCount = value;
 	}
 	/** 
 	 Gets or sets the episode count.
 	 
 	 <value>The episode count.</value>
 	*/
-	private Integer privateEpisodeCount = null;
+	private Integer EpisodeCount = null;
 	public final Integer getEpisodeCount()
 	{
-		return privateEpisodeCount;
+		return EpisodeCount;
 	}
 	public final void setEpisodeCount(Integer value)
 	{
-		privateEpisodeCount = value;
+		EpisodeCount = value;
 	}
 	/** 
 	 Gets or sets the game count.
 	 
 	 <value>The game count.</value>
 	*/
-	private Integer privateGameCount = null;
+	private Integer GameCount = null;
 	public final Integer getGameCount()
 	{
-		return privateGameCount;
+		return GameCount;
 	}
 	public final void setGameCount(Integer value)
 	{
-		privateGameCount = value;
+		GameCount = value;
 	}
 	/** 
 	 Gets or sets the trailer count.
 	 
 	 <value>The trailer count.</value>
 	*/
-	private Integer privateTrailerCount = null;
+	private Integer TrailerCount = null;
 	public final Integer getTrailerCount()
 	{
-		return privateTrailerCount;
+		return TrailerCount;
 	}
 	public final void setTrailerCount(Integer value)
 	{
-		privateTrailerCount = value;
+		TrailerCount = value;
 	}
 	/** 
 	 Gets or sets the song count.
 	 
 	 <value>The song count.</value>
 	*/
-	private Integer privateSongCount = null;
+	private Integer SongCount = null;
 	public final Integer getSongCount()
 	{
-		return privateSongCount;
+		return SongCount;
 	}
 	public final void setSongCount(Integer value)
 	{
-		privateSongCount = value;
+		SongCount = value;
 	}
 	/** 
 	 Gets or sets the album count.
 	 
 	 <value>The album count.</value>
 	*/
-	private Integer privateAlbumCount = null;
+	private Integer AlbumCount = null;
 	public final Integer getAlbumCount()
 	{
-		return privateAlbumCount;
+		return AlbumCount;
 	}
 	public final void setAlbumCount(Integer value)
 	{
-		privateAlbumCount = value;
+		AlbumCount = value;
 	}
 	/** 
 	 Gets or sets the music video count.
 	 
 	 <value>The music video count.</value>
 	*/
-	private Integer privateMusicVideoCount = null;
+	private Integer MusicVideoCount = null;
 	public final Integer getMusicVideoCount()
 	{
-		return privateMusicVideoCount;
+		return MusicVideoCount;
 	}
 	public final void setMusicVideoCount(Integer value)
 	{
-		privateMusicVideoCount = value;
+		MusicVideoCount = value;
 	}
 
 	/** 
@@ -1859,141 +1859,141 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value><c>true</c> if [enable internet providers]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateLockData = null;
+	private Boolean LockData = null;
 	public final Boolean getLockData()
 	{
-		return privateLockData;
+		return LockData;
 	}
 	public final void setLockData(Boolean value)
 	{
-		privateLockData = value;
+		LockData = value;
 	}
 
-	private Integer privateWidth = null;
+	private Integer Width = null;
 	public final Integer getWidth()
 	{
-		return privateWidth;
+		return Width;
 	}
 	public final void setWidth(Integer value)
 	{
-		privateWidth = value;
+		Width = value;
 	}
-	private Integer privateHeight = null;
+	private Integer Height = null;
 	public final Integer getHeight()
 	{
-		return privateHeight;
+		return Height;
 	}
 	public final void setHeight(Integer value)
 	{
-		privateHeight = value;
+		Height = value;
 	}
-	private String privateCameraMake;
+	private String CameraMake;
 	public final String getCameraMake()
 	{
-		return privateCameraMake;
+		return CameraMake;
 	}
 	public final void setCameraMake(String value)
 	{
-		privateCameraMake = value;
+		CameraMake = value;
 	}
-	private String privateCameraModel;
+	private String CameraModel;
 	public final String getCameraModel()
 	{
-		return privateCameraModel;
+		return CameraModel;
 	}
 	public final void setCameraModel(String value)
 	{
-		privateCameraModel = value;
+		CameraModel = value;
 	}
-	private String privateSoftware;
+	private String Software;
 	public final String getSoftware()
 	{
-		return privateSoftware;
+		return Software;
 	}
 	public final void setSoftware(String value)
 	{
-		privateSoftware = value;
+		Software = value;
 	}
-	private Double privateExposureTime = null;
+	private Double ExposureTime = null;
 	public final Double getExposureTime()
 	{
-		return privateExposureTime;
+		return ExposureTime;
 	}
 	public final void setExposureTime(Double value)
 	{
-		privateExposureTime = value;
+		ExposureTime = value;
 	}
-	private Double privateFocalLength = null;
+	private Double FocalLength = null;
 	public final Double getFocalLength()
 	{
-		return privateFocalLength;
+		return FocalLength;
 	}
 	public final void setFocalLength(Double value)
 	{
-		privateFocalLength = value;
+		FocalLength = value;
 	}
-	private ImageOrientation privateImageOrientation = null;
+	private ImageOrientation ImageOrientation = null;
 	public final ImageOrientation getImageOrientation()
 	{
-		return privateImageOrientation;
+		return ImageOrientation;
 	}
 	public final void setImageOrientation(ImageOrientation value)
 	{
-		privateImageOrientation = value;
+		ImageOrientation = value;
 	}
-	private Double privateAperture = null;
+	private Double Aperture = null;
 	public final Double getAperture()
 	{
-		return privateAperture;
+		return Aperture;
 	}
 	public final void setAperture(Double value)
 	{
-		privateAperture = value;
+		Aperture = value;
 	}
-	private Double privateShutterSpeed = null;
+	private Double ShutterSpeed = null;
 	public final Double getShutterSpeed()
 	{
-		return privateShutterSpeed;
+		return ShutterSpeed;
 	}
 	public final void setShutterSpeed(Double value)
 	{
-		privateShutterSpeed = value;
+		ShutterSpeed = value;
 	}
-	private Double privateLatitude = null;
+	private Double Latitude = null;
 	public final Double getLatitude()
 	{
-		return privateLatitude;
+		return Latitude;
 	}
 	public final void setLatitude(Double value)
 	{
-		privateLatitude = value;
+		Latitude = value;
 	}
-	private Double privateLongitude = null;
+	private Double Longitude = null;
 	public final Double getLongitude()
 	{
-		return privateLongitude;
+		return Longitude;
 	}
 	public final void setLongitude(Double value)
 	{
-		privateLongitude = value;
+		Longitude = value;
 	}
-	private Double privateAltitude = null;
+	private Double Altitude = null;
 	public final Double getAltitude()
 	{
-		return privateAltitude;
+		return Altitude;
 	}
 	public final void setAltitude(Double value)
 	{
-		privateAltitude = value;
+		Altitude = value;
 	}
-	private Integer privateIsoSpeedRating = null;
+	private Integer IsoSpeedRating = null;
 	public final Integer getIsoSpeedRating()
 	{
-		return privateIsoSpeedRating;
+		return IsoSpeedRating;
 	}
 	public final void setIsoSpeedRating(Integer value)
 	{
-		privateIsoSpeedRating = value;
+		IsoSpeedRating = value;
 	}
 
 	/** 

@@ -1,57 +1,50 @@
 package MediaBrowser.Model.Dlna;
 
-import MediaBrowser.Model.Drawing.*;
-import MediaBrowser.Model.Dto.*;
-import MediaBrowser.Model.Entities.*;
-import MediaBrowser.Model.Extensions.*;
-import MediaBrowser.Model.MediaInfo.*;
-import MediaBrowser.Model.Session.*;
-
 public class SubtitleStreamInfo
 {
-	private String privateUrl;
+	private String Url;
 	public final String getUrl()
 	{
-		return privateUrl;
+		return Url;
 	}
 	public final void setUrl(String value)
 	{
-		privateUrl = value;
+		Url = value;
 	}
-	private String privateLanguage;
+	private String Language;
 	public final String getLanguage()
 	{
-		return privateLanguage;
+		return Language;
 	}
 	public final void setLanguage(String value)
 	{
-		privateLanguage = value;
+		Language = value;
 	}
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
-	private boolean privateIsForced;
+	private boolean IsForced;
 	public final boolean getIsForced()
 	{
-		return privateIsForced;
+		return IsForced;
 	}
 	public final void setIsForced(boolean value)
 	{
-		privateIsForced = value;
+		IsForced = value;
 	}
-	private String privateFormat;
+	private String Format;
 	public final String getFormat()
 	{
-		return privateFormat;
+		return Format;
 	}
 	public final void setFormat(String value)
 	{
-		privateFormat = value;
+		Format = value;
 	}
 }

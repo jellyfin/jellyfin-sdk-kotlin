@@ -2,34 +2,34 @@ package MediaBrowser.Model.Querying;
 
 public class AllThemeMediaResult
 {
-	private ThemeMediaResult privateThemeVideosResult;
+	private ThemeMediaResult ThemeVideosResult;
 	public final ThemeMediaResult getThemeVideosResult()
 	{
-		return privateThemeVideosResult;
+		return ThemeVideosResult;
 	}
 	public final void setThemeVideosResult(ThemeMediaResult value)
 	{
-		privateThemeVideosResult = value;
+		ThemeVideosResult = value;
 	}
 
-	private ThemeMediaResult privateThemeSongsResult;
+	private ThemeMediaResult ThemeSongsResult;
 	public final ThemeMediaResult getThemeSongsResult()
 	{
-		return privateThemeSongsResult;
+		return ThemeSongsResult;
 	}
 	public final void setThemeSongsResult(ThemeMediaResult value)
 	{
-		privateThemeSongsResult = value;
+		ThemeSongsResult = value;
 	}
 
-	private ThemeMediaResult privateSoundtrackSongsResult;
+	private ThemeMediaResult SoundtrackSongsResult;
 	public final ThemeMediaResult getSoundtrackSongsResult()
 	{
-		return privateSoundtrackSongsResult;
+		return SoundtrackSongsResult;
 	}
 	public final void setSoundtrackSongsResult(ThemeMediaResult value)
 	{
-		privateSoundtrackSongsResult = value;
+		SoundtrackSongsResult = value;
 	}
 
 	public AllThemeMediaResult()

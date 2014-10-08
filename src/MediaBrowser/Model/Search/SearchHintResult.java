@@ -10,14 +10,14 @@ public class SearchHintResult
 	 
 	 <value>The search hints.</value>
 	*/
-	private SearchHint[] privateSearchHints;
+	private SearchHint[] SearchHints;
 	public final SearchHint[] getSearchHints()
 	{
-		return privateSearchHints;
+		return SearchHints;
 	}
 	public final void setSearchHints(SearchHint[] value)
 	{
-		privateSearchHints = value;
+		SearchHints = value;
 	}
 
 	/** 
@@ -25,13 +25,13 @@ public class SearchHintResult
 	 
 	 <value>The total record count.</value>
 	*/
-	private int privateTotalRecordCount;
+	private int TotalRecordCount;
 	public final int getTotalRecordCount()
 	{
-		return privateTotalRecordCount;
+		return TotalRecordCount;
 	}
 	public final void setTotalRecordCount(int value)
 	{
-		privateTotalRecordCount = value;
+		TotalRecordCount = value;
 	}
 }

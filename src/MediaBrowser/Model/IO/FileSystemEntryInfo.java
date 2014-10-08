@@ -10,14 +10,14 @@ public class FileSystemEntryInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class FileSystemEntryInfo
 	 
 	 <value>The path.</value>
 	*/
-	private String privatePath;
+	private String Path;
 	public final String getPath()
 	{
-		return privatePath;
+		return Path;
 	}
 	public final void setPath(String value)
 	{
-		privatePath = value;
+		Path = value;
 	}
 
 	/** 
@@ -40,13 +40,13 @@ public class FileSystemEntryInfo
 	 
 	 <value>The type.</value>
 	*/
-	private FileSystemEntryType privateType = FileSystemEntryType.values()[0];
+	private FileSystemEntryType Type = FileSystemEntryType.values()[0];
 	public final FileSystemEntryType getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(FileSystemEntryType value)
 	{
-		privateType = value;
+		Type = value;
 	}
 }

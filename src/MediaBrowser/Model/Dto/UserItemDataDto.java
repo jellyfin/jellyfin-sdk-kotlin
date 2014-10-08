@@ -12,14 +12,14 @@ public class UserItemDataDto implements IHasPropertyChangedEvent
 	 
 	 <value>The rating.</value>
 	*/
-	private Double privateRating = null;
+	private Double Rating = null;
 	public final Double getRating()
 	{
-		return privateRating;
+		return Rating;
 	}
 	public final void setRating(Double value)
 	{
-		privateRating = value;
+		Rating = value;
 	}
 
 	/** 
@@ -27,14 +27,14 @@ public class UserItemDataDto implements IHasPropertyChangedEvent
 	 
 	 <value>The played percentage.</value>
 	*/
-	private Double privatePlayedPercentage = null;
+	private Double PlayedPercentage = null;
 	public final Double getPlayedPercentage()
 	{
-		return privatePlayedPercentage;
+		return PlayedPercentage;
 	}
 	public final void setPlayedPercentage(Double value)
 	{
-		privatePlayedPercentage = value;
+		PlayedPercentage = value;
 	}
 
 	/** 
@@ -42,14 +42,14 @@ public class UserItemDataDto implements IHasPropertyChangedEvent
 	 
 	 <value>The unplayed item count.</value>
 	*/
-	private Integer privateUnplayedItemCount = null;
+	private Integer UnplayedItemCount = null;
 	public final Integer getUnplayedItemCount()
 	{
-		return privateUnplayedItemCount;
+		return UnplayedItemCount;
 	}
 	public final void setUnplayedItemCount(Integer value)
 	{
-		privateUnplayedItemCount = value;
+		UnplayedItemCount = value;
 	}
 
 	/** 
@@ -57,14 +57,14 @@ public class UserItemDataDto implements IHasPropertyChangedEvent
 	 
 	 <value>The playback position ticks.</value>
 	*/
-	private long privatePlaybackPositionTicks;
+	private long PlaybackPositionTicks;
 	public final long getPlaybackPositionTicks()
 	{
-		return privatePlaybackPositionTicks;
+		return PlaybackPositionTicks;
 	}
 	public final void setPlaybackPositionTicks(long value)
 	{
-		privatePlaybackPositionTicks = value;
+		PlaybackPositionTicks = value;
 	}
 
 	/** 
@@ -72,14 +72,14 @@ public class UserItemDataDto implements IHasPropertyChangedEvent
 	 
 	 <value>The play count.</value>
 	*/
-	private int privatePlayCount;
+	private int PlayCount;
 	public final int getPlayCount()
 	{
-		return privatePlayCount;
+		return PlayCount;
 	}
 	public final void setPlayCount(int value)
 	{
-		privatePlayCount = value;
+		PlayCount = value;
 	}
 
 	/** 
@@ -87,14 +87,14 @@ public class UserItemDataDto implements IHasPropertyChangedEvent
 	 
 	 <value><c>true</c> if this instance is favorite; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsFavorite;
+	private boolean IsFavorite;
 	public final boolean getIsFavorite()
 	{
-		return privateIsFavorite;
+		return IsFavorite;
 	}
 	public final void setIsFavorite(boolean value)
 	{
-		privateIsFavorite = value;
+		IsFavorite = value;
 	}
 
 	/** 
@@ -102,14 +102,14 @@ public class UserItemDataDto implements IHasPropertyChangedEvent
 	 
 	 <value><c>null</c> if [likes] contains no value, <c>true</c> if [likes]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateLikes = null;
+	private Boolean Likes = null;
 	public final Boolean getLikes()
 	{
-		return privateLikes;
+		return Likes;
 	}
 	public final void setLikes(Boolean value)
 	{
-		privateLikes = value;
+		Likes = value;
 	}
 
 	/** 
@@ -117,14 +117,14 @@ public class UserItemDataDto implements IHasPropertyChangedEvent
 	 
 	 <value>The last played date.</value>
 	*/
-	private java.util.Date privateLastPlayedDate = null;
+	private java.util.Date LastPlayedDate = null;
 	public final java.util.Date getLastPlayedDate()
 	{
-		return privateLastPlayedDate;
+		return LastPlayedDate;
 	}
 	public final void setLastPlayedDate(java.util.Date value)
 	{
-		privateLastPlayedDate = value;
+		LastPlayedDate = value;
 	}
 
 	/** 
@@ -132,14 +132,14 @@ public class UserItemDataDto implements IHasPropertyChangedEvent
 	 
 	 <value><c>true</c> if played; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privatePlayed;
+	private boolean Played;
 	public final boolean getPlayed()
 	{
-		return privatePlayed;
+		return Played;
 	}
 	public final void setPlayed(boolean value)
 	{
-		privatePlayed = value;
+		Played = value;
 	}
 
 	/** 
@@ -147,14 +147,14 @@ public class UserItemDataDto implements IHasPropertyChangedEvent
 	 
 	 <value>The key.</value>
 	*/
-	private String privateKey;
+	private String Key;
 	public final String getKey()
 	{
-		return privateKey;
+		return Key;
 	}
 	public final void setKey(String value)
 	{
-		privateKey = value;
+		Key = value;
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:

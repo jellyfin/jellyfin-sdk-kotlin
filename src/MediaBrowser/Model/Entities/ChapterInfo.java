@@ -10,14 +10,14 @@ public class ChapterInfo
 	 
 	 <value>The start position ticks.</value>
 	*/
-	private long privateStartPositionTicks;
+	private long StartPositionTicks;
 	public final long getStartPositionTicks()
 	{
-		return privateStartPositionTicks;
+		return StartPositionTicks;
 	}
 	public final void setStartPositionTicks(long value)
 	{
-		privateStartPositionTicks = value;
+		StartPositionTicks = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class ChapterInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -40,13 +40,13 @@ public class ChapterInfo
 	 
 	 <value>The image path.</value>
 	*/
-	private String privateImagePath;
+	private String ImagePath;
 	public final String getImagePath()
 	{
-		return privateImagePath;
+		return ImagePath;
 	}
 	public final void setImagePath(String value)
 	{
-		privateImagePath = value;
+		ImagePath = value;
 	}
 }

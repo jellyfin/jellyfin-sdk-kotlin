@@ -7,14 +7,14 @@ public class LiveTvInfo
 	 
 	 <value>The services.</value>
 	*/
-	private java.util.ArrayList<LiveTvServiceInfo> privateServices;
+	private java.util.ArrayList<LiveTvServiceInfo> Services;
 	public final java.util.ArrayList<LiveTvServiceInfo> getServices()
 	{
-		return privateServices;
+		return Services;
 	}
 	public final void setServices(java.util.ArrayList<LiveTvServiceInfo> value)
 	{
-		privateServices = value;
+		Services = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class LiveTvInfo
 	 
 	 <value>The name of the active service.</value>
 	*/
-	private String privateActiveServiceName;
+	private String ActiveServiceName;
 	public final String getActiveServiceName()
 	{
-		return privateActiveServiceName;
+		return ActiveServiceName;
 	}
 	public final void setActiveServiceName(String value)
 	{
-		privateActiveServiceName = value;
+		ActiveServiceName = value;
 	}
 
 	/** 
@@ -37,14 +37,14 @@ public class LiveTvInfo
 	 
 	 <value><c>true</c> if this instance is enabled; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsEnabled;
+	private boolean IsEnabled;
 	public final boolean getIsEnabled()
 	{
-		return privateIsEnabled;
+		return IsEnabled;
 	}
 	public final void setIsEnabled(boolean value)
 	{
-		privateIsEnabled = value;
+		IsEnabled = value;
 	}
 
 	/** 
@@ -52,14 +52,14 @@ public class LiveTvInfo
 	 
 	 <value>The enabled users.</value>
 	*/
-	private java.util.ArrayList<String> privateEnabledUsers;
+	private java.util.ArrayList<String> EnabledUsers;
 	public final java.util.ArrayList<String> getEnabledUsers()
 	{
-		return privateEnabledUsers;
+		return EnabledUsers;
 	}
 	public final void setEnabledUsers(java.util.ArrayList<String> value)
 	{
-		privateEnabledUsers = value;
+		EnabledUsers = value;
 	}
 
 	/** 
@@ -67,14 +67,14 @@ public class LiveTvInfo
 	 
 	 <value>The status.</value>
 	*/
-	private LiveTvServiceStatus privateStatus = LiveTvServiceStatus.values()[0];
+	private LiveTvServiceStatus Status = LiveTvServiceStatus.values()[0];
 	public final LiveTvServiceStatus getStatus()
 	{
-		return privateStatus;
+		return Status;
 	}
 	public final void setStatus(LiveTvServiceStatus value)
 	{
-		privateStatus = value;
+		Status = value;
 	}
 
 	/** 
@@ -82,14 +82,14 @@ public class LiveTvInfo
 	 
 	 <value>The status message.</value>
 	*/
-	private String privateStatusMessage;
+	private String StatusMessage;
 	public final String getStatusMessage()
 	{
-		return privateStatusMessage;
+		return StatusMessage;
 	}
 	public final void setStatusMessage(String value)
 	{
-		privateStatusMessage = value;
+		StatusMessage = value;
 	}
 
 	public LiveTvInfo()

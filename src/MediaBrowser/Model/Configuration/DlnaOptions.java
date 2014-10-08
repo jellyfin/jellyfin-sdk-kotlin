@@ -2,68 +2,68 @@ package MediaBrowser.Model.Configuration;
 
 public class DlnaOptions
 {
-	private boolean privateEnablePlayTo;
+	private boolean EnablePlayTo;
 	public final boolean getEnablePlayTo()
 	{
-		return privateEnablePlayTo;
+		return EnablePlayTo;
 	}
 	public final void setEnablePlayTo(boolean value)
 	{
-		privateEnablePlayTo = value;
+		EnablePlayTo = value;
 	}
-	private boolean privateEnableServer;
+	private boolean EnableServer;
 	public final boolean getEnableServer()
 	{
-		return privateEnableServer;
+		return EnableServer;
 	}
 	public final void setEnableServer(boolean value)
 	{
-		privateEnableServer = value;
+		EnableServer = value;
 	}
-	private boolean privateEnableDebugLogging;
+	private boolean EnableDebugLogging;
 	public final boolean getEnableDebugLogging()
 	{
-		return privateEnableDebugLogging;
+		return EnableDebugLogging;
 	}
 	public final void setEnableDebugLogging(boolean value)
 	{
-		privateEnableDebugLogging = value;
+		EnableDebugLogging = value;
 	}
-	private boolean privateBlastAliveMessages;
+	private boolean BlastAliveMessages;
 	public final boolean getBlastAliveMessages()
 	{
-		return privateBlastAliveMessages;
+		return BlastAliveMessages;
 	}
 	public final void setBlastAliveMessages(boolean value)
 	{
-		privateBlastAliveMessages = value;
+		BlastAliveMessages = value;
 	}
-	private int privateClientDiscoveryIntervalSeconds;
+	private int ClientDiscoveryIntervalSeconds;
 	public final int getClientDiscoveryIntervalSeconds()
 	{
-		return privateClientDiscoveryIntervalSeconds;
+		return ClientDiscoveryIntervalSeconds;
 	}
 	public final void setClientDiscoveryIntervalSeconds(int value)
 	{
-		privateClientDiscoveryIntervalSeconds = value;
+		ClientDiscoveryIntervalSeconds = value;
 	}
-	private int privateBlastAliveMessageIntervalSeconds;
+	private int BlastAliveMessageIntervalSeconds;
 	public final int getBlastAliveMessageIntervalSeconds()
 	{
-		return privateBlastAliveMessageIntervalSeconds;
+		return BlastAliveMessageIntervalSeconds;
 	}
 	public final void setBlastAliveMessageIntervalSeconds(int value)
 	{
-		privateBlastAliveMessageIntervalSeconds = value;
+		BlastAliveMessageIntervalSeconds = value;
 	}
-	private String privateDefaultUserId;
+	private String DefaultUserId;
 	public final String getDefaultUserId()
 	{
-		return privateDefaultUserId;
+		return DefaultUserId;
 	}
 	public final void setDefaultUserId(String value)
 	{
-		privateDefaultUserId = value;
+		DefaultUserId = value;
 	}
 
 	public DlnaOptions()

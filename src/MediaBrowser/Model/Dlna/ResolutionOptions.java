@@ -2,22 +2,22 @@ package MediaBrowser.Model.Dlna;
 
 public class ResolutionOptions
 {
-	private Integer privateMaxWidth = null;
+	private Integer MaxWidth;
 	public final Integer getMaxWidth()
 	{
-		return privateMaxWidth;
+		return MaxWidth;
 	}
 	public final void setMaxWidth(Integer value)
 	{
-		privateMaxWidth = value;
+		MaxWidth = value;
 	}
-	private Integer privateMaxHeight = null;
+	private Integer MaxHeight;
 	public final Integer getMaxHeight()
 	{
-		return privateMaxHeight;
+		return MaxHeight;
 	}
 	public final void setMaxHeight(Integer value)
 	{
-		privateMaxHeight = value;
+		MaxHeight = value;
 	}
 }

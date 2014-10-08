@@ -2,63 +2,63 @@ package MediaBrowser.Model.FileOrganization;
 
 public class EpisodeFileOrganizationRequest
 {
-	private String privateResultId;
+	private String ResultId;
 	public final String getResultId()
 	{
-		return privateResultId;
+		return ResultId;
 	}
 	public final void setResultId(String value)
 	{
-		privateResultId = value;
+		ResultId = value;
 	}
 
-	private String privateSeriesId;
+	private String SeriesId;
 	public final String getSeriesId()
 	{
-		return privateSeriesId;
+		return SeriesId;
 	}
 	public final void setSeriesId(String value)
 	{
-		privateSeriesId = value;
+		SeriesId = value;
 	}
 
-	private int privateSeasonNumber;
+	private int SeasonNumber;
 	public final int getSeasonNumber()
 	{
-		return privateSeasonNumber;
+		return SeasonNumber;
 	}
 	public final void setSeasonNumber(int value)
 	{
-		privateSeasonNumber = value;
+		SeasonNumber = value;
 	}
 
-	private int privateEpisodeNumber;
+	private int EpisodeNumber;
 	public final int getEpisodeNumber()
 	{
-		return privateEpisodeNumber;
+		return EpisodeNumber;
 	}
 	public final void setEpisodeNumber(int value)
 	{
-		privateEpisodeNumber = value;
+		EpisodeNumber = value;
 	}
 
-	private Integer privateEndingEpisodeNumber;
+	private Integer EndingEpisodeNumber;
 	public final Integer getEndingEpisodeNumber()
 	{
-		return privateEndingEpisodeNumber;
+		return EndingEpisodeNumber;
 	}
 	public final void setEndingEpisodeNumber(Integer value)
 	{
-		privateEndingEpisodeNumber = value;
+		EndingEpisodeNumber = value;
 	}
 
-	private boolean privateRememberCorrection;
+	private boolean RememberCorrection;
 	public final boolean getRememberCorrection()
 	{
-		return privateRememberCorrection;
+		return RememberCorrection;
 	}
 	public final void setRememberCorrection(boolean value)
 	{
-		privateRememberCorrection = value;
+		RememberCorrection = value;
 	}
 }

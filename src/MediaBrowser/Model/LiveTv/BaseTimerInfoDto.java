@@ -13,14 +13,14 @@ public class BaseTimerInfoDto implements IHasPropertyChangedEvent
 	/** 
 	 Id of the recording.
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -28,27 +28,27 @@ public class BaseTimerInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The external identifier.</value>
 	*/
-	private String privateExternalId;
+	private String ExternalId;
 	public final String getExternalId()
 	{
-		return privateExternalId;
+		return ExternalId;
 	}
 	public final void setExternalId(String value)
 	{
-		privateExternalId = value;
+		ExternalId = value;
 	}
 
 	/** 
 	 ChannelId of the recording.
 	*/
-	private String privateChannelId;
+	private String ChannelId;
 	public final String getChannelId()
 	{
-		return privateChannelId;
+		return ChannelId;
 	}
 	public final void setChannelId(String value)
 	{
-		privateChannelId = value;
+		ChannelId = value;
 	}
 
 	/** 
@@ -56,27 +56,27 @@ public class BaseTimerInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The external channel identifier.</value>
 	*/
-	private String privateExternalChannelId;
+	private String ExternalChannelId;
 	public final String getExternalChannelId()
 	{
-		return privateExternalChannelId;
+		return ExternalChannelId;
 	}
 	public final void setExternalChannelId(String value)
 	{
-		privateExternalChannelId = value;
+		ExternalChannelId = value;
 	}
 
 	/** 
 	 ChannelName of the recording.
 	*/
-	private String privateChannelName;
+	private String ChannelName;
 	public final String getChannelName()
 	{
-		return privateChannelName;
+		return ChannelName;
 	}
 	public final void setChannelName(String value)
 	{
-		privateChannelName = value;
+		ChannelName = value;
 	}
 
 	/** 
@@ -84,14 +84,14 @@ public class BaseTimerInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The program identifier.</value>
 	*/
-	private String privateProgramId;
+	private String ProgramId;
 	public final String getProgramId()
 	{
-		return privateProgramId;
+		return ProgramId;
 	}
 	public final void setProgramId(String value)
 	{
-		privateProgramId = value;
+		ProgramId = value;
 	}
 
 	/** 
@@ -99,66 +99,66 @@ public class BaseTimerInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The external program identifier.</value>
 	*/
-	private String privateExternalProgramId;
+	private String ExternalProgramId;
 	public final String getExternalProgramId()
 	{
-		return privateExternalProgramId;
+		return ExternalProgramId;
 	}
 	public final void setExternalProgramId(String value)
 	{
-		privateExternalProgramId = value;
+		ExternalProgramId = value;
 	}
 
 	/** 
 	 Name of the recording.
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
 	 Description of the recording.
 	*/
-	private String privateOverview;
+	private String Overview;
 	public final String getOverview()
 	{
-		return privateOverview;
+		return Overview;
 	}
 	public final void setOverview(String value)
 	{
-		privateOverview = value;
+		Overview = value;
 	}
 
 	/** 
 	 The start date of the recording, in UTC.
 	*/
-	private java.util.Date privateStartDate = new java.util.Date(0);
+	private java.util.Date StartDate = new java.util.Date(0);
 	public final java.util.Date getStartDate()
 	{
-		return privateStartDate;
+		return StartDate;
 	}
 	public final void setStartDate(java.util.Date value)
 	{
-		privateStartDate = value;
+		StartDate = value;
 	}
 
 	/** 
 	 The end date of the recording, in UTC.
 	*/
-	private java.util.Date privateEndDate = new java.util.Date(0);
+	private java.util.Date EndDate = new java.util.Date(0);
 	public final java.util.Date getEndDate()
 	{
-		return privateEndDate;
+		return EndDate;
 	}
 	public final void setEndDate(java.util.Date value)
 	{
-		privateEndDate = value;
+		EndDate = value;
 	}
 
 	/** 
@@ -166,14 +166,14 @@ public class BaseTimerInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The name of the service.</value>
 	*/
-	private String privateServiceName;
+	private String ServiceName;
 	public final String getServiceName()
 	{
-		return privateServiceName;
+		return ServiceName;
 	}
 	public final void setServiceName(String value)
 	{
-		privateServiceName = value;
+		ServiceName = value;
 	}
 
 	/** 
@@ -181,14 +181,14 @@ public class BaseTimerInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The priority.</value>
 	*/
-	private int privatePriority;
+	private int Priority;
 	public final int getPriority()
 	{
-		return privatePriority;
+		return Priority;
 	}
 	public final void setPriority(int value)
 	{
-		privatePriority = value;
+		Priority = value;
 	}
 
 	/** 
@@ -196,14 +196,14 @@ public class BaseTimerInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The pre padding seconds.</value>
 	*/
-	private int privatePrePaddingSeconds;
+	private int PrePaddingSeconds;
 	public final int getPrePaddingSeconds()
 	{
-		return privatePrePaddingSeconds;
+		return PrePaddingSeconds;
 	}
 	public final void setPrePaddingSeconds(int value)
 	{
-		privatePrePaddingSeconds = value;
+		PrePaddingSeconds = value;
 	}
 
 	/** 
@@ -211,14 +211,14 @@ public class BaseTimerInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The post padding seconds.</value>
 	*/
-	private int privatePostPaddingSeconds;
+	private int PostPaddingSeconds;
 	public final int getPostPaddingSeconds()
 	{
-		return privatePostPaddingSeconds;
+		return PostPaddingSeconds;
 	}
 	public final void setPostPaddingSeconds(int value)
 	{
-		privatePostPaddingSeconds = value;
+		PostPaddingSeconds = value;
 	}
 
 	/** 
@@ -226,14 +226,14 @@ public class BaseTimerInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value><c>true</c> if this instance is pre padding required; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsPrePaddingRequired;
+	private boolean IsPrePaddingRequired;
 	public final boolean getIsPrePaddingRequired()
 	{
-		return privateIsPrePaddingRequired;
+		return IsPrePaddingRequired;
 	}
 	public final void setIsPrePaddingRequired(boolean value)
 	{
-		privateIsPrePaddingRequired = value;
+		IsPrePaddingRequired = value;
 	}
 
 	/** 
@@ -241,13 +241,13 @@ public class BaseTimerInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value><c>true</c> if this instance is post padding required; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsPostPaddingRequired;
+	private boolean IsPostPaddingRequired;
 	public final boolean getIsPostPaddingRequired()
 	{
-		return privateIsPostPaddingRequired;
+		return IsPostPaddingRequired;
 	}
 	public final void setIsPostPaddingRequired(boolean value)
 	{
-		privateIsPostPaddingRequired = value;
+		IsPostPaddingRequired = value;
 	}
 }

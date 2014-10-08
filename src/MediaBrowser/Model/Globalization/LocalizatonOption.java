@@ -2,22 +2,22 @@ package MediaBrowser.Model.Globalization;
 
 public class LocalizatonOption
 {
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
-	private String privateValue;
+	private String Value;
 	public final String getValue()
 	{
-		return privateValue;
+		return Value;
 	}
 	public final void setValue(String value)
 	{
-		privateValue = value;
+		Value = value;
 	}
 }

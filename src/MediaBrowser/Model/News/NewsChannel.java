@@ -2,40 +2,40 @@ package MediaBrowser.Model.News;
 
 public class NewsChannel
 {
-	private String privateTitle;
+	private String Title;
 	public final String getTitle()
 	{
-		return privateTitle;
+		return Title;
 	}
 	public final void setTitle(String value)
 	{
-		privateTitle = value;
+		Title = value;
 	}
-	private String privateLink;
+	private String Link;
 	public final String getLink()
 	{
-		return privateLink;
+		return Link;
 	}
 	public final void setLink(String value)
 	{
-		privateLink = value;
+		Link = value;
 	}
-	private String privateDescription;
+	private String Description;
 	public final String getDescription()
 	{
-		return privateDescription;
+		return Description;
 	}
 	public final void setDescription(String value)
 	{
-		privateDescription = value;
+		Description = value;
 	}
-	private java.util.ArrayList<NewsItem> privateItems;
+	private java.util.ArrayList<NewsItem> Items;
 	public final java.util.ArrayList<NewsItem> getItems()
 	{
-		return privateItems;
+		return Items;
 	}
 	public final void setItems(java.util.ArrayList<NewsItem> value)
 	{
-		privateItems = value;
+		Items = value;
 	}
 }

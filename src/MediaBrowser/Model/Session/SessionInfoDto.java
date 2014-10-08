@@ -12,14 +12,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The supported commands.</value>
 	*/
-	private java.util.ArrayList<String> privateSupportedCommands;
+	private java.util.ArrayList<String> SupportedCommands;
 	public final java.util.ArrayList<String> getSupportedCommands()
 	{
-		return privateSupportedCommands;
+		return SupportedCommands;
 	}
 	public final void setSupportedCommands(java.util.ArrayList<String> value)
 	{
-		privateSupportedCommands = value;
+		SupportedCommands = value;
 	}
 
 	/** 
@@ -27,14 +27,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The queueable media types.</value>
 	*/
-	private java.util.ArrayList<String> privateQueueableMediaTypes;
+	private java.util.ArrayList<String> QueueableMediaTypes;
 	public final java.util.ArrayList<String> getQueueableMediaTypes()
 	{
-		return privateQueueableMediaTypes;
+		return QueueableMediaTypes;
 	}
 	public final void setQueueableMediaTypes(java.util.ArrayList<String> value)
 	{
-		privateQueueableMediaTypes = value;
+		QueueableMediaTypes = value;
 	}
 
 	/** 
@@ -42,14 +42,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The playable media types.</value>
 	*/
-	private java.util.ArrayList<String> privatePlayableMediaTypes;
+	private java.util.ArrayList<String> PlayableMediaTypes;
 	public final java.util.ArrayList<String> getPlayableMediaTypes()
 	{
-		return privatePlayableMediaTypes;
+		return PlayableMediaTypes;
 	}
 	public final void setPlayableMediaTypes(java.util.ArrayList<String> value)
 	{
-		privatePlayableMediaTypes = value;
+		PlayableMediaTypes = value;
 	}
 
 	/** 
@@ -57,14 +57,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The id.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -72,14 +72,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The user id.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -87,14 +87,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The user primary image tag.</value>
 	*/
-	private String privateUserPrimaryImageTag;
+	private String UserPrimaryImageTag;
 	public final String getUserPrimaryImageTag()
 	{
-		return privateUserPrimaryImageTag;
+		return UserPrimaryImageTag;
 	}
 	public final void setUserPrimaryImageTag(String value)
 	{
-		privateUserPrimaryImageTag = value;
+		UserPrimaryImageTag = value;
 	}
 
 	/** 
@@ -102,14 +102,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The name of the user.</value>
 	*/
-	private String privateUserName;
+	private String UserName;
 	public final String getUserName()
 	{
-		return privateUserName;
+		return UserName;
 	}
 	public final void setUserName(String value)
 	{
-		privateUserName = value;
+		UserName = value;
 	}
 
 	/** 
@@ -117,14 +117,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The additional users present.</value>
 	*/
-	private java.util.ArrayList<SessionUserInfo> privateAdditionalUsers;
+	private java.util.ArrayList<SessionUserInfo> AdditionalUsers;
 	public final java.util.ArrayList<SessionUserInfo> getAdditionalUsers()
 	{
-		return privateAdditionalUsers;
+		return AdditionalUsers;
 	}
 	public final void setAdditionalUsers(java.util.ArrayList<SessionUserInfo> value)
 	{
-		privateAdditionalUsers = value;
+		AdditionalUsers = value;
 	}
 
 	/** 
@@ -132,14 +132,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The application version.</value>
 	*/
-	private String privateApplicationVersion;
+	private String ApplicationVersion;
 	public final String getApplicationVersion()
 	{
-		return privateApplicationVersion;
+		return ApplicationVersion;
 	}
 	public final void setApplicationVersion(String value)
 	{
-		privateApplicationVersion = value;
+		ApplicationVersion = value;
 	}
 
 	/** 
@@ -147,14 +147,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The type of the client.</value>
 	*/
-	private String privateClient;
+	private String Client;
 	public final String getClient()
 	{
-		return privateClient;
+		return Client;
 	}
 	public final void setClient(String value)
 	{
-		privateClient = value;
+		Client = value;
 	}
 
 	/** 
@@ -162,14 +162,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The last activity date.</value>
 	*/
-	private java.util.Date privateLastActivityDate = new java.util.Date(0);
+	private java.util.Date LastActivityDate = new java.util.Date(0);
 	public final java.util.Date getLastActivityDate()
 	{
-		return privateLastActivityDate;
+		return LastActivityDate;
 	}
 	public final void setLastActivityDate(java.util.Date value)
 	{
-		privateLastActivityDate = value;
+		LastActivityDate = value;
 	}
 
 	/** 
@@ -177,14 +177,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The now viewing item.</value>
 	*/
-	private BaseItemInfo privateNowViewingItem;
+	private BaseItemInfo NowViewingItem;
 	public final BaseItemInfo getNowViewingItem()
 	{
-		return privateNowViewingItem;
+		return NowViewingItem;
 	}
 	public final void setNowViewingItem(BaseItemInfo value)
 	{
-		privateNowViewingItem = value;
+		NowViewingItem = value;
 	}
 
 	/** 
@@ -192,14 +192,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The name of the device.</value>
 	*/
-	private String privateDeviceName;
+	private String DeviceName;
 	public final String getDeviceName()
 	{
-		return privateDeviceName;
+		return DeviceName;
 	}
 	public final void setDeviceName(String value)
 	{
-		privateDeviceName = value;
+		DeviceName = value;
 	}
 
 	/** 
@@ -207,14 +207,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The now playing item.</value>
 	*/
-	private BaseItemInfo privateNowPlayingItem;
+	private BaseItemInfo NowPlayingItem;
 	public final BaseItemInfo getNowPlayingItem()
 	{
-		return privateNowPlayingItem;
+		return NowPlayingItem;
 	}
 	public final void setNowPlayingItem(BaseItemInfo value)
 	{
-		privateNowPlayingItem = value;
+		NowPlayingItem = value;
 	}
 
 	/** 
@@ -222,14 +222,14 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The device id.</value>
 	*/
-	private String privateDeviceId;
+	private String DeviceId;
 	public final String getDeviceId()
 	{
-		return privateDeviceId;
+		return DeviceId;
 	}
 	public final void setDeviceId(String value)
 	{
-		privateDeviceId = value;
+		DeviceId = value;
 	}
 
 	/** 
@@ -237,34 +237,34 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value><c>true</c> if [supports remote control]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateSupportsRemoteControl;
+	private boolean SupportsRemoteControl;
 	public final boolean getSupportsRemoteControl()
 	{
-		return privateSupportsRemoteControl;
+		return SupportsRemoteControl;
 	}
 	public final void setSupportsRemoteControl(boolean value)
 	{
-		privateSupportsRemoteControl = value;
+		SupportsRemoteControl = value;
 	}
 
-	private PlayerStateInfo privatePlayState;
+	private PlayerStateInfo PlayState;
 	public final PlayerStateInfo getPlayState()
 	{
-		return privatePlayState;
+		return PlayState;
 	}
 	public final void setPlayState(PlayerStateInfo value)
 	{
-		privatePlayState = value;
+		PlayState = value;
 	}
 
-	private TranscodingInfo privateTranscodingInfo;
+	private TranscodingInfo TranscodingInfo;
 	public final TranscodingInfo getTranscodingInfo()
 	{
-		return privateTranscodingInfo;
+		return TranscodingInfo;
 	}
 	public final void setTranscodingInfo(TranscodingInfo value)
 	{
-		privateTranscodingInfo = value;
+		TranscodingInfo = value;
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:

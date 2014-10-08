@@ -10,14 +10,14 @@ public class AllChannelMediaQuery
 	 
 	 <value>The channel ids.</value>
 	*/
-	private String[] privateChannelIds;
+	private String[] ChannelIds;
 	public final String[] getChannelIds()
 	{
-		return privateChannelIds;
+		return ChannelIds;
 	}
 	public final void setChannelIds(String[] value)
 	{
-		privateChannelIds = value;
+		ChannelIds = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class AllChannelMediaQuery
 	 
 	 <value>The user identifier.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class AllChannelMediaQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex = null;
+	private Integer StartIndex = null;
 	public final Integer getStartIndex()
 	{
-		return privateStartIndex;
+		return StartIndex;
 	}
 	public final void setStartIndex(Integer value)
 	{
-		privateStartIndex = value;
+		StartIndex = value;
 	}
 
 	/** 
@@ -55,14 +55,14 @@ public class AllChannelMediaQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit = null;
+	private Integer Limit = null;
 	public final Integer getLimit()
 	{
-		return privateLimit;
+		return Limit;
 	}
 	public final void setLimit(Integer value)
 	{
-		privateLimit = value;
+		Limit = value;
 	}
 
 	/** 
@@ -70,14 +70,14 @@ public class AllChannelMediaQuery
 	 
 	 <value>The content types.</value>
 	*/
-	private ChannelMediaContentType[] privateContentTypes;
+	private ChannelMediaContentType[] ContentTypes;
 	public final ChannelMediaContentType[] getContentTypes()
 	{
-		return privateContentTypes;
+		return ContentTypes;
 	}
 	public final void setContentTypes(ChannelMediaContentType[] value)
 	{
-		privateContentTypes = value;
+		ContentTypes = value;
 	}
 
 	/** 
@@ -85,23 +85,23 @@ public class AllChannelMediaQuery
 	 
 	 <value>The extra types.</value>
 	*/
-	private ExtraType[] privateExtraTypes;
+	private ExtraType[] ExtraTypes;
 	public final ExtraType[] getExtraTypes()
 	{
-		return privateExtraTypes;
+		return ExtraTypes;
 	}
 	public final void setExtraTypes(ExtraType[] value)
 	{
-		privateExtraTypes = value;
+		ExtraTypes = value;
 	}
-	private TrailerType[] privateTrailerTypes;
+	private TrailerType[] TrailerTypes;
 	public final TrailerType[] getTrailerTypes()
 	{
-		return privateTrailerTypes;
+		return TrailerTypes;
 	}
 	public final void setTrailerTypes(TrailerType[] value)
 	{
-		privateTrailerTypes = value;
+		TrailerTypes = value;
 	}
 
 	public AllChannelMediaQuery()
@@ -116,22 +116,22 @@ public class AllChannelMediaQuery
 		setFields(new java.util.ArrayList<ItemFields>());
 	}
 
-	private ItemFilter[] privateFilters;
+	private ItemFilter[] Filters;
 	public final ItemFilter[] getFilters()
 	{
-		return privateFilters;
+		return Filters;
 	}
 	public final void setFilters(ItemFilter[] value)
 	{
-		privateFilters = value;
+		Filters = value;
 	}
-	private java.util.ArrayList<ItemFields> privateFields;
+	private java.util.ArrayList<ItemFields> Fields;
 	public final java.util.ArrayList<ItemFields> getFields()
 	{
-		return privateFields;
+		return Fields;
 	}
 	public final void setFields(java.util.ArrayList<ItemFields> value)
 	{
-		privateFields = value;
+		Fields = value;
 	}
 }

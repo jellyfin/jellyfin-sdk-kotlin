@@ -2,13 +2,13 @@ package MediaBrowser.Model.Sync;
 
 public class SyncJobCreationResult
 {
-	private SyncJob privateJob;
+	private SyncJob Job;
 	public final SyncJob getJob()
 	{
-		return privateJob;
+		return Job;
 	}
 	public final void setJob(SyncJob value)
 	{
-		privateJob = value;
+		Job = value;
 	}
 }

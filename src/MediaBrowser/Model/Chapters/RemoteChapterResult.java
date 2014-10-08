@@ -7,14 +7,14 @@ public class RemoteChapterResult
 	 
 	 <value>The identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class RemoteChapterResult
 	 
 	 <value>The run time ticks.</value>
 	*/
-	private Long privateRunTimeTicks;
+	private Long RunTimeTicks;
 	public final Long getRunTimeTicks()
 	{
-		return privateRunTimeTicks;
+		return RunTimeTicks;
 	}
 	public final void setRunTimeTicks(Long value)
 	{
-		privateRunTimeTicks = value;
+		RunTimeTicks = value;
 	}
 
 	/** 
@@ -37,14 +37,14 @@ public class RemoteChapterResult
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -52,14 +52,14 @@ public class RemoteChapterResult
 	 
 	 <value>The name of the provider.</value>
 	*/
-	private String privateProviderName;
+	private String ProviderName;
 	public final String getProviderName()
 	{
-		return privateProviderName;
+		return ProviderName;
 	}
 	public final void setProviderName(String value)
 	{
-		privateProviderName = value;
+		ProviderName = value;
 	}
 
 	/** 
@@ -67,14 +67,14 @@ public class RemoteChapterResult
 	 
 	 <value>The community rating.</value>
 	*/
-	private Float privateCommunityRating;
+	private Float CommunityRating;
 	public final Float getCommunityRating()
 	{
-		return privateCommunityRating;
+		return CommunityRating;
 	}
 	public final void setCommunityRating(Float value)
 	{
-		privateCommunityRating = value;
+		CommunityRating = value;
 	}
 
 	/** 
@@ -82,14 +82,14 @@ public class RemoteChapterResult
 	 
 	 <value>The chapter count.</value>
 	*/
-	private Integer privateChapterCount;
+	private Integer ChapterCount;
 	public final Integer getChapterCount()
 	{
-		return privateChapterCount;
+		return ChapterCount;
 	}
 	public final void setChapterCount(Integer value)
 	{
-		privateChapterCount = value;
+		ChapterCount = value;
 	}
 
 	/** 
@@ -97,13 +97,13 @@ public class RemoteChapterResult
 	 
 	 <value>The name of the three letter iso language.</value>
 	*/
-	private String privateThreeLetterISOLanguageName;
+	private String ThreeLetterISOLanguageName;
 	public final String getThreeLetterISOLanguageName()
 	{
-		return privateThreeLetterISOLanguageName;
+		return ThreeLetterISOLanguageName;
 	}
 	public final void setThreeLetterISOLanguageName(String value)
 	{
-		privateThreeLetterISOLanguageName = value;
+		ThreeLetterISOLanguageName = value;
 	}
 }

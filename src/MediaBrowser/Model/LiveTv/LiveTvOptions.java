@@ -2,22 +2,22 @@ package MediaBrowser.Model.LiveTv;
 
 public class LiveTvOptions
 {
-	private Integer privateGuideDays;
+	private Integer GuideDays;
 	public final Integer getGuideDays()
 	{
-		return privateGuideDays;
+		return GuideDays;
 	}
 	public final void setGuideDays(Integer value)
 	{
-		privateGuideDays = value;
+		GuideDays = value;
 	}
-	private String privateActiveService;
+	private String ActiveService;
 	public final String getActiveService()
 	{
-		return privateActiveService;
+		return ActiveService;
 	}
 	public final void setActiveService(String value)
 	{
-		privateActiveService = value;
+		ActiveService = value;
 	}
 }

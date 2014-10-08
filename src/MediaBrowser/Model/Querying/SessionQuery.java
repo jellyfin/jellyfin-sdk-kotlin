@@ -8,13 +8,13 @@ public class SessionQuery
 	/** 
 	 Filter by sessions that are allowed to be controlled by a given user
 	*/
-	private String privateControllableByUserId;
+	private String ControllableByUserId;
 	public final String getControllableByUserId()
 	{
-		return privateControllableByUserId;
+		return ControllableByUserId;
 	}
 	public final void setControllableByUserId(String value)
 	{
-		privateControllableByUserId = value;
+		ControllableByUserId = value;
 	}
 }

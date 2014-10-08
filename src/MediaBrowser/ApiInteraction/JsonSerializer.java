@@ -1,10 +1,8 @@
 package MediaBrowser.ApiInteraction;
 
 import MediaBrowser.Model.Serialization.IJsonSerializer;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.TypeAdapter;
-import com.google.gson.reflect.TypeToken;
+
+import org.boon.Boon;
 
 import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
@@ -39,11 +37,11 @@ public class JsonSerializer implements IJsonSerializer {
     @Override
     public <T> T DeserializeFromString(String json, Class type) {
 
-        Gson gsonBuilder = new GsonBuilder()
+/*        Gson gsonBuilder = new GsonBuilder()
                     .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-                    .create();
+                    .create();*/
 
-        return (T)gsonBuilder.fromJson(json, type);
+        return (T) Boon.fromJson(json, type);
     }
 
     @Override
@@ -55,10 +53,10 @@ public class JsonSerializer implements IJsonSerializer {
     @Override
     public String SerializeToString(Object obj) {
 
-        Gson gsonBuilder = new GsonBuilder()
+/*        Gson gsonBuilder = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-                .create();
+                .create();*/
 
-        return gsonBuilder.toJson(obj);
+        return Boon.toJson(obj);
     }
 }

@@ -2,58 +2,58 @@ package MediaBrowser.Model.Entities;
 
 public class MBRegistrationRecord
 {
-	private java.util.Date privateExpirationDate = new java.util.Date(0);
+	private java.util.Date ExpirationDate = new java.util.Date(0);
 	public final java.util.Date getExpirationDate()
 	{
-		return privateExpirationDate;
+		return ExpirationDate;
 	}
 	public final void setExpirationDate(java.util.Date value)
 	{
-		privateExpirationDate = value;
+		ExpirationDate = value;
 	}
-	private boolean privateIsRegistered;
+	private boolean IsRegistered;
 	public final boolean getIsRegistered()
 	{
-		return privateIsRegistered;
+		return IsRegistered;
 	}
 	public final void setIsRegistered(boolean value)
 	{
-		privateIsRegistered = value;
+		IsRegistered = value;
 	}
-	private boolean privateRegChecked;
+	private boolean RegChecked;
 	public final boolean getRegChecked()
 	{
-		return privateRegChecked;
+		return RegChecked;
 	}
 	public final void setRegChecked(boolean value)
 	{
-		privateRegChecked = value;
+		RegChecked = value;
 	}
-	private boolean privateRegError;
+	private boolean RegError;
 	public final boolean getRegError()
 	{
-		return privateRegError;
+		return RegError;
 	}
 	public final void setRegError(boolean value)
 	{
-		privateRegError = value;
+		RegError = value;
 	}
-	private boolean privateTrialVersion;
+	private boolean TrialVersion;
 	public final boolean getTrialVersion()
 	{
-		return privateTrialVersion;
+		return TrialVersion;
 	}
 	public final void setTrialVersion(boolean value)
 	{
-		privateTrialVersion = value;
+		TrialVersion = value;
 	}
-	private boolean privateIsValid;
+	private boolean IsValid;
 	public final boolean getIsValid()
 	{
-		return privateIsValid;
+		return IsValid;
 	}
 	public final void setIsValid(boolean value)
 	{
-		privateIsValid = value;
+		IsValid = value;
 	}
 }

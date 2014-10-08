@@ -2,22 +2,22 @@ package MediaBrowser.Model.Configuration;
 
 public class PathSubstitution
 {
-	private String privateFrom;
+	private String From;
 	public final String getFrom()
 	{
-		return privateFrom;
+		return From;
 	}
 	public final void setFrom(String value)
 	{
-		privateFrom = value;
+		From = value;
 	}
-	private String privateTo;
+	private String To;
 	public final String getTo()
 	{
-		return privateTo;
+		return To;
 	}
 	public final void setTo(String value)
 	{
-		privateTo = value;
+		To = value;
 	}
 }

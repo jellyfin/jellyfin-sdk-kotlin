@@ -12,14 +12,14 @@ public class GenericEventArgs<T> extends EventArgs
 	 
 	 <value>The argument.</value>
 	*/
-	private T privateArgument;
+	private T Argument;
 	public final T getArgument()
 	{
-		return privateArgument;
+		return Argument;
 	}
 	public final void setArgument(T value)
 	{
-		privateArgument = value;
+		Argument = value;
 	}
 
 	/** 

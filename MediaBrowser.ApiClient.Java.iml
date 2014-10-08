@@ -9,30 +9,9 @@
       <excludeFolder url="file://$MODULE_DIR$/src/MediaBrowser/Model/IO" />
       <excludeFolder url="file://$MODULE_DIR$/src/MediaBrowser/Model/Net" />
     </content>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/junit-4.11.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" exported="" name="junit:junit:4.11" level="project" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/lib/google-gson-2.2.4" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/lib/google-gson-2.2.4" />
-        </SOURCES>
-        <jarDirectory url="file://$MODULE_DIR$/lib/google-gson-2.2.4" recursive="false" />
-        <jarDirectory url="file://$MODULE_DIR$/lib/google-gson-2.2.4" recursive="false" type="SOURCES" />
-      </library>
-    </orderEntry>
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
@@ -59,6 +38,7 @@
     <orderEntry type="library" exported="" name="com.squareup.okhttp:okhttp:2.0.0" level="project" />
     <orderEntry type="library" exported="" name="com.squareup.okio:okio:1.0.1" level="project" />
     <orderEntry type="library" exported="" name="com.squareup.okhttp:okhttp-urlconnection:2.0.0" level="project" />
+    <orderEntry type="library" exported="" name="io.fastjson:boon:0.28" level="project" />
   </component>
 </module>
 

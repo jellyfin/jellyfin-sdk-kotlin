@@ -10,14 +10,14 @@ public class CultureDto
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class CultureDto
 	 
 	 <value>The display name.</value>
 	*/
-	private String privateDisplayName;
+	private String DisplayName;
 	public final String getDisplayName()
 	{
-		return privateDisplayName;
+		return DisplayName;
 	}
 	public final void setDisplayName(String value)
 	{
-		privateDisplayName = value;
+		DisplayName = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class CultureDto
 	 
 	 <value>The name of the two letter ISO language.</value>
 	*/
-	private String privateTwoLetterISOLanguageName;
+	private String TwoLetterISOLanguageName;
 	public final String getTwoLetterISOLanguageName()
 	{
-		return privateTwoLetterISOLanguageName;
+		return TwoLetterISOLanguageName;
 	}
 	public final void setTwoLetterISOLanguageName(String value)
 	{
-		privateTwoLetterISOLanguageName = value;
+		TwoLetterISOLanguageName = value;
 	}
 
 	/** 
@@ -55,13 +55,13 @@ public class CultureDto
 	 
 	 <value>The name of the three letter ISO language.</value>
 	*/
-	private String privateThreeLetterISOLanguageName;
+	private String ThreeLetterISOLanguageName;
 	public final String getThreeLetterISOLanguageName()
 	{
-		return privateThreeLetterISOLanguageName;
+		return ThreeLetterISOLanguageName;
 	}
 	public final void setThreeLetterISOLanguageName(String value)
 	{
-		privateThreeLetterISOLanguageName = value;
+		ThreeLetterISOLanguageName = value;
 	}
 }

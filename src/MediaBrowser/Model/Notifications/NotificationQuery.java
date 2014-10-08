@@ -2,43 +2,43 @@ package MediaBrowser.Model.Notifications;
 
 public class NotificationQuery
 {
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
-	private Boolean privateIsRead;
+	private Boolean IsRead;
 	public final Boolean getIsRead()
 	{
-		return privateIsRead;
+		return IsRead;
 	}
 	public final void setIsRead(Boolean value)
 	{
-		privateIsRead = value;
+		IsRead = value;
 	}
 
-	private Integer privateStartIndex;
+	private Integer StartIndex;
 	public final Integer getStartIndex()
 	{
-		return privateStartIndex;
+		return StartIndex;
 	}
 	public final void setStartIndex(Integer value)
 	{
-		privateStartIndex = value;
+		StartIndex = value;
 	}
 
-	private Integer privateLimit;
+	private Integer Limit;
 	public final Integer getLimit()
 	{
-		return privateLimit;
+		return Limit;
 	}
 	public final void setLimit(Integer value)
 	{
-		privateLimit = value;
+		Limit = value;
 	}
 }

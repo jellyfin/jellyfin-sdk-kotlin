@@ -4,38 +4,38 @@ public class SubtitleProfile
 {
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("format")] public string Format {get;set;}
-	private String privateFormat;
+	private String Format;
 	public final String getFormat()
 	{
-		return privateFormat;
+		return Format;
 	}
 	public final void setFormat(String value)
 	{
-		privateFormat = value;
+		Format = value;
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("method")] public SubtitleDeliveryMethod Method {get;set;}
-	private SubtitleDeliveryMethod privateMethod = SubtitleDeliveryMethod.values()[0];
+	private SubtitleDeliveryMethod Method = SubtitleDeliveryMethod.values()[0];
 	public final SubtitleDeliveryMethod getMethod()
 	{
-		return privateMethod;
+		return Method;
 	}
 	public final void setMethod(SubtitleDeliveryMethod value)
 	{
-		privateMethod = value;
+		Method = value;
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("didlMode")] public string DidlMode {get;set;}
-	private String privateDidlMode;
+	private String DidlMode;
 	public final String getDidlMode()
 	{
-		return privateDidlMode;
+		return DidlMode;
 	}
 	public final void setDidlMode(String value)
 	{
-		privateDidlMode = value;
+		DidlMode = value;
 	}
 
 }

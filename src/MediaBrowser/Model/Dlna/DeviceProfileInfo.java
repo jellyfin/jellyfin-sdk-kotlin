@@ -7,14 +7,14 @@ public class DeviceProfileInfo
 	 
 	 <value>The identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class DeviceProfileInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -37,13 +37,13 @@ public class DeviceProfileInfo
 	 
 	 <value>The type.</value>
 	*/
-	private DeviceProfileType privateType = DeviceProfileType.values()[0];
+	private DeviceProfileType Type = DeviceProfileType.values()[0];
 	public final DeviceProfileType getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(DeviceProfileType value)
 	{
-		privateType = value;
+		Type = value;
 	}
 }

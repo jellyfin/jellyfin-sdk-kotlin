@@ -36,194 +36,194 @@ public class DisplayPreferences implements IHasPropertyChangedEvent
 	 
 	 <value>The user id.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 	/** 
 	 Gets or sets the type of the view.
 	 
 	 <value>The type of the view.</value>
 	*/
-	private String privateViewType;
+	private String ViewType;
 	public final String getViewType()
 	{
-		return privateViewType;
+		return ViewType;
 	}
 	public final void setViewType(String value)
 	{
-		privateViewType = value;
+		ViewType = value;
 	}
 	/** 
 	 Gets or sets the sort by.
 	 
 	 <value>The sort by.</value>
 	*/
-	private String privateSortBy;
+	private String SortBy;
 	public final String getSortBy()
 	{
-		return privateSortBy;
+		return SortBy;
 	}
 	public final void setSortBy(String value)
 	{
-		privateSortBy = value;
+		SortBy = value;
 	}
 	/** 
 	 Gets or sets the index by.
 	 
 	 <value>The index by.</value>
 	*/
-	private String privateIndexBy;
+	private String IndexBy;
 	public final String getIndexBy()
 	{
-		return privateIndexBy;
+		return IndexBy;
 	}
 	public final void setIndexBy(String value)
 	{
-		privateIndexBy = value;
+		IndexBy = value;
 	}
 	/** 
 	 Gets or sets a value indicating whether [remember indexing].
 	 
 	 <value><c>true</c> if [remember indexing]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateRememberIndexing;
+	private boolean RememberIndexing;
 	public final boolean getRememberIndexing()
 	{
-		return privateRememberIndexing;
+		return RememberIndexing;
 	}
 	public final void setRememberIndexing(boolean value)
 	{
-		privateRememberIndexing = value;
+		RememberIndexing = value;
 	}
 	/** 
 	 Gets or sets the height of the primary image.
 	 
 	 <value>The height of the primary image.</value>
 	*/
-	private int privatePrimaryImageHeight;
+	private int PrimaryImageHeight;
 	public final int getPrimaryImageHeight()
 	{
-		return privatePrimaryImageHeight;
+		return PrimaryImageHeight;
 	}
 	public final void setPrimaryImageHeight(int value)
 	{
-		privatePrimaryImageHeight = value;
+		PrimaryImageHeight = value;
 	}
 	/** 
 	 Gets or sets the width of the primary image.
 	 
 	 <value>The width of the primary image.</value>
 	*/
-	private int privatePrimaryImageWidth;
+	private int PrimaryImageWidth;
 	public final int getPrimaryImageWidth()
 	{
-		return privatePrimaryImageWidth;
+		return PrimaryImageWidth;
 	}
 	public final void setPrimaryImageWidth(int value)
 	{
-		privatePrimaryImageWidth = value;
+		PrimaryImageWidth = value;
 	}
 	/** 
 	 Gets or sets the custom prefs.
 	 
 	 <value>The custom prefs.</value>
 	*/
-	private java.util.HashMap<String, String> privateCustomPrefs;
+	private java.util.HashMap<String, String> CustomPrefs;
 	public final java.util.HashMap<String, String> getCustomPrefs()
 	{
-		return privateCustomPrefs;
+		return CustomPrefs;
 	}
 	public final void setCustomPrefs(java.util.HashMap<String, String> value)
 	{
-		privateCustomPrefs = value;
+		CustomPrefs = value;
 	}
 	/** 
 	 Gets or sets the scroll direction.
 	 
 	 <value>The scroll direction.</value>
 	*/
-	private ScrollDirection privateScrollDirection = getScrollDirection().values()[0];
+	private ScrollDirection ScrollDirection = getScrollDirection().values()[0];
 	public final ScrollDirection getScrollDirection()
 	{
-		return privateScrollDirection;
+		return ScrollDirection;
 	}
 	public final void setScrollDirection(ScrollDirection value)
 	{
-		privateScrollDirection = value;
+		ScrollDirection = value;
 	}
 	/** 
 	 Gets or sets a value indicating whether to show backdrops on this item.
 	 
 	 <value><c>true</c> if showing backdrops; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateShowBackdrop;
+	private boolean ShowBackdrop;
 	public final boolean getShowBackdrop()
 	{
-		return privateShowBackdrop;
+		return ShowBackdrop;
 	}
 	public final void setShowBackdrop(boolean value)
 	{
-		privateShowBackdrop = value;
+		ShowBackdrop = value;
 	}
 	/** 
 	 Gets or sets a value indicating whether [remember sorting].
 	 
 	 <value><c>true</c> if [remember sorting]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateRememberSorting;
+	private boolean RememberSorting;
 	public final boolean getRememberSorting()
 	{
-		return privateRememberSorting;
+		return RememberSorting;
 	}
 	public final void setRememberSorting(boolean value)
 	{
-		privateRememberSorting = value;
+		RememberSorting = value;
 	}
 	/** 
 	 Gets or sets the sort order.
 	 
 	 <value>The sort order.</value>
 	*/
-	private SortOrder privateSortOrder = getSortOrder().values()[0];
+	private SortOrder SortOrder = getSortOrder().values()[0];
 	public final SortOrder getSortOrder()
 	{
-		return privateSortOrder;
+		return SortOrder;
 	}
 	public final void setSortOrder(SortOrder value)
 	{
-		privateSortOrder = value;
+		SortOrder = value;
 	}
 	/** 
 	 Gets or sets a value indicating whether [show sidebar].
 	 
 	 <value><c>true</c> if [show sidebar]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateShowSidebar;
+	private boolean ShowSidebar;
 	public final boolean getShowSidebar()
 	{
-		return privateShowSidebar;
+		return ShowSidebar;
 	}
 	public final void setShowSidebar(boolean value)
 	{
-		privateShowSidebar = value;
+		ShowSidebar = value;
 	}
 	/** 
 	 Gets or sets the client
 	*/
-	private String privateClient;
+	private String Client;
 	public final String getClient()
 	{
-		return privateClient;
+		return Client;
 	}
 	public final void setClient(String value)
 	{
-		privateClient = value;
+		Client = value;
 	}
 
 	/** 

@@ -10,14 +10,14 @@ public class PlayRequest
 	 
 	 <value>The item ids.</value>
 	*/
-	private String[] privateItemIds;
+	private String[] ItemIds;
 	public final String[] getItemIds()
 	{
-		return privateItemIds;
+		return ItemIds;
 	}
 	public final void setItemIds(String[] value)
 	{
-		privateItemIds = value;
+		ItemIds = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class PlayRequest
 	 
 	 <value>The start position ticks.</value>
 	*/
-	private Long privateStartPositionTicks;
+	private Long StartPositionTicks;
 	public final Long getStartPositionTicks()
 	{
-		return privateStartPositionTicks;
+		return StartPositionTicks;
 	}
 	public final void setStartPositionTicks(Long value)
 	{
-		privateStartPositionTicks = value;
+		StartPositionTicks = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class PlayRequest
 	 
 	 <value>The play command.</value>
 	*/
-	private PlayCommand privatePlayCommand = getPlayCommand().values()[0];
+	private PlayCommand PlayCommand = getPlayCommand().values()[0];
 	public final PlayCommand getPlayCommand()
 	{
-		return privatePlayCommand;
+		return PlayCommand;
 	}
 	public final void setPlayCommand(PlayCommand value)
 	{
-		privatePlayCommand = value;
+		PlayCommand = value;
 	}
 
 	/** 
@@ -55,13 +55,13 @@ public class PlayRequest
 	 
 	 <value>The controlling user identifier.</value>
 	*/
-	private String privateControllingUserId;
+	private String ControllingUserId;
 	public final String getControllingUserId()
 	{
-		return privateControllingUserId;
+		return ControllingUserId;
 	}
 	public final void setControllingUserId(String value)
 	{
-		privateControllingUserId = value;
+		ControllingUserId = value;
 	}
 }

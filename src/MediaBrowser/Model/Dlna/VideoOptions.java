@@ -5,22 +5,22 @@ package MediaBrowser.Model.Dlna;
 */
 public class VideoOptions extends AudioOptions
 {
-	private Integer privateAudioStreamIndex;
+	private Integer AudioStreamIndex;
 	public final Integer getAudioStreamIndex()
 	{
-		return privateAudioStreamIndex;
+		return AudioStreamIndex;
 	}
 	public final void setAudioStreamIndex(Integer value)
 	{
-		privateAudioStreamIndex = value;
+		AudioStreamIndex = value;
 	}
-	private Integer privateSubtitleStreamIndex;
+	private Integer SubtitleStreamIndex;
 	public final Integer getSubtitleStreamIndex()
 	{
-		return privateSubtitleStreamIndex;
+		return SubtitleStreamIndex;
 	}
 	public final void setSubtitleStreamIndex(Integer value)
 	{
-		privateSubtitleStreamIndex = value;
+		SubtitleStreamIndex = value;
 	}
 }

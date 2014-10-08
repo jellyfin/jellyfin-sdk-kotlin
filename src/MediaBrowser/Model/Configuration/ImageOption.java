@@ -9,28 +9,28 @@ public class ImageOption
 	 
 	 <value>The type.</value>
 	*/
-	private ImageType privateType = ImageType.values()[0];
+	private ImageType Type = ImageType.values()[0];
 	public final ImageType getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(ImageType value)
 	{
-		privateType = value;
+		Type = value;
 	}
 	/** 
 	 Gets or sets the limit.
 	 
 	 <value>The limit.</value>
 	*/
-	private int privateLimit;
+	private int Limit;
 	public final int getLimit()
 	{
-		return privateLimit;
+		return Limit;
 	}
 	public final void setLimit(int value)
 	{
-		privateLimit = value;
+		Limit = value;
 	}
 
 	/** 
@@ -38,14 +38,14 @@ public class ImageOption
 	 
 	 <value>The minimum width.</value>
 	*/
-	private int privateMinWidth;
+	private int MinWidth;
 	public final int getMinWidth()
 	{
-		return privateMinWidth;
+		return MinWidth;
 	}
 	public final void setMinWidth(int value)
 	{
-		privateMinWidth = value;
+		MinWidth = value;
 	}
 
 	public ImageOption()

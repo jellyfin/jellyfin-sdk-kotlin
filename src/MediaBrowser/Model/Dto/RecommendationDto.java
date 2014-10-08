@@ -2,43 +2,43 @@ package MediaBrowser.Model.Dto;
 
 public class RecommendationDto
 {
-	private BaseItemDto[] privateItems;
+	private BaseItemDto[] Items;
 	public final BaseItemDto[] getItems()
 	{
-		return privateItems;
+		return Items;
 	}
 	public final void setItems(BaseItemDto[] value)
 	{
-		privateItems = value;
+		Items = value;
 	}
 
-	private RecommendationType privateRecommendationType = getRecommendationType().values()[0];
+	private RecommendationType RecommendationType = getRecommendationType().values()[0];
 	public final RecommendationType getRecommendationType()
 	{
-		return privateRecommendationType;
+		return RecommendationType;
 	}
 	public final void setRecommendationType(RecommendationType value)
 	{
-		privateRecommendationType = value;
+		RecommendationType = value;
 	}
 
-	private String privateBaselineItemName;
+	private String BaselineItemName;
 	public final String getBaselineItemName()
 	{
-		return privateBaselineItemName;
+		return BaselineItemName;
 	}
 	public final void setBaselineItemName(String value)
 	{
-		privateBaselineItemName = value;
+		BaselineItemName = value;
 	}
 
-	private String privateCategoryId;
+	private String CategoryId;
 	public final String getCategoryId()
 	{
-		return privateCategoryId;
+		return CategoryId;
 	}
 	public final void setCategoryId(String value)
 	{
-		privateCategoryId = value;
+		CategoryId = value;
 	}
 }

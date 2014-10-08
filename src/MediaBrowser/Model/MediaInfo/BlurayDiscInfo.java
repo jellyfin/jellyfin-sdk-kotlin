@@ -12,14 +12,14 @@ public class BlurayDiscInfo
 	 
 	 <value>The media streams.</value>
 	*/
-	private java.util.ArrayList<MediaStream> privateMediaStreams;
+	private java.util.ArrayList<MediaStream> MediaStreams;
 	public final java.util.ArrayList<MediaStream> getMediaStreams()
 	{
-		return privateMediaStreams;
+		return MediaStreams;
 	}
 	public final void setMediaStreams(java.util.ArrayList<MediaStream> value)
 	{
-		privateMediaStreams = value;
+		MediaStreams = value;
 	}
 
 	/** 
@@ -27,14 +27,14 @@ public class BlurayDiscInfo
 	 
 	 <value>The run time ticks.</value>
 	*/
-	private Long privateRunTimeTicks = null;
+	private Long RunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{
-		return privateRunTimeTicks;
+		return RunTimeTicks;
 	}
 	public final void setRunTimeTicks(Long value)
 	{
-		privateRunTimeTicks = value;
+		RunTimeTicks = value;
 	}
 
 	/** 
@@ -42,24 +42,24 @@ public class BlurayDiscInfo
 	 
 	 <value>The files.</value>
 	*/
-	private java.util.ArrayList<String> privateFiles;
+	private java.util.ArrayList<String> Files;
 	public final java.util.ArrayList<String> getFiles()
 	{
-		return privateFiles;
+		return Files;
 	}
 	public final void setFiles(java.util.ArrayList<String> value)
 	{
-		privateFiles = value;
+		Files = value;
 	}
 
-	private String privatePlaylistName;
+	private String PlaylistName;
 	public final String getPlaylistName()
 	{
-		return privatePlaylistName;
+		return PlaylistName;
 	}
 	public final void setPlaylistName(String value)
 	{
-		privatePlaylistName = value;
+		PlaylistName = value;
 	}
 
 	/** 
@@ -67,13 +67,13 @@ public class BlurayDiscInfo
 	 
 	 <value>The chapters.</value>
 	*/
-	private java.util.ArrayList<Double> privateChapters;
+	private java.util.ArrayList<Double> Chapters;
 	public final java.util.ArrayList<Double> getChapters()
 	{
-		return privateChapters;
+		return Chapters;
 	}
 	public final void setChapters(java.util.ArrayList<Double> value)
 	{
-		privateChapters = value;
+		Chapters = value;
 	}
 }

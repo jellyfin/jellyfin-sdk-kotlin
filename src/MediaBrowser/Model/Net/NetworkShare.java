@@ -5,65 +5,65 @@ public class NetworkShare
 	/** 
 	 The name of the computer that this share belongs to
 	*/
-	private String privateServer;
+	private String Server;
 	public final String getServer()
 	{
-		return privateServer;
+		return Server;
 	}
 	public final void setServer(String value)
 	{
-		privateServer = value;
+		Server = value;
 	}
 
 	/** 
 	 Share name
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
 	 Local path
 	*/
-	private String privatePath;
+	private String Path;
 	public final String getPath()
 	{
-		return privatePath;
+		return Path;
 	}
 	public final void setPath(String value)
 	{
-		privatePath = value;
+		Path = value;
 	}
 
 	/** 
 	 Share type
 	*/
-	private NetworkShareType privateShareType = NetworkShareType.values()[0];
+	private NetworkShareType ShareType = NetworkShareType.values()[0];
 	public final NetworkShareType getShareType()
 	{
-		return privateShareType;
+		return ShareType;
 	}
 	public final void setShareType(NetworkShareType value)
 	{
-		privateShareType = value;
+		ShareType = value;
 	}
 
 	/** 
 	 Comment
 	*/
-	private String privateRemark;
+	private String Remark;
 	public final String getRemark()
 	{
-		return privateRemark;
+		return Remark;
 	}
 	public final void setRemark(String value)
 	{
-		privateRemark = value;
+		Remark = value;
 	}
 }

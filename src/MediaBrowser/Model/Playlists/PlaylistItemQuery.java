@@ -9,14 +9,14 @@ public class PlaylistItemQuery
 	 
 	 <value>The identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -24,14 +24,14 @@ public class PlaylistItemQuery
 	 
 	 <value>The user identifier.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -39,14 +39,14 @@ public class PlaylistItemQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex;
+	private Integer StartIndex;
 	public final Integer getStartIndex()
 	{
-		return privateStartIndex;
+		return StartIndex;
 	}
 	public final void setStartIndex(Integer value)
 	{
-		privateStartIndex = value;
+		StartIndex = value;
 	}
 
 	/** 
@@ -54,14 +54,14 @@ public class PlaylistItemQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit;
+	private Integer Limit;
 	public final Integer getLimit()
 	{
-		return privateLimit;
+		return Limit;
 	}
 	public final void setLimit(Integer value)
 	{
-		privateLimit = value;
+		Limit = value;
 	}
 
 	/** 
@@ -69,13 +69,13 @@ public class PlaylistItemQuery
 	 
 	 <value>The fields.</value>
 	*/
-	private ItemFields[] privateFields;
+	private ItemFields[] Fields;
 	public final ItemFields[] getFields()
 	{
-		return privateFields;
+		return Fields;
 	}
 	public final void setFields(ItemFields[] value)
 	{
-		privateFields = value;
+		Fields = value;
 	}
 }

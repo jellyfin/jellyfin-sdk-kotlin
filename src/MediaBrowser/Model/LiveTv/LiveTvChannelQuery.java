@@ -10,14 +10,14 @@ public class LiveTvChannelQuery
 	 
 	 <value>The type of the channel.</value>
 	*/
-	private ChannelType privateChannelType;
+	private ChannelType ChannelType;
 	public final ChannelType getChannelType()
 	{
-		return privateChannelType;
+		return ChannelType;
 	}
 	public final void setChannelType(ChannelType value)
 	{
-		privateChannelType = value;
+		ChannelType = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class LiveTvChannelQuery
 	 
 	 <value><c>null</c> if [is favorite] contains no value, <c>true</c> if [is favorite]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsFavorite;
+	private Boolean IsFavorite;
 	public final Boolean getIsFavorite()
 	{
-		return privateIsFavorite;
+		return IsFavorite;
 	}
 	public final void setIsFavorite(Boolean value)
 	{
-		privateIsFavorite = value;
+		IsFavorite = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class LiveTvChannelQuery
 	 
 	 <value><c>null</c> if [is liked] contains no value, <c>true</c> if [is liked]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsLiked;
+	private Boolean IsLiked;
 	public final Boolean getIsLiked()
 	{
-		return privateIsLiked;
+		return IsLiked;
 	}
 	public final void setIsLiked(Boolean value)
 	{
-		privateIsLiked = value;
+		IsLiked = value;
 	}
 
 	/** 
@@ -55,14 +55,14 @@ public class LiveTvChannelQuery
 	 
 	 <value><c>null</c> if [is disliked] contains no value, <c>true</c> if [is disliked]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsDisliked;
+	private Boolean IsDisliked;
 	public final Boolean getIsDisliked()
 	{
-		return privateIsDisliked;
+		return IsDisliked;
 	}
 	public final void setIsDisliked(Boolean value)
 	{
-		privateIsDisliked = value;
+		IsDisliked = value;
 	}
 
 	/** 
@@ -70,14 +70,14 @@ public class LiveTvChannelQuery
 	 
 	 <value><c>true</c> if [enable favorite sorting]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateEnableFavoriteSorting;
+	private boolean EnableFavoriteSorting;
 	public final boolean getEnableFavoriteSorting()
 	{
-		return privateEnableFavoriteSorting;
+		return EnableFavoriteSorting;
 	}
 	public final void setEnableFavoriteSorting(boolean value)
 	{
-		privateEnableFavoriteSorting = value;
+		EnableFavoriteSorting = value;
 	}
 
 	/** 
@@ -85,14 +85,14 @@ public class LiveTvChannelQuery
 	 
 	 <value>The user identifier.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -100,14 +100,14 @@ public class LiveTvChannelQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex;
+	private Integer StartIndex;
 	public final Integer getStartIndex()
 	{
-		return privateStartIndex;
+		return StartIndex;
 	}
 	public final void setStartIndex(Integer value)
 	{
-		privateStartIndex = value;
+		StartIndex = value;
 	}
 
 	/** 
@@ -115,13 +115,13 @@ public class LiveTvChannelQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit;
+	private Integer Limit;
 	public final Integer getLimit()
 	{
-		return privateLimit;
+		return Limit;
 	}
 	public final void setLimit(Integer value)
 	{
-		privateLimit = value;
+		Limit = value;
 	}
 }

@@ -2,23 +2,23 @@ package MediaBrowser.Model.Themes;
 
 public class AppThemeInfo
 {
-	private String privateAppName;
+	private String AppName;
 	public final String getAppName()
 	{
-		return privateAppName;
+		return AppName;
 	}
 	public final void setAppName(String value)
 	{
-		privateAppName = value;
+		AppName = value;
 	}
 
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 }

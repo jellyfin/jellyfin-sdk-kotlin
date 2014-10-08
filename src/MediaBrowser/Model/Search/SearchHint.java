@@ -10,14 +10,14 @@ public class SearchHint
 	 
 	 <value>The item id.</value>
 	*/
-	private String privateItemId;
+	private String ItemId;
 	public final String getItemId()
 	{
-		return privateItemId;
+		return ItemId;
 	}
 	public final void setItemId(String value)
 	{
-		privateItemId = value;
+		ItemId = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class SearchHint
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class SearchHint
 	 
 	 <value>The matched term.</value>
 	*/
-	private String privateMatchedTerm;
+	private String MatchedTerm;
 	public final String getMatchedTerm()
 	{
-		return privateMatchedTerm;
+		return MatchedTerm;
 	}
 	public final void setMatchedTerm(String value)
 	{
-		privateMatchedTerm = value;
+		MatchedTerm = value;
 	}
 
 	/** 
@@ -55,14 +55,14 @@ public class SearchHint
 	 
 	 <value>The index number.</value>
 	*/
-	private Integer privateIndexNumber = null;
+	private Integer IndexNumber = null;
 	public final Integer getIndexNumber()
 	{
-		return privateIndexNumber;
+		return IndexNumber;
 	}
 	public final void setIndexNumber(Integer value)
 	{
-		privateIndexNumber = value;
+		IndexNumber = value;
 	}
 
 	/** 
@@ -70,14 +70,14 @@ public class SearchHint
 	 
 	 <value>The production year.</value>
 	*/
-	private Integer privateProductionYear = null;
+	private Integer ProductionYear = null;
 	public final Integer getProductionYear()
 	{
-		return privateProductionYear;
+		return ProductionYear;
 	}
 	public final void setProductionYear(Integer value)
 	{
-		privateProductionYear = value;
+		ProductionYear = value;
 	}
 
 	/** 
@@ -85,14 +85,14 @@ public class SearchHint
 	 
 	 <value>The parent index number.</value>
 	*/
-	private Integer privateParentIndexNumber = null;
+	private Integer ParentIndexNumber = null;
 	public final Integer getParentIndexNumber()
 	{
-		return privateParentIndexNumber;
+		return ParentIndexNumber;
 	}
 	public final void setParentIndexNumber(Integer value)
 	{
-		privateParentIndexNumber = value;
+		ParentIndexNumber = value;
 	}
 
 	/** 
@@ -100,14 +100,14 @@ public class SearchHint
 	 
 	 <value>The image tag.</value>
 	*/
-	private String privatePrimaryImageTag;
+	private String PrimaryImageTag;
 	public final String getPrimaryImageTag()
 	{
-		return privatePrimaryImageTag;
+		return PrimaryImageTag;
 	}
 	public final void setPrimaryImageTag(String value)
 	{
-		privatePrimaryImageTag = value;
+		PrimaryImageTag = value;
 	}
 
 	/** 
@@ -115,14 +115,14 @@ public class SearchHint
 	 
 	 <value>The thumb image tag.</value>
 	*/
-	private String privateThumbImageTag;
+	private String ThumbImageTag;
 	public final String getThumbImageTag()
 	{
-		return privateThumbImageTag;
+		return ThumbImageTag;
 	}
 	public final void setThumbImageTag(String value)
 	{
-		privateThumbImageTag = value;
+		ThumbImageTag = value;
 	}
 
 	/** 
@@ -130,14 +130,14 @@ public class SearchHint
 	 
 	 <value>The thumb image item identifier.</value>
 	*/
-	private String privateThumbImageItemId;
+	private String ThumbImageItemId;
 	public final String getThumbImageItemId()
 	{
-		return privateThumbImageItemId;
+		return ThumbImageItemId;
 	}
 	public final void setThumbImageItemId(String value)
 	{
-		privateThumbImageItemId = value;
+		ThumbImageItemId = value;
 	}
 
 	/** 
@@ -145,14 +145,14 @@ public class SearchHint
 	 
 	 <value>The backdrop image tag.</value>
 	*/
-	private String privateBackdropImageTag;
+	private String BackdropImageTag;
 	public final String getBackdropImageTag()
 	{
-		return privateBackdropImageTag;
+		return BackdropImageTag;
 	}
 	public final void setBackdropImageTag(String value)
 	{
-		privateBackdropImageTag = value;
+		BackdropImageTag = value;
 	}
 
 	/** 
@@ -160,14 +160,14 @@ public class SearchHint
 	 
 	 <value>The backdrop image item identifier.</value>
 	*/
-	private String privateBackdropImageItemId;
+	private String BackdropImageItemId;
 	public final String getBackdropImageItemId()
 	{
-		return privateBackdropImageItemId;
+		return BackdropImageItemId;
 	}
 	public final void setBackdropImageItemId(String value)
 	{
-		privateBackdropImageItemId = value;
+		BackdropImageItemId = value;
 	}
 
 	/** 
@@ -175,14 +175,14 @@ public class SearchHint
 	 
 	 <value>The type.</value>
 	*/
-	private String privateType;
+	private String Type;
 	public final String getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(String value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
 	/** 
@@ -190,14 +190,14 @@ public class SearchHint
 	 
 	 <value>The run time ticks.</value>
 	*/
-	private Long privateRunTimeTicks = null;
+	private Long RunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{
-		return privateRunTimeTicks;
+		return RunTimeTicks;
 	}
 	public final void setRunTimeTicks(Long value)
 	{
-		privateRunTimeTicks = value;
+		RunTimeTicks = value;
 	}
 
 	/** 
@@ -205,14 +205,14 @@ public class SearchHint
 	 
 	 <value>The type of the media.</value>
 	*/
-	private String privateMediaType;
+	private String MediaType;
 	public final String getMediaType()
 	{
-		return privateMediaType;
+		return MediaType;
 	}
 	public final void setMediaType(String value)
 	{
-		privateMediaType = value;
+		MediaType = value;
 	}
 
 	/** 
@@ -220,14 +220,14 @@ public class SearchHint
 	 
 	 <value>The display type of the media.</value>
 	*/
-	private String privateDisplayMediaType;
+	private String DisplayMediaType;
 	public final String getDisplayMediaType()
 	{
-		return privateDisplayMediaType;
+		return DisplayMediaType;
 	}
 	public final void setDisplayMediaType(String value)
 	{
-		privateDisplayMediaType = value;
+		DisplayMediaType = value;
 	}
 
 	/** 
@@ -235,14 +235,14 @@ public class SearchHint
 	 
 	 <value>The series.</value>
 	*/
-	private String privateSeries;
+	private String Series;
 	public final String getSeries()
 	{
-		return privateSeries;
+		return Series;
 	}
 	public final void setSeries(String value)
 	{
-		privateSeries = value;
+		Series = value;
 	}
 
 	/** 
@@ -250,14 +250,14 @@ public class SearchHint
 	 
 	 <value>The album.</value>
 	*/
-	private String privateAlbum;
+	private String Album;
 	public final String getAlbum()
 	{
-		return privateAlbum;
+		return Album;
 	}
 	public final void setAlbum(String value)
 	{
-		privateAlbum = value;
+		Album = value;
 	}
 
 	/** 
@@ -265,14 +265,14 @@ public class SearchHint
 	 
 	 <value>The album artist.</value>
 	*/
-	private String privateAlbumArtist;
+	private String AlbumArtist;
 	public final String getAlbumArtist()
 	{
-		return privateAlbumArtist;
+		return AlbumArtist;
 	}
 	public final void setAlbumArtist(String value)
 	{
-		privateAlbumArtist = value;
+		AlbumArtist = value;
 	}
 
 	/** 
@@ -280,14 +280,14 @@ public class SearchHint
 	 
 	 <value>The artists.</value>
 	*/
-	private String[] privateArtists;
+	private String[] Artists;
 	public final String[] getArtists()
 	{
-		return privateArtists;
+		return Artists;
 	}
 	public final void setArtists(String[] value)
 	{
-		privateArtists = value;
+		Artists = value;
 	}
 
 	/** 
@@ -295,14 +295,14 @@ public class SearchHint
 	 
 	 <value>The song count.</value>
 	*/
-	private Integer privateSongCount = null;
+	private Integer SongCount = null;
 	public final Integer getSongCount()
 	{
-		return privateSongCount;
+		return SongCount;
 	}
 	public final void setSongCount(Integer value)
 	{
-		privateSongCount = value;
+		SongCount = value;
 	}
 
 	/** 
@@ -310,13 +310,13 @@ public class SearchHint
 	 
 	 <value>The episode count.</value>
 	*/
-	private Integer privateEpisodeCount = null;
+	private Integer EpisodeCount = null;
 	public final Integer getEpisodeCount()
 	{
-		return privateEpisodeCount;
+		return EpisodeCount;
 	}
 	public final void setEpisodeCount(Integer value)
 	{
-		privateEpisodeCount = value;
+		EpisodeCount = value;
 	}
 }

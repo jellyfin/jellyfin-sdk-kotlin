@@ -2,67 +2,67 @@ package MediaBrowser.Model.Entities;
 
 public class SupporterInfo
 {
-	private String privateEmail;
+	private String Email;
 	public final String getEmail()
 	{
-		return privateEmail;
+		return Email;
 	}
 	public final void setEmail(String value)
 	{
-		privateEmail = value;
+		Email = value;
 	}
-	private String privateSupporterKey;
+	private String SupporterKey;
 	public final String getSupporterKey()
 	{
-		return privateSupporterKey;
+		return SupporterKey;
 	}
 	public final void setSupporterKey(String value)
 	{
-		privateSupporterKey = value;
+		SupporterKey = value;
 	}
-	private java.util.Date privateExpirationDate = null;
+	private java.util.Date ExpirationDate = null;
 	public final java.util.Date getExpirationDate()
 	{
-		return privateExpirationDate;
+		return ExpirationDate;
 	}
 	public final void setExpirationDate(java.util.Date value)
 	{
-		privateExpirationDate = value;
+		ExpirationDate = value;
 	}
-	private java.util.Date privateRegistrationDate = new java.util.Date(0);
+	private java.util.Date RegistrationDate = new java.util.Date(0);
 	public final java.util.Date getRegistrationDate()
 	{
-		return privateRegistrationDate;
+		return RegistrationDate;
 	}
 	public final void setRegistrationDate(java.util.Date value)
 	{
-		privateRegistrationDate = value;
+		RegistrationDate = value;
 	}
-	private String privatePlanType;
+	private String PlanType;
 	public final String getPlanType()
 	{
-		return privatePlanType;
+		return PlanType;
 	}
 	public final void setPlanType(String value)
 	{
-		privatePlanType = value;
+		PlanType = value;
 	}
-	private boolean privateIsActiveSupporter;
+	private boolean IsActiveSupporter;
 	public final boolean getIsActiveSupporter()
 	{
-		return privateIsActiveSupporter;
+		return IsActiveSupporter;
 	}
 	public final void setIsActiveSupporter(boolean value)
 	{
-		privateIsActiveSupporter = value;
+		IsActiveSupporter = value;
 	}
-	private boolean privateIsExpiredSupporter;
+	private boolean IsExpiredSupporter;
 	public final boolean getIsExpiredSupporter()
 	{
-		return privateIsExpiredSupporter;
+		return IsExpiredSupporter;
 	}
 	public final void setIsExpiredSupporter(boolean value)
 	{
-		privateIsExpiredSupporter = value;
+		IsExpiredSupporter = value;
 	}
 }

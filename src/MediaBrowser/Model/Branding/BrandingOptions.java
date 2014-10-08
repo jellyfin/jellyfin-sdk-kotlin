@@ -7,13 +7,13 @@ public class BrandingOptions
 	 
 	 <value>The login disclaimer.</value>
 	*/
-	private String privateLoginDisclaimer;
+	private String LoginDisclaimer;
 	public final String getLoginDisclaimer()
 	{
-		return privateLoginDisclaimer;
+		return LoginDisclaimer;
 	}
 	public final void setLoginDisclaimer(String value)
 	{
-		privateLoginDisclaimer = value;
+		LoginDisclaimer = value;
 	}
 }

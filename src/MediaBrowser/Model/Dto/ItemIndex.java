@@ -10,14 +10,14 @@ public class ItemIndex
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -25,13 +25,13 @@ public class ItemIndex
 	 
 	 <value>The item count.</value>
 	*/
-	private int privateItemCount;
+	private int ItemCount;
 	public final int getItemCount()
 	{
-		return privateItemCount;
+		return ItemCount;
 	}
 	public final void setItemCount(int value)
 	{
-		privateItemCount = value;
+		ItemCount = value;
 	}
 }

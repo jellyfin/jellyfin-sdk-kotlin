@@ -2,44 +2,44 @@ package MediaBrowser.Model.Session;
 
 public class SessionCapabilities
 {
-	private java.util.ArrayList<String> privatePlayableMediaTypes;
+	private java.util.ArrayList<String> PlayableMediaTypes;
 	public final java.util.ArrayList<String> getPlayableMediaTypes()
 	{
-		return privatePlayableMediaTypes;
+		return PlayableMediaTypes;
 	}
 	public final void setPlayableMediaTypes(java.util.ArrayList<String> value)
 	{
-		privatePlayableMediaTypes = value;
+		PlayableMediaTypes = value;
 	}
 
-	private java.util.ArrayList<String> privateSupportedCommands;
+	private java.util.ArrayList<String> SupportedCommands;
 	public final java.util.ArrayList<String> getSupportedCommands()
 	{
-		return privateSupportedCommands;
+		return SupportedCommands;
 	}
 	public final void setSupportedCommands(java.util.ArrayList<String> value)
 	{
-		privateSupportedCommands = value;
+		SupportedCommands = value;
 	}
 
-	private boolean privateSupportsMediaControl;
+	private boolean SupportsMediaControl;
 	public final boolean getSupportsMediaControl()
 	{
-		return privateSupportsMediaControl;
+		return SupportsMediaControl;
 	}
 	public final void setSupportsMediaControl(boolean value)
 	{
-		privateSupportsMediaControl = value;
+		SupportsMediaControl = value;
 	}
 
-	private String privateMessageCallbackUrl;
+	private String MessageCallbackUrl;
 	public final String getMessageCallbackUrl()
 	{
-		return privateMessageCallbackUrl;
+		return MessageCallbackUrl;
 	}
 	public final void setMessageCallbackUrl(String value)
 	{
-		privateMessageCallbackUrl = value;
+		MessageCallbackUrl = value;
 	}
 
 	public SessionCapabilities()

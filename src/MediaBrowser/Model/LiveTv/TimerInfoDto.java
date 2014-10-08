@@ -7,14 +7,14 @@ public class TimerInfoDto extends BaseTimerInfoDto
 	 
 	 <value>The status.</value>
 	*/
-	private RecordingStatus privateStatus = RecordingStatus.values()[0];
+	private RecordingStatus Status = RecordingStatus.values()[0];
 	public final RecordingStatus getStatus()
 	{
-		return privateStatus;
+		return Status;
 	}
 	public final void setStatus(RecordingStatus value)
 	{
-		privateStatus = value;
+		Status = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class TimerInfoDto extends BaseTimerInfoDto
 	 
 	 <value>The series timer identifier.</value>
 	*/
-	private String privateSeriesTimerId;
+	private String SeriesTimerId;
 	public final String getSeriesTimerId()
 	{
-		return privateSeriesTimerId;
+		return SeriesTimerId;
 	}
 	public final void setSeriesTimerId(String value)
 	{
-		privateSeriesTimerId = value;
+		SeriesTimerId = value;
 	}
 
 	/** 
@@ -37,14 +37,14 @@ public class TimerInfoDto extends BaseTimerInfoDto
 	 
 	 <value>The external series timer identifier.</value>
 	*/
-	private String privateExternalSeriesTimerId;
+	private String ExternalSeriesTimerId;
 	public final String getExternalSeriesTimerId()
 	{
-		return privateExternalSeriesTimerId;
+		return ExternalSeriesTimerId;
 	}
 	public final void setExternalSeriesTimerId(String value)
 	{
-		privateExternalSeriesTimerId = value;
+		ExternalSeriesTimerId = value;
 	}
 
 	/** 
@@ -52,14 +52,14 @@ public class TimerInfoDto extends BaseTimerInfoDto
 	 
 	 <value>The run time ticks.</value>
 	*/
-	private Long privateRunTimeTicks;
+	private Long RunTimeTicks;
 	public final Long getRunTimeTicks()
 	{
-		return privateRunTimeTicks;
+		return RunTimeTicks;
 	}
 	public final void setRunTimeTicks(Long value)
 	{
-		privateRunTimeTicks = value;
+		RunTimeTicks = value;
 	}
 
 	/** 
@@ -67,14 +67,14 @@ public class TimerInfoDto extends BaseTimerInfoDto
 	 
 	 <value>The program information.</value>
 	*/
-	private ProgramInfoDto privateProgramInfo;
+	private ProgramInfoDto ProgramInfo;
 	public final ProgramInfoDto getProgramInfo()
 	{
-		return privateProgramInfo;
+		return ProgramInfo;
 	}
 	public final void setProgramInfo(ProgramInfoDto value)
 	{
-		privateProgramInfo = value;
+		ProgramInfo = value;
 	}
 
 }

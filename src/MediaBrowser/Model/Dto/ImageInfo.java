@@ -12,14 +12,14 @@ public class ImageInfo
 	 
 	 <value>The type of the image.</value>
 	*/
-	private ImageType privateImageType = getImageType().values()[0];
+	private ImageType ImageType = getImageType().values()[0];
 	public final ImageType getImageType()
 	{
-		return privateImageType;
+		return ImageType;
 	}
 	public final void setImageType(ImageType value)
 	{
-		privateImageType = value;
+		ImageType = value;
 	}
 
 	/** 
@@ -27,14 +27,14 @@ public class ImageInfo
 	 
 	 <value>The index of the image.</value>
 	*/
-	private Integer privateImageIndex = null;
+	private Integer ImageIndex = null;
 	public final Integer getImageIndex()
 	{
-		return privateImageIndex;
+		return ImageIndex;
 	}
 	public final void setImageIndex(Integer value)
 	{
-		privateImageIndex = value;
+		ImageIndex = value;
 	}
 
 	/** 
@@ -47,14 +47,14 @@ public class ImageInfo
 	 
 	 <value>The path.</value>
 	*/
-	private String privatePath;
+	private String Path;
 	public final String getPath()
 	{
-		return privatePath;
+		return Path;
 	}
 	public final void setPath(String value)
 	{
-		privatePath = value;
+		Path = value;
 	}
 
 	/** 
@@ -62,14 +62,14 @@ public class ImageInfo
 	 
 	 <value>The height.</value>
 	*/
-	private int privateHeight;
+	private int Height;
 	public final int getHeight()
 	{
-		return privateHeight;
+		return Height;
 	}
 	public final void setHeight(int value)
 	{
-		privateHeight = value;
+		Height = value;
 	}
 
 	/** 
@@ -77,14 +77,14 @@ public class ImageInfo
 	 
 	 <value>The width.</value>
 	*/
-	private int privateWidth;
+	private int Width;
 	public final int getWidth()
 	{
-		return privateWidth;
+		return Width;
 	}
 	public final void setWidth(int value)
 	{
-		privateWidth = value;
+		Width = value;
 	}
 
 	/** 
@@ -92,13 +92,13 @@ public class ImageInfo
 	 
 	 <value>The size.</value>
 	*/
-	private long privateSize;
+	private long Size;
 	public final long getSize()
 	{
-		return privateSize;
+		return Size;
 	}
 	public final void setSize(long value)
 	{
-		privateSize = value;
+		Size = value;
 	}
 }

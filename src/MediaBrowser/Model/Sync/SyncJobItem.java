@@ -7,14 +7,14 @@ public class SyncJobItem
 	 
 	 <value>The identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class SyncJobItem
 	 
 	 <value>The job identifier.</value>
 	*/
-	private String privateJobId;
+	private String JobId;
 	public final String getJobId()
 	{
-		return privateJobId;
+		return JobId;
 	}
 	public final void setJobId(String value)
 	{
-		privateJobId = value;
+		JobId = value;
 	}
 
 	/** 
@@ -37,14 +37,14 @@ public class SyncJobItem
 	 
 	 <value>The item identifier.</value>
 	*/
-	private String privateItemId;
+	private String ItemId;
 	public final String getItemId()
 	{
-		return privateItemId;
+		return ItemId;
 	}
 	public final void setItemId(String value)
 	{
-		privateItemId = value;
+		ItemId = value;
 	}
 
 	/** 
@@ -52,14 +52,14 @@ public class SyncJobItem
 	 
 	 <value>The target identifier.</value>
 	*/
-	private String privateTargetId;
+	private String TargetId;
 	public final String getTargetId()
 	{
-		return privateTargetId;
+		return TargetId;
 	}
 	public final void setTargetId(String value)
 	{
-		privateTargetId = value;
+		TargetId = value;
 	}
 
 	/** 
@@ -67,14 +67,14 @@ public class SyncJobItem
 	 
 	 <value>The output path.</value>
 	*/
-	private String privateOutputPath;
+	private String OutputPath;
 	public final String getOutputPath()
 	{
-		return privateOutputPath;
+		return OutputPath;
 	}
 	public final void setOutputPath(String value)
 	{
-		privateOutputPath = value;
+		OutputPath = value;
 	}
 
 	/** 
@@ -82,14 +82,14 @@ public class SyncJobItem
 	 
 	 <value>The status.</value>
 	*/
-	private SyncJobStatus privateStatus = SyncJobStatus.values()[0];
+	private SyncJobStatus Status = SyncJobStatus.values()[0];
 	public final SyncJobStatus getStatus()
 	{
-		return privateStatus;
+		return Status;
 	}
 	public final void setStatus(SyncJobStatus value)
 	{
-		privateStatus = value;
+		Status = value;
 	}
 
 	/** 
@@ -97,13 +97,13 @@ public class SyncJobItem
 	 
 	 <value>The current progress.</value>
 	*/
-	private Double privateCurrentProgress;
+	private Double CurrentProgress;
 	public final Double getCurrentProgress()
 	{
-		return privateCurrentProgress;
+		return CurrentProgress;
 	}
 	public final void setCurrentProgress(Double value)
 	{
-		privateCurrentProgress = value;
+		CurrentProgress = value;
 	}
 }

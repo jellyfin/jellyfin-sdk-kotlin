@@ -2,110 +2,110 @@ package MediaBrowser.Model.FileOrganization;
 
 public class TvFileOrganizationOptions
 {
-	private boolean privateIsEnabled;
+	private boolean IsEnabled;
 	public final boolean getIsEnabled()
 	{
-		return privateIsEnabled;
+		return IsEnabled;
 	}
 	public final void setIsEnabled(boolean value)
 	{
-		privateIsEnabled = value;
+		IsEnabled = value;
 	}
-	private int privateMinFileSizeMb;
+	private int MinFileSizeMb;
 	public final int getMinFileSizeMb()
 	{
-		return privateMinFileSizeMb;
+		return MinFileSizeMb;
 	}
 	public final void setMinFileSizeMb(int value)
 	{
-		privateMinFileSizeMb = value;
+		MinFileSizeMb = value;
 	}
-	private String[] privateLeftOverFileExtensionsToDelete;
+	private String[] LeftOverFileExtensionsToDelete;
 	public final String[] getLeftOverFileExtensionsToDelete()
 	{
-		return privateLeftOverFileExtensionsToDelete;
+		return LeftOverFileExtensionsToDelete;
 	}
 	public final void setLeftOverFileExtensionsToDelete(String[] value)
 	{
-		privateLeftOverFileExtensionsToDelete = value;
+		LeftOverFileExtensionsToDelete = value;
 	}
-	private String[] privateWatchLocations;
+	private String[] WatchLocations;
 	public final String[] getWatchLocations()
 	{
-		return privateWatchLocations;
+		return WatchLocations;
 	}
 	public final void setWatchLocations(String[] value)
 	{
-		privateWatchLocations = value;
+		WatchLocations = value;
 	}
 
-	private String privateSeasonFolderPattern;
+	private String SeasonFolderPattern;
 	public final String getSeasonFolderPattern()
 	{
-		return privateSeasonFolderPattern;
+		return SeasonFolderPattern;
 	}
 	public final void setSeasonFolderPattern(String value)
 	{
-		privateSeasonFolderPattern = value;
+		SeasonFolderPattern = value;
 	}
 
-	private String privateSeasonZeroFolderName;
+	private String SeasonZeroFolderName;
 	public final String getSeasonZeroFolderName()
 	{
-		return privateSeasonZeroFolderName;
+		return SeasonZeroFolderName;
 	}
 	public final void setSeasonZeroFolderName(String value)
 	{
-		privateSeasonZeroFolderName = value;
+		SeasonZeroFolderName = value;
 	}
 
-	private String privateEpisodeNamePattern;
+	private String EpisodeNamePattern;
 	public final String getEpisodeNamePattern()
 	{
-		return privateEpisodeNamePattern;
+		return EpisodeNamePattern;
 	}
 	public final void setEpisodeNamePattern(String value)
 	{
-		privateEpisodeNamePattern = value;
+		EpisodeNamePattern = value;
 	}
-	private String privateMultiEpisodeNamePattern;
+	private String MultiEpisodeNamePattern;
 	public final String getMultiEpisodeNamePattern()
 	{
-		return privateMultiEpisodeNamePattern;
+		return MultiEpisodeNamePattern;
 	}
 	public final void setMultiEpisodeNamePattern(String value)
 	{
-		privateMultiEpisodeNamePattern = value;
+		MultiEpisodeNamePattern = value;
 	}
 
-	private boolean privateOverwriteExistingEpisodes;
+	private boolean OverwriteExistingEpisodes;
 	public final boolean getOverwriteExistingEpisodes()
 	{
-		return privateOverwriteExistingEpisodes;
+		return OverwriteExistingEpisodes;
 	}
 	public final void setOverwriteExistingEpisodes(boolean value)
 	{
-		privateOverwriteExistingEpisodes = value;
+		OverwriteExistingEpisodes = value;
 	}
 
-	private boolean privateDeleteEmptyFolders;
+	private boolean DeleteEmptyFolders;
 	public final boolean getDeleteEmptyFolders()
 	{
-		return privateDeleteEmptyFolders;
+		return DeleteEmptyFolders;
 	}
 	public final void setDeleteEmptyFolders(boolean value)
 	{
-		privateDeleteEmptyFolders = value;
+		DeleteEmptyFolders = value;
 	}
 
-	private boolean privateCopyOriginalFile;
+	private boolean CopyOriginalFile;
 	public final boolean getCopyOriginalFile()
 	{
-		return privateCopyOriginalFile;
+		return CopyOriginalFile;
 	}
 	public final void setCopyOriginalFile(boolean value)
 	{
-		privateCopyOriginalFile = value;
+		CopyOriginalFile = value;
 	}
 
 	public TvFileOrganizationOptions()

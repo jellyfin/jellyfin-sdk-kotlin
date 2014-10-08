@@ -2,34 +2,34 @@ package MediaBrowser.Model.Session;
 
 public class GeneralCommand
 {
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
-	private String privateControllingUserId;
+	private String ControllingUserId;
 	public final String getControllingUserId()
 	{
-		return privateControllingUserId;
+		return ControllingUserId;
 	}
 	public final void setControllingUserId(String value)
 	{
-		privateControllingUserId = value;
+		ControllingUserId = value;
 	}
 
-	private java.util.HashMap<String, String> privateArguments;
+	private java.util.HashMap<String, String> Arguments;
 	public final java.util.HashMap<String, String> getArguments()
 	{
-		return privateArguments;
+		return Arguments;
 	}
 	public final void setArguments(java.util.HashMap<String, String> value)
 	{
-		privateArguments = value;
+		Arguments = value;
 	}
 
 	public GeneralCommand()

@@ -7,14 +7,14 @@ public class LogFile
 	 
 	 <value>The date created.</value>
 	*/
-	private java.util.Date privateDateCreated = new java.util.Date(0);
+	private java.util.Date DateCreated = new java.util.Date(0);
 	public final java.util.Date getDateCreated()
 	{
-		return privateDateCreated;
+		return DateCreated;
 	}
 	public final void setDateCreated(java.util.Date value)
 	{
-		privateDateCreated = value;
+		DateCreated = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class LogFile
 	 
 	 <value>The date modified.</value>
 	*/
-	private java.util.Date privateDateModified = new java.util.Date(0);
+	private java.util.Date DateModified = new java.util.Date(0);
 	public final java.util.Date getDateModified()
 	{
-		return privateDateModified;
+		return DateModified;
 	}
 	public final void setDateModified(java.util.Date value)
 	{
-		privateDateModified = value;
+		DateModified = value;
 	}
 
 	/** 
@@ -37,14 +37,14 @@ public class LogFile
 	 
 	 <value>The size.</value>
 	*/
-	private long privateSize;
+	private long Size;
 	public final long getSize()
 	{
-		return privateSize;
+		return Size;
 	}
 	public final void setSize(long value)
 	{
-		privateSize = value;
+		Size = value;
 	}
 
 	/** 
@@ -52,13 +52,13 @@ public class LogFile
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 }

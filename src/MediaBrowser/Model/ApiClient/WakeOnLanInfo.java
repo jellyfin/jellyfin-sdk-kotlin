@@ -2,23 +2,23 @@ package MediaBrowser.Model.ApiClient;
 
 public class WakeOnLanInfo
 {
-	private String privateMacAddress;
+	private String MacAddress;
 	public final String getMacAddress()
 	{
-		return privateMacAddress;
+		return MacAddress;
 	}
 	public final void setMacAddress(String value)
 	{
-		privateMacAddress = value;
+		MacAddress = value;
 	}
-	private int privatePort;
+	private int Port;
 	public final int getPort()
 	{
-		return privatePort;
+		return Port;
 	}
 	public final void setPort(int value)
 	{
-		privatePort = value;
+		Port = value;
 	}
 
 	public WakeOnLanInfo()

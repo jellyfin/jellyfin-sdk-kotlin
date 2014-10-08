@@ -17,14 +17,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -32,14 +32,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -47,14 +47,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The external identifier.</value>
 	*/
-	private String privateExternalId;
+	private String ExternalId;
 	public final String getExternalId()
 	{
-		return privateExternalId;
+		return ExternalId;
 	}
 	public final void setExternalId(String value)
 	{
-		privateExternalId = value;
+		ExternalId = value;
 	}
 
 	/** 
@@ -62,14 +62,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The media sources.</value>
 	*/
-	private java.util.ArrayList<MediaSourceInfo> privateMediaSources;
+	private java.util.ArrayList<MediaSourceInfo> MediaSources;
 	public final java.util.ArrayList<MediaSourceInfo> getMediaSources()
 	{
-		return privateMediaSources;
+		return MediaSources;
 	}
 	public final void setMediaSources(java.util.ArrayList<MediaSourceInfo> value)
 	{
-		privateMediaSources = value;
+		MediaSources = value;
 	}
 
 	/** 
@@ -77,14 +77,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The image tags.</value>
 	*/
-	private java.util.HashMap<ImageType, String> privateImageTags;
+	private java.util.HashMap<ImageType, String> ImageTags;
 	public final java.util.HashMap<ImageType, String> getImageTags()
 	{
-		return privateImageTags;
+		return ImageTags;
 	}
 	public final void setImageTags(java.util.HashMap<ImageType, String> value)
 	{
-		privateImageTags = value;
+		ImageTags = value;
 	}
 
 	/** 
@@ -92,14 +92,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The number.</value>
 	*/
-	private String privateNumber;
+	private String Number;
 	public final String getNumber()
 	{
-		return privateNumber;
+		return Number;
 	}
 	public final void setNumber(String value)
 	{
-		privateNumber = value;
+		Number = value;
 	}
 
 	/** 
@@ -107,14 +107,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The play access.</value>
 	*/
-	private PlayAccess privatePlayAccess = getPlayAccess().values()[0];
+	private PlayAccess PlayAccess = getPlayAccess().values()[0];
 	public final PlayAccess getPlayAccess()
 	{
-		return privatePlayAccess;
+		return PlayAccess;
 	}
 	public final void setPlayAccess(PlayAccess value)
 	{
-		privatePlayAccess = value;
+		PlayAccess = value;
 	}
 
 	/** 
@@ -122,14 +122,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The name of the service.</value>
 	*/
-	private String privateServiceName;
+	private String ServiceName;
 	public final String getServiceName()
 	{
-		return privateServiceName;
+		return ServiceName;
 	}
 	public final void setServiceName(String value)
 	{
-		privateServiceName = value;
+		ServiceName = value;
 	}
 
 	/** 
@@ -137,14 +137,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The type of the channel.</value>
 	*/
-	private ChannelType privateChannelType = getChannelType().values()[0];
+	private ChannelType ChannelType = getChannelType().values()[0];
 	public final ChannelType getChannelType()
 	{
-		return privateChannelType;
+		return ChannelType;
 	}
 	public final void setChannelType(ChannelType value)
 	{
-		privateChannelType = value;
+		ChannelType = value;
 	}
 
 	/** 
@@ -152,14 +152,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The type.</value>
 	*/
-	private String privateType;
+	private String Type;
 	public final String getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(String value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
 	/** 
@@ -167,14 +167,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The type of the media.</value>
 	*/
-	private String privateMediaType;
+	private String MediaType;
 	public final String getMediaType()
 	{
-		return privateMediaType;
+		return MediaType;
 	}
 	public final void setMediaType(String value)
 	{
-		privateMediaType = value;
+		MediaType = value;
 	}
 
 	/** 
@@ -182,14 +182,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The user data.</value>
 	*/
-	private UserItemDataDto privateUserData;
+	private UserItemDataDto UserData;
 	public final UserItemDataDto getUserData()
 	{
-		return privateUserData;
+		return UserData;
 	}
 	public final void setUserData(UserItemDataDto value)
 	{
-		privateUserData = value;
+		UserData = value;
 	}
 
 	/** 
@@ -197,14 +197,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The now playing program.</value>
 	*/
-	private ProgramInfoDto privateCurrentProgram;
+	private ProgramInfoDto CurrentProgram;
 	public final ProgramInfoDto getCurrentProgram()
 	{
-		return privateCurrentProgram;
+		return CurrentProgram;
 	}
 	public final void setCurrentProgram(ProgramInfoDto value)
 	{
-		privateCurrentProgram = value;
+		CurrentProgram = value;
 	}
 
 	/** 
@@ -212,14 +212,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The primary image aspect ratio.</value>
 	*/
-	private Double privatePrimaryImageAspectRatio = null;
+	private Double PrimaryImageAspectRatio = null;
 	public final Double getPrimaryImageAspectRatio()
 	{
-		return privatePrimaryImageAspectRatio;
+		return PrimaryImageAspectRatio;
 	}
 	public final void setPrimaryImageAspectRatio(Double value)
 	{
-		privatePrimaryImageAspectRatio = value;
+		PrimaryImageAspectRatio = value;
 	}
 
 	/** 
@@ -227,14 +227,14 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The original primary image aspect ratio.</value>
 	*/
-	private Double privateOriginalPrimaryImageAspectRatio = null;
+	private Double OriginalPrimaryImageAspectRatio = null;
 	public final Double getOriginalPrimaryImageAspectRatio()
 	{
-		return privateOriginalPrimaryImageAspectRatio;
+		return OriginalPrimaryImageAspectRatio;
 	}
 	public final void setOriginalPrimaryImageAspectRatio(Double value)
 	{
-		privateOriginalPrimaryImageAspectRatio = value;
+		OriginalPrimaryImageAspectRatio = value;
 	}
 
 	/** 

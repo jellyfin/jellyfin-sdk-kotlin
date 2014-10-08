@@ -130,7 +130,7 @@ public abstract class BaseApiClient implements IDisposable
 	{
 		return privateServerAddress;
 	}
-	private void setServerAddress(String value)
+	protected void setServerAddress(String value)
 	{
 		privateServerAddress = value;
 	}

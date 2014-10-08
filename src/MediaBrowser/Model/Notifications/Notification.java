@@ -2,83 +2,83 @@ package MediaBrowser.Model.Notifications;
 
 public class Notification
 {
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
-	private java.util.Date privateDate = new java.util.Date(0);
+	private java.util.Date Date = new java.util.Date(0);
 	public final java.util.Date getDate()
 	{
-		return privateDate;
+		return Date;
 	}
 	public final void setDate(java.util.Date value)
 	{
-		privateDate = value;
+		Date = value;
 	}
 
-	private boolean privateIsRead;
+	private boolean IsRead;
 	public final boolean getIsRead()
 	{
-		return privateIsRead;
+		return IsRead;
 	}
 	public final void setIsRead(boolean value)
 	{
-		privateIsRead = value;
+		IsRead = value;
 	}
 
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
-	private String privateDescription;
+	private String Description;
 	public final String getDescription()
 	{
-		return privateDescription;
+		return Description;
 	}
 	public final void setDescription(String value)
 	{
-		privateDescription = value;
+		Description = value;
 	}
 
-	private String privateUrl;
+	private String Url;
 	public final String getUrl()
 	{
-		return privateUrl;
+		return Url;
 	}
 	public final void setUrl(String value)
 	{
-		privateUrl = value;
+		Url = value;
 	}
 
-	private NotificationLevel privateLevel = NotificationLevel.values()[0];
+	private NotificationLevel Level = NotificationLevel.values()[0];
 	public final NotificationLevel getLevel()
 	{
-		return privateLevel;
+		return Level;
 	}
 	public final void setLevel(NotificationLevel value)
 	{
-		privateLevel = value;
+		Level = value;
 	}
 }

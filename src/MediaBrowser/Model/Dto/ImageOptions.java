@@ -13,14 +13,14 @@ public class ImageOptions
 	 
 	 <value>The type of the image.</value>
 	*/
-	private ImageType privateImageType = getImageType().values()[0];
+	private ImageType ImageType = getImageType().values()[0];
 	public final ImageType getImageType()
 	{
-		return privateImageType;
+		return ImageType;
 	}
 	public final void setImageType(ImageType value)
 	{
-		privateImageType = value;
+		ImageType = value;
 	}
 
 	/** 
@@ -28,14 +28,14 @@ public class ImageOptions
 	 
 	 <value>The index of the image.</value>
 	*/
-	private Integer privateImageIndex = null;
+	private Integer ImageIndex = null;
 	public final Integer getImageIndex()
 	{
-		return privateImageIndex;
+		return ImageIndex;
 	}
 	public final void setImageIndex(Integer value)
 	{
-		privateImageIndex = value;
+		ImageIndex = value;
 	}
 
 	/** 
@@ -43,14 +43,14 @@ public class ImageOptions
 	 
 	 <value>The width.</value>
 	*/
-	private Integer privateWidth = null;
+	private Integer Width = null;
 	public final Integer getWidth()
 	{
-		return privateWidth;
+		return Width;
 	}
 	public final void setWidth(Integer value)
 	{
-		privateWidth = value;
+		Width = value;
 	}
 
 	/** 
@@ -58,14 +58,14 @@ public class ImageOptions
 	 
 	 <value>The height.</value>
 	*/
-	private Integer privateHeight = null;
+	private Integer Height = null;
 	public final Integer getHeight()
 	{
-		return privateHeight;
+		return Height;
 	}
 	public final void setHeight(Integer value)
 	{
-		privateHeight = value;
+		Height = value;
 	}
 
 	/** 
@@ -73,14 +73,14 @@ public class ImageOptions
 	 
 	 <value>The width of the max.</value>
 	*/
-	private Integer privateMaxWidth = null;
+	private Integer MaxWidth = null;
 	public final Integer getMaxWidth()
 	{
-		return privateMaxWidth;
+		return MaxWidth;
 	}
 	public final void setMaxWidth(Integer value)
 	{
-		privateMaxWidth = value;
+		MaxWidth = value;
 	}
 
 	/** 
@@ -88,14 +88,14 @@ public class ImageOptions
 	 
 	 <value>The height of the max.</value>
 	*/
-	private Integer privateMaxHeight = null;
+	private Integer MaxHeight = null;
 	public final Integer getMaxHeight()
 	{
-		return privateMaxHeight;
+		return MaxHeight;
 	}
 	public final void setMaxHeight(Integer value)
 	{
-		privateMaxHeight = value;
+		MaxHeight = value;
 	}
 
 	/** 
@@ -103,14 +103,14 @@ public class ImageOptions
 	 
 	 <value>The quality.</value>
 	*/
-	private Integer privateQuality = null;
+	private Integer Quality = null;
 	public final Integer getQuality()
 	{
-		return privateQuality;
+		return Quality;
 	}
 	public final void setQuality(Integer value)
 	{
-		privateQuality = value;
+		Quality = value;
 	}
 
 	/** 
@@ -119,14 +119,14 @@ public class ImageOptions
 	 
 	 <value>The hash.</value>
 	*/
-	private String privateTag;
+	private String Tag;
 	public final String getTag()
 	{
-		return privateTag;
+		return Tag;
 	}
 	public final void setTag(String value)
 	{
-		privateTag = value;
+		Tag = value;
 	}
 
 	/** 
@@ -134,14 +134,14 @@ public class ImageOptions
 	 
 	 <value><c>null</c> if [crop whitespace] contains no value, <c>true</c> if [crop whitespace]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateCropWhitespace = null;
+	private Boolean CropWhitespace = null;
 	public final Boolean getCropWhitespace()
 	{
-		return privateCropWhitespace;
+		return CropWhitespace;
 	}
 	public final void setCropWhitespace(Boolean value)
 	{
-		privateCropWhitespace = value;
+		CropWhitespace = value;
 	}
 
 	/** 
@@ -149,14 +149,14 @@ public class ImageOptions
 	 
 	 <value><c>true</c> if [enable image enhancers]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateEnableImageEnhancers;
+	private boolean EnableImageEnhancers;
 	public final boolean getEnableImageEnhancers()
 	{
-		return privateEnableImageEnhancers;
+		return EnableImageEnhancers;
 	}
 	public final void setEnableImageEnhancers(boolean value)
 	{
-		privateEnableImageEnhancers = value;
+		EnableImageEnhancers = value;
 	}
 
 	/** 
@@ -164,14 +164,14 @@ public class ImageOptions
 	 
 	 <value>The format.</value>
 	*/
-	private ImageOutputFormat privateFormat = ImageOutputFormat.values()[0];
+	private ImageOutputFormat Format = ImageOutputFormat.values()[0];
 	public final ImageOutputFormat getFormat()
 	{
-		return privateFormat;
+		return Format;
 	}
 	public final void setFormat(ImageOutputFormat value)
 	{
-		privateFormat = value;
+		Format = value;
 	}
 
 	/** 
@@ -179,14 +179,14 @@ public class ImageOptions
 	 
 	 <value><c>true</c> if [add played indicator]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateAddPlayedIndicator;
+	private boolean AddPlayedIndicator;
 	public final boolean getAddPlayedIndicator()
 	{
-		return privateAddPlayedIndicator;
+		return AddPlayedIndicator;
 	}
 	public final void setAddPlayedIndicator(boolean value)
 	{
-		privateAddPlayedIndicator = value;
+		AddPlayedIndicator = value;
 	}
 
 	/** 
@@ -194,14 +194,14 @@ public class ImageOptions
 	 
 	 <value>The percent played.</value>
 	*/
-	private Integer privatePercentPlayed = null;
+	private Integer PercentPlayed = null;
 	public final Integer getPercentPlayed()
 	{
-		return privatePercentPlayed;
+		return PercentPlayed;
 	}
 	public final void setPercentPlayed(Integer value)
 	{
-		privatePercentPlayed = value;
+		PercentPlayed = value;
 	}
 
 	/** 
@@ -209,14 +209,14 @@ public class ImageOptions
 	 
 	 <value>The color of the background.</value>
 	*/
-	private String privateBackgroundColor;
+	private String BackgroundColor;
 	public final String getBackgroundColor()
 	{
-		return privateBackgroundColor;
+		return BackgroundColor;
 	}
 	public final void setBackgroundColor(String value)
 	{
-		privateBackgroundColor = value;
+		BackgroundColor = value;
 	}
 
 	/** 

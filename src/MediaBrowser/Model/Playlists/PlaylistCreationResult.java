@@ -2,13 +2,13 @@ package MediaBrowser.Model.Playlists;
 
 public class PlaylistCreationResult
 {
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 }

@@ -6,170 +6,170 @@ import MediaBrowser.Model.MediaInfo.*;
 
 public class MediaSourceInfo
 {
-	private MediaProtocol privateProtocol = MediaProtocol.values()[0];
+	private MediaProtocol Protocol = MediaProtocol.values()[0];
 	public final MediaProtocol getProtocol()
 	{
-		return privateProtocol;
+		return Protocol;
 	}
 	public final void setProtocol(MediaProtocol value)
 	{
-		privateProtocol = value;
+		Protocol = value;
 	}
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
-	private String privatePath;
+	private String Path;
 	public final String getPath()
 	{
-		return privatePath;
+		return Path;
 	}
 	public final void setPath(String value)
 	{
-		privatePath = value;
+		Path = value;
 	}
 
-	private MediaSourceType privateType = MediaSourceType.values()[0];
+	private MediaSourceType Type = MediaSourceType.values()[0];
 	public final MediaSourceType getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(MediaSourceType value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
-	private String privateContainer;
+	private String Container;
 	public final String getContainer()
 	{
-		return privateContainer;
+		return Container;
 	}
 	public final void setContainer(String value)
 	{
-		privateContainer = value;
+		Container = value;
 	}
-	private Long privateSize = null;
+	private Long Size = null;
 	public final Long getSize()
 	{
-		return privateSize;
+		return Size;
 	}
 	public final void setSize(Long value)
 	{
-		privateSize = value;
+		Size = value;
 	}
 
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
-	private Long privateRunTimeTicks = null;
+	private Long RunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{
-		return privateRunTimeTicks;
+		return RunTimeTicks;
 	}
 	public final void setRunTimeTicks(Long value)
 	{
-		privateRunTimeTicks = value;
+		RunTimeTicks = value;
 	}
 
-	private VideoType privateVideoType = null;
+	private VideoType VideoType = null;
 	public final VideoType getVideoType()
 	{
-		return privateVideoType;
+		return VideoType;
 	}
 	public final void setVideoType(VideoType value)
 	{
-		privateVideoType = value;
+		VideoType = value;
 	}
 
-	private IsoType privateIsoType = null;
+	private IsoType IsoType = null;
 	public final IsoType getIsoType()
 	{
-		return privateIsoType;
+		return IsoType;
 	}
 	public final void setIsoType(IsoType value)
 	{
-		privateIsoType = value;
+		IsoType = value;
 	}
 
-	private Video3DFormat privateVideo3DFormat = null;
+	private Video3DFormat Video3DFormat = null;
 	public final Video3DFormat getVideo3DFormat()
 	{
-		return privateVideo3DFormat;
+		return Video3DFormat;
 	}
 	public final void setVideo3DFormat(Video3DFormat value)
 	{
-		privateVideo3DFormat = value;
+		Video3DFormat = value;
 	}
 
-	private java.util.ArrayList<MediaStream> privateMediaStreams;
+	private java.util.ArrayList<MediaStream> MediaStreams;
 	public final java.util.ArrayList<MediaStream> getMediaStreams()
 	{
-		return privateMediaStreams;
+		return MediaStreams;
 	}
 	public final void setMediaStreams(java.util.ArrayList<MediaStream> value)
 	{
-		privateMediaStreams = value;
+		MediaStreams = value;
 	}
-	private java.util.ArrayList<String> privatePlayableStreamFileNames;
+	private java.util.ArrayList<String> PlayableStreamFileNames;
 	public final java.util.ArrayList<String> getPlayableStreamFileNames()
 	{
-		return privatePlayableStreamFileNames;
+		return PlayableStreamFileNames;
 	}
 	public final void setPlayableStreamFileNames(java.util.ArrayList<String> value)
 	{
-		privatePlayableStreamFileNames = value;
+		PlayableStreamFileNames = value;
 	}
 
-	private java.util.ArrayList<String> privateFormats;
+	private java.util.ArrayList<String> Formats;
 	public final java.util.ArrayList<String> getFormats()
 	{
-		return privateFormats;
+		return Formats;
 	}
 	public final void setFormats(java.util.ArrayList<String> value)
 	{
-		privateFormats = value;
+		Formats = value;
 	}
 
-	private Integer privateBitrate = null;
+	private Integer Bitrate = null;
 	public final Integer getBitrate()
 	{
-		return privateBitrate;
+		return Bitrate;
 	}
 	public final void setBitrate(Integer value)
 	{
-		privateBitrate = value;
+		Bitrate = value;
 	}
 
-	private TransportStreamTimestamp privateTimestamp = null;
+	private TransportStreamTimestamp Timestamp = null;
 	public final TransportStreamTimestamp getTimestamp()
 	{
-		return privateTimestamp;
+		return Timestamp;
 	}
 	public final void setTimestamp(TransportStreamTimestamp value)
 	{
-		privateTimestamp = value;
+		Timestamp = value;
 	}
-	private java.util.HashMap<String, String> privateRequiredHttpHeaders;
+	private java.util.HashMap<String, String> RequiredHttpHeaders;
 	public final java.util.HashMap<String, String> getRequiredHttpHeaders()
 	{
-		return privateRequiredHttpHeaders;
+		return RequiredHttpHeaders;
 	}
 	public final void setRequiredHttpHeaders(java.util.HashMap<String, String> value)
 	{
-		privateRequiredHttpHeaders = value;
+		RequiredHttpHeaders = value;
 	}
 
 	public MediaSourceInfo()
@@ -180,23 +180,23 @@ public class MediaSourceInfo
 		setPlayableStreamFileNames(new java.util.ArrayList<String>());
 	}
 
-	private Integer privateDefaultAudioStreamIndex = null;
+	private Integer DefaultAudioStreamIndex = null;
 	public final Integer getDefaultAudioStreamIndex()
 	{
-		return privateDefaultAudioStreamIndex;
+		return DefaultAudioStreamIndex;
 	}
 	public final void setDefaultAudioStreamIndex(Integer value)
 	{
-		privateDefaultAudioStreamIndex = value;
+		DefaultAudioStreamIndex = value;
 	}
-	private Integer privateDefaultSubtitleStreamIndex = null;
+	private Integer DefaultSubtitleStreamIndex = null;
 	public final Integer getDefaultSubtitleStreamIndex()
 	{
-		return privateDefaultSubtitleStreamIndex;
+		return DefaultSubtitleStreamIndex;
 	}
 	public final void setDefaultSubtitleStreamIndex(Integer value)
 	{
-		privateDefaultSubtitleStreamIndex = value;
+		DefaultSubtitleStreamIndex = value;
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:

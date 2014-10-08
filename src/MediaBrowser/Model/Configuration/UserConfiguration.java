@@ -10,14 +10,14 @@ public class UserConfiguration
 	 
 	 <value>The max parental rating.</value>
 	*/
-	private Integer privateMaxParentalRating;
+	private Integer MaxParentalRating;
 	public final Integer getMaxParentalRating()
 	{
-		return privateMaxParentalRating;
+		return MaxParentalRating;
 	}
 	public final void setMaxParentalRating(Integer value)
 	{
-		privateMaxParentalRating = value;
+		MaxParentalRating = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class UserConfiguration
 	 
 	 <value><c>true</c> if this instance is administrator; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsAdministrator;
+	private boolean IsAdministrator;
 	public final boolean getIsAdministrator()
 	{
-		return privateIsAdministrator;
+		return IsAdministrator;
 	}
 	public final void setIsAdministrator(boolean value)
 	{
-		privateIsAdministrator = value;
+		IsAdministrator = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class UserConfiguration
 	 
 	 <value>The audio language preference.</value>
 	*/
-	private String privateAudioLanguagePreference;
+	private String AudioLanguagePreference;
 	public final String getAudioLanguagePreference()
 	{
-		return privateAudioLanguagePreference;
+		return AudioLanguagePreference;
 	}
 	public final void setAudioLanguagePreference(String value)
 	{
-		privateAudioLanguagePreference = value;
+		AudioLanguagePreference = value;
 	}
 
 	/** 
@@ -55,14 +55,14 @@ public class UserConfiguration
 	 
 	 <value><c>true</c> if [play default audio track]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privatePlayDefaultAudioTrack;
+	private boolean PlayDefaultAudioTrack;
 	public final boolean getPlayDefaultAudioTrack()
 	{
-		return privatePlayDefaultAudioTrack;
+		return PlayDefaultAudioTrack;
 	}
 	public final void setPlayDefaultAudioTrack(boolean value)
 	{
-		privatePlayDefaultAudioTrack = value;
+		PlayDefaultAudioTrack = value;
 	}
 
 	/** 
@@ -70,14 +70,14 @@ public class UserConfiguration
 	 
 	 <value>The subtitle language preference.</value>
 	*/
-	private String privateSubtitleLanguagePreference;
+	private String SubtitleLanguagePreference;
 	public final String getSubtitleLanguagePreference()
 	{
-		return privateSubtitleLanguagePreference;
+		return SubtitleLanguagePreference;
 	}
 	public final void setSubtitleLanguagePreference(String value)
 	{
-		privateSubtitleLanguagePreference = value;
+		SubtitleLanguagePreference = value;
 	}
 
 	/** 
@@ -85,14 +85,14 @@ public class UserConfiguration
 	 
 	 <value><c>true</c> if [use forced subtitles only]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateUseForcedSubtitlesOnly;
+	private boolean UseForcedSubtitlesOnly;
 	public final boolean getUseForcedSubtitlesOnly()
 	{
-		return privateUseForcedSubtitlesOnly;
+		return UseForcedSubtitlesOnly;
 	}
 	public final void setUseForcedSubtitlesOnly(boolean value)
 	{
-		privateUseForcedSubtitlesOnly = value;
+		UseForcedSubtitlesOnly = value;
 	}
 
 	/** 
@@ -100,236 +100,236 @@ public class UserConfiguration
 	 
 	 <value><c>true</c> if this instance is hidden; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsHidden;
+	private boolean IsHidden;
 	public final boolean getIsHidden()
 	{
-		return privateIsHidden;
+		return IsHidden;
 	}
 	public final void setIsHidden(boolean value)
 	{
-		privateIsHidden = value;
+		IsHidden = value;
 	}
 
-	private boolean privateIsDisabled;
+	private boolean IsDisabled;
 	public final boolean getIsDisabled()
 	{
-		return privateIsDisabled;
+		return IsDisabled;
 	}
 	public final void setIsDisabled(boolean value)
 	{
-		privateIsDisabled = value;
+		IsDisabled = value;
 	}
 
-	private boolean privateDisplayMissingEpisodes;
+	private boolean DisplayMissingEpisodes;
 	public final boolean getDisplayMissingEpisodes()
 	{
-		return privateDisplayMissingEpisodes;
+		return DisplayMissingEpisodes;
 	}
 	public final void setDisplayMissingEpisodes(boolean value)
 	{
-		privateDisplayMissingEpisodes = value;
+		DisplayMissingEpisodes = value;
 	}
-	private boolean privateDisplayUnairedEpisodes;
+	private boolean DisplayUnairedEpisodes;
 	public final boolean getDisplayUnairedEpisodes()
 	{
-		return privateDisplayUnairedEpisodes;
+		return DisplayUnairedEpisodes;
 	}
 	public final void setDisplayUnairedEpisodes(boolean value)
 	{
-		privateDisplayUnairedEpisodes = value;
+		DisplayUnairedEpisodes = value;
 	}
-	private boolean privateEnableRemoteControlOfOtherUsers;
+	private boolean EnableRemoteControlOfOtherUsers;
 	public final boolean getEnableRemoteControlOfOtherUsers()
 	{
-		return privateEnableRemoteControlOfOtherUsers;
+		return EnableRemoteControlOfOtherUsers;
 	}
 	public final void setEnableRemoteControlOfOtherUsers(boolean value)
 	{
-		privateEnableRemoteControlOfOtherUsers = value;
+		EnableRemoteControlOfOtherUsers = value;
 	}
 
-	private boolean privateEnableLiveTvManagement;
+	private boolean EnableLiveTvManagement;
 	public final boolean getEnableLiveTvManagement()
 	{
-		return privateEnableLiveTvManagement;
+		return EnableLiveTvManagement;
 	}
 	public final void setEnableLiveTvManagement(boolean value)
 	{
-		privateEnableLiveTvManagement = value;
+		EnableLiveTvManagement = value;
 	}
-	private boolean privateEnableLiveTvAccess;
+	private boolean EnableLiveTvAccess;
 	public final boolean getEnableLiveTvAccess()
 	{
-		return privateEnableLiveTvAccess;
+		return EnableLiveTvAccess;
 	}
 	public final void setEnableLiveTvAccess(boolean value)
 	{
-		privateEnableLiveTvAccess = value;
+		EnableLiveTvAccess = value;
 	}
 
-	private boolean privateEnableMediaPlayback;
+	private boolean EnableMediaPlayback;
 	public final boolean getEnableMediaPlayback()
 	{
-		return privateEnableMediaPlayback;
+		return EnableMediaPlayback;
 	}
 	public final void setEnableMediaPlayback(boolean value)
 	{
-		privateEnableMediaPlayback = value;
+		EnableMediaPlayback = value;
 	}
-	private boolean privateEnableContentDeletion;
+	private boolean EnableContentDeletion;
 	public final boolean getEnableContentDeletion()
 	{
-		return privateEnableContentDeletion;
+		return EnableContentDeletion;
 	}
 	public final void setEnableContentDeletion(boolean value)
 	{
-		privateEnableContentDeletion = value;
+		EnableContentDeletion = value;
 	}
 
-	private boolean privateGroupMoviesIntoBoxSets;
+	private boolean GroupMoviesIntoBoxSets;
 	public final boolean getGroupMoviesIntoBoxSets()
 	{
-		return privateGroupMoviesIntoBoxSets;
+		return GroupMoviesIntoBoxSets;
 	}
 	public final void setGroupMoviesIntoBoxSets(boolean value)
 	{
-		privateGroupMoviesIntoBoxSets = value;
+		GroupMoviesIntoBoxSets = value;
 	}
 
-	private String[] privateBlockedMediaFolders;
+	private String[] BlockedMediaFolders;
 	public final String[] getBlockedMediaFolders()
 	{
-		return privateBlockedMediaFolders;
+		return BlockedMediaFolders;
 	}
 	public final void setBlockedMediaFolders(String[] value)
 	{
-		privateBlockedMediaFolders = value;
+		BlockedMediaFolders = value;
 	}
-	private String[] privateBlockedChannels;
+	private String[] BlockedChannels;
 	public final String[] getBlockedChannels()
 	{
-		return privateBlockedChannels;
+		return BlockedChannels;
 	}
 	public final void setBlockedChannels(String[] value)
 	{
-		privateBlockedChannels = value;
+		BlockedChannels = value;
 	}
 
-	private String[] privateDisplayChannelsWithinViews;
+	private String[] DisplayChannelsWithinViews;
 	public final String[] getDisplayChannelsWithinViews()
 	{
-		return privateDisplayChannelsWithinViews;
+		return DisplayChannelsWithinViews;
 	}
 	public final void setDisplayChannelsWithinViews(String[] value)
 	{
-		privateDisplayChannelsWithinViews = value;
+		DisplayChannelsWithinViews = value;
 	}
 
-	private String[] privateExcludeFoldersFromGrouping;
+	private String[] ExcludeFoldersFromGrouping;
 	public final String[] getExcludeFoldersFromGrouping()
 	{
-		return privateExcludeFoldersFromGrouping;
+		return ExcludeFoldersFromGrouping;
 	}
 	public final void setExcludeFoldersFromGrouping(String[] value)
 	{
-		privateExcludeFoldersFromGrouping = value;
+		ExcludeFoldersFromGrouping = value;
 	}
 
-	private UnratedItem[] privateBlockUnratedItems;
+	private UnratedItem[] BlockUnratedItems;
 	public final UnratedItem[] getBlockUnratedItems()
 	{
-		return privateBlockUnratedItems;
+		return BlockUnratedItems;
 	}
 	public final void setBlockUnratedItems(UnratedItem[] value)
 	{
-		privateBlockUnratedItems = value;
+		BlockUnratedItems = value;
 	}
 
-	private SubtitlePlaybackMode privateSubtitleMode = SubtitlePlaybackMode.values()[0];
+	private SubtitlePlaybackMode SubtitleMode = SubtitlePlaybackMode.values()[0];
 	public final SubtitlePlaybackMode getSubtitleMode()
 	{
-		return privateSubtitleMode;
+		return SubtitleMode;
 	}
 	public final void setSubtitleMode(SubtitlePlaybackMode value)
 	{
-		privateSubtitleMode = value;
+		SubtitleMode = value;
 	}
-	private boolean privateDisplayCollectionsView;
+	private boolean DisplayCollectionsView;
 	public final boolean getDisplayCollectionsView()
 	{
-		return privateDisplayCollectionsView;
+		return DisplayCollectionsView;
 	}
 	public final void setDisplayCollectionsView(boolean value)
 	{
-		privateDisplayCollectionsView = value;
+		DisplayCollectionsView = value;
 	}
-	private boolean privateDisplayFoldersView;
+	private boolean DisplayFoldersView;
 	public final boolean getDisplayFoldersView()
 	{
-		return privateDisplayFoldersView;
+		return DisplayFoldersView;
 	}
 	public final void setDisplayFoldersView(boolean value)
 	{
-		privateDisplayFoldersView = value;
+		DisplayFoldersView = value;
 	}
 
-	private boolean privateEnableLocalPassword;
+	private boolean EnableLocalPassword;
 	public final boolean getEnableLocalPassword()
 	{
-		return privateEnableLocalPassword;
+		return EnableLocalPassword;
 	}
 	public final void setEnableLocalPassword(boolean value)
 	{
-		privateEnableLocalPassword = value;
+		EnableLocalPassword = value;
 	}
 
-	private String[] privateOrderedViews;
+	private String[] OrderedViews;
 	public final String[] getOrderedViews()
 	{
-		return privateOrderedViews;
+		return OrderedViews;
 	}
 	public final void setOrderedViews(String[] value)
 	{
-		privateOrderedViews = value;
+		OrderedViews = value;
 	}
 
-	private boolean privateSyncConnectName;
+	private boolean SyncConnectName;
 	public final boolean getSyncConnectName()
 	{
-		return privateSyncConnectName;
+		return SyncConnectName;
 	}
 	public final void setSyncConnectName(boolean value)
 	{
-		privateSyncConnectName = value;
+		SyncConnectName = value;
 	}
-	private boolean privateSyncConnectImage;
+	private boolean SyncConnectImage;
 	public final boolean getSyncConnectImage()
 	{
-		return privateSyncConnectImage;
+		return SyncConnectImage;
 	}
 	public final void setSyncConnectImage(boolean value)
 	{
-		privateSyncConnectImage = value;
+		SyncConnectImage = value;
 	}
 
-	private boolean privateIncludeTrailersInSuggestions;
+	private boolean IncludeTrailersInSuggestions;
 	public final boolean getIncludeTrailersInSuggestions()
 	{
-		return privateIncludeTrailersInSuggestions;
+		return IncludeTrailersInSuggestions;
 	}
 	public final void setIncludeTrailersInSuggestions(boolean value)
 	{
-		privateIncludeTrailersInSuggestions = value;
+		IncludeTrailersInSuggestions = value;
 	}
 
-	private boolean privateEnableCinemaMode;
+	private boolean EnableCinemaMode;
 	public final boolean getEnableCinemaMode()
 	{
-		return privateEnableCinemaMode;
+		return EnableCinemaMode;
 	}
 	public final void setEnableCinemaMode(boolean value)
 	{
-		privateEnableCinemaMode = value;
+		EnableCinemaMode = value;
 	}
 
 	/** 

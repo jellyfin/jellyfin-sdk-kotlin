@@ -7,14 +7,14 @@ public class AutoOrganizeOptions
 	 
 	 <value>The tv options.</value>
 	*/
-	private TvFileOrganizationOptions privateTvOptions;
+	private TvFileOrganizationOptions TvOptions;
 	public final TvFileOrganizationOptions getTvOptions()
 	{
-		return privateTvOptions;
+		return TvOptions;
 	}
 	public final void setTvOptions(TvFileOrganizationOptions value)
 	{
-		privateTvOptions = value;
+		TvOptions = value;
 	}
 
 	public AutoOrganizeOptions()

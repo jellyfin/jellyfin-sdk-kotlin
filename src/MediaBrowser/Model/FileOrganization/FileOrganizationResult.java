@@ -7,14 +7,14 @@ public class FileOrganizationResult
 	 
 	 <value>The result identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class FileOrganizationResult
 	 
 	 <value>The original path.</value>
 	*/
-	private String privateOriginalPath;
+	private String OriginalPath;
 	public final String getOriginalPath()
 	{
-		return privateOriginalPath;
+		return OriginalPath;
 	}
 	public final void setOriginalPath(String value)
 	{
-		privateOriginalPath = value;
+		OriginalPath = value;
 	}
 
 	/** 
@@ -37,14 +37,14 @@ public class FileOrganizationResult
 	 
 	 <value>The name of the original file.</value>
 	*/
-	private String privateOriginalFileName;
+	private String OriginalFileName;
 	public final String getOriginalFileName()
 	{
-		return privateOriginalFileName;
+		return OriginalFileName;
 	}
 	public final void setOriginalFileName(String value)
 	{
-		privateOriginalFileName = value;
+		OriginalFileName = value;
 	}
 
 	/** 
@@ -52,14 +52,14 @@ public class FileOrganizationResult
 	 
 	 <value>The name of the extracted.</value>
 	*/
-	private String privateExtractedName;
+	private String ExtractedName;
 	public final String getExtractedName()
 	{
-		return privateExtractedName;
+		return ExtractedName;
 	}
 	public final void setExtractedName(String value)
 	{
-		privateExtractedName = value;
+		ExtractedName = value;
 	}
 
 	/** 
@@ -67,14 +67,14 @@ public class FileOrganizationResult
 	 
 	 <value>The extracted year.</value>
 	*/
-	private Integer privateExtractedYear = null;
+	private Integer ExtractedYear = null;
 	public final Integer getExtractedYear()
 	{
-		return privateExtractedYear;
+		return ExtractedYear;
 	}
 	public final void setExtractedYear(Integer value)
 	{
-		privateExtractedYear = value;
+		ExtractedYear = value;
 	}
 
 	/** 
@@ -82,14 +82,14 @@ public class FileOrganizationResult
 	 
 	 <value>The extracted season number.</value>
 	*/
-	private Integer privateExtractedSeasonNumber = null;
+	private Integer ExtractedSeasonNumber = null;
 	public final Integer getExtractedSeasonNumber()
 	{
-		return privateExtractedSeasonNumber;
+		return ExtractedSeasonNumber;
 	}
 	public final void setExtractedSeasonNumber(Integer value)
 	{
-		privateExtractedSeasonNumber = value;
+		ExtractedSeasonNumber = value;
 	}
 
 	/** 
@@ -97,14 +97,14 @@ public class FileOrganizationResult
 	 
 	 <value>The extracted episode number.</value>
 	*/
-	private Integer privateExtractedEpisodeNumber = null;
+	private Integer ExtractedEpisodeNumber = null;
 	public final Integer getExtractedEpisodeNumber()
 	{
-		return privateExtractedEpisodeNumber;
+		return ExtractedEpisodeNumber;
 	}
 	public final void setExtractedEpisodeNumber(Integer value)
 	{
-		privateExtractedEpisodeNumber = value;
+		ExtractedEpisodeNumber = value;
 	}
 
 	/** 
@@ -112,14 +112,14 @@ public class FileOrganizationResult
 	 
 	 <value>The extracted ending episode number.</value>
 	*/
-	private Integer privateExtractedEndingEpisodeNumber = null;
+	private Integer ExtractedEndingEpisodeNumber = null;
 	public final Integer getExtractedEndingEpisodeNumber()
 	{
-		return privateExtractedEndingEpisodeNumber;
+		return ExtractedEndingEpisodeNumber;
 	}
 	public final void setExtractedEndingEpisodeNumber(Integer value)
 	{
-		privateExtractedEndingEpisodeNumber = value;
+		ExtractedEndingEpisodeNumber = value;
 	}
 
 	/** 
@@ -127,14 +127,14 @@ public class FileOrganizationResult
 	 
 	 <value>The target path.</value>
 	*/
-	private String privateTargetPath;
+	private String TargetPath;
 	public final String getTargetPath()
 	{
-		return privateTargetPath;
+		return TargetPath;
 	}
 	public final void setTargetPath(String value)
 	{
-		privateTargetPath = value;
+		TargetPath = value;
 	}
 
 	/** 
@@ -142,14 +142,14 @@ public class FileOrganizationResult
 	 
 	 <value>The date.</value>
 	*/
-	private java.util.Date privateDate = new java.util.Date(0);
+	private java.util.Date Date = new java.util.Date(0);
 	public final java.util.Date getDate()
 	{
-		return privateDate;
+		return Date;
 	}
 	public final void setDate(java.util.Date value)
 	{
-		privateDate = value;
+		Date = value;
 	}
 
 	/** 
@@ -157,14 +157,14 @@ public class FileOrganizationResult
 	 
 	 <value>The error message.</value>
 	*/
-	private String privateStatusMessage;
+	private String StatusMessage;
 	public final String getStatusMessage()
 	{
-		return privateStatusMessage;
+		return StatusMessage;
 	}
 	public final void setStatusMessage(String value)
 	{
-		privateStatusMessage = value;
+		StatusMessage = value;
 	}
 
 	/** 
@@ -172,14 +172,14 @@ public class FileOrganizationResult
 	 
 	 <value>The status.</value>
 	*/
-	private FileSortingStatus privateStatus = FileSortingStatus.values()[0];
+	private FileSortingStatus Status = FileSortingStatus.values()[0];
 	public final FileSortingStatus getStatus()
 	{
-		return privateStatus;
+		return Status;
 	}
 	public final void setStatus(FileSortingStatus value)
 	{
-		privateStatus = value;
+		Status = value;
 	}
 
 	/** 
@@ -187,14 +187,14 @@ public class FileOrganizationResult
 	 
 	 <value>The type.</value>
 	*/
-	private FileOrganizerType privateType = FileOrganizerType.values()[0];
+	private FileOrganizerType Type = FileOrganizerType.values()[0];
 	public final FileOrganizerType getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(FileOrganizerType value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
 	/** 
@@ -202,14 +202,14 @@ public class FileOrganizationResult
 	 
 	 <value>The duplicate paths.</value>
 	*/
-	private java.util.ArrayList<String> privateDuplicatePaths;
+	private java.util.ArrayList<String> DuplicatePaths;
 	public final java.util.ArrayList<String> getDuplicatePaths()
 	{
-		return privateDuplicatePaths;
+		return DuplicatePaths;
 	}
 	public final void setDuplicatePaths(java.util.ArrayList<String> value)
 	{
-		privateDuplicatePaths = value;
+		DuplicatePaths = value;
 	}
 
 	/** 
@@ -217,14 +217,14 @@ public class FileOrganizationResult
 	 
 	 <value>The size of the file.</value>
 	*/
-	private long privateFileSize;
+	private long FileSize;
 	public final long getFileSize()
 	{
-		return privateFileSize;
+		return FileSize;
 	}
 	public final void setFileSize(long value)
 	{
-		privateFileSize = value;
+		FileSize = value;
 	}
 
 	public FileOrganizationResult()

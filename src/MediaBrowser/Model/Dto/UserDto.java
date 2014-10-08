@@ -16,14 +16,14 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -31,42 +31,42 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The name of the connect user.</value>
 	*/
-	private String privateConnectUserName;
+	private String ConnectUserName;
 	public final String getConnectUserName()
 	{
-		return privateConnectUserName;
+		return ConnectUserName;
 	}
 	public final void setConnectUserName(String value)
 	{
-		privateConnectUserName = value;
+		ConnectUserName = value;
 	}
 	/** 
 	 Gets or sets the connect user identifier.
 	 
 	 <value>The connect user identifier.</value>
 	*/
-	private String privateConnectUserId;
+	private String ConnectUserId;
 	public final String getConnectUserId()
 	{
-		return privateConnectUserId;
+		return ConnectUserId;
 	}
 	public final void setConnectUserId(String value)
 	{
-		privateConnectUserId = value;
+		ConnectUserId = value;
 	}
 	/** 
 	 Gets or sets the type of the connect link.
 	 
 	 <value>The type of the connect link.</value>
 	*/
-	private UserLinkType privateConnectLinkType = UserLinkType.values()[0];
+	private UserLinkType ConnectLinkType = UserLinkType.values()[0];
 	public final UserLinkType getConnectLinkType()
 	{
-		return privateConnectLinkType;
+		return ConnectLinkType;
 	}
 	public final void setConnectLinkType(UserLinkType value)
 	{
-		privateConnectLinkType = value;
+		ConnectLinkType = value;
 	}
 
 	/** 
@@ -74,14 +74,14 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The id.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -89,14 +89,14 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The primary image tag.</value>
 	*/
-	private String privatePrimaryImageTag;
+	private String PrimaryImageTag;
 	public final String getPrimaryImageTag()
 	{
-		return privatePrimaryImageTag;
+		return PrimaryImageTag;
 	}
 	public final void setPrimaryImageTag(String value)
 	{
-		privatePrimaryImageTag = value;
+		PrimaryImageTag = value;
 	}
 
 	/** 
@@ -104,24 +104,24 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value><c>true</c> if this instance has password; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateHasPassword;
+	private boolean HasPassword;
 	public final boolean getHasPassword()
 	{
-		return privateHasPassword;
+		return HasPassword;
 	}
 	public final void setHasPassword(boolean value)
 	{
-		privateHasPassword = value;
+		HasPassword = value;
 	}
 
-	private boolean privateHasConfiguredPassword;
+	private boolean HasConfiguredPassword;
 	public final boolean getHasConfiguredPassword()
 	{
-		return privateHasConfiguredPassword;
+		return HasConfiguredPassword;
 	}
 	public final void setHasConfiguredPassword(boolean value)
 	{
-		privateHasConfiguredPassword = value;
+		HasConfiguredPassword = value;
 	}
 
 	/** 
@@ -129,14 +129,14 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The last login date.</value>
 	*/
-	private java.util.Date privateLastLoginDate = null;
+	private java.util.Date LastLoginDate = null;
 	public final java.util.Date getLastLoginDate()
 	{
-		return privateLastLoginDate;
+		return LastLoginDate;
 	}
 	public final void setLastLoginDate(java.util.Date value)
 	{
-		privateLastLoginDate = value;
+		LastLoginDate = value;
 	}
 
 	/** 
@@ -144,14 +144,14 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The last activity date.</value>
 	*/
-	private java.util.Date privateLastActivityDate = null;
+	private java.util.Date LastActivityDate = null;
 	public final java.util.Date getLastActivityDate()
 	{
-		return privateLastActivityDate;
+		return LastActivityDate;
 	}
 	public final void setLastActivityDate(java.util.Date value)
 	{
-		privateLastActivityDate = value;
+		LastActivityDate = value;
 	}
 
 	/** 
@@ -159,14 +159,14 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The configuration.</value>
 	*/
-	private UserConfiguration privateConfiguration;
+	private UserConfiguration Configuration;
 	public final UserConfiguration getConfiguration()
 	{
-		return privateConfiguration;
+		return Configuration;
 	}
 	public final void setConfiguration(UserConfiguration value)
 	{
-		privateConfiguration = value;
+		Configuration = value;
 	}
 
 	/** 
@@ -174,14 +174,14 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The primary image aspect ratio.</value>
 	*/
-	private Double privatePrimaryImageAspectRatio = null;
+	private Double PrimaryImageAspectRatio = null;
 	public final Double getPrimaryImageAspectRatio()
 	{
-		return privatePrimaryImageAspectRatio;
+		return PrimaryImageAspectRatio;
 	}
 	public final void setPrimaryImageAspectRatio(Double value)
 	{
-		privatePrimaryImageAspectRatio = value;
+		PrimaryImageAspectRatio = value;
 	}
 
 	/** 
@@ -189,14 +189,14 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The original primary image aspect ratio.</value>
 	*/
-	private Double privateOriginalPrimaryImageAspectRatio = null;
+	private Double OriginalPrimaryImageAspectRatio = null;
 	public final Double getOriginalPrimaryImageAspectRatio()
 	{
-		return privateOriginalPrimaryImageAspectRatio;
+		return OriginalPrimaryImageAspectRatio;
 	}
 	public final void setOriginalPrimaryImageAspectRatio(Double value)
 	{
-		privateOriginalPrimaryImageAspectRatio = value;
+		OriginalPrimaryImageAspectRatio = value;
 	}
 
 	/** 

@@ -12,14 +12,14 @@ public class ItemsResult
 	 
 	 <value>The items.</value>
 	*/
-	private BaseItemDto[] privateItems;
+	private BaseItemDto[] Items;
 	public final BaseItemDto[] getItems()
 	{
-		return privateItems;
+		return Items;
 	}
 	public final void setItems(BaseItemDto[] value)
 	{
-		privateItems = value;
+		Items = value;
 	}
 
 	/** 
@@ -27,14 +27,14 @@ public class ItemsResult
 	 
 	 <value>The total record count.</value>
 	*/
-	private int privateTotalRecordCount;
+	private int TotalRecordCount;
 	public final int getTotalRecordCount()
 	{
-		return privateTotalRecordCount;
+		return TotalRecordCount;
 	}
 	public final void setTotalRecordCount(int value)
 	{
-		privateTotalRecordCount = value;
+		TotalRecordCount = value;
 	}
 
 	/** 

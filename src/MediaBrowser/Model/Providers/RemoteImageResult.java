@@ -10,14 +10,14 @@ public class RemoteImageResult
 	 
 	 <value>The images.</value>
 	*/
-	private java.util.ArrayList<RemoteImageInfo> privateImages;
+	private java.util.ArrayList<RemoteImageInfo> Images;
 	public final java.util.ArrayList<RemoteImageInfo> getImages()
 	{
-		return privateImages;
+		return Images;
 	}
 	public final void setImages(java.util.ArrayList<RemoteImageInfo> value)
 	{
-		privateImages = value;
+		Images = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class RemoteImageResult
 	 
 	 <value>The total record count.</value>
 	*/
-	private int privateTotalRecordCount;
+	private int TotalRecordCount;
 	public final int getTotalRecordCount()
 	{
-		return privateTotalRecordCount;
+		return TotalRecordCount;
 	}
 	public final void setTotalRecordCount(int value)
 	{
-		privateTotalRecordCount = value;
+		TotalRecordCount = value;
 	}
 
 	/** 
@@ -40,13 +40,13 @@ public class RemoteImageResult
 	 
 	 <value>The providers.</value>
 	*/
-	private java.util.ArrayList<String> privateProviders;
+	private java.util.ArrayList<String> Providers;
 	public final java.util.ArrayList<String> getProviders()
 	{
-		return privateProviders;
+		return Providers;
 	}
 	public final void setProviders(java.util.ArrayList<String> value)
 	{
-		privateProviders = value;
+		Providers = value;
 	}
 }

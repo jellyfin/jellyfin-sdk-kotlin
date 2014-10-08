@@ -10,27 +10,27 @@ public class SessionUserInfo
 	 
 	 <value>The user identifier.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 	/** 
 	 Gets or sets the name of the user.
 	 
 	 <value>The name of the user.</value>
 	*/
-	private String privateUserName;
+	private String UserName;
 	public final String getUserName()
 	{
-		return privateUserName;
+		return UserName;
 	}
 	public final void setUserName(String value)
 	{
-		privateUserName = value;
+		UserName = value;
 	}
 }

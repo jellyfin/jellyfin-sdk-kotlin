@@ -10,14 +10,14 @@ public class RecordingQuery
 	 
 	 <value>The channel identifier.</value>
 	*/
-	private String privateChannelId;
+	private String ChannelId;
 	public final String getChannelId()
 	{
-		return privateChannelId;
+		return ChannelId;
 	}
 	public final void setChannelId(String value)
 	{
-		privateChannelId = value;
+		ChannelId = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class RecordingQuery
 	 
 	 <value>The user identifier.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class RecordingQuery
 	 
 	 <value>The identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -55,14 +55,14 @@ public class RecordingQuery
 	 
 	 <value>The group identifier.</value>
 	*/
-	private String privateGroupId;
+	private String GroupId;
 	public final String getGroupId()
 	{
-		return privateGroupId;
+		return GroupId;
 	}
 	public final void setGroupId(String value)
 	{
-		privateGroupId = value;
+		GroupId = value;
 	}
 
 	/** 
@@ -70,14 +70,14 @@ public class RecordingQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex;
+	private Integer StartIndex;
 	public final Integer getStartIndex()
 	{
-		return privateStartIndex;
+		return StartIndex;
 	}
 	public final void setStartIndex(Integer value)
 	{
-		privateStartIndex = value;
+		StartIndex = value;
 	}
 
 	/** 
@@ -85,14 +85,14 @@ public class RecordingQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit;
+	private Integer Limit;
 	public final Integer getLimit()
 	{
-		return privateLimit;
+		return Limit;
 	}
 	public final void setLimit(Integer value)
 	{
-		privateLimit = value;
+		Limit = value;
 	}
 
 	/** 
@@ -100,14 +100,14 @@ public class RecordingQuery
 	 
 	 <value>The status.</value>
 	*/
-	private RecordingStatus privateStatus;
+	private RecordingStatus Status;
 	public final RecordingStatus getStatus()
 	{
-		return privateStatus;
+		return Status;
 	}
 	public final void setStatus(RecordingStatus value)
 	{
-		privateStatus = value;
+		Status = value;
 	}
 
 	/** 
@@ -115,14 +115,14 @@ public class RecordingQuery
 	 
 	 <value><c>null</c> if [is in progress] contains no value, <c>true</c> if [is in progress]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsInProgress;
+	private Boolean IsInProgress;
 	public final Boolean getIsInProgress()
 	{
-		return privateIsInProgress;
+		return IsInProgress;
 	}
 	public final void setIsInProgress(Boolean value)
 	{
-		privateIsInProgress = value;
+		IsInProgress = value;
 	}
 
 	/** 
@@ -130,13 +130,13 @@ public class RecordingQuery
 	 
 	 <value>The series timer identifier.</value>
 	*/
-	private String privateSeriesTimerId;
+	private String SeriesTimerId;
 	public final String getSeriesTimerId()
 	{
-		return privateSeriesTimerId;
+		return SeriesTimerId;
 	}
 	public final void setSeriesTimerId(String value)
 	{
-		privateSeriesTimerId = value;
+		SeriesTimerId = value;
 	}
 }

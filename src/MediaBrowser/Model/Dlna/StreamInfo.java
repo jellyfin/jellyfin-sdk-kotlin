@@ -12,279 +12,279 @@ import MediaBrowser.Model.Session.*;
 */
 public class StreamInfo
 {
-	private String privateItemId;
+	private String ItemId;
 	public final String getItemId()
 	{
-		return privateItemId;
+		return ItemId;
 	}
 	public final void setItemId(String value)
 	{
-		privateItemId = value;
+		ItemId = value;
 	}
 
-	private PlayMethod privatePlayMethod = getPlayMethod().values()[0];
+	private PlayMethod PlayMethod = getPlayMethod().values()[0];
 	public final PlayMethod getPlayMethod()
 	{
-		return privatePlayMethod;
+		return PlayMethod;
 	}
 	public final void setPlayMethod(PlayMethod value)
 	{
-		privatePlayMethod = value;
+		PlayMethod = value;
 	}
 
-	private DlnaProfileType privateMediaType = DlnaProfileType.values()[0];
+	private DlnaProfileType MediaType = DlnaProfileType.values()[0];
 	public final DlnaProfileType getMediaType()
 	{
-		return privateMediaType;
+		return MediaType;
 	}
 	public final void setMediaType(DlnaProfileType value)
 	{
-		privateMediaType = value;
+		MediaType = value;
 	}
 
-	private String privateContainer;
+	private String Container;
 	public final String getContainer()
 	{
-		return privateContainer;
+		return Container;
 	}
 	public final void setContainer(String value)
 	{
-		privateContainer = value;
+		Container = value;
 	}
 
-	private String privateProtocol;
+	private String Protocol;
 	public final String getProtocol()
 	{
-		return privateProtocol;
+		return Protocol;
 	}
 	public final void setProtocol(String value)
 	{
-		privateProtocol = value;
+		Protocol = value;
 	}
 
-	private long privateStartPositionTicks;
+	private long StartPositionTicks;
 	public final long getStartPositionTicks()
 	{
-		return privateStartPositionTicks;
+		return StartPositionTicks;
 	}
 	public final void setStartPositionTicks(long value)
 	{
-		privateStartPositionTicks = value;
+		StartPositionTicks = value;
 	}
 
-	private String privateVideoCodec;
+	private String VideoCodec;
 	public final String getVideoCodec()
 	{
-		return privateVideoCodec;
+		return VideoCodec;
 	}
 	public final void setVideoCodec(String value)
 	{
-		privateVideoCodec = value;
+		VideoCodec = value;
 	}
-	private String privateVideoProfile;
+	private String VideoProfile;
 	public final String getVideoProfile()
 	{
-		return privateVideoProfile;
+		return VideoProfile;
 	}
 	public final void setVideoProfile(String value)
 	{
-		privateVideoProfile = value;
+		VideoProfile = value;
 	}
 
-	private String privateAudioCodec;
+	private String AudioCodec;
 	public final String getAudioCodec()
 	{
-		return privateAudioCodec;
+		return AudioCodec;
 	}
 	public final void setAudioCodec(String value)
 	{
-		privateAudioCodec = value;
+		AudioCodec = value;
 	}
 
-	private Integer privateAudioStreamIndex = null;
+	private Integer AudioStreamIndex = null;
 	public final Integer getAudioStreamIndex()
 	{
-		return privateAudioStreamIndex;
+		return AudioStreamIndex;
 	}
 	public final void setAudioStreamIndex(Integer value)
 	{
-		privateAudioStreamIndex = value;
+		AudioStreamIndex = value;
 	}
 
-	private Integer privateSubtitleStreamIndex = null;
+	private Integer SubtitleStreamIndex = null;
 	public final Integer getSubtitleStreamIndex()
 	{
-		return privateSubtitleStreamIndex;
+		return SubtitleStreamIndex;
 	}
 	public final void setSubtitleStreamIndex(Integer value)
 	{
-		privateSubtitleStreamIndex = value;
+		SubtitleStreamIndex = value;
 	}
 
-	private Integer privateMaxAudioChannels = null;
+	private Integer MaxAudioChannels = null;
 	public final Integer getMaxAudioChannels()
 	{
-		return privateMaxAudioChannels;
+		return MaxAudioChannels;
 	}
 	public final void setMaxAudioChannels(Integer value)
 	{
-		privateMaxAudioChannels = value;
+		MaxAudioChannels = value;
 	}
 
-	private Integer privateAudioBitrate = null;
+	private Integer AudioBitrate = null;
 	public final Integer getAudioBitrate()
 	{
-		return privateAudioBitrate;
+		return AudioBitrate;
 	}
 	public final void setAudioBitrate(Integer value)
 	{
-		privateAudioBitrate = value;
+		AudioBitrate = value;
 	}
 
-	private Integer privateVideoBitrate = null;
+	private Integer VideoBitrate = null;
 	public final Integer getVideoBitrate()
 	{
-		return privateVideoBitrate;
+		return VideoBitrate;
 	}
 	public final void setVideoBitrate(Integer value)
 	{
-		privateVideoBitrate = value;
+		VideoBitrate = value;
 	}
 
-	private Integer privateVideoLevel = null;
+	private Integer VideoLevel = null;
 	public final Integer getVideoLevel()
 	{
-		return privateVideoLevel;
+		return VideoLevel;
 	}
 	public final void setVideoLevel(Integer value)
 	{
-		privateVideoLevel = value;
+		VideoLevel = value;
 	}
 
-	private Integer privateMaxWidth = null;
+	private Integer MaxWidth = null;
 	public final Integer getMaxWidth()
 	{
-		return privateMaxWidth;
+		return MaxWidth;
 	}
 	public final void setMaxWidth(Integer value)
 	{
-		privateMaxWidth = value;
+		MaxWidth = value;
 	}
-	private Integer privateMaxHeight = null;
+	private Integer MaxHeight = null;
 	public final Integer getMaxHeight()
 	{
-		return privateMaxHeight;
+		return MaxHeight;
 	}
 	public final void setMaxHeight(Integer value)
 	{
-		privateMaxHeight = value;
+		MaxHeight = value;
 	}
 
-	private Integer privateMaxVideoBitDepth = null;
+	private Integer MaxVideoBitDepth = null;
 	public final Integer getMaxVideoBitDepth()
 	{
-		return privateMaxVideoBitDepth;
+		return MaxVideoBitDepth;
 	}
 	public final void setMaxVideoBitDepth(Integer value)
 	{
-		privateMaxVideoBitDepth = value;
+		MaxVideoBitDepth = value;
 	}
-	private Integer privateMaxRefFrames = null;
+	private Integer MaxRefFrames = null;
 	public final Integer getMaxRefFrames()
 	{
-		return privateMaxRefFrames;
+		return MaxRefFrames;
 	}
 	public final void setMaxRefFrames(Integer value)
 	{
-		privateMaxRefFrames = value;
+		MaxRefFrames = value;
 	}
 
-	private Float privateMaxFramerate = null;
+	private Float MaxFramerate = null;
 	public final Float getMaxFramerate()
 	{
-		return privateMaxFramerate;
+		return MaxFramerate;
 	}
 	public final void setMaxFramerate(Float value)
 	{
-		privateMaxFramerate = value;
+		MaxFramerate = value;
 	}
 
-	private String privateDeviceProfileId;
+	private String DeviceProfileId;
 	public final String getDeviceProfileId()
 	{
-		return privateDeviceProfileId;
+		return DeviceProfileId;
 	}
 	public final void setDeviceProfileId(String value)
 	{
-		privateDeviceProfileId = value;
+		DeviceProfileId = value;
 	}
-	private String privateDeviceId;
+	private String DeviceId;
 	public final String getDeviceId()
 	{
-		return privateDeviceId;
+		return DeviceId;
 	}
 	public final void setDeviceId(String value)
 	{
-		privateDeviceId = value;
+		DeviceId = value;
 	}
 
-	private Long privateRunTimeTicks = null;
+	private Long RunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{
-		return privateRunTimeTicks;
+		return RunTimeTicks;
 	}
 	public final void setRunTimeTicks(Long value)
 	{
-		privateRunTimeTicks = value;
+		RunTimeTicks = value;
 	}
 
-	private TranscodeSeekInfo privateTranscodeSeekInfo = getTranscodeSeekInfo().values()[0];
+	private TranscodeSeekInfo TranscodeSeekInfo = getTranscodeSeekInfo().values()[0];
 	public final TranscodeSeekInfo getTranscodeSeekInfo()
 	{
-		return privateTranscodeSeekInfo;
+		return TranscodeSeekInfo;
 	}
 	public final void setTranscodeSeekInfo(TranscodeSeekInfo value)
 	{
-		privateTranscodeSeekInfo = value;
+		TranscodeSeekInfo = value;
 	}
 
-	private boolean privateEstimateContentLength;
+	private boolean EstimateContentLength;
 	public final boolean getEstimateContentLength()
 	{
-		return privateEstimateContentLength;
+		return EstimateContentLength;
 	}
 	public final void setEstimateContentLength(boolean value)
 	{
-		privateEstimateContentLength = value;
+		EstimateContentLength = value;
 	}
 
-	private MediaSourceInfo privateMediaSource;
+	private MediaSourceInfo MediaSource;
 	public final MediaSourceInfo getMediaSource()
 	{
-		return privateMediaSource;
+		return MediaSource;
 	}
 	public final void setMediaSource(MediaSourceInfo value)
 	{
-		privateMediaSource = value;
+		MediaSource = value;
 	}
 
-	private SubtitleDeliveryMethod privateSubtitleDeliveryMethod = getSubtitleDeliveryMethod().values()[0];
+	private SubtitleDeliveryMethod SubtitleDeliveryMethod = getSubtitleDeliveryMethod().values()[0];
 	public final SubtitleDeliveryMethod getSubtitleDeliveryMethod()
 	{
-		return privateSubtitleDeliveryMethod;
+		return SubtitleDeliveryMethod;
 	}
 	public final void setSubtitleDeliveryMethod(SubtitleDeliveryMethod value)
 	{
-		privateSubtitleDeliveryMethod = value;
+		SubtitleDeliveryMethod = value;
 	}
-	private String privateSubtitleFormat;
+	private String SubtitleFormat;
 	public final String getSubtitleFormat()
 	{
-		return privateSubtitleFormat;
+		return SubtitleFormat;
 	}
 	public final void setSubtitleFormat(String value)
 	{
-		privateSubtitleFormat = value;
+		SubtitleFormat = value;
 	}
 
 	public final String getMediaSourceId()
@@ -342,7 +342,7 @@ public class StreamInfo
 		String tempVar3 = item.getMediaSourceId();
 		String tempVar4 = item.getVideoCodec();
 		String tempVar5 = item.getAudioCodec();
-		java.util.ArrayList<String> list = new java.util.ArrayList<String>(java.util.Arrays.asList(new String[] {(tempVar != null) ? tempVar : "", (tempVar2 != null) ? tempVar2 : "", (tempVar3 != null) ? tempVar3 : "", (new Boolean(item.getIsDirectStream())).toString().toLowerCase(), (tempVar4 != null) ? tempVar4 : "", (tempVar5 != null) ? tempVar5 : "", item.getAudioStreamIndex() != null ? StringHelper.ToStringCultureInvariant(item.getAudioStreamIndex()) : "", item.getSubtitleStreamIndex() != null && item.getSubtitleDeliveryMethod() != SubtitleDeliveryMethod.External ? StringHelper.ToStringCultureInvariant(item.getSubtitleStreamIndex()) : "", item.getVideoBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getVideoBitrate()) : "", item.getAudioBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getAudioBitrate()) : "", item.getMaxAudioChannels() != null ? StringHelper.ToStringCultureInvariant(item.getMaxAudioChannels()) : "", item.getMaxFramerate() != null ? StringHelper.ToStringCultureInvariant(item.getMaxFramerate()) : "", item.getMaxWidth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxWidth()) : "", item.getMaxHeight() != null ? StringHelper.ToStringCultureInvariant(item.getMaxHeight()) : "", StringHelper.ToStringCultureInvariant(item.getStartPositionTicks()), item.getVideoLevel() != null ? StringHelper.ToStringCultureInvariant(item.getVideoLevel()) : ""}));
+		java.util.ArrayList<String> list = new java.util.ArrayList<String>(java.util.Arrays.asList(new String[] {(tempVar != null) ? tempVar : "", (tempVar2 != null) ? tempVar2 : "", (tempVar3 != null) ? tempVar3 : "", (new Boolean(item.getIsDirectStream())).toString().toLowerCase(), (tempVar4 != null) ? tempVar4 : "", (tempVar5 != null) ? tempVar5 : "", item.getAudioStreamIndex() != null ? StringHelper.ToStringCultureInvariant(item.getAudioStreamIndex()) : "", item.getSubtitleStreamIndex() != null && item.getSubtitleDeliveryMethod() != MediaBrowser.Model.Dlna.SubtitleDeliveryMethod.External ? StringHelper.ToStringCultureInvariant(item.getSubtitleStreamIndex()) : "", item.getVideoBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getVideoBitrate()) : "", item.getAudioBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getAudioBitrate()) : "", item.getMaxAudioChannels() != null ? StringHelper.ToStringCultureInvariant(item.getMaxAudioChannels()) : "", item.getMaxFramerate() != null ? StringHelper.ToStringCultureInvariant(item.getMaxFramerate()) : "", item.getMaxWidth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxWidth()) : "", item.getMaxHeight() != null ? StringHelper.ToStringCultureInvariant(item.getMaxHeight()) : "", StringHelper.ToStringCultureInvariant(item.getStartPositionTicks()), item.getVideoLevel() != null ? StringHelper.ToStringCultureInvariant(item.getVideoLevel()) : ""}));
 
         list.add(item.getIsDirectStream() ? "" : String.valueOf(new java.util.Date().getTime()));
         list.add(item.getMaxRefFrames() != null ? StringHelper.ToStringCultureInvariant(item.getMaxRefFrames()) : "");

@@ -2,58 +2,58 @@ package MediaBrowser.Model.News;
 
 public class NewsItem
 {
-	private String privateTitle;
+	private String Title;
 	public final String getTitle()
 	{
-		return privateTitle;
+		return Title;
 	}
 	public final void setTitle(String value)
 	{
-		privateTitle = value;
+		Title = value;
 	}
-	private String privateLink;
+	private String Link;
 	public final String getLink()
 	{
-		return privateLink;
+		return Link;
 	}
 	public final void setLink(String value)
 	{
-		privateLink = value;
+		Link = value;
 	}
-	private String privateDescription;
+	private String Description;
 	public final String getDescription()
 	{
-		return privateDescription;
+		return Description;
 	}
 	public final void setDescription(String value)
 	{
-		privateDescription = value;
+		Description = value;
 	}
-	private String privateDescriptionHtml;
+	private String DescriptionHtml;
 	public final String getDescriptionHtml()
 	{
-		return privateDescriptionHtml;
+		return DescriptionHtml;
 	}
 	public final void setDescriptionHtml(String value)
 	{
-		privateDescriptionHtml = value;
+		DescriptionHtml = value;
 	}
-	private String privateGuid;
+	private String Guid;
 	public final String getGuid()
 	{
-		return privateGuid;
+		return Guid;
 	}
 	public final void setGuid(String value)
 	{
-		privateGuid = value;
+		Guid = value;
 	}
-	private java.util.Date privateDate = new java.util.Date(0);
+	private java.util.Date Date = new java.util.Date(0);
 	public final java.util.Date getDate()
 	{
-		return privateDate;
+		return Date;
 	}
 	public final void setDate(java.util.Date value)
 	{
-		privateDate = value;
+		Date = value;
 	}
 }

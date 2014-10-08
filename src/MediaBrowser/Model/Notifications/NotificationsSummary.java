@@ -2,22 +2,22 @@ package MediaBrowser.Model.Notifications;
 
 public class NotificationsSummary
 {
-	private int privateUnreadCount;
+	private int UnreadCount;
 	public final int getUnreadCount()
 	{
-		return privateUnreadCount;
+		return UnreadCount;
 	}
 	public final void setUnreadCount(int value)
 	{
-		privateUnreadCount = value;
+		UnreadCount = value;
 	}
-	private NotificationLevel privateMaxUnreadNotificationLevel = NotificationLevel.values()[0];
+	private NotificationLevel MaxUnreadNotificationLevel = NotificationLevel.values()[0];
 	public final NotificationLevel getMaxUnreadNotificationLevel()
 	{
-		return privateMaxUnreadNotificationLevel;
+		return MaxUnreadNotificationLevel;
 	}
 	public final void setMaxUnreadNotificationLevel(NotificationLevel value)
 	{
-		privateMaxUnreadNotificationLevel = value;
+		MaxUnreadNotificationLevel = value;
 	}
 }

@@ -7,14 +7,14 @@ public class RecommendedProgramQuery
 	 
 	 <value>The user identifier.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class RecommendedProgramQuery
 	 
 	 <value><c>true</c> if this instance is airing; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsAiring;
+	private Boolean IsAiring;
 	public final Boolean getIsAiring()
 	{
-		return privateIsAiring;
+		return IsAiring;
 	}
 	public final void setIsAiring(Boolean value)
 	{
-		privateIsAiring = value;
+		IsAiring = value;
 	}
 
 	/** 
@@ -37,14 +37,14 @@ public class RecommendedProgramQuery
 	 
 	 <value><c>null</c> if [has aired] contains no value, <c>true</c> if [has aired]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateHasAired;
+	private Boolean HasAired;
 	public final Boolean getHasAired()
 	{
-		return privateHasAired;
+		return HasAired;
 	}
 	public final void setHasAired(Boolean value)
 	{
-		privateHasAired = value;
+		HasAired = value;
 	}
 
 	/** 
@@ -52,13 +52,13 @@ public class RecommendedProgramQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit;
+	private Integer Limit;
 	public final Integer getLimit()
 	{
-		return privateLimit;
+		return Limit;
 	}
 	public final void setLimit(Integer value)
 	{
-		privateLimit = value;
+		Limit = value;
 	}
 }

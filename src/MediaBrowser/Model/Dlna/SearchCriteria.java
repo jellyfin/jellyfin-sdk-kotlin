@@ -4,14 +4,14 @@ import MediaBrowser.Model.Extensions.*;
 
 public class SearchCriteria
 {
-	private SearchType privateSearchType = getSearchType().values()[0];
+	private SearchType SearchType = getSearchType().values()[0];
 	public final SearchType getSearchType()
 	{
-		return privateSearchType;
+		return SearchType;
 	}
 	public final void setSearchType(SearchType value)
 	{
-		privateSearchType = value;
+		SearchType = value;
 	}
 
 	public SearchCriteria(String search)

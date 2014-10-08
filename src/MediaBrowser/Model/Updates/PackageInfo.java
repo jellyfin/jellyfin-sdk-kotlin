@@ -10,14 +10,14 @@ public class PackageInfo
 	 
 	 <value>The id.</value>
 	*/
-	private int privateid;
+	private int id;
 	public final int getid()
 	{
-		return privateid;
+		return id;
 	}
 	public final void setid(int value)
 	{
-		privateid = value;
+		id = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class PackageInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privatename;
+	private String name;
 	public final String getname()
 	{
-		return privatename;
+		return name;
 	}
 	public final void setname(String value)
 	{
-		privatename = value;
+		name = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class PackageInfo
 	 
 	 <value>The short description.</value>
 	*/
-	private String privateshortDescription;
+	private String shortDescription;
 	public final String getshortDescription()
 	{
-		return privateshortDescription;
+		return shortDescription;
 	}
 	public final void setshortDescription(String value)
 	{
-		privateshortDescription = value;
+		shortDescription = value;
 	}
 
 	/** 
@@ -55,14 +55,14 @@ public class PackageInfo
 	 
 	 <value>The overview.</value>
 	*/
-	private String privateoverview;
+	private String overview;
 	public final String getoverview()
 	{
-		return privateoverview;
+		return overview;
 	}
 	public final void setoverview(String value)
 	{
-		privateoverview = value;
+		overview = value;
 	}
 
 	/** 
@@ -70,14 +70,14 @@ public class PackageInfo
 	 
 	 <value><c>true</c> if this instance is premium; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateisPremium;
+	private boolean isPremium;
 	public final boolean getisPremium()
 	{
-		return privateisPremium;
+		return isPremium;
 	}
 	public final void setisPremium(boolean value)
 	{
-		privateisPremium = value;
+		isPremium = value;
 	}
 
 	/** 
@@ -85,14 +85,14 @@ public class PackageInfo
 	 
 	 <value><c>true</c> if this instance is adult; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateadult;
+	private boolean adult;
 	public final boolean getadult()
 	{
-		return privateadult;
+		return adult;
 	}
 	public final void setadult(boolean value)
 	{
-		privateadult = value;
+		adult = value;
 	}
 
 	/** 
@@ -100,14 +100,14 @@ public class PackageInfo
 	 
 	 <value>The rich desc URL.</value>
 	*/
-	private String privaterichDescUrl;
+	private String richDescUrl;
 	public final String getrichDescUrl()
 	{
-		return privaterichDescUrl;
+		return richDescUrl;
 	}
 	public final void setrichDescUrl(String value)
 	{
-		privaterichDescUrl = value;
+		richDescUrl = value;
 	}
 
 	/** 
@@ -115,14 +115,14 @@ public class PackageInfo
 	 
 	 <value>The thumb image.</value>
 	*/
-	private String privatethumbImage;
+	private String thumbImage;
 	public final String getthumbImage()
 	{
-		return privatethumbImage;
+		return thumbImage;
 	}
 	public final void setthumbImage(String value)
 	{
-		privatethumbImage = value;
+		thumbImage = value;
 	}
 
 	/** 
@@ -130,14 +130,14 @@ public class PackageInfo
 	 
 	 <value>The preview image.</value>
 	*/
-	private String privatepreviewImage;
+	private String previewImage;
 	public final String getpreviewImage()
 	{
-		return privatepreviewImage;
+		return previewImage;
 	}
 	public final void setpreviewImage(String value)
 	{
-		privatepreviewImage = value;
+		previewImage = value;
 	}
 
 	/** 
@@ -145,14 +145,14 @@ public class PackageInfo
 	 
 	 <value>The type.</value>
 	*/
-	private PackageType privatetype = PackageType.values()[0];
+	private PackageType type = PackageType.values()[0];
 	public final PackageType gettype()
 	{
-		return privatetype;
+		return type;
 	}
 	public final void settype(PackageType value)
 	{
-		privatetype = value;
+		type = value;
 	}
 
 	/** 
@@ -160,14 +160,14 @@ public class PackageInfo
 	 
 	 <value>The target filename.</value>
 	*/
-	private String privatetargetFilename;
+	private String targetFilename;
 	public final String gettargetFilename()
 	{
-		return privatetargetFilename;
+		return targetFilename;
 	}
 	public final void settargetFilename(String value)
 	{
-		privatetargetFilename = value;
+		targetFilename = value;
 	}
 
 	/** 
@@ -175,14 +175,14 @@ public class PackageInfo
 	 
 	 <value>The owner.</value>
 	*/
-	private String privateowner;
+	private String owner;
 	public final String getowner()
 	{
-		return privateowner;
+		return owner;
 	}
 	public final void setowner(String value)
 	{
-		privateowner = value;
+		owner = value;
 	}
 
 	/** 
@@ -190,14 +190,14 @@ public class PackageInfo
 	 
 	 <value>The category.</value>
 	*/
-	private String privatecategory;
+	private String category;
 	public final String getcategory()
 	{
-		return privatecategory;
+		return category;
 	}
 	public final void setcategory(String value)
 	{
-		privatecategory = value;
+		category = value;
 	}
 
 	/** 
@@ -205,14 +205,14 @@ public class PackageInfo
 	 
 	 <value>The owner.</value>
 	*/
-	private String privatetileColor;
+	private String tileColor;
 	public final String gettileColor()
 	{
-		return privatetileColor;
+		return tileColor;
 	}
 	public final void settileColor(String value)
 	{
-		privatetileColor = value;
+		tileColor = value;
 	}
 
 	/** 
@@ -220,14 +220,14 @@ public class PackageInfo
 	 
 	 <value>The feature id.</value>
 	*/
-	private String privatefeatureId;
+	private String featureId;
 	public final String getfeatureId()
 	{
-		return privatefeatureId;
+		return featureId;
 	}
 	public final void setfeatureId(String value)
 	{
-		privatefeatureId = value;
+		featureId = value;
 	}
 
 	/** 
@@ -235,14 +235,14 @@ public class PackageInfo
 	 
 	 <value>The registration info.</value>
 	*/
-	private String privateregInfo;
+	private String regInfo;
 	public final String getregInfo()
 	{
-		return privateregInfo;
+		return regInfo;
 	}
 	public final void setregInfo(String value)
 	{
-		privateregInfo = value;
+		regInfo = value;
 	}
 
 	/** 
@@ -250,14 +250,14 @@ public class PackageInfo
 	 
 	 <value>The price.</value>
 	*/
-	private float privateprice;
+	private float price;
 	public final float getprice()
 	{
-		return privateprice;
+		return price;
 	}
 	public final void setprice(float value)
 	{
-		privateprice = value;
+		price = value;
 	}
 
 	/** 
@@ -265,14 +265,14 @@ public class PackageInfo
 	 
 	 <value>The target system.</value>
 	*/
-	private PackageTargetSystem privatetargetSystem = PackageTargetSystem.values()[0];
+	private PackageTargetSystem targetSystem = PackageTargetSystem.values()[0];
 	public final PackageTargetSystem gettargetSystem()
 	{
-		return privatetargetSystem;
+		return targetSystem;
 	}
 	public final void settargetSystem(PackageTargetSystem value)
 	{
-		privatetargetSystem = value;
+		targetSystem = value;
 	}
 
 	/** 
@@ -281,14 +281,14 @@ public class PackageInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateguid;
+	private String guid;
 	public final String getguid()
 	{
-		return privateguid;
+		return guid;
 	}
 	public final void setguid(String value)
 	{
-		privateguid = value;
+		guid = value;
 	}
 
 	/** 
@@ -296,14 +296,14 @@ public class PackageInfo
 	 
 	 <value>The total ratings.</value>
 	*/
-	private int privatetotalRatings;
+	private int totalRatings;
 	public final int gettotalRatings()
 	{
-		return privatetotalRatings;
+		return totalRatings;
 	}
 	public final void settotalRatings(int value)
 	{
-		privatetotalRatings = value;
+		totalRatings = value;
 	}
 
 	/** 
@@ -311,14 +311,14 @@ public class PackageInfo
 	 
 	 <value>The rating.</value>
 	*/
-	private float privateavgRating;
+	private float avgRating;
 	public final float getavgRating()
 	{
-		return privateavgRating;
+		return avgRating;
 	}
 	public final void setavgRating(float value)
 	{
-		privateavgRating = value;
+		avgRating = value;
 	}
 
 	/** 
@@ -326,14 +326,14 @@ public class PackageInfo
 	 
 	 <value>True if registered.</value>
 	*/
-	private boolean privateisRegistered;
+	private boolean isRegistered;
 	public final boolean getisRegistered()
 	{
-		return privateisRegistered;
+		return isRegistered;
 	}
 	public final void setisRegistered(boolean value)
 	{
-		privateisRegistered = value;
+		isRegistered = value;
 	}
 
 	/** 
@@ -341,14 +341,14 @@ public class PackageInfo
 	 
 	 <value>Expiration Date.</value>
 	*/
-	private java.util.Date privateexpDate = new java.util.Date(0);
+	private java.util.Date expDate = new java.util.Date(0);
 	public final java.util.Date getexpDate()
 	{
-		return privateexpDate;
+		return expDate;
 	}
 	public final void setexpDate(java.util.Date value)
 	{
-		privateexpDate = value;
+		expDate = value;
 	}
 
 	/** 
@@ -356,14 +356,14 @@ public class PackageInfo
 	 
 	 <value>The versions.</value>
 	*/
-	private java.util.ArrayList<PackageVersionInfo> privateversions;
+	private java.util.ArrayList<PackageVersionInfo> versions;
 	public final java.util.ArrayList<PackageVersionInfo> getversions()
 	{
-		return privateversions;
+		return versions;
 	}
 	public final void setversions(java.util.ArrayList<PackageVersionInfo> value)
 	{
-		privateversions = value;
+		versions = value;
 	}
 
 	/** 

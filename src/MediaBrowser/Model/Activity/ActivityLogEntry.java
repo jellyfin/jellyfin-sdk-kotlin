@@ -9,14 +9,14 @@ public class ActivityLogEntry
 	 
 	 <value>The identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -24,14 +24,14 @@ public class ActivityLogEntry
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -39,14 +39,14 @@ public class ActivityLogEntry
 	 
 	 <value>The overview.</value>
 	*/
-	private String privateOverview;
+	private String Overview;
 	public final String getOverview()
 	{
-		return privateOverview;
+		return Overview;
 	}
 	public final void setOverview(String value)
 	{
-		privateOverview = value;
+		Overview = value;
 	}
 
 	/** 
@@ -54,14 +54,14 @@ public class ActivityLogEntry
 	 
 	 <value>The short overview.</value>
 	*/
-	private String privateShortOverview;
+	private String ShortOverview;
 	public final String getShortOverview()
 	{
-		return privateShortOverview;
+		return ShortOverview;
 	}
 	public final void setShortOverview(String value)
 	{
-		privateShortOverview = value;
+		ShortOverview = value;
 	}
 
 	/** 
@@ -69,14 +69,14 @@ public class ActivityLogEntry
 	 
 	 <value>The type.</value>
 	*/
-	private String privateType;
+	private String Type;
 	public final String getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(String value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
 	/** 
@@ -84,14 +84,14 @@ public class ActivityLogEntry
 	 
 	 <value>The item identifier.</value>
 	*/
-	private String privateItemId;
+	private String ItemId;
 	public final String getItemId()
 	{
-		return privateItemId;
+		return ItemId;
 	}
 	public final void setItemId(String value)
 	{
-		privateItemId = value;
+		ItemId = value;
 	}
 
 	/** 
@@ -99,14 +99,14 @@ public class ActivityLogEntry
 	 
 	 <value>The date.</value>
 	*/
-	private java.util.Date privateDate = new java.util.Date(0);
+	private java.util.Date Date = new java.util.Date(0);
 	public final java.util.Date getDate()
 	{
-		return privateDate;
+		return Date;
 	}
 	public final void setDate(java.util.Date value)
 	{
-		privateDate = value;
+		Date = value;
 	}
 
 	/** 
@@ -114,14 +114,14 @@ public class ActivityLogEntry
 	 
 	 <value>The user identifier.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -129,14 +129,14 @@ public class ActivityLogEntry
 	 
 	 <value>The user primary image tag.</value>
 	*/
-	private String privateUserPrimaryImageTag;
+	private String UserPrimaryImageTag;
 	public final String getUserPrimaryImageTag()
 	{
-		return privateUserPrimaryImageTag;
+		return UserPrimaryImageTag;
 	}
 	public final void setUserPrimaryImageTag(String value)
 	{
-		privateUserPrimaryImageTag = value;
+		UserPrimaryImageTag = value;
 	}
 
 	/** 
@@ -144,13 +144,13 @@ public class ActivityLogEntry
 	 
 	 <value>The log severity.</value>
 	*/
-	private LogSeverity privateSeverity = LogSeverity.values()[0];
+	private LogSeverity Severity = LogSeverity.values()[0];
 	public final LogSeverity getSeverity()
 	{
-		return privateSeverity;
+		return Severity;
 	}
 	public final void setSeverity(LogSeverity value)
 	{
-		privateSeverity = value;
+		Severity = value;
 	}
 }

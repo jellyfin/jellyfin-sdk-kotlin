@@ -12,38 +12,38 @@ public class DeviceProfile
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlIgnore] public string Id {get;set;}
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlIgnore] public DeviceProfileType ProfileType {get;set;}
-	private DeviceProfileType privateProfileType = DeviceProfileType.values()[0];
+	private DeviceProfileType ProfileType = DeviceProfileType.values()[0];
 	public final DeviceProfileType getProfileType()
 	{
-		return privateProfileType;
+		return ProfileType;
 	}
 	public final void setProfileType(DeviceProfileType value)
 	{
-		privateProfileType = value;
+		ProfileType = value;
 	}
 
 	/** 
@@ -51,296 +51,296 @@ public class DeviceProfile
 	 
 	 <value>The identification.</value>
 	*/
-	private DeviceIdentification privateIdentification;
+	private DeviceIdentification Identification;
 	public final DeviceIdentification getIdentification()
 	{
-		return privateIdentification;
+		return Identification;
 	}
 	public final void setIdentification(DeviceIdentification value)
 	{
-		privateIdentification = value;
+		Identification = value;
 	}
 
-	private String privateFriendlyName;
+	private String FriendlyName;
 	public final String getFriendlyName()
 	{
-		return privateFriendlyName;
+		return FriendlyName;
 	}
 	public final void setFriendlyName(String value)
 	{
-		privateFriendlyName = value;
+		FriendlyName = value;
 	}
-	private String privateManufacturer;
+	private String Manufacturer;
 	public final String getManufacturer()
 	{
-		return privateManufacturer;
+		return Manufacturer;
 	}
 	public final void setManufacturer(String value)
 	{
-		privateManufacturer = value;
+		Manufacturer = value;
 	}
-	private String privateManufacturerUrl;
+	private String ManufacturerUrl;
 	public final String getManufacturerUrl()
 	{
-		return privateManufacturerUrl;
+		return ManufacturerUrl;
 	}
 	public final void setManufacturerUrl(String value)
 	{
-		privateManufacturerUrl = value;
+		ManufacturerUrl = value;
 	}
-	private String privateModelName;
+	private String ModelName;
 	public final String getModelName()
 	{
-		return privateModelName;
+		return ModelName;
 	}
 	public final void setModelName(String value)
 	{
-		privateModelName = value;
+		ModelName = value;
 	}
-	private String privateModelDescription;
+	private String ModelDescription;
 	public final String getModelDescription()
 	{
-		return privateModelDescription;
+		return ModelDescription;
 	}
 	public final void setModelDescription(String value)
 	{
-		privateModelDescription = value;
+		ModelDescription = value;
 	}
-	private String privateModelNumber;
+	private String ModelNumber;
 	public final String getModelNumber()
 	{
-		return privateModelNumber;
+		return ModelNumber;
 	}
 	public final void setModelNumber(String value)
 	{
-		privateModelNumber = value;
+		ModelNumber = value;
 	}
-	private String privateModelUrl;
+	private String ModelUrl;
 	public final String getModelUrl()
 	{
-		return privateModelUrl;
+		return ModelUrl;
 	}
 	public final void setModelUrl(String value)
 	{
-		privateModelUrl = value;
+		ModelUrl = value;
 	}
-	private String privateSerialNumber;
+	private String SerialNumber;
 	public final String getSerialNumber()
 	{
-		return privateSerialNumber;
+		return SerialNumber;
 	}
 	public final void setSerialNumber(String value)
 	{
-		privateSerialNumber = value;
+		SerialNumber = value;
 	}
-	private boolean privateIgnoreTranscodeByteRangeRequests;
+	private boolean IgnoreTranscodeByteRangeRequests;
 	public final boolean getIgnoreTranscodeByteRangeRequests()
 	{
-		return privateIgnoreTranscodeByteRangeRequests;
+		return IgnoreTranscodeByteRangeRequests;
 	}
 	public final void setIgnoreTranscodeByteRangeRequests(boolean value)
 	{
-		privateIgnoreTranscodeByteRangeRequests = value;
+		IgnoreTranscodeByteRangeRequests = value;
 	}
-	private boolean privateEnableAlbumArtInDidl;
+	private boolean EnableAlbumArtInDidl;
 	public final boolean getEnableAlbumArtInDidl()
 	{
-		return privateEnableAlbumArtInDidl;
+		return EnableAlbumArtInDidl;
 	}
 	public final void setEnableAlbumArtInDidl(boolean value)
 	{
-		privateEnableAlbumArtInDidl = value;
+		EnableAlbumArtInDidl = value;
 	}
 
-	private String privateSupportedMediaTypes;
+	private String SupportedMediaTypes;
 	public final String getSupportedMediaTypes()
 	{
-		return privateSupportedMediaTypes;
+		return SupportedMediaTypes;
 	}
 	public final void setSupportedMediaTypes(String value)
 	{
-		privateSupportedMediaTypes = value;
+		SupportedMediaTypes = value;
 	}
 
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
-	private String privateAlbumArtPn;
+	private String AlbumArtPn;
 	public final String getAlbumArtPn()
 	{
-		return privateAlbumArtPn;
+		return AlbumArtPn;
 	}
 	public final void setAlbumArtPn(String value)
 	{
-		privateAlbumArtPn = value;
+		AlbumArtPn = value;
 	}
 
-	private int privateMaxAlbumArtWidth;
+	private int MaxAlbumArtWidth;
 	public final int getMaxAlbumArtWidth()
 	{
-		return privateMaxAlbumArtWidth;
+		return MaxAlbumArtWidth;
 	}
 	public final void setMaxAlbumArtWidth(int value)
 	{
-		privateMaxAlbumArtWidth = value;
+		MaxAlbumArtWidth = value;
 	}
-	private int privateMaxAlbumArtHeight;
+	private int MaxAlbumArtHeight;
 	public final int getMaxAlbumArtHeight()
 	{
-		return privateMaxAlbumArtHeight;
+		return MaxAlbumArtHeight;
 	}
 	public final void setMaxAlbumArtHeight(int value)
 	{
-		privateMaxAlbumArtHeight = value;
+		MaxAlbumArtHeight = value;
 	}
 
-	private Integer privateMaxIconWidth = null;
+	private Integer MaxIconWidth = null;
 	public final Integer getMaxIconWidth()
 	{
-		return privateMaxIconWidth;
+		return MaxIconWidth;
 	}
 	public final void setMaxIconWidth(Integer value)
 	{
-		privateMaxIconWidth = value;
+		MaxIconWidth = value;
 	}
-	private Integer privateMaxIconHeight = null;
+	private Integer MaxIconHeight = null;
 	public final Integer getMaxIconHeight()
 	{
-		return privateMaxIconHeight;
+		return MaxIconHeight;
 	}
 	public final void setMaxIconHeight(Integer value)
 	{
-		privateMaxIconHeight = value;
+		MaxIconHeight = value;
 	}
 
-	private Integer privateMaxStreamingBitrate = null;
+	private Integer MaxStreamingBitrate = null;
 	public final Integer getMaxStreamingBitrate()
 	{
-		return privateMaxStreamingBitrate;
+		return MaxStreamingBitrate;
 	}
 	public final void setMaxStreamingBitrate(Integer value)
 	{
-		privateMaxStreamingBitrate = value;
+		MaxStreamingBitrate = value;
 	}
-	private Integer privateMaxStaticBitrate = null;
+	private Integer MaxStaticBitrate = null;
 	public final Integer getMaxStaticBitrate()
 	{
-		return privateMaxStaticBitrate;
+		return MaxStaticBitrate;
 	}
 	public final void setMaxStaticBitrate(Integer value)
 	{
-		privateMaxStaticBitrate = value;
+		MaxStaticBitrate = value;
 	}
 
-	private Integer privateMusicStreamingTranscodingBitrate = null;
+	private Integer MusicStreamingTranscodingBitrate = null;
 	public final Integer getMusicStreamingTranscodingBitrate()
 	{
-		return privateMusicStreamingTranscodingBitrate;
+		return MusicStreamingTranscodingBitrate;
 	}
 	public final void setMusicStreamingTranscodingBitrate(Integer value)
 	{
-		privateMusicStreamingTranscodingBitrate = value;
+		MusicStreamingTranscodingBitrate = value;
 	}
-	private Integer privateMusicSyncBitrate = null;
+	private Integer MusicSyncBitrate = null;
 	public final Integer getMusicSyncBitrate()
 	{
-		return privateMusicSyncBitrate;
+		return MusicSyncBitrate;
 	}
 	public final void setMusicSyncBitrate(Integer value)
 	{
-		privateMusicSyncBitrate = value;
+		MusicSyncBitrate = value;
 	}
 
 	/** 
 	 Controls the content of the X_DLNADOC element in the urn:schemas-dlna-org:device-1-0 namespace.
 	*/
-	private String privateXDlnaDoc;
+	private String XDlnaDoc;
 	public final String getXDlnaDoc()
 	{
-		return privateXDlnaDoc;
+		return XDlnaDoc;
 	}
 	public final void setXDlnaDoc(String value)
 	{
-		privateXDlnaDoc = value;
+		XDlnaDoc = value;
 	}
 	/** 
 	 Controls the content of the X_DLNACAP element in the urn:schemas-dlna-org:device-1-0 namespace.
 	*/
-	private String privateXDlnaCap;
+	private String XDlnaCap;
 	public final String getXDlnaCap()
 	{
-		return privateXDlnaCap;
+		return XDlnaCap;
 	}
 	public final void setXDlnaCap(String value)
 	{
-		privateXDlnaCap = value;
+		XDlnaCap = value;
 	}
 	/** 
 	 Controls the content of the aggregationFlags element in the urn:schemas-sonycom:av namespace.
 	*/
-	private String privateSonyAggregationFlags;
+	private String SonyAggregationFlags;
 	public final String getSonyAggregationFlags()
 	{
-		return privateSonyAggregationFlags;
+		return SonyAggregationFlags;
 	}
 	public final void setSonyAggregationFlags(String value)
 	{
-		privateSonyAggregationFlags = value;
+		SonyAggregationFlags = value;
 	}
 
-	private String privateProtocolInfo;
+	private String ProtocolInfo;
 	public final String getProtocolInfo()
 	{
-		return privateProtocolInfo;
+		return ProtocolInfo;
 	}
 	public final void setProtocolInfo(String value)
 	{
-		privateProtocolInfo = value;
+		ProtocolInfo = value;
 	}
 
-	private int privateTimelineOffsetSeconds;
+	private int TimelineOffsetSeconds;
 	public final int getTimelineOffsetSeconds()
 	{
-		return privateTimelineOffsetSeconds;
+		return TimelineOffsetSeconds;
 	}
 	public final void setTimelineOffsetSeconds(int value)
 	{
-		privateTimelineOffsetSeconds = value;
+		TimelineOffsetSeconds = value;
 	}
-	private boolean privateRequiresPlainVideoItems;
+	private boolean RequiresPlainVideoItems;
 	public final boolean getRequiresPlainVideoItems()
 	{
-		return privateRequiresPlainVideoItems;
+		return RequiresPlainVideoItems;
 	}
 	public final void setRequiresPlainVideoItems(boolean value)
 	{
-		privateRequiresPlainVideoItems = value;
+		RequiresPlainVideoItems = value;
 	}
-	private boolean privateRequiresPlainFolders;
+	private boolean RequiresPlainFolders;
 	public final boolean getRequiresPlainFolders()
 	{
-		return privateRequiresPlainFolders;
+		return RequiresPlainFolders;
 	}
 	public final void setRequiresPlainFolders(boolean value)
 	{
-		privateRequiresPlainFolders = value;
+		RequiresPlainFolders = value;
 	}
 
-	private XmlAttribute[] privateXmlRootAttributes;
+	private XmlAttribute[] XmlRootAttributes;
 	public final XmlAttribute[] getXmlRootAttributes()
 	{
-		return privateXmlRootAttributes;
+		return XmlRootAttributes;
 	}
 	public final void setXmlRootAttributes(XmlAttribute[] value)
 	{
-		privateXmlRootAttributes = value;
+		XmlRootAttributes = value;
 	}
 
 	/** 
@@ -348,14 +348,14 @@ public class DeviceProfile
 	 
 	 <value>The direct play profiles.</value>
 	*/
-	private DirectPlayProfile[] privateDirectPlayProfiles;
+	private DirectPlayProfile[] DirectPlayProfiles;
 	public final DirectPlayProfile[] getDirectPlayProfiles()
 	{
-		return privateDirectPlayProfiles;
+		return DirectPlayProfiles;
 	}
 	public final void setDirectPlayProfiles(DirectPlayProfile[] value)
 	{
-		privateDirectPlayProfiles = value;
+		DirectPlayProfiles = value;
 	}
 
 	/** 
@@ -363,53 +363,53 @@ public class DeviceProfile
 	 
 	 <value>The transcoding profiles.</value>
 	*/
-	private TranscodingProfile[] privateTranscodingProfiles;
+	private TranscodingProfile[] TranscodingProfiles;
 	public final TranscodingProfile[] getTranscodingProfiles()
 	{
-		return privateTranscodingProfiles;
+		return TranscodingProfiles;
 	}
 	public final void setTranscodingProfiles(TranscodingProfile[] value)
 	{
-		privateTranscodingProfiles = value;
+		TranscodingProfiles = value;
 	}
 
-	private ContainerProfile[] privateContainerProfiles;
+	private ContainerProfile[] ContainerProfiles;
 	public final ContainerProfile[] getContainerProfiles()
 	{
-		return privateContainerProfiles;
+		return ContainerProfiles;
 	}
 	public final void setContainerProfiles(ContainerProfile[] value)
 	{
-		privateContainerProfiles = value;
+		ContainerProfiles = value;
 	}
 
-	private CodecProfile[] privateCodecProfiles;
+	private CodecProfile[] CodecProfiles;
 	public final CodecProfile[] getCodecProfiles()
 	{
-		return privateCodecProfiles;
+		return CodecProfiles;
 	}
 	public final void setCodecProfiles(CodecProfile[] value)
 	{
-		privateCodecProfiles = value;
+		CodecProfiles = value;
 	}
-	private ResponseProfile[] privateResponseProfiles;
+	private ResponseProfile[] ResponseProfiles;
 	public final ResponseProfile[] getResponseProfiles()
 	{
-		return privateResponseProfiles;
+		return ResponseProfiles;
 	}
 	public final void setResponseProfiles(ResponseProfile[] value)
 	{
-		privateResponseProfiles = value;
+		ResponseProfiles = value;
 	}
 
-	private SubtitleProfile[] privateSubtitleProfiles;
+	private SubtitleProfile[] SubtitleProfiles;
 	public final SubtitleProfile[] getSubtitleProfiles()
 	{
-		return privateSubtitleProfiles;
+		return SubtitleProfiles;
 	}
 	public final void setSubtitleProfiles(SubtitleProfile[] value)
 	{
-		privateSubtitleProfiles = value;
+		SubtitleProfiles = value;
 	}
 
 	public DeviceProfile()

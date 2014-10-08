@@ -4,50 +4,50 @@ public class ProfileCondition
 {
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("condition")] public ProfileConditionType Condition {get;set;}
-	private ProfileConditionType privateCondition = ProfileConditionType.values()[0];
+	private ProfileConditionType Condition = ProfileConditionType.values()[0];
 	public final ProfileConditionType getCondition()
 	{
-		return privateCondition;
+		return Condition;
 	}
 	public final void setCondition(ProfileConditionType value)
 	{
-		privateCondition = value;
+		Condition = value;
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("property")] public ProfileConditionValue Property {get;set;}
-	private ProfileConditionValue privateProperty = ProfileConditionValue.values()[0];
+	private ProfileConditionValue Property = ProfileConditionValue.values()[0];
 	public final ProfileConditionValue getProperty()
 	{
-		return privateProperty;
+		return Property;
 	}
 	public final void setProperty(ProfileConditionValue value)
 	{
-		privateProperty = value;
+		Property = value;
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("value")] public string Value {get;set;}
-	private String privateValue;
+	private String Value;
 	public final String getValue()
 	{
-		return privateValue;
+		return Value;
 	}
 	public final void setValue(String value)
 	{
-		privateValue = value;
+		Value = value;
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("isRequired")] public bool IsRequired {get;set;}
-	private boolean privateIsRequired;
+	private boolean IsRequired;
 	public final boolean getIsRequired()
 	{
-		return privateIsRequired;
+		return IsRequired;
 	}
 	public final void setIsRequired(boolean value)
 	{
-		privateIsRequired = value;
+		IsRequired = value;
 	}
 
 	public ProfileCondition()

@@ -2,80 +2,80 @@ package MediaBrowser.Model.Configuration;
 
 public class ChapterOptions
 {
-	private boolean privateEnableMovieChapterImageExtraction;
+	private boolean EnableMovieChapterImageExtraction;
 	public final boolean getEnableMovieChapterImageExtraction()
 	{
-		return privateEnableMovieChapterImageExtraction;
+		return EnableMovieChapterImageExtraction;
 	}
 	public final void setEnableMovieChapterImageExtraction(boolean value)
 	{
-		privateEnableMovieChapterImageExtraction = value;
+		EnableMovieChapterImageExtraction = value;
 	}
-	private boolean privateEnableEpisodeChapterImageExtraction;
+	private boolean EnableEpisodeChapterImageExtraction;
 	public final boolean getEnableEpisodeChapterImageExtraction()
 	{
-		return privateEnableEpisodeChapterImageExtraction;
+		return EnableEpisodeChapterImageExtraction;
 	}
 	public final void setEnableEpisodeChapterImageExtraction(boolean value)
 	{
-		privateEnableEpisodeChapterImageExtraction = value;
+		EnableEpisodeChapterImageExtraction = value;
 	}
-	private boolean privateEnableOtherVideoChapterImageExtraction;
+	private boolean EnableOtherVideoChapterImageExtraction;
 	public final boolean getEnableOtherVideoChapterImageExtraction()
 	{
-		return privateEnableOtherVideoChapterImageExtraction;
+		return EnableOtherVideoChapterImageExtraction;
 	}
 	public final void setEnableOtherVideoChapterImageExtraction(boolean value)
 	{
-		privateEnableOtherVideoChapterImageExtraction = value;
+		EnableOtherVideoChapterImageExtraction = value;
 	}
 
-	private boolean privateDownloadMovieChapters;
+	private boolean DownloadMovieChapters;
 	public final boolean getDownloadMovieChapters()
 	{
-		return privateDownloadMovieChapters;
+		return DownloadMovieChapters;
 	}
 	public final void setDownloadMovieChapters(boolean value)
 	{
-		privateDownloadMovieChapters = value;
+		DownloadMovieChapters = value;
 	}
-	private boolean privateDownloadEpisodeChapters;
+	private boolean DownloadEpisodeChapters;
 	public final boolean getDownloadEpisodeChapters()
 	{
-		return privateDownloadEpisodeChapters;
+		return DownloadEpisodeChapters;
 	}
 	public final void setDownloadEpisodeChapters(boolean value)
 	{
-		privateDownloadEpisodeChapters = value;
+		DownloadEpisodeChapters = value;
 	}
 
-	private String[] privateFetcherOrder;
+	private String[] FetcherOrder;
 	public final String[] getFetcherOrder()
 	{
-		return privateFetcherOrder;
+		return FetcherOrder;
 	}
 	public final void setFetcherOrder(String[] value)
 	{
-		privateFetcherOrder = value;
+		FetcherOrder = value;
 	}
-	private String[] privateDisabledFetchers;
+	private String[] DisabledFetchers;
 	public final String[] getDisabledFetchers()
 	{
-		return privateDisabledFetchers;
+		return DisabledFetchers;
 	}
 	public final void setDisabledFetchers(String[] value)
 	{
-		privateDisabledFetchers = value;
+		DisabledFetchers = value;
 	}
 
-	private boolean privateExtractDuringLibraryScan;
+	private boolean ExtractDuringLibraryScan;
 	public final boolean getExtractDuringLibraryScan()
 	{
-		return privateExtractDuringLibraryScan;
+		return ExtractDuringLibraryScan;
 	}
 	public final void setExtractDuringLibraryScan(boolean value)
 	{
-		privateExtractDuringLibraryScan = value;
+		ExtractDuringLibraryScan = value;
 	}
 
 	public ChapterOptions()

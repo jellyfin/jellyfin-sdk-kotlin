@@ -11,14 +11,14 @@ public class SeriesTimerInfoDto extends BaseTimerInfoDto
 	 
 	 <value><c>true</c> if [record any time]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateRecordAnyTime;
+	private boolean RecordAnyTime;
 	public final boolean getRecordAnyTime()
 	{
-		return privateRecordAnyTime;
+		return RecordAnyTime;
 	}
 	public final void setRecordAnyTime(boolean value)
 	{
-		privateRecordAnyTime = value;
+		RecordAnyTime = value;
 	}
 
 	/** 
@@ -26,14 +26,14 @@ public class SeriesTimerInfoDto extends BaseTimerInfoDto
 	 
 	 <value><c>true</c> if [record any channel]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateRecordAnyChannel;
+	private boolean RecordAnyChannel;
 	public final boolean getRecordAnyChannel()
 	{
-		return privateRecordAnyChannel;
+		return RecordAnyChannel;
 	}
 	public final void setRecordAnyChannel(boolean value)
 	{
-		privateRecordAnyChannel = value;
+		RecordAnyChannel = value;
 	}
 
 	/** 
@@ -41,14 +41,14 @@ public class SeriesTimerInfoDto extends BaseTimerInfoDto
 	 
 	 <value><c>true</c> if [record new only]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateRecordNewOnly;
+	private boolean RecordNewOnly;
 	public final boolean getRecordNewOnly()
 	{
-		return privateRecordNewOnly;
+		return RecordNewOnly;
 	}
 	public final void setRecordNewOnly(boolean value)
 	{
-		privateRecordNewOnly = value;
+		RecordNewOnly = value;
 	}
 
 	/** 
@@ -56,14 +56,14 @@ public class SeriesTimerInfoDto extends BaseTimerInfoDto
 	 
 	 <value>The days.</value>
 	*/
-	private java.util.ArrayList<String> privateDays;
+	private java.util.ArrayList<String> Days;
 	public final java.util.ArrayList<String> getDays()
 	{
-		return privateDays;
+		return Days;
 	}
 	public final void setDays(java.util.ArrayList<String> value)
 	{
-		privateDays = value;
+		Days = value;
 	}
 
 	/** 
@@ -71,14 +71,14 @@ public class SeriesTimerInfoDto extends BaseTimerInfoDto
 	 
 	 <value>The day pattern.</value>
 	*/
-	private DayPattern privateDayPattern = null;
+	private DayPattern DayPattern = null;
 	public final DayPattern getDayPattern()
 	{
-		return privateDayPattern;
+		return DayPattern;
 	}
 	public final void setDayPattern(DayPattern value)
 	{
-		privateDayPattern = value;
+		DayPattern = value;
 	}
 
 	/** 
@@ -86,14 +86,14 @@ public class SeriesTimerInfoDto extends BaseTimerInfoDto
 	 
 	 <value>The image tags.</value>
 	*/
-	private java.util.HashMap<ImageType, String> privateImageTags;
+	private java.util.HashMap<ImageType, String> ImageTags;
 	public final java.util.HashMap<ImageType, String> getImageTags()
 	{
-		return privateImageTags;
+		return ImageTags;
 	}
 	public final void setImageTags(java.util.HashMap<ImageType, String> value)
 	{
-		privateImageTags = value;
+		ImageTags = value;
 	}
 
 	/** 

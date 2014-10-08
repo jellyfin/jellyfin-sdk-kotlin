@@ -2,53 +2,53 @@ package MediaBrowser.Model.Configuration;
 
 public class XbmcMetadataOptions
 {
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
-	private String privateReleaseDateFormat;
+	private String ReleaseDateFormat;
 	public final String getReleaseDateFormat()
 	{
-		return privateReleaseDateFormat;
+		return ReleaseDateFormat;
 	}
 	public final void setReleaseDateFormat(String value)
 	{
-		privateReleaseDateFormat = value;
+		ReleaseDateFormat = value;
 	}
 
-	private boolean privateSaveImagePathsInNfo;
+	private boolean SaveImagePathsInNfo;
 	public final boolean getSaveImagePathsInNfo()
 	{
-		return privateSaveImagePathsInNfo;
+		return SaveImagePathsInNfo;
 	}
 	public final void setSaveImagePathsInNfo(boolean value)
 	{
-		privateSaveImagePathsInNfo = value;
+		SaveImagePathsInNfo = value;
 	}
-	private boolean privateEnablePathSubstitution;
+	private boolean EnablePathSubstitution;
 	public final boolean getEnablePathSubstitution()
 	{
-		return privateEnablePathSubstitution;
+		return EnablePathSubstitution;
 	}
 	public final void setEnablePathSubstitution(boolean value)
 	{
-		privateEnablePathSubstitution = value;
+		EnablePathSubstitution = value;
 	}
 
-	private boolean privateEnableExtraThumbsDuplication;
+	private boolean EnableExtraThumbsDuplication;
 	public final boolean getEnableExtraThumbsDuplication()
 	{
-		return privateEnableExtraThumbsDuplication;
+		return EnableExtraThumbsDuplication;
 	}
 	public final void setEnableExtraThumbsDuplication(boolean value)
 	{
-		privateEnableExtraThumbsDuplication = value;
+		EnableExtraThumbsDuplication = value;
 	}
 
 	public XbmcMetadataOptions()

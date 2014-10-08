@@ -7,14 +7,14 @@ public class SimilarItemsByNameQuery
 	 
 	 <value>The user id.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class SimilarItemsByNameQuery
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -37,14 +37,14 @@ public class SimilarItemsByNameQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit;
+	private Integer Limit;
 	public final Integer getLimit()
 	{
-		return privateLimit;
+		return Limit;
 	}
 	public final void setLimit(Integer value)
 	{
-		privateLimit = value;
+		Limit = value;
 	}
 
 	/** 
@@ -52,13 +52,13 @@ public class SimilarItemsByNameQuery
 	 
 	 <value>The fields.</value>
 	*/
-	private ItemFields[] privateFields;
+	private ItemFields[] Fields;
 	public final ItemFields[] getFields()
 	{
-		return privateFields;
+		return Fields;
 	}
 	public final void setFields(ItemFields[] value)
 	{
-		privateFields = value;
+		Fields = value;
 	}
 }

@@ -10,7 +10,7 @@ public class ServerCredentialConfiguration {
     {
         return lastServerId;
     }
-    private void setLastServerId(String value)
+    public void setLastServerId(String value)
     {
         lastServerId = value;
     }

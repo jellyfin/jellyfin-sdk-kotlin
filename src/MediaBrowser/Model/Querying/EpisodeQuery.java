@@ -2,74 +2,74 @@ package MediaBrowser.Model.Querying;
 
 public class EpisodeQuery
 {
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
-	private String privateSeasonId;
+	private String SeasonId;
 	public final String getSeasonId()
 	{
-		return privateSeasonId;
+		return SeasonId;
 	}
 	public final void setSeasonId(String value)
 	{
-		privateSeasonId = value;
+		SeasonId = value;
 	}
 
-	private String privateSeriesId;
+	private String SeriesId;
 	public final String getSeriesId()
 	{
-		return privateSeriesId;
+		return SeriesId;
 	}
 	public final void setSeriesId(String value)
 	{
-		privateSeriesId = value;
+		SeriesId = value;
 	}
 
-	private Boolean privateIsMissing;
+	private Boolean IsMissing;
 	public final Boolean getIsMissing()
 	{
-		return privateIsMissing;
+		return IsMissing;
 	}
 	public final void setIsMissing(Boolean value)
 	{
-		privateIsMissing = value;
+		IsMissing = value;
 	}
 
-	private Boolean privateIsVirtualUnaired;
+	private Boolean IsVirtualUnaired;
 	public final Boolean getIsVirtualUnaired()
 	{
-		return privateIsVirtualUnaired;
+		return IsVirtualUnaired;
 	}
 	public final void setIsVirtualUnaired(Boolean value)
 	{
-		privateIsVirtualUnaired = value;
+		IsVirtualUnaired = value;
 	}
 
-	private Integer privateSeasonNumber;
+	private Integer SeasonNumber;
 	public final Integer getSeasonNumber()
 	{
-		return privateSeasonNumber;
+		return SeasonNumber;
 	}
 	public final void setSeasonNumber(Integer value)
 	{
-		privateSeasonNumber = value;
+		SeasonNumber = value;
 	}
 
-	private ItemFields[] privateFields;
+	private ItemFields[] Fields;
 	public final ItemFields[] getFields()
 	{
-		return privateFields;
+		return Fields;
 	}
 	public final void setFields(ItemFields[] value)
 	{
-		privateFields = value;
+		Fields = value;
 	}
 
 	public EpisodeQuery()

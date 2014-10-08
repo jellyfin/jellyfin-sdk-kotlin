@@ -7,14 +7,14 @@ public class MediaInfo
 	 
 	 <value>The media streams.</value>
 	*/
-	private java.util.ArrayList<MediaStream> privateMediaStreams;
+	private java.util.ArrayList<MediaStream> MediaStreams;
 	public final java.util.ArrayList<MediaStream> getMediaStreams()
 	{
-		return privateMediaStreams;
+		return MediaStreams;
 	}
 	public final void setMediaStreams(java.util.ArrayList<MediaStream> value)
 	{
-		privateMediaStreams = value;
+		MediaStreams = value;
 	}
 
 	/** 
@@ -22,24 +22,24 @@ public class MediaInfo
 	 
 	 <value>The format.</value>
 	*/
-	private String privateFormat;
+	private String Format;
 	public final String getFormat()
 	{
-		return privateFormat;
+		return Format;
 	}
 	public final void setFormat(String value)
 	{
-		privateFormat = value;
+		Format = value;
 	}
 
-	private Integer privateTotalBitrate = null;
+	private Integer TotalBitrate = null;
 	public final Integer getTotalBitrate()
 	{
-		return privateTotalBitrate;
+		return TotalBitrate;
 	}
 	public final void setTotalBitrate(Integer value)
 	{
-		privateTotalBitrate = value;
+		TotalBitrate = value;
 	}
 
 	public MediaInfo()

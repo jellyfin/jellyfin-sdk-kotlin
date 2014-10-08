@@ -10,14 +10,14 @@ public class CountryInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class CountryInfo
 	 
 	 <value>The display name.</value>
 	*/
-	private String privateDisplayName;
+	private String DisplayName;
 	public final String getDisplayName()
 	{
-		return privateDisplayName;
+		return DisplayName;
 	}
 	public final void setDisplayName(String value)
 	{
-		privateDisplayName = value;
+		DisplayName = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class CountryInfo
 	 
 	 <value>The name of the two letter ISO region.</value>
 	*/
-	private String privateTwoLetterISORegionName;
+	private String TwoLetterISORegionName;
 	public final String getTwoLetterISORegionName()
 	{
-		return privateTwoLetterISORegionName;
+		return TwoLetterISORegionName;
 	}
 	public final void setTwoLetterISORegionName(String value)
 	{
-		privateTwoLetterISORegionName = value;
+		TwoLetterISORegionName = value;
 	}
 
 	/** 
@@ -55,13 +55,13 @@ public class CountryInfo
 	 
 	 <value>The name of the three letter ISO region.</value>
 	*/
-	private String privateThreeLetterISORegionName;
+	private String ThreeLetterISORegionName;
 	public final String getThreeLetterISORegionName()
 	{
-		return privateThreeLetterISORegionName;
+		return ThreeLetterISORegionName;
 	}
 	public final void setThreeLetterISORegionName(String value)
 	{
-		privateThreeLetterISORegionName = value;
+		ThreeLetterISORegionName = value;
 	}
 }

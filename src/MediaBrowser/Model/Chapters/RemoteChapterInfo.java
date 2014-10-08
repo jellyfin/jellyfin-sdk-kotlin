@@ -7,14 +7,14 @@ public class RemoteChapterInfo
 	 
 	 <value>The start position ticks.</value>
 	*/
-	private long privateStartPositionTicks;
+	private long StartPositionTicks;
 	public final long getStartPositionTicks()
 	{
-		return privateStartPositionTicks;
+		return StartPositionTicks;
 	}
 	public final void setStartPositionTicks(long value)
 	{
-		privateStartPositionTicks = value;
+		StartPositionTicks = value;
 	}
 
 	/** 
@@ -22,13 +22,13 @@ public class RemoteChapterInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 }

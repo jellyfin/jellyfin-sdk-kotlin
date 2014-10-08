@@ -7,140 +7,140 @@ public class DeviceIdentification
 	 
 	 <value>The name of the friendly.</value>
 	*/
-	private String privateFriendlyName;
+	private String FriendlyName;
 	public final String getFriendlyName()
 	{
-		return privateFriendlyName;
+		return FriendlyName;
 	}
 	public final void setFriendlyName(String value)
 	{
-		privateFriendlyName = value;
+		FriendlyName = value;
 	}
 	/** 
 	 Gets or sets the model number.
 	 
 	 <value>The model number.</value>
 	*/
-	private String privateModelNumber;
+	private String ModelNumber;
 	public final String getModelNumber()
 	{
-		return privateModelNumber;
+		return ModelNumber;
 	}
 	public final void setModelNumber(String value)
 	{
-		privateModelNumber = value;
+		ModelNumber = value;
 	}
 	/** 
 	 Gets or sets the serial number.
 	 
 	 <value>The serial number.</value>
 	*/
-	private String privateSerialNumber;
+	private String SerialNumber;
 	public final String getSerialNumber()
 	{
-		return privateSerialNumber;
+		return SerialNumber;
 	}
 	public final void setSerialNumber(String value)
 	{
-		privateSerialNumber = value;
+		SerialNumber = value;
 	}
 	/** 
 	 Gets or sets the name of the model.
 	 
 	 <value>The name of the model.</value>
 	*/
-	private String privateModelName;
+	private String ModelName;
 	public final String getModelName()
 	{
-		return privateModelName;
+		return ModelName;
 	}
 	public final void setModelName(String value)
 	{
-		privateModelName = value;
+		ModelName = value;
 	}
 	/** 
 	 Gets or sets the model description.
 	 
 	 <value>The model description.</value>
 	*/
-	private String privateModelDescription;
+	private String ModelDescription;
 	public final String getModelDescription()
 	{
-		return privateModelDescription;
+		return ModelDescription;
 	}
 	public final void setModelDescription(String value)
 	{
-		privateModelDescription = value;
+		ModelDescription = value;
 	}
 	/** 
 	 Gets or sets the device description.
 	 
 	 <value>The device description.</value>
 	*/
-	private String privateDeviceDescription;
+	private String DeviceDescription;
 	public final String getDeviceDescription()
 	{
-		return privateDeviceDescription;
+		return DeviceDescription;
 	}
 	public final void setDeviceDescription(String value)
 	{
-		privateDeviceDescription = value;
+		DeviceDescription = value;
 	}
 	/** 
 	 Gets or sets the model URL.
 	 
 	 <value>The model URL.</value>
 	*/
-	private String privateModelUrl;
+	private String ModelUrl;
 	public final String getModelUrl()
 	{
-		return privateModelUrl;
+		return ModelUrl;
 	}
 	public final void setModelUrl(String value)
 	{
-		privateModelUrl = value;
+		ModelUrl = value;
 	}
 	/** 
 	 Gets or sets the manufacturer.
 	 
 	 <value>The manufacturer.</value>
 	*/
-	private String privateManufacturer;
+	private String Manufacturer;
 	public final String getManufacturer()
 	{
-		return privateManufacturer;
+		return Manufacturer;
 	}
 	public final void setManufacturer(String value)
 	{
-		privateManufacturer = value;
+		Manufacturer = value;
 	}
 	/** 
 	 Gets or sets the manufacturer URL.
 	 
 	 <value>The manufacturer URL.</value>
 	*/
-	private String privateManufacturerUrl;
+	private String ManufacturerUrl;
 	public final String getManufacturerUrl()
 	{
-		return privateManufacturerUrl;
+		return ManufacturerUrl;
 	}
 	public final void setManufacturerUrl(String value)
 	{
-		privateManufacturerUrl = value;
+		ManufacturerUrl = value;
 	}
 	/** 
 	 Gets or sets the headers.
 	 
 	 <value>The headers.</value>
 	*/
-	private HttpHeaderInfo[] privateHeaders;
+	private HttpHeaderInfo[] Headers;
 	public final HttpHeaderInfo[] getHeaders()
 	{
-		return privateHeaders;
+		return Headers;
 	}
 	public final void setHeaders(HttpHeaderInfo[] value)
 	{
-		privateHeaders = value;
+		Headers = value;
 	}
 
 	public DeviceIdentification()

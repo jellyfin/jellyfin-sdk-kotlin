@@ -7,14 +7,14 @@ public class ExternalIdInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class ExternalIdInfo
 	 
 	 <value>The key.</value>
 	*/
-	private String privateKey;
+	private String Key;
 	public final String getKey()
 	{
-		return privateKey;
+		return Key;
 	}
 	public final void setKey(String value)
 	{
-		privateKey = value;
+		Key = value;
 	}
 
 	/** 
@@ -37,13 +37,13 @@ public class ExternalIdInfo
 	 
 	 <value>The URL format string.</value>
 	*/
-	private String privateUrlFormatString;
+	private String UrlFormatString;
 	public final String getUrlFormatString()
 	{
-		return privateUrlFormatString;
+		return UrlFormatString;
 	}
 	public final void setUrlFormatString(String value)
 	{
-		privateUrlFormatString = value;
+		UrlFormatString = value;
 	}
 }

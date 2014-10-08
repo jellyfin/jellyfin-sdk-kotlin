@@ -10,14 +10,14 @@ public class ParentalRating
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -25,13 +25,13 @@ public class ParentalRating
 	 
 	 <value>The value.</value>
 	*/
-	private int privateValue;
+	private int Value;
 	public final int getValue()
 	{
-		return privateValue;
+		return Value;
 	}
 	public final void setValue(int value)
 	{
-		privateValue = value;
+		Value = value;
 	}
 }

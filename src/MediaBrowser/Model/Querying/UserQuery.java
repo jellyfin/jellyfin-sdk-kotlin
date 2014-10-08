@@ -2,22 +2,22 @@ package MediaBrowser.Model.Querying;
 
 public class UserQuery
 {
-	private Boolean privateIsHidden;
+	private Boolean IsHidden;
 	public final Boolean getIsHidden()
 	{
-		return privateIsHidden;
+		return IsHidden;
 	}
 	public final void setIsHidden(Boolean value)
 	{
-		privateIsHidden = value;
+		IsHidden = value;
 	}
-	private Boolean privateIsDisabled;
+	private Boolean IsDisabled;
 	public final Boolean getIsDisabled()
 	{
-		return privateIsDisabled;
+		return IsDisabled;
 	}
 	public final void setIsDisabled(Boolean value)
 	{
-		privateIsDisabled = value;
+		IsDisabled = value;
 	}
 }

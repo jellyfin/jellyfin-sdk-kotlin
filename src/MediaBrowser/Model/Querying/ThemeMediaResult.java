@@ -10,13 +10,13 @@ public class ThemeMediaResult extends ItemsResult
 	 
 	 <value>The owner id.</value>
 	*/
-	private String privateOwnerId;
+	private String OwnerId;
 	public final String getOwnerId()
 	{
-		return privateOwnerId;
+		return OwnerId;
 	}
 	public final void setOwnerId(String value)
 	{
-		privateOwnerId = value;
+		OwnerId = value;
 	}
 }

@@ -8,81 +8,81 @@ import MediaBrowser.Model.Extensions.*;
 */
 public class MetadataOptions
 {
-	private String privateItemType;
+	private String ItemType;
 	public final String getItemType()
 	{
-		return privateItemType;
+		return ItemType;
 	}
 	public final void setItemType(String value)
 	{
-		privateItemType = value;
+		ItemType = value;
 	}
 
-	private ImageOption[] privateImageOptions;
+	private ImageOption[] ImageOptions;
 	public final ImageOption[] getImageOptions()
 	{
-		return privateImageOptions;
+		return ImageOptions;
 	}
 	public final void setImageOptions(ImageOption[] value)
 	{
-		privateImageOptions = value;
+		ImageOptions = value;
 	}
 
-	private String[] privateDisabledMetadataSavers;
+	private String[] DisabledMetadataSavers;
 	public final String[] getDisabledMetadataSavers()
 	{
-		return privateDisabledMetadataSavers;
+		return DisabledMetadataSavers;
 	}
 	public final void setDisabledMetadataSavers(String[] value)
 	{
-		privateDisabledMetadataSavers = value;
+		DisabledMetadataSavers = value;
 	}
-	private String[] privateLocalMetadataReaderOrder;
+	private String[] LocalMetadataReaderOrder;
 	public final String[] getLocalMetadataReaderOrder()
 	{
-		return privateLocalMetadataReaderOrder;
+		return LocalMetadataReaderOrder;
 	}
 	public final void setLocalMetadataReaderOrder(String[] value)
 	{
-		privateLocalMetadataReaderOrder = value;
+		LocalMetadataReaderOrder = value;
 	}
 
-	private String[] privateDisabledMetadataFetchers;
+	private String[] DisabledMetadataFetchers;
 	public final String[] getDisabledMetadataFetchers()
 	{
-		return privateDisabledMetadataFetchers;
+		return DisabledMetadataFetchers;
 	}
 	public final void setDisabledMetadataFetchers(String[] value)
 	{
-		privateDisabledMetadataFetchers = value;
+		DisabledMetadataFetchers = value;
 	}
-	private String[] privateMetadataFetcherOrder;
+	private String[] MetadataFetcherOrder;
 	public final String[] getMetadataFetcherOrder()
 	{
-		return privateMetadataFetcherOrder;
+		return MetadataFetcherOrder;
 	}
 	public final void setMetadataFetcherOrder(String[] value)
 	{
-		privateMetadataFetcherOrder = value;
+		MetadataFetcherOrder = value;
 	}
 
-	private String[] privateDisabledImageFetchers;
+	private String[] DisabledImageFetchers;
 	public final String[] getDisabledImageFetchers()
 	{
-		return privateDisabledImageFetchers;
+		return DisabledImageFetchers;
 	}
 	public final void setDisabledImageFetchers(String[] value)
 	{
-		privateDisabledImageFetchers = value;
+		DisabledImageFetchers = value;
 	}
-	private String[] privateImageFetcherOrder;
+	private String[] ImageFetcherOrder;
 	public final String[] getImageFetcherOrder()
 	{
-		return privateImageFetcherOrder;
+		return ImageFetcherOrder;
 	}
 	public final void setImageFetcherOrder(String[] value)
 	{
-		privateImageFetcherOrder = value;
+		ImageFetcherOrder = value;
 	}
 
 	public MetadataOptions()

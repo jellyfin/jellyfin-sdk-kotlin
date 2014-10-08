@@ -4,35 +4,35 @@ public class ContainerProfile
 {
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("type")] public DlnaProfileType Type {get;set;}
-	private DlnaProfileType privateType = DlnaProfileType.values()[0];
+	private DlnaProfileType Type = DlnaProfileType.values()[0];
 	public final DlnaProfileType getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(DlnaProfileType value)
 	{
-		privateType = value;
+		Type = value;
 	}
-	private ProfileCondition[] privateConditions;
+	private ProfileCondition[] Conditions;
 	public final ProfileCondition[] getConditions()
 	{
-		return privateConditions;
+		return Conditions;
 	}
 	public final void setConditions(ProfileCondition[] value)
 	{
-		privateConditions = value;
+		Conditions = value;
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("container")] public string Container {get;set;}
-	private String privateContainer;
+	private String Container;
 	public final String getContainer()
 	{
-		return privateContainer;
+		return Container;
 	}
 	public final void setContainer(String value)
 	{
-		privateContainer = value;
+		Container = value;
 	}
 
 	public ContainerProfile()

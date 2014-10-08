@@ -4,43 +4,43 @@ import MediaBrowser.Model.Entities.*;
 
 public class RemoteImageQuery
 {
-	private String privateProviderName;
+	private String ProviderName;
 	public final String getProviderName()
 	{
-		return privateProviderName;
+		return ProviderName;
 	}
 	public final void setProviderName(String value)
 	{
-		privateProviderName = value;
+		ProviderName = value;
 	}
 
-	private ImageType privateImageType;
+	private ImageType ImageType;
 	public final ImageType getImageType()
 	{
-		return privateImageType;
+		return ImageType;
 	}
 	public final void setImageType(ImageType value)
 	{
-		privateImageType = value;
+		ImageType = value;
 	}
 
-	private boolean privateIncludeDisabledProviders;
+	private boolean IncludeDisabledProviders;
 	public final boolean getIncludeDisabledProviders()
 	{
-		return privateIncludeDisabledProviders;
+		return IncludeDisabledProviders;
 	}
 	public final void setIncludeDisabledProviders(boolean value)
 	{
-		privateIncludeDisabledProviders = value;
+		IncludeDisabledProviders = value;
 	}
 
-	private boolean privateIncludeAllLanguages;
+	private boolean IncludeAllLanguages;
 	public final boolean getIncludeAllLanguages()
 	{
-		return privateIncludeAllLanguages;
+		return IncludeAllLanguages;
 	}
 	public final void setIncludeAllLanguages(boolean value)
 	{
-		privateIncludeAllLanguages = value;
+		IncludeAllLanguages = value;
 	}
 }

@@ -2,24 +2,24 @@ package MediaBrowser.Model.Session;
 
 public class PlaystateRequest
 {
-	private PlaystateCommand privateCommand = PlaystateCommand.values()[0];
+	private PlaystateCommand Command = PlaystateCommand.values()[0];
 	public final PlaystateCommand getCommand()
 	{
-		return privateCommand;
+		return Command;
 	}
 	public final void setCommand(PlaystateCommand value)
 	{
-		privateCommand = value;
+		Command = value;
 	}
 
-	private Long privateSeekPositionTicks;
+	private Long SeekPositionTicks;
 	public final Long getSeekPositionTicks()
 	{
-		return privateSeekPositionTicks;
+		return SeekPositionTicks;
 	}
 	public final void setSeekPositionTicks(Long value)
 	{
-		privateSeekPositionTicks = value;
+		SeekPositionTicks = value;
 	}
 
 	/** 
@@ -27,13 +27,13 @@ public class PlaystateRequest
 	 
 	 <value>The controlling user identifier.</value>
 	*/
-	private String privateControllingUserId;
+	private String ControllingUserId;
 	public final String getControllingUserId()
 	{
-		return privateControllingUserId;
+		return ControllingUserId;
 	}
 	public final void setControllingUserId(String value)
 	{
-		privateControllingUserId = value;
+		ControllingUserId = value;
 	}
 }

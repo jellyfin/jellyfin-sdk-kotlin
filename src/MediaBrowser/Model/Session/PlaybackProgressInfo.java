@@ -12,14 +12,14 @@ public class PlaybackProgressInfo
 	 
 	 <value><c>true</c> if this instance can seek; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateCanSeek;
+	private boolean CanSeek;
 	public final boolean getCanSeek()
 	{
-		return privateCanSeek;
+		return CanSeek;
 	}
 	public final void setCanSeek(boolean value)
 	{
-		privateCanSeek = value;
+		CanSeek = value;
 	}
 
 	/** 
@@ -27,14 +27,14 @@ public class PlaybackProgressInfo
 	 
 	 <value>The item.</value>
 	*/
-	private BaseItemInfo privateItem;
+	private BaseItemInfo Item;
 	public final BaseItemInfo getItem()
 	{
-		return privateItem;
+		return Item;
 	}
 	public final void setItem(BaseItemInfo value)
 	{
-		privateItem = value;
+		Item = value;
 	}
 
 	/** 
@@ -42,14 +42,14 @@ public class PlaybackProgressInfo
 	 
 	 <value>The item identifier.</value>
 	*/
-	private String privateItemId;
+	private String ItemId;
 	public final String getItemId()
 	{
-		return privateItemId;
+		return ItemId;
 	}
 	public final void setItemId(String value)
 	{
-		privateItemId = value;
+		ItemId = value;
 	}
 
 	/** 
@@ -57,14 +57,14 @@ public class PlaybackProgressInfo
 	 
 	 <value>The session id.</value>
 	*/
-	private String privateSessionId;
+	private String SessionId;
 	public final String getSessionId()
 	{
-		return privateSessionId;
+		return SessionId;
 	}
 	public final void setSessionId(String value)
 	{
-		privateSessionId = value;
+		SessionId = value;
 	}
 
 	/** 
@@ -72,14 +72,14 @@ public class PlaybackProgressInfo
 	 
 	 <value>The media version identifier.</value>
 	*/
-	private String privateMediaSourceId;
+	private String MediaSourceId;
 	public final String getMediaSourceId()
 	{
-		return privateMediaSourceId;
+		return MediaSourceId;
 	}
 	public final void setMediaSourceId(String value)
 	{
-		privateMediaSourceId = value;
+		MediaSourceId = value;
 	}
 
 	/** 
@@ -87,14 +87,14 @@ public class PlaybackProgressInfo
 	 
 	 <value>The index of the audio stream.</value>
 	*/
-	private Integer privateAudioStreamIndex;
+	private Integer AudioStreamIndex;
 	public final Integer getAudioStreamIndex()
 	{
-		return privateAudioStreamIndex;
+		return AudioStreamIndex;
 	}
 	public final void setAudioStreamIndex(Integer value)
 	{
-		privateAudioStreamIndex = value;
+		AudioStreamIndex = value;
 	}
 
 	/** 
@@ -102,14 +102,14 @@ public class PlaybackProgressInfo
 	 
 	 <value>The index of the subtitle stream.</value>
 	*/
-	private Integer privateSubtitleStreamIndex;
+	private Integer SubtitleStreamIndex;
 	public final Integer getSubtitleStreamIndex()
 	{
-		return privateSubtitleStreamIndex;
+		return SubtitleStreamIndex;
 	}
 	public final void setSubtitleStreamIndex(Integer value)
 	{
-		privateSubtitleStreamIndex = value;
+		SubtitleStreamIndex = value;
 	}
 
 	/** 
@@ -117,14 +117,14 @@ public class PlaybackProgressInfo
 	 
 	 <value><c>true</c> if this instance is paused; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsPaused;
+	private boolean IsPaused;
 	public final boolean getIsPaused()
 	{
-		return privateIsPaused;
+		return IsPaused;
 	}
 	public final void setIsPaused(boolean value)
 	{
-		privateIsPaused = value;
+		IsPaused = value;
 	}
 
 	/** 
@@ -132,14 +132,14 @@ public class PlaybackProgressInfo
 	 
 	 <value><c>true</c> if this instance is muted; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsMuted;
+	private boolean IsMuted;
 	public final boolean getIsMuted()
 	{
-		return privateIsMuted;
+		return IsMuted;
 	}
 	public final void setIsMuted(boolean value)
 	{
-		privateIsMuted = value;
+		IsMuted = value;
 	}
 
 	/** 
@@ -147,14 +147,14 @@ public class PlaybackProgressInfo
 	 
 	 <value>The position ticks.</value>
 	*/
-	private Long privatePositionTicks;
+	private Long PositionTicks;
 	public final Long getPositionTicks()
 	{
-		return privatePositionTicks;
+		return PositionTicks;
 	}
 	public final void setPositionTicks(Long value)
 	{
-		privatePositionTicks = value;
+		PositionTicks = value;
 	}
 
 	/** 
@@ -162,14 +162,14 @@ public class PlaybackProgressInfo
 	 
 	 <value>The volume level.</value>
 	*/
-	private Integer privateVolumeLevel;
+	private Integer VolumeLevel;
 	public final Integer getVolumeLevel()
 	{
-		return privateVolumeLevel;
+		return VolumeLevel;
 	}
 	public final void setVolumeLevel(Integer value)
 	{
-		privateVolumeLevel = value;
+		VolumeLevel = value;
 	}
 
 	/** 
@@ -177,13 +177,13 @@ public class PlaybackProgressInfo
 	 
 	 <value>The play method.</value>
 	*/
-	private PlayMethod privatePlayMethod = getPlayMethod().values()[0];
+	private PlayMethod PlayMethod = getPlayMethod().values()[0];
 	public final PlayMethod getPlayMethod()
 	{
-		return privatePlayMethod;
+		return PlayMethod;
 	}
 	public final void setPlayMethod(PlayMethod value)
 	{
-		privatePlayMethod = value;
+		PlayMethod = value;
 	}
 }

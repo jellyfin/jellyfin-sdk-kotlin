@@ -10,14 +10,14 @@ public class PluginSecurityInfo
 	 
 	 <value>The supporter key.</value>
 	*/
-	private String privateSupporterKey;
+	private String SupporterKey;
 	public final String getSupporterKey()
 	{
-		return privateSupporterKey;
+		return SupporterKey;
 	}
 	public final void setSupporterKey(String value)
 	{
-		privateSupporterKey = value;
+		SupporterKey = value;
 	}
 
 	/** 
@@ -25,13 +25,13 @@ public class PluginSecurityInfo
 	 
 	 <value><c>true</c> if this instance is MB supporter; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsMBSupporter;
+	private boolean IsMBSupporter;
 	public final boolean getIsMBSupporter()
 	{
-		return privateIsMBSupporter;
+		return IsMBSupporter;
 	}
 	public final void setIsMBSupporter(boolean value)
 	{
-		privateIsMBSupporter = value;
+		IsMBSupporter = value;
 	}
 }

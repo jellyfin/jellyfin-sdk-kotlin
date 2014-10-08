@@ -7,14 +7,14 @@ public class SearchQuery
 	 
 	 <value>The user id.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class SearchQuery
 	 
 	 <value>The search term.</value>
 	*/
-	private String privateSearchTerm;
+	private String SearchTerm;
 	public final String getSearchTerm()
 	{
-		return privateSearchTerm;
+		return SearchTerm;
 	}
 	public final void setSearchTerm(String value)
 	{
-		privateSearchTerm = value;
+		SearchTerm = value;
 	}
 
 	/** 
@@ -37,14 +37,14 @@ public class SearchQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex;
+	private Integer StartIndex;
 	public final Integer getStartIndex()
 	{
-		return privateStartIndex;
+		return StartIndex;
 	}
 	public final void setStartIndex(Integer value)
 	{
-		privateStartIndex = value;
+		StartIndex = value;
 	}
 
 	/** 
@@ -52,70 +52,70 @@ public class SearchQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit;
+	private Integer Limit;
 	public final Integer getLimit()
 	{
-		return privateLimit;
+		return Limit;
 	}
 	public final void setLimit(Integer value)
 	{
-		privateLimit = value;
+		Limit = value;
 	}
 
-	private boolean privateIncludePeople;
+	private boolean IncludePeople;
 	public final boolean getIncludePeople()
 	{
-		return privateIncludePeople;
+		return IncludePeople;
 	}
 	public final void setIncludePeople(boolean value)
 	{
-		privateIncludePeople = value;
+		IncludePeople = value;
 	}
-	private boolean privateIncludeMedia;
+	private boolean IncludeMedia;
 	public final boolean getIncludeMedia()
 	{
-		return privateIncludeMedia;
+		return IncludeMedia;
 	}
 	public final void setIncludeMedia(boolean value)
 	{
-		privateIncludeMedia = value;
+		IncludeMedia = value;
 	}
-	private boolean privateIncludeGenres;
+	private boolean IncludeGenres;
 	public final boolean getIncludeGenres()
 	{
-		return privateIncludeGenres;
+		return IncludeGenres;
 	}
 	public final void setIncludeGenres(boolean value)
 	{
-		privateIncludeGenres = value;
+		IncludeGenres = value;
 	}
-	private boolean privateIncludeStudios;
+	private boolean IncludeStudios;
 	public final boolean getIncludeStudios()
 	{
-		return privateIncludeStudios;
+		return IncludeStudios;
 	}
 	public final void setIncludeStudios(boolean value)
 	{
-		privateIncludeStudios = value;
+		IncludeStudios = value;
 	}
-	private boolean privateIncludeArtists;
+	private boolean IncludeArtists;
 	public final boolean getIncludeArtists()
 	{
-		return privateIncludeArtists;
+		return IncludeArtists;
 	}
 	public final void setIncludeArtists(boolean value)
 	{
-		privateIncludeArtists = value;
+		IncludeArtists = value;
 	}
 
-	private String[] privateIncludeItemTypes;
+	private String[] IncludeItemTypes;
 	public final String[] getIncludeItemTypes()
 	{
-		return privateIncludeItemTypes;
+		return IncludeItemTypes;
 	}
 	public final void setIncludeItemTypes(String[] value)
 	{
-		privateIncludeItemTypes = value;
+		IncludeItemTypes = value;
 	}
 
 	public SearchQuery()

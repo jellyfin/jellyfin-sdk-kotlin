@@ -12,14 +12,14 @@ public class PlaybackStopInfo
 	 
 	 <value>The item.</value>
 	*/
-	private BaseItemInfo privateItem;
+	private BaseItemInfo Item;
 	public final BaseItemInfo getItem()
 	{
-		return privateItem;
+		return Item;
 	}
 	public final void setItem(BaseItemInfo value)
 	{
-		privateItem = value;
+		Item = value;
 	}
 
 	/** 
@@ -27,14 +27,14 @@ public class PlaybackStopInfo
 	 
 	 <value>The item identifier.</value>
 	*/
-	private String privateItemId;
+	private String ItemId;
 	public final String getItemId()
 	{
-		return privateItemId;
+		return ItemId;
 	}
 	public final void setItemId(String value)
 	{
-		privateItemId = value;
+		ItemId = value;
 	}
 
 	/** 
@@ -42,14 +42,14 @@ public class PlaybackStopInfo
 	 
 	 <value>The session id.</value>
 	*/
-	private String privateSessionId;
+	private String SessionId;
 	public final String getSessionId()
 	{
-		return privateSessionId;
+		return SessionId;
 	}
 	public final void setSessionId(String value)
 	{
-		privateSessionId = value;
+		SessionId = value;
 	}
 
 	/** 
@@ -57,14 +57,14 @@ public class PlaybackStopInfo
 	 
 	 <value>The media version identifier.</value>
 	*/
-	private String privateMediaSourceId;
+	private String MediaSourceId;
 	public final String getMediaSourceId()
 	{
-		return privateMediaSourceId;
+		return MediaSourceId;
 	}
 	public final void setMediaSourceId(String value)
 	{
-		privateMediaSourceId = value;
+		MediaSourceId = value;
 	}
 
 	/** 
@@ -72,13 +72,13 @@ public class PlaybackStopInfo
 	 
 	 <value>The position ticks.</value>
 	*/
-	private Long privatePositionTicks;
+	private Long PositionTicks;
 	public final Long getPositionTicks()
 	{
-		return privatePositionTicks;
+		return PositionTicks;
 	}
 	public final void setPositionTicks(Long value)
 	{
-		privatePositionTicks = value;
+		PositionTicks = value;
 	}
 }

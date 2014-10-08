@@ -2,44 +2,44 @@ package MediaBrowser.Model.Playlists;
 
 public class PlaylistCreationRequest
 {
-	 private String privateName;
+	 private String Name;
 	 public final String getName()
 	 {
-		 return privateName;
+		 return Name;
 	 }
 	 public final void setName(String value)
 	 {
-		 privateName = value;
+		 Name = value;
 	 }
 
-	private java.util.ArrayList<String> privateItemIdList;
+	private java.util.ArrayList<String> ItemIdList;
 	public final java.util.ArrayList<String> getItemIdList()
 	{
-		return privateItemIdList;
+		return ItemIdList;
 	}
 	public final void setItemIdList(java.util.ArrayList<String> value)
 	{
-		privateItemIdList = value;
+		ItemIdList = value;
 	}
 
-	private String privateMediaType;
+	private String MediaType;
 	public final String getMediaType()
 	{
-		return privateMediaType;
+		return MediaType;
 	}
 	public final void setMediaType(String value)
 	{
-		privateMediaType = value;
+		MediaType = value;
 	}
 
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	public PlaylistCreationRequest()

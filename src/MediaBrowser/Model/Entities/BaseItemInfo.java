@@ -14,14 +14,14 @@ public class BaseItemInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -29,14 +29,14 @@ public class BaseItemInfo
 	 
 	 <value>The id.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -44,14 +44,14 @@ public class BaseItemInfo
 	 
 	 <value>The type.</value>
 	*/
-	private String privateType;
+	private String Type;
 	public final String getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(String value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
 	/** 
@@ -59,14 +59,14 @@ public class BaseItemInfo
 	 
 	 <value>The type of the media.</value>
 	*/
-	private String privateMediaType;
+	private String MediaType;
 	public final String getMediaType()
 	{
-		return privateMediaType;
+		return MediaType;
 	}
 	public final void setMediaType(String value)
 	{
-		privateMediaType = value;
+		MediaType = value;
 	}
 
 	/** 
@@ -74,14 +74,14 @@ public class BaseItemInfo
 	 
 	 <value>The run time ticks.</value>
 	*/
-	private Long privateRunTimeTicks = null;
+	private Long RunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{
-		return privateRunTimeTicks;
+		return RunTimeTicks;
 	}
 	public final void setRunTimeTicks(Long value)
 	{
-		privateRunTimeTicks = value;
+		RunTimeTicks = value;
 	}
 
 	/** 
@@ -89,14 +89,14 @@ public class BaseItemInfo
 	 
 	 <value>The primary image tag.</value>
 	*/
-	private String privatePrimaryImageTag;
+	private String PrimaryImageTag;
 	public final String getPrimaryImageTag()
 	{
-		return privatePrimaryImageTag;
+		return PrimaryImageTag;
 	}
 	public final void setPrimaryImageTag(String value)
 	{
-		privatePrimaryImageTag = value;
+		PrimaryImageTag = value;
 	}
 
 	/** 
@@ -104,14 +104,14 @@ public class BaseItemInfo
 	 
 	 <value>The primary image item identifier.</value>
 	*/
-	private String privatePrimaryImageItemId;
+	private String PrimaryImageItemId;
 	public final String getPrimaryImageItemId()
 	{
-		return privatePrimaryImageItemId;
+		return PrimaryImageItemId;
 	}
 	public final void setPrimaryImageItemId(String value)
 	{
-		privatePrimaryImageItemId = value;
+		PrimaryImageItemId = value;
 	}
 
 	/** 
@@ -119,14 +119,14 @@ public class BaseItemInfo
 	 
 	 <value>The logo image tag.</value>
 	*/
-	private String privateLogoImageTag;
+	private String LogoImageTag;
 	public final String getLogoImageTag()
 	{
-		return privateLogoImageTag;
+		return LogoImageTag;
 	}
 	public final void setLogoImageTag(String value)
 	{
-		privateLogoImageTag = value;
+		LogoImageTag = value;
 	}
 
 	/** 
@@ -134,14 +134,14 @@ public class BaseItemInfo
 	 
 	 <value>The logo item identifier.</value>
 	*/
-	private String privateLogoItemId;
+	private String LogoItemId;
 	public final String getLogoItemId()
 	{
-		return privateLogoItemId;
+		return LogoItemId;
 	}
 	public final void setLogoItemId(String value)
 	{
-		privateLogoItemId = value;
+		LogoItemId = value;
 	}
 
 	/** 
@@ -149,14 +149,14 @@ public class BaseItemInfo
 	 
 	 <value>The thumb image tag.</value>
 	*/
-	private String privateThumbImageTag;
+	private String ThumbImageTag;
 	public final String getThumbImageTag()
 	{
-		return privateThumbImageTag;
+		return ThumbImageTag;
 	}
 	public final void setThumbImageTag(String value)
 	{
-		privateThumbImageTag = value;
+		ThumbImageTag = value;
 	}
 
 	/** 
@@ -164,14 +164,14 @@ public class BaseItemInfo
 	 
 	 <value>The thumb item identifier.</value>
 	*/
-	private String privateThumbItemId;
+	private String ThumbItemId;
 	public final String getThumbItemId()
 	{
-		return privateThumbItemId;
+		return ThumbItemId;
 	}
 	public final void setThumbItemId(String value)
 	{
-		privateThumbItemId = value;
+		ThumbItemId = value;
 	}
 
 	/** 
@@ -179,14 +179,14 @@ public class BaseItemInfo
 	 
 	 <value>The thumb image tag.</value>
 	*/
-	private String privateBackdropImageTag;
+	private String BackdropImageTag;
 	public final String getBackdropImageTag()
 	{
-		return privateBackdropImageTag;
+		return BackdropImageTag;
 	}
 	public final void setBackdropImageTag(String value)
 	{
-		privateBackdropImageTag = value;
+		BackdropImageTag = value;
 	}
 
 	/** 
@@ -194,14 +194,14 @@ public class BaseItemInfo
 	 
 	 <value>The thumb item identifier.</value>
 	*/
-	private String privateBackdropItemId;
+	private String BackdropItemId;
 	public final String getBackdropItemId()
 	{
-		return privateBackdropItemId;
+		return BackdropItemId;
 	}
 	public final void setBackdropItemId(String value)
 	{
-		privateBackdropItemId = value;
+		BackdropItemId = value;
 	}
 
 	/** 
@@ -209,14 +209,14 @@ public class BaseItemInfo
 	 
 	 <value>The premiere date.</value>
 	*/
-	private java.util.Date privatePremiereDate = null;
+	private java.util.Date PremiereDate = null;
 	public final java.util.Date getPremiereDate()
 	{
-		return privatePremiereDate;
+		return PremiereDate;
 	}
 	public final void setPremiereDate(java.util.Date value)
 	{
-		privatePremiereDate = value;
+		PremiereDate = value;
 	}
 
 	/** 
@@ -224,14 +224,14 @@ public class BaseItemInfo
 	 
 	 <value>The production year.</value>
 	*/
-	private Integer privateProductionYear = null;
+	private Integer ProductionYear = null;
 	public final Integer getProductionYear()
 	{
-		return privateProductionYear;
+		return ProductionYear;
 	}
 	public final void setProductionYear(Integer value)
 	{
-		privateProductionYear = value;
+		ProductionYear = value;
 	}
 
 	/** 
@@ -239,14 +239,14 @@ public class BaseItemInfo
 	 
 	 <value>The index number.</value>
 	*/
-	private Integer privateIndexNumber = null;
+	private Integer IndexNumber = null;
 	public final Integer getIndexNumber()
 	{
-		return privateIndexNumber;
+		return IndexNumber;
 	}
 	public final void setIndexNumber(Integer value)
 	{
-		privateIndexNumber = value;
+		IndexNumber = value;
 	}
 
 	/** 
@@ -254,14 +254,14 @@ public class BaseItemInfo
 	 
 	 <value>The index number end.</value>
 	*/
-	private Integer privateIndexNumberEnd = null;
+	private Integer IndexNumberEnd = null;
 	public final Integer getIndexNumberEnd()
 	{
-		return privateIndexNumberEnd;
+		return IndexNumberEnd;
 	}
 	public final void setIndexNumberEnd(Integer value)
 	{
-		privateIndexNumberEnd = value;
+		IndexNumberEnd = value;
 	}
 
 	/** 
@@ -269,14 +269,14 @@ public class BaseItemInfo
 	 
 	 <value>The parent index number.</value>
 	*/
-	private Integer privateParentIndexNumber = null;
+	private Integer ParentIndexNumber = null;
 	public final Integer getParentIndexNumber()
 	{
-		return privateParentIndexNumber;
+		return ParentIndexNumber;
 	}
 	public final void setParentIndexNumber(Integer value)
 	{
-		privateParentIndexNumber = value;
+		ParentIndexNumber = value;
 	}
 
 	/** 
@@ -284,14 +284,14 @@ public class BaseItemInfo
 	 
 	 <value>The name of the series.</value>
 	*/
-	private String privateSeriesName;
+	private String SeriesName;
 	public final String getSeriesName()
 	{
-		return privateSeriesName;
+		return SeriesName;
 	}
 	public final void setSeriesName(String value)
 	{
-		privateSeriesName = value;
+		SeriesName = value;
 	}
 
 	/** 
@@ -299,14 +299,14 @@ public class BaseItemInfo
 	 
 	 <value>The album.</value>
 	*/
-	private String privateAlbum;
+	private String Album;
 	public final String getAlbum()
 	{
-		return privateAlbum;
+		return Album;
 	}
 	public final void setAlbum(String value)
 	{
-		privateAlbum = value;
+		Album = value;
 	}
 
 	/** 
@@ -314,14 +314,14 @@ public class BaseItemInfo
 	 
 	 <value>The artists.</value>
 	*/
-	private java.util.ArrayList<String> privateArtists;
+	private java.util.ArrayList<String> Artists;
 	public final java.util.ArrayList<String> getArtists()
 	{
-		return privateArtists;
+		return Artists;
 	}
 	public final void setArtists(java.util.ArrayList<String> value)
 	{
-		privateArtists = value;
+		Artists = value;
 	}
 
 	/** 
@@ -329,14 +329,14 @@ public class BaseItemInfo
 	 
 	 <value>The media streams.</value>
 	*/
-	private java.util.ArrayList<MediaStream> privateMediaStreams;
+	private java.util.ArrayList<MediaStream> MediaStreams;
 	public final java.util.ArrayList<MediaStream> getMediaStreams()
 	{
-		return privateMediaStreams;
+		return MediaStreams;
 	}
 	public final void setMediaStreams(java.util.ArrayList<MediaStream> value)
 	{
-		privateMediaStreams = value;
+		MediaStreams = value;
 	}
 
 	/** 
@@ -344,14 +344,14 @@ public class BaseItemInfo
 	 
 	 <value>The chapter images item identifier.</value>
 	*/
-	private String privateChapterImagesItemId;
+	private String ChapterImagesItemId;
 	public final String getChapterImagesItemId()
 	{
-		return privateChapterImagesItemId;
+		return ChapterImagesItemId;
 	}
 	public final void setChapterImagesItemId(String value)
 	{
-		privateChapterImagesItemId = value;
+		ChapterImagesItemId = value;
 	}
 
 	/** 
@@ -359,14 +359,14 @@ public class BaseItemInfo
 	 
 	 <value>The chapters.</value>
 	*/
-	private java.util.ArrayList<ChapterInfoDto> privateChapters;
+	private java.util.ArrayList<ChapterInfoDto> Chapters;
 	public final java.util.ArrayList<ChapterInfoDto> getChapters()
 	{
-		return privateChapters;
+		return Chapters;
 	}
 	public final void setChapters(java.util.ArrayList<ChapterInfoDto> value)
 	{
-		privateChapters = value;
+		Chapters = value;
 	}
 
 	/** 

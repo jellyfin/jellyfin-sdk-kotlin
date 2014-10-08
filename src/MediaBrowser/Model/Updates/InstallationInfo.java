@@ -10,14 +10,14 @@ public class InstallationInfo
 	 
 	 <value>The id.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class InstallationInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class InstallationInfo
 	 
 	 <value>The guid of the assembly.</value>
 	*/
-	private String privateAssemblyGuid;
+	private String AssemblyGuid;
 	public final String getAssemblyGuid()
 	{
-		return privateAssemblyGuid;
+		return AssemblyGuid;
 	}
 	public final void setAssemblyGuid(String value)
 	{
-		privateAssemblyGuid = value;
+		AssemblyGuid = value;
 	}
 
 	/** 
@@ -55,14 +55,14 @@ public class InstallationInfo
 	 
 	 <value>The version.</value>
 	*/
-	private String privateVersion;
+	private String Version;
 	public final String getVersion()
 	{
-		return privateVersion;
+		return Version;
 	}
 	public final void setVersion(String value)
 	{
-		privateVersion = value;
+		Version = value;
 	}
 
 	/** 
@@ -70,14 +70,14 @@ public class InstallationInfo
 	 
 	 <value>The update class.</value>
 	*/
-	private PackageVersionClass privateUpdateClass = PackageVersionClass.values()[0];
+	private PackageVersionClass UpdateClass = PackageVersionClass.values()[0];
 	public final PackageVersionClass getUpdateClass()
 	{
-		return privateUpdateClass;
+		return UpdateClass;
 	}
 	public final void setUpdateClass(PackageVersionClass value)
 	{
-		privateUpdateClass = value;
+		UpdateClass = value;
 	}
 
 	/** 
@@ -85,13 +85,13 @@ public class InstallationInfo
 	 
 	 <value>The percent complete.</value>
 	*/
-	private Double privatePercentComplete = null;
+	private Double PercentComplete = null;
 	public final Double getPercentComplete()
 	{
-		return privatePercentComplete;
+		return PercentComplete;
 	}
 	public final void setPercentComplete(Double value)
 	{
-		privatePercentComplete = value;
+		PercentComplete = value;
 	}
 }

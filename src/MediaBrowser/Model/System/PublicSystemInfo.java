@@ -1,7 +1,5 @@
 package MediaBrowser.Model.System;
 
-import MediaBrowser.Model.Updates.*;
-
 public class PublicSystemInfo
 {
 	/** 
@@ -9,14 +7,14 @@ public class PublicSystemInfo
 	 
 	 <value>The local address.</value>
 	*/
-	private String privateLocalAddress;
+	private String LocalAddress;
 	public final String getLocalAddress()
 	{
-		return privateLocalAddress;
+		return LocalAddress;
 	}
 	public final void setLocalAddress(String value)
 	{
-		privateLocalAddress = value;
+		LocalAddress = value;
 	}
 
 	/** 
@@ -24,14 +22,14 @@ public class PublicSystemInfo
 	 
 	 <value>The wan address.</value>
 	*/
-	private String privateWanAddress;
+	private String WanAddress;
 	public final String getWanAddress()
 	{
-		return privateWanAddress;
+		return WanAddress;
 	}
 	public final void setWanAddress(String value)
 	{
-		privateWanAddress = value;
+		WanAddress = value;
 	}
 
 	/** 
@@ -39,14 +37,14 @@ public class PublicSystemInfo
 	 
 	 <value>The name of the server.</value>
 	*/
-	private String privateServerName;
+	private String ServerName;
 	public final String getServerName()
 	{
-		return privateServerName;
+		return ServerName;
 	}
 	public final void setServerName(String value)
 	{
-		privateServerName = value;
+		ServerName = value;
 	}
 
 	/** 
@@ -54,14 +52,14 @@ public class PublicSystemInfo
 	 
 	 <value>The version.</value>
 	*/
-	private String privateVersion;
+	private String Version;
 	public final String getVersion()
 	{
-		return privateVersion;
+		return Version;
 	}
 	public final void setVersion(String value)
 	{
-		privateVersion = value;
+		Version = value;
 	}
 
 	/** 
@@ -69,13 +67,13 @@ public class PublicSystemInfo
 	 
 	 <value>The id.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 }

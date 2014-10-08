@@ -7,69 +7,69 @@ public class ImageByNameInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 	/** 
 	 Gets or sets the theme.
 	 
 	 <value>The theme.</value>
 	*/
-	private String privateTheme;
+	private String Theme;
 	public final String getTheme()
 	{
-		return privateTheme;
+		return Theme;
 	}
 	public final void setTheme(String value)
 	{
-		privateTheme = value;
+		Theme = value;
 	}
 	/** 
 	 Gets or sets the context.
 	 
 	 <value>The context.</value>
 	*/
-	private String privateContext;
+	private String Context;
 	public final String getContext()
 	{
-		return privateContext;
+		return Context;
 	}
 	public final void setContext(String value)
 	{
-		privateContext = value;
+		Context = value;
 	}
 	/** 
 	 Gets or sets the length of the file.
 	 
 	 <value>The length of the file.</value>
 	*/
-	private long privateFileLength;
+	private long FileLength;
 	public final long getFileLength()
 	{
-		return privateFileLength;
+		return FileLength;
 	}
 	public final void setFileLength(long value)
 	{
-		privateFileLength = value;
+		FileLength = value;
 	}
 	/** 
 	 Gets or sets the format.
 	 
 	 <value>The format.</value>
 	*/
-	private String privateFormat;
+	private String Format;
 	public final String getFormat()
 	{
-		return privateFormat;
+		return Format;
 	}
 	public final void setFormat(String value)
 	{
-		privateFormat = value;
+		Format = value;
 	}
 }

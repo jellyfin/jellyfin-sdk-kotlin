@@ -2,78 +2,78 @@ package MediaBrowser.Model.Providers;
 
 public class SubtitleOptions
 {
-	private boolean privateSkipIfGraphicalSubtitlesPresent;
+	private boolean SkipIfGraphicalSubtitlesPresent;
 	public final boolean getSkipIfGraphicalSubtitlesPresent()
 	{
-		return privateSkipIfGraphicalSubtitlesPresent;
+		return SkipIfGraphicalSubtitlesPresent;
 	}
 	public final void setSkipIfGraphicalSubtitlesPresent(boolean value)
 	{
-		privateSkipIfGraphicalSubtitlesPresent = value;
+		SkipIfGraphicalSubtitlesPresent = value;
 	}
-	private boolean privateSkipIfAudioTrackMatches;
+	private boolean SkipIfAudioTrackMatches;
 	public final boolean getSkipIfAudioTrackMatches()
 	{
-		return privateSkipIfAudioTrackMatches;
+		return SkipIfAudioTrackMatches;
 	}
 	public final void setSkipIfAudioTrackMatches(boolean value)
 	{
-		privateSkipIfAudioTrackMatches = value;
+		SkipIfAudioTrackMatches = value;
 	}
-	private String[] privateDownloadLanguages;
+	private String[] DownloadLanguages;
 	public final String[] getDownloadLanguages()
 	{
-		return privateDownloadLanguages;
+		return DownloadLanguages;
 	}
 	public final void setDownloadLanguages(String[] value)
 	{
-		privateDownloadLanguages = value;
+		DownloadLanguages = value;
 	}
-	private boolean privateDownloadMovieSubtitles;
+	private boolean DownloadMovieSubtitles;
 	public final boolean getDownloadMovieSubtitles()
 	{
-		return privateDownloadMovieSubtitles;
+		return DownloadMovieSubtitles;
 	}
 	public final void setDownloadMovieSubtitles(boolean value)
 	{
-		privateDownloadMovieSubtitles = value;
+		DownloadMovieSubtitles = value;
 	}
-	private boolean privateDownloadEpisodeSubtitles;
+	private boolean DownloadEpisodeSubtitles;
 	public final boolean getDownloadEpisodeSubtitles()
 	{
-		return privateDownloadEpisodeSubtitles;
+		return DownloadEpisodeSubtitles;
 	}
 	public final void setDownloadEpisodeSubtitles(boolean value)
 	{
-		privateDownloadEpisodeSubtitles = value;
+		DownloadEpisodeSubtitles = value;
 	}
 
-	private String privateOpenSubtitlesUsername;
+	private String OpenSubtitlesUsername;
 	public final String getOpenSubtitlesUsername()
 	{
-		return privateOpenSubtitlesUsername;
+		return OpenSubtitlesUsername;
 	}
 	public final void setOpenSubtitlesUsername(String value)
 	{
-		privateOpenSubtitlesUsername = value;
+		OpenSubtitlesUsername = value;
 	}
-	private String privateOpenSubtitlesPasswordHash;
+	private String OpenSubtitlesPasswordHash;
 	public final String getOpenSubtitlesPasswordHash()
 	{
-		return privateOpenSubtitlesPasswordHash;
+		return OpenSubtitlesPasswordHash;
 	}
 	public final void setOpenSubtitlesPasswordHash(String value)
 	{
-		privateOpenSubtitlesPasswordHash = value;
+		OpenSubtitlesPasswordHash = value;
 	}
-	private boolean privateIsOpenSubtitleVipAccount;
+	private boolean IsOpenSubtitleVipAccount;
 	public final boolean getIsOpenSubtitleVipAccount()
 	{
-		return privateIsOpenSubtitleVipAccount;
+		return IsOpenSubtitleVipAccount;
 	}
 	public final void setIsOpenSubtitleVipAccount(boolean value)
 	{
-		privateIsOpenSubtitleVipAccount = value;
+		IsOpenSubtitleVipAccount = value;
 	}
 
 	public SubtitleOptions()

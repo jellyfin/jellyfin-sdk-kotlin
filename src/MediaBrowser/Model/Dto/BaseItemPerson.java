@@ -14,14 +14,14 @@ public class BaseItemPerson implements IHasPropertyChangedEvent
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -29,14 +29,14 @@ public class BaseItemPerson implements IHasPropertyChangedEvent
 	 
 	 <value>The identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -44,14 +44,14 @@ public class BaseItemPerson implements IHasPropertyChangedEvent
 	 
 	 <value>The role.</value>
 	*/
-	private String privateRole;
+	private String Role;
 	public final String getRole()
 	{
-		return privateRole;
+		return Role;
 	}
 	public final void setRole(String value)
 	{
-		privateRole = value;
+		Role = value;
 	}
 
 	/** 
@@ -59,14 +59,14 @@ public class BaseItemPerson implements IHasPropertyChangedEvent
 	 
 	 <value>The type.</value>
 	*/
-	private String privateType;
+	private String Type;
 	public final String getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(String value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
 	/** 
@@ -74,14 +74,14 @@ public class BaseItemPerson implements IHasPropertyChangedEvent
 	 
 	 <value>The primary image tag.</value>
 	*/
-	private String privatePrimaryImageTag;
+	private String PrimaryImageTag;
 	public final String getPrimaryImageTag()
 	{
-		return privatePrimaryImageTag;
+		return PrimaryImageTag;
 	}
 	public final void setPrimaryImageTag(String value)
 	{
-		privatePrimaryImageTag = value;
+		PrimaryImageTag = value;
 	}
 
 	/** 

@@ -2,68 +2,68 @@ package MediaBrowser.Model.ApiClient;
 
 public class ServerInfo
 {
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
-	private String privateLocalAddress;
+	private String LocalAddress;
 	public final String getLocalAddress()
 	{
-		return privateLocalAddress;
+		return LocalAddress;
 	}
 	public final void setLocalAddress(String value)
 	{
-		privateLocalAddress = value;
+		LocalAddress = value;
 	}
-	private String privateRemoteAddress;
+	private String RemoteAddress;
 	public final String getRemoteAddress()
 	{
-		return privateRemoteAddress;
+		return RemoteAddress;
 	}
 	public final void setRemoteAddress(String value)
 	{
-		privateRemoteAddress = value;
+		RemoteAddress = value;
 	}
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
-	private String privateAccessToken;
+	private String AccessToken;
 	public final String getAccessToken()
 	{
-		return privateAccessToken;
+		return AccessToken;
 	}
 	public final void setAccessToken(String value)
 	{
-		privateAccessToken = value;
+		AccessToken = value;
 	}
-	private java.util.ArrayList<WakeOnLanInfo> privateWakeOnLanInfos;
+	private java.util.ArrayList<WakeOnLanInfo> WakeOnLanInfos;
 	public final java.util.ArrayList<WakeOnLanInfo> getWakeOnLanInfos()
 	{
-		return privateWakeOnLanInfos;
+		return WakeOnLanInfos;
 	}
 	public final void setWakeOnLanInfos(java.util.ArrayList<WakeOnLanInfo> value)
 	{
-		privateWakeOnLanInfos = value;
+		WakeOnLanInfos = value;
 	}
 
 	public ServerInfo()

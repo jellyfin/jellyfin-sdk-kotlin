@@ -7,14 +7,14 @@ public class QueryResult<T>
 	 
 	 <value>The items.</value>
 	*/
-	private T[] privateItems;
+	private T[] Items;
 	public final T[] getItems()
 	{
-		return privateItems;
+		return Items;
 	}
 	public final void setItems(T[] value)
 	{
-		privateItems = value;
+		Items = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class QueryResult<T>
 	 
 	 <value>The total record count.</value>
 	*/
-	private int privateTotalRecordCount;
+	private int TotalRecordCount;
 	public final int getTotalRecordCount()
 	{
-		return privateTotalRecordCount;
+		return TotalRecordCount;
 	}
 	public final void setTotalRecordCount(int value)
 	{
-		privateTotalRecordCount = value;
+		TotalRecordCount = value;
 	}
 
 	/** 

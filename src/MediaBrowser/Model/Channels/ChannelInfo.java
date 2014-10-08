@@ -7,14 +7,14 @@ public class ChannelInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class ChannelInfo
 	 
 	 <value>The identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -37,14 +37,14 @@ public class ChannelInfo
 	 
 	 <value>The home page URL.</value>
 	*/
-	private String privateHomePageUrl;
+	private String HomePageUrl;
 	public final String getHomePageUrl()
 	{
-		return privateHomePageUrl;
+		return HomePageUrl;
 	}
 	public final void setHomePageUrl(String value)
 	{
-		privateHomePageUrl = value;
+		HomePageUrl = value;
 	}
 
 	/** 
@@ -52,13 +52,13 @@ public class ChannelInfo
 	 
 	 <value>The features.</value>
 	*/
-	private ChannelFeatures privateFeatures;
+	private ChannelFeatures Features;
 	public final ChannelFeatures getFeatures()
 	{
-		return privateFeatures;
+		return Features;
 	}
 	public final void setFeatures(ChannelFeatures value)
 	{
-		privateFeatures = value;
+		Features = value;
 	}
 }

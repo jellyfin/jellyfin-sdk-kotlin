@@ -4,40 +4,40 @@ import MediaBrowser.Model.Configuration.*;
 
 public class NotificationOption
 {
-	private String privateType;
+	private String Type;
 	public final String getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(String value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
 	/** 
 	 User Ids to not monitor (it's opt out)
 	*/
-	private String[] privateDisabledMonitorUsers;
+	private String[] DisabledMonitorUsers;
 	public final String[] getDisabledMonitorUsers()
 	{
-		return privateDisabledMonitorUsers;
+		return DisabledMonitorUsers;
 	}
 	public final void setDisabledMonitorUsers(String[] value)
 	{
-		privateDisabledMonitorUsers = value;
+		DisabledMonitorUsers = value;
 	}
 
 	/** 
 	 User Ids to send to (if SendToUserMode == Custom)
 	*/
-	private String[] privateSendToUsers;
+	private String[] SendToUsers;
 	public final String[] getSendToUsers()
 	{
-		return privateSendToUsers;
+		return SendToUsers;
 	}
 	public final void setSendToUsers(String[] value)
 	{
-		privateSendToUsers = value;
+		SendToUsers = value;
 	}
 
 	/** 
@@ -45,14 +45,14 @@ public class NotificationOption
 	 
 	 <value><c>true</c> if enabled; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateEnabled;
+	private boolean Enabled;
 	public final boolean getEnabled()
 	{
-		return privateEnabled;
+		return Enabled;
 	}
 	public final void setEnabled(boolean value)
 	{
-		privateEnabled = value;
+		Enabled = value;
 	}
 
 	/** 
@@ -60,14 +60,14 @@ public class NotificationOption
 	 
 	 <value>The title format string.</value>
 	*/
-	private String privateTitle;
+	private String Title;
 	public final String getTitle()
 	{
-		return privateTitle;
+		return Title;
 	}
 	public final void setTitle(String value)
 	{
-		privateTitle = value;
+		Title = value;
 	}
 
 	/** 
@@ -75,14 +75,14 @@ public class NotificationOption
 	 
 	 <value>The description.</value>
 	*/
-	private String privateDescription;
+	private String Description;
 	public final String getDescription()
 	{
-		return privateDescription;
+		return Description;
 	}
 	public final void setDescription(String value)
 	{
-		privateDescription = value;
+		Description = value;
 	}
 
 	/** 
@@ -90,14 +90,14 @@ public class NotificationOption
 	 
 	 <value>The disabled services.</value>
 	*/
-	private String[] privateDisabledServices;
+	private String[] DisabledServices;
 	public final String[] getDisabledServices()
 	{
-		return privateDisabledServices;
+		return DisabledServices;
 	}
 	public final void setDisabledServices(String[] value)
 	{
-		privateDisabledServices = value;
+		DisabledServices = value;
 	}
 
 	/** 
@@ -105,14 +105,14 @@ public class NotificationOption
 	 
 	 <value>The send to user mode.</value>
 	*/
-	private SendToUserType privateSendToUserMode = SendToUserType.values()[0];
+	private SendToUserType SendToUserMode = SendToUserType.values()[0];
 	public final SendToUserType getSendToUserMode()
 	{
-		return privateSendToUserMode;
+		return SendToUserMode;
 	}
 	public final void setSendToUserMode(SendToUserType value)
 	{
-		privateSendToUserMode = value;
+		SendToUserMode = value;
 	}
 
 	public NotificationOption()

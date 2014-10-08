@@ -2,103 +2,103 @@ package MediaBrowser.Model.Providers;
 
 public class RemoteSubtitleInfo
 {
-	private String privateThreeLetterISOLanguageName;
+	private String ThreeLetterISOLanguageName;
 	public final String getThreeLetterISOLanguageName()
 	{
-		return privateThreeLetterISOLanguageName;
+		return ThreeLetterISOLanguageName;
 	}
 	public final void setThreeLetterISOLanguageName(String value)
 	{
-		privateThreeLetterISOLanguageName = value;
+		ThreeLetterISOLanguageName = value;
 	}
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
-	private String privateProviderName;
+	private String ProviderName;
 	public final String getProviderName()
 	{
-		return privateProviderName;
+		return ProviderName;
 	}
 	public final void setProviderName(String value)
 	{
-		privateProviderName = value;
+		ProviderName = value;
 	}
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
-	private String privateFormat;
+	private String Format;
 	public final String getFormat()
 	{
-		return privateFormat;
+		return Format;
 	}
 	public final void setFormat(String value)
 	{
-		privateFormat = value;
+		Format = value;
 	}
-	private String privateAuthor;
+	private String Author;
 	public final String getAuthor()
 	{
-		return privateAuthor;
+		return Author;
 	}
 	public final void setAuthor(String value)
 	{
-		privateAuthor = value;
+		Author = value;
 	}
-	private String privateComment;
+	private String Comment;
 	public final String getComment()
 	{
-		return privateComment;
+		return Comment;
 	}
 	public final void setComment(String value)
 	{
-		privateComment = value;
+		Comment = value;
 	}
-	private java.util.Date privateDateCreated = null;
+	private java.util.Date DateCreated = null;
 	public final java.util.Date getDateCreated()
 	{
-		return privateDateCreated;
+		return DateCreated;
 	}
 	public final void setDateCreated(java.util.Date value)
 	{
-		privateDateCreated = value;
+		DateCreated = value;
 	}
-	private Float privateCommunityRating = null;
+	private Float CommunityRating = null;
 	public final Float getCommunityRating()
 	{
-		return privateCommunityRating;
+		return CommunityRating;
 	}
 	public final void setCommunityRating(Float value)
 	{
-		privateCommunityRating = value;
+		CommunityRating = value;
 	}
-	private Integer privateDownloadCount = null;
+	private Integer DownloadCount = null;
 	public final Integer getDownloadCount()
 	{
-		return privateDownloadCount;
+		return DownloadCount;
 	}
 	public final void setDownloadCount(Integer value)
 	{
-		privateDownloadCount = value;
+		DownloadCount = value;
 	}
-	private Boolean privateIsHashMatch = null;
+	private Boolean IsHashMatch = null;
 	public final Boolean getIsHashMatch()
 	{
-		return privateIsHashMatch;
+		return IsHashMatch;
 	}
 	public final void setIsHashMatch(Boolean value)
 	{
-		privateIsHashMatch = value;
+		IsHashMatch = value;
 	}
 }

@@ -7,14 +7,14 @@ public class ThemeImage
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -22,13 +22,13 @@ public class ThemeImage
 	 
 	 <value>The cache tag.</value>
 	*/
-	private String privateCacheTag;
+	private String CacheTag;
 	public final String getCacheTag()
 	{
-		return privateCacheTag;
+		return CacheTag;
 	}
 	public final void setCacheTag(String value)
 	{
-		privateCacheTag = value;
+		CacheTag = value;
 	}
 }

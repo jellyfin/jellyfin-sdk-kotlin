@@ -2,22 +2,22 @@ package MediaBrowser.Model.Notifications;
 
 public class NotificationResult
 {
-	private Notification[] privateNotifications;
+	private Notification[] Notifications;
 	public final Notification[] getNotifications()
 	{
-		return privateNotifications;
+		return Notifications;
 	}
 	public final void setNotifications(Notification[] value)
 	{
-		privateNotifications = value;
+		Notifications = value;
 	}
-	private int privateTotalRecordCount;
+	private int TotalRecordCount;
 	public final int getTotalRecordCount()
 	{
-		return privateTotalRecordCount;
+		return TotalRecordCount;
 	}
 	public final void setTotalRecordCount(int value)
 	{
-		privateTotalRecordCount = value;
+		TotalRecordCount = value;
 	}
 }

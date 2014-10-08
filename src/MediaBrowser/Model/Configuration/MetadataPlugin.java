@@ -7,14 +7,14 @@ public class MetadataPlugin
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -22,13 +22,13 @@ public class MetadataPlugin
 	 
 	 <value>The type.</value>
 	*/
-	private MetadataPluginType privateType = MetadataPluginType.values()[0];
+	private MetadataPluginType Type = MetadataPluginType.values()[0];
 	public final MetadataPluginType getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(MetadataPluginType value)
 	{
-		privateType = value;
+		Type = value;
 	}
 }

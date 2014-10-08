@@ -12,14 +12,14 @@ public class UserDataChangeInfo
 	 
 	 <value>The user id.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -27,13 +27,13 @@ public class UserDataChangeInfo
 	 
 	 <value>The user data list.</value>
 	*/
-	private java.util.ArrayList<UserItemDataDto> privateUserDataList;
+	private java.util.ArrayList<UserItemDataDto> UserDataList;
 	public final java.util.ArrayList<UserItemDataDto> getUserDataList()
 	{
-		return privateUserDataList;
+		return UserDataList;
 	}
 	public final void setUserDataList(java.util.ArrayList<UserItemDataDto> value)
 	{
-		privateUserDataList = value;
+		UserDataList = value;
 	}
 }

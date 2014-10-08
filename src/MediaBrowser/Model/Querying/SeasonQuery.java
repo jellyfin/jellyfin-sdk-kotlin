@@ -2,64 +2,64 @@ package MediaBrowser.Model.Querying;
 
 public class SeasonQuery
 {
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
-	private String privateSeriesId;
+	private String SeriesId;
 	public final String getSeriesId()
 	{
-		return privateSeriesId;
+		return SeriesId;
 	}
 	public final void setSeriesId(String value)
 	{
-		privateSeriesId = value;
+		SeriesId = value;
 	}
 
-	private Boolean privateIsMissing;
+	private Boolean IsMissing;
 	public final Boolean getIsMissing()
 	{
-		return privateIsMissing;
+		return IsMissing;
 	}
 	public final void setIsMissing(Boolean value)
 	{
-		privateIsMissing = value;
+		IsMissing = value;
 	}
 
-	private Boolean privateIsVirtualUnaired;
+	private Boolean IsVirtualUnaired;
 	public final Boolean getIsVirtualUnaired()
 	{
-		return privateIsVirtualUnaired;
+		return IsVirtualUnaired;
 	}
 	public final void setIsVirtualUnaired(Boolean value)
 	{
-		privateIsVirtualUnaired = value;
+		IsVirtualUnaired = value;
 	}
 
-	private ItemFields[] privateFields;
+	private ItemFields[] Fields;
 	public final ItemFields[] getFields()
 	{
-		return privateFields;
+		return Fields;
 	}
 	public final void setFields(ItemFields[] value)
 	{
-		privateFields = value;
+		Fields = value;
 	}
 
-	private Boolean privateIsSpecialSeason;
+	private Boolean IsSpecialSeason;
 	public final Boolean getIsSpecialSeason()
 	{
-		return privateIsSpecialSeason;
+		return IsSpecialSeason;
 	}
 	public final void setIsSpecialSeason(Boolean value)
 	{
-		privateIsSpecialSeason = value;
+		IsSpecialSeason = value;
 	}
 
 	public SeasonQuery()

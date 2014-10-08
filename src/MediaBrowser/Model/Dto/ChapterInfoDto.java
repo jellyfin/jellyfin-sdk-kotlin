@@ -14,14 +14,14 @@ public class ChapterInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The start position ticks.</value>
 	*/
-	private long privateStartPositionTicks;
+	private long StartPositionTicks;
 	public final long getStartPositionTicks()
 	{
-		return privateStartPositionTicks;
+		return StartPositionTicks;
 	}
 	public final void setStartPositionTicks(long value)
 	{
-		privateStartPositionTicks = value;
+		StartPositionTicks = value;
 	}
 
 	/** 
@@ -29,14 +29,14 @@ public class ChapterInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -44,14 +44,14 @@ public class ChapterInfoDto implements IHasPropertyChangedEvent
 	 
 	 <value>The image tag.</value>
 	*/
-	private String privateImageTag;
+	private String ImageTag;
 	public final String getImageTag()
 	{
-		return privateImageTag;
+		return ImageTag;
 	}
 	public final void setImageTag(String value)
 	{
-		privateImageTag = value;
+		ImageTag = value;
 	}
 
 	/** 

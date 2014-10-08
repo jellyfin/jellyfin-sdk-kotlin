@@ -2,87 +2,87 @@ package MediaBrowser.Model.Session;
 
 public class TranscodingInfo
 {
-	private String privateAudioCodec;
+	private String AudioCodec;
 	public final String getAudioCodec()
 	{
-		return privateAudioCodec;
+		return AudioCodec;
 	}
 	public final void setAudioCodec(String value)
 	{
-		privateAudioCodec = value;
+		AudioCodec = value;
 	}
-	private String privateVideoCodec;
+	private String VideoCodec;
 	public final String getVideoCodec()
 	{
-		return privateVideoCodec;
+		return VideoCodec;
 	}
 	public final void setVideoCodec(String value)
 	{
-		privateVideoCodec = value;
+		VideoCodec = value;
 	}
-	private String privateContainer;
+	private String Container;
 	public final String getContainer()
 	{
-		return privateContainer;
+		return Container;
 	}
 	public final void setContainer(String value)
 	{
-		privateContainer = value;
+		Container = value;
 	}
-	private Integer privateBitrate;
+	private Integer Bitrate;
 	public final Integer getBitrate()
 	{
-		return privateBitrate;
+		return Bitrate;
 	}
 	public final void setBitrate(Integer value)
 	{
-		privateBitrate = value;
+		Bitrate = value;
 	}
 
-	private Float privateFramerate;
+	private Float Framerate;
 	public final Float getFramerate()
 	{
-		return privateFramerate;
+		return Framerate;
 	}
 	public final void setFramerate(Float value)
 	{
-		privateFramerate = value;
+		Framerate = value;
 	}
-	private Double privateCompletionPercentage;
+	private Double CompletionPercentage;
 	public final Double getCompletionPercentage()
 	{
-		return privateCompletionPercentage;
+		return CompletionPercentage;
 	}
 	public final void setCompletionPercentage(Double value)
 	{
-		privateCompletionPercentage = value;
+		CompletionPercentage = value;
 	}
 
-	private Integer privateWidth;
+	private Integer Width;
 	public final Integer getWidth()
 	{
-		return privateWidth;
+		return Width;
 	}
 	public final void setWidth(Integer value)
 	{
-		privateWidth = value;
+		Width = value;
 	}
-	private Integer privateHeight;
+	private Integer Height;
 	public final Integer getHeight()
 	{
-		return privateHeight;
+		return Height;
 	}
 	public final void setHeight(Integer value)
 	{
-		privateHeight = value;
+		Height = value;
 	}
-	private Integer privateAudioChannels;
+	private Integer AudioChannels;
 	public final Integer getAudioChannels()
 	{
-		return privateAudioChannels;
+		return AudioChannels;
 	}
 	public final void setAudioChannels(Integer value)
 	{
-		privateAudioChannels = value;
+		AudioChannels = value;
 	}
 }

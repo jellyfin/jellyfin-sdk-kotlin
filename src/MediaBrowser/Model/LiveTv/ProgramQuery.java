@@ -10,14 +10,14 @@ public class ProgramQuery
 	 
 	 <value>The channel identifier.</value>
 	*/
-	private String[] privateChannelIdList;
+	private String[] ChannelIdList;
 	public final String[] getChannelIdList()
 	{
-		return privateChannelIdList;
+		return ChannelIdList;
 	}
 	public final void setChannelIdList(String[] value)
 	{
-		privateChannelIdList = value;
+		ChannelIdList = value;
 	}
 
 	/** 
@@ -25,54 +25,54 @@ public class ProgramQuery
 	 
 	 <value>The user identifier.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
-	private java.util.Date privateMinStartDate = null;
+	private java.util.Date MinStartDate = null;
 	public final java.util.Date getMinStartDate()
 	{
-		return privateMinStartDate;
+		return MinStartDate;
 	}
 	public final void setMinStartDate(java.util.Date value)
 	{
-		privateMinStartDate = value;
+		MinStartDate = value;
 	}
 
-	private java.util.Date privateMaxStartDate = null;
+	private java.util.Date MaxStartDate = null;
 	public final java.util.Date getMaxStartDate()
 	{
-		return privateMaxStartDate;
+		return MaxStartDate;
 	}
 	public final void setMaxStartDate(java.util.Date value)
 	{
-		privateMaxStartDate = value;
+		MaxStartDate = value;
 	}
 
-	private java.util.Date privateMinEndDate = null;
+	private java.util.Date MinEndDate = null;
 	public final java.util.Date getMinEndDate()
 	{
-		return privateMinEndDate;
+		return MinEndDate;
 	}
 	public final void setMinEndDate(java.util.Date value)
 	{
-		privateMinEndDate = value;
+		MinEndDate = value;
 	}
 
-	private java.util.Date privateMaxEndDate = null;
+	private java.util.Date MaxEndDate = null;
 	public final java.util.Date getMaxEndDate()
 	{
-		return privateMaxEndDate;
+		return MaxEndDate;
 	}
 	public final void setMaxEndDate(java.util.Date value)
 	{
-		privateMaxEndDate = value;
+		MaxEndDate = value;
 	}
 
 	public ProgramQuery()

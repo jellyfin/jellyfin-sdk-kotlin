@@ -2,23 +2,23 @@ package MediaBrowser.Model.Session;
 
 public class ClientCapabilities
 {
-	private java.util.ArrayList<String> privatePlayableMediaTypes;
+	private java.util.ArrayList<String> PlayableMediaTypes;
 	public final java.util.ArrayList<String> getPlayableMediaTypes()
 	{
-		return privatePlayableMediaTypes;
+		return PlayableMediaTypes;
 	}
 	public final void setPlayableMediaTypes(java.util.ArrayList<String> value)
 	{
-		privatePlayableMediaTypes = value;
+		PlayableMediaTypes = value;
 	}
-	private java.util.ArrayList<String> privateSupportedCommands;
+	private java.util.ArrayList<String> SupportedCommands;
 	public final java.util.ArrayList<String> getSupportedCommands()
 	{
-		return privateSupportedCommands;
+		return SupportedCommands;
 	}
 	public final void setSupportedCommands(java.util.ArrayList<String> value)
 	{
-		privateSupportedCommands = value;
+		SupportedCommands = value;
 	}
 
 	public ClientCapabilities()

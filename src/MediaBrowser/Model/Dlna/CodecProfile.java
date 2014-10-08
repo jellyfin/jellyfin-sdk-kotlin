@@ -6,36 +6,36 @@ public class CodecProfile
 {
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("type")] public CodecType Type {get;set;}
-	private CodecType privateType = CodecType.values()[0];
+	private CodecType Type = CodecType.values()[0];
 	public final CodecType getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(CodecType value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
-	private ProfileCondition[] privateConditions;
+	private ProfileCondition[] Conditions;
 	public final ProfileCondition[] getConditions()
 	{
-		return privateConditions;
+		return Conditions;
 	}
 	public final void setConditions(ProfileCondition[] value)
 	{
-		privateConditions = value;
+		Conditions = value;
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("codec")] public string Codec {get;set;}
-	private String privateCodec;
+	private String Codec;
 	public final String getCodec()
 	{
-		return privateCodec;
+		return Codec;
 	}
 	public final void setCodec(String value)
 	{
-		privateCodec = value;
+		Codec = value;
 	}
 
 	public CodecProfile()

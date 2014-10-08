@@ -1,8 +1,5 @@
 package MediaBrowser.Model.Channels;
 
-import MediaBrowser.Model.Entities.*;
-import MediaBrowser.Model.Querying.*;
-
 public class ChannelQuery
 {
 	/** 
@@ -10,14 +7,14 @@ public class ChannelQuery
 	 
 	 <value>The user identifier.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -25,14 +22,14 @@ public class ChannelQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex = null;
+	private Integer StartIndex;
 	public final Integer getStartIndex()
 	{
-		return privateStartIndex;
+		return StartIndex;
 	}
 	public final void setStartIndex(Integer value)
 	{
-		privateStartIndex = value;
+		StartIndex = value;
 	}
 
 	/** 
@@ -40,14 +37,14 @@ public class ChannelQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit = null;
+	private Integer Limit;
 	public final Integer getLimit()
 	{
-		return privateLimit;
+		return Limit;
 	}
 	public final void setLimit(Integer value)
 	{
-		privateLimit = value;
+		Limit = value;
 	}
 
 	/** 
@@ -55,14 +52,14 @@ public class ChannelQuery
 	 
 	 <value><c>true</c> if [supports latest items]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateSupportsLatestItems = null;
+	private Boolean SupportsLatestItems;
 	public final Boolean getSupportsLatestItems()
 	{
-		return privateSupportsLatestItems;
+		return SupportsLatestItems;
 	}
 	public final void setSupportsLatestItems(Boolean value)
 	{
-		privateSupportsLatestItems = value;
+		SupportsLatestItems = value;
 	}
 
 	/** 
@@ -70,13 +67,13 @@ public class ChannelQuery
 	 
 	 <value><c>null</c> if [is favorite] contains no value, <c>true</c> if [is favorite]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsFavorite = null;
+	private Boolean IsFavorite;
 	public final Boolean getIsFavorite()
 	{
-		return privateIsFavorite;
+		return IsFavorite;
 	}
 	public final void setIsFavorite(Boolean value)
 	{
-		privateIsFavorite = value;
+		IsFavorite = value;
 	}
 }

@@ -9,109 +9,109 @@ public class RemoteSearchResult implements IHasProviderIds
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 	/** 
 	 Gets or sets the provider ids.
 	 
 	 <value>The provider ids.</value>
 	*/
-	private java.util.HashMap<String, String> privateProviderIds;
+	private java.util.HashMap<String, String> ProviderIds;
 	public final java.util.HashMap<String, String> getProviderIds()
 	{
-		return privateProviderIds;
+		return ProviderIds;
 	}
 	public final void setProviderIds(java.util.HashMap<String, String> value)
 	{
-		privateProviderIds = value;
+		ProviderIds = value;
 	}
 	/** 
 	 Gets or sets the year.
 	 
 	 <value>The year.</value>
 	*/
-	private Integer privateProductionYear = null;
+	private Integer ProductionYear = null;
 	public final Integer getProductionYear()
 	{
-		return privateProductionYear;
+		return ProductionYear;
 	}
 	public final void setProductionYear(Integer value)
 	{
-		privateProductionYear = value;
+		ProductionYear = value;
 	}
-	private Integer privateIndexNumber = null;
+	private Integer IndexNumber = null;
 	public final Integer getIndexNumber()
 	{
-		return privateIndexNumber;
+		return IndexNumber;
 	}
 	public final void setIndexNumber(Integer value)
 	{
-		privateIndexNumber = value;
+		IndexNumber = value;
 	}
-	private Integer privateIndexNumberEnd = null;
+	private Integer IndexNumberEnd = null;
 	public final Integer getIndexNumberEnd()
 	{
-		return privateIndexNumberEnd;
+		return IndexNumberEnd;
 	}
 	public final void setIndexNumberEnd(Integer value)
 	{
-		privateIndexNumberEnd = value;
+		IndexNumberEnd = value;
 	}
-	private Integer privateParentIndexNumber = null;
+	private Integer ParentIndexNumber = null;
 	public final Integer getParentIndexNumber()
 	{
-		return privateParentIndexNumber;
+		return ParentIndexNumber;
 	}
 	public final void setParentIndexNumber(Integer value)
 	{
-		privateParentIndexNumber = value;
+		ParentIndexNumber = value;
 	}
 
-	private java.util.Date privatePremiereDate = null;
+	private java.util.Date PremiereDate = null;
 	public final java.util.Date getPremiereDate()
 	{
-		return privatePremiereDate;
+		return PremiereDate;
 	}
 	public final void setPremiereDate(java.util.Date value)
 	{
-		privatePremiereDate = value;
+		PremiereDate = value;
 	}
 
-	private String privateImageUrl;
+	private String ImageUrl;
 	public final String getImageUrl()
 	{
-		return privateImageUrl;
+		return ImageUrl;
 	}
 	public final void setImageUrl(String value)
 	{
-		privateImageUrl = value;
+		ImageUrl = value;
 	}
 
-	private String privateSearchProviderName;
+	private String SearchProviderName;
 	public final String getSearchProviderName()
 	{
-		return privateSearchProviderName;
+		return SearchProviderName;
 	}
 	public final void setSearchProviderName(String value)
 	{
-		privateSearchProviderName = value;
+		SearchProviderName = value;
 	}
 
-	private String privateGameSystem;
+	private String GameSystem;
 	public final String getGameSystem()
 	{
-		return privateGameSystem;
+		return GameSystem;
 	}
 	public final void setGameSystem(String value)
 	{
-		privateGameSystem = value;
+		GameSystem = value;
 	}
 
 	public RemoteSearchResult()

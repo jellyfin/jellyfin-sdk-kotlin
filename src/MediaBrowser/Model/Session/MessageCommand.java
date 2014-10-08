@@ -2,33 +2,33 @@ package MediaBrowser.Model.Session;
 
 public class MessageCommand
 {
-	private String privateHeader;
+	private String Header;
 	public final String getHeader()
 	{
-		return privateHeader;
+		return Header;
 	}
 	public final void setHeader(String value)
 	{
-		privateHeader = value;
+		Header = value;
 	}
 
-	private String privateText;
+	private String Text;
 	public final String getText()
 	{
-		return privateText;
+		return Text;
 	}
 	public final void setText(String value)
 	{
-		privateText = value;
+		Text = value;
 	}
 
-	private Long privateTimeoutMs;
+	private Long TimeoutMs;
 	public final Long getTimeoutMs()
 	{
-		return privateTimeoutMs;
+		return TimeoutMs;
 	}
 	public final void setTimeoutMs(Long value)
 	{
-		privateTimeoutMs = value;
+		TimeoutMs = value;
 	}
 }

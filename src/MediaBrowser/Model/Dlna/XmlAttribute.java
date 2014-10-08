@@ -4,25 +4,25 @@ public class XmlAttribute
 {
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("name")] public string Name {get;set;}
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("value")] public string Value {get;set;}
-	private String privateValue;
+	private String Value;
 	public final String getValue()
 	{
-		return privateValue;
+		return Value;
 	}
 	public final void setValue(String value)
 	{
-		privateValue = value;
+		Value = value;
 	}
 }

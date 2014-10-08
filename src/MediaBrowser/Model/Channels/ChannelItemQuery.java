@@ -10,14 +10,14 @@ public class ChannelItemQuery
 	 
 	 <value>The channel identifier.</value>
 	*/
-	private String privateChannelId;
+	private String ChannelId;
 	public final String getChannelId()
 	{
-		return privateChannelId;
+		return ChannelId;
 	}
 	public final void setChannelId(String value)
 	{
-		privateChannelId = value;
+		ChannelId = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class ChannelItemQuery
 	 
 	 <value>The category identifier.</value>
 	*/
-	private String privateFolderId;
+	private String FolderId;
 	public final String getFolderId()
 	{
-		return privateFolderId;
+		return FolderId;
 	}
 	public final void setFolderId(String value)
 	{
-		privateFolderId = value;
+		FolderId = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class ChannelItemQuery
 	 
 	 <value>The user identifier.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 
 	/** 
@@ -55,14 +55,14 @@ public class ChannelItemQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex;
+	private Integer StartIndex;
 	public final Integer getStartIndex()
 	{
-		return privateStartIndex;
+		return StartIndex;
 	}
 	public final void setStartIndex(Integer value)
 	{
-		privateStartIndex = value;
+		StartIndex = value;
 	}
 
 	/** 
@@ -70,51 +70,51 @@ public class ChannelItemQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer privateLimit;
+	private Integer Limit;
 	public final Integer getLimit()
 	{
-		return privateLimit;
+		return Limit;
 	}
 	public final void setLimit(Integer value)
 	{
-		privateLimit = value;
+		Limit = value;
 	}
 
-	private SortOrder privateSortOrder;
+	private SortOrder SortOrder;
 	public final SortOrder getSortOrder()
 	{
-		return privateSortOrder;
+		return SortOrder;
 	}
 	public final void setSortOrder(SortOrder value)
 	{
-		privateSortOrder = value;
+		SortOrder = value;
 	}
-	private String[] privateSortBy;
+	private String[] SortBy;
 	public final String[] getSortBy()
 	{
-		return privateSortBy;
+		return SortBy;
 	}
 	public final void setSortBy(String[] value)
 	{
-		privateSortBy = value;
+		SortBy = value;
 	}
-	private ItemFilter[] privateFilters;
+	private ItemFilter[] Filters;
 	public final ItemFilter[] getFilters()
 	{
-		return privateFilters;
+		return Filters;
 	}
 	public final void setFilters(ItemFilter[] value)
 	{
-		privateFilters = value;
+		Filters = value;
 	}
-	private ItemFields[] privateFields;
+	private ItemFields[] Fields;
 	public final ItemFields[] getFields()
 	{
-		return privateFields;
+		return Fields;
 	}
 	public final void setFields(ItemFields[] value)
 	{
-		privateFields = value;
+		Fields = value;
 	}
 
 	public ChannelItemQuery()

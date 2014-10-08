@@ -2,44 +2,44 @@ package MediaBrowser.Model.Themes;
 
 public class AppTheme
 {
-	private String privateAppName;
+	private String AppName;
 	public final String getAppName()
 	{
-		return privateAppName;
+		return AppName;
 	}
 	public final void setAppName(String value)
 	{
-		privateAppName = value;
+		AppName = value;
 	}
 
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
-	private java.util.HashMap<String, String> privateOptions;
+	private java.util.HashMap<String, String> Options;
 	public final java.util.HashMap<String, String> getOptions()
 	{
-		return privateOptions;
+		return Options;
 	}
 	public final void setOptions(java.util.HashMap<String, String> value)
 	{
-		privateOptions = value;
+		Options = value;
 	}
 
-	private java.util.ArrayList<ThemeImage> privateImages;
+	private java.util.ArrayList<ThemeImage> Images;
 	public final java.util.ArrayList<ThemeImage> getImages()
 	{
-		return privateImages;
+		return Images;
 	}
 	public final void setImages(java.util.ArrayList<ThemeImage> value)
 	{
-		privateImages = value;
+		Images = value;
 	}
 
 	public AppTheme()

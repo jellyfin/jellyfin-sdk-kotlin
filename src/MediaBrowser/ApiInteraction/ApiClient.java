@@ -1,5 +1,8 @@
 package MediaBrowser.ApiInteraction;
 
+import MediaBrowser.ApiInteraction.Network.INetworkConnection;
+import MediaBrowser.ApiInteraction.WebSocket.ApiWebSocket;
+import MediaBrowser.Model.ApiClient.ServerInfo;
 import MediaBrowser.Model.Channels.AllChannelMediaQuery;
 import MediaBrowser.Model.Channels.ChannelFeatures;
 import MediaBrowser.Model.Channels.ChannelItemQuery;
@@ -25,46 +28,88 @@ import MediaBrowser.Model.Plugins.PluginInfo;
 import MediaBrowser.Model.Querying.*;
 import MediaBrowser.Model.Search.SearchHintResult;
 import MediaBrowser.Model.Search.SearchQuery;
-import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.*;
 import MediaBrowser.Model.System.PublicSystemInfo;
 import MediaBrowser.Model.System.SystemInfo;
 import MediaBrowser.Model.Tasks.TaskInfo;
 import MediaBrowser.Model.Tasks.TaskTriggerInfo;
 import MediaBrowser.Model.Users.AuthenticationResult;
-import android.app.DownloadManager;
 import com.android.volley.toolbox.ImageLoader;
 
 import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
-import java.util.logging.Logger;
+import java.util.Observable;
 
 public class ApiClient extends BaseApiClient {
  
     private IAsyncHttpClient _httpClient;
+    private ApiEventListener apiEventListener;
 
-    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String accessToken)
+    private ConnectionMode connectionMode = ConnectionMode.Local;
+    private INetworkConnection networkConnection;
+    private ApiWebSocket apiWebSocket;
+
+    private ServerInfo serverInfo;
+    public ServerInfo getServerInfo(){
+        return serverInfo;
+    }
+
+    private ClientCapabilities capabilities;
+    public ClientCapabilities getCapabilities(){
+        return capabilities;
+    }
+
+    private Observable authenticatedObservable = new Observable();
+    public Observable getAuthenticatedObservable() {
+        return authenticatedObservable;
+    }
+
+    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String accessToken, ApiEventListener apiEventListener, ClientCapabilities capabilities)
     {
         super(logger, new JsonSerializer(), serverAddress, accessToken);
 
         _httpClient = httpClient;
+        this.apiEventListener = apiEventListener;
+        this.capabilities = capabilities;
 
         ResetHttpHeaders();
     }
 
-    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String clientName, String deviceName, String deviceId, String applicationVersion)
+    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String clientName, String deviceName, String deviceId, String applicationVersion, ApiEventListener apiEventListener, ClientCapabilities capabilities)
     {
         super(logger, new JsonSerializer(), serverAddress, clientName, deviceName, deviceId, applicationVersion);
 
         _httpClient = httpClient;
+        this.apiEventListener = apiEventListener;
+        this.capabilities = capabilities;
 
         ResetHttpHeaders();
     }
 
     public ImageLoader getImageLoader() {
         return _httpClient.getImageLoader();
+    }
+
+    public void EnableAutomaticNetworking(ServerInfo info, ConnectionMode initialMode, INetworkConnection networkConnection)
+    {
+        this.networkConnection = networkConnection;
+        this.connectionMode = initialMode;
+        this.serverInfo = info;
+
+        String serverAddress = initialMode == ConnectionMode.Local ?
+                info.getLocalAddress() :
+                info.getRemoteAddress();
+
+        setServerAddress(serverAddress);
+    }
+
+    public void OpenWebSocket(){
+
+        if (apiWebSocket == null){
+            apiWebSocket = new ApiWebSocket(getJsonSerializer(), getLogger(), apiEventListener, this);
+        }
+
+        apiWebSocket.EnsureWebSocket();
     }
 
     private void Send(String url, String method, final Response<String> response)
@@ -136,7 +181,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Items/Counts", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -171,7 +216,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -189,7 +234,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users/Public");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -211,7 +256,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Sessions", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -227,7 +272,7 @@ public class ApiClient extends BaseApiClient {
     private void GetItemsFromUrl(String url, final Response<QueryResult<BaseItemDto>> response) {
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -243,7 +288,7 @@ public class ApiClient extends BaseApiClient {
     private void GetItemFromUrl(String url, final Response<BaseItemDto> response) {
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -750,7 +795,7 @@ public class ApiClient extends BaseApiClient {
     /// Restarts the server async.
     /// </summary>
     /// <returns>Task.</returns>
-    public void RestartServerAsync(final Response<EmptyRequestResult> response)
+    public void RestartServerAsync(final EmptyResponse response)
     {
         String url = GetApiUrl("System/Restart");
 
@@ -766,7 +811,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("System/Info");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -789,7 +834,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("System/Info");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -836,7 +881,7 @@ public class ApiClient extends BaseApiClient {
     {
         String url = GetApiUrl("Plugins");
 
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -858,7 +903,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("System/Configuration");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -880,7 +925,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("ScheduledTasks");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -909,7 +954,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("ScheduledTasks/" + id);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -938,7 +983,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users/" + id);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -960,7 +1005,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Localization/ParentalRatings");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -994,7 +1039,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users/" + userId + "/Items/" + itemId + "/LocalTrailers");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1028,7 +1073,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users/" + userId + "/Items/" + itemId + "/SpecialFeatures");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1050,7 +1095,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Localization/Cultures");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1072,7 +1117,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Localization/Countries");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1094,7 +1139,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Games/SystemSummaries");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1192,7 +1237,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="info">The information.</param>
     /// <returns>Task{UserItemDataDto}.</returns>
     /// <exception cref="System.IllegalArgumentException">itemId</exception>
-    public void ReportPlaybackStartAsync(PlaybackStartInfo info, final Response<EmptyRequestResult> response)
+    public void ReportPlaybackStartAsync(PlaybackStartInfo info, final EmptyResponse response)
     {
         if (info == null)
         {
@@ -1217,7 +1262,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="info">The information.</param>
     /// <returns>Task{UserItemDataDto}.</returns>
     /// <exception cref="System.IllegalArgumentException">itemId</exception>
-    public void ReportPlaybackProgressAsync(PlaybackProgressInfo info, final Response<EmptyRequestResult> response)
+    public void ReportPlaybackProgressAsync(PlaybackProgressInfo info, final EmptyResponse response)
     {
         if (info == null)
         {
@@ -1240,7 +1285,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="info">The information.</param>
     /// <returns>Task{UserItemDataDto}.</returns>
     /// <exception cref="System.IllegalArgumentException">itemId</exception>
-    public void ReportPlaybackStoppedAsync(PlaybackStopInfo info, final Response<EmptyRequestResult> response)
+    public void ReportPlaybackStoppedAsync(PlaybackStopInfo info, final EmptyResponse response)
     {
         if (info == null)
         {
@@ -1272,7 +1317,7 @@ public class ApiClient extends BaseApiClient {
     /// itemName
     /// or
     /// itemType</exception>
-    public void SendBrowseCommandAsync(String sessionId, String itemId, String itemName, String itemType, final Response<EmptyRequestResult> response)
+    public void SendBrowseCommandAsync(String sessionId, String itemId, String itemName, String itemType, final EmptyResponse response)
     {
         GeneralCommand cmd = new GeneralCommand();
 
@@ -1294,7 +1339,7 @@ public class ApiClient extends BaseApiClient {
     /// <exception cref="System.IllegalArgumentException">sessionId
     /// or
     /// request</exception>
-    public void SendPlayCommandAsync(String sessionId, PlayRequest request, final Response<EmptyRequestResult> response)
+    public void SendPlayCommandAsync(String sessionId, PlayRequest request, final EmptyResponse response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(sessionId))
         {
@@ -1315,7 +1360,7 @@ public class ApiClient extends BaseApiClient {
         PostAsync(url, response);
     }
 
-    public void SendMessageCommandAsync(String sessionId, MessageCommand command, final Response<EmptyRequestResult> response)
+    public void SendMessageCommandAsync(String sessionId, MessageCommand command, final EmptyResponse response)
     {
         GeneralCommand cmd = new GeneralCommand();
 
@@ -1339,7 +1384,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="command">The command.</param>
     /// <returns>Task.</returns>
     /// <exception cref="System.IllegalArgumentException">sessionId</exception>
-    public void SendCommandAsync(String sessionId, GeneralCommand command, final Response<EmptyRequestResult> response)
+    public void SendCommandAsync(String sessionId, GeneralCommand command, final EmptyResponse response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(sessionId))
         {
@@ -1348,40 +1393,38 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("Sessions/" + sessionId + "/Command");
 
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
 
-                EmptyRequestResult obj = new EmptyRequestResult();
-                response.onResponse(obj);
+                response.onResponse();
             }
         };
 
         Send(url, "GET", jsonResponse);
     }
 
-    public void DeleteAsync(String url, final Response<EmptyRequestResult> response)
+    public void DeleteAsync(String url, final EmptyResponse response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(url))
         {
             throw new IllegalArgumentException("url");
         }
 
-        Response<String> stringResponse = new Response<String>(){
+        Response<String> stringResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
 
-                EmptyRequestResult obj = new EmptyRequestResult();
-                response.onResponse(obj);
+                response.onResponse();
             }
         };
 
         Send(url, "DELETE", stringResponse);
     }
 
-    public void PostAsync(String url, final Response<EmptyRequestResult> response)
+    public void PostAsync(String url, final EmptyResponse response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(url))
         {
@@ -1401,20 +1444,19 @@ public class ApiClient extends BaseApiClient {
         Send(url, "POST", postBody.GetQueryString(), "application/x-www-form-urlencoded", response);
     }
 
-    public void PostAsync(String url, Object obj, final Response<EmptyRequestResult> response)
+    public void PostAsync(String url, Object obj, final EmptyResponse response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(url))
         {
             throw new IllegalArgumentException("url");
         }
 
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
 
-                EmptyRequestResult obj = new EmptyRequestResult();
-                response.onResponse(obj);
+                response.onResponse();
             }
         };
 
@@ -1429,7 +1471,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="sessionId">The session id.</param>
     /// <param name="request">The request.</param>
     /// <returns>Task.</returns>
-    public void SendPlaystateCommandAsync(String sessionId, PlaystateRequest request, final Response<EmptyRequestResult> response)
+    public void SendPlaystateCommandAsync(String sessionId, PlaystateRequest request, final EmptyResponse response)
     {
         QueryStringDictionary dict = new QueryStringDictionary();
         dict.AddIfNotNull("SeekPositionTicks", request.getSeekPositionTicks());
@@ -1459,7 +1501,7 @@ public class ApiClient extends BaseApiClient {
         }
  
         String url = GetApiUrl("Users/" + userId + "/Items/" + itemId + "/Rating");
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1497,7 +1539,7 @@ public class ApiClient extends BaseApiClient {
         dict.Add("likes", likes);
  
         String url = GetApiUrl("Users/" + userId + "/Items/" + itemId + "/Rating", dict);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1534,7 +1576,7 @@ public class ApiClient extends BaseApiClient {
         dict.Add("password", passwordHash);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1542,6 +1584,8 @@ public class ApiClient extends BaseApiClient {
                 AuthenticationResult obj = DeserializeFromString(jsonResponse, AuthenticationResult.class);
 
                 SetAuthenticationInfo(obj.getAccessToken(), obj.getUser().getId());
+
+                getAuthenticatedObservable().notifyObservers(obj);
 
                 response.onResponse(obj);
             }
@@ -1556,7 +1600,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="configuration">The configuration.</param>
     /// <returns>Task.</returns>
     /// <exception cref="System.IllegalArgumentException">configuration</exception>
-    public void UpdateServerConfigurationAsync(ServerConfiguration configuration, final Response<EmptyRequestResult> response)
+    public void UpdateServerConfigurationAsync(ServerConfiguration configuration, final EmptyResponse response)
     {
         if (configuration == null)
         {
@@ -1575,7 +1619,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="triggers">The triggers.</param>
     /// <returns>Task{RequestResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">id</exception>
-    public void UpdateScheduledTaskTriggersAsync(String id, TaskTriggerInfo[] triggers, final Response<EmptyRequestResult> response)
+    public void UpdateScheduledTaskTriggersAsync(String id, TaskTriggerInfo[] triggers, final EmptyResponse response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
         {
@@ -1609,7 +1653,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("DisplayPreferences/" + id, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1628,7 +1672,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="displayPreferences">The display preferences.</param>
     /// <returns>Task{DisplayPreferences}.</returns>
     /// <exception cref="System.IllegalArgumentException">userId</exception>
-    public void UpdateDisplayPreferencesAsync(DisplayPreferences displayPreferences, String userId, String client, final Response<EmptyRequestResult> response)
+    public void UpdateDisplayPreferencesAsync(DisplayPreferences displayPreferences, String userId, String client, final EmptyResponse response)
     {
         if (displayPreferences == null)
         {
@@ -1650,7 +1694,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Notifications/" + userId + "/Summary");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1663,7 +1707,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void MarkNotificationsRead(String userId, String[] notificationIdList, Boolean isRead, final Response<EmptyRequestResult> response)
+    public void MarkNotificationsRead(String userId, String[] notificationIdList, Boolean isRead, final EmptyResponse response)
     {
         String url = "Notifications/" + userId;
 
@@ -1690,7 +1734,7 @@ public class ApiClient extends BaseApiClient {
         url = GetApiUrl(url, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1713,7 +1757,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Items/" + itemId + "/ThemeMedia", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1749,7 +1793,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Search/Hints", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1772,7 +1816,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Items/" + itemId + "/ThemeSongs", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1795,7 +1839,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Items/" + itemId + "/ThemeVideos", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1835,7 +1879,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Items/" + itemId + "/CriticReviews", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1863,7 +1907,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Games/PlayerIndex", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1893,7 +1937,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Items/YearIndex", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1906,7 +1950,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void ReportCapabilities(ClientCapabilities capabilities, final Response<EmptyRequestResult> response)
+    public void ReportCapabilities(ClientCapabilities capabilities, final EmptyResponse response)
     {
         if (capabilities == null)
         {
@@ -1928,7 +1972,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Info");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1955,7 +1999,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Recordings/Groups", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -1989,7 +2033,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Recordings", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2023,7 +2067,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Channels", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2036,7 +2080,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void CancelLiveTvSeriesTimerAsync(String id, final Response<EmptyRequestResult> response)
+    public void CancelLiveTvSeriesTimerAsync(String id, final EmptyResponse response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
         {
@@ -2050,7 +2094,7 @@ public class ApiClient extends BaseApiClient {
         DeleteAsync(url, response);
     }
 
-    public void CancelLiveTvTimerAsync(String id, final Response<EmptyRequestResult> response)
+    public void CancelLiveTvTimerAsync(String id, final EmptyResponse response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
         {
@@ -2064,7 +2108,7 @@ public class ApiClient extends BaseApiClient {
         DeleteAsync(url, response);
     }
 
-    public void DeleteLiveTvRecordingAsync(String id, final Response<EmptyRequestResult> response)
+    public void DeleteLiveTvRecordingAsync(String id, final EmptyResponse response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
         {
@@ -2091,7 +2135,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Channels/" + id, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2117,7 +2161,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Recordings/" + id, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2143,7 +2187,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Recordings/Groups/" + id, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2168,7 +2212,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/SeriesTimers/" + id, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2196,7 +2240,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/SeriesTimers", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2221,7 +2265,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Timers/" + id, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2249,7 +2293,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Timers", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2301,7 +2345,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Programs", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2331,7 +2375,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Programs/Recommended", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2344,7 +2388,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void CreateLiveTvSeriesTimerAsync(SeriesTimerInfoDto timer, final Response<EmptyRequestResult> response)
+    public void CreateLiveTvSeriesTimerAsync(SeriesTimerInfoDto timer, final EmptyResponse response)
     {
         if (timer == null)
         {
@@ -2356,7 +2400,7 @@ public class ApiClient extends BaseApiClient {
         PostAsync(url, timer, response);
     }
 
-    public void CreateLiveTvTimerAsync(BaseTimerInfoDto timer, final Response<EmptyRequestResult> response)
+    public void CreateLiveTvTimerAsync(BaseTimerInfoDto timer, final EmptyResponse response)
     {
         if (timer == null)
         {
@@ -2382,7 +2426,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Timers/Defaults", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2400,7 +2444,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Timers/Defaults");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2418,7 +2462,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/GuideInfo");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2444,7 +2488,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Programs/" + id, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2457,7 +2501,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void UpdateLiveTvSeriesTimerAsync(SeriesTimerInfoDto timer, final Response<EmptyRequestResult> response)
+    public void UpdateLiveTvSeriesTimerAsync(SeriesTimerInfoDto timer, final EmptyResponse response)
     {
         if (timer == null)
         {
@@ -2469,7 +2513,7 @@ public class ApiClient extends BaseApiClient {
         PostAsync(url, timer, response);
     }
 
-    public void UpdateLiveTvTimerAsync(TimerInfoDto timer, final Response<EmptyRequestResult> response)
+    public void UpdateLiveTvTimerAsync(TimerInfoDto timer, final EmptyResponse response)
     {
         if (timer == null)
         {
@@ -2481,7 +2525,7 @@ public class ApiClient extends BaseApiClient {
         PostAsync(url, timer, response);
     }
 
-    public void SendString(String sessionId, String text, final Response<EmptyRequestResult> response)
+    public void SendString(String sessionId, String text, final EmptyResponse response)
     {
         GeneralCommand cmd = new GeneralCommand();
 
@@ -2492,7 +2536,7 @@ public class ApiClient extends BaseApiClient {
         SendCommandAsync(sessionId, cmd, response);
     }
 
-    public void SetAudioStreamIndex(String sessionId, int index, final Response<EmptyRequestResult> response)
+    public void SetAudioStreamIndex(String sessionId, int index, final EmptyResponse response)
     {
         GeneralCommand cmd = new GeneralCommand();
 
@@ -2503,7 +2547,7 @@ public class ApiClient extends BaseApiClient {
         SendCommandAsync(sessionId, cmd, response);
     }
 
-    public void SetSubtitleStreamIndex(String sessionId, Integer index, final Response<EmptyRequestResult> response)
+    public void SetSubtitleStreamIndex(String sessionId, Integer index, final EmptyResponse response)
     {
         GeneralCommand cmd = new GeneralCommand();
 
@@ -2516,7 +2560,7 @@ public class ApiClient extends BaseApiClient {
         SendCommandAsync(sessionId, cmd, response);
     }
 
-    public void SetVolume(String sessionId, int volume, final Response<EmptyRequestResult> response)
+    public void SetVolume(String sessionId, int volume, final EmptyResponse response)
     {
         GeneralCommand cmd = new GeneralCommand();
 
@@ -2543,7 +2587,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Channels/" + channelId + "/Features");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2600,7 +2644,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Sessions", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2613,7 +2657,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void StopTranscodingProcesses(String deviceId, final Response<EmptyRequestResult> response)
+    public void StopTranscodingProcesses(String deviceId, final EmptyResponse response)
     {
         QueryStringDictionary queryString = new QueryStringDictionary();
 
@@ -2628,7 +2672,7 @@ public class ApiClient extends BaseApiClient {
         throw new UnsupportedOperationException();
     }
 
-    public void Logout(final Response<EmptyRequestResult> response)
+    public void Logout(final EmptyResponse response)
     {
         String url = GetApiUrl("Sessions/Logout");
 
@@ -2667,7 +2711,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users/" + query.getUserId() + "/Items/Latest", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2680,7 +2724,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void AddToPlaylist(String playlistId, String[] itemIds, String userId, final Response<EmptyRequestResult> response)
+    public void AddToPlaylist(String playlistId, String[] itemIds, String userId, final EmptyResponse response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(playlistId))
         {
@@ -2707,7 +2751,7 @@ public class ApiClient extends BaseApiClient {
         queryString.AddIfNotNull("Ids", request.getItemIdList());
 
         String url = GetApiUrl("Playlists/", queryString);
-        Response<String> jsonResponse = new Response<String>(){
+        Response<String> jsonResponse = new Response<String>(response){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2736,7 +2780,7 @@ public class ApiClient extends BaseApiClient {
         GetItemsFromUrl(url, response);
     }
 
-    public void RemoveFromPlaylist(String playlistId, String[] entryIds, final Response<EmptyRequestResult> response)
+    public void RemoveFromPlaylist(String playlistId, String[] entryIds, final EmptyResponse response)
     {
         QueryStringDictionary dict = new QueryStringDictionary();
 

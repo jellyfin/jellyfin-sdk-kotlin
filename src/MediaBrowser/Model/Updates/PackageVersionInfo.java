@@ -10,14 +10,14 @@ public class PackageVersionInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privatename;
+	private String name;
 	public final String getname()
 	{
-		return privatename;
+		return name;
 	}
 	public final void setname(String value)
 	{
-		privatename = value;
+		name = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class PackageVersionInfo
 	 
 	 <value>The guid.</value>
 	*/
-	private String privateguid;
+	private String guid;
 	public final String getguid()
 	{
-		return privateguid;
+		return guid;
 	}
 	public final void setguid(String value)
 	{
-		privateguid = value;
+		guid = value;
 	}
 
 	/** 
@@ -40,14 +40,26 @@ public class PackageVersionInfo
 	 
 	 <value>The version STR.</value>
 	*/
-	private String privateversionStr;
+	private String versionStr;
 	public final String getversionStr()
 	{
-		return privateversionStr;
+		return versionStr;
 	}
 	public final void setversionStr(String value)
 	{
-		privateversionStr = value;
+		versionStr = value;
+	}
+
+	/** 
+	 Values the or default.
+	 
+	 @param str The STR.
+	 @param def The def.
+	 @return System.String.
+	*/
+	private static String ValueOrDefault(String str, String def)
+	{
+		return tangible.DotNetToJavaStringHelper.isNullOrEmpty(str) ? def : str;
 	}
 
 	/** 
@@ -55,14 +67,14 @@ public class PackageVersionInfo
 	 
 	 <value>The classification.</value>
 	*/
-	private PackageVersionClass privateclassification = PackageVersionClass.values()[0];
+	private PackageVersionClass classification = PackageVersionClass.values()[0];
 	public final PackageVersionClass getclassification()
 	{
-		return privateclassification;
+		return classification;
 	}
 	public final void setclassification(PackageVersionClass value)
 	{
-		privateclassification = value;
+		classification = value;
 	}
 
 	/** 
@@ -70,14 +82,14 @@ public class PackageVersionInfo
 	 
 	 <value>The description.</value>
 	*/
-	private String privatedescription;
+	private String description;
 	public final String getdescription()
 	{
-		return privatedescription;
+		return description;
 	}
 	public final void setdescription(String value)
 	{
-		privatedescription = value;
+		description = value;
 	}
 
 	/** 
@@ -85,14 +97,14 @@ public class PackageVersionInfo
 	 
 	 <value>The required version STR.</value>
 	*/
-	private String privaterequiredVersionStr;
+	private String requiredVersionStr;
 	public final String getrequiredVersionStr()
 	{
-		return privaterequiredVersionStr;
+		return requiredVersionStr;
 	}
 	public final void setrequiredVersionStr(String value)
 	{
-		privaterequiredVersionStr = value;
+		requiredVersionStr = value;
 	}
 
 	/** 
@@ -100,14 +112,14 @@ public class PackageVersionInfo
 	 
 	 <value>The source URL.</value>
 	*/
-	private String privatesourceUrl;
+	private String sourceUrl;
 	public final String getsourceUrl()
 	{
-		return privatesourceUrl;
+		return sourceUrl;
 	}
 	public final void setsourceUrl(String value)
 	{
-		privatesourceUrl = value;
+		sourceUrl = value;
 	}
 
 	/** 
@@ -115,14 +127,14 @@ public class PackageVersionInfo
 	 
 	 <value>The source URL.</value>
 	*/
-	private String privatechecksum;
+	private String checksum;
 	public final String getchecksum()
 	{
-		return privatechecksum;
+		return checksum;
 	}
 	public final void setchecksum(String value)
 	{
-		privatechecksum = value;
+		checksum = value;
 	}
 
 	/** 
@@ -130,13 +142,13 @@ public class PackageVersionInfo
 	 
 	 <value>The target filename.</value>
 	*/
-	private String privatetargetFilename;
+	private String targetFilename;
 	public final String gettargetFilename()
 	{
-		return privatetargetFilename;
+		return targetFilename;
 	}
 	public final void settargetFilename(String value)
 	{
-		privatetargetFilename = value;
+		targetFilename = value;
 	}
 }

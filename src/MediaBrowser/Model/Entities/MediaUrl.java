@@ -2,31 +2,31 @@ package MediaBrowser.Model.Entities;
 
 public class MediaUrl
 {
-	private String privateUrl;
+	private String Url;
 	public final String getUrl()
 	{
-		return privateUrl;
+		return Url;
 	}
 	public final void setUrl(String value)
 	{
-		privateUrl = value;
+		Url = value;
 	}
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
-	private VideoSize privateVideoSize;
+	private VideoSize VideoSize;
 	public final VideoSize getVideoSize()
 	{
-		return privateVideoSize;
+		return VideoSize;
 	}
 	public final void setVideoSize(VideoSize value)
 	{
-		privateVideoSize = value;
+		VideoSize = value;
 	}
 }

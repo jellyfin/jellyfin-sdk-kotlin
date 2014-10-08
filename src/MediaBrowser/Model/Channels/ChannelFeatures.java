@@ -7,14 +7,14 @@ public class ChannelFeatures
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class ChannelFeatures
 	 
 	 <value>The identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -37,14 +37,14 @@ public class ChannelFeatures
 	 
 	 <value><c>true</c> if this instance can search; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateCanSearch;
+	private boolean CanSearch;
 	public final boolean getCanSearch()
 	{
-		return privateCanSearch;
+		return CanSearch;
 	}
 	public final void setCanSearch(boolean value)
 	{
-		privateCanSearch = value;
+		CanSearch = value;
 	}
 
 	/** 
@@ -52,14 +52,14 @@ public class ChannelFeatures
 	 
 	 <value>The media types.</value>
 	*/
-	private java.util.ArrayList<ChannelMediaType> privateMediaTypes;
+	private java.util.ArrayList<ChannelMediaType> MediaTypes;
 	public final java.util.ArrayList<ChannelMediaType> getMediaTypes()
 	{
-		return privateMediaTypes;
+		return MediaTypes;
 	}
 	public final void setMediaTypes(java.util.ArrayList<ChannelMediaType> value)
 	{
-		privateMediaTypes = value;
+		MediaTypes = value;
 	}
 
 	/** 
@@ -67,27 +67,27 @@ public class ChannelFeatures
 	 
 	 <value>The content types.</value>
 	*/
-	private java.util.ArrayList<ChannelMediaContentType> privateContentTypes;
+	private java.util.ArrayList<ChannelMediaContentType> ContentTypes;
 	public final java.util.ArrayList<ChannelMediaContentType> getContentTypes()
 	{
-		return privateContentTypes;
+		return ContentTypes;
 	}
 	public final void setContentTypes(java.util.ArrayList<ChannelMediaContentType> value)
 	{
-		privateContentTypes = value;
+		ContentTypes = value;
 	}
 
 	/** 
 	 Represents the maximum number of records the channel allows retrieving at a time
 	*/
-	private Integer privateMaxPageSize = null;
+	private Integer MaxPageSize = null;
 	public final Integer getMaxPageSize()
 	{
-		return privateMaxPageSize;
+		return MaxPageSize;
 	}
 	public final void setMaxPageSize(Integer value)
 	{
-		privateMaxPageSize = value;
+		MaxPageSize = value;
 	}
 
 	/** 
@@ -95,14 +95,14 @@ public class ChannelFeatures
 	 
 	 <value>The automatic refresh levels.</value>
 	*/
-	private Integer privateAutoRefreshLevels = null;
+	private Integer AutoRefreshLevels = null;
 	public final Integer getAutoRefreshLevels()
 	{
-		return privateAutoRefreshLevels;
+		return AutoRefreshLevels;
 	}
 	public final void setAutoRefreshLevels(Integer value)
 	{
-		privateAutoRefreshLevels = value;
+		AutoRefreshLevels = value;
 	}
 
 	/** 
@@ -110,27 +110,27 @@ public class ChannelFeatures
 	 
 	 <value>The default sort orders.</value>
 	*/
-	private java.util.ArrayList<ChannelItemSortField> privateDefaultSortFields;
+	private java.util.ArrayList<ChannelItemSortField> DefaultSortFields;
 	public final java.util.ArrayList<ChannelItemSortField> getDefaultSortFields()
 	{
-		return privateDefaultSortFields;
+		return DefaultSortFields;
 	}
 	public final void setDefaultSortFields(java.util.ArrayList<ChannelItemSortField> value)
 	{
-		privateDefaultSortFields = value;
+		DefaultSortFields = value;
 	}
 
 	/** 
 	 Indicates if a sort ascending/descending toggle is supported or not.
 	*/
-	private boolean privateSupportsSortOrderToggle;
+	private boolean SupportsSortOrderToggle;
 	public final boolean getSupportsSortOrderToggle()
 	{
-		return privateSupportsSortOrderToggle;
+		return SupportsSortOrderToggle;
 	}
 	public final void setSupportsSortOrderToggle(boolean value)
 	{
-		privateSupportsSortOrderToggle = value;
+		SupportsSortOrderToggle = value;
 	}
 
 	/** 
@@ -138,14 +138,14 @@ public class ChannelFeatures
 	 
 	 <value><c>true</c> if [supports latest media]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateSupportsLatestMedia;
+	private boolean SupportsLatestMedia;
 	public final boolean getSupportsLatestMedia()
 	{
-		return privateSupportsLatestMedia;
+		return SupportsLatestMedia;
 	}
 	public final void setSupportsLatestMedia(boolean value)
 	{
-		privateSupportsLatestMedia = value;
+		SupportsLatestMedia = value;
 	}
 
 	/** 
@@ -153,14 +153,14 @@ public class ChannelFeatures
 	 
 	 <value><c>true</c> if this instance can filter; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateCanFilter;
+	private boolean CanFilter;
 	public final boolean getCanFilter()
 	{
-		return privateCanFilter;
+		return CanFilter;
 	}
 	public final void setCanFilter(boolean value)
 	{
-		privateCanFilter = value;
+		CanFilter = value;
 	}
 
 	/** 
@@ -168,14 +168,14 @@ public class ChannelFeatures
 	 
 	 <value><c>true</c> if [supports content downloading]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateSupportsContentDownloading;
+	private boolean SupportsContentDownloading;
 	public final boolean getSupportsContentDownloading()
 	{
-		return privateSupportsContentDownloading;
+		return SupportsContentDownloading;
 	}
 	public final void setSupportsContentDownloading(boolean value)
 	{
-		privateSupportsContentDownloading = value;
+		SupportsContentDownloading = value;
 	}
 
 	public ChannelFeatures()

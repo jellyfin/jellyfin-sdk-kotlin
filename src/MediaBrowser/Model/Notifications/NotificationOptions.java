@@ -5,14 +5,14 @@ import MediaBrowser.Model.Extensions.*;
 
 public class NotificationOptions
 {
-	private NotificationOption[] privateOptions;
+	private NotificationOption[] Options;
 	public final NotificationOption[] getOptions()
 	{
-		return privateOptions;
+		return Options;
 	}
 	public final void setOptions(NotificationOption[] value)
 	{
-		privateOptions = value;
+		Options = value;
 	}
 
 	public NotificationOptions()

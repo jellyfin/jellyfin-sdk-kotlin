@@ -10,14 +10,14 @@ public class ItemReview
 	 
 	 <value>The name of the reviewer.</value>
 	*/
-	private String privateReviewerName;
+	private String ReviewerName;
 	public final String getReviewerName()
 	{
-		return privateReviewerName;
+		return ReviewerName;
 	}
 	public final void setReviewerName(String value)
 	{
-		privateReviewerName = value;
+		ReviewerName = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class ItemReview
 	 
 	 <value>The publisher.</value>
 	*/
-	private String privatePublisher;
+	private String Publisher;
 	public final String getPublisher()
 	{
-		return privatePublisher;
+		return Publisher;
 	}
 	public final void setPublisher(String value)
 	{
-		privatePublisher = value;
+		Publisher = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class ItemReview
 	 
 	 <value>The date.</value>
 	*/
-	private java.util.Date privateDate = new java.util.Date(0);
+	private java.util.Date Date = new java.util.Date(0);
 	public final java.util.Date getDate()
 	{
-		return privateDate;
+		return Date;
 	}
 	public final void setDate(java.util.Date value)
 	{
-		privateDate = value;
+		Date = value;
 	}
 
 	/** 
@@ -55,14 +55,14 @@ public class ItemReview
 	 
 	 <value>The score.</value>
 	*/
-	private Float privateScore = null;
+	private Float Score = null;
 	public final Float getScore()
 	{
-		return privateScore;
+		return Score;
 	}
 	public final void setScore(Float value)
 	{
-		privateScore = value;
+		Score = value;
 	}
 
 	/** 
@@ -70,14 +70,14 @@ public class ItemReview
 	 
 	 <value><c>null</c> if [likes] contains no value, <c>true</c> if [likes]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateLikes = null;
+	private Boolean Likes = null;
 	public final Boolean getLikes()
 	{
-		return privateLikes;
+		return Likes;
 	}
 	public final void setLikes(Boolean value)
 	{
-		privateLikes = value;
+		Likes = value;
 	}
 
 	/** 
@@ -85,14 +85,14 @@ public class ItemReview
 	 
 	 <value>The URL.</value>
 	*/
-	private String privateUrl;
+	private String Url;
 	public final String getUrl()
 	{
-		return privateUrl;
+		return Url;
 	}
 	public final void setUrl(String value)
 	{
-		privateUrl = value;
+		Url = value;
 	}
 
 	/** 
@@ -100,13 +100,13 @@ public class ItemReview
 	 
 	 <value>The caption.</value>
 	*/
-	private String privateCaption;
+	private String Caption;
 	public final String getCaption()
 	{
-		return privateCaption;
+		return Caption;
 	}
 	public final void setCaption(String value)
 	{
-		privateCaption = value;
+		Caption = value;
 	}
 }

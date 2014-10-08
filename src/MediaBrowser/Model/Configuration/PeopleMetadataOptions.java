@@ -1,73 +1,69 @@
 package MediaBrowser.Model.Configuration;
 
-import MediaBrowser.Model.Entities.*;
-import MediaBrowser.Model.FileOrganization.*;
-import MediaBrowser.Model.LiveTv.*;
-
 public class PeopleMetadataOptions
 {
-	private boolean privateDownloadActorMetadata;
+	private boolean DownloadActorMetadata;
 	public final boolean getDownloadActorMetadata()
 	{
-		return privateDownloadActorMetadata;
+		return DownloadActorMetadata;
 	}
 	public final void setDownloadActorMetadata(boolean value)
 	{
-		privateDownloadActorMetadata = value;
+		DownloadActorMetadata = value;
 	}
-	private boolean privateDownloadDirectorMetadata;
+	private boolean DownloadDirectorMetadata;
 	public final boolean getDownloadDirectorMetadata()
 	{
-		return privateDownloadDirectorMetadata;
+		return DownloadDirectorMetadata;
 	}
 	public final void setDownloadDirectorMetadata(boolean value)
 	{
-		privateDownloadDirectorMetadata = value;
+		DownloadDirectorMetadata = value;
 	}
-	private boolean privateDownloadProducerMetadata;
+	private boolean DownloadProducerMetadata;
 	public final boolean getDownloadProducerMetadata()
 	{
-		return privateDownloadProducerMetadata;
+		return DownloadProducerMetadata;
 	}
 	public final void setDownloadProducerMetadata(boolean value)
 	{
-		privateDownloadProducerMetadata = value;
+		DownloadProducerMetadata = value;
 	}
-	private boolean privateDownloadWriterMetadata;
+	private boolean DownloadWriterMetadata;
 	public final boolean getDownloadWriterMetadata()
 	{
-		return privateDownloadWriterMetadata;
+		return DownloadWriterMetadata;
 	}
 	public final void setDownloadWriterMetadata(boolean value)
 	{
-		privateDownloadWriterMetadata = value;
+		DownloadWriterMetadata = value;
 	}
-	private boolean privateDownloadComposerMetadata;
+	private boolean DownloadComposerMetadata;
 	public final boolean getDownloadComposerMetadata()
 	{
-		return privateDownloadComposerMetadata;
+		return DownloadComposerMetadata;
 	}
 	public final void setDownloadComposerMetadata(boolean value)
 	{
-		privateDownloadComposerMetadata = value;
+		DownloadComposerMetadata = value;
 	}
-	private boolean privateDownloadOtherPeopleMetadata;
+	private boolean DownloadOtherPeopleMetadata;
 	public final boolean getDownloadOtherPeopleMetadata()
 	{
-		return privateDownloadOtherPeopleMetadata;
+		return DownloadOtherPeopleMetadata;
 	}
 	public final void setDownloadOtherPeopleMetadata(boolean value)
 	{
-		privateDownloadOtherPeopleMetadata = value;
+		DownloadOtherPeopleMetadata = value;
 	}
-	private boolean privateDownloadGuestStarMetadata;
+	private boolean DownloadGuestStarMetadata;
 	public final boolean getDownloadGuestStarMetadata()
 	{
-		return privateDownloadGuestStarMetadata;
+		return DownloadGuestStarMetadata;
 	}
 	public final void setDownloadGuestStarMetadata(boolean value)
 	{
-		privateDownloadGuestStarMetadata = value;
+		DownloadGuestStarMetadata = value;
 	}
 
 	public PeopleMetadataOptions()

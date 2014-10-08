@@ -14,14 +14,14 @@ public class MediaStream
 	 
 	 <value>The codec.</value>
 	*/
-	private String privateCodec;
+	private String Codec;
 	public final String getCodec()
 	{
-		return privateCodec;
+		return Codec;
 	}
 	public final void setCodec(String value)
 	{
-		privateCodec = value;
+		Codec = value;
 	}
 
 	/** 
@@ -29,14 +29,14 @@ public class MediaStream
 	 
 	 <value>The language.</value>
 	*/
-	private String privateLanguage;
+	private String Language;
 	public final String getLanguage()
 	{
-		return privateLanguage;
+		return Language;
 	}
 	public final void setLanguage(String value)
 	{
-		privateLanguage = value;
+		Language = value;
 	}
 
 	/** 
@@ -44,14 +44,14 @@ public class MediaStream
 	 
 	 <value><c>true</c> if this instance is interlaced; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsInterlaced;
+	private boolean IsInterlaced;
 	public final boolean getIsInterlaced()
 	{
-		return privateIsInterlaced;
+		return IsInterlaced;
 	}
 	public final void setIsInterlaced(boolean value)
 	{
-		privateIsInterlaced = value;
+		IsInterlaced = value;
 	}
 
 	/** 
@@ -59,14 +59,14 @@ public class MediaStream
 	 
 	 <value>The channel layout.</value>
 	*/
-	private String privateChannelLayout;
+	private String ChannelLayout;
 	public final String getChannelLayout()
 	{
-		return privateChannelLayout;
+		return ChannelLayout;
 	}
 	public final void setChannelLayout(String value)
 	{
-		privateChannelLayout = value;
+		ChannelLayout = value;
 	}
 
 	/** 
@@ -74,14 +74,14 @@ public class MediaStream
 	 
 	 <value>The bit rate.</value>
 	*/
-	private Integer privateBitRate = null;
+	private Integer BitRate = null;
 	public final Integer getBitRate()
 	{
-		return privateBitRate;
+		return BitRate;
 	}
 	public final void setBitRate(Integer value)
 	{
-		privateBitRate = value;
+		BitRate = value;
 	}
 
 	/** 
@@ -89,14 +89,14 @@ public class MediaStream
 	 
 	 <value>The bit depth.</value>
 	*/
-	private Integer privateBitDepth = null;
+	private Integer BitDepth = null;
 	public final Integer getBitDepth()
 	{
-		return privateBitDepth;
+		return BitDepth;
 	}
 	public final void setBitDepth(Integer value)
 	{
-		privateBitDepth = value;
+		BitDepth = value;
 	}
 
 	/** 
@@ -104,14 +104,14 @@ public class MediaStream
 	 
 	 <value>The reference frames.</value>
 	*/
-	private Integer privateRefFrames = null;
+	private Integer RefFrames = null;
 	public final Integer getRefFrames()
 	{
-		return privateRefFrames;
+		return RefFrames;
 	}
 	public final void setRefFrames(Integer value)
 	{
-		privateRefFrames = value;
+		RefFrames = value;
 	}
 
 	/** 
@@ -119,14 +119,14 @@ public class MediaStream
 	 
 	 <value>The length of the packet.</value>
 	*/
-	private Integer privatePacketLength = null;
+	private Integer PacketLength = null;
 	public final Integer getPacketLength()
 	{
-		return privatePacketLength;
+		return PacketLength;
 	}
 	public final void setPacketLength(Integer value)
 	{
-		privatePacketLength = value;
+		PacketLength = value;
 	}
 
 	/** 
@@ -134,14 +134,14 @@ public class MediaStream
 	 
 	 <value>The channels.</value>
 	*/
-	private Integer privateChannels = null;
+	private Integer Channels = null;
 	public final Integer getChannels()
 	{
-		return privateChannels;
+		return Channels;
 	}
 	public final void setChannels(Integer value)
 	{
-		privateChannels = value;
+		Channels = value;
 	}
 
 	/** 
@@ -149,14 +149,14 @@ public class MediaStream
 	 
 	 <value>The sample rate.</value>
 	*/
-	private Integer privateSampleRate = null;
+	private Integer SampleRate = null;
 	public final Integer getSampleRate()
 	{
-		return privateSampleRate;
+		return SampleRate;
 	}
 	public final void setSampleRate(Integer value)
 	{
-		privateSampleRate = value;
+		SampleRate = value;
 	}
 
 	/** 
@@ -164,14 +164,14 @@ public class MediaStream
 	 
 	 <value><c>true</c> if this instance is default; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsDefault;
+	private boolean IsDefault;
 	public final boolean getIsDefault()
 	{
-		return privateIsDefault;
+		return IsDefault;
 	}
 	public final void setIsDefault(boolean value)
 	{
-		privateIsDefault = value;
+		IsDefault = value;
 	}
 
 	/** 
@@ -179,14 +179,14 @@ public class MediaStream
 	 
 	 <value><c>true</c> if this instance is forced; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsForced;
+	private boolean IsForced;
 	public final boolean getIsForced()
 	{
-		return privateIsForced;
+		return IsForced;
 	}
 	public final void setIsForced(boolean value)
 	{
-		privateIsForced = value;
+		IsForced = value;
 	}
 
 	/** 
@@ -194,14 +194,14 @@ public class MediaStream
 	 
 	 <value>The height.</value>
 	*/
-	private Integer privateHeight = null;
+	private Integer Height = null;
 	public final Integer getHeight()
 	{
-		return privateHeight;
+		return Height;
 	}
 	public final void setHeight(Integer value)
 	{
-		privateHeight = value;
+		Height = value;
 	}
 
 	/** 
@@ -209,14 +209,14 @@ public class MediaStream
 	 
 	 <value>The width.</value>
 	*/
-	private Integer privateWidth = null;
+	private Integer Width = null;
 	public final Integer getWidth()
 	{
-		return privateWidth;
+		return Width;
 	}
 	public final void setWidth(Integer value)
 	{
-		privateWidth = value;
+		Width = value;
 	}
 
 	/** 
@@ -224,14 +224,14 @@ public class MediaStream
 	 
 	 <value>The average frame rate.</value>
 	*/
-	private Float privateAverageFrameRate = null;
+	private Float AverageFrameRate = null;
 	public final Float getAverageFrameRate()
 	{
-		return privateAverageFrameRate;
+		return AverageFrameRate;
 	}
 	public final void setAverageFrameRate(Float value)
 	{
-		privateAverageFrameRate = value;
+		AverageFrameRate = value;
 	}
 
 	/** 
@@ -239,14 +239,14 @@ public class MediaStream
 	 
 	 <value>The real frame rate.</value>
 	*/
-	private Float privateRealFrameRate = null;
+	private Float RealFrameRate = null;
 	public final Float getRealFrameRate()
 	{
-		return privateRealFrameRate;
+		return RealFrameRate;
 	}
 	public final void setRealFrameRate(Float value)
 	{
-		privateRealFrameRate = value;
+		RealFrameRate = value;
 	}
 
 	/** 
@@ -254,14 +254,14 @@ public class MediaStream
 	 
 	 <value>The profile.</value>
 	*/
-	private String privateProfile;
+	private String Profile;
 	public final String getProfile()
 	{
-		return privateProfile;
+		return Profile;
 	}
 	public final void setProfile(String value)
 	{
-		privateProfile = value;
+		Profile = value;
 	}
 
 	/** 
@@ -269,14 +269,14 @@ public class MediaStream
 	 
 	 <value>The type.</value>
 	*/
-	private MediaStreamType privateType = MediaStreamType.values()[0];
+	private MediaStreamType Type = MediaStreamType.values()[0];
 	public final MediaStreamType getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(MediaStreamType value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
 	/** 
@@ -284,14 +284,14 @@ public class MediaStream
 	 
 	 <value>The aspect ratio.</value>
 	*/
-	private String privateAspectRatio;
+	private String AspectRatio;
 	public final String getAspectRatio()
 	{
-		return privateAspectRatio;
+		return AspectRatio;
 	}
 	public final void setAspectRatio(String value)
 	{
-		privateAspectRatio = value;
+		AspectRatio = value;
 	}
 
 	/** 
@@ -299,14 +299,14 @@ public class MediaStream
 	 
 	 <value>The index.</value>
 	*/
-	private int privateIndex;
+	private int Index;
 	public final int getIndex()
 	{
-		return privateIndex;
+		return Index;
 	}
 	public final void setIndex(int value)
 	{
-		privateIndex = value;
+		Index = value;
 	}
 
 	/** 
@@ -314,14 +314,14 @@ public class MediaStream
 	 
 	 <value><c>true</c> if this instance is external; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsExternal;
+	private boolean IsExternal;
 	public final boolean getIsExternal()
 	{
-		return privateIsExternal;
+		return IsExternal;
 	}
 	public final void setIsExternal(boolean value)
 	{
-		privateIsExternal = value;
+		IsExternal = value;
 	}
 
 	public final boolean getIsTextSubtitleStream()
@@ -345,14 +345,14 @@ public class MediaStream
 	 
 	 <value>The filename.</value>
 	*/
-	private String privatePath;
+	private String Path;
 	public final String getPath()
 	{
-		return privatePath;
+		return Path;
 	}
 	public final void setPath(String value)
 	{
-		privatePath = value;
+		Path = value;
 	}
 
 	/** 
@@ -360,14 +360,14 @@ public class MediaStream
 	 
 	 <value>The pixel format.</value>
 	*/
-	private String privatePixelFormat;
+	private String PixelFormat;
 	public final String getPixelFormat()
 	{
-		return privatePixelFormat;
+		return PixelFormat;
 	}
 	public final void setPixelFormat(String value)
 	{
-		privatePixelFormat = value;
+		PixelFormat = value;
 	}
 
 	/** 
@@ -375,14 +375,14 @@ public class MediaStream
 	 
 	 <value>The level.</value>
 	*/
-	private Double privateLevel = null;
+	private Double Level = null;
 	public final Double getLevel()
 	{
-		return privateLevel;
+		return Level;
 	}
 	public final void setLevel(Double value)
 	{
-		privateLevel = value;
+		Level = value;
 	}
 
 	/** 
@@ -390,13 +390,13 @@ public class MediaStream
 	 
 	 <value><c>true</c> if this instance is anamorphic; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsAnamorphic = null;
+	private Boolean IsAnamorphic = null;
 	public final Boolean getIsAnamorphic()
 	{
-		return privateIsAnamorphic;
+		return IsAnamorphic;
 	}
 	public final void setIsAnamorphic(Boolean value)
 	{
-		privateIsAnamorphic = value;
+		IsAnamorphic = value;
 	}
 }

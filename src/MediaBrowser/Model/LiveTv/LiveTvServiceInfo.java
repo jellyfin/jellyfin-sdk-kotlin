@@ -10,14 +10,14 @@ public class LiveTvServiceInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class LiveTvServiceInfo
 	 
 	 <value>The home page URL.</value>
 	*/
-	private String privateHomePageUrl;
+	private String HomePageUrl;
 	public final String getHomePageUrl()
 	{
-		return privateHomePageUrl;
+		return HomePageUrl;
 	}
 	public final void setHomePageUrl(String value)
 	{
-		privateHomePageUrl = value;
+		HomePageUrl = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class LiveTvServiceInfo
 	 
 	 <value>The status.</value>
 	*/
-	private LiveTvServiceStatus privateStatus = LiveTvServiceStatus.values()[0];
+	private LiveTvServiceStatus Status = LiveTvServiceStatus.values()[0];
 	public final LiveTvServiceStatus getStatus()
 	{
-		return privateStatus;
+		return Status;
 	}
 	public final void setStatus(LiveTvServiceStatus value)
 	{
-		privateStatus = value;
+		Status = value;
 	}
 
 	/** 
@@ -55,14 +55,14 @@ public class LiveTvServiceInfo
 	 
 	 <value>The status message.</value>
 	*/
-	private String privateStatusMessage;
+	private String StatusMessage;
 	public final String getStatusMessage()
 	{
-		return privateStatusMessage;
+		return StatusMessage;
 	}
 	public final void setStatusMessage(String value)
 	{
-		privateStatusMessage = value;
+		StatusMessage = value;
 	}
 
 	/** 
@@ -70,14 +70,14 @@ public class LiveTvServiceInfo
 	 
 	 <value>The version.</value>
 	*/
-	private String privateVersion;
+	private String Version;
 	public final String getVersion()
 	{
-		return privateVersion;
+		return Version;
 	}
 	public final void setVersion(String value)
 	{
-		privateVersion = value;
+		Version = value;
 	}
 
 	/** 
@@ -85,24 +85,24 @@ public class LiveTvServiceInfo
 	 
 	 <value><c>true</c> if this instance has update available; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateHasUpdateAvailable;
+	private boolean HasUpdateAvailable;
 	public final boolean getHasUpdateAvailable()
 	{
-		return privateHasUpdateAvailable;
+		return HasUpdateAvailable;
 	}
 	public final void setHasUpdateAvailable(boolean value)
 	{
-		privateHasUpdateAvailable = value;
+		HasUpdateAvailable = value;
 	}
 
-	private java.util.ArrayList<LiveTvTunerInfoDto> privateTuners;
+	private java.util.ArrayList<LiveTvTunerInfoDto> Tuners;
 	public final java.util.ArrayList<LiveTvTunerInfoDto> getTuners()
 	{
-		return privateTuners;
+		return Tuners;
 	}
 	public final void setTuners(java.util.ArrayList<LiveTvTunerInfoDto> value)
 	{
-		privateTuners = value;
+		Tuners = value;
 	}
 
 	public LiveTvServiceInfo()

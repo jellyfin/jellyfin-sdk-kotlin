@@ -10,14 +10,14 @@ public class GameSystemSummary
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class GameSystemSummary
 	 
 	 <value>The name.</value>
 	*/
-	private String privateDisplayName;
+	private String DisplayName;
 	public final String getDisplayName()
 	{
-		return privateDisplayName;
+		return DisplayName;
 	}
 	public final void setDisplayName(String value)
 	{
-		privateDisplayName = value;
+		DisplayName = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class GameSystemSummary
 	 
 	 <value>The game count.</value>
 	*/
-	private int privateGameCount;
+	private int GameCount;
 	public final int getGameCount()
 	{
-		return privateGameCount;
+		return GameCount;
 	}
 	public final void setGameCount(int value)
 	{
-		privateGameCount = value;
+		GameCount = value;
 	}
 
 	/** 
@@ -55,14 +55,14 @@ public class GameSystemSummary
 	 
 	 <value>The game extensions.</value>
 	*/
-	private java.util.ArrayList<String> privateGameFileExtensions;
+	private java.util.ArrayList<String> GameFileExtensions;
 	public final java.util.ArrayList<String> getGameFileExtensions()
 	{
-		return privateGameFileExtensions;
+		return GameFileExtensions;
 	}
 	public final void setGameFileExtensions(java.util.ArrayList<String> value)
 	{
-		privateGameFileExtensions = value;
+		GameFileExtensions = value;
 	}
 
 	/** 
@@ -70,14 +70,14 @@ public class GameSystemSummary
 	 
 	 <value>The client installed game count.</value>
 	*/
-	private int privateClientInstalledGameCount;
+	private int ClientInstalledGameCount;
 	public final int getClientInstalledGameCount()
 	{
-		return privateClientInstalledGameCount;
+		return ClientInstalledGameCount;
 	}
 	public final void setClientInstalledGameCount(int value)
 	{
-		privateClientInstalledGameCount = value;
+		ClientInstalledGameCount = value;
 	}
 
 	/** 

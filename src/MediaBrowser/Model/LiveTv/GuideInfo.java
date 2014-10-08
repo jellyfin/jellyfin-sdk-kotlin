@@ -7,14 +7,14 @@ public class GuideInfo
 	 
 	 <value>The start date.</value>
 	*/
-	private java.util.Date privateStartDate = new java.util.Date(0);
+	private java.util.Date StartDate = new java.util.Date(0);
 	public final java.util.Date getStartDate()
 	{
-		return privateStartDate;
+		return StartDate;
 	}
 	public final void setStartDate(java.util.Date value)
 	{
-		privateStartDate = value;
+		StartDate = value;
 	}
 
 	/** 
@@ -22,13 +22,13 @@ public class GuideInfo
 	 
 	 <value>The end date.</value>
 	*/
-	private java.util.Date privateEndDate = new java.util.Date(0);
+	private java.util.Date EndDate = new java.util.Date(0);
 	public final java.util.Date getEndDate()
 	{
-		return privateEndDate;
+		return EndDate;
 	}
 	public final void setEndDate(java.util.Date value)
 	{
-		privateEndDate = value;
+		EndDate = value;
 	}
 }

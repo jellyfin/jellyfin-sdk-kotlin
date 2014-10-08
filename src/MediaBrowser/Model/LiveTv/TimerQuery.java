@@ -7,14 +7,14 @@ public class TimerQuery
 	 
 	 <value>The channel identifier.</value>
 	*/
-	private String privateChannelId;
+	private String ChannelId;
 	public final String getChannelId()
 	{
-		return privateChannelId;
+		return ChannelId;
 	}
 	public final void setChannelId(String value)
 	{
-		privateChannelId = value;
+		ChannelId = value;
 	}
 
 	/** 
@@ -22,13 +22,13 @@ public class TimerQuery
 	 
 	 <value>The series timer identifier.</value>
 	*/
-	private String privateSeriesTimerId;
+	private String SeriesTimerId;
 	public final String getSeriesTimerId()
 	{
-		return privateSeriesTimerId;
+		return SeriesTimerId;
 	}
 	public final void setSeriesTimerId(String value)
 	{
-		privateSeriesTimerId = value;
+		SeriesTimerId = value;
 	}
 }

@@ -10,28 +10,28 @@ public class LibraryUpdateInfo
 	 
 	 <value>The folders added to.</value>
 	*/
-	private java.util.ArrayList<String> privateFoldersAddedTo;
+	private java.util.ArrayList<String> FoldersAddedTo;
 	public final java.util.ArrayList<String> getFoldersAddedTo()
 	{
-		return privateFoldersAddedTo;
+		return FoldersAddedTo;
 	}
 	public final void setFoldersAddedTo(java.util.ArrayList<String> value)
 	{
-		privateFoldersAddedTo = value;
+		FoldersAddedTo = value;
 	}
 	/** 
 	 Gets or sets the folders removed from.
 	 
 	 <value>The folders removed from.</value>
 	*/
-	private java.util.ArrayList<String> privateFoldersRemovedFrom;
+	private java.util.ArrayList<String> FoldersRemovedFrom;
 	public final java.util.ArrayList<String> getFoldersRemovedFrom()
 	{
-		return privateFoldersRemovedFrom;
+		return FoldersRemovedFrom;
 	}
 	public final void setFoldersRemovedFrom(java.util.ArrayList<String> value)
 	{
-		privateFoldersRemovedFrom = value;
+		FoldersRemovedFrom = value;
 	}
 
 	/** 
@@ -39,14 +39,14 @@ public class LibraryUpdateInfo
 	 
 	 <value>The items added.</value>
 	*/
-	private java.util.ArrayList<String> privateItemsAdded;
+	private java.util.ArrayList<String> ItemsAdded;
 	public final java.util.ArrayList<String> getItemsAdded()
 	{
-		return privateItemsAdded;
+		return ItemsAdded;
 	}
 	public final void setItemsAdded(java.util.ArrayList<String> value)
 	{
-		privateItemsAdded = value;
+		ItemsAdded = value;
 	}
 
 	/** 
@@ -54,14 +54,14 @@ public class LibraryUpdateInfo
 	 
 	 <value>The items removed.</value>
 	*/
-	private java.util.ArrayList<String> privateItemsRemoved;
+	private java.util.ArrayList<String> ItemsRemoved;
 	public final java.util.ArrayList<String> getItemsRemoved()
 	{
-		return privateItemsRemoved;
+		return ItemsRemoved;
 	}
 	public final void setItemsRemoved(java.util.ArrayList<String> value)
 	{
-		privateItemsRemoved = value;
+		ItemsRemoved = value;
 	}
 
 	/** 
@@ -69,14 +69,14 @@ public class LibraryUpdateInfo
 	 
 	 <value>The items updated.</value>
 	*/
-	private java.util.ArrayList<String> privateItemsUpdated;
+	private java.util.ArrayList<String> ItemsUpdated;
 	public final java.util.ArrayList<String> getItemsUpdated()
 	{
-		return privateItemsUpdated;
+		return ItemsUpdated;
 	}
 	public final void setItemsUpdated(java.util.ArrayList<String> value)
 	{
-		privateItemsUpdated = value;
+		ItemsUpdated = value;
 	}
 
 	/** 

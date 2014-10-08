@@ -12,27 +12,27 @@ public class WebSocketMessage<T>
 	 
 	 <value>The type of the message.</value>
 	*/
-	private String privateMessageType;
+	private String MessageType;
 	public final String getMessageType()
 	{
-		return privateMessageType;
+		return MessageType;
 	}
 	public final void setMessageType(String value)
 	{
-		privateMessageType = value;
+		MessageType = value;
 	}
 	/** 
 	 Gets or sets the data.
 	 
 	 <value>The data.</value>
 	*/
-	private T privateData;
+	private T Data;
 	public final T getData()
 	{
-		return privateData;
+		return Data;
 	}
 	public final void setData(T value)
 	{
-		privateData = value;
+		Data = value;
 	}
 }

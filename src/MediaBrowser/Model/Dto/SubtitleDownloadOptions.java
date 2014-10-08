@@ -7,14 +7,14 @@ public class SubtitleDownloadOptions
 	 
 	 <value>The item identifier.</value>
 	*/
-	private String privateItemId;
+	private String ItemId;
 	public final String getItemId()
 	{
-		return privateItemId;
+		return ItemId;
 	}
 	public final void setItemId(String value)
 	{
-		privateItemId = value;
+		ItemId = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class SubtitleDownloadOptions
 	 
 	 <value>The media source identifier.</value>
 	*/
-	private String privateMediaSourceId;
+	private String MediaSourceId;
 	public final String getMediaSourceId()
 	{
-		return privateMediaSourceId;
+		return MediaSourceId;
 	}
 	public final void setMediaSourceId(String value)
 	{
-		privateMediaSourceId = value;
+		MediaSourceId = value;
 	}
 
 	/** 
@@ -37,14 +37,14 @@ public class SubtitleDownloadOptions
 	 
 	 <value>The index of the stream.</value>
 	*/
-	private int privateStreamIndex;
+	private int StreamIndex;
 	public final int getStreamIndex()
 	{
-		return privateStreamIndex;
+		return StreamIndex;
 	}
 	public final void setStreamIndex(int value)
 	{
-		privateStreamIndex = value;
+		StreamIndex = value;
 	}
 
 	/** 
@@ -52,13 +52,13 @@ public class SubtitleDownloadOptions
 	 
 	 <value>The format.</value>
 	*/
-	private String privateFormat;
+	private String Format;
 	public final String getFormat()
 	{
-		return privateFormat;
+		return Format;
 	}
 	public final void setFormat(String value)
 	{
-		privateFormat = value;
+		Format = value;
 	}
 }

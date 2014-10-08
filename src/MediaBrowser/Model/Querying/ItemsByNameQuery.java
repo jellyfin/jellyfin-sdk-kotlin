@@ -12,98 +12,98 @@ public class ItemsByNameQuery
 	 
 	 <value>The user id.</value>
 	*/
-	private String privateUserId;
+	private String UserId;
 	public final String getUserId()
 	{
-		return privateUserId;
+		return UserId;
 	}
 	public final void setUserId(String value)
 	{
-		privateUserId = value;
+		UserId = value;
 	}
 	/** 
 	 Gets or sets the start index.
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer privateStartIndex;
+	private Integer StartIndex;
 	public final Integer getStartIndex()
 	{
-		return privateStartIndex;
+		return StartIndex;
 	}
 	public final void setStartIndex(Integer value)
 	{
-		privateStartIndex = value;
+		StartIndex = value;
 	}
 	/** 
 	 Gets or sets the size of the page.
 	 
 	 <value>The size of the page.</value>
 	*/
-	private Integer privateLimit;
+	private Integer Limit;
 	public final Integer getLimit()
 	{
-		return privateLimit;
+		return Limit;
 	}
 	public final void setLimit(Integer value)
 	{
-		privateLimit = value;
+		Limit = value;
 	}
 	/** 
 	 Gets or sets a value indicating whether this <see cref="ItemsByNameQuery" /> is recursive.
 	 
 	 <value><c>true</c> if recursive; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateRecursive;
+	private boolean Recursive;
 	public final boolean getRecursive()
 	{
-		return privateRecursive;
+		return Recursive;
 	}
 	public final void setRecursive(boolean value)
 	{
-		privateRecursive = value;
+		Recursive = value;
 	}
 	/** 
 	 Gets or sets the sort order.
 	 
 	 <value>The sort order.</value>
 	*/
-	private SortOrder privateSortOrder;
+	private SortOrder SortOrder;
 	public final SortOrder getSortOrder()
 	{
-		return privateSortOrder;
+		return SortOrder;
 	}
 	public final void setSortOrder(SortOrder value)
 	{
-		privateSortOrder = value;
+		SortOrder = value;
 	}
 	/** 
 	 Gets or sets the parent id.
 	 
 	 <value>The parent id.</value>
 	*/
-	private String privateParentId;
+	private String ParentId;
 	public final String getParentId()
 	{
-		return privateParentId;
+		return ParentId;
 	}
 	public final void setParentId(String value)
 	{
-		privateParentId = value;
+		ParentId = value;
 	}
 	/** 
 	 Fields to return within the items, in addition to basic information
 	 
 	 <value>The fields.</value>
 	*/
-	private ItemFields[] privateFields;
+	private ItemFields[] Fields;
 	public final ItemFields[] getFields()
 	{
-		return privateFields;
+		return Fields;
 	}
 	public final void setFields(ItemFields[] value)
 	{
-		privateFields = value;
+		Fields = value;
 	}
 
 	/** 
@@ -111,14 +111,14 @@ public class ItemsByNameQuery
 	 
 	 <value>The filters.</value>
 	*/
-	private ItemFilter[] privateFilters;
+	private ItemFilter[] Filters;
 	public final ItemFilter[] getFilters()
 	{
-		return privateFilters;
+		return Filters;
 	}
 	public final void setFilters(ItemFilter[] value)
 	{
-		privateFilters = value;
+		Filters = value;
 	}
 
 	/** 
@@ -126,14 +126,14 @@ public class ItemsByNameQuery
 	 
 	 <value>The exclude item types.</value>
 	*/
-	private String[] privateExcludeItemTypes;
+	private String[] ExcludeItemTypes;
 	public final String[] getExcludeItemTypes()
 	{
-		return privateExcludeItemTypes;
+		return ExcludeItemTypes;
 	}
 	public final void setExcludeItemTypes(String[] value)
 	{
-		privateExcludeItemTypes = value;
+		ExcludeItemTypes = value;
 	}
 
 	/** 
@@ -141,14 +141,14 @@ public class ItemsByNameQuery
 	 
 	 <value>The include item types.</value>
 	*/
-	private String[] privateIncludeItemTypes;
+	private String[] IncludeItemTypes;
 	public final String[] getIncludeItemTypes()
 	{
-		return privateIncludeItemTypes;
+		return IncludeItemTypes;
 	}
 	public final void setIncludeItemTypes(String[] value)
 	{
-		privateIncludeItemTypes = value;
+		IncludeItemTypes = value;
 	}
 
 	/** 
@@ -156,14 +156,14 @@ public class ItemsByNameQuery
 	 
 	 <value>The media types.</value>
 	*/
-	private String[] privateMediaTypes;
+	private String[] MediaTypes;
 	public final String[] getMediaTypes()
 	{
-		return privateMediaTypes;
+		return MediaTypes;
 	}
 	public final void setMediaTypes(String[] value)
 	{
-		privateMediaTypes = value;
+		MediaTypes = value;
 	}
 
 	/** 
@@ -171,14 +171,14 @@ public class ItemsByNameQuery
 	 
 	 <value>The sort by.</value>
 	*/
-	private String[] privateSortBy;
+	private String[] SortBy;
 	public final String[] getSortBy()
 	{
-		return privateSortBy;
+		return SortBy;
 	}
 	public final void setSortBy(String[] value)
 	{
-		privateSortBy = value;
+		SortBy = value;
 	}
 
 	/** 
@@ -186,14 +186,14 @@ public class ItemsByNameQuery
 	 
 	 <value>The image types.</value>
 	*/
-	private ImageType[] privateImageTypes;
+	private ImageType[] ImageTypes;
 	public final ImageType[] getImageTypes()
 	{
-		return privateImageTypes;
+		return ImageTypes;
 	}
 	public final void setImageTypes(ImageType[] value)
 	{
-		privateImageTypes = value;
+		ImageTypes = value;
 	}
 
 	/** 
@@ -201,14 +201,14 @@ public class ItemsByNameQuery
 	 
 	 <value>The name starts with or greater.</value>
 	*/
-	private String privateNameStartsWithOrGreater;
+	private String NameStartsWithOrGreater;
 	public final String getNameStartsWithOrGreater()
 	{
-		return privateNameStartsWithOrGreater;
+		return NameStartsWithOrGreater;
 	}
 	public final void setNameStartsWithOrGreater(String value)
 	{
-		privateNameStartsWithOrGreater = value;
+		NameStartsWithOrGreater = value;
 	}
 
 	/** 
@@ -216,28 +216,28 @@ public class ItemsByNameQuery
 	 
 	 <value>The name starts with or greater.</value>
 	*/
-	private String privateNameStartsWith;
+	private String NameStartsWith;
 	public final String getNameStartsWith()
 	{
-		return privateNameStartsWith;
+		return NameStartsWith;
 	}
 	public final void setNameStartsWith(String value)
 	{
-		privateNameStartsWith = value;
+		NameStartsWith = value;
 	}
 	/** 
 	 Gets or sets the name less than.
 	 
 	 <value>The name less than.</value>
 	*/
-	private String privateNameLessThan;
+	private String NameLessThan;
 	public final String getNameLessThan()
 	{
-		return privateNameLessThan;
+		return NameLessThan;
 	}
 	public final void setNameLessThan(String value)
 	{
-		privateNameLessThan = value;
+		NameLessThan = value;
 	}
 
 	/** 
@@ -245,14 +245,14 @@ public class ItemsByNameQuery
 	 
 	 <value><c>null</c> if [is played] contains no value, <c>true</c> if [is played]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsPlayed;
+	private Boolean IsPlayed;
 	public final Boolean getIsPlayed()
 	{
-		return privateIsPlayed;
+		return IsPlayed;
 	}
 	public final void setIsPlayed(Boolean value)
 	{
-		privateIsPlayed = value;
+		IsPlayed = value;
 	}
 
 	/** 

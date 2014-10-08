@@ -15,13 +15,13 @@ public class PlaybackStartInfo extends PlaybackProgressInfo
 	 
 	 <value>The queueable media types.</value>
 	*/
-	private java.util.ArrayList<String> privateQueueableMediaTypes;
+	private java.util.ArrayList<String> QueueableMediaTypes;
 	public final java.util.ArrayList<String> getQueueableMediaTypes()
 	{
-		return privateQueueableMediaTypes;
+		return QueueableMediaTypes;
 	}
 	public final void setQueueableMediaTypes(java.util.ArrayList<String> value)
 	{
-		privateQueueableMediaTypes = value;
+		QueueableMediaTypes = value;
 	}
 }

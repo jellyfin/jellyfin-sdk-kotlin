@@ -12,14 +12,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	/** 
 	 Id of the recording.
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -27,14 +27,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The primary image aspect ratio.</value>
 	*/
-	private Double privatePrimaryImageAspectRatio = null;
+	private Double PrimaryImageAspectRatio = null;
 	public final Double getPrimaryImageAspectRatio()
 	{
-		return privatePrimaryImageAspectRatio;
+		return PrimaryImageAspectRatio;
 	}
 	public final void setPrimaryImageAspectRatio(Double value)
 	{
-		privatePrimaryImageAspectRatio = value;
+		PrimaryImageAspectRatio = value;
 	}
 
 	/** 
@@ -42,14 +42,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The original primary image aspect ratio.</value>
 	*/
-	private Double privateOriginalPrimaryImageAspectRatio = null;
+	private Double OriginalPrimaryImageAspectRatio = null;
 	public final Double getOriginalPrimaryImageAspectRatio()
 	{
-		return privateOriginalPrimaryImageAspectRatio;
+		return OriginalPrimaryImageAspectRatio;
 	}
 	public final void setOriginalPrimaryImageAspectRatio(Double value)
 	{
-		privateOriginalPrimaryImageAspectRatio = value;
+		OriginalPrimaryImageAspectRatio = value;
 	}
 
 	/** 
@@ -57,14 +57,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The series timer identifier.</value>
 	*/
-	private String privateSeriesTimerId;
+	private String SeriesTimerId;
 	public final String getSeriesTimerId()
 	{
-		return privateSeriesTimerId;
+		return SeriesTimerId;
 	}
 	public final void setSeriesTimerId(String value)
 	{
-		privateSeriesTimerId = value;
+		SeriesTimerId = value;
 	}
 
 	/** 
@@ -72,14 +72,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The external identifier.</value>
 	*/
-	private String privateExternalId;
+	private String ExternalId;
 	public final String getExternalId()
 	{
-		return privateExternalId;
+		return ExternalId;
 	}
 	public final void setExternalId(String value)
 	{
-		privateExternalId = value;
+		ExternalId = value;
 	}
 
 	/** 
@@ -87,27 +87,27 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The program identifier.</value>
 	*/
-	private String privateProgramId;
+	private String ProgramId;
 	public final String getProgramId()
 	{
-		return privateProgramId;
+		return ProgramId;
 	}
 	public final void setProgramId(String value)
 	{
-		privateProgramId = value;
+		ProgramId = value;
 	}
 
 	/** 
 	 ChannelId of the recording.
 	*/
-	private String privateChannelId;
+	private String ChannelId;
 	public final String getChannelId()
 	{
-		return privateChannelId;
+		return ChannelId;
 	}
 	public final void setChannelId(String value)
 	{
-		privateChannelId = value;
+		ChannelId = value;
 	}
 
 	/** 
@@ -115,14 +115,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The play access.</value>
 	*/
-	private PlayAccess privatePlayAccess = getPlayAccess().values()[0];
+	private PlayAccess PlayAccess = getPlayAccess().values()[0];
 	public final PlayAccess getPlayAccess()
 	{
-		return privatePlayAccess;
+		return PlayAccess;
 	}
 	public final void setPlayAccess(PlayAccess value)
 	{
-		privatePlayAccess = value;
+		PlayAccess = value;
 	}
 
 	/** 
@@ -130,27 +130,27 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The channel primary image tag.</value>
 	*/
-	private String privateChannelPrimaryImageTag;
+	private String ChannelPrimaryImageTag;
 	public final String getChannelPrimaryImageTag()
 	{
-		return privateChannelPrimaryImageTag;
+		return ChannelPrimaryImageTag;
 	}
 	public final void setChannelPrimaryImageTag(String value)
 	{
-		privateChannelPrimaryImageTag = value;
+		ChannelPrimaryImageTag = value;
 	}
 
 	/** 
 	 ChannelName of the recording.
 	*/
-	private String privateChannelName;
+	private String ChannelName;
 	public final String getChannelName()
 	{
-		return privateChannelName;
+		return ChannelName;
 	}
 	public final void setChannelName(String value)
 	{
-		privateChannelName = value;
+		ChannelName = value;
 	}
 
 	/** 
@@ -158,27 +158,27 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The name of the service.</value>
 	*/
-	private String privateServiceName;
+	private String ServiceName;
 	public final String getServiceName()
 	{
-		return privateServiceName;
+		return ServiceName;
 	}
 	public final void setServiceName(String value)
 	{
-		privateServiceName = value;
+		ServiceName = value;
 	}
 
 	/** 
 	 Name of the recording.
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -186,14 +186,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The media streams.</value>
 	*/
-	private java.util.ArrayList<MediaStream> privateMediaStreams;
+	private java.util.ArrayList<MediaStream> MediaStreams;
 	public final java.util.ArrayList<MediaStream> getMediaStreams()
 	{
-		return privateMediaStreams;
+		return MediaStreams;
 	}
 	public final void setMediaStreams(java.util.ArrayList<MediaStream> value)
 	{
-		privateMediaStreams = value;
+		MediaStreams = value;
 	}
 
 	/** 
@@ -201,53 +201,53 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The path.</value>
 	*/
-	private String privatePath;
+	private String Path;
 	public final String getPath()
 	{
-		return privatePath;
+		return Path;
 	}
 	public final void setPath(String value)
 	{
-		privatePath = value;
+		Path = value;
 	}
 
 	/** 
 	 Overview of the recording.
 	*/
-	private String privateOverview;
+	private String Overview;
 	public final String getOverview()
 	{
-		return privateOverview;
+		return Overview;
 	}
 	public final void setOverview(String value)
 	{
-		privateOverview = value;
+		Overview = value;
 	}
 
 	/** 
 	 The start date of the recording, in UTC.
 	*/
-	private java.util.Date privateStartDate = new java.util.Date(0);
+	private java.util.Date StartDate = new java.util.Date(0);
 	public final java.util.Date getStartDate()
 	{
-		return privateStartDate;
+		return StartDate;
 	}
 	public final void setStartDate(java.util.Date value)
 	{
-		privateStartDate = value;
+		StartDate = value;
 	}
 
 	/** 
 	 The end date of the recording, in UTC.
 	*/
-	private java.util.Date privateEndDate = new java.util.Date(0);
+	private java.util.Date EndDate = new java.util.Date(0);
 	public final java.util.Date getEndDate()
 	{
-		return privateEndDate;
+		return EndDate;
 	}
 	public final void setEndDate(java.util.Date value)
 	{
-		privateEndDate = value;
+		EndDate = value;
 	}
 
 	/** 
@@ -255,14 +255,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The original air date.</value>
 	*/
-	private java.util.Date privateOriginalAirDate = null;
+	private java.util.Date OriginalAirDate = null;
 	public final java.util.Date getOriginalAirDate()
 	{
-		return privateOriginalAirDate;
+		return OriginalAirDate;
 	}
 	public final void setOriginalAirDate(java.util.Date value)
 	{
-		privateOriginalAirDate = value;
+		OriginalAirDate = value;
 	}
 
 	/** 
@@ -270,14 +270,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The status.</value>
 	*/
-	private RecordingStatus privateStatus = RecordingStatus.values()[0];
+	private RecordingStatus Status = RecordingStatus.values()[0];
 	public final RecordingStatus getStatus()
 	{
-		return privateStatus;
+		return Status;
 	}
 	public final void setStatus(RecordingStatus value)
 	{
-		privateStatus = value;
+		Status = value;
 	}
 
 	/** 
@@ -285,14 +285,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The name of the status.</value>
 	*/
-	private String privateStatusName;
+	private String StatusName;
 	public final String getStatusName()
 	{
-		return privateStatusName;
+		return StatusName;
 	}
 	public final void setStatusName(String value)
 	{
-		privateStatusName = value;
+		StatusName = value;
 	}
 
 	/** 
@@ -300,27 +300,27 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The completion percentage.</value>
 	*/
-	private Double privateCompletionPercentage = null;
+	private Double CompletionPercentage = null;
 	public final Double getCompletionPercentage()
 	{
-		return privateCompletionPercentage;
+		return CompletionPercentage;
 	}
 	public final void setCompletionPercentage(Double value)
 	{
-		privateCompletionPercentage = value;
+		CompletionPercentage = value;
 	}
 
 	/** 
 	 Genre of the program.
 	*/
-	private java.util.ArrayList<String> privateGenres;
+	private java.util.ArrayList<String> Genres;
 	public final java.util.ArrayList<String> getGenres()
 	{
-		return privateGenres;
+		return Genres;
 	}
 	public final void setGenres(java.util.ArrayList<String> value)
 	{
-		privateGenres = value;
+		Genres = value;
 	}
 
 	/** 
@@ -328,14 +328,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value><c>true</c> if this instance is repeat; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsRepeat;
+	private boolean IsRepeat;
 	public final boolean getIsRepeat()
 	{
-		return privateIsRepeat;
+		return IsRepeat;
 	}
 	public final void setIsRepeat(boolean value)
 	{
-		privateIsRepeat = value;
+		IsRepeat = value;
 	}
 
 	/** 
@@ -343,14 +343,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The episode title.</value>
 	*/
-	private String privateEpisodeTitle;
+	private String EpisodeTitle;
 	public final String getEpisodeTitle()
 	{
-		return privateEpisodeTitle;
+		return EpisodeTitle;
 	}
 	public final void setEpisodeTitle(String value)
 	{
-		privateEpisodeTitle = value;
+		EpisodeTitle = value;
 	}
 
 	/** 
@@ -358,14 +358,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The run time ticks.</value>
 	*/
-	private Long privateRunTimeTicks = null;
+	private Long RunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{
-		return privateRunTimeTicks;
+		return RunTimeTicks;
 	}
 	public final void setRunTimeTicks(Long value)
 	{
-		privateRunTimeTicks = value;
+		RunTimeTicks = value;
 	}
 
 	/** 
@@ -373,14 +373,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The type of the media.</value>
 	*/
-	private String privateMediaType;
+	private String MediaType;
 	public final String getMediaType()
 	{
-		return privateMediaType;
+		return MediaType;
 	}
 	public final void setMediaType(String value)
 	{
-		privateMediaType = value;
+		MediaType = value;
 	}
 
 	/** 
@@ -388,14 +388,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The type of the channel.</value>
 	*/
-	private ChannelType privateChannelType = getChannelType().values()[0];
+	private ChannelType ChannelType = getChannelType().values()[0];
 	public final ChannelType getChannelType()
 	{
-		return privateChannelType;
+		return ChannelType;
 	}
 	public final void setChannelType(ChannelType value)
 	{
-		privateChannelType = value;
+		ChannelType = value;
 	}
 
 	/** 
@@ -403,14 +403,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The official rating.</value>
 	*/
-	private String privateOfficialRating;
+	private String OfficialRating;
 	public final String getOfficialRating()
 	{
-		return privateOfficialRating;
+		return OfficialRating;
 	}
 	public final void setOfficialRating(String value)
 	{
-		privateOfficialRating = value;
+		OfficialRating = value;
 	}
 
 	/** 
@@ -418,14 +418,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The community rating.</value>
 	*/
-	private Float privateCommunityRating = null;
+	private Float CommunityRating = null;
 	public final Float getCommunityRating()
 	{
-		return privateCommunityRating;
+		return CommunityRating;
 	}
 	public final void setCommunityRating(Float value)
 	{
-		privateCommunityRating = value;
+		CommunityRating = value;
 	}
 
 	/** 
@@ -433,14 +433,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value><c>true</c> if this instance is hd; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean privateIsHD = null;
+	private Boolean IsHD = null;
 	public final Boolean getIsHD()
 	{
-		return privateIsHD;
+		return IsHD;
 	}
 	public final void setIsHD(Boolean value)
 	{
-		privateIsHD = value;
+		IsHD = value;
 	}
 
 	/** 
@@ -448,14 +448,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The audio.</value>
 	*/
-	private ProgramAudio privateAudio = null;
+	private ProgramAudio Audio = null;
 	public final ProgramAudio getAudio()
 	{
-		return privateAudio;
+		return Audio;
 	}
 	public final void setAudio(ProgramAudio value)
 	{
-		privateAudio = value;
+		Audio = value;
 	}
 
 	/** 
@@ -463,14 +463,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value><c>true</c> if this instance is movie; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsMovie;
+	private boolean IsMovie;
 	public final boolean getIsMovie()
 	{
-		return privateIsMovie;
+		return IsMovie;
 	}
 	public final void setIsMovie(boolean value)
 	{
-		privateIsMovie = value;
+		IsMovie = value;
 	}
 
 	/** 
@@ -478,14 +478,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value><c>true</c> if this instance is sports; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsSports;
+	private boolean IsSports;
 	public final boolean getIsSports()
 	{
-		return privateIsSports;
+		return IsSports;
 	}
 	public final void setIsSports(boolean value)
 	{
-		privateIsSports = value;
+		IsSports = value;
 	}
 
 	/** 
@@ -493,14 +493,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value><c>true</c> if this instance is series; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsSeries;
+	private boolean IsSeries;
 	public final boolean getIsSeries()
 	{
-		return privateIsSeries;
+		return IsSeries;
 	}
 	public final void setIsSeries(boolean value)
 	{
-		privateIsSeries = value;
+		IsSeries = value;
 	}
 
 	/** 
@@ -508,14 +508,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value><c>true</c> if this instance is live; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsLive;
+	private boolean IsLive;
 	public final boolean getIsLive()
 	{
-		return privateIsLive;
+		return IsLive;
 	}
 	public final void setIsLive(boolean value)
 	{
-		privateIsLive = value;
+		IsLive = value;
 	}
 
 	/** 
@@ -523,14 +523,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value><c>true</c> if this instance is news; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsNews;
+	private boolean IsNews;
 	public final boolean getIsNews()
 	{
-		return privateIsNews;
+		return IsNews;
 	}
 	public final void setIsNews(boolean value)
 	{
-		privateIsNews = value;
+		IsNews = value;
 	}
 
 	/** 
@@ -538,14 +538,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value><c>true</c> if this instance is kids; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsKids;
+	private boolean IsKids;
 	public final boolean getIsKids()
 	{
-		return privateIsKids;
+		return IsKids;
 	}
 	public final void setIsKids(boolean value)
 	{
-		privateIsKids = value;
+		IsKids = value;
 	}
 
 	/** 
@@ -553,14 +553,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value><c>true</c> if this instance is premiere; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsPremiere;
+	private boolean IsPremiere;
 	public final boolean getIsPremiere()
 	{
-		return privateIsPremiere;
+		return IsPremiere;
 	}
 	public final void setIsPremiere(boolean value)
 	{
-		privateIsPremiere = value;
+		IsPremiere = value;
 	}
 
 	/** 
@@ -568,14 +568,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The image tags.</value>
 	*/
-	private java.util.HashMap<ImageType, String> privateImageTags;
+	private java.util.HashMap<ImageType, String> ImageTags;
 	public final java.util.HashMap<ImageType, String> getImageTags()
 	{
-		return privateImageTags;
+		return ImageTags;
 	}
 	public final void setImageTags(java.util.HashMap<ImageType, String> value)
 	{
-		privateImageTags = value;
+		ImageTags = value;
 	}
 
 	/** 
@@ -583,14 +583,14 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The user data.</value>
 	*/
-	private UserItemDataDto privateUserData;
+	private UserItemDataDto UserData;
 	public final UserItemDataDto getUserData()
 	{
-		return privateUserData;
+		return UserData;
 	}
 	public final void setUserData(UserItemDataDto value)
 	{
-		privateUserData = value;
+		UserData = value;
 	}
 
 	/** 
@@ -610,24 +610,24 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The type.</value>
 	*/
-	private String privateType;
+	private String Type;
 	public final String getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(String value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
-	private java.util.ArrayList<MediaSourceInfo> privateMediaSources;
+	private java.util.ArrayList<MediaSourceInfo> MediaSources;
 	public final java.util.ArrayList<MediaSourceInfo> getMediaSources()
 	{
-		return privateMediaSources;
+		return MediaSources;
 	}
 	public final void setMediaSources(java.util.ArrayList<MediaSourceInfo> value)
 	{
-		privateMediaSources = value;
+		MediaSources = value;
 	}
 
 	public RecordingInfoDto()

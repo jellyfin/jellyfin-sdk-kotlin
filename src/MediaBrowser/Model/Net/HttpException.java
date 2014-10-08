@@ -10,14 +10,14 @@ public class HttpException extends RuntimeException
 	 
 	 <value>The status code.</value>
 	*/
-	private HttpStatusCode privateStatusCode = null;
+	private HttpStatusCode StatusCode = null;
 	public final HttpStatusCode getStatusCode()
 	{
-		return privateStatusCode;
+		return StatusCode;
 	}
 	public final void setStatusCode(HttpStatusCode value)
 	{
-		privateStatusCode = value;
+		StatusCode = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class HttpException extends RuntimeException
 	 
 	 <value><c>true</c> if this instance is timed out; otherwise, <c>false</c>.</value>
 	*/
-	private boolean privateIsTimedOut;
+	private boolean IsTimedOut;
 	public final boolean getIsTimedOut()
 	{
-		return privateIsTimedOut;
+		return IsTimedOut;
 	}
 	public final void setIsTimedOut(boolean value)
 	{
-		privateIsTimedOut = value;
+		IsTimedOut = value;
 	}
 
 	/** 

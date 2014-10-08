@@ -10,14 +10,14 @@ public class TaskResult
 	 
 	 <value>The start time UTC.</value>
 	*/
-	private java.util.Date privateStartTimeUtc = new java.util.Date(0);
+	private java.util.Date StartTimeUtc = new java.util.Date(0);
 	public final java.util.Date getStartTimeUtc()
 	{
-		return privateStartTimeUtc;
+		return StartTimeUtc;
 	}
 	public final void setStartTimeUtc(java.util.Date value)
 	{
-		privateStartTimeUtc = value;
+		StartTimeUtc = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class TaskResult
 	 
 	 <value>The end time UTC.</value>
 	*/
-	private java.util.Date privateEndTimeUtc = new java.util.Date(0);
+	private java.util.Date EndTimeUtc = new java.util.Date(0);
 	public final java.util.Date getEndTimeUtc()
 	{
-		return privateEndTimeUtc;
+		return EndTimeUtc;
 	}
 	public final void setEndTimeUtc(java.util.Date value)
 	{
-		privateEndTimeUtc = value;
+		EndTimeUtc = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class TaskResult
 	 
 	 <value>The status.</value>
 	*/
-	private TaskCompletionStatus privateStatus = TaskCompletionStatus.values()[0];
+	private TaskCompletionStatus Status = TaskCompletionStatus.values()[0];
 	public final TaskCompletionStatus getStatus()
 	{
-		return privateStatus;
+		return Status;
 	}
 	public final void setStatus(TaskCompletionStatus value)
 	{
-		privateStatus = value;
+		Status = value;
 	}
 
 	/** 
@@ -55,14 +55,14 @@ public class TaskResult
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -70,14 +70,14 @@ public class TaskResult
 	 
 	 <value>The id.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -85,14 +85,14 @@ public class TaskResult
 	 
 	 <value>The error message.</value>
 	*/
-	private String privateErrorMessage;
+	private String ErrorMessage;
 	public final String getErrorMessage()
 	{
-		return privateErrorMessage;
+		return ErrorMessage;
 	}
 	public final void setErrorMessage(String value)
 	{
-		privateErrorMessage = value;
+		ErrorMessage = value;
 	}
 
 	/** 
@@ -100,13 +100,13 @@ public class TaskResult
 	 
 	 <value>The long error message.</value>
 	*/
-	private String privateLongErrorMessage;
+	private String LongErrorMessage;
 	public final String getLongErrorMessage()
 	{
-		return privateLongErrorMessage;
+		return LongErrorMessage;
 	}
 	public final void setLongErrorMessage(String value)
 	{
-		privateLongErrorMessage = value;
+		LongErrorMessage = value;
 	}
 }

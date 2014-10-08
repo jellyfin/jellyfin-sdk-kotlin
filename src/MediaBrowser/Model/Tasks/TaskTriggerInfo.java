@@ -10,14 +10,14 @@ public class TaskTriggerInfo
 	 
 	 <value>The type.</value>
 	*/
-	private String privateType;
+	private String Type;
 	public final String getType()
 	{
-		return privateType;
+		return Type;
 	}
 	public final void setType(String value)
 	{
-		privateType = value;
+		Type = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class TaskTriggerInfo
 	 
 	 <value>The time of day.</value>
 	*/
-	private Long privateTimeOfDayTicks = null;
+	private Long TimeOfDayTicks = null;
 	public final Long getTimeOfDayTicks()
 	{
-		return privateTimeOfDayTicks;
+		return TimeOfDayTicks;
 	}
 	public final void setTimeOfDayTicks(Long value)
 	{
-		privateTimeOfDayTicks = value;
+		TimeOfDayTicks = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class TaskTriggerInfo
 	 
 	 <value>The interval.</value>
 	*/
-	private Long privateIntervalTicks = null;
+	private Long IntervalTicks = null;
 	public final Long getIntervalTicks()
 	{
-		return privateIntervalTicks;
+		return IntervalTicks;
 	}
 	public final void setIntervalTicks(Long value)
 	{
-		privateIntervalTicks = value;
+		IntervalTicks = value;
 	}
 
 	/** 
@@ -55,14 +55,14 @@ public class TaskTriggerInfo
 	 
 	 <value>The system event.</value>
 	*/
-	private SystemEvent privateSystemEvent = null;
+	private SystemEvent SystemEvent = null;
 	public final SystemEvent getSystemEvent()
 	{
-		return privateSystemEvent;
+		return SystemEvent;
 	}
 	public final void setSystemEvent(SystemEvent value)
 	{
-		privateSystemEvent = value;
+		SystemEvent = value;
 	}
 
 	/** 
@@ -70,13 +70,13 @@ public class TaskTriggerInfo
 	 
 	 <value>The day of week.</value>
 	*/
-	private String privateDayOfWeek = null;
+	private String DayOfWeek = null;
 	public final String getDayOfWeek()
 	{
-		return privateDayOfWeek;
+		return DayOfWeek;
 	}
 	public final void setDayOfWeek(String value)
 	{
-		privateDayOfWeek = value;
+		DayOfWeek = value;
 	}
 }

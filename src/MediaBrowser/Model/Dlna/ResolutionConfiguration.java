@@ -2,23 +2,23 @@ package MediaBrowser.Model.Dlna;
 
 public class ResolutionConfiguration
 {
-	private int privateMaxWidth;
+	private int MaxWidth;
 	public final int getMaxWidth()
 	{
-		return privateMaxWidth;
+		return MaxWidth;
 	}
 	public final void setMaxWidth(int value)
 	{
-		privateMaxWidth = value;
+		MaxWidth = value;
 	}
-	private int privateMaxBitrate;
+	private int MaxBitrate;
 	public final int getMaxBitrate()
 	{
-		return privateMaxBitrate;
+		return MaxBitrate;
 	}
 	public final void setMaxBitrate(int value)
 	{
-		privateMaxBitrate = value;
+		MaxBitrate = value;
 	}
 
 	public ResolutionConfiguration(int maxWidth, int maxBitrate)

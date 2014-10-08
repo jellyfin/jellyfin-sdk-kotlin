@@ -14,14 +14,14 @@ public class RecordingGroupDto implements IHasPropertyChangedEvent
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -29,14 +29,14 @@ public class RecordingGroupDto implements IHasPropertyChangedEvent
 	 
 	 <value>The identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -44,14 +44,14 @@ public class RecordingGroupDto implements IHasPropertyChangedEvent
 	 
 	 <value>The recording count.</value>
 	*/
-	private int privateRecordingCount;
+	private int RecordingCount;
 	public final int getRecordingCount()
 	{
-		return privateRecordingCount;
+		return RecordingCount;
 	}
 	public final void setRecordingCount(int value)
 	{
-		privateRecordingCount = value;
+		RecordingCount = value;
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:

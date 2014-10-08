@@ -7,14 +7,14 @@ public class LiveTvTunerInfoDto
 	 
 	 <value>The type of the source.</value>
 	*/
-	private String privateSourceType;
+	private String SourceType;
 	public final String getSourceType()
 	{
-		return privateSourceType;
+		return SourceType;
 	}
 	public final void setSourceType(String value)
 	{
-		privateSourceType = value;
+		SourceType = value;
 	}
 
 	/** 
@@ -22,14 +22,14 @@ public class LiveTvTunerInfoDto
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -37,14 +37,14 @@ public class LiveTvTunerInfoDto
 	 
 	 <value>The identifier.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 
 	/** 
@@ -52,14 +52,14 @@ public class LiveTvTunerInfoDto
 	 
 	 <value>The status.</value>
 	*/
-	private LiveTvTunerStatus privateStatus = LiveTvTunerStatus.values()[0];
+	private LiveTvTunerStatus Status = LiveTvTunerStatus.values()[0];
 	public final LiveTvTunerStatus getStatus()
 	{
-		return privateStatus;
+		return Status;
 	}
 	public final void setStatus(LiveTvTunerStatus value)
 	{
-		privateStatus = value;
+		Status = value;
 	}
 
 	/** 
@@ -67,14 +67,14 @@ public class LiveTvTunerInfoDto
 	 
 	 <value>The channel identifier.</value>
 	*/
-	private String privateChannelId;
+	private String ChannelId;
 	public final String getChannelId()
 	{
-		return privateChannelId;
+		return ChannelId;
 	}
 	public final void setChannelId(String value)
 	{
-		privateChannelId = value;
+		ChannelId = value;
 	}
 
 	/** 
@@ -82,14 +82,14 @@ public class LiveTvTunerInfoDto
 	 
 	 <value>The name of the channel.</value>
 	*/
-	private String privateChannelName;
+	private String ChannelName;
 	public final String getChannelName()
 	{
-		return privateChannelName;
+		return ChannelName;
 	}
 	public final void setChannelName(String value)
 	{
-		privateChannelName = value;
+		ChannelName = value;
 	}
 
 	/** 
@@ -97,14 +97,14 @@ public class LiveTvTunerInfoDto
 	 
 	 <value>The recording identifier.</value>
 	*/
-	private String privateRecordingId;
+	private String RecordingId;
 	public final String getRecordingId()
 	{
-		return privateRecordingId;
+		return RecordingId;
 	}
 	public final void setRecordingId(String value)
 	{
-		privateRecordingId = value;
+		RecordingId = value;
 	}
 
 	/** 
@@ -112,14 +112,14 @@ public class LiveTvTunerInfoDto
 	 
 	 <value>The name of the program.</value>
 	*/
-	private String privateProgramName;
+	private String ProgramName;
 	public final String getProgramName()
 	{
-		return privateProgramName;
+		return ProgramName;
 	}
 	public final void setProgramName(String value)
 	{
-		privateProgramName = value;
+		ProgramName = value;
 	}
 
 	/** 
@@ -127,14 +127,14 @@ public class LiveTvTunerInfoDto
 	 
 	 <value>The clients.</value>
 	*/
-	private java.util.ArrayList<String> privateClients;
+	private java.util.ArrayList<String> Clients;
 	public final java.util.ArrayList<String> getClients()
 	{
-		return privateClients;
+		return Clients;
 	}
 	public final void setClients(java.util.ArrayList<String> value)
 	{
-		privateClients = value;
+		Clients = value;
 	}
 
 	public LiveTvTunerInfoDto()

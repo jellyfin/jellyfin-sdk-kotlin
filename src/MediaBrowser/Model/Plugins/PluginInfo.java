@@ -12,14 +12,14 @@ public class PluginInfo
 	 
 	 <value>The name.</value>
 	*/
-	private String privateName;
+	private String Name;
 	public final String getName()
 	{
-		return privateName;
+		return Name;
 	}
 	public final void setName(String value)
 	{
-		privateName = value;
+		Name = value;
 	}
 
 	/** 
@@ -27,14 +27,14 @@ public class PluginInfo
 	 
 	 <value>The configuration date last modified.</value>
 	*/
-	private java.util.Date privateConfigurationDateLastModified = new java.util.Date(0);
+	private java.util.Date ConfigurationDateLastModified = new java.util.Date(0);
 	public final java.util.Date getConfigurationDateLastModified()
 	{
-		return privateConfigurationDateLastModified;
+		return ConfigurationDateLastModified;
 	}
 	public final void setConfigurationDateLastModified(java.util.Date value)
 	{
-		privateConfigurationDateLastModified = value;
+		ConfigurationDateLastModified = value;
 	}
 
 	/** 
@@ -42,14 +42,14 @@ public class PluginInfo
 	 
 	 <value>The version.</value>
 	*/
-	private String privateVersion;
+	private String Version;
 	public final String getVersion()
 	{
-		return privateVersion;
+		return Version;
 	}
 	public final void setVersion(String value)
 	{
-		privateVersion = value;
+		Version = value;
 	}
 
 	/** 
@@ -57,14 +57,14 @@ public class PluginInfo
 	 
 	 <value>The name of the assembly file.</value>
 	*/
-	private String privateAssemblyFileName;
+	private String AssemblyFileName;
 	public final String getAssemblyFileName()
 	{
-		return privateAssemblyFileName;
+		return AssemblyFileName;
 	}
 	public final void setAssemblyFileName(String value)
 	{
-		privateAssemblyFileName = value;
+		AssemblyFileName = value;
 	}
 
 	/** 
@@ -72,14 +72,14 @@ public class PluginInfo
 	 
 	 <value>The name of the configuration file.</value>
 	*/
-	private String privateConfigurationFileName;
+	private String ConfigurationFileName;
 	public final String getConfigurationFileName()
 	{
-		return privateConfigurationFileName;
+		return ConfigurationFileName;
 	}
 	public final void setConfigurationFileName(String value)
 	{
-		privateConfigurationFileName = value;
+		ConfigurationFileName = value;
 	}
 
 	/** 
@@ -87,14 +87,14 @@ public class PluginInfo
 	 
 	 <value>The description.</value>
 	*/
-	private String privateDescription;
+	private String Description;
 	public final String getDescription()
 	{
-		return privateDescription;
+		return Description;
 	}
 	public final void setDescription(String value)
 	{
-		privateDescription = value;
+		Description = value;
 	}
 
 	/** 
@@ -102,13 +102,13 @@ public class PluginInfo
 	 
 	 <value>The unique id.</value>
 	*/
-	private String privateId;
+	private String Id;
 	public final String getId()
 	{
-		return privateId;
+		return Id;
 	}
 	public final void setId(String value)
 	{
-		privateId = value;
+		Id = value;
 	}
 }

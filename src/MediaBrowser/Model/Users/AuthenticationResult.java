@@ -10,14 +10,14 @@ public class AuthenticationResult
 	 
 	 <value>The user.</value>
 	*/
-	private UserDto privateUser;
+	private UserDto User;
 	public final UserDto getUser()
 	{
-		return privateUser;
+		return User;
 	}
 	public final void setUser(UserDto value)
 	{
-		privateUser = value;
+		User = value;
 	}
 
 	/** 
@@ -25,14 +25,14 @@ public class AuthenticationResult
 	 
 	 <value>The session information.</value>
 	*/
-	private SessionInfoDto privateSessionInfo;
+	private SessionInfoDto SessionInfo;
 	public final SessionInfoDto getSessionInfo()
 	{
-		return privateSessionInfo;
+		return SessionInfo;
 	}
 	public final void setSessionInfo(SessionInfoDto value)
 	{
-		privateSessionInfo = value;
+		SessionInfo = value;
 	}
 
 	/** 
@@ -40,14 +40,14 @@ public class AuthenticationResult
 	 
 	 <value>The authentication token.</value>
 	*/
-	private String privateAccessToken;
+	private String AccessToken;
 	public final String getAccessToken()
 	{
-		return privateAccessToken;
+		return AccessToken;
 	}
 	public final void setAccessToken(String value)
 	{
-		privateAccessToken = value;
+		AccessToken = value;
 	}
 
 	/** 
@@ -55,13 +55,13 @@ public class AuthenticationResult
 	 
 	 <value>The server identifier.</value>
 	*/
-	private String privateServerId;
+	private String ServerId;
 	public final String getServerId()
 	{
-		return privateServerId;
+		return ServerId;
 	}
 	public final void setServerId(String value)
 	{
-		privateServerId = value;
+		ServerId = value;
 	}
 }
