@@ -106,7 +106,9 @@ public class ApiClient extends BaseApiClient {
     public void OpenWebSocket(){
 
         if (apiWebSocket == null){
-            apiWebSocket = new ApiWebSocket(getJsonSerializer(), getLogger(), apiEventListener, this);
+
+            Logger.Debug("Creating ApiWebSocket");
+            apiWebSocket = new ApiWebSocket(getJsonSerializer(), Logger, apiEventListener, this);
         }
 
         apiWebSocket.EnsureWebSocket();
@@ -1244,7 +1246,7 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("info");
         }
 
-        getLogger().Debug("ReportPlaybackStart: Item {0}", info.getItem());
+        Logger.Debug("ReportPlaybackStart: Item {0}", info.getItem());
  
         /*if (WebSocketConnection != null && WebSocketConnection.IsConnected)
         {

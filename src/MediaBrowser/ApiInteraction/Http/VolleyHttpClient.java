@@ -9,13 +9,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.util.LruCache;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.VolleyError;
+import com.android.volley.*;
+import com.android.volley.toolbox.HttpClientStack;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +47,9 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         // lazy initialize the request queue, the queue instance will be
         // created when it is accessed for the first time
         if (mRequestQueue == null) {
+
             mRequestQueue = Volley.newRequestQueue(context, new OkHttpStack());
+            //mRequestQueue = Volley.newRequestQueue(context, new HttpClientStack(new DefaultHttpClient()));
             //mRequestQueue = Volley.newRequestQueue(context);
         }
 

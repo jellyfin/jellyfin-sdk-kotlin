@@ -3,6 +3,8 @@ package MediaBrowser.ApiInteraction;
 import MediaBrowser.Model.ApiClient.ServerInfo;
 import MediaBrowser.Model.Extensions.StringHelper;
 
+import java.util.ArrayList;
+
 public class ServerCredentialConfiguration {
 
     private String lastServerId;
@@ -15,7 +17,7 @@ public class ServerCredentialConfiguration {
         lastServerId = value;
     }
 
-    private java.util.ArrayList<ServerInfo> servers;
+    private java.util.ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
     public final java.util.ArrayList<ServerInfo> getServers()
     {
         return servers;

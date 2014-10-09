@@ -80,52 +80,72 @@ public class ConnectionManager implements IConnectionManager {
         return (ApiClient)client;
     }
 
+    private void OnFailedConnection(Response<ConnectionResult> response){
+
+        _logger.Debug("No server available");
+
+        ConnectionResult result = new ConnectionResult();
+        result.setState(ConnectionState.Unavailable);
+        response.onResponse(result);
+    }
+
     @Override
     public void Connect(final Response<ConnectionResult> response) {
 
-        GetAvailableServers(new Response<ArrayList<ServerInfo>>(){
+         _logger.Debug("Entering initial connection workflow");
 
-            @Override
-            public void onResponse(ArrayList<ServerInfo> servers) {
+         GetAvailableServers(new Response<ArrayList<ServerInfo>>(){
 
-                ServerCredentialConfiguration credentials = _credentialProvider.GetCredentials();
+                @Override
+                public void onResponse(ArrayList<ServerInfo> servers) {
 
-                final String lastServerId = credentials.getLastServerId();
+                    ServerCredentialConfiguration credentials = _credentialProvider.GetCredentials();
 
-                Connect(credentials.getServers(), lastServerId, new Response<ConnectionResult>(){
+                    final String lastServerId = credentials.getLastServerId();
 
-                    @Override
-                    public void onResponse(ConnectionResult result) {
+                    _logger.Debug("Looping through server list");
 
-                        if (result.getState() != ConnectionState.Unavailable)
-                        {
-                            response.onResponse(result);
-                            return;
+                    Connect(servers, lastServerId, new Response<ConnectionResult>(){
+
+                        @Override
+                        public void onResponse(ConnectionResult result) {
+
+                            if (result.getState() != ConnectionState.Unavailable)
+                            {
+                                response.onResponse(result);
+                                return;
+                            }
+
+                            _logger.Debug("No saved servers available. Attempting discovery process");
+                            FindServers(new Response<ArrayList<ServerInfo>>(){
+
+                                @Override
+                                public void onResponse(ArrayList<ServerInfo> foundServers) {
+
+                                    Connect(foundServers, lastServerId, response);
+                                }
+
+                                @Override
+                                public void onError() {
+
+                                    OnFailedConnection(response);
+                                }
+                            });
                         }
 
-                        FindServers(new Response<ArrayList<ServerInfo>>(){
+                        @Override
+                        public void onError() {
 
-                            @Override
-                            public void onResponse(ArrayList<ServerInfo> foundServers) {
+                            OnFailedConnection(response);
+                        }
+                    });
+                }
 
-                                Connect(foundServers, lastServerId, response);
-                            }
-                        });
-                    }
+                @Override
+                public void onError() {
 
-                    @Override
-                    public void onError() {
-
-                        response.onError();
-                    }
-                });
-            }
-
-            @Override
-            public void onError() {
-
-                response.onError();
-            }
+                    OnFailedConnection(response);
+                }
 
         });
     }
@@ -147,26 +167,207 @@ public class ConnectionManager implements IConnectionManager {
         }
 
         if (servers.size() == 0){
-            ConnectionResult result = new ConnectionResult();
-            result.setState(ConnectionState.Unavailable);
-            response.onResponse(result);
+            OnFailedConnection(response);
             return;
         }
+
+        ConnectToServerAtListIndex(servers, 0, response);
+    }
+
+    private void ConnectToServerAtListIndex(final ArrayList<ServerInfo> servers,
+                                            final int index,
+                                            final Response<ConnectionResult> response){
+
+        ServerInfo server = servers.get(index);
+
+        Connect(server, true, new Response<ConnectionResult>() {
+
+            private void TryNextServer() {
+
+                int nextIndex = index + 1;
+                if (nextIndex < servers.size()) {
+
+                    _logger.Debug("Trying next server");
+                    ConnectToServerAtListIndex(servers, nextIndex, response);
+
+                } else {
+
+                    // No connection is available
+                    OnFailedConnection(response);
+                }
+            }
+
+            @Override
+            public void onResponse(ConnectionResult result) {
+
+                if (result.getState() == ConnectionState.Unavailable) {
+                    TryNextServer();
+                } else {
+
+                    _logger.Debug("Connected to server");
+                    response.onResponse(result);
+                }
+            }
+
+            @Override
+            public void onError() {
+
+                TryNextServer();
+            }
+
+        });
     }
 
     @Override
-    public void Connect(ServerInfo server, Response<ConnectionResult> response) {
+    public void Connect(final ServerInfo server,
+                        final Response<ConnectionResult> response) {
+
+        Connect(server, true, response);
+    }
+
+    private void Connect(final ServerInfo server,
+                        final boolean enableWakeOnLan,
+                        final Response<ConnectionResult> response) {
+
+        boolean isConnectedToLocalNetwork = _networkConnectivity.getNetworkStatus().GetIsLocalNetworkAvailable();
+
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getLocalAddress()) && isConnectedToLocalNetwork)
+        {
+            TryConnect(server.getLocalAddress(), new Response<PublicSystemInfo>(){
+
+                @Override
+                public void onResponse(PublicSystemInfo result) {
+
+                    ConnectToFoundServer(server, result, ConnectionMode.Local, true, response);
+                }
+
+                @Override
+                public void onError() {
+
+                    // Wake on lan and try again
+                    if (enableWakeOnLan && server.getWakeOnLanInfos().size() > 0)
+                    {
+                        WakeServer(server, new EmptyResponse() {
+
+                            @Override
+                            public void onResponse() {
+
+                                // Try local connection again
+                                Connect(server, false, response);
+                            }
+
+                            @Override
+                            public void onError() {
+
+                                // No local connection available
+                                TryConnectToRemoteAddress(server, response);
+                            }
+                        });
+
+                        return;
+                    }
+
+                    // No local connection available
+                    TryConnectToRemoteAddress(server, response);
+                }
+
+            });
+
+            return;
+        }
+
+        TryConnectToRemoteAddress(server, response);
+    }
+
+    private void TryConnectToRemoteAddress(final ServerInfo server,
+                                           final Response<ConnectionResult> response){
+
+        // If local connection is unavailable, try to connect to the remote address
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getRemoteAddress()))
+        {
+            TryConnect(server.getRemoteAddress(), new Response<PublicSystemInfo>(){
+
+                @Override
+                public void onResponse(PublicSystemInfo result) {
+
+                    ConnectToFoundServer(server, result, ConnectionMode.Remote, true, response);
+                }
+
+                @Override
+                public void onError() {
+
+                    // Unable to connect
+                    OnFailedConnection(response);
+                }
+
+            });
+
+            return;
+        }
+
+        // Unable to connect
+        OnFailedConnection(response);
+    }
+
+    public void ConnectToFoundServer(final ServerInfo server,
+                                     final PublicSystemInfo systemInfo,
+                                     final ConnectionMode connectionMode,
+                                     boolean verifyAuthentication,
+                                     final Response<ConnectionResult> response) {
+
+        UpdateServerInfo(server, systemInfo);
+
+        if (verifyAuthentication && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
+        {
+            ValidateAuthentication(server, connectionMode, new EmptyResponse(){
+
+                @Override
+                public void onResponse() {
+
+                    ConnectToFoundServer(server, systemInfo, connectionMode, false, response);
+                }
+
+                @Override
+                public void onError() {
+
+                    response.onError();
+                }
+            });
+        }
+
+        ServerCredentialConfiguration credentials = _credentialProvider.GetCredentials();
+
+        credentials.AddOrUpdateServer(server);
+        credentials.setLastServerId(server.getId());
+        _credentialProvider.SaveCredentials(credentials);
 
         ConnectionResult result = new ConnectionResult();
-        result.setState(ConnectionState.Unavailable);
+
+        result.setApiClient(GetOrAddApiClient(server));
+        result.setState(tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()) ?
+                ConnectionState.ServerSignIn :
+                ConnectionState.SignedIn);
+
+        if (result.getState() == ConnectionState.SignedIn)
+        {
+            EnsureWebSocketIfConfigured(result.getApiClient());
+        }
+
+        result.setServerInfo(server);
+        result.getApiClient().EnableAutomaticNetworking(server, connectionMode, _networkConnectivity);
+
         response.onResponse(result);
     }
 
     @Override
     public void Connect(String address, Response<ConnectionResult> response) {
 
+        address = NormalizeAddress(address);
+
+        _logger.Debug("Attempting to connect to server at %s", address);
+
         ServerInfo server = new ServerInfo();
-        server.setLocalAddress(NormalizeAddress(address));
+        server.setLocalAddress(address);
 
         Connect(server, response);
     }
@@ -174,14 +375,16 @@ public class ConnectionManager implements IConnectionManager {
     @Override
     public void Logout(final Response<ConnectionResult> response) {
 
-        LogoutAll(new EmptyResponse(){
+        _logger.Debug("Logging out of all servers");
 
-            @Override
-            public void onResponse() {
+        LogoutAll(new EmptyResponse() {
 
+            private void OnSuccessOrFail() {
+
+                _logger.Debug("Updating saved credentials for all servers");
                 ServerCredentialConfiguration credentials = _credentialProvider.GetCredentials();
 
-                for(ServerInfo server : credentials.getServers()){
+                for (ServerInfo server : credentials.getServers()) {
 
                     server.setAccessToken(null);
                     server.setUserId(null);
@@ -190,6 +393,16 @@ public class ConnectionManager implements IConnectionManager {
                 _credentialProvider.SaveCredentials(credentials);
 
                 Connect(response);
+            }
+
+            @Override
+            public void onResponse() {
+                OnSuccessOrFail();
+            }
+
+            @Override
+            public void onError() {
+                OnSuccessOrFail();
             }
         });
     }
@@ -263,9 +476,7 @@ public class ConnectionManager implements IConnectionManager {
             @Override
             public void onError() {
 
-                PublicSystemInfo obj = null;
-
-                response.onResponse(obj);
+                response.onError();
             }
         };
 
@@ -354,7 +565,9 @@ public class ConnectionManager implements IConnectionManager {
 
     private void OnAuthenticated(final ApiClient apiClient, final AuthenticationResult result)
     {
-        Response<SystemInfo> systemInfoResponse = new Response<SystemInfo>(){
+        _logger.Debug("Updating credentials after authentication");
+
+        apiClient.GetSystemInfoAsync(new Response<SystemInfo>(){
 
             @Override
             public void onResponse(SystemInfo info) {
@@ -373,13 +586,14 @@ public class ConnectionManager implements IConnectionManager {
 
                 EnsureWebSocketIfConfigured(apiClient);
             }
-        };
-
-        apiClient.GetSystemInfoAsync(systemInfoResponse);
+        });
     }
 
     private void GetAvailableServers(final Response<ArrayList<ServerInfo>> response)
     {
+        _logger.Debug("Locating available servers");
+
+        _logger.Debug("Getting saved servers via credential provider");
         ArrayList<ServerInfo> servers = _credentialProvider.GetCredentials().getServers();
 
         response.onResponse(servers);
@@ -420,6 +634,8 @@ public class ConnectionManager implements IConnectionManager {
 
     private void WakeAllServers()
     {
+        _logger.Debug("Waking all servers");
+
         for(ServerInfo server : _credentialProvider.GetCredentials().getServers()){
 
             WakeServer(server, new EmptyResponse());
@@ -428,11 +644,14 @@ public class ConnectionManager implements IConnectionManager {
 
     private void WakeServer(ServerInfo info, final EmptyResponse response)
     {
+        _logger.Debug("Waking server: %s, Id: %s", info.getName(), info.getId());
+
         ArrayList<WakeOnLanInfo> wakeList = info.getWakeOnLanInfos();
 
         final int count = wakeList.size();
 
         if (count == 0){
+            _logger.Debug("Server %s has no saved wake on lan profiles", info.getName());
             response.onResponse();
             return;
         }
@@ -443,9 +662,7 @@ public class ConnectionManager implements IConnectionManager {
 
             WakeServer(info, new EmptyResponse(){
 
-                @Override
-                public void onResponse() {
-
+                private void OnServerDone(){
                     synchronized(doneList) {
 
                         doneList.add(new EmptyResponse());
@@ -453,24 +670,19 @@ public class ConnectionManager implements IConnectionManager {
                         if (doneList.size() >= count){
                             response.onResponse();
                         }
-
                     }
+                }
 
+                @Override
+                public void onResponse() {
+
+                    OnServerDone();
                 }
 
                 @Override
                 public void onError() {
 
-                    synchronized (doneList) {
-
-                        doneList.add(new EmptyResponse());
-
-                        if (doneList.size() >= count) {
-                            response.onResponse();
-                        }
-
-                    }
-
+                    OnServerDone();
                 }
             });
         }

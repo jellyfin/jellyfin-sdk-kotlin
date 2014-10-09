@@ -2,6 +2,7 @@ package MediaBrowser.ApiInteraction.Network;
 
 import MediaBrowser.ApiInteraction.EmptyResponse;
 import MediaBrowser.ApiInteraction.NetworkStatus;
+import MediaBrowser.Model.Logging.ILogger;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -12,14 +13,18 @@ import java.net.*;
 public class NetworkConnection implements INetworkConnection {
 
     private Context context;
+    private ILogger logger;
 
-    public NetworkConnection(Context context) {
+    public NetworkConnection(Context context, ILogger logger) {
         this.context = context;
+        this.logger = logger;
     }
 
     @Override
     public void SendWakeOnLan(String macAddress, int port, EmptyResponse response) throws IOException
     {
+        logger.Debug("Sending WakeOnLan over broadcast address. Mac: %s, Port: %d", macAddress, port);
+
         byte[] macBytes = getMacBytes(macAddress);
         byte[] bytes = new byte[6 + 16 * macBytes.length];
         for (int i = 0; i < 6; i++) {
@@ -40,6 +45,8 @@ public class NetworkConnection implements INetworkConnection {
     public void SendWakeOnLan(String macAddress, String ipAddress, int port, EmptyResponse response)
             throws IOException
     {
+        logger.Debug("Sending WakeOnLan to %s. Mac: %s, Port: %d", ipAddress, macAddress, port);
+
         byte[] macBytes = getMacBytes(macAddress);
         byte[] bytes = new byte[6 + 16 * macBytes.length];
         for (int i = 0; i < 6; i++) {
@@ -61,6 +68,8 @@ public class NetworkConnection implements INetworkConnection {
 
         NetworkStatus status = new NetworkStatus();
 
+        logger.Debug("Testing local device network connection");
+
         final ConnectivityManager conMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         final NetworkInfo activeNetwork = conMgr.getActiveNetworkInfo();
 
@@ -71,10 +80,18 @@ public class NetworkConnection implements INetworkConnection {
             int type = activeNetwork.getType();
 
             if (type == ConnectivityManager.TYPE_MOBILE){
+
+                logger.Debug("Local device is connected to a network");
+
                 status.setIsRemoteNetworkAvailable(true);
+            }
+            else{
+                logger.Debug("Local device is connected to a mobile network");
             }
 
         } else {
+
+            logger.Debug("Local device is not connected to the network");
 
             // notify user you are not online
             status.setIsNetworkAvailable(false);

@@ -30,20 +30,7 @@ public abstract class BaseApiClient implements IDisposable
 		//}
 	}
 
-	/** 
-	 Gets the logger.
-	 
-	 <value>The logger.</value>
-	*/
-	private ILogger privateLogger;
-	public final ILogger getLogger()
-	{
-		return privateLogger;
-	}
-	public final void setLogger(ILogger value)
-	{
-		privateLogger = value;
-	}
+	protected ILogger Logger;
 
 	/** 
 	 Gets the json serializer.
@@ -89,7 +76,7 @@ public abstract class BaseApiClient implements IDisposable
 		}
 
 		setJsonSerializer(jsonSerializer);
-		setLogger(logger);
+        Logger = logger;
 
 		setClientName(clientName);
 		setDeviceName(deviceName);
@@ -114,7 +101,7 @@ public abstract class BaseApiClient implements IDisposable
 		}
 
 		setJsonSerializer(jsonSerializer);
-		setLogger(logger);
+        Logger = logger;
 
 		setAccessToken(accessToken);
 		setServerAddress(serverAddress);

@@ -97,6 +97,8 @@ public class ServerDiscovery implements IServerLocator {
 
             ServerDiscoveryInfo[] servers = new ServerDiscoveryInfo[]{ serverInfo};
 
+            logger.Debug("Found %d servers", servers.length);
+
             response.onResponse(servers);
 
             //Close the port!
