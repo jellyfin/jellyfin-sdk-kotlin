@@ -301,6 +301,7 @@ public class StreamBuilder
 			playlistItem.setVideoCodec(transcodingProfile.getVideoCodec());
 			playlistItem.setProtocol(transcodingProfile.getProtocol());
 			playlistItem.setAudioStreamIndex(audioStreamIndex);
+			playlistItem.setVideoProfile(transcodingProfile.getVideoProfile());
 
 			java.util.ArrayList<ProfileCondition> videoTranscodingConditions = new java.util.ArrayList<ProfileCondition>();
 			for (CodecProfile i : options.getProfile().getCodecProfiles())

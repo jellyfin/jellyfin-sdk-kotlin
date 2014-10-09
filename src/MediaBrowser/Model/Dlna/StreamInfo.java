@@ -347,6 +347,8 @@ public class StreamInfo
         list.add(item.getIsDirectStream() ? "" : String.valueOf(new java.util.Date().getTime()));
         list.add(item.getMaxRefFrames() != null ? StringHelper.ToStringCultureInvariant(item.getMaxRefFrames()) : "");
 		list.add(item.getMaxVideoBitDepth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxVideoBitDepth()) : "");
+		String tempVar6 = item.getVideoProfile();
+		list.add((tempVar6 != null) ? tempVar6 : "");
 
 		return String.format("Params=%1$s", tangible.DotNetToJavaStringHelper.join(";", list.toArray(new String[0])));
 	}
