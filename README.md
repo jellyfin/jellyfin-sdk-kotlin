@@ -99,17 +99,14 @@ IConnectionManager features:
 			// This describes the device capabilities
 			ClientCapabilities capabilities = new ClientCapabilities();
 
-			// Developers will have to implement this
 			IDevice device = new AndroidDevice();
 			
 			// Developers will have to implement ICredentialProvider
 			ICredentialProvider credentialProvider = new CredentialProvider();
 
-			// If using the portable class library you'll need to supply your own INetworkConnection implementation.
 			INetworkConnection networkConnection = new NetworkConnection(logger);
 
-            // If using the portable class library you'll need to supply your own IServerLocator implementation.
-			IServerLocator serverLocator = new ServerLocator(logger);
+            IServerLocator serverLocator = new ServerLocator(logger);
 
             // The underlying http stack. Developers can inject their own if desired
         	IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, getApplicationContext());
