@@ -10,8 +10,12 @@ import MediaBrowser.Model.Querying.ItemQuery;
 import MediaBrowser.Model.Querying.ItemSortBy;
 import MediaBrowser.Model.Querying.QueryResult;
 import MediaBrowser.Model.Session.ClientCapabilities;
+import MediaBrowser.Model.Users.AuthenticationResult;
 import android.app.Application;
 import com.android.volley.toolbox.ImageLoader;
+
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 public class ExampleApp extends Application {
 
@@ -39,6 +43,25 @@ public class ExampleApp extends Application {
 
     public ImageLoader getImageLoader() {
         return apiClient.getImageLoader();
+    }
+
+    public void Authenticate() throws UnsupportedEncodingException, NoSuchAlgorithmException {
+
+        apiClient.AuthenticateUserAsync("username", "password", new Response<AuthenticationResult>(){
+
+            @Override
+            public void onResponse(AuthenticationResult result) {
+
+
+            }
+
+            @Override
+            public void onError() {
+
+
+            }
+
+        });
     }
 
     public void GetItems(){

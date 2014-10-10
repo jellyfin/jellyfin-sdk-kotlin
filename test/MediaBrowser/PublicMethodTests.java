@@ -5,6 +5,7 @@ import MediaBrowser.ApiInteraction.Http.VolleyHttpClient;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Session.ClientCapabilities;
 import MediaBrowser.Model.System.PublicSystemInfo;
+import MediaBrowser.Model.Users.AuthenticationResult;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -62,6 +63,25 @@ public class PublicMethodTests {
                 // Do something with error
                 fail("Method failed");
             }
+        });
+    }
+
+    public void testLogin() throws Exception {
+
+        apiClient.AuthenticateUserAsync("username", "password", new Response<AuthenticationResult>(){
+
+            @Override
+            public void onResponse(AuthenticationResult result) {
+
+
+            }
+
+            @Override
+            public void onError() {
+
+
+            }
+
         });
     }
 
