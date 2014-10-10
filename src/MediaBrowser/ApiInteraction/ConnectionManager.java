@@ -1,5 +1,6 @@
 package MediaBrowser.ApiInteraction;
 
+import MediaBrowser.ApiInteraction.Device.IDevice;
 import MediaBrowser.ApiInteraction.Discovery.IServerLocator;
 import MediaBrowser.ApiInteraction.Network.INetworkConnection;
 import MediaBrowser.Model.ApiClient.ServerDiscoveryInfo;
@@ -10,14 +11,11 @@ import MediaBrowser.Model.Extensions.StringHelper;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.ClientCapabilities;
-import MediaBrowser.Model.Session.SessionInfoDto;
 import MediaBrowser.Model.System.PublicSystemInfo;
 import MediaBrowser.Model.System.SystemInfo;
 import MediaBrowser.Model.Users.AuthenticationResult;
-import org.apache.maven.settings.Server;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;

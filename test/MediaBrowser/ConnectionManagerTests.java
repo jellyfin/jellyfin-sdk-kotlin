@@ -1,13 +1,12 @@
 package MediaBrowser;
 
 import MediaBrowser.ApiInteraction.*;
-import MediaBrowser.ApiInteraction.Discovery.ServerDiscovery;
+import MediaBrowser.ApiInteraction.Discovery.ServerLocator;
 import MediaBrowser.ApiInteraction.Http.VolleyHttpClient;
 import MediaBrowser.ApiInteraction.Network.NetworkConnection;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.ClientCapabilities;
-import MediaBrowser.Model.System.PublicSystemInfo;
 import android.content.Context;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +38,7 @@ public class ConnectionManagerTests {
         connectionManager = new ConnectionManager(new FakeCredentialProvider(),
                 new NetworkConnection(context, logger),
                 logger,
-                new ServerDiscovery(logger, jsonSerializer),
+                new ServerLocator(logger, jsonSerializer),
                 volleyHttpClient,
                 "App Name",
                 "App Version",

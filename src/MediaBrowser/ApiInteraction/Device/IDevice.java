@@ -1,4 +1,4 @@
-package MediaBrowser.ApiInteraction;
+package MediaBrowser.ApiInteraction.Device;
 
 import java.util.Observable;
 

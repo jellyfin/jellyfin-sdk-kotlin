@@ -1,6 +1,6 @@
 package MediaBrowser;
 
-import MediaBrowser.ApiInteraction.IDevice;
+import MediaBrowser.ApiInteraction.Device.IDevice;
 
 import java.util.Observable;
 

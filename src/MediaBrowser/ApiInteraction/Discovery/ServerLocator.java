@@ -10,12 +10,12 @@ import java.io.IOException;
 import java.net.*;
 import java.util.Enumeration;
 
-public class ServerDiscovery implements IServerLocator {
+public class ServerLocator implements IServerLocator {
 
     private ILogger logger;
     private IJsonSerializer jsonSerializer;
 
-    public ServerDiscovery(ILogger logger, IJsonSerializer jsonSerializer) {
+    public ServerLocator(ILogger logger, IJsonSerializer jsonSerializer) {
         this.logger = logger;
         this.jsonSerializer = jsonSerializer;
     }

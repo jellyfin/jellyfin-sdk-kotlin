@@ -1,9 +1,9 @@
 package MediaBrowser;
 
 import MediaBrowser.ApiInteraction.ConsoleLogger;
+import MediaBrowser.ApiInteraction.Discovery.ServerLocator;
 import MediaBrowser.ApiInteraction.JsonSerializer;
 import MediaBrowser.ApiInteraction.Response;
-import MediaBrowser.ApiInteraction.Discovery.ServerDiscovery;
 import MediaBrowser.Model.ApiClient.ServerDiscoveryInfo;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
@@ -18,7 +18,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 @RunWith(RobolectricTestRunner.class)
-public class ServerDiscoveryTest {
+public class ServerLocatorTest {
 
     private ILogger logger;
     private IJsonSerializer jsonSerializer = new JsonSerializer();
@@ -31,7 +31,7 @@ public class ServerDiscoveryTest {
     @Test
     public void findServers_shouldReturnResults() throws Exception {
 
-        ServerDiscovery discovery = new ServerDiscovery(logger, jsonSerializer);
+        ServerLocator discovery = new ServerLocator(logger, jsonSerializer);
 
         discovery.FindServers(new Response<ServerDiscoveryInfo[]>(){
 
