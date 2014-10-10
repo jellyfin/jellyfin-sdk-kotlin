@@ -5,7 +5,7 @@ This library allows Android clients to easily access the Media Browser Rest API.
 
 # Single Server Example #
 
-This is an example of connecting to a single server using a fixed, predictable address, from an app that has user-specific features.
+This is an example of connecting to a single server using a fixed, predictable address, from an app that has user-specific features (and requires a user login).
 
 
 ``` java
@@ -34,11 +34,13 @@ This is an example of connecting to a single server using a fixed, predictable a
 
 ```
 
+The **ServerLocator** class can be used to discover servers on the local network, although it is recommended to handle that via a **ConnectionManager**, discussed later on in this document.
+
 A complete [app example can be found here.](https://github.com/MediaBrowser/MediaBrowser.ApiClient.Java/blob/master/src/MediaBrowser/ApiInteraction/Sample/ExampleApp.java "app example can be found here.")
 
 # Service Apps #
 
-If your app is some kind of service or utility (e.g. Sickbeard), you should construct ApiClient with your api key.
+If your app is some kind of service or utility (e.g. Sickbeard), you should construct ApiClient with your user-supplied api key.
 
 ``` java
 
@@ -79,7 +81,7 @@ This will open a connection in a background thread, and periodically check to en
 # Multi-Server Usage #
 
 
-The above examples are designed for cases when your app always connects to a single server, and you always know the address. An example is an app that will always run within a local network and only connect to one server at a time. If your app is designed to support multiple networks and/or multiple servers, then **IConnectionManager** should be used in place of the above example.
+The above examples are designed for cases when your app always connects to a single server, and you always know the address. If your app is designed to support multiple networks and/or multiple servers, then **IConnectionManager** should be used in place of the above example.
 
 IConnectionManager features:
 
@@ -92,7 +94,7 @@ IConnectionManager features:
 ``` c#
 
             // Developers are encouraged to create their own ILogger implementation
-			ILogger logger = new NullLogger();
+			ILogger logger = new ConsoleLogger();
 
 			// This describes the device capabilities
 			ClientCapabilities capabilities = new ClientCapabilities();
