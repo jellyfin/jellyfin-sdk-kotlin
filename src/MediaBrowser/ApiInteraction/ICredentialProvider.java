@@ -1,8 +1,10 @@
 package MediaBrowser.ApiInteraction;
 
+import MediaBrowser.Model.ApiClient.ServerCredentials;
+
 public interface ICredentialProvider {
 
-    ServerCredentialConfiguration GetCredentials();
+    ServerCredentials GetCredentials();
 
-    void SaveCredentials(ServerCredentialConfiguration credentials);
+    void SaveCredentials(ServerCredentials credentials);
 }

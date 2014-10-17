@@ -3,13 +3,8 @@ package MediaBrowser.ApiInteraction;
 import MediaBrowser.ApiInteraction.Device.IDevice;
 import MediaBrowser.ApiInteraction.Discovery.IServerLocator;
 import MediaBrowser.ApiInteraction.Network.INetworkConnection;
-import MediaBrowser.Model.ApiClient.ConnectionState;
-import MediaBrowser.Model.ApiClient.ServerDiscoveryInfo;
-import MediaBrowser.Model.ApiClient.ServerInfo;
-import MediaBrowser.Model.ApiClient.WakeOnLanInfo;
-import MediaBrowser.Model.Connect.PinCreationResult;
-import MediaBrowser.Model.Connect.PinExchangeResult;
-import MediaBrowser.Model.Connect.PinStatusResult;
+import MediaBrowser.Model.ApiClient.*;
+import MediaBrowser.Model.Connect.*;
 import MediaBrowser.Model.Dto.BaseItemDto;
 import MediaBrowser.Model.Extensions.StringHelper;
 import MediaBrowser.Model.Logging.ILogger;
@@ -20,10 +15,9 @@ import MediaBrowser.Model.System.SystemInfo;
 import MediaBrowser.Model.Users.AuthenticationResult;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Observable;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
 
 public class ConnectionManager implements IConnectionManager {
 
@@ -42,8 +36,11 @@ public class ConnectionManager implements IConnectionManager {
     private ClientCapabilities clientCapabilities;
     private ApiEventListener apiEventListener;
 
+    private ConnectService connectService;
+
     public ConnectionManager(ICredentialProvider credentialProvider,
                              INetworkConnection networkConnectivity,
+                             IJsonSerializer jsonSerializer,
                              ILogger logger,
                              IServerLocator serverDiscovery,
                              IAsyncHttpClient httpClient,
@@ -63,6 +60,9 @@ public class ConnectionManager implements IConnectionManager {
         this.device = device;
         this.clientCapabilities = clientCapabilities;
         this.apiEventListener = apiEventListener;
+        this.jsonSerializer = jsonSerializer;
+
+        connectService = new ConnectService(jsonSerializer, logger, httpClient, credentialProvider);
 
         device.getResumeFromSleepObservable().addObserver(new GenericObserver() {
 
@@ -117,7 +117,13 @@ public class ConnectionManager implements IConnectionManager {
 
     private void Connect(ArrayList<ServerInfo> servers, Response<ConnectionResult> response){
 
-        // TODO: Sort by date last accessed
+        Collections.sort(servers, new Comparator<ServerInfo>() {
+            @Override
+            public int compare(ServerInfo p1, ServerInfo p2) {
+                // Descending
+                return p2.getDateLastAccessed().compareTo(p1.getDateLastAccessed());
+            }
+        });
 
         if (servers.size() == 0){
             OnFailedConnection(response);
@@ -307,7 +313,7 @@ public class ConnectionManager implements IConnectionManager {
             });
         }
 
-        ServerCredentialConfiguration credentials = _credentialProvider.GetCredentials();
+        ServerCredentials credentials = _credentialProvider.GetCredentials();
 
         server.setDateLastAccessed(new Date());
 
@@ -356,7 +362,7 @@ public class ConnectionManager implements IConnectionManager {
             private void OnSuccessOrFail() {
 
                 _logger.Debug("Updating saved credentials for all servers");
-                ServerCredentialConfiguration credentials = _credentialProvider.GetCredentials();
+                ServerCredentials credentials = _credentialProvider.GetCredentials();
 
                 for (ServerInfo server : credentials.getServers()) {
 
@@ -493,9 +499,16 @@ public class ConnectionManager implements IConnectionManager {
 
         if (apiClient == null){
 
+            String address = server.getLocalAddress();
+
+            if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(address))
+            {
+                address = server.getRemoteAddress();
+            }
+
             apiClient = new ApiClient(_httpClient,
                     _logger,
-                    server.getLocalAddress(),
+                    address,
                     applicationName,
                     device.getDeviceName(),
                     device.getDeviceId(),
@@ -549,7 +562,7 @@ public class ConnectionManager implements IConnectionManager {
                 ServerInfo server = apiClient.getServerInfo();
                 UpdateServerInfo(server, info);
 
-                ServerCredentialConfiguration credentials = _credentialProvider.GetCredentials();
+                ServerCredentials credentials = _credentialProvider.GetCredentials();
 
                 server.setDateLastAccessed(new Date());
                 server.setUserId(result.getUser().getId());
@@ -569,10 +582,12 @@ public class ConnectionManager implements IConnectionManager {
 
         _logger.Debug("Locating available servers");
 
-        _logger.Debug("Getting saved servers via credential provider");
         final ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
 
-        servers.addAll(_credentialProvider.GetCredentials().getServers());
+        _logger.Debug("Getting saved servers via credential provider");
+        ServerCredentials credentials = _credentialProvider.GetCredentials();
+
+        servers.addAll(credentials.getServers());
 
         final int[] numTasks = {0};
         final int[] numTasksCompleted = {0};
@@ -614,12 +629,61 @@ public class ConnectionManager implements IConnectionManager {
 
         if (networkInfo.GetIsRemoteNetworkAvailable())
         {
-            //numTasks++;
+            numTasks[0]++;
+
+            _logger.Debug("Getting server list from Connect");
+
+            connectService.GetServers(credentials.getConnectUserId(), new Response<ConnectUserServer[]>(){
+
+                private void OnAny(ConnectUserServer[] foundServers){
+
+                    synchronized (servers){
+
+                        MergeServerLists(servers, ConvertServerList(foundServers));
+                        numTasksCompleted[0]++;
+
+                        if (numTasksCompleted[0] >= numTasks[0]){
+
+                            response.onResponse(servers);
+                        }
+                    }
+                }
+
+                @Override
+                public void onResponse(ConnectUserServer[] response) {
+                    OnAny(response);
+                }
+
+                @Override
+                public void onError() {
+                    OnAny(new ConnectUserServer[]{});
+                }
+            });
         }
 
         if (numTasks[0] == 0){
             response.onResponse(servers);
         }
+    }
+
+    private ArrayList<ServerInfo> ConvertServerList(ConnectUserServer[] userServers){
+
+        ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
+
+        for(ConnectUserServer userServer : userServers){
+
+            ServerInfo server = new ServerInfo();
+
+            server.setLocalAddress(null);
+            server.setId(userServer.getSystemId());
+            server.setAccessToken(userServer.getAccessKey());
+            server.setName(userServer.getName());
+            server.setRemoteAddress(userServer.getUrl());
+
+            servers.add(server);
+        }
+
+        return servers;
     }
 
     private void MergeServerLists(ArrayList<ServerInfo> primary, ArrayList<ServerInfo> secondary){
@@ -803,30 +867,43 @@ public class ConnectionManager implements IConnectionManager {
         }
     }
 
-    /*public void LoginToConnect(String username, String password)
-    {
-        var result = await _connectService.Authenticate(username, password).ConfigureAwait(false);
+    public void LoginToConnect(String username, String password, final EmptyResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 
-        ServerCredentialConfiguration credentials = _credentialProvider.GetCredentials();
+        connectService.Authenticate(username, password, new Response<ConnectAuthenticationResult>() {
 
-        credentials.ConnectAccessToken = result.AccessToken;
-        credentials.ConnectUserId = result.User.Id;
+            @Override
+            public void onResponse(ConnectAuthenticationResult result) {
 
-        _credentialProvider.SaveCredentials(credentials);
+                ServerCredentials credentials = _credentialProvider.GetCredentials();
+
+                credentials.setConnectAccessToken(result.getAccessToken());
+                credentials.setConnectUserId(result.getUser().getId());
+
+                _credentialProvider.SaveCredentials(credentials);
+
+                response.onResponse();
+            }
+
+            @Override
+            public void onError() {
+
+                response.onError();
+            }
+        });
     }
 
-    public void CreatePin(Response<PinCreationResult> response)
+    public void CreatePin(String deviceId, Response<PinCreationResult> response)
     {
-        return _connectService.CreatePin(response);
+        connectService.CreatePin(deviceId, response);
     }
 
     public void GetPinStatus(PinCreationResult pin, Response<PinStatusResult> response)
     {
-        _connectService.GetPinStatus(pin, response);
+        connectService.GetPinStatus(pin, response);
     }
 
     public void ExchangePin(PinCreationResult pin, Response<PinExchangeResult> response)
     {
-        _connectService.ExchangePin(pin, response);
-    }*/
+        connectService.ExchangePin(pin, response);
+    }
 }

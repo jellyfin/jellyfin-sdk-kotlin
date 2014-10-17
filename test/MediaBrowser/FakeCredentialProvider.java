@@ -1,19 +1,19 @@
 package MediaBrowser;
 
 import MediaBrowser.ApiInteraction.ICredentialProvider;
-import MediaBrowser.ApiInteraction.ServerCredentialConfiguration;
+import MediaBrowser.Model.ApiClient.ServerCredentials;
 
 public class FakeCredentialProvider implements ICredentialProvider {
 
-    private ServerCredentialConfiguration config = new ServerCredentialConfiguration();
+    private ServerCredentials config = new ServerCredentials();
 
     @Override
-    public ServerCredentialConfiguration GetCredentials() {
+    public ServerCredentials GetCredentials() {
         return config;
     }
 
     @Override
-    public void SaveCredentials(ServerCredentialConfiguration credentials) {
+    public void SaveCredentials(ServerCredentials credentials) {
         config = credentials;
     }
 }

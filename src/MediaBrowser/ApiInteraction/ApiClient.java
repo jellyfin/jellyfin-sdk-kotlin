@@ -1,5 +1,7 @@
 package MediaBrowser.ApiInteraction;
 
+import MediaBrowser.ApiInteraction.Cryptography.Md5;
+import MediaBrowser.ApiInteraction.Cryptography.Sha1;
 import MediaBrowser.ApiInteraction.Network.INetworkConnection;
 import MediaBrowser.ApiInteraction.WebSocket.ApiWebSocket;
 import MediaBrowser.Model.ApiClient.ServerInfo;
@@ -10,7 +12,6 @@ import MediaBrowser.Model.Channels.ChannelQuery;
 import MediaBrowser.Model.Configuration.ServerConfiguration;
 import MediaBrowser.Model.Dto.*;
 import MediaBrowser.Model.Entities.DisplayPreferences;
-import MediaBrowser.Model.Entities.EmptyRequestResult;
 import MediaBrowser.Model.Entities.ItemReview;
 import MediaBrowser.Model.Entities.ParentalRating;
 import MediaBrowser.Model.Extensions.StringHelper;
@@ -1569,13 +1570,13 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("username");
         }
 
-        String passwordHash = Sha1.getHash(password);
         String url = GetApiUrl("Users/AuthenticateByName");
 
         QueryStringDictionary dict = new QueryStringDictionary ();
 
         dict.Add("username", username);
-        dict.Add("password", passwordHash);
+        dict.Add("password", Sha1.getHash(password));
+        dict.Add("passwordMd5", Md5.getHash(password));
 
         url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(response){

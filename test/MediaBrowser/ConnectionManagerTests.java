@@ -37,6 +37,7 @@ public class ConnectionManagerTests {
 
         connectionManager = new ConnectionManager(new FakeCredentialProvider(),
                 new NetworkConnection(context, logger),
+                jsonSerializer,
                 logger,
                 new ServerLocator(logger, jsonSerializer),
                 volleyHttpClient,
