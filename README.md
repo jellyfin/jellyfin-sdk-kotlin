@@ -149,6 +149,10 @@ ServerInfo and ApiClient will be null if State == Unavailable. Let's look at an 
 					case ConnectionState.Unavailable:
 						// No servers found. User must manually enter connection info.
 	
+					case ConnectionState.ServerSelection:
+						// Multiple servers available
+						// Display a selection screen
+
 					case ConnectionState.ServerSignIn:
 						// A server was found and the user needs to login.
 						// Display a login screen and authenticate with the server using result.ApiClient
