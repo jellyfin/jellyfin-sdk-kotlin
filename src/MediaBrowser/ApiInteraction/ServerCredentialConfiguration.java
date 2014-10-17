@@ -7,16 +7,6 @@ import java.util.ArrayList;
 
 public class ServerCredentialConfiguration {
 
-    private String lastServerId;
-    public final String getLastServerId()
-    {
-        return lastServerId;
-    }
-    public void setLastServerId(String value)
-    {
-        lastServerId = value;
-    }
-
     private java.util.ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
     public final java.util.ArrayList<ServerInfo> getServers()
     {

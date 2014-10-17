@@ -1,37 +1,40 @@
 package MediaBrowser.ApiInteraction;
 
-import MediaBrowser.Model.ApiClient.ServerInfo;
+import MediaBrowser.Model.ApiClient.*;
 
-public class ConnectionResult {
-
-    private ConnectionState state = ConnectionState.Unavailable;
+public class ConnectionResult
+{
+    private ConnectionState State;
     public final ConnectionState getState()
     {
-        return state;
+        return State;
     }
     public final void setState(ConnectionState value)
     {
-        state = value;
+        State = value;
     }
-
-    private ServerInfo serverInfo;
-    public final ServerInfo getServerInfo()
+    private java.util.ArrayList<ServerInfo> Servers;
+    public final java.util.ArrayList<ServerInfo> getServers()
     {
-        return serverInfo;
+        return Servers;
     }
-    public final void setServerInfo(ServerInfo value)
+    public final void setServers(java.util.ArrayList<ServerInfo> value)
     {
-        serverInfo = value;
+        Servers = value;
     }
-
-    private ApiClient apiClient;
+    private ApiClient ApiClient;
     public final ApiClient getApiClient()
     {
-        return apiClient;
+        return ApiClient;
     }
     public final void setApiClient(ApiClient value)
     {
-        apiClient = value;
+        ApiClient = value;
     }
 
+    public ConnectionResult()
+    {
+        setState(ConnectionState.Unavailable);
+        setServers(new java.util.ArrayList<ServerInfo>());
+    }
 }

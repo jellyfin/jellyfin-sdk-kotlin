@@ -332,13 +332,22 @@ public class UserConfiguration
 		EnableCinemaMode = value;
 	}
 
+	private AccessSchedule[] AccessSchedules;
+	public final AccessSchedule[] getAccessSchedules()
+	{
+		return AccessSchedules;
+	}
+	public final void setAccessSchedules(AccessSchedule[] value)
+	{
+		AccessSchedules = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="UserConfiguration" /> class.
 	*/
 	public UserConfiguration()
 	{
 		setPlayDefaultAudioTrack(true);
-		setEnableRemoteControlOfOtherUsers(true);
 		setEnableLiveTvManagement(true);
 		setEnableMediaPlayback(true);
 		setEnableLiveTvAccess(true);
@@ -357,5 +366,7 @@ public class UserConfiguration
 		setSyncConnectImage(true);
 		setIncludeTrailersInSuggestions(true);
 		setEnableCinemaMode(true);
+
+		setAccessSchedules(new AccessSchedule[] { });
 	}
 }

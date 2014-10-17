@@ -65,6 +65,15 @@ public class ServerInfo
 	{
 		WakeOnLanInfos = value;
 	}
+	private java.util.Date DateLastAccessed = new java.util.Date(0);
+	public final java.util.Date getDateLastAccessed()
+	{
+		return DateLastAccessed;
+	}
+	public final void setDateLastAccessed(java.util.Date value)
+	{
+		DateLastAccessed = value;
+	}
 
 	public ServerInfo()
 	{

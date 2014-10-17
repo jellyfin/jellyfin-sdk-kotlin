@@ -27,7 +27,7 @@ public class ImageInfo
 	 
 	 <value>The index of the image.</value>
 	*/
-	private Integer ImageIndex = null;
+	private Integer ImageIndex;
 	public final Integer getImageIndex()
 	{
 		return ImageIndex;
@@ -62,12 +62,12 @@ public class ImageInfo
 	 
 	 <value>The height.</value>
 	*/
-	private int Height;
-	public final int getHeight()
+	private Integer Height;
+	public final Integer getHeight()
 	{
 		return Height;
 	}
-	public final void setHeight(int value)
+	public final void setHeight(Integer value)
 	{
 		Height = value;
 	}
@@ -77,12 +77,12 @@ public class ImageInfo
 	 
 	 <value>The width.</value>
 	*/
-	private int Width;
-	public final int getWidth()
+	private Integer Width;
+	public final Integer getWidth()
 	{
 		return Width;
 	}
-	public final void setWidth(int value)
+	public final void setWidth(Integer value)
 	{
 		Width = value;
 	}

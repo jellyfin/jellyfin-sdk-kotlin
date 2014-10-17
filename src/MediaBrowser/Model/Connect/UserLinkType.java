@@ -5,11 +5,11 @@ public enum UserLinkType
 	/** 
 	 The linked user
 	*/
-	LinkedUser(1),
+	LinkedUser(0),
 	/** 
 	 The guest
 	*/
-	Guest(2);
+	Guest(1);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, UserLinkType> mappings;

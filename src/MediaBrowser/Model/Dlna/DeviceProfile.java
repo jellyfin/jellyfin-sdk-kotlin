@@ -333,6 +333,25 @@ public class DeviceProfile
 		RequiresPlainFolders = value;
 	}
 
+	private boolean SupportsDirectRemoteContent;
+	public final boolean getSupportsDirectRemoteContent()
+	{
+		return SupportsDirectRemoteContent;
+	}
+	public final void setSupportsDirectRemoteContent(boolean value)
+	{
+		SupportsDirectRemoteContent = value;
+	}
+	private boolean SupportsCustomHttpHeaders;
+	public final boolean getSupportsCustomHttpHeaders()
+	{
+		return SupportsCustomHttpHeaders;
+	}
+	public final void setSupportsCustomHttpHeaders(boolean value)
+	{
+		SupportsCustomHttpHeaders = value;
+	}
+
 	private XmlAttribute[] XmlRootAttributes;
 	public final XmlAttribute[] getXmlRootAttributes()
 	{

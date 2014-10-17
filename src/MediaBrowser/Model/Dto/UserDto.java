@@ -59,7 +59,7 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto
 	 
 	 <value>The type of the connect link.</value>
 	*/
-	private UserLinkType ConnectLinkType = UserLinkType.values()[0];
+	private UserLinkType ConnectLinkType = null;
 	public final UserLinkType getConnectLinkType()
 	{
 		return ConnectLinkType;

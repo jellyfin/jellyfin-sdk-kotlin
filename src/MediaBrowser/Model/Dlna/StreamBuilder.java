@@ -88,7 +88,14 @@ public class StreamBuilder
 		// If that doesn't produce anything, just take the first
 		for (StreamInfo i : streams)
 		{
-			if (i.getIsDirectStream())
+			if (i.getPlayMethod() == PlayMethod.DirectPlay)
+			{
+				return i;
+			}
+		}
+		for (StreamInfo i : streams)
+		{
+			if (i.getPlayMethod() == PlayMethod.DirectStream)
 			{
 				return i;
 			}
@@ -259,11 +266,11 @@ public class StreamBuilder
 		if (IsEligibleForDirectPlay(item, maxBitrateSetting, subtitleStream, options))
 		{
 			// See if it can be direct played
-			DirectPlayProfile directPlay = GetVideoDirectPlayProfile(options.getProfile(), item, videoStream, audioStream);
+			PlayMethod directPlay = GetVideoDirectPlayProfile(options.getProfile(), item, videoStream, audioStream);
 
 			if (directPlay != null)
 			{
-				playlistItem.setPlayMethod(PlayMethod.DirectStream);
+				playlistItem.setPlayMethod(directPlay);
 				playlistItem.setContainer(item.getContainer());
 
 				if (subtitleStream != null)
@@ -378,7 +385,7 @@ public class StreamBuilder
 		return 128000;
 	}
 
-	private DirectPlayProfile GetVideoDirectPlayProfile(DeviceProfile profile, MediaSourceInfo mediaSource, MediaStream videoStream, MediaStream audioStream)
+	private PlayMethod GetVideoDirectPlayProfile(DeviceProfile profile, MediaSourceInfo mediaSource, MediaStream videoStream, MediaStream audioStream)
 	{
 		// See if it can be direct played
 		DirectPlayProfile directPlay = null;
@@ -496,7 +503,21 @@ public class StreamBuilder
 			}
 		}
 
-		return directPlay;
+		if (mediaSource.getProtocol() == MediaProtocol.Http)
+		{
+			if (!profile.getSupportsDirectRemoteContent())
+			{
+				return null;
+			}
+
+			if (mediaSource.getRequiredHttpHeaders().size() > 0 && !profile.getSupportsCustomHttpHeaders())
+			{
+				return null;
+			}
+			return PlayMethod.DirectPlay;
+		}
+
+		return PlayMethod.DirectStream;
 	}
 
 	private boolean IsEligibleForDirectPlay(MediaSourceInfo item, Integer maxBitrate, MediaStream subtitleStream, VideoOptions options)
@@ -765,12 +786,6 @@ public class StreamBuilder
 
 	private boolean IsVideoDirectPlaySupported(DirectPlayProfile profile, MediaSourceInfo item, MediaStream videoStream, MediaStream audioStream)
 	{
-		// Only plain video files can be direct played
-		if (item.getVideoType() != VideoType.VideoFile)
-		{
-			return false;
-		}
-
 		if (profile.getContainer().length() > 0)
 		{
 			// Check container type

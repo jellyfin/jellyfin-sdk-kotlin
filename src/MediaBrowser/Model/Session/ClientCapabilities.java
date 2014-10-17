@@ -11,6 +11,7 @@ public class ClientCapabilities
 	{
 		PlayableMediaTypes = value;
 	}
+
 	private java.util.ArrayList<String> SupportedCommands;
 	public final java.util.ArrayList<String> getSupportedCommands()
 	{
@@ -19,6 +20,36 @@ public class ClientCapabilities
 	public final void setSupportedCommands(java.util.ArrayList<String> value)
 	{
 		SupportedCommands = value;
+	}
+
+	private boolean SupportsMediaControl;
+	public final boolean getSupportsMediaControl()
+	{
+		return SupportsMediaControl;
+	}
+	public final void setSupportsMediaControl(boolean value)
+	{
+		SupportsMediaControl = value;
+	}
+
+	private String MessageCallbackUrl;
+	public final String getMessageCallbackUrl()
+	{
+		return MessageCallbackUrl;
+	}
+	public final void setMessageCallbackUrl(String value)
+	{
+		MessageCallbackUrl = value;
+	}
+
+	private boolean SupportsContentUploading;
+	public final boolean getSupportsContentUploading()
+	{
+		return SupportsContentUploading;
+	}
+	public final void setSupportsContentUploading(boolean value)
+	{
+		SupportsContentUploading = value;
 	}
 
 	public ClientCapabilities()

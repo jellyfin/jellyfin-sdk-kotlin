@@ -6,7 +6,7 @@ import MediaBrowser.Model.Dlna.*;
 //ORIGINAL LINE: [XmlRoot("Profile")] public class AndroidProfile : DefaultProfile
 public class AndroidProfile extends DefaultProfile
 {
-	public AndroidProfile(boolean supportsHls, boolean supportsMpegDash)
+	public AndroidProfile(boolean supportsHls, boolean supportsMpegDash, String[] supportedH264Profiles)
 	{
 		setName("Android");
 
@@ -76,7 +76,7 @@ public class AndroidProfile extends DefaultProfile
 		tempVar10.setCodec("h264");
 		tempVar10.setConditions(new ProfileCondition[]
 		{
-			new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, "baseline|constrained baseline"),
+			new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, tangible.DotNetToJavaStringHelper.join("|", supportedH264Profiles)),
 			new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Width, "1920"),
 			new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Height, "1080"),
 			new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoBitDepth, "8"),

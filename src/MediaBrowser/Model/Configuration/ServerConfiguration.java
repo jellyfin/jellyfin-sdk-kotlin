@@ -1,8 +1,6 @@
 package MediaBrowser.Model.Configuration;
 
 import MediaBrowser.Model.Entities.*;
-import MediaBrowser.Model.FileOrganization.*;
-import MediaBrowser.Model.LiveTv.*;
 
 /** 
  Represents the server configuration.
@@ -22,6 +20,21 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setEnableUPnP(boolean value)
 	{
 		EnableUPnP = value;
+	}
+
+	/** 
+	 Gets or sets the public mapped port.
+	 
+	 <value>The public mapped port.</value>
+	*/
+	private int PublicPort;
+	public final int getPublicPort()
+	{
+		return PublicPort;
+	}
+	public final void setPublicPort(int value)
+	{
+		PublicPort = value;
 	}
 
 	/** 
@@ -462,16 +475,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		UICulture = value;
 	}
 
-	private DlnaOptions DlnaOptions;
-	public final DlnaOptions getDlnaOptions()
-	{
-		return DlnaOptions;
-	}
-	public final void setDlnaOptions(DlnaOptions value)
-	{
-		DlnaOptions = value;
-	}
-
 	private double DownMixAudioBoost;
 	public final double getDownMixAudioBoost()
 	{
@@ -480,16 +483,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setDownMixAudioBoost(double value)
 	{
 		DownMixAudioBoost = value;
-	}
-
-	private boolean DefaultMetadataSettingsApplied;
-	public final boolean getDefaultMetadataSettingsApplied()
-	{
-		return DefaultMetadataSettingsApplied;
-	}
-	public final void setDefaultMetadataSettingsApplied(boolean value)
-	{
-		DefaultMetadataSettingsApplied = value;
 	}
 
 	private PeopleMetadataOptions PeopleMetadataOptions;
@@ -501,15 +494,24 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		PeopleMetadataOptions = value;
 	}
-
-	private String[] InsecureApps;
-	public final String[] getInsecureApps()
+	private boolean FindInternetTrailers;
+	public final boolean getFindInternetTrailers()
 	{
-		return InsecureApps;
+		return FindInternetTrailers;
 	}
-	public final void setInsecureApps(String[] value)
+	public final void setFindInternetTrailers(boolean value)
 	{
-		InsecureApps = value;
+		FindInternetTrailers = value;
+	}
+
+	private String[] InsecureApps2;
+	public final String[] getInsecureApps2()
+	{
+		return InsecureApps2;
+	}
+	public final void setInsecureApps2(String[] value)
+	{
+		InsecureApps2 = value;
 	}
 
 	private boolean SaveMetadataHidden;
@@ -522,16 +524,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		SaveMetadataHidden = value;
 	}
 
-	private boolean FindInternetTrailers;
-	public final boolean getFindInternetTrailers()
-	{
-		return FindInternetTrailers;
-	}
-	public final void setFindInternetTrailers(boolean value)
-	{
-		FindInternetTrailers = value;
-	}
-
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
 	*/
@@ -540,6 +532,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		super();
 		setMediaEncodingQuality(EncodingQuality.Auto);
 		setImageSavingConvention(ImageSavingConvention.Compatible);
+		setPublicPort(8096);
 		setHttpServerPortNumber(8096);
 		setEnableDashboardResponseCaching(true);
 
@@ -577,6 +570,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 
 		setPeopleMetadataOptions(new PeopleMetadataOptions());
 
-		setInsecureApps(new String[] {"Roku", "Chromecast", "iOS", "Android"});
+		setInsecureApps2(new String[] {"Roku", "Chromecast", "iOS", "Android", "Windows Phone"});
 	}
 }
