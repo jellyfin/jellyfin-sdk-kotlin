@@ -74,10 +74,18 @@ public class ServerInfo
 	{
 		DateLastAccessed = value;
 	}
+	private String ExchangeToken;
+	public final String getExchangeToken()
+	{
+		return ExchangeToken;
+	}
+	public final void setExchangeToken(String value)
+	{
+		ExchangeToken = value;
+	}
 
 	public ServerInfo()
 	{
 		setWakeOnLanInfos(new java.util.ArrayList<WakeOnLanInfo>());
-		setLocalAddress("http://localhost:8096");
 	}
 }

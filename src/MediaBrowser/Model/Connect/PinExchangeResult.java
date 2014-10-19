@@ -11,13 +11,13 @@ public class PinExchangeResult
 	{
 		UserId = value;
 	}
-	private String UserAccessToken;
-	public final String getUserAccessToken()
+	private String AccessToken;
+	public final String getAccessToken()
 	{
-		return UserAccessToken;
+		return AccessToken;
 	}
-	public final void setUserAccessToken(String value)
+	public final void setAccessToken(String value)
 	{
-		UserAccessToken = value;
+		AccessToken = value;
 	}
 }

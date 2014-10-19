@@ -690,7 +690,7 @@ public class StreamBuilder
 				}
 				case VideoProfile:
 				{
-						item.setVideoProfile(value);
+						item.setVideoProfile(((value != null) ? value : "").split("[|]", -1)[0]);
 						break;
 				}
 				case Height:
