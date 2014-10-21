@@ -834,7 +834,7 @@ public class ApiClient extends BaseApiClient {
     /// <returns>Task&lt;PublicSystemInfo&gt;.</returns>
     public void GetPublicSystemInfoAsync(final Response<PublicSystemInfo> response)
     {
-        String url = GetApiUrl("System/Info");
+        String url = GetApiUrl("System/Info/Public");
 
         url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(response){
