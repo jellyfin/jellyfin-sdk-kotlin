@@ -5,10 +5,7 @@ import MediaBrowser.ApiInteraction.Http.VolleyHttpClient;
 import MediaBrowser.Model.Dto.BaseItemDto;
 import MediaBrowser.Model.Entities.SortOrder;
 import MediaBrowser.Model.Logging.ILogger;
-import MediaBrowser.Model.Querying.ItemFilter;
-import MediaBrowser.Model.Querying.ItemQuery;
-import MediaBrowser.Model.Querying.ItemSortBy;
-import MediaBrowser.Model.Querying.QueryResult;
+import MediaBrowser.Model.Querying.*;
 import MediaBrowser.Model.Session.ClientCapabilities;
 import android.app.Application;
 import com.android.volley.toolbox.ImageLoader;
@@ -66,7 +63,7 @@ public class ExampleService extends Application {
         };
 
         // Get the ten most recently added items for the current user
-        apiClient.GetItemsAsync(query, new Response<QueryResult<BaseItemDto>>());
+        apiClient.GetItemsAsync(query, new Response<ItemsResult>());
 
     }
 }

@@ -162,7 +162,7 @@ public class ApiClient extends BaseApiClient {
         GetItemFromUrl(url, response);
     }
 
-    public void GetIntrosAsync(String itemId, String userId, final Response<QueryResult<BaseItemDto>> response)
+    public void GetIntrosAsync(String itemId, String userId, final Response<ItemsResult> response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId))
         {
@@ -282,7 +282,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    private void GetItemsFromUrl(String url, final Response<QueryResult<BaseItemDto>> response) {
+    private void GetItemsFromUrl(String url, final Response<ItemsResult> response) {
 
         url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(response){
@@ -290,7 +290,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<BaseItemDto> obj = DeserializeFromString(jsonResponse, new QueryResult<BaseItemDto>().getClass());
+                ItemsResult obj = DeserializeFromString(jsonResponse, new ItemsResult().getClass());
                 response.onResponse(obj);
             }
         };
@@ -314,7 +314,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void GetItemsAsync(ItemQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetItemsAsync(ItemQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -332,7 +332,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetNextUpEpisodesAsync(NextUpQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetNextUpEpisodesAsync(NextUpQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -344,7 +344,7 @@ public class ApiClient extends BaseApiClient {
         GetItemsFromUrl(url, response);
     }
 
-    public void GetUpcomingEpisodesAsync(NextUpQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetUpcomingEpisodesAsync(NextUpQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -372,7 +372,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetSimilarMoviesAsync(SimilarItemsQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetSimilarMoviesAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -390,7 +390,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetSimilarTrailersAsync(SimilarItemsQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetSimilarTrailersAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -408,7 +408,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetSimilarSeriesAsync(SimilarItemsQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetSimilarSeriesAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -420,7 +420,7 @@ public class ApiClient extends BaseApiClient {
         GetItemsFromUrl(url, response);
     }
 
-    public void GetEpisodesAsync(EpisodeQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetEpisodesAsync(EpisodeQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -444,7 +444,7 @@ public class ApiClient extends BaseApiClient {
         GetItemsFromUrl(url, response);
     }
 
-    public void GetSeasonsAsync(SeasonQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetSeasonsAsync(SeasonQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -471,7 +471,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetSimilarGamesAsync(SimilarItemsQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetSimilarGamesAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -489,7 +489,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetSimilarAlbumsAsync(SimilarItemsQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetSimilarAlbumsAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -507,7 +507,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">userId</exception>
-    public void GetPeopleAsync(PersonsQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetPeopleAsync(PersonsQuery query, final Response<ItemsResult> response)
     {
         String url = GetItemByNameListUrl("Persons", query);
 
@@ -525,7 +525,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetInstantMixFromAlbumAsync(SimilarItemsQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetInstantMixFromAlbumAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -543,7 +543,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetInstantMixFromArtistAsync(SimilarItemsByNameQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetInstantMixFromArtistAsync(SimilarItemsByNameQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -561,7 +561,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetInstantMixFromMusicGenreAsync(SimilarItemsByNameQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetInstantMixFromMusicGenreAsync(SimilarItemsByNameQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -579,7 +579,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetInstantMixFromSongAsync(SimilarItemsQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetInstantMixFromSongAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -596,7 +596,7 @@ public class ApiClient extends BaseApiClient {
     /// </summary>
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
-    public void GetGameGenresAsync(ItemsByNameQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetGameGenresAsync(ItemsByNameQuery query, final Response<ItemsResult> response)
     {
         String url = GetItemByNameListUrl("GameGenres", query);
 
@@ -608,7 +608,7 @@ public class ApiClient extends BaseApiClient {
     /// </summary>
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
-    public void GetGenresAsync(ItemsByNameQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetGenresAsync(ItemsByNameQuery query, final Response<ItemsResult> response)
     {
         String url = GetItemByNameListUrl("Genres", query);
 
@@ -620,7 +620,7 @@ public class ApiClient extends BaseApiClient {
     /// </summary>
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
-    public void GetMusicGenresAsync(ItemsByNameQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetMusicGenresAsync(ItemsByNameQuery query, final Response<ItemsResult> response)
     {
         String url = GetItemByNameListUrl("MusicGenres", query);
 
@@ -632,7 +632,7 @@ public class ApiClient extends BaseApiClient {
     /// </summary>
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
-    public void GetStudiosAsync(ItemsByNameQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetStudiosAsync(ItemsByNameQuery query, final Response<ItemsResult> response)
     {
         String url = GetItemByNameListUrl("Studios", query);
 
@@ -645,7 +645,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">userId</exception>
-    public void GetArtistsAsync(ArtistsQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetArtistsAsync(ArtistsQuery query, final Response<ItemsResult> response)
     {
         String url = GetItemByNameListUrl("Artists", query);
 
@@ -658,7 +658,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">userId</exception>
-    public void GetAlbumArtistsAsync(ArtistsQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetAlbumArtistsAsync(ArtistsQuery query, final Response<ItemsResult> response)
     {
         String url = GetItemByNameListUrl("Artists/AlbumArtists", query);
 
@@ -1266,7 +1266,7 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("Sessions/Playing");
 
-        PostAsync(url, response);
+        PostAsync(url, info, response);
     }
 
     /// <summary>
@@ -1289,7 +1289,7 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("Sessions/Playing/Progress");
 
-        PostAsync(url, response);
+        PostAsync(url, info, response);
     }
 
     /// <summary>
@@ -1312,7 +1312,7 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("Sessions/Playing/Stopped");
 
-        PostAsync(url, response);
+        PostAsync(url, info, response);
     }
 
     /// <summary>
@@ -2584,7 +2584,7 @@ public class ApiClient extends BaseApiClient {
         SendCommandAsync(sessionId, cmd, response);
     }
 
-    public void GetAdditionalParts(String itemId, String userId, final Response<QueryResult<BaseItemDto>> response)
+    public void GetAdditionalParts(String itemId, String userId, final Response<ItemsResult> response)
     {
         QueryStringDictionary queryString = new QueryStringDictionary();
 
@@ -2613,7 +2613,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void GetChannelItems(ChannelItemQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetChannelItems(ChannelItemQuery query, final Response<ItemsResult> response)
     {
         QueryStringDictionary queryString = new QueryStringDictionary();
 
@@ -2634,7 +2634,7 @@ public class ApiClient extends BaseApiClient {
         GetItemsFromUrl(url, response);
     }
 
-    public void GetChannels(ChannelQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetChannels(ChannelQuery query, final Response<ItemsResult> response)
     {
         QueryStringDictionary queryString = new QueryStringDictionary();
 
@@ -2680,7 +2680,7 @@ public class ApiClient extends BaseApiClient {
         PostAsync(url, response);
     }
 
-    public void GetLatestChannelItems(AllChannelMediaQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetLatestChannelItems(AllChannelMediaQuery query, final Response<ItemsResult> response)
     {
         throw new UnsupportedOperationException();
     }
@@ -2694,7 +2694,7 @@ public class ApiClient extends BaseApiClient {
         ClearAuthenticationInfo();
     }
 
-    public void GetUserViews(String userId, final Response<QueryResult<BaseItemDto>> response)
+    public void GetUserViews(String userId, final Response<ItemsResult> response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(userId))
         {
@@ -2777,7 +2777,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "POST", jsonResponse);
     }
 
-    public void GetPlaylistItems(PlaylistItemQuery query, final Response<QueryResult<BaseItemDto>> response)
+    public void GetPlaylistItems(PlaylistItemQuery query, final Response<ItemsResult> response)
     {
         QueryStringDictionary queryString = new QueryStringDictionary();
 

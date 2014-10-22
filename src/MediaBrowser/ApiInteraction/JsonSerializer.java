@@ -62,9 +62,13 @@ public class JsonSerializer implements IJsonSerializer {
     @Override
     public <T> T DeserializeFromString(String json, Class type) {
 
-/*        Gson gsonBuilder = new GsonBuilder()
-                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-                    .create();*/
+        //Gson gsonBuilder = new GsonBuilder()
+                    //.setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                    //.create();
+
+        //Type listType = new TypeToken<T>() {}.getType();
+
+        //return (T)gsonBuilder.fromJson(json, listType);
 
         return (T) jsonParser.parse(type, json);
     }
