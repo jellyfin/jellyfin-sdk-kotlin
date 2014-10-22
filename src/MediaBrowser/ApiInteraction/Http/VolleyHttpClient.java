@@ -163,14 +163,14 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         ){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = super.getHeaders();
+                Map<String, String> headers = new HashMap<String,String>();
                 AddHeaders(headers, request);
                 return headers;
             }
 
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> data = super.getParams();
+                Map<String, String> data = new HashMap<String,String>();
                 AddData(data, request);
                 return data;
             }
