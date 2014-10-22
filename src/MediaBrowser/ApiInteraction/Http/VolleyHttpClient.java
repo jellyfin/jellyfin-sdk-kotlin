@@ -99,7 +99,7 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         }
     }
 
-    private void AddHeaders(HashMap<String, String> headers, HttpRequest request)
+    private void AddHeaders(Map<String, String> headers, HttpRequest request)
     {
         HttpHeaders requestHeaders = request.getRequestHeaders();
 
@@ -119,6 +119,17 @@ public class VolleyHttpClient implements IAsyncHttpClient {
             String value = requestHeaders.getAuthorizationScheme() + " " + parameter;
 
             headers.put("Authorization", value);
+        }
+    }
+
+    private void AddData(Map<String, String> postParams, HttpRequest request)
+    {
+        if (request.getPostData() == null    ){
+            return;
+        }
+
+        for (String key : request.getPostData().keySet()){
+            postParams.put(key, request.getPostData().get(key));
         }
     }
 
@@ -152,15 +163,21 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         ){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
+                Map<String, String> headers = super.getHeaders();
                 AddHeaders(headers, request);
                 return headers;
             }
 
             @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> data = super.getParams();
+                AddData(data, request);
+                return data;
+            }
+
+            @Override
             /**
              * Returns the raw POST or PUT body to be sent.
-             *
              * @throws AuthFailureError in the event of auth failure
              */
             public byte[] getBody() throws AuthFailureError {

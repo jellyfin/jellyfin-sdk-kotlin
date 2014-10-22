@@ -60,6 +60,16 @@ public class HttpRequest
         privateTimeout = value;
     }
 
+    private QueryStringDictionary postData;
+    public final QueryStringDictionary getPostData()
+    {
+        return postData;
+    }
+    public final void setPostData(QueryStringDictionary value)
+    {
+        postData = value;
+    }
+
     public HttpRequest()
     {
         setRequestHeaders(new HttpHeaders());
@@ -67,6 +77,6 @@ public class HttpRequest
     }
 
     public void setRequestFormContent(QueryStringDictionary data){
-
+        setPostData(data);
     }
 }

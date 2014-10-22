@@ -135,6 +135,16 @@ public class ApiClient extends BaseApiClient {
         _httpClient.Send(request, response);
     }
 
+    private void Send(String url, String method, QueryStringDictionary postData, final Response<String> response)
+    {
+        HttpRequest request = new HttpRequest();
+        request.setUrl(url);
+        request.setMethod(method);
+        request.setRequestHeaders(this.HttpHeaders);
+        request.setRequestFormContent(postData);
+        _httpClient.Send(request, response);
+    }
+
     public void GetItemAsync(String id, String userId, final Response<BaseItemDto> response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
@@ -1444,7 +1454,7 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("url");
         }
 
-        Send(url, "POST", postBody.GetQueryString(), "application/x-www-form-urlencoded", response);
+        Send(url, "POST", postBody, response);
     }
 
     public void PostAsync(String url, Object obj, final EmptyResponse response)
