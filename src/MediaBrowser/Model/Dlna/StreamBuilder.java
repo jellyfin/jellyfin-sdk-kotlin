@@ -428,6 +428,7 @@ public class StreamBuilder
 		Float tempVar = videoStream.getAverageFrameRate();
 		Float videoFramerate = videoStream == null ? null : (tempVar != null) ? tempVar : videoStream.getAverageFrameRate();
 		Boolean isAnamorphic = videoStream == null ? null : videoStream.getIsAnamorphic();
+		Boolean isCabac = videoStream == null ? null : videoStream.getIsCabac();
 
 		Integer audioBitrate = audioStream == null ? null : audioStream.getBitRate();
 		Integer audioChannels = audioStream == null ? null : audioStream.getChannels();
@@ -440,7 +441,7 @@ public class StreamBuilder
 		// Check container conditions
 		for (ProfileCondition i : conditions)
 		{
-			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames))
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames))
 			{
 				return null;
 			}
@@ -467,7 +468,7 @@ public class StreamBuilder
 
 		for (ProfileCondition i : conditions)
 		{
-			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames))
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames))
 			{
 				return null;
 			}
@@ -657,6 +658,7 @@ public class StreamBuilder
 				}
 				case AudioProfile:
 				case IsAnamorphic:
+				case IsCabac:
 				case Has64BitOffsets:
 				case PacketLength:
 				case VideoTimestamp:

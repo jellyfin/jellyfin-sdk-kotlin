@@ -6,6 +6,12 @@ import MediaBrowser.Model.Dlna.*;
 //ORIGINAL LINE: [XmlRoot("Profile")] public class AndroidProfile : DefaultProfile
 public class AndroidProfile extends DefaultProfile
 {
+	public AndroidProfile()
+	{
+		this(true, true, new String[] {"baseline", "constrained baseline"});
+
+	}
+
 	public AndroidProfile(boolean supportsHls, boolean supportsMpegDash, String[] supportedH264Profiles)
 	{
 		setName("Android");
@@ -80,7 +86,8 @@ public class AndroidProfile extends DefaultProfile
 			new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Width, "1920"),
 			new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Height, "1080"),
 			new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoBitDepth, "8"),
-			new ProfileCondition(ProfileConditionType.NotEquals, ProfileConditionValue.IsAnamorphic, "true")
+			new ProfileCondition(ProfileConditionType.NotEquals, ProfileConditionValue.IsAnamorphic, "true"),
+			new ProfileCondition(ProfileConditionType.Equals, ProfileConditionValue.IsCabac, "true")
 		});
 		CodecProfile tempVar11 = new CodecProfile();
 		tempVar11.setType(CodecType.Video);

@@ -83,6 +83,15 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	{
 		DateLastMediaAdded = value;
 	}
+	private ExtraType ExtraType = null;
+	public final ExtraType getExtraType()
+	{
+		return ExtraType;
+	}
+	public final void setExtraType(ExtraType value)
+	{
+		ExtraType = value;
+	}
 
 	private Integer AirsBeforeSeasonNumber = null;
 	public final Integer getAirsBeforeSeasonNumber()
@@ -636,11 +645,15 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The recursive unplayed item count.</value>
 	*/
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [Obsolete] public Nullable<int> RecursiveUnplayedItemCount {get;set;}
 	private Integer RecursiveUnplayedItemCount = null;
+	@Deprecated
 	public final Integer getRecursiveUnplayedItemCount()
 	{
 		return RecursiveUnplayedItemCount;
 	}
+	@Deprecated
 	public final void setRecursiveUnplayedItemCount(Integer value)
 	{
 		RecursiveUnplayedItemCount = value;

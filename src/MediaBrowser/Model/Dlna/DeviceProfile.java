@@ -142,6 +142,7 @@ public class DeviceProfile
 	{
 		IgnoreTranscodeByteRangeRequests = value;
 	}
+
 	private boolean EnableAlbumArtInDidl;
 	public final boolean getEnableAlbumArtInDidl()
 	{
@@ -150,6 +151,15 @@ public class DeviceProfile
 	public final void setEnableAlbumArtInDidl(boolean value)
 	{
 		EnableAlbumArtInDidl = value;
+	}
+	private Integer DidlAlbumArtLimit = null;
+	public final Integer getDidlAlbumArtLimit()
+	{
+		return DidlAlbumArtLimit;
+	}
+	public final void setDidlAlbumArtLimit(Integer value)
+	{
+		DidlAlbumArtLimit = value;
 	}
 
 	private String SupportedMediaTypes;
@@ -600,7 +610,7 @@ public class DeviceProfile
 		return null;
 	}
 
-	public final ResponseProfile GetVideoMediaProfile(String container, String audioCodec, String videoCodec, Integer audioBitrate, Integer audioChannels, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic, Integer refFrames)
+	public final ResponseProfile GetVideoMediaProfile(String container, String audioCodec, String videoCodec, Integer audioBitrate, Integer audioChannels, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic, Boolean isCabac, Integer refFrames)
 	{
 		container = StringHelper.TrimStart(((container != null) ? container : ""), '.');
 
@@ -634,7 +644,7 @@ public class DeviceProfile
 			boolean anyOff = false;
 			for (ProfileCondition c : i.getConditions())
 			{
-				if (!conditionProcessor.IsVideoConditionSatisfied(c, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames))
+				if (!conditionProcessor.IsVideoConditionSatisfied(c, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames))
 				{
 					anyOff = true;
 					break;
