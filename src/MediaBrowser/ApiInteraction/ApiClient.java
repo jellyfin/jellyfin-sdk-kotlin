@@ -27,6 +27,7 @@ import MediaBrowser.Model.Playlists.PlaylistCreationResult;
 import MediaBrowser.Model.Playlists.PlaylistItemQuery;
 import MediaBrowser.Model.Plugins.PluginInfo;
 import MediaBrowser.Model.Querying.*;
+import MediaBrowser.Model.Results.*;
 import MediaBrowser.Model.Search.SearchHintResult;
 import MediaBrowser.Model.Search.SearchQuery;
 import MediaBrowser.Model.Session.*;
@@ -1877,7 +1878,7 @@ public class ApiClient extends BaseApiClient {
     /// or
     /// userId
     /// </exception>
-    public void GetCriticReviews(String itemId, Integer startIndex, Integer limit, final Response<QueryResult<ItemReview>> response)
+    public void GetCriticReviews(String itemId, Integer startIndex, Integer limit, final Response<ItemReviewsResult> response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId))
         {
@@ -1897,7 +1898,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<ItemReview> obj = DeserializeFromString(jsonResponse, new QueryResult<ItemReview>().getClass());
+                ItemReviewsResult obj = DeserializeFromString(jsonResponse, new ItemReviewsResult().getClass());
                 response.onResponse(obj);
             }
         };
@@ -1998,7 +1999,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void GetLiveTvRecordingGroupsAsync(RecordingGroupQuery query, final Response<QueryResult<RecordingGroupDto>> response)
+    public void GetLiveTvRecordingGroupsAsync(RecordingGroupQuery query, final Response<RecordingGroupDtoResult> response)
     {
         if (query == null)
         {
@@ -2017,7 +2018,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<RecordingGroupDto> obj = DeserializeFromString(jsonResponse, new QueryResult<RecordingGroupDto>().getClass());
+                RecordingGroupDtoResult obj = DeserializeFromString(jsonResponse, new RecordingGroupDtoResult().getClass());
                 response.onResponse(obj);
             }
         };
@@ -2025,7 +2026,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void GetLiveTvRecordingsAsync(RecordingQuery query, final Response<QueryResult<RecordingInfoDto>> response)
+    public void GetLiveTvRecordingsAsync(RecordingQuery query, final Response<RecordingInfoDtoResult> response)
     {
         if (query == null)
         {
@@ -2051,7 +2052,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<RecordingInfoDto> obj = DeserializeFromString(jsonResponse, new QueryResult<RecordingInfoDto>().getClass());
+                RecordingInfoDtoResult obj = DeserializeFromString(jsonResponse, new RecordingInfoDtoResult().getClass());
                 response.onResponse(obj);
             }
         };
@@ -2059,7 +2060,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void GetLiveTvChannelsAsync(LiveTvChannelQuery query, final Response<QueryResult<ChannelInfoDto>> response)
+    public void GetLiveTvChannelsAsync(LiveTvChannelQuery query, final Response<ChannelInfoDtoResult> response)
     {
         if (query == null)
         {
@@ -2085,7 +2086,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<ChannelInfoDto> obj = DeserializeFromString(jsonResponse, new QueryResult<ChannelInfoDto>().getClass());
+                ChannelInfoDtoResult obj = DeserializeFromString(jsonResponse, new ChannelInfoDtoResult().getClass());
                 response.onResponse(obj);
             }
         };
@@ -2238,7 +2239,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void GetLiveTvSeriesTimersAsync(SeriesTimerQuery query, final Response<QueryResult<SeriesTimerInfoDto>> response)
+    public void GetLiveTvSeriesTimersAsync(SeriesTimerQuery query, final Response<SeriesTimerInfoDtoResult> response)
     {
         if (query == null)
         {
@@ -2258,7 +2259,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<SeriesTimerInfoDto> obj = DeserializeFromString(jsonResponse, new QueryResult<SeriesTimerInfoDto>().getClass());
+                SeriesTimerInfoDtoResult obj = DeserializeFromString(jsonResponse, new SeriesTimerInfoDtoResult().getClass());
                 response.onResponse(obj);
             }
         };
@@ -2291,7 +2292,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void GetLiveTvTimersAsync(TimerQuery query, final Response<QueryResult<TimerInfoDto>> response)
+    public void GetLiveTvTimersAsync(TimerQuery query, final Response<TimerInfoDtoResult> response)
     {
         if (query == null)
         {
@@ -2311,7 +2312,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<TimerInfoDto> obj = DeserializeFromString(jsonResponse, new QueryResult<TimerInfoDto>().getClass());
+                TimerInfoDtoResult obj = DeserializeFromString(jsonResponse, new TimerInfoDtoResult().getClass());
                 response.onResponse(obj);
             }
         };
@@ -2319,7 +2320,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void GetLiveTvProgramsAsync(ProgramQuery query, final Response<QueryResult<ProgramInfoDto>> response)
+    public void GetLiveTvProgramsAsync(ProgramQuery query, final Response<ProgramInfoDtoResult> response)
     {
         if (query == null)
         {
@@ -2363,7 +2364,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<ProgramInfoDto> obj = DeserializeFromString(jsonResponse, new QueryResult<ProgramInfoDto>().getClass());
+                ProgramInfoDtoResult obj = DeserializeFromString(jsonResponse, new ProgramInfoDtoResult().getClass());
                 response.onResponse(obj);
             }
         };
@@ -2371,7 +2372,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void GetRecommendedLiveTvProgramsAsync(RecommendedProgramQuery query, final Response<QueryResult<ProgramInfoDto>> response)
+    public void GetRecommendedLiveTvProgramsAsync(RecommendedProgramQuery query, final Response<ProgramInfoDtoResult> response)
     {
         if (query == null)
         {
@@ -2393,7 +2394,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                QueryResult<ProgramInfoDto> obj = DeserializeFromString(jsonResponse, new QueryResult<ProgramInfoDto>().getClass());
+                ProgramInfoDtoResult obj = DeserializeFromString(jsonResponse, new ProgramInfoDtoResult().getClass());
                 response.onResponse(obj);
             }
         };
