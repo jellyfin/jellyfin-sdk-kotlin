@@ -244,7 +244,7 @@ public abstract class BaseApiClient implements IDisposable
 	*/
 	protected final String GetSlugName(String name)
 	{
-		return name.replace('/', '-').replace('?', '-');
+		return name.replace('/', '-').replace('?', '-').replace('&', '-');
 	}
 
 	/** 

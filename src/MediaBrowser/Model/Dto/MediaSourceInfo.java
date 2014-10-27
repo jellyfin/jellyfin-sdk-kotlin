@@ -83,6 +83,15 @@ public class MediaSourceInfo
 	{
 		RunTimeTicks = value;
 	}
+	private boolean ReadAtNativeFramerate;
+	public final boolean getReadAtNativeFramerate()
+	{
+		return ReadAtNativeFramerate;
+	}
+	public final void setReadAtNativeFramerate(boolean value)
+	{
+		ReadAtNativeFramerate = value;
+	}
 
 	private VideoType VideoType = null;
 	public final VideoType getVideoType()

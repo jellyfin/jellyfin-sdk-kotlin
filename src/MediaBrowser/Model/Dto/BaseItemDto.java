@@ -11,8 +11,8 @@ import MediaBrowser.Model.Providers.*;
  This holds information about a BaseItem in a format that is convenient for the client.
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, Type = {Type}")] public class BaseItemDto : IHasProviderIds, IHasPropertyChangedEvent, IItemDto
-public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, IItemDto
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, Type = {Type}")] public class BaseItemDto : IHasProviderIds, IHasPropertyChangedEvent, IItemDto, IHasServerId
+public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, IItemDto, IHasServerId
 {
 	/** 
 	 Gets or sets the name.
@@ -27,6 +27,21 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setName(String value)
 	{
 		Name = value;
+	}
+
+	/** 
+	 Gets or sets the server identifier.
+	 
+	 <value>The server identifier.</value>
+	*/
+	private String ServerId;
+	public final String getServerId()
+	{
+		return ServerId;
+	}
+	public final void setServerId(String value)
+	{
+		ServerId = value;
 	}
 
 	/** 

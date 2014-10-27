@@ -152,14 +152,14 @@ public class DeviceProfile
 	{
 		EnableAlbumArtInDidl = value;
 	}
-	private Integer DidlAlbumArtLimit = null;
-	public final Integer getDidlAlbumArtLimit()
+	private boolean EnableSingleAlbumArtLimit;
+	public final boolean getEnableSingleAlbumArtLimit()
 	{
-		return DidlAlbumArtLimit;
+		return EnableSingleAlbumArtLimit;
 	}
-	public final void setDidlAlbumArtLimit(Integer value)
+	public final void setEnableSingleAlbumArtLimit(boolean value)
 	{
-		DidlAlbumArtLimit = value;
+		EnableSingleAlbumArtLimit = value;
 	}
 
 	private String SupportedMediaTypes;

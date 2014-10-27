@@ -81,21 +81,6 @@ public class UserConfiguration
 	}
 
 	/** 
-	 Gets or sets a value indicating whether [use forced subtitles only].
-	 
-	 <value><c>true</c> if [use forced subtitles only]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean UseForcedSubtitlesOnly;
-	public final boolean getUseForcedSubtitlesOnly()
-	{
-		return UseForcedSubtitlesOnly;
-	}
-	public final void setUseForcedSubtitlesOnly(boolean value)
-	{
-		UseForcedSubtitlesOnly = value;
-	}
-
-	/** 
 	 Gets or sets a value indicating whether this instance is hidden.
 	 
 	 <value><c>true</c> if this instance is hidden; otherwise, <c>false</c>.</value>
@@ -342,6 +327,16 @@ public class UserConfiguration
 		AccessSchedules = value;
 	}
 
+	private boolean EnableUserPreferenceAccess;
+	public final boolean getEnableUserPreferenceAccess()
+	{
+		return EnableUserPreferenceAccess;
+	}
+	public final void setEnableUserPreferenceAccess(boolean value)
+	{
+		EnableUserPreferenceAccess = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="UserConfiguration" /> class.
 	*/
@@ -366,6 +361,7 @@ public class UserConfiguration
 		setSyncConnectImage(true);
 		setIncludeTrailersInSuggestions(true);
 		setEnableCinemaMode(true);
+		setEnableUserPreferenceAccess(true);
 
 		setAccessSchedules(new AccessSchedule[] { });
 	}

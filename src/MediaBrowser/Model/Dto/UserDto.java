@@ -8,8 +8,8 @@ import MediaBrowser.Model.Extensions.*;
  Class UserDto
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, HasPassword = {HasPassword}")] public class UserDto : IHasPropertyChangedEvent, IItemDto
-public class UserDto implements IHasPropertyChangedEvent, IItemDto
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, HasPassword = {HasPassword}")] public class UserDto : IHasPropertyChangedEvent, IItemDto, IHasServerId
+public class UserDto implements IHasPropertyChangedEvent, IItemDto, IHasServerId
 {
 	/** 
 	 Gets or sets the name.
@@ -24,6 +24,21 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto
 	public final void setName(String value)
 	{
 		Name = value;
+	}
+
+	/** 
+	 Gets or sets the server identifier.
+	 
+	 <value>The server identifier.</value>
+	*/
+	private String ServerId;
+	public final String getServerId()
+	{
+		return ServerId;
+	}
+	public final void setServerId(String value)
+	{
+		ServerId = value;
 	}
 
 	/** 

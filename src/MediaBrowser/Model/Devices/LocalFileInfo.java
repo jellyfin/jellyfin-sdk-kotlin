@@ -11,14 +11,14 @@ public class LocalFileInfo
 	{
 		Name = value;
 	}
-	private String FullPath;
-	public final String getFullPath()
+	private String Id;
+	public final String getId()
 	{
-		return FullPath;
+		return Id;
 	}
-	public final void setFullPath(String value)
+	public final void setId(String value)
 	{
-		FullPath = value;
+		Id = value;
 	}
 	private String Album;
 	public final String getAlbum()

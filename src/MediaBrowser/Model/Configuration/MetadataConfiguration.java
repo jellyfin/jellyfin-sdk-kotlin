@@ -11,4 +11,9 @@ public class MetadataConfiguration
 	{
 		UseFileCreationTimeForDateAdded = value;
 	}
+
+	public MetadataConfiguration()
+	{
+		setUseFileCreationTimeForDateAdded(true);
+	}
 }
