@@ -7,14 +7,11 @@ import MediaBrowser.ApiInteraction.Response;
 import MediaBrowser.Model.Logging.ILogger;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.text.TextUtils;
 import android.util.LruCache;
 import com.android.volley.*;
-import com.android.volley.toolbox.HttpClientStack;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -124,7 +121,7 @@ public class VolleyHttpClient implements IAsyncHttpClient {
 
     private void AddData(Map<String, String> postParams, HttpRequest request)
     {
-        if (request.getPostData() == null    ){
+        if (request.getPostData() == null){
             return;
         }
 
@@ -170,6 +167,11 @@ public class VolleyHttpClient implements IAsyncHttpClient {
 
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
+
+                if (request.getPostData() == null){
+                    super.getParams();
+                }
+
                 Map<String, String> data = new HashMap<String,String>();
                 AddData(data, request);
                 return data;

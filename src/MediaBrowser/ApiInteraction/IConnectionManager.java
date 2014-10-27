@@ -2,12 +2,15 @@ package MediaBrowser.ApiInteraction;
 
 import MediaBrowser.Model.ApiClient.ServerInfo;
 import MediaBrowser.Model.Dto.BaseItemDto;
+import MediaBrowser.Model.Dto.IHasServerId;
 
 import java.util.Observable;
 
 public interface IConnectionManager {
 
-    ApiClient GetApiClient(BaseItemDto item);
+    ApiClient GetApiClient(IHasServerId item);
+
+    ApiClient GetApiClient(String serverId);
 
     void Connect(Response<ConnectionResult> response);
 

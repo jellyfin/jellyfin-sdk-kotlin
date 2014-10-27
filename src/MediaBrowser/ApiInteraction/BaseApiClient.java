@@ -1,5 +1,6 @@
 package MediaBrowser.ApiInteraction;
 
+import MediaBrowser.ApiInteraction.Device.IDevice;
 import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.Drawing.*;
 import MediaBrowser.Model.Dto.*;
@@ -60,7 +61,7 @@ public abstract class BaseApiClient implements IDisposable
 		privateImageQuality = value;
 	}
 
-	protected BaseApiClient(ILogger logger, IJsonSerializer jsonSerializer, String serverAddress, String clientName, String deviceName, String deviceId, String applicationVersion)
+	protected BaseApiClient(ILogger logger, IJsonSerializer jsonSerializer, String serverAddress, String clientName, IDevice device, String applicationVersion)
 	{
 		if (logger == null)
 		{
@@ -79,8 +80,7 @@ public abstract class BaseApiClient implements IDisposable
         Logger = logger;
 
 		setClientName(clientName);
-		setDeviceName(deviceName);
-		setDeviceId(deviceId);
+		this.device = device;
 		setApplicationVersion(applicationVersion);
 		setServerAddress(serverAddress);
 	}
@@ -136,6 +136,12 @@ public abstract class BaseApiClient implements IDisposable
 		OnServerLocationChanged();
 	}
 
+    private IDevice device;
+    public final IDevice getDevice()
+    {
+        return device;
+    }
+
 	/** 
 	 Gets or sets the type of the client.
 	 
@@ -151,19 +157,9 @@ public abstract class BaseApiClient implements IDisposable
 		privateClientName = value;
 	}
 
-	/** 
-	 Gets or sets the name of the device.
-	 
-	 <value>The name of the device.</value>
-	*/
-	private String privateDeviceName;
 	public final String getDeviceName()
 	{
-		return privateDeviceName;
-	}
-	public final void setDeviceName(String value)
-	{
-		privateDeviceName = value;
+		return getDevice().getDeviceName();
 	}
 
 	/** 
@@ -181,19 +177,9 @@ public abstract class BaseApiClient implements IDisposable
 		privateApplicationVersion = value;
 	}
 
-	/** 
-	 Gets or sets the device id.
-	 
-	 <value>The device id.</value>
-	*/
-	private String privateDeviceId;
 	public final String getDeviceId()
 	{
-		return privateDeviceId;
-	}
-	public final void setDeviceId(String value)
-	{
-		privateDeviceId = value;
+		return getDevice().getDeviceId();
 	}
 
 	/** 

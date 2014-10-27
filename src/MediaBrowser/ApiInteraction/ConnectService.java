@@ -37,7 +37,7 @@ public class ConnectService {
 
         request.setMethod("POST");
         request.setUrl(url);
-        request.setRequestFormContent(args);
+        request.setPostData(args);
 
         AddUserAccessToken(request);
 
@@ -71,7 +71,7 @@ public class ConnectService {
 
         request.setMethod("POST");
         request.setUrl(url);
-        request.setRequestFormContent(args);
+        request.setPostData(args);
 
         AddUserAccessToken(request);
 
@@ -140,7 +140,7 @@ public class ConnectService {
 
         request.setMethod("POST");
         request.setUrl(url);
-        request.setRequestFormContent(args);
+        request.setPostData(args);
 
         AddUserAccessToken(request);
 

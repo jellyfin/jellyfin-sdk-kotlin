@@ -75,8 +75,4 @@ public class HttpRequest
         setRequestHeaders(new HttpHeaders());
         setTimeout(30000);
     }
-
-    public void setRequestFormContent(QueryStringDictionary data){
-        setPostData(data);
-    }
 }

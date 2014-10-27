@@ -1,6 +1,7 @@
 package MediaBrowser;
 
 import MediaBrowser.ApiInteraction.*;
+import MediaBrowser.ApiInteraction.Device.IDevice;
 import MediaBrowser.ApiInteraction.Http.VolleyHttpClient;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Session.ClientCapabilities;
@@ -34,7 +35,9 @@ public class PublicMethodTests {
 
         ApiEventListener apiEventListener = new ApiEventListener();
 
-        apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My app name", "My device", "My device id", "app version 123", apiEventListener, capabilities);
+        IDevice device = new FakeDevice();
+
+        apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My app name", device, "app version 123", apiEventListener, capabilities);
     }
 
     @Test

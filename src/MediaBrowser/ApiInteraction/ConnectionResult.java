@@ -1,6 +1,7 @@
 package MediaBrowser.ApiInteraction;
 
 import MediaBrowser.Model.ApiClient.*;
+import MediaBrowser.Model.Connect.ConnectUser;
 
 public class ConnectionResult
 {
@@ -30,6 +31,15 @@ public class ConnectionResult
     public final void setApiClient(ApiClient value)
     {
         ApiClient = value;
+    }
+    private ConnectUser connectUser;
+    public final ConnectUser getConnectUser()
+    {
+        return connectUser;
+    }
+    public final void setConnectUser(ConnectUser value)
+    {
+        connectUser = value;
     }
 
     public ConnectionResult()

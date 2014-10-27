@@ -2,6 +2,7 @@ package MediaBrowser.ApiInteraction;
 
 import MediaBrowser.ApiInteraction.Cryptography.Md5;
 import MediaBrowser.ApiInteraction.Cryptography.Sha1;
+import MediaBrowser.ApiInteraction.Device.IDevice;
 import MediaBrowser.ApiInteraction.Network.INetworkConnection;
 import MediaBrowser.ApiInteraction.WebSocket.ApiWebSocket;
 import MediaBrowser.Model.ApiClient.ServerInfo;
@@ -10,6 +11,9 @@ import MediaBrowser.Model.Channels.ChannelFeatures;
 import MediaBrowser.Model.Channels.ChannelItemQuery;
 import MediaBrowser.Model.Channels.ChannelQuery;
 import MediaBrowser.Model.Configuration.ServerConfiguration;
+import MediaBrowser.Model.Devices.ContentUploadHistory;
+import MediaBrowser.Model.Devices.DevicesOptions;
+import MediaBrowser.Model.Devices.LocalFileInfo;
 import MediaBrowser.Model.Dto.*;
 import MediaBrowser.Model.Entities.DisplayPreferences;
 import MediaBrowser.Model.Entities.ItemReview;
@@ -77,9 +81,9 @@ public class ApiClient extends BaseApiClient {
         ResetHttpHeaders();
     }
 
-    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String clientName, String deviceName, String deviceId, String applicationVersion, ApiEventListener apiEventListener, ClientCapabilities capabilities)
+    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String clientName, IDevice device, String applicationVersion, ApiEventListener apiEventListener, ClientCapabilities capabilities)
     {
-        super(logger, new JsonSerializer(), serverAddress, clientName, deviceName, deviceId, applicationVersion);
+        super(logger, new JsonSerializer(), serverAddress, clientName, device, applicationVersion);
 
         _httpClient = httpClient;
         this.apiEventListener = apiEventListener;
@@ -142,7 +146,7 @@ public class ApiClient extends BaseApiClient {
         request.setUrl(url);
         request.setMethod(method);
         request.setRequestHeaders(this.HttpHeaders);
-        request.setRequestFormContent(postData);
+        request.setPostData(postData);
         _httpClient.Send(request, response);
     }
 
@@ -2803,4 +2807,49 @@ public class ApiClient extends BaseApiClient {
 
         DeleteAsync(url, response);
     }
+
+    public void GetDevicesOptions(final Response<DevicesOptions> response)
+    {
+        String url = GetApiUrl("System/Configuration/devices");
+
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(response){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                DevicesOptions obj = DeserializeFromString(jsonResponse, DevicesOptions.class);
+                response.onResponse(obj);
+            }
+        };
+
+        Send(url, "GET", jsonResponse);
+    }
+
+    public void GetContentUploadHistory(final Response<ContentUploadHistory> response)
+    {
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        dict.Add("DeviceId", getDeviceId());
+
+        String url = GetApiUrl("Devices/CameraUploads", dict);
+
+        url = AddDataFormat(url);
+        Response<String> jsonResponse = new Response<String>(response){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                ContentUploadHistory obj = DeserializeFromString(jsonResponse, ContentUploadHistory.class);
+                response.onResponse(obj);
+            }
+        };
+
+        Send(url, "GET", jsonResponse);
+    }
+
+    public void UploadFile(LocalFileInfo file) {
+
+    }
+
 }

@@ -1,6 +1,8 @@
 package MediaBrowser.ApiInteraction.Sample;
 
 import MediaBrowser.ApiInteraction.*;
+import MediaBrowser.ApiInteraction.Device.AndroidDevice;
+import MediaBrowser.ApiInteraction.Device.IDevice;
 import MediaBrowser.ApiInteraction.Http.VolleyHttpClient;
 import MediaBrowser.Model.Dto.BaseItemDto;
 import MediaBrowser.Model.Entities.SortOrder;
@@ -35,7 +37,9 @@ public class ExampleApp extends Application {
 
         ApiEventListener apiEventListener = new ApiEventListener();
 
-        apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My app name", "My device", "My device id", "app version 123", apiEventListener, capabilities);
+        IDevice device = new AndroidDevice(getApplicationContext());
+
+        apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My app name", device, "app version 123", apiEventListener, capabilities);
     }
 
     public ImageLoader getImageLoader() {
