@@ -47,13 +47,13 @@ public class ConnectUserServer
 	{
 		SystemId = value;
 	}
-    private String localAddress;
-    public final String getLocalAddress()
-    {
-        return localAddress;
-    }
-    public final void setLocalAddress(String value)
-    {
-        localAddress = value;
-    }
+	private String LocalAddress;
+	public final String getLocalAddress()
+	{
+		return LocalAddress;
+	}
+	public final void setLocalAddress(String value)
+	{
+		LocalAddress = value;
+	}
 }
