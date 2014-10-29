@@ -65,7 +65,7 @@ public class ConnectionManager implements IConnectionManager {
         this.apiEventListener = apiEventListener;
         this.jsonSerializer = jsonSerializer;
 
-        connectService = new ConnectService(jsonSerializer, logger, httpClient, credentialProvider);
+        connectService = new ConnectService(jsonSerializer, logger, httpClient);
 
         device.getResumeFromSleepObservable().addObserver(new GenericObserver() {
 
@@ -90,6 +90,10 @@ public class ConnectionManager implements IConnectionManager {
         return apiClients.get(serverId);
     }
 
+    private void OnConnectUserSignIn(ConnectUser user){
+        connectUser = user;
+    }
+
     private void OnFailedConnection(Response<ConnectionResult> response){
 
         _logger.Debug("No server available");
@@ -107,7 +111,7 @@ public class ConnectionManager implements IConnectionManager {
         ConnectionResult result = new ConnectionResult();
 
         if (servers.size() == 0 && connectUser == null){
-            result.setState(ConnectionState.Unavailable);
+            result.setState(ConnectionState.ConnectSignIn);
         }
         else{
             result.setState(ConnectionState.ServerSelection);
@@ -134,13 +138,6 @@ public class ConnectionManager implements IConnectionManager {
                     _logger.Debug("Looping through server list");
                     Connect(servers, response);
                 }
-
-                @Override
-                public void onError() {
-
-                    OnFailedConnection(response);
-                }
-
         });
     }
 
@@ -162,31 +159,15 @@ public class ConnectionManager implements IConnectionManager {
 
         if (servers.size() == 1)
         {
-            if (connectUser == null && servers.get(0).getDateLastAccessed().getTime() == 0)
-            {
-                ConnectionResult result = new ConnectionResult();
-                result.setServers(servers);
-                result.setState(ConnectionState.ServerSelection);
-                result.setConnectUser(connectUser);
-                response.onResponse(result);
-                return;
-            }
-
             Connect(servers.get(0), new Response<ConnectionResult>() {
 
                 @Override
                 public void onResponse(ConnectionResult result) {
 
                     if (result.getState() == ConnectionState.Unavailable) {
-                        result.setState(ConnectionState.ServerSelection);
+                        result.setState((result.getConnectUser() == null ? ConnectionState.ConnectSignIn : ConnectionState.ServerSelection));
                     }
                     response.onResponse(result);
-                }
-
-                @Override
-                public void onError() {
-
-                    response.onError();
                 }
             });
             return;
@@ -238,7 +219,9 @@ public class ConnectionManager implements IConnectionManager {
         ServerInfo server = servers.get(index);
 
         // Try to connect if there's a saved access token
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken())) {
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()) ||
+                (connectUser != null && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken())))
+        {
             Connect(server, true, innerResponse);
         }
         else{
@@ -684,29 +667,77 @@ public class ConnectionManager implements IConnectionManager {
 
         _logger.Debug("Getting server list from Connect");
 
-        connectService.GetServers(credentials.getConnectUserId(), new Response<ConnectUserServer[]>(){
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
+        {
+            EnsureConnectUser(credentials, new EmptyResponse(){
 
-            private void OnAny(ConnectUserServer[] foundServers){
+                @Override
+                public void onResponse() {
 
-                synchronized (credentials){
+                    connectService.GetServers(credentials.getConnectUserId(), credentials.getConnectAccessToken(), new Response<ConnectUserServer[]>(){
 
-                    numTasksCompleted[0]++;
+                        private void OnAny(ConnectUserServer[] foundServers){
 
-                    OnGetServerResponse(credentials, ConvertServerList(foundServers), response, numTasksCompleted[0] >= numTasks);
+                            synchronized (credentials){
+
+                                numTasksCompleted[0]++;
+
+                                OnGetServerResponse(credentials, ConvertServerList(foundServers), response, numTasksCompleted[0] >= numTasks);
+                            }
+                        }
+
+                        @Override
+                        public void onResponse(ConnectUserServer[] response) {
+
+                            OnAny(response);
+                        }
+
+                        @Override
+                        public void onError() {
+
+                            OnAny(new ConnectUserServer[]{});
+                        }
+                    });
                 }
-            }
+            });
+        }
+        else{
+            numTasksCompleted[0]++;
+        }
+    }
+
+    private void EnsureConnectUser(ServerCredentials credentials, final EmptyResponse response){
+
+        if (connectUser != null && StringHelper.EqualsIgnoreCase(connectUser.getId(), credentials.getConnectUserId()))
+        {
+            response.onResponse();
+            return;
+        }
+
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectUserId()) || tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
+        {
+            response.onResponse();
+            return;
+        }
+
+        ConnectUserQuery query = new ConnectUserQuery();
+
+        connectService.GetConnectUser(query, credentials.getConnectAccessToken(), new Response<ConnectUser>(){
 
             @Override
-            public void onResponse(ConnectUserServer[] response) {
+            public void onResponse(ConnectUser user) {
 
-                OnAny(response);
+                OnConnectUserSignIn(user);
+                response.onResponse();
             }
 
             @Override
             public void onError() {
 
-                OnAny(new ConnectUserServer[]{});
+                response.onResponse();
             }
+
+
         });
     }
 
@@ -927,6 +958,8 @@ public class ConnectionManager implements IConnectionManager {
                 credentials.setConnectUserId(result.getUser().getId());
 
                 _credentialProvider.SaveCredentials(credentials);
+
+                OnConnectUserSignIn(result.getUser());
 
                 response.onResponse();
             }

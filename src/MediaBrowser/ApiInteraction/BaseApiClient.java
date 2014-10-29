@@ -1,6 +1,7 @@
 package MediaBrowser.ApiInteraction;
 
 import MediaBrowser.ApiInteraction.Device.IDevice;
+import MediaBrowser.Model.ApiClient.ApiHelpers;
 import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.Drawing.*;
 import MediaBrowser.Model.Dto.*;
@@ -230,7 +231,7 @@ public abstract class BaseApiClient implements IDisposable
 	*/
 	protected final String GetSlugName(String name)
 	{
-		return name.replace('/', '-').replace('?', '-').replace('&', '-');
+		return ApiHelpers.GetSlugName(name);
 	}
 
 	/** 

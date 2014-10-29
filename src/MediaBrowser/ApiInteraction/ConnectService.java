@@ -16,13 +16,11 @@ public class ConnectService {
     public IJsonSerializer JsonSerializer;
     private ILogger _logger;
     private  IAsyncHttpClient _httpClient;
-    private  ICredentialProvider _credentialProvider;
 
-    public ConnectService(IJsonSerializer jsonSerializer, ILogger logger, IAsyncHttpClient httpClient, ICredentialProvider credentialProvider) {
+    public ConnectService(IJsonSerializer jsonSerializer, ILogger logger, IAsyncHttpClient httpClient) {
         JsonSerializer = jsonSerializer;
         _logger = logger;
         _httpClient = httpClient;
-        _credentialProvider = credentialProvider;
     }
 
     public void Authenticate(String username, String password, final Response<ConnectAuthenticationResult> response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
@@ -38,8 +36,6 @@ public class ConnectService {
         request.setMethod("POST");
         request.setUrl(url);
         request.setPostData(args);
-
-        AddUserAccessToken(request);
 
         _httpClient.Send(request, new Response<String>(){
 
@@ -73,8 +69,6 @@ public class ConnectService {
         request.setUrl(url);
         request.setPostData(args);
 
-        AddUserAccessToken(request);
-
         _httpClient.Send(request, new Response<String>(){
 
             @Override
@@ -106,8 +100,6 @@ public class ConnectService {
 
         request.setMethod("GET");
         request.setUrl(url);
-
-        AddUserAccessToken(request);
 
         _httpClient.Send(request, new Response<String>(){
 
@@ -142,8 +134,6 @@ public class ConnectService {
         request.setUrl(url);
         request.setPostData(args);
 
-        AddUserAccessToken(request);
-
         _httpClient.Send(request, new Response<String>(){
 
             @Override
@@ -162,7 +152,7 @@ public class ConnectService {
         });
     }
 
-    public void GetConnectUser(ConnectUserQuery query, final Response<ConnectUser> response)
+    public void GetConnectUser(ConnectUserQuery query, String connectAccessToken, final Response<ConnectUser> response)
     {
         QueryStringDictionary dict = new QueryStringDictionary();
 
@@ -186,7 +176,7 @@ public class ConnectService {
         request.setMethod("GET");
         request.setUrl(url);
 
-        AddUserAccessToken(request);
+        AddUserAccessToken(request, connectAccessToken);
 
         _httpClient.Send(request, new Response<String>(){
 
@@ -206,7 +196,7 @@ public class ConnectService {
         });
     }
 
-    public void GetServers(String userId, final Response<ConnectUserServer[]> response)
+    public void GetServers(String userId, String connectAccessToken, final Response<ConnectUserServer[]> response)
     {
         QueryStringDictionary dict = new QueryStringDictionary();
 
@@ -219,7 +209,7 @@ public class ConnectService {
         request.setMethod("GET");
         request.setUrl(url);
 
-        AddUserAccessToken(request);
+        AddUserAccessToken(request, connectAccessToken);
 
         _httpClient.Send(request, new Response<String>(){
 
@@ -239,7 +229,7 @@ public class ConnectService {
         });
     }
 
-    public void Logout(final EmptyResponse response)
+    public void Logout(String connectAccessToken, final EmptyResponse response)
     {
         String url = GetConnectUrl("user/logout");
 
@@ -248,7 +238,7 @@ public class ConnectService {
         request.setMethod("POST");
         request.setUrl(url);
 
-        AddUserAccessToken(request);
+        AddUserAccessToken(request, connectAccessToken);
 
         _httpClient.Send(request, new Response<String>(){
 
@@ -271,10 +261,8 @@ public class ConnectService {
         return "https://connect.mediabrowser.tv/service/" + handler;
     }
 
-    private void AddUserAccessToken(HttpRequest request)
+    private void AddUserAccessToken(HttpRequest request, String accessToken)
     {
-        ServerCredentials credentials = _credentialProvider.GetCredentials();
-
-        request.getRequestHeaders().put("X-Connect-UserToken", credentials.getConnectAccessToken());
+        request.getRequestHeaders().put("X-Connect-UserToken", accessToken);
     }
 }
