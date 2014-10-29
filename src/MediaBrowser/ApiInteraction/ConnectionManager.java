@@ -247,7 +247,7 @@ public class ConnectionManager implements IConnectionManager {
                 @Override
                 public void onResponse(PublicSystemInfo result) {
 
-                    ConnectToFoundServer(server, result, ConnectionMode.Local, true, response);
+                    ConnectToFoundServer(server, result, ConnectionMode.Local, response);
                 }
 
                 @Override
@@ -299,7 +299,7 @@ public class ConnectionManager implements IConnectionManager {
                 @Override
                 public void onResponse(PublicSystemInfo result) {
 
-                    ConnectToFoundServer(server, result, ConnectionMode.Remote, true, response);
+                    ConnectToFoundServer(server, result, ConnectionMode.Remote, response);
                 }
 
                 @Override
@@ -318,17 +318,87 @@ public class ConnectionManager implements IConnectionManager {
     private void ConnectToFoundServer(final ServerInfo server,
                                      final PublicSystemInfo systemInfo,
                                      final ConnectionMode connectionMode,
-                                     boolean verifyAuthentication,
                                      final Response<ConnectionResult> response) {
 
-        if (verifyAuthentication && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
+        final ServerCredentials credentials = _credentialProvider.GetCredentials();
+
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
+        {
+            EnsureConnectUser(credentials, new EmptyResponse(){
+
+                @Override
+                public void onResponse() {
+
+                    AddAuthenticationInfoFromConnect(server, connectionMode, credentials, new EmptyResponse() {
+
+                        @Override
+                        public void onResponse() {
+
+                            AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, response);
+                        }
+                    });
+                }
+
+            });
+        }
+        else{
+
+            AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, response);
+        }
+    }
+
+    private void AddAuthenticationInfoFromConnect(final ServerInfo server,
+                                                  ConnectionMode connectionMode,
+                                                  ServerCredentials credentials,
+                                                  final EmptyResponse response){
+
+        _logger.Debug("Adding authentication info from Connect");
+
+        String url = connectionMode == ConnectionMode.Local ? server.getLocalAddress() : server.getRemoteAddress();
+
+        url += "/mediabrowser/Connect/Exchange?format=json&ConnectUserId=" + credentials.getConnectUserId();
+
+        HttpRequest request = new HttpRequest();
+        request.setUrl(url);
+        request.setMethod("GET");
+
+        request.getRequestHeaders().put("X-MediaBrowser-Token", server.getExchangeToken());
+
+        _httpClient.Send(request, new Response<String>(){
+
+            @Override
+            public void onResponse(String jsonResponse) {
+
+                ConnectAuthenticationExchangeResult obj = jsonSerializer.DeserializeFromString(jsonResponse, ConnectAuthenticationExchangeResult.class);
+
+                server.setUserId(obj.getLocalUserId());
+                server.setAccessToken(obj.getAccessToken());
+                response.onResponse();
+            }
+
+            @Override
+            public void onError() {
+
+                response.onResponse();
+            }
+        });
+    }
+
+    private void AfterConnectValidated(final ServerInfo server,
+                                       final ServerCredentials credentials,
+                                       final PublicSystemInfo systemInfo,
+                                       final ConnectionMode connectionMode,
+                                       boolean verifyLocalAuthentication,
+                                       final Response<ConnectionResult> response){
+
+        if (verifyLocalAuthentication && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
         {
             ValidateAuthentication(server, connectionMode, new EmptyResponse(){
 
                 @Override
                 public void onResponse() {
 
-                    ConnectToFoundServer(server, systemInfo, connectionMode, false, response);
+                    AfterConnectValidated(server, credentials, systemInfo, connectionMode, false, response);
                 }
 
                 @Override
@@ -340,8 +410,6 @@ public class ConnectionManager implements IConnectionManager {
 
             return;
         }
-
-        ServerCredentials credentials = _credentialProvider.GetCredentials();
 
         server.ImportInfo(systemInfo);
         server.setDateLastAccessed(new Date());
@@ -508,7 +576,7 @@ public class ConnectionManager implements IConnectionManager {
         request.setUrl(url);
         request.setMethod("GET");
 
-        Response<String> stringResponse = new Response<String>(){
+        _httpClient.Send(request, new Response<String>(){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -523,9 +591,7 @@ public class ConnectionManager implements IConnectionManager {
 
                 response.onError();
             }
-        };
-
-        _httpClient.Send(request, stringResponse);
+        });
     }
 
     private ApiClient GetOrAddApiClient(ServerInfo server, ConnectionMode connectionMode)
