@@ -61,6 +61,8 @@ public class ServerCredentials
             // Merge the data
 			existing.setDateLastAccessed(server.getDateLastAccessed());
 
+            existing.setUserLinkType(server.getUserLinkType());
+
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
 			{
 				existing.setAccessToken(server.getAccessToken());

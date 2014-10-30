@@ -56,4 +56,13 @@ public class ConnectUserServer
 	{
 		LocalAddress = value;
 	}
+	private String UserType;
+	public final String getUserType()
+	{
+		return UserType;
+	}
+	public final void setUserType(String value)
+	{
+		UserType = value;
+	}
 }

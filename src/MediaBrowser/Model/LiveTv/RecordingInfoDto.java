@@ -6,8 +6,8 @@ import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.Library.*;
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ChannelName = {ChannelName}")] public class RecordingInfoDto : IHasPropertyChangedEvent, IItemDto
-public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ChannelName = {ChannelName}")] public class RecordingInfoDto : IHasPropertyChangedEvent, IItemDto, IHasServerId
+public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto, IHasServerId
 {
 	/** 
 	 Id of the recording.
@@ -35,6 +35,21 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto
 	public final void setPrimaryImageAspectRatio(Double value)
 	{
 		PrimaryImageAspectRatio = value;
+	}
+
+	/** 
+	 Gets or sets the server identifier.
+	 
+	 <value>The server identifier.</value>
+	*/
+	private String ServerId;
+	public final String getServerId()
+	{
+		return ServerId;
+	}
+	public final void setServerId(String value)
+	{
+		ServerId = value;
 	}
 
 	/** 

@@ -1,8 +1,9 @@
 package MediaBrowser.Model.LiveTv;
 
+import MediaBrowser.Model.Dto.*;
 import MediaBrowser.Model.Extensions.*;
 
-public class BaseTimerInfoDto implements IHasPropertyChangedEvent
+public class BaseTimerInfoDto implements IHasPropertyChangedEvent, IHasServerId
 {
 	/** 
 	 Occurs when a property value changes.
@@ -21,6 +22,21 @@ public class BaseTimerInfoDto implements IHasPropertyChangedEvent
 	public final void setId(String value)
 	{
 		Id = value;
+	}
+
+	/** 
+	 Gets or sets the server identifier.
+	 
+	 <value>The server identifier.</value>
+	*/
+	private String ServerId;
+	public final String getServerId()
+	{
+		return ServerId;
+	}
+	public final void setServerId(String value)
+	{
+		ServerId = value;
 	}
 
 	/** 

@@ -219,8 +219,7 @@ public class ConnectionManager implements IConnectionManager {
         ServerInfo server = servers.get(index);
 
         // Try to connect if there's a saved access token
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()) ||
-                (connectUser != null && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken())))
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
         {
             Connect(server, true, innerResponse);
         }
@@ -474,12 +473,21 @@ public class ConnectionManager implements IConnectionManager {
                 _logger.Debug("Updating saved credentials for all servers");
                 ServerCredentials credentials = _credentialProvider.GetCredentials();
 
+                ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
+
                 for (ServerInfo server : credentials.getServers()) {
 
-                    server.setAccessToken(null);
-                    server.setUserId(null);
+                    if (server.getUserLinkType() == null ||
+                            server.getUserLinkType() != UserLinkType.Guest){
+
+                        server.setAccessToken(null);
+                        server.setExchangeToken(null);
+                        server.setUserId(null);
+                        servers.add(server);
+                    }
                 }
 
+                credentials.setServers(servers);
                 _credentialProvider.SaveCredentials(credentials);
 
                 Connect(response);
@@ -839,6 +847,14 @@ public class ConnectionManager implements IConnectionManager {
             server.setName(userServer.getName());
             server.setLocalAddress(userServer.getLocalAddress());
             server.setRemoteAddress(userServer.getUrl());
+
+            if (StringHelper.EqualsIgnoreCase(userServer.getUserType(), "guest"))
+            {
+                server.setUserLinkType(UserLinkType.Guest);
+            }
+            else{
+                server.setUserLinkType(UserLinkType.LinkedUser);
+            }
 
             servers.add(server);
         }

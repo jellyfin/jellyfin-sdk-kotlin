@@ -1,5 +1,6 @@
 package MediaBrowser.Model.ApiClient;
 
+import MediaBrowser.Model.Connect.*;
 import MediaBrowser.Model.System.*;
 
 public class ServerInfo
@@ -84,6 +85,15 @@ public class ServerInfo
 	public final void setExchangeToken(String value)
 	{
 		ExchangeToken = value;
+	}
+	private UserLinkType UserLinkType = null;
+	public final UserLinkType getUserLinkType()
+	{
+		return UserLinkType;
+	}
+	public final void setUserLinkType(UserLinkType value)
+	{
+		UserLinkType = value;
 	}
 
 	public ServerInfo()
