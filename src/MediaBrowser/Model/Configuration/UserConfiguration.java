@@ -337,6 +337,16 @@ public class UserConfiguration
 		EnableUserPreferenceAccess = value;
 	}
 
+	private String[] LatestItemsExcludes;
+	public final String[] getLatestItemsExcludes()
+	{
+		return LatestItemsExcludes;
+	}
+	public final void setLatestItemsExcludes(String[] value)
+	{
+		LatestItemsExcludes = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="UserConfiguration" /> class.
 	*/
@@ -347,6 +357,7 @@ public class UserConfiguration
 		setEnableMediaPlayback(true);
 		setEnableLiveTvAccess(true);
 
+		setLatestItemsExcludes(new String[] { });
 		setOrderedViews(new String[] { });
 		setBlockedMediaFolders(new String[] { });
 		setDisplayChannelsWithinViews(new String[] { });

@@ -1,42 +1,24 @@
 package MediaBrowser.Model.Connect;
 
-public class ConnectAuthorization
+public class ConnectAuthorizationRequest
 {
-	private String ConnectUserId;
-	public final String getConnectUserId()
+	private String SendingUserId;
+	public final String getSendingUserId()
 	{
-		return ConnectUserId;
+		return SendingUserId;
 	}
-	public final void setConnectUserId(String value)
+	public final void setSendingUserId(String value)
 	{
-		ConnectUserId = value;
+		SendingUserId = value;
 	}
-	private String UserName;
-	public final String getUserName()
+	private String ConnectUserName;
+	public final String getConnectUserName()
 	{
-		return UserName;
+		return ConnectUserName;
 	}
-	public final void setUserName(String value)
+	public final void setConnectUserName(String value)
 	{
-		UserName = value;
-	}
-	private String ImageUrl;
-	public final String getImageUrl()
-	{
-		return ImageUrl;
-	}
-	public final void setImageUrl(String value)
-	{
-		ImageUrl = value;
-	}
-	private String Id;
-	public final String getId()
-	{
-		return Id;
-	}
-	public final void setId(String value)
-	{
-		Id = value;
+		ConnectUserName = value;
 	}
 	private String[] ExcludedLibraries;
 	public final String[] getExcludedLibraries()
@@ -66,7 +48,7 @@ public class ConnectAuthorization
 		ExcludedChannels = value;
 	}
 
-	public ConnectAuthorization()
+	public ConnectAuthorizationRequest()
 	{
 		setExcludedLibraries(new String[] { });
 		setExcludedChannels(new String[] { });
