@@ -38,7 +38,7 @@
     <orderEntry type="library" exported="" name="com.squareup.okhttp:okhttp:2.0.0" level="project" />
     <orderEntry type="library" exported="" name="com.squareup.okio:okio:1.0.1" level="project" />
     <orderEntry type="library" exported="" name="com.squareup.okhttp:okhttp-urlconnection:2.0.0" level="project" />
-    <orderEntry type="library" exported="" name="io.fastjson:boon:0.28" level="project" />
+    <orderEntry type="library" exported="" name="io.fastjson:boon:0.29" level="project" />
   </component>
 </module>
 
