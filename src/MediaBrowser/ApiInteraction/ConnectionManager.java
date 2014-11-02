@@ -462,7 +462,7 @@ public class ConnectionManager implements IConnectionManager {
     }
 
     @Override
-    public void Logout(final Response<ConnectionResult> response) {
+    public void Logout(final EmptyResponse response) {
 
         _logger.Debug("Logging out of all servers");
 
@@ -490,7 +490,7 @@ public class ConnectionManager implements IConnectionManager {
                 credentials.setServers(servers);
                 _credentialProvider.SaveCredentials(credentials);
 
-                Connect(response);
+                response.onResponse();
             }
 
             @Override

@@ -18,7 +18,7 @@ public interface IConnectionManager {
 
     void Connect(String address, Response<ConnectionResult> response);
 
-    void Logout(Response<ConnectionResult> response);
+    void Logout(EmptyResponse response);
 
     Observable getConnectedObservable();
 

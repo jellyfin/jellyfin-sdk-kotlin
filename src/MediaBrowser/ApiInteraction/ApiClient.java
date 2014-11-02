@@ -11,6 +11,7 @@ import MediaBrowser.Model.Channels.ChannelFeatures;
 import MediaBrowser.Model.Channels.ChannelItemQuery;
 import MediaBrowser.Model.Channels.ChannelQuery;
 import MediaBrowser.Model.Configuration.ServerConfiguration;
+import MediaBrowser.Model.Connect.ConnectPassword;
 import MediaBrowser.Model.Devices.ContentUploadHistory;
 import MediaBrowser.Model.Devices.DevicesOptions;
 import MediaBrowser.Model.Devices.LocalFileInfo;
@@ -1591,7 +1592,7 @@ public class ApiClient extends BaseApiClient {
 
         dict.Add("username", username);
         dict.Add("password", Sha1.getHash(password));
-        dict.Add("passwordMd5", Md5.getHash(password));
+        dict.Add("passwordMd5", Md5.getHash(ConnectPassword.PerformPreHashFilter(password)));
 
         url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(response){
