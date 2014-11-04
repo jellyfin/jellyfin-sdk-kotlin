@@ -1,13 +1,16 @@
 package MediaBrowser.ApiInteraction.Sample;
 
 import MediaBrowser.ApiInteraction.*;
-import MediaBrowser.ApiInteraction.Device.AndroidDevice;
+import MediaBrowser.ApiInteraction.Android.AndroidApiClient;
+import MediaBrowser.ApiInteraction.Android.AndroidDevice;
 import MediaBrowser.ApiInteraction.Device.IDevice;
-import MediaBrowser.ApiInteraction.Http.VolleyHttpClient;
+import MediaBrowser.ApiInteraction.Android.VolleyHttpClient;
+import MediaBrowser.ApiInteraction.Serialization.BoonJsonSerializer;
 import MediaBrowser.Model.Dto.BaseItemDto;
 import MediaBrowser.Model.Entities.SortOrder;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Querying.*;
+import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.ClientCapabilities;
 import MediaBrowser.Model.Users.AuthenticationResult;
 import android.app.Application;
@@ -39,11 +42,15 @@ public class ExampleApp extends Application {
 
         IDevice device = new AndroidDevice(getApplicationContext());
 
-        apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My app name", device, "app version 123", apiEventListener, capabilities);
+        IJsonSerializer jsonSerializer = new BoonJsonSerializer();
+
+        apiClient = new ApiClient(volleyHttpClient, jsonSerializer, logger, "http://localhost:8096", "My app name", device, "app version 123", apiEventListener, capabilities);
     }
 
     public ImageLoader getImageLoader() {
-        return apiClient.getImageLoader();
+
+        AndroidApiClient androidApiClient = (AndroidApiClient)apiClient;
+        return androidApiClient.getImageLoader();
     }
 
     public void Authenticate() throws UnsupportedEncodingException, NoSuchAlgorithmException {

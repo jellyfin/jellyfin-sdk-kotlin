@@ -1,4 +1,4 @@
-package MediaBrowser.ApiInteraction;
+package MediaBrowser.ApiInteraction.Serialization;
 
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 
@@ -13,12 +13,12 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 
-public class JsonSerializer implements IJsonSerializer {
+public class BoonJsonSerializer implements IJsonSerializer {
 
     private org.boon.json.JsonSerializer jsonSerializer;
     private JsonParserAndMapper jsonParser;
 
-    public JsonSerializer(){
+    public BoonJsonSerializer(){
         ConfigureOptions();
     }
 

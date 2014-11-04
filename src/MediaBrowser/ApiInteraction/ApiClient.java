@@ -17,7 +17,6 @@ import MediaBrowser.Model.Devices.DevicesOptions;
 import MediaBrowser.Model.Devices.LocalFileInfo;
 import MediaBrowser.Model.Dto.*;
 import MediaBrowser.Model.Entities.DisplayPreferences;
-import MediaBrowser.Model.Entities.ItemReview;
 import MediaBrowser.Model.Entities.ParentalRating;
 import MediaBrowser.Model.Extensions.StringHelper;
 import MediaBrowser.Model.Globalization.CountryInfo;
@@ -35,13 +34,13 @@ import MediaBrowser.Model.Querying.*;
 import MediaBrowser.Model.Results.*;
 import MediaBrowser.Model.Search.SearchHintResult;
 import MediaBrowser.Model.Search.SearchQuery;
+import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.*;
 import MediaBrowser.Model.System.PublicSystemInfo;
 import MediaBrowser.Model.System.SystemInfo;
 import MediaBrowser.Model.Tasks.TaskInfo;
 import MediaBrowser.Model.Tasks.TaskTriggerInfo;
 import MediaBrowser.Model.Users.AuthenticationResult;
-import com.android.volley.toolbox.ImageLoader;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -49,7 +48,7 @@ import java.util.Observable;
 
 public class ApiClient extends BaseApiClient {
  
-    private IAsyncHttpClient _httpClient;
+    protected IAsyncHttpClient httpClient;
     private ApiEventListener apiEventListener;
 
     private ConnectionMode connectionMode = ConnectionMode.Local;
@@ -71,30 +70,26 @@ public class ApiClient extends BaseApiClient {
         return authenticatedObservable;
     }
 
-    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String accessToken, ApiEventListener apiEventListener, ClientCapabilities capabilities)
+    public ApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String accessToken, ApiEventListener apiEventListener, ClientCapabilities capabilities)
     {
-        super(logger, new JsonSerializer(), serverAddress, accessToken);
+        super(logger, jsonSerializer, serverAddress, accessToken);
 
-        _httpClient = httpClient;
+        this.httpClient = httpClient;
         this.apiEventListener = apiEventListener;
         this.capabilities = capabilities;
 
         ResetHttpHeaders();
     }
 
-    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String clientName, IDevice device, String applicationVersion, ApiEventListener apiEventListener, ClientCapabilities capabilities)
+    public ApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String clientName, IDevice device, String applicationVersion, ApiEventListener apiEventListener, ClientCapabilities capabilities)
     {
-        super(logger, new JsonSerializer(), serverAddress, clientName, device, applicationVersion);
+        super(logger, jsonSerializer, serverAddress, clientName, device, applicationVersion);
 
-        _httpClient = httpClient;
+        this.httpClient = httpClient;
         this.apiEventListener = apiEventListener;
         this.capabilities = capabilities;
 
         ResetHttpHeaders();
-    }
-
-    public ImageLoader getImageLoader() {
-        return _httpClient.getImageLoader();
     }
 
     public void EnableAutomaticNetworking(ServerInfo info, ConnectionMode initialMode, INetworkConnection networkConnection)
@@ -127,7 +122,7 @@ public class ApiClient extends BaseApiClient {
         request.setUrl(url);
         request.setMethod(method);
         request.setRequestHeaders(this.HttpHeaders);
-        _httpClient.Send(request, response);
+        httpClient.Send(request, response);
     }
 
     private void Send(String url, String method, String requestContent, String requestContentType, final Response<String> response)
@@ -138,7 +133,7 @@ public class ApiClient extends BaseApiClient {
         request.setRequestHeaders(this.HttpHeaders);
         request.setRequestContent(requestContent);
         request.setRequestContentType(requestContentType);
-        _httpClient.Send(request, response);
+        httpClient.Send(request, response);
     }
 
     private void Send(String url, String method, QueryStringDictionary postData, final Response<String> response)
@@ -148,7 +143,7 @@ public class ApiClient extends BaseApiClient {
         request.setMethod(method);
         request.setRequestHeaders(this.HttpHeaders);
         request.setPostData(postData);
-        _httpClient.Send(request, response);
+        httpClient.Send(request, response);
     }
 
     public void GetItemAsync(String id, String userId, final Response<BaseItemDto> response)

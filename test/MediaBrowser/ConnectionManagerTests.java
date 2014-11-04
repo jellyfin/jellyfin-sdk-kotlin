@@ -2,8 +2,9 @@ package MediaBrowser;
 
 import MediaBrowser.ApiInteraction.*;
 import MediaBrowser.ApiInteraction.Discovery.ServerLocator;
-import MediaBrowser.ApiInteraction.Http.VolleyHttpClient;
-import MediaBrowser.ApiInteraction.Network.NetworkConnection;
+import MediaBrowser.ApiInteraction.Android.VolleyHttpClient;
+import MediaBrowser.ApiInteraction.Android.AndroidNetworkConnection;
+import MediaBrowser.ApiInteraction.Serialization.BoonJsonSerializer;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.ClientCapabilities;
@@ -21,7 +22,7 @@ public class ConnectionManagerTests {
 
     private ILogger logger = new ConsoleLogger();
     private IConnectionManager connectionManager;
-    private IJsonSerializer jsonSerializer = new JsonSerializer();
+    private IJsonSerializer jsonSerializer = new BoonJsonSerializer();
 
     @Before
     public void setUp() throws Exception {
@@ -36,7 +37,7 @@ public class ConnectionManagerTests {
         ApiEventListener apiEventListener = new ApiEventListener();
 
         connectionManager = new ConnectionManager(new FakeCredentialProvider(),
-                new NetworkConnection(context, logger),
+                new AndroidNetworkConnection(context, logger),
                 jsonSerializer,
                 logger,
                 new ServerLocator(logger, jsonSerializer),

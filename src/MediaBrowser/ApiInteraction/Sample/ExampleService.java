@@ -1,11 +1,13 @@
 package MediaBrowser.ApiInteraction.Sample;
 
 import MediaBrowser.ApiInteraction.*;
-import MediaBrowser.ApiInteraction.Http.VolleyHttpClient;
+import MediaBrowser.ApiInteraction.Android.VolleyHttpClient;
+import MediaBrowser.ApiInteraction.Serialization.BoonJsonSerializer;
 import MediaBrowser.Model.Dto.BaseItemDto;
 import MediaBrowser.Model.Entities.SortOrder;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Querying.*;
+import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.ClientCapabilities;
 import android.app.Application;
 import com.android.volley.toolbox.ImageLoader;
@@ -31,11 +33,9 @@ public class ExampleService extends Application {
 
         ApiEventListener apiEventListener = new ApiEventListener();
 
-        apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My api key", apiEventListener, capabilities);
-    }
+        IJsonSerializer jsonSerializer = new BoonJsonSerializer();
 
-    public ImageLoader getImageLoader() {
-        return apiClient.getImageLoader();
+        apiClient = new ApiClient(volleyHttpClient, jsonSerializer, logger, "http://localhost:8096", "My api key", apiEventListener, capabilities);
     }
 
     public void GetItems(){

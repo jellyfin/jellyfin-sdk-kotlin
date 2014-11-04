@@ -2,7 +2,7 @@ package MediaBrowser;
 
 import MediaBrowser.ApiInteraction.ConsoleLogger;
 import MediaBrowser.ApiInteraction.Discovery.ServerLocator;
-import MediaBrowser.ApiInteraction.JsonSerializer;
+import MediaBrowser.ApiInteraction.Serialization.BoonJsonSerializer;
 import MediaBrowser.ApiInteraction.Response;
 import MediaBrowser.Model.ApiClient.ServerDiscoveryInfo;
 import MediaBrowser.Model.Logging.ILogger;
@@ -21,7 +21,7 @@ import static org.junit.Assert.fail;
 public class ServerLocatorTest {
 
     private ILogger logger;
-    private IJsonSerializer jsonSerializer = new JsonSerializer();
+    private IJsonSerializer jsonSerializer = new BoonJsonSerializer();
 
     @Before
     public void setUp() throws Exception {

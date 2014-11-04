@@ -1,6 +1,7 @@
-package MediaBrowser.ApiInteraction.Network;
+package MediaBrowser.ApiInteraction.Android;
 
 import MediaBrowser.ApiInteraction.EmptyResponse;
+import MediaBrowser.ApiInteraction.Network.INetworkConnection;
 import MediaBrowser.ApiInteraction.NetworkStatus;
 import MediaBrowser.Model.Logging.ILogger;
 import android.content.Context;
@@ -10,12 +11,12 @@ import android.net.NetworkInfo;
 import java.io.IOException;
 import java.net.*;
 
-public class NetworkConnection implements INetworkConnection {
+public class AndroidNetworkConnection implements INetworkConnection {
 
     private Context context;
     private ILogger logger;
 
-    public NetworkConnection(Context context, ILogger logger) {
+    public AndroidNetworkConnection(Context context, ILogger logger) {
         this.context = context;
         this.logger = logger;
     }

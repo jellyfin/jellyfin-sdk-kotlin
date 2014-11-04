@@ -1,6 +1,5 @@
 package MediaBrowser.ApiInteraction.Discovery;
 
-import MediaBrowser.ApiInteraction.JsonSerializer;
 import MediaBrowser.ApiInteraction.Response;
 import MediaBrowser.Model.ApiClient.ServerDiscoveryInfo;
 import MediaBrowser.Model.Logging.ILogger;

@@ -1,4 +1,4 @@
-package MediaBrowser.ApiInteraction.Http;
+package MediaBrowser.ApiInteraction.Android;
 
 import MediaBrowser.ApiInteraction.HttpHeaders;
 import MediaBrowser.ApiInteraction.HttpRequest;
@@ -153,7 +153,21 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         }, new com.android.volley.Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                logger.Error("Error: ", error.getMessage());
+
+                if (error instanceof TimeoutError) {
+                    logger.Error("VolleyError TimeoutError: ", error.getMessage());
+                } else if (error instanceof NoConnectionError) {
+                    logger.Error("VolleyError NoConnectionError: ", error.getMessage());
+                } else if (error instanceof AuthFailureError) {
+                    logger.Error("VolleyError AuthFailureError: ", error.getMessage());
+                } else if (error instanceof ServerError) {
+                    logger.Error("VolleyError ServerError: ", error.getMessage());
+                } else if (error instanceof NetworkError) {
+                    logger.Error("VolleyError NetworkError: ", error.getMessage());
+                } else if (error instanceof ParseError) {
+                    logger.Error("VolleyError ParseError: ", error.getMessage());
+                }
+
                 response.onError();
             }
         }
@@ -175,6 +189,17 @@ public class VolleyHttpClient implements IAsyncHttpClient {
                 Map<String, String> data = new HashMap<String,String>();
                 AddData(data, request);
                 return data;
+            }
+
+            @Override
+            public String getBodyContentType() {
+
+                if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(request.getRequestContentType()))
+                {
+                    return request.getRequestContentType();
+                }
+
+                return super.getBodyContentType();
             }
 
             @Override

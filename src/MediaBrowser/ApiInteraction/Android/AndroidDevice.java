@@ -1,6 +1,7 @@
-package MediaBrowser.ApiInteraction.Device;
+package MediaBrowser.ApiInteraction.Android;
 
 import MediaBrowser.ApiInteraction.ApiClient;
+import MediaBrowser.ApiInteraction.Device.IDevice;
 import MediaBrowser.Model.Devices.LocalFileInfo;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -13,7 +14,7 @@ import android.provider.Settings;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class AndroidDevice implements IDevice{
+public class AndroidDevice implements IDevice {
 
     private final String deviceName;
     private final String deviceId;

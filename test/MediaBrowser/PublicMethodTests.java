@@ -2,8 +2,10 @@ package MediaBrowser;
 
 import MediaBrowser.ApiInteraction.*;
 import MediaBrowser.ApiInteraction.Device.IDevice;
-import MediaBrowser.ApiInteraction.Http.VolleyHttpClient;
+import MediaBrowser.ApiInteraction.Android.VolleyHttpClient;
+import MediaBrowser.ApiInteraction.Serialization.BoonJsonSerializer;
 import MediaBrowser.Model.Logging.ILogger;
+import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.ClientCapabilities;
 import MediaBrowser.Model.System.PublicSystemInfo;
 import MediaBrowser.Model.Users.AuthenticationResult;
@@ -12,7 +14,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
@@ -37,7 +38,9 @@ public class PublicMethodTests {
 
         IDevice device = new FakeDevice();
 
-        apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My app name", device, "app version 123", apiEventListener, capabilities);
+        IJsonSerializer jsonSerializer = new BoonJsonSerializer();
+
+        apiClient = new ApiClient(volleyHttpClient, jsonSerializer, logger, "http://localhost:8096", "My app name", device, "app version 123", apiEventListener, capabilities);
     }
 
     @Test

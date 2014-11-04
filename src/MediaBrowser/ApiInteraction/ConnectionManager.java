@@ -613,6 +613,7 @@ public class ConnectionManager implements IConnectionManager {
                     server.getRemoteAddress();
 
             apiClient = new ApiClient(_httpClient,
+                    jsonSerializer,
                     _logger,
                     address,
                     applicationName,
@@ -706,77 +707,88 @@ public class ConnectionManager implements IConnectionManager {
         final int numTasks = 2;
         final int[] numTasksCompleted = {0};
 
+        Response<ArrayList<ServerInfo>> findServersResponse = new Response<ArrayList<ServerInfo>>(){
+
+            private void OnAny(ArrayList<ServerInfo> foundServers){
+
+                synchronized (credentials){
+
+                    numTasksCompleted[0]++;
+
+                    OnGetServerResponse(credentials, foundServers, response, numTasksCompleted[0] >= numTasks);
+                }
+            }
+
+            @Override
+            public void onResponse(ArrayList<ServerInfo> response) {
+                OnAny(response);
+            }
+
+            @Override
+            public void onError() {
+
+                OnAny(new ArrayList<ServerInfo>());
+            }
+        };
+
         if (networkInfo.GetIsLocalNetworkAvailable())
         {
             _logger.Debug("Scanning network for local servers");
 
-            FindServers(new Response<ArrayList<ServerInfo>>(){
-
-                private void OnAny(ArrayList<ServerInfo> foundServers){
-
-                    synchronized (credentials){
-
-                        numTasksCompleted[0]++;
-
-                        OnGetServerResponse(credentials, foundServers, response, numTasksCompleted[0] >= numTasks);
-                    }
-                }
-
-                @Override
-                public void onResponse(ArrayList<ServerInfo> response) {
-                    OnAny(response);
-                }
-
-                @Override
-                public void onError() {
-
-                    OnAny(new ArrayList<ServerInfo>());
-                }
-
-            });
+            FindServers(findServersResponse);
         }
         else {
-            numTasksCompleted[0]++;
+            findServersResponse.onError();
         }
 
-        _logger.Debug("Getting server list from Connect");
+        EmptyResponse connectServersResponse = new EmptyResponse(){
+
+            private void OnAny(ConnectUserServer[] foundServers){
+
+                synchronized (credentials){
+
+                    numTasksCompleted[0]++;
+
+                    OnGetServerResponse(credentials, ConvertServerList(foundServers), response, numTasksCompleted[0] >= numTasks);
+                }
+            }
+
+            @Override
+            public void onResponse() {
+
+                _logger.Debug("Getting connect servers");
+
+                connectService.GetServers(credentials.getConnectUserId(), credentials.getConnectAccessToken(), new Response<ConnectUserServer[]>(){
+
+                    @Override
+                    public void onResponse(ConnectUserServer[] response) {
+
+                        OnAny(response);
+                    }
+
+                    @Override
+                    public void onError() {
+
+                        OnAny(new ConnectUserServer[]{});
+                    }
+                });
+            }
+
+            @Override
+            public void onError() {
+
+                OnAny(new ConnectUserServer[]{});
+            }
+        };
 
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
         {
-            EnsureConnectUser(credentials, new EmptyResponse(){
+            _logger.Debug("Getting server list from Connect");
 
-                @Override
-                public void onResponse() {
-
-                    connectService.GetServers(credentials.getConnectUserId(), credentials.getConnectAccessToken(), new Response<ConnectUserServer[]>(){
-
-                        private void OnAny(ConnectUserServer[] foundServers){
-
-                            synchronized (credentials){
-
-                                numTasksCompleted[0]++;
-
-                                OnGetServerResponse(credentials, ConvertServerList(foundServers), response, numTasksCompleted[0] >= numTasks);
-                            }
-                        }
-
-                        @Override
-                        public void onResponse(ConnectUserServer[] response) {
-
-                            OnAny(response);
-                        }
-
-                        @Override
-                        public void onError() {
-
-                            OnAny(new ConnectUserServer[]{});
-                        }
-                    });
-                }
-            });
+            EnsureConnectUser(credentials, connectServersResponse);
         }
         else{
-            numTasksCompleted[0]++;
+            connectServersResponse.onError();
         }
     }
 
@@ -794,6 +806,8 @@ public class ConnectionManager implements IConnectionManager {
             return;
         }
 
+        this.connectUser = null;
+
         ConnectUserQuery query = new ConnectUserQuery();
 
         connectService.GetConnectUser(query, credentials.getConnectAccessToken(), new Response<ConnectUser>(){
@@ -810,8 +824,6 @@ public class ConnectionManager implements IConnectionManager {
 
                 response.onResponse();
             }
-
-
         });
     }
 
