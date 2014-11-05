@@ -26,7 +26,7 @@ public class ConnectService {
     public void Authenticate(String username, String password, final Response<ConnectAuthenticationResult> response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         QueryStringDictionary args = new QueryStringDictionary();
 
-        args.Add("userName", username);
+        args.Add("nameOrEmail", username);
         args.Add("password", Md5.getHash(ConnectPassword.PerformPreHashFilter(password)));
 
         String url = GetConnectUrl("user/authenticate");
@@ -166,7 +166,15 @@ public class ConnectService {
         }
         else if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(query.getEmail()))
         {
-            dict.Add("name", query.getEmail());
+            dict.Add("email", query.getEmail());
+        }
+        else if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(query.getNameOrEmail()))
+        {
+            dict.Add("nameOrEmail", query.getNameOrEmail());
+        }
+        else
+        {
+            throw new IllegalArgumentException("Empty ConnectUserQuery");
         }
 
         String url = GetConnectUrl("user") + "?" + dict.GetQueryString();
@@ -263,6 +271,11 @@ public class ConnectService {
 
     private void AddUserAccessToken(HttpRequest request, String accessToken)
     {
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(accessToken))
+        {
+            throw new IllegalArgumentException("accessToken");
+        }
+
         request.getRequestHeaders().put("X-Connect-UserToken", accessToken);
     }
 }

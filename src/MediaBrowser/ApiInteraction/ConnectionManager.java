@@ -25,18 +25,18 @@ public class ConnectionManager implements IConnectionManager {
 
     private ICredentialProvider _credentialProvider;
     private INetworkConnection _networkConnectivity;
-    private ILogger _logger;
+    protected ILogger logger;
     private IServerLocator _serverDiscovery;
-    private IAsyncHttpClient _httpClient;
+    protected IAsyncHttpClient httpClient;
 
     private HashMap<String, ApiClient> apiClients = new HashMap<String, ApiClient>();
-    private IJsonSerializer jsonSerializer;
+    protected IJsonSerializer jsonSerializer;
 
-    private String applicationName;
-    private String applicationVersion;
-    private IDevice device;
-    private ClientCapabilities clientCapabilities;
-    private ApiEventListener apiEventListener;
+    protected String applicationName;
+    protected String applicationVersion;
+    protected IDevice device;
+    protected ClientCapabilities clientCapabilities;
+    protected ApiEventListener apiEventListener;
 
     private ConnectService connectService;
     private ConnectUser connectUser;
@@ -55,9 +55,9 @@ public class ConnectionManager implements IConnectionManager {
 
         _credentialProvider = credentialProvider;
         _networkConnectivity = networkConnectivity;
-        _logger = logger;
+        this.logger = logger;
         _serverDiscovery = serverDiscovery;
-        _httpClient = httpClient;
+        this.httpClient = httpClient;
         this.applicationName = applicationName;
         this.applicationVersion = applicationVersion;
         this.device = device;
@@ -96,7 +96,7 @@ public class ConnectionManager implements IConnectionManager {
 
     private void OnFailedConnection(Response<ConnectionResult> response){
 
-        _logger.Debug("No server available");
+        logger.Debug("No server available");
 
         ConnectionResult result = new ConnectionResult();
         result.setState(ConnectionState.Unavailable);
@@ -106,7 +106,7 @@ public class ConnectionManager implements IConnectionManager {
 
     private void OnFailedConnection(Response<ConnectionResult> response, ArrayList<ServerInfo> servers){
 
-        _logger.Debug("No server available");
+        logger.Debug("No server available");
 
         ConnectionResult result = new ConnectionResult();
 
@@ -128,14 +128,14 @@ public class ConnectionManager implements IConnectionManager {
     @Override
     public void Connect(final Response<ConnectionResult> response) {
 
-         _logger.Debug("Entering initial connection workflow");
+        logger.Debug("Entering initial connection workflow");
 
          GetAvailableServers(new Response<ArrayList<ServerInfo>>(){
 
                 @Override
                 public void onResponse(ArrayList<ServerInfo> servers) {
 
-                    _logger.Debug("Looping through server list");
+                    logger.Debug("Looping through server list");
                     Connect(servers, response);
                 }
         });
@@ -187,7 +187,7 @@ public class ConnectionManager implements IConnectionManager {
                 int nextIndex = index + 1;
                 if (nextIndex < servers.size()) {
 
-                    _logger.Debug("Trying next server");
+                    logger.Debug("Trying next server");
                     ConnectToServerAtListIndex(servers, nextIndex, response);
 
                 } else {
@@ -201,7 +201,7 @@ public class ConnectionManager implements IConnectionManager {
             public void onResponse(ConnectionResult result) {
 
                 if (result.getState() == ConnectionState.SignedIn) {
-                    _logger.Debug("Connected to server");
+                    logger.Debug("Connected to server");
                     response.onResponse(result);
 
                 } else {
@@ -351,7 +351,7 @@ public class ConnectionManager implements IConnectionManager {
                                                   ServerCredentials credentials,
                                                   final EmptyResponse response){
 
-        _logger.Debug("Adding authentication info from Connect");
+        logger.Debug("Adding authentication info from Connect");
 
         String url = connectionMode == ConnectionMode.Local ? server.getLocalAddress() : server.getRemoteAddress();
 
@@ -363,7 +363,7 @@ public class ConnectionManager implements IConnectionManager {
 
         request.getRequestHeaders().put("X-MediaBrowser-Token", server.getExchangeToken());
 
-        _httpClient.Send(request, new Response<String>(){
+        httpClient.Send(request, new Response<String>(){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -438,7 +438,7 @@ public class ConnectionManager implements IConnectionManager {
 
         address = NormalizeAddress(address);
 
-        _logger.Debug("Attempting to connect to server at %s", address);
+        logger.Debug("Attempting to connect to server at %s", address);
 
         final String finalAddress = address;
         TryConnect(address, new Response<PublicSystemInfo>(){
@@ -464,13 +464,13 @@ public class ConnectionManager implements IConnectionManager {
     @Override
     public void Logout(final EmptyResponse response) {
 
-        _logger.Debug("Logging out of all servers");
+        logger.Debug("Logging out of all servers");
 
         LogoutAll(new EmptyResponse() {
 
             private void OnSuccessOrFail() {
 
-                _logger.Debug("Updating saved credentials for all servers");
+                logger.Debug("Updating saved credentials for all servers");
                 ServerCredentials credentials = _credentialProvider.GetCredentials();
 
                 ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
@@ -541,7 +541,7 @@ public class ConnectionManager implements IConnectionManager {
                 {
                     request.setUrl(url + "/mediabrowser/users/" + server.getUserId() + "?format=json");
 
-                    _httpClient.Send(request, new Response<String>(){
+                    httpClient.Send(request, new Response<String>(){
 
                         @Override
                         public void onResponse(String stringResponse) {
@@ -573,7 +573,7 @@ public class ConnectionManager implements IConnectionManager {
             }
         };
 
-        _httpClient.Send(request, stringResponse);
+        httpClient.Send(request, stringResponse);
     }
 
     private void TryConnect(String url, final Response<PublicSystemInfo> response)
@@ -584,7 +584,7 @@ public class ConnectionManager implements IConnectionManager {
         request.setUrl(url);
         request.setMethod("GET");
 
-        _httpClient.Send(request, new Response<String>(){
+        httpClient.Send(request, new Response<String>(){
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -602,6 +602,19 @@ public class ConnectionManager implements IConnectionManager {
         });
     }
 
+    protected ApiClient InstantiateApiClient(String serverAdderss) {
+
+        return new ApiClient(httpClient,
+                jsonSerializer,
+                logger,
+                serverAdderss,
+                applicationName,
+                device,
+                applicationVersion,
+                apiEventListener,
+                clientCapabilities);
+    }
+
     private ApiClient GetOrAddApiClient(ServerInfo server, ConnectionMode connectionMode)
     {
         ApiClient apiClient = apiClients.get(server.getId());
@@ -612,15 +625,7 @@ public class ConnectionManager implements IConnectionManager {
                     server.getLocalAddress() :
                     server.getRemoteAddress();
 
-            apiClient = new ApiClient(_httpClient,
-                    jsonSerializer,
-                    _logger,
-                    address,
-                    applicationName,
-                    device,
-                    applicationVersion,
-                    apiEventListener,
-                    clientCapabilities);
+            apiClient = InstantiateApiClient(address);
 
             apiClients.put(server.getId(), apiClient);
 
@@ -658,7 +663,7 @@ public class ConnectionManager implements IConnectionManager {
                                  final AuthenticationResult result,
                                  final boolean saveCredentials)
     {
-        _logger.Debug("Updating credentials after local authentication");
+        logger.Debug("Updating credentials after local authentication");
 
         apiClient.GetSystemInfoAsync(new Response<SystemInfo>() {
 
@@ -701,7 +706,7 @@ public class ConnectionManager implements IConnectionManager {
     {
         NetworkStatus networkInfo = _networkConnectivity.getNetworkStatus();
 
-        _logger.Debug("Getting saved servers via credential provider");
+        logger.Debug("Getting saved servers via credential provider");
         final ServerCredentials credentials = _credentialProvider.GetCredentials();
 
         final int numTasks = 2;
@@ -733,7 +738,7 @@ public class ConnectionManager implements IConnectionManager {
 
         if (networkInfo.GetIsLocalNetworkAvailable())
         {
-            _logger.Debug("Scanning network for local servers");
+            logger.Debug("Scanning network for local servers");
 
             FindServers(findServersResponse);
         }
@@ -756,7 +761,7 @@ public class ConnectionManager implements IConnectionManager {
             @Override
             public void onResponse() {
 
-                _logger.Debug("Getting connect servers");
+                logger.Debug("Getting connect servers");
 
                 connectService.GetServers(credentials.getConnectUserId(), credentials.getConnectAccessToken(), new Response<ConnectUserServer[]>(){
 
@@ -783,7 +788,7 @@ public class ConnectionManager implements IConnectionManager {
 
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
         {
-            _logger.Debug("Getting server list from Connect");
+            logger.Debug("Getting server list from Connect");
 
             EnsureConnectUser(credentials, connectServersResponse);
         }
@@ -909,7 +914,7 @@ public class ConnectionManager implements IConnectionManager {
 
     private void WakeAllServers()
     {
-        _logger.Debug("Waking all servers");
+        logger.Debug("Waking all servers");
 
         for(ServerInfo server : _credentialProvider.GetCredentials().getServers()){
 
@@ -919,14 +924,14 @@ public class ConnectionManager implements IConnectionManager {
 
     private void WakeServer(ServerInfo info, final EmptyResponse response)
     {
-        _logger.Debug("Waking server: %s, Id: %s", info.getName(), info.getId());
+        logger.Debug("Waking server: %s, Id: %s", info.getName(), info.getId());
 
         ArrayList<WakeOnLanInfo> wakeList = info.getWakeOnLanInfos();
 
         final int count = wakeList.size();
 
         if (count == 0){
-            _logger.Debug("Server %s has no saved wake on lan profiles", info.getName());
+            logger.Debug("Server %s has no saved wake on lan profiles", info.getName());
             response.onResponse();
             return;
         }

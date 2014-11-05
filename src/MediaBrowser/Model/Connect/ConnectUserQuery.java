@@ -29,4 +29,13 @@ public class ConnectUserQuery
 	{
 		Email = value;
 	}
+	private String NameOrEmail;
+	public final String getNameOrEmail()
+	{
+		return NameOrEmail;
+	}
+	public final void setNameOrEmail(String value)
+	{
+		NameOrEmail = value;
+	}
 }

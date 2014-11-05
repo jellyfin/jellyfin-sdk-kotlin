@@ -146,7 +146,8 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         StringRequest req = new StringRequest(method, url, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String stringResponse) {
-                logger.Debug("Response:%n %s", stringResponse);
+
+                logger.Info("Response:%n %s", stringResponse);
                 response.onResponse(stringResponse);
             }
 
