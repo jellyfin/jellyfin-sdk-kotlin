@@ -1218,29 +1218,37 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
  
-    /*public Task<UserItemDataDto> MarkPlayedAsync(String itemId, String userId, DateTime? datePlayed)
+    public void MarkPlayedAsync(String itemId, String userId, Date datePlayed, final Response<UserItemDataDto> response)
     {
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId))
-        {
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId)) {
             throw new IllegalArgumentException("itemId");
         }
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(userId))
-        {
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(userId)) {
             throw new IllegalArgumentException("userId");
         }
- 
+
         QueryStringDictionary dict = new QueryStringDictionary();
- 
-        if (datePlayed.HasValue)
+
+        if (datePlayed != null)
         {
-            dict.Add("DatePlayed", datePlayed.Value.ToString("yyyyMMddHHmmss"));
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+            dict.Add("DatePlayed", formatter.format(datePlayed));
         }
- 
+
         String url = GetApiUrl("Users/" + userId + "/PlayedItems/" + itemId, dict);
- 
-        return PostAsync<UserItemDataDto>(url, new Dictionary<String, String>(), CancellationToken.None);
+        url = AddDataFormat(url);
+
+        Response<String> jsonResponse = new Response<String>(response){
+            @Override
+            public void onResponse(String jsonResponse) {
+                UserItemDataDto obj = DeserializeFromString(jsonResponse, UserItemDataDto.class);
+                response.onResponse(obj);
+            }
+        };
+
+        Send(url, "POST", dict, jsonResponse);
     }
- 
+
     /// <summary>
     /// Marks the unplayed async.
     /// </summary>
@@ -1252,22 +1260,29 @@ public class ApiClient extends BaseApiClient {
     /// or
     /// userId
     /// </exception>
-    public Task<UserItemDataDto> MarkUnplayedAsync(String itemId, String userId)
+    public void MarkUnplayedAsync(String itemId, String userId, final Response<UserItemDataDto> response)
     {
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId))
-        {
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId)) {
             throw new IllegalArgumentException("itemId");
         }
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(userId))
-        {
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(userId)) {
             throw new IllegalArgumentException("userId");
         }
- 
+
         String url = GetApiUrl("Users/" + userId + "/PlayedItems/" + itemId);
- 
-        return DeleteAsync<UserItemDataDto>(url, CancellationToken.None);
+        url = AddDataFormat(url);
+
+        Response<String> jsonResponse = new Response<String>(response){
+            @Override
+            public void onResponse(String jsonResponse) {
+                UserItemDataDto obj = DeserializeFromString(jsonResponse, UserItemDataDto.class);
+                response.onResponse(obj);
+            }
+        };
+
+        Send(url, "DELETE", jsonResponse);
     }
- 
+
     /// <summary>
     /// Updates the favorite status async.
     /// </summary>
@@ -1276,26 +1291,28 @@ public class ApiClient extends BaseApiClient {
     /// <param name="isFavorite">if set to <c>true</c> [is favorite].</param>
     /// <returns>Task.</returns>
     /// <exception cref="System.IllegalArgumentException">itemId</exception>
-    public Task<UserItemDataDto> UpdateFavoriteStatusAsync(String itemId, String userId, Boolean isFavorite)
+    public void UpdateFavoriteStatusAsync(String itemId, String userId, Boolean isFavorite, final Response<UserItemDataDto> response)
     {
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId))
-        {
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(itemId)) {
             throw new IllegalArgumentException("itemId");
         }
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(userId))
-        {
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(userId)) {
             throw new IllegalArgumentException("userId");
         }
- 
+
         String url = GetApiUrl("Users/" + userId + "/FavoriteItems/" + itemId);
- 
-        if (isFavorite)
-        {
-            return PostAsync<UserItemDataDto>(url, new Dictionary<String, String>(), CancellationToken.None);
-        }
- 
-        return DeleteAsync<UserItemDataDto>(url, CancellationToken.None);
-    }*/
+        url = AddDataFormat(url);
+
+        Response<String> jsonResponse = new Response<String>(response){
+            @Override
+            public void onResponse(String jsonResponse) {
+                UserItemDataDto obj = DeserializeFromString(jsonResponse, UserItemDataDto.class);
+                response.onResponse(obj);
+            }
+        };
+
+        Send(url, isFavorite ? "POST" : "DELETE", jsonResponse);
+    }
 
     /// <summary>
     /// Reports to the server that the user has begun playing an item
@@ -2733,7 +2750,7 @@ public class ApiClient extends BaseApiClient {
         queryString.Add("DeviceId", getDeviceId());
         String url = GetApiUrl("Videos/ActiveEncodings", queryString);
 
-        PostAsync(url, response);
+        DeleteAsync(url, response);
     }
 
     public void GetLatestChannelItems(AllChannelMediaQuery query, final Response<ItemsResult> response)
