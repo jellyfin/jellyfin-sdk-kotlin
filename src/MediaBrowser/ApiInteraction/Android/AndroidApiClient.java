@@ -3,7 +3,7 @@ package MediaBrowser.ApiInteraction.Android;
 import MediaBrowser.ApiInteraction.ApiClient;
 import MediaBrowser.ApiInteraction.ApiEventListener;
 import MediaBrowser.ApiInteraction.Device.IDevice;
-import MediaBrowser.ApiInteraction.IAsyncHttpClient;
+import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.ClientCapabilities;

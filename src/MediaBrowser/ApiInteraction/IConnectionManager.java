@@ -24,7 +24,5 @@ public interface IConnectionManager {
 
     Observable getConnectedObservable();
 
-    Observable getRemoteLoggedOutObservable();
-
     void LoginToConnect(String username, String password, final EmptyResponse response)  throws UnsupportedEncodingException, NoSuchAlgorithmException;
 }

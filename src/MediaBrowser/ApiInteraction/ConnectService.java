@@ -1,21 +1,20 @@
 package MediaBrowser.ApiInteraction;
 
 import MediaBrowser.ApiInteraction.Cryptography.Md5;
-import MediaBrowser.Model.ApiClient.ConnectionState;
-import MediaBrowser.Model.ApiClient.ServerCredentials;
+import MediaBrowser.ApiInteraction.Http.HttpRequest;
+import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
 import MediaBrowser.Model.Connect.*;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Dictionary;
 
 public class ConnectService {
 
     public IJsonSerializer JsonSerializer;
     private ILogger _logger;
-    private  IAsyncHttpClient _httpClient;
+    private IAsyncHttpClient _httpClient;
 
     public ConnectService(IJsonSerializer jsonSerializer, ILogger logger, IAsyncHttpClient httpClient) {
         JsonSerializer = jsonSerializer;
@@ -48,9 +47,9 @@ public class ConnectService {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
-                response.onError();
+                response.onError(ex);
             }
         });
     }
@@ -80,9 +79,9 @@ public class ConnectService {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
-                response.onError();
+                response.onError(ex);
             }
         });
     }
@@ -112,9 +111,9 @@ public class ConnectService {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
-                response.onError();
+                response.onError(ex);
             }
         });
     }
@@ -145,9 +144,9 @@ public class ConnectService {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
-                response.onError();
+                response.onError(ex);
             }
         });
     }
@@ -197,9 +196,9 @@ public class ConnectService {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
-                response.onError();
+                response.onError(ex);
             }
         });
     }
@@ -230,9 +229,9 @@ public class ConnectService {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
-                response.onError();
+                response.onError(ex);
             }
         });
     }
@@ -257,9 +256,9 @@ public class ConnectService {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
-                response.onError();
+                response.onError(ex);
             }
         });
     }

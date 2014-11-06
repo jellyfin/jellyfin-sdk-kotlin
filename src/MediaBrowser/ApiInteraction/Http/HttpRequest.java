@@ -1,6 +1,6 @@
-package MediaBrowser.ApiInteraction;
+package MediaBrowser.ApiInteraction.Http;
 
-import java.util.Dictionary;
+import MediaBrowser.ApiInteraction.QueryStringDictionary;
 
 public class HttpRequest
 {

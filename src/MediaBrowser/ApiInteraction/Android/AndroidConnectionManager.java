@@ -1,9 +1,8 @@
 package MediaBrowser.ApiInteraction.Android;
 
 import MediaBrowser.ApiInteraction.*;
-import MediaBrowser.ApiInteraction.Device.IDevice;
 import MediaBrowser.ApiInteraction.Discovery.IServerLocator;
-import MediaBrowser.ApiInteraction.Network.INetworkConnection;
+import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.ClientCapabilities;

@@ -2,6 +2,7 @@ package MediaBrowser.ApiInteraction.Sample;
 
 import MediaBrowser.ApiInteraction.*;
 import MediaBrowser.ApiInteraction.Android.VolleyHttpClient;
+import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
 import MediaBrowser.ApiInteraction.Serialization.BoonJsonSerializer;
 import MediaBrowser.Model.Dto.BaseItemDto;
 import MediaBrowser.Model.Entities.SortOrder;
@@ -10,7 +11,6 @@ import MediaBrowser.Model.Querying.*;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.ClientCapabilities;
 import android.app.Application;
-import com.android.volley.toolbox.ImageLoader;
 
 public class ExampleService extends Application {
 
@@ -56,7 +56,7 @@ public class ExampleService extends Application {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 // Do something with error
             }

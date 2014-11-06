@@ -5,7 +5,6 @@ import MediaBrowser.ApiInteraction.ApiEventListener;
 import MediaBrowser.ApiInteraction.EmptyResponse;
 import MediaBrowser.ApiInteraction.GenericObserver;
 import MediaBrowser.ApiInteraction.WebSocket.JavaWebSocketClient;
-import MediaBrowser.ApiInteraction.WebSocket.WebSocketMessage;
 import MediaBrowser.Model.ApiClient.GeneralCommandEventArgs;
 import MediaBrowser.Model.ApiClient.SessionUpdatesEventArgs;
 import MediaBrowser.Model.Dto.UserDto;
@@ -13,6 +12,7 @@ import MediaBrowser.Model.Extensions.IntHelper;
 import MediaBrowser.Model.Extensions.LongHelper;
 import MediaBrowser.Model.Extensions.StringHelper;
 import MediaBrowser.Model.Logging.ILogger;
+import MediaBrowser.Model.Net.WebSocketMessage;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.*;
 import org.java_websocket.WebSocket;
@@ -250,7 +250,12 @@ public class ApiWebSocket {
         else if (StringHelper.EqualsIgnoreCase(messageType, "UserUpdated"))
         {
             WebSocketMessage<UserDto> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<UserDto>().getClass());
-            apiEventListener.onUserUpdated(obj.getData());
+            apiEventListener.onUserUpdated(apiClient, obj.getData());
+        }
+        else if (StringHelper.EqualsIgnoreCase(messageType, "UserConfigurationUpdated"))
+        {
+            WebSocketMessage<UserDto> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<UserDto>().getClass());
+            apiEventListener.onUserConfigurationUpdated(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "PluginUninstalled"))
         {
@@ -259,12 +264,12 @@ public class ApiWebSocket {
         else if (StringHelper.EqualsIgnoreCase(messageType, "Play"))
         {
             WebSocketMessage<PlayRequest> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<PlayRequest>().getClass());
-            apiEventListener.onPlayCommand(obj.getData());
+            apiEventListener.onPlayCommand(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "Playstate"))
         {
             WebSocketMessage<PlaystateRequest> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<PlaystateRequest>().getClass());
-            apiEventListener.onPlaystateCommand(obj.getData());
+            apiEventListener.onPlaystateCommand(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "NotificationAdded"))
         {
@@ -285,27 +290,27 @@ public class ApiWebSocket {
         else if (StringHelper.EqualsIgnoreCase(messageType, "Sessions"))
         {
             WebSocketMessage<SessionUpdatesEventArgs> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<SessionUpdatesEventArgs>().getClass());
-            apiEventListener.onSessionsUpdated(obj.getData());
+            apiEventListener.onSessionsUpdated(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "UserDataChanged"))
         {
             WebSocketMessage<UserDataChangeInfo> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<UserDataChangeInfo>().getClass());
-            apiEventListener.onUserDataChanged(obj.getData());
+            apiEventListener.onUserDataChanged(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "SessionEnded"))
         {
             WebSocketMessage<SessionInfoDto> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<SessionInfoDto>().getClass());
-            apiEventListener.onSessionEnded(obj.getData());
+            apiEventListener.onSessionEnded(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "PlaybackStart"))
         {
             WebSocketMessage<SessionInfoDto> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<SessionInfoDto>().getClass());
-            apiEventListener.onPlaybackStart(obj.getData());
+            apiEventListener.onPlaybackStart(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "PlaybackStopped"))
         {
             WebSocketMessage<SessionInfoDto> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<SessionInfoDto>().getClass());
-            apiEventListener.onPlaybackStopped(obj.getData());
+            apiEventListener.onPlaybackStopped(apiClient, obj.getData());
         }
     }
 
@@ -331,7 +336,7 @@ public class ApiWebSocket {
                 request.setItemName(itemName);
                 request.setItemType(itemType);
 
-                apiEventListener.onBrowseCommand(request);
+                apiEventListener.onBrowseCommand(apiClient, request);
                 return;
             }
             if (args.getKnownCommandType() == GeneralCommandType.DisplayMessage)
@@ -351,7 +356,7 @@ public class ApiWebSocket {
                 command.setText(text);
                 command.setTimeoutMs(expected);
 
-                apiEventListener.onMessageCommand(command);
+                apiEventListener.onMessageCommand(apiClient, command);
                 return;
             }
             if (args.getKnownCommandType() == GeneralCommandType.SetVolume)
@@ -364,7 +369,7 @@ public class ApiWebSocket {
                 expected = tempRef_expected.argValue;
 
                 if (tempVar){
-                    apiEventListener.onSetVolumeCommand(expected);
+                    apiEventListener.onSetVolumeCommand(apiClient, expected);
                 }
 
                 return;
@@ -379,7 +384,7 @@ public class ApiWebSocket {
                 expected = tempRef_expected.argValue;
 
                 if (tempVar){
-                    apiEventListener.onSetAudioStreamIndexCommand(expected);
+                    apiEventListener.onSetAudioStreamIndexCommand(apiClient, expected);
                 }
 
                 return;
@@ -394,7 +399,7 @@ public class ApiWebSocket {
                 expected = tempRef_expected.argValue;
 
                 if (tempVar){
-                    apiEventListener.onSetSubtitleStreamIndexCommand(expected);
+                    apiEventListener.onSetSubtitleStreamIndexCommand(apiClient, expected);
                 }
 
                 return;
@@ -402,12 +407,12 @@ public class ApiWebSocket {
             if (args.getKnownCommandType() == GeneralCommandType.SendString)
             {
                 String val = args.getCommand().getArguments().get("String");
-                apiEventListener.onSendStringCommand(val);
+                apiEventListener.onSendStringCommand(apiClient, val);
                 return;
             }
         }
 
-        apiEventListener.onGeneralCommand(args.getCommand());
+        apiEventListener.onGeneralCommand(apiClient, args.getCommand());
     }
 
     private String GetMessageType(String json)

@@ -40,7 +40,7 @@ public class ContentUploader {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 progress.reportError(null);
             }
@@ -60,7 +60,7 @@ public class ContentUploader {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 progress.reportError(null);
             }

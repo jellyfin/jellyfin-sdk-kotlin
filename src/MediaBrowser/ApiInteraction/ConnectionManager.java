@@ -2,10 +2,12 @@ package MediaBrowser.ApiInteraction;
 
 import MediaBrowser.ApiInteraction.Device.IDevice;
 import MediaBrowser.ApiInteraction.Discovery.IServerLocator;
+import MediaBrowser.ApiInteraction.Http.HttpHeaders;
+import MediaBrowser.ApiInteraction.Http.HttpRequest;
+import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
 import MediaBrowser.ApiInteraction.Network.INetworkConnection;
 import MediaBrowser.Model.ApiClient.*;
 import MediaBrowser.Model.Connect.*;
-import MediaBrowser.Model.Dto.BaseItemDto;
 import MediaBrowser.Model.Dto.IHasServerId;
 import MediaBrowser.Model.Dto.UserDto;
 import MediaBrowser.Model.Extensions.StringHelper;
@@ -210,7 +212,7 @@ public class ConnectionManager implements IConnectionManager {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 TryNextServer();
             }
@@ -224,7 +226,7 @@ public class ConnectionManager implements IConnectionManager {
             Connect(server, true, innerResponse);
         }
         else{
-            innerResponse.onError();
+            innerResponse.onError(null);
         }
     }
 
@@ -250,7 +252,7 @@ public class ConnectionManager implements IConnectionManager {
                 }
 
                 @Override
-                public void onError() {
+                public void onError(Exception ex) {
 
                     // Wake on lan and try again
                     if (enableWakeOnLan && server.getWakeOnLanInfos().size() > 0)
@@ -265,7 +267,7 @@ public class ConnectionManager implements IConnectionManager {
                             }
 
                             @Override
-                            public void onError() {
+                            public void onError(Exception ex) {
 
                                 // No local connection available
                                 TryConnectToRemoteAddress(server, response);
@@ -302,7 +304,7 @@ public class ConnectionManager implements IConnectionManager {
                 }
 
                 @Override
-                public void onError() {
+                public void onError(Exception ex) {
 
                     // Unable to connect
                     OnFailedConnection(response);
@@ -376,7 +378,7 @@ public class ConnectionManager implements IConnectionManager {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 response.onResponse();
             }
@@ -401,9 +403,9 @@ public class ConnectionManager implements IConnectionManager {
                 }
 
                 @Override
-                public void onError() {
+                public void onError(Exception ex) {
 
-                    response.onError();
+                    response.onError(ex);
                 }
             });
 
@@ -453,7 +455,7 @@ public class ConnectionManager implements IConnectionManager {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 OnFailedConnection(response);
             }
@@ -499,7 +501,7 @@ public class ConnectionManager implements IConnectionManager {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
                 OnSuccessOrFail();
             }
         });
@@ -509,12 +511,6 @@ public class ConnectionManager implements IConnectionManager {
     @Override
     public Observable getConnectedObservable() {
         return connectedObservable;
-    }
-
-    private Observable remoteLoggedOutObservable = new Observable();
-    @Override
-    public Observable getRemoteLoggedOutObservable() {
-        return remoteLoggedOutObservable;
     }
 
     private void ValidateAuthentication(final ServerInfo server, ConnectionMode connectionMode, final EmptyResponse response)
@@ -551,7 +547,7 @@ public class ConnectionManager implements IConnectionManager {
                             response.onResponse();
                         }
                         @Override
-                        public void onError() {
+                        public void onError(Exception ex) {
 
                             server.setUserId(null);
                             server.setAccessToken(null);
@@ -565,7 +561,7 @@ public class ConnectionManager implements IConnectionManager {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 server.setUserId(null);
                 server.setAccessToken(null);
@@ -595,9 +591,9 @@ public class ConnectionManager implements IConnectionManager {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
-                response.onError();
+                response.onError(ex);
             }
         });
     }
@@ -730,7 +726,7 @@ public class ConnectionManager implements IConnectionManager {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 OnAny(new ArrayList<ServerInfo>());
             }
@@ -743,7 +739,7 @@ public class ConnectionManager implements IConnectionManager {
             FindServers(findServersResponse);
         }
         else {
-            findServersResponse.onError();
+            findServersResponse.onError(null);
         }
 
         EmptyResponse connectServersResponse = new EmptyResponse(){
@@ -772,7 +768,7 @@ public class ConnectionManager implements IConnectionManager {
                     }
 
                     @Override
-                    public void onError() {
+                    public void onError(Exception ex) {
 
                         OnAny(new ConnectUserServer[]{});
                     }
@@ -780,7 +776,7 @@ public class ConnectionManager implements IConnectionManager {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 OnAny(new ConnectUserServer[]{});
             }
@@ -793,7 +789,7 @@ public class ConnectionManager implements IConnectionManager {
             EnsureConnectUser(credentials, connectServersResponse);
         }
         else{
-            connectServersResponse.onError();
+            connectServersResponse.onError(null);
         }
     }
 
@@ -825,7 +821,7 @@ public class ConnectionManager implements IConnectionManager {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 response.onResponse();
             }
@@ -903,7 +899,7 @@ public class ConnectionManager implements IConnectionManager {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
 
@@ -960,7 +956,7 @@ public class ConnectionManager implements IConnectionManager {
                 }
 
                 @Override
-                public void onError() {
+                public void onError(Exception ex) {
 
                     OnServerDone();
                 }
@@ -1035,7 +1031,7 @@ public class ConnectionManager implements IConnectionManager {
                 }
 
                 @Override
-                public void onError() {
+                public void onError(Exception ex) {
 
                     onResponse();
                 }
@@ -1064,9 +1060,9 @@ public class ConnectionManager implements IConnectionManager {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
-                response.onError();
+                response.onError(ex);
             }
         });
     }
@@ -1099,9 +1095,9 @@ public class ConnectionManager implements IConnectionManager {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
-                response.onError();
+                response.onError(ex);
             }
 
         });

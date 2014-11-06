@@ -107,7 +107,7 @@ public class ServerLocator implements IServerLocator {
 
             logger.ErrorException("Error finding servers", ex);
 
-            response.onError();
+            response.onError(ex);
         }
     }
 }

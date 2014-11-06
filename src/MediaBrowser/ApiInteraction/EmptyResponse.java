@@ -18,10 +18,10 @@ public class EmptyResponse implements IResponse {
     }
 
     @Override
-    public void onError()
+    public void onError(Exception ex)
     {
         if (innerResponse != null){
-            innerResponse.onError();
+            innerResponse.onError(ex);
         }
     }
 }

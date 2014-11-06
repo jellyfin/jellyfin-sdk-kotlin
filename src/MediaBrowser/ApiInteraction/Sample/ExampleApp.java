@@ -5,6 +5,7 @@ import MediaBrowser.ApiInteraction.Android.AndroidApiClient;
 import MediaBrowser.ApiInteraction.Android.AndroidDevice;
 import MediaBrowser.ApiInteraction.Device.IDevice;
 import MediaBrowser.ApiInteraction.Android.VolleyHttpClient;
+import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
 import MediaBrowser.ApiInteraction.Serialization.BoonJsonSerializer;
 import MediaBrowser.Model.Dto.BaseItemDto;
 import MediaBrowser.Model.Entities.SortOrder;
@@ -64,7 +65,7 @@ public class ExampleApp extends Application {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
 
             }
@@ -90,7 +91,7 @@ public class ExampleApp extends Application {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 // Do something with error
             }

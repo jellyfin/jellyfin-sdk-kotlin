@@ -1,83 +1,88 @@
 package MediaBrowser.ApiInteraction;
 
+import MediaBrowser.Model.ApiClient.RemoteLogoutReason;
 import MediaBrowser.Model.ApiClient.SessionUpdatesEventArgs;
 import MediaBrowser.Model.Dto.UserDto;
 import MediaBrowser.Model.Session.*;
 
 public class ApiEventListener {
 
-    public void onRemoteLoggedOut(){
+    public void onRemoteLoggedOut(ApiClient client, RemoteLogoutReason reason){
 
     }
 
-    public void onUserUpdated(UserDto userDto){
+    public void onUserUpdated(ApiClient client, UserDto userDto){
 
     }
 
-    public void onBrowseCommand(BrowseRequest command){
+    public void onUserConfigurationUpdated(ApiClient client, UserDto userDto){
 
     }
 
-    public void onPlayCommand(PlayRequest command){
+    public void onBrowseCommand(ApiClient client, BrowseRequest command){
 
     }
 
-    public void onPlaystateCommand(PlaystateRequest command)
+    public void onPlayCommand(ApiClient client, PlayRequest command){
+
+    }
+
+    public void onPlaystateCommand(ApiClient client, PlaystateRequest command)
     {
 
     }
 
-    public void onMessageCommand(MessageCommand command)
+    public void onMessageCommand(ApiClient client, MessageCommand command)
     {
 
     }
 
-    public void onGeneralCommand(GeneralCommand command)
+    public void onGeneralCommand(ApiClient client, GeneralCommand command)
     {
 
     }
 
-    public void onSendStringCommand(String value)
+    public void onSendStringCommand(ApiClient client, String value)
     {
 
     }
 
-    public void onSetVolumeCommand(int value)
+    public void onSetVolumeCommand(ApiClient client, int value)
     {
 
     }
 
-    public void onSetAudioStreamIndexCommand(int value)
+    public void onSetAudioStreamIndexCommand(ApiClient client, int value)
     {
 
     }
 
-    public void onSetSubtitleStreamIndexCommand(int value)
+    public void onSetSubtitleStreamIndexCommand(ApiClient client, int value)
     {
 
     }
 
-    public void onUserDataChanged(UserDataChangeInfo info)
+    public void onUserDataChanged(ApiClient client, UserDataChangeInfo info)
     {
 
     }
 
-    public void onSessionsUpdated(SessionUpdatesEventArgs args)
+    public void onSessionsUpdated(ApiClient client, SessionUpdatesEventArgs args)
     {
 
     }
 
-    public void onPlaybackStart(SessionInfoDto info)
+    public void onPlaybackStart(ApiClient client, SessionInfoDto info)
     {
 
     }
 
-    public void onPlaybackStopped(SessionInfoDto info)
+    public void onPlaybackStopped(ApiClient client, SessionInfoDto info)
     {
 
     }
 
-    public void onSessionEnded(SessionInfoDto info)
+    public void onSessionEnded(ApiClient client, SessionInfoDto info)
     {
 
     }

@@ -12,7 +12,7 @@ public class Response<T> implements IResponse {
 
     }
 
-    public void onResponse()
+    public void onResponse(Response<String> response)
     {
 
     }
@@ -23,10 +23,10 @@ public class Response<T> implements IResponse {
     }
 
     @Override
-    public void onError()
+    public void onError(Exception exception)
     {
         if (innerResponse != null){
-            innerResponse.onError();
+            innerResponse.onError(exception);
         }
     }
 }

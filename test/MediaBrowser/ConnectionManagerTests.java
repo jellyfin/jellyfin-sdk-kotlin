@@ -4,6 +4,7 @@ import MediaBrowser.ApiInteraction.*;
 import MediaBrowser.ApiInteraction.Discovery.ServerLocator;
 import MediaBrowser.ApiInteraction.Android.VolleyHttpClient;
 import MediaBrowser.ApiInteraction.Android.AndroidNetworkConnection;
+import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
 import MediaBrowser.ApiInteraction.Serialization.BoonJsonSerializer;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
@@ -64,7 +65,7 @@ public class ConnectionManagerTests {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 logger.Debug("testConnectionManager: error");
 

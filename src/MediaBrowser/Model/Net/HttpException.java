@@ -1,6 +1,8 @@
 package MediaBrowser.Model.Net;
 
-/** 
+import java.util.Map;
+
+/**
  Class HttpException
 */
 public class HttpException extends RuntimeException
@@ -10,12 +12,12 @@ public class HttpException extends RuntimeException
 	 
 	 <value>The status code.</value>
 	*/
-	private HttpStatusCode StatusCode = null;
-	public final HttpStatusCode getStatusCode()
+	private Integer StatusCode = null;
+	public final Integer getStatusCode()
 	{
 		return StatusCode;
 	}
-	public final void setStatusCode(HttpStatusCode value)
+	public final void setStatusCode(Integer value)
 	{
 		StatusCode = value;
 	}
@@ -35,13 +37,23 @@ public class HttpException extends RuntimeException
 		IsTimedOut = value;
 	}
 
+    private Map<String,String> headers;
+    public final Map<String,String> getHeaders()
+    {
+        return headers;
+    }
+    public final void setHeaders(Map<String,String> value)
+    {
+        headers = value;
+    }
+
 	/** 
 	 Initializes a new instance of the <see cref="HttpException" /> class.
 	 
 	 @param message The message.
 	 @param innerException The inner exception.
 	*/
-	public HttpException(String message, RuntimeException innerException)
+	public HttpException(String message, Exception innerException)
 	{
 		super(message, innerException);
 

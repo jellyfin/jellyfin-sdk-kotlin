@@ -3,6 +3,7 @@ package MediaBrowser;
 import MediaBrowser.ApiInteraction.*;
 import MediaBrowser.ApiInteraction.Device.IDevice;
 import MediaBrowser.ApiInteraction.Android.VolleyHttpClient;
+import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
 import MediaBrowser.ApiInteraction.Serialization.BoonJsonSerializer;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
@@ -62,7 +63,7 @@ public class PublicMethodTests {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 logger.Debug("getPublicSystemInfo_shouldReturnResults: error");
 
@@ -83,7 +84,7 @@ public class PublicMethodTests {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
 
             }

@@ -47,7 +47,7 @@ public class ServerLocatorTest {
             }
 
             @Override
-            public void onError() {
+            public void onError(Exception ex) {
 
                 // Do something with error
                 fail("Server discovery failed");

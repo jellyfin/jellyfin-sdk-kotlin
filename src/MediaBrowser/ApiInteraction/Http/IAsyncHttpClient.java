@@ -1,4 +1,6 @@
-package MediaBrowser.ApiInteraction;
+package MediaBrowser.ApiInteraction.Http;
+
+import MediaBrowser.ApiInteraction.Response;
 
 public interface IAsyncHttpClient {
 

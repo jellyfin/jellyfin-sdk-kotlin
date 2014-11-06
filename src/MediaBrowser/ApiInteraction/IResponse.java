@@ -1,5 +1,5 @@
 package MediaBrowser.ApiInteraction;
 
 public interface IResponse {
-    void onError();
+    void onError(Exception exception);
 }

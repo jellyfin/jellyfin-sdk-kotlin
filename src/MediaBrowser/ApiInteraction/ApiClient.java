@@ -3,8 +3,11 @@ package MediaBrowser.ApiInteraction;
 import MediaBrowser.ApiInteraction.Cryptography.Md5;
 import MediaBrowser.ApiInteraction.Cryptography.Sha1;
 import MediaBrowser.ApiInteraction.Device.IDevice;
+import MediaBrowser.ApiInteraction.Http.HttpRequest;
+import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
 import MediaBrowser.ApiInteraction.Network.INetworkConnection;
 import MediaBrowser.ApiInteraction.WebSocket.ApiWebSocket;
+import MediaBrowser.Model.ApiClient.RemoteLogoutReason;
 import MediaBrowser.Model.ApiClient.ServerInfo;
 import MediaBrowser.Model.Channels.AllChannelMediaQuery;
 import MediaBrowser.Model.Channels.ChannelFeatures;
@@ -23,6 +26,7 @@ import MediaBrowser.Model.Globalization.CountryInfo;
 import MediaBrowser.Model.Globalization.CultureDto;
 import MediaBrowser.Model.LiveTv.*;
 import MediaBrowser.Model.Logging.ILogger;
+import MediaBrowser.Model.Net.HttpException;
 import MediaBrowser.Model.Notifications.NotificationQuery;
 import MediaBrowser.Model.Notifications.NotificationResult;
 import MediaBrowser.Model.Notifications.NotificationsSummary;
@@ -116,13 +120,57 @@ public class ApiClient extends BaseApiClient {
         apiWebSocket.EnsureWebSocket();
     }
 
+    private void OnRemoteLoggedOut(HttpException httpError) {
+
+        RemoteLogoutReason reason = RemoteLogoutReason.GeneralAccesError;
+
+        if (httpError.getHeaders() != null  ){
+
+            String errorCode = httpError.getHeaders().get("X-Application-Error-Code");
+
+            if (StringHelper.EqualsIgnoreCase(errorCode, "ParentalControl")) {
+                reason = RemoteLogoutReason.ParentalControlRestriction;
+            }
+        }
+
+        apiEventListener.onRemoteLoggedOut(this, reason);
+    }
+
+    private void SendRequest(HttpRequest request, final boolean fireGlobalEvents, final Response<String> response)
+    {
+        httpClient.Send(request, new Response<String>(){
+
+            @Override
+            public void onResponse(String stringResponse) {
+
+                response.onResponse(response);
+            }
+
+            @Override
+            public void onError(Exception ex) {
+
+                if (ex instanceof HttpException) {
+
+                    HttpException httpError = (HttpException)ex;
+
+                    if (fireGlobalEvents && httpError.getStatusCode() == 401) {
+
+                        OnRemoteLoggedOut(httpError);
+                    }
+                }
+
+                response.onError(ex);
+            }
+        });
+    }
+
     private void Send(String url, String method, final Response<String> response)
     {
         HttpRequest request = new HttpRequest();
         request.setUrl(url);
         request.setMethod(method);
         request.setRequestHeaders(this.HttpHeaders);
-        httpClient.Send(request, response);
+        SendRequest(request, true, response);
     }
 
     private void Send(String url, String method, String requestContent, String requestContentType, final Response<String> response)
@@ -133,17 +181,21 @@ public class ApiClient extends BaseApiClient {
         request.setRequestHeaders(this.HttpHeaders);
         request.setRequestContent(requestContent);
         request.setRequestContentType(requestContentType);
-        httpClient.Send(request, response);
+        SendRequest(request, true, response);
     }
 
-    private void Send(String url, String method, QueryStringDictionary postData, final Response<String> response)
+    private void Send(String url,
+                      String method,
+                      QueryStringDictionary postData,
+                      boolean fireGlobalEvents,
+                      final Response<String> response)
     {
         HttpRequest request = new HttpRequest();
         request.setUrl(url);
         request.setMethod(method);
         request.setRequestHeaders(this.HttpHeaders);
         request.setPostData(postData);
-        httpClient.Send(request, response);
+        SendRequest(request, fireGlobalEvents, response);
     }
 
     public void GetItemAsync(String id, String userId, final Response<BaseItemDto> response)
@@ -1419,7 +1471,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void DeleteAsync(String url, final EmptyResponse response)
+    private void DeleteAsync(String url, final EmptyResponse response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(url))
         {
@@ -1438,7 +1490,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "DELETE", stringResponse);
     }
 
-    public void PostAsync(String url, final EmptyResponse response)
+    private void PostAsync(String url, final EmptyResponse response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(url))
         {
@@ -1448,17 +1500,20 @@ public class ApiClient extends BaseApiClient {
         PostAsync(url, new QueryStringDictionary(), response);
     }
 
-    public void PostAsync(String url, QueryStringDictionary postBody, final Response<String> response)
+    private void PostAsync(String url,
+                          QueryStringDictionary postBody,
+                          boolean fireGlobalEvents,
+                          final Response<String> response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(url))
         {
             throw new IllegalArgumentException("url");
         }
 
-        Send(url, "POST", postBody, response);
+        Send(url, "POST", postBody, fireGlobalEvents, response);
     }
 
-    public void PostAsync(String url, Object obj, final EmptyResponse response)
+    private void PostAsync(String url, Object obj, final EmptyResponse response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(url))
         {
@@ -1605,7 +1660,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        PostAsync(url, dict, jsonResponse);
+        PostAsync(url, dict, false, jsonResponse);
     }
 
     /// <summary>

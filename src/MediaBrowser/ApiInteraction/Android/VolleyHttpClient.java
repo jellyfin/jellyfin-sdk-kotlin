@@ -1,10 +1,12 @@
 package MediaBrowser.ApiInteraction.Android;
 
-import MediaBrowser.ApiInteraction.HttpHeaders;
-import MediaBrowser.ApiInteraction.HttpRequest;
-import MediaBrowser.ApiInteraction.IAsyncHttpClient;
+import MediaBrowser.ApiInteraction.Http.HttpHeaders;
+import MediaBrowser.ApiInteraction.Http.HttpRequest;
+import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
 import MediaBrowser.ApiInteraction.Response;
+import MediaBrowser.Model.Extensions.StringHelper;
 import MediaBrowser.Model.Logging.ILogger;
+import MediaBrowser.Model.Net.HttpException;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.LruCache;
@@ -12,6 +14,7 @@ import com.android.volley.*;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import okio.Timeout;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -144,6 +147,7 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         String url = request.getUrl();
 
         StringRequest req = new StringRequest(method, url, new com.android.volley.Response.Listener<String>() {
+
             @Override
             public void onResponse(String stringResponse) {
 
@@ -155,7 +159,11 @@ public class VolleyHttpClient implements IAsyncHttpClient {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                if (error instanceof TimeoutError) {
+                String messagePrefix = "VolleyError "+error.getClass().getName()+": ";
+
+                logger.ErrorException(messagePrefix + error.getMessage(), error);
+
+/*                if (error instanceof TimeoutError) {
                     logger.Error("VolleyError TimeoutError: ", error.getMessage());
                 } else if (error instanceof NoConnectionError) {
                     logger.Error("VolleyError NoConnectionError: ", error.getMessage());
@@ -167,9 +175,21 @@ public class VolleyHttpClient implements IAsyncHttpClient {
                     logger.Error("VolleyError NetworkError: ", error.getMessage());
                 } else if (error instanceof ParseError) {
                     logger.Error("VolleyError ParseError: ", error.getMessage());
+                }*/
+
+                HttpException httpException = new HttpException(messagePrefix, error);
+
+                if (error.networkResponse != null) {
+
+                    httpException.setStatusCode(error.networkResponse.statusCode);
+                    httpException.setHeaders(error.networkResponse.headers);
                 }
 
-                response.onError();
+                if (error instanceof TimeoutError) {
+                    httpException.setIsTimedOut(true);
+                }
+
+                response.onError(httpException);
             }
         }
         ){
@@ -217,6 +237,17 @@ public class VolleyHttpClient implements IAsyncHttpClient {
                 }
 
                 return postContent.getBytes();
+            }
+
+            @Override
+            protected com.android.volley.Response<String> parseNetworkResponse(NetworkResponse response) {
+
+                // This is a hack to make volley decode in UTF-8
+                if (StringHelper.EqualsIgnoreCase(response.headers.get("Content-Type"), "application/json")) {
+                    response.headers.put("Content-Type", "application/json; charset=UTF-8");
+                }
+
+                return super.parseNetworkResponse(response);
             }
         };
 

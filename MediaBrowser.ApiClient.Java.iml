@@ -7,7 +7,6 @@
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/src/MediaBrowser/Model/Events" />
       <excludeFolder url="file://$MODULE_DIR$/src/MediaBrowser/Model/IO" />
-      <excludeFolder url="file://$MODULE_DIR$/src/MediaBrowser/Model/Net" />
     </content>
     <orderEntry type="library" exported="" name="junit:junit:4.11" level="project" />
     <orderEntry type="inheritedJdk" />

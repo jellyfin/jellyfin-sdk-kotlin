@@ -1,6 +1,7 @@
 package MediaBrowser.ApiInteraction;
 
 import MediaBrowser.ApiInteraction.Device.IDevice;
+import MediaBrowser.ApiInteraction.Http.HttpHeaders;
 import MediaBrowser.Model.ApiClient.ApiHelpers;
 import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.Drawing.*;
@@ -11,7 +12,6 @@ import MediaBrowser.Model.Logging.*;
 import MediaBrowser.Model.Querying.*;
 import MediaBrowser.Model.Serialization.*;
 
-import java.lang.reflect.ParameterizedType;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -279,7 +279,7 @@ public abstract class BaseApiClient implements IDisposable
 		return GetApiUrl(handler, new QueryStringDictionary());
 	}
 
-    protected  HttpHeaders HttpHeaders = new HttpHeaders();
+    protected MediaBrowser.ApiInteraction.Http.HttpHeaders HttpHeaders = new HttpHeaders();
 
     public void SetAuthenticationInfo(String accessToken, String userId)
     {
