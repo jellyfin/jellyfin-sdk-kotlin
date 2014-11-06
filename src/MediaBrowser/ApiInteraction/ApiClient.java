@@ -48,6 +48,8 @@ import MediaBrowser.Model.Users.AuthenticationResult;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Observable;
 
 public class ApiClient extends BaseApiClient {
@@ -1246,7 +1248,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        Send(url, "POST", dict, jsonResponse);
+        Send(url, "POST", dict, true, jsonResponse);
     }
 
     /// <summary>
