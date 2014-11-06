@@ -12,11 +12,6 @@ public class Response<T> implements IResponse {
 
     }
 
-    public void onResponse(Response<String> response)
-    {
-
-    }
-
     public void onResponse(T response)
     {
 

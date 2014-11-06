@@ -145,7 +145,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String stringResponse) {
 
-                response.onResponse(response);
+                response.onResponse(stringResponse);
             }
 
             @Override
