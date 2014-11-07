@@ -1,9 +1,9 @@
 package mediabrowser.apiinteraction.discovery;
 
 import mediabrowser.apiinteraction.Response;
-import mediabrowser.model.ApiClient.ServerDiscoveryInfo;
-import mediabrowser.model.Logging.ILogger;
-import mediabrowser.model.Serialization.IJsonSerializer;
+import mediabrowser.model.apiclient.ServerDiscoveryInfo;
+import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.serialization.IJsonSerializer;
 
 import java.net.*;
 import java.util.Enumeration;

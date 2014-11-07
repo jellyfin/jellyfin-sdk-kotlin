@@ -1,7 +1,7 @@
 package mediabrowser.apiinteraction.android;
 
-import mediabrowser.model.ApiClient.ServerCredentials;
-import mediabrowser.model.Serialization.IJsonSerializer;
+import mediabrowser.model.apiclient.ServerCredentials;
+import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.apiinteraction.ICredentialProvider;
 import android.content.Context;
 import android.content.SharedPreferences;

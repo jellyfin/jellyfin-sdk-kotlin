@@ -2,15 +2,15 @@ package mediabrowser.apiinteraction;
 
 import mediabrowser.apiinteraction.device.IDevice;
 import mediabrowser.apiinteraction.http.HttpHeaders;
-import mediabrowser.model.ApiClient.ApiHelpers;
-import mediabrowser.model.Extensions.*;
-import mediabrowser.model.Drawing.*;
-import mediabrowser.model.Dto.*;
-import mediabrowser.model.Entities.*;
-import mediabrowser.model.LiveTv.*;
-import mediabrowser.model.Logging.*;
-import mediabrowser.model.Querying.*;
-import mediabrowser.model.Serialization.*;
+import mediabrowser.model.apiclient.ApiHelpers;
+import mediabrowser.model.extensions.*;
+import mediabrowser.model.drawing.*;
+import mediabrowser.model.dto.*;
+import mediabrowser.model.entities.*;
+import mediabrowser.model.livetv.*;
+import mediabrowser.model.logging.*;
+import mediabrowser.model.querying.*;
+import mediabrowser.model.serialization.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -1,4 +1,4 @@
-package mediabrowser.model.Extensions;
+package mediabrowser.model.extensions;
 
 /** 
  Isolating these helpers allow this entire project to be easily converted to Java

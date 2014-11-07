@@ -4,7 +4,7 @@ import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.device.IDevice;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.apiinteraction.tasks.IProgress;
-import mediabrowser.model.Devices.LocalFileInfo;
+import mediabrowser.model.devices.LocalFileInfo;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;

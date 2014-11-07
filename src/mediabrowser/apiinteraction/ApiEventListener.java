@@ -1,9 +1,9 @@
 package mediabrowser.apiinteraction;
 
-import mediabrowser.model.ApiClient.RemoteLogoutReason;
-import mediabrowser.model.ApiClient.SessionUpdatesEventArgs;
-import mediabrowser.model.Dto.UserDto;
-import mediabrowser.model.Session.*;
+import mediabrowser.model.apiclient.RemoteLogoutReason;
+import mediabrowser.model.apiclient.SessionUpdatesEventArgs;
+import mediabrowser.model.dto.UserDto;
+import mediabrowser.model.session.*;
 
 public class ApiEventListener {
 

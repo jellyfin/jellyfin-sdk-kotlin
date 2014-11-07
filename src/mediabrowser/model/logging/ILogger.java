@@ -1,83 +1,65 @@
 package mediabrowser.model.logging;
 
-/** 
+/**
  Interface ILogger
-*/
+ */
 public interface ILogger
 {
-	/** 
-	 Infoes the specified message.
-	 
-	 @param message The message.
-	 @param paramList The param list.
-	*/
-	void Info(String message, Object... paramList);
+    /**
+     Infoes the specified message.
 
-	/** 
-	 Errors the specified message.
-	 
-	 @param message The message.
-	 @param paramList The param list.
-	*/
-	void Error(String message, Object... paramList);
+     @param message The message.
+     @param paramList The param list.
+     */
+    void Info(String message, Object... paramList);
 
-	/** 
-	 Warns the specified message.
-	 
-	 @param message The message.
-	 @param paramList The param list.
-	*/
-	void Warn(String message, Object... paramList);
+    /**
+     Errors the specified message.
 
-	/** 
-	 Debugs the specified message.
-	 
-	 @param message The message.
-	 @param paramList The param list.
-	*/
-	void Debug(String message, Object... paramList);
+     @param message The message.
+     @param paramList The param list.
+     */
+    void Error(String message, Object... paramList);
 
-	/** 
-	 Fatals the specified message.
-	 
-	 @param message The message.
-	 @param paramList The param list.
-	*/
-	void Fatal(String message, Object... paramList);
+    /**
+     Warns the specified message.
 
-	/** 
-	 Fatals the exception.
-	 
-	 @param message The message.
-	 @param exception The exception.
-	 @param paramList The param list.
-	*/
-	void FatalException(String message, RuntimeException exception, Object... paramList);
+     @param message The message.
+     @param paramList The param list.
+     */
+    void Warn(String message, Object... paramList);
 
-	/** 
-	 Logs the exception.
-	 
-	 @param message The message.
-	 @param exception The exception.
-	 @param paramList The param list.
-	*/
-	void ErrorException(String message, RuntimeException exception, Object... paramList);
+    /**
+     Debugs the specified message.
 
-	/** 
-	 Logs the multiline.
-	 
-	 @param message The message.
-	 @param severity The severity.
-	 @param additionalContent Content of the additional.
-	*/
-	void LogMultiline(String message, LogSeverity severity, StringBuilder additionalContent);
+     @param message The message.
+     @param paramList The param list.
+     */
+    void Debug(String message, Object... paramList);
 
-	/** 
-	 Logs the specified severity.
-	 
-	 @param severity The severity.
-	 @param message The message.
-	 @param paramList The parameter list.
-	*/
-	void Log(LogSeverity severity, String message, Object... paramList);
+    /**
+     Fatals the specified message.
+
+     @param message The message.
+     @param paramList The param list.
+     */
+    void Fatal(String message, Object... paramList);
+
+    /**
+     Fatals the exception.
+
+     @param message The message.
+     @param exception The exception.
+     @param paramList The param list.
+     */
+    void FatalException(String message, Exception exception, Object... paramList);
+
+    /**
+     Logs the exception.
+
+     @param message The message.
+     @param exception The exception.
+     @param paramList The param list.
+     */
+    void ErrorException(String message, Exception exception, Object... paramList);
 }

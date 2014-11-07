@@ -1,6 +1,6 @@
 package mediabrowser.apiinteraction.serialization;
 
-import mediabrowser.model.Serialization.IJsonSerializer;
+import mediabrowser.model.serialization.IJsonSerializer;
 
 import org.boon.json.JsonParserAndMapper;
 import org.boon.json.JsonParserFactory;

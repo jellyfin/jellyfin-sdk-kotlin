@@ -1,6 +1,6 @@
 package mediabrowser.apiinteraction.android;
 
-import mediabrowser.model.Serialization.IJsonSerializer;
+import mediabrowser.model.serialization.IJsonSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

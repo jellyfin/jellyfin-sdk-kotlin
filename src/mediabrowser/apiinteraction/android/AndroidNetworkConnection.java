@@ -3,7 +3,7 @@ package mediabrowser.apiinteraction.android;
 import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.apiinteraction.network.INetworkConnection;
 import mediabrowser.apiinteraction.NetworkStatus;
-import mediabrowser.model.Logging.ILogger;
+import mediabrowser.model.logging.ILogger;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;

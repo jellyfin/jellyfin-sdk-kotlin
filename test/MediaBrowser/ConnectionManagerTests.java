@@ -1,15 +1,15 @@
-package MediaBrowser;
+package mediabrowser;
 
-import MediaBrowser.apiinteraction.*;
-import MediaBrowser.apiinteraction.discovery.ServerLocator;
-import MediaBrowser.apiinteraction.android.VolleyHttpClient;
-import MediaBrowser.apiinteraction.android.AndroidNetworkConnection;
-import MediaBrowser.apiinteraction.http.IAsyncHttpClient;
-import MediaBrowser.apiinteraction.serialization.BoonJsonSerializer;
-import MediaBrowser.Model.Logging.ILogger;
-import MediaBrowser.Model.Serialization.IJsonSerializer;
-import MediaBrowser.Model.Session.ClientCapabilities;
+import mediabrowser.apiinteraction.*;
+import mediabrowser.apiinteraction.discovery.ServerLocator;
+import mediabrowser.apiinteraction.android.VolleyHttpClient;
+import mediabrowser.apiinteraction.android.AndroidNetworkConnection;
+import mediabrowser.apiinteraction.http.IAsyncHttpClient;
+import mediabrowser.apiinteraction.serialization.BoonJsonSerializer;
 import android.content.Context;
+import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.serialization.IJsonSerializer;
+import mediabrowser.model.session.ClientCapabilities;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,7 +37,7 @@ public class ConnectionManagerTests {
 
         ApiEventListener apiEventListener = new ApiEventListener();
 
-        connectionManager = new ConnectionManager(new FakeCredentialProvider(),
+        connectionManager = new ConnectionManager(new mediabrowser.FakeCredentialProvider(),
                 new AndroidNetworkConnection(context, logger),
                 jsonSerializer,
                 logger,
@@ -45,7 +45,7 @@ public class ConnectionManagerTests {
                 volleyHttpClient,
                 "App Name",
                 "App Version",
-                new FakeDevice(),
+                new mediabrowser.FakeDevice(),
                 capabilities,
                 apiEventListener);
     }

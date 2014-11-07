@@ -1,7 +1,7 @@
 package mediabrowser.model.results;
 
-import mediabrowser.model.LiveTv.ChannelInfoDto;
-import mediabrowser.model.Querying.QueryResult;
+import mediabrowser.model.livetv.ChannelInfoDto;
+import mediabrowser.model.querying.QueryResult;
 
 /**
  * Created by Luke on 10/22/2014.

@@ -1,6 +1,6 @@
 package mediabrowser.apiinteraction;
 
-import mediabrowser.model.Logging.ILogger;
+import mediabrowser.model.logging.ILogger;
 
 public class ConsoleLogger implements ILogger {
 

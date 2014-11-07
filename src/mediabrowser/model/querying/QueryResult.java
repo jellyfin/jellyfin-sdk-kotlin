@@ -37,6 +37,6 @@ public class QueryResult<T>
 	*/
 	public QueryResult()
 	{
-		setItems(new T[] { });
+
 	}
 }

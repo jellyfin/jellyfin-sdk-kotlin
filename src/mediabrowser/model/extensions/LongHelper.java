@@ -1,4 +1,4 @@
-package mediabrowser.model.Extensions;
+package mediabrowser.model.extensions;
 
 public class LongHelper
 {

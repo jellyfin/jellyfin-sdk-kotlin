@@ -1,6 +1,6 @@
 package mediabrowser.apiinteraction;
 
-import mediabrowser.model.ApiClient.ServerCredentials;
+import mediabrowser.model.apiclient.ServerCredentials;
 
 public interface ICredentialProvider {
 

@@ -1114,12 +1114,12 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The air days.</value>
 	*/
-	private java.util.ArrayList<DayOfWeek> AirDays;
-	public final java.util.ArrayList<DayOfWeek> getAirDays()
+	private java.util.ArrayList<String> AirDays;
+	public final java.util.ArrayList<String> getAirDays()
 	{
 		return AirDays;
 	}
-	public final void setAirDays(java.util.ArrayList<DayOfWeek> value)
+	public final void setAirDays(java.util.ArrayList<String> value)
 	{
 		AirDays = value;
 	}

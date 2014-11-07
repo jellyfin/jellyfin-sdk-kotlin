@@ -6,12 +6,12 @@ import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.apiinteraction.tasks.IProgress;
 import mediabrowser.apiinteraction.Response;
 import mediabrowser.apiinteraction.tasks.Progress;
-import mediabrowser.model.Devices.ContentUploadHistory;
-import mediabrowser.model.Devices.DevicesOptions;
-import mediabrowser.model.Devices.LocalFileInfo;
-import mediabrowser.model.Extensions.ListHelper;
-import mediabrowser.model.Extensions.StringHelper;
-import mediabrowser.model.Logging.ILogger;
+import mediabrowser.model.devices.ContentUploadHistory;
+import mediabrowser.model.devices.DevicesOptions;
+import mediabrowser.model.devices.LocalFileInfo;
+import mediabrowser.model.extensions.ListHelper;
+import mediabrowser.model.extensions.StringHelper;
+import mediabrowser.model.logging.ILogger;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,7 @@
-package MediaBrowser;
+package mediabrowser;
 
-import MediaBrowser.apiinteraction.ICredentialProvider;
-import MediaBrowser.Model.ApiClient.ServerCredentials;
+import mediabrowser.apiinteraction.ICredentialProvider;
+import mediabrowser.model.apiclient.ServerCredentials;
 
 public class FakeCredentialProvider implements ICredentialProvider {
 

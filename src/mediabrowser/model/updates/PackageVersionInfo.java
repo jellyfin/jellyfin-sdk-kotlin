@@ -53,18 +53,18 @@ public class PackageVersionInfo
 	/** 
 	 The _version
 	*/
-	private Version _version;
+	private String _version;
 	/** 
 	 Gets or sets the version.
 	 Had to make this an interpreted property since Protobuf can't handle Version
 	 
 	 <value>The version.</value>
 	*/
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public Version version
-	public final Version getversion()
+    //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+    //ORIGINAL LINE: [IgnoreDataMember] public Version version
+	public final String getversion()
 	{
-		return (_version != null) ? _version : (_version = new Version(ValueOrDefault(getversionStr(), "0.0.0.1")));
+		return _version;
 	}
 
 	/** 

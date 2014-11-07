@@ -579,8 +579,5 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setUICulture("en-us");
 
 		setPeopleMetadataOptions(new PeopleMetadataOptions());
-
-		setInsecureApps6(new String[] {"Roku", "Chromecast", "iOS", "Windows Phone", "Windows RT", "Xbmc", "Unknown app", "MediaPortal", "Media Portal", "iPad", "iPhone"});
-		setMetadataOptions(new MetadataOptions[] {tempVar, tempVar2, tempVar3, tempVar4, tempVar5, tempVar6});
 	}
 }

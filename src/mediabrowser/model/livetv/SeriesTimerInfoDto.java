@@ -56,12 +56,12 @@ public class SeriesTimerInfoDto extends BaseTimerInfoDto
 	 
 	 <value>The days.</value>
 	*/
-	private java.util.ArrayList<DayOfWeek> Days;
-	public final java.util.ArrayList<DayOfWeek> getDays()
+	private java.util.ArrayList<String> Days;
+	public final java.util.ArrayList<String> getDays()
 	{
 		return Days;
 	}
-	public final void setDays(java.util.ArrayList<DayOfWeek> value)
+	public final void setDays(java.util.ArrayList<String> value)
 	{
 		Days = value;
 	}
@@ -111,6 +111,6 @@ public class SeriesTimerInfoDto extends BaseTimerInfoDto
 	public SeriesTimerInfoDto()
 	{
 		setImageTags(new java.util.HashMap<ImageType, String>());
-		setDays(new java.util.ArrayList<DayOfWeek>());
+		setDays(new java.util.ArrayList<String>());
 	}
 }

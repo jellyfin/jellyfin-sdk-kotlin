@@ -3,9 +3,9 @@ package mediabrowser.apiinteraction.android;
 import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.discovery.IServerLocator;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
-import mediabrowser.model.Logging.ILogger;
-import mediabrowser.model.Serialization.IJsonSerializer;
-import mediabrowser.model.Session.ClientCapabilities;
+import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.serialization.IJsonSerializer;
+import mediabrowser.model.session.ClientCapabilities;
 import android.content.Context;
 
 public class AndroidConnectionManager extends ConnectionManager {

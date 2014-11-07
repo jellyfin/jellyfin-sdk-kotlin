@@ -4,9 +4,9 @@ import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.ApiEventListener;
 import mediabrowser.apiinteraction.device.IDevice;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
-import mediabrowser.model.Logging.ILogger;
-import mediabrowser.model.Serialization.IJsonSerializer;
-import mediabrowser.model.Session.ClientCapabilities;
+import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.serialization.IJsonSerializer;
+import mediabrowser.model.session.ClientCapabilities;
 import com.android.volley.toolbox.ImageLoader;
 
 public class AndroidApiClient extends ApiClient {

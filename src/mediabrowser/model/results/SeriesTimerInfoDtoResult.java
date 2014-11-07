@@ -1,8 +1,7 @@
 package mediabrowser.model.results;
 
-import mediabrowser.model.LiveTv.SeriesTimerInfoDto;
-import mediabrowser.model.LiveTv.TimerInfoDto;
-import mediabrowser.model.Querying.QueryResult;
+import mediabrowser.model.livetv.SeriesTimerInfoDto;
+import mediabrowser.model.querying.QueryResult;
 
 /**
  * Created by Luke on 10/22/2014.

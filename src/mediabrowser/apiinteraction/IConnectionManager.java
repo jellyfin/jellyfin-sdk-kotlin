@@ -1,7 +1,7 @@
 package mediabrowser.apiinteraction;
 
-import mediabrowser.model.ApiClient.ServerInfo;
-import mediabrowser.model.Dto.IHasServerId;
+import mediabrowser.model.apiclient.ServerInfo;
+import mediabrowser.model.dto.IHasServerId;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;

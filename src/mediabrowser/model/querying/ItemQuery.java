@@ -357,12 +357,12 @@ public class ItemQuery
 	 
 	 <value>The air days.</value>
 	*/
-	private DayOfWeek[] AirDays;
-	public final DayOfWeek[] getAirDays()
+	private String[] AirDays;
+	public final String[] getAirDays()
 	{
 		return AirDays;
 	}
-	public final void setAirDays(DayOfWeek[] value)
+	public final void setAirDays(String[] value)
 	{
 		AirDays = value;
 	}
@@ -769,7 +769,7 @@ public class ItemQuery
 		setArtists(new String[] { });
 
 		setImageTypes(new ImageType[] { });
-		setAirDays(new DayOfWeek[] { });
+		setAirDays(new String[] { });
 		setSeriesStatuses(new SeriesStatus[] { });
 	}
 }

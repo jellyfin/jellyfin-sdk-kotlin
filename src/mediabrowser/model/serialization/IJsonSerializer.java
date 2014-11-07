@@ -1,4 +1,4 @@
-package mediaBrowser.model.serialization;
+package mediabrowser.model.serialization;
 
 import java.io.InputStream;
 

@@ -3,7 +3,7 @@ package mediabrowser.apiinteraction.device;
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.apiinteraction.tasks.IProgress;
-import mediabrowser.model.Devices.LocalFileInfo;
+import mediabrowser.model.devices.LocalFileInfo;
 
 import java.util.ArrayList;
 import java.util.Observable;

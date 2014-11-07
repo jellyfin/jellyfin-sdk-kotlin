@@ -1,15 +1,15 @@
-package MediaBrowser;
+package mediabrowser;
 
-import MediaBrowser.apiinteraction.*;
-import MediaBrowser.apiinteraction.device.IDevice;
-import MediaBrowser.apiinteraction.android.VolleyHttpClient;
-import MediaBrowser.apiinteraction.http.IAsyncHttpClient;
-import MediaBrowser.apiinteraction.serialization.BoonJsonSerializer;
-import MediaBrowser.Model.Logging.ILogger;
-import MediaBrowser.Model.Serialization.IJsonSerializer;
-import MediaBrowser.Model.Session.ClientCapabilities;
-import MediaBrowser.Model.System.PublicSystemInfo;
-import MediaBrowser.Model.Users.AuthenticationResult;
+import mediabrowser.apiinteraction.*;
+import mediabrowser.apiinteraction.device.IDevice;
+import mediabrowser.apiinteraction.android.VolleyHttpClient;
+import mediabrowser.apiinteraction.http.IAsyncHttpClient;
+import mediabrowser.apiinteraction.serialization.BoonJsonSerializer;
+import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.serialization.IJsonSerializer;
+import mediabrowser.model.session.ClientCapabilities;
+import mediabrowser.model.system.PublicSystemInfo;
+import mediabrowser.model.users.AuthenticationResult;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,7 +37,7 @@ public class PublicMethodTests {
 
         ApiEventListener apiEventListener = new ApiEventListener();
 
-        IDevice device = new FakeDevice();
+        IDevice device = new mediabrowser.FakeDevice();
 
         IJsonSerializer jsonSerializer = new BoonJsonSerializer();
 

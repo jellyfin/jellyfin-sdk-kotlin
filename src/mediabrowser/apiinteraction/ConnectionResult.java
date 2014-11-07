@@ -1,7 +1,7 @@
 package mediabrowser.apiinteraction;
 
-import mediabrowser.model.ApiClient.*;
-import mediabrowser.model.Connect.ConnectUser;
+import mediabrowser.model.apiclient.*;
+import mediabrowser.model.connect.ConnectUser;
 
 public class ConnectionResult
 {

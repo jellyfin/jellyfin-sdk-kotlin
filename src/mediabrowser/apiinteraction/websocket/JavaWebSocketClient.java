@@ -1,6 +1,6 @@
 package mediabrowser.apiinteraction.websocket;
 
-import mediabrowser.model.Logging.ILogger;
+import mediabrowser.model.logging.ILogger;
 import org.java_websocket.WebSocket;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft;

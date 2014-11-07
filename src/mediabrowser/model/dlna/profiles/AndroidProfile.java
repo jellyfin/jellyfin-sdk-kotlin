@@ -1,6 +1,6 @@
 package mediabrowser.model.dlna.profiles;
 
-import mediabrowser.model.Dlna.*;
+import mediabrowser.model.dlna.*;
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlRoot("Profile")] public class AndroidProfile : DefaultProfile

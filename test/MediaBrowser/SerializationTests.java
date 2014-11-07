@@ -1,11 +1,11 @@
-package MediaBrowser;
+package mediabrowser;
 
-import MediaBrowser.apiinteraction.ConsoleLogger;
-import MediaBrowser.apiinteraction.serialization.BoonJsonSerializer;
-import MediaBrowser.Model.Dto.BaseItemDto;
-import MediaBrowser.Model.Logging.ILogger;
-import MediaBrowser.Model.Querying.ItemsResult;
-import MediaBrowser.Model.Serialization.IJsonSerializer;
+import mediabrowser.apiinteraction.ConsoleLogger;
+import mediabrowser.apiinteraction.serialization.BoonJsonSerializer;
+import mediabrowser.model.dto.BaseItemDto;
+import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.querying.ItemsResult;
+import mediabrowser.model.serialization.IJsonSerializer;
 
 import org.junit.Before;
 import org.junit.Test;

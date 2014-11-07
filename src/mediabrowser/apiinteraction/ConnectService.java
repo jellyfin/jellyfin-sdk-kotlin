@@ -3,9 +3,9 @@ package mediabrowser.apiinteraction;
 import mediabrowser.apiinteraction.cryptography.Md5;
 import mediabrowser.apiinteraction.http.HttpRequest;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
-import mediabrowser.model.Connect.*;
-import mediabrowser.model.Logging.ILogger;
-import mediabrowser.model.Serialization.IJsonSerializer;
+import mediabrowser.model.connect.*;
+import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.serialization.IJsonSerializer;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
