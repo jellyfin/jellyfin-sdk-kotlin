@@ -1,8 +1,8 @@
-package MediaBrowser.ApiInteraction.Android;
+package MediaBrowser.apiinteraction.android;
 
-import MediaBrowser.ApiInteraction.EmptyResponse;
-import MediaBrowser.ApiInteraction.Network.INetworkConnection;
-import MediaBrowser.ApiInteraction.NetworkStatus;
+import MediaBrowser.apiinteraction.EmptyResponse;
+import MediaBrowser.apiinteraction.network.INetworkConnection;
+import MediaBrowser.apiinteraction.NetworkStatus;
 import MediaBrowser.Model.Logging.ILogger;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -22,7 +22,7 @@ public class AndroidNetworkConnection implements INetworkConnection {
     }
 
     @Override
-    public void SendWakeOnLan(String macAddress, int port, EmptyResponse response) throws IOException
+    public void SendWakeOnLan(String macAddress, int port, EmptyResponse response)
     {
         logger.Debug("Sending WakeOnLan over broadcast address. Mac: %s, Port: %d", macAddress, port);
 
@@ -35,16 +35,22 @@ public class AndroidNetworkConnection implements INetworkConnection {
             System.arraycopy(macBytes, 0, bytes, i, macBytes.length);
         }
 
-        DatagramPacket packet = new DatagramPacket(bytes, bytes.length);
-        DatagramSocket socket = new DatagramSocket(port);
-        socket.setBroadcast(true);
-        socket.send(packet);
-        socket.close();
+        try {
+            DatagramPacket packet = new DatagramPacket(bytes, bytes.length);
+            DatagramSocket socket = new DatagramSocket(port);
+            socket.setBroadcast(true);
+            socket.send(packet);
+            socket.close();
+
+            response.onResponse();
+        }
+        catch (Exception ex){
+            response.onError(ex);
+        }
     }
 
     @Override
     public void SendWakeOnLan(String macAddress, String ipAddress, int port, EmptyResponse response)
-            throws IOException
     {
         logger.Debug("Sending WakeOnLan to %s. Mac: %s, Port: %d", ipAddress, macAddress, port);
 
@@ -57,11 +63,18 @@ public class AndroidNetworkConnection implements INetworkConnection {
             System.arraycopy(macBytes, 0, bytes, i, macBytes.length);
         }
 
-        InetAddress address = InetAddress.getByName(ipAddress);
-        DatagramPacket packet = new DatagramPacket(bytes, bytes.length, address, port);
-        DatagramSocket socket = new DatagramSocket();
-        socket.send(packet);
-        socket.close();
+        try {
+            InetAddress address = InetAddress.getByName(ipAddress);
+            DatagramPacket packet = new DatagramPacket(bytes, bytes.length, address, port);
+            DatagramSocket socket = new DatagramSocket();
+            socket.send(packet);
+            socket.close();
+
+            response.onResponse();
+        }
+        catch (Exception ex){
+            response.onError(ex);
+        }
     }
 
     @Override

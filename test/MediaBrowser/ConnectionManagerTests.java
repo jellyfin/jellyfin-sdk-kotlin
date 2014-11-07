@@ -1,11 +1,11 @@
 package MediaBrowser;
 
-import MediaBrowser.ApiInteraction.*;
-import MediaBrowser.ApiInteraction.Discovery.ServerLocator;
-import MediaBrowser.ApiInteraction.Android.VolleyHttpClient;
-import MediaBrowser.ApiInteraction.Android.AndroidNetworkConnection;
-import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
-import MediaBrowser.ApiInteraction.Serialization.BoonJsonSerializer;
+import MediaBrowser.apiinteraction.*;
+import MediaBrowser.apiinteraction.discovery.ServerLocator;
+import MediaBrowser.apiinteraction.android.VolleyHttpClient;
+import MediaBrowser.apiinteraction.android.AndroidNetworkConnection;
+import MediaBrowser.apiinteraction.http.IAsyncHttpClient;
+import MediaBrowser.apiinteraction.serialization.BoonJsonSerializer;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.ClientCapabilities;

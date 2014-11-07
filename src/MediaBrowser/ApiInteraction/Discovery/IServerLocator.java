@@ -1,6 +1,6 @@
-package MediaBrowser.ApiInteraction.Discovery;
+package MediaBrowser.apiinteraction.discovery;
 
-import MediaBrowser.ApiInteraction.Response;
+import MediaBrowser.apiinteraction.Response;
 import MediaBrowser.Model.ApiClient.ServerDiscoveryInfo;
 
 public interface IServerLocator {

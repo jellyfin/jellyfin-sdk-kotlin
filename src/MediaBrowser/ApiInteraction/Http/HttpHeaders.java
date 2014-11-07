@@ -1,4 +1,4 @@
-package MediaBrowser.ApiInteraction.Http;
+package MediaBrowser.apiinteraction.http;
 
 public class HttpHeaders extends java.util.HashMap<String,String>
 {

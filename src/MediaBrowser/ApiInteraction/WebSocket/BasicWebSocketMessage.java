@@ -1,4 +1,4 @@
-package MediaBrowser.ApiInteraction.WebSocket;
+package MediaBrowser.apiinteraction.websocket;
 
 public class BasicWebSocketMessage {
 

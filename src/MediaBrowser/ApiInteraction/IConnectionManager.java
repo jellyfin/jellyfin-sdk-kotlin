@@ -1,7 +1,6 @@
-package MediaBrowser.ApiInteraction;
+package MediaBrowser.apiinteraction;
 
 import MediaBrowser.Model.ApiClient.ServerInfo;
-import MediaBrowser.Model.Dto.BaseItemDto;
 import MediaBrowser.Model.Dto.IHasServerId;
 
 import java.io.UnsupportedEncodingException;

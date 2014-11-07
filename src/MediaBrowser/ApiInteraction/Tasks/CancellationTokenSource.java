@@ -1,4 +1,4 @@
-package MediaBrowser.ApiInteraction.Tasks;
+package MediaBrowser.apiinteraction.tasks;
 
 import org.apache.http.annotation.ThreadSafe;
 

@@ -1,8 +1,6 @@
-package MediaBrowser.ApiInteraction;
+package MediaBrowser.apiinteraction;
 
 import MediaBrowser.Model.Logging.ILogger;
-import MediaBrowser.Model.Logging.LogSeverity;
-import android.util.Log;
 
 public class ConsoleLogger implements ILogger {
 

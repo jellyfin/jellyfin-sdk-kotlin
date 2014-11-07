@@ -1,6 +1,6 @@
-package MediaBrowser.ApiInteraction.Discovery;
+package MediaBrowser.apiinteraction.discovery;
 
-import MediaBrowser.ApiInteraction.Response;
+import MediaBrowser.apiinteraction.Response;
 import MediaBrowser.Model.ApiClient.ServerDiscoveryInfo;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
@@ -103,7 +103,7 @@ public class ServerLocator implements IServerLocator {
             //Close the port!
             c.close();
 
-        } catch (IOException ex) {
+        } catch (Exception ex) {
 
             logger.ErrorException("Error finding servers", ex);
 

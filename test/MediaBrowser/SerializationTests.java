@@ -1,7 +1,7 @@
 package MediaBrowser;
 
-import MediaBrowser.ApiInteraction.ConsoleLogger;
-import MediaBrowser.ApiInteraction.Serialization.BoonJsonSerializer;
+import MediaBrowser.apiinteraction.ConsoleLogger;
+import MediaBrowser.apiinteraction.serialization.BoonJsonSerializer;
 import MediaBrowser.Model.Dto.BaseItemDto;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Querying.ItemsResult;

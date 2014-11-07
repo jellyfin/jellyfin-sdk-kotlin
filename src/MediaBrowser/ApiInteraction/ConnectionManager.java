@@ -1,11 +1,11 @@
-package MediaBrowser.ApiInteraction;
+package MediaBrowser.apiinteraction;
 
-import MediaBrowser.ApiInteraction.Device.IDevice;
-import MediaBrowser.ApiInteraction.Discovery.IServerLocator;
-import MediaBrowser.ApiInteraction.Http.HttpHeaders;
-import MediaBrowser.ApiInteraction.Http.HttpRequest;
-import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
-import MediaBrowser.ApiInteraction.Network.INetworkConnection;
+import MediaBrowser.apiinteraction.device.IDevice;
+import MediaBrowser.apiinteraction.discovery.IServerLocator;
+import MediaBrowser.apiinteraction.http.HttpHeaders;
+import MediaBrowser.apiinteraction.http.HttpRequest;
+import MediaBrowser.apiinteraction.http.IAsyncHttpClient;
+import MediaBrowser.apiinteraction.network.INetworkConnection;
 import MediaBrowser.Model.ApiClient.*;
 import MediaBrowser.Model.Connect.*;
 import MediaBrowser.Model.Dto.IHasServerId;
@@ -459,7 +459,6 @@ public class ConnectionManager implements IConnectionManager {
 
                 OnFailedConnection(response);
             }
-
         });
     }
 
@@ -936,7 +935,7 @@ public class ConnectionManager implements IConnectionManager {
 
         for(WakeOnLanInfo wakeOnLanInfo : wakeList){
 
-            WakeServer(info, new EmptyResponse(){
+            WakeServer(wakeOnLanInfo, new EmptyResponse(){
 
                 private void OnServerDone(){
                     synchronized(doneList) {
@@ -964,7 +963,7 @@ public class ConnectionManager implements IConnectionManager {
         }
     }
 
-    private void WakeServer(WakeOnLanInfo info, EmptyResponse response) throws IOException {
+    private void WakeServer(WakeOnLanInfo info, EmptyResponse response) {
 
         _networkConnectivity.SendWakeOnLan(info.getMacAddress(), info.getPort(), response);
     }

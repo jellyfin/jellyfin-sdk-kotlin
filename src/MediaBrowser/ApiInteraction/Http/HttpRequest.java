@@ -1,6 +1,6 @@
-package MediaBrowser.ApiInteraction.Http;
+package MediaBrowser.apiinteraction.http;
 
-import MediaBrowser.ApiInteraction.QueryStringDictionary;
+import MediaBrowser.apiinteraction.QueryStringDictionary;
 
 public class HttpRequest
 {

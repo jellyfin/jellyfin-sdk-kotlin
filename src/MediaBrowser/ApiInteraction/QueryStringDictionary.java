@@ -1,6 +1,4 @@
-package MediaBrowser.ApiInteraction;
-
-import tangible.*;
+package MediaBrowser.apiinteraction;
 
 import java.util.ArrayList;
 

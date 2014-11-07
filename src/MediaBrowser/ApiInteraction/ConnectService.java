@@ -1,8 +1,8 @@
-package MediaBrowser.ApiInteraction;
+package MediaBrowser.apiinteraction;
 
-import MediaBrowser.ApiInteraction.Cryptography.Md5;
-import MediaBrowser.ApiInteraction.Http.HttpRequest;
-import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
+import MediaBrowser.apiinteraction.cryptography.Md5;
+import MediaBrowser.apiinteraction.http.HttpRequest;
+import MediaBrowser.apiinteraction.http.IAsyncHttpClient;
 import MediaBrowser.Model.Connect.*;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Serialization.IJsonSerializer;

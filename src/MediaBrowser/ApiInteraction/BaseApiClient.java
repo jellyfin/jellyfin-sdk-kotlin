@@ -1,7 +1,7 @@
-package MediaBrowser.ApiInteraction;
+package MediaBrowser.apiinteraction;
 
-import MediaBrowser.ApiInteraction.Device.IDevice;
-import MediaBrowser.ApiInteraction.Http.HttpHeaders;
+import MediaBrowser.apiinteraction.device.IDevice;
+import MediaBrowser.apiinteraction.http.HttpHeaders;
 import MediaBrowser.Model.ApiClient.ApiHelpers;
 import MediaBrowser.Model.Extensions.*;
 import MediaBrowser.Model.Drawing.*;
@@ -279,7 +279,7 @@ public abstract class BaseApiClient implements IDisposable
 		return GetApiUrl(handler, new QueryStringDictionary());
 	}
 
-    protected MediaBrowser.ApiInteraction.Http.HttpHeaders HttpHeaders = new HttpHeaders();
+    protected MediaBrowser.apiinteraction.http.HttpHeaders HttpHeaders = new HttpHeaders();
 
     public void SetAuthenticationInfo(String accessToken, String userId)
     {

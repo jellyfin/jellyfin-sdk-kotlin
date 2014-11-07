@@ -1,4 +1,4 @@
-package MediaBrowser.ApiInteraction.Tasks;
+package MediaBrowser.apiinteraction.tasks;
 
 public class Progress<T> implements IProgress<T> {
 
@@ -7,7 +7,11 @@ public class Progress<T> implements IProgress<T> {
     }
 
     public void reportComplete() {
+        onComplete();
+    }
 
+    public void reportCancelled() {
+        onCancelled();
     }
 
     public void reportError(Exception exception) {
@@ -20,6 +24,11 @@ public class Progress<T> implements IProgress<T> {
     }
 
     public void onComplete()
+    {
+
+    }
+
+    public void onCancelled()
     {
 
     }

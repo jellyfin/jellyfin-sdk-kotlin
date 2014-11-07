@@ -1,4 +1,4 @@
-package MediaBrowser.ApiInteraction.Tasks;
+package MediaBrowser.apiinteraction.tasks;
 
 /**
  * <p>A cancellation token to signal and propagate cancellation

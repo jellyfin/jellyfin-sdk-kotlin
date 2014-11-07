@@ -1,4 +1,4 @@
-package MediaBrowser.ApiInteraction.Android;
+package MediaBrowser.apiinteraction.android;
 
 import com.android.volley.toolbox.HurlStack;
 import com.squareup.okhttp.OkHttpClient;

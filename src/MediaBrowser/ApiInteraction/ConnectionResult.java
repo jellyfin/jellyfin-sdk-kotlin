@@ -1,4 +1,4 @@
-package MediaBrowser.ApiInteraction;
+package MediaBrowser.apiinteraction;
 
 import MediaBrowser.Model.ApiClient.*;
 import MediaBrowser.Model.Connect.ConnectUser;

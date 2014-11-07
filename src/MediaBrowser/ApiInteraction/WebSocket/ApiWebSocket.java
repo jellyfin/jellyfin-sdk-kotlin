@@ -1,10 +1,9 @@
-package MediaBrowser.ApiInteraction.WebSocket;
+package MediaBrowser.apiinteraction.websocket;
 
-import MediaBrowser.ApiInteraction.ApiClient;
-import MediaBrowser.ApiInteraction.ApiEventListener;
-import MediaBrowser.ApiInteraction.EmptyResponse;
-import MediaBrowser.ApiInteraction.GenericObserver;
-import MediaBrowser.ApiInteraction.WebSocket.JavaWebSocketClient;
+import MediaBrowser.apiinteraction.ApiClient;
+import MediaBrowser.apiinteraction.ApiEventListener;
+import MediaBrowser.apiinteraction.EmptyResponse;
+import MediaBrowser.apiinteraction.GenericObserver;
 import MediaBrowser.Model.ApiClient.GeneralCommandEventArgs;
 import MediaBrowser.Model.ApiClient.SessionUpdatesEventArgs;
 import MediaBrowser.Model.Dto.UserDto;
@@ -15,11 +14,10 @@ import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Net.WebSocketMessage;
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 import MediaBrowser.Model.Session.*;
-import org.java_websocket.WebSocket;
+import org.java_websocket.handshake.ServerHandshake;
 
 import java.net.URI;
 import java.util.Observable;
-import java.util.Observer;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -37,8 +35,6 @@ public class ApiWebSocket {
         this.apiEventListener = apiEventListener;
         this.apiClient = apiClient;
     }
-
-    private Timer ensureTimer;
 
     public void OpenWebSocket() {
 
@@ -58,31 +54,30 @@ public class ApiWebSocket {
 
         URI uri = URI.create(address);
 
-        socketClient = new JavaWebSocketClient(logger, uri);
-
-        socketClient.getOnMessageObservable().addObserver(new GenericObserver() {
+        socketClient = new JavaWebSocketClient(logger, uri){
 
             @Override
-            public void update(Observable observable, Object o)
+            public void onOpen(ServerHandshake serverHandshake)
             {
-                OnMessageReceived((String) o);
-            }
-
-        });
-
-        socketClient.getOnOpenObservable().addObserver(new GenericObserver() {
-
-            @Override
-            public void update(Observable observable, Object o)
-            {
+                super.onOpen(serverHandshake);
                 OnOpen();
             }
 
-        });
+            @Override
+            public void onMessage(String message)
+            {
+                super.onMessage(message);
+                OnMessageReceived(message);
+            }
+
+            @Override
+            public void onClose(int i, String s, boolean b)
+            {
+                super.onClose(i, s, b);
+            }
+        };
 
         socketClient.connect();
-
-        StartEnsureTimer();
     }
 
     private void OnOpen(){
@@ -116,35 +111,6 @@ public class ApiWebSocket {
         if (IsWebSocketOpen()){
 
             socketClient.close();
-        }
-
-        StopEnsureTimer();
-    }
-
-    private void StartEnsureTimer(){
-
-        StopEnsureTimer();
-
-        if (ensureTimer == null){
-            ensureTimer = new Timer();
-        }
-
-        int intervalMs = 1*60*1000;
-        ensureTimer.scheduleAtFixedRate(new TimerTask() {
-
-            @Override
-            public void run()
-            {
-                EnsureWebSocket();
-            }
-
-        }, intervalMs, intervalMs);
-    }
-
-    private void StopEnsureTimer(){
-
-        if (ensureTimer != null){
-            ensureTimer.cancel();
         }
     }
 

@@ -1,4 +1,4 @@
-package MediaBrowser.ApiInteraction;
+package MediaBrowser.apiinteraction;
 
 public class NetworkStatus {
 

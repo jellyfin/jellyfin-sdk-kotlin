@@ -36,7 +36,6 @@ This is an example of connecting to a single server using a fixed, predictable a
 
 The **ServerLocator** class can be used to discover servers on the local network, although it is recommended to handle that via a **ConnectionManager**, discussed later on in this document.
 
-A complete [app example can be found here.](https://github.com/MediaBrowser/MediaBrowser.ApiClient.Java/blob/master/src/MediaBrowser/ApiInteraction/Sample/ExampleApp.java "app example can be found here.")
 
 # Service Apps #
 
@@ -54,8 +53,6 @@ If your app is some kind of service or utility (e.g. Sickbeard), you should cons
         ApiClient apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My api key", new ApiEventListener(), new ClientCapabilities());
 
 ```
-
-A complete [service example can be found here.](https://github.com/MediaBrowser/MediaBrowser.ApiClient.Java/blob/master/src/MediaBrowser/ApiInteraction/Sample/ExampleService.java "service example can be found here.")
 
 
 # Web Socket #

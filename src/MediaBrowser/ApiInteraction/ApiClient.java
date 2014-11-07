@@ -1,12 +1,14 @@
-package MediaBrowser.ApiInteraction;
+package MediaBrowser.apiinteraction;
 
-import MediaBrowser.ApiInteraction.Cryptography.Md5;
-import MediaBrowser.ApiInteraction.Cryptography.Sha1;
-import MediaBrowser.ApiInteraction.Device.IDevice;
-import MediaBrowser.ApiInteraction.Http.HttpRequest;
-import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
-import MediaBrowser.ApiInteraction.Network.INetworkConnection;
-import MediaBrowser.ApiInteraction.WebSocket.ApiWebSocket;
+import MediaBrowser.apiinteraction.cryptography.Md5;
+import MediaBrowser.apiinteraction.cryptography.Sha1;
+import MediaBrowser.apiinteraction.device.IDevice;
+import MediaBrowser.apiinteraction.http.HttpRequest;
+import MediaBrowser.apiinteraction.http.IAsyncHttpClient;
+import MediaBrowser.apiinteraction.network.INetworkConnection;
+import MediaBrowser.apiinteraction.tasks.CancellationToken;
+import MediaBrowser.apiinteraction.tasks.IProgress;
+import MediaBrowser.apiinteraction.websocket.ApiWebSocket;
 import MediaBrowser.Model.ApiClient.RemoteLogoutReason;
 import MediaBrowser.Model.ApiClient.ServerInfo;
 import MediaBrowser.Model.Channels.AllChannelMediaQuery;
@@ -46,7 +48,12 @@ import MediaBrowser.Model.Tasks.TaskInfo;
 import MediaBrowser.Model.Tasks.TaskTriggerInfo;
 import MediaBrowser.Model.Users.AuthenticationResult;
 
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -2918,8 +2925,89 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", jsonResponse);
     }
 
-    public void UploadFile(LocalFileInfo file) {
+    public void UploadFile(FileInputStream fileInputStream,
+                           LocalFileInfo file,
+                           IProgress<Double> progress,
+                           CancellationToken cancellationToken) throws IOException {
 
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        dict.Add("DeviceId", getDeviceId());
+        dict.Add("Name", file.getName());
+        dict.Add("Id", file.getId());
+        dict.AddIfNotNullOrEmpty("Album", file.getAlbum());
+
+        HttpURLConnection conn = null;
+        DataOutputStream dos = null;
+        URL url = new URL(GetApiUrl("Devices/CameraUploads", dict));
+
+        int maxBufferSize = 1 * 1024 * 1024;
+
+        try {
+
+            // Open a HTTP  connection to  the URL
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setDoInput(true); // Allow Inputs
+            conn.setDoOutput(true); // Allow Outputs
+            conn.setUseCaches(false); // Don't use a Cached Copy
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Connection", "Keep-Alive");
+            conn.setRequestProperty("Content-Type", file.getMimeType());
+
+            for (String key: this.HttpHeaders.keySet()){
+                conn.setRequestProperty(key, this.HttpHeaders.get(key));
+            }
+
+            String parameter = this.HttpHeaders.getAuthorizationParameter();
+            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(parameter))
+            {
+                String value = this.HttpHeaders.getAuthorizationScheme() + " " + parameter;
+                conn.setRequestProperty("Authorization", value);
+            }
+
+            dos = new DataOutputStream(conn.getOutputStream());
+
+            // create a buffer of  maximum size
+            int bytesAvailable = fileInputStream.available();
+
+            int bufferSize = Math.min(bytesAvailable, maxBufferSize);
+            byte[] buffer = new byte[bufferSize];
+
+            // read file and write it into form...
+            long bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+            while (bytesRead > 0) {
+
+                dos.write(buffer, 0, bufferSize);
+                bytesAvailable = fileInputStream.available();
+                bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+            }
+
+            String serverResponseMessage = conn.getResponseMessage();
+
+            if(conn.getResponseCode() == 200){
+
+                progress.reportComplete();
+            }
+            else{
+                progress.reportError(null);
+            }
+
+        }
+        catch (Exception ex) {
+
+            progress.reportError(ex);
+        }
+        finally {
+
+            //close the streams //
+            fileInputStream.close();
+
+            if (dos != null){
+                dos.flush();
+                dos.close();
+            }
+        }
     }
-
 }

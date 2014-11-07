@@ -1,7 +1,9 @@
 package MediaBrowser;
 
-import MediaBrowser.ApiInteraction.ApiClient;
-import MediaBrowser.ApiInteraction.Device.IDevice;
+import MediaBrowser.apiinteraction.ApiClient;
+import MediaBrowser.apiinteraction.device.IDevice;
+import MediaBrowser.apiinteraction.tasks.CancellationToken;
+import MediaBrowser.apiinteraction.tasks.IProgress;
 import MediaBrowser.Model.Devices.LocalFileInfo;
 
 import java.util.ArrayList;
@@ -37,7 +39,7 @@ public class FakeDevice implements IDevice {
     }
 
     @Override
-    public void UploadFile(LocalFileInfo file, ApiClient apiClient) {
+    public void UploadFile(LocalFileInfo file, ApiClient apiClient, IProgress<Double> progress, CancellationToken cancellationToken) {
 
     }
 }

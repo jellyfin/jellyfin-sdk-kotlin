@@ -1,12 +1,10 @@
-package MediaBrowser.ApiInteraction.Android;
+package MediaBrowser.apiinteraction.android;
 
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.InputStream;
-import java.lang.reflect.Type;
 
 public class GsonJsonSerializer implements IJsonSerializer {
 

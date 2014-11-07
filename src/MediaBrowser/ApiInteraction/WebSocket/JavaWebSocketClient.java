@@ -1,4 +1,4 @@
-package MediaBrowser.ApiInteraction.WebSocket;
+package MediaBrowser.apiinteraction.websocket;
 
 import MediaBrowser.Model.Logging.ILogger;
 import org.java_websocket.WebSocket;
@@ -8,7 +8,6 @@ import org.java_websocket.handshake.ServerHandshake;
 
 import java.net.URI;
 import java.util.Map;
-import java.util.Observable;
 
 public class JavaWebSocketClient extends WebSocketClient {
 
@@ -39,8 +38,6 @@ public class JavaWebSocketClient extends WebSocketClient {
     public void onMessage(String s) {
 
         _logger.Debug("Web socket message received.");
-
-        onMessageObservable.notifyObservers(s);
     }
 
     @Override
@@ -66,15 +63,5 @@ public class JavaWebSocketClient extends WebSocketClient {
         WebSocket.READYSTATE state = getReadyState();
 
         return  state == WebSocket.READYSTATE.OPEN || state == WebSocket.READYSTATE.CONNECTING;
-    }
-
-    private Observable onMessageObservable = new Observable();
-    public Observable getOnMessageObservable(){
-        return onMessageObservable;
-    }
-
-    private Observable onOpenObservable = new Observable();
-    public Observable getOnOpenObservable(){
-        return onOpenObservable;
     }
 }

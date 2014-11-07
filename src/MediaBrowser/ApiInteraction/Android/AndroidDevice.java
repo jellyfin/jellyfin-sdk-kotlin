@@ -1,9 +1,10 @@
-package MediaBrowser.ApiInteraction.Android;
+package MediaBrowser.apiinteraction.android;
 
-import MediaBrowser.ApiInteraction.ApiClient;
-import MediaBrowser.ApiInteraction.Device.IDevice;
+import MediaBrowser.apiinteraction.ApiClient;
+import MediaBrowser.apiinteraction.device.IDevice;
+import MediaBrowser.apiinteraction.tasks.CancellationToken;
+import MediaBrowser.apiinteraction.tasks.IProgress;
 import MediaBrowser.Model.Devices.LocalFileInfo;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
@@ -11,6 +12,9 @@ import android.os.Build;
 import android.provider.MediaStore;
 import android.provider.Settings;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -51,7 +55,8 @@ public class AndroidDevice implements IDevice {
                 MediaStore.Images.Media.DATE_TAKEN,
                 MediaStore.Images.Media.MIME_TYPE,
                 MediaStore.Images.Media.TITLE,
-                MediaStore.Images.Media.DISPLAY_NAME
+                MediaStore.Images.Media.DISPLAY_NAME,
+                MediaStore.Images.Media.DATA
         };
 
         // Get the base URI for the People table in the Contacts content provider.
@@ -74,6 +79,7 @@ public class AndroidDevice implements IDevice {
             String title;
             String displayName;
             String mimeType;
+            String data;
             int bucketColumn = cur.getColumnIndex(
                     MediaStore.Images.Media.BUCKET_DISPLAY_NAME);
 
@@ -92,6 +98,9 @@ public class AndroidDevice implements IDevice {
             int mimeTypeColumn = cur.getColumnIndex(
                     MediaStore.Images.Media.MIME_TYPE);
 
+            int dataColumn = cur.getColumnIndex(
+                    MediaStore.Images.Media.DATA);
+
             do {
                 // Get the field values
                 bucket = cur.getString(bucketColumn);
@@ -100,11 +109,12 @@ public class AndroidDevice implements IDevice {
                 title = cur.getString(titleColumn);
                 displayName = cur.getString(displayNameColumn);
                 mimeType = cur.getString(mimeTypeColumn);
+                data = cur.getString(dataColumn);
 
                 LocalFileInfo file = new LocalFileInfo();
 
                 file.setAlbum(bucket);
-                file.setId(id);
+                file.setId(data);
                 file.setMimeType(mimeType);
                 file.setName(displayName);
 
@@ -147,9 +157,19 @@ public class AndroidDevice implements IDevice {
     }
 
     @Override
-    public void UploadFile(LocalFileInfo file, ApiClient apiClient) {
+    public void UploadFile(LocalFileInfo file,
+                           ApiClient apiClient,
+                           IProgress<Double> progress,
+                           CancellationToken cancellationToken) {
 
-
+        try {
+            apiClient.UploadFile(new FileInputStream(file.getId()), file, progress, cancellationToken);
+        }
+        catch (FileNotFoundException ex){
+            progress.reportError(ex);
+        }
+        catch (IOException ex){
+            progress.reportError(ex);
+        }
     }
-
 }

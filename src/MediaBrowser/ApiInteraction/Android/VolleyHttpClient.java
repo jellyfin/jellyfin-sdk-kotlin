@@ -1,9 +1,9 @@
-package MediaBrowser.ApiInteraction.Android;
+package MediaBrowser.apiinteraction.android;
 
-import MediaBrowser.ApiInteraction.Http.HttpHeaders;
-import MediaBrowser.ApiInteraction.Http.HttpRequest;
-import MediaBrowser.ApiInteraction.Http.IAsyncHttpClient;
-import MediaBrowser.ApiInteraction.Response;
+import MediaBrowser.apiinteraction.http.HttpHeaders;
+import MediaBrowser.apiinteraction.http.HttpRequest;
+import MediaBrowser.apiinteraction.http.IAsyncHttpClient;
+import MediaBrowser.apiinteraction.Response;
 import MediaBrowser.Model.Extensions.StringHelper;
 import MediaBrowser.Model.Logging.ILogger;
 import MediaBrowser.Model.Net.HttpException;
@@ -14,7 +14,6 @@ import com.android.volley.*;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import okio.Timeout;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -144,14 +143,15 @@ public class VolleyHttpClient implements IAsyncHttpClient {
             method = Request.Method.DELETE;
         }
 
-        String url = request.getUrl();
+        final String url = request.getUrl();
 
         StringRequest req = new StringRequest(method, url, new com.android.volley.Response.Listener<String>() {
 
             @Override
             public void onResponse(String stringResponse) {
 
-                logger.Info("Response:%n %s", stringResponse);
+                logger.Info("Response received from: " + url);
+
                 response.onResponse(stringResponse);
             }
 
@@ -242,9 +242,17 @@ public class VolleyHttpClient implements IAsyncHttpClient {
             @Override
             protected com.android.volley.Response<String> parseNetworkResponse(NetworkResponse response) {
 
+                String contentType = response.headers.get("Content-Type");
+
                 // This is a hack to make volley decode in UTF-8
-                if (StringHelper.EqualsIgnoreCase(response.headers.get("Content-Type"), "application/json")) {
-                    response.headers.put("Content-Type", "application/json; charset=UTF-8");
+                if (StringHelper.EqualsIgnoreCase(contentType, "application/json")) {
+                    response.headers.put("Content-Type", contentType + "; charset=UTF-8");
+                }
+                else if (StringHelper.EqualsIgnoreCase(contentType, "text/plain")) {
+                    response.headers.put("Content-Type", contentType + "; charset=UTF-8");
+                }
+                else if (StringHelper.EqualsIgnoreCase(contentType, "text/vtt")) {
+                    response.headers.put("Content-Type", contentType + "; charset=UTF-8");
                 }
 
                 return super.parseNetworkResponse(response);

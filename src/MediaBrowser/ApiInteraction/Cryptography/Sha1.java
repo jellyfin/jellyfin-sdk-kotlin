@@ -1,4 +1,4 @@
-package MediaBrowser.ApiInteraction.Cryptography;
+package MediaBrowser.apiinteraction.cryptography;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;

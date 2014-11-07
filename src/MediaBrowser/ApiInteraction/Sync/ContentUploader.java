@@ -1,10 +1,11 @@
-package MediaBrowser.ApiInteraction.Sync;
+package MediaBrowser.apiinteraction.sync;
 
-import MediaBrowser.ApiInteraction.ApiClient;
-import MediaBrowser.ApiInteraction.Device.IDevice;
-import MediaBrowser.ApiInteraction.Tasks.CancellationToken;
-import MediaBrowser.ApiInteraction.Tasks.IProgress;
-import MediaBrowser.ApiInteraction.Response;
+import MediaBrowser.apiinteraction.ApiClient;
+import MediaBrowser.apiinteraction.device.IDevice;
+import MediaBrowser.apiinteraction.tasks.CancellationToken;
+import MediaBrowser.apiinteraction.tasks.IProgress;
+import MediaBrowser.apiinteraction.Response;
+import MediaBrowser.apiinteraction.tasks.Progress;
 import MediaBrowser.Model.Devices.ContentUploadHistory;
 import MediaBrowser.Model.Devices.DevicesOptions;
 import MediaBrowser.Model.Devices.LocalFileInfo;
@@ -13,14 +14,18 @@ import MediaBrowser.Model.Extensions.StringHelper;
 import MediaBrowser.Model.Logging.ILogger;
 
 import java.util.ArrayList;
-import java.util.concurrent.Future;
 
 public class ContentUploader {
 
     private ApiClient apiClient;
     private ILogger logger;
 
-    public void UploadImages(final CancellationToken cancellationToken, final IProgress<Double> progress) {
+    public ContentUploader(ApiClient apiClient, ILogger logger) {
+        this.apiClient = apiClient;
+        this.logger = logger;
+    }
+
+    public void UploadImages(final IProgress<Double> progress, final CancellationToken cancellationToken) {
 
         apiClient.GetDevicesOptions(new Response<DevicesOptions>(){
 
@@ -35,7 +40,7 @@ public class ContentUploader {
                     progress.reportComplete();
                 }
                 else{
-                    UploadImagesInternal(cancellationToken, progress);
+                    UploadImagesInternal(progress, cancellationToken);
                 }
             }
 
@@ -48,8 +53,7 @@ public class ContentUploader {
         });
     }
 
-    private void UploadImagesInternal(final CancellationToken cancellationToken,
-                                      final IProgress<Double> progress){
+    private void UploadImagesInternal(final IProgress<Double> progress, final CancellationToken cancellationToken){
 
         apiClient.GetContentUploadHistory(new Response<ContentUploadHistory>() {
 
@@ -78,13 +82,14 @@ public class ContentUploader {
 
         files = GetFilesToUpload(history, files);
 
-        UploadNext(files, 0, cancellationToken, progress);
+        UploadNext(files, 0, device, cancellationToken, progress);
     }
 
-    private void UploadNext(ArrayList<LocalFileInfo> files,
-                            int index,
-                            CancellationToken cancellationToken,
-                            IProgress<Double> progress) {
+    private void UploadNext(final ArrayList<LocalFileInfo> files,
+                            final int index,
+                            final IDevice device,
+                            final CancellationToken cancellationToken,
+                            final IProgress<Double> progress) {
 
         if (index >= files.size()){
 
@@ -92,12 +97,54 @@ public class ContentUploader {
             return;
         }
 
+        if (cancellationToken.isCancellationRequested()){
+
+            progress.reportCancelled();
+            return;
+        }
+
         LocalFileInfo file = files.get(index);
 
+        UploadFile(file, device, new Progress<Double>(){
 
+            private void GoNext() {
+
+                double numComplete = index+ 1;
+                numComplete /= files.size();
+                progress.report(numComplete * 100);
+
+                UploadNext(files, index + 1, device, cancellationToken, progress);
+            }
+
+            @Override
+            public void onComplete() {
+
+                GoNext();
+            }
+
+            @Override
+            public void onError(Exception ex) {
+
+                progress.reportError(ex);
+            }
+
+            @Override
+            public void onCancelled() {
+
+                progress.reportCancelled();
+            }
+
+            @Override
+            public void onProgress(Double value) {
+
+                // TODO: This is progress for the individual file
+            }
+
+        }, cancellationToken);
     }
 
-    private ArrayList<LocalFileInfo> GetFilesToUpload(ContentUploadHistory history, ArrayList<LocalFileInfo> localFiles){
+    private ArrayList<LocalFileInfo> GetFilesToUpload(ContentUploadHistory history,
+                                                      ArrayList<LocalFileInfo> localFiles){
 
         ArrayList<LocalFileInfo> files = new ArrayList<LocalFileInfo>();
 
@@ -119,5 +166,18 @@ public class ContentUploader {
         }
 
         return  files;
+    }
+
+    private void UploadFile(LocalFileInfo file,
+                            IDevice device,
+                            IProgress<Double> progress,
+                            CancellationToken cancellationToken) {
+
+        logger.Info("Uploading file id", file.getId());
+        logger.Info("Uploading file name", file.getName());
+        logger.Info("Uploading file album", file.getAlbum());
+        logger.Info("Uploading file mime type", file.getMimeType());
+
+        device.UploadFile(file, apiClient, progress, cancellationToken);
     }
 }

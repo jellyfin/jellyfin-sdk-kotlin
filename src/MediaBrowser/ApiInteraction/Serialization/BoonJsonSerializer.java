@@ -1,17 +1,12 @@
-package MediaBrowser.ApiInteraction.Serialization;
+package MediaBrowser.apiinteraction.serialization;
 
 import MediaBrowser.Model.Serialization.IJsonSerializer;
 
-import org.boon.Boon;
-import org.boon.json.JsonParser;
 import org.boon.json.JsonParserAndMapper;
 import org.boon.json.JsonParserFactory;
 import org.boon.json.JsonSerializerFactory;
 
 import java.io.InputStream;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.nio.charset.StandardCharsets;
 
 public class BoonJsonSerializer implements IJsonSerializer {
 
