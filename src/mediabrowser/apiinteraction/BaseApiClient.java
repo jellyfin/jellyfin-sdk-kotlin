@@ -628,7 +628,7 @@ public abstract class BaseApiClient implements IDisposable
 
         dict.AddIfNotNull("Fields", query.getFields());
 
-        dict.AddIfNotNull("Filters", query.getFields());
+        dict.AddIfNotNull("Filters", query.getFilters());
         dict.AddIfNotNull("ImageTypes", query.getImageTypes());
 
 		dict.Add("recursive", query.getRecursive());

@@ -163,7 +163,7 @@ public class ApiClient extends BaseApiClient {
 
                     HttpException httpError = (HttpException)ex;
 
-                    if (fireGlobalEvents && httpError.getStatusCode() == 401) {
+                    if (fireGlobalEvents && httpError.getStatusCode() != null && httpError.getStatusCode() == 401) {
 
                         OnRemoteLoggedOut(httpError);
                     }
