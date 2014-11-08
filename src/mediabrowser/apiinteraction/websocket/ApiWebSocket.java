@@ -17,7 +17,7 @@ import org.java_websocket.handshake.ServerHandshake;
 
 import java.net.URI;
 
-public class ApiWebSocket {
+public class ApiWebSocket implements ISocketListener {
 
     private IJsonSerializer jsonSerializer;
     private ILogger logger;
@@ -50,33 +50,12 @@ public class ApiWebSocket {
 
         URI uri = URI.create(address);
 
-        socketClient = new JavaWebSocketClient(logger, uri){
-
-            @Override
-            public void onOpen(ServerHandshake serverHandshake)
-            {
-                super.onOpen(serverHandshake);
-                OnOpen();
-            }
-
-            @Override
-            public void onMessage(String message)
-            {
-                super.onMessage(message);
-                OnMessageReceived(message);
-            }
-
-            @Override
-            public void onClose(int i, String s, boolean b)
-            {
-                super.onClose(i, s, b);
-            }
-        };
+        socketClient = new JavaWebSocketClient(logger, uri, this);
 
         socketClient.connect();
     }
 
-    private void OnOpen(){
+    public void onOpen(){
 
         SendIdentificationMessage();
         SendCapabilities();
@@ -108,6 +87,10 @@ public class ApiWebSocket {
 
             socketClient.close();
         }
+    }
+
+    public void onClose(){
+
     }
 
     public void SendWebSocketMessage(String name){
@@ -162,7 +145,7 @@ public class ApiWebSocket {
         SendWebSocketMessage("SessionsStop", "");
     }
 
-    private void OnMessageReceived(String message){
+    public void onMessage(String message){
 
         String messageType = GetMessageType(message);
 

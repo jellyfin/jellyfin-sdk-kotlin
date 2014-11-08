@@ -257,17 +257,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Items/Counts", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ItemCounts obj = DeserializeFromString(jsonResponse, ItemCounts.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<ItemCounts>(response, jsonSerializer, ItemCounts.class));
     }
 
     public void GetRootFolderAsync(String userId, final Response<BaseItemDto> response)
@@ -292,17 +283,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                UserDto[] obj = DeserializeFromString(jsonResponse, UserDto[].class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<UserDto[]>(response, jsonSerializer, new UserDto[]{}.getClass()));
     }
 
     public void GetPublicUsersAsync(final Response<UserDto[]> response)
@@ -310,17 +292,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users/Public");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                UserDto[] obj = DeserializeFromString(jsonResponse, UserDto[].class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<UserDto[]>(response, jsonSerializer, new UserDto[]{}.getClass()));
     }
 
     public void GetClientSessionsAsync(SessionQuery query, final Response<SessionInfoDto[]> response)
@@ -332,49 +305,22 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Sessions", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                SessionInfoDto[] obj = DeserializeFromString(jsonResponse, SessionInfoDto[].class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<SessionInfoDto[]>(response, jsonSerializer, new SessionInfoDto[]{}.getClass()));
     }
 
     private void GetItemsFromUrl(String url, final Response<ItemsResult> response) {
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ItemsResult obj = DeserializeFromString(jsonResponse, new ItemsResult().getClass());
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<ItemsResult>(response, jsonSerializer, ItemsResult.class));
     }
 
     private void GetItemFromUrl(String url, final Response<BaseItemDto> response) {
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                BaseItemDto obj = DeserializeFromString(jsonResponse, BaseItemDto.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<BaseItemDto>(response, jsonSerializer, BaseItemDto.class));
     }
 
     public void GetItemsAsync(ItemQuery query, final Response<ItemsResult> response)
@@ -887,17 +833,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("System/Info");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                SystemInfo obj = DeserializeFromString(jsonResponse, SystemInfo.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<SystemInfo>(response, jsonSerializer, SystemInfo.class));
     }
 
     /// <summary>
@@ -910,17 +847,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("System/Info/Public");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                PublicSystemInfo obj = DeserializeFromString(jsonResponse, PublicSystemInfo.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<PublicSystemInfo>(response, jsonSerializer, PublicSystemInfo.class));
     }
 
     /// <summary>
@@ -979,17 +907,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("System/Configuration");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ServerConfiguration obj = DeserializeFromString(jsonResponse, ServerConfiguration.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<ServerConfiguration>(response, jsonSerializer, ServerConfiguration.class));
     }
 
     /// <summary>
@@ -1030,17 +949,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("ScheduledTasks/" + id);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                TaskInfo obj = DeserializeFromString(jsonResponse, TaskInfo.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<TaskInfo>(response, jsonSerializer, TaskInfo.class));
     }
 
     /// <summary>
@@ -1059,17 +969,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users/" + id);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                UserDto obj = DeserializeFromString(jsonResponse, UserDto.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<UserDto>(response, jsonSerializer, UserDto.class));
     }
 
     /// <summary>
@@ -1749,17 +1650,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("DisplayPreferences/" + id, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                DisplayPreferences obj = DeserializeFromString(jsonResponse, DisplayPreferences.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<DisplayPreferences>(response, jsonSerializer, DisplayPreferences.class));
     }
 
     /// <summary>
@@ -1830,17 +1722,8 @@ public class ApiClient extends BaseApiClient {
         url = GetApiUrl(url, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                NotificationResult obj = DeserializeFromString(jsonResponse, NotificationResult.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<NotificationResult>(response, jsonSerializer, NotificationResult.class));
     }
 
     public void GetAllThemeMediaAsync(String userId, String itemId, Boolean inheritFromParent, final Response<AllThemeMediaResult> response)
@@ -1853,17 +1736,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Items/" + itemId + "/ThemeMedia", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                AllThemeMediaResult obj = DeserializeFromString(jsonResponse, AllThemeMediaResult.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<AllThemeMediaResult>(response, jsonSerializer, AllThemeMediaResult.class));
     }
 
     public void GetSearchHintsAsync(SearchQuery query, final Response<SearchHintResult> response)
@@ -1889,17 +1763,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Search/Hints", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                SearchHintResult obj = DeserializeFromString(jsonResponse, SearchHintResult.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<SearchHintResult>(response, jsonSerializer, SearchHintResult.class));
     }
 
     public void GetThemeSongsAsync(String userId, String itemId, Boolean inheritFromParent, final Response<ThemeMediaResult> response)
@@ -1912,17 +1777,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Items/" + itemId + "/ThemeSongs", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ThemeMediaResult obj = DeserializeFromString(jsonResponse, ThemeMediaResult.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<ThemeMediaResult>(response, jsonSerializer, ThemeMediaResult.class));
     }
 
     public void GetThemeVideosAsync(String userId, String itemId, Boolean inheritFromParent, final Response<ThemeMediaResult> response)
@@ -1935,17 +1791,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Items/" + itemId + "/ThemeVideos", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ThemeMediaResult obj = DeserializeFromString(jsonResponse, ThemeMediaResult.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<ThemeMediaResult>(response, jsonSerializer, ThemeMediaResult.class));
     }
 
     /// <summary>
@@ -1975,17 +1822,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Items/" + itemId + "/CriticReviews", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ItemReviewsResult obj = DeserializeFromString(jsonResponse, new ItemReviewsResult().getClass());
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<ItemReviewsResult>(response, jsonSerializer, ItemReviewsResult.class));
     }
 
     /// <summary>
