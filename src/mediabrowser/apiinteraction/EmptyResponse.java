@@ -5,6 +5,7 @@ public class EmptyResponse implements IResponse {
     private IResponse innerResponse;
 
     public EmptyResponse(IResponse innerResponse){
+
         this.innerResponse = innerResponse;
     }
 
@@ -14,7 +15,11 @@ public class EmptyResponse implements IResponse {
 
     public void onResponse()
     {
+        if (innerResponse != null && innerResponse instanceof EmptyResponse){
 
+            EmptyResponse emptyResponse = (EmptyResponse)innerResponse;
+            emptyResponse.onResponse();
+        }
     }
 
     @Override

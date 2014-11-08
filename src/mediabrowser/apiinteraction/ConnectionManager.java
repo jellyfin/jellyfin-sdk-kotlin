@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction;
 
+import mediabrowser.apiinteraction.connect.ConnectService;
 import mediabrowser.apiinteraction.device.IDevice;
 import mediabrowser.apiinteraction.discovery.IServerLocator;
 import mediabrowser.apiinteraction.http.HttpHeaders;

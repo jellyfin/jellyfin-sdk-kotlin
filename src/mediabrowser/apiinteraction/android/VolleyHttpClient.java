@@ -6,7 +6,6 @@ import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.apiinteraction.Response;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.logging.ILogger;
-import mediabrowser.model.net.HttpException;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.LruCache;
@@ -98,40 +97,6 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         }
     }
 
-    private void AddHeaders(Map<String, String> headers, HttpRequest request)
-    {
-        HttpHeaders requestHeaders = request.getRequestHeaders();
-
-        for (String key : requestHeaders.keySet()){
-            headers.put(key, requestHeaders.get(key));
-        }
-
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(request.getRequestContentType()))
-        {
-            headers.put("Content-Type", request.getRequestContentType());
-        }
-
-        String parameter = requestHeaders.getAuthorizationParameter();
-
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(parameter))
-        {
-            String value = requestHeaders.getAuthorizationScheme() + " " + parameter;
-
-            headers.put("Authorization", value);
-        }
-    }
-
-    private void AddData(Map<String, String> postParams, HttpRequest request)
-    {
-        if (request.getPostData() == null){
-            return;
-        }
-
-        for (String key : request.getPostData().keySet()){
-            postParams.put(key, request.getPostData().get(key));
-        }
-    }
-
     public void Send(final HttpRequest request, final Response<String> response)
     {
         int method = Request.Method.GET;
@@ -145,119 +110,7 @@ public class VolleyHttpClient implements IAsyncHttpClient {
 
         final String url = request.getUrl();
 
-        StringRequest req = new StringRequest(method, url, new com.android.volley.Response.Listener<String>() {
-
-            @Override
-            public void onResponse(String stringResponse) {
-
-                logger.Info("Response received from: " + url);
-
-                response.onResponse(stringResponse);
-            }
-
-        }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                String messagePrefix = "VolleyError "+error.getClass().getName()+": ";
-
-                logger.ErrorException(messagePrefix + error.getMessage(), error);
-
-/*                if (error instanceof TimeoutError) {
-                    logger.Error("VolleyError TimeoutError: ", error.getMessage());
-                } else if (error instanceof NoConnectionError) {
-                    logger.Error("VolleyError NoConnectionError: ", error.getMessage());
-                } else if (error instanceof AuthFailureError) {
-                    logger.Error("VolleyError AuthFailureError: ", error.getMessage());
-                } else if (error instanceof ServerError) {
-                    logger.Error("VolleyError ServerError: ", error.getMessage());
-                } else if (error instanceof NetworkError) {
-                    logger.Error("VolleyError NetworkError: ", error.getMessage());
-                } else if (error instanceof ParseError) {
-                    logger.Error("VolleyError ParseError: ", error.getMessage());
-                }*/
-
-                HttpException httpException = new HttpException(messagePrefix, error);
-
-                if (error.networkResponse != null) {
-
-                    httpException.setStatusCode(error.networkResponse.statusCode);
-                    httpException.setHeaders(error.networkResponse.headers);
-                }
-
-                if (error instanceof TimeoutError) {
-                    httpException.setIsTimedOut(true);
-                }
-
-                response.onError(httpException);
-            }
-        }
-        ){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<String,String>();
-                AddHeaders(headers, request);
-                return headers;
-            }
-
-            @Override
-            public Map<String, String> getParams() throws AuthFailureError {
-
-                if (request.getPostData() == null){
-                    super.getParams();
-                }
-
-                Map<String, String> data = new HashMap<String,String>();
-                AddData(data, request);
-                return data;
-            }
-
-            @Override
-            public String getBodyContentType() {
-
-                if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(request.getRequestContentType()))
-                {
-                    return request.getRequestContentType();
-                }
-
-                return super.getBodyContentType();
-            }
-
-            @Override
-            /**
-             * Returns the raw POST or PUT body to be sent.
-             * @throws AuthFailureError in the event of auth failure
-             */
-            public byte[] getBody() throws AuthFailureError {
-
-                String postContent = request.getRequestContent();
-
-                if (postContent == null){
-                    return super.getBody();
-                }
-
-                return postContent.getBytes();
-            }
-
-            @Override
-            protected com.android.volley.Response<String> parseNetworkResponse(NetworkResponse response) {
-
-                String contentType = response.headers.get("Content-Type");
-
-                // This is a hack to make volley decode in UTF-8
-                if (StringHelper.EqualsIgnoreCase(contentType, "application/json")) {
-                    response.headers.put("Content-Type", contentType + "; charset=UTF-8");
-                }
-                else if (StringHelper.EqualsIgnoreCase(contentType, "text/plain")) {
-                    response.headers.put("Content-Type", contentType + "; charset=UTF-8");
-                }
-                else if (StringHelper.EqualsIgnoreCase(contentType, "text/vtt")) {
-                    response.headers.put("Content-Type", contentType + "; charset=UTF-8");
-                }
-
-                return super.parseNetworkResponse(response);
-            }
-        };
+        StringRequest req = new VolleyStringRequest(method, url, new VolleyStringListener(response, logger, url), new VolleyErrorListener(response, logger), request);
 
         // add the request object to the queue to be executed
         addToRequestQueue(req);

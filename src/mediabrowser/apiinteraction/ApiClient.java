@@ -2891,17 +2891,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("System/Configuration/devices");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                DevicesOptions obj = DeserializeFromString(jsonResponse, DevicesOptions.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<DevicesOptions>(response, jsonSerializer, DevicesOptions.class));
     }
 
     public void GetContentUploadHistory(final Response<ContentUploadHistory> response)
@@ -2913,17 +2904,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Devices/CameraUploads", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ContentUploadHistory obj = DeserializeFromString(jsonResponse, ContentUploadHistory.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<ContentUploadHistory>(response, jsonSerializer, ContentUploadHistory.class));
     }
 
     public void UploadFile(FileInputStream fileInputStream,

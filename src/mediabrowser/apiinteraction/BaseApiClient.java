@@ -39,14 +39,14 @@ public abstract class BaseApiClient implements IDisposable
 	 
 	 <value>The json serializer.</value>
 	*/
-	private IJsonSerializer privateJsonSerializer;
+	protected IJsonSerializer jsonSerializer;
 	public final IJsonSerializer getJsonSerializer()
 	{
-		return privateJsonSerializer;
+		return jsonSerializer;
 	}
 	public final void setJsonSerializer(IJsonSerializer value)
 	{
-		privateJsonSerializer = value;
+        jsonSerializer = value;
 	}
 
 	/** 

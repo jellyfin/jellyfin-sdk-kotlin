@@ -1,5 +1,9 @@
-package mediabrowser.apiinteraction;
+package mediabrowser.apiinteraction.connect;
 
+import mediabrowser.apiinteraction.EmptyResponse;
+import mediabrowser.apiinteraction.QueryStringDictionary;
+import mediabrowser.apiinteraction.Response;
+import mediabrowser.apiinteraction.SerializedResponse;
 import mediabrowser.apiinteraction.cryptography.Md5;
 import mediabrowser.apiinteraction.http.HttpRequest;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
@@ -36,22 +40,7 @@ public class ConnectService {
         request.setUrl(url);
         request.setPostData(args);
 
-        _httpClient.Send(request, new Response<String>(){
-
-            @Override
-            public void onResponse(String result) {
-
-                ConnectAuthenticationResult obj = JsonSerializer.DeserializeFromString(result, ConnectAuthenticationResult.class);
-
-                response.onResponse(obj);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                response.onError(ex);
-            }
-        });
+        _httpClient.Send(request, new SerializedResponse<ConnectAuthenticationResult>(response, JsonSerializer, ConnectAuthenticationResult.class));
     }
 
     public void CreatePin(String deviceId, final Response<PinCreationResult> response)
@@ -68,22 +57,7 @@ public class ConnectService {
         request.setUrl(url);
         request.setPostData(args);
 
-        _httpClient.Send(request, new Response<String>(){
-
-            @Override
-            public void onResponse(String result) {
-
-                PinCreationResult obj = JsonSerializer.DeserializeFromString(result, PinCreationResult.class);
-
-                response.onResponse(obj);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                response.onError(ex);
-            }
-        });
+        _httpClient.Send(request, new SerializedResponse<PinCreationResult>(response, JsonSerializer, PinCreationResult.class));
     }
 
     public void GetPinStatus(PinCreationResult pin, final Response<PinStatusResult> response)
@@ -100,22 +74,7 @@ public class ConnectService {
         request.setMethod("GET");
         request.setUrl(url);
 
-        _httpClient.Send(request, new Response<String>(){
-
-            @Override
-            public void onResponse(String result) {
-
-                PinStatusResult obj = JsonSerializer.DeserializeFromString(result, PinStatusResult.class);
-
-                response.onResponse(obj);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                response.onError(ex);
-            }
-        });
+        _httpClient.Send(request, new SerializedResponse<PinStatusResult>(response, JsonSerializer, PinStatusResult.class));
     }
 
     public void ExchangePin(PinCreationResult pin, final Response<PinExchangeResult> response)
@@ -133,22 +92,7 @@ public class ConnectService {
         request.setUrl(url);
         request.setPostData(args);
 
-        _httpClient.Send(request, new Response<String>(){
-
-            @Override
-            public void onResponse(String result) {
-
-                PinExchangeResult obj = JsonSerializer.DeserializeFromString(result, PinExchangeResult.class);
-
-                response.onResponse(obj);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                response.onError(ex);
-            }
-        });
+        _httpClient.Send(request, new SerializedResponse<PinExchangeResult>(response, JsonSerializer, PinExchangeResult.class));
     }
 
     public void GetConnectUser(ConnectUserQuery query, String connectAccessToken, final Response<ConnectUser> response)
@@ -185,22 +129,7 @@ public class ConnectService {
 
         AddUserAccessToken(request, connectAccessToken);
 
-        _httpClient.Send(request, new Response<String>(){
-
-            @Override
-            public void onResponse(String result) {
-
-                ConnectUser user = JsonSerializer.DeserializeFromString(result, ConnectUser.class);
-
-                response.onResponse(user);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                response.onError(ex);
-            }
-        });
+        _httpClient.Send(request, new SerializedResponse<ConnectUser>(response, JsonSerializer, ConnectUser.class));
     }
 
     public void GetServers(String userId, String connectAccessToken, final Response<ConnectUserServer[]> response)
@@ -218,22 +147,7 @@ public class ConnectService {
 
         AddUserAccessToken(request, connectAccessToken);
 
-        _httpClient.Send(request, new Response<String>(){
-
-            @Override
-            public void onResponse(String result) {
-
-                ConnectUserServer[] servers = JsonSerializer.DeserializeFromString(result, ConnectUserServer[].class);
-
-                response.onResponse(servers);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                response.onError(ex);
-            }
-        });
+        _httpClient.Send(request, new SerializedResponse<ConnectUserServer[]>(response, JsonSerializer, new ConnectUserServer[]{}.getClass()));
     }
 
     public void Logout(String connectAccessToken, final EmptyResponse response)
@@ -247,20 +161,7 @@ public class ConnectService {
 
         AddUserAccessToken(request, connectAccessToken);
 
-        _httpClient.Send(request, new Response<String>(){
-
-            @Override
-            public void onResponse(String result) {
-
-                response.onResponse();
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                response.onError(ex);
-            }
-        });
+        _httpClient.Send(request, new Response<String>(response));
     }
 
     private String GetConnectUrl(String handler)

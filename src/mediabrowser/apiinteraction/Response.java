@@ -14,7 +14,11 @@ public class Response<T> implements IResponse {
 
     public void onResponse(T response)
     {
+        if (innerResponse != null && innerResponse instanceof EmptyResponse){
 
+            EmptyResponse emptyResponse = (EmptyResponse)innerResponse;
+            emptyResponse.onResponse();
+        }
     }
 
     @Override
