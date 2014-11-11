@@ -79,7 +79,7 @@ public class ApiClient extends BaseApiClient {
         return capabilities;
     }
 
-    private Observable authenticatedObservable = new Observable();
+    private Observable authenticatedObservable = new AutomaticObservable();
     public Observable getAuthenticatedObservable() {
         return authenticatedObservable;
     }
@@ -130,7 +130,7 @@ public class ApiClient extends BaseApiClient {
         apiWebSocket.EnsureWebSocket();
     }
 
-    private void OnRemoteLoggedOut(HttpException httpError) {
+    void OnRemoteLoggedOut(HttpException httpError) {
 
         RemoteLogoutReason reason = RemoteLogoutReason.GeneralAccesError;
 
@@ -148,30 +148,7 @@ public class ApiClient extends BaseApiClient {
 
     private void SendRequest(HttpRequest request, final boolean fireGlobalEvents, final Response<String> response)
     {
-        httpClient.Send(request, new Response<String>(){
-
-            @Override
-            public void onResponse(String stringResponse) {
-
-                response.onResponse(stringResponse);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                if (ex instanceof HttpException) {
-
-                    HttpException httpError = (HttpException)ex;
-
-                    if (fireGlobalEvents && httpError.getStatusCode() != null && httpError.getStatusCode() == 401) {
-
-                        OnRemoteLoggedOut(httpError);
-                    }
-                }
-
-                response.onError(ex);
-            }
-        });
+        httpClient.Send(request, new ApiClientRequestListener(this, fireGlobalEvents, response));
     }
 
     private void Send(String url, String method, final Response<String> response)
@@ -885,17 +862,9 @@ public class ApiClient extends BaseApiClient {
     {
         String url = GetApiUrl("Plugins");
 
-        Response<String> jsonResponse = new Response<String>(response){
+        url = AddDataFormat(url);
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                PluginInfo[] obj = DeserializeFromString(jsonResponse, PluginInfo[].class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<PluginInfo[]>(response, jsonSerializer, new PluginInfo[]{}.getClass()));
     }
 
     /// <summary>
@@ -920,17 +889,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("ScheduledTasks");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                TaskInfo[] obj = DeserializeFromString(jsonResponse, TaskInfo[].class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<TaskInfo[]>(response, jsonSerializer, new TaskInfo[]{}.getClass()));
     }
 
     /// <summary>
@@ -982,17 +941,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Localization/ParentalRatings");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ParentalRating[] obj = DeserializeFromString(jsonResponse, ParentalRating[].class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<ParentalRating[]>(response, jsonSerializer, new ParentalRating[]{}.getClass()));
     }
 
     /// <summary>
@@ -1016,17 +965,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users/" + userId + "/Items/" + itemId + "/LocalTrailers");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                BaseItemDto[] obj = DeserializeFromString(jsonResponse, BaseItemDto[].class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<BaseItemDto[]>(response, jsonSerializer, new BaseItemDto[]{}.getClass()));
     }
 
     /// <summary>
@@ -1050,17 +989,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users/" + userId + "/Items/" + itemId + "/SpecialFeatures");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                BaseItemDto[] obj = DeserializeFromString(jsonResponse, BaseItemDto[].class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<BaseItemDto[]>(response, jsonSerializer, new BaseItemDto[]{}.getClass()));
     }
 
     /// <summary>
@@ -1072,17 +1002,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Localization/Cultures");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                CultureDto[] obj = DeserializeFromString(jsonResponse, CultureDto[].class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<CultureDto[]>(response, jsonSerializer, new CultureDto[]{}.getClass()));
     }
 
     /// <summary>
@@ -1094,17 +1014,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Localization/Countries");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                CountryInfo[] obj = DeserializeFromString(jsonResponse, CountryInfo[].class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<CountryInfo[]>(response, jsonSerializer, new CountryInfo[]{}.getClass()));
     }
 
     /// <summary>
@@ -1116,17 +1026,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Games/SystemSummaries");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                GameSystemSummary[] obj = DeserializeFromString(jsonResponse, GameSystemSummary[].class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<GameSystemSummary[]>(response, jsonSerializer, new GameSystemSummary[]{}.getClass()));
     }
  
     public void MarkPlayedAsync(String itemId, String userId, Date datePlayed, final Response<UserItemDataDto> response)
@@ -2645,17 +2545,8 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users/" + query.getUserId() + "/Items/Latest", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
 
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                BaseItemDto[] obj = DeserializeFromString(jsonResponse, BaseItemDto[].class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<BaseItemDto[]>(response, jsonSerializer, new BaseItemDto[]{}.getClass()));
     }
 
     public void AddToPlaylist(String playlistId, String[] itemIds, String userId, final EmptyResponse response)

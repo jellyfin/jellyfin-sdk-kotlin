@@ -69,7 +69,7 @@ public class ConnectionManager implements IConnectionManager {
 
         connectService = new ConnectService(jsonSerializer, logger, httpClient);
 
-        device.getResumeFromSleepObservable().addObserver(new GenericObserver() {
+        device.getResumeFromSleepObservable().addObserver(new Observer() {
 
             @Override
             public void update(Observable observable, Object o)
@@ -323,7 +323,8 @@ public class ConnectionManager implements IConnectionManager {
 
         final ServerCredentials credentials = _credentialProvider.GetCredentials();
 
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()) &&
+                !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getExchangeToken()))
         {
             EnsureConnectUser(credentials, new EmptyResponse(){
 
@@ -352,6 +353,10 @@ public class ConnectionManager implements IConnectionManager {
                                                   ConnectionMode connectionMode,
                                                   ServerCredentials credentials,
                                                   final EmptyResponse response){
+
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getExchangeToken())) {
+            throw new IllegalArgumentException("server");
+        }
 
         logger.Debug("Adding authentication info from Connect");
 
@@ -626,14 +631,13 @@ public class ConnectionManager implements IConnectionManager {
 
             final ApiClient finalApiClient = apiClient;
 
-            apiClient.getAuthenticatedObservable().addObserver(new GenericObserver() {
+            apiClient.getAuthenticatedObservable().addObserver(new Observer() {
 
                 @Override
                 public void update(Observable observable, Object o)
                 {
                     OnAuthenticated(finalApiClient, (AuthenticationResult) o, true);
                 }
-
             });
         }
 

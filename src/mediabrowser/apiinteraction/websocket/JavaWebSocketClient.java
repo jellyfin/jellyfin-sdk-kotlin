@@ -3,7 +3,7 @@ package mediabrowser.apiinteraction.websocket;
 import mediabrowser.model.logging.ILogger;
 import org.java_websocket.WebSocket;
 import org.java_websocket.client.WebSocketClient;
-import org.java_websocket.drafts.Draft;
+import org.java_websocket.drafts.*;
 import org.java_websocket.handshake.ServerHandshake;
 
 import java.net.URI;
