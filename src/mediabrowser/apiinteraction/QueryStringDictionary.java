@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 /** 
@@ -277,7 +278,6 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	 @param name The name.
 	 @param value The value.
 	 @param delimiter The delimiter.
-	 @exception ArgumentNullException value
 	*/
 	public final void Add(String name, String[] value, String delimiter)
 	{
@@ -349,7 +349,7 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	*/
 	private String GetEncodedValue(String value)
 	{
-		return value;
+		return URLEncoder.encode(value);
 	}
 
 	/** 

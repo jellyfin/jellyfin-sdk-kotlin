@@ -2635,7 +2635,7 @@ public class ApiClient extends BaseApiClient {
         }
 
         QueryStringDictionary queryString = new QueryStringDictionary();
-        queryString.AddIfNotNull("Group", query.getGroupItems());
+        queryString.AddIfNotNull("GroupItems", query.getGroupItems());
         queryString.AddIfNotNull("IncludeItemTypes", query.getIncludeItemTypes());
         queryString.AddIfNotNullOrEmpty("ParentId", query.getParentId());
         queryString.AddIfNotNull("IsPlayed", query.getIsPlayed());
