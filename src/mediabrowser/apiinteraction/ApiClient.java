@@ -1503,7 +1503,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                UserItemDataDto obj = DeserializeFromString(jsonResponse, UserDto[].class);
+                UserItemDataDto obj = DeserializeFromString(jsonResponse, UserItemDataDto.class);
                 response.onResponse(obj);
             }
         };
@@ -1541,7 +1541,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                UserItemDataDto obj = DeserializeFromString(jsonResponse, UserDto[].class);
+                UserItemDataDto obj = DeserializeFromString(jsonResponse, UserItemDataDto.class);
                 response.onResponse(obj);
             }
         };
@@ -2690,7 +2690,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onResponse(String jsonResponse) {
 
-                PlaylistCreationResult obj = DeserializeFromString(jsonResponse, UserDto[].class);
+                PlaylistCreationResult obj = DeserializeFromString(jsonResponse, PlaylistCreationResult.class);
                 response.onResponse(obj);
             }
         };
