@@ -2,14 +2,14 @@ package mediabrowser.apiinteraction.websocket;
 
 public class BasicWebSocketMessage {
 
-    private String messageType;
+    private String MessageType;
     public final String getMessageType()
     {
-        return messageType;
+        return MessageType;
     }
     public final void setMessageType(String value)
     {
-        messageType = value;
+        MessageType = value;
     }
 
 }
