@@ -143,16 +143,18 @@ ServerInfo and ApiClient will be null if State == Unavailable. Let's look at an 
 
 				switch (result.getState())
 				{
-					case ConnectionState.Unavailable:
-						// No servers found. User must manually enter connection info.
+					case ConnectionState.ConnectSignIn:
+						// Connect sign in screen should be presented
+						// Authenticate using LoginToConnect, then call Connect again to start over
 	
-					case ConnectionState.ServerSelection:
-						// Multiple servers available
-						// Display a selection screen
-
 					case ConnectionState.ServerSignIn:
 						// A server was found and the user needs to login.
 						// Display a login screen and authenticate with the server using result.ApiClient
+	
+					case ConnectionState.ServerSelection:
+						// Multiple servers available
+						// Display a selection screen using result.Servers
+						// When a server is chosen, call the Connect overload that accept either a ServerInfo object or a String url.
 	
 					case ConnectionState.SignedIn:
 						// A server was found and the user has been signed in using previously saved credentials.
@@ -180,7 +182,19 @@ If the user wishes to connect to a new server, simply use the Connect overload t
             @Override
             public void onResponse(ConnectionResult result) {
 
-				// Proceed with same switch statement as above example
+				switch (result.State)
+				{
+					case ConnectionState.Unavailable:
+						// Server unreachable
+	
+					case ConnectionState.ServerSignIn:
+						// A server was found and the user needs to login.
+						// Display a login screen and authenticate with the server using result.ApiClient
+	
+					case ConnectionState.SignedIn:
+						// A server was found and the user has been signed in using previously saved credentials.
+						// Ready to browse using result.ApiClient
+				}
 
             }
 
@@ -204,7 +218,17 @@ ConnectionManager will handle opening and closing web socket connections at the 
 
 ```
 
-With multi-server connectivity it is not recommended to keep a global ApiClient instance, or pass an ApiClient around the application. Instead keep a factory that will resolve the appropiate ApiClient instance depending on context. In order to help with this, ConnectionManager has a GetApiClient method that accepts a BaseItemDto and returns an ApiClient from the server it belongs to.
+With multi-server connectivity it is not recommended to keep a global ApiClient instance, or pass an ApiClient around the application. Instead keep a factory that will resolve the appropriate ApiClient instance depending on context. In order to help with this, ConnectionManager has a GetApiClient method that accepts a BaseItemDto and returns an ApiClient from the server it belongs to.
+
+
+# Android Usage #
+
+Android is fully supported, and special subclasses are provided for it:
+
+- AndroidConnectionManager
+- AndroidApiClient
+
+AndroidApiClient includes a getImageLoader() method that will return a Volley ImageLoader.
 
 
 Special thanks to [Tangible Software Solutions](http://www.tangiblesoftwaresolutions.com/ "Tangible Software Solutions") for donating a license to our project.

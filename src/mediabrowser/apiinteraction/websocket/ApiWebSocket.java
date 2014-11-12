@@ -198,12 +198,12 @@ public class ApiWebSocket implements ISocketListener {
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "UserUpdated"))
         {
-            WebSocketMessage<UserDto> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<UserDto>().getClass());
+            UserDtoMessage obj = jsonSerializer.DeserializeFromString(message, UserDtoMessage.class);
             apiEventListener.onUserUpdated(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "UserConfigurationUpdated"))
         {
-            WebSocketMessage<UserDto> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<UserDto>().getClass());
+            UserDtoMessage obj = jsonSerializer.DeserializeFromString(message, UserDtoMessage.class);
             apiEventListener.onUserConfigurationUpdated(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "PluginUninstalled"))
@@ -212,12 +212,12 @@ public class ApiWebSocket implements ISocketListener {
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "Play"))
         {
-            WebSocketMessage<PlayRequest> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<PlayRequest>().getClass());
+            PlayRequestMessage obj = jsonSerializer.DeserializeFromString(message, PlayRequestMessage.class);
             apiEventListener.onPlayCommand(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "Playstate"))
         {
-            WebSocketMessage<PlaystateRequest> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<PlaystateRequest>().getClass());
+            PlaystateRequestMessage obj = jsonSerializer.DeserializeFromString(message, PlaystateRequestMessage.class);
             apiEventListener.onPlaystateCommand(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "NotificationAdded"))
@@ -238,27 +238,27 @@ public class ApiWebSocket implements ISocketListener {
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "Sessions"))
         {
-            WebSocketMessage<SessionUpdatesEventArgs> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<SessionUpdatesEventArgs>().getClass());
+            SessionUpdatesEventMessage obj = jsonSerializer.DeserializeFromString(message, SessionUpdatesEventMessage.class);
             apiEventListener.onSessionsUpdated(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "UserDataChanged"))
         {
-            WebSocketMessage<UserDataChangeInfo> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<UserDataChangeInfo>().getClass());
+            UserDataChangeMessage obj = jsonSerializer.DeserializeFromString(message, UserDataChangeMessage.class);
             apiEventListener.onUserDataChanged(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "SessionEnded"))
         {
-            WebSocketMessage<SessionInfoDto> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<SessionInfoDto>().getClass());
+            SessionInfoMessage obj = jsonSerializer.DeserializeFromString(message, SessionInfoMessage.class);
             apiEventListener.onSessionEnded(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "PlaybackStart"))
         {
-            WebSocketMessage<SessionInfoDto> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<SessionInfoDto>().getClass());
+            SessionInfoMessage obj = jsonSerializer.DeserializeFromString(message, SessionInfoMessage.class);
             apiEventListener.onPlaybackStart(apiClient, obj.getData());
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "PlaybackStopped"))
         {
-            WebSocketMessage<SessionInfoDto> obj = jsonSerializer.DeserializeFromString(message, new WebSocketMessage<SessionInfoDto>().getClass());
+            SessionInfoMessage obj = jsonSerializer.DeserializeFromString(message, SessionInfoMessage.class);
             apiEventListener.onPlaybackStopped(apiClient, obj.getData());
         }
     }
@@ -267,7 +267,7 @@ public class ApiWebSocket implements ISocketListener {
     {
         GeneralCommandEventArgs args = new GeneralCommandEventArgs();
 
-        WebSocketMessage<GeneralCommand> obj = jsonSerializer.DeserializeFromString(json, new WebSocketMessage<GeneralCommand>().getClass());
+        GeneralCommandMessage obj = jsonSerializer.DeserializeFromString(json, GeneralCommandMessage.class);
         args.setCommand(obj.getData());
 
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(args.getCommand().getName()))
