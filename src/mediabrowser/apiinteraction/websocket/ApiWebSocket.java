@@ -270,7 +270,10 @@ public class ApiWebSocket implements ISocketListener {
         WebSocketMessage<GeneralCommand> obj = jsonSerializer.DeserializeFromString(json, new WebSocketMessage<GeneralCommand>().getClass());
         args.setCommand(obj.getData());
 
-        args.setKnownCommandType(GeneralCommandType.valueOf(args.getCommand().getName()));
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(args.getCommand().getName()))
+        {
+            args.setKnownCommandType(GeneralCommandType.valueOf(args.getCommand().getName()));
+        }
 
         if (args.getKnownCommandType() != null)
         {
