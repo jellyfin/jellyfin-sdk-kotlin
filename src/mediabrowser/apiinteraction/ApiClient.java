@@ -1582,17 +1582,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Notifications/" + userId + "/Summary");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                NotificationsSummary obj = DeserializeFromString(jsonResponse, NotificationsSummary.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<NotificationsSummary>(response, jsonSerializer, NotificationsSummary.class));
     }
 
     public void MarkNotificationsRead(String userId, String[] notificationIdList, Boolean isRead, final EmptyResponse response)
@@ -1741,17 +1731,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Games/PlayerIndex", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ItemIndex[] obj = DeserializeFromString(jsonResponse, ItemIndex[].class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<ItemIndex[]>(response, jsonSerializer, new ItemIndex[]{}.getClass()));
     }
 
     /// <summary>
@@ -1771,17 +1751,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Items/YearIndex", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ItemIndex[] obj = DeserializeFromString(jsonResponse, ItemIndex[].class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<ItemIndex[]>(response, jsonSerializer, new ItemIndex[]{}.getClass()));
     }
 
     public void ReportCapabilities(ClientCapabilities capabilities, final EmptyResponse response)
@@ -1806,17 +1776,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Info");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                LiveTvInfo obj = DeserializeFromString(jsonResponse, LiveTvInfo.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<LiveTvInfo>(response, jsonSerializer, LiveTvInfo.class));
     }
 
     public void GetLiveTvRecordingGroupsAsync(RecordingGroupQuery query, final Response<RecordingGroupDtoResult> response)
@@ -1833,17 +1793,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Recordings/Groups", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                RecordingGroupDtoResult obj = DeserializeFromString(jsonResponse, new RecordingGroupDtoResult().getClass());
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<RecordingGroupDtoResult>(response, jsonSerializer, RecordingGroupDtoResult.class));
     }
 
     public void GetLiveTvRecordingsAsync(RecordingQuery query, final Response<RecordingInfoDtoResult> response)
@@ -1867,17 +1817,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Recordings", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                RecordingInfoDtoResult obj = DeserializeFromString(jsonResponse, new RecordingInfoDtoResult().getClass());
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<RecordingInfoDtoResult>(response, jsonSerializer, RecordingInfoDtoResult.class));
     }
 
     public void GetLiveTvChannelsAsync(LiveTvChannelQuery query, final Response<ChannelInfoDtoResult> response)
@@ -1901,17 +1841,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Channels", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ChannelInfoDtoResult obj = DeserializeFromString(jsonResponse, new ChannelInfoDtoResult().getClass());
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<ChannelInfoDtoResult>(response, jsonSerializer, ChannelInfoDtoResult.class));
     }
 
     public void CancelLiveTvSeriesTimerAsync(String id, final EmptyResponse response)
@@ -1969,17 +1899,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Channels/" + id, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ChannelInfoDto obj = DeserializeFromString(jsonResponse, ChannelInfoDto.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<ChannelInfoDto>(response, jsonSerializer, ChannelInfoDto.class));
     }
 
     public void GetLiveTvRecordingAsync(String id, String userId, final Response<RecordingInfoDto> response)
@@ -1995,17 +1915,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Recordings/" + id, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                RecordingInfoDto obj = DeserializeFromString(jsonResponse, RecordingInfoDto.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<RecordingInfoDto>(response, jsonSerializer, RecordingInfoDto.class));
     }
 
     public void GetLiveTvRecordingGroupAsync(String id, String userId, final Response<RecordingGroupDto> response)
@@ -2021,17 +1931,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Recordings/Groups/" + id, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                RecordingGroupDto obj = DeserializeFromString(jsonResponse, RecordingGroupDto.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<RecordingGroupDto>(response, jsonSerializer, RecordingGroupDto.class));
     }
 
     public void GetLiveTvSeriesTimerAsync(String id, final Response<SeriesTimerInfoDto> response)
@@ -2046,17 +1946,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/SeriesTimers/" + id, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                SeriesTimerInfoDto obj = DeserializeFromString(jsonResponse, SeriesTimerInfoDto.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<SeriesTimerInfoDto>(response, jsonSerializer, SeriesTimerInfoDto.class));
     }
 
     public void GetLiveTvSeriesTimersAsync(SeriesTimerQuery query, final Response<SeriesTimerInfoDtoResult> response)
@@ -2074,17 +1964,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/SeriesTimers", dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                SeriesTimerInfoDtoResult obj = DeserializeFromString(jsonResponse, new SeriesTimerInfoDtoResult().getClass());
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<SeriesTimerInfoDtoResult>(response, jsonSerializer, SeriesTimerInfoDtoResult.class));
     }
 
     public void GetLiveTvTimerAsync(String id, final Response<TimerInfoDto> response)
@@ -2099,17 +1979,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Timers/" + id, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                TimerInfoDto obj = DeserializeFromString(jsonResponse, TimerInfoDto.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<TimerInfoDto>(response, jsonSerializer, TimerInfoDto.class));
     }
 
     public void GetLiveTvTimersAsync(TimerQuery query, final Response<TimerInfoDtoResult> response)
@@ -2296,17 +2166,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/GuideInfo");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                GuideInfo obj = DeserializeFromString(jsonResponse, GuideInfo.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<GuideInfo>(response, jsonSerializer, GuideInfo.class));
     }
 
     public void GetLiveTvProgramAsync(String id, String userId, final Response<ProgramInfoDto> response)
@@ -2322,17 +2182,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Programs/" + id, dict);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ProgramInfoDto obj = DeserializeFromString(jsonResponse, ProgramInfoDto.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<ProgramInfoDto>(response, jsonSerializer, ProgramInfoDto.class));
     }
 
     public void UpdateLiveTvSeriesTimerAsync(SeriesTimerInfoDto timer, final EmptyResponse response)
@@ -2421,17 +2271,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Channels/" + channelId + "/Features");
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ChannelFeatures obj = DeserializeFromString(jsonResponse, ChannelFeatures.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<ChannelFeatures>(response, jsonSerializer, ChannelFeatures.class));
     }
 
     public void GetChannelItems(ChannelItemQuery query, final Response<ItemsResult> response)
@@ -2478,17 +2318,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Sessions", queryString);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                SessionInfoDto obj = DeserializeFromString(jsonResponse, SessionInfoDto.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        Send(url, "GET", new SerializedResponse<SessionInfoDto>(response, jsonSerializer, SessionInfoDto.class));
     }
 
     public void StopTranscodingProcesses(String deviceId, final EmptyResponse response)
