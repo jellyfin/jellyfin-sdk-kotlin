@@ -366,7 +366,6 @@ public class UserConfiguration
 
 		setExcludeFoldersFromGrouping(new String[] { });
 		setDisplayCollectionsView(true);
-		setDisplayFoldersView(true);
 
 		setSyncConnectName(true);
 		setSyncConnectImage(true);

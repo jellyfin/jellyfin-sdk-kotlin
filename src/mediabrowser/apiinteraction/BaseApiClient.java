@@ -680,9 +680,9 @@ public abstract class BaseApiClient implements IDisposable
 		queryParams.AddIfNotNull("CropWhitespace", options.getCropWhitespace());
 		queryParams.Add("EnableImageEnhancers", options.getEnableImageEnhancers());
 
-		if (options.getFormat() != ImageOutputFormat.Original)
+		if (options.getFormat() != null)
 		{
-			queryParams.Add("Format", options.getFormat());
+			queryParams.Add("Format", options.getFormat().toString());
 		}
 
 		if (options.getAddPlayedIndicator())
@@ -701,7 +701,6 @@ public abstract class BaseApiClient implements IDisposable
 	 @param item The item.
 	 @param options The options.
 	 @return System.String.
-	 @exception System.ArgumentNullException item
 	*/
 	public final String GetImageUrl(BaseItemDto item, ImageOptions options)
 	{

@@ -89,6 +89,10 @@ public class ServerCredentials
                 existing.getWakeOnLanInfos().clear();
                 existing.getWakeOnLanInfos().addAll(server.getWakeOnLanInfos());
             }
+            if (server.getIsLocalAddressFixed())
+            {
+                existing.setIsLocalAddressFixed(true);
+            }
         }
         else
         {

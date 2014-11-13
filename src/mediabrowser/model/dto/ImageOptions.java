@@ -28,7 +28,7 @@ public class ImageOptions
 	 
 	 <value>The index of the image.</value>
 	*/
-	private Integer ImageIndex = null;
+	private Integer ImageIndex;
 	public final Integer getImageIndex()
 	{
 		return ImageIndex;
@@ -43,7 +43,7 @@ public class ImageOptions
 	 
 	 <value>The width.</value>
 	*/
-	private Integer Width = null;
+	private Integer Width;
 	public final Integer getWidth()
 	{
 		return Width;
@@ -58,7 +58,7 @@ public class ImageOptions
 	 
 	 <value>The height.</value>
 	*/
-	private Integer Height = null;
+	private Integer Height;
 	public final Integer getHeight()
 	{
 		return Height;
@@ -73,7 +73,7 @@ public class ImageOptions
 	 
 	 <value>The width of the max.</value>
 	*/
-	private Integer MaxWidth = null;
+	private Integer MaxWidth;
 	public final Integer getMaxWidth()
 	{
 		return MaxWidth;
@@ -88,7 +88,7 @@ public class ImageOptions
 	 
 	 <value>The height of the max.</value>
 	*/
-	private Integer MaxHeight = null;
+	private Integer MaxHeight;
 	public final Integer getMaxHeight()
 	{
 		return MaxHeight;
@@ -103,7 +103,7 @@ public class ImageOptions
 	 
 	 <value>The quality.</value>
 	*/
-	private Integer Quality = null;
+	private Integer Quality;
 	public final Integer getQuality()
 	{
 		return Quality;
@@ -134,7 +134,7 @@ public class ImageOptions
 	 
 	 <value><c>null</c> if [crop whitespace] contains no value, <c>true</c> if [crop whitespace]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean CropWhitespace = null;
+	private Boolean CropWhitespace;
 	public final Boolean getCropWhitespace()
 	{
 		return CropWhitespace;
@@ -164,7 +164,7 @@ public class ImageOptions
 	 
 	 <value>The format.</value>
 	*/
-	private ImageOutputFormat Format = ImageOutputFormat.values()[0];
+	private ImageOutputFormat Format;
 	public final ImageOutputFormat getFormat()
 	{
 		return Format;
@@ -194,7 +194,7 @@ public class ImageOptions
 	 
 	 <value>The percent played.</value>
 	*/
-	private Integer PercentPlayed = null;
+	private Integer PercentPlayed;
 	public final Integer getPercentPlayed()
 	{
 		return PercentPlayed;
@@ -225,7 +225,5 @@ public class ImageOptions
 	public ImageOptions()
 	{
 		setEnableImageEnhancers(true);
-
-		setFormat(ImageOutputFormat.Original);
 	}
 }

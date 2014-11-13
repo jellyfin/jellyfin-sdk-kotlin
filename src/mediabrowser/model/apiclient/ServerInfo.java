@@ -96,6 +96,16 @@ public class ServerInfo
 		UserLinkType = value;
 	}
 
+	private boolean IsLocalAddressFixed;
+	public final boolean getIsLocalAddressFixed()
+	{
+		return IsLocalAddressFixed;
+	}
+	public final void setIsLocalAddressFixed(boolean value)
+	{
+		IsLocalAddressFixed = value;
+	}
+
 	public ServerInfo()
 	{
 		setWakeOnLanInfos(new java.util.ArrayList<WakeOnLanInfo>());
@@ -106,10 +116,11 @@ public class ServerInfo
 		setName(systemInfo.getServerName());
 		setId(systemInfo.getId());
 
-		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(systemInfo.getLocalAddress()))
+		if (!getIsLocalAddressFixed() && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(systemInfo.getLocalAddress()))
 		{
 			setLocalAddress(systemInfo.getLocalAddress());
 		}
+
 		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(systemInfo.getWanAddress()))
 		{
 			setRemoteAddress(systemInfo.getWanAddress());
@@ -129,5 +140,4 @@ public class ServerInfo
 			}
 		}
 	}
-
 }

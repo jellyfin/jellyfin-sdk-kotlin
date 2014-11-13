@@ -6,10 +6,6 @@ package mediabrowser.model.drawing;
 public enum ImageOutputFormat
 {
 	/** 
-	 The original
-	*/
-	Original,
-	/** 
 	 The BMP
 	*/
 	Bmp,
@@ -25,6 +21,9 @@ public enum ImageOutputFormat
 	 The PNG
 	*/
 	Png,
+	/** 
+	 The webp
+	*/
 	Webp;
 
 	public int getValue()
