@@ -1,6 +1,7 @@
 package mediabrowser.apiinteraction.android;
 
 import mediabrowser.apiinteraction.*;
+import mediabrowser.apiinteraction.connectionmanager.ConnectionManager;
 import mediabrowser.apiinteraction.discovery.IServerLocator;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.model.logging.ILogger;

@@ -1,6 +1,7 @@
 package mediabrowser;
 
 import mediabrowser.apiinteraction.*;
+import mediabrowser.apiinteraction.connectionmanager.ConnectionManager;
 import mediabrowser.apiinteraction.discovery.ServerLocator;
 import mediabrowser.apiinteraction.android.VolleyHttpClient;
 import mediabrowser.apiinteraction.android.AndroidNetworkConnection;

@@ -1,6 +1,7 @@
 package mediabrowser.apiinteraction.android;
 
 import mediabrowser.apiinteraction.ApiClient;
+import mediabrowser.apiinteraction.AutomaticObservable;
 import mediabrowser.apiinteraction.device.IDevice;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.apiinteraction.tasks.IProgress;
@@ -150,7 +151,7 @@ public class AndroidDevice implements IDevice {
         }
     }
 
-    private Observable resumeFromSleepObservable = new Observable();
+    private Observable resumeFromSleepObservable = new AutomaticObservable();
     @Override
     public Observable getResumeFromSleepObservable() {
         return resumeFromSleepObservable;

@@ -23,6 +23,7 @@ public class ApiWebSocket implements ISocketListener {
     private ILogger logger;
     private ApiEventListener apiEventListener;
     private ApiClient apiClient;
+    private boolean enableReconnection;
 
     public ApiWebSocket(IJsonSerializer jsonSerializer, ILogger logger, ApiEventListener apiEventListener, ApiClient apiClient){
 
@@ -61,11 +62,12 @@ public class ApiWebSocket implements ISocketListener {
 
         SendIdentificationMessage();
         SendCapabilities();
+        enableReconnection = true;
     }
 
     private void SendIdentificationMessage(){
 
-        SendWebSocketMessage("Identity", GetIdentificationMessage());
+        SendWebSocketMessage("Identity", GetIdentificationMessage(), new EmptyResponse());
     }
 
     protected String GetIdentificationMessage()
@@ -93,14 +95,23 @@ public class ApiWebSocket implements ISocketListener {
 
     public void onClose(){
 
+        if (enableReconnection) {
+            EnsureWebSocket();
+            enableReconnection = false;
+        }
     }
 
-    public void SendWebSocketMessage(String name){
-
-        SendWebSocketMessage(name, "");
+    public void Close(){
+        enableReconnection = false;
+        socketClient.close();
     }
 
-    public void SendWebSocketMessage(String name, Object data){
+    public void SendWebSocketMessage(String name, EmptyResponse response){
+
+        SendWebSocketMessage(name, "", response);
+    }
+
+    public void SendWebSocketMessage(String name, Object data, EmptyResponse response){
 
         logger.Debug("Sending web socket message: " + name);
         WebSocketMessage msg = new WebSocketMessage<Object>();
@@ -110,13 +121,17 @@ public class ApiWebSocket implements ISocketListener {
 
         String json = jsonSerializer.SerializeToString(msg);
 
-        SendMessageInternal(json);
+        SendMessageInternal(json, response);
     }
 
-    private void SendMessageInternal(String message){
+    private void SendMessageInternal(String message, EmptyResponse response){
         if (IsWebSocketOpen()){
 
             socketClient.send(message);
+            response.onResponse();
+        }
+        else{
+            response.onError(null);
         }
     }
 
@@ -141,12 +156,12 @@ public class ApiWebSocket implements ISocketListener {
 
     public void StartReceivingSessionUpdates(int intervalMs)
     {
-        SendWebSocketMessage("SessionsStart", intervalMs + "," + intervalMs);
+        SendWebSocketMessage("SessionsStart", intervalMs + "," + intervalMs, new EmptyResponse());
     }
 
     public void StopReceivingSessionUpdates()
     {
-        SendWebSocketMessage("SessionsStop", "");
+        SendWebSocketMessage("SessionsStop", "", new EmptyResponse());
     }
 
     public void onMessage(String message){

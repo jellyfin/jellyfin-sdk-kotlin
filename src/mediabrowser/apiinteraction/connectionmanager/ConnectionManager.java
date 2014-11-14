@@ -1,5 +1,6 @@
-package mediabrowser.apiinteraction;
+package mediabrowser.apiinteraction.connectionmanager;
 
+import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.connect.ConnectService;
 import mediabrowser.apiinteraction.device.IDevice;
 import mediabrowser.apiinteraction.discovery.IServerLocator;
@@ -93,6 +94,7 @@ public class ConnectionManager implements IConnectionManager {
     }
 
     private void OnConnectUserSignIn(ConnectUser user){
+
         connectUser = user;
     }
 
@@ -145,13 +147,8 @@ public class ConnectionManager implements IConnectionManager {
 
     private void Connect(ArrayList<ServerInfo> servers, final Response<ConnectionResult> response){
 
-        Collections.sort(servers, new Comparator<ServerInfo>() {
-            @Override
-            public int compare(ServerInfo p1, ServerInfo p2) {
-                // Descending
-                return p2.getDateLastAccessed().compareTo(p1.getDateLastAccessed());
-            }
-        });
+        // Sort by last date accessed, descending
+        Collections.sort(servers, new ServerInfoDateComparator());
 
         if (servers.size() == 0){
 
@@ -241,7 +238,10 @@ public class ConnectionManager implements IConnectionManager {
                         final boolean enableWakeOnLan,
                         final Response<ConnectionResult> response) {
 
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getLocalAddress()))
+        // Try connect locally if there's a local address,
+        // and we're either on localhost or the device has a local connection
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getLocalAddress()) &&
+                (IsLocalHost(server.getLocalAddress()) || _networkConnectivity.getNetworkStatus().GetIsLocalNetworkAvailable()))
         {
             TryConnect(server.getLocalAddress(), new Response<PublicSystemInfo>(){
 
@@ -441,20 +441,25 @@ public class ConnectionManager implements IConnectionManager {
     }
 
     @Override
-    public void Connect(String address, final Response<ConnectionResult> response) {
+    public void Connect(final String address, final Response<ConnectionResult> response) {
 
-        address = NormalizeAddress(address);
+        final String normalizeAddress = NormalizeAddress(address);
 
         logger.Debug("Attempting to connect to server at %s", address);
 
-        final String finalAddress = address;
-        TryConnect(address, new Response<PublicSystemInfo>(){
+        TryConnect(normalizeAddress, new Response<PublicSystemInfo>(){
 
             @Override
             public void onResponse(PublicSystemInfo result) {
 
                 ServerInfo server = new ServerInfo();
-                server.setLocalAddress(finalAddress);
+
+                if (IsLocalHost(normalizeAddress))
+                {
+                    server.setIsLocalAddressFixed(true);
+                }
+
+                server.ImportInfo(result);
 
                 Connect(server, response);
             }
@@ -465,6 +470,12 @@ public class ConnectionManager implements IConnectionManager {
                 OnFailedConnection(response);
             }
         });
+    }
+
+    private boolean IsLocalHost(String address)
+    {
+        return StringHelper.IndexOfIgnoreCase(address, "localhost") != -1 ||
+                StringHelper.IndexOfIgnoreCase(address, "/127.") != -1;
     }
 
     @Override
@@ -584,30 +595,15 @@ public class ConnectionManager implements IConnectionManager {
         request.setUrl(url);
         request.setMethod("GET");
 
-        httpClient.Send(request, new Response<String>(){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                PublicSystemInfo obj = jsonSerializer.DeserializeFromString(jsonResponse, PublicSystemInfo.class);
-
-                response.onResponse(obj);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                response.onError(ex);
-            }
-        });
+        httpClient.Send(request, new SerializedResponse<PublicSystemInfo>(response, jsonSerializer, PublicSystemInfo.class));
     }
 
-    protected ApiClient InstantiateApiClient(String serverAdderss) {
+    protected ApiClient InstantiateApiClient(String serverAddress) {
 
         return new ApiClient(httpClient,
                 jsonSerializer,
                 logger,
-                serverAdderss,
+                serverAddress,
                 applicationName,
                 device,
                 applicationVersion,
@@ -939,31 +935,7 @@ public class ConnectionManager implements IConnectionManager {
 
         for(WakeOnLanInfo wakeOnLanInfo : wakeList){
 
-            WakeServer(wakeOnLanInfo, new EmptyResponse(){
-
-                private void OnServerDone(){
-                    synchronized(doneList) {
-
-                        doneList.add(new EmptyResponse());
-
-                        if (doneList.size() >= count){
-                            response.onResponse();
-                        }
-                    }
-                }
-
-                @Override
-                public void onResponse() {
-
-                    OnServerDone();
-                }
-
-                @Override
-                public void onError(Exception ex) {
-
-                    OnServerDone();
-                }
-            });
+            WakeServer(wakeOnLanInfo, new WakeServerResponse(doneList, response));
         }
     }
 

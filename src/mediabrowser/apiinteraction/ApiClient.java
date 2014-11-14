@@ -1168,9 +1168,13 @@ public class ApiClient extends BaseApiClient {
             return WebSocketConnection.SendAsync("ReportPlaybackProgress", JsonSerializer.SerializeToString(info));
         }*/
 
-        String url = GetApiUrl("Sessions/Playing/Progress");
-
-        PostAsync(url, info, response);
+        if (apiWebSocket != null && apiWebSocket.IsWebSocketOpen()){
+            apiWebSocket.SendWebSocketMessage("ReportPlaybackProgress", info, response);
+        }
+        else{
+            String url = GetApiUrl("Sessions/Playing/Progress");
+            PostAsync(url, info, response);
+        }
     }
 
     /// <summary>
@@ -2343,6 +2347,11 @@ public class ApiClient extends BaseApiClient {
         PostAsync(url, response);
 
         ClearAuthenticationInfo();
+
+        if (apiWebSocket != null && apiWebSocket.IsWebSocketOpenOrConnecting()){
+            apiWebSocket.Close();
+            apiWebSocket = null;
+        }
     }
 
     public void GetUserViews(String userId, final Response<ItemsResult> response)
@@ -2443,6 +2452,25 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Playlists/"+playlistId+"/Items", dict);
 
         DeleteAsync(url, response);
+    }
+
+    public void GetFilters(String userId,
+                           String parentId,
+                           String[] mediaTypes,
+                           String[] itemTypes,
+                           Response<QueryFilters> response) {
+
+        QueryStringDictionary queryString = new QueryStringDictionary();
+        queryString.AddIfNotNullOrEmpty("UserId", userId);
+        queryString.AddIfNotNullOrEmpty("ParentId", parentId);
+        queryString.AddIfNotNull("IncludeItemTypes", itemTypes);
+        queryString.AddIfNotNull("MediaTypes", mediaTypes);
+
+        String url = GetApiUrl("Items/Filters", queryString);
+
+        url = AddDataFormat(url);
+
+        Send(url, "GET", new SerializedResponse<QueryFilters>(response, jsonSerializer, QueryFilters.class));
     }
 
     public void GetDevicesOptions(final Response<DevicesOptions> response)
