@@ -134,18 +134,10 @@ public class ConnectionManager implements IConnectionManager {
 
         logger.Debug("Entering initial connection workflow");
 
-         GetAvailableServers(new Response<ArrayList<ServerInfo>>(){
-
-                @Override
-                public void onResponse(ArrayList<ServerInfo> servers) {
-
-                    logger.Debug("Looping through server list");
-                    Connect(servers, response);
-                }
-        });
+        GetAvailableServers(new GetAvailableServersResponse(logger, this, response));
     }
 
-    private void Connect(ArrayList<ServerInfo> servers, final Response<ConnectionResult> response){
+    void Connect(final ArrayList<ServerInfo> servers, final Response<ConnectionResult> response){
 
         // Sort by last date accessed, descending
         Collections.sort(servers, new ServerInfoDateComparator());
@@ -172,59 +164,26 @@ public class ConnectionManager implements IConnectionManager {
             return;
         }
 
-        ConnectToServerAtListIndex(servers, 0, response);
-    }
+        // Check the first server for a saved access token
+        ServerInfo firstServer = servers.get(0);
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(firstServer.getAccessToken()))
+        {
+            OnFailedConnection(response, servers);
+            return;
+        }
 
-    private void ConnectToServerAtListIndex(final ArrayList<ServerInfo> servers,
-                                            final int index,
-                                            final Response<ConnectionResult> response){
-
-        Response<ConnectionResult> innerResponse = new Response<ConnectionResult>(){
-
-            private void TryNextServer() {
-
-                int nextIndex = index + 1;
-                if (nextIndex < servers.size()) {
-
-                    logger.Debug("Trying next server");
-                    ConnectToServerAtListIndex(servers, nextIndex, response);
-
-                } else {
-
-                    // No connection is available
-                    OnFailedConnection(response, servers);
-                }
-            }
+        Connect(firstServer, new Response<ConnectionResult>() {
 
             @Override
             public void onResponse(ConnectionResult result) {
 
                 if (result.getState() == ConnectionState.SignedIn) {
-                    logger.Debug("Connected to server");
                     response.onResponse(result);
-
                 } else {
-                    TryNextServer();
+                    OnFailedConnection(response, servers);
                 }
             }
-
-            @Override
-            public void onError(Exception ex) {
-
-                TryNextServer();
-            }
-        };
-
-        ServerInfo server = servers.get(index);
-
-        // Try to connect if there's a saved access token
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
-        {
-            Connect(server, true, innerResponse);
-        }
-        else{
-            innerResponse.onError(null);
-        }
+        });
     }
 
     @Override

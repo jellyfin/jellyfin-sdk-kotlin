@@ -1139,11 +1139,6 @@ public class ApiClient extends BaseApiClient {
         }
 
         Logger.Debug("ReportPlaybackStart: Item {0}", info.getItem());
- 
-        /*if (WebSocketConnection != null && WebSocketConnection.IsConnected)
-        {
-            return WebSocketConnection.SendAsync("ReportPlaybackStart", JsonSerializer.SerializeToString(info));
-        }*/
 
         String url = GetApiUrl("Sessions/Playing");
 
@@ -1162,11 +1157,6 @@ public class ApiClient extends BaseApiClient {
         {
             throw new IllegalArgumentException("info");
         }
- 
-        /*if (WebSocketConnection != null && WebSocketConnection.IsConnected)
-        {
-            return WebSocketConnection.SendAsync("ReportPlaybackProgress", JsonSerializer.SerializeToString(info));
-        }*/
 
         if (apiWebSocket != null && apiWebSocket.IsWebSocketOpen()){
             apiWebSocket.SendWebSocketMessage("ReportPlaybackProgress", info, response);
@@ -1189,11 +1179,6 @@ public class ApiClient extends BaseApiClient {
         {
             throw new IllegalArgumentException("info");
         }
- 
-        /*if (WebSocketConnection != null && WebSocketConnection.IsConnected)
-        {
-            return WebSocketConnection.SendAsync("ReportPlaybackStopped", JsonSerializer.SerializeToString(info));
-        }*/
 
         String url = GetApiUrl("Sessions/Playing/Stopped");
 
