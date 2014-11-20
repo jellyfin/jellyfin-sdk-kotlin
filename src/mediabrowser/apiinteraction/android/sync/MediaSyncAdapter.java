@@ -6,14 +6,10 @@ import android.content.ContentProviderClient;
 import android.content.Context;
 import android.content.SyncResult;
 import android.os.Bundle;
-import mediabrowser.apiinteraction.ApiClient;
-import mediabrowser.apiinteraction.ApiEventListener;
-import mediabrowser.apiinteraction.ConsoleLogger;
-import mediabrowser.apiinteraction.android.AndroidApiClient;
-import mediabrowser.apiinteraction.android.GsonJsonSerializer;
-import mediabrowser.apiinteraction.android.VolleyHttpClient;
+import mediabrowser.apiinteraction.*;
+import mediabrowser.apiinteraction.android.*;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
-import mediabrowser.apiinteraction.sync.ContentUploader;
+import mediabrowser.apiinteraction.sync.MultiServerSync;
 import mediabrowser.apiinteraction.tasks.CancellationTokenSource;
 import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.logging.ILogger;
@@ -30,40 +26,43 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
 
-        String serverAddress = "";
-        String accessToken = "";
-        ILogger logger = new ConsoleLogger();
         Context context = getContext();
 
-        IAsyncHttpClient httpClient = new VolleyHttpClient(logger, context);
+        ILogger logger = new ConsoleLogger();
         IJsonSerializer jsonSerializer = new GsonJsonSerializer();
-        ApiEventListener listener = new ApiEventListener();
-        ClientCapabilities capabilities = new ClientCapabilities();
 
-        ApiClient apiClient = new AndroidApiClient(httpClient,
+        IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, context);
+
+        ClientCapabilities capabilities = new ClientCapabilities();
+        capabilities.setSupportsContentUploading(true);
+
+        ApiEventListener apiEventListener = new ApiEventListener();
+
+        IConnectionManager connectionManager = new AndroidConnectionManager(context,
                 jsonSerializer,
                 logger,
-                serverAddress,
-                accessToken,
-                listener,
-                capabilities);
+                volleyHttpClient,
+                "App Name",
+                "App Version",
+                capabilities,
+                apiEventListener);
 
-        Sync(apiClient, logger, syncResult);
-    }
-
-    private void Sync(ApiClient apiClient, ILogger logger, SyncResult syncResult){
+        connectionManager.setReportCapabilitiesEnabled(false);
+        connectionManager.setWebSocketEnabled(false);
 
         CancellationTokenSource source = new CancellationTokenSource();
 
-        new ContentUploader(apiClient, logger).UploadImages(new Progress<Double>(){
+        new MultiServerSync(connectionManager, logger).Sync(source.getToken(), new Progress<Double>() {
 
             @Override
             public void onProgress(Double percent) {
+
 
             }
 
             @Override
             public void onComplete() {
+
 
             }
 
@@ -75,8 +74,8 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
             @Override
             public void onError(Exception ex) {
 
-            }
 
-        }, source.getToken());
+            }
+        });
     }
 }

@@ -5,6 +5,7 @@ import mediabrowser.model.dto.IHasServerId;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Observable;
 
 public interface IConnectionManager {
@@ -23,5 +24,11 @@ public interface IConnectionManager {
 
     Observable getConnectedObservable();
 
+    void GetAvailableServers(final Response<ArrayList<ServerInfo>> response);
+
     void LoginToConnect(String username, String password, final EmptyResponse response)  throws UnsupportedEncodingException, NoSuchAlgorithmException;
+
+    void setWebSocketEnabled(boolean enabled);
+
+    void setReportCapabilitiesEnabled(boolean enabled);
 }

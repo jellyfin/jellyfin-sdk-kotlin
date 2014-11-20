@@ -1755,6 +1755,9 @@ public class ApiClient extends BaseApiClient {
         dict.AddIfNotNull("PlayableMediaTypes", capabilities.getPlayableMediaTypes());
         dict.AddIfNotNull("SupportedCommands", capabilities.getSupportedCommands());
 
+        dict.Add("SupportsContentUploading", capabilities.getSupportsContentUploading());
+        dict.Add("SupportsMediaControl", capabilities.getSupportsMediaControl());
+
         String url = GetApiUrl("Sessions/Capabilities", dict);
 
         PostAsync(url, response);

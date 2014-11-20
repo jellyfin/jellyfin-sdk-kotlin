@@ -19,8 +19,10 @@ import mediabrowser.model.session.ClientCapabilities;
 import mediabrowser.model.system.PublicSystemInfo;
 import mediabrowser.model.system.SystemInfo;
 import mediabrowser.model.users.AuthenticationResult;
+import org.apache.maven.settings.Server;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Array;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
@@ -79,6 +81,18 @@ public class ConnectionManager implements IConnectionManager {
             }
 
         });
+    }
+
+    private boolean webSocketEnabled = true;
+    @Override
+    public void setWebSocketEnabled(boolean enabled) {
+        webSocketEnabled = enabled;
+    }
+
+    private boolean reportCapabilities = true;
+    @Override
+    public void setReportCapabilitiesEnabled(boolean enabled) {
+        reportCapabilities = enabled;
     }
 
     @Override
@@ -610,7 +624,9 @@ public class ConnectionManager implements IConnectionManager {
 
     private void EnsureWebSocketIfConfigured(ApiClient apiClient)
     {
-        apiClient.OpenWebSocket();
+        if (webSocketEnabled){
+            apiClient.OpenWebSocket();
+        }
     }
 
     private void OnAuthenticated(final ApiClient apiClient,
@@ -656,7 +672,7 @@ public class ConnectionManager implements IConnectionManager {
 
     }
 
-    private void GetAvailableServers(final Response<ArrayList<ServerInfo>> response)
+    public void GetAvailableServers(final Response<ArrayList<ServerInfo>> response)
     {
         NetworkStatus networkInfo = _networkConnectivity.getNetworkStatus();
 
@@ -674,7 +690,7 @@ public class ConnectionManager implements IConnectionManager {
 
                     numTasksCompleted[0]++;
 
-                    OnGetServerResponse(credentials, foundServers, response, numTasksCompleted[0] >= numTasks);
+                    OnGetServerResponse(credentials, foundServers, false, response, numTasksCompleted[0] >= numTasks);
                 }
             }
 
@@ -708,7 +724,7 @@ public class ConnectionManager implements IConnectionManager {
 
                     numTasksCompleted[0]++;
 
-                    OnGetServerResponse(credentials, ConvertServerList(foundServers), response, numTasksCompleted[0] >= numTasks);
+                    OnGetServerResponse(credentials, ConvertServerList(foundServers), true, response, numTasksCompleted[0] >= numTasks);
                 }
             }
 
@@ -769,6 +785,8 @@ public class ConnectionManager implements IConnectionManager {
 
         ConnectUserQuery query = new ConnectUserQuery();
 
+        query.setId(credentials.getConnectUserId());
+
         connectService.GetConnectUser(query, credentials.getConnectAccessToken(), new Response<ConnectUser>(){
 
             @Override
@@ -788,12 +806,49 @@ public class ConnectionManager implements IConnectionManager {
 
     private void OnGetServerResponse(ServerCredentials credentials,
                                      ArrayList<ServerInfo> foundServers,
+                                     boolean cleanServers,
                                      Response<ArrayList<ServerInfo>> response,
                                      boolean isComplete){
 
         for(ServerInfo newServer : foundServers){
 
             credentials.AddOrUpdateServer(newServer);
+        }
+
+        if (cleanServers){
+
+            ArrayList<ServerInfo> cleanList = new ArrayList<ServerInfo>();
+            ArrayList<ServerInfo> existing = credentials.getServers();
+
+            for(ServerInfo server : existing){
+
+                if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getExchangeToken()))
+                {
+                    cleanList.add(server);
+                    continue;
+                }
+
+                boolean found = false;
+
+                for(ServerInfo connectServer : foundServers){
+
+                    if (StringHelper.EqualsIgnoreCase(server.getId(), connectServer.getId())){
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found)
+                {
+                    cleanList.add(server);
+                    continue;
+                }
+                else{
+                    logger.Debug("Dropping server "+server.getName()+" - "+server.getId()+" because it's no longer in the user's Connect profile.");
+                }
+            }
+
+            credentials.setServers(cleanList);
         }
 
         if (isComplete){

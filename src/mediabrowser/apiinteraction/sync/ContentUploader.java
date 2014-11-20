@@ -34,6 +34,8 @@ public class ContentUploader {
 
                 final String deviceId = apiClient.getDeviceId();
 
+                logger.Debug("Camera upload is enabled for "+options.getEnabledCameraUploadDevices()[0]);
+                logger.Debug("Looking for deviceId " + deviceId);
                 if (!ListHelper.ContainsIgnoreCase(options.getEnabledCameraUploadDevices(), deviceId))
                 {
                     logger.Debug("Camera upload is not enabled for this device.");
@@ -47,7 +49,7 @@ public class ContentUploader {
             @Override
             public void onError(Exception ex) {
 
-                progress.reportError(null);
+                progress.reportError(ex);
             }
 
         });
@@ -66,7 +68,7 @@ public class ContentUploader {
             @Override
             public void onError(Exception ex) {
 
-                progress.reportError(null);
+                progress.reportError(ex);
             }
         });
     }
@@ -78,9 +80,15 @@ public class ContentUploader {
         IDevice device = apiClient.getDevice();
 
         ArrayList<LocalFileInfo> files = device.GetLocalPhotos();
-        files.addAll(device.GetLocalVideos());
+        logger.Debug("Found "+files.size()+" photos on device");
+
+        ArrayList<LocalFileInfo> videos = device.GetLocalVideos();
+        logger.Debug("Found "+videos.size()+" videos on device");
+        files.addAll(videos);
 
         files = GetFilesToUpload(history, files);
+
+        logger.Debug("ContentUploader will upload "+files.size()+" files");
 
         UploadNext(files, 0, device, cancellationToken, progress);
     }
@@ -105,6 +113,8 @@ public class ContentUploader {
 
         LocalFileInfo file = files.get(index);
 
+        logger.Debug("ContentUploader will upload file " + file.getName());
+
         UploadFile(file, device, new Progress<Double>(){
 
             private void GoNext() {
@@ -126,6 +136,7 @@ public class ContentUploader {
             public void onError(Exception ex) {
 
                 progress.reportError(ex);
+                GoNext();
             }
 
             @Override
@@ -173,10 +184,10 @@ public class ContentUploader {
                             IProgress<Double> progress,
                             CancellationToken cancellationToken) {
 
-        logger.Info("Uploading file id", file.getId());
-        logger.Info("Uploading file name", file.getName());
-        logger.Info("Uploading file album", file.getAlbum());
-        logger.Info("Uploading file mime type", file.getMimeType());
+        logger.Info("Uploading file id: "+ file.getId());
+        logger.Info("Uploading file name: "+ file.getName());
+        logger.Info("Uploading file album: "+ file.getAlbum());
+        logger.Info("Uploading file mime type: "+ file.getMimeType());
 
         device.UploadFile(file, apiClient, progress, cancellationToken);
     }
