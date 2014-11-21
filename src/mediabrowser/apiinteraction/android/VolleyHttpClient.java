@@ -14,6 +14,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,17 +56,22 @@ public class VolleyHttpClient implements IAsyncHttpClient {
     }
 
     public ImageLoader getImageLoader() {
+
         getRequestQueue();
         if (mImageLoader == null) {
-            mImageLoader = new ImageLoader(mRequestQueue, new ImageLoader.ImageCache() {
-                private final LruCache<String, Bitmap> mCache = new LruCache<String, Bitmap>(10);
-                public void putBitmap(String url, Bitmap bitmap) {
-                    mCache.put(url, bitmap);
-                }
-                public Bitmap getBitmap(String url) {
-                    return mCache.get(url);
-                }
-            });
+
+            ImageLoader.ImageCache cache;
+
+            try {
+                int byteSize = 500000000;
+                cache = new DiskLruImageCache(context, "MediaBrowser", byteSize, logger);
+            }
+            catch (IOException ex){
+                logger.ErrorException("Failed to load DiskLruImageCache. Reverting to LruBitmapCache.", ex);
+                cache = new LruBitmapCache();
+            }
+
+            mImageLoader = new ImageLoader(this.mRequestQueue, cache);
         }
         return this.mImageLoader;
     }
