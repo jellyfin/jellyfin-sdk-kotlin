@@ -5,6 +5,7 @@ import mediabrowser.apiinteraction.device.IDevice;
 import mediabrowser.apiinteraction.android.VolleyHttpClient;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.apiinteraction.serialization.BoonJsonSerializer;
+import mediabrowser.logging.ConsoleLogger;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.model.session.ClientCapabilities;

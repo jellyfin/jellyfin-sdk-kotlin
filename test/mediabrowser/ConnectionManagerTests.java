@@ -8,6 +8,7 @@ import mediabrowser.apiinteraction.android.AndroidNetworkConnection;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.apiinteraction.serialization.BoonJsonSerializer;
 import android.content.Context;
+import mediabrowser.logging.ConsoleLogger;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.model.session.ClientCapabilities;

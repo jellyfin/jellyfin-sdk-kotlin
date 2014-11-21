@@ -1,4 +1,4 @@
-package mediabrowser.apiinteraction;
+package mediabrowser.logging;
 
 import mediabrowser.model.logging.ILogger;
 

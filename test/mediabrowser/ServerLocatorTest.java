@@ -1,6 +1,6 @@
 package mediabrowser;
 
-import mediabrowser.apiinteraction.ConsoleLogger;
+import mediabrowser.logging.ConsoleLogger;
 import mediabrowser.apiinteraction.discovery.ServerLocator;
 import mediabrowser.apiinteraction.serialization.BoonJsonSerializer;
 import mediabrowser.apiinteraction.Response;

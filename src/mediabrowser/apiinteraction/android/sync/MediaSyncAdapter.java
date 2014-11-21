@@ -12,6 +12,7 @@ import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.apiinteraction.sync.MultiServerSync;
 import mediabrowser.apiinteraction.tasks.CancellationTokenSource;
 import mediabrowser.apiinteraction.tasks.Progress;
+import mediabrowser.logging.ConsoleLogger;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.model.session.ClientCapabilities;

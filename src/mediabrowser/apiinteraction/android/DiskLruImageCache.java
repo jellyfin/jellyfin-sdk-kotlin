@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import com.android.volley.BuildConfig;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.ImageLoader;
-import com.squareup.okhttp.internal.DiskLruCache;
+import com.jakewharton.disklrucache.DiskLruCache;
 import mediabrowser.model.logging.ILogger;
 
 import java.io.*;
