@@ -34,6 +34,8 @@ public class VolleyHttpClient implements IAsyncHttpClient {
     private ILogger logger;
     private Context context;
 
+    private ImageCacheManager cacheManager;
+
     public VolleyHttpClient(ILogger logger, Context context) {
         this.logger = logger;
         this.context = context;
@@ -57,23 +59,11 @@ public class VolleyHttpClient implements IAsyncHttpClient {
 
     public ImageLoader getImageLoader() {
 
-        getRequestQueue();
-        if (mImageLoader == null) {
+        if (cacheManager == null) {
 
-            ImageLoader.ImageCache cache;
-
-            try {
-                int byteSize = 500000000;
-                cache = new DiskLruImageCache(context, "MediaBrowser", byteSize, logger);
-            }
-            catch (IOException ex){
-                logger.ErrorException("Failed to load DiskLruImageCache. Reverting to LruBitmapCache.", ex);
-                cache = new LruBitmapCache();
-            }
-
-            mImageLoader = new ImageLoader(this.mRequestQueue, cache);
+            cacheManager = new ImageCacheManager(context, logger, getRequestQueue(), "MediaBrowser");
         }
-        return this.mImageLoader;
+        return cacheManager.getImageLoader();
     }
 
     /**
