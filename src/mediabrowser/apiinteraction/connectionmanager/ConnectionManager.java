@@ -204,18 +204,30 @@ public class ConnectionManager implements IConnectionManager {
     public void Connect(final ServerInfo server,
                         final Response<ConnectionResult> response) {
 
-        Connect(server, true, response);
+        Connect(server, true, true, response);
     }
 
     private void Connect(final ServerInfo server,
                         final boolean enableWakeOnLan,
+                        final boolean enableLocalRetry,
                         final Response<ConnectionResult> response) {
+
+        boolean isLocalhost = !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getLocalAddress()) &&
+                IsLocalHost(server.getLocalAddress());
 
         // Try connect locally if there's a local address,
         // and we're either on localhost or the device has a local connection
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getLocalAddress()) &&
-                (IsLocalHost(server.getLocalAddress()) || _networkConnectivity.getNetworkStatus().GetIsLocalNetworkAvailable()))
+                (isLocalhost) || _networkConnectivity.getNetworkStatus().GetIsLocalNetworkAvailable())
         {
+            final boolean retryLocal = enableLocalRetry && !isLocalhost;
+
+            if (enableWakeOnLan && !isLocalhost){
+                // Kick this off
+                WakeServer(server, new EmptyResponse());
+            }
+            final long wakeTime = new Date().getTime();
+
             TryConnect(server.getLocalAddress(), new Response<PublicSystemInfo>(){
 
                 @Override
@@ -227,33 +239,26 @@ public class ConnectionManager implements IConnectionManager {
                 @Override
                 public void onError(Exception ex) {
 
-                    // Wake on lan and try again
-                    if (enableWakeOnLan && server.getWakeOnLanInfos().size() > 0)
-                    {
-                        WakeServer(server, new EmptyResponse() {
+                    if (retryLocal){
 
-                            @Override
-                            public void onResponse() {
+                        long sleepTime = 10000 - (new Date().getTime() - wakeTime);
 
-                                // Try local connection again
-                                Connect(server, false, response);
+                        if (sleepTime > 0){
+                            try {
+                                Thread.sleep(sleepTime, 0);
+                            } catch (InterruptedException e) {
+                                logger.ErrorException("Error in Thread.Sleep", e);
                             }
+                        }
 
-                            @Override
-                            public void onError(Exception ex) {
-
-                                // No local connection available
-                                TryConnectToRemoteAddress(server, response);
-                            }
-                        });
-
-                        return;
+                        // Try local connection again
+                        Connect(server, false, false, response);
                     }
-
-                    // No local connection available
-                    TryConnectToRemoteAddress(server, response);
+                    else{
+                        // No local connection available
+                        TryConnectToRemoteAddress(server, response);
+                    }
                 }
-
             });
 
             return;

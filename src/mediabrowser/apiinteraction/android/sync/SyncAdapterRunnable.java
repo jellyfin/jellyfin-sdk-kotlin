@@ -25,6 +25,6 @@ public class SyncAdapterRunnable implements Runnable {
 
     @Override
     public void run() {
-        new MultiServerSync(connectionManager, logger).Sync(cancellationToken, new MultiServerSyncProgress(syncResult, contentResolver));
+        new MultiServerSync(connectionManager, logger).Sync(cancellationToken, new MultiServerSyncProgress(syncResult, contentResolver, logger));
     }
 }

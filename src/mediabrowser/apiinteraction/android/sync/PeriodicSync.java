@@ -30,4 +30,10 @@ public class PeriodicSync {
                 syncIntervalMs);
 
     }
+
+    public void Create() {
+
+        // Default to hourly
+        Create(3600000);
+    }
 }

@@ -230,5 +230,34 @@ Android is fully supported, and special subclasses are provided for it:
 
 AndroidApiClient includes a getImageLoader() method that will return a Volley ImageLoader.
 
+At minimum, this library requires the following permissions declared in AndroidManifest.xml:
+
+- INTERNET
+- ACCESS_NETWORK_STATE
+- READ_EXTERNAL_STORAGE
+
+
+# Android Syncing #
+
+This library includes all code needed for automatic camera image uploading, and mobile sync. All that's needed for Android apps is wiring up the service. 
+
+### authenticator.xml ###
+
+This file is required within res/xml. A sample is available, can be used by most apps without any modification.
+
+### syncadapter.xml ###
+
+This file is required within res/xml. A sample is available, can be used by most apps without any modification.
+
+### AndroidManifest.xml ###
+
+Syncing requires additional permissions to be declared:
+
+- READ_SYNC_STATS
+- WRITE_SYNC_SETTINGS
+- AUTHENTICATE_ACCOUNTS
+
+In addition, it requires three xml nodes to declare sync-related services. These are a provider node, and two service nodes. A sample can be found here. Most applications should generally be able to use it without modification.
+
 
 Special thanks to [Tangible Software Solutions](http://www.tangiblesoftwaresolutions.com/ "Tangible Software Solutions") for donating a license to our project.

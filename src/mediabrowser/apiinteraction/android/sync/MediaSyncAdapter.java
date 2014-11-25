@@ -1,10 +1,7 @@
 package mediabrowser.apiinteraction.android.sync;
 
 import android.accounts.Account;
-import android.content.AbstractThreadedSyncAdapter;
-import android.content.ContentProviderClient;
-import android.content.Context;
-import android.content.SyncResult;
+import android.content.*;
 import android.os.Bundle;
 import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.android.*;
@@ -41,12 +38,29 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
         ApiEventListener apiEventListener = new ApiEventListener();
 
+        SharedPreferences preferences = context.getSharedPreferences("AndroidConnectionManager", Context.MODE_PRIVATE);
+
+        String appName = preferences.getString("appName", null);
+        String appVersion = preferences.getString("appVersion", null);
+
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(appName))
+        {
+            logger.Info("appName not set yet. Skipping sync.");
+            return;
+        }
+
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(appVersion))
+        {
+            logger.Info("appVersion not set yet. Skipping sync.");
+            return;
+        }
+
         IConnectionManager connectionManager = new AndroidConnectionManager(context,
                 jsonSerializer,
                 logger,
                 volleyHttpClient,
-                "App Name",
-                "App Version",
+                appName,
+                appVersion,
                 capabilities,
                 apiEventListener);
 
@@ -55,6 +69,6 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
         CancellationTokenSource source = new CancellationTokenSource();
 
-        new MultiServerSync(connectionManager, logger).Sync(source.getToken(), new MultiServerSyncProgress(syncResult, context.getContentResolver()));
+        new MultiServerSync(connectionManager, logger).Sync(source.getToken(), new MultiServerSyncProgress(syncResult, context.getContentResolver(), logger));
     }
 }

@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction.android;
 
+import android.content.SharedPreferences;
 import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.connectionmanager.ConnectionManager;
 import mediabrowser.apiinteraction.discovery.IServerLocator;
@@ -27,6 +28,21 @@ public class AndroidConnectionManager extends ConnectionManager {
                 applicationVersion,
                 new AndroidDevice(context),
                 clientCapabilities, apiEventListener);
+
+        SaveAppInfo(context);
+    }
+
+    private void SaveAppInfo(Context context){
+
+        SharedPreferences preferences = context.getSharedPreferences("AndroidConnectionManager", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString("appName", applicationName);
+        editor.putString("appVersion", applicationVersion);
+
+        // Commit the edits!
+        editor.commit();
     }
 
     @Override

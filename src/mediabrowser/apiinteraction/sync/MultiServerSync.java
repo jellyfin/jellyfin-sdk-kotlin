@@ -51,19 +51,27 @@ public class MultiServerSync {
             progress.reportCancelled();
         }
 
-        ServerInfo server = servers.get(index);
+        final ServerInfo server = servers.get(index);
+        final double numServers = servers.size();
+        final double[] numComplete = {0};
 
         new ServerSync(connectionManager, logger).Sync(server, cancellationToken, new SyncProgress(){
 
             private void OnServerDone(){
 
-                SyncNext(servers, index+ 1, cancellationToken, progress);
+                numComplete[0]++;
+                double percent = numComplete[0] / numServers;
+                progress.report(percent * 100);
+
+                SyncNext(servers, index + 1, cancellationToken, progress);
             }
 
             @Override
-            public void onProgress(Double percent) {
+            public void onProgress(Double serverPercent) {
 
-
+                double percent = numComplete[0] / numServers;
+                percent += (serverPercent / 100);
+                progress.report(percent * 100);
             }
 
             @Override

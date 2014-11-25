@@ -2461,6 +2461,15 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<QueryFilters>(response, jsonSerializer, QueryFilters.class));
     }
 
+/*    public void GetLiveMediaInfo(String itemId, String userId, final Response<LiveMediaInfoResult> response)
+    {
+        String url = GetApiUrl("System/Configuration/devices");
+
+        url = AddDataFormat(url);
+
+        Send(url, "GET", new SerializedResponse<LiveMediaInfoResult>(response, jsonSerializer, LiveMediaInfoResult.class));
+    }*/
+
     public void GetDevicesOptions(final Response<DevicesOptions> response)
     {
         String url = GetApiUrl("System/Configuration/devices");
