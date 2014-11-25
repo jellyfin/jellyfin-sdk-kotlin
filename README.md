@@ -259,5 +259,18 @@ Syncing requires additional permissions to be declared:
 
 In addition, it requires three xml nodes to declare sync-related services. These are a provider node, and two service nodes. A sample can be found [here](https://github.com/MediaBrowser/MediaBrowser.ApiClient.Java/blob/master/android/samples/AndroidManifest.xml "here"). Most applications should generally be able to use it without modification.
 
+Finally, when the application starts, start a periodic background sync.
+
+
+> new PeriodicSync(context).Run();
+
+This will trigger a periodic sync that will run on a schedule, and will be managed by the system sync manager. It will take into consideration various factors such as battery level, network connection, etc.
+
+For testing purposes, an immediate sync can be requested via:
+
+> new OnDemandSync(context).Run();
+
+
+
 
 Special thanks to [Tangible Software Solutions](http://www.tangiblesoftwaresolutions.com/ "Tangible Software Solutions") for donating a license to our project.
