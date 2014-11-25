@@ -25,7 +25,7 @@ public class ContentUploader {
         this.logger = logger;
     }
 
-    public void UploadImages(final IProgress<Double> progress, final CancellationToken cancellationToken) {
+    public void UploadImages(final SyncProgress progress, final CancellationToken cancellationToken) {
 
         apiClient.GetDevicesOptions(new Response<DevicesOptions>(){
 
@@ -55,7 +55,7 @@ public class ContentUploader {
         });
     }
 
-    private void UploadImagesInternal(final IProgress<Double> progress, final CancellationToken cancellationToken){
+    private void UploadImagesInternal(final SyncProgress progress, final CancellationToken cancellationToken){
 
         apiClient.GetContentUploadHistory(new Response<ContentUploadHistory>() {
 
@@ -75,7 +75,7 @@ public class ContentUploader {
 
     private void UploadImagesInternal(ContentUploadHistory history,
                                       CancellationToken cancellationToken,
-                                      IProgress<Double> progress){
+                                      SyncProgress progress){
 
         IDevice device = apiClient.getDevice();
 
@@ -97,7 +97,7 @@ public class ContentUploader {
                             final int index,
                             final IDevice device,
                             final CancellationToken cancellationToken,
-                            final IProgress<Double> progress) {
+                            final SyncProgress progress) {
 
         if (index >= files.size()){
 
@@ -111,7 +111,7 @@ public class ContentUploader {
             return;
         }
 
-        LocalFileInfo file = files.get(index);
+        final LocalFileInfo file = files.get(index);
 
         logger.Debug("ContentUploader will upload file " + file.getName());
 
@@ -129,20 +129,21 @@ public class ContentUploader {
             @Override
             public void onComplete() {
 
+                progress.onFileUploaded(file);
                 GoNext();
             }
 
             @Override
             public void onError(Exception ex) {
 
-                progress.reportError(ex);
+                progress.onFileUploadError(file, ex);
                 GoNext();
             }
 
             @Override
             public void onCancelled() {
 
-                progress.reportCancelled();
+                GoNext();
             }
 
             @Override

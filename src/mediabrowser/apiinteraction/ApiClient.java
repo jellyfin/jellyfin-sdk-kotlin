@@ -2549,13 +2549,18 @@ public class ApiClient extends BaseApiClient {
                 progress.reportComplete();
             }
             else{
-                progress.reportError(null);
+
+                HttpException ex = new HttpException(conn.getResponseMessage());
+                ex.setStatusCode(conn.getResponseCode());
+
+                progress.reportError(ex);
             }
 
         }
         catch (Exception ex) {
 
-            progress.reportError(ex);
+            Logger.ErrorException("Error uploading file", ex);
+            progress.reportError(new HttpException(ex.getMessage()));
         }
         finally {
 

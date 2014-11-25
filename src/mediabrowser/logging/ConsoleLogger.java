@@ -31,11 +31,29 @@ public class ConsoleLogger implements ILogger {
 
     @Override
     public void FatalException(String message, Exception exception, Object... paramList) {
-        System.out.println(String.format(message, paramList));
+
+        LogException(message, exception, paramList);
     }
 
     @Override
     public void ErrorException(String message, Exception exception, Object... paramList) {
-        System.out.println(String.format(message, paramList));
+        LogException(message, exception, paramList);
+    }
+
+    private void LogException(String message, Exception exception, Object... paramList) {
+
+        String msg = String.format(message, paramList);
+
+        String exceptionMessage = exception.getMessage();
+
+        if (exceptionMessage != null){
+            msg += System.lineSeparator() +  exceptionMessage;
+        }
+
+        for (StackTraceElement elem : exception.getStackTrace()) {
+            msg += System.lineSeparator() +  elem.toString();
+        }
+
+        System.out.println(msg);
     }
 }

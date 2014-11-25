@@ -3,10 +3,9 @@ package mediabrowser.apiinteraction.sync;
 import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.apiinteraction.tasks.CancellationTokenSource;
-import mediabrowser.apiinteraction.tasks.IProgress;
-import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.apiclient.ConnectionState;
 import mediabrowser.model.apiclient.ServerInfo;
+import mediabrowser.model.devices.LocalFileInfo;
 import mediabrowser.model.logging.ILogger;
 
 public class ServerSync {
@@ -19,7 +18,7 @@ public class ServerSync {
         this.connectionManager = connectionManager;
     }
 
-    public void Sync(final ServerInfo server, final CancellationToken cancellationToken, final IProgress progress){
+    public void Sync(final ServerInfo server, final CancellationToken cancellationToken, final SyncProgress progress){
 
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()) &&
                 tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getExchangeToken()))
@@ -33,7 +32,7 @@ public class ServerSync {
             @Override
             public void onResponse(ConnectionResult result) {
 
-                if (result.getState() == ConnectionState.ConnectSignIn) {
+                if (result.getState() == ConnectionState.SignedIn) {
 
                     Sync(server, result.getApiClient(), cancellationToken, progress);
 
@@ -54,16 +53,16 @@ public class ServerSync {
         logger.Info("Skipping sync process for server " + server.getName() + ". No server authentication information available.");
     }
 
-    private void Sync(final ServerInfo server, ApiClient apiClient, CancellationToken cancellationToken, final IProgress progress){
+    private void Sync(final ServerInfo server, ApiClient apiClient, CancellationToken cancellationToken, final SyncProgress progress){
 
         final CancellationTokenSource innerCancellationSource = new CancellationTokenSource();
 
-        new ContentUploader(apiClient, logger).UploadImages(new Progress<Double>(){
+        new ContentUploader(apiClient, logger).UploadImages(new SyncProgress(){
 
             @Override
             public void onProgress(Double percent) {
 
-                logger.Info("Sync progress " + percent + "% to server " + server.getName());
+                logger.Info("Sync progress " + percent + " percent to server " + server.getName());
                 progress.report(percent);
             }
 
@@ -72,6 +71,12 @@ public class ServerSync {
 
                 logger.Info("Sync complete to server " + server.getName());
                 progress.reportComplete();
+            }
+
+            @Override
+            public void onFileUploaded(LocalFileInfo file) {
+
+                progress.onFileUploaded(file);
             }
 
             @Override
@@ -85,7 +90,14 @@ public class ServerSync {
             public void onError(Exception ex) {
 
                 logger.ErrorException("Error syncing to server " + server.getName(), ex);
-                innerCancellationSource.cancel();
+                progress.reportError(ex);
+            }
+
+            @Override
+            public void onFileUploadError(LocalFileInfo file, Exception ex) {
+
+                logger.ErrorException("Error syncing to server " + server.getName(), ex);
+                progress.onFileUploadError(file, ex);
             }
 
         }, innerCancellationSource.getToken());

@@ -6,6 +6,7 @@ import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.apiinteraction.tasks.IProgress;
 import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.apiclient.ServerInfo;
+import mediabrowser.model.devices.LocalFileInfo;
 import mediabrowser.model.logging.ILogger;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class MultiServerSync {
         this.logger = logger;
     }
 
-    public void Sync(final CancellationToken cancellationToken, final IProgress<Double> progress){
+    public void Sync(final CancellationToken cancellationToken, final SyncProgress progress){
 
         connectionManager.GetAvailableServers(new Response<ArrayList<ServerInfo>>(){
 
@@ -38,7 +39,7 @@ public class MultiServerSync {
         });
     }
 
-    private void SyncNext(final ArrayList<ServerInfo> servers, final int index, final CancellationToken cancellationToken, final IProgress<Double> progress){
+    private void SyncNext(final ArrayList<ServerInfo> servers, final int index, final CancellationToken cancellationToken, final SyncProgress progress){
 
         if (index >= servers.size()){
 
@@ -52,9 +53,10 @@ public class MultiServerSync {
 
         ServerInfo server = servers.get(index);
 
-        new ServerSync(connectionManager, logger).Sync(server, cancellationToken, new Progress<Double>(){
+        new ServerSync(connectionManager, logger).Sync(server, cancellationToken, new SyncProgress(){
 
             private void OnServerDone(){
+
                 SyncNext(servers, index+ 1, cancellationToken, progress);
             }
 
@@ -71,7 +73,14 @@ public class MultiServerSync {
             }
 
             @Override
+            public void onFileUploaded(LocalFileInfo file) {
+
+                progress.onFileUploaded(file);
+            }
+
+            @Override
             public void onCancelled() {
+
                 OnServerDone();
             }
 
@@ -79,6 +88,12 @@ public class MultiServerSync {
             public void onError(Exception ex) {
 
                 OnServerDone();
+            }
+
+            @Override
+            public void onFileUploadError(LocalFileInfo file, Exception ex) {
+
+                progress.onFileUploadError(file, ex);
             }
         });
     }
