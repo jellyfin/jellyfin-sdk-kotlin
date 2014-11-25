@@ -10,11 +10,8 @@ import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.android.*;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.apiinteraction.sync.MultiServerSync;
-import mediabrowser.apiinteraction.sync.SyncProgress;
 import mediabrowser.apiinteraction.tasks.CancellationTokenSource;
-import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.logging.ConsoleLogger;
-import mediabrowser.model.devices.LocalFileInfo;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.model.session.ClientCapabilities;
@@ -58,37 +55,6 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
         CancellationTokenSource source = new CancellationTokenSource();
 
-        new MultiServerSync(connectionManager, logger).Sync(source.getToken(), new SyncProgress() {
-
-            @Override
-            public void onProgress(Double percent) {
-
-
-            }
-
-            @Override
-            public void onFileUploaded(LocalFileInfo file) {
-
-                syncResult.stats.numEntries++;
-            }
-
-            @Override
-            public void onComplete() {
-
-                // Entire process completed
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                // Entire process failed
-            }
-
-            @Override
-            public void onFileUploadError(LocalFileInfo file, Exception ex) {
-
-                syncResult.stats.numIoExceptions++;
-            }
-        });
+        new MultiServerSync(connectionManager, logger).Sync(source.getToken(), new MultiServerSyncProgress(syncResult, context.getContentResolver()));
     }
 }

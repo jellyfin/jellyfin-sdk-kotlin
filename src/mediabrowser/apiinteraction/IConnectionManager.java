@@ -1,6 +1,9 @@
 package mediabrowser.apiinteraction;
 
 import mediabrowser.model.apiclient.ServerInfo;
+import mediabrowser.model.connect.PinCreationResult;
+import mediabrowser.model.connect.PinExchangeResult;
+import mediabrowser.model.connect.PinStatusResult;
 import mediabrowser.model.dto.IHasServerId;
 
 import java.io.UnsupportedEncodingException;
@@ -31,4 +34,10 @@ public interface IConnectionManager {
     void setWebSocketEnabled(boolean enabled);
 
     void setReportCapabilitiesEnabled(boolean enabled);
+
+    void CreatePin(String deviceId, Response<PinCreationResult> response);
+
+    void GetPinStatus(PinCreationResult pin, Response<PinStatusResult> response);
+
+    void ExchangePin(PinCreationResult pin, final Response<PinExchangeResult> response);
 }

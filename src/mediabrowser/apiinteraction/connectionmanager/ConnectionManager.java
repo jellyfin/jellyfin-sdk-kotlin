@@ -888,7 +888,12 @@ public class ConnectionManager implements IConnectionManager {
         return servers;
     }
 
-    private void FindServers(final Response<ArrayList<ServerInfo>> response)
+    protected void FindServers(final Response<ArrayList<ServerInfo>> response)
+    {
+        FindServersInternal(response);
+    }
+
+    protected void FindServersInternal(final Response<ArrayList<ServerInfo>> response)
     {
         _serverDiscovery.FindServers(new Response<ServerDiscoveryInfo[]>(){
 

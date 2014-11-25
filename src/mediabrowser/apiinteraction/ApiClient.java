@@ -2488,6 +2488,14 @@ public class ApiClient extends BaseApiClient {
                            IProgress<Double> progress,
                            CancellationToken cancellationToken) throws IOException {
 
+        UploadFileInternal(fileInputStream, file, progress, cancellationToken);
+    }
+
+    protected void UploadFileInternal(FileInputStream fileInputStream,
+                           LocalFileInfo file,
+                           IProgress<Double> progress,
+                           CancellationToken cancellationToken) throws IOException {
+
         QueryStringDictionary dict = new QueryStringDictionary();
 
         dict.Add("DeviceId", getDeviceId());
@@ -2544,14 +2552,16 @@ public class ApiClient extends BaseApiClient {
 
             String serverResponseMessage = conn.getResponseMessage();
 
-            if(conn.getResponseCode() == 200){
+            int responseCode = conn.getResponseCode();
+
+            if(responseCode == 200 || responseCode == 204){
 
                 progress.reportComplete();
             }
             else{
 
-                HttpException ex = new HttpException(conn.getResponseMessage());
-                ex.setStatusCode(conn.getResponseCode());
+                HttpException ex = new HttpException(serverResponseMessage);
+                ex.setStatusCode(responseCode);
 
                 progress.reportError(ex);
             }

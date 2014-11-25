@@ -5,10 +5,13 @@ import mediabrowser.apiinteraction.connectionmanager.ConnectionManager;
 import mediabrowser.apiinteraction.discovery.IServerLocator;
 import mediabrowser.apiinteraction.discovery.ServerLocator;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
+import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.model.session.ClientCapabilities;
 import android.content.Context;
+
+import java.util.ArrayList;
 
 public class AndroidConnectionManager extends ConnectionManager {
 
@@ -38,5 +41,18 @@ public class AndroidConnectionManager extends ConnectionManager {
                 applicationVersion,
                 apiEventListener,
                 clientCapabilities);
+    }
+
+    @Override
+    protected void FindServers(final Response<ArrayList<ServerInfo>> response)
+    {
+        Thread thread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                FindServersInternal(response);
+            }
+        });
+
+        thread.start();
     }
 }
