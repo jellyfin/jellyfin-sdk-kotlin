@@ -243,11 +243,11 @@ This library includes all code needed for automatic camera image uploading, and 
 
 ### authenticator.xml ###
 
-This file is required within res/xml. A sample is available, can be used by most apps without any modification.
+This file is required within res/xml. A sample can be found [here](https://github.com/MediaBrowser/MediaBrowser.ApiClient.Java/blob/master/android/samples/authenticator.xml "here"), and it can be used by most apps without any modification.
 
 ### syncadapter.xml ###
 
-This file is required within res/xml. A sample is available, can be used by most apps without any modification.
+This file is required within res/xml. A sample can be found [here](https://github.com/MediaBrowser/MediaBrowser.ApiClient.Java/blob/master/android/samples/syncadapter.xml "here"), and it can be used by most apps without any modification.
 
 ### AndroidManifest.xml ###
 
@@ -257,7 +257,7 @@ Syncing requires additional permissions to be declared:
 - WRITE_SYNC_SETTINGS
 - AUTHENTICATE_ACCOUNTS
 
-In addition, it requires three xml nodes to declare sync-related services. These are a provider node, and two service nodes. A sample can be found here. Most applications should generally be able to use it without modification.
+In addition, it requires three xml nodes to declare sync-related services. These are a provider node, and two service nodes. A sample can be found [here](https://github.com/MediaBrowser/MediaBrowser.ApiClient.Java/blob/master/android/samples/AndroidManifest.xml "here"). Most applications should generally be able to use it without modification.
 
 
 Special thanks to [Tangible Software Solutions](http://www.tangiblesoftwaresolutions.com/ "Tangible Software Solutions") for donating a license to our project.
