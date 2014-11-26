@@ -203,21 +203,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
-	 Show an output log window for debugging
-	 
-	 <value><c>true</c> if [show log window]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean ShowLogWindow;
-	public final boolean getShowLogWindow()
-	{
-		return ShowLogWindow;
-	}
-	public final void setShowLogWindow(boolean value)
-	{
-		ShowLogWindow = value;
-	}
-
-	/** 
 	 Gets or sets the minimum percentage of an item that must be played in order for playstate to be updated.
 	 
 	 <value>The min resume PCT.</value>
@@ -504,14 +489,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		FindInternetTrailers = value;
 	}
 
-	private String[] InsecureApps6;
-	public final String[] getInsecureApps6()
+	private String[] InsecureApps7;
+	public final String[] getInsecureApps7()
 	{
-		return InsecureApps6;
+		return InsecureApps7;
 	}
-	public final void setInsecureApps6(String[] value)
+	public final void setInsecureApps7(String[] value)
 	{
-		InsecureApps6 = value;
+		InsecureApps7 = value;
 	}
 
 	private boolean SaveMetadataHidden;
@@ -579,5 +564,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setUICulture("en-us");
 
 		setPeopleMetadataOptions(new PeopleMetadataOptions());
+
+		setInsecureApps7(new String[] {"Chromecast", "iOS", "Unknown app", "MediaPortal", "Media Portal", "iPad", "iPhone", "Roku"});
 	}
 }

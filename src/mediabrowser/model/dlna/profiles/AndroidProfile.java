@@ -36,7 +36,6 @@ public class AndroidProfile extends DefaultProfile
 			tempVar2.setVideoCodec("h264");
 			tempVar2.setAudioCodec("aac");
 			tempVar2.setType(DlnaProfileType.Video);
-			tempVar2.setVideoProfile("baseline");
 			tempVar2.setContext(EncodingContext.Streaming);
 			transcodingProfiles.add(tempVar2);
 		}
@@ -45,7 +44,6 @@ public class AndroidProfile extends DefaultProfile
 		tempVar3.setVideoCodec("h264");
 		tempVar3.setAudioCodec("aac");
 		tempVar3.setType(DlnaProfileType.Video);
-		tempVar3.setVideoProfile("baseline");
 		tempVar3.setContext(EncodingContext.Static);
 		transcodingProfiles.add(tempVar3);
 

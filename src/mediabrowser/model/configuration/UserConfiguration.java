@@ -132,6 +132,15 @@ public class UserConfiguration
 	{
 		EnableRemoteControlOfOtherUsers = value;
 	}
+	private boolean EnableSharedDeviceControl;
+	public final boolean getEnableSharedDeviceControl()
+	{
+		return EnableSharedDeviceControl;
+	}
+	public final void setEnableSharedDeviceControl(boolean value)
+	{
+		EnableSharedDeviceControl = value;
+	}
 
 	private boolean EnableLiveTvManagement;
 	public final boolean getEnableLiveTvManagement()
@@ -356,6 +365,7 @@ public class UserConfiguration
 		setEnableLiveTvManagement(true);
 		setEnableMediaPlayback(true);
 		setEnableLiveTvAccess(true);
+		setEnableSharedDeviceControl(true);
 
 		setLatestItemsExcludes(new String[] { });
 		setOrderedViews(new String[] { });

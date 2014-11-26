@@ -46,7 +46,6 @@ public class DefaultProfile extends DeviceProfile
 		tempVar2.setType(DlnaProfileType.Video);
 		tempVar2.setAudioCodec("aac");
 		tempVar2.setVideoCodec("h264");
-		tempVar2.setVideoProfile("baseline");
 		TranscodingProfile tempVar3 = new TranscodingProfile();
 		tempVar3.setContainer("jpeg");
 		tempVar3.setType(DlnaProfileType.Photo);

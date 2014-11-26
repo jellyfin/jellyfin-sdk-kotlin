@@ -361,7 +361,7 @@ public class StreamInfo
 		return String.format("Params=%1$s", tangible.DotNetToJavaStringHelper.join(";", list.toArray(new String[0])));
 	}
 
-	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(String baseUrl)
+	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(String baseUrl, boolean includeSelectedTrackOnly)
 	{
 		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(baseUrl))
 		{
@@ -375,32 +375,47 @@ public class StreamInfo
 			return list;
 		}
 
-		if (getSubtitleStreamIndex() == null)
-		{
-			return list;
-		}
-
 		// HLS will preserve timestamps so we can just grab the full subtitle stream
 		long startPositionTicks = StringHelper.EqualsIgnoreCase(getProtocol(), "hls") ? 0 : getStartPositionTicks();
 
-		String url = String.format("%1$s/Videos/%2$s/%3$s/Subtitles/%4$s/%5$s/Stream.%6$s", baseUrl, getItemId(), getMediaSourceId(), StringHelper.ToStringCultureInvariant(getSubtitleStreamIndex()), StringHelper.ToStringCultureInvariant(startPositionTicks), getSubtitleFormat());
-
-		for (MediaStream stream : getMediaSource().getMediaStreams())
+		// First add the selected track
+		if (getSubtitleStreamIndex() != null)
 		{
-			if (stream.getType() == MediaStreamType.Subtitle && stream.getIndex() == getSubtitleStreamIndex())
+			for (MediaStream stream : getMediaSource().getMediaStreams())
 			{
-				String tempVar = stream.getLanguage();
-				SubtitleStreamInfo tempVar2 = new SubtitleStreamInfo();
-				tempVar2.setUrl(url);
-				tempVar2.setIsForced(stream.getIsForced());
-				tempVar2.setLanguage(stream.getLanguage());
-				tempVar2.setName((tempVar != null) ? tempVar : "Unknown");
-				tempVar2.setFormat(getSubtitleFormat());
-				list.add(tempVar2);
+				if (stream.getType() == MediaStreamType.Subtitle && stream.getIsTextSubtitleStream() && stream.getIndex() == getSubtitleStreamIndex())
+				{
+					AddSubtitle(list, stream, baseUrl, startPositionTicks);
+				}
+			}
+		}
+
+		if (!includeSelectedTrackOnly)
+		{
+			for (MediaStream stream : getMediaSource().getMediaStreams())
+			{
+				if (stream.getType() == MediaStreamType.Subtitle && stream.getIsTextSubtitleStream() && (getSubtitleStreamIndex() == null || stream.getIndex() != getSubtitleStreamIndex()))
+				{
+					AddSubtitle(list, stream, baseUrl, startPositionTicks);
+				}
 			}
 		}
 
 		return list;
+	}
+
+	private void AddSubtitle(java.util.ArrayList<SubtitleStreamInfo> list, MediaStream stream, String baseUrl, long startPositionTicks)
+	{
+		String url = String.format("%1$s/Videos/%2$s/%3$s/Subtitles/%4$s/%5$s/Stream.%6$s", baseUrl, getItemId(), getMediaSourceId(), StringHelper.ToStringCultureInvariant(stream.getIndex()), StringHelper.ToStringCultureInvariant(startPositionTicks), getSubtitleFormat());
+
+		String tempVar = stream.getLanguage();
+		SubtitleStreamInfo tempVar2 = new SubtitleStreamInfo();
+		tempVar2.setUrl(url);
+		tempVar2.setIsForced(stream.getIsForced());
+		tempVar2.setLanguage(stream.getLanguage());
+		tempVar2.setName((tempVar != null) ? tempVar : "Unknown");
+		tempVar2.setFormat(getSubtitleFormat());
+		list.add(tempVar2);
 	}
 
 	/** 
