@@ -108,6 +108,12 @@ public class VolleyHttpClient implements IAsyncHttpClient {
 
         StringRequest req = new VolleyStringRequest(method, url, new VolleyStringListener(response, logger, url), new VolleyErrorListener(response, logger), request);
 
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                request.getTimeout(), // timeout in ms
+                0, // num of retries
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
+
         // add the request object to the queue to be executed
         addToRequestQueue(req);
     }

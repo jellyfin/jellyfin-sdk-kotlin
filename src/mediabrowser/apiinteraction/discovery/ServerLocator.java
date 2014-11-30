@@ -72,7 +72,7 @@ public class ServerLocator implements IServerLocator {
             //Wait for a response
             byte[] recvBuf = new byte[15000];
             DatagramPacket receivePacket = new DatagramPacket(recvBuf, recvBuf.length);
-            c.setSoTimeout(2000);
+            c.setSoTimeout(3000);
 
             try {
                 c.receive(receivePacket);
