@@ -29,6 +29,7 @@ import mediabrowser.model.globalization.CountryInfo;
 import mediabrowser.model.globalization.CultureDto;
 import mediabrowser.model.livetv.*;
 import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.mediainfo.LiveMediaInfoResult;
 import mediabrowser.model.net.HttpException;
 import mediabrowser.model.notifications.NotificationQuery;
 import mediabrowser.model.notifications.NotificationResult;
@@ -2461,14 +2462,18 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<QueryFilters>(response, jsonSerializer, QueryFilters.class));
     }
 
-/*    public void GetLiveMediaInfo(String itemId, String userId, final Response<LiveMediaInfoResult> response)
+    public void GetLiveMediaInfo(String itemId, String userId, final Response<LiveMediaInfoResult> response)
     {
-        String url = GetApiUrl("System/Configuration/devices");
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        dict.Add("UserId", userId);
+
+        String url = GetApiUrl("Items/" + itemId + "/MediaInfo", dict);
 
         url = AddDataFormat(url);
 
         Send(url, "GET", new SerializedResponse<LiveMediaInfoResult>(response, jsonSerializer, LiveMediaInfoResult.class));
-    }*/
+    }
 
     public void GetDevicesOptions(final Response<DevicesOptions> response)
     {

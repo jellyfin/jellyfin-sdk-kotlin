@@ -455,6 +455,10 @@ public abstract class BaseApiClient implements IDisposable
 		dict.AddIfNotNull("IsUnaired", query.getIsUnaired());
 		dict.AddIfNotNull("IsVirtualUnaired", query.getIsVirtualUnaired());
 
+        dict.AddIfNotNull("EnableImages", query.getEnableImages());
+        dict.AddIfNotNull("ImageTypeLimit", query.getImageTypeLimit());
+        dict.AddIfNotNull("EnableImageTypes", query.getEnableImageTypes());
+
 		dict.AddIfNotNull("AiredDuringSeason", query.getAiredDuringSeason());
 
 		return GetApiUrl("Users/" + query.getUserId() + "/Items", dict);

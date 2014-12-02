@@ -104,6 +104,15 @@ public class ServerInfo
 	{
 		UserLinkType = value;
 	}
+	private ConnectionMode LastConnectionMode = null;
+	public final ConnectionMode getLastConnectionMode()
+	{
+		return LastConnectionMode;
+	}
+	public final void setLastConnectionMode(ConnectionMode value)
+	{
+		LastConnectionMode = value;
+	}
 
 	public ServerInfo()
 	{

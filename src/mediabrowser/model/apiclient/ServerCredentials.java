@@ -93,6 +93,9 @@ public class ServerCredentials
                 existing.getWakeOnLanInfos().clear();
                 existing.getWakeOnLanInfos().addAll(server.getWakeOnLanInfos());
             }
+            if (server.getLastConnectionMode() != null){
+                existing.setLastConnectionMode(server.getLastConnectionMode());
+            }
         }
         else
         {
