@@ -99,18 +99,6 @@ public class TranscodingProfile
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [XmlAttribute("videoProfile")] public string VideoProfile {get;set;}
-	private String VideoProfile;
-	public final String getVideoProfile()
-	{
-		return VideoProfile;
-	}
-	public final void setVideoProfile(String value)
-	{
-		VideoProfile = value;
-	}
-
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("context")] public EncodingContext Context {get;set;}
 	private EncodingContext Context = EncodingContext.values()[0];
 	public final EncodingContext getContext()

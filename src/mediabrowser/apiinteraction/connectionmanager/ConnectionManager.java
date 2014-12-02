@@ -432,11 +432,7 @@ public class ConnectionManager implements IConnectionManager {
 
                 ServerInfo server = new ServerInfo();
 
-                if (IsLocalHost(normalizeAddress))
-                {
-                    server.setIsLocalAddressFixed(true);
-                }
-
+                server.setManualAddress(normalizeAddress);
                 server.ImportInfo(result);
 
                 Connect(server, response);

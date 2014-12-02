@@ -741,6 +741,34 @@ public class ItemQuery
 		MaxPremiereDate = value;
 	}
 
+	private Boolean EnableImages = null;
+	public final Boolean getEnableImages()
+	{
+		return EnableImages;
+	}
+	public final void setEnableImages(Boolean value)
+	{
+		EnableImages = value;
+	}
+	private Integer ImageTypeLimit = null;
+	public final Integer getImageTypeLimit()
+	{
+		return ImageTypeLimit;
+	}
+	public final void setImageTypeLimit(Integer value)
+	{
+		ImageTypeLimit = value;
+	}
+	private String EnableImageTypes;
+	public final String getEnableImageTypes()
+	{
+		return EnableImageTypes;
+	}
+	public final void setEnableImageTypes(String value)
+	{
+		EnableImageTypes = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="ItemQuery" /> class.
 	*/

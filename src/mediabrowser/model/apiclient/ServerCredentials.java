@@ -80,6 +80,10 @@ public class ServerCredentials
             {
                 existing.setLocalAddress(server.getLocalAddress());
             }
+            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getManualAddress()))
+            {
+                existing.setManualAddress(server.getManualAddress());
+            }
             if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getName()))
             {
                 existing.setName(server.getName());
@@ -88,10 +92,6 @@ public class ServerCredentials
             {
                 existing.getWakeOnLanInfos().clear();
                 existing.getWakeOnLanInfos().addAll(server.getWakeOnLanInfos());
-            }
-            if (server.getIsLocalAddressFixed())
-            {
-                existing.setIsLocalAddressFixed(true);
             }
         }
         else

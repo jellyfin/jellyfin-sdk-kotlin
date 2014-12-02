@@ -164,12 +164,12 @@ public class ImageOptions
 	 
 	 <value>The format.</value>
 	*/
-	private ImageOutputFormat Format;
-	public final ImageOutputFormat getFormat()
+	private ImageFormat Format;
+	public final ImageFormat getFormat()
 	{
 		return Format;
 	}
-	public final void setFormat(ImageOutputFormat value)
+	public final void setFormat(ImageFormat value)
 	{
 		Format = value;
 	}

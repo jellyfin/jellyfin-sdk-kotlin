@@ -254,6 +254,48 @@ public class ItemsByNameQuery
 	{
 		IsPlayed = value;
 	}
+	/** 
+	 Gets or sets a value indicating whether [enable images].
+	 
+	 <value><c>null</c> if [enable images] contains no value, <c>true</c> if [enable images]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean EnableImages;
+	public final Boolean getEnableImages()
+	{
+		return EnableImages;
+	}
+	public final void setEnableImages(Boolean value)
+	{
+		EnableImages = value;
+	}
+	/** 
+	 Gets or sets the image type limit.
+	 
+	 <value>The image type limit.</value>
+	*/
+	private Integer ImageTypeLimit;
+	public final Integer getImageTypeLimit()
+	{
+		return ImageTypeLimit;
+	}
+	public final void setImageTypeLimit(Integer value)
+	{
+		ImageTypeLimit = value;
+	}
+	/** 
+	 Gets or sets the enable image types.
+	 
+	 <value>The enable image types.</value>
+	*/
+	private String EnableImageTypes;
+	public final String getEnableImageTypes()
+	{
+		return EnableImageTypes;
+	}
+	public final void setEnableImageTypes(String value)
+	{
+		EnableImageTypes = value;
+	}
 
 	/** 
 	 Initializes a new instance of the <see cref="ItemsByNameQuery" /> class.

@@ -3,7 +3,8 @@ package mediabrowser.model.apiclient;
 public enum ConnectionMode
 {
 	Local(1),
-	Remote(2);
+	Remote(2),
+	Manual(3);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, ConnectionMode> mappings;

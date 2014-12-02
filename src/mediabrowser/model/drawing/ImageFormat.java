@@ -3,7 +3,7 @@ package mediabrowser.model.drawing;
 /** 
  Enum ImageOutputFormat
 */
-public enum ImageOutputFormat
+public enum ImageFormat
 {
 	/** 
 	 The BMP
@@ -31,7 +31,7 @@ public enum ImageOutputFormat
 		return this.ordinal();
 	}
 
-	public static ImageOutputFormat forValue(int value)
+	public static ImageFormat forValue(int value)
 	{
 		return values()[value];
 	}

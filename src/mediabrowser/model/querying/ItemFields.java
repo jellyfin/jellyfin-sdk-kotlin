@@ -6,6 +6,11 @@ package mediabrowser.model.querying;
 public enum ItemFields
 {
 	/** 
+	 The alternate episode numbers
+	*/
+	AlternateEpisodeNumbers,
+
+	/** 
 	 The awards summary
 	*/
 	AwardSummary,
@@ -81,9 +86,19 @@ public enum ItemFields
 	Keywords,
 
 	/** 
+	 The media source count
+	*/
+	MediaSourceCount,
+
+	/** 
 	 The media versions
 	*/
 	MediaSources,
+
+	/** 
+	 The metascore
+	*/
+	Metascore,
 
 	/** 
 	 The metadata settings
@@ -126,6 +141,11 @@ public enum ItemFields
 	PrimaryImageAspectRatio,
 
 	/** 
+	 The original primary image aspect ratio
+	*/
+	OriginalPrimaryImageAspectRatio,
+
+	/** 
 	 The revenue
 	*/
 	Revenue,
@@ -139,6 +159,11 @@ public enum ItemFields
 	 The screenshot image tags
 	*/
 	ScreenshotImageTags,
+
+	/** 
+	 The series studio
+	*/
+	SeriesStudio,
 
 	/** 
 	 The soundtrack ids
@@ -169,6 +194,11 @@ public enum ItemFields
 	 The tags
 	*/
 	Tags,
+
+	/** 
+	 The vote count
+	*/
+	VoteCount,
 
 	/** 
 	 The TMDB collection name

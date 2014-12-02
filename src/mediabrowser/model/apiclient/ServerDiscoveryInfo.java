@@ -44,4 +44,18 @@ public class ServerDiscoveryInfo
 	{
 		Name = value;
 	}
+	/** 
+	 Gets or sets the endpoint address.
+	 
+	 <value>The endpoint address.</value>
+	*/
+	private String EndpointAddress;
+	public final String getEndpointAddress()
+	{
+		return EndpointAddress;
+	}
+	public final void setEndpointAddress(String value)
+	{
+		EndpointAddress = value;
+	}
 }

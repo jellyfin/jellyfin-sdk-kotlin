@@ -355,6 +355,15 @@ public class UserConfiguration
 	{
 		LatestItemsExcludes = value;
 	}
+	private String[] BlockedTags;
+	public final String[] getBlockedTags()
+	{
+		return BlockedTags;
+	}
+	public final void setBlockedTags(String[] value)
+	{
+		BlockedTags = value;
+	}
 
 	/** 
 	 Initializes a new instance of the <see cref="UserConfiguration" /> class.
@@ -371,6 +380,7 @@ public class UserConfiguration
 		setOrderedViews(new String[] { });
 		setBlockedMediaFolders(new String[] { });
 		setDisplayChannelsWithinViews(new String[] { });
+		setBlockedTags(new String[] { });
 		setBlockedChannels(new String[] { });
 		setBlockUnratedItems(new UnratedItem[] { });
 

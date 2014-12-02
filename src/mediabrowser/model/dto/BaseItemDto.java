@@ -193,12 +193,12 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 		Metascore = value;
 	}
 
-	private boolean IsUnidentified;
-	public final boolean getIsUnidentified()
+	private Boolean IsUnidentified = null;
+	public final Boolean getIsUnidentified()
 	{
 		return IsUnidentified;
 	}
-	public final void setIsUnidentified(boolean value)
+	public final void setIsUnidentified(Boolean value)
 	{
 		IsUnidentified = value;
 	}
@@ -611,6 +611,21 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	}
 
 	/** 
+	 Gets or sets the recursive unplayed item count.
+	 
+	 <value>The recursive unplayed item count.</value>
+	*/
+	private Integer RecursiveUnplayedItemCount = null;
+	public final Integer getRecursiveUnplayedItemCount()
+	{
+		return RecursiveUnplayedItemCount;
+	}
+	public final void setRecursiveUnplayedItemCount(Integer value)
+	{
+		RecursiveUnplayedItemCount = value;
+	}
+
+	/** 
 	 Gets or sets the play access.
 	 
 	 <value>The play access.</value>
@@ -653,25 +668,6 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setProductionYear(Integer value)
 	{
 		ProductionYear = value;
-	}
-
-	/** 
-	 Gets or sets the recursive unplayed item count.
-	 
-	 <value>The recursive unplayed item count.</value>
-	*/
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [Obsolete] public Nullable<int> RecursiveUnplayedItemCount {get;set;}
-	private Integer RecursiveUnplayedItemCount = null;
-	@Deprecated
-	public final Integer getRecursiveUnplayedItemCount()
-	{
-		return RecursiveUnplayedItemCount;
-	}
-	@Deprecated
-	public final void setRecursiveUnplayedItemCount(Integer value)
-	{
-		RecursiveUnplayedItemCount = value;
 	}
 
 	/** 
@@ -1824,20 +1820,6 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setGameCount(Integer value)
 	{
 		GameCount = value;
-	}
-	/** 
-	 Gets or sets the trailer count.
-	 
-	 <value>The trailer count.</value>
-	*/
-	private Integer TrailerCount = null;
-	public final Integer getTrailerCount()
-	{
-		return TrailerCount;
-	}
-	public final void setTrailerCount(Integer value)
-	{
-		TrailerCount = value;
 	}
 	/** 
 	 Gets or sets the song count.
