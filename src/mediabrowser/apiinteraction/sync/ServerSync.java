@@ -27,79 +27,18 @@ public class ServerSync {
             return;
         }
 
-        connectionManager.Connect(server, new Response<ConnectionResult>() {
-
-            @Override
-            public void onResponse(ConnectionResult result) {
-
-                if (result.getState() == ConnectionState.SignedIn) {
-
-                    Sync(server, result.getApiClient(), cancellationToken, progress);
-
-                } else {
-
-                    LogNoAuthentication(server);
-
-                    // Done. Nothing to do.
-                    progress.reportComplete();
-                }
-            }
-
-        });
+        connectionManager.Connect(server, new ServerSyncConnectionResponse(this, server, cancellationToken, progress));
     }
 
-    private void LogNoAuthentication(ServerInfo server){
+    void LogNoAuthentication(ServerInfo server){
 
         logger.Info("Skipping sync process for server " + server.getName() + ". No server authentication information available.");
     }
 
-    private void Sync(final ServerInfo server, ApiClient apiClient, CancellationToken cancellationToken, final SyncProgress progress){
+    void Sync(final ServerInfo server, ApiClient apiClient, CancellationToken cancellationToken, final SyncProgress progress){
 
         final CancellationTokenSource innerCancellationSource = new CancellationTokenSource();
 
-        new ContentUploader(apiClient, logger).UploadImages(new SyncProgress(){
-
-            @Override
-            public void onProgress(Double percent) {
-
-                logger.Info("Sync progress " + percent + " percent to server " + server.getName());
-                progress.report(percent);
-            }
-
-            @Override
-            public void onComplete() {
-
-                logger.Info("Sync complete to server " + server.getName());
-                progress.reportComplete();
-            }
-
-            @Override
-            public void onFileUploaded(LocalFileInfo file) {
-
-                progress.onFileUploaded(file);
-            }
-
-            @Override
-            public void onCancelled() {
-
-                logger.Info("Sync cancelled to server " + server.getName());
-                progress.reportCancelled();
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                logger.ErrorException("Error syncing to server " + server.getName(), ex);
-                progress.reportError(ex);
-            }
-
-            @Override
-            public void onFileUploadError(LocalFileInfo file, Exception ex) {
-
-                logger.ErrorException("Error syncing to server " + server.getName(), ex);
-                progress.onFileUploadError(file, ex);
-            }
-
-        }, innerCancellationSource.getToken());
+        new ContentUploader(apiClient, logger).UploadImages(new ServerSyncProgress(logger, server, progress), innerCancellationSource.getToken());
     }
 }

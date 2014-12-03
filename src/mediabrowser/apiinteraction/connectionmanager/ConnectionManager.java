@@ -19,10 +19,8 @@ import mediabrowser.model.session.ClientCapabilities;
 import mediabrowser.model.system.PublicSystemInfo;
 import mediabrowser.model.system.SystemInfo;
 import mediabrowser.model.users.AuthenticationResult;
-import org.apache.maven.settings.Server;
 
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
@@ -70,7 +68,7 @@ public class ConnectionManager implements IConnectionManager {
         this.apiEventListener = apiEventListener;
         this.jsonSerializer = jsonSerializer;
 
-        connectService = new ConnectService(jsonSerializer, logger, httpClient);
+        connectService = new ConnectService(jsonSerializer, logger, httpClient, applicationName, applicationVersion);
 
         device.getResumeFromSleepObservable().addObserver(new Observer() {
 
@@ -338,7 +336,7 @@ public class ConnectionManager implements IConnectionManager {
 
         logger.Debug("Adding authentication info from Connect");
 
-        String url = connectionMode == ConnectionMode.Local ? server.getLocalAddress() : server.getRemoteAddress();
+        String url = server.GetAddress(connectionMode);
 
         url += "/mediabrowser/Connect/Exchange?format=json&ConnectUserId=" + credentials.getConnectUserId();
 
@@ -433,6 +431,7 @@ public class ConnectionManager implements IConnectionManager {
                 ServerInfo server = new ServerInfo();
 
                 server.setManualAddress(normalizeAddress);
+                server.setLastConnectionMode(ConnectionMode.Manual);
                 server.ImportInfo(result);
 
                 Connect(server, response);
@@ -504,7 +503,7 @@ public class ConnectionManager implements IConnectionManager {
 
     private void ValidateAuthentication(final ServerInfo server, ConnectionMode connectionMode, final EmptyResponse response)
     {
-        final String url = connectionMode == ConnectionMode.Local ? server.getLocalAddress() : server.getRemoteAddress();
+        final String url = server.GetAddress(connectionMode);
 
         HttpHeaders headers = new HttpHeaders();
         headers.SetAccessToken(server.getAccessToken());
@@ -591,9 +590,7 @@ public class ConnectionManager implements IConnectionManager {
 
         if (apiClient == null){
 
-            String address = connectionMode == ConnectionMode.Local ?
-                    server.getLocalAddress() :
-                    server.getRemoteAddress();
+            String address = server.GetAddress(connectionMode);
 
             apiClient = InstantiateApiClient(address);
 
@@ -896,20 +893,21 @@ public class ConnectionManager implements IConnectionManager {
 
     protected void FindServersInternal(final Response<ArrayList<ServerInfo>> response)
     {
-        _serverDiscovery.FindServers(new Response<ServerDiscoveryInfo[]>(){
+        _serverDiscovery.FindServers(1500, new Response<ArrayList<ServerDiscoveryInfo>>(){
 
             @Override
-            public void onResponse(ServerDiscoveryInfo[] foundServers) {
+            public void onResponse(ArrayList<ServerDiscoveryInfo> foundServers) {
 
                 ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
 
-                for (int i=0; i< foundServers.length; i++) {
+                for (int i=0; i< foundServers.size(); i++) {
 
                     ServerInfo server = new ServerInfo();
+                    ServerDiscoveryInfo foundServer = foundServers.get(i);
 
-                    server.setId(foundServers[i].getId());
-                    server.setLocalAddress(foundServers[i].getAddress());
-                    server.setName(foundServers[i].getName());
+                    server.setId(foundServer.getId());
+                    server.setLocalAddress(foundServer.getAddress());
+                    server.setName(foundServer.getName());
 
                     servers.add(server);
                 }

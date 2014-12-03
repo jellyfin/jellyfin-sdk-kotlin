@@ -5,7 +5,10 @@ import mediabrowser.model.apiclient.ServerDiscoveryInfo;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
 
+import java.io.IOException;
 import java.net.*;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Enumeration;
 
 public class ServerLocator implements IServerLocator {
@@ -19,7 +22,7 @@ public class ServerLocator implements IServerLocator {
     }
 
     @Override
-    public void FindServers(Response<ServerDiscoveryInfo[]> response)
+    public void FindServers(int timeoutMs, Response<ArrayList<ServerDiscoveryInfo>> response)
     {
         // Find the server using UDP broadcast
         try {
@@ -69,35 +72,7 @@ public class ServerLocator implements IServerLocator {
 
             logger.Debug(getClass().getName() + ">>> Done looping over all network interfaces. Now waiting for a reply!");
 
-            //Wait for a response
-            byte[] recvBuf = new byte[15000];
-            DatagramPacket receivePacket = new DatagramPacket(recvBuf, recvBuf.length);
-            c.setSoTimeout(3000);
-
-            try {
-                c.receive(receivePacket);
-            }
-            catch (SocketTimeoutException e) {
-                logger.Error("Server discovery timed out waiting for response.");
-                response.onResponse(new ServerDiscoveryInfo[]{ });
-                return;
-            }
-
-            //We have a response
-            logger.Debug(getClass().getName() + ">>> Broadcast response from server: " + receivePacket.getAddress().getHostAddress());
-
-            //Check if the message is correct
-            String message = new String(receivePacket.getData()).trim();
-
-            logger.Debug(getClass().getName() + ">>> Broadcast response from server: " + message);
-
-            ServerDiscoveryInfo serverInfo = jsonSerializer.DeserializeFromString(message, ServerDiscoveryInfo.class);
-
-            ServerDiscoveryInfo[] servers = new ServerDiscoveryInfo[]{ serverInfo};
-
-            logger.Debug("Found %d servers", servers.length);
-
-            response.onResponse(servers);
+            Receive(c, timeoutMs, response);
 
             //Close the port!
             c.close();
@@ -108,5 +83,47 @@ public class ServerLocator implements IServerLocator {
 
             response.onError(ex);
         }
+    }
+
+    private void Receive(DatagramSocket c, long timeoutMs, Response<ArrayList<ServerDiscoveryInfo>> response) throws IOException {
+
+        ArrayList<ServerDiscoveryInfo> servers = new ArrayList<ServerDiscoveryInfo>();
+
+        while (timeoutMs > 0){
+
+            long startTime = new Date().getTime();
+
+            // Wait for a response
+            byte[] recvBuf = new byte[15000];
+            DatagramPacket receivePacket = new DatagramPacket(recvBuf, recvBuf.length);
+            c.setSoTimeout((int)timeoutMs);
+
+            try {
+                c.receive(receivePacket);
+            }
+            catch (SocketTimeoutException e) {
+                logger.Debug("Server discovery timed out waiting for response.");
+                break;
+            }
+
+            // We have a response
+            logger.Debug(getClass().getName() + ">>> Broadcast response from server: " + receivePacket.getAddress().getHostAddress());
+
+            // Check if the message is correct
+            String message = new String(receivePacket.getData()).trim();
+
+            logger.Debug(getClass().getName() + ">>> Broadcast response from server: " + message);
+
+            ServerDiscoveryInfo serverInfo = jsonSerializer.DeserializeFromString(message, ServerDiscoveryInfo.class);
+
+            servers.add(serverInfo);
+
+            long endTime = new Date().getTime();
+            timeoutMs = timeoutMs - (endTime - startTime);
+        }
+
+        logger.Debug("Found %d servers", servers.size());
+
+        response.onResponse(servers);
     }
 }

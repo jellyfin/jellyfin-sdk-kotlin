@@ -1,5 +1,7 @@
 package mediabrowser.model.querying;
 
+import mediabrowser.model.entities.*;
+
 public class LatestItemsQuery
 {
 	/** 
@@ -154,13 +156,18 @@ public class LatestItemsQuery
 	 
 	 <value>The enable image types.</value>
 	*/
-	private String EnableImageTypes;
-	public final String getEnableImageTypes()
+	private ImageType[] EnableImageTypes;
+	public final ImageType[] getEnableImageTypes()
 	{
 		return EnableImageTypes;
 	}
-	public final void setEnableImageTypes(String value)
+	public final void setEnableImageTypes(ImageType[] value)
 	{
 		EnableImageTypes = value;
+	}
+
+	public LatestItemsQuery()
+	{
+		setEnableImageTypes(new ImageType[] {});
 	}
 }

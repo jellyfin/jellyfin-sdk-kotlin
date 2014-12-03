@@ -759,12 +759,12 @@ public class ItemQuery
 	{
 		ImageTypeLimit = value;
 	}
-	private String EnableImageTypes;
-	public final String getEnableImageTypes()
+	private ImageType[] EnableImageTypes;
+	public final ImageType[] getEnableImageTypes()
 	{
 		return EnableImageTypes;
 	}
-	public final void setEnableImageTypes(String value)
+	public final void setEnableImageTypes(ImageType[] value)
 	{
 		EnableImageTypes = value;
 	}
@@ -779,13 +779,13 @@ public class ItemQuery
 
 		setSortBy(new String[] { });
 
-		setFilters(new ItemFilter[] {});
+		setFilters(new ItemFilter[] { });
 
-		setFields(new ItemFields[] {});
+		setFields(new ItemFields[] { });
 
-		setMediaTypes(new String[] {});
+		setMediaTypes(new String[] { });
 
-		setVideoTypes(new VideoType[] {});
+		setVideoTypes(new VideoType[] { });
 
 		setGenres(new String[] { });
 		setStudios(new String[] { });
@@ -799,5 +799,6 @@ public class ItemQuery
 		setImageTypes(new ImageType[] { });
 		setAirDays(new String[] { });
 		setSeriesStatuses(new SeriesStatus[] { });
+		setEnableImageTypes(new ImageType[] { });
 	}
 }

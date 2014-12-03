@@ -287,12 +287,12 @@ public class ItemsByNameQuery
 	 
 	 <value>The enable image types.</value>
 	*/
-	private String EnableImageTypes;
-	public final String getEnableImageTypes()
+	private ImageType[] EnableImageTypes;
+	public final ImageType[] getEnableImageTypes()
 	{
 		return EnableImageTypes;
 	}
-	public final void setEnableImageTypes(String value)
+	public final void setEnableImageTypes(ImageType[] value)
 	{
 		EnableImageTypes = value;
 	}
@@ -310,5 +310,6 @@ public class ItemsByNameQuery
 		setSortBy(new String[] { });
 		setExcludeItemTypes(new String[] { });
 		setIncludeItemTypes(new String[] { });
+		setEnableImageTypes(new ImageType[] { });
 	}
 }

@@ -19,11 +19,15 @@ public class ConnectService {
     public IJsonSerializer JsonSerializer;
     private ILogger _logger;
     private IAsyncHttpClient _httpClient;
+    private String appName;
+    private String appVersion;
 
-    public ConnectService(IJsonSerializer jsonSerializer, ILogger logger, IAsyncHttpClient httpClient) {
+    public ConnectService(IJsonSerializer jsonSerializer, ILogger logger, IAsyncHttpClient httpClient, String appName, String appVersion) {
         JsonSerializer = jsonSerializer;
         _logger = logger;
         _httpClient = httpClient;
+        this.appName = appName;
+        this.appVersion = appVersion;
     }
 
     public void Authenticate(String username, String password, final Response<ConnectAuthenticationResult> response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
@@ -39,6 +43,8 @@ public class ConnectService {
         request.setMethod("POST");
         request.setUrl(url);
         request.setPostData(args);
+
+        AddXApplicationName(request);
 
         _httpClient.Send(request, new SerializedResponse<ConnectAuthenticationResult>(response, JsonSerializer, ConnectAuthenticationResult.class));
     }
@@ -57,6 +63,8 @@ public class ConnectService {
         request.setUrl(url);
         request.setPostData(args);
 
+        AddXApplicationName(request);
+
         _httpClient.Send(request, new SerializedResponse<PinCreationResult>(response, JsonSerializer, PinCreationResult.class));
     }
 
@@ -73,6 +81,8 @@ public class ConnectService {
 
         request.setMethod("GET");
         request.setUrl(url);
+
+        AddXApplicationName(request);
 
         _httpClient.Send(request, new SerializedResponse<PinStatusResult>(response, JsonSerializer, PinStatusResult.class));
     }
@@ -91,6 +101,8 @@ public class ConnectService {
         request.setMethod("POST");
         request.setUrl(url);
         request.setPostData(args);
+
+        AddXApplicationName(request);
 
         _httpClient.Send(request, new SerializedResponse<PinExchangeResult>(response, JsonSerializer, PinExchangeResult.class));
     }
@@ -128,6 +140,7 @@ public class ConnectService {
         request.setUrl(url);
 
         AddUserAccessToken(request, connectAccessToken);
+        AddXApplicationName(request);
 
         _httpClient.Send(request, new SerializedResponse<ConnectUser>(response, JsonSerializer, ConnectUser.class));
     }
@@ -146,6 +159,7 @@ public class ConnectService {
         request.setUrl(url);
 
         AddUserAccessToken(request, connectAccessToken);
+        AddXApplicationName(request);
 
         _httpClient.Send(request, new SerializedResponse<ConnectUserServer[]>(response, JsonSerializer, new ConnectUserServer[]{}.getClass()));
     }
@@ -160,6 +174,7 @@ public class ConnectService {
         request.setUrl(url);
 
         AddUserAccessToken(request, connectAccessToken);
+        AddXApplicationName(request);
 
         _httpClient.Send(request, new Response<String>(response));
     }
@@ -177,5 +192,10 @@ public class ConnectService {
         }
 
         request.getRequestHeaders().put("X-Connect-UserToken", accessToken);
+    }
+
+    private void AddXApplicationName(HttpRequest request)
+    {
+        request.getRequestHeaders().put("X-Application", appName + "/" + appVersion);
     }
 }

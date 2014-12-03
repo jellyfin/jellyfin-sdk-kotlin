@@ -488,6 +488,10 @@ public abstract class BaseApiClient implements IDisposable
 
 		dict.Add("UserId", query.getUserId());
 
+        dict.AddIfNotNull("EnableImages", query.getEnableImages());
+        dict.AddIfNotNull("ImageTypeLimit", query.getImageTypeLimit());
+        dict.AddIfNotNull("EnableImageTypes", query.getEnableImageTypes());
+
 		return GetApiUrl("Shows/NextUp", dict);
 	}
 
@@ -643,6 +647,10 @@ public abstract class BaseApiClient implements IDisposable
 
 		dict.AddIfNotNullOrEmpty("NameLessThan", query.getNameLessThan());
 		dict.AddIfNotNullOrEmpty("NameStartsWithOrGreater", query.getNameStartsWithOrGreater());
+
+        dict.AddIfNotNull("EnableImages", query.getEnableImages());
+        dict.AddIfNotNull("ImageTypeLimit", query.getImageTypeLimit());
+        dict.AddIfNotNull("EnableImageTypes", query.getEnableImageTypes());
 
 		return GetApiUrl(type, dict);
 	}

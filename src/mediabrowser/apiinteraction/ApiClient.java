@@ -331,7 +331,7 @@ public class ApiClient extends BaseApiClient {
         GetItemsFromUrl(url, response);
     }
 
-    public void GetUpcomingEpisodesAsync(NextUpQuery query, final Response<ItemsResult> response)
+    public void GetUpcomingEpisodesAsync(UpcomingEpisodesQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -347,6 +347,10 @@ public class ApiClient extends BaseApiClient {
         dict.AddIfNotNull("StartIndex", query.getStartIndex());
 
         dict.Add("UserId", query.getUserId());
+
+        dict.AddIfNotNull("EnableImages", query.getEnableImages());
+        dict.AddIfNotNull("ImageTypeLimit", query.getImageTypeLimit());
+        dict.AddIfNotNull("EnableImageTypes", query.getEnableImageTypes());
 
         String url = GetApiUrl("Shows/Upcoming", dict);
 

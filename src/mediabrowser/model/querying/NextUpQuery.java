@@ -1,5 +1,7 @@
 package mediabrowser.model.querying;
 
+import mediabrowser.model.entities.*;
+
 public class NextUpQuery
 {
 	/** 
@@ -124,14 +126,18 @@ public class NextUpQuery
 	 
 	 <value>The enable image types.</value>
 	*/
-	private String EnableImageTypes;
-	public final String getEnableImageTypes()
+	private ImageType[] EnableImageTypes;
+	public final ImageType[] getEnableImageTypes()
 	{
 		return EnableImageTypes;
 	}
-	public final void setEnableImageTypes(String value)
+	public final void setEnableImageTypes(ImageType[] value)
 	{
 		EnableImageTypes = value;
 	}
 
+	public NextUpQuery()
+	{
+		setEnableImageTypes(new ImageType[] {});
+	}
 }
