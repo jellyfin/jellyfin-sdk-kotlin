@@ -106,6 +106,8 @@ public class ServerLocator implements IServerLocator {
                 break;
             }
 
+            SocketAddress remoteEndpoint = c.getRemoteSocketAddress();
+
             // We have a response
             logger.Debug(getClass().getName() + ">>> Broadcast response from server: " + receivePacket.getAddress().getHostAddress());
 
@@ -115,6 +117,10 @@ public class ServerLocator implements IServerLocator {
             logger.Debug(getClass().getName() + ">>> Broadcast response from server: " + message);
 
             ServerDiscoveryInfo serverInfo = jsonSerializer.DeserializeFromString(message, ServerDiscoveryInfo.class);
+
+            if (remoteEndpoint != null){
+                serverInfo.setEndpointAddress(remoteEndpoint.toString());
+            }
 
             servers.add(serverInfo);
 

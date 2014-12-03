@@ -12,6 +12,7 @@ import mediabrowser.model.apiclient.*;
 import mediabrowser.model.connect.*;
 import mediabrowser.model.dto.IHasServerId;
 import mediabrowser.model.dto.UserDto;
+import mediabrowser.model.extensions.IntHelper;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
@@ -909,6 +910,8 @@ public class ConnectionManager implements IConnectionManager {
                     server.setLocalAddress(foundServer.getAddress());
                     server.setName(foundServer.getName());
 
+                    server.setManualAddress(ConvertEndpointAddressToManualAddress(foundServer));
+
                     servers.add(server);
                 }
 
@@ -923,6 +926,32 @@ public class ConnectionManager implements IConnectionManager {
                 response.onResponse(servers);
             }
         });
+    }
+
+    private String ConvertEndpointAddressToManualAddress(ServerDiscoveryInfo info)
+    {
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getAddress()) && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getEndpointAddress()))
+        {
+            String address = info.getEndpointAddress().split(":")[0];
+
+            // Determine the port, if any
+            String[] parts = info.getAddress().split(":");
+            if (parts.length > 1)
+            {
+                String portString = parts[parts.length-1];
+
+                int port = 0;
+                tangible.RefObject<Integer> tempRef_expected = new tangible.RefObject<Integer>(port);
+                if (IntHelper.TryParseCultureInvariant(portString, tempRef_expected))
+                {
+                    address += ":" + portString;
+                }
+            }
+
+            return NormalizeAddress(address);
+        }
+
+        return null;
     }
 
     private void WakeAllServers()
@@ -1072,27 +1101,6 @@ public class ConnectionManager implements IConnectionManager {
 
     public void ExchangePin(PinCreationResult pin, final Response<PinExchangeResult> response)
     {
-        connectService.ExchangePin(pin, new Response<PinExchangeResult>(){
-
-            @Override
-            public void onResponse(PinExchangeResult result) {
-
-                ServerCredentials credentials = _credentialProvider.GetCredentials();
-
-                credentials.setConnectAccessToken(result.getAccessToken());
-                credentials.setConnectUserId(result.getUserId());
-
-                _credentialProvider.SaveCredentials(credentials);
-
-                response.onResponse(result);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                response.onError(ex);
-            }
-
-        });
+        connectService.ExchangePin(pin, new ExchangePinResponse(_credentialProvider, response));
     }
 }
