@@ -232,7 +232,7 @@ public class ConnectionManager implements IConnectionManager {
                 @Override
                 public void onResponse(PublicSystemInfo result) {
 
-                    ConnectToFoundServer(server, result, ConnectionMode.Local, response);
+                    OnSuccessfulConnection(server, result, ConnectionMode.Local, response);
                 }
 
                 @Override
@@ -277,7 +277,7 @@ public class ConnectionManager implements IConnectionManager {
                 @Override
                 public void onResponse(PublicSystemInfo result) {
 
-                    ConnectToFoundServer(server, result, ConnectionMode.Remote, response);
+                    OnSuccessfulConnection(server, result, ConnectionMode.Remote, response);
                 }
 
                 @Override
@@ -293,7 +293,7 @@ public class ConnectionManager implements IConnectionManager {
         }
     }
 
-    private void ConnectToFoundServer(final ServerInfo server,
+    private void OnSuccessfulConnection(final ServerInfo server,
                                      final PublicSystemInfo systemInfo,
                                      final ConnectionMode connectionMode,
                                      final Response<ConnectionResult> response) {
@@ -396,6 +396,7 @@ public class ConnectionManager implements IConnectionManager {
 
         server.ImportInfo(systemInfo);
         server.setDateLastAccessed(new Date());
+        server.setLastConnectionMode(connectionMode);
         credentials.AddOrUpdateServer(server);
         _credentialProvider.SaveCredentials(credentials);
 
