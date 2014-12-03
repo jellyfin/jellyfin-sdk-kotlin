@@ -1281,16 +1281,7 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("Sessions/" + sessionId + "/Command");
 
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                response.onResponse();
-            }
-        };
-
-        Send(url, "GET", jsonResponse);
+        PostAsync(url, command, response);
     }
 
     private void DeleteAsync(String url, final EmptyResponse response)
@@ -1300,14 +1291,7 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("url");
         }
 
-        Response<String> stringResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                response.onResponse();
-            }
-        };
+        Response<String> stringResponse = new Response<String>(response);
 
         Send(url, "DELETE", stringResponse);
     }
@@ -1342,14 +1326,7 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("url");
         }
 
-        Response<String> jsonResponse = new Response<String>(response){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                response.onResponse();
-            }
-        };
+        Response<String> jsonResponse = new Response<String>(response);
 
         String json = getJsonSerializer().SerializeToString(obj);
 

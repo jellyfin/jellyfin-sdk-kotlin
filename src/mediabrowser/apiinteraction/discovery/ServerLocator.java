@@ -88,6 +88,7 @@ public class ServerLocator implements IServerLocator {
     private void Receive(DatagramSocket c, long timeoutMs, Response<ArrayList<ServerDiscoveryInfo>> response) throws IOException {
 
         ArrayList<ServerDiscoveryInfo> servers = new ArrayList<ServerDiscoveryInfo>();
+        ArrayList<String> foundServerIds = new ArrayList<String>();
 
         while (timeoutMs > 0){
 
@@ -122,7 +123,10 @@ public class ServerLocator implements IServerLocator {
                 serverInfo.setEndpointAddress(remoteEndpoint.toString());
             }
 
-            servers.add(serverInfo);
+            if (foundServerIds.indexOf(serverInfo.getId()) == -1){
+                foundServerIds.add(serverInfo.getId());
+                servers.add(serverInfo);
+            }
 
             long endTime = new Date().getTime();
             timeoutMs = timeoutMs - (endTime - startTime);

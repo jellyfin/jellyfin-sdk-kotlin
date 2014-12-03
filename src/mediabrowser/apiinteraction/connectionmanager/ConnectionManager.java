@@ -123,7 +123,7 @@ public class ConnectionManager implements IConnectionManager {
 
     private void OnFailedConnection(Response<ConnectionResult> response, ArrayList<ServerInfo> servers){
 
-        logger.Debug("No server available");
+        logger.Debug("No saved authentication");
 
         ConnectionResult result = new ConnectionResult();
 
