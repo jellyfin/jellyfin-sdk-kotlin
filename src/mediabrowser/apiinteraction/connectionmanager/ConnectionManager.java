@@ -106,7 +106,7 @@ public class ConnectionManager implements IConnectionManager {
         return apiClients.get(serverId);
     }
 
-    private void OnConnectUserSignIn(ConnectUser user){
+    void OnConnectUserSignIn(ConnectUser user){
 
         connectUser = user;
     }
@@ -203,94 +203,122 @@ public class ConnectionManager implements IConnectionManager {
     public void Connect(final ServerInfo server,
                         final Response<ConnectionResult> response) {
 
-        Connect(server, true, true, response);
+        ConnectionResult result = new ConnectionResult();
+        result.setState(ConnectionState.Unavailable);
+
+        PublicSystemInfo systemInfo = null;
+        ConnectionMode connectionMode = ConnectionMode.Manual;
+
+        ArrayList<ConnectionMode> tests = new ArrayList<ConnectionMode>();
+        tests.add(ConnectionMode.Manual);
+        tests.add(ConnectionMode.Local);
+        tests.add(ConnectionMode.Remote);
+
+        // If we've connected to the server before, try to optimize by starting with the last used connection mode
+        if (server.getLastConnectionMode() != null)
+        {
+            tests.remove(server.getLastConnectionMode());
+            tests.add(0, server.getLastConnectionMode());
+        }
+
+        boolean isLocalNetworkAvailable = _networkConnectivity.getNetworkStatus().GetIsLocalNetworkAvailable();
+
+        // Kick off wake on lan on a separate thread (if applicable)
+        boolean sendWakeOnLan = server.getWakeOnLanInfos().size() > 0 && isLocalNetworkAvailable;
+
+        if (sendWakeOnLan){
+            BeginWakeServer(server);
+        }
+
+        long wakeOnLanSendTime = new Date().getTime();
+
+        TestNextConnectionMode(tests, 0, isLocalNetworkAvailable, server, wakeOnLanSendTime, response);
     }
 
-    private void Connect(final ServerInfo server,
-                        final boolean enableWakeOnLan,
-                        final boolean enableLocalRetry,
-                        final Response<ConnectionResult> response) {
+    private void TestNextConnectionMode(final ArrayList<ConnectionMode> tests,
+                                        final int index,
+                                        final boolean isLocalNetworkAvailable,
+                                        final ServerInfo server,
+                                        final long wakeOnLanSendTime,
+                                        final Response<ConnectionResult> response){
 
-        boolean isLocalhost = !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getLocalAddress()) &&
-                IsLocalHost(server.getLocalAddress());
+        if (index >= tests.size()){
 
-        // Try connect locally if there's a local address,
-        // and we're either on localhost or the device has a local connection
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getLocalAddress()) &&
-                (isLocalhost) || _networkConnectivity.getNetworkStatus().GetIsLocalNetworkAvailable())
-        {
-            final boolean retryLocal = enableLocalRetry && !isLocalhost;
-
-            if (enableWakeOnLan && !isLocalhost){
-                // Kick this off
-                WakeServer(server, new EmptyResponse());
-            }
-            final long wakeTime = new Date().getTime();
-
-            TryConnect(server.getLocalAddress(), new Response<PublicSystemInfo>(){
-
-                @Override
-                public void onResponse(PublicSystemInfo result) {
-
-                    OnSuccessfulConnection(server, result, ConnectionMode.Local, response);
-                }
-
-                @Override
-                public void onError(Exception ex) {
-
-                    if (retryLocal){
-
-                        long sleepTime = 10000 - (new Date().getTime() - wakeTime);
-
-                        if (sleepTime > 0){
-                            try {
-                                Thread.sleep(sleepTime, 0);
-                            } catch (InterruptedException e) {
-                                logger.ErrorException("Error in Thread.Sleep", e);
-                            }
-                        }
-
-                        // Try local connection again
-                        Connect(server, false, false, response);
-                    }
-                    else{
-                        // No local connection available
-                        TryConnectToRemoteAddress(server, response);
-                    }
-                }
-            });
-
+            OnFailedConnection(response);
             return;
         }
 
-        TryConnectToRemoteAddress(server, response);
-    }
+        final ConnectionMode mode = tests.get(index);
+        final String address = server.GetAddress(mode);
+        boolean enableRetry = false;
 
-    private void TryConnectToRemoteAddress(final ServerInfo server,
-                                           final Response<ConnectionResult> response){
+        if (mode == ConnectionMode.Local){
 
-        // If local connection is unavailable, try to connect to the remote address
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getRemoteAddress()))
+            if (!isLocalNetworkAvailable){
+                TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, response);
+                return;
+            }
+            enableRetry = true;
+        }
+
+        if (mode == ConnectionMode.Remote){
+
+            if (StringHelper.EqualsIgnoreCase(address, server.getLocalAddress()) ||
+                    StringHelper.EqualsIgnoreCase(address, server.getRemoteAddress())){
+                TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, response);
+                return;
+            }
+        }
+
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(address))
         {
-            TryConnect(server.getRemoteAddress(), new Response<PublicSystemInfo>(){
-
-                @Override
-                public void onResponse(PublicSystemInfo result) {
-
-                    OnSuccessfulConnection(server, result, ConnectionMode.Remote, response);
-                }
-
-                @Override
-                public void onError(Exception ex) {
-
-                    // Unable to connect
-                    OnFailedConnection(response);
-                }
-            });
+            TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, response);
+            return;
         }
-        else{
-            OnFailedConnection(response);
-        }
+
+        final boolean finalEnableRetry = enableRetry;
+        TryConnect(address, new Response<PublicSystemInfo>() {
+
+            @Override
+            public void onResponse(PublicSystemInfo result) {
+
+                OnSuccessfulConnection(server, result, mode, response);
+            }
+
+            @Override
+            public void onError(Exception ex) {
+
+                if (finalEnableRetry){
+                    long sleepTime = 10000 - (new Date().getTime() - wakeOnLanSendTime);
+
+                    if (sleepTime > 0){
+                        try {
+                            Thread.sleep(sleepTime, 0);
+                        } catch (InterruptedException e) {
+                            logger.ErrorException("Error in Thread.Sleep", e);
+                        }
+                    }
+
+                    TryConnect(address, new Response<PublicSystemInfo>() {
+
+                        @Override
+                        public void onResponse(PublicSystemInfo result) {
+
+                            OnSuccessfulConnection(server, result, mode, response);
+                        }
+
+                        @Override
+                        public void onError(Exception ex) {
+
+                            TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, response);
+                        }
+                    });
+                }
+                else{
+                    TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, response);
+                }
+            }
+        });
     }
 
     private void OnSuccessfulConnection(final ServerInfo server,
@@ -347,7 +375,7 @@ public class ConnectionManager implements IConnectionManager {
 
         request.getRequestHeaders().put("X-MediaBrowser-Token", server.getExchangeToken());
 
-        httpClient.Send(request, new Response<String>(){
+        httpClient.Send(request, new Response<String>() {
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -445,12 +473,6 @@ public class ConnectionManager implements IConnectionManager {
                 OnFailedConnection(response);
             }
         });
-    }
-
-    private boolean IsLocalHost(String address)
-    {
-        return StringHelper.IndexOfIgnoreCase(address, "localhost") != -1 ||
-                StringHelper.IndexOfIgnoreCase(address, "/127.") != -1;
     }
 
     @Override
@@ -895,14 +917,14 @@ public class ConnectionManager implements IConnectionManager {
 
     protected void FindServersInternal(final Response<ArrayList<ServerInfo>> response)
     {
-        _serverDiscovery.FindServers(1500, new Response<ArrayList<ServerDiscoveryInfo>>(){
+        _serverDiscovery.FindServers(1500, new Response<ArrayList<ServerDiscoveryInfo>>() {
 
             @Override
             public void onResponse(ArrayList<ServerDiscoveryInfo> foundServers) {
 
                 ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
 
-                for (int i=0; i< foundServers.size(); i++) {
+                for (int i = 0; i < foundServers.size(); i++) {
 
                     ServerInfo server = new ServerInfo();
                     ServerDiscoveryInfo foundServer = foundServers.get(i);
@@ -963,6 +985,18 @@ public class ConnectionManager implements IConnectionManager {
 
             WakeServer(server, new EmptyResponse());
         }
+    }
+
+    private void BeginWakeServer(final ServerInfo info)
+    {
+        Thread thread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                WakeServer(info, new EmptyResponse());
+            }
+        });
+
+        thread.start();
     }
 
     private void WakeServer(ServerInfo info, final EmptyResponse response)
@@ -1065,29 +1099,7 @@ public class ConnectionManager implements IConnectionManager {
 
     public void LoginToConnect(String username, String password, final EmptyResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 
-        connectService.Authenticate(username, password, new Response<ConnectAuthenticationResult>() {
-
-            @Override
-            public void onResponse(ConnectAuthenticationResult result) {
-
-                ServerCredentials credentials = _credentialProvider.GetCredentials();
-
-                credentials.setConnectAccessToken(result.getAccessToken());
-                credentials.setConnectUserId(result.getUser().getId());
-
-                _credentialProvider.SaveCredentials(credentials);
-
-                OnConnectUserSignIn(result.getUser());
-
-                response.onResponse();
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                response.onError(ex);
-            }
-        });
+        connectService.Authenticate(username, password, new LoginToConnectResponse(this, _credentialProvider, response));
     }
 
     public void CreatePin(String deviceId, Response<PinCreationResult> response)

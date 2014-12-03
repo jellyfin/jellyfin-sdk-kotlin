@@ -62,13 +62,12 @@ public class AndroidConnectionManager extends ConnectionManager {
     @Override
     protected void FindServers(final Response<ArrayList<ServerInfo>> response)
     {
-        Thread thread = new Thread(new Runnable(){
-            @Override
-            public void run() {
-                FindServersInternal(response);
-            }
-        });
+        Thread thread = new Thread(new FindServersRunnable(this, response));
 
         thread.start();
+    }
+
+    void FindServersAndroid(final Response<ArrayList<ServerInfo>> response){
+        FindServersInternal(response);
     }
 }
