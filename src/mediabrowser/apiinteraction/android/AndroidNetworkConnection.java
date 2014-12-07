@@ -97,6 +97,7 @@ public class AndroidNetworkConnection implements INetworkConnection {
                 logger.Debug("Local device is connected to a network");
 
                 status.setIsRemoteNetworkAvailable(true);
+                status.setIsLocalNetworkAvailable(false);
             }
             else{
                 logger.Debug("Local device is connected to a mobile network");

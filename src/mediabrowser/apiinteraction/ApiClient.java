@@ -60,6 +60,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Observable;
+import java.util.logging.Logger;
 
 public class ApiClient extends BaseApiClient {
  
@@ -2314,9 +2315,23 @@ public class ApiClient extends BaseApiClient {
     {
         String url = GetApiUrl("Sessions/Logout");
 
-        PostAsync(url, response);
+        PostAsync(url, new EmptyResponse(){
 
-        ClearAuthenticationInfo();
+            @Override
+            public void onResponse() {
+
+                ClearAuthenticationInfo();
+                response.onResponse();
+            }
+
+            @Override
+            public void onError(Exception ex) {
+
+                Logger.ErrorException("Error logging out", ex);
+                ClearAuthenticationInfo();
+                response.onResponse();
+            }
+        });
 
         if (apiWebSocket != null && apiWebSocket.IsWebSocketOpenOrConnecting()){
             apiWebSocket.Close();

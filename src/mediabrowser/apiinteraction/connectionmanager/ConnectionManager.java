@@ -261,7 +261,7 @@ public class ConnectionManager implements IConnectionManager {
             enableRetry = true;
         }
 
-        if (mode == ConnectionMode.Remote){
+        else if (mode == ConnectionMode.Remote){
 
             if (StringHelper.EqualsIgnoreCase(address, server.getLocalAddress()) ||
                     StringHelper.EqualsIgnoreCase(address, server.getRemoteAddress())){
@@ -703,16 +703,22 @@ public class ConnectionManager implements IConnectionManager {
 
         final int numTasks = 2;
         final int[] numTasksCompleted = {0};
+        final ArrayList<ServerInfo> foundServers = new ArrayList<ServerInfo>();
+        final ArrayList<ServerInfo> connectServers = new ArrayList<ServerInfo>();
 
         Response<ArrayList<ServerInfo>> findServersResponse = new Response<ArrayList<ServerInfo>>(){
 
-            private void OnAny(ArrayList<ServerInfo> foundServers){
+            private void OnAny(ArrayList<ServerInfo> servers){
 
                 synchronized (credentials){
 
+                    foundServers.addAll(servers);
+
                     numTasksCompleted[0]++;
 
-                    OnGetServerResponse(credentials, foundServers, false, response, numTasksCompleted[0] >= numTasks);
+                    if (numTasksCompleted[0] >= numTasks) {
+                        OnGetServerResponse(credentials, foundServers, connectServers, response);
+                    }
                 }
             }
 
@@ -740,13 +746,17 @@ public class ConnectionManager implements IConnectionManager {
 
         EmptyResponse connectServersResponse = new EmptyResponse(){
 
-            private void OnAny(ConnectUserServer[] foundServers){
+            private void OnAny(ConnectUserServer[] servers){
 
                 synchronized (credentials){
 
+                    connectServers.addAll(ConvertServerList(servers));
+
                     numTasksCompleted[0]++;
 
-                    OnGetServerResponse(credentials, ConvertServerList(foundServers), true, response, numTasksCompleted[0] >= numTasks);
+                    if (numTasksCompleted[0] >= numTasks) {
+                        OnGetServerResponse(credentials, foundServers, connectServers, response);
+                    }
                 }
             }
 
@@ -828,58 +838,58 @@ public class ConnectionManager implements IConnectionManager {
 
     private void OnGetServerResponse(ServerCredentials credentials,
                                      ArrayList<ServerInfo> foundServers,
-                                     boolean cleanServers,
-                                     Response<ArrayList<ServerInfo>> response,
-                                     boolean isComplete){
+                                     ArrayList<ServerInfo> connectServers,
+                                     Response<ArrayList<ServerInfo>> response){
 
         for(ServerInfo newServer : foundServers){
 
             credentials.AddOrUpdateServer(newServer);
         }
 
-        if (cleanServers){
+        for(ServerInfo newServer : connectServers){
 
-            ArrayList<ServerInfo> cleanList = new ArrayList<ServerInfo>();
-            ArrayList<ServerInfo> existing = credentials.getServers();
+            credentials.AddOrUpdateServer(newServer);
+        }
 
-            for(ServerInfo server : existing){
+        ArrayList<ServerInfo> cleanList = new ArrayList<ServerInfo>();
+        ArrayList<ServerInfo> existing = credentials.getServers();
 
-                if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getExchangeToken()))
-                {
-                    cleanList.add(server);
-                    continue;
-                }
+        for(ServerInfo server : existing){
 
-                boolean found = false;
+            // It's not a connect server, so assume it's still valid
+            if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getExchangeToken()))
+            {
+                cleanList.add(server);
+                continue;
+            }
 
-                for(ServerInfo connectServer : foundServers){
+            boolean found = false;
 
-                    if (StringHelper.EqualsIgnoreCase(server.getId(), connectServer.getId())){
-                        found = true;
-                        break;
-                    }
-                }
+            for(ServerInfo connectServer : connectServers){
 
-                if (found)
-                {
-                    cleanList.add(server);
-                    continue;
-                }
-                else{
-                    logger.Debug("Dropping server "+server.getName()+" - "+server.getId()+" because it's no longer in the user's Connect profile.");
+                if (StringHelper.EqualsIgnoreCase(server.getId(), connectServer.getId())){
+                    found = true;
+                    break;
                 }
             }
 
-            credentials.setServers(cleanList);
+            if (found)
+            {
+                cleanList.add(server);
+                continue;
+            }
+            else{
+                logger.Debug("Dropping server "+server.getName()+" - "+server.getId()+" because it's no longer in the user's Connect profile.");
+            }
         }
 
-        if (isComplete){
-            _credentialProvider.SaveCredentials(credentials);
+        credentials.setServers(cleanList);
 
-            ArrayList<ServerInfo> clone = new ArrayList<ServerInfo>();
-            clone.addAll(credentials.getServers());
-            response.onResponse(clone);
-        }
+        _credentialProvider.SaveCredentials(credentials);
+
+        ArrayList<ServerInfo> clone = new ArrayList<ServerInfo>();
+        clone.addAll(credentials.getServers());
+        response.onResponse(clone);
     }
 
     private ArrayList<ServerInfo> ConvertServerList(ConnectUserServer[] userServers){
