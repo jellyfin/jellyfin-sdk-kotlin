@@ -1370,6 +1370,7 @@ public class ApiClient extends BaseApiClient {
         }
  
         String url = GetApiUrl("Users/" + userId + "/Items/" + itemId + "/Rating");
+	url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(response){
 
             @Override
@@ -1408,6 +1409,7 @@ public class ApiClient extends BaseApiClient {
         dict.Add("likes", likes);
  
         String url = GetApiUrl("Users/" + userId + "/Items/" + itemId + "/Rating", dict);
+	url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(response){
 
             @Override
