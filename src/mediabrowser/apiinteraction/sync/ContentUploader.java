@@ -34,7 +34,11 @@ public class ContentUploader {
 
                 final String deviceId = apiClient.getDeviceId();
 
-                logger.Debug("Camera upload is enabled for "+options.getEnabledCameraUploadDevices()[0]);
+                if (options.getEnabledCameraUploadDevices() == null || options.getEnabledCameraUploadDevices().length == 0) {
+                    logger.Debug("No devices configured for camera upload.");
+                    return;
+                }
+                logger.Debug("Camera upload is enabled for " + options.getEnabledCameraUploadDevices()[0].length() + " devices.");
                 logger.Debug("Looking for deviceId " + deviceId);
                 if (!ListHelper.ContainsIgnoreCase(options.getEnabledCameraUploadDevices(), deviceId))
                 {
