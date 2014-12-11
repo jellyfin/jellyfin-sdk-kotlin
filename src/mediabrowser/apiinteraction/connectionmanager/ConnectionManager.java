@@ -142,6 +142,13 @@ public class ConnectionManager implements IConnectionManager {
         response.onResponse(result);
     }
 
+    private void OnFailedConnection(Response<ConnectionResult> response, ServerInfo server){
+
+        ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
+        servers.add(server);
+        OnFailedConnection(response, servers);
+    }
+
     @Override
     public void Connect(final Response<ConnectionResult> response) {
 
@@ -203,12 +210,6 @@ public class ConnectionManager implements IConnectionManager {
     public void Connect(final ServerInfo server,
                         final Response<ConnectionResult> response) {
 
-        ConnectionResult result = new ConnectionResult();
-        result.setState(ConnectionState.Unavailable);
-
-        PublicSystemInfo systemInfo = null;
-        ConnectionMode connectionMode = ConnectionMode.Manual;
-
         ArrayList<ConnectionMode> tests = new ArrayList<ConnectionMode>();
         tests.add(ConnectionMode.Manual);
         tests.add(ConnectionMode.Local);
@@ -244,7 +245,7 @@ public class ConnectionManager implements IConnectionManager {
 
         if (index >= tests.size()){
 
-            OnFailedConnection(response);
+            OnFailedConnection(response, server);
             return;
         }
 

@@ -94,12 +94,12 @@ public class AndroidNetworkConnection implements INetworkConnection {
 
             if (type == ConnectivityManager.TYPE_MOBILE){
 
-                logger.Debug("Local device is connected to a network");
+                logger.Debug("Android device is connected to a mobile network");
 
                 status.setIsRemoteNetworkAvailable(true);
             }
             else{
-                logger.Debug("Local device is connected to a mobile network");
+                logger.Debug("Android device is connected to a network");
             }
 
         } else {
