@@ -2595,4 +2595,20 @@ public class ApiClient extends BaseApiClient {
             }
         }
     }
+
+     public void GetNewsItems(final Response<NewsItemsResult> response) {
+
+         String url = GetApiUrl("News/Product");
+         url = AddDataFormat(url);
+
+         Response<String> jsonResponse = new Response<String>(response){
+             @Override
+             public void onResponse(String jsonResponse) {
+                 NewsItemsResult obj = DeserializeFromString(jsonResponse, NewsItemsResult.class);
+                 response.onResponse(obj);
+             }
+         };
+
+         Send(url, "GET", jsonResponse);
+     }
 }
