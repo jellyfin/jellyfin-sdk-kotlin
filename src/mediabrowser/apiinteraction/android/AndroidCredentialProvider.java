@@ -11,6 +11,8 @@ public class AndroidCredentialProvider implements ICredentialProvider {
     private IJsonSerializer jsonSerializer;
     private Context context;
 
+    private String settingsKey = "serverCredentials";
+
     public AndroidCredentialProvider(IJsonSerializer jsonSerializer, Context context) {
         this.jsonSerializer = jsonSerializer;
         this.context = context;
@@ -24,7 +26,7 @@ public class AndroidCredentialProvider implements ICredentialProvider {
     @Override
     public ServerCredentials GetCredentials() {
 
-        String json = getSharedPreferences().getString("serverCredentials", "{}");
+        String json = getSharedPreferences().getString(settingsKey, "{}");
 
         return jsonSerializer.DeserializeFromString(json, ServerCredentials.class);
     }
@@ -37,7 +39,7 @@ public class AndroidCredentialProvider implements ICredentialProvider {
         SharedPreferences settings = getSharedPreferences();
         SharedPreferences.Editor editor = settings.edit();
 
-        editor.putString("serverCredentials", jsonSerializer.SerializeToString(credentials));
+        editor.putString(settingsKey, jsonSerializer.SerializeToString(credentials));
 
         // Commit the edits!
         editor.commit();

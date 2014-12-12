@@ -27,51 +27,15 @@ public class ContentUploader {
 
     public void UploadImages(final SyncProgress progress, final CancellationToken cancellationToken) {
 
-        apiClient.GetDevicesOptions(new Response<DevicesOptions>(){
-
-            @Override
-            public void onResponse(DevicesOptions options) {
-
-                final String deviceId = apiClient.getDeviceId();
-
-                if (options.getEnabledCameraUploadDevices() == null || !ListHelper.ContainsIgnoreCase(options.getEnabledCameraUploadDevices(), deviceId))
-                {
-                    logger.Debug("Camera upload is not enabled for this device.");
-                    progress.reportComplete();
-                }
-                else{
-                    UploadImagesInternal(progress, cancellationToken);
-                }
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                progress.reportError(ex);
-            }
-
-        });
+        apiClient.GetDevicesOptions(new ContentUploaderGetDeviceOptionsResponse(this, apiClient, logger, progress, cancellationToken));
     }
 
-    private void UploadImagesInternal(final SyncProgress progress, final CancellationToken cancellationToken){
+    void UploadImagesInternal(final SyncProgress progress, final CancellationToken cancellationToken){
 
-        apiClient.GetContentUploadHistory(new Response<ContentUploadHistory>() {
-
-            @Override
-            public void onResponse(ContentUploadHistory history) {
-
-                UploadImagesInternal(history, cancellationToken, progress);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                progress.reportError(ex);
-            }
-        });
+        apiClient.GetContentUploadHistory(new ContentUploaderHistoryResponse(this, progress, cancellationToken));
     }
 
-    private void UploadImagesInternal(ContentUploadHistory history,
+    void UploadImagesInternal(ContentUploadHistory history,
                                       CancellationToken cancellationToken,
                                       SyncProgress progress){
 
@@ -91,7 +55,7 @@ public class ContentUploader {
         UploadNext(files, 0, device, cancellationToken, progress);
     }
 
-    private void UploadNext(final ArrayList<LocalFileInfo> files,
+    void UploadNext(final ArrayList<LocalFileInfo> files,
                             final int index,
                             final IDevice device,
                             final CancellationToken cancellationToken,
@@ -113,44 +77,7 @@ public class ContentUploader {
 
         logger.Debug("ContentUploader will upload file " + file.getName());
 
-        UploadFile(file, device, new Progress<Double>(){
-
-            private void GoNext() {
-
-                double numComplete = index+ 1;
-                numComplete /= files.size();
-                progress.report(numComplete * 100);
-
-                UploadNext(files, index + 1, device, cancellationToken, progress);
-            }
-
-            @Override
-            public void onComplete() {
-
-                progress.onFileUploaded(file);
-                GoNext();
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                progress.onFileUploadError(file, ex);
-                GoNext();
-            }
-
-            @Override
-            public void onCancelled() {
-
-                GoNext();
-            }
-
-            @Override
-            public void onProgress(Double value) {
-
-                // TODO: This is progress for the individual file
-            }
-
-        }, cancellationToken);
+        UploadFile(file, device, new ContentUploaderProgress(this, device, files, index, progress, cancellationToken), cancellationToken);
     }
 
     private ArrayList<LocalFileInfo> GetFilesToUpload(ContentUploadHistory history,

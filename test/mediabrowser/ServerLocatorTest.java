@@ -35,7 +35,7 @@ public class ServerLocatorTest {
 
         ServerLocator discovery = new ServerLocator(logger, jsonSerializer);
 
-        discovery.FindServers(2000, new Response<ArrayList<ServerDiscoveryInfo>>(){
+        discovery.FindServers(1000, new Response<ArrayList<ServerDiscoveryInfo>>(){
 
             @Override
             public void onResponse(ArrayList<ServerDiscoveryInfo> servers) {

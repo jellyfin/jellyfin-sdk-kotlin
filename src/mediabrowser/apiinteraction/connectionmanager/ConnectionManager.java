@@ -928,7 +928,7 @@ public class ConnectionManager implements IConnectionManager {
 
     protected void FindServersInternal(final Response<ArrayList<ServerInfo>> response)
     {
-        _serverDiscovery.FindServers(1500, new Response<ArrayList<ServerDiscoveryInfo>>() {
+        _serverDiscovery.FindServers(1000, new Response<ArrayList<ServerDiscoveryInfo>>() {
 
             @Override
             public void onResponse(ArrayList<ServerDiscoveryInfo> foundServers) {
