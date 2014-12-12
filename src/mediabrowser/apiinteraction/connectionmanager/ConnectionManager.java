@@ -347,6 +347,12 @@ public class ConnectionManager implements IConnectionManager {
                     });
                 }
 
+                @Override
+                public void onError(Exception ex) {
+
+                    AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, response);
+                }
+
             });
         }
         else{
@@ -810,7 +816,7 @@ public class ConnectionManager implements IConnectionManager {
 
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectUserId()) || tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
         {
-            response.onResponse();
+            response.onError(null);
             return;
         }
 
@@ -832,7 +838,7 @@ public class ConnectionManager implements IConnectionManager {
             @Override
             public void onError(Exception ex) {
 
-                response.onResponse();
+                response.onError(ex);
             }
         });
     }
@@ -877,7 +883,6 @@ public class ConnectionManager implements IConnectionManager {
             if (found)
             {
                 cleanList.add(server);
-                continue;
             }
             else{
                 logger.Debug("Dropping server "+server.getName()+" - "+server.getId()+" because it's no longer in the user's Connect profile.");
