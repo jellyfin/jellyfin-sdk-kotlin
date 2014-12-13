@@ -1,0 +1,247 @@
+package mediabrowser.apiinteraction.android.profiles;
+
+import android.media.MediaCodecInfo;
+import android.media.MediaCodecList;
+import mediabrowser.model.dlna.*;
+import mediabrowser.model.extensions.StringHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Api16Builder {
+
+    public void buildProfiles(DeviceProfile profile){
+
+        ArrayList<DirectPlayProfile> directPlayProfiles = new ArrayList<DirectPlayProfile>();
+        ArrayList<CodecProfile> codecProfiles = new ArrayList<CodecProfile>();
+
+        int numCodecs = MediaCodecList.getCodecCount();
+        for (int i = 0; i < numCodecs; i++) {
+            MediaCodecInfo codecInfo = MediaCodecList.getCodecInfoAt(i);
+
+            ProcessMediaCodecInfo(codecInfo, directPlayProfiles, codecProfiles);
+        }
+
+        profile.setDirectPlayProfiles(directPlayProfiles.toArray(new DirectPlayProfile[directPlayProfiles.size()]));
+        profile.setCodecProfiles(codecProfiles.toArray(new CodecProfile[codecProfiles.size()]));
+    }
+
+    protected void ProcessMediaCodecInfo(MediaCodecInfo codecInfo, ArrayList<DirectPlayProfile> directPlayProfiles, ArrayList<CodecProfile> codecProfiles){
+
+        for (String type : codecInfo.getSupportedTypes()){
+
+            final MediaCodecInfo.CodecCapabilities codecCapabilities = codecInfo.getCapabilitiesForType(type);
+
+            ProcessMediaCodecInfoType(codecInfo, type, codecCapabilities, directPlayProfiles, codecProfiles);
+        }
+    }
+
+    protected void ProcessMediaCodecInfoType(MediaCodecInfo codecInfo, String type, MediaCodecInfo.CodecCapabilities codecCapabilities, ArrayList<DirectPlayProfile> directPlayProfiles, ArrayList<CodecProfile> codecProfiles){
+
+        addDirectPlayProfile(directPlayProfiles, type);
+        addCodecProfile(codecProfiles, type, codecCapabilities);
+    }
+
+    protected void addDirectPlayProfile(List<DirectPlayProfile> profiles, String type){
+
+        String[] parts = type.split("/");
+        if (parts.length != 2) return;
+
+        DirectPlayProfile profile = new DirectPlayProfile();
+
+        if (StringHelper.EqualsIgnoreCase(parts[0], "audio")) {
+            profile.setType(DlnaProfileType.Audio);
+        }
+        else if (StringHelper.EqualsIgnoreCase(parts[0], "video")) {
+            profile.setType(DlnaProfileType.Video);
+        }
+        else if (StringHelper.EqualsIgnoreCase(parts[0], "image")) {
+            profile.setType(DlnaProfileType.Photo);
+        }
+        else{
+            return;
+        }
+
+        String codecType = parts[1].toLowerCase();
+
+        // Since we can't get supported codecs per container, we'll have to hardcode them
+        if (profile.getType()==DlnaProfileType.Video){
+
+            profile.setContainer(codecType);
+
+            if (StringHelper.IndexOfIgnoreCase("mp4", codecType) == 0){
+                profile.setContainer("mp4");
+                profile.setVideoCodec("h264,mpeg4");
+                profile.setAudioCodec("aac");
+            }
+            else if (StringHelper.IndexOfIgnoreCase("avc", codecType) != -1){
+                profile.setContainer("mp4");
+                profile.setVideoCodec("h264,mpeg4");
+                profile.setAudioCodec("aac");
+            }
+            else if (StringHelper.IndexOfIgnoreCase("hevc", codecType) != -1){
+                profile.setContainer("mp4");
+                profile.setVideoCodec("h265");
+                profile.setAudioCodec("aac");
+            }
+            else if (StringHelper.IndexOfIgnoreCase("vp8", codecType) != -1){
+                profile.setContainer("webm");
+            }
+            else if (StringHelper.IndexOfIgnoreCase("vp9", codecType) != -1){
+                profile.setContainer("webm");
+            }
+            else if (StringHelper.EqualsIgnoreCase("3gpp", codecType)){
+                profile.setContainer("3gp");
+            }
+            else {
+
+                profile.setContainer(codecType);
+            }
+        }
+        else if (profile.getType()==DlnaProfileType.Audio){
+
+            if (StringHelper.IndexOfIgnoreCase("mp4", codecType) == 0){
+                profile.setContainer("aac");
+            }
+            else if (StringHelper.EqualsIgnoreCase("mpeg", codecType)){
+                profile.setContainer("mp3");
+            }
+            else if (StringHelper.EqualsIgnoreCase("3gpp", codecType)){
+                profile.setContainer("3gp");
+            }
+            else if (StringHelper.EqualsIgnoreCase("vorbis", codecType)){
+                profile.setContainer("webm,webma");
+            }
+            else if (StringHelper.EqualsIgnoreCase("opus", codecType)){
+                profile.setContainer("oga,ogg");
+            }
+            else {
+
+                // Will cover flac, gsm, and others
+                profile.setContainer(codecType);
+            }
+        }
+
+        if (!containsDirectPlayProfile(profiles, profile)){
+            profiles.add(profile);
+        }
+    }
+
+    protected void addCodecProfile(List<CodecProfile> profiles, String type, MediaCodecInfo.CodecCapabilities codecCapabilities){
+
+        String[] parts = type.split("/");
+        if (parts.length != 2) return;
+
+        CodecProfile profile = new CodecProfile();
+        ArrayList<ProfileCondition> conditions = new ArrayList<ProfileCondition>();
+
+        if (StringHelper.EqualsIgnoreCase(parts[0], "audio")) {
+            profile.setType(CodecType.Audio);
+        }
+        else if (StringHelper.EqualsIgnoreCase(parts[0], "video")) {
+            profile.setType(CodecType.Video);
+        }
+        else{
+            return;
+        }
+
+        String codecType = parts[1].toLowerCase();
+
+        if (profile.getType()==CodecType.Video){
+
+            conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Width, "1920"));
+            conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Height, "1080"));
+            conditions.add(new ProfileCondition(ProfileConditionType.NotEquals, ProfileConditionValue.IsAnamorphic, "true"));
+
+            if (StringHelper.IndexOfIgnoreCase(codecType, "avc") != -1){
+                profile.setCodec("h264");
+
+                conditions.add(new ProfileCondition(ProfileConditionType.Equals, ProfileConditionValue.IsCabac, "true"));
+                conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoBitDepth, "8"));
+            }
+            else if (StringHelper.IndexOfIgnoreCase(codecType, "hevc") != -1){
+                profile.setCodec("h265");
+            }
+            else if (StringHelper.IndexOfIgnoreCase(codecType, "vp8") != -1) {
+                profile.setCodec("vpx");
+            }
+            else if (StringHelper.IndexOfIgnoreCase(codecType, "vp9") != -1) {
+                profile.setCodec("vpx");
+            }
+            else{
+                profile.setCodec(codecType);
+            }
+        }
+        else if (profile.getType()==CodecType.Audio){
+
+            if (StringHelper.IndexOfIgnoreCase(codecType, "mp4") == 0){
+                profile.setCodec("aac");
+            }
+            else if (StringHelper.EqualsIgnoreCase("mpeg", codecType)){
+                profile.setCodec("mp3");
+            }
+            else if (StringHelper.EqualsIgnoreCase("opus", codecType)){
+                profile.setCodec("vorbis");
+            }
+            else{
+                profile.setCodec(codecType);
+            }
+
+            conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.AudioChannels, "2"));
+        }
+
+        profile.setConditions(conditions.toArray(new ProfileCondition[conditions.size()]));
+
+        if (!containsCodecProfile(profiles, profile)){
+            profiles.add(profile);
+        }
+
+        if (profile.getType()==CodecType.Audio && StringHelper.EqualsIgnoreCase("aac", profile.getCodec())) {
+            // Create a duplicate under VideoAudioType
+            CodecProfile videoAudioProfile = new CodecProfile();
+            videoAudioProfile.setType(CodecType.VideoAudio);
+            videoAudioProfile.setCodec("aac");
+            videoAudioProfile.setConditions(profile.getConditions());
+
+            if (!containsCodecProfile(profiles, videoAudioProfile)){
+                profiles.add(videoAudioProfile);
+            }
+        }
+    }
+
+    private boolean containsDirectPlayProfile(List<DirectPlayProfile> profiles, DirectPlayProfile newProfile){
+
+        for (DirectPlayProfile profile : profiles){
+            if (profile.getType() == newProfile.getType()) {
+                if (StringHelper.EqualsIgnoreCase(profile.getContainer(), newProfile.getContainer())) {
+
+                    if (profile.getType() == DlnaProfileType.Audio){
+                        if (StringHelper.EqualsIgnoreCase(profile.getAudioCodec(), newProfile.getAudioCodec())) {
+                            return true;
+                        }
+                    }
+                    else if (profile.getType() == DlnaProfileType.Video){
+                        if (StringHelper.EqualsIgnoreCase(profile.getVideoCodec(), newProfile.getVideoCodec())) {
+                            return true;
+                        }
+                    }
+
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean containsCodecProfile(List<CodecProfile> profiles, CodecProfile newProfile){
+
+        for (CodecProfile profile : profiles){
+            if (profile.getType() == newProfile.getType()) {
+                if (StringHelper.EqualsIgnoreCase(profile.getCodec(), newProfile.getCodec())) {
+
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
