@@ -130,23 +130,23 @@ public class AndroidProfile extends DefaultProfile
 		}
 		else if (Build.VERSION.SDK_INT >= 16){
 			new Api16Builder().buildProfiles(this);
+		}
 
-			// Fill in supplied h264 profiles
-			for (CodecProfile profile : getCodecProfiles()){
+		// Fill in supplied h264 profiles
+		for (CodecProfile profile : getCodecProfiles()){
 
-				if (profile.getType() == CodecType.Video){
+			if (profile.getType() == CodecType.Video){
 
-					if (StringHelper.EqualsIgnoreCase(profile.getCodec(), "h264")) {
+				if (StringHelper.EqualsIgnoreCase(profile.getCodec(), "h264")) {
 
-						ArrayList<ProfileCondition> conditions = new ArrayList<ProfileCondition>();
-						conditions.add(new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, tangible.DotNetToJavaStringHelper.join("|", supportedH264Profiles)));
+					ArrayList<ProfileCondition> conditions = new ArrayList<ProfileCondition>();
+					conditions.add(new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, tangible.DotNetToJavaStringHelper.join("|", supportedH264Profiles)));
 
-						for (ProfileCondition existing : profile.getConditions()){
-							conditions.add(existing);
-						}
-
-						profile.setConditions(conditions.toArray(new ProfileCondition[conditions.size()]));
+					for (ProfileCondition existing : profile.getConditions()){
+						conditions.add(existing);
 					}
+
+					profile.setConditions(conditions.toArray(new ProfileCondition[conditions.size()]));
 				}
 			}
 		}

@@ -39,7 +39,19 @@ public class Api16Builder {
     protected void ProcessMediaCodecInfoType(MediaCodecInfo codecInfo, String type, MediaCodecInfo.CodecCapabilities codecCapabilities, ArrayList<DirectPlayProfile> directPlayProfiles, ArrayList<CodecProfile> codecProfiles){
 
         addDirectPlayProfile(directPlayProfiles, type);
-        addCodecProfile(codecProfiles, type, codecCapabilities);
+
+        ArrayList<CodecProfile> newCodecProfiles = getCodecProfiles(type, codecCapabilities);
+
+        for (CodecProfile cp : newCodecProfiles){
+            if (!containsCodecProfile(codecProfiles, cp)){
+                codecProfiles.add(cp);
+                processCodecProfile(codecInfo, type, codecCapabilities, cp);
+            }
+        }
+    }
+
+    protected void processCodecProfile(MediaCodecInfo codecInfo, String type, MediaCodecInfo.CodecCapabilities codecCapabilities, CodecProfile profile){
+
     }
 
     protected void addDirectPlayProfile(List<DirectPlayProfile> profiles, String type){
@@ -69,25 +81,25 @@ public class Api16Builder {
 
             profile.setContainer(codecType);
 
-            if (StringHelper.IndexOfIgnoreCase("mp4", codecType) == 0){
+            if (StringHelper.IndexOfIgnoreCase(codecType, "mp4") == 0){
                 profile.setContainer("mp4");
                 profile.setVideoCodec("h264,mpeg4");
                 profile.setAudioCodec("aac");
             }
-            else if (StringHelper.IndexOfIgnoreCase("avc", codecType) != -1){
+            else if (StringHelper.EqualsIgnoreCase("avc", codecType)){
                 profile.setContainer("mp4");
                 profile.setVideoCodec("h264,mpeg4");
                 profile.setAudioCodec("aac");
             }
-            else if (StringHelper.IndexOfIgnoreCase("hevc", codecType) != -1){
+            else if (StringHelper.EqualsIgnoreCase("hevc", codecType)){
                 profile.setContainer("mp4");
                 profile.setVideoCodec("h265");
                 profile.setAudioCodec("aac");
             }
-            else if (StringHelper.IndexOfIgnoreCase("vp8", codecType) != -1){
+            else if (StringHelper.IndexOfIgnoreCase(codecType, "vp8") != -1){
                 profile.setContainer("webm");
             }
-            else if (StringHelper.IndexOfIgnoreCase("vp9", codecType) != -1){
+            else if (StringHelper.IndexOfIgnoreCase(codecType, "vp9") != -1){
                 profile.setContainer("webm");
             }
             else if (StringHelper.EqualsIgnoreCase("3gpp", codecType)){
@@ -100,7 +112,7 @@ public class Api16Builder {
         }
         else if (profile.getType()==DlnaProfileType.Audio){
 
-            if (StringHelper.IndexOfIgnoreCase("mp4", codecType) == 0){
+            if (StringHelper.IndexOfIgnoreCase(codecType, "mp4") == 0){
                 profile.setContainer("aac");
             }
             else if (StringHelper.EqualsIgnoreCase("mpeg", codecType)){
@@ -127,10 +139,12 @@ public class Api16Builder {
         }
     }
 
-    protected void addCodecProfile(List<CodecProfile> profiles, String type, MediaCodecInfo.CodecCapabilities codecCapabilities){
+    protected ArrayList<CodecProfile> getCodecProfiles(String type, MediaCodecInfo.CodecCapabilities codecCapabilities){
+
+        ArrayList<CodecProfile> newlyAddedCodecProfiles = new ArrayList<CodecProfile>();
 
         String[] parts = type.split("/");
-        if (parts.length != 2) return;
+        if (parts.length != 2) return newlyAddedCodecProfiles;
 
         CodecProfile profile = new CodecProfile();
         ArrayList<ProfileCondition> conditions = new ArrayList<ProfileCondition>();
@@ -142,7 +156,7 @@ public class Api16Builder {
             profile.setType(CodecType.Video);
         }
         else{
-            return;
+            return newlyAddedCodecProfiles;
         }
 
         String codecType = parts[1].toLowerCase();
@@ -163,10 +177,10 @@ public class Api16Builder {
                 profile.setCodec("h265");
             }
             else if (StringHelper.IndexOfIgnoreCase(codecType, "vp8") != -1) {
-                profile.setCodec("vpx");
+                profile.setCodec("vp8");
             }
             else if (StringHelper.IndexOfIgnoreCase(codecType, "vp9") != -1) {
-                profile.setCodec("vpx");
+                profile.setCodec("vp9");
             }
             else{
                 profile.setCodec(codecType);
@@ -192,21 +206,26 @@ public class Api16Builder {
 
         profile.setConditions(conditions.toArray(new ProfileCondition[conditions.size()]));
 
-        if (!containsCodecProfile(profiles, profile)){
-            profiles.add(profile);
-        }
+        newlyAddedCodecProfiles.add(profile);
 
         if (profile.getType()==CodecType.Audio && StringHelper.EqualsIgnoreCase("aac", profile.getCodec())) {
             // Create a duplicate under VideoAudioType
             CodecProfile videoAudioProfile = new CodecProfile();
             videoAudioProfile.setType(CodecType.VideoAudio);
             videoAudioProfile.setCodec("aac");
-            videoAudioProfile.setConditions(profile.getConditions());
 
-            if (!containsCodecProfile(profiles, videoAudioProfile)){
-                profiles.add(videoAudioProfile);
+            ArrayList<ProfileCondition> videoAudioProfileConditions = new ArrayList<ProfileCondition>();
+
+            for (ProfileCondition pc : profile.getConditions()){
+                videoAudioProfileConditions.add(pc);
             }
+
+            videoAudioProfile.setConditions(videoAudioProfileConditions.toArray(new ProfileCondition[videoAudioProfileConditions.size()]));
+
+            newlyAddedCodecProfiles.add(videoAudioProfile);
         }
+
+        return newlyAddedCodecProfiles;
     }
 
     private boolean containsDirectPlayProfile(List<DirectPlayProfile> profiles, DirectPlayProfile newProfile){
