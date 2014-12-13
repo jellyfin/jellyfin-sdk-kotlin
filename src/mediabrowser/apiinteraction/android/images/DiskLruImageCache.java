@@ -1,4 +1,4 @@
-package mediabrowser.apiinteraction.android;
+package mediabrowser.apiinteraction.android.images;
 
 import android.content.Context;
 import android.graphics.Bitmap;

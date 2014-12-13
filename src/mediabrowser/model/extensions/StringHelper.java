@@ -1,6 +1,8 @@
 package mediabrowser.model.extensions;
 
-/** 
+import java.util.Locale;
+
+/**
  Isolating these helpers allow this entire project to be easily converted to Java
 */
 public final class StringHelper
@@ -30,7 +32,7 @@ public final class StringHelper
 	*/
 	public static int IndexOfIgnoreCase(String str, String value)
 	{
-		return str.toLowerCase().indexOf(value.toLowerCase());
+		return str.toLowerCase(Locale.US).indexOf(value.toLowerCase(Locale.US));
 	}
 
 	/** 

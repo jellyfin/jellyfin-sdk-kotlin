@@ -1,22 +1,15 @@
 package mediabrowser.apiinteraction.android;
 
-import mediabrowser.apiinteraction.http.HttpHeaders;
+import mediabrowser.apiinteraction.android.images.ImageCacheManager;
 import mediabrowser.apiinteraction.http.HttpRequest;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.apiinteraction.Response;
-import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.logging.ILogger;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.util.LruCache;
 import com.android.volley.*;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class VolleyHttpClient implements IAsyncHttpClient {
 

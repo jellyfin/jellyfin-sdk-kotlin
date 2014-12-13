@@ -1,9 +1,11 @@
-package mediabrowser.apiinteraction.android;
+package mediabrowser.apiinteraction.android.images;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
+import mediabrowser.apiinteraction.android.images.DiskLruImageCache;
+import mediabrowser.apiinteraction.android.images.LruBitmapCache;
 import mediabrowser.model.logging.ILogger;
 
 import java.io.IOException;

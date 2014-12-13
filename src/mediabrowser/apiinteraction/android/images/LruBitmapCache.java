@@ -1,4 +1,4 @@
-package mediabrowser.apiinteraction.android;
+package mediabrowser.apiinteraction.android.images;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
