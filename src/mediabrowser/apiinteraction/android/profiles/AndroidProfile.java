@@ -15,10 +15,10 @@ public class AndroidProfile extends DefaultProfile
 {
 	public AndroidProfile()
 	{
-		this(true, true, new String[] {"baseline", "constrained baseline"});
+		this(true, true);
 	}
 
-	public AndroidProfile(boolean supportsHls, boolean supportsMpegDash, String[] supportedH264Profiles)
+	public AndroidProfile(boolean supportsHls, boolean supportsMpegDash)
 	{
 		setName("Android");
 
@@ -86,7 +86,7 @@ public class AndroidProfile extends DefaultProfile
 		tempVar10.setCodec("h264");
 		tempVar10.setConditions(new ProfileCondition[]
 				{
-						new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, tangible.DotNetToJavaStringHelper.join("|", supportedH264Profiles)),
+						new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, "baseline|constrained baseline"),
 						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Width, "1920"),
 						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Height, "1080"),
 						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoBitDepth, "8"),
@@ -120,35 +120,16 @@ public class AndroidProfile extends DefaultProfile
 				});
 		setCodecProfiles(new CodecProfile[] {tempVar10, tempVar11, tempVar12, tempVar13, tempVar14});
 
-		buildDynamicProfiles(supportedH264Profiles);
+		buildDynamicProfiles();
 	}
 
-	private void buildDynamicProfiles(String[] supportedH264Profiles){
+	private void buildDynamicProfiles(){
 
 		if (Build.VERSION.SDK_INT >= 21){
 			new Api21Builder().buildProfiles(this);
 		}
 		else if (Build.VERSION.SDK_INT >= 16){
 			new Api16Builder().buildProfiles(this);
-		}
-
-		// Fill in supplied h264 profiles
-		for (CodecProfile profile : getCodecProfiles()){
-
-			if (profile.getType() == CodecType.Video){
-
-				if (StringHelper.EqualsIgnoreCase(profile.getCodec(), "h264")) {
-
-					ArrayList<ProfileCondition> conditions = new ArrayList<ProfileCondition>();
-					conditions.add(new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, tangible.DotNetToJavaStringHelper.join("|", supportedH264Profiles)));
-
-					for (ProfileCondition existing : profile.getConditions()){
-						conditions.add(existing);
-					}
-
-					profile.setConditions(conditions.toArray(new ProfileCondition[conditions.size()]));
-				}
-			}
 		}
 	}
 }

@@ -52,6 +52,77 @@ public class Api16Builder {
 
     protected void processCodecProfile(MediaCodecInfo codecInfo, String type, MediaCodecInfo.CodecCapabilities codecCapabilities, CodecProfile profile){
 
+        ArrayList<ProfileCondition> conditions = new ArrayList<ProfileCondition>();
+
+        int maxLevel = getMaxLevel(codecInfo, type, codecCapabilities);
+        if (maxLevel  > 0){
+            // Only do this for h264
+            if (StringHelper.EqualsIgnoreCase(profile.getCodec(), "h264")){
+                conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, String.valueOf(maxLevel)));
+            }
+        }
+
+        for (ProfileCondition existing : profile.getConditions()){
+            conditions.add(existing);
+        }
+
+        profile.setConditions(conditions.toArray(new ProfileCondition[conditions.size()]));
+    }
+
+    private int getMaxLevel(MediaCodecInfo codecInfo, String type, MediaCodecInfo.CodecCapabilities codecCapabilities) {
+
+        MediaCodecInfo.CodecProfileLevel[] levels = codecCapabilities.profileLevels;
+        int max = 0;
+
+        for (MediaCodecInfo.CodecProfileLevel level : levels){
+
+            int value = getLevel(level);
+
+            max = Math.max(max, value);
+        }
+
+        return max;
+    }
+
+    private int getLevel(MediaCodecInfo.CodecProfileLevel level){
+
+        switch (level.level) {
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel1:
+                return 1;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel11:
+                return 11;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel12:
+                return 12;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel13:
+                return 13;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel1b:
+                // TODO: Verify this
+                return 10;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel2:
+                return 20;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel21:
+                return 21;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel22:
+                return 22;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel3:
+                return 30;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel31:
+                return 31;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel32:
+                return 32;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel4:
+                return 40;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel41:
+                return 41;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel42:
+                return 42;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel5:
+                return 50;
+            case MediaCodecInfo.CodecProfileLevel.AVCLevel51:
+                return 51;
+            default:
+                return 0;
+        }
     }
 
     protected void addDirectPlayProfile(List<DirectPlayProfile> profiles, String type){
