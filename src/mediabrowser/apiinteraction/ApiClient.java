@@ -1165,12 +1165,12 @@ public class ApiClient extends BaseApiClient {
         }
 
         if (apiWebSocket != null && apiWebSocket.IsWebSocketOpen()){
-            apiWebSocket.SendWebSocketMessage("ReportPlaybackProgress", info, response);
+            //apiWebSocket.SendWebSocketMessage("ReportPlaybackProgress", info, response);
+            //return;
         }
-        else{
-            String url = GetApiUrl("Sessions/Playing/Progress");
-            PostAsync(url, info, response);
-        }
+
+        String url = GetApiUrl("Sessions/Playing/Progress");
+        PostAsync(url, info, response);
     }
 
     /// <summary>
