@@ -536,6 +536,21 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	}
 
 	/** 
+	 Gets or sets the series genres.
+	 
+	 <value>The series genres.</value>
+	*/
+	private java.util.ArrayList<String> SeriesGenres;
+	public final java.util.ArrayList<String> getSeriesGenres()
+	{
+		return SeriesGenres;
+	}
+	public final void setSeriesGenres(java.util.ArrayList<String> value)
+	{
+		SeriesGenres = value;
+	}
+
+	/** 
 	 Gets or sets the community rating.
 	 
 	 <value>The community rating.</value>

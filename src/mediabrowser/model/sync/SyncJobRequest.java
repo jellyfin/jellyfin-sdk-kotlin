@@ -87,36 +87,51 @@ public class SyncJobRequest
 		UnwatchedOnly = value;
 	}
 	/** 
+	 Gets or sets a value indicating whether [remove when watched].
+	 
+	 <value><c>true</c> if [remove when watched]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean RemoveWhenWatched;
+	public final boolean getRemoveWhenWatched()
+	{
+		return RemoveWhenWatched;
+	}
+	public final void setRemoveWhenWatched(boolean value)
+	{
+		RemoveWhenWatched = value;
+	}
+	/** 
+	 Gets or sets a value indicating whether [synchronize new content].
+	 
+	 <value><c>true</c> if [synchronize new content]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean SyncNewContent;
+	public final boolean getSyncNewContent()
+	{
+		return SyncNewContent;
+	}
+	public final void setSyncNewContent(boolean value)
+	{
+		SyncNewContent = value;
+	}
+	/** 
 	 Gets or sets the limit.
 	 
 	 <value>The limit.</value>
 	*/
-	private Long Limit = null;
-	public final Long getLimit()
+	private Integer ItemLimit = null;
+	public final Integer getItemLimit()
 	{
-		return Limit;
+		return ItemLimit;
 	}
-	public final void setLimit(Long value)
+	public final void setItemLimit(Integer value)
 	{
-		Limit = value;
-	}
-	/** 
-	 Gets or sets the type of the limit.
-	 
-	 <value>The type of the limit.</value>
-	*/
-	private SyncLimitType LimitType = null;
-	public final SyncLimitType getLimitType()
-	{
-		return LimitType;
-	}
-	public final void setLimitType(SyncLimitType value)
-	{
-		LimitType = value;
+		ItemLimit = value;
 	}
 
 	public SyncJobRequest()
 	{
 		setItemIds(new java.util.ArrayList<String>());
+		setSyncNewContent(true);
 	}
 }

@@ -1,5 +1,7 @@
 package mediabrowser.model.session;
 
+import mediabrowser.model.dlna.*;
+
 public class ClientCapabilities
 {
 	private java.util.ArrayList<String> PlayableMediaTypes;
@@ -51,10 +53,39 @@ public class ClientCapabilities
 	{
 		SupportsContentUploading = value;
 	}
+	private boolean SupportsUniqueIdentifier;
+	public final boolean getSupportsUniqueIdentifier()
+	{
+		return SupportsUniqueIdentifier;
+	}
+	public final void setSupportsUniqueIdentifier(boolean value)
+	{
+		SupportsUniqueIdentifier = value;
+	}
+	private boolean SupportsSync;
+	public final boolean getSupportsSync()
+	{
+		return SupportsSync;
+	}
+	public final void setSupportsSync(boolean value)
+	{
+		SupportsSync = value;
+	}
+
+	private DeviceProfile DeviceProfile;
+	public final DeviceProfile getDeviceProfile()
+	{
+		return DeviceProfile;
+	}
+	public final void setDeviceProfile(DeviceProfile value)
+	{
+		DeviceProfile = value;
+	}
 
 	public ClientCapabilities()
 	{
 		setPlayableMediaTypes(new java.util.ArrayList<String>());
 		setSupportedCommands(new java.util.ArrayList<String>());
+		setSupportsUniqueIdentifier(true);
 	}
 }

@@ -64,6 +64,12 @@ public final class ImageSize
 		ParseValue(value);
 	}
 
+	public ImageSize(int width, int height)
+	{
+		_width = width;
+		_height = height;
+	}
+
 	private void ParseValue(String value)
 	{
 		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(value))

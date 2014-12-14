@@ -82,12 +82,12 @@ public class SyncJobItem
 	 
 	 <value>The status.</value>
 	*/
-	private SyncJobStatus Status = SyncJobStatus.values()[0];
-	public final SyncJobStatus getStatus()
+	private SyncJobItemStatus Status = SyncJobItemStatus.values()[0];
+	public final SyncJobItemStatus getStatus()
 	{
 		return Status;
 	}
-	public final void setStatus(SyncJobStatus value)
+	public final void setStatus(SyncJobItemStatus value)
 	{
 		Status = value;
 	}
@@ -97,13 +97,28 @@ public class SyncJobItem
 	 
 	 <value>The current progress.</value>
 	*/
-	private Double CurrentProgress;
-	public final Double getCurrentProgress()
+	private Double Progress = null;
+	public final Double getProgress()
 	{
-		return CurrentProgress;
+		return Progress;
 	}
-	public final void setCurrentProgress(Double value)
+	public final void setProgress(Double value)
 	{
-		CurrentProgress = value;
+		Progress = value;
+	}
+
+	/** 
+	 Gets or sets the date created.
+	 
+	 <value>The date created.</value>
+	*/
+	private java.util.Date DateCreated = new java.util.Date(0);
+	public final java.util.Date getDateCreated()
+	{
+		return DateCreated;
+	}
+	public final void setDateCreated(java.util.Date value)
+	{
+		DateCreated = value;
 	}
 }

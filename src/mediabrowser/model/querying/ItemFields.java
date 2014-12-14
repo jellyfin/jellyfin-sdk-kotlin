@@ -161,6 +161,11 @@ public enum ItemFields
 	ScreenshotImageTags,
 
 	/** 
+	 The series genres
+	*/
+	SeriesGenres,
+
+	/** 
 	 The series studio
 	*/
 	SeriesStudio,

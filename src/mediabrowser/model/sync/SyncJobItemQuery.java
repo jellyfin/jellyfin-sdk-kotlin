@@ -1,6 +1,6 @@
 package mediabrowser.model.sync;
 
-public class SyncJobQuery
+public class SyncJobItemQuery
 {
 	/** 
 	 Gets or sets the start index.
@@ -29,6 +29,20 @@ public class SyncJobQuery
 	public final void setLimit(Integer value)
 	{
 		Limit = value;
+	}
+	/** 
+	 Gets or sets the job identifier.
+	 
+	 <value>The job identifier.</value>
+	*/
+	private String JobId;
+	public final String getJobId()
+	{
+		return JobId;
+	}
+	public final void setJobId(String value)
+	{
+		JobId = value;
 	}
 	/** 
 	 Gets or sets a value indicating whether this instance is completed.

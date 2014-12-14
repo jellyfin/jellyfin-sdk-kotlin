@@ -115,32 +115,46 @@ public class SyncJob
 		UnwatchedOnly = value;
 	}
 	/** 
-	 Gets or sets the limit.
+	 Gets or sets a value indicating whether [remove when watched].
 	 
-	 <value>The limit.</value>
+	 <value><c>true</c> if [remove when watched]; otherwise, <c>false</c>.</value>
 	*/
-	private Long Limit = null;
-	public final Long getLimit()
+	private boolean RemoveWhenWatched;
+	public final boolean getRemoveWhenWatched()
 	{
-		return Limit;
+		return RemoveWhenWatched;
 	}
-	public final void setLimit(Long value)
+	public final void setRemoveWhenWatched(boolean value)
 	{
-		Limit = value;
+		RemoveWhenWatched = value;
 	}
 	/** 
-	 Gets or sets the type of the limit.
+	 Gets or sets a value indicating whether [synchronize new content].
 	 
-	 <value>The type of the limit.</value>
+	 <value><c>true</c> if [synchronize new content]; otherwise, <c>false</c>.</value>
 	*/
-	private SyncLimitType LimitType = null;
-	public final SyncLimitType getLimitType()
+	private boolean SyncNewContent;
+	public final boolean getSyncNewContent()
 	{
-		return LimitType;
+		return SyncNewContent;
 	}
-	public final void setLimitType(SyncLimitType value)
+	public final void setSyncNewContent(boolean value)
 	{
-		LimitType = value;
+		SyncNewContent = value;
+	}
+	/** 
+	 Gets or sets the item limit.
+	 
+	 <value>The item limit.</value>
+	*/
+	private Integer ItemLimit = null;
+	public final Integer getItemLimit()
+	{
+		return ItemLimit;
+	}
+	public final void setItemLimit(Integer value)
+	{
+		ItemLimit = value;
 	}
 	/** 
 	 Gets or sets the requested item ids.
@@ -155,20 +169,6 @@ public class SyncJob
 	public final void setRequestedItemIds(java.util.ArrayList<String> value)
 	{
 		RequestedItemIds = value;
-	}
-	/** 
-	 Gets or sets a value indicating whether this instance is dynamic.
-	 
-	 <value><c>true</c> if this instance is dynamic; otherwise, <c>false</c>.</value>
-	*/
-	private boolean IsDynamic;
-	public final boolean getIsDynamic()
-	{
-		return IsDynamic;
-	}
-	public final void setIsDynamic(boolean value)
-	{
-		IsDynamic = value;
 	}
 	/** 
 	 Gets or sets the date created.

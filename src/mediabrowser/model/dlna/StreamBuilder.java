@@ -629,6 +629,12 @@ public class StreamBuilder
 				continue;
 			}
 
+			// No way to express this
+			if (condition.getCondition() == ProfileConditionType.GreaterThanEqual)
+			{
+				continue;
+			}
+
 			switch (condition.getProperty())
 			{
 				case AudioBitrate:
@@ -663,12 +669,19 @@ public class StreamBuilder
 							val = tempRef_val.argValue;
 						if (tempVar3)
 						{
-							item.setCabac(val);
+							if (condition.getCondition() == ProfileConditionType.Equals)
+							{
+								item.setCabac(val);
+							}
+							else if (condition.getCondition() == ProfileConditionType.NotEquals)
+							{
+								item.setCabac(!val);
+							}
 						}
 						break;
 				}
-				case AudioProfile:
 				case IsAnamorphic:
+				case AudioProfile:
 				case Has64BitOffsets:
 				case PacketLength:
 				case VideoTimestamp:
