@@ -2601,14 +2601,6 @@ public class ApiClient extends BaseApiClient {
          String url = GetApiUrl("News/Product");
          url = AddDataFormat(url);
 
-         Response<String> jsonResponse = new Response<String>(response){
-             @Override
-             public void onResponse(String jsonResponse) {
-                 NewsItemsResult obj = DeserializeFromString(jsonResponse, NewsItemsResult.class);
-                 response.onResponse(obj);
-             }
-         };
-
-         Send(url, "GET", jsonResponse);
+         Send(url, "GET", new SerializedResponse<NewsItemsResult>(response, jsonSerializer, NewsItemsResult.class));
      }
 }

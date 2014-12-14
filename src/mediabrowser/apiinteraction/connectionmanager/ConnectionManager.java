@@ -12,7 +12,6 @@ import mediabrowser.model.apiclient.*;
 import mediabrowser.model.connect.*;
 import mediabrowser.model.dto.IHasServerId;
 import mediabrowser.model.dto.UserDto;
-import mediabrowser.model.extensions.IntHelper;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
@@ -826,7 +825,7 @@ public class ConnectionManager implements IConnectionManager {
 
         query.setId(credentials.getConnectUserId());
 
-        connectService.GetConnectUser(query, credentials.getConnectAccessToken(), new Response<ConnectUser>(){
+        connectService.GetConnectUser(query, credentials.getConnectAccessToken(), new Response<ConnectUser>() {
 
             @Override
             public void onResponse(ConnectUser user) {
@@ -933,64 +932,7 @@ public class ConnectionManager implements IConnectionManager {
 
     protected void FindServersInternal(final Response<ArrayList<ServerInfo>> response)
     {
-        _serverDiscovery.FindServers(1000, new Response<ArrayList<ServerDiscoveryInfo>>() {
-
-            @Override
-            public void onResponse(ArrayList<ServerDiscoveryInfo> foundServers) {
-
-                ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
-
-                for (int i = 0; i < foundServers.size(); i++) {
-
-                    ServerInfo server = new ServerInfo();
-                    ServerDiscoveryInfo foundServer = foundServers.get(i);
-
-                    server.setId(foundServer.getId());
-                    server.setLocalAddress(foundServer.getAddress());
-                    server.setName(foundServer.getName());
-
-                    server.setManualAddress(ConvertEndpointAddressToManualAddress(foundServer));
-
-                    servers.add(server);
-                }
-
-                response.onResponse(servers);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
-
-                response.onResponse(servers);
-            }
-        });
-    }
-
-    private String ConvertEndpointAddressToManualAddress(ServerDiscoveryInfo info)
-    {
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getAddress()) && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getEndpointAddress()))
-        {
-            String address = info.getEndpointAddress().split(":")[0];
-
-            // Determine the port, if any
-            String[] parts = info.getAddress().split(":");
-            if (parts.length > 1)
-            {
-                String portString = parts[parts.length-1];
-
-                int port = 0;
-                tangible.RefObject<Integer> tempRef_expected = new tangible.RefObject<Integer>(port);
-                if (IntHelper.TryParseCultureInvariant(portString, tempRef_expected))
-                {
-                    address += ":" + portString;
-                }
-            }
-
-            return NormalizeAddress(address);
-        }
-
-        return null;
+        _serverDiscovery.FindServers(1000, new FindServersResponse(this, response));
     }
 
     private void WakeAllServers()
@@ -1005,17 +947,12 @@ public class ConnectionManager implements IConnectionManager {
 
     private void BeginWakeServer(final ServerInfo info)
     {
-        Thread thread = new Thread(new Runnable(){
-            @Override
-            public void run() {
-                WakeServer(info, new EmptyResponse());
-            }
-        });
+        Thread thread = new Thread(new BeginWakeServerRunnable(this, info));
 
         thread.start();
     }
 
-    private void WakeServer(ServerInfo info, final EmptyResponse response)
+    void WakeServer(ServerInfo info, final EmptyResponse response)
     {
         logger.Debug("Waking server: %s, Id: %s", info.getName(), info.getId());
 
@@ -1042,7 +979,7 @@ public class ConnectionManager implements IConnectionManager {
         _networkConnectivity.SendWakeOnLan(info.getMacAddress(), info.getPort(), response);
     }
 
-    private String NormalizeAddress(String address) throws IllegalArgumentException {
+    String NormalizeAddress(String address) throws IllegalArgumentException {
 
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(address))
         {
@@ -1086,30 +1023,7 @@ public class ConnectionManager implements IConnectionManager {
                 }
             }
 
-            client.Logout(new EmptyResponse() {
-
-                @Override
-                public void onResponse() {
-
-                    synchronized (doneList) {
-
-                        doneList.add(new EmptyResponse());
-
-                        if (doneList.size() >= count) {
-                            response.onResponse();
-                        }
-
-                    }
-
-                }
-
-                @Override
-                public void onError(Exception ex) {
-
-                    onResponse();
-                }
-
-            });
+            client.Logout(new ApiClientLogoutResponse(doneList, count, response));
         }
     }
 
