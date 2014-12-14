@@ -22,6 +22,9 @@ public class AndroidProfile extends DefaultProfile
 	{
 		setName("Android");
 
+		// Adds a lot of weight and not needed in this context
+		setProtocolInfo(null);
+
 		java.util.ArrayList<TranscodingProfile> transcodingProfiles = new java.util.ArrayList<TranscodingProfile>();
 
 		TranscodingProfile tempVar = new TranscodingProfile();

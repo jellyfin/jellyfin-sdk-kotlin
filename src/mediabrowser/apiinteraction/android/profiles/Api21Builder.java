@@ -68,6 +68,8 @@ public class Api21Builder extends Api16Builder{
         conditions.add(new ProfileCondition(ProfileConditionType.GreaterThanEqual, ProfileConditionValue.Width, String.valueOf(widthRange.getLower())));
 
         profile.setConditions(conditions.toArray(new ProfileCondition[conditions.size()]));
+
+        AddProfileLevels(codecCapabilities, profile);
     }
 
     private void addAudioCapabilities(MediaCodecInfo.CodecCapabilities codecCapabilities, CodecProfile profile){

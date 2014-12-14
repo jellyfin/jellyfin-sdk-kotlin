@@ -52,9 +52,21 @@ public class Api16Builder {
 
     protected void processCodecProfile(MediaCodecInfo codecInfo, String type, MediaCodecInfo.CodecCapabilities codecCapabilities, CodecProfile profile){
 
+        AddProfileLevels(codecCapabilities, profile);
+    }
+
+    protected void AddProfileLevels(MediaCodecInfo.CodecCapabilities codecCapabilities, CodecProfile profile){
         ArrayList<ProfileCondition> conditions = new ArrayList<ProfileCondition>();
 
-        int maxLevel = getMaxLevel(codecInfo, type, codecCapabilities);
+        String[] videoProfiles = GetVideoProfiles(codecCapabilities);
+        if (videoProfiles.length > 0){
+            // Only do this for h264
+            if (StringHelper.EqualsIgnoreCase(profile.getCodec(), "h264")){
+                conditions.add(new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, tangible.DotNetToJavaStringHelper.join("|", videoProfiles)));
+            }
+        }
+
+        int maxLevel = getMaxLevel(codecCapabilities);
         if (maxLevel  > 0){
             // Only do this for h264
             if (StringHelper.EqualsIgnoreCase(profile.getCodec(), "h264")){
@@ -69,7 +81,24 @@ public class Api16Builder {
         profile.setConditions(conditions.toArray(new ProfileCondition[conditions.size()]));
     }
 
-    private int getMaxLevel(MediaCodecInfo codecInfo, String type, MediaCodecInfo.CodecCapabilities codecCapabilities) {
+    private String[] GetVideoProfiles(MediaCodecInfo.CodecCapabilities codecCapabilities) {
+
+        ArrayList<String> profiles = new ArrayList<String>();
+
+        MediaCodecInfo.CodecProfileLevel[] levels = codecCapabilities.profileLevels;
+
+        for (MediaCodecInfo.CodecProfileLevel level : levels){
+
+            for (String value : getProfiles(level)){
+                // Insert at the beginning to put the most complex profile at the front
+                profiles.add(0, value);
+            }
+        }
+
+        return profiles.toArray(new String[profiles.size()]);
+    }
+
+    private int getMaxLevel(MediaCodecInfo.CodecCapabilities codecCapabilities) {
 
         MediaCodecInfo.CodecProfileLevel[] levels = codecCapabilities.profileLevels;
         int max = 0;
@@ -82,6 +111,31 @@ public class Api16Builder {
         }
 
         return max;
+    }
+
+    private String[] getProfiles(MediaCodecInfo.CodecProfileLevel level){
+
+        switch (level.level) {
+            case MediaCodecInfo.CodecProfileLevel.AVCProfileBaseline:
+                return new String[]{"constrained baseline", "baseline"};
+            case MediaCodecInfo.CodecProfileLevel.AVCProfileExtended:
+                return new String[]{"extended"};
+            case MediaCodecInfo.CodecProfileLevel.AVCProfileHigh:
+                return new String[]{"high"};
+            case MediaCodecInfo.CodecProfileLevel.AVCProfileHigh10:
+                // TODO: Verify. Maybe high 10?
+                return new String[]{"high"};
+            case MediaCodecInfo.CodecProfileLevel.AVCProfileHigh422:
+                // TODO: Verify
+                return new String[]{"high"};
+            case MediaCodecInfo.CodecProfileLevel.AVCProfileHigh444:
+                // TODO: Verify
+                return new String[]{"high"};
+            case MediaCodecInfo.CodecProfileLevel.AVCProfileMain:
+                return new String[]{"main"};
+            default:
+                return new String[]{};
+        }
     }
 
     private int getLevel(MediaCodecInfo.CodecProfileLevel level){
