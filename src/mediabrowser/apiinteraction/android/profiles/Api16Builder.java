@@ -30,9 +30,12 @@ public class Api16Builder {
 
         for (String type : codecInfo.getSupportedTypes()){
 
-            final MediaCodecInfo.CodecCapabilities codecCapabilities = codecInfo.getCapabilitiesForType(type);
+            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(type))
+            {
+                final MediaCodecInfo.CodecCapabilities codecCapabilities = codecInfo.getCapabilitiesForType(type);
 
-            ProcessMediaCodecInfoType(codecInfo, type, codecCapabilities, directPlayProfiles, codecProfiles);
+                ProcessMediaCodecInfoType(codecInfo, type, codecCapabilities, directPlayProfiles, codecProfiles);
+            }
         }
     }
 
