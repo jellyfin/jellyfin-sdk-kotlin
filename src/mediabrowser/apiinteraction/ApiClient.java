@@ -114,9 +114,7 @@ public class ApiClient extends BaseApiClient {
         this.connectionMode = initialMode;
         this.serverInfo = info;
 
-        String serverAddress = initialMode == ConnectionMode.Local ?
-                info.getLocalAddress() :
-                info.getRemoteAddress();
+        String serverAddress = info.GetAddress(initialMode);
 
         setServerAddress(serverAddress);
     }

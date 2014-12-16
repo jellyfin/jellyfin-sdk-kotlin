@@ -441,13 +441,13 @@ public class ConnectionManager implements IConnectionManager {
                 ConnectionState.ServerSignIn :
                 ConnectionState.SignedIn);
 
+        result.getServers().add(server);
+        result.getApiClient().EnableAutomaticNetworking(server, connectionMode, _networkConnectivity);
+
         if (result.getState() == ConnectionState.SignedIn)
         {
             EnsureWebSocketIfConfigured(result.getApiClient());
         }
-
-        result.getServers().add(server);
-        result.getApiClient().EnableAutomaticNetworking(server, connectionMode, _networkConnectivity);
 
         response.onResponse(result);
     }
