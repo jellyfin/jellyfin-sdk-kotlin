@@ -18,7 +18,10 @@ public class Api16Builder {
         int numCodecs = MediaCodecList.getCodecCount();
         for (int i = 0; i < numCodecs; i++) {
             MediaCodecInfo codecInfo = MediaCodecList.getCodecInfoAt(i);
-
+            if (codecInfo.isEncoder()) {
+                continue;
+            }
+            
             ProcessMediaCodecInfo(codecInfo, directPlayProfiles, codecProfiles);
         }
 
@@ -30,11 +33,14 @@ public class Api16Builder {
 
         for (String type : codecInfo.getSupportedTypes()){
 
-            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(type))
-            {
-                final MediaCodecInfo.CodecCapabilities codecCapabilities = codecInfo.getCapabilitiesForType(type);
+            try {
+                if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(type)) {
+                    final MediaCodecInfo.CodecCapabilities codecCapabilities = codecInfo.getCapabilitiesForType(type);
 
-                ProcessMediaCodecInfoType(codecInfo, type, codecCapabilities, directPlayProfiles, codecProfiles);
+                    ProcessMediaCodecInfoType(codecInfo, type, codecCapabilities, directPlayProfiles, codecProfiles);
+                }
+            } catch (IllegalArgumentException ex) {
+                // silently ignore
             }
         }
     }
