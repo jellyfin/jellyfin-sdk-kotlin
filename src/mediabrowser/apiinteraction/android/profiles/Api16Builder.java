@@ -4,6 +4,7 @@ import android.media.MediaCodecInfo;
 import android.media.MediaCodecList;
 import mediabrowser.model.dlna.*;
 import mediabrowser.model.extensions.StringHelper;
+import mediabrowser.model.logging.ILogger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,13 +35,12 @@ public class Api16Builder {
         for (String type : codecInfo.getSupportedTypes()){
 
             try {
-                if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(type)) {
-                    final MediaCodecInfo.CodecCapabilities codecCapabilities = codecInfo.getCapabilitiesForType(type);
+                final MediaCodecInfo.CodecCapabilities codecCapabilities = codecInfo.getCapabilitiesForType(type);
 
-                    ProcessMediaCodecInfoType(codecInfo, type, codecCapabilities, directPlayProfiles, codecProfiles);
-                }
+                ProcessMediaCodecInfoType(codecInfo, type, codecCapabilities, directPlayProfiles, codecProfiles);
             } catch (IllegalArgumentException ex) {
                 // silently ignore
+                //logger.Error("IllegalArgumentException thrown by codecInfo.getCapabilitiesForType(type). type: " + type);
             }
         }
     }

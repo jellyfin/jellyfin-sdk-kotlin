@@ -1,15 +1,8 @@
 package mediabrowser.apiinteraction.android.profiles;
 
-import android.media.MediaCodecInfo;
-import android.media.MediaCodecList;
 import android.os.Build;
 import mediabrowser.model.dlna.*;
 import mediabrowser.model.dlna.profiles.DefaultProfile;
-import mediabrowser.model.extensions.StringHelper;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AndroidProfile extends DefaultProfile
 {

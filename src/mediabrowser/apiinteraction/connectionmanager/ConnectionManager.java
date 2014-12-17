@@ -825,21 +825,7 @@ public class ConnectionManager implements IConnectionManager {
 
         query.setId(credentials.getConnectUserId());
 
-        connectService.GetConnectUser(query, credentials.getConnectAccessToken(), new Response<ConnectUser>() {
-
-            @Override
-            public void onResponse(ConnectUser user) {
-
-                OnConnectUserSignIn(user);
-                response.onResponse();
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                response.onError(ex);
-            }
-        });
+        connectService.GetConnectUser(query, credentials.getConnectAccessToken(), new GetConnectUserResponse(this, response));
     }
 
     private void OnGetServerResponse(ServerCredentials credentials,

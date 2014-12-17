@@ -1,12 +1,10 @@
 package mediabrowser.apiinteraction.android.profiles;
 
-import android.media.MediaCodec;
 import android.media.MediaCodecInfo;
-import android.media.MediaCodecList;
-import android.provider.MediaStore;
 import android.util.Range;
 import mediabrowser.model.dlna.*;
 import mediabrowser.model.extensions.StringHelper;
+import mediabrowser.model.logging.ILogger;
 
 import java.util.ArrayList;
 
