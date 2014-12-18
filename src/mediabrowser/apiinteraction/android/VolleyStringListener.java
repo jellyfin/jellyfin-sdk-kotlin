@@ -18,7 +18,7 @@ public class VolleyStringListener implements Response.Listener<String> {
     @Override
     public void onResponse(String s) {
 
-        logger.Info("Response received from: ", url);
+        logger.Info("Response received from: %s", url);
 
         outerResponse.onResponse(s);
     }
