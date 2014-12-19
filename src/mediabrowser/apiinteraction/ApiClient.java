@@ -17,6 +17,7 @@ import mediabrowser.model.channels.ChannelFeatures;
 import mediabrowser.model.channels.ChannelItemQuery;
 import mediabrowser.model.channels.ChannelQuery;
 import mediabrowser.model.configuration.ServerConfiguration;
+import mediabrowser.model.configuration.UserConfiguration;
 import mediabrowser.model.connect.ConnectPassword;
 import mediabrowser.model.devices.ContentUploadHistory;
 import mediabrowser.model.devices.DevicesOptions;
@@ -44,6 +45,7 @@ import mediabrowser.model.search.SearchHintResult;
 import mediabrowser.model.search.SearchQuery;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.model.session.*;
+import mediabrowser.model.sync.*;
 import mediabrowser.model.system.PublicSystemInfo;
 import mediabrowser.model.system.SystemInfo;
 import mediabrowser.model.tasks.TaskInfo;
@@ -2601,4 +2603,34 @@ public class ApiClient extends BaseApiClient {
 
          Send(url, "GET", new SerializedResponse<NewsItemsResult>(response, jsonSerializer, NewsItemsResult.class));
      }
+
+    public void CreateSyncJob(SyncJobRequest request, Response<SyncJobCreationResult> response){
+
+        // TODO
+    }
+
+    public void UpdateUserConfiguration(String userId, UserConfiguration configuration, EmptyResponse response) {
+
+        // TODO
+    }
+
+    public void GetSyncJobItemFile(String id){
+
+        // TODO
+    }
+
+    public void GetSyncJobs(SyncJobQuery query, Response<QueryResult<SyncJob>> response) {
+
+        // TODO
+    }
+
+    public void GetSyncJobItems(SyncJobItemQuery query, Response<QueryResult<SyncJobItem>> response) {
+
+        // TODO
+    }
+
+    public void ReportSyncJobItemTransferred(String id, EmptyResponse response) {
+
+        // TODO
+    }
 }
