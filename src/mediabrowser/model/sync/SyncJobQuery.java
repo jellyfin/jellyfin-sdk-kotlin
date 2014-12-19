@@ -44,4 +44,18 @@ public class SyncJobQuery
 	{
 		IsCompleted = value;
 	}
+	/** 
+	 Gets or sets the target identifier.
+	 
+	 <value>The target identifier.</value>
+	*/
+	private String TargetId;
+	public final String getTargetId()
+	{
+		return TargetId;
+	}
+	public final void setTargetId(String value)
+	{
+		TargetId = value;
+	}
 }

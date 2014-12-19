@@ -29,6 +29,24 @@ public class TranscodingInfo
 	{
 		Container = value;
 	}
+	private boolean IsVideoDirect;
+	public final boolean getIsVideoDirect()
+	{
+		return IsVideoDirect;
+	}
+	public final void setIsVideoDirect(boolean value)
+	{
+		IsVideoDirect = value;
+	}
+	private boolean IsAudioDirect;
+	public final boolean getIsAudioDirect()
+	{
+		return IsAudioDirect;
+	}
+	public final void setIsAudioDirect(boolean value)
+	{
+		IsAudioDirect = value;
+	}
 	private Integer Bitrate;
 	public final Integer getBitrate()
 	{

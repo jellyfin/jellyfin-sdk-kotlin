@@ -14,6 +14,14 @@ public interface ILogManager
 	void setLogSeverity(LogSeverity value);
 
 	/** 
+	 Gets or sets the exception message prefix.
+	 
+	 <value>The exception message prefix.</value>
+	*/
+	String getExceptionMessagePrefix();
+	void setExceptionMessagePrefix(String value);
+
+	/** 
 	 Gets the logger.
 	 
 	 @param name The name.

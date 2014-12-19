@@ -6,6 +6,11 @@ package mediabrowser.model.querying;
 public enum ItemFields
 {
 	/** 
+	 The air time
+	*/
+	AirTime,
+
+	/** 
 	 The alternate episode numbers
 	*/
 	AlternateEpisodeNumbers,
@@ -151,6 +156,11 @@ public enum ItemFields
 	Revenue,
 
 	/** 
+	 The season name
+	*/
+	SeasonName,
+
+	/** 
 	 The short overview
 	*/
 	ShortOverview,
@@ -179,6 +189,11 @@ public enum ItemFields
 	 The sort name of the item
 	*/
 	SortName,
+
+	/** 
+	 The special episode numbers
+	*/
+	SpecialEpisodeNumbers,
 
 	/** 
 	 The studios of the item

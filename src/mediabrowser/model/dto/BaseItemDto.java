@@ -1429,14 +1429,9 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value><c>true</c> if [supports playlists]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean SupportsPlaylists;
 	public final boolean getSupportsPlaylists()
 	{
-		return SupportsPlaylists;
-	}
-	public final void setSupportsPlaylists(boolean value)
-	{
-		SupportsPlaylists = value;
+		return getRunTimeTicks() != null || getIsFolder() || getIsGenre() || getIsMusicGenre() || getIsArtist();
 	}
 
 	/** 
@@ -2262,7 +2257,14 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 //ORIGINAL LINE: [IgnoreDataMember] public bool IsArtist
 	public final boolean getIsArtist()
 	{
-		return StringHelper.EqualsIgnoreCase(getType(), "Artist");
+		return StringHelper.EqualsIgnoreCase(getType(), "MusicArtist");
+	}
+
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [IgnoreDataMember] public bool IsAlbum
+	public final boolean getIsAlbum()
+	{
+		return StringHelper.EqualsIgnoreCase(getType(), "MusicAlbum");
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:

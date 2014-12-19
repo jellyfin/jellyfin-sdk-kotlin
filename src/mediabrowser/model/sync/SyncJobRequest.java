@@ -31,6 +31,34 @@ public class SyncJobRequest
 		ItemIds = value;
 	}
 	/** 
+	 Gets or sets the category.
+	 
+	 <value>The category.</value>
+	*/
+	private SyncCategory Category = null;
+	public final SyncCategory getCategory()
+	{
+		return Category;
+	}
+	public final void setCategory(SyncCategory value)
+	{
+		Category = value;
+	}
+	/** 
+	 Gets or sets the parent identifier.
+	 
+	 <value>The parent identifier.</value>
+	*/
+	private String ParentId;
+	public final String getParentId()
+	{
+		return ParentId;
+	}
+	public final void setParentId(String value)
+	{
+		ParentId = value;
+	}
+	/** 
 	 Gets or sets the quality.
 	 
 	 <value>The quality.</value>
@@ -85,20 +113,6 @@ public class SyncJobRequest
 	public final void setUnwatchedOnly(boolean value)
 	{
 		UnwatchedOnly = value;
-	}
-	/** 
-	 Gets or sets a value indicating whether [remove when watched].
-	 
-	 <value><c>true</c> if [remove when watched]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean RemoveWhenWatched;
-	public final boolean getRemoveWhenWatched()
-	{
-		return RemoveWhenWatched;
-	}
-	public final void setRemoveWhenWatched(boolean value)
-	{
-		RemoveWhenWatched = value;
 	}
 	/** 
 	 Gets or sets a value indicating whether [synchronize new content].

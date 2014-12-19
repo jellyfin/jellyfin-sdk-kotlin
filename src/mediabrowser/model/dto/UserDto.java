@@ -3,6 +3,7 @@ package mediabrowser.model.dto;
 import mediabrowser.model.configuration.*;
 import mediabrowser.model.connect.*;
 import mediabrowser.model.extensions.*;
+import mediabrowser.model.users.*;
 
 /** 
  Class UserDto
@@ -129,6 +130,11 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto, IHasServerId
 		HasPassword = value;
 	}
 
+	/** 
+	 Gets or sets a value indicating whether this instance has configured password.
+	 
+	 <value><c>true</c> if this instance has configured password; otherwise, <c>false</c>.</value>
+	*/
 	private boolean HasConfiguredPassword;
 	public final boolean getHasConfiguredPassword()
 	{
@@ -185,6 +191,21 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto, IHasServerId
 	}
 
 	/** 
+	 Gets or sets the policy.
+	 
+	 <value>The policy.</value>
+	*/
+	private UserPolicy Policy;
+	public final UserPolicy getPolicy()
+	{
+		return Policy;
+	}
+	public final void setPolicy(UserPolicy value)
+	{
+		Policy = value;
+	}
+
+	/** 
 	 Gets or sets the primary image aspect ratio.
 	 
 	 <value>The primary image aspect ratio.</value>
@@ -232,6 +253,7 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto, IHasServerId
 	public UserDto()
 	{
 		setConfiguration(new UserConfiguration());
+		setPolicy(new UserPolicy());
 	}
 
 	/** 

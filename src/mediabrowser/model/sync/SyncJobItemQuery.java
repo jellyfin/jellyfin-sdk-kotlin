@@ -45,6 +45,34 @@ public class SyncJobItemQuery
 		JobId = value;
 	}
 	/** 
+	 Gets or sets the target identifier.
+	 
+	 <value>The target identifier.</value>
+	*/
+	private String TargetId;
+	public final String getTargetId()
+	{
+		return TargetId;
+	}
+	public final void setTargetId(String value)
+	{
+		TargetId = value;
+	}
+	/** 
+	 Gets or sets the status.
+	 
+	 <value>The status.</value>
+	*/
+	private SyncJobItemStatus Status;
+	public final SyncJobItemStatus getStatus()
+	{
+		return Status;
+	}
+	public final void setStatus(SyncJobItemStatus value)
+	{
+		Status = value;
+	}
+	/** 
 	 Gets or sets a value indicating whether this instance is completed.
 	 
 	 <value><c>null</c> if [is completed] contains no value, <c>true</c> if [is completed]; otherwise, <c>false</c>.</value>

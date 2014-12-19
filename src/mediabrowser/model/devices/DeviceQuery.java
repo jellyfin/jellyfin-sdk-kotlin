@@ -30,4 +30,18 @@ public class DeviceQuery
 	{
 		SupportsUniqueIdentifier = value;
 	}
+	/** 
+	 Gets or sets a value indicating whether [supports synchronize].
+	 
+	 <value><c>null</c> if [supports synchronize] contains no value, <c>true</c> if [supports synchronize]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean SupportsSync;
+	public final Boolean getSupportsSync()
+	{
+		return SupportsSync;
+	}
+	public final void setSupportsSync(Boolean value)
+	{
+		SupportsSync = value;
+	}
 }
