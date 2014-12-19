@@ -49,6 +49,14 @@ public class AndroidProfile extends DefaultProfile
 		tempVar3.setContext(EncodingContext.Static);
 		transcodingProfiles.add(tempVar3);
 
+		TranscodingProfile mkvProfile = new TranscodingProfile();
+        	mkvProfile.setContainer("webm");
+        	mkvProfile.setVideoCodec("vpx");
+        	mkvProfile.setAudioCodec("vorbis");
+        	mkvProfile.setType(DlnaProfileType.Video);
+        	mkvProfile.setContext(EncodingContext.Streaming);
+        	transcodingProfiles.add(mkvProfile);
+
 		setTranscodingProfiles(transcodingProfiles.toArray(new TranscodingProfile[0]));
 
 		DirectPlayProfile tempVar4 = new DirectPlayProfile();
