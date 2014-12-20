@@ -870,7 +870,7 @@ public abstract class BaseApiClient implements IDisposable
 
 		options.setTag(item.getPrimaryImageTag());
 
-		return GetPersonImageUrl(item.getName(), options);
+		return GetImageUrl(item.getId(), options);
 	}
 
 	/** 
@@ -898,26 +898,6 @@ public abstract class BaseApiClient implements IDisposable
 		}
 
 		return item.getImageTags().get(options.getImageType());
-	}
-
-	/** 
-	 Gets an image url that can be used to download an image from the api
-	 
-	 @param name The name of the person
-	 @param options The options.
-	 @return System.String.
-	 @exception System.ArgumentNullException name
-	*/
-	public final String GetPersonImageUrl(String name, ImageOptions options)
-	{
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(name))
-		{
-			throw new IllegalArgumentException("name");
-		}
-
-		String url = "Persons/" + GetSlugName(name) + "/Images/" + options.getImageType();
-
-		return GetImageUrl(url, options, new QueryStringDictionary());
 	}
 
 	/** 
