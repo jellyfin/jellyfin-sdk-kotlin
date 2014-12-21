@@ -251,6 +251,7 @@ public class ConnectionManager implements IConnectionManager {
         final ConnectionMode mode = tests.get(index);
         final String address = server.GetAddress(mode);
         boolean enableRetry = false;
+        int timeout = 20000;
 
         if (mode == ConnectionMode.Local){
 
@@ -259,6 +260,7 @@ public class ConnectionManager implements IConnectionManager {
                 return;
             }
             enableRetry = true;
+            timeout = 5000;
         }
 
         else if (mode == ConnectionMode.Remote){
@@ -277,7 +279,8 @@ public class ConnectionManager implements IConnectionManager {
         }
 
         final boolean finalEnableRetry = enableRetry;
-        TryConnect(address, new Response<PublicSystemInfo>() {
+        final int finalTimeout = timeout;
+        TryConnect(address, timeout, new Response<PublicSystemInfo>() {
 
             @Override
             public void onResponse(PublicSystemInfo result) {
@@ -299,7 +302,7 @@ public class ConnectionManager implements IConnectionManager {
                         }
                     }
 
-                    TryConnect(address, new Response<PublicSystemInfo>() {
+                    TryConnect(address, finalTimeout, new Response<PublicSystemInfo>() {
 
                         @Override
                         public void onResponse(PublicSystemInfo result) {
@@ -459,7 +462,7 @@ public class ConnectionManager implements IConnectionManager {
 
         logger.Debug("Attempting to connect to server at %s", address);
 
-        TryConnect(normalizeAddress, new Response<PublicSystemInfo>(){
+        TryConnect(normalizeAddress, 20000, new Response<PublicSystemInfo>(){
 
             @Override
             public void onResponse(PublicSystemInfo result) {
@@ -590,13 +593,14 @@ public class ConnectionManager implements IConnectionManager {
         httpClient.Send(request, stringResponse);
     }
 
-    private void TryConnect(String url, final Response<PublicSystemInfo> response)
+    private void TryConnect(String url, int timeout, final Response<PublicSystemInfo> response)
     {
         url += "/mediabrowser/system/info/public?format=json";
 
         HttpRequest request = new HttpRequest();
         request.setUrl(url);
         request.setMethod("GET");
+        request.setTimeout(timeout);
 
         httpClient.Send(request, new SerializedResponse<PublicSystemInfo>(response, jsonSerializer, PublicSystemInfo.class));
     }
