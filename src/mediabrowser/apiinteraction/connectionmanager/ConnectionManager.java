@@ -716,33 +716,7 @@ public class ConnectionManager implements IConnectionManager {
         final ArrayList<ServerInfo> foundServers = new ArrayList<ServerInfo>();
         final ArrayList<ServerInfo> connectServers = new ArrayList<ServerInfo>();
 
-        Response<ArrayList<ServerInfo>> findServersResponse = new Response<ArrayList<ServerInfo>>(){
-
-            private void OnAny(ArrayList<ServerInfo> servers){
-
-                synchronized (credentials){
-
-                    foundServers.addAll(servers);
-
-                    numTasksCompleted[0]++;
-
-                    if (numTasksCompleted[0] >= numTasks) {
-                        OnGetServerResponse(credentials, foundServers, connectServers, response);
-                    }
-                }
-            }
-
-            @Override
-            public void onResponse(ArrayList<ServerInfo> response) {
-                OnAny(response);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                OnAny(new ArrayList<ServerInfo>());
-            }
-        };
+        Response<ArrayList<ServerInfo>> findServersResponse = new FindServersResponse(this, credentials, foundServers, connectServers, numTasksCompleted, numTasks, response);
 
         if (networkInfo.GetIsLocalNetworkAvailable())
         {
@@ -832,7 +806,7 @@ public class ConnectionManager implements IConnectionManager {
         connectService.GetConnectUser(query, credentials.getConnectAccessToken(), new GetConnectUserResponse(this, response));
     }
 
-    private void OnGetServerResponse(ServerCredentials credentials,
+    void OnGetServerResponse(ServerCredentials credentials,
                                      ArrayList<ServerInfo> foundServers,
                                      ArrayList<ServerInfo> connectServers,
                                      Response<ArrayList<ServerInfo>> response){
@@ -922,7 +896,7 @@ public class ConnectionManager implements IConnectionManager {
 
     protected void FindServersInternal(final Response<ArrayList<ServerInfo>> response)
     {
-        _serverDiscovery.FindServers(1000, new FindServersResponse(this, response));
+        _serverDiscovery.FindServers(1000, new FindServersInnerResponse(this, response));
     }
 
     private void WakeAllServers()

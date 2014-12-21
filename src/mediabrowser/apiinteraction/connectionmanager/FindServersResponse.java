@@ -1,75 +1,53 @@
 package mediabrowser.apiinteraction.connectionmanager;
 
 import mediabrowser.apiinteraction.Response;
-import mediabrowser.model.apiclient.ServerDiscoveryInfo;
+import mediabrowser.model.apiclient.ServerCredentials;
 import mediabrowser.model.apiclient.ServerInfo;
-import mediabrowser.model.extensions.IntHelper;
 
 import java.util.ArrayList;
 
-public class FindServersResponse extends Response<ArrayList<ServerDiscoveryInfo>> {
+public class FindServersResponse extends Response<ArrayList<ServerInfo>> {
 
     private ConnectionManager connectionManager;
+    private ServerCredentials credentials;
+    private ArrayList<ServerInfo> foundServers = new ArrayList<ServerInfo>();
+    private ArrayList<ServerInfo> connectServers = new ArrayList<ServerInfo>();;
+    private int[] numTasksCompleted;
+    private int numTasks;
     private Response<ArrayList<ServerInfo>> response;
 
-    public FindServersResponse(ConnectionManager connectionManager, Response<ArrayList<ServerInfo>> response) {
+    public FindServersResponse(ConnectionManager connectionManager, ServerCredentials credentials, ArrayList<ServerInfo> foundServers, ArrayList<ServerInfo> connectServers, int[] numTasksCompleted, int numTasks, Response<ArrayList<ServerInfo>> response) {
         this.connectionManager = connectionManager;
+        this.credentials = credentials;
+        this.foundServers = foundServers;
+        this.connectServers = connectServers;
+        this.numTasksCompleted = numTasksCompleted;
+        this.numTasks = numTasks;
         this.response = response;
     }
 
-    @Override
-    public void onResponse(ArrayList<ServerDiscoveryInfo> foundServers) {
+    private void OnAny(ArrayList<ServerInfo> servers){
 
-        ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
+        synchronized (credentials){
 
-        for (int i = 0; i < foundServers.size(); i++) {
+            foundServers.addAll(servers);
 
-            ServerInfo server = new ServerInfo();
-            ServerDiscoveryInfo foundServer = foundServers.get(i);
+            numTasksCompleted[0]++;
 
-            server.setId(foundServer.getId());
-            server.setLocalAddress(foundServer.getAddress());
-            server.setName(foundServer.getName());
-
-            server.setManualAddress(ConvertEndpointAddressToManualAddress(foundServer));
-
-            servers.add(server);
+            if (numTasksCompleted[0] >= numTasks) {
+                connectionManager.OnGetServerResponse(credentials, foundServers, connectServers, response);
+            }
         }
+    }
 
-        response.onResponse(servers);
+    @Override
+    public void onResponse(ArrayList<ServerInfo> response) {
+        OnAny(response);
     }
 
     @Override
     public void onError(Exception ex) {
 
-        ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
-
-        response.onResponse(servers);
-    }
-
-    private String ConvertEndpointAddressToManualAddress(ServerDiscoveryInfo info)
-    {
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getAddress()) && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getEndpointAddress()))
-        {
-            String address = info.getEndpointAddress().split(":")[0];
-
-            // Determine the port, if any
-            String[] parts = info.getAddress().split(":");
-            if (parts.length > 1)
-            {
-                String portString = parts[parts.length-1];
-
-                int port = 0;
-                tangible.RefObject<Integer> tempRef_expected = new tangible.RefObject<Integer>(port);
-                if (IntHelper.TryParseCultureInvariant(portString, tempRef_expected))
-                {
-                    address += ":" + portString;
-                }
-            }
-
-            return connectionManager.NormalizeAddress(address);
-        }
-
-        return null;
+        OnAny(new ArrayList<ServerInfo>());
     }
 }
