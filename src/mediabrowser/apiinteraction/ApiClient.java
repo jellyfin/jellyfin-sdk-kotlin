@@ -835,32 +835,6 @@ public class ApiClient extends BaseApiClient {
     }
 
     /// <summary>
-    /// Gets a person
-    /// </summary>
-    /// <param name="name">The name.</param>
-    /// <returns>Task{BaseItemDto}.</returns>
-    /// <exception cref="System.IllegalArgumentException">userId</exception>
-    public void GetPersonAsync(String name, String userId, final Response<BaseItemDto> response)
-    {
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(name))
-        {
-            throw new IllegalArgumentException("name");
-        }
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(userId))
-        {
-            throw new IllegalArgumentException("userId");
-        }
-
-        QueryStringDictionary dict = new QueryStringDictionary();
-
-        dict.Add("userId", userId);
-
-        String url = GetApiUrl("Persons/" + GetSlugName(name), dict);
-
-        GetItemFromUrl(url, response);
-    }
-
-    /// <summary>
     /// Gets a list of plugins installed on the server
     /// </summary>
     /// <returns>Task{PluginInfo[]}.</returns>
