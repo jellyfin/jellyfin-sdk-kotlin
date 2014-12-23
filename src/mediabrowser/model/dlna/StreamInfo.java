@@ -539,7 +539,17 @@ public class StreamInfo
 		MediaStream stream = getTargetAudioStream();
 		Integer streamChannels = stream == null ? null : stream.getChannels();
 
-		return getMaxAudioChannels() != null && !getIsDirectStream() ? (streamChannels != null ? Math.min(getMaxAudioChannels(), streamChannels) : getMaxAudioChannels()) : streamChannels;
+		if (getMaxAudioChannels() != null && !getIsDirectStream())
+		{
+			if (streamChannels != null)
+			{
+				return Math.min(getMaxAudioChannels(), streamChannels);
+			}
+
+			return getMaxAudioChannels();
+		}
+
+		return streamChannels;
 	}
 
 	/** 
