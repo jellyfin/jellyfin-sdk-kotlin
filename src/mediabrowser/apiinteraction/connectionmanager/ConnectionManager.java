@@ -134,8 +134,6 @@ public class ConnectionManager implements IConnectionManager {
         }
 
         result.setServers(new ArrayList<ServerInfo>());
-        result.getServers().addAll(servers);
-
         result.setConnectUser(connectUser);
 
         response.onResponse(result);
@@ -489,43 +487,7 @@ public class ConnectionManager implements IConnectionManager {
 
         logger.Debug("Logging out of all servers");
 
-        LogoutAll(new EmptyResponse() {
-
-            private void OnSuccessOrFail() {
-
-                logger.Debug("Updating saved credentials for all servers");
-                ServerCredentials credentials = _credentialProvider.GetCredentials();
-
-                ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
-
-                for (ServerInfo server : credentials.getServers()) {
-
-                    if (server.getUserLinkType() == null ||
-                            server.getUserLinkType() != UserLinkType.Guest){
-
-                        server.setAccessToken(null);
-                        server.setExchangeToken(null);
-                        server.setUserId(null);
-                        servers.add(server);
-                    }
-                }
-
-                credentials.setServers(servers);
-                _credentialProvider.SaveCredentials(credentials);
-
-                response.onResponse();
-            }
-
-            @Override
-            public void onResponse() {
-                OnSuccessOrFail();
-            }
-
-            @Override
-            public void onError(Exception ex) {
-                OnSuccessOrFail();
-            }
-        });
+        LogoutAll(new LogoutAllResponse(_credentialProvider, logger, response));
     }
 
     private Observable connectedObservable = new Observable();
@@ -654,7 +616,7 @@ public class ConnectionManager implements IConnectionManager {
         return apiClient;
     }
 
-    private void EnsureWebSocketIfConfigured(ApiClient apiClient)
+    void EnsureWebSocketIfConfigured(ApiClient apiClient)
     {
         if (webSocketEnabled){
             apiClient.OpenWebSocket();
@@ -667,39 +629,10 @@ public class ConnectionManager implements IConnectionManager {
     {
         logger.Debug("Updating credentials after local authentication");
 
-        apiClient.GetSystemInfoAsync(new Response<SystemInfo>() {
-
-            @Override
-            public void onResponse(SystemInfo info) {
-
-                ServerInfo server = apiClient.getServerInfo();
-                server.ImportInfo(info);
-
-                ServerCredentials credentials = _credentialProvider.GetCredentials();
-
-                server.setDateLastAccessed(new Date());
-
-                if (saveCredentials)
-                {
-                    server.setUserId(result.getUser().getId());
-                    server.setAccessToken(result.getAccessToken());
-                }
-                else {
-                    server.setUserId(null);
-                    server.setAccessToken(null);
-                }
-
-                credentials.AddOrUpdateServer(server);
-                _credentialProvider.SaveCredentials(credentials);
-
-                EnsureWebSocketIfConfigured(apiClient);
-
-                OnLocalUserSignIn(result.getUser());
-            }
-        });
+        apiClient.GetSystemInfoAsync(new GetSystemInfoResponse(this, apiClient, _credentialProvider, result, saveCredentials));
     }
 
-    private void OnLocalUserSignIn(UserDto user)
+    void OnLocalUserSignIn(UserDto user)
     {
 
     }
