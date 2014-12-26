@@ -153,7 +153,7 @@ ServerInfo and ApiClient will be null if State == Unavailable. Let's look at an 
 	
 					case ConnectionState.ServerSelection:
 						// Multiple servers available
-						// Display a selection screen using result.Servers
+						// Display a selection screen by calling GetAvailableServers
 						// When a server is chosen, call the Connect overload that accept either a ServerInfo object or a String url.
 	
 					case ConnectionState.SignedIn:
