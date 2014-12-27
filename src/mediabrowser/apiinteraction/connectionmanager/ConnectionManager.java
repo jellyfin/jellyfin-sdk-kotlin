@@ -139,13 +139,6 @@ public class ConnectionManager implements IConnectionManager {
         response.onResponse(result);
     }
 
-    private void OnFailedConnection(Response<ConnectionResult> response, ServerInfo server){
-
-        ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
-        servers.add(server);
-        OnFailedConnection(response, servers);
-    }
-
     @Override
     public void Connect(final Response<ConnectionResult> response) {
 
@@ -242,7 +235,7 @@ public class ConnectionManager implements IConnectionManager {
 
         if (index >= tests.size()){
 
-            OnFailedConnection(response, server);
+            OnFailedConnection(response);
             return;
         }
 
@@ -382,24 +375,7 @@ public class ConnectionManager implements IConnectionManager {
 
         request.getRequestHeaders().put("X-MediaBrowser-Token", server.getExchangeToken());
 
-        httpClient.Send(request, new Response<String>() {
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                ConnectAuthenticationExchangeResult obj = jsonSerializer.DeserializeFromString(jsonResponse, ConnectAuthenticationExchangeResult.class);
-
-                server.setUserId(obj.getLocalUserId());
-                server.setAccessToken(obj.getAccessToken());
-                response.onResponse();
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                response.onResponse();
-            }
-        });
+        httpClient.Send(request, new ExchangeTokenResponse(jsonSerializer, server, response));
     }
 
     private void AfterConnectValidated(final ServerInfo server,
