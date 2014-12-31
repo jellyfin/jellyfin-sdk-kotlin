@@ -605,7 +605,29 @@ public class ConnectionManager implements IConnectionManager {
     {
         logger.Debug("Updating credentials after local authentication");
 
-        apiClient.GetSystemInfoAsync(new GetSystemInfoResponse(this, apiClient, _credentialProvider, result, saveCredentials));
+        ServerInfo server = ((ApiClient)apiClient).getServerInfo();
+
+        ServerCredentials credentials = _credentialProvider.GetCredentials();
+
+        server.setDateLastAccessed(new Date());
+
+        if (saveCredentials)
+        {
+            server.setUserId(result.getUser().getId());
+            server.setAccessToken(result.getAccessToken());
+        }
+        else
+        {
+            server.setUserId(null);
+            server.setAccessToken(null);
+        }
+
+        credentials.AddOrUpdateServer(server);
+        _credentialProvider.SaveCredentials(credentials);
+
+        EnsureWebSocketIfConfigured(apiClient);
+
+        OnLocalUserSignIn(result.getUser());
     }
 
     void OnLocalUserSignIn(UserDto user)
