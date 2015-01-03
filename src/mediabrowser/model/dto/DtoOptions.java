@@ -5,6 +5,8 @@ import mediabrowser.model.querying.*;
 
 public class DtoOptions
 {
+	private static final java.util.ArrayList<ItemFields> DefaultExcludedFields = new java.util.ArrayList<ItemFields>(java.util.Arrays.asList(new ItemFields[] {ItemFields.SeasonUserData}));
+
 	private java.util.ArrayList<ItemFields> Fields;
 	public final java.util.ArrayList<ItemFields> getFields()
 	{
@@ -45,7 +47,6 @@ public class DtoOptions
 	public DtoOptions()
 	{
 		setFields(new java.util.ArrayList<ItemFields>());
-		setImageTypes(new java.util.ArrayList<ImageType>());
 		setImageTypeLimit(Integer.MAX_VALUE);
 		setEnableImages(true);
 	}

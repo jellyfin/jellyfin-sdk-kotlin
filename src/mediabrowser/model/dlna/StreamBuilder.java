@@ -115,6 +115,7 @@ public class StreamBuilder
 		tempVar.setMediaType(DlnaProfileType.Audio);
 		tempVar.setMediaSource(item);
 		tempVar.setRunTimeTicks(item.getRunTimeTicks());
+		tempVar.setContext(options.getContext());
 		StreamInfo playlistItem = tempVar;
 
 		Integer maxBitrateSetting = options.GetMaxBitrate();
@@ -249,6 +250,7 @@ public class StreamBuilder
 		tempVar.setMediaType(DlnaProfileType.Video);
 		tempVar.setMediaSource(item);
 		tempVar.setRunTimeTicks(item.getRunTimeTicks());
+		tempVar.setContext(options.getContext());
 		StreamInfo playlistItem = tempVar;
 
 		Integer tempVar2 = options.getAudioStreamIndex();

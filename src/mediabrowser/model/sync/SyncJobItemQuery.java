@@ -7,7 +7,7 @@ public class SyncJobItemQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer StartIndex;
+	private Integer StartIndex = null;
 	public final Integer getStartIndex()
 	{
 		return StartIndex;
@@ -21,7 +21,7 @@ public class SyncJobItemQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer Limit;
+	private Integer Limit = null;
 	public final Integer getLimit()
 	{
 		return Limit;
@@ -63,27 +63,32 @@ public class SyncJobItemQuery
 	 
 	 <value>The status.</value>
 	*/
-	private SyncJobItemStatus Status;
-	public final SyncJobItemStatus getStatus()
+	private java.util.ArrayList<SyncJobItemStatus> Statuses;
+	public final java.util.ArrayList<SyncJobItemStatus> getStatuses()
 	{
-		return Status;
+		return Statuses;
 	}
-	public final void setStatus(SyncJobItemStatus value)
+	public final void setStatuses(java.util.ArrayList<SyncJobItemStatus> value)
 	{
-		Status = value;
+		Statuses = value;
 	}
 	/** 
-	 Gets or sets a value indicating whether this instance is completed.
+	 Gets or sets a value indicating whether [add metadata].
 	 
-	 <value><c>null</c> if [is completed] contains no value, <c>true</c> if [is completed]; otherwise, <c>false</c>.</value>
+	 <value><c>true</c> if [add metadata]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean IsCompleted;
-	public final Boolean getIsCompleted()
+	private boolean AddMetadata;
+	public final boolean getAddMetadata()
 	{
-		return IsCompleted;
+		return AddMetadata;
 	}
-	public final void setIsCompleted(Boolean value)
+	public final void setAddMetadata(boolean value)
 	{
-		IsCompleted = value;
+		AddMetadata = value;
+	}
+
+	public SyncJobItemQuery()
+	{
+		setStatuses(new java.util.ArrayList<SyncJobItemStatus>());
 	}
 }

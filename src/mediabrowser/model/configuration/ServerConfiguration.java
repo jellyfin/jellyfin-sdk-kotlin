@@ -1,5 +1,6 @@
 package mediabrowser.model.configuration;
 
+import mediabrowser.model.dto.*;
 import mediabrowser.model.entities.*;
 
 /** 
@@ -125,6 +126,21 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setSaveLocalMeta(boolean value)
 	{
 		SaveLocalMeta = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether [enable localized guids].
+	 
+	 <value><c>true</c> if [enable localized guids]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean EnableLocalizedGuids;
+	public final boolean getEnableLocalizedGuids()
+	{
+		return EnableLocalizedGuids;
+	}
+	public final void setEnableLocalizedGuids(boolean value)
+	{
+		EnableLocalizedGuids = value;
 	}
 
 	/** 
@@ -343,36 +359,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		ImageSavingConvention = value;
 	}
 
-	/** 
-	 Gets or sets a value indicating whether [enable people prefix sub folders].
-	 
-	 <value><c>true</c> if [enable people prefix sub folders]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean EnablePeoplePrefixSubFolders;
-	public final boolean getEnablePeoplePrefixSubFolders()
-	{
-		return EnablePeoplePrefixSubFolders;
-	}
-	public final void setEnablePeoplePrefixSubFolders(boolean value)
-	{
-		EnablePeoplePrefixSubFolders = value;
-	}
-
-	/** 
-	 Gets or sets the encoding quality.
-	 
-	 <value>The encoding quality.</value>
-	*/
-	private EncodingQuality MediaEncodingQuality = EncodingQuality.values()[0];
-	public final EncodingQuality getMediaEncodingQuality()
-	{
-		return MediaEncodingQuality;
-	}
-	public final void setMediaEncodingQuality(EncodingQuality value)
-	{
-		MediaEncodingQuality = value;
-	}
-
 	private MetadataOptions[] MetadataOptions;
 	public final MetadataOptions[] getMetadataOptions()
 	{
@@ -383,15 +369,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		MetadataOptions = value;
 	}
 
-	private boolean EnableDebugEncodingLogging;
-	public final boolean getEnableDebugEncodingLogging()
-	{
-		return EnableDebugEncodingLogging;
-	}
-	public final void setEnableDebugEncodingLogging(boolean value)
-	{
-		EnableDebugEncodingLogging = value;
-	}
 	private String TranscodingTempPath;
 	public final String getTranscodingTempPath()
 	{
@@ -460,16 +437,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		UICulture = value;
 	}
 
-	private double DownMixAudioBoost;
-	public final double getDownMixAudioBoost()
-	{
-		return DownMixAudioBoost;
-	}
-	public final void setDownMixAudioBoost(double value)
-	{
-		DownMixAudioBoost = value;
-	}
-
 	private PeopleMetadataOptions PeopleMetadataOptions;
 	public final PeopleMetadataOptions getPeopleMetadataOptions()
 	{
@@ -508,15 +475,24 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		SaveMetadataHidden = value;
 	}
-
-	private boolean PlaylistImagesDeleted;
-	public final boolean getPlaylistImagesDeleted()
+	private boolean EnableWin8HttpListener;
+	public final boolean getEnableWin8HttpListener()
 	{
-		return PlaylistImagesDeleted;
+		return EnableWin8HttpListener;
 	}
-	public final void setPlaylistImagesDeleted(boolean value)
+	public final void setEnableWin8HttpListener(boolean value)
 	{
-		PlaylistImagesDeleted = value;
+		EnableWin8HttpListener = value;
+	}
+
+	private NameValuePair[] ContentTypes;
+	public final NameValuePair[] getContentTypes()
+	{
+		return ContentTypes;
+	}
+	public final void setContentTypes(NameValuePair[] value)
+	{
+		ContentTypes = value;
 	}
 
 	/** 
@@ -525,17 +501,15 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public ServerConfiguration()
 	{
 		super();
-		setMediaEncodingQuality(EncodingQuality.Auto);
 		setImageSavingConvention(ImageSavingConvention.Compatible);
 		setPublicPort(8096);
 		setHttpServerPortNumber(8096);
 		setEnableDashboardResponseCaching(true);
 
 		setEnableAutomaticRestart(true);
-		setEnablePeoplePrefixSubFolders(true);
+		setEnableWin8HttpListener(true);
 
 		setEnableUPnP(true);
-		setDownMixAudioBoost(2);
 
 		setMinResumePct(5);
 		setMaxResumePct(90);
@@ -549,6 +523,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setFindInternetTrailers(true);
 
 		setPathSubstitutions(new PathSubstitution[] { });
+		setContentTypes(new NameValuePair[] { });
 
 		setPreferredMetadataLanguage("en");
 		setMetadataCountryCode("US");

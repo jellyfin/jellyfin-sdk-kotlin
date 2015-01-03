@@ -254,15 +254,6 @@ public class SyncJob
 	{
 		PrimaryImageTag = value;
 	}
-	private Double PrimaryImageAspectRatio = null;
-	public final Double getPrimaryImageAspectRatio()
-	{
-		return PrimaryImageAspectRatio;
-	}
-	public final void setPrimaryImageAspectRatio(Double value)
-	{
-		PrimaryImageAspectRatio = value;
-	}
 
 	public SyncJob()
 	{

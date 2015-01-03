@@ -984,6 +984,20 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	{
 		UserData = value;
 	}
+	/** 
+	 Gets or sets the season user data.
+	 
+	 <value>The season user data.</value>
+	*/
+	private UserItemDataDto SeasonUserData;
+	public final UserItemDataDto getSeasonUserData()
+	{
+		return SeasonUserData;
+	}
+	public final void setSeasonUserData(UserItemDataDto value)
+	{
+		SeasonUserData = value;
+	}
 
 	/** 
 	 Gets or sets the recursive item count.

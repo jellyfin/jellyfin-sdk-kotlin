@@ -95,6 +95,11 @@ public class UserConfiguration
 		IsHidden = value;
 	}
 
+	/** 
+	 Gets or sets a value indicating whether this instance is disabled.
+	 
+	 <value><c>true</c> if this instance is disabled; otherwise, <c>false</c>.</value>
+	*/
 	private boolean IsDisabled;
 	public final boolean getIsDisabled()
 	{
@@ -287,25 +292,6 @@ public class UserConfiguration
 		OrderedViews = value;
 	}
 
-	private boolean SyncConnectName;
-	public final boolean getSyncConnectName()
-	{
-		return SyncConnectName;
-	}
-	public final void setSyncConnectName(boolean value)
-	{
-		SyncConnectName = value;
-	}
-	private boolean SyncConnectImage;
-	public final boolean getSyncConnectImage()
-	{
-		return SyncConnectImage;
-	}
-	public final void setSyncConnectImage(boolean value)
-	{
-		SyncConnectImage = value;
-	}
-
 	private boolean IncludeTrailersInSuggestions;
 	public final boolean getIncludeTrailersInSuggestions()
 	{
@@ -365,6 +351,16 @@ public class UserConfiguration
 		BlockedTags = value;
 	}
 
+	private boolean HasMigratedToPolicy;
+	public final boolean getHasMigratedToPolicy()
+	{
+		return HasMigratedToPolicy;
+	}
+	public final void setHasMigratedToPolicy(boolean value)
+	{
+		HasMigratedToPolicy = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="UserConfiguration" /> class.
 	*/
@@ -387,8 +383,6 @@ public class UserConfiguration
 		setExcludeFoldersFromGrouping(new String[] { });
 		setDisplayCollectionsView(true);
 
-		setSyncConnectName(true);
-		setSyncConnectImage(true);
 		setIncludeTrailersInSuggestions(true);
 		setEnableCinemaMode(true);
 		setEnableUserPreferenceAccess(true);

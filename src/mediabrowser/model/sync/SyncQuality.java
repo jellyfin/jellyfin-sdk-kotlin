@@ -5,17 +5,17 @@ public enum SyncQuality
 	/** 
 	 The good
 	*/
-	Good(0),
+	Low(0),
 
 	/** 
 	 The better
 	*/
-	Better(1),
+	Medium(1),
 
 	/** 
 	 The best
 	*/
-	Best(2);
+	High(2);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, SyncQuality> mappings;

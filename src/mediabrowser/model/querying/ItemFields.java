@@ -106,11 +106,6 @@ public enum ItemFields
 	Metascore,
 
 	/** 
-	 The metadata settings
-	*/
-	Settings,
-
-	/** 
 	 The item overview
 	*/
 	Overview,
@@ -159,6 +154,11 @@ public enum ItemFields
 	 The season name
 	*/
 	SeasonName,
+
+	/** 
+	 The settings
+	*/
+	Settings,
 
 	/** 
 	 The short overview
@@ -233,7 +233,12 @@ public enum ItemFields
 	/** 
 	 The media streams
 	*/
-	MediaStreams;
+	MediaStreams,
+
+	/** 
+	 The season user data
+	*/
+	SeasonUserData;
 
 	public int getValue()
 	{

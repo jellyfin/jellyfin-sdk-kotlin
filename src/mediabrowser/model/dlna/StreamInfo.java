@@ -31,6 +31,15 @@ public class StreamInfo
 	{
 		PlayMethod = value;
 	}
+	private EncodingContext Context = EncodingContext.values()[0];
+	public final EncodingContext getContext()
+	{
+		return Context;
+	}
+	public final void setContext(EncodingContext value)
+	{
+		Context = value;
+	}
 
 	private DlnaProfileType MediaType = DlnaProfileType.values()[0];
 	public final DlnaProfileType getMediaType()
@@ -351,8 +360,8 @@ public class StreamInfo
 		String tempVar5 = item.getAudioCodec();
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>(java.util.Arrays.asList(new String[] {(tempVar != null) ? tempVar : "", (tempVar2 != null) ? tempVar2 : "", (tempVar3 != null) ? tempVar3 : "", (new Boolean(item.getIsDirectStream())).toString().toLowerCase(), (tempVar4 != null) ? tempVar4 : "", (tempVar5 != null) ? tempVar5 : "", item.getAudioStreamIndex() != null ? StringHelper.ToStringCultureInvariant(item.getAudioStreamIndex()) : "", item.getSubtitleStreamIndex() != null && item.getSubtitleDeliveryMethod() != mediabrowser.model.dlna.SubtitleDeliveryMethod.External ? StringHelper.ToStringCultureInvariant(item.getSubtitleStreamIndex()) : "", item.getVideoBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getVideoBitrate()) : "", item.getAudioBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getAudioBitrate()) : "", item.getMaxAudioChannels() != null ? StringHelper.ToStringCultureInvariant(item.getMaxAudioChannels()) : "", item.getMaxFramerate() != null ? StringHelper.ToStringCultureInvariant(item.getMaxFramerate()) : "", item.getMaxWidth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxWidth()) : "", item.getMaxHeight() != null ? StringHelper.ToStringCultureInvariant(item.getMaxHeight()) : "", StringHelper.ToStringCultureInvariant(item.getStartPositionTicks()), item.getVideoLevel() != null ? StringHelper.ToStringCultureInvariant(item.getVideoLevel()) : ""}));
 
-        list.add(item.getIsDirectStream() ? "" : String.valueOf(new java.util.Date().getTime()));
-        list.add(item.getMaxRefFrames() != null ? StringHelper.ToStringCultureInvariant(item.getMaxRefFrames()) : "");
+		list.add(item.getIsDirectStream() ? "" : String.valueOf(new java.util.Date().getTime()));
+		list.add(item.getMaxRefFrames() != null ? StringHelper.ToStringCultureInvariant(item.getMaxRefFrames()) : "");
 		list.add(item.getMaxVideoBitDepth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxVideoBitDepth()) : "");
 		String tempVar6 = item.getVideoProfile();
 		list.add((tempVar6 != null) ? tempVar6 : "");

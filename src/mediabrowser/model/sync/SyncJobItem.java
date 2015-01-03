@@ -48,6 +48,36 @@ public class SyncJobItem
 	}
 
 	/** 
+	 Gets or sets the name of the item.
+	 
+	 <value>The name of the item.</value>
+	*/
+	private String ItemName;
+	public final String getItemName()
+	{
+		return ItemName;
+	}
+	public final void setItemName(String value)
+	{
+		ItemName = value;
+	}
+
+	/** 
+	 Gets or sets the media source identifier.
+	 
+	 <value>The media source identifier.</value>
+	*/
+	private String MediaSourceId;
+	public final String getMediaSourceId()
+	{
+		return MediaSourceId;
+	}
+	public final void setMediaSourceId(String value)
+	{
+		MediaSourceId = value;
+	}
+
+	/** 
 	 Gets or sets the target identifier.
 	 
 	 <value>The target identifier.</value>
@@ -120,5 +150,33 @@ public class SyncJobItem
 	public final void setDateCreated(java.util.Date value)
 	{
 		DateCreated = value;
+	}
+	/** 
+	 Gets or sets the primary image item identifier.
+	 
+	 <value>The primary image item identifier.</value>
+	*/
+	private String PrimaryImageItemId;
+	public final String getPrimaryImageItemId()
+	{
+		return PrimaryImageItemId;
+	}
+	public final void setPrimaryImageItemId(String value)
+	{
+		PrimaryImageItemId = value;
+	}
+	/** 
+	 Gets or sets the primary image tag.
+	 
+	 <value>The primary image tag.</value>
+	*/
+	private String PrimaryImageTag;
+	public final String getPrimaryImageTag()
+	{
+		return PrimaryImageTag;
+	}
+	public final void setPrimaryImageTag(String value)
+	{
+		PrimaryImageTag = value;
 	}
 }
