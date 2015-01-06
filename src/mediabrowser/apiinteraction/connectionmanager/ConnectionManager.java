@@ -920,6 +920,8 @@ public class ConnectionManager implements IConnectionManager {
 
             client.Logout(new ApiClientLogoutResponse(doneList, count, response));
         }
+
+        connectUser = null;
     }
 
     public void LoginToConnect(String username, String password, final EmptyResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
