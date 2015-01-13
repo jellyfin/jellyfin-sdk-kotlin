@@ -240,6 +240,18 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<ItemCounts>(response, jsonSerializer, ItemCounts.class));
     }
 
+    public void GetRegistrationStatusAsync(String feature, final Response<MBRegistrationRecord> response)
+    {
+        if (feature == null)
+        {
+            throw new IllegalArgumentException("feature");
+        }
+
+        String url = GetApiUrl("Plugins/RegistrationRecords/"+UrlEncoder.encode(feature, "UTF-8"));
+
+        Send(url, "GET", new SerializedResponse<MBRegistrationRecord>(response, jsonSerializer, MBRegistrationRecord.class));
+    }
+
     public void GetRootFolderAsync(String userId, final Response<BaseItemDto> response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(userId))
