@@ -1,7 +1,5 @@
 package mediabrowser.apiinteraction.tasks;
 
-import org.apache.http.annotation.ThreadSafe;
-
 /**
  * <p>A source of cancellation tokens to signal and propagate cancellation
  * requests when executing asynchronous operations.</p>
@@ -15,7 +13,6 @@ import org.apache.http.annotation.ThreadSafe;
  * https://code.google.com/p/bytenose-extra-utils/source/browse/src/main/java/com/bytenose/extrautils/concurrent/CancellationTokenSource.java
  *
  */
-@ThreadSafe
 public final class CancellationTokenSource {
 
     /** The cancellation token associated to this source */

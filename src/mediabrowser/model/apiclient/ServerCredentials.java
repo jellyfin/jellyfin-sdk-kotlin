@@ -1,7 +1,6 @@
 package mediabrowser.model.apiclient;
 
 import mediabrowser.model.extensions.*;
-import edu.emory.mathcs.backport.java.util.Collections;
 
 import java.util.ArrayList;
 import java.util.Date;

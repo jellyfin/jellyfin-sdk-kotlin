@@ -2,7 +2,6 @@ package mediabrowser.apiinteraction.connectionmanager;
 
 import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.model.apiclient.ServerInfo;
-import org.apache.maven.settings.Server;
 
 public class BeginWakeServerRunnable implements Runnable {
 

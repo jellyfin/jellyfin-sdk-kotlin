@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file:///production/MediaBrowser.ApiClient.Java" />
+    <output-test url="file:///test/MediaBrowser.ApiClient.Java" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+    </content>
+    <orderEntry type="library" name="junit:junit:4.11" level="project" />
+    <orderEntry type="jdk" jdkName="Android 5.0 Google APIs" jdkType="Android SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="org.java-websocket:Java-WebSocket:1.3.0" level="project" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.3" level="project" />
+    <orderEntry type="library" name="com.squareup.okhttp:okhttp:2.2.0" level="project" />
+    <orderEntry type="library" name="com.squareup.okio:okio:1.2.0" level="project" />
+    <orderEntry type="library" name="com.squareup.okhttp:okhttp-urlconnection:2.2.0" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/volley/volley.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="io.fastjson:boon:0.28" level="project" />
+    <orderEntry type="library" name="com.jakewharton:disklrucache:2.0.2" level="project" />
+    <orderEntry type="library" name="android-support-v4" level="project" />
+    <orderEntry type="library" name="org.robolectric:robolectric:2.4" level="project" />
+  </component>
+</module>

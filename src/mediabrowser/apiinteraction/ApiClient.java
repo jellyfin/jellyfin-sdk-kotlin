@@ -24,6 +24,7 @@ import mediabrowser.model.devices.DevicesOptions;
 import mediabrowser.model.devices.LocalFileInfo;
 import mediabrowser.model.dto.*;
 import mediabrowser.model.entities.DisplayPreferences;
+import mediabrowser.model.entities.MBRegistrationRecord;
 import mediabrowser.model.entities.ParentalRating;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.globalization.CountryInfo;
@@ -247,9 +248,9 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("feature");
         }
 
-        String url = GetApiUrl("Plugins/RegistrationRecords/"+UrlEncoder.encode(feature, "UTF-8"));
+        String url = GetApiUrl("Plugins/RegistrationRecords/" + feature);
 
-        Send(url, "GET", new SerializedResponse<MBRegistrationRecord>(response, jsonSerializer, MBRegistrationRecord.class));
+        Send(url, "GET", new SerializedResponse<>(response, jsonSerializer, MBRegistrationRecord.class));
     }
 
     public void GetRootFolderAsync(String userId, final Response<BaseItemDto> response)
