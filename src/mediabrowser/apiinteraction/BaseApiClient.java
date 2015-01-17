@@ -447,6 +447,7 @@ public abstract class BaseApiClient implements IDisposable
 		dict.AddIfNotNull("MaxPlayers", query.getMaxPlayers());
 		dict.AddIfNotNullOrEmpty("NameStartsWithOrGreater", query.getNameStartsWithOrGreater());
 		dict.AddIfNotNullOrEmpty("NameStartsWith", query.getNameStartsWith());
+		dict.AddIfNotNullOrEmpty("NameLessThan", query.getNameLessThan());
 		dict.AddIfNotNullOrEmpty("AlbumArtistStartsWithOrGreater", query.getAlbumArtistStartsWithOrGreater());
 
 		dict.AddIfNotNull("LocationTypes", query.getLocationTypes());
