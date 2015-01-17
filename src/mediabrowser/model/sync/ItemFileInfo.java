@@ -51,7 +51,7 @@ public class ItemFileInfo
 	 
 	 <value>The type of the image.</value>
 	*/
-	private ImageType ImageType = getImageType().values()[0];
+	private ImageType ImageType;
 	public final ImageType getImageType()
 	{
 		return ImageType;
@@ -59,5 +59,19 @@ public class ItemFileInfo
 	public final void setImageType(ImageType value)
 	{
 		ImageType = value;
+	}
+	/** 
+	 Gets or sets the index.
+	 
+	 <value>The index.</value>
+	*/
+	private int Index;
+	public final int getIndex()
+	{
+		return Index;
+	}
+	public final void setIndex(int value)
+	{
+		Index = value;
 	}
 }

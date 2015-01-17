@@ -47,4 +47,13 @@ public class SubtitleStreamInfo
 	{
 		Format = value;
 	}
+	private int Index;
+	public final int getIndex()
+	{
+		return Index;
+	}
+	public final void setIndex(int value)
+	{
+		Index = value;
+	}
 }

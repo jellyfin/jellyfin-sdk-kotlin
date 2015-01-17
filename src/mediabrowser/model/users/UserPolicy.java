@@ -209,6 +209,25 @@ public class UserPolicy
 		EnableAllDevices = value;
 	}
 
+	private String[] EnabledChannels;
+	public final String[] getEnabledChannels()
+	{
+		return EnabledChannels;
+	}
+	public final void setEnabledChannels(String[] value)
+	{
+		EnabledChannels = value;
+	}
+	private boolean EnableAllChannels;
+	public final boolean getEnableAllChannels()
+	{
+		return EnableAllChannels;
+	}
+	public final void setEnableAllChannels(boolean value)
+	{
+		EnableAllChannels = value;
+	}
+
 	public UserPolicy()
 	{
 		setEnableLiveTvManagement(true);
@@ -218,7 +237,6 @@ public class UserPolicy
 
 		setBlockedMediaFolders(new String[] { });
 		setBlockedTags(new String[] { });
-		setBlockedChannels(new String[] { });
 		setBlockUnratedItems(new UnratedItem[] { });
 
 		setEnableUserPreferenceAccess(true);

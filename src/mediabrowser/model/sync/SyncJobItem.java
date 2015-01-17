@@ -1,5 +1,7 @@
 package mediabrowser.model.sync;
 
+import mediabrowser.model.dto.*;
+
 public class SyncJobItem
 {
 	/** 
@@ -75,6 +77,21 @@ public class SyncJobItem
 	public final void setMediaSourceId(String value)
 	{
 		MediaSourceId = value;
+	}
+
+	/** 
+	 Gets or sets the media source.
+	 
+	 <value>The media source.</value>
+	*/
+	private MediaSourceInfo MediaSource;
+	public final MediaSourceInfo getMediaSource()
+	{
+		return MediaSource;
+	}
+	public final void setMediaSource(MediaSourceInfo value)
+	{
+		MediaSource = value;
 	}
 
 	/** 
@@ -178,5 +195,33 @@ public class SyncJobItem
 	public final void setPrimaryImageTag(String value)
 	{
 		PrimaryImageTag = value;
+	}
+	/** 
+	 Gets or sets the temporary path.
+	 
+	 <value>The temporary path.</value>
+	*/
+	private String TemporaryPath;
+	public final String getTemporaryPath()
+	{
+		return TemporaryPath;
+	}
+	public final void setTemporaryPath(String value)
+	{
+		TemporaryPath = value;
+	}
+	private java.util.ArrayList<ItemFileInfo> AdditionalFiles;
+	public final java.util.ArrayList<ItemFileInfo> getAdditionalFiles()
+	{
+		return AdditionalFiles;
+	}
+	public final void setAdditionalFiles(java.util.ArrayList<ItemFileInfo> value)
+	{
+		AdditionalFiles = value;
+	}
+
+	public SyncJobItem()
+	{
+		setAdditionalFiles(new java.util.ArrayList<ItemFileInfo>());
 	}
 }

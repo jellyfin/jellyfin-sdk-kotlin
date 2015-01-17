@@ -88,4 +88,23 @@ public class SyncedItem
 	{
 		UserId = value;
 	}
+	/** 
+	 Gets or sets the additional files.
+	 
+	 <value>The additional files.</value>
+	*/
+	private java.util.ArrayList<ItemFileInfo> AdditionalFiles;
+	public final java.util.ArrayList<ItemFileInfo> getAdditionalFiles()
+	{
+		return AdditionalFiles;
+	}
+	public final void setAdditionalFiles(java.util.ArrayList<ItemFileInfo> value)
+	{
+		AdditionalFiles = value;
+	}
+
+	public SyncedItem()
+	{
+		setAdditionalFiles(new java.util.ArrayList<ItemFileInfo>());
+	}
 }

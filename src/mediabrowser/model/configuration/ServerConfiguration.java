@@ -54,6 +54,21 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
+	 Gets or sets the HTTPS server port number.
+	 
+	 <value>The HTTPS server port number.</value>
+	*/
+	private int HttpsPortNumber;
+	public final int getHttpsPortNumber()
+	{
+		return HttpsPortNumber;
+	}
+	public final void setHttpsPortNumber(int value)
+	{
+		HttpsPortNumber = value;
+	}
+
+	/** 
 	 Gets or sets a value indicating whether [enable internet providers].
 	 
 	 <value><c>true</c> if [enable internet providers]; otherwise, <c>false</c>.</value>
@@ -66,6 +81,21 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setEnableInternetProviders(boolean value)
 	{
 		EnableInternetProviders = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance is port authorized.
+	 
+	 <value><c>true</c> if this instance is port authorized; otherwise, <c>false</c>.</value>
+	*/
+	private boolean IsPortAuthorized;
+	public final boolean getIsPortAuthorized()
+	{
+		return IsPortAuthorized;
+	}
+	public final void setIsPortAuthorized(boolean value)
+	{
+		IsPortAuthorized = value;
 	}
 
 	/** 
@@ -141,6 +171,21 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setEnableLocalizedGuids(boolean value)
 	{
 		EnableLocalizedGuids = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether [enable library metadata sub folder].
+	 
+	 <value><c>true</c> if [enable library metadata sub folder]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean EnableLibraryMetadataSubFolder;
+	public final boolean getEnableLibraryMetadataSubFolder()
+	{
+		return EnableLibraryMetadataSubFolder;
+	}
+	public final void setEnableLibraryMetadataSubFolder(boolean value)
+	{
+		EnableLibraryMetadataSubFolder = value;
 	}
 
 	/** 
@@ -334,6 +379,17 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		EnableTmdbUpdates = value;
 	}
+
+	private boolean StoreArtistsInMetadata;
+	public final boolean getStoreArtistsInMetadata()
+	{
+		return StoreArtistsInMetadata;
+	}
+	public final void setStoreArtistsInMetadata(boolean value)
+	{
+		StoreArtistsInMetadata = value;
+	}
+
 	private boolean EnableFanArtUpdates;
 	public final boolean getEnableFanArtUpdates()
 	{
@@ -342,6 +398,15 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setEnableFanArtUpdates(boolean value)
 	{
 		EnableFanArtUpdates = value;
+	}
+	private String FanartApiKey;
+	public final String getFanartApiKey()
+	{
+		return FanartApiKey;
+	}
+	public final void setFanartApiKey(String value)
+	{
+		FanartApiKey = value;
 	}
 
 	/** 
@@ -456,14 +521,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		FindInternetTrailers = value;
 	}
 
-	private String[] InsecureApps7;
-	public final String[] getInsecureApps7()
+	private String[] InsecureApps8;
+	public final String[] getInsecureApps8()
 	{
-		return InsecureApps7;
+		return InsecureApps8;
 	}
-	public final void setInsecureApps7(String[] value)
+	public final void setInsecureApps8(String[] value)
 	{
-		InsecureApps7 = value;
+		InsecureApps8 = value;
 	}
 
 	private boolean SaveMetadataHidden;
@@ -495,6 +560,25 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		ContentTypes = value;
 	}
 
+	private boolean EnableAudioArchiveFiles;
+	public final boolean getEnableAudioArchiveFiles()
+	{
+		return EnableAudioArchiveFiles;
+	}
+	public final void setEnableAudioArchiveFiles(boolean value)
+	{
+		EnableAudioArchiveFiles = value;
+	}
+	private boolean EnableVideoArchiveFiles;
+	public final boolean getEnableVideoArchiveFiles()
+	{
+		return EnableVideoArchiveFiles;
+	}
+	public final void setEnableVideoArchiveFiles(boolean value)
+	{
+		EnableVideoArchiveFiles = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
 	*/
@@ -504,6 +588,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setImageSavingConvention(ImageSavingConvention.Compatible);
 		setPublicPort(8096);
 		setHttpServerPortNumber(8096);
+		setHttpsPortNumber(8920);
 		setEnableDashboardResponseCaching(true);
 
 		setEnableAutomaticRestart(true);
@@ -540,6 +625,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 
 		setPeopleMetadataOptions(new PeopleMetadataOptions());
 
-		setInsecureApps7(new String[] {"Chromecast", "iOS", "Unknown app", "MediaPortal", "Media Portal", "iPad", "iPhone", "Roku"});
+		setInsecureApps8(new String[] {"Chromecast", "iOS", "Unknown app", "MediaPortal", "Media Portal", "iPad", "iPhone", "Roku", "Windows Phone"});
 	}
 }

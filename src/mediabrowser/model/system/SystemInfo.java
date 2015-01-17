@@ -143,21 +143,6 @@ public class SystemInfo extends PublicSystemInfo
 	}
 
 	/** 
-	 Gets or sets a value indicating whether [supports native web socket].
-	 
-	 <value><c>true</c> if [supports native web socket]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean SupportsNativeWebSocket;
-	public final boolean getSupportsNativeWebSocket()
-	{
-		return SupportsNativeWebSocket;
-	}
-	public final void setSupportsNativeWebSocket(boolean value)
-	{
-		SupportsNativeWebSocket = value;
-	}
-
-	/** 
 	 Gets or sets a value indicating whether this instance can self restart.
 	 
 	 <value><c>true</c> if this instance can self restart; otherwise, <c>false</c>.</value>

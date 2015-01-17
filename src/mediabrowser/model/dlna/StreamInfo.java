@@ -424,6 +424,7 @@ public class StreamInfo
 		tempVar2.setLanguage(stream.getLanguage());
 		tempVar2.setName((tempVar != null) ? tempVar : "Unknown");
 		tempVar2.setFormat(getSubtitleFormat());
+		tempVar2.setIndex(stream.getIndex());
 		list.add(tempVar2);
 	}
 

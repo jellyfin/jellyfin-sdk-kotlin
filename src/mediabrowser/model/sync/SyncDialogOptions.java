@@ -21,12 +21,12 @@ public class SyncDialogOptions
 	 
 	 <value>The options.</value>
 	*/
-	private java.util.ArrayList<SyncOptions> Options;
-	public final java.util.ArrayList<SyncOptions> getOptions()
+	private java.util.ArrayList<SyncJobOption> Options;
+	public final java.util.ArrayList<SyncJobOption> getOptions()
 	{
 		return Options;
 	}
-	public final void setOptions(java.util.ArrayList<SyncOptions> value)
+	public final void setOptions(java.util.ArrayList<SyncJobOption> value)
 	{
 		Options = value;
 	}
@@ -34,6 +34,6 @@ public class SyncDialogOptions
 	public SyncDialogOptions()
 	{
 		setTargets(new java.util.ArrayList<SyncTarget>());
-		setOptions(new java.util.ArrayList<SyncOptions>());
+		setOptions(new java.util.ArrayList<SyncJobOption>());
 	}
 }

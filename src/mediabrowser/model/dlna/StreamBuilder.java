@@ -277,7 +277,10 @@ public class StreamBuilder
 
 				if (subtitleStream != null)
 				{
-					playlistItem.setSubtitleDeliveryMethod(GetSubtitleDeliveryMethod(subtitleStream, options));
+					SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options);
+
+					playlistItem.setSubtitleDeliveryMethod(subtitleProfile.getMethod());
+					playlistItem.setSubtitleFormat(subtitleProfile.getFormat());
 				}
 
 				return playlistItem;
@@ -299,7 +302,10 @@ public class StreamBuilder
 		{
 			if (subtitleStream != null)
 			{
-				playlistItem.setSubtitleDeliveryMethod(GetSubtitleDeliveryMethod(subtitleStream, options));
+				SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options);
+
+				playlistItem.setSubtitleDeliveryMethod(subtitleProfile.getMethod());
+				playlistItem.setSubtitleFormat(subtitleProfile.getFormat());
 			}
 
 			playlistItem.setPlayMethod(PlayMethod.Transcode);
@@ -531,9 +537,9 @@ public class StreamBuilder
 				return false;
 			}
 
-			SubtitleDeliveryMethod subtitleMethod = GetSubtitleDeliveryMethod(subtitleStream, options);
+			SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options);
 
-			if (subtitleMethod != SubtitleDeliveryMethod.External && subtitleMethod != SubtitleDeliveryMethod.Embed)
+			if (subtitleProfile.getMethod() != SubtitleDeliveryMethod.External && subtitleProfile.getMethod() != SubtitleDeliveryMethod.Embed)
 			{
 				return false;
 			}
@@ -542,41 +548,42 @@ public class StreamBuilder
 		return IsAudioEligibleForDirectPlay(item, maxBitrate);
 	}
 
-	private SubtitleDeliveryMethod GetSubtitleDeliveryMethod(MediaStream subtitleStream, VideoOptions options)
+	private SubtitleProfile GetSubtitleProfile(MediaStream subtitleStream, VideoOptions options)
 	{
 		if (subtitleStream.getIsTextSubtitleStream())
 		{
-			// See if the device can retrieve the subtitles externally
-			boolean supportsSubsExternally = options.getContext() == EncodingContext.Streaming && ContainsSubtitleFormat(options.getProfile().getSubtitleProfiles(), SubtitleDeliveryMethod.External, _serverTextSubtitleOutputs);
+			SubtitleProfile externalProfile = GetSubtitleProfile(options.getProfile().getSubtitleProfiles(), SubtitleDeliveryMethod.External, _serverTextSubtitleOutputs);
 
-			if (supportsSubsExternally)
+			if (options.getContext() == EncodingContext.Streaming && externalProfile != null)
 			{
-				return SubtitleDeliveryMethod.External;
+				return externalProfile;
 			}
 
-			// See if the device can retrieve the subtitles externally
-			boolean supportsEmbedded = ContainsSubtitleFormat(options.getProfile().getSubtitleProfiles(), SubtitleDeliveryMethod.Embed, _serverTextSubtitleOutputs);
+			SubtitleProfile embedProfile = GetSubtitleProfile(options.getProfile().getSubtitleProfiles(), SubtitleDeliveryMethod.Embed, _serverTextSubtitleOutputs);
 
-			if (supportsEmbedded)
+			if (embedProfile != null)
 			{
-				return SubtitleDeliveryMethod.Embed;
+				return embedProfile;
 			}
 		}
 
-		return SubtitleDeliveryMethod.Encode;
+		SubtitleProfile tempVar = new SubtitleProfile();
+		tempVar.setMethod(SubtitleDeliveryMethod.Encode);
+		tempVar.setFormat(subtitleStream.getCodec());
+		return tempVar;
 	}
 
-	private boolean ContainsSubtitleFormat(SubtitleProfile[] profiles, SubtitleDeliveryMethod method, String[] formats)
+	private SubtitleProfile GetSubtitleProfile(SubtitleProfile[] profiles, SubtitleDeliveryMethod method, String[] formats)
 	{
 		for (SubtitleProfile profile : profiles)
 		{
 			if (method.getValue() == profile.getMethod().getValue() && ListHelper.ContainsIgnoreCase(formats, profile.getFormat()))
 			{
-				return true;
+				return profile;
 			}
 		}
 
-		return false;
+		return null;
 	}
 
 	private boolean IsAudioEligibleForDirectPlay(MediaSourceInfo item, Integer maxBitrate)

@@ -38,19 +38,19 @@ public class ConnectAuthorizationRequest
 	{
 		EnableLiveTv = value;
 	}
-	private String[] ExcludedChannels;
-	public final String[] getExcludedChannels()
+	private String[] EnabledChannels;
+	public final String[] getEnabledChannels()
 	{
-		return ExcludedChannels;
+		return EnabledChannels;
 	}
-	public final void setExcludedChannels(String[] value)
+	public final void setEnabledChannels(String[] value)
 	{
-		ExcludedChannels = value;
+		EnabledChannels = value;
 	}
 
 	public ConnectAuthorizationRequest()
 	{
 		setExcludedLibraries(new String[] { });
-		setExcludedChannels(new String[] { });
+		setEnabledChannels(new String[] { });
 	}
 }

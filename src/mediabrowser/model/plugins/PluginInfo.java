@@ -1,7 +1,5 @@
 package mediabrowser.model.plugins;
 
-import mediabrowser.model.updates.*;
-
 /** 
  This is a serializable stub class that is used by the api to provide information about installed plugins.
 */
@@ -110,5 +108,19 @@ public class PluginInfo
 	public final void setId(String value)
 	{
 		Id = value;
+	}
+	/** 
+	 Gets or sets the image URL.
+	 
+	 <value>The image URL.</value>
+	*/
+	private String ImageUrl;
+	public final String getImageUrl()
+	{
+		return ImageUrl;
+	}
+	public final void setImageUrl(String value)
+	{
+		ImageUrl = value;
 	}
 }

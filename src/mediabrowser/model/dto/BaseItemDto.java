@@ -626,21 +626,6 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	}
 
 	/** 
-	 Gets or sets the recursive unplayed item count.
-	 
-	 <value>The recursive unplayed item count.</value>
-	*/
-	private Integer RecursiveUnplayedItemCount = null;
-	public final Integer getRecursiveUnplayedItemCount()
-	{
-		return RecursiveUnplayedItemCount;
-	}
-	public final void setRecursiveUnplayedItemCount(Integer value)
-	{
-		RecursiveUnplayedItemCount = value;
-	}
-
-	/** 
 	 Gets or sets the play access.
 	 
 	 <value>The play access.</value>

@@ -4,13 +4,13 @@ import mediabrowser.model.dto.*;
 
 public final class SyncHelper
 {
-	public static java.util.ArrayList<SyncOptions> GetSyncOptions(java.util.ArrayList<BaseItemDto> items)
+	public static java.util.ArrayList<SyncJobOption> GetSyncOptions(java.util.ArrayList<BaseItemDto> items)
 	{
-		java.util.ArrayList<SyncOptions> options = new java.util.ArrayList<SyncOptions>();
+		java.util.ArrayList<SyncJobOption> options = new java.util.ArrayList<SyncJobOption>();
 
 		if (items.size() > 1)
 		{
-			options.add(SyncOptions.Name);
+			options.add(SyncJobOption.Name);
 		}
 
 		for (BaseItemDto item : items)
@@ -20,23 +20,23 @@ public final class SyncHelper
 			{
 				if (item.getIsVideo())
 				{
-					options.add(SyncOptions.Quality);
+					options.add(SyncJobOption.Quality);
 					if (items.size() > 1)
 					{
-						options.add(SyncOptions.UnwatchedOnly);
+						options.add(SyncJobOption.UnwatchedOnly);
 					}
 					break;
 				}
 				if (item.getIsFolder() && !item.getIsMusicGenre() && !item.getIsArtist() && !item.IsType("musicalbum") && !item.getIsGameGenre())
 				{
-					options.add(SyncOptions.Quality);
-					options.add(SyncOptions.UnwatchedOnly);
+					options.add(SyncJobOption.Quality);
+					options.add(SyncJobOption.UnwatchedOnly);
 					break;
 				}
 				if (item.getIsGenre())
 				{
-					options.add(SyncOptions.SyncNewContent);
-					options.add(SyncOptions.ItemLimit);
+					options.add(SyncJobOption.SyncNewContent);
+					options.add(SyncJobOption.ItemLimit);
 					break;
 				}
 			}
@@ -49,8 +49,8 @@ public final class SyncHelper
 			{
 				if (item.getIsFolder() || item.getIsGameGenre() || item.getIsMusicGenre() || item.getIsGenre() || item.getIsArtist() || item.getIsStudio() || item.getIsPerson())
 				{
-					options.add(SyncOptions.SyncNewContent);
-					options.add(SyncOptions.ItemLimit);
+					options.add(SyncJobOption.SyncNewContent);
+					options.add(SyncJobOption.ItemLimit);
 					break;
 				}
 			}
@@ -59,15 +59,15 @@ public final class SyncHelper
 		return options;
 	}
 
-	public static java.util.ArrayList<SyncOptions> GetSyncOptions(SyncCategory category)
+	public static java.util.ArrayList<SyncJobOption> GetSyncOptions(SyncCategory category)
 	{
-		java.util.ArrayList<SyncOptions> options = new java.util.ArrayList<SyncOptions>();
+		java.util.ArrayList<SyncJobOption> options = new java.util.ArrayList<SyncJobOption>();
 
-		options.add(SyncOptions.Name);
-		options.add(SyncOptions.Quality);
-		options.add(SyncOptions.UnwatchedOnly);
-		options.add(SyncOptions.SyncNewContent);
-		options.add(SyncOptions.ItemLimit);
+		options.add(SyncJobOption.Name);
+		options.add(SyncJobOption.Quality);
+		options.add(SyncJobOption.UnwatchedOnly);
+		options.add(SyncJobOption.SyncNewContent);
+		options.add(SyncJobOption.ItemLimit);
 
 		return options;
 	}
