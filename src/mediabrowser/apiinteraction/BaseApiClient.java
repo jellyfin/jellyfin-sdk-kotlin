@@ -649,6 +649,7 @@ public abstract class BaseApiClient implements IDisposable
 		dict.AddIfNotNull("IncludeItemTypes", query.getIncludeItemTypes());
 
 		dict.AddIfNotNullOrEmpty("NameLessThan", query.getNameLessThan());
+		dict.AddIfNotNullOrEmpty("NameStartsWith", query.getNameStartsWith());
 		dict.AddIfNotNullOrEmpty("NameStartsWithOrGreater", query.getNameStartsWithOrGreater());
 
         dict.AddIfNotNull("EnableImages", query.getEnableImages());
