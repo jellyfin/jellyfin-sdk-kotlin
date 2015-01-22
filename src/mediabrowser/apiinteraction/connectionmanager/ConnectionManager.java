@@ -367,7 +367,7 @@ public class ConnectionManager implements IConnectionManager {
 
         String url = server.GetAddress(connectionMode);
 
-        url += "/mediabrowser/Connect/Exchange?format=json&ConnectUserId=" + credentials.getConnectUserId();
+        url += "/Connect/Exchange?format=json&ConnectUserId=" + credentials.getConnectUserId();
 
         HttpRequest request = new HttpRequest();
         request.setUrl(url);
@@ -480,7 +480,7 @@ public class ConnectionManager implements IConnectionManager {
         headers.SetAccessToken(server.getAccessToken());
 
         final HttpRequest request = new HttpRequest();
-        request.setUrl(url + "/mediabrowser/system/info?format=json");
+        request.setUrl(url + "/system/info?format=json");
         request.setMethod("GET");
         request.setRequestHeaders(headers);
 
@@ -494,7 +494,7 @@ public class ConnectionManager implements IConnectionManager {
 
                 if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getUserId()))
                 {
-                    request.setUrl(url + "/mediabrowser/users/" + server.getUserId() + "?format=json");
+                    request.setUrl(url + "/users/" + server.getUserId() + "?format=json");
 
                     httpClient.Send(request, new Response<String>(){
 
@@ -533,7 +533,7 @@ public class ConnectionManager implements IConnectionManager {
 
     private void TryConnect(String url, int timeout, final Response<PublicSystemInfo> response)
     {
-        url += "/mediabrowser/system/info/public?format=json";
+        url += "/system/info/public?format=json";
 
         HttpRequest request = new HttpRequest();
         request.setUrl(url);
