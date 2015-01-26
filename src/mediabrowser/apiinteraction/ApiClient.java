@@ -1610,6 +1610,7 @@ public class ApiClient extends BaseApiClient {
         queryString.Add("IncludeMedia", query.getIncludeMedia());
         queryString.Add("IncludePeople", query.getIncludePeople());
         queryString.Add("IncludeStudios", query.getIncludeStudios());
+        queryString.Add("IncludeItemTypes", query.getIncludeItemTypes());
 
         String url = GetApiUrl("Search/Hints", queryString);
 
