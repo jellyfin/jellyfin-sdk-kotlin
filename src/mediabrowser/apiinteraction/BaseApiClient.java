@@ -220,7 +220,7 @@ public abstract class BaseApiClient implements IDisposable
 	*/
 	public final String getApiUrl()
 	{
-		return getServerAddress();
+		return getServerAddress() + "/mediabrowser";
 	}
 
 	/** 

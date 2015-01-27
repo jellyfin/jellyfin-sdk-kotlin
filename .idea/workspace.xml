@@ -8,6 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ded6c251-ca93-4546-8a98-be60c6d1fbb2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/MediaBrowser_ApiClient_Java_jar/MediaBrowser.ApiClient.Java.jar" afterPath="$PROJECT_DIR$/out/artifacts/MediaBrowser_ApiClient_Java_jar/MediaBrowser.ApiClient.Java.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/BaseApiClient.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/BaseApiClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectionManager.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectionManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MediaBrowser.ApiClient.Java.iws" />
@@ -32,10 +34,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ApiClient.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ApiClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6137143" vertical-offset="42031" max-vertical-offset="43520">
+            <state vertical-scroll-proportion="0.0" vertical-offset="42031" max-vertical-offset="43520">
               <caret line="2573" column="9" selection-start-line="2573" selection-start-column="9" selection-end-line="2573" selection-end-column="9" />
               <folding />
             </state>
@@ -45,18 +47,21 @@
       <file leaf-file-name="BaseApiClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/BaseApiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2336" max-vertical-offset="19873">
-              <caret line="208" column="23" selection-start-line="208" selection-start-column="23" selection-end-line="208" selection-end-column="23" />
-              <folding />
+            <state vertical-scroll-proportion="-9.724138" vertical-offset="2387" max-vertical-offset="19924">
+              <caret line="222" column="52" selection-start-line="222" selection-start-column="52" selection-end-line="222" selection-end-column="52" />
+              <folding>
+                <element signature="e#4708#4709#0" expanded="true" />
+                <element signature="e#4742#4743#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConnectionManager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ConnectionManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectionManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="8330" max-vertical-offset="15266">
-              <caret line="536" column="0" selection-start-line="536" selection-start-column="0" selection-end-line="536" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.8742857" vertical-offset="7514" max-vertical-offset="15232">
+              <caret line="535" column="62" selection-start-line="535" selection-start-column="62" selection-end-line="535" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -79,9 +84,9 @@
         <option value="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/model/dto/BaseItemDto.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamInfo.java" />
+        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/BaseApiClient.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectionManager.java" />
-        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" />
       </list>
     </option>
   </component>
@@ -115,7 +120,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -216,6 +220,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -460,6 +465,33 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="43520">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/BaseApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2336" max-vertical-offset="19873">
+          <caret line="208" column="23" selection-start-line="208" selection-start-column="23" selection-end-line="208" selection-end-column="23" />
+          <folding>
+            <element signature="e#4708#4709#0" expanded="true" />
+            <element signature="e#4742#4743#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="8585" max-vertical-offset="15606">
+          <caret line="536" column="0" selection-start-line="536" selection-start-column="0" selection-end-line="536" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="43503">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -470,7 +502,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2336" max-vertical-offset="19873">
           <caret line="208" column="23" selection-start-line="208" selection-start-column="23" selection-end-line="208" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="e#4708#4709#0" expanded="true" />
+            <element signature="e#4742#4743#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -494,7 +529,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2336" max-vertical-offset="19873">
           <caret line="208" column="23" selection-start-line="208" selection-start-column="23" selection-end-line="208" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="e#4708#4709#0" expanded="true" />
+            <element signature="e#4742#4743#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -518,7 +556,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2336" max-vertical-offset="19873">
           <caret line="208" column="23" selection-start-line="208" selection-start-column="23" selection-end-line="208" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="e#4708#4709#0" expanded="true" />
+            <element signature="e#4742#4743#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -542,7 +583,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2336" max-vertical-offset="19856">
           <caret line="206" column="23" selection-start-line="206" selection-start-column="23" selection-end-line="206" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="e#4708#4709#0" expanded="true" />
+            <element signature="e#4742#4743#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -744,26 +788,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="42031" max-vertical-offset="43520">
+          <caret line="2573" column="9" selection-start-line="2573" selection-start-column="9" selection-end-line="2573" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/BaseApiClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2336" max-vertical-offset="19873">
-          <caret line="208" column="23" selection-start-line="208" selection-start-column="23" selection-end-line="208" selection-end-column="23" />
-          <folding />
+        <state vertical-scroll-proportion="-9.724138" vertical-offset="2387" max-vertical-offset="19924">
+          <caret line="222" column="52" selection-start-line="222" selection-start-column="52" selection-end-line="222" selection-end-column="52" />
+          <folding>
+            <element signature="e#4708#4709#0" expanded="true" />
+            <element signature="e#4742#4743#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8330" max-vertical-offset="15266">
-          <caret line="536" column="0" selection-start-line="536" selection-start-column="0" selection-end-line="536" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6137143" vertical-offset="42031" max-vertical-offset="43520">
-          <caret line="2573" column="9" selection-start-line="2573" selection-start-column="9" selection-end-line="2573" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.8742857" vertical-offset="7514" max-vertical-offset="15232">
+          <caret line="535" column="62" selection-start-line="535" selection-start-column="62" selection-end-line="535" selection-end-column="62" />
           <folding />
         </state>
       </provider>
