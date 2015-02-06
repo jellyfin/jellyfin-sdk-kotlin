@@ -43,6 +43,22 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto, IHasServerId
 	}
 
 	/** 
+	 Gets or sets the name of the server.
+	 This is not used by the server and is for client-side usage only.
+	 
+	 <value>The name of the server.</value>
+	*/
+	private String ServerName;
+	public final String getServerName()
+	{
+		return ServerName;
+	}
+	public final void setServerName(String value)
+	{
+		ServerName = value;
+	}
+
+	/** 
 	 Gets or sets the name of the connect user.
 	 
 	 <value>The name of the connect user.</value>
@@ -101,6 +117,21 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto, IHasServerId
 	}
 
 	/** 
+	 Gets or sets the offline password.
+	 
+	 <value>The offline password.</value>
+	*/
+	private String OfflinePassword;
+	public final String getOfflinePassword()
+	{
+		return OfflinePassword;
+	}
+	public final void setOfflinePassword(String value)
+	{
+		OfflinePassword = value;
+	}
+
+	/** 
 	 Gets or sets the primary image tag.
 	 
 	 <value>The primary image tag.</value>
@@ -143,6 +174,21 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto, IHasServerId
 	public final void setHasConfiguredPassword(boolean value)
 	{
 		HasConfiguredPassword = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance has configured easy password.
+	 
+	 <value><c>true</c> if this instance has configured easy password; otherwise, <c>false</c>.</value>
+	*/
+	private boolean HasConfiguredEasyPassword;
+	public final boolean getHasConfiguredEasyPassword()
+	{
+		return HasConfiguredEasyPassword;
+	}
+	public final void setHasConfiguredEasyPassword(boolean value)
+	{
+		HasConfiguredEasyPassword = value;
 	}
 
 	/** 

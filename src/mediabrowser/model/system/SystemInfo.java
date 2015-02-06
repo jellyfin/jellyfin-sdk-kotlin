@@ -83,6 +83,21 @@ public class SystemInfo extends PublicSystemInfo
 	}
 
 	/** 
+	 Gets or sets a value indicating whether [supports synchronize].
+	 
+	 <value><c>true</c> if [supports synchronize]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean SupportsSync;
+	public final boolean getSupportsSync()
+	{
+		return SupportsSync;
+	}
+	public final void setSupportsSync(boolean value)
+	{
+		SupportsSync = value;
+	}
+
+	/** 
 	 Gets or sets a value indicating whether this instance is network deployed.
 	 
 	 <value><c>true</c> if this instance is network deployed; otherwise, <c>false</c>.</value>
@@ -290,6 +305,36 @@ public class SystemInfo extends PublicSystemInfo
 	public final void setHttpServerPortNumber(int value)
 	{
 		HttpServerPortNumber = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether [enable HTTPS].
+	 
+	 <value><c>true</c> if [enable HTTPS]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean SupportsHttps;
+	public final boolean getSupportsHttps()
+	{
+		return SupportsHttps;
+	}
+	public final void setSupportsHttps(boolean value)
+	{
+		SupportsHttps = value;
+	}
+
+	/** 
+	 Gets or sets the HTTPS server port number.
+	 
+	 <value>The HTTPS server port number.</value>
+	*/
+	private int HttpsPortNumber;
+	public final int getHttpsPortNumber()
+	{
+		return HttpsPortNumber;
+	}
+	public final void setHttpsPortNumber(int value)
+	{
+		HttpsPortNumber = value;
 	}
 
 	/** 

@@ -331,14 +331,17 @@ public class MediaStream
 			return false;
 		}
 
-		String tempVar = getCodec();
-		String codec = (tempVar != null) ? tempVar : "";
+		return IsTextFormat(getCodec());
+	}
 
-			// sub = external .sub file
+	public static boolean IsTextFormat(String format)
+	{
+		String codec = (format != null) ? format : "";
+
+		// sub = external .sub file
 
 		return StringHelper.IndexOfIgnoreCase(codec, "pgs") == -1 && StringHelper.IndexOfIgnoreCase(codec, "dvd") == -1 && !StringHelper.EqualsIgnoreCase(codec, "sub");
 	}
-
 
 	/** 
 	 Gets or sets the filename.

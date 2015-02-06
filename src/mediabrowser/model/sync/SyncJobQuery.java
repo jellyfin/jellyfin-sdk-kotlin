@@ -7,7 +7,7 @@ public class SyncJobQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer StartIndex;
+	private Integer StartIndex = null;
 	public final Integer getStartIndex()
 	{
 		return StartIndex;
@@ -21,7 +21,7 @@ public class SyncJobQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer Limit;
+	private Integer Limit = null;
 	public final Integer getLimit()
 	{
 		return Limit;
@@ -29,20 +29,6 @@ public class SyncJobQuery
 	public final void setLimit(Integer value)
 	{
 		Limit = value;
-	}
-	/** 
-	 Gets or sets a value indicating whether this instance is completed.
-	 
-	 <value><c>null</c> if [is completed] contains no value, <c>true</c> if [is completed]; otherwise, <c>false</c>.</value>
-	*/
-	private Boolean IsCompleted;
-	public final Boolean getIsCompleted()
-	{
-		return IsCompleted;
-	}
-	public final void setIsCompleted(Boolean value)
-	{
-		IsCompleted = value;
 	}
 	/** 
 	 Gets or sets the target identifier.
@@ -71,5 +57,38 @@ public class SyncJobQuery
 	public final void setUserId(String value)
 	{
 		UserId = value;
+	}
+	/** 
+	 Gets or sets the status.
+	 
+	 <value>The status.</value>
+	*/
+	private java.util.ArrayList<SyncJobStatus> Statuses;
+	public final java.util.ArrayList<SyncJobStatus> getStatuses()
+	{
+		return Statuses;
+	}
+	public final void setStatuses(java.util.ArrayList<SyncJobStatus> value)
+	{
+		Statuses = value;
+	}
+	/** 
+	 Gets or sets a value indicating whether [synchronize new content].
+	 
+	 <value><c>null</c> if [synchronize new content] contains no value, <c>true</c> if [synchronize new content]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean SyncNewContent = null;
+	public final Boolean getSyncNewContent()
+	{
+		return SyncNewContent;
+	}
+	public final void setSyncNewContent(Boolean value)
+	{
+		SyncNewContent = value;
+	}
+
+	public SyncJobQuery()
+	{
+		setStatuses(new java.util.ArrayList<SyncJobStatus>());
 	}
 }

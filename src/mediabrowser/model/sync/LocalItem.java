@@ -74,4 +74,23 @@ public class LocalItem
 	{
 		ItemId = value;
 	}
+	/** 
+	 Gets or sets the user ids with access.
+	 
+	 <value>The user ids with access.</value>
+	*/
+	private java.util.ArrayList<String> UserIdsWithAccess;
+	public final java.util.ArrayList<String> getUserIdsWithAccess()
+	{
+		return UserIdsWithAccess;
+	}
+	public final void setUserIdsWithAccess(java.util.ArrayList<String> value)
+	{
+		UserIdsWithAccess = value;
+	}
+
+	public LocalItem()
+	{
+		setUserIdsWithAccess(new java.util.ArrayList<String>());
+	}
 }

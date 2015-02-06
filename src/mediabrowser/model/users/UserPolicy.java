@@ -174,6 +174,15 @@ public class UserPolicy
 	{
 		EnableContentDeletion = value;
 	}
+	private boolean EnableContentDownloading;
+	public final boolean getEnableContentDownloading()
+	{
+		return EnableContentDownloading;
+	}
+	public final void setEnableContentDownloading(boolean value)
+	{
+		EnableContentDownloading = value;
+	}
 
 	/** 
 	 Gets or sets a value indicating whether [enable synchronize].
@@ -228,6 +237,25 @@ public class UserPolicy
 		EnableAllChannels = value;
 	}
 
+	private String[] EnabledFolders;
+	public final String[] getEnabledFolders()
+	{
+		return EnabledFolders;
+	}
+	public final void setEnabledFolders(String[] value)
+	{
+		EnabledFolders = value;
+	}
+	private boolean EnableAllFolders;
+	public final boolean getEnableAllFolders()
+	{
+		return EnableAllFolders;
+	}
+	public final void setEnableAllFolders(boolean value)
+	{
+		EnableAllFolders = value;
+	}
+
 	public UserPolicy()
 	{
 		setEnableLiveTvManagement(true);
@@ -235,7 +263,6 @@ public class UserPolicy
 		setEnableLiveTvAccess(true);
 		setEnableSharedDeviceControl(true);
 
-		setBlockedMediaFolders(new String[] { });
 		setBlockedTags(new String[] { });
 		setBlockUnratedItems(new UnratedItem[] { });
 
@@ -243,7 +270,15 @@ public class UserPolicy
 
 		setAccessSchedules(new AccessSchedule[] { });
 
+		setEnableAllChannels(true);
+		setEnabledChannels(new String[] { });
+
+		setEnableAllFolders(true);
+		setEnabledFolders(new String[] { });
+
 		setEnabledDevices(new String[] { });
 		setEnableAllDevices(true);
+
+		setEnableContentDownloading(true);
 	}
 }

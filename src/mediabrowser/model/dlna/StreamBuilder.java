@@ -8,8 +8,6 @@ import mediabrowser.model.session.*;
 
 public class StreamBuilder
 {
-	private final String[] _serverTextSubtitleOutputs = {"srt", "vtt", "ttml"};
-
 	public final StreamInfo BuildAudioItem(AudioOptions options)
 	{
 		ValidateAudioInput(options);
@@ -116,6 +114,7 @@ public class StreamBuilder
 		tempVar.setMediaSource(item);
 		tempVar.setRunTimeTicks(item.getRunTimeTicks());
 		tempVar.setContext(options.getContext());
+		tempVar.setDeviceProfile(options.getProfile());
 		StreamInfo playlistItem = tempVar;
 
 		Integer maxBitrateSetting = options.GetMaxBitrate();
@@ -251,6 +250,7 @@ public class StreamBuilder
 		tempVar.setMediaSource(item);
 		tempVar.setRunTimeTicks(item.getRunTimeTicks());
 		tempVar.setContext(options.getContext());
+		tempVar.setDeviceProfile(options.getProfile());
 		StreamInfo playlistItem = tempVar;
 
 		Integer tempVar2 = options.getAudioStreamIndex();
@@ -277,7 +277,7 @@ public class StreamBuilder
 
 				if (subtitleStream != null)
 				{
-					SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options);
+					SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile());
 
 					playlistItem.setSubtitleDeliveryMethod(subtitleProfile.getMethod());
 					playlistItem.setSubtitleFormat(subtitleProfile.getFormat());
@@ -302,7 +302,7 @@ public class StreamBuilder
 		{
 			if (subtitleStream != null)
 			{
-				SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options);
+				SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile());
 
 				playlistItem.setSubtitleDeliveryMethod(subtitleProfile.getMethod());
 				playlistItem.setSubtitleFormat(subtitleProfile.getFormat());
@@ -532,12 +532,7 @@ public class StreamBuilder
 	{
 		if (subtitleStream != null)
 		{
-			if (!subtitleStream.getIsTextSubtitleStream())
-			{
-				return false;
-			}
-
-			SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options);
+			SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile());
 
 			if (subtitleProfile.getMethod() != SubtitleDeliveryMethod.External && subtitleProfile.getMethod() != SubtitleDeliveryMethod.Embed)
 			{
@@ -548,22 +543,22 @@ public class StreamBuilder
 		return IsAudioEligibleForDirectPlay(item, maxBitrate);
 	}
 
-	private SubtitleProfile GetSubtitleProfile(MediaStream subtitleStream, VideoOptions options)
+	public static SubtitleProfile GetSubtitleProfile(MediaStream subtitleStream, DeviceProfile deviceProfile)
 	{
-		if (subtitleStream.getIsTextSubtitleStream())
+		// Look for an external profile that matches the stream type (text/graphical)
+		for (SubtitleProfile profile : deviceProfile.getSubtitleProfiles())
 		{
-			SubtitleProfile externalProfile = GetSubtitleProfile(options.getProfile().getSubtitleProfiles(), SubtitleDeliveryMethod.External, _serverTextSubtitleOutputs);
-
-			if (options.getContext() == EncodingContext.Streaming && externalProfile != null)
+			if (profile.getMethod() == SubtitleDeliveryMethod.External && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
 			{
-				return externalProfile;
+				return profile;
 			}
+		}
 
-			SubtitleProfile embedProfile = GetSubtitleProfile(options.getProfile().getSubtitleProfiles(), SubtitleDeliveryMethod.Embed, _serverTextSubtitleOutputs);
-
-			if (embedProfile != null)
+		for (SubtitleProfile profile : deviceProfile.getSubtitleProfiles())
+		{
+			if (profile.getMethod() == SubtitleDeliveryMethod.Embed && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
 			{
-				return embedProfile;
+				return profile;
 			}
 		}
 
@@ -571,19 +566,6 @@ public class StreamBuilder
 		tempVar.setMethod(SubtitleDeliveryMethod.Encode);
 		tempVar.setFormat(subtitleStream.getCodec());
 		return tempVar;
-	}
-
-	private SubtitleProfile GetSubtitleProfile(SubtitleProfile[] profiles, SubtitleDeliveryMethod method, String[] formats)
-	{
-		for (SubtitleProfile profile : profiles)
-		{
-			if (method.getValue() == profile.getMethod().getValue() && ListHelper.ContainsIgnoreCase(formats, profile.getFormat()))
-			{
-				return profile;
-			}
-		}
-
-		return null;
 	}
 
 	private boolean IsAudioEligibleForDirectPlay(MediaSourceInfo item, Integer maxBitrate)

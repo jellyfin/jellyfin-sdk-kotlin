@@ -39,7 +39,8 @@ public enum MetadataProviders
 	NesBoxRom(14),
 	TvRage(15),
 	AudioDbArtist(16),
-	AudioDbAlbum(17);
+	AudioDbAlbum(17),
+	MusicBrainzTrack(18);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, MetadataProviders> mappings;

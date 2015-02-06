@@ -66,6 +66,21 @@ public class TaskResult
 	}
 
 	/** 
+	 Gets or sets the key.
+	 
+	 <value>The key.</value>
+	*/
+	private String Key;
+	public final String getKey()
+	{
+		return Key;
+	}
+	public final void setKey(String value)
+	{
+		Key = value;
+	}
+
+	/** 
 	 Gets or sets the id.
 	 
 	 <value>The id.</value>

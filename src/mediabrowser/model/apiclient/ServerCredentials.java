@@ -95,6 +95,10 @@ public class ServerCredentials
             if (server.getLastConnectionMode() != null){
                 existing.setLastConnectionMode(server.getLastConnectionMode());
             }
+			for (ServerUserInfo user : server.getUsers())
+			{
+				existing.AddOrUpdate(user);
+			}
         }
         else
         {

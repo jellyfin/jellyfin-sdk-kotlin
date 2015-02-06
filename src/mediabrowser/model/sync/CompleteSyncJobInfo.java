@@ -1,6 +1,6 @@
 package mediabrowser.model.sync;
 
-public class SyncJobCreationResult
+public class CompleteSyncJobInfo
 {
 	private SyncJob Job;
 	public final SyncJob getJob()
@@ -21,7 +21,7 @@ public class SyncJobCreationResult
 		JobItems = value;
 	}
 
-	public SyncJobCreationResult()
+	public CompleteSyncJobInfo()
 	{
 		setJobItems(new java.util.ArrayList<SyncJobItem>());
 	}

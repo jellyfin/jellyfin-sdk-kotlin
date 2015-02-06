@@ -31,6 +31,20 @@ public class SyncJob
 		TargetId = value;
 	}
 	/** 
+	 Gets or sets the name of the target.
+	 
+	 <value>The name of the target.</value>
+	*/
+	private String TargetName;
+	public final String getTargetName()
+	{
+		return TargetName;
+	}
+	public final void setTargetName(String value)
+	{
+		TargetName = value;
+	}
+	/** 
 	 Gets or sets the quality.
 	 
 	 <value>The quality.</value>
@@ -258,5 +272,6 @@ public class SyncJob
 	public SyncJob()
 	{
 		setRequestedItemIds(new java.util.ArrayList<String>());
+		setQuality(SyncQuality.High);
 	}
 }

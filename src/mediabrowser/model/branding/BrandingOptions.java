@@ -16,4 +16,18 @@ public class BrandingOptions
 	{
 		LoginDisclaimer = value;
 	}
+	/** 
+	 Gets or sets the custom CSS.
+	 
+	 <value>The custom CSS.</value>
+	*/
+	private String CustomCss;
+	public final String getCustomCss()
+	{
+		return CustomCss;
+	}
+	public final void setCustomCss(String value)
+	{
+		CustomCss = value;
+	}
 }

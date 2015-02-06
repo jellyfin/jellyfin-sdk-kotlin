@@ -21,14 +21,14 @@ public class DeviceQuery
 	 
 	 <value><c>null</c> if [supports unique identifier] contains no value, <c>true</c> if [supports unique identifier]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean SupportsUniqueIdentifier;
-	public final Boolean getSupportsUniqueIdentifier()
+	private Boolean SupportsPersistentIdentifier;
+	public final Boolean getSupportsPersistentIdentifier()
 	{
-		return SupportsUniqueIdentifier;
+		return SupportsPersistentIdentifier;
 	}
-	public final void setSupportsUniqueIdentifier(Boolean value)
+	public final void setSupportsPersistentIdentifier(Boolean value)
 	{
-		SupportsUniqueIdentifier = value;
+		SupportsPersistentIdentifier = value;
 	}
 	/** 
 	 Gets or sets a value indicating whether [supports synchronize].

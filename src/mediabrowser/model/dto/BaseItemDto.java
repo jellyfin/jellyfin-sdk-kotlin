@@ -153,6 +153,24 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	{
 		DisplaySpecialsWithSeasons = value;
 	}
+	private Boolean CanDelete = null;
+	public final Boolean getCanDelete()
+	{
+		return CanDelete;
+	}
+	public final void setCanDelete(Boolean value)
+	{
+		CanDelete = value;
+	}
+	private Boolean CanDownload = null;
+	public final Boolean getCanDownload()
+	{
+		return CanDownload;
+	}
+	public final void setCanDownload(Boolean value)
+	{
+		CanDownload = value;
+	}
 
 	private String PreferredMetadataLanguage;
 	public final String getPreferredMetadataLanguage()
@@ -221,6 +239,15 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setSupportsSync(Boolean value)
 	{
 		SupportsSync = value;
+	}
+	private Boolean HasSyncJob = null;
+	public final Boolean getHasSyncJob()
+	{
+		return HasSyncJob;
+	}
+	public final void setHasSyncJob(Boolean value)
+	{
+		HasSyncJob = value;
 	}
 
 	/** 

@@ -53,14 +53,14 @@ public class ClientCapabilities
 	{
 		SupportsContentUploading = value;
 	}
-	private boolean SupportsUniqueIdentifier;
-	public final boolean getSupportsUniqueIdentifier()
+	private boolean SupportsPersistentIdentifier;
+	public final boolean getSupportsPersistentIdentifier()
 	{
-		return SupportsUniqueIdentifier;
+		return SupportsPersistentIdentifier;
 	}
-	public final void setSupportsUniqueIdentifier(boolean value)
+	public final void setSupportsPersistentIdentifier(boolean value)
 	{
-		SupportsUniqueIdentifier = value;
+		SupportsPersistentIdentifier = value;
 	}
 	private boolean SupportsSync;
 	public final boolean getSupportsSync()
@@ -70,6 +70,15 @@ public class ClientCapabilities
 	public final void setSupportsSync(boolean value)
 	{
 		SupportsSync = value;
+	}
+	private boolean SupportsOfflineAccess;
+	public final boolean getSupportsOfflineAccess()
+	{
+		return SupportsOfflineAccess;
+	}
+	public final void setSupportsOfflineAccess(boolean value)
+	{
+		SupportsOfflineAccess = value;
 	}
 
 	private DeviceProfile DeviceProfile;
@@ -82,10 +91,23 @@ public class ClientCapabilities
 		DeviceProfile = value;
 	}
 
+	/** 
+	 Usage should be migrated to SupportsPersistentIdentifier. Keeping this to preserve data.
+	*/
+	private Boolean SupportsUniqueIdentifier = null;
+	public final Boolean getSupportsUniqueIdentifier()
+	{
+		return SupportsUniqueIdentifier;
+	}
+	public final void setSupportsUniqueIdentifier(Boolean value)
+	{
+		SupportsUniqueIdentifier = value;
+	}
+
 	public ClientCapabilities()
 	{
 		setPlayableMediaTypes(new java.util.ArrayList<String>());
 		setSupportedCommands(new java.util.ArrayList<String>());
-		setSupportsUniqueIdentifier(true);
+		setSupportsPersistentIdentifier(true);
 	}
 }

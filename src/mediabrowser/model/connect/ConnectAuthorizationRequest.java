@@ -20,14 +20,14 @@ public class ConnectAuthorizationRequest
 	{
 		ConnectUserName = value;
 	}
-	private String[] ExcludedLibraries;
-	public final String[] getExcludedLibraries()
+	private String[] EnabledLibraries;
+	public final String[] getEnabledLibraries()
 	{
-		return ExcludedLibraries;
+		return EnabledLibraries;
 	}
-	public final void setExcludedLibraries(String[] value)
+	public final void setEnabledLibraries(String[] value)
 	{
-		ExcludedLibraries = value;
+		EnabledLibraries = value;
 	}
 	private boolean EnableLiveTv;
 	public final boolean getEnableLiveTv()
@@ -50,7 +50,7 @@ public class ConnectAuthorizationRequest
 
 	public ConnectAuthorizationRequest()
 	{
-		setExcludedLibraries(new String[] { });
+		setEnabledLibraries(new String[] { });
 		setEnabledChannels(new String[] { });
 	}
 }

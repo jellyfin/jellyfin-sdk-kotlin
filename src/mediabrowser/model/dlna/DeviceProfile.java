@@ -361,6 +361,15 @@ public class DeviceProfile
 	{
 		SupportsCustomHttpHeaders = value;
 	}
+	private boolean EnableMSMediaReceiverRegistrar;
+	public final boolean getEnableMSMediaReceiverRegistrar()
+	{
+		return EnableMSMediaReceiverRegistrar;
+	}
+	public final void setEnableMSMediaReceiverRegistrar(boolean value)
+	{
+		EnableMSMediaReceiverRegistrar = value;
+	}
 
 	private XmlAttribute[] XmlRootAttributes;
 	public final XmlAttribute[] getXmlRootAttributes()

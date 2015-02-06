@@ -210,6 +210,11 @@ public class SyncJobItem
 	{
 		TemporaryPath = value;
 	}
+	/** 
+	 Gets or sets the additional files.
+	 
+	 <value>The additional files.</value>
+	*/
 	private java.util.ArrayList<ItemFileInfo> AdditionalFiles;
 	public final java.util.ArrayList<ItemFileInfo> getAdditionalFiles()
 	{
@@ -218,6 +223,34 @@ public class SyncJobItem
 	public final void setAdditionalFiles(java.util.ArrayList<ItemFileInfo> value)
 	{
 		AdditionalFiles = value;
+	}
+	/** 
+	 Gets or sets a value indicating whether this instance is marked for removal.
+	 
+	 <value><c>true</c> if this instance is marked for removal; otherwise, <c>false</c>.</value>
+	*/
+	private boolean IsMarkedForRemoval;
+	public final boolean getIsMarkedForRemoval()
+	{
+		return IsMarkedForRemoval;
+	}
+	public final void setIsMarkedForRemoval(boolean value)
+	{
+		IsMarkedForRemoval = value;
+	}
+	/** 
+	 Gets or sets the index of the job item.
+	 
+	 <value>The index of the job item.</value>
+	*/
+	private int JobItemIndex;
+	public final int getJobItemIndex()
+	{
+		return JobItemIndex;
+	}
+	public final void setJobItemIndex(int value)
+	{
+		JobItemIndex = value;
 	}
 
 	public SyncJobItem()

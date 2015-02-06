@@ -227,6 +227,15 @@ public class StreamInfo
 		MaxFramerate = value;
 	}
 
+	private DeviceProfile DeviceProfile;
+	public final DeviceProfile getDeviceProfile()
+	{
+		return DeviceProfile;
+	}
+	public final void setDeviceProfile(DeviceProfile value)
+	{
+		DeviceProfile = value;
+	}
 	private String DeviceProfileId;
 	public final String getDeviceProfileId()
 	{
@@ -379,11 +388,6 @@ public class StreamInfo
 
 		java.util.ArrayList<SubtitleStreamInfo> list = new java.util.ArrayList<SubtitleStreamInfo>();
 
-		if (getSubtitleDeliveryMethod() != SubtitleDeliveryMethod.External)
-		{
-			return list;
-		}
-
 		// HLS will preserve timestamps so we can just grab the full subtitle stream
 		long startPositionTicks = StringHelper.EqualsIgnoreCase(getProtocol(), "hls") ? 0 : getStartPositionTicks();
 
@@ -392,7 +396,7 @@ public class StreamInfo
 		{
 			for (MediaStream stream : getMediaSource().getMediaStreams())
 			{
-				if (stream.getType() == MediaStreamType.Subtitle && stream.getIsTextSubtitleStream() && stream.getIndex() == getSubtitleStreamIndex())
+				if (stream.getType() == MediaStreamType.Subtitle && stream.getIndex() == getSubtitleStreamIndex())
 				{
 					AddSubtitle(list, stream, baseUrl, startPositionTicks);
 				}
@@ -403,7 +407,7 @@ public class StreamInfo
 		{
 			for (MediaStream stream : getMediaSource().getMediaStreams())
 			{
-				if (stream.getType() == MediaStreamType.Subtitle && stream.getIsTextSubtitleStream() && (getSubtitleStreamIndex() == null || stream.getIndex() != getSubtitleStreamIndex()))
+				if (stream.getType() == MediaStreamType.Subtitle && (getSubtitleStreamIndex() == null || stream.getIndex() != getSubtitleStreamIndex()))
 				{
 					AddSubtitle(list, stream, baseUrl, startPositionTicks);
 				}
@@ -415,6 +419,13 @@ public class StreamInfo
 
 	private void AddSubtitle(java.util.ArrayList<SubtitleStreamInfo> list, MediaStream stream, String baseUrl, long startPositionTicks)
 	{
+		SubtitleProfile subtitleProfile = StreamBuilder.GetSubtitleProfile(stream, getDeviceProfile());
+
+		if (subtitleProfile.getMethod() != SubtitleDeliveryMethod.External)
+		{
+			return;
+		}
+
 		String url = String.format("%1$s/Videos/%2$s/%3$s/Subtitles/%4$s/%5$s/Stream.%6$s", baseUrl, getItemId(), getMediaSourceId(), StringHelper.ToStringCultureInvariant(stream.getIndex()), StringHelper.ToStringCultureInvariant(startPositionTicks), getSubtitleFormat());
 
 		String tempVar = stream.getLanguage();

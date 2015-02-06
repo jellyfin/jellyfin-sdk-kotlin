@@ -227,6 +227,21 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto, IHa
 	}
 
 	/** 
+	 Gets or sets a value indicating whether this instance can delete.
+	 
+	 <value><c>null</c> if [can delete] contains no value, <c>true</c> if [can delete]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean CanDelete = null;
+	public final Boolean getCanDelete()
+	{
+		return CanDelete;
+	}
+	public final void setCanDelete(Boolean value)
+	{
+		CanDelete = value;
+	}
+
+	/** 
 	 Overview of the recording.
 	*/
 	private String Overview;

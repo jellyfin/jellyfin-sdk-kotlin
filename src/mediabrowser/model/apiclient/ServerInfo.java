@@ -1,10 +1,21 @@
 package mediabrowser.model.apiclient;
 
 import mediabrowser.model.connect.*;
+import mediabrowser.model.extensions.*;
 import mediabrowser.model.system.*;
 
 public class ServerInfo
 {
+	private java.util.ArrayList<ServerUserInfo> Users;
+	public final java.util.ArrayList<ServerUserInfo> getUsers()
+	{
+		return Users;
+	}
+	public final void setUsers(java.util.ArrayList<ServerUserInfo> value)
+	{
+		Users = value;
+	}
+
 	private String Name;
 	public final String getName()
 	{
@@ -117,6 +128,7 @@ public class ServerInfo
 	public ServerInfo()
 	{
 		setWakeOnLanInfos(new java.util.ArrayList<WakeOnLanInfo>());
+		setUsers(new java.util.ArrayList<ServerUserInfo>());
 	}
 
 	public final void ImportInfo(PublicSystemInfo systemInfo)
@@ -162,5 +174,48 @@ public class ServerInfo
 			default:
 				throw new IllegalArgumentException("Unexpected ConnectionMode");
 		}
+	}
+
+	public final void AddOrUpdate(ServerUserInfo user)
+	{
+		if (user == null)
+		{
+			throw new IllegalArgumentException("user");
+		}
+
+		java.util.ArrayList<ServerUserInfo> list = getUsers();
+
+		int index = FindIndex(list, user.getId());
+
+		if (index != -1)
+		{
+			ServerUserInfo existing = list.get(index);
+
+			// Merge the data
+			existing.setIsSignedInOffline(user.getIsSignedInOffline());
+		}
+		else
+		{
+			list.add(user);
+		}
+
+		setUsers(list);
+	}
+
+	private int FindIndex(java.util.ArrayList<ServerUserInfo> users, String id)
+	{
+		int index = 0;
+
+		for (ServerUserInfo user : users)
+		{
+			if (StringHelper.EqualsIgnoreCase(id, user.getId()))
+			{
+				return index;
+			}
+
+			index++;
+		}
+
+		return -1;
 	}
 }

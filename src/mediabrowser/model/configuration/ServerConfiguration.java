@@ -39,6 +39,21 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
+	 Gets or sets the public HTTPS port.
+	 
+	 <value>The public HTTPS port.</value>
+	*/
+	private int PublicHttpsPort;
+	public final int getPublicHttpsPort()
+	{
+		return PublicHttpsPort;
+	}
+	public final void setPublicHttpsPort(int value)
+	{
+		PublicHttpsPort = value;
+	}
+
+	/** 
 	 Gets or sets the HTTP server port number.
 	 
 	 <value>The HTTP server port number.</value>
@@ -66,6 +81,36 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setHttpsPortNumber(int value)
 	{
 		HttpsPortNumber = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether [use HTTPS].
+	 
+	 <value><c>true</c> if [use HTTPS]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean EnableHttps;
+	public final boolean getEnableHttps()
+	{
+		return EnableHttps;
+	}
+	public final void setEnableHttps(boolean value)
+	{
+		EnableHttps = value;
+	}
+
+	/** 
+	 Gets or sets the value pointing to the file system where the ssl certiifcate is located..
+	 
+	 <value>The value pointing to the file system where the ssl certiifcate is located..</value>
+	*/
+	private String CertificatePath;
+	public final String getCertificatePath()
+	{
+		return CertificatePath;
+	}
+	public final void setCertificatePath(String value)
+	{
+		CertificatePath = value;
 	}
 
 	/** 
@@ -340,6 +385,15 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		EnableDashboardResponseCaching = value;
 	}
+	private boolean EnableDashboardResourceMinification;
+	public final boolean getEnableDashboardResourceMinification()
+	{
+		return EnableDashboardResourceMinification;
+	}
+	public final void setEnableDashboardResourceMinification(boolean value)
+	{
+		EnableDashboardResourceMinification = value;
+	}
 
 	/** 
 	 Allows the dashboard to be served from a custom path.
@@ -356,57 +410,23 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		DashboardSourcePath = value;
 	}
 
-	/** 
-	 Gets or sets a value indicating whether [enable tv db updates].
-	 
-	 <value><c>true</c> if [enable tv db updates]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean EnableTvDbUpdates;
-	public final boolean getEnableTvDbUpdates()
+	private boolean MergeMetadataAndImagesByName;
+	public final boolean getMergeMetadataAndImagesByName()
 	{
-		return EnableTvDbUpdates;
+		return MergeMetadataAndImagesByName;
 	}
-	public final void setEnableTvDbUpdates(boolean value)
+	public final void setMergeMetadataAndImagesByName(boolean value)
 	{
-		EnableTvDbUpdates = value;
+		MergeMetadataAndImagesByName = value;
 	}
-	private boolean EnableTmdbUpdates;
-	public final boolean getEnableTmdbUpdates()
+	private boolean EnableStandaloneMetadata;
+	public final boolean getEnableStandaloneMetadata()
 	{
-		return EnableTmdbUpdates;
+		return EnableStandaloneMetadata;
 	}
-	public final void setEnableTmdbUpdates(boolean value)
+	public final void setEnableStandaloneMetadata(boolean value)
 	{
-		EnableTmdbUpdates = value;
-	}
-
-	private boolean StoreArtistsInMetadata;
-	public final boolean getStoreArtistsInMetadata()
-	{
-		return StoreArtistsInMetadata;
-	}
-	public final void setStoreArtistsInMetadata(boolean value)
-	{
-		StoreArtistsInMetadata = value;
-	}
-
-	private boolean EnableFanArtUpdates;
-	public final boolean getEnableFanArtUpdates()
-	{
-		return EnableFanArtUpdates;
-	}
-	public final void setEnableFanArtUpdates(boolean value)
-	{
-		EnableFanArtUpdates = value;
-	}
-	private String FanartApiKey;
-	public final String getFanartApiKey()
-	{
-		return FanartApiKey;
-	}
-	public final void setFanartApiKey(String value)
-	{
-		FanartApiKey = value;
+		EnableStandaloneMetadata = value;
 	}
 
 	/** 
@@ -540,15 +560,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		SaveMetadataHidden = value;
 	}
-	private boolean EnableWin8HttpListener;
-	public final boolean getEnableWin8HttpListener()
-	{
-		return EnableWin8HttpListener;
-	}
-	public final void setEnableWin8HttpListener(boolean value)
-	{
-		EnableWin8HttpListener = value;
-	}
 
 	private NameValuePair[] ContentTypes;
 	public final NameValuePair[] getContentTypes()
@@ -579,6 +590,16 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		EnableVideoArchiveFiles = value;
 	}
 
+	private boolean EnableLegacyCollections;
+	public final boolean getEnableLegacyCollections()
+	{
+		return EnableLegacyCollections;
+	}
+	public final void setEnableLegacyCollections(boolean value)
+	{
+		EnableLegacyCollections = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
 	*/
@@ -587,12 +608,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		super();
 		setImageSavingConvention(ImageSavingConvention.Compatible);
 		setPublicPort(8096);
+		setPublicHttpsPort(8920);
 		setHttpServerPortNumber(8096);
 		setHttpsPortNumber(8920);
+		setEnableHttps(false);
 		setEnableDashboardResponseCaching(true);
+		setEnableDashboardResourceMinification(true);
 
 		setEnableAutomaticRestart(true);
-		setEnableWin8HttpListener(true);
 
 		setEnableUPnP(true);
 

@@ -26,6 +26,16 @@ public enum ItemFields
 	Budget,
 
 	/** 
+	 The can delete
+	*/
+	CanDelete,
+
+	/** 
+	 The can download
+	*/
+	CanDownload,
+
+	/** 
 	 The chapters
 	*/
 	Chapters,
