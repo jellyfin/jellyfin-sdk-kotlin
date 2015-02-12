@@ -268,7 +268,7 @@ public class StreamBuilder
 		if (IsEligibleForDirectPlay(item, maxBitrateSetting, subtitleStream, options))
 		{
 			// See if it can be direct played
-			PlayMethod directPlay = GetVideoDirectPlayProfile(options.getProfile(), item, videoStream, audioStream);
+			PlayMethod directPlay = GetVideoDirectPlayProfile(options, options.getProfile(), item, videoStream, audioStream);
 
 			if (directPlay != null)
 			{
@@ -392,7 +392,7 @@ public class StreamBuilder
 		return 128000;
 	}
 
-	private PlayMethod GetVideoDirectPlayProfile(DeviceProfile profile, MediaSourceInfo mediaSource, MediaStream videoStream, MediaStream audioStream)
+	private PlayMethod GetVideoDirectPlayProfile(VideoOptions options, DeviceProfile profile, MediaSourceInfo mediaSource, MediaStream videoStream, MediaStream audioStream)
 	{
 		// See if it can be direct played
 		DirectPlayProfile directPlay = null;
@@ -513,12 +513,12 @@ public class StreamBuilder
 
 		if (mediaSource.getProtocol() == MediaProtocol.Http)
 		{
-			if (!profile.getSupportsDirectRemoteContent())
+			if (!options.getSupportsDirectRemoteContent())
 			{
 				return null;
 			}
 
-			if (mediaSource.getRequiredHttpHeaders().size() > 0 && !profile.getSupportsCustomHttpHeaders())
+			if (mediaSource.getRequiredHttpHeaders().size() > 0 && !options.getSupportsCustomHttpHeaders())
 			{
 				return null;
 			}
@@ -548,9 +548,12 @@ public class StreamBuilder
 		// Look for an external profile that matches the stream type (text/graphical)
 		for (SubtitleProfile profile : deviceProfile.getSubtitleProfiles())
 		{
-			if (profile.getMethod() == SubtitleDeliveryMethod.External && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
+			if (subtitleStream.getSupportsExternalStream())
 			{
-				return profile;
+				if (profile.getMethod() == SubtitleDeliveryMethod.External && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
+				{
+					return profile;
+				}
 			}
 		}
 

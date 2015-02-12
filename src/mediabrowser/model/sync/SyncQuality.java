@@ -15,7 +15,11 @@ public enum SyncQuality
 	/** 
 	 The best
 	*/
-	High(2);
+	High(2),
+	/** 
+	 The original
+	*/
+	Original(3);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, SyncQuality> mappings;

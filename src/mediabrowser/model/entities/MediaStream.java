@@ -344,6 +344,21 @@ public class MediaStream
 	}
 
 	/** 
+	 Gets or sets a value indicating whether [supports external stream].
+	 
+	 <value><c>true</c> if [supports external stream]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean SupportsExternalStream;
+	public final boolean getSupportsExternalStream()
+	{
+		return SupportsExternalStream;
+	}
+	public final void setSupportsExternalStream(boolean value)
+	{
+		SupportsExternalStream = value;
+	}
+
+	/** 
 	 Gets or sets the filename.
 	 
 	 <value>The filename.</value>

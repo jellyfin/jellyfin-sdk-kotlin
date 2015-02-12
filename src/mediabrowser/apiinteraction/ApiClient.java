@@ -1723,17 +1723,9 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("capabilities");
         }
 
-        QueryStringDictionary dict = new QueryStringDictionary();
+        String url = GetApiUrl("Sessions/Capabilities/Full");
 
-        dict.AddIfNotNull("PlayableMediaTypes", capabilities.getPlayableMediaTypes());
-        dict.AddIfNotNull("SupportedCommands", capabilities.getSupportedCommands());
-
-        dict.Add("SupportsContentUploading", capabilities.getSupportsContentUploading());
-        dict.Add("SupportsMediaControl", capabilities.getSupportsMediaControl());
-
-        String url = GetApiUrl("Sessions/Capabilities", dict);
-
-        PostAsync(url, response);
+        PostAsync(url, capabilities, response);
     }
 
     public void GetLiveTvInfoAsync(final Response<LiveTvInfo> response)
