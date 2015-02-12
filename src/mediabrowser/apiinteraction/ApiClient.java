@@ -79,34 +79,27 @@ public class ApiClient extends BaseApiClient {
         return serverInfo;
     }
 
-    private ClientCapabilities capabilities;
-    public ClientCapabilities getCapabilities(){
-        return capabilities;
-    }
-
     private Observable authenticatedObservable = new AutomaticObservable();
     public Observable getAuthenticatedObservable() {
         return authenticatedObservable;
     }
 
-    public ApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String accessToken, ApiEventListener apiEventListener, ClientCapabilities capabilities)
+    public ApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String accessToken, ApiEventListener apiEventListener)
     {
         super(logger, jsonSerializer, serverAddress, accessToken);
 
         this.httpClient = httpClient;
         this.apiEventListener = apiEventListener;
-        this.capabilities = capabilities;
 
         ResetHttpHeaders();
     }
 
-    public ApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String clientName, IDevice device, String applicationVersion, ApiEventListener apiEventListener, ClientCapabilities capabilities)
+    public ApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String clientName, IDevice device, String applicationVersion, ApiEventListener apiEventListener)
     {
         super(logger, jsonSerializer, serverAddress, clientName, device, applicationVersion);
 
         this.httpClient = httpClient;
         this.apiEventListener = apiEventListener;
-        this.capabilities = capabilities;
 
         ResetHttpHeaders();
     }

@@ -552,8 +552,7 @@ public class ConnectionManager implements IConnectionManager {
                 applicationName,
                 device,
                 applicationVersion,
-                apiEventListener,
-                clientCapabilities);
+                apiEventListener);
     }
 
     private ApiClient GetOrAddApiClient(ServerInfo server, ConnectionMode connectionMode)
@@ -594,6 +593,8 @@ public class ConnectionManager implements IConnectionManager {
 
     void EnsureWebSocketIfConfigured(ApiClient apiClient)
     {
+        apiClient.ReportCapabilities(clientCapabilities, new EmptyResponse());
+
         if (webSocketEnabled){
             apiClient.OpenWebSocket();
         }

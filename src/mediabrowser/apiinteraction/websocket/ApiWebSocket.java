@@ -61,7 +61,6 @@ public class ApiWebSocket implements ISocketListener {
     public void onOpen(){
 
         SendIdentificationMessage();
-        SendCapabilities();
         enableReconnection = true;
     }
 
@@ -73,11 +72,6 @@ public class ApiWebSocket implements ISocketListener {
     protected String GetIdentificationMessage()
     {
         return apiClient.getClientName() + "|" + apiClient.getDeviceId() + "|" + apiClient.getApplicationVersion() + "|" + apiClient.getDeviceName();
-    }
-
-    private void SendCapabilities(){
-
-        apiClient.ReportCapabilities(apiClient.getCapabilities(), new EmptyResponse());
     }
 
     private String getWebSocketServerAddress(){

@@ -18,11 +18,11 @@ import java.io.IOException;
 public class AndroidApiClient extends ApiClient {
 
     public AndroidApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String accessToken, ApiEventListener apiEventListener, ClientCapabilities capabilities) {
-        super(httpClient, jsonSerializer, logger, serverAddress, accessToken, apiEventListener, capabilities);
+        super(httpClient, jsonSerializer, logger, serverAddress, accessToken, apiEventListener);
     }
 
     public AndroidApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String clientName, IDevice device, String applicationVersion, ApiEventListener apiEventListener, ClientCapabilities capabilities) {
-        super(httpClient, jsonSerializer, logger, serverAddress, clientName, device, applicationVersion, apiEventListener, capabilities);
+        super(httpClient, jsonSerializer, logger, serverAddress, clientName, device, applicationVersion, apiEventListener);
     }
 
     private VolleyHttpClient getAndroidHttpClient(){

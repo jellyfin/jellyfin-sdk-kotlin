@@ -42,7 +42,7 @@ public class PublicMethodTests {
 
         IJsonSerializer jsonSerializer = new BoonJsonSerializer();
 
-        apiClient = new ApiClient(volleyHttpClient, jsonSerializer, logger, "http://localhost:8096", "My app name", device, "app version 123", apiEventListener, capabilities);
+        apiClient = new ApiClient(volleyHttpClient, jsonSerializer, logger, "http://localhost:8096", "My app name", device, "app version 123", apiEventListener);
     }
 
     @Test
