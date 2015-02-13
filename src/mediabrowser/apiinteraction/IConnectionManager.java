@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction;
 
+import mediabrowser.model.apiclient.ConnectionOptions;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.connect.PinCreationResult;
 import mediabrowser.model.connect.PinExchangeResult;
@@ -19,7 +20,7 @@ public interface IConnectionManager {
 
     void Connect(Response<ConnectionResult> response);
 
-    void Connect(ServerInfo server, Response<ConnectionResult> response);
+    void Connect(ServerInfo server, ConnectionOptions options, Response<ConnectionResult> response);
 
     void Connect(String address, Response<ConnectionResult> response);
 
@@ -30,10 +31,6 @@ public interface IConnectionManager {
     void GetAvailableServers(final Response<ArrayList<ServerInfo>> response);
 
     void LoginToConnect(String username, String password, final EmptyResponse response)  throws UnsupportedEncodingException, NoSuchAlgorithmException;
-
-    void setWebSocketEnabled(boolean enabled);
-
-    void setReportCapabilitiesEnabled(boolean enabled);
 
     void CreatePin(String deviceId, Response<PinCreationResult> response);
 

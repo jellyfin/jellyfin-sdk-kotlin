@@ -64,9 +64,6 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
                 capabilities,
                 apiEventListener);
 
-        connectionManager.setReportCapabilitiesEnabled(false);
-        connectionManager.setWebSocketEnabled(false);
-
         CancellationTokenSource source = new CancellationTokenSource();
 
         new MultiServerSync(connectionManager, logger).Sync(source.getToken(), new MultiServerSyncProgress(syncResult, context.getContentResolver(), logger));

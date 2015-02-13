@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction.connectionmanager;
 
+import android.net.Network;
 import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.connect.ConnectService;
 import mediabrowser.apiinteraction.device.IDevice;
@@ -81,18 +82,6 @@ public class ConnectionManager implements IConnectionManager {
         });
     }
 
-    private boolean webSocketEnabled = true;
-    @Override
-    public void setWebSocketEnabled(boolean enabled) {
-        webSocketEnabled = enabled;
-    }
-
-    private boolean reportCapabilities = true;
-    @Override
-    public void setReportCapabilitiesEnabled(boolean enabled) {
-        reportCapabilities = enabled;
-    }
-
     @Override
     public ApiClient GetApiClient(IHasServerId item) {
 
@@ -108,6 +97,8 @@ public class ConnectionManager implements IConnectionManager {
     void OnConnectUserSignIn(ConnectUser user){
 
         connectUser = user;
+
+        // TODO: Fire event
     }
 
     private void OnFailedConnection(Response<ConnectionResult> response){
@@ -142,6 +133,16 @@ public class ConnectionManager implements IConnectionManager {
     @Override
     public void Connect(final Response<ConnectionResult> response) {
 
+        if (clientCapabilities.getSupportsOfflineAccess())
+        {
+            NetworkStatus networkAccess = _networkConnectivity.getNetworkStatus();
+            if (!networkAccess.getIsNetworkAvailable())
+            {
+                // TODO: for offline access
+                //return await GetOfflineResult().ConfigureAwait(false);
+            }
+        }
+
         logger.Debug("Entering initial connection workflow");
 
         GetAvailableServers(new GetAvailableServersResponse(logger, this, response));
@@ -152,15 +153,9 @@ public class ConnectionManager implements IConnectionManager {
         // Sort by last date accessed, descending
         Collections.sort(servers, new ServerInfoDateComparator());
 
-        if (servers.size() == 0){
-
-            OnFailedConnection(response, servers);
-            return;
-        }
-
         if (servers.size() == 1)
         {
-            Connect(servers.get(0), new Response<ConnectionResult>() {
+            Connect(servers.get(0), new ConnectionOptions(), new Response<ConnectionResult>() {
 
                 @Override
                 public void onResponse(ConnectionResult result) {
@@ -176,13 +171,13 @@ public class ConnectionManager implements IConnectionManager {
 
         // Check the first server for a saved access token
         ServerInfo firstServer = servers.get(0);
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(firstServer.getAccessToken()))
+        if (firstServer == null || tangible.DotNetToJavaStringHelper.isNullOrEmpty(firstServer.getAccessToken()))
         {
             OnFailedConnection(response, servers);
             return;
         }
 
-        Connect(firstServer, new Response<ConnectionResult>() {
+        Connect(firstServer, new ConnectionOptions(), new Response<ConnectionResult>() {
 
             @Override
             public void onResponse(ConnectionResult result) {
@@ -198,6 +193,7 @@ public class ConnectionManager implements IConnectionManager {
 
     @Override
     public void Connect(final ServerInfo server,
+                        ConnectionOptions options,
                         final Response<ConnectionResult> response) {
 
         ArrayList<ConnectionMode> tests = new ArrayList<ConnectionMode>();
@@ -223,7 +219,7 @@ public class ConnectionManager implements IConnectionManager {
 
         long wakeOnLanSendTime = new Date().getTime();
 
-        TestNextConnectionMode(tests, 0, isLocalNetworkAvailable, server, wakeOnLanSendTime, response);
+        TestNextConnectionMode(tests, 0, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
     }
 
     private void TestNextConnectionMode(final ArrayList<ConnectionMode> tests,
@@ -231,6 +227,7 @@ public class ConnectionManager implements IConnectionManager {
                                         final boolean isLocalNetworkAvailable,
                                         final ServerInfo server,
                                         final long wakeOnLanSendTime,
+                                        final ConnectionOptions options,
                                         final Response<ConnectionResult> response){
 
         if (index >= tests.size()){
@@ -242,30 +239,29 @@ public class ConnectionManager implements IConnectionManager {
         final ConnectionMode mode = tests.get(index);
         final String address = server.GetAddress(mode);
         boolean enableRetry = false;
-        int timeout = 20000;
+        boolean skipTest = false;
+        int timeout = 15000;
 
         if (mode == ConnectionMode.Local){
 
             if (!isLocalNetworkAvailable){
-                TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, response);
-                return;
+                skipTest = true;
             }
             enableRetry = true;
             timeout = 5000;
         }
 
-        else if (mode == ConnectionMode.Remote){
+        else if (mode == ConnectionMode.Manual){
 
             if (StringHelper.EqualsIgnoreCase(address, server.getLocalAddress()) ||
                     StringHelper.EqualsIgnoreCase(address, server.getRemoteAddress())){
-                TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, response);
-                return;
+                skipTest = true;
             }
         }
 
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(address))
+        if (skipTest || tangible.DotNetToJavaStringHelper.isNullOrEmpty(address))
         {
-            TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, response);
+            TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
             return;
         }
 
@@ -276,7 +272,7 @@ public class ConnectionManager implements IConnectionManager {
             @Override
             public void onResponse(PublicSystemInfo result) {
 
-                OnSuccessfulConnection(server, result, mode, response);
+                OnSuccessfulConnection(server, result, mode, options, response);
             }
 
             @Override
@@ -298,18 +294,18 @@ public class ConnectionManager implements IConnectionManager {
                         @Override
                         public void onResponse(PublicSystemInfo result) {
 
-                            OnSuccessfulConnection(server, result, mode, response);
+                            OnSuccessfulConnection(server, result, mode, options, response);
                         }
 
                         @Override
                         public void onError(Exception ex) {
 
-                            TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, response);
+                            TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
                         }
                     });
                 }
                 else{
-                    TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, response);
+                    TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
                 }
             }
         });
@@ -318,6 +314,7 @@ public class ConnectionManager implements IConnectionManager {
     private void OnSuccessfulConnection(final ServerInfo server,
                                      final PublicSystemInfo systemInfo,
                                      final ConnectionMode connectionMode,
+                                     final ConnectionOptions options,
                                      final Response<ConnectionResult> response) {
 
         final ServerCredentials credentials = _credentialProvider.GetCredentials();
@@ -335,7 +332,7 @@ public class ConnectionManager implements IConnectionManager {
                         @Override
                         public void onResponse() {
 
-                            AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, response);
+                            AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, options, response);
                         }
                     });
                 }
@@ -343,14 +340,14 @@ public class ConnectionManager implements IConnectionManager {
                 @Override
                 public void onError(Exception ex) {
 
-                    AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, response);
+                    AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, options, response);
                 }
 
             });
         }
         else{
 
-            AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, response);
+            AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, options, response);
         }
     }
 
@@ -383,6 +380,7 @@ public class ConnectionManager implements IConnectionManager {
                                        final PublicSystemInfo systemInfo,
                                        final ConnectionMode connectionMode,
                                        boolean verifyLocalAuthentication,
+                                       final ConnectionOptions options,
                                        final Response<ConnectionResult> response){
 
         if (verifyLocalAuthentication && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
@@ -392,7 +390,7 @@ public class ConnectionManager implements IConnectionManager {
                 @Override
                 public void onResponse() {
 
-                    AfterConnectValidated(server, credentials, systemInfo, connectionMode, false, response);
+                    AfterConnectValidated(server, credentials, systemInfo, connectionMode, false, options, response);
                 }
 
                 @Override
@@ -423,7 +421,7 @@ public class ConnectionManager implements IConnectionManager {
 
         if (result.getState() == ConnectionState.SignedIn)
         {
-            EnsureWebSocketIfConfigured(result.getApiClient());
+            AfterConnected(result.getApiClient(), options);
         }
 
         response.onResponse(result);
@@ -447,7 +445,7 @@ public class ConnectionManager implements IConnectionManager {
                 server.setLastConnectionMode(ConnectionMode.Manual);
                 server.ImportInfo(result);
 
-                Connect(server, response);
+                Connect(server, new ConnectionOptions(), response);
             }
 
             @Override
@@ -574,7 +572,7 @@ public class ConnectionManager implements IConnectionManager {
                 @Override
                 public void update(Observable observable, Object o)
                 {
-                    OnAuthenticated(finalApiClient, (AuthenticationResult) o, true);
+                    OnAuthenticated(finalApiClient, (AuthenticationResult) o, new ConnectionOptions(), true);
                 }
             });
         }
@@ -591,22 +589,25 @@ public class ConnectionManager implements IConnectionManager {
         return apiClient;
     }
 
-    void EnsureWebSocketIfConfigured(ApiClient apiClient)
+    void AfterConnected(ApiClient apiClient, ConnectionOptions options)
     {
-        apiClient.ReportCapabilities(clientCapabilities, new EmptyResponse());
+        if (options.getReportCapabilities()){
+            apiClient.ReportCapabilities(clientCapabilities, new EmptyResponse());
+        }
 
-        if (webSocketEnabled){
+        if (options.getEnableWebSocket()){
             apiClient.OpenWebSocket();
         }
     }
 
     private void OnAuthenticated(final ApiClient apiClient,
                                  final AuthenticationResult result,
+                                 ConnectionOptions options,
                                  final boolean saveCredentials)
     {
         logger.Debug("Updating credentials after local authentication");
 
-        ServerInfo server = ((ApiClient)apiClient).getServerInfo();
+        ServerInfo server = apiClient.getServerInfo();
 
         ServerCredentials credentials = _credentialProvider.GetCredentials();
 
@@ -624,16 +625,32 @@ public class ConnectionManager implements IConnectionManager {
         }
 
         credentials.AddOrUpdateServer(server);
+        SaveUserInfoIntoCredentials(server, result.getUser());
         _credentialProvider.SaveCredentials(credentials);
 
-        EnsureWebSocketIfConfigured(apiClient);
+        AfterConnected(apiClient, options);
 
         OnLocalUserSignIn(result.getUser());
     }
 
+    private void SaveUserInfoIntoCredentials(ServerInfo server, UserDto user)
+    {
+        ServerUserInfo info = new ServerUserInfo();
+        info.setIsSignedInOffline(true);
+        info.setId(user.getId());
+
+        // Record user info here
+        server.AddOrUpdate(info);
+    }
+
     void OnLocalUserSignIn(UserDto user)
     {
+        // TODO: Fire event
+    }
 
+    private void OnLocalUserSignout(ApiClient apiClient)
+    {
+        // TODO: Fire event
     }
 
     public void GetAvailableServers(final Response<ArrayList<ServerInfo>> response)
