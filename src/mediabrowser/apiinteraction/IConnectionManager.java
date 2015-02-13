@@ -20,6 +20,8 @@ public interface IConnectionManager {
 
     void Connect(Response<ConnectionResult> response);
 
+    void Connect(ServerInfo server, Response<ConnectionResult> response);
+
     void Connect(ServerInfo server, ConnectionOptions options, Response<ConnectionResult> response);
 
     void Connect(String address, Response<ConnectionResult> response);

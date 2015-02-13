@@ -193,6 +193,13 @@ public class ConnectionManager implements IConnectionManager {
 
     @Override
     public void Connect(final ServerInfo server,
+                        final Response<ConnectionResult> response) {
+
+        Connect(server, new ConnectionOptions(), response);
+    }
+
+    @Override
+    public void Connect(final ServerInfo server,
                         ConnectionOptions options,
                         final Response<ConnectionResult> response) {
 
