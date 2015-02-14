@@ -125,6 +125,7 @@ public class AndroidProfile extends DefaultProfile
 		setCodecProfiles(new CodecProfile[] {tempVar10, tempVar11, tempVar12, tempVar13, tempVar14});
 
 		buildDynamicProfiles();
+		buildSubtitleProfiles();
 	}
 
 	private void buildDynamicProfiles(){
@@ -134,6 +135,17 @@ public class AndroidProfile extends DefaultProfile
 		}
 		else if (Build.VERSION.SDK_INT >= 16){
 			new Api16Builder().buildProfiles(this);
+		}
+	}
+
+	private void buildSubtitleProfiles() {
+
+		if (Build.VERSION.SDK_INT >= 16) {
+			SubtitleProfile srtSubs = new SubtitleProfile();
+			srtSubs.setFormat("srt");
+			srtSubs.setMethod(SubtitleDeliveryMethod.External);
+
+			setSubtitleProfiles(new SubtitleProfile[] { srtSubs });
 		}
 	}
 }
