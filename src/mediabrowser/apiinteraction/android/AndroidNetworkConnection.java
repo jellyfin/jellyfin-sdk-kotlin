@@ -100,11 +100,11 @@ public class AndroidNetworkConnection implements INetworkConnection {
             status.setIsNetworkAvailable(false);
         }
 
-        NetworkInfo network = conMgr.getNetworkInfo(ConnectivityManager.TYPE_ETHERNET);
-        status.setIsEthernetNetworkAvailable(network != null && network.isConnected());
+        //NetworkInfo network = conMgr.getNetworkInfo(ConnectivityManager.TYPE_ETHERNET);
+        //status.setIsEthernetNetworkAvailable(network != null && network.isConnected());
 
-        network = conMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        status.setIsWifiNetworkAvailable(network != null && network.isConnected());
+        //network = conMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        //status.setIsWifiNetworkAvailable(network != null && network.isConnected());
 
         return status;
     }
