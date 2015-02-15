@@ -14,11 +14,13 @@ public class LogoutAllResponse extends EmptyResponse {
     private ICredentialProvider credentialProvider;
     private ILogger logger;
     private EmptyResponse response;
+    private ConnectionManager connectionManager;
 
-    public LogoutAllResponse(ICredentialProvider credentialProvider, ILogger logger, EmptyResponse response) {
+    public LogoutAllResponse(ICredentialProvider credentialProvider, ILogger logger, EmptyResponse response, ConnectionManager connectionManager) {
         this.credentialProvider = credentialProvider;
         this.logger = logger;
         this.response = response;
+        this.connectionManager = connectionManager;
     }
 
     private void OnSuccessOrFail() {
@@ -42,6 +44,8 @@ public class LogoutAllResponse extends EmptyResponse {
 
         credentials.setServers(servers);
         credentialProvider.SaveCredentials(credentials);
+
+        connectionManager.clearConnectUserAfterLogout();
 
         response.onResponse();
     }

@@ -28,8 +28,6 @@ public interface IConnectionManager {
 
     void Logout(EmptyResponse response);
 
-    Observable getConnectedObservable();
-
     void GetAvailableServers(final Response<ArrayList<ServerInfo>> response);
 
     void LoginToConnect(String username, String password, final EmptyResponse response)  throws UnsupportedEncodingException, NoSuchAlgorithmException;

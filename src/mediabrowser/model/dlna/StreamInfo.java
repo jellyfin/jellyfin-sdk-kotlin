@@ -324,12 +324,12 @@ public class StreamInfo
 		return getPlayMethod() == PlayMethod.DirectStream || getPlayMethod() == PlayMethod.DirectPlay;
 	}
 
-	public final String ToUrl(String baseUrl)
+	public final String ToUrl(String baseUrl, String accessToken)
 	{
-		return ToDlnaUrl(baseUrl);
+		return ToDlnaUrl(baseUrl, accessToken);
 	}
 
-	public final String ToDlnaUrl(String baseUrl)
+	public final String ToDlnaUrl(String baseUrl, String accessToken)
 	{
 		if (getPlayMethod() == PlayMethod.DirectPlay)
 		{
@@ -379,7 +379,47 @@ public class StreamInfo
 		return String.format("Params=%1$s", tangible.DotNetToJavaStringHelper.join(";", list.toArray(new String[0])));
 	}
 
-	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(String baseUrl, boolean includeSelectedTrackOnly)
+	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(boolean includeSelectedTrackOnly)
+	{
+		java.util.ArrayList<SubtitleStreamInfo> list = new java.util.ArrayList<SubtitleStreamInfo>();
+
+		// First add the selected track
+		if (getSubtitleStreamIndex() != null)
+		{
+			for (MediaStream stream : getMediaSource().getMediaStreams())
+			{
+				if (stream.getType() == MediaStreamType.Subtitle && stream.getIndex() == getSubtitleStreamIndex())
+				{
+					SubtitleStreamInfo info = GetSubtitleStreamInfo(stream);
+
+					if (info != null)
+					{
+						list.add(info);
+					}
+				}
+			}
+		}
+
+		if (!includeSelectedTrackOnly)
+		{
+			for (MediaStream stream : getMediaSource().getMediaStreams())
+			{
+				if (stream.getType() == MediaStreamType.Subtitle && (getSubtitleStreamIndex() == null || stream.getIndex() != getSubtitleStreamIndex()))
+				{
+					SubtitleStreamInfo info = GetSubtitleStreamInfo(stream);
+
+					if (info != null)
+					{
+						list.add(info);
+					}
+				}
+			}
+		}
+
+		return list;
+	}
+
+	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(String baseUrl, String accessToken, boolean includeSelectedTrackOnly)
 	{
 		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(baseUrl))
 		{
@@ -398,7 +438,12 @@ public class StreamInfo
 			{
 				if (stream.getType() == MediaStreamType.Subtitle && stream.getIndex() == getSubtitleStreamIndex())
 				{
-					AddSubtitle(list, stream, baseUrl, startPositionTicks);
+					SubtitleStreamInfo info = GetSubtitleStreamInfo(stream, baseUrl, accessToken, startPositionTicks);
+
+					if (info != null)
+					{
+						list.add(info);
+					}
 				}
 			}
 		}
@@ -409,7 +454,12 @@ public class StreamInfo
 			{
 				if (stream.getType() == MediaStreamType.Subtitle && (getSubtitleStreamIndex() == null || stream.getIndex() != getSubtitleStreamIndex()))
 				{
-					AddSubtitle(list, stream, baseUrl, startPositionTicks);
+					SubtitleStreamInfo info = GetSubtitleStreamInfo(stream, baseUrl, accessToken, startPositionTicks);
+
+					if (info != null)
+					{
+						list.add(info);
+					}
 				}
 			}
 		}
@@ -417,26 +467,35 @@ public class StreamInfo
 		return list;
 	}
 
-	private void AddSubtitle(java.util.ArrayList<SubtitleStreamInfo> list, MediaStream stream, String baseUrl, long startPositionTicks)
+	private SubtitleStreamInfo GetSubtitleStreamInfo(MediaStream stream, String baseUrl, String accessToken, long startPositionTicks)
+	{
+		SubtitleStreamInfo info = GetSubtitleStreamInfo(stream);
+
+		if (info != null)
+		{
+			info.setUrl(String.format("%1$s/Videos/%2$s/%3$s/Subtitles/%4$s/%5$s/Stream.%6$s", baseUrl, getItemId(), getMediaSourceId(), StringHelper.ToStringCultureInvariant(stream.getIndex()), StringHelper.ToStringCultureInvariant(startPositionTicks), getSubtitleFormat()));
+		}
+
+		return info;
+	}
+
+	private SubtitleStreamInfo GetSubtitleStreamInfo(MediaStream stream)
 	{
 		SubtitleProfile subtitleProfile = StreamBuilder.GetSubtitleProfile(stream, getDeviceProfile());
 
 		if (subtitleProfile.getMethod() != SubtitleDeliveryMethod.External)
 		{
-			return;
+			return null;
 		}
-
-		String url = String.format("%1$s/Videos/%2$s/%3$s/Subtitles/%4$s/%5$s/Stream.%6$s", baseUrl, getItemId(), getMediaSourceId(), StringHelper.ToStringCultureInvariant(stream.getIndex()), StringHelper.ToStringCultureInvariant(startPositionTicks), getSubtitleFormat());
 
 		String tempVar = stream.getLanguage();
 		SubtitleStreamInfo tempVar2 = new SubtitleStreamInfo();
-		tempVar2.setUrl(url);
 		tempVar2.setIsForced(stream.getIsForced());
 		tempVar2.setLanguage(stream.getLanguage());
 		tempVar2.setName((tempVar != null) ? tempVar : "Unknown");
 		tempVar2.setFormat(getSubtitleFormat());
 		tempVar2.setIndex(stream.getIndex());
-		list.add(tempVar2);
+		return tempVar2;
 	}
 
 	/** 

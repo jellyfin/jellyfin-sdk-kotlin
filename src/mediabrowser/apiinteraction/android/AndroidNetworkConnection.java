@@ -2,7 +2,7 @@ package mediabrowser.apiinteraction.android;
 
 import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.apiinteraction.network.INetworkConnection;
-import mediabrowser.apiinteraction.NetworkStatus;
+import mediabrowser.model.apiclient.NetworkStatus;
 import mediabrowser.model.logging.ILogger;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -95,8 +95,6 @@ public class AndroidNetworkConnection implements INetworkConnection {
             if (type == ConnectivityManager.TYPE_MOBILE){
 
                 logger.Debug("Android device is connected to a mobile network");
-
-                status.setIsRemoteNetworkAvailable(true);
             }
             else{
                 logger.Debug("Android device is connected to a network");

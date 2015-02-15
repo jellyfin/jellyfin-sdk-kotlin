@@ -1,7 +1,7 @@
 package mediabrowser.apiinteraction.network;
 
 import mediabrowser.apiinteraction.EmptyResponse;
-import mediabrowser.apiinteraction.NetworkStatus;
+import mediabrowser.model.apiclient.NetworkStatus;
 
 public interface INetworkConnection {
 

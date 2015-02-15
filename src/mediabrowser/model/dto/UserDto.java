@@ -132,6 +132,21 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto, IHasServerId
 	}
 
 	/** 
+	 Gets or sets the offline password salt.
+	 
+	 <value>The offline password salt.</value>
+	*/
+	private String OfflinePasswordSalt;
+	public final String getOfflinePasswordSalt()
+	{
+		return OfflinePasswordSalt;
+	}
+	public final void setOfflinePasswordSalt(String value)
+	{
+		OfflinePasswordSalt = value;
+	}
+
+	/** 
 	 Gets or sets the primary image tag.
 	 
 	 <value>The primary image tag.</value>

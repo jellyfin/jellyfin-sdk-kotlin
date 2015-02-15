@@ -214,7 +214,7 @@ public class ConnectionManager implements IConnectionManager {
             tests.add(0, server.getLastConnectionMode());
         }
 
-        boolean isLocalNetworkAvailable = _networkConnectivity.getNetworkStatus().GetIsLocalNetworkAvailable();
+        boolean isLocalNetworkAvailable = _networkConnectivity.getNetworkStatus().GetIsAnyLocalNetworkAvailable();
 
         // Kick off wake on lan on a separate thread (if applicable)
         boolean sendWakeOnLan = server.getWakeOnLanInfos().size() > 0 && isLocalNetworkAvailable;
@@ -467,13 +467,14 @@ public class ConnectionManager implements IConnectionManager {
 
         logger.Debug("Logging out of all servers");
 
-        LogoutAll(new LogoutAllResponse(_credentialProvider, logger, response));
+        LogoutAll(new LogoutAllResponse(_credentialProvider, logger, response, this));
     }
 
-    private Observable connectedObservable = new Observable();
-    @Override
-    public Observable getConnectedObservable() {
-        return connectedObservable;
+    void clearConnectUserAfterLogout() {
+
+        if (connectUser != null){
+            connectUser = null;
+        }
     }
 
     private void ValidateAuthentication(final ServerInfo server, ConnectionMode connectionMode, final EmptyResponse response)
@@ -653,7 +654,7 @@ public class ConnectionManager implements IConnectionManager {
         // TODO: Fire event
     }
 
-    private void OnLocalUserSignout(ApiClient apiClient)
+    void OnLocalUserSignout(ApiClient apiClient)
     {
         // TODO: Fire event
     }
@@ -672,7 +673,7 @@ public class ConnectionManager implements IConnectionManager {
 
         Response<ArrayList<ServerInfo>> findServersResponse = new FindServersResponse(this, credentials, foundServers, connectServers, numTasksCompleted, numTasks, response);
 
-        if (networkInfo.GetIsLocalNetworkAvailable())
+        if (networkInfo.GetIsAnyLocalNetworkAvailable())
         {
             logger.Debug("Scanning network for local servers");
 
@@ -871,7 +872,7 @@ public class ConnectionManager implements IConnectionManager {
                 }
             }
 
-            client.Logout(new ApiClientLogoutResponse(doneList, count, response));
+            client.Logout(new ApiClientLogoutResponse(doneList, count, response, this, client));
         }
 
         connectUser = null;
