@@ -90,23 +90,21 @@ public class AndroidNetworkConnection implements INetworkConnection {
 
             status.setIsNetworkAvailable(true);
 
-            int type = activeNetwork.getType();
-
-            if (type == ConnectivityManager.TYPE_MOBILE){
-
-                logger.Debug("Android device is connected to a mobile network");
-            }
-            else{
-                logger.Debug("Android device is connected to a network");
-            }
+            logger.Debug("Android device is connected to a network");
 
         } else {
 
-            logger.Debug("Local device is not connected to the network");
+            logger.Debug("Local device is not connected to a network");
 
             // notify user you are not online
             status.setIsNetworkAvailable(false);
         }
+
+        NetworkInfo network = conMgr.getNetworkInfo(ConnectivityManager.TYPE_ETHERNET);
+        status.setIsEthernetNetworkAvailable(network != null && network.isConnected());
+
+        network = conMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        status.setIsWifiNetworkAvailable(network != null && network.isConnected());
 
         return status;
     }
