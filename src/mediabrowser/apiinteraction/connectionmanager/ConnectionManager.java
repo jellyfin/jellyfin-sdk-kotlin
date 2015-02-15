@@ -1,6 +1,5 @@
 package mediabrowser.apiinteraction.connectionmanager;
 
-import android.net.Network;
 import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.connect.ConnectService;
 import mediabrowser.apiinteraction.device.IDevice;
@@ -577,8 +576,7 @@ public class ConnectionManager implements IConnectionManager {
             apiClient.getAuthenticatedObservable().addObserver(new Observer() {
 
                 @Override
-                public void update(Observable observable, Object o)
-                {
+                public void update(Observable observable, Object o) {
                     OnAuthenticated(finalApiClient, (AuthenticationResult) o, new ConnectionOptions(), true);
                 }
             });
@@ -684,49 +682,7 @@ public class ConnectionManager implements IConnectionManager {
             findServersResponse.onError(null);
         }
 
-        EmptyResponse connectServersResponse = new EmptyResponse(){
-
-            private void OnAny(ConnectUserServer[] servers){
-
-                synchronized (credentials){
-
-                    connectServers.addAll(ConvertServerList(servers));
-
-                    numTasksCompleted[0]++;
-
-                    if (numTasksCompleted[0] >= numTasks) {
-                        OnGetServerResponse(credentials, foundServers, connectServers, response);
-                    }
-                }
-            }
-
-            @Override
-            public void onResponse() {
-
-                logger.Debug("Getting connect servers");
-
-                connectService.GetServers(credentials.getConnectUserId(), credentials.getConnectAccessToken(), new Response<ConnectUserServer[]>(){
-
-                    @Override
-                    public void onResponse(ConnectUserServer[] response) {
-
-                        OnAny(response);
-                    }
-
-                    @Override
-                    public void onError(Exception ex) {
-
-                        OnAny(new ConnectUserServer[]{});
-                    }
-                });
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                OnAny(new ConnectUserServer[]{});
-            }
-        };
+        EmptyResponse connectServersResponse = new EnsureConnectUserResponse(logger, connectService, credentials, foundServers, connectServers, numTasks, numTasksCompleted, response, this);
 
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
         {
@@ -815,34 +771,6 @@ public class ConnectionManager implements IConnectionManager {
         ArrayList<ServerInfo> clone = new ArrayList<ServerInfo>();
         clone.addAll(credentials.getServers());
         response.onResponse(clone);
-    }
-
-    private ArrayList<ServerInfo> ConvertServerList(ConnectUserServer[] userServers){
-
-        ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
-
-        for(ConnectUserServer userServer : userServers){
-
-            ServerInfo server = new ServerInfo();
-
-            server.setExchangeToken(userServer.getAccessKey());
-            server.setId(userServer.getSystemId());
-            server.setName(userServer.getName());
-            server.setLocalAddress(userServer.getLocalAddress());
-            server.setRemoteAddress(userServer.getUrl());
-
-            if (StringHelper.EqualsIgnoreCase(userServer.getUserType(), "guest"))
-            {
-                server.setUserLinkType(UserLinkType.Guest);
-            }
-            else{
-                server.setUserLinkType(UserLinkType.LinkedUser);
-            }
-
-            servers.add(server);
-        }
-
-        return servers;
     }
 
     protected void FindServers(final Response<ArrayList<ServerInfo>> response)
