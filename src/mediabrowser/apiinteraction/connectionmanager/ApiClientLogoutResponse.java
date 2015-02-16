@@ -7,13 +7,13 @@ import java.util.ArrayList;
 
 public class ApiClientLogoutResponse extends EmptyResponse {
 
-    private ArrayList<EmptyResponse> doneList;
+    private ArrayList<Integer> doneList;
     private int count;
     private EmptyResponse response;
     private ConnectionManager connectionManager;
     private ApiClient apiClient;
 
-    public ApiClientLogoutResponse(ArrayList<EmptyResponse> doneList, int count, EmptyResponse response, ConnectionManager connectionManager, ApiClient apiClient) {
+    public ApiClientLogoutResponse(ArrayList<Integer> doneList, int count, EmptyResponse response, ConnectionManager connectionManager, ApiClient apiClient) {
         this.doneList = doneList;
         this.count = count;
         this.response = response;
@@ -24,16 +24,21 @@ public class ApiClientLogoutResponse extends EmptyResponse {
     @Override
     public void onResponse() {
 
-        connectionManager.OnLocalUserSignout(apiClient);
+        onResponse(true);
+    }
 
+    public void onResponse(boolean wasSignedOut) {
+
+        if (wasSignedOut) {
+            connectionManager.OnLocalUserSignout(apiClient);
+        }
         synchronized (doneList) {
 
-            doneList.add(new EmptyResponse());
+            doneList.add(0);
 
             if (doneList.size() >= count) {
                 response.onResponse();
             }
-
         }
 
     }

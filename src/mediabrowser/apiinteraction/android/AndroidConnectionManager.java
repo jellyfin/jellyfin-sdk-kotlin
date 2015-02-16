@@ -3,7 +3,6 @@ package mediabrowser.apiinteraction.android;
 import android.content.SharedPreferences;
 import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.connectionmanager.ConnectionManager;
-import mediabrowser.apiinteraction.discovery.IServerLocator;
 import mediabrowser.apiinteraction.discovery.ServerLocator;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.model.apiclient.ServerInfo;
@@ -18,7 +17,7 @@ public class AndroidConnectionManager extends ConnectionManager {
 
     public AndroidConnectionManager(Context context, IJsonSerializer jsonSerializer, ILogger logger, IAsyncHttpClient httpClient, String applicationName, String applicationVersion, ClientCapabilities clientCapabilities, ApiEventListener apiEventListener) {
 
-        super(new AndroidCredentialProvider(jsonSerializer, context),
+        super(new AndroidCredentialProvider(jsonSerializer, context, logger),
                 new AndroidNetworkConnection(context, logger),
                 jsonSerializer,
                 logger,

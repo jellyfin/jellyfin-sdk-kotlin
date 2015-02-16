@@ -762,6 +762,10 @@ public class ConnectionManager implements IConnectionManager {
 
         ArrayList<ServerInfo> clone = new ArrayList<ServerInfo>();
         clone.addAll(credentials.getServers());
+
+        // Sort by last date accessed, descending
+        Collections.sort(clone, new ServerInfoDateComparator());
+
         response.onResponse(clone);
     }
 
@@ -845,25 +849,21 @@ public class ConnectionManager implements IConnectionManager {
             return;
         }
 
-        final ArrayList<EmptyResponse> doneList = new ArrayList<EmptyResponse>();
+        final ArrayList<Integer> doneList = new ArrayList<Integer>();
 
         for(Object clientObj : clientList){
 
             ApiClient client = (ApiClient)clientObj;
 
-            if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(client.getAccessToken()))
+            ApiClientLogoutResponse logoutResponse = new ApiClientLogoutResponse(doneList, count, response, this, client);
+
+            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(client.getAccessToken()))
             {
-                synchronized (doneList) {
-
-                    doneList.add(new EmptyResponse());
-
-                    if (doneList.size() >= count) {
-                        response.onResponse();
-                    }
-                }
+                client.Logout(logoutResponse);
             }
-
-            client.Logout(new ApiClientLogoutResponse(doneList, count, response, this, client));
+            else {
+                logoutResponse.onResponse(false);
+            }
         }
 
         connectUser = null;

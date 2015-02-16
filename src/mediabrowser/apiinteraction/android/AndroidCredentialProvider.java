@@ -1,6 +1,7 @@
 package mediabrowser.apiinteraction.android;
 
 import mediabrowser.model.apiclient.ServerCredentials;
+import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.apiinteraction.ICredentialProvider;
 import android.content.Context;
@@ -10,12 +11,14 @@ public class AndroidCredentialProvider implements ICredentialProvider {
 
     private IJsonSerializer jsonSerializer;
     private Context context;
+    private ILogger logger;
 
     private String settingsKey = "serverCredentials";
 
-    public AndroidCredentialProvider(IJsonSerializer jsonSerializer, Context context) {
+    public AndroidCredentialProvider(IJsonSerializer jsonSerializer, Context context, ILogger logger) {
         this.jsonSerializer = jsonSerializer;
         this.context = context;
+        this.logger = logger;
     }
 
     private SharedPreferences getSharedPreferences() {
@@ -42,7 +45,11 @@ public class AndroidCredentialProvider implements ICredentialProvider {
         editor.putString(settingsKey, jsonSerializer.SerializeToString(credentials));
 
         // Commit the edits!
-        editor.commit();
+        boolean saved = editor.commit();
+
+        if (!saved){
+            logger.Error("SharedPreferences.Editor failed to save credentials!");
+        }
     }
 
 }
