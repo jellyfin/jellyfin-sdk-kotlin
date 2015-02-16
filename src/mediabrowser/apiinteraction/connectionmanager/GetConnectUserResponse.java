@@ -24,6 +24,7 @@ public class GetConnectUserResponse extends Response<ConnectUser> {
     @Override
     public void onError(Exception ex) {
 
-        response.onError(ex);
+        // logged at lower levels
+        response.onResponse();
     }
 }

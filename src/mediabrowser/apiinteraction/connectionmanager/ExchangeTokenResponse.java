@@ -31,6 +31,8 @@ public class ExchangeTokenResponse extends Response<String> {
     @Override
     public void onError(Exception ex) {
 
+        server.setUserId(null);
+        server.setAccessToken(null);
         response.onResponse();
     }
 }

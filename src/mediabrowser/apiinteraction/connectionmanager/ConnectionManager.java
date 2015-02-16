@@ -325,33 +325,33 @@ public class ConnectionManager implements IConnectionManager {
 
         final ServerCredentials credentials = _credentialProvider.GetCredentials();
 
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()) &&
-                !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getExchangeToken()))
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
         {
             EnsureConnectUser(credentials, new EmptyResponse(){
 
+                private void onEnsureConnectUserDone(){
+                    AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, options, response);
+                }
                 @Override
                 public void onResponse() {
 
-                    AddAuthenticationInfoFromConnect(server, connectionMode, credentials, new EmptyResponse() {
+                    if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getExchangeToken())){
+                        AddAuthenticationInfoFromConnect(server, connectionMode, credentials, new EmptyResponse() {
 
-                        @Override
-                        public void onResponse() {
+                            @Override
+                            public void onResponse() {
 
-                            AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, options, response);
-                        }
-                    });
-                }
-
-                @Override
-                public void onError(Exception ex) {
-
-                    AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, options, response);
+                                onEnsureConnectUserDone();
+                            }
+                        });
+                    }
+                    else{
+                        onEnsureConnectUserDone();
+                    }
                 }
 
             });
-        }
-        else{
+        } else {
 
             AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, options, response);
         }
@@ -398,12 +398,6 @@ public class ConnectionManager implements IConnectionManager {
 
                     AfterConnectValidated(server, credentials, systemInfo, connectionMode, false, options, response);
                 }
-
-                @Override
-                public void onError(Exception ex) {
-
-                    response.onError(ex);
-                }
             });
 
             return;
@@ -440,7 +434,7 @@ public class ConnectionManager implements IConnectionManager {
 
         logger.Debug("Attempting to connect to server at %s", address);
 
-        TryConnect(normalizeAddress, 20000, new Response<PublicSystemInfo>(){
+        TryConnect(normalizeAddress, 15000, new Response<PublicSystemInfo>(){
 
             @Override
             public void onResponse(PublicSystemInfo result) {
@@ -696,7 +690,7 @@ public class ConnectionManager implements IConnectionManager {
         }
     }
 
-    private void EnsureConnectUser(ServerCredentials credentials, final EmptyResponse response){
+    void EnsureConnectUser(ServerCredentials credentials, final EmptyResponse response){
 
         if (connectUser != null && StringHelper.EqualsIgnoreCase(connectUser.getId(), credentials.getConnectUserId()))
         {
@@ -704,19 +698,16 @@ public class ConnectionManager implements IConnectionManager {
             return;
         }
 
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectUserId()) || tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectUserId()) && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
         {
-            response.onError(null);
-            return;
+            this.connectUser = null;
+
+            ConnectUserQuery query = new ConnectUserQuery();
+
+            query.setId(credentials.getConnectUserId());
+
+            connectService.GetConnectUser(query, credentials.getConnectAccessToken(), new GetConnectUserResponse(this, response));
         }
-
-        this.connectUser = null;
-
-        ConnectUserQuery query = new ConnectUserQuery();
-
-        query.setId(credentials.getConnectUserId());
-
-        connectService.GetConnectUser(query, credentials.getConnectAccessToken(), new GetConnectUserResponse(this, response));
     }
 
     void OnGetServerResponse(ServerCredentials credentials,
