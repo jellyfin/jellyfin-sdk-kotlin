@@ -17,7 +17,6 @@ import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.model.session.ClientCapabilities;
 import mediabrowser.model.system.PublicSystemInfo;
-import mediabrowser.model.system.SystemInfo;
 import mediabrowser.model.users.AuthenticationResult;
 
 import java.io.UnsupportedEncodingException;
@@ -100,7 +99,7 @@ public class ConnectionManager implements IConnectionManager {
         // TODO: Fire event
     }
 
-    private void OnFailedConnection(Response<ConnectionResult> response){
+    void OnFailedConnection(Response<ConnectionResult> response){
 
         logger.Debug("No server available");
 
@@ -430,30 +429,11 @@ public class ConnectionManager implements IConnectionManager {
     @Override
     public void Connect(final String address, final Response<ConnectionResult> response) {
 
-        final String normalizeAddress = NormalizeAddress(address);
+        final String normalizedAddress = NormalizeAddress(address);
 
         logger.Debug("Attempting to connect to server at %s", address);
 
-        TryConnect(normalizeAddress, 15000, new Response<PublicSystemInfo>(){
-
-            @Override
-            public void onResponse(PublicSystemInfo result) {
-
-                ServerInfo server = new ServerInfo();
-
-                server.setManualAddress(normalizeAddress);
-                server.setLastConnectionMode(ConnectionMode.Manual);
-                server.ImportInfo(result);
-
-                Connect(server, new ConnectionOptions(), response);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                OnFailedConnection(response);
-            }
-        });
+        TryConnect(normalizedAddress, 15000, new ConnectToAddressResponse(this, normalizedAddress, response));
     }
 
     @Override
@@ -483,49 +463,7 @@ public class ConnectionManager implements IConnectionManager {
         request.setMethod("GET");
         request.setRequestHeaders(headers);
 
-        Response<String> stringResponse = new Response<String>(){
-
-            @Override
-            public void onResponse(String jsonResponse) {
-
-                SystemInfo obj = jsonSerializer.DeserializeFromString(jsonResponse, SystemInfo.class);
-                server.ImportInfo(obj);
-
-                if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getUserId()))
-                {
-                    request.setUrl(url + "/mediabrowser/users/" + server.getUserId() + "?format=json");
-
-                    httpClient.Send(request, new Response<String>(){
-
-                        @Override
-                        public void onResponse(String stringResponse) {
-
-                            UserDto user = jsonSerializer.DeserializeFromString(stringResponse, UserDto.class);
-                            OnLocalUserSignIn(user);
-                            response.onResponse();
-                        }
-                        @Override
-                        public void onError(Exception ex) {
-
-                            server.setUserId(null);
-                            server.setAccessToken(null);
-                            response.onResponse();
-                        }
-                    });
-                }
-                else {
-                    response.onResponse();
-                }
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                server.setUserId(null);
-                server.setAccessToken(null);
-                response.onResponse();
-            }
-        };
+        Response<String> stringResponse = new ValidateAuthenticationResponse(this, jsonSerializer, server, response, request, httpClient, url);
 
         httpClient.Send(request, stringResponse);
     }
