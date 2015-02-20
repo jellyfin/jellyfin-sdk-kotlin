@@ -150,6 +150,7 @@ public class ConnectionManager implements IConnectionManager {
 
         // Sort by last date accessed, descending
         Collections.sort(servers, new ServerInfoDateComparator());
+        Collections.reverse(servers);
 
         if (servers.size() == 1)
         {
@@ -694,15 +695,16 @@ public class ConnectionManager implements IConnectionManager {
             }
         }
 
+        // Sort by last date accessed, descending
+        Collections.sort(cleanList, new ServerInfoDateComparator());
+        Collections.reverse(cleanList);
+
         credentials.setServers(cleanList);
 
         _credentialProvider.SaveCredentials(credentials);
 
         ArrayList<ServerInfo> clone = new ArrayList<ServerInfo>();
         clone.addAll(credentials.getServers());
-
-        // Sort by last date accessed, descending
-        Collections.sort(clone, new ServerInfoDateComparator());
 
         response.onResponse(clone);
     }
