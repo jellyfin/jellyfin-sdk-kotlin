@@ -2286,6 +2286,13 @@ public class ApiClient extends BaseApiClient {
         throw new UnsupportedOperationException();
     }
 
+    public void DeleteItem(String id, final EmptyResponse response)
+    {
+        String url = GetApiUrl("Items/" + id);
+
+        DeleteAsync(url, response);
+    }
+
     public void Logout(final EmptyResponse response)
     {
         String url = GetApiUrl("Sessions/Logout");
