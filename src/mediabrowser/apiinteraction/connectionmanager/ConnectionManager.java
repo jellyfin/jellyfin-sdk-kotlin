@@ -154,17 +154,7 @@ public class ConnectionManager implements IConnectionManager {
 
         if (servers.size() == 1)
         {
-            Connect(servers.get(0), new ConnectionOptions(), new Response<ConnectionResult>() {
-
-                @Override
-                public void onResponse(ConnectionResult result) {
-
-                    if (result.getState() == ConnectionState.Unavailable) {
-                        result.setState((result.getConnectUser() == null ? ConnectionState.ConnectSignIn : ConnectionState.ServerSelection));
-                    }
-                    response.onResponse(result);
-                }
-            });
+            Connect(servers.get(0), new ConnectionOptions(), new ConnectToSingleServerListResponse(response));
             return;
         }
 
@@ -228,7 +218,7 @@ public class ConnectionManager implements IConnectionManager {
         TestNextConnectionMode(tests, 0, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
     }
 
-    private void TestNextConnectionMode(final ArrayList<ConnectionMode> tests,
+    void TestNextConnectionMode(final ArrayList<ConnectionMode> tests,
                                         final int index,
                                         final boolean isLocalNetworkAvailable,
                                         final ServerInfo server,
@@ -271,53 +261,10 @@ public class ConnectionManager implements IConnectionManager {
             return;
         }
 
-        final boolean finalEnableRetry = enableRetry;
-        final int finalTimeout = timeout;
-        TryConnect(address, timeout, new Response<PublicSystemInfo>() {
-
-            @Override
-            public void onResponse(PublicSystemInfo result) {
-
-                OnSuccessfulConnection(server, result, mode, options, response);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                if (finalEnableRetry){
-                    long sleepTime = 10000 - (new Date().getTime() - wakeOnLanSendTime);
-
-                    if (sleepTime > 0){
-                        try {
-                            Thread.sleep(sleepTime, 0);
-                        } catch (InterruptedException e) {
-                            logger.ErrorException("Error in Thread.Sleep", e);
-                        }
-                    }
-
-                    TryConnect(address, finalTimeout, new Response<PublicSystemInfo>() {
-
-                        @Override
-                        public void onResponse(PublicSystemInfo result) {
-
-                            OnSuccessfulConnection(server, result, mode, options, response);
-                        }
-
-                        @Override
-                        public void onError(Exception ex) {
-
-                            TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
-                        }
-                    });
-                }
-                else{
-                    TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
-                }
-            }
-        });
+        TryConnect(address, timeout, new TestNextConnectionModeTryConnectResponse(this, server, tests, mode, address, timeout, options, index, isLocalNetworkAvailable, wakeOnLanSendTime, enableRetry, logger, response));
     }
 
-    private void OnSuccessfulConnection(final ServerInfo server,
+    void OnSuccessfulConnection(final ServerInfo server,
                                      final PublicSystemInfo systemInfo,
                                      final ConnectionMode connectionMode,
                                      final ConnectionOptions options,
@@ -469,7 +416,7 @@ public class ConnectionManager implements IConnectionManager {
         httpClient.Send(request, stringResponse);
     }
 
-    private void TryConnect(String url, int timeout, final Response<PublicSystemInfo> response)
+    void TryConnect(String url, int timeout, final Response<PublicSystemInfo> response)
     {
         url += "/mediabrowser/system/info/public?format=json";
 
