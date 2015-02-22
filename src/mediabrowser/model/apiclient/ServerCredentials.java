@@ -58,7 +58,9 @@ public class ServerCredentials
             ServerInfo existing = list.get(index);
 
             // Merge the data
-            existing.setDateLastAccessed(server.getDateLastAccessed());
+            if (server.getDateLastAccessed().getTime() > existing.getDateLastAccessed().getTime()){
+                existing.setDateLastAccessed(server.getDateLastAccessed());
+            }
 
             existing.setUserLinkType(server.getUserLinkType());
 
