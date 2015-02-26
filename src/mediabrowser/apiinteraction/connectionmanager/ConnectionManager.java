@@ -328,7 +328,7 @@ public class ConnectionManager implements IConnectionManager {
         httpClient.Send(request, new ExchangeTokenResponse(jsonSerializer, server, response));
     }
 
-    private void AfterConnectValidated(final ServerInfo server,
+    void AfterConnectValidated(final ServerInfo server,
                                        final ServerCredentials credentials,
                                        final PublicSystemInfo systemInfo,
                                        final ConnectionMode connectionMode,
@@ -338,14 +338,7 @@ public class ConnectionManager implements IConnectionManager {
 
         if (verifyLocalAuthentication && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
         {
-            ValidateAuthentication(server, connectionMode, new EmptyResponse(){
-
-                @Override
-                public void onResponse() {
-
-                    AfterConnectValidated(server, credentials, systemInfo, connectionMode, false, options, response);
-                }
-            });
+            ValidateAuthentication(server, connectionMode, new AfterConnectValidatedResponse(this, server, credentials, systemInfo, connectionMode, options, response));
 
             return;
         }
@@ -452,15 +445,7 @@ public class ConnectionManager implements IConnectionManager {
 
             apiClients.put(server.getId(), apiClient);
 
-            final ApiClient finalApiClient = apiClient;
-
-            apiClient.getAuthenticatedObservable().addObserver(new Observer() {
-
-                @Override
-                public void update(Observable observable, Object o) {
-                    OnAuthenticated(finalApiClient, (AuthenticationResult) o, new ConnectionOptions(), true);
-                }
-            });
+            apiClient.getAuthenticatedObservable().addObserver(new AuthenticatedObserver(this, apiClient));
         }
 
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
@@ -486,7 +471,7 @@ public class ConnectionManager implements IConnectionManager {
         }
     }
 
-    private void OnAuthenticated(final ApiClient apiClient,
+    void OnAuthenticated(final ApiClient apiClient,
                                  final AuthenticationResult result,
                                  ConnectionOptions options,
                                  final boolean saveCredentials)
