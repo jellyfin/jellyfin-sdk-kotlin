@@ -7,9 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ded6c251-ca93-4546-8a98-be60c6d1fbb2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/MediaBrowser_ApiClient_Java_jar/MediaBrowser.ApiClient.Java.jar" afterPath="$PROJECT_DIR$/out/artifacts/MediaBrowser_ApiClient_Java_jar/MediaBrowser.ApiClient.Java.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/apiclient/ServerCredentials.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/apiclient/ServerCredentials.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" />
     </list>
     <ignored path="MediaBrowser.ApiClient.Java.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,14 +31,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ConnectionManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ConnectionManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectionManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21841891" vertical-offset="9609" max-vertical-offset="12869">
-              <caret line="605" column="24" selection-start-line="605" selection-start-column="24" selection-end-line="605" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="10234" max-vertical-offset="12869">
+              <caret line="633" column="13" selection-start-line="633" selection-start-column="13" selection-end-line="633" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApiClient.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5411573" vertical-offset="28576" max-vertical-offset="43486">
+              <caret line="1787" column="83" selection-start-line="1787" selection-start-column="83" selection-end-line="1787" selection-end-column="83" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,7 +90,7 @@
       <file leaf-file-name="ConnectToSingleServerListResponse.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectToSingleServerListResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+            <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="510">
               <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -115,16 +123,6 @@
                 <element signature="e#2320#2321#0" expanded="true" />
                 <element signature="e#2346#2347#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VolleyStringRequest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/android/VolleyStringRequest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="939" max-vertical-offset="2091">
-              <caret line="123" column="9" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="9" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -192,7 +190,6 @@
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ValidateAuthenticationResponse.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectToAddressResponse.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ServerInfoDateComparator.java" />
-        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" />
         <option value="$PROJECT_DIR$/test/mediabrowser/PublicMethodTests.java" />
         <option value="$PROJECT_DIR$/test/tests/PublicMethodTests.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/android/VolleyHttpClient.java" />
@@ -201,6 +198,7 @@
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/TestNextConnectionModeTryConnectResponse.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectionManager.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/model/apiclient/ServerCredentials.java" />
+        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" />
       </list>
     </option>
   </component>
@@ -465,8 +463,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -801,7 +799,6 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32613724" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32907587" sideWeight="0.46390918" order="7" side_tool="true" content_ui="tabs" />
@@ -811,16 +808,17 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24245578" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32613724" sideWeight="0.53609085" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32613724" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299923" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32613724" sideWeight="0.53609085" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993832" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1037,7 +1035,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="1292">
           <caret line="46" column="37" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1073,7 +1070,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="901">
           <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1109,14 +1105,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.029726516" vertical-offset="60" max-vertical-offset="901">
           <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="37380" max-vertical-offset="43418">
-          <caret line="2301" column="17" selection-start-line="2301" selection-start-column="17" selection-end-line="2301" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1234,11 +1222,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21841891" vertical-offset="9609" max-vertical-offset="12869">
-          <caret line="605" column="24" selection-start-line="605" selection-start-column="24" selection-end-line="605" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="10234" max-vertical-offset="12869">
+          <caret line="633" column="13" selection-start-line="633" selection-start-column="13" selection-end-line="633" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5411573" vertical-offset="28576" max-vertical-offset="43486">
+          <caret line="1787" column="83" selection-start-line="1787" selection-start-column="83" selection-end-line="1787" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>

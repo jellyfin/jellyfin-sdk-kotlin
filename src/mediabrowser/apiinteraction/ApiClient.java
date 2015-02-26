@@ -1782,6 +1782,10 @@ public class ApiClient extends BaseApiClient {
         dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
         dict.AddIfNotNull("StartIndex", query.getStartIndex());
         dict.AddIfNotNull("Limit", query.getLimit());
+        dict.AddIfNotNull("IsFavorite", query.getIsFavorite());
+        dict.AddIfNotNull("IsLiked", query.getIsLiked());
+        dict.AddIfNotNull("IsDisliked", query.getIsDisliked());
+        dict.AddIfNotNull("EnableFavoriteSorting", query.getEnableFavoriteSorting());
 
         if (query.getChannelType() != null)
         {
