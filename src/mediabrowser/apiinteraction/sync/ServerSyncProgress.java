@@ -4,16 +4,20 @@ import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.devices.LocalFileInfo;
 import mediabrowser.model.logging.ILogger;
 
+import java.util.concurrent.Semaphore;
+
 public class ServerSyncProgress extends SyncProgress {
 
     private ILogger logger;
     private ServerInfo server;
     private SyncProgress progress;
+    private Semaphore semaphore;
 
-    public ServerSyncProgress(ILogger logger, ServerInfo server, SyncProgress progress) {
+    public ServerSyncProgress(ILogger logger, ServerInfo server, SyncProgress progress, Semaphore semaphore) {
         this.logger = logger;
         this.server = server;
         this.progress = progress;
+        this.semaphore = semaphore;
     }
 
     @Override
@@ -28,6 +32,7 @@ public class ServerSyncProgress extends SyncProgress {
 
         logger.Info("Sync complete to server " + server.getName());
         progress.reportComplete();
+        semaphore.release();
     }
 
     @Override
@@ -41,6 +46,7 @@ public class ServerSyncProgress extends SyncProgress {
 
         logger.Info("Sync cancelled to server " + server.getName());
         progress.reportCancelled();
+        semaphore.release();
     }
 
     @Override
@@ -48,6 +54,7 @@ public class ServerSyncProgress extends SyncProgress {
 
         logger.ErrorException("Error syncing to server " + server.getName(), ex);
         progress.reportError(ex);
+        semaphore.release();
     }
 
     @Override

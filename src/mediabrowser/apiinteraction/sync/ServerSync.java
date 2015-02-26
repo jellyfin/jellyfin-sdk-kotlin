@@ -2,12 +2,12 @@ package mediabrowser.apiinteraction.sync;
 
 import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
-import mediabrowser.apiinteraction.tasks.CancellationTokenSource;
 import mediabrowser.model.apiclient.ConnectionOptions;
-import mediabrowser.model.apiclient.ConnectionState;
 import mediabrowser.model.apiclient.ServerInfo;
-import mediabrowser.model.devices.LocalFileInfo;
 import mediabrowser.model.logging.ILogger;
+
+import java.util.HashMap;
+import java.util.concurrent.Semaphore;
 
 public class ServerSync {
 
@@ -42,8 +42,34 @@ public class ServerSync {
 
     void Sync(final ServerInfo server, ApiClient apiClient, CancellationToken cancellationToken, final SyncProgress progress){
 
-        final CancellationTokenSource innerCancellationSource = new CancellationTokenSource();
+        Semaphore semaphore = GetLock(server.getId());
 
-        new ContentUploader(apiClient, logger).UploadImages(new ServerSyncProgress(logger, server, progress), innerCancellationSource.getToken());
+        try {
+
+            semaphore.acquire();
+
+            SyncInternal(server, apiClient, cancellationToken, semaphore, progress);
+
+        } catch (InterruptedException e) {
+
+            logger.ErrorException("InterruptedException in ServerSync", e);
+            progress.reportError(e);
+        }
+    }
+
+    private void SyncInternal(final ServerInfo server, ApiClient apiClient, CancellationToken cancellationToken, Semaphore semaphore, final SyncProgress progress){
+
+        new ContentUploader(apiClient, logger).UploadImages(new ServerSyncProgress(logger, server, progress, semaphore), cancellationToken);
+    }
+
+    private static HashMap<String, Semaphore> SemaphoreLocks = new HashMap<String, Semaphore>();
+    private static Semaphore GetLock(String serverId)
+    {
+        if (!SemaphoreLocks.containsKey(serverId))
+        {
+            SemaphoreLocks.put(serverId, new Semaphore(1));
+        }
+
+        return SemaphoreLocks.get(serverId);
     }
 }

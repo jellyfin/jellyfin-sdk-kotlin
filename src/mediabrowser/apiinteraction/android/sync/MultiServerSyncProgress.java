@@ -21,7 +21,7 @@ public class MultiServerSyncProgress extends SyncProgress {
     /**
      * Base URI. (content://com.example.android.network.sync.basicsyncadapter)
      */
-    final Uri BASE_CONTENT_URI = Uri.parse("content://" + SyncAccountManager.AUTHORITY);
+    final Uri BASE_CONTENT_URI = Uri.parse("content://" + AuthenticatorService.AUTHORITY);
 
     /**
      * Path component for "entry"-type resources..
@@ -60,7 +60,7 @@ public class MultiServerSyncProgress extends SyncProgress {
         ArrayList<ContentProviderOperation> batch = new ArrayList<ContentProviderOperation>();
 
         try {
-            contentResolver.applyBatch(SyncAccountManager.AUTHORITY, batch);
+            contentResolver.applyBatch(AuthenticatorService.AUTHORITY, batch);
 
             contentResolver.notifyChange(
                     CONTENT_URI, // URI where data was modified

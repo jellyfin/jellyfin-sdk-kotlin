@@ -15,7 +15,9 @@ public class PeriodicSync {
 
     public void Create(long syncIntervalMs) {
 
-        Account account = new SyncAccountManager().CreateSyncAccount(context);
+        AuthenticatorService.CreateSyncAccount(context);
+
+        Account account = AuthenticatorService.GetAccount();
 
         // Pass the settings flags by inserting them in a bundle
         Bundle settingsBundle = new Bundle();
@@ -25,7 +27,7 @@ public class PeriodicSync {
          */
         ContentResolver.addPeriodicSync(
                 account,
-                SyncAccountManager.AUTHORITY,
+                AuthenticatorService.AUTHORITY,
                 settingsBundle,
                 syncIntervalMs);
 

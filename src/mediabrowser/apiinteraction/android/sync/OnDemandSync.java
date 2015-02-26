@@ -16,7 +16,9 @@ public class OnDemandSync {
 
     public void Run() {
 
-        Account account = new SyncAccountManager().CreateSyncAccount(context);
+        AuthenticatorService.CreateSyncAccount(context);
+
+        Account account = AuthenticatorService.GetAccount();
 
         // Pass the settings flags by inserting them in a bundle
         Bundle settingsBundle = new Bundle();
@@ -28,6 +30,6 @@ public class OnDemandSync {
          * Request the sync for the default account, authority, and
          * manual sync settings
          */
-        ContentResolver.requestSync(account, SyncAccountManager.AUTHORITY, settingsBundle);
+        ContentResolver.requestSync(account, AuthenticatorService.AUTHORITY, settingsBundle);
     }
 }
