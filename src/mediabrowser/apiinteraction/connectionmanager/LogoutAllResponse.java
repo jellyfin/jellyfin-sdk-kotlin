@@ -37,8 +37,8 @@ public class LogoutAllResponse extends EmptyResponse {
                     server.getUserLinkType() != UserLinkType.Guest){
 
                 server.setAccessToken(null);
-                server.setExchangeToken(null);
                 server.setUserId(null);
+                server.setExchangeToken(null);
 
                 for (ServerUserInfo user : server.getUsers())
                 {
@@ -49,6 +49,8 @@ public class LogoutAllResponse extends EmptyResponse {
             }
         }
 
+        credentials.setConnectAccessToken(null);
+        credentials.setConnectUserId(null);
         credentials.setServers(servers);
         credentialProvider.SaveCredentials(credentials);
 
