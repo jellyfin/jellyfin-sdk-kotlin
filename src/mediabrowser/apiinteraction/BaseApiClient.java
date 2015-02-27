@@ -705,6 +705,7 @@ public abstract class BaseApiClient implements IDisposable
 		{
 			queryParams.Add("AddPlayedIndicator", true);
 		}
+		queryParams.AddIfNotNull("UnPlayedCount", options.getUnPlayedCount());
 		queryParams.AddIfNotNull("PercentPlayed", options.getPercentPlayed());
 		queryParams.AddIfNotNullOrEmpty("BackgroundColor", options.getBackgroundColor());
 
