@@ -30,10 +30,25 @@ public class ConnectionOptions
 	{
 		ReportCapabilities = value;
 	}
+	/** 
+	 Gets or sets a value indicating whether [update date last accessed].
+	 
+	 <value><c>true</c> if [update date last accessed]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean UpdateDateLastAccessed;
+	public final boolean getUpdateDateLastAccessed()
+	{
+		return UpdateDateLastAccessed;
+	}
+	public final void setUpdateDateLastAccessed(boolean value)
+	{
+		UpdateDateLastAccessed = value;
+	}
 
 	public ConnectionOptions()
 	{
 		setEnableWebSocket(true);
 		setReportCapabilities(true);
+		setUpdateDateLastAccessed(true);
 	}
 }

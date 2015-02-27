@@ -30,10 +30,25 @@ public class SyncDialogOptions
 	{
 		Options = value;
 	}
+	/** 
+	 Gets or sets the quality options.
+	 
+	 <value>The quality options.</value>
+	*/
+	private java.util.ArrayList<SyncQuality> QualityOptions;
+	public final java.util.ArrayList<SyncQuality> getQualityOptions()
+	{
+		return QualityOptions;
+	}
+	public final void setQualityOptions(java.util.ArrayList<SyncQuality> value)
+	{
+		QualityOptions = value;
+	}
 
 	public SyncDialogOptions()
 	{
 		setTargets(new java.util.ArrayList<SyncTarget>());
 		setOptions(new java.util.ArrayList<SyncJobOption>());
+		setQualityOptions(new java.util.ArrayList<SyncQuality>(java.util.Arrays.asList(new SyncQuality[] {SyncQuality.Original, SyncQuality.High, SyncQuality.Medium, SyncQuality.Low})));
 	}
 }

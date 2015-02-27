@@ -31,6 +31,7 @@ public class ServerSync {
         ConnectionOptions options = new ConnectionOptions();
         options.setEnableWebSocket(false);
         options.setReportCapabilities(false);
+        options.setUpdateDateLastAccessed(false);
 
         connectionManager.Connect(server, options, new ServerSyncConnectionResponse(this, server, cancellationToken, progress));
     }

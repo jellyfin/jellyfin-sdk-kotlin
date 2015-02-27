@@ -205,6 +205,21 @@ public class ImageOptions
 	}
 
 	/** 
+	 Gets or sets the un played count.
+	 
+	 <value>The un played count.</value>
+	*/
+	private Integer UnPlayedCount;
+	public final Integer getUnPlayedCount()
+	{
+		return UnPlayedCount;
+	}
+	public final void setUnPlayedCount(Integer value)
+	{
+		UnPlayedCount = value;
+	}
+
+	/** 
 	 Gets or sets the color of the background.
 	 
 	 <value>The color of the background.</value>

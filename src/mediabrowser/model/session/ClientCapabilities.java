@@ -91,19 +91,6 @@ public class ClientCapabilities
 		DeviceProfile = value;
 	}
 
-	/** 
-	 Usage should be migrated to SupportsPersistentIdentifier. Keeping this to preserve data.
-	*/
-	private Boolean SupportsUniqueIdentifier = null;
-	public final Boolean getSupportsUniqueIdentifier()
-	{
-		return SupportsUniqueIdentifier;
-	}
-	public final void setSupportsUniqueIdentifier(Boolean value)
-	{
-		SupportsUniqueIdentifier = value;
-	}
-
 	public ClientCapabilities()
 	{
 		setPlayableMediaTypes(new java.util.ArrayList<String>());

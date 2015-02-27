@@ -481,7 +481,7 @@ public class StreamInfo
 
 	private SubtitleStreamInfo GetSubtitleStreamInfo(MediaStream stream)
 	{
-		SubtitleProfile subtitleProfile = StreamBuilder.GetSubtitleProfile(stream, getDeviceProfile());
+		SubtitleProfile subtitleProfile = StreamBuilder.GetSubtitleProfile(stream, getDeviceProfile(), getContext());
 
 		if (subtitleProfile.getMethod() != SubtitleDeliveryMethod.External)
 		{

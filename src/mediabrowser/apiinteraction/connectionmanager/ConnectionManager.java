@@ -344,7 +344,11 @@ public class ConnectionManager implements IConnectionManager {
         }
 
         server.ImportInfo(systemInfo);
-        server.setDateLastAccessed(new Date());
+
+        if (options.getUpdateDateLastAccessed()){
+            server.setDateLastAccessed(new Date());
+        }
+
         server.setLastConnectionMode(connectionMode);
         credentials.AddOrUpdateServer(server);
         _credentialProvider.SaveCredentials(credentials);
@@ -482,7 +486,9 @@ public class ConnectionManager implements IConnectionManager {
 
         ServerCredentials credentials = _credentialProvider.GetCredentials();
 
-        server.setDateLastAccessed(new Date());
+        if (options.getUpdateDateLastAccessed()){
+            server.setDateLastAccessed(new Date());
+        }
 
         if (saveCredentials)
         {

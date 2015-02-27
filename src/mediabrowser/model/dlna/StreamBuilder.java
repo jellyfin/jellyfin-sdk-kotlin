@@ -277,7 +277,7 @@ public class StreamBuilder
 
 				if (subtitleStream != null)
 				{
-					SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile());
+					SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile(), options.getContext());
 
 					playlistItem.setSubtitleDeliveryMethod(subtitleProfile.getMethod());
 					playlistItem.setSubtitleFormat(subtitleProfile.getFormat());
@@ -302,7 +302,7 @@ public class StreamBuilder
 		{
 			if (subtitleStream != null)
 			{
-				SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile());
+				SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile(), options.getContext());
 
 				playlistItem.setSubtitleDeliveryMethod(subtitleProfile.getMethod());
 				playlistItem.setSubtitleFormat(subtitleProfile.getFormat());
@@ -532,7 +532,7 @@ public class StreamBuilder
 	{
 		if (subtitleStream != null)
 		{
-			SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile());
+			SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile(), options.getContext());
 
 			if (subtitleProfile.getMethod() != SubtitleDeliveryMethod.External && subtitleProfile.getMethod() != SubtitleDeliveryMethod.Embed)
 			{
@@ -543,14 +543,20 @@ public class StreamBuilder
 		return IsAudioEligibleForDirectPlay(item, maxBitrate);
 	}
 
-	public static SubtitleProfile GetSubtitleProfile(MediaStream subtitleStream, DeviceProfile deviceProfile)
+	public static SubtitleProfile GetSubtitleProfile(MediaStream subtitleStream, DeviceProfile deviceProfile, EncodingContext context)
 	{
 		// Look for an external profile that matches the stream type (text/graphical)
 		for (SubtitleProfile profile : deviceProfile.getSubtitleProfiles())
 		{
-			if (subtitleStream.getSupportsExternalStream())
+			if (profile.getMethod() == SubtitleDeliveryMethod.External && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
 			{
-				if (profile.getMethod() == SubtitleDeliveryMethod.External && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
+				if (subtitleStream.getSupportsExternalStream())
+				{
+					return profile;
+				}
+
+				// For sync we can handle the longer extraction times
+				if (context.getValue() == EncodingContext.Static.getValue() && subtitleStream.getIsTextSubtitleStream())
 				{
 					return profile;
 				}

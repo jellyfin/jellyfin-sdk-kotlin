@@ -17,32 +17,18 @@ public class NetworkStatus
 		IsNetworkAvailable = value;
 	}
 	/** 
-	 Gets or sets a value indicating whether this instance is wired network available.
+	 Gets or sets a value indicating whether this instance is local network available.
 	 
-	 <value><c>null</c> if [is wired network available] contains no value, <c>true</c> if [is wired network available]; otherwise, <c>false</c>.</value>
+	 <value><c>null</c> if [is local network available] contains no value, <c>true</c> if [is local network available]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean IsEthernetNetworkAvailable;
-	public final Boolean getIsEthernetNetworkAvailable()
+	private Boolean IsLocalNetworkAvailable;
+	public final Boolean getIsLocalNetworkAvailable()
 	{
-		return IsEthernetNetworkAvailable;
+		return IsLocalNetworkAvailable;
 	}
-	public final void setIsEthernetNetworkAvailable(Boolean value)
+	public final void setIsLocalNetworkAvailable(Boolean value)
 	{
-		IsEthernetNetworkAvailable = value;
-	}
-	/** 
-	 Gets or sets a value indicating whether this instance is wifi network available.
-	 
-	 <value><c>null</c> if [is wifi network available] contains no value, <c>true</c> if [is wifi network available]; otherwise, <c>false</c>.</value>
-	*/
-	private Boolean IsWifiNetworkAvailable;
-	public final Boolean getIsWifiNetworkAvailable()
-	{
-		return IsWifiNetworkAvailable;
-	}
-	public final void setIsWifiNetworkAvailable(Boolean value)
-	{
-		IsWifiNetworkAvailable = value;
+		IsLocalNetworkAvailable = value;
 	}
 	/** 
 	 Gets the is any local network available.
@@ -51,13 +37,11 @@ public class NetworkStatus
 	*/
 	public final boolean GetIsAnyLocalNetworkAvailable()
 	{
-		if (getIsEthernetNetworkAvailable() == null && getIsWifiNetworkAvailable() == null)
+		if (getIsLocalNetworkAvailable() == null)
 		{
 			return getIsNetworkAvailable();
 		}
 
-		Boolean tempVar = getIsEthernetNetworkAvailable();
-		Boolean tempVar2 = getIsWifiNetworkAvailable();
-		return ((tempVar != null) ? tempVar : false) || ((tempVar2 != null) ? tempVar2 : false);
+		return getIsLocalNetworkAvailable();
 	}
 }
