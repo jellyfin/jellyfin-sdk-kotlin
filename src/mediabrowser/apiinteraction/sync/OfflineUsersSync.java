@@ -1,0 +1,103 @@
+package mediabrowser.apiinteraction.sync;
+
+import mediabrowser.apiinteraction.ApiClient;
+import mediabrowser.apiinteraction.EmptyResponse;
+import mediabrowser.apiinteraction.Response;
+import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
+import mediabrowser.apiinteraction.tasks.CancellationToken;
+import mediabrowser.model.apiclient.ServerInfo;
+import mediabrowser.model.apiclient.ServerUserInfo;
+import mediabrowser.model.dto.ImageOptions;
+import mediabrowser.model.dto.UserDto;
+import mediabrowser.model.entities.ImageType;
+import mediabrowser.model.logging.ILogger;
+
+import java.util.ArrayList;
+
+public class OfflineUsersSync {
+
+    private ILogger logger;
+    private ILocalAssetManager localAssetManager;
+
+    public OfflineUsersSync(ILogger logger, ILocalAssetManager localAssetManager) {
+        this.logger = logger;
+        this.localAssetManager = localAssetManager;
+    }
+
+    public void UpdateOfflineUsers(ServerInfo server, final ApiClient apiClient, CancellationToken cancellationToken, final EmptyResponse response){
+
+        Object[] users = server.getUsers().toArray();
+
+        final int count = users.length;
+
+        if (count == 0){
+            response.onResponse();
+        }
+
+        final ArrayList<Integer> doneList = new ArrayList<Integer>();
+
+        for (Object objUser : users){
+
+            ServerUserInfo user = (ServerUserInfo)objUser;
+
+            SaveOfflineUser(user, apiClient, new EmptyResponse(){
+
+                private void onAny() {
+
+                    synchronized (doneList) {
+
+                        doneList.add(0);
+
+                        if (doneList.size() >= count) {
+                            response.onResponse();
+                        }
+                    }
+                }
+
+                @Override
+                public void onResponse() {
+                    onAny();
+                }
+
+                @Override
+                public void onError(Exception ex) {
+                    onAny();
+                }
+            });
+        }
+    }
+
+    private void SaveOfflineUser(ServerUserInfo user, ApiClient apiClient, EmptyResponse response){
+        response.onResponse();
+    }
+
+    private void UpdateUserImage(UserDto user, ApiClient apiClient, EmptyResponse response){
+
+        if (user.getHasPrimaryImage())
+        {
+            if (localAssetManager.hasImage(user)){
+
+                response.onResponse();
+            }
+            else
+            {
+                ImageOptions imageOptions = new ImageOptions();
+                imageOptions.setImageType(ImageType.Primary);
+                String imageUrl = apiClient.GetUserImageUrl(user, imageOptions);
+
+                // TODO: Implement
+/*                using (var stream = await apiClient.GetImageStreamAsync(imageUrl, cancellationToken).ConfigureAwait(false))
+                {
+                    await _localAssetManager.SaveUserImage(user, stream).ConfigureAwait(false);
+                }*/
+
+                response.onResponse();
+            }
+        }
+        else
+        {
+            localAssetManager.deleteImage(user);
+            response.onResponse();
+        }
+    }
+}

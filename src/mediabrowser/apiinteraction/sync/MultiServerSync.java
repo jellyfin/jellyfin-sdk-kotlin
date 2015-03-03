@@ -1,7 +1,7 @@
 package mediabrowser.apiinteraction.sync;
 
 import mediabrowser.apiinteraction.IConnectionManager;
-import mediabrowser.apiinteraction.Response;
+import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.logging.ILogger;
@@ -12,10 +12,12 @@ public class MultiServerSync {
 
     private IConnectionManager connectionManager;
     private ILogger logger;
+    private ILocalAssetManager localAssetManager;
 
-    public MultiServerSync(IConnectionManager connectionManager, ILogger logger) {
+    public MultiServerSync(IConnectionManager connectionManager, ILogger logger, ILocalAssetManager localAssetManager) {
         this.connectionManager = connectionManager;
         this.logger = logger;
+        this.localAssetManager = localAssetManager;
     }
 
     public void Sync(final CancellationToken cancellationToken, final SyncProgress progress){
@@ -39,6 +41,6 @@ public class MultiServerSync {
         final int numServers = servers.size();
         final double[] numComplete = {0};
 
-        new ServerSync(connectionManager, logger).Sync(server, cancellationToken, new MultiServerSyncProgress(this, servers, cancellationToken, index, numServers, numComplete, progress));
+        new ServerSync(connectionManager, logger, localAssetManager).Sync(server, cancellationToken, new MultiServerSyncProgress(this, servers, cancellationToken, index, numServers, numComplete, progress));
     }
 }

@@ -1,10 +1,12 @@
 package mediabrowser.apiinteraction.sync;
 
 import mediabrowser.apiinteraction.*;
+import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.model.apiclient.ConnectionOptions;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.session.ClientCapabilities;
 
 import java.util.HashMap;
 import java.util.concurrent.Semaphore;
@@ -13,10 +15,12 @@ public class ServerSync {
 
     private ILogger logger;
     private IConnectionManager connectionManager;
+    private ILocalAssetManager localAssetManager;
 
-    public ServerSync(IConnectionManager connectionManager, ILogger logger) {
+    public ServerSync(IConnectionManager connectionManager, ILogger logger, ILocalAssetManager localAssetManager) {
         this.logger = logger;
         this.connectionManager = connectionManager;
+        this.localAssetManager = localAssetManager;
     }
 
     public void Sync(final ServerInfo server, final CancellationToken cancellationToken, final SyncProgress progress){
@@ -33,7 +37,7 @@ public class ServerSync {
         options.setReportCapabilities(false);
         options.setUpdateDateLastAccessed(false);
 
-        connectionManager.Connect(server, options, new ServerSyncConnectionResponse(this, server, cancellationToken, progress));
+        connectionManager.Connect(server, options, new ServerSyncConnectionResponse(this, server, connectionManager.getClientCapabilities(), cancellationToken, progress));
     }
 
     void LogNoAuthentication(ServerInfo server){
@@ -41,26 +45,55 @@ public class ServerSync {
         logger.Info("Skipping sync process for server " + server.getName() + ". No server authentication information available.");
     }
 
-    void Sync(final ServerInfo server, ApiClient apiClient, CancellationToken cancellationToken, final SyncProgress progress){
+    void Sync(final ServerInfo server, ApiClient apiClient, ClientCapabilities clientCapabilities, CancellationToken cancellationToken, final SyncProgress progress){
 
         Semaphore semaphore = GetLock(server.getId());
 
-        try {
+        // TODO: Implement with semaphore
+/*        try {
 
             semaphore.acquire();
 
-            SyncInternal(server, apiClient, cancellationToken, semaphore, progress);
+            SyncInternal(server, apiClient, clientCapabilities, cancellationToken, progress);
 
-        } catch (InterruptedException e) {
+        }
+        catch (InterruptedException e) {
 
             logger.ErrorException("InterruptedException in ServerSync", e);
             progress.reportError(e);
-        }
+        }*/
+
+        SyncInternal(server, apiClient, clientCapabilities, cancellationToken, progress);
     }
 
-    private void SyncInternal(final ServerInfo server, ApiClient apiClient, CancellationToken cancellationToken, Semaphore semaphore, final SyncProgress progress){
+    private void SyncInternal(final ServerInfo server,
+                              final ApiClient apiClient,
+                              final ClientCapabilities clientCapabilities,
+                              final CancellationToken cancellationToken,
+                              final SyncProgress progress){
 
-        new ContentUploader(apiClient, logger).UploadImages(new ServerSyncProgress(logger, server, progress, semaphore), cancellationToken);
+        final double cameraUploadTotalPercentage = .25;
+
+        new ContentUploader(apiClient, logger).UploadImages(new CameraUploadProgress(logger, server, progress, cameraUploadTotalPercentage){
+
+            @Override
+            public void onAnyComplete(){
+
+                UpdateOfflineUsersResponse offlineUserResponse = new UpdateOfflineUsersResponse(progress);
+
+                if (cancellationToken.isCancellationRequested()){
+                    progress.reportCancelled();
+                }
+                else if (clientCapabilities.getSupportsOfflineAccess()){
+                    new OfflineUsersSync(logger, localAssetManager).UpdateOfflineUsers(server, apiClient, cancellationToken, offlineUserResponse);
+                }
+                else {
+                    offlineUserResponse.onResponse();
+                }
+
+            }
+
+        }, cancellationToken);
     }
 
     private static HashMap<String, Semaphore> SemaphoreLocks = new HashMap<String, Semaphore>();

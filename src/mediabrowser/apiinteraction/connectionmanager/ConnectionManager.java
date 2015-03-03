@@ -80,6 +80,10 @@ public class ConnectionManager implements IConnectionManager {
         });
     }
 
+    public ClientCapabilities getClientCapabilities() {
+        return clientCapabilities;
+    }
+
     @Override
     public ApiClient GetApiClient(IHasServerId item) {
 

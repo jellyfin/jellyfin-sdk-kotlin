@@ -6,6 +6,7 @@ import mediabrowser.model.connect.PinCreationResult;
 import mediabrowser.model.connect.PinExchangeResult;
 import mediabrowser.model.connect.PinStatusResult;
 import mediabrowser.model.dto.IHasServerId;
+import mediabrowser.model.session.ClientCapabilities;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 public interface IConnectionManager {
+
+    ClientCapabilities getClientCapabilities();
 
     ApiClient GetApiClient(IHasServerId item);
 
