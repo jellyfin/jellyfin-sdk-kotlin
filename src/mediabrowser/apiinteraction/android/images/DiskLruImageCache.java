@@ -3,7 +3,6 @@ package mediabrowser.apiinteraction.android.images;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import com.android.volley.BuildConfig;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.ImageLoader;
 import com.jakewharton.disklrucache.DiskLruCache;
@@ -66,19 +65,13 @@ public class DiskLruImageCache implements ImageLoader.ImageCache {
             if( writeBitmapToFile( data, editor ) ) {
                 mDiskCache.flush();
                 editor.commit();
-                if ( BuildConfig.DEBUG ) {
-                    logger.Debug("cache_test_DISK_", "image put on disk cache " + key);
-                }
+                logger.Debug("cache_test_DISK_", "image put on disk cache " + key);
             } else {
                 editor.abort();
-                if ( BuildConfig.DEBUG ) {
-                    logger.Debug("cache_test_DISK_", "ERROR on: image put on disk cache " + key);
-                }
-            }
-        } catch (IOException e) {
-            if ( BuildConfig.DEBUG ) {
                 logger.Debug("cache_test_DISK_", "ERROR on: image put on disk cache " + key);
             }
+        } catch (IOException e) {
+            logger.Debug("cache_test_DISK_", "ERROR on: image put on disk cache " + key);
             try {
                 if ( editor != null ) {
                     editor.abort();
@@ -114,9 +107,7 @@ public class DiskLruImageCache implements ImageLoader.ImageCache {
             }
         }
 
-        if ( BuildConfig.DEBUG ) {
-            logger.Debug("cache_test_DISK_", bitmap == null ? "" : "image read from disk " + key);
-        }
+        logger.Debug("cache_test_DISK_", bitmap == null ? "" : "image read from disk " + key);
 
         return bitmap;
 
@@ -142,9 +133,7 @@ public class DiskLruImageCache implements ImageLoader.ImageCache {
     }
 
     public void clearCache() {
-        if ( BuildConfig.DEBUG ) {
-            logger.Debug("cache_test_DISK_", "disk cache CLEARED");
-        }
+        logger.Debug("cache_test_DISK_", "disk cache CLEARED");
         try {
             mDiskCache.delete();
         } catch ( IOException e ) {
