@@ -163,13 +163,13 @@ public class ConnectionManager implements IConnectionManager {
         }
 
         // Check the first server for a saved access token
-        ServerInfo firstServer = servers.get(0);
-        if (firstServer == null || tangible.DotNetToJavaStringHelper.isNullOrEmpty(firstServer.getAccessToken()))
+        if (servers.size() == 0 || tangible.DotNetToJavaStringHelper.isNullOrEmpty(servers.get(0).getAccessToken()))
         {
             OnFailedConnection(response, servers);
             return;
         }
 
+        ServerInfo firstServer = servers.get(0);
         Connect(firstServer, new ConnectionOptions(), new Response<ConnectionResult>() {
 
             @Override
