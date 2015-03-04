@@ -20,6 +20,7 @@ public class ServerSyncConnectionResponse extends Response<ConnectionResult> {
         this.server = server;
         this.cancellationToken = cancellationToken;
         this.progress = progress;
+        this.clientCapabilities = clientCapabilities;
     }
 
     @Override
