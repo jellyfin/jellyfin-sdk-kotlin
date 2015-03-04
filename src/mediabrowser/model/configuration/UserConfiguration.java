@@ -84,44 +84,6 @@ public class UserConfiguration
 		DisplayUnairedEpisodes = value;
 	}
 
-	private boolean EnableLiveTvManagement;
-	public final boolean getEnableLiveTvManagement()
-	{
-		return EnableLiveTvManagement;
-	}
-	public final void setEnableLiveTvManagement(boolean value)
-	{
-		EnableLiveTvManagement = value;
-	}
-	private boolean EnableLiveTvAccess;
-	public final boolean getEnableLiveTvAccess()
-	{
-		return EnableLiveTvAccess;
-	}
-	public final void setEnableLiveTvAccess(boolean value)
-	{
-		EnableLiveTvAccess = value;
-	}
-
-	private boolean EnableMediaPlayback;
-	public final boolean getEnableMediaPlayback()
-	{
-		return EnableMediaPlayback;
-	}
-	public final void setEnableMediaPlayback(boolean value)
-	{
-		EnableMediaPlayback = value;
-	}
-	private boolean EnableContentDeletion;
-	public final boolean getEnableContentDeletion()
-	{
-		return EnableContentDeletion;
-	}
-	public final void setEnableContentDeletion(boolean value)
-	{
-		EnableContentDeletion = value;
-	}
-
 	private boolean GroupMoviesIntoBoxSets;
 	public final boolean getGroupMoviesIntoBoxSets()
 	{
@@ -150,16 +112,6 @@ public class UserConfiguration
 	public final void setExcludeFoldersFromGrouping(String[] value)
 	{
 		ExcludeFoldersFromGrouping = value;
-	}
-
-	private UnratedItem[] BlockUnratedItems;
-	public final UnratedItem[] getBlockUnratedItems()
-	{
-		return BlockUnratedItems;
-	}
-	public final void setBlockUnratedItems(UnratedItem[] value)
-	{
-		BlockUnratedItems = value;
 	}
 
 	private SubtitlePlaybackMode SubtitleMode = SubtitlePlaybackMode.values()[0];
@@ -256,14 +208,10 @@ public class UserConfiguration
 	public UserConfiguration()
 	{
 		setPlayDefaultAudioTrack(true);
-		setEnableLiveTvManagement(true);
-		setEnableMediaPlayback(true);
-		setEnableLiveTvAccess(true);
 
 		setLatestItemsExcludes(new String[] { });
 		setOrderedViews(new String[] { });
 		setDisplayChannelsWithinViews(new String[] { });
-		setBlockUnratedItems(new UnratedItem[] { });
 
 		setExcludeFoldersFromGrouping(new String[] { });
 		setDisplayCollectionsView(true);

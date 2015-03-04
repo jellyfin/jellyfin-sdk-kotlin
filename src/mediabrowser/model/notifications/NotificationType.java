@@ -19,7 +19,8 @@ public enum NotificationType
 	NewLibraryContentMultiple,
 	ServerRestartRequired,
 	TaskFailed,
-	CameraImageUploaded;
+	CameraImageUploaded,
+	UserLockedOut;
 
 	public int getValue()
 	{

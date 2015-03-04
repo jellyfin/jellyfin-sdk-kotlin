@@ -53,7 +53,11 @@ public class NotificationOptions
 		tempVar9.setType(NotificationType.PluginError.toString());
 		tempVar9.setEnabled(true);
 		tempVar9.setSendToUserMode(SendToUserType.Admins);
-		setOptions(new NotificationOption[] {tempVar, tempVar2, tempVar3, tempVar4, tempVar5, tempVar6, tempVar7, tempVar8, tempVar9});
+		NotificationOption tempVar10 = new NotificationOption();
+		tempVar10.setType(NotificationType.UserLockedOut.toString());
+		tempVar10.setEnabled(true);
+		tempVar10.setSendToUserMode(SendToUserType.Admins);
+		setOptions(new NotificationOption[] {tempVar, tempVar2, tempVar3, tempVar4, tempVar5, tempVar6, tempVar7, tempVar8, tempVar9, tempVar10});
 	}
 
 	public final NotificationOption GetOptions(String type)

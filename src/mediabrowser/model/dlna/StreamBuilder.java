@@ -32,7 +32,11 @@ public class StreamBuilder
 		java.util.ArrayList<StreamInfo> streams = new java.util.ArrayList<StreamInfo>();
 		for (MediaSourceInfo i : mediaSources)
 		{
-			streams.add(BuildAudioItem(i, options));
+			StreamInfo streamInfo = BuildAudioItem(i, options);
+			if (streamInfo != null)
+			{
+				streams.add(streamInfo);
+			}
 		}
 
 		for (StreamInfo stream : streams)
@@ -68,7 +72,11 @@ public class StreamBuilder
 		java.util.ArrayList<StreamInfo> streams = new java.util.ArrayList<StreamInfo>();
 		for (MediaSourceInfo i : mediaSources)
 		{
-			streams.add(BuildVideoItem(i, options));
+			StreamInfo streamInfo = BuildVideoItem(i, options);
+			if (streamInfo != null)
+			{
+			streams.add(streamInfo);
+			}
 		}
 
 		for (StreamInfo stream : streams)
@@ -103,7 +111,10 @@ public class StreamBuilder
 		{
 			return stream;
 		}
-		return null;
+
+		PlaybackException error = new PlaybackException();
+		error.setErrorCode(PlaybackErrorCode.NoCompatibleStream);
+		throw error;
 	}
 
 	private StreamInfo BuildAudioItem(MediaSourceInfo item, AudioOptions options)
@@ -191,6 +202,11 @@ public class StreamBuilder
 
 		if (transcodingProfile != null)
 		{
+			if (!item.getSupportsTranscoding())
+			{
+				return null;
+			}
+
 			playlistItem.setPlayMethod(PlayMethod.Transcode);
 			playlistItem.setTranscodeSeekInfo(transcodingProfile.getTranscodeSeekInfo());
 			playlistItem.setEstimateContentLength(transcodingProfile.getEstimateContentLength());
@@ -300,6 +316,11 @@ public class StreamBuilder
 
 		if (transcodingProfile != null)
 		{
+			if (!item.getSupportsTranscoding())
+			{
+				return null;
+			}
+
 			if (subtitleStream != null)
 			{
 				SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile(), options.getContext());

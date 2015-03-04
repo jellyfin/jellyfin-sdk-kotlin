@@ -1,5 +1,7 @@
 package mediabrowser.model.sync;
 
+import mediabrowser.model.dto.*;
+
 public class SyncDialogOptions
 {
 	/** 
@@ -35,12 +37,12 @@ public class SyncDialogOptions
 	 
 	 <value>The quality options.</value>
 	*/
-	private java.util.ArrayList<SyncQuality> QualityOptions;
-	public final java.util.ArrayList<SyncQuality> getQualityOptions()
+	private java.util.ArrayList<NameValuePair> QualityOptions;
+	public final java.util.ArrayList<NameValuePair> getQualityOptions()
 	{
 		return QualityOptions;
 	}
-	public final void setQualityOptions(java.util.ArrayList<SyncQuality> value)
+	public final void setQualityOptions(java.util.ArrayList<NameValuePair> value)
 	{
 		QualityOptions = value;
 	}
@@ -49,6 +51,18 @@ public class SyncDialogOptions
 	{
 		setTargets(new java.util.ArrayList<SyncTarget>());
 		setOptions(new java.util.ArrayList<SyncJobOption>());
-		setQualityOptions(new java.util.ArrayList<SyncQuality>(java.util.Arrays.asList(new SyncQuality[] {SyncQuality.Original, SyncQuality.High, SyncQuality.Medium, SyncQuality.Low})));
+		NameValuePair tempVar = new NameValuePair();
+		tempVar.setName(SyncQuality.Original.toString());
+		tempVar.setValue(SyncQuality.Original.toString());
+		NameValuePair tempVar2 = new NameValuePair();
+		tempVar2.setName(SyncQuality.High.toString());
+		tempVar2.setValue(SyncQuality.High.toString());
+		NameValuePair tempVar3 = new NameValuePair();
+		tempVar3.setName(SyncQuality.Medium.toString());
+		tempVar3.setValue(SyncQuality.Medium.toString());
+		NameValuePair tempVar4 = new NameValuePair();
+		tempVar4.setName(SyncQuality.Low.toString());
+		tempVar4.setValue(SyncQuality.Low.toString());
+		setQualityOptions(new java.util.ArrayList<NameValuePair>(java.util.Arrays.asList(new NameValuePair[] {tempVar, tempVar2, tempVar3, tempVar4})));
 	}
 }

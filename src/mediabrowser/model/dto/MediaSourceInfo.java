@@ -92,6 +92,15 @@ public class MediaSourceInfo
 	{
 		ReadAtNativeFramerate = value;
 	}
+	private boolean SupportsTranscoding;
+	public final boolean getSupportsTranscoding()
+	{
+		return SupportsTranscoding;
+	}
+	public final void setSupportsTranscoding(boolean value)
+	{
+		SupportsTranscoding = value;
+	}
 
 	private VideoType VideoType = null;
 	public final VideoType getVideoType()
@@ -187,6 +196,7 @@ public class MediaSourceInfo
 		setMediaStreams(new java.util.ArrayList<MediaStream>());
 		setRequiredHttpHeaders(new java.util.HashMap<String, String>());
 		setPlayableStreamFileNames(new java.util.ArrayList<String>());
+		setSupportsTranscoding(true);
 	}
 
 	private Integer DefaultAudioStreamIndex = null;

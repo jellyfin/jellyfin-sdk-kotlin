@@ -256,6 +256,16 @@ public class UserPolicy
 		EnableAllFolders = value;
 	}
 
+	private int InvalidLoginAttemptCount;
+	public final int getInvalidLoginAttemptCount()
+	{
+		return InvalidLoginAttemptCount;
+	}
+	public final void setInvalidLoginAttemptCount(int value)
+	{
+		InvalidLoginAttemptCount = value;
+	}
+
 	public UserPolicy()
 	{
 		setEnableLiveTvManagement(true);
