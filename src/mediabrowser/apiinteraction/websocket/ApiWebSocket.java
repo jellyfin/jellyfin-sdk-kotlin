@@ -60,23 +60,12 @@ public class ApiWebSocket implements ISocketListener {
 
     public void onOpen(){
 
-        SendIdentificationMessage();
         enableReconnection = true;
-    }
-
-    private void SendIdentificationMessage(){
-
-        SendWebSocketMessage("Identity", GetIdentificationMessage(), new EmptyResponse());
-    }
-
-    protected String GetIdentificationMessage()
-    {
-        return apiClient.getClientName() + "|" + apiClient.getDeviceId() + "|" + apiClient.getApplicationVersion() + "|" + apiClient.getDeviceName();
     }
 
     private String getWebSocketServerAddress(){
 
-        return apiClient.getApiUrl().replace("http", "ws");
+        return apiClient.getApiUrl().replace("http", "ws") + "?api_key=" + apiClient.getAccessToken();
     }
 
     public void CloseWebSocket(){
