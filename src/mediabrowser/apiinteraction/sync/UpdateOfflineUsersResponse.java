@@ -23,7 +23,12 @@ public class UpdateOfflineUsersResponse extends EmptyResponse {
     @Override
     public void onResponse(){
 
-        progress.reportComplete();
+        startMediaSync();
     }
 
+    public void startMediaSync(){
+
+        new MediaSync().sync();
+        progress.reportComplete();
+    }
 }

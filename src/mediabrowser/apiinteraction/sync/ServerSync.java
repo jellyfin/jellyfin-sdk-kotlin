@@ -79,16 +79,18 @@ public class ServerSync {
             @Override
             public void onAnyComplete(){
 
+                UpdateOfflineUsersResponse offlineUserResponse = new UpdateOfflineUsersResponse(progress);
+
                 if (cancellationToken.isCancellationRequested()){
                     progress.reportCancelled();
                 }
                 else if (clientCapabilities.getSupportsOfflineAccess()){
-                    new OfflineUsersSync(logger, localAssetManager).UpdateOfflineUsers(server, apiClient, cancellationToken, new UpdateOfflineUsersResponse(progress));
+                    new OfflineUsersSync(logger, localAssetManager).UpdateOfflineUsers(server, apiClient, cancellationToken, offlineUserResponse);
                 }
                 else {
-                    progress.reportComplete();
-                }
 
+                    offlineUserResponse.startMediaSync();
+                }
             }
 
         }, cancellationToken);
