@@ -79,7 +79,7 @@ public class ServerSync {
             @Override
             public void onAnyComplete(){
 
-                UpdateOfflineUsersResponse offlineUserResponse = new UpdateOfflineUsersResponse(progress);
+                UpdateOfflineUsersResponse offlineUserResponse = new UpdateOfflineUsersResponse(progress, apiClient, server, cancellationToken);
 
                 if (cancellationToken.isCancellationRequested()){
                     progress.reportCancelled();
