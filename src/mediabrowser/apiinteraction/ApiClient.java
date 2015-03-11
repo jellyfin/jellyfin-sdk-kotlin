@@ -2523,4 +2523,18 @@ public class ApiClient extends BaseApiClient {
 
         // TODO
     }
+
+    public void GetOfflineUser(String id, Response<UserDto> response) {
+
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
+        {
+            throw new IllegalArgumentException("id");
+        }
+
+        String url = GetApiUrl("Users/" + id + "/Offline");
+
+        url = AddDataFormat(url);
+
+        Send(url, "GET", new SerializedResponse<UserDto>(response, jsonSerializer, UserDto.class));
+    }
 }

@@ -114,7 +114,7 @@ public class ConnectionManager implements IConnectionManager {
         response.onResponse(result);
     }
 
-    private void OnFailedConnection(Response<ConnectionResult> response, ArrayList<ServerInfo> servers){
+    void OnFailedConnection(Response<ConnectionResult> response, ArrayList<ServerInfo> servers){
 
         logger.Debug("No saved authentication");
 
@@ -171,18 +171,7 @@ public class ConnectionManager implements IConnectionManager {
         }
 
         ServerInfo firstServer = servers.get(0);
-        Connect(firstServer, new ConnectionOptions(), new Response<ConnectionResult>() {
-
-            @Override
-            public void onResponse(ConnectionResult result) {
-
-                if (result.getState() == ConnectionState.SignedIn) {
-                    response.onResponse(result);
-                } else {
-                    OnFailedConnection(response, servers);
-                }
-            }
-        });
+        Connect(firstServer, new ConnectionOptions(), new FirstServerConnectResponse(this, servers, response));
     }
 
     @Override

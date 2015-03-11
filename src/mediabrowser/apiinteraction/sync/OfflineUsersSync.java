@@ -11,6 +11,7 @@ import mediabrowser.model.dto.ImageOptions;
 import mediabrowser.model.dto.UserDto;
 import mediabrowser.model.entities.ImageType;
 import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.net.HttpException;
 
 import java.util.ArrayList;
 
@@ -67,8 +68,34 @@ public class OfflineUsersSync {
         }
     }
 
-    private void SaveOfflineUser(ServerUserInfo user, ApiClient apiClient, EmptyResponse response){
-        response.onResponse();
+    private void SaveOfflineUser(final ServerUserInfo user, final ApiClient apiClient, final EmptyResponse response){
+
+        final String userId = user.getId();
+
+        apiClient.GetOfflineUser(userId, new Response<UserDto>(response){
+
+            @Override
+            public void onResponse(UserDto user) {
+
+                localAssetManager.saveOfflineUser(user);
+                UpdateUserImage(user, apiClient, response);
+            }
+
+            @Override
+            public void onError(Exception ex) {
+
+                logger.ErrorException("Error getting user info", ex);
+
+                if (ex instanceof HttpException){
+                    HttpException httpException = (HttpException)ex;
+
+                    if (httpException.getStatusCode() != null && httpException.getStatusCode() == 401){
+                        localAssetManager.deleteOfflineUser(userId);
+                    }
+                }
+                response.onResponse();
+            }
+        });
     }
 
     private void UpdateUserImage(UserDto user, ApiClient apiClient, EmptyResponse response){
