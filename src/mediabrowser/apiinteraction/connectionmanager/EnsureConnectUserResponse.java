@@ -1,97 +1,50 @@
 package mediabrowser.apiinteraction.connectionmanager;
 
+import mediabrowser.apiinteraction.ConnectionResult;
 import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.apiinteraction.Response;
-import mediabrowser.apiinteraction.connect.ConnectService;
+import mediabrowser.model.apiclient.ConnectionMode;
+import mediabrowser.model.apiclient.ConnectionOptions;
 import mediabrowser.model.apiclient.ServerCredentials;
 import mediabrowser.model.apiclient.ServerInfo;
-import mediabrowser.model.connect.ConnectUserServer;
-import mediabrowser.model.connect.UserLinkType;
-import mediabrowser.model.extensions.StringHelper;
-import mediabrowser.model.logging.ILogger;
-
-import java.util.ArrayList;
+import mediabrowser.model.system.PublicSystemInfo;
 
 /**
- * Created by Luke on 2/15/2015.
+ * Created by Luke on 3/11/2015.
  */
 public class EnsureConnectUserResponse extends EmptyResponse {
 
-    private ILogger logger;
-    private ConnectService connectService;
-    private ServerCredentials credentials;
-    private ArrayList<ServerInfo> foundServers;
-    private ArrayList<ServerInfo> connectServers;
-    private int numTasks;
-    private int[] numTasksCompleted;
-    private Response<ArrayList<ServerInfo>> finalResponse;
     private ConnectionManager connectionManager;
+    private ServerInfo server;
+    private ServerCredentials credentials;
+    private PublicSystemInfo systemInfo;
+    private ConnectionMode connectionMode;
+    private ConnectionOptions connectionOptions;
+    private Response<ConnectionResult> response;
 
-    public EnsureConnectUserResponse(ILogger logger, ConnectService connectService, ServerCredentials credentials, ArrayList<ServerInfo> foundServers, ArrayList<ServerInfo> connectServers, int numTasks, int[] numTasksCompleted, Response<ArrayList<ServerInfo>> finalResponse, ConnectionManager connectionManager) {
-        this.logger = logger;
-        this.connectService = connectService;
-        this.credentials = credentials;
-        this.foundServers = foundServers;
-        this.connectServers = connectServers;
-        this.numTasks = numTasks;
-        this.numTasksCompleted = numTasksCompleted;
-        this.finalResponse = finalResponse;
+    public EnsureConnectUserResponse(ConnectionManager connectionManager, ServerInfo server, ServerCredentials credentials, PublicSystemInfo systemInfo, ConnectionMode connectionMode, ConnectionOptions connectionOptions, Response<ConnectionResult> response) {
         this.connectionManager = connectionManager;
+        this.server = server;
+        this.credentials = credentials;
+        this.systemInfo = systemInfo;
+        this.connectionMode = connectionMode;
+        this.connectionOptions = connectionOptions;
+        this.response = response;
     }
 
-    void OnAny(ConnectUserServer[] servers){
-
-        synchronized (credentials){
-
-            connectServers.addAll(ConvertServerList(servers));
-
-            numTasksCompleted[0]++;
-
-            if (numTasksCompleted[0] >= numTasks) {
-                connectionManager.OnGetServerResponse(credentials, foundServers, connectServers, finalResponse);
-            }
-        }
+    void onEnsureConnectUserDone(){
+        connectionManager.AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, connectionOptions, response);
     }
 
     @Override
     public void onResponse() {
 
-        logger.Debug("Getting connect servers");
-
-        connectService.GetServers(credentials.getConnectUserId(), credentials.getConnectAccessToken(), new EnsureConnectUserInnerResponse(this));
-    }
-
-    @Override
-    public void onError(Exception ex) {
-
-        OnAny(new ConnectUserServer[]{});
-    }
-
-    private ArrayList<ServerInfo> ConvertServerList(ConnectUserServer[] userServers){
-
-        ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
-
-        for(ConnectUserServer userServer : userServers){
-
-            ServerInfo server = new ServerInfo();
-
-            server.setExchangeToken(userServer.getAccessKey());
-            server.setId(userServer.getSystemId());
-            server.setName(userServer.getName());
-            server.setLocalAddress(userServer.getLocalAddress());
-            server.setRemoteAddress(userServer.getUrl());
-
-            if (StringHelper.EqualsIgnoreCase(userServer.getUserType(), "guest"))
-            {
-                server.setUserLinkType(UserLinkType.Guest);
-            }
-            else{
-                server.setUserLinkType(UserLinkType.LinkedUser);
-            }
-
-            servers.add(server);
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getExchangeToken())){
+            connectionManager.AddAuthenticationInfoFromConnect(server, connectionMode, credentials, new AddAuthenticationInfoFromConnectResponse(this));
         }
-
-        return servers;
+        else{
+            onEnsureConnectUserDone();
+        }
     }
+
 }

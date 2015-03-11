@@ -261,44 +261,21 @@ public class ConnectionManager implements IConnectionManager {
     void OnSuccessfulConnection(final ServerInfo server,
                                      final PublicSystemInfo systemInfo,
                                      final ConnectionMode connectionMode,
-                                     final ConnectionOptions options,
+                                     final ConnectionOptions connectionOptions,
                                      final Response<ConnectionResult> response) {
 
         final ServerCredentials credentials = _credentialProvider.GetCredentials();
 
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
         {
-            EnsureConnectUser(credentials, new EmptyResponse(){
-
-                private void onEnsureConnectUserDone(){
-                    AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, options, response);
-                }
-                @Override
-                public void onResponse() {
-
-                    if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getExchangeToken())){
-                        AddAuthenticationInfoFromConnect(server, connectionMode, credentials, new EmptyResponse() {
-
-                            @Override
-                            public void onResponse() {
-
-                                onEnsureConnectUserDone();
-                            }
-                        });
-                    }
-                    else{
-                        onEnsureConnectUserDone();
-                    }
-                }
-
-            });
+            EnsureConnectUser(credentials, new EnsureConnectUserResponse(this, server, credentials, systemInfo, connectionMode, connectionOptions, response));
         } else {
 
-            AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, options, response);
+            AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, connectionOptions, response);
         }
     }
 
-    private void AddAuthenticationInfoFromConnect(final ServerInfo server,
+    void AddAuthenticationInfoFromConnect(final ServerInfo server,
                                                   ConnectionMode connectionMode,
                                                   ServerCredentials credentials,
                                                   final EmptyResponse response){
@@ -548,7 +525,7 @@ public class ConnectionManager implements IConnectionManager {
             findServersResponse.onError(null);
         }
 
-        EmptyResponse connectServersResponse = new EnsureConnectUserResponse(logger, connectService, credentials, foundServers, connectServers, numTasks, numTasksCompleted, response, this);
+        EmptyResponse connectServersResponse = new GetConnectServersResponse(logger, connectService, credentials, foundServers, connectServers, numTasks, numTasksCompleted, response, this);
 
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
         {

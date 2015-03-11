@@ -6,11 +6,11 @@ import mediabrowser.model.connect.ConnectUserServer;
 /**
  * Created by Luke on 2/15/2015.
  */
-public class EnsureConnectUserInnerResponse extends Response<ConnectUserServer[]> {
+public class GetConnectServersInnerResponse extends Response<ConnectUserServer[]> {
 
-    private EnsureConnectUserResponse parent;
+    private GetConnectServersResponse parent;
 
-    public EnsureConnectUserInnerResponse(EnsureConnectUserResponse parent) {
+    public GetConnectServersInnerResponse(GetConnectServersResponse parent) {
         this.parent = parent;
     }
 
