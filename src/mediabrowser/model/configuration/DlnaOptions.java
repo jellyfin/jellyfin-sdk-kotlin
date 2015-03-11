@@ -65,6 +65,15 @@ public class DlnaOptions
 	{
 		DefaultUserId = value;
 	}
+	private boolean EnableEnhancedMovies;
+	public final boolean getEnableEnhancedMovies()
+	{
+		return EnableEnhancedMovies;
+	}
+	public final void setEnableEnhancedMovies(boolean value)
+	{
+		EnableEnhancedMovies = value;
+	}
 
 	public DlnaOptions()
 	{
@@ -73,5 +82,6 @@ public class DlnaOptions
 		setBlastAliveMessages(true);
 		setClientDiscoveryIntervalSeconds(60);
 		setBlastAliveMessageIntervalSeconds(30);
+		setEnableEnhancedMovies(true);
 	}
 }

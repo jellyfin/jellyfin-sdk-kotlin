@@ -45,6 +45,20 @@ public class SyncJobItemQuery
 		JobId = value;
 	}
 	/** 
+	 Gets or sets the item identifier.
+	 
+	 <value>The item identifier.</value>
+	*/
+	private String ItemId;
+	public final String getItemId()
+	{
+		return ItemId;
+	}
+	public final void setItemId(String value)
+	{
+		ItemId = value;
+	}
+	/** 
 	 Gets or sets the target identifier.
 	 
 	 <value>The target identifier.</value>

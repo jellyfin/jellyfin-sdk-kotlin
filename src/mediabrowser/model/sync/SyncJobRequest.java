@@ -63,12 +63,12 @@ public class SyncJobRequest
 	 
 	 <value>The quality.</value>
 	*/
-	private SyncQuality Quality = SyncQuality.values()[0];
-	public final SyncQuality getQuality()
+	private String Quality;
+	public final String getQuality()
 	{
 		return Quality;
 	}
-	public final void setQuality(SyncQuality value)
+	public final void setQuality(String value)
 	{
 		Quality = value;
 	}

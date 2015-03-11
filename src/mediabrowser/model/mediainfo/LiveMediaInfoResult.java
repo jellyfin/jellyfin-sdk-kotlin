@@ -1,5 +1,6 @@
 package mediabrowser.model.mediainfo;
 
+import mediabrowser.model.dlna.*;
 import mediabrowser.model.dto.*;
 
 public class LiveMediaInfoResult
@@ -32,6 +33,21 @@ public class LiveMediaInfoResult
 	public final void setLiveStreamId(String value)
 	{
 		LiveStreamId = value;
+	}
+
+	/** 
+	 Gets or sets the error code.
+	 
+	 <value>The error code.</value>
+	*/
+	private PlaybackErrorCode ErrorCode = null;
+	public final PlaybackErrorCode getErrorCode()
+	{
+		return ErrorCode;
+	}
+	public final void setErrorCode(PlaybackErrorCode value)
+	{
+		ErrorCode = value;
 	}
 
 	public LiveMediaInfoResult()

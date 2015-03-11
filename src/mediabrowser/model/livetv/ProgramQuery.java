@@ -75,6 +75,16 @@ public class ProgramQuery
 		MaxEndDate = value;
 	}
 
+	private Boolean HasAired = null;
+	public final Boolean getHasAired()
+	{
+		return HasAired;
+	}
+	public final void setHasAired(Boolean value)
+	{
+		HasAired = value;
+	}
+
 	public ProgramQuery()
 	{
 		setChannelIdList(new String[] { });
