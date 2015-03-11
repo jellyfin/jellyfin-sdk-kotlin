@@ -52,6 +52,7 @@ import mediabrowser.model.system.SystemInfo;
 import mediabrowser.model.tasks.TaskInfo;
 import mediabrowser.model.tasks.TaskTriggerInfo;
 import mediabrowser.model.users.AuthenticationResult;
+import mediabrowser.model.users.UserAction;
 
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
@@ -61,6 +62,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Observable;
 import java.util.logging.Logger;
@@ -2536,5 +2538,17 @@ public class ApiClient extends BaseApiClient {
         url = AddDataFormat(url);
 
         Send(url, "GET", new SerializedResponse<UserDto>(response, jsonSerializer, UserDto.class));
+    }
+
+    public void ReportOfflineActions(ArrayList<UserAction> actions, EmptyResponse response) {
+
+        if (actions == null || actions.size() == 0)
+        {
+            throw new IllegalArgumentException("actions");
+        }
+
+        String url = GetApiUrl("Sync/OfflineActions");
+
+        PostAsync(url, actions, response);
     }
 }
