@@ -6,6 +6,7 @@ import mediabrowser.model.connect.PinCreationResult;
 import mediabrowser.model.connect.PinExchangeResult;
 import mediabrowser.model.connect.PinStatusResult;
 import mediabrowser.model.dto.IHasServerId;
+import mediabrowser.model.registration.RegistrationInfo;
 import mediabrowser.model.session.ClientCapabilities;
 
 import java.io.UnsupportedEncodingException;
@@ -40,4 +41,6 @@ public interface IConnectionManager {
     void GetPinStatus(PinCreationResult pin, Response<PinStatusResult> response);
 
     void ExchangePin(PinCreationResult pin, final Response<PinExchangeResult> response);
+
+    void GetRegistrationInfo(String featureName, Response<RegistrationInfo> response);
 }

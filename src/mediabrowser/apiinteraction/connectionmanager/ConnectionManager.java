@@ -14,6 +14,7 @@ import mediabrowser.model.dto.IHasServerId;
 import mediabrowser.model.dto.UserDto;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.registration.RegistrationInfo;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.model.session.ClientCapabilities;
 import mediabrowser.model.system.PublicSystemInfo;
@@ -769,5 +770,13 @@ public class ConnectionManager implements IConnectionManager {
     public void ExchangePin(PinCreationResult pin, final Response<PinExchangeResult> response)
     {
         connectService.ExchangePin(pin, new ExchangePinResponse(_credentialProvider, response));
+    }
+
+    public void GetRegistrationInfo(String featureName, Response<RegistrationInfo> response) {
+
+        RegistrationInfo reg = new RegistrationInfo();
+        reg.setName(featureName);
+        reg.setIsTrial(true);
+        response.onResponse(reg);
     }
 }
