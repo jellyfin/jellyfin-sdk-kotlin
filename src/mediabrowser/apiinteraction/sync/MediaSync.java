@@ -19,10 +19,15 @@ public class MediaSync {
     private ILocalAssetManager localAssetManager;
     private ILogger logger;
 
-    public void sync(ApiClient apiClient,
-                     ServerInfo serverInfo,
+    public MediaSync(ILocalAssetManager localAssetManager, ILogger logger) {
+        this.localAssetManager = localAssetManager;
+        this.logger = logger;
+    }
+
+    public void sync(final ApiClient apiClient,
+                     final ServerInfo serverInfo,
                      final Progress<Double> progress,
-                     CancellationToken cancellationToken) {
+                     final CancellationToken cancellationToken) {
 
 
         if (cancellationToken.isCancellationRequested()){
@@ -38,13 +43,63 @@ public class MediaSync {
             @Override
             public  void onResponse(){
 
+                if (cancellationToken.isCancellationRequested()){
+                    progress.reportCancelled();
+                    return;
+                }
+
+                progress.report(1.0);
+
                 // Sync data
+                SyncData(apiClient, serverInfo, false, cancellationToken, new EmptyResponse() {
 
-                // Get new media
+                    @Override
+                    public void onResponse() {
 
-                // Do the data sync twice so the server knows what was removed from the device
+                        if (cancellationToken.isCancellationRequested()) {
+                            progress.reportCancelled();
+                            return;
+                        }
 
-                progress.reportComplete();
+                        progress.report(3.0);
+
+                        // Get new media
+                        GetNewMedia(apiClient, serverInfo, cancellationToken, new EmptyResponse() {
+
+                            @Override
+                            public void onResponse() {
+
+                                progress.report(99.0);
+
+                                // Do the data sync twice so the server knows what was removed from the device
+                                SyncData(apiClient, serverInfo, true, cancellationToken, new EmptyResponse() {
+
+                                    @Override
+                                    public void onResponse() {
+
+                                        progress.reportComplete();
+                                    }
+
+                                    @Override
+                                    public void onError(Exception ex) {
+                                        progress.reportError(ex);
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onError(Exception ex) {
+                                progress.reportError(ex);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError(Exception ex) {
+                        progress.reportError(ex);
+                    }
+
+                });
             }
 
             @Override
@@ -52,6 +107,27 @@ public class MediaSync {
                 progress.reportError(ex);
             }
         });
+    }
+
+    private void SyncData(ApiClient apiClient,
+                          ServerInfo serverInfo,
+                          boolean syncUserItemAccess,
+                          CancellationToken cancellationToken,
+                          final EmptyResponse response){
+
+
+        ArrayList<String> localIds = localAssetManager.getServerItemIds(serverInfo.getId());
+
+        response.onResponse();
+    }
+
+    private void GetNewMedia(ApiClient apiClient,
+                          ServerInfo serverInfo,
+                          CancellationToken cancellationToken,
+                          final EmptyResponse response){
+
+
+        response.onResponse();
     }
 
     private void ReportOfflineActions(ApiClient apiClient,

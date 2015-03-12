@@ -1,15 +1,12 @@
-package mediabrowser.apiinteraction.sync;
+package mediabrowser.apiinteraction.sync.server;
 
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.device.IDevice;
+import mediabrowser.apiinteraction.sync.SyncProgress;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.apiinteraction.tasks.IProgress;
-import mediabrowser.apiinteraction.Response;
-import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.devices.ContentUploadHistory;
-import mediabrowser.model.devices.DevicesOptions;
 import mediabrowser.model.devices.LocalFileInfo;
-import mediabrowser.model.extensions.ListHelper;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.logging.ILogger;
 
@@ -77,7 +74,7 @@ public class ContentUploader {
 
         logger.Debug("ContentUploader will upload file " + file.getName());
 
-        UploadFile(file, device, new ContentUploaderProgress(this, device, files, index, progress, cancellationToken), cancellationToken);
+        UploadFile(file, device, new FileUploadProgress(this, device, files, index, progress, cancellationToken), cancellationToken);
     }
 
     private ArrayList<LocalFileInfo> GetFilesToUpload(ContentUploadHistory history,

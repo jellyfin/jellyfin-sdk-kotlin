@@ -1,6 +1,7 @@
-package mediabrowser.apiinteraction.sync;
+package mediabrowser.apiinteraction.sync.server;
 
 import mediabrowser.apiinteraction.Response;
+import mediabrowser.apiinteraction.sync.SyncProgress;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.model.devices.ContentUploadHistory;
 

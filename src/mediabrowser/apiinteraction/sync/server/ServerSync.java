@@ -1,6 +1,7 @@
-package mediabrowser.apiinteraction.sync;
+package mediabrowser.apiinteraction.sync.server;
 
 import mediabrowser.apiinteraction.*;
+import mediabrowser.apiinteraction.sync.*;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.model.apiclient.ConnectionOptions;
@@ -74,26 +75,7 @@ public class ServerSync {
 
         final double cameraUploadTotalPercentage = .25;
 
-        new ContentUploader(apiClient, logger).UploadImages(new CameraUploadProgress(logger, server, progress, cameraUploadTotalPercentage){
-
-            @Override
-            public void onAnyComplete(){
-
-                UpdateOfflineUsersResponse offlineUserResponse = new UpdateOfflineUsersResponse(progress, apiClient, server, cancellationToken);
-
-                if (cancellationToken.isCancellationRequested()){
-                    progress.reportCancelled();
-                }
-                else if (clientCapabilities.getSupportsOfflineAccess()){
-                    new OfflineUsersSync(logger, localAssetManager).UpdateOfflineUsers(server, apiClient, cancellationToken, offlineUserResponse);
-                }
-                else {
-
-                    offlineUserResponse.startMediaSync();
-                }
-            }
-
-        }, cancellationToken);
+        new ContentUploader(apiClient, logger).UploadImages(new CameraUploadProgress(logger, server, progress, apiClient, clientCapabilities, localAssetManager, cancellationToken, cameraUploadTotalPercentage), cancellationToken);
     }
 
     private static HashMap<String, Semaphore> SemaphoreLocks = new HashMap<String, Semaphore>();

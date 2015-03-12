@@ -1,13 +1,14 @@
-package mediabrowser.apiinteraction.sync;
+package mediabrowser.apiinteraction.sync.server;
 
 import mediabrowser.apiinteraction.device.IDevice;
+import mediabrowser.apiinteraction.sync.SyncProgress;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.devices.LocalFileInfo;
 
 import java.util.ArrayList;
 
-public class ContentUploaderProgress extends Progress<Double> {
+public class FileUploadProgress extends Progress<Double> {
 
     private ContentUploader contentUploader;
     private IDevice device;
@@ -17,7 +18,7 @@ public class ContentUploaderProgress extends Progress<Double> {
     private CancellationToken cancellationToken;
     private LocalFileInfo file;
 
-    public ContentUploaderProgress(ContentUploader contentUploader, IDevice device, ArrayList<LocalFileInfo> files, int index, SyncProgress progress, CancellationToken cancellationToken) {
+    public FileUploadProgress(ContentUploader contentUploader, IDevice device, ArrayList<LocalFileInfo> files, int index, SyncProgress progress, CancellationToken cancellationToken) {
         this.contentUploader = contentUploader;
         this.device = device;
         this.files = files;

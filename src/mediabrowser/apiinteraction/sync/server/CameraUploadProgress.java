@@ -1,7 +1,10 @@
-package mediabrowser.apiinteraction.sync;
+package mediabrowser.apiinteraction.sync.server;
 
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.android.profiles.Api16Builder;
+import mediabrowser.apiinteraction.sync.SyncProgress;
+import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
+import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.devices.LocalFileInfo;
 import mediabrowser.model.logging.ILogger;
@@ -14,13 +17,20 @@ public class CameraUploadProgress extends SyncProgress {
     private ILogger logger;
     private ServerInfo server;
     private SyncProgress progress;
+    private ApiClient apiClient;
+    private ClientCapabilities clientCapabilities;
+    private ILocalAssetManager localAssetManager;
+    private CancellationToken cancellationToken;
+    private double maxPercentage;
 
-    double maxPercentage;
-
-    public CameraUploadProgress(ILogger logger, ServerInfo server, SyncProgress progress, double maxPercentage) {
+    public CameraUploadProgress(ILogger logger, ServerInfo server, SyncProgress progress, ApiClient apiClient, ClientCapabilities clientCapabilities, ILocalAssetManager localAssetManager, CancellationToken cancellationToken, double maxPercentage) {
         this.logger = logger;
         this.server = server;
         this.progress = progress;
+        this.apiClient = apiClient;
+        this.clientCapabilities = clientCapabilities;
+        this.localAssetManager = localAssetManager;
+        this.cancellationToken = cancellationToken;
         this.maxPercentage = maxPercentage;
     }
 
@@ -67,6 +77,17 @@ public class CameraUploadProgress extends SyncProgress {
 
     public void onAnyComplete() {
 
+        UpdateOfflineUsersResponse offlineUserResponse = new UpdateOfflineUsersResponse(progress, apiClient, server, localAssetManager, logger, cancellationToken, maxPercentage);
 
+        if (cancellationToken.isCancellationRequested()){
+            progress.reportCancelled();
+        }
+        else if (clientCapabilities.getSupportsOfflineAccess()){
+            new OfflineUsersSync(logger, localAssetManager).UpdateOfflineUsers(server, apiClient, cancellationToken, offlineUserResponse);
+        }
+        else {
+
+            offlineUserResponse.startMediaSync();
+        }
     }
 }
