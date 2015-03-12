@@ -17,6 +17,8 @@ import mediabrowser.model.session.ClientCapabilities;
 
 public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
+    public static ISyncLoggerFactory LoggerFactory;
+
     public MediaSyncAdapter(Context context, boolean autoInitialize) {
         super(context, autoInitialize);
 
@@ -27,7 +29,14 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
         Context context = getContext();
 
-        ILogger logger = new ConsoleLogger();
+        ILogger logger;
+
+        if (LoggerFactory != null){
+            logger = LoggerFactory.getNewLogger();
+        }
+        else{
+            logger = new ConsoleLogger();
+        }
 
         logger.Info("MediaSyncAdapter starting");
 
