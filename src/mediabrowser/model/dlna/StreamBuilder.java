@@ -8,6 +8,17 @@ import mediabrowser.model.session.*;
 
 public class StreamBuilder
 {
+	private ILocalPlayer _localPlayer;
+
+	public StreamBuilder(ILocalPlayer localPlayer)
+	{
+		_localPlayer = localPlayer;
+	}
+	public StreamBuilder()
+	{
+		this(new NullLocalPlayer());
+	}
+
 	public final StreamInfo BuildAudioItem(AudioOptions options)
 	{
 		ValidateAudioInput(options);
@@ -75,7 +86,7 @@ public class StreamBuilder
 			StreamInfo streamInfo = BuildVideoItem(i, options);
 			if (streamInfo != null)
 			{
-			streams.add(streamInfo);
+				streams.add(streamInfo);
 			}
 		}
 
@@ -181,7 +192,15 @@ public class StreamBuilder
 
 					if (all)
 					{
-						playlistItem.setPlayMethod(PlayMethod.DirectStream);
+						if (item.getProtocol() == MediaProtocol.File && _localPlayer.CanAccessFile(item.getPath()))
+						{
+							playlistItem.setPlayMethod(PlayMethod.DirectPlay);
+						}
+						else
+						{
+							playlistItem.setPlayMethod(PlayMethod.DirectStream);
+						}
+
 						playlistItem.setContainer(item.getContainer());
 
 						return playlistItem;
@@ -534,15 +553,14 @@ public class StreamBuilder
 
 		if (mediaSource.getProtocol() == MediaProtocol.Http)
 		{
-			if (!options.getSupportsDirectRemoteContent())
+			if (_localPlayer.CanAccessUrl(mediaSource.getPath(), mediaSource.getRequiredHttpHeaders().size() > 0))
 			{
-				return null;
+				return PlayMethod.DirectPlay;
 			}
+		}
 
-			if (mediaSource.getRequiredHttpHeaders().size() > 0 && !options.getSupportsCustomHttpHeaders())
-			{
-				return null;
-			}
+		else if (mediaSource.getProtocol() == MediaProtocol.File && _localPlayer.CanAccessFile(mediaSource.getPath()))
+		{
 			return PlayMethod.DirectPlay;
 		}
 

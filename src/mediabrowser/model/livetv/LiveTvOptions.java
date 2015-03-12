@@ -11,13 +11,4 @@ public class LiveTvOptions
 	{
 		GuideDays = value;
 	}
-	private String ActiveService;
-	public final String getActiveService()
-	{
-		return ActiveService;
-	}
-	public final void setActiveService(String value)
-	{
-		ActiveService = value;
-	}
 }

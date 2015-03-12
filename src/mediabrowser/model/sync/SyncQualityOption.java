@@ -30,4 +30,18 @@ public class SyncQualityOption
 	{
 		Id = value;
 	}
+	/** 
+	 Gets or sets a value indicating whether this instance is default.
+	 
+	 <value><c>true</c> if this instance is default; otherwise, <c>false</c>.</value>
+	*/
+	private boolean IsDefault;
+	public final boolean getIsDefault()
+	{
+		return IsDefault;
+	}
+	public final void setIsDefault(boolean value)
+	{
+		IsDefault = value;
+	}
 }

@@ -6,10 +6,7 @@ import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.apiinteraction.device.IDevice;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.sync.data.NullAssetManager;
-import mediabrowser.model.dlna.DlnaProfileType;
-import mediabrowser.model.dlna.StreamBuilder;
-import mediabrowser.model.dlna.StreamInfo;
-import mediabrowser.model.dlna.VideoOptions;
+import mediabrowser.model.dlna.*;
 import mediabrowser.model.dto.MediaSourceInfo;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.logging.ILogger;
@@ -28,22 +25,35 @@ public class PlaybackManager {
     private ILocalAssetManager localAssetManager;
     private ILogger logger;
     private IDevice device;
+    private ILocalPlayer localPlayer;
 
-    public PlaybackManager(ILocalAssetManager localAssetManager, ILogger logger, IDevice device) {
+    public PlaybackManager(ILocalAssetManager localAssetManager, IDevice device, ILogger logger, ILocalPlayer localPlayer)
+    {
         this.localAssetManager = localAssetManager;
-        this.logger = logger;
         this.device = device;
+        this.logger = logger;
+        this.localPlayer = localPlayer;
     }
 
-    public PlaybackManager(ILogger logger, IDevice device) {
-        this.localAssetManager = new NullAssetManager();
-        this.logger = logger;
+    public PlaybackManager(ILocalAssetManager localAssetManager, IDevice device, ILogger logger)
+    {
+        this.localAssetManager = localAssetManager;
         this.device = device;
+        this.logger = logger;
+        this.localPlayer = new NullLocalPlayer();
+    }
+
+    public PlaybackManager(IDevice device, ILogger logger, ILocalPlayer localPlayer)
+    {
+        this.localAssetManager = new NullAssetManager();
+        this.device = device;
+        this.logger = logger;
+        this.localPlayer = localPlayer;
     }
 
     private StreamInfo getVideoStreamInfoInternal(String serverId, VideoOptions options)
     {
-        StreamBuilder streamBuilder = new StreamBuilder(_localPlayer);
+        StreamBuilder streamBuilder = new StreamBuilder(localPlayer);
 
         LocalItem localItem = localAssetManager.getLocalItem(serverId, options.getItemId());
 

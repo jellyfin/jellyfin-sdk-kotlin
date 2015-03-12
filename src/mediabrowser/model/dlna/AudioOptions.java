@@ -121,35 +121,6 @@ public class AudioOptions
 	}
 
 	/** 
-	 Gets or sets a value indicating whether [supports direct remote content].
-	 
-	 <value><c>true</c> if [supports direct remote content]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean SupportsDirectRemoteContent;
-	public final boolean getSupportsDirectRemoteContent()
-	{
-		return SupportsDirectRemoteContent;
-	}
-	public final void setSupportsDirectRemoteContent(boolean value)
-	{
-		SupportsDirectRemoteContent = value;
-	}
-	/** 
-	 Gets or sets a value indicating whether [supports custom HTTP headers].
-	 
-	 <value><c>true</c> if [supports custom HTTP headers]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean SupportsCustomHttpHeaders;
-	public final boolean getSupportsCustomHttpHeaders()
-	{
-		return SupportsCustomHttpHeaders;
-	}
-	public final void setSupportsCustomHttpHeaders(boolean value)
-	{
-		SupportsCustomHttpHeaders = value;
-	}
-
-	/** 
 	 Gets the maximum bitrate.
 	 
 	 @return System.Nullable&lt;System.Int32&gt;.
