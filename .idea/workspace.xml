@@ -7,19 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b626835-6518-4586-bf6c-5bbba32974d2" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\apiinteraction\sync\CameraUploadProgress.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/CameraUploadProgress.java" />
-      <change type="MOVED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\apiinteraction\sync\ContentUploader.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ContentUploader.java" />
-      <change type="MOVED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\apiinteraction\sync\ContentUploaderGetDeviceOptionsResponse.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ContentUploaderGetDeviceOptionsResponse.java" />
-      <change type="MOVED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\apiinteraction\sync\ContentUploaderHistoryResponse.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ContentUploaderHistoryResponse.java" />
-      <change type="MOVED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\apiinteraction\sync\ContentUploaderProgress.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/FileUploadProgress.java" />
-      <change type="MOVED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\apiinteraction\sync\OfflineUsersSync.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/OfflineUsersSync.java" />
-      <change type="MOVED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\apiinteraction\sync\ServerSync.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ServerSync.java" />
-      <change type="MOVED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\apiinteraction\sync\ServerSyncConnectionResponse.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ServerSyncConnectionResponse.java" />
-      <change type="MOVED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\apiinteraction\sync\UpdateOfflineUsersResponse.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/UpdateOfflineUsersResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/MediaBrowser.ApiClient.Java.iml" afterPath="$PROJECT_DIR$/.idea/MediaBrowser.ApiClient.Java.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/MediaSyncProgress.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/MediaBrowser_ApiClient_Java_jar/MediaBrowser.ApiClient.Java.jar" afterPath="$PROJECT_DIR$/out/artifacts/MediaBrowser_ApiClient_Java_jar/MediaBrowser.ApiClient.Java.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/MediaSync.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/MediaSync.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/MultiServerSync.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/MultiServerSync.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/UpdateOfflineUsersResponse.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/UpdateOfflineUsersResponse.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MediaBrowser.ApiClient.Java.iws" />
@@ -50,81 +42,26 @@
       <file leaf-file-name="MediaSync.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/MediaSync.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.928115" vertical-offset="1366" max-vertical-offset="2618">
-              <caret line="21" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+            <state vertical-scroll-proportion="1.683706" vertical-offset="765" max-vertical-offset="3587">
+              <caret line="189" column="23" selection-start-line="189" selection-start-column="23" selection-end-line="189" selection-end-column="23" />
               <folding>
-                <element signature="e#2938#2939#0" expanded="true" />
-                <element signature="e#3042#3043#0" expanded="true" />
-                <element signature="e#3211#3212#0" expanded="true" />
-                <element signature="e#3299#3300#0" expanded="true" />
+                <element signature="e#3339#3340#0" expanded="true" />
+                <element signature="e#3443#3444#0" expanded="true" />
+                <element signature="e#3612#3613#0" expanded="true" />
+                <element signature="e#3700#3701#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UpdateOfflineUsersResponse.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/UpdateOfflineUsersResponse.java">
+      <file leaf-file-name="ApiClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1377">
-              <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+            <state vertical-scroll-proportion="657.8276" vertical-offset="42622" max-vertical-offset="43520">
+              <caret line="1389" column="21" selection-start-line="1389" selection-start-column="12" selection-end-line="1389" selection-end-column="21" />
               <folding>
-                <element signature="e#2075#2076#0" expanded="true" />
-                <element signature="e#2132#2133#0" expanded="true" />
-                <element signature="e#2207#2208#0" expanded="true" />
-                <element signature="e#2265#2266#0" expanded="true" />
-                <element signature="e#2355#2356#0" expanded="true" />
-                <element signature="e#2418#2419#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServerSync.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ServerSync.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="552" max-vertical-offset="1479">
-              <caret line="77" column="52" selection-start-line="77" selection-start-column="52" selection-end-line="77" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileUploadProgress.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/FileUploadProgress.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="143" max-vertical-offset="1122">
-              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ContentUploader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ContentUploader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="643" max-vertical-offset="1921">
-              <caret line="76" column="37" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CameraUploadProgress.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/CameraUploadProgress.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1513">
-              <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServerSyncConnectionResponse.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ServerSyncConnectionResponse.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
-              <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -137,13 +74,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/MediaSync.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/UpdateOfflineUsersResponse.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/ServerSync.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ServerSyncConnectionResponse.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/FileUploadProgress.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ServerSync.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/CameraUploadProgress.java" />
+        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/UpdateOfflineUsersResponse.java" />
+        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/MediaSyncProgress.java" />
+        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/MediaSync.java" />
+        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" />
       </list>
     </option>
   </component>
@@ -581,70 +521,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ServerSyncConnectionResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
-          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ContentUploader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="643" max-vertical-offset="1921">
-          <caret line="76" column="37" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/FileUploadProgress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="143" max-vertical-offset="1122">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/CameraUploadProgress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1513">
-          <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/UpdateOfflineUsersResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1377">
-          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.21953188" vertical-offset="0" max-vertical-offset="1239">
+          <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/MediaSyncProgress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19009584" vertical-offset="0" max-vertical-offset="1252">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
           <folding>
-            <element signature="e#2075#2076#0" expanded="true" />
-            <element signature="e#2132#2133#0" expanded="true" />
-            <element signature="e#2207#2208#0" expanded="true" />
-            <element signature="e#2265#2266#0" expanded="true" />
-            <element signature="e#2355#2356#0" expanded="true" />
-            <element signature="e#2418#2419#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#796#797#0" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#888#889#0" expanded="true" />
+            <element signature="e#930#931#0" expanded="true" />
+            <element signature="e#996#997#0" expanded="true" />
+            <element signature="e#1043#1044#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ServerSync.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="552" max-vertical-offset="1479">
+        <state vertical-scroll-proportion="0.91928977" vertical-offset="0" max-vertical-offset="1479">
           <caret line="77" column="52" selection-start-line="77" selection-start-column="52" selection-end-line="77" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/FileUploadProgress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0543131" vertical-offset="0" max-vertical-offset="1252">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ContentUploader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41613418" vertical-offset="669" max-vertical-offset="1921">
+          <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/CameraUploadProgress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13720742" vertical-offset="204" max-vertical-offset="1513">
+          <caret line="32" column="51" selection-start-line="32" selection-start-column="51" selection-end-line="32" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ServerSyncConnectionResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1629393" vertical-offset="0" max-vertical-offset="1252">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="657.8276" vertical-offset="42622" max-vertical-offset="43520">
+          <caret line="1389" column="21" selection-start-line="1389" selection-start-column="12" selection-end-line="1389" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/MediaSync.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.928115" vertical-offset="1366" max-vertical-offset="2618">
-          <caret line="21" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        <state vertical-scroll-proportion="1.683706" vertical-offset="765" max-vertical-offset="3587">
+          <caret line="189" column="23" selection-start-line="189" selection-start-column="23" selection-end-line="189" selection-end-column="23" />
           <folding>
-            <element signature="e#2938#2939#0" expanded="true" />
-            <element signature="e#3042#3043#0" expanded="true" />
-            <element signature="e#3211#3212#0" expanded="true" />
-            <element signature="e#3299#3300#0" expanded="true" />
+            <element signature="e#3339#3340#0" expanded="true" />
+            <element signature="e#3443#3444#0" expanded="true" />
+            <element signature="e#3612#3613#0" expanded="true" />
+            <element signature="e#3700#3701#0" expanded="true" />
           </folding>
         </state>
       </provider>

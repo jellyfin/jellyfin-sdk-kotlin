@@ -6,7 +6,6 @@ import mediabrowser.apiinteraction.sync.MediaSync;
 import mediabrowser.apiinteraction.sync.SyncProgress;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
-import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.logging.ILogger;
 
@@ -49,34 +48,7 @@ public class UpdateOfflineUsersResponse extends EmptyResponse {
 
     public void startMediaSync(){
 
-        new MediaSync(localAssetManager, logger).sync(apiClient, server, new Progress<Double>(){
-
-            @Override
-            public void onProgress(Double percent)
-            {
-                double cumulativeProgress = (initialProgressPercent * 100) + (percent * (1 - initialProgressPercent));
-                progress.report(cumulativeProgress);
-            }
-
-            @Override
-            public void onComplete()
-            {
-                progress.reportComplete();
-            }
-
-            @Override
-            public void onCancelled()
-            {
-                progress.reportCancelled();
-            }
-
-            @Override
-            public void onError(Exception exception)
-            {
-                progress.reportError(exception);
-            }
-
-        }, cancellationToken);
+        new MediaSync(localAssetManager, logger).sync(apiClient, server, new MediaSyncProgress(progress, initialProgressPercent), cancellationToken);
 
         progress.reportComplete();
     }

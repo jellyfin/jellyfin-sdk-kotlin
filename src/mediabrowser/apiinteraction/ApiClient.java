@@ -1037,15 +1037,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Users/" + userId + "/PlayedItems/" + itemId, dict);
         url = AddDataFormat(url);
 
-        Response<String> jsonResponse = new Response<String>(response){
-            @Override
-            public void onResponse(String jsonResponse) {
-                UserItemDataDto obj = DeserializeFromString(jsonResponse, UserItemDataDto.class);
-                response.onResponse(obj);
-            }
-        };
-
-        Send(url, "POST", dict, true, jsonResponse);
+        Send(url, "POST", dict, true, new SerializedResponse<UserItemDataDto>(response, jsonSerializer, UserItemDataDto.class));
     }
 
     /// <summary>
@@ -2550,5 +2542,18 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Sync/OfflineActions");
 
         PostAsync(url, actions, response);
+    }
+
+    public void SyncData(SyncDataRequest request, final Response<SyncDataResponse> response) {
+
+        if (request == null)
+        {
+            throw new IllegalArgumentException("request");
+        }
+
+        String url = GetApiUrl("Sync/Data");
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        Send(url, "POST", dict, true, new SerializedResponse<SyncDataResponse>(response, jsonSerializer, SyncDataResponse.class));
     }
 }
