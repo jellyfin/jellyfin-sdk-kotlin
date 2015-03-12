@@ -753,4 +753,29 @@ public class StreamInfo
 
 		return getMaxHeight();
 	}
+
+	public final java.util.ArrayList<MediaStream> GetSelectableAudioStreams()
+	{
+		return GetSelectableStreams(MediaStreamType.Audio);
+	}
+
+	public final java.util.ArrayList<MediaStream> GetSelectableSubtitleStreams()
+	{
+		return GetSelectableStreams(MediaStreamType.Subtitle);
+	}
+
+	public final java.util.ArrayList<MediaStream> GetSelectableStreams(MediaStreamType type)
+	{
+		java.util.ArrayList<MediaStream> list = new java.util.ArrayList<MediaStream>();
+
+		for (MediaStream stream : getMediaSource().getMediaStreams())
+		{
+			if (type == stream.getType())
+			{
+				list.add(stream);
+			}
+		}
+
+		return list;
+	}
 }

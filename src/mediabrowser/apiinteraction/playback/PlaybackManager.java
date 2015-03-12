@@ -68,37 +68,24 @@ public class PlaybackManager {
     {
         StreamInfo info = getVideoStreamInfoInternal(serverId, options);
 
-        return GetStreams(info.getMediaSource().getMediaStreams(), MediaStreamType.Subtitle);
+        return info.GetSelectableAudioStreams();
     }
 
     public ArrayList<MediaStream> getPrePlaybackSelectableSubtitleStreams(String serverId, VideoOptions options)
     {
         StreamInfo info = getVideoStreamInfoInternal(serverId, options);
 
-        return GetStreams(info.getMediaSource().getMediaStreams(), MediaStreamType.Subtitle);
+        return info.GetSelectableSubtitleStreams();
     }
 
     public ArrayList<MediaStream> getInPlaybackSelectableAudioStreams(StreamInfo info)
     {
-        return GetStreams(info.getMediaSource().getMediaStreams(), MediaStreamType.Subtitle);
+        return info.GetSelectableAudioStreams();
     }
 
     public ArrayList<MediaStream> getInPlaybackSelectableSubtitleStreams(StreamInfo info)
     {
-        return GetStreams(info.getMediaSource().getMediaStreams(), MediaStreamType.Subtitle);
-    }
-
-    private ArrayList<MediaStream> GetStreams(ArrayList<MediaStream> streams, MediaStreamType type){
-
-        ArrayList<MediaStream> list = new ArrayList<MediaStream>();
-
-        for (MediaStream stream : streams){
-            if (stream.getType() == type){
-                list.add(stream);
-            }
-        }
-
-        return list;
+        return info.GetSelectableSubtitleStreams();
     }
 
     public void getAudioStreamInfo(String serverId, AudioOptions options, boolean isOffline, ApiClient apiClient, Response<StreamInfo> response)
