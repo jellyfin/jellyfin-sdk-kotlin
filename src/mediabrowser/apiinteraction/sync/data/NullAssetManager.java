@@ -30,7 +30,7 @@ public class NullAssetManager implements ILocalAssetManager {
 
     @Override
     public ArrayList<UserAction> getUserActions(String serverId) {
-        return null;
+        return new ArrayList<UserAction>();
     }
 
     @Override
@@ -40,7 +40,7 @@ public class NullAssetManager implements ILocalAssetManager {
 
     @Override
     public ArrayList<ItemFileInfo> getFiles(LocalItem item) {
-        return null;
+        return new ArrayList<ItemFileInfo>();
     }
 
     @Override
@@ -60,7 +60,12 @@ public class NullAssetManager implements ILocalAssetManager {
 
     @Override
     public LocalItem createLocalItem(BaseItemDto libraryItem, ServerInfo server, String originalFileName) {
-        return null;
+        LocalItem item = new LocalItem();
+
+        item.setServerId(server.getId());
+        item.setItem(libraryItem);
+        item.setItemId(libraryItem.getId());
+        return item;
     }
 
     @Override
@@ -80,7 +85,7 @@ public class NullAssetManager implements ILocalAssetManager {
 
     @Override
     public ArrayList<String> getServerItemIds(String serverId) {
-        return null;
+        return new ArrayList<String>();
     }
 
     @Override
@@ -125,12 +130,12 @@ public class NullAssetManager implements ILocalAssetManager {
 
     @Override
     public ArrayList<BaseItemDto> getViews(String serverId, String userId) {
-        return null;
+        return new ArrayList<BaseItemDto>();
     }
 
     @Override
     public ArrayList<BaseItemDto> getItems(UserDto user, BaseItemDto parentItem) {
-        return null;
+        return new ArrayList<BaseItemDto>();
     }
 
     @Override
