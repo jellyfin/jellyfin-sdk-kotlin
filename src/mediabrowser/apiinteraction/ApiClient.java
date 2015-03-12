@@ -2526,7 +2526,6 @@ public class ApiClient extends BaseApiClient {
         }
 
         String url = GetApiUrl("Users/" + id + "/Offline");
-
         url = AddDataFormat(url);
 
         Send(url, "GET", new SerializedResponse<UserDto>(response, jsonSerializer, UserDto.class));
@@ -2552,9 +2551,9 @@ public class ApiClient extends BaseApiClient {
         }
 
         String url = GetApiUrl("Sync/Data");
+        url = AddDataFormat(url);
 
         String json = getJsonSerializer().SerializeToString(request);
-
         Send(url, "POST", json, "application/json", new SerializedResponse<SyncDataResponse>(response, jsonSerializer, SyncDataResponse.class));
     }
 }
