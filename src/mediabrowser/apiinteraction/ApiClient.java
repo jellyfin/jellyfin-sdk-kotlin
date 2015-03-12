@@ -2344,7 +2344,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<QueryFilters>(response, jsonSerializer, QueryFilters.class));
     }
 
-    public void GetLiveMediaInfo(String itemId, String userId, final Response<LiveMediaInfoResult> response)
+    public void GetPlaybackInfo(String itemId, String userId, final Response<LiveMediaInfoResult> response)
     {
         QueryStringDictionary dict = new QueryStringDictionary();
 
