@@ -9,7 +9,6 @@
     <list default="true" id="5b626835-6518-4586-bf6c-5bbba32974d2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/MediaBrowser_ApiClient_Java_jar/MediaBrowser.ApiClient.Java.jar" afterPath="$PROJECT_DIR$/out/artifacts/MediaBrowser_ApiClient_Java_jar/MediaBrowser.ApiClient.Java.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/NullAssetManager.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/NullAssetManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MediaBrowser.ApiClient.Java.iws" />
@@ -143,8 +142,8 @@
       <file leaf-file-name="ApiClient.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6347107" vertical-offset="42310" max-vertical-offset="43520">
-              <caret line="2538" column="35" selection-start-line="2538" selection-start-column="35" selection-end-line="2538" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.4801653" vertical-offset="42327" max-vertical-offset="43537">
+              <caret line="2528" column="0" selection-start-line="2528" selection-start-column="0" selection-end-line="2529" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -808,8 +807,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6347107" vertical-offset="42310" max-vertical-offset="43520">
-          <caret line="2538" column="35" selection-start-line="2538" selection-start-column="35" selection-end-line="2538" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.4801653" vertical-offset="42327" max-vertical-offset="43537">
+          <caret line="2528" column="0" selection-start-line="2528" selection-start-column="0" selection-end-line="2529" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

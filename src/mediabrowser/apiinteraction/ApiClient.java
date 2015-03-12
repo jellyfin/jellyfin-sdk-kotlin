@@ -2552,8 +2552,9 @@ public class ApiClient extends BaseApiClient {
         }
 
         String url = GetApiUrl("Sync/Data");
-        QueryStringDictionary dict = new QueryStringDictionary();
 
-        Send(url, "POST", dict, true, new SerializedResponse<SyncDataResponse>(response, jsonSerializer, SyncDataResponse.class));
+        String json = getJsonSerializer().SerializeToString(request);
+
+        Send(url, "POST", json, "application/json", new SerializedResponse<SyncDataResponse>(response, jsonSerializer, SyncDataResponse.class));
     }
 }
