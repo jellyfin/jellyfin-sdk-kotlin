@@ -11,22 +11,23 @@ import java.util.ArrayList;
 /**
  * Created by Luke on 3/12/2015.
  */
-public class GetRegistrationInfoInnerResponse extends SerializedResponse<RegistrationInfo> {
+public class GetRegistrationInfoInnerResponse extends Response<RegistrationInfo> {
 
+    private  Response<RegistrationInfo> innerResponse;
     private GetRegistrationInfoFindServersResponse parentResponse;
     private ILogger logger;
 
-    public GetRegistrationInfoInnerResponse(Response<RegistrationInfo> innerResponse, IJsonSerializer jsonSerializer, Class type, GetRegistrationInfoFindServersResponse parentResponse, ILogger logger) {
-        super(innerResponse, jsonSerializer, type);
+    public GetRegistrationInfoInnerResponse(Response<RegistrationInfo> innerResponse, GetRegistrationInfoFindServersResponse parentResponse, ILogger logger) {
+        this.innerResponse = innerResponse;
         this.parentResponse = parentResponse;
         this.logger = logger;
     }
 
     @Override
-    public void onSerializedResponse(RegistrationInfo result){
+    public void onResponse(RegistrationInfo result){
 
         if (result.getIsRegistered() || result.getIsTrial()){
-            super.onSerializedResponse(result);
+            innerResponse.onResponse(result);
         }
         else{
             parentResponse.TestConnect(innerResponse);

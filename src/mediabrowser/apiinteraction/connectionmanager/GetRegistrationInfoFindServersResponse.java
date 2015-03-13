@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction.connectionmanager;
 
+import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.ICredentialProvider;
 import mediabrowser.apiinteraction.Response;
 import mediabrowser.apiinteraction.http.HttpRequest;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
  */
 public class GetRegistrationInfoFindServersResponse extends Response<ArrayList<ServerInfo>> {
 
+    private ConnectionManager connectionManager;
     private String featureName;
     private String connectedServerId;
     private ILogger logger;
@@ -57,19 +59,9 @@ public class GetRegistrationInfoFindServersResponse extends Response<ArrayList<S
 
     void TestServer(ServerInfo server, Response<RegistrationInfo> response){
 
-        String url = server.getManualAddress();
+        ApiClient apiClient = connectionManager.GetApiClient(server.getId());
 
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(url)){
-            url = server.getLocalAddress();
-        }
-
-        url += "Registrations/" + featureName;
-
-        HttpRequest request = new HttpRequest();
-        request.setUrl(url);
-        request.setMethod("GET");
-
-        httpClient.Send(request, new GetRegistrationInfoInnerResponse(response, jsonSerializer, RegistrationInfo.class, this, logger));
+        apiClient.GetRegistrationInfo(featureName, new GetRegistrationInfoInnerResponse(response, this, logger));
     }
 
     void TestConnect(Response<RegistrationInfo> response){
