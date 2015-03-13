@@ -42,5 +42,5 @@ public interface IConnectionManager {
 
     void ExchangePin(PinCreationResult pin, final Response<PinExchangeResult> response);
 
-    void GetRegistrationInfo(String featureName, Response<RegistrationInfo> response);
+    void GetRegistrationInfo(String featureName, String connectedServerId, Response<RegistrationInfo> response);
 }

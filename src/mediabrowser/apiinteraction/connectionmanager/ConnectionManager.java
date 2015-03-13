@@ -26,10 +26,10 @@ import java.util.*;
 
 public class ConnectionManager implements IConnectionManager {
 
-    private ICredentialProvider _credentialProvider;
-    private INetworkConnection _networkConnectivity;
+    private ICredentialProvider credentialProvider;
+    private INetworkConnection networkConnection;
     protected ILogger logger;
-    private IServerLocator _serverDiscovery;
+    private IServerLocator serverDiscovery;
     protected IAsyncHttpClient httpClient;
 
     private HashMap<String, ApiClient> apiClients = new HashMap<String, ApiClient>();
@@ -56,10 +56,10 @@ public class ConnectionManager implements IConnectionManager {
                              ClientCapabilities clientCapabilities,
                              ApiEventListener apiEventListener) {
 
-        _credentialProvider = credentialProvider;
-        _networkConnectivity = networkConnectivity;
+        this.credentialProvider = credentialProvider;
+        networkConnection = networkConnectivity;
         this.logger = logger;
-        _serverDiscovery = serverDiscovery;
+        this.serverDiscovery = serverDiscovery;
         this.httpClient = httpClient;
         this.applicationName = applicationName;
         this.applicationVersion = applicationVersion;
@@ -138,7 +138,7 @@ public class ConnectionManager implements IConnectionManager {
 
         if (clientCapabilities.getSupportsOfflineAccess())
         {
-            NetworkStatus networkAccess = _networkConnectivity.getNetworkStatus();
+            NetworkStatus networkAccess = networkConnection.getNetworkStatus();
             if (!networkAccess.getIsNetworkAvailable())
             {
                 // TODO: for offline access
@@ -198,7 +198,7 @@ public class ConnectionManager implements IConnectionManager {
             tests.add(0, server.getLastConnectionMode());
         }
 
-        boolean isLocalNetworkAvailable = _networkConnectivity.getNetworkStatus().GetIsAnyLocalNetworkAvailable();
+        boolean isLocalNetworkAvailable = networkConnection.getNetworkStatus().GetIsAnyLocalNetworkAvailable();
 
         // Kick off wake on lan on a separate thread (if applicable)
         boolean sendWakeOnLan = server.getWakeOnLanInfos().size() > 0 && isLocalNetworkAvailable;
@@ -264,7 +264,7 @@ public class ConnectionManager implements IConnectionManager {
                                      final ConnectionOptions connectionOptions,
                                      final Response<ConnectionResult> response) {
 
-        final ServerCredentials credentials = _credentialProvider.GetCredentials();
+        final ServerCredentials credentials = credentialProvider.GetCredentials();
 
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
         {
@@ -322,7 +322,7 @@ public class ConnectionManager implements IConnectionManager {
 
         server.setLastConnectionMode(connectionMode);
         credentials.AddOrUpdateServer(server);
-        _credentialProvider.SaveCredentials(credentials);
+        credentialProvider.SaveCredentials(credentials);
 
         ConnectionResult result = new ConnectionResult();
 
@@ -332,7 +332,7 @@ public class ConnectionManager implements IConnectionManager {
                 ConnectionState.SignedIn);
 
         result.getServers().add(server);
-        result.getApiClient().EnableAutomaticNetworking(server, connectionMode, _networkConnectivity);
+        result.getApiClient().EnableAutomaticNetworking(server, connectionMode, networkConnection);
 
         if (result.getState() == ConnectionState.SignedIn)
         {
@@ -357,7 +357,7 @@ public class ConnectionManager implements IConnectionManager {
 
         logger.Debug("Logging out of all servers");
 
-        LogoutAll(new LogoutAllResponse(_credentialProvider, logger, response, this));
+        LogoutAll(new LogoutAllResponse(credentialProvider, logger, response, this));
     }
 
     void clearConnectUserAfterLogout() {
@@ -455,7 +455,7 @@ public class ConnectionManager implements IConnectionManager {
 
         ServerInfo server = apiClient.getServerInfo();
 
-        ServerCredentials credentials = _credentialProvider.GetCredentials();
+        ServerCredentials credentials = credentialProvider.GetCredentials();
 
         if (options.getUpdateDateLastAccessed()){
             server.setDateLastAccessed(new Date());
@@ -474,7 +474,7 @@ public class ConnectionManager implements IConnectionManager {
 
         credentials.AddOrUpdateServer(server);
         SaveUserInfoIntoCredentials(server, result.getUser());
-        _credentialProvider.SaveCredentials(credentials);
+        credentialProvider.SaveCredentials(credentials);
 
         AfterConnected(apiClient, options);
 
@@ -503,10 +503,10 @@ public class ConnectionManager implements IConnectionManager {
 
     public void GetAvailableServers(final Response<ArrayList<ServerInfo>> response)
     {
-        NetworkStatus networkInfo = _networkConnectivity.getNetworkStatus();
+        NetworkStatus networkInfo = networkConnection.getNetworkStatus();
 
         logger.Debug("Getting saved servers via credential provider");
-        final ServerCredentials credentials = _credentialProvider.GetCredentials();
+        final ServerCredentials credentials = credentialProvider.GetCredentials();
 
         final int numTasks = 2;
         final int[] numTasksCompleted = {0};
@@ -610,7 +610,7 @@ public class ConnectionManager implements IConnectionManager {
 
         credentials.setServers(cleanList);
 
-        _credentialProvider.SaveCredentials(credentials);
+        credentialProvider.SaveCredentials(credentials);
 
         ArrayList<ServerInfo> clone = new ArrayList<ServerInfo>();
         clone.addAll(credentials.getServers());
@@ -625,14 +625,14 @@ public class ConnectionManager implements IConnectionManager {
 
     protected void FindServersInternal(final Response<ArrayList<ServerInfo>> response)
     {
-        _serverDiscovery.FindServers(1000, new FindServersInnerResponse(this, response));
+        serverDiscovery.FindServers(1000, new FindServersInnerResponse(this, response));
     }
 
     private void WakeAllServers()
     {
         logger.Debug("Waking all servers");
 
-        for(ServerInfo server : _credentialProvider.GetCredentials().getServers()){
+        for(ServerInfo server : credentialProvider.GetCredentials().getServers()){
 
             WakeServer(server, new EmptyResponse());
         }
@@ -669,7 +669,7 @@ public class ConnectionManager implements IConnectionManager {
 
     private void WakeServer(WakeOnLanInfo info, EmptyResponse response) {
 
-        _networkConnectivity.SendWakeOnLan(info.getMacAddress(), info.getPort(), response);
+        networkConnection.SendWakeOnLan(info.getMacAddress(), info.getPort(), response);
     }
 
     String NormalizeAddress(String address) throws IllegalArgumentException {
@@ -720,7 +720,7 @@ public class ConnectionManager implements IConnectionManager {
 
     public void LoginToConnect(String username, String password, final EmptyResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 
-        connectService.Authenticate(username, password, new LoginToConnectResponse(this, _credentialProvider, response));
+        connectService.Authenticate(username, password, new LoginToConnectResponse(this, credentialProvider, response));
     }
 
     public void CreatePin(String deviceId, Response<PinCreationResult> response)
@@ -735,14 +735,11 @@ public class ConnectionManager implements IConnectionManager {
 
     public void ExchangePin(PinCreationResult pin, final Response<PinExchangeResult> response)
     {
-        connectService.ExchangePin(pin, new ExchangePinResponse(_credentialProvider, response));
+        connectService.ExchangePin(pin, new ExchangePinResponse(credentialProvider, response));
     }
 
-    public void GetRegistrationInfo(String featureName, Response<RegistrationInfo> response) {
+    public void GetRegistrationInfo(String featureName, String connectedServerId, Response<RegistrationInfo> response) {
 
-        RegistrationInfo reg = new RegistrationInfo();
-        reg.setName(featureName);
-        reg.setIsTrial(true);
-        response.onResponse(reg);
+        FindServers(new GetRegistrationInfoFindServersResponse(featureName, connectedServerId, logger, response, credentialProvider, httpClient, jsonSerializer));
     }
 }

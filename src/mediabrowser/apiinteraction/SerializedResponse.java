@@ -7,7 +7,7 @@ public class SerializedResponse<T> extends Response<String> {
 
     private IJsonSerializer jsonSerializer;
     private Class type;
-    Response<T> innerResponse;
+    protected Response<T> innerResponse;
 
     public SerializedResponse(Response<T> innerResponse, IJsonSerializer jsonSerializer, Class type) {
         super(innerResponse);
@@ -21,6 +21,11 @@ public class SerializedResponse<T> extends Response<String> {
 
         T obj = jsonSerializer.DeserializeFromString(result, type);
 
+        onSerializedResponse(obj);
+    }
+
+    protected void onSerializedResponse(T obj){
         innerResponse.onResponse(obj);
     }
+
 }

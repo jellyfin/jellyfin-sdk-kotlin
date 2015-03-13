@@ -41,6 +41,7 @@ import mediabrowser.model.playlists.PlaylistCreationResult;
 import mediabrowser.model.playlists.PlaylistItemQuery;
 import mediabrowser.model.plugins.PluginInfo;
 import mediabrowser.model.querying.*;
+import mediabrowser.model.registration.RegistrationInfo;
 import mediabrowser.model.results.*;
 import mediabrowser.model.search.SearchHintResult;
 import mediabrowser.model.search.SearchQuery;
@@ -236,16 +237,16 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<ItemCounts>(response, jsonSerializer, ItemCounts.class));
     }
 
-    public void GetRegistrationStatusAsync(String feature, final Response<MBRegistrationRecord> response)
+    public void GetRegistrationInfo(String feature, final Response<RegistrationInfo> response)
     {
         if (feature == null)
         {
             throw new IllegalArgumentException("feature");
         }
 
-        String url = GetApiUrl("Plugins/RegistrationRecords/" + feature);
+        String url = GetApiUrl("Registrations/" + feature);
 
-        Send(url, "GET", new SerializedResponse<>(response, jsonSerializer, MBRegistrationRecord.class));
+        Send(url, "GET", new SerializedResponse<>(response, jsonSerializer, RegistrationInfo.class));
     }
 
     public void GetRootFolderAsync(String userId, final Response<BaseItemDto> response)

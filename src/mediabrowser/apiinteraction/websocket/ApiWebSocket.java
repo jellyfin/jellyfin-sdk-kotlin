@@ -16,6 +16,7 @@ import mediabrowser.model.session.*;
 import org.java_websocket.handshake.ServerHandshake;
 
 import java.net.URI;
+import java.net.URLEncoder;
 
 public class ApiWebSocket implements ISocketListener {
 
@@ -65,7 +66,7 @@ public class ApiWebSocket implements ISocketListener {
 
     private String getWebSocketServerAddress(){
 
-        return apiClient.getApiUrl().replace("http", "ws") + "?api_key=" + apiClient.getAccessToken() + "&deviceId=" + apiClient.getDeviceId();
+        return apiClient.getApiUrl().replace("http", "ws") + "?api_key=" + apiClient.getAccessToken() + "&deviceId=" + URLEncoder.encode(apiClient.getDeviceId());
     }
 
     public void CloseWebSocket(){
