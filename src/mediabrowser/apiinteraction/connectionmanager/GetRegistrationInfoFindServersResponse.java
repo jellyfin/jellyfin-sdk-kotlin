@@ -25,17 +25,14 @@ public class GetRegistrationInfoFindServersResponse extends Response<ArrayList<S
     private ILogger logger;
     private Response<RegistrationInfo> response;
     private ICredentialProvider credentialProvider;
-    private IAsyncHttpClient httpClient;
-    private IJsonSerializer jsonSerializer;
 
-    public GetRegistrationInfoFindServersResponse(String featureName, String connectedServerId, ILogger logger, Response<RegistrationInfo> response, ICredentialProvider credentialProvider, IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer) {
+    public GetRegistrationInfoFindServersResponse(ConnectionManager connectionManager, String featureName, String connectedServerId, ILogger logger, Response<RegistrationInfo> response, ICredentialProvider credentialProvider) {
+        this.connectionManager = connectionManager;
         this.featureName = featureName;
         this.connectedServerId = connectedServerId;
         this.logger = logger;
         this.response = response;
         this.credentialProvider = credentialProvider;
-        this.httpClient = httpClient;
-        this.jsonSerializer = jsonSerializer;
     }
 
     @Override
