@@ -544,14 +544,14 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetInstantMixFromArtistAsync(SimilarItemsByNameQuery query, final Response<ItemsResult> response)
+    public void GetInstantMixFromArtistAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
             throw new IllegalArgumentException("query");
         }
 
-        String url = GetInstantMixByNameUrl(query, "Artists");
+        String url = GetInstantMixUrl(query, "Artists");
 
         GetItemsFromUrl(url, response);
     }
@@ -562,14 +562,14 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetInstantMixFromMusicGenreAsync(SimilarItemsByNameQuery query, final Response<ItemsResult> response)
+    public void GetInstantMixFromMusicGenreAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
             throw new IllegalArgumentException("query");
         }
 
-        String url = GetInstantMixByNameUrl(query, "MusicGenres");
+        String url = GetInstantMixUrl(query, "MusicGenres");
 
         GetItemsFromUrl(url, response);
     }
