@@ -246,6 +246,8 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("Registrations/" + feature);
 
+        url = AddDataFormat(url);
+
         Send(url, "GET", new SerializedResponse<>(response, jsonSerializer, RegistrationInfo.class));
     }
 
