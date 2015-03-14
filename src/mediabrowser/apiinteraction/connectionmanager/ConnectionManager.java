@@ -740,6 +740,6 @@ public class ConnectionManager implements IConnectionManager {
 
     public void GetRegistrationInfo(String featureName, String connectedServerId, Response<RegistrationInfo> response) {
 
-        FindServers(new GetRegistrationInfoFindServersResponse(this, featureName, connectedServerId, logger, response, credentialProvider));
+        FindServers(new GetRegistrationInfoFindServersResponse(this, featureName, connectedServerId, logger, response, credentialProvider, connectService));
     }
 }

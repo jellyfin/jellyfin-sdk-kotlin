@@ -3,6 +3,7 @@ package mediabrowser.apiinteraction.connectionmanager;
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.ICredentialProvider;
 import mediabrowser.apiinteraction.Response;
+import mediabrowser.apiinteraction.connect.ConnectService;
 import mediabrowser.apiinteraction.http.HttpRequest;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.model.apiclient.ServerCredentials;
@@ -25,14 +26,16 @@ public class GetRegistrationInfoFindServersResponse extends Response<ArrayList<S
     private ILogger logger;
     private Response<RegistrationInfo> response;
     private ICredentialProvider credentialProvider;
+    private ConnectService connectService;
 
-    public GetRegistrationInfoFindServersResponse(ConnectionManager connectionManager, String featureName, String connectedServerId, ILogger logger, Response<RegistrationInfo> response, ICredentialProvider credentialProvider) {
+    public GetRegistrationInfoFindServersResponse(ConnectionManager connectionManager, String featureName, String connectedServerId, ILogger logger, Response<RegistrationInfo> response, ICredentialProvider credentialProvider, ConnectService connectService) {
         this.connectionManager = connectionManager;
         this.featureName = featureName;
         this.connectedServerId = connectedServerId;
         this.logger = logger;
         this.response = response;
         this.credentialProvider = credentialProvider;
+        this.connectService = connectService;
     }
 
     @Override
@@ -68,9 +71,12 @@ public class GetRegistrationInfoFindServersResponse extends Response<ArrayList<S
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()) &&
                 !tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectUserId()))
         {
+
+            connectService.GetRegistrationInfo(credentials.getConnectUserId(), featureName, credentials.getConnectAccessToken(), response);
+        }
+        else{
             RegistrationInfo reg = new RegistrationInfo();
             reg.setName(featureName);
-            reg.setIsTrial(true);
             response.onResponse(reg);
         }
     }

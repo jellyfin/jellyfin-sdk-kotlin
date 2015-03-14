@@ -9,6 +9,7 @@ import mediabrowser.apiinteraction.http.HttpRequest;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.model.connect.*;
 import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.registration.RegistrationInfo;
 import mediabrowser.model.serialization.IJsonSerializer;
 
 import java.io.UnsupportedEncodingException;
@@ -197,5 +198,25 @@ public class ConnectService {
     private void AddXApplicationName(HttpRequest request)
     {
         request.getRequestHeaders().put("X-Application", appName + "/" + appVersion);
+    }
+
+    public void GetRegistrationInfo(String userId, String feature, String connectAccessToken, final Response<RegistrationInfo> response)
+    {
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        dict.Add("userId", userId);
+        dict.Add("feature", feature);
+
+        String url = GetConnectUrl("registrationInfo") + "?" + dict.GetQueryString();
+
+        HttpRequest request = new HttpRequest();
+
+        request.setMethod("GET");
+        request.setUrl(url);
+
+        AddUserAccessToken(request, connectAccessToken);
+        AddXApplicationName(request);
+
+        _httpClient.Send(request, new SerializedResponse<RegistrationInfo>(response, JsonSerializer, new RegistrationInfo().getClass()));
     }
 }
