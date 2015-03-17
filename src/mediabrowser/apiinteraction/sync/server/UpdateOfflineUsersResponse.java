@@ -2,9 +2,10 @@ package mediabrowser.apiinteraction.sync.server;
 
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.EmptyResponse;
-import mediabrowser.apiinteraction.sync.MediaSync;
 import mediabrowser.apiinteraction.sync.SyncProgress;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
+import mediabrowser.apiinteraction.sync.server.mediasync.MediaSync;
+import mediabrowser.apiinteraction.sync.server.mediasync.MediaSyncProgress;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.logging.ILogger;

@@ -55,10 +55,7 @@ import mediabrowser.model.tasks.TaskTriggerInfo;
 import mediabrowser.model.users.AuthenticationResult;
 import mediabrowser.model.users.UserAction;
 
-import java.io.DataOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
@@ -182,6 +179,21 @@ public class ApiClient extends BaseApiClient {
         request.setRequestHeaders(this.HttpHeaders);
         request.setPostData(postData);
         SendRequest(request, fireGlobalEvents, response);
+    }
+
+    public void getResponseStream(String address, Response<InputStream> response){
+
+        try
+        {
+            URL url = new URL(address);
+
+            response.onResponse(new BufferedInputStream(url.openStream()));
+
+        }
+        catch (Exception ex)
+        {
+            response.onError(ex);
+        }
     }
 
     public void GetItemAsync(String id, String userId, final Response<BaseItemDto> response)
@@ -2491,34 +2503,95 @@ public class ApiClient extends BaseApiClient {
          Send(url, "GET", new SerializedResponse<NewsItemsResult>(response, jsonSerializer, NewsItemsResult.class));
      }
 
-    public void CreateSyncJob(SyncJobRequest request, Response<SyncJobCreationResult> response){
-
-        // TODO
-    }
-
     public void UpdateUserConfiguration(String userId, UserConfiguration configuration, EmptyResponse response) {
 
-        // TODO
+        response.onError(new UnsupportedOperationException());
     }
 
-    public void GetSyncJobItemFile(String id){
+    public void CreateSyncJob(SyncJobRequest request, Response<SyncJobCreationResult> response){
 
-        // TODO
+        if (request == null)
+        {
+            throw new IllegalArgumentException("request");
+        }
+
+        String url = GetApiUrl("Sync/Jobs");
+        url = AddDataFormat(url);
+
+        Send(url, "POST", jsonSerializer.SerializeToString(request), "application/json", new SerializedResponse<SyncJobCreationResult>(response, jsonSerializer, SyncJobCreationResult.class));
     }
 
-    public void GetSyncJobs(SyncJobQuery query, Response<QueryResult<SyncJob>> response) {
+    public void UpdateSyncJob(SyncJob job, EmptyResponse response){
 
-        // TODO
+        if (job == null)
+        {
+            throw new IllegalArgumentException("job");
+        }
+
+        String url = GetApiUrl("Sync/Jobs/" + job.getId());
+
+        PostAsync(url, job, response);
     }
 
-    public void GetSyncJobItems(SyncJobItemQuery query, Response<QueryResult<SyncJobItem>> response) {
+    public void GetSyncJobItemFile(String id, Response<InputStream> response){
 
-        // TODO
+        getResponseStream(getSyncJobItemFileUrl(id), response);
+    }
+
+    public String getSyncJobItemFileUrl(String id)
+    {
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
+        {
+            throw new IllegalArgumentException("id");
+        }
+
+        return GetApiUrl("Sync/JobItems/" + id + "/File");
+    }
+
+    public void GetSyncJobs(SyncJobQuery query, Response<SyncJobQueryResult> response) {
+
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        dict.AddIfNotNull("Limit", query.getLimit());
+        dict.AddIfNotNull("StartIndex", query.getStartIndex());
+        dict.AddIfNotNull("SyncNewContent", query.getSyncNewContent());
+        dict.AddIfNotNullOrEmpty("TargetId", query.getTargetId());
+
+        dict.AddIfNotNull("Statuses", query.getStatuses(), ",");
+
+        String url = GetApiUrl("Sync/Jobs", dict);
+        url = AddDataFormat(url);
+
+        Send(url, "GET", new SerializedResponse<SyncJobQueryResult>(response, jsonSerializer, SyncJobQueryResult.class));
+    }
+
+    public void GetSyncJobItems(SyncJobItemQuery query, Response<SyncJobItemQueryResult> response) {
+
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        dict.AddIfNotNullOrEmpty("JobId", query.getJobId());
+        dict.AddIfNotNull("Limit", query.getLimit());
+        dict.AddIfNotNull("StartIndex", query.getStartIndex());
+        dict.AddIfNotNullOrEmpty("TargetId", query.getTargetId());
+
+        dict.AddIfNotNull("Statuses", query.getStatuses(), ",");
+
+        String url = GetApiUrl("Sync/JobItems", dict);
+        url = AddDataFormat(url);
+
+        Send(url, "GET", new SerializedResponse<SyncJobItemQueryResult>(response, jsonSerializer, SyncJobItemQueryResult.class));
     }
 
     public void ReportSyncJobItemTransferred(String id, EmptyResponse response) {
 
-        // TODO
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
+        {
+            throw new IllegalArgumentException("id");
+        }
+
+        String url = GetApiUrl("Sync/JobItems/" + id + "/Transferred");
+
+        PostAsync(url, response);
     }
 
     public void GetOfflineUser(String id, Response<UserDto> response) {
@@ -2559,4 +2632,16 @@ public class ApiClient extends BaseApiClient {
         String json = getJsonSerializer().SerializeToString(request);
         Send(url, "POST", json, "application/json", new SerializedResponse<SyncDataResponse>(response, jsonSerializer, SyncDataResponse.class));
     }
+
+    public void getSyncJobItemAdditionalFile(String syncJobItemId, String filename, Response<InputStream> response){
+
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        dict.AddIfNotNullOrEmpty("Name", filename);
+
+        String url = GetApiUrl("Sync/JobItems/" + syncJobItemId + "/AdditionalFiles", dict);
+
+        getResponseStream(url, response);
+    }
+
 }

@@ -1,4 +1,4 @@
-package mediabrowser.apiinteraction.sync.server;
+package mediabrowser.apiinteraction.sync.server.mediasync;
 
 import mediabrowser.apiinteraction.sync.SyncProgress;
 import mediabrowser.apiinteraction.tasks.Progress;

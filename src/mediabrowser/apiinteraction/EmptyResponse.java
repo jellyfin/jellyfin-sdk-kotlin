@@ -15,6 +15,10 @@ public class EmptyResponse implements IResponse {
 
     public void onResponse()
     {
+        triggerInnerResponse();
+    }
+
+    protected void triggerInnerResponse(){
         if (innerResponse != null && innerResponse instanceof EmptyResponse){
 
             EmptyResponse emptyResponse = (EmptyResponse)innerResponse;

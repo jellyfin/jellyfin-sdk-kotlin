@@ -873,20 +873,6 @@ public abstract class BaseApiClient implements IDisposable
 	/** 
 	 Gets an image url that can be used to download an image from the api
 	 
-	 @param year The year.
-	 @param options The options.
-	 @return System.String.
-	*/
-	public final String GetYearImageUrl(int year, ImageOptions options)
-	{
-		String url = "Years/" + year + "/Images/" + options.getImageType();
-
-		return GetImageUrl(url, options, new QueryStringDictionary());
-	}
-
-	/** 
-	 Gets an image url that can be used to download an image from the api
-	 
 	 @param name The name.
 	 @param options The options.
 	 @return System.String.

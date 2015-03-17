@@ -1,4 +1,4 @@
-package mediabrowser.apiinteraction.sync;
+package mediabrowser.apiinteraction.sync.server.mediasync;
 
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.EmptyResponse;
@@ -8,14 +8,20 @@ import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.apiclient.ServerUserInfo;
+import mediabrowser.model.devices.LocalFileInfo;
+import mediabrowser.model.dto.ImageOptions;
+import mediabrowser.model.dto.MediaSourceInfo;
+import mediabrowser.model.entities.ImageType;
+import mediabrowser.model.entities.MediaStream;
+import mediabrowser.model.entities.MediaStreamType;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.sync.ItemFileInfo;
 import mediabrowser.model.sync.LocalItem;
 import mediabrowser.model.sync.SyncDataRequest;
-import mediabrowser.model.sync.SyncDataResponse;
+import mediabrowser.model.sync.SyncedItem;
 import mediabrowser.model.users.UserAction;
 
-import java.lang.reflect.Array;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
@@ -45,12 +51,12 @@ public class MediaSync {
         logger.Debug("Beginning media sync process with server Id: {0}", serverInfo.getId());
 
         // First report actions to the server that occurred while offline
-        ReportOfflineActions(apiClient, serverInfo, new EmptyResponse(){
+        ReportOfflineActions(apiClient, serverInfo, new EmptyResponse() {
 
             @Override
-            public  void onResponse(){
+            public void onResponse() {
 
-                if (cancellationToken.isCancellationRequested()){
+                if (cancellationToken.isCancellationRequested()) {
                     progress.reportCancelled();
                     return;
                 }
@@ -79,20 +85,7 @@ public class MediaSync {
                                 progress.report(99.0);
 
                                 // Do the data sync twice so the server knows what was removed from the device
-                                SyncData(apiClient, serverInfo, true, new EmptyResponse() {
-
-                                    @Override
-                                    public void onResponse() {
-
-                                        logger.Debug("Completed media sync process with server Id: {0}", serverInfo.getId());
-                                        progress.reportComplete();
-                                    }
-
-                                    @Override
-                                    public void onError(Exception ex) {
-                                        progress.reportError(ex);
-                                    }
-                                });
+                                SyncData(apiClient, serverInfo, true, new SecondSyncDataResponse(logger, serverInfo, progress));
                             }
 
                             @Override
@@ -111,7 +104,7 @@ public class MediaSync {
             }
 
             @Override
-            public void onError(Exception ex){
+            public void onError(Exception ex) {
                 progress.reportError(ex);
             }
         });
@@ -135,35 +128,7 @@ public class MediaSync {
         }
         request.setOfflineUserIds(offlineUserIds);
 
-        apiClient.SyncData(request, new Response<SyncDataResponse>(response){
-
-            @Override
-            public void onResponse(SyncDataResponse result) {
-
-                for(String itemIdToRemove : result.getItemIdsToRemove())
-                {
-                    removeItem(serverInfo.getId(), itemIdToRemove);
-                }
-
-                if (syncUserItemAccess)
-                {
-                    for (String itemId : result.getItemUserAccess().keySet())
-                    {
-                        LocalItem localItem = localAssetManager.getLocalItem(serverInfo.getId(), itemId);
-
-                        ArrayList<String> userIdsWithAccess = result.getItemUserAccess().get(itemId);
-
-                        if (!userIdsWithAccess.equals(localItem.getUserIdsWithAccess()))
-                        {
-                            localItem.setUserIdsWithAccess(userIdsWithAccess);
-                            localAssetManager.addOrUpdate(localItem);
-                        }
-                    }
-                }
-
-                response.onResponse();
-            }
-        });
+        apiClient.SyncData(request, new SyncDataInnerResponse(response, localAssetManager, serverInfo, syncUserItemAccess));
     }
 
     private void GetNewMedia(ApiClient apiClient,
@@ -175,6 +140,76 @@ public class MediaSync {
         response.onResponse();
     }
 
+    private void DownloadImage(ApiClient apiClient,
+                                     final String serverId,
+                                     final String itemId,
+                                     final String imageTag,
+                                     ImageType imageType,
+                                     EmptyResponse response)
+    {
+        boolean hasImage = localAssetManager.hasImage(serverId, itemId, imageTag);
+
+        if (hasImage)
+        {
+            response.onResponse();
+            return;
+        }
+
+        ImageOptions options = new ImageOptions();
+        options.setImageType(imageType);
+        options.setTag(imageTag);
+
+        String url = apiClient.GetImageUrl(itemId, options);
+
+        apiClient.getResponseStream(url, new Response<InputStream>(response) {
+
+            @Override
+            public void onResponse(InputStream stream) {
+
+                localAssetManager.saveImage(serverId, itemId, imageTag, stream);
+                triggerInnerResponse();
+            }
+        });
+    }
+
+    private void DownloadSubtitle(ApiClient apiClient,
+                                  SyncedItem jobItem,
+                                  final LocalItem item,
+                                  MediaSourceInfo mediaSource,
+                                  ItemFileInfo file,
+                                  final EmptyResponse response)
+    {
+        MediaStream subtitleStream = null;
+
+        for(MediaStream stream : mediaSource.getMediaStreams()){
+            if (stream.getType() == MediaStreamType.Subtitle && stream.getIndex()== file.getIndex()){
+                subtitleStream = stream;
+                break;
+            }
+        }
+
+        if (subtitleStream == null){
+            response.onError(new Exception("MediaStream not found."));
+            return;
+        }
+
+        final MediaStream finalSubtitleStream = subtitleStream;
+
+        apiClient.getSyncJobItemAdditionalFile(jobItem.getSyncJobItemId(), file.getName(), new Response<InputStream>(response){
+            @Override
+            public void onResponse(InputStream stream) {
+
+                String path = localAssetManager.saveSubtitles(stream, finalSubtitleStream.getCodec(), item, finalSubtitleStream.getLanguage(), finalSubtitleStream.getIsForced());
+
+                finalSubtitleStream.setPath(path);
+
+                localAssetManager.addOrUpdate(item);
+
+                triggerInnerResponse();
+            }
+        });
+    }
+
     private void ReportOfflineActions(ApiClient apiClient,
                                       ServerInfo serverInfo,
                                       final EmptyResponse response){
@@ -183,17 +218,7 @@ public class MediaSync {
 
         logger.Debug("Reporting "+actions.size()+" offline actions to server " + serverInfo.getId());
 
-        EmptyResponse onUserActionsReported = new EmptyResponse(response){
-
-            @Override
-            public  void onResponse(){
-                for (UserAction action : actions)
-                {
-                    localAssetManager.delete(action);
-                }
-                response.onResponse();
-            }
-        };
+        EmptyResponse onUserActionsReported = new UserActionsReportedResponse(response, actions, localAssetManager);
 
         if (actions.size() > 0)
         {
@@ -202,24 +227,5 @@ public class MediaSync {
         else{
             onUserActionsReported.onResponse();
         }
-    }
-
-    private void removeItem(String serverId, String itemId)
-    {
-        LocalItem localItem = localAssetManager.getLocalItem(serverId, itemId);
-
-        if (localItem == null)
-        {
-            return;
-        }
-
-        ArrayList<ItemFileInfo> files = localAssetManager.getFiles(localItem);
-
-        for (ItemFileInfo file : files)
-        {
-            localAssetManager.deleteFile(file.getPath());
-        }
-
-        localAssetManager.delete(localItem);
     }
 }

@@ -63,12 +63,12 @@ public class SyncJobQuery
 	 
 	 <value>The status.</value>
 	*/
-	private java.util.ArrayList<SyncJobStatus> Statuses;
-	public final java.util.ArrayList<SyncJobStatus> getStatuses()
+	private SyncJobStatus[] Statuses;
+	public final SyncJobStatus[] getStatuses()
 	{
 		return Statuses;
 	}
-	public final void setStatuses(java.util.ArrayList<SyncJobStatus> value)
+	public final void setStatuses(SyncJobStatus[] value)
 	{
 		Statuses = value;
 	}
@@ -89,6 +89,6 @@ public class SyncJobQuery
 
 	public SyncJobQuery()
 	{
-		setStatuses(new java.util.ArrayList<SyncJobStatus>());
+		setStatuses(new SyncJobStatus[]{});
 	}
 }
