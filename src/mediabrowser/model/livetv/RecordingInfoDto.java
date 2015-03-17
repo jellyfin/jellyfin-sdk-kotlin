@@ -650,6 +650,11 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto, IHa
 		Type = value;
 	}
 
+	/** 
+	 Gets or sets the media sources.
+	 
+	 <value>The media sources.</value>
+	*/
 	private java.util.ArrayList<MediaSourceInfo> MediaSources;
 	public final java.util.ArrayList<MediaSourceInfo> getMediaSources()
 	{

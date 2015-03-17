@@ -38,9 +38,15 @@ public class MultiServerSync {
             progress.reportCancelled();
         }
 
-        final ServerInfo server = servers.get(index);
+        ServerInfo server = servers.get(index);
         final int numServers = servers.size();
         final double[] numComplete = {0};
+
+        ServerInfo freshServerInfo = connectionManager.getServerInfo(server.getId());
+
+        if (freshServerInfo != null){
+            server = freshServerInfo;
+        }
 
         new ServerSync(connectionManager, logger, localAssetManager).Sync(server, cancellationToken, new MultiServerSyncProgress(this, servers, cancellationToken, index, numServers, numComplete, progress));
     }

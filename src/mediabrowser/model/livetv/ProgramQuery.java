@@ -1,23 +1,32 @@
 package mediabrowser.model.livetv;
 
+import mediabrowser.model.entities.*;
+
 /** 
  Class ProgramQuery.
 */
 public class ProgramQuery
 {
-	/** 
-	 Gets or sets the channel identifier.
-	 
-	 <value>The channel identifier.</value>
-	*/
-	private String[] ChannelIdList;
-	public final String[] getChannelIdList()
+	public ProgramQuery()
 	{
-		return ChannelIdList;
+		setChannelIds(new String[] { });
+		setSortBy(new String[] { });
+		setGenres(new String[] { });
 	}
-	public final void setChannelIdList(String[] value)
+
+	/** 
+	 Gets or sets the channel ids.
+	 
+	 <value>The channel ids.</value>
+	*/
+	private String[] ChannelIds;
+	public final String[] getChannelIds()
 	{
-		ChannelIdList = value;
+		return ChannelIds;
+	}
+	public final void setChannelIds(String[] value)
+	{
+		ChannelIds = value;
 	}
 
 	/** 
@@ -35,6 +44,9 @@ public class ProgramQuery
 		UserId = value;
 	}
 
+	/** 
+	 The earliest date for which a program starts to return
+	*/
 	private java.util.Date MinStartDate = null;
 	public final java.util.Date getMinStartDate()
 	{
@@ -45,6 +57,9 @@ public class ProgramQuery
 		MinStartDate = value;
 	}
 
+	/** 
+	 The latest date for which a program starts to return
+	*/
 	private java.util.Date MaxStartDate = null;
 	public final java.util.Date getMaxStartDate()
 	{
@@ -55,6 +70,9 @@ public class ProgramQuery
 		MaxStartDate = value;
 	}
 
+	/** 
+	 The earliest date for which a program ends to return
+	*/
 	private java.util.Date MinEndDate = null;
 	public final java.util.Date getMinEndDate()
 	{
@@ -65,6 +83,9 @@ public class ProgramQuery
 		MinEndDate = value;
 	}
 
+	/** 
+	 The latest date for which a program ends to return
+	*/
 	private java.util.Date MaxEndDate = null;
 	public final java.util.Date getMaxEndDate()
 	{
@@ -75,6 +96,39 @@ public class ProgramQuery
 		MaxEndDate = value;
 	}
 
+	/** 
+	 Used to specific whether to return movies or not
+	 
+	 If set to null, all programs will be returned
+	*/
+	private Boolean IsMovie = null;
+	public final Boolean getIsMovie()
+	{
+		return IsMovie;
+	}
+	public final void setIsMovie(Boolean value)
+	{
+		IsMovie = value;
+	}
+
+	/** 
+	 Skips over a given number of items within the results. Use for paging.
+	*/
+	private Integer StartIndex = null;
+	public final Integer getStartIndex()
+	{
+		return StartIndex;
+	}
+	public final void setStartIndex(Integer value)
+	{
+		StartIndex = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance has aired.
+	 
+	 <value><c>null</c> if [has aired] contains no value, <c>true</c> if [has aired]; otherwise, <c>false</c>.</value>
+	*/
 	private Boolean HasAired = null;
 	public final Boolean getHasAired()
 	{
@@ -85,8 +139,61 @@ public class ProgramQuery
 		HasAired = value;
 	}
 
-	public ProgramQuery()
+	/** 
+	 The maximum number of items to return
+	*/
+	private Integer Limit = null;
+	public final Integer getLimit()
 	{
-		setChannelIdList(new String[] { });
+		return Limit;
+	}
+	public final void setLimit(Integer value)
+	{
+		Limit = value;
+	}
+
+	/** 
+	 What to sort the results by
+	 
+	 <value>The sort by.</value>
+	*/
+	private String[] SortBy;
+	public final String[] getSortBy()
+	{
+		return SortBy;
+	}
+	public final void setSortBy(String[] value)
+	{
+		SortBy = value;
+	}
+
+	/** 
+	 The sort order to return results with
+	 
+	 <value>The sort order.</value>
+	*/
+	private SortOrder SortOrder = null;
+	public final SortOrder getSortOrder()
+	{
+		return SortOrder;
+	}
+	public final void setSortOrder(SortOrder value)
+	{
+		SortOrder = value;
+	}
+
+	/** 
+	 Limit results to items containing specific genres
+	 
+	 <value>The genres.</value>
+	*/
+	private String[] Genres;
+	public final String[] getGenres()
+	{
+		return Genres;
+	}
+	public final void setGenres(String[] value)
+	{
+		Genres = value;
 	}
 }

@@ -97,6 +97,19 @@ public class ConnectionManager implements IConnectionManager {
         return apiClients.get(serverId);
     }
 
+    @Override
+    public ServerInfo getServerInfo(String serverId) {
+
+        final ServerCredentials credentials = credentialProvider.GetCredentials();
+
+        for (ServerInfo server : credentials.getServers()){
+            if (StringHelper.EqualsIgnoreCase(server.getId(), serverId)){
+                return  server;
+            }
+        }
+        return null;
+    }
+
     void OnConnectUserSignIn(ConnectUser user){
 
         connectUser = user;

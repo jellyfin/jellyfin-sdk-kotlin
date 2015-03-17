@@ -23,21 +23,13 @@ public class StreamBuilder
 	{
 		ValidateAudioInput(options);
 
-		java.util.ArrayList<MediaSourceInfo> mediaSources = options.getMediaSources();
-
-		// If the client wants a specific media source, filter now
-		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(options.getMediaSourceId()))
+		java.util.ArrayList<MediaSourceInfo> mediaSources = new java.util.ArrayList<MediaSourceInfo>();
+		for (MediaSourceInfo i : options.getMediaSources())
 		{
-			java.util.ArrayList<MediaSourceInfo> newMediaSources = new java.util.ArrayList<MediaSourceInfo>();
-			for (MediaSourceInfo i : mediaSources)
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(options.getMediaSourceId()) || StringHelper.EqualsIgnoreCase(i.getId(), options.getMediaSourceId()))
 			{
-				if (StringHelper.EqualsIgnoreCase(i.getId(), options.getMediaSourceId()))
-				{
-					newMediaSources.add(i);
-				}
+				mediaSources.add(i);
 			}
-
-			mediaSources = newMediaSources;
 		}
 
 		java.util.ArrayList<StreamInfo> streams = new java.util.ArrayList<StreamInfo>();
@@ -63,21 +55,13 @@ public class StreamBuilder
 	{
 		ValidateInput(options);
 
-		java.util.ArrayList<MediaSourceInfo> mediaSources = options.getMediaSources();
-
-		// If the client wants a specific media source, filter now
-		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(options.getMediaSourceId()))
+		java.util.ArrayList<MediaSourceInfo> mediaSources = new java.util.ArrayList<MediaSourceInfo>();
+		for (MediaSourceInfo i : options.getMediaSources())
 		{
-			java.util.ArrayList<MediaSourceInfo> newMediaSources = new java.util.ArrayList<MediaSourceInfo>();
-			for (MediaSourceInfo i : mediaSources)
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(options.getMediaSourceId()) || StringHelper.EqualsIgnoreCase(i.getId(), options.getMediaSourceId()))
 			{
-				if (StringHelper.EqualsIgnoreCase(i.getId(), options.getMediaSourceId()))
-				{
-					newMediaSources.add(i);
-				}
+				mediaSources.add(i);
 			}
-
-			mediaSources = newMediaSources;
 		}
 
 		java.util.ArrayList<StreamInfo> streams = new java.util.ArrayList<StreamInfo>();
@@ -139,72 +123,62 @@ public class StreamBuilder
 		tempVar.setDeviceProfile(options.getProfile());
 		StreamInfo playlistItem = tempVar;
 
-		Integer maxBitrateSetting = options.GetMaxBitrate();
+		java.util.ArrayList<PlayMethod> directPlayMethods = GetAudioDirectPlayMethods(item, options);
 
-		MediaStream audioStream = item.getDefaultAudioStream();
-
-		// Honor the max bitrate setting
-		if (IsAudioEligibleForDirectPlay(item, maxBitrateSetting))
+		if (directPlayMethods.size() > 0)
 		{
-			DirectPlayProfile directPlay = null;
-			for (DirectPlayProfile i : options.getProfile().getDirectPlayProfiles())
+			MediaStream audioStream = item.getDefaultAudioStream();
+
+			String audioCodec = audioStream == null ? null : audioStream.getCodec();
+
+			// Make sure audio codec profiles are satisfied
+			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec))
 			{
-				if (i.getType() == playlistItem.getMediaType() && IsAudioDirectPlaySupported(i, item, audioStream))
+				ConditionProcessor conditionProcessor = new ConditionProcessor();
+
+				java.util.ArrayList<ProfileCondition> conditions = new java.util.ArrayList<ProfileCondition>();
+				for (CodecProfile i : options.getProfile().getCodecProfiles())
 				{
-					directPlay = i;
-					break;
+					if (i.getType() == CodecType.Audio && i.ContainsCodec(audioCodec))
+					{
+						for (ProfileCondition c : i.getConditions())
+						{
+							conditions.add(c);
+						}
+					}
 				}
-			}
 
-			if (directPlay != null)
-			{
-				String audioCodec = audioStream == null ? null : audioStream.getCodec();
+				Integer audioChannels = audioStream.getChannels();
+				Integer audioBitrate = audioStream.getBitRate();
 
-				// Make sure audio codec profiles are satisfied
-				if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec))
+				boolean all = true;
+				for (ProfileCondition c : conditions)
 				{
-					ConditionProcessor conditionProcessor = new ConditionProcessor();
-
-					java.util.ArrayList<ProfileCondition> conditions = new java.util.ArrayList<ProfileCondition>();
-					for (CodecProfile i : options.getProfile().getCodecProfiles())
+					if (!conditionProcessor.IsAudioConditionSatisfied(c, audioChannels, audioBitrate))
 					{
-						if (i.getType() == CodecType.Audio && i.ContainsCodec(audioCodec))
-						{
-							for (ProfileCondition c : i.getConditions())
-							{
-								conditions.add(c);
-							}
-						}
+						all = false;
+						break;
+					}
+				}
+
+				if (all)
+				{
+					if (item.getProtocol() == MediaProtocol.File && directPlayMethods.contains(PlayMethod.DirectPlay) && _localPlayer.CanAccessFile(item.getPath()))
+					{
+						playlistItem.setPlayMethod(PlayMethod.DirectPlay);
+					}
+					else if (item.getProtocol() == MediaProtocol.Http && directPlayMethods.contains(PlayMethod.DirectPlay) && _localPlayer.CanAccessUrl(item.getPath(), item.getRequiredHttpHeaders().size() > 0))
+					{
+						playlistItem.setPlayMethod(PlayMethod.DirectPlay);
+					}
+					else if (directPlayMethods.contains(PlayMethod.DirectStream))
+					{
+						playlistItem.setPlayMethod(PlayMethod.DirectStream);
 					}
 
-					Integer audioChannels = audioStream.getChannels();
-					Integer audioBitrate = audioStream.getBitRate();
+					playlistItem.setContainer(item.getContainer());
 
-					boolean all = true;
-					for (ProfileCondition c : conditions)
-					{
-						if (!conditionProcessor.IsAudioConditionSatisfied(c, audioChannels, audioBitrate))
-						{
-							all = false;
-							break;
-						}
-					}
-
-					if (all)
-					{
-						if (item.getProtocol() == MediaProtocol.File && _localPlayer.CanAccessFile(item.getPath()))
-						{
-							playlistItem.setPlayMethod(PlayMethod.DirectPlay);
-						}
-						else
-						{
-							playlistItem.setPlayMethod(PlayMethod.DirectStream);
-						}
-
-						playlistItem.setContainer(item.getContainer());
-
-						return playlistItem;
-					}
+					return playlistItem;
 				}
 			}
 		}
@@ -275,6 +249,41 @@ public class StreamBuilder
 		}
 
 		return playlistItem;
+	}
+
+	private java.util.ArrayList<PlayMethod> GetAudioDirectPlayMethods(MediaSourceInfo item, AudioOptions options)
+	{
+		MediaStream audioStream = item.getDefaultAudioStream();
+
+		DirectPlayProfile directPlayProfile = null;
+		for (DirectPlayProfile i : options.getProfile().getDirectPlayProfiles())
+		{
+			if (i.getType() == DlnaProfileType.Audio && IsAudioDirectPlaySupported(i, item, audioStream))
+			{
+				directPlayProfile = i;
+				break;
+			}
+		}
+
+		java.util.ArrayList<PlayMethod> playMethods = new java.util.ArrayList<PlayMethod>();
+
+		if (directPlayProfile != null)
+		{
+			// While options takes the network and other factors into account. Only applies to direct stream
+			if (item.getSupportsDirectStream() && IsAudioEligibleForDirectPlay(item, options.GetMaxBitrate()))
+			{
+				playMethods.add(PlayMethod.DirectStream);
+			}
+
+			// The profile describes what the device supports
+			// If device requirements are satisfied then allow both direct stream and direct play
+			if (IsAudioEligibleForDirectPlay(item, options.getProfile().getMaxStaticBitrate()))
+			{
+				playMethods.add(PlayMethod.DirectPlay);
+			}
+		}
+
+		return playMethods;
 	}
 
 	private StreamInfo BuildVideoItem(MediaSourceInfo item, VideoOptions options)
@@ -559,9 +568,17 @@ public class StreamBuilder
 			}
 		}
 
-		else if (mediaSource.getProtocol() == MediaProtocol.File && _localPlayer.CanAccessFile(mediaSource.getPath()))
+		else if (mediaSource.getProtocol() == MediaProtocol.File)
 		{
-			return PlayMethod.DirectPlay;
+			if (_localPlayer.CanAccessFile(mediaSource.getPath()))
+			{
+				return PlayMethod.DirectPlay;
+			}
+		}
+
+		if (!mediaSource.getSupportsDirectStream())
+		{
+			return null;
 		}
 
 		return PlayMethod.DirectStream;

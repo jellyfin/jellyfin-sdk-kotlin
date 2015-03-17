@@ -59,6 +59,34 @@ public class SyncJob
 		Quality = value;
 	}
 	/** 
+	 Gets or sets the bitrate.
+	 
+	 <value>The bitrate.</value>
+	*/
+	private Integer Bitrate = null;
+	public final Integer getBitrate()
+	{
+		return Bitrate;
+	}
+	public final void setBitrate(Integer value)
+	{
+		Bitrate = value;
+	}
+	/** 
+	 Gets or sets the profile.
+	 
+	 <value>The profile.</value>
+	*/
+	private String Profile;
+	public final String getProfile()
+	{
+		return Profile;
+	}
+	public final void setProfile(String value)
+	{
+		Profile = value;
+	}
+	/** 
 	 Gets or sets the category.
 	 
 	 <value>The category.</value>

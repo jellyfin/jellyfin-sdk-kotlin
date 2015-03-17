@@ -101,6 +101,15 @@ public class MediaSourceInfo
 	{
 		SupportsTranscoding = value;
 	}
+	private boolean SupportsDirectStream;
+	public final boolean getSupportsDirectStream()
+	{
+		return SupportsDirectStream;
+	}
+	public final void setSupportsDirectStream(boolean value)
+	{
+		SupportsDirectStream = value;
+	}
 
 	private VideoType VideoType = null;
 	public final VideoType getVideoType()
@@ -197,6 +206,7 @@ public class MediaSourceInfo
 		setRequiredHttpHeaders(new java.util.HashMap<String, String>());
 		setPlayableStreamFileNames(new java.util.ArrayList<String>());
 		setSupportsTranscoding(true);
+		setSupportsDirectStream(true);
 	}
 
 	private Integer DefaultAudioStreamIndex = null;

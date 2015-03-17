@@ -1,6 +1,6 @@
 package mediabrowser.model.sync;
 
-public class SyncQualityOption
+public class SyncProfileOption
 {
 	/** 
 	 Gets or sets the name.
@@ -57,5 +57,24 @@ public class SyncQualityOption
 	public final void setIsDefault(boolean value)
 	{
 		IsDefault = value;
+	}
+	/** 
+	 Gets or sets a value indicating whether [enable quality options].
+	 
+	 <value><c>true</c> if [enable quality options]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean EnableQualityOptions;
+	public final boolean getEnableQualityOptions()
+	{
+		return EnableQualityOptions;
+	}
+	public final void setEnableQualityOptions(boolean value)
+	{
+		EnableQualityOptions = value;
+	}
+
+	public SyncProfileOption()
+	{
+		setEnableQualityOptions(true);
 	}
 }

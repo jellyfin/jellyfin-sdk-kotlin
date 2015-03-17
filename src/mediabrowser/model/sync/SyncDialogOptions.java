@@ -44,11 +44,26 @@ public class SyncDialogOptions
 	{
 		QualityOptions = value;
 	}
+	/** 
+	 Gets or sets the profile options.
+	 
+	 <value>The profile options.</value>
+	*/
+	private java.util.ArrayList<SyncProfileOption> ProfileOptions;
+	public final java.util.ArrayList<SyncProfileOption> getProfileOptions()
+	{
+		return ProfileOptions;
+	}
+	public final void setProfileOptions(java.util.ArrayList<SyncProfileOption> value)
+	{
+		ProfileOptions = value;
+	}
 
 	public SyncDialogOptions()
 	{
 		setTargets(new java.util.ArrayList<SyncTarget>());
 		setOptions(new java.util.ArrayList<SyncJobOption>());
 		setQualityOptions(new java.util.ArrayList<SyncQualityOption>());
+		setProfileOptions(new java.util.ArrayList<SyncProfileOption>());
 	}
 }

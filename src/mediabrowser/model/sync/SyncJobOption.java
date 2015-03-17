@@ -6,7 +6,8 @@ public enum SyncJobOption
 	Quality(1),
 	UnwatchedOnly(2),
 	SyncNewContent(3),
-	ItemLimit(4);
+	ItemLimit(4),
+	Profile(5);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, SyncJobOption> mappings;

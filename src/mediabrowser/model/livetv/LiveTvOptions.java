@@ -11,4 +11,18 @@ public class LiveTvOptions
 	{
 		GuideDays = value;
 	}
+	private boolean EnableMovieProviders;
+	public final boolean getEnableMovieProviders()
+	{
+		return EnableMovieProviders;
+	}
+	public final void setEnableMovieProviders(boolean value)
+	{
+		EnableMovieProviders = value;
+	}
+
+	public LiveTvOptions()
+	{
+		setEnableMovieProviders(true);
+	}
 }

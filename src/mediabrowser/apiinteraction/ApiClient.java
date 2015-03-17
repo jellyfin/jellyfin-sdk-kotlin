@@ -1945,9 +1945,9 @@ public class ApiClient extends BaseApiClient {
 
         dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
 
-        if (query.getChannelIdList() != null)
+        if (query.getChannelIds() != null)
         {
-            dict.Add("ChannelIds", tangible.DotNetToJavaStringHelper.join(",", query.getChannelIdList()));
+            dict.Add("ChannelIds", tangible.DotNetToJavaStringHelper.join(",", query.getChannelIds()));
         }
 
         // TODO: This endpoint supports POST if the query String is too long

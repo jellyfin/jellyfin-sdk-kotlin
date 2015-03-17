@@ -61,4 +61,19 @@ public class RecommendedProgramQuery
 	{
 		Limit = value;
 	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance is movie.
+	 
+	 <value><c>null</c> if [is movie] contains no value, <c>true</c> if [is movie]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean IsMovie;
+	public final Boolean getIsMovie()
+	{
+		return IsMovie;
+	}
+	public final void setIsMovie(Boolean value)
+	{
+		IsMovie = value;
+	}
 }

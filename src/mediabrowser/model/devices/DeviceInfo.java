@@ -100,6 +100,20 @@ public class DeviceInfo
 		AppName = value;
 	}
 	/** 
+	 Gets or sets the application version.
+	 
+	 <value>The application version.</value>
+	*/
+	private String AppVersion;
+	public final String getAppVersion()
+	{
+		return AppVersion;
+	}
+	public final void setAppVersion(String value)
+	{
+		AppVersion = value;
+	}
+	/** 
 	 Gets or sets the last user identifier.
 	 
 	 <value>The last user identifier.</value>

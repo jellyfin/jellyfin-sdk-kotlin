@@ -83,18 +83,18 @@ public class ItemQuery
 	}
 
 	/** 
-	 Filter by artists
+	 Gets or sets the artist ids.
 	 
-	 <value>The artists.</value>
+	 <value>The artist ids.</value>
 	*/
-	private String[] Artists;
-	public final String[] getArtists()
+	private String[] ArtistIds;
+	public final String[] getArtistIds()
 	{
-		return Artists;
+		return ArtistIds;
 	}
-	public final void setArtists(String[] value)
+	public final void setArtistIds(String[] value)
 	{
-		Artists = value;
+		ArtistIds = value;
 	}
 
 	/** 
@@ -218,33 +218,18 @@ public class ItemQuery
 	}
 
 	/** 
-	 Limit results to items containing specific genres
+	 Gets or sets the studio ids.
 	 
-	 <value>The genres.</value>
+	 <value>The studio ids.</value>
 	*/
-	private String[] AllGenres;
-	public final String[] getAllGenres()
+	private String[] StudioIds;
+	public final String[] getStudioIds()
 	{
-		return AllGenres;
+		return StudioIds;
 	}
-	public final void setAllGenres(String[] value)
+	public final void setStudioIds(String[] value)
 	{
-		AllGenres = value;
-	}
-
-	/** 
-	 Limit results to items containing specific studios
-	 
-	 <value>The studios.</value>
-	*/
-	private String[] Studios;
-	public final String[] getStudios()
-	{
-		return Studios;
-	}
-	public final void setStudios(String[] value)
-	{
-		Studios = value;
+		StudioIds = value;
 	}
 
 	/** 
@@ -788,13 +773,13 @@ public class ItemQuery
 		setVideoTypes(new VideoType[] { });
 
 		setGenres(new String[] { });
-		setStudios(new String[] { });
+		setStudioIds(new String[] { });
 		setIncludeItemTypes(new String[] { });
 		setExcludeItemTypes(new String[] { });
 		setYears(new int[] { });
 		setPersonTypes(new String[] { });
 		setIds(new String[] { });
-		setArtists(new String[] { });
+		setArtistIds(new String[] { });
 
 		setImageTypes(new ImageType[] { });
 		setAirDays(new String[] { });

@@ -220,6 +220,15 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	{
 		IsUnidentified = value;
 	}
+	private Boolean HasDynamicCategories = null;
+	public final Boolean getHasDynamicCategories()
+	{
+		return HasDynamicCategories;
+	}
+	public final void setHasDynamicCategories(Boolean value)
+	{
+		HasDynamicCategories = value;
+	}
 
 	private Integer AnimeSeriesIndex = null;
 	public final Integer getAnimeSeriesIndex()
@@ -1252,6 +1261,21 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	}
 
 	/** 
+	 Gets or sets the artist items.
+	 
+	 <value>The artist items.</value>
+	*/
+	private java.util.ArrayList<NameIdPair> ArtistItems;
+	public final java.util.ArrayList<NameIdPair> getArtistItems()
+	{
+		return ArtistItems;
+	}
+	public final void setArtistItems(java.util.ArrayList<NameIdPair> value)
+	{
+		ArtistItems = value;
+	}
+
+	/** 
 	 Gets or sets the album.
 	 
 	 <value>The album.</value>
@@ -1353,6 +1377,21 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setAlbumArtist(String value)
 	{
 		AlbumArtist = value;
+	}
+
+	/** 
+	 Gets or sets the album artists.
+	 
+	 <value>The album artists.</value>
+	*/
+	private java.util.ArrayList<NameIdPair> AlbumArtists;
+	public final java.util.ArrayList<NameIdPair> getAlbumArtists()
+	{
+		return AlbumArtists;
+	}
+	public final void setAlbumArtists(java.util.ArrayList<NameIdPair> value)
+	{
+		AlbumArtists = value;
 	}
 
 	/** 

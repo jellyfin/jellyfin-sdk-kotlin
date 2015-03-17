@@ -419,12 +419,11 @@ public abstract class BaseApiClient implements IDisposable
 
 		dict.AddIfNotNull("MediaTypes", query.getMediaTypes());
 		dict.AddIfNotNull("Genres", query.getGenres(), "|");
-		dict.AddIfNotNull("Genres", query.getAllGenres(), "|");
 		dict.AddIfNotNull("Ids", query.getIds());
-		dict.AddIfNotNull("Studios", query.getStudios(), "|");
+		dict.AddIfNotNull("StudioIds", query.getStudioIds(), "|");
 		dict.AddIfNotNull("ExcludeItemTypes", query.getExcludeItemTypes());
 		dict.AddIfNotNull("IncludeItemTypes", query.getIncludeItemTypes());
-		dict.AddIfNotNull("Artists", query.getArtists());
+		dict.AddIfNotNull("ArtistIds", query.getArtistIds());
 
 		dict.AddIfNotNull("IsPlayed", query.getIsPlayed());
 		dict.AddIfNotNull("IsInBoxSet", query.getIsInBoxSet());
@@ -572,39 +571,6 @@ public abstract class BaseApiClient implements IDisposable
 		}
 
 		return GetApiUrl(type + "/" + query.getId() + "/InstantMix", dict);
-	}
-
-	/** 
-	 Gets the instant mix by name URL.
-	 
-	 @param query The query.
-	 @param type The type.
-	 @return System.String.
-	 @exception System.ArgumentNullException
-	 query
-	 or
-	 type
-	 
-	*/
-	protected final String GetInstantMixByNameUrl(SimilarItemsByNameQuery query, String type)
-	{
-		if (query == null)
-		{
-			throw new IllegalArgumentException("query");
-		}
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(type))
-		{
-			throw new IllegalArgumentException("type");
-		}
-
-		QueryStringDictionary dict = new QueryStringDictionary ();
-
-		dict.AddIfNotNull("Limit", query.getLimit());
-		dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
-
-        dict.AddIfNotNull("Fields", query.getFields());
-
-		return GetApiUrl(type + "/" + GetSlugName(query.getName()) + "/InstantMix", dict);
 	}
 
 	/** 

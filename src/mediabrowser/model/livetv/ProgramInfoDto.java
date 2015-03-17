@@ -218,6 +218,21 @@ public class ProgramInfoDto implements IHasPropertyChangedEvent, IItemDto, IHasS
 	}
 
 	/** 
+	 Gets or sets the production year.
+	 
+	 <value>The production year.</value>
+	*/
+	private Integer ProductionYear = null;
+	public final Integer getProductionYear()
+	{
+		return ProductionYear;
+	}
+	public final void setProductionYear(Integer value)
+	{
+		ProductionYear = value;
+	}
+
+	/** 
 	 Gets or sets the name of the service.
 	 
 	 <value>The name of the service.</value>

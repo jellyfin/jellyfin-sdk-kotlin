@@ -22,6 +22,8 @@ public interface IConnectionManager {
 
     ApiClient GetApiClient(String serverId);
 
+    ServerInfo getServerInfo(String serverId);
+
     void Connect(Response<ConnectionResult> response);
 
     void Connect(ServerInfo server, Response<ConnectionResult> response);
