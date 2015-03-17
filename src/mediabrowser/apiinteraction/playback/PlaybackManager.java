@@ -9,7 +9,6 @@ import mediabrowser.apiinteraction.sync.data.NullAssetManager;
 import mediabrowser.model.dlna.*;
 import mediabrowser.model.dto.MediaSourceInfo;
 import mediabrowser.model.entities.MediaStream;
-import mediabrowser.model.entities.MediaStreamType;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.mediainfo.LiveMediaInfoResult;
@@ -20,7 +19,6 @@ import mediabrowser.model.session.PlaybackStopInfo;
 import mediabrowser.model.sync.LocalItem;
 import mediabrowser.model.users.UserAction;
 import mediabrowser.model.users.UserActionType;
-import org.apache.tools.ant.taskdefs.Local;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -182,7 +180,10 @@ public class PlaybackManager {
         if (!isOffline)
         {
             apiClient.ReportPlaybackStartAsync(info, response);
+            return;
         }
+
+        response.onResponse();
     }
 
     public void reportPlaybackProgress(PlaybackProgressInfo info, boolean isOffline, ApiClient apiClient, EmptyResponse response)
@@ -190,7 +191,10 @@ public class PlaybackManager {
         if (!isOffline)
         {
             apiClient.ReportPlaybackProgressAsync(info, response);
+            return;
         }
+
+        response.onResponse();
     }
 
     public void reportPlaybackStopped(PlaybackStopInfo info, final StreamInfo streamInfo, final String serverId, String userId, boolean isOffline, final ApiClient apiClient, final EmptyResponse response)
@@ -206,33 +210,10 @@ public class PlaybackManager {
             action.setUserId(userId);
 
             localAssetManager.recordUserAction(action);
+            response.onResponse();
             return;
         }
 
-        apiClient.ReportPlaybackStoppedAsync(info, new EmptyResponse(){
-
-            private void onAny(){
-
-                if (streamInfo.getMediaType() == DlnaProfileType.Video)
-                {
-                    apiClient.StopTranscodingProcesses(device.getDeviceId(), response);
-                }
-                else{
-                    response.onResponse();
-                }
-            }
-
-            @Override
-            public void onResponse(){
-                onAny();
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                logger.ErrorException("Error reporting playback stopped", ex);
-                onAny();
-            }
-        });
+        apiClient.ReportPlaybackStoppedAsync(info, new ReportPlaybackStopResponse(logger, device, apiClient, streamInfo, response));
     }
 }
