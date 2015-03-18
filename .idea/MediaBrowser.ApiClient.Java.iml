@@ -21,5 +21,6 @@
     <orderEntry type="library" name="com.jakewharton:disklrucache:2.0.2" level="project" />
     <orderEntry type="library" name="android-support-v4" level="project" />
     <orderEntry type="library" name="org.robolectric:robolectric:2.4" level="project" />
+    <orderEntry type="library" name="commons-io:commons-io:2.4" level="project" />
   </component>
 </module>

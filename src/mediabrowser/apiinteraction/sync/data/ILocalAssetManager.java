@@ -36,8 +36,6 @@ public interface ILocalAssetManager {
                                String language,
                                boolean isForced);
 
-    void saveSubtitles(InputStream stream, LocalItem localItem, ServerInfo server);
-
     LocalItem createLocalItem(BaseItemDto libraryItem, ServerInfo server, String originalFileName);
 
     LocalItem getLocalItem(String localId);

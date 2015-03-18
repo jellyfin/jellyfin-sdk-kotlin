@@ -8,6 +8,7 @@ import mediabrowser.apiinteraction.android.*;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.apiinteraction.sync.MultiServerSync;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
+import mediabrowser.apiinteraction.sync.data.LocalAssetManager;
 import mediabrowser.apiinteraction.sync.data.NullAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationTokenSource;
 import mediabrowser.logging.ConsoleLogger;
@@ -75,6 +76,7 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
                 capabilities,
                 apiEventListener);
 
+        //ILocalAssetManager localAssetManager = new LocalAssetManager(userActionRepository, itemRepository, fileRepository, userRepository, imageRepository);
         ILocalAssetManager localAssetManager = new NullAssetManager();
 
         CancellationTokenSource source = new CancellationTokenSource();

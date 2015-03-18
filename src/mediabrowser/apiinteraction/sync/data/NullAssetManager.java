@@ -54,11 +54,6 @@ public class NullAssetManager implements ILocalAssetManager {
     }
 
     @Override
-    public void saveSubtitles(InputStream stream, LocalItem localItem, ServerInfo server) {
-
-    }
-
-    @Override
     public LocalItem createLocalItem(BaseItemDto libraryItem, ServerInfo server, String originalFileName) {
         LocalItem item = new LocalItem();
 
