@@ -1138,8 +1138,8 @@ public class ApiClient extends BaseApiClient {
         }
 
         if (apiWebSocket != null && apiWebSocket.IsWebSocketOpen()){
-            //apiWebSocket.SendWebSocketMessage("ReportPlaybackProgress", info, response);
-            //return;
+            apiWebSocket.SendWebSocketMessage("ReportPlaybackProgress", info, response);
+            return;
         }
 
         String url = GetApiUrl("Sessions/Playing/Progress");
