@@ -7,7 +7,7 @@ public class SyncJobItemQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer StartIndex = null;
+	private Integer StartIndex;
 	public final Integer getStartIndex()
 	{
 		return StartIndex;
@@ -21,7 +21,7 @@ public class SyncJobItemQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer Limit = null;
+	private Integer Limit;
 	public final Integer getLimit()
 	{
 		return Limit;
@@ -77,12 +77,12 @@ public class SyncJobItemQuery
 	 
 	 <value>The status.</value>
 	*/
-	private SyncJobStatus[] Statuses;
-	public final SyncJobStatus[] getStatuses()
+	private SyncJobItemStatus[] Statuses;
+	public final SyncJobItemStatus[] getStatuses()
 	{
 		return Statuses;
 	}
-	public final void setStatuses(SyncJobStatus[] value)
+	public final void setStatuses(SyncJobItemStatus[] value)
 	{
 		Statuses = value;
 	}
@@ -103,6 +103,6 @@ public class SyncJobItemQuery
 
 	public SyncJobItemQuery()
 	{
-		setStatuses(new SyncJobStatus[]{});
+		setStatuses(new SyncJobItemStatus[] {});
 	}
 }

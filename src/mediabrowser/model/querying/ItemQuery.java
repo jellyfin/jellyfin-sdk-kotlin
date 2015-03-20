@@ -282,14 +282,14 @@ public class ItemQuery
 	 
 	 <value>The person.</value>
 	*/
-	private String Person;
-	public final String getPerson()
+	private String[] PersonIds;
+	public final String[] getPersonIds()
 	{
-		return Person;
+		return PersonIds;
 	}
-	public final void setPerson(String value)
+	public final void setPersonIds(String[] value)
 	{
-		Person = value;
+		PersonIds = value;
 	}
 
 	/** 
@@ -780,6 +780,7 @@ public class ItemQuery
 		setPersonTypes(new String[] { });
 		setIds(new String[] { });
 		setArtistIds(new String[] { });
+		setPersonIds(new String[] { });
 
 		setImageTypes(new ImageType[] { });
 		setAirDays(new String[] { });

@@ -7,7 +7,7 @@ public class SyncJobQuery
 	 
 	 <value>The start index.</value>
 	*/
-	private Integer StartIndex = null;
+	private Integer StartIndex;
 	public final Integer getStartIndex()
 	{
 		return StartIndex;
@@ -21,7 +21,7 @@ public class SyncJobQuery
 	 
 	 <value>The limit.</value>
 	*/
-	private Integer Limit = null;
+	private Integer Limit;
 	public final Integer getLimit()
 	{
 		return Limit;
@@ -77,7 +77,7 @@ public class SyncJobQuery
 	 
 	 <value><c>null</c> if [synchronize new content] contains no value, <c>true</c> if [synchronize new content]; otherwise, <c>false</c>.</value>
 	*/
-	private Boolean SyncNewContent = null;
+	private Boolean SyncNewContent;
 	public final Boolean getSyncNewContent()
 	{
 		return SyncNewContent;
@@ -89,6 +89,6 @@ public class SyncJobQuery
 
 	public SyncJobQuery()
 	{
-		setStatuses(new SyncJobStatus[]{});
+		setStatuses(new SyncJobStatus[] { });
 	}
 }

@@ -428,7 +428,7 @@ public abstract class BaseApiClient implements IDisposable
 		dict.AddIfNotNull("IsPlayed", query.getIsPlayed());
 		dict.AddIfNotNull("IsInBoxSet", query.getIsInBoxSet());
 
-		dict.AddIfNotNullOrEmpty("Person", query.getPerson());
+		dict.AddIfNotNull("PersonIds", query.getPersonIds());
 		dict.AddIfNotNull("PersonTypes", query.getPersonTypes());
 
 		dict.AddIfNotNull("Years", query.getYears());
