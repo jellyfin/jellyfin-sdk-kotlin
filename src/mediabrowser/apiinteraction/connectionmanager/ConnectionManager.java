@@ -70,15 +70,7 @@ public class ConnectionManager implements IConnectionManager {
 
         connectService = new ConnectService(jsonSerializer, logger, httpClient, applicationName, applicationVersion);
 
-        device.getResumeFromSleepObservable().addObserver(new Observer() {
-
-            @Override
-            public void update(Observable observable, Object o)
-            {
-                WakeAllServers();
-            }
-
-        });
+        device.getResumeFromSleepObservable().addObserver(new DeviceResumeFromSleepObservable(this));
     }
 
     public ClientCapabilities getClientCapabilities() {
@@ -646,7 +638,7 @@ public class ConnectionManager implements IConnectionManager {
         serverDiscovery.FindServers(1000, new FindServersInnerResponse(this, response));
     }
 
-    private void WakeAllServers()
+    void WakeAllServers()
     {
         logger.Debug("Waking all servers");
 
