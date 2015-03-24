@@ -1,7 +1,6 @@
 package mediabrowser.apiinteraction.sync.server;
 
 import mediabrowser.apiinteraction.ApiClient;
-import mediabrowser.apiinteraction.android.profiles.Api16Builder;
 import mediabrowser.apiinteraction.sync.SyncProgress;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationToken;

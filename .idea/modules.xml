@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/MediaBrowser.ApiClient.Java.iml" filepath="$PROJECT_DIR$/.idea/MediaBrowser.ApiClient.Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/android.iml" filepath="$PROJECT_DIR$/android/android.iml" />
     </modules>
   </component>
 </project>
