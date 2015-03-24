@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction.sync.data;
 
+import com.google.common.io.Files;
 import mediabrowser.apiinteraction.cryptography.Md5;
 import mediabrowser.apiinteraction.sync.data.comparators.SortNameComparator;
 import mediabrowser.model.apiclient.ServerInfo;
@@ -11,8 +12,6 @@ import mediabrowser.model.extensions.ListHelper;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.sync.*;
 import mediabrowser.model.users.UserAction;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.tools.ant.taskdefs.Local;
 
 import java.io.File;
 import java.io.InputStream;
@@ -76,7 +75,7 @@ public class LocalAssetManager implements ILocalAssetManager {
 
         ArrayList<ItemFileInfo> itemFiles = new ArrayList<ItemFileInfo>();
 
-        String name = FilenameUtils.getBaseName(item.getLocalPath());
+        String name = Files.getNameWithoutExtension(item.getLocalPath());
 
         for (DeviceFileInfo file : list)
         {
@@ -105,7 +104,7 @@ public class LocalAssetManager implements ILocalAssetManager {
     private static String[] SupportedImageExtensions = { ".png", ".jpg", ".jpeg", ".webp" };
     private boolean isImageFile(String path)
     {
-        String ext = FilenameUtils.getExtension(path);
+        String ext = Files.getFileExtension(path);
 
         return ext != null && ListHelper.ContainsIgnoreCase(SupportedImageExtensions, ext);
     }
@@ -113,7 +112,7 @@ public class LocalAssetManager implements ILocalAssetManager {
     private static String[] SupportedSubtitleExtensions = { ".srt", ".vtt" };
     private boolean isSubtitleFile(String path)
     {
-        String ext = FilenameUtils.getExtension(path);
+        String ext = Files.getFileExtension(path);
 
         return ext != null && ListHelper.ContainsIgnoreCase(SupportedSubtitleExtensions, ext);
     }
@@ -143,7 +142,7 @@ public class LocalAssetManager implements ILocalAssetManager {
     {
         String path = item.getLocalPath();
 
-        String name = FilenameUtils.getBaseName(path);
+        String name = Files.getNameWithoutExtension(path);
 
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(language))
         {
