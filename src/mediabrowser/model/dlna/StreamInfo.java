@@ -314,6 +314,16 @@ public class StreamInfo
 		SubtitleFormat = value;
 	}
 
+	private LiveMediaInfoResult PlaybackInfo;
+	public final LiveMediaInfoResult getPlaybackInfo()
+	{
+		return PlaybackInfo;
+	}
+	public final void setPlaybackInfo(LiveMediaInfoResult value)
+	{
+		PlaybackInfo = value;
+	}
+
 	public final String getMediaSourceId()
 	{
 		return getMediaSource() == null ? null : getMediaSource().getId();
@@ -375,6 +385,9 @@ public class StreamInfo
 		String tempVar6 = item.getVideoProfile();
 		list.add((tempVar6 != null) ? tempVar6 : "");
 		list.add(item.getCabac() != null ? item.getCabac().toString() : "");
+
+		String streamId = item.getPlaybackInfo() == null ? null : item.getPlaybackInfo().getStreamId();
+		list.add((streamId != null) ? streamId : "");
 
 		return String.format("Params=%1$s", tangible.DotNetToJavaStringHelper.join(";", list.toArray(new String[0])));
 	}
@@ -481,7 +494,7 @@ public class StreamInfo
 
 	private SubtitleStreamInfo GetSubtitleStreamInfo(MediaStream stream)
 	{
-		SubtitleProfile subtitleProfile = StreamBuilder.GetSubtitleProfile(stream, getDeviceProfile(), getContext());
+		SubtitleProfile subtitleProfile = StreamBuilder.GetSubtitleProfile(stream, getDeviceProfile().getSubtitleProfiles(), getContext());
 
 		if (subtitleProfile.getMethod() != SubtitleDeliveryMethod.External)
 		{
@@ -505,19 +518,7 @@ public class StreamInfo
 	{
 		if (getMediaSource() != null)
 		{
-			if (getAudioStreamIndex() != null)
-			{
-				for (MediaStream i : getMediaSource().getMediaStreams())
-				{
-					if (i.getIndex() == getAudioStreamIndex() && i.getType() == MediaStreamType.Audio)
-					{
-						return i;
-					}
-				}
-				return null;
-			}
-
-			return getMediaSource().getDefaultAudioStream();
+			return getMediaSource().GetDefaultAudioStream(getAudioStreamIndex());
 		}
 
 		return null;

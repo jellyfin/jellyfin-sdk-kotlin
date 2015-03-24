@@ -232,9 +232,14 @@ public class MediaSourceInfo
 //ORIGINAL LINE: [IgnoreDataMember] public MediaStream DefaultAudioStream
 	public final MediaStream getDefaultAudioStream()
 	{
-		if (getDefaultAudioStreamIndex() != null)
+		return GetDefaultAudioStream(getDefaultAudioStreamIndex());
+	}
+
+	public final MediaStream GetDefaultAudioStream(Integer defaultIndex)
+	{
+		if (defaultIndex != null)
 		{
-			int val = getDefaultAudioStreamIndex();
+			int val = defaultIndex;
 
 			for (MediaStream i : getMediaStreams())
 			{

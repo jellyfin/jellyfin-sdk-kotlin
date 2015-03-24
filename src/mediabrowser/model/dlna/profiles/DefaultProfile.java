@@ -14,13 +14,13 @@ public class DefaultProfile extends DeviceProfile
 
 		setXDlnaDoc("DMS-1.50");
 
-		setFriendlyName("Media Browser");
-		setManufacturer("Media Browser");
-		setModelDescription("Media Browser");
-		setModelName("Media Browser");
-		setModelNumber("Media Browser");
-		setModelUrl("http://mediabrowser.tv/");
-		setManufacturerUrl("http://mediabrowser.tv/");
+		setFriendlyName("Emby");
+		setManufacturer("Emby");
+		setModelDescription("Emby");
+		setModelName("Emby");
+		setModelNumber("Emby");
+		setModelUrl("http://emby.media/");
+		setManufacturerUrl("http://emby.media/");
 
 		setAlbumArtPn("JPEG_SM");
 

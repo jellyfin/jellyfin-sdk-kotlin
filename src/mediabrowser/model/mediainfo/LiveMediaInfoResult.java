@@ -21,18 +21,18 @@ public class LiveMediaInfoResult
 	}
 
 	/** 
-	 Gets or sets the live stream identifier.
+	 Gets or sets the stream identifier.
 	 
-	 <value>The live stream identifier.</value>
+	 <value>The stream identifier.</value>
 	*/
-	private String LiveStreamId;
-	public final String getLiveStreamId()
+	private String StreamId;
+	public final String getStreamId()
 	{
-		return LiveStreamId;
+		return StreamId;
 	}
-	public final void setLiveStreamId(String value)
+	public final void setStreamId(String value)
 	{
-		LiveStreamId = value;
+		StreamId = value;
 	}
 
 	/** 

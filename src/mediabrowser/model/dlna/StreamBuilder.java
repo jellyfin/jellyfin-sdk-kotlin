@@ -89,6 +89,13 @@ public class StreamBuilder
 		// If that doesn't produce anything, just take the first
 		for (StreamInfo i : streams)
 		{
+			if (i.getPlayMethod() == PlayMethod.DirectPlay && i.getMediaSource().getProtocol() == MediaProtocol.File)
+			{
+				return i;
+			}
+		}
+		for (StreamInfo i : streams)
+		{
 			if (i.getPlayMethod() == PlayMethod.DirectPlay)
 			{
 				return i;
@@ -123,12 +130,12 @@ public class StreamBuilder
 		tempVar.setDeviceProfile(options.getProfile());
 		StreamInfo playlistItem = tempVar;
 
-		java.util.ArrayList<PlayMethod> directPlayMethods = GetAudioDirectPlayMethods(item, options);
+		MediaStream audioStream = item.GetDefaultAudioStream(null);
+
+		java.util.ArrayList<PlayMethod> directPlayMethods = GetAudioDirectPlayMethods(item, audioStream, options);
 
 		if (directPlayMethods.size() > 0)
 		{
-			MediaStream audioStream = item.getDefaultAudioStream();
-
 			String audioCodec = audioStream == null ? null : audioStream.getCodec();
 
 			// Make sure audio codec profiles are satisfied
@@ -251,10 +258,8 @@ public class StreamBuilder
 		return playlistItem;
 	}
 
-	private java.util.ArrayList<PlayMethod> GetAudioDirectPlayMethods(MediaSourceInfo item, AudioOptions options)
+	private java.util.ArrayList<PlayMethod> GetAudioDirectPlayMethods(MediaSourceInfo item, MediaStream audioStream, AudioOptions options)
 	{
-		MediaStream audioStream = item.getDefaultAudioStream();
-
 		DirectPlayProfile directPlayProfile = null;
 		for (DirectPlayProfile i : options.getProfile().getDirectPlayProfiles())
 		{
@@ -297,22 +302,24 @@ public class StreamBuilder
 		tempVar.setDeviceProfile(options.getProfile());
 		StreamInfo playlistItem = tempVar;
 
-		Integer tempVar2 = options.getAudioStreamIndex();
-		Integer audioStreamIndex = (tempVar2 != null) ? tempVar2 : item.getDefaultAudioStreamIndex();
-		Integer tempVar3 = options.getSubtitleStreamIndex();
-		playlistItem.setSubtitleStreamIndex((tempVar3 != null) ? tempVar3 : item.getDefaultSubtitleStreamIndex());
-
-		MediaStream audioStream = audioStreamIndex != null ? item.GetMediaStream(MediaStreamType.Audio, audioStreamIndex) : null;
+		Integer tempVar2 = options.getSubtitleStreamIndex();
+		playlistItem.setSubtitleStreamIndex((tempVar2 != null) ? tempVar2 : item.getDefaultSubtitleStreamIndex());
 		MediaStream subtitleStream = playlistItem.getSubtitleStreamIndex() != null ? item.GetMediaStream(MediaStreamType.Subtitle, playlistItem.getSubtitleStreamIndex()) : null;
+
+		Integer tempVar3 = options.getAudioStreamIndex();
+		MediaStream audioStream = item.GetDefaultAudioStream((tempVar3 != null) ? tempVar3 : item.getDefaultAudioStreamIndex());
+		Integer audioStreamIndex = audioStream == null ? (Integer)null : audioStream.getIndex();
 
 		MediaStream videoStream = item.getVideoStream();
 
-		Integer maxBitrateSetting = options.GetMaxBitrate();
+		// TODO: This doesn't accout for situation of device being able to handle media bitrate, but wifi connection not fast enough
+		boolean isEligibleForDirectPlay = IsEligibleForDirectPlay(item, options.getProfile().getMaxStaticBitrate(), subtitleStream, options);
+		boolean isEligibleForDirectStream = IsEligibleForDirectPlay(item, options.GetMaxBitrate(), subtitleStream, options);
 
-		if (IsEligibleForDirectPlay(item, maxBitrateSetting, subtitleStream, options))
+		if (isEligibleForDirectPlay || isEligibleForDirectStream)
 		{
 			// See if it can be direct played
-			PlayMethod directPlay = GetVideoDirectPlayProfile(options, options.getProfile(), item, videoStream, audioStream);
+			PlayMethod directPlay = GetVideoDirectPlayProfile(options.getProfile(), item, videoStream, audioStream, isEligibleForDirectPlay, isEligibleForDirectStream);
 
 			if (directPlay != null)
 			{
@@ -321,7 +328,7 @@ public class StreamBuilder
 
 				if (subtitleStream != null)
 				{
-					SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile(), options.getContext());
+					SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile().getSubtitleProfiles(), options.getContext());
 
 					playlistItem.setSubtitleDeliveryMethod(subtitleProfile.getMethod());
 					playlistItem.setSubtitleFormat(subtitleProfile.getFormat());
@@ -351,7 +358,7 @@ public class StreamBuilder
 
 			if (subtitleStream != null)
 			{
-				SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile(), options.getContext());
+				SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile().getSubtitleProfiles(), options.getContext());
 
 				playlistItem.setSubtitleDeliveryMethod(subtitleProfile.getMethod());
 				playlistItem.setSubtitleFormat(subtitleProfile.getFormat());
@@ -408,6 +415,7 @@ public class StreamBuilder
 				playlistItem.setAudioBitrate(GetAudioBitrate(playlistItem.getTargetAudioChannels(), playlistItem.getTargetAudioCodec()));
 			}
 
+			Integer maxBitrateSetting = options.GetMaxBitrate();
 			// Honor max rate
 			if (maxBitrateSetting != null)
 			{
@@ -441,7 +449,7 @@ public class StreamBuilder
 		return 128000;
 	}
 
-	private PlayMethod GetVideoDirectPlayProfile(VideoOptions options, DeviceProfile profile, MediaSourceInfo mediaSource, MediaStream videoStream, MediaStream audioStream)
+	private PlayMethod GetVideoDirectPlayProfile(DeviceProfile profile, MediaSourceInfo mediaSource, MediaStream videoStream, MediaStream audioStream, boolean isEligibleForDirectPlay, boolean isEligibleForDirectStream)
 	{
 		// See if it can be direct played
 		DirectPlayProfile directPlay = null;
@@ -560,35 +568,41 @@ public class StreamBuilder
 			}
 		}
 
-		if (mediaSource.getProtocol() == MediaProtocol.Http)
+		if (isEligibleForDirectPlay)
 		{
-			if (_localPlayer.CanAccessUrl(mediaSource.getPath(), mediaSource.getRequiredHttpHeaders().size() > 0))
+			if (mediaSource.getProtocol() == MediaProtocol.Http)
 			{
-				return PlayMethod.DirectPlay;
+				if (_localPlayer.CanAccessUrl(mediaSource.getPath(), mediaSource.getRequiredHttpHeaders().size() > 0))
+				{
+					return PlayMethod.DirectPlay;
+				}
+			}
+
+			else if (mediaSource.getProtocol() == MediaProtocol.File)
+			{
+				if (_localPlayer.CanAccessFile(mediaSource.getPath()))
+				{
+					return PlayMethod.DirectPlay;
+				}
 			}
 		}
 
-		else if (mediaSource.getProtocol() == MediaProtocol.File)
+		if (isEligibleForDirectStream)
 		{
-			if (_localPlayer.CanAccessFile(mediaSource.getPath()))
+			if (mediaSource.getSupportsDirectStream())
 			{
-				return PlayMethod.DirectPlay;
+				return PlayMethod.DirectStream;
 			}
 		}
 
-		if (!mediaSource.getSupportsDirectStream())
-		{
-			return null;
-		}
-
-		return PlayMethod.DirectStream;
+		return null;
 	}
 
 	private boolean IsEligibleForDirectPlay(MediaSourceInfo item, Integer maxBitrate, MediaStream subtitleStream, VideoOptions options)
 	{
 		if (subtitleStream != null)
 		{
-			SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile(), options.getContext());
+			SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile().getSubtitleProfiles(), options.getContext());
 
 			if (subtitleProfile.getMethod() != SubtitleDeliveryMethod.External && subtitleProfile.getMethod() != SubtitleDeliveryMethod.Embed)
 			{
@@ -599,10 +613,10 @@ public class StreamBuilder
 		return IsAudioEligibleForDirectPlay(item, maxBitrate);
 	}
 
-	public static SubtitleProfile GetSubtitleProfile(MediaStream subtitleStream, DeviceProfile deviceProfile, EncodingContext context)
+	public static SubtitleProfile GetSubtitleProfile(MediaStream subtitleStream, SubtitleProfile[] subtitleProfiles, EncodingContext context)
 	{
 		// Look for an external profile that matches the stream type (text/graphical)
-		for (SubtitleProfile profile : deviceProfile.getSubtitleProfiles())
+		for (SubtitleProfile profile : subtitleProfiles)
 		{
 			if (profile.getMethod() == SubtitleDeliveryMethod.External && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
 			{
@@ -619,7 +633,7 @@ public class StreamBuilder
 			}
 		}
 
-		for (SubtitleProfile profile : deviceProfile.getSubtitleProfiles())
+		for (SubtitleProfile profile : subtitleProfiles)
 		{
 			if (profile.getMethod() == SubtitleDeliveryMethod.Embed && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
 			{
