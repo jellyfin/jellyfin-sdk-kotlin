@@ -64,6 +64,8 @@ public class PlaybackManager {
 
     public ArrayList<MediaStream> getPrePlaybackSelectableAudioStreams(String serverId, VideoOptions options)
     {
+        Normalize(options);
+
         StreamInfo info = getVideoStreamInfoInternal(serverId, options);
 
         return info.GetSelectableAudioStreams();
@@ -71,6 +73,8 @@ public class PlaybackManager {
 
     public ArrayList<MediaStream> getPrePlaybackSelectableSubtitleStreams(String serverId, VideoOptions options)
     {
+        Normalize(options);
+
         StreamInfo info = getVideoStreamInfoInternal(serverId, options);
 
         return info.GetSelectableSubtitleStreams();
@@ -86,8 +90,14 @@ public class PlaybackManager {
         return info.GetSelectableSubtitleStreams();
     }
 
+    private void Normalize(AudioOptions options){
+        options.setDeviceId(device.getDeviceId());
+    }
+
     public void getAudioStreamInfo(String serverId, AudioOptions options, boolean isOffline, ApiClient apiClient, Response<StreamInfo> response)
     {
+        Normalize(options);
+
         StreamBuilder streamBuilder = new StreamBuilder(localPlayer);
 
         LocalItem localItem = localAssetManager.getLocalItem(serverId, options.getItemId());
@@ -119,6 +129,8 @@ public class PlaybackManager {
 
     public void getVideoStreamInfo(final String serverId, final VideoOptions options, boolean isOffline, ApiClient apiClient, final Response<StreamInfo> response)
     {
+        Normalize(options);
+
         if (!isOffline)
         {
             apiClient.GetPlaybackInfo(options.getItemId(), apiClient.getCurrentUserId(), new Response<LiveMediaInfoResult>(response){
@@ -149,6 +161,8 @@ public class PlaybackManager {
 
     public void changeVideoStream(final StreamInfo currentStreamInfo, final String serverId, final VideoOptions options, ApiClient apiClient, final Response<StreamInfo> response)
     {
+        Normalize(options);
+
         String streamId = currentStreamInfo.getPlaybackInfo() == null ?
                 null :
                 currentStreamInfo.getPlaybackInfo().getStreamId();

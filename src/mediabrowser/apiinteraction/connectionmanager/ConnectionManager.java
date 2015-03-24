@@ -110,6 +110,11 @@ public class ConnectionManager implements IConnectionManager {
         return null;
     }
 
+    @Override
+    public IDevice getDevice(){
+        return this.device;
+    }
+
     void OnConnectUserSignIn(ConnectUser user){
 
         connectUser = user;

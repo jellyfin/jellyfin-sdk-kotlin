@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction;
 
+import mediabrowser.apiinteraction.device.IDevice;
 import mediabrowser.model.apiclient.ConnectionOptions;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.connect.PinCreationResult;
@@ -23,6 +24,8 @@ public interface IConnectionManager {
     ApiClient GetApiClient(String serverId);
 
     ServerInfo getServerInfo(String serverId);
+
+    IDevice getDevice();
 
     void Connect(Response<ConnectionResult> response);
 
