@@ -11,7 +11,6 @@ import mediabrowser.model.dto.MediaSourceInfo;
 import mediabrowser.model.entities.MediaStream;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.logging.ILogger;
-import mediabrowser.model.mediainfo.LiveMediaInfoResult;
 import mediabrowser.model.session.PlayMethod;
 import mediabrowser.model.session.PlaybackProgressInfo;
 import mediabrowser.model.session.PlaybackStartInfo;
@@ -133,26 +132,7 @@ public class PlaybackManager {
 
         if (!isOffline)
         {
-            apiClient.GetPlaybackInfo(options.getItemId(), apiClient.getCurrentUserId(), new Response<LiveMediaInfoResult>(response){
-
-                @Override
-                public void onResponse(LiveMediaInfoResult playbackInfo) {
-
-                    if (playbackInfo.getErrorCode() != null){
-
-                        PlaybackException error = new PlaybackException();
-                        error.setErrorCode(playbackInfo.getErrorCode());
-                        response.onError(error);
-                        return;
-                    }
-
-                    options.setMediaSources(playbackInfo.getMediaSources());
-                    StreamInfo streamInfo = getVideoStreamInfoInternal(serverId, options);
-                    streamInfo.setPlaybackInfo(playbackInfo);
-                    response.onResponse(streamInfo);
-                }
-
-            });
+            apiClient.GetPlaybackInfo(options.getItemId(), apiClient.getCurrentUserId(), new GetPlaybackInfoResponse(this, serverId, options, response));
             return;
         }
 
@@ -167,36 +147,10 @@ public class PlaybackManager {
                 null :
                 currentStreamInfo.getPlaybackInfo().getStreamId();
 
-        apiClient.StopTranscodingProcesses(device.getDeviceId(), streamId, new EmptyResponse(){
-
-            private void onAny(){
-
-                if (currentStreamInfo.getPlaybackInfo() != null)
-                {
-                    options.setMediaSources(currentStreamInfo.getPlaybackInfo().getMediaSources());
-                }
-
-                StreamInfo streamInfo = getVideoStreamInfoInternal(serverId, options);
-                streamInfo.setPlaybackInfo(currentStreamInfo.getPlaybackInfo());
-                response.onResponse(streamInfo);
-            }
-
-            @Override
-            public void onResponse(){
-                onAny();
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                logger.ErrorException("Error in StopTranscodingProcesses", ex);
-                onAny();
-            }
-
-        });
+        apiClient.StopTranscodingProcesses(device.getDeviceId(), streamId, new StopTranscodingResponse(this, serverId, currentStreamInfo, options, logger, response));
     }
 
-    private StreamInfo getVideoStreamInfoInternal(String serverId, VideoOptions options)
+    StreamInfo getVideoStreamInfoInternal(String serverId, VideoOptions options)
     {
         StreamBuilder streamBuilder = new StreamBuilder(localPlayer);
 

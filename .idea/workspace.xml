@@ -7,9 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b626835-6518-4586-bf6c-5bbba32974d2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/MediaBrowser_ApiClient_Java_jar/MediaBrowser.ApiClient.Java.jar" afterPath="$PROJECT_DIR$/out/artifacts/MediaBrowser_ApiClient_Java_jar/MediaBrowser.ApiClient.Java.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/LocalAssetManager.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/LocalAssetManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/MediaBrowser.ApiClient.Java.iml" afterPath="$PROJECT_DIR$/.idea/MediaBrowser.ApiClient.Java.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/GetPlaybackInfoResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/StopTranscodingResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MediaBrowser.ApiClient.Java.iws" />
@@ -37,84 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PlaybackManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java">
+      <file leaf-file-name="MediaSync.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/mediasync/MediaSync.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4301">
-              <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
-              <folding>
-                <element signature="e#3180#3181#0" expanded="true" />
-                <element signature="e#3237#3238#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LocalAssetManager.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/LocalAssetManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27975738" vertical-offset="2113" max-vertical-offset="10659">
-              <caret line="146" column="67" selection-start-line="146" selection-start-column="67" selection-end-line="146" selection-end-column="67" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1747#1748#0" expanded="true" />
-                <element signature="e#1798#1799#0" expanded="true" />
-                <element signature="e#1854#1855#0" expanded="true" />
-                <element signature="e#1905#1906#0" expanded="true" />
-                <element signature="e#1987#1988#0" expanded="true" />
-                <element signature="e#2044#2045#0" expanded="true" />
-                <element signature="e#2105#2106#0" expanded="true" />
-                <element signature="e#2153#2154#0" expanded="true" />
-                <element signature="e#2479#2493#0" expanded="true" />
-                <element signature="e#3874#3875#0" expanded="true" />
-                <element signature="e#3921#3922#0" expanded="true" />
-                <element signature="e#5247#5248#0" expanded="true" />
-                <element signature="e#5297#5298#0" expanded="true" />
-                <element signature="e#5380#5381#0" expanded="true" />
-                <element signature="e#5445#5446#0" expanded="true" />
-                <element signature="e#5505#5506#0" expanded="true" />
-                <element signature="e#5559#5560#0" expanded="true" />
-                <element signature="e#5639#5640#0" expanded="true" />
-                <element signature="e#5703#5704#0" expanded="true" />
-                <element signature="e#5766#5767#0" expanded="true" />
-                <element signature="e#5828#5829#0" expanded="true" />
-                <element signature="e#5890#5891#0" expanded="true" />
-                <element signature="e#5931#5932#0" expanded="true" />
-                <element signature="e#7213#7226#0" expanded="true" />
-                <element signature="e#19295#19296#0" expanded="true" />
-                <element signature="e#19340#19341#0" expanded="true" />
-                <element signature="e#19419#19420#0" expanded="true" />
-                <element signature="e#19470#19471#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IItemRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IItemRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConnectionManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectionManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2036" max-vertical-offset="12444">
-              <caret line="166" column="50" selection-start-line="166" selection-start-column="50" selection-end-line="166" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServerInfoDateComparator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ServerInfoDateComparator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-              <caret line="7" column="60" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.4510993" vertical-offset="1938" max-vertical-offset="3553">
+              <caret line="177" column="6" selection-start-line="177" selection-start-column="6" selection-end-line="177" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -128,7 +55,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/UpdateOfflineUsersResponse.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/ServerSync.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ServerSyncConnectionResponse.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/FileUploadProgress.java" />
@@ -176,8 +102,10 @@
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/comparators/NameComparator.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/comparators/SortNameComparator.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IItemRepository.java" />
-        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/LocalAssetManager.java" />
+        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/GetPlaybackInfoResponse.java" />
+        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/StopTranscodingResponse.java" />
+        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java" />
       </list>
     </option>
   </component>
@@ -194,7 +122,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -411,6 +339,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mediabrowser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apiinteraction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sync" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mediasync" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -788,20 +750,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/discovery/ServerLocator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.4514811" vertical-offset="510" max-vertical-offset="2312">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/SerializedResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1086262" vertical-offset="0" max-vertical-offset="1252">
-          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/FindServersInnerResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.04952077" vertical-offset="40" max-vertical-offset="1292">
@@ -904,13 +852,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2964367" vertical-offset="0" max-vertical-offset="8279">
           <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/Response.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07733131" vertical-offset="0" max-vertical-offset="1319">
-          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -1022,7 +963,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
           <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="53" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1059,14 +1000,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12888552" vertical-offset="0" max-vertical-offset="1479">
           <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/mediasync/MediaSync.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.5595148" vertical-offset="2193" max-vertical-offset="3553">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1113,22 +1046,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2036" max-vertical-offset="12444">
-          <caret line="166" column="50" selection-start-line="166" selection-start-column="50" selection-end-line="166" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/comparators/SortNameComparator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47771317" vertical-offset="0" max-vertical-offset="1032">
           <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#315#316#0" expanded="true" />
-            <element signature="e#386#387#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#315#316#0" expanded="false" />
+            <element signature="e#386#387#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1149,33 +1074,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ServerInfoDateComparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-          <caret line="7" column="60" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IItemRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4301">
-          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
-          <folding>
-            <element signature="e#3180#3181#0" expanded="true" />
-            <element signature="e#3237#3238#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0.jar!/com/google/common/io/Files.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6354379" vertical-offset="4578" max-vertical-offset="6919">
@@ -1184,10 +1082,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/Response.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.025777103" vertical-offset="0" max-vertical-offset="1319">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/GetPlaybackInfoResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24488248" vertical-offset="0" max-vertical-offset="1319">
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/StopTranscodingResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5064548" vertical-offset="0" max-vertical-offset="1007">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1477#1478#0" expanded="true" />
+            <element signature="e#1500#1501#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/LocalAssetManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27975738" vertical-offset="2113" max-vertical-offset="10659">
-          <caret line="146" column="67" selection-start-line="146" selection-start-column="67" selection-end-line="146" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.60079443" vertical-offset="7249" max-vertical-offset="10659">
+          <caret line="462" column="23" selection-start-line="462" selection-start-column="23" selection-end-line="462" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1747#1748#0" expanded="true" />
@@ -1219,6 +1147,46 @@
             <element signature="e#19419#19420#0" expanded="true" />
             <element signature="e#19470#19471#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IItemRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30387288" vertical-offset="0" max-vertical-offset="1007">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34160873" vertical-offset="2036" max-vertical-offset="12444">
+          <caret line="166" column="50" selection-start-line="166" selection-start-column="50" selection-end-line="166" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ServerInfoDateComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06752731" vertical-offset="0" max-vertical-offset="1007">
+          <caret line="7" column="60" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.367428" vertical-offset="2529" max-vertical-offset="3536">
+          <caret line="149" column="107" selection-start-line="149" selection-start-column="107" selection-end-line="149" selection-end-column="107" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/mediasync/MediaSync.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4510993" vertical-offset="1938" max-vertical-offset="3553">
+          <caret line="177" column="6" selection-start-line="177" selection-start-column="6" selection-end-line="177" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
