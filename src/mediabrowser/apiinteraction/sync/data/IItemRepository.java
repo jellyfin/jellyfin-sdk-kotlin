@@ -20,7 +20,7 @@ public interface IItemRepository {
 
     ArrayList<LocalItem> getItems(LocalItemQuery query);
 
-    ArrayList<String> getAlbumArtists(String serverId, String userId);
+    ArrayList<LocalItemInfo> getAlbumArtists(String serverId, String userId);
 
     ArrayList<LocalItemInfo> getTvSeries(String serverId, String userId);
 

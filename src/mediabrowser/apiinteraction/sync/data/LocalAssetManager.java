@@ -327,18 +327,23 @@ public class LocalAssetManager implements ILocalAssetManager {
 
     private ArrayList<BaseItemDto> getMusicArtists(UserDto user, BaseItemDto parentItem)
     {
-        ArrayList<String> artists = itemRepository.getAlbumArtists(user.getServerId(), user.getId());
+        ArrayList<LocalItemInfo> artists = itemRepository.getAlbumArtists(user.getServerId(), user.getId());
 
         ArrayList<BaseItemDto> newList = new ArrayList<>();
 
-        for (String item : artists){
+        for (LocalItemInfo item : artists){
 
             BaseItemDto showItem = new BaseItemDto();
-            showItem.setId(item);
-            showItem.setName(item);
-            showItem.setSortName(item);
+            showItem.setId(item.getId());
+            showItem.setName(item.getName());
+            showItem.setSortName(item.getName());
             showItem.setType("MusicArtist");
-            showItem.setServerId(user.getServerId());
+            showItem.setServerId(item.getServerId());
+
+            showItem.setImageTags(new HashMap<ImageType, String>());
+            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(item.getPrimaryImageTag())) {
+                showItem.getImageTags().put(ImageType.Primary, item.getPrimaryImageTag());
+            }
 
             newList.add(showItem);
         }
