@@ -1,15 +1,20 @@
 package mediabrowser.apiinteraction.sync.data;
 
+import com.android.internal.telephony.cat.Input;
 import com.google.common.io.Files;
 import mediabrowser.apiinteraction.cryptography.Md5;
 import mediabrowser.apiinteraction.sync.data.comparators.SortNameComparator;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.dto.BaseItemDto;
+import mediabrowser.model.dto.MediaSourceInfo;
 import mediabrowser.model.dto.UserDto;
 import mediabrowser.model.entities.CollectionType;
 import mediabrowser.model.entities.ImageType;
+import mediabrowser.model.entities.MediaType;
 import mediabrowser.model.extensions.ListHelper;
 import mediabrowser.model.extensions.StringHelper;
+import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.mediainfo.MediaProtocol;
 import mediabrowser.model.sync.*;
 import mediabrowser.model.users.UserAction;
 
@@ -28,6 +33,7 @@ public class LocalAssetManager implements ILocalAssetManager {
     private IFileRepository fileRepository;
     private IUserRepository userRepository;
     private IImageRepository imageRepository;
+    private ILogger logger;
 
     public LocalAssetManager(IUserActionRepository userActionRepository, IItemRepository itemRepository, IFileRepository fileRepository, IUserRepository userRepository, IImageRepository imageRepository) {
         this.userActionRepository = userActionRepository;
@@ -101,6 +107,13 @@ public class LocalAssetManager implements ILocalAssetManager {
         return itemFiles;
     }
 
+    @Override
+    public void saveMedia(InputStream stream, LocalItem localItem, ServerInfo server)
+    {
+        logger.Debug("Saving media to " + localItem.getLocalPath());
+        fileRepository.saveFile(stream, localItem.getLocalPath());
+    }
+
     private static String[] SupportedImageExtensions = { ".png", ".jpg", ".jpeg", ".webp" };
     private boolean isImageFile(String path)
     {
@@ -159,12 +172,90 @@ public class LocalAssetManager implements ILocalAssetManager {
 
     @Override
     public LocalItem createLocalItem(BaseItemDto libraryItem, ServerInfo server, String originalFileName) {
+
+        ArrayList<String> path = getDirectoryPath(libraryItem, server);
+        path.add(getLocalFileName(libraryItem, originalFileName));
+
         LocalItem item = new LocalItem();
+
+        String localPath = fileRepository.getFullLocalPath(path);
+
+        for (MediaSourceInfo mediaSource : libraryItem.getMediaSources())
+        {
+            mediaSource.setPath(localPath);
+            mediaSource.setProtocol(MediaProtocol.File);
+        }
 
         item.setServerId(server.getId());
         item.setItem(libraryItem);
         item.setItemId(libraryItem.getId());
+        item.setId(getLocalId(item.getServerId(), item.getItemId()));
         return item;
+    }
+
+    private ArrayList<String> getDirectoryPath(BaseItemDto item, ServerInfo server)
+    {
+        ArrayList<String> parts = new ArrayList<String>();
+        parts.add(server.getName());
+
+        if (item.IsType("episode"))
+        {
+            parts.add("TV");
+            parts.add(item.getSeriesName());
+
+            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(item.getSeasonName()))
+            {
+                parts.add(item.getSeasonName());
+            }
+        }
+        else if (item.getIsVideo())
+        {
+            parts.add("Videos");
+            parts.add(item.getName());
+        }
+        else if (item.getIsAudio())
+        {
+            parts.add("Music");
+
+            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(item.getAlbumArtist()))
+            {
+                parts.add(item.getAlbumArtist());
+            }
+
+            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(item.getAlbumId()))
+            {
+                parts.add(item.getAlbum());
+            }
+        }
+        else if (StringHelper.EqualsIgnoreCase(item.getMediaType(), MediaType.Photo))
+        {
+            parts.add("Photos");
+
+            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(item.getAlbumId()))
+            {
+                parts.add(item.getAlbum());
+            }
+        }
+
+        ArrayList<String> finalParts = new ArrayList<String>();
+
+        for (String part : parts){
+            finalParts.add(fileRepository.getValidFileName(part));
+        }
+
+        return finalParts;
+    }
+
+    private String getLocalFileName(BaseItemDto item, String originalFileName)
+    {
+        String filename = originalFileName;
+
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(filename))
+        {
+            filename = item.getName();
+        }
+
+        return fileRepository.getValidFileName(filename);
     }
 
     @Override

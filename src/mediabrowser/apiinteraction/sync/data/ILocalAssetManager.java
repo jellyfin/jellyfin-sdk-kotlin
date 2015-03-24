@@ -44,6 +44,8 @@ public interface ILocalAssetManager {
 
     boolean fileExists(String path);
 
+    void saveMedia(InputStream stream, LocalItem localItem, ServerInfo server);
+
     ArrayList<String> getServerItemIds(String serverId);
 
     void saveOfflineUser(UserDto user);

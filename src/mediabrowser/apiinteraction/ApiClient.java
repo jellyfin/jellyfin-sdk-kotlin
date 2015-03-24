@@ -2645,4 +2645,15 @@ public class ApiClient extends BaseApiClient {
         getResponseStream(url, response);
     }
 
+    public void getReadySyncItems(String targetId, Response<ReadySyncItemsResult> response) {
+
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        dict.AddIfNotNullOrEmpty("TargetId", targetId);
+
+        String url = GetApiUrl("Sync/Items/Ready", dict);
+        url = AddDataFormat(url);
+
+        Send(url, "GET", new SerializedResponse<ReadySyncItemsResult>(response, jsonSerializer, ReadySyncItemsResult.class));
+    }
 }

@@ -89,6 +89,12 @@ public class NullAssetManager implements ILocalAssetManager {
     }
 
     @Override
+    public void saveMedia(InputStream stream, LocalItem localItem, ServerInfo server)
+    {
+
+    }
+
+    @Override
     public void deleteOfflineUser(String id) {
 
     }
