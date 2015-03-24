@@ -2198,11 +2198,12 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<SessionInfoDto>(response, jsonSerializer, SessionInfoDto.class));
     }
 
-    public void StopTranscodingProcesses(String deviceId, final EmptyResponse response)
+    public void StopTranscodingProcesses(String deviceId, String streamId, final EmptyResponse response)
     {
         QueryStringDictionary queryString = new QueryStringDictionary();
 
         queryString.Add("DeviceId", getDeviceId());
+        queryString.AddIfNotNullOrEmpty("StreamId", streamId);
         String url = GetApiUrl("Videos/ActiveEncodings", queryString);
 
         DeleteAsync(url, response);

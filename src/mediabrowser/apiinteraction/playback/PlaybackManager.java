@@ -124,18 +124,20 @@ public class PlaybackManager {
             apiClient.GetPlaybackInfo(options.getItemId(), apiClient.getCurrentUserId(), new Response<LiveMediaInfoResult>(response){
 
                 @Override
-                public void onResponse(LiveMediaInfoResult result) {
+                public void onResponse(LiveMediaInfoResult playbackInfo) {
 
-                    if (result.getErrorCode() != null){
+                    if (playbackInfo.getErrorCode() != null){
 
                         PlaybackException error = new PlaybackException();
-                        error.setErrorCode(result.getErrorCode());
+                        error.setErrorCode(playbackInfo.getErrorCode());
                         response.onError(error);
                         return;
                     }
 
-                    options.setMediaSources(result.getMediaSources());
-                    response.onResponse(getVideoStreamInfoInternal(serverId, options));
+                    options.setMediaSources(playbackInfo.getMediaSources());
+                    StreamInfo streamInfo = getVideoStreamInfoInternal(serverId, options);
+                    streamInfo.setPlaybackInfo(playbackInfo);
+                    response.onResponse(streamInfo);
                 }
 
             });
@@ -143,6 +145,41 @@ public class PlaybackManager {
         }
 
         response.onResponse(getVideoStreamInfoInternal(serverId, options));
+    }
+
+    public void changeVideoStream(final StreamInfo currentStreamInfo, final String serverId, final VideoOptions options, ApiClient apiClient, final Response<StreamInfo> response)
+    {
+        String streamId = currentStreamInfo.getPlaybackInfo() == null ?
+                null :
+                currentStreamInfo.getPlaybackInfo().getStreamId();
+
+        apiClient.StopTranscodingProcesses(device.getDeviceId(), streamId, new EmptyResponse(){
+
+            private void onAny(){
+
+                if (currentStreamInfo.getPlaybackInfo() != null)
+                {
+                    options.setMediaSources(currentStreamInfo.getPlaybackInfo().getMediaSources());
+                }
+
+                StreamInfo streamInfo = getVideoStreamInfoInternal(serverId, options);
+                streamInfo.setPlaybackInfo(currentStreamInfo.getPlaybackInfo());
+                response.onResponse(streamInfo);
+            }
+
+            @Override
+            public void onResponse(){
+                onAny();
+            }
+
+            @Override
+            public void onError(Exception ex) {
+
+                logger.ErrorException("Error in StopTranscodingProcesses", ex);
+                onAny();
+            }
+
+        });
     }
 
     private StreamInfo getVideoStreamInfoInternal(String serverId, VideoOptions options)
