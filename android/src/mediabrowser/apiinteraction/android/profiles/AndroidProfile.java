@@ -24,7 +24,15 @@ public class AndroidProfile extends DefaultProfile
 		tempVar.setContainer("mp3");
 		tempVar.setAudioCodec("mp3");
 		tempVar.setType(DlnaProfileType.Audio);
+		tempVar.setContext(EncodingContext.Streaming);
 		transcodingProfiles.add(tempVar);
+
+		TranscodingProfile tempVar0 = new TranscodingProfile();
+		tempVar0.setContainer("mp3");
+		tempVar0.setAudioCodec("mp3");
+		tempVar0.setType(DlnaProfileType.Audio);
+		tempVar0.setContext(EncodingContext.Static);
+		transcodingProfiles.add(tempVar0);
 
 		if (supportsMpegDash)
 		{

@@ -7,36 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b626835-6518-4586-bf6c-5bbba32974d2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/data/AndroidAssetManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/data/AndroidFileRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/data/AndroidImageFileRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/FileRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/ImageFileRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/data/ItemRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/data/UserActionRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/data/UserRepository.java" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\android\src\mediabrowser\apiinteraction\dd.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\dd.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/classes/Production/android/mediabrowser/apiinteraction/android/sync/MediaSyncAdapter.class" afterPath="$PROJECT_DIR$/out/classes/Production/android/mediabrowser/apiinteraction/android/sync/MediaSyncAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.android.jar" afterPath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.android.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.jar" afterPath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/serialization/BoonJsonSerializer.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/serialization/BoonJsonSerializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IFileRepository.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IFileRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IImageRepository.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IImageRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IItemRepository.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IItemRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/ILocalAssetManager.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/ILocalAssetManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IUserActionRepository.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IUserActionRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IUserRepository.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IUserRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/querying/ItemFields.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/querying/ItemFields.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/LocalAssetManager.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/LocalAssetManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/MediaContentProvider.java" afterPath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/MediaContentProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/mediasync/MediaSync.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/mediasync/MediaSync.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/MediaSyncAdapter.java" afterPath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/MediaSyncAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/livetv/RecordingInfoDto.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/livetv/RecordingInfoDto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/configuration/ServerConfiguration.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/configuration/ServerConfiguration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/android.iml" afterPath="$PROJECT_DIR$/android/android.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java" afterPath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java" />
     </list>
     <ignored path="MediaBrowser.ApiClient.Java.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -83,14 +56,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidAssetManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AndroidAssetManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/data/AndroidAssetManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.12888552" vertical-offset="0" max-vertical-offset="1319">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
               <caret line="10" column="27" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidProfile.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.24488248" vertical-offset="0" max-vertical-offset="2703">
+              <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -117,18 +100,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2535#2544#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IImageRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/IImageRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-              <caret line="7" column="86" selection-start-line="7" selection-start-column="86" selection-end-line="7" selection-end-column="86" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -207,7 +178,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/EmptyResponse.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/mediasync/UserActionsReportedResponse.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/Response.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/mediasync/SyncDataInnerResponse.java" />
@@ -258,6 +228,7 @@
         <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/MediaSyncAdapter.java" />
         <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/data/AndroidFileRepository.java" />
         <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/data/ItemRepository.java" />
+        <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java" />
       </list>
     </option>
   </component>
@@ -527,6 +498,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="profiles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -814,14 +811,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/mediasync/UserActionsReportedResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09021986" vertical-offset="0" max-vertical-offset="1319">
-          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/data/comparators/SortNameComparator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47771317" vertical-offset="0" max-vertical-offset="1032">
@@ -1293,11 +1282,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/data/AndroidAssetManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12888552" vertical-offset="0" max-vertical-offset="1319">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
           <caret line="10" column="27" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24488248" vertical-offset="0" max-vertical-offset="2703">
+          <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
