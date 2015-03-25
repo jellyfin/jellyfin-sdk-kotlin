@@ -15,6 +15,9 @@ public class AndroidProfile extends DefaultProfile
 	{
 		setName("Android");
 
+		setMaxStaticBitrate(20000000);
+		setMaxStreamingBitrate(20000000);
+
 		// Adds a lot of weight and not needed in this context
 		setProtocolInfo(null);
 

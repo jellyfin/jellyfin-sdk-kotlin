@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import mediabrowser.apiinteraction.sync.data.IUserRepository;
 import mediabrowser.model.dto.UserDto;
 import mediabrowser.model.serialization.IJsonSerializer;
+import mediabrowser.model.users.UserAction;
 
 import java.util.ArrayList;
 
@@ -49,12 +50,17 @@ public class UserRepository extends SQLiteOpenHelper implements IUserRepository 
         values.put("ServerId", user.getServerId());
         values.put("Json", jsonSerializer.SerializeToString(user));
 
-        getWritableDatabase().replace("Users", null, values);
+        try (SQLiteDatabase db = getWritableDatabase()){
+            db.replace("Users", null, values);
+        }
     }
 
     @Override
     public void deleteUser(String id) {
-        getWritableDatabase().delete("Users", "Id=?", new String[]{id});
+
+        try (SQLiteDatabase db = getWritableDatabase()){
+            db.delete("Users", "Id=?", new String[]{id});
+        }
     }
 
     @Override
@@ -64,12 +70,14 @@ public class UserRepository extends SQLiteOpenHelper implements IUserRepository 
         String where = "Id=?";
         String[] args = new String[]{id};
 
-        Cursor cursor = getReadableDatabase().query(true, "Users", cols, where, args, null, null, null, null);
+        try (SQLiteDatabase db = getReadableDatabase()){
+            Cursor cursor = db.query(true, "Users", cols, where, args, null, null, null, null);
 
-        if (cursor != null) {
-            while (cursor.moveToNext()){
+            if (cursor != null) {
+                while (cursor.moveToNext()){
 
-                return jsonSerializer.DeserializeFromString(cursor.getString(0), UserDto.class);
+                    return jsonSerializer.DeserializeFromString(cursor.getString(0), UserDto.class);
+                }
             }
         }
 
@@ -81,14 +89,17 @@ public class UserRepository extends SQLiteOpenHelper implements IUserRepository 
         ArrayList<UserDto> list = new ArrayList<UserDto>();
 
         String[] cols = new String[] {"Json"};
-        Cursor cursor = getReadableDatabase().query(true, "Users", cols, null, null, null, null, null, null);
 
-        if (cursor != null) {
-            while (cursor.moveToNext()){
+        try (SQLiteDatabase db = getReadableDatabase()){
+            Cursor cursor = db.query(true, "Users", cols, null, null, null, null, null, null);
 
-                UserDto item = jsonSerializer.DeserializeFromString(cursor.getString(0), UserDto.class);
+            if (cursor != null) {
+                while (cursor.moveToNext()){
 
-                list.add(item);
+                    UserDto item = jsonSerializer.DeserializeFromString(cursor.getString(0), UserDto.class);
+
+                    list.add(item);
+                }
             }
         }
 

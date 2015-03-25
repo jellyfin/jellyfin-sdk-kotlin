@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.SimpleCursorAdapter;
 import mediabrowser.apiinteraction.sync.data.IItemRepository;
+import mediabrowser.model.dto.UserDto;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.model.sync.LocalItem;
 import mediabrowser.model.sync.LocalItemInfo;
@@ -64,7 +65,9 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
         values.put("SeriesName", item.getItem().getSeriesName());
         values.put("Json", jsonSerializer.SerializeToString(item));
 
-        getWritableDatabase().replace("Items", null, values);
+        try (SQLiteDatabase db = getWritableDatabase()){
+            db.replace("Items", null, values);
+        }
     }
 
     @Override
@@ -72,12 +75,15 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
         String[] cols = new String[] {"Json"};
         String where = "Id=?";
         String[] args = new String[]{id};
-        Cursor cursor = getReadableDatabase().query(true, "Item", cols, where, args, null, null, null, null);
 
-        if (cursor != null) {
-            while (cursor.moveToNext()){
+        try (SQLiteDatabase db = getReadableDatabase()){
+            Cursor cursor = db.query(true, "Item", cols, where, args, null, null, null, null);
 
-                return jsonSerializer.DeserializeFromString(cursor.getString(0), LocalItem.class);
+            if (cursor != null) {
+                while (cursor.moveToNext()){
+
+                    return jsonSerializer.DeserializeFromString(cursor.getString(0), LocalItem.class);
+                }
             }
         }
 
@@ -86,7 +92,10 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
 
     @Override
     public void deleteItem(String id) {
-        getWritableDatabase().delete("Items", "Id=?", new String[]{id});
+
+        try (SQLiteDatabase db = getWritableDatabase()){
+            db.delete("Items", "Id=?", new String[]{id});
+        }
     }
 
     @Override
@@ -96,12 +105,15 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
         String[] cols = new String[] {"ItemId"};
         String where = "ServerId=?";
         String[] args = new String[]{serverId};
-        Cursor cursor = getReadableDatabase().query(true, "Items", cols, where, args, null, null, null, null);
 
-        if (cursor != null) {
-            while (cursor.moveToNext()){
+        try (SQLiteDatabase db = getReadableDatabase()){
+            Cursor cursor = db.query(true, "Items", cols, where, args, null, null, null, null);
 
-                list.add(cursor.getString(0));
+            if (cursor != null) {
+                while (cursor.moveToNext()){
+
+                    list.add(cursor.getString(0));
+                }
             }
         }
 
@@ -116,12 +128,15 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
         String[] cols = new String[] {"ItemType"};
         String where = "ServerId=? and UserIdsWithAccess like %?%";
         String[] args = new String[]{serverId, userId};
-        Cursor cursor = getReadableDatabase().query(true, "Items", cols, where, args, null, null, null, null);
 
-        if (cursor != null) {
-            while (cursor.moveToNext()){
+        try (SQLiteDatabase db = getReadableDatabase()){
+            Cursor cursor = db.query(true, "Items", cols, where, args, null, null, null, null);
 
-                list.add(cursor.getString(0));
+            if (cursor != null) {
+                while (cursor.moveToNext()){
+
+                    list.add(cursor.getString(0));
+                }
             }
         }
 
@@ -180,13 +195,15 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
             args = whereArgs.toArray(new String[]{});
         }
 
-        Cursor cursor = getReadableDatabase().query(true, "Items", cols, where, args, null, null, null, null);
+        try (SQLiteDatabase db = getReadableDatabase()){
+            Cursor cursor = db.query(true, "Items", cols, where, args, null, null, null, null);
 
-        if (cursor != null) {
-            while (cursor.moveToNext()){
+            if (cursor != null) {
+                while (cursor.moveToNext()){
 
-                LocalItem item = jsonSerializer.DeserializeFromString(cursor.getString(0), LocalItem.class);
-                list.add(item);
+                    LocalItem item = jsonSerializer.DeserializeFromString(cursor.getString(0), LocalItem.class);
+                    list.add(item);
+                }
             }
         }
 
@@ -205,12 +222,15 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
         String[] cols = new String[] {"ServerId", "SeriesId", "SeriesName"};
         String where = "ServerId=" + serverId + " and SeriesId is not null and UserIdsWithAccess like %?%";
         String[] args = new String[]{serverId, userId};
-        Cursor cursor = getReadableDatabase().query(true, "Items", cols, where, args, null, null, null, null);
 
-        if (cursor != null) {
-            while (cursor.moveToNext()){
+        try (SQLiteDatabase db = getReadableDatabase()){
+            Cursor cursor = db.query(true, "Items", cols, where, args, null, null, null, null);
 
-                list.add(GetLocalItemInfo(cursor));
+            if (cursor != null) {
+                while (cursor.moveToNext()){
+
+                    list.add(GetLocalItemInfo(cursor));
+                }
             }
         }
 
@@ -224,12 +244,15 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
         String[] cols = new String[] {"ServerId", "AlbumId", "AlbumName"};
         String where = "ServerId=" + serverId + " and AlbumId is not null and MediaType=? and UserIdsWithAccess like %?%";
         String[] args = new String[]{serverId, "Photo", userId};
-        Cursor cursor = getReadableDatabase().query(true, "Items", cols, where, args, null, null, null, null);
 
-        if (cursor != null) {
-            while (cursor.moveToNext()){
+        try (SQLiteDatabase db = getReadableDatabase()){
+            Cursor cursor = db.query(true, "Items", cols, where, args, null, null, null, null);
 
-                list.add(GetLocalItemInfo(cursor));
+            if (cursor != null) {
+                while (cursor.moveToNext()){
+
+                    list.add(GetLocalItemInfo(cursor));
+                }
             }
         }
 

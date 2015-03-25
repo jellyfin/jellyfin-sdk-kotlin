@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.database.sqlite.SQLiteOpenHelper;
 import mediabrowser.apiinteraction.sync.data.IUserActionRepository;
 import mediabrowser.model.serialization.IJsonSerializer;
@@ -49,13 +50,17 @@ public class UserActionRepository extends SQLiteOpenHelper implements IUserActio
         values.put("ServerId", action.getServerId());
         values.put("Json", jsonSerializer.SerializeToString(action));
 
-        getWritableDatabase().insert("UserActions", null, values);
+        try (SQLiteDatabase db = getWritableDatabase()){
+            db.insert("UserActions", null, values);
+        }
     }
 
     @Override
     public void deleteUserAction(UserAction action) {
 
-        getWritableDatabase().delete("UserActions", "Id=?", new String[]{action.getId()});
+        try (SQLiteDatabase db = getWritableDatabase()){
+            db.delete("UserActions", "Id=?", new String[]{action.getId()});
+        }
     }
 
     @Override
@@ -67,14 +72,16 @@ public class UserActionRepository extends SQLiteOpenHelper implements IUserActio
         String where = "ServerId=?";
         String[] args = new String[]{serverId};
 
-        Cursor cursor = getReadableDatabase().query(true, "UserActions", cols, where, args, null, null, null, null);
+        try (SQLiteDatabase db = getReadableDatabase()){
+            Cursor cursor = db.query(true, "UserActions", cols, where, args, null, null, null, null);
 
-        if (cursor != null) {
-            while (cursor.moveToNext()){
+            if (cursor != null) {
+                while (cursor.moveToNext()){
 
-                UserAction action = jsonSerializer.DeserializeFromString(cursor.getString(0), UserAction.class);
+                    UserAction action = jsonSerializer.DeserializeFromString(cursor.getString(0), UserAction.class);
 
-                list.add(action);
+                    list.add(action);
+                }
             }
         }
 
