@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public interface IUserActionRepository {
 
-    void create(UserAction action);
+    void createUserAction(UserAction action);
 
-    void delete(UserAction action);
+    void deleteUserAction(UserAction action);
 
-    ArrayList<UserAction> get(String serverId);
+    ArrayList<UserAction> getUserActions(String serverId);
 
 }

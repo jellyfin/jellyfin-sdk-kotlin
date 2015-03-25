@@ -59,7 +59,7 @@ public class BoonJsonSerializer implements IJsonSerializer {
 
         //Gson gsonBuilder = new GsonBuilder()
                     //.setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-                    //.create();
+                    //.createUserAction();
 
         //Type listType = new TypeToken<T>() {}.getType();
 
@@ -79,7 +79,7 @@ public class BoonJsonSerializer implements IJsonSerializer {
 
 /*        Gson gsonBuilder = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-                .create();*/
+                .createUserAction();*/
 
         return jsonSerializer.serialize(obj).toString();
     }

@@ -24,6 +24,7 @@ import mediabrowser.model.users.UserAction;
 import org.apache.maven.settings.Server;
 import org.apache.tools.ant.taskdefs.Local;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -212,7 +213,7 @@ public class MediaSync {
     }
 
     private void GetItem(final ApiClient apiClient,
-                         ServerInfo server,
+                         final ServerInfo server,
                          final SyncedItem jobItem,
                          final CancellationToken cancellationToken,
                          final EmptyResponse response){
@@ -225,6 +226,15 @@ public class MediaSync {
 
             @Override
             public void onResponse(InputStream stream) {
+
+                try (InputStream copy = stream){
+
+                    localAssetManager.saveMedia(copy, localItem, server);
+                }
+                catch (IOException ioException){
+                    response.onError(ioException);
+                    return;
+                }
 
                 // Create db record
                 localAssetManager.addOrUpdate(localItem);
@@ -374,7 +384,7 @@ public class MediaSync {
                                      final String itemId,
                                      final String imageTag,
                                      ImageType imageType,
-                                     EmptyResponse response)
+                                     final EmptyResponse response)
     {
         boolean hasImage = localAssetManager.hasImage(serverId, itemId, imageTag);
 
@@ -395,8 +405,16 @@ public class MediaSync {
             @Override
             public void onResponse(InputStream stream) {
 
-                localAssetManager.saveImage(serverId, itemId, imageTag, stream);
-                triggerInnerResponse();
+                try (InputStream copy = stream){
+
+                    localAssetManager.saveImage(serverId, itemId, imageTag, copy);
+                    triggerInnerResponse();
+                }
+                catch (Exception ex){
+                    response.onError(ex);
+                    return;
+                }
+
             }
         });
     }
@@ -481,10 +499,18 @@ public class MediaSync {
             @Override
             public void onResponse(InputStream stream) {
 
-                String path = localAssetManager.saveSubtitles(stream, finalSubtitleStream.getCodec(), item, finalSubtitleStream.getLanguage(), finalSubtitleStream.getIsForced());
-                finalSubtitleStream.setPath(path);
-                localAssetManager.addOrUpdate(item);
-                onAny();
+                try (InputStream copy = stream){
+
+                    String path = localAssetManager.saveSubtitles(copy, finalSubtitleStream.getCodec(), item, finalSubtitleStream.getLanguage(), finalSubtitleStream.getIsForced());
+                    finalSubtitleStream.setPath(path);
+                    localAssetManager.addOrUpdate(item);
+                }
+                catch (IOException ioException){
+                    logger.ErrorException("Error saving subtitles", ioException);
+                }
+                finally {
+                    onAny();
+                }
             }
 
             @Override

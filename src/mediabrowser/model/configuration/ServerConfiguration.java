@@ -264,7 +264,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
-	 Characters to be replaced with a ' ' in strings to create a sort name
+	 Characters to be replaced with a ' ' in strings to createUserAction a sort name
 	 
 	 <value>The sort replace characters.</value>
 	*/
@@ -279,7 +279,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
-	 Characters to be removed from strings to create a sort name
+	 Characters to be removed from strings to createUserAction a sort name
 	 
 	 <value>The sort remove characters.</value>
 	*/
@@ -294,7 +294,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
-	 Words to be removed from strings to create a sort name
+	 Words to be removed from strings to createUserAction a sort name
 	 
 	 <value>The sort remove words.</value>
 	*/

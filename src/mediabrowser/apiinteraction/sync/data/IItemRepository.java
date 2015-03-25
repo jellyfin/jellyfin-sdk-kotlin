@@ -8,11 +8,11 @@ import java.util.ArrayList;
 
 public interface IItemRepository {
 
-    void addOrUpdate(LocalItem item);
+    void addOrUpdateItem(LocalItem item);
 
-    LocalItem get(String id);
+    LocalItem getItem(String id);
 
-    void delete(String id);
+    void deleteItem(String id);
 
     ArrayList<String> getServerItemIds(String serverId);
 

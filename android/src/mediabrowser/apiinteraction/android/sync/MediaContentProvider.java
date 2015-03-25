@@ -43,7 +43,7 @@ public class MediaContentProvider extends ContentProvider {
         return null;
     }
     /*
-     * delete() always returns "no rows affected" (0)
+     * deleteUserAction() always returns "no rows affected" (0)
      */
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {

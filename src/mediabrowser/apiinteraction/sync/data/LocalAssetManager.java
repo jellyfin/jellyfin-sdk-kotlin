@@ -1,6 +1,5 @@
 package mediabrowser.apiinteraction.sync.data;
 
-import com.android.internal.telephony.cat.Input;
 import com.google.common.io.Files;
 import mediabrowser.apiinteraction.cryptography.Md5;
 import mediabrowser.apiinteraction.sync.data.comparators.SortNameComparator;
@@ -19,8 +18,8 @@ import mediabrowser.model.sync.*;
 import mediabrowser.model.users.UserAction;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -35,12 +34,13 @@ public class LocalAssetManager implements ILocalAssetManager {
     private IImageRepository imageRepository;
     private ILogger logger;
 
-    public LocalAssetManager(IUserActionRepository userActionRepository, IItemRepository itemRepository, IFileRepository fileRepository, IUserRepository userRepository, IImageRepository imageRepository) {
+    public LocalAssetManager(IUserActionRepository userActionRepository, IItemRepository itemRepository, IFileRepository fileRepository, IUserRepository userRepository, IImageRepository imageRepository, ILogger logger) {
         this.userActionRepository = userActionRepository;
         this.itemRepository = itemRepository;
         this.fileRepository = fileRepository;
         this.userRepository = userRepository;
         this.imageRepository = imageRepository;
+        this.logger = logger;
     }
 
     @Override
@@ -48,27 +48,27 @@ public class LocalAssetManager implements ILocalAssetManager {
 
         action.setId(UUID.randomUUID().toString());
 
-        userActionRepository.create(action);
+        userActionRepository.createUserAction(action);
     }
 
     @Override
     public void delete(UserAction action) {
-        userActionRepository.delete(action);
+        userActionRepository.deleteUserAction(action);
     }
 
     @Override
     public void delete(LocalItem item) {
-        itemRepository.delete(item.getId());
+        itemRepository.deleteItem(item.getId());
     }
 
     @Override
     public ArrayList<UserAction> getUserActions(String serverId) {
-        return userActionRepository.get(serverId);
+        return userActionRepository.getUserActions(serverId);
     }
 
     @Override
     public void addOrUpdate(LocalItem item) {
-        itemRepository.addOrUpdate(item);
+        itemRepository.addOrUpdateItem(item);
     }
 
     @Override
@@ -108,8 +108,7 @@ public class LocalAssetManager implements ILocalAssetManager {
     }
 
     @Override
-    public void saveMedia(InputStream stream, LocalItem localItem, ServerInfo server)
-    {
+    public void saveMedia(InputStream stream, LocalItem localItem, ServerInfo server) throws IOException {
         logger.Debug("Saving media to " + localItem.getLocalPath());
         fileRepository.saveFile(stream, localItem.getLocalPath());
     }
@@ -136,7 +135,7 @@ public class LocalAssetManager implements ILocalAssetManager {
     }
 
     @Override
-    public String saveSubtitles(InputStream stream, String format, LocalItem item, String language, boolean isForced) {
+    public String saveSubtitles(InputStream stream, String format, LocalItem item, String language, boolean isForced) throws IOException {
 
         String path = item.getLocalPath();
 
@@ -260,7 +259,7 @@ public class LocalAssetManager implements ILocalAssetManager {
 
     @Override
     public LocalItem getLocalItem(String localId) {
-        return itemRepository.get(localId);
+        return itemRepository.getItem(localId);
     }
 
     @Override
@@ -280,23 +279,23 @@ public class LocalAssetManager implements ILocalAssetManager {
 
     @Override
     public void saveOfflineUser(UserDto user) {
-        userRepository.addOrUpdate(user.getId(), user);
+        userRepository.addOrUpdateUser(user.getId(), user);
     }
 
     @Override
     public void deleteOfflineUser(String id) {
-        userRepository.delete(id);
+        userRepository.deleteUser(id);
     }
 
     @Override
-    public void saveImage(UserDto user, InputStream stream) {
+    public void saveImage(UserDto user, InputStream stream) throws Exception {
         deleteImage(user);
 
         imageRepository.saveImage(getImageRepositoryId(user.getServerId(), user.getId()), user.getPrimaryImageTag(), stream);
     }
 
     @Override
-    public void saveImage(String serverId, String itemId, String imageId, InputStream stream) {
+    public void saveImage(String serverId, String itemId, String imageId, InputStream stream) throws Exception {
         imageRepository.saveImage(getImageRepositoryId(serverId, itemId), imageId, stream);
     }
 
@@ -692,7 +691,7 @@ public class LocalAssetManager implements ILocalAssetManager {
 
     @Override
     public UserDto getUser(String id) {
-        return userRepository.get(id);
+        return userRepository.getUser(id);
     }
 
     private String getImageRepositoryId(String serverId, String itemId)

@@ -7,6 +7,7 @@ import mediabrowser.model.sync.ItemFileInfo;
 import mediabrowser.model.sync.LocalItem;
 import mediabrowser.model.users.UserAction;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public interface ILocalAssetManager {
                          String format,
                                LocalItem item,
                                String language,
-                               boolean isForced);
+                               boolean isForced) throws IOException;
 
     LocalItem createLocalItem(BaseItemDto libraryItem, ServerInfo server, String originalFileName);
 
@@ -44,7 +45,7 @@ public interface ILocalAssetManager {
 
     boolean fileExists(String path);
 
-    void saveMedia(InputStream stream, LocalItem localItem, ServerInfo server);
+    void saveMedia(InputStream stream, LocalItem localItem, ServerInfo server) throws IOException;
 
     ArrayList<String> getServerItemIds(String serverId);
 
@@ -52,13 +53,13 @@ public interface ILocalAssetManager {
 
     void deleteOfflineUser(String id);
 
-    void saveImage(UserDto user, InputStream stream);
+    void saveImage(UserDto user, InputStream stream) throws Exception;
 
     void deleteImage(UserDto user);
 
     boolean hasImage(UserDto user);
 
-    void saveImage(String serverId, String itemId, String imageId, InputStream stream);
+    void saveImage(String serverId, String itemId, String imageId, InputStream stream) throws Exception;
 
     boolean hasImage(String serverId, String itemId, String imageId);
 

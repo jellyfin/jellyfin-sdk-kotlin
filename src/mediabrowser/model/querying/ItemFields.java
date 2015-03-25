@@ -26,7 +26,7 @@ public enum ItemFields
 	Budget,
 
 	/** 
-	 The can delete
+	 The can deleteUserAction
 	*/
 	CanDelete,
 

@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public interface IUserRepository {
 
-    void addOrUpdate(String id, UserDto user);
+    void addOrUpdateUser(String id, UserDto user);
 
-    void delete(String id);
+    void deleteUser(String id);
 
-    UserDto get(String id);
+    UserDto getUser(String id);
 
-    ArrayList<UserDto> getAll();
+    ArrayList<UserDto> getAllUsers();
 }

@@ -2445,7 +2445,7 @@ public class ApiClient extends BaseApiClient {
 
             dos = new DataOutputStream(conn.getOutputStream());
 
-            // create a buffer of  maximum size
+            // createUserAction a buffer of  maximum size
             int bytesAvailable = fileInputStream.available();
 
             int bufferSize = Math.min(bytesAvailable, maxBufferSize);
