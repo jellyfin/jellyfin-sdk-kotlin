@@ -96,7 +96,6 @@ public class PlaybackManager {
     public void getAudioStreamInfo(String serverId, AudioOptions options, boolean isOffline, ApiClient apiClient, Response<StreamInfo> response)
     {
         Normalize(options);
-
         StreamBuilder streamBuilder = new StreamBuilder(localPlayer);
 
         LocalItem localItem = localAssetManager.getLocalItem(serverId, options.getItemId());
@@ -123,16 +122,23 @@ public class PlaybackManager {
             }
         }
 
+        if (!isOffline)
+        {
+            apiClient.GetPlaybackInfo(options.getItemId(), apiClient.getCurrentUserId(), new GetPlaybackInfoResponse(this, serverId, options, response, streamBuilder, false));
+            return;
+        }
+
         response.onResponse(streamBuilder.BuildAudioItem(options));
     }
 
     public void getVideoStreamInfo(final String serverId, final VideoOptions options, boolean isOffline, ApiClient apiClient, final Response<StreamInfo> response)
     {
         Normalize(options);
+        StreamBuilder streamBuilder = new StreamBuilder(localPlayer);
 
         if (!isOffline)
         {
-            apiClient.GetPlaybackInfo(options.getItemId(), apiClient.getCurrentUserId(), new GetPlaybackInfoResponse(this, serverId, options, response));
+            apiClient.GetPlaybackInfo(options.getItemId(), apiClient.getCurrentUserId(), new GetPlaybackInfoResponse(this, serverId, options, response, streamBuilder, true));
             return;
         }
 

@@ -1,9 +1,7 @@
 package mediabrowser.apiinteraction.playback;
 
 import mediabrowser.apiinteraction.Response;
-import mediabrowser.model.dlna.PlaybackException;
-import mediabrowser.model.dlna.StreamInfo;
-import mediabrowser.model.dlna.VideoOptions;
+import mediabrowser.model.dlna.*;
 import mediabrowser.model.mediainfo.PlaybackInfoResponse;
 
 /**
@@ -13,15 +11,19 @@ public class GetPlaybackInfoResponse extends Response<PlaybackInfoResponse> {
 
     private PlaybackManager playbackManager;
     private String serverId;
-    private VideoOptions options;
+    private AudioOptions options;
     private Response<StreamInfo> response;
+    private StreamBuilder streamBuilder;
+    private boolean isVideo;
 
-    public GetPlaybackInfoResponse(PlaybackManager playbackManager, String serverId, VideoOptions options, Response<StreamInfo> response) {
+    public GetPlaybackInfoResponse(PlaybackManager playbackManager, String serverId, AudioOptions options, Response<StreamInfo> response, StreamBuilder streamBuilder, boolean isVideo) {
         super(response);
         this.playbackManager = playbackManager;
         this.serverId = serverId;
         this.options = options;
         this.response = response;
+        this.streamBuilder = streamBuilder;
+        this.isVideo = isVideo;
     }
 
     @Override
@@ -36,9 +38,17 @@ public class GetPlaybackInfoResponse extends Response<PlaybackInfoResponse> {
         }
 
         options.setMediaSources(playbackInfo.getMediaSources());
-        StreamInfo streamInfo = playbackManager.getVideoStreamInfoInternal(serverId, options);
-        streamInfo.setPlaybackInfo(playbackInfo);
-        response.onResponse(streamInfo);
+
+        if (isVideo){
+            StreamInfo streamInfo = playbackManager.getVideoStreamInfoInternal(serverId, (VideoOptions)options);
+            streamInfo.setPlaybackInfo(playbackInfo);
+            response.onResponse(streamInfo);
+        }
+        else{
+            StreamInfo streamInfo = streamBuilder.BuildAudioItem(options);
+            response.onResponse(streamInfo);
+        }
+
     }
 
 }
