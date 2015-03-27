@@ -31,7 +31,7 @@ import mediabrowser.model.globalization.CountryInfo;
 import mediabrowser.model.globalization.CultureDto;
 import mediabrowser.model.livetv.*;
 import mediabrowser.model.logging.ILogger;
-import mediabrowser.model.mediainfo.LiveMediaInfoResult;
+import mediabrowser.model.mediainfo.PlaybackInfoResponse;
 import mediabrowser.model.net.HttpException;
 import mediabrowser.model.notifications.NotificationQuery;
 import mediabrowser.model.notifications.NotificationResult;
@@ -183,6 +183,7 @@ public class ApiClient extends BaseApiClient {
 
     public void getResponseStream(String address, Response<InputStream> response){
 
+        Logger.Debug("Getting response stream from " + address);
         try
         {
             URL url = new URL(address);
@@ -2360,7 +2361,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<QueryFilters>(response, jsonSerializer, QueryFilters.class));
     }
 
-    public void GetPlaybackInfo(String itemId, String userId, final Response<LiveMediaInfoResult> response)
+    public void GetPlaybackInfo(String itemId, String userId, final Response<PlaybackInfoResponse> response)
     {
         QueryStringDictionary dict = new QueryStringDictionary();
 
@@ -2370,7 +2371,7 @@ public class ApiClient extends BaseApiClient {
 
         url = AddDataFormat(url);
 
-        Send(url, "GET", new SerializedResponse<LiveMediaInfoResult>(response, jsonSerializer, LiveMediaInfoResult.class));
+        Send(url, "GET", new SerializedResponse<PlaybackInfoResponse>(response, jsonSerializer, PlaybackInfoResponse.class));
     }
 
     public void GetDevicesOptions(final Response<DevicesOptions> response)

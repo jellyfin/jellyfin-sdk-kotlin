@@ -2,6 +2,17 @@ package mediabrowser.model.dto;
 
 public class NameValuePair
 {
+	public NameValuePair()
+	{
+
+	}
+
+	public NameValuePair(String name, String value)
+	{
+		setName(name);
+		setValue(value);
+	}
+
 	/** 
 	 Gets or sets the name.
 	 

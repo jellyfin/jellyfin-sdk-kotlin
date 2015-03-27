@@ -110,6 +110,15 @@ public class MediaSourceInfo
 	{
 		SupportsDirectStream = value;
 	}
+	private boolean SupportsDirectPlay;
+	public final boolean getSupportsDirectPlay()
+	{
+		return SupportsDirectPlay;
+	}
+	public final void setSupportsDirectPlay(boolean value)
+	{
+		SupportsDirectPlay = value;
+	}
 
 	private VideoType VideoType = null;
 	public final VideoType getVideoType()
@@ -199,6 +208,34 @@ public class MediaSourceInfo
 		RequiredHttpHeaders = value;
 	}
 
+	private String TranscodingUrl;
+	public final String getTranscodingUrl()
+	{
+		return TranscodingUrl;
+	}
+	public final void setTranscodingUrl(String value)
+	{
+		TranscodingUrl = value;
+	}
+	private String TranscodingSubProtocol;
+	public final String getTranscodingSubProtocol()
+	{
+		return TranscodingSubProtocol;
+	}
+	public final void setTranscodingSubProtocol(String value)
+	{
+		TranscodingSubProtocol = value;
+	}
+	private String TranscodingContainer;
+	public final String getTranscodingContainer()
+	{
+		return TranscodingContainer;
+	}
+	public final void setTranscodingContainer(String value)
+	{
+		TranscodingContainer = value;
+	}
+
 	public MediaSourceInfo()
 	{
 		setFormats(new java.util.ArrayList<String>());
@@ -207,6 +244,7 @@ public class MediaSourceInfo
 		setPlayableStreamFileNames(new java.util.ArrayList<String>());
 		setSupportsTranscoding(true);
 		setSupportsDirectStream(true);
+		setSupportsDirectPlay(true);
 	}
 
 	private Integer DefaultAudioStreamIndex = null;

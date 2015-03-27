@@ -33,6 +33,34 @@ public class SyncedItem
 		SyncJobId = value;
 	}
 	/** 
+	 Gets or sets the name of the synchronize job.
+	 
+	 <value>The name of the synchronize job.</value>
+	*/
+	private String SyncJobName;
+	public final String getSyncJobName()
+	{
+		return SyncJobName;
+	}
+	public final void setSyncJobName(String value)
+	{
+		SyncJobName = value;
+	}
+	/** 
+	 Gets or sets the synchronize job date created.
+	 
+	 <value>The synchronize job date created.</value>
+	*/
+	private java.util.Date SyncJobDateCreated = new java.util.Date(0);
+	public final java.util.Date getSyncJobDateCreated()
+	{
+		return SyncJobDateCreated;
+	}
+	public final void setSyncJobDateCreated(java.util.Date value)
+	{
+		SyncJobDateCreated = value;
+	}
+	/** 
 	 Gets or sets the synchronize job item identifier.
 	 
 	 <value>The synchronize job item identifier.</value>

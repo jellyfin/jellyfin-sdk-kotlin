@@ -183,7 +183,12 @@ public class ServerInfo
 			throw new IllegalArgumentException("user");
 		}
 
-		java.util.ArrayList<ServerUserInfo> list = getUsers();
+		// Clone the existing list of users
+		java.util.ArrayList<ServerUserInfo> list = new java.util.ArrayList<ServerUserInfo>();
+		for (ServerUserInfo serverUserInfo : getUsers())
+		{
+			list.add(serverUserInfo);
+		}
 
 		int index = FindIndex(list, user.getId());
 

@@ -18,7 +18,7 @@ public final class DrawingUtils
 		ImageSize tempVar = new ImageSize();
 		tempVar.setWidth(currentWidth);
 		tempVar.setHeight(currentHeight);
-		return Scale(tempVar, scaleFactor);
+		return Scale(tempVar.clone(), scaleFactor);
 	}
 
 	/** 
@@ -51,7 +51,7 @@ public final class DrawingUtils
 		ImageSize tempVar = new ImageSize();
 		tempVar.setWidth(currentWidth);
 		tempVar.setHeight(currentHeight);
-		return Resize(tempVar, width, height, maxWidth, maxHeight);
+		return Resize(tempVar.clone(), width, height, maxWidth, maxHeight);
 	}
 
 	/** 

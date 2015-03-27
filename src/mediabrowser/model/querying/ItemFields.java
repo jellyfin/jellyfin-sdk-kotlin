@@ -26,7 +26,7 @@ public enum ItemFields
 	Budget,
 
 	/** 
-	 The can deleteUserAction
+	 The can delete
 	*/
 	CanDelete,
 
@@ -94,6 +94,11 @@ public enum ItemFields
 	 The fields that the server supports indexing on
 	*/
 	IndexOptions,
+
+	/** 
+	 The item counts
+	*/
+	ItemCounts,
 
 	/** 
 	 The keywords

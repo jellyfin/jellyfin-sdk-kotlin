@@ -61,14 +61,14 @@ public class StreamInfo
 		Container = value;
 	}
 
-	private String Protocol;
-	public final String getProtocol()
+	private String SubProtocol;
+	public final String getSubProtocol()
 	{
-		return Protocol;
+		return SubProtocol;
 	}
-	public final void setProtocol(String value)
+	public final void setSubProtocol(String value)
 	{
-		Protocol = value;
+		SubProtocol = value;
 	}
 
 	private long StartPositionTicks;
@@ -314,12 +314,12 @@ public class StreamInfo
 		SubtitleFormat = value;
 	}
 
-	private LiveMediaInfoResult PlaybackInfo;
-	public final LiveMediaInfoResult getPlaybackInfo()
+	private PlaybackInfoResponse PlaybackInfo;
+	public final PlaybackInfoResponse getPlaybackInfo()
 	{
 		return PlaybackInfo;
 	}
-	public final void setPlaybackInfo(LiveMediaInfoResult value)
+	public final void setPlaybackInfo(PlaybackInfoResponse value)
 	{
 		PlaybackInfo = value;
 	}
@@ -336,11 +336,6 @@ public class StreamInfo
 
 	public final String ToUrl(String baseUrl, String accessToken)
 	{
-		return ToDlnaUrl(baseUrl, accessToken);
-	}
-
-	public final String ToDlnaUrl(String baseUrl, String accessToken)
-	{
 		if (getPlayMethod() == PlayMethod.DirectPlay)
 		{
 			return getMediaSource().getPath();
@@ -351,7 +346,53 @@ public class StreamInfo
 			throw new IllegalArgumentException(baseUrl);
 		}
 
-		String dlnaCommand = BuildDlnaParam(this);
+		java.util.ArrayList<String> list = new java.util.ArrayList<String>();
+		for (NameValuePair pair : BuildParams(this, accessToken))
+		{
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(pair.getValue()))
+			{
+				continue;
+			}
+
+			// Try to keep the url clean by omitting defaults
+			if (StringHelper.EqualsIgnoreCase(pair.getName(), "StartTimeTicks") && StringHelper.EqualsIgnoreCase(pair.getValue(), "0"))
+			{
+				continue;
+			}
+			if (StringHelper.EqualsIgnoreCase(pair.getName(), "SubtitleStreamIndex") && StringHelper.EqualsIgnoreCase(pair.getValue(), "-1"))
+			{
+				continue;
+			}
+			if (StringHelper.EqualsIgnoreCase(pair.getName(), "Static") && StringHelper.EqualsIgnoreCase(pair.getValue(), "false"))
+			{
+				continue;
+			}
+
+			list.add(String.format("%1$s=%2$s", pair.getName(), pair.getValue()));
+		}
+
+		String queryString = tangible.DotNetToJavaStringHelper.join("&", list.toArray(new String[0]));
+
+		return GetUrl(baseUrl, queryString);
+	}
+
+	public final String ToDlnaUrl(String baseUrl, String accessToken)
+	{
+		if (getPlayMethod() == PlayMethod.DirectPlay)
+		{
+			return getMediaSource().getPath();
+		}
+
+		String dlnaCommand = BuildDlnaParam(this, accessToken);
+		return GetUrl(baseUrl, dlnaCommand);
+	}
+
+	private String GetUrl(String baseUrl, String queryString)
+	{
+		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(baseUrl))
+		{
+			throw new IllegalArgumentException(baseUrl);
+		}
 
 		String extension = tangible.DotNetToJavaStringHelper.isNullOrEmpty(getContainer()) ? "" : "." + getContainer();
 
@@ -359,37 +400,67 @@ public class StreamInfo
 
 		if (getMediaType() == DlnaProfileType.Audio)
 		{
-			return String.format("%1$s/audio/%2$s/stream%3$s?%4$s", baseUrl, getItemId(), extension, dlnaCommand);
+			return String.format("%1$s/audio/%2$s/stream%3$s?%4$s", baseUrl, getItemId(), extension, queryString);
 		}
 
-		if (StringHelper.EqualsIgnoreCase(getProtocol(), "hls"))
+		if (StringHelper.EqualsIgnoreCase(getSubProtocol(), "hls"))
 		{
-			return String.format("%1$s/videos/%2$s/master.m3u8?%3$s", baseUrl, getItemId(), dlnaCommand);
+			return String.format("%1$s/videos/%2$s/master.m3u8?%3$s", baseUrl, getItemId(), queryString);
 		}
 
-		return String.format("%1$s/videos/%2$s/stream%3$s?%4$s", baseUrl, getItemId(), extension, dlnaCommand);
+		return String.format("%1$s/videos/%2$s/stream%3$s?%4$s", baseUrl, getItemId(), extension, queryString);
 	}
 
-	private static String BuildDlnaParam(StreamInfo item)
+	private static String BuildDlnaParam(StreamInfo item, String accessToken)
 	{
-		String tempVar = item.getDeviceProfileId();
-		String tempVar2 = item.getDeviceId();
-		String tempVar3 = item.getMediaSourceId();
-		String tempVar4 = item.getVideoCodec();
-		String tempVar5 = item.getAudioCodec();
-		java.util.ArrayList<String> list = new java.util.ArrayList<String>(java.util.Arrays.asList(new String[] {(tempVar != null) ? tempVar : "", (tempVar2 != null) ? tempVar2 : "", (tempVar3 != null) ? tempVar3 : "", (new Boolean(item.getIsDirectStream())).toString().toLowerCase(), (tempVar4 != null) ? tempVar4 : "", (tempVar5 != null) ? tempVar5 : "", item.getAudioStreamIndex() != null ? StringHelper.ToStringCultureInvariant(item.getAudioStreamIndex()) : "", item.getSubtitleStreamIndex() != null && item.getSubtitleDeliveryMethod() != mediabrowser.model.dlna.SubtitleDeliveryMethod.External ? StringHelper.ToStringCultureInvariant(item.getSubtitleStreamIndex()) : "", item.getVideoBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getVideoBitrate()) : "", item.getAudioBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getAudioBitrate()) : "", item.getMaxAudioChannels() != null ? StringHelper.ToStringCultureInvariant(item.getMaxAudioChannels()) : "", item.getMaxFramerate() != null ? StringHelper.ToStringCultureInvariant(item.getMaxFramerate()) : "", item.getMaxWidth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxWidth()) : "", item.getMaxHeight() != null ? StringHelper.ToStringCultureInvariant(item.getMaxHeight()) : "", StringHelper.ToStringCultureInvariant(item.getStartPositionTicks()), item.getVideoLevel() != null ? StringHelper.ToStringCultureInvariant(item.getVideoLevel()) : ""}));
+		java.util.ArrayList<String> list = new java.util.ArrayList<String>();
 
-		list.add(item.getIsDirectStream() ? "" : String.valueOf(new java.util.Date().getTime()));
-		list.add(item.getMaxRefFrames() != null ? StringHelper.ToStringCultureInvariant(item.getMaxRefFrames()) : "");
-		list.add(item.getMaxVideoBitDepth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxVideoBitDepth()) : "");
-		String tempVar6 = item.getVideoProfile();
-		list.add((tempVar6 != null) ? tempVar6 : "");
-		list.add(item.getCabac() != null ? item.getCabac().toString() : "");
-
-		String streamId = item.getPlaybackInfo() == null ? null : item.getPlaybackInfo().getStreamId();
-		list.add((streamId != null) ? streamId : "");
+		for (NameValuePair pair : BuildParams(item, accessToken))
+		{
+			list.add(pair.getValue());
+		}
 
 		return String.format("Params=%1$s", tangible.DotNetToJavaStringHelper.join(";", list.toArray(new String[0])));
+	}
+
+	private static java.util.ArrayList<NameValuePair> BuildParams(StreamInfo item, String accessToken)
+	{
+		java.util.ArrayList<NameValuePair> list = new java.util.ArrayList<NameValuePair>();
+
+		String tempVar = item.getDeviceProfileId();
+		list.add(new NameValuePair("DeviceProfileId", (tempVar != null) ? tempVar : ""));
+		String tempVar2 = item.getDeviceId();
+		list.add(new NameValuePair("DeviceId", (tempVar2 != null) ? tempVar2 : ""));
+		String tempVar3 = item.getMediaSourceId();
+		list.add(new NameValuePair("MediaSourceId", (tempVar3 != null) ? tempVar3 : ""));
+		list.add(new NameValuePair("Static", (new Boolean(item.getIsDirectStream())).toString().toLowerCase()));
+		String tempVar4 = item.getVideoCodec();
+		list.add(new NameValuePair("VideoCodec", (tempVar4 != null) ? tempVar4 : ""));
+		String tempVar5 = item.getAudioCodec();
+		list.add(new NameValuePair("AudioCodec", (tempVar5 != null) ? tempVar5 : ""));
+		list.add(new NameValuePair("AudioStreamIndex", item.getAudioStreamIndex() != null ? StringHelper.ToStringCultureInvariant(item.getAudioStreamIndex()) : ""));
+		list.add(new NameValuePair("SubtitleStreamIndex", item.getSubtitleStreamIndex() != null && item.getSubtitleDeliveryMethod() != mediabrowser.model.dlna.SubtitleDeliveryMethod.External ? StringHelper.ToStringCultureInvariant(item.getSubtitleStreamIndex()) : ""));
+		list.add(new NameValuePair("VideoBitrate", item.getVideoBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getVideoBitrate()) : ""));
+		list.add(new NameValuePair("AudioBitrate", item.getAudioBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getAudioBitrate()) : ""));
+		list.add(new NameValuePair("MaxAudioChannels", item.getMaxAudioChannels() != null ? StringHelper.ToStringCultureInvariant(item.getMaxAudioChannels()) : ""));
+		list.add(new NameValuePair("MaxFramerate", item.getMaxFramerate() != null ? StringHelper.ToStringCultureInvariant(item.getMaxFramerate()) : ""));
+		list.add(new NameValuePair("MaxWidth", item.getMaxWidth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxWidth()) : ""));
+		list.add(new NameValuePair("MaxHeight", item.getMaxHeight() != null ? StringHelper.ToStringCultureInvariant(item.getMaxHeight()) : ""));
+		list.add(new NameValuePair("StartTimeTicks", StringHelper.ToStringCultureInvariant(item.getStartPositionTicks())));
+		list.add(new NameValuePair("Level", item.getVideoLevel() != null ? StringHelper.ToStringCultureInvariant(item.getVideoLevel()) : ""));
+
+		list.add(new NameValuePair("ClientTime", item.getIsDirectStream() ? "" : String.valueOf(new java.util.Date().getTime())));
+		list.add(new NameValuePair("MaxRefFrames", item.getMaxRefFrames() != null ? StringHelper.ToStringCultureInvariant(item.getMaxRefFrames()) : ""));
+		list.add(new NameValuePair("MaxVideoBitDepth", item.getMaxVideoBitDepth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxVideoBitDepth()) : ""));
+		String tempVar6 = item.getVideoProfile();
+		list.add(new NameValuePair("Profile", (tempVar6 != null) ? tempVar6 : ""));
+		list.add(new NameValuePair("Cabac", item.getCabac() != null ? item.getCabac().toString() : ""));
+
+		String streamId = item.getPlaybackInfo() == null ? null : item.getPlaybackInfo().getStreamId();
+		list.add(new NameValuePair("StreamId", (streamId != null) ? streamId : ""));
+		list.add(new NameValuePair("api_key", (accessToken != null) ? accessToken : ""));
+
+		return list;
 	}
 
 	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(boolean includeSelectedTrackOnly)
@@ -442,7 +513,7 @@ public class StreamInfo
 		java.util.ArrayList<SubtitleStreamInfo> list = new java.util.ArrayList<SubtitleStreamInfo>();
 
 		// HLS will preserve timestamps so we can just grab the full subtitle stream
-		long startPositionTicks = StringHelper.EqualsIgnoreCase(getProtocol(), "hls") ? 0 : getStartPositionTicks();
+		long startPositionTicks = StringHelper.EqualsIgnoreCase(getSubProtocol(), "hls") ? 0 : getStartPositionTicks();
 
 		// First add the selected track
 		if (getSubtitleStreamIndex() != null)
@@ -501,14 +572,14 @@ public class StreamInfo
 			return null;
 		}
 
-		String tempVar = stream.getLanguage();
-		SubtitleStreamInfo tempVar2 = new SubtitleStreamInfo();
-		tempVar2.setIsForced(stream.getIsForced());
-		tempVar2.setLanguage(stream.getLanguage());
-		tempVar2.setName((tempVar != null) ? tempVar : "Unknown");
-		tempVar2.setFormat(getSubtitleFormat());
-		tempVar2.setIndex(stream.getIndex());
-		return tempVar2;
+		SubtitleStreamInfo tempVar = new SubtitleStreamInfo();
+		tempVar.setIsForced(stream.getIsForced());
+		tempVar.setLanguage(stream.getLanguage());
+		String tempVar2 = stream.getLanguage();
+		tempVar.setName((tempVar2 != null) ? tempVar2 : "Unknown");
+		tempVar.setFormat(getSubtitleFormat());
+		tempVar.setIndex(stream.getIndex());
+		return tempVar;
 	}
 
 	/** 
@@ -720,7 +791,7 @@ public class StreamInfo
 			ImageSize tempVar = new ImageSize();
 			tempVar.setWidth(videoStream.getWidth());
 			tempVar.setHeight(videoStream.getHeight());
-			ImageSize size = tempVar;
+			ImageSize size = tempVar.clone();
 
 			Double maxWidth = getMaxWidth() != null ? (double)getMaxWidth() : (Double)null;
 			Double maxHeight = getMaxHeight() != null ? (double)getMaxHeight() : (Double)null;
@@ -742,7 +813,7 @@ public class StreamInfo
 			ImageSize tempVar = new ImageSize();
 			tempVar.setWidth(videoStream.getWidth());
 			tempVar.setHeight(videoStream.getHeight());
-			ImageSize size = tempVar;
+			ImageSize size = tempVar.clone();
 
 			Double maxWidth = getMaxWidth() != null ? (double)getMaxWidth() : (Double)null;
 			Double maxHeight = getMaxHeight() != null ? (double)getMaxHeight() : (Double)null;

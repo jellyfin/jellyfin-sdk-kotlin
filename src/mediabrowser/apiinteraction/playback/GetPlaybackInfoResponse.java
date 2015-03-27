@@ -4,12 +4,12 @@ import mediabrowser.apiinteraction.Response;
 import mediabrowser.model.dlna.PlaybackException;
 import mediabrowser.model.dlna.StreamInfo;
 import mediabrowser.model.dlna.VideoOptions;
-import mediabrowser.model.mediainfo.LiveMediaInfoResult;
+import mediabrowser.model.mediainfo.PlaybackInfoResponse;
 
 /**
  * Created by Luke on 3/24/2015.
  */
-public class GetPlaybackInfoResponse extends Response<LiveMediaInfoResult> {
+public class GetPlaybackInfoResponse extends Response<PlaybackInfoResponse> {
 
     private PlaybackManager playbackManager;
     private String serverId;
@@ -25,7 +25,7 @@ public class GetPlaybackInfoResponse extends Response<LiveMediaInfoResult> {
     }
 
     @Override
-    public void onResponse(LiveMediaInfoResult playbackInfo) {
+    public void onResponse(PlaybackInfoResponse playbackInfo) {
 
         if (playbackInfo.getErrorCode() != null){
 

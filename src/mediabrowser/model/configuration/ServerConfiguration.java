@@ -99,6 +99,21 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
+	 Gets or sets a value indicating whether [enable user specific user views].
+	 
+	 <value><c>true</c> if [enable user specific user views]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean EnableUserSpecificUserViews;
+	public final boolean getEnableUserSpecificUserViews()
+	{
+		return EnableUserSpecificUserViews;
+	}
+	public final void setEnableUserSpecificUserViews(boolean value)
+	{
+		EnableUserSpecificUserViews = value;
+	}
+
+	/** 
 	 Gets or sets the value pointing to the file system where the ssl certiifcate is located..
 	 
 	 <value>The value pointing to the file system where the ssl certiifcate is located..</value>
@@ -264,7 +279,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
-	 Characters to be replaced with a ' ' in strings to createUserAction a sort name
+	 Characters to be replaced with a ' ' in strings to create a sort name
 	 
 	 <value>The sort replace characters.</value>
 	*/
@@ -279,7 +294,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
-	 Characters to be removed from strings to createUserAction a sort name
+	 Characters to be removed from strings to create a sort name
 	 
 	 <value>The sort remove characters.</value>
 	*/
@@ -294,7 +309,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
-	 Words to be removed from strings to createUserAction a sort name
+	 Words to be removed from strings to create a sort name
 	 
 	 <value>The sort remove words.</value>
 	*/
@@ -590,16 +605,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		EnableVideoArchiveFiles = value;
 	}
 
-	private boolean EnableLegacyCollections;
-	public final boolean getEnableLegacyCollections()
-	{
-		return EnableLegacyCollections;
-	}
-	public final void setEnableLegacyCollections(boolean value)
-	{
-		EnableLegacyCollections = value;
-	}
-
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
 	*/
@@ -649,5 +654,81 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setPeopleMetadataOptions(new PeopleMetadataOptions());
 
 		setInsecureApps8(new String[] {"Chromecast", "iOS", "Unknown app", "MediaPortal", "Media Portal", "iPad", "iPhone", "Roku", "Windows Phone"});
+
+		MetadataOptions tempVar = new MetadataOptions(1, 1280);
+		tempVar.setItemType("Book");
+		MetadataOptions tempVar2 = new MetadataOptions(1, 1280);
+		tempVar2.setItemType("Movie");
+		ImageOption tempVar3 = new ImageOption();
+		tempVar3.setLimit(3);
+		tempVar3.setMinWidth(1280);
+		tempVar3.setType(ImageType.Backdrop);
+		ImageOption tempVar4 = new ImageOption();
+		tempVar4.setLimit(0);
+		tempVar4.setType(ImageType.Art);
+		ImageOption tempVar5 = new ImageOption();
+		tempVar5.setLimit(0);
+		tempVar5.setType(ImageType.Disc);
+		ImageOption tempVar6 = new ImageOption();
+		tempVar6.setLimit(1);
+		tempVar6.setType(ImageType.Primary);
+		ImageOption tempVar7 = new ImageOption();
+		tempVar7.setLimit(1);
+		tempVar7.setType(ImageType.Banner);
+		ImageOption tempVar8 = new ImageOption();
+		tempVar8.setLimit(1);
+		tempVar8.setType(ImageType.Thumb);
+		ImageOption tempVar9 = new ImageOption();
+		tempVar9.setLimit(1);
+		tempVar9.setType(ImageType.Logo);
+		tempVar2.setImageOptions(new ImageOption[] {tempVar3, tempVar4, tempVar5, tempVar6, tempVar7, tempVar8, tempVar9});
+		MetadataOptions tempVar10 = new MetadataOptions(1, 1280);
+		tempVar10.setItemType("Series");
+		ImageOption tempVar11 = new ImageOption();
+		tempVar11.setLimit(2);
+		tempVar11.setMinWidth(1280);
+		tempVar11.setType(ImageType.Backdrop);
+		ImageOption tempVar12 = new ImageOption();
+		tempVar12.setLimit(0);
+		tempVar12.setType(ImageType.Art);
+		ImageOption tempVar13 = new ImageOption();
+		tempVar13.setLimit(1);
+		tempVar13.setType(ImageType.Primary);
+		ImageOption tempVar14 = new ImageOption();
+		tempVar14.setLimit(1);
+		tempVar14.setType(ImageType.Banner);
+		ImageOption tempVar15 = new ImageOption();
+		tempVar15.setLimit(1);
+		tempVar15.setType(ImageType.Thumb);
+		ImageOption tempVar16 = new ImageOption();
+		tempVar16.setLimit(1);
+		tempVar16.setType(ImageType.Logo);
+		tempVar10.setImageOptions(new ImageOption[] {tempVar11, tempVar12, tempVar13, tempVar14, tempVar15, tempVar16});
+		MetadataOptions tempVar17 = new MetadataOptions(1, 1280);
+		tempVar17.setItemType("MusicAlbum");
+		ImageOption tempVar18 = new ImageOption();
+		tempVar18.setLimit(1);
+		tempVar18.setMinWidth(1280);
+		tempVar18.setType(ImageType.Backdrop);
+		ImageOption tempVar19 = new ImageOption();
+		tempVar19.setLimit(0);
+		tempVar19.setType(ImageType.Disc);
+		tempVar17.setImageOptions(new ImageOption[] {tempVar18, tempVar19});
+		MetadataOptions tempVar20 = new MetadataOptions(1, 1280);
+		tempVar20.setItemType("MusicArtist");
+		ImageOption tempVar21 = new ImageOption();
+		tempVar21.setLimit(1);
+		tempVar21.setMinWidth(1280);
+		tempVar21.setType(ImageType.Backdrop);
+		ImageOption tempVar22 = new ImageOption();
+		tempVar22.setLimit(0);
+		tempVar22.setType(ImageType.Banner);
+		ImageOption tempVar23 = new ImageOption();
+		tempVar23.setLimit(0);
+		tempVar23.setType(ImageType.Art);
+		tempVar20.setImageOptions(new ImageOption[] {tempVar21, tempVar22, tempVar23});
+		MetadataOptions tempVar24 = new MetadataOptions(0, 1280);
+		tempVar24.setItemType("Season");
+		setMetadataOptions(new MetadataOptions[] {tempVar, tempVar2, tempVar10, tempVar17, tempVar20, tempVar24});
 	}
 }

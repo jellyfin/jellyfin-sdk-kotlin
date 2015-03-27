@@ -446,7 +446,7 @@ public class LocalAssetManager implements ILocalAssetManager {
     {
         LocalItemQuery query = new LocalItemQuery();
         query.setServerId(user.getServerId());
-        query.setAlbumArtist(parentItem.getName());
+        query.setAlbumArtistId(parentItem.getId());
         query.setType("Audio");
 
         ArrayList<LocalItem> items = itemRepository.getItems(query);

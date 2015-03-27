@@ -11,14 +11,14 @@ public class LocalItemQuery
 	{
 		ServerId = value;
 	}
-	private String AlbumArtist;
-	public final String getAlbumArtist()
+	private String AlbumArtistId;
+	public final String getAlbumArtistId()
 	{
-		return AlbumArtist;
+		return AlbumArtistId;
 	}
-	public final void setAlbumArtist(String value)
+	public final void setAlbumArtistId(String value)
 	{
-		AlbumArtist = value;
+		AlbumArtistId = value;
 	}
 	private String AlbumId;
 	public final String getAlbumId()

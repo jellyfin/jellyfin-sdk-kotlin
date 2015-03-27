@@ -31,7 +31,7 @@ public class CheckForUpdateResult
 	}
 	public final void setAvailableVersion(String value)
 	{
-	}
+	} // need this for the serializer
 
 	/** 
 	 Get or sets package information for an available update

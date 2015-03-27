@@ -85,38 +85,14 @@ public class StreamBuilder
 
 	private StreamInfo GetOptimalStream(java.util.ArrayList<StreamInfo> streams)
 	{
-		// Grab the first one that can be direct streamed
-		// If that doesn't produce anything, just take the first
-		for (StreamInfo i : streams)
-		{
-			if (i.getPlayMethod() == PlayMethod.DirectPlay && i.getMediaSource().getProtocol() == MediaProtocol.File)
-			{
-				return i;
-			}
-		}
-		for (StreamInfo i : streams)
-		{
-			if (i.getPlayMethod() == PlayMethod.DirectPlay)
-			{
-				return i;
-			}
-		}
-		for (StreamInfo i : streams)
-		{
-			if (i.getPlayMethod() == PlayMethod.DirectStream)
-			{
-				return i;
-			}
-		}
+		streams = StreamInfoSorter.SortMediaSources(streams);
 
 		for (StreamInfo stream : streams)
 		{
 			return stream;
 		}
 
-		PlaybackException error = new PlaybackException();
-		error.setErrorCode(PlaybackErrorCode.NoCompatibleStream);
-		throw error;
+		return null;
 	}
 
 	private StreamInfo BuildAudioItem(MediaSourceInfo item, AudioOptions options)
@@ -212,7 +188,7 @@ public class StreamBuilder
 			playlistItem.setEstimateContentLength(transcodingProfile.getEstimateContentLength());
 			playlistItem.setContainer(transcodingProfile.getContainer());
 			playlistItem.setAudioCodec(transcodingProfile.getAudioCodec());
-			playlistItem.setProtocol(transcodingProfile.getProtocol());
+			playlistItem.setSubProtocol(transcodingProfile.getProtocol());
 
 			java.util.ArrayList<CodecProfile> audioCodecProfiles = new java.util.ArrayList<CodecProfile>();
 			for (CodecProfile i : options.getProfile().getCodecProfiles())
@@ -370,7 +346,7 @@ public class StreamBuilder
 			playlistItem.setTranscodeSeekInfo(transcodingProfile.getTranscodeSeekInfo());
 			playlistItem.setAudioCodec(transcodingProfile.getAudioCodec().split("[,]", -1)[0]);
 			playlistItem.setVideoCodec(transcodingProfile.getVideoCodec());
-			playlistItem.setProtocol(transcodingProfile.getProtocol());
+			playlistItem.setSubProtocol(transcodingProfile.getProtocol());
 			playlistItem.setAudioStreamIndex(audioStreamIndex);
 
 			java.util.ArrayList<ProfileCondition> videoTranscodingConditions = new java.util.ArrayList<ProfileCondition>();

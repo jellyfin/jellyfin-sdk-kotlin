@@ -227,9 +227,9 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto, IHa
 	}
 
 	/** 
-	 Gets or sets a value indicating whether this instance can deleteUserAction.
+	 Gets or sets a value indicating whether this instance can delete.
 	 
-	 <value><c>null</c> if [can deleteUserAction] contains no value, <c>true</c> if [can deleteUserAction]; otherwise, <c>false</c>.</value>
+	 <value><c>null</c> if [can delete] contains no value, <c>true</c> if [can delete]; otherwise, <c>false</c>.</value>
 	*/
 	private Boolean CanDelete = null;
 	public final Boolean getCanDelete()

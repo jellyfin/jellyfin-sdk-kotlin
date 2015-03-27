@@ -61,6 +61,8 @@ public class AndroidApiClient extends ApiClient {
     @Override
     public void getResponseStream(final String address, final Response<InputStream> response){
 
+        Logger.Debug("Getting response stream from " + address);
+
         new AsyncTask(){
 
             @Override

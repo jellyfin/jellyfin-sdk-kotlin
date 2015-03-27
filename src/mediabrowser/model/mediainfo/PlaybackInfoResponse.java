@@ -3,7 +3,7 @@ package mediabrowser.model.mediainfo;
 import mediabrowser.model.dlna.*;
 import mediabrowser.model.dto.*;
 
-public class LiveMediaInfoResult
+public class PlaybackInfoResponse
 {
 	/** 
 	 Gets or sets the media sources.
@@ -50,7 +50,7 @@ public class LiveMediaInfoResult
 		ErrorCode = value;
 	}
 
-	public LiveMediaInfoResult()
+	public PlaybackInfoResponse()
 	{
 		setMediaSources(new java.util.ArrayList<MediaSourceInfo>());
 	}

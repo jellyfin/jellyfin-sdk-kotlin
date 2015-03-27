@@ -30,7 +30,7 @@ public class ServerLocator implements IServerLocator {
             DatagramSocket c = new DatagramSocket();
             c.setBroadcast(true);
 
-            byte[] sendData = "who is MediaBrowserServer_v2?".getBytes();
+            byte[] sendData = "who is EmbyServer?".getBytes();
 
             int port = 7359;
 

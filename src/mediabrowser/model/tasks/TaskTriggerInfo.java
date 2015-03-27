@@ -79,4 +79,19 @@ public class TaskTriggerInfo
 	{
 		DayOfWeek = value;
 	}
+
+	/** 
+	 Gets or sets the maximum runtime ms.
+	 
+	 <value>The maximum runtime ms.</value>
+	*/
+	private Integer MaxRuntimeMs = null;
+	public final Integer getMaxRuntimeMs()
+	{
+		return MaxRuntimeMs;
+	}
+	public final void setMaxRuntimeMs(Integer value)
+	{
+		MaxRuntimeMs = value;
+	}
 }

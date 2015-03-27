@@ -114,7 +114,7 @@ public class ConditionProcessor
 				case NotEquals:
 					return !currentValue.equals(expected);
 				default:
-					throw new UnsupportedOperationException("Unexpected ProfileConditionType");
+					throw new IllegalStateException("Unexpected ProfileConditionType");
 			}
 		}
 
@@ -142,7 +142,7 @@ public class ConditionProcessor
 			case NotEquals:
 				return !StringHelper.EqualsIgnoreCase(currentValue, expected);
 			default:
-				throw new UnsupportedOperationException("Unexpected ProfileConditionType");
+				throw new IllegalStateException("Unexpected ProfileConditionType");
 		}
 	}
 
@@ -167,7 +167,7 @@ public class ConditionProcessor
 				case NotEquals:
 					return currentValue != expected;
 				default:
-					throw new UnsupportedOperationException("Unexpected ProfileConditionType");
+					throw new IllegalStateException("Unexpected ProfileConditionType");
 			}
 		}
 
@@ -199,7 +199,7 @@ public class ConditionProcessor
 				case NotEquals:
 					return !currentValue.equals(expected);
 				default:
-					throw new UnsupportedOperationException("Unexpected ProfileConditionType");
+					throw new IllegalStateException("Unexpected ProfileConditionType");
 			}
 		}
 
@@ -231,7 +231,7 @@ public class ConditionProcessor
 				case NotEquals:
 					return !currentValue.equals(expected);
 				default:
-					throw new UnsupportedOperationException("Unexpected ProfileConditionType");
+					throw new IllegalStateException("Unexpected ProfileConditionType");
 			}
 		}
 
@@ -257,7 +257,7 @@ public class ConditionProcessor
 			case NotEquals:
 				return timestamp != expected;
 			default:
-				throw new UnsupportedOperationException("Unexpected ProfileConditionType");
+				throw new IllegalStateException("Unexpected ProfileConditionType");
 		}
 	}
 }
