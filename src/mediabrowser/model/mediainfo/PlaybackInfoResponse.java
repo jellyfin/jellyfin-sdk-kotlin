@@ -21,18 +21,18 @@ public class PlaybackInfoResponse
 	}
 
 	/** 
-	 Gets or sets the stream identifier.
+	 Gets or sets the play session identifier.
 	 
-	 <value>The stream identifier.</value>
+	 <value>The play session identifier.</value>
 	*/
-	private String StreamId;
-	public final String getStreamId()
+	private String PlaySessionId;
+	public final String getPlaySessionId()
 	{
-		return StreamId;
+		return PlaySessionId;
 	}
-	public final void setStreamId(String value)
+	public final void setPlaySessionId(String value)
 	{
-		StreamId = value;
+		PlaySessionId = value;
 	}
 
 	/** 

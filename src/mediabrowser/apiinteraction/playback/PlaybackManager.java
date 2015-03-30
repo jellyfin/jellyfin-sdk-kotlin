@@ -93,6 +93,18 @@ public class PlaybackManager {
         options.setDeviceId(device.getDeviceId());
     }
 
+    void SendResponse(Response<StreamInfo> response, StreamInfo info){
+
+        if (info == null){
+            PlaybackException error = new PlaybackException();
+            error.setErrorCode(PlaybackErrorCode.NoCompatibleStream);
+            response.onError(error);
+        }
+        else{
+            response.onResponse(info);
+        }
+    }
+
     public void getAudioStreamInfo(String serverId, AudioOptions options, boolean isOffline, ApiClient apiClient, Response<StreamInfo> response)
     {
         Normalize(options);
@@ -116,7 +128,7 @@ public class PlaybackManager {
 
                     StreamInfo result = streamBuilder.BuildAudioItem(options);
                     result.setPlayMethod(PlayMethod.DirectPlay);
-                    response.onResponse(result);
+                    SendResponse(response, result);
                     return;
                 }
             }
@@ -128,7 +140,7 @@ public class PlaybackManager {
             return;
         }
 
-        response.onResponse(streamBuilder.BuildAudioItem(options));
+        SendResponse(response, streamBuilder.BuildAudioItem(options));
     }
 
     public void getVideoStreamInfo(final String serverId, final VideoOptions options, boolean isOffline, ApiClient apiClient, final Response<StreamInfo> response)
@@ -142,18 +154,18 @@ public class PlaybackManager {
             return;
         }
 
-        response.onResponse(getVideoStreamInfoInternal(serverId, options));
+        SendResponse(response, getVideoStreamInfoInternal(serverId, options));
     }
 
     public void changeVideoStream(final StreamInfo currentStreamInfo, final String serverId, final VideoOptions options, ApiClient apiClient, final Response<StreamInfo> response)
     {
         Normalize(options);
 
-        String streamId = currentStreamInfo.getPlaybackInfo() == null ?
+        String playSessionId = currentStreamInfo.getPlaybackInfo() == null ?
                 null :
-                currentStreamInfo.getPlaybackInfo().getStreamId();
+                currentStreamInfo.getPlaybackInfo().getPlaySessionId();
 
-        apiClient.StopTranscodingProcesses(device.getDeviceId(), streamId, new StopTranscodingResponse(this, serverId, currentStreamInfo, options, logger, response));
+        apiClient.StopTranscodingProcesses(device.getDeviceId(), playSessionId, new StopTranscodingResponse(this, serverId, currentStreamInfo, options, logger, response));
     }
 
     StreamInfo getVideoStreamInfoInternal(String serverId, VideoOptions options)

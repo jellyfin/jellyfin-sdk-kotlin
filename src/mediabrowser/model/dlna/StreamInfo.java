@@ -456,60 +456,35 @@ public class StreamInfo
 		list.add(new NameValuePair("Profile", (tempVar6 != null) ? tempVar6 : ""));
 		list.add(new NameValuePair("Cabac", item.getCabac() != null ? item.getCabac().toString() : ""));
 
-		String streamId = item.getPlaybackInfo() == null ? null : item.getPlaybackInfo().getStreamId();
-		list.add(new NameValuePair("StreamId", (streamId != null) ? streamId : ""));
+		String playSessionId = item.getPlaybackInfo() == null ? null : item.getPlaybackInfo().getPlaySessionId();
+		list.add(new NameValuePair("PlaySessionId", (playSessionId != null) ? playSessionId : ""));
 		list.add(new NameValuePair("api_key", (accessToken != null) ? accessToken : ""));
 
+		String liveStreamId = item.getMediaSource() == null ? null : item.getMediaSource().getLiveStreamId();
+		list.add(new NameValuePair("LiveStreamId", (liveStreamId != null) ? liveStreamId : ""));
+
 		return list;
 	}
 
-	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(boolean includeSelectedTrackOnly)
+	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(boolean includeSelectedTrackOnly, String baseUrl, String accessToken)
 	{
-		java.util.ArrayList<SubtitleStreamInfo> list = new java.util.ArrayList<SubtitleStreamInfo>();
+		java.util.ArrayList<SubtitleStreamInfo> list = GetSubtitleProfiles(includeSelectedTrackOnly, baseUrl, accessToken);
+		java.util.ArrayList<SubtitleStreamInfo> newList = new java.util.ArrayList<SubtitleStreamInfo>();
 
 		// First add the selected track
-		if (getSubtitleStreamIndex() != null)
+		for (SubtitleStreamInfo stream : list)
 		{
-			for (MediaStream stream : getMediaSource().getMediaStreams())
+			if (stream.getDeliveryMethod() == SubtitleDeliveryMethod.External)
 			{
-				if (stream.getType() == MediaStreamType.Subtitle && stream.getIndex() == getSubtitleStreamIndex())
-				{
-					SubtitleStreamInfo info = GetSubtitleStreamInfo(stream);
-
-					if (info != null)
-					{
-						list.add(info);
-					}
-				}
+				newList.add(stream);
 			}
 		}
 
-		if (!includeSelectedTrackOnly)
-		{
-			for (MediaStream stream : getMediaSource().getMediaStreams())
-			{
-				if (stream.getType() == MediaStreamType.Subtitle && (getSubtitleStreamIndex() == null || stream.getIndex() != getSubtitleStreamIndex()))
-				{
-					SubtitleStreamInfo info = GetSubtitleStreamInfo(stream);
-
-					if (info != null)
-					{
-						list.add(info);
-					}
-				}
-			}
-		}
-
-		return list;
+		return newList;
 	}
 
-	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(String baseUrl, String accessToken, boolean includeSelectedTrackOnly)
+	public final java.util.ArrayList<SubtitleStreamInfo> GetSubtitleProfiles(boolean includeSelectedTrackOnly, String baseUrl, String accessToken)
 	{
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(baseUrl))
-		{
-			throw new IllegalArgumentException(baseUrl);
-		}
-
 		java.util.ArrayList<SubtitleStreamInfo> list = new java.util.ArrayList<SubtitleStreamInfo>();
 
 		// HLS will preserve timestamps so we can just grab the full subtitle stream
@@ -524,10 +499,7 @@ public class StreamInfo
 				{
 					SubtitleStreamInfo info = GetSubtitleStreamInfo(stream, baseUrl, accessToken, startPositionTicks);
 
-					if (info != null)
-					{
-						list.add(info);
-					}
+					list.add(info);
 				}
 			}
 		}
@@ -540,10 +512,7 @@ public class StreamInfo
 				{
 					SubtitleStreamInfo info = GetSubtitleStreamInfo(stream, baseUrl, accessToken, startPositionTicks);
 
-					if (info != null)
-					{
-						list.add(info);
-					}
+					list.add(info);
 				}
 			}
 		}
@@ -555,7 +524,7 @@ public class StreamInfo
 	{
 		SubtitleStreamInfo info = GetSubtitleStreamInfo(stream);
 
-		if (info != null)
+		if (info.getDeliveryMethod() == SubtitleDeliveryMethod.External && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(baseUrl))
 		{
 			info.setUrl(String.format("%1$s/Videos/%2$s/%3$s/Subtitles/%4$s/%5$s/Stream.%6$s", baseUrl, getItemId(), getMediaSourceId(), StringHelper.ToStringCultureInvariant(stream.getIndex()), StringHelper.ToStringCultureInvariant(startPositionTicks), getSubtitleFormat()));
 		}
@@ -567,11 +536,6 @@ public class StreamInfo
 	{
 		SubtitleProfile subtitleProfile = StreamBuilder.GetSubtitleProfile(stream, getDeviceProfile().getSubtitleProfiles(), getContext());
 
-		if (subtitleProfile.getMethod() != SubtitleDeliveryMethod.External)
-		{
-			return null;
-		}
-
 		SubtitleStreamInfo tempVar = new SubtitleStreamInfo();
 		tempVar.setIsForced(stream.getIsForced());
 		tempVar.setLanguage(stream.getLanguage());
@@ -579,6 +543,7 @@ public class StreamInfo
 		tempVar.setName((tempVar2 != null) ? tempVar2 : "Unknown");
 		tempVar.setFormat(getSubtitleFormat());
 		tempVar.setIndex(stream.getIndex());
+		tempVar.setDeliveryMethod(subtitleProfile.getMethod());
 		return tempVar;
 	}
 
@@ -824,6 +789,36 @@ public class StreamInfo
 		}
 
 		return getMaxHeight();
+	}
+
+	public final Integer getTargetVideoStreamCount()
+	{
+		if (getIsDirectStream())
+		{
+			return GetMediaStreamCount(MediaStreamType.Video, Integer.MAX_VALUE);
+		}
+		return GetMediaStreamCount(MediaStreamType.Video, 1);
+	}
+
+	public final Integer getTargetAudioStreamCount()
+	{
+		if (getIsDirectStream())
+		{
+			return GetMediaStreamCount(MediaStreamType.Audio, Integer.MAX_VALUE);
+		}
+		return GetMediaStreamCount(MediaStreamType.Audio, 1);
+	}
+
+	private Integer GetMediaStreamCount(MediaStreamType type, int limit)
+	{
+		Integer count = getMediaSource().GetStreamCount(type);
+
+		if (count != null)
+		{
+			count = Math.min(count, limit);
+		}
+
+		return count;
 	}
 
 	public final java.util.ArrayList<MediaStream> GetSelectableAudioStreams()

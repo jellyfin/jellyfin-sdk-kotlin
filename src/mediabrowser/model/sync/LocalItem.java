@@ -88,9 +88,24 @@ public class LocalItem
 	{
 		UserIdsWithAccess = value;
 	}
+	/** 
+	 Gets or sets the additional files.
+	 
+	 <value>The additional files.</value>
+	*/
+	private java.util.ArrayList<String> AdditionalFiles;
+	public final java.util.ArrayList<String> getAdditionalFiles()
+	{
+		return AdditionalFiles;
+	}
+	public final void setAdditionalFiles(java.util.ArrayList<String> value)
+	{
+		AdditionalFiles = value;
+	}
 
 	public LocalItem()
 	{
+		setAdditionalFiles(new java.util.ArrayList<String>());
 		setUserIdsWithAccess(new java.util.ArrayList<String>());
 	}
 }

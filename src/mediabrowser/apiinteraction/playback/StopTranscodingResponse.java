@@ -36,7 +36,8 @@ public class StopTranscodingResponse extends EmptyResponse {
 
         StreamInfo streamInfo = playbackManager.getVideoStreamInfoInternal(serverId, options);
         streamInfo.setPlaybackInfo(currentStreamInfo.getPlaybackInfo());
-        response.onResponse(streamInfo);
+
+        playbackManager.SendResponse(response, streamInfo);
     }
 
     @Override

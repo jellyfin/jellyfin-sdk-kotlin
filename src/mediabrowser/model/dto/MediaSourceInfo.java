@@ -120,6 +120,52 @@ public class MediaSourceInfo
 		SupportsDirectPlay = value;
 	}
 
+	private boolean RequiresOpening;
+	public final boolean getRequiresOpening()
+	{
+		return RequiresOpening;
+	}
+	public final void setRequiresOpening(boolean value)
+	{
+		RequiresOpening = value;
+	}
+	private String OpenToken;
+	public final String getOpenToken()
+	{
+		return OpenToken;
+	}
+	public final void setOpenToken(String value)
+	{
+		OpenToken = value;
+	}
+	private boolean RequiresClosing;
+	public final boolean getRequiresClosing()
+	{
+		return RequiresClosing;
+	}
+	public final void setRequiresClosing(boolean value)
+	{
+		RequiresClosing = value;
+	}
+	private String LiveStreamId;
+	public final String getLiveStreamId()
+	{
+		return LiveStreamId;
+	}
+	public final void setLiveStreamId(String value)
+	{
+		LiveStreamId = value;
+	}
+	private Integer BufferMs = null;
+	public final Integer getBufferMs()
+	{
+		return BufferMs;
+	}
+	public final void setBufferMs(Integer value)
+	{
+		BufferMs = value;
+	}
+
 	private VideoType VideoType = null;
 	public final VideoType getVideoType()
 	{
@@ -330,6 +376,36 @@ public class MediaSourceInfo
 			if (i.getType() == type && i.getIndex() == index)
 			{
 				return i;
+			}
+		}
+
+		return null;
+	}
+
+	public final Integer GetStreamCount(MediaStreamType type)
+	{
+		int numMatches = 0;
+		int numStreams = 0;
+
+		for (MediaStream i : getMediaStreams())
+		{
+			numStreams++;
+			if (i.getType() == type)
+			{
+				numMatches++;
+			}
+		}
+
+		return numStreams == 0 ? (Integer)null : numMatches;
+	}
+
+	public final Boolean IsSecondaryAudio(MediaStream stream)
+	{
+		for (MediaStream currentStream : getMediaStreams())
+		{
+			if (currentStream.getType() == MediaStreamType.Audio)
+			{
+				return currentStream.getIndex() != stream.getIndex();
 			}
 		}
 

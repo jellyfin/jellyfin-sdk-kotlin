@@ -5,7 +5,7 @@ import mediabrowser.model.mediainfo.*;
 
 public class ConditionProcessor
 {
-	public final boolean IsVideoConditionSatisfied(ProfileCondition condition, Integer audioBitrate, Integer audioChannels, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic, Boolean isCabac, Integer refFrames)
+	public final boolean IsVideoConditionSatisfied(ProfileCondition condition, Integer audioBitrate, Integer audioChannels, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic, Boolean isCabac, Integer refFrames, Integer numVideoStreams, Integer numAudioStreams)
 	{
 		switch (condition.getProperty())
 		{
@@ -41,6 +41,10 @@ public class ConditionProcessor
 				return IsConditionSatisfied(condition, width);
 			case RefFrames:
 				return IsConditionSatisfied(condition, refFrames);
+			case NumAudioStreams:
+				return IsConditionSatisfied(condition, numAudioStreams);
+			case NumVideoStreams:
+				return IsConditionSatisfied(condition, numVideoStreams);
 			case VideoTimestamp:
 				return IsConditionSatisfied(condition, timestamp);
 			default:
@@ -74,7 +78,7 @@ public class ConditionProcessor
 		}
 	}
 
-	public final boolean IsVideoAudioConditionSatisfied(ProfileCondition condition, Integer audioChannels, Integer audioBitrate, String audioProfile)
+	public final boolean IsVideoAudioConditionSatisfied(ProfileCondition condition, Integer audioChannels, Integer audioBitrate, String audioProfile, Boolean isSecondaryTrack)
 	{
 		switch (condition.getProperty())
 		{
@@ -84,6 +88,8 @@ public class ConditionProcessor
 				return IsConditionSatisfied(condition, audioBitrate);
 			case AudioChannels:
 				return IsConditionSatisfied(condition, audioChannels);
+			case IsSecondaryAudio:
+				return IsConditionSatisfied(condition, isSecondaryTrack);
 			default:
 				throw new IllegalArgumentException("Unexpected condition on audio file: " + condition.getProperty());
 		}

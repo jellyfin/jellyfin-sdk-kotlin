@@ -1,5 +1,6 @@
 package mediabrowser.model.entities;
 
+import mediabrowser.model.dlna.*;
 import mediabrowser.model.extensions.*;
 
 /** 
@@ -324,9 +325,43 @@ public class MediaStream
 		IsExternal = value;
 	}
 
+	/** 
+	 Gets or sets the method.
+	 
+	 <value>The method.</value>
+	*/
+	private SubtitleDeliveryMethod DeliveryMethod = null;
+	public final SubtitleDeliveryMethod getDeliveryMethod()
+	{
+		return DeliveryMethod;
+	}
+	public final void setDeliveryMethod(SubtitleDeliveryMethod value)
+	{
+		DeliveryMethod = value;
+	}
+	/** 
+	 Gets or sets the delivery URL.
+	 
+	 <value>The delivery URL.</value>
+	*/
+	private String DeliveryUrl;
+	public final String getDeliveryUrl()
+	{
+		return DeliveryUrl;
+	}
+	public final void setDeliveryUrl(String value)
+	{
+		DeliveryUrl = value;
+	}
+
 	public final boolean getIsTextSubtitleStream()
 	{
 		if (getType() != MediaStreamType.Subtitle)
+		{
+			return false;
+		}
+
+		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(getCodec()) && !getIsExternal())
 		{
 			return false;
 		}
@@ -371,6 +406,21 @@ public class MediaStream
 	public final void setPath(String value)
 	{
 		Path = value;
+	}
+
+	/** 
+	 Gets or sets the external identifier.
+	 
+	 <value>The external identifier.</value>
+	*/
+	private String ExternalId;
+	public final String getExternalId()
+	{
+		return ExternalId;
+	}
+	public final void setExternalId(String value)
+	{
+		ExternalId = value;
 	}
 
 	/** 

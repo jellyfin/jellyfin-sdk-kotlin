@@ -42,11 +42,11 @@ public class GetPlaybackInfoResponse extends Response<PlaybackInfoResponse> {
         if (isVideo){
             StreamInfo streamInfo = playbackManager.getVideoStreamInfoInternal(serverId, (VideoOptions)options);
             streamInfo.setPlaybackInfo(playbackInfo);
-            response.onResponse(streamInfo);
+            playbackManager.SendResponse(response, streamInfo);
         }
         else{
             StreamInfo streamInfo = streamBuilder.BuildAudioItem(options);
-            response.onResponse(streamInfo);
+            playbackManager.SendResponse(response, streamInfo);
         }
 
     }

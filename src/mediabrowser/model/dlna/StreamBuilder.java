@@ -234,6 +234,16 @@ public class StreamBuilder
 		return playlistItem;
 	}
 
+	private Integer GetBitrateForDirectPlayCheck(MediaSourceInfo item, AudioOptions options)
+	{
+		if (item.getProtocol() == MediaProtocol.File)
+		{
+			return options.getProfile().getMaxStaticBitrate();
+		}
+
+		return options.GetMaxBitrate();
+	}
+
 	private java.util.ArrayList<PlayMethod> GetAudioDirectPlayMethods(MediaSourceInfo item, MediaStream audioStream, AudioOptions options)
 	{
 		DirectPlayProfile directPlayProfile = null;
@@ -258,7 +268,7 @@ public class StreamBuilder
 
 			// The profile describes what the device supports
 			// If device requirements are satisfied then allow both direct stream and direct play
-			if (IsAudioEligibleForDirectPlay(item, options.getProfile().getMaxStaticBitrate()))
+			if (IsAudioEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options)))
 			{
 				playMethods.add(PlayMethod.DirectPlay);
 			}
@@ -289,7 +299,7 @@ public class StreamBuilder
 		MediaStream videoStream = item.getVideoStream();
 
 		// TODO: This doesn't accout for situation of device being able to handle media bitrate, but wifi connection not fast enough
-		boolean isEligibleForDirectPlay = IsEligibleForDirectPlay(item, options.getProfile().getMaxStaticBitrate(), subtitleStream, options);
+		boolean isEligibleForDirectPlay = IsEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options), subtitleStream, options);
 		boolean isEligibleForDirectStream = IsEligibleForDirectPlay(item, options.GetMaxBitrate(), subtitleStream, options);
 
 		if (isEligibleForDirectPlay || isEligibleForDirectStream)
@@ -478,10 +488,13 @@ public class StreamBuilder
 		Integer packetLength = videoStream == null ? null : videoStream.getPacketLength();
 		Integer refFrames = videoStream == null ? null : videoStream.getRefFrames();
 
+		Integer numAudioStreams = mediaSource.GetStreamCount(MediaStreamType.Audio);
+		Integer numVideoStreams = mediaSource.GetStreamCount(MediaStreamType.Video);
+
 		// Check container conditions
 		for (ProfileCondition i : conditions)
 		{
-			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames))
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams))
 			{
 				return null;
 			}
@@ -508,7 +521,7 @@ public class StreamBuilder
 
 		for (ProfileCondition i : conditions)
 		{
-			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames))
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams))
 			{
 				return null;
 			}
@@ -537,7 +550,8 @@ public class StreamBuilder
 
 			for (ProfileCondition i : conditions)
 			{
-				if (!conditionProcessor.IsVideoAudioConditionSatisfied(i, audioChannels, audioBitrate, audioProfile))
+				Boolean isSecondaryAudio = audioStream == null ? null : mediaSource.IsSecondaryAudio(audioStream);
+				if (!conditionProcessor.IsVideoAudioConditionSatisfied(i, audioChannels, audioBitrate, audioProfile, isSecondaryAudio))
 				{
 					return null;
 				}
@@ -594,6 +608,11 @@ public class StreamBuilder
 		// Look for an external profile that matches the stream type (text/graphical)
 		for (SubtitleProfile profile : subtitleProfiles)
 		{
+			if (!profile.SupportsLanguage(subtitleStream.getLanguage()))
+			{
+				continue;
+			}
+
 			if (profile.getMethod() == SubtitleDeliveryMethod.External && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
 			{
 				if (subtitleStream.getSupportsExternalStream())
@@ -611,6 +630,11 @@ public class StreamBuilder
 
 		for (SubtitleProfile profile : subtitleProfiles)
 		{
+			if (!profile.SupportsLanguage(subtitleStream.getLanguage()))
+			{
+				continue;
+			}
+
 			if (profile.getMethod() == SubtitleDeliveryMethod.Embed && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
 			{
 				return profile;
@@ -730,6 +754,9 @@ public class StreamBuilder
 				case AudioProfile:
 				case Has64BitOffsets:
 				case PacketLength:
+				case NumAudioStreams:
+				case NumVideoStreams:
+				case IsSecondaryAudio:
 				case VideoTimestamp:
 				{
 						// Not supported yet

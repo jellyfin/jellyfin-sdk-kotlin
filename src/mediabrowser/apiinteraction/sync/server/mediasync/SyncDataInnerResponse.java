@@ -4,6 +4,7 @@ import mediabrowser.apiinteraction.IResponse;
 import mediabrowser.apiinteraction.Response;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.model.apiclient.ServerInfo;
+import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.sync.ItemFileInfo;
 import mediabrowser.model.sync.LocalItem;
 import mediabrowser.model.sync.SyncDataResponse;
@@ -18,6 +19,7 @@ public class SyncDataInnerResponse extends Response<SyncDataResponse>
     private ILocalAssetManager localAssetManager;
     private ServerInfo serverInfo;
     private boolean syncUserItemAccess;
+    private ILogger logger;
 
     public SyncDataInnerResponse(IResponse innerResponse, ILocalAssetManager localAssetManager, ServerInfo serverInfo, boolean syncUserItemAccess){
 
@@ -56,6 +58,7 @@ public class SyncDataInnerResponse extends Response<SyncDataResponse>
 
     private void removeItem(String serverId, String itemId)
     {
+        logger.Debug("Removing item. ServerId: {0}, ItemId: {1}", serverId, itemId);
         LocalItem localItem = localAssetManager.getLocalItem(serverId, itemId);
 
         if (localItem == null)
@@ -63,13 +66,16 @@ public class SyncDataInnerResponse extends Response<SyncDataResponse>
             return;
         }
 
-        ArrayList<ItemFileInfo> files = localAssetManager.getFiles(localItem);
-
-        for (ItemFileInfo file : files)
-        {
-            localAssetManager.deleteFile(file.getPath());
-        }
+        ArrayList<String> additionalFiles = localItem.getAdditionalFiles();
+        String localPath = localItem.getLocalPath();
 
         localAssetManager.delete(localItem);
+
+        for (String file : additionalFiles)
+        {
+            localAssetManager.deleteFile(file);
+        }
+
+        localAssetManager.deleteFile(localPath);
     }
 }

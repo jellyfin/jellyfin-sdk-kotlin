@@ -56,4 +56,13 @@ public class SubtitleStreamInfo
 	{
 		Index = value;
 	}
+	private SubtitleDeliveryMethod DeliveryMethod = SubtitleDeliveryMethod.values()[0];
+	public final SubtitleDeliveryMethod getDeliveryMethod()
+	{
+		return DeliveryMethod;
+	}
+	public final void setDeliveryMethod(SubtitleDeliveryMethod value)
+	{
+		DeliveryMethod = value;
+	}
 }

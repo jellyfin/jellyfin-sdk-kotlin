@@ -4,7 +4,7 @@ public enum MediaSourceType
 {
 	Default(0),
 	Grouping(1),
-	Cache(2);
+	Placeholder(2);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, MediaSourceType> mappings;

@@ -47,11 +47,31 @@ public class EncodingOptions
 	{
 		EnableDebugLogging = value;
 	}
+	private boolean EnableThrottling;
+	public final boolean getEnableThrottling()
+	{
+		return EnableThrottling;
+	}
+	public final void setEnableThrottling(boolean value)
+	{
+		EnableThrottling = value;
+	}
+	private int ThrottleThresholdSeconds;
+	public final int getThrottleThresholdSeconds()
+	{
+		return ThrottleThresholdSeconds;
+	}
+	public final void setThrottleThresholdSeconds(int value)
+	{
+		ThrottleThresholdSeconds = value;
+	}
 
 	public EncodingOptions()
 	{
 		setH264Encoder("libx264");
 		setDownMixAudioBoost(2);
 		setEncodingQuality(EncodingQuality.Auto);
+		setEnableThrottling(true);
+		setThrottleThresholdSeconds(120);
 	}
 }

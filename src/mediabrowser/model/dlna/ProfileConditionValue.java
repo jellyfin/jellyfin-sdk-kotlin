@@ -17,7 +17,10 @@ public enum ProfileConditionValue
 	VideoTimestamp(12),
 	IsAnamorphic(13),
 	RefFrames(14),
-	IsCabac(15);
+	IsCabac(15),
+	NumAudioStreams(16),
+	NumVideoStreams(17),
+	IsSecondaryAudio(18);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, ProfileConditionValue> mappings;
