@@ -209,12 +209,18 @@ public class PlaybackManager {
         response.onResponse();
     }
 
-    public void reportPlaybackProgress(PlaybackProgressInfo info, boolean isOffline, ApiClient apiClient, EmptyResponse response)
+    public void reportPlaybackProgress(PlaybackProgressInfo info, final StreamInfo streamInfo, boolean isOffline, ApiClient apiClient, EmptyResponse response)
     {
         if (!isOffline)
         {
             apiClient.ReportPlaybackProgressAsync(info, response);
             return;
+        }
+
+        MediaSourceInfo mediaSource = streamInfo.getMediaSource();
+
+        if (mediaSource != null){
+            info.setLiveStreamId(mediaSource.getLiveStreamId());
         }
 
         response.onResponse();
@@ -235,6 +241,12 @@ public class PlaybackManager {
             localAssetManager.recordUserAction(action);
             response.onResponse();
             return;
+        }
+
+        MediaSourceInfo mediaSource = streamInfo.getMediaSource();
+
+        if (mediaSource != null){
+            info.setLiveStreamId(mediaSource.getLiveStreamId());
         }
 
         apiClient.ReportPlaybackStoppedAsync(info, new ReportPlaybackStopResponse(logger, device, apiClient, streamInfo, response));
