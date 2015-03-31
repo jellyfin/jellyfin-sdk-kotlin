@@ -201,6 +201,15 @@ public class UserConfiguration
 	{
 		HasMigratedToPolicy = value;
 	}
+	private boolean HidePlayedInLatest;
+	public final boolean getHidePlayedInLatest()
+	{
+		return HidePlayedInLatest;
+	}
+	public final void setHidePlayedInLatest(boolean value)
+	{
+		HidePlayedInLatest = value;
+	}
 
 	/** 
 	 Initializes a new instance of the <see cref="UserConfiguration" /> class.

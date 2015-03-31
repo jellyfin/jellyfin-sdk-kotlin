@@ -396,7 +396,12 @@ public class MediaSourceInfo
 			}
 		}
 
-		return numStreams == 0 ? (Integer)null : numMatches;
+		if (numStreams == 0)
+		{
+			return null;
+		}
+
+		return numMatches;
 	}
 
 	public final Boolean IsSecondaryAudio(MediaStream stream)

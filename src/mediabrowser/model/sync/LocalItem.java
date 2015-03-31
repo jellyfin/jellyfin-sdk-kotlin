@@ -75,6 +75,20 @@ public class LocalItem
 		ItemId = value;
 	}
 	/** 
+	 Gets or sets the synchronize job item identifier.
+	 
+	 <value>The synchronize job item identifier.</value>
+	*/
+	private String SyncJobItemId;
+	public final String getSyncJobItemId()
+	{
+		return SyncJobItemId;
+	}
+	public final void setSyncJobItemId(String value)
+	{
+		SyncJobItemId = value;
+	}
+	/** 
 	 Gets or sets the user ids with access.
 	 
 	 <value>The user ids with access.</value>

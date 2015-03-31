@@ -466,9 +466,9 @@ public class StreamInfo
 		return list;
 	}
 
-	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(boolean includeSelectedTrackOnly, String baseUrl, String accessToken)
+	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(boolean includeSelectedTrackOnly, boolean enableAllProfiles, String baseUrl, String accessToken)
 	{
-		java.util.ArrayList<SubtitleStreamInfo> list = GetSubtitleProfiles(includeSelectedTrackOnly, baseUrl, accessToken);
+		java.util.ArrayList<SubtitleStreamInfo> list = GetSubtitleProfiles(includeSelectedTrackOnly, enableAllProfiles, baseUrl, accessToken);
 		java.util.ArrayList<SubtitleStreamInfo> newList = new java.util.ArrayList<SubtitleStreamInfo>();
 
 		// First add the selected track
@@ -485,6 +485,11 @@ public class StreamInfo
 
 	public final java.util.ArrayList<SubtitleStreamInfo> GetSubtitleProfiles(boolean includeSelectedTrackOnly, String baseUrl, String accessToken)
 	{
+		return GetSubtitleProfiles(includeSelectedTrackOnly, false, baseUrl, accessToken);
+	}
+
+	public final java.util.ArrayList<SubtitleStreamInfo> GetSubtitleProfiles(boolean includeSelectedTrackOnly, boolean enableAllProfiles, String baseUrl, String accessToken)
+	{
 		java.util.ArrayList<SubtitleStreamInfo> list = new java.util.ArrayList<SubtitleStreamInfo>();
 
 		// HLS will preserve timestamps so we can just grab the full subtitle stream
@@ -497,9 +502,7 @@ public class StreamInfo
 			{
 				if (stream.getType() == MediaStreamType.Subtitle && stream.getIndex() == getSubtitleStreamIndex())
 				{
-					SubtitleStreamInfo info = GetSubtitleStreamInfo(stream, baseUrl, accessToken, startPositionTicks);
-
-					list.add(info);
+					AddSubtitleProfiles(list, stream, enableAllProfiles, baseUrl, accessToken, startPositionTicks);
 				}
 			}
 		}
@@ -510,9 +513,7 @@ public class StreamInfo
 			{
 				if (stream.getType() == MediaStreamType.Subtitle && (getSubtitleStreamIndex() == null || stream.getIndex() != getSubtitleStreamIndex()))
 				{
-					SubtitleStreamInfo info = GetSubtitleStreamInfo(stream, baseUrl, accessToken, startPositionTicks);
-
-					list.add(info);
+					AddSubtitleProfiles(list, stream, enableAllProfiles, baseUrl, accessToken, startPositionTicks);
 				}
 			}
 		}
@@ -520,31 +521,51 @@ public class StreamInfo
 		return list;
 	}
 
-	private SubtitleStreamInfo GetSubtitleStreamInfo(MediaStream stream, String baseUrl, String accessToken, long startPositionTicks)
+	private void AddSubtitleProfiles(java.util.ArrayList<SubtitleStreamInfo> list, MediaStream stream, boolean enableAllProfiles, String baseUrl, String accessToken, long startPositionTicks)
 	{
-		SubtitleStreamInfo info = GetSubtitleStreamInfo(stream);
-
-		if (info.getDeliveryMethod() == SubtitleDeliveryMethod.External && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(baseUrl))
+		if (enableAllProfiles)
 		{
-			info.setUrl(String.format("%1$s/Videos/%2$s/%3$s/Subtitles/%4$s/%5$s/Stream.%6$s", baseUrl, getItemId(), getMediaSourceId(), StringHelper.ToStringCultureInvariant(stream.getIndex()), StringHelper.ToStringCultureInvariant(startPositionTicks), getSubtitleFormat()));
-		}
+			for (SubtitleProfile profile : getDeviceProfile().getSubtitleProfiles())
+			{
+				SubtitleStreamInfo info = GetSubtitleStreamInfo(stream, baseUrl, accessToken, startPositionTicks, new SubtitleProfile[] {profile});
 
-		return info;
+				list.add(info);
+			}
+		}
+		else
+		{
+			SubtitleStreamInfo info = GetSubtitleStreamInfo(stream, baseUrl, accessToken, startPositionTicks, getDeviceProfile().getSubtitleProfiles());
+
+			list.add(info);
+		}
 	}
 
-	private SubtitleStreamInfo GetSubtitleStreamInfo(MediaStream stream)
+	private SubtitleStreamInfo GetSubtitleStreamInfo(MediaStream stream, String baseUrl, String accessToken, long startPositionTicks, SubtitleProfile[] subtitleProfiles)
 	{
-		SubtitleProfile subtitleProfile = StreamBuilder.GetSubtitleProfile(stream, getDeviceProfile().getSubtitleProfiles(), getContext());
-
+		SubtitleProfile subtitleProfile = StreamBuilder.GetSubtitleProfile(stream, subtitleProfiles, getContext());
 		SubtitleStreamInfo tempVar = new SubtitleStreamInfo();
 		tempVar.setIsForced(stream.getIsForced());
 		tempVar.setLanguage(stream.getLanguage());
 		String tempVar2 = stream.getLanguage();
 		tempVar.setName((tempVar2 != null) ? tempVar2 : "Unknown");
-		tempVar.setFormat(getSubtitleFormat());
+		tempVar.setFormat(subtitleProfile.getFormat());
 		tempVar.setIndex(stream.getIndex());
 		tempVar.setDeliveryMethod(subtitleProfile.getMethod());
-		return tempVar;
+		SubtitleStreamInfo info = tempVar;
+
+		if (info.getDeliveryMethod() == SubtitleDeliveryMethod.External)
+		{
+			if (getMediaSource().getProtocol() == MediaProtocol.File || !StringHelper.EqualsIgnoreCase(stream.getCodec(), subtitleProfile.getFormat()))
+			{
+				info.setUrl(String.format("%1$s/Videos/%2$s/%3$s/Subtitles/%4$s/%5$s/Stream.%6$s", baseUrl, getItemId(), getMediaSourceId(), StringHelper.ToStringCultureInvariant(stream.getIndex()), StringHelper.ToStringCultureInvariant(startPositionTicks), subtitleProfile.getFormat()));
+			}
+			else
+			{
+				info.setUrl(stream.getPath());
+			}
+		}
+
+		return info;
 	}
 
 	/** 

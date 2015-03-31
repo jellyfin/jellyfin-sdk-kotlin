@@ -277,6 +277,49 @@ public class StreamBuilder
 		return playMethods;
 	}
 
+	private Integer GetDefaultSubtitleStreamIndex(MediaSourceInfo item, SubtitleProfile[] subtitleProfiles)
+	{
+		int highestScore = -1;
+
+		for (MediaStream stream : item.getMediaStreams())
+		{
+			if (stream.getType() == MediaStreamType.Subtitle && stream.getScore() != null)
+			{
+				if (stream.getScore() > highestScore)
+				{
+					highestScore = stream.getScore();
+				}
+			}
+		}
+
+		java.util.ArrayList<MediaStream> topStreams = new java.util.ArrayList<MediaStream>();
+		for (MediaStream stream : item.getMediaStreams())
+		{
+			if (stream.getType() == MediaStreamType.Subtitle && stream.getScore() != null && stream.getScore() == highestScore)
+			{
+				topStreams.add(stream);
+			}
+		}
+
+		// If multiple streams have an equal score, try to pick the most efficient one
+		if (topStreams.size() > 1)
+		{
+			for (MediaStream stream : topStreams)
+			{
+				for (SubtitleProfile profile : subtitleProfiles)
+				{
+					if (profile.getMethod() == SubtitleDeliveryMethod.External && StringHelper.EqualsIgnoreCase(profile.getFormat(), stream.getCodec()))
+					{
+						return stream.getIndex();
+					}
+				}
+			}
+		}
+
+		// If no optimization panned out, just use the original default
+		return item.getDefaultSubtitleStreamIndex();
+	}
+
 	private StreamInfo BuildVideoItem(MediaSourceInfo item, VideoOptions options)
 	{
 		StreamInfo tempVar = new StreamInfo();
@@ -289,12 +332,16 @@ public class StreamBuilder
 		StreamInfo playlistItem = tempVar;
 
 		Integer tempVar2 = options.getSubtitleStreamIndex();
-		playlistItem.setSubtitleStreamIndex((tempVar2 != null) ? tempVar2 : item.getDefaultSubtitleStreamIndex());
+		playlistItem.setSubtitleStreamIndex((tempVar2 != null) ? tempVar2 : GetDefaultSubtitleStreamIndex(item, options.getProfile().getSubtitleProfiles()));
 		MediaStream subtitleStream = playlistItem.getSubtitleStreamIndex() != null ? item.GetMediaStream(MediaStreamType.Subtitle, playlistItem.getSubtitleStreamIndex()) : null;
 
 		Integer tempVar3 = options.getAudioStreamIndex();
 		MediaStream audioStream = item.GetDefaultAudioStream((tempVar3 != null) ? tempVar3 : item.getDefaultAudioStreamIndex());
-		Integer audioStreamIndex = audioStream == null ? (Integer)null : audioStream.getIndex();
+		Integer audioStreamIndex = null;
+		if (audioStream != null)
+		{
+			audioStreamIndex = audioStream.getIndex();
+		}
 
 		MediaStream videoStream = item.getVideoStream();
 
@@ -608,6 +655,8 @@ public class StreamBuilder
 		// Look for an external profile that matches the stream type (text/graphical)
 		for (SubtitleProfile profile : subtitleProfiles)
 		{
+			boolean requiresConversion = !StringHelper.EqualsIgnoreCase(subtitleStream.getCodec(), profile.getFormat());
+
 			if (!profile.SupportsLanguage(subtitleStream.getLanguage()))
 			{
 				continue;
@@ -615,6 +664,11 @@ public class StreamBuilder
 
 			if (profile.getMethod() == SubtitleDeliveryMethod.External && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
 			{
+				if (!requiresConversion)
+				{
+					return profile;
+				}
+
 				if (subtitleStream.getSupportsExternalStream())
 				{
 					return profile;
@@ -630,6 +684,8 @@ public class StreamBuilder
 
 		for (SubtitleProfile profile : subtitleProfiles)
 		{
+			boolean requiresConversion = !StringHelper.EqualsIgnoreCase(subtitleStream.getCodec(), profile.getFormat());
+
 			if (!profile.SupportsLanguage(subtitleStream.getLanguage()))
 			{
 				continue;
@@ -637,6 +693,11 @@ public class StreamBuilder
 
 			if (profile.getMethod() == SubtitleDeliveryMethod.Embed && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
 			{
+				if (!requiresConversion)
+				{
+					return profile;
+				}
+
 				return profile;
 			}
 		}

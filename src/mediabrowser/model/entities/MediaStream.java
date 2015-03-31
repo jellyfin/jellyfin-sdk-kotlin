@@ -311,6 +311,21 @@ public class MediaStream
 	}
 
 	/** 
+	 Gets or sets the score.
+	 
+	 <value>The score.</value>
+	*/
+	private Integer Score = null;
+	public final Integer getScore()
+	{
+		return Score;
+	}
+	public final void setScore(Integer value)
+	{
+		Score = value;
+	}
+
+	/** 
 	 Gets or sets a value indicating whether this instance is external.
 	 
 	 <value><c>true</c> if this instance is external; otherwise, <c>false</c>.</value>

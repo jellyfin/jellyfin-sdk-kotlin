@@ -20,6 +20,15 @@ public class SyncDataRequest
 	{
 		OfflineUserIds = value;
 	}
+	private java.util.ArrayList<String> SyncJobItemIds;
+	public final java.util.ArrayList<String> getSyncJobItemIds()
+	{
+		return SyncJobItemIds;
+	}
+	public final void setSyncJobItemIds(java.util.ArrayList<String> value)
+	{
+		SyncJobItemIds = value;
+	}
 
 	private String TargetId;
 	public final String getTargetId()
