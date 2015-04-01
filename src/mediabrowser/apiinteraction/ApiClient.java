@@ -31,6 +31,9 @@ import mediabrowser.model.globalization.CountryInfo;
 import mediabrowser.model.globalization.CultureDto;
 import mediabrowser.model.livetv.*;
 import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.mediainfo.LiveStreamRequest;
+import mediabrowser.model.mediainfo.LiveStreamResponse;
+import mediabrowser.model.mediainfo.PlaybackInfoRequest;
 import mediabrowser.model.mediainfo.PlaybackInfoResponse;
 import mediabrowser.model.net.HttpException;
 import mediabrowser.model.notifications.NotificationQuery;
@@ -2226,7 +2229,7 @@ public class ApiClient extends BaseApiClient {
     {
         String url = GetApiUrl("Sessions/Logout");
 
-        PostAsync(url, new EmptyResponse(){
+        PostAsync(url, new EmptyResponse() {
 
             @Override
             public void onResponse() {
@@ -2361,17 +2364,27 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<QueryFilters>(response, jsonSerializer, QueryFilters.class));
     }
 
-    public void GetPlaybackInfo(String itemId, String userId, final Response<PlaybackInfoResponse> response)
+    public void GetPlaybackInfo(PlaybackInfoRequest request, final Response<PlaybackInfoResponse> response)
     {
         QueryStringDictionary dict = new QueryStringDictionary();
 
-        dict.Add("UserId", userId);
+        dict.Add("UserId", request.getUserId());
 
-        String url = GetApiUrl("Items/" + itemId + "/MediaInfo", dict);
+        String url = GetApiUrl("Items/" + request.getId() + "/PlaybackInfo", dict);
 
         url = AddDataFormat(url);
 
         Send(url, "GET", new SerializedResponse<PlaybackInfoResponse>(response, jsonSerializer, PlaybackInfoResponse.class));
+    }
+
+    public void OpenLiveStream(LiveStreamRequest request, final Response<LiveStreamResponse> response)
+    {
+        String url = GetApiUrl("LiveStreams/Open");
+
+        url = AddDataFormat(url);
+
+        String json = getJsonSerializer().SerializeToString(request);
+        Send(url, "POST", json, "application/json", new SerializedResponse<LiveStreamResponse>(response, jsonSerializer, LiveStreamResponse.class));
     }
 
     public void GetDevicesOptions(final Response<DevicesOptions> response)

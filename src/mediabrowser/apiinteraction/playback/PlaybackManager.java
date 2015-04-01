@@ -11,6 +11,7 @@ import mediabrowser.model.dto.MediaSourceInfo;
 import mediabrowser.model.entities.MediaStream;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.mediainfo.PlaybackInfoRequest;
 import mediabrowser.model.session.PlayMethod;
 import mediabrowser.model.session.PlaybackProgressInfo;
 import mediabrowser.model.session.PlaybackStartInfo;
@@ -136,7 +137,12 @@ public class PlaybackManager {
 
         if (!isOffline)
         {
-            apiClient.GetPlaybackInfo(options.getItemId(), apiClient.getCurrentUserId(), new GetPlaybackInfoResponse(this, serverId, options, response, streamBuilder, false));
+            PlaybackInfoRequest request = new PlaybackInfoRequest();
+            request.setId(options.getItemId());
+            request.setUserId(apiClient.getCurrentUserId());
+            request.setMaxStreamingBitrate(options.getMaxBitrate());
+            request.setMediaSourceId(options.getMediaSourceId());
+            apiClient.GetPlaybackInfo(request, new GetPlaybackInfoResponse(this, apiClient, serverId, options, response, streamBuilder, false));
             return;
         }
 
@@ -150,7 +156,14 @@ public class PlaybackManager {
 
         if (!isOffline)
         {
-            apiClient.GetPlaybackInfo(options.getItemId(), apiClient.getCurrentUserId(), new GetPlaybackInfoResponse(this, serverId, options, response, streamBuilder, true));
+            PlaybackInfoRequest request = new PlaybackInfoRequest();
+            request.setId(options.getItemId());
+            request.setUserId(apiClient.getCurrentUserId());
+            request.setMaxStreamingBitrate(options.getMaxBitrate());
+            request.setMediaSourceId(options.getMediaSourceId());
+            request.setAudioStreamIndex(options.getAudioStreamIndex());
+            request.setSubtitleStreamIndex(options.getSubtitleStreamIndex());
+            apiClient.GetPlaybackInfo(request, new GetPlaybackInfoResponse(this, apiClient, serverId, options, response, streamBuilder, true));
             return;
         }
 

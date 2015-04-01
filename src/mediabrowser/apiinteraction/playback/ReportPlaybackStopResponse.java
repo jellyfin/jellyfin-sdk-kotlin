@@ -6,6 +6,7 @@ import mediabrowser.apiinteraction.device.IDevice;
 import mediabrowser.model.dlna.DlnaProfileType;
 import mediabrowser.model.dlna.StreamInfo;
 import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.session.PlayMethod;
 
 /**
  * Created by Luke on 3/17/2015.
@@ -28,7 +29,7 @@ public class ReportPlaybackStopResponse extends EmptyResponse {
 
     private void onAny(){
 
-        if (streamInfo.getMediaType() == DlnaProfileType.Video)
+        if (streamInfo.getMediaType() == DlnaProfileType.Video && streamInfo.getPlayMethod() == PlayMethod.Transcode)
         {
             String playSessionId = streamInfo.getPlaybackInfo() == null ?
                     null :
