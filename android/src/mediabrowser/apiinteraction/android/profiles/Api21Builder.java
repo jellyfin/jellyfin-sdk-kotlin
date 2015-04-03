@@ -36,7 +36,6 @@ public class Api21Builder extends Api16Builder{
 
         if (StringHelper.IndexOfIgnoreCase(profile.getCodec(), "h264") != -1){
 
-            conditions.add(new ProfileCondition(ProfileConditionType.Equals, ProfileConditionValue.IsCabac, "true"));
             conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoBitDepth, "8"));
         }
 
@@ -52,7 +51,7 @@ public class Api21Builder extends Api16Builder{
         // Video max height
         Range<Integer> heightRange = videoCaps.getSupportedHeights();
         String maxHeight = String.valueOf(heightRange.getUpper());
-        conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Height, maxHeight));
+        //conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Height, maxHeight));
 
         // Video min height
         String minHeight = String.valueOf(heightRange.getLower());

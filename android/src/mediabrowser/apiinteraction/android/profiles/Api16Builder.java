@@ -298,13 +298,12 @@ public class Api16Builder {
         if (profile.getType()==CodecType.Video){
 
             conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Width, "1920"));
-            conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Height, "1080"));
+            //conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Height, "1080"));
             conditions.add(new ProfileCondition(ProfileConditionType.NotEquals, ProfileConditionValue.IsAnamorphic, "true"));
 
             if (StringHelper.IndexOfIgnoreCase(codecType, "avc") != -1){
                 profile.setCodec("h264");
 
-                conditions.add(new ProfileCondition(ProfileConditionType.Equals, ProfileConditionValue.IsCabac, "true"));
                 conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoBitDepth, "8"));
             }
             else if (StringHelper.IndexOfIgnoreCase(codecType, "hevc") != -1){
