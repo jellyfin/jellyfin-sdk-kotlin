@@ -11,7 +11,7 @@ This is an example of connecting to a single server using a fixed, predictable a
 ``` java
 
         // Developers should create their own logger implementation
-        logger = new ConsoleLogger();
+        logger = new NullLogger();
 
         // The underlying http stack. Developers can inject their own if desired
         IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, getApplicationContext());
@@ -44,7 +44,7 @@ If your app is some kind of service or utility (e.g. Sickbeard), you should cons
 ``` java
 
         // Developers should create their own logger implementation
-        logger = new ConsoleLogger();
+        logger = new NullLogger();
 
         // The underlying http stack. Developers can inject their own if desired
         IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, getApplicationContext());
@@ -91,7 +91,7 @@ IConnectionManager features:
 ``` c#
 
             // Developers are encouraged to create their own ILogger implementation
-			ILogger logger = new ConsoleLogger();
+			ILogger logger = new NullLogger();
 
 			// This describes the device capabilities
 			ClientCapabilities capabilities = new ClientCapabilities();
