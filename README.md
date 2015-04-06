@@ -99,7 +99,7 @@ IConnectionManager features:
 
 ``` c#
 
-            // Developers will have to implement ICredentialProvider
+            // Android developer should use AndroidCredentialProvider
 			ICredentialProvider credentialProvider = new CredentialProvider();
 
 			INetworkConnection networkConnection = new NetworkConnection(logger);
@@ -123,6 +123,7 @@ IConnectionManager features:
 
 			ApiEventListener eventListener = new ApiEventListener();
 
+			// Android developers should use AndroidConnectionManager
 			IConnectionManager connectionManager = new ConnectionManager(credentialProvider,
                 networkConnection,
                 logger,
