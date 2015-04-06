@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.SimpleCursorAdapter;
 import mediabrowser.apiinteraction.sync.data.IItemRepository;
+import mediabrowser.model.dto.NameIdPair;
 import mediabrowser.model.dto.UserDto;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.model.sync.LocalItem;
@@ -20,10 +21,11 @@ import java.util.ArrayList;
  */
 public class ItemRepository extends SQLiteOpenHelper implements IItemRepository {
 
-    private static final String DATABASE_NAME = "Items";
+    private static final String DATABASE_NAME = "Items_v1";
     private static final int DATABASE_VERSION = 1;
     // Database creation sql statement
     private static final String DATABASE_CREATE = "create table Items ( Id text primary key, ItemId text not null, ItemType text not null, MediaType text, ServerId text not null, LocalPath text not null, UserIdsWithAccess text, AlbumId text, AlbumName text, SeriesId text, SeriesName text, Json text not null);";
+    private static final String ALBUM_ARTISTS_DATABASE_CREATE = "create table AlbumArtists ( Id text not null, Name text not null, ItemId text not null);";
     private IJsonSerializer jsonSerializer;
 
     public ItemRepository(Context context, IJsonSerializer jsonSerializer) {
@@ -35,6 +37,7 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
     @Override
     public void onCreate(SQLiteDatabase database) {
         database.execSQL(DATABASE_CREATE);
+        database.execSQL(ALBUM_ARTISTS_DATABASE_CREATE);
     }
 
     // Method is called during an upgrade of the database,
@@ -66,8 +69,27 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
         values.put("Json", jsonSerializer.SerializeToString(item));
 
         try (SQLiteDatabase db = getWritableDatabase()){
+
             db.replace("Items", null, values);
+            db.delete("AlbumArtists", "ItemId=?", new String[]{item.getItemId()});
+
+            if (item.getItem().getAlbumArtists() != null){
+
+                for (NameIdPair pair : item.getItem().getAlbumArtists()){
+                    addAlbumArtist(db, pair, item.getItemId());
+                }
+            }
         }
+    }
+
+    private void addAlbumArtist(SQLiteDatabase db, NameIdPair artist, String itemId){
+
+        ContentValues values = new ContentValues();
+        values.put("Id", artist.getId());
+        values.put("Name", artist.getName());
+        values.put("ItemId", itemId);
+
+        db.insert("AlbumArtists", null, values);
     }
 
     @Override
@@ -95,6 +117,7 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
 
         try (SQLiteDatabase db = getWritableDatabase()){
             db.delete("Items", "Id=?", new String[]{id});
+            db.delete("AlbumArtists", "ItemId=?", new String[]{id});
         }
     }
 
