@@ -97,9 +97,9 @@ public class ApiClient extends BaseApiClient {
         ResetHttpHeaders();
     }
 
-    public ApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String clientName, IDevice device, String applicationVersion, ApiEventListener apiEventListener)
+    public ApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String appName, String applicationVersion, IDevice device, ApiEventListener apiEventListener)
     {
-        super(logger, jsonSerializer, serverAddress, clientName, device, applicationVersion);
+        super(logger, jsonSerializer, serverAddress, appName, device, applicationVersion);
 
         this.httpClient = httpClient;
         this.apiEventListener = apiEventListener;

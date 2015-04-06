@@ -27,7 +27,7 @@ public class AndroidApiClient extends ApiClient {
     }
 
     public AndroidApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String clientName, IDevice device, String applicationVersion, ApiEventListener apiEventListener, ClientCapabilities capabilities) {
-        super(httpClient, jsonSerializer, logger, serverAddress, clientName, device, applicationVersion, apiEventListener);
+        super(httpClient, jsonSerializer, logger, serverAddress, clientName, applicationVersion, device, apiEventListener);
     }
 
     private VolleyHttpClient getAndroidHttpClient(){

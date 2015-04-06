@@ -14,9 +14,15 @@ This is an example of connecting to a single server using a fixed, predictable a
         logger = new NullLogger();
 
         // The underlying http stack. Developers can inject their own if desired
-        IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, getApplicationContext());
+        IAsyncHttpClient httpClient = new VolleyHttpClient(logger, getApplicationContext());
 
-		ApiClient apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My app name", "My device", "My device id", "app version 123", new ApiEventListener(), new ClientCapabilities());
+		// Android developers should use GsonJsonSerializer
+		IJsonSerializer jsonSerializer = new BoonJsonSerializer();
+
+		// Android developers should use AndroidDevice
+		IDevice device = new Device("deviceId", "deviceName");
+
+		ApiClient apiClient = new ApiClient(httpClient, jsonSerializer, logger, "http://localhost:8096", "My app name", "app version 123", device, new ApiEventListener());
 
 		apiClient.AuthenticateUserAsync("username", "password", new Response<AuthenticationResult>(){
 
@@ -47,10 +53,13 @@ If your app is some kind of service or utility (e.g. Sickbeard), you should cons
         logger = new NullLogger();
 
         // The underlying http stack. Developers can inject their own if desired
-        IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, getApplicationContext());
+        IAsyncHttpClient httpClient = new VolleyHttpClient(logger, getApplicationContext());
+
+		// Android developers should use GsonJsonSerializer
+		IJsonSerializer jsonSerializer = new BoonJsonSerializer();
 
 		// Services should just authenticate using their api key
-        ApiClient apiClient = new ApiClient(volleyHttpClient, logger, "http://localhost:8096", "My api key", new ApiEventListener(), new ClientCapabilities());
+        ApiClient apiClient = new ApiClient(httpClient, jsonSerializer, logger, "http://localhost:8096", "My api key", new ApiEventListener());
 
 ```
 
@@ -90,23 +99,27 @@ IConnectionManager features:
 
 ``` c#
 
-            // Developers are encouraged to create their own ILogger implementation
-			ILogger logger = new NullLogger();
-
-			// This describes the device capabilities
-			ClientCapabilities capabilities = new ClientCapabilities();
-
-			IDevice device = new AndroidDevice();
-			
-			// Developers will have to implement ICredentialProvider
+            // Developers will have to implement ICredentialProvider
 			ICredentialProvider credentialProvider = new CredentialProvider();
 
 			INetworkConnection networkConnection = new NetworkConnection(logger);
 
-            IServerLocator serverLocator = new ServerLocator(logger);
+            // Android developers should use GsonJsonSerializer
+			IJsonSerializer jsonSerializer = new BoonJsonSerializer();
+	
+			// Developers are encouraged to create their own ILogger implementation
+			ILogger logger = new NullLogger();
+
+			IServerLocator serverLocator = new ServerLocator(logger);
 
             // The underlying http stack. Developers can inject their own if desired
-        	IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, getApplicationContext());
+        	IAsyncHttpClient httpClient = new VolleyHttpClient(logger, getApplicationContext());
+
+			// Android developers should use AndroidDevice
+			IDevice device = new Device("deviceId", "deviceName");
+	
+			// This describes the device capabilities
+			ClientCapabilities capabilities = new ClientCapabilities();
 
 			ApiEventListener eventListener = new ApiEventListener();
 
@@ -114,7 +127,7 @@ IConnectionManager features:
                 networkConnection,
                 logger,
                 serverLocator,
-                volleyHttpClient,
+                httpClient,
 				"My app name"
                 "1.0.0.0",
                 device,

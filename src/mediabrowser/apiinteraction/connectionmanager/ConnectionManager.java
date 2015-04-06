@@ -413,8 +413,8 @@ public class ConnectionManager implements IConnectionManager {
                 logger,
                 serverAddress,
                 applicationName,
-                device,
                 applicationVersion,
+                device,
                 apiEventListener);
     }
 
