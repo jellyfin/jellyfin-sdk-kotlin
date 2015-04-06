@@ -3,20 +3,24 @@ package mediabrowser.model.dlna;
 import mediabrowser.model.dto.*;
 import mediabrowser.model.entities.*;
 import mediabrowser.model.extensions.*;
+import mediabrowser.model.logging.*;
 import mediabrowser.model.mediainfo.*;
 import mediabrowser.model.session.*;
 
 public class StreamBuilder
 {
 	private ILocalPlayer _localPlayer;
+	private ILogger _logger;
 
-	public StreamBuilder(ILocalPlayer localPlayer)
+	public StreamBuilder(ILocalPlayer localPlayer, ILogger logger)
 	{
 		_localPlayer = localPlayer;
+		_logger = logger;
 	}
-	public StreamBuilder()
+
+	public StreamBuilder(ILogger logger)
 	{
-		this(new NullLocalPlayer());
+		this(new NullLocalPlayer(), logger);
 	}
 
 	public final StreamInfo BuildAudioItem(AudioOptions options)
@@ -349,6 +353,10 @@ public class StreamBuilder
 		boolean isEligibleForDirectPlay = IsEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options), subtitleStream, options);
 		boolean isEligibleForDirectStream = IsEligibleForDirectPlay(item, options.GetMaxBitrate(), subtitleStream, options);
 
+		String tempVar4 = options.getProfile().getName();
+		String tempVar5 = item.getPath();
+		_logger.Debug("Profile: {0}, Path: {1}, isEligibleForDirectPlay: {2}, isEligibleForDirectStream: {3}", (tempVar4 != null) ? tempVar4 : "Unknown Profile", (tempVar5 != null) ? tempVar5 : "Unknown path", isEligibleForDirectPlay, isEligibleForDirectStream);
+
 		if (isEligibleForDirectPlay || isEligibleForDirectStream)
 		{
 			// See if it can be direct played
@@ -437,8 +445,8 @@ public class StreamBuilder
 			// Honor requested max channels
 			if (options.getMaxAudioChannels() != null)
 			{
-				Integer tempVar4 = playlistItem.getMaxAudioChannels();
-				int currentValue = (tempVar4 != null) ? tempVar4 : options.getMaxAudioChannels();
+				Integer tempVar6 = playlistItem.getMaxAudioChannels();
+				int currentValue = (tempVar6 != null) ? tempVar6 : options.getMaxAudioChannels();
 
 				playlistItem.setMaxAudioChannels(Math.min(options.getMaxAudioChannels(), currentValue));
 			}
@@ -459,8 +467,8 @@ public class StreamBuilder
 					videoBitrate -= playlistItem.getAudioBitrate();
 				}
 
-				Integer tempVar5 = playlistItem.getVideoBitrate();
-				int currentValue = (tempVar5 != null) ? tempVar5 : videoBitrate;
+				Integer tempVar7 = playlistItem.getVideoBitrate();
+				int currentValue = (tempVar7 != null) ? tempVar7 : videoBitrate;
 
 				playlistItem.setVideoBitrate(Math.min(videoBitrate, currentValue));
 			}
@@ -497,6 +505,10 @@ public class StreamBuilder
 
 		if (directPlay == null)
 		{
+			String tempVar = profile.getName();
+			String tempVar2 = mediaSource.getPath();
+			_logger.Debug("Profile: {0}, No direct play profiles found for Path: {1}", (tempVar != null) ? tempVar : "Unknown Profile", (tempVar2 != null) ? tempVar2 : "Unknown path");
+
 			return null;
 		}
 
@@ -522,8 +534,8 @@ public class StreamBuilder
 		Integer videoBitrate = videoStream == null ? null : videoStream.getBitRate();
 		Double videoLevel = videoStream == null ? null : videoStream.getLevel();
 		String videoProfile = videoStream == null ? null : videoStream.getProfile();
-		Float tempVar = videoStream.getAverageFrameRate();
-		Float videoFramerate = videoStream == null ? null : (tempVar != null) ? tempVar : videoStream.getAverageFrameRate();
+		Float tempVar3 = videoStream.getAverageFrameRate();
+		Float videoFramerate = videoStream == null ? null : (tempVar3 != null) ? tempVar3 : videoStream.getAverageFrameRate();
 		Boolean isAnamorphic = videoStream == null ? null : videoStream.getIsAnamorphic();
 		Boolean isCabac = videoStream == null ? null : videoStream.getIsCabac();
 
@@ -543,6 +555,10 @@ public class StreamBuilder
 		{
 			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams))
 			{
+				String tempVar4 = profile.getName();
+				String tempVar5 = mediaSource.getPath();
+				_logger.Debug("Profile: {0}, DirectPlay=false. Reason=VideoContainerProfile.{1} Path: {2}", (tempVar4 != null) ? tempVar4 : "Unknown Profile", i.getProperty(), (tempVar5 != null) ? tempVar5 : "Unknown path");
+
 				return null;
 			}
 		}
@@ -551,6 +567,10 @@ public class StreamBuilder
 
 		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(videoCodec))
 		{
+			String tempVar6 = profile.getName();
+			String tempVar7 = mediaSource.getPath();
+			_logger.Debug("Profile: {0}, DirectPlay=false. Reason=Unknown video codec. Path: {1}", (tempVar6 != null) ? tempVar6 : "Unknown Profile", (tempVar7 != null) ? tempVar7 : "Unknown path");
+
 			return null;
 		}
 
@@ -570,6 +590,10 @@ public class StreamBuilder
 		{
 			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams))
 			{
+				String tempVar8 = profile.getName();
+				String tempVar9 = mediaSource.getPath();
+				_logger.Debug("Profile: {0}, DirectPlay=false. Reason=VideoCodecProfile.{1} Path: {2}", (tempVar8 != null) ? tempVar8 : "Unknown Profile", i.getProperty(), (tempVar9 != null) ? tempVar9 : "Unknown path");
+
 				return null;
 			}
 		}
@@ -580,6 +604,10 @@ public class StreamBuilder
 
 			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec))
 			{
+				String tempVar10 = profile.getName();
+				String tempVar11 = mediaSource.getPath();
+				_logger.Debug("Profile: {0}, DirectPlay=false. Reason=Unknown audio codec. Path: {1}", (tempVar10 != null) ? tempVar10 : "Unknown Profile", (tempVar11 != null) ? tempVar11 : "Unknown path");
+
 				return null;
 			}
 
@@ -600,6 +628,10 @@ public class StreamBuilder
 				Boolean isSecondaryAudio = audioStream == null ? null : mediaSource.IsSecondaryAudio(audioStream);
 				if (!conditionProcessor.IsVideoAudioConditionSatisfied(i, audioChannels, audioBitrate, audioProfile, isSecondaryAudio))
 				{
+					String tempVar12 = profile.getName();
+					String tempVar13 = mediaSource.getPath();
+					_logger.Debug("Profile: {0}, DirectPlay=false. Reason=VideoAudioCodecProfile.{1} Path: {2}", (tempVar12 != null) ? tempVar12 : "Unknown Profile", i.getProperty(), (tempVar13 != null) ? tempVar13 : "Unknown path");
+
 					return null;
 				}
 			}

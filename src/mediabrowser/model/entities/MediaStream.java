@@ -368,6 +368,20 @@ public class MediaStream
 	{
 		DeliveryUrl = value;
 	}
+	/** 
+	 Gets or sets a value indicating whether this instance is external URL.
+	 
+	 <value><c>null</c> if [is external URL] contains no value, <c>true</c> if [is external URL]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean IsExternalUrl = null;
+	public final Boolean getIsExternalUrl()
+	{
+		return IsExternalUrl;
+	}
+	public final void setIsExternalUrl(Boolean value)
+	{
+		IsExternalUrl = value;
+	}
 
 	public final boolean getIsTextSubtitleStream()
 	{

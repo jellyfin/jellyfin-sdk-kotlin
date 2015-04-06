@@ -240,6 +240,11 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 		AnimeSeriesIndex = value;
 	}
 
+	/** 
+	 Gets or sets a value indicating whether [supports synchronize].
+	 
+	 <value><c>null</c> if [supports synchronize] contains no value, <c>true</c> if [supports synchronize]; otherwise, <c>false</c>.</value>
+	*/
 	private Boolean SupportsSync = null;
 	public final Boolean getSupportsSync()
 	{
@@ -249,6 +254,11 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	{
 		SupportsSync = value;
 	}
+	/** 
+	 Gets or sets a value indicating whether this instance has synchronize job.
+	 
+	 <value><c>null</c> if [has synchronize job] contains no value, <c>true</c> if [has synchronize job]; otherwise, <c>false</c>.</value>
+	*/
 	private Boolean HasSyncJob = null;
 	public final Boolean getHasSyncJob()
 	{
@@ -257,6 +267,20 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setHasSyncJob(Boolean value)
 	{
 		HasSyncJob = value;
+	}
+	/** 
+	 Gets or sets a value indicating whether this instance is synced.
+	 
+	 <value><c>null</c> if [is synced] contains no value, <c>true</c> if [is synced]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean IsSynced = null;
+	public final Boolean getIsSynced()
+	{
+		return IsSynced;
+	}
+	public final void setIsSynced(Boolean value)
+	{
+		IsSynced = value;
 	}
 
 	/** 

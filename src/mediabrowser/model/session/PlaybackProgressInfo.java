@@ -200,4 +200,18 @@ public class PlaybackProgressInfo
 	{
 		LiveStreamId = value;
 	}
+	/** 
+	 Gets or sets the play session identifier.
+	 
+	 <value>The play session identifier.</value>
+	*/
+	private String PlaySessionId;
+	public final String getPlaySessionId()
+	{
+		return PlaySessionId;
+	}
+	public final void setPlaySessionId(String value)
+	{
+		PlaySessionId = value;
+	}
 }

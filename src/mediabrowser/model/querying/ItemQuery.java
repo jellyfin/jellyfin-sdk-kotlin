@@ -754,6 +754,46 @@ public class ItemQuery
 		EnableImageTypes = value;
 	}
 
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [Obsolete] public string[] Artists {get;set;}
+	private String[] Artists;
+	@Deprecated
+	public final String[] getArtists()
+	{
+		return Artists;
+	}
+	@Deprecated
+	public final void setArtists(String[] value)
+	{
+		Artists = value;
+	}
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [Obsolete] public string[] Studios {get;set;}
+	private String[] Studios;
+	@Deprecated
+	public final String[] getStudios()
+	{
+		return Studios;
+	}
+	@Deprecated
+	public final void setStudios(String[] value)
+	{
+		Studios = value;
+	}
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [Obsolete] public string Person {get;set;}
+	private String Person;
+	@Deprecated
+	public final String getPerson()
+	{
+		return Person;
+	}
+	@Deprecated
+	public final void setPerson(String value)
+	{
+		Person = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="ItemQuery" /> class.
 	*/
@@ -771,6 +811,9 @@ public class ItemQuery
 		setMediaTypes(new String[] { });
 
 		setVideoTypes(new VideoType[] { });
+
+		setArtists(new String[] { });
+		setStudios(new String[] { });
 
 		setGenres(new String[] { });
 		setStudioIds(new String[] { });

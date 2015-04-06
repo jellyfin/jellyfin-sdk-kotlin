@@ -54,7 +54,8 @@ public class GetPlaybackInfoResponse extends Response<PlaybackInfoResponse> {
             streamInfo = streamBuilder.BuildAudioItem(options);
         }
 
-        streamInfo.setPlaybackInfo(playbackInfo);
+        streamInfo.setPlaySessionId(playbackInfo.getPlaySessionId());
+        streamInfo.setAllMediaSources(playbackInfo.getMediaSources());
 
         if (streamInfo.getMediaSource().getRequiresOpening()){
 
@@ -62,9 +63,10 @@ public class GetPlaybackInfoResponse extends Response<PlaybackInfoResponse> {
             request.setUserId(apiClient.getCurrentUserId());
             request.setOpenToken(streamInfo.getMediaSource().getOpenToken());
 
-            apiClient.OpenLiveStream(request, new OpenLiveStreamResponse(streamInfo, playbackManager, response));
+            apiClient.OpenLiveStream(request, new OpenLiveStreamResponse(streamBuilder, playbackManager, options, !isVideo, response));
         }
         else{
+
             playbackManager.SendResponse(response, streamInfo);
         }
     }

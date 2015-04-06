@@ -109,7 +109,7 @@ public class PlaybackManager {
     public void getAudioStreamInfo(String serverId, AudioOptions options, boolean isOffline, ApiClient apiClient, Response<StreamInfo> response)
     {
         Normalize(options);
-        StreamBuilder streamBuilder = new StreamBuilder(localPlayer);
+        StreamBuilder streamBuilder = new StreamBuilder(localPlayer, logger);
 
         LocalItem localItem = localAssetManager.getLocalItem(serverId, options.getItemId());
 
@@ -152,7 +152,7 @@ public class PlaybackManager {
     public void getVideoStreamInfo(final String serverId, final VideoOptions options, boolean isOffline, ApiClient apiClient, final Response<StreamInfo> response)
     {
         Normalize(options);
-        StreamBuilder streamBuilder = new StreamBuilder(localPlayer);
+        StreamBuilder streamBuilder = new StreamBuilder(localPlayer, logger);
 
         if (!isOffline)
         {
@@ -174,16 +174,14 @@ public class PlaybackManager {
     {
         Normalize(options);
 
-        String playSessionId = currentStreamInfo.getPlaybackInfo() == null ?
-                null :
-                currentStreamInfo.getPlaybackInfo().getPlaySessionId();
+        String playSessionId = currentStreamInfo.getPlaySessionId();
 
         apiClient.StopTranscodingProcesses(device.getDeviceId(), playSessionId, new StopTranscodingResponse(this, serverId, currentStreamInfo, options, logger, response));
     }
 
     StreamInfo getVideoStreamInfoInternal(String serverId, VideoOptions options)
     {
-        StreamBuilder streamBuilder = new StreamBuilder(localPlayer);
+        StreamBuilder streamBuilder = new StreamBuilder(localPlayer, logger);
 
         LocalItem localItem = localAssetManager.getLocalItem(serverId, options.getItemId());
 
@@ -236,6 +234,8 @@ public class PlaybackManager {
             info.setLiveStreamId(mediaSource.getLiveStreamId());
         }
 
+        info.setPlaySessionId(streamInfo.getPlaySessionId());
+
         response.onResponse();
     }
 
@@ -261,6 +261,8 @@ public class PlaybackManager {
         if (mediaSource != null){
             info.setLiveStreamId(mediaSource.getLiveStreamId());
         }
+
+        info.setPlaySessionId(streamInfo.getPlaySessionId());
 
         apiClient.ReportPlaybackStoppedAsync(info, new ReportPlaybackStopResponse(logger, device, apiClient, streamInfo, response));
     }

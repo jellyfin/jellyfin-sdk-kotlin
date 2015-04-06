@@ -42,6 +42,7 @@ public final class ItemSortBy
 	 The premiere date
 	*/
 	public static final String PremiereDate = "PremiereDate";
+	public static final String StartDate = "StartDate";
 	/** 
 	 The sort name
 	*/

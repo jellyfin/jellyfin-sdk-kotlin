@@ -6,21 +6,6 @@ package mediabrowser.model.configuration;
 public class UserConfiguration
 {
 	/** 
-	 Gets or sets a value indicating whether this instance is administrator.
-	 
-	 <value><c>true</c> if this instance is administrator; otherwise, <c>false</c>.</value>
-	*/
-	private boolean IsAdministrator;
-	public final boolean getIsAdministrator()
-	{
-		return IsAdministrator;
-	}
-	public final void setIsAdministrator(boolean value)
-	{
-		IsAdministrator = value;
-	}
-
-	/** 
 	 Gets or sets the audio language preference.
 	 
 	 <value>The audio language preference.</value>
@@ -192,15 +177,6 @@ public class UserConfiguration
 		LatestItemsExcludes = value;
 	}
 
-	private boolean HasMigratedToPolicy;
-	public final boolean getHasMigratedToPolicy()
-	{
-		return HasMigratedToPolicy;
-	}
-	public final void setHasMigratedToPolicy(boolean value)
-	{
-		HasMigratedToPolicy = value;
-	}
 	private boolean HidePlayedInLatest;
 	public final boolean getHidePlayedInLatest()
 	{
@@ -216,6 +192,7 @@ public class UserConfiguration
 	*/
 	public UserConfiguration()
 	{
+		setHidePlayedInLatest(true);
 		setPlayDefaultAudioTrack(true);
 
 		setLatestItemsExcludes(new String[] { });

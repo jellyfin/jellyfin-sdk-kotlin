@@ -314,14 +314,23 @@ public class StreamInfo
 		SubtitleFormat = value;
 	}
 
-	private PlaybackInfoResponse PlaybackInfo;
-	public final PlaybackInfoResponse getPlaybackInfo()
+	private String PlaySessionId;
+	public final String getPlaySessionId()
 	{
-		return PlaybackInfo;
+		return PlaySessionId;
 	}
-	public final void setPlaybackInfo(PlaybackInfoResponse value)
+	public final void setPlaySessionId(String value)
 	{
-		PlaybackInfo = value;
+		PlaySessionId = value;
+	}
+	private java.util.ArrayList<MediaSourceInfo> AllMediaSources;
+	public final java.util.ArrayList<MediaSourceInfo> getAllMediaSources()
+	{
+		return AllMediaSources;
+	}
+	public final void setAllMediaSources(java.util.ArrayList<MediaSourceInfo> value)
+	{
+		AllMediaSources = value;
 	}
 
 	public final String getMediaSourceId()
@@ -446,7 +455,16 @@ public class StreamInfo
 		list.add(new NameValuePair("MaxFramerate", item.getMaxFramerate() != null ? StringHelper.ToStringCultureInvariant(item.getMaxFramerate()) : ""));
 		list.add(new NameValuePair("MaxWidth", item.getMaxWidth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxWidth()) : ""));
 		list.add(new NameValuePair("MaxHeight", item.getMaxHeight() != null ? StringHelper.ToStringCultureInvariant(item.getMaxHeight()) : ""));
-		list.add(new NameValuePair("StartTimeTicks", StringHelper.ToStringCultureInvariant(item.getStartPositionTicks())));
+
+		if (StringHelper.EqualsIgnoreCase(item.getSubProtocol(), "hls"))
+		{
+			list.add(new NameValuePair("StartTimeTicks", ""));
+		}
+		else
+		{
+			list.add(new NameValuePair("StartTimeTicks", StringHelper.ToStringCultureInvariant(item.getStartPositionTicks())));
+		}
+
 		list.add(new NameValuePair("Level", item.getVideoLevel() != null ? StringHelper.ToStringCultureInvariant(item.getVideoLevel()) : ""));
 
 		list.add(new NameValuePair("ClientTime", item.getIsDirectStream() ? "" : String.valueOf(new java.util.Date().getTime())));
@@ -456,14 +474,19 @@ public class StreamInfo
 		list.add(new NameValuePair("Profile", (tempVar6 != null) ? tempVar6 : ""));
 		list.add(new NameValuePair("Cabac", item.getCabac() != null ? item.getCabac().toString() : ""));
 
-		String playSessionId = item.getPlaybackInfo() == null ? null : item.getPlaybackInfo().getPlaySessionId();
-		list.add(new NameValuePair("PlaySessionId", (playSessionId != null) ? playSessionId : ""));
+		String tempVar7 = item.getPlaySessionId();
+		list.add(new NameValuePair("PlaySessionId", (tempVar7 != null) ? tempVar7 : ""));
 		list.add(new NameValuePair("api_key", (accessToken != null) ? accessToken : ""));
 
 		String liveStreamId = item.getMediaSource() == null ? null : item.getMediaSource().getLiveStreamId();
 		list.add(new NameValuePair("LiveStreamId", (liveStreamId != null) ? liveStreamId : ""));
 
 		return list;
+	}
+
+	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(boolean includeSelectedTrackOnly, String baseUrl, String accessToken)
+	{
+		return GetExternalSubtitles(includeSelectedTrackOnly, false, baseUrl, accessToken);
 	}
 
 	public final java.util.ArrayList<SubtitleStreamInfo> GetExternalSubtitles(boolean includeSelectedTrackOnly, boolean enableAllProfiles, String baseUrl, String accessToken)
@@ -558,10 +581,13 @@ public class StreamInfo
 			if (getMediaSource().getProtocol() == MediaProtocol.File || !StringHelper.EqualsIgnoreCase(stream.getCodec(), subtitleProfile.getFormat()))
 			{
 				info.setUrl(String.format("%1$s/Videos/%2$s/%3$s/Subtitles/%4$s/%5$s/Stream.%6$s", baseUrl, getItemId(), getMediaSourceId(), StringHelper.ToStringCultureInvariant(stream.getIndex()), StringHelper.ToStringCultureInvariant(startPositionTicks), subtitleProfile.getFormat()));
+
+				info.setIsExternalUrl(false);
 			}
 			else
 			{
 				info.setUrl(stream.getPath());
+				info.setIsExternalUrl(true);
 			}
 		}
 

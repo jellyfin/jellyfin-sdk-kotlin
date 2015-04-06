@@ -22,6 +22,15 @@ public class LiveStreamRequest
 	{
 		UserId = value;
 	}
+	private String PlaySessionId;
+	public final String getPlaySessionId()
+	{
+		return PlaySessionId;
+	}
+	public final void setPlaySessionId(String value)
+	{
+		PlaySessionId = value;
+	}
 	private Integer MaxStreamingBitrate;
 	public final Integer getMaxStreamingBitrate()
 	{

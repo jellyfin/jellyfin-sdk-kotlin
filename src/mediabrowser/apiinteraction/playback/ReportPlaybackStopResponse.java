@@ -31,9 +31,7 @@ public class ReportPlaybackStopResponse extends EmptyResponse {
 
         if (streamInfo.getMediaType() == DlnaProfileType.Video && streamInfo.getPlayMethod() == PlayMethod.Transcode)
         {
-            String playSessionId = streamInfo.getPlaybackInfo() == null ?
-                    null :
-                    streamInfo.getPlaybackInfo().getPlaySessionId();
+            String playSessionId = streamInfo.getPlaySessionId();
 
             apiClient.StopTranscodingProcesses(device.getDeviceId(), playSessionId, response);
         }

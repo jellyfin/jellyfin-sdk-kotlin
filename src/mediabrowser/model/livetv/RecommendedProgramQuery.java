@@ -76,4 +76,18 @@ public class RecommendedProgramQuery
 	{
 		IsMovie = value;
 	}
+	/** 
+	 Gets or sets a value indicating whether this instance is sports.
+	 
+	 <value><c>null</c> if [is sports] contains no value, <c>true</c> if [is sports]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean IsSports;
+	public final Boolean getIsSports()
+	{
+		return IsSports;
+	}
+	public final void setIsSports(Boolean value)
+	{
+		IsSports = value;
+	}
 }

@@ -11,4 +11,13 @@ public class SyncOptions
 	{
 		TemporaryPath = value;
 	}
+	private long UploadSpeedLimitBytes;
+	public final long getUploadSpeedLimitBytes()
+	{
+		return UploadSpeedLimitBytes;
+	}
+	public final void setUploadSpeedLimitBytes(long value)
+	{
+		UploadSpeedLimitBytes = value;
+	}
 }

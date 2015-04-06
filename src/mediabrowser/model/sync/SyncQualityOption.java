@@ -58,4 +58,18 @@ public class SyncQualityOption
 	{
 		IsDefault = value;
 	}
+	/** 
+	 Gets or sets a value indicating whether this instance is original quality.
+	 
+	 <value><c>true</c> if this instance is original quality; otherwise, <c>false</c>.</value>
+	*/
+	private boolean IsOriginalQuality;
+	public final boolean getIsOriginalQuality()
+	{
+		return IsOriginalQuality;
+	}
+	public final void setIsOriginalQuality(boolean value)
+	{
+		IsOriginalQuality = value;
+	}
 }

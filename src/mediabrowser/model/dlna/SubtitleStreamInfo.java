@@ -65,4 +65,13 @@ public class SubtitleStreamInfo
 	{
 		DeliveryMethod = value;
 	}
+	private boolean IsExternalUrl;
+	public final boolean getIsExternalUrl()
+	{
+		return IsExternalUrl;
+	}
+	public final void setIsExternalUrl(boolean value)
+	{
+		IsExternalUrl = value;
+	}
 }

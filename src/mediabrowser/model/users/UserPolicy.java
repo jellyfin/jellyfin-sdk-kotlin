@@ -100,24 +100,6 @@ public class UserPolicy
 	{
 		BlockUnratedItems = value;
 	}
-	private String[] BlockedMediaFolders;
-	public final String[] getBlockedMediaFolders()
-	{
-		return BlockedMediaFolders;
-	}
-	public final void setBlockedMediaFolders(String[] value)
-	{
-		BlockedMediaFolders = value;
-	}
-	private String[] BlockedChannels;
-	public final String[] getBlockedChannels()
-	{
-		return BlockedChannels;
-	}
-	public final void setBlockedChannels(String[] value)
-	{
-		BlockedChannels = value;
-	}
 	private boolean EnableRemoteControlOfOtherUsers;
 	public final boolean getEnableRemoteControlOfOtherUsers()
 	{
@@ -165,6 +147,16 @@ public class UserPolicy
 	{
 		EnableMediaPlayback = value;
 	}
+	private boolean EnableMediaPlaybackTranscoding;
+	public final boolean getEnableMediaPlaybackTranscoding()
+	{
+		return EnableMediaPlaybackTranscoding;
+	}
+	public final void setEnableMediaPlaybackTranscoding(boolean value)
+	{
+		EnableMediaPlaybackTranscoding = value;
+	}
+
 	private boolean EnableContentDeletion;
 	public final boolean getEnableContentDeletion()
 	{
@@ -197,6 +189,15 @@ public class UserPolicy
 	public final void setEnableSync(boolean value)
 	{
 		EnableSync = value;
+	}
+	private boolean EnableSyncTranscoding;
+	public final boolean getEnableSyncTranscoding()
+	{
+		return EnableSyncTranscoding;
+	}
+	public final void setEnableSyncTranscoding(boolean value)
+	{
+		EnableSyncTranscoding = value;
 	}
 
 	private String[] EnabledDevices;
@@ -268,9 +269,15 @@ public class UserPolicy
 
 	public UserPolicy()
 	{
-		setEnableLiveTvManagement(true);
+		setEnableSync(true);
+		setEnableSyncTranscoding(true);
+
 		setEnableMediaPlayback(true);
+		setEnableMediaPlaybackTranscoding(true);
+
+		setEnableLiveTvManagement(true);
 		setEnableLiveTvAccess(true);
+
 		setEnableSharedDeviceControl(true);
 
 		setBlockedTags(new String[] { });

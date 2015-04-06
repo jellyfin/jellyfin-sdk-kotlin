@@ -556,14 +556,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		FindInternetTrailers = value;
 	}
 
-	private String[] InsecureApps8;
-	public final String[] getInsecureApps8()
+	private String[] InsecureApps9;
+	public final String[] getInsecureApps9()
 	{
-		return InsecureApps8;
+		return InsecureApps9;
 	}
-	public final void setInsecureApps8(String[] value)
+	public final void setInsecureApps9(String[] value)
 	{
-		InsecureApps8 = value;
+		InsecureApps9 = value;
 	}
 
 	private boolean SaveMetadataHidden;
@@ -653,7 +653,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 
 		setPeopleMetadataOptions(new PeopleMetadataOptions());
 
-		setInsecureApps8(new String[] {"Chromecast", "iOS", "Unknown app", "MediaPortal", "Media Portal", "iPad", "iPhone", "Roku", "Windows Phone"});
+		setInsecureApps9(new String[] {"Chromecast", "iOS", "Unknown app", "MediaPortal", "Media Portal", "iPad", "iPhone", "Windows Phone"});
 
 		MetadataOptions tempVar = new MetadataOptions(1, 1280);
 		tempVar.setItemType("Book");
