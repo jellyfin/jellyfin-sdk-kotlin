@@ -235,7 +235,25 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
 
     @Override
     public ArrayList<LocalItemInfo> getAlbumArtists(String serverId, String userId) {
-        return null;
+
+        ArrayList<LocalItemInfo> list = new ArrayList<LocalItemInfo>();
+
+        String[] cols = new String[] {"ServerId", "Id", "Name"};
+        String where = "ItemId in (Select ItemId from Items where ServerId=? and UserIdsWithAccess like %?%)";
+        String[] args = new String[]{serverId, userId};
+
+        try (SQLiteDatabase db = getReadableDatabase()){
+            Cursor cursor = db.query(true, "AlbumArtists", cols, where, args, null, null, null, null);
+
+            if (cursor != null) {
+                while (cursor.moveToNext()){
+
+                    list.add(GetLocalItemInfo(cursor));
+                }
+            }
+        }
+
+        return list;
     }
 
     @Override
@@ -243,7 +261,7 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
         ArrayList<LocalItemInfo> list = new ArrayList<LocalItemInfo>();
 
         String[] cols = new String[] {"ServerId", "SeriesId", "SeriesName"};
-        String where = "ServerId=" + serverId + " and SeriesId is not null and UserIdsWithAccess like %?%";
+        String where = "ServerId=? and SeriesId is not null and UserIdsWithAccess like %?%";
         String[] args = new String[]{serverId, userId};
 
         try (SQLiteDatabase db = getReadableDatabase()){
@@ -265,7 +283,7 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
         ArrayList<LocalItemInfo> list = new ArrayList<LocalItemInfo>();
 
         String[] cols = new String[] {"ServerId", "AlbumId", "AlbumName"};
-        String where = "ServerId=" + serverId + " and AlbumId is not null and MediaType=? and UserIdsWithAccess like %?%";
+        String where = "ServerId=? and AlbumId is not null and MediaType=? and UserIdsWithAccess like %?%";
         String[] args = new String[]{serverId, "Photo", userId};
 
         try (SQLiteDatabase db = getReadableDatabase()){
