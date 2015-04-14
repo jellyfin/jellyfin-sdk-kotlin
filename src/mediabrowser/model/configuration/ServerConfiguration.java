@@ -604,6 +604,15 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		EnableVideoArchiveFiles = value;
 	}
+	private int RemoteClientBitrateLimit;
+	public final int getRemoteClientBitrateLimit()
+	{
+		return RemoteClientBitrateLimit;
+	}
+	public final void setRemoteClientBitrateLimit(int value)
+	{
+		RemoteClientBitrateLimit = value;
+	}
 
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.

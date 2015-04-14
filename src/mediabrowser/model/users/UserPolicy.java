@@ -147,14 +147,23 @@ public class UserPolicy
 	{
 		EnableMediaPlayback = value;
 	}
-	private boolean EnableMediaPlaybackTranscoding;
-	public final boolean getEnableMediaPlaybackTranscoding()
+	private boolean EnableAudioPlaybackTranscoding;
+	public final boolean getEnableAudioPlaybackTranscoding()
 	{
-		return EnableMediaPlaybackTranscoding;
+		return EnableAudioPlaybackTranscoding;
 	}
-	public final void setEnableMediaPlaybackTranscoding(boolean value)
+	public final void setEnableAudioPlaybackTranscoding(boolean value)
 	{
-		EnableMediaPlaybackTranscoding = value;
+		EnableAudioPlaybackTranscoding = value;
+	}
+	private boolean EnableVideoPlaybackTranscoding;
+	public final boolean getEnableVideoPlaybackTranscoding()
+	{
+		return EnableVideoPlaybackTranscoding;
+	}
+	public final void setEnableVideoPlaybackTranscoding(boolean value)
+	{
+		EnableVideoPlaybackTranscoding = value;
 	}
 
 	private boolean EnableContentDeletion;
@@ -267,13 +276,24 @@ public class UserPolicy
 		InvalidLoginAttemptCount = value;
 	}
 
+	private boolean EnablePublicSharing;
+	public final boolean getEnablePublicSharing()
+	{
+		return EnablePublicSharing;
+	}
+	public final void setEnablePublicSharing(boolean value)
+	{
+		EnablePublicSharing = value;
+	}
+
 	public UserPolicy()
 	{
 		setEnableSync(true);
 		setEnableSyncTranscoding(true);
 
 		setEnableMediaPlayback(true);
-		setEnableMediaPlaybackTranscoding(true);
+		setEnableAudioPlaybackTranscoding(true);
+		setEnableVideoPlaybackTranscoding(true);
 
 		setEnableLiveTvManagement(true);
 		setEnableLiveTvAccess(true);
@@ -297,5 +317,6 @@ public class UserPolicy
 		setEnableAllDevices(true);
 
 		setEnableContentDownloading(true);
+		setEnablePublicSharing(true);
 	}
 }

@@ -76,6 +76,11 @@ public enum ItemFields
 	DisplayMediaType,
 
 	/** 
+	 The etag
+	*/
+	Etag,
+
+	/** 
 	 The external urls
 	*/
 	ExternalUrls,

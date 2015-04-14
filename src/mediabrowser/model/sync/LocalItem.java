@@ -61,6 +61,20 @@ public class LocalItem
 		Id = value;
 	}
 	/** 
+	 Gets or sets the file identifier.
+	 
+	 <value>The file identifier.</value>
+	*/
+	private String FileId;
+	public final String getFileId()
+	{
+		return FileId;
+	}
+	public final void setFileId(String value)
+	{
+		FileId = value;
+	}
+	/** 
 	 Gets or sets the item identifier.
 	 
 	 <value>The item identifier.</value>

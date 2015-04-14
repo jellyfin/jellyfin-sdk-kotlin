@@ -1970,7 +1970,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Programs", dict);
 
         url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<ProgramInfoDtoResult>(response, jsonSerializer, new ProgramInfoDtoResult().getClass()));
+        Send(url, "GET", new SerializedResponse<ProgramInfoDtoResult>(response, jsonSerializer, ProgramInfoDtoResult.class));
     }
 
     public void GetRecommendedLiveTvProgramsAsync(RecommendedProgramQuery query, final Response<ProgramInfoDtoResult> response)
@@ -1990,7 +1990,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Programs/Recommended", dict);
 
         url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<ProgramInfoDtoResult>(response, jsonSerializer, new ProgramInfoDtoResult().getClass()));
+        Send(url, "GET", new SerializedResponse<ProgramInfoDtoResult>(response, jsonSerializer, ProgramInfoDtoResult.class));
     }
 
     public void CreateLiveTvSeriesTimerAsync(SeriesTimerInfoDto timer, final EmptyResponse response)

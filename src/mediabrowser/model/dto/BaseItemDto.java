@@ -5,14 +5,15 @@ import mediabrowser.model.entities.*;
 import mediabrowser.model.extensions.*;
 import mediabrowser.model.library.*;
 import mediabrowser.model.providers.*;
+import mediabrowser.model.sync.*;
 
 /** 
  This is strictly used as a data transfer object from the api layer.
  This holds information about a BaseItem in a format that is convenient for the client.
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, Type = {Type}")] public class BaseItemDto : IHasProviderIds, IHasPropertyChangedEvent, IItemDto, IHasServerId
-public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, IItemDto, IHasServerId
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, Type = {Type}")] public class BaseItemDto : IHasProviderIds, IHasPropertyChangedEvent, IItemDto, IHasServerId, IHasSyncInfo
+public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, IItemDto, IHasServerId, IHasSyncInfo
 {
 	/** 
 	 Gets or sets the name.
@@ -57,6 +58,21 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setId(String value)
 	{
 		Id = value;
+	}
+
+	/** 
+	 Gets or sets the etag.
+	 
+	 <value>The etag.</value>
+	*/
+	private String Etag;
+	public final String getEtag()
+	{
+		return Etag;
+	}
+	public final void setEtag(String value)
+	{
+		Etag = value;
 	}
 
 	/** 
@@ -200,6 +216,15 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	{
 		AwardSummary = value;
 	}
+	private String ShareUrl;
+	public final String getShareUrl()
+	{
+		return ShareUrl;
+	}
+	public final void setShareUrl(String value)
+	{
+		ShareUrl = value;
+	}
 
 	private Float Metascore = null;
 	public final Float getMetascore()
@@ -281,6 +306,20 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setIsSynced(Boolean value)
 	{
 		IsSynced = value;
+	}
+	/** 
+	 Gets or sets the synchronize status.
+	 
+	 <value>The synchronize status.</value>
+	*/
+	private SyncJobItemStatus SyncStatus = null;
+	public final SyncJobItemStatus getSyncStatus()
+	{
+		return SyncStatus;
+	}
+	public final void setSyncStatus(SyncJobItemStatus value)
+	{
+		SyncStatus = value;
 	}
 
 	/** 

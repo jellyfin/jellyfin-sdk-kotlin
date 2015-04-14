@@ -90,11 +90,40 @@ public class ClientCapabilities
 	{
 		DeviceProfile = value;
 	}
+	private java.util.ArrayList<String> SupportedLiveMediaTypes;
+	public final java.util.ArrayList<String> getSupportedLiveMediaTypes()
+	{
+		return SupportedLiveMediaTypes;
+	}
+	public final void setSupportedLiveMediaTypes(java.util.ArrayList<String> value)
+	{
+		SupportedLiveMediaTypes = value;
+	}
+
+	private String AppUrl;
+	public final String getAppUrl()
+	{
+		return AppUrl;
+	}
+	public final void setAppUrl(String value)
+	{
+		AppUrl = value;
+	}
+	private String AppImageUrl;
+	public final String getAppImageUrl()
+	{
+		return AppImageUrl;
+	}
+	public final void setAppImageUrl(String value)
+	{
+		AppImageUrl = value;
+	}
 
 	public ClientCapabilities()
 	{
 		setPlayableMediaTypes(new java.util.ArrayList<String>());
 		setSupportedCommands(new java.util.ArrayList<String>());
 		setSupportsPersistentIdentifier(true);
+		setSupportedLiveMediaTypes(new java.util.ArrayList<String>());
 	}
 }

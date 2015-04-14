@@ -20,4 +20,27 @@ public class SyncOptions
 	{
 		UploadSpeedLimitBytes = value;
 	}
+	private int TranscodingCpuCoreLimit;
+	public final int getTranscodingCpuCoreLimit()
+	{
+		return TranscodingCpuCoreLimit;
+	}
+	public final void setTranscodingCpuCoreLimit(int value)
+	{
+		TranscodingCpuCoreLimit = value;
+	}
+	private boolean EnableFullSpeedTranscoding;
+	public final boolean getEnableFullSpeedTranscoding()
+	{
+		return EnableFullSpeedTranscoding;
+	}
+	public final void setEnableFullSpeedTranscoding(boolean value)
+	{
+		EnableFullSpeedTranscoding = value;
+	}
+
+	public SyncOptions()
+	{
+		setTranscodingCpuCoreLimit(1);
+	}
 }

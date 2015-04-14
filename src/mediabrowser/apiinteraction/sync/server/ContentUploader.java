@@ -72,7 +72,7 @@ public class ContentUploader {
 
         final LocalFileInfo file = files.get(index);
 
-        logger.Debug("ContentUploader will upload file " + file.getName());
+        logger.Debug("ContentUploader will upload file %s", file.getName());
 
         UploadFile(file, device, new FileUploadProgress(this, device, files, index, progress, cancellationToken), cancellationToken);
     }

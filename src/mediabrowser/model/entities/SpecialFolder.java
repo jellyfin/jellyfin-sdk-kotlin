@@ -36,6 +36,7 @@ public final class SpecialFolder
 	public static final String MusicGenres = "MusicGenres";
 	public static final String MusicGenre = "MusicGenre";
 	public static final String MusicLatest = "MusicLatest";
+	public static final String MusicPlaylists = "MusicPlaylists";
 	public static final String MusicSongs = "MusicSongs";
 	public static final String MusicFavorites = "MusicFavorites";
 	public static final String MusicFavoriteArtists = "MusicFavoriteArtists";

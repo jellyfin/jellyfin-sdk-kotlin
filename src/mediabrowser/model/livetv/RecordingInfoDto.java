@@ -4,10 +4,11 @@ import mediabrowser.model.dto.*;
 import mediabrowser.model.entities.*;
 import mediabrowser.model.extensions.*;
 import mediabrowser.model.library.*;
+import mediabrowser.model.sync.*;
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ChannelName = {ChannelName}")] public class RecordingInfoDto : IHasPropertyChangedEvent, IItemDto, IHasServerId
-public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto, IHasServerId
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ChannelName = {ChannelName}")] public class RecordingInfoDto : IHasPropertyChangedEvent, IItemDto, IHasServerId, IHasSyncInfo
+public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto, IHasServerId, IHasSyncInfo
 {
 	/** 
 	 Id of the recording.
@@ -65,6 +66,63 @@ public class RecordingInfoDto implements IHasPropertyChangedEvent, IItemDto, IHa
 	public final void setOriginalPrimaryImageAspectRatio(Double value)
 	{
 		OriginalPrimaryImageAspectRatio = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether [supports synchronize].
+	 
+	 <value><c>null</c> if [supports synchronize] contains no value, <c>true</c> if [supports synchronize]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean SupportsSync = null;
+	public final Boolean getSupportsSync()
+	{
+		return SupportsSync;
+	}
+	public final void setSupportsSync(Boolean value)
+	{
+		SupportsSync = value;
+	}
+	/** 
+	 Gets or sets a value indicating whether this instance has synchronize job.
+	 
+	 <value><c>null</c> if [has synchronize job] contains no value, <c>true</c> if [has synchronize job]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean HasSyncJob = null;
+	public final Boolean getHasSyncJob()
+	{
+		return HasSyncJob;
+	}
+	public final void setHasSyncJob(Boolean value)
+	{
+		HasSyncJob = value;
+	}
+	/** 
+	 Gets or sets a value indicating whether this instance is synced.
+	 
+	 <value><c>null</c> if [is synced] contains no value, <c>true</c> if [is synced]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean IsSynced = null;
+	public final Boolean getIsSynced()
+	{
+		return IsSynced;
+	}
+	public final void setIsSynced(Boolean value)
+	{
+		IsSynced = value;
+	}
+	/** 
+	 Gets or sets the synchronize status.
+	 
+	 <value>The synchronize status.</value>
+	*/
+	private SyncJobItemStatus SyncStatus = null;
+	public final SyncJobItemStatus getSyncStatus()
+	{
+		return SyncStatus;
+	}
+	public final void setSyncStatus(SyncJobItemStatus value)
+	{
+		SyncStatus = value;
 	}
 
 	/** 
