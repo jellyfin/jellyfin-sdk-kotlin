@@ -72,6 +72,6 @@ public class EncodingOptions
 		setDownMixAudioBoost(2);
 		setEncodingQuality(EncodingQuality.Auto);
 		setEnableThrottling(true);
-		setThrottleThresholdSeconds(120);
+		setThrottleThresholdSeconds(90);
 	}
 }

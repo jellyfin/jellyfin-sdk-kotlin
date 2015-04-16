@@ -9,16 +9,13 @@
     <list default="true" id="5b626835-6518-4586-bf6c-5bbba32974d2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.android.jar" afterPath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.android.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.jar" afterPath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/dto/BaseItemDto.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/dto/BaseItemDto.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/session/ClientCapabilities.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/session/ClientCapabilities.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ContentUploader.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ContentUploader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/querying/ItemFields.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/querying/ItemFields.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/sync/LocalItem.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/sync/LocalItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/livetv/RecordingInfoDto.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/livetv/RecordingInfoDto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/configuration/ServerConfiguration.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/configuration/ServerConfiguration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/entities/SpecialFolder.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/entities/SpecialFolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/sync/SyncOptions.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/sync/SyncOptions.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/configuration/EncodingOptions.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/configuration/EncodingOptions.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/GetPlaybackInfoResponse.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/GetPlaybackInfoResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/OpenLiveStreamResponse.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/OpenLiveStreamResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamInfo.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/configuration/UserConfiguration.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/configuration/UserConfiguration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/users/UserPolicy.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/users/UserPolicy.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -47,41 +44,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BaseItemDto.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dto/BaseItemDto.java">
+      <file leaf-file-name="OpenLiveStreamResponse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/OpenLiveStreamResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="22672" max-vertical-offset="24293">
-              <caret line="2335" column="80" selection-start-line="2335" selection-start-column="80" selection-end-line="2335" selection-end-column="80" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1003">
+              <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StreamInfo.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamInfo.java">
+      <file leaf-file-name="GetPlaybackInfoResponse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/GetPlaybackInfoResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5163044" vertical-offset="4146" max-vertical-offset="11798">
-              <caret line="489" column="5" selection-start-line="489" selection-start-column="5" selection-end-line="489" selection-end-column="5" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="308" max-vertical-offset="1326">
+              <caret line="57" column="61" selection-start-line="57" selection-start-column="61" selection-end-line="57" selection-end-column="61" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mediainfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/mediainfo/mediainfo.java">
+      <file leaf-file-name="PlaybackManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="779" max-vertical-offset="1768">
-              <caret line="187" column="61" selection-start-line="187" selection-start-column="61" selection-end-line="187" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StreamBuilder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="11592" max-vertical-offset="17357">
-              <caret line="709" column="38" selection-start-line="709" selection-start-column="38" selection-end-line="709" selection-end-column="38" />
+            <state vertical-scroll-proportion="-0.22828594" vertical-offset="2422" max-vertical-offset="4284">
+              <caret line="148" column="22" selection-start-line="148" selection-start-column="22" selection-end-line="148" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -131,8 +120,6 @@
         <option value="$PROJECT_DIR$/src/mediabrowser/model/querying/ItemQuery.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/ReportPlaybackStopResponse.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java" />
-        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/OpenLiveStreamResponse.java" />
-        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/GetPlaybackInfoResponse.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/StopTranscodingResponse.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/device/Device.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectionManager.java" />
@@ -142,10 +129,12 @@
         <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/AndroidNetworkConnection.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/ContentUploader.java" />
-        <option value="$PROJECT_DIR$/src/mediabrowser/model/dto/BaseItemDto.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/model/mediainfo/mediainfo.java" />
+        <option value="$PROJECT_DIR$/src/mediabrowser/model/dto/BaseItemDto.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamInfo.java" />
+        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/GetPlaybackInfoResponse.java" />
+        <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/OpenLiveStreamResponse.java" />
       </list>
     </option>
   </component>
@@ -178,7 +167,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -360,6 +348,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="playback" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mediabrowser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apiinteraction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="credentials" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -464,6 +478,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -673,7 +688,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="1" width="2496" height="1438" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -688,6 +703,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19274193" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21294206" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -697,7 +713,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21294206" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -719,7 +734,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -788,27 +803,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="704" max-vertical-offset="2023">
           <caret line="99" column="17" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dlna/BaseStreamInfoSorter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.051554207" vertical-offset="0" max-vertical-offset="1319">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamInfoSorterComparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25777104" vertical-offset="0" max-vertical-offset="1319">
-          <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dlna/ChainedComparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07733131" vertical-offset="0" max-vertical-offset="1319">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -900,34 +894,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45580932" vertical-offset="0" max-vertical-offset="1007">
           <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/OpenLiveStreamResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
-          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/GetPlaybackInfoResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="1241">
-          <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/StopTranscodingResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="965" max-vertical-offset="4284">
-          <caret line="115" column="30" selection-start-line="115" selection-start-column="30" selection-end-line="115" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -1043,49 +1009,370 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41650295" vertical-offset="31910" max-vertical-offset="44336">
-          <caret line="1972" column="68" selection-start-line="1972" selection-start-column="48" selection-end-line="1972" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamInfoSorter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.70475227" vertical-offset="0" max-vertical-offset="989">
           <caret line="42" column="1" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dto/BaseItemDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="22672" max-vertical-offset="24293">
-          <caret line="2335" column="80" selection-start-line="2335" selection-start-column="80" selection-end-line="2335" selection-end-column="80" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/mediainfo/mediainfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="779" max-vertical-offset="1768">
-          <caret line="187" column="61" selection-start-line="187" selection-start-column="61" selection-end-line="187" selection-end-column="61" />
+          <caret line="187" column="5" selection-start-line="187" selection-start-column="4" selection-end-line="187" selection-end-column="4" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="28119" max-vertical-offset="44336">
+          <caret line="1796" column="9" selection-start-line="1796" selection-start-column="9" selection-end-line="1796" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/StopTranscodingResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dto/BaseItemDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2528824" vertical-offset="11435" max-vertical-offset="31586">
+          <caret line="1225" column="36" selection-start-line="1225" selection-start-column="36" selection-end-line="1225" selection-end-column="36" />
+          <folding>
+            <element signature="e#24760#24761#0" expanded="true" />
+            <element signature="e#24781#24782#0" expanded="true" />
+            <element signature="e#24849#24850#0" expanded="true" />
+            <element signature="e#24871#24872#0" expanded="true" />
+            <element signature="e#25031#25032#0" expanded="true" />
+            <element signature="e#25057#25058#0" expanded="true" />
+            <element signature="e#25111#25112#0" expanded="true" />
+            <element signature="e#25138#25139#0" expanded="true" />
+            <element signature="e#25302#25303#0" expanded="true" />
+            <element signature="e#25320#25321#0" expanded="true" />
+            <element signature="e#25385#25386#0" expanded="true" />
+            <element signature="e#25404#25405#0" expanded="true" />
+            <element signature="e#25584#25585#0" expanded="true" />
+            <element signature="e#25606#25607#0" expanded="true" />
+            <element signature="e#25675#25676#0" expanded="true" />
+            <element signature="e#25698#25699#0" expanded="true" />
+            <element signature="e#25935#25936#0" expanded="true" />
+            <element signature="e#25972#25973#0" expanded="true" />
+            <element signature="e#26035#26036#0" expanded="true" />
+            <element signature="e#26073#26074#0" expanded="true" />
+            <element signature="e#26336#26337#0" expanded="true" />
+            <element signature="e#26381#26382#0" expanded="true" />
+            <element signature="e#26452#26453#0" expanded="true" />
+            <element signature="e#26498#26499#0" expanded="true" />
+            <element signature="e#26674#26675#0" expanded="true" />
+            <element signature="e#26695#26696#0" expanded="true" />
+            <element signature="e#26763#26764#0" expanded="true" />
+            <element signature="e#26785#26786#0" expanded="true" />
+            <element signature="e#26987#26988#0" expanded="true" />
+            <element signature="e#27012#27013#0" expanded="true" />
+            <element signature="e#27088#27089#0" expanded="true" />
+            <element signature="e#27114#27115#0" expanded="true" />
+            <element signature="e#27240#27241#0" expanded="true" />
+            <element signature="e#27259#27260#0" expanded="true" />
+            <element signature="e#27304#27305#0" expanded="true" />
+            <element signature="e#27324#27325#0" expanded="true" />
+            <element signature="e#27502#27503#0" expanded="true" />
+            <element signature="e#27530#27531#0" expanded="true" />
+            <element signature="e#27584#27585#0" expanded="true" />
+            <element signature="e#27613#27614#0" expanded="true" />
+            <element signature="e#27769#27770#0" expanded="true" />
+            <element signature="e#27795#27796#0" expanded="true" />
+            <element signature="e#27847#27848#0" expanded="true" />
+            <element signature="e#27874#27875#0" expanded="true" />
+            <element signature="e#28010#28011#0" expanded="true" />
+            <element signature="e#28031#28032#0" expanded="true" />
+            <element signature="e#28078#28079#0" expanded="true" />
+            <element signature="e#28100#28101#0" expanded="true" />
+            <element signature="e#28275#28276#0" expanded="true" />
+            <element signature="e#28309#28310#0" expanded="true" />
+            <element signature="e#28369#28370#0" expanded="true" />
+            <element signature="e#28404#28405#0" expanded="true" />
+            <element signature="e#28600#28601#0" expanded="true" />
+            <element signature="e#28635#28636#0" expanded="true" />
+            <element signature="e#28696#28697#0" expanded="true" />
+            <element signature="e#28732#28733#0" expanded="true" />
+            <element signature="e#28884#28885#0" expanded="true" />
+            <element signature="e#28909#28910#0" expanded="true" />
+            <element signature="e#28960#28961#0" expanded="true" />
+            <element signature="e#28986#28987#0" expanded="true" />
+            <element signature="e#29192#29193#0" expanded="true" />
+            <element signature="e#29218#29219#0" expanded="true" />
+            <element signature="e#29295#29296#0" expanded="true" />
+            <element signature="e#29322#29323#0" expanded="true" />
+            <element signature="e#29484#29485#0" expanded="true" />
+            <element signature="e#29508#29509#0" expanded="true" />
+            <element signature="e#29558#29559#0" expanded="true" />
+            <element signature="e#29583#29584#0" expanded="true" />
+            <element signature="e#29791#29792#0" expanded="true" />
+            <element signature="e#29817#29818#0" expanded="true" />
+            <element signature="e#29895#29896#0" expanded="true" />
+            <element signature="e#29922#29923#0" expanded="true" />
+            <element signature="e#30093#30094#0" expanded="true" />
+            <element signature="e#30116#30117#0" expanded="true" />
+            <element signature="e#30168#30169#0" expanded="true" />
+            <element signature="e#30192#30193#0" expanded="true" />
+            <element signature="e#30380#30381#0" expanded="true" />
+            <element signature="e#30410#30411#0" expanded="true" />
+            <element signature="e#30466#30467#0" expanded="true" />
+            <element signature="e#30497#30498#0" expanded="true" />
+            <element signature="e#30650#30651#0" expanded="true" />
+            <element signature="e#30673#30674#0" expanded="true" />
+            <element signature="e#30723#30724#0" expanded="true" />
+            <element signature="e#30747#30748#0" expanded="true" />
+            <element signature="e#30836#30837#0" expanded="true" />
+            <element signature="e#30866#30867#0" expanded="true" />
+            <element signature="e#30923#30924#0" expanded="true" />
+            <element signature="e#30954#30955#0" expanded="true" />
+            <element signature="e#31173#31174#0" expanded="true" />
+            <element signature="e#31215#31216#0" expanded="true" />
+            <element signature="e#31740#31741#0" expanded="true" />
+            <element signature="e#31800#31801#0" expanded="true" />
+            <element signature="e#32004#32005#0" expanded="true" />
+            <element signature="e#32027#32028#0" expanded="true" />
+            <element signature="e#32106#32107#0" expanded="true" />
+            <element signature="e#32130#32131#0" expanded="true" />
+            <element signature="e#32350#32351#0" expanded="true" />
+            <element signature="e#32381#32382#0" expanded="true" />
+            <element signature="e#32459#32460#0" expanded="true" />
+            <element signature="e#32491#32492#0" expanded="true" />
+            <element signature="e#32719#32720#0" expanded="true" />
+            <element signature="e#32752#32753#0" expanded="true" />
+            <element signature="e#32832#32833#0" expanded="true" />
+            <element signature="e#32866#32867#0" expanded="true" />
+            <element signature="e#33050#33051#0" expanded="true" />
+            <element signature="e#33082#33083#0" expanded="true" />
+            <element signature="e#33140#33141#0" expanded="true" />
+            <element signature="e#33173#33174#0" expanded="true" />
+            <element signature="e#33391#33392#0" expanded="true" />
+            <element signature="e#33420#33421#0" expanded="true" />
+            <element signature="e#33475#33476#0" expanded="true" />
+            <element signature="e#33505#33506#0" expanded="true" />
+            <element signature="e#33685#33686#0" expanded="true" />
+            <element signature="e#33716#33717#0" expanded="true" />
+            <element signature="e#33773#33774#0" expanded="true" />
+            <element signature="e#33805#33806#0" expanded="true" />
+            <element signature="e#33993#33994#0" expanded="true" />
+            <element signature="e#34026#34027#0" expanded="true" />
+            <element signature="e#34085#34086#0" expanded="true" />
+            <element signature="e#34119#34120#0" expanded="true" />
+            <element signature="e#34275#34276#0" expanded="true" />
+            <element signature="e#34301#34302#0" expanded="true" />
+            <element signature="e#34353#34354#0" expanded="true" />
+            <element signature="e#34380#34381#0" expanded="true" />
+            <element signature="e#34560#34561#0" expanded="true" />
+            <element signature="e#34591#34592#0" expanded="true" />
+            <element signature="e#34648#34649#0" expanded="true" />
+            <element signature="e#34680#34681#0" expanded="true" />
+            <element signature="e#34868#34869#0" expanded="true" />
+            <element signature="e#34901#34902#0" expanded="true" />
+            <element signature="e#34960#34961#0" expanded="true" />
+            <element signature="e#34994#34995#0" expanded="true" />
+            <element signature="e#35220#35221#0" expanded="true" />
+            <element signature="e#35258#35259#0" expanded="true" />
+            <element signature="e#35322#35323#0" expanded="true" />
+            <element signature="e#35361#35362#0" expanded="true" />
+            <element signature="e#35557#35558#0" expanded="true" />
+            <element signature="e#35592#35593#0" expanded="true" />
+            <element signature="e#35653#35654#0" expanded="true" />
+            <element signature="e#35689#35690#0" expanded="true" />
+            <element signature="e#35885#35886#0" expanded="true" />
+            <element signature="e#35907#35908#0" expanded="true" />
+            <element signature="e#35984#35985#0" expanded="true" />
+            <element signature="e#36007#36008#0" expanded="true" />
+            <element signature="e#36221#36222#0" expanded="true" />
+            <element signature="e#36247#36248#0" expanded="true" />
+            <element signature="e#36305#36306#0" expanded="true" />
+            <element signature="e#36332#36333#0" expanded="true" />
+            <element signature="e#36491#36492#0" expanded="true" />
+            <element signature="e#36512#36513#0" expanded="true" />
+            <element signature="e#36560#36561#0" expanded="true" />
+            <element signature="e#36582#36583#0" expanded="true" />
+            <element signature="e#36740#36741#0" expanded="true" />
+            <element signature="e#36763#36764#0" expanded="true" />
+            <element signature="e#36812#36813#0" expanded="true" />
+            <element signature="e#36836#36837#0" expanded="true" />
+            <element signature="e#36995#36996#0" expanded="true" />
+            <element signature="e#37016#37017#0" expanded="true" />
+            <element signature="e#37071#37072#0" expanded="true" />
+            <element signature="e#37093#37094#0" expanded="true" />
+            <element signature="e#37247#37248#0" expanded="true" />
+            <element signature="e#37272#37273#0" expanded="true" />
+            <element signature="e#37323#37324#0" expanded="true" />
+            <element signature="e#37349#37350#0" expanded="true" />
+            <element signature="e#37575#37576#0" expanded="true" />
+            <element signature="e#37608#37609#0" expanded="true" />
+            <element signature="e#37688#37689#0" expanded="true" />
+            <element signature="e#37722#37723#0" expanded="true" />
+            <element signature="e#37859#37860#0" expanded="true" />
+            <element signature="e#37879#37880#0" expanded="true" />
+            <element signature="e#37925#37926#0" expanded="true" />
+            <element signature="e#37946#37947#0" expanded="true" />
+            <element signature="e#38087#38088#0" expanded="true" />
+            <element signature="e#38108#38109#0" expanded="true" />
+            <element signature="e#38155#38156#0" expanded="true" />
+            <element signature="e#38177#38178#0" expanded="true" />
+            <element signature="e#38391#38392#0" expanded="true" />
+            <element signature="e#38417#38418#0" expanded="true" />
+            <element signature="e#38498#38499#0" expanded="true" />
+            <element signature="e#38525#38526#0" expanded="true" />
+            <element signature="e#38682#38683#0" expanded="true" />
+            <element signature="e#38706#38707#0" expanded="true" />
+            <element signature="e#38757#38758#0" expanded="true" />
+            <element signature="e#38782#38783#0" expanded="true" />
+            <element signature="e#38942#38943#0" expanded="true" />
+            <element signature="e#38967#38968#0" expanded="true" />
+            <element signature="e#39019#39020#0" expanded="true" />
+            <element signature="e#39045#39046#0" expanded="true" />
+            <element signature="e#39209#39210#0" expanded="true" />
+            <element signature="e#39235#39236#0" expanded="true" />
+            <element signature="e#39288#39289#0" expanded="true" />
+            <element signature="e#39315#39316#0" expanded="true" />
+            <element signature="e#39467#39468#0" expanded="true" />
+            <element signature="e#39490#39491#0" expanded="true" />
+            <element signature="e#39540#39541#0" expanded="true" />
+            <element signature="e#39564#39565#0" expanded="true" />
+            <element signature="e#39716#39717#0" expanded="true" />
+            <element signature="e#39739#39740#0" expanded="true" />
+            <element signature="e#39789#39790#0" expanded="true" />
+            <element signature="e#39813#39814#0" expanded="true" />
+            <element signature="e#39969#39970#0" expanded="true" />
+            <element signature="e#39993#39994#0" expanded="true" />
+            <element signature="e#40044#40045#0" expanded="true" />
+            <element signature="e#40069#40070#0" expanded="true" />
+            <element signature="e#40247#40248#0" expanded="true" />
+            <element signature="e#40276#40277#0" expanded="true" />
+            <element signature="e#40332#40333#0" expanded="true" />
+            <element signature="e#40362#40363#0" expanded="true" />
+            <element signature="e#40606#40607#0" expanded="true" />
+            <element signature="e#40628#40629#0" expanded="true" />
+            <element signature="e#40677#40678#0" expanded="true" />
+            <element signature="e#40700#40701#0" expanded="true" />
+            <element signature="e#40768#40769#0" expanded="true" />
+            <element signature="e#40787#40788#0" expanded="true" />
+            <element signature="e#40833#40834#0" expanded="true" />
+            <element signature="e#40853#40854#0" expanded="true" />
+            <element signature="e#40922#40923#0" expanded="true" />
+            <element signature="e#40942#40943#0" expanded="true" />
+            <element signature="e#40989#40990#0" expanded="true" />
+            <element signature="e#41010#41011#0" expanded="true" />
+            <element signature="e#41078#41079#0" expanded="true" />
+            <element signature="e#41102#41103#0" expanded="true" />
+            <element signature="e#41152#41153#0" expanded="true" />
+            <element signature="e#41177#41178#0" expanded="true" />
+            <element signature="e#41247#41248#0" expanded="true" />
+            <element signature="e#41272#41273#0" expanded="true" />
+            <element signature="e#41323#41324#0" expanded="true" />
+            <element signature="e#41349#41350#0" expanded="true" />
+            <element signature="e#41413#41414#0" expanded="true" />
+            <element signature="e#41435#41436#0" expanded="true" />
+            <element signature="e#41483#41484#0" expanded="true" />
+            <element signature="e#41506#41507#0" expanded="true" />
+            <element signature="e#41585#41586#0" expanded="true" />
+            <element signature="e#41611#41612#0" expanded="true" />
+            <element signature="e#41663#41664#0" expanded="true" />
+            <element signature="e#41690#41691#0" expanded="true" />
+            <element signature="e#41767#41768#0" expanded="true" />
+            <element signature="e#41792#41793#0" expanded="true" />
+            <element signature="e#41843#41844#0" expanded="true" />
+            <element signature="e#41869#41870#0" expanded="true" />
+            <element signature="e#41976#41977#0" expanded="true" />
+            <element signature="e#42006#42007#0" expanded="true" />
+            <element signature="e#42072#42073#0" expanded="true" />
+            <element signature="e#42103#42104#0" expanded="true" />
+            <element signature="e#42174#42175#0" expanded="true" />
+            <element signature="e#42196#42197#0" expanded="true" />
+            <element signature="e#42244#42245#0" expanded="true" />
+            <element signature="e#42267#42268#0" expanded="true" />
+            <element signature="e#42346#42347#0" expanded="true" />
+            <element signature="e#42372#42373#0" expanded="true" />
+            <element signature="e#42424#42425#0" expanded="true" />
+            <element signature="e#42451#42452#0" expanded="true" />
+            <element signature="e#42522#42523#0" expanded="true" />
+            <element signature="e#42544#42545#0" expanded="true" />
+            <element signature="e#42592#42593#0" expanded="true" />
+            <element signature="e#42615#42616#0" expanded="true" />
+            <element signature="e#42688#42689#0" expanded="true" />
+            <element signature="e#42711#42712#0" expanded="true" />
+            <element signature="e#42760#42761#0" expanded="true" />
+            <element signature="e#42784#42785#0" expanded="true" />
+            <element signature="e#42855#42856#0" expanded="true" />
+            <element signature="e#42877#42878#0" expanded="true" />
+            <element signature="e#42925#42926#0" expanded="true" />
+            <element signature="e#42948#42949#0" expanded="true" />
+            <element signature="e#43033#43034#0" expanded="true" />
+            <element signature="e#43061#43062#0" expanded="true" />
+            <element signature="e#43116#43117#0" expanded="true" />
+            <element signature="e#43145#43146#0" expanded="true" />
+            <element signature="e#43491#43492#0" expanded="true" />
+            <element signature="e#43574#43575#0" expanded="true" />
+            <element signature="e#44224#44225#0" expanded="true" />
+            <element signature="e#44304#44305#0" expanded="true" />
+            <element signature="e#45012#45013#0" expanded="true" />
+            <element signature="e#45096#45097#0" expanded="true" />
+            <element signature="e#45440#45441#0" expanded="true" />
+            <element signature="e#45521#45522#0" expanded="true" />
+            <element signature="e#45859#45860#0" expanded="true" />
+            <element signature="e#45941#45942#0" expanded="true" />
+            <element signature="e#46283#46284#0" expanded="true" />
+            <element signature="e#46366#46367#0" expanded="true" />
+            <element signature="e#47183#47184#0" expanded="true" />
+            <element signature="e#47265#47266#0" expanded="true" />
+            <element signature="e#47621#47622#0" expanded="true" />
+            <element signature="e#47702#47703#0" expanded="true" />
+            <element signature="e#48511#48512#0" expanded="true" />
+            <element signature="e#48593#48594#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11592" max-vertical-offset="17357">
-          <caret line="709" column="38" selection-start-line="709" selection-start-column="38" selection-end-line="709" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.2523292" vertical-offset="11626" max-vertical-offset="17391">
+          <caret line="711" column="38" selection-start-line="711" selection-start-column="38" selection-end-line="711" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5163044" vertical-offset="4146" max-vertical-offset="11798">
-          <caret line="489" column="5" selection-start-line="489" selection-start-column="5" selection-end-line="489" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.2523292" vertical-offset="4282" max-vertical-offset="11968">
+          <caret line="477" column="134" selection-start-line="477" selection-start-column="134" selection-end-line="477" selection-end-column="134" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/OpenLiveStreamResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1003">
+          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/GetPlaybackInfoResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="308" max-vertical-offset="1326">
+          <caret line="57" column="61" selection-start-line="57" selection-start-column="61" selection-end-line="57" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.22828594" vertical-offset="2422" max-vertical-offset="4284">
+          <caret line="148" column="22" selection-start-line="148" selection-start-column="22" selection-end-line="148" selection-end-column="22" />
           <folding />
         </state>
       </provider>

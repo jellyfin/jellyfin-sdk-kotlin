@@ -100,23 +100,23 @@ public class ClientCapabilities
 		SupportedLiveMediaTypes = value;
 	}
 
-	private String AppUrl;
-	public final String getAppUrl()
+	private String Url;
+	public final String getUrl()
 	{
-		return AppUrl;
+		return Url;
 	}
-	public final void setAppUrl(String value)
+	public final void setUrl(String value)
 	{
-		AppUrl = value;
+		Url = value;
 	}
-	private String AppImageUrl;
-	public final String getAppImageUrl()
+	private String ImageUrl;
+	public final String getImageUrl()
 	{
-		return AppImageUrl;
+		return ImageUrl;
 	}
-	public final void setAppImageUrl(String value)
+	public final void setImageUrl(String value)
 	{
-		AppImageUrl = value;
+		ImageUrl = value;
 	}
 
 	public ClientCapabilities()

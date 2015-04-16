@@ -356,7 +356,7 @@ public class StreamInfo
 		}
 
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>();
-		for (NameValuePair pair : BuildParams(this, accessToken))
+		for (NameValuePair pair : BuildParams(this, accessToken, false))
 		{
 			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(pair.getValue()))
 			{
@@ -424,7 +424,7 @@ public class StreamInfo
 	{
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>();
 
-		for (NameValuePair pair : BuildParams(item, accessToken))
+		for (NameValuePair pair : BuildParams(item, accessToken, true))
 		{
 			list.add(pair.getValue());
 		}
@@ -432,7 +432,7 @@ public class StreamInfo
 		return String.format("Params=%1$s", tangible.DotNetToJavaStringHelper.join(";", list.toArray(new String[0])));
 	}
 
-	private static java.util.ArrayList<NameValuePair> BuildParams(StreamInfo item, String accessToken)
+	private static java.util.ArrayList<NameValuePair> BuildParams(StreamInfo item, String accessToken, boolean isDlna)
 	{
 		java.util.ArrayList<NameValuePair> list = new java.util.ArrayList<NameValuePair>();
 
@@ -467,7 +467,17 @@ public class StreamInfo
 
 		list.add(new NameValuePair("Level", item.getVideoLevel() != null ? StringHelper.ToStringCultureInvariant(item.getVideoLevel()) : ""));
 
-		list.add(new NameValuePair("ClientTime", item.getIsDirectStream() ? "" : String.valueOf(new java.util.Date().getTime())));
+		if (isDlna)
+		{
+			// The player may see it as separate resources due to url differences
+			// And then try to request more than one at playback
+			list.add(new NameValuePair("ClientTime", ""));
+		}
+		else
+		{
+			list.add(new NameValuePair("ClientTime", item.getIsDirectStream() ? "" : String.valueOf(new java.util.Date().getTime())));
+		}
+
 		list.add(new NameValuePair("MaxRefFrames", item.getMaxRefFrames() != null ? StringHelper.ToStringCultureInvariant(item.getMaxRefFrames()) : ""));
 		list.add(new NameValuePair("MaxVideoBitDepth", item.getMaxVideoBitDepth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxVideoBitDepth()) : ""));
 		String tempVar6 = item.getVideoProfile();

@@ -286,6 +286,25 @@ public class UserPolicy
 		EnablePublicSharing = value;
 	}
 
+	private String[] BlockedMediaFolders;
+	public final String[] getBlockedMediaFolders()
+	{
+		return BlockedMediaFolders;
+	}
+	public final void setBlockedMediaFolders(String[] value)
+	{
+		BlockedMediaFolders = value;
+	}
+	private String[] BlockedChannels;
+	public final String[] getBlockedChannels()
+	{
+		return BlockedChannels;
+	}
+	public final void setBlockedChannels(String[] value)
+	{
+		BlockedChannels = value;
+	}
+
 	public UserPolicy()
 	{
 		setEnableSync(true);

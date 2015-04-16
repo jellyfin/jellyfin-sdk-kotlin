@@ -176,6 +176,15 @@ public class UserConfiguration
 	{
 		LatestItemsExcludes = value;
 	}
+	private String[] PlainFolderViews;
+	public final String[] getPlainFolderViews()
+	{
+		return PlainFolderViews;
+	}
+	public final void setPlainFolderViews(String[] value)
+	{
+		PlainFolderViews = value;
+	}
 
 	private boolean HidePlayedInLatest;
 	public final boolean getHidePlayedInLatest()
@@ -200,6 +209,7 @@ public class UserConfiguration
 		setDisplayChannelsWithinViews(new String[] { });
 
 		setExcludeFoldersFromGrouping(new String[] { });
+		setPlainFolderViews(new String[] { });
 		setDisplayCollectionsView(true);
 
 		setIncludeTrailersInSuggestions(true);

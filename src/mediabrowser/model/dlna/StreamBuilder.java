@@ -555,9 +555,7 @@ public class StreamBuilder
 		{
 			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams))
 			{
-				String tempVar4 = profile.getName();
-				String tempVar5 = mediaSource.getPath();
-				_logger.Debug("Profile: {0}, DirectPlay=false. Reason=VideoContainerProfile.{1} Path: {2}", (tempVar4 != null) ? tempVar4 : "Unknown Profile", i.getProperty(), (tempVar5 != null) ? tempVar5 : "Unknown path");
+				LogConditionFailure(profile, "VideoContainerProfile", i, mediaSource);
 
 				return null;
 			}
@@ -567,9 +565,9 @@ public class StreamBuilder
 
 		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(videoCodec))
 		{
-			String tempVar6 = profile.getName();
-			String tempVar7 = mediaSource.getPath();
-			_logger.Debug("Profile: {0}, DirectPlay=false. Reason=Unknown video codec. Path: {1}", (tempVar6 != null) ? tempVar6 : "Unknown Profile", (tempVar7 != null) ? tempVar7 : "Unknown path");
+			String tempVar4 = profile.getName();
+			String tempVar5 = mediaSource.getPath();
+			_logger.Debug("Profile: {0}, DirectPlay=false. Reason=Unknown video codec. Path: {1}", (tempVar4 != null) ? tempVar4 : "Unknown Profile", (tempVar5 != null) ? tempVar5 : "Unknown path");
 
 			return null;
 		}
@@ -590,9 +588,7 @@ public class StreamBuilder
 		{
 			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams))
 			{
-				String tempVar8 = profile.getName();
-				String tempVar9 = mediaSource.getPath();
-				_logger.Debug("Profile: {0}, DirectPlay=false. Reason=VideoCodecProfile.{1} Path: {2}", (tempVar8 != null) ? tempVar8 : "Unknown Profile", i.getProperty(), (tempVar9 != null) ? tempVar9 : "Unknown path");
+				LogConditionFailure(profile, "VideoCodecProfile", i, mediaSource);
 
 				return null;
 			}
@@ -604,9 +600,9 @@ public class StreamBuilder
 
 			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec))
 			{
-				String tempVar10 = profile.getName();
-				String tempVar11 = mediaSource.getPath();
-				_logger.Debug("Profile: {0}, DirectPlay=false. Reason=Unknown audio codec. Path: {1}", (tempVar10 != null) ? tempVar10 : "Unknown Profile", (tempVar11 != null) ? tempVar11 : "Unknown path");
+				String tempVar6 = profile.getName();
+				String tempVar7 = mediaSource.getPath();
+				_logger.Debug("Profile: {0}, DirectPlay=false. Reason=Unknown audio codec. Path: {1}", (tempVar6 != null) ? tempVar6 : "Unknown Profile", (tempVar7 != null) ? tempVar7 : "Unknown path");
 
 				return null;
 			}
@@ -628,9 +624,7 @@ public class StreamBuilder
 				Boolean isSecondaryAudio = audioStream == null ? null : mediaSource.IsSecondaryAudio(audioStream);
 				if (!conditionProcessor.IsVideoAudioConditionSatisfied(i, audioChannels, audioBitrate, audioProfile, isSecondaryAudio))
 				{
-					String tempVar12 = profile.getName();
-					String tempVar13 = mediaSource.getPath();
-					_logger.Debug("Profile: {0}, DirectPlay=false. Reason=VideoAudioCodecProfile.{1} Path: {2}", (tempVar12 != null) ? tempVar12 : "Unknown Profile", i.getProperty(), (tempVar13 != null) ? tempVar13 : "Unknown path");
+					LogConditionFailure(profile, "VideoAudioCodecProfile", i, mediaSource);
 
 					return null;
 				}
@@ -665,6 +659,14 @@ public class StreamBuilder
 		}
 
 		return null;
+	}
+
+	private void LogConditionFailure(DeviceProfile profile, String type, ProfileCondition condition, MediaSourceInfo mediaSource)
+	{
+		String tempVar = profile.getName();
+		String tempVar2 = condition.getValue();
+		String tempVar3 = mediaSource.getPath();
+		_logger.Debug("Profile: {0}, DirectPlay=false. Reason={1}.{2} Condition: {3}. ConditionValue: {4}. IsRequired: {5}. Path: {6}", type, (tempVar != null) ? tempVar : "Unknown Profile", condition.getProperty(), condition.getCondition(), (tempVar2 != null) ? tempVar2 : "", condition.getIsRequired(), (tempVar3 != null) ? tempVar3 : "Unknown path");
 	}
 
 	private boolean IsEligibleForDirectPlay(MediaSourceInfo item, Integer maxBitrate, MediaStream subtitleStream, VideoOptions options)

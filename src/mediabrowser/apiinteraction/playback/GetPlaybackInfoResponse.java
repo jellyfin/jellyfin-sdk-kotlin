@@ -1,11 +1,9 @@
 package mediabrowser.apiinteraction.playback;
 
-import android.media.session.MediaController;
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.Response;
 import mediabrowser.model.dlna.*;
 import mediabrowser.model.mediainfo.LiveStreamRequest;
-import mediabrowser.model.mediainfo.LiveStreamResponse;
 import mediabrowser.model.mediainfo.PlaybackInfoResponse;
 
 /**
@@ -62,8 +60,9 @@ public class GetPlaybackInfoResponse extends Response<PlaybackInfoResponse> {
             LiveStreamRequest request = new LiveStreamRequest(options);
             request.setUserId(apiClient.getCurrentUserId());
             request.setOpenToken(streamInfo.getMediaSource().getOpenToken());
+            request.setPlaySessionId(playbackInfo.getPlaySessionId());
 
-            apiClient.OpenLiveStream(request, new OpenLiveStreamResponse(streamBuilder, playbackManager, options, !isVideo, response));
+            apiClient.OpenLiveStream(request, new OpenLiveStreamResponse(streamBuilder, playbackManager, options, !isVideo, response, playbackInfo));
         }
         else{
 
