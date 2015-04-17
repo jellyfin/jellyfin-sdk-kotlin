@@ -5,6 +5,7 @@ import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.apiinteraction.Response;
 import mediabrowser.apiinteraction.device.IDevice;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
+import mediabrowser.apiinteraction.sync.data.NullAssetManager;
 import mediabrowser.model.dlna.*;
 import mediabrowser.model.dto.MediaSourceInfo;
 import mediabrowser.model.entities.MediaStream;
@@ -40,6 +41,14 @@ public class PlaybackManager {
     public PlaybackManager(ILocalAssetManager localAssetManager, IDevice device, ILogger logger)
     {
         this.localAssetManager = localAssetManager;
+        this.device = device;
+        this.logger = logger;
+        this.localPlayer = new LocalPlayer();
+    }
+
+    public PlaybackManager(IDevice device, ILogger logger)
+    {
+        this.localAssetManager = new NullAssetManager();
         this.device = device;
         this.logger = logger;
         this.localPlayer = new LocalPlayer();

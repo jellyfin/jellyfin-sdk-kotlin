@@ -272,7 +272,7 @@ public class StreamBuilder
 
 			// The profile describes what the device supports
 			// If device requirements are satisfied then allow both direct stream and direct play
-			if (IsAudioEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options)))
+			if (item.getSupportsDirectPlay() && IsAudioEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options)))
 			{
 				playMethods.add(PlayMethod.DirectPlay);
 			}
@@ -631,7 +631,7 @@ public class StreamBuilder
 			}
 		}
 
-		if (isEligibleForDirectPlay)
+		if (isEligibleForDirectPlay && mediaSource.getSupportsDirectPlay())
 		{
 			if (mediaSource.getProtocol() == MediaProtocol.Http)
 			{
@@ -650,12 +650,9 @@ public class StreamBuilder
 			}
 		}
 
-		if (isEligibleForDirectStream)
+		if (isEligibleForDirectStream && mediaSource.getSupportsDirectStream())
 		{
-			if (mediaSource.getSupportsDirectStream())
-			{
-				return PlayMethod.DirectStream;
-			}
+			return PlayMethod.DirectStream;
 		}
 
 		return null;
