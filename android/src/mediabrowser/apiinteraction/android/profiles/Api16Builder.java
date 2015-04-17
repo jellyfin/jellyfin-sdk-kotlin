@@ -68,19 +68,20 @@ public class Api16Builder {
         ArrayList<ProfileCondition> conditions = new ArrayList<ProfileCondition>();
 
         String[] videoProfiles = GetVideoProfiles(codecCapabilities);
-        if (videoProfiles.length > 0){
-            // Only do this for h264
-            if (StringHelper.EqualsIgnoreCase(profile.getCodec(), "h264")){
+        int maxLevel = getMaxLevel(codecCapabilities);
+
+        if (StringHelper.EqualsIgnoreCase(profile.getCodec(), "h264")){
+            if (videoProfiles.length > 0){
                 conditions.add(new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, tangible.DotNetToJavaStringHelper.join("|", videoProfiles)));
             }
-        }
-
-        int maxLevel = getMaxLevel(codecCapabilities);
-        if (maxLevel  > 0){
-            // Only do this for h264
-            if (StringHelper.EqualsIgnoreCase(profile.getCodec(), "h264")){
-                conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, String.valueOf(maxLevel)));
+            else{
+                conditions.add(new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, "high|main|baseline|constrained baseline"));
             }
+
+            if (maxLevel <= 0){
+                maxLevel = 41;
+            }
+            conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, String.valueOf(maxLevel)));
         }
 
         for (ProfileCondition existing : profile.getConditions()){
