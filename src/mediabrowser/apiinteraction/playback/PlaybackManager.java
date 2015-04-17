@@ -5,7 +5,6 @@ import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.apiinteraction.Response;
 import mediabrowser.apiinteraction.device.IDevice;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
-import mediabrowser.apiinteraction.sync.data.NullAssetManager;
 import mediabrowser.model.dlna.*;
 import mediabrowser.model.dto.MediaSourceInfo;
 import mediabrowser.model.entities.MediaStream;
@@ -43,23 +42,7 @@ public class PlaybackManager {
         this.localAssetManager = localAssetManager;
         this.device = device;
         this.logger = logger;
-        this.localPlayer = new NullLocalPlayer();
-    }
-
-    public PlaybackManager(IDevice device, ILogger logger, ILocalPlayer localPlayer)
-    {
-        this.localAssetManager = new NullAssetManager();
-        this.device = device;
-        this.logger = logger;
-        this.localPlayer = localPlayer;
-    }
-
-    public PlaybackManager(IDevice device, ILogger logger)
-    {
-        this.localAssetManager = new NullAssetManager();
-        this.device = device;
-        this.logger = logger;
-        this.localPlayer = new NullLocalPlayer();
+        this.localPlayer = new LocalPlayer();
     }
 
     public ArrayList<MediaStream> getPrePlaybackSelectableAudioStreams(String serverId, VideoOptions options)

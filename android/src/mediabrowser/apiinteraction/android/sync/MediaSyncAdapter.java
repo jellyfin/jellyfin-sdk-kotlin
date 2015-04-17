@@ -9,8 +9,6 @@ import mediabrowser.apiinteraction.android.sync.data.AndroidAssetManager;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.apiinteraction.sync.MultiServerSync;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
-import mediabrowser.apiinteraction.sync.data.LocalAssetManager;
-import mediabrowser.apiinteraction.sync.data.NullAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationTokenSource;
 import mediabrowser.logging.ConsoleLogger;
 import mediabrowser.model.logging.ILogger;

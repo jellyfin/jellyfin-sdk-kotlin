@@ -99,7 +99,7 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
         String[] args = new String[]{id};
 
         try (SQLiteDatabase db = getReadableDatabase()){
-            Cursor cursor = db.query(true, "Item", cols, where, args, null, null, null, null);
+            Cursor cursor = db.query(true, "Items", cols, where, args, null, null, null, null);
 
             if (cursor != null) {
                 while (cursor.moveToNext()){

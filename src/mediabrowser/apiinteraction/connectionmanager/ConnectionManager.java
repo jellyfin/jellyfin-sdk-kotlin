@@ -245,6 +245,7 @@ public class ConnectionManager implements IConnectionManager {
         if (mode == ConnectionMode.Local){
 
             if (!isLocalNetworkAvailable){
+                logger.Debug("Skipping local connection test because local network is unavailable");
                 skipTest = true;
             }
             enableRetry = true;
@@ -253,8 +254,12 @@ public class ConnectionManager implements IConnectionManager {
 
         else if (mode == ConnectionMode.Manual){
 
-            if (StringHelper.EqualsIgnoreCase(address, server.getLocalAddress()) ||
-                    StringHelper.EqualsIgnoreCase(address, server.getRemoteAddress())){
+            if (StringHelper.EqualsIgnoreCase(address, server.getLocalAddress())){
+                logger.Debug("Skipping manual connection test because the address is the same as the local address");
+                skipTest = true;
+            }
+            else if (StringHelper.EqualsIgnoreCase(address, server.getRemoteAddress())){
+                logger.Debug("Skipping manual connection test because the address is the same as the remote address");
                 skipTest = true;
             }
         }
@@ -581,6 +586,12 @@ public class ConnectionManager implements IConnectionManager {
         for(ServerInfo newServer : connectServers){
 
             credentials.AddOrUpdateServer(newServer);
+        }
+
+        for(ServerInfo newServer : foundServers){
+
+            ServerInfo existing = credentials.getServer(newServer.getId());
+            existing.setLastConnectionMode(ConnectionMode.Local);
         }
 
         ArrayList<ServerInfo> cleanList = new ArrayList<ServerInfo>();
