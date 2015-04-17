@@ -7,48 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b626835-6518-4586-bf6c-5bbba32974d2" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\AndroidApiClient$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\AndroidApiClient.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\AndroidConnectionManager.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\AndroidCredentialProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\AndroidDevice.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\AndroidNetworkConnection.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\FindServersRunnable.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\GsonJsonSerializer.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\OkHttpStack.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\UploadFileRunnable.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\VolleyErrorListener.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\VolleyHttpClient.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\VolleyStringListener.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\VolleyStringRequest.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\images\DiskLruImageCache.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\images\ImageCacheManager$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\images\ImageCacheManager$CacheType.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\images\ImageCacheManager.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\images\LruBitmapCache.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\profiles\AndroidProfile.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\profiles\Api16Builder.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\profiles\Api21Builder.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\Authenticator.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\AuthenticatorService.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\ISyncLoggerFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\MediaContentProvider.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\MediaSyncAdapter.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\MediaSyncService.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\MultiServerSyncProgress.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\OnDemandSync.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\PeriodicSync.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\data\AndroidAssetManager.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\data\AndroidFileRepository.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\data\AndroidImageFileRepository.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\data\ItemRepository.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\data\UserActionRepository.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\out\classes\Production\android\mediabrowser\apiinteraction\android\sync\data\UserRepository.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/classes/Production/android/mediabrowser/apiinteraction/android/profiles/Api16Builder.class" afterPath="$PROJECT_DIR$/out/classes/Production/android/mediabrowser/apiinteraction/android/profiles/Api16Builder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.android.jar" afterPath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.android.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.jar" afterPath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/session/ClientCapabilities.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/session/ClientCapabilities.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java" afterPath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/Api16Builder.java" afterPath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/Api16Builder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MediaBrowser.ApiClient.Java.iws" />
@@ -80,7 +43,7 @@
         <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="4505">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,10 +71,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StreamBuilder.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StreamBuilder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30512422" vertical-offset="11575" max-vertical-offset="17340">
+            <state vertical-scroll-proportion="0.0" vertical-offset="11575" max-vertical-offset="17340">
               <caret line="712" column="13" selection-start-line="712" selection-start-column="13" selection-end-line="712" selection-end-column="13" />
               <folding />
             </state>
@@ -124,7 +87,8 @@
             <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="493">
               <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#374#375#0" expanded="false" />
+                <element signature="e#412#413#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -145,8 +109,8 @@
       <file leaf-file-name="Api21Builder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/Api21Builder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1632">
-              <caret line="68" column="14" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1632">
+              <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -155,18 +119,18 @@
       <file leaf-file-name="Api16Builder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/Api16Builder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1480" max-vertical-offset="6783">
-              <caret line="167" column="25" selection-start-line="167" selection-start-column="25" selection-end-line="167" selection-end-column="25" />
+            <state vertical-scroll-proportion="-16.62069" vertical-offset="776" max-vertical-offset="6783">
+              <caret line="81" column="29" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidProfile.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AndroidProfile.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1430" max-vertical-offset="2771">
-              <caret line="103" column="153" selection-start-line="103" selection-start-column="114" selection-end-line="103" selection-end-column="153" />
+            <state vertical-scroll-proportion="0.25581396" vertical-offset="1430" max-vertical-offset="2771">
+              <caret line="104" column="118" selection-start-line="104" selection-start-column="118" selection-end-line="104" selection-end-column="118" />
               <folding />
             </state>
           </provider>
@@ -177,7 +141,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="425">
               <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -235,12 +201,12 @@
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/mediasync/MediaSync.java" />
         <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/MediaSyncAdapter.java" />
         <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/sync/data/ItemRepository.java" />
-        <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java" />
-        <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/Api16Builder.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamInfoSorter.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamInfo.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java" />
+        <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/Api16Builder.java" />
+        <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java" />
       </list>
     </option>
   </component>
@@ -859,7 +825,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23476298" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23476298" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32996634" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -869,6 +835,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19266425" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21294206" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -878,7 +845,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21294206" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1076,7 +1042,6 @@
         <state vertical-scroll-proportion="0.2528824" vertical-offset="11435" max-vertical-offset="31586">
           <caret line="1225" column="36" selection-start-line="1225" selection-start-column="36" selection-end-line="1225" selection-end-column="36" />
           <folding>
-            <element signature="e#24840#24841#0" expanded="false" />
             <element signature="e#24862#24863#0" expanded="false" />
             <element signature="e#25102#25103#0" expanded="false" />
             <element signature="e#25129#25130#0" expanded="false" />
@@ -1342,7 +1307,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1352,7 +1317,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#374#375#0" expanded="false" />
+            <element signature="e#412#413#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1361,7 +1327,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
           <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1369,40 +1337,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7311" max-vertical-offset="11764">
           <caret line="464" column="46" selection-start-line="464" selection-start-column="39" selection-end-line="464" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/Api21Builder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1632">
-          <caret line="68" column="14" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1430" max-vertical-offset="2771">
-          <caret line="103" column="153" selection-start-line="103" selection-start-column="114" selection-end-line="103" selection-end-column="153" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/Api16Builder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1480" max-vertical-offset="6783">
-          <caret line="167" column="25" selection-start-line="167" selection-start-column="25" selection-end-line="167" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="4505">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1427,8 +1361,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30512422" vertical-offset="11575" max-vertical-offset="17340">
+        <state vertical-scroll-proportion="0.0" vertical-offset="11575" max-vertical-offset="17340">
           <caret line="712" column="13" selection-start-line="712" selection-start-column="13" selection-end-line="712" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/Api21Builder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1632">
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/Api16Builder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.62069" vertical-offset="776" max-vertical-offset="6783">
+          <caret line="81" column="29" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="4505">
+          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25581396" vertical-offset="1430" max-vertical-offset="2771">
+          <caret line="104" column="118" selection-start-line="104" selection-start-column="118" selection-end-line="104" selection-end-column="118" />
           <folding />
         </state>
       </provider>

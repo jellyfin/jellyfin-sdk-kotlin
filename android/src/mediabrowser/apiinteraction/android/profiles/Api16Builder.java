@@ -79,7 +79,7 @@ public class Api16Builder {
             }
 
             if (maxLevel <= 0){
-                maxLevel = 41;
+                maxLevel = 40;
             }
             conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, String.valueOf(maxLevel)));
         }

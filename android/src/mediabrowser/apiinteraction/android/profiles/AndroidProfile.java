@@ -102,7 +102,7 @@ public class AndroidProfile extends DefaultProfile
 		tempVar10.setConditions(new ProfileCondition[]
 				{
 						new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, "high|main|baseline|constrained baseline"),
-						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, "41"),
+						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, "40"),
 						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Width, "1920"),
 						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Height, "1080"),
 						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoBitDepth, "8"),
