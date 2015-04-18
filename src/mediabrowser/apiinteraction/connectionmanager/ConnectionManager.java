@@ -590,7 +590,7 @@ public class ConnectionManager implements IConnectionManager {
 
         for(ServerInfo newServer : foundServers){
 
-            ServerInfo existing = credentials.getServer(newServer.getId());
+            ServerInfo existing = credentials.GetServer(newServer.getId());
             existing.setLastConnectionMode(ConnectionMode.Local);
         }
 

@@ -2,8 +2,6 @@ package mediabrowser.model.apiclient;
 
 import mediabrowser.model.extensions.*;
 
-import java.util.ArrayList;
-
 public class ServerCredentials
 {
 	private java.util.ArrayList<ServerInfo> Servers;
@@ -135,17 +133,13 @@ public class ServerCredentials
 		return -1;
 	}
 
-	public ServerInfo getServer(String id){
-
-		ArrayList<ServerInfo> servers = Servers;
-
-		if (servers != null){
-			for (ServerInfo server : servers)
+	public final ServerInfo GetServer(String id)
+	{
+		for (ServerInfo server : getServers())
+		{
+			if (StringHelper.EqualsIgnoreCase(id, server.getId()))
 			{
-				if (StringHelper.EqualsIgnoreCase(id, server.getId()))
-				{
-					return server;
-				}
+				return server;
 			}
 		}
 
