@@ -10,6 +10,10 @@ import java.util.ArrayList;
 
 public class Api21Builder extends Api16Builder{
 
+    public Api21Builder(ProfileDefaults defaults) {
+        super(defaults);
+    }
+
     @Override
     protected void processCodecProfile(MediaCodecInfo codecInfo, String type, MediaCodecInfo.CodecCapabilities codecCapabilities, CodecProfile profile){
 

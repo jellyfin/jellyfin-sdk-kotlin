@@ -6,15 +6,18 @@ import mediabrowser.model.dlna.profiles.DefaultProfile;
 
 public class AndroidProfile extends DefaultProfile
 {
+	protected int DefaultH264Level;
+
 	public AndroidProfile()
 	{
-		this(true, true);
+		this(true, 40);
 	}
 
-	public AndroidProfile(boolean supportsHls, boolean supportsMpegDash)
+	public AndroidProfile(boolean supportsHls, int defaultH264Level)
 	{
 		setName("Android");
 
+		DefaultH264Level = defaultH264Level;
 		setMaxStaticBitrate(20000000);
 		setMaxStreamingBitrate(20000000);
 
@@ -37,10 +40,6 @@ public class AndroidProfile extends DefaultProfile
 		tempVar0.setContext(EncodingContext.Static);
 		transcodingProfiles.add(tempVar0);
 
-		if (supportsMpegDash)
-		{
-
-		}
 		if (supportsHls)
 		{
 			TranscodingProfile tempVar2 = new TranscodingProfile();
@@ -102,7 +101,7 @@ public class AndroidProfile extends DefaultProfile
 		tempVar10.setConditions(new ProfileCondition[]
 				{
 						new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, "high|main|baseline|constrained baseline"),
-						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, "40"),
+						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, String.valueOf(DefaultH264Level)),
 						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Width, "1920"),
 						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Height, "1080"),
 						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoBitDepth, "8"),
@@ -142,11 +141,14 @@ public class AndroidProfile extends DefaultProfile
 
 	private void buildDynamicProfiles(){
 
+		ProfileDefaults defaults = new ProfileDefaults();
+		defaults.DefaultH264Level = DefaultH264Level;
+
 		if (Build.VERSION.SDK_INT >= 21){
-			new Api21Builder().buildProfiles(this);
+			new Api21Builder(defaults).buildProfiles(this);
 		}
 		else if (Build.VERSION.SDK_INT >= 16){
-			new Api16Builder().buildProfiles(this);
+			new Api16Builder(defaults).buildProfiles(this);
 		}
 	}
 

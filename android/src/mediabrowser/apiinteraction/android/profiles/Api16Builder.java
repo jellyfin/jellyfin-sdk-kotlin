@@ -11,6 +11,12 @@ import java.util.List;
 
 public class Api16Builder {
 
+    protected ProfileDefaults Defaults;
+
+    public Api16Builder(ProfileDefaults defaults) {
+        Defaults = defaults;
+    }
+
     public void buildProfiles(DeviceProfile profile){
 
         ArrayList<DirectPlayProfile> directPlayProfiles = new ArrayList<DirectPlayProfile>();
@@ -79,7 +85,7 @@ public class Api16Builder {
             }
 
             if (maxLevel <= 0){
-                maxLevel = 40;
+                maxLevel = Defaults.DefaultH264Level;
             }
             conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, String.valueOf(maxLevel)));
         }
