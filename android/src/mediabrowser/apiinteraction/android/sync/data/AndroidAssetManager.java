@@ -14,9 +14,9 @@ public class AndroidAssetManager extends LocalAssetManager {
 
         super(new UserActionRepository(context, jsonSerializer),
                 new ItemRepository(context, jsonSerializer),
-                new AndroidFileRepository(context),
+                new AndroidFileRepository(context, logger),
                 new UserRepository(context, jsonSerializer),
-                new AndroidImageFileRepository(context),
+                new AndroidImageFileRepository(context, logger),
                 logger);
     }
 }

@@ -1,6 +1,7 @@
 package mediabrowser.apiinteraction.sync.data;
 
 import com.google.common.io.Files;
+import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.sync.DeviceFileInfo;
 
 import java.io.*;
@@ -10,6 +11,12 @@ import java.util.ArrayList;
  * Created by Luke on 3/24/2015.
  */
 public abstract class FileRepository implements IFileRepository {
+
+    protected ILogger Logger;
+
+    protected  FileRepository(ILogger logger){
+        this.Logger = logger;
+    }
 
     @Override
     public ArrayList<DeviceFileInfo> getFileSystemEntries(String path) {
@@ -34,6 +41,7 @@ public abstract class FileRepository implements IFileRepository {
 
     @Override
     public void deleteFile(String path) {
+        Logger.Info("Deleting file: %s", path);
         new File(path).delete();
     }
 

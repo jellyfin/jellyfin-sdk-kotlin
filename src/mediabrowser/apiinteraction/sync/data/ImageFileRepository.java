@@ -1,5 +1,7 @@
 package mediabrowser.apiinteraction.sync.data;
 
+import mediabrowser.model.logging.ILogger;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,6 +10,10 @@ import java.io.InputStream;
  * Created by Luke on 3/25/2015.
  */
 public abstract class ImageFileRepository extends FileRepository implements IImageRepository {
+
+    protected ImageFileRepository(ILogger logger) {
+        super(logger);
+    }
 
     private String getImagePath(String itemId){
 

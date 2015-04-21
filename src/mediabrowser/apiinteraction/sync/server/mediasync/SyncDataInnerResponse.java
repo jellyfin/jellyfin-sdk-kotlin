@@ -63,7 +63,7 @@ public class SyncDataInnerResponse extends Response<SyncDataResponse>
 
     private void removeItem(String serverId, String itemId)
     {
-        logger.Debug("Removing item. ServerId: {0}, ItemId: {1}", serverId, itemId);
+        logger.Debug("Removing item. ServerId: %s, ItemId: %s", serverId, itemId);
         LocalItem localItem = localAssetManager.getLocalItem(serverId, itemId);
 
         if (localItem == null)

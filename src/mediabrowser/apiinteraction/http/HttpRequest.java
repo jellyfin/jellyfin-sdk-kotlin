@@ -73,6 +73,6 @@ public class HttpRequest
     public HttpRequest()
     {
         setRequestHeaders(new HttpHeaders());
-        setTimeout(20000);
+        setTimeout(30000);
     }
 }

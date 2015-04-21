@@ -211,7 +211,7 @@ public class MediaSync {
                             @Override
                             public void onComplete() {
 
-                                response.onResponse();
+                                apiClient.reportSyncJobItemTransferred(jobItem.getSyncJobItemId(), response);
                             }
 
                             @Override

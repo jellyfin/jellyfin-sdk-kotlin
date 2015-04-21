@@ -2618,7 +2618,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<SyncJobItemQueryResult>(response, jsonSerializer, SyncJobItemQueryResult.class));
     }
 
-    public void ReportSyncJobItemTransferred(String id, EmptyResponse response) {
+    public void reportSyncJobItemTransferred(String id, EmptyResponse response) {
 
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
         {

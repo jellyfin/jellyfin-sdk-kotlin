@@ -2,6 +2,7 @@ package mediabrowser.apiinteraction.android.sync.data;
 
 import android.content.Context;
 import mediabrowser.apiinteraction.sync.data.ImageFileRepository;
+import mediabrowser.model.logging.ILogger;
 
 import java.io.File;
 
@@ -12,7 +13,8 @@ public class AndroidImageFileRepository extends ImageFileRepository {
 
     private Context context;
 
-    public AndroidImageFileRepository(Context context) {
+    public AndroidImageFileRepository(Context context, ILogger logger) {
+        super(logger);
         this.context = context;
     }
 
