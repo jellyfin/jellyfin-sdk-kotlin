@@ -1,6 +1,5 @@
 package mediabrowser.apiinteraction.sync.server.mediasync;
 
-import android.app.IActivityPendingResult;
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.apiinteraction.Response;
@@ -10,7 +9,6 @@ import mediabrowser.apiinteraction.tasks.IProgress;
 import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.apiclient.ServerUserInfo;
-import mediabrowser.model.devices.LocalFileInfo;
 import mediabrowser.model.dto.BaseItemDto;
 import mediabrowser.model.dto.ImageOptions;
 import mediabrowser.model.dto.MediaSourceInfo;
@@ -18,15 +16,11 @@ import mediabrowser.model.entities.ImageType;
 import mediabrowser.model.entities.MediaStream;
 import mediabrowser.model.entities.MediaStreamType;
 import mediabrowser.model.logging.ILogger;
-import mediabrowser.model.results.ReadySyncItemsResult;
 import mediabrowser.model.sync.*;
 import mediabrowser.model.users.UserAction;
-import org.apache.maven.settings.Server;
-import org.apache.tools.ant.taskdefs.Local;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -53,7 +47,9 @@ public class MediaSync {
             return;
         }
 
-        logger.Debug("Beginning media sync process with server Id: {0}", serverInfo.getId());
+        logger.Debug("Beginning media sync process with server Id: %s", serverInfo.getId());
+
+        final MediaSync mediaSync = this;
 
         // First report actions to the server that occurred while offline
         ReportOfflineActions(apiClient, serverInfo, new EmptyResponse() {
@@ -82,34 +78,7 @@ public class MediaSync {
                         progress.report(3.0);
 
                         // Get new media
-                        GetNewMedia(apiClient, serverInfo, cancellationToken, new Progress<Double>() {
-
-                            @Override
-                            public void onCancelled() {
-
-                                progress.reportCancelled();
-                                return;
-                            }
-
-                            @Override
-                            public void onComplete() {
-
-                                progress.report(99.0);
-
-                                // Do the data sync twice so the server knows what was removed from the device
-                                SyncData(apiClient, serverInfo, true, new SecondSyncDataResponse(logger, serverInfo, progress));
-                            }
-
-                            @Override
-                            public void onError(Exception ex) {
-                                progress.reportError(ex);
-                            }
-
-                            @Override
-                            public void onProgress(Double val) {
-                                progress.report(3 + .96 * val);
-                            }
-                        });
+                        GetNewMedia(apiClient, serverInfo, cancellationToken, new GetNewMediaProgress(logger, apiClient, serverInfo, progress, mediaSync));
                     }
 
                     @Override
@@ -127,11 +96,12 @@ public class MediaSync {
         });
     }
 
-    private void SyncData(final ApiClient apiClient,
+    void SyncData(final ApiClient apiClient,
                           final ServerInfo serverInfo,
                           final boolean syncUserItemAccess,
                           final EmptyResponse response){
 
+        logger.Debug("Enter SyncData");
 
         ArrayList<String> localIds = localAssetManager.getServerItemIds(serverInfo.getId());
 
@@ -145,7 +115,7 @@ public class MediaSync {
         }
         request.setOfflineUserIds(offlineUserIds);
 
-        apiClient.SyncData(request, new SyncDataInnerResponse(response, localAssetManager, serverInfo, syncUserItemAccess));
+        apiClient.SyncData(request, new SyncDataInnerResponse(response, localAssetManager, serverInfo, syncUserItemAccess, logger));
     }
 
     private void GetNewMedia(final ApiClient apiClient,
@@ -153,27 +123,15 @@ public class MediaSync {
                              final CancellationToken cancellationToken,
                              final IProgress<Double> progress){
 
-        apiClient.getReadySyncItems(apiClient.getDeviceId(), new Response<ReadySyncItemsResult>() {
+        logger.Debug("Begin GetNewMedia");
 
-            @Override
-            public void onResponse(ReadySyncItemsResult result) {
-
-                ArrayList<SyncedItem> jobItems = result;
-
-                GetNextItem(jobItems, 0, apiClient, serverInfo, cancellationToken, progress);
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                progress.reportError(ex);
-            }
-        });
+        apiClient.getReadySyncItems(apiClient.getDeviceId(), new GetReadySyncItemsResponse(logger, apiClient, serverInfo, cancellationToken, progress, this));
     }
 
-    private void GetNextItem(final ArrayList<SyncedItem> jobItems, final int index, final ApiClient apiClient, final ServerInfo serverInfo, final CancellationToken cancellationToken, final IProgress<Double> progress){
+    void GetNextItem(final ArrayList<SyncedItem> jobItems, final int index, final ApiClient apiClient, final ServerInfo serverInfo, final CancellationToken cancellationToken, final IProgress<Double> progress){
 
         if (index >= jobItems.size()){
+            logger.Debug("GetNewMedia complete");
             progress.reportComplete();
             return;
         }
@@ -224,10 +182,12 @@ public class MediaSync {
 
         final LocalItem localItem = localAssetManager.createLocalItem(libraryItem, server, jobItem.getOriginalFileName());
 
-        apiClient.GetSyncJobItemFile(jobItem.getSyncJobItemId(), new Response<InputStream>(){
+        apiClient.GetSyncJobItemFile(jobItem.getSyncJobItemId(), new Response<InputStream>(response){
 
             @Override
             public void onResponse(InputStream stream) {
+
+                logger.Debug("Got item file response stream");
 
                 try (InputStream copy = stream){
 
@@ -280,12 +240,6 @@ public class MediaSync {
                         response.onError(ex);
                     }
                 });
-            }
-
-            @Override
-            public void onError(Exception ex) {
-
-                response.onError(ex);
             }
         });
     }
@@ -446,7 +400,7 @@ public class MediaSync {
         GetNextSubtitle(files, 0, apiClient, jobItem, item, mediaSource, cancellationToken, progress);
     }
 
-    private void GetNextSubtitle(final ArrayList<ItemFileInfo> files,
+    void GetNextSubtitle(final ArrayList<ItemFileInfo> files,
                                  final int index,
                                  final ApiClient apiClient,
                                  final SyncedItem jobItem,
@@ -484,43 +438,7 @@ public class MediaSync {
             return;
         }
 
-        final MediaStream finalSubtitleStream = subtitleStream;
-        apiClient.getSyncJobItemAdditionalFile(jobItem.getSyncJobItemId(), file.getName(), new Response<InputStream> (){
-
-            private void onAny(){
-
-                int numComplete = index + 1;
-                double startingPercent = numComplete;
-                startingPercent /= files.size();
-                startingPercent *= 100;
-                progress.report(startingPercent);
-
-                GetNextSubtitle(files, index + 1, apiClient, jobItem, item, mediaSource, cancellationToken, progress);
-            }
-
-            @Override
-            public void onResponse(InputStream stream) {
-
-                try (InputStream copy = stream){
-
-                    String path = localAssetManager.saveSubtitles(copy, finalSubtitleStream.getCodec(), item, finalSubtitleStream.getLanguage(), finalSubtitleStream.getIsForced());
-                    finalSubtitleStream.setPath(path);
-                    localAssetManager.addOrUpdate(item);
-                }
-                catch (IOException ioException){
-                    logger.ErrorException("Error saving subtitles", ioException);
-                }
-                finally {
-                    onAny();
-                }
-            }
-
-            @Override
-            public void onError(Exception ex){
-                logger.ErrorException("Error downloading subtitles", ex);
-                onAny();
-            }
-        });
+        apiClient.getSyncJobItemAdditionalFile(jobItem.getSyncJobItemId(), file.getName(), new GetSyncJobItemAdditionalFileResponse(logger, apiClient, localAssetManager, jobItem, mediaSource, subtitleStream, cancellationToken, item, files, index, progress, this));
     }
 
     private void ReportOfflineActions(ApiClient apiClient,

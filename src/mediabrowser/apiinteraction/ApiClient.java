@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction;
 
+import com.android.internal.telephony.cat.Input;
 import mediabrowser.apiinteraction.cryptography.Md5;
 import mediabrowser.apiinteraction.cryptography.Sha1;
 import mediabrowser.apiinteraction.device.IDevice;
@@ -186,12 +187,32 @@ public class ApiClient extends BaseApiClient {
 
     public void getResponseStream(String address, Response<InputStream> response){
 
+        getResponseStreamInternal(address, response);
+    }
+
+    protected void getResponseStreamInternal(String address, Response<InputStream> response){
+
         Logger.Debug("Getting response stream from " + address);
+
+        HttpURLConnection conn = null;
+
         try
         {
             URL url = new URL(address);
 
-            response.onResponse(new BufferedInputStream(url.openStream()));
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setDoInput(true); // Allow Inputs
+            conn.setUseCaches(false); // Don't use a Cached Copy
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Connection", "Keep-Alive");
+
+            for (String key: this.HttpHeaders.keySet()){
+                conn.setRequestProperty(key, this.HttpHeaders.get(key));
+            }
+
+            InputStream inputStream = conn.getInputStream();
+
+            response.onResponse(inputStream);
 
         }
         catch (Exception ex)
@@ -2648,7 +2669,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "POST", json, "application/json", new SerializedResponse<SyncDataResponse>(response, jsonSerializer, SyncDataResponse.class));
     }
 
-    public void getSyncJobItemAdditionalFile(String syncJobItemId, String filename, Response<InputStream> response){
+    public void getSyncJobItemAdditionalFile(String syncJobItemId, String filename, final Response<InputStream> response){
 
         QueryStringDictionary dict = new QueryStringDictionary();
 
@@ -2659,7 +2680,7 @@ public class ApiClient extends BaseApiClient {
         getResponseStream(url, response);
     }
 
-    public void getReadySyncItems(String targetId, Response<ReadySyncItemsResult> response) {
+    public void getReadySyncItems(String targetId, final Response<ReadySyncItemsResult> response) {
 
         QueryStringDictionary dict = new QueryStringDictionary();
 
@@ -2668,6 +2689,6 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Sync/Items/Ready", dict);
         url = AddDataFormat(url);
 
-        Send(url, "GET", new SerializedResponse<ReadySyncItemsResult>(response, jsonSerializer, ReadySyncItemsResult.class));
+        Send(url, "GET", new SerializedResponse<ReadySyncItemsResult>(response, jsonSerializer, url, Logger, new ReadySyncItemsResult().getClass()));
     }
 }

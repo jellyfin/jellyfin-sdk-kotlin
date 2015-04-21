@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction.sync.server.mediasync;
 
+import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.apiinteraction.IResponse;
 import mediabrowser.apiinteraction.Response;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
@@ -21,12 +22,13 @@ public class SyncDataInnerResponse extends Response<SyncDataResponse>
     private boolean syncUserItemAccess;
     private ILogger logger;
 
-    public SyncDataInnerResponse(IResponse innerResponse, ILocalAssetManager localAssetManager, ServerInfo serverInfo, boolean syncUserItemAccess){
+    public SyncDataInnerResponse(EmptyResponse innerResponse, ILocalAssetManager localAssetManager, ServerInfo serverInfo, boolean syncUserItemAccess, ILogger logger){
 
         super(innerResponse);
         this.localAssetManager = localAssetManager;
         this.serverInfo = serverInfo;
         this.syncUserItemAccess = syncUserItemAccess;
+        this.logger = logger;
     }
 
     @Override
@@ -39,6 +41,8 @@ public class SyncDataInnerResponse extends Response<SyncDataResponse>
 
         if (syncUserItemAccess)
         {
+            logger.Debug("Syncing users with access");
+
             for (String itemId : result.getItemUserAccess().keySet())
             {
                 LocalItem localItem = localAssetManager.getLocalItem(serverInfo.getId(), itemId);
@@ -53,6 +57,7 @@ public class SyncDataInnerResponse extends Response<SyncDataResponse>
             }
         }
 
+        logger.Debug("Calling SyncDataInnerResponse.triggerInnerResponse");
         triggerInnerResponse();
     }
 

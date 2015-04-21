@@ -50,7 +50,5 @@ public class UpdateOfflineUsersResponse extends EmptyResponse {
     public void startMediaSync(){
 
         new MediaSync(localAssetManager, logger).sync(apiClient, server, new MediaSyncProgress(progress, initialProgressPercent), cancellationToken);
-
-        progress.reportComplete();
     }
 }

@@ -56,6 +56,8 @@ public class MultiServerSyncProgress extends SyncProgress {
     @Override
     public void onComplete() {
 
+        logger.Info("MultiServerSync complete");
+
         // Entire process completed
         ArrayList<ContentProviderOperation> batch = new ArrayList<ContentProviderOperation>();
 
@@ -80,6 +82,7 @@ public class MultiServerSyncProgress extends SyncProgress {
     public void onError(Exception ex) {
 
         // Entire process failed
+        logger.ErrorException("MultiServerSync failed", ex);
 
         // Is this appropriate? Need to find out how to report that the process failed
         onComplete();

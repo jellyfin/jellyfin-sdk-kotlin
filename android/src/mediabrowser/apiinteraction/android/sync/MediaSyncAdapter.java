@@ -75,7 +75,6 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
                 capabilities,
                 apiEventListener);
 
-        //ILocalAssetManager localAssetManager = new LocalAssetManager(userActionRepository, itemRepository, fileRepository, userRepository, imageRepository);
         ILocalAssetManager localAssetManager = new AndroidAssetManager(context, logger, jsonSerializer);
 
         CancellationTokenSource source = new CancellationTokenSource();

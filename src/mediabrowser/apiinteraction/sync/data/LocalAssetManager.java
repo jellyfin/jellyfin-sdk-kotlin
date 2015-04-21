@@ -109,6 +109,7 @@ public class LocalAssetManager implements ILocalAssetManager {
 
     @Override
     public void saveMedia(InputStream stream, LocalItem localItem, ServerInfo server) throws IOException {
+
         logger.Debug("Saving media to " + localItem.getLocalPath());
         fileRepository.saveFile(stream, localItem.getLocalPath());
     }
@@ -178,6 +179,8 @@ public class LocalAssetManager implements ILocalAssetManager {
         LocalItem item = new LocalItem();
 
         String localPath = fileRepository.getFullLocalPath(path);
+
+        item.setLocalPath(localPath);
 
         for (MediaSourceInfo mediaSource : libraryItem.getMediaSources())
         {

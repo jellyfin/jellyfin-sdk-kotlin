@@ -1,6 +1,7 @@
 package mediabrowser.apiinteraction;
 
 import mediabrowser.apiinteraction.Response;
+import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
 
 public class SerializedResponse<T> extends Response<String> {
@@ -8,6 +9,8 @@ public class SerializedResponse<T> extends Response<String> {
     private IJsonSerializer jsonSerializer;
     private Class type;
     protected Response<T> innerResponse;
+    private String url;
+    private ILogger logger;
 
     public SerializedResponse(Response<T> innerResponse, IJsonSerializer jsonSerializer, Class type) {
         super(innerResponse);
@@ -16,8 +19,22 @@ public class SerializedResponse<T> extends Response<String> {
         this.innerResponse = innerResponse;
     }
 
+    public SerializedResponse(Response<T> innerResponse, IJsonSerializer jsonSerializer, String url, ILogger logger, Class type) {
+        super(innerResponse);
+        this.jsonSerializer = jsonSerializer;
+        this.type = type;
+        this.innerResponse = innerResponse;
+        this.url = url;
+        this.logger = logger;
+    }
+
+
     @Override
     public void onResponse(String result) {
+
+        if (url != null){
+            logger.Debug("Received response from %s", url);
+        }
 
         T obj = jsonSerializer.DeserializeFromString(result, type);
 

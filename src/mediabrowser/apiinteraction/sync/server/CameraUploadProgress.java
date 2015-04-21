@@ -36,14 +36,14 @@ public class CameraUploadProgress extends SyncProgress {
     @Override
     public void onProgress(Double percent) {
 
-        logger.Info("Sync progress " + percent + " percent to server " + server.getName());
+        logger.Info("Camera upload progress " + percent + " percent to server " + server.getName());
         progress.report(percent * maxPercentage);
     }
 
     @Override
     public void onComplete() {
 
-        logger.Info("Sync complete to server " + server.getName());
+        logger.Info("Camera upload complete to server " + server.getName());
         onAnyComplete();
     }
 
@@ -56,7 +56,7 @@ public class CameraUploadProgress extends SyncProgress {
     @Override
     public void onCancelled() {
 
-        logger.Info("Sync cancelled to server " + server.getName());
+        logger.Info("Camera upload cancelled to server " + server.getName());
         progress.reportCancelled();
     }
 
@@ -81,12 +81,9 @@ public class CameraUploadProgress extends SyncProgress {
         if (cancellationToken.isCancellationRequested()){
             progress.reportCancelled();
         }
-        else if (clientCapabilities.getSupportsOfflineAccess()){
-            new OfflineUsersSync(logger, localAssetManager).UpdateOfflineUsers(server, apiClient, cancellationToken, offlineUserResponse);
-        }
         else {
 
-            offlineUserResponse.startMediaSync();
+            new OfflineUsersSync(logger, localAssetManager).UpdateOfflineUsers(server, apiClient, cancellationToken, offlineUserResponse);
         }
     }
 }

@@ -13,6 +13,7 @@ import mediabrowser.model.entities.ImageType;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.net.HttpException;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class OfflineUsersSync {
@@ -98,7 +99,7 @@ public class OfflineUsersSync {
         });
     }
 
-    private void UpdateUserImage(UserDto user, ApiClient apiClient, EmptyResponse response){
+    private void UpdateUserImage(final UserDto user, ApiClient apiClient, final EmptyResponse response){
 
         if (user.getHasPrimaryImage())
         {
@@ -112,13 +113,22 @@ public class OfflineUsersSync {
                 imageOptions.setImageType(ImageType.Primary);
                 String imageUrl = apiClient.GetUserImageUrl(user, imageOptions);
 
-                // TODO: Implement
-/*                using (var stream = await apiClient.GetImageStreamAsync(imageUrl, cancellationToken).ConfigureAwait(false))
-                {
-                    await _localAssetManager.SaveUserImage(user, stream).ConfigureAwait(false);
-                }*/
+                apiClient.getResponseStream(imageUrl, new Response<InputStream>(response) {
 
-                response.onResponse();
+                    @Override
+                    public void onResponse(InputStream stream) {
+
+                        try (InputStream alias = stream) {
+
+                            localAssetManager.saveImage(user, alias);
+
+                        } catch (Exception ex) {
+                            response.onError(ex);
+                        }
+
+                    }
+
+                });
             }
         }
         else

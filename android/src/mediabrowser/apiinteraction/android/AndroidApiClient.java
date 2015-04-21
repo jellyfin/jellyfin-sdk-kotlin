@@ -61,27 +61,14 @@ public class AndroidApiClient extends ApiClient {
     @Override
     public void getResponseStream(final String address, final Response<InputStream> response){
 
-        Logger.Debug("Getting response stream from " + address);
-
-        new AsyncTask(){
-
+        Thread thread = new Thread(new Runnable() {
             @Override
-            protected Object doInBackground(Object[] params) {
-                try
-                {
-                    URL url = new URL(address);
-
-                    response.onResponse(new BufferedInputStream(url.openStream()));
-
-                }
-                catch (Exception ex)
-                {
-                    response.onError(ex);
-                }
-
-                return null;
+            public void run() {
+                getResponseStreamInternal(address, response);
             }
-        };
+        });
+
+        thread.start();
     }
 
 
