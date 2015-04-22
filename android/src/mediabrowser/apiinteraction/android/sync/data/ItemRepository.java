@@ -30,6 +30,10 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
 
     public ItemRepository(Context context, IJsonSerializer jsonSerializer) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
+        if (jsonSerializer == null){
+            throw new IllegalArgumentException("jsonSerializer");
+        }
         this.jsonSerializer = jsonSerializer;
     }
 
@@ -43,7 +47,6 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
     // Method is called during an upgrade of the database,
     @Override
     public void onUpgrade(SQLiteDatabase database,int oldVersion,int newVersion){
-
 
     }
 
@@ -94,6 +97,7 @@ public class ItemRepository extends SQLiteOpenHelper implements IItemRepository 
 
     @Override
     public LocalItem getItem(String id) {
+
         String[] cols = new String[] {"Json"};
         String where = "Id=?";
         String[] args = new String[]{id};

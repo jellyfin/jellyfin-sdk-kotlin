@@ -249,7 +249,7 @@ public class ConnectionManager implements IConnectionManager {
                 skipTest = true;
             }
             enableRetry = true;
-            timeout = 7000;
+            timeout = 10000;
         }
 
         else if (mode == ConnectionMode.Manual){

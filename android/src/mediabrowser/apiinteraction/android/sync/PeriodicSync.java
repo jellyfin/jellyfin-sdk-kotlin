@@ -13,7 +13,7 @@ public class PeriodicSync {
         this.context = context;
     }
 
-    public void Create(long syncIntervalMs) {
+    public void Create(long syncIntervalSeconds) {
 
         AuthenticatorService.CreateSyncAccount(context);
 
@@ -29,13 +29,13 @@ public class PeriodicSync {
                 account,
                 AuthenticatorService.AUTHORITY,
                 settingsBundle,
-                syncIntervalMs);
+                syncIntervalSeconds);
 
     }
 
     public void Create() {
 
         // Default to hourly
-        Create(3600000);
+        Create(3600);
     }
 }
