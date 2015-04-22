@@ -4,16 +4,15 @@ import android.media.MediaCodecInfo;
 import android.media.MediaCodecList;
 import mediabrowser.model.dlna.*;
 import mediabrowser.model.extensions.StringHelper;
-import mediabrowser.model.logging.ILogger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Api16Builder {
 
-    protected ProfileDefaults Defaults;
+    protected AndroidProfileOptions Defaults;
 
-    public Api16Builder(ProfileDefaults defaults) {
+    public Api16Builder(AndroidProfileOptions defaults) {
         Defaults = defaults;
     }
 

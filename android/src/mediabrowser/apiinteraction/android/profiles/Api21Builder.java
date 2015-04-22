@@ -4,13 +4,12 @@ import android.media.MediaCodecInfo;
 import android.util.Range;
 import mediabrowser.model.dlna.*;
 import mediabrowser.model.extensions.StringHelper;
-import mediabrowser.model.logging.ILogger;
 
 import java.util.ArrayList;
 
 public class Api21Builder extends Api16Builder{
 
-    public Api21Builder(ProfileDefaults defaults) {
+    public Api21Builder(AndroidProfileOptions defaults) {
         super(defaults);
     }
 

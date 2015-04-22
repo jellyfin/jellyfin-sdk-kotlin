@@ -3,21 +3,23 @@ package mediabrowser.apiinteraction.android.profiles;
 import android.os.Build;
 import mediabrowser.model.dlna.*;
 import mediabrowser.model.dlna.profiles.DefaultProfile;
+import mediabrowser.model.extensions.StringHelper;
+
+import java.util.ArrayList;
 
 public class AndroidProfile extends DefaultProfile
 {
 	protected int DefaultH264Level;
 
-	public AndroidProfile()
-	{
-		this(true, 40);
+	public AndroidProfile(){
+		this(new AndroidProfileOptions());
 	}
 
-	public AndroidProfile(boolean supportsHls, int defaultH264Level)
+	public AndroidProfile(AndroidProfileOptions profileOptions)
 	{
 		setName("Android");
 
-		DefaultH264Level = defaultH264Level;
+		DefaultH264Level = profileOptions.DefaultH264Level;
 		setMaxStaticBitrate(20000000);
 		setMaxStreamingBitrate(20000000);
 
@@ -40,7 +42,7 @@ public class AndroidProfile extends DefaultProfile
 		tempVar0.setContext(EncodingContext.Static);
 		transcodingProfiles.add(tempVar0);
 
-		if (supportsHls)
+		if (profileOptions.SupportsHls)
 		{
 			TranscodingProfile tempVar2 = new TranscodingProfile();
 			tempVar2.setProtocol("hls");
@@ -136,12 +138,68 @@ public class AndroidProfile extends DefaultProfile
 		setCodecProfiles(new CodecProfile[] {tempVar10, tempVar11, tempVar12, tempVar13, tempVar14});
 
 		buildDynamicProfiles();
+
+		addM4v();
+
+		if (profileOptions.SupportsAc3){
+			addAc3();
+		}
+
 		buildSubtitleProfiles();
+	}
+
+	private void addAc3() {
+
+		for(DirectPlayProfile profile : getDirectPlayProfiles()){
+
+			if (profile.getType() == DlnaProfileType.Video){
+
+				String container = profile.getContainer();
+				if (container != null && (StringHelper.IndexOfIgnoreCase(container, "mp4") != -1 || StringHelper.IndexOfIgnoreCase(container, "mkv") != -1 || StringHelper.IndexOfIgnoreCase(container, "m4v") != -1)){
+
+					String audioCodec = profile.getAudioCodec();
+					if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec))
+					{
+						profile.setAudioCodec("ac3");
+					}
+					else{
+						profile.setAudioCodec(audioCodec + ",ac3");
+					}
+				}
+			}
+		}
+	}
+
+	private void addM4v() {
+
+		for(DirectPlayProfile profile : getDirectPlayProfiles()){
+
+			if (profile.getType() == DlnaProfileType.Video){
+
+				String container = profile.getContainer();
+				if (container != null && StringHelper.IndexOfIgnoreCase(container, "mp4") != -1){
+					profile.setContainer(container + ",m4v");
+				}
+			}
+		}
+
+		ArrayList<ResponseProfile> responseProfiles = new ArrayList<>();
+		for (ResponseProfile profile : getResponseProfiles()){
+			responseProfiles.add(profile);
+		}
+
+		ResponseProfile m4vProfile = new ResponseProfile();
+		m4vProfile.setContainer("m4v");
+		m4vProfile.setType(DlnaProfileType.Video);
+		m4vProfile.setMimeType("video/mp4");
+		responseProfiles.add(m4vProfile);
+
+		setResponseProfiles(responseProfiles.toArray(new ResponseProfile[responseProfiles.size()]));
 	}
 
 	private void buildDynamicProfiles(){
 
-		ProfileDefaults defaults = new ProfileDefaults();
+		AndroidProfileOptions defaults = new AndroidProfileOptions();
 		defaults.DefaultH264Level = DefaultH264Level;
 
 		if (Build.VERSION.SDK_INT >= 21){

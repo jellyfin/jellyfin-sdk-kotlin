@@ -588,11 +588,11 @@ public class ConnectionManager implements IConnectionManager {
             credentials.AddOrUpdateServer(newServer);
         }
 
-        for(ServerInfo newServer : foundServers){
+        /*for(ServerInfo newServer : foundServers){
 
             ServerInfo existing = credentials.GetServer(newServer.getId());
             existing.setLastConnectionMode(ConnectionMode.Local);
-        }
+        }*/
 
         ArrayList<ServerInfo> cleanList = new ArrayList<ServerInfo>();
         ArrayList<ServerInfo> existing = credentials.getServers();
