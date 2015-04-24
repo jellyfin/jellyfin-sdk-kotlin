@@ -48,6 +48,21 @@ public class LiveTvTunerInfoDto
 	}
 
 	/** 
+	 Gets or sets the URL.
+	 
+	 <value>The URL.</value>
+	*/
+	private String Url;
+	public final String getUrl()
+	{
+		return Url;
+	}
+	public final void setUrl(String value)
+	{
+		Url = value;
+	}
+
+	/** 
 	 Gets or sets the status.
 	 
 	 <value>The status.</value>

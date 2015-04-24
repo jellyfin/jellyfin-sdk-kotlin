@@ -580,6 +580,13 @@ public class ConnectionManager implements IConnectionManager {
 
         for(ServerInfo newServer : foundServers){
 
+            if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(newServer.getManualAddress())) {
+                newServer.setLastConnectionMode(ConnectionMode.Local);
+            }
+            else {
+                newServer.setLastConnectionMode(ConnectionMode.Manual);
+            }
+
             credentials.AddOrUpdateServer(newServer);
         }
 
@@ -587,12 +594,6 @@ public class ConnectionManager implements IConnectionManager {
 
             credentials.AddOrUpdateServer(newServer);
         }
-
-        /*for(ServerInfo newServer : foundServers){
-
-            ServerInfo existing = credentials.GetServer(newServer.getId());
-            existing.setLastConnectionMode(ConnectionMode.Local);
-        }*/
 
         ArrayList<ServerInfo> cleanList = new ArrayList<ServerInfo>();
         ArrayList<ServerInfo> existing = credentials.getServers();

@@ -113,6 +113,21 @@ public class BaseApplicationConfiguration
 	}
 
 	/** 
+	 Gets or sets a value indicating whether [enable custom path sub folders].
+	 
+	 <value><c>true</c> if [enable custom path sub folders]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean EnableCustomPathSubFolders;
+	public final boolean getEnableCustomPathSubFolders()
+	{
+		return EnableCustomPathSubFolders;
+	}
+	public final void setEnableCustomPathSubFolders(boolean value)
+	{
+		EnableCustomPathSubFolders = value;
+	}
+
+	/** 
 	 Initializes a new instance of the <see cref="BaseApplicationConfiguration" /> class.
 	*/
 	public BaseApplicationConfiguration()

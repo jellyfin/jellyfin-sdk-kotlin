@@ -469,16 +469,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		MetadataOptions = value;
 	}
 
-	private String TranscodingTempPath;
-	public final String getTranscodingTempPath()
-	{
-		return TranscodingTempPath;
-	}
-	public final void setTranscodingTempPath(String value)
-	{
-		TranscodingTempPath = value;
-	}
-
 	private boolean EnableAutomaticRestart;
 	public final boolean getEnableAutomaticRestart()
 	{

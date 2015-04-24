@@ -451,10 +451,9 @@ public class StreamBuilder
 				playlistItem.setMaxAudioChannels(Math.min(options.getMaxAudioChannels(), currentValue));
 			}
 
-			if (playlistItem.getAudioBitrate() == null)
-			{
-				playlistItem.setAudioBitrate(GetAudioBitrate(playlistItem.getTargetAudioChannels(), playlistItem.getTargetAudioCodec()));
-			}
+			int audioBitrate = GetAudioBitrate(playlistItem.getTargetAudioChannels(), playlistItem.getTargetAudioCodec());
+			Integer tempVar7 = playlistItem.getAudioBitrate();
+			playlistItem.setAudioBitrate(Math.min((tempVar7 != null) ? tempVar7 : audioBitrate, audioBitrate));
 
 			Integer maxBitrateSetting = options.GetMaxBitrate();
 			// Honor max rate
@@ -467,10 +466,10 @@ public class StreamBuilder
 					videoBitrate -= playlistItem.getAudioBitrate();
 				}
 
-				Integer tempVar7 = playlistItem.getVideoBitrate();
-				int currentValue = (tempVar7 != null) ? tempVar7 : videoBitrate;
-
-				playlistItem.setVideoBitrate(Math.min(videoBitrate, currentValue));
+				// Make sure the video bitrate is lower than bitrate settings but at least 64k
+				Integer tempVar8 = playlistItem.getVideoBitrate();
+				int currentValue = (tempVar8 != null) ? tempVar8 : videoBitrate;
+				playlistItem.setVideoBitrate(Math.max(Math.min(videoBitrate, currentValue), 64000));
 			}
 		}
 
