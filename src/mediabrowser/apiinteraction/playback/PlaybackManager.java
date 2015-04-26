@@ -256,6 +256,6 @@ public class PlaybackManager {
 
         info.setPlaySessionId(streamInfo.getPlaySessionId());
 
-        apiClient.ReportPlaybackStoppedAsync(info, new ReportPlaybackStopResponse(logger, device, apiClient, streamInfo, response));
+        apiClient.ReportPlaybackStoppedAsync(info, response);
     }
 }

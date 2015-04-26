@@ -518,8 +518,6 @@ public class ConnectionManager implements IConnectionManager {
 
     public void GetAvailableServers(final Response<ArrayList<ServerInfo>> response)
     {
-        NetworkStatus networkInfo = networkConnection.getNetworkStatus();
-
         logger.Debug("Getting saved servers via credential provider");
         final ServerCredentials credentials = credentialProvider.GetCredentials();
 
@@ -530,15 +528,9 @@ public class ConnectionManager implements IConnectionManager {
 
         Response<ArrayList<ServerInfo>> findServersResponse = new FindServersResponse(this, credentials, foundServers, connectServers, numTasksCompleted, numTasks, response);
 
-        if (networkInfo.GetIsAnyLocalNetworkAvailable())
-        {
-            logger.Debug("Scanning network for local servers");
+        logger.Debug("Scanning network for local servers");
 
-            FindServers(findServersResponse);
-        }
-        else {
-            findServersResponse.onError(null);
-        }
+        FindServers(findServersResponse);
 
         EmptyResponse connectServersResponse = new GetConnectServersResponse(logger, connectService, credentials, foundServers, connectServers, numTasks, numTasksCompleted, response, this);
 
