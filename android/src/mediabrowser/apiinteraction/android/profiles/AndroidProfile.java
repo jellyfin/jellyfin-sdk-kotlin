@@ -2,12 +2,11 @@ package mediabrowser.apiinteraction.android.profiles;
 
 import android.os.Build;
 import mediabrowser.model.dlna.*;
-import mediabrowser.model.dlna.profiles.DefaultProfile;
 import mediabrowser.model.extensions.StringHelper;
 
 import java.util.ArrayList;
 
-public class AndroidProfile extends DefaultProfile
+public class AndroidProfile extends DeviceProfile
 {
 	protected int DefaultH264Level;
 

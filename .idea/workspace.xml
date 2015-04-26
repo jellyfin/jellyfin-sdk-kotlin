@@ -7,24 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b626835-6518-4586-bf6c-5bbba32974d2" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\activity\ActivityLogEntry.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\chapters\ChapterProviderInfo.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\chapters\RemoteChapterInfo.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\chapters\RemoteChapterResult.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\dlna\profiles\DefaultProfile.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\entities\MBRegistrationRecord.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\io\FileSystemEntryInfo.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\io\FileSystemEntryType.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\plugins\BasePluginConfiguration.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\system\LogFile.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\updates\CheckForUpdateResult.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\updates\PackageInfo.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\updates\PackageTargetSystem.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\updates\PackageType.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Dev\MediaBrowser.ApiClient.Java\src\mediabrowser\model\updates\PackageVersionInfo.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/classes/Production/android/mediabrowser/apiinteraction/android/profiles/AndroidProfile.class" afterPath="$PROJECT_DIR$/out/classes/Production/android/mediabrowser/apiinteraction/android/profiles/AndroidProfile.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.android.jar" afterPath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.android.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.jar" afterPath="$PROJECT_DIR$/out/artifacts/jar/emby.apiclient.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" afterPath="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java" afterPath="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/dlna/DeviceProfile.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/dlna/DeviceProfile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/querying/ItemFields.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/querying/ItemFields.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java" afterPath="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="MediaBrowser.ApiClient.Java.iws" />
@@ -52,92 +41,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NotificationLevel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/notifications/NotificationLevel.java">
+      <file leaf-file-name="StreamBuilder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
-              <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="11864" max-vertical-offset="17629">
+              <caret line="725" column="38" selection-start-line="725" selection-start-column="38" selection-end-line="725" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InstallationInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/updates/InstallationInfo.java">
+      <file leaf-file-name="AndroidProfile.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2" max-vertical-offset="1122">
-              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PackageVersionClass.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/updates/PackageVersionClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
-              <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaskTriggerInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/tasks/TaskTriggerInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaskState.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/tasks/TaskState.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-              <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaskResult.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/tasks/TaskResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1428">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaskInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/tasks/TaskInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1819">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PluginInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/plugins/PluginInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1411">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApiClient.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4666012" vertical-offset="120" max-vertical-offset="45798">
-              <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
-              <folding />
+            <state vertical-scroll-proportion="0.23538461" vertical-offset="0" max-vertical-offset="3825">
+              <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -194,13 +115,13 @@
         <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/ProfileDefaults.java" />
         <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/ProfileOptions.java" />
         <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfileOptions.java" />
-        <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java" />
-        <option value="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/connectionmanager/ConnectionManager.java" />
         <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/AndroidNetworkConnection.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/ReportPlaybackStopResponse.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/playback/PlaybackManager.java" />
         <option value="$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java" />
+        <option value="$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java" />
+        <option value="$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java" />
       </list>
     </option>
   </component>
@@ -284,84 +205,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mediabrowser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="updates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mediabrowser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tasks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MediaBrowser.ApiClient.Java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mediabrowser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="system" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -735,7 +578,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19266425" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2123494" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -745,6 +587,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2123494" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -801,6 +644,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="44676">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/images/LruBitmapCache.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.100196466" vertical-offset="0" max-vertical-offset="1018">
@@ -857,13 +708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/sync/SyncDataResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.083497055" vertical-offset="0" max-vertical-offset="1018">
-          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/sync/server/mediasync/SyncDataInnerResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1394">
@@ -891,7 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2091">
           <caret line="78" column="56" selection-start-line="78" selection-start-column="56" selection-end-line="78" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -911,26 +754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3692" max-vertical-offset="11917">
           <caret line="264" column="34" selection-start-line="264" selection-start-column="34" selection-end-line="264" selection-end-column="34" />
-          <folding>
-            <element signature="e#2014#2015#0" expanded="false" />
-            <element signature="e#2075#2076#0" expanded="false" />
-            <element signature="e#2131#2132#0" expanded="false" />
-            <element signature="e#2186#2187#0" expanded="false" />
-            <element signature="e#2397#2398#0" expanded="false" />
-            <element signature="e#2449#2450#0" expanded="false" />
-            <element signature="e#8463#8464#0" expanded="false" />
-            <element signature="e#8517#8518#0" expanded="false" />
-            <element signature="e#8597#8598#0" expanded="false" />
-            <element signature="e#8661#8662#0" expanded="false" />
-            <element signature="e#8724#8725#0" expanded="false" />
-            <element signature="e#8790#8791#0" expanded="false" />
-            <element signature="e#8852#8853#0" expanded="false" />
-            <element signature="e#8897#8898#0" expanded="false" />
-            <element signature="e#22295#22296#0" expanded="false" />
-            <element signature="e#22344#22345#0" expanded="false" />
-            <element signature="e#22423#22424#0" expanded="false" />
-            <element signature="e#22474#22475#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -945,7 +768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.066797644" vertical-offset="0" max-vertical-offset="1018">
           <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -953,9 +775,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
           <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -963,15 +782,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="719" max-vertical-offset="5304">
           <caret line="89" column="51" selection-start-line="89" selection-start-column="51" selection-end-line="89" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#4820#4828#0" expanded="false" />
-            <element signature="e#5461#5469#0" expanded="false" />
-            <element signature="e#6135#6146#0" expanded="false" />
-            <element signature="e#8516#8531#0" expanded="false" />
-            <element signature="e#9286#9301#0" expanded="false" />
-            <element signature="e#10046#10061#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -979,9 +789,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
           <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -989,7 +796,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
           <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1005,7 +811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
           <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1013,7 +818,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1021,7 +825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="168" max-vertical-offset="1581">
           <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1029,26 +832,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
           <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3791">
-          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
-          <folding>
-            <element signature="e#362#363#0" expanded="true" />
-            <element signature="e#402#403#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11252" max-vertical-offset="17323">
-          <caret line="707" column="38" selection-start-line="707" selection-start-column="38" selection-end-line="707" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1056,7 +839,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1064,7 +846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
           <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1072,7 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
           <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1094,7 +874,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="2193">
           <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1102,9 +881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="24378">
           <caret line="112" column="57" selection-start-line="112" selection-start-column="57" selection-end-line="112" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1112,7 +888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
           <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1128,7 +903,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
           <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1136,7 +910,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1144,87 +917,32 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2482">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/notifications/Notification.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/notifications/NotificationLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
-          <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/updates/InstallationInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2" max-vertical-offset="1122">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/updates/PackageVersionClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
-          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/tasks/TaskTriggerInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/tasks/TaskState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/tasks/TaskResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1428">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/tasks/TaskInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1819">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/plugins/PluginInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1411">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mediabrowser/apiinteraction/ApiClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4666012" vertical-offset="120" max-vertical-offset="45798">
-          <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.32615384" vertical-offset="120" max-vertical-offset="45798">
+          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mediabrowser/model/dlna/StreamBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="11864" max-vertical-offset="17629">
+          <caret line="725" column="38" selection-start-line="725" selection-start-column="38" selection-end-line="725" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23538461" vertical-offset="0" max-vertical-offset="3825">
+          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

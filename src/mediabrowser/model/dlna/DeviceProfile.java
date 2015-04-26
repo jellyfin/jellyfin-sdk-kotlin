@@ -444,6 +444,10 @@ public class DeviceProfile
 		setXmlRootAttributes(new XmlAttribute[] { });
 
 		setSupportedMediaTypes("Audio,Photo,Video");
+		setMaxStreamingBitrate(8000000);
+		setMaxStaticBitrate(8000000);
+		setMusicStreamingTranscodingBitrate(128000);
+		setMusicSyncBitrate(128000);
 	}
 
 	public final java.util.ArrayList<String> GetSupportedMediaTypes()

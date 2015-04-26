@@ -201,11 +201,6 @@ public enum ItemFields
 	SeriesStudio,
 
 	/** 
-	 The soundtrack ids
-	*/
-	SoundtrackIds,
-
-	/** 
 	 The sort name of the item
 	*/
 	SortName,

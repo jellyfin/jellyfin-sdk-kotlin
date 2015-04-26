@@ -451,7 +451,7 @@ public class StreamBuilder
 				playlistItem.setMaxAudioChannels(Math.min(options.getMaxAudioChannels(), currentValue));
 			}
 
-			int audioBitrate = GetAudioBitrate(playlistItem.getTargetAudioChannels(), playlistItem.getTargetAudioCodec());
+			int audioBitrate = GetAudioBitrate(options.GetMaxBitrate(), playlistItem.getTargetAudioChannels(), playlistItem.getTargetAudioCodec(), audioStream);
 			Integer tempVar7 = playlistItem.getAudioBitrate();
 			playlistItem.setAudioBitrate(Math.min((tempVar7 != null) ? tempVar7 : audioBitrate, audioBitrate));
 
@@ -476,17 +476,35 @@ public class StreamBuilder
 		return playlistItem;
 	}
 
-	private int GetAudioBitrate(Integer channels, String codec)
+	private int GetAudioBitrate(Integer maxTotalBitrate, Integer targetAudioChannels, String targetAudioCodec, MediaStream audioStream)
 	{
-		if (channels != null)
+		int defaultBitrate = 128000;
+
+		if (targetAudioChannels != null)
 		{
-			if (channels >= 5)
+			if (targetAudioChannels >= 5 && ((maxTotalBitrate != null) ? maxTotalBitrate : 0) >= 1500000)
 			{
-				return 320000;
+				defaultBitrate = 320000;
 			}
 		}
 
-		return 128000;
+		int encoderAudioBitrateLimit = Integer.MAX_VALUE;
+
+		if (audioStream != null)
+		{
+			// Seeing webm encoding failures when source has 1 audio channel and 22k bitrate. 
+			// Any attempts to transcode over 64k will fail
+			if (audioStream.getChannels() != null && audioStream.getChannels() == 1)
+			{
+				Integer tempVar = audioStream.getBitRate();
+				if (((tempVar != null) ? tempVar : 0) < 64000)
+				{
+					encoderAudioBitrateLimit = 64000;
+				}
+			}
+		}
+
+		return Math.min(defaultBitrate, encoderAudioBitrateLimit);
 	}
 
 	private PlayMethod GetVideoDirectPlayProfile(DeviceProfile profile, MediaSourceInfo mediaSource, MediaStream videoStream, MediaStream audioStream, boolean isEligibleForDirectPlay, boolean isEligibleForDirectStream)
