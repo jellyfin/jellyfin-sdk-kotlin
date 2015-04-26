@@ -25,7 +25,6 @@ import mediabrowser.model.devices.DevicesOptions;
 import mediabrowser.model.devices.LocalFileInfo;
 import mediabrowser.model.dto.*;
 import mediabrowser.model.entities.DisplayPreferences;
-import mediabrowser.model.entities.MBRegistrationRecord;
 import mediabrowser.model.entities.ParentalRating;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.globalization.CountryInfo;
