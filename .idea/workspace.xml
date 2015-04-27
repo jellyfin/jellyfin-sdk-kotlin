@@ -60,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidProfile.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AndroidProfile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17" vertical-offset="1224" max-vertical-offset="3842">
-              <caret line="87" column="23" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1479" max-vertical-offset="3842">
+              <caret line="107" column="26" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Api16Builder.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Api16Builder.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/Api16Builder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.689655" vertical-offset="1065" max-vertical-offset="6970">
-              <caret line="92" column="9" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.23210071" vertical-offset="1065" max-vertical-offset="6970">
+              <caret line="86" column="53" selection-start-line="86" selection-start-column="53" selection-end-line="86" selection-end-column="53" />
               <folding>
                 <element signature="e#399#400#0" expanded="true" />
                 <element signature="e#434#435#0" expanded="true" />
@@ -915,23 +915,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/Api16Builder.java">
+    <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.689655" vertical-offset="1065" max-vertical-offset="6970">
-          <caret line="92" column="9" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1479" max-vertical-offset="3842">
+          <caret line="107" column="26" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
           <folding>
-            <element signature="e#399#400#0" expanded="true" />
-            <element signature="e#434#435#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/AndroidProfile.java">
+    <entry file="file://$PROJECT_DIR$/android/src/mediabrowser/apiinteraction/android/profiles/Api16Builder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17" vertical-offset="1224" max-vertical-offset="3842">
-          <caret line="87" column="23" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.23210071" vertical-offset="1065" max-vertical-offset="6970">
+          <caret line="86" column="53" selection-start-line="86" selection-start-column="53" selection-end-line="86" selection-end-column="53" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#399#400#0" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
           </folding>
         </state>
       </provider>
