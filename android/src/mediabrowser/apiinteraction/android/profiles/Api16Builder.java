@@ -80,7 +80,7 @@ public class Api16Builder {
                 conditions.add(new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, tangible.DotNetToJavaStringHelper.join("|", videoProfiles)));
             }
             else{
-                conditions.add(new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, "high|main|baseline|constrained baseline"));
+                conditions.add(new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, Defaults.DefaultH264Profile));
             }
 
             if (maxLevel <= 0){
@@ -332,6 +332,8 @@ public class Api16Builder {
             }
             else if (StringHelper.EqualsIgnoreCase("mpeg", codecType)){
                 profile.setCodec("mp3");
+
+                conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.AudioBitrate, "320000"));
             }
             else if (StringHelper.EqualsIgnoreCase("opus", codecType)){
                 profile.setCodec("vorbis");

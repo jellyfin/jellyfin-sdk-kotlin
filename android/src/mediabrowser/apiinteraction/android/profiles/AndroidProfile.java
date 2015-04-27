@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 public class AndroidProfile extends DeviceProfile
 {
-	protected int DefaultH264Level;
-
 	public AndroidProfile(){
 		this(new AndroidProfileOptions());
 	}
@@ -18,7 +16,6 @@ public class AndroidProfile extends DeviceProfile
 	{
 		setName("Android");
 
-		DefaultH264Level = profileOptions.DefaultH264Level;
 		setMaxStaticBitrate(20000000);
 		setMaxStreamingBitrate(20000000);
 
@@ -101,13 +98,14 @@ public class AndroidProfile extends DeviceProfile
 		tempVar10.setCodec("h264");
 		tempVar10.setConditions(new ProfileCondition[]
 				{
-						new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, "high|main|baseline|constrained baseline"),
-						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, String.valueOf(DefaultH264Level)),
+						new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, profileOptions.DefaultH264Profile),
+						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, String.valueOf(profileOptions.DefaultH264Level)),
 						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Width, "1920"),
 						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.Height, "1080"),
 						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoBitDepth, "8"),
 						new ProfileCondition(ProfileConditionType.NotEquals, ProfileConditionValue.IsAnamorphic, "true")
 				});
+
 		CodecProfile tempVar11 = new CodecProfile();
 		tempVar11.setType(CodecType.Video);
 		tempVar11.setCodec("vpx,mpeg4");
@@ -118,14 +116,17 @@ public class AndroidProfile extends DeviceProfile
 						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoBitDepth, "8"),
 						new ProfileCondition(ProfileConditionType.NotEquals, ProfileConditionValue.IsAnamorphic, "true")
 				});
+
 		CodecProfile tempVar12 = new CodecProfile();
 		tempVar12.setType(CodecType.VideoAudio);
 		tempVar12.setCodec("aac");
 		tempVar12.setConditions(new ProfileCondition[] {new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.AudioChannels, "2")});
+
 		CodecProfile tempVar13 = new CodecProfile();
 		tempVar13.setType(CodecType.Audio);
 		tempVar13.setCodec("aac");
 		tempVar13.setConditions(new ProfileCondition[] {new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.AudioChannels, "2")});
+
 		CodecProfile tempVar14 = new CodecProfile();
 		tempVar14.setType(CodecType.Audio);
 		tempVar14.setCodec("mp3");
@@ -136,7 +137,7 @@ public class AndroidProfile extends DeviceProfile
 				});
 		setCodecProfiles(new CodecProfile[] {tempVar10, tempVar11, tempVar12, tempVar13, tempVar14});
 
-		buildDynamicProfiles();
+		buildDynamicProfiles(profileOptions);
 
 		addM4v();
 
@@ -196,16 +197,13 @@ public class AndroidProfile extends DeviceProfile
 		setResponseProfiles(responseProfiles.toArray(new ResponseProfile[responseProfiles.size()]));
 	}
 
-	private void buildDynamicProfiles(){
-
-		AndroidProfileOptions defaults = new AndroidProfileOptions();
-		defaults.DefaultH264Level = DefaultH264Level;
+	private void buildDynamicProfiles(AndroidProfileOptions options){
 
 		if (Build.VERSION.SDK_INT >= 21){
-			new Api21Builder(defaults).buildProfiles(this);
+			new Api21Builder(options).buildProfiles(this);
 		}
 		else if (Build.VERSION.SDK_INT >= 16){
-			new Api16Builder(defaults).buildProfiles(this);
+			new Api16Builder(options).buildProfiles(this);
 		}
 	}
 

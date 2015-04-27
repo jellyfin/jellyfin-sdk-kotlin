@@ -6,6 +6,7 @@ package mediabrowser.apiinteraction.android.profiles;
 public class AndroidProfileOptions {
 
     public int DefaultH264Level = 40;
+    public String DefaultH264Profile = "high|main|baseline|constrained baseline";
     public boolean SupportsAc3 = false;
     public boolean SupportsHls = true;
 }
