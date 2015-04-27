@@ -87,6 +87,9 @@ public class Api16Builder {
                 maxLevel = Defaults.DefaultH264Level;
             }
             conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, String.valueOf(maxLevel)));
+
+            // TODO: This needs to vary per resolution
+            conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.RefFrames, "4"));
         }
 
         for (ProfileCondition existing : profile.getConditions()){
