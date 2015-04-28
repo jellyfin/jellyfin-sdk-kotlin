@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
-import mediabrowser.apiinteraction.android.images.DiskLruImageCache;
 import mediabrowser.apiinteraction.android.images.LruBitmapCache;
 import mediabrowser.model.logging.ILogger;
 
@@ -54,25 +53,7 @@ public class ImageCacheManager{
 
     private void init(){
 
-        CacheType type = CacheType.MEMORY;
-
-        switch (type) {
-            case DISK:
-                try {
-                    int byteSize = 500000000;
-                    mImageCache = new DiskLruImageCache(context, uniqueName, byteSize, logger);
-                }
-                catch (IOException ex){
-                    logger.ErrorException("Failed to load DiskLruImageCache. Reverting to LruBitmapCache.", ex);
-                    mImageCache = new LruBitmapCache();
-                }
-                break;
-            case MEMORY:
-                mImageCache = new LruBitmapCache();
-            default:
-                mImageCache = new LruBitmapCache();
-                break;
-        }
+        mImageCache = new LruBitmapCache();
 
         mImageLoader = new ImageLoader(queue, mImageCache);
     }

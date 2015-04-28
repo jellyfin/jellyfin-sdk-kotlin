@@ -9,12 +9,11 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="android-support-v4" level="project" />
     <orderEntry type="module" module-name="MediaBrowser.ApiClient.Java" />
-    <orderEntry type="library" name="com.mcxiaoke.volley:library:1.0.10" level="project" />
     <orderEntry type="library" name="com.squareup.okhttp:okhttp-urlconnection:2.2.0" level="project" />
     <orderEntry type="library" name="com.squareup.okhttp:okhttp:2.2.0" level="project" />
     <orderEntry type="library" name="com.squareup.okio:okio:1.2.0" level="project" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.3" level="project" />
-    <orderEntry type="library" name="com.jakewharton:disklrucache:2.0.2" level="project" />
     <orderEntry type="library" name="com.google.guava:guava:18.0" level="project" />
+    <orderEntry type="library" name="volley" level="project" />
   </component>
 </module>

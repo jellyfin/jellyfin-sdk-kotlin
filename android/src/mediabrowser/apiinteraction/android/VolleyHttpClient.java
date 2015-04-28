@@ -34,6 +34,9 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         this.context = context;
     }
 
+    /** Default maximum disk usage in bytes. */
+    private static final int DEFAULT_DISK_USAGE_BYTES = 100 * 1024 * 1024;
+
     /**
      * @return The Volley Request queue, the queue will be created if it is null
      */
@@ -42,7 +45,7 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         // created when it is accessed for the first time
         if (mRequestQueue == null) {
 
-            mRequestQueue = Volley.newRequestQueue(context, new OkHttpStack());
+            mRequestQueue = Volley.newRequestQueue(context, new OkHttpStack(), DEFAULT_DISK_USAGE_BYTES);
             //mRequestQueue = Volley.newRequestQueue(context, new HttpClientStack(new DefaultHttpClient()));
             //mRequestQueue = Volley.newRequestQueue(context);
         }
