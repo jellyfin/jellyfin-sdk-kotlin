@@ -81,15 +81,6 @@ public class Api21Builder extends Api16Builder{
         // Audio channels
         int maxAudioChannels = audioCaps.getMaxInputChannelCount();
 
-        if (profile.getType() == CodecType.VideoAudio &&
-                StringHelper.EqualsIgnoreCase(profile.getCodec(), "aac")){
-
-            // TODO: Transcoding to multi-channel seems to cause playback failures
-            // Need to improve this so that it is only set when transcoding
-            // One approach could be to attach the protocol and container to the codec profile
-            maxAudioChannels = Math.min(maxAudioChannels, 2);
-        }
-
         String channels = String.valueOf(maxAudioChannels);
         conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.AudioChannels, channels));
 
