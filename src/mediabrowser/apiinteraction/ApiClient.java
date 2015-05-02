@@ -1141,7 +1141,7 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("info");
         }
 
-        Logger.Debug("ReportPlaybackStart: Item {0}", info.getItem());
+        Logger.Debug("ReportPlaybackStart: Item %s", info.getItem());
 
         String url = GetApiUrl("Sessions/Playing");
 

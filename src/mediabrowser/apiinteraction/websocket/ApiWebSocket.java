@@ -152,7 +152,7 @@ public class ApiWebSocket implements ISocketListener {
 
         String messageType = GetMessageType(message);
 
-        logger.Info("Received web socket message: {0}", messageType);
+        logger.Info("Received web socket message: %s", messageType);
 
         if (StringHelper.EqualsIgnoreCase(messageType, "LibraryChanged"))
         {

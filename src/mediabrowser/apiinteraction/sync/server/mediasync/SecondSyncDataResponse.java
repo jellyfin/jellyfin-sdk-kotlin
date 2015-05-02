@@ -23,7 +23,7 @@ public class SecondSyncDataResponse extends EmptyResponse {
     @Override
     public void onResponse() {
 
-        logger.Debug("Completed media sync process with server Id: {0}", serverInfo.getId());
+        logger.Debug("Completed media sync process with server Id: %s", serverInfo.getId());
         progress.reportComplete();
     }
 
