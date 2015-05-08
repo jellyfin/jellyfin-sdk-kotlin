@@ -83,7 +83,7 @@ public class Api16Builder {
                 conditions.add(new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, Defaults.DefaultH264Profile));
             }
 
-            if (maxLevel <= 0){
+            if (maxLevel <= 0 || Defaults.ForceH264Level){
                 maxLevel = Defaults.DefaultH264Level;
             }
             conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, String.valueOf(maxLevel)));

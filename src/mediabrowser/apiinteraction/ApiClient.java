@@ -66,14 +66,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Observable;
-import java.util.logging.Logger;
 
 public class ApiClient extends BaseApiClient {
  
     protected IAsyncHttpClient httpClient;
     private ApiEventListener apiEventListener;
 
-    private ConnectionMode connectionMode = ConnectionMode.Local;
     private INetworkConnection networkConnection;
     private ApiWebSocket apiWebSocket;
 
@@ -81,6 +79,8 @@ public class ApiClient extends BaseApiClient {
     public ServerInfo getServerInfo(){
         return serverInfo;
     }
+
+    private ConnectionMode connectionMode = ConnectionMode.Local;
 
     private Observable authenticatedObservable = new AutomaticObservable();
     public Observable getAuthenticatedObservable() {
