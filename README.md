@@ -1,7 +1,7 @@
-MediaBrowser.ApiClient.Java
+Emby.ApiClient.Java
 ===========================
 
-This library allows Android clients to easily access the Media Browser Rest API. It is built with Volley, OkHttp, Boon and Robolectric. The dependencies are modular and can easily be swapped out with alternate implementations, if needed.
+This library allows Android clients to easily access the Emby API. It is built with Volley, OkHttp, Boon and Robolectric. The dependencies are modular and can easily be swapped out with alternate implementations, if needed.
 
 # Single Server Example #
 
