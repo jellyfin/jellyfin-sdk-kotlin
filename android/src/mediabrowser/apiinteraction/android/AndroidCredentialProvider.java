@@ -52,14 +52,14 @@ public class AndroidCredentialProvider implements ICredentialProvider {
         }
     }
 
-    public static void Save(ServerCredentials credentials, Context context, IJsonSerializer jsonSerializer) {
+    public static void Save(String credentialsJson, Context context) {
 
         // We need an Editor object to make preference changes.
         // All objects are from android.context.Context
         SharedPreferences settings = getSharedPreferences(context);
         SharedPreferences.Editor editor = settings.edit();
 
-        editor.putString(settingsKey, jsonSerializer.SerializeToString(credentials));
+        editor.putString(settingsKey, credentialsJson);
 
         // Commit the edits!
         boolean saved = editor.commit();
