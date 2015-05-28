@@ -7,13 +7,20 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="android-support-v4" level="project" />
     <orderEntry type="module" module-name="MediaBrowser.ApiClient.Java" />
-    <orderEntry type="library" name="com.squareup.okhttp:okhttp-urlconnection:2.2.0" level="project" />
-    <orderEntry type="library" name="com.squareup.okhttp:okhttp:2.2.0" level="project" />
-    <orderEntry type="library" name="com.squareup.okio:okio:1.2.0" level="project" />
-    <orderEntry type="library" name="com.google.code.gson:gson:2.3" level="project" />
     <orderEntry type="library" name="com.google.guava:guava:18.0" level="project" />
-    <orderEntry type="library" name="volley" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../lib/volley.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="com.google.code.gson:gson:2.3.1" level="project" />
+    <orderEntry type="library" name="com.squareup.okhttp:okhttp:2.3.0" level="project" />
+    <orderEntry type="library" name="com.squareup.okhttp:okhttp-urlconnection:2.3.0" level="project" />
+    <orderEntry type="library" name="android-support-v4" level="project" />
   </component>
 </module>

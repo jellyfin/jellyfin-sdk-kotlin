@@ -3,6 +3,7 @@ package mediabrowser.apiinteraction.android;
 import android.content.SharedPreferences;
 import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.connectionmanager.ConnectionManager;
+import mediabrowser.apiinteraction.device.IDevice;
 import mediabrowser.apiinteraction.discovery.ServerLocator;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.model.apiclient.ServerInfo;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 
 public class AndroidConnectionManager extends ConnectionManager {
 
-    public AndroidConnectionManager(Context context, IJsonSerializer jsonSerializer, ILogger logger, IAsyncHttpClient httpClient, String applicationName, String applicationVersion, ClientCapabilities clientCapabilities, ApiEventListener apiEventListener) {
+    public AndroidConnectionManager(Context context, IJsonSerializer jsonSerializer, ILogger logger, IAsyncHttpClient httpClient, String applicationName, String applicationVersion, IDevice device, ClientCapabilities clientCapabilities, ApiEventListener apiEventListener) {
 
         super(new AndroidCredentialProvider(jsonSerializer, context, logger),
                 new AndroidNetworkConnection(context, logger),
@@ -25,7 +26,7 @@ public class AndroidConnectionManager extends ConnectionManager {
                 httpClient,
                 applicationName,
                 applicationVersion,
-                new AndroidDevice(context),
+                device,
                 clientCapabilities, apiEventListener);
 
         SaveAppInfo(context);
@@ -39,6 +40,9 @@ public class AndroidConnectionManager extends ConnectionManager {
 
         editor.putString("appName", applicationName);
         editor.putString("appVersion", applicationVersion);
+        editor.putString("capabilities", jsonSerializer.SerializeToString(getClientCapabilities()));
+        editor.putString("deviceId", getDevice().getDeviceId());
+        editor.putString("deviceName", getDevice().getDeviceName());
 
         // Commit the edits!
         editor.commit();

@@ -1,25 +1,4 @@
 Manifest-Version: 1.0
-Class-Path: Java-WebSocket-1.3.0.jar boon-0.28.jar robolectric-2.4.jar
-  robolectric-annotations-2.4.jar junit-dep-4.8.2.jar hamcrest-core-1.
- 1.jar objenesis-1.3.jar sqlite4java-0.282.jar libsqlite-0.282-3-nativ
- es-windows-x86.jar libsqlite-0.282-3-natives-windows-x86_64.jar libsq
- lite-0.282-3-natives-mac-x86_64.jar libsqlite-0.282-3-natives-linux-x
- 86.jar libsqlite-0.282-3-natives-linux-x86_64.jar asm-5.0.1.jar asm-c
- ommons-5.0.1.jar asm-tree-5.0.1.jar asm-util-5.0.1.jar asm-analysis-5
- .0.1.jar commons-logging-1.1.1.jar commons-codec-1.3.jar httpclient-4
- .0.3.jar httpcore-4.0.1.jar vtd-xml-2.11.jar android-all-4.3_r2-robol
- ectric-0.jar annotations-12.0.jar maven-ant-tasks-2.1.3.jar ant-1.8.0
- .jar ant-launcher-1.8.0.jar classworlds-1.1-alpha-2.jar plexus-contai
- ner-default-1.0-alpha-9-stable-1.jar plexus-utils-1.5.15.jar plexus-i
- nterpolation-1.11.jar maven-artifact-2.2.1.jar maven-artifact-manager
- -2.2.1.jar maven-repository-metadata-2.2.1.jar wagon-provider-api-1.0
- -beta-6.jar backport-util-concurrent-3.1.jar maven-model-2.2.1.jar ma
- ven-project-2.2.1.jar maven-settings-2.2.1.jar maven-profile-2.2.1.ja
- r maven-plugin-registry-2.2.1.jar maven-error-diagnostics-2.2.1.jar w
- agon-file-1.0-beta-6.jar wagon-http-lightweight-1.0-beta-6.jar wagon-
- http-shared-1.0-beta-6.jar xercesMinimal-1.9.6.2.jar nekohtml-1.9.6.2
- .jar junit-4.11.jar hamcrest-core-1.3.jar okio-1.2.0.jar okhttp-urlco
- nnection-2.2.0.jar okhttp-2.2.0.jar okio-1.2.0.jar gson-2.3.jar diskl
- rucache-2.0.2.jar android-support-v4.jar volley.jar okhttp-2.2.0.jar 
- okio-1.2.0.jar
+Class-Path: Java-WebSocket-1.3.0.jar guava-18.0.jar junit-4.11.jar ham
+ crest-core-1.3.jar
 

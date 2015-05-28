@@ -34,6 +34,14 @@ public class AndroidDevice implements IDevice {
         deviceName = getDeviceNameInternal();
     }
 
+    public AndroidDevice(Context context, String deviceId, String deviceName){
+
+        this.context = context;
+
+        this.deviceId = deviceId;
+        this.deviceName = deviceName;
+    }
+
     @Override
     public String getDeviceName() {
 

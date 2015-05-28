@@ -6,6 +6,7 @@ import android.os.Bundle;
 import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.android.*;
 import mediabrowser.apiinteraction.android.sync.data.AndroidAssetManager;
+import mediabrowser.apiinteraction.device.Device;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.apiinteraction.sync.MultiServerSync;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
@@ -44,15 +45,15 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
         IAsyncHttpClient volleyHttpClient = new VolleyHttpClient(logger, context);
 
-        ClientCapabilities capabilities = new ClientCapabilities();
-        capabilities.setSupportsContentUploading(true);
-
         ApiEventListener apiEventListener = new ApiEventListener();
 
         SharedPreferences preferences = context.getSharedPreferences("AndroidConnectionManager", Context.MODE_PRIVATE);
 
         String appName = preferences.getString("appName", null);
         String appVersion = preferences.getString("appVersion", null);
+        String capabilitiesJson = preferences.getString("capabilities", null);
+        String deviceName = preferences.getString("deviceName", null);
+        String deviceId = preferences.getString("deviceId", null);
 
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(appName))
         {
@@ -66,12 +67,34 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
             return;
         }
 
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(capabilitiesJson))
+        {
+            logger.Info("capabilitiesJson not set yet. Skipping sync.");
+            return;
+        }
+
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(deviceName))
+        {
+            logger.Info("deviceName not set yet. Skipping sync.");
+            return;
+        }
+
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(deviceId))
+        {
+            logger.Info("deviceId not set yet. Skipping sync.");
+            return;
+        }
+
+        ClientCapabilities capabilities = jsonSerializer.DeserializeFromString(capabilitiesJson, ClientCapabilities.class);
+        capabilities.setSupportsContentUploading(true);
+
         IConnectionManager connectionManager = new AndroidConnectionManager(context,
                 jsonSerializer,
                 logger,
                 volleyHttpClient,
                 appName,
                 appVersion,
+                new AndroidDevice(context, deviceId, deviceName),
                 capabilities,
                 apiEventListener);
 
