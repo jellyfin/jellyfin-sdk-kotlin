@@ -133,15 +133,6 @@ public class DeviceProfile
 	{
 		SerialNumber = value;
 	}
-	private boolean IgnoreTranscodeByteRangeRequests;
-	public final boolean getIgnoreTranscodeByteRangeRequests()
-	{
-		return IgnoreTranscodeByteRangeRequests;
-	}
-	public final void setIgnoreTranscodeByteRangeRequests(boolean value)
-	{
-		IgnoreTranscodeByteRangeRequests = value;
-	}
 
 	private boolean EnableAlbumArtInDidl;
 	public final boolean getEnableAlbumArtInDidl()
@@ -351,6 +342,24 @@ public class DeviceProfile
 	public final void setEnableMSMediaReceiverRegistrar(boolean value)
 	{
 		EnableMSMediaReceiverRegistrar = value;
+	}
+	private boolean IgnoreTranscodeByteRangeRequests;
+	public final boolean getIgnoreTranscodeByteRangeRequests()
+	{
+		return IgnoreTranscodeByteRangeRequests;
+	}
+	public final void setIgnoreTranscodeByteRangeRequests(boolean value)
+	{
+		IgnoreTranscodeByteRangeRequests = value;
+	}
+	private boolean EnableDlnaProtocol;
+	public final boolean getEnableDlnaProtocol()
+	{
+		return EnableDlnaProtocol;
+	}
+	public final void setEnableDlnaProtocol(boolean value)
+	{
+		EnableDlnaProtocol = value;
 	}
 
 	private XmlAttribute[] XmlRootAttributes;
@@ -605,7 +614,7 @@ public class DeviceProfile
 		return null;
 	}
 
-	public final ResponseProfile GetVideoMediaProfile(String container, String audioCodec, String videoCodec, Integer audioBitrate, Integer audioChannels, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic, Boolean isCabac, Integer refFrames, Integer numVideoStreams, Integer numAudioStreams)
+	public final ResponseProfile GetVideoMediaProfile(String container, String audioCodec, String videoCodec, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic, Boolean isCabac, Integer refFrames, Integer numVideoStreams, Integer numAudioStreams)
 	{
 		container = StringHelper.TrimStart(((container != null) ? container : ""), '.');
 
@@ -639,7 +648,7 @@ public class DeviceProfile
 			boolean anyOff = false;
 			for (ProfileCondition c : i.getConditions())
 			{
-				if (!conditionProcessor.IsVideoConditionSatisfied(c, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams))
+				if (!conditionProcessor.IsVideoConditionSatisfied(c, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams))
 				{
 					anyOff = true;
 					break;

@@ -59,6 +59,7 @@ public class VolleyHttpClient implements IAsyncHttpClient {
 
             cacheManager = new ImageCacheManager(context, logger, getRequestQueue(), "MediaBrowser");
         }
+
         return cacheManager.getImageLoader();
     }
 
@@ -102,7 +103,7 @@ public class VolleyHttpClient implements IAsyncHttpClient {
 
         final String url = request.getUrl();
 
-        StringRequest req = new VolleyStringRequest(method, url, new VolleyStringListener(response, logger, url), new VolleyErrorListener(response, logger), request);
+        StringRequest req = new VolleyStringRequest(method, url, new VolleyResponseListener(response, logger, url), new VolleyErrorListener(response, logger), request);
 
         req.setRetryPolicy(new DefaultRetryPolicy(
                 request.getTimeout(), // timeout in ms

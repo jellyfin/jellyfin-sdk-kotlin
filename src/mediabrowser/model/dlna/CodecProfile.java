@@ -38,6 +38,18 @@ public class CodecProfile
 		Codec = value;
 	}
 
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [XmlAttribute("container")] public string Container {get;set;}
+	private String Container;
+	public final String getContainer()
+	{
+		return Container;
+	}
+	public final void setContainer(String value)
+	{
+		Container = value;
+	}
+
 	public CodecProfile()
 	{
 		setConditions(new ProfileCondition[] {});
@@ -56,8 +68,33 @@ public class CodecProfile
 		return list;
 	}
 
-	public final boolean ContainsCodec(String codec)
+	public final java.util.ArrayList<String> GetContainers()
 	{
+		java.util.ArrayList<String> list = new java.util.ArrayList<String>();
+		for (String i : ((getContainer() != null) ? getContainer() : "").split("[,]", -1))
+		{
+			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(i))
+			{
+				list.add(i);
+			}
+		}
+		return list;
+	}
+
+	private boolean ContainsContainer(String container)
+	{
+		java.util.ArrayList<String> containers = GetContainers();
+
+		return containers.isEmpty() || ListHelper.ContainsIgnoreCase(containers, (container != null) ? container : "");
+	}
+
+	public final boolean ContainsCodec(String codec, String container)
+	{
+		if (!ContainsContainer(container))
+		{
+			return false;
+		}
+
 		java.util.ArrayList<String> codecs = GetCodecs();
 
 		return codecs.isEmpty() || ListHelper.ContainsIgnoreCase(codecs, codec);

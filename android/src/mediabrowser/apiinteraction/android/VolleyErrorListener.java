@@ -6,12 +6,12 @@ import com.android.volley.VolleyError;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.net.HttpException;
 
-public class VolleyErrorListener implements Response.ErrorListener {
+public class VolleyErrorListener<T> implements Response.ErrorListener {
 
-    private mediabrowser.apiinteraction.Response<String> outerResponse;
+    private mediabrowser.apiinteraction.Response<T> outerResponse;
     private ILogger logger;
 
-    public VolleyErrorListener(mediabrowser.apiinteraction.Response<String> outerResponse, ILogger logger) {
+    public VolleyErrorListener(mediabrowser.apiinteraction.Response<T> outerResponse, ILogger logger) {
         this.outerResponse = outerResponse;
         this.logger = logger;
     }

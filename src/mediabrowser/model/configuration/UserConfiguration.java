@@ -98,6 +98,15 @@ public class UserConfiguration
 	{
 		ExcludeFoldersFromGrouping = value;
 	}
+	private String[] GroupedFolders;
+	public final String[] getGroupedFolders()
+	{
+		return GroupedFolders;
+	}
+	public final void setGroupedFolders(String[] value)
+	{
+		GroupedFolders = value;
+	}
 
 	private SubtitlePlaybackMode SubtitleMode = SubtitlePlaybackMode.values()[0];
 	public final SubtitlePlaybackMode getSubtitleMode()
@@ -208,11 +217,12 @@ public class UserConfiguration
 		setOrderedViews(new String[] { });
 		setDisplayChannelsWithinViews(new String[] { });
 
-		setExcludeFoldersFromGrouping(new String[] { });
 		setPlainFolderViews(new String[] { });
 		setDisplayCollectionsView(true);
 
 		setIncludeTrailersInSuggestions(true);
 		setEnableCinemaMode(true);
+
+		setGroupedFolders(new String[] { });
 	}
 }

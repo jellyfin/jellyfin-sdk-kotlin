@@ -126,7 +126,7 @@ public class StreamBuilder
 				java.util.ArrayList<ProfileCondition> conditions = new java.util.ArrayList<ProfileCondition>();
 				for (CodecProfile i : options.getProfile().getCodecProfiles())
 				{
-					if (i.getType() == CodecType.Audio && i.ContainsCodec(audioCodec))
+					if (i.getType() == CodecType.Audio && i.ContainsCodec(audioCodec, item.getContainer()))
 					{
 						for (ProfileCondition c : i.getConditions())
 						{
@@ -197,7 +197,7 @@ public class StreamBuilder
 			java.util.ArrayList<CodecProfile> audioCodecProfiles = new java.util.ArrayList<CodecProfile>();
 			for (CodecProfile i : options.getProfile().getCodecProfiles())
 			{
-				if (i.getType() == CodecType.Audio && i.ContainsCodec(transcodingProfile.getAudioCodec()))
+				if (i.getType() == CodecType.Audio && i.ContainsCodec(transcodingProfile.getAudioCodec(), transcodingProfile.getContainer()))
 				{
 					audioCodecProfiles.add(i);
 				}
@@ -355,7 +355,7 @@ public class StreamBuilder
 
 		String tempVar4 = options.getProfile().getName();
 		String tempVar5 = item.getPath();
-		_logger.Debug("Profile: %s, Path: %s, isEligibleForDirectPlay: %s, isEligibleForDirectStream: %s", (tempVar4 != null) ? tempVar4 : "Unknown Profile", (tempVar5 != null) ? tempVar5 : "Unknown path", isEligibleForDirectPlay, isEligibleForDirectStream);
+		_logger.Debug("Profile: {0}, Path: {1}, isEligibleForDirectPlay: {2}, isEligibleForDirectStream: {3}", (tempVar4 != null) ? tempVar4 : "Unknown Profile", (tempVar5 != null) ? tempVar5 : "Unknown path", isEligibleForDirectPlay, isEligibleForDirectStream);
 
 		if (isEligibleForDirectPlay || isEligibleForDirectStream)
 		{
@@ -417,7 +417,7 @@ public class StreamBuilder
 			java.util.ArrayList<ProfileCondition> videoTranscodingConditions = new java.util.ArrayList<ProfileCondition>();
 			for (CodecProfile i : options.getProfile().getCodecProfiles())
 			{
-				if (i.getType() == CodecType.Video && i.ContainsCodec(transcodingProfile.getVideoCodec()))
+				if (i.getType() == CodecType.Video && i.ContainsCodec(transcodingProfile.getVideoCodec(), transcodingProfile.getContainer()))
 				{
 					for (ProfileCondition c : i.getConditions())
 					{
@@ -431,7 +431,7 @@ public class StreamBuilder
 			java.util.ArrayList<ProfileCondition> audioTranscodingConditions = new java.util.ArrayList<ProfileCondition>();
 			for (CodecProfile i : options.getProfile().getCodecProfiles())
 			{
-				if (i.getType() == CodecType.VideoAudio && i.ContainsCodec(transcodingProfile.getAudioCodec()))
+				if (i.getType() == CodecType.VideoAudio && i.ContainsCodec(transcodingProfile.getAudioCodec(), transcodingProfile.getContainer()))
 				{
 					for (ProfileCondition c : i.getConditions())
 					{
@@ -482,7 +482,7 @@ public class StreamBuilder
 
 		if (targetAudioChannels != null)
 		{
-			if (targetAudioChannels >= 5 && ((maxTotalBitrate != null) ? maxTotalBitrate : 0) >= 1500000)
+			if (targetAudioChannels >= 5 && ((maxTotalBitrate != null) ? maxTotalBitrate : 0) >= 2000000)
 			{
 				defaultBitrate = 320000;
 			}
@@ -524,7 +524,7 @@ public class StreamBuilder
 		{
 			String tempVar = profile.getName();
 			String tempVar2 = mediaSource.getPath();
-			_logger.Debug("Profile: %s, No direct play profiles found for Path: %s", (tempVar != null) ? tempVar : "Unknown Profile", (tempVar2 != null) ? tempVar2 : "Unknown path");
+			_logger.Debug("Profile: {0}, No direct play profiles found for Path: {1}", (tempVar != null) ? tempVar : "Unknown Profile", (tempVar2 != null) ? tempVar2 : "Unknown path");
 
 			return null;
 		}
@@ -570,7 +570,7 @@ public class StreamBuilder
 		// Check container conditions
 		for (ProfileCondition i : conditions)
 		{
-			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams))
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams))
 			{
 				LogConditionFailure(profile, "VideoContainerProfile", i, mediaSource);
 
@@ -584,7 +584,7 @@ public class StreamBuilder
 		{
 			String tempVar4 = profile.getName();
 			String tempVar5 = mediaSource.getPath();
-			_logger.Debug("Profile: %s, DirectPlay=false. Reason=Unknown video codec. Path: %s", (tempVar4 != null) ? tempVar4 : "Unknown Profile", (tempVar5 != null) ? tempVar5 : "Unknown path");
+			_logger.Debug("Profile: {0}, DirectPlay=false. Reason=Unknown video codec. Path: {1}", (tempVar4 != null) ? tempVar4 : "Unknown Profile", (tempVar5 != null) ? tempVar5 : "Unknown path");
 
 			return null;
 		}
@@ -592,7 +592,7 @@ public class StreamBuilder
 		conditions = new java.util.ArrayList<ProfileCondition>();
 		for (CodecProfile i : profile.getCodecProfiles())
 		{
-			if (i.getType() == CodecType.Video && i.ContainsCodec(videoCodec))
+			if (i.getType() == CodecType.Video && i.ContainsCodec(videoCodec, container))
 			{
 				for (ProfileCondition c : i.getConditions())
 				{
@@ -603,7 +603,7 @@ public class StreamBuilder
 
 		for (ProfileCondition i : conditions)
 		{
-			if (!conditionProcessor.IsVideoConditionSatisfied(i, audioBitrate, audioChannels, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams))
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams))
 			{
 				LogConditionFailure(profile, "VideoCodecProfile", i, mediaSource);
 
@@ -619,7 +619,7 @@ public class StreamBuilder
 			{
 				String tempVar6 = profile.getName();
 				String tempVar7 = mediaSource.getPath();
-				_logger.Debug("Profile: %s, DirectPlay=false. Reason=Unknown audio codec. Path: %s", (tempVar6 != null) ? tempVar6 : "Unknown Profile", (tempVar7 != null) ? tempVar7 : "Unknown path");
+				_logger.Debug("Profile: {0}, DirectPlay=false. Reason=Unknown audio codec. Path: {1}", (tempVar6 != null) ? tempVar6 : "Unknown Profile", (tempVar7 != null) ? tempVar7 : "Unknown path");
 
 				return null;
 			}
@@ -627,7 +627,7 @@ public class StreamBuilder
 			conditions = new java.util.ArrayList<ProfileCondition>();
 			for (CodecProfile i : profile.getCodecProfiles())
 			{
-				if (i.getType() == CodecType.VideoAudio && i.ContainsCodec(audioCodec))
+				if (i.getType() == CodecType.VideoAudio && i.ContainsCodec(audioCodec, container))
 				{
 					for (ProfileCondition c : i.getConditions())
 					{
@@ -680,7 +680,7 @@ public class StreamBuilder
 		String tempVar = profile.getName();
 		String tempVar2 = condition.getValue();
 		String tempVar3 = mediaSource.getPath();
-		_logger.Debug("Profile: %s, DirectPlay=false. Reason=%s.%s Condition: %s. ConditionValue: %s. IsRequired: %s. Path: %s", type, (tempVar != null) ? tempVar : "Unknown Profile", condition.getProperty(), condition.getCondition(), (tempVar2 != null) ? tempVar2 : "", condition.getIsRequired(), (tempVar3 != null) ? tempVar3 : "Unknown path");
+		_logger.Debug("Profile: {0}, DirectPlay=false. Reason={1}.{2} Condition: {3}. ConditionValue: {4}. IsRequired: {5}. Path: {6}", type, (tempVar != null) ? tempVar : "Unknown Profile", condition.getProperty(), condition.getCondition(), (tempVar2 != null) ? tempVar2 : "", condition.getIsRequired(), (tempVar3 != null) ? tempVar3 : "Unknown path");
 	}
 
 	private boolean IsEligibleForDirectPlay(MediaSourceInfo item, Integer maxBitrate, MediaStream subtitleStream, VideoOptions options)

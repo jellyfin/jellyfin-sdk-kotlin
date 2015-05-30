@@ -5,7 +5,7 @@ import mediabrowser.model.mediainfo.*;
 
 public class ConditionProcessor
 {
-	public final boolean IsVideoConditionSatisfied(ProfileCondition condition, Integer audioBitrate, Integer audioChannels, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic, Boolean isCabac, Integer refFrames, Integer numVideoStreams, Integer numAudioStreams)
+	public final boolean IsVideoConditionSatisfied(ProfileCondition condition, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic, Boolean isCabac, Integer refFrames, Integer numVideoStreams, Integer numAudioStreams)
 	{
 		switch (condition.getProperty())
 		{
@@ -27,10 +27,6 @@ public class ConditionProcessor
 				return IsConditionSatisfied(condition, videoProfile);
 			case PacketLength:
 				return IsConditionSatisfied(condition, packetLength);
-			case AudioBitrate:
-				return IsConditionSatisfied(condition, audioBitrate);
-			case AudioChannels:
-				return IsConditionSatisfied(condition, audioChannels);
 			case VideoBitDepth:
 				return IsConditionSatisfied(condition, bitDepth);
 			case VideoBitrate:

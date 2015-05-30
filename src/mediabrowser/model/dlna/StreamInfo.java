@@ -409,6 +409,11 @@ public class StreamInfo
 
 		if (getMediaType() == DlnaProfileType.Audio)
 		{
+			if (StringHelper.EqualsIgnoreCase(getSubProtocol(), "hls"))
+			{
+				return String.format("%1$s/audio/%2$s/master.m3u8?%3$s", baseUrl, getItemId(), queryString);
+			}
+
 			return String.format("%1$s/audio/%2$s/stream%3$s?%4$s", baseUrl, getItemId(), extension, queryString);
 		}
 
@@ -490,6 +495,11 @@ public class StreamInfo
 
 		String liveStreamId = item.getMediaSource() == null ? null : item.getMediaSource().getLiveStreamId();
 		list.add(new NameValuePair("LiveStreamId", (liveStreamId != null) ? liveStreamId : ""));
+
+		if (isDlna)
+		{
+			list.add(new NameValuePair("ItemId", item.getItemId()));
+		}
 
 		return list;
 	}

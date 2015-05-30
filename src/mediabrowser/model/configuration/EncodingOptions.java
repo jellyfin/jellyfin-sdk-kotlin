@@ -56,14 +56,14 @@ public class EncodingOptions
 	{
 		EnableThrottling = value;
 	}
-	private int ThrottleThresholdSeconds;
-	public final int getThrottleThresholdSeconds()
+	private int ThrottleThresholdInSeconds;
+	public final int getThrottleThresholdInSeconds()
 	{
-		return ThrottleThresholdSeconds;
+		return ThrottleThresholdInSeconds;
 	}
-	public final void setThrottleThresholdSeconds(int value)
+	public final void setThrottleThresholdInSeconds(int value)
 	{
-		ThrottleThresholdSeconds = value;
+		ThrottleThresholdInSeconds = value;
 	}
 
 	public EncodingOptions()
@@ -72,6 +72,6 @@ public class EncodingOptions
 		setDownMixAudioBoost(2);
 		setEncodingQuality(EncodingQuality.Auto);
 		setEnableThrottling(true);
-		setThrottleThresholdSeconds(120);
+		setThrottleThresholdInSeconds(120);
 	}
 }
