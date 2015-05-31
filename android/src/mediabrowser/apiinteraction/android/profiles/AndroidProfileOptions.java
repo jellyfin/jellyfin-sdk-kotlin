@@ -28,7 +28,7 @@ public class AndroidProfileOptions {
             SupportsAc3 = true;
 
         }
-        else if (deviceName.indexOf("androidtv") != -1){
+        else if (deviceName.indexOf("nexusplayer") != -1){
 
             DefaultH264Level = 41;
 
