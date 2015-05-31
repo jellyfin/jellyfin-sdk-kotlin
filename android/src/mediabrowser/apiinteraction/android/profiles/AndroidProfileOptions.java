@@ -22,13 +22,24 @@ public class AndroidProfileOptions {
 
         deviceName = deviceName.toLowerCase().replace(" ", "");
 
-        if (deviceName.indexOf("firetv") != -1){
+        if (deviceName.indexOf("aftb") != -1){
+
+            DefaultH264Level = 40;
+            SupportsAc3 = true;
+
+        }
+        else if (deviceName.indexOf("afta") != -1){
 
             DefaultH264Level = 40;
             SupportsAc3 = true;
 
         }
         else if (deviceName.indexOf("nexusplayer") != -1){
+
+            DefaultH264Level = 41;
+
+        }
+        else if (deviceName.indexOf("adt-1") != -1){
 
             DefaultH264Level = 41;
 
