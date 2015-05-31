@@ -260,6 +260,15 @@ public class Api16Builder {
             else if (StringHelper.EqualsIgnoreCase("3gpp", codecType)){
                 profile.setContainer("3gp");
             }
+            else if (StringHelper.EqualsIgnoreCase("mpeg2", codecType)){
+                profile.setContainer("mp4,m4v,ts");
+                profile.setVideoCodec("mpeg2video,mpeg2");
+                profile.setAudioCodec("aac");
+
+                if (Defaults.SupportsMkv){
+                    profile.setContainer(profile.getContainer() + ",mkv");
+                }
+            }
             else {
 
                 profile.setContainer(codecType);
