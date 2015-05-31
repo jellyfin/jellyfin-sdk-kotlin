@@ -83,7 +83,7 @@ public class Api16Builder {
                 conditions.add(new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, Defaults.DefaultH264Profile));
             }
 
-            if (maxLevel <= 0 || Defaults.ForceH264Level){
+            if (maxLevel <= 0){
                 maxLevel = Defaults.DefaultH264Level;
             }
             conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, String.valueOf(maxLevel)));
@@ -225,19 +225,31 @@ public class Api16Builder {
             profile.setContainer(codecType);
 
             if (StringHelper.IndexOfIgnoreCase(codecType, "mp4") == 0){
-                profile.setContainer("mp4");
+                profile.setContainer("mp4,m4v");
                 profile.setVideoCodec("h264,mpeg4");
                 profile.setAudioCodec("aac");
+
+                if (Defaults.SupportsMkv){
+                    profile.setContainer(profile.getContainer() + ",mkv");
+                }
             }
             else if (StringHelper.EqualsIgnoreCase("avc", codecType)){
-                profile.setContainer("mp4");
+                profile.setContainer("mp4,m4v");
                 profile.setVideoCodec("h264,mpeg4");
                 profile.setAudioCodec("aac");
+
+                if (Defaults.SupportsMkv){
+                    profile.setContainer(profile.getContainer() + ",mkv");
+                }
             }
             else if (StringHelper.EqualsIgnoreCase("hevc", codecType)){
-                profile.setContainer("mp4");
+                profile.setContainer("mp4,m4v");
                 profile.setVideoCodec("h265");
                 profile.setAudioCodec("aac");
+
+                if (Defaults.SupportsMkv){
+                    profile.setContainer(profile.getContainer() + ",mkv");
+                }
             }
             else if (StringHelper.IndexOfIgnoreCase(codecType, "vp8") != -1){
                 profile.setContainer("webm");

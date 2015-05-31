@@ -53,11 +53,6 @@ public final class MimeTypes
 		dict.put(".asf", "video/x-ms-asf");
 		dict.put(".m4v", "video/x-m4v");
 
-		for (String ext : VideoFileExtensions)
-		{
-			dict.put(ext, ext);
-		}
-
 		return dict;
 	}
 

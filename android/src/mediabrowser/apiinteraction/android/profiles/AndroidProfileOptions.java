@@ -6,8 +6,40 @@ package mediabrowser.apiinteraction.android.profiles;
 public class AndroidProfileOptions {
 
     public int DefaultH264Level = 40;
-    public boolean ForceH264Level = false;
     public String DefaultH264Profile = "high|main|baseline|constrained baseline";
     public boolean SupportsAc3 = false;
     public boolean SupportsHls = true;
+    public boolean SupportsDtsHdMa = false;
+    public boolean SupportsDts = false;
+    public boolean SupportsTrueHd = false;
+    public boolean SupportsMkv = false;
+
+    public AndroidProfileOptions() {
+
+    }
+
+    public AndroidProfileOptions(String deviceName) {
+
+        deviceName = deviceName.toLowerCase().replace(" ", "");
+
+        if (deviceName.indexOf("firetv") != -1){
+
+            DefaultH264Level = 40;
+
+        }
+        else if (deviceName.indexOf("androidtv") != -1){
+
+            DefaultH264Level = 41;
+            SupportsAc3 = true;
+
+        }
+        else if (deviceName.indexOf("nvidiashield") != -1){
+
+            SupportsDtsHdMa = true;
+            SupportsDts = true;
+            SupportsTrueHd = true;
+            SupportsAc3 = true;
+            SupportsMkv = true;
+        }
+    }
 }

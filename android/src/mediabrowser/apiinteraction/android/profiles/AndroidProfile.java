@@ -12,6 +12,12 @@ public class AndroidProfile extends DeviceProfile
 		this(new AndroidProfileOptions());
 	}
 
+	public AndroidProfile(String deviceName){
+
+		this(new AndroidProfileOptions(deviceName));
+	}
+
+
 	public AndroidProfile(AndroidProfileOptions profileOptions)
 	{
 		setName("Android");
@@ -148,6 +154,10 @@ public class AndroidProfile extends DeviceProfile
 			addAc3();
 		}
 
+		if (profileOptions.SupportsDts || profileOptions.SupportsDtsHdMa || profileOptions.SupportsTrueHd){
+			addDca();
+		}
+
 		buildSubtitleProfiles();
 	}
 
@@ -158,7 +168,10 @@ public class AndroidProfile extends DeviceProfile
 			if (profile.getType() == DlnaProfileType.Video){
 
 				String container = profile.getContainer();
-				if (container != null && (StringHelper.IndexOfIgnoreCase(container, "mp4") != -1 || StringHelper.IndexOfIgnoreCase(container, "mkv") != -1 || StringHelper.IndexOfIgnoreCase(container, "m4v") != -1)){
+				if (container != null && (StringHelper.IndexOfIgnoreCase(container, "mp4") != -1 ||
+						StringHelper.IndexOfIgnoreCase(container, "mkv") != -1 ||
+						StringHelper.IndexOfIgnoreCase(container, "m4v") != -1 ||
+						StringHelper.IndexOfIgnoreCase(container, "ts") != -1)) {
 
 					String audioCodec = profile.getAudioCodec();
 					if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec))
@@ -167,6 +180,31 @@ public class AndroidProfile extends DeviceProfile
 					}
 					else{
 						profile.setAudioCodec(audioCodec + ",ac3");
+					}
+				}
+			}
+		}
+	}
+
+	private void addDca() {
+
+		for(DirectPlayProfile profile : getDirectPlayProfiles()){
+
+			if (profile.getType() == DlnaProfileType.Video){
+
+				String container = profile.getContainer();
+				if (container != null && (StringHelper.IndexOfIgnoreCase(container, "mp4") != -1 ||
+						StringHelper.IndexOfIgnoreCase(container, "mkv") != -1 ||
+						StringHelper.IndexOfIgnoreCase(container, "m4v") != -1 ||
+						StringHelper.IndexOfIgnoreCase(container, "ts") != -1)) {
+
+					String audioCodec = profile.getAudioCodec();
+					if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec))
+					{
+						profile.setAudioCodec("dca");
+					}
+					else{
+						profile.setAudioCodec(audioCodec + ",dca");
 					}
 				}
 			}
