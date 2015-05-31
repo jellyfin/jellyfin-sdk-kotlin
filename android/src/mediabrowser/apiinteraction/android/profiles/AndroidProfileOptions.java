@@ -25,12 +25,12 @@ public class AndroidProfileOptions {
         if (deviceName.indexOf("firetv") != -1){
 
             DefaultH264Level = 40;
+            SupportsAc3 = true;
 
         }
         else if (deviceName.indexOf("androidtv") != -1){
 
             DefaultH264Level = 41;
-            SupportsAc3 = true;
 
         }
         else if (deviceName.indexOf("nvidiashield") != -1){
