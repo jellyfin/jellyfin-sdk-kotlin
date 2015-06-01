@@ -50,7 +50,6 @@ public class AndroidProfileOptions {
             SupportsDts = true;
             SupportsTrueHd = true;
             SupportsAc3 = true;
-            SupportsMkv = true;
         }
     }
 }
