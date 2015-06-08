@@ -2689,4 +2689,24 @@ public class ApiClient extends BaseApiClient {
 
         Send(url, "GET", new SerializedResponse<ReadySyncItemsResult>(response, jsonSerializer, url, Logger, new ReadySyncItemsResult().getClass()));
     }
+
+    public void measureBandwidth(long downloadBytes, Response<Long> response) {
+
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        dict.Add("Size", downloadBytes);
+
+        String url = GetApiUrl("Playback/BitrateTest", dict);
+
+        final long startTime = new Date().getTime();
+
+        Send(url, "GET", new Response<String>(response){
+
+            @Override
+            public void onResponse(String r) {
+                long endTime = new Date().getTime();
+                long time = endTime - startTime;
+            }
+        });
+    }
 }

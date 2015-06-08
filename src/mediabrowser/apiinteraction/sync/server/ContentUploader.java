@@ -107,10 +107,10 @@ public class ContentUploader {
                             IProgress<Double> progress,
                             CancellationToken cancellationToken) {
 
-        logger.Info("Uploading file id: "+ file.getId());
-        logger.Info("Uploading file name: "+ file.getName());
-        logger.Info("Uploading file album: "+ file.getAlbum());
-        logger.Info("Uploading file mime type: "+ file.getMimeType());
+        logger.Info("Uploading file id: %s", file.getId());
+        logger.Info("Uploading file name: %s", file.getName());
+        logger.Info("Uploading file album: %s", file.getAlbum());
+        logger.Info("Uploading file mime type: %s", file.getMimeType());
 
         device.UploadFile(file, apiClient, progress, cancellationToken);
     }
