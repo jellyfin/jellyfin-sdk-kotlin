@@ -1,5 +1,8 @@
 package mediabrowser.apiinteraction.android;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import com.android.volley.toolbox.DiskBasedCache;
 import mediabrowser.apiinteraction.android.images.ImageCacheManager;
 import mediabrowser.apiinteraction.http.HttpRequest;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
@@ -10,6 +13,8 @@ import com.android.volley.*;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import java.io.File;
 
 public class VolleyHttpClient implements IAsyncHttpClient {
 
@@ -113,5 +118,61 @@ public class VolleyHttpClient implements IAsyncHttpClient {
 
         // add the request object to the queue to be executed
         addToRequestQueue(req);
+    }
+
+    public void getBitmap(String url, final Response<Bitmap> outerResponse) {
+
+        getImageLoader().get(url, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                outerResponse.onResponse(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                outerResponse.onError(error);
+            }
+        });
+    }
+
+    public void getCachedFile(final String url, final Response<String> response) {
+
+        final DiskBasedCache diskCache = (DiskBasedCache)getRequestQueue().getCache();
+
+        File file = diskCache.getFileForKey(url);
+
+        if (file.exists()) {
+
+            String path = file.getPath();
+            logger.Debug("getCachedFile found %s", path);
+            response.onResponse(path);
+            return;
+        }
+
+        logger.Debug("getCachedFile will download %s", url);
+
+        getImageLoader().get(url, new ImageLoader.ImageListener() {
+
+            @Override
+            public void onResponse(ImageLoader.ImageContainer imageResponse, boolean isImmediate) {
+
+                logger.Debug("getCachedFile got response");
+
+                File file = diskCache.getFileForKey(url);
+                if (file.exists()){
+                    String path = file.getPath();
+                    response.onResponse(path);
+                }
+                else {
+                    response.onResponse(null);
+                }
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                logger.ErrorException("Error downloading %s", error, url);
+                response.onResponse(null);
+            }
+        });
     }
 }

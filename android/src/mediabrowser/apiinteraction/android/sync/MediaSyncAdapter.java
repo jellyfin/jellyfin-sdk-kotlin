@@ -2,13 +2,17 @@ package mediabrowser.apiinteraction.android.sync;
 
 import android.accounts.Account;
 import android.content.*;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.android.*;
 import mediabrowser.apiinteraction.android.sync.data.AndroidAssetManager;
+import mediabrowser.apiinteraction.android.sync.data.AndroidFileRepository;
 import mediabrowser.apiinteraction.device.Device;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.apiinteraction.sync.MultiServerSync;
+import mediabrowser.apiinteraction.sync.data.IFileRepository;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationTokenSource;
 import mediabrowser.logging.ConsoleLogger;
@@ -19,6 +23,7 @@ import mediabrowser.model.session.ClientCapabilities;
 public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
     public static ISyncLoggerFactory LoggerFactory;
+    public static ISyncRepositoryFactory SyncRepositoryFactory;
 
     public MediaSyncAdapter(Context context, boolean autoInitialize) {
         super(context, autoInitialize);
@@ -37,6 +42,23 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
         }
         else{
             logger = new ConsoleLogger();
+        }
+
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = cm.getActiveNetworkInfo();
+
+        if(info.getType()==ConnectivityManager.TYPE_WIFI ||
+                info.getType()==ConnectivityManager.TYPE_ETHERNET)
+        {
+            logger.Debug("Local Network Connected");
+        }
+        else
+        {
+            logger.Debug("WiFi not connected");
+            if (extras.getBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, false) == false){
+                logger.Debug("Skipping sync because we're not connected to wifi");
+                return;
+            }
         }
 
         logger.Info("MediaSyncAdapter starting");
@@ -98,7 +120,16 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
                 capabilities,
                 apiEventListener);
 
-        ILocalAssetManager localAssetManager = new AndroidAssetManager(context, logger, jsonSerializer);
+        IFileRepository fileRepository;
+
+        if (SyncRepositoryFactory != null){
+            fileRepository= SyncRepositoryFactory.getFileRepository();
+        }
+        else{
+            fileRepository= new AndroidFileRepository(context, logger);
+        }
+
+        ILocalAssetManager localAssetManager = new AndroidAssetManager(context, logger, jsonSerializer, fileRepository);
 
         CancellationTokenSource source = new CancellationTokenSource();
 

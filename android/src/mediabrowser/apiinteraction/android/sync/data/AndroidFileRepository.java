@@ -12,7 +12,7 @@ import java.io.File;
  */
 public class AndroidFileRepository extends FileRepository {
 
-    private Context context;
+    protected Context context;
 
     public AndroidFileRepository(Context context, ILogger logger) {
         super(logger);
