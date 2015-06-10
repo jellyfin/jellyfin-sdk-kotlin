@@ -29,14 +29,14 @@ public class AndroidProfileOptions {
 
             DefaultH264Level = 40;
             SupportsAc3 = true;
-            VideoAudioAacChannels = 5;
+            VideoAudioAacChannels = 6;
 
         }
         else if (deviceName.indexOf("aftm") != -1){
 
             DefaultH264Level = 40;
             SupportsAc3 = true;
-            VideoAudioAacChannels = 5;
+            VideoAudioAacChannels = 6;
 
         }
         else if (deviceName.indexOf("nexusplayer") != -1){
