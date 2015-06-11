@@ -23,7 +23,6 @@ import mediabrowser.model.session.ClientCapabilities;
 public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
     public static ISyncLoggerFactory LoggerFactory;
-    public static ISyncRepositoryFactory SyncRepositoryFactory;
 
     public MediaSyncAdapter(Context context, boolean autoInitialize) {
         super(context, autoInitialize);
@@ -69,13 +68,13 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
         ApiEventListener apiEventListener = new ApiEventListener();
 
-        SharedPreferences preferences = context.getSharedPreferences("AndroidConnectionManager", Context.MODE_PRIVATE);
+        SharedPreferences connectionManagerPreferences = context.getSharedPreferences("AndroidConnectionManager", Context.MODE_PRIVATE | Context.MODE_MULTI_PROCESS);
 
-        String appName = preferences.getString("appName", null);
-        String appVersion = preferences.getString("appVersion", null);
-        String capabilitiesJson = preferences.getString("capabilities", null);
-        String deviceName = preferences.getString("deviceName", null);
-        String deviceId = preferences.getString("deviceId", null);
+        String appName = connectionManagerPreferences.getString("appName", null);
+        String appVersion = connectionManagerPreferences.getString("appVersion", null);
+        String capabilitiesJson = connectionManagerPreferences.getString("capabilities", null);
+        String deviceName = connectionManagerPreferences.getString("deviceName", null);
+        String deviceId = connectionManagerPreferences.getString("deviceId", null);
 
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(appName))
         {
@@ -120,19 +119,21 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
                 capabilities,
                 apiEventListener);
 
-        IFileRepository fileRepository;
-
-        if (SyncRepositoryFactory != null){
-            fileRepository= SyncRepositoryFactory.getFileRepository();
-        }
-        else{
-            fileRepository= new AndroidFileRepository(context, logger);
-        }
-
-        ILocalAssetManager localAssetManager = new AndroidAssetManager(context, logger, jsonSerializer, fileRepository);
+        ILocalAssetManager localAssetManager = new AndroidAssetManager(context, logger, jsonSerializer);
 
         CancellationTokenSource source = new CancellationTokenSource();
 
         new MultiServerSync(connectionManager, logger, localAssetManager).Sync(source.getToken(), new MultiServerSyncProgress(syncResult, context.getContentResolver(), logger));
+    }
+
+    public static void updateSyncPreferences(Context context, String basePath) {
+
+        SharedPreferences syncPreferences = context.getSharedPreferences("Sync", Context.MODE_PRIVATE | Context.MODE_MULTI_PROCESS);
+        SharedPreferences.Editor editor = syncPreferences.edit();
+
+        editor.putString("syncPath", basePath);
+
+        // Commit the edits!
+        boolean saved = editor.commit();
     }
 }

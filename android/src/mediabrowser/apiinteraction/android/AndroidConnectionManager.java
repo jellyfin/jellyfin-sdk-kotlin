@@ -34,7 +34,7 @@ public class AndroidConnectionManager extends ConnectionManager {
 
     private void SaveAppInfo(Context context){
 
-        SharedPreferences preferences = context.getSharedPreferences("AndroidConnectionManager", Context.MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences("AndroidConnectionManager", Context.MODE_PRIVATE | Context.MODE_MULTI_PROCESS);
 
         SharedPreferences.Editor editor = preferences.edit();
 

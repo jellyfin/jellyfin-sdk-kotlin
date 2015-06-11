@@ -10,11 +10,11 @@ import mediabrowser.model.serialization.IJsonSerializer;
  */
 public class AndroidAssetManager extends LocalAssetManager {
 
-    public AndroidAssetManager(Context context, ILogger logger, IJsonSerializer jsonSerializer, IFileRepository fileRepository) {
+    public AndroidAssetManager(Context context, ILogger logger, IJsonSerializer jsonSerializer) {
 
         super(new UserActionRepository(context, jsonSerializer),
                 new ItemRepository(context, jsonSerializer),
-                fileRepository,
+                new AndroidSyncFileRepository(context, logger),
                 new UserRepository(context, jsonSerializer),
                 new AndroidImageFileRepository(context, logger),
                 logger);
