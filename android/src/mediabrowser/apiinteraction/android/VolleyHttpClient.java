@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import com.android.volley.toolbox.DiskBasedCache;
 import mediabrowser.apiinteraction.android.images.ImageCacheManager;
+import mediabrowser.apiinteraction.android.volley.GetBitmapResponse;
 import mediabrowser.apiinteraction.http.HttpRequest;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.apiinteraction.Response;
@@ -122,17 +123,7 @@ public class VolleyHttpClient implements IAsyncHttpClient {
 
     public void getBitmap(String url, final Response<Bitmap> outerResponse) {
 
-        getImageLoader().get(url, new ImageLoader.ImageListener() {
-            @Override
-            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
-                outerResponse.onResponse(response.getBitmap());
-            }
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                outerResponse.onError(error);
-            }
-        });
+        getImageLoader().get(url, new GetBitmapResponse(outerResponse));
     }
 
     public void getCachedFile(final String url, final Response<String> response) {

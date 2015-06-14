@@ -59,6 +59,10 @@ public abstract class FileRepository implements IFileRepository {
 
     @Override
     public String getValidFileName(String name) {
+
+        if (name == null) {
+            throw new IllegalArgumentException("name");
+        }
         return name.replaceAll("[^a-zA-Z0-9.-]", "_");
     }
 

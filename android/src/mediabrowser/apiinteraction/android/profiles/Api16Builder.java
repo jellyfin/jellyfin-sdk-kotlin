@@ -381,37 +381,9 @@ public class Api16Builder {
 
             ArrayList<ProfileCondition> videoAudioProfileConditions = new ArrayList<ProfileCondition>();
 
-            boolean foundChannels = false;
-
             for (ProfileCondition pc : profile.getConditions()){
 
-                if (pc.getProperty() == ProfileConditionValue.AudioChannels){
-
-                    foundChannels = true;
-
-                    if (Defaults.VideoAudioAacChannels > 0){
-
-                        ProfileCondition condition = new ProfileCondition();
-                        condition.setCondition(ProfileConditionType.LessThanEqual);
-                        condition.setProperty(ProfileConditionValue.AudioChannels);
-                        condition.setIsRequired(false);
-                        condition.setValue(String.valueOf(Defaults.VideoAudioAacChannels));
-                        videoAudioProfileConditions.add(condition);
-
-                        continue;
-                    }
-                }
-
                 videoAudioProfileConditions.add(pc);
-            }
-
-            if (!foundChannels && Defaults.VideoAudioAacChannels > 0){
-                ProfileCondition condition = new ProfileCondition();
-                condition.setCondition(ProfileConditionType.LessThanEqual);
-                condition.setProperty(ProfileConditionValue.AudioChannels);
-                condition.setIsRequired(false);
-                condition.setValue(String.valueOf(Defaults.VideoAudioAacChannels));
-                videoAudioProfileConditions.add(condition);
             }
 
             videoAudioProfile.setConditions(videoAudioProfileConditions.toArray(new ProfileCondition[videoAudioProfileConditions.size()]));
