@@ -2298,6 +2298,7 @@ public class ApiClient extends BaseApiClient {
         queryString.AddIfNotNull("IsPlayed", query.getIsPlayed());
         queryString.AddIfNotNull("StartIndex", query.getStartIndex());
         queryString.AddIfNotNull("Limit", query.getLimit());
+        queryString.AddIfNotNull("Fields", query.getFields());
 
         String url = GetApiUrl("Users/" + query.getUserId() + "/Items/Latest", queryString);
 
@@ -2553,6 +2554,18 @@ public class ApiClient extends BaseApiClient {
         url = AddDataFormat(url);
 
         Send(url, "POST", jsonSerializer.SerializeToString(request), "application/json", new SerializedResponse<SyncJobCreationResult>(response, jsonSerializer, SyncJobCreationResult.class));
+    }
+
+    public void CancelSyncJob(SyncJob job, EmptyResponse response) {
+
+        if (job == null)
+        {
+            throw new IllegalArgumentException("job");
+        }
+
+        String url = GetApiUrl("Sync/Jobs/" + job.getId());
+
+        DeleteAsync(url, response);
     }
 
     public void UpdateSyncJob(SyncJob job, EmptyResponse response){
