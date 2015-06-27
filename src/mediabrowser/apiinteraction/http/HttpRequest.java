@@ -4,60 +4,60 @@ import mediabrowser.apiinteraction.QueryStringDictionary;
 
 public class HttpRequest
 {
-    private String privateMethod;
+    private String Method;
     public final String getMethod()
     {
-        return privateMethod;
+        return Method;
     }
     public final void setMethod(String value)
     {
-        privateMethod = value;
+        Method = value;
     }
-    private String privateRequestContent;
+    private String RequestContent;
     public final String getRequestContent()
     {
-        return privateRequestContent;
+        return RequestContent;
     }
     public final void setRequestContent(String value)
     {
-        privateRequestContent = value;
+        RequestContent = value;
     }
-    private String privateRequestContentType;
+    private String RequestContentType;
     public final String getRequestContentType()
     {
-        return privateRequestContentType;
+        return RequestContentType;
     }
     public final void setRequestContentType(String value)
     {
-        privateRequestContentType = value;
+        RequestContentType = value;
     }
-    private HttpHeaders privateRequestHeaders;
+    private HttpHeaders RequestHeaders;
     public final HttpHeaders getRequestHeaders()
     {
-        return privateRequestHeaders;
+        return RequestHeaders;
     }
     public final void setRequestHeaders(HttpHeaders value)
     {
-        privateRequestHeaders = value;
+        RequestHeaders = value;
     }
-    private String privateUrl;
+    private String Url;
     public final String getUrl()
     {
-        return privateUrl;
+        return Url;
     }
     public final void setUrl(String value)
     {
-        privateUrl = value;
+        Url = value;
     }
 
-    private int privateTimeout;
+    private int Timeout;
     public final int getTimeout()
     {
-        return privateTimeout;
+        return Timeout;
     }
     public final void setTimeout(int value)
     {
-        privateTimeout = value;
+        Timeout = value;
     }
 
     private QueryStringDictionary postData;

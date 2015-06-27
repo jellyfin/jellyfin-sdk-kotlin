@@ -8,6 +8,7 @@ import mediabrowser.apiinteraction.android.volley.GetBitmapResponse;
 import mediabrowser.apiinteraction.http.HttpRequest;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.apiinteraction.Response;
+import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.logging.ILogger;
 import android.content.Context;
 import com.android.volley.*;
@@ -100,10 +101,10 @@ public class VolleyHttpClient implements IAsyncHttpClient {
     {
         int method = Request.Method.GET;
 
-        if (request.getMethod() == "POST"){
+        if (StringHelper.EqualsIgnoreCase(request.getMethod(), "POST")){
             method = Request.Method.POST;
         }
-        else if (request.getMethod() == "DELETE"){
+        else if (StringHelper.EqualsIgnoreCase(request.getMethod(), "DELETE")){
             method = Request.Method.DELETE;
         }
 

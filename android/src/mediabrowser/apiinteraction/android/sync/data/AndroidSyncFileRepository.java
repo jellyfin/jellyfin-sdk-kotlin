@@ -13,6 +13,8 @@ import java.io.File;
 public class AndroidSyncFileRepository extends  AndroidFileRepository {
     public AndroidSyncFileRepository(Context context, ILogger logger) {
         super(context, logger);
+
+        logger.Debug("AndroidSyncFileRepository started. syncPath: %s", getBasePath());
     }
 
     @Override
