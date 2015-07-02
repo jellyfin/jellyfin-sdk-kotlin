@@ -180,7 +180,17 @@ public class MediaSync {
 
         logger.Debug("Getting new item from sync %s", libraryItem.getName());
 
-        final LocalItem localItem = localAssetManager.createLocalItem(libraryItem, server, jobItem.getOriginalFileName());
+        LocalItem newLocalItem;
+
+        try {
+            newLocalItem = localAssetManager.createLocalItem(libraryItem, server, jobItem.getOriginalFileName());
+        }
+        catch (Exception ex) {
+            response.onError(ex);
+            return;
+        }
+
+        final LocalItem localItem = newLocalItem;
 
         apiClient.GetSyncJobItemFile(jobItem.getSyncJobItemId(), new Response<InputStream>(response){
 
