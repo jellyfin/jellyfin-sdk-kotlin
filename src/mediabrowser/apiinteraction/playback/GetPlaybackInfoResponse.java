@@ -52,6 +52,11 @@ public class GetPlaybackInfoResponse extends Response<PlaybackInfoResponse> {
             streamInfo = streamBuilder.BuildAudioItem(options);
         }
 
+        if (streamInfo == null){
+            playbackManager.SendResponse(response, null);
+            return;
+        }
+
         streamInfo.setPlaySessionId(playbackInfo.getPlaySessionId());
         streamInfo.setAllMediaSources(playbackInfo.getMediaSources());
 
