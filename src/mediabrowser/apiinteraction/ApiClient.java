@@ -2745,11 +2745,12 @@ public class ApiClient extends BaseApiClient {
 
             @Override
             public void onResponse(String r) {
-                long endTime = new Date().getTime();
-                long time = endTime - startTime;
-                time /= 1000;
 
-                response.onResponse(downloadBytes / time);
+                double time = new Date().getTime() - startTime;
+                time /= 1000;
+                double bitrate = downloadBytes / time;
+
+                response.onResponse(Math.round(bitrate));
             }
         });
     }
