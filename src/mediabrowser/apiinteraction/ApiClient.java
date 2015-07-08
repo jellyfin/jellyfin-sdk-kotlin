@@ -2744,8 +2744,6 @@ public class ApiClient extends BaseApiClient {
 
         String address = GetApiUrl("Playback/BitrateTest", dict);
 
-        final long startTime = new Date().getTime();
-
         HttpURLConnection conn = null;
 
         try
@@ -2762,9 +2760,11 @@ public class ApiClient extends BaseApiClient {
                 conn.setRequestProperty(key, this.HttpHeaders.get(key));
             }
 
-            try (InputStream inputStream = conn.getInputStream()){
+            try (ByteArrayOutputStream baos = new ByteArrayOutputStream()){
 
-                try (ByteArrayOutputStream baos = new ByteArrayOutputStream()){
+                final long startTime = new Date().getTime();
+
+                try (InputStream inputStream = conn.getInputStream()){
 
                     byte[] byteChunk = new byte[4096]; // Or whatever size you want to read in at a time.
                     int n;
