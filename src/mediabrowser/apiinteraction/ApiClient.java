@@ -2731,27 +2731,67 @@ public class ApiClient extends BaseApiClient {
         });
     }
 
-    private void detectBitrate(final long downloadBytes, final Response<Long> response) {
+    protected void detectBitrate(final long downloadBytes, final Response<Long> response) {
+
+        detectBitrateInternal(downloadBytes, response);
+    }
+
+    protected void detectBitrateInternal(final long downloadBytes, final Response<Long> response) {
 
         QueryStringDictionary dict = new QueryStringDictionary();
 
         dict.Add("Size", downloadBytes);
 
-        String url = GetApiUrl("Playback/BitrateTest", dict);
+        String address = GetApiUrl("Playback/BitrateTest", dict);
 
         final long startTime = new Date().getTime();
 
-        Send(url, "GET", new Response<String>(response){
+        HttpURLConnection conn = null;
 
-            @Override
-            public void onResponse(String r) {
+        try
+        {
+            URL url = new URL(address);
 
-                double time = new Date().getTime() - startTime;
-                time /= 1000;
-                double bitrate = downloadBytes / time;
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setDoInput(true); // Allow Inputs
+            conn.setUseCaches(false); // Don't use a Cached Copy
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Connection", "Keep-Alive");
 
-                response.onResponse(Math.round(bitrate));
+            for (String key: this.HttpHeaders.keySet()){
+                conn.setRequestProperty(key, this.HttpHeaders.get(key));
             }
-        });
+
+            try (InputStream inputStream = conn.getInputStream()){
+
+                try (ByteArrayOutputStream baos = new ByteArrayOutputStream()){
+
+                    byte[] byteChunk = new byte[4096]; // Or whatever size you want to read in at a time.
+                    int n;
+
+                    while ( (n = inputStream.read(byteChunk)) > 0 ) {
+                        baos.write(byteChunk, 0, n);
+                    }
+
+                    double time = new Date().getTime() - startTime;
+                    time /= 1000;
+                    double bitrate = downloadBytes / time;
+
+                    response.onResponse(Math.round(bitrate));
+                }
+                catch (IOException ioException){
+                    response.onError(ioException);
+                    return;
+                }
+            }
+            catch (IOException ioException){
+                response.onError(ioException);
+                return;
+            }
+        }
+        catch (Exception ex)
+        {
+            response.onError(ex);
+        }
     }
 }

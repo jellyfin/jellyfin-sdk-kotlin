@@ -71,5 +71,16 @@ public class AndroidApiClient extends ApiClient {
         thread.start();
     }
 
+    @Override
+    protected void detectBitrate(final long downloadBytes, final Response<Long> response) {
 
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                detectBitrateInternal(downloadBytes, response);
+            }
+        });
+
+        thread.start();
+    }
 }
