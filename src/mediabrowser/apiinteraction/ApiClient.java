@@ -2717,7 +2717,7 @@ public class ApiClient extends BaseApiClient {
                 }
 
                 // If that produced a fairly high speed, try again with a larger size to get a more accurate result
-                detectBitrate(2000000, new Response<Long>(response) {
+                detectBitrate(3000000, new Response<Long>(response) {
 
                     @Override
                     public void onResponse(Long bitrate) {
@@ -2727,7 +2727,6 @@ public class ApiClient extends BaseApiClient {
 
                 });
             }
-
         });
     }
 
