@@ -4,11 +4,9 @@ import android.media.MediaMetadata;
 import android.media.session.MediaSession;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
-import mediabrowser.apiinteraction.android.mediabrowser.MusicProvider;
+import mediabrowser.apiinteraction.android.mediabrowser.MediaProvider;
 import mediabrowser.model.dto.BaseItemDto;
 import mediabrowser.model.dto.MediaSourceInfo;
 import mediabrowser.model.logging.ILogger;
@@ -18,12 +16,12 @@ import mediabrowser.model.logging.ILogger;
  */
 public class QueueHelper {
 
-    public static List<MediaSession.QueueItem> getPlayingQueue(String mediaId, MusicProvider musicProvider, ILogger logger) {
+    public static List<MediaSession.QueueItem> getPlayingQueue(String mediaId, MediaProvider mediaProvider, ILogger logger) {
 
         return null;
     }
 
-    public static List<MediaSession.QueueItem> getPlayingQueue(BaseItemDto item, MediaSourceInfo mediaSource, String path, String posterUrl, MusicProvider provider, ILogger logger) {
+    public static List<MediaSession.QueueItem> getPlayingQueue(BaseItemDto item, MediaSourceInfo mediaSource, String path, String posterUrl, MediaProvider provider, ILogger logger) {
 
         String mediaId = item.getId();
 
@@ -40,7 +38,7 @@ public class QueueHelper {
 
         MediaMetadata metadata =new MediaMetadata.Builder()
                 .putString(MediaMetadata.METADATA_KEY_MEDIA_ID, mediaId)
-                .putString(MusicProvider.CUSTOM_METADATA_TRACK_SOURCE, path)
+                .putString(MediaProvider.CUSTOM_METADATA_TRACK_SOURCE, path)
                 .putString(MediaMetadata.METADATA_KEY_ALBUM, album)
                 .putString(MediaMetadata.METADATA_KEY_ARTIST, artist)
                 .putLong(MediaMetadata.METADATA_KEY_DURATION, duration)
@@ -58,7 +56,7 @@ public class QueueHelper {
         return convertToQueue(tracks);
     }
 
-    public static List<MediaSession.QueueItem> getPlayingQueueFromSearch(String query, MusicProvider musicProvider, ILogger logger) {
+    public static List<MediaSession.QueueItem> getPlayingQueueFromSearch(String query, MediaProvider mediaProvider, ILogger logger) {
 
         logger.Debug("Creating playing queue for musics from search %s", query);
 

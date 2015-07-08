@@ -2703,7 +2703,35 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<ReadySyncItemsResult>(response, jsonSerializer, url, Logger, new ReadySyncItemsResult().getClass()));
     }
 
-    public void measureBandwidth(long downloadBytes, Response<Long> response) {
+    public void detectBitrate(final Response<Long> response) {
+
+        // First try a small amount so that we don't hang up their mobile connection
+        detectBitrate(1000000, new Response<Long>(response) {
+
+            @Override
+            public void onResponse(Long bitrate) {
+
+                if (bitrate < 3000000) {
+                    response.onResponse(Math.round(bitrate * .8));
+                    return;
+                }
+
+                // If that produced a fairly high speed, try again with a larger size to get a more accurate result
+                detectBitrate(2000000, new Response<Long>(response) {
+
+                    @Override
+                    public void onResponse(Long bitrate) {
+
+                        response.onResponse(Math.round(bitrate * .8));
+                    }
+
+                });
+            }
+
+        });
+    }
+
+    private void detectBitrate(final long downloadBytes, final Response<Long> response) {
 
         QueryStringDictionary dict = new QueryStringDictionary();
 
@@ -2719,6 +2747,9 @@ public class ApiClient extends BaseApiClient {
             public void onResponse(String r) {
                 long endTime = new Date().getTime();
                 long time = endTime - startTime;
+                time /= 1000;
+
+                response.onResponse(downloadBytes / time);
             }
         });
     }

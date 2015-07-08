@@ -40,7 +40,7 @@ import java.util.List;
 public abstract class BaseMediaBrowserService extends MediaBrowserService implements IPlaybackCallback {
 
     protected PackageValidator mPackageValidator;
-    protected MusicProvider mMusicProvider;
+    protected MediaProvider mMediaProvider;
     protected ILogger logger;
     protected IJsonSerializer jsonSerializer = new GsonJsonSerializer();
     protected MediaSession mSession;
@@ -93,7 +93,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
         mediaRes = createMediaRes();
 
         mPlayingQueue = new ArrayList<MediaSession.QueueItem>();
-        mMusicProvider = new MusicProvider(logger);
+        mMediaProvider = new MediaProvider(logger);
         mPackageValidator = new PackageValidator(this, logger);
 
         // Start a new MediaSession
@@ -227,22 +227,22 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
 
         //noinspection StatementWithEmptyBody
         if (CarHelper.isValidCarPackage(clientPackageName)) {
-            // Optional: if your app needs to adapt ads, music library or anything else that
+            // Optional: if your app needs to adapt ads, media library or anything else that
             // needs to run differently when connected to the car, this is where you should handle
             // it.
         }
 
-        return new BrowserRoot(MusicProvider.MEDIA_ID_ROOT, null);
+        return new BrowserRoot(MediaProvider.MEDIA_ID_ROOT, null);
     }
 
     @Override
     public void onLoadChildren(final String parentMediaId, final Result<List<MediaBrowser.MediaItem>> result) {
 
-        if (!mMusicProvider.isInitialized()) {
+        if (!mMediaProvider.isInitialized()) {
             // Use result.detach to allow calling result.sendResult from another thread:
             result.detach();
 
-            mMusicProvider.retrieveMediaAsync(new MusicProvider.Callback() {
+            mMediaProvider.retrieveMediaAsync(new MediaProvider.Callback() {
                 @Override
                 public void onMusicCatalogReady(boolean success) {
                     if (success) {
@@ -255,13 +255,13 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
             });
 
         } else {
-            // If our music catalog is already loaded/cached, load them into result immediately
+            // If our media catalog is already loaded/cached, load them into result immediately
             loadChildrenImpl(parentMediaId, result);
         }
     }
 
     /**
-     * Actual implementation of onLoadChildren that assumes that MusicProvider is already
+     * Actual implementation of onLoadChildren that assumes that MediaProvider is already
      * initialized.
      */
     private void loadChildrenImpl(final String parentMediaId,
@@ -271,7 +271,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
 
         List<MediaBrowser.MediaItem> mediaItems = new ArrayList<MediaBrowser.MediaItem>();
 
-        if (MusicProvider.MEDIA_ID_ROOT.equals(parentMediaId)) {
+        if (MediaProvider.MEDIA_ID_ROOT.equals(parentMediaId)) {
             logger.Debug("OnLoadChildren.ROOT");
 
         } else {
@@ -324,12 +324,12 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
         final BaseItemDto item = jsonSerializer.DeserializeFromString(itemJson, BaseItemDto.class);
         final MediaSourceInfo mediaSource = jsonSerializer.DeserializeFromString(mediaSourceJson, MediaSourceInfo.class);
 
-        // The mediaId used here is not the unique musicId. This one comes from the
+        // The mediaId used here is not the unique mediaId. This one comes from the
         // MediaBrowser, and is actually a "hierarchy-aware mediaID": a concatenation of
-        // the hierarchy in MediaBrowser and the actual unique musicID. This is necessary
+        // the hierarchy in MediaBrowser and the actual unique mediaId. This is necessary
         // so we can build the correct playing queue, based on where the track was
         // selected from.
-        mPlayingQueue = QueueHelper.getPlayingQueue(item, mediaSource, path, posterUrl, mMusicProvider, logger);
+        mPlayingQueue = QueueHelper.getPlayingQueue(item, mediaSource, path, posterUrl, mMediaProvider, logger);
         mSession.setQueue(mPlayingQueue);
 
         String mediaId = item.getId();
@@ -344,7 +344,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
                 logger.Error("playFromMediaId: media ID ", mediaId,
                         " could not be found on queue. Ignoring.");
             } else {
-                // play the music
+                // play the media
                 handlePlayRequest();
             }
         }
@@ -395,7 +395,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
         }
         final MediaSession.QueueItem queueItem = mPlayingQueue.get(mCurrentIndexOnQueue);
         String musicId = queueItem.getDescription().getMediaId();
-        final MediaMetadata track = mMusicProvider.getMusic(musicId);
+        final MediaMetadata track = mMediaProvider.getMusic(musicId);
         final String trackId = track.getString(MediaMetadata.METADATA_KEY_MEDIA_ID);
 
         if (!musicId.equals(trackId)) {
@@ -407,7 +407,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
                     " mediaId from track=", track.getDescription().getMediaId(),
                     " title from track=", track.getDescription().getTitle(),
                     " source.hashcode from track=", track.getString(
-                            MusicProvider.CUSTOM_METADATA_TRACK_SOURCE).hashCode(),
+                            MediaProvider.CUSTOM_METADATA_TRACK_SOURCE).hashCode(),
                     e);
             throw e;
         }
@@ -459,11 +459,11 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
             // Set appropriate "Favorite" icon on Custom action:
             String musicId = currentMusic.getString(MediaMetadata.METADATA_KEY_MEDIA_ID);
             int favoriteIcon = mediaRes.getFavoriteOffIcon();
-            if (mMusicProvider.isFavorite(musicId)) {
+            if (mMediaProvider.isFavorite(musicId)) {
                 favoriteIcon = mediaRes.getFavoriteOnIcon();
             }
 
-            logger.Debug("updatePlaybackState, setting Favorite custom action of music ", musicId, " current favorite=", mMusicProvider.isFavorite(musicId));
+            logger.Debug("updatePlaybackState, setting Favorite custom action of music ", musicId, " current favorite=", mMediaProvider.isFavorite(musicId));
             stateBuilder.addCustomAction(Constants.THUMBS_UP, getString(mediaRes.getFavoriteButtonString()), favoriteIcon);
         }
     }
@@ -617,7 +617,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
                 logger.Debug("getCurrentPlayingMusic for musicId=",
                         item.getDescription().getMediaId());
 
-                return mMusicProvider.getMusic(item.getDescription().getMediaId());
+                return mMediaProvider.getMusic(item.getDescription().getMediaId());
             }
         }
         return null;
@@ -672,7 +672,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
             // the hierarchy in MediaBrowser and the actual unique musicID. This is necessary
             // so we can build the correct playing queue, based on where the track was
             // selected from.
-            mPlayingQueue = QueueHelper.getPlayingQueue(mediaId, mMusicProvider, logger);
+            mPlayingQueue = QueueHelper.getPlayingQueue(mediaId, mMediaProvider, logger);
             mSession.setQueue(mPlayingQueue);
             //String queueTitle = getString(R.string.browse_musics_by_genre_subtitle,
             //MediaIDHelper.extractBrowseCategoryValueFromMediaID(mediaId));
@@ -722,7 +722,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
                 MediaMetadata track = getCurrentPlayingMusic();
                 if (track != null) {
                     String musicId = track.getString(MediaMetadata.METADATA_KEY_MEDIA_ID);
-                    mMusicProvider.setFavorite(musicId, !mMusicProvider.isFavorite(musicId));
+                    mMediaProvider.setFavorite(musicId, !mMediaProvider.isFavorite(musicId));
                 }
                 // playback state needs to be updated because the "Favorite" icon on the
                 // custom action will change to reflect the new favorite state.
@@ -743,7 +743,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
                 // on the app: favorite playlist, "I'm feeling lucky", most recent, etc.
                 mPlayingQueue = new ArrayList<MediaSession.QueueItem>();
             } else {
-                mPlayingQueue = QueueHelper.getPlayingQueueFromSearch(query, mMusicProvider, logger);
+                mPlayingQueue = QueueHelper.getPlayingQueueFromSearch(query, mMediaProvider, logger);
             }
 
             logger.Debug("playFromSearch  playqueue.length=" + mPlayingQueue.size());
@@ -760,7 +760,6 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
             }
         }
     }
-
 
     /**
      * A simple handler that stops the service if playback is not active (playing)

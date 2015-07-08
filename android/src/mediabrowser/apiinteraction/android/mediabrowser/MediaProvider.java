@@ -24,10 +24,10 @@ import java.util.concurrent.ConcurrentMap;
 import mediabrowser.model.logging.ILogger;
 
 /**
- * Utility class to get a list of MusicTrack's based on a server-side JSON
+ * Utility class to get a list of media based on a server-side JSON
  * configuration.
  */
-public class MusicProvider {
+public class MediaProvider {
 
     public static final String MEDIA_ID_ROOT = "__ROOT__";
 
@@ -65,7 +65,7 @@ public class MusicProvider {
         void onMusicCatalogReady(boolean success);
     }
 
-    public MusicProvider(ILogger logger) {
+    public MediaProvider(ILogger logger) {
         this.logger = logger;
         mMusicListByGenre = new ConcurrentHashMap<String, List<MediaMetadata>>();
         mMusicListById = new ConcurrentHashMap<String, MutableMediaMetadata>();
