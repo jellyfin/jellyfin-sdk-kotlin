@@ -36,7 +36,7 @@ public class QueueHelper {
                 null :
                 mediaSource.getRunTimeTicks() / 10000;
 
-        MediaMetadata metadata =new MediaMetadata.Builder()
+        MediaMetadata.Builder builder = new MediaMetadata.Builder()
                 .putString(MediaMetadata.METADATA_KEY_MEDIA_ID, mediaId)
                 .putString(MediaProvider.CUSTOM_METADATA_TRACK_SOURCE, path)
                 .putString(MediaMetadata.METADATA_KEY_ALBUM, album)
@@ -44,10 +44,14 @@ public class QueueHelper {
                 .putLong(MediaMetadata.METADATA_KEY_DURATION, duration)
                 .putString(MediaMetadata.METADATA_KEY_GENRE, genre)
                 .putString(MediaMetadata.METADATA_KEY_ALBUM_ART_URI, posterUrl)
-                .putString(MediaMetadata.METADATA_KEY_TITLE, title)
-                .putLong(MediaMetadata.METADATA_KEY_TRACK_NUMBER, item.getIndexNumber())
-                        //.putLong(MediaMetadata.METADATA_KEY_NUM_TRACKS, totalTrackCount)
-                .build();
+                .putString(MediaMetadata.METADATA_KEY_TITLE, title);
+        //.putLong(MediaMetadata.METADATA_KEY_NUM_TRACKS, totalTrackCount);
+
+        if (item.getIndexNumber() != null) {
+            builder.putLong(MediaMetadata.METADATA_KEY_TRACK_NUMBER, item.getIndexNumber());
+        }
+
+        MediaMetadata metadata = builder.build();
 
         provider.addOrUpdate(mediaId, metadata);
 

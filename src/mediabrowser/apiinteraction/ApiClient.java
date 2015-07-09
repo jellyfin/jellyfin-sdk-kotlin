@@ -2761,7 +2761,7 @@ public class ApiClient extends BaseApiClient {
 
             try (ByteArrayOutputStream baos = new ByteArrayOutputStream()){
 
-                final long startTime = new Date().getTime();
+                final long startTime = System.currentTimeMillis();
 
                 try (InputStream inputStream = conn.getInputStream()){
 
@@ -2772,7 +2772,7 @@ public class ApiClient extends BaseApiClient {
                         baos.write(byteChunk, 0, n);
                     }
 
-                    double time = new Date().getTime() - startTime;
+                    double time = System.currentTimeMillis() - startTime;
                     time /= 1000;
                     double bitrate = downloadBytes / time;
 
