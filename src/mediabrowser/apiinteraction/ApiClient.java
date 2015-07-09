@@ -2759,29 +2759,22 @@ public class ApiClient extends BaseApiClient {
                 conn.setRequestProperty(key, this.HttpHeaders.get(key));
             }
 
-            try (ByteArrayOutputStream baos = new ByteArrayOutputStream()){
+            final long startTime = System.currentTimeMillis();
 
-                final long startTime = System.currentTimeMillis();
+            try (InputStream inputStream = conn.getInputStream()){
 
-                try (InputStream inputStream = conn.getInputStream()){
+                byte[] byteChunk = new byte[4096]; // Or whatever size you want to read in at a time.
+                int n;
 
-                    byte[] byteChunk = new byte[4096]; // Or whatever size you want to read in at a time.
-                    int n;
+                while ( (n = inputStream.read(byteChunk)) > 0 ) {
 
-                    while ( (n = inputStream.read(byteChunk)) > 0 ) {
-                        baos.write(byteChunk, 0, n);
-                    }
-
-                    long time = System.currentTimeMillis() - startTime;
-                    double bitrate = downloadBytes / time;
-                    bitrate /= 1000;
-
-                    response.onResponse(Math.round(bitrate));
                 }
-                catch (IOException ioException){
-                    response.onError(ioException);
-                    return;
-                }
+
+                long time = System.currentTimeMillis() - startTime;
+                double bitrate = downloadBytes / time;
+                bitrate *= 1000;
+
+                response.onResponse(Math.round(bitrate));
             }
             catch (IOException ioException){
                 response.onError(ioException);
