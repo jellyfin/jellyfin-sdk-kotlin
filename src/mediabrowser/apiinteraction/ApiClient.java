@@ -2772,9 +2772,9 @@ public class ApiClient extends BaseApiClient {
                         baos.write(byteChunk, 0, n);
                     }
 
-                    double time = System.currentTimeMillis() - startTime;
-                    time /= 1000;
+                    long time = System.currentTimeMillis() - startTime;
                     double bitrate = downloadBytes / time;
+                    bitrate /= 1000;
 
                     response.onResponse(Math.round(bitrate));
                 }
