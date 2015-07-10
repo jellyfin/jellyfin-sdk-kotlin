@@ -480,7 +480,7 @@ public class StreamInfo
 		}
 		else
 		{
-			list.add(new NameValuePair("ClientTime", item.getIsDirectStream() ? "" : String.valueOf(new java.util.Date().getTime())));
+			list.add(new NameValuePair("ClientTime", item.getIsDirectStream() ? "" : String.valueOf(System.currentTimeMillis())));
 		}
 
 		list.add(new NameValuePair("MaxRefFrames", item.getMaxRefFrames() != null ? StringHelper.ToStringCultureInvariant(item.getMaxRefFrames()) : ""));

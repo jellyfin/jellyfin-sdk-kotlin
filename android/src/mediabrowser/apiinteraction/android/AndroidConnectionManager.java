@@ -58,8 +58,7 @@ public class AndroidConnectionManager extends ConnectionManager {
                 applicationName,
                 device,
                 applicationVersion,
-                apiEventListener,
-                clientCapabilities);
+                apiEventListener);
     }
 
     @Override

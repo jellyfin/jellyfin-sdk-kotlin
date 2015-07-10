@@ -2770,11 +2770,12 @@ public class ApiClient extends BaseApiClient {
 
                 }
 
-                long time = System.currentTimeMillis() - startTime;
-                long bitrate = downloadBytes / time;
+                double time = System.currentTimeMillis() - startTime;
+                double bitrate = downloadBytes;
+                bitrate /= time;
                 bitrate *= 1000;
 
-                response.onResponse(bitrate);
+                response.onResponse(Math.round(bitrate));
             }
             catch (IOException ioException){
                 response.onError(ioException);

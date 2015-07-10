@@ -22,11 +22,11 @@ import java.net.URL;
 
 public class AndroidApiClient extends ApiClient {
 
-    public AndroidApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String accessToken, ApiEventListener apiEventListener, ClientCapabilities capabilities) {
+    public AndroidApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String accessToken, ApiEventListener apiEventListener) {
         super(httpClient, jsonSerializer, logger, serverAddress, accessToken, apiEventListener);
     }
 
-    public AndroidApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String clientName, IDevice device, String applicationVersion, ApiEventListener apiEventListener, ClientCapabilities capabilities) {
+    public AndroidApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String clientName, IDevice device, String applicationVersion, ApiEventListener apiEventListener) {
         super(httpClient, jsonSerializer, logger, serverAddress, clientName, applicationVersion, device, apiEventListener);
     }
 

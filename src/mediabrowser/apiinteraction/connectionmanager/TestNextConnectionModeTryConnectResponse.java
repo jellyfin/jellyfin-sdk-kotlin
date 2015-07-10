@@ -56,7 +56,7 @@ public class TestNextConnectionModeTryConnectResponse extends Response<PublicSys
     public void onError(Exception ex) {
 
         if (finalEnableRetry){
-            long sleepTime = 10000 - (new Date().getTime() - wakeOnLanSendTime);
+            long sleepTime = 10000 - (System.currentTimeMillis() - wakeOnLanSendTime);
 
             if (sleepTime > 0){
                 try {

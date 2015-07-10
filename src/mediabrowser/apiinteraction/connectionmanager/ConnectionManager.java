@@ -217,7 +217,7 @@ public class ConnectionManager implements IConnectionManager {
             BeginWakeServer(server);
         }
 
-        long wakeOnLanSendTime = new Date().getTime();
+        long wakeOnLanSendTime = System.currentTimeMillis();
 
         TestNextConnectionMode(tests, 0, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
     }

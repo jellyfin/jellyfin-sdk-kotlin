@@ -92,7 +92,7 @@ public class ServerLocator implements IServerLocator {
 
         while (timeoutMs > 0){
 
-            long startTime = new Date().getTime();
+            long startTime = System.currentTimeMillis();
 
             // Wait for a response
             byte[] recvBuf = new byte[15000];
@@ -128,7 +128,7 @@ public class ServerLocator implements IServerLocator {
                 servers.add(serverInfo);
             }
 
-            long endTime = new Date().getTime();
+            long endTime = System.currentTimeMillis();
             timeoutMs = timeoutMs - (endTime - startTime);
         }
 
