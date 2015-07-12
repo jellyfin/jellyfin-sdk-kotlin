@@ -15,14 +15,54 @@ public class AndroidProfile extends DeviceProfile
 	public AndroidProfile(String deviceName){
 
 		this(new AndroidProfileOptions(deviceName));
+
+		if (deviceName.equalsIgnoreCase("vlc")) {
+			setVlcOptions();
+		}
 	}
 
+	private void setVlcOptions() {
+
+		DirectPlayProfile videoDirectPlayProfile = new DirectPlayProfile();
+		videoDirectPlayProfile.setContainer("m4v,3gp,ts,mpegts,mov,xvid,vob,mkv,wmv,asf,ogm,ogv,m2v,avi,mpg,mpeg,mp4,webm");
+		videoDirectPlayProfile.setType(DlnaProfileType.Video);
+
+		DirectPlayProfile audioDirectPlayProfile = new DirectPlayProfile();
+		audioDirectPlayProfile.setContainer("flac,aac,mp3,mpa,wav,wma,mp2,ogg,oga,webma,ape");
+		audioDirectPlayProfile.setType(DlnaProfileType.Audio);
+
+		DirectPlayProfile photoDirectPlayProfile = new DirectPlayProfile();
+		audioDirectPlayProfile.setContainer("jpg,jpeg,png,gif");
+		audioDirectPlayProfile.setType(DlnaProfileType.Photo);
+
+		setDirectPlayProfiles(new DirectPlayProfile[] {videoDirectPlayProfile, audioDirectPlayProfile, photoDirectPlayProfile});
+
+		SubtitleProfile srtSubs = new SubtitleProfile();
+		srtSubs.setFormat("srt");
+		srtSubs.setMethod(SubtitleDeliveryMethod.External);
+
+		CodecProfile videoCodecProfile = new CodecProfile();
+		videoCodecProfile.setType(CodecType.Video);
+		videoCodecProfile.setCodec("h264");
+		videoCodecProfile.setConditions(new ProfileCondition[]
+				{
+						new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, "high|main|baseline|constrained baseline"),
+						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, "51")
+				});
+
+		CodecProfile videoAudioCodecProfile = new CodecProfile();
+		videoAudioCodecProfile.setType(CodecType.VideoAudio);
+		videoAudioCodecProfile.setConditions(new ProfileCondition[] {new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.AudioChannels, "6")});
+
+		setCodecProfiles(new CodecProfile[] { videoCodecProfile, videoAudioCodecProfile });
+		setSubtitleProfiles(new SubtitleProfile[] { srtSubs });
+	}
 
 	public AndroidProfile(AndroidProfileOptions profileOptions)
 	{
 		setName("Android");
 
-		setMaxStaticBitrate(20000000);
+		setMaxStaticBitrate(30000000);
 		setMaxStreamingBitrate(20000000);
 
 		// Adds a lot of weight and not needed in this context
