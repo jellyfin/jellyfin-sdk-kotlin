@@ -2397,6 +2397,15 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<PlaybackInfoResponse>(response, jsonSerializer, PlaybackInfoResponse.class));
     }
 
+    public void GetPlaybackInfoWithPost(PlaybackInfoRequest request, final Response<PlaybackInfoResponse> response)
+    {
+        String url = GetApiUrl("Items/" + request.getId() + "/PlaybackInfo");
+
+        url = AddDataFormat(url);
+
+        Send(url, "POST", jsonSerializer.SerializeToString(request), "application/json", new SerializedResponse<PlaybackInfoResponse>(response, jsonSerializer, PlaybackInfoResponse.class));
+    }
+
     public void OpenLiveStream(LiveStreamRequest request, final Response<LiveStreamResponse> response)
     {
         String url = GetApiUrl("LiveStreams/Open");
