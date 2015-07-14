@@ -585,7 +585,7 @@ public class StreamInfo
 
 	private SubtitleStreamInfo GetSubtitleStreamInfo(MediaStream stream, String baseUrl, String accessToken, long startPositionTicks, SubtitleProfile[] subtitleProfiles)
 	{
-		SubtitleProfile subtitleProfile = StreamBuilder.GetSubtitleProfile(stream, subtitleProfiles, getContext());
+		SubtitleProfile subtitleProfile = StreamBuilder.GetSubtitleProfile(stream, subtitleProfiles, getContext(), getPlayMethod());
 		SubtitleStreamInfo tempVar = new SubtitleStreamInfo();
 		tempVar.setIsForced(stream.getIsForced());
 		tempVar.setLanguage(stream.getLanguage());

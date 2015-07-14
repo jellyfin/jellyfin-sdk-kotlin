@@ -143,6 +143,7 @@ public class StreamBuilder
 				{
 					if (!conditionProcessor.IsAudioConditionSatisfied(c, audioChannels, audioBitrate))
 					{
+						LogConditionFailure(options.getProfile(), "AudioCodecProfile", c, item);
 						all = false;
 						break;
 					}
@@ -277,6 +278,12 @@ public class StreamBuilder
 				playMethods.add(PlayMethod.DirectPlay);
 			}
 		}
+		else
+		{
+			String tempVar = options.getProfile().getName();
+			String tempVar2 = item.getPath();
+			_logger.Debug("Profile: {0}, No direct play profiles found for Path: {1}", (tempVar != null) ? tempVar : "Unknown Profile", (tempVar2 != null) ? tempVar2 : "Unknown path");
+		}
 
 		return playMethods;
 	}
@@ -350,8 +357,8 @@ public class StreamBuilder
 		MediaStream videoStream = item.getVideoStream();
 
 		// TODO: This doesn't accout for situation of device being able to handle media bitrate, but wifi connection not fast enough
-		boolean isEligibleForDirectPlay = IsEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options), subtitleStream, options);
-		boolean isEligibleForDirectStream = IsEligibleForDirectPlay(item, options.GetMaxBitrate(), subtitleStream, options);
+		boolean isEligibleForDirectPlay = IsEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options), subtitleStream, options, PlayMethod.DirectPlay);
+		boolean isEligibleForDirectStream = IsEligibleForDirectPlay(item, options.GetMaxBitrate(), subtitleStream, options, PlayMethod.DirectStream);
 
 		String tempVar4 = options.getProfile().getName();
 		String tempVar5 = item.getPath();
@@ -369,7 +376,7 @@ public class StreamBuilder
 
 				if (subtitleStream != null)
 				{
-					SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile().getSubtitleProfiles(), options.getContext());
+					SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile().getSubtitleProfiles(), options.getContext(), directPlay);
 
 					playlistItem.setSubtitleDeliveryMethod(subtitleProfile.getMethod());
 					playlistItem.setSubtitleFormat(subtitleProfile.getFormat());
@@ -399,7 +406,7 @@ public class StreamBuilder
 
 			if (subtitleStream != null)
 			{
-				SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile().getSubtitleProfiles(), options.getContext());
+				SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile().getSubtitleProfiles(), options.getContext(), PlayMethod.Transcode);
 
 				playlistItem.setSubtitleDeliveryMethod(subtitleProfile.getMethod());
 				playlistItem.setSubtitleFormat(subtitleProfile.getFormat());
@@ -683,14 +690,15 @@ public class StreamBuilder
 		_logger.Debug("Profile: {0}, DirectPlay=false. Reason={1}.{2} Condition: {3}. ConditionValue: {4}. IsRequired: {5}. Path: {6}", type, (tempVar != null) ? tempVar : "Unknown Profile", condition.getProperty(), condition.getCondition(), (tempVar2 != null) ? tempVar2 : "", condition.getIsRequired(), (tempVar3 != null) ? tempVar3 : "Unknown path");
 	}
 
-	private boolean IsEligibleForDirectPlay(MediaSourceInfo item, Integer maxBitrate, MediaStream subtitleStream, VideoOptions options)
+	private boolean IsEligibleForDirectPlay(MediaSourceInfo item, Integer maxBitrate, MediaStream subtitleStream, VideoOptions options, PlayMethod playMethod)
 	{
 		if (subtitleStream != null)
 		{
-			SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile().getSubtitleProfiles(), options.getContext());
+			SubtitleProfile subtitleProfile = GetSubtitleProfile(subtitleStream, options.getProfile().getSubtitleProfiles(), options.getContext(), playMethod);
 
 			if (subtitleProfile.getMethod() != SubtitleDeliveryMethod.External && subtitleProfile.getMethod() != SubtitleDeliveryMethod.Embed)
 			{
+				_logger.Debug("Not eligible for {0} due to unsupported subtitles", playMethod);
 				return false;
 			}
 		}
@@ -698,8 +706,25 @@ public class StreamBuilder
 		return IsAudioEligibleForDirectPlay(item, maxBitrate);
 	}
 
-	public static SubtitleProfile GetSubtitleProfile(MediaStream subtitleStream, SubtitleProfile[] subtitleProfiles, EncodingContext context)
+	public static SubtitleProfile GetSubtitleProfile(MediaStream subtitleStream, SubtitleProfile[] subtitleProfiles, EncodingContext context, PlayMethod playMethod)
 	{
+		if (playMethod != PlayMethod.Transcode)
+		{
+			// Look for supported embedded subs
+			for (SubtitleProfile profile : subtitleProfiles)
+			{
+				if (!profile.SupportsLanguage(subtitleStream.getLanguage()))
+				{
+					continue;
+				}
+
+				if (profile.getMethod() == SubtitleDeliveryMethod.Embed && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
+				{
+					return profile;
+				}
+			}
+		}
+
 		// Look for an external profile that matches the stream type (text/graphical)
 		for (SubtitleProfile profile : subtitleProfiles)
 		{
@@ -723,17 +748,16 @@ public class StreamBuilder
 				}
 
 				// For sync we can handle the longer extraction times
-				if (context.getValue() == EncodingContext.Static.getValue() && subtitleStream.getIsTextSubtitleStream())
+				if (context == mediabrowser.model.dlna.EncodingContext.Static && subtitleStream.getIsTextSubtitleStream())
 				{
 					return profile;
 				}
 			}
 		}
 
+		// Look for supported embedded subs that we can just mux into the output
 		for (SubtitleProfile profile : subtitleProfiles)
 		{
-			boolean requiresConversion = !StringHelper.EqualsIgnoreCase(subtitleStream.getCodec(), profile.getFormat());
-
 			if (!profile.SupportsLanguage(subtitleStream.getLanguage()))
 			{
 				continue;
@@ -741,11 +765,6 @@ public class StreamBuilder
 
 			if (profile.getMethod() == SubtitleDeliveryMethod.Embed && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
 			{
-				if (!requiresConversion)
-				{
-					return profile;
-				}
-
 				return profile;
 			}
 		}
@@ -758,8 +777,13 @@ public class StreamBuilder
 
 	private boolean IsAudioEligibleForDirectPlay(MediaSourceInfo item, Integer maxBitrate)
 	{
-		// Honor the max bitrate setting
-		return maxBitrate == null || (item.getBitrate() != null && item.getBitrate() <= maxBitrate);
+		if (maxBitrate == null || (item.getBitrate() != null && item.getBitrate() <= maxBitrate))
+		{
+			return true;
+		}
+
+		_logger.Debug("Bitrate exceeds DirectPlay limit");
+		return false;
 	}
 
 	private void ValidateInput(VideoOptions options)

@@ -375,14 +375,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The file watcher delay.</value>
 	*/
-	private int RealtimeMonitorDelay;
-	public final int getRealtimeMonitorDelay()
+	private int RealtimeLibraryMonitorDelay;
+	public final int getRealtimeLibraryMonitorDelay()
 	{
-		return RealtimeMonitorDelay;
+		return RealtimeLibraryMonitorDelay;
 	}
-	public final void setRealtimeMonitorDelay(int value)
+	public final void setRealtimeLibraryMonitorDelay(int value)
 	{
-		RealtimeMonitorDelay = value;
+		RealtimeLibraryMonitorDelay = value;
 	}
 
 	/** 
@@ -479,15 +479,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		EnableAutomaticRestart = value;
 	}
 
-	private boolean EnableRealtimeMonitor;
-	public final boolean getEnableRealtimeMonitor()
-	{
-		return EnableRealtimeMonitor;
-	}
-	public final void setEnableRealtimeMonitor(boolean value)
-	{
-		EnableRealtimeMonitor = value;
-	}
 	private PathSubstitution[] PathSubstitutions;
 	public final PathSubstitution[] getPathSubstitutions()
 	{
@@ -604,6 +595,36 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		RemoteClientBitrateLimit = value;
 	}
 
+	private boolean DenyIFrameEmbedding;
+	public final boolean getDenyIFrameEmbedding()
+	{
+		return DenyIFrameEmbedding;
+	}
+	public final void setDenyIFrameEmbedding(boolean value)
+	{
+		DenyIFrameEmbedding = value;
+	}
+
+	private AutoOnOff EnableLibraryMonitor = AutoOnOff.values()[0];
+	public final AutoOnOff getEnableLibraryMonitor()
+	{
+		return EnableLibraryMonitor;
+	}
+	public final void setEnableLibraryMonitor(AutoOnOff value)
+	{
+		EnableLibraryMonitor = value;
+	}
+
+	private int SharingExpirationDays;
+	public final int getSharingExpirationDays()
+	{
+		return SharingExpirationDays;
+	}
+	public final void setSharingExpirationDays(int value)
+	{
+		SharingExpirationDays = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
 	*/
@@ -620,16 +641,19 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setEnableDashboardResourceMinification(true);
 
 		setEnableAutomaticRestart(true);
+		setDenyIFrameEmbedding(true);
 
 		setEnableUPnP(true);
 
+		setSharingExpirationDays(30);
 		setMinResumePct(5);
 		setMaxResumePct(90);
 
 		// 5 minutes
 		setMinResumeDurationSeconds(300);
 
-		setRealtimeMonitorDelay(30);
+		setEnableLibraryMonitor(AutoOnOff.Auto);
+		setRealtimeLibraryMonitorDelay(40);
 
 		setEnableInternetProviders(true);
 		setFindInternetTrailers(true);
@@ -646,20 +670,18 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 
 		setSeasonZeroDisplayName("Specials");
 
-		setEnableRealtimeMonitor(true);
-
 		setUICulture("en-us");
 
 		setPeopleMetadataOptions(new PeopleMetadataOptions());
 
-		setInsecureApps9(new String[] {"Chromecast", "iOS", "Unknown app", "MediaPortal", "Media Portal", "iPad", "iPhone", "Windows Phone"});
+		setInsecureApps9(new String[] {"Chromecast", "iOS", "Unknown app", "iPad", "iPhone", "Windows Phone"});
 
 		MetadataOptions tempVar = new MetadataOptions(1, 1280);
 		tempVar.setItemType("Book");
 		MetadataOptions tempVar2 = new MetadataOptions(1, 1280);
 		tempVar2.setItemType("Movie");
 		ImageOption tempVar3 = new ImageOption();
-		tempVar3.setLimit(3);
+		tempVar3.setLimit(2);
 		tempVar3.setMinWidth(1280);
 		tempVar3.setType(ImageType.Backdrop);
 		ImageOption tempVar4 = new ImageOption();
@@ -672,7 +694,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		tempVar6.setLimit(1);
 		tempVar6.setType(ImageType.Primary);
 		ImageOption tempVar7 = new ImageOption();
-		tempVar7.setLimit(1);
+		tempVar7.setLimit(0);
 		tempVar7.setType(ImageType.Banner);
 		ImageOption tempVar8 = new ImageOption();
 		tempVar8.setLimit(1);
@@ -706,7 +728,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		MetadataOptions tempVar17 = new MetadataOptions(1, 1280);
 		tempVar17.setItemType("MusicAlbum");
 		ImageOption tempVar18 = new ImageOption();
-		tempVar18.setLimit(1);
+		tempVar18.setLimit(0);
 		tempVar18.setMinWidth(1280);
 		tempVar18.setType(ImageType.Backdrop);
 		ImageOption tempVar19 = new ImageOption();
@@ -725,9 +747,12 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		ImageOption tempVar23 = new ImageOption();
 		tempVar23.setLimit(0);
 		tempVar23.setType(ImageType.Art);
-		tempVar20.setImageOptions(new ImageOption[] {tempVar21, tempVar22, tempVar23});
-		MetadataOptions tempVar24 = new MetadataOptions(0, 1280);
-		tempVar24.setItemType("Season");
-		setMetadataOptions(new MetadataOptions[] {tempVar, tempVar2, tempVar10, tempVar17, tempVar20, tempVar24});
+		ImageOption tempVar24 = new ImageOption();
+		tempVar24.setLimit(0);
+		tempVar24.setType(ImageType.Logo);
+		tempVar20.setImageOptions(new ImageOption[] {tempVar21, tempVar22, tempVar23, tempVar24});
+		MetadataOptions tempVar25 = new MetadataOptions(0, 1280);
+		tempVar25.setItemType("Season");
+		setMetadataOptions(new MetadataOptions[] {tempVar, tempVar2, tempVar10, tempVar17, tempVar20, tempVar25});
 	}
 }
