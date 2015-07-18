@@ -35,11 +35,7 @@ public class AndroidProfile extends DeviceProfile
 		audioDirectPlayProfile.setContainer("jpg,jpeg,png,gif");
 		audioDirectPlayProfile.setType(DlnaProfileType.Photo);
 
-		setDirectPlayProfiles(new DirectPlayProfile[] {videoDirectPlayProfile, audioDirectPlayProfile, photoDirectPlayProfile});
-
-		SubtitleProfile srtSubs = new SubtitleProfile();
-		srtSubs.setFormat("srt");
-		srtSubs.setMethod(SubtitleDeliveryMethod.External);
+		setDirectPlayProfiles(new DirectPlayProfile[]{videoDirectPlayProfile, audioDirectPlayProfile, photoDirectPlayProfile});
 
 		CodecProfile videoCodecProfile = new CodecProfile();
 		videoCodecProfile.setType(CodecType.Video);
@@ -55,7 +51,21 @@ public class AndroidProfile extends DeviceProfile
 		videoAudioCodecProfile.setConditions(new ProfileCondition[] {new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.AudioChannels, "6")});
 
 		setCodecProfiles(new CodecProfile[] { videoCodecProfile, videoAudioCodecProfile });
-		setSubtitleProfiles(new SubtitleProfile[] { srtSubs });
+		setSubtitleProfiles(new SubtitleProfile[] {
+				//getSubtitleProfile("srt", SubtitleDeliveryMethod.External),
+				getSubtitleProfile("srt", SubtitleDeliveryMethod.Embed),
+				getSubtitleProfile("ass", SubtitleDeliveryMethod.Embed),
+				getSubtitleProfile("ssa", SubtitleDeliveryMethod.Embed),
+				getSubtitleProfile("pgs", SubtitleDeliveryMethod.Embed),
+				getSubtitleProfile("vtt", SubtitleDeliveryMethod.Embed)
+		});
+	}
+
+	private SubtitleProfile getSubtitleProfile(String format, SubtitleDeliveryMethod method) {
+		SubtitleProfile subs = new SubtitleProfile();
+		subs.setFormat(format);
+		subs.setMethod(method);
+		return subs;
 	}
 
 	public AndroidProfile(AndroidProfileOptions profileOptions)
