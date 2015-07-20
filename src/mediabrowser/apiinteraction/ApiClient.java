@@ -30,10 +30,7 @@ import mediabrowser.model.globalization.CountryInfo;
 import mediabrowser.model.globalization.CultureDto;
 import mediabrowser.model.livetv.*;
 import mediabrowser.model.logging.ILogger;
-import mediabrowser.model.mediainfo.LiveStreamRequest;
-import mediabrowser.model.mediainfo.LiveStreamResponse;
-import mediabrowser.model.mediainfo.PlaybackInfoRequest;
-import mediabrowser.model.mediainfo.PlaybackInfoResponse;
+import mediabrowser.model.mediainfo.*;
 import mediabrowser.model.net.HttpException;
 import mediabrowser.model.notifications.NotificationQuery;
 import mediabrowser.model.notifications.NotificationResult;
@@ -2795,5 +2792,12 @@ public class ApiClient extends BaseApiClient {
         {
             response.onError(ex);
         }
+    }
+
+    public void getSubtitles(String url, Response<SubtitleTrackInfo> response) {
+
+        url = AddDataFormat(url);
+
+        Send(url, "GET", new SerializedResponse<SubtitleTrackInfo>(response, jsonSerializer, url, Logger, new SubtitleTrackInfo().getClass()));
     }
 }

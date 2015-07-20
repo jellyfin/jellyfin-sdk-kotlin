@@ -52,7 +52,7 @@ public class AndroidProfile extends DeviceProfile
 
 		setCodecProfiles(new CodecProfile[] { videoCodecProfile, videoAudioCodecProfile });
 		setSubtitleProfiles(new SubtitleProfile[] {
-				//getSubtitleProfile("srt", SubtitleDeliveryMethod.External),
+				getSubtitleProfile("srt", SubtitleDeliveryMethod.External),
 				getSubtitleProfile("srt", SubtitleDeliveryMethod.Embed),
 				getSubtitleProfile("ass", SubtitleDeliveryMethod.Embed),
 				getSubtitleProfile("ssa", SubtitleDeliveryMethod.Embed),
