@@ -109,7 +109,7 @@ public class VolleyStringRequest extends StringRequest {
         {
             String value = requestHeaders.getAuthorizationScheme() + " " + parameter;
 
-            headers.put("Authorization", value);
+            headers.put("X-Emby-Authorization", value);
         }
     }
 
