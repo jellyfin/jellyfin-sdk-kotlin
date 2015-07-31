@@ -4,6 +4,7 @@ import mediabrowser.model.drawing.*;
 import mediabrowser.model.entities.*;
 import mediabrowser.model.extensions.*;
 import mediabrowser.model.library.*;
+import mediabrowser.model.livetv.*;
 import mediabrowser.model.providers.*;
 import mediabrowser.model.sync.*;
 
@@ -320,6 +321,20 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setSyncStatus(SyncJobItemStatus value)
 	{
 		SyncStatus = value;
+	}
+	/** 
+	 Gets or sets the synchronize percent.
+	 
+	 <value>The synchronize percent.</value>
+	*/
+	private Double SyncPercent = null;
+	public final Double getSyncPercent()
+	{
+		return SyncPercent;
+	}
+	public final void setSyncPercent(Double value)
+	{
+		SyncPercent = value;
 	}
 
 	/** 
@@ -1193,14 +1208,64 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value>The status.</value>
 	*/
-	private SeriesStatus Status = null;
-	public final SeriesStatus getStatus()
+	private String Status;
+	public final String getStatus()
 	{
 		return Status;
 	}
-	public final void setStatus(SeriesStatus value)
+	public final void setStatus(String value)
 	{
 		Status = value;
+	}
+
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [IgnoreDataMember] public Nullable<SeriesStatus> SeriesStatus
+	public final SeriesStatus getSeriesStatus()
+	{
+		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(getStatus()))
+		{
+			return null;
+		}
+
+//C# TO JAVA CONVERTER WARNING: Java does not have an 'ignoreCase' parameter for the static 'valueOf' method of enum types:
+//ORIGINAL LINE: return (SeriesStatus)Enum.Parse(typeof(SeriesStatus), Status, true);
+		return SeriesStatus.valueOf(getStatus());
+	}
+	public final void setSeriesStatus(SeriesStatus value)
+	{
+		if (value == null)
+		{
+			setStatus(null);
+		}
+		else
+		{
+			setStatus(value.toString());
+		}
+	}
+
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [IgnoreDataMember] public Nullable<RecordingStatus> RecordingStatus
+	public final RecordingStatus getRecordingStatus()
+	{
+		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(getStatus()))
+		{
+			return null;
+		}
+
+//C# TO JAVA CONVERTER WARNING: Java does not have an 'ignoreCase' parameter for the static 'valueOf' method of enum types:
+//ORIGINAL LINE: return (RecordingStatus)Enum.Parse(typeof(RecordingStatus), Status, true);
+		return RecordingStatus.valueOf(getStatus());
+	}
+	public final void setRecordingStatus(RecordingStatus value)
+	{
+		if (value == null)
+		{
+			setStatus(null);
+		}
+		else
+		{
+			setStatus(value.toString());
+		}
 	}
 
 	/** 
@@ -2145,6 +2210,34 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	}
 
 	/** 
+	 Used by RecordingGroup
+	*/
+	private Integer RecordingCount = null;
+	public final Integer getRecordingCount()
+	{
+		return RecordingCount;
+	}
+	public final void setRecordingCount(Integer value)
+	{
+		RecordingCount = value;
+	}
+
+	/** 
+	 Gets or sets the series timer identifier.
+	 
+	 <value>The series timer identifier.</value>
+	*/
+	private String SeriesTimerId;
+	public final String getSeriesTimerId()
+	{
+		return SeriesTimerId;
+	}
+	public final void setSeriesTimerId(String value)
+	{
+		SeriesTimerId = value;
+	}
+
+	/** 
 	 Gets a value indicating whether this instance can resume.
 	 
 	 <value><c>true</c> if this instance can resume; otherwise, <c>false</c>.</value>
@@ -2407,4 +2500,258 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
 //	public event PropertyChangedEventHandler PropertyChanged;
+
+	/** 
+	 Gets or sets the program identifier.
+	 
+	 <value>The program identifier.</value>
+	*/
+	private String ProgramId;
+	public final String getProgramId()
+	{
+		return ProgramId;
+	}
+	public final void setProgramId(String value)
+	{
+		ProgramId = value;
+	}
+
+	/** 
+	 Gets or sets the channel primary image tag.
+	 
+	 <value>The channel primary image tag.</value>
+	*/
+	private String ChannelPrimaryImageTag;
+	public final String getChannelPrimaryImageTag()
+	{
+		return ChannelPrimaryImageTag;
+	}
+	public final void setChannelPrimaryImageTag(String value)
+	{
+		ChannelPrimaryImageTag = value;
+	}
+
+	/** 
+	 The start date of the recording, in UTC.
+	*/
+	private java.util.Date StartDate = null;
+	public final java.util.Date getStartDate()
+	{
+		return StartDate;
+	}
+	public final void setStartDate(java.util.Date value)
+	{
+		StartDate = value;
+	}
+
+	/** 
+	 Gets or sets the original air date.
+	 
+	 <value>The original air date.</value>
+	*/
+	private java.util.Date OriginalAirDate = null;
+	public final java.util.Date getOriginalAirDate()
+	{
+		return OriginalAirDate;
+	}
+	public final void setOriginalAirDate(java.util.Date value)
+	{
+		OriginalAirDate = value;
+	}
+
+	/** 
+	 Gets or sets the completion percentage.
+	 
+	 <value>The completion percentage.</value>
+	*/
+	private Double CompletionPercentage = null;
+	public final Double getCompletionPercentage()
+	{
+		return CompletionPercentage;
+	}
+	public final void setCompletionPercentage(Double value)
+	{
+		CompletionPercentage = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance is repeat.
+	 
+	 <value><c>true</c> if this instance is repeat; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean IsRepeat = null;
+	public final Boolean getIsRepeat()
+	{
+		return IsRepeat;
+	}
+	public final void setIsRepeat(Boolean value)
+	{
+		IsRepeat = value;
+	}
+
+	/** 
+	 Gets or sets the episode title.
+	 
+	 <value>The episode title.</value>
+	*/
+	private String EpisodeTitle;
+	public final String getEpisodeTitle()
+	{
+		return EpisodeTitle;
+	}
+	public final void setEpisodeTitle(String value)
+	{
+		EpisodeTitle = value;
+	}
+
+	/** 
+	 Gets or sets the type of the channel.
+	 
+	 <value>The type of the channel.</value>
+	*/
+	private ChannelType ChannelType = null;
+	public final ChannelType getChannelType()
+	{
+		return ChannelType;
+	}
+	public final void setChannelType(ChannelType value)
+	{
+		ChannelType = value;
+	}
+
+	/** 
+	 Gets or sets the audio.
+	 
+	 <value>The audio.</value>
+	*/
+	private ProgramAudio Audio = null;
+	public final ProgramAudio getAudio()
+	{
+		return Audio;
+	}
+	public final void setAudio(ProgramAudio value)
+	{
+		Audio = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance is movie.
+	 
+	 <value><c>true</c> if this instance is movie; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean IsMovie = null;
+	public final Boolean getIsMovie()
+	{
+		return IsMovie;
+	}
+	public final void setIsMovie(Boolean value)
+	{
+		IsMovie = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance is sports.
+	 
+	 <value><c>true</c> if this instance is sports; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean IsSports = null;
+	public final Boolean getIsSports()
+	{
+		return IsSports;
+	}
+	public final void setIsSports(Boolean value)
+	{
+		IsSports = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance is series.
+	 
+	 <value><c>true</c> if this instance is series; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean IsSeries = null;
+	public final Boolean getIsSeries()
+	{
+		return IsSeries;
+	}
+	public final void setIsSeries(Boolean value)
+	{
+		IsSeries = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance is live.
+	 
+	 <value><c>true</c> if this instance is live; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean IsLive = null;
+	public final Boolean getIsLive()
+	{
+		return IsLive;
+	}
+	public final void setIsLive(Boolean value)
+	{
+		IsLive = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance is news.
+	 
+	 <value><c>true</c> if this instance is news; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean IsNews = null;
+	public final Boolean getIsNews()
+	{
+		return IsNews;
+	}
+	public final void setIsNews(Boolean value)
+	{
+		IsNews = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance is kids.
+	 
+	 <value><c>true</c> if this instance is kids; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean IsKids = null;
+	public final Boolean getIsKids()
+	{
+		return IsKids;
+	}
+	public final void setIsKids(Boolean value)
+	{
+		IsKids = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether this instance is premiere.
+	 
+	 <value><c>true</c> if this instance is premiere; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean IsPremiere = null;
+	public final Boolean getIsPremiere()
+	{
+		return IsPremiere;
+	}
+	public final void setIsPremiere(Boolean value)
+	{
+		IsPremiere = value;
+	}
+
+	/** 
+	 Gets or sets the timer identifier.
+	 
+	 <value>The timer identifier.</value>
+	*/
+	private String TimerId;
+	public final String getTimerId()
+	{
+		return TimerId;
+	}
+	public final void setTimerId(String value)
+	{
+		TimerId = value;
+	}
+
 }

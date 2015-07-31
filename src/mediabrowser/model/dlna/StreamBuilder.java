@@ -718,7 +718,12 @@ public class StreamBuilder
 					continue;
 				}
 
-				if (profile.getMethod() == SubtitleDeliveryMethod.Embed && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
+				if (profile.getMethod() != SubtitleDeliveryMethod.Embed)
+				{
+					continue;
+				}
+
+				if (subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()) && StringHelper.EqualsIgnoreCase(profile.getFormat(), subtitleStream.getCodec()))
 				{
 					return profile;
 				}
@@ -748,24 +753,10 @@ public class StreamBuilder
 				}
 
 				// For sync we can handle the longer extraction times
-				if (context == mediabrowser.model.dlna.EncodingContext.Static && subtitleStream.getIsTextSubtitleStream())
+				if (context.getValue() == EncodingContext.Static.getValue() && subtitleStream.getIsTextSubtitleStream())
 				{
 					return profile;
 				}
-			}
-		}
-
-		// Look for supported embedded subs that we can just mux into the output
-		for (SubtitleProfile profile : subtitleProfiles)
-		{
-			if (!profile.SupportsLanguage(subtitleStream.getLanguage()))
-			{
-				continue;
-			}
-
-			if (profile.getMethod() == SubtitleDeliveryMethod.Embed && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
-			{
-				return profile;
 			}
 		}
 

@@ -1,5 +1,7 @@
 package mediabrowser.model.livetv;
 
+import mediabrowser.model.dto.*;
+
 public class TimerInfoDto extends BaseTimerInfoDto
 {
 	/** 
@@ -67,12 +69,12 @@ public class TimerInfoDto extends BaseTimerInfoDto
 	 
 	 <value>The program information.</value>
 	*/
-	private ProgramInfoDto ProgramInfo;
-	public final ProgramInfoDto getProgramInfo()
+	private BaseItemDto ProgramInfo;
+	public final BaseItemDto getProgramInfo()
 	{
 		return ProgramInfo;
 	}
-	public final void setProgramInfo(ProgramInfoDto value)
+	public final void setProgramInfo(BaseItemDto value)
 	{
 		ProgramInfo = value;
 	}

@@ -43,20 +43,22 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
             logger = new ConsoleLogger();
         }
 
+        logger.Debug("Checking network connection");
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = cm.getActiveNetworkInfo();
 
-        if(info.getType()==ConnectivityManager.TYPE_WIFI ||
-                info.getType()==ConnectivityManager.TYPE_ETHERNET)
-        {
-            logger.Debug("Local Network Connected");
-        }
-        else
-        {
-            logger.Debug("WiFi not connected");
-            if (extras.getBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, false) == false){
-                logger.Debug("Skipping sync because we're not connected to wifi");
-                return;
+        if (info != null){
+            if(info.getType()==ConnectivityManager.TYPE_WIFI || info.getType()==ConnectivityManager.TYPE_ETHERNET)
+            {
+                logger.Debug("Local Network Connected");
+            }
+            else
+            {
+                logger.Debug("WiFi not connected");
+                if (extras.getBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, false) == false){
+                    logger.Debug("Skipping sync because we're not connected to wifi");
+                    return;
+                }
             }
         }
 

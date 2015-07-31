@@ -317,6 +317,10 @@ public class UserPolicy
 		setEnableLiveTvManagement(true);
 		setEnableLiveTvAccess(true);
 
+		// Without this on by default, admins won't be able to do this
+		// Improve in the future
+		setEnableLiveTvManagement(true);
+
 		setEnableSharedDeviceControl(true);
 
 		setBlockedTags(new String[] { });

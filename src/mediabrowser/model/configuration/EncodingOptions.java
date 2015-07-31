@@ -2,14 +2,14 @@ package mediabrowser.model.configuration;
 
 public class EncodingOptions
 {
-	private EncodingQuality EncodingQuality = getEncodingQuality().values()[0];
-	public final EncodingQuality getEncodingQuality()
+	private int EncodingThreadCount;
+	public final int getEncodingThreadCount()
 	{
-		return EncodingQuality;
+		return EncodingThreadCount;
 	}
-	public final void setEncodingQuality(EncodingQuality value)
+	public final void setEncodingThreadCount(int value)
 	{
-		EncodingQuality = value;
+		EncodingThreadCount = value;
 	}
 	private String TranscodingTempPath;
 	public final String getTranscodingTempPath()
@@ -70,8 +70,8 @@ public class EncodingOptions
 	{
 		setH264Encoder("libx264");
 		setDownMixAudioBoost(2);
-		setEncodingQuality(EncodingQuality.Auto);
 		setEnableThrottling(true);
 		setThrottleThresholdInSeconds(120);
+		setEncodingThreadCount(-1);
 	}
 }

@@ -157,6 +157,21 @@ public class UserItemDataDto implements IHasPropertyChangedEvent
 		Key = value;
 	}
 
+	/** 
+	 Gets or sets the item identifier.
+	 
+	 <value>The item identifier.</value>
+	*/
+	private String ItemId;
+	public final String getItemId()
+	{
+		return ItemId;
+	}
+	public final void setItemId(String value)
+	{
+		ItemId = value;
+	}
+
 //C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
 //	public event PropertyChangedEventHandler PropertyChanged;
 }

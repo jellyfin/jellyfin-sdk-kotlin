@@ -212,12 +212,12 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto, IHasS
 	 
 	 <value>The now playing program.</value>
 	*/
-	private ProgramInfoDto CurrentProgram;
-	public final ProgramInfoDto getCurrentProgram()
+	private BaseItemDto CurrentProgram;
+	public final BaseItemDto getCurrentProgram()
 	{
 		return CurrentProgram;
 	}
-	public final void setCurrentProgram(ProgramInfoDto value)
+	public final void setCurrentProgram(BaseItemDto value)
 	{
 		CurrentProgram = value;
 	}

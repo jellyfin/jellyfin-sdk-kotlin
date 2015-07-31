@@ -120,12 +120,12 @@ public class MediaSourceInfo
 		SupportsDirectPlay = value;
 	}
 
-	private boolean RequiresOpening;
-	public final boolean getRequiresOpening()
+	private Boolean RequiresOpening = null;
+	public final Boolean getRequiresOpening()
 	{
 		return RequiresOpening;
 	}
-	public final void setRequiresOpening(boolean value)
+	public final void setRequiresOpening(Boolean value)
 	{
 		RequiresOpening = value;
 	}
@@ -138,12 +138,12 @@ public class MediaSourceInfo
 	{
 		OpenToken = value;
 	}
-	private boolean RequiresClosing;
-	public final boolean getRequiresClosing()
+	private Boolean RequiresClosing = null;
+	public final Boolean getRequiresClosing()
 	{
 		return RequiresClosing;
 	}
-	public final void setRequiresClosing(boolean value)
+	public final void setRequiresClosing(Boolean value)
 	{
 		RequiresClosing = value;
 	}

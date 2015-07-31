@@ -2,7 +2,7 @@ package mediabrowser.model.livetv;
 
 public class LiveTvOptions
 {
-	private Integer GuideDays;
+	private Integer GuideDays = null;
 	public final Integer getGuideDays()
 	{
 		return GuideDays;
@@ -20,9 +20,13 @@ public class LiveTvOptions
 	{
 		EnableMovieProviders = value;
 	}
-
-	public LiveTvOptions()
+	private String RecordingPath;
+	public final String getRecordingPath()
 	{
-		setEnableMovieProviders(true);
+		return RecordingPath;
+	}
+	public final void setRecordingPath(String value)
+	{
+		RecordingPath = value;
 	}
 }

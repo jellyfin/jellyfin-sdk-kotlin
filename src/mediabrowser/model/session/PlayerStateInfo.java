@@ -136,4 +136,19 @@ public class PlayerStateInfo
 	{
 		PlayMethod = value;
 	}
+
+	/** 
+	 Gets or sets the repeat mode.
+	 
+	 <value>The repeat mode.</value>
+	*/
+	private RepeatMode RepeatMode = getRepeatMode().values()[0];
+	public final RepeatMode getRepeatMode()
+	{
+		return RepeatMode;
+	}
+	public final void setRepeatMode(RepeatMode value)
+	{
+		RepeatMode = value;
+	}
 }

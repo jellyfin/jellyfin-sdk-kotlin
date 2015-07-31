@@ -21,6 +21,20 @@ public class SystemInfo extends PublicSystemInfo
 	{
 		OperatingSystem = value;
 	}
+	/** 
+	 Gets or sets the display name of the operating system.
+	 
+	 <value>The display name of the operating system.</value>
+	*/
+	private String OperatingSystemDisplayName;
+	public final String getOperatingSystemDisplayName()
+	{
+		return OperatingSystemDisplayName;
+	}
+	public final void setOperatingSystemDisplayName(String value)
+	{
+		OperatingSystemDisplayName = value;
+	}
 
 	/** 
 	 Gets or sets a value indicating whether this instance is running as service.

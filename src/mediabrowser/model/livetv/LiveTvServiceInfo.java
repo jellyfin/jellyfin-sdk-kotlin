@@ -94,6 +94,20 @@ public class LiveTvServiceInfo
 	{
 		HasUpdateAvailable = value;
 	}
+	/** 
+	 Gets or sets a value indicating whether this instance is visible.
+	 
+	 <value><c>true</c> if this instance is visible; otherwise, <c>false</c>.</value>
+	*/
+	private boolean IsVisible;
+	public final boolean getIsVisible()
+	{
+		return IsVisible;
+	}
+	public final void setIsVisible(boolean value)
+	{
+		IsVisible = value;
+	}
 
 	private java.util.ArrayList<LiveTvTunerInfoDto> Tuners;
 	public final java.util.ArrayList<LiveTvTunerInfoDto> getTuners()

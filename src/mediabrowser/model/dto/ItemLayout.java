@@ -9,7 +9,7 @@ public final class ItemLayout
 		return GetDisplayAspectRatio(items);
 	}
 
-	public static Double GetDisplayAspectRatio(java.util.List<BaseItemDto> items)
+	public static Double GetDisplayAspectRatio(java.util.ArrayList<BaseItemDto> items)
 	{
 		java.util.ArrayList<Double> values = new java.util.ArrayList<Double>();
 

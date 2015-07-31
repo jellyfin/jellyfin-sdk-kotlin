@@ -702,41 +702,7 @@ public abstract class BaseApiClient implements IDisposable
 		return GetImageUrl(item.getId(), options);
 	}
 
-	public final String GetImageUrl(RecordingInfoDto item, ImageOptions options)
-	{
-		if (item == null)
-		{
-			throw new IllegalArgumentException("item");
-		}
-
-		if (options == null)
-		{
-			throw new IllegalArgumentException("options");
-		}
-
-		options.setTag(item.getImageTags().get(options.getImageType()));
-
-		return GetImageUrl(item.getId(), options);
-	}
-
 	public final String GetImageUrl(ChannelInfoDto item, ImageOptions options)
-	{
-		if (item == null)
-		{
-			throw new IllegalArgumentException("item");
-		}
-
-		if (options == null)
-		{
-			throw new IllegalArgumentException("options");
-		}
-
-        options.setTag(item.getImageTags().get(options.getImageType()));
-
-		return GetImageUrl(item.getId(), options);
-	}
-
-	public final String GetImageUrl(ProgramInfoDto item, ImageOptions options)
 	{
 		if (item == null)
 		{

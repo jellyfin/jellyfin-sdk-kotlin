@@ -1722,7 +1722,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<LiveTvInfo>(response, jsonSerializer, LiveTvInfo.class));
     }
 
-    public void GetLiveTvRecordingGroupsAsync(RecordingGroupQuery query, final Response<RecordingGroupDtoResult> response)
+    public void GetLiveTvRecordingGroupsAsync(RecordingGroupQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -1736,10 +1736,10 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Recordings/Groups", dict);
 
         url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<RecordingGroupDtoResult>(response, jsonSerializer, RecordingGroupDtoResult.class));
+        Send(url, "GET", new SerializedResponse<ItemsResult>(response, jsonSerializer, ItemsResult.class));
     }
 
-    public void GetLiveTvRecordingsAsync(RecordingQuery query, final Response<RecordingInfoDtoResult> response)
+    public void GetLiveTvRecordingsAsync(RecordingQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -1760,7 +1760,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Recordings", dict);
 
         url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<RecordingInfoDtoResult>(response, jsonSerializer, RecordingInfoDtoResult.class));
+        Send(url, "GET", new SerializedResponse<ItemsResult>(response, jsonSerializer, ItemsResult.class));
     }
 
     public void GetLiveTvChannelsAsync(LiveTvChannelQuery query, final Response<ChannelInfoDtoResult> response)
@@ -1849,7 +1849,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<ChannelInfoDto>(response, jsonSerializer, ChannelInfoDto.class));
     }
 
-    public void GetLiveTvRecordingAsync(String id, String userId, final Response<RecordingInfoDto> response)
+    public void GetLiveTvRecordingAsync(String id, String userId, final Response<BaseItemDto> response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
         {
@@ -1862,10 +1862,10 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Recordings/" + id, dict);
 
         url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<RecordingInfoDto>(response, jsonSerializer, RecordingInfoDto.class));
+        Send(url, "GET", new SerializedResponse<BaseItemDto>(response, jsonSerializer, BaseItemDto.class));
     }
 
-    public void GetLiveTvRecordingGroupAsync(String id, String userId, final Response<RecordingGroupDto> response)
+    public void GetLiveTvRecordingGroupAsync(String id, String userId, final Response<BaseItemDto> response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
         {
@@ -1878,7 +1878,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Recordings/Groups/" + id, dict);
 
         url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<RecordingGroupDto>(response, jsonSerializer, RecordingGroupDto.class));
+        Send(url, "GET", new SerializedResponse<BaseItemDto>(response, jsonSerializer, BaseItemDto.class));
     }
 
     public void GetLiveTvSeriesTimerAsync(String id, final Response<SeriesTimerInfoDto> response)
@@ -1947,7 +1947,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<TimerInfoDtoResult>(response, jsonSerializer, new TimerInfoDtoResult().getClass()));
     }
 
-    public void GetLiveTvProgramsAsync(ProgramQuery query, final Response<ProgramInfoDtoResult> response)
+    public void GetLiveTvProgramsAsync(ProgramQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -1986,10 +1986,10 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Programs", dict);
 
         url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<ProgramInfoDtoResult>(response, jsonSerializer, ProgramInfoDtoResult.class));
+        Send(url, "GET", new SerializedResponse<ItemsResult>(response, jsonSerializer, ItemsResult.class));
     }
 
-    public void GetRecommendedLiveTvProgramsAsync(RecommendedProgramQuery query, final Response<ProgramInfoDtoResult> response)
+    public void GetRecommendedLiveTvProgramsAsync(RecommendedProgramQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
@@ -2006,7 +2006,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Programs/Recommended", dict);
 
         url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<ProgramInfoDtoResult>(response, jsonSerializer, ProgramInfoDtoResult.class));
+        Send(url, "GET", new SerializedResponse<ItemsResult>(response, jsonSerializer, ItemsResult.class));
     }
 
     public void CreateLiveTvSeriesTimerAsync(SeriesTimerInfoDto timer, final EmptyResponse response)
@@ -2066,7 +2066,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<GuideInfo>(response, jsonSerializer, GuideInfo.class));
     }
 
-    public void GetLiveTvProgramAsync(String id, String userId, final Response<ProgramInfoDto> response)
+    public void GetLiveTvProgramAsync(String id, String userId, final Response<BaseItemDto> response)
     {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
         {
@@ -2079,7 +2079,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("LiveTv/Programs/" + id, dict);
 
         url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<ProgramInfoDto>(response, jsonSerializer, ProgramInfoDto.class));
+        Send(url, "GET", new SerializedResponse<BaseItemDto>(response, jsonSerializer, BaseItemDto.class));
     }
 
     public void UpdateLiveTvSeriesTimerAsync(SeriesTimerInfoDto timer, final EmptyResponse response)
