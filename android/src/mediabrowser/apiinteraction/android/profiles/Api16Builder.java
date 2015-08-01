@@ -261,13 +261,12 @@ public class Api16Builder {
                 profile.setContainer("3gp");
             }
             else if (StringHelper.EqualsIgnoreCase("mpeg2", codecType)){
-                profile.setContainer("mp4,m4v,ts,mpegts");
+                profile.setContainer("ts,mpegts");
                 profile.setVideoCodec("mpeg2video,mpeg2");
                 profile.setAudioCodec("aac");
 
-                if (Defaults.SupportsMkv){
-                    profile.setContainer(profile.getContainer() + ",mkv");
-                }
+                // If we need to add mp4, m4v or mkv then they must be kept separate from mpegts and in their own DirectPlayProfile
+                // This is because they have different rules regarding ac3 within the container
             }
             else {
 
