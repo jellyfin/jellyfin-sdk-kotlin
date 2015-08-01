@@ -27,6 +27,7 @@ import mediabrowser.model.dto.BaseItemDto;
 import mediabrowser.model.dto.MediaSourceInfo;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
+import mediabrowser.model.session.ClientCapabilities;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -62,6 +63,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
     protected abstract IPlayback createPlayback();
     protected abstract IMediaRes createMediaRes();
     public abstract Class getServiceClass();
+    public abstract Class getAudioPlayerActivityClass();
     protected abstract VolleyHttpClient getHttpClient();
 
     protected MediaNotificationManager mMediaNotificationManager;

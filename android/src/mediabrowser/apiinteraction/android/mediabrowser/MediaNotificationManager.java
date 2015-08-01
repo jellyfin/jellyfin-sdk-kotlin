@@ -28,11 +28,6 @@ public class MediaNotificationManager extends BroadcastReceiver {
     private static final int NOTIFICATION_ID = 412;
     private static final int REQUEST_CODE = 100;
 
-    public static final String ACTION_PAUSE = "com.example.android.mediabrowserservice.pause";
-    public static final String ACTION_PLAY = "com.example.android.mediabrowserservice.play";
-    public static final String ACTION_PREV = "com.example.android.mediabrowserservice.prev";
-    public static final String ACTION_NEXT = "com.example.android.mediabrowserservice.next";
-
     private final Service mService;
     private final BaseMediaBrowserService mediaService;
 
@@ -66,13 +61,13 @@ public class MediaNotificationManager extends BroadcastReceiver {
 
         String pkg = mService.getPackageName();
         mPauseIntent = PendingIntent.getBroadcast(mService, REQUEST_CODE,
-                new Intent(ACTION_PAUSE).setPackage(pkg), PendingIntent.FLAG_CANCEL_CURRENT);
+                new Intent(Constants.ACTION_PAUSE).setPackage(pkg), PendingIntent.FLAG_CANCEL_CURRENT);
         mPlayIntent = PendingIntent.getBroadcast(mService, REQUEST_CODE,
-                new Intent(ACTION_PLAY).setPackage(pkg), PendingIntent.FLAG_CANCEL_CURRENT);
+                new Intent(Constants.ACTION_PLAY).setPackage(pkg), PendingIntent.FLAG_CANCEL_CURRENT);
         mPreviousIntent = PendingIntent.getBroadcast(mService, REQUEST_CODE,
-                new Intent(ACTION_PREV).setPackage(pkg), PendingIntent.FLAG_CANCEL_CURRENT);
+                new Intent(Constants.ACTION_PREVIOUS).setPackage(pkg), PendingIntent.FLAG_CANCEL_CURRENT);
         mNextIntent = PendingIntent.getBroadcast(mService, REQUEST_CODE,
-                new Intent(ACTION_NEXT).setPackage(pkg), PendingIntent.FLAG_CANCEL_CURRENT);
+                new Intent(Constants.ACTION_NEXT).setPackage(pkg), PendingIntent.FLAG_CANCEL_CURRENT);
 
         // Cancel all notifications to handle the case where the Service was killed and
         // restarted by the system.
@@ -99,10 +94,10 @@ public class MediaNotificationManager extends BroadcastReceiver {
             if (notification != null) {
                 mController.registerCallback(mCb);
                 IntentFilter filter = new IntentFilter();
-                filter.addAction(ACTION_NEXT);
-                filter.addAction(ACTION_PAUSE);
-                filter.addAction(ACTION_PLAY);
-                filter.addAction(ACTION_PREV);
+                filter.addAction(Constants.ACTION_NEXT);
+                filter.addAction(Constants.ACTION_PAUSE);
+                filter.addAction(Constants.ACTION_PLAY);
+                filter.addAction(Constants.ACTION_PREVIOUS);
                 mService.registerReceiver(this, filter);
 
                 mService.startForeground(NOTIFICATION_ID, notification);
@@ -134,16 +129,16 @@ public class MediaNotificationManager extends BroadcastReceiver {
 
         final String action = intent.getAction();
 
-        if (action.equalsIgnoreCase(ACTION_PAUSE)){
+        if (action.equalsIgnoreCase(Constants.ACTION_PAUSE)){
             mTransportControls.pause();
         }
-        else if (action.equalsIgnoreCase(ACTION_PLAY)){
+        else if (action.equalsIgnoreCase(Constants.ACTION_PLAY)){
             mTransportControls.play();
         }
-        else if (action.equalsIgnoreCase(ACTION_NEXT)){
+        else if (action.equalsIgnoreCase(Constants.ACTION_NEXT)){
             mTransportControls.skipToNext();
         }
-        else if (action.equalsIgnoreCase(ACTION_PREV)){
+        else if (action.equalsIgnoreCase(Constants.ACTION_PREVIOUS)){
             mTransportControls.skipToPrevious();
         }
     }
@@ -171,10 +166,10 @@ public class MediaNotificationManager extends BroadcastReceiver {
 
     private PendingIntent createContentIntent() {
 
-        Intent openUI = new Intent(mService, mediaService.getServiceClass());
+        Intent openUI = new Intent(mService, mediaService.getAudioPlayerActivityClass());
         openUI.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        return PendingIntent.getActivity(mService, REQUEST_CODE, openUI,
-                PendingIntent.FLAG_CANCEL_CURRENT);
+        openUI.setAction(Constants.ACTION_SHOW_PLAYER);
+        return PendingIntent.getActivity(mService, REQUEST_CODE, openUI, PendingIntent.FLAG_CANCEL_CURRENT);
     }
 
     private final MediaController.Callback mCb = new MediaController.Callback() {

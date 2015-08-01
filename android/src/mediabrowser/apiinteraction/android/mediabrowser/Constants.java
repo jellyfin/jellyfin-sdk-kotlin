@@ -24,5 +24,6 @@ public class Constants {
     public static final String LOG_TAG = "MediaService";
 
     public static final String THUMBS_UP = "ThumbsUp";
+    public static final String ACTION_SHOW_PLAYER = "ACTION_SHOW_PLAYER";
 
 }
