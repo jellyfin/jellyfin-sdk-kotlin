@@ -1757,6 +1757,11 @@ public class ApiClient extends BaseApiClient {
         dict.AddIfNotNull("StartIndex", query.getStartIndex());
         dict.AddIfNotNull("Limit", query.getLimit());
 
+        dict.AddIfNotNull("EnableImages", query.getEnableImages());
+        dict.AddIfNotNull("ImageTypeLimit", query.getImageTypeLimit());
+        dict.AddIfNotNull("EnableImageTypes", query.getEnableImageTypes());
+        dict.AddIfNotNull("Fields", query.getFields());
+
         String url = GetApiUrl("LiveTv/Recordings", dict);
 
         url = AddDataFormat(url);
@@ -1975,6 +1980,11 @@ public class ApiClient extends BaseApiClient {
             dict.Add("MinStartDate", getIsoString(query.getMinStartDate()));
         }
 
+        dict.AddIfNotNull("EnableImages", query.getEnableImages());
+        dict.AddIfNotNull("ImageTypeLimit", query.getImageTypeLimit());
+        dict.AddIfNotNull("EnableImageTypes", query.getEnableImageTypes());
+        dict.AddIfNotNull("Fields", query.getFields());
+
         dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
 
         if (query.getChannelIds() != null)
@@ -1997,6 +2007,11 @@ public class ApiClient extends BaseApiClient {
         }
 
         QueryStringDictionary dict = new QueryStringDictionary ();
+
+        dict.AddIfNotNull("EnableImages", query.getEnableImages());
+        dict.AddIfNotNull("ImageTypeLimit", query.getImageTypeLimit());
+        dict.AddIfNotNull("EnableImageTypes", query.getEnableImageTypes());
+        dict.AddIfNotNull("Fields", query.getFields());
 
         dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
         dict.AddIfNotNull("Limit", query.getLimit());
