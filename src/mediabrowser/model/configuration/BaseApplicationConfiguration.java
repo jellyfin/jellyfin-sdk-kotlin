@@ -135,9 +135,6 @@ public class BaseApplicationConfiguration
 		setEnableAutoUpdate(true);
 		setLogFileRetentionDays(3);
 
-//C# TO JAVA CONVERTER TODO TASK: There is no preprocessor in Java:
-//#if (DEBUG)
 		setEnableDebugLevelLogging(true);
-//#endif
 	}
 }

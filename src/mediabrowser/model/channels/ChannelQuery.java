@@ -1,7 +1,52 @@
 package mediabrowser.model.channels;
 
+import mediabrowser.model.entities.*;
+import mediabrowser.model.querying.*;
+
 public class ChannelQuery
 {
+	/** 
+	 Fields to return within the items, in addition to basic information
+	 
+	 <value>The fields.</value>
+	*/
+	private ItemFields[] Fields;
+	public final ItemFields[] getFields()
+	{
+		return Fields;
+	}
+	public final void setFields(ItemFields[] value)
+	{
+		Fields = value;
+	}
+	private Boolean EnableImages;
+	public final Boolean getEnableImages()
+	{
+		return EnableImages;
+	}
+	public final void setEnableImages(Boolean value)
+	{
+		EnableImages = value;
+	}
+	private Integer ImageTypeLimit;
+	public final Integer getImageTypeLimit()
+	{
+		return ImageTypeLimit;
+	}
+	public final void setImageTypeLimit(Integer value)
+	{
+		ImageTypeLimit = value;
+	}
+	private ImageType[] EnableImageTypes;
+	public final ImageType[] getEnableImageTypes()
+	{
+		return EnableImageTypes;
+	}
+	public final void setEnableImageTypes(ImageType[] value)
+	{
+		EnableImageTypes = value;
+	}
+
 	/** 
 	 Gets or sets the user identifier.
 	 

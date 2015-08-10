@@ -1,7 +1,52 @@
 package mediabrowser.model.livetv;
 
+import mediabrowser.model.entities.*;
+import mediabrowser.model.querying.*;
+
 public class RecommendedProgramQuery
 {
+	/** 
+	 Fields to return within the items, in addition to basic information
+	 
+	 <value>The fields.</value>
+	*/
+	private ItemFields[] Fields;
+	public final ItemFields[] getFields()
+	{
+		return Fields;
+	}
+	public final void setFields(ItemFields[] value)
+	{
+		Fields = value;
+	}
+	private Boolean EnableImages;
+	public final Boolean getEnableImages()
+	{
+		return EnableImages;
+	}
+	public final void setEnableImages(Boolean value)
+	{
+		EnableImages = value;
+	}
+	private Integer ImageTypeLimit;
+	public final Integer getImageTypeLimit()
+	{
+		return ImageTypeLimit;
+	}
+	public final void setImageTypeLimit(Integer value)
+	{
+		ImageTypeLimit = value;
+	}
+	private ImageType[] EnableImageTypes;
+	public final ImageType[] getEnableImageTypes()
+	{
+		return EnableImageTypes;
+	}
+	public final void setEnableImageTypes(ImageType[] value)
+	{
+		EnableImageTypes = value;
+	}
+
 	/** 
 	 Gets or sets the user identifier.
 	 
@@ -75,6 +120,20 @@ public class RecommendedProgramQuery
 	public final void setIsMovie(Boolean value)
 	{
 		IsMovie = value;
+	}
+	/** 
+	 Gets or sets a value indicating whether this instance is kids.
+	 
+	 <value><c>null</c> if [is kids] contains no value, <c>true</c> if [is kids]; otherwise, <c>false</c>.</value>
+	*/
+	private Boolean IsKids;
+	public final Boolean getIsKids()
+	{
+		return IsKids;
+	}
+	public final void setIsKids(Boolean value)
+	{
+		IsKids = value;
 	}
 	/** 
 	 Gets or sets a value indicating whether this instance is sports.

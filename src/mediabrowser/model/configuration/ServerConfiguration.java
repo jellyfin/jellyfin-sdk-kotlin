@@ -625,6 +625,16 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		SharingExpirationDays = value;
 	}
 
+	private boolean DisableXmlSavers;
+	public final boolean getDisableXmlSavers()
+	{
+		return DisableXmlSavers;
+	}
+	public final void setDisableXmlSavers(boolean value)
+	{
+		DisableXmlSavers = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
 	*/

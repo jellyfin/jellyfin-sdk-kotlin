@@ -29,4 +29,30 @@ public class LiveTvOptions
 	{
 		RecordingPath = value;
 	}
+
+	private java.util.ArrayList<TunerHostInfo> TunerHosts;
+	public final java.util.ArrayList<TunerHostInfo> getTunerHosts()
+	{
+		return TunerHosts;
+	}
+	public final void setTunerHosts(java.util.ArrayList<TunerHostInfo> value)
+	{
+		TunerHosts = value;
+	}
+	private java.util.ArrayList<ListingsProviderInfo> ListingProviders;
+	public final java.util.ArrayList<ListingsProviderInfo> getListingProviders()
+	{
+		return ListingProviders;
+	}
+	public final void setListingProviders(java.util.ArrayList<ListingsProviderInfo> value)
+	{
+		ListingProviders = value;
+	}
+
+	public LiveTvOptions()
+	{
+		setEnableMovieProviders(true);
+		setTunerHosts(new java.util.ArrayList<TunerHostInfo>());
+		setListingProviders(new java.util.ArrayList<ListingsProviderInfo>());
+	}
 }

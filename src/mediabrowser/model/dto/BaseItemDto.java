@@ -1622,6 +1622,8 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	 
 	 <value><c>true</c> if [supports playlists]; otherwise, <c>false</c>.</value>
 	*/
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [IgnoreDataMember] public bool SupportsPlaylists
 	public final boolean getSupportsPlaylists()
 	{
 		return getRunTimeTicks() != null || getIsFolder() || getIsGenre() || getIsMusicGenre() || getIsArtist();
