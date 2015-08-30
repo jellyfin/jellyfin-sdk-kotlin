@@ -44,20 +44,26 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
         }
 
         logger.Debug("Checking network connection");
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo info = cm.getActiveNetworkInfo();
 
-        if (info != null){
-            if(info.getType()==ConnectivityManager.TYPE_WIFI || info.getType()==ConnectivityManager.TYPE_ETHERNET)
-            {
-                logger.Debug("Local Network Connected");
-            }
-            else
-            {
-                logger.Debug("WiFi not connected");
-                if (extras.getBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, false) == false){
-                    logger.Debug("Skipping sync because we're not connected to wifi");
-                    return;
+        SharedPreferences syncPreferences = context.getSharedPreferences("Sync", Context.MODE_PRIVATE | Context.MODE_MULTI_PROCESS);
+        boolean syncOnlyOnWifi = syncPreferences.getBoolean("syncOnlyOnWifi", true);
+
+        if (syncOnlyOnWifi){
+            ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo info = cm.getActiveNetworkInfo();
+
+            if (info != null){
+                if(info.getType()==ConnectivityManager.TYPE_WIFI || info.getType()==ConnectivityManager.TYPE_ETHERNET)
+                {
+                    logger.Debug("Local Network Connected");
+                }
+                else
+                {
+                    logger.Debug("WiFi not connected");
+                    if (extras.getBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, false) == false){
+                        logger.Debug("Skipping sync because we're not connected to wifi");
+                        return;
+                    }
                 }
             }
         }
@@ -128,14 +134,25 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
         new MultiServerSync(connectionManager, logger, localAssetManager).Sync(source.getToken(), new MultiServerSyncProgress(syncResult, context.getContentResolver(), logger));
     }
 
-    public static void updateSyncPreferences(Context context, String basePath) {
+    public static void updateSyncPreferences(Context context, String basePath, boolean syncOnlyOnWifi) {
 
         SharedPreferences syncPreferences = context.getSharedPreferences("Sync", Context.MODE_PRIVATE | Context.MODE_MULTI_PROCESS);
         SharedPreferences.Editor editor = syncPreferences.edit();
 
         editor.putString("syncPath", basePath);
+        editor.putBoolean("syncOnlyOnWifi", syncOnlyOnWifi);
 
         // Commit the edits!
         boolean saved = editor.commit();
+    }
+
+    public static boolean isSyncActive() {
+
+        return ContentResolver.isSyncActive(AuthenticatorService.GetAccount(), AuthenticatorService.AUTHORITY);
+    }
+
+    public static boolean isSyncPending() {
+
+        return ContentResolver.isSyncPending(AuthenticatorService.GetAccount(), AuthenticatorService.AUTHORITY);
     }
 }

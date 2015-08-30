@@ -81,6 +81,9 @@ public class Api21Builder extends Api16Builder{
         // Audio channels
         int maxAudioChannels = audioCaps.getMaxInputChannelCount();
 
+        if (maxAudioChannels == 5){
+            maxAudioChannels = 6;
+        }
         String channels = String.valueOf(maxAudioChannels);
         conditions.add(new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.AudioChannels, channels));
 
