@@ -220,7 +220,8 @@ public class AndroidProfile extends DeviceProfile
 				String container = profile.getContainer();
 				if (container != null && (StringHelper.IndexOfIgnoreCase(container, "mp4") != -1 ||
 						StringHelper.IndexOfIgnoreCase(container, "mkv") != -1 ||
-						StringHelper.IndexOfIgnoreCase(container, "m4v") != -1)) {
+						StringHelper.IndexOfIgnoreCase(container, "m4v") != -1 ||
+						StringHelper.IndexOfIgnoreCase(container, "ts") != -1)) {
 
 					String audioCodec = profile.getAudioCodec();
 					if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec))
