@@ -319,4 +319,34 @@ public class SearchHint
 	{
 		EpisodeCount = value;
 	}
+
+	/** 
+	 Gets or sets the channel identifier.
+	 
+	 <value>The channel identifier.</value>
+	*/
+	private String ChannelId;
+	public final String getChannelId()
+	{
+		return ChannelId;
+	}
+	public final void setChannelId(String value)
+	{
+		ChannelId = value;
+	}
+
+	/** 
+	 Gets or sets the name of the channel.
+	 
+	 <value>The name of the channel.</value>
+	*/
+	private String ChannelName;
+	public final String getChannelName()
+	{
+		return ChannelName;
+	}
+	public final void setChannelName(String value)
+	{
+		ChannelName = value;
+	}
 }

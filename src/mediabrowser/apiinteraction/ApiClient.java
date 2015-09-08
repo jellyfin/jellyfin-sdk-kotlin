@@ -407,50 +407,14 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetSimilarMoviesAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
+    public void GetSimilarItems(SimilarItemsQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
             throw new IllegalArgumentException("query");
         }
 
-        String url = GetSimilarItemListUrl(query, "Movies");
-
-        GetItemsFromUrl(url, response);
-    }
-
-    /// <summary>
-    /// Gets the similar trailers async.
-    /// </summary>
-    /// <param name="query">The query.</param>
-    /// <returns>Task{ItemsResult}.</returns>
-    /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetSimilarTrailersAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
-    {
-        if (query == null)
-        {
-            throw new IllegalArgumentException("query");
-        }
-
-        String url = GetSimilarItemListUrl(query, "Trailers");
-
-        GetItemsFromUrl(url, response);
-    }
-
-    /// <summary>
-    /// Gets the similar series async.
-    /// </summary>
-    /// <param name="query">The query.</param>
-    /// <returns>Task{ItemsResult}.</returns>
-    /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetSimilarSeriesAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
-    {
-        if (query == null)
-        {
-            throw new IllegalArgumentException("query");
-        }
-
-        String url = GetSimilarItemListUrl(query, "Shows");
+        String url = GetSimilarItemListUrl(query, "Items");
 
         GetItemsFromUrl(url, response);
     }
@@ -501,42 +465,6 @@ public class ApiClient extends BaseApiClient {
     }
 
     /// <summary>
-    /// Gets the similar games async.
-    /// </summary>
-    /// <param name="query">The query.</param>
-    /// <returns>Task{ItemsResult}.</returns>
-    /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetSimilarGamesAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
-    {
-        if (query == null)
-        {
-            throw new IllegalArgumentException("query");
-        }
-
-        String url = GetSimilarItemListUrl(query, "Games");
-
-        GetItemsFromUrl(url, response);
-    }
-
-    /// <summary>
-    /// Gets the similar albums async.
-    /// </summary>
-    /// <param name="query">The query.</param>
-    /// <returns>Task{ItemsResult}.</returns>
-    /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetSimilarAlbumsAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
-    {
-        if (query == null)
-        {
-            throw new IllegalArgumentException("query");
-        }
-
-        String url = GetSimilarItemListUrl(query, "Albums");
-
-        GetItemsFromUrl(url, response);
-    }
-
-    /// <summary>
     /// Gets the people async.
     /// </summary>
     /// <param name="query">The query.</param>
@@ -560,80 +488,14 @@ public class ApiClient extends BaseApiClient {
     /// <param name="query">The query.</param>
     /// <returns>Task{ItemsResult}.</returns>
     /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetInstantMixFromAlbumAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
+    public void GetInstantMixFromItem(SimilarItemsQuery query, final Response<ItemsResult> response)
     {
         if (query == null)
         {
             throw new IllegalArgumentException("query");
         }
 
-        String url = GetInstantMixUrl(query, "Albums");
-
-        GetItemsFromUrl(url, response);
-    }
-
-    /// <summary>
-    /// Gets the instant mix from artist async.
-    /// </summary>
-    /// <param name="query">The query.</param>
-    /// <returns>Task{ItemsResult}.</returns>
-    /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetInstantMixFromArtistAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
-    {
-        if (query == null)
-        {
-            throw new IllegalArgumentException("query");
-        }
-
-        String url = GetInstantMixUrl(query, "Artists");
-
-        GetItemsFromUrl(url, response);
-    }
-
-    /// <summary>
-    /// Gets the instant mix from music genre async.
-    /// </summary>
-    /// <param name="query">The query.</param>
-    /// <returns>Task{ItemsResult}.</returns>
-    /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetInstantMixFromMusicGenreAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
-    {
-        if (query == null)
-        {
-            throw new IllegalArgumentException("query");
-        }
-
-        String url = GetInstantMixUrl(query, "MusicGenres");
-
-        GetItemsFromUrl(url, response);
-    }
-
-    /// <summary>
-    /// Gets the instant mix from song async.
-    /// </summary>
-    /// <param name="query">The query.</param>
-    /// <returns>Task{ItemsResult}.</returns>
-    /// <exception cref="System.IllegalArgumentException">query</exception>
-    public void GetInstantMixFromSongAsync(SimilarItemsQuery query, final Response<ItemsResult> response)
-    {
-        if (query == null)
-        {
-            throw new IllegalArgumentException("query");
-        }
-
-        String url = GetInstantMixUrl(query, "Songs");
-
-        GetItemsFromUrl(url, response);
-    }
-
-    /// <summary>
-    /// Gets the game genres async.
-    /// </summary>
-    /// <param name="query">The query.</param>
-    /// <returns>Task{ItemsResult}.</returns>
-    public void GetGameGenresAsync(ItemsByNameQuery query, final Response<ItemsResult> response)
-    {
-        String url = GetItemByNameListUrl("GameGenres", query);
+        String url = GetInstantMixUrl(query, "Items");
 
         GetItemsFromUrl(url, response);
     }
@@ -646,18 +508,6 @@ public class ApiClient extends BaseApiClient {
     public void GetGenresAsync(ItemsByNameQuery query, final Response<ItemsResult> response)
     {
         String url = GetItemByNameListUrl("Genres", query);
-
-        GetItemsFromUrl(url, response);
-    }
-
-    /// <summary>
-    /// Gets the music genres async.
-    /// </summary>
-    /// <param name="query">The query.</param>
-    /// <returns>Task{ItemsResult}.</returns>
-    public void GetMusicGenresAsync(ItemsByNameQuery query, final Response<ItemsResult> response)
-    {
-        String url = GetItemByNameListUrl("MusicGenres", query);
 
         GetItemsFromUrl(url, response);
     }
@@ -1820,20 +1670,6 @@ public class ApiClient extends BaseApiClient {
         QueryStringDictionary dict = new QueryStringDictionary ();
 
         String url = GetApiUrl("LiveTv/Timers/" + id, dict);
-
-        DeleteAsync(url, response);
-    }
-
-    public void DeleteLiveTvRecordingAsync(String id, final EmptyResponse response)
-    {
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
-        {
-            throw new IllegalArgumentException("id");
-        }
-
-        QueryStringDictionary dict = new QueryStringDictionary ();
-
-        String url = GetApiUrl("LiveTv/Recordings/" + id, dict);
 
         DeleteAsync(url, response);
     }

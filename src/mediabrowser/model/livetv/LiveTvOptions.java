@@ -29,6 +29,15 @@ public class LiveTvOptions
 	{
 		RecordingPath = value;
 	}
+	private boolean EnableAutoOrganize;
+	public final boolean getEnableAutoOrganize()
+	{
+		return EnableAutoOrganize;
+	}
+	public final void setEnableAutoOrganize(boolean value)
+	{
+		EnableAutoOrganize = value;
+	}
 
 	private java.util.ArrayList<TunerHostInfo> TunerHosts;
 	public final java.util.ArrayList<TunerHostInfo> getTunerHosts()
@@ -47,6 +56,25 @@ public class LiveTvOptions
 	public final void setListingProviders(java.util.ArrayList<ListingsProviderInfo> value)
 	{
 		ListingProviders = value;
+	}
+
+	private int PrePaddingSeconds;
+	public final int getPrePaddingSeconds()
+	{
+		return PrePaddingSeconds;
+	}
+	public final void setPrePaddingSeconds(int value)
+	{
+		PrePaddingSeconds = value;
+	}
+	private int PostPaddingSeconds;
+	public final int getPostPaddingSeconds()
+	{
+		return PostPaddingSeconds;
+	}
+	public final void setPostPaddingSeconds(int value)
+	{
+		PostPaddingSeconds = value;
 	}
 
 	public LiveTvOptions()

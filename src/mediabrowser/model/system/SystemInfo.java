@@ -8,20 +8,6 @@ import mediabrowser.model.updates.*;
 public class SystemInfo extends PublicSystemInfo
 {
 	/** 
-	 Gets or sets the operating sytem.
-	 
-	 <value>The operating sytem.</value>
-	*/
-	private String OperatingSystem;
-	public final String getOperatingSystem()
-	{
-		return OperatingSystem;
-	}
-	public final void setOperatingSystem(String value)
-	{
-		OperatingSystem = value;
-	}
-	/** 
 	 Gets or sets the display name of the operating system.
 	 
 	 <value>The display name of the operating system.</value>

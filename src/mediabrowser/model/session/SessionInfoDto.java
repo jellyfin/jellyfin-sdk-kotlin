@@ -233,6 +233,21 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	}
 
 	/** 
+	 Gets or sets the application icon URL.
+	 
+	 <value>The application icon URL.</value>
+	*/
+	private String AppIconUrl;
+	public final String getAppIconUrl()
+	{
+		return AppIconUrl;
+	}
+	public final void setAppIconUrl(String value)
+	{
+		AppIconUrl = value;
+	}
+
+	/** 
 	 Gets or sets a value indicating whether [supports remote control].
 	 
 	 <value><c>true</c> if [supports remote control]; otherwise, <c>false</c>.</value>

@@ -204,6 +204,15 @@ public class UserConfiguration
 	{
 		HidePlayedInLatest = value;
 	}
+	private boolean DisplayChannelsInline;
+	public final boolean getDisplayChannelsInline()
+	{
+		return DisplayChannelsInline;
+	}
+	public final void setDisplayChannelsInline(boolean value)
+	{
+		DisplayChannelsInline = value;
+	}
 
 	/** 
 	 Initializes a new instance of the <see cref="UserConfiguration" /> class.

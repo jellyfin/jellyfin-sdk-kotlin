@@ -2497,11 +2497,10 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 		return StringHelper.EqualsIgnoreCase(getType(), "Studio");
 	}
 
-	/** 
-	 Occurs when [property changed].
-	*/
-//C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
-//	public event PropertyChangedEventHandler PropertyChanged;
+	public final boolean getSupportsSimilarItems()
+	{
+		return IsType("Movie") || IsType("Series") || IsType("MusicAlbum") || IsType("MusicArtist") || IsType("Program") || IsType("Recording") || IsType("ChannelVideoItem") || IsType("Game");
+	}
 
 	/** 
 	 Gets or sets the program identifier.

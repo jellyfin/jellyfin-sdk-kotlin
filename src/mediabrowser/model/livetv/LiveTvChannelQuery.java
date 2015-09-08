@@ -124,4 +124,19 @@ public class LiveTvChannelQuery
 	{
 		Limit = value;
 	}
+
+	/** 
+	 Gets or sets a value indicating whether [add current program].
+	 
+	 <value><c>true</c> if [add current program]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean AddCurrentProgram;
+	public final boolean getAddCurrentProgram()
+	{
+		return AddCurrentProgram;
+	}
+	public final void setAddCurrentProgram(boolean value)
+	{
+		AddCurrentProgram = value;
+	}
 }

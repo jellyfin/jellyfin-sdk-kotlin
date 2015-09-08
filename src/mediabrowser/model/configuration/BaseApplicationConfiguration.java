@@ -134,7 +134,5 @@ public class BaseApplicationConfiguration
 	{
 		setEnableAutoUpdate(true);
 		setLogFileRetentionDays(3);
-
-		setEnableDebugLevelLogging(true);
 	}
 }

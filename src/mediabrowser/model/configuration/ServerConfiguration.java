@@ -234,6 +234,21 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
+	 Gets or sets a value indicating whether [disable startup scan].
+	 
+	 <value><c>true</c> if [disable startup scan]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean DisableStartupScan;
+	public final boolean getDisableStartupScan()
+	{
+		return DisableStartupScan;
+	}
+	public final void setDisableStartupScan(boolean value)
+	{
+		DisableStartupScan = value;
+	}
+
+	/** 
 	 Gets or sets a value indicating whether [enable library metadata sub folder].
 	 
 	 <value><c>true</c> if [enable library metadata sub folder]; otherwise, <c>false</c>.</value>
@@ -634,13 +649,40 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		DisableXmlSavers = value;
 	}
+	private boolean EnableWindowsShortcuts;
+	public final boolean getEnableWindowsShortcuts()
+	{
+		return EnableWindowsShortcuts;
+	}
+	public final void setEnableWindowsShortcuts(boolean value)
+	{
+		EnableWindowsShortcuts = value;
+	}
+
+	private boolean EnableVideoFrameAnalysis;
+	public final boolean getEnableVideoFrameAnalysis()
+	{
+		return EnableVideoFrameAnalysis;
+	}
+	public final void setEnableVideoFrameAnalysis(boolean value)
+	{
+		EnableVideoFrameAnalysis = value;
+	}
+	private long VideoFrameAnalysisLimitBytes;
+	public final long getVideoFrameAnalysisLimitBytes()
+	{
+		return VideoFrameAnalysisLimitBytes;
+	}
+	public final void setVideoFrameAnalysisLimitBytes(long value)
+	{
+		VideoFrameAnalysisLimitBytes = value;
+	}
 
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
 	*/
 	public ServerConfiguration()
 	{
-		super();
 		setImageSavingConvention(ImageSavingConvention.Compatible);
 		setPublicPort(8096);
 		setPublicHttpsPort(8920);
@@ -683,6 +725,9 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setUICulture("en-us");
 
 		setPeopleMetadataOptions(new PeopleMetadataOptions());
+
+		setEnableVideoFrameAnalysis(true);
+		setVideoFrameAnalysisLimitBytes(800000000);
 
 		setInsecureApps9(new String[] {"Chromecast", "iOS", "Unknown app", "iPad", "iPhone", "Windows Phone"});
 
