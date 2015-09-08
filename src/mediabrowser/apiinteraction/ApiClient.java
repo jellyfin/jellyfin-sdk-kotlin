@@ -1820,6 +1820,7 @@ public class ApiClient extends BaseApiClient {
         dict.AddIfNotNull("ImageTypeLimit", query.getImageTypeLimit());
         dict.AddIfNotNull("EnableImageTypes", query.getEnableImageTypes());
         dict.AddIfNotNull("Fields", query.getFields());
+        dict.AddIfNotNull("SortBy", query.getSortBy());
 
         dict.AddIfNotNullOrEmpty("UserId", query.getUserId());
 
