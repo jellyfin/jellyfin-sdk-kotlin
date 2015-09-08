@@ -2792,7 +2792,7 @@ public class ApiClient extends BaseApiClient {
                 }
 
                 double time = System.currentTimeMillis() - startTime;
-                double bitrate = downloadBytes;
+                double bitrate = downloadBytes * 8;
                 bitrate /= time;
                 bitrate *= 1000;
 
