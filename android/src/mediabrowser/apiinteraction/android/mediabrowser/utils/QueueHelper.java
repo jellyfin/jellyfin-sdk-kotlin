@@ -32,20 +32,19 @@ public class QueueHelper {
         String title = item.getName() == null ? "" : item.getName();
         String genre = item.getGenres() != null && item.getGenres().size() > 0 ? item.getGenres().get(0) : "";
 
-        Long duration = mediaSource.getRunTimeTicks() == null ?
-                null :
-                mediaSource.getRunTimeTicks() / 10000;
-
         MediaMetadata.Builder builder = new MediaMetadata.Builder()
                 .putString(MediaMetadata.METADATA_KEY_MEDIA_ID, mediaId)
                 .putString(MediaProvider.CUSTOM_METADATA_TRACK_SOURCE, path)
                 .putString(MediaMetadata.METADATA_KEY_ALBUM, album)
                 .putString(MediaMetadata.METADATA_KEY_ARTIST, artist)
-                .putLong(MediaMetadata.METADATA_KEY_DURATION, duration)
                 .putString(MediaMetadata.METADATA_KEY_GENRE, genre)
                 .putString(MediaMetadata.METADATA_KEY_ALBUM_ART_URI, posterUrl)
                 .putString(MediaMetadata.METADATA_KEY_TITLE, title);
         //.putLong(MediaMetadata.METADATA_KEY_NUM_TRACKS, totalTrackCount);
+
+        if (item.getRunTimeTicks() != null) {
+            builder.putLong(MediaMetadata.METADATA_KEY_DURATION, item.getRunTimeTicks());
+        }
 
         if (item.getIndexNumber() != null) {
             builder.putLong(MediaMetadata.METADATA_KEY_TRACK_NUMBER, item.getIndexNumber());
