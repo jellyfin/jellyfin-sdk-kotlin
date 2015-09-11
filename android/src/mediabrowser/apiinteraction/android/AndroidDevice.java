@@ -180,5 +180,8 @@ public class AndroidDevice implements IDevice {
         catch (IOException ex){
             progress.reportError(ex);
         }
+        catch (Exception ex){
+            progress.reportError(ex);
+        }
     }
 }

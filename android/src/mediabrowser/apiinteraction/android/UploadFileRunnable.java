@@ -28,7 +28,7 @@ public class UploadFileRunnable implements Runnable {
 
         try {
             apiClient.PerformUploadFile(fileInputStream, file, progress, cancellationToken);
-        } catch (IOException e) {
+        } catch (Exception e) {
             progress.reportError(e);
         }
     }

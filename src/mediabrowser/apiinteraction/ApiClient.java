@@ -2290,7 +2290,7 @@ public class ApiClient extends BaseApiClient {
     public void UploadFile(FileInputStream fileInputStream,
                            LocalFileInfo file,
                            IProgress<Double> progress,
-                           CancellationToken cancellationToken) throws IOException {
+                           CancellationToken cancellationToken) throws IOException, IllegalArgumentException {
 
         UploadFileInternal(fileInputStream, file, progress, cancellationToken);
     }
@@ -2298,7 +2298,22 @@ public class ApiClient extends BaseApiClient {
     protected void UploadFileInternal(FileInputStream fileInputStream,
                            LocalFileInfo file,
                            IProgress<Double> progress,
-                           CancellationToken cancellationToken) throws IOException {
+                           CancellationToken cancellationToken) throws IOException ,IllegalArgumentException {
+
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(getDeviceId()))
+        {
+            throw new IllegalArgumentException("ApiClient.deviceId cannot be null or empty");
+        }
+
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(file.getId()))
+        {
+            throw new IllegalArgumentException("file.getId() cannot be null or empty");
+        }
+
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(file.getName()))
+        {
+            throw new IllegalArgumentException("file.getName() cannot be null or empty");
+        }
 
         QueryStringDictionary dict = new QueryStringDictionary();
 
