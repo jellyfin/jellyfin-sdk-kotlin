@@ -59,7 +59,9 @@ public class AndroidProfile extends DeviceProfile
 				getSubtitleProfile("pgs", SubtitleDeliveryMethod.Embed),
 				getSubtitleProfile("pgssub", SubtitleDeliveryMethod.Embed),
 				getSubtitleProfile("dvdsub", SubtitleDeliveryMethod.Embed),
-				getSubtitleProfile("vtt", SubtitleDeliveryMethod.Embed)
+				getSubtitleProfile("vtt", SubtitleDeliveryMethod.Embed),
+				getSubtitleProfile("sub", SubtitleDeliveryMethod.Embed),
+				getSubtitleProfile("idx", SubtitleDeliveryMethod.Embed)
 		});
 	}
 

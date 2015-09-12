@@ -742,18 +742,16 @@ public class StreamBuilder
 
 			if (profile.getMethod() == SubtitleDeliveryMethod.External && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
 			{
-				if (!requiresConversion)
+				if (subtitleStream.getIsTextSubtitleStream() || !requiresConversion)
 				{
-					return profile;
-				}
-
-				if (subtitleStream.getSupportsExternalStream())
-				{
-					return profile;
+					if (subtitleStream.getSupportsExternalStream())
+					{
+						return profile;
+					}
 				}
 
 				// For sync we can handle the longer extraction times
-				if (context.getValue() == EncodingContext.Static.getValue() && subtitleStream.getIsTextSubtitleStream())
+				if (context == EncodingContext.Static && subtitleStream.getIsTextSubtitleStream())
 				{
 					return profile;
 				}
@@ -833,46 +831,46 @@ public class StreamBuilder
 			{
 				case AudioBitrate:
 				{
-						int num = 0;
-						tangible.RefObject<Integer> tempRef_num = new tangible.RefObject<Integer>(num);
-						boolean tempVar = IntHelper.TryParseCultureInvariant(value, tempRef_num);
-							num = tempRef_num.argValue;
-						if (tempVar)
-						{
-							item.setAudioBitrate(num);
-						}
-						break;
+					int num = 0;
+					tangible.RefObject<Integer> tempRef_num = new tangible.RefObject<Integer>(num);
+					boolean tempVar = IntHelper.TryParseCultureInvariant(value, tempRef_num);
+					num = tempRef_num.argValue;
+					if (tempVar)
+					{
+						item.setAudioBitrate(num);
+					}
+					break;
 				}
 				case AudioChannels:
 				{
-						int num = 0;
-						tangible.RefObject<Integer> tempRef_num2 = new tangible.RefObject<Integer>(num);
-						boolean tempVar2 = IntHelper.TryParseCultureInvariant(value, tempRef_num2);
-							num = tempRef_num2.argValue;
-						if (tempVar2)
-						{
-							item.setMaxAudioChannels(num);
-						}
-						break;
+					int num = 0;
+					tangible.RefObject<Integer> tempRef_num2 = new tangible.RefObject<Integer>(num);
+					boolean tempVar2 = IntHelper.TryParseCultureInvariant(value, tempRef_num2);
+					num = tempRef_num2.argValue;
+					if (tempVar2)
+					{
+						item.setMaxAudioChannels(num);
+					}
+					break;
 				}
 				case IsCabac:
 				{
-						boolean val = false;
-						tangible.RefObject<Boolean> tempRef_val = new tangible.RefObject<Boolean>(val);
-						boolean tempVar3 = BoolHelper.TryParseCultureInvariant(value, tempRef_val);
-							val = tempRef_val.argValue;
-						if (tempVar3)
+					boolean val = false;
+					tangible.RefObject<Boolean> tempRef_val = new tangible.RefObject<Boolean>(val);
+					boolean tempVar3 = BoolHelper.TryParseCultureInvariant(value, tempRef_val);
+					val = tempRef_val.argValue;
+					if (tempVar3)
+					{
+						if (condition.getCondition() == ProfileConditionType.Equals)
 						{
-							if (condition.getCondition() == ProfileConditionType.Equals)
-							{
-								item.setCabac(val);
-							}
-							else if (condition.getCondition() == ProfileConditionType.NotEquals)
-							{
-								item.setCabac(!val);
-							}
+							item.setCabac(val);
 						}
-						break;
+						else if (condition.getCondition() == ProfileConditionType.NotEquals)
+						{
+							item.setCabac(!val);
+						}
+					}
+					break;
 				}
 				case IsAnamorphic:
 				case AudioProfile:
@@ -883,97 +881,97 @@ public class StreamBuilder
 				case IsSecondaryAudio:
 				case VideoTimestamp:
 				{
-						// Not supported yet
-						break;
+					// Not supported yet
+					break;
 				}
 				case RefFrames:
 				{
-						int num = 0;
-						tangible.RefObject<Integer> tempRef_num3 = new tangible.RefObject<Integer>(num);
-						boolean tempVar4 = IntHelper.TryParseCultureInvariant(value, tempRef_num3);
-							num = tempRef_num3.argValue;
-						if (tempVar4)
-						{
-							item.setMaxRefFrames(num);
-						}
-						break;
+					int num = 0;
+					tangible.RefObject<Integer> tempRef_num3 = new tangible.RefObject<Integer>(num);
+					boolean tempVar4 = IntHelper.TryParseCultureInvariant(value, tempRef_num3);
+					num = tempRef_num3.argValue;
+					if (tempVar4)
+					{
+						item.setMaxRefFrames(num);
+					}
+					break;
 				}
 				case VideoBitDepth:
 				{
-						int num = 0;
-						tangible.RefObject<Integer> tempRef_num4 = new tangible.RefObject<Integer>(num);
-						boolean tempVar5 = IntHelper.TryParseCultureInvariant(value, tempRef_num4);
-							num = tempRef_num4.argValue;
-						if (tempVar5)
-						{
-							item.setMaxVideoBitDepth(num);
-						}
-						break;
+					int num = 0;
+					tangible.RefObject<Integer> tempRef_num4 = new tangible.RefObject<Integer>(num);
+					boolean tempVar5 = IntHelper.TryParseCultureInvariant(value, tempRef_num4);
+					num = tempRef_num4.argValue;
+					if (tempVar5)
+					{
+						item.setMaxVideoBitDepth(num);
+					}
+					break;
 				}
 				case VideoProfile:
 				{
-						item.setVideoProfile(((value != null) ? value : "").split("[|]", -1)[0]);
-						break;
+					item.setVideoProfile(((value != null) ? value : "").split("[|]", -1)[0]);
+					break;
 				}
 				case Height:
 				{
-						int num = 0;
-						tangible.RefObject<Integer> tempRef_num5 = new tangible.RefObject<Integer>(num);
-						boolean tempVar6 = IntHelper.TryParseCultureInvariant(value, tempRef_num5);
-							num = tempRef_num5.argValue;
-						if (tempVar6)
-						{
-							item.setMaxHeight(num);
-						}
-						break;
+					int num = 0;
+					tangible.RefObject<Integer> tempRef_num5 = new tangible.RefObject<Integer>(num);
+					boolean tempVar6 = IntHelper.TryParseCultureInvariant(value, tempRef_num5);
+					num = tempRef_num5.argValue;
+					if (tempVar6)
+					{
+						item.setMaxHeight(num);
+					}
+					break;
 				}
 				case VideoBitrate:
 				{
-						int num = 0;
-						tangible.RefObject<Integer> tempRef_num6 = new tangible.RefObject<Integer>(num);
-						boolean tempVar7 = IntHelper.TryParseCultureInvariant(value, tempRef_num6);
-							num = tempRef_num6.argValue;
-						if (tempVar7)
-						{
-							item.setVideoBitrate(num);
-						}
-						break;
+					int num = 0;
+					tangible.RefObject<Integer> tempRef_num6 = new tangible.RefObject<Integer>(num);
+					boolean tempVar7 = IntHelper.TryParseCultureInvariant(value, tempRef_num6);
+					num = tempRef_num6.argValue;
+					if (tempVar7)
+					{
+						item.setVideoBitrate(num);
+					}
+					break;
 				}
 				case VideoFramerate:
 				{
-						float num = 0F;
-						tangible.RefObject<Float> tempRef_num7 = new tangible.RefObject<Float>(num);
-						boolean tempVar8 = FloatHelper.TryParseCultureInvariant(value, tempRef_num7);
-							num = tempRef_num7.argValue;
-						if (tempVar8)
-						{
-							item.setMaxFramerate(num);
-						}
-						break;
+					float num = 0F;
+					tangible.RefObject<Float> tempRef_num7 = new tangible.RefObject<Float>(num);
+					boolean tempVar8 = FloatHelper.TryParseCultureInvariant(value, tempRef_num7);
+					num = tempRef_num7.argValue;
+					if (tempVar8)
+					{
+						item.setMaxFramerate(num);
+					}
+					break;
 				}
 				case VideoLevel:
 				{
-						int num = 0;
-						tangible.RefObject<Integer> tempRef_num8 = new tangible.RefObject<Integer>(num);
-						boolean tempVar9 = IntHelper.TryParseCultureInvariant(value, tempRef_num8);
-							num = tempRef_num8.argValue;
-						if (tempVar9)
-						{
-							item.setVideoLevel(num);
-						}
-						break;
+					int num = 0;
+					tangible.RefObject<Integer> tempRef_num8 = new tangible.RefObject<Integer>(num);
+					boolean tempVar9 = IntHelper.TryParseCultureInvariant(value, tempRef_num8);
+					num = tempRef_num8.argValue;
+					if (tempVar9)
+					{
+						item.setVideoLevel(num);
+					}
+					break;
 				}
 				case Width:
 				{
-						int num = 0;
-						tangible.RefObject<Integer> tempRef_num9 = new tangible.RefObject<Integer>(num);
-						boolean tempVar10 = IntHelper.TryParseCultureInvariant(value, tempRef_num9);
-							num = tempRef_num9.argValue;
-						if (tempVar10)
-						{
-							item.setMaxWidth(num);
-						}
-						break;
+					int num = 0;
+					tangible.RefObject<Integer> tempRef_num9 = new tangible.RefObject<Integer>(num);
+					boolean tempVar10 = IntHelper.TryParseCultureInvariant(value, tempRef_num9);
+					num = tempRef_num9.argValue;
+					if (tempVar10)
+					{
+						item.setMaxWidth(num);
+					}
+					break;
 				}
 				default:
 					throw new IllegalArgumentException("Unrecognized ProfileConditionValue");
