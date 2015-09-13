@@ -708,7 +708,7 @@ public class StreamBuilder
 
 	public static SubtitleProfile GetSubtitleProfile(MediaStream subtitleStream, SubtitleProfile[] subtitleProfiles, EncodingContext context, PlayMethod playMethod)
 	{
-		if (playMethod != PlayMethod.Transcode)
+		if (playMethod != PlayMethod.Transcode && !subtitleStream.getIsExternal())
 		{
 			// Look for supported embedded subs
 			for (SubtitleProfile profile : subtitleProfiles)
@@ -733,15 +733,20 @@ public class StreamBuilder
 		// Look for an external profile that matches the stream type (text/graphical)
 		for (SubtitleProfile profile : subtitleProfiles)
 		{
-			boolean requiresConversion = !StringHelper.EqualsIgnoreCase(subtitleStream.getCodec(), profile.getFormat());
+			if (profile.getMethod() != SubtitleDeliveryMethod.External)
+			{
+				continue;
+			}
 
 			if (!profile.SupportsLanguage(subtitleStream.getLanguage()))
 			{
 				continue;
 			}
 
-			if (profile.getMethod() == SubtitleDeliveryMethod.External && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
+			if (subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
 			{
+				boolean requiresConversion = !StringHelper.EqualsIgnoreCase(subtitleStream.getCodec(), profile.getFormat());
+
 				if (subtitleStream.getIsTextSubtitleStream() || !requiresConversion)
 				{
 					if (subtitleStream.getSupportsExternalStream())
