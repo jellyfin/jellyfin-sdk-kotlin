@@ -400,8 +400,6 @@ public abstract class BaseApiClient implements IDisposable
 
         dict.AddIfNotNull("sortOrder", query.getSortOrder());
 
-		dict.AddIfNotNullOrEmpty("AdjacentTo", query.getAdjacentTo());
-
 		dict.AddIfNotNull("SeriesStatuses", query.getSeriesStatuses());
         dict.AddIfNotNull("Fields", query.getFields());
         dict.AddIfNotNull("Filters", query.getFilters());

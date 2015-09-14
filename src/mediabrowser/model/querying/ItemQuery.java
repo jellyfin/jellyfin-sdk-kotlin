@@ -38,22 +38,6 @@ public class ItemQuery
 	}
 
 	/**
-	 Specify this to localize the search to items before and after a specific item (inclusive
-	 of that item).
-
-	 <value>The parent id.</value>
-	 */
-	private String AdjacentTo;
-	public final String getAdjacentTo()
-	{
-		return AdjacentTo;
-	}
-	public final void setAdjacentTo(String value)
-	{
-		AdjacentTo = value;
-	}
-
-	/**
 	 Skips over a given number of items within the results. Use for paging.
 	 
 	 <value>The start index.</value>

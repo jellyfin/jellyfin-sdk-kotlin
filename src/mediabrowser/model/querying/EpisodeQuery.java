@@ -143,6 +143,22 @@ public class EpisodeQuery
 		StartItemId = value;
 	}
 
+	/**
+	 Specify this to localize the search to items before and after a specific item (inclusive
+	 of that item).
+
+	 <value>The parent id.</value>
+	 */
+	private String AdjacentTo;
+	public final String getAdjacentTo()
+	{
+		return AdjacentTo;
+	}
+	public final void setAdjacentTo(String value)
+	{
+		AdjacentTo = value;
+	}
+
 	public EpisodeQuery()
 	{
 		setFields(new ItemFields[] { });

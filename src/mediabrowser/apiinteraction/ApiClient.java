@@ -435,6 +435,8 @@ public class ApiClient extends BaseApiClient {
 
         dict.AddIfNotNull("Fields", query.getFields());
 
+        dict.AddIfNotNullOrEmpty("AdjacentTo", query.getAdjacentTo());
+
         dict.AddIfNotNull("IsMissing", query.getIsMissing());
         dict.AddIfNotNull("IsVirtualUnaired", query.getIsVirtualUnaired());
 
