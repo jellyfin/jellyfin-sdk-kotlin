@@ -8,14 +8,12 @@ import android.os.Bundle;
 import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.android.*;
 import mediabrowser.apiinteraction.android.sync.data.AndroidAssetManager;
-import mediabrowser.apiinteraction.android.sync.data.AndroidFileRepository;
-import mediabrowser.apiinteraction.device.Device;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.apiinteraction.sync.MultiServerSync;
-import mediabrowser.apiinteraction.sync.data.IFileRepository;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationTokenSource;
 import mediabrowser.logging.ConsoleLogger;
+import mediabrowser.model.extensions.ListHelper;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.model.session.ClientCapabilities;
@@ -83,6 +81,7 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
         String capabilitiesJson = connectionManagerPreferences.getString("capabilities", null);
         String deviceName = connectionManagerPreferences.getString("deviceName", null);
         String deviceId = connectionManagerPreferences.getString("deviceId", null);
+        String cameraUploadServersString = connectionManagerPreferences.getString("cameraUploadServers", null);
 
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(appName))
         {
@@ -131,16 +130,20 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
         CancellationTokenSource source = new CancellationTokenSource();
 
-        new MultiServerSync(connectionManager, logger, localAssetManager).Sync(source.getToken(), new MultiServerSyncProgress(syncResult, context.getContentResolver(), logger));
+        String[] cameraUploadServers = cameraUploadServersString == null || cameraUploadServersString.length() == 0 ? new String[]{} : cameraUploadServersString.split(",");
+
+        new MultiServerSync(connectionManager, logger, localAssetManager, cameraUploadServers).Sync(source.getToken(), new MultiServerSyncProgress(syncResult, context.getContentResolver(), logger));
     }
 
-    public static void updateSyncPreferences(Context context, String basePath, boolean syncOnlyOnWifi) {
+    public static void updateSyncPreferences(Context context, String basePath, boolean syncOnlyOnWifi, String[] cameraUploadServers) {
 
         SharedPreferences syncPreferences = context.getSharedPreferences("Sync", Context.MODE_PRIVATE | Context.MODE_MULTI_PROCESS);
         SharedPreferences.Editor editor = syncPreferences.edit();
 
         editor.putString("syncPath", basePath);
         editor.putBoolean("syncOnlyOnWifi", syncOnlyOnWifi);
+
+        editor.putString("cameraUploadServers", tangible.DotNetToJavaStringHelper.join(",", cameraUploadServers));
 
         // Commit the edits!
         boolean saved = editor.commit();

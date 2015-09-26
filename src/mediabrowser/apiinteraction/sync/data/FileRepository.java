@@ -51,9 +51,14 @@ public abstract class FileRepository implements IFileRepository {
     }
 
     private void deleteFileOrFolder(File file){
-        for (File f : file.listFiles()) {
-            f.delete();
-            deleteFileOrFolder(f);
+
+        File[] filesList = file.listFiles();
+
+        if (filesList != null) {
+            for (File f : filesList) {
+                f.delete();
+                deleteFileOrFolder(f);
+            }
         }
     }
 

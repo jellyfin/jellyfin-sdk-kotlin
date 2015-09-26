@@ -24,11 +24,6 @@ public class ContentUploader {
 
     public void UploadImages(final SyncProgress progress, final CancellationToken cancellationToken) {
 
-        apiClient.GetDevicesOptions(new ContentUploaderGetDeviceOptionsResponse(this, apiClient, logger, progress, cancellationToken));
-    }
-
-    void UploadImagesInternal(final SyncProgress progress, final CancellationToken cancellationToken){
-
         apiClient.GetContentUploadHistory(new ContentUploaderHistoryResponse(this, progress, cancellationToken));
     }
 

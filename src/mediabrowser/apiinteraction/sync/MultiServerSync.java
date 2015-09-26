@@ -5,6 +5,7 @@ import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.sync.server.ServerSync;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.model.apiclient.ServerInfo;
+import mediabrowser.model.extensions.ListHelper;
 import mediabrowser.model.logging.ILogger;
 
 import java.util.ArrayList;
@@ -14,11 +15,13 @@ public class MultiServerSync {
     private IConnectionManager connectionManager;
     private ILogger logger;
     private ILocalAssetManager localAssetManager;
+    private String[] cameraUploadServers;
 
-    public MultiServerSync(IConnectionManager connectionManager, ILogger logger, ILocalAssetManager localAssetManager) {
+    public MultiServerSync(IConnectionManager connectionManager, ILogger logger, ILocalAssetManager localAssetManager, String[] cameraUploadServers) {
         this.connectionManager = connectionManager;
         this.logger = logger;
         this.localAssetManager = localAssetManager;
+        this.cameraUploadServers = cameraUploadServers;
     }
 
     public void Sync(final CancellationToken cancellationToken, final SyncProgress progress){
@@ -48,6 +51,7 @@ public class MultiServerSync {
             server = freshServerInfo;
         }
 
-        new ServerSync(connectionManager, logger, localAssetManager).Sync(server, cancellationToken, new MultiServerSyncProgress(this, servers, cancellationToken, index, numServers, numComplete, progress));
+        boolean uploadPhotos = ListHelper.ContainsIgnoreCase(cameraUploadServers, server.getId());
+        new ServerSync(connectionManager, logger, localAssetManager).Sync(server, uploadPhotos, cancellationToken, new MultiServerSyncProgress(this, servers, cancellationToken, index, numServers, numComplete, progress));
     }
 }

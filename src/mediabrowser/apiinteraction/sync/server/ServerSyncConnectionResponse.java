@@ -15,13 +15,15 @@ public class ServerSyncConnectionResponse extends Response<ConnectionResult> {
     private CancellationToken cancellationToken;
     private SyncProgress progress;
     private ClientCapabilities clientCapabilities;
+    private boolean uploadPhotos;
 
-    public ServerSyncConnectionResponse(ServerSync serverSync, ServerInfo server, ClientCapabilities clientCapabilities, CancellationToken cancellationToken, SyncProgress progress) {
+    public ServerSyncConnectionResponse(ServerSync serverSync, ServerInfo server, boolean uploadPhotos, ClientCapabilities clientCapabilities, CancellationToken cancellationToken, SyncProgress progress) {
         this.serverSync = serverSync;
         this.server = server;
         this.cancellationToken = cancellationToken;
         this.progress = progress;
         this.clientCapabilities = clientCapabilities;
+        this.uploadPhotos = uploadPhotos;
     }
 
     @Override
@@ -29,7 +31,7 @@ public class ServerSyncConnectionResponse extends Response<ConnectionResult> {
 
         if (result.getState() == ConnectionState.SignedIn) {
 
-            serverSync.Sync(server, result.getApiClient(), clientCapabilities, cancellationToken, progress);
+            serverSync.Sync(server, result.getApiClient(), uploadPhotos, clientCapabilities, cancellationToken, progress);
 
         } else {
 

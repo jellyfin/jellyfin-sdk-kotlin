@@ -24,7 +24,7 @@ public class ServerSync {
         this.localAssetManager = localAssetManager;
     }
 
-    public void Sync(final ServerInfo server, final CancellationToken cancellationToken, final SyncProgress progress){
+    public void Sync(final ServerInfo server, boolean uploadPhotos, final CancellationToken cancellationToken, final SyncProgress progress){
 
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()) &&
                 tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getExchangeToken()))
@@ -38,7 +38,7 @@ public class ServerSync {
         options.setReportCapabilities(false);
         options.setUpdateDateLastAccessed(false);
 
-        connectionManager.Connect(server, options, new ServerSyncConnectionResponse(this, server, connectionManager.getClientCapabilities(), cancellationToken, progress));
+        connectionManager.Connect(server, options, new ServerSyncConnectionResponse(this, server, uploadPhotos, connectionManager.getClientCapabilities(), cancellationToken, progress));
     }
 
     void LogNoAuthentication(ServerInfo server){
@@ -46,7 +46,7 @@ public class ServerSync {
         logger.Info("Skipping sync process for server " + server.getName() + ". No server authentication information available.");
     }
 
-    void Sync(final ServerInfo server, ApiClient apiClient, ClientCapabilities clientCapabilities, CancellationToken cancellationToken, final SyncProgress progress){
+    void Sync(final ServerInfo server, ApiClient apiClient, final boolean uploadPhotos, ClientCapabilities clientCapabilities, CancellationToken cancellationToken, final SyncProgress progress){
 
         Semaphore semaphore = GetLock(server.getId());
 
@@ -64,17 +64,24 @@ public class ServerSync {
             progress.reportError(e);
         }*/
 
-        SyncInternal(server, apiClient, clientCapabilities, cancellationToken, progress);
+        SyncInternal(server, apiClient, uploadPhotos, clientCapabilities, cancellationToken, progress);
     }
 
     private void SyncInternal(final ServerInfo server,
                               final ApiClient apiClient,
+                              final boolean uploadPhotos,
                               final ClientCapabilities clientCapabilities,
                               final CancellationToken cancellationToken,
                               final SyncProgress progress){
 
         final double cameraUploadTotalPercentage = .25;
 
+        if (!uploadPhotos){
+            UpdateOfflineUsersResponse offlineUserResponse = new UpdateOfflineUsersResponse(progress, apiClient, server, localAssetManager, logger, cancellationToken, cameraUploadTotalPercentage);
+
+            new OfflineUsersSync(logger, localAssetManager).UpdateOfflineUsers(server, apiClient, cancellationToken, offlineUserResponse);
+            return;
+        }
         new ContentUploader(apiClient, logger).UploadImages(new CameraUploadProgress(logger, server, progress, apiClient, clientCapabilities, localAssetManager, cancellationToken, cameraUploadTotalPercentage), cancellationToken);
     }
 
