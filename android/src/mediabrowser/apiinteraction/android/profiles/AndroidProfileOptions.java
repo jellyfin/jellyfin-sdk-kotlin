@@ -22,13 +22,7 @@ public class AndroidProfileOptions {
 
         deviceName = deviceName.toLowerCase().replace(" ", "");
 
-        if (deviceName.indexOf("aftb") != -1){
-
-            DefaultH264Level = 40;
-            SupportsAc3 = true;
-
-        }
-        else if (deviceName.indexOf("aftm") != -1){
+        if (deviceName.indexOf("aft") != -1){
 
             DefaultH264Level = 40;
             SupportsAc3 = true;
