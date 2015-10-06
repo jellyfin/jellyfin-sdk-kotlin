@@ -349,7 +349,7 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("queryString");
 		}
 
-		return queryString.GetUrl(getApiUrl() + "/" + handler);
+		return queryString.GetUrl(getApiUrl() + "/emby/" + handler);
 	}
 
 	public final String GetSubtitleUrl(SubtitleDownloadOptions options)
