@@ -220,7 +220,7 @@ public abstract class BaseApiClient implements IDisposable
 	*/
 	public final String getApiUrl()
 	{
-		return getServerAddress() + "/mediabrowser";
+		return getServerAddress() + "/emby";
 	}
 
 	/** 
@@ -349,7 +349,7 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("queryString");
 		}
 
-		return queryString.GetUrl(getApiUrl() + "/emby/" + handler);
+		return queryString.GetUrl(getApiUrl() + "/" + handler);
 	}
 
 	public final String GetSubtitleUrl(SubtitleDownloadOptions options)
