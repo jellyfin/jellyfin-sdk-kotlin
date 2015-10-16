@@ -41,6 +41,7 @@ import mediabrowser.model.playlists.PlaylistItemQuery;
 import mediabrowser.model.plugins.PluginInfo;
 import mediabrowser.model.querying.*;
 import mediabrowser.model.registration.AppstoreRegRequest;
+import mediabrowser.model.registration.AppstoreRegWrapper;
 import mediabrowser.model.registration.RegistrationInfo;
 import mediabrowser.model.results.*;
 import mediabrowser.model.search.SearchHintResult;
@@ -1348,8 +1349,10 @@ public class ApiClient extends BaseApiClient {
         }
 
         String url = GetApiUrl("Appstore/register");
+        AppstoreRegWrapper wrapper = new AppstoreRegWrapper();
+        wrapper.Parameters = jsonSerializer.SerializeToString(request);
 
-        PostAsync(url, request, response);
+        PostAsync(url, wrapper, response);
     }
 
     /// <summary>
