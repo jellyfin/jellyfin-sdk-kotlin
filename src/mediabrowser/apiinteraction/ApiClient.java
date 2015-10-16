@@ -40,6 +40,7 @@ import mediabrowser.model.playlists.PlaylistCreationResult;
 import mediabrowser.model.playlists.PlaylistItemQuery;
 import mediabrowser.model.plugins.PluginInfo;
 import mediabrowser.model.querying.*;
+import mediabrowser.model.registration.AppstoreRegRequest;
 import mediabrowser.model.registration.RegistrationInfo;
 import mediabrowser.model.results.*;
 import mediabrowser.model.search.SearchHintResult;
@@ -1330,6 +1331,25 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("ScheduledTasks/" + id + "/Triggers");
 
         PostAsync(url, triggers, response);
+    }
+
+    /// <summary>
+    /// Registers the sale of an Emby feature through an app store.
+    /// </summary>
+    /// <param name="id">The id.</param>
+    /// <param name="triggers">The triggers.</param>
+    /// <returns>Task{RequestResult}.</returns>
+    /// <exception cref="System.IllegalArgumentException">id</exception>
+    public void RegisterAppstoreSaleAsync(AppstoreRegRequest request, final EmptyResponse response)
+    {
+        if (request == null)
+        {
+            throw new IllegalArgumentException("request");
+        }
+
+        String url = GetApiUrl("Appstore/register");
+
+        PostAsync(url, request, response);
     }
 
     /// <summary>
