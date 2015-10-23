@@ -5,16 +5,10 @@ import mediabrowser.model.mediainfo.*;
 
 public class ConditionProcessor
 {
-	public final boolean IsVideoConditionSatisfied(ProfileCondition condition, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic, Boolean isCabac, Integer refFrames, Integer numVideoStreams, Integer numAudioStreams)
+	public final boolean IsVideoConditionSatisfied(ProfileCondition condition, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic, Boolean isCabac, Integer refFrames, Integer numVideoStreams, Integer numAudioStreams, String videoCodecTag)
 	{
 		switch (condition.getProperty())
 		{
-			case AudioProfile:
-				// TODO: Implement
-				return true;
-			case Has64BitOffsets:
-				// TODO: Implement
-				return true;
 			case IsAnamorphic:
 				return IsConditionSatisfied(condition, isAnamorphic);
 			case IsCabac:
@@ -25,6 +19,8 @@ public class ConditionProcessor
 				return IsConditionSatisfied(condition, videoLevel);
 			case VideoProfile:
 				return IsConditionSatisfied(condition, videoProfile);
+			case VideoCodecTag:
+				return IsConditionSatisfied(condition, videoCodecTag);
 			case PacketLength:
 				return IsConditionSatisfied(condition, packetLength);
 			case VideoBitDepth:
@@ -44,7 +40,7 @@ public class ConditionProcessor
 			case VideoTimestamp:
 				return IsConditionSatisfied(condition, timestamp);
 			default:
-				throw new IllegalArgumentException("Unexpected condition on video file: " + condition.getProperty());
+				return true;
 		}
 	}
 

@@ -99,21 +99,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
-	 Gets or sets a value indicating whether [enable user specific user views].
-	 
-	 <value><c>true</c> if [enable user specific user views]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean EnableUserSpecificUserViews;
-	public final boolean getEnableUserSpecificUserViews()
-	{
-		return EnableUserSpecificUserViews;
-	}
-	public final void setEnableUserSpecificUserViews(boolean value)
-	{
-		EnableUserSpecificUserViews = value;
-	}
-
-	/** 
 	 Gets or sets the value pointing to the file system where the ssl certiifcate is located..
 	 
 	 <value>The value pointing to the file system where the ssl certiifcate is located..</value>
@@ -246,6 +231,21 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setDisableStartupScan(boolean value)
 	{
 		DisableStartupScan = value;
+	}
+
+	/** 
+	 Gets or sets a value indicating whether [enable user views].
+	 
+	 <value><c>true</c> if [enable user views]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean EnableUserViews;
+	public final boolean getEnableUserViews()
+	{
+		return EnableUserViews;
+	}
+	public final void setEnableUserViews(boolean value)
+	{
+		EnableUserViews = value;
 	}
 
 	/** 
@@ -659,23 +659,34 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		EnableWindowsShortcuts = value;
 	}
 
-	private boolean EnableVideoFrameAnalysis;
-	public final boolean getEnableVideoFrameAnalysis()
+	private boolean EnableVideoFrameByFrameAnalysis;
+	public final boolean getEnableVideoFrameByFrameAnalysis()
 	{
-		return EnableVideoFrameAnalysis;
+		return EnableVideoFrameByFrameAnalysis;
 	}
-	public final void setEnableVideoFrameAnalysis(boolean value)
+	public final void setEnableVideoFrameByFrameAnalysis(boolean value)
 	{
-		EnableVideoFrameAnalysis = value;
+		EnableVideoFrameByFrameAnalysis = value;
 	}
-	private long VideoFrameAnalysisLimitBytes;
-	public final long getVideoFrameAnalysisLimitBytes()
+
+	private boolean EnableDateLastRefresh;
+	public final boolean getEnableDateLastRefresh()
 	{
-		return VideoFrameAnalysisLimitBytes;
+		return EnableDateLastRefresh;
 	}
-	public final void setVideoFrameAnalysisLimitBytes(long value)
+	public final void setEnableDateLastRefresh(boolean value)
 	{
-		VideoFrameAnalysisLimitBytes = value;
+		EnableDateLastRefresh = value;
+	}
+
+	private String[] Migrations;
+	public final String[] getMigrations()
+	{
+		return Migrations;
+	}
+	public final void setMigrations(String[] value)
+	{
+		Migrations = value;
 	}
 
 	/** 
@@ -683,6 +694,8 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	*/
 	public ServerConfiguration()
 	{
+		setMigrations(new String[] {});
+
 		setImageSavingConvention(ImageSavingConvention.Compatible);
 		setPublicPort(8096);
 		setPublicHttpsPort(8920);
@@ -726,10 +739,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 
 		setPeopleMetadataOptions(new PeopleMetadataOptions());
 
-		setEnableVideoFrameAnalysis(true);
-		setVideoFrameAnalysisLimitBytes(800000000);
-
-		setInsecureApps9(new String[] {"Chromecast", "iOS", "Unknown app", "iPad", "iPhone", "Windows Phone"});
+		setInsecureApps9(new String[] {"Windows Phone"});
 
 		MetadataOptions tempVar = new MetadataOptions(1, 1280);
 		tempVar.setItemType("Book");

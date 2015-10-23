@@ -65,14 +65,19 @@ public class SubtitleProfile
 		return list;
 	}
 
-	public final boolean SupportsLanguage(String language)
+	public final boolean SupportsLanguage(String subLanguage)
 	{
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(language))
+		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(getLanguage()))
 		{
-			language = "und";
+			return true;
+		}
+
+		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(subLanguage))
+		{
+			subLanguage = "und";
 		}
 
 		java.util.ArrayList<String> languages = GetLanguages();
-		return languages.isEmpty() || ListHelper.ContainsIgnoreCase(languages, language);
+		return languages.isEmpty() || ListHelper.ContainsIgnoreCase(languages, subLanguage);
 	}
 }

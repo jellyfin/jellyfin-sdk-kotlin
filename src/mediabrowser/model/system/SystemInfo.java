@@ -83,18 +83,18 @@ public class SystemInfo extends PublicSystemInfo
 	}
 
 	/** 
-	 Gets or sets a value indicating whether [supports synchronize].
+	 Gets or sets a value indicating whether [supports library monitor].
 	 
-	 <value><c>true</c> if [supports synchronize]; otherwise, <c>false</c>.</value>
+	 <value><c>true</c> if [supports library monitor]; otherwise, <c>false</c>.</value>
 	*/
-	private boolean SupportsSync;
-	public final boolean getSupportsSync()
+	private boolean SupportsLibraryMonitor;
+	public final boolean getSupportsLibraryMonitor()
 	{
-		return SupportsSync;
+		return SupportsLibraryMonitor;
 	}
-	public final void setSupportsSync(boolean value)
+	public final void setSupportsLibraryMonitor(boolean value)
 	{
-		SupportsSync = value;
+		SupportsLibraryMonitor = value;
 	}
 
 	/** 

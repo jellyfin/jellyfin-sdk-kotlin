@@ -20,7 +20,8 @@ public enum ProfileConditionValue
 	IsCabac(15),
 	NumAudioStreams(16),
 	NumVideoStreams(17),
-	IsSecondaryAudio(18);
+	IsSecondaryAudio(18),
+	VideoCodecTag(19);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, ProfileConditionValue> mappings;

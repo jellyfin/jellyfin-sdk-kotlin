@@ -29,15 +29,6 @@ public class EncodingOptions
 	{
 		DownMixAudioBoost = value;
 	}
-	private String H264Encoder;
-	public final String getH264Encoder()
-	{
-		return H264Encoder;
-	}
-	public final void setH264Encoder(String value)
-	{
-		H264Encoder = value;
-	}
 	private boolean EnableDebugLogging;
 	public final boolean getEnableDebugLogging()
 	{
@@ -65,10 +56,18 @@ public class EncodingOptions
 	{
 		ThrottleThresholdInSeconds = value;
 	}
+	private String HardwareVideoDecoder;
+	public final String getHardwareVideoDecoder()
+	{
+		return HardwareVideoDecoder;
+	}
+	public final void setHardwareVideoDecoder(String value)
+	{
+		HardwareVideoDecoder = value;
+	}
 
 	public EncodingOptions()
 	{
-		setH264Encoder("libx264");
 		setDownMixAudioBoost(2);
 		setEnableThrottling(true);
 		setThrottleThresholdInSeconds(120);

@@ -26,6 +26,21 @@ public class MediaStream
 	}
 
 	/** 
+	 Gets or sets the codec tag.
+	 
+	 <value>The codec tag.</value>
+	*/
+	private String CodecTag;
+	public final String getCodecTag()
+	{
+		return CodecTag;
+	}
+	public final void setCodecTag(String value)
+	{
+		CodecTag = value;
+	}
+
+	/** 
 	 Gets or sets the language.
 	 
 	 <value>The language.</value>
@@ -510,5 +525,17 @@ public class MediaStream
 	public final void setIsCabac(Boolean value)
 	{
 		IsCabac = value;
+	}
+
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [IgnoreDataMember] public List<int> KeyFrames {get;set;}
+	private java.util.ArrayList<Integer> KeyFrames;
+	public final java.util.ArrayList<Integer> getKeyFrames()
+	{
+		return KeyFrames;
+	}
+	public final void setKeyFrames(java.util.ArrayList<Integer> value)
+	{
+		KeyFrames = value;
 	}
 }

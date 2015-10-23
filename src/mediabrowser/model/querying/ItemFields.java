@@ -36,6 +36,11 @@ public enum ItemFields
 	CanDownload,
 
 	/** 
+	 The channel information
+	*/
+	ChannelInfo,
+
+	/** 
 	 The chapters
 	*/
 	Chapters,

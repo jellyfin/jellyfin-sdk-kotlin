@@ -707,6 +707,17 @@ public class StreamInfo
 	}
 
 	/** 
+	 Gets the target video codec tag.
+	 
+	 <value>The target video codec tag.</value>
+	*/
+	public final String getTargetVideoCodecTag()
+	{
+		MediaStream stream = getTargetVideoStream();
+		return !getIsDirectStream() ? null : stream == null ? null : stream.getCodecTag();
+	}
+
+	/** 
 	 Predicts the audio bitrate that will be in the output stream
 	*/
 	public final Integer getTargetAudioBitrate()

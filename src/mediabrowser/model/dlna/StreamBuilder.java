@@ -282,7 +282,7 @@ public class StreamBuilder
 		{
 			String tempVar = options.getProfile().getName();
 			String tempVar2 = item.getPath();
-			_logger.Debug("Profile: {0}, No direct play profiles found for Path: {1}", (tempVar != null) ? tempVar : "Unknown Profile", (tempVar2 != null) ? tempVar2 : "Unknown path");
+			_logger.Info("Profile: {0}, No direct play profiles found for Path: {1}", (tempVar != null) ? tempVar : "Unknown Profile", (tempVar2 != null) ? tempVar2 : "Unknown path");
 		}
 
 		return playMethods;
@@ -362,7 +362,7 @@ public class StreamBuilder
 
 		String tempVar4 = options.getProfile().getName();
 		String tempVar5 = item.getPath();
-		_logger.Debug("Profile: {0}, Path: {1}, isEligibleForDirectPlay: {2}, isEligibleForDirectStream: {3}", (tempVar4 != null) ? tempVar4 : "Unknown Profile", (tempVar5 != null) ? tempVar5 : "Unknown path", isEligibleForDirectPlay, isEligibleForDirectStream);
+		_logger.Info("Profile: {0}, Path: {1}, isEligibleForDirectPlay: {2}, isEligibleForDirectStream: {3}", (tempVar4 != null) ? tempVar4 : "Unknown Profile", (tempVar5 != null) ? tempVar5 : "Unknown path", isEligibleForDirectPlay, isEligibleForDirectStream);
 
 		if (isEligibleForDirectPlay || isEligibleForDirectStream)
 		{
@@ -531,7 +531,7 @@ public class StreamBuilder
 		{
 			String tempVar = profile.getName();
 			String tempVar2 = mediaSource.getPath();
-			_logger.Debug("Profile: {0}, No direct play profiles found for Path: {1}", (tempVar != null) ? tempVar : "Unknown Profile", (tempVar2 != null) ? tempVar2 : "Unknown path");
+			_logger.Info("Profile: {0}, No direct play profiles found for Path: {1}", (tempVar != null) ? tempVar : "Unknown Profile", (tempVar2 != null) ? tempVar2 : "Unknown path");
 
 			return null;
 		}
@@ -562,6 +562,7 @@ public class StreamBuilder
 		Float videoFramerate = videoStream == null ? null : (tempVar3 != null) ? tempVar3 : videoStream.getAverageFrameRate();
 		Boolean isAnamorphic = videoStream == null ? null : videoStream.getIsAnamorphic();
 		Boolean isCabac = videoStream == null ? null : videoStream.getIsCabac();
+		String videoCodecTag = videoStream == null ? null : videoStream.getCodecTag();
 
 		Integer audioBitrate = audioStream == null ? null : audioStream.getBitRate();
 		Integer audioChannels = audioStream == null ? null : audioStream.getChannels();
@@ -577,7 +578,7 @@ public class StreamBuilder
 		// Check container conditions
 		for (ProfileCondition i : conditions)
 		{
-			if (!conditionProcessor.IsVideoConditionSatisfied(i, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams))
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams, videoCodecTag))
 			{
 				LogConditionFailure(profile, "VideoContainerProfile", i, mediaSource);
 
@@ -591,7 +592,7 @@ public class StreamBuilder
 		{
 			String tempVar4 = profile.getName();
 			String tempVar5 = mediaSource.getPath();
-			_logger.Debug("Profile: {0}, DirectPlay=false. Reason=Unknown video codec. Path: {1}", (tempVar4 != null) ? tempVar4 : "Unknown Profile", (tempVar5 != null) ? tempVar5 : "Unknown path");
+			_logger.Info("Profile: {0}, DirectPlay=false. Reason=Unknown video codec. Path: {1}", (tempVar4 != null) ? tempVar4 : "Unknown Profile", (tempVar5 != null) ? tempVar5 : "Unknown path");
 
 			return null;
 		}
@@ -610,7 +611,7 @@ public class StreamBuilder
 
 		for (ProfileCondition i : conditions)
 		{
-			if (!conditionProcessor.IsVideoConditionSatisfied(i, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams))
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, isCabac, refFrames, numVideoStreams, numAudioStreams, videoCodecTag))
 			{
 				LogConditionFailure(profile, "VideoCodecProfile", i, mediaSource);
 
@@ -626,7 +627,7 @@ public class StreamBuilder
 			{
 				String tempVar6 = profile.getName();
 				String tempVar7 = mediaSource.getPath();
-				_logger.Debug("Profile: {0}, DirectPlay=false. Reason=Unknown audio codec. Path: {1}", (tempVar6 != null) ? tempVar6 : "Unknown Profile", (tempVar7 != null) ? tempVar7 : "Unknown path");
+				_logger.Info("Profile: {0}, DirectPlay=false. Reason=Unknown audio codec. Path: {1}", (tempVar6 != null) ? tempVar6 : "Unknown Profile", (tempVar7 != null) ? tempVar7 : "Unknown path");
 
 				return null;
 			}
@@ -687,7 +688,7 @@ public class StreamBuilder
 		String tempVar = profile.getName();
 		String tempVar2 = condition.getValue();
 		String tempVar3 = mediaSource.getPath();
-		_logger.Debug("Profile: {0}, DirectPlay=false. Reason={1}.{2} Condition: {3}. ConditionValue: {4}. IsRequired: {5}. Path: {6}", type, (tempVar != null) ? tempVar : "Unknown Profile", condition.getProperty(), condition.getCondition(), (tempVar2 != null) ? tempVar2 : "", condition.getIsRequired(), (tempVar3 != null) ? tempVar3 : "Unknown path");
+		_logger.Info("Profile: {0}, DirectPlay=false. Reason={1}.{2} Condition: {3}. ConditionValue: {4}. IsRequired: {5}. Path: {6}", type, (tempVar != null) ? tempVar : "Unknown Profile", condition.getProperty(), condition.getCondition(), (tempVar2 != null) ? tempVar2 : "", condition.getIsRequired(), (tempVar3 != null) ? tempVar3 : "Unknown path");
 	}
 
 	private boolean IsEligibleForDirectPlay(MediaSourceInfo item, Integer maxBitrate, MediaStream subtitleStream, VideoOptions options, PlayMethod playMethod)
@@ -698,7 +699,7 @@ public class StreamBuilder
 
 			if (subtitleProfile.getMethod() != SubtitleDeliveryMethod.External && subtitleProfile.getMethod() != SubtitleDeliveryMethod.Embed)
 			{
-				_logger.Debug("Not eligible for {0} due to unsupported subtitles", playMethod);
+				_logger.Info("Not eligible for {0} due to unsupported subtitles", playMethod);
 				return false;
 			}
 		}
@@ -753,12 +754,12 @@ public class StreamBuilder
 					{
 						return profile;
 					}
-				}
 
-				// For sync we can handle the longer extraction times
-				if (context == EncodingContext.Static && subtitleStream.getIsTextSubtitleStream())
-				{
-					return profile;
+					// For sync we can handle the longer extraction times
+					if (context == EncodingContext.Static && subtitleStream.getIsTextSubtitleStream())
+					{
+						return profile;
+					}
 				}
 			}
 		}
@@ -776,7 +777,7 @@ public class StreamBuilder
 			return true;
 		}
 
-		_logger.Debug("Bitrate exceeds DirectPlay limit");
+		_logger.Info("Bitrate exceeds DirectPlay limit");
 		return false;
 	}
 
@@ -836,46 +837,46 @@ public class StreamBuilder
 			{
 				case AudioBitrate:
 				{
-					int num = 0;
-					tangible.RefObject<Integer> tempRef_num = new tangible.RefObject<Integer>(num);
-					boolean tempVar = IntHelper.TryParseCultureInvariant(value, tempRef_num);
-					num = tempRef_num.argValue;
-					if (tempVar)
-					{
-						item.setAudioBitrate(num);
-					}
-					break;
+						int num = 0;
+						tangible.RefObject<Integer> tempRef_num = new tangible.RefObject<Integer>(num);
+						boolean tempVar = IntHelper.TryParseCultureInvariant(value, tempRef_num);
+							num = tempRef_num.argValue;
+						if (tempVar)
+						{
+							item.setAudioBitrate(num);
+						}
+						break;
 				}
 				case AudioChannels:
 				{
-					int num = 0;
-					tangible.RefObject<Integer> tempRef_num2 = new tangible.RefObject<Integer>(num);
-					boolean tempVar2 = IntHelper.TryParseCultureInvariant(value, tempRef_num2);
-					num = tempRef_num2.argValue;
-					if (tempVar2)
-					{
-						item.setMaxAudioChannels(num);
-					}
-					break;
+						int num = 0;
+						tangible.RefObject<Integer> tempRef_num2 = new tangible.RefObject<Integer>(num);
+						boolean tempVar2 = IntHelper.TryParseCultureInvariant(value, tempRef_num2);
+							num = tempRef_num2.argValue;
+						if (tempVar2)
+						{
+							item.setMaxAudioChannels(num);
+						}
+						break;
 				}
 				case IsCabac:
 				{
-					boolean val = false;
-					tangible.RefObject<Boolean> tempRef_val = new tangible.RefObject<Boolean>(val);
-					boolean tempVar3 = BoolHelper.TryParseCultureInvariant(value, tempRef_val);
-					val = tempRef_val.argValue;
-					if (tempVar3)
-					{
-						if (condition.getCondition() == ProfileConditionType.Equals)
+						boolean val = false;
+						tangible.RefObject<Boolean> tempRef_val = new tangible.RefObject<Boolean>(val);
+						boolean tempVar3 = BoolHelper.TryParseCultureInvariant(value, tempRef_val);
+							val = tempRef_val.argValue;
+						if (tempVar3)
 						{
-							item.setCabac(val);
+							if (condition.getCondition() == ProfileConditionType.Equals)
+							{
+								item.setCabac(val);
+							}
+							else if (condition.getCondition() == ProfileConditionType.NotEquals)
+							{
+								item.setCabac(!val);
+							}
 						}
-						else if (condition.getCondition() == ProfileConditionType.NotEquals)
-						{
-							item.setCabac(!val);
-						}
-					}
-					break;
+						break;
 				}
 				case IsAnamorphic:
 				case AudioProfile:
@@ -886,100 +887,98 @@ public class StreamBuilder
 				case IsSecondaryAudio:
 				case VideoTimestamp:
 				{
-					// Not supported yet
-					break;
+						// Not supported yet
+						break;
 				}
 				case RefFrames:
 				{
-					int num = 0;
-					tangible.RefObject<Integer> tempRef_num3 = new tangible.RefObject<Integer>(num);
-					boolean tempVar4 = IntHelper.TryParseCultureInvariant(value, tempRef_num3);
-					num = tempRef_num3.argValue;
-					if (tempVar4)
-					{
-						item.setMaxRefFrames(num);
-					}
-					break;
+						int num = 0;
+						tangible.RefObject<Integer> tempRef_num3 = new tangible.RefObject<Integer>(num);
+						boolean tempVar4 = IntHelper.TryParseCultureInvariant(value, tempRef_num3);
+							num = tempRef_num3.argValue;
+						if (tempVar4)
+						{
+							item.setMaxRefFrames(num);
+						}
+						break;
 				}
 				case VideoBitDepth:
 				{
-					int num = 0;
-					tangible.RefObject<Integer> tempRef_num4 = new tangible.RefObject<Integer>(num);
-					boolean tempVar5 = IntHelper.TryParseCultureInvariant(value, tempRef_num4);
-					num = tempRef_num4.argValue;
-					if (tempVar5)
-					{
-						item.setMaxVideoBitDepth(num);
-					}
-					break;
+						int num = 0;
+						tangible.RefObject<Integer> tempRef_num4 = new tangible.RefObject<Integer>(num);
+						boolean tempVar5 = IntHelper.TryParseCultureInvariant(value, tempRef_num4);
+							num = tempRef_num4.argValue;
+						if (tempVar5)
+						{
+							item.setMaxVideoBitDepth(num);
+						}
+						break;
 				}
 				case VideoProfile:
 				{
-					item.setVideoProfile(((value != null) ? value : "").split("[|]", -1)[0]);
-					break;
+						item.setVideoProfile(((value != null) ? value : "").split("[|]", -1)[0]);
+						break;
 				}
 				case Height:
 				{
-					int num = 0;
-					tangible.RefObject<Integer> tempRef_num5 = new tangible.RefObject<Integer>(num);
-					boolean tempVar6 = IntHelper.TryParseCultureInvariant(value, tempRef_num5);
-					num = tempRef_num5.argValue;
-					if (tempVar6)
-					{
-						item.setMaxHeight(num);
-					}
-					break;
+						int num = 0;
+						tangible.RefObject<Integer> tempRef_num5 = new tangible.RefObject<Integer>(num);
+						boolean tempVar6 = IntHelper.TryParseCultureInvariant(value, tempRef_num5);
+							num = tempRef_num5.argValue;
+						if (tempVar6)
+						{
+							item.setMaxHeight(num);
+						}
+						break;
 				}
 				case VideoBitrate:
 				{
-					int num = 0;
-					tangible.RefObject<Integer> tempRef_num6 = new tangible.RefObject<Integer>(num);
-					boolean tempVar7 = IntHelper.TryParseCultureInvariant(value, tempRef_num6);
-					num = tempRef_num6.argValue;
-					if (tempVar7)
-					{
-						item.setVideoBitrate(num);
-					}
-					break;
+						int num = 0;
+						tangible.RefObject<Integer> tempRef_num6 = new tangible.RefObject<Integer>(num);
+						boolean tempVar7 = IntHelper.TryParseCultureInvariant(value, tempRef_num6);
+							num = tempRef_num6.argValue;
+						if (tempVar7)
+						{
+							item.setVideoBitrate(num);
+						}
+						break;
 				}
 				case VideoFramerate:
 				{
-					float num = 0F;
-					tangible.RefObject<Float> tempRef_num7 = new tangible.RefObject<Float>(num);
-					boolean tempVar8 = FloatHelper.TryParseCultureInvariant(value, tempRef_num7);
-					num = tempRef_num7.argValue;
-					if (tempVar8)
-					{
-						item.setMaxFramerate(num);
-					}
-					break;
+						float num = 0F;
+						tangible.RefObject<Float> tempRef_num7 = new tangible.RefObject<Float>(num);
+						boolean tempVar8 = FloatHelper.TryParseCultureInvariant(value, tempRef_num7);
+							num = tempRef_num7.argValue;
+						if (tempVar8)
+						{
+							item.setMaxFramerate(num);
+						}
+						break;
 				}
 				case VideoLevel:
 				{
-					int num = 0;
-					tangible.RefObject<Integer> tempRef_num8 = new tangible.RefObject<Integer>(num);
-					boolean tempVar9 = IntHelper.TryParseCultureInvariant(value, tempRef_num8);
-					num = tempRef_num8.argValue;
-					if (tempVar9)
-					{
-						item.setVideoLevel(num);
-					}
-					break;
+						int num = 0;
+						tangible.RefObject<Integer> tempRef_num8 = new tangible.RefObject<Integer>(num);
+						boolean tempVar9 = IntHelper.TryParseCultureInvariant(value, tempRef_num8);
+							num = tempRef_num8.argValue;
+						if (tempVar9)
+						{
+							item.setVideoLevel(num);
+						}
+						break;
 				}
 				case Width:
 				{
-					int num = 0;
-					tangible.RefObject<Integer> tempRef_num9 = new tangible.RefObject<Integer>(num);
-					boolean tempVar10 = IntHelper.TryParseCultureInvariant(value, tempRef_num9);
-					num = tempRef_num9.argValue;
-					if (tempVar10)
-					{
-						item.setMaxWidth(num);
-					}
-					break;
+						int num = 0;
+						tangible.RefObject<Integer> tempRef_num9 = new tangible.RefObject<Integer>(num);
+						boolean tempVar10 = IntHelper.TryParseCultureInvariant(value, tempRef_num9);
+							num = tempRef_num9.argValue;
+						if (tempVar10)
+						{
+							item.setMaxWidth(num);
+						}
+						break;
 				}
-				default:
-					throw new IllegalArgumentException("Unrecognized ProfileConditionValue");
 			}
 		}
 	}

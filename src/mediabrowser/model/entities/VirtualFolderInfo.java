@@ -57,4 +57,34 @@ public class VirtualFolderInfo
 	{
 		setLocations(new java.util.ArrayList<String>());
 	}
+
+	/** 
+	 Gets or sets the item identifier.
+	 
+	 <value>The item identifier.</value>
+	*/
+	private String ItemId;
+	public final String getItemId()
+	{
+		return ItemId;
+	}
+	public final void setItemId(String value)
+	{
+		ItemId = value;
+	}
+
+	/** 
+	 Gets or sets the primary image item identifier.
+	 
+	 <value>The primary image item identifier.</value>
+	*/
+	private String PrimaryImageItemId;
+	public final String getPrimaryImageItemId()
+	{
+		return PrimaryImageItemId;
+	}
+	public final void setPrimaryImageItemId(String value)
+	{
+		PrimaryImageItemId = value;
+	}
 }
