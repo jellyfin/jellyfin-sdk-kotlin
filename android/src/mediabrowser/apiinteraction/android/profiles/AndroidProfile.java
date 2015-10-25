@@ -54,6 +54,7 @@ public class AndroidProfile extends DeviceProfile
 		setSubtitleProfiles(new SubtitleProfile[] {
 				getSubtitleProfile("srt", SubtitleDeliveryMethod.External),
 				getSubtitleProfile("srt", SubtitleDeliveryMethod.Embed),
+				getSubtitleProfile("subrip", SubtitleDeliveryMethod.Embed),
 				getSubtitleProfile("ass", SubtitleDeliveryMethod.Embed),
 				getSubtitleProfile("ssa", SubtitleDeliveryMethod.Embed),
 				getSubtitleProfile("pgs", SubtitleDeliveryMethod.Embed),
