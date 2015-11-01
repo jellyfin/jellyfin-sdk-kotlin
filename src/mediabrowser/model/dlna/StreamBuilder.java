@@ -516,6 +516,10 @@ public class StreamBuilder
 
 	private PlayMethod GetVideoDirectPlayProfile(DeviceProfile profile, MediaSourceInfo mediaSource, MediaStream videoStream, MediaStream audioStream, boolean isEligibleForDirectPlay, boolean isEligibleForDirectStream)
 	{
+		if (videoStream == null) {
+			return null;
+		}
+		
 		// See if it can be direct played
 		DirectPlayProfile directPlay = null;
 		for (DirectPlayProfile i : profile.getDirectPlayProfiles())
