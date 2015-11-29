@@ -2108,7 +2108,33 @@ public class ApiClient extends BaseApiClient {
 
     public void GetLatestChannelItems(AllChannelMediaQuery query, final Response<ItemsResult> response)
     {
-        throw new UnsupportedOperationException();
+        if (query == null)
+        {
+            throw new IllegalArgumentException("query");
+        }
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(query.getUserId()))
+        {
+            throw new IllegalArgumentException("UserId");
+        }
+
+        QueryStringDictionary queryString = new QueryStringDictionary();
+        queryString.Add("UserId", query.getUserId());
+        queryString.AddIfNotNull("StartIndex", query.getStartIndex());
+        queryString.AddIfNotNull("Limit", query.getLimit());
+        if (query.getFilters() != null) {
+            queryString.AddIfNotNull("Filters", query.getFilters());
+        }
+        if (query.getFields() != null) {
+            queryString.AddIfNotNull("Fields", query.getFields() != null && query.getFields().size() > 0
+                    ? query.getFields().toArray(new ItemFields[query.getFields().size()]) : null);
+        }
+        queryString.AddIfNotNull("ChannelIds", query.getChannelIds());
+
+        String url = GetApiUrl("Channels/Items/Latest", queryString);
+
+        url = AddDataFormat(url);
+
+        Send(url, "GET", new SerializedResponse<ItemsResult>(response, jsonSerializer, ItemsResult.class));
     }
 
     public void DeleteItem(String id, final EmptyResponse response)
