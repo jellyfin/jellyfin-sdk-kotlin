@@ -17,9 +17,9 @@ public class AuthenticatorService extends Service {
 
     // Constants
     // The authority for the sync adapter's content provider
-    public static final String AUTHORITY = "mediabrowser.tv";
+    public static final String AUTHORITY = "emby.media";
     // An account type, in the form of a domain name
-    private static final String ACCOUNT_TYPE = "mediabrowser.tv";
+    private static final String ACCOUNT_TYPE = "emby.media";
     // The account name
     private static final String ACCOUNT_NAME = "sync";
     private Authenticator mAuthenticator;

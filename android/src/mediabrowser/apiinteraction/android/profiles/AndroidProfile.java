@@ -32,8 +32,8 @@ public class AndroidProfile extends DeviceProfile
 		audioDirectPlayProfile.setType(DlnaProfileType.Audio);
 
 		DirectPlayProfile photoDirectPlayProfile = new DirectPlayProfile();
-		audioDirectPlayProfile.setContainer("jpg,jpeg,png,gif");
-		audioDirectPlayProfile.setType(DlnaProfileType.Photo);
+		photoDirectPlayProfile.setContainer("jpg,jpeg,png,gif");
+		photoDirectPlayProfile.setType(DlnaProfileType.Photo);
 
 		setDirectPlayProfiles(new DirectPlayProfile[]{videoDirectPlayProfile, audioDirectPlayProfile, photoDirectPlayProfile});
 

@@ -66,7 +66,7 @@ public class ApiWebSocket implements ISocketListener {
 
     private String getWebSocketServerAddress(){
 
-        return apiClient.getApiUrl().replace("http", "ws") + "?api_key=" + apiClient.getAccessToken() + "&deviceId=" + URLEncoder.encode(apiClient.getDeviceId());
+        return apiClient.getApiUrl().replace("http", "ws") + "/embywebsocket?api_key=" + apiClient.getAccessToken() + "&deviceId=" + URLEncoder.encode(apiClient.getDeviceId());
     }
 
     public void CloseWebSocket(){
