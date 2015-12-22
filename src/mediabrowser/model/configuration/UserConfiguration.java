@@ -225,9 +225,9 @@ public class UserConfiguration
 		setLatestItemsExcludes(new String[] { });
 		setOrderedViews(new String[] { });
 		setDisplayChannelsWithinViews(new String[] { });
+		setDisplayChannelsInline(true);
 
 		setPlainFolderViews(new String[] { });
-		setDisplayCollectionsView(true);
 
 		setIncludeTrailersInSuggestions(true);
 		setEnableCinemaMode(true);

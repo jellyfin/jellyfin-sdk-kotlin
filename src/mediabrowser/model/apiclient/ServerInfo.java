@@ -97,6 +97,15 @@ public class ServerInfo
 	{
 		DateLastAccessed = value;
 	}
+	private java.util.Date DateLastLocalConnection = new java.util.Date(0);
+	public final java.util.Date getDateLastLocalConnection()
+	{
+		return DateLastLocalConnection;
+	}
+	public final void setDateLastLocalConnection(java.util.Date value)
+	{
+		DateLastLocalConnection = value;
+	}
 	private String ExchangeToken;
 	public final String getExchangeToken()
 	{

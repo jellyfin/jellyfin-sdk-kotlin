@@ -64,6 +64,11 @@ public class ServerCredentials
 				existing.setDateLastAccessed(server.getDateLastAccessed());
 			}
 
+			if (server.getDateLastLocalConnection().compareTo(existing.getDateLastLocalConnection()) > 0)
+			{
+				existing.setDateLastLocalConnection(server.getDateLastLocalConnection());
+			}
+
 			existing.setUserLinkType(server.getUserLinkType());
 
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))

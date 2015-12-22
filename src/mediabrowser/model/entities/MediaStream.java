@@ -526,16 +526,4 @@ public class MediaStream
 	{
 		IsCabac = value;
 	}
-
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public List<int> KeyFrames {get;set;}
-	private java.util.ArrayList<Integer> KeyFrames;
-	public final java.util.ArrayList<Integer> getKeyFrames()
-	{
-		return KeyFrames;
-	}
-	public final void setKeyFrames(java.util.ArrayList<Integer> value)
-	{
-		KeyFrames = value;
-	}
 }

@@ -12,12 +12,4 @@ public interface IItemDto
 	*/
 	Double getPrimaryImageAspectRatio();
 	void setPrimaryImageAspectRatio(Double value);
-
-	/** 
-	 Gets or sets the original primary image aspect ratio.
-	 
-	 <value>The original primary image aspect ratio.</value>
-	*/
-	Double getOriginalPrimaryImageAspectRatio();
-	void setOriginalPrimaryImageAspectRatio(Double value);
 }

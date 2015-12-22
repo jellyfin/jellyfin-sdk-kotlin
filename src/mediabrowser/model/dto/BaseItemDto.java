@@ -189,6 +189,16 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 		CanDownload = value;
 	}
 
+	private Boolean HasSubtitles = null;
+	public final Boolean getHasSubtitles()
+	{
+		return HasSubtitles;
+	}
+	public final void setHasSubtitles(Boolean value)
+	{
+		HasSubtitles = value;
+	}
+
 	private String PreferredMetadataLanguage;
 	public final String getPreferredMetadataLanguage()
 	{
@@ -235,16 +245,6 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setMetascore(Float value)
 	{
 		Metascore = value;
-	}
-
-	private Boolean IsUnidentified = null;
-	public final Boolean getIsUnidentified()
-	{
-		return IsUnidentified;
-	}
-	public final void setIsUnidentified(Boolean value)
-	{
-		IsUnidentified = value;
 	}
 	private Boolean HasDynamicCategories = null;
 	public final Boolean getHasDynamicCategories()
@@ -782,21 +782,6 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setProductionYear(Integer value)
 	{
 		ProductionYear = value;
-	}
-
-	/** 
-	 Gets or sets the season count.
-	 
-	 <value>The season count.</value>
-	*/
-	private Integer SeasonCount = null;
-	public final Integer getSeasonCount()
-	{
-		return SeasonCount;
-	}
-	public final void setSeasonCount(Integer value)
-	{
-		SeasonCount = value;
 	}
 
 	/** 
@@ -1359,21 +1344,6 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	}
 
 	/** 
-	 Gets or sets the primary image aspect ratio, before image enhancements.
-	 
-	 <value>The original primary image aspect ratio.</value>
-	*/
-	private Double OriginalPrimaryImageAspectRatio = null;
-	public final Double getOriginalPrimaryImageAspectRatio()
-	{
-		return OriginalPrimaryImageAspectRatio;
-	}
-	public final void setOriginalPrimaryImageAspectRatio(Double value)
-	{
-		OriginalPrimaryImageAspectRatio = value;
-	}
-
-	/** 
 	 Gets or sets the artists.
 	 
 	 <value>The artists.</value>
@@ -1431,6 +1401,21 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setCollectionType(String value)
 	{
 		CollectionType = value;
+	}
+
+	/** 
+	 Gets or sets the type of the original collection.
+	 
+	 <value>The type of the original collection.</value>
+	*/
+	private String OriginalCollectionType;
+	public final String getOriginalCollectionType()
+	{
+		return OriginalCollectionType;
+	}
+	public final void setOriginalCollectionType(String value)
+	{
+		OriginalCollectionType = value;
 	}
 
 	/** 
@@ -2497,10 +2482,18 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 		return StringHelper.EqualsIgnoreCase(getType(), "Studio");
 	}
 
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [IgnoreDataMember] public bool SupportsSimilarItems
 	public final boolean getSupportsSimilarItems()
 	{
 		return IsType("Movie") || IsType("Series") || IsType("MusicAlbum") || IsType("MusicArtist") || IsType("Program") || IsType("Recording") || IsType("ChannelVideoItem") || IsType("Game");
 	}
+
+	/** 
+	 Occurs when [property changed].
+	*/
+//C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
+//	public event PropertyChangedEventHandler PropertyChanged;
 
 	/** 
 	 Gets or sets the program identifier.
@@ -2543,21 +2536,6 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setStartDate(java.util.Date value)
 	{
 		StartDate = value;
-	}
-
-	/** 
-	 Gets or sets the original air date.
-	 
-	 <value>The original air date.</value>
-	*/
-	private java.util.Date OriginalAirDate = null;
-	public final java.util.Date getOriginalAirDate()
-	{
-		return OriginalAirDate;
-	}
-	public final void setOriginalAirDate(java.util.Date value)
-	{
-		OriginalAirDate = value;
 	}
 
 	/** 
@@ -2754,5 +2732,18 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	{
 		TimerId = value;
 	}
-
+	/** 
+	 Gets or sets the current program.
+	 
+	 <value>The current program.</value>
+	*/
+	private BaseItemDto CurrentProgram;
+	public final BaseItemDto getCurrentProgram()
+	{
+		return CurrentProgram;
+	}
+	public final void setCurrentProgram(BaseItemDto value)
+	{
+		CurrentProgram = value;
+	}
 }

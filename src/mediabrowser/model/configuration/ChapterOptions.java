@@ -81,7 +81,6 @@ public class ChapterOptions
 	public ChapterOptions()
 	{
 		setDownloadMovieChapters(true);
-		setExtractDuringLibraryScan(true);
 
 		setDisabledFetchers(new String[] { });
 		setFetcherOrder(new String[] { });

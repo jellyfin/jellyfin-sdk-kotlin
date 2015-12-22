@@ -47,30 +47,30 @@ public class EncodingOptions
 	{
 		EnableThrottling = value;
 	}
-	private int ThrottleThresholdInSeconds;
-	public final int getThrottleThresholdInSeconds()
+	private int ThrottleThresholdSeconds;
+	public final int getThrottleThresholdSeconds()
 	{
-		return ThrottleThresholdInSeconds;
+		return ThrottleThresholdSeconds;
 	}
-	public final void setThrottleThresholdInSeconds(int value)
+	public final void setThrottleThresholdSeconds(int value)
 	{
-		ThrottleThresholdInSeconds = value;
+		ThrottleThresholdSeconds = value;
 	}
-	private String HardwareVideoDecoder;
-	public final String getHardwareVideoDecoder()
+	private String HardwareAccelerationType;
+	public final String getHardwareAccelerationType()
 	{
-		return HardwareVideoDecoder;
+		return HardwareAccelerationType;
 	}
-	public final void setHardwareVideoDecoder(String value)
+	public final void setHardwareAccelerationType(String value)
 	{
-		HardwareVideoDecoder = value;
+		HardwareAccelerationType = value;
 	}
 
 	public EncodingOptions()
 	{
 		setDownMixAudioBoost(2);
 		setEnableThrottling(true);
-		setThrottleThresholdInSeconds(120);
+		setThrottleThresholdSeconds(110);
 		setEncodingThreadCount(-1);
 	}
 }

@@ -166,11 +166,6 @@ public enum ItemFields
 	PrimaryImageAspectRatio,
 
 	/** 
-	 The original primary image aspect ratio
-	*/
-	OriginalPrimaryImageAspectRatio,
-
-	/** 
 	 The revenue
 	*/
 	Revenue,

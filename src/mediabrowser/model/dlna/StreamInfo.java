@@ -472,17 +472,6 @@ public class StreamInfo
 
 		list.add(new NameValuePair("Level", item.getVideoLevel() != null ? StringHelper.ToStringCultureInvariant(item.getVideoLevel()) : ""));
 
-		if (isDlna)
-		{
-			// The player may see it as separate resources due to url differences
-			// And then try to request more than one at playback
-			list.add(new NameValuePair("ClientTime", ""));
-		}
-		else
-		{
-			list.add(new NameValuePair("ClientTime", item.getIsDirectStream() ? "" : String.valueOf(System.currentTimeMillis())));
-		}
-
 		list.add(new NameValuePair("MaxRefFrames", item.getMaxRefFrames() != null ? StringHelper.ToStringCultureInvariant(item.getMaxRefFrames()) : ""));
 		list.add(new NameValuePair("MaxVideoBitDepth", item.getMaxVideoBitDepth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxVideoBitDepth()) : ""));
 		String tempVar6 = item.getVideoProfile();

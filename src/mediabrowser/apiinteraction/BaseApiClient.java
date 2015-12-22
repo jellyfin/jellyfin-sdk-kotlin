@@ -349,7 +349,11 @@ public abstract class BaseApiClient implements IDisposable
 			throw new IllegalArgumentException("queryString");
 		}
 
-		return queryString.GetUrl(getApiUrl() + "/" + handler);
+		if (handler.indexOf("/") != 0) {
+			handler = "/" + handler;
+		}
+
+		return queryString.GetUrl(getApiUrl() + handler);
 	}
 
 	public final String GetSubtitleUrl(SubtitleDownloadOptions options)

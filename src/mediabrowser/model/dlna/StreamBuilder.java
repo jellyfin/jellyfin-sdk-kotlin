@@ -438,7 +438,7 @@ public class StreamBuilder
 			java.util.ArrayList<ProfileCondition> audioTranscodingConditions = new java.util.ArrayList<ProfileCondition>();
 			for (CodecProfile i : options.getProfile().getCodecProfiles())
 			{
-				if (i.getType() == CodecType.VideoAudio && i.ContainsCodec(transcodingProfile.getAudioCodec(), transcodingProfile.getContainer()))
+				if (i.getType() == CodecType.VideoAudio && i.ContainsCodec(playlistItem.getAudioCodec(), transcodingProfile.getContainer()))
 				{
 					for (ProfileCondition c : i.getConditions())
 					{
@@ -516,10 +516,15 @@ public class StreamBuilder
 
 	private PlayMethod GetVideoDirectPlayProfile(DeviceProfile profile, MediaSourceInfo mediaSource, MediaStream videoStream, MediaStream audioStream, boolean isEligibleForDirectPlay, boolean isEligibleForDirectStream)
 	{
-		if (videoStream == null) {
+		if (videoStream == null)
+		{
+			String tempVar = profile.getName();
+			String tempVar2 = mediaSource.getPath();
+			_logger.Info("Profile: {0}, Cannot direct stream with no known video stream. Path: {1}", (tempVar != null) ? tempVar : "Unknown Profile", (tempVar2 != null) ? tempVar2 : "Unknown path");
+
 			return null;
 		}
-		
+
 		// See if it can be direct played
 		DirectPlayProfile directPlay = null;
 		for (DirectPlayProfile i : profile.getDirectPlayProfiles())
@@ -533,9 +538,9 @@ public class StreamBuilder
 
 		if (directPlay == null)
 		{
-			String tempVar = profile.getName();
-			String tempVar2 = mediaSource.getPath();
-			_logger.Info("Profile: {0}, No direct play profiles found for Path: {1}", (tempVar != null) ? tempVar : "Unknown Profile", (tempVar2 != null) ? tempVar2 : "Unknown path");
+			String tempVar3 = profile.getName();
+			String tempVar4 = mediaSource.getPath();
+			_logger.Info("Profile: {0}, No direct play profiles found for Path: {1}", (tempVar3 != null) ? tempVar3 : "Unknown Profile", (tempVar4 != null) ? tempVar4 : "Unknown path");
 
 			return null;
 		}
@@ -562,8 +567,8 @@ public class StreamBuilder
 		Integer videoBitrate = videoStream == null ? null : videoStream.getBitRate();
 		Double videoLevel = videoStream == null ? null : videoStream.getLevel();
 		String videoProfile = videoStream == null ? null : videoStream.getProfile();
-		Float tempVar3 = videoStream.getAverageFrameRate();
-		Float videoFramerate = videoStream == null ? null : (tempVar3 != null) ? tempVar3 : videoStream.getAverageFrameRate();
+		Float tempVar5 = videoStream.getAverageFrameRate();
+		Float videoFramerate = videoStream == null ? null : (tempVar5 != null) ? tempVar5 : videoStream.getAverageFrameRate();
 		Boolean isAnamorphic = videoStream == null ? null : videoStream.getIsAnamorphic();
 		Boolean isCabac = videoStream == null ? null : videoStream.getIsCabac();
 		String videoCodecTag = videoStream == null ? null : videoStream.getCodecTag();
@@ -594,9 +599,9 @@ public class StreamBuilder
 
 		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(videoCodec))
 		{
-			String tempVar4 = profile.getName();
-			String tempVar5 = mediaSource.getPath();
-			_logger.Info("Profile: {0}, DirectPlay=false. Reason=Unknown video codec. Path: {1}", (tempVar4 != null) ? tempVar4 : "Unknown Profile", (tempVar5 != null) ? tempVar5 : "Unknown path");
+			String tempVar6 = profile.getName();
+			String tempVar7 = mediaSource.getPath();
+			_logger.Info("Profile: {0}, DirectPlay=false. Reason=Unknown video codec. Path: {1}", (tempVar6 != null) ? tempVar6 : "Unknown Profile", (tempVar7 != null) ? tempVar7 : "Unknown path");
 
 			return null;
 		}
@@ -629,9 +634,9 @@ public class StreamBuilder
 
 			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec))
 			{
-				String tempVar6 = profile.getName();
-				String tempVar7 = mediaSource.getPath();
-				_logger.Info("Profile: {0}, DirectPlay=false. Reason=Unknown audio codec. Path: {1}", (tempVar6 != null) ? tempVar6 : "Unknown Profile", (tempVar7 != null) ? tempVar7 : "Unknown path");
+				String tempVar8 = profile.getName();
+				String tempVar9 = mediaSource.getPath();
+				_logger.Info("Profile: {0}, DirectPlay=false. Reason=Unknown audio codec. Path: {1}", (tempVar8 != null) ? tempVar8 : "Unknown Profile", (tempVar9 != null) ? tempVar9 : "Unknown path");
 
 				return null;
 			}

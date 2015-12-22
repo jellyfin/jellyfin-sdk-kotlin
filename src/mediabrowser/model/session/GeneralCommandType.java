@@ -34,7 +34,9 @@ public enum GeneralCommandType
 	DisplayContent(26),
 	GoToSearch(27),
 	DisplayMessage(28),
-	SetRepeatMode(29);
+	SetRepeatMode(29),
+	ChannelUp(30),
+	ChannelDown(31);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, GeneralCommandType> mappings;

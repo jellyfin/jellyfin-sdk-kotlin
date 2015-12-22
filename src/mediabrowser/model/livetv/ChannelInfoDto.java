@@ -238,21 +238,6 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto, IHasS
 	}
 
 	/** 
-	 Gets or sets the primary image aspect ratio, before image enhancements.
-	 
-	 <value>The original primary image aspect ratio.</value>
-	*/
-	private Double OriginalPrimaryImageAspectRatio = null;
-	public final Double getOriginalPrimaryImageAspectRatio()
-	{
-		return OriginalPrimaryImageAspectRatio;
-	}
-	public final void setOriginalPrimaryImageAspectRatio(Double value)
-	{
-		OriginalPrimaryImageAspectRatio = value;
-	}
-
-	/** 
 	 Gets a value indicating whether this instance has primary image.
 	 
 	 <value><c>true</c> if this instance has primary image; otherwise, <c>false</c>.</value>
