@@ -28,10 +28,13 @@ public class FindServersInnerResponse extends Response<ArrayList<ServerDiscovery
             ServerDiscoveryInfo foundServer = foundServers.get(i);
 
             server.setId(foundServer.getId());
-            server.setLocalAddress(foundServer.getAddress());
             server.setName(foundServer.getName());
 
-            server.setManualAddress(ConvertEndpointAddressToManualAddress(foundServer));
+            String localAddress = ConvertEndpointAddressToManualAddress(foundServer);
+            if (localAddress == null) {
+                localAddress = foundServer.getAddress();
+            }
+            server.setLocalAddress(localAddress);
 
             servers.add(server);
         }

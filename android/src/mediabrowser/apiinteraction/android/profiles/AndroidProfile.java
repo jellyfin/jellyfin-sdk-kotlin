@@ -119,9 +119,9 @@ public class AndroidProfile extends DeviceProfile
 		transcodingProfiles.add(tempVar3);
 
 		TranscodingProfile mkvProfile = new TranscodingProfile();
-        	mkvProfile.setContainer("webm");
-        	mkvProfile.setVideoCodec("vpx");
-        	mkvProfile.setAudioCodec("vorbis");
+        	mkvProfile.setContainer("mkv");
+        	mkvProfile.setVideoCodec("h264");
+        	mkvProfile.setAudioCodec("aac,mp3");
         	mkvProfile.setType(DlnaProfileType.Video);
         	mkvProfile.setContext(EncodingContext.Streaming);
         	transcodingProfiles.add(mkvProfile);
