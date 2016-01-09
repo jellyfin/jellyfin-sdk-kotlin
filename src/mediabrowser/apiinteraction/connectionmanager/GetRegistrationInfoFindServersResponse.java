@@ -10,6 +10,7 @@ import mediabrowser.model.apiclient.ServerCredentials;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.net.EndPointInfo;
 import mediabrowser.model.registration.RegistrationInfo;
 import mediabrowser.model.serialization.IJsonSerializer;
 
@@ -49,7 +50,9 @@ public class GetRegistrationInfoFindServersResponse extends Response<ArrayList<S
             }
         }
 
-        TestConnect(response);
+        RegistrationInfo reg = new RegistrationInfo();
+        reg.setName(featureName);
+        response.onResponse(reg);
     }
 
     public void onError(Exception ex){
@@ -57,11 +60,36 @@ public class GetRegistrationInfoFindServersResponse extends Response<ArrayList<S
         onResponse(new ArrayList<ServerInfo>());
     }
 
-    void TestServer(ServerInfo server, Response<RegistrationInfo> response){
+    void TestServer(final ServerInfo server, final Response<RegistrationInfo> response){
 
-        ApiClient apiClient = connectionManager.GetApiClient(server.getId());
+        final ApiClient apiClient = connectionManager.GetApiClient(server.getId());
 
-        apiClient.GetRegistrationInfo(featureName, new GetRegistrationInfoInnerResponse(response, this, logger));
+        final GetRegistrationInfoFindServersResponse self = this;
+
+        if (server.getDateLastLocalConnection() != null){
+            apiClient.GetRegistrationInfo(featureName, new GetRegistrationInfoInnerResponse(response, self, logger));
+            return;
+        }
+
+        // TODO: Get Endpoint Info
+        apiClient.GetEndPointInfo(new Response<EndPointInfo>(response){
+
+            @Override
+            public void onResponse(EndPointInfo info){
+
+                if (info.getIsInNetwork()){
+
+                    connectionManager.updateDateLastLocalConnection(server.getId());
+                    apiClient.GetRegistrationInfo(featureName, new GetRegistrationInfoInnerResponse(response, self, logger));
+
+                } else{
+                    RegistrationInfo reg = new RegistrationInfo();
+                    reg.setName(featureName);
+                    response.onResponse(reg);
+                }
+            }
+
+        });
     }
 
     void TestConnect(Response<RegistrationInfo> response){

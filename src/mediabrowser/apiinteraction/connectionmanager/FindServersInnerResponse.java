@@ -6,6 +6,7 @@ import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.extensions.IntHelper;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class FindServersInnerResponse extends Response<ArrayList<ServerDiscoveryInfo>> {
 
@@ -35,6 +36,7 @@ public class FindServersInnerResponse extends Response<ArrayList<ServerDiscovery
                 localAddress = foundServer.getAddress();
             }
             server.setLocalAddress(localAddress);
+            server.setDateLastLocalConnection(new Date());
 
             servers.add(server);
         }

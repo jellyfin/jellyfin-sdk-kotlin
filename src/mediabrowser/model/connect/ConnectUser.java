@@ -38,6 +38,15 @@ public class ConnectUser
 	{
 		IsActive = value;
 	}
+	private boolean IsSupporter;
+	public final boolean getIsSupporter()
+	{
+		return IsSupporter;
+	}
+	public final void setIsSupporter(boolean value)
+	{
+		IsSupporter = value;
+	}
 	private String ImageUrl;
 	public final String getImageUrl()
 	{

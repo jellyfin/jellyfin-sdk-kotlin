@@ -333,6 +333,10 @@ public class ConnectionManager implements IConnectionManager {
 
         if (options.getUpdateDateLastAccessed()){
             server.setDateLastAccessed(new Date());
+
+            if (connectionMode == ConnectionMode.Local){
+                server.setDateLastLocalConnection(new Date());
+            }
         }
 
         server.setLastConnectionMode(connectionMode);
@@ -474,6 +478,10 @@ public class ConnectionManager implements IConnectionManager {
 
         if (options.getUpdateDateLastAccessed()){
             server.setDateLastAccessed(new Date());
+
+            if (server.getLastConnectionMode() == ConnectionMode.Local){
+                server.setDateLastLocalConnection(new Date());
+            }
         }
 
         if (saveCredentials)
@@ -754,6 +762,32 @@ public class ConnectionManager implements IConnectionManager {
 
     public void GetRegistrationInfo(String featureName, String connectedServerId, Response<RegistrationInfo> response) {
 
-        FindServers(new GetRegistrationInfoFindServersResponse(this, featureName, connectedServerId, logger, response, credentialProvider, connectService));
+        if (isConnectUserSupporter()){
+
+            RegistrationInfo reg = new RegistrationInfo();
+            reg.setName(featureName);
+            reg.setIsTrial(false);
+            reg.setIsRegistered(true);
+            response.onResponse(reg);
+            return;
+        }
+        GetAvailableServers(new GetRegistrationInfoFindServersResponse(this, featureName, connectedServerId, logger, response, credentialProvider, connectService));
+    }
+
+    boolean isConnectUserSupporter(){
+        return connectUser != null && connectUser.getIsSupporter();
+    }
+
+    void updateDateLastLocalConnection(String serverId){
+        ServerCredentials credentials = credentialProvider.GetCredentials();
+
+        for (ServerInfo server : credentials.getServers()){
+
+            if (StringHelper.EqualsIgnoreCase(server.getId(), serverId)){
+                server.setDateLastLocalConnection(new Date());
+                credentialProvider.SaveCredentials(credentials);
+                return;
+            }
+        }
     }
 }

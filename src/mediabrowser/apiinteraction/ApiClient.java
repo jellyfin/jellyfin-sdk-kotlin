@@ -31,6 +31,7 @@ import mediabrowser.model.globalization.CultureDto;
 import mediabrowser.model.livetv.*;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.mediainfo.*;
+import mediabrowser.model.net.EndPointInfo;
 import mediabrowser.model.net.HttpException;
 import mediabrowser.model.notifications.NotificationQuery;
 import mediabrowser.model.notifications.NotificationResult;
@@ -715,6 +716,15 @@ public class ApiClient extends BaseApiClient {
         url = AddDataFormat(url);
 
         Send(url, "GET", new SerializedResponse<SystemInfo>(response, jsonSerializer, SystemInfo.class));
+    }
+
+    public void GetEndPointInfo(final Response<EndPointInfo> response)
+    {
+        String url = GetApiUrl("System/Endpoint");
+
+        url = AddDataFormat(url);
+
+        Send(url, "GET", new SerializedResponse<EndPointInfo>(response, jsonSerializer, EndPointInfo.class));
     }
 
     /// <summary>
