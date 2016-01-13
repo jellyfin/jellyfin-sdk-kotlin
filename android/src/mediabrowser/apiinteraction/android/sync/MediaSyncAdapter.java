@@ -45,6 +45,7 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
         SharedPreferences syncPreferences = context.getSharedPreferences("Sync", Context.MODE_PRIVATE | Context.MODE_MULTI_PROCESS);
         boolean syncOnlyOnWifi = syncPreferences.getBoolean("syncOnlyOnWifi", true);
+        String cameraUploadServersString = syncPreferences.getString("cameraUploadServers", null);
 
         if (syncOnlyOnWifi){
             ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -81,7 +82,6 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
         String capabilitiesJson = connectionManagerPreferences.getString("capabilities", null);
         String deviceName = connectionManagerPreferences.getString("deviceName", null);
         String deviceId = connectionManagerPreferences.getString("deviceId", null);
-        String cameraUploadServersString = connectionManagerPreferences.getString("cameraUploadServers", null);
 
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(appName))
         {
