@@ -335,7 +335,7 @@ public class ConnectionManager implements IConnectionManager {
             server.setDateLastAccessed(new Date());
 
             if (connectionMode == ConnectionMode.Local){
-                server.setDateLastLocalConnection(new Date());
+                server.setDateLastLocalConnection(new Date().getTime());
             }
         }
 
@@ -480,7 +480,7 @@ public class ConnectionManager implements IConnectionManager {
             server.setDateLastAccessed(new Date());
 
             if (server.getLastConnectionMode() == ConnectionMode.Local){
-                server.setDateLastLocalConnection(new Date());
+                server.setDateLastLocalConnection(new Date().getTime());
             }
         }
 
@@ -527,7 +527,17 @@ public class ConnectionManager implements IConnectionManager {
     public void GetAvailableServers(final Response<ArrayList<ServerInfo>> response)
     {
         logger.Debug("Getting saved servers via credential provider");
-        final ServerCredentials credentials = credentialProvider.GetCredentials();
+        ServerCredentials tempCredentials;
+        try {
+            tempCredentials = credentialProvider.GetCredentials();
+        }
+        catch (Exception ex){
+
+            logger.ErrorException("Error getting available servers", ex);
+            response.onResponse(new ArrayList<ServerInfo>());
+            return;
+        }
+        final ServerCredentials credentials = tempCredentials;
 
         final int numTasks = 2;
         final int[] numTasksCompleted = {0};
@@ -784,7 +794,7 @@ public class ConnectionManager implements IConnectionManager {
         for (ServerInfo server : credentials.getServers()){
 
             if (StringHelper.EqualsIgnoreCase(server.getId(), serverId)){
-                server.setDateLastLocalConnection(new Date());
+                server.setDateLastLocalConnection(new Date().getTime());
                 credentialProvider.SaveCredentials(credentials);
                 return;
             }
