@@ -97,12 +97,12 @@ public class ServerInfo
 	{
 		DateLastAccessed = value;
 	}
-	private Long DateLastLocalConnection = null;
-	public final Long getDateLastLocalConnection()
+	private long DateLastLocalConnection = 0;
+	public final long getDateLastLocalConnection()
 	{
 		return DateLastLocalConnection;
 	}
-	public final void setDateLastLocalConnection(Long value)
+	public final void setDateLastLocalConnection(long value)
 	{
 		DateLastLocalConnection = value;
 	}

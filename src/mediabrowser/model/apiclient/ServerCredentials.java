@@ -64,7 +64,7 @@ public class ServerCredentials
 				existing.setDateLastAccessed(server.getDateLastAccessed());
 			}
 
-			if (server.getDateLastLocalConnection().compareTo(existing.getDateLastLocalConnection()) > 0)
+			if (server.getDateLastLocalConnection() > existing.getDateLastLocalConnection())
 			{
 				existing.setDateLastLocalConnection(server.getDateLastLocalConnection());
 			}
