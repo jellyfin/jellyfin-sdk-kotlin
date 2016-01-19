@@ -66,7 +66,7 @@ public class GetRegistrationInfoFindServersResponse extends Response<ArrayList<S
 
         final GetRegistrationInfoFindServersResponse self = this;
 
-        if (server.getDateLastLocalConnection() != 0){
+        if (server.getDateLastLocalConnection() > 0){
             apiClient.GetRegistrationInfo(featureName, new GetRegistrationInfoInnerResponse(response, self, logger));
             return;
         }

@@ -18,9 +18,9 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="com.google.code.gson:gson:2.3.1" level="project" />
-    <orderEntry type="library" name="com.squareup.okhttp:okhttp:2.3.0" level="project" />
-    <orderEntry type="library" name="com.squareup.okhttp:okhttp-urlconnection:2.3.0" level="project" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.5" level="project" />
+    <orderEntry type="library" name="com.squareup.okhttp:okhttp:2.7.0" level="project" />
+    <orderEntry type="library" name="com.squareup.okhttp:okhttp-urlconnection:2.7.0" level="project" />
     <orderEntry type="library" name="android-support-v4" level="project" />
   </component>
 </module>

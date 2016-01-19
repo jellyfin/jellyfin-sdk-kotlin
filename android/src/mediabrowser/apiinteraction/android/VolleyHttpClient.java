@@ -130,45 +130,4 @@ public class VolleyHttpClient implements IAsyncHttpClient {
 
         getImageLoader().get(url, new GetBitmapResponse(outerResponse));
     }
-
-    public void getCachedFile(final String url, final Response<String> response) {
-
-        final DiskBasedCache diskCache = (DiskBasedCache)getRequestQueue().getCache();
-
-        File file = diskCache.getFileForKey(url);
-
-        if (file.exists()) {
-
-            String path = file.getPath();
-            logger.Debug("getCachedFile found %s", path);
-            response.onResponse(path);
-            return;
-        }
-
-        logger.Debug("getCachedFile will download %s", url);
-
-        getImageLoader().get(url, new ImageLoader.ImageListener() {
-
-            @Override
-            public void onResponse(ImageLoader.ImageContainer imageResponse, boolean isImmediate) {
-
-                logger.Debug("getCachedFile got response");
-
-                File file = diskCache.getFileForKey(url);
-                if (file.exists()){
-                    String path = file.getPath();
-                    response.onResponse(path);
-                }
-                else {
-                    response.onResponse(null);
-                }
-            }
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                logger.ErrorException("Error downloading %s", error, url);
-                response.onResponse(null);
-            }
-        });
-    }
 }
