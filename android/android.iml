@@ -9,18 +9,10 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="MediaBrowser.ApiClient.Java" />
     <orderEntry type="library" name="com.google.guava:guava:18.0" level="project" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../lib/volley.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="android-support-v4" level="project" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.5" level="project" />
     <orderEntry type="library" name="com.squareup.okhttp:okhttp:2.7.0" level="project" />
     <orderEntry type="library" name="com.squareup.okhttp:okhttp-urlconnection:2.7.0" level="project" />
-    <orderEntry type="library" name="android-support-v4" level="project" />
+    <orderEntry type="library" name="com.mcxiaoke.volley:library:1.0.19" level="project" />
   </component>
 </module>
