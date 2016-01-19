@@ -116,6 +116,10 @@ public class VolleyHttpClient implements IAsyncHttpClient {
             req.setShouldCache(false);
         }
 
+        if (!request.getEnableCaching()) {
+            req.setShouldCache(false);
+        }
+
         req.setRetryPolicy(new DefaultRetryPolicy(
                 request.getTimeout(), // timeout in ms
                 0, // num of retries

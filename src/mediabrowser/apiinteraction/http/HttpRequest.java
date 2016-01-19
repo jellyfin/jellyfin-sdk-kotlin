@@ -70,6 +70,16 @@ public class HttpRequest
         postData = value;
     }
 
+    private boolean EnableCaching;
+    public final boolean getEnableCaching()
+    {
+        return EnableCaching;
+    }
+    public final void setEnableCaching(boolean value)
+    {
+        EnableCaching = value;
+    }
+
     public HttpRequest()
     {
         setRequestHeaders(new HttpHeaders());
