@@ -36,9 +36,12 @@ public class SerializedResponse<T> extends Response<String> {
             logger.Debug("Received response from %s", url);
         }
 
-        T obj = jsonSerializer.DeserializeFromString(result, type);
-
-        onSerializedResponse(obj);
+        try {
+            T obj = jsonSerializer.DeserializeFromString(result, type);
+            onSerializedResponse(obj);
+        } catch (Exception e) {
+            innerResponse.onError(e);
+        }
     }
 
     protected void onSerializedResponse(T obj){
