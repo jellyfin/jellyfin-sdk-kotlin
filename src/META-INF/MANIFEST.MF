@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: Java-WebSocket-1.3.0.jar guava-18.0.jar junit-4.11.jar ham
- crest-core-1.3.jar
-
