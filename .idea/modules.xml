@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/MediaBrowser.ApiClient.Java.iml" filepath="$PROJECT_DIR$/.idea/MediaBrowser.ApiClient.Java.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/android.iml" filepath="$PROJECT_DIR$/android/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apiclient.iml" filepath="$PROJECT_DIR$/apiclient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/emby.apiclient.android.iml" filepath="$PROJECT_DIR$/android/emby.apiclient.android.iml" />
     </modules>
   </component>
 </project>

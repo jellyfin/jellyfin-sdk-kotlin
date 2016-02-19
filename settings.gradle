@@ -1,0 +1,4 @@
+rootProject.name = 'apiclient'
+include 'android'
+findProject(':android')?.name = 'emby.apiclient.android'
+
