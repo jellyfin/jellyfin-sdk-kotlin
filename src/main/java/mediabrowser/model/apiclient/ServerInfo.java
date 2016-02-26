@@ -97,14 +97,14 @@ public class ServerInfo
 	{
 		DateLastAccessed = value;
 	}
-	private long DateLastLocalConnection = 0;
-	public final long getDateLastLocalConnection()
+	private long DateLastLocalAccess = 0;
+	public final long getDateLastLocalAccess()
 	{
-		return DateLastLocalConnection;
+		return DateLastLocalAccess;
 	}
-	public final void setDateLastLocalConnection(long value)
+	public final void setDateLastLocalAccess(long value)
 	{
-		DateLastLocalConnection = value;
+		DateLastLocalAccess = value;
 	}
 	private String ExchangeToken;
 	public final String getExchangeToken()

@@ -335,7 +335,7 @@ public class ConnectionManager implements IConnectionManager {
             server.setDateLastAccessed(new Date());
 
             if (connectionMode == ConnectionMode.Local){
-                server.setDateLastLocalConnection(new Date().getTime());
+                server.setDateLastLocalAccess(new Date().getTime());
             }
         }
 
@@ -480,7 +480,7 @@ public class ConnectionManager implements IConnectionManager {
             server.setDateLastAccessed(new Date());
 
             if (server.getLastConnectionMode() == ConnectionMode.Local){
-                server.setDateLastLocalConnection(new Date().getTime());
+                server.setDateLastLocalAccess(new Date().getTime());
             }
         }
 
@@ -788,13 +788,13 @@ public class ConnectionManager implements IConnectionManager {
         return connectUser != null && connectUser.getIsSupporter();
     }
 
-    void updateDateLastLocalConnection(String serverId){
+    void updateDateLastLocalAccess(String serverId){
         ServerCredentials credentials = credentialProvider.GetCredentials();
 
         for (ServerInfo server : credentials.getServers()){
 
             if (StringHelper.EqualsIgnoreCase(server.getId(), serverId)){
-                server.setDateLastLocalConnection(new Date().getTime());
+                server.setDateLastLocalAccess(new Date().getTime());
                 credentialProvider.SaveCredentials(credentials);
                 return;
             }
