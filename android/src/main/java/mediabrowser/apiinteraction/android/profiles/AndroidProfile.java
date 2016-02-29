@@ -15,55 +15,6 @@ public class AndroidProfile extends DeviceProfile
 	public AndroidProfile(String deviceName){
 
 		this(new AndroidProfileOptions(deviceName));
-
-		if (deviceName.equalsIgnoreCase("vlc")) {
-			setVlcOptions();
-		}
-	}
-
-	private void setVlcOptions() {
-
-		DirectPlayProfile videoDirectPlayProfile = new DirectPlayProfile();
-		videoDirectPlayProfile.setContainer("m4v,3gp,ts,mpegts,mov,xvid,vob,mkv,wmv,asf,ogm,ogv,m2v,avi,mpg,mpeg,mp4,webm");
-		videoDirectPlayProfile.setType(DlnaProfileType.Video);
-
-		DirectPlayProfile audioDirectPlayProfile = new DirectPlayProfile();
-		audioDirectPlayProfile.setContainer("flac,aac,mp3,mpa,wav,wma,mp2,ogg,oga,webma,ape");
-		audioDirectPlayProfile.setType(DlnaProfileType.Audio);
-
-		DirectPlayProfile photoDirectPlayProfile = new DirectPlayProfile();
-		photoDirectPlayProfile.setContainer("jpg,jpeg,png,gif");
-		photoDirectPlayProfile.setType(DlnaProfileType.Photo);
-
-		setDirectPlayProfiles(new DirectPlayProfile[]{videoDirectPlayProfile, audioDirectPlayProfile, photoDirectPlayProfile});
-
-		CodecProfile videoCodecProfile = new CodecProfile();
-		videoCodecProfile.setType(CodecType.Video);
-		videoCodecProfile.setCodec("h264");
-		videoCodecProfile.setConditions(new ProfileCondition[]
-				{
-						new ProfileCondition(ProfileConditionType.EqualsAny, ProfileConditionValue.VideoProfile, "high|main|baseline|constrained baseline"),
-						new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.VideoLevel, "41")
-				});
-
-		CodecProfile videoAudioCodecProfile = new CodecProfile();
-		videoAudioCodecProfile.setType(CodecType.VideoAudio);
-		videoAudioCodecProfile.setConditions(new ProfileCondition[] {new ProfileCondition(ProfileConditionType.LessThanEqual, ProfileConditionValue.AudioChannels, "6")});
-
-		setCodecProfiles(new CodecProfile[] { videoCodecProfile, videoAudioCodecProfile });
-		setSubtitleProfiles(new SubtitleProfile[] {
-				getSubtitleProfile("srt", SubtitleDeliveryMethod.External),
-				getSubtitleProfile("srt", SubtitleDeliveryMethod.Embed),
-				getSubtitleProfile("subrip", SubtitleDeliveryMethod.Embed),
-				getSubtitleProfile("ass", SubtitleDeliveryMethod.Embed),
-				getSubtitleProfile("ssa", SubtitleDeliveryMethod.Embed),
-				getSubtitleProfile("pgs", SubtitleDeliveryMethod.Embed),
-				getSubtitleProfile("pgssub", SubtitleDeliveryMethod.Embed),
-				getSubtitleProfile("dvdsub", SubtitleDeliveryMethod.Embed),
-				getSubtitleProfile("vtt", SubtitleDeliveryMethod.Embed),
-				getSubtitleProfile("sub", SubtitleDeliveryMethod.Embed),
-				getSubtitleProfile("idx", SubtitleDeliveryMethod.Embed)
-		});
 	}
 
 	private SubtitleProfile getSubtitleProfile(String format, SubtitleDeliveryMethod method) {
@@ -110,6 +61,14 @@ public class AndroidProfile extends DeviceProfile
 			tempVar2.setContext(EncodingContext.Streaming);
 			transcodingProfiles.add(tempVar2);
 		}
+		TranscodingProfile mkvProfile = new TranscodingProfile();
+		mkvProfile.setContainer("mp4");
+		mkvProfile.setVideoCodec("h264");
+		mkvProfile.setAudioCodec("aac,mp3");
+		mkvProfile.setType(DlnaProfileType.Video);
+		mkvProfile.setContext(EncodingContext.Streaming);
+		transcodingProfiles.add(mkvProfile);
+
 		TranscodingProfile tempVar3 = new TranscodingProfile();
 		tempVar3.setContainer("mp4");
 		tempVar3.setVideoCodec("h264");
@@ -118,13 +77,13 @@ public class AndroidProfile extends DeviceProfile
 		tempVar3.setContext(EncodingContext.Static);
 		transcodingProfiles.add(tempVar3);
 
-		TranscodingProfile mkvProfile = new TranscodingProfile();
-        	mkvProfile.setContainer("webm");
-        	mkvProfile.setVideoCodec("vpx");
-        	mkvProfile.setAudioCodec("vorbis");
-        	mkvProfile.setType(DlnaProfileType.Video);
-        	mkvProfile.setContext(EncodingContext.Streaming);
-        	transcodingProfiles.add(mkvProfile);
+		TranscodingProfile webmProfile = new TranscodingProfile();
+		webmProfile.setContainer("webm");
+		webmProfile.setVideoCodec("vpx");
+		webmProfile.setAudioCodec("vorbis");
+		webmProfile.setType(DlnaProfileType.Video);
+		webmProfile.setContext(EncodingContext.Streaming);
+        transcodingProfiles.add(webmProfile);
 
 		setTranscodingProfiles(transcodingProfiles.toArray(new TranscodingProfile[0]));
 
