@@ -17,13 +17,6 @@ public class AndroidProfile extends DeviceProfile
 		this(new AndroidProfileOptions(deviceName));
 	}
 
-	private SubtitleProfile getSubtitleProfile(String format, SubtitleDeliveryMethod method) {
-		SubtitleProfile subs = new SubtitleProfile();
-		subs.setFormat(format);
-		subs.setMethod(method);
-		return subs;
-	}
-
 	public AndroidProfile(AndroidProfileOptions profileOptions)
 	{
 		setName("Android");
@@ -62,7 +55,7 @@ public class AndroidProfile extends DeviceProfile
 			transcodingProfiles.add(tempVar2);
 		}
 		TranscodingProfile mkvProfile = new TranscodingProfile();
-		mkvProfile.setContainer("mp4");
+		mkvProfile.setContainer("mkv");
 		mkvProfile.setVideoCodec("h264");
 		mkvProfile.setAudioCodec("aac,mp3");
 		mkvProfile.setType(DlnaProfileType.Video);
