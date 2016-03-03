@@ -219,51 +219,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
-	 Gets or sets a value indicating whether [disable startup scan].
-	 
-	 <value><c>true</c> if [disable startup scan]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean DisableStartupScan;
-	public final boolean getDisableStartupScan()
-	{
-		return DisableStartupScan;
-	}
-	public final void setDisableStartupScan(boolean value)
-	{
-		DisableStartupScan = value;
-	}
-
-	/** 
-	 Gets or sets a value indicating whether [enable user views].
-	 
-	 <value><c>true</c> if [enable user views]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean EnableUserViews;
-	public final boolean getEnableUserViews()
-	{
-		return EnableUserViews;
-	}
-	public final void setEnableUserViews(boolean value)
-	{
-		EnableUserViews = value;
-	}
-
-	/** 
-	 Gets or sets a value indicating whether [enable library metadata sub folder].
-	 
-	 <value><c>true</c> if [enable library metadata sub folder]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean EnableLibraryMetadataSubFolder;
-	public final boolean getEnableLibraryMetadataSubFolder()
-	{
-		return EnableLibraryMetadataSubFolder;
-	}
-	public final void setEnableLibraryMetadataSubFolder(boolean value)
-	{
-		EnableLibraryMetadataSubFolder = value;
-	}
-
-	/** 
 	 Gets or sets the preferred metadata language.
 	 
 	 <value>The preferred metadata language.</value>
@@ -390,14 +345,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	 
 	 <value>The file watcher delay.</value>
 	*/
-	private int RealtimeLibraryMonitorDelay;
-	public final int getRealtimeLibraryMonitorDelay()
+	private int LibraryMonitorDelay;
+	public final int getLibraryMonitorDelay()
 	{
-		return RealtimeLibraryMonitorDelay;
+		return LibraryMonitorDelay;
 	}
-	public final void setRealtimeLibraryMonitorDelay(int value)
+	public final void setLibraryMonitorDelay(int value)
 	{
-		RealtimeLibraryMonitorDelay = value;
+		LibraryMonitorDelay = value;
 	}
 
 	/** 
@@ -438,25 +393,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setDashboardSourcePath(String value)
 	{
 		DashboardSourcePath = value;
-	}
-
-	private boolean MergeMetadataAndImagesByName;
-	public final boolean getMergeMetadataAndImagesByName()
-	{
-		return MergeMetadataAndImagesByName;
-	}
-	public final void setMergeMetadataAndImagesByName(boolean value)
-	{
-		MergeMetadataAndImagesByName = value;
-	}
-	private boolean EnableStandaloneMetadata;
-	public final boolean getEnableStandaloneMetadata()
-	{
-		return EnableStandaloneMetadata;
-	}
-	public final void setEnableStandaloneMetadata(boolean value)
-	{
-		EnableStandaloneMetadata = value;
 	}
 
 	/** 
@@ -552,16 +488,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		FindInternetTrailers = value;
 	}
 
-	private String[] InsecureApps9;
-	public final String[] getInsecureApps9()
-	{
-		return InsecureApps9;
-	}
-	public final void setInsecureApps9(String[] value)
-	{
-		InsecureApps9 = value;
-	}
-
 	private boolean SaveMetadataHidden;
 	public final boolean getSaveMetadataHidden()
 	{
@@ -640,15 +566,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		SharingExpirationDays = value;
 	}
 
-	private boolean DisableXmlSavers;
-	public final boolean getDisableXmlSavers()
-	{
-		return DisableXmlSavers;
-	}
-	public final void setDisableXmlSavers(boolean value)
-	{
-		DisableXmlSavers = value;
-	}
 	private boolean EnableWindowsShortcuts;
 	public final boolean getEnableWindowsShortcuts()
 	{
@@ -657,16 +574,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setEnableWindowsShortcuts(boolean value)
 	{
 		EnableWindowsShortcuts = value;
-	}
-
-	private boolean EnableVideoFrameByFrameAnalysis;
-	public final boolean getEnableVideoFrameByFrameAnalysis()
-	{
-		return EnableVideoFrameByFrameAnalysis;
-	}
-	public final void setEnableVideoFrameByFrameAnalysis(boolean value)
-	{
-		EnableVideoFrameByFrameAnalysis = value;
 	}
 
 	private boolean EnableDateLastRefresh;
@@ -689,12 +596,42 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		Migrations = value;
 	}
 
+	private int MigrationVersion;
+	public final int getMigrationVersion()
+	{
+		return MigrationVersion;
+	}
+	public final void setMigrationVersion(int value)
+	{
+		MigrationVersion = value;
+	}
+
+	private boolean DownloadImagesInAdvance;
+	public final boolean getDownloadImagesInAdvance()
+	{
+		return DownloadImagesInAdvance;
+	}
+	public final void setDownloadImagesInAdvance(boolean value)
+	{
+		DownloadImagesInAdvance = value;
+	}
+
+	private boolean EnableAnonymousUsageReporting;
+	public final boolean getEnableAnonymousUsageReporting()
+	{
+		return EnableAnonymousUsageReporting;
+	}
+	public final void setEnableAnonymousUsageReporting(boolean value)
+	{
+		EnableAnonymousUsageReporting = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
 	*/
 	public ServerConfiguration()
 	{
-		setMigrations(new String[] {});
+		setMigrations(new String[] { });
 
 		setImageSavingConvention(ImageSavingConvention.Compatible);
 		setPublicPort(8096);
@@ -704,6 +641,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setEnableHttps(false);
 		setEnableDashboardResponseCaching(true);
 		setEnableDashboardResourceMinification(true);
+		setEnableAnonymousUsageReporting(true);
 
 		setEnableAutomaticRestart(true);
 		setDenyIFrameEmbedding(true);
@@ -718,7 +656,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setMinResumeDurationSeconds(300);
 
 		setEnableLibraryMonitor(AutoOnOff.Auto);
-		setRealtimeLibraryMonitorDelay(40);
+		setLibraryMonitorDelay(60);
 
 		setEnableInternetProviders(true);
 		setFindInternetTrailers(true);
@@ -738,8 +676,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setUICulture("en-us");
 
 		setPeopleMetadataOptions(new PeopleMetadataOptions());
-
-		setInsecureApps9(new String[] {"Windows Phone"});
 
 		MetadataOptions tempVar = new MetadataOptions(1, 1280);
 		tempVar.setItemType("Book");
@@ -882,6 +818,19 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		tempVar45.setLimit(0);
 		tempVar45.setType(ImageType.Thumb);
 		tempVar41.setImageOptions(new ImageOption[] {tempVar42, tempVar43, tempVar44, tempVar45});
-		setMetadataOptions(new MetadataOptions[] {tempVar, tempVar2, tempVar10, tempVar18, tempVar25, tempVar28, tempVar33, tempVar41});
+		tempVar41.setDisabledMetadataFetchers(new String[]{"The Open Movie Database", "TheMovieDb"});
+		MetadataOptions tempVar46 = new MetadataOptions(0, 1280);
+		tempVar46.setItemType("Episode");
+		ImageOption tempVar47 = new ImageOption();
+		tempVar47.setLimit(0);
+		tempVar47.setMinWidth(1280);
+		tempVar47.setType(ImageType.Backdrop);
+		ImageOption tempVar48 = new ImageOption();
+		tempVar48.setLimit(1);
+		tempVar48.setType(ImageType.Primary);
+		tempVar46.setImageOptions(new ImageOption[] {tempVar47, tempVar48});
+		tempVar46.setDisabledMetadataFetchers(new String[]{"The Open Movie Database"});
+		tempVar46.setDisabledImageFetchers(new String[]{"TheMovieDb"});
+		setMetadataOptions(new MetadataOptions[] {tempVar, tempVar2, tempVar10, tempVar18, tempVar25, tempVar28, tempVar33, tempVar41, tempVar46});
 	}
 }

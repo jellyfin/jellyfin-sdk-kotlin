@@ -56,6 +56,21 @@ public class MediaStream
 	}
 
 	/** 
+	 Gets or sets the comment.
+	 
+	 <value>The comment.</value>
+	*/
+	private String Comment;
+	public final String getComment()
+	{
+		return Comment;
+	}
+	public final void setComment(String value)
+	{
+		Comment = value;
+	}
+
+	/** 
 	 Gets or sets a value indicating whether this instance is interlaced.
 	 
 	 <value><c>true</c> if this instance is interlaced; otherwise, <c>false</c>.</value>
@@ -419,7 +434,7 @@ public class MediaStream
 
 		// sub = external .sub file
 
-		return StringHelper.IndexOfIgnoreCase(codec, "pgs") == -1 && StringHelper.IndexOfIgnoreCase(codec, "dvd") == -1 && !StringHelper.EqualsIgnoreCase(codec, "sub");
+		return StringHelper.IndexOfIgnoreCase(codec, "pgs") == -1 && StringHelper.IndexOfIgnoreCase(codec, "dvd") == -1 && StringHelper.IndexOfIgnoreCase(codec, "dvbsub") == -1 && !StringHelper.EqualsIgnoreCase(codec, "sub");
 	}
 
 	/** 

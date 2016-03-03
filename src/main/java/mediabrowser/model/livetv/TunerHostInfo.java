@@ -48,6 +48,16 @@ public class TunerHostInfo
 		IsEnabled = value;
 	}
 
+	private int DataVersion;
+	public final int getDataVersion()
+	{
+		return DataVersion;
+	}
+	public final void setDataVersion(int value)
+	{
+		DataVersion = value;
+	}
+
 	public TunerHostInfo()
 	{
 		setIsEnabled(true);

@@ -99,6 +99,18 @@ public class TranscodingProfile
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [XmlAttribute("copyTimestamps")] public bool CopyTimestamps {get;set;}
+	private boolean CopyTimestamps;
+	public final boolean getCopyTimestamps()
+	{
+		return CopyTimestamps;
+	}
+	public final void setCopyTimestamps(boolean value)
+	{
+		CopyTimestamps = value;
+	}
+
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("context")] public EncodingContext Context {get;set;}
 	private EncodingContext Context = EncodingContext.values()[0];
 	public final EncodingContext getContext()

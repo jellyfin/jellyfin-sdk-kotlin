@@ -152,6 +152,15 @@ public class DeviceProfile
 	{
 		EnableSingleAlbumArtLimit = value;
 	}
+	private boolean EnableSingleSubtitleLimit;
+	public final boolean getEnableSingleSubtitleLimit()
+	{
+		return EnableSingleSubtitleLimit;
+	}
+	public final void setEnableSingleSubtitleLimit(boolean value)
+	{
+		EnableSingleSubtitleLimit = value;
+	}
 
 	private String SupportedMediaTypes;
 	public final String getSupportedMediaTypes()
@@ -351,15 +360,6 @@ public class DeviceProfile
 	public final void setIgnoreTranscodeByteRangeRequests(boolean value)
 	{
 		IgnoreTranscodeByteRangeRequests = value;
-	}
-	private boolean EnableDlnaProtocol;
-	public final boolean getEnableDlnaProtocol()
-	{
-		return EnableDlnaProtocol;
-	}
-	public final void setEnableDlnaProtocol(boolean value)
-	{
-		EnableDlnaProtocol = value;
 	}
 
 	private XmlAttribute[] XmlRootAttributes;

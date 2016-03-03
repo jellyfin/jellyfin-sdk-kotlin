@@ -38,6 +38,15 @@ public class LiveTvOptions
 	{
 		EnableAutoOrganize = value;
 	}
+	private boolean EnableRecordingEncoding;
+	public final boolean getEnableRecordingEncoding()
+	{
+		return EnableRecordingEncoding;
+	}
+	public final void setEnableRecordingEncoding(boolean value)
+	{
+		EnableRecordingEncoding = value;
+	}
 
 	private java.util.ArrayList<TunerHostInfo> TunerHosts;
 	public final java.util.ArrayList<TunerHostInfo> getTunerHosts()

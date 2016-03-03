@@ -5,7 +5,8 @@ public enum SubtitlePlaybackMode
 	Default(0),
 	Always(1),
 	OnlyForced(2),
-	None(3);
+	None(3),
+	Smart(4);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, SubtitlePlaybackMode> mappings;

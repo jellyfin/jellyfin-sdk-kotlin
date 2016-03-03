@@ -79,16 +79,6 @@ public class UserConfiguration
 		GroupMoviesIntoBoxSets = value;
 	}
 
-	private String[] DisplayChannelsWithinViews;
-	public final String[] getDisplayChannelsWithinViews()
-	{
-		return DisplayChannelsWithinViews;
-	}
-	public final void setDisplayChannelsWithinViews(String[] value)
-	{
-		DisplayChannelsWithinViews = value;
-	}
-
 	private String[] ExcludeFoldersFromGrouping;
 	public final String[] getExcludeFoldersFromGrouping()
 	{
@@ -166,16 +156,6 @@ public class UserConfiguration
 		IncludeTrailersInSuggestions = value;
 	}
 
-	private boolean EnableCinemaMode;
-	public final boolean getEnableCinemaMode()
-	{
-		return EnableCinemaMode;
-	}
-	public final void setEnableCinemaMode(boolean value)
-	{
-		EnableCinemaMode = value;
-	}
-
 	private String[] LatestItemsExcludes;
 	public final String[] getLatestItemsExcludes()
 	{
@@ -214,23 +194,52 @@ public class UserConfiguration
 		DisplayChannelsInline = value;
 	}
 
+	private boolean RememberAudioSelections;
+	public final boolean getRememberAudioSelections()
+	{
+		return RememberAudioSelections;
+	}
+	public final void setRememberAudioSelections(boolean value)
+	{
+		RememberAudioSelections = value;
+	}
+	private boolean RememberSubtitleSelections;
+	public final boolean getRememberSubtitleSelections()
+	{
+		return RememberSubtitleSelections;
+	}
+	public final void setRememberSubtitleSelections(boolean value)
+	{
+		RememberSubtitleSelections = value;
+	}
+	private boolean EnableNextEpisodeAutoPlay;
+	public final boolean getEnableNextEpisodeAutoPlay()
+	{
+		return EnableNextEpisodeAutoPlay;
+	}
+	public final void setEnableNextEpisodeAutoPlay(boolean value)
+	{
+		EnableNextEpisodeAutoPlay = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="UserConfiguration" /> class.
 	*/
 	public UserConfiguration()
 	{
+		setEnableNextEpisodeAutoPlay(true);
+		setRememberAudioSelections(true);
+		setRememberSubtitleSelections(true);
+
 		setHidePlayedInLatest(true);
 		setPlayDefaultAudioTrack(true);
 
 		setLatestItemsExcludes(new String[] { });
 		setOrderedViews(new String[] { });
-		setDisplayChannelsWithinViews(new String[] { });
-		setDisplayChannelsInline(true);
 
 		setPlainFolderViews(new String[] { });
 
 		setIncludeTrailersInSuggestions(true);
-		setEnableCinemaMode(true);
 
 		setGroupedFolders(new String[] { });
 	}

@@ -65,4 +65,38 @@ public class ListingsProviderInfo
 	{
 		Country = value;
 	}
+	private String Path;
+	public final String getPath()
+	{
+		return Path;
+	}
+	public final void setPath(String value)
+	{
+		Path = value;
+	}
+
+	private String[] EnabledTuners;
+	public final String[] getEnabledTuners()
+	{
+		return EnabledTuners;
+	}
+	public final void setEnabledTuners(String[] value)
+	{
+		EnabledTuners = value;
+	}
+	private boolean EnableAllTuners;
+	public final boolean getEnableAllTuners()
+	{
+		return EnableAllTuners;
+	}
+	public final void setEnableAllTuners(boolean value)
+	{
+		EnableAllTuners = value;
+	}
+
+	public ListingsProviderInfo()
+	{
+		setEnabledTuners(new String[] { });
+		setEnableAllTuners(true);
+	}
 }

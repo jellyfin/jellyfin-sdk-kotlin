@@ -109,6 +109,15 @@ public class StreamInfo
 	{
 		Cabac = value;
 	}
+	private boolean CopyTimestamps;
+	public final boolean getCopyTimestamps()
+	{
+		return CopyTimestamps;
+	}
+	public final void setCopyTimestamps(boolean value)
+	{
+		CopyTimestamps = value;
+	}
 	private String AudioCodec;
 	public final String getAudioCodec()
 	{
@@ -490,6 +499,8 @@ public class StreamInfo
 			list.add(new NameValuePair("ItemId", item.getItemId()));
 		}
 
+		list.add(new NameValuePair("CopyTimestamps", (new Boolean(item.getCopyTimestamps())).toString().toLowerCase()));
+
 		return list;
 	}
 
@@ -525,7 +536,7 @@ public class StreamInfo
 		java.util.ArrayList<SubtitleStreamInfo> list = new java.util.ArrayList<SubtitleStreamInfo>();
 
 		// HLS will preserve timestamps so we can just grab the full subtitle stream
-		long startPositionTicks = StringHelper.EqualsIgnoreCase(getSubProtocol(), "hls") ? 0 : getStartPositionTicks();
+		long startPositionTicks = StringHelper.EqualsIgnoreCase(getSubProtocol(), "hls") ? 0 : (getPlayMethod() == PlayMethod.Transcode && !getCopyTimestamps() ? getStartPositionTicks() : 0);
 
 		// First add the selected track
 		if (getSubtitleStreamIndex() != null)

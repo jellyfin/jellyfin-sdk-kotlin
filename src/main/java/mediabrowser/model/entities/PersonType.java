@@ -29,4 +29,12 @@ public class PersonType
 	 The producer
 	*/
 	public static final String Producer = "Producer";
+	/** 
+	 The conductor
+	*/
+	public static final String Conductor = "Conductor";
+	/** 
+	 The lyricist
+	*/
+	public static final String Lyricist = "Lyricist";
 }

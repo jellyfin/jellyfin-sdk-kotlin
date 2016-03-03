@@ -5,7 +5,8 @@ public enum Video3DFormat
 	HalfSideBySide,
 	FullSideBySide,
 	FullTopAndBottom,
-	HalfTopAndBottom;
+	HalfTopAndBottom,
+	MVC;
 
 	public int getValue()
 	{

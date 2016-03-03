@@ -60,6 +60,7 @@ public class AndroidProfile extends DeviceProfile
 		mkvProfile.setAudioCodec("aac,mp3");
 		mkvProfile.setType(DlnaProfileType.Video);
 		mkvProfile.setContext(EncodingContext.Streaming);
+		mkvProfile.setCopyTimestamps(true);
 		transcodingProfiles.add(mkvProfile);
 
 		TranscodingProfile tempVar3 = new TranscodingProfile();

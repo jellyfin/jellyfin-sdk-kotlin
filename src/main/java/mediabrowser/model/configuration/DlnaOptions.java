@@ -20,14 +20,14 @@ public class DlnaOptions
 	{
 		EnableServer = value;
 	}
-	private boolean EnableDebugLogging;
-	public final boolean getEnableDebugLogging()
+	private boolean EnableDebugLog;
+	public final boolean getEnableDebugLog()
 	{
-		return EnableDebugLogging;
+		return EnableDebugLog;
 	}
-	public final void setEnableDebugLogging(boolean value)
+	public final void setEnableDebugLog(boolean value)
 	{
-		EnableDebugLogging = value;
+		EnableDebugLog = value;
 	}
 	private boolean BlastAliveMessages;
 	public final boolean getBlastAliveMessages()

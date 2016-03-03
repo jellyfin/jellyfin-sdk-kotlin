@@ -47,14 +47,14 @@ public class EncodingOptions
 	{
 		EnableThrottling = value;
 	}
-	private int ThrottleThresholdSeconds;
-	public final int getThrottleThresholdSeconds()
+	private int ThrottleDelaySeconds;
+	public final int getThrottleDelaySeconds()
 	{
-		return ThrottleThresholdSeconds;
+		return ThrottleDelaySeconds;
 	}
-	public final void setThrottleThresholdSeconds(int value)
+	public final void setThrottleDelaySeconds(int value)
 	{
-		ThrottleThresholdSeconds = value;
+		ThrottleDelaySeconds = value;
 	}
 	private String HardwareAccelerationType;
 	public final String getHardwareAccelerationType()
@@ -70,7 +70,7 @@ public class EncodingOptions
 	{
 		setDownMixAudioBoost(2);
 		setEnableThrottling(true);
-		setThrottleThresholdSeconds(110);
+		setThrottleDelaySeconds(180);
 		setEncodingThreadCount(-1);
 	}
 }

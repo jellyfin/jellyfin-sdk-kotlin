@@ -253,7 +253,12 @@ public enum ItemFields
 	/** 
 	 The season user data
 	*/
-	SeasonUserData;
+	SeasonUserData,
+
+	/** 
+	 The service name
+	*/
+	ServiceName;
 
 	public int getValue()
 	{

@@ -152,6 +152,21 @@ public class LiveTvTunerInfoDto
 		Clients = value;
 	}
 
+	/** 
+	 Gets or sets a value indicating whether this instance can reset.
+	 
+	 <value><c>true</c> if this instance can reset; otherwise, <c>false</c>.</value>
+	*/
+	private boolean CanReset;
+	public final boolean getCanReset()
+	{
+		return CanReset;
+	}
+	public final void setCanReset(boolean value)
+	{
+		CanReset = value;
+	}
+
 	public LiveTvTunerInfoDto()
 	{
 		setClients(new java.util.ArrayList<String>());

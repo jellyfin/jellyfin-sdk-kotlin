@@ -10,11 +10,23 @@ public class ResolutionNormalizer
 		new ResolutionConfiguration(1280, 2500000)
 	}));
 
-	public static ResolutionOptions Normalize(int maxBitrate, String codec, Integer maxWidth, Integer maxHeight)
+	public static ResolutionOptions Normalize(Integer inputBitrate, int outputBitrate, String inputCodec, String outputCodec, Integer maxWidth, Integer maxHeight)
 	{
+		// If the bitrate isn't changing, then don't downlscale the resolution
+		if (inputBitrate != null && outputBitrate >= inputBitrate)
+		{
+			if (maxWidth != null || maxHeight != null)
+			{
+				ResolutionOptions tempVar = new ResolutionOptions();
+				tempVar.setMaxWidth(maxWidth);
+				tempVar.setMaxHeight(maxHeight);
+				return tempVar;
+			}
+		}
+
 		for (ResolutionConfiguration config : Configurations)
 		{
-			if (maxBitrate <= config.getMaxBitrate())
+			if (outputBitrate <= config.getMaxBitrate())
 			{
 				Integer originvalValue = maxWidth;
 
@@ -28,9 +40,9 @@ public class ResolutionNormalizer
 			}
 		}
 
-		ResolutionOptions tempVar = new ResolutionOptions();
-		tempVar.setMaxWidth(maxWidth);
-		tempVar.setMaxHeight(maxHeight);
-		return tempVar;
+		ResolutionOptions tempVar2 = new ResolutionOptions();
+		tempVar2.setMaxWidth(maxWidth);
+		tempVar2.setMaxHeight(maxHeight);
+		return tempVar2;
 	}
 }
