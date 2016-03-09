@@ -402,6 +402,7 @@ public class MediaSync {
 
         if (jobItem.getItem().getMediaSources().size() == 0){
             logger.Error("Cannot download subtitles because video has no media source info.");
+            progress.reportComplete();
             return;
         }
 
