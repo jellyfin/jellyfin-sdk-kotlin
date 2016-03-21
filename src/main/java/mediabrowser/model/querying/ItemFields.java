@@ -236,11 +236,6 @@ public enum ItemFields
 	VoteCount,
 
 	/** 
-	 The TMDB collection name
-	*/
-	TmdbCollectionName,
-
-	/** 
 	 The trailer url of the item
 	*/
 	RemoteTrailers,

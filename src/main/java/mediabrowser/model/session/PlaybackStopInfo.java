@@ -21,7 +21,6 @@ public class PlaybackStopInfo
 	{
 		Item = value;
 	}
-
 	/** 
 	 Gets or sets the item identifier.
 	 
@@ -36,7 +35,6 @@ public class PlaybackStopInfo
 	{
 		ItemId = value;
 	}
-
 	/** 
 	 Gets or sets the session id.
 	 
@@ -51,7 +49,6 @@ public class PlaybackStopInfo
 	{
 		SessionId = value;
 	}
-
 	/** 
 	 Gets or sets the media version identifier.
 	 
@@ -66,7 +63,6 @@ public class PlaybackStopInfo
 	{
 		MediaSourceId = value;
 	}
-
 	/** 
 	 Gets or sets the position ticks.
 	 
@@ -108,5 +104,19 @@ public class PlaybackStopInfo
 	public final void setPlaySessionId(String value)
 	{
 		PlaySessionId = value;
+	}
+	/** 
+	 Gets or sets a value indicating whether this <see cref="PlaybackStopInfo"/> is failed.
+	 
+	 <value><c>true</c> if failed; otherwise, <c>false</c>.</value>
+	*/
+	private boolean Failed;
+	public final boolean getFailed()
+	{
+		return Failed;
+	}
+	public final void setFailed(boolean value)
+	{
+		Failed = value;
 	}
 }

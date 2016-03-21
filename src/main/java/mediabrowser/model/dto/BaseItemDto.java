@@ -77,6 +77,21 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	}
 
 	/** 
+	 Gets or sets the type of the source.
+	 
+	 <value>The type of the source.</value>
+	*/
+	private String SourceType;
+	public final String getSourceType()
+	{
+		return SourceType;
+	}
+	public final void setSourceType(String value)
+	{
+		SourceType = value;
+	}
+
+	/** 
 	 Gets or sets the playlist item identifier.
 	 
 	 <value>The playlist item identifier.</value>
@@ -573,6 +588,15 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	{
 		ChannelName = value;
 	}
+	private String ServiceName;
+	public final String getServiceName()
+	{
+		return ServiceName;
+	}
+	public final void setServiceName(String value)
+	{
+		ServiceName = value;
+	}
 
 	/** 
 	 Gets or sets the overview.
@@ -602,21 +626,6 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setShortOverview(String value)
 	{
 		ShortOverview = value;
-	}
-
-	/** 
-	 Gets or sets the name of the TMDB collection.
-	 
-	 <value>The name of the TMDB collection.</value>
-	*/
-	private String TmdbCollectionName;
-	public final String getTmdbCollectionName()
-	{
-		return TmdbCollectionName;
-	}
-	public final void setTmdbCollectionName(String value)
-	{
-		TmdbCollectionName = value;
 	}
 
 	/** 
@@ -1955,6 +1964,20 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 		LockedFields = value;
 	}
 
+	/** 
+	 Gets or sets the trailer count.
+	 
+	 <value>The trailer count.</value>
+	*/
+	private Integer TrailerCount = null;
+	public final Integer getTrailerCount()
+	{
+		return TrailerCount;
+	}
+	public final void setTrailerCount(Integer value)
+	{
+		TrailerCount = value;
+	}
 	/** 
 	 Gets or sets the movie count.
 	 

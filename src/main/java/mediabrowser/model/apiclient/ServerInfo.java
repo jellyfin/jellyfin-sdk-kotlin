@@ -97,15 +97,6 @@ public class ServerInfo
 	{
 		DateLastAccessed = value;
 	}
-	private long DateLastLocalAccess = 0;
-	public final long getDateLastLocalAccess()
-	{
-		return DateLastLocalAccess;
-	}
-	public final void setDateLastLocalAccess(long value)
-	{
-		DateLastLocalAccess = value;
-	}
 	private String ExchangeToken;
 	public final String getExchangeToken()
 	{

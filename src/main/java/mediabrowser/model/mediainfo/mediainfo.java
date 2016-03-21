@@ -16,20 +16,6 @@ public class mediainfo extends MediaSourceInfo implements IHasProviderIds
 	}
 
 	/** 
-	 Gets or sets the title.
-	 
-	 <value>The title.</value>
-	*/
-	private String Title;
-	public final String getTitle()
-	{
-		return Title;
-	}
-	public final void setTitle(String value)
-	{
-		Title = value;
-	}
-	/** 
 	 Gets or sets the album.
 	 
 	 <value>The album.</value>
@@ -163,6 +149,20 @@ public class mediainfo extends MediaSourceInfo implements IHasProviderIds
 		OfficialRating = value;
 	}
 	/** 
+	 Gets or sets the official rating description.
+	 
+	 <value>The official rating description.</value>
+	*/
+	private String OfficialRatingDescription;
+	public final String getOfficialRatingDescription()
+	{
+		return OfficialRatingDescription;
+	}
+	public final void setOfficialRatingDescription(String value)
+	{
+		OfficialRatingDescription = value;
+	}
+	/** 
 	 Gets or sets the overview.
 	 
 	 <value>The overview.</value>
@@ -175,6 +175,20 @@ public class mediainfo extends MediaSourceInfo implements IHasProviderIds
 	public final void setOverview(String value)
 	{
 		Overview = value;
+	}
+	/** 
+	 Gets or sets the short overview.
+	 
+	 <value>The short overview.</value>
+	*/
+	private String ShortOverview;
+	public final String getShortOverview()
+	{
+		return ShortOverview;
+	}
+	public final void setShortOverview(String value)
+	{
+		ShortOverview = value;
 	}
 
 	public mediainfo()

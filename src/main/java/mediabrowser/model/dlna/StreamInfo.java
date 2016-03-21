@@ -500,6 +500,7 @@ public class StreamInfo
 		}
 
 		list.add(new NameValuePair("CopyTimestamps", (new Boolean(item.getCopyTimestamps())).toString().toLowerCase()));
+		list.add(new NameValuePair("SubtitleMethod", item.getSubtitleStreamIndex() != null && item.getSubtitleDeliveryMethod() != mediabrowser.model.dlna.SubtitleDeliveryMethod.External ? item.getSubtitleDeliveryMethod().toString() : ""));
 
 		return list;
 	}
@@ -601,6 +602,11 @@ public class StreamInfo
 			if (getMediaSource().getProtocol() == MediaProtocol.File || !StringHelper.EqualsIgnoreCase(stream.getCodec(), subtitleProfile.getFormat()))
 			{
 				info.setUrl(String.format("%1$s/Videos/%2$s/%3$s/Subtitles/%4$s/%5$s/Stream.%6$s", baseUrl, getItemId(), getMediaSourceId(), StringHelper.ToStringCultureInvariant(stream.getIndex()), StringHelper.ToStringCultureInvariant(startPositionTicks), subtitleProfile.getFormat()));
+
+				if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(accessToken))
+				{
+					info.setUrl(info.getUrl() + "?api_key=" + accessToken);
+				}
 
 				info.setIsExternalUrl(false);
 			}

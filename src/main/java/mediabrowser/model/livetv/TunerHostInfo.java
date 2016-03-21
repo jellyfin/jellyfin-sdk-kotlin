@@ -29,6 +29,15 @@ public class TunerHostInfo
 	{
 		Type = value;
 	}
+	private String DeviceId;
+	public final String getDeviceId()
+	{
+		return DeviceId;
+	}
+	public final void setDeviceId(String value)
+	{
+		DeviceId = value;
+	}
 	private boolean ImportFavoritesOnly;
 	public final boolean getImportFavoritesOnly()
 	{
@@ -46,6 +55,51 @@ public class TunerHostInfo
 	public final void setIsEnabled(boolean value)
 	{
 		IsEnabled = value;
+	}
+	private String M3UUrl;
+	public final String getM3UUrl()
+	{
+		return M3UUrl;
+	}
+	public final void setM3UUrl(String value)
+	{
+		M3UUrl = value;
+	}
+	private String InfoUrl;
+	public final String getInfoUrl()
+	{
+		return InfoUrl;
+	}
+	public final void setInfoUrl(String value)
+	{
+		InfoUrl = value;
+	}
+	private String FriendlyName;
+	public final String getFriendlyName()
+	{
+		return FriendlyName;
+	}
+	public final void setFriendlyName(String value)
+	{
+		FriendlyName = value;
+	}
+	private int Tuners;
+	public final int getTuners()
+	{
+		return Tuners;
+	}
+	public final void setTuners(int value)
+	{
+		Tuners = value;
+	}
+	private String DiseqC;
+	public final String getDiseqC()
+	{
+		return DiseqC;
+	}
+	public final void setDiseqC(String value)
+	{
+		DiseqC = value;
 	}
 
 	private int DataVersion;

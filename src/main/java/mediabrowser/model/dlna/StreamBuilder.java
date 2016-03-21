@@ -416,7 +416,24 @@ public class StreamBuilder
 			playlistItem.setContainer(transcodingProfile.getContainer());
 			playlistItem.setEstimateContentLength(transcodingProfile.getEstimateContentLength());
 			playlistItem.setTranscodeSeekInfo(transcodingProfile.getTranscodeSeekInfo());
-			playlistItem.setAudioCodec(transcodingProfile.getAudioCodec().split("[,]", -1)[0]);
+
+			// TODO: We should probably preserve the full list and sent it tp the server that way
+			String[] supportedAudioCodecs = transcodingProfile.getAudioCodec().split("[,]", -1);
+			String inputAudioCodec = audioStream == null ? null : audioStream.getCodec();
+			for (String supportedAudioCodec : supportedAudioCodecs)
+			{
+				if (StringHelper.EqualsIgnoreCase(supportedAudioCodec, inputAudioCodec))
+				{
+					playlistItem.setAudioCodec(supportedAudioCodec);
+					break;
+				}
+			}
+
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(playlistItem.getAudioCodec()))
+			{
+				playlistItem.setAudioCodec(supportedAudioCodecs[0]);
+			}
+
 			playlistItem.setVideoCodec(transcodingProfile.getVideoCodec());
 			playlistItem.setCopyTimestamps(transcodingProfile.getCopyTimestamps());
 			playlistItem.setSubProtocol(transcodingProfile.getProtocol());
@@ -744,7 +761,12 @@ public class StreamBuilder
 		// Look for an external profile that matches the stream type (text/graphical)
 		for (SubtitleProfile profile : subtitleProfiles)
 		{
-			if (profile.getMethod() != SubtitleDeliveryMethod.External)
+			if (profile.getMethod() != SubtitleDeliveryMethod.External && profile.getMethod() != SubtitleDeliveryMethod.Hls)
+			{
+				continue;
+			}
+
+			if (profile.getMethod() == SubtitleDeliveryMethod.Hls && playMethod != PlayMethod.Transcode)
 			{
 				continue;
 			}
@@ -754,19 +776,13 @@ public class StreamBuilder
 				continue;
 			}
 
-			if (subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat()))
+			if ((profile.getMethod() == SubtitleDeliveryMethod.External && subtitleStream.getIsTextSubtitleStream() == MediaStream.IsTextFormat(profile.getFormat())) || (profile.getMethod() == SubtitleDeliveryMethod.Hls && subtitleStream.getIsTextSubtitleStream()))
 			{
 				boolean requiresConversion = !StringHelper.EqualsIgnoreCase(subtitleStream.getCodec(), profile.getFormat());
 
 				if (subtitleStream.getIsTextSubtitleStream() || !requiresConversion)
 				{
 					if (subtitleStream.getSupportsExternalStream())
-					{
-						return profile;
-					}
-
-					// For sync we can handle the longer extraction times
-					if (context.getValue() == EncodingContext.Static.getValue() && subtitleStream.getIsTextSubtitleStream())
 					{
 						return profile;
 					}

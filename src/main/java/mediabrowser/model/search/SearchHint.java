@@ -349,4 +349,19 @@ public class SearchHint
 	{
 		ChannelName = value;
 	}
+
+	/** 
+	 Gets or sets the primary image aspect ratio.
+	 
+	 <value>The primary image aspect ratio.</value>
+	*/
+	private Double PrimaryImageAspectRatio = null;
+	public final Double getPrimaryImageAspectRatio()
+	{
+		return PrimaryImageAspectRatio;
+	}
+	public final void setPrimaryImageAspectRatio(Double value)
+	{
+		PrimaryImageAspectRatio = value;
+	}
 }

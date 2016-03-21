@@ -5,7 +5,8 @@ public enum TrailerType
 	ComingSoonToTheaters(1),
 	ComingSoonToDvd(2),
 	ComingSoonToStreaming(3),
-	Archive(4);
+	Archive(4),
+	LocalTrailer(5);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, TrailerType> mappings;

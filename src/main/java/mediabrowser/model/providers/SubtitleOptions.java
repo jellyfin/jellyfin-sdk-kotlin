@@ -2,14 +2,14 @@ package mediabrowser.model.providers;
 
 public class SubtitleOptions
 {
-	private boolean SkipIfGraphicalSubtitlesPresent;
-	public final boolean getSkipIfGraphicalSubtitlesPresent()
+	private boolean SkipIfEmbeddedSubtitlesPresent;
+	public final boolean getSkipIfEmbeddedSubtitlesPresent()
 	{
-		return SkipIfGraphicalSubtitlesPresent;
+		return SkipIfEmbeddedSubtitlesPresent;
 	}
-	public final void setSkipIfGraphicalSubtitlesPresent(boolean value)
+	public final void setSkipIfEmbeddedSubtitlesPresent(boolean value)
 	{
-		SkipIfGraphicalSubtitlesPresent = value;
+		SkipIfEmbeddedSubtitlesPresent = value;
 	}
 	private boolean SkipIfAudioTrackMatches;
 	public final boolean getSkipIfAudioTrackMatches()

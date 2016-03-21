@@ -144,21 +144,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
-	 Gets or sets the item by name path.
-	 
-	 <value>The item by name path.</value>
-	*/
-	private String ItemsByNamePath;
-	public final String getItemsByNamePath()
-	{
-		return ItemsByNamePath;
-	}
-	public final void setItemsByNamePath(String value)
-	{
-		ItemsByNamePath = value;
-	}
-
-	/** 
 	 Gets or sets the metadata path.
 	 
 	 <value>The metadata path.</value>
@@ -624,6 +609,15 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setEnableAnonymousUsageReporting(boolean value)
 	{
 		EnableAnonymousUsageReporting = value;
+	}
+	private boolean EnableStandaloneMusicKeys;
+	public final boolean getEnableStandaloneMusicKeys()
+	{
+		return EnableStandaloneMusicKeys;
+	}
+	public final void setEnableStandaloneMusicKeys(boolean value)
+	{
+		EnableStandaloneMusicKeys = value;
 	}
 
 	/** 

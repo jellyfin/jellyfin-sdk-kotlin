@@ -66,11 +66,6 @@ public class GetRegistrationInfoFindServersResponse extends Response<ArrayList<S
 
         final GetRegistrationInfoFindServersResponse self = this;
 
-        if (server.getDateLastLocalAccess() > 0){
-            apiClient.GetRegistrationInfo(featureName, new GetRegistrationInfoInnerResponse(response, self, logger));
-            return;
-        }
-
         // TODO: Get Endpoint Info
         apiClient.GetEndPointInfo(new Response<EndPointInfo>(response){
 
@@ -79,7 +74,6 @@ public class GetRegistrationInfoFindServersResponse extends Response<ArrayList<S
 
                 if (info.getIsInNetwork()){
 
-                    connectionManager.updateDateLastLocalAccess(server.getId());
                     apiClient.GetRegistrationInfo(featureName, new GetRegistrationInfoInnerResponse(response, self, logger));
 
                 } else{
