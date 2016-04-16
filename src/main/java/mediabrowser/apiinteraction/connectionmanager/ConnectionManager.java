@@ -871,6 +871,7 @@ public class ConnectionManager implements IConnectionManager {
         }
 
         credentials.setServers(newList);
+        credentialProvider.SaveCredentials(credentials);
         response.onResponse();
     }
 }
