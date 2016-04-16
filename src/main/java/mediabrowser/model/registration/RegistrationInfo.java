@@ -44,7 +44,16 @@ public class RegistrationInfo
 	{
 		IsTrial = value;
 	}
-	/** 
+	private boolean IsOverLimit;
+	public final boolean getIsOverLimit()
+	{
+		return IsOverLimit;
+	}
+	public final void setIsOverLimit(boolean value)
+	{
+		IsOverLimit = value;
+	}
+	/**
 	 Gets or sets a value indicating whether this instance is registered.
 	 
 	 <value><c>true</c> if this instance is registered; otherwise, <c>false</c>.</value>

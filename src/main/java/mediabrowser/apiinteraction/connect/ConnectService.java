@@ -165,6 +165,26 @@ public class ConnectService {
         _httpClient.Send(request, new SerializedResponse<ConnectUserServer[]>(response, JsonSerializer, new ConnectUserServer[]{}.getClass()));
     }
 
+    public void GetRegistrationInfo(String serverId, String deviceId, String embyUsername, EmptyResponse response)
+    {
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        dict.Add("serverId", serverId);
+        dict.Add("embyUserName", embyUsername);
+        dict.Add("deviceId", deviceId);
+
+        String url = "https://mb3admin.com/admin/service/registration/validateDevice" + "?" + dict.GetQueryString();
+
+        HttpRequest request = new HttpRequest();
+
+        request.setMethod("POST");
+        request.setUrl(url);
+
+        AddXApplicationName(request);
+
+        _httpClient.Send(request, new Response<String>(response));
+    }
+
     public void DeleteServer(String userId, String connectAccessToken, String serverId, EmptyResponse response)
     {
         QueryStringDictionary dict = new QueryStringDictionary();
@@ -218,25 +238,5 @@ public class ConnectService {
     private void AddXApplicationName(HttpRequest request)
     {
         request.getRequestHeaders().put("X-Application", appName + "/" + appVersion);
-    }
-
-    public void GetRegistrationInfo(String userId, String feature, String connectAccessToken, final Response<RegistrationInfo> response)
-    {
-        QueryStringDictionary dict = new QueryStringDictionary();
-
-        dict.Add("userId", userId);
-        dict.Add("feature", feature);
-
-        String url = GetConnectUrl("registrationInfo") + "?" + dict.GetQueryString();
-
-        HttpRequest request = new HttpRequest();
-
-        request.setMethod("GET");
-        request.setUrl(url);
-
-        AddUserAccessToken(request, connectAccessToken);
-        AddXApplicationName(request);
-
-        _httpClient.Send(request, new SerializedResponse<RegistrationInfo>(response, JsonSerializer, new RegistrationInfo().getClass()));
     }
 }

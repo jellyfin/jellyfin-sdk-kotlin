@@ -14,6 +14,7 @@ import mediabrowser.model.dto.IHasServerId;
 import mediabrowser.model.dto.UserDto;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.logging.ILogger;
+import mediabrowser.model.net.HttpException;
 import mediabrowser.model.registration.RegistrationInfo;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.model.session.ClientCapabilities;
@@ -762,7 +763,7 @@ public class ConnectionManager implements IConnectionManager {
         connectService.ExchangePin(pin, new ExchangePinResponse(credentialProvider, response));
     }
 
-    public void GetRegistrationInfo(String featureName, String connectedServerId, Response<RegistrationInfo> response) {
+    public void GetRegistrationInfo(final String featureName, String serverId, String localUsername, final Response<RegistrationInfo> response) {
 
         if (isConnectUserSupporter()){
 
@@ -773,7 +774,39 @@ public class ConnectionManager implements IConnectionManager {
             response.onResponse(reg);
             return;
         }
-        GetAvailableServers(new GetRegistrationInfoFindServersResponse(this, featureName, connectedServerId, logger, response, credentialProvider, connectService));
+
+        connectService.GetRegistrationInfo(serverId, getDevice().getDeviceId(), localUsername, new EmptyResponse(){
+
+            @Override
+            public void onResponse(){
+                RegistrationInfo reg = new RegistrationInfo();
+                reg.setName(featureName);
+                reg.setIsTrial(false);
+                reg.setIsRegistered(true);
+                response.onResponse(reg);
+            }
+
+            @Override
+            public void onError(Exception ex){
+
+                logger.ErrorException("Error in GetRegistrationInfo", ex);
+                RegistrationInfo reg = new RegistrationInfo();
+                reg.setName(featureName);
+                reg.setIsTrial(false);
+                reg.setIsRegistered(false);
+
+                if (ex instanceof HttpException){
+                    HttpException httpException = (HttpException)ex;
+
+                    if (httpException.getStatusCode() != null){
+                        if (httpException.getStatusCode() == 403){
+                            reg.setIsOverLimit(true);
+                        }
+                    }
+                }
+                response.onResponse(reg);
+            }
+        });
     }
 
     boolean isConnectUserSupporter(){

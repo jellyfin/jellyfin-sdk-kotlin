@@ -49,5 +49,5 @@ public interface IConnectionManager {
 
     void DeleteServer(final String id, final EmptyResponse response);
 
-    void GetRegistrationInfo(String featureName, String connectedServerId, Response<RegistrationInfo> response);
+    void GetRegistrationInfo(String featureName, String serverId, String localUsername, Response<RegistrationInfo> response);
 }
