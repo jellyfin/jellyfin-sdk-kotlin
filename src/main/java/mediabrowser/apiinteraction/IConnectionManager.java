@@ -47,5 +47,7 @@ public interface IConnectionManager {
 
     void ExchangePin(PinCreationResult pin, final Response<PinExchangeResult> response);
 
+    void DeleteServer(final String id, final EmptyResponse response);
+
     void GetRegistrationInfo(String featureName, String connectedServerId, Response<RegistrationInfo> response);
 }

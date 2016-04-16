@@ -165,6 +165,26 @@ public class ConnectService {
         _httpClient.Send(request, new SerializedResponse<ConnectUserServer[]>(response, JsonSerializer, new ConnectUserServer[]{}.getClass()));
     }
 
+    public void DeleteServer(String userId, String connectAccessToken, String serverId, EmptyResponse response)
+    {
+        QueryStringDictionary dict = new QueryStringDictionary();
+
+        dict.Add("userId", userId);
+        dict.Add("serverId", serverId);
+
+        String url = GetConnectUrl("serverAuthorizations") + "?" + dict.GetQueryString();
+
+        HttpRequest request = new HttpRequest();
+
+        request.setMethod("DELETE");
+        request.setUrl(url);
+
+        AddUserAccessToken(request, connectAccessToken);
+        AddXApplicationName(request);
+
+        _httpClient.Send(request, new Response<String>(response));
+    }
+
     public void Logout(String connectAccessToken, final EmptyResponse response)
     {
         String url = GetConnectUrl("user/logout");

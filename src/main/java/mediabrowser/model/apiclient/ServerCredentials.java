@@ -91,6 +91,10 @@ public class ServerCredentials
 			{
 				existing.setName(server.getName());
 			}
+			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getConnectServerId()))
+			{
+				existing.setConnectServerId(server.getConnectServerId());
+			}
 			if (server.getWakeOnLanInfos() != null && server.getWakeOnLanInfos().size() > 0)
 			{
 				existing.setWakeOnLanInfos(new java.util.ArrayList<WakeOnLanInfo>());

@@ -34,6 +34,15 @@ public class ServerInfo
 	{
 		Id = value;
 	}
+	private String ConnectServerId;
+	public final String getConnectServerId()
+	{
+		return ConnectServerId;
+	}
+	public final void setConnectServerId(String value)
+	{
+		ConnectServerId = value;
+	}
 	private String LocalAddress;
 	public final String getLocalAddress()
 	{

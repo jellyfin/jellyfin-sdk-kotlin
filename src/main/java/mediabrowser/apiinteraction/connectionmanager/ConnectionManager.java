@@ -779,4 +779,65 @@ public class ConnectionManager implements IConnectionManager {
     boolean isConnectUserSupporter(){
         return connectUser != null && connectUser.getIsSupporter();
     }
+
+    public void DeleteServer(final String id, final EmptyResponse response)
+    {
+        ServerCredentials credentials = credentialProvider.GetCredentials();
+        ArrayList<ServerInfo> existing = credentials.getServers();
+
+        ServerInfo server = null;
+        for(ServerInfo current : existing){
+
+            if (StringHelper.EqualsIgnoreCase(current.getId(), id)){
+                server = current;
+                break;
+            }
+        }
+
+        if (server == null){
+            response.onResponse();
+            return;
+        }
+
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getConnectServerId()))
+        {
+            OnServerDeleteResponse(id, response);
+            return;
+        }
+
+        String connectUserId = credentials.getConnectUserId();
+        String connectAccessToken = credentials.getConnectAccessToken();
+
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(connectUserId) ||
+                tangible.DotNetToJavaStringHelper.isNullOrEmpty(connectAccessToken))
+        {
+            OnServerDeleteResponse(id, response);
+            return;
+        }
+
+        connectService.DeleteServer(connectUserId, connectAccessToken, server.getConnectServerId(), new EmptyResponse(response){
+
+            @Override
+            public void onResponse(){
+                OnServerDeleteResponse(id, response);
+            }
+        });
+    }
+
+    private void OnServerDeleteResponse(String id, EmptyResponse response){
+
+        ServerCredentials credentials = credentialProvider.GetCredentials();
+        ArrayList<ServerInfo> existing = credentials.getServers();
+        ArrayList<ServerInfo> newList = new ArrayList<>();
+
+        for(ServerInfo current : existing){
+
+            if (!StringHelper.EqualsIgnoreCase(current.getId(), id)){
+                newList.add(current);
+            }
+        }
+
+        credentials.setServers(newList);
+        response.onResponse();
+    }
 }

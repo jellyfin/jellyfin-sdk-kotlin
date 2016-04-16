@@ -80,6 +80,7 @@ public class GetConnectServersResponse extends EmptyResponse {
             server.setName(userServer.getName());
             server.setLocalAddress(userServer.getLocalAddress());
             server.setRemoteAddress(userServer.getUrl());
+            server.setConnectServerId(userServer.getId());
 
             if (StringHelper.EqualsIgnoreCase(userServer.getUserType(), "guest"))
             {
