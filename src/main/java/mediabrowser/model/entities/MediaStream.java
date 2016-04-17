@@ -526,19 +526,4 @@ public class MediaStream
 	{
 		IsAnamorphic = value;
 	}
-
-	/** 
-	 Gets or sets a value indicating whether this instance is cabac.
-	 
-	 <value><c>null</c> if [is cabac] contains no value, <c>true</c> if [is cabac]; otherwise, <c>false</c>.</value>
-	*/
-	private Boolean IsCabac = null;
-	public final Boolean getIsCabac()
-	{
-		return IsCabac;
-	}
-	public final void setIsCabac(Boolean value)
-	{
-		IsCabac = value;
-	}
 }

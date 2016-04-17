@@ -1,7 +1,5 @@
 package mediabrowser.model.notifications;
 
-import mediabrowser.model.configuration.*;
-
 public class NotificationOption
 {
 	private String Type;

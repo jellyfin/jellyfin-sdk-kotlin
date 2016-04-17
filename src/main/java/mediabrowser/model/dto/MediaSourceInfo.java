@@ -360,7 +360,7 @@ public class MediaSourceInfo
 		for (MediaStream i : getMediaStreams())
 		{
 			String tempVar = i.getCodec();
-			if (i.getType() == MediaStreamType.Video && StringHelper.IndexOfIgnoreCase(((tempVar != null) ? tempVar : ""), "jpeg") == -1)
+			if (i.getType() == MediaStreamType.Video && StringHelper.IndexOfIgnoreCase((tempVar != null) ? tempVar : "", "jpeg") == -1)
 			{
 				return i;
 			}
@@ -406,6 +406,16 @@ public class MediaSourceInfo
 
 	public final Boolean IsSecondaryAudio(MediaStream stream)
 	{
+		// Look for the first audio track marked as default
+		for (MediaStream currentStream : getMediaStreams())
+		{
+			if (currentStream.getType() == MediaStreamType.Audio && currentStream.getIsDefault())
+			{
+				return currentStream.getIndex() != stream.getIndex();
+			}
+		}
+
+		// Look for the first audio track
 		for (MediaStream currentStream : getMediaStreams())
 		{
 			if (currentStream.getType() == MediaStreamType.Audio)

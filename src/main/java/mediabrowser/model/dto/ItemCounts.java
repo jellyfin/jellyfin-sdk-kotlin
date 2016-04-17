@@ -159,23 +159,4 @@ public class ItemCounts
 	{
 		BookCount = value;
 	}
-	/** 
-	 Gets or sets the unique types.
-	 
-	 <value>The unique types.</value>
-	*/
-	private java.util.ArrayList<String> UniqueTypes;
-	public final java.util.ArrayList<String> getUniqueTypes()
-	{
-		return UniqueTypes;
-	}
-	public final void setUniqueTypes(java.util.ArrayList<String> value)
-	{
-		UniqueTypes = value;
-	}
-
-	public ItemCounts()
-	{
-		setUniqueTypes(new java.util.ArrayList<String>());
-	}
 }

@@ -4,7 +4,7 @@ import java.util.Collections;
 
 public class StreamInfoSorter
 {
-	public static java.util.ArrayList<StreamInfo> SortMediaSources(java.util.ArrayList<StreamInfo> streams)
+	public static java.util.ArrayList<StreamInfo> SortMediaSources(java.util.ArrayList<StreamInfo> streams, Integer maxBitrate)
 	{
 		ChainedComparator<StreamInfo> comparator = new ChainedComparator<>(
 				new StreamInfoSorterComparator(0),

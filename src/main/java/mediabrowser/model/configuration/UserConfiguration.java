@@ -184,14 +184,14 @@ public class UserConfiguration
 	{
 		HidePlayedInLatest = value;
 	}
-	private boolean DisplayChannelsInline;
-	public final boolean getDisplayChannelsInline()
+	private boolean EnableChannelView;
+	public final boolean getEnableChannelView()
 	{
-		return DisplayChannelsInline;
+		return EnableChannelView;
 	}
-	public final void setDisplayChannelsInline(boolean value)
+	public final void setEnableChannelView(boolean value)
 	{
-		DisplayChannelsInline = value;
+		EnableChannelView = value;
 	}
 
 	private boolean RememberAudioSelections;

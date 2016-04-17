@@ -100,15 +100,6 @@ public class StreamInfo
 		VideoProfile = value;
 	}
 
-	private Boolean Cabac = null;
-	public final Boolean getCabac()
-	{
-		return Cabac;
-	}
-	public final void setCabac(Boolean value)
-	{
-		Cabac = value;
-	}
 	private boolean CopyTimestamps;
 	public final boolean getCopyTimestamps()
 	{
@@ -117,6 +108,15 @@ public class StreamInfo
 	public final void setCopyTimestamps(boolean value)
 	{
 		CopyTimestamps = value;
+	}
+	private boolean ForceLiveStream;
+	public final boolean getForceLiveStream()
+	{
+		return ForceLiveStream;
+	}
+	public final void setForceLiveStream(boolean value)
+	{
+		ForceLiveStream = value;
 	}
 	private String AudioCodec;
 	public final String getAudioCodec()
@@ -470,7 +470,7 @@ public class StreamInfo
 		list.add(new NameValuePair("MaxWidth", item.getMaxWidth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxWidth()) : ""));
 		list.add(new NameValuePair("MaxHeight", item.getMaxHeight() != null ? StringHelper.ToStringCultureInvariant(item.getMaxHeight()) : ""));
 
-		if (StringHelper.EqualsIgnoreCase(item.getSubProtocol(), "hls"))
+		if (StringHelper.EqualsIgnoreCase(item.getSubProtocol(), "hls") && !item.getForceLiveStream())
 		{
 			list.add(new NameValuePair("StartTimeTicks", ""));
 		}
@@ -485,7 +485,9 @@ public class StreamInfo
 		list.add(new NameValuePair("MaxVideoBitDepth", item.getMaxVideoBitDepth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxVideoBitDepth()) : ""));
 		String tempVar6 = item.getVideoProfile();
 		list.add(new NameValuePair("Profile", (tempVar6 != null) ? tempVar6 : ""));
-		list.add(new NameValuePair("Cabac", item.getCabac() != null ? item.getCabac().toString() : ""));
+
+		// no longer used
+		list.add(new NameValuePair("Cabac", ""));
 
 		String tempVar7 = item.getPlaySessionId();
 		list.add(new NameValuePair("PlaySessionId", (tempVar7 != null) ? tempVar7 : ""));
@@ -500,6 +502,7 @@ public class StreamInfo
 		}
 
 		list.add(new NameValuePair("CopyTimestamps", (new Boolean(item.getCopyTimestamps())).toString().toLowerCase()));
+		list.add(new NameValuePair("ForceLiveStream", (new Boolean(item.getForceLiveStream())).toString().toLowerCase()));
 		list.add(new NameValuePair("SubtitleMethod", item.getSubtitleStreamIndex() != null && item.getSubtitleDeliveryMethod() != mediabrowser.model.dlna.SubtitleDeliveryMethod.External ? item.getSubtitleDeliveryMethod().toString() : ""));
 
 		return list;
@@ -586,7 +589,7 @@ public class StreamInfo
 
 	private SubtitleStreamInfo GetSubtitleStreamInfo(MediaStream stream, String baseUrl, String accessToken, long startPositionTicks, SubtitleProfile[] subtitleProfiles)
 	{
-		SubtitleProfile subtitleProfile = StreamBuilder.GetSubtitleProfile(stream, subtitleProfiles, getContext(), getPlayMethod());
+		SubtitleProfile subtitleProfile = StreamBuilder.GetSubtitleProfile(stream, subtitleProfiles, getPlayMethod());
 		SubtitleStreamInfo tempVar = new SubtitleStreamInfo();
 		tempVar.setIsForced(stream.getIsForced());
 		tempVar.setLanguage(stream.getLanguage());
@@ -819,16 +822,6 @@ public class StreamInfo
 		}
 
 		return false;
-	}
-
-	public final Boolean getIsTargetCabac()
-	{
-		if (getIsDirectStream())
-		{
-			return getTargetVideoStream() == null ? null : getTargetVideoStream().getIsCabac();
-		}
-
-		return true;
 	}
 
 	public final Integer getTargetWidth()

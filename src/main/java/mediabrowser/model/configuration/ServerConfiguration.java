@@ -144,6 +144,21 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
+	 Gets or sets a value indicating whether [enable case sensitive item ids].
+	 
+	 <value><c>true</c> if [enable case sensitive item ids]; otherwise, <c>false</c>.</value>
+	*/
+	private boolean EnableCaseSensitiveItemIds;
+	public final boolean getEnableCaseSensitiveItemIds()
+	{
+		return EnableCaseSensitiveItemIds;
+	}
+	public final void setEnableCaseSensitiveItemIds(boolean value)
+	{
+		EnableCaseSensitiveItemIds = value;
+	}
+
+	/** 
 	 Gets or sets the metadata path.
 	 
 	 <value>The metadata path.</value>
@@ -549,16 +564,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setSharingExpirationDays(int value)
 	{
 		SharingExpirationDays = value;
-	}
-
-	private boolean EnableWindowsShortcuts;
-	public final boolean getEnableWindowsShortcuts()
-	{
-		return EnableWindowsShortcuts;
-	}
-	public final void setEnableWindowsShortcuts(boolean value)
-	{
-		EnableWindowsShortcuts = value;
 	}
 
 	private boolean EnableDateLastRefresh;

@@ -122,6 +122,18 @@ public class TranscodingProfile
 		Context = value;
 	}
 
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [XmlAttribute("forceLiveStream")] public bool ForceLiveStream {get;set;}
+	private boolean ForceLiveStream;
+	public final boolean getForceLiveStream()
+	{
+		return ForceLiveStream;
+	}
+	public final void setForceLiveStream(boolean value)
+	{
+		ForceLiveStream = value;
+	}
+
 	public final java.util.ArrayList<String> GetAudioCodecs()
 	{
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>();

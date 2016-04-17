@@ -76,10 +76,21 @@ public class SubtitleOptions
 		IsOpenSubtitleVipAccount = value;
 	}
 
+	private boolean RequirePerfectMatch;
+	public final boolean getRequirePerfectMatch()
+	{
+		return RequirePerfectMatch;
+	}
+	public final void setRequirePerfectMatch(boolean value)
+	{
+		RequirePerfectMatch = value;
+	}
+
 	public SubtitleOptions()
 	{
 		setDownloadLanguages(new String[] { });
 
 		setSkipIfAudioTrackMatches(true);
+		setRequirePerfectMatch(true);
 	}
 }
