@@ -489,6 +489,8 @@ public abstract class BaseApiClient implements IDisposable
 
 		dict.AddIfNotNull("Limit", query.getLimit());
 
+		dict.AddIfNotNullOrEmpty("ParentId", query.getParentId());
+
 		dict.AddIfNotNull("StartIndex", query.getStartIndex());
 
 		dict.Add("UserId", query.getUserId());
