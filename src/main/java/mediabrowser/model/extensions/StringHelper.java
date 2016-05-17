@@ -104,4 +104,14 @@ public final class StringHelper
     {
         return str.split(term, limit);
     }
+
+	/// <summary>
+	/// Convert first character to upper case
+	/// </summary>
+	public static String FirstToUpper(String value) {
+		if (value == null || value.length() == 0) return "";
+		return value.substring(0, 1).toUpperCase() + (value.length() > 1 ? value.substring(1) : "");
+	}
+
+
 }

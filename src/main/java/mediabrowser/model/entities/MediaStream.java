@@ -93,18 +93,21 @@ public class MediaStream
 
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getLanguage()))
 			{
-				attributes.add(getLanguage());
+				attributes.add(StringHelper.FirstToUpper(getLanguage()));
 			}
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getCodec()) && !StringHelper.EqualsIgnoreCase(getCodec(), "dca"))
 			{
-				attributes.add(getCodec());
-			}
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getProfile()) && !StringHelper.EqualsIgnoreCase(getProfile(), "lc"))
+				attributes.add(CodecHelper.friendlyName(getCodec()));
+			} else if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getProfile()) && !StringHelper.EqualsIgnoreCase(getProfile(), "lc"))
 			{
 				attributes.add(getProfile());
 			}
 
-			if (getChannels() != null)
+			if (getChannelLayout() != null)
+			{
+				attributes.add(getChannelLayout());
+			}
+			else
 			{
 				attributes.add(StringHelper.ToStringCultureInvariant(getChannels()) + " ch");
 			}
