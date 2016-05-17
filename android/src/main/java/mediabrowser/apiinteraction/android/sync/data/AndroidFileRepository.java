@@ -21,9 +21,12 @@ public class AndroidFileRepository extends FileRepository {
     @Override
     protected String getBasePath() {
 
-        File directory;
+        File directory = context.getExternalFilesDir(null);
 
-        directory = new File(context.getExternalFilesDir(null).getAbsolutePath());
+        if (directory == null){
+            directory = context.getFilesDir();
+        }
+
         File file = new File(directory, "sync");
 
         return file.getPath();
