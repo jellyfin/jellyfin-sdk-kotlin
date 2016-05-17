@@ -1,7 +1,6 @@
 package mediabrowser.apiinteraction.android.sync.data;
 
 import android.content.Context;
-import android.os.Environment;
 import mediabrowser.apiinteraction.sync.data.FileRepository;
 import mediabrowser.model.logging.ILogger;
 
@@ -22,7 +21,9 @@ public class AndroidFileRepository extends FileRepository {
     @Override
     protected String getBasePath() {
 
-        File directory = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "emby");
+        File directory;
+
+        directory = new File(context.getExternalFilesDir(null).getAbsolutePath());
         File file = new File(directory, "sync");
 
         return file.getPath();
