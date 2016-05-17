@@ -47,13 +47,4 @@ public class ConnectUser
 	{
 		ImageUrl = value;
 	}
-	private boolean IsSupporter;
-	public final boolean getIsSupporter()
-	{
-		return IsSupporter;
-	}
-	public final void setIsSupporter(boolean value)
-	{
-		IsSupporter = value;
-	}
 }

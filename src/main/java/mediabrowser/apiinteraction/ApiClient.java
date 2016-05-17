@@ -1850,6 +1850,10 @@ public class ApiClient extends BaseApiClient {
         {
             dict.Add("MinStartDate", getIsoString(query.getMinStartDate()));
         }
+        if (!query.getEnableTotalRecordCount())
+        {
+            dict.Add("EnableTotalRecordCount", "false");
+        }
 
         dict.AddIfNotNull("EnableImages", query.getEnableImages());
         dict.AddIfNotNull("ImageTypeLimit", query.getImageTypeLimit());
@@ -1879,6 +1883,11 @@ public class ApiClient extends BaseApiClient {
         }
 
         QueryStringDictionary dict = new QueryStringDictionary ();
+
+        if (!query.getEnableTotalRecordCount())
+        {
+            dict.Add("EnableTotalRecordCount", "false");
+        }
 
         dict.AddIfNotNull("EnableImages", query.getEnableImages());
         dict.AddIfNotNull("ImageTypeLimit", query.getImageTypeLimit());

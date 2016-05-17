@@ -18,7 +18,7 @@ public final class CollectionType
 
 	public static final String Books = "books";
 	public static final String Photos = "photos";
-	public static final String games = "games";
+	public static final String Games = "games";
 	public static final String channels = "channels";
 	public static final String livetv = "livetv";
 	public static final String playlists = "playlists";

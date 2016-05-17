@@ -134,6 +134,18 @@ public class TranscodingProfile
 		ForceLiveStream = value;
 	}
 
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [XmlAttribute("maxAudioChannels")] public string MaxAudioChannels {get;set;}
+	private String MaxAudioChannels;
+	public final String getMaxAudioChannels()
+	{
+		return MaxAudioChannels;
+	}
+	public final void setMaxAudioChannels(String value)
+	{
+		MaxAudioChannels = value;
+	}
+
 	public final java.util.ArrayList<String> GetAudioCodecs()
 	{
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>();

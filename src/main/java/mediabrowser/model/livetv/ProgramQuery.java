@@ -13,6 +13,17 @@ public class ProgramQuery
 		setChannelIds(new String[] { });
 		setSortBy(new String[] { });
 		setGenres(new String[] { });
+		setEnableTotalRecordCount(true);
+	}
+
+	private boolean EnableTotalRecordCount;
+	public final boolean getEnableTotalRecordCount()
+	{
+		return EnableTotalRecordCount;
+	}
+	public final void setEnableTotalRecordCount(boolean value)
+	{
+		EnableTotalRecordCount = value;
 	}
 
 	/** 

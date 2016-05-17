@@ -47,6 +47,21 @@ public class RecommendedProgramQuery
 		EnableImageTypes = value;
 	}
 
+	private boolean EnableTotalRecordCount;
+	public final boolean getEnableTotalRecordCount()
+	{
+		return EnableTotalRecordCount;
+	}
+	public final void setEnableTotalRecordCount(boolean value)
+	{
+		EnableTotalRecordCount = value;
+	}
+
+	public RecommendedProgramQuery()
+	{
+		setEnableTotalRecordCount(true);
+	}
+
 	/** 
 	 Gets or sets the user identifier.
 	 

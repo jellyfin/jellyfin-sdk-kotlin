@@ -70,6 +70,106 @@ public class MediaStream
 		Comment = value;
 	}
 
+	private String Title;
+	public final String getTitle()
+	{
+		return Title;
+	}
+	public final void setTitle(String value)
+	{
+		Title = value;
+	}
+
+	public final String getDisplayTitle()
+	{
+		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getTitle()))
+		{
+			return getTitle();
+		}
+
+		if (getType() == MediaStreamType.Audio)
+		{
+			java.util.ArrayList<String> attributes = new java.util.ArrayList<String>();
+
+			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getLanguage()))
+			{
+				attributes.add(getLanguage());
+			}
+			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getCodec()) && !StringHelper.EqualsIgnoreCase(getCodec(), "dca"))
+			{
+				attributes.add(getCodec());
+			}
+			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getProfile()) && !StringHelper.EqualsIgnoreCase(getProfile(), "lc"))
+			{
+				attributes.add(getProfile());
+			}
+
+			if (getChannels() != null)
+			{
+				attributes.add(StringHelper.ToStringCultureInvariant(getChannels()) + " ch");
+			}
+
+			String name = tangible.DotNetToJavaStringHelper.join(" ", attributes.toArray(new String[0]));
+
+			if (getIsDefault())
+			{
+				name += " (D)";
+			}
+
+			return name;
+		}
+
+		if (getType() == MediaStreamType.Subtitle)
+		{
+			java.util.ArrayList<String> attributes = new java.util.ArrayList<String>();
+
+			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getLanguage()))
+			{
+				attributes.add(getLanguage());
+			}
+			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getCodec()))
+			{
+				attributes.add(getCodec());
+			}
+
+			String name = tangible.DotNetToJavaStringHelper.join(" ", attributes.toArray(new String[0]));
+
+			if (getIsDefault())
+			{
+				name += " (D)";
+			}
+
+			if (getIsForced())
+			{
+				name += " (F)";
+			}
+
+			if (getIsExternal())
+			{
+				name += " (EXT)";
+			}
+
+			return name;
+		}
+
+		if (getType() == MediaStreamType.Video)
+		{
+
+		}
+
+		return null;
+	}
+
+	private String NalLengthSize;
+	public final String getNalLengthSize()
+	{
+		return NalLengthSize;
+	}
+	public final void setNalLengthSize(String value)
+	{
+		NalLengthSize = value;
+	}
+
 	/** 
 	 Gets or sets a value indicating whether this instance is interlaced.
 	 
@@ -83,6 +183,16 @@ public class MediaStream
 	public final void setIsInterlaced(boolean value)
 	{
 		IsInterlaced = value;
+	}
+
+	private Boolean IsAVC = null;
+	public final Boolean getIsAVC()
+	{
+		return IsAVC;
+	}
+	public final void setIsAVC(Boolean value)
+	{
+		IsAVC = value;
 	}
 
 	/** 

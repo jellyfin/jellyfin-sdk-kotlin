@@ -765,16 +765,6 @@ public class ConnectionManager implements IConnectionManager {
 
     public void GetRegistrationInfo(final String featureName, String serverId, String localUsername, final Response<RegistrationInfo> response) {
 
-        if (isConnectUserSupporter()){
-
-            RegistrationInfo reg = new RegistrationInfo();
-            reg.setName(featureName);
-            reg.setIsTrial(false);
-            reg.setIsRegistered(true);
-            response.onResponse(reg);
-            return;
-        }
-
         connectService.GetRegistrationInfo(serverId, getDevice().getDeviceId(), localUsername, new EmptyResponse(){
 
             @Override
@@ -807,10 +797,6 @@ public class ConnectionManager implements IConnectionManager {
                 response.onResponse(reg);
             }
         });
-    }
-
-    boolean isConnectUserSupporter(){
-        return connectUser != null && connectUser.getIsSupporter();
     }
 
     public void DeleteServer(final String id, final EmptyResponse response)

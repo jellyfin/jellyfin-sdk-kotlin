@@ -11,16 +11,28 @@ public class StreamBuilder
 {
 	private ILocalPlayer _localPlayer;
 	private ILogger _logger;
+	private ITranscoderSupport _transcoderSupport;
 
-	public StreamBuilder(ILocalPlayer localPlayer, ILogger logger)
+	public StreamBuilder(ILocalPlayer localPlayer, ITranscoderSupport transcoderSupport, ILogger logger)
 	{
+		_transcoderSupport = transcoderSupport;
 		_localPlayer = localPlayer;
 		_logger = logger;
 	}
 
+	public StreamBuilder(ITranscoderSupport transcoderSupport, ILogger logger)
+	{
+		this(new NullLocalPlayer(), transcoderSupport, logger);
+	}
+
+	public StreamBuilder(ILocalPlayer localPlayer, ILogger logger)
+	{
+		this(localPlayer, new FullTranscoderSupport(), logger);
+	}
+
 	public StreamBuilder(ILogger logger)
 	{
-		this(new NullLocalPlayer(), logger);
+		this(new NullLocalPlayer(), new FullTranscoderSupport(), logger);
 	}
 
 	public final StreamInfo BuildAudioItem(AudioOptions options)
@@ -176,8 +188,12 @@ public class StreamBuilder
 		{
 			if (i.getType() == playlistItem.getMediaType() && i.getContext() == options.getContext())
 			{
-				transcodingProfile = i;
-				break;
+				String tempVar2 = i.getAudioCodec();
+				if (_transcoderSupport.CanEncodeToAudioCodec((tempVar2 != null) ? tempVar2 : i.getContainer()))
+				{
+					transcodingProfile = i;
+					break;
+				}
 			}
 		}
 
@@ -223,17 +239,17 @@ public class StreamBuilder
 			// Honor requested max channels
 			if (options.getMaxAudioChannels() != null)
 			{
-				Integer tempVar2 = playlistItem.getMaxAudioChannels();
-				int currentValue = (tempVar2 != null) ? tempVar2 : options.getMaxAudioChannels();
+				Integer tempVar3 = playlistItem.getMaxAudioChannels();
+				int currentValue = (tempVar3 != null) ? tempVar3 : options.getMaxAudioChannels();
 
 				playlistItem.setMaxAudioChannels(Math.min(options.getMaxAudioChannels(), currentValue));
 			}
 
-			Integer tempVar3 = options.getAudioTranscodingBitrate();
-			int configuredBitrate = (tempVar3 != null) ? tempVar3 : ((options.getContext() == EncodingContext.Static ? options.getProfile().getMusicSyncBitrate() : options.getProfile().getMusicStreamingTranscodingBitrate()) != null) ? (options.getContext() == EncodingContext.Static ? options.getProfile().getMusicSyncBitrate() : options.getProfile().getMusicStreamingTranscodingBitrate()) : 128000;
+			Integer tempVar4 = options.getAudioTranscodingBitrate();
+			int configuredBitrate = (tempVar4 != null) ? tempVar4 : ((options.getContext() == EncodingContext.Static ? options.getProfile().getMusicSyncBitrate() : options.getProfile().getMusicStreamingTranscodingBitrate()) != null) ? (options.getContext() == EncodingContext.Static ? options.getProfile().getMusicSyncBitrate() : options.getProfile().getMusicStreamingTranscodingBitrate()) : 128000;
 
-			Integer tempVar4 = playlistItem.getAudioBitrate();
-			playlistItem.setAudioBitrate(Math.min(configuredBitrate, (tempVar4 != null) ? tempVar4 : configuredBitrate));
+			Integer tempVar5 = playlistItem.getAudioBitrate();
+			playlistItem.setAudioBitrate(Math.min(configuredBitrate, (tempVar5 != null) ? tempVar5 : configuredBitrate));
 		}
 
 		return playlistItem;
@@ -437,6 +453,18 @@ public class StreamBuilder
 			playlistItem.setVideoCodec(transcodingProfile.getVideoCodec());
 			playlistItem.setCopyTimestamps(transcodingProfile.getCopyTimestamps());
 			playlistItem.setForceLiveStream(transcodingProfile.getForceLiveStream());
+
+			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(transcodingProfile.getMaxAudioChannels()))
+			{
+				int transcodingMaxAudioChannels = 0;
+				tangible.RefObject<Integer> tempRef_transcodingMaxAudioChannels = new tangible.RefObject<Integer>(transcodingMaxAudioChannels);
+				boolean tempVar6 = IntHelper.TryParseCultureInvariant(transcodingProfile.getMaxAudioChannels(), tempRef_transcodingMaxAudioChannels);
+					transcodingMaxAudioChannels = tempRef_transcodingMaxAudioChannels.argValue;
+				if (tempVar6)
+				{
+					playlistItem.setTranscodingMaxAudioChannels(transcodingMaxAudioChannels);
+				}
+			}
 			playlistItem.setSubProtocol(transcodingProfile.getProtocol());
 			playlistItem.setAudioStreamIndex(audioStreamIndex);
 
@@ -471,15 +499,15 @@ public class StreamBuilder
 			// Honor requested max channels
 			if (options.getMaxAudioChannels() != null)
 			{
-				Integer tempVar6 = playlistItem.getMaxAudioChannels();
-				int currentValue = (tempVar6 != null) ? tempVar6 : options.getMaxAudioChannels();
+				Integer tempVar7 = playlistItem.getMaxAudioChannels();
+				int currentValue = (tempVar7 != null) ? tempVar7 : options.getMaxAudioChannels();
 
 				playlistItem.setMaxAudioChannels(Math.min(options.getMaxAudioChannels(), currentValue));
 			}
 
 			int audioBitrate = GetAudioBitrate(options.GetMaxBitrate(), playlistItem.getTargetAudioChannels(), playlistItem.getTargetAudioCodec(), audioStream);
-			Integer tempVar7 = playlistItem.getAudioBitrate();
-			playlistItem.setAudioBitrate(Math.min((tempVar7 != null) ? tempVar7 : audioBitrate, audioBitrate));
+			Integer tempVar8 = playlistItem.getAudioBitrate();
+			playlistItem.setAudioBitrate(Math.min((tempVar8 != null) ? tempVar8 : audioBitrate, audioBitrate));
 
 			Integer maxBitrateSetting = options.GetMaxBitrate();
 			// Honor max rate
@@ -493,8 +521,8 @@ public class StreamBuilder
 				}
 
 				// Make sure the video bitrate is lower than bitrate settings but at least 64k
-				Integer tempVar8 = playlistItem.getVideoBitrate();
-				int currentValue = (tempVar8 != null) ? tempVar8 : videoBitrate;
+				Integer tempVar9 = playlistItem.getVideoBitrate();
+				int currentValue = (tempVar9 != null) ? tempVar9 : videoBitrate;
 				playlistItem.setVideoBitrate(Math.max(Math.min(videoBitrate, currentValue), 64000));
 			}
 		}
@@ -1049,6 +1077,18 @@ public class StreamBuilder
 			}
 		}
 
+		// Check audio codec
+		java.util.ArrayList<String> audioCodecs = profile.GetAudioCodecs();
+		if (audioCodecs.size() > 0)
+		{
+			// Check audio codecs
+			String audioCodec = audioStream == null ? null : audioStream.getCodec();
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec) || !ListHelper.ContainsIgnoreCase(audioCodecs, audioCodec))
+			{
+				return false;
+			}
+		}
+
 		return true;
 	}
 
@@ -1085,6 +1125,7 @@ public class StreamBuilder
 			}
 		}
 
+		// Check audio codec
 		java.util.ArrayList<String> audioCodecs = profile.GetAudioCodecs();
 		if (audioCodecs.size() > 0)
 		{

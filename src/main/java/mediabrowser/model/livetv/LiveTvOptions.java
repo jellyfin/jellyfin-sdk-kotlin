@@ -29,6 +29,24 @@ public class LiveTvOptions
 	{
 		RecordingPath = value;
 	}
+	private String MovieRecordingPath;
+	public final String getMovieRecordingPath()
+	{
+		return MovieRecordingPath;
+	}
+	public final void setMovieRecordingPath(String value)
+	{
+		MovieRecordingPath = value;
+	}
+	private String SeriesRecordingPath;
+	public final String getSeriesRecordingPath()
+	{
+		return SeriesRecordingPath;
+	}
+	public final void setSeriesRecordingPath(String value)
+	{
+		SeriesRecordingPath = value;
+	}
 	private boolean EnableAutoOrganize;
 	public final boolean getEnableAutoOrganize()
 	{
@@ -46,6 +64,24 @@ public class LiveTvOptions
 	public final void setEnableRecordingEncoding(boolean value)
 	{
 		EnableRecordingEncoding = value;
+	}
+	private boolean EnableRecordingSubfolders;
+	public final boolean getEnableRecordingSubfolders()
+	{
+		return EnableRecordingSubfolders;
+	}
+	public final void setEnableRecordingSubfolders(boolean value)
+	{
+		EnableRecordingSubfolders = value;
+	}
+	private boolean EnableOriginalAudioWithEncodedRecordings;
+	public final boolean getEnableOriginalAudioWithEncodedRecordings()
+	{
+		return EnableOriginalAudioWithEncodedRecordings;
+	}
+	public final void setEnableOriginalAudioWithEncodedRecordings(boolean value)
+	{
+		EnableOriginalAudioWithEncodedRecordings = value;
 	}
 
 	private java.util.ArrayList<TunerHostInfo> TunerHosts;
@@ -89,6 +125,7 @@ public class LiveTvOptions
 	public LiveTvOptions()
 	{
 		setEnableMovieProviders(true);
+		setEnableRecordingSubfolders(true);
 		setTunerHosts(new java.util.ArrayList<TunerHostInfo>());
 		setListingProviders(new java.util.ArrayList<ListingsProviderInfo>());
 	}

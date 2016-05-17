@@ -253,6 +253,16 @@ public class SyncJobItem
 		JobItemIndex = value;
 	}
 
+	private long ItemDateModifiedTicks;
+	public final long getItemDateModifiedTicks()
+	{
+		return ItemDateModifiedTicks;
+	}
+	public final void setItemDateModifiedTicks(long value)
+	{
+		ItemDateModifiedTicks = value;
+	}
+
 	public SyncJobItem()
 	{
 		setAdditionalFiles(new java.util.ArrayList<ItemFileInfo>());

@@ -595,6 +595,15 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		MigrationVersion = value;
 	}
+	private int SchemaVersion;
+	public final int getSchemaVersion()
+	{
+		return SchemaVersion;
+	}
+	public final void setSchemaVersion(int value)
+	{
+		SchemaVersion = value;
+	}
 
 	private boolean DownloadImagesInAdvance;
 	public final boolean getDownloadImagesInAdvance()

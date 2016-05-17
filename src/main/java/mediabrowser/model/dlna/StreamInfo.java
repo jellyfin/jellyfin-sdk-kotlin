@@ -148,6 +148,15 @@ public class StreamInfo
 		SubtitleStreamIndex = value;
 	}
 
+	private Integer TranscodingMaxAudioChannels = null;
+	public final Integer getTranscodingMaxAudioChannels()
+	{
+		return TranscodingMaxAudioChannels;
+	}
+	public final void setTranscodingMaxAudioChannels(Integer value)
+	{
+		TranscodingMaxAudioChannels = value;
+	}
 	private Integer MaxAudioChannels = null;
 	public final Integer getMaxAudioChannels()
 	{
@@ -504,6 +513,8 @@ public class StreamInfo
 		list.add(new NameValuePair("CopyTimestamps", (new Boolean(item.getCopyTimestamps())).toString().toLowerCase()));
 		list.add(new NameValuePair("ForceLiveStream", (new Boolean(item.getForceLiveStream())).toString().toLowerCase()));
 		list.add(new NameValuePair("SubtitleMethod", item.getSubtitleStreamIndex() != null && item.getSubtitleDeliveryMethod() != mediabrowser.model.dlna.SubtitleDeliveryMethod.External ? item.getSubtitleDeliveryMethod().toString() : ""));
+
+		list.add(new NameValuePair("TranscodingMaxAudioChannels", item.getTranscodingMaxAudioChannels() != null ? StringHelper.ToStringCultureInvariant(item.getTranscodingMaxAudioChannels()) : ""));
 
 		return list;
 	}

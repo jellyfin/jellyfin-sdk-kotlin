@@ -130,6 +130,8 @@ public enum ItemFields
 	*/
 	Metascore,
 
+	OriginalTitle,
+
 	/** 
 	 The item overview
 	*/

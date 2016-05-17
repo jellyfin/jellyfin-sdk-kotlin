@@ -47,6 +47,15 @@ public class TunerHostInfo
 	{
 		ImportFavoritesOnly = value;
 	}
+	private boolean AllowHWTranscoding;
+	public final boolean getAllowHWTranscoding()
+	{
+		return AllowHWTranscoding;
+	}
+	public final void setAllowHWTranscoding(boolean value)
+	{
+		AllowHWTranscoding = value;
+	}
 	private boolean IsEnabled;
 	public final boolean getIsEnabled()
 	{
@@ -101,6 +110,42 @@ public class TunerHostInfo
 	{
 		DiseqC = value;
 	}
+	private String SourceA;
+	public final String getSourceA()
+	{
+		return SourceA;
+	}
+	public final void setSourceA(String value)
+	{
+		SourceA = value;
+	}
+	private String SourceB;
+	public final String getSourceB()
+	{
+		return SourceB;
+	}
+	public final void setSourceB(String value)
+	{
+		SourceB = value;
+	}
+	private String SourceC;
+	public final String getSourceC()
+	{
+		return SourceC;
+	}
+	public final void setSourceC(String value)
+	{
+		SourceC = value;
+	}
+	private String SourceD;
+	public final String getSourceD()
+	{
+		return SourceD;
+	}
+	public final void setSourceD(String value)
+	{
+		SourceD = value;
+	}
 
 	private int DataVersion;
 	public final int getDataVersion()
@@ -115,5 +160,6 @@ public class TunerHostInfo
 	public TunerHostInfo()
 	{
 		setIsEnabled(true);
+		setAllowHWTranscoding(true);
 	}
 }
