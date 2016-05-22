@@ -609,6 +609,7 @@ public class StreamInfo
 		tempVar.setFormat(subtitleProfile.getFormat());
 		tempVar.setIndex(stream.getIndex());
 		tempVar.setDeliveryMethod(subtitleProfile.getMethod());
+		tempVar.setDisplayTitle(stream.getDisplayTitle());
 		SubtitleStreamInfo info = tempVar;
 
 		if (info.getDeliveryMethod() == SubtitleDeliveryMethod.External)

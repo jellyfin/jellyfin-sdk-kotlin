@@ -204,21 +204,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	}
 
 	/** 
-	 Gets or sets a value indicating whether [enable localized guids].
-	 
-	 <value><c>true</c> if [enable localized guids]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean EnableLocalizedGuids;
-	public final boolean getEnableLocalizedGuids()
-	{
-		return EnableLocalizedGuids;
-	}
-	public final void setEnableLocalizedGuids(boolean value)
-	{
-		EnableLocalizedGuids = value;
-	}
-
-	/** 
 	 Gets or sets the preferred metadata language.
 	 
 	 <value>The preferred metadata language.</value>
@@ -566,16 +551,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		SharingExpirationDays = value;
 	}
 
-	private boolean EnableDateLastRefresh;
-	public final boolean getEnableDateLastRefresh()
-	{
-		return EnableDateLastRefresh;
-	}
-	public final void setEnableDateLastRefresh(boolean value)
-	{
-		EnableDateLastRefresh = value;
-	}
-
 	private String[] Migrations;
 	public final String[] getMigrations()
 	{
@@ -640,6 +615,8 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public ServerConfiguration()
 	{
 		setMigrations(new String[] { });
+
+		setEnableCustomPathSubFolders(true);
 
 		setImageSavingConvention(ImageSavingConvention.Compatible);
 		setPublicPort(8096);

@@ -122,11 +122,22 @@ public class LiveTvOptions
 		PostPaddingSeconds = value;
 	}
 
+	private String[] MediaLocationsCreated;
+	public final String[] getMediaLocationsCreated()
+	{
+		return MediaLocationsCreated;
+	}
+	public final void setMediaLocationsCreated(String[] value)
+	{
+		MediaLocationsCreated = value;
+	}
+
 	public LiveTvOptions()
 	{
 		setEnableMovieProviders(true);
 		setEnableRecordingSubfolders(true);
 		setTunerHosts(new java.util.ArrayList<TunerHostInfo>());
 		setListingProviders(new java.util.ArrayList<ListingsProviderInfo>());
+		setMediaLocationsCreated(new String[] { });
 	}
 }

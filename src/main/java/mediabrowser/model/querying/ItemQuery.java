@@ -37,7 +37,7 @@ public class ItemQuery
 		ParentId = value;
 	}
 
-	/**
+	/** 
 	 Skips over a given number of items within the results. Use for paging.
 	 
 	 <value>The start index.</value>
@@ -794,6 +794,16 @@ public class ItemQuery
 		Person = value;
 	}
 
+	private boolean EnableTotalRecordCount;
+	public final boolean getEnableTotalRecordCount()
+	{
+		return EnableTotalRecordCount;
+	}
+	public final void setEnableTotalRecordCount(boolean value)
+	{
+		EnableTotalRecordCount = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="ItemQuery" /> class.
 	*/
@@ -811,6 +821,8 @@ public class ItemQuery
 		setMediaTypes(new String[] { });
 
 		setVideoTypes(new VideoType[] { });
+
+		setEnableTotalRecordCount(true);
 
 		setArtists(new String[] { });
 		setStudios(new String[] { });

@@ -47,6 +47,15 @@ public class SubtitleStreamInfo
 	{
 		Format = value;
 	}
+	private String DisplayTitle;
+	public final String getDisplayTitle()
+	{
+		return DisplayTitle;
+	}
+	public final void setDisplayTitle(String value)
+	{
+		DisplayTitle = value;
+	}
 	private int Index;
 	public final int getIndex()
 	{
