@@ -222,7 +222,7 @@ public class ConnectService {
 
     private String GetConnectUrl(String handler)
     {
-        return "https://connect.mediabrowser.tv/service/" + handler;
+        return "https://connect.emby.media/service/" + handler;
     }
 
     private void AddUserAccessToken(HttpRequest request, String accessToken)
