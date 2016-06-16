@@ -1,6 +1,5 @@
 package mediabrowser.apiinteraction.sync.data;
 
-import com.google.common.io.Files;
 import mediabrowser.apiinteraction.cryptography.Md5;
 import mediabrowser.apiinteraction.sync.data.comparators.SortNameComparator;
 import mediabrowser.model.apiclient.ServerInfo;
@@ -81,7 +80,7 @@ public class LocalAssetManager implements ILocalAssetManager {
 
         ArrayList<ItemFileInfo> itemFiles = new ArrayList<ItemFileInfo>();
 
-        String name = Files.getNameWithoutExtension(item.getLocalPath());
+        String name = getNameWithoutExtension(item.getLocalPath());
 
         for (DeviceFileInfo file : list)
         {
@@ -107,6 +106,28 @@ public class LocalAssetManager implements ILocalAssetManager {
         return itemFiles;
     }
 
+    private String getFileExtension(String path){
+        String fileName = new File(path).getName();
+        String extension = "";
+
+        int i = fileName.lastIndexOf('.');
+        if (i > 0) {
+            extension = fileName.substring(i);
+        }
+
+        return extension;
+    }
+
+    private String getNameWithoutExtension(String path){
+        String fileName = new File(path).getName();
+        int pos = fileName.lastIndexOf(".");
+        if (pos > 0) {
+            fileName = fileName.substring(0, pos);
+        }
+
+        return fileName;
+    }
+
     @Override
     public void saveMedia(InputStream stream, LocalItem localItem, ServerInfo server) throws IOException {
 
@@ -117,7 +138,7 @@ public class LocalAssetManager implements ILocalAssetManager {
     private static String[] SupportedImageExtensions = { ".png", ".jpg", ".jpeg", ".webp" };
     private boolean isImageFile(String path)
     {
-        String ext = Files.getFileExtension(path);
+        String ext = getFileExtension(path);
 
         return ext != null && ListHelper.ContainsIgnoreCase(SupportedImageExtensions, ext);
     }
@@ -125,7 +146,7 @@ public class LocalAssetManager implements ILocalAssetManager {
     private static String[] SupportedSubtitleExtensions = { ".srt", ".vtt" };
     private boolean isSubtitleFile(String path)
     {
-        String ext = Files.getFileExtension(path);
+        String ext = getFileExtension(path);
 
         return ext != null && ListHelper.ContainsIgnoreCase(SupportedSubtitleExtensions, ext);
     }
@@ -155,7 +176,7 @@ public class LocalAssetManager implements ILocalAssetManager {
     {
         String path = item.getLocalPath();
 
-        String name = Files.getNameWithoutExtension(path);
+        String name = getNameWithoutExtension(path);
 
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(language))
         {

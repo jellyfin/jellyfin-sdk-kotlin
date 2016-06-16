@@ -1,6 +1,6 @@
 package mediabrowser.apiinteraction.sync.data;
 
-import com.google.common.io.Files;
+import android.util.Log;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.sync.DeviceFileInfo;
 
@@ -26,7 +26,7 @@ public abstract class FileRepository implements IFileRepository {
     @Override
     public void saveFile(InputStream initialStream, String targetFile) throws IOException {
 
-        Files.createParentDirs(new File(targetFile));
+        new File(targetFile).getParentFile().mkdirs();
 
         try (OutputStream outStream = new FileOutputStream(targetFile)) {
 
