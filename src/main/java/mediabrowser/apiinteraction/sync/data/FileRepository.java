@@ -26,7 +26,17 @@ public abstract class FileRepository implements IFileRepository {
     @Override
     public void saveFile(InputStream initialStream, String targetFile) throws IOException {
 
-        new File(targetFile).getParentFile().mkdirs();
+        Logger.Info("Saving file to %s", targetFile);
+        File parentFile = new File(targetFile).getParentFile();
+
+        Logger.Info("Creating parent directory %s", parentFile.getAbsolutePath());
+        boolean success = parentFile.mkdirs();
+
+        if (success){
+            Logger.Info("Creating parent directory succeeded: %s", parentFile.getAbsolutePath());
+        } else{
+            Logger.Info("Creating parent directory failed: %s", parentFile.getAbsolutePath());
+        }
 
         try (OutputStream outStream = new FileOutputStream(targetFile)) {
 
