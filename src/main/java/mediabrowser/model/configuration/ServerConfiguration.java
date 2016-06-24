@@ -521,16 +521,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		RemoteClientBitrateLimit = value;
 	}
 
-	private boolean DenyIFrameEmbedding;
-	public final boolean getDenyIFrameEmbedding()
-	{
-		return DenyIFrameEmbedding;
-	}
-	public final void setDenyIFrameEmbedding(boolean value)
-	{
-		DenyIFrameEmbedding = value;
-	}
-
 	private AutoOnOff EnableLibraryMonitor = AutoOnOff.values()[0];
 	public final AutoOnOff getEnableLibraryMonitor()
 	{
@@ -608,15 +598,72 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		EnableStandaloneMusicKeys = value;
 	}
+	private boolean EnableLocalizedGuids;
+	public final boolean getEnableLocalizedGuids()
+	{
+		return EnableLocalizedGuids;
+	}
+	public final void setEnableLocalizedGuids(boolean value)
+	{
+		EnableLocalizedGuids = value;
+	}
+	private boolean EnableFolderView;
+	public final boolean getEnableFolderView()
+	{
+		return EnableFolderView;
+	}
+	public final void setEnableFolderView(boolean value)
+	{
+		EnableFolderView = value;
+	}
+	private boolean EnableGroupingIntoCollections;
+	public final boolean getEnableGroupingIntoCollections()
+	{
+		return EnableGroupingIntoCollections;
+	}
+	public final void setEnableGroupingIntoCollections(boolean value)
+	{
+		EnableGroupingIntoCollections = value;
+	}
+	private boolean DisplaySpecialsWithinSeasons;
+	public final boolean getDisplaySpecialsWithinSeasons()
+	{
+		return DisplaySpecialsWithinSeasons;
+	}
+	public final void setDisplaySpecialsWithinSeasons(boolean value)
+	{
+		DisplaySpecialsWithinSeasons = value;
+	}
+	private boolean DisplayCollectionsView;
+	public final boolean getDisplayCollectionsView()
+	{
+		return DisplayCollectionsView;
+	}
+	public final void setDisplayCollectionsView(boolean value)
+	{
+		DisplayCollectionsView = value;
+	}
+	private String[] LocalNetworkAddresses;
+	public final String[] getLocalNetworkAddresses()
+	{
+		return LocalNetworkAddresses;
+	}
+	public final void setLocalNetworkAddresses(String[] value)
+	{
+		LocalNetworkAddresses = value;
+	}
 
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
 	*/
 	public ServerConfiguration()
 	{
+		setLocalNetworkAddresses(new String[] { });
 		setMigrations(new String[] { });
 
 		setEnableCustomPathSubFolders(true);
+		setEnableLocalizedGuids(true);
+		setDisplaySpecialsWithinSeasons(true);
 
 		setImageSavingConvention(ImageSavingConvention.Compatible);
 		setPublicPort(8096);
@@ -629,10 +676,8 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setEnableAnonymousUsageReporting(true);
 
 		setEnableAutomaticRestart(true);
-		setDenyIFrameEmbedding(true);
 
 		setEnableUPnP(true);
-
 		setSharingExpirationDays(30);
 		setMinResumePct(5);
 		setMaxResumePct(90);

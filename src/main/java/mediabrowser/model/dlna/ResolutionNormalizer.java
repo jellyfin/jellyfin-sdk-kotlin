@@ -45,4 +45,23 @@ public class ResolutionNormalizer
 		tempVar2.setMaxHeight(maxHeight);
 		return tempVar2;
 	}
+
+	private static double GetVideoBitrateScaleFactor(String codec)
+	{
+		if (String.equals(codec, "h265", StringComparison.OrdinalIgnoreCase) || String.equals(codec, "hevc", StringComparison.OrdinalIgnoreCase))
+		{
+			return.5;
+		}
+		return 1;
+	}
+
+	public static int ScaleBitrate(int bitrate, String inputVideoCodec, String outputVideoCodec)
+	{
+		double inputScaleFactor = GetVideoBitrateScaleFactor(inputVideoCodec);
+		double outputScaleFactor = GetVideoBitrateScaleFactor(outputVideoCodec);
+		double scaleFactor = outputScaleFactor / inputScaleFactor;
+		double newBitrate = scaleFactor * bitrate;
+
+		return (int)java.lang.Math.round(newBitrate);
+	}
 }

@@ -29,15 +29,6 @@ public class EncodingOptions
 	{
 		DownMixAudioBoost = value;
 	}
-	private boolean EnableDebugLogging;
-	public final boolean getEnableDebugLogging()
-	{
-		return EnableDebugLogging;
-	}
-	public final void setEnableDebugLogging(boolean value)
-	{
-		EnableDebugLogging = value;
-	}
 	private boolean EnableThrottling;
 	public final boolean getEnableThrottling()
 	{
@@ -64,6 +55,15 @@ public class EncodingOptions
 	public final void setHardwareAccelerationType(String value)
 	{
 		HardwareAccelerationType = value;
+	}
+	private String EncoderAppPath;
+	public final String getEncoderAppPath()
+	{
+		return EncoderAppPath;
+	}
+	public final void setEncoderAppPath(String value)
+	{
+		EncoderAppPath = value;
 	}
 
 	public EncodingOptions()

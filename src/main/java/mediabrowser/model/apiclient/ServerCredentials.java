@@ -79,6 +79,10 @@ public class ServerCredentials
 			{
 				existing.setRemoteAddress(server.getRemoteAddress());
 			}
+			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getConnectServerId()))
+			{
+				existing.setConnectServerId(server.getConnectServerId());
+			}
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getLocalAddress()))
 			{
 				existing.setLocalAddress(server.getLocalAddress());
@@ -90,10 +94,6 @@ public class ServerCredentials
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getName()))
 			{
 				existing.setName(server.getName());
-			}
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getConnectServerId()))
-			{
-				existing.setConnectServerId(server.getConnectServerId());
 			}
 			if (server.getWakeOnLanInfos() != null && server.getWakeOnLanInfos().size() > 0)
 			{

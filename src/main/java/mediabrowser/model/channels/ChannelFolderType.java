@@ -6,7 +6,13 @@ public enum ChannelFolderType
 
 	MusicAlbum(1),
 
-	PhotoAlbum(2);
+	PhotoAlbum(2),
+
+	MusicArtist(3),
+
+	Series(4),
+
+	Season(5);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, ChannelFolderType> mappings;

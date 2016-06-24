@@ -116,15 +116,6 @@ public class UserConfiguration
 	{
 		DisplayCollectionsView = value;
 	}
-	private boolean DisplayFoldersView;
-	public final boolean getDisplayFoldersView()
-	{
-		return DisplayFoldersView;
-	}
-	public final void setDisplayFoldersView(boolean value)
-	{
-		DisplayFoldersView = value;
-	}
 
 	private boolean EnableLocalPassword;
 	public final boolean getEnableLocalPassword()
@@ -144,16 +135,6 @@ public class UserConfiguration
 	public final void setOrderedViews(String[] value)
 	{
 		OrderedViews = value;
-	}
-
-	private boolean IncludeTrailersInSuggestions;
-	public final boolean getIncludeTrailersInSuggestions()
-	{
-		return IncludeTrailersInSuggestions;
-	}
-	public final void setIncludeTrailersInSuggestions(boolean value)
-	{
-		IncludeTrailersInSuggestions = value;
 	}
 
 	private String[] LatestItemsExcludes;
@@ -221,6 +202,15 @@ public class UserConfiguration
 	{
 		EnableNextEpisodeAutoPlay = value;
 	}
+	private boolean DisplayFoldersView;
+	public final boolean getDisplayFoldersView()
+	{
+		return DisplayFoldersView;
+	}
+	public final void setDisplayFoldersView(boolean value)
+	{
+		DisplayFoldersView = value;
+	}
 
 	/** 
 	 Initializes a new instance of the <see cref="UserConfiguration" /> class.
@@ -238,8 +228,6 @@ public class UserConfiguration
 		setOrderedViews(new String[] { });
 
 		setPlainFolderViews(new String[] { });
-
-		setIncludeTrailersInSuggestions(true);
 
 		setGroupedFolders(new String[] { });
 	}
