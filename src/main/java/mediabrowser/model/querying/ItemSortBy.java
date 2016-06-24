@@ -84,4 +84,5 @@ public final class ItemSortBy
 	public static final String GameSystem = "GameSystem";
 	public static final String IsFavoriteOrLiked = "IsFavoriteOrLiked";
 	public static final String DateLastContentAdded = "DateLastContentAdded";
+	public static final String SeriesDatePlayed = "SeriesDatePlayed";
 }

@@ -31,4 +31,14 @@ public class TimerQuery
 	{
 		SeriesTimerId = value;
 	}
+
+	private Boolean IsActive;
+	public final Boolean getIsActive()
+	{
+		return IsActive;
+	}
+	public final void setIsActive(Boolean value)
+	{
+		IsActive = value;
+	}
 }

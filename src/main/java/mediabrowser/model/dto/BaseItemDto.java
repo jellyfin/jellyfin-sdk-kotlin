@@ -31,6 +31,16 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 		Name = value;
 	}
 
+	private String OriginalTitle;
+	public final String getOriginalTitle()
+	{
+		return OriginalTitle;
+	}
+	public final void setOriginalTitle(String value)
+	{
+		OriginalTitle = value;
+	}
+
 	/** 
 	 Gets or sets the server identifier.
 	 
@@ -821,6 +831,30 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setIsPlaceHolder(Boolean value)
 	{
 		IsPlaceHolder = value;
+	}
+
+	/** 
+	 Gets or sets the number.
+	 
+	 <value>The number.</value>
+	*/
+	private String Number;
+	public final String getNumber()
+	{
+		return Number;
+	}
+	public final void setNumber(String value)
+	{
+		Number = value;
+	}
+	private String ChannelNumber;
+	public final String getChannelNumber()
+	{
+		return ChannelNumber;
+	}
+	public final void setChannelNumber(String value)
+	{
+		ChannelNumber = value;
 	}
 
 	/** 

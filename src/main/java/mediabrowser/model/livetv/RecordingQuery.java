@@ -184,4 +184,19 @@ public class RecordingQuery
 	{
 		EnableImageTypes = value;
 	}
+
+	private boolean EnableTotalRecordCount;
+	public final boolean getEnableTotalRecordCount()
+	{
+		return EnableTotalRecordCount;
+	}
+	public final void setEnableTotalRecordCount(boolean value)
+	{
+		EnableTotalRecordCount = value;
+	}
+
+	public RecordingQuery()
+	{
+		setEnableTotalRecordCount(true);
+	}
 }

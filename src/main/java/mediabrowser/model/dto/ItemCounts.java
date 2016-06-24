@@ -159,4 +159,13 @@ public class ItemCounts
 	{
 		BookCount = value;
 	}
+	private int ItemCount;
+	public final int getItemCount()
+	{
+		return ItemCount;
+	}
+	public final void setItemCount(int value)
+	{
+		ItemCount = value;
+	}
 }

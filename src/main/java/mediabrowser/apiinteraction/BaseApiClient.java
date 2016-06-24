@@ -466,6 +466,11 @@ public abstract class BaseApiClient implements IDisposable
 
 		dict.AddIfNotNull("AiredDuringSeason", query.getAiredDuringSeason());
 
+		if (!query.getEnableTotalRecordCount())
+		{
+			dict.Add("EnableTotalRecordCount", "false");
+		}
+
 		return GetApiUrl("Users/" + query.getUserId() + "/Items", dict);
 	}
 

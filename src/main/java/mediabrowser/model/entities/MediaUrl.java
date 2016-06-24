@@ -20,13 +20,4 @@ public class MediaUrl
 	{
 		Name = value;
 	}
-	private VideoSize VideoSize;
-	public final VideoSize getVideoSize()
-	{
-		return VideoSize;
-	}
-	public final void setVideoSize(VideoSize value)
-	{
-		VideoSize = value;
-	}
 }

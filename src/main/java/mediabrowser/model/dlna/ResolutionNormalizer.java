@@ -48,10 +48,6 @@ public class ResolutionNormalizer
 
 	private static double GetVideoBitrateScaleFactor(String codec)
 	{
-		if (String.equals(codec, "h265", StringComparison.OrdinalIgnoreCase) || String.equals(codec, "hevc", StringComparison.OrdinalIgnoreCase))
-		{
-			return.5;
-		}
 		return 1;
 	}
 

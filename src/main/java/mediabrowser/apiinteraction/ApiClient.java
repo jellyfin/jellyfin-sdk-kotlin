@@ -1647,6 +1647,11 @@ public class ApiClient extends BaseApiClient {
         dict.AddIfNotNull("EnableImageTypes", query.getEnableImageTypes());
         dict.AddIfNotNull("Fields", query.getFields());
 
+        if (!query.getEnableTotalRecordCount())
+        {
+            dict.Add("EnableTotalRecordCount", "false");
+        }
+
         String url = GetApiUrl("LiveTv/Recordings", dict);
 
         url = AddDataFormat(url);
@@ -1898,6 +1903,11 @@ public class ApiClient extends BaseApiClient {
         dict.AddIfNotNull("Limit", query.getLimit());
         dict.AddIfNotNull("HasAired", query.getHasAired());
         dict.AddIfNotNull("IsAiring", query.getIsAiring());
+
+        if (!query.getEnableTotalRecordCount())
+        {
+            dict.Add("EnableTotalRecordCount", "false");
+        }
 
         String url = GetApiUrl("LiveTv/Programs/Recommended", dict);
 
