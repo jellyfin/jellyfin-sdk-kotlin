@@ -12,6 +12,11 @@ import mediabrowser.model.session.*;
 */
 public class StreamInfo
 {
+	public StreamInfo()
+	{
+		setAudioCodecs(new String[] { });
+	}
+
 	private String ItemId;
 	public final String getItemId()
 	{
@@ -118,14 +123,14 @@ public class StreamInfo
 	{
 		ForceLiveStream = value;
 	}
-	private String AudioCodec;
-	public final String getAudioCodec()
+	private String[] AudioCodecs;
+	public final String[] getAudioCodecs()
 	{
-		return AudioCodec;
+		return AudioCodecs;
 	}
-	public final void setAudioCodec(String value)
+	public final void setAudioCodecs(String[] value)
 	{
-		AudioCodec = value;
+		AudioCodecs = value;
 	}
 
 	private Integer AudioStreamIndex = null;
@@ -459,6 +464,8 @@ public class StreamInfo
 	{
 		java.util.ArrayList<NameValuePair> list = new java.util.ArrayList<NameValuePair>();
 
+		String audioCodecs = item.getAudioCodecs().length == 0 ? "" : tangible.DotNetToJavaStringHelper.join(",", item.getAudioCodecs());
+
 		String tempVar = item.getDeviceProfileId();
 		list.add(new NameValuePair("DeviceProfileId", (tempVar != null) ? tempVar : ""));
 		String tempVar2 = item.getDeviceId();
@@ -468,8 +475,7 @@ public class StreamInfo
 		list.add(new NameValuePair("Static", (new Boolean(item.getIsDirectStream())).toString().toLowerCase()));
 		String tempVar4 = item.getVideoCodec();
 		list.add(new NameValuePair("VideoCodec", (tempVar4 != null) ? tempVar4 : ""));
-		String tempVar5 = item.getAudioCodec();
-		list.add(new NameValuePair("AudioCodec", (tempVar5 != null) ? tempVar5 : ""));
+		list.add(new NameValuePair("AudioCodec", audioCodecs));
 		list.add(new NameValuePair("AudioStreamIndex", item.getAudioStreamIndex() != null ? StringHelper.ToStringCultureInvariant(item.getAudioStreamIndex()) : ""));
 		list.add(new NameValuePair("SubtitleStreamIndex", item.getSubtitleStreamIndex() != null && item.getSubtitleDeliveryMethod() != mediabrowser.model.dlna.SubtitleDeliveryMethod.External ? StringHelper.ToStringCultureInvariant(item.getSubtitleStreamIndex()) : ""));
 		list.add(new NameValuePair("VideoBitrate", item.getVideoBitrate() != null ? StringHelper.ToStringCultureInvariant(item.getVideoBitrate()) : ""));
@@ -492,14 +498,14 @@ public class StreamInfo
 
 		list.add(new NameValuePair("MaxRefFrames", item.getMaxRefFrames() != null ? StringHelper.ToStringCultureInvariant(item.getMaxRefFrames()) : ""));
 		list.add(new NameValuePair("MaxVideoBitDepth", item.getMaxVideoBitDepth() != null ? StringHelper.ToStringCultureInvariant(item.getMaxVideoBitDepth()) : ""));
-		String tempVar6 = item.getVideoProfile();
-		list.add(new NameValuePair("Profile", (tempVar6 != null) ? tempVar6 : ""));
+		String tempVar5 = item.getVideoProfile();
+		list.add(new NameValuePair("Profile", (tempVar5 != null) ? tempVar5 : ""));
 
 		// no longer used
 		list.add(new NameValuePair("Cabac", ""));
 
-		String tempVar7 = item.getPlaySessionId();
-		list.add(new NameValuePair("PlaySessionId", (tempVar7 != null) ? tempVar7 : ""));
+		String tempVar6 = item.getPlaySessionId();
+		list.add(new NameValuePair("PlaySessionId", (tempVar6 != null) ? tempVar6 : ""));
 		list.add(new NameValuePair("api_key", (accessToken != null) ? accessToken : ""));
 
 		String liveStreamId = item.getMediaSource() == null ? null : item.getMediaSource().getLiveStreamId();
@@ -775,7 +781,22 @@ public class StreamInfo
 	{
 		MediaStream stream = getTargetAudioStream();
 
-		return getIsDirectStream() ? (stream == null ? null : stream.getCodec()) : getAudioCodec();
+		String inputCodec = stream == null ? null : stream.getCodec();
+
+		if (getIsDirectStream())
+		{
+			return inputCodec;
+		}
+
+		for (String codec : getAudioCodecs())
+		{
+			if (StringHelper.EqualsIgnoreCase(codec, inputCodec))
+			{
+				return codec;
+			}
+		}
+
+		return getAudioCodecs().length == 0 ? null : getAudioCodecs()[0];
 	}
 
 	/** 

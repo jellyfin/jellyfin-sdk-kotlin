@@ -208,7 +208,15 @@ public class StreamBuilder
 			playlistItem.setTranscodeSeekInfo(transcodingProfile.getTranscodeSeekInfo());
 			playlistItem.setEstimateContentLength(transcodingProfile.getEstimateContentLength());
 			playlistItem.setContainer(transcodingProfile.getContainer());
-			playlistItem.setAudioCodec(transcodingProfile.getAudioCodec());
+
+			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(transcodingProfile.getAudioCodec()))
+			{
+				playlistItem.setAudioCodecs(new String[] { });
+			}
+			else
+			{
+				playlistItem.setAudioCodecs(transcodingProfile.getAudioCodec().split("[,]", -1));
+			}
 			playlistItem.setSubProtocol(transcodingProfile.getProtocol());
 
 			java.util.ArrayList<CodecProfile> audioCodecProfiles = new java.util.ArrayList<CodecProfile>();
@@ -433,22 +441,7 @@ public class StreamBuilder
 			playlistItem.setEstimateContentLength(transcodingProfile.getEstimateContentLength());
 			playlistItem.setTranscodeSeekInfo(transcodingProfile.getTranscodeSeekInfo());
 
-			// TODO: We should probably preserve the full list and sent it to the server that way
-			String[] supportedAudioCodecs = transcodingProfile.getAudioCodec().split("[,]", -1);
-			String inputAudioCodec = audioStream == null ? null : audioStream.getCodec();
-			for (String supportedAudioCodec : supportedAudioCodecs)
-			{
-				if (StringHelper.EqualsIgnoreCase(supportedAudioCodec, inputAudioCodec))
-				{
-					playlistItem.setAudioCodec(supportedAudioCodec);
-					break;
-				}
-			}
-
-			if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(playlistItem.getAudioCodec()))
-			{
-				playlistItem.setAudioCodec(supportedAudioCodecs[0]);
-			}
+			playlistItem.setAudioCodecs(transcodingProfile.getAudioCodec().split("[,]", -1));
 
 			playlistItem.setVideoCodec(transcodingProfile.getVideoCodec());
 			playlistItem.setCopyTimestamps(transcodingProfile.getCopyTimestamps());
@@ -485,7 +478,7 @@ public class StreamBuilder
 			java.util.ArrayList<ProfileCondition> audioTranscodingConditions = new java.util.ArrayList<ProfileCondition>();
 			for (CodecProfile i : options.getProfile().getCodecProfiles())
 			{
-				if (i.getType() == CodecType.VideoAudio && i.ContainsCodec(playlistItem.getAudioCodec(), transcodingProfile.getContainer()))
+				if (i.getType() == CodecType.VideoAudio && i.ContainsCodec(playlistItem.getTargetAudioCodec(), transcodingProfile.getContainer()))
 				{
 					for (ProfileCondition c : i.getConditions())
 					{
@@ -829,17 +822,17 @@ public class StreamBuilder
 			{
 				boolean requiresConversion = !StringHelper.EqualsIgnoreCase(subtitleStream.getCodec(), profile.getFormat());
 
-				if (requiresConversion && !allowConversion)
-				{
-					continue;
-				}
-
 				if (!requiresConversion)
 				{
 					return profile;
 				}
 
-				if (subtitleStream.getIsTextSubtitleStream() && subtitleStream.getSupportsExternalStream())
+				if (!allowConversion)
+				{
+					continue;
+				}
+
+				if (subtitleStream.getIsTextSubtitleStream() && subtitleStream.getSupportsExternalStream() && subtitleStream.SupportsSubtitleConversionTo(profile.getFormat()))
 				{
 					return profile;
 				}
