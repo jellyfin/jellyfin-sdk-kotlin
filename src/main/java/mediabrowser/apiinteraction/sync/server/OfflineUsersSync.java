@@ -63,6 +63,7 @@ public class OfflineUsersSync {
 
                 @Override
                 public void onError(Exception ex) {
+                    logger.ErrorException("Error saving offline user", ex);
                     onAny();
                 }
             });
@@ -103,7 +104,9 @@ public class OfflineUsersSync {
 
         if (user.getHasPrimaryImage())
         {
-            if (localAssetManager.hasImage(user)){
+            boolean hasLocalImage = localAssetManager.hasImage(user);
+            logger.Info("localAssetManager has image for user %s ? %s", user.getName(), hasLocalImage);
+            if (hasLocalImage){
 
                 response.onResponse();
             }
@@ -113,6 +116,8 @@ public class OfflineUsersSync {
                 imageOptions.setImageType(ImageType.Primary);
                 String imageUrl = apiClient.GetUserImageUrl(user, imageOptions);
 
+                logger.Info("Getting image stream from %s", imageUrl);
+
                 apiClient.getResponseStream(imageUrl, new Response<InputStream>(response) {
 
                     @Override
@@ -120,7 +125,10 @@ public class OfflineUsersSync {
 
                         try (InputStream alias = stream) {
 
+                            logger.Info("Got image stream, calling localAssetManager.saveImage");
                             localAssetManager.saveImage(user, alias);
+                            logger.Info("Image save complete");
+                            response.onResponse();
 
                         } catch (Exception ex) {
                             response.onError(ex);
@@ -133,7 +141,13 @@ public class OfflineUsersSync {
         }
         else
         {
-            localAssetManager.deleteImage(user);
+            try {
+                localAssetManager.deleteImage(user);
+            }
+            catch (Exception ex){
+                logger.ErrorException("Error deleting image", ex);
+            }
+
             response.onResponse();
         }
     }

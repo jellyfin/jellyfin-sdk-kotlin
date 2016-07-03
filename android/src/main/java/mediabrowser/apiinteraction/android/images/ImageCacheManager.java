@@ -7,8 +7,6 @@ import com.android.volley.toolbox.ImageLoader;
 import mediabrowser.apiinteraction.android.images.LruBitmapCache;
 import mediabrowser.model.logging.ILogger;
 
-import java.io.IOException;
-
 /**
  * Implementation of volley's ImageCache interface. This manager tracks the application image loader and cache.
  *

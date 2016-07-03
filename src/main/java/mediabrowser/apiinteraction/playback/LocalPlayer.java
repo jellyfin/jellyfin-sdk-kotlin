@@ -2,8 +2,6 @@ package mediabrowser.apiinteraction.playback;
 
 import mediabrowser.model.dlna.ILocalPlayer;
 
-import java.io.File;
-
 /**
  * Created by Luke on 4/17/2015.
  */

@@ -1,6 +1,5 @@
 package mediabrowser.apiinteraction.sync.data;
 
-import android.util.Log;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.sync.DeviceFileInfo;
 
@@ -24,7 +23,9 @@ public abstract class FileRepository implements IFileRepository {
     }
 
     @Override
-    public void saveFile(InputStream initialStream, String targetFile) throws IOException {
+    public String saveFile(InputStream initialStream, String directory, String name, String mimeType) throws IOException {
+
+        String targetFile = new File(new File(directory), name).getAbsolutePath();
 
         Logger.Info("Saving file to %s", targetFile);
         File parentFile = new File(targetFile).getParentFile();
@@ -47,6 +48,8 @@ public abstract class FileRepository implements IFileRepository {
             }
             outStream.close();
         }
+
+        return targetFile;
     }
 
     @Override
@@ -98,10 +101,5 @@ public abstract class FileRepository implements IFileRepository {
         }
 
         return file.getPath();
-    }
-
-    @Override
-    public String getParentDirectoryPath(String path) {
-        return new File(path).getParent();
     }
 }

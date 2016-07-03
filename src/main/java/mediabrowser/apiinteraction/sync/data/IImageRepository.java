@@ -5,7 +5,7 @@ import java.io.InputStream;
 
 public interface IImageRepository {
 
-    void saveImage(String itemId, String imageId, InputStream stream) throws Exception;
+    void saveImage(String itemId, String imageId, InputStream stream, String mimeType) throws Exception;
 
     void deleteImage(String itemId, String imageId);
 

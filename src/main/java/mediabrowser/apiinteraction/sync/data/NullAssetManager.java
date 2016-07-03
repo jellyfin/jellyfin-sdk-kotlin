@@ -39,11 +39,6 @@ public class NullAssetManager implements ILocalAssetManager {
     }
 
     @Override
-    public ArrayList<ItemFileInfo> getFiles(LocalItem item) {
-        return new ArrayList<ItemFileInfo>();
-    }
-
-    @Override
     public void deleteFile(String path) {
 
     }

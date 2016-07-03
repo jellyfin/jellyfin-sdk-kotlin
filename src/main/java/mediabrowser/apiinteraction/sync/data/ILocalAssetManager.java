@@ -27,8 +27,6 @@ public interface ILocalAssetManager {
 
     void addOrUpdate(LocalItem item);
 
-    ArrayList<ItemFileInfo> getFiles(LocalItem item);
-
     void deleteFile(String path);
 
     String saveSubtitles(InputStream stream,

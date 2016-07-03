@@ -10,7 +10,7 @@ public interface IFileRepository {
 
     ArrayList<DeviceFileInfo> getFileSystemEntries(String path);
 
-    void saveFile(InputStream stream, String path) throws IOException;
+    String saveFile(InputStream stream, String directory, String name, String mimeType) throws IOException;
 
     void deleteFile(String path);
 
@@ -21,6 +21,4 @@ public interface IFileRepository {
     boolean fileExists(String path);
 
     String getFullLocalPath(ArrayList<String> path);
-
-    String getParentDirectoryPath(String path);
 }
