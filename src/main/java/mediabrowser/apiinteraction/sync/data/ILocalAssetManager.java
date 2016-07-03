@@ -43,7 +43,7 @@ public interface ILocalAssetManager {
 
     boolean fileExists(String path);
 
-    void saveMedia(InputStream stream, LocalItem localItem, ServerInfo server) throws IOException;
+    String saveMedia(InputStream stream, LocalItem localItem, ServerInfo server) throws IOException;
 
     ArrayList<String> getServerItemIds(String serverId);
 

@@ -84,9 +84,9 @@ public class NullAssetManager implements ILocalAssetManager {
     }
 
     @Override
-    public void saveMedia(InputStream stream, LocalItem localItem, ServerInfo server)
+    public String saveMedia(InputStream stream, LocalItem localItem, ServerInfo server)
     {
-
+        return null;
     }
 
     @Override

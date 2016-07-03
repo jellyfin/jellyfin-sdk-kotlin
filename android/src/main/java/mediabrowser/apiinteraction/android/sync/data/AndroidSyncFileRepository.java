@@ -49,6 +49,6 @@ public class AndroidSyncFileRepository extends  AndroidFileRepository {
         if (directory == null){
             directory = context.getFilesDir();
         }
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && StringHelper.IndexOfIgnoreCase(path, directory.getAbsolutePath()) != 0 ;
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && StringHelper.IndexOfIgnoreCase(path, directory.getAbsolutePath()) != 0 ;
     }
 }

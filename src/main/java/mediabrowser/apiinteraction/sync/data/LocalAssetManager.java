@@ -94,13 +94,13 @@ public class LocalAssetManager implements ILocalAssetManager {
     }
 
     @Override
-    public void saveMedia(InputStream stream, LocalItem localItem, ServerInfo server) throws IOException {
+    public String saveMedia(InputStream stream, LocalItem localItem, ServerInfo server) throws IOException {
 
         logger.Debug("Saving media to " + localItem.getLocalPath());
 
         String[] parts = localItem.getFileId().split(Pattern.quote("##"));
 
-        fileRepository.saveFile(stream, parts[0], parts[1], GetMimeType(localItem.getLocalPath()));
+        return fileRepository.saveFile(stream, parts[0], parts[1], GetMimeType(localItem.getLocalPath()));
     }
 
     private static String[] SupportedImageExtensions = { ".png", ".jpg", ".jpeg", ".webp" };

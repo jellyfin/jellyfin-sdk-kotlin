@@ -176,7 +176,7 @@ public class MediaSync {
                          final CancellationToken cancellationToken,
                          final EmptyResponse response){
 
-        BaseItemDto libraryItem = jobItem.getItem();
+        final BaseItemDto libraryItem = jobItem.getItem();
 
         logger.Debug("Getting new item from sync %s", libraryItem.getName());
 
@@ -201,7 +201,11 @@ public class MediaSync {
 
                 try (InputStream copy = stream){
 
-                    localAssetManager.saveMedia(copy, localItem, server);
+                    String mediaPath = localAssetManager.saveMedia(copy, localItem, server);
+
+                    for (MediaSourceInfo mediaSourceInfo : localItem.getItem().getMediaSources()){
+                        mediaSourceInfo.setPath(mediaPath);
+                    }
                 }
                 catch (IOException ioException){
                     response.onError(ioException);

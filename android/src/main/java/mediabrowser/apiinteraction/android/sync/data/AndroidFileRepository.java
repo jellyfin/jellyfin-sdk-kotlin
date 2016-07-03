@@ -61,13 +61,17 @@ public class AndroidFileRepository extends FileRepository {
         if (enableDocumentFile(path)) {
 
             Logger.Info("Checking if DocumentFile exists: %s", path);
-            DocumentFile file = getDocumentFile(path);
+            DocumentFile file = DocumentFile.fromSingleUri(context, Uri.parse(path));
 
             if (file == null){
                 Logger.Info("File is null: %s", path);
                 return false;
             } else{
-                return file.exists();
+                boolean exists = file.exists();
+
+                Logger.Info("DocumentFile exists: %s: %s", exists, path);
+
+                return exists;
             }
         }
         else {
