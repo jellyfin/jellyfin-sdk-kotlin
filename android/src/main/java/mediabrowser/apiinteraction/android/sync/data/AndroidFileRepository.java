@@ -37,18 +37,6 @@ public class AndroidFileRepository extends FileRepository {
         return file.getPath();
     }
 
-    @Override
-    public String getFullLocalPath(ArrayList<String> path) {
-
-        if (enableDocumentFile(getBasePath())){
-
-            String[] contents = new String[path.size()];
-            return tangible.DotNetToJavaStringHelper.join("/", path.toArray(contents));
-        }
-
-        return super.getFullLocalPath(path);
-    }
-
     private DocumentFile getDocumentFile(String path){
 
         String[] parts = path.split(Pattern.quote("/"));
@@ -86,7 +74,7 @@ public class AndroidFileRepository extends FileRepository {
         Logger.Info("Deleting file: %s", path);
         if (enableDocumentFile(path)) {
 
-            DocumentFile file = getDocumentFile(path);
+            DocumentFile file = DocumentFile.fromSingleUri(context, Uri.parse(path));
 
             if (file == null){
                 Logger.Info("File is null, already deleted: %s", path);
@@ -107,7 +95,13 @@ public class AndroidFileRepository extends FileRepository {
 
         if (enableDocumentFile(path)) {
 
-            deleteFileOrFolder(getDocumentFile(path));
+            DocumentFile file = DocumentFile.fromSingleUri(context, Uri.parse(path));
+
+            if (file == null){
+                Logger.Info("File is null, already deleted: %s", path);
+            } else{
+                deleteFileOrFolder(file);
+            }
         }
         else {
 

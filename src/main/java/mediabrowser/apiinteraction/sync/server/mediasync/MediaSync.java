@@ -203,6 +203,7 @@ public class MediaSync {
 
                     String mediaPath = localAssetManager.saveMedia(copy, localItem, server);
 
+                    localItem.setLocalPath(mediaPath);
                     for (MediaSourceInfo mediaSourceInfo : localItem.getItem().getMediaSources()){
                         mediaSourceInfo.setPath(mediaPath);
                     }

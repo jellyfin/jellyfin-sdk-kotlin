@@ -19,6 +19,4 @@ public interface IFileRepository {
     String getValidFileName(String name);
 
     boolean fileExists(String path);
-
-    String getFullLocalPath(ArrayList<String> path);
 }

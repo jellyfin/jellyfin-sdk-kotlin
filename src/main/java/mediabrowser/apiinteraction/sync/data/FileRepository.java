@@ -90,16 +90,4 @@ public abstract class FileRepository implements IFileRepository {
     }
 
     protected abstract String getBasePath();
-
-    @Override
-    public String getFullLocalPath(ArrayList<String> path) {
-
-        File file = new File(getBasePath());
-
-        for (String part : path){
-            file = new File(file, part);
-        }
-
-        return file.getPath();
-    }
 }

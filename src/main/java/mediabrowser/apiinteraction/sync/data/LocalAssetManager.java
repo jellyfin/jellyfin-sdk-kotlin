@@ -127,8 +127,6 @@ public class LocalAssetManager implements ILocalAssetManager {
     @Override
     public String saveSubtitles(InputStream stream, String format, LocalItem item, String language, boolean isForced) throws IOException {
 
-        String path = item.getLocalPath();
-
         String filename = getSubtitleSaveFileName(item, language, isForced) + "." + format.toLowerCase();
 
         String[] parts = item.getFileId().split(Pattern.quote("##"));
@@ -155,6 +153,12 @@ public class LocalAssetManager implements ILocalAssetManager {
         return name;
     }
 
+    private String getFullLocalPath(ArrayList<String> path) {
+
+        String[] contents = new String[path.size()];
+        return tangible.DotNetToJavaStringHelper.join("/", path.toArray(contents));
+    }
+
     @Override
     public LocalItem createLocalItem(BaseItemDto libraryItem, ServerInfo server, String originalFileName) {
 
@@ -162,10 +166,10 @@ public class LocalAssetManager implements ILocalAssetManager {
         String localFilename = getLocalFileName(libraryItem, originalFileName);
 
         LocalItem item = new LocalItem();
-        item.setFileId(fileRepository.getFullLocalPath(path) + "##" + localFilename);
+        item.setFileId(getFullLocalPath(path) + "##" + localFilename);
 
         path.add(localFilename);
-        String localPath = fileRepository.getFullLocalPath(path);
+        String localPath = getFullLocalPath(path);
 
         item.setLocalPath(localPath);
 
