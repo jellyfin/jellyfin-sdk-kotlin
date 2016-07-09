@@ -37,12 +37,6 @@ public class AndroidFileRepository extends FileRepository {
         return file.getPath();
     }
 
-    private DocumentFile getDocumentFile(String path){
-
-        String[] parts = path.split(Pattern.quote("/"));
-        return findFileRecursive(Uri.parse(getBasePath()), parts);
-    }
-
     @Override
     public boolean fileExists(String path) {
 

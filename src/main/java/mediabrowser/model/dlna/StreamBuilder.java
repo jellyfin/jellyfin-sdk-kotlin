@@ -126,6 +126,11 @@ public class StreamBuilder
 
 		java.util.ArrayList<PlayMethod> directPlayMethods = GetAudioDirectPlayMethods(item, audioStream, options);
 
+		ConditionProcessor conditionProcessor = new ConditionProcessor();
+
+		Integer inputAudioChannels = audioStream == null ? null : audioStream.getChannels();
+		Integer inputAudioBitrate = audioStream == null ? null : audioStream.getBitDepth();
+
 		if (directPlayMethods.size() > 0)
 		{
 			String audioCodec = audioStream == null ? null : audioStream.getCodec();
@@ -133,27 +138,36 @@ public class StreamBuilder
 			// Make sure audio codec profiles are satisfied
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(audioCodec))
 			{
-				ConditionProcessor conditionProcessor = new ConditionProcessor();
-
 				java.util.ArrayList<ProfileCondition> conditions = new java.util.ArrayList<ProfileCondition>();
 				for (CodecProfile i : options.getProfile().getCodecProfiles())
 				{
 					if (i.getType() == CodecType.Audio && i.ContainsCodec(audioCodec, item.getContainer()))
 					{
-						for (ProfileCondition c : i.getConditions())
+						boolean applyConditions = true;
+						for (ProfileCondition applyCondition : i.getApplyConditions())
 						{
-							conditions.add(c);
+							if (!conditionProcessor.IsAudioConditionSatisfied(applyCondition, inputAudioChannels, inputAudioBitrate))
+							{
+								LogConditionFailure(options.getProfile(), "AudioCodecProfile", applyCondition, item);
+								applyConditions = false;
+								break;
+							}
+						}
+
+						if (applyConditions)
+						{
+							for (ProfileCondition c : i.getConditions())
+							{
+								conditions.add(c);
+							}
 						}
 					}
 				}
 
-				Integer audioChannels = audioStream.getChannels();
-				Integer audioBitrate = audioStream.getBitRate();
-
 				boolean all = true;
 				for (ProfileCondition c : conditions)
 				{
-					if (!conditionProcessor.IsAudioConditionSatisfied(c, audioChannels, audioBitrate))
+					if (!conditionProcessor.IsAudioConditionSatisfied(c, inputAudioChannels, inputAudioBitrate))
 					{
 						LogConditionFailure(options.getProfile(), "AudioCodecProfile", c, item);
 						all = false;
@@ -236,9 +250,23 @@ public class StreamBuilder
 			java.util.ArrayList<ProfileCondition> audioTranscodingConditions = new java.util.ArrayList<ProfileCondition>();
 			for (CodecProfile i : audioCodecProfiles)
 			{
-				for (ProfileCondition c : i.getConditions())
+				boolean applyConditions = true;
+				for (ProfileCondition applyCondition : i.getApplyConditions())
 				{
-					audioTranscodingConditions.add(c);
+					if (!conditionProcessor.IsAudioConditionSatisfied(applyCondition, inputAudioChannels, inputAudioBitrate))
+					{
+						LogConditionFailure(options.getProfile(), "AudioCodecProfile", applyCondition, item);
+						applyConditions = false;
+						break;
+					}
+				}
+
+				if (applyConditions)
+				{
+					for (ProfileCondition c : i.getConditions())
+					{
+						audioTranscodingConditions.add(c);
+					}
 				}
 			}
 
@@ -290,14 +318,14 @@ public class StreamBuilder
 		if (directPlayProfile != null)
 		{
 			// While options takes the network and other factors into account. Only applies to direct stream
-			if (item.getSupportsDirectStream() && IsAudioEligibleForDirectPlay(item, options.GetMaxBitrate()))
+			if (item.getSupportsDirectStream() && IsAudioEligibleForDirectPlay(item, options.GetMaxBitrate()) && options.getEnableDirectStream())
 			{
 				playMethods.add(PlayMethod.DirectStream);
 			}
 
 			// The profile describes what the device supports
 			// If device requirements are satisfied then allow both direct stream and direct play
-			if (item.getSupportsDirectPlay() && IsAudioEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options)))
+			if (item.getSupportsDirectPlay() && IsAudioEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options)) && options.getEnableDirectPlay())
 			{
 				playMethods.add(PlayMethod.DirectPlay);
 			}
@@ -381,8 +409,8 @@ public class StreamBuilder
 		MediaStream videoStream = item.getVideoStream();
 
 		// TODO: This doesn't accout for situation of device being able to handle media bitrate, but wifi connection not fast enough
-		boolean isEligibleForDirectPlay = IsEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options), subtitleStream, options, PlayMethod.DirectPlay);
-		boolean isEligibleForDirectStream = IsEligibleForDirectPlay(item, options.GetMaxBitrate(), subtitleStream, options, PlayMethod.DirectStream);
+		boolean isEligibleForDirectPlay = options.getEnableDirectPlay() && IsEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options), subtitleStream, options, PlayMethod.DirectPlay);
+		boolean isEligibleForDirectStream = options.getEnableDirectStream() && IsEligibleForDirectPlay(item, options.GetMaxBitrate(), subtitleStream, options, PlayMethod.DirectStream);
 
 		String tempVar4 = options.getProfile().getName();
 		String tempVar5 = item.getPath();
@@ -460,17 +488,37 @@ public class StreamBuilder
 			}
 			playlistItem.setSubProtocol(transcodingProfile.getProtocol());
 			playlistItem.setAudioStreamIndex(audioStreamIndex);
+			ConditionProcessor conditionProcessor = new ConditionProcessor();
 
 			java.util.ArrayList<ProfileCondition> videoTranscodingConditions = new java.util.ArrayList<ProfileCondition>();
 			for (CodecProfile i : options.getProfile().getCodecProfiles())
 			{
 				if (i.getType() == CodecType.Video && i.ContainsCodec(transcodingProfile.getVideoCodec(), transcodingProfile.getContainer()))
 				{
-					for (ProfileCondition c : i.getConditions())
+					boolean applyConditions = true;
+					for (ProfileCondition applyCondition : i.getApplyConditions())
 					{
-						videoTranscodingConditions.add(c);
+						Boolean isSecondaryAudio = audioStream == null ? null : item.IsSecondaryAudio(audioStream);
+						Integer inputAudioBitrate = audioStream == null ? null : audioStream.getBitRate();
+						Integer audioChannels = audioStream == null ? null : audioStream.getChannels();
+						String audioProfile = audioStream == null ? null : audioStream.getProfile();
+
+						if (!conditionProcessor.IsVideoAudioConditionSatisfied(applyCondition, audioChannels, inputAudioBitrate, audioProfile, isSecondaryAudio))
+						{
+							LogConditionFailure(options.getProfile(), "AudioCodecProfile", applyCondition, item);
+							applyConditions = false;
+							break;
+						}
 					}
-					break;
+
+					if (applyConditions)
+					{
+						for (ProfileCondition c : i.getConditions())
+						{
+							videoTranscodingConditions.add(c);
+						}
+						break;
+					}
 				}
 			}
 			ApplyTranscodingConditions(playlistItem, videoTranscodingConditions);
@@ -480,11 +528,43 @@ public class StreamBuilder
 			{
 				if (i.getType() == CodecType.VideoAudio && i.ContainsCodec(playlistItem.getTargetAudioCodec(), transcodingProfile.getContainer()))
 				{
-					for (ProfileCondition c : i.getConditions())
+					boolean applyConditions = true;
+					for (ProfileCondition applyCondition : i.getApplyConditions())
 					{
-						audioTranscodingConditions.add(c);
+						Integer width = videoStream == null ? null : videoStream.getWidth();
+						Integer height = videoStream == null ? null : videoStream.getHeight();
+						Integer bitDepth = videoStream == null ? null : videoStream.getBitDepth();
+						Integer videoBitrate = videoStream == null ? null : videoStream.getBitRate();
+						Double videoLevel = videoStream == null ? null : videoStream.getLevel();
+						String videoProfile = videoStream == null ? null : videoStream.getProfile();
+						Float tempVar7 = videoStream.getAverageFrameRate();
+						Float videoFramerate = videoStream == null ? null : (tempVar7 != null) ? tempVar7 : videoStream.getAverageFrameRate();
+						Boolean isAnamorphic = videoStream == null ? null : videoStream.getIsAnamorphic();
+						String videoCodecTag = videoStream == null ? null : videoStream.getCodecTag();
+
+						TransportStreamTimestamp timestamp = videoStream == null ? TransportStreamTimestamp.None : item.getTimestamp();
+						Integer packetLength = videoStream == null ? null : videoStream.getPacketLength();
+						Integer refFrames = videoStream == null ? null : videoStream.getRefFrames();
+
+						Integer numAudioStreams = item.GetStreamCount(MediaStreamType.Audio);
+						Integer numVideoStreams = item.GetStreamCount(MediaStreamType.Video);
+
+						if (!conditionProcessor.IsVideoConditionSatisfied(applyCondition, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames, numVideoStreams, numAudioStreams, videoCodecTag))
+						{
+							LogConditionFailure(options.getProfile(), "VideoCodecProfile", applyCondition, item);
+							applyConditions = false;
+							break;
+						}
 					}
-					break;
+
+					if (applyConditions)
+					{
+						for (ProfileCondition c : i.getConditions())
+						{
+							audioTranscodingConditions.add(c);
+						}
+						break;
+					}
 				}
 			}
 			ApplyTranscodingConditions(playlistItem, audioTranscodingConditions);
@@ -492,15 +572,15 @@ public class StreamBuilder
 			// Honor requested max channels
 			if (options.getMaxAudioChannels() != null)
 			{
-				Integer tempVar7 = playlistItem.getMaxAudioChannels();
-				int currentValue = (tempVar7 != null) ? tempVar7 : options.getMaxAudioChannels();
+				Integer tempVar8 = playlistItem.getMaxAudioChannels();
+				int currentValue = (tempVar8 != null) ? tempVar8 : options.getMaxAudioChannels();
 
 				playlistItem.setMaxAudioChannels(Math.min(options.getMaxAudioChannels(), currentValue));
 			}
 
 			int audioBitrate = GetAudioBitrate(options.GetMaxBitrate(), playlistItem.getTargetAudioChannels(), playlistItem.getTargetAudioCodec(), audioStream);
-			Integer tempVar8 = playlistItem.getAudioBitrate();
-			playlistItem.setAudioBitrate(Math.min((tempVar8 != null) ? tempVar8 : audioBitrate, audioBitrate));
+			Integer tempVar9 = playlistItem.getAudioBitrate();
+			playlistItem.setAudioBitrate(Math.min((tempVar9 != null) ? tempVar9 : audioBitrate, audioBitrate));
 
 			Integer maxBitrateSetting = options.GetMaxBitrate();
 			// Honor max rate
@@ -514,8 +594,8 @@ public class StreamBuilder
 				}
 
 				// Make sure the video bitrate is lower than bitrate settings but at least 64k
-				Integer tempVar9 = playlistItem.getVideoBitrate();
-				int currentValue = (tempVar9 != null) ? tempVar9 : videoBitrate;
+				Integer tempVar10 = playlistItem.getVideoBitrate();
+				int currentValue = (tempVar10 != null) ? tempVar10 : videoBitrate;
 				playlistItem.setVideoBitrate(Math.max(Math.min(videoBitrate, currentValue), 64000));
 			}
 		}
@@ -661,9 +741,23 @@ public class StreamBuilder
 		{
 			if (i.getType() == CodecType.Video && i.ContainsCodec(videoCodec, container))
 			{
-				for (ProfileCondition c : i.getConditions())
+				boolean applyConditions = true;
+				for (ProfileCondition applyCondition : i.getApplyConditions())
 				{
-					conditions.add(c);
+					if (!conditionProcessor.IsVideoConditionSatisfied(applyCondition, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames, numVideoStreams, numAudioStreams, videoCodecTag))
+					{
+						LogConditionFailure(profile, "VideoCodecProfile", applyCondition, mediaSource);
+						applyConditions = false;
+						break;
+					}
+				}
+
+				if (applyConditions)
+				{
+					for (ProfileCondition c : i.getConditions())
+					{
+						conditions.add(c);
+					}
 				}
 			}
 		}
@@ -692,20 +786,35 @@ public class StreamBuilder
 			}
 
 			conditions = new java.util.ArrayList<ProfileCondition>();
+			Boolean isSecondaryAudio = audioStream == null ? null : mediaSource.IsSecondaryAudio(audioStream);
+
 			for (CodecProfile i : profile.getCodecProfiles())
 			{
 				if (i.getType() == CodecType.VideoAudio && i.ContainsCodec(audioCodec, container))
 				{
-					for (ProfileCondition c : i.getConditions())
+					boolean applyConditions = true;
+					for (ProfileCondition applyCondition : i.getApplyConditions())
 					{
-						conditions.add(c);
+						if (!conditionProcessor.IsVideoAudioConditionSatisfied(applyCondition, audioChannels, audioBitrate, audioProfile, isSecondaryAudio))
+						{
+							LogConditionFailure(profile, "VideoAudioCodecProfile", applyCondition, mediaSource);
+							applyConditions = false;
+							break;
+						}
+					}
+
+					if (applyConditions)
+					{
+						for (ProfileCondition c : i.getConditions())
+						{
+							conditions.add(c);
+						}
 					}
 				}
 			}
 
 			for (ProfileCondition i : conditions)
 			{
-				Boolean isSecondaryAudio = audioStream == null ? null : mediaSource.IsSecondaryAudio(audioStream);
 				if (!conditionProcessor.IsVideoAudioConditionSatisfied(i, audioChannels, audioBitrate, audioProfile, isSecondaryAudio))
 				{
 					LogConditionFailure(profile, "VideoAudioCodecProfile", i, mediaSource);

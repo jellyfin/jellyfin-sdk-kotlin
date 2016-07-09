@@ -44,11 +44,6 @@ public class AndroidSyncFileRepository extends  AndroidFileRepository {
     @Override
     protected boolean enableDocumentFile(String path){
 
-        File directory = context.getExternalFilesDir(null);
-
-        if (directory == null){
-            directory = context.getFilesDir();
-        }
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && StringHelper.IndexOfIgnoreCase(path, directory.getAbsolutePath()) != 0 ;
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && getCustomSyncPath() != null ;
     }
 }

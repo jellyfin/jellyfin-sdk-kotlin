@@ -26,6 +26,16 @@ public class CodecProfile
 		Conditions = value;
 	}
 
+	private ProfileCondition[] ApplyConditions;
+	public final ProfileCondition[] getApplyConditions()
+	{
+		return ApplyConditions;
+	}
+	public final void setApplyConditions(ProfileCondition[] value)
+	{
+		ApplyConditions = value;
+	}
+
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("codec")] public string Codec {get;set;}
 	private String Codec;
@@ -53,6 +63,7 @@ public class CodecProfile
 	public CodecProfile()
 	{
 		setConditions(new ProfileCondition[] {});
+		setApplyConditions(new ProfileCondition[] { });
 	}
 
 	public final java.util.ArrayList<String> GetCodecs()

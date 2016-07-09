@@ -10,6 +10,28 @@ public class AudioOptions
 	public AudioOptions()
 	{
 		setContext(EncodingContext.Streaming);
+
+		setEnableDirectPlay(true);
+		setEnableDirectStream(true);
+	}
+
+	private boolean EnableDirectPlay;
+	public final boolean getEnableDirectPlay()
+	{
+		return EnableDirectPlay;
+	}
+	public final void setEnableDirectPlay(boolean value)
+	{
+		EnableDirectPlay = value;
+	}
+	private boolean EnableDirectStream;
+	public final boolean getEnableDirectStream()
+	{
+		return EnableDirectStream;
+	}
+	public final void setEnableDirectStream(boolean value)
+	{
+		EnableDirectStream = value;
 	}
 
 	private String ItemId;

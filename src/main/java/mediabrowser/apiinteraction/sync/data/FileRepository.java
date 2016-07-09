@@ -5,6 +5,7 @@ import mediabrowser.model.sync.DeviceFileInfo;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 /**
  * Created by Luke on 3/24/2015.
@@ -25,10 +26,19 @@ public abstract class FileRepository implements IFileRepository {
     @Override
     public String saveFile(InputStream initialStream, String directory, String name, String mimeType) throws IOException {
 
-        String targetFile = new File(new File(directory), name).getAbsolutePath();
+        File targetFile = new File(getBasePath());
+
+        String[] parts = directory.split(Pattern.quote("/"));
+        for (String part : parts){
+            targetFile = new File(targetFile, part);
+        }
+
+        targetFile = new File(targetFile, name);
+
+        String targetFilePath = targetFile.getAbsolutePath();
 
         Logger.Info("Saving file to %s", targetFile);
-        File parentFile = new File(targetFile).getParentFile();
+        File parentFile = new File(targetFilePath).getParentFile();
 
         Logger.Info("Creating parent directory %s", parentFile.getAbsolutePath());
         boolean success = parentFile.mkdirs();
@@ -39,7 +49,7 @@ public abstract class FileRepository implements IFileRepository {
             Logger.Info("Creating parent directory failed: %s", parentFile.getAbsolutePath());
         }
 
-        try (OutputStream outStream = new FileOutputStream(targetFile)) {
+        try (OutputStream outStream = new FileOutputStream(targetFilePath)) {
 
             byte[] buffer = new byte[8 * 1024];
             int bytesRead;
@@ -49,7 +59,7 @@ public abstract class FileRepository implements IFileRepository {
             outStream.close();
         }
 
-        return targetFile;
+        return targetFilePath;
     }
 
     @Override
