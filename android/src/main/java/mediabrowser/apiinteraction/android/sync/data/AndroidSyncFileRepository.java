@@ -44,6 +44,6 @@ public class AndroidSyncFileRepository extends  AndroidFileRepository {
     @Override
     protected boolean enableDocumentFile(String path){
 
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && getCustomSyncPath() != null ;
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && getCustomSyncPath() != null ;
     }
 }
