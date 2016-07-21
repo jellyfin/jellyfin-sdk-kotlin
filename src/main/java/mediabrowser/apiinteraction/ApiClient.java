@@ -469,6 +469,18 @@ public class ApiClient extends BaseApiClient {
         GetItemsFromUrl(url, response);
     }
 
+    public void closeLiveStream(String liveStreamId, EmptyResponse response){
+
+        // LiveStreams/Close
+        // LiveStreamId
+        QueryStringDictionary dict = new QueryStringDictionary ();
+        dict.Add("LiveStreamId", liveStreamId);
+
+        String url = GetApiUrl("LiveStreams/Close", dict);
+
+        PostAsync(url, url, response);
+    }
+
     /// <summary>
     /// Gets the people async.
     /// </summary>

@@ -154,6 +154,19 @@ public class AndroidFileRepository extends FileRepository {
                 }
                 outStream.close();
             }
+            catch (Exception ex){
+
+                Logger.ErrorException("Error saving file", ex);
+
+                try {
+                    deleteFileOrFolder(newFile);
+                }
+                catch(Exception innerEx){
+
+                }
+
+                throw ex;
+            }
 
             return newFile.getUri().toString();
         }
