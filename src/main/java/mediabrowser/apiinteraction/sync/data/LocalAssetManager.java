@@ -103,22 +103,6 @@ public class LocalAssetManager implements ILocalAssetManager {
         return fileRepository.saveFile(stream, parts[0], parts[1], GetMimeType(localItem.getLocalPath()));
     }
 
-    private static String[] SupportedImageExtensions = { ".png", ".jpg", ".jpeg", ".webp" };
-    private boolean isImageFile(String path)
-    {
-        String ext = getFileExtension(path);
-
-        return ext != null && ListHelper.ContainsIgnoreCase(SupportedImageExtensions, ext);
-    }
-
-    private static String[] SupportedSubtitleExtensions = { ".srt", ".vtt" };
-    private boolean isSubtitleFile(String path)
-    {
-        String ext = getFileExtension(path);
-
-        return ext != null && ListHelper.ContainsIgnoreCase(SupportedSubtitleExtensions, ext);
-    }
-
     @Override
     public void deleteFile(String path) {
         fileRepository.deleteFile(path);
@@ -127,18 +111,16 @@ public class LocalAssetManager implements ILocalAssetManager {
     @Override
     public String saveSubtitles(InputStream stream, String format, LocalItem item, String language, boolean isForced) throws IOException {
 
-        String filename = getSubtitleSaveFileName(item, language, isForced) + "." + format.toLowerCase();
-
         String[] parts = item.getFileId().split(Pattern.quote("##"));
 
-        return fileRepository.saveFile(stream, parts[0], filename, "text/plain");
+        String filename = getSubtitleSaveFileName(parts[1], language, isForced) + "." + format.toLowerCase();
+
+        return fileRepository.saveFile(stream, parts[0], filename, "application/octet-stream");
     }
 
-    private String getSubtitleSaveFileName(LocalItem item, String language, boolean isForced)
+    private String getSubtitleSaveFileName(String mediaPath, String language, boolean isForced)
     {
-        String path = item.getLocalPath();
-
-        String name = getNameWithoutExtension(path);
+        String name = getNameWithoutExtension(mediaPath);
 
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(language))
         {
