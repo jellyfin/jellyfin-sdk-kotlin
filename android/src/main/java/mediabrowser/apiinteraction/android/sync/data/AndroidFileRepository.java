@@ -141,7 +141,11 @@ public class AndroidFileRepository extends FileRepository {
 
             Logger.Info("Save file directory document uri: %s", directoryDocument.getUri().toString());
 
-            DocumentFile newFile = directoryDocument.createFile(mimeType, name);
+            DocumentFile newFile = directoryDocument.findFile(name);
+
+            if (newFile == null || !newFile.exists()){
+                newFile = directoryDocument.createFile(mimeType, name);
+            }
 
             Logger.Info("Save file targetDocumentFile: %s", newFile.getUri().toString());
 
@@ -205,39 +209,6 @@ public class AndroidFileRepository extends FileRepository {
             }
 
             Logger.Info("ensureDirectory new treeUri: %s", tree.getUri());
-        }
-
-        return tree;
-    }
-
-    private DocumentFile findFileRecursive(Uri treeUri, String[] parts) {
-
-        String path = "";
-
-        Logger.Info("findFileRecursive treeUri: %s", treeUri);
-
-        DocumentFile tree = DocumentFile.fromTreeUri(context, treeUri);
-
-        for (String part : parts){
-
-            if (part.length() == 0){
-                continue;
-            }
-
-            path += "/" + part;
-
-            Logger.Info("findFileRecursive: %s", path);
-
-            DocumentFile directory = tree.findFile(part);
-            if (directory == null){
-
-                return null;
-
-            } else{
-                tree = directory;
-            }
-
-            Logger.Info("findFileRecursive new treeUri: %s", tree.getUri());
         }
 
         return tree;

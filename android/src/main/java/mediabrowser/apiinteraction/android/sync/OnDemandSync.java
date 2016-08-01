@@ -24,8 +24,8 @@ public class OnDemandSync {
         Bundle settingsBundle = new Bundle();
         settingsBundle.putBoolean(
                 ContentResolver.SYNC_EXTRAS_MANUAL, true);
-        settingsBundle.putBoolean(
-                ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
+        //settingsBundle.putBoolean(
+                //ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
         /*
          * Request the sync for the default account, authority, and
          * manual sync settings

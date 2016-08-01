@@ -35,7 +35,7 @@ public class PeriodicSync {
 
     public void Create() {
 
-        // Default to hourly
-        Create(3600);
+        // Default to 30 mins
+        Create(1800);
     }
 }

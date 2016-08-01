@@ -478,7 +478,7 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("LiveStreams/Close", dict);
 
-        PostAsync(url, url, response);
+        PostAsync(url, new QueryStringDictionary (), response);
     }
 
     /// <summary>
