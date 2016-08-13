@@ -33,6 +33,24 @@ public class AudioOptions
 	{
 		EnableDirectStream = value;
 	}
+	private boolean ForceDirectPlay;
+	public final boolean getForceDirectPlay()
+	{
+		return ForceDirectPlay;
+	}
+	public final void setForceDirectPlay(boolean value)
+	{
+		ForceDirectPlay = value;
+	}
+	private boolean ForceDirectStream;
+	public final boolean getForceDirectStream()
+	{
+		return ForceDirectStream;
+	}
+	public final void setForceDirectStream(boolean value)
+	{
+		ForceDirectStream = value;
+	}
 
 	private String ItemId;
 	public final String getItemId()

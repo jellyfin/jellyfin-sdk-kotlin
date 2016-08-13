@@ -493,24 +493,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		ContentTypes = value;
 	}
 
-	private boolean EnableAudioArchiveFiles;
-	public final boolean getEnableAudioArchiveFiles()
-	{
-		return EnableAudioArchiveFiles;
-	}
-	public final void setEnableAudioArchiveFiles(boolean value)
-	{
-		EnableAudioArchiveFiles = value;
-	}
-	private boolean EnableVideoArchiveFiles;
-	public final boolean getEnableVideoArchiveFiles()
-	{
-		return EnableVideoArchiveFiles;
-	}
-	public final void setEnableVideoArchiveFiles(boolean value)
-	{
-		EnableVideoArchiveFiles = value;
-	}
 	private int RemoteClientBitrateLimit;
 	public final int getRemoteClientBitrateLimit()
 	{
@@ -568,6 +550,15 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setSchemaVersion(int value)
 	{
 		SchemaVersion = value;
+	}
+	private int SqliteCacheSize;
+	public final int getSqliteCacheSize()
+	{
+		return SqliteCacheSize;
+	}
+	public final void setSqliteCacheSize(int value)
+	{
+		SqliteCacheSize = value;
 	}
 
 	private boolean DownloadImagesInAdvance;
@@ -660,8 +651,8 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		setLocalNetworkAddresses(new String[] { });
 		setMigrations(new String[] { });
+		setSqliteCacheSize(0);
 
-		setEnableCustomPathSubFolders(true);
 		setEnableLocalizedGuids(true);
 		setDisplaySpecialsWithinSeasons(true);
 
