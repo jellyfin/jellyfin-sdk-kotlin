@@ -4,6 +4,11 @@ import mediabrowser.model.dto.*;
 
 public class TimerInfoDto extends BaseTimerInfoDto
 {
+	public TimerInfoDto()
+	{
+		setType("Timer");
+	}
+
 	/** 
 	 Gets or sets the status.
 	 
@@ -47,6 +52,16 @@ public class TimerInfoDto extends BaseTimerInfoDto
 	public final void setExternalSeriesTimerId(String value)
 	{
 		ExternalSeriesTimerId = value;
+	}
+
+	private String Type;
+	public final String getType()
+	{
+		return Type;
+	}
+	public final void setType(String value)
+	{
+		Type = value;
 	}
 
 	/** 

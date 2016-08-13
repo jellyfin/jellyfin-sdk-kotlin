@@ -135,6 +135,18 @@ public class TranscodingProfile
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [XmlAttribute("enableSubtitlesInManifest")] public bool EnableSubtitlesInManifest {get;set;}
+	private boolean EnableSubtitlesInManifest;
+	public final boolean getEnableSubtitlesInManifest()
+	{
+		return EnableSubtitlesInManifest;
+	}
+	public final void setEnableSubtitlesInManifest(boolean value)
+	{
+		EnableSubtitlesInManifest = value;
+	}
+
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("maxAudioChannels")] public string MaxAudioChannels {get;set;}
 	private String MaxAudioChannels;
 	public final String getMaxAudioChannels()
