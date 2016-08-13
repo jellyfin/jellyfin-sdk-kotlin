@@ -19,6 +19,7 @@ import mediabrowser.model.session.PlaybackStopInfo;
 import mediabrowser.model.sync.LocalItem;
 import mediabrowser.model.users.UserAction;
 import mediabrowser.model.users.UserActionType;
+import mediabrowser.model.users.UserPolicy;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -87,7 +88,7 @@ public class PlaybackManager {
         }
     }
 
-    public void getAudioStreamInfo(String serverId, AudioOptions options, boolean isOffline, ApiClient apiClient, Response<StreamInfo> response)
+    public void getAudioStreamInfo(String serverId, AudioOptions options, boolean isOffline, ApiClient apiClient, UserPolicy currentUserPolicy, Response<StreamInfo> response)
     {
         Normalize(options);
         StreamBuilder streamBuilder = new StreamBuilder(logger);
@@ -123,6 +124,10 @@ public class PlaybackManager {
             request.setUserId(apiClient.getCurrentUserId());
             request.setMaxStreamingBitrate(options.getMaxBitrate());
             request.setMediaSourceId(options.getMediaSourceId());
+
+            if (!currentUserPolicy.getEnableAudioPlaybackTranscoding()){
+                options.setForceDirectStream(true);
+            }
             apiClient.GetPlaybackInfo(request, new GetPlaybackInfoResponse(this, apiClient, serverId, options, response, streamBuilder, false));
             return;
         }
@@ -130,7 +135,7 @@ public class PlaybackManager {
         SendResponse(response, streamBuilder.BuildAudioItem(options));
     }
 
-    public void getVideoStreamInfo(final String serverId, final VideoOptions options, boolean isOffline, ApiClient apiClient, final Response<StreamInfo> response)
+    public void getVideoStreamInfo(final String serverId, final VideoOptions options, boolean isOffline, ApiClient apiClient, UserPolicy currentUserPolicy, final Response<StreamInfo> response)
     {
         Normalize(options);
         StreamBuilder streamBuilder = new StreamBuilder(logger);
@@ -144,6 +149,13 @@ public class PlaybackManager {
             request.setMediaSourceId(options.getMediaSourceId());
             request.setAudioStreamIndex(options.getAudioStreamIndex());
             request.setSubtitleStreamIndex(options.getSubtitleStreamIndex());
+
+            if (!currentUserPolicy.getEnableAudioPlaybackTranscoding() &&
+                    !currentUserPolicy.getEnableVideoPlaybackTranscoding() &&
+                    !currentUserPolicy.getEnablePlaybackRemuxing()){
+                options.setForceDirectStream(true);
+            }
+
             apiClient.GetPlaybackInfo(request, new GetPlaybackInfoResponse(this, apiClient, serverId, options, response, streamBuilder, true));
             return;
         }
@@ -151,11 +163,17 @@ public class PlaybackManager {
         SendResponse(response, getVideoStreamInfoInternal(serverId, options));
     }
 
-    public void changeVideoStream(final StreamInfo currentStreamInfo, final String serverId, final VideoOptions options, ApiClient apiClient, final Response<StreamInfo> response)
+    public void changeVideoStream(final StreamInfo currentStreamInfo, final String serverId, final VideoOptions options, ApiClient apiClient, UserPolicy currentUserPolicy, final Response<StreamInfo> response)
     {
         Normalize(options);
 
         String playSessionId = currentStreamInfo.getPlaySessionId();
+
+        if (!currentUserPolicy.getEnableAudioPlaybackTranscoding() &&
+                !currentUserPolicy.getEnableVideoPlaybackTranscoding() &&
+                !currentUserPolicy.getEnablePlaybackRemuxing()){
+            options.setForceDirectStream(true);
+        }
 
         apiClient.StopTranscodingProcesses(device.getDeviceId(), playSessionId, new StopTranscodingResponse(this, serverId, currentStreamInfo, options, logger, response));
     }
