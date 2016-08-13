@@ -1,11 +1,10 @@
 package mediabrowser.model.session;
 
 import mediabrowser.model.entities.*;
-import mediabrowser.model.extensions.*;
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Client = {Client}, Username = {UserName}")] public class SessionInfoDto : IHasPropertyChangedEvent
-public class SessionInfoDto implements IHasPropertyChangedEvent
+//ORIGINAL LINE: [DebuggerDisplay("Client = {Client}, Username = {UserName}")] public class SessionInfoDto
+public class SessionInfoDto
 {
 	/** 
 	 Gets or sets the supported commands.
@@ -281,9 +280,6 @@ public class SessionInfoDto implements IHasPropertyChangedEvent
 	{
 		TranscodingInfo = value;
 	}
-
-//C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
-//	public event PropertyChangedEventHandler PropertyChanged;
 
 	public SessionInfoDto()
 	{

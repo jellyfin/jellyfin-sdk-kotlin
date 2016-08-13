@@ -1,5 +1,7 @@
 package mediabrowser.model.entities;
 
+import mediabrowser.model.configuration.*;
+
 /** 
  Used to hold information about a user's list of configured virtual folders
 */
@@ -48,6 +50,16 @@ public class VirtualFolderInfo
 	public final void setCollectionType(String value)
 	{
 		CollectionType = value;
+	}
+
+	private LibraryOptions LibraryOptions;
+	public final LibraryOptions getLibraryOptions()
+	{
+		return LibraryOptions;
+	}
+	public final void setLibraryOptions(LibraryOptions value)
+	{
+		LibraryOptions = value;
 	}
 
 	/** 

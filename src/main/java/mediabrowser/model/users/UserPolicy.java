@@ -165,6 +165,15 @@ public class UserPolicy
 	{
 		EnableVideoPlaybackTranscoding = value;
 	}
+	private boolean EnablePlaybackRemuxing;
+	public final boolean getEnablePlaybackRemuxing()
+	{
+		return EnablePlaybackRemuxing;
+	}
+	public final void setEnablePlaybackRemuxing(boolean value)
+	{
+		EnablePlaybackRemuxing = value;
+	}
 
 	private boolean EnableContentDeletion;
 	public final boolean getEnableContentDeletion()
@@ -313,6 +322,7 @@ public class UserPolicy
 		setEnableMediaPlayback(true);
 		setEnableAudioPlaybackTranscoding(true);
 		setEnableVideoPlaybackTranscoding(true);
+		setEnablePlaybackRemuxing(true);
 
 		setEnableLiveTvManagement(true);
 		setEnableLiveTvAccess(true);
