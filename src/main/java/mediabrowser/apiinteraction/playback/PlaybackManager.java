@@ -28,22 +28,12 @@ public class PlaybackManager {
     private ILocalAssetManager localAssetManager;
     private ILogger logger;
     private IDevice device;
-    private ILocalPlayer localPlayer;
-
-    public PlaybackManager(ILocalAssetManager localAssetManager, IDevice device, ILogger logger, ILocalPlayer localPlayer)
-    {
-        this.localAssetManager = localAssetManager;
-        this.device = device;
-        this.logger = logger;
-        this.localPlayer = localPlayer;
-    }
 
     public PlaybackManager(ILocalAssetManager localAssetManager, IDevice device, ILogger logger)
     {
         this.localAssetManager = localAssetManager;
         this.device = device;
         this.logger = logger;
-        this.localPlayer = new LocalPlayer();
     }
 
     public PlaybackManager(IDevice device, ILogger logger)
@@ -51,7 +41,6 @@ public class PlaybackManager {
         this.localAssetManager = new NullAssetManager();
         this.device = device;
         this.logger = logger;
-        this.localPlayer = new LocalPlayer();
     }
 
     public ArrayList<MediaStream> getPrePlaybackSelectableAudioStreams(String serverId, VideoOptions options)
@@ -101,7 +90,7 @@ public class PlaybackManager {
     public void getAudioStreamInfo(String serverId, AudioOptions options, boolean isOffline, ApiClient apiClient, Response<StreamInfo> response)
     {
         Normalize(options);
-        StreamBuilder streamBuilder = new StreamBuilder(localPlayer, logger);
+        StreamBuilder streamBuilder = new StreamBuilder(logger);
 
         LocalItem localItem = localAssetManager.getLocalItem(serverId, options.getItemId());
 
@@ -144,7 +133,7 @@ public class PlaybackManager {
     public void getVideoStreamInfo(final String serverId, final VideoOptions options, boolean isOffline, ApiClient apiClient, final Response<StreamInfo> response)
     {
         Normalize(options);
-        StreamBuilder streamBuilder = new StreamBuilder(localPlayer, logger);
+        StreamBuilder streamBuilder = new StreamBuilder(logger);
 
         if (!isOffline)
         {
@@ -173,7 +162,7 @@ public class PlaybackManager {
 
     StreamInfo getVideoStreamInfoInternal(String serverId, VideoOptions options)
     {
-        StreamBuilder streamBuilder = new StreamBuilder(localPlayer, logger);
+        StreamBuilder streamBuilder = new StreamBuilder(logger);
 
         LocalItem localItem = localAssetManager.getLocalItem(serverId, options.getItemId());
 

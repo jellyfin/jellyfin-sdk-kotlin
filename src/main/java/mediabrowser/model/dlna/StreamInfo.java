@@ -123,6 +123,15 @@ public class StreamInfo
 	{
 		ForceLiveStream = value;
 	}
+	private boolean EnableSubtitlesInManifest;
+	public final boolean getEnableSubtitlesInManifest()
+	{
+		return EnableSubtitlesInManifest;
+	}
+	public final void setEnableSubtitlesInManifest(boolean value)
+	{
+		EnableSubtitlesInManifest = value;
+	}
 	private String[] AudioCodecs;
 	public final String[] getAudioCodecs()
 	{
@@ -521,6 +530,10 @@ public class StreamInfo
 		list.add(new NameValuePair("SubtitleMethod", item.getSubtitleStreamIndex() != null && item.getSubtitleDeliveryMethod() != mediabrowser.model.dlna.SubtitleDeliveryMethod.External ? item.getSubtitleDeliveryMethod().toString() : ""));
 
 		list.add(new NameValuePair("TranscodingMaxAudioChannels", item.getTranscodingMaxAudioChannels() != null ? StringHelper.ToStringCultureInvariant(item.getTranscodingMaxAudioChannels()) : ""));
+		list.add(new NameValuePair("EnableSubtitlesInManifest", (new Boolean(item.getEnableSubtitlesInManifest())).toString().toLowerCase()));
+
+		String tempVar7 = item.getMediaSource().getETag();
+		list.add(new NameValuePair("Tag", (tempVar7 != null) ? tempVar7 : ""));
 
 		return list;
 	}

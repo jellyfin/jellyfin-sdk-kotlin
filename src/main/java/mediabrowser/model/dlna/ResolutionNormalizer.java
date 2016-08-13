@@ -1,5 +1,7 @@
 package mediabrowser.model.dlna;
 
+import mediabrowser.model.extensions.StringHelper;
+
 public class ResolutionNormalizer
 {
 	private static final java.util.ArrayList<ResolutionConfiguration> Configurations = new java.util.ArrayList<ResolutionConfiguration>(java.util.Arrays.asList(new ResolutionConfiguration[]
@@ -48,7 +50,7 @@ public class ResolutionNormalizer
 
 	private static double GetVideoBitrateScaleFactor(String codec)
 	{
-		if (String.equals(codec, "h265", StringComparison.OrdinalIgnoreCase) || String.equals(codec, "hevc", StringComparison.OrdinalIgnoreCase))
+		if (StringHelper.EqualsIgnoreCase(codec, "h265") || StringHelper.EqualsIgnoreCase(codec, "hevc"))
 		{
 			return.5;
 		}

@@ -13,8 +13,8 @@ import mediabrowser.model.sync.*;
  This holds information about a BaseItem in a format that is convenient for the client.
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, Type = {Type}")] public class BaseItemDto : IHasProviderIds, IHasPropertyChangedEvent, IItemDto, IHasServerId, IHasSyncInfo
-public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, IItemDto, IHasServerId, IHasSyncInfo
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, Type = {Type}")] public class BaseItemDto : IHasProviderIds, IItemDto, IHasServerId, IHasSyncInfo
+public class BaseItemDto implements IHasProviderIds, IItemDto, IHasServerId, IHasSyncInfo
 {
 	/** 
 	 Gets or sets the name.
@@ -360,6 +360,16 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	public final void setSyncPercent(Double value)
 	{
 		SyncPercent = value;
+	}
+
+	private String Container;
+	public final String getContainer()
+	{
+		return Container;
+	}
+	public final void setContainer(String value)
+	{
+		Container = value;
 	}
 
 	/** 
@@ -2096,6 +2106,15 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	{
 		AlbumCount = value;
 	}
+	private Integer ArtistCount = null;
+	public final Integer getArtistCount()
+	{
+		return ArtistCount;
+	}
+	public final void setArtistCount(Integer value)
+	{
+		ArtistCount = value;
+	}
 	/** 
 	 Gets or sets the music video count.
 	 
@@ -2378,6 +2397,18 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	}
 
 	/** 
+	 Gets a value indicating whether this instance has thumb.
+	 
+	 <value><c>true</c> if this instance has thumb; otherwise, <c>false</c>.</value>
+	*/
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [IgnoreDataMember] public bool HasBackdrop
+	public final boolean getHasBackdrop()
+	{
+		return (getBackdropImageTags() != null && getBackdropImageTags().size() > 0) || (getParentBackdropImageTags() != null && getParentBackdropImageTags().size() > 0);
+	}
+
+	/** 
 	 Gets a value indicating whether this instance has primary image.
 	 
 	 <value><c>true</c> if this instance has primary image; otherwise, <c>false</c>.</value>
@@ -2545,12 +2576,6 @@ public class BaseItemDto implements IHasProviderIds, IHasPropertyChangedEvent, I
 	{
 		return IsType("Movie") || IsType("Series") || IsType("MusicAlbum") || IsType("MusicArtist") || IsType("Program") || IsType("Recording") || IsType("ChannelVideoItem") || IsType("Game");
 	}
-
-	/** 
-	 Occurs when [property changed].
-	*/
-//C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
-//	public event PropertyChangedEventHandler PropertyChanged;
 
 	/** 
 	 Gets or sets the program identifier.

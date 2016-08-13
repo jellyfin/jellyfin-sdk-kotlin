@@ -9,30 +9,18 @@ import mediabrowser.model.session.*;
 
 public class StreamBuilder
 {
-	private ILocalPlayer _localPlayer;
 	private ILogger _logger;
 	private ITranscoderSupport _transcoderSupport;
 
-	public StreamBuilder(ILocalPlayer localPlayer, ITranscoderSupport transcoderSupport, ILogger logger)
-	{
-		_transcoderSupport = transcoderSupport;
-		_localPlayer = localPlayer;
-		_logger = logger;
-	}
-
 	public StreamBuilder(ITranscoderSupport transcoderSupport, ILogger logger)
 	{
-		this(new NullLocalPlayer(), transcoderSupport, logger);
-	}
-
-	public StreamBuilder(ILocalPlayer localPlayer, ILogger logger)
-	{
-		this(localPlayer, new FullTranscoderSupport(), logger);
+		_transcoderSupport = transcoderSupport;
+		_logger = logger;
 	}
 
 	public StreamBuilder(ILogger logger)
 	{
-		this(new NullLocalPlayer(), new FullTranscoderSupport(), logger);
+		this(new FullTranscoderSupport(), logger);
 	}
 
 	public final StreamInfo BuildAudioItem(AudioOptions options)
@@ -122,6 +110,20 @@ public class StreamBuilder
 		tempVar.setDeviceProfile(options.getProfile());
 		StreamInfo playlistItem = tempVar;
 
+		if (options.getForceDirectPlay())
+		{
+			playlistItem.setPlayMethod(PlayMethod.DirectPlay);
+			playlistItem.setContainer(item.getContainer());
+			return playlistItem;
+		}
+
+		if (options.getForceDirectStream())
+		{
+			playlistItem.setPlayMethod(PlayMethod.DirectStream);
+			playlistItem.setContainer(item.getContainer());
+			return playlistItem;
+		}
+
 		MediaStream audioStream = item.GetDefaultAudioStream(null);
 
 		java.util.ArrayList<PlayMethod> directPlayMethods = GetAudioDirectPlayMethods(item, audioStream, options);
@@ -177,15 +179,7 @@ public class StreamBuilder
 
 				if (all)
 				{
-					if (item.getProtocol() == MediaProtocol.File && directPlayMethods.contains(PlayMethod.DirectPlay) && _localPlayer.CanAccessFile(item.getPath()))
-					{
-						playlistItem.setPlayMethod(PlayMethod.DirectPlay);
-					}
-					else if (item.getProtocol() == MediaProtocol.Http && directPlayMethods.contains(PlayMethod.DirectPlay) && _localPlayer.CanAccessUrl(item.getPath(), item.getRequiredHttpHeaders().size() > 0))
-					{
-						playlistItem.setPlayMethod(PlayMethod.DirectPlay);
-					}
-					else if (directPlayMethods.contains(PlayMethod.DirectStream))
+					if (directPlayMethods.contains(PlayMethod.DirectStream))
 					{
 						playlistItem.setPlayMethod(PlayMethod.DirectStream);
 					}
@@ -409,8 +403,8 @@ public class StreamBuilder
 		MediaStream videoStream = item.getVideoStream();
 
 		// TODO: This doesn't accout for situation of device being able to handle media bitrate, but wifi connection not fast enough
-		boolean isEligibleForDirectPlay = options.getEnableDirectPlay() && IsEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options), subtitleStream, options, PlayMethod.DirectPlay);
-		boolean isEligibleForDirectStream = options.getEnableDirectStream() && IsEligibleForDirectPlay(item, options.GetMaxBitrate(), subtitleStream, options, PlayMethod.DirectStream);
+		boolean isEligibleForDirectPlay = options.getEnableDirectPlay() && (options.getForceDirectPlay() || IsEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options), subtitleStream, options, PlayMethod.DirectPlay));
+		boolean isEligibleForDirectStream = options.getEnableDirectStream() && (options.getForceDirectStream() || IsEligibleForDirectPlay(item, options.GetMaxBitrate(), subtitleStream, options, PlayMethod.DirectStream));
 
 		String tempVar4 = options.getProfile().getName();
 		String tempVar5 = item.getPath();
@@ -419,7 +413,7 @@ public class StreamBuilder
 		if (isEligibleForDirectPlay || isEligibleForDirectStream)
 		{
 			// See if it can be direct played
-			PlayMethod directPlay = GetVideoDirectPlayProfile(options.getProfile(), item, videoStream, audioStream, isEligibleForDirectPlay, isEligibleForDirectStream);
+			PlayMethod directPlay = GetVideoDirectPlayProfile(options, item, videoStream, audioStream, isEligibleForDirectPlay, isEligibleForDirectStream);
 
 			if (directPlay != null)
 			{
@@ -474,6 +468,7 @@ public class StreamBuilder
 			playlistItem.setVideoCodec(transcodingProfile.getVideoCodec());
 			playlistItem.setCopyTimestamps(transcodingProfile.getCopyTimestamps());
 			playlistItem.setForceLiveStream(transcodingProfile.getForceLiveStream());
+			playlistItem.setEnableSubtitlesInManifest(transcodingProfile.getEnableSubtitlesInManifest());
 
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(transcodingProfile.getMaxAudioChannels()))
 			{
@@ -610,18 +605,23 @@ public class StreamBuilder
 		{
 			defaultBitrate = 192000;
 		}
+		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(targetAudioCodec) && audioStream != null && StringHelper.EqualsIgnoreCase(audioStream.getCodec(), targetAudioCodec))
+		{
+			Integer tempVar = audioStream.getBitRate();
+			defaultBitrate = (tempVar != null) ? tempVar : defaultBitrate;
+		}
 
 		if (targetAudioChannels != null)
 		{
-			if (targetAudioChannels >= 5 && ((maxTotalBitrate != null) ? maxTotalBitrate : 0) >= 2000000)
+			if (targetAudioChannels >= 5 && ((maxTotalBitrate != null) ? maxTotalBitrate : 0) >= 1500000)
 			{
 				if (StringHelper.EqualsIgnoreCase(targetAudioCodec, "ac3"))
 				{
-					defaultBitrate = 448000;
+					defaultBitrate = Math.max(448000, defaultBitrate);
 				}
 				else
 				{
-					defaultBitrate = 320000;
+					defaultBitrate = Math.max(320000, defaultBitrate);
 				}
 			}
 		}
@@ -634,8 +634,8 @@ public class StreamBuilder
 			// Any attempts to transcode over 64k will fail
 			if (audioStream.getChannels() != null && audioStream.getChannels() == 1)
 			{
-				Integer tempVar = audioStream.getBitRate();
-				if (((tempVar != null) ? tempVar : 0) < 64000)
+				Integer tempVar2 = audioStream.getBitRate();
+				if (((tempVar2 != null) ? tempVar2 : 0) < 64000)
 				{
 					encoderAudioBitrateLimit = 64000;
 				}
@@ -645,8 +645,19 @@ public class StreamBuilder
 		return Math.min(defaultBitrate, encoderAudioBitrateLimit);
 	}
 
-	private PlayMethod GetVideoDirectPlayProfile(DeviceProfile profile, MediaSourceInfo mediaSource, MediaStream videoStream, MediaStream audioStream, boolean isEligibleForDirectPlay, boolean isEligibleForDirectStream)
+	private PlayMethod GetVideoDirectPlayProfile(VideoOptions options, MediaSourceInfo mediaSource, MediaStream videoStream, MediaStream audioStream, boolean isEligibleForDirectPlay, boolean isEligibleForDirectStream)
 	{
+		DeviceProfile profile = options.getProfile();
+
+		if (options.getForceDirectPlay())
+		{
+			return PlayMethod.DirectPlay;
+		}
+		if (options.getForceDirectStream())
+		{
+			return PlayMethod.DirectStream;
+		}
+
 		if (videoStream == null)
 		{
 			String tempVar = profile.getName();
@@ -820,25 +831,6 @@ public class StreamBuilder
 					LogConditionFailure(profile, "VideoAudioCodecProfile", i, mediaSource);
 
 					return null;
-				}
-			}
-		}
-
-		if (isEligibleForDirectPlay && mediaSource.getSupportsDirectPlay())
-		{
-			if (mediaSource.getProtocol() == MediaProtocol.Http)
-			{
-				if (_localPlayer.CanAccessUrl(mediaSource.getPath(), mediaSource.getRequiredHttpHeaders().size() > 0))
-				{
-					return PlayMethod.DirectPlay;
-				}
-			}
-
-			else if (mediaSource.getProtocol() == MediaProtocol.File)
-			{
-				if (_localPlayer.CanAccessFile(mediaSource.getPath()))
-				{
-					return PlayMethod.DirectPlay;
 				}
 			}
 		}

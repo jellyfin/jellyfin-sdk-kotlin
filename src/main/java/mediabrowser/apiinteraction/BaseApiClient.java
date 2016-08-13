@@ -20,7 +20,7 @@ import java.util.TimeZone;
 /** 
  Provides api methods that are usable on all platforms
 */
-public abstract class BaseApiClient implements IDisposable
+public abstract class BaseApiClient
 {
     //C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
     //	public event EventHandler ServerLocationChanged;
@@ -1160,22 +1160,4 @@ public abstract class BaseApiClient implements IDisposable
 
         return df.format(date);
     }
-
-	/** 
-	 Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-	*/
-	public final void Dispose()
-	{
-		Dispose(true);
-	}
-
-	/** 
-	 Releases unmanaged and - optionally - managed resources.
-	 
-	 @param disposing <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.
-	*/
-	protected void Dispose(boolean disposing)
-	{
-
-	}
 }
