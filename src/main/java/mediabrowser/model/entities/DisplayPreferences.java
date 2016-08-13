@@ -1,19 +1,12 @@
 package mediabrowser.model.entities;
 
 import mediabrowser.model.drawing.*;
-import mediabrowser.model.extensions.*;
 
 /** 
  Defines the display preferences for any item that supports them (usually Folders)
 */
-public class DisplayPreferences implements IHasPropertyChangedEvent
+public class DisplayPreferences
 {
-	/** 
-	 Occurs when [property changed].
-	*/
-//C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
-//	public event PropertyChangedEventHandler PropertyChanged;
-
 	/** 
 	 The image scale
 	*/

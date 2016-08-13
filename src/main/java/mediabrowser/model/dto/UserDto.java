@@ -2,15 +2,14 @@ package mediabrowser.model.dto;
 
 import mediabrowser.model.configuration.*;
 import mediabrowser.model.connect.*;
-import mediabrowser.model.extensions.*;
 import mediabrowser.model.users.*;
 
 /** 
  Class UserDto
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, HasPassword = {HasPassword}")] public class UserDto : IHasPropertyChangedEvent, IItemDto, IHasServerId
-public class UserDto implements IHasPropertyChangedEvent, IItemDto, IHasServerId
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, HasPassword = {HasPassword}")] public class UserDto : IItemDto, IHasServerId
+public class UserDto implements IItemDto, IHasServerId
 {
 	/** 
 	 Gets or sets the name.
@@ -301,12 +300,6 @@ public class UserDto implements IHasPropertyChangedEvent, IItemDto, IHasServerId
 		setConfiguration(new UserConfiguration());
 		setPolicy(new UserPolicy());
 	}
-
-	/** 
-	 Occurs when [property changed].
-	*/
-//C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
-//	public event PropertyChangedEventHandler PropertyChanged;
 
 	@Override
 	public String toString()

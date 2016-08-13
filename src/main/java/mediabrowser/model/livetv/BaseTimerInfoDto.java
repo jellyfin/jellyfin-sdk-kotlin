@@ -1,16 +1,9 @@
 package mediabrowser.model.livetv;
 
 import mediabrowser.model.dto.*;
-import mediabrowser.model.extensions.*;
 
-public class BaseTimerInfoDto implements IHasPropertyChangedEvent, IHasServerId
+public class BaseTimerInfoDto implements IHasServerId
 {
-	/** 
-	 Occurs when a property value changes.
-	*/
-//C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
-//	public event PropertyChangedEventHandler PropertyChanged;
-
 	/** 
 	 Id of the recording.
 	*/

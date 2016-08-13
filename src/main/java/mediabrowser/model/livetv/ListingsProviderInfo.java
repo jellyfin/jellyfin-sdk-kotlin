@@ -1,5 +1,8 @@
 package mediabrowser.model.livetv;
 
+import mediabrowser.model.dto.*;
+import mediabrowser.model.extensions.*;
+
 public class ListingsProviderInfo
 {
 	private String Id;
@@ -93,10 +96,72 @@ public class ListingsProviderInfo
 	{
 		EnableAllTuners = value;
 	}
+	private String[] NewsCategories;
+	public final String[] getNewsCategories()
+	{
+		return NewsCategories;
+	}
+	public final void setNewsCategories(String[] value)
+	{
+		NewsCategories = value;
+	}
+	private String[] SportsCategories;
+	public final String[] getSportsCategories()
+	{
+		return SportsCategories;
+	}
+	public final void setSportsCategories(String[] value)
+	{
+		SportsCategories = value;
+	}
+	private String[] KidsCategories;
+	public final String[] getKidsCategories()
+	{
+		return KidsCategories;
+	}
+	public final void setKidsCategories(String[] value)
+	{
+		KidsCategories = value;
+	}
+	private String[] MovieCategories;
+	public final String[] getMovieCategories()
+	{
+		return MovieCategories;
+	}
+	public final void setMovieCategories(String[] value)
+	{
+		MovieCategories = value;
+	}
+	private NameValuePair[] ChannelMappings;
+	public final NameValuePair[] getChannelMappings()
+	{
+		return ChannelMappings;
+	}
+	public final void setChannelMappings(NameValuePair[] value)
+	{
+		ChannelMappings = value;
+	}
 
 	public ListingsProviderInfo()
 	{
+		setNewsCategories(new String[] {"news", "journalism", "documentary", "current affairs"});
+		setSportsCategories(new String[] {"sports", "basketball", "baseball", "football"});
+		setKidsCategories(new String[] {"kids", "family", "children", "childrens", "disney"});
+		setMovieCategories(new String[] {"movie"});
 		setEnabledTuners(new String[] { });
 		setEnableAllTuners(true);
+		setChannelMappings(new NameValuePair[] {});
+	}
+
+	public final String GetMappedChannel(String channelNumber)
+	{
+		for (NameValuePair mapping : getChannelMappings())
+		{
+			if (StringHelper.EqualsIgnoreCase(mapping.getName(), channelNumber))
+			{
+				return mapping.getValue();
+			}
+		}
+		return channelNumber;
 	}
 }

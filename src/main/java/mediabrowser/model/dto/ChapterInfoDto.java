@@ -1,13 +1,11 @@
 package mediabrowser.model.dto;
 
-import mediabrowser.model.extensions.*;
-
 /** 
  Class ChapterInfo
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}")] public class ChapterInfoDto : IHasPropertyChangedEvent
-public class ChapterInfoDto implements IHasPropertyChangedEvent
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}")] public class ChapterInfoDto
+public class ChapterInfoDto
 {
 	/** 
 	 Gets or sets the start position ticks.
@@ -65,7 +63,4 @@ public class ChapterInfoDto implements IHasPropertyChangedEvent
 	{
 		return getImageTag() != null;
 	}
-
-//C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
-//	public event PropertyChangedEventHandler PropertyChanged;
 }

@@ -1,11 +1,9 @@
 package mediabrowser.model.dto;
 
-import mediabrowser.model.extensions.*;
-
 /** 
  Class UserItemDataDto
 */
-public class UserItemDataDto implements IHasPropertyChangedEvent
+public class UserItemDataDto
 {
 	/** 
 	 Gets or sets the rating.
@@ -171,7 +169,4 @@ public class UserItemDataDto implements IHasPropertyChangedEvent
 	{
 		ItemId = value;
 	}
-
-//C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
-//	public event PropertyChangedEventHandler PropertyChanged;
 }

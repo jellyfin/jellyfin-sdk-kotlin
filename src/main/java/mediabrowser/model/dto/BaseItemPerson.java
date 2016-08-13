@@ -1,13 +1,11 @@
 package mediabrowser.model.dto;
 
-import mediabrowser.model.extensions.*;
-
 /** 
  This is used by the api to get information about a Person within a BaseItem
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, Role = {Role}, Type = {Type}")] public class BaseItemPerson : IHasPropertyChangedEvent
-public class BaseItemPerson implements IHasPropertyChangedEvent
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, Role = {Role}, Type = {Type}")] public class BaseItemPerson
+public class BaseItemPerson
 {
 	/** 
 	 Gets or sets the name.
@@ -95,10 +93,4 @@ public class BaseItemPerson implements IHasPropertyChangedEvent
 	{
 		return getPrimaryImageTag() != null;
 	}
-
-	/** 
-	 Occurs when [property changed].
-	*/
-//C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
-//	public event PropertyChangedEventHandler PropertyChanged;
 }

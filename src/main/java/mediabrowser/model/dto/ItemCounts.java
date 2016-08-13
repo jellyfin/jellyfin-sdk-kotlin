@@ -61,6 +61,15 @@ public class ItemCounts
 	{
 		GameCount = value;
 	}
+	private int ArtistCount;
+	public final int getArtistCount()
+	{
+		return ArtistCount;
+	}
+	public final void setArtistCount(int value)
+	{
+		ArtistCount = value;
+	}
 	/** 
 	 Gets or sets the game system count.
 	 

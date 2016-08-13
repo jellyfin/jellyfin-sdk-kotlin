@@ -2,15 +2,14 @@ package mediabrowser.model.livetv;
 
 import mediabrowser.model.dto.*;
 import mediabrowser.model.entities.*;
-import mediabrowser.model.extensions.*;
 import mediabrowser.model.library.*;
 
 /** 
  Class ChannelInfoDto
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, Number = {Number}")] public class ChannelInfoDto : IHasPropertyChangedEvent, IItemDto, IHasServerId
-public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto, IHasServerId
+//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, Number = {Number}")] public class ChannelInfoDto : IItemDto, IHasServerId
+public class ChannelInfoDto implements IItemDto, IHasServerId
 {
 	/** 
 	 Gets or sets the name.
@@ -254,7 +253,4 @@ public class ChannelInfoDto implements IHasPropertyChangedEvent, IItemDto, IHasS
 		setImageTags(new java.util.HashMap<ImageType, String>());
 		setMediaSources(new java.util.ArrayList<MediaSourceInfo>());
 	}
-
-//C# TO JAVA CONVERTER TODO TASK: Events are not available in Java:
-//	public event PropertyChangedEventHandler PropertyChanged;
 }

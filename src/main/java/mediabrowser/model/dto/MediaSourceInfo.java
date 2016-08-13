@@ -74,6 +74,15 @@ public class MediaSourceInfo
 		Name = value;
 	}
 
+	private String ETag;
+	public final String getETag()
+	{
+		return ETag;
+	}
+	public final void setETag(String value)
+	{
+		ETag = value;
+	}
 	private Long RunTimeTicks = null;
 	public final Long getRunTimeTicks()
 	{

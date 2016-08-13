@@ -9,6 +9,8 @@ public interface IHasSyncInfo
 	void setSupportsSync(Boolean value);
 	Boolean getHasSyncJob();
 	void setHasSyncJob(Boolean value);
+	Double getSyncPercent();
+	void setSyncPercent(Double value);
 	Boolean getIsSynced();
 	void setIsSynced(Boolean value);
 	SyncJobItemStatus getSyncStatus();
