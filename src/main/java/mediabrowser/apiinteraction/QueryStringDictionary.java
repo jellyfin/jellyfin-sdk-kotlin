@@ -327,18 +327,21 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
 	*/
 	public final String GetQueryString()
 	{
-        int size = this.size();
-        String[] vals = new String[size];
+        String result = "";
 
-        int index = 0;
         for(String key : this.keySet())
         {
             String paramValue = this.get(key);
-            vals[index] = String.format("%1$s=%2$s", key, GetEncodedValue(paramValue));
-            index++;
+			if (paramValue != null && paramValue.length() > 0){
+
+				if (result.length() > 0){
+					result += "&";
+				}
+				result += String.format("%1$s=%2$s", key, GetEncodedValue(paramValue));
+			}
         }
 
-        return tangible.DotNetToJavaStringHelper.join("&", vals);
+        return result;
 	}
 
 	/** 
