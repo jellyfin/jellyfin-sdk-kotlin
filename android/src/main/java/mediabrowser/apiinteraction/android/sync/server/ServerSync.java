@@ -1,7 +1,9 @@
-package mediabrowser.apiinteraction.sync.server;
+package mediabrowser.apiinteraction.android.sync.server;
 
+import android.app.Service;
 import mediabrowser.apiinteraction.*;
-import mediabrowser.apiinteraction.sync.*;
+import mediabrowser.apiinteraction.android.mediabrowser.IMediaRes;
+import mediabrowser.apiinteraction.android.sync.SyncProgress;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.model.apiclient.ConnectionOptions;
@@ -17,11 +19,15 @@ public class ServerSync {
     private ILogger logger;
     private IConnectionManager connectionManager;
     private ILocalAssetManager localAssetManager;
+    private Service mService;
 
-    public ServerSync(IConnectionManager connectionManager, ILogger logger, ILocalAssetManager localAssetManager) {
+    private IMediaRes mediaRes;
+    public ServerSync(IConnectionManager connectionManager, ILogger logger, ILocalAssetManager localAssetManager, Service mService, IMediaRes mediaRes) {
         this.logger = logger;
         this.connectionManager = connectionManager;
         this.localAssetManager = localAssetManager;
+        this.mService = mService;
+        this.mediaRes = mediaRes;
     }
 
     public void Sync(final ServerInfo server, boolean uploadPhotos, final CancellationToken cancellationToken, final SyncProgress progress){
@@ -77,12 +83,12 @@ public class ServerSync {
         final double cameraUploadTotalPercentage = .25;
 
         if (!uploadPhotos){
-            UpdateOfflineUsersResponse offlineUserResponse = new UpdateOfflineUsersResponse(progress, apiClient, server, localAssetManager, logger, cancellationToken, cameraUploadTotalPercentage);
+            UpdateOfflineUsersResponse offlineUserResponse = new UpdateOfflineUsersResponse(progress, apiClient, server, localAssetManager, logger, mService, mediaRes, cancellationToken, cameraUploadTotalPercentage);
 
             new OfflineUsersSync(logger, localAssetManager).UpdateOfflineUsers(server, apiClient, cancellationToken, offlineUserResponse);
             return;
         }
-        new ContentUploader(apiClient, logger).UploadImages(new CameraUploadProgress(logger, server, progress, apiClient, clientCapabilities, localAssetManager, cancellationToken, cameraUploadTotalPercentage), cancellationToken);
+        new ContentUploader(apiClient, logger).UploadImages(new CameraUploadProgress(logger, server, progress, apiClient, clientCapabilities, localAssetManager, cancellationToken, cameraUploadTotalPercentage, mService, mediaRes), cancellationToken);
     }
 
     private static HashMap<String, Semaphore> SemaphoreLocks = new HashMap<String, Semaphore>();

@@ -335,9 +335,8 @@ public abstract class BaseApiClient
 	 @param handler The handler.
 	 @param queryString The query string.
 	 @return System.String.
-	 @exception System.ArgumentNullException handler
 	*/
-	protected final String GetApiUrl(String handler, QueryStringDictionary queryString)
+	public final String GetApiUrl(String handler, QueryStringDictionary queryString)
 	{
 		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(handler))
 		{

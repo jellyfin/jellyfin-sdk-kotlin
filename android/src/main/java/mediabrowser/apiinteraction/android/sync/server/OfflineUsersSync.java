@@ -1,4 +1,4 @@
-package mediabrowser.apiinteraction.sync.server;
+package mediabrowser.apiinteraction.android.sync.server;
 
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.EmptyResponse;

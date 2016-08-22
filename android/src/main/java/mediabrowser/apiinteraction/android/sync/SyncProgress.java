@@ -1,4 +1,4 @@
-package mediabrowser.apiinteraction.sync;
+package mediabrowser.apiinteraction.android.sync;
 
 import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.devices.LocalFileInfo;

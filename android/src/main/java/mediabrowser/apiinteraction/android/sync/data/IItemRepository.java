@@ -1,4 +1,4 @@
-package mediabrowser.apiinteraction.sync.data;
+package mediabrowser.apiinteraction.android.sync.data;
 
 import mediabrowser.model.sync.LocalItem;
 import mediabrowser.model.sync.LocalItemInfo;

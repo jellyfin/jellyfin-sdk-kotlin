@@ -1,19 +1,19 @@
 package mediabrowser.apiinteraction.android.sync;
 
 import android.accounts.Account;
+import android.app.Service;
 import android.content.*;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import mediabrowser.apiinteraction.*;
 import mediabrowser.apiinteraction.android.*;
+import mediabrowser.apiinteraction.android.mediabrowser.IMediaRes;
 import mediabrowser.apiinteraction.android.sync.data.AndroidAssetManager;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
-import mediabrowser.apiinteraction.sync.MultiServerSync;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationTokenSource;
 import mediabrowser.logging.ConsoleLogger;
-import mediabrowser.model.extensions.ListHelper;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.model.session.ClientCapabilities;
@@ -22,9 +22,14 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
     public static ISyncLoggerFactory LoggerFactory;
 
-    public MediaSyncAdapter(Context context, boolean autoInitialize) {
-        super(context, autoInitialize);
+    private IMediaRes mediaRes;
 
+    private Service mService;
+    public MediaSyncAdapter(Context context, boolean autoInitialize, IMediaRes mediaRes, Service mService) {
+        super(context, autoInitialize);
+        this.mediaRes = mediaRes;
+
+        this.mService = mService;
     }
 
     @Override
@@ -132,7 +137,7 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
         String[] cameraUploadServers = cameraUploadServersString == null || cameraUploadServersString.length() == 0 ? new String[]{} : cameraUploadServersString.split(",");
 
-        new MultiServerSync(connectionManager, logger, localAssetManager, cameraUploadServers).Sync(source.getToken(), new MultiServerSyncProgress(syncResult, context.getContentResolver(), logger));
+        new MultiServerSync(connectionManager, logger, localAssetManager, cameraUploadServers, mService, mediaRes).Sync(source.getToken(), new AndroidMultiServerSyncProgress(syncResult, context.getContentResolver(), logger));
     }
 
     public static void updateSyncPreferences(Context context, String basePath, boolean syncOnlyOnWifi, String[] cameraUploadServers) {

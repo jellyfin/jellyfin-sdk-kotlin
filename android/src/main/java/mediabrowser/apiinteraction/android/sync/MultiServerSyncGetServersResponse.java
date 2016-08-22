@@ -1,4 +1,4 @@
-package mediabrowser.apiinteraction.sync;
+package mediabrowser.apiinteraction.android.sync;
 
 import mediabrowser.apiinteraction.Response;
 import mediabrowser.apiinteraction.tasks.CancellationToken;

@@ -1,4 +1,4 @@
-package mediabrowser.apiinteraction.sync.data.comparators;
+package mediabrowser.apiinteraction.android.sync.data.comparators;
 
 import mediabrowser.model.dto.BaseItemDto;
 

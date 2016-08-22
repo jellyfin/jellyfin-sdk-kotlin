@@ -1,4 +1,4 @@
-package mediabrowser.apiinteraction.sync.data;
+package mediabrowser.apiinteraction.android.sync.data;
 
 import mediabrowser.model.dto.UserDto;
 import java.util.ArrayList;

@@ -2,13 +2,10 @@ package mediabrowser.apiinteraction.android.sync.data;
 
 import android.content.Context;
 import android.net.Uri;
-import android.provider.DocumentsContract;
-import mediabrowser.apiinteraction.sync.data.FileRepository;
 import mediabrowser.model.logging.ILogger;
 import android.support.v4.provider.DocumentFile;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 /**

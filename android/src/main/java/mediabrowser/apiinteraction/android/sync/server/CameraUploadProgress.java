@@ -1,15 +1,15 @@
-package mediabrowser.apiinteraction.sync.server;
+package mediabrowser.apiinteraction.android.sync.server;
 
+import android.app.Service;
 import mediabrowser.apiinteraction.ApiClient;
-import mediabrowser.apiinteraction.sync.SyncProgress;
+import mediabrowser.apiinteraction.android.mediabrowser.IMediaRes;
+import mediabrowser.apiinteraction.android.sync.SyncProgress;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.devices.LocalFileInfo;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.session.ClientCapabilities;
-
-import java.util.concurrent.Semaphore;
 
 public class CameraUploadProgress extends SyncProgress {
 
@@ -21,8 +21,10 @@ public class CameraUploadProgress extends SyncProgress {
     private ILocalAssetManager localAssetManager;
     private CancellationToken cancellationToken;
     private double maxPercentage;
+    private Service mService;
+    private IMediaRes mediaRes;
 
-    public CameraUploadProgress(ILogger logger, ServerInfo server, SyncProgress progress, ApiClient apiClient, ClientCapabilities clientCapabilities, ILocalAssetManager localAssetManager, CancellationToken cancellationToken, double maxPercentage) {
+    public CameraUploadProgress(ILogger logger, ServerInfo server, SyncProgress progress, ApiClient apiClient, ClientCapabilities clientCapabilities, ILocalAssetManager localAssetManager, CancellationToken cancellationToken, double maxPercentage, Service mService, IMediaRes mediaRes) {
         this.logger = logger;
         this.server = server;
         this.progress = progress;
@@ -31,6 +33,8 @@ public class CameraUploadProgress extends SyncProgress {
         this.localAssetManager = localAssetManager;
         this.cancellationToken = cancellationToken;
         this.maxPercentage = maxPercentage;
+        this.mService = mService;
+        this.mediaRes = mediaRes;
     }
 
     @Override
@@ -76,7 +80,7 @@ public class CameraUploadProgress extends SyncProgress {
 
     public void onAnyComplete() {
 
-        UpdateOfflineUsersResponse offlineUserResponse = new UpdateOfflineUsersResponse(progress, apiClient, server, localAssetManager, logger, cancellationToken, maxPercentage);
+        UpdateOfflineUsersResponse offlineUserResponse = new UpdateOfflineUsersResponse(progress, apiClient, server, localAssetManager, logger, mService, mediaRes, cancellationToken, maxPercentage);
 
         if (cancellationToken.isCancellationRequested()){
             progress.reportCancelled();

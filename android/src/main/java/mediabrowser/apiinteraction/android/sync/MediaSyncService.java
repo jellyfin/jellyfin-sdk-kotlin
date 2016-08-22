@@ -3,10 +3,11 @@ package mediabrowser.apiinteraction.android.sync;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import mediabrowser.apiinteraction.android.mediabrowser.IMediaRes;
 import mediabrowser.logging.ConsoleLogger;
 import mediabrowser.model.logging.ILogger;
 
-public class MediaSyncService extends Service {
+public abstract class MediaSyncService extends Service {
 
     private static final Object sSyncAdapterLock = new Object();
     private static MediaSyncAdapter sSyncAdapter = null;
@@ -22,10 +23,14 @@ public class MediaSyncService extends Service {
         logger.Info("MediaSyncService created");
         synchronized (sSyncAdapterLock) {
             if (sSyncAdapter == null) {
-                sSyncAdapter = new MediaSyncAdapter(getApplicationContext(), true);
+                sSyncAdapter = new MediaSyncAdapter(getApplicationContext(), true, GetMediaRes(), this);
             }
         }
     }
+
+    protected abstract IMediaRes GetMediaRes();
+
+    public abstract Class getMainActivityClass();
 
     @Override
     /**

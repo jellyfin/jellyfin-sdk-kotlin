@@ -1,7 +1,6 @@
 package mediabrowser.apiinteraction.android.sync.data;
 
 import android.content.Context;
-import mediabrowser.apiinteraction.sync.data.*;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
 

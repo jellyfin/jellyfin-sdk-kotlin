@@ -4,9 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.database.sqlite.SQLiteOpenHelper;
-import mediabrowser.apiinteraction.sync.data.IUserActionRepository;
 import mediabrowser.model.serialization.IJsonSerializer;
 import mediabrowser.model.users.UserAction;
 

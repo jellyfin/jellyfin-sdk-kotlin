@@ -27,6 +27,16 @@ public class StreamInfo
 		ItemId = value;
 	}
 
+	private String MediaUrl;
+	public final String getMediaUrl()
+	{
+		return MediaUrl;
+	}
+	public final void setMediaUrl(String value)
+	{
+		MediaUrl = value;
+	}
+
 	private PlayMethod PlayMethod = getPlayMethod().values()[0];
 	public final PlayMethod getPlayMethod()
 	{
@@ -377,6 +387,11 @@ public class StreamInfo
 
 	public final String ToUrl(String baseUrl, String accessToken)
 	{
+		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getMediaUrl()))
+		{
+			return getMediaUrl();
+		}
+
 		if (getPlayMethod() == PlayMethod.DirectPlay)
 		{
 			return getMediaSource().getPath();

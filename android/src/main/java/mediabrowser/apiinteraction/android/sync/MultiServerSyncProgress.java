@@ -1,96 +1,76 @@
 package mediabrowser.apiinteraction.android.sync;
 
-import android.content.ContentProviderOperation;
-import android.content.ContentResolver;
-import android.content.OperationApplicationException;
-import android.content.SyncResult;
-import android.net.Uri;
-import android.os.RemoteException;
-import mediabrowser.apiinteraction.sync.SyncProgress;
+import mediabrowser.apiinteraction.android.sync.MultiServerSync;
+import mediabrowser.apiinteraction.android.sync.SyncProgress;
+import mediabrowser.apiinteraction.tasks.CancellationToken;
+import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.devices.LocalFileInfo;
-import mediabrowser.model.logging.ILogger;
 
 import java.util.ArrayList;
 
 public class MultiServerSyncProgress extends SyncProgress {
 
-    private SyncResult syncResult;
-    private ContentResolver contentResolver;
-    private ILogger logger;
+    private MultiServerSync multiServerSync;
+    private ArrayList<ServerInfo> servers;
+    private CancellationToken cancellationToken;
+    private int index;
+    private double numServers;
+    private double[] numComplete;
+    private SyncProgress outerProgress;
 
-    /**
-     * Base URI. (content://com.example.android.network.sync.basicsyncadapter)
-     */
-    final Uri BASE_CONTENT_URI = Uri.parse("content://" + AuthenticatorService.AUTHORITY);
+    public MultiServerSyncProgress(MultiServerSync multiServerSync, ArrayList<ServerInfo> servers, CancellationToken cancellationToken, int index, double numServers, double[] numComplete, SyncProgress outerProgress) {
+        this.multiServerSync = multiServerSync;
+        this.servers = servers;
+        this.cancellationToken = cancellationToken;
+        this.index = index;
+        this.numServers = numServers;
+        this.numComplete = numComplete;
+        this.outerProgress = outerProgress;
+    }
 
-    /**
-     * Path component for "entry"-type resources..
-     */
-    final String PATH_ENTRIES = "entries";
+    private void OnServerDone(){
 
+        numComplete[0]++;
+        double percent = numComplete[0] / numServers;
+        outerProgress.report(percent * 100);
 
-    /**
-     * Fully qualified URI for "entry" resources.
-     */
-    final Uri CONTENT_URI =
-            BASE_CONTENT_URI.buildUpon().appendPath(PATH_ENTRIES).build();
-
-    public MultiServerSyncProgress(SyncResult syncResult, ContentResolver contentResolver, ILogger logger) {
-        this.syncResult = syncResult;
-        this.contentResolver = contentResolver;
-        this.logger = logger;
+        multiServerSync.SyncNext(servers, index + 1, cancellationToken, outerProgress);
     }
 
     @Override
-    public void onProgress(Double percent) {
+    public void onProgress(Double serverPercent) {
 
-
-    }
-
-    @Override
-    public void onFileUploaded(LocalFileInfo file) {
-
-        syncResult.stats.numEntries++;
+        double percent = numComplete[0] / numServers;
+        percent += (serverPercent / 100);
+        outerProgress.report(percent * 100);
     }
 
     @Override
     public void onComplete() {
 
-        logger.Info("MultiServerSync complete");
+        OnServerDone();
+    }
 
-        // Entire process completed
-        ArrayList<ContentProviderOperation> batch = new ArrayList<ContentProviderOperation>();
+    @Override
+    public void onFileUploaded(LocalFileInfo file) {
 
-        try {
-            contentResolver.applyBatch(AuthenticatorService.AUTHORITY, batch);
+        outerProgress.onFileUploaded(file);
+    }
 
-            contentResolver.notifyChange(
-                    CONTENT_URI, // URI where data was modified
-                    null,                           // No local observer
-                    false);                         // IMPORTANT: Do not sync to network
-            // This sample doesn't support uploads, but if *your* code does, make sure you set
-            // syncToNetwork=false in the line above to prevent duplicate syncs.
+    @Override
+    public void onCancelled() {
 
-        } catch (RemoteException e) {
-            logger.ErrorException("Error calling contentResolver.applyBatch", e);
-        } catch (OperationApplicationException e) {
-            logger.ErrorException("Error calling contentResolver.applyBatch", e);
-        }
+        OnServerDone();
     }
 
     @Override
     public void onError(Exception ex) {
 
-        // Entire process failed
-        logger.ErrorException("MultiServerSync failed", ex);
-
-        // Is this appropriate? Need to find out how to report that the process failed
-        onComplete();
+        OnServerDone();
     }
 
     @Override
     public void onFileUploadError(LocalFileInfo file, Exception ex) {
 
-        syncResult.stats.numIoExceptions++;
-    }
-}
+        outerProgress.onFileUploadError(file, ex);
+    }}

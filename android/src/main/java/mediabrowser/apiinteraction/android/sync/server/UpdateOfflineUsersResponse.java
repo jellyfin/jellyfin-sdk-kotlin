@@ -1,11 +1,13 @@
-package mediabrowser.apiinteraction.sync.server;
+package mediabrowser.apiinteraction.android.sync.server;
 
+import android.app.Service;
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.EmptyResponse;
-import mediabrowser.apiinteraction.sync.SyncProgress;
+import mediabrowser.apiinteraction.android.mediabrowser.IMediaRes;
+import mediabrowser.apiinteraction.android.sync.SyncProgress;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
-import mediabrowser.apiinteraction.sync.server.mediasync.MediaSync;
-import mediabrowser.apiinteraction.sync.server.mediasync.MediaSyncProgress;
+import mediabrowser.apiinteraction.android.sync.server.mediasync.MediaSync;
+import mediabrowser.apiinteraction.android.sync.server.mediasync.MediaSyncProgress;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.logging.ILogger;
@@ -20,17 +22,22 @@ public class UpdateOfflineUsersResponse extends EmptyResponse {
     private ServerInfo server;
     private ILocalAssetManager localAssetManager;
     private ILogger logger;
+    private Service mService;
+
+    private IMediaRes mediaRes;
 
     private CancellationToken cancellationToken;
     private double initialProgressPercent;
 
-    public UpdateOfflineUsersResponse(SyncProgress progress, ApiClient apiClient, ServerInfo server, ILocalAssetManager localAssetManager, ILogger logger, CancellationToken cancellationToken, double initialProgressPercent) {
+    public UpdateOfflineUsersResponse(SyncProgress progress, ApiClient apiClient, ServerInfo server, ILocalAssetManager localAssetManager, ILogger logger, Service mService, IMediaRes mediaRes, CancellationToken cancellationToken, double initialProgressPercent) {
 
         this.progress = progress;
         this.apiClient = apiClient;
         this.server = server;
         this.localAssetManager = localAssetManager;
         this.logger = logger;
+        this.mService = mService;
+        this.mediaRes = mediaRes;
         this.cancellationToken = cancellationToken;
         this.initialProgressPercent = initialProgressPercent;
     }
@@ -49,6 +56,6 @@ public class UpdateOfflineUsersResponse extends EmptyResponse {
 
     public void startMediaSync(){
 
-        new MediaSync(localAssetManager, logger).sync(apiClient, server, new MediaSyncProgress(progress, initialProgressPercent), cancellationToken);
+        new MediaSync(localAssetManager, logger, mService, mediaRes).sync(apiClient, server, new MediaSyncProgress(progress, initialProgressPercent), cancellationToken);
     }
 }

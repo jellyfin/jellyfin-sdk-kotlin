@@ -1,8 +1,6 @@
 package mediabrowser.apiinteraction.android.sync.data;
 
 import android.content.Context;
-import android.os.Build;
-import mediabrowser.apiinteraction.sync.data.IImageRepository;
 import mediabrowser.model.logging.ILogger;
 
 import java.io.File;

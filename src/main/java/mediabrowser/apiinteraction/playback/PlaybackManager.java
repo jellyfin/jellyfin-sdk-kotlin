@@ -88,7 +88,7 @@ public class PlaybackManager {
         }
     }
 
-    public void getAudioStreamInfo(String serverId, AudioOptions options, boolean isOffline, ApiClient apiClient, UserPolicy currentUserPolicy, Response<StreamInfo> response)
+    public void getAudioStreamInfo(String serverId, AudioOptions options, Long startPositionTicks, boolean isOffline, ApiClient apiClient, UserPolicy currentUserPolicy, Response<StreamInfo> response)
     {
         Normalize(options);
         StreamBuilder streamBuilder = new StreamBuilder(logger);
@@ -124,11 +124,12 @@ public class PlaybackManager {
             request.setUserId(apiClient.getCurrentUserId());
             request.setMaxStreamingBitrate(options.getMaxBitrate());
             request.setMediaSourceId(options.getMediaSourceId());
+            request.setStartTimeTicks(startPositionTicks);
 
             if (!currentUserPolicy.getEnableAudioPlaybackTranscoding()){
                 options.setForceDirectStream(true);
             }
-            apiClient.GetPlaybackInfo(request, new GetPlaybackInfoResponse(this, apiClient, serverId, options, response, streamBuilder, false));
+            apiClient.GetPlaybackInfoWithPost(request, new GetPlaybackInfoResponse(this, apiClient, serverId, options, response, streamBuilder, false));
             return;
         }
 

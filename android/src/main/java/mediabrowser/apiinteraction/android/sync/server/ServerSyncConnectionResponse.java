@@ -1,8 +1,8 @@
-package mediabrowser.apiinteraction.sync.server;
+package mediabrowser.apiinteraction.android.sync.server;
 
 import mediabrowser.apiinteraction.ConnectionResult;
 import mediabrowser.apiinteraction.Response;
-import mediabrowser.apiinteraction.sync.SyncProgress;
+import mediabrowser.apiinteraction.android.sync.SyncProgress;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.model.apiclient.ConnectionState;
 import mediabrowser.model.apiclient.ServerInfo;

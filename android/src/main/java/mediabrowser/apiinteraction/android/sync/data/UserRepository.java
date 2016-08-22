@@ -5,10 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import mediabrowser.apiinteraction.sync.data.IUserRepository;
 import mediabrowser.model.dto.UserDto;
 import mediabrowser.model.serialization.IJsonSerializer;
-import mediabrowser.model.users.UserAction;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package mediabrowser.apiinteraction.sync.server.mediasync;
+package mediabrowser.apiinteraction.android.sync.server.mediasync;
 
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.Response;
@@ -7,8 +7,6 @@ import mediabrowser.apiinteraction.tasks.IProgress;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.results.ReadySyncItemsResult;
-
-import java.nio.DoubleBuffer;
 
 /**
  * Created by Luke on 4/20/2015.

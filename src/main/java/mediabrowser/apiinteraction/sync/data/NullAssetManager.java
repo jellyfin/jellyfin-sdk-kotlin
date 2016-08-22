@@ -3,7 +3,6 @@ package mediabrowser.apiinteraction.sync.data;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.dto.BaseItemDto;
 import mediabrowser.model.dto.UserDto;
-import mediabrowser.model.sync.ItemFileInfo;
 import mediabrowser.model.sync.LocalItem;
 import mediabrowser.model.users.UserAction;
 

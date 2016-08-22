@@ -1,8 +1,18 @@
-package mediabrowser.apiinteraction.sync.server.mediasync;
+package mediabrowser.apiinteraction.android.sync.server.mediasync;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.apiinteraction.Response;
+import mediabrowser.apiinteraction.android.mediabrowser.Constants;
+import mediabrowser.apiinteraction.android.mediabrowser.IMediaRes;
+import mediabrowser.apiinteraction.android.sync.MediaSyncService;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.apiinteraction.tasks.IProgress;
@@ -22,6 +32,7 @@ import mediabrowser.model.users.UserAction;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Luke on 3/11/2015.
@@ -30,10 +41,14 @@ public class MediaSync {
 
     private ILocalAssetManager localAssetManager;
     private ILogger logger;
+    private MediaSyncService mService;
+    private IMediaRes mediaRes;
 
-    public MediaSync(ILocalAssetManager localAssetManager, ILogger logger) {
+    public MediaSync(ILocalAssetManager localAssetManager, ILogger logger, Service mService, IMediaRes mediaRes) {
         this.localAssetManager = localAssetManager;
         this.logger = logger;
+        this.mService = (MediaSyncService) mService;
+        this.mediaRes = mediaRes;
     }
 
     public void sync(final ApiClient apiClient,
@@ -170,6 +185,57 @@ public class MediaSync {
         });
     }
 
+    private PendingIntent createContentIntent() {
+
+        Intent openUI = new Intent(mService, mService.getMainActivityClass());
+        openUI.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        return PendingIntent.getActivity(mService, 654, openUI, PendingIntent.FLAG_CANCEL_CURRENT);
+    }
+
+    private Notification createNotification(LocalItem item, int progress) {
+
+        Notification.Builder notificationBuilder = new Notification.Builder(mService);
+
+        notificationBuilder
+                .setSmallIcon(mediaRes.getAppIcon())
+                .setUsesChronometer(true)
+                .setContentIntent(createContentIntent())
+                .setWhen(new Date().getTime())
+                .setContentTitle("Emby")
+                .setContentText("Downloading " + item.getItem().getName())
+                .setProgress(100, progress, true)
+                //.setContentText(description.getSubtitle())
+        ;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1){
+            notificationBuilder.setShowWhen(true);
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            notificationBuilder.setVisibility(Notification.VISIBILITY_PUBLIC);
+        }
+
+        return notificationBuilder.build();
+    }
+
+    private void showNotification(LocalItem item, int progress, boolean close){
+
+        NotificationManager notificationManager = (NotificationManager) mService.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        int notificationId = 412;
+
+        if (close){
+            notificationManager.cancel(notificationId);
+            mService.stopForeground(true);
+        } else{
+
+            Notification notif = createNotification(item, progress);
+
+            mService.startForeground(notificationId, notif);
+            notificationManager.notify(notificationId , notif);
+        }
+    }
+
     private void GetItem(final ApiClient apiClient,
                          final ServerInfo server,
                          final SyncedItem jobItem,
@@ -198,6 +264,7 @@ public class MediaSync {
             public void onResponse(InputStream stream) {
 
                 logger.Debug("Got item file response stream");
+                showNotification(localItem, 0, false);
 
                 try (InputStream copy = stream){
 
@@ -207,8 +274,11 @@ public class MediaSync {
                     for (MediaSourceInfo mediaSourceInfo : localItem.getItem().getMediaSources()){
                         mediaSourceInfo.setPath(mediaPath);
                     }
+
+                    showNotification(localItem, 100, true);
                 }
                 catch (IOException ioException){
+                    showNotification(localItem, 0, true);
                     response.onError(ioException);
                     return;
                 }

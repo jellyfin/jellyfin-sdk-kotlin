@@ -1,12 +1,10 @@
-package mediabrowser.apiinteraction.sync.server.mediasync;
+package mediabrowser.apiinteraction.android.sync.server.mediasync;
 
 import mediabrowser.apiinteraction.EmptyResponse;
-import mediabrowser.apiinteraction.IResponse;
 import mediabrowser.apiinteraction.Response;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.logging.ILogger;
-import mediabrowser.model.sync.ItemFileInfo;
 import mediabrowser.model.sync.LocalItem;
 import mediabrowser.model.sync.SyncDataResponse;
 

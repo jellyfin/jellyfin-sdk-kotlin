@@ -1,6 +1,6 @@
-package mediabrowser.apiinteraction.sync.server.mediasync;
+package mediabrowser.apiinteraction.android.sync.server.mediasync;
 
-import mediabrowser.apiinteraction.sync.SyncProgress;
+import mediabrowser.apiinteraction.android.sync.SyncProgress;
 import mediabrowser.apiinteraction.tasks.Progress;
 
 /**

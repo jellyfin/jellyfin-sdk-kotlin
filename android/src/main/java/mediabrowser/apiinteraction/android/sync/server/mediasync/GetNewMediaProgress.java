@@ -1,7 +1,6 @@
-package mediabrowser.apiinteraction.sync.server.mediasync;
+package mediabrowser.apiinteraction.android.sync.server.mediasync;
 
 import mediabrowser.apiinteraction.ApiClient;
-import mediabrowser.apiinteraction.tasks.IProgress;
 import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.logging.ILogger;

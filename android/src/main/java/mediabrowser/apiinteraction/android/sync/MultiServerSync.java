@@ -1,8 +1,10 @@
-package mediabrowser.apiinteraction.sync;
+package mediabrowser.apiinteraction.android.sync;
 
+import android.app.Service;
 import mediabrowser.apiinteraction.IConnectionManager;
+import mediabrowser.apiinteraction.android.mediabrowser.IMediaRes;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
-import mediabrowser.apiinteraction.sync.server.ServerSync;
+import mediabrowser.apiinteraction.android.sync.server.ServerSync;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.extensions.ListHelper;
@@ -16,12 +18,16 @@ public class MultiServerSync {
     private ILogger logger;
     private ILocalAssetManager localAssetManager;
     private String[] cameraUploadServers;
+    private Service mService;
 
-    public MultiServerSync(IConnectionManager connectionManager, ILogger logger, ILocalAssetManager localAssetManager, String[] cameraUploadServers) {
+    private IMediaRes mediaRes;
+    public MultiServerSync(IConnectionManager connectionManager, ILogger logger, ILocalAssetManager localAssetManager, String[] cameraUploadServers, Service mService, IMediaRes mediaRes) {
         this.connectionManager = connectionManager;
         this.logger = logger;
         this.localAssetManager = localAssetManager;
         this.cameraUploadServers = cameraUploadServers;
+        this.mService = mService;
+        this.mediaRes = mediaRes;
     }
 
     public void Sync(final CancellationToken cancellationToken, final SyncProgress progress){
@@ -52,6 +58,6 @@ public class MultiServerSync {
         }
 
         boolean uploadPhotos = ListHelper.ContainsIgnoreCase(cameraUploadServers, server.getId());
-        new ServerSync(connectionManager, logger, localAssetManager).Sync(server, uploadPhotos, cancellationToken, new MultiServerSyncProgress(this, servers, cancellationToken, index, numServers, numComplete, progress));
+        new ServerSync(connectionManager, logger, localAssetManager, mService, mediaRes).Sync(server, uploadPhotos, cancellationToken, new MultiServerSyncProgress(this, servers, cancellationToken, index, numServers, numComplete, progress));
     }
 }

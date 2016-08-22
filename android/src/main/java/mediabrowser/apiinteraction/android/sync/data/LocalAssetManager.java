@@ -1,7 +1,8 @@
-package mediabrowser.apiinteraction.sync.data;
+package mediabrowser.apiinteraction.android.sync.data;
 
 import mediabrowser.apiinteraction.cryptography.Md5;
-import mediabrowser.apiinteraction.sync.data.comparators.SortNameComparator;
+import mediabrowser.apiinteraction.android.sync.data.comparators.SortNameComparator;
+import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.dto.BaseItemDto;
 import mediabrowser.model.dto.MediaSourceInfo;
