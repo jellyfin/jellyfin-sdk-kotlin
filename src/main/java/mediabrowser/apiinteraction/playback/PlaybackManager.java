@@ -125,6 +125,7 @@ public class PlaybackManager {
             request.setMaxStreamingBitrate(options.getMaxBitrate());
             request.setMediaSourceId(options.getMediaSourceId());
             request.setStartTimeTicks(startPositionTicks);
+            request.setDeviceProfile(options.getProfile());
 
             apiClient.GetPlaybackInfoWithPost(request, new GetPlaybackInfoResponse(this, apiClient, options, response, false, startPositionTicks));
             return;
@@ -147,6 +148,7 @@ public class PlaybackManager {
             request.setAudioStreamIndex(options.getAudioStreamIndex());
             request.setSubtitleStreamIndex(options.getSubtitleStreamIndex());
             request.setStartTimeTicks(startPositionTicks);
+            request.setDeviceProfile(options.getProfile());
 
             apiClient.GetPlaybackInfo(request, new GetPlaybackInfoResponse(this, apiClient, options, response, true, startPositionTicks));
             return;
