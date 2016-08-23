@@ -150,20 +150,20 @@ public class PlaybackManager {
             request.setStartTimeTicks(startPositionTicks);
             request.setDeviceProfile(options.getProfile());
 
-            apiClient.GetPlaybackInfo(request, new GetPlaybackInfoResponse(this, apiClient, options, response, true, startPositionTicks));
+            apiClient.GetPlaybackInfoWithPost(request, new GetPlaybackInfoResponse(this, apiClient, options, response, true, startPositionTicks));
             return;
         }
 
         SendResponse(response, getVideoStreamInfoInternal(serverId, options));
     }
 
-    public void changeVideoStream(final StreamInfo currentStreamInfo, final String serverId, final VideoOptions options, ApiClient apiClient, final Response<StreamInfo> response)
+    public void changeVideoStream(final StreamInfo currentStreamInfo, final String serverId, final VideoOptions options, Long startPositionTicks, ApiClient apiClient, final Response<StreamInfo> response)
     {
         Normalize(options);
 
         String playSessionId = currentStreamInfo.getPlaySessionId();
 
-        apiClient.StopTranscodingProcesses(device.getDeviceId(), playSessionId, new StopTranscodingResponse(this, serverId, currentStreamInfo, options, logger, response));
+        apiClient.StopTranscodingProcesses(device.getDeviceId(), playSessionId, new StopTranscodingResponse(this, serverId, currentStreamInfo, options, logger, startPositionTicks, apiClient, response));
     }
 
     StreamInfo getVideoStreamInfoInternal(String serverId, VideoOptions options)

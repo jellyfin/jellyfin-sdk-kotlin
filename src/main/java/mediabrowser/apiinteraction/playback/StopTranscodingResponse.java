@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction.playback;
 
+import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.apiinteraction.Response;
 import mediabrowser.model.dlna.AudioOptions;
@@ -18,28 +19,23 @@ public class StopTranscodingResponse extends EmptyResponse {
     private AudioOptions options;
     private ILogger logger;
     private Response<StreamInfo> response;
+    private Long startPositionTicks;
+    private ApiClient apiClient;
 
-    public StopTranscodingResponse(PlaybackManager playbackManager, String serverId, StreamInfo currentStreamInfo, AudioOptions options, ILogger logger, Response<StreamInfo> response) {
+    public StopTranscodingResponse(PlaybackManager playbackManager, String serverId, StreamInfo currentStreamInfo, AudioOptions options, ILogger logger, Long startPositionTicks, ApiClient apiClient, Response<StreamInfo> response) {
         this.playbackManager = playbackManager;
         this.serverId = serverId;
         this.currentStreamInfo = currentStreamInfo;
         this.options = options;
         this.logger = logger;
         this.response = response;
+        this.startPositionTicks = startPositionTicks;
+        this.apiClient = apiClient;
     }
 
     private void onAny(){
 
-        if (currentStreamInfo.getAllMediaSources() != null)
-        {
-            options.setMediaSources(currentStreamInfo.getAllMediaSources());
-        }
-
-        StreamInfo streamInfo = playbackManager.getVideoStreamInfoInternal(serverId, (VideoOptions)options);
-        streamInfo.setAllMediaSources(currentStreamInfo.getAllMediaSources());
-        streamInfo.setPlaySessionId(currentStreamInfo.getPlaySessionId());
-
-        playbackManager.SendResponse(response, streamInfo);
+        playbackManager.getVideoStreamInfo(serverId, (VideoOptions)options, startPositionTicks, false, apiClient, response);
     }
 
     @Override
