@@ -146,6 +146,7 @@ public class PlaybackManager {
             request.setMediaSourceId(options.getMediaSourceId());
             request.setAudioStreamIndex(options.getAudioStreamIndex());
             request.setSubtitleStreamIndex(options.getSubtitleStreamIndex());
+            request.setStartTimeTicks(startPositionTicks);
 
             apiClient.GetPlaybackInfo(request, new GetPlaybackInfoResponse(this, apiClient, options, response, true, startPositionTicks));
             return;

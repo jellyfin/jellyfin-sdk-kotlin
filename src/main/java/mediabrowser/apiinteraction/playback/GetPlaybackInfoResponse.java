@@ -133,7 +133,7 @@ public class GetPlaybackInfoResponse extends Response<PlaybackInfoResponse> {
                 dict.put("LiveStreamId", mediaSourceInfo.getLiveStreamId());
             }
 
-            String handler = isVideo ? "Video" : "Audio";
+            String handler = isVideo ? "Videos" : "Audio";
             String mediaUrl = apiClient.GetApiUrl(handler + "/"+options.getItemId()+"/stream." + outputContainer, dict);
             //mediaUrl += seekParam;
 
