@@ -356,7 +356,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
 
         int state = mPlayback.getState();
 
-        logger.Debug("updatePlaybackState, playback state=" + state);
+        //logger.Debug("updatePlaybackState, playback state=" + state);
         long position = PlaybackState.PLAYBACK_POSITION_UNKNOWN;
         if (mPlayback != null) {
             position = mPlayback.getCurrentPositionMs();
