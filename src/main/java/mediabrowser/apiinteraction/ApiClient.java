@@ -183,12 +183,12 @@ public class ApiClient extends BaseApiClient {
         SendRequest(request, fireGlobalEvents, response);
     }
 
-    public void getResponseStream(String address, Response<InputStream> response){
+    public void getResponseStream(String address, Response<ResponseStreamInfo> response){
 
         getResponseStreamInternal(address, response);
     }
 
-    protected void getResponseStreamInternal(String address, Response<InputStream> response){
+    protected void getResponseStreamInternal(String address, Response<ResponseStreamInfo> response){
 
         Logger.Debug("Getting response stream from " + address);
 
@@ -208,9 +208,15 @@ public class ApiClient extends BaseApiClient {
                 conn.setRequestProperty(key, this.HttpHeaders.get(key));
             }
 
-            InputStream inputStream = conn.getInputStream();
+            conn.connect();
 
-            response.onResponse(inputStream);
+            ResponseStreamInfo info = new ResponseStreamInfo();
+            info.ContentLength = conn.getContentLength();
+
+            InputStream inputStream = conn.getInputStream();
+            info.Stream = inputStream;
+
+            response.onResponse(info);
 
         }
         catch (Exception ex)
@@ -2545,7 +2551,7 @@ public class ApiClient extends BaseApiClient {
         PostAsync(url, job, response);
     }
 
-    public void GetSyncJobItemFile(String id, Response<InputStream> response){
+    public void GetSyncJobItemFile(String id, Response<ResponseStreamInfo> response){
 
         getResponseStream(getSyncJobItemFileUrl(id), response);
     }
@@ -2645,7 +2651,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "POST", json, "application/json", new SerializedResponse<SyncDataResponse>(response, jsonSerializer, SyncDataResponse.class));
     }
 
-    public void getSyncJobItemAdditionalFile(String syncJobItemId, String filename, final Response<InputStream> response){
+    public void getSyncJobItemAdditionalFile(String syncJobItemId, String filename, final Response<ResponseStreamInfo> response){
 
         QueryStringDictionary dict = new QueryStringDictionary();
 

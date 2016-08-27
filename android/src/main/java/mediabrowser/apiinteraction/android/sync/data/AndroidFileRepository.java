@@ -2,6 +2,7 @@ package mediabrowser.apiinteraction.android.sync.data;
 
 import android.content.Context;
 import android.net.Uri;
+import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.logging.ILogger;
 import android.support.v4.provider.DocumentFile;
 
@@ -122,7 +123,7 @@ public class AndroidFileRepository extends FileRepository {
     }
 
     @Override
-    public String saveFile(InputStream initialStream, String directory, String name, String mimeType) throws IOException {
+    public String saveFile(InputStream initialStream, String directory, String name, String mimeType, Long totalBytes, Progress<Double> progress) throws IOException {
 
         if (enableDocumentFile(directory)) {
 
@@ -146,12 +147,24 @@ public class AndroidFileRepository extends FileRepository {
 
             Logger.Info("Save file targetDocumentFile: %s", newFile.getUri().toString());
 
+            long totalByteCount = totalBytes == null ? 0 : totalBytes.longValue();
+            long totalBytesRead = 0;
+
             try (OutputStream outStream = context.getContentResolver().openOutputStream(newFile.getUri())) {
 
                 byte[] buffer = new byte[8 * 1024];
                 int bytesRead;
                 while ((bytesRead = initialStream.read(buffer)) != -1) {
                     outStream.write(buffer, 0, bytesRead);
+
+                    totalBytesRead += bytesRead;
+
+                    if (totalByteCount > 0){
+                        double percent = totalBytesRead;
+                        percent /= totalByteCount;
+                        percent *= 100;
+                        progress.onProgress(percent);
+                    }
                 }
                 outStream.close();
             }
@@ -173,7 +186,7 @@ public class AndroidFileRepository extends FileRepository {
         }
         else {
 
-            return super.saveFile(initialStream, directory, name, mimeType);
+            return super.saveFile(initialStream, directory, name, mimeType, totalBytes, progress);
         }
     }
 

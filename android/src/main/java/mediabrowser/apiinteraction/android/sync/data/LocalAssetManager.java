@@ -3,6 +3,7 @@ package mediabrowser.apiinteraction.android.sync.data;
 import mediabrowser.apiinteraction.cryptography.Md5;
 import mediabrowser.apiinteraction.android.sync.data.comparators.SortNameComparator;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
+import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.dto.BaseItemDto;
 import mediabrowser.model.dto.MediaSourceInfo;
@@ -95,13 +96,13 @@ public class LocalAssetManager implements ILocalAssetManager {
     }
 
     @Override
-    public String saveMedia(InputStream stream, LocalItem localItem, ServerInfo server) throws IOException {
+    public String saveMedia(InputStream stream, LocalItem localItem, ServerInfo server, Long totalBytes, Progress<Double> progress) throws IOException {
 
         logger.Debug("Saving media to " + localItem.getLocalPath());
 
         String[] parts = localItem.getFileId().split(Pattern.quote("##"));
 
-        return fileRepository.saveFile(stream, parts[0], parts[1], GetMimeType(localItem.getLocalPath()));
+        return fileRepository.saveFile(stream, parts[0], parts[1], GetMimeType(localItem.getLocalPath()), totalBytes, progress);
     }
 
     @Override
@@ -116,7 +117,7 @@ public class LocalAssetManager implements ILocalAssetManager {
 
         String filename = getSubtitleSaveFileName(parts[1], language, isForced) + "." + format.toLowerCase();
 
-        return fileRepository.saveFile(stream, parts[0], filename, "application/octet-stream");
+        return fileRepository.saveFile(stream, parts[0], filename, "application/octet-stream", null, new Progress<Double>());
     }
 
     private String getSubtitleSaveFileName(String mediaPath, String language, boolean isForced)

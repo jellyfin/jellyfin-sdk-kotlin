@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction.android.sync.data;
 
+import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.sync.DeviceFileInfo;
 
@@ -24,7 +25,7 @@ public abstract class FileRepository implements IFileRepository {
     }
 
     @Override
-    public String saveFile(InputStream initialStream, String directory, String name, String mimeType) throws IOException {
+    public String saveFile(InputStream initialStream, String directory, String name, String mimeType, Long totalBytes, Progress<Double> progress) throws IOException {
 
         File targetFile = new File(getBasePath());
 
@@ -49,12 +50,24 @@ public abstract class FileRepository implements IFileRepository {
             Logger.Info("Creating parent directory failed: %s", parentFile.getAbsolutePath());
         }
 
+        long totalByteCount = totalBytes == null ? 0 : totalBytes.longValue();
+        long totalBytesRead = 0;
+
         try (OutputStream outStream = new FileOutputStream(targetFilePath)) {
 
             byte[] buffer = new byte[8 * 1024];
             int bytesRead;
             while ((bytesRead = initialStream.read(buffer)) != -1) {
                 outStream.write(buffer, 0, bytesRead);
+
+                totalBytesRead += bytesRead;
+
+                if (totalByteCount > 0){
+                    double percent = totalBytesRead;
+                    percent /= totalByteCount;
+                    percent *= 100;
+                    progress.onProgress(percent);
+                }
             }
             outStream.close();
         }

@@ -1,6 +1,7 @@
 package mediabrowser.apiinteraction.android.sync.data;
 
 import android.content.Context;
+import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.logging.ILogger;
 
 import java.io.File;
@@ -30,7 +31,7 @@ public class AndroidImageFileRepository extends AndroidFileRepository implements
 
         File file = new File(getImagePath(itemId, imageId));
 
-        saveFile(stream, file.getParent(), file.getName(), mimeType);
+        saveFile(stream, file.getParent(), file.getName(), mimeType, null, new Progress<Double>());
     }
 
     @Override

@@ -10,6 +10,7 @@ import android.os.Build;
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.apiinteraction.Response;
+import mediabrowser.apiinteraction.ResponseStreamInfo;
 import mediabrowser.apiinteraction.android.mediabrowser.Constants;
 import mediabrowser.apiinteraction.android.mediabrowser.IMediaRes;
 import mediabrowser.apiinteraction.android.sync.MediaSyncService;
@@ -33,6 +34,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Logger;
 
 /**
  * Created by Luke on 3/11/2015.
@@ -192,9 +194,11 @@ public class MediaSync {
         return PendingIntent.getActivity(mService, 654, openUI, PendingIntent.FLAG_CANCEL_CURRENT);
     }
 
-    private Notification createNotification(LocalItem item, int progress) {
+    private Notification createNotification(LocalItem item, Double progress, boolean indeterminateProgress) {
 
         Notification.Builder notificationBuilder = new Notification.Builder(mService);
+
+        int progressInt = progress.intValue();
 
         notificationBuilder
                 .setSmallIcon(mediaRes.getAppIcon())
@@ -203,7 +207,7 @@ public class MediaSync {
                 .setWhen(new Date().getTime())
                 .setContentTitle("Emby")
                 .setContentText("Downloading " + item.getItem().getName())
-                .setProgress(100, progress, true)
+                .setProgress(100, progressInt, indeterminateProgress)
                 //.setContentText(description.getSubtitle())
         ;
 
@@ -218,18 +222,29 @@ public class MediaSync {
         return notificationBuilder.build();
     }
 
-    private void showNotification(LocalItem item, int progress, boolean close){
+    private long lastNotificationTime;
+    private void showNotification(LocalItem item, Double progress, boolean close, boolean throttle, boolean indeterminateProgress){
+
+        long now = new Date().getTime();
+
+        if (throttle){
+            if ((now - lastNotificationTime) < 640){
+                return;
+            }
+        }
 
         NotificationManager notificationManager = (NotificationManager) mService.getSystemService(Context.NOTIFICATION_SERVICE);
 
         int notificationId = 412;
+
+        lastNotificationTime = now;
 
         if (close){
             notificationManager.cancel(notificationId);
             mService.stopForeground(true);
         } else{
 
-            Notification notif = createNotification(item, progress);
+            Notification notif = createNotification(item, progress, indeterminateProgress);
 
             mService.startForeground(notificationId, notif);
             notificationManager.notify(notificationId , notif);
@@ -258,27 +273,36 @@ public class MediaSync {
 
         final LocalItem localItem = newLocalItem;
 
-        apiClient.GetSyncJobItemFile(jobItem.getSyncJobItemId(), new Response<InputStream>(response){
+        apiClient.GetSyncJobItemFile(jobItem.getSyncJobItemId(), new Response<ResponseStreamInfo>(response){
 
             @Override
-            public void onResponse(InputStream stream) {
+            public void onResponse(ResponseStreamInfo responseStreamInfo) {
 
-                logger.Debug("Got item file response stream");
-                showNotification(localItem, 0, false);
+                final boolean indeterminateProgress = responseStreamInfo.ContentLength <= 0;
 
-                try (InputStream copy = stream){
+                logger.Debug("Got item file response stream. Content length: %s", responseStreamInfo.ContentLength);
+                showNotification(localItem, 0.0, false, false, indeterminateProgress);
 
-                    String mediaPath = localAssetManager.saveMedia(copy, localItem, server);
+                try (InputStream copy = responseStreamInfo.Stream){
+
+                    String mediaPath = localAssetManager.saveMedia(copy, localItem, server, (long) responseStreamInfo.ContentLength, new Progress<Double>(){
+                        @Override
+                        public void onProgress(Double percent)
+                        {
+                            //logger.Info("Download progress: %s", percent);
+                            showNotification(localItem, percent, false, true, indeterminateProgress);
+                        }
+                    });
 
                     localItem.setLocalPath(mediaPath);
                     for (MediaSourceInfo mediaSourceInfo : localItem.getItem().getMediaSources()){
                         mediaSourceInfo.setPath(mediaPath);
                     }
 
-                    showNotification(localItem, 100, true);
+                    showNotification(localItem, 100.0, true, false, indeterminateProgress);
                 }
                 catch (IOException ioException){
-                    showNotification(localItem, 0, true);
+                    showNotification(localItem, 0.0, true, false, indeterminateProgress);
                     response.onError(ioException);
                     return;
                 }
@@ -441,12 +465,12 @@ public class MediaSync {
 
         String url = apiClient.GetImageUrl(itemId, options);
 
-        apiClient.getResponseStream(url, new Response<InputStream>(response) {
+        apiClient.getResponseStream(url, new Response<ResponseStreamInfo>(response) {
 
             @Override
-            public void onResponse(InputStream stream) {
+            public void onResponse(ResponseStreamInfo responseStreamInfo) {
 
-                try (InputStream copy = stream){
+                try (InputStream copy = responseStreamInfo.Stream){
 
                     localAssetManager.saveImage(serverId, itemId, imageTag, copy);
                     triggerInnerResponse();

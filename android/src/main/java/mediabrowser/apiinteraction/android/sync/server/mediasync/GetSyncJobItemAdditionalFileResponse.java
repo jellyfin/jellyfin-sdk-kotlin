@@ -2,6 +2,7 @@ package mediabrowser.apiinteraction.android.sync.server.mediasync;
 
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.Response;
+import mediabrowser.apiinteraction.ResponseStreamInfo;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.apiinteraction.tasks.IProgress;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 /**
  * Created by Luke on 4/20/2015.
  */
-public class GetSyncJobItemAdditionalFileResponse extends Response<InputStream> {
+public class GetSyncJobItemAdditionalFileResponse extends Response<ResponseStreamInfo> {
 
     private ILogger logger;
     private ApiClient apiClient;
@@ -61,9 +62,9 @@ public class GetSyncJobItemAdditionalFileResponse extends Response<InputStream> 
     }
 
     @Override
-    public void onResponse(InputStream stream) {
+    public void onResponse(ResponseStreamInfo responseStreamInfo) {
 
-        try (InputStream copy = stream){
+        try (InputStream copy = responseStreamInfo.Stream){
 
             String path = localAssetManager.saveSubtitles(copy, subtitleStream.getCodec(), item, subtitleStream.getLanguage(), subtitleStream.getIsForced());
             subtitleStream.setPath(path);

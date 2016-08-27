@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction.android.sync.data;
 
+import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.sync.DeviceFileInfo;
 
 import java.io.IOException;
@@ -10,7 +11,7 @@ public interface IFileRepository {
 
     ArrayList<DeviceFileInfo> getFileSystemEntries(String path);
 
-    String saveFile(InputStream stream, String directory, String name, String mimeType) throws IOException;
+    String saveFile(InputStream stream, String directory, String name, String mimeType, Long totalBytes, Progress<Double> progress) throws IOException;
 
     void deleteFile(String path);
 

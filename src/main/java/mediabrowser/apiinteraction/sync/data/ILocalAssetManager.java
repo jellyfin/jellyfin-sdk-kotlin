@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction.sync.data;
 
+import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.dto.BaseItemDto;
 import mediabrowser.model.dto.UserDto;
@@ -43,7 +44,7 @@ public interface ILocalAssetManager {
 
     boolean fileExists(String path);
 
-    String saveMedia(InputStream stream, LocalItem localItem, ServerInfo server) throws IOException;
+    String saveMedia(InputStream stream, LocalItem localItem, ServerInfo server, Long totalBytes, Progress<Double> progress) throws IOException;
 
     ArrayList<String> getServerItemIds(String serverId);
 

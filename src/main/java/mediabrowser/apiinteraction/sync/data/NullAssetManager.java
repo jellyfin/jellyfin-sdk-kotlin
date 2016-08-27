@@ -1,5 +1,6 @@
 package mediabrowser.apiinteraction.sync.data;
 
+import mediabrowser.apiinteraction.tasks.Progress;
 import mediabrowser.model.apiclient.ServerInfo;
 import mediabrowser.model.dto.BaseItemDto;
 import mediabrowser.model.dto.UserDto;
@@ -83,7 +84,7 @@ public class NullAssetManager implements ILocalAssetManager {
     }
 
     @Override
-    public String saveMedia(InputStream stream, LocalItem localItem, ServerInfo server)
+    public String saveMedia(InputStream stream, LocalItem localItem, ServerInfo server, Long totalBytes, Progress<Double> progress)
     {
         return null;
     }

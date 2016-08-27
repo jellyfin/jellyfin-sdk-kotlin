@@ -3,6 +3,7 @@ package mediabrowser.apiinteraction.android.sync.server;
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.apiinteraction.Response;
+import mediabrowser.apiinteraction.ResponseStreamInfo;
 import mediabrowser.apiinteraction.sync.data.ILocalAssetManager;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
 import mediabrowser.model.apiclient.ServerInfo;
@@ -118,12 +119,12 @@ public class OfflineUsersSync {
 
                 logger.Info("Getting image stream from %s", imageUrl);
 
-                apiClient.getResponseStream(imageUrl, new Response<InputStream>(response) {
+                apiClient.getResponseStream(imageUrl, new Response<ResponseStreamInfo>(response) {
 
                     @Override
-                    public void onResponse(InputStream stream) {
+                    public void onResponse(ResponseStreamInfo responseStreamInfo) {
 
-                        try (InputStream alias = stream) {
+                        try (InputStream alias = responseStreamInfo.Stream) {
 
                             logger.Info("Got image stream, calling localAssetManager.saveImage");
                             localAssetManager.saveImage(user, alias);

@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import mediabrowser.apiinteraction.ApiClient;
 import mediabrowser.apiinteraction.ApiEventListener;
 import mediabrowser.apiinteraction.Response;
+import mediabrowser.apiinteraction.ResponseStreamInfo;
 import mediabrowser.apiinteraction.device.IDevice;
 import mediabrowser.apiinteraction.http.IAsyncHttpClient;
 import mediabrowser.apiinteraction.tasks.CancellationToken;
@@ -59,7 +60,7 @@ public class AndroidApiClient extends ApiClient {
     }
 
     @Override
-    public void getResponseStream(final String address, final Response<InputStream> response){
+    public void getResponseStream(final String address, final Response<ResponseStreamInfo> response){
 
         Thread thread = new Thread(new Runnable() {
             @Override
