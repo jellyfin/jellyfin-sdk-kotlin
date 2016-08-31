@@ -104,11 +104,11 @@ public class GetPlaybackInfoResponse extends Response<PlaybackInfoResponse> {
         streamInfo.setAllMediaSources(playbackInfo.getMediaSources());
         streamInfo.setStartPositionTicks(startPositionTicks);
 
-        if (mediaSourceInfo.getSupportsDirectPlay() && canDirectPlay(mediaSourceInfo)){
+        if (options.getEnableDirectPlay() && mediaSourceInfo.getSupportsDirectPlay() && canDirectPlay(mediaSourceInfo)){
             streamInfo.setPlayMethod(PlayMethod.DirectPlay);
             streamInfo.setContainer(mediaSourceInfo.getContainer());
             streamInfo.setMediaUrl(mediaSourceInfo.getPath());
-        } else if (mediaSourceInfo.getSupportsDirectStream()){
+        } else if (options.getEnableDirectStream() && mediaSourceInfo.getSupportsDirectStream()){
 
             String outputContainer = mediaSourceInfo.getContainer();
             if (outputContainer == null){
