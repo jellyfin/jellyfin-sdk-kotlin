@@ -150,15 +150,19 @@ public class GetPlaybackInfoResponse extends Response<PlaybackInfoResponse> {
 
     private MediaSourceInfo getOptimalMediaSource(ArrayList<MediaSourceInfo> mediaSourceInfos){
 
-        for (MediaSourceInfo mediaSourceInfo : mediaSourceInfos){
-            if (canDirectPlay(mediaSourceInfo)){
-                return mediaSourceInfo;
+        if (options.getEnableDirectPlay()){
+            for (MediaSourceInfo mediaSourceInfo : mediaSourceInfos){
+                if (canDirectPlay(mediaSourceInfo)){
+                    return mediaSourceInfo;
+                }
             }
         }
 
-        for (MediaSourceInfo mediaSourceInfo : mediaSourceInfos){
-            if (mediaSourceInfo.getSupportsDirectStream()){
-                return mediaSourceInfo;
+        if (options.getEnableDirectStream()){
+            for (MediaSourceInfo mediaSourceInfo : mediaSourceInfos){
+                if (mediaSourceInfo.getSupportsDirectStream()){
+                    return mediaSourceInfo;
+                }
             }
         }
 
