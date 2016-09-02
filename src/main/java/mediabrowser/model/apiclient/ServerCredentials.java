@@ -89,7 +89,7 @@ public class ServerCredentials
 			}
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getManualAddress()))
 			{
-				existing.setLocalAddress(server.getManualAddress());
+				existing.setManualAddress(server.getManualAddress());
 			}
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getName()))
 			{
