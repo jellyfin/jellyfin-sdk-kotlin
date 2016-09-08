@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.squareup.okhttp.OkHttpClient;
-import de.duenndns.ssl.MemorizingTrustManager;
 import mediabrowser.apiinteraction.android.images.ImageCacheManager;
 import mediabrowser.apiinteraction.android.volley.GetBitmapResponse;
 import mediabrowser.apiinteraction.http.HttpRequest;
@@ -71,30 +70,7 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         // lazy initialize the request queue, the queue instance will be
         // created when it is accessed for the first time
         if (mRequestQueue == null) {
-            // register MemorizingTrustManager for HTTPS
-            try {
-                SSLContext sc;
-                sc = SSLContext.getInstance("TLS");
-                MemorizingTrustManager mtm = new MemorizingTrustManager(context);
-                sc.init(null, new X509TrustManager[]{mtm}, new java.security.SecureRandom());
-
-                HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-                HttpsURLConnection.setDefaultHostnameVerifier(
-                        mtm.wrapHostnameVerifier(HttpsURLConnection.getDefaultHostnameVerifier()));
-
-                OkHttpClient okClient = new OkHttpClient();
-                okClient.setSslSocketFactory(sc.getSocketFactory());
-                OkHttpStack okStack = new OkHttpStack(okClient);
-
-                mRequestQueue = Volley.newRequestQueue(context, okStack);
-                //mRequestQueue = Volley.newRequestQueue(context, new HttpClientStack(new DefaultHttpClient()));
-                //mRequestQueue = Volley.newRequestQueue(context);
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-                mRequestQueue = Volley.newRequestQueue(context, new OkHttpStack(), DEFAULT_DISK_USAGE_BYTES);
-            } catch (KeyManagementException e) {
-                e.printStackTrace();
-            }
+            mRequestQueue = Volley.newRequestQueue(context, new OkHttpStack(), DEFAULT_DISK_USAGE_BYTES);
         }
 
         return mRequestQueue;
