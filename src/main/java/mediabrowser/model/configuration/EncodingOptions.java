@@ -65,6 +65,33 @@ public class EncodingOptions
 	{
 		EncoderAppPath = value;
 	}
+	private String VaapiDevice;
+	public final String getVaapiDevice()
+	{
+		return VaapiDevice;
+	}
+	public final void setVaapiDevice(String value)
+	{
+		VaapiDevice = value;
+	}
+	private int H264Crf;
+	public final int getH264Crf()
+	{
+		return H264Crf;
+	}
+	public final void setH264Crf(int value)
+	{
+		H264Crf = value;
+	}
+	private String H264Preset;
+	public final String getH264Preset()
+	{
+		return H264Preset;
+	}
+	public final void setH264Preset(String value)
+	{
+		H264Preset = value;
+	}
 
 	public EncodingOptions()
 	{
@@ -72,5 +99,7 @@ public class EncodingOptions
 		setEnableThrottling(true);
 		setThrottleDelaySeconds(180);
 		setEncodingThreadCount(-1);
+		setVaapiDevice("/dev/dri/card0");
+		setH264Crf(23);
 	}
 }

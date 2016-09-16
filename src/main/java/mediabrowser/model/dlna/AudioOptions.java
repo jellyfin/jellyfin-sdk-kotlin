@@ -165,7 +165,7 @@ public class AudioOptions
 	 
 	 @return System.Nullable&lt;System.Int32&gt;.
 	*/
-	public final Integer GetMaxBitrate()
+	public final Integer GetMaxBitrate(boolean isAudio)
 	{
 		if (getMaxBitrate() != null)
 		{
@@ -176,6 +176,10 @@ public class AudioOptions
 		{
 			if (getContext() == EncodingContext.Static)
 			{
+				if (isAudio && getProfile().getMaxStaticMusicBitrate() != null)
+				{
+					return getProfile().getMaxStaticMusicBitrate();
+				}
 				return getProfile().getMaxStaticBitrate();
 			}
 

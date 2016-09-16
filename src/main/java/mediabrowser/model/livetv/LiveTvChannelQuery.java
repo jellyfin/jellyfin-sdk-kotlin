@@ -139,4 +139,18 @@ public class LiveTvChannelQuery
 	{
 		AddCurrentProgram = value;
 	}
+	private boolean EnableUserData;
+	public final boolean getEnableUserData()
+	{
+		return EnableUserData;
+	}
+	public final void setEnableUserData(boolean value)
+	{
+		EnableUserData = value;
+	}
+
+	public LiveTvChannelQuery()
+	{
+		setEnableUserData(true);
+	}
 }

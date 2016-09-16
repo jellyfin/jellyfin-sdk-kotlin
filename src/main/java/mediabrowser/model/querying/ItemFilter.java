@@ -26,10 +26,6 @@ public enum ItemFilter
 	*/
 	IsFavorite(5),
 	/** 
-	 The is recently added
-	*/
-	IsRecentlyAdded(6),
-	/** 
 	 The item is resumable
 	*/
 	IsResumable(7),

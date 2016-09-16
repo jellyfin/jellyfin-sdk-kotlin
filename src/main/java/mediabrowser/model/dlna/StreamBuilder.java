@@ -52,7 +52,7 @@ public class StreamBuilder
 			stream.setDeviceProfileId(options.getProfile().getId());
 		}
 
-		return GetOptimalStream(streams, options.GetMaxBitrate());
+		return GetOptimalStream(streams, options.GetMaxBitrate(true));
 	}
 
 	public final StreamInfo BuildVideoItem(VideoOptions options)
@@ -84,7 +84,7 @@ public class StreamBuilder
 			stream.setDeviceProfileId(options.getProfile().getId());
 		}
 
-		return GetOptimalStream(streams, options.GetMaxBitrate());
+		return GetOptimalStream(streams, options.GetMaxBitrate(false));
 	}
 
 	private StreamInfo GetOptimalStream(java.util.ArrayList<StreamInfo> streams, Integer maxBitrate)
@@ -276,23 +276,32 @@ public class StreamBuilder
 			}
 
 			Integer tempVar4 = options.getAudioTranscodingBitrate();
-			int configuredBitrate = (tempVar4 != null) ? tempVar4 : ((options.getContext() == EncodingContext.Static ? options.getProfile().getMusicSyncBitrate() : options.getProfile().getMusicStreamingTranscodingBitrate()) != null) ? (options.getContext() == EncodingContext.Static ? options.getProfile().getMusicSyncBitrate() : options.getProfile().getMusicStreamingTranscodingBitrate()) : 128000;
+			Integer tempVar5 = options.getProfile().getMusicStreamingTranscodingBitrate();
+			int transcodingBitrate = (tempVar4 != null) ? tempVar4 : (tempVar5 != null) ? tempVar5 : 128000;
 
-			Integer tempVar5 = playlistItem.getAudioBitrate();
-			playlistItem.setAudioBitrate(Math.min(configuredBitrate, (tempVar5 != null) ? tempVar5 : configuredBitrate));
+			Integer configuredBitrate = options.GetMaxBitrate(true);
+
+			if (configuredBitrate != null)
+			{
+				transcodingBitrate = Math.min(configuredBitrate, transcodingBitrate);
+			}
+
+			Integer tempVar6 = playlistItem.getAudioBitrate();
+			playlistItem.setAudioBitrate(Math.min(transcodingBitrate, (tempVar6 != null) ? tempVar6 : transcodingBitrate));
+
 		}
 
 		return playlistItem;
 	}
 
-	private Integer GetBitrateForDirectPlayCheck(MediaSourceInfo item, AudioOptions options)
+	private Integer GetBitrateForDirectPlayCheck(MediaSourceInfo item, AudioOptions options, boolean isAudio)
 	{
 		if (item.getProtocol() == MediaProtocol.File)
 		{
 			return options.getProfile().getMaxStaticBitrate();
 		}
 
-		return options.GetMaxBitrate();
+		return options.GetMaxBitrate(isAudio);
 	}
 
 	private java.util.ArrayList<PlayMethod> GetAudioDirectPlayMethods(MediaSourceInfo item, MediaStream audioStream, AudioOptions options)
@@ -312,14 +321,14 @@ public class StreamBuilder
 		if (directPlayProfile != null)
 		{
 			// While options takes the network and other factors into account. Only applies to direct stream
-			if (item.getSupportsDirectStream() && IsAudioEligibleForDirectPlay(item, options.GetMaxBitrate()) && options.getEnableDirectStream())
+			if (item.getSupportsDirectStream() && IsAudioEligibleForDirectPlay(item, options.GetMaxBitrate(true)) && options.getEnableDirectStream())
 			{
 				playMethods.add(PlayMethod.DirectStream);
 			}
 
 			// The profile describes what the device supports
 			// If device requirements are satisfied then allow both direct stream and direct play
-			if (item.getSupportsDirectPlay() && IsAudioEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options)) && options.getEnableDirectPlay())
+			if (item.getSupportsDirectPlay() && IsAudioEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options, true)) && options.getEnableDirectPlay())
 			{
 				playMethods.add(PlayMethod.DirectPlay);
 			}
@@ -403,8 +412,8 @@ public class StreamBuilder
 		MediaStream videoStream = item.getVideoStream();
 
 		// TODO: This doesn't accout for situation of device being able to handle media bitrate, but wifi connection not fast enough
-		boolean isEligibleForDirectPlay = options.getEnableDirectPlay() && (options.getForceDirectPlay() || IsEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options), subtitleStream, options, PlayMethod.DirectPlay));
-		boolean isEligibleForDirectStream = options.getEnableDirectStream() && (options.getForceDirectStream() || IsEligibleForDirectPlay(item, options.GetMaxBitrate(), subtitleStream, options, PlayMethod.DirectStream));
+		boolean isEligibleForDirectPlay = options.getEnableDirectPlay() && (options.getForceDirectPlay() || IsEligibleForDirectPlay(item, GetBitrateForDirectPlayCheck(item, options, true), subtitleStream, options, PlayMethod.DirectPlay));
+		boolean isEligibleForDirectStream = options.getEnableDirectStream() && (options.getForceDirectStream() || IsEligibleForDirectPlay(item, options.GetMaxBitrate(false), subtitleStream, options, PlayMethod.DirectStream));
 
 		String tempVar4 = options.getProfile().getName();
 		String tempVar5 = item.getPath();
@@ -467,7 +476,6 @@ public class StreamBuilder
 
 			playlistItem.setVideoCodec(transcodingProfile.getVideoCodec());
 			playlistItem.setCopyTimestamps(transcodingProfile.getCopyTimestamps());
-			playlistItem.setForceLiveStream(transcodingProfile.getForceLiveStream());
 			playlistItem.setEnableSubtitlesInManifest(transcodingProfile.getEnableSubtitlesInManifest());
 
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(transcodingProfile.getMaxAudioChannels()))
@@ -573,11 +581,11 @@ public class StreamBuilder
 				playlistItem.setMaxAudioChannels(Math.min(options.getMaxAudioChannels(), currentValue));
 			}
 
-			int audioBitrate = GetAudioBitrate(options.GetMaxBitrate(), playlistItem.getTargetAudioChannels(), playlistItem.getTargetAudioCodec(), audioStream);
+			int audioBitrate = GetAudioBitrate(playlistItem.getSubProtocol(), options.GetMaxBitrate(false), playlistItem.getTargetAudioChannels(), playlistItem.getTargetAudioCodec(), audioStream);
 			Integer tempVar9 = playlistItem.getAudioBitrate();
 			playlistItem.setAudioBitrate(Math.min((tempVar9 != null) ? tempVar9 : audioBitrate, audioBitrate));
 
-			Integer maxBitrateSetting = options.GetMaxBitrate();
+			Integer maxBitrateSetting = options.GetMaxBitrate(false);
 			// Honor max rate
 			if (maxBitrateSetting != null)
 			{
@@ -598,26 +606,31 @@ public class StreamBuilder
 		return playlistItem;
 	}
 
-	private int GetAudioBitrate(Integer maxTotalBitrate, Integer targetAudioChannels, String targetAudioCodec, MediaStream audioStream)
+	private int GetAudioBitrate(String subProtocol, Integer maxTotalBitrate, Integer targetAudioChannels, String targetAudioCodec, MediaStream audioStream)
 	{
-		int defaultBitrate = 128000;
-		if (StringHelper.EqualsIgnoreCase(targetAudioCodec, "ac3"))
+		Integer tempVar = audioStream.getBitRate();
+//C# TO JAVA CONVERTER TODO TASK: There is no equivalent to implicit typing in Java:
+		int defaultBitrate = audioStream == null ? 192000 : (tempVar != null) ? tempVar : 192000;
+		// Reduce the bitrate if we're downmixing
+		if (targetAudioChannels != null && audioStream != null && audioStream.getChannels() != null && targetAudioChannels < audioStream.getChannels())
 		{
-			defaultBitrate = 192000;
-		}
-		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(targetAudioCodec) && audioStream != null && StringHelper.EqualsIgnoreCase(audioStream.getCodec(), targetAudioCodec))
-		{
-			Integer tempVar = audioStream.getBitRate();
-			defaultBitrate = (tempVar != null) ? tempVar : defaultBitrate;
+			defaultBitrate = StringHelper.EqualsIgnoreCase(targetAudioCodec, "ac3") ? 192000 : 128000;
 		}
 
 		if (targetAudioChannels != null)
 		{
-			if (targetAudioChannels >= 5 && ((maxTotalBitrate != null) ? maxTotalBitrate : 0) >= 1500000)
+			if (targetAudioChannels >= 5 && ((maxTotalBitrate != null) ? maxTotalBitrate : 0) >= 1200000)
 			{
 				if (StringHelper.EqualsIgnoreCase(targetAudioCodec, "ac3"))
 				{
-					defaultBitrate = Math.max(448000, defaultBitrate);
+					if (StringHelper.EqualsIgnoreCase(subProtocol, "hls"))
+					{
+						defaultBitrate = Math.max(384000, defaultBitrate);
+					}
+					else
+					{
+						defaultBitrate = Math.max(448000, defaultBitrate);
+					}
 				}
 				else
 				{

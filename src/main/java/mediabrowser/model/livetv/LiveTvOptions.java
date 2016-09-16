@@ -1,5 +1,8 @@
 package mediabrowser.model.livetv;
 
+import mediabrowser.model.dto.*;
+import mediabrowser.model.extensions.*;
+
 public class LiveTvOptions
 {
 	private Integer GuideDays = null;
@@ -64,6 +67,15 @@ public class LiveTvOptions
 	public final void setEnableRecordingEncoding(boolean value)
 	{
 		EnableRecordingEncoding = value;
+	}
+	private String RecordingEncodingFormat;
+	public final String getRecordingEncodingFormat()
+	{
+		return RecordingEncodingFormat;
+	}
+	public final void setRecordingEncodingFormat(String value)
+	{
+		RecordingEncodingFormat = value;
 	}
 	private boolean EnableRecordingSubfolders;
 	public final boolean getEnableRecordingSubfolders()
@@ -139,5 +151,6 @@ public class LiveTvOptions
 		setTunerHosts(new java.util.ArrayList<TunerHostInfo>());
 		setListingProviders(new java.util.ArrayList<ListingsProviderInfo>());
 		setMediaLocationsCreated(new String[] { });
+		setRecordingEncodingFormat("mp4");
 	}
 }

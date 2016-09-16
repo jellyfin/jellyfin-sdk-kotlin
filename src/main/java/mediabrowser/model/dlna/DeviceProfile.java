@@ -258,14 +258,14 @@ public class DeviceProfile
 	{
 		MusicStreamingTranscodingBitrate = value;
 	}
-	private Integer MusicSyncBitrate = null;
-	public final Integer getMusicSyncBitrate()
+	private Integer MaxStaticMusicBitrate = null;
+	public final Integer getMaxStaticMusicBitrate()
 	{
-		return MusicSyncBitrate;
+		return MaxStaticMusicBitrate;
 	}
-	public final void setMusicSyncBitrate(Integer value)
+	public final void setMaxStaticMusicBitrate(Integer value)
 	{
-		MusicSyncBitrate = value;
+		MaxStaticMusicBitrate = value;
 	}
 
 	/** 
@@ -456,7 +456,6 @@ public class DeviceProfile
 		setMaxStreamingBitrate(8000000);
 		setMaxStaticBitrate(8000000);
 		setMusicStreamingTranscodingBitrate(128000);
-		setMusicSyncBitrate(128000);
 	}
 
 	public final java.util.ArrayList<String> GetSupportedMediaTypes()

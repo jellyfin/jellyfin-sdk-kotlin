@@ -69,16 +69,6 @@ public class UserConfiguration
 		DisplayUnairedEpisodes = value;
 	}
 
-	private boolean GroupMoviesIntoBoxSets;
-	public final boolean getGroupMoviesIntoBoxSets()
-	{
-		return GroupMoviesIntoBoxSets;
-	}
-	public final void setGroupMoviesIntoBoxSets(boolean value)
-	{
-		GroupMoviesIntoBoxSets = value;
-	}
-
 	private String[] ExcludeFoldersFromGrouping;
 	public final String[] getExcludeFoldersFromGrouping()
 	{
@@ -165,15 +155,6 @@ public class UserConfiguration
 	{
 		HidePlayedInLatest = value;
 	}
-	private boolean EnableChannelView;
-	public final boolean getEnableChannelView()
-	{
-		return EnableChannelView;
-	}
-	public final void setEnableChannelView(boolean value)
-	{
-		EnableChannelView = value;
-	}
 
 	private boolean RememberAudioSelections;
 	public final boolean getRememberAudioSelections()
@@ -201,15 +182,6 @@ public class UserConfiguration
 	public final void setEnableNextEpisodeAutoPlay(boolean value)
 	{
 		EnableNextEpisodeAutoPlay = value;
-	}
-	private boolean DisplayFoldersView;
-	public final boolean getDisplayFoldersView()
-	{
-		return DisplayFoldersView;
-	}
-	public final void setDisplayFoldersView(boolean value)
-	{
-		DisplayFoldersView = value;
 	}
 
 	/** 

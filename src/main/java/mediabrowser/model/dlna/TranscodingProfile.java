@@ -123,18 +123,6 @@ public class TranscodingProfile
 	}
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [XmlAttribute("forceLiveStream")] public bool ForceLiveStream {get;set;}
-	private boolean ForceLiveStream;
-	public final boolean getForceLiveStream()
-	{
-		return ForceLiveStream;
-	}
-	public final void setForceLiveStream(boolean value)
-	{
-		ForceLiveStream = value;
-	}
-
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("enableSubtitlesInManifest")] public bool EnableSubtitlesInManifest {get;set;}
 	private boolean EnableSubtitlesInManifest;
 	public final boolean getEnableSubtitlesInManifest()

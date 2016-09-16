@@ -310,6 +310,9 @@ public class ConnectionManager implements IConnectionManager {
         request.setUrl(url);
         request.setMethod("GET");
 
+        String auth = "MediaBrowser Client=\"" + applicationName + "\", Device=\"" + getDevice().getDeviceName() + "\", DeviceId=\"" + getDevice().getDeviceId() + "\", Version=\"" + applicationVersion + "\"";
+
+        request.getRequestHeaders().put("X-Emby-Authorization", auth);
         request.getRequestHeaders().put("X-MediaBrowser-Token", server.getExchangeToken());
 
         httpClient.Send(request, new ExchangeTokenResponse(jsonSerializer, server, response));

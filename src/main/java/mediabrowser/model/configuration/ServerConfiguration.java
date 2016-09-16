@@ -173,6 +173,16 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		MetadataPath = value;
 	}
 
+	private String LastVersion;
+	public final String getLastVersion()
+	{
+		return LastVersion;
+	}
+	public final void setLastVersion(String value)
+	{
+		LastVersion = value;
+	}
+
 	/** 
 	 Gets or sets the display name of the season zero.
 	 
@@ -463,15 +473,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		PeopleMetadataOptions = value;
 	}
-	private boolean FindInternetTrailers;
-	public final boolean getFindInternetTrailers()
-	{
-		return FindInternetTrailers;
-	}
-	public final void setFindInternetTrailers(boolean value)
-	{
-		FindInternetTrailers = value;
-	}
 
 	private boolean SaveMetadataHidden;
 	public final boolean getSaveMetadataHidden()
@@ -501,16 +502,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setRemoteClientBitrateLimit(int value)
 	{
 		RemoteClientBitrateLimit = value;
-	}
-
-	private AutoOnOff EnableLibraryMonitor = AutoOnOff.values()[0];
-	public final AutoOnOff getEnableLibraryMonitor()
-	{
-		return EnableLibraryMonitor;
-	}
-	public final void setEnableLibraryMonitor(AutoOnOff value)
-	{
-		EnableLibraryMonitor = value;
 	}
 
 	private int SharingExpirationDays;
@@ -559,16 +550,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setSqliteCacheSize(int value)
 	{
 		SqliteCacheSize = value;
-	}
-
-	private boolean DownloadImagesInAdvance;
-	public final boolean getDownloadImagesInAdvance()
-	{
-		return DownloadImagesInAdvance;
-	}
-	public final void setDownloadImagesInAdvance(boolean value)
-	{
-		DownloadImagesInAdvance = value;
 	}
 
 	private boolean EnableAnonymousUsageReporting;
@@ -643,7 +624,43 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		LocalNetworkAddresses = value;
 	}
+	private String[] CodecsUsed;
+	public final String[] getCodecsUsed()
+	{
+		return CodecsUsed;
+	}
+	public final void setCodecsUsed(String[] value)
+	{
+		CodecsUsed = value;
+	}
+	private boolean EnableChannelView;
+	public final boolean getEnableChannelView()
+	{
+		return EnableChannelView;
+	}
+	public final void setEnableChannelView(boolean value)
+	{
+		EnableChannelView = value;
+	}
+	private boolean EnableExternalContentInSuggestions;
+	public final boolean getEnableExternalContentInSuggestions()
+	{
+		return EnableExternalContentInSuggestions;
+	}
+	public final void setEnableExternalContentInSuggestions(boolean value)
+	{
+		EnableExternalContentInSuggestions = value;
+	}
 
+	private int ImageExtractionTimeoutMs;
+	public final int getImageExtractionTimeoutMs()
+	{
+		return ImageExtractionTimeoutMs;
+	}
+	public final void setImageExtractionTimeoutMs(int value)
+	{
+		ImageExtractionTimeoutMs = value;
+	}
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
 	*/
@@ -651,10 +668,13 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		setLocalNetworkAddresses(new String[] { });
 		setMigrations(new String[] { });
+		setCodecsUsed(new String[] { });
 		setSqliteCacheSize(0);
+		setImageExtractionTimeoutMs(0);
 
 		setEnableLocalizedGuids(true);
 		setDisplaySpecialsWithinSeasons(true);
+		setEnableExternalContentInSuggestions(true);
 
 		setImageSavingConvention(ImageSavingConvention.Compatible);
 		setPublicPort(8096);
@@ -667,6 +687,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setEnableAnonymousUsageReporting(true);
 
 		setEnableAutomaticRestart(true);
+		setEnableFolderView(true);
 
 		setEnableUPnP(true);
 		setSharingExpirationDays(30);
@@ -676,11 +697,9 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		// 5 minutes
 		setMinResumeDurationSeconds(300);
 
-		setEnableLibraryMonitor(AutoOnOff.Auto);
 		setLibraryMonitorDelay(60);
 
 		setEnableInternetProviders(true);
-		setFindInternetTrailers(true);
 
 		setPathSubstitutions(new PathSubstitution[] { });
 		setContentTypes(new NameValuePair[] { });

@@ -14,6 +14,7 @@ public class ProgramQuery
 		setSortBy(new String[] { });
 		setGenres(new String[] { });
 		setEnableTotalRecordCount(true);
+		setEnableUserData(true);
 	}
 
 	private boolean EnableTotalRecordCount;
@@ -24,6 +25,15 @@ public class ProgramQuery
 	public final void setEnableTotalRecordCount(boolean value)
 	{
 		EnableTotalRecordCount = value;
+	}
+	private boolean EnableUserData;
+	public final boolean getEnableUserData()
+	{
+		return EnableUserData;
+	}
+	public final void setEnableUserData(boolean value)
+	{
+		EnableUserData = value;
 	}
 
 	/** 

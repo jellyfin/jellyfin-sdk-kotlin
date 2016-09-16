@@ -6,7 +6,8 @@ public enum ProgramAudio
 	Stereo,
 	Dolby,
 	DolbyDigital,
-	Thx;
+	Thx,
+	Atmos;
 
 	public int getValue()
 	{

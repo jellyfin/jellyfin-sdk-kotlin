@@ -1,9 +1,6 @@
 package mediabrowser.apiinteraction.android;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import com.android.volley.toolbox.DiskBasedCache;
-import com.squareup.okhttp.OkHttpClient;
 import mediabrowser.apiinteraction.android.images.ImageCacheManager;
 import mediabrowser.apiinteraction.android.volley.GetBitmapResponse;
 import mediabrowser.apiinteraction.http.HttpRequest;
@@ -16,13 +13,6 @@ import com.android.volley.*;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.X509TrustManager;
-import java.io.File;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 
 public class VolleyHttpClient implements IAsyncHttpClient {
 
@@ -49,22 +39,6 @@ public class VolleyHttpClient implements IAsyncHttpClient {
 
     /** Default maximum disk usage in bytes. */
     private static final int DEFAULT_DISK_USAGE_BYTES = 100 * 1024 * 1024;
-
-    /**
-     * @return The Volley Request queue, the queue will be created if it is null
-     */
-    public RequestQueue getRequestQueueOld() {
-        // lazy initialize the request queue, the queue instance will be
-        // created when it is accessed for the first time
-        if (mRequestQueue == null) {
-
-            mRequestQueue = Volley.newRequestQueue(context, new OkHttpStack(), DEFAULT_DISK_USAGE_BYTES);
-            //mRequestQueue = Volley.newRequestQueue(context, new HttpClientStack(new DefaultHttpClient()));
-            //mRequestQueue = Volley.newRequestQueue(context);
-        }
-
-        return mRequestQueue;
-    }
 
     public RequestQueue getRequestQueue() {
         // lazy initialize the request queue, the queue instance will be

@@ -58,6 +58,15 @@ public class SyncJobQuery
 	{
 		UserId = value;
 	}
+	private String ExcludeTargetIds;
+	public final String getExcludeTargetIds()
+	{
+		return ExcludeTargetIds;
+	}
+	public final void setExcludeTargetIds(String value)
+	{
+		ExcludeTargetIds = value;
+	}
 	/** 
 	 Gets or sets the status.
 	 

@@ -166,6 +166,42 @@ public class RecordingQuery
 	{
 		EnableImages = value;
 	}
+	private Boolean IsMovie;
+	public final Boolean getIsMovie()
+	{
+		return IsMovie;
+	}
+	public final void setIsMovie(Boolean value)
+	{
+		IsMovie = value;
+	}
+	private Boolean IsSeries;
+	public final Boolean getIsSeries()
+	{
+		return IsSeries;
+	}
+	public final void setIsSeries(Boolean value)
+	{
+		IsSeries = value;
+	}
+	private Boolean IsKids;
+	public final Boolean getIsKids()
+	{
+		return IsKids;
+	}
+	public final void setIsKids(Boolean value)
+	{
+		IsKids = value;
+	}
+	private Boolean IsSports;
+	public final Boolean getIsSports()
+	{
+		return IsSports;
+	}
+	public final void setIsSports(Boolean value)
+	{
+		IsSports = value;
+	}
 	private Integer ImageTypeLimit;
 	public final Integer getImageTypeLimit()
 	{

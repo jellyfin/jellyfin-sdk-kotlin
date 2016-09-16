@@ -197,6 +197,8 @@ public enum ItemFields
 	*/
 	SeriesGenres,
 
+	SeriesPrimaryImage,
+
 	/** 
 	 The series studio
 	*/
@@ -217,6 +219,7 @@ public enum ItemFields
 	*/
 	Studios,
 
+	BasicSyncInfo,
 	/** 
 	 The synchronize information
 	*/
