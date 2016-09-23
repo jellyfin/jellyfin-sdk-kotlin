@@ -178,7 +178,11 @@ public class LocalAssetManager implements ILocalAssetManager {
         if (item.IsType("episode"))
         {
             parts.add("TV");
-            parts.add(item.getSeriesName());
+
+            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(item.getSeriesName()))
+            {
+                parts.add(item.getSeriesName());
+            }
 
             if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(item.getSeasonName()))
             {
@@ -199,7 +203,8 @@ public class LocalAssetManager implements ILocalAssetManager {
                 parts.add(item.getAlbumArtist());
             }
 
-            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(item.getAlbumId()))
+            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(item.getAlbumId()) &&
+                    !tangible.DotNetToJavaStringHelper.isNullOrEmpty(item.getAlbum()))
             {
                 parts.add(item.getAlbum());
             }
@@ -208,7 +213,8 @@ public class LocalAssetManager implements ILocalAssetManager {
         {
             parts.add("Photos");
 
-            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(item.getAlbumId()))
+            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(item.getAlbumId()) &&
+                    !tangible.DotNetToJavaStringHelper.isNullOrEmpty(item.getAlbum()))
             {
                 parts.add(item.getAlbum());
             }
