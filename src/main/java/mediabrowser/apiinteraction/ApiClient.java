@@ -1659,6 +1659,10 @@ public class ApiClient extends BaseApiClient {
         dict.AddIfNotNull("IsInProgress", query.getIsInProgress());
         dict.AddIfNotNull("StartIndex", query.getStartIndex());
         dict.AddIfNotNull("Limit", query.getLimit());
+        dict.AddIfNotNull("IsSeries", query.getIsSeries());
+        dict.AddIfNotNull("IsKids", query.getIsKids());
+        dict.AddIfNotNull("IsMovie", query.getIsMovie());
+        dict.AddIfNotNull("IsSports", query.getIsSports());
 
         dict.AddIfNotNull("EnableImages", query.getEnableImages());
         dict.AddIfNotNull("ImageTypeLimit", query.getImageTypeLimit());
