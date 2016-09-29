@@ -127,6 +127,20 @@ public class RecommendedProgramQuery
 	 
 	 <value><c>null</c> if [is movie] contains no value, <c>true</c> if [is movie]; otherwise, <c>false</c>.</value>
 	*/
+	private Boolean IsNews;
+	public final Boolean getIsNews()
+	{
+		return IsNews;
+	}
+	public final void setIsNews(Boolean value)
+	{
+		IsNews = value;
+	}
+	/** 
+	 Gets or sets a value indicating whether this instance is movie.
+	 
+	 <value><c>null</c> if [is movie] contains no value, <c>true</c> if [is movie]; otherwise, <c>false</c>.</value>
+	*/
 	private Boolean IsMovie;
 	public final Boolean getIsMovie()
 	{
@@ -135,6 +149,15 @@ public class RecommendedProgramQuery
 	public final void setIsMovie(Boolean value)
 	{
 		IsMovie = value;
+	}
+	private Boolean IsSeries;
+	public final Boolean getIsSeries()
+	{
+		return IsSeries;
+	}
+	public final void setIsSeries(Boolean value)
+	{
+		IsSeries = value;
 	}
 	/** 
 	 Gets or sets a value indicating whether this instance is kids.

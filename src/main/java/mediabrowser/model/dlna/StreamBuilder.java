@@ -609,7 +609,6 @@ public class StreamBuilder
 	private int GetAudioBitrate(String subProtocol, Integer maxTotalBitrate, Integer targetAudioChannels, String targetAudioCodec, MediaStream audioStream)
 	{
 		Integer tempVar = audioStream.getBitRate();
-//C# TO JAVA CONVERTER TODO TASK: There is no equivalent to implicit typing in Java:
 		int defaultBitrate = audioStream == null ? 192000 : (tempVar != null) ? tempVar : 192000;
 		// Reduce the bitrate if we're downmixing
 		if (targetAudioChannels != null && audioStream != null && audioStream.getChannels() != null && targetAudioChannels < audioStream.getChannels())
@@ -617,26 +616,13 @@ public class StreamBuilder
 			defaultBitrate = StringHelper.EqualsIgnoreCase(targetAudioCodec, "ac3") ? 192000 : 128000;
 		}
 
-		if (targetAudioChannels != null)
+		if (StringHelper.EqualsIgnoreCase(subProtocol, "hls"))
 		{
-			if (targetAudioChannels >= 5 && ((maxTotalBitrate != null) ? maxTotalBitrate : 0) >= 1200000)
-			{
-				if (StringHelper.EqualsIgnoreCase(targetAudioCodec, "ac3"))
-				{
-					if (StringHelper.EqualsIgnoreCase(subProtocol, "hls"))
-					{
-						defaultBitrate = Math.max(384000, defaultBitrate);
-					}
-					else
-					{
-						defaultBitrate = Math.max(448000, defaultBitrate);
-					}
-				}
-				else
-				{
-					defaultBitrate = Math.max(320000, defaultBitrate);
-				}
-			}
+			defaultBitrate = Math.min(384000, defaultBitrate);
+		}
+		else
+		{
+			defaultBitrate = Math.min(448000, defaultBitrate);
 		}
 
 		int encoderAudioBitrateLimit = Integer.MAX_VALUE;
@@ -652,6 +638,14 @@ public class StreamBuilder
 				{
 					encoderAudioBitrateLimit = 64000;
 				}
+			}
+		}
+
+		if (maxTotalBitrate != null)
+		{
+			if (maxTotalBitrate < 640000)
+			{
+				defaultBitrate = Math.min(128000, defaultBitrate);
 			}
 		}
 

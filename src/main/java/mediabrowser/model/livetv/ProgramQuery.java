@@ -161,6 +161,21 @@ public class ProgramQuery
 	}
 
 	/** 
+	 Used to specific whether to return news or not
+	 
+	 If set to null, all programs will be returned
+	*/
+	private Boolean IsNews = null;
+	public final Boolean getIsNews()
+	{
+		return IsNews;
+	}
+	public final void setIsNews(Boolean value)
+	{
+		IsNews = value;
+	}
+
+	/** 
 	 Used to specific whether to return movies or not
 	 
 	 If set to null, all programs will be returned
@@ -215,6 +230,15 @@ public class ProgramQuery
 	public final void setStartIndex(Integer value)
 	{
 		StartIndex = value;
+	}
+	private Boolean IsSeries = null;
+	public final Boolean getIsSeries()
+	{
+		return IsSeries;
+	}
+	public final void setIsSeries(Boolean value)
+	{
+		IsSeries = value;
 	}
 
 	/** 

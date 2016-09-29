@@ -166,6 +166,15 @@ public class RecordingQuery
 	{
 		EnableImages = value;
 	}
+	private Boolean IsNews;
+	public final Boolean getIsNews()
+	{
+		return IsNews;
+	}
+	public final void setIsNews(Boolean value)
+	{
+		IsNews = value;
+	}
 	private Boolean IsMovie;
 	public final Boolean getIsMovie()
 	{

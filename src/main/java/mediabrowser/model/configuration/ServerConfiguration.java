@@ -172,6 +172,15 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		MetadataPath = value;
 	}
+	private String MetadataNetworkPath;
+	public final String getMetadataNetworkPath()
+	{
+		return MetadataNetworkPath;
+	}
+	public final void setMetadataNetworkPath(String value)
+	{
+		MetadataNetworkPath = value;
+	}
 
 	private String LastVersion;
 	public final String getLastVersion()

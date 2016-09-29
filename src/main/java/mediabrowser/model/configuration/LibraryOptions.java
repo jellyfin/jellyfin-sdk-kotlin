@@ -65,10 +65,20 @@ public class LibraryOptions
 	{
 		DownloadImagesInAdvance = value;
 	}
+	private MediaPathInfo[] PathInfos;
+	public final MediaPathInfo[] getPathInfos()
+	{
+		return PathInfos;
+	}
+	public final void setPathInfos(MediaPathInfo[] value)
+	{
+		PathInfos = value;
+	}
 
 	public LibraryOptions()
 	{
 		setEnablePhotos(true);
 		setEnableRealtimeMonitor(true);
+		setPathInfos(new MediaPathInfo[] { });
 	}
 }

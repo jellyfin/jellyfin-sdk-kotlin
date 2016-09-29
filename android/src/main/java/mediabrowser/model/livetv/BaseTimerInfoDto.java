@@ -259,7 +259,7 @@ public class BaseTimerInfoDto implements IHasServerId
 	{
 		IsPostPaddingRequired = value;
 	}
-	private KeepUntil KeepUntil = getKeepUntil().values()[0];
+	private KeepUntil KeepUntil = mediabrowser.model.livetv.KeepUntil.UntilDeleted;
 	public final KeepUntil getKeepUntil()
 	{
 		return KeepUntil;
