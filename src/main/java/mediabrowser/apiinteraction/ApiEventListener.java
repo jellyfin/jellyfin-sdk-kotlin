@@ -3,6 +3,7 @@ package mediabrowser.apiinteraction;
 import mediabrowser.model.apiclient.RemoteLogoutReason;
 import mediabrowser.model.apiclient.SessionUpdatesEventArgs;
 import mediabrowser.model.dto.UserDto;
+import mediabrowser.model.entities.LibraryUpdateInfo;
 import mediabrowser.model.session.*;
 
 public class ApiEventListener {
@@ -12,6 +13,10 @@ public class ApiEventListener {
     }
 
     public void onUserUpdated(ApiClient client, UserDto userDto){
+
+    }
+
+    public void onLibraryChanged(ApiClient client, LibraryUpdateInfo info) {
 
     }
 
