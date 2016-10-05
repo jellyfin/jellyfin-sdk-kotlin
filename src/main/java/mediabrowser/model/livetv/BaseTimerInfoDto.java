@@ -17,6 +17,16 @@ public class BaseTimerInfoDto implements IHasServerId
 		Id = value;
 	}
 
+	private String Type;
+	public final String getType()
+	{
+		return Type;
+	}
+	public final void setType(String value)
+	{
+		Type = value;
+	}
+
 	/** 
 	 Gets or sets the server identifier.
 	 

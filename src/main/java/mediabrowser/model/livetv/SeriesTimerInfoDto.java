@@ -9,6 +9,13 @@ import mediabrowser.model.entities.*;
 //ORIGINAL LINE: [DebuggerDisplay("Name = {Name}")] public class SeriesTimerInfoDto : BaseTimerInfoDto
 public class SeriesTimerInfoDto extends BaseTimerInfoDto
 {
+	public SeriesTimerInfoDto()
+	{
+		setImageTags(new java.util.HashMap<ImageType, String>());
+		setDays(new java.util.ArrayList<String>());
+		setType("SeriesTimer");
+	}
+
 	/** 
 	 Gets or sets a value indicating whether [record any time].
 	 
@@ -129,11 +136,5 @@ public class SeriesTimerInfoDto extends BaseTimerInfoDto
 	public final boolean getHasPrimaryImage()
 	{
 		return getImageTags() != null && getImageTags().containsKey(ImageType.Primary);
-	}
-
-	public SeriesTimerInfoDto()
-	{
-		setImageTags(new java.util.HashMap<ImageType, String>());
-		setDays(new java.util.ArrayList<String>());
 	}
 }

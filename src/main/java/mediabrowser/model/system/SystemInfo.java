@@ -7,6 +7,16 @@ import mediabrowser.model.updates.*;
 */
 public class SystemInfo extends PublicSystemInfo
 {
+	private PackageVersionClass SystemUpdateLevel = PackageVersionClass.values()[0];
+	public final PackageVersionClass getSystemUpdateLevel()
+	{
+		return SystemUpdateLevel;
+	}
+	public final void setSystemUpdateLevel(PackageVersionClass value)
+	{
+		SystemUpdateLevel = value;
+	}
+
 	/** 
 	 Gets or sets the display name of the operating system.
 	 
@@ -65,6 +75,16 @@ public class SystemInfo extends PublicSystemInfo
 	public final void setMacAddress(String value)
 	{
 		MacAddress = value;
+	}
+
+	private String PackageName;
+	public final String getPackageName()
+	{
+		return PackageName;
+	}
+	public final void setPackageName(String value)
+	{
+		PackageName = value;
 	}
 
 	/** 
@@ -365,6 +385,26 @@ public class SystemInfo extends PublicSystemInfo
 	public final void setSupportsAutoRunAtStartup(boolean value)
 	{
 		SupportsAutoRunAtStartup = value;
+	}
+
+	private String EncoderLocationType;
+	public final String getEncoderLocationType()
+	{
+		return EncoderLocationType;
+	}
+	public final void setEncoderLocationType(String value)
+	{
+		EncoderLocationType = value;
+	}
+
+	private Architecture SystemArchitecture = Architecture.values()[0];
+	public final Architecture getSystemArchitecture()
+	{
+		return SystemArchitecture;
+	}
+	public final void setSystemArchitecture(Architecture value)
+	{
+		SystemArchitecture = value;
 	}
 
 	/** 

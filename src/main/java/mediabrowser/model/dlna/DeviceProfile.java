@@ -613,7 +613,7 @@ public class DeviceProfile
 		return null;
 	}
 
-	public final ResponseProfile GetVideoMediaProfile(String container, String audioCodec, String videoCodec, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic, Integer refFrames, Integer numVideoStreams, Integer numAudioStreams, String videoCodecTag)
+	public final ResponseProfile GetVideoMediaProfile(String container, String audioCodec, String videoCodec, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic, Integer refFrames, Integer numVideoStreams, Integer numAudioStreams, String videoCodecTag, Boolean isAvc)
 	{
 		container = StringHelper.TrimStart((container != null) ? container : "", '.');
 
@@ -647,7 +647,7 @@ public class DeviceProfile
 			boolean anyOff = false;
 			for (ProfileCondition c : i.getConditions())
 			{
-				if (!conditionProcessor.IsVideoConditionSatisfied(c, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames, numVideoStreams, numAudioStreams, videoCodecTag))
+				if (!conditionProcessor.IsVideoConditionSatisfied(c, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames, numVideoStreams, numAudioStreams, videoCodecTag, isAvc))
 				{
 					anyOff = true;
 					break;

@@ -41,4 +41,14 @@ public class TimerQuery
 	{
 		IsActive = value;
 	}
+
+	private Boolean IsScheduled;
+	public final Boolean getIsScheduled()
+	{
+		return IsScheduled;
+	}
+	public final void setIsScheduled(Boolean value)
+	{
+		IsScheduled = value;
+	}
 }

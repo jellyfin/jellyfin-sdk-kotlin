@@ -128,7 +128,15 @@ public class MediaSourceInfo
 	{
 		SupportsDirectPlay = value;
 	}
-
+	private boolean IsInfiniteStream;
+	public final boolean getIsInfiniteStream()
+	{
+		return IsInfiniteStream;
+	}
+	public final void setIsInfiniteStream(boolean value)
+	{
+		IsInfiniteStream = value;
+	}
 	private boolean RequiresOpening;
 	public final boolean getRequiresOpening()
 	{
@@ -289,6 +297,16 @@ public class MediaSourceInfo
 	public final void setTranscodingContainer(String value)
 	{
 		TranscodingContainer = value;
+	}
+
+	private java.util.Date DateLiveStreamOpened = null;
+	public final java.util.Date getDateLiveStreamOpened()
+	{
+		return DateLiveStreamOpened;
+	}
+	public final void setDateLiveStreamOpened(java.util.Date value)
+	{
+		DateLiveStreamOpened = value;
 	}
 
 	public MediaSourceInfo()

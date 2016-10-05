@@ -49,4 +49,13 @@ public class ChapterInfo
 	{
 		ImagePath = value;
 	}
+	private java.util.Date ImageDateModified = new java.util.Date(0);
+	public final java.util.Date getImageDateModified()
+	{
+		return ImageDateModified;
+	}
+	public final void setImageDateModified(java.util.Date value)
+	{
+		ImageDateModified = value;
+	}
 }

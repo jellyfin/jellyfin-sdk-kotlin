@@ -107,6 +107,15 @@ public class ProgramQuery
 	{
 		UserId = value;
 	}
+	private String SeriesTimerId;
+	public final String getSeriesTimerId()
+	{
+		return SeriesTimerId;
+	}
+	public final void setSeriesTimerId(String value)
+	{
+		SeriesTimerId = value;
+	}
 
 	/** 
 	 The earliest date for which a program starts to return

@@ -30,44 +30,6 @@ public class ChapterOptions
 		EnableOtherVideoChapterImageExtraction = value;
 	}
 
-	private boolean DownloadMovieChapters;
-	public final boolean getDownloadMovieChapters()
-	{
-		return DownloadMovieChapters;
-	}
-	public final void setDownloadMovieChapters(boolean value)
-	{
-		DownloadMovieChapters = value;
-	}
-	private boolean DownloadEpisodeChapters;
-	public final boolean getDownloadEpisodeChapters()
-	{
-		return DownloadEpisodeChapters;
-	}
-	public final void setDownloadEpisodeChapters(boolean value)
-	{
-		DownloadEpisodeChapters = value;
-	}
-
-	private String[] FetcherOrder;
-	public final String[] getFetcherOrder()
-	{
-		return FetcherOrder;
-	}
-	public final void setFetcherOrder(String[] value)
-	{
-		FetcherOrder = value;
-	}
-	private String[] DisabledFetchers;
-	public final String[] getDisabledFetchers()
-	{
-		return DisabledFetchers;
-	}
-	public final void setDisabledFetchers(String[] value)
-	{
-		DisabledFetchers = value;
-	}
-
 	private boolean ExtractDuringLibraryScan;
 	public final boolean getExtractDuringLibraryScan()
 	{
@@ -76,13 +38,5 @@ public class ChapterOptions
 	public final void setExtractDuringLibraryScan(boolean value)
 	{
 		ExtractDuringLibraryScan = value;
-	}
-
-	public ChapterOptions()
-	{
-		setDownloadMovieChapters(true);
-
-		setDisabledFetchers(new String[] { });
-		setFetcherOrder(new String[] { });
 	}
 }

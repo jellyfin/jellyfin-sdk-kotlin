@@ -75,10 +75,30 @@ public class LibraryOptions
 		PathInfos = value;
 	}
 
+	private boolean SaveLocalMetadata;
+	public final boolean getSaveLocalMetadata()
+	{
+		return SaveLocalMetadata;
+	}
+	public final void setSaveLocalMetadata(boolean value)
+	{
+		SaveLocalMetadata = value;
+	}
+	private boolean EnableInternetProviders;
+	public final boolean getEnableInternetProviders()
+	{
+		return EnableInternetProviders;
+	}
+	public final void setEnableInternetProviders(boolean value)
+	{
+		EnableInternetProviders = value;
+	}
+
 	public LibraryOptions()
 	{
 		setEnablePhotos(true);
 		setEnableRealtimeMonitor(true);
 		setPathInfos(new MediaPathInfo[] { });
+		setEnableInternetProviders(true);
 	}
 }

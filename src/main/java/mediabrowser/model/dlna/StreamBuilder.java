@@ -544,6 +544,7 @@ public class StreamBuilder
 						Float videoFramerate = videoStream == null ? null : (tempVar7 != null) ? tempVar7 : videoStream.getAverageFrameRate();
 						Boolean isAnamorphic = videoStream == null ? null : videoStream.getIsAnamorphic();
 						String videoCodecTag = videoStream == null ? null : videoStream.getCodecTag();
+						Boolean isAvc = videoStream == null ? null : videoStream.getIsAVC();
 
 						TransportStreamTimestamp timestamp = videoStream == null ? TransportStreamTimestamp.None : item.getTimestamp();
 						Integer packetLength = videoStream == null ? null : videoStream.getPacketLength();
@@ -552,7 +553,7 @@ public class StreamBuilder
 						Integer numAudioStreams = item.GetStreamCount(MediaStreamType.Audio);
 						Integer numVideoStreams = item.GetStreamCount(MediaStreamType.Video);
 
-						if (!conditionProcessor.IsVideoConditionSatisfied(applyCondition, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames, numVideoStreams, numAudioStreams, videoCodecTag))
+						if (!conditionProcessor.IsVideoConditionSatisfied(applyCondition, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames, numVideoStreams, numAudioStreams, videoCodecTag, isAvc))
 						{
 							LogConditionFailure(options.getProfile(), "VideoCodecProfile", applyCondition, item);
 							applyConditions = false;
@@ -720,6 +721,7 @@ public class StreamBuilder
 		Float videoFramerate = videoStream == null ? null : (tempVar5 != null) ? tempVar5 : videoStream.getAverageFrameRate();
 		Boolean isAnamorphic = videoStream == null ? null : videoStream.getIsAnamorphic();
 		String videoCodecTag = videoStream == null ? null : videoStream.getCodecTag();
+		Boolean isAvc = videoStream == null ? null : videoStream.getIsAVC();
 
 		Integer audioBitrate = audioStream == null ? null : audioStream.getBitRate();
 		Integer audioChannels = audioStream == null ? null : audioStream.getChannels();
@@ -735,7 +737,7 @@ public class StreamBuilder
 		// Check container conditions
 		for (ProfileCondition i : conditions)
 		{
-			if (!conditionProcessor.IsVideoConditionSatisfied(i, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames, numVideoStreams, numAudioStreams, videoCodecTag))
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames, numVideoStreams, numAudioStreams, videoCodecTag, isAvc))
 			{
 				LogConditionFailure(profile, "VideoContainerProfile", i, mediaSource);
 
@@ -762,7 +764,7 @@ public class StreamBuilder
 				boolean applyConditions = true;
 				for (ProfileCondition applyCondition : i.getApplyConditions())
 				{
-					if (!conditionProcessor.IsVideoConditionSatisfied(applyCondition, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames, numVideoStreams, numAudioStreams, videoCodecTag))
+					if (!conditionProcessor.IsVideoConditionSatisfied(applyCondition, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames, numVideoStreams, numAudioStreams, videoCodecTag, isAvc))
 					{
 						LogConditionFailure(profile, "VideoCodecProfile", applyCondition, mediaSource);
 						applyConditions = false;
@@ -782,7 +784,7 @@ public class StreamBuilder
 
 		for (ProfileCondition i : conditions)
 		{
-			if (!conditionProcessor.IsVideoConditionSatisfied(i, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames, numVideoStreams, numAudioStreams, videoCodecTag))
+			if (!conditionProcessor.IsVideoConditionSatisfied(i, width, height, bitDepth, videoBitrate, videoProfile, videoLevel, videoFramerate, packetLength, timestamp, isAnamorphic, refFrames, numVideoStreams, numAudioStreams, videoCodecTag, isAvc))
 			{
 				LogConditionFailure(profile, "VideoCodecProfile", i, mediaSource);
 
