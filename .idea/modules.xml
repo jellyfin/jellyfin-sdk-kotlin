@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/apiclient.iml" filepath="$PROJECT_DIR$/.idea/modules/apiclient.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/apiclient_main.iml" filepath="$PROJECT_DIR$/.idea/modules/apiclient_main.iml" group="apiclient" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/apiclient_test.iml" filepath="$PROJECT_DIR$/.idea/modules/apiclient_test.iml" group="apiclient" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android/emby.apiclient.android.iml" filepath="$PROJECT_DIR$/.idea/modules/android/emby.apiclient.android.iml" group="emby.apiclient.android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android/emby.apiclient.android.iml" filepath="$PROJECT_DIR$/.idea/modules/android/emby.apiclient.android.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/android/emby.apiclient.android_main.iml" filepath="$PROJECT_DIR$/.idea/modules/android/emby.apiclient.android_main.iml" group="emby.apiclient.android" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/android/emby.apiclient.android_test.iml" filepath="$PROJECT_DIR$/.idea/modules/android/emby.apiclient.android_test.iml" group="emby.apiclient.android" />
     </modules>

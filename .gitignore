@@ -2,12 +2,11 @@
 ## Intelli J
 #################
 
-.gradle
+gradle/
 /local.properties
-.idea
-.DS_Store
-build
-.idea/workspace.xml
+.idea/
+.DS_Store/
+build/
 
 #################
 ## Eclipse
@@ -40,7 +39,6 @@ local.properties
 .buildpath
 
 out/production/
-.idea/
 
 #################
 ## Media Browser
@@ -247,3 +245,4 @@ MediaBrowser.WebDashboard/dashboard-ui/.idea/
 .idea/workspace.xml
 .idea/workspace.xml
 .idea/workspace.xml
+.idea/misc.xml
