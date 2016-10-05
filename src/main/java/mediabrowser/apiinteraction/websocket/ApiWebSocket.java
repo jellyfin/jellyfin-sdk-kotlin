@@ -6,6 +6,7 @@ import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.model.apiclient.GeneralCommandEventArgs;
 import mediabrowser.model.apiclient.SessionUpdatesEventArgs;
 import mediabrowser.model.dto.UserDto;
+import mediabrowser.model.entities.LibraryUpdateInfo;
 import mediabrowser.model.extensions.IntHelper;
 import mediabrowser.model.extensions.LongHelper;
 import mediabrowser.model.extensions.StringHelper;
@@ -156,7 +157,8 @@ public class ApiWebSocket implements ISocketListener {
 
         if (StringHelper.EqualsIgnoreCase(messageType, "LibraryChanged"))
         {
-
+            LibraryUpdateInfo obj = jsonSerializer.DeserializeFromString(message, LibraryUpdateInfo.class);
+            apiEventListener.onLibraryChanged(apiClient, obj);
 
         }
         else if (StringHelper.EqualsIgnoreCase(messageType, "RestartRequired"))
