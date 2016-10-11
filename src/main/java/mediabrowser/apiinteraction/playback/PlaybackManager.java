@@ -209,12 +209,6 @@ public class PlaybackManager {
 
     public void reportPlaybackProgress(PlaybackProgressInfo info, final StreamInfo streamInfo, boolean isOffline, ApiClient apiClient, EmptyResponse response)
     {
-        if (!isOffline)
-        {
-            apiClient.ReportPlaybackProgressAsync(info, response);
-            return;
-        }
-
         MediaSourceInfo mediaSource = streamInfo.getMediaSource();
 
         if (mediaSource != null){
@@ -222,6 +216,12 @@ public class PlaybackManager {
         }
 
         info.setPlaySessionId(streamInfo.getPlaySessionId());
+
+        if (!isOffline)
+        {
+            apiClient.ReportPlaybackProgressAsync(info, response);
+            return;
+        }
 
         response.onResponse();
     }
