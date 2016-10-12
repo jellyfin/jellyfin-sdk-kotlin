@@ -1696,6 +1696,8 @@ public class ApiClient extends BaseApiClient {
         dict.AddIfNotNull("IsLiked", query.getIsLiked());
         dict.AddIfNotNull("IsDisliked", query.getIsDisliked());
         dict.AddIfNotNull("EnableFavoriteSorting", query.getEnableFavoriteSorting());
+        dict.AddIfNotNull("SortBy",query.getSortBy());
+        dict.AddIfNotNull("SortOrder",query.getSortOrder());
 
         if (query.getChannelType() != null)
         {

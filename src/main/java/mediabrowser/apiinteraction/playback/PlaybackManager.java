@@ -225,7 +225,7 @@ public class PlaybackManager {
 
         response.onResponse();
     }
-
+    
     public void reportPlaybackStopped(PlaybackStopInfo info, final StreamInfo streamInfo, final String serverId, String userId, boolean isOffline, final ApiClient apiClient, final EmptyResponse response)
     {
         if (isOffline)
