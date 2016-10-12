@@ -433,6 +433,24 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		EnableAutomaticRestart = value;
 	}
+	private boolean SkipDeserializationForBasicTypes;
+	public final boolean getSkipDeserializationForBasicTypes()
+	{
+		return SkipDeserializationForBasicTypes;
+	}
+	public final void setSkipDeserializationForBasicTypes(boolean value)
+	{
+		SkipDeserializationForBasicTypes = value;
+	}
+	private boolean SkipDeserializationForPrograms;
+	public final boolean getSkipDeserializationForPrograms()
+	{
+		return SkipDeserializationForPrograms;
+	}
+	public final void setSkipDeserializationForPrograms(boolean value)
+	{
+		SkipDeserializationForPrograms = value;
+	}
 
 	private PathSubstitution[] PathSubstitutions;
 	public final PathSubstitution[] getPathSubstitutions()
@@ -660,6 +678,15 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		EnableExternalContentInSuggestions = value;
 	}
+	private boolean EnableSimpleArtistDetection;
+	public final boolean getEnableSimpleArtistDetection()
+	{
+		return EnableSimpleArtistDetection;
+	}
+	public final void setEnableSimpleArtistDetection(boolean value)
+	{
+		EnableSimpleArtistDetection = value;
+	}
 
 	private int ImageExtractionTimeoutMs;
 	public final int getImageExtractionTimeoutMs()
@@ -810,6 +837,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		tempVar27.setLimit(0);
 		tempVar27.setType(ImageType.Disc);
 		tempVar25.setImageOptions(new ImageOption[] {tempVar26, tempVar27});
+		tempVar25.setDisabledMetadataFetchers(new String[]{"TheAudioDB"});
 		MetadataOptions tempVar28 = new MetadataOptions(1, 1280);
 		tempVar28.setItemType("MusicArtist");
 		ImageOption tempVar29 = new ImageOption();
@@ -826,6 +854,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		tempVar32.setLimit(0);
 		tempVar32.setType(ImageType.Logo);
 		tempVar28.setImageOptions(new ImageOption[] {tempVar29, tempVar30, tempVar31, tempVar32});
+		tempVar28.setDisabledMetadataFetchers(new String[]{"TheAudioDB"});
 		MetadataOptions tempVar33 = new MetadataOptions(1, 1280);
 		tempVar33.setItemType("BoxSet");
 		ImageOption tempVar34 = new ImageOption();

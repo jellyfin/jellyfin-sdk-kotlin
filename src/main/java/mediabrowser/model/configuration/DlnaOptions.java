@@ -65,15 +65,6 @@ public class DlnaOptions
 	{
 		DefaultUserId = value;
 	}
-	private boolean EnableMovieFolders;
-	public final boolean getEnableMovieFolders()
-	{
-		return EnableMovieFolders;
-	}
-	public final void setEnableMovieFolders(boolean value)
-	{
-		EnableMovieFolders = value;
-	}
 
 	public DlnaOptions()
 	{

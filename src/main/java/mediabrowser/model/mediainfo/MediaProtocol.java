@@ -5,7 +5,8 @@ public enum MediaProtocol
 	File(0),
 	Http(1),
 	Rtmp(2),
-	Rtsp(3);
+	Rtsp(3),
+	Udp(4);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, MediaProtocol> mappings;

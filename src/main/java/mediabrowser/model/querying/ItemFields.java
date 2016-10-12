@@ -130,6 +130,8 @@ public enum ItemFields
 	*/
 	Metascore,
 
+	OfficialRatingDescription,
+
 	OriginalTitle,
 
 	/** 
@@ -258,7 +260,9 @@ public enum ItemFields
 	/** 
 	 The service name
 	*/
-	ServiceName;
+	ServiceName,
+	ThemeSongIds,
+	ThemeVideoIds;
 
 	public int getValue()
 	{

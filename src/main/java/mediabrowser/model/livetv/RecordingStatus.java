@@ -6,7 +6,6 @@ public enum RecordingStatus
 	Scheduled,
 	InProgress,
 	Completed,
-	Aborted,
 	Cancelled,
 	ConflictedOk,
 	ConflictedNotOk,

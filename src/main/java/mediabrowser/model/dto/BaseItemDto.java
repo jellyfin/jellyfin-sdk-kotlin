@@ -515,6 +515,16 @@ public class BaseItemDto implements IHasProviderIds, IItemDto, IHasServerId, IHa
 		GameSystem = value;
 	}
 
+	private String[] ProductionLocations;
+	public final String[] getProductionLocations()
+	{
+		return ProductionLocations;
+	}
+	public final void setProductionLocations(String[] value)
+	{
+		ProductionLocations = value;
+	}
+
 	/** 
 	 Gets or sets the critic rating summary.
 	 
@@ -977,14 +987,22 @@ public class BaseItemDto implements IHasProviderIds, IItemDto, IHasServerId, IHa
 	 
 	 <value><c>true</c> if this instance is folder; otherwise, <c>false</c>.</value>
 	*/
-	private boolean IsFolder;
-	public final boolean getIsFolder()
+	private Boolean IsFolder = null;
+	public final Boolean getIsFolder()
 	{
 		return IsFolder;
 	}
-	public final void setIsFolder(boolean value)
+	public final void setIsFolder(Boolean value)
 	{
 		IsFolder = value;
+	}
+
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [IgnoreDataMember] public bool IsFolderItem
+	public final boolean getIsFolderItem()
+	{
+		Boolean tempVar = getIsFolder();
+		return (tempVar != null) ? tempVar : false;
 	}
 
 	/** 
@@ -1664,7 +1682,7 @@ public class BaseItemDto implements IHasProviderIds, IItemDto, IHasServerId, IHa
 //ORIGINAL LINE: [IgnoreDataMember] public bool SupportsPlaylists
 	public final boolean getSupportsPlaylists()
 	{
-		return getRunTimeTicks() != null || getIsFolder() || getIsGenre() || getIsMusicGenre() || getIsArtist();
+		return getRunTimeTicks() != null || getIsFolderItem() || getIsGenre() || getIsMusicGenre() || getIsArtist();
 	}
 
 	/** 
@@ -1946,21 +1964,6 @@ public class BaseItemDto implements IHasProviderIds, IItemDto, IHasServerId, IHa
 	public final void setHomePageUrl(String value)
 	{
 		HomePageUrl = value;
-	}
-
-	/** 
-	 Gets or sets the production locations.
-	 
-	 <value>The production locations.</value>
-	*/
-	private java.util.ArrayList<String> ProductionLocations;
-	public final java.util.ArrayList<String> getProductionLocations()
-	{
-		return ProductionLocations;
-	}
-	public final void setProductionLocations(java.util.ArrayList<String> value)
-	{
-		ProductionLocations = value;
 	}
 
 	/** 

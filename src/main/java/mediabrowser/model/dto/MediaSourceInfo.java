@@ -299,16 +299,6 @@ public class MediaSourceInfo
 		TranscodingContainer = value;
 	}
 
-	private java.util.Date DateLiveStreamOpened = null;
-	public final java.util.Date getDateLiveStreamOpened()
-	{
-		return DateLiveStreamOpened;
-	}
-	public final void setDateLiveStreamOpened(java.util.Date value)
-	{
-		DateLiveStreamOpened = value;
-	}
-
 	public MediaSourceInfo()
 	{
 		setFormats(new java.util.ArrayList<String>());

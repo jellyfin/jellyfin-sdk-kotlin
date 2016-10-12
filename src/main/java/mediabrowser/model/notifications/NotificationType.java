@@ -16,7 +16,6 @@ public enum NotificationType
 	PluginUpdateInstalled,
 	PluginUninstalled,
 	NewLibraryContent,
-	NewLibraryContentMultiple,
 	ServerRestartRequired,
 	TaskFailed,
 	CameraImageUploaded,
