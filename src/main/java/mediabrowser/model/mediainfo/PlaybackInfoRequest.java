@@ -84,6 +84,14 @@ public class PlaybackInfoRequest
 		LiveStreamId = value;
 	}
 
+	private Integer MaxAudioChannels;
+	public final Integer getMaxAudioChannels() {
+		return MaxAudioChannels;
+	}
+	public final void setMaxAudioChannels(Integer value) {
+		MaxAudioChannels = value;
+	}
+
 	private DeviceProfile DeviceProfile;
 	public final DeviceProfile getDeviceProfile()
 	{

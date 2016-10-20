@@ -126,6 +126,7 @@ public class PlaybackManager {
             request.setMediaSourceId(options.getMediaSourceId());
             request.setStartTimeTicks(startPositionTicks);
             request.setDeviceProfile(options.getProfile());
+            request.setMaxAudioChannels(options.getMaxAudioChannels());
 
             apiClient.GetPlaybackInfoWithPost(request, new GetPlaybackInfoResponse(this, apiClient, options, response, false, startPositionTicks));
             return;
@@ -149,6 +150,7 @@ public class PlaybackManager {
             request.setSubtitleStreamIndex(options.getSubtitleStreamIndex());
             request.setStartTimeTicks(startPositionTicks);
             request.setDeviceProfile(options.getProfile());
+            request.setMaxAudioChannels(options.getMaxAudioChannels());
 
             apiClient.GetPlaybackInfoWithPost(request, new GetPlaybackInfoResponse(this, apiClient, options, response, true, startPositionTicks));
             return;

@@ -76,6 +76,14 @@ public class LiveStreamRequest
 	{
 		ItemId = value;
 	}
+	private Integer MaxAudioChannels;
+	public final Integer getMaxAudioChannels() {
+		return MaxAudioChannels;
+	}
+	public final void setMaxAudioChannels(Integer value) {
+		MaxAudioChannels = value;
+	}
+
 	private DeviceProfile DeviceProfile;
 	public final DeviceProfile getDeviceProfile()
 	{
@@ -96,6 +104,7 @@ public class LiveStreamRequest
 		setMaxStreamingBitrate(options.getMaxBitrate());
 		setItemId(options.getItemId());
 		setDeviceProfile(options.getProfile());
+		setMaxAudioChannels(options.getMaxAudioChannels());
 
 		VideoOptions videoOptions = (VideoOptions)((options instanceof VideoOptions) ? options : null);
 		if (videoOptions != null)
