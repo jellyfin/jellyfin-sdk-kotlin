@@ -1845,6 +1845,7 @@ public class ApiClient extends BaseApiClient {
 
         dict.AddIfNotNullOrEmpty("ChannelId", query.getChannelId());
         dict.AddIfNotNullOrEmpty("SeriesTimerId", query.getSeriesTimerId());
+        dict.AddIfNotNull("IsScheduled", query.getIsScheduled());
 
         String url = GetApiUrl("LiveTv/Timers", dict);
 
