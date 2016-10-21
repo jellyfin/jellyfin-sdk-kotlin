@@ -33,13 +33,9 @@ import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.mediainfo.*;
 import mediabrowser.model.net.EndPointInfo;
 import mediabrowser.model.net.HttpException;
-import mediabrowser.model.notifications.NotificationQuery;
-import mediabrowser.model.notifications.NotificationResult;
-import mediabrowser.model.notifications.NotificationsSummary;
 import mediabrowser.model.playlists.PlaylistCreationRequest;
 import mediabrowser.model.playlists.PlaylistCreationResult;
 import mediabrowser.model.playlists.PlaylistItemQuery;
-import mediabrowser.model.plugins.PluginInfo;
 import mediabrowser.model.querying.*;
 import mediabrowser.model.registration.AppstoreRegRequest;
 import mediabrowser.model.registration.AppstoreRegWrapper;
@@ -52,8 +48,6 @@ import mediabrowser.model.session.*;
 import mediabrowser.model.sync.*;
 import mediabrowser.model.system.PublicSystemInfo;
 import mediabrowser.model.system.SystemInfo;
-import mediabrowser.model.tasks.TaskInfo;
-import mediabrowser.model.tasks.TaskTriggerInfo;
 import mediabrowser.model.users.AuthenticationResult;
 import mediabrowser.model.users.UserAction;
 
@@ -760,19 +754,6 @@ public class ApiClient extends BaseApiClient {
     }
 
     /// <summary>
-    /// Gets a list of plugins installed on the server
-    /// </summary>
-    /// <returns>Task{PluginInfo[]}.</returns>
-    public void GetInstalledPluginsAsync(final Response<PluginInfo[]> response)
-    {
-        String url = GetApiUrl("Plugins");
-
-        url = AddDataFormat(url);
-
-        Send(url, "GET", new SerializedResponse<PluginInfo[]>(response, jsonSerializer, new PluginInfo[]{}.getClass()));
-    }
-
-    /// <summary>
     /// Gets the current server configuration
     /// </summary>
     /// <returns>Task{ServerConfiguration}.</returns>
@@ -783,38 +764,6 @@ public class ApiClient extends BaseApiClient {
         url = AddDataFormat(url);
 
         Send(url, "GET", new SerializedResponse<ServerConfiguration>(response, jsonSerializer, ServerConfiguration.class));
-    }
-
-    /// <summary>
-    /// Gets the scheduled tasks.
-    /// </summary>
-    /// <returns>Task{TaskInfo[]}.</returns>
-    public void GetScheduledTasksAsync(final Response<TaskInfo[]> response)
-    {
-        String url = GetApiUrl("ScheduledTasks");
-
-        url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<TaskInfo[]>(response, jsonSerializer, new TaskInfo[]{}.getClass()));
-    }
-
-    /// <summary>
-    /// Gets the scheduled task async.
-    /// </summary>
-    /// <param name="id">The id.</param>
-    /// <returns>Task{TaskInfo}.</returns>
-    /// <exception cref="System.IllegalArgumentException">id</exception>
-    public void GetScheduledTaskAsync(String id, final Response<TaskInfo> response)
-    {
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
-        {
-            throw new IllegalArgumentException("id");
-        }
-
-        String url = GetApiUrl("ScheduledTasks/" + id);
-
-        url = AddDataFormat(url);
-
-        Send(url, "GET", new SerializedResponse<TaskInfo>(response, jsonSerializer, TaskInfo.class));
     }
 
     /// <summary>
@@ -1339,30 +1288,6 @@ public class ApiClient extends BaseApiClient {
     }
 
     /// <summary>
-    /// Updates the scheduled task triggers.
-    /// </summary>
-    /// <param name="id">The id.</param>
-    /// <param name="triggers">The triggers.</param>
-    /// <returns>Task{RequestResult}.</returns>
-    /// <exception cref="System.IllegalArgumentException">id</exception>
-    public void UpdateScheduledTaskTriggersAsync(String id, TaskTriggerInfo[] triggers, final EmptyResponse response)
-    {
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
-        {
-            throw new IllegalArgumentException("id");
-        }
-
-        if (triggers == null)
-        {
-            throw new IllegalArgumentException("triggers");
-        }
-
-        String url = GetApiUrl("ScheduledTasks/" + id + "/Triggers");
-
-        PostAsync(url, triggers, response);
-    }
-
-    /// <summary>
     /// Registers the sale of an Emby feature through an app store.
     /// </summary>
     /// <param name="id">The id.</param>
@@ -1427,14 +1352,6 @@ public class ApiClient extends BaseApiClient {
         PostAsync(url, displayPreferences, response);
     }
 
-    public void GetNotificationsSummary(String userId, final Response<NotificationsSummary> response)
-    {
-        String url = GetApiUrl("Notifications/" + userId + "/Summary");
-
-        url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<NotificationsSummary>(response, jsonSerializer, NotificationsSummary.class));
-    }
-
     public void MarkNotificationsRead(String userId, String[] notificationIdList, Boolean isRead, final EmptyResponse response)
     {
         String url = "Notifications/" + userId;
@@ -1448,22 +1365,6 @@ public class ApiClient extends BaseApiClient {
         url = GetApiUrl(url, dict);
 
         PostAsync(url, response);
-    }
-
-    public void GetNotificationsAsync(NotificationQuery query, final Response<NotificationResult> response)
-    {
-        String url = "Notifications/" + query.getUserId();
-
-        QueryStringDictionary dict = new QueryStringDictionary();
-        dict.AddIfNotNull("ItemIds", query.getIsRead());
-        dict.AddIfNotNull("StartIndex", query.getStartIndex());
-        dict.AddIfNotNull("Limit", query.getLimit());
-
-        url = GetApiUrl(url, dict);
-
-        url = AddDataFormat(url);
-
-        Send(url, "GET", new SerializedResponse<NotificationResult>(response, jsonSerializer, NotificationResult.class));
     }
 
     public void GetAllThemeMediaAsync(String userId, String itemId, Boolean inheritFromParent, final Response<AllThemeMediaResult> response)
@@ -2507,14 +2408,6 @@ public class ApiClient extends BaseApiClient {
             }
         }
     }
-
-     public void GetNewsItems(final Response<NewsItemsResult> response) {
-
-         String url = GetApiUrl("News/Product");
-         url = AddDataFormat(url);
-
-         Send(url, "GET", new SerializedResponse<NewsItemsResult>(response, jsonSerializer, NewsItemsResult.class));
-     }
 
     public void UpdateUserConfiguration(String userId, UserConfiguration configuration, EmptyResponse response) {
 
