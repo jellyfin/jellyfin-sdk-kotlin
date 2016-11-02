@@ -105,6 +105,7 @@ public class MediaStream
 	{
 		return DisplayTitle;
 	}
+	public final void setDisplayTitle(String value) { DisplayTitle = value; }
 
 	private String NalLengthSize;
 	public final String getNalLengthSize()
