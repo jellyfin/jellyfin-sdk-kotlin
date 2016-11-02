@@ -100,75 +100,10 @@ public class MediaStream
 		Title = value;
 	}
 
+	private String DisplayTitle;
 	public final String getDisplayTitle()
 	{
-		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getTitle()))
-		{
-			return getTitle();
-		}
-
-		if (getType() == MediaStreamType.Audio)
-		{
-			java.util.ArrayList<String> attributes = new java.util.ArrayList<String>();
-
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getLanguage()))
-			{
-				attributes.add(StringHelper.FirstToUpper(getLanguage()));
-			}
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getCodec()) && !StringHelper.EqualsIgnoreCase(getCodec(), "dca"))
-			{
-				attributes.add(AudioCodec.GetFriendlyName(getCodec()));
-			}
-			else if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getProfile()) && !StringHelper.EqualsIgnoreCase(getProfile(), "lc"))
-			{
-				attributes.add(getProfile());
-			}
-
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getChannelLayout()))
-			{
-				attributes.add(getChannelLayout());
-			}
-			else if (getChannels() != null)
-			{
-				attributes.add(StringHelper.ToStringCultureInvariant(getChannels()) + " ch");
-			}
-			if (getIsDefault())
-			{
-				attributes.add("Default");
-			}
-
-			return tangible.DotNetToJavaStringHelper.join(" ", attributes.toArray(new String[0]));
-		}
-
-		if (getType() == MediaStreamType.Subtitle)
-		{
-			java.util.ArrayList<String> attributes = new java.util.ArrayList<String>();
-
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(getLanguage()))
-			{
-				attributes.add(StringHelper.FirstToUpper(getLanguage()));
-			}
-			if (getIsDefault())
-			{
-				attributes.add("Default");
-			}
-
-			if (getIsForced())
-			{
-				attributes.add("Forced");
-			}
-
-			String name = tangible.DotNetToJavaStringHelper.join(" ", attributes.toArray(new String[0]));
-
-			return name;
-		}
-
-		if (getType() == MediaStreamType.Video)
-		{
-
-		}
-
-		return null;
+		return DisplayTitle;
 	}
 
 	private String NalLengthSize;
