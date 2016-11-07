@@ -150,6 +150,7 @@ public class PlaybackManager {
             request.setSubtitleStreamIndex(options.getSubtitleStreamIndex());
             request.setStartTimeTicks(startPositionTicks);
             request.setDeviceProfile(options.getProfile());
+            request.setEnableDirectStream(options.getEnableDirectStream());
             request.setMaxAudioChannels(options.getMaxAudioChannels());
 
             apiClient.GetPlaybackInfoWithPost(request, new GetPlaybackInfoResponse(this, apiClient, options, response, true, startPositionTicks));
