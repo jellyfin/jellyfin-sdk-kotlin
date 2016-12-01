@@ -74,6 +74,26 @@ public class PlaybackInfoRequest
 		MediaSourceId = value;
 	}
 
+	private Boolean EnableDirectStream;
+	public final Boolean getEnableDirectStream()
+	{
+		return EnableDirectStream;
+	}
+	public final void setEnableDirectStream(Boolean value)
+	{
+		EnableDirectStream = value;
+	}
+
+	private Boolean EnableDirectPlay;
+	public final Boolean getEnableDirectPlay()
+	{
+		return EnableDirectPlay;
+	}
+	public final void setEnableDirectPlay(Boolean value)
+	{
+		EnableDirectPlay = value;
+	}
+
 	private String LiveStreamId;
 	public final String getLiveStreamId()
 	{
