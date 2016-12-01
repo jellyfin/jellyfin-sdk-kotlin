@@ -202,7 +202,7 @@ public class MediaSync {
 
         notificationBuilder
                 .setSmallIcon(mediaRes.getAppIcon())
-                .setUsesChronometer(true)
+                .setUsesChronometer(false)
                 .setContentIntent(createContentIntent())
                 .setWhen(new Date().getTime())
                 .setContentTitle("Emby")
