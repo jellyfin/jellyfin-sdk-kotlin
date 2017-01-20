@@ -188,6 +188,10 @@ public class GetPlaybackInfoResponse extends Response<PlaybackInfoResponse> {
                 return true;
             }
 
+            if (mediaSourceInfo.getIsRemote()){
+                return true;
+            }
+
             return mediaSourceInfo.getPath().toLowerCase().replace("https", "http").indexOf(apiClient.getServerAddress().toLowerCase().replace("https", "http").substring(0, 14)) == 0;
         }
 

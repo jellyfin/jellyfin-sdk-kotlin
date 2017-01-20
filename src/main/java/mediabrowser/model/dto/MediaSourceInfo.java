@@ -74,6 +74,16 @@ public class MediaSourceInfo
 		Name = value;
 	}
 
+	private boolean IsRemote;
+	public final boolean getIsRemote()
+	{
+		return IsRemote;
+	}
+	public final void setIsRemote(boolean value)
+	{
+		IsRemote = value;
+	}
+
 	private String ETag;
 	public final String getETag()
 	{

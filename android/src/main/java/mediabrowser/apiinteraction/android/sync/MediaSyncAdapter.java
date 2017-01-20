@@ -24,6 +24,8 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
     private IMediaRes mediaRes;
 
+    public static boolean IsSyncing = false;
+
     private Service mService;
     public MediaSyncAdapter(Context context, boolean autoInitialize, IMediaRes mediaRes, Service mService) {
         super(context, autoInitialize);
@@ -34,6 +36,10 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, final SyncResult syncResult) {
+
+        if (IsSyncing){
+            return;
+        }
 
         Context context = getContext();
 
@@ -118,6 +124,8 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
             return;
         }
 
+        IsSyncing = true;
+
         ClientCapabilities capabilities = jsonSerializer.DeserializeFromString(capabilitiesJson, ClientCapabilities.class);
         capabilities.setSupportsContentUploading(true);
 
@@ -137,7 +145,7 @@ public class MediaSyncAdapter extends AbstractThreadedSyncAdapter {
 
         String[] cameraUploadServers = cameraUploadServersString == null || cameraUploadServersString.length() == 0 ? new String[]{} : cameraUploadServersString.split(",");
 
-        new MultiServerSync(connectionManager, logger, localAssetManager, cameraUploadServers, mService, mediaRes).Sync(source.getToken(), new AndroidMultiServerSyncProgress(syncResult, context.getContentResolver(), logger));
+        new MultiServerSync(connectionManager, logger, localAssetManager, cameraUploadServers, mService, mediaRes, this).Sync(source.getToken(), new AndroidMultiServerSyncProgress(syncResult, context.getContentResolver(), logger));
     }
 
     public static void updateSyncPreferences(Context context, String basePath, boolean syncOnlyOnWifi, String[] cameraUploadServers) {

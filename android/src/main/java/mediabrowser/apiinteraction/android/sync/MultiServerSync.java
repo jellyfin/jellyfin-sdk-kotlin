@@ -19,15 +19,17 @@ public class MultiServerSync {
     private ILocalAssetManager localAssetManager;
     private String[] cameraUploadServers;
     private Service mService;
-
     private IMediaRes mediaRes;
-    public MultiServerSync(IConnectionManager connectionManager, ILogger logger, ILocalAssetManager localAssetManager, String[] cameraUploadServers, Service mService, IMediaRes mediaRes) {
+    private MediaSyncAdapter syncAdapter;
+
+    public MultiServerSync(IConnectionManager connectionManager, ILogger logger, ILocalAssetManager localAssetManager, String[] cameraUploadServers, Service mService, IMediaRes mediaRes, MediaSyncAdapter syncAdapter) {
         this.connectionManager = connectionManager;
         this.logger = logger;
         this.localAssetManager = localAssetManager;
         this.cameraUploadServers = cameraUploadServers;
         this.mService = mService;
         this.mediaRes = mediaRes;
+        this.syncAdapter = syncAdapter;
     }
 
     public void Sync(final CancellationToken cancellationToken, final SyncProgress progress){
@@ -39,6 +41,7 @@ public class MultiServerSync {
 
         if (index >= servers.size()){
 
+            syncAdapter.IsSyncing = false;
             progress.reportComplete();
             return;
         }
