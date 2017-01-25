@@ -111,7 +111,7 @@ public class ApiClient extends BaseApiClient {
         setServerAddress(serverAddress);
     }
 
-    public void OpenWebSocket(){
+    public void ensureWebSocket(){
 
         if (apiWebSocket == null){
 

@@ -461,7 +461,7 @@ public class ConnectionManager implements IConnectionManager {
         }
 
         if (options.getEnableWebSocket()){
-            apiClient.OpenWebSocket();
+            apiClient.ensureWebSocket();
         }
     }
 
