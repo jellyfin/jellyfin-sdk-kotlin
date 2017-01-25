@@ -66,7 +66,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
     public abstract Class getAudioPlayerActivityClass();
     protected abstract VolleyHttpClient getHttpClient();
 
-    protected MediaNotificationManager mMediaNotificationManager;
+    //protected MediaNotificationManager mMediaNotificationManager;
 
     private Bitmap currentBitmap = null;
 
@@ -120,7 +120,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
 
         updatePlaybackState(null);
 
-        mMediaNotificationManager = new MediaNotificationManager(this, this, mediaRes);
+        //mMediaNotificationManager = new MediaNotificationManager(this, this, mediaRes);
     }
 
     @Override
@@ -383,9 +383,9 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
 
         mSession.setPlaybackState(stateBuilder.build());
 
-        if (state == PlaybackState.STATE_PLAYING || state == PlaybackState.STATE_PAUSED) {
-            mMediaNotificationManager.startNotification(currentBitmap);
-        }
+        //if (state == PlaybackState.STATE_PLAYING || state == PlaybackState.STATE_PAUSED) {
+        //    mMediaNotificationManager.startNotification(currentBitmap);
+        //}
     }
 
     private void updateMetadata() {
@@ -465,7 +465,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
                 favoriteIcon = mediaRes.getFavoriteOnIcon();
             }
 
-            logger.Debug("updatePlaybackState, setting Favorite custom action of music ", musicId, " current favorite=", mMediaProvider.isFavorite(musicId));
+            //logger.Debug("updatePlaybackState, setting Favorite custom action of music ", musicId, " current favorite=", mMediaProvider.isFavorite(musicId));
             stateBuilder.addCustomAction(Constants.THUMBS_UP, getString(mediaRes.getFavoriteButtonString()), favoriteIcon);
         }
     }
@@ -616,8 +616,7 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
         if (QueueHelper.isIndexPlayable(mCurrentIndexOnQueue, mPlayingQueue)) {
             MediaSession.QueueItem item = mPlayingQueue.get(mCurrentIndexOnQueue);
             if (item != null) {
-                logger.Debug("getCurrentPlayingMusic for musicId=",
-                        item.getDescription().getMediaId());
+                //logger.Debug("getCurrentPlayingMusic for musicId=", item.getDescription().getMediaId());
 
                 return mMediaProvider.getMusic(item.getDescription().getMediaId());
             }

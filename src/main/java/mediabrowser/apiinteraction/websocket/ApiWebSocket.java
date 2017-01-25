@@ -25,7 +25,6 @@ public class ApiWebSocket implements ISocketListener {
     private ILogger logger;
     private ApiEventListener apiEventListener;
     private ApiClient apiClient;
-    private boolean enableReconnection;
 
     public ApiWebSocket(IJsonSerializer jsonSerializer, ILogger logger, ApiEventListener apiEventListener, ApiClient apiClient){
 
@@ -62,7 +61,7 @@ public class ApiWebSocket implements ISocketListener {
 
     public void onOpen(){
 
-        enableReconnection = true;
+
     }
 
     private String getWebSocketServerAddress(){
@@ -80,14 +79,10 @@ public class ApiWebSocket implements ISocketListener {
 
     public void onClose(){
 
-        if (enableReconnection) {
-            EnsureWebSocket();
-            enableReconnection = false;
-        }
+
     }
 
     public void Close(){
-        enableReconnection = false;
         socketClient.close();
     }
 
