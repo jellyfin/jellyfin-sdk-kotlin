@@ -63,12 +63,6 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
     protected abstract IPlayback createPlayback();
     protected abstract IMediaRes createMediaRes();
     public abstract Class getServiceClass();
-    public abstract Class getAudioPlayerActivityClass();
-    protected abstract VolleyHttpClient getHttpClient();
-
-    //protected MediaNotificationManager mMediaNotificationManager;
-
-    private Bitmap currentBitmap = null;
 
     @Override
     public void onCreate() {
@@ -119,8 +113,6 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
         mSession.setExtras(extras);
 
         updatePlaybackState(null);
-
-        //mMediaNotificationManager = new MediaNotificationManager(this, this, mediaRes);
     }
 
     @Override
@@ -382,10 +374,6 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
         }
 
         mSession.setPlaybackState(stateBuilder.build());
-
-        //if (state == PlaybackState.STATE_PLAYING || state == PlaybackState.STATE_PAUSED) {
-        //    mMediaNotificationManager.startNotification(currentBitmap);
-        //}
     }
 
     private void updateMetadata() {
@@ -415,43 +403,6 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
         }
         logger.Debug("Updating metadata for MusicID= " + musicId);
         mSession.setMetadata(track);
-
-        // Set the proper album artwork on the media session, so it can be shown in the
-        // locked screen and in other places.
-        if (track.getDescription().getIconBitmap() == null &&
-                track.getDescription().getIconUri() != null) {
-            String posterUrl = track.getDescription().getIconUri().toString();
-
-            if (posterUrl != null && posterUrl.length() > 0) {
-                getHttpClient().getBitmap(posterUrl, new Response<Bitmap>() {
-
-                    @Override
-                    public void onResponse(Bitmap bitmap) {
-                        currentBitmap = bitmap;
-
-                        MediaMetadata updatedTrack = new MediaMetadata.Builder(track)
-
-                                // set high resolution bitmap in METADATA_KEY_ALBUM_ART. This is used, for
-                                // example, on the lockscreen background when the media session is active.
-                                .putBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART, bitmap)
-
-                                        // set small version of the album art in the DISPLAY_ICON. This is used on
-                                        // the MediaDescription and thus it should be small to be serialized if
-                                        // necessary..
-                                        //.putBitmap(MediaMetadata.METADATA_KEY_DISPLAY_ICON, icon)
-
-                                .build();
-
-                        // If we are still playing the same music
-                        String currentPlayingId = queueItem.getDescription().getMediaId();
-                        if (trackId.equals(currentPlayingId)) {
-                            mSession.setMetadata(updatedTrack);
-                            updatePlaybackState(null);
-                        }
-                    }
-                });
-            }
-        }
     }
 
     private void setCustomAction(PlaybackState.Builder stateBuilder) {
@@ -598,8 +549,6 @@ public abstract class BaseMediaBrowserService extends MediaBrowserService implem
         mDelayedStopHandler.sendEmptyMessageDelayed(0, STOP_DELAY);
 
         updatePlaybackState(null);
-
-        currentBitmap = null;
 
         updatePlaybackState(withError);
 
