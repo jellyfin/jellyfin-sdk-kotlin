@@ -70,8 +70,6 @@ public class ConnectionManager implements IConnectionManager {
         this.jsonSerializer = jsonSerializer;
 
         connectService = new ConnectService(jsonSerializer, logger, httpClient, applicationName, applicationVersion);
-
-        device.getResumeFromSleepObservable().addObserver(new DeviceResumeFromSleepObservable(this));
     }
 
     public ClientCapabilities getClientCapabilities() {
@@ -160,6 +158,14 @@ public class ConnectionManager implements IConnectionManager {
         logger.Debug("Entering initial connection workflow");
 
         GetAvailableServers(new GetAvailableServersResponse(logger, this, response));
+    }
+
+    @Override
+    public void GetSavedServers(final Response<ArrayList<ServerInfo>> response){
+
+        final ServerCredentials credentials = credentialProvider.GetCredentials();
+
+        response.onResponse(credentials.getServers());
     }
 
     void Connect(final ArrayList<ServerInfo> servers, final Response<ConnectionResult> response){

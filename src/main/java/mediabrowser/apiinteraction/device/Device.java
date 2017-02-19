@@ -42,12 +42,6 @@ public class Device implements IDevice {
         return new ArrayList<LocalFileInfo>();
     }
 
-    private Observable resumeFromSleepObservable = new AutomaticObservable();
-    @Override
-    public Observable getResumeFromSleepObservable() {
-        return resumeFromSleepObservable;
-    }
-
     @Override
     public void UploadFile(LocalFileInfo file, ApiClient apiClient, IProgress<Double> progress, CancellationToken cancellationToken) {
         throw new UnsupportedOperationException();

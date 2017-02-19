@@ -159,12 +159,6 @@ public class AndroidDevice implements IDevice {
         }
     }
 
-    private Observable resumeFromSleepObservable = new AutomaticObservable();
-    @Override
-    public Observable getResumeFromSleepObservable() {
-        return resumeFromSleepObservable;
-    }
-
     @Override
     public void UploadFile(LocalFileInfo file,
                            ApiClient apiClient,

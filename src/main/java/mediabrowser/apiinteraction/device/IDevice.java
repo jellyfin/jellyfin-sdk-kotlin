@@ -16,8 +16,6 @@ public interface IDevice {
     ArrayList<LocalFileInfo> GetLocalPhotos();
     ArrayList<LocalFileInfo> GetLocalVideos();
 
-    Observable getResumeFromSleepObservable();
-
     void UploadFile(LocalFileInfo file,
                     ApiClient apiClient,
                     IProgress<Double> progress,

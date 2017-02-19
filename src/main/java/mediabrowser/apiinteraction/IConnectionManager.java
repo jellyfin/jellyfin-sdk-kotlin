@@ -39,6 +39,8 @@ public interface IConnectionManager {
 
     void GetAvailableServers(final Response<ArrayList<ServerInfo>> response);
 
+    void GetSavedServers(final Response<ArrayList<ServerInfo>> response);
+
     void LoginToConnect(String username, String password, final EmptyResponse response)  throws UnsupportedEncodingException, NoSuchAlgorithmException;
 
     void CreatePin(String deviceId, Response<PinCreationResult> response);

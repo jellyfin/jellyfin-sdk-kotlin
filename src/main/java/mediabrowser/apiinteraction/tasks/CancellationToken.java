@@ -35,7 +35,7 @@ public final class CancellationToken {
      * canceled state set to false and which
      * may be subsequently canceled.
      */
-    CancellationToken() {
+    public CancellationToken() {
         tokenState = TokenState.NOT_FIXED;
         isCancellationRequested = false;
     }
@@ -69,7 +69,7 @@ public final class CancellationToken {
      * @throws IllegalStateException
      *              if the token is already in the FIXED state.
      */
-    synchronized void cancel() throws IllegalStateException {
+    public synchronized void cancel() throws IllegalStateException {
         if (isCancellationRequested) return;
         if (tokenState == TokenState.FIXED)
             throw new IllegalStateException("Cannot change the state of a fixed cancellation token");
