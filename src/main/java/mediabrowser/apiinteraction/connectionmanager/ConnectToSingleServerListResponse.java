@@ -19,7 +19,7 @@ public class ConnectToSingleServerListResponse extends Response<ConnectionResult
     public void onResponse(ConnectionResult result) {
 
         if (result.getState() == ConnectionState.Unavailable) {
-            result.setState((result.getConnectUser() == null ? ConnectionState.ConnectSignIn : ConnectionState.ServerSelection));
+            result.setState((ConnectionState.ServerSelection));
         }
         response.onResponse(result);
     }
