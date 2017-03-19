@@ -21,11 +21,6 @@ public enum ItemFields
 	AwardSummary,
 
 	/** 
-	 The budget
-	*/
-	Budget,
-
-	/** 
 	 The can delete
 	*/
 	CanDelete,
@@ -44,6 +39,8 @@ public enum ItemFields
 	 The chapters
 	*/
 	Chapters,
+
+	ChildCount,
 
 	/** 
 	 The critic rating summary
@@ -154,6 +151,8 @@ public enum ItemFields
 	*/
 	People,
 
+	PlayAccess,
+
 	/** 
 	 The production locations
 	*/
@@ -169,10 +168,7 @@ public enum ItemFields
 	*/
 	PrimaryImageAspectRatio,
 
-	/** 
-	 The revenue
-	*/
-	Revenue,
+	RecursiveItemCount,
 
 	/** 
 	 The season name
@@ -183,11 +179,6 @@ public enum ItemFields
 	 The settings
 	*/
 	Settings,
-
-	/** 
-	 The short overview
-	*/
-	ShortOverview,
 
 	/** 
 	 The screenshot image tags

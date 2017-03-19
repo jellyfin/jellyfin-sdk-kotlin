@@ -176,20 +176,6 @@ public class mediainfo extends MediaSourceInfo implements IHasProviderIds
 	{
 		Overview = value;
 	}
-	/** 
-	 Gets or sets the short overview.
-	 
-	 <value>The short overview.</value>
-	*/
-	private String ShortOverview;
-	public final String getShortOverview()
-	{
-		return ShortOverview;
-	}
-	public final void setShortOverview(String value)
-	{
-		ShortOverview = value;
-	}
 
 	public mediainfo()
 	{

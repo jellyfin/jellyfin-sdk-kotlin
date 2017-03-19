@@ -971,7 +971,7 @@ public abstract class BaseApiClient
 		String backdropItemId;
 		java.util.ArrayList<String> backdropImageTags;
 
-		if (item.getBackdropCount() == 0)
+		if (item.getBackdropImageTags() == null || item.getBackdropImageTags().size() == 0)
 		{
 			backdropItemId = item.getParentBackdropItemId();
 			backdropImageTags = item.getParentBackdropImageTags();

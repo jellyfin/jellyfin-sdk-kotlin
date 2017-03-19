@@ -141,6 +141,24 @@ public class ListingsProviderInfo
 	{
 		ChannelMappings = value;
 	}
+	private String MoviePrefix;
+	public final String getMoviePrefix()
+	{
+		return MoviePrefix;
+	}
+	public final void setMoviePrefix(String value)
+	{
+		MoviePrefix = value;
+	}
+	private boolean EnableNewProgramIds;
+	public final boolean getEnableNewProgramIds()
+	{
+		return EnableNewProgramIds;
+	}
+	public final void setEnableNewProgramIds(boolean value)
+	{
+		EnableNewProgramIds = value;
+	}
 
 	public ListingsProviderInfo()
 	{
@@ -151,17 +169,5 @@ public class ListingsProviderInfo
 		setEnabledTuners(new String[] { });
 		setEnableAllTuners(true);
 		setChannelMappings(new NameValuePair[] {});
-	}
-
-	public final String GetMappedChannel(String channelNumber)
-	{
-		for (NameValuePair mapping : getChannelMappings())
-		{
-			if (StringHelper.EqualsIgnoreCase(mapping.getName(), channelNumber))
-			{
-				return mapping.getValue();
-			}
-		}
-		return channelNumber;
 	}
 }

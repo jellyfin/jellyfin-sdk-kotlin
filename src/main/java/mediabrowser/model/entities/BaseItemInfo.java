@@ -1,6 +1,7 @@
 package mediabrowser.model.entities;
 
 import mediabrowser.model.dto.*;
+import mediabrowser.model.serialization.*;
 
 /** 
  This is a stub class containing only basic information about an item
@@ -307,6 +308,16 @@ public class BaseItemInfo
 	public final void setAlbum(String value)
 	{
 		Album = value;
+	}
+
+	private boolean IsThemeMedia;
+	public final boolean getIsThemeMedia()
+	{
+		return IsThemeMedia;
+	}
+	public final void setIsThemeMedia(boolean value)
+	{
+		IsThemeMedia = value;
 	}
 
 	/** 

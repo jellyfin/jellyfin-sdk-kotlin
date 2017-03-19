@@ -119,4 +119,14 @@ public class PlaybackStopInfo
 	{
 		Failed = value;
 	}
+
+	private String NextMediaType;
+	public final String getNextMediaType()
+	{
+		return NextMediaType;
+	}
+	public final void setNextMediaType(String value)
+	{
+		NextMediaType = value;
+	}
 }

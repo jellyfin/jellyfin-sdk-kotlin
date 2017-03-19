@@ -1,5 +1,8 @@
 package mediabrowser.model.livetv;
 
+import mediabrowser.model.dto.*;
+import mediabrowser.model.extensions.*;
+
 public class TunerHostInfo
 {
 	private String Id;
@@ -38,6 +41,15 @@ public class TunerHostInfo
 	{
 		DeviceId = value;
 	}
+	private String FriendlyName;
+	public final String getFriendlyName()
+	{
+		return FriendlyName;
+	}
+	public final void setFriendlyName(String value)
+	{
+		FriendlyName = value;
+	}
 	private boolean ImportFavoritesOnly;
 	public final boolean getImportFavoritesOnly()
 	{
@@ -56,110 +68,18 @@ public class TunerHostInfo
 	{
 		AllowHWTranscoding = value;
 	}
-	private boolean IsEnabled;
-	public final boolean getIsEnabled()
+	private boolean EnableTvgId;
+	public final boolean getEnableTvgId()
 	{
-		return IsEnabled;
+		return EnableTvgId;
 	}
-	public final void setIsEnabled(boolean value)
+	public final void setEnableTvgId(boolean value)
 	{
-		IsEnabled = value;
-	}
-	private String M3UUrl;
-	public final String getM3UUrl()
-	{
-		return M3UUrl;
-	}
-	public final void setM3UUrl(String value)
-	{
-		M3UUrl = value;
-	}
-	private String InfoUrl;
-	public final String getInfoUrl()
-	{
-		return InfoUrl;
-	}
-	public final void setInfoUrl(String value)
-	{
-		InfoUrl = value;
-	}
-	private String FriendlyName;
-	public final String getFriendlyName()
-	{
-		return FriendlyName;
-	}
-	public final void setFriendlyName(String value)
-	{
-		FriendlyName = value;
-	}
-	private int Tuners;
-	public final int getTuners()
-	{
-		return Tuners;
-	}
-	public final void setTuners(int value)
-	{
-		Tuners = value;
-	}
-	private String DiseqC;
-	public final String getDiseqC()
-	{
-		return DiseqC;
-	}
-	public final void setDiseqC(String value)
-	{
-		DiseqC = value;
-	}
-	private String SourceA;
-	public final String getSourceA()
-	{
-		return SourceA;
-	}
-	public final void setSourceA(String value)
-	{
-		SourceA = value;
-	}
-	private String SourceB;
-	public final String getSourceB()
-	{
-		return SourceB;
-	}
-	public final void setSourceB(String value)
-	{
-		SourceB = value;
-	}
-	private String SourceC;
-	public final String getSourceC()
-	{
-		return SourceC;
-	}
-	public final void setSourceC(String value)
-	{
-		SourceC = value;
-	}
-	private String SourceD;
-	public final String getSourceD()
-	{
-		return SourceD;
-	}
-	public final void setSourceD(String value)
-	{
-		SourceD = value;
-	}
-
-	private int DataVersion;
-	public final int getDataVersion()
-	{
-		return DataVersion;
-	}
-	public final void setDataVersion(int value)
-	{
-		DataVersion = value;
+		EnableTvgId = value;
 	}
 
 	public TunerHostInfo()
 	{
-		setIsEnabled(true);
 		setAllowHWTranscoding(true);
 	}
 }

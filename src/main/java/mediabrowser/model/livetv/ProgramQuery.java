@@ -116,6 +116,15 @@ public class ProgramQuery
 	{
 		SeriesTimerId = value;
 	}
+	private String Name;
+	public final String getName()
+	{
+		return Name;
+	}
+	public final void setName(String value)
+	{
+		Name = value;
+	}
 
 	/** 
 	 The earliest date for which a program starts to return

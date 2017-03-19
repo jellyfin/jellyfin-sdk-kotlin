@@ -1,5 +1,8 @@
 package mediabrowser.model.dlna;
 
+import mediabrowser.model.dlna.*;
+import mediabrowser.model.extensions.*;
+
 public class ContainerProfile
 {
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -51,5 +54,12 @@ public class ContainerProfile
 			}
 		}
 		return list;
+	}
+
+	public final boolean ContainsContainer(String container)
+	{
+		java.util.ArrayList<String> containers = GetContainers();
+
+		return containers.isEmpty() || ListHelper.ContainsIgnoreCase(containers, (container != null) ? container : "");
 	}
 }

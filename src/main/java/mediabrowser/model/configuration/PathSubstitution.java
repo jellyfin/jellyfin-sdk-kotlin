@@ -1,5 +1,8 @@
 package mediabrowser.model.configuration;
 
+import mediabrowser.model.dto.*;
+import mediabrowser.model.entities.*;
+
 public class PathSubstitution
 {
 	private String From;

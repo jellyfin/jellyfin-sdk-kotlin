@@ -33,21 +33,6 @@ public class SystemInfo extends PublicSystemInfo
 	}
 
 	/** 
-	 Gets or sets a value indicating whether this instance is running as service.
-	 
-	 <value><c>true</c> if this instance is running as service; otherwise, <c>false</c>.</value>
-	*/
-	private boolean IsRunningAsService;
-	public final boolean getIsRunningAsService()
-	{
-		return IsRunningAsService;
-	}
-	public final void setIsRunningAsService(boolean value)
-	{
-		IsRunningAsService = value;
-	}
-
-	/** 
 	 Gets or sets a value indicating whether [supports running as service].
 	 
 	 <value><c>true</c> if [supports running as service]; otherwise, <c>false</c>.</value>
@@ -115,21 +100,6 @@ public class SystemInfo extends PublicSystemInfo
 	public final void setSupportsLibraryMonitor(boolean value)
 	{
 		SupportsLibraryMonitor = value;
-	}
-
-	/** 
-	 Gets or sets a value indicating whether this instance is network deployed.
-	 
-	 <value><c>true</c> if this instance is network deployed; otherwise, <c>false</c>.</value>
-	*/
-	private boolean IsNetworkDeployed;
-	public final boolean getIsNetworkDeployed()
-	{
-		return IsNetworkDeployed;
-	}
-	public final void setIsNetworkDeployed(boolean value)
-	{
-		IsNetworkDeployed = value;
 	}
 
 	/** 

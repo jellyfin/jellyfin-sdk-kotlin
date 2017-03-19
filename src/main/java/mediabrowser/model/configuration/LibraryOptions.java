@@ -29,15 +29,6 @@ public class LibraryOptions
 	{
 		EnableRealtimeMonitor = value;
 	}
-	private int SchemaVersion;
-	public final int getSchemaVersion()
-	{
-		return SchemaVersion;
-	}
-	public final void setSchemaVersion(int value)
-	{
-		SchemaVersion = value;
-	}
 	private boolean EnableChapterImageExtraction;
 	public final boolean getEnableChapterImageExtraction()
 	{
@@ -93,6 +84,73 @@ public class LibraryOptions
 	{
 		EnableInternetProviders = value;
 	}
+	private boolean ImportMissingEpisodes;
+	public final boolean getImportMissingEpisodes()
+	{
+		return ImportMissingEpisodes;
+	}
+	public final void setImportMissingEpisodes(boolean value)
+	{
+		ImportMissingEpisodes = value;
+	}
+	private boolean EnableAutomaticSeriesGrouping;
+	public final boolean getEnableAutomaticSeriesGrouping()
+	{
+		return EnableAutomaticSeriesGrouping;
+	}
+	public final void setEnableAutomaticSeriesGrouping(boolean value)
+	{
+		EnableAutomaticSeriesGrouping = value;
+	}
+	private boolean EnableEmbeddedTitles;
+	public final boolean getEnableEmbeddedTitles()
+	{
+		return EnableEmbeddedTitles;
+	}
+	public final void setEnableEmbeddedTitles(boolean value)
+	{
+		EnableEmbeddedTitles = value;
+	}
+
+	private int AutomaticRefreshIntervalDays;
+	public final int getAutomaticRefreshIntervalDays()
+	{
+		return AutomaticRefreshIntervalDays;
+	}
+	public final void setAutomaticRefreshIntervalDays(int value)
+	{
+		AutomaticRefreshIntervalDays = value;
+	}
+
+	/** 
+	 Gets or sets the preferred metadata language.
+	 
+	 <value>The preferred metadata language.</value>
+	*/
+	private String PreferredMetadataLanguage;
+	public final String getPreferredMetadataLanguage()
+	{
+		return PreferredMetadataLanguage;
+	}
+	public final void setPreferredMetadataLanguage(String value)
+	{
+		PreferredMetadataLanguage = value;
+	}
+
+	/** 
+	 Gets or sets the metadata country code.
+	 
+	 <value>The metadata country code.</value>
+	*/
+	private String MetadataCountryCode;
+	public final String getMetadataCountryCode()
+	{
+		return MetadataCountryCode;
+	}
+	public final void setMetadataCountryCode(String value)
+	{
+		MetadataCountryCode = value;
+	}
 
 	public LibraryOptions()
 	{
@@ -100,5 +158,6 @@ public class LibraryOptions
 		setEnableRealtimeMonitor(true);
 		setPathInfos(new MediaPathInfo[] { });
 		setEnableInternetProviders(true);
+		setEnableAutomaticSeriesGrouping(true);
 	}
 }

@@ -145,16 +145,6 @@ public class ConnectionManager implements IConnectionManager {
     @Override
     public void Connect(final Response<ConnectionResult> response) {
 
-        if (clientCapabilities.getSupportsOfflineAccess())
-        {
-            NetworkStatus networkAccess = networkConnection.getNetworkStatus();
-            if (!networkAccess.getIsNetworkAvailable())
-            {
-                // TODO: for offline access
-                //return await GetOfflineResult().ConfigureAwait(false);
-            }
-        }
-
         logger.Debug("Entering initial connection workflow");
 
         GetAvailableServers(new GetAvailableServersResponse(logger, this, response));

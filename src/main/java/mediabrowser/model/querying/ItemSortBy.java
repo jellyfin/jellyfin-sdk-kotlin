@@ -19,14 +19,6 @@ public final class ItemSortBy
 	*/
 	public static final String Artist = "Artist";
 	/** 
-	 The budget
-	*/
-	public static final String Budget = "Budget";
-	/** 
-	 The revenue
-	*/
-	public static final String Revenue = "Revenue";
-	/** 
 	 The date created
 	*/
 	public static final String DateCreated = "DateCreated";

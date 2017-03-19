@@ -3,6 +3,7 @@ package mediabrowser.model.dto;
 import mediabrowser.model.configuration.*;
 import mediabrowser.model.connect.*;
 import mediabrowser.model.users.*;
+import mediabrowser.model.serialization.*;
 
 /** 
  Class UserDto
@@ -203,6 +204,16 @@ public class UserDto implements IItemDto, IHasServerId
 	public final void setHasConfiguredEasyPassword(boolean value)
 	{
 		HasConfiguredEasyPassword = value;
+	}
+
+	private Boolean EnableAutoLogin = null;
+	public final Boolean getEnableAutoLogin()
+	{
+		return EnableAutoLogin;
+	}
+	public final void setEnableAutoLogin(Boolean value)
+	{
+		EnableAutoLogin = value;
 	}
 
 	/** 

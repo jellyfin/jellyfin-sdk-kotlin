@@ -4,7 +4,8 @@ public enum Architecture
 {
 	X86(0),
 	X64(1),
-	Arm(2);
+	Arm(2),
+	Arm64(3);
 
 	private int intValue;
 	private static java.util.HashMap<Integer, Architecture> mappings;

@@ -24,12 +24,12 @@ public class PlaybackInfoRequest
 		UserId = value;
 	}
 
-	private Integer MaxStreamingBitrate;
-	public final Integer getMaxStreamingBitrate()
+	private Long MaxStreamingBitrate;
+	public final Long getMaxStreamingBitrate()
 	{
 		return MaxStreamingBitrate;
 	}
-	public final void setMaxStreamingBitrate(Integer value)
+	public final void setMaxStreamingBitrate(Long value)
 	{
 		MaxStreamingBitrate = value;
 	}
@@ -64,6 +64,16 @@ public class PlaybackInfoRequest
 		SubtitleStreamIndex = value;
 	}
 
+	private Integer MaxAudioChannels;
+	public final Integer getMaxAudioChannels()
+	{
+		return MaxAudioChannels;
+	}
+	public final void setMaxAudioChannels(Integer value)
+	{
+		MaxAudioChannels = value;
+	}
+
 	private String MediaSourceId;
 	public final String getMediaSourceId()
 	{
@@ -72,26 +82,6 @@ public class PlaybackInfoRequest
 	public final void setMediaSourceId(String value)
 	{
 		MediaSourceId = value;
-	}
-
-	private Boolean EnableDirectStream;
-	public final Boolean getEnableDirectStream()
-	{
-		return EnableDirectStream;
-	}
-	public final void setEnableDirectStream(Boolean value)
-	{
-		EnableDirectStream = value;
-	}
-
-	private Boolean EnableDirectPlay;
-	public final Boolean getEnableDirectPlay()
-	{
-		return EnableDirectPlay;
-	}
-	public final void setEnableDirectPlay(Boolean value)
-	{
-		EnableDirectPlay = value;
 	}
 
 	private String LiveStreamId;
@@ -104,14 +94,6 @@ public class PlaybackInfoRequest
 		LiveStreamId = value;
 	}
 
-	private Integer MaxAudioChannels;
-	public final Integer getMaxAudioChannels() {
-		return MaxAudioChannels;
-	}
-	public final void setMaxAudioChannels(Integer value) {
-		MaxAudioChannels = value;
-	}
-
 	private DeviceProfile DeviceProfile;
 	public final DeviceProfile getDeviceProfile()
 	{
@@ -120,5 +102,50 @@ public class PlaybackInfoRequest
 	public final void setDeviceProfile(DeviceProfile value)
 	{
 		DeviceProfile = value;
+	}
+
+	private boolean EnableDirectPlay;
+	public final boolean getEnableDirectPlay()
+	{
+		return EnableDirectPlay;
+	}
+	public final void setEnableDirectPlay(boolean value)
+	{
+		EnableDirectPlay = value;
+	}
+	private boolean EnableDirectStream;
+	public final boolean getEnableDirectStream()
+	{
+		return EnableDirectStream;
+	}
+	public final void setEnableDirectStream(boolean value)
+	{
+		EnableDirectStream = value;
+	}
+	private boolean EnableTranscoding;
+	public final boolean getEnableTranscoding()
+	{
+		return EnableTranscoding;
+	}
+	public final void setEnableTranscoding(boolean value)
+	{
+		EnableTranscoding = value;
+	}
+	private boolean ForceDirectPlayRemoteMediaSource;
+	public final boolean getForceDirectPlayRemoteMediaSource()
+	{
+		return ForceDirectPlayRemoteMediaSource;
+	}
+	public final void setForceDirectPlayRemoteMediaSource(boolean value)
+	{
+		ForceDirectPlayRemoteMediaSource = value;
+	}
+
+	public PlaybackInfoRequest()
+	{
+		setForceDirectPlayRemoteMediaSource(true);
+		setEnableDirectPlay(true);
+		setEnableDirectStream(true);
+		setEnableTranscoding(true);
 	}
 }

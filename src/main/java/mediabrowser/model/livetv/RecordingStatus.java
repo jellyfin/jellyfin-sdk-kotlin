@@ -3,7 +3,6 @@ package mediabrowser.model.livetv;
 public enum RecordingStatus
 {
 	New,
-	Scheduled,
 	InProgress,
 	Completed,
 	Cancelled,

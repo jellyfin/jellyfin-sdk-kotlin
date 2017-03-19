@@ -166,6 +166,15 @@ public class RecordingQuery
 	{
 		EnableImages = value;
 	}
+	private Boolean IsLibraryItem;
+	public final Boolean getIsLibraryItem()
+	{
+		return IsLibraryItem;
+	}
+	public final void setIsLibraryItem(Boolean value)
+	{
+		IsLibraryItem = value;
+	}
 	private Boolean IsNews;
 	public final Boolean getIsNews()
 	{

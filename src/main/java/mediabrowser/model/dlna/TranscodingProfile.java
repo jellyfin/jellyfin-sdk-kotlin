@@ -1,5 +1,7 @@
 package mediabrowser.model.dlna;
 
+import mediabrowser.model.dlna.*;
+
 public class TranscodingProfile
 {
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -144,6 +146,30 @@ public class TranscodingProfile
 	public final void setMaxAudioChannels(String value)
 	{
 		MaxAudioChannels = value;
+	}
+
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [XmlAttribute("minSegments")] public int MinSegments {get;set;}
+	private int MinSegments;
+	public final int getMinSegments()
+	{
+		return MinSegments;
+	}
+	public final void setMinSegments(int value)
+	{
+		MinSegments = value;
+	}
+
+//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+//ORIGINAL LINE: [XmlAttribute("segmentLength")] public int SegmentLength {get;set;}
+	private int SegmentLength;
+	public final int getSegmentLength()
+	{
+		return SegmentLength;
+	}
+	public final void setSegmentLength(int value)
+	{
+		SegmentLength = value;
 	}
 
 	public final java.util.ArrayList<String> GetAudioCodecs()

@@ -172,6 +172,26 @@ public class PlaybackProgressInfo
 		VolumeLevel = value;
 	}
 
+	private Integer Brightness;
+	public final Integer getBrightness()
+	{
+		return Brightness;
+	}
+	public final void setBrightness(Integer value)
+	{
+		Brightness = value;
+	}
+
+	private String AspectRatio;
+	public final String getAspectRatio()
+	{
+		return AspectRatio;
+	}
+	public final void setAspectRatio(String value)
+	{
+		AspectRatio = value;
+	}
+
 	/** 
 	 Gets or sets the play method.
 	 

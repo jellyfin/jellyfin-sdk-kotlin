@@ -67,6 +67,15 @@ public class SyncJobQuery
 	{
 		ExcludeTargetIds = value;
 	}
+	private String ItemId;
+	public final String getItemId()
+	{
+		return ItemId;
+	}
+	public final void setItemId(String value)
+	{
+		ItemId = value;
+	}
 	/** 
 	 Gets or sets the status.
 	 

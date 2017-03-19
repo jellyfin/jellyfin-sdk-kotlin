@@ -69,15 +69,6 @@ public class UserConfiguration
 		DisplayUnairedEpisodes = value;
 	}
 
-	private String[] ExcludeFoldersFromGrouping;
-	public final String[] getExcludeFoldersFromGrouping()
-	{
-		return ExcludeFoldersFromGrouping;
-	}
-	public final void setExcludeFoldersFromGrouping(String[] value)
-	{
-		ExcludeFoldersFromGrouping = value;
-	}
 	private String[] GroupedFolders;
 	public final String[] getGroupedFolders()
 	{
@@ -136,15 +127,6 @@ public class UserConfiguration
 	{
 		LatestItemsExcludes = value;
 	}
-	private String[] PlainFolderViews;
-	public final String[] getPlainFolderViews()
-	{
-		return PlainFolderViews;
-	}
-	public final void setPlainFolderViews(String[] value)
-	{
-		PlainFolderViews = value;
-	}
 
 	private boolean HidePlayedInLatest;
 	public final boolean getHidePlayedInLatest()
@@ -195,11 +177,10 @@ public class UserConfiguration
 
 		setHidePlayedInLatest(true);
 		setPlayDefaultAudioTrack(true);
+		setDisplayMissingEpisodes(true);
 
 		setLatestItemsExcludes(new String[] { });
 		setOrderedViews(new String[] { });
-
-		setPlainFolderViews(new String[] { });
 
 		setGroupedFolders(new String[] { });
 	}

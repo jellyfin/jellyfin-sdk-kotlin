@@ -8,6 +8,9 @@ import mediabrowser.model.entities.*;
 */
 public class ServerConfiguration extends BaseApplicationConfiguration
 {
+	public static final int DefaultHttpPort = 8096;
+	public static final int DefaultHttpsPort = 8920;
+
 	/** 
 	 Gets or sets a value indicating whether [enable u pn p].
 	 
@@ -97,6 +100,33 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		EnableHttps = value;
 	}
+	private boolean EnableSeriesPresentationUniqueKey;
+	public final boolean getEnableSeriesPresentationUniqueKey()
+	{
+		return EnableSeriesPresentationUniqueKey;
+	}
+	public final void setEnableSeriesPresentationUniqueKey(boolean value)
+	{
+		EnableSeriesPresentationUniqueKey = value;
+	}
+	private boolean EnableLocalizedGuids;
+	public final boolean getEnableLocalizedGuids()
+	{
+		return EnableLocalizedGuids;
+	}
+	public final void setEnableLocalizedGuids(boolean value)
+	{
+		EnableLocalizedGuids = value;
+	}
+	private boolean EnableNormalizedItemByNameIds;
+	public final boolean getEnableNormalizedItemByNameIds()
+	{
+		return EnableNormalizedItemByNameIds;
+	}
+	public final void setEnableNormalizedItemByNameIds(boolean value)
+	{
+		EnableNormalizedItemByNameIds = value;
+	}
 
 	/** 
 	 Gets or sets the value pointing to the file system where the ssl certiifcate is located..
@@ -111,21 +141,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setCertificatePath(String value)
 	{
 		CertificatePath = value;
-	}
-
-	/** 
-	 Gets or sets a value indicating whether [enable internet providers].
-	 
-	 <value><c>true</c> if [enable internet providers]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean EnableInternetProviders;
-	public final boolean getEnableInternetProviders()
-	{
-		return EnableInternetProviders;
-	}
-	public final void setEnableInternetProviders(boolean value)
-	{
-		EnableInternetProviders = value;
 	}
 
 	/** 
@@ -205,21 +220,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setSeasonZeroDisplayName(String value)
 	{
 		SeasonZeroDisplayName = value;
-	}
-
-	/** 
-	 Gets or sets a value indicating whether [save local meta].
-	 
-	 <value><c>true</c> if [save local meta]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean SaveLocalMeta;
-	public final boolean getSaveLocalMeta()
-	{
-		return SaveLocalMeta;
-	}
-	public final void setSaveLocalMeta(boolean value)
-	{
-		SaveLocalMeta = value;
 	}
 
 	/** 
@@ -374,15 +374,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		EnableDashboardResponseCaching = value;
 	}
-	private boolean EnableDashboardResourceMinification;
-	public final boolean getEnableDashboardResourceMinification()
-	{
-		return EnableDashboardResourceMinification;
-	}
-	public final void setEnableDashboardResourceMinification(boolean value)
-	{
-		EnableDashboardResourceMinification = value;
-	}
 
 	/** 
 	 Allows the dashboard to be served from a custom path.
@@ -451,15 +442,14 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		SkipDeserializationForPrograms = value;
 	}
-
-	private PathSubstitution[] PathSubstitutions;
-	public final PathSubstitution[] getPathSubstitutions()
+	private boolean SkipDeserializationForAudio;
+	public final boolean getSkipDeserializationForAudio()
 	{
-		return PathSubstitutions;
+		return SkipDeserializationForAudio;
 	}
-	public final void setPathSubstitutions(PathSubstitution[] value)
+	public final void setSkipDeserializationForAudio(boolean value)
 	{
-		PathSubstitutions = value;
+		SkipDeserializationForAudio = value;
 	}
 
 	private String ServerName;
@@ -489,16 +479,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setUICulture(String value)
 	{
 		UICulture = value;
-	}
-
-	private PeopleMetadataOptions PeopleMetadataOptions;
-	public final PeopleMetadataOptions getPeopleMetadataOptions()
-	{
-		return PeopleMetadataOptions;
-	}
-	public final void setPeopleMetadataOptions(PeopleMetadataOptions value)
-	{
-		PeopleMetadataOptions = value;
 	}
 
 	private boolean SaveMetadataHidden;
@@ -541,25 +521,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		SharingExpirationDays = value;
 	}
 
-	private String[] Migrations;
-	public final String[] getMigrations()
-	{
-		return Migrations;
-	}
-	public final void setMigrations(String[] value)
-	{
-		Migrations = value;
-	}
-
-	private int MigrationVersion;
-	public final int getMigrationVersion()
-	{
-		return MigrationVersion;
-	}
-	public final void setMigrationVersion(int value)
-	{
-		MigrationVersion = value;
-	}
 	private int SchemaVersion;
 	public final int getSchemaVersion()
 	{
@@ -568,15 +529,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setSchemaVersion(int value)
 	{
 		SchemaVersion = value;
-	}
-	private int SqliteCacheSize;
-	public final int getSqliteCacheSize()
-	{
-		return SqliteCacheSize;
-	}
-	public final void setSqliteCacheSize(int value)
-	{
-		SqliteCacheSize = value;
 	}
 
 	private boolean EnableAnonymousUsageReporting;
@@ -596,15 +548,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	public final void setEnableStandaloneMusicKeys(boolean value)
 	{
 		EnableStandaloneMusicKeys = value;
-	}
-	private boolean EnableLocalizedGuids;
-	public final boolean getEnableLocalizedGuids()
-	{
-		return EnableLocalizedGuids;
-	}
-	public final void setEnableLocalizedGuids(boolean value)
-	{
-		EnableLocalizedGuids = value;
 	}
 	private boolean EnableFolderView;
 	public final boolean getEnableFolderView()
@@ -660,6 +603,15 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		CodecsUsed = value;
 	}
+	private String[] Migrations;
+	public final String[] getMigrations()
+	{
+		return Migrations;
+	}
+	public final void setMigrations(String[] value)
+	{
+		Migrations = value;
+	}
 	private boolean EnableChannelView;
 	public final boolean getEnableChannelView()
 	{
@@ -678,15 +630,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		EnableExternalContentInSuggestions = value;
 	}
-	private boolean EnableSimpleArtistDetection;
-	public final boolean getEnableSimpleArtistDetection()
-	{
-		return EnableSimpleArtistDetection;
-	}
-	public final void setEnableSimpleArtistDetection(boolean value)
-	{
-		EnableSimpleArtistDetection = value;
-	}
 
 	private int ImageExtractionTimeoutMs;
 	public final int getImageExtractionTimeoutMs()
@@ -697,29 +640,49 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 	{
 		ImageExtractionTimeoutMs = value;
 	}
+
+	private PathSubstitution[] PathSubstitutions;
+	public final PathSubstitution[] getPathSubstitutions()
+	{
+		return PathSubstitutions;
+	}
+	public final void setPathSubstitutions(PathSubstitution[] value)
+	{
+		PathSubstitutions = value;
+	}
+	private boolean EnableSimpleArtistDetection;
+	public final boolean getEnableSimpleArtistDetection()
+	{
+		return EnableSimpleArtistDetection;
+	}
+	public final void setEnableSimpleArtistDetection(boolean value)
+	{
+		EnableSimpleArtistDetection = value;
+	}
+
 	/** 
 	 Initializes a new instance of the <see cref="ServerConfiguration" /> class.
 	*/
 	public ServerConfiguration()
 	{
 		setLocalNetworkAddresses(new String[] { });
-		setMigrations(new String[] { });
 		setCodecsUsed(new String[] { });
-		setSqliteCacheSize(0);
+		setMigrations(new String[] { });
 		setImageExtractionTimeoutMs(0);
-
 		setEnableLocalizedGuids(true);
+		setPathSubstitutions(new PathSubstitution[] { });
+		setEnableSimpleArtistDetection(true);
+
 		setDisplaySpecialsWithinSeasons(true);
 		setEnableExternalContentInSuggestions(true);
 
 		setImageSavingConvention(ImageSavingConvention.Compatible);
-		setPublicPort(8096);
-		setPublicHttpsPort(8920);
-		setHttpServerPortNumber(8096);
-		setHttpsPortNumber(8920);
+		setPublicPort(DefaultHttpPort);
+		setPublicHttpsPort(DefaultHttpsPort);
+		setHttpServerPortNumber(DefaultHttpPort);
+		setHttpsPortNumber(DefaultHttpsPort);
 		setEnableHttps(false);
 		setEnableDashboardResponseCaching(true);
-		setEnableDashboardResourceMinification(true);
 		setEnableAnonymousUsageReporting(true);
 
 		setEnableAutomaticRestart(true);
@@ -735,9 +698,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 
 		setLibraryMonitorDelay(60);
 
-		setEnableInternetProviders(true);
-
-		setPathSubstitutions(new PathSubstitution[] { });
 		setContentTypes(new NameValuePair[] { });
 
 		setPreferredMetadataLanguage("en");
@@ -750,8 +710,6 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		setSeasonZeroDisplayName("Specials");
 
 		setUICulture("en-us");
-
-		setPeopleMetadataOptions(new PeopleMetadataOptions());
 
 		MetadataOptions tempVar = new MetadataOptions(1, 1280);
 		tempVar.setItemType("Book");
@@ -851,7 +809,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		tempVar31.setLimit(0);
 		tempVar31.setType(ImageType.Art);
 		ImageOption tempVar32 = new ImageOption();
-		tempVar32.setLimit(0);
+		tempVar32.setLimit(1);
 		tempVar32.setType(ImageType.Logo);
 		tempVar28.setImageOptions(new ImageOption[] {tempVar29, tempVar30, tempVar31, tempVar32});
 		tempVar28.setDisabledMetadataFetchers(new String[]{"TheAudioDB"});
@@ -896,7 +854,7 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		tempVar45.setLimit(0);
 		tempVar45.setType(ImageType.Thumb);
 		tempVar41.setImageOptions(new ImageOption[] {tempVar42, tempVar43, tempVar44, tempVar45});
-		tempVar41.setDisabledMetadataFetchers(new String[]{"The Open Movie Database", "TheMovieDb"});
+		tempVar41.setDisabledMetadataFetchers(new String[]{"TheMovieDb"});
 		MetadataOptions tempVar46 = new MetadataOptions(0, 1280);
 		tempVar46.setItemType("Episode");
 		ImageOption tempVar47 = new ImageOption();
@@ -907,8 +865,8 @@ public class ServerConfiguration extends BaseApplicationConfiguration
 		tempVar48.setLimit(1);
 		tempVar48.setType(ImageType.Primary);
 		tempVar46.setImageOptions(new ImageOption[] {tempVar47, tempVar48});
-		tempVar46.setDisabledMetadataFetchers(new String[]{"The Open Movie Database"});
-		tempVar46.setDisabledImageFetchers(new String[]{"TheMovieDb"});
+		tempVar46.setDisabledMetadataFetchers(new String[]{"The Open Movie Database", "TheMovieDb"});
+		tempVar46.setDisabledImageFetchers(new String[]{"The Open Movie Database", "TheMovieDb"});
 		setMetadataOptions(new MetadataOptions[] {tempVar, tempVar2, tempVar10, tempVar18, tempVar25, tempVar28, tempVar33, tempVar41, tempVar46});
 	}
 }

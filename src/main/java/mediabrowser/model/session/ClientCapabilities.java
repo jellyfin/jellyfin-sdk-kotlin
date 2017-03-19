@@ -33,7 +33,15 @@ public class ClientCapabilities
 	{
 		SupportsMediaControl = value;
 	}
-
+	private boolean SupportsContentUploading;
+	public final boolean getSupportsContentUploading()
+	{
+		return SupportsContentUploading;
+	}
+	public final void setSupportsContentUploading(boolean value)
+	{
+		SupportsContentUploading = value;
+	}
 	private String MessageCallbackUrl;
 	public final String getMessageCallbackUrl()
 	{
@@ -44,15 +52,6 @@ public class ClientCapabilities
 		MessageCallbackUrl = value;
 	}
 
-	private boolean SupportsContentUploading;
-	public final boolean getSupportsContentUploading()
-	{
-		return SupportsContentUploading;
-	}
-	public final void setSupportsContentUploading(boolean value)
-	{
-		SupportsContentUploading = value;
-	}
 	private boolean SupportsPersistentIdentifier;
 	public final boolean getSupportsPersistentIdentifier()
 	{
@@ -70,15 +69,6 @@ public class ClientCapabilities
 	public final void setSupportsSync(boolean value)
 	{
 		SupportsSync = value;
-	}
-	private boolean SupportsOfflineAccess;
-	public final boolean getSupportsOfflineAccess()
-	{
-		return SupportsOfflineAccess;
-	}
-	public final void setSupportsOfflineAccess(boolean value)
-	{
-		SupportsOfflineAccess = value;
 	}
 
 	private DeviceProfile DeviceProfile;
