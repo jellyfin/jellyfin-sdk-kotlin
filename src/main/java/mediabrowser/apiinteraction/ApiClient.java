@@ -1833,6 +1833,11 @@ public class ApiClient extends BaseApiClient {
         dict.AddIfNotNull("Limit", query.getLimit());
         dict.AddIfNotNull("HasAired", query.getHasAired());
         dict.AddIfNotNull("IsAiring", query.getIsAiring());
+        dict.AddIfNotNull("IsMovie", query.getIsMovie());
+        dict.AddIfNotNull("IsSeries", query.getIsSeries());
+        dict.AddIfNotNull("IsSports", query.getIsSports());
+        dict.AddIfNotNull("IsKids", query.getIsKids());
+        dict.AddIfNotNull("IsNews", query.getIsNews());
 
         if (!query.getEnableTotalRecordCount())
         {
