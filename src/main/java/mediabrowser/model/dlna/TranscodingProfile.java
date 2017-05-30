@@ -88,7 +88,17 @@ public class TranscodingProfile
 		EnableMpegtsM2TsMode = value;
 	}
 
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
+	private boolean BreakOnNonKeyFrames;
+	public final boolean BreakOnNonKeyFrames()
+	{
+		return BreakOnNonKeyFrames;
+	}
+	public final void setBreakOnNonKeyFrames(boolean value)
+	{
+		BreakOnNonKeyFrames = value;
+	}
+
+	//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlAttribute("transcodeSeekInfo")] public TranscodeSeekInfo TranscodeSeekInfo {get;set;}
 	private TranscodeSeekInfo TranscodeSeekInfo = getTranscodeSeekInfo().values()[0];
 	public final TranscodeSeekInfo getTranscodeSeekInfo()
