@@ -32,7 +32,17 @@ public class SearchQuery
 		SearchTerm = value;
 	}
 
-	/** 
+	private String ParentId;
+	public final String getParentId()
+	{
+		return ParentId;
+	}
+	public final void setParentId(String value)
+	{
+		ParentId = value;
+	}
+
+	/**
 	 Skips over a given number of items within the results. Use for paging.
 	 
 	 <value>The start index.</value>

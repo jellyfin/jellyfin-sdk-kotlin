@@ -1399,11 +1399,7 @@ public class ApiClient extends BaseApiClient {
         queryString.AddIfNotNull("StartIndex", query.getStartIndex());
         queryString.AddIfNotNull("Limit", query.getLimit());
 
-        queryString.Add("IncludeArtists", query.getIncludeArtists());
-        queryString.Add("IncludeGenres", query.getIncludeGenres());
-        queryString.Add("IncludeMedia", query.getIncludeMedia());
-        queryString.Add("IncludePeople", query.getIncludePeople());
-        queryString.Add("IncludeStudios", query.getIncludeStudios());
+        queryString.Add("ParentId", query.getParentId());
         queryString.Add("IncludeItemTypes", query.getIncludeItemTypes());
 
         String url = GetApiUrl("Search/Hints", queryString);
