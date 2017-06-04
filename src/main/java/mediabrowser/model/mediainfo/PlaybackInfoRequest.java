@@ -113,6 +113,15 @@ public class PlaybackInfoRequest
 	{
 		EnableDirectPlay = value;
 	}
+	private boolean AutoOpenLiveStream;
+	public final boolean getAutoOpenLiveStream()
+	{
+		return AutoOpenLiveStream;
+	}
+	public final void setAutoOpenLiveStream(boolean value)
+	{
+		AutoOpenLiveStream = value;
+	}
 	private boolean EnableDirectStream;
 	public final boolean getEnableDirectStream()
 	{
