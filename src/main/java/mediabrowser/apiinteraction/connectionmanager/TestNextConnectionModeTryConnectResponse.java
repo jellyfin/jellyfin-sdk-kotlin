@@ -26,11 +26,10 @@ public class TestNextConnectionModeTryConnectResponse extends Response<PublicSys
     private int index;
     private boolean isLocalNetworkAvailable;
     private long wakeOnLanSendTime;
-    private  boolean finalEnableRetry;
     private ILogger logger;
     private Response<ConnectionResult> response;
 
-    public TestNextConnectionModeTryConnectResponse(ConnectionManager connectionManager, ServerInfo server, ArrayList<ConnectionMode> tests, ConnectionMode mode, String address, int finalTimeout, ConnectionOptions options, int index, boolean isLocalNetworkAvailable, long wakeOnLanSendTime, boolean finalEnableRetry, ILogger logger, Response<ConnectionResult> response) {
+    public TestNextConnectionModeTryConnectResponse(ConnectionManager connectionManager, ServerInfo server, ArrayList<ConnectionMode> tests, ConnectionMode mode, String address, int finalTimeout, ConnectionOptions options, int index, boolean isLocalNetworkAvailable, long wakeOnLanSendTime, ILogger logger, Response<ConnectionResult> response) {
         this.connectionManager = connectionManager;
         this.server = server;
         this.tests = tests;
@@ -41,7 +40,6 @@ public class TestNextConnectionModeTryConnectResponse extends Response<PublicSys
         this.index = index;
         this.isLocalNetworkAvailable = isLocalNetworkAvailable;
         this.wakeOnLanSendTime = wakeOnLanSendTime;
-        this.finalEnableRetry = finalEnableRetry;
         this.logger = logger;
         this.response = response;
     }
@@ -49,28 +47,21 @@ public class TestNextConnectionModeTryConnectResponse extends Response<PublicSys
     @Override
     public void onResponse(PublicSystemInfo result) {
 
-        connectionManager.OnSuccessfulConnection(server, result, mode, options, response);
+        if (result == null){
+            connectionManager.OnSuccessfulConnection(server, result, mode, options, response);
+        }
+
+        else{
+
+            logger.Error("Somehow we got into TestNextConnectionModeTryConnectResponse.onResponse with a null response.");
+            onError(new Exception());
+        }
     }
 
     @Override
     public void onError(Exception ex) {
 
-        if (finalEnableRetry){
-            long sleepTime = 10000 - (System.currentTimeMillis() - wakeOnLanSendTime);
-
-            if (sleepTime > 0){
-                try {
-                    Thread.sleep(sleepTime, 0);
-                } catch (InterruptedException e) {
-                    logger.ErrorException("Error in Thread.Sleep", e);
-                }
-            }
-
-            connectionManager.TryConnect(address, finalTimeout, new TryConnectRetryResponse(connectionManager, server, tests, mode, options, index, isLocalNetworkAvailable, wakeOnLanSendTime, response));
-        }
-        else{
-            connectionManager.TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
-        }
+        connectionManager.TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
     }
 
 }

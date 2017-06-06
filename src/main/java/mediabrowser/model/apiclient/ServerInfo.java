@@ -142,6 +142,9 @@ public class ServerInfo
 
 	public final void ImportInfo(PublicSystemInfo systemInfo)
 	{
+		if (systemInfo == null) {
+			throw new IllegalArgumentException();
+		}
 		setName(systemInfo.getServerName());
 		setId(systemInfo.getId());
 

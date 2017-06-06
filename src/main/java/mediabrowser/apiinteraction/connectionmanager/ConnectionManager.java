@@ -207,13 +207,6 @@ public class ConnectionManager implements IConnectionManager {
 
         boolean isLocalNetworkAvailable = networkConnection.getNetworkStatus().GetIsAnyLocalNetworkAvailable();
 
-        // Kick off wake on lan on a separate thread (if applicable)
-        boolean sendWakeOnLan = server.getWakeOnLanInfos().size() > 0 && isLocalNetworkAvailable;
-
-        if (sendWakeOnLan){
-            BeginWakeServer(server);
-        }
-
         long wakeOnLanSendTime = System.currentTimeMillis();
 
         TestNextConnectionMode(tests, 0, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
@@ -235,7 +228,6 @@ public class ConnectionManager implements IConnectionManager {
 
         final ConnectionMode mode = tests.get(index);
         final String address = server.GetAddress(mode);
-        boolean enableRetry = false;
         boolean skipTest = false;
         int timeout = 15000;
 
@@ -245,7 +237,6 @@ public class ConnectionManager implements IConnectionManager {
                 logger.Debug("Skipping local connection test because local network is unavailable");
                 skipTest = true;
             }
-            enableRetry = true;
             timeout = 10000;
         }
 
@@ -267,7 +258,7 @@ public class ConnectionManager implements IConnectionManager {
             return;
         }
 
-        TryConnect(address, timeout, new TestNextConnectionModeTryConnectResponse(this, server, tests, mode, address, timeout, options, index, isLocalNetworkAvailable, wakeOnLanSendTime, enableRetry, logger, response));
+        TryConnect(address, timeout, new TestNextConnectionModeTryConnectResponse(this, server, tests, mode, address, timeout, options, index, isLocalNetworkAvailable, wakeOnLanSendTime, logger, response));
     }
 
     void OnSuccessfulConnection(final ServerInfo server,
@@ -275,6 +266,10 @@ public class ConnectionManager implements IConnectionManager {
                                      final ConnectionMode connectionMode,
                                      final ConnectionOptions connectionOptions,
                                      final Response<ConnectionResult> response) {
+
+        if (systemInfo == null){
+            throw new IllegalArgumentException();
+        }
 
         final ServerCredentials credentials = credentialProvider.GetCredentials();
 
