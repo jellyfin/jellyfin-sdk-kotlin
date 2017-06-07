@@ -47,7 +47,7 @@ public class TestNextConnectionModeTryConnectResponse extends Response<PublicSys
     @Override
     public void onResponse(PublicSystemInfo result) {
 
-        if (result == null){
+        if (result != null){
             connectionManager.OnSuccessfulConnection(server, result, mode, options, response);
         }
 
