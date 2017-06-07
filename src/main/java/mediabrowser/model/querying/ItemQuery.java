@@ -217,7 +217,22 @@ public class ItemQuery
 		Genres = value;
 	}
 
-	/** 
+	/**
+	 Limit results to items containing specific genres
+
+	 <value>The genres.</value>
+	 */
+	private String[] GenreIds;
+	public final String[] getGenreIds()
+	{
+		return GenreIds;
+	}
+	public final void setGenreIds(String[] value)
+	{
+		GenreIds = value;
+	}
+
+	/**
 	 Gets or sets the studio ids.
 	 
 	 <value>The studio ids.</value>

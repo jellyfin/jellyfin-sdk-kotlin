@@ -422,6 +422,7 @@ public abstract class BaseApiClient
 
 		dict.AddIfNotNull("MediaTypes", query.getMediaTypes());
 		dict.AddIfNotNull("Genres", query.getGenres(), "|");
+		dict.AddIfNotNull("GenreIds", query.getGenreIds(), "|");
 		dict.AddIfNotNull("Ids", query.getIds());
 		dict.AddIfNotNull("StudioIds", query.getStudioIds(), "|");
 		dict.AddIfNotNull("ExcludeItemTypes", query.getExcludeItemTypes());
