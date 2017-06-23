@@ -194,20 +194,6 @@ public class UserPolicy
 		EnableContentDownloading = value;
 	}
 
-	/** 
-	 Gets or sets a value indicating whether [enable synchronize].
-	 
-	 <value><c>true</c> if [enable synchronize]; otherwise, <c>false</c>.</value>
-	*/
-	private boolean EnableSync;
-	public final boolean getEnableSync()
-	{
-		return EnableSync;
-	}
-	public final void setEnableSync(boolean value)
-	{
-		EnableSync = value;
-	}
 	private boolean EnableSyncTranscoding;
 	public final boolean getEnableSyncTranscoding()
 	{
@@ -316,7 +302,6 @@ public class UserPolicy
 
 	public UserPolicy()
 	{
-		setEnableSync(true);
 		setEnableSyncTranscoding(true);
 
 		setEnableMediaPlayback(true);

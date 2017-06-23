@@ -43,22 +43,6 @@ public class UserDto implements IItemDto, IHasServerId
 	}
 
 	/** 
-	 Gets or sets the name of the server.
-	 This is not used by the server and is for client-side usage only.
-	 
-	 <value>The name of the server.</value>
-	*/
-	private String ServerName;
-	public final String getServerName()
-	{
-		return ServerName;
-	}
-	public final void setServerName(String value)
-	{
-		ServerName = value;
-	}
-
-	/** 
 	 Gets or sets the name of the connect user.
 	 
 	 <value>The name of the connect user.</value>
@@ -114,36 +98,6 @@ public class UserDto implements IItemDto, IHasServerId
 	public final void setId(String value)
 	{
 		Id = value;
-	}
-
-	/** 
-	 Gets or sets the offline password.
-	 
-	 <value>The offline password.</value>
-	*/
-	private String OfflinePassword;
-	public final String getOfflinePassword()
-	{
-		return OfflinePassword;
-	}
-	public final void setOfflinePassword(String value)
-	{
-		OfflinePassword = value;
-	}
-
-	/** 
-	 Gets or sets the offline password salt.
-	 
-	 <value>The offline password salt.</value>
-	*/
-	private String OfflinePasswordSalt;
-	public final String getOfflinePasswordSalt()
-	{
-		return OfflinePasswordSalt;
-	}
-	public final void setOfflinePasswordSalt(String value)
-	{
-		OfflinePasswordSalt = value;
 	}
 
 	/** 
@@ -289,18 +243,6 @@ public class UserDto implements IItemDto, IHasServerId
 	public final void setPrimaryImageAspectRatio(Double value)
 	{
 		PrimaryImageAspectRatio = value;
-	}
-
-	/** 
-	 Gets a value indicating whether this instance has primary image.
-	 
-	 <value><c>true</c> if this instance has primary image; otherwise, <c>false</c>.</value>
-	*/
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public bool HasPrimaryImage
-	public final boolean getHasPrimaryImage()
-	{
-		return getPrimaryImageTag() != null;
 	}
 
 	/** 
