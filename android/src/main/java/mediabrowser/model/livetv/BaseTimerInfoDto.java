@@ -17,6 +17,16 @@ public class BaseTimerInfoDto implements IHasServerId
 		Id = value;
 	}
 
+	private String Type;
+	public final String getType()
+	{
+		return Type;
+	}
+	public final void setType(String value)
+	{
+		Type = value;
+	}
+
 	/** 
 	 Gets or sets the server identifier.
 	 
@@ -246,6 +256,36 @@ public class BaseTimerInfoDto implements IHasServerId
 	}
 
 	/** 
+	 If the item does not have any backdrops, this will hold the Id of the Parent that has one.
+	 
+	 <value>The parent backdrop item id.</value>
+	*/
+	private String ParentBackdropItemId;
+	public final String getParentBackdropItemId()
+	{
+		return ParentBackdropItemId;
+	}
+	public final void setParentBackdropItemId(String value)
+	{
+		ParentBackdropItemId = value;
+	}
+
+	/** 
+	 Gets or sets the parent backdrop image tags.
+	 
+	 <value>The parent backdrop image tags.</value>
+	*/
+	private java.util.ArrayList<String> ParentBackdropImageTags;
+	public final java.util.ArrayList<String> getParentBackdropImageTags()
+	{
+		return ParentBackdropImageTags;
+	}
+	public final void setParentBackdropImageTags(java.util.ArrayList<String> value)
+	{
+		ParentBackdropImageTags = value;
+	}
+
+	/** 
 	 Gets or sets a value indicating whether this instance is post padding required.
 	 
 	 <value><c>true</c> if this instance is post padding required; otherwise, <c>false</c>.</value>
@@ -259,7 +299,7 @@ public class BaseTimerInfoDto implements IHasServerId
 	{
 		IsPostPaddingRequired = value;
 	}
-	private KeepUntil KeepUntil = mediabrowser.model.livetv.KeepUntil.UntilDeleted;
+	private KeepUntil KeepUntil = getKeepUntil().values()[0];
 	public final KeepUntil getKeepUntil()
 	{
 		return KeepUntil;

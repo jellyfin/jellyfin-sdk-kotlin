@@ -1,5 +1,7 @@
 package mediabrowser.model.livetv;
 
+import mediabrowser.model.entities.*;
+
 /** 
  Class ChannelQuery.
 */
@@ -217,8 +219,34 @@ public class LiveTvChannelQuery
 		IsSeries = value;
 	}
 
+	private String[] SortBy;
+	public final String[] getSortBy()
+	{
+		return SortBy;
+	}
+	public final void setSortBy(String[] value)
+	{
+		SortBy = value;
+	}
+
+	/** 
+	 The sort order to return results with
+	 
+	 <value>The sort order.</value>
+	*/
+	private SortOrder SortOrder;
+	public final SortOrder getSortOrder()
+	{
+		return SortOrder;
+	}
+	public final void setSortOrder(SortOrder value)
+	{
+		SortOrder = value;
+	}
+
 	public LiveTvChannelQuery()
 	{
 		setEnableUserData(true);
+		setSortBy(new String[] { });
 	}
 }

@@ -9,6 +9,13 @@ import mediabrowser.model.entities.*;
 //ORIGINAL LINE: [DebuggerDisplay("Name = {Name}")] public class SeriesTimerInfoDto : BaseTimerInfoDto
 public class SeriesTimerInfoDto extends BaseTimerInfoDto
 {
+	public SeriesTimerInfoDto()
+	{
+		setImageTags(new java.util.HashMap<ImageType, String>());
+		setDays(new java.util.ArrayList<String>());
+		setType("SeriesTimer");
+	}
+
 	/** 
 	 Gets or sets a value indicating whether [record any time].
 	 
@@ -131,9 +138,63 @@ public class SeriesTimerInfoDto extends BaseTimerInfoDto
 		return getImageTags() != null && getImageTags().containsKey(ImageType.Primary);
 	}
 
-	public SeriesTimerInfoDto()
+	/** 
+	 Gets or sets the parent thumb item id.
+	 
+	 <value>The parent thumb item id.</value>
+	*/
+	private String ParentThumbItemId;
+	public final String getParentThumbItemId()
 	{
-		setImageTags(new java.util.HashMap<ImageType, String>());
-		setDays(new java.util.ArrayList<String>());
+		return ParentThumbItemId;
+	}
+	public final void setParentThumbItemId(String value)
+	{
+		ParentThumbItemId = value;
+	}
+
+	/** 
+	 Gets or sets the parent thumb image tag.
+	 
+	 <value>The parent thumb image tag.</value>
+	*/
+	private String ParentThumbImageTag;
+	public final String getParentThumbImageTag()
+	{
+		return ParentThumbImageTag;
+	}
+	public final void setParentThumbImageTag(String value)
+	{
+		ParentThumbImageTag = value;
+	}
+
+	/** 
+	 Gets or sets the parent primary image item identifier.
+	 
+	 <value>The parent primary image item identifier.</value>
+	*/
+	private String ParentPrimaryImageItemId;
+	public final String getParentPrimaryImageItemId()
+	{
+		return ParentPrimaryImageItemId;
+	}
+	public final void setParentPrimaryImageItemId(String value)
+	{
+		ParentPrimaryImageItemId = value;
+	}
+
+	/** 
+	 Gets or sets the parent primary image tag.
+	 
+	 <value>The parent primary image tag.</value>
+	*/
+	private String ParentPrimaryImageTag;
+	public final String getParentPrimaryImageTag()
+	{
+		return ParentPrimaryImageTag;
+	}
+	public final void setParentPrimaryImageTag(String value)
+	{
+		ParentPrimaryImageTag = value;
 	}
 }
