@@ -18,16 +18,12 @@ import mediabrowser.model.channels.ChannelItemQuery;
 import mediabrowser.model.channels.ChannelQuery;
 import mediabrowser.model.configuration.ServerConfiguration;
 import mediabrowser.model.configuration.UserConfiguration;
-import mediabrowser.model.connect.ConnectPassword;
 import mediabrowser.model.devices.ContentUploadHistory;
-import mediabrowser.model.devices.DevicesOptions;
 import mediabrowser.model.devices.LocalFileInfo;
 import mediabrowser.model.dto.*;
 import mediabrowser.model.entities.DisplayPreferences;
 import mediabrowser.model.entities.ParentalRating;
 import mediabrowser.model.extensions.StringHelper;
-import mediabrowser.model.globalization.CountryInfo;
-import mediabrowser.model.globalization.CultureDto;
 import mediabrowser.model.livetv.*;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.mediainfo.*;
@@ -846,42 +842,6 @@ public class ApiClient extends BaseApiClient {
 
         Send(url, "GET", new SerializedResponse<BaseItemDto[]>(response, jsonSerializer, new BaseItemDto[]{}.getClass()));
     }
-
-    /// <summary>
-    /// Gets the cultures async.
-    /// </summary>
-    /// <returns>Task{CultureDto[]}.</returns>
-    public void GetCulturesAsync(final Response<CultureDto[]> response)
-    {
-        String url = GetApiUrl("Localization/Cultures");
-
-        url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<CultureDto[]>(response, jsonSerializer, new CultureDto[]{}.getClass()));
-    }
-
-    /// <summary>
-    /// Gets the countries async.
-    /// </summary>
-    /// <returns>Task{CountryInfo[]}.</returns>
-    public void GetCountriesAsync(final Response<CountryInfo[]> response)
-    {
-        String url = GetApiUrl("Localization/Countries");
-
-        url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<CountryInfo[]>(response, jsonSerializer, new CountryInfo[]{}.getClass()));
-    }
-
-    /// <summary>
-    /// Gets the game system summaries async.
-    /// </summary>
-    /// <returns>Task{List{GameSystemSummary}}.</returns>
-    public void GetGameSystemSummariesAsync(final Response<GameSystemSummary[]> response)
-    {
-        String url = GetApiUrl("Games/SystemSummaries");
-
-        url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<GameSystemSummary[]>(response, jsonSerializer, new GameSystemSummary[]{}.getClass()));
-    }
  
     public void MarkPlayedAsync(String itemId, String userId, Date datePlayed, final Response<UserItemDataDto> response)
     {
@@ -1252,7 +1212,7 @@ public class ApiClient extends BaseApiClient {
 
         dict.Add("username", username);
         dict.Add("password", Sha1.getHash(password));
-        dict.Add("passwordMd5", Md5.getHash(ConnectPassword.PerformPreHashFilter(password)));
+        dict.Add("passwordMd5", Md5.getHash(password));
 
         url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(response){
@@ -2274,15 +2234,6 @@ public class ApiClient extends BaseApiClient {
 
         String json = getJsonSerializer().SerializeToString(request);
         Send(url, "POST", json, "application/json", new SerializedResponse<LiveStreamResponse>(response, jsonSerializer, LiveStreamResponse.class));
-    }
-
-    public void GetDevicesOptions(final Response<DevicesOptions> response)
-    {
-        String url = GetApiUrl("System/Configuration/devices");
-
-        url = AddDataFormat(url);
-
-        Send(url, "GET", new SerializedResponse<DevicesOptions>(response, jsonSerializer, DevicesOptions.class));
     }
 
     public void GetContentUploadHistory(final Response<ContentUploadHistory> response)

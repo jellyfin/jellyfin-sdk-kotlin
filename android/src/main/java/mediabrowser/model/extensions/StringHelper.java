@@ -57,18 +57,7 @@ public final class StringHelper
 		return String.valueOf(val);
 	}
 
-	/** 
-	 To the string culture invariant.
-	 
-	 @param val The value.
-	 @return System.String.
-	*/
-	public static String ToStringCultureInvariant(double val)
-	{
-		return String.valueOf(val);
-	}
-
-	/** 
+	/**
 	 Trims the start.
 	 
 	 @param str The string.
@@ -78,39 +67,6 @@ public final class StringHelper
 	public static String TrimStart(String str, char c)
 	{
 		return tangible.DotNetToJavaStringHelper.trimStart(str, c);
-	}
-
-
-
-    /// <summary>
-    /// Splits the specified string.
-    /// </summary>
-    /// <param name="str">The string.</param>
-    /// <param name="term">The term.</param>
-    /// <returns>System.String[].</returns>
-    public static String[] RegexSplit(String str, String term)
-    {
-        return str.split(term);
-    }
-
-    /// <summary>
-    /// Splits the specified string.
-    /// </summary>
-    /// <param name="str">The string.</param>
-    /// <param name="term">The term.</param>
-    /// <param name="limit">The limit.</param>
-    /// <returns>System.String[].</returns>
-    public static String[] RegexSplit(String str, String term, int limit)
-    {
-        return str.split(term, limit);
-    }
-
-	/// <summary>
-	/// Convert first character to upper case
-	/// </summary>
-	public static String FirstToUpper(String value) {
-		if (value == null || value.length() == 0) return "";
-		return value.substring(0, 1).toUpperCase() + (value.length() > 1 ? value.substring(1) : "");
 	}
 
 

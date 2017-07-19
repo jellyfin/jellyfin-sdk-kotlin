@@ -35,7 +35,7 @@ public class ConnectService {
         QueryStringDictionary args = new QueryStringDictionary();
 
         args.Add("nameOrEmail", username);
-        args.Add("password", Md5.getHash(ConnectPassword.PerformPreHashFilter(password)));
+        args.Add("rawpw", password);
 
         String url = GetConnectUrl("user/authenticate");
 

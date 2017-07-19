@@ -10,7 +10,7 @@ import mediabrowser.model.serialization.*;
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, HasPassword = {HasPassword}")] public class UserDto : IItemDto, IHasServerId
-public class UserDto implements IItemDto, IHasServerId
+public class UserDto implements IHasServerId
 {
 	/** 
 	 Gets or sets the name.

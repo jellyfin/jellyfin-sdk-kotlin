@@ -103,21 +103,6 @@ public class SystemInfo extends PublicSystemInfo
 	}
 
 	/** 
-	 Gets or sets the in progress installations.
-	 
-	 <value>The in progress installations.</value>
-	*/
-	private java.util.ArrayList<InstallationInfo> InProgressInstallations;
-	public final java.util.ArrayList<InstallationInfo> getInProgressInstallations()
-	{
-		return InProgressInstallations;
-	}
-	public final void setInProgressInstallations(java.util.ArrayList<InstallationInfo> value)
-	{
-		InProgressInstallations = value;
-	}
-
-	/** 
 	 Gets or sets the web socket port number.
 	 
 	 <value>The web socket port number.</value>
@@ -130,21 +115,6 @@ public class SystemInfo extends PublicSystemInfo
 	public final void setWebSocketPortNumber(int value)
 	{
 		WebSocketPortNumber = value;
-	}
-
-	/** 
-	 Gets or sets the completed installations.
-	 
-	 <value>The completed installations.</value>
-	*/
-	private java.util.ArrayList<InstallationInfo> CompletedInstallations;
-	public final java.util.ArrayList<InstallationInfo> getCompletedInstallations()
-	{
-		return CompletedInstallations;
-	}
-	public final void setCompletedInstallations(java.util.ArrayList<InstallationInfo> value)
-	{
-		CompletedInstallations = value;
 	}
 
 	/** 
@@ -382,10 +352,6 @@ public class SystemInfo extends PublicSystemInfo
 	*/
 	public SystemInfo()
 	{
-		setInProgressInstallations(new java.util.ArrayList<InstallationInfo>());
-
-		setCompletedInstallations(new java.util.ArrayList<InstallationInfo>());
-
 		setFailedPluginAssemblies(new java.util.ArrayList<String>());
 	}
 }

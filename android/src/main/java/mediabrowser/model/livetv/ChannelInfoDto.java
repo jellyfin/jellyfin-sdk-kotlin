@@ -9,7 +9,7 @@ import mediabrowser.model.library.*;
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, Number = {Number}")] public class ChannelInfoDto : IItemDto, IHasServerId
-public class ChannelInfoDto implements IItemDto, IHasServerId
+public class ChannelInfoDto implements IHasServerId
 {
 	/** 
 	 Gets or sets the name.

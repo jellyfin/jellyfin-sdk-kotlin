@@ -14,7 +14,7 @@ import mediabrowser.model.sync.*;
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, Type = {Type}")] public class BaseItemDto : IHasProviderIds, IItemDto, IHasServerId, IHasSyncInfo
-public class BaseItemDto implements IHasProviderIds, IItemDto, IHasServerId, IHasSyncInfo
+public class BaseItemDto implements IHasProviderIds, IHasServerId
 {
 	/** 
 	 Gets or sets the name.
