@@ -4,7 +4,6 @@ import mediabrowser.apiinteraction.EmptyResponse;
 import mediabrowser.apiinteraction.ICredentialProvider;
 import mediabrowser.model.apiclient.ServerCredentials;
 import mediabrowser.model.apiclient.ServerInfo;
-import mediabrowser.model.apiclient.ServerUserInfo;
 import mediabrowser.model.connect.UserLinkType;
 import mediabrowser.model.logging.ILogger;
 
@@ -39,11 +38,6 @@ public class LogoutAllResponse extends EmptyResponse {
                 server.setAccessToken(null);
                 server.setUserId(null);
                 server.setExchangeToken(null);
-
-                for (ServerUserInfo user : server.getUsers())
-                {
-                    user.setIsSignedInOffline(false);
-                }
 
                 servers.add(server);
             }

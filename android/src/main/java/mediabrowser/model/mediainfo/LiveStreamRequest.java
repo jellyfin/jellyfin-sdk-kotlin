@@ -93,24 +93,4 @@ public class LiveStreamRequest
 	{
 		DeviceProfile = value;
 	}
-
-	public LiveStreamRequest()
-	{
-
-	}
-
-	public LiveStreamRequest(AudioOptions options)
-	{
-		setMaxStreamingBitrate(options.getMaxBitrate());
-		setItemId(options.getItemId());
-		setDeviceProfile(options.getProfile());
-		setMaxAudioChannels(options.getMaxAudioChannels());
-
-		VideoOptions videoOptions = (VideoOptions)((options instanceof VideoOptions) ? options : null);
-		if (videoOptions != null)
-		{
-			setAudioStreamIndex(videoOptions.getAudioStreamIndex());
-			setSubtitleStreamIndex(videoOptions.getSubtitleStreamIndex());
-		}
-	}
 }

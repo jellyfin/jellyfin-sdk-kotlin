@@ -11,15 +11,6 @@ public class SyncDataRequest
 	{
 		LocalItemIds = value;
 	}
-	private java.util.ArrayList<String> OfflineUserIds;
-	public final java.util.ArrayList<String> getOfflineUserIds()
-	{
-		return OfflineUserIds;
-	}
-	public final void setOfflineUserIds(java.util.ArrayList<String> value)
-	{
-		OfflineUserIds = value;
-	}
 	private java.util.ArrayList<String> SyncJobItemIds;
 	public final java.util.ArrayList<String> getSyncJobItemIds()
 	{
@@ -43,6 +34,5 @@ public class SyncDataRequest
 	public SyncDataRequest()
 	{
 		setLocalItemIds(new java.util.ArrayList<String>());
-		setOfflineUserIds(new java.util.ArrayList<String>());
 	}
 }

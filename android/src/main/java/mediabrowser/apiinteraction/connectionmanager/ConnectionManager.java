@@ -483,22 +483,11 @@ public class ConnectionManager implements IConnectionManager {
         }
 
         credentials.AddOrUpdateServer(server);
-        SaveUserInfoIntoCredentials(server, result.getUser());
         credentialProvider.SaveCredentials(credentials);
 
         AfterConnected(apiClient, options);
 
         OnLocalUserSignIn(result.getUser());
-    }
-
-    private void SaveUserInfoIntoCredentials(ServerInfo server, UserDto user)
-    {
-        ServerUserInfo info = new ServerUserInfo();
-        info.setIsSignedInOffline(true);
-        info.setId(user.getId());
-
-        // Record user info here
-        server.AddOrUpdate(info);
     }
 
     void OnLocalUserSignIn(UserDto user)

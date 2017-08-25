@@ -2370,19 +2370,6 @@ public class ApiClient extends BaseApiClient {
         response.onError(new UnsupportedOperationException());
     }
 
-    public void CreateSyncJob(SyncJobRequest request, Response<SyncJobCreationResult> response){
-
-        if (request == null)
-        {
-            throw new IllegalArgumentException("request");
-        }
-
-        String url = GetApiUrl("Sync/Jobs");
-        url = AddDataFormat(url);
-
-        Send(url, "POST", jsonSerializer.SerializeToString(request), "application/json", new SerializedResponse<SyncJobCreationResult>(response, jsonSerializer, SyncJobCreationResult.class));
-    }
-
     public void CancelSyncJob(SyncJob job, EmptyResponse response) {
 
         if (job == null)
