@@ -218,28 +218,4 @@ public class DisplayPreferences
 	{
 		Client = value;
 	}
-
-	/** 
-	 Increases the size of the image.
-	*/
-	public final void IncreaseImageSize()
-	{
-		double newWidth = getPrimaryImageWidth() / ImageScale;
-
-		ImageSize size = DrawingUtils.Resize(getPrimaryImageWidth(), getPrimaryImageHeight(), newWidth, null, null, null);
-
-		setPrimaryImageWidth((int)size.getWidth());
-		setPrimaryImageHeight((int)size.getHeight());
-	}
-
-	/** 
-	 Decreases the size of the image.
-	*/
-	public final void DecreaseImageSize()
-	{
-		ImageSize size = DrawingUtils.Scale(getPrimaryImageWidth(), getPrimaryImageHeight(), ImageScale);
-
-		setPrimaryImageWidth((int)size.getWidth());
-		setPrimaryImageHeight((int)size.getHeight());
-	}
 }

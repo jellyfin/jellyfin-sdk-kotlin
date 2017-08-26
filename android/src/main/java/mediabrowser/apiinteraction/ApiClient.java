@@ -45,7 +45,6 @@ import mediabrowser.model.sync.*;
 import mediabrowser.model.system.PublicSystemInfo;
 import mediabrowser.model.system.SystemInfo;
 import mediabrowser.model.users.AuthenticationResult;
-import mediabrowser.model.users.UserAction;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -2409,40 +2408,6 @@ public class ApiClient extends BaseApiClient {
         return GetApiUrl("Sync/JobItems/" + id + "/File");
     }
 
-    public void GetSyncJobs(SyncJobQuery query, Response<SyncJobQueryResult> response) {
-
-        QueryStringDictionary dict = new QueryStringDictionary();
-
-        dict.AddIfNotNull("Limit", query.getLimit());
-        dict.AddIfNotNull("StartIndex", query.getStartIndex());
-        dict.AddIfNotNull("SyncNewContent", query.getSyncNewContent());
-        dict.AddIfNotNullOrEmpty("TargetId", query.getTargetId());
-
-        dict.AddIfNotNull("Statuses", query.getStatuses(), ",");
-
-        String url = GetApiUrl("Sync/Jobs", dict);
-        url = AddDataFormat(url);
-
-        Send(url, "GET", new SerializedResponse<SyncJobQueryResult>(response, jsonSerializer, SyncJobQueryResult.class));
-    }
-
-    public void GetSyncJobItems(SyncJobItemQuery query, Response<SyncJobItemQueryResult> response) {
-
-        QueryStringDictionary dict = new QueryStringDictionary();
-
-        dict.AddIfNotNullOrEmpty("JobId", query.getJobId());
-        dict.AddIfNotNull("Limit", query.getLimit());
-        dict.AddIfNotNull("StartIndex", query.getStartIndex());
-        dict.AddIfNotNullOrEmpty("TargetId", query.getTargetId());
-
-        dict.AddIfNotNull("Statuses", query.getStatuses(), ",");
-
-        String url = GetApiUrl("Sync/JobItems", dict);
-        url = AddDataFormat(url);
-
-        Send(url, "GET", new SerializedResponse<SyncJobItemQueryResult>(response, jsonSerializer, SyncJobItemQueryResult.class));
-    }
-
     public void reportSyncJobItemTransferred(String id, EmptyResponse response) {
 
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
@@ -2453,31 +2418,6 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Sync/JobItems/" + id + "/Transferred");
 
         PostAsync(url, response);
-    }
-
-    public void GetOfflineUser(String id, Response<UserDto> response) {
-
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
-        {
-            throw new IllegalArgumentException("id");
-        }
-
-        String url = GetApiUrl("Users/" + id + "/Offline");
-        url = AddDataFormat(url);
-
-        Send(url, "GET", new SerializedResponse<UserDto>(response, jsonSerializer, UserDto.class));
-    }
-
-    public void ReportOfflineActions(ArrayList<UserAction> actions, EmptyResponse response) {
-
-        if (actions == null || actions.size() == 0)
-        {
-            throw new IllegalArgumentException("actions");
-        }
-
-        String url = GetApiUrl("Sync/OfflineActions");
-
-        PostAsync(url, actions, response);
     }
 
     public void SyncData(SyncDataRequest request, final Response<SyncDataResponse> response) {
