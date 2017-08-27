@@ -36,7 +36,11 @@ public enum PlaystateCommand
 	/** 
 	 The fast forward
 	*/
-	FastForward;
+	FastForward,
+	/**
+	 The PlayPause
+	 */
+	PlayPause;
 
 	public int getValue()
 	{
