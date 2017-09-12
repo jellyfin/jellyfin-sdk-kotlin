@@ -48,7 +48,11 @@ public class TestNextConnectionModeTryConnectResponse extends Response<PublicSys
     public void onResponse(PublicSystemInfo result) {
 
         if (result != null){
-            connectionManager.OnSuccessfulConnection(server, result, mode, options, response);
+            if (this.server.getId().equals(result.getId())) {
+                connectionManager.OnSuccessfulConnection(server, result, mode, options, response);
+            } else {
+                onError(new Exception("Invalid server"));
+            }
         }
 
         else{
