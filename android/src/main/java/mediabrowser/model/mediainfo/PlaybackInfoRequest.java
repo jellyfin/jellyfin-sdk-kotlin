@@ -149,7 +149,25 @@ public class PlaybackInfoRequest
 	{
 		ForceDirectPlayRemoteMediaSource = value;
 	}
+	private boolean AllowVideoSreamCopy;
+	public final boolean getAllowVideoStreamCopy()
+	{
+		return AllowVideoSreamCopy;
+	}
+	public final void setAllowVideoSreamCopy(boolean value)
+	{
+		AllowVideoSreamCopy = value;
+	}
 
+	private boolean AllowAudioSreamCopy;
+	public final boolean getAllowAudioStreamCopy()
+	{
+		return AllowAudioSreamCopy;
+	}
+	public final void setAllowAudioSreamCopy(boolean value)
+	{
+		AllowAudioSreamCopy = value;
+	}
 	public PlaybackInfoRequest()
 	{
 		setForceDirectPlayRemoteMediaSource(true);
