@@ -1210,6 +1210,7 @@ public class ApiClient extends BaseApiClient {
         QueryStringDictionary dict = new QueryStringDictionary ();
 
         dict.Add("username", username);
+        dict.Add("pw", password);
         dict.Add("password", Sha1.getHash(password));
         dict.Add("passwordMd5", Md5.getHash(password));
 
