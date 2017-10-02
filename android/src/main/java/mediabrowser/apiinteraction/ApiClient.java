@@ -928,7 +928,6 @@ public class ApiClient extends BaseApiClient {
         }
 
         String ticks = info.getPositionTicks() == null ? "null" : info.getPositionTicks().toString();
-        Logger.Info("ReportPlaybackStart: Item %s, Ticks: %s", info.getItem().getName(), ticks);
 
         String url = GetApiUrl("Sessions/Playing");
 
