@@ -2003,7 +2003,7 @@ public class ApiClient extends BaseApiClient {
         GetItemsFromUrl(url, response);
     }
 
-    public void GetCurrentSessionAsync(final Response<SessionInfoDto> response)
+    public void GetCurrentSessionAsync(final Response<SessionInfoDto[]> response)
     {
         QueryStringDictionary queryString = new QueryStringDictionary();
 
@@ -2011,7 +2011,7 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Sessions", queryString);
 
         url = AddDataFormat(url);
-        Send(url, "GET", new SerializedResponse<SessionInfoDto>(response, jsonSerializer, SessionInfoDto.class));
+        Send(url, "GET", new SerializedResponse<SessionInfoDto[]>(response, jsonSerializer, new SessionInfoDto[]{}.getClass()));
     }
 
     public void StopTranscodingProcesses(String deviceId, String playSessionId, final EmptyResponse response)
