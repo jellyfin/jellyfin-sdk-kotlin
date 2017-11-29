@@ -42,12 +42,12 @@ public class PlayRequest
 
 	 <value>The audio.</value>
 	 */
-	private Long AudioStreamIndex;
-	public final Long getAudioStreamIndex()
+	private Integer AudioStreamIndex;
+	public final Integer getAudioStreamIndex()
 	{
 		return AudioStreamIndex;
 	}
-	public final void setAudioStreamIndex(Long value)
+	public final void setAudioStreamIndex(Integer value)
 	{
 		AudioStreamIndex = value;
 	}
@@ -57,14 +57,29 @@ public class PlayRequest
 
 	 <value>The subtitle.</value>
 	 */
-	private Long SubtitleStreamIndex;
-	public final Long getSubtitleStreamIndex()
+	private Integer SubtitleStreamIndex;
+	public final Integer getSubtitleStreamIndex()
 	{
 		return SubtitleStreamIndex;
 	}
-	public final void setSubtitleStreamIndex(Long value)
+	public final void setSubtitleStreamIndex(Integer value)
 	{
 		SubtitleStreamIndex = value;
+	}
+
+	/**
+	 Gets or sets the start index for the list of items
+
+	 <value>The start index.</value>
+	 */
+	private Integer StartIndex;
+	public final Integer getStartIndex()
+	{
+		return StartIndex;
+	}
+	public final void setStartIndex(Integer value)
+	{
+		StartIndex = value;
 	}
 
 	/**
