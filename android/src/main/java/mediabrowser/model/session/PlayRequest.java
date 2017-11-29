@@ -1,6 +1,8 @@
 package mediabrowser.model.session;
 
-/** 
+import mediabrowser.model.dto.MediaSourceInfo;
+
+/**
  Class PlayRequest
 */
 public class PlayRequest
@@ -35,7 +37,52 @@ public class PlayRequest
 		StartPositionTicks = value;
 	}
 
-	/** 
+	/**
+	 Gets or sets the audio stream index for the first item
+
+	 <value>The audio.</value>
+	 */
+	private Long AudioStreamIndex;
+	public final Long getAudioStreamIndex()
+	{
+		return AudioStreamIndex;
+	}
+	public final void setAudioStreamIndex(Long value)
+	{
+		AudioStreamIndex = value;
+	}
+
+	/**
+	 Gets or sets the subtitle stream index for the first item
+
+	 <value>The subtitle.</value>
+	 */
+	private Long SubtitleStreamIndex;
+	public final Long getSubtitleStreamIndex()
+	{
+		return SubtitleStreamIndex;
+	}
+	public final void setSubtitleStreamIndex(Long value)
+	{
+		SubtitleStreamIndex = value;
+	}
+
+	/**
+	 Gets or sets the media source ID for the first item
+
+	 <value>The start position ticks.</value>
+	 */
+	private String MediaSourceId;
+	public final String getMediaSourceId()
+	{
+		return MediaSourceId;
+	}
+	public final void setMediaSourceId(String value)
+	{
+		MediaSourceId = value;
+	}
+
+	/**
 	 Gets or sets the play command.
 	 
 	 <value>The play command.</value>
