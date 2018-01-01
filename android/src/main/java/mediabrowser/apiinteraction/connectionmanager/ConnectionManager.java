@@ -359,7 +359,11 @@ public class ConnectionManager implements IConnectionManager {
 
         logger.Debug("Attempting to connect to server at %s", address);
 
-        TryConnect(normalizedAddress, 15000, new ConnectToAddressResponse(this, normalizedAddress, response));
+        ServerInfo server = new ServerInfo();
+        server.setManualAddress(normalizedAddress);
+        server.setLastConnectionMode(ConnectionMode.Manual);
+
+        Connect(server, new ConnectionOptions(), response);
     }
 
     @Override
