@@ -3,6 +3,10 @@
 #################
 
 gradle/
+.gradle/
+*.iml
+gradlew
+gradlew.bat
 /local.properties
 .idea/
 .DS_Store/
