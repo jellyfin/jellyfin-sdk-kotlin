@@ -51,5 +51,6 @@ public interface IConnectionManager {
 
     void DeleteServer(final String id, final EmptyResponse response);
 
+    @Deprecated
     void GetRegistrationInfo(String featureName, String serverId, String localUsername, Response<RegistrationInfo> response);
 }

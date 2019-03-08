@@ -750,6 +750,7 @@ public class ConnectionManager implements IConnectionManager {
         connectService.ExchangePin(pin, new ExchangePinResponse(credentialProvider, response));
     }
 
+    @Deprecated
     public void GetRegistrationInfo(final String featureName, String serverId, String localUsername, final Response<RegistrationInfo> response) {
         RegistrationInfo reg = new RegistrationInfo();
         reg.setName(featureName);
