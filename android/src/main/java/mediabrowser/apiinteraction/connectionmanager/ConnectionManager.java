@@ -751,39 +751,11 @@ public class ConnectionManager implements IConnectionManager {
     }
 
     public void GetRegistrationInfo(final String featureName, String serverId, String localUsername, final Response<RegistrationInfo> response) {
-
-        connectService.GetRegistrationInfo(serverId, getDevice().getDeviceId(), localUsername, new EmptyResponse(){
-
-            @Override
-            public void onResponse(){
-                RegistrationInfo reg = new RegistrationInfo();
-                reg.setName(featureName);
-                reg.setIsTrial(false);
-                reg.setIsRegistered(true);
-                response.onResponse(reg);
-            }
-
-            @Override
-            public void onError(Exception ex){
-
-                logger.ErrorException("Error in GetRegistrationInfo", ex);
-                RegistrationInfo reg = new RegistrationInfo();
-                reg.setName(featureName);
-                reg.setIsTrial(false);
-                reg.setIsRegistered(false);
-
-                if (ex instanceof HttpException){
-                    HttpException httpException = (HttpException)ex;
-
-                    if (httpException.getStatusCode() != null){
-                        if (httpException.getStatusCode() == 403){
-                            reg.setIsOverLimit(true);
-                        }
-                    }
-                }
-                response.onResponse(reg);
-            }
-        });
+        RegistrationInfo reg = new RegistrationInfo();
+        reg.setName(featureName);
+        reg.setIsTrial(false);
+        reg.setIsRegistered(true);
+        response.onResponse(reg);
     }
 
     public void DeleteServer(final String id, final EmptyResponse response)
