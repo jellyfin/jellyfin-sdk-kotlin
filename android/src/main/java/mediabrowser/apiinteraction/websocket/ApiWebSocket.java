@@ -94,7 +94,7 @@ public class ApiWebSocket implements ISocketListener {
     public void SendWebSocketMessage(String name, Object data, EmptyResponse response){
 
         logger.Debug("Sending web socket message: " + name);
-        WebSocketMessage msg = new ObjectWebSocketMessage();
+        WebSocketMessage<Object> msg = new WebSocketMessage<>();
 
         msg.setMessageType(name);
         msg.setData(data);

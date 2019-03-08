@@ -60,7 +60,7 @@ public interface IJsonSerializer
 	 @return ``0.
 	 @exception System.ArgumentNullException text
 	*/
-	<T> T DeserializeFromString(String text, java.lang.Class type);
+	<T> T DeserializeFromString(String text, java.lang.Class<T> type);
 
 	/**
 	 Deserializes from stream.

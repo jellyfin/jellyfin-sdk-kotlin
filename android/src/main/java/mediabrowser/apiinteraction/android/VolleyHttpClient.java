@@ -100,7 +100,11 @@ public class VolleyHttpClient implements IAsyncHttpClient {
 
         final String url = request.getUrl();
 
-        StringRequest req = new VolleyStringRequest(method, url, new VolleyResponseListener(response, logger, url), new VolleyErrorListener(response, logger), request);
+        StringRequest req = new VolleyStringRequest(method,
+                url,
+                new VolleyResponseListener<>(response, logger, url),
+                new VolleyErrorListener<>(response, logger),
+                request);
 
         if (method != Request.Method.GET) {
             req.setShouldCache(false);

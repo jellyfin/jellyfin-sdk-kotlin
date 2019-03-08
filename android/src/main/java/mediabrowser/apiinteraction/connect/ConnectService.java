@@ -162,7 +162,7 @@ public class ConnectService {
         AddUserAccessToken(request, connectAccessToken);
         AddXApplicationName(request);
 
-        _httpClient.Send(request, new SerializedResponse<ConnectUserServer[]>(response, JsonSerializer, new ConnectUserServer[]{}.getClass()));
+        _httpClient.Send(request, new SerializedResponse<>(response, JsonSerializer, ConnectUserServer[].class));
     }
 
     public void GetRegistrationInfo(String serverId, String deviceId, String embyUsername, EmptyResponse response)
