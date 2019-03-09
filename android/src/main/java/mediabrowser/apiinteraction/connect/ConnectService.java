@@ -165,26 +165,6 @@ public class ConnectService {
         _httpClient.Send(request, new SerializedResponse<ConnectUserServer[]>(response, JsonSerializer, new ConnectUserServer[]{}.getClass()));
     }
 
-    public void GetRegistrationInfo(String serverId, String deviceId, String embyUsername, EmptyResponse response)
-    {
-        QueryStringDictionary dict = new QueryStringDictionary();
-
-        dict.Add("serverId", serverId);
-        dict.Add("embyUserName", embyUsername);
-        dict.Add("deviceId", deviceId);
-
-        String url = "https://mb3admin.com/admin/service/registration/validateDevice" + "?" + dict.GetQueryString();
-
-        HttpRequest request = new HttpRequest();
-
-        request.setMethod("POST");
-        request.setUrl(url);
-
-        AddXApplicationName(request);
-
-        _httpClient.Send(request, new Response<String>(response));
-    }
-
     public void DeleteServer(String userId, String connectAccessToken, String serverId, EmptyResponse response)
     {
         QueryStringDictionary dict = new QueryStringDictionary();
