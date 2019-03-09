@@ -9,10 +9,13 @@ import mediabrowser.apiinteraction.Response;
 import mediabrowser.model.extensions.StringHelper;
 import mediabrowser.model.logging.ILogger;
 import android.content.Context;
+
 import com.android.volley.*;
+import com.android.volley.toolbox.BasicNetwork;
+import com.android.volley.toolbox.DiskBasedCache;
+import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 public class VolleyHttpClient implements IAsyncHttpClient {
 
@@ -22,10 +25,14 @@ public class VolleyHttpClient implements IAsyncHttpClient {
     public static final String TAG = "VolleyHttpClient";
 
     /**
-     * Global request queue for Volley
+     * Default maximum disk usage in bytes.
      */
-    private RequestQueue mRequestQueue;
-    private ImageLoader mImageLoader;
+    private static final int DEFAULT_DISK_USAGE_BYTES = 100 * 1024 * 1024; // 100 MB
+
+    /**
+     * Global request queue for Volley.
+     */
+    private RequestQueue requestQueue;
 
     private ILogger logger;
     private Context context;
@@ -37,17 +44,17 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         this.context = context;
     }
 
-    /** Default maximum disk usage in bytes. */
-    private static final int DEFAULT_DISK_USAGE_BYTES = 100 * 1024 * 1024;
-
     public RequestQueue getRequestQueue() {
         // lazy initialize the request queue, the queue instance will be
         // created when it is accessed for the first time
-        if (mRequestQueue == null) {
-            mRequestQueue = Volley.newRequestQueue(context, new OkHttpStack(), DEFAULT_DISK_USAGE_BYTES);
+        if (requestQueue == null) {
+            Cache cache = new DiskBasedCache(context.getCacheDir(), DEFAULT_DISK_USAGE_BYTES);
+            Network network = new BasicNetwork(new HurlStack());
+            requestQueue = new RequestQueue(cache, network);
+            requestQueue.start();
         }
 
-        return mRequestQueue;
+        return requestQueue;
     }
 
     public ImageLoader getImageLoader() {
@@ -82,8 +89,8 @@ public class VolleyHttpClient implements IAsyncHttpClient {
      * @param tag
      */
     public void cancelPendingRequests(Object tag) {
-        if (mRequestQueue != null) {
-            mRequestQueue.cancelAll(tag);
+        if (requestQueue != null) {
+            requestQueue.cancelAll(tag);
         }
     }
 
