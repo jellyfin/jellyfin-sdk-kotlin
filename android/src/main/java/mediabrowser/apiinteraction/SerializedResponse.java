@@ -1,25 +1,24 @@
 package mediabrowser.apiinteraction;
 
-import mediabrowser.apiinteraction.Response;
 import mediabrowser.model.logging.ILogger;
 import mediabrowser.model.serialization.IJsonSerializer;
 
 public class SerializedResponse<T> extends Response<String> {
 
     private IJsonSerializer jsonSerializer;
-    private Class type;
+    private Class<T> type;
     protected Response<T> innerResponse;
     private String url;
     private ILogger logger;
 
-    public SerializedResponse(Response<T> innerResponse, IJsonSerializer jsonSerializer, Class type) {
+    public SerializedResponse(Response<T> innerResponse, IJsonSerializer jsonSerializer, Class<T> type) {
         super(innerResponse);
         this.jsonSerializer = jsonSerializer;
         this.type = type;
         this.innerResponse = innerResponse;
     }
 
-    public SerializedResponse(Response<T> innerResponse, IJsonSerializer jsonSerializer, String url, ILogger logger, Class type) {
+    public SerializedResponse(Response<T> innerResponse, IJsonSerializer jsonSerializer, String url, ILogger logger, Class<T> type) {
         super(innerResponse);
         this.jsonSerializer = jsonSerializer;
         this.type = type;

@@ -1104,7 +1104,7 @@ public abstract class BaseApiClient
 		return null;
 	}
 
-	protected final <T> T DeserializeFromString(String stream, java.lang.Class type)
+	protected final <T> T DeserializeFromString(String stream, java.lang.Class<T> type)
     {
         return getJsonSerializer().DeserializeFromString(stream, type);
     }

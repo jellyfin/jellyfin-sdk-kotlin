@@ -34,26 +34,21 @@ public class GsonJsonSerializer implements IJsonSerializer {
     }
 
     @Override
-    public <T> T DeserializeFromString(String json, Class type) {
-
+    public <T> T DeserializeFromString(String json, Class<T> type) {
         Gson gsonBuilder = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
                 .create();
 
-        //Type listType = new TypeToken<T>() {}.getType();
-
-        return (T)gsonBuilder.fromJson(json, type);
+        return gsonBuilder.fromJson(json, type);
     }
 
     @Override
     public Object DeserializeFromStream(InputStream stream, Class type) {
-
         throw new UnsupportedOperationException();
     }
 
     @Override
     public String SerializeToString(Object obj) {
-
         Gson gsonBuilder = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
                 .create();
