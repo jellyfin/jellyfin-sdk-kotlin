@@ -927,8 +927,6 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("info");
         }
 
-        String ticks = info.getPositionTicks() == null ? "null" : info.getPositionTicks().toString();
-
         String url = GetApiUrl("Sessions/Playing");
 
         PostAsync(url, info, response);
@@ -969,8 +967,8 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("info");
         }
 
-        String ticks = info.getPositionTicks() == null ? "null" : info.getPositionTicks().toString();
-        Logger.Info("ReportPlaybackStopped: Item %s, Ticks: %s", info.getItem().getName(), ticks);
+        String item = info.getItem() != null ? info.getItem().getName() : info.getItemId();
+        Logger.Info("ReportPlaybackStopped: Item %s, Ticks: %d", item, info.getPositionTicks());
 
         String url = GetApiUrl("Sessions/Playing/Stopped");
 
