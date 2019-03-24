@@ -1,11 +1,5 @@
 package mediabrowser.apiinteraction.android;
 
-import mediabrowser.apiinteraction.ApiClient;
-import mediabrowser.apiinteraction.AutomaticObservable;
-import mediabrowser.apiinteraction.device.IDevice;
-import mediabrowser.apiinteraction.tasks.CancellationToken;
-import mediabrowser.apiinteraction.tasks.IProgress;
-import mediabrowser.model.devices.LocalFileInfo;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
@@ -17,46 +11,42 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Observable;
+
+import mediabrowser.apiinteraction.ApiClient;
+import mediabrowser.apiinteraction.device.IDevice;
+import mediabrowser.apiinteraction.tasks.CancellationToken;
+import mediabrowser.apiinteraction.tasks.IProgress;
+import mediabrowser.model.devices.LocalFileInfo;
 
 public class AndroidDevice implements IDevice {
-
-    private final String deviceName;
+    private final Context context;
     private final String deviceId;
+    private final String deviceName;
 
-    private Context context;
-
-    public AndroidDevice(Context context){
-
+    public AndroidDevice(Context context) {
         this.context = context;
-
         deviceId = getDeviceIdInternal(context);
         deviceName = getDeviceNameInternal();
     }
 
-    public AndroidDevice(Context context, String deviceId, String deviceName){
-
+    public AndroidDevice(Context context, String deviceId, String deviceName) {
         this.context = context;
-
         this.deviceId = deviceId;
         this.deviceName = deviceName;
     }
 
     @Override
     public String getDeviceName() {
-
         return deviceName;
     }
 
     @Override
     public String getDeviceId() {
-
         return deviceId;
     }
 
     @Override
     public ArrayList<LocalFileInfo> GetLocalPhotos() {
-
         // which image properties are we querying
         String[] projection = new String[]{
                 MediaStore.Images.Media._ID,
@@ -79,7 +69,11 @@ public class AndroidDevice implements IDevice {
                 null        // Ordering
         );
 
-        ArrayList<LocalFileInfo> files = new ArrayList<LocalFileInfo>();
+        ArrayList<LocalFileInfo> files = new ArrayList<>();
+
+        if (cur == null) {
+            return files;
+        }
 
         if (cur.moveToFirst()) {
             String bucket;
@@ -130,25 +124,28 @@ public class AndroidDevice implements IDevice {
                 files.add(file);
 
             } while (cur.moveToNext());
-
         }
+
+        cur.close();
 
         return files;
     }
 
     @Override
     public ArrayList<LocalFileInfo> GetLocalVideos() {
-
-        return new ArrayList<LocalFileInfo>();
+        return new ArrayList<>();
     }
 
     private String getDeviceIdInternal(Context context) {
-
         return Settings.Secure.getString(context.getContentResolver(),
                 Settings.Secure.ANDROID_ID);
     }
 
     private String getDeviceNameInternal() {
+        String deviceName = Settings.Global.getString(context.getContentResolver(), "device_name");
+        if (deviceName != null) {
+            return deviceName;
+        }
 
         String manufacturer = Build.MANUFACTURER;
         String model = Build.MODEL;
@@ -164,17 +161,13 @@ public class AndroidDevice implements IDevice {
                            ApiClient apiClient,
                            IProgress<Double> progress,
                            CancellationToken cancellationToken) {
-
         try {
             apiClient.UploadFile(new FileInputStream(file.getId()), file, progress, cancellationToken);
-        }
-        catch (FileNotFoundException ex){
+        } catch (FileNotFoundException ex) {
             progress.reportError(ex);
-        }
-        catch (IOException ex){
+        } catch (IOException ex) {
             progress.reportError(ex);
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             progress.reportError(ex);
         }
     }
