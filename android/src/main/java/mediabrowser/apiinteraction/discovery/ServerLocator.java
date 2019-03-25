@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.Enumeration;
 
 public class ServerLocator implements IServerLocator {
+    private final static String DISCOVERY_MESSAGE = "who is JellyfinServer?";
 
     private ILogger logger;
     private IJsonSerializer jsonSerializer;
@@ -30,7 +31,7 @@ public class ServerLocator implements IServerLocator {
             DatagramSocket c = new DatagramSocket();
             c.setBroadcast(true);
 
-            byte[] sendData = "who is EmbyServer?".getBytes();
+            byte[] sendData = DISCOVERY_MESSAGE.getBytes();
 
             int port = 7359;
 
