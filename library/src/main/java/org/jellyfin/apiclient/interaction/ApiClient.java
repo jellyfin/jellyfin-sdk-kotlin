@@ -975,7 +975,7 @@ public class ApiClient extends BaseApiClient {
     }
 
     /// <summary>
-    /// Instructs another apiclient to browse to a library item.
+    /// Instructs another client to browse to a library item.
     /// </summary>
     /// <param name="sessionId">The session id.</param>
     /// <param name="itemId">The id of the item to browse to.</param>
@@ -1273,14 +1273,14 @@ public class ApiClient extends BaseApiClient {
     /// </summary>
     /// <param name="id">The id.</param>
     /// <param name="userId">The user id.</param>
-    /// <param name="apiclient">The apiclient.</param>
+    /// <param name="client">The client.</param>
     /// <returns>Task{BaseItemDto}.</returns>
     public void GetDisplayPreferencesAsync(String id, String userId, String client, final Response<DisplayPreferences> response)
     {
         QueryStringDictionary dict = new QueryStringDictionary();
 
         dict.Add("userId", userId);
-        dict.Add("apiclient", client);
+        dict.Add("client", client);
 
         String url = GetApiUrl("DisplayPreferences/" + id, dict);
 
@@ -1305,7 +1305,7 @@ public class ApiClient extends BaseApiClient {
         QueryStringDictionary dict = new QueryStringDictionary();
 
         dict.Add("userId", userId);
-        dict.Add("apiclient", client);
+        dict.Add("client", client);
 
         String url = GetApiUrl("DisplayPreferences/" + displayPreferences.getId(), dict);
 

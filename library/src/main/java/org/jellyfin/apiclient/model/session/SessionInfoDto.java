@@ -142,9 +142,9 @@ public class SessionInfoDto
 	}
 
 	/** 
-	 Gets or sets the type of the apiclient.
+	 Gets or sets the type of the client.
 	 
-	 <value>The type of the apiclient.</value>
+	 <value>The type of the client.</value>
 	*/
 	private String Client;
 	public final String getClient()

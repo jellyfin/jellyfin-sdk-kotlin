@@ -10,7 +10,7 @@ import org.jellyfin.apiclient.model.sync.*;
 
 /** 
  This is strictly used as a data transfer object from the api layer.
- This holds information about a BaseItem in a format that is convenient for the apiclient.
+ This holds information about a BaseItem in a format that is convenient for the client.
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, Type = {Type}")] public class BaseItemDto : IHasProviderIds, IItemDto, IHasServerId, IHasSyncInfo

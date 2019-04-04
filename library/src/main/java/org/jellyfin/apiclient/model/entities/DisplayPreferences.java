@@ -205,7 +205,7 @@ public class DisplayPreferences
 		ShowSidebar = value;
 	}
 	/** 
-	 Gets or sets the apiclient
+	 Gets or sets the client
 	*/
 	private String Client;
 	public final String getClient()
