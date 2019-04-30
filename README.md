@@ -14,8 +14,8 @@ logger = new NullLogger();
 // The underlying http stack. Developers can inject their own if desired
 IAsyncHttpClient httpClient = new VolleyHttpClient(logger, getApplicationContext());
 
-// Android developers should use GsonJsonSerializer
-IJsonSerializer jsonSerializer = new BoonJsonSerializer();
+// The JSON serializer. Developers can inject their own if desired.
+IJsonSerializer jsonSerializer = new GsonJsonSerializer();
 
 // Android developers should use AndroidDevice
 IDevice device = new Device("deviceId", "deviceName");
@@ -48,8 +48,8 @@ logger = new NullLogger();
 // The underlying http stack. Developers can inject their own if desired
 IAsyncHttpClient httpClient = new VolleyHttpClient(logger, getApplicationContext());
 
-// Android developers should use GsonJsonSerializer
-IJsonSerializer jsonSerializer = new BoonJsonSerializer();
+// The JSON serializer. Developers can inject their own if desired.
+IJsonSerializer jsonSerializer = new GsonJsonSerializer();
 
 // Services should just authenticate using their api key
 ApiClient apiClient = new ApiClient(httpClient, jsonSerializer, logger, "http://localhost:8096", "apikey", new ApiEventListener());
@@ -88,8 +88,8 @@ ICredentialProvider credentialProvider = new CredentialProvider();
 
 INetworkConnection networkConnection = new NetworkConnection(logger);
 
-// Android developers should use GsonJsonSerializer
-IJsonSerializer jsonSerializer = new BoonJsonSerializer();
+// The JSON serializer. Developers can inject their own if desired.
+IJsonSerializer jsonSerializer = new GsonJsonSerializer();
 
 // Developers are encouraged to create their own ILogger implementation
 ILogger logger = new NullLogger();
