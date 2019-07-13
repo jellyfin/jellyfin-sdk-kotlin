@@ -1,7 +1,8 @@
 package org.jellyfin.apiclient.interaction.images;
 
 import android.graphics.Bitmap;
-import android.support.v4.util.LruCache;
+import android.util.LruCache;
+
 import com.android.volley.toolbox.ImageLoader;
 
 public class LruBitmapCache extends LruCache<String, Bitmap> implements ImageLoader.ImageCache {

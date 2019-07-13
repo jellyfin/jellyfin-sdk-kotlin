@@ -1,7 +1,5 @@
 package org.jellyfin.apiclient.interaction;
 
-import org.jellyfin.apiclient.interaction.cryptography.Md5;
-import org.jellyfin.apiclient.interaction.cryptography.Sha1;
 import org.jellyfin.apiclient.interaction.device.IDevice;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
@@ -49,7 +47,6 @@ import org.jellyfin.apiclient.model.users.AuthenticationResult;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Observable;
@@ -1193,9 +1190,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="sha1Hash">The sha1 hash.</param>
     /// <returns>Task.</returns>
     /// <exception cref="System.IllegalArgumentException">userId</exception>
-    public void AuthenticateUserAsync(String username, String password, final Response<AuthenticationResult> response)
-            throws NoSuchAlgorithmException, UnsupportedEncodingException
-    {
+    public void AuthenticateUserAsync(String username, String password, final Response<AuthenticationResult> response) {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(username))
         {
             throw new IllegalArgumentException("username");
@@ -1207,8 +1202,6 @@ public class ApiClient extends BaseApiClient {
 
         dict.Add("username", username);
         dict.Add("pw", password);
-        dict.Add("password", Sha1.getHash(password));
-        dict.Add("passwordMd5", Md5.getHash(password));
 
         url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(response){
