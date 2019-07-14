@@ -5,8 +5,6 @@ import org.jellyfin.apiclient.interaction.ApiEventListener;
 import org.jellyfin.apiclient.interaction.EmptyResponse;
 import org.jellyfin.apiclient.model.apiclient.GeneralCommandEventArgs;
 import org.jellyfin.apiclient.model.entities.LibraryUpdateInfo;
-import org.jellyfin.apiclient.model.extensions.IntHelper;
-import org.jellyfin.apiclient.model.extensions.LongHelper;
 import org.jellyfin.apiclient.model.extensions.StringHelper;
 import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.model.net.WebSocketMessage;
@@ -290,16 +288,10 @@ public class ApiWebSocket implements ISocketListener {
                 String text = args.getCommand().getArguments().get("Text");
                 String timeoutMs = args.getCommand().getArguments().get("TimeoutMs");
 
-                long expected = 0;
-                tangible.RefObject<Long> tempRef_expected = new tangible.RefObject<Long>(expected);
-                LongHelper.TryParseCultureInvariant(timeoutMs, tempRef_expected);
-                expected = tempRef_expected.argValue;
-
                 MessageCommand command = new MessageCommand();
-
                 command.setHeader(header);
                 command.setText(text);
-                command.setTimeoutMs(expected);
+                command.setTimeoutMs(Long.parseLong(timeoutMs));
 
                 apiEventListener.onMessageCommand(apiClient, command);
                 return;
@@ -307,46 +299,19 @@ public class ApiWebSocket implements ISocketListener {
             if (args.getKnownCommandType() == GeneralCommandType.SetVolume)
             {
                 String volume = args.getCommand().getArguments().get("Volume");
-
-                int expected = 0;
-                tangible.RefObject<Integer> tempRef_expected = new tangible.RefObject<Integer>(expected);
-                boolean tempVar = IntHelper.TryParseCultureInvariant(volume, tempRef_expected);
-                expected = tempRef_expected.argValue;
-
-                if (tempVar){
-                    apiEventListener.onSetVolumeCommand(apiClient, expected);
-                }
-
+                apiEventListener.onSetVolumeCommand(apiClient, Integer.parseInt(volume));
                 return;
             }
             if (args.getKnownCommandType() == GeneralCommandType.SetAudioStreamIndex)
             {
                 String index = args.getCommand().getArguments().get("Index");
-
-                int expected = 0;
-                tangible.RefObject<Integer> tempRef_expected = new tangible.RefObject<Integer>(expected);
-                boolean tempVar = IntHelper.TryParseCultureInvariant(index, tempRef_expected);
-                expected = tempRef_expected.argValue;
-
-                if (tempVar){
-                    apiEventListener.onSetAudioStreamIndexCommand(apiClient, expected);
-                }
-
+                apiEventListener.onSetAudioStreamIndexCommand(apiClient, Integer.parseInt(index));
                 return;
             }
             if (args.getKnownCommandType() == GeneralCommandType.SetSubtitleStreamIndex)
             {
                 String index = args.getCommand().getArguments().get("Index");
-
-                int expected = 0;
-                tangible.RefObject<Integer> tempRef_expected = new tangible.RefObject<Integer>(expected);
-                boolean tempVar = IntHelper.TryParseCultureInvariant(index, tempRef_expected);
-                expected = tempRef_expected.argValue;
-
-                if (tempVar){
-                    apiEventListener.onSetSubtitleStreamIndexCommand(apiClient, expected);
-                }
-
+                apiEventListener.onSetSubtitleStreamIndexCommand(apiClient, Integer.parseInt(index));
                 return;
             }
             if (args.getKnownCommandType() == GeneralCommandType.SendString)
