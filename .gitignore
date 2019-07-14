@@ -2,7 +2,7 @@
 ## Intelli J
 #################
 
-gradle/
+gradle-wrapper.jar
 .gradle/
 *.iml
 gradlew
