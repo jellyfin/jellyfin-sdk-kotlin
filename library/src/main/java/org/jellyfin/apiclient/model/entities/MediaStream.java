@@ -490,7 +490,7 @@ public class MediaStream
 
 		// sub = external .sub file
 
-		return !codec.contains("pgs") && !codec.contains("dvd") && !codec.contains("dvdsub") && !codec.equalsIgnoreCase("sub");
+		return !codec.contains("pgs") && !codec.contains("dvd") && !codec.contains("dvbsub") && !codec.equalsIgnoreCase("sub");
 	}
 
 	public final boolean SupportsSubtitleConversionTo(String codec)
