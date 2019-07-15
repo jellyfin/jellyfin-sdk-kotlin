@@ -12,7 +12,6 @@ import org.jellyfin.apiclient.model.apiclient.*;
 import org.jellyfin.apiclient.model.connect.*;
 import org.jellyfin.apiclient.model.dto.IHasServerId;
 import org.jellyfin.apiclient.model.dto.UserDto;
-import org.jellyfin.apiclient.model.extensions.StringHelper;
 import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.model.registration.RegistrationInfo;
 import org.jellyfin.apiclient.model.serialization.IJsonSerializer;
@@ -93,7 +92,7 @@ public class ConnectionManager implements IConnectionManager {
         final ServerCredentials credentials = credentialProvider.GetCredentials();
 
         for (ServerInfo server : credentials.getServers()){
-            if (StringHelper.EqualsIgnoreCase(server.getId(), serverId)){
+            if (server.getId().equalsIgnoreCase(serverId)){
                 return  server;
             }
         }
@@ -241,11 +240,11 @@ public class ConnectionManager implements IConnectionManager {
 
         else if (mode == ConnectionMode.Manual){
 
-            if (StringHelper.EqualsIgnoreCase(address, server.getLocalAddress())){
+            if (address.equalsIgnoreCase(server.getLocalAddress())){
                 logger.Debug("Skipping manual connection test because the address is the same as the local address");
                 skipTest = true;
             }
-            else if (StringHelper.EqualsIgnoreCase(address, server.getRemoteAddress())){
+            else if (address.equalsIgnoreCase(server.getRemoteAddress())){
                 logger.Debug("Skipping manual connection test because the address is the same as the remote address");
                 skipTest = true;
             }
@@ -544,7 +543,7 @@ public class ConnectionManager implements IConnectionManager {
 
     void EnsureConnectUser(ServerCredentials credentials, final EmptyResponse response){
 
-        if (connectUser != null && StringHelper.EqualsIgnoreCase(connectUser.getId(), credentials.getConnectUserId()))
+        if (connectUser != null && connectUser.getId().equalsIgnoreCase(credentials.getConnectUserId()))
         {
             response.onResponse();
             return;
@@ -600,7 +599,7 @@ public class ConnectionManager implements IConnectionManager {
 
             for(ServerInfo connectServer : connectServers){
 
-                if (StringHelper.EqualsIgnoreCase(server.getId(), connectServer.getId())){
+                if (server.getId().equalsIgnoreCase(connectServer.getId())){
                     found = true;
                     break;
                 }
@@ -690,7 +689,7 @@ public class ConnectionManager implements IConnectionManager {
             throw new IllegalArgumentException("address");
         }
 
-        if (StringHelper.IndexOfIgnoreCase(address, "http") == -1)
+        if (!address.contains("http"))
         {
             address = "http://" + address;
         }
@@ -766,7 +765,7 @@ public class ConnectionManager implements IConnectionManager {
         ServerInfo server = null;
         for(ServerInfo current : existing){
 
-            if (StringHelper.EqualsIgnoreCase(current.getId(), id)){
+            if (current.getId().equalsIgnoreCase(id)){
                 server = current;
                 break;
             }
@@ -810,7 +809,7 @@ public class ConnectionManager implements IConnectionManager {
 
         for(ServerInfo current : existing){
 
-            if (!StringHelper.EqualsIgnoreCase(current.getId(), id)){
+            if (!current.getId().equalsIgnoreCase(id)){
                 newList.add(current);
             }
         }

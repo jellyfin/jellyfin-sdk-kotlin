@@ -21,7 +21,6 @@ import org.jellyfin.apiclient.model.devices.LocalFileInfo;
 import org.jellyfin.apiclient.model.dto.*;
 import org.jellyfin.apiclient.model.entities.DisplayPreferences;
 import org.jellyfin.apiclient.model.entities.ParentalRating;
-import org.jellyfin.apiclient.model.extensions.StringHelper;
 import org.jellyfin.apiclient.model.livetv.*;
 import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.model.mediainfo.*;
@@ -121,7 +120,7 @@ public class ApiClient extends BaseApiClient {
 
             String errorCode = httpError.getHeaders().get("X-Application-Error-Code");
 
-            if (StringHelper.EqualsIgnoreCase(errorCode, "ParentalControl")) {
+            if (errorCode.equalsIgnoreCase("ParentalControl")) {
                 reason = RemoteLogoutReason.ParentalControlRestriction;
             }
         }
@@ -1040,7 +1039,7 @@ public class ApiClient extends BaseApiClient {
 
         if (command.getTimeoutMs() != null)
         {
-            cmd.getArguments().put("Timeout", StringHelper.ToStringCultureInvariant(command.getTimeoutMs()));
+            cmd.getArguments().put("Timeout", Long.toString(command.getTimeoutMs()));
         }
 
         SendCommandAsync(sessionId, cmd, response);
@@ -1909,7 +1908,7 @@ public class ApiClient extends BaseApiClient {
 
         cmd.setName("SetAudioStreamIndex");
 
-        cmd.getArguments().put("Index", StringHelper.ToStringCultureInvariant(index));
+        cmd.getArguments().put("Index", Integer.toString(index));
 
         SendCommandAsync(sessionId, cmd, response);
     }
@@ -1922,7 +1921,7 @@ public class ApiClient extends BaseApiClient {
 
         int indexValue = index == null ? -1 : index.intValue();
 
-        cmd.getArguments().put("Index", StringHelper.ToStringCultureInvariant(indexValue));
+        cmd.getArguments().put("Index", Integer.toString(indexValue));
 
         SendCommandAsync(sessionId, cmd, response);
     }
@@ -1933,7 +1932,7 @@ public class ApiClient extends BaseApiClient {
 
         cmd.setName("SetVolume");
 
-        cmd.getArguments().put("Volume", StringHelper.ToStringCultureInvariant(volume));
+        cmd.getArguments().put("Volume", Integer.toString(volume));
 
         SendCommandAsync(sessionId, cmd, response);
     }

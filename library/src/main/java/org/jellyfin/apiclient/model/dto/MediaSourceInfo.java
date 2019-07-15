@@ -380,14 +380,11 @@ public class MediaSourceInfo
 		return null;
 	}
 
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public MediaStream VideoStream
 	public final MediaStream getVideoStream()
 	{
 		for (MediaStream i : getMediaStreams())
 		{
-			String tempVar = i.getCodec();
-			if (i.getType() == MediaStreamType.Video && StringHelper.IndexOfIgnoreCase((tempVar != null) ? tempVar : "", "jpeg") == -1)
+			if (i.getType() == MediaStreamType.Video && !i.getCodec().contains("jpeg"))
 			{
 				return i;
 			}

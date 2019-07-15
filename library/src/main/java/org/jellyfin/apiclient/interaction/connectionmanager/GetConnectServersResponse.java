@@ -7,7 +7,6 @@ import org.jellyfin.apiclient.model.apiclient.ServerCredentials;
 import org.jellyfin.apiclient.model.apiclient.ServerInfo;
 import org.jellyfin.apiclient.model.connect.ConnectUserServer;
 import org.jellyfin.apiclient.model.connect.UserLinkType;
-import org.jellyfin.apiclient.model.extensions.StringHelper;
 import org.jellyfin.apiclient.model.logging.ILogger;
 
 import java.util.ArrayList;
@@ -82,7 +81,7 @@ public class GetConnectServersResponse extends EmptyResponse {
             server.setRemoteAddress(userServer.getUrl());
             server.setConnectServerId(userServer.getId());
 
-            if (StringHelper.EqualsIgnoreCase(userServer.getUserType(), "guest"))
+            if (userServer.getUserType().equalsIgnoreCase("guest"))
             {
                 server.setUserLinkType(UserLinkType.Guest);
             }

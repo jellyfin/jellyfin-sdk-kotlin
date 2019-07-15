@@ -490,7 +490,7 @@ public class MediaStream
 
 		// sub = external .sub file
 
-		return StringHelper.IndexOfIgnoreCase(codec, "pgs") == -1 && StringHelper.IndexOfIgnoreCase(codec, "dvd") == -1 && StringHelper.IndexOfIgnoreCase(codec, "dvbsub") == -1 && !StringHelper.EqualsIgnoreCase(codec, "sub");
+		return !codec.contains("pgs") && !codec.contains("dvd") && !codec.contains("dvdsub") && !codec.equalsIgnoreCase("sub");
 	}
 
 	public final boolean SupportsSubtitleConversionTo(String codec)
@@ -501,21 +501,21 @@ public class MediaStream
 		}
 
 		// Can't convert from this 
-		if (StringHelper.EqualsIgnoreCase(getCodec(), "ass"))
+		if (getCodec().equalsIgnoreCase("ass"))
 		{
 			return false;
 		}
-		if (StringHelper.EqualsIgnoreCase(getCodec(), "ssa"))
+		if (getCodec().equalsIgnoreCase("ssa"))
 		{
 			return false;
 		}
 
 		// Can't convert to this 
-		if (StringHelper.EqualsIgnoreCase(codec, "ass"))
+		if (codec.equalsIgnoreCase("ass"))
 		{
 			return false;
 		}
-		if (StringHelper.EqualsIgnoreCase(codec, "ssa"))
+		if (codec.equalsIgnoreCase("ssa"))
 		{
 			return false;
 		}

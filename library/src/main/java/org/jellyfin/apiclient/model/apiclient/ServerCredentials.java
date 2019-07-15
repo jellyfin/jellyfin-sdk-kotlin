@@ -122,7 +122,7 @@ public class ServerCredentials
 
 		for (ServerInfo server : servers)
 		{
-			if (StringHelper.EqualsIgnoreCase(id, server.getId()))
+			if (id.equalsIgnoreCase(server.getId()))
 			{
 				return index;
 			}
@@ -137,7 +137,7 @@ public class ServerCredentials
 	{
 		for (ServerInfo server : getServers())
 		{
-			if (StringHelper.EqualsIgnoreCase(id, server.getId()))
+			if (id.equalsIgnoreCase(server.getId()))
 			{
 				return server;
 			}

@@ -473,8 +473,7 @@ public class DeviceProfile
 
 	public final TranscodingProfile GetAudioTranscodingProfile(String container, String audioCodec)
 	{
-		container = StringHelper.TrimStart((container != null) ? container : "", '.');
-
+		container = (container != null) ? container.replace(".", "") : "";
 		for (TranscodingProfile i : getTranscodingProfiles())
 		{
 			if (i.getType() != DlnaProfileType.Audio)
@@ -482,7 +481,7 @@ public class DeviceProfile
 				continue;
 			}
 
-			if (!StringHelper.EqualsIgnoreCase(container, i.getContainer()))
+			if (!container.equalsIgnoreCase(i.getContainer()))
 			{
 				continue;
 			}
@@ -499,8 +498,7 @@ public class DeviceProfile
 
 	public final TranscodingProfile GetVideoTranscodingProfile(String container, String audioCodec, String videoCodec)
 	{
-		container = StringHelper.TrimStart((container != null) ? container : "", '.');
-
+		container = (container != null) ? container.replace(".", "") : "";
 		for (TranscodingProfile i : getTranscodingProfiles())
 		{
 			if (i.getType() != DlnaProfileType.Video)
@@ -508,7 +506,7 @@ public class DeviceProfile
 				continue;
 			}
 
-			if (!StringHelper.EqualsIgnoreCase(container, i.getContainer()))
+			if (!container.equalsIgnoreCase(i.getContainer()))
 			{
 				continue;
 			}
@@ -519,7 +517,7 @@ public class DeviceProfile
 			}
 
 			String tempVar = i.getVideoCodec();
-			if (!StringHelper.EqualsIgnoreCase(videoCodec, (tempVar != null) ? tempVar : ""))
+			if (!videoCodec.equalsIgnoreCase((tempVar != null) ? tempVar : ""))
 			{
 				continue;
 			}
@@ -531,8 +529,7 @@ public class DeviceProfile
 
 	public final ResponseProfile GetAudioMediaProfile(String container, String audioCodec, Integer audioChannels, Integer audioBitrate)
 	{
-		container = StringHelper.TrimStart((container != null) ? container : "", '.');
-
+		container = (container != null) ? container.replace(".", "") : "";
 		for (ResponseProfile i : getResponseProfiles())
 		{
 			if (i.getType() != DlnaProfileType.Audio)
@@ -576,8 +573,7 @@ public class DeviceProfile
 
 	public final ResponseProfile GetImageMediaProfile(String container, Integer width, Integer height)
 	{
-		container = StringHelper.TrimStart((container != null) ? container : "", '.');
-
+		container = (container != null) ? container.replace(".", "") : "";
 		for (ResponseProfile i : getResponseProfiles())
 		{
 			if (i.getType() != DlnaProfileType.Photo)
@@ -615,8 +611,7 @@ public class DeviceProfile
 
 	public final ResponseProfile GetVideoMediaProfile(String container, String audioCodec, String videoCodec, Integer width, Integer height, Integer bitDepth, Integer videoBitrate, String videoProfile, Double videoLevel, Float videoFramerate, Integer packetLength, TransportStreamTimestamp timestamp, Boolean isAnamorphic, Integer refFrames, Integer numVideoStreams, Integer numAudioStreams, String videoCodecTag, Boolean isAvc)
 	{
-		container = StringHelper.TrimStart((container != null) ? container : "", '.');
-
+		container = (container != null) ? container.replace(".", "") : "";
 		for (ResponseProfile i : getResponseProfiles())
 		{
 			if (i.getType() != DlnaProfileType.Video)
