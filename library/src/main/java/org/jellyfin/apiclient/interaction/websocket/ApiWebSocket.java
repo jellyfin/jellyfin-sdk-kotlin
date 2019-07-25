@@ -253,7 +253,7 @@ public class ApiWebSocket implements ISocketListener {
         }
     }
 
-    private void OnGeneralCommand(String json)
+    private void OnGeneralCommand(String json) throws NumberFormatException
     {
         GeneralCommandEventArgs args = new GeneralCommandEventArgs();
 

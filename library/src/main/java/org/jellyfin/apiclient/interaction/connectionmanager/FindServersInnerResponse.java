@@ -49,7 +49,7 @@ public class FindServersInnerResponse extends Response<ArrayList<ServerDiscovery
         response.onResponse(servers);
     }
 
-    private String ConvertEndpointAddressToManualAddress(ServerDiscoveryInfo info)
+    private String ConvertEndpointAddressToManualAddress(ServerDiscoveryInfo info) throws NumberFormatException
     {
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getAddress()) && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getEndpointAddress()))
         {

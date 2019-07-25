@@ -22,6 +22,8 @@ import org.jellyfin.apiclient.model.users.AuthenticationResult;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ConnectionManager implements IConnectionManager {
 
@@ -689,7 +691,9 @@ public class ConnectionManager implements IConnectionManager {
             throw new IllegalArgumentException("address");
         }
 
-        if (!address.contains("http"))
+        Pattern http = Pattern.compile(".*http.*", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = http.matcher(address);
+        if (!matcher.matches())
         {
             address = "http://" + address;
         }

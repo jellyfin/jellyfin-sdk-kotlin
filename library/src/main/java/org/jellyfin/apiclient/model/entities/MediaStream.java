@@ -3,6 +3,9 @@ package org.jellyfin.apiclient.model.entities;
 import org.jellyfin.apiclient.model.dlna.*;
 import org.jellyfin.apiclient.model.extensions.*;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /** 
  Class MediaStream
 */
@@ -488,9 +491,10 @@ public class MediaStream
 	{
 		String codec = (format != null) ? format : "";
 
-		// sub = external .sub file
-
-		return !codec.contains("pgs") && !codec.contains("dvd") && !codec.contains("dvbsub") && !codec.equalsIgnoreCase("sub");
+		// sub indicates an external .sub file
+		Pattern compatible = Pattern.compile(".*[pgs|dvd|dvbsub].*]", Pattern.CASE_INSENSITIVE);
+		Matcher matcher = compatible.matcher(codec);
+		return !matcher.matches() && !codec.equalsIgnoreCase("sub");
 	}
 
 	public final boolean SupportsSubtitleConversionTo(String codec)

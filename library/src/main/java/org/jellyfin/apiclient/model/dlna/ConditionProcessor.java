@@ -87,7 +87,7 @@ public class ConditionProcessor
 		}
 	}
 
-	private boolean IsConditionSatisfied(ProfileCondition condition, Integer currentValue)
+	private boolean IsConditionSatisfied(ProfileCondition condition, Integer currentValue) throws NumberFormatException
 	{
 		if (currentValue == null)
 		{
@@ -153,7 +153,7 @@ public class ConditionProcessor
 		}
 	}
 
-	private boolean IsConditionSatisfied(ProfileCondition condition, Float currentValue)
+	private boolean IsConditionSatisfied(ProfileCondition condition, Float currentValue) throws NumberFormatException
 	{
 		if (currentValue == null)
 		{
@@ -177,7 +177,7 @@ public class ConditionProcessor
 		}
 	}
 
-	private boolean IsConditionSatisfied(ProfileCondition condition, Double currentValue)
+	private boolean IsConditionSatisfied(ProfileCondition condition, Double currentValue) throws NumberFormatException
 	{
 		if (currentValue == null)
 		{

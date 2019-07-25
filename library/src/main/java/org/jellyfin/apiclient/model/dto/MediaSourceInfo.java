@@ -4,6 +4,9 @@ import org.jellyfin.apiclient.model.entities.*;
 import org.jellyfin.apiclient.model.extensions.*;
 import org.jellyfin.apiclient.model.mediainfo.*;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MediaSourceInfo
 {
 	private MediaProtocol Protocol = MediaProtocol.values()[0];
@@ -382,9 +385,11 @@ public class MediaSourceInfo
 
 	public final MediaStream getVideoStream()
 	{
+		Pattern jpeg = Pattern.compile(".*jpeg.*", Pattern.CASE_INSENSITIVE);
 		for (MediaStream i : getMediaStreams())
 		{
-			if (i.getType() == MediaStreamType.Video && !i.getCodec().contains("jpeg"))
+			Matcher matcher = jpeg.matcher(i.getCodec());
+			if (i.getType() == MediaStreamType.Video && !matcher.matches())
 			{
 				return i;
 			}
