@@ -218,7 +218,7 @@ public abstract class BaseApiClient
 	*/
 	public final String getApiUrl()
 	{
-		return getServerAddress() + "/emby";
+		return getServerAddress();
 	}
 
 	/** 
