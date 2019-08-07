@@ -5,7 +5,6 @@ import org.jellyfin.apiclient.interaction.images.ImageCacheManager;
 import org.jellyfin.apiclient.interaction.volley.GetBitmapResponse;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
-import org.jellyfin.apiclient.model.extensions.StringHelper;
 import org.jellyfin.apiclient.model.logging.ILogger;
 import android.content.Context;
 
@@ -97,10 +96,10 @@ public class VolleyHttpClient implements IAsyncHttpClient {
     {
         int method = Request.Method.GET;
 
-        if (StringHelper.EqualsIgnoreCase(request.getMethod(), "POST")){
+        if (request.getMethod().equalsIgnoreCase("POST")){
             method = Request.Method.POST;
         }
-        else if (StringHelper.EqualsIgnoreCase(request.getMethod(), "DELETE")){
+        else if (request.getMethod().equalsIgnoreCase("DELETE")){
             method = Request.Method.DELETE;
         }
 

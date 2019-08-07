@@ -3,7 +3,6 @@ package org.jellyfin.apiclient.interaction.connectionmanager;
 import org.jellyfin.apiclient.interaction.Response;
 import org.jellyfin.apiclient.model.apiclient.ServerDiscoveryInfo;
 import org.jellyfin.apiclient.model.apiclient.ServerInfo;
-import org.jellyfin.apiclient.model.extensions.IntHelper;
 
 import java.util.ArrayList;
 
@@ -50,7 +49,7 @@ public class FindServersInnerResponse extends Response<ArrayList<ServerDiscovery
         response.onResponse(servers);
     }
 
-    private String ConvertEndpointAddressToManualAddress(ServerDiscoveryInfo info)
+    private String ConvertEndpointAddressToManualAddress(ServerDiscoveryInfo info) throws NumberFormatException
     {
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getAddress()) && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getEndpointAddress()))
         {
@@ -60,14 +59,8 @@ public class FindServersInnerResponse extends Response<ArrayList<ServerDiscovery
             String[] parts = info.getAddress().split(":");
             if (parts.length > 1)
             {
-                String portString = parts[parts.length-1];
-
-                int port = 0;
-                tangible.RefObject<Integer> tempRef_expected = new tangible.RefObject<Integer>(port);
-                if (IntHelper.TryParseCultureInvariant(portString, tempRef_expected))
-                {
-                    address += ":" + portString;
-                }
+                String portString = parts[parts.length - 1];
+                address += ":" + Integer.parseInt(portString);
             }
 
             return connectionManager.NormalizeAddress(address);

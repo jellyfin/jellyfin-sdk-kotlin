@@ -87,7 +87,7 @@ public class ConditionProcessor
 		}
 	}
 
-	private boolean IsConditionSatisfied(ProfileCondition condition, Integer currentValue)
+	private boolean IsConditionSatisfied(ProfileCondition condition, Integer currentValue) throws NumberFormatException
 	{
 		if (currentValue == null)
 		{
@@ -95,28 +95,20 @@ public class ConditionProcessor
 			return !condition.getIsRequired();
 		}
 
-		int expected = 0;
-		tangible.RefObject<Integer> tempRef_expected = new tangible.RefObject<Integer>(expected);
-		boolean tempVar = IntHelper.TryParseCultureInvariant(condition.getValue(), tempRef_expected);
-			expected = tempRef_expected.argValue;
-		if (tempVar)
+		int expected = Integer.parseInt(condition.getValue());
+		switch (condition.getCondition())
 		{
-			switch (condition.getCondition())
-			{
-				case Equals:
-					return currentValue.equals(expected);
-				case GreaterThanEqual:
-					return currentValue >= expected;
-				case LessThanEqual:
-					return currentValue <= expected;
-				case NotEquals:
-					return !currentValue.equals(expected);
-				default:
-					throw new IllegalStateException("Unexpected ProfileConditionType");
-			}
+			case Equals:
+				return currentValue.equals(expected);
+			case GreaterThanEqual:
+				return currentValue >= expected;
+			case LessThanEqual:
+				return currentValue <= expected;
+			case NotEquals:
+				return !currentValue.equals(expected);
+			default:
+				throw new IllegalStateException("Unexpected ProfileConditionType");
 		}
-
-		return false;
 	}
 
 	private boolean IsConditionSatisfied(ProfileCondition condition, String currentValue)
@@ -128,17 +120,14 @@ public class ConditionProcessor
 		}
 
 		String expected = condition.getValue();
-
 		switch (condition.getCondition())
 		{
 			case EqualsAny:
-			{
 				return ListHelper.ContainsIgnoreCase(expected.split("[|]", -1), currentValue);
-			}
 			case Equals:
-				return StringHelper.EqualsIgnoreCase(currentValue, expected);
+				return currentValue.equalsIgnoreCase(expected);
 			case NotEquals:
-				return !StringHelper.EqualsIgnoreCase(currentValue, expected);
+				return !currentValue.equalsIgnoreCase(expected);
 			default:
 				throw new IllegalStateException("Unexpected ProfileConditionType");
 		}
@@ -152,27 +141,19 @@ public class ConditionProcessor
 			return !condition.getIsRequired();
 		}
 
-		boolean expected = false;
-		tangible.RefObject<Boolean> tempRef_expected = new tangible.RefObject<Boolean>(expected);
-		boolean tempVar = BoolHelper.TryParseCultureInvariant(condition.getValue(), tempRef_expected);
-			expected = tempRef_expected.argValue;
-		if (tempVar)
+		boolean expected = Boolean.parseBoolean(condition.getValue());
+		switch (condition.getCondition())
 		{
-			switch (condition.getCondition())
-			{
-				case Equals:
-					return currentValue == expected;
-				case NotEquals:
-					return currentValue != expected;
-				default:
-					throw new IllegalStateException("Unexpected ProfileConditionType");
-			}
+			case Equals:
+				return currentValue == expected;
+			case NotEquals:
+				return currentValue != expected;
+			default:
+				throw new IllegalStateException("Unexpected ProfileConditionType");
 		}
-
-		return false;
 	}
 
-	private boolean IsConditionSatisfied(ProfileCondition condition, Float currentValue)
+	private boolean IsConditionSatisfied(ProfileCondition condition, Float currentValue) throws NumberFormatException
 	{
 		if (currentValue == null)
 		{
@@ -180,31 +161,23 @@ public class ConditionProcessor
 			return !condition.getIsRequired();
 		}
 
-		float expected = 0F;
-		tangible.RefObject<Float> tempRef_expected = new tangible.RefObject<Float>(expected);
-		boolean tempVar = FloatHelper.TryParseCultureInvariant(condition.getValue(), tempRef_expected);
-			expected = tempRef_expected.argValue;
-		if (tempVar)
+		float expected = Float.parseFloat(condition.getValue());
+		switch (condition.getCondition())
 		{
-			switch (condition.getCondition())
-			{
-				case Equals:
-					return currentValue.equals(expected);
-				case GreaterThanEqual:
-					return currentValue >= expected;
-				case LessThanEqual:
-					return currentValue <= expected;
-				case NotEquals:
-					return !currentValue.equals(expected);
-				default:
-					throw new IllegalStateException("Unexpected ProfileConditionType");
-			}
+			case Equals:
+				return currentValue.equals(expected);
+			case GreaterThanEqual:
+				return currentValue >= expected;
+			case LessThanEqual:
+				return currentValue <= expected;
+			case NotEquals:
+				return !currentValue.equals(expected);
+			default:
+				throw new IllegalStateException("Unexpected ProfileConditionType");
 		}
-
-		return false;
 	}
 
-	private boolean IsConditionSatisfied(ProfileCondition condition, Double currentValue)
+	private boolean IsConditionSatisfied(ProfileCondition condition, Double currentValue) throws NumberFormatException
 	{
 		if (currentValue == null)
 		{
@@ -212,28 +185,20 @@ public class ConditionProcessor
 			return !condition.getIsRequired();
 		}
 
-		double expected = 0;
-		tangible.RefObject<Double> tempRef_expected = new tangible.RefObject<Double>(expected);
-		boolean tempVar = DoubleHelper.TryParseCultureInvariant(condition.getValue(), tempRef_expected);
-			expected = tempRef_expected.argValue;
-		if (tempVar)
+		double expected = Double.parseDouble(condition.getValue());
+		switch (condition.getCondition())
 		{
-			switch (condition.getCondition())
-			{
-				case Equals:
-					return currentValue.equals(expected);
-				case GreaterThanEqual:
-					return currentValue >= expected;
-				case LessThanEqual:
-					return currentValue <= expected;
-				case NotEquals:
-					return !currentValue.equals(expected);
-				default:
-					throw new IllegalStateException("Unexpected ProfileConditionType");
-			}
+			case Equals:
+				return currentValue.equals(expected);
+			case GreaterThanEqual:
+				return currentValue >= expected;
+			case LessThanEqual:
+				return currentValue <= expected;
+			case NotEquals:
+				return !currentValue.equals(expected);
+			default:
+				throw new IllegalStateException("Unexpected ProfileConditionType");
 		}
-
-		return false;
 	}
 
 	private boolean IsConditionSatisfied(ProfileCondition condition, TransportStreamTimestamp timestamp)
@@ -244,10 +209,7 @@ public class ConditionProcessor
 			return !condition.getIsRequired();
 		}
 
-//C# TO JAVA CONVERTER WARNING: Java does not have an 'ignoreCase' parameter for the static 'valueOf' method of enum types:
-//ORIGINAL LINE: TransportStreamTimestamp expected = (TransportStreamTimestamp)Enum.Parse(typeof(TransportStreamTimestamp), condition.Value, true);
 		TransportStreamTimestamp expected = TransportStreamTimestamp.valueOf(condition.getValue());
-
 		switch (condition.getCondition())
 		{
 			case Equals:

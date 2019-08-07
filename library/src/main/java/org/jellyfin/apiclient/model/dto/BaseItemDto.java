@@ -1693,12 +1693,12 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	*/
 	public final boolean IsType(String type)
 	{
-		return StringHelper.EqualsIgnoreCase(getType(), type);
+		return getType().equalsIgnoreCase(type);
 	}
 
-	/** 
+	/**
 	 Gets or sets the image tags.
-	 
+
 	 <value>The image tags.</value>
 	*/
 	private java.util.HashMap<ImageType, String> ImageTags;
@@ -1711,9 +1711,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		ImageTags = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the backdrop image tags.
-	 
+
 	 <value>The backdrop image tags.</value>
 	*/
 	private java.util.ArrayList<String> BackdropImageTags;
@@ -1726,9 +1726,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		BackdropImageTags = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the screenshot image tags.
-	 
+
 	 <value>The screenshot image tags.</value>
 	*/
 	private java.util.ArrayList<String> ScreenshotImageTags;
@@ -1741,9 +1741,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		ScreenshotImageTags = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the parent logo image tag.
-	 
+
 	 <value>The parent logo image tag.</value>
 	*/
 	private String ParentLogoImageTag;
@@ -1756,9 +1756,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		ParentLogoImageTag = value;
 	}
 
-	/** 
+	/**
 	 If the item does not have a art, this will hold the Id of the Parent that has one.
-	 
+
 	 <value>The parent art item id.</value>
 	*/
 	private String ParentArtItemId;
@@ -1771,9 +1771,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		ParentArtItemId = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the parent art image tag.
-	 
+
 	 <value>The parent art image tag.</value>
 	*/
 	private String ParentArtImageTag;
@@ -1786,9 +1786,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		ParentArtImageTag = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the series thumb image tag.
-	 
+
 	 <value>The series thumb image tag.</value>
 	*/
 	private String SeriesThumbImageTag;
@@ -1801,9 +1801,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		SeriesThumbImageTag = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the series studio.
-	 
+
 	 <value>The series studio.</value>
 	*/
 	private String SeriesStudio;
@@ -1816,9 +1816,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		SeriesStudio = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the parent thumb item id.
-	 
+
 	 <value>The parent thumb item id.</value>
 	*/
 	private String ParentThumbItemId;
@@ -1831,9 +1831,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		ParentThumbItemId = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the parent thumb image tag.
-	 
+
 	 <value>The parent thumb image tag.</value>
 	*/
 	private String ParentThumbImageTag;
@@ -1846,9 +1846,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		ParentThumbImageTag = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the parent primary image item identifier.
-	 
+
 	 <value>The parent primary image item identifier.</value>
 	*/
 	private String ParentPrimaryImageItemId;
@@ -1861,9 +1861,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		ParentPrimaryImageItemId = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the parent primary image tag.
-	 
+
 	 <value>The parent primary image tag.</value>
 	*/
 	private String ParentPrimaryImageTag;
@@ -1876,9 +1876,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		ParentPrimaryImageTag = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the chapters.
-	 
+
 	 <value>The chapters.</value>
 	*/
 	private java.util.ArrayList<ChapterInfoDto> Chapters;
@@ -1891,9 +1891,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		Chapters = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the type of the location.
-	 
+
 	 <value>The type of the location.</value>
 	*/
 	private LocationType LocationType = getLocationType().values()[0];
@@ -1906,9 +1906,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		LocationType = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the type of the iso.
-	 
+
 	 <value>The type of the iso.</value>
 	*/
 	private IsoType IsoType = null;
@@ -1921,9 +1921,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		IsoType = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the type of the media.
-	 
+
 	 <value>The type of the media.</value>
 	*/
 	private String MediaType;
@@ -1936,9 +1936,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		MediaType = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the end date.
-	 
+
 	 <value>The end date.</value>
 	*/
 	private java.util.Date EndDate = null;
@@ -1951,9 +1951,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		EndDate = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the home page URL.
-	 
+
 	 <value>The home page URL.</value>
 	*/
 	private String HomePageUrl;
@@ -1966,9 +1966,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		HomePageUrl = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the budget.
-	 
+
 	 <value>The budget.</value>
 	*/
 	private Double Budget = null;
@@ -1981,9 +1981,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		Budget = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the revenue.
-	 
+
 	 <value>The revenue.</value>
 	*/
 	private Double Revenue = null;
@@ -1996,9 +1996,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		Revenue = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the locked fields.
-	 
+
 	 <value>The locked fields.</value>
 	*/
 	private java.util.ArrayList<MetadataFields> LockedFields;
@@ -2011,9 +2011,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		LockedFields = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the trailer count.
-	 
+
 	 <value>The trailer count.</value>
 	*/
 	private Integer TrailerCount = null;
@@ -2025,9 +2025,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	{
 		TrailerCount = value;
 	}
-	/** 
+	/**
 	 Gets or sets the movie count.
-	 
+
 	 <value>The movie count.</value>
 	*/
 	private Integer MovieCount = null;
@@ -2039,9 +2039,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	{
 		MovieCount = value;
 	}
-	/** 
+	/**
 	 Gets or sets the series count.
-	 
+
 	 <value>The series count.</value>
 	*/
 	private Integer SeriesCount = null;
@@ -2062,9 +2062,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	{
 		ProgramCount = value;
 	}
-	/** 
+	/**
 	 Gets or sets the episode count.
-	 
+
 	 <value>The episode count.</value>
 	*/
 	private Integer EpisodeCount = null;
@@ -2076,9 +2076,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	{
 		EpisodeCount = value;
 	}
-	/** 
+	/**
 	 Gets or sets the game count.
-	 
+
 	 <value>The game count.</value>
 	*/
 	private Integer GameCount = null;
@@ -2090,9 +2090,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	{
 		GameCount = value;
 	}
-	/** 
+	/**
 	 Gets or sets the song count.
-	 
+
 	 <value>The song count.</value>
 	*/
 	private Integer SongCount = null;
@@ -2104,9 +2104,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	{
 		SongCount = value;
 	}
-	/** 
+	/**
 	 Gets or sets the album count.
-	 
+
 	 <value>The album count.</value>
 	*/
 	private Integer AlbumCount = null;
@@ -2127,9 +2127,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	{
 		ArtistCount = value;
 	}
-	/** 
+	/**
 	 Gets or sets the music video count.
-	 
+
 	 <value>The music video count.</value>
 	*/
 	private Integer MusicVideoCount = null;
@@ -2142,9 +2142,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		MusicVideoCount = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets a value indicating whether [enable internet providers].
-	 
+
 	 <value><c>true</c> if [enable internet providers]; otherwise, <c>false</c>.</value>
 	*/
 	private Boolean LockData = null;
@@ -2284,7 +2284,7 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		IsoSpeedRating = value;
 	}
 
-	/** 
+	/**
 	 Used by RecordingGroup
 	*/
 	private Integer RecordingCount = null;
@@ -2297,9 +2297,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		RecordingCount = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the series timer identifier.
-	 
+
 	 <value>The series timer identifier.</value>
 	*/
 	private String SeriesTimerId;
@@ -2312,9 +2312,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		SeriesTimerId = value;
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance can resume.
-	 
+
 	 <value><c>true</c> if this instance can resume; otherwise, <c>false</c>.</value>
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -2324,9 +2324,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getUserData() != null && getUserData().getPlaybackPositionTicks() > 0;
 	}
 
-	/** 
+	/**
 	 Gets the resume position ticks.
-	 
+
 	 <value>The resume position ticks.</value>
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -2336,9 +2336,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getUserData() == null ? 0 : getUserData().getPlaybackPositionTicks();
 	}
 
-	/** 
+	/**
 	 Gets the backdrop count.
-	 
+
 	 <value>The backdrop count.</value>
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -2348,9 +2348,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getBackdropImageTags() == null ? 0 : getBackdropImageTags().size();
 	}
 
-	/** 
+	/**
 	 Gets the screenshot count.
-	 
+
 	 <value>The screenshot count.</value>
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -2360,9 +2360,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getScreenshotImageTags() == null ? 0 : getScreenshotImageTags().size();
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance has banner.
-	 
+
 	 <value><c>true</c> if this instance has banner; otherwise, <c>false</c>.</value>
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -2372,9 +2372,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getImageTags() != null && getImageTags().containsKey(ImageType.Banner);
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance has art.
-	 
+
 	 <value><c>true</c> if this instance has art; otherwise, <c>false</c>.</value>
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -2384,9 +2384,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getImageTags() != null && getImageTags().containsKey(ImageType.Art);
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance has logo.
-	 
+
 	 <value><c>true</c> if this instance has logo; otherwise, <c>false</c>.</value>
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -2396,9 +2396,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getImageTags() != null && getImageTags().containsKey(ImageType.Logo);
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance has thumb.
-	 
+
 	 <value><c>true</c> if this instance has thumb; otherwise, <c>false</c>.</value>
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -2408,9 +2408,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getImageTags() != null && getImageTags().containsKey(ImageType.Thumb);
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance has thumb.
-	 
+
 	 <value><c>true</c> if this instance has thumb; otherwise, <c>false</c>.</value>
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -2420,9 +2420,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return (getBackdropImageTags() != null && getBackdropImageTags().size() > 0) || (getParentBackdropImageTags() != null && getParentBackdropImageTags().size() > 0);
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance has primary image.
-	 
+
 	 <value><c>true</c> if this instance has primary image; otherwise, <c>false</c>.</value>
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -2432,9 +2432,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getImageTags() != null && getImageTags().containsKey(ImageType.Primary);
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance has disc image.
-	 
+
 	 <value><c>true</c> if this instance has disc image; otherwise, <c>false</c>.</value>
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -2444,9 +2444,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getImageTags() != null && getImageTags().containsKey(ImageType.Disc);
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance has box image.
-	 
+
 	 <value><c>true</c> if this instance has box image; otherwise, <c>false</c>.</value>
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -2456,9 +2456,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getImageTags() != null && getImageTags().containsKey(ImageType.Box);
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance has box image.
-	 
+
 	 <value><c>true</c> if this instance has box image; otherwise, <c>false</c>.</value>
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -2468,9 +2468,9 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getImageTags() != null && getImageTags().containsKey(ImageType.BoxRear);
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance has menu image.
-	 
+
 	 <value><c>true</c> if this instance has menu image; otherwise, <c>false</c>.</value>
 	*/
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -2480,110 +2480,86 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getImageTags() != null && getImageTags().containsKey(ImageType.Menu);
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance is video.
-	 
+
 	 <value><c>true</c> if this instance is video; otherwise, <c>false</c>.</value>
 	*/
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public bool IsVideo
 	public final boolean getIsVideo()
 	{
-		return StringHelper.EqualsIgnoreCase(getMediaType(), org.jellyfin.apiclient.model.entities.MediaType.Video);
+		return getMediaType().equalsIgnoreCase(org.jellyfin.apiclient.model.entities.MediaType.Video);
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance is audio.
-	 
+
 	 <value><c>true</c> if this instance is audio; otherwise, <c>false</c>.</value>
 	*/
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public bool IsAudio
 	public final boolean getIsAudio()
 	{
-		return StringHelper.EqualsIgnoreCase(getMediaType(), org.jellyfin.apiclient.model.entities.MediaType.Audio);
+		return getMediaType().equalsIgnoreCase(org.jellyfin.apiclient.model.entities.MediaType.Audio);
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance is game.
-	 
+
 	 <value><c>true</c> if this instance is game; otherwise, <c>false</c>.</value>
 	*/
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public bool IsGame
 	public final boolean getIsGame()
 	{
-		return StringHelper.EqualsIgnoreCase(getMediaType(), org.jellyfin.apiclient.model.entities.MediaType.Game);
+		return getMediaType().equalsIgnoreCase(org.jellyfin.apiclient.model.entities.MediaType.Game);
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance is person.
-	 
+
 	 <value><c>true</c> if this instance is person; otherwise, <c>false</c>.</value>
 	*/
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public bool IsPerson
 	public final boolean getIsPerson()
 	{
-		return StringHelper.EqualsIgnoreCase(getType(), "Person");
+		return getType().equalsIgnoreCase("Person");
 	}
 
-	/** 
+	/**
 	 Gets a value indicating whether this instance is root.
-	 
+
 	 <value><c>true</c> if this instance is root; otherwise, <c>false</c>.</value>
 	*/
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public bool IsRoot
 	public final boolean getIsRoot()
 	{
-		return StringHelper.EqualsIgnoreCase(getType(), "AggregateFolder");
+		return getType().equalsIgnoreCase("AggregateFolder");
 	}
 
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public bool IsMusicGenre
 	public final boolean getIsMusicGenre()
 	{
-		return StringHelper.EqualsIgnoreCase(getType(), "MusicGenre");
+		return getType().equalsIgnoreCase("MusicGenre");
 	}
 
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public bool IsGameGenre
 	public final boolean getIsGameGenre()
 	{
-		return StringHelper.EqualsIgnoreCase(getType(), "GameGenre");
+		return getType().equalsIgnoreCase("GameGenre");
 	}
 
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public bool IsGenre
 	public final boolean getIsGenre()
 	{
-		return StringHelper.EqualsIgnoreCase(getType(), "Genre");
+		return getType().equalsIgnoreCase("Genre");
 	}
 
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public bool IsArtist
 	public final boolean getIsArtist()
 	{
-		return StringHelper.EqualsIgnoreCase(getType(), "MusicArtist");
+		return getType().equalsIgnoreCase("MusicArtist");
 	}
 
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public bool IsAlbum
 	public final boolean getIsAlbum()
 	{
-		return StringHelper.EqualsIgnoreCase(getType(), "MusicAlbum");
+		return getType().equalsIgnoreCase("MusicAlbum");
 	}
 
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public bool IsStudio
 	public final boolean getIsStudio()
 	{
-		return StringHelper.EqualsIgnoreCase(getType(), "Studio");
+		return getType().equalsIgnoreCase("Studio");
 	}
 
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [IgnoreDataMember] public bool SupportsSimilarItems
 	public final boolean getSupportsSimilarItems()
 	{
 		return IsType("Movie") || IsType("Series") || IsType("MusicAlbum") || IsType("MusicArtist") || IsType("Program") || IsType("Recording") || IsType("ChannelVideoItem") || IsType("Game");

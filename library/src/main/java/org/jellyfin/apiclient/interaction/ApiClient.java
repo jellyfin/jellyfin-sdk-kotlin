@@ -1,7 +1,5 @@
 package org.jellyfin.apiclient.interaction;
 
-import org.jellyfin.apiclient.interaction.cryptography.Md5;
-import org.jellyfin.apiclient.interaction.cryptography.Sha1;
 import org.jellyfin.apiclient.interaction.device.IDevice;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
@@ -23,7 +21,6 @@ import org.jellyfin.apiclient.model.devices.LocalFileInfo;
 import org.jellyfin.apiclient.model.dto.*;
 import org.jellyfin.apiclient.model.entities.DisplayPreferences;
 import org.jellyfin.apiclient.model.entities.ParentalRating;
-import org.jellyfin.apiclient.model.extensions.StringHelper;
 import org.jellyfin.apiclient.model.livetv.*;
 import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.model.mediainfo.*;
@@ -49,7 +46,6 @@ import org.jellyfin.apiclient.model.users.AuthenticationResult;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Observable;
@@ -124,7 +120,7 @@ public class ApiClient extends BaseApiClient {
 
             String errorCode = httpError.getHeaders().get("X-Application-Error-Code");
 
-            if (StringHelper.EqualsIgnoreCase(errorCode, "ParentalControl")) {
+            if (errorCode.equalsIgnoreCase("ParentalControl")) {
                 reason = RemoteLogoutReason.ParentalControlRestriction;
             }
         }
@@ -1043,7 +1039,7 @@ public class ApiClient extends BaseApiClient {
 
         if (command.getTimeoutMs() != null)
         {
-            cmd.getArguments().put("Timeout", StringHelper.ToStringCultureInvariant(command.getTimeoutMs()));
+            cmd.getArguments().put("Timeout", Long.toString(command.getTimeoutMs()));
         }
 
         SendCommandAsync(sessionId, cmd, response);
@@ -1193,9 +1189,7 @@ public class ApiClient extends BaseApiClient {
     /// <param name="sha1Hash">The sha1 hash.</param>
     /// <returns>Task.</returns>
     /// <exception cref="System.IllegalArgumentException">userId</exception>
-    public void AuthenticateUserAsync(String username, String password, final Response<AuthenticationResult> response)
-            throws NoSuchAlgorithmException, UnsupportedEncodingException
-    {
+    public void AuthenticateUserAsync(String username, String password, final Response<AuthenticationResult> response) {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(username))
         {
             throw new IllegalArgumentException("username");
@@ -1207,8 +1201,6 @@ public class ApiClient extends BaseApiClient {
 
         dict.Add("username", username);
         dict.Add("pw", password);
-        dict.Add("password", Sha1.getHash(password));
-        dict.Add("passwordMd5", Md5.getHash(password));
 
         url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(response){
@@ -1916,7 +1908,7 @@ public class ApiClient extends BaseApiClient {
 
         cmd.setName("SetAudioStreamIndex");
 
-        cmd.getArguments().put("Index", StringHelper.ToStringCultureInvariant(index));
+        cmd.getArguments().put("Index", Integer.toString(index));
 
         SendCommandAsync(sessionId, cmd, response);
     }
@@ -1929,7 +1921,7 @@ public class ApiClient extends BaseApiClient {
 
         int indexValue = index == null ? -1 : index.intValue();
 
-        cmd.getArguments().put("Index", StringHelper.ToStringCultureInvariant(indexValue));
+        cmd.getArguments().put("Index", Integer.toString(indexValue));
 
         SendCommandAsync(sessionId, cmd, response);
     }
@@ -1940,7 +1932,7 @@ public class ApiClient extends BaseApiClient {
 
         cmd.setName("SetVolume");
 
-        cmd.getArguments().put("Volume", StringHelper.ToStringCultureInvariant(volume));
+        cmd.getArguments().put("Volume", Integer.toString(volume));
 
         SendCommandAsync(sessionId, cmd, response);
     }

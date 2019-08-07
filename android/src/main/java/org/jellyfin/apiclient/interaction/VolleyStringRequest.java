@@ -6,7 +6,6 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import org.jellyfin.apiclient.interaction.http.HttpHeaders;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
-import org.jellyfin.apiclient.model.extensions.StringHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -77,13 +76,13 @@ public class VolleyStringRequest extends StringRequest {
         String contentType = response.headers.get("Content-Type");
 
         // This is a hack to make volley decode in UTF-8
-        if (StringHelper.EqualsIgnoreCase(contentType, "application/json")) {
+        if (contentType.equalsIgnoreCase("application/json")) {
             response.headers.put("Content-Type", contentType + "; charset=UTF-8");
         }
-        else if (StringHelper.EqualsIgnoreCase(contentType, "text/plain")) {
+        else if (contentType.equalsIgnoreCase("text/plain")) {
             response.headers.put("Content-Type", contentType + "; charset=UTF-8");
         }
-        else if (StringHelper.EqualsIgnoreCase(contentType, "text/vtt")) {
+        else if (contentType.equalsIgnoreCase("text/vtt")) {
             response.headers.put("Content-Type", contentType + "; charset=UTF-8");
         }
 

@@ -3,6 +3,9 @@ package org.jellyfin.apiclient.model.entities;
 import org.jellyfin.apiclient.model.dlna.*;
 import org.jellyfin.apiclient.model.extensions.*;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /** 
  Class MediaStream
 */
@@ -488,9 +491,10 @@ public class MediaStream
 	{
 		String codec = (format != null) ? format : "";
 
-		// sub = external .sub file
-
-		return StringHelper.IndexOfIgnoreCase(codec, "pgs") == -1 && StringHelper.IndexOfIgnoreCase(codec, "dvd") == -1 && StringHelper.IndexOfIgnoreCase(codec, "dvbsub") == -1 && !StringHelper.EqualsIgnoreCase(codec, "sub");
+		// sub indicates an external .sub file
+		Pattern compatible = Pattern.compile(".*[pgs|dvd|dvbsub].*]", Pattern.CASE_INSENSITIVE);
+		Matcher matcher = compatible.matcher(codec);
+		return !matcher.matches() && !codec.equalsIgnoreCase("sub");
 	}
 
 	public final boolean SupportsSubtitleConversionTo(String codec)
@@ -501,21 +505,21 @@ public class MediaStream
 		}
 
 		// Can't convert from this 
-		if (StringHelper.EqualsIgnoreCase(getCodec(), "ass"))
+		if (getCodec().equalsIgnoreCase("ass"))
 		{
 			return false;
 		}
-		if (StringHelper.EqualsIgnoreCase(getCodec(), "ssa"))
+		if (getCodec().equalsIgnoreCase("ssa"))
 		{
 			return false;
 		}
 
 		// Can't convert to this 
-		if (StringHelper.EqualsIgnoreCase(codec, "ass"))
+		if (codec.equalsIgnoreCase("ass"))
 		{
 			return false;
 		}
-		if (StringHelper.EqualsIgnoreCase(codec, "ssa"))
+		if (codec.equalsIgnoreCase("ssa"))
 		{
 			return false;
 		}
