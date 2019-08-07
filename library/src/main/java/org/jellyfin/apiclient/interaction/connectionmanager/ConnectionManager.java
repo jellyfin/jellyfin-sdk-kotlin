@@ -295,7 +295,7 @@ public class ConnectionManager implements IConnectionManager {
 
         String url = server.GetAddress(connectionMode);
 
-        url += "/emby/Connect/Exchange?format=json&ConnectUserId=" + credentials.getConnectUserId();
+        url += "/Connect/Exchange?format=json&ConnectUserId=" + credentials.getConnectUserId();
 
         HttpRequest request = new HttpRequest();
         request.setUrl(url);
@@ -389,7 +389,7 @@ public class ConnectionManager implements IConnectionManager {
         headers.SetAccessToken(server.getAccessToken());
 
         final HttpRequest request = new HttpRequest();
-        request.setUrl(url + "/emby/system/info?format=json");
+        request.setUrl(url + "/system/info?format=json");
         request.setMethod("GET");
         request.setRequestHeaders(headers);
 
@@ -400,7 +400,7 @@ public class ConnectionManager implements IConnectionManager {
 
     void TryConnect(String url, int timeout, final Response<PublicSystemInfo> response)
     {
-        url += "/emby/system/info/public?format=json";
+        url += "/system/info/public?format=json";
 
         HttpRequest request = new HttpRequest();
         request.setUrl(url);
