@@ -1,14 +1,11 @@
 package org.jellyfin.apiclient.model.dto;
 
 import org.jellyfin.apiclient.model.configuration.*;
-import org.jellyfin.apiclient.model.connect.*;
 import org.jellyfin.apiclient.model.users.*;
 
 /** 
  Class UserDto
 */
-//C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
-//ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, HasPassword = {HasPassword}")] public class UserDto : IItemDto, IHasServerId
 public class UserDto implements IHasServerId
 {
 	/** 
@@ -39,49 +36,6 @@ public class UserDto implements IHasServerId
 	public final void setServerId(String value)
 	{
 		ServerId = value;
-	}
-
-	/** 
-	 Gets or sets the name of the connect user.
-	 
-	 <value>The name of the connect user.</value>
-	*/
-	private String ConnectUserName;
-	public final String getConnectUserName()
-	{
-		return ConnectUserName;
-	}
-	public final void setConnectUserName(String value)
-	{
-		ConnectUserName = value;
-	}
-	/** 
-	 Gets or sets the connect user identifier.
-	 
-	 <value>The connect user identifier.</value>
-	*/
-	private String ConnectUserId;
-	public final String getConnectUserId()
-	{
-		return ConnectUserId;
-	}
-	public final void setConnectUserId(String value)
-	{
-		ConnectUserId = value;
-	}
-	/** 
-	 Gets or sets the type of the connect link.
-	 
-	 <value>The type of the connect link.</value>
-	*/
-	private UserLinkType ConnectLinkType = null;
-	public final UserLinkType getConnectLinkType()
-	{
-		return ConnectLinkType;
-	}
-	public final void setConnectLinkType(UserLinkType value)
-	{
-		ConnectLinkType = value;
 	}
 
 	/** 

@@ -30,9 +30,6 @@ import org.jellyfin.apiclient.model.playlists.PlaylistCreationRequest;
 import org.jellyfin.apiclient.model.playlists.PlaylistCreationResult;
 import org.jellyfin.apiclient.model.playlists.PlaylistItemQuery;
 import org.jellyfin.apiclient.model.querying.*;
-import org.jellyfin.apiclient.model.registration.AppstoreRegRequest;
-import org.jellyfin.apiclient.model.registration.AppstoreRegWrapper;
-import org.jellyfin.apiclient.model.registration.RegistrationInfo;
 import org.jellyfin.apiclient.model.results.*;
 import org.jellyfin.apiclient.model.search.SearchHintResult;
 import org.jellyfin.apiclient.model.search.SearchQuery;
@@ -260,20 +257,6 @@ public class ApiClient extends BaseApiClient {
         url = AddDataFormat(url);
 
         Send(url, "GET", new SerializedResponse<>(response, jsonSerializer, ItemCounts.class));
-    }
-
-    public void GetRegistrationInfo(String feature, final Response<RegistrationInfo> response)
-    {
-        if (feature == null)
-        {
-            throw new IllegalArgumentException("feature");
-        }
-
-        String url = GetApiUrl("Registrations/" + feature);
-
-        url = AddDataFormat(url);
-
-        Send(url, "GET", new SerializedResponse<>(response, jsonSerializer, RegistrationInfo.class));
     }
 
     public void GetRootFolderAsync(String userId, final Response<BaseItemDto> response)
@@ -1237,27 +1220,6 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("System/Configuration");
 
         PostAsync(url, configuration, response);
-    }
-
-    /// <summary>
-    /// Registers the sale of an Emby feature through an app store.
-    /// </summary>
-    /// <param name="id">The id.</param>
-    /// <param name="triggers">The triggers.</param>
-    /// <returns>Task{RequestResult}.</returns>
-    /// <exception cref="System.IllegalArgumentException">id</exception>
-    public void RegisterAppstoreSaleAsync(AppstoreRegRequest request, final EmptyResponse response)
-    {
-        if (request == null)
-        {
-            throw new IllegalArgumentException("request");
-        }
-
-        String url = GetApiUrl("Appstore/register");
-        AppstoreRegWrapper wrapper = new AppstoreRegWrapper();
-        wrapper.Parameters = jsonSerializer.SerializeToString(request);
-
-        PostAsync(url, wrapper, response);
     }
 
     /// <summary>

@@ -4,7 +4,6 @@ import org.jellyfin.apiclient.interaction.EmptyResponse;
 import org.jellyfin.apiclient.interaction.ICredentialProvider;
 import org.jellyfin.apiclient.model.apiclient.ServerCredentials;
 import org.jellyfin.apiclient.model.apiclient.ServerInfo;
-import org.jellyfin.apiclient.model.connect.UserLinkType;
 import org.jellyfin.apiclient.model.logging.ILogger;
 
 import java.util.ArrayList;
@@ -24,31 +23,20 @@ public class LogoutAllResponse extends EmptyResponse {
     }
 
     private void OnSuccessOrFail() {
-
         logger.Debug("Updating saved credentials for all servers");
         ServerCredentials credentials = credentialProvider.GetCredentials();
 
         ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
 
         for (ServerInfo server : credentials.getServers()) {
+            server.setAccessToken(null);
+            server.setUserId(null);
 
-            if (server.getUserLinkType() == null ||
-                    server.getUserLinkType() != UserLinkType.Guest){
-
-                server.setAccessToken(null);
-                server.setUserId(null);
-                server.setExchangeToken(null);
-
-                servers.add(server);
-            }
+            servers.add(server);
         }
 
-        credentials.setConnectAccessToken(null);
-        credentials.setConnectUserId(null);
         credentials.setServers(servers);
         credentialProvider.SaveCredentials(credentials);
-
-        connectionManager.clearConnectUserAfterLogout();
 
         response.onResponse();
     }

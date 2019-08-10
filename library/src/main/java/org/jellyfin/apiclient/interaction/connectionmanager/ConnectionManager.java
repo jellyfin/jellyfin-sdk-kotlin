@@ -1,7 +1,6 @@
 package org.jellyfin.apiclient.interaction.connectionmanager;
 
 import org.jellyfin.apiclient.interaction.*;
-import org.jellyfin.apiclient.interaction.connect.ConnectService;
 import org.jellyfin.apiclient.interaction.device.IDevice;
 import org.jellyfin.apiclient.interaction.discovery.IServerLocator;
 import org.jellyfin.apiclient.interaction.http.HttpHeaders;
@@ -9,18 +8,14 @@ import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
 import org.jellyfin.apiclient.interaction.network.INetworkConnection;
 import org.jellyfin.apiclient.model.apiclient.*;
-import org.jellyfin.apiclient.model.connect.*;
 import org.jellyfin.apiclient.model.dto.IHasServerId;
 import org.jellyfin.apiclient.model.dto.UserDto;
 import org.jellyfin.apiclient.model.logging.ILogger;
-import org.jellyfin.apiclient.model.registration.RegistrationInfo;
 import org.jellyfin.apiclient.model.serialization.IJsonSerializer;
 import org.jellyfin.apiclient.model.session.ClientCapabilities;
 import org.jellyfin.apiclient.model.system.PublicSystemInfo;
 import org.jellyfin.apiclient.model.users.AuthenticationResult;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -42,9 +37,6 @@ public class ConnectionManager implements IConnectionManager {
     protected ClientCapabilities clientCapabilities;
     protected ApiEventListener apiEventListener;
 
-    private ConnectService connectService;
-    private ConnectUser connectUser;
-
     public ConnectionManager(ICredentialProvider credentialProvider,
                              INetworkConnection networkConnectivity,
                              IJsonSerializer jsonSerializer,
@@ -58,7 +50,7 @@ public class ConnectionManager implements IConnectionManager {
                              ApiEventListener apiEventListener) {
 
         this.credentialProvider = credentialProvider;
-        networkConnection = networkConnectivity;
+        this.networkConnection = networkConnectivity;
         this.logger = logger;
         this.serverDiscovery = serverDiscovery;
         this.httpClient = httpClient;
@@ -68,8 +60,6 @@ public class ConnectionManager implements IConnectionManager {
         this.clientCapabilities = clientCapabilities;
         this.apiEventListener = apiEventListener;
         this.jsonSerializer = jsonSerializer;
-
-        connectService = new ConnectService(jsonSerializer, logger, httpClient, applicationName, applicationVersion);
     }
 
     public ClientCapabilities getClientCapabilities() {
@@ -78,21 +68,17 @@ public class ConnectionManager implements IConnectionManager {
 
     @Override
     public ApiClient GetApiClient(IHasServerId item) {
-
         return GetApiClient(item.getServerId());
     }
 
     @Override
     public ApiClient GetApiClient(String serverId) {
-
         return apiClients.get(serverId);
     }
 
     @Override
     public ServerInfo getServerInfo(String serverId) {
-
         final ServerCredentials credentials = credentialProvider.GetCredentials();
-
         for (ServerInfo server : credentials.getServers()){
             if (server.getId().equalsIgnoreCase(serverId)){
                 return  server;
@@ -106,60 +92,34 @@ public class ConnectionManager implements IConnectionManager {
         return this.device;
     }
 
-    void OnConnectUserSignIn(ConnectUser user){
-
-        connectUser = user;
-
-        // TODO: Fire event
-    }
-
     void OnFailedConnection(Response<ConnectionResult> response){
-
         logger.Debug("No server available");
-
         ConnectionResult result = new ConnectionResult();
         result.setState(ConnectionState.Unavailable);
-        result.setConnectUser(connectUser);
         response.onResponse(result);
     }
 
     void OnFailedConnection(Response<ConnectionResult> response, ArrayList<ServerInfo> servers){
-
         logger.Debug("No saved authentication");
-
         ConnectionResult result = new ConnectionResult();
-
-        if (servers.size() == 0 && connectUser == null){
-            result.setState(ConnectionState.ConnectSignIn);
-        }
-        else{
-            result.setState(ConnectionState.ServerSelection);
-        }
-
+        result.setState(ConnectionState.ServerSelection);
         result.setServers(new ArrayList<ServerInfo>());
-        result.setConnectUser(connectUser);
-
         response.onResponse(result);
     }
 
     @Override
     public void Connect(final Response<ConnectionResult> response) {
-
         logger.Debug("Entering initial connection workflow");
-
         GetAvailableServers(new GetAvailableServersResponse(logger, this, response));
     }
 
     @Override
     public void GetSavedServers(final Response<ArrayList<ServerInfo>> response){
-
         final ServerCredentials credentials = credentialProvider.GetCredentials();
-
         response.onResponse(credentials.getServers());
     }
 
     void Connect(final ArrayList<ServerInfo> servers, final Response<ConnectionResult> response){
-
         // Sort by last date accessed, descending
         Collections.sort(servers, new ServerInfoDateComparator());
         Collections.reverse(servers);
@@ -184,7 +144,6 @@ public class ConnectionManager implements IConnectionManager {
     @Override
     public void Connect(final ServerInfo server,
                         final Response<ConnectionResult> response) {
-
         Connect(server, new ConnectionOptions(), response);
     }
 
@@ -192,7 +151,6 @@ public class ConnectionManager implements IConnectionManager {
     public void Connect(final ServerInfo server,
                         ConnectionOptions options,
                         final Response<ConnectionResult> response) {
-
         ArrayList<ConnectionMode> tests = new ArrayList<ConnectionMode>();
         tests.add(ConnectionMode.Manual);
         tests.add(ConnectionMode.Local);
@@ -271,42 +229,8 @@ public class ConnectionManager implements IConnectionManager {
             throw new IllegalArgumentException();
         }
 
-        final ServerCredentials credentials = credentialProvider.GetCredentials();
-
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
-        {
-            EnsureConnectUser(credentials, new EnsureConnectUserResponse(this, server, credentials, systemInfo, connectionMode, connectionOptions, response));
-        } else {
-
-            AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, connectionOptions, response);
-        }
-    }
-
-    void AddAuthenticationInfoFromConnect(final ServerInfo server,
-                                                  ConnectionMode connectionMode,
-                                                  ServerCredentials credentials,
-                                                  final EmptyResponse response){
-
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getExchangeToken())) {
-            throw new IllegalArgumentException("server");
-        }
-
-        logger.Debug("Adding authentication info from Connect");
-
-        String url = server.GetAddress(connectionMode);
-
-        url += "/Connect/Exchange?format=json&ConnectUserId=" + credentials.getConnectUserId();
-
-        HttpRequest request = new HttpRequest();
-        request.setUrl(url);
-        request.setMethod("GET");
-
-        String auth = "MediaBrowser Client=\"" + applicationName + "\", Device=\"" + getDevice().getDeviceName() + "\", DeviceId=\"" + getDevice().getDeviceId() + "\", Version=\"" + applicationVersion + "\"";
-
-        request.getRequestHeaders().put("X-Emby-Authorization", auth);
-        request.getRequestHeaders().put("X-MediaBrowser-Token", server.getExchangeToken());
-
-        httpClient.Send(request, new ExchangeTokenResponse(jsonSerializer, server, response));
+        ServerCredentials credentials = credentialProvider.GetCredentials();
+        AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, connectionOptions, response);
     }
 
     void AfterConnectValidated(final ServerInfo server,
@@ -368,17 +292,8 @@ public class ConnectionManager implements IConnectionManager {
 
     @Override
     public void Logout(final EmptyResponse response) {
-
         logger.Debug("Logging out of all servers");
-
         LogoutAll(new LogoutAllResponse(credentialProvider, logger, response, this));
-    }
-
-    void clearConnectUserAfterLogout() {
-
-        if (connectUser != null){
-            connectUser = null;
-        }
     }
 
     private void ValidateAuthentication(final ServerInfo server, ConnectionMode connectionMode, final EmptyResponse response)
@@ -512,7 +427,6 @@ public class ConnectionManager implements IConnectionManager {
             tempCredentials = credentialProvider.GetCredentials();
         }
         catch (Exception ex){
-
             logger.ErrorException("Error getting available servers", ex);
             response.onResponse(new ArrayList<ServerInfo>());
             return;
@@ -522,50 +436,16 @@ public class ConnectionManager implements IConnectionManager {
         final int numTasks = 2;
         final int[] numTasksCompleted = {0};
         final ArrayList<ServerInfo> foundServers = new ArrayList<ServerInfo>();
-        final ArrayList<ServerInfo> connectServers = new ArrayList<ServerInfo>();
 
-        Response<ArrayList<ServerInfo>> findServersResponse = new FindServersResponse(this, credentials, foundServers, connectServers, numTasksCompleted, numTasks, response);
+        Response<ArrayList<ServerInfo>> findServersResponse = new FindServersResponse(this, credentials, foundServers, numTasksCompleted, numTasks, response);
 
         logger.Debug("Scanning network for local servers");
 
         FindServers(findServersResponse);
-
-        EmptyResponse connectServersResponse = new GetConnectServersResponse(logger, connectService, credentials, foundServers, connectServers, numTasks, numTasksCompleted, response, this);
-
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
-        {
-            logger.Debug("Getting server list from Connect");
-
-            EnsureConnectUser(credentials, connectServersResponse);
-        }
-        else{
-            connectServersResponse.onError(null);
-        }
-    }
-
-    void EnsureConnectUser(ServerCredentials credentials, final EmptyResponse response){
-
-        if (connectUser != null && connectUser.getId().equalsIgnoreCase(credentials.getConnectUserId()))
-        {
-            response.onResponse();
-            return;
-        }
-
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectUserId()) && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(credentials.getConnectAccessToken()))
-        {
-            this.connectUser = null;
-
-            ConnectUserQuery query = new ConnectUserQuery();
-
-            query.setId(credentials.getConnectUserId());
-
-            connectService.GetConnectUser(query, credentials.getConnectAccessToken(), new GetConnectUserResponse(this, response));
-        }
     }
 
     void OnGetServerResponse(ServerCredentials credentials,
                                      ArrayList<ServerInfo> foundServers,
-                                     ArrayList<ServerInfo> connectServers,
                                      Response<ArrayList<ServerInfo>> response){
 
         for(ServerInfo newServer : foundServers){
@@ -580,47 +460,13 @@ public class ConnectionManager implements IConnectionManager {
             credentials.AddOrUpdateServer(newServer);
         }
 
-        for(ServerInfo newServer : connectServers){
-
-            credentials.AddOrUpdateServer(newServer);
-        }
-
-        ArrayList<ServerInfo> cleanList = new ArrayList<ServerInfo>();
-        ArrayList<ServerInfo> existing = credentials.getServers();
-
-        for(ServerInfo server : existing){
-
-            // It's not a connect server, so assume it's still valid
-            if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getExchangeToken()))
-            {
-                cleanList.add(server);
-                continue;
-            }
-
-            boolean found = false;
-
-            for(ServerInfo connectServer : connectServers){
-
-                if (server.getId().equalsIgnoreCase(connectServer.getId())){
-                    found = true;
-                    break;
-                }
-            }
-
-            if (found)
-            {
-                cleanList.add(server);
-            }
-            else{
-                logger.Debug("Dropping server "+server.getName()+" - "+server.getId()+" because it's no longer in the user's Connect profile.");
-            }
-        }
+        ArrayList<ServerInfo> servers = credentials.getServers();
 
         // Sort by last date accessed, descending
-        Collections.sort(cleanList, new ServerInfoDateComparator());
-        Collections.reverse(cleanList);
+        Collections.sort(servers, new ServerInfoDateComparator());
+        Collections.reverse(servers);
 
-        credentials.setServers(cleanList);
+        credentials.setServers(servers);
 
         credentialProvider.SaveCredentials(credentials);
 
@@ -702,11 +548,9 @@ public class ConnectionManager implements IConnectionManager {
     }
 
     private void LogoutAll(final EmptyResponse response){
-
         Object[] clientList = apiClients.values().toArray();
 
         final int count = clientList.length;
-
         if (count == 0){
             response.onResponse();
             return;
@@ -728,37 +572,6 @@ public class ConnectionManager implements IConnectionManager {
                 logoutResponse.onResponse(false);
             }
         }
-
-        connectUser = null;
-    }
-
-    public void LoginToConnect(String username, String password, final EmptyResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-
-        connectService.Authenticate(username, password, new LoginToConnectResponse(this, credentialProvider, response));
-    }
-
-    public void CreatePin(String deviceId, Response<PinCreationResult> response)
-    {
-        connectService.CreatePin(deviceId, response);
-    }
-
-    public void GetPinStatus(PinCreationResult pin, Response<PinStatusResult> response)
-    {
-        connectService.GetPinStatus(pin, response);
-    }
-
-    public void ExchangePin(PinCreationResult pin, final Response<PinExchangeResult> response)
-    {
-        connectService.ExchangePin(pin, new ExchangePinResponse(credentialProvider, response));
-    }
-
-    @Deprecated
-    public void GetRegistrationInfo(final String featureName, String serverId, String localUsername, final Response<RegistrationInfo> response) {
-        RegistrationInfo reg = new RegistrationInfo();
-        reg.setName(featureName);
-        reg.setIsTrial(false);
-        reg.setIsRegistered(true);
-        response.onResponse(reg);
     }
 
     public void DeleteServer(final String id, final EmptyResponse response)
@@ -768,7 +581,6 @@ public class ConnectionManager implements IConnectionManager {
 
         ServerInfo server = null;
         for(ServerInfo current : existing){
-
             if (current.getId().equalsIgnoreCase(id)){
                 server = current;
                 break;
@@ -780,33 +592,10 @@ public class ConnectionManager implements IConnectionManager {
             return;
         }
 
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getConnectServerId()))
-        {
-            OnServerDeleteResponse(id, response);
-            return;
-        }
-
-        String connectUserId = credentials.getConnectUserId();
-        String connectAccessToken = credentials.getConnectAccessToken();
-
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(connectUserId) ||
-                tangible.DotNetToJavaStringHelper.isNullOrEmpty(connectAccessToken))
-        {
-            OnServerDeleteResponse(id, response);
-            return;
-        }
-
-        connectService.DeleteServer(connectUserId, connectAccessToken, server.getConnectServerId(), new EmptyResponse(response){
-
-            @Override
-            public void onResponse(){
-                OnServerDeleteResponse(id, response);
-            }
-        });
+        OnServerDeleteResponse(id, response);
     }
 
     private void OnServerDeleteResponse(String id, EmptyResponse response){
-
         ServerCredentials credentials = credentialProvider.GetCredentials();
         ArrayList<ServerInfo> existing = credentials.getServers();
         ArrayList<ServerInfo> newList = new ArrayList<>();

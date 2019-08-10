@@ -1,6 +1,5 @@
 package org.jellyfin.apiclient.model.apiclient;
 
-import org.jellyfin.apiclient.model.connect.*;
 import org.jellyfin.apiclient.model.system.*;
 
 public class ServerInfo
@@ -22,15 +21,6 @@ public class ServerInfo
 	public final void setId(String value)
 	{
 		Id = value;
-	}
-	private String ConnectServerId;
-	public final String getConnectServerId()
-	{
-		return ConnectServerId;
-	}
-	public final void setConnectServerId(String value)
-	{
-		ConnectServerId = value;
 	}
 	private String LocalAddress;
 	public final String getLocalAddress()
@@ -94,24 +84,6 @@ public class ServerInfo
 	public final void setDateLastAccessed(java.util.Date value)
 	{
 		DateLastAccessed = value;
-	}
-	private String ExchangeToken;
-	public final String getExchangeToken()
-	{
-		return ExchangeToken;
-	}
-	public final void setExchangeToken(String value)
-	{
-		ExchangeToken = value;
-	}
-	private UserLinkType UserLinkType = null;
-	public final UserLinkType getUserLinkType()
-	{
-		return UserLinkType;
-	}
-	public final void setUserLinkType(UserLinkType value)
-	{
-		UserLinkType = value;
 	}
 	private ConnectionMode LastConnectionMode = null;
 	public final ConnectionMode getLastConnectionMode()
