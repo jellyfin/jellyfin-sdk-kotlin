@@ -99,8 +99,7 @@ public class ApiWebSocket implements ISocketListener {
 
             socketClient.send(message);
             response.onResponse();
-        }
-        else {
+        } else {
             response.onError(null);
         }
     }

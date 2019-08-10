@@ -199,9 +199,7 @@ public class ApiClient extends BaseApiClient {
 
             response.onResponse(info);
 
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             response.onError(ex);
         }
     }
@@ -2286,26 +2284,17 @@ public class ApiClient extends BaseApiClient {
             int responseCode = conn.getResponseCode();
             if (responseCode == 200 || responseCode == 204) {
                 progress.reportComplete();
-            }
-            else {
-
+            } else {
                 HttpException ex = new HttpException(serverResponseMessage);
                 ex.setStatusCode(responseCode);
-
                 progress.reportError(ex);
             }
-
-        }
-        catch (Exception ex) {
-
+        } catch (Exception ex) {
             Logger.ErrorException("Error uploading file", ex);
             progress.reportError(new HttpException(ex.getMessage()));
-        }
-        finally {
-
-            //close the streams //
+        } finally {
+            // close the streams
             fileInputStream.close();
-
             if (dos != null) {
                 dos.flush();
                 dos.close();
@@ -2314,7 +2303,6 @@ public class ApiClient extends BaseApiClient {
     }
 
     public void UpdateUserConfiguration(String userId, UserConfiguration configuration, EmptyResponse response) {
-
         response.onError(new UnsupportedOperationException());
     }
 
@@ -2479,14 +2467,11 @@ public class ApiClient extends BaseApiClient {
                 bitrate *= 1000;
 
                 response.onResponse(Math.round(bitrate));
-            }
-            catch (IOException ioException) {
+            } catch (IOException ioException) {
                 response.onError(ioException);
                 return;
             }
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             response.onError(ex);
         }
     }

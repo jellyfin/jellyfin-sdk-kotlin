@@ -42,8 +42,7 @@ public class ValidateAuthenticationResponse extends Response<String> {
             request.setUrl(url + "/mediabrowser/users/" + server.getUserId() + "?format=json");
 
             httpClient.Send(request, new ValidateAuthenticationInnerResponse(connectionManager, jsonSerializer, server, response));
-        }
-        else {
+        } else {
             response.onResponse();
         }
     }

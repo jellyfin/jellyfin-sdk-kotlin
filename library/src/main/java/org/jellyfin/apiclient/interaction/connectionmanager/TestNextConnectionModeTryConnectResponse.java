@@ -51,8 +51,7 @@ public class TestNextConnectionModeTryConnectResponse extends Response<PublicSys
             } else {
                 connectionManager.OnSuccessfulConnection(server, result, mode, options, response);
             }
-        }
-        else {
+        } else {
             logger.Error("Somehow we got into TestNextConnectionModeTryConnectResponse.onResponse with a null response.");
             onError(new Exception());
         }

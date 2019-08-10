@@ -41,9 +41,7 @@ public class HttpHeaders extends java.util.HashMap<String,String>
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(token))
         {
             this.remove("X-MediaBrowser-Token");
-        }
-        else
-        {
+        } else {
             this.put("X-MediaBrowser-Token", token);
         }
     }

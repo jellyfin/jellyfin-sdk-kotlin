@@ -101,8 +101,7 @@ public class ServerLocator implements IServerLocator {
 
             try {
                 c.receive(receivePacket);
-            }
-            catch (SocketTimeoutException e) {
+            } catch (SocketTimeoutException e) {
                 logger.Debug("Server discovery timed out waiting for response.");
                 break;
             }

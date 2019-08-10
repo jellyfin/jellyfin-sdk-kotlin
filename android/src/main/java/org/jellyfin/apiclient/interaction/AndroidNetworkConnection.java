@@ -42,8 +42,7 @@ public class AndroidNetworkConnection implements INetworkConnection {
             socket.close();
 
             response.onResponse();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             response.onError(ex);
         }
     }
@@ -70,8 +69,7 @@ public class AndroidNetworkConnection implements INetworkConnection {
             socket.close();
 
             response.onResponse();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             response.onError(ex);
         }
     }
@@ -122,8 +120,7 @@ public class AndroidNetworkConnection implements INetworkConnection {
             for (int i = 0; i < 6; i++) {
                 bytes[i] = (byte) Integer.parseInt(hex[i], 16);
             }
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Invalid hex digit in MAC address.");
         }
         return bytes;

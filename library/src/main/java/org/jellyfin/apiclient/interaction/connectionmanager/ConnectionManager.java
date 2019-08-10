@@ -355,9 +355,7 @@ public class ConnectionManager implements IConnectionManager {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
         {
             apiClient.ClearAuthenticationInfo();
-        }
-        else
-        {
+        } else {
             apiClient.SetAuthenticationInfo(server.getAccessToken(), server.getUserId());
         }
 
@@ -394,9 +392,7 @@ public class ConnectionManager implements IConnectionManager {
         {
             server.setUserId(result.getUser().getId());
             server.setAccessToken(result.getAccessToken());
-        }
-        else
-        {
+        } else {
             server.setUserId(null);
             server.setAccessToken(null);
         }
@@ -425,8 +421,7 @@ public class ConnectionManager implements IConnectionManager {
         ServerCredentials tempCredentials;
         try {
             tempCredentials = credentialProvider.GetCredentials();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             logger.ErrorException("Error getting available servers", ex);
             response.onResponse(new ArrayList<ServerInfo>());
             return;
@@ -452,8 +447,7 @@ public class ConnectionManager implements IConnectionManager {
 
             if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(newServer.getManualAddress())) {
                 newServer.setLastConnectionMode(ConnectionMode.Local);
-            }
-            else {
+            } else {
                 newServer.setLastConnectionMode(ConnectionMode.Manual);
             }
 
@@ -567,8 +561,7 @@ public class ConnectionManager implements IConnectionManager {
             if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(client.getAccessToken()))
             {
                 client.Logout(logoutResponse);
-            }
-            else {
+            } else {
                 logoutResponse.onResponse(false);
             }
         }

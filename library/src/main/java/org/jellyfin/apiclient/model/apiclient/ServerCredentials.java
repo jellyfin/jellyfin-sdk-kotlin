@@ -76,9 +76,7 @@ public class ServerCredentials
 			{
 				existing.setLastConnectionMode(server.getLastConnectionMode());
 			}
-		}
-		else
-		{
+		} else {
 			list.add(server);
 		}
 
