@@ -16,13 +16,10 @@ public class WakeServerResponse extends EmptyResponse {
         this.innerResponse = innerResponse;
     }
 
-    private void OnServerDone(){
-
+    private void OnServerDone() {
         synchronized(doneList) {
-
             doneList.add(new EmptyResponse());
-
-            if (doneList.size() >= count){
+            if (doneList.size() >= count) {
                 innerResponse.onResponse();
             }
         }
@@ -30,14 +27,11 @@ public class WakeServerResponse extends EmptyResponse {
 
     @Override
     public void onResponse() {
-
         OnServerDone();
     }
 
     @Override
     public void onError(Exception ex) {
-
         OnServerDone();
     }
-
 }

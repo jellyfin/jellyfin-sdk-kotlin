@@ -24,9 +24,9 @@ public class FindServersResponse extends Response<ArrayList<ServerInfo>> {
         this.response = response;
     }
 
-    private void OnAny(ArrayList<ServerInfo> servers){
+    private void OnAny(ArrayList<ServerInfo> servers) {
 
-        synchronized (credentials){
+        synchronized (credentials) {
 
             foundServers.addAll(servers);
 

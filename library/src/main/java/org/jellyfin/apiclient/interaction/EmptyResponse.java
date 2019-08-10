@@ -4,12 +4,12 @@ public class EmptyResponse implements IResponse {
 
     private IResponse innerResponse;
 
-    public EmptyResponse(IResponse innerResponse){
+    public EmptyResponse(IResponse innerResponse) {
 
         this.innerResponse = innerResponse;
     }
 
-    public EmptyResponse(){
+    public EmptyResponse() {
 
     }
 
@@ -18,8 +18,8 @@ public class EmptyResponse implements IResponse {
         triggerInnerResponse();
     }
 
-    protected void triggerInnerResponse(){
-        if (innerResponse != null && innerResponse instanceof EmptyResponse){
+    protected void triggerInnerResponse() {
+        if (innerResponse != null && innerResponse instanceof EmptyResponse) {
 
             EmptyResponse emptyResponse = (EmptyResponse)innerResponse;
             emptyResponse.onResponse();
@@ -29,7 +29,7 @@ public class EmptyResponse implements IResponse {
     @Override
     public void onError(Exception ex)
     {
-        if (innerResponse != null){
+        if (innerResponse != null) {
             innerResponse.onError(ex);
         }
     }

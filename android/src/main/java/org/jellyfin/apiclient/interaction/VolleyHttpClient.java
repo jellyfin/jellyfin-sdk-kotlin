@@ -96,10 +96,10 @@ public class VolleyHttpClient implements IAsyncHttpClient {
     {
         int method = Request.Method.GET;
 
-        if (request.getMethod().equalsIgnoreCase("POST")){
+        if (request.getMethod().equalsIgnoreCase("POST")) {
             method = Request.Method.POST;
         }
-        else if (request.getMethod().equalsIgnoreCase("DELETE")){
+        else if (request.getMethod().equalsIgnoreCase("DELETE")) {
             method = Request.Method.DELETE;
         }
 

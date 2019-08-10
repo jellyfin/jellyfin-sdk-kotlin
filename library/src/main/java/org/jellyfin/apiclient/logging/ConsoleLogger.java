@@ -46,7 +46,7 @@ public class ConsoleLogger implements ILogger {
 
         String exceptionMessage = exception.getMessage();
 
-        if (exceptionMessage != null){
+        if (exceptionMessage != null) {
             msg += System.lineSeparator() +  exceptionMessage;
         }
 

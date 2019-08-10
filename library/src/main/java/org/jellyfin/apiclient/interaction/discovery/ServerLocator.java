@@ -90,7 +90,7 @@ public class ServerLocator implements IServerLocator {
         ArrayList<ServerDiscoveryInfo> servers = new ArrayList<ServerDiscoveryInfo>();
         ArrayList<String> foundServerIds = new ArrayList<String>();
 
-        while (timeoutMs > 0){
+        while (timeoutMs > 0) {
 
             long startTime = System.currentTimeMillis();
 
@@ -119,11 +119,11 @@ public class ServerLocator implements IServerLocator {
 
             ServerDiscoveryInfo serverInfo = jsonSerializer.DeserializeFromString(message, ServerDiscoveryInfo.class);
 
-            if (remoteEndpoint != null){
+            if (remoteEndpoint != null) {
                 serverInfo.setEndpointAddress(remoteEndpoint.toString());
             }
 
-            if (foundServerIds.indexOf(serverInfo.getId()) == -1){
+            if (foundServerIds.indexOf(serverInfo.getId()) == -1) {
                 foundServerIds.add(serverInfo.getId());
                 servers.add(serverInfo);
             }

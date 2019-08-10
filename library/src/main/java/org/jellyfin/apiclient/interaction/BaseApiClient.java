@@ -317,7 +317,7 @@ public abstract class BaseApiClient
         }
     }
 
-	protected void SetAuthorizationHttpRequestHeader(String scheme, String parameter){
+	protected void SetAuthorizationHttpRequestHeader(String scheme, String parameter) {
         HttpHeaders.setAuthorizationScheme(scheme);
         HttpHeaders.setAuthorizationParameter(parameter);
     }
@@ -1145,7 +1145,7 @@ public abstract class BaseApiClient
 		return url;
 	}
 
-    public String getIsoString(Date date){
+    public String getIsoString(Date date) {
 
         if (date == null)
         {

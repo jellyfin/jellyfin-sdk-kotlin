@@ -43,7 +43,7 @@ public class AndroidNetworkConnection implements INetworkConnection {
 
             response.onResponse();
         }
-        catch (Exception ex){
+        catch (Exception ex) {
             response.onError(ex);
         }
     }
@@ -71,7 +71,7 @@ public class AndroidNetworkConnection implements INetworkConnection {
 
             response.onResponse();
         }
-        catch (Exception ex){
+        catch (Exception ex) {
             response.onError(ex);
         }
     }

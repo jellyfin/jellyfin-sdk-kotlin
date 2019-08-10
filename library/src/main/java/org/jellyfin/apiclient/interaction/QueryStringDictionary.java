@@ -332,9 +332,9 @@ public class QueryStringDictionary extends java.util.HashMap<String, String>
         for(String key : this.keySet())
         {
             String paramValue = this.get(key);
-			if (paramValue != null && paramValue.length() > 0){
+			if (paramValue != null && paramValue.length() > 0) {
 
-				if (result.length() > 0){
+				if (result.length() > 0) {
 					result += "&";
 				}
 				result += String.format("%1$s=%2$s", key, GetEncodedValue(paramValue));

@@ -18,29 +18,12 @@ public class VolleyErrorListener<T> implements Response.ErrorListener {
 
     @Override
     public void onErrorResponse(VolleyError error) {
-
-        String messagePrefix = "VolleyError "+error.getClass().getName()+": ";
-
+        String messagePrefix = "VolleyError " + error.getClass().getName() + ": ";
         logger.ErrorException(messagePrefix + error.getMessage(), error);
-
-/*                if (error instanceof TimeoutError) {
-                    logger.Error("VolleyError TimeoutError: ", error.getMessage());
-                } else if (error instanceof NoConnectionError) {
-                    logger.Error("VolleyError NoConnectionError: ", error.getMessage());
-                } else if (error instanceof AuthFailureError) {
-                    logger.Error("VolleyError AuthFailureError: ", error.getMessage());
-                } else if (error instanceof ServerError) {
-                    logger.Error("VolleyError ServerError: ", error.getMessage());
-                } else if (error instanceof NetworkError) {
-                    logger.Error("VolleyError NetworkError: ", error.getMessage());
-                } else if (error instanceof ParseError) {
-                    logger.Error("VolleyError ParseError: ", error.getMessage());
-                }*/
 
         HttpException httpException = new HttpException(messagePrefix, error);
 
         if (error.networkResponse != null) {
-
             httpException.setStatusCode(error.networkResponse.statusCode);
             httpException.setHeaders(error.networkResponse.headers);
         }

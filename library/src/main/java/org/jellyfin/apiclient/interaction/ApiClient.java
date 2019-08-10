@@ -56,7 +56,7 @@ public class ApiClient extends BaseApiClient {
     private ApiWebSocket apiWebSocket;
 
     private ServerInfo serverInfo;
-    public ServerInfo getServerInfo(){
+    public ServerInfo getServerInfo() {
         return serverInfo;
     }
 
@@ -98,9 +98,9 @@ public class ApiClient extends BaseApiClient {
         setServerAddress(serverAddress);
     }
 
-    public void ensureWebSocket(){
+    public void ensureWebSocket() {
 
-        if (apiWebSocket == null){
+        if (apiWebSocket == null) {
 
             Logger.Debug("Creating ApiWebSocket");
             apiWebSocket = new ApiWebSocket(getJsonSerializer(), Logger, apiEventListener, this);
@@ -113,7 +113,7 @@ public class ApiClient extends BaseApiClient {
 
         RemoteLogoutReason reason = RemoteLogoutReason.GeneralAccesError;
 
-        if (httpError.getHeaders() != null  ){
+        if (httpError.getHeaders() != null  ) {
 
             String errorCode = httpError.getHeaders().get("X-Application-Error-Code");
 
@@ -164,12 +164,12 @@ public class ApiClient extends BaseApiClient {
         SendRequest(request, fireGlobalEvents, response);
     }
 
-    public void getResponseStream(String address, Response<ResponseStreamInfo> response){
+    public void getResponseStream(String address, Response<ResponseStreamInfo> response) {
 
         getResponseStreamInternal(address, response);
     }
 
-    protected void getResponseStreamInternal(String address, Response<ResponseStreamInfo> response){
+    protected void getResponseStreamInternal(String address, Response<ResponseStreamInfo> response) {
 
         Logger.Debug("Getting response stream from " + address);
 
@@ -185,7 +185,7 @@ public class ApiClient extends BaseApiClient {
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Connection", "Keep-Alive");
 
-            for (String key: this.HttpHeaders.keySet()){
+            for (String key: this.HttpHeaders.keySet()) {
                 conn.setRequestProperty(key, this.HttpHeaders.get(key));
             }
 
@@ -442,7 +442,7 @@ public class ApiClient extends BaseApiClient {
         GetItemsFromUrl(url, response);
     }
 
-    public void closeLiveStream(String liveStreamId, EmptyResponse response){
+    public void closeLiveStream(String liveStreamId, EmptyResponse response) {
 
         // LiveStreams/Close
         // LiveStreamId
@@ -923,7 +923,7 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("info");
         }
 
-        if (apiWebSocket != null && apiWebSocket.IsWebSocketOpen()){
+        if (apiWebSocket != null && apiWebSocket.IsWebSocketOpen()) {
             //apiWebSocket.SendWebSocketMessage("ReportPlaybackProgress", info, response);
             //return;
         }
@@ -1186,7 +1186,7 @@ public class ApiClient extends BaseApiClient {
         dict.Add("pw", password);
 
         url = AddDataFormat(url);
-        Response<String> jsonResponse = new Response<String>(response){
+        Response<String> jsonResponse = new Response<String>(response) {
 
             @Override
             public void onResponse(String jsonResponse) {
@@ -2036,7 +2036,7 @@ public class ApiClient extends BaseApiClient {
             }
         });
 
-        if (apiWebSocket != null && apiWebSocket.IsWebSocketOpenOrConnecting()){
+        if (apiWebSocket != null && apiWebSocket.IsWebSocketOpenOrConnecting()) {
             apiWebSocket.Close();
             apiWebSocket = null;
         }
@@ -2087,7 +2087,7 @@ public class ApiClient extends BaseApiClient {
         QueryStringDictionary dict = new QueryStringDictionary();
 
         dict.AddIfNotNull("Ids", itemIds);
-        String url = GetApiUrl("Playlists/"+playlistId+"/Items", dict);
+        String url = GetApiUrl("Playlists/" + playlistId + "/Items", dict);
 
         PostAsync(url, response);
     }
@@ -2130,7 +2130,7 @@ public class ApiClient extends BaseApiClient {
         QueryStringDictionary dict = new QueryStringDictionary();
 
         dict.AddIfNotNull("EntryIds", entryIds);
-        String url = GetApiUrl("Playlists/"+playlistId+"/Items", dict);
+        String url = GetApiUrl("Playlists/" + playlistId + "/Items", dict);
 
         DeleteAsync(url, response);
     }
@@ -2251,7 +2251,7 @@ public class ApiClient extends BaseApiClient {
             conn.setRequestProperty("Connection", "Keep-Alive");
             conn.setRequestProperty("Content-Type", file.getMimeType());
 
-            for (String key: this.HttpHeaders.keySet()){
+            for (String key: this.HttpHeaders.keySet()) {
                 conn.setRequestProperty(key, this.HttpHeaders.get(key));
             }
 
@@ -2284,12 +2284,10 @@ public class ApiClient extends BaseApiClient {
             String serverResponseMessage = conn.getResponseMessage();
 
             int responseCode = conn.getResponseCode();
-
-            if(responseCode == 200 || responseCode == 204){
-
+            if (responseCode == 200 || responseCode == 204) {
                 progress.reportComplete();
             }
-            else{
+            else {
 
                 HttpException ex = new HttpException(serverResponseMessage);
                 ex.setStatusCode(responseCode);
@@ -2308,7 +2306,7 @@ public class ApiClient extends BaseApiClient {
             //close the streams //
             fileInputStream.close();
 
-            if (dos != null){
+            if (dos != null) {
                 dos.flush();
                 dos.close();
             }
@@ -2332,7 +2330,7 @@ public class ApiClient extends BaseApiClient {
         DeleteAsync(url, response);
     }
 
-    public void UpdateSyncJob(SyncJob job, EmptyResponse response){
+    public void UpdateSyncJob(SyncJob job, EmptyResponse response) {
 
         if (job == null)
         {
@@ -2344,7 +2342,7 @@ public class ApiClient extends BaseApiClient {
         PostAsync(url, job, response);
     }
 
-    public void GetSyncJobItemFile(String id, Response<ResponseStreamInfo> response){
+    public void GetSyncJobItemFile(String id, Response<ResponseStreamInfo> response) {
 
         getResponseStream(getSyncJobItemFileUrl(id), response);
     }
@@ -2385,7 +2383,7 @@ public class ApiClient extends BaseApiClient {
         Send(url, "POST", json, "application/json", new SerializedResponse<>(response, jsonSerializer, SyncDataResponse.class));
     }
 
-    public void getSyncJobItemAdditionalFile(String syncJobItemId, String filename, final Response<ResponseStreamInfo> response){
+    public void getSyncJobItemAdditionalFile(String syncJobItemId, String filename, final Response<ResponseStreamInfo> response) {
 
         QueryStringDictionary dict = new QueryStringDictionary();
 
@@ -2460,13 +2458,13 @@ public class ApiClient extends BaseApiClient {
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Connection", "Keep-Alive");
 
-            for (String key: this.HttpHeaders.keySet()){
+            for (String key: this.HttpHeaders.keySet()) {
                 conn.setRequestProperty(key, this.HttpHeaders.get(key));
             }
 
             final long startTime = System.currentTimeMillis();
 
-            try (InputStream inputStream = conn.getInputStream()){
+            try (InputStream inputStream = conn.getInputStream()) {
 
                 byte[] byteChunk = new byte[4096]; // Or whatever size you want to read in at a time.
                 int n;
@@ -2482,7 +2480,7 @@ public class ApiClient extends BaseApiClient {
 
                 response.onResponse(Math.round(bitrate));
             }
-            catch (IOException ioException){
+            catch (IOException ioException) {
                 response.onError(ioException);
                 return;
             }

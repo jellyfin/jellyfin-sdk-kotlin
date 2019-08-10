@@ -20,7 +20,7 @@ public class ApiWebSocket implements ISocketListener {
     private ApiEventListener apiEventListener;
     private ApiClient apiClient;
 
-    public ApiWebSocket(IJsonSerializer jsonSerializer, ILogger logger, ApiEventListener apiEventListener, ApiClient apiClient){
+    public ApiWebSocket(IJsonSerializer jsonSerializer, ILogger logger, ApiEventListener apiEventListener, ApiClient apiClient) {
 
         this.jsonSerializer = jsonSerializer;
         this.logger = logger;
@@ -33,14 +33,14 @@ public class ApiWebSocket implements ISocketListener {
         EnsureWebSocket();
     }
 
-    public void EnsureWebSocket(){
+    public void EnsureWebSocket() {
 
-        if (!IsWebSocketOpenOrConnecting()){
+        if (!IsWebSocketOpenOrConnecting()) {
             OpenInternal();
         }
     }
 
-    private void OpenInternal(){
+    private void OpenInternal() {
 
         String address = getWebSocketServerAddress();
 
@@ -53,39 +53,35 @@ public class ApiWebSocket implements ISocketListener {
         socketClient.connect();
     }
 
-    public void onOpen(){
-
-
+    public void onOpen() {
     }
 
-    private String getWebSocketServerAddress(){
+    private String getWebSocketServerAddress() {
 
         return apiClient.getApiUrl().replace("http", "ws") + "/embywebsocket?api_key=" + apiClient.getAccessToken() + "&deviceId=" + URLEncoder.encode(apiClient.getDeviceId());
     }
 
-    public void CloseWebSocket(){
+    public void CloseWebSocket() {
 
-        if (IsWebSocketOpen()){
+        if (IsWebSocketOpen()) {
 
             socketClient.close();
         }
     }
 
-    public void onClose(){
-
-
+    public void onClose() {
     }
 
-    public void Close(){
+    public void Close() {
         socketClient.close();
     }
 
-    public void SendWebSocketMessage(String name, EmptyResponse response){
+    public void SendWebSocketMessage(String name, EmptyResponse response) {
 
         SendWebSocketMessage(name, "", response);
     }
 
-    public void SendWebSocketMessage(String name, Object data, EmptyResponse response){
+    public void SendWebSocketMessage(String name, Object data, EmptyResponse response) {
 
         logger.Debug("Sending web socket message: " + name);
         WebSocketMessage<Object> msg = new WebSocketMessage<>();
@@ -98,30 +94,30 @@ public class ApiWebSocket implements ISocketListener {
         SendMessageInternal(json, response);
     }
 
-    private void SendMessageInternal(String message, EmptyResponse response){
-        if (IsWebSocketOpen()){
+    private void SendMessageInternal(String message, EmptyResponse response) {
+        if (IsWebSocketOpen()) {
 
             socketClient.send(message);
             response.onResponse();
         }
-        else{
+        else {
             response.onError(null);
         }
     }
 
     private JavaWebSocketClient socketClient;
-    public boolean IsWebSocketOpen(){
+    public boolean IsWebSocketOpen() {
 
-        if (socketClient != null){
+        if (socketClient != null) {
             return  socketClient.IsWebSocketOpen();
         }
 
         return false;
     }
 
-    public boolean IsWebSocketOpenOrConnecting(){
+    public boolean IsWebSocketOpenOrConnecting() {
 
-        if (socketClient != null){
+        if (socketClient != null) {
             return  socketClient.IsWebSocketOpenOrConnecting();
         }
 
@@ -138,7 +134,7 @@ public class ApiWebSocket implements ISocketListener {
         SendWebSocketMessage("SessionsStop", "", new EmptyResponse());
     }
 
-    public void onMessage(String message){
+    public void onMessage(String message) {
 
         String messageType = GetMessageType(message);
 

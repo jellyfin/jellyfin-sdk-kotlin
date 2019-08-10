@@ -12,10 +12,10 @@ public class ServerInfoDateComparator implements Comparator<ServerInfo> {
         long p1Date= p1.getDateLastAccessed().getTime();
         long p2Date = p2.getDateLastAccessed().getTime();
 
-        if (p1Date > p2Date){
+        if (p1Date > p2Date) {
             return 1;
         }
-        if (p1Date < p2Date){
+        if (p1Date < p2Date) {
             return -1;
         }
 

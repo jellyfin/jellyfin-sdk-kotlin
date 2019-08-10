@@ -83,5 +83,4 @@ public class TimerInfoDto extends BaseTimerInfoDto
 	{
 		ProgramInfo = value;
 	}
-
 }
