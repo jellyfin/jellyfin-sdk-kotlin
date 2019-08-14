@@ -66,14 +66,6 @@ public class ServerCredentials
 			{
 				existing.setName(server.getName());
 			}
-			if (server.getWakeOnLanInfos() != null && server.getWakeOnLanInfos().size() > 0)
-			{
-				existing.setWakeOnLanInfos(new java.util.ArrayList<WakeOnLanInfo>());
-				for (WakeOnLanInfo info : server.getWakeOnLanInfos())
-				{
-					existing.getWakeOnLanInfos().add(info);
-				}
-			}
 			if (server.getLastConnectionMode() != null)
 			{
 				existing.setLastConnectionMode(server.getLastConnectionMode());

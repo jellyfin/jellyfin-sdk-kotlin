@@ -25,7 +25,6 @@ public class ValidateAuthenticationInnerResponse extends Response<String> {
 
     @Override
     public void onResponse(String stringResponse) {
-
         UserDto user = jsonSerializer.DeserializeFromString(stringResponse, UserDto.class);
         connectionManager.OnLocalUserSignIn(user);
         response.onResponse();
@@ -33,7 +32,6 @@ public class ValidateAuthenticationInnerResponse extends Response<String> {
 
     @Override
     public void onError(Exception ex) {
-
         server.setUserId(null);
         server.setAccessToken(null);
         response.onResponse();

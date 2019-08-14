@@ -3,7 +3,6 @@ package org.jellyfin.apiclient.interaction;
 import org.jellyfin.apiclient.interaction.device.IDevice;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
-import org.jellyfin.apiclient.interaction.network.INetworkConnection;
 import org.jellyfin.apiclient.interaction.tasks.CancellationToken;
 import org.jellyfin.apiclient.interaction.tasks.IProgress;
 import org.jellyfin.apiclient.interaction.websocket.ApiWebSocket;
@@ -51,8 +50,6 @@ public class ApiClient extends BaseApiClient {
  
     protected IAsyncHttpClient httpClient;
     private ApiEventListener apiEventListener;
-
-    private INetworkConnection networkConnection;
     private ApiWebSocket apiWebSocket;
 
     private ServerInfo serverInfo;
@@ -87,21 +84,17 @@ public class ApiClient extends BaseApiClient {
         ResetHttpHeaders();
     }
 
-    public void EnableAutomaticNetworking(ServerInfo info, ConnectionMode initialMode, INetworkConnection networkConnection)
+    public void EnableAutomaticNetworking(ServerInfo info, ConnectionMode initialMode)
     {
-        this.networkConnection = networkConnection;
         this.connectionMode = initialMode;
         this.serverInfo = info;
 
         String serverAddress = info.GetAddress(initialMode);
-
         setServerAddress(serverAddress);
     }
 
     public void ensureWebSocket() {
-
         if (apiWebSocket == null) {
-
             Logger.Debug("Creating ApiWebSocket");
             apiWebSocket = new ApiWebSocket(getJsonSerializer(), Logger, apiEventListener, this);
         }
@@ -110,13 +103,9 @@ public class ApiClient extends BaseApiClient {
     }
 
     void OnRemoteLoggedOut(HttpException httpError) {
-
         RemoteLogoutReason reason = RemoteLogoutReason.GeneralAccesError;
-
-        if (httpError.getHeaders() != null  ) {
-
+        if (httpError.getHeaders() != null) {
             String errorCode = httpError.getHeaders().get("X-Application-Error-Code");
-
             if ("ParentalControl".equalsIgnoreCase(errorCode)) {
                 reason = RemoteLogoutReason.ParentalControlRestriction;
             }
