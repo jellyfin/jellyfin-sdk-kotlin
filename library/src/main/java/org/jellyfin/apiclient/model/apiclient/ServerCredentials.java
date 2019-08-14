@@ -1,7 +1,5 @@
 package org.jellyfin.apiclient.model.apiclient;
 
-import org.jellyfin.apiclient.model.extensions.*;
-
 public class ServerCredentials
 {
 	private java.util.ArrayList<ServerInfo> Servers;
@@ -12,25 +10,6 @@ public class ServerCredentials
 	public final void setServers(java.util.ArrayList<ServerInfo> value)
 	{
 		Servers = value;
-	}
-
-	private String ConnectUserId;
-	public final String getConnectUserId()
-	{
-		return ConnectUserId;
-	}
-	public final void setConnectUserId(String value)
-	{
-		ConnectUserId = value;
-	}
-	private String ConnectAccessToken;
-	public final String getConnectAccessToken()
-	{
-		return ConnectAccessToken;
-	}
-	public final void setConnectAccessToken(String value)
-	{
-		ConnectAccessToken = value;
 	}
 
 	public ServerCredentials()
@@ -64,24 +43,14 @@ public class ServerCredentials
 				existing.setDateLastAccessed(server.getDateLastAccessed());
 			}
 
-			existing.setUserLinkType(server.getUserLinkType());
-
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
 			{
 				existing.setAccessToken(server.getAccessToken());
 				existing.setUserId(server.getUserId());
 			}
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getExchangeToken()))
-			{
-				existing.setExchangeToken(server.getExchangeToken());
-			}
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getRemoteAddress()))
 			{
 				existing.setRemoteAddress(server.getRemoteAddress());
-			}
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getConnectServerId()))
-			{
-				existing.setConnectServerId(server.getConnectServerId());
 			}
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getLocalAddress()))
 			{
@@ -107,9 +76,7 @@ public class ServerCredentials
 			{
 				existing.setLastConnectionMode(server.getLastConnectionMode());
 			}
-		}
-		else
-		{
+		} else {
 			list.add(server);
 		}
 

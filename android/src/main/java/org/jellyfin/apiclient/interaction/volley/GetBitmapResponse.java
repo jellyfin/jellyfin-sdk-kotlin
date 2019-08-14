@@ -25,5 +25,4 @@ public class GetBitmapResponse implements ImageLoader.ImageListener {
     public void onErrorResponse(VolleyError error) {
         outerResponse.onError(error);
     }
-
 }

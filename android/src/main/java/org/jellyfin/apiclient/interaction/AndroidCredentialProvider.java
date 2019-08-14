@@ -47,7 +47,7 @@ public class AndroidCredentialProvider implements ICredentialProvider {
         // Commit the edits!
         boolean saved = editor.commit();
 
-        if (!saved){
+        if (!saved) {
             logger.Error("SharedPreferences.Editor failed to save credentials!");
         }
     }

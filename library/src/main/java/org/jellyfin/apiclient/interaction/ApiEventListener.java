@@ -8,11 +8,11 @@ import org.jellyfin.apiclient.model.session.*;
 
 public class ApiEventListener {
 
-    public void onRemoteLoggedOut(ApiClient client, RemoteLogoutReason reason){
+    public void onRemoteLoggedOut(ApiClient client, RemoteLogoutReason reason) {
 
     }
 
-    public void onUserUpdated(ApiClient client, UserDto userDto){
+    public void onUserUpdated(ApiClient client, UserDto userDto) {
 
     }
 
@@ -20,15 +20,15 @@ public class ApiEventListener {
 
     }
 
-    public void onUserConfigurationUpdated(ApiClient client, UserDto userDto){
+    public void onUserConfigurationUpdated(ApiClient client, UserDto userDto) {
 
     }
 
-    public void onBrowseCommand(ApiClient client, BrowseRequest command){
+    public void onBrowseCommand(ApiClient client, BrowseRequest command) {
 
     }
 
-    public void onPlayCommand(ApiClient client, PlayRequest command){
+    public void onPlayCommand(ApiClient client, PlayRequest command) {
 
     }
 

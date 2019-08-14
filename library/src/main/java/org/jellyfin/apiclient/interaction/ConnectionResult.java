@@ -1,7 +1,6 @@
 package org.jellyfin.apiclient.interaction;
 
 import org.jellyfin.apiclient.model.apiclient.*;
-import org.jellyfin.apiclient.model.connect.ConnectUser;
 
 public class ConnectionResult
 {
@@ -31,15 +30,6 @@ public class ConnectionResult
     public final void setApiClient(ApiClient value)
     {
         ApiClient = value;
-    }
-    private ConnectUser connectUser;
-    public final ConnectUser getConnectUser()
-    {
-        return connectUser;
-    }
-    public final void setConnectUser(ConnectUser value)
-    {
-        connectUser = value;
     }
 
     public ConnectionResult()

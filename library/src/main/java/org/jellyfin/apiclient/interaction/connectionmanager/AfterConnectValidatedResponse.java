@@ -34,8 +34,6 @@ public class AfterConnectValidatedResponse extends EmptyResponse {
 
     @Override
     public void onResponse() {
-
         connectionManager.AfterConnectValidated(server, credentials, systemInfo, connectionMode, false, options, response);
     }
-
 }

@@ -45,14 +45,14 @@ public class JavaWebSocketClient extends WebSocketClient {
         _logger.ErrorException("Web socket error.", e);
     }
 
-    public boolean IsWebSocketOpen(){
+    public boolean IsWebSocketOpen() {
 
         WebSocket.READYSTATE state = getReadyState();
 
         return  state == WebSocket.READYSTATE.OPEN;
     }
 
-    public boolean IsWebSocketOpenOrConnecting(){
+    public boolean IsWebSocketOpenOrConnecting() {
 
         WebSocket.READYSTATE state = getReadyState();
 

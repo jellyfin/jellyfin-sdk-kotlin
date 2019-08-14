@@ -23,7 +23,7 @@ public class AndroidApiClient extends ApiClient {
         super(httpClient, jsonSerializer, logger, serverAddress, clientName, applicationVersion, device, apiEventListener);
     }
 
-    private VolleyHttpClient getAndroidHttpClient(){
+    private VolleyHttpClient getAndroidHttpClient() {
         return (VolleyHttpClient)httpClient;
     }
 
@@ -52,7 +52,7 @@ public class AndroidApiClient extends ApiClient {
     }
 
     @Override
-    public void getResponseStream(final String address, final Response<ResponseStreamInfo> response){
+    public void getResponseStream(final String address, final Response<ResponseStreamInfo> response) {
 
         Thread thread = new Thread(new Runnable() {
             @Override

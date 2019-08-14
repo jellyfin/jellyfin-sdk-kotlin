@@ -45,17 +45,13 @@ public class TestNextConnectionModeTryConnectResponse extends Response<PublicSys
 
     @Override
     public void onResponse(PublicSystemInfo result) {
-
-        if (result != null){
+        if (result != null) {
             if (this.server.getId() != null && !this.server.getId().equals(result.getId())) {
                 onError(new Exception("Invalid server"));
             } else {
                 connectionManager.OnSuccessfulConnection(server, result, mode, options, response);
             }
-        }
-
-        else{
-
+        } else {
             logger.Error("Somehow we got into TestNextConnectionModeTryConnectResponse.onResponse with a null response.");
             onError(new Exception());
         }
@@ -63,8 +59,6 @@ public class TestNextConnectionModeTryConnectResponse extends Response<PublicSys
 
     @Override
     public void onError(Exception ex) {
-
         connectionManager.TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
     }
-
 }

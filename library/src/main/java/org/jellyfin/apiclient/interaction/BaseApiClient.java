@@ -310,14 +310,12 @@ public abstract class BaseApiClient
         {
             ClearHttpRequestHeader("Authorization");
             SetAuthorizationHttpRequestHeader(null, null);
-        }
-        else
-        {
+        } else {
             SetAuthorizationHttpRequestHeader(getAuthorizationScheme(), authValue);
         }
     }
 
-	protected void SetAuthorizationHttpRequestHeader(String scheme, String parameter){
+	protected void SetAuthorizationHttpRequestHeader(String scheme, String parameter) {
         HttpHeaders.setAuthorizationScheme(scheme);
         HttpHeaders.setAuthorizationParameter(parameter);
     }
@@ -974,9 +972,7 @@ public abstract class BaseApiClient
 		{
 			backdropItemId = item.getParentBackdropItemId();
 			backdropImageTags = item.getParentBackdropImageTags();
-		}
-		else
-		{
+		} else {
 			backdropItemId = item.getId();
 			backdropImageTags = item.getBackdropImageTags();
 		}
@@ -1136,16 +1132,14 @@ public abstract class BaseApiClient
 		if (url.indexOf('?') == -1)
 		{
 			url += "?format=" + format;
-		}
-		else
-		{
+		} else {
 			url += "&format=" + format;
 		}
 
 		return url;
 	}
 
-    public String getIsoString(Date date){
+    public String getIsoString(Date date) {
 
         if (date == null)
         {

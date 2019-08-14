@@ -34,7 +34,7 @@ public class VolleyStringRequest extends StringRequest {
     @Override
     public Map<String, String> getParams() throws AuthFailureError {
 
-        if (request.getPostData() == null){
+        if (request.getPostData() == null) {
             super.getParams();
         }
 
@@ -63,7 +63,7 @@ public class VolleyStringRequest extends StringRequest {
 
         String postContent = request.getRequestContent();
 
-        if (postContent == null){
+        if (postContent == null) {
             return super.getBody();
         }
 
@@ -93,7 +93,7 @@ public class VolleyStringRequest extends StringRequest {
     {
         HttpHeaders requestHeaders = request.getRequestHeaders();
 
-        for (String key : requestHeaders.keySet()){
+        for (String key : requestHeaders.keySet()) {
             headers.put(key, requestHeaders.get(key));
         }
 
@@ -114,11 +114,11 @@ public class VolleyStringRequest extends StringRequest {
 
     private void AddData(Map<String, String> postParams, HttpRequest request)
     {
-        if (request.getPostData() == null){
+        if (request.getPostData() == null) {
             return;
         }
 
-        for (String key : request.getPostData().keySet()){
+        for (String key : request.getPostData().keySet()) {
             postParams.put(key, request.getPostData().get(key));
         }
     }

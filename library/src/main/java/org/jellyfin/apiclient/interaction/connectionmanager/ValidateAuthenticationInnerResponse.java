@@ -30,6 +30,7 @@ public class ValidateAuthenticationInnerResponse extends Response<String> {
         connectionManager.OnLocalUserSignIn(user);
         response.onResponse();
     }
+
     @Override
     public void onError(Exception ex) {
 
@@ -37,5 +38,4 @@ public class ValidateAuthenticationInnerResponse extends Response<String> {
         server.setAccessToken(null);
         response.onResponse();
     }
-
 }

@@ -49,7 +49,7 @@ public class ImageCacheManager{
     private RequestQueue queue;
     private String uniqueName;
 
-    private void init(){
+    private void init() {
 
         mImageCache = new LruBitmapCache();
 
@@ -72,7 +72,6 @@ public class ImageCacheManager{
         }
     }
 
-
     /**
      * 	Executes and image load
      * @param url
@@ -80,7 +79,7 @@ public class ImageCacheManager{
      * @param listener
      * 		Listener for completion
      */
-    public void getImage(String url, ImageLoader.ImageListener listener){
+    public void getImage(String url, ImageLoader.ImageListener listener) {
         mImageLoader.get(url, listener);
     }
 
@@ -90,7 +89,7 @@ public class ImageCacheManager{
      */
     public ImageLoader getImageLoader() {
 
-        if (mImageLoader == null){
+        if (mImageLoader == null) {
             init();
         }
         return mImageLoader;
@@ -103,9 +102,7 @@ public class ImageCacheManager{
      * @return
      * 		cache key value
      */
-    private String createKey(String url){
+    private String createKey(String url) {
         return String.valueOf(url.hashCode());
     }
-
-
 }

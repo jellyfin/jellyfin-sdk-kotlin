@@ -32,7 +32,7 @@ public class AndroidConnectionManager extends ConnectionManager {
         SaveAppInfo(context);
     }
 
-    private void SaveAppInfo(Context context){
+    private void SaveAppInfo(Context context) {
 
         SharedPreferences preferences = context.getSharedPreferences("AndroidConnectionManager", Context.MODE_PRIVATE | Context.MODE_MULTI_PROCESS);
 
@@ -69,7 +69,7 @@ public class AndroidConnectionManager extends ConnectionManager {
         thread.start();
     }
 
-    void FindServersAndroid(final Response<ArrayList<ServerInfo>> response){
+    void FindServersAndroid(final Response<ArrayList<ServerInfo>> response) {
         FindServersInternal(response);
     }
 }

@@ -27,11 +27,10 @@ public class SerializedResponse<T> extends Response<String> {
         this.logger = logger;
     }
 
-
     @Override
     public void onResponse(String result) {
 
-        if (url != null){
+        if (url != null) {
             logger.Debug("Received response from %s", url);
         }
 
@@ -43,8 +42,7 @@ public class SerializedResponse<T> extends Response<String> {
         }
     }
 
-    protected void onSerializedResponse(T obj){
+    protected void onSerializedResponse(T obj) {
         innerResponse.onResponse(obj);
     }
-
 }

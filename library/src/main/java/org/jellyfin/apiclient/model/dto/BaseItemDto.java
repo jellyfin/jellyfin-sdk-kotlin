@@ -1292,9 +1292,7 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		if (value == null)
 		{
 			setStatus(null);
-		}
-		else
-		{
+		} else {
 			setStatus(value.toString());
 		}
 	}
@@ -1317,9 +1315,7 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		if (value == null)
 		{
 			setStatus(null);
-		}
-		else
-		{
+		} else {
 			setStatus(value.toString());
 		}
 	}

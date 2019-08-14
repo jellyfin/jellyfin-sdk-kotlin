@@ -11,5 +11,4 @@ public class BasicWebSocketMessage {
     {
         MessageType = value;
     }
-
 }

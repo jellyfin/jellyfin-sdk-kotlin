@@ -8,5 +8,3 @@ import org.jellyfin.apiclient.model.querying.QueryResult;
  */
 public class ItemReviewsResult extends QueryResult<ItemReview> {
 }
-
-
