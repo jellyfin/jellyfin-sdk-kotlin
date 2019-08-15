@@ -96,10 +96,10 @@ public class VolleyHttpClient implements IAsyncHttpClient {
     {
         int method = Request.Method.GET;
 
-        if (request.getMethod().equalsIgnoreCase("POST")) {
+        if ("POST".equalsIgnoreCase(request.getMethod())) {
             method = Request.Method.POST;
         }
-        else if (request.getMethod().equalsIgnoreCase("DELETE")) {
+        else if ("DELETE".equalsIgnoreCase(request.getMethod())) {
             method = Request.Method.DELETE;
         }
 
@@ -130,7 +130,6 @@ public class VolleyHttpClient implements IAsyncHttpClient {
     }
 
     public void getBitmap(String url, final Response<Bitmap> outerResponse) {
-
         getImageLoader().get(url, new GetBitmapResponse(outerResponse));
     }
 }

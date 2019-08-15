@@ -517,7 +517,7 @@ public class DeviceProfile
 			}
 
 			String tempVar = i.getVideoCodec();
-			if (!videoCodec.equalsIgnoreCase((tempVar != null) ? tempVar : ""))
+			if (!StringHelper.equalsIgnoreCase(videoCodec, (tempVar != null) ? tempVar : ""))
 			{
 				continue;
 			}

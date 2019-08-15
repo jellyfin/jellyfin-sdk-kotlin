@@ -1,5 +1,7 @@
 package org.jellyfin.apiclient.model.apiclient;
 
+import org.jellyfin.apiclient.model.extensions.StringHelper;
+
 public class ServerCredentials
 {
 	private java.util.ArrayList<ServerInfo> Servers;
@@ -89,7 +91,7 @@ public class ServerCredentials
 
 		for (ServerInfo server : servers)
 		{
-			if (id.equalsIgnoreCase(server.getId()))
+			if (StringHelper.equalsIgnoreCase(id, server.getId()))
 			{
 				return index;
 			}
@@ -104,7 +106,7 @@ public class ServerCredentials
 	{
 		for (ServerInfo server : getServers())
 		{
-			if (id.equalsIgnoreCase(server.getId()))
+			if (StringHelper.equalsIgnoreCase(id, server.getId()))
 			{
 				return server;
 			}

@@ -117,7 +117,7 @@ public class ApiClient extends BaseApiClient {
 
             String errorCode = httpError.getHeaders().get("X-Application-Error-Code");
 
-            if (errorCode.equalsIgnoreCase("ParentalControl")) {
+            if ("ParentalControl".equalsIgnoreCase(errorCode)) {
                 reason = RemoteLogoutReason.ParentalControlRestriction;
             }
         }

@@ -10,6 +10,7 @@ import org.jellyfin.apiclient.interaction.network.INetworkConnection;
 import org.jellyfin.apiclient.model.apiclient.*;
 import org.jellyfin.apiclient.model.dto.IHasServerId;
 import org.jellyfin.apiclient.model.dto.UserDto;
+import org.jellyfin.apiclient.model.extensions.StringHelper;
 import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.model.serialization.IJsonSerializer;
 import org.jellyfin.apiclient.model.session.ClientCapabilities;
@@ -80,7 +81,7 @@ public class ConnectionManager implements IConnectionManager {
     public ServerInfo getServerInfo(String serverId) {
         final ServerCredentials credentials = credentialProvider.GetCredentials();
         for (ServerInfo server : credentials.getServers()) {
-            if (server.getId().equalsIgnoreCase(serverId)) {
+            if (StringHelper.equalsIgnoreCase(server.getId(), serverId)) {
                 return  server;
             }
         }
@@ -200,11 +201,11 @@ public class ConnectionManager implements IConnectionManager {
 
         else if (mode == ConnectionMode.Manual) {
 
-            if (address.equalsIgnoreCase(server.getLocalAddress())) {
+            if (StringHelper.equalsIgnoreCase(address, server.getLocalAddress())) {
                 logger.Debug("Skipping manual connection test because the address is the same as the local address");
                 skipTest = true;
             }
-            else if (address.equalsIgnoreCase(server.getRemoteAddress())) {
+            else if (StringHelper.equalsIgnoreCase(address, server.getRemoteAddress())) {
                 logger.Debug("Skipping manual connection test because the address is the same as the remote address");
                 skipTest = true;
             }
@@ -574,7 +575,7 @@ public class ConnectionManager implements IConnectionManager {
 
         ServerInfo server = null;
         for(ServerInfo current : existing) {
-            if (current.getId().equalsIgnoreCase(id)) {
+            if (StringHelper.equalsIgnoreCase(current.getId(), id)) {
                 server = current;
                 break;
             }
@@ -594,8 +595,7 @@ public class ConnectionManager implements IConnectionManager {
         ArrayList<ServerInfo> newList = new ArrayList<>();
 
         for(ServerInfo current : existing) {
-
-            if (!current.getId().equalsIgnoreCase(id)) {
+            if (!StringHelper.equalsIgnoreCase(current.getId(), id)) {
                 newList.add(current);
             }
         }

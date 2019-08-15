@@ -1689,7 +1689,7 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	*/
 	public final boolean IsType(String type)
 	{
-		return getType().equalsIgnoreCase(type);
+		return StringHelper.equalsIgnoreCase(getType(), type);
 	}
 
 	/**
@@ -2483,7 +2483,7 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	*/
 	public final boolean getIsVideo()
 	{
-		return getMediaType().equalsIgnoreCase(org.jellyfin.apiclient.model.entities.MediaType.Video);
+		return org.jellyfin.apiclient.model.entities.MediaType.Video.equalsIgnoreCase(getMediaType());
 	}
 
 	/**
@@ -2493,7 +2493,7 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	*/
 	public final boolean getIsAudio()
 	{
-		return getMediaType().equalsIgnoreCase(org.jellyfin.apiclient.model.entities.MediaType.Audio);
+		return org.jellyfin.apiclient.model.entities.MediaType.Audio.equalsIgnoreCase(getMediaType());
 	}
 
 	/**
@@ -2503,7 +2503,7 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	*/
 	public final boolean getIsGame()
 	{
-		return getMediaType().equalsIgnoreCase(org.jellyfin.apiclient.model.entities.MediaType.Game);
+		return org.jellyfin.apiclient.model.entities.MediaType.Game.equalsIgnoreCase(getMediaType());
 	}
 
 	/**
@@ -2513,7 +2513,7 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	*/
 	public final boolean getIsPerson()
 	{
-		return getType().equalsIgnoreCase("Person");
+		return "Person".equalsIgnoreCase(getType());
 	}
 
 	/**
@@ -2523,37 +2523,37 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	*/
 	public final boolean getIsRoot()
 	{
-		return getType().equalsIgnoreCase("AggregateFolder");
+		return "AggregateFolder".equalsIgnoreCase(getType());
 	}
 
 	public final boolean getIsMusicGenre()
 	{
-		return getType().equalsIgnoreCase("MusicGenre");
+		return "MusicGenre".equalsIgnoreCase(getType());
 	}
 
 	public final boolean getIsGameGenre()
 	{
-		return getType().equalsIgnoreCase("GameGenre");
+		return "GameGenre".equalsIgnoreCase(getType());
 	}
 
 	public final boolean getIsGenre()
 	{
-		return getType().equalsIgnoreCase("Genre");
+		return "Genre".equalsIgnoreCase(getType());
 	}
 
 	public final boolean getIsArtist()
 	{
-		return getType().equalsIgnoreCase("MusicArtist");
+		return "MusicArtist".equalsIgnoreCase(getType());
 	}
 
 	public final boolean getIsAlbum()
 	{
-		return getType().equalsIgnoreCase("MusicAlbum");
+		return "MusicAlbum".equalsIgnoreCase(getType());
 	}
 
 	public final boolean getIsStudio()
 	{
-		return getType().equalsIgnoreCase("Studio");
+		return "Studio".equalsIgnoreCase(getType());
 	}
 
 	public final boolean getSupportsSimilarItems()
