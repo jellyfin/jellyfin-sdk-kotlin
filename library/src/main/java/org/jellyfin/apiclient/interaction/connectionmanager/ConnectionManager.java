@@ -418,21 +418,16 @@ public class ConnectionManager implements IConnectionManager {
     public void GetAvailableServers(final Response<ArrayList<ServerInfo>> response)
     {
         logger.Debug("Getting saved servers via credential provider");
-        ServerCredentials tempCredentials;
+        ServerCredentials credentials;
         try {
-            tempCredentials = credentialProvider.GetCredentials();
+            credentials = credentialProvider.GetCredentials();
         } catch (Exception ex) {
             logger.ErrorException("Error getting available servers", ex);
-            response.onResponse(new ArrayList<ServerInfo>());
+            response.onResponse(new ArrayList<>());
             return;
         }
-        final ServerCredentials credentials = tempCredentials;
 
-        final int numTasks = 2;
-        final int[] numTasksCompleted = {0};
-        final ArrayList<ServerInfo> foundServers = new ArrayList<ServerInfo>();
-
-        Response<ArrayList<ServerInfo>> findServersResponse = new FindServersResponse(this, credentials, foundServers, numTasksCompleted, numTasks, response);
+        Response<ArrayList<ServerInfo>> findServersResponse = new FindServersResponse(this, credentials, new ArrayList<>(), response);
 
         logger.Debug("Scanning network for local servers");
 
@@ -442,9 +437,7 @@ public class ConnectionManager implements IConnectionManager {
     void OnGetServerResponse(ServerCredentials credentials,
                                      ArrayList<ServerInfo> foundServers,
                                      Response<ArrayList<ServerInfo>> response) {
-
         for(ServerInfo newServer : foundServers) {
-
             if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(newServer.getManualAddress())) {
                 newServer.setLastConnectionMode(ConnectionMode.Local);
             } else {
@@ -464,7 +457,7 @@ public class ConnectionManager implements IConnectionManager {
 
         credentialProvider.SaveCredentials(credentials);
 
-        ArrayList<ServerInfo> clone = new ArrayList<ServerInfo>();
+        ArrayList<ServerInfo> clone = new ArrayList<>();
         clone.addAll(credentials.getServers());
 
         response.onResponse(clone);
