@@ -18,11 +18,8 @@ public class FindServersInnerResponse extends Response<ArrayList<ServerDiscovery
 
     @Override
     public void onResponse(ArrayList<ServerDiscoveryInfo> foundServers) {
-
-        ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
-
+        ArrayList<ServerInfo> servers = new ArrayList<>();
         for (int i = 0; i < foundServers.size(); i++) {
-
             ServerInfo server = new ServerInfo();
             ServerDiscoveryInfo foundServer = foundServers.get(i);
 
@@ -43,9 +40,7 @@ public class FindServersInnerResponse extends Response<ArrayList<ServerDiscovery
 
     @Override
     public void onError(Exception ex) {
-
-        ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
-
+        ArrayList<ServerInfo> servers = new ArrayList<>();
         response.onResponse(servers);
     }
 
