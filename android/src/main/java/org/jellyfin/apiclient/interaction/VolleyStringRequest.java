@@ -11,6 +11,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VolleyStringRequest extends StringRequest {
+    /* HTTP Headers */
+    private static final String AUTHORIZATION_HEADER = "X-Emby-Authorization";
+    private static final String CONTENT_TYPE_HEADER = "Content-Type";
+    /* Content Types */
+    private static final String JSON_TYPE = "application/json";
+    private static final String TEXT_TYPE = "text/plain";
+    private static final String VTT_TYPE = "text/vtt";
 
     private HttpRequest request;
 
@@ -60,7 +67,6 @@ public class VolleyStringRequest extends StringRequest {
      * @throws AuthFailureError in the event of auth failure
      */
     public byte[] getBody() throws AuthFailureError {
-
         String postContent = request.getRequestContent();
 
         if (postContent == null) {
@@ -72,18 +78,11 @@ public class VolleyStringRequest extends StringRequest {
 
     @Override
     protected com.android.volley.Response<String> parseNetworkResponse(NetworkResponse response) {
-
-        String contentType = response.headers.get("Content-Type");
+        String contentType = response.headers.get(CONTENT_TYPE_HEADER);
 
         // This is a hack to make volley decode in UTF-8
-        if (contentType.equalsIgnoreCase("application/json")) {
-            response.headers.put("Content-Type", contentType + "; charset=UTF-8");
-        }
-        else if (contentType.equalsIgnoreCase("text/plain")) {
-            response.headers.put("Content-Type", contentType + "; charset=UTF-8");
-        }
-        else if (contentType.equalsIgnoreCase("text/vtt")) {
-            response.headers.put("Content-Type", contentType + "; charset=UTF-8");
+        if (JSON_TYPE.equalsIgnoreCase(contentType) || TEXT_TYPE.equalsIgnoreCase(contentType) || VTT_TYPE.equalsIgnoreCase(contentType)) {
+            response.headers.put(CONTENT_TYPE_HEADER, contentType + "; charset=UTF-8");
         }
 
         return super.parseNetworkResponse(response);
@@ -99,7 +98,7 @@ public class VolleyStringRequest extends StringRequest {
 
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(request.getRequestContentType()))
         {
-            headers.put("Content-Type", request.getRequestContentType());
+            headers.put(CONTENT_TYPE_HEADER, request.getRequestContentType());
         }
 
         String parameter = requestHeaders.getAuthorizationParameter();
@@ -108,7 +107,7 @@ public class VolleyStringRequest extends StringRequest {
         {
             String value = requestHeaders.getAuthorizationScheme() + " " + parameter;
 
-            headers.put("X-Emby-Authorization", value);
+            headers.put(AUTHORIZATION_HEADER, value);
         }
     }
 

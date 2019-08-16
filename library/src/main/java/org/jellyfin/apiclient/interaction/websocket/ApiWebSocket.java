@@ -139,109 +139,109 @@ public class ApiWebSocket implements ISocketListener {
 
         logger.Info("Received web socket message: %s", messageType);
 
-        if (messageType.equalsIgnoreCase("LibraryChanged"))
+        if ("LibraryChanged".equalsIgnoreCase(messageType))
         {
             LibraryUpdateInfo obj = jsonSerializer.DeserializeFromString(message, LibraryUpdateInfo.class);
             apiEventListener.onLibraryChanged(apiClient, obj);
 
         }
-        else if (messageType.equalsIgnoreCase("RestartRequired"))
+        else if ("RestartRequired".equalsIgnoreCase(messageType))
         {
 
         }
-        else if (messageType.equalsIgnoreCase("ServerRestarting"))
+        else if ("ServerRestarting".equalsIgnoreCase(messageType))
         {
 
         }
-        else if (messageType.equalsIgnoreCase("ServerShuttingDown"))
+        else if ("ServerShuttingDown".equalsIgnoreCase(messageType))
         {
 
         }
-        else if (messageType.equalsIgnoreCase("UserDeleted"))
+        else if ("UserDeleted".equalsIgnoreCase(messageType))
         {
 
         }
-        else if (messageType.equalsIgnoreCase("ScheduledTaskEnded"))
+        else if ("ScheduledTaskEnded".equalsIgnoreCase(messageType))
         {
 
         }
-        else if (messageType.equalsIgnoreCase("PackageInstalling"))
+        else if ("PackageInstalling".equalsIgnoreCase(messageType))
         {
 
         }
-        else if (messageType.equalsIgnoreCase("PackageInstallationFailed"))
+        else if ("PackageInstallationFailed".equalsIgnoreCase(messageType))
         {
 
         }
-        else if (messageType.equalsIgnoreCase("PackageInstallationCompleted"))
+        else if ("PackageInstallationCompleted".equalsIgnoreCase(messageType))
         {
 
         }
-        else if (messageType.equalsIgnoreCase("PackageInstallationCancelled"))
+        else if ("PackageInstallationCancelled".equalsIgnoreCase(messageType))
         {
 
         }
-        else if (messageType.equalsIgnoreCase("UserUpdated"))
+        else if ("UserUpdated".equalsIgnoreCase(messageType))
         {
             UserDtoMessage obj = jsonSerializer.DeserializeFromString(message, UserDtoMessage.class);
             apiEventListener.onUserUpdated(apiClient, obj.getData());
         }
-        else if (messageType.equalsIgnoreCase("UserConfigurationUpdated"))
+        else if ("UserConfigurationUpdated".equalsIgnoreCase(messageType))
         {
             UserDtoMessage obj = jsonSerializer.DeserializeFromString(message, UserDtoMessage.class);
             apiEventListener.onUserConfigurationUpdated(apiClient, obj.getData());
         }
-        else if (messageType.equalsIgnoreCase("PluginUninstalled"))
+        else if ("PluginUninstalled".equalsIgnoreCase(messageType))
         {
 
         }
-        else if (messageType.equalsIgnoreCase("Play"))
+        else if ("Play".equalsIgnoreCase(messageType))
         {
             PlayRequestMessage obj = jsonSerializer.DeserializeFromString(message, PlayRequestMessage.class);
             apiEventListener.onPlayCommand(apiClient, obj.getData());
         }
-        else if (messageType.equalsIgnoreCase("Playstate"))
+        else if ("Playstate".equalsIgnoreCase(messageType))
         {
             PlaystateRequestMessage obj = jsonSerializer.DeserializeFromString(message, PlaystateRequestMessage.class);
             apiEventListener.onPlaystateCommand(apiClient, obj.getData());
         }
-        else if (messageType.equalsIgnoreCase("NotificationAdded"))
+        else if ("NotificationAdded".equalsIgnoreCase(messageType))
         {
 
         }
-        else if (messageType.equalsIgnoreCase("NotificationUpdated"))
+        else if ("NotificationUpdated".equalsIgnoreCase(messageType))
         {
 
         }
-        else if (messageType.equalsIgnoreCase("NotificationsMarkedRead"))
+        else if ("NotificationsMarkedRead".equalsIgnoreCase(messageType))
         {
 
         }
-        else if (messageType.equalsIgnoreCase("GeneralCommand"))
+        else if ("GeneralCommand".equalsIgnoreCase(messageType))
         {
             OnGeneralCommand(message);
         }
-        else if (messageType.equalsIgnoreCase("Sessions"))
+        else if ("Sessions".equalsIgnoreCase(messageType))
         {
             SessionUpdatesEventMessage obj = jsonSerializer.DeserializeFromString(message, SessionUpdatesEventMessage.class);
             apiEventListener.onSessionsUpdated(apiClient, obj.getData());
         }
-        else if (messageType.equalsIgnoreCase("UserDataChanged"))
+        else if ("UserDataChanged".equalsIgnoreCase(messageType))
         {
             UserDataChangeMessage obj = jsonSerializer.DeserializeFromString(message, UserDataChangeMessage.class);
             apiEventListener.onUserDataChanged(apiClient, obj.getData());
         }
-        else if (messageType.equalsIgnoreCase("SessionEnded"))
+        else if ("SessionEnded".equalsIgnoreCase(messageType))
         {
             SessionInfoMessage obj = jsonSerializer.DeserializeFromString(message, SessionInfoMessage.class);
             apiEventListener.onSessionEnded(apiClient, obj.getData());
         }
-        else if (messageType.equalsIgnoreCase("PlaybackStart"))
+        else if ("PlaybackStart".equalsIgnoreCase(messageType))
         {
             SessionInfoMessage obj = jsonSerializer.DeserializeFromString(message, SessionInfoMessage.class);
             apiEventListener.onPlaybackStart(apiClient, obj.getData());
         }
-        else if (messageType.equalsIgnoreCase("PlaybackStopped"))
+        else if ("PlaybackStopped".equalsIgnoreCase(messageType))
         {
             SessionInfoMessage obj = jsonSerializer.DeserializeFromString(message, SessionInfoMessage.class);
             apiEventListener.onPlaybackStopped(apiClient, obj.getData());

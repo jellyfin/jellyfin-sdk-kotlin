@@ -125,9 +125,9 @@ public class ConditionProcessor
 			case EqualsAny:
 				return ListHelper.ContainsIgnoreCase(expected.split("[|]", -1), currentValue);
 			case Equals:
-				return currentValue.equalsIgnoreCase(expected);
+				return StringHelper.equalsIgnoreCase(currentValue, expected);
 			case NotEquals:
-				return !currentValue.equalsIgnoreCase(expected);
+				return !StringHelper.equalsIgnoreCase(currentValue, expected);
 			default:
 				throw new IllegalStateException("Unexpected ProfileConditionType");
 		}

@@ -494,7 +494,7 @@ public class MediaStream
 		// sub indicates an external .sub file
 		Pattern compatible = Pattern.compile(".*[pgs|dvd|dvbsub].*]", Pattern.CASE_INSENSITIVE);
 		Matcher matcher = compatible.matcher(codec);
-		return !matcher.matches() && !codec.equalsIgnoreCase("sub");
+		return !matcher.matches() && !"sub".equalsIgnoreCase(codec);
 	}
 
 	public final boolean SupportsSubtitleConversionTo(String codec)
@@ -505,26 +505,7 @@ public class MediaStream
 		}
 
 		// Can't convert from this 
-		if (getCodec().equalsIgnoreCase("ass"))
-		{
-			return false;
-		}
-		if (getCodec().equalsIgnoreCase("ssa"))
-		{
-			return false;
-		}
-
-		// Can't convert to this 
-		if (codec.equalsIgnoreCase("ass"))
-		{
-			return false;
-		}
-		if (codec.equalsIgnoreCase("ssa"))
-		{
-			return false;
-		}
-
-		return true;
+		return !("ass".equalsIgnoreCase(getCodec()) || "ssa".equalsIgnoreCase(getCodec()) || "ass".equalsIgnoreCase(codec) || "ssa".equalsIgnoreCase(codec));
 	}
 
 	/** 
