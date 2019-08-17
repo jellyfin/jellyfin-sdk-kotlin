@@ -30,8 +30,8 @@ public class FindServersInnerResponse extends Response<ArrayList<ServerDiscovery
             if (localAddress == null) {
                 localAddress = foundServer.getAddress();
             }
-            server.setLocalAddress(localAddress);
 
+            server.setLocalAddress(localAddress);
             servers.add(server);
         }
 
@@ -46,14 +46,12 @@ public class FindServersInnerResponse extends Response<ArrayList<ServerDiscovery
 
     private String ConvertEndpointAddressToManualAddress(ServerDiscoveryInfo info) throws NumberFormatException
     {
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getAddress()) && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getEndpointAddress()))
-        {
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getAddress()) && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getEndpointAddress())) {
             String address = info.getEndpointAddress().split(":")[0];
 
-            // Determine the port, if any
+            // Determine the port
             String[] parts = info.getAddress().split(":");
-            if (parts.length > 1)
-            {
+            if (parts.length > 1) {
                 String portString = parts[parts.length - 1];
                 address += ":" + Integer.parseInt(portString);
             }

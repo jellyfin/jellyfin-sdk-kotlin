@@ -26,8 +26,7 @@ public class LogoutAllResponse extends EmptyResponse {
         logger.Debug("Updating saved credentials for all servers");
         ServerCredentials credentials = credentialProvider.GetCredentials();
 
-        ArrayList<ServerInfo> servers = new ArrayList<ServerInfo>();
-
+        ArrayList<ServerInfo> servers = new ArrayList<>();
         for (ServerInfo server : credentials.getServers()) {
             server.setAccessToken(null);
             server.setUserId(null);
