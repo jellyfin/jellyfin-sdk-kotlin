@@ -86,10 +86,6 @@ public class ServerInfo
 		LastConnectionMode = value;
 	}
 
-	public ServerInfo()
-	{
-	}
-
 	public final void ImportInfo(PublicSystemInfo systemInfo)
 	{
 		if (systemInfo == null) {
