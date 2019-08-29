@@ -67,15 +67,6 @@ public class ServerInfo
 	{
 		AccessToken = value;
 	}
-	private java.util.ArrayList<WakeOnLanInfo> WakeOnLanInfos;
-	public final java.util.ArrayList<WakeOnLanInfo> getWakeOnLanInfos()
-	{
-		return WakeOnLanInfos;
-	}
-	public final void setWakeOnLanInfos(java.util.ArrayList<WakeOnLanInfo> value)
-	{
-		WakeOnLanInfos = value;
-	}
 	private java.util.Date DateLastAccessed = new java.util.Date(0);
 	public final java.util.Date getDateLastAccessed()
 	{
@@ -95,11 +86,6 @@ public class ServerInfo
 		LastConnectionMode = value;
 	}
 
-	public ServerInfo()
-	{
-		setWakeOnLanInfos(new java.util.ArrayList<WakeOnLanInfo>());
-	}
-
 	public final void ImportInfo(PublicSystemInfo systemInfo)
 	{
 		if (systemInfo == null) {
@@ -116,20 +102,6 @@ public class ServerInfo
 		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(systemInfo.getWanAddress()))
 		{
 			setRemoteAddress(systemInfo.getWanAddress());
-		}
-
-		SystemInfo fullSystemInfo = (SystemInfo)((systemInfo instanceof SystemInfo) ? systemInfo : null);
-
-		if (fullSystemInfo != null)
-		{
-			setWakeOnLanInfos(new java.util.ArrayList<WakeOnLanInfo>());
-
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(fullSystemInfo.getMacAddress()))
-			{
-				WakeOnLanInfo tempVar = new WakeOnLanInfo();
-				tempVar.setMacAddress(fullSystemInfo.getMacAddress());
-				getWakeOnLanInfos().add(tempVar);
-			}
 		}
 	}
 

@@ -33,7 +33,6 @@ public class ValidateAuthenticationResponse extends Response<String> {
 
     @Override
     public void onResponse(String jsonResponse) {
-
         SystemInfo obj = jsonSerializer.DeserializeFromString(jsonResponse, SystemInfo.class);
         server.ImportInfo(obj);
 
@@ -49,7 +48,6 @@ public class ValidateAuthenticationResponse extends Response<String> {
 
     @Override
     public void onError(Exception ex) {
-
         server.setUserId(null);
         server.setAccessToken(null);
         response.onResponse();

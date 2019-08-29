@@ -24,7 +24,6 @@ public class FirstServerConnectResponse extends Response<ConnectionResult> {
 
     @Override
     public void onResponse(ConnectionResult result) {
-
         if (result.getState() == ConnectionState.SignedIn) {
             response.onResponse(result);
         } else {

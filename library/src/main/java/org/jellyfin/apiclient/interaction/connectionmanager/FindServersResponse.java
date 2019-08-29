@@ -21,10 +21,8 @@ public class FindServersResponse extends Response<ArrayList<ServerInfo>> {
     }
 
     private void OnAny(ArrayList<ServerInfo> servers) {
-        synchronized (credentials) {
-            foundServers.addAll(servers);
-            connectionManager.OnGetServerResponse(credentials, foundServers, response);
-        }
+        foundServers.addAll(servers);
+        connectionManager.OnGetServerResponse(credentials, foundServers, response);
     }
 
     @Override

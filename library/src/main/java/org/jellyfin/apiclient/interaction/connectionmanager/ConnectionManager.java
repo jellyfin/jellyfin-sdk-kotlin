@@ -6,7 +6,6 @@ import org.jellyfin.apiclient.interaction.discovery.IServerLocator;
 import org.jellyfin.apiclient.interaction.http.HttpHeaders;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
-import org.jellyfin.apiclient.interaction.network.INetworkConnection;
 import org.jellyfin.apiclient.model.apiclient.*;
 import org.jellyfin.apiclient.model.dto.IHasServerId;
 import org.jellyfin.apiclient.model.dto.UserDto;
@@ -24,7 +23,6 @@ import java.util.regex.Pattern;
 public class ConnectionManager implements IConnectionManager {
 
     private ICredentialProvider credentialProvider;
-    private INetworkConnection networkConnection;
     protected ILogger logger;
     private IServerLocator serverDiscovery;
     protected IAsyncHttpClient httpClient;
@@ -39,7 +37,6 @@ public class ConnectionManager implements IConnectionManager {
     protected ApiEventListener apiEventListener;
 
     public ConnectionManager(ICredentialProvider credentialProvider,
-                             INetworkConnection networkConnectivity,
                              IJsonSerializer jsonSerializer,
                              ILogger logger,
                              IServerLocator serverDiscovery,
@@ -51,7 +48,6 @@ public class ConnectionManager implements IConnectionManager {
                              ApiEventListener apiEventListener) {
 
         this.credentialProvider = credentialProvider;
-        this.networkConnection = networkConnectivity;
         this.logger = logger;
         this.serverDiscovery = serverDiscovery;
         this.httpClient = httpClient;
@@ -85,6 +81,7 @@ public class ConnectionManager implements IConnectionManager {
                 return  server;
             }
         }
+
         return null;
     }
 
@@ -164,23 +161,16 @@ public class ConnectionManager implements IConnectionManager {
             tests.add(0, server.getLastConnectionMode());
         }
 
-        boolean isLocalNetworkAvailable = networkConnection.getNetworkStatus().GetIsAnyLocalNetworkAvailable();
-
-        long wakeOnLanSendTime = System.currentTimeMillis();
-
-        TestNextConnectionMode(tests, 0, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
+        TestNextConnectionMode(tests, 0, server, options, response);
     }
 
     void TestNextConnectionMode(final ArrayList<ConnectionMode> tests,
                                         final int index,
-                                        final boolean isLocalNetworkAvailable,
                                         final ServerInfo server,
-                                        final long wakeOnLanSendTime,
                                         final ConnectionOptions options,
                                         final Response<ConnectionResult> response) {
 
         if (index >= tests.size()) {
-
             OnFailedConnection(response);
             return;
         }
@@ -191,16 +181,9 @@ public class ConnectionManager implements IConnectionManager {
         int timeout = 15000;
 
         if (mode == ConnectionMode.Local) {
-
-            if (!isLocalNetworkAvailable) {
-                logger.Debug("Skipping local connection test because local network is unavailable");
-                skipTest = true;
-            }
             timeout = 10000;
         }
-
         else if (mode == ConnectionMode.Manual) {
-
             if (StringHelper.equalsIgnoreCase(address, server.getLocalAddress())) {
                 logger.Debug("Skipping manual connection test because the address is the same as the local address");
                 skipTest = true;
@@ -213,11 +196,11 @@ public class ConnectionManager implements IConnectionManager {
 
         if (skipTest || tangible.DotNetToJavaStringHelper.isNullOrEmpty(address))
         {
-            TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
+            TestNextConnectionMode(tests, index + 1, server, options, response);
             return;
         }
 
-        TryConnect(address, timeout, new TestNextConnectionModeTryConnectResponse(this, server, tests, mode, address, timeout, options, index, isLocalNetworkAvailable, wakeOnLanSendTime, logger, response));
+        TryConnect(address, timeout, new TestNextConnectionModeTryConnectResponse(this, server, tests, mode, options, index, logger, response));
     }
 
     void OnSuccessfulConnection(final ServerInfo server,
@@ -245,7 +228,6 @@ public class ConnectionManager implements IConnectionManager {
         if (verifyLocalAuthentication && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
         {
             ValidateAuthentication(server, connectionMode, new AfterConnectValidatedResponse(this, server, credentials, systemInfo, connectionMode, options, response));
-
             return;
         }
 
@@ -260,14 +242,13 @@ public class ConnectionManager implements IConnectionManager {
         credentialProvider.SaveCredentials(credentials);
 
         ConnectionResult result = new ConnectionResult();
-
         result.setApiClient(GetOrAddApiClient(server, connectionMode));
         result.setState(tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()) ?
                 ConnectionState.ServerSignIn :
                 ConnectionState.SignedIn);
 
         result.getServers().add(server);
-        result.getApiClient().EnableAutomaticNetworking(server, connectionMode, networkConnection);
+        result.getApiClient().EnableAutomaticNetworking(server, connectionMode);
 
         if (result.getState() == ConnectionState.SignedIn)
         {
@@ -279,11 +260,9 @@ public class ConnectionManager implements IConnectionManager {
 
     @Override
     public void Connect(final String address, final Response<ConnectionResult> response) {
-
         final String normalizedAddress = NormalizeAddress(address);
 
         logger.Debug("Attempting to connect to server at %s", address);
-
         ServerInfo server = new ServerInfo();
         server.setManualAddress(normalizedAddress);
         server.setLastConnectionMode(ConnectionMode.Manual);
@@ -297,8 +276,7 @@ public class ConnectionManager implements IConnectionManager {
         LogoutAll(new LogoutAllResponse(credentialProvider, logger, response, this));
     }
 
-    private void ValidateAuthentication(final ServerInfo server, ConnectionMode connectionMode, final EmptyResponse response)
-    {
+    private void ValidateAuthentication(final ServerInfo server, ConnectionMode connectionMode, final EmptyResponse response) {
         final String url = server.GetAddress(connectionMode);
 
         HttpHeaders headers = new HttpHeaders();
@@ -314,8 +292,7 @@ public class ConnectionManager implements IConnectionManager {
         httpClient.Send(request, stringResponse);
     }
 
-    void TryConnect(String url, int timeout, final Response<PublicSystemInfo> response)
-    {
+    void TryConnect(String url, int timeout, final Response<PublicSystemInfo> response) {
         url += "/system/info/public?format=json";
 
         HttpRequest request = new HttpRequest();
@@ -323,11 +300,10 @@ public class ConnectionManager implements IConnectionManager {
         request.setMethod("GET");
         request.setTimeout(timeout);
 
-        httpClient.Send(request, new SerializedResponse<PublicSystemInfo>(response, jsonSerializer, PublicSystemInfo.class));
+        httpClient.Send(request, new SerializedResponse<>(response, jsonSerializer, PublicSystemInfo.class));
     }
 
     protected ApiClient InstantiateApiClient(String serverAddress) {
-
         return new ApiClient(httpClient,
                 jsonSerializer,
                 logger,
@@ -341,20 +317,14 @@ public class ConnectionManager implements IConnectionManager {
     private ApiClient GetOrAddApiClient(ServerInfo server, ConnectionMode connectionMode)
     {
         ApiClient apiClient = apiClients.get(server.getId());
-
         if (apiClient == null) {
-
             String address = server.GetAddress(connectionMode);
-
             apiClient = InstantiateApiClient(address);
-
             apiClients.put(server.getId(), apiClient);
-
             apiClient.getAuthenticatedObservable().addObserver(new AuthenticatedObserver(this, apiClient));
         }
 
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
-        {
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken())) {
             apiClient.ClearAuthenticationInfo();
         } else {
             apiClient.SetAuthenticationInfo(server.getAccessToken(), server.getUserId());
@@ -363,8 +333,7 @@ public class ConnectionManager implements IConnectionManager {
         return apiClient;
     }
 
-    void AfterConnected(ApiClient apiClient, ConnectionOptions options)
-    {
+    void AfterConnected(ApiClient apiClient, ConnectionOptions options) {
         if (options.getReportCapabilities()) {
             apiClient.ReportCapabilities(clientCapabilities, new EmptyResponse());
         }
@@ -389,8 +358,7 @@ public class ConnectionManager implements IConnectionManager {
             server.setDateLastAccessed(new Date());
         }
 
-        if (saveCredentials)
-        {
+        if (saveCredentials) {
             server.setUserId(result.getUser().getId());
             server.setAccessToken(result.getAccessToken());
         } else {
@@ -402,7 +370,6 @@ public class ConnectionManager implements IConnectionManager {
         credentialProvider.SaveCredentials(credentials);
 
         AfterConnected(apiClient, options);
-
         OnLocalUserSignIn(result.getUser());
     }
 
@@ -428,10 +395,8 @@ public class ConnectionManager implements IConnectionManager {
             return;
         }
 
-        Response<ArrayList<ServerInfo>> findServersResponse = new FindServersResponse(this, credentials, new ArrayList<>(), response);
-
         logger.Debug("Scanning network for local servers");
-
+        Response<ArrayList<ServerInfo>> findServersResponse = new FindServersResponse(this, credentials, new ArrayList<>(), response);
         FindServers(findServersResponse);
     }
 
@@ -464,71 +429,22 @@ public class ConnectionManager implements IConnectionManager {
         response.onResponse(clone);
     }
 
-    protected void FindServers(final Response<ArrayList<ServerInfo>> response)
-    {
+    protected void FindServers(final Response<ArrayList<ServerInfo>> response) {
         FindServersInternal(response);
     }
 
-    protected void FindServersInternal(final Response<ArrayList<ServerInfo>> response)
-    {
+    protected void FindServersInternal(final Response<ArrayList<ServerInfo>> response) {
         serverDiscovery.FindServers(1000, new FindServersInnerResponse(this, response));
     }
 
-    void WakeAllServers()
-    {
-        logger.Debug("Waking all servers");
-
-        for(ServerInfo server : credentialProvider.GetCredentials().getServers()) {
-
-            WakeServer(server, new EmptyResponse());
-        }
-    }
-
-    private void BeginWakeServer(final ServerInfo info)
-    {
-        Thread thread = new Thread(new BeginWakeServerRunnable(this, info));
-
-        thread.start();
-    }
-
-    void WakeServer(ServerInfo info, final EmptyResponse response)
-    {
-        logger.Debug("Waking server: %s, Id: %s", info.getName(), info.getId());
-
-        ArrayList<WakeOnLanInfo> wakeList = info.getWakeOnLanInfos();
-
-        final int count = wakeList.size();
-
-        if (count == 0) {
-            logger.Debug("Server %s has no saved wake on lan profiles", info.getName());
-            response.onResponse();
-            return;
-        }
-
-        final ArrayList<EmptyResponse> doneList = new ArrayList<EmptyResponse>();
-
-        for(WakeOnLanInfo wakeOnLanInfo : wakeList) {
-
-            WakeServer(wakeOnLanInfo, new WakeServerResponse(doneList, response));
-        }
-    }
-
-    private void WakeServer(WakeOnLanInfo info, EmptyResponse response) {
-
-        networkConnection.SendWakeOnLan(info.getMacAddress(), info.getPort(), response);
-    }
-
     String NormalizeAddress(String address) throws IllegalArgumentException {
-
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(address))
-        {
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(address)) {
             throw new IllegalArgumentException("address");
         }
 
         Pattern http = Pattern.compile(".*http.*", Pattern.CASE_INSENSITIVE);
         Matcher matcher = http.matcher(address);
-        if (!matcher.matches())
-        {
+        if (!matcher.matches()) {
             address = "http://" + address;
         }
 
@@ -544,16 +460,11 @@ public class ConnectionManager implements IConnectionManager {
             return;
         }
 
-        final ArrayList<Integer> doneList = new ArrayList<Integer>();
-
+        final ArrayList<Integer> doneList = new ArrayList<>();
         for(Object clientObj : clientList) {
-
-            ApiClient client = (ApiClient)clientObj;
-
+            ApiClient client = (ApiClient) clientObj;
             ApiClientLogoutResponse logoutResponse = new ApiClientLogoutResponse(doneList, count, response, this, client);
-
-            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(client.getAccessToken()))
-            {
+            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(client.getAccessToken())) {
                 client.Logout(logoutResponse);
             } else {
                 logoutResponse.onResponse(false);
@@ -561,8 +472,7 @@ public class ConnectionManager implements IConnectionManager {
         }
     }
 
-    public void DeleteServer(final String id, final EmptyResponse response)
-    {
+    public void DeleteServer(final String id, final EmptyResponse response) {
         ServerCredentials credentials = credentialProvider.GetCredentials();
         ArrayList<ServerInfo> existing = credentials.getServers();
 

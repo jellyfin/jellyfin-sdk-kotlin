@@ -19,26 +19,18 @@ public class TestNextConnectionModeTryConnectResponse extends Response<PublicSys
     private ServerInfo server;
     private ArrayList<ConnectionMode> tests;
     private ConnectionMode mode;
-    private String address;
-    private int finalTimeout;
     private ConnectionOptions options;
     private int index;
-    private boolean isLocalNetworkAvailable;
-    private long wakeOnLanSendTime;
     private ILogger logger;
     private Response<ConnectionResult> response;
 
-    public TestNextConnectionModeTryConnectResponse(ConnectionManager connectionManager, ServerInfo server, ArrayList<ConnectionMode> tests, ConnectionMode mode, String address, int finalTimeout, ConnectionOptions options, int index, boolean isLocalNetworkAvailable, long wakeOnLanSendTime, ILogger logger, Response<ConnectionResult> response) {
+    public TestNextConnectionModeTryConnectResponse(ConnectionManager connectionManager, ServerInfo server, ArrayList<ConnectionMode> tests, ConnectionMode mode, ConnectionOptions options, int index, ILogger logger, Response<ConnectionResult> response) {
         this.connectionManager = connectionManager;
         this.server = server;
         this.tests = tests;
         this.mode = mode;
-        this.address = address;
-        this.finalTimeout = finalTimeout;
         this.options = options;
         this.index = index;
-        this.isLocalNetworkAvailable = isLocalNetworkAvailable;
-        this.wakeOnLanSendTime = wakeOnLanSendTime;
         this.logger = logger;
         this.response = response;
     }
@@ -59,6 +51,6 @@ public class TestNextConnectionModeTryConnectResponse extends Response<PublicSys
 
     @Override
     public void onError(Exception ex) {
-        connectionManager.TestNextConnectionMode(tests, index + 1, isLocalNetworkAvailable, server, wakeOnLanSendTime, options, response);
+        connectionManager.TestNextConnectionMode(tests, index + 1, server, options, response);
     }
 }

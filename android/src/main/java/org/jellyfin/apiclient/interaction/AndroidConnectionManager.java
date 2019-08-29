@@ -17,9 +17,7 @@ import java.util.ArrayList;
 public class AndroidConnectionManager extends ConnectionManager {
 
     public AndroidConnectionManager(Context context, IJsonSerializer jsonSerializer, ILogger logger, IAsyncHttpClient httpClient, String applicationName, String applicationVersion, IDevice device, ClientCapabilities clientCapabilities, ApiEventListener apiEventListener) {
-
         super(new AndroidCredentialProvider(jsonSerializer, context, logger),
-                new AndroidNetworkConnection(context, logger),
                 jsonSerializer,
                 logger,
                 new ServerLocator(logger, jsonSerializer),
@@ -33,9 +31,7 @@ public class AndroidConnectionManager extends ConnectionManager {
     }
 
     private void SaveAppInfo(Context context) {
-
         SharedPreferences preferences = context.getSharedPreferences("AndroidConnectionManager", Context.MODE_PRIVATE | Context.MODE_MULTI_PROCESS);
-
         SharedPreferences.Editor editor = preferences.edit();
 
         editor.putString("appName", applicationName);
@@ -44,13 +40,11 @@ public class AndroidConnectionManager extends ConnectionManager {
         editor.putString("deviceId", getDevice().getDeviceId());
         editor.putString("deviceName", getDevice().getDeviceName());
 
-        // Commit the edits!
-        editor.commit();
+        editor.apply();
     }
 
     @Override
     protected ApiClient InstantiateApiClient(String serverAddress) {
-
         return new AndroidApiClient(httpClient,
                 jsonSerializer,
                 logger,
@@ -62,10 +56,8 @@ public class AndroidConnectionManager extends ConnectionManager {
     }
 
     @Override
-    protected void FindServers(final Response<ArrayList<ServerInfo>> response)
-    {
+    protected void FindServers(final Response<ArrayList<ServerInfo>> response) {
         Thread thread = new Thread(new FindServersRunnable(this, response));
-
         thread.start();
     }
 
