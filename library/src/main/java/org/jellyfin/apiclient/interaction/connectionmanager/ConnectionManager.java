@@ -27,7 +27,7 @@ public class ConnectionManager implements IConnectionManager {
     private IServerLocator serverDiscovery;
     protected IAsyncHttpClient httpClient;
 
-    private HashMap<String, ApiClient> apiClients = new HashMap<String, ApiClient>();
+    private HashMap<String, ApiClient> apiClients = new HashMap<>();
     protected IJsonSerializer jsonSerializer;
 
     protected String applicationName;
@@ -101,7 +101,7 @@ public class ConnectionManager implements IConnectionManager {
         logger.Debug("No saved authentication");
         ConnectionResult result = new ConnectionResult();
         result.setState(ConnectionState.ServerSelection);
-        result.setServers(new ArrayList<ServerInfo>());
+        result.setServers(new ArrayList<>());
         response.onResponse(result);
     }
 
@@ -140,8 +140,7 @@ public class ConnectionManager implements IConnectionManager {
     }
 
     @Override
-    public void Connect(final ServerInfo server,
-                        final Response<ConnectionResult> response) {
+    public void Connect(final ServerInfo server, final Response<ConnectionResult> response) {
         Connect(server, new ConnectionOptions(), response);
     }
 
@@ -149,63 +148,18 @@ public class ConnectionManager implements IConnectionManager {
     public void Connect(final ServerInfo server,
                         ConnectionOptions options,
                         final Response<ConnectionResult> response) {
-        ArrayList<ConnectionMode> tests = new ArrayList<ConnectionMode>();
-        tests.add(ConnectionMode.Manual);
-        tests.add(ConnectionMode.Local);
-        tests.add(ConnectionMode.Remote);
-
-        // If we've connected to the server before, try to optimize by starting with the last used connection mode
-        if (server.getLastConnectionMode() != null)
+        final String address = server.getAddress();
+        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(address))
         {
-            tests.remove(server.getLastConnectionMode());
-            tests.add(0, server.getLastConnectionMode());
-        }
-
-        TestNextConnectionMode(tests, 0, server, options, response);
-    }
-
-    void TestNextConnectionMode(final ArrayList<ConnectionMode> tests,
-                                        final int index,
-                                        final ServerInfo server,
-                                        final ConnectionOptions options,
-                                        final Response<ConnectionResult> response) {
-
-        if (index >= tests.size()) {
             OnFailedConnection(response);
             return;
         }
 
-        final ConnectionMode mode = tests.get(index);
-        final String address = server.GetAddress(mode);
-        boolean skipTest = false;
-        int timeout = 15000;
-
-        if (mode == ConnectionMode.Local) {
-            timeout = 10000;
-        }
-        else if (mode == ConnectionMode.Manual) {
-            if (StringHelper.equalsIgnoreCase(address, server.getLocalAddress())) {
-                logger.Debug("Skipping manual connection test because the address is the same as the local address");
-                skipTest = true;
-            }
-            else if (StringHelper.equalsIgnoreCase(address, server.getRemoteAddress())) {
-                logger.Debug("Skipping manual connection test because the address is the same as the remote address");
-                skipTest = true;
-            }
-        }
-
-        if (skipTest || tangible.DotNetToJavaStringHelper.isNullOrEmpty(address))
-        {
-            TestNextConnectionMode(tests, index + 1, server, options, response);
-            return;
-        }
-
-        TryConnect(address, timeout, new TestNextConnectionModeTryConnectResponse(this, server, tests, mode, options, index, logger, response));
+        TryConnect(address, new TryConnectResponse(this, server, options, logger, response));
     }
 
     void OnSuccessfulConnection(final ServerInfo server,
                                      final PublicSystemInfo systemInfo,
-                                     final ConnectionMode connectionMode,
                                      final ConnectionOptions connectionOptions,
                                      final Response<ConnectionResult> response) {
 
@@ -214,20 +168,18 @@ public class ConnectionManager implements IConnectionManager {
         }
 
         ServerCredentials credentials = credentialProvider.GetCredentials();
-        AfterConnectValidated(server, credentials, systemInfo, connectionMode, true, connectionOptions, response);
+        AfterConnectValidated(server, credentials, systemInfo, true, connectionOptions, response);
     }
 
     void AfterConnectValidated(final ServerInfo server,
                                        final ServerCredentials credentials,
                                        final PublicSystemInfo systemInfo,
-                                       final ConnectionMode connectionMode,
                                        boolean verifyLocalAuthentication,
                                        final ConnectionOptions options,
                                        final Response<ConnectionResult> response) {
-
         if (verifyLocalAuthentication && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
         {
-            ValidateAuthentication(server, connectionMode, new AfterConnectValidatedResponse(this, server, credentials, systemInfo, connectionMode, options, response));
+            ValidateAuthentication(server, new AfterConnectValidatedResponse(this, server, credentials, systemInfo, options, response));
             return;
         }
 
@@ -237,18 +189,17 @@ public class ConnectionManager implements IConnectionManager {
             server.setDateLastAccessed(new Date());
         }
 
-        server.setLastConnectionMode(connectionMode);
         credentials.AddOrUpdateServer(server);
         credentialProvider.SaveCredentials(credentials);
 
         ConnectionResult result = new ConnectionResult();
-        result.setApiClient(GetOrAddApiClient(server, connectionMode));
+        result.setApiClient(GetOrAddApiClient(server));
         result.setState(tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()) ?
                 ConnectionState.ServerSignIn :
                 ConnectionState.SignedIn);
 
         result.getServers().add(server);
-        result.getApiClient().EnableAutomaticNetworking(server, connectionMode);
+        result.getApiClient().EnableAutomaticNetworking(server);
 
         if (result.getState() == ConnectionState.SignedIn)
         {
@@ -264,8 +215,7 @@ public class ConnectionManager implements IConnectionManager {
 
         logger.Debug("Attempting to connect to server at %s", address);
         ServerInfo server = new ServerInfo();
-        server.setManualAddress(normalizedAddress);
-        server.setLastConnectionMode(ConnectionMode.Manual);
+        server.setAddress(normalizedAddress);
 
         Connect(server, new ConnectionOptions(), response);
     }
@@ -276,8 +226,8 @@ public class ConnectionManager implements IConnectionManager {
         LogoutAll(new LogoutAllResponse(credentialProvider, logger, response, this));
     }
 
-    private void ValidateAuthentication(final ServerInfo server, ConnectionMode connectionMode, final EmptyResponse response) {
-        final String url = server.GetAddress(connectionMode);
+    private void ValidateAuthentication(final ServerInfo server, final EmptyResponse response) {
+        final String url = server.getAddress();
 
         HttpHeaders headers = new HttpHeaders();
         headers.SetAccessToken(server.getAccessToken());
@@ -292,13 +242,13 @@ public class ConnectionManager implements IConnectionManager {
         httpClient.Send(request, stringResponse);
     }
 
-    void TryConnect(String url, int timeout, final Response<PublicSystemInfo> response) {
+    void TryConnect(String url, final Response<PublicSystemInfo> response) {
         url += "/system/info/public?format=json";
 
         HttpRequest request = new HttpRequest();
         request.setUrl(url);
         request.setMethod("GET");
-        request.setTimeout(timeout);
+        request.setTimeout(15000);
 
         httpClient.Send(request, new SerializedResponse<>(response, jsonSerializer, PublicSystemInfo.class));
     }
@@ -314,11 +264,11 @@ public class ConnectionManager implements IConnectionManager {
                 apiEventListener);
     }
 
-    private ApiClient GetOrAddApiClient(ServerInfo server, ConnectionMode connectionMode)
+    private ApiClient GetOrAddApiClient(ServerInfo server)
     {
         ApiClient apiClient = apiClients.get(server.getId());
         if (apiClient == null) {
-            String address = server.GetAddress(connectionMode);
+            String address = server.getAddress();
             apiClient = InstantiateApiClient(address);
             apiClients.put(server.getId(), apiClient);
             apiClient.getAuthenticatedObservable().addObserver(new AuthenticatedObserver(this, apiClient));
@@ -404,12 +354,6 @@ public class ConnectionManager implements IConnectionManager {
                                      ArrayList<ServerInfo> foundServers,
                                      Response<ArrayList<ServerInfo>> response) {
         for(ServerInfo newServer : foundServers) {
-            if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(newServer.getManualAddress())) {
-                newServer.setLastConnectionMode(ConnectionMode.Local);
-            } else {
-                newServer.setLastConnectionMode(ConnectionMode.Manual);
-            }
-
             credentials.AddOrUpdateServer(newServer);
         }
 

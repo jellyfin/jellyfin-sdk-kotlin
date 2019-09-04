@@ -31,7 +31,7 @@ public class FindServersInnerResponse extends Response<ArrayList<ServerDiscovery
                 localAddress = foundServer.getAddress();
             }
 
-            server.setLocalAddress(localAddress);
+            server.setAddress(localAddress);
             servers.add(server);
         }
 

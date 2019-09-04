@@ -6,7 +6,6 @@ import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
 import org.jellyfin.apiclient.interaction.tasks.CancellationToken;
 import org.jellyfin.apiclient.interaction.tasks.IProgress;
 import org.jellyfin.apiclient.interaction.websocket.ApiWebSocket;
-import org.jellyfin.apiclient.model.apiclient.ConnectionMode;
 import org.jellyfin.apiclient.model.apiclient.RemoteLogoutReason;
 import org.jellyfin.apiclient.model.apiclient.ServerInfo;
 import org.jellyfin.apiclient.model.channels.AllChannelMediaQuery;
@@ -57,8 +56,6 @@ public class ApiClient extends BaseApiClient {
         return serverInfo;
     }
 
-    private ConnectionMode connectionMode = ConnectionMode.Local;
-
     private Observable authenticatedObservable = new AutomaticObservable();
     public Observable getAuthenticatedObservable() {
         return authenticatedObservable;
@@ -84,12 +81,11 @@ public class ApiClient extends BaseApiClient {
         ResetHttpHeaders();
     }
 
-    public void EnableAutomaticNetworking(ServerInfo info, ConnectionMode initialMode)
+    public void EnableAutomaticNetworking(ServerInfo info)
     {
-        this.connectionMode = initialMode;
         this.serverInfo = info;
 
-        String serverAddress = info.GetAddress(initialMode);
+        String serverAddress = info.getAddress();
         setServerAddress(serverAddress);
     }
 

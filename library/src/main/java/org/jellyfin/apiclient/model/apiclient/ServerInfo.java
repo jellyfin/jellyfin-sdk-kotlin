@@ -22,32 +22,14 @@ public class ServerInfo
 	{
 		Id = value;
 	}
-	private String LocalAddress;
-	public final String getLocalAddress()
+	private String Address;
+	public final String getAddress()
 	{
-		return LocalAddress;
+		return Address;
 	}
-	public final void setLocalAddress(String value)
+	public final void setAddress(String value)
 	{
-		LocalAddress = value;
-	}
-	private String RemoteAddress;
-	public final String getRemoteAddress()
-	{
-		return RemoteAddress;
-	}
-	public final void setRemoteAddress(String value)
-	{
-		RemoteAddress = value;
-	}
-	private String ManualAddress;
-	public final String getManualAddress()
-	{
-		return ManualAddress;
-	}
-	public final void setManualAddress(String value)
-	{
-		ManualAddress = value;
+		Address = value;
 	}
 	private String UserId;
 	public final String getUserId()
@@ -76,15 +58,6 @@ public class ServerInfo
 	{
 		DateLastAccessed = value;
 	}
-	private ConnectionMode LastConnectionMode = null;
-	public final ConnectionMode getLastConnectionMode()
-	{
-		return LastConnectionMode;
-	}
-	public final void setLastConnectionMode(ConnectionMode value)
-	{
-		LastConnectionMode = value;
-	}
 
 	public final void ImportInfo(PublicSystemInfo systemInfo)
 	{
@@ -93,30 +66,5 @@ public class ServerInfo
 		}
 		setName(systemInfo.getServerName());
 		setId(systemInfo.getId());
-
-		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(systemInfo.getLocalAddress()))
-		{
-			setLocalAddress(systemInfo.getLocalAddress());
-		}
-
-		if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(systemInfo.getWanAddress()))
-		{
-			setRemoteAddress(systemInfo.getWanAddress());
-		}
-	}
-
-	public final String GetAddress(ConnectionMode mode)
-	{
-		switch (mode)
-		{
-			case Local:
-				return getLocalAddress();
-			case Manual:
-				return getManualAddress();
-			case Remote:
-				return getRemoteAddress();
-			default:
-				throw new IllegalArgumentException("Unexpected ConnectionMode");
-		}
 	}
 }
