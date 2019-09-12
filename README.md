@@ -1,6 +1,14 @@
 <h1 align="center">jellyfin-apiclient-java</h1>
 <h3 align="center">Part of the <a href="https://jellyfin.media">Jellyfin Project</a></h3>
 
+<p align="center">
+<a href="https://github.com/jellyfin/jellyfin-apiclient-java/blob/master/LICENSE.md"><img alt="MIT license" src="https://img.shields.io/github/license/jellyfin/jellyfin-apiclient-java.svg"></a>
+<a href="https://jitpack.io/#jellyfin/jellyfin-apiclient-java"><img alt="Current Release" src="https://jitpack.io/v/jellyfin/jellyfin-apiclient-java.svg"></a>
+<a href="https://dev.azure.com/jellyfin-project/jellyfin/_build/latest?definitionId=6&branchName=master"><img alt="Azure DevOps builds" src="https://dev.azure.com/jellyfin-project/jellyfin/_apis/build/status/Jellyfin%20API%20Client%20Java%20CI?branchName=master"></a>
+</p>
+
+---
+
 This library allows Android clients to easily access the Jellyfin API. It is built with Volley, OkHttp, Boon, and Robolectric. The dependencies are modular and can easily be swapped out with alternate implementations when desired.
 
 ## Single Server Example
