@@ -1,5 +1,6 @@
 package org.jellyfin.apiclient.interaction.connectionmanager;
 
+import org.jellyfin.apiclient.interaction.ApiClient;
 import org.jellyfin.apiclient.interaction.EmptyResponse;
 import org.jellyfin.apiclient.interaction.Response;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
@@ -8,11 +9,7 @@ import org.jellyfin.apiclient.model.apiclient.ServerInfo;
 import org.jellyfin.apiclient.model.serialization.IJsonSerializer;
 import org.jellyfin.apiclient.model.system.SystemInfo;
 
-/**
- * Created by Luke on 2/16/2015.
- */
 public class ValidateAuthenticationResponse extends Response<String> {
-
     private ConnectionManager connectionManager;
     private IJsonSerializer jsonSerializer;
     private ServerInfo server;
@@ -36,14 +33,19 @@ public class ValidateAuthenticationResponse extends Response<String> {
         SystemInfo obj = jsonSerializer.DeserializeFromString(jsonResponse, SystemInfo.class);
         server.ImportInfo(obj);
 
-        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getUserId()))
-        {
-            request.setUrl(url + "/mediabrowser/users/" + server.getUserId() + "?format=json");
+        if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getUserId()) &&
+                !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getId())) {
+            ApiClient client = connectionManager.GetApiClient(server.getId());
+            if (client != null) {
+                String apiUrl = client.GetApiUrl("Users/" + server.getUserId());
+                apiUrl = client.AddDataFormat(apiUrl);
+                request.setUrl(apiUrl);
 
-            httpClient.Send(request, new ValidateAuthenticationInnerResponse(connectionManager, jsonSerializer, server, response));
-        } else {
-            response.onResponse();
+                httpClient.Send(request, new ValidateAuthenticationInnerResponse(connectionManager, jsonSerializer, server, response));
+                return;
+            }
         }
+        response.onResponse();
     }
 
     @Override
