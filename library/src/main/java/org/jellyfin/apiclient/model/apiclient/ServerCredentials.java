@@ -50,25 +50,13 @@ public class ServerCredentials
 				existing.setAccessToken(server.getAccessToken());
 				existing.setUserId(server.getUserId());
 			}
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getRemoteAddress()))
+			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAddress()))
 			{
-				existing.setRemoteAddress(server.getRemoteAddress());
-			}
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getLocalAddress()))
-			{
-				existing.setLocalAddress(server.getLocalAddress());
-			}
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getManualAddress()))
-			{
-				existing.setManualAddress(server.getManualAddress());
+				existing.setAddress(server.getAddress());
 			}
 			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getName()))
 			{
 				existing.setName(server.getName());
-			}
-			if (server.getLastConnectionMode() != null)
-			{
-				existing.setLastConnectionMode(server.getLastConnectionMode());
 			}
 		} else {
 			list.add(server);
