@@ -1120,7 +1120,7 @@ public abstract class BaseApiClient
 	 @param url The URL.
 	 @return System.String.
 	*/
-	protected final String AddDataFormat(String url)
+	public final String AddDataFormat(String url)
 	{
         if (url == null)
         {
