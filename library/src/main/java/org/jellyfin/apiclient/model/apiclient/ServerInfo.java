@@ -5,68 +5,68 @@ import org.jellyfin.apiclient.model.system.PublicSystemInfo;
 import java.util.Date;
 
 public class ServerInfo {
-    private String name;
-    private String id;
-    private String address;
-    private String version;
-    private String userId;
-    private String accessToken;
-    private Date dateLastAccessed = new Date(0);
+    private String Name;
+    private String Id;
+    private String Address;
+    private String Version;
+    private String UserId;
+    private String AccessToken;
+    private Date DateLastAccessed = new Date(0);
 
     public final String getName() {
-        return name;
+        return Name;
     }
 
     public final void setName(String value) {
-        name = value;
+        Name = value;
     }
 
     public final String getId() {
-        return id;
+        return Id;
     }
 
     public final void setId(String value) {
-        id = value;
+        Id = value;
     }
 
     public final String getAddress() {
-        return address;
+        return Address;
     }
 
     public final void setAddress(String value) {
-        address = value;
+        Address = value;
     }
 
     public final String getVersion() {
-        return version;
+        return Version;
     }
 
     public final void setVersion(String version) {
-        this.version = version;
+        this.Version = version;
     }
 
     public final String getUserId() {
-        return userId;
+        return UserId;
     }
 
     public final void setUserId(String value) {
-        userId = value;
+        UserId = value;
     }
 
     public final String getAccessToken() {
-        return accessToken;
+        return AccessToken;
     }
 
     public final void setAccessToken(String value) {
-        accessToken = value;
+        AccessToken = value;
     }
 
     public final Date getDateLastAccessed() {
-        return dateLastAccessed;
+        return DateLastAccessed;
     }
 
     public final void setDateLastAccessed(Date value) {
-        dateLastAccessed = value;
+        DateLastAccessed = value;
     }
 
     public final void ImportInfo(PublicSystemInfo systemInfo) {
