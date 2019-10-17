@@ -11,6 +11,10 @@ import org.jellyfin.apiclient.model.apiclient.ServerInfo;
 import java.lang.reflect.Type;
 import java.util.Date;
 
+/**
+ * A custom deserializer for {@link org.jellyfin.apiclient.model.apiclient.ServerInfo ServerInfo}
+ * to handle migrating multiple server address fields to a single field.
+ */
 public class ServerInfoDeserializer implements JsonDeserializer<ServerInfo> {
     @Override
     public ServerInfo deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
