@@ -2,7 +2,6 @@ package org.jellyfin.apiclient.model.dto;
 
 import org.jellyfin.apiclient.model.drawing.*;
 import org.jellyfin.apiclient.model.entities.*;
-import org.jellyfin.apiclient.model.extensions.*;
 import org.jellyfin.apiclient.model.library.*;
 import org.jellyfin.apiclient.model.livetv.*;
 import org.jellyfin.apiclient.model.providers.*;
@@ -1039,12 +1038,12 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		Type = value;
 	}
 
-	public final void setEBaseItemType(EBaseItemType Type) {
+	public final void setBaseItemType(BaseItemType Type) {
 		this.Type = Type.name();
 	}
 
-	public final EBaseItemType getEBaseItemType() {
-		return EBaseItemType.valueOf(Type);
+	public final BaseItemType getBaseItemType() {
+		return BaseItemType.valueOf(Type);
 	}
 
 	/** 
@@ -2505,7 +2504,7 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	*/
 	public final boolean getIsPerson()
 	{
-		return getEBaseItemType() == EBaseItemType.Person;
+		return getBaseItemType() == BaseItemType.Person;
 	}
 
 	/**
@@ -2515,49 +2514,49 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	*/
 	public final boolean getIsRoot()
 	{
-		return getEBaseItemType() == EBaseItemType.AggregateFolder;
+		return getBaseItemType() == BaseItemType.AggregateFolder;
 	}
 
 	public final boolean getIsMusicGenre()
 	{
-		return getEBaseItemType() == EBaseItemType.MusicGenre;
+		return getBaseItemType() == BaseItemType.MusicGenre;
 	}
 
 	public final boolean getIsGameGenre()
 	{
-		return getEBaseItemType() == EBaseItemType.GameGenre;
+		return getBaseItemType() == BaseItemType.GameGenre;
 	}
 
 	public final boolean getIsGenre()
 	{
-		return getEBaseItemType() == EBaseItemType.Genre;
+		return getBaseItemType() == BaseItemType.Genre;
 	}
 
 	public final boolean getIsArtist()
 	{
-		return getEBaseItemType() == EBaseItemType.MusicArtist;
+		return getBaseItemType() == BaseItemType.MusicArtist;
 	}
 
 	public final boolean getIsAlbum()
 	{
-		return getEBaseItemType() == EBaseItemType.MusicAlbum;
+		return getBaseItemType() == BaseItemType.MusicAlbum;
 	}
 
 	public final boolean getIsStudio()
 	{
-		return getEBaseItemType() == EBaseItemType.Studio;
+		return getBaseItemType() == BaseItemType.Studio;
 	}
 
 	public final boolean getSupportsSimilarItems()
 	{
-		return getEBaseItemType() == EBaseItemType.Movie
-				|| getEBaseItemType() == EBaseItemType.Series
-				|| getEBaseItemType() == EBaseItemType.MusicAlbum
-				|| getEBaseItemType() == EBaseItemType.MusicArtist
-				|| getEBaseItemType() == EBaseItemType.Program
-				|| getEBaseItemType() == EBaseItemType.Recording
-				|| getEBaseItemType() == EBaseItemType.ChannelVideoItem
-				|| getEBaseItemType() == EBaseItemType.Game;
+		return getBaseItemType() == BaseItemType.Movie
+				|| getBaseItemType() == BaseItemType.Series
+				|| getBaseItemType() == BaseItemType.MusicAlbum
+				|| getBaseItemType() == BaseItemType.MusicArtist
+				|| getBaseItemType() == BaseItemType.Program
+				|| getBaseItemType() == BaseItemType.Recording
+				|| getBaseItemType() == BaseItemType.ChannelVideoItem
+				|| getBaseItemType() == BaseItemType.Game;
 	}
 
 	/** 

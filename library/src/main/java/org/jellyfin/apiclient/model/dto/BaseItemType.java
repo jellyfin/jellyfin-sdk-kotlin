@@ -1,6 +1,6 @@
 package org.jellyfin.apiclient.model.dto;
 
-public enum EBaseItemType {
+public enum BaseItemType {
     Audio,
     AggregateFolder,
     BoxSet,
