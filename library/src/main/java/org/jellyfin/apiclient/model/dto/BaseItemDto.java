@@ -2,7 +2,6 @@ package org.jellyfin.apiclient.model.dto;
 
 import org.jellyfin.apiclient.model.drawing.*;
 import org.jellyfin.apiclient.model.entities.*;
-import org.jellyfin.apiclient.model.extensions.*;
 import org.jellyfin.apiclient.model.library.*;
 import org.jellyfin.apiclient.model.livetv.*;
 import org.jellyfin.apiclient.model.providers.*;
@@ -1026,13 +1025,25 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	 <value>The type.</value>
 	*/
 	private String Type;
+
+	@Deprecated
 	public final String getType()
 	{
 		return Type;
 	}
+
+	@Deprecated
 	public final void setType(String value)
 	{
 		Type = value;
+	}
+
+	public final void setBaseItemType(BaseItemType Type) {
+		this.Type = Type.name();
+	}
+
+	public final BaseItemType getBaseItemType() {
+		return BaseItemType.valueOf(Type);
 	}
 
 	/** 
@@ -1658,16 +1669,6 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		MediaSourceCount = value;
 	}
 
-	/** 
-	 Determines whether the specified type is type.
-	 
-	 @param type The type.
-	 @return <c>true</c> if the specified type is type; otherwise, <c>false</c>.
-	*/
-	public final boolean IsType(java.lang.Class type)
-	{
-		return IsType(type.getSimpleName());
-	}
 
 	/** 
 	 Gets or sets a value indicating whether [supports playlists].
@@ -1681,16 +1682,6 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getRunTimeTicks() != null || getIsFolderItem() || getIsGenre() || getIsMusicGenre() || getIsArtist();
 	}
 
-	/** 
-	 Determines whether the specified type is type.
-	 
-	 @param type The type.
-	 @return <c>true</c> if the specified type is type; otherwise, <c>false</c>.
-	*/
-	public final boolean IsType(String type)
-	{
-		return StringHelper.equalsIgnoreCase(getType(), type);
-	}
 
 	/**
 	 Gets or sets the image tags.
@@ -2513,7 +2504,7 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	*/
 	public final boolean getIsPerson()
 	{
-		return "Person".equalsIgnoreCase(getType());
+		return getBaseItemType() == BaseItemType.Person;
 	}
 
 	/**
@@ -2523,42 +2514,49 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	*/
 	public final boolean getIsRoot()
 	{
-		return "AggregateFolder".equalsIgnoreCase(getType());
+		return getBaseItemType() == BaseItemType.AggregateFolder;
 	}
 
 	public final boolean getIsMusicGenre()
 	{
-		return "MusicGenre".equalsIgnoreCase(getType());
+		return getBaseItemType() == BaseItemType.MusicGenre;
 	}
 
 	public final boolean getIsGameGenre()
 	{
-		return "GameGenre".equalsIgnoreCase(getType());
+		return getBaseItemType() == BaseItemType.GameGenre;
 	}
 
 	public final boolean getIsGenre()
 	{
-		return "Genre".equalsIgnoreCase(getType());
+		return getBaseItemType() == BaseItemType.Genre;
 	}
 
 	public final boolean getIsArtist()
 	{
-		return "MusicArtist".equalsIgnoreCase(getType());
+		return getBaseItemType() == BaseItemType.MusicArtist;
 	}
 
 	public final boolean getIsAlbum()
 	{
-		return "MusicAlbum".equalsIgnoreCase(getType());
+		return getBaseItemType() == BaseItemType.MusicAlbum;
 	}
 
 	public final boolean getIsStudio()
 	{
-		return "Studio".equalsIgnoreCase(getType());
+		return getBaseItemType() == BaseItemType.Studio;
 	}
 
 	public final boolean getSupportsSimilarItems()
 	{
-		return IsType("Movie") || IsType("Series") || IsType("MusicAlbum") || IsType("MusicArtist") || IsType("Program") || IsType("Recording") || IsType("ChannelVideoItem") || IsType("Game");
+		return getBaseItemType() == BaseItemType.Movie
+				|| getBaseItemType() == BaseItemType.Series
+				|| getBaseItemType() == BaseItemType.MusicAlbum
+				|| getBaseItemType() == BaseItemType.MusicArtist
+				|| getBaseItemType() == BaseItemType.Program
+				|| getBaseItemType() == BaseItemType.Recording
+				|| getBaseItemType() == BaseItemType.ChannelVideoItem
+				|| getBaseItemType() == BaseItemType.Game;
 	}
 
 	/** 
