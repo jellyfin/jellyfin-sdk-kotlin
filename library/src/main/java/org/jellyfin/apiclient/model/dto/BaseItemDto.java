@@ -2522,11 +2522,6 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		return getBaseItemType() == BaseItemType.MusicGenre;
 	}
 
-	public final boolean getIsGameGenre()
-	{
-		return getBaseItemType() == BaseItemType.GameGenre;
-	}
-
 	public final boolean getIsGenre()
 	{
 		return getBaseItemType() == BaseItemType.Genre;
@@ -2555,8 +2550,7 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 				|| getBaseItemType() == BaseItemType.MusicArtist
 				|| getBaseItemType() == BaseItemType.Program
 				|| getBaseItemType() == BaseItemType.Recording
-				|| getBaseItemType() == BaseItemType.ChannelVideoItem
-				|| getBaseItemType() == BaseItemType.Game;
+				|| getBaseItemType() == BaseItemType.ChannelVideoItem;
 	}
 
 	/** 

@@ -10,8 +10,6 @@ public enum BaseItemType {
     CollectionFolder,
     Episode,
     Folder,
-    Game,
-    GameGenre,
     Genre,
     LiveTvChannel,
     Movie,
