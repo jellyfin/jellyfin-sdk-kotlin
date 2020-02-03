@@ -1,6 +1,8 @@
 package org.jellyfin.apiclient.model.dto;
 
-/** 
+import org.jellyfin.apiclient.model.entities.PersonType;
+
+/**
  This is used by the api to get information about a Person within a BaseItem
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
@@ -58,13 +60,29 @@ public class BaseItemPerson
 	 <value>The type.</value>
 	*/
 	private String Type;
+	@Deprecated
 	public final String getType()
 	{
 		return Type;
 	}
+
+	@Deprecated
 	public final void setType(String value)
 	{
 		Type = value;
+	}
+
+	public final PersonType getPersonType() {
+		try {
+			return PersonType.valueOf(Type);
+		} catch (IllegalArgumentException ex) {
+			return PersonType.Other;
+		}
+	}
+
+
+	public final void setPersonType(PersonType toSet) {
+		this.Type = toSet.name();
 	}
 
 	/** 
