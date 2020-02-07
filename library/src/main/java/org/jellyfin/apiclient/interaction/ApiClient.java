@@ -156,7 +156,7 @@ public class ApiClient extends BaseApiClient {
 
     protected void getResponseStreamInternal(String address, Response<ResponseStreamInfo> response) {
 
-        Logger.Debug("Getting response stream from " + address);
+        Logger.Debug("Getting response stream from %s", address);
 
         HttpURLConnection conn = null;
 

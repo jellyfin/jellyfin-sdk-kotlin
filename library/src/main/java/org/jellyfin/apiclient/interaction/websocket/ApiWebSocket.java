@@ -46,7 +46,7 @@ public class ApiWebSocket implements ISocketListener {
 
         URI uri = URI.create(address);
 
-        logger.Debug("Connecting to web socket url: " + address);
+        logger.Debug("Connecting to web socket url: %s", address);
 
         socketClient = new JavaWebSocketClient(logger, uri, this);
 
@@ -83,7 +83,7 @@ public class ApiWebSocket implements ISocketListener {
 
     public void SendWebSocketMessage(String name, Object data, EmptyResponse response) {
 
-        logger.Debug("Sending web socket message: " + name);
+        logger.Debug("Sending web socket message: %s", name);
         WebSocketMessage<Object> msg = new WebSocketMessage<>();
 
         msg.setMessageType(name);
