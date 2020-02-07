@@ -6,60 +6,60 @@ package org.jellyfin.apiclient.model.logging;
 public interface ILogger
 {
     /**
-     Infoes the specified message.
+     Log at Info level using a format string.
 
-     @param message The message.
+     @param formatString The format string.
      @param paramList The param list.
      */
-    void Info(String message, Object... paramList);
+    void Info(String formatString, Object... paramList);
 
     /**
-     Errors the specified message.
+     Log at Error level using a format string.
 
-     @param message The message.
+     @param formatString The format string.
      @param paramList The param list.
      */
-    void Error(String message, Object... paramList);
+    void Error(String formatString, Object... paramList);
 
     /**
-     Warns the specified message.
+     Log at Warning level using a format string.
 
-     @param message The message.
+     @param formatString The format string.
      @param paramList The param list.
      */
-    void Warn(String message, Object... paramList);
+    void Warn(String formatString, Object... paramList);
 
     /**
-     Debugs the specified message.
+     Log at Debug level using a format string.
 
-     @param message The message.
+     @param formatString The format string.
      @param paramList The param list.
      */
-    void Debug(String message, Object... paramList);
+    void Debug(String formatString, Object... paramList);
 
     /**
-     Fatals the specified message.
+     Log at Fatal level using a format string.
 
-     @param message The message.
+     @param formatString The format string.
      @param paramList The param list.
      */
-    void Fatal(String message, Object... paramList);
+    void Fatal(String formatString, Object... paramList);
 
     /**
-     Fatals the exception.
+     Logs the exception with a format string message at Fatal level.
 
-     @param message The message.
+     @param formatString The message.
      @param exception The exception.
      @param paramList The param list.
      */
-    void FatalException(String message, Exception exception, Object... paramList);
+    void FatalException(String formatString, Exception exception, Object... paramList);
 
     /**
-     Logs the exception.
+     Logs the exception with a format string message at Error level.
 
-     @param message The message.
+     @param formatString The message.
      @param exception The exception.
      @param paramList The param list.
      */
-    void ErrorException(String message, Exception exception, Object... paramList);
+    void ErrorException(String formatString, Exception exception, Object... paramList);
 }
