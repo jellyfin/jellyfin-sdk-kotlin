@@ -38,7 +38,7 @@ public class ServerLocator implements IServerLocator {
             try {
                 DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, InetAddress.getByName("255.255.255.255"), port);
                 c.send(sendPacket);
-                logger.Debug(getClass().getName() + ">>> Request packet sent to: 255.255.255.255 (DEFAULT)");
+                logger.Debug("%s >>> Request packet sent to: 255.255.255.255 (DEFAULT)", getClass().getName());
             } catch (Exception e) {
                 logger.ErrorException("Error sending DatagramPacket", e);
             }
@@ -66,11 +66,11 @@ public class ServerLocator implements IServerLocator {
                         logger.ErrorException("Error sending DatagramPacket", e);
                     }
 
-                    logger.Debug(getClass().getName() + ">>> Request packet sent to: " + broadcast.getHostAddress() + "; Interface: " + networkInterface.getDisplayName());
+                    logger.Debug("%s >>> Request packet sent to: %s; Interface: %s", getClass().getName(), broadcast.getHostAddress(), networkInterface.getDisplayName());
                 }
             }
 
-            logger.Debug(getClass().getName() + ">>> Done looping over all network interfaces. Now waiting for a reply!");
+            logger.Debug("%s >>> Done looping over all network interfaces. Now waiting for a reply!", getClass().getName());
 
             Receive(c, timeoutMs, response);
 
@@ -109,12 +109,12 @@ public class ServerLocator implements IServerLocator {
             SocketAddress remoteEndpoint = c.getRemoteSocketAddress();
 
             // We have a response
-            logger.Debug(getClass().getName() + ">>> Broadcast response from server: " + receivePacket.getAddress().getHostAddress());
+            logger.Debug("%s >>> Broadcast response from server: %s", getClass().getName(), receivePacket.getAddress().getHostAddress());
 
             // Check if the message is correct
             String message = new String(receivePacket.getData()).trim();
 
-            logger.Debug(getClass().getName() + ">>> Broadcast response from server: " + message);
+            logger.Debug("%s >>> Broadcast response from server: %s", getClass().getName(), message);
 
             ServerDiscoveryInfo serverInfo = jsonSerializer.DeserializeFromString(message, ServerDiscoveryInfo.class);
 
