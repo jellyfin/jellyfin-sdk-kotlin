@@ -1,11 +1,23 @@
 package org.jellyfin.apiclient.model.dto;
 
-import org.jellyfin.apiclient.model.drawing.*;
-import org.jellyfin.apiclient.model.entities.*;
-import org.jellyfin.apiclient.model.library.*;
-import org.jellyfin.apiclient.model.livetv.*;
-import org.jellyfin.apiclient.model.providers.*;
-import org.jellyfin.apiclient.model.sync.*;
+import org.jellyfin.apiclient.model.drawing.ImageOrientation;
+import org.jellyfin.apiclient.model.entities.ExtraType;
+import org.jellyfin.apiclient.model.entities.IHasProviderIds;
+import org.jellyfin.apiclient.model.entities.ImageType;
+import org.jellyfin.apiclient.model.entities.IsoType;
+import org.jellyfin.apiclient.model.entities.LocationType;
+import org.jellyfin.apiclient.model.entities.MediaStream;
+import org.jellyfin.apiclient.model.entities.MediaUrl;
+import org.jellyfin.apiclient.model.entities.MetadataFields;
+import org.jellyfin.apiclient.model.entities.SeriesStatus;
+import org.jellyfin.apiclient.model.entities.Video3DFormat;
+import org.jellyfin.apiclient.model.entities.VideoType;
+import org.jellyfin.apiclient.model.library.PlayAccess;
+import org.jellyfin.apiclient.model.livetv.ChannelType;
+import org.jellyfin.apiclient.model.livetv.ProgramAudio;
+import org.jellyfin.apiclient.model.livetv.RecordingStatus;
+import org.jellyfin.apiclient.model.providers.ExternalUrl;
+import org.jellyfin.apiclient.model.sync.SyncJobItemStatus;
 
 /** 
  This is strictly used as a data transfer object from the api layer.
@@ -677,11 +689,14 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	 
 	 <value>The genres.</value>
 	*/
+	@Deprecated
 	private java.util.ArrayList<String> Genres;
+	@Deprecated
 	public final java.util.ArrayList<String> getGenres()
 	{
 		return Genres;
 	}
+	@Deprecated
 	public final void setGenres(java.util.ArrayList<String> value)
 	{
 		Genres = value;
@@ -1061,11 +1076,11 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 		People = value;
 	}
 
-	/** 
+	/**
 	 Gets or sets the studios.
-	 
+
 	 <value>The studios.</value>
-	*/
+	 */
 	private StudioDto[] Studios;
 	public final StudioDto[] getStudios()
 	{
@@ -1074,6 +1089,20 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 	public final void setStudios(StudioDto[] value)
 	{
 		Studios = value;
+	}
+	/**
+	 Gets or sets the genres.
+
+	 <value>The genres.</value>
+	 */
+	private GenreDto[] GenreItems ;
+	public final GenreDto[] getGenreItems()
+	{
+		return GenreItems ;
+	}
+	public final void setGenreItems(GenreDto[] value)
+	{
+		GenreItems  = value;
 	}
 
 	/** 
