@@ -40,9 +40,9 @@ public class ConsoleLogger implements ILogger {
         LogException(formatString, exception, paramList);
     }
 
-    private void LogException(String message, Exception exception, Object... paramList) {
+    private void LogException(String formatString, Exception exception, Object... paramList) {
 
-        String msg = paramList != null && paramList.length > 0 ? String.format(message, paramList) : message;
+        String msg = paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString;
 
         String exceptionMessage = exception.getMessage();
 
