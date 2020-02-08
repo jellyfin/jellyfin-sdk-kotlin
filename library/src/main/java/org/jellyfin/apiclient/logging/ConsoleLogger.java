@@ -5,44 +5,44 @@ import org.jellyfin.apiclient.model.logging.ILogger;
 public class ConsoleLogger implements ILogger {
 
     @Override
-    public void Info(String message, Object... paramList) {
-        System.out.println(paramList != null && paramList.length > 0 ? String.format(message, paramList) : message);
+    public void Info(String formatString, Object... paramList) {
+        System.out.println(paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString);
     }
 
     @Override
-    public void Error(String message, Object... paramList) {
-        System.out.println(paramList != null && paramList.length > 0 ? String.format(message, paramList) : message);
+    public void Error(String formatString, Object... paramList) {
+        System.out.println(paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString);
     }
 
     @Override
-    public void Warn(String message, Object... paramList) {
-        System.out.println(paramList != null && paramList.length > 0 ? String.format(message, paramList) : message);
+    public void Warn(String formatString, Object... paramList) {
+        System.out.println(paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString);
     }
 
     @Override
-    public void Debug(String message, Object... paramList) {
-        System.out.println(paramList != null && paramList.length > 0 ? String.format(message, paramList) : message);
+    public void Debug(String formatString, Object... paramList) {
+        System.out.println(paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString);
     }
 
     @Override
-    public void Fatal(String message, Object... paramList) {
-        System.out.println(paramList != null && paramList.length > 0 ? String.format(message, paramList) : message);
+    public void Fatal(String formatString, Object... paramList) {
+        System.out.println(paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString);
     }
 
     @Override
-    public void FatalException(String message, Exception exception, Object... paramList) {
+    public void FatalException(String formatString, Exception exception, Object... paramList) {
 
-        LogException(message, exception, paramList);
+        LogException(formatString, exception, paramList);
     }
 
     @Override
-    public void ErrorException(String message, Exception exception, Object... paramList) {
-        LogException(message, exception, paramList);
+    public void ErrorException(String formatString, Exception exception, Object... paramList) {
+        LogException(formatString, exception, paramList);
     }
 
-    private void LogException(String message, Exception exception, Object... paramList) {
+    private void LogException(String formatString, Exception exception, Object... paramList) {
 
-        String msg = paramList != null && paramList.length > 0 ? String.format(message, paramList) : message;
+        String msg = paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString;
 
         String exceptionMessage = exception.getMessage();
 
