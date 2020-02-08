@@ -1095,10 +1095,10 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 
 	 <value>The genres.</value>
 	 */
-	private GenreDto[] GenreItems ;
+	private GenreDto[] GenreItems;
 	public final GenreDto[] getGenreItems()
 	{
-		return GenreItems ;
+		return GenreItems;
 	}
 	public final void setGenreItems(GenreDto[] value)
 	{
