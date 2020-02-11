@@ -27,11 +27,12 @@ public class FindServersInnerResponse extends Response<ArrayList<ServerDiscovery
             server.setName(foundServer.getName());
 
             String localAddress = ConvertEndpointAddressToManualAddress(foundServer);
-            if (localAddress == null) {
-                localAddress = foundServer.getAddress();
+            if (localAddress != null) {
+                server.setAddress(localAddress);
+            } else {
+                server.setAddress(foundServer.getAddress());
             }
 
-            server.setAddress(localAddress);
             servers.add(server);
         }
 
@@ -44,8 +45,7 @@ public class FindServersInnerResponse extends Response<ArrayList<ServerDiscovery
         response.onResponse(servers);
     }
 
-    private String ConvertEndpointAddressToManualAddress(ServerDiscoveryInfo info) throws NumberFormatException
-    {
+    private String ConvertEndpointAddressToManualAddress(ServerDiscoveryInfo info) throws NumberFormatException {
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getAddress()) && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(info.getEndpointAddress())) {
             String address = info.getEndpointAddress().split(":")[0];
 
@@ -56,7 +56,7 @@ public class FindServersInnerResponse extends Response<ArrayList<ServerDiscovery
                 address += ":" + Integer.parseInt(portString);
             }
 
-            return connectionManager.NormalizeAddress(address);
+            return address;
         }
 
         return null;
