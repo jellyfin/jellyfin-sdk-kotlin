@@ -407,7 +407,7 @@ public class ConnectionManager implements IConnectionManager {
         serverDiscovery.FindServers(1000, new FindServersInnerResponse(this, response));
     }
 
-    String[] NormalizeAddress(String address) throws IllegalArgumentException {
+    public String[] NormalizeAddress(String address) throws IllegalArgumentException {
         if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(address)) {
             throw new IllegalArgumentException("address");
         }
