@@ -8,7 +8,9 @@ import org.jellyfin.apiclient.model.entities.LibraryUpdateInfo;
 import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.model.net.WebSocketMessage;
 import org.jellyfin.apiclient.model.serialization.IJsonSerializer;
-import org.jellyfin.apiclient.model.session.*;
+import org.jellyfin.apiclient.model.session.BrowseRequest;
+import org.jellyfin.apiclient.model.session.GeneralCommandType;
+import org.jellyfin.apiclient.model.session.MessageCommand;
 
 import java.net.URI;
 import java.net.URLEncoder;
@@ -57,8 +59,7 @@ public class ApiWebSocket implements ISocketListener {
     }
 
     private String getWebSocketServerAddress() {
-
-        return apiClient.getApiUrl().replace("http", "ws") + "/embywebsocket?api_key=" + apiClient.getAccessToken() + "&deviceId=" + URLEncoder.encode(apiClient.getDeviceId());
+        return apiClient.getApiUrl().replaceFirst("^http", "ws") + "/socket?api_key=" + apiClient.getAccessToken() + "&deviceId=" + URLEncoder.encode(apiClient.getDeviceId());
     }
 
     public void CloseWebSocket() {

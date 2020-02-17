@@ -1,9 +1,9 @@
 package org.jellyfin.apiclient.interaction.websocket;
 
-import org.jellyfin.apiclient.model.logging.ILogger;
-import org.java_websocket.WebSocket;
 import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.enums.ReadyState;
 import org.java_websocket.handshake.ServerHandshake;
+import org.jellyfin.apiclient.model.logging.ILogger;
 
 import java.net.URI;
 
@@ -33,9 +33,8 @@ public class JavaWebSocketClient extends WebSocketClient {
     }
 
     @Override
-    public void onClose(int i, String s, boolean b) {
-
-        _logger.Info("Web socket connection closed.");
+    public void onClose(int i, String reason, boolean b) {
+        _logger.Info("Web socket connection closed. Reason: " + reason);
         listener.onClose();
     }
 
@@ -47,15 +46,15 @@ public class JavaWebSocketClient extends WebSocketClient {
 
     public boolean IsWebSocketOpen() {
 
-        WebSocket.READYSTATE state = getReadyState();
+        ReadyState state = getReadyState();
 
-        return  state == WebSocket.READYSTATE.OPEN;
+        return state == ReadyState.OPEN;
     }
 
     public boolean IsWebSocketOpenOrConnecting() {
 
-        WebSocket.READYSTATE state = getReadyState();
+        ReadyState state = getReadyState();
 
-        return  state == WebSocket.READYSTATE.OPEN || state == WebSocket.READYSTATE.CONNECTING;
+        return state == ReadyState.OPEN || state == ReadyState.NOT_YET_CONNECTED;
     }
 }
