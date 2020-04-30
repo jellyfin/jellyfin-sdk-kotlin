@@ -201,8 +201,6 @@ Android is fully supported, and special subclasses are provided for it:
 - AndroidConnectionManager
 - AndroidApiClient
 
-AndroidApiClient includes a getImageLoader() method that will return a Volley ImageLoader.
-
 At minimum, this library requires the following permissions declared in AndroidManifest.xml:
 
 - INTERNET
