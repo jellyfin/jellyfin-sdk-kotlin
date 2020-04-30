@@ -8,8 +8,6 @@ import org.jellyfin.apiclient.model.devices.LocalFileInfo;
 import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.model.serialization.IJsonSerializer;
 
-import com.android.volley.toolbox.ImageLoader;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -25,11 +23,6 @@ public class AndroidApiClient extends ApiClient {
 
     private VolleyHttpClient getAndroidHttpClient() {
         return (VolleyHttpClient)httpClient;
-    }
-
-    public ImageLoader getImageLoader() {
-
-        return getAndroidHttpClient().getImageLoader();
     }
 
     @Override

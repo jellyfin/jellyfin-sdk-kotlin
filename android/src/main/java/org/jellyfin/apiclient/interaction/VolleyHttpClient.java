@@ -1,8 +1,5 @@
 package org.jellyfin.apiclient.interaction;
 
-import android.graphics.Bitmap;
-import org.jellyfin.apiclient.interaction.images.ImageCacheManager;
-import org.jellyfin.apiclient.interaction.volley.GetBitmapResponse;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
 import org.jellyfin.apiclient.model.logging.ILogger;
@@ -12,7 +9,6 @@ import com.android.volley.*;
 import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
-import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 
 public class VolleyHttpClient implements IAsyncHttpClient {
@@ -35,8 +31,6 @@ public class VolleyHttpClient implements IAsyncHttpClient {
     private ILogger logger;
     private Context context;
 
-    private ImageCacheManager cacheManager;
-
     public VolleyHttpClient(ILogger logger, Context context) {
         this.logger = logger;
         this.context = context;
@@ -53,16 +47,6 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         }
 
         return requestQueue;
-    }
-
-    public ImageLoader getImageLoader() {
-
-        if (cacheManager == null) {
-
-            cacheManager = new ImageCacheManager(context, logger, getRequestQueue(), "MediaBrowser");
-        }
-
-        return cacheManager.getImageLoader();
     }
 
     /**
@@ -127,9 +111,5 @@ public class VolleyHttpClient implements IAsyncHttpClient {
 
         // add the request object to the queue to be executed
         addToRequestQueue(req);
-    }
-
-    public void getBitmap(String url, final Response<Bitmap> outerResponse) {
-        getImageLoader().get(url, new GetBitmapResponse(outerResponse));
     }
 }
