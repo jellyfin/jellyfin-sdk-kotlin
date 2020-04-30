@@ -1318,7 +1318,7 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 //ORIGINAL LINE: [IgnoreDataMember] public Nullable<SeriesStatus> SeriesStatus
 	public final SeriesStatus getSeriesStatus()
 	{
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(getStatus()))
+		if (getStatus() == null || getStatus().isEmpty())
 		{
 			return null;
 		}
@@ -1341,7 +1341,7 @@ public class BaseItemDto implements IHasProviderIds, IHasServerId
 //ORIGINAL LINE: [IgnoreDataMember] public Nullable<RecordingStatus> RecordingStatus
 	public final RecordingStatus getRecordingStatus()
 	{
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(getStatus()))
+		if (getStatus() == null || getStatus().isEmpty())
 		{
 			return null;
 		}

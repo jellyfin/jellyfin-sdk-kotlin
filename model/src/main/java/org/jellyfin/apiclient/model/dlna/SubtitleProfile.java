@@ -57,7 +57,7 @@ public class SubtitleProfile
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>();
 		for (String i : ((getLanguage() != null) ? getLanguage() : "").split("[,]", -1))
 		{
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(i))
+			if (i != null && !i.isEmpty())
 			{
 				list.add(i);
 			}
@@ -67,12 +67,12 @@ public class SubtitleProfile
 
 	public final boolean SupportsLanguage(String subLanguage)
 	{
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(getLanguage()))
+		if (getLanguage() == null || getLanguage().isEmpty())
 		{
 			return true;
 		}
 
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(subLanguage))
+		if (subLanguage == null || subLanguage.isEmpty())
 		{
 			subLanguage = "und";
 		}

@@ -55,7 +55,7 @@ public class DirectPlayProfile
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>();
 		for (String i : ((getContainer() != null) ? getContainer() : "").split("[,]", -1))
 		{
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(i))
+			if (i != null && !i.isEmpty())
 			{
 				list.add(i);
 			}
@@ -68,7 +68,7 @@ public class DirectPlayProfile
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>();
 		for (String i : ((getAudioCodec() != null) ? getAudioCodec() : "").split("[,]", -1))
 		{
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(i))
+			if (i != null && !i.isEmpty())
 			{
 				list.add(i);
 			}
@@ -81,7 +81,7 @@ public class DirectPlayProfile
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>();
 		for (String i : ((getVideoCodec() != null) ? getVideoCodec() : "").split("[,]", -1))
 		{
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(i))
+			if (i != null && !i.isEmpty())
 			{
 				list.add(i);
 			}

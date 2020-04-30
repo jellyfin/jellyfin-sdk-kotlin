@@ -478,7 +478,8 @@ public class MediaStream
 			return false;
 		}
 
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(getCodec()) && !getIsExternal())
+		String codec = getCodec();
+		if ((codec == null || codec.isEmpty()) && !getIsExternal())
 		{
 			return false;
 		}

@@ -8,7 +8,6 @@ import org.jellyfin.apiclient.model.entities.*;
 import org.jellyfin.apiclient.model.livetv.*;
 import org.jellyfin.apiclient.model.logging.*;
 import org.jellyfin.apiclient.model.querying.*;
-import org.jellyfin.apiclient.model.serialization.*;
 import org.jellyfin.apiclient.serialization.IJsonSerializer;
 
 import java.text.DateFormat;

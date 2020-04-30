@@ -45,16 +45,16 @@ public class ServerCredentials
 				existing.setDateLastAccessed(server.getDateLastAccessed());
 			}
 
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken()))
+			if (server.getAccessToken() != null && !server.getAccessToken().isEmpty())
 			{
 				existing.setAccessToken(server.getAccessToken());
 				existing.setUserId(server.getUserId());
 			}
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAddress()))
+			if (server.getAddress() != null && !server.getAddress().isEmpty())
 			{
 				existing.setAddress(server.getAddress());
 			}
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getName()))
+			if (server.getName() != null && !server.getName().isEmpty())
 			{
 				existing.setName(server.getName());
 			}
