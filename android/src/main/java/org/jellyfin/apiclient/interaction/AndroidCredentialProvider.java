@@ -2,7 +2,7 @@ package org.jellyfin.apiclient.interaction;
 
 import org.jellyfin.apiclient.model.apiclient.ServerCredentials;
 import org.jellyfin.apiclient.model.logging.ILogger;
-import org.jellyfin.apiclient.model.serialization.IJsonSerializer;
+import org.jellyfin.apiclient.serialization.IJsonSerializer;
 import android.content.Context;
 import android.content.SharedPreferences;
 

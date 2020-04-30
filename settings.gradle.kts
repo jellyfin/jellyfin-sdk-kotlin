@@ -1,5 +1,6 @@
 // Core
-include("library")
+include(":library")
+include(":model")
 
 // Platforms
-include("android")
+include(":android")

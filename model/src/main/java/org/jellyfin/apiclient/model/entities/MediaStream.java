@@ -1,7 +1,6 @@
 package org.jellyfin.apiclient.model.entities;
 
 import org.jellyfin.apiclient.model.dlna.*;
-import org.jellyfin.apiclient.model.extensions.*;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
