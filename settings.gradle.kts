@@ -1,2 +1,5 @@
-include ':android'
-include ':library'
+// Core
+include("library")
+
+// Platforms
+include("android")
