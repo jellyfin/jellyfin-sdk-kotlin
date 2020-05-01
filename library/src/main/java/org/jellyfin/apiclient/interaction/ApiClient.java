@@ -1990,6 +1990,12 @@ public class ApiClient extends BaseApiClient {
         Send(url, "GET", new SerializedResponse<>(response, jsonSerializer, ItemsResult.class));
     }
 
+    public void UpdateItem(String id, BaseItemDto itemDto, final EmptyResponse response) {
+        String url = GetApiUrl("Items/" + id);
+
+        PostAsync(url, itemDto, response);
+    }
+
     public void DeleteItem(String id, final EmptyResponse response)
     {
         String url = GetApiUrl("Items/" + id);
@@ -2106,6 +2112,12 @@ public class ApiClient extends BaseApiClient {
         String url = GetApiUrl("Playlists/" + query.getId() + "/Items", queryString);
 
         GetItemsFromUrl(url, response);
+    }
+
+    public void MoveItem(String playlist, String item, int position, final EmptyResponse response) {
+        String url = GetApiUrl("Playlists/" + playlist + "/Items/" + item + "/Move/" + position);
+
+        PostAsync(url, response);
     }
 
     public void RemoveFromPlaylist(String playlistId, String[] entryIds, final EmptyResponse response)
