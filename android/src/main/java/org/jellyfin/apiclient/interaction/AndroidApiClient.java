@@ -2,14 +2,8 @@ package org.jellyfin.apiclient.interaction;
 
 import org.jellyfin.apiclient.interaction.device.IDevice;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
-import org.jellyfin.apiclient.interaction.tasks.CancellationToken;
-import org.jellyfin.apiclient.interaction.tasks.IProgress;
-import org.jellyfin.apiclient.model.devices.LocalFileInfo;
 import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.model.serialization.IJsonSerializer;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 
 public class AndroidApiClient extends ApiClient {
 
@@ -23,25 +17,6 @@ public class AndroidApiClient extends ApiClient {
 
     private VolleyHttpClient getAndroidHttpClient() {
         return (VolleyHttpClient)httpClient;
-    }
-
-    @Override
-    public void UploadFile(FileInputStream fileInputStream,
-                           LocalFileInfo file,
-                           IProgress<Double> progress,
-                           CancellationToken cancellationToken) throws IOException {
-
-        Thread thread = new Thread(new UploadFileRunnable(this, fileInputStream, file, progress, cancellationToken));
-
-        thread.start();
-    }
-
-    void PerformUploadFile(FileInputStream fileInputStream,
-                            LocalFileInfo file,
-                            IProgress<Double> progress,
-                            CancellationToken cancellationToken) throws IOException {
-
-        UploadFileInternal(fileInputStream, file, progress, cancellationToken);
     }
 
     @Override
