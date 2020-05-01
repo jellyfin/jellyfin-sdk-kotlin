@@ -2114,7 +2114,7 @@ public class ApiClient extends BaseApiClient {
         GetItemsFromUrl(url, response);
     }
 
-    public void MoveWithinPlaylist(String playlist, String item, int position, final EmptyResponse response) {
+    public void MoveItem(String playlist, String item, int position, final EmptyResponse response) {
         String url = GetApiUrl("Playlists/" + playlist + "/Items/" + item + "/Move/" + position);
 
         PostAsync(url, response);
