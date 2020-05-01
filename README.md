@@ -201,10 +201,4 @@ Android is fully supported, and special subclasses are provided for it:
 - AndroidConnectionManager
 - AndroidApiClient
 
-At minimum, this library requires the following permissions declared in AndroidManifest.xml:
-
-- INTERNET
-- ACCESS_NETWORK_STATE
-- READ_EXTERNAL_STORAGE
-
 Special thanks to [Tangible Software Solutions](http://www.tangiblesoftwaresolutions.com/ "Tangible Software Solutions") for donating a license to our project.
