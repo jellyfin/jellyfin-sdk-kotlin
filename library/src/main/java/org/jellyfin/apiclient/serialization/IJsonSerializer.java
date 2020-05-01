@@ -1,4 +1,4 @@
-package org.jellyfin.apiclient.model.serialization;
+package org.jellyfin.apiclient.serialization;
 
 import java.io.InputStream;
 

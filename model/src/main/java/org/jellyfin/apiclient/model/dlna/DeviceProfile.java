@@ -463,7 +463,7 @@ public class DeviceProfile
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>();
 		for (String i : ((getSupportedMediaTypes() != null) ? getSupportedMediaTypes() : "").split("[,]", -1))
 		{
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(i))
+			if (i != null && !i.isEmpty())
 			{
 				list.add(i);
 			}

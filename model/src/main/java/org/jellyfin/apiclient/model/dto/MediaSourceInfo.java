@@ -1,7 +1,6 @@
 package org.jellyfin.apiclient.model.dto;
 
 import org.jellyfin.apiclient.model.entities.*;
-import org.jellyfin.apiclient.model.extensions.*;
 import org.jellyfin.apiclient.model.mediainfo.*;
 
 import java.util.regex.Matcher;

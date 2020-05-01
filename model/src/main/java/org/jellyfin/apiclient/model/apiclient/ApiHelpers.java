@@ -10,7 +10,7 @@ public final class ApiHelpers
 	*/
 	public static String GetSlugName(String name)
 	{
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(name))
+		if (name == null || name.isEmpty())
 		{
 			throw new IllegalArgumentException("name");
 		}

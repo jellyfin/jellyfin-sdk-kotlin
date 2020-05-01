@@ -31,7 +31,7 @@ import org.jellyfin.apiclient.model.querying.*;
 import org.jellyfin.apiclient.model.results.*;
 import org.jellyfin.apiclient.model.search.SearchHintResult;
 import org.jellyfin.apiclient.model.search.SearchQuery;
-import org.jellyfin.apiclient.model.serialization.IJsonSerializer;
+import org.jellyfin.apiclient.serialization.IJsonSerializer;
 import org.jellyfin.apiclient.model.session.*;
 import org.jellyfin.apiclient.model.sync.*;
 import org.jellyfin.apiclient.model.system.PublicSystemInfo;

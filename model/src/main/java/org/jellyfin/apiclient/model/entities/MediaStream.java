@@ -1,7 +1,6 @@
 package org.jellyfin.apiclient.model.entities;
 
 import org.jellyfin.apiclient.model.dlna.*;
-import org.jellyfin.apiclient.model.extensions.*;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -479,7 +478,8 @@ public class MediaStream
 			return false;
 		}
 
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(getCodec()) && !getIsExternal())
+		String codec = getCodec();
+		if ((codec == null || codec.isEmpty()) && !getIsExternal())
 		{
 			return false;
 		}

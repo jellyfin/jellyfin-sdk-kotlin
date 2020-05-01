@@ -71,7 +71,7 @@ public class CodecProfile
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>();
 		for (String i : ((getCodec() != null) ? getCodec() : "").split("[,]", -1))
 		{
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(i))
+			if (i != null && !i.isEmpty())
 			{
 				list.add(i);
 			}
@@ -84,7 +84,7 @@ public class CodecProfile
 		java.util.ArrayList<String> list = new java.util.ArrayList<String>();
 		for (String i : ((getContainer() != null) ? getContainer() : "").split("[,]", -1))
 		{
-			if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(i))
+			if (i != null && !i.isEmpty())
 			{
 				list.add(i);
 			}

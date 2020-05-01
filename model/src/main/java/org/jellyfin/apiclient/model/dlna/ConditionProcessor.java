@@ -113,7 +113,7 @@ public class ConditionProcessor
 
 	private boolean IsConditionSatisfied(ProfileCondition condition, String currentValue)
 	{
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(currentValue))
+		if (currentValue == null || currentValue.isEmpty())
 		{
 			// If the value is unknown, it satisfies if not marked as required
 			return !condition.getIsRequired();

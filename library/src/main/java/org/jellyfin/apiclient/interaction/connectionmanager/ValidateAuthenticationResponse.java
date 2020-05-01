@@ -6,7 +6,7 @@ import org.jellyfin.apiclient.interaction.Response;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
 import org.jellyfin.apiclient.model.apiclient.ServerInfo;
-import org.jellyfin.apiclient.model.serialization.IJsonSerializer;
+import org.jellyfin.apiclient.serialization.IJsonSerializer;
 import org.jellyfin.apiclient.model.system.SystemInfo;
 
 public class ValidateAuthenticationResponse extends Response<String> {

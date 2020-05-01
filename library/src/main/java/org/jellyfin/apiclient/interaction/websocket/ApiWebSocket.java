@@ -7,7 +7,7 @@ import org.jellyfin.apiclient.model.apiclient.GeneralCommandEventArgs;
 import org.jellyfin.apiclient.model.entities.LibraryUpdateInfo;
 import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.model.net.WebSocketMessage;
-import org.jellyfin.apiclient.model.serialization.IJsonSerializer;
+import org.jellyfin.apiclient.serialization.IJsonSerializer;
 import org.jellyfin.apiclient.model.session.BrowseRequest;
 import org.jellyfin.apiclient.model.session.GeneralCommandType;
 import org.jellyfin.apiclient.model.session.MessageCommand;

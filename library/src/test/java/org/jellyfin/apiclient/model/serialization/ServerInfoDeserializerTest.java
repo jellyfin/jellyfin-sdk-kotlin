@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.jellyfin.apiclient.model.apiclient.ServerInfo;
+import org.jellyfin.apiclient.serialization.ServerInfoDeserializer;
 import org.junit.Before;
 import org.junit.Test;
 

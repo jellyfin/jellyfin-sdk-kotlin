@@ -3,7 +3,7 @@ package org.jellyfin.apiclient.interaction.discovery;
 import org.jellyfin.apiclient.interaction.Response;
 import org.jellyfin.apiclient.model.apiclient.ServerDiscoveryInfo;
 import org.jellyfin.apiclient.model.logging.ILogger;
-import org.jellyfin.apiclient.model.serialization.IJsonSerializer;
+import org.jellyfin.apiclient.serialization.IJsonSerializer;
 
 import java.io.IOException;
 import java.net.*;
