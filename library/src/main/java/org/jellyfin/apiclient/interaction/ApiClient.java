@@ -16,29 +16,83 @@ import org.jellyfin.apiclient.model.configuration.ServerConfiguration;
 import org.jellyfin.apiclient.model.configuration.UserConfiguration;
 import org.jellyfin.apiclient.model.devices.ContentUploadHistory;
 import org.jellyfin.apiclient.model.devices.LocalFileInfo;
-import org.jellyfin.apiclient.model.dto.*;
+import org.jellyfin.apiclient.model.dto.BaseItemDto;
+import org.jellyfin.apiclient.model.dto.ItemCounts;
+import org.jellyfin.apiclient.model.dto.ItemIndex;
+import org.jellyfin.apiclient.model.dto.UserDto;
+import org.jellyfin.apiclient.model.dto.UserItemDataDto;
 import org.jellyfin.apiclient.model.entities.DisplayPreferences;
 import org.jellyfin.apiclient.model.entities.ParentalRating;
-import org.jellyfin.apiclient.model.livetv.*;
+import org.jellyfin.apiclient.model.livetv.BaseTimerInfoDto;
+import org.jellyfin.apiclient.model.livetv.ChannelInfoDto;
+import org.jellyfin.apiclient.model.livetv.GuideInfo;
+import org.jellyfin.apiclient.model.livetv.LiveTvChannelQuery;
+import org.jellyfin.apiclient.model.livetv.LiveTvInfo;
+import org.jellyfin.apiclient.model.livetv.ProgramQuery;
+import org.jellyfin.apiclient.model.livetv.RecommendedProgramQuery;
+import org.jellyfin.apiclient.model.livetv.RecordingGroupQuery;
+import org.jellyfin.apiclient.model.livetv.RecordingQuery;
+import org.jellyfin.apiclient.model.livetv.SeriesTimerInfoDto;
+import org.jellyfin.apiclient.model.livetv.SeriesTimerQuery;
+import org.jellyfin.apiclient.model.livetv.TimerInfoDto;
+import org.jellyfin.apiclient.model.livetv.TimerQuery;
 import org.jellyfin.apiclient.model.logging.ILogger;
-import org.jellyfin.apiclient.model.mediainfo.*;
+import org.jellyfin.apiclient.model.mediainfo.LiveStreamRequest;
+import org.jellyfin.apiclient.model.mediainfo.LiveStreamResponse;
+import org.jellyfin.apiclient.model.mediainfo.PlaybackInfoRequest;
+import org.jellyfin.apiclient.model.mediainfo.PlaybackInfoResponse;
+import org.jellyfin.apiclient.model.mediainfo.SubtitleTrackInfo;
 import org.jellyfin.apiclient.model.net.EndPointInfo;
 import org.jellyfin.apiclient.model.net.HttpException;
 import org.jellyfin.apiclient.model.playlists.PlaylistCreationRequest;
 import org.jellyfin.apiclient.model.playlists.PlaylistCreationResult;
 import org.jellyfin.apiclient.model.playlists.PlaylistItemQuery;
-import org.jellyfin.apiclient.model.querying.*;
-import org.jellyfin.apiclient.model.results.*;
+import org.jellyfin.apiclient.model.querying.AllThemeMediaResult;
+import org.jellyfin.apiclient.model.querying.ArtistsQuery;
+import org.jellyfin.apiclient.model.querying.EpisodeQuery;
+import org.jellyfin.apiclient.model.querying.ItemCountsQuery;
+import org.jellyfin.apiclient.model.querying.ItemFields;
+import org.jellyfin.apiclient.model.querying.ItemQuery;
+import org.jellyfin.apiclient.model.querying.ItemsByNameQuery;
+import org.jellyfin.apiclient.model.querying.ItemsResult;
+import org.jellyfin.apiclient.model.querying.LatestItemsQuery;
+import org.jellyfin.apiclient.model.querying.NextUpQuery;
+import org.jellyfin.apiclient.model.querying.PersonsQuery;
+import org.jellyfin.apiclient.model.querying.QueryFilters;
+import org.jellyfin.apiclient.model.querying.SeasonQuery;
+import org.jellyfin.apiclient.model.querying.SessionQuery;
+import org.jellyfin.apiclient.model.querying.SimilarItemsQuery;
+import org.jellyfin.apiclient.model.querying.ThemeMediaResult;
+import org.jellyfin.apiclient.model.querying.UpcomingEpisodesQuery;
+import org.jellyfin.apiclient.model.querying.UserQuery;
+import org.jellyfin.apiclient.model.results.ChannelInfoDtoResult;
+import org.jellyfin.apiclient.model.results.ItemReviewsResult;
+import org.jellyfin.apiclient.model.results.ReadySyncItemsResult;
+import org.jellyfin.apiclient.model.results.SeriesTimerInfoDtoResult;
+import org.jellyfin.apiclient.model.results.TimerInfoDtoResult;
 import org.jellyfin.apiclient.model.search.SearchHintResult;
 import org.jellyfin.apiclient.model.search.SearchQuery;
-import org.jellyfin.apiclient.serialization.IJsonSerializer;
-import org.jellyfin.apiclient.model.session.*;
-import org.jellyfin.apiclient.model.sync.*;
+import org.jellyfin.apiclient.model.session.ClientCapabilities;
+import org.jellyfin.apiclient.model.session.GeneralCommand;
+import org.jellyfin.apiclient.model.session.MessageCommand;
+import org.jellyfin.apiclient.model.session.PlayRequest;
+import org.jellyfin.apiclient.model.session.PlaybackProgressInfo;
+import org.jellyfin.apiclient.model.session.PlaybackStartInfo;
+import org.jellyfin.apiclient.model.session.PlaybackStopInfo;
+import org.jellyfin.apiclient.model.session.PlaystateRequest;
+import org.jellyfin.apiclient.model.session.SessionInfoDto;
+import org.jellyfin.apiclient.model.sync.SyncDataRequest;
+import org.jellyfin.apiclient.model.sync.SyncDataResponse;
+import org.jellyfin.apiclient.model.sync.SyncJob;
 import org.jellyfin.apiclient.model.system.PublicSystemInfo;
 import org.jellyfin.apiclient.model.system.SystemInfo;
 import org.jellyfin.apiclient.model.users.AuthenticationResult;
+import org.jellyfin.apiclient.serialization.IJsonSerializer;
 
-import java.io.*;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -91,7 +145,7 @@ public class ApiClient extends BaseApiClient {
 
     public void ensureWebSocket() {
         if (apiWebSocket == null) {
-            Logger.Debug("Creating ApiWebSocket");
+            Logger.debug("Creating ApiWebSocket");
             apiWebSocket = new ApiWebSocket(getJsonSerializer(), Logger, apiEventListener, this);
         }
 
@@ -156,7 +210,7 @@ public class ApiClient extends BaseApiClient {
 
     protected void getResponseStreamInternal(String address, Response<ResponseStreamInfo> response) {
 
-        Logger.Debug("Getting response stream from %s", address);
+        Logger.debug("Getting response stream from %s", address);
 
         HttpURLConnection conn = null;
 
@@ -929,7 +983,7 @@ public class ApiClient extends BaseApiClient {
         }
 
         String item = info.getItem() != null ? info.getItem().getName() : info.getItemId();
-        Logger.Info("ReportPlaybackStopped: Item %s, Ticks: %d", item, info.getPositionTicks());
+        Logger.info("ReportPlaybackStopped: Item %s, Ticks: %d", item, info.getPositionTicks());
 
         String url = GetApiUrl("Sessions/Playing/Stopped");
 
@@ -2019,7 +2073,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onError(Exception ex) {
 
-                Logger.ErrorException("Error logging out", ex);
+                Logger.errorException("Error logging out", ex);
                 ClearAuthenticationInfo();
                 response.onResponse();
             }
@@ -2287,7 +2341,7 @@ public class ApiClient extends BaseApiClient {
                 progress.reportError(ex);
             }
         } catch (Exception ex) {
-            Logger.ErrorException("Error uploading file", ex);
+            Logger.errorException("Error uploading file", ex);
             progress.reportError(new HttpException(ex.getMessage()));
         } finally {
             // close the streams

@@ -23,7 +23,7 @@ public class LogoutAllResponse extends EmptyResponse {
     }
 
     private void OnSuccessOrFail() {
-        logger.Debug("Updating saved credentials for all servers");
+        logger.debug("Updating saved credentials for all servers");
         ServerCredentials credentials = credentialProvider.GetCredentials();
 
         ArrayList<ServerInfo> servers = new ArrayList<>();

@@ -11,7 +11,7 @@ public interface ILogger
      @param formatString The format string.
      @param paramList The param list.
      */
-    void Info(String formatString, Object... paramList);
+    void info(String formatString, Object... paramList);
 
     /**
      Log at Error level using a format string.
@@ -19,7 +19,7 @@ public interface ILogger
      @param formatString The format string.
      @param paramList The param list.
      */
-    void Error(String formatString, Object... paramList);
+    void error(String formatString, Object... paramList);
 
     /**
      Log at Warning level using a format string.
@@ -27,7 +27,7 @@ public interface ILogger
      @param formatString The format string.
      @param paramList The param list.
      */
-    void Warn(String formatString, Object... paramList);
+    void warn(String formatString, Object... paramList);
 
     /**
      Log at Debug level using a format string.
@@ -35,7 +35,7 @@ public interface ILogger
      @param formatString The format string.
      @param paramList The param list.
      */
-    void Debug(String formatString, Object... paramList);
+    void debug(String formatString, Object... paramList);
 
     /**
      Log at Fatal level using a format string.
@@ -43,7 +43,7 @@ public interface ILogger
      @param formatString The format string.
      @param paramList The param list.
      */
-    void Fatal(String formatString, Object... paramList);
+    void fatal(String formatString, Object... paramList);
 
     /**
      Logs the exception with a format string message at Fatal level.
@@ -52,7 +52,7 @@ public interface ILogger
      @param exception The exception.
      @param paramList The param list.
      */
-    void FatalException(String formatString, Exception exception, Object... paramList);
+    void fatalException(String formatString, Exception exception, Object... paramList);
 
     /**
      Logs the exception with a format string message at Error level.
@@ -61,5 +61,5 @@ public interface ILogger
      @param exception The exception.
      @param paramList The param list.
      */
-    void ErrorException(String formatString, Exception exception, Object... paramList);
+    void errorException(String formatString, Exception exception, Object... paramList);
 }

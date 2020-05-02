@@ -21,27 +21,27 @@ public class JavaWebSocketClient extends WebSocketClient {
     @Override
     public void onOpen(ServerHandshake serverHandshake) {
 
-        _logger.Info("Web socket connection opened.");
+        _logger.info("Web socket connection opened.");
         listener.onOpen();
     }
 
     @Override
     public void onMessage(String s) {
 
-        _logger.Debug("Web socket message received.");
+        _logger.debug("Web socket message received.");
         listener.onMessage(s);
     }
 
     @Override
     public void onClose(int i, String reason, boolean b) {
-        _logger.Info("Web socket connection closed. Reason: " + reason);
+        _logger.info("Web socket connection closed. Reason: " + reason);
         listener.onClose();
     }
 
     @Override
     public void onError(Exception e) {
 
-        _logger.ErrorException("Web socket error.", e);
+        _logger.errorException("Web socket error.", e);
     }
 
     public boolean IsWebSocketOpen() {

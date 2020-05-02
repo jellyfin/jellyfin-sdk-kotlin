@@ -6,7 +6,13 @@ import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.serialization.IJsonSerializer;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.InterfaceAddress;
+import java.net.NetworkInterface;
+import java.net.SocketAddress;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -38,9 +44,9 @@ public class ServerLocator implements IServerLocator {
             try {
                 DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, InetAddress.getByName("255.255.255.255"), port);
                 c.send(sendPacket);
-                logger.Debug("%s >>> Request packet sent to: 255.255.255.255 (DEFAULT)", getClass().getName());
+                logger.debug("%s >>> Request packet sent to: 255.255.255.255 (DEFAULT)", getClass().getName());
             } catch (Exception e) {
-                logger.ErrorException("Error sending DatagramPacket", e);
+                logger.errorException("Error sending DatagramPacket", e);
             }
 
             // Broadcast the message over all the network interfaces
@@ -63,14 +69,14 @@ public class ServerLocator implements IServerLocator {
                         DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, broadcast, port);
                         c.send(sendPacket);
                     } catch (Exception e) {
-                        logger.ErrorException("Error sending DatagramPacket", e);
+                        logger.errorException("Error sending DatagramPacket", e);
                     }
 
-                    logger.Debug("%s >>> Request packet sent to: %s; Interface: %s", getClass().getName(), broadcast.getHostAddress(), networkInterface.getDisplayName());
+                    logger.debug("%s >>> Request packet sent to: %s; Interface: %s", getClass().getName(), broadcast.getHostAddress(), networkInterface.getDisplayName());
                 }
             }
 
-            logger.Debug("%s >>> Done looping over all network interfaces. Now waiting for a reply!", getClass().getName());
+            logger.debug("%s >>> Done looping over all network interfaces. Now waiting for a reply!", getClass().getName());
 
             Receive(c, timeoutMs, response);
 
@@ -79,7 +85,7 @@ public class ServerLocator implements IServerLocator {
 
         } catch (Exception ex) {
 
-            logger.ErrorException("Error finding servers", ex);
+            logger.errorException("Error finding servers", ex);
 
             response.onError(ex);
         }
@@ -102,19 +108,19 @@ public class ServerLocator implements IServerLocator {
             try {
                 c.receive(receivePacket);
             } catch (SocketTimeoutException e) {
-                logger.Debug("Server discovery timed out waiting for response.");
+                logger.debug("Server discovery timed out waiting for response.");
                 break;
             }
 
             SocketAddress remoteEndpoint = c.getRemoteSocketAddress();
 
             // We have a response
-            logger.Debug("%s >>> Broadcast response from server: %s", getClass().getName(), receivePacket.getAddress().getHostAddress());
+            logger.debug("%s >>> Broadcast response from server: %s", getClass().getName(), receivePacket.getAddress().getHostAddress());
 
             // Check if the message is correct
             String message = new String(receivePacket.getData()).trim();
 
-            logger.Debug("%s >>> Broadcast response from server: %s", getClass().getName(), message);
+            logger.debug("%s >>> Broadcast response from server: %s", getClass().getName(), message);
 
             ServerDiscoveryInfo serverInfo = jsonSerializer.DeserializeFromString(message, ServerDiscoveryInfo.class);
 
@@ -131,7 +137,7 @@ public class ServerLocator implements IServerLocator {
             timeoutMs = timeoutMs - (endTime - startTime);
         }
 
-        logger.Debug("Found %d servers", servers.size());
+        logger.debug("Found %d servers", servers.size());
 
         response.onResponse(servers);
     }

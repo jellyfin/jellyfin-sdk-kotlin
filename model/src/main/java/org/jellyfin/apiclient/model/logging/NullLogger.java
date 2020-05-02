@@ -2,27 +2,27 @@ package org.jellyfin.apiclient.model.logging;
 
 public class NullLogger implements ILogger
 {
-    public final void Info(String formatString, Object... paramList)
+    public final void info(String formatString, Object... paramList)
     {
     }
 
-    public final void Error(String formatString, Object... paramList)
+    public final void error(String formatString, Object... paramList)
     {
     }
 
-    public final void Warn(String formatString, Object... paramList)
+    public final void warn(String formatString, Object... paramList)
     {
     }
 
-    public final void Debug(String formatString, Object... paramList)
+    public final void debug(String formatString, Object... paramList)
     {
     }
 
-    public final void Fatal(String formatString, Object... paramList)
+    public final void fatal(String formatString, Object... paramList)
     {
     }
 
-    public final void FatalException(String formatString, Exception exception, Object... paramList)
+    public final void fatalException(String formatString, Exception exception, Object... paramList)
     {
     }
 
@@ -30,7 +30,7 @@ public class NullLogger implements ILogger
     {
     }
 
-    public final void ErrorException(String formatString, Exception exception, Object... paramList)
+    public final void errorException(String formatString, Exception exception, Object... paramList)
     {
     }
 

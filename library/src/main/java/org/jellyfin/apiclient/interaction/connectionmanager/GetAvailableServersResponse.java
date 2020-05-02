@@ -21,7 +21,7 @@ public class GetAvailableServersResponse extends Response<ArrayList<ServerInfo>>
 
     @Override
     public void onResponse(ArrayList<ServerInfo> servers) {
-        logger.Debug("Looping through server list");
+        logger.debug("Looping through server list");
         connectionManager.Connect(servers, response);
     }
 }

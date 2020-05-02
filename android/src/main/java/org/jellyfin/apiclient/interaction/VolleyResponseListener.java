@@ -1,6 +1,7 @@
 package org.jellyfin.apiclient.interaction;
 
 import com.android.volley.Response;
+
 import org.jellyfin.apiclient.model.logging.ILogger;
 
 public class VolleyResponseListener<T> implements Response.Listener<T> {
@@ -17,7 +18,7 @@ public class VolleyResponseListener<T> implements Response.Listener<T> {
 
     @Override
     public void onResponse(T s) {
-        logger.Info("Response received from: %s", url);
+        logger.info("Response received from: %s", url);
         outerResponse.onResponse(s);
     }
 }
