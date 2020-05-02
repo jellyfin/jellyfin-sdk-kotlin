@@ -1,8 +1,6 @@
 package org.jellyfin.apiclient.logging;
 
-import android.util.Log;
-
-import org.jellyfin.apiclient.model.logging.ILogger;
+import android.util.Log
 
 /**
  * ILogger implementation using the Android Log utility.
