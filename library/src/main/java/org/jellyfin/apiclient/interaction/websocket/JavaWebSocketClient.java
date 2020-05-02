@@ -3,7 +3,7 @@ package org.jellyfin.apiclient.interaction.websocket;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.enums.ReadyState;
 import org.java_websocket.handshake.ServerHandshake;
-import org.jellyfin.apiclient.model.logging.ILogger;
+import org.jellyfin.apiclient.logging.ILogger;
 
 import java.net.URI;
 
@@ -41,7 +41,7 @@ public class JavaWebSocketClient extends WebSocketClient {
     @Override
     public void onError(Exception e) {
 
-        _logger.errorException("Web socket error.", e);
+        _logger.exception("Web socket error.", e);
     }
 
     public boolean IsWebSocketOpen() {

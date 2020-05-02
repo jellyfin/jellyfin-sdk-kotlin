@@ -14,7 +14,7 @@ import com.android.volley.toolbox.StringRequest;
 
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
-import org.jellyfin.apiclient.model.logging.ILogger;
+import org.jellyfin.apiclient.logging.ILogger;
 
 public class VolleyHttpClient implements IAsyncHttpClient {
 

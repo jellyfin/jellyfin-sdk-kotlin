@@ -2,7 +2,7 @@ package org.jellyfin.apiclient.interaction;
 
 import com.android.volley.Response;
 
-import org.jellyfin.apiclient.model.logging.ILogger;
+import org.jellyfin.apiclient.logging.ILogger;
 
 public class VolleyResponseListener<T> implements Response.Listener<T> {
 

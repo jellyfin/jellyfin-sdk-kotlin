@@ -13,6 +13,7 @@ import org.jellyfin.apiclient.interaction.discovery.IServerLocator;
 import org.jellyfin.apiclient.interaction.http.HttpHeaders;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
+import org.jellyfin.apiclient.logging.ILogger;
 import org.jellyfin.apiclient.model.apiclient.ConnectionOptions;
 import org.jellyfin.apiclient.model.apiclient.ConnectionState;
 import org.jellyfin.apiclient.model.apiclient.ServerCredentials;
@@ -20,7 +21,6 @@ import org.jellyfin.apiclient.model.apiclient.ServerInfo;
 import org.jellyfin.apiclient.model.dto.IHasServerId;
 import org.jellyfin.apiclient.model.dto.UserDto;
 import org.jellyfin.apiclient.model.extensions.StringHelper;
-import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.model.session.ClientCapabilities;
 import org.jellyfin.apiclient.model.system.PublicSystemInfo;
 import org.jellyfin.apiclient.model.users.AuthenticationResult;
@@ -366,7 +366,7 @@ public class ConnectionManager implements IConnectionManager {
         try {
             credentials = credentialProvider.GetCredentials();
         } catch (Exception ex) {
-            logger.errorException("Error getting available servers", ex);
+            logger.exception("Error getting available servers", ex);
             response.onResponse(new ArrayList<>());
             return;
         }

@@ -2,9 +2,9 @@ package org.jellyfin.apiclient.interaction.connectionmanager;
 
 import org.jellyfin.apiclient.interaction.ConnectionResult;
 import org.jellyfin.apiclient.interaction.Response;
+import org.jellyfin.apiclient.logging.ILogger;
 import org.jellyfin.apiclient.model.apiclient.ConnectionOptions;
 import org.jellyfin.apiclient.model.apiclient.ServerInfo;
-import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.model.system.PublicSystemInfo;
 
 public class TryConnectResponse extends Response<PublicSystemInfo> {

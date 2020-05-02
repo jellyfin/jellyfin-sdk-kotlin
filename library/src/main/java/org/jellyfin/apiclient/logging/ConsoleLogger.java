@@ -1,7 +1,5 @@
 package org.jellyfin.apiclient.logging;
 
-import org.jellyfin.apiclient.model.logging.ILogger;
-
 public class ConsoleLogger implements ILogger {
 
     @Override
@@ -15,28 +13,12 @@ public class ConsoleLogger implements ILogger {
     }
 
     @Override
-    public void warn(String formatString, Object... paramList) {
-        System.out.println(paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString);
-    }
-
-    @Override
     public void debug(String formatString, Object... paramList) {
         System.out.println(paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString);
     }
 
     @Override
-    public void fatal(String formatString, Object... paramList) {
-        System.out.println(paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString);
-    }
-
-    @Override
-    public void fatalException(String formatString, Exception exception, Object... paramList) {
-
-        LogException(formatString, exception, paramList);
-    }
-
-    @Override
-    public void errorException(String formatString, Exception exception, Object... paramList) {
+    public void exception(String formatString, Exception exception, Object... paramList) {
         LogException(formatString, exception, paramList);
     }
 

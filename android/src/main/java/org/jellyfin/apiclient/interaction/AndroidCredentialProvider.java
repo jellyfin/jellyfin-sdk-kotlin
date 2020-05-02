@@ -3,8 +3,8 @@ package org.jellyfin.apiclient.interaction;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import org.jellyfin.apiclient.logging.ILogger;
 import org.jellyfin.apiclient.model.apiclient.ServerCredentials;
-import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.serialization.IJsonSerializer;
 
 public class AndroidCredentialProvider implements ICredentialProvider {

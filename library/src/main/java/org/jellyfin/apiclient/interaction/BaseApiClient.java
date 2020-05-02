@@ -2,12 +2,19 @@ package org.jellyfin.apiclient.interaction;
 
 import org.jellyfin.apiclient.interaction.device.IDevice;
 import org.jellyfin.apiclient.interaction.http.HttpHeaders;
+import org.jellyfin.apiclient.logging.ILogger;
 import org.jellyfin.apiclient.model.apiclient.ApiHelpers;
-import org.jellyfin.apiclient.model.dto.*;
-import org.jellyfin.apiclient.model.entities.*;
-import org.jellyfin.apiclient.model.livetv.*;
-import org.jellyfin.apiclient.model.logging.*;
-import org.jellyfin.apiclient.model.querying.*;
+import org.jellyfin.apiclient.model.dto.BaseItemDto;
+import org.jellyfin.apiclient.model.dto.BaseItemPerson;
+import org.jellyfin.apiclient.model.dto.ImageOptions;
+import org.jellyfin.apiclient.model.dto.SubtitleDownloadOptions;
+import org.jellyfin.apiclient.model.dto.UserDto;
+import org.jellyfin.apiclient.model.entities.ImageType;
+import org.jellyfin.apiclient.model.livetv.ChannelInfoDto;
+import org.jellyfin.apiclient.model.querying.ItemQuery;
+import org.jellyfin.apiclient.model.querying.ItemsByNameQuery;
+import org.jellyfin.apiclient.model.querying.NextUpQuery;
+import org.jellyfin.apiclient.model.querying.SimilarItemsQuery;
 import org.jellyfin.apiclient.serialization.IJsonSerializer;
 
 import java.text.DateFormat;

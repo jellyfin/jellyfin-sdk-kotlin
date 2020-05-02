@@ -1,6 +1,6 @@
 package org.jellyfin.apiclient.interaction;
 
-import org.jellyfin.apiclient.model.logging.ILogger;
+import org.jellyfin.apiclient.logging.ILogger;
 import org.jellyfin.apiclient.serialization.IJsonSerializer;
 
 public class SerializedResponse<T> extends Response<String> {

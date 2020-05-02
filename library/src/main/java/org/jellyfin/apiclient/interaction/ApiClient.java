@@ -6,6 +6,7 @@ import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
 import org.jellyfin.apiclient.interaction.tasks.CancellationToken;
 import org.jellyfin.apiclient.interaction.tasks.IProgress;
 import org.jellyfin.apiclient.interaction.websocket.ApiWebSocket;
+import org.jellyfin.apiclient.logging.ILogger;
 import org.jellyfin.apiclient.model.apiclient.RemoteLogoutReason;
 import org.jellyfin.apiclient.model.apiclient.ServerInfo;
 import org.jellyfin.apiclient.model.channels.AllChannelMediaQuery;
@@ -36,7 +37,6 @@ import org.jellyfin.apiclient.model.livetv.SeriesTimerInfoDto;
 import org.jellyfin.apiclient.model.livetv.SeriesTimerQuery;
 import org.jellyfin.apiclient.model.livetv.TimerInfoDto;
 import org.jellyfin.apiclient.model.livetv.TimerQuery;
-import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.model.mediainfo.LiveStreamRequest;
 import org.jellyfin.apiclient.model.mediainfo.LiveStreamResponse;
 import org.jellyfin.apiclient.model.mediainfo.PlaybackInfoRequest;
@@ -2073,7 +2073,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onError(Exception ex) {
 
-                Logger.errorException("Error logging out", ex);
+                Logger.exception("Error logging out", ex);
                 ClearAuthenticationInfo();
                 response.onResponse();
             }
@@ -2341,7 +2341,7 @@ public class ApiClient extends BaseApiClient {
                 progress.reportError(ex);
             }
         } catch (Exception ex) {
-            Logger.errorException("Error uploading file", ex);
+            Logger.exception("Error uploading file", ex);
             progress.reportError(new HttpException(ex.getMessage()));
         } finally {
             // close the streams

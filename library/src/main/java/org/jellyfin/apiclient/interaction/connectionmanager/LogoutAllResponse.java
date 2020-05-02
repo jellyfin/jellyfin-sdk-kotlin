@@ -2,9 +2,9 @@ package org.jellyfin.apiclient.interaction.connectionmanager;
 
 import org.jellyfin.apiclient.interaction.EmptyResponse;
 import org.jellyfin.apiclient.interaction.ICredentialProvider;
+import org.jellyfin.apiclient.logging.ILogger;
 import org.jellyfin.apiclient.model.apiclient.ServerCredentials;
 import org.jellyfin.apiclient.model.apiclient.ServerInfo;
-import org.jellyfin.apiclient.model.logging.ILogger;
 
 import java.util.ArrayList;
 

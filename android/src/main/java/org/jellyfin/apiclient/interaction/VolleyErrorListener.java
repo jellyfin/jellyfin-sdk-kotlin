@@ -4,7 +4,7 @@ import com.android.volley.Response;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 
-import org.jellyfin.apiclient.model.logging.ILogger;
+import org.jellyfin.apiclient.logging.ILogger;
 import org.jellyfin.apiclient.model.net.HttpException;
 
 public class VolleyErrorListener<T> implements Response.ErrorListener {
@@ -20,7 +20,7 @@ public class VolleyErrorListener<T> implements Response.ErrorListener {
     @Override
     public void onErrorResponse(VolleyError error) {
         String messagePrefix = "VolleyError " + error.getClass().getName() + ": ";
-        logger.errorException(messagePrefix + error.getMessage(), error);
+        logger.exception(messagePrefix + error.getMessage(), error);
 
         HttpException httpException = new HttpException(messagePrefix, error);
 
