@@ -34,3 +34,16 @@ dependencies {
 
 	implementation("com.android.volley:volley:1.1.1")
 }
+
+// Because of limitations in the android plugin
+// the publishing definition should be inside the "afterEvaluate" block
+afterEvaluate {
+	publishing {
+		publications {
+			create<MavenPublication>("maven") {
+				// Should be the same as the build type
+				from(components["release"])
+			}
+		}
+	}
+}
