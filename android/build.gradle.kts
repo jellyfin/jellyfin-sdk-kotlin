@@ -1,6 +1,5 @@
 plugins {
 	id("com.android.library")
-	id("com.github.dcendents.android-maven")
 
 	id("kotlin-android")
 	id("kotlin-android-extensions")
