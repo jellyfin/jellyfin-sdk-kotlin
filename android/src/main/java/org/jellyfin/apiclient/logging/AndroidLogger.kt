@@ -1,70 +1,43 @@
-package org.jellyfin.apiclient.logging;
+package org.jellyfin.apiclient.logging
 
 import android.util.Log
+import org.jellyfin.apiclient.model.logging.ILogger
 
 /**
- * ILogger implementation using the Android Log utility.
+ * ILogger implementation for Android. Uses the [android.util.Log] class.
  */
-public class AndroidLogger implements ILogger {
-    private final String tag;
+class AndroidLogger(
+	private val tag: String = "jellyfin-apiclient"
+) : ILogger {
+	private fun getFormattedString(raw: String, vararg parameters: Any): String {
+		return String.format(raw, *parameters)
+	}
 
-    public AndroidLogger(String tag) {
-        this.tag = tag;
-    }
+	override fun info(msg: String, vararg parameters: Any) {
+		Log.i(tag, getFormattedString(msg, *parameters))
+	}
 
-    @Override
-    public void info(String formatString, Object... paramList) {
-        if (paramList.length > 0)
-            Log.i(tag, String.format(formatString, paramList));
-        else
-            Log.i(tag, formatString);
-    }
+	override fun error(msg: String, vararg parameters: Any) {
+		Log.e(tag, getFormattedString(msg, *parameters))
+	}
 
-    @Override
-    public void error(String formatString, Object... paramList) {
-        if (paramList.length > 0)
-            Log.e(tag, String.format(formatString, paramList));
-        else
-            Log.e(tag, formatString);
-    }
+	override fun warn(msg: String, vararg parameters: Any) {
+		Log.w(tag, getFormattedString(msg, *parameters))
+	}
 
-    @Override
-    public void warn(String formatString, Object... paramList) {
-        if (paramList.length > 0)
-            Log.w(tag, String.format(formatString, paramList));
-        else
-            Log.w(tag, formatString);
-    }
+	override fun debug(msg: String, vararg parameters: Any) {
+		Log.d(tag, getFormattedString(msg, *parameters))
+	}
 
-    @Override
-    public void debug(String formatString, Object... paramList) {
-        if (paramList.length > 0)
-            Log.d(tag, String.format(formatString, paramList));
-        else
-            Log.d(tag, formatString);
-    }
+	override fun fatal(msg: String, vararg parameters: Any) {
+		Log.wtf(tag, getFormattedString(msg, *parameters))
+	}
 
-    @Override
-    public void fatal(String formatString, Object... paramList) {
-        if (paramList.length > 0)
-            Log.wtf(tag, String.format(formatString, paramList));
-        else
-            Log.wtf(tag, formatString);
-    }
+	override fun fatalException(msg: String, exception: Exception, vararg parameters: Any) {
+		Log.wtf(tag, getFormattedString(msg, *parameters), exception)
+	}
 
-    @Override
-    public void fatalException(String formatString, Exception exception, Object... paramList) {
-        if (paramList.length > 0)
-            Log.wtf(tag, String.format(formatString, paramList), exception);
-        else
-            Log.wtf(tag, formatString, exception);
-    }
-
-    @Override
-    public void errorException(String formatString, Exception exception, Object... paramList) {
-        if (paramList.length > 0)
-            Log.e(tag, String.format(formatString, paramList), exception);
-        else
-            Log.e(tag, formatString, exception);
-    }
+	override fun errorException(msg: String, exception: Exception, vararg parameters: Any) {
+		Log.e(tag, getFormattedString(msg, *parameters), exception)
+	}
 }
