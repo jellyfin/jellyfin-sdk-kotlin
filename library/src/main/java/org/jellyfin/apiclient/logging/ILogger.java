@@ -35,5 +35,5 @@ public interface ILogger {
      * @param exception    The exception.
      * @param paramList    The param list.
      */
-    void exception(String formatString, Exception exception, Object... paramList);
+    void error(String formatString, Exception exception, Object... paramList);
 }

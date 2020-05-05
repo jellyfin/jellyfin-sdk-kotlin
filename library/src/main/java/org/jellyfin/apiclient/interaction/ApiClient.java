@@ -2073,7 +2073,7 @@ public class ApiClient extends BaseApiClient {
             @Override
             public void onError(Exception ex) {
 
-                Logger.exception("Error logging out", ex);
+                Logger.error("Error logging out", ex);
                 ClearAuthenticationInfo();
                 response.onResponse();
             }
@@ -2341,7 +2341,7 @@ public class ApiClient extends BaseApiClient {
                 progress.reportError(ex);
             }
         } catch (Exception ex) {
-            Logger.exception("Error uploading file", ex);
+            Logger.error("Error uploading file", ex);
             progress.reportError(new HttpException(ex.getMessage()));
         } finally {
             // close the streams

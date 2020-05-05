@@ -366,7 +366,7 @@ public class ConnectionManager implements IConnectionManager {
         try {
             credentials = credentialProvider.GetCredentials();
         } catch (Exception ex) {
-            logger.exception("Error getting available servers", ex);
+            logger.error("Error getting available servers", ex);
             response.onResponse(new ArrayList<>());
             return;
         }

@@ -20,7 +20,7 @@ public class VolleyErrorListener<T> implements Response.ErrorListener {
     @Override
     public void onErrorResponse(VolleyError error) {
         String messagePrefix = "VolleyError " + error.getClass().getName() + ": ";
-        logger.exception(messagePrefix + error.getMessage(), error);
+        logger.error(messagePrefix + error.getMessage(), error);
 
         HttpException httpException = new HttpException(messagePrefix, error);
 

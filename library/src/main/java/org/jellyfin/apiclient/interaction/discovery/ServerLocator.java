@@ -46,7 +46,7 @@ public class ServerLocator implements IServerLocator {
                 c.send(sendPacket);
                 logger.debug("%s >>> Request packet sent to: 255.255.255.255 (DEFAULT)", getClass().getName());
             } catch (Exception e) {
-                logger.exception("Error sending DatagramPacket", e);
+                logger.error("Error sending DatagramPacket", e);
             }
 
             // Broadcast the message over all the network interfaces
@@ -69,7 +69,7 @@ public class ServerLocator implements IServerLocator {
                         DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, broadcast, port);
                         c.send(sendPacket);
                     } catch (Exception e) {
-                        logger.exception("Error sending DatagramPacket", e);
+                        logger.error("Error sending DatagramPacket", e);
                     }
 
                     logger.debug("%s >>> Request packet sent to: %s; Interface: %s", getClass().getName(), broadcast.getHostAddress(), networkInterface.getDisplayName());
@@ -85,7 +85,7 @@ public class ServerLocator implements IServerLocator {
 
         } catch (Exception ex) {
 
-            logger.exception("Error finding servers", ex);
+            logger.error("Error finding servers", ex);
 
             response.onError(ex);
         }

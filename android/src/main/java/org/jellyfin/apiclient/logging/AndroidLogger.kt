@@ -24,7 +24,7 @@ class AndroidLogger(
 		Log.e(tag, getFormattedString(msg, *parameters))
 	}
 
-	override fun exception(msg: String, exception: Exception, vararg parameters: Any) {
-		Log.wtf(tag, getFormattedString(msg, *parameters), exception)
+	override fun error(msg: String, exception: Exception, vararg parameters: Any) {
+		Log.e(tag, getFormattedString(msg, *parameters), exception)
 	}
 }

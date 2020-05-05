@@ -41,7 +41,7 @@ public class JavaWebSocketClient extends WebSocketClient {
     @Override
     public void onError(Exception e) {
 
-        _logger.exception("Web socket error.", e);
+        _logger.error("Web socket error.", e);
     }
 
     public boolean IsWebSocketOpen() {
