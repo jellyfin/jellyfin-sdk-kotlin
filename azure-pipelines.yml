@@ -13,3 +13,7 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
+
+- script: |
+    bash <(curl https://codecov.io/bash)
+  displayName: 'codecov'
