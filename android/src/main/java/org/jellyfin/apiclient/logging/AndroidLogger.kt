@@ -9,7 +9,7 @@ class AndroidLogger(
 	private val tag: String = "jellyfin-apiclient"
 ) : ILogger {
 	private fun getFormattedString(raw: String, vararg parameters: Any): String {
-		return String.format(raw, *parameters)
+		return if (parameters.isNotEmpty()) String.format(raw, *parameters) else raw
 	}
 
 	override fun debug(msg: String, vararg parameters: Any) {
