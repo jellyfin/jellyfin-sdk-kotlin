@@ -233,5 +233,3 @@ Android is fully supported, and special subclasses are provided for it:
 
 - AndroidConnectionManager
 - AndroidApiClient
-
-Special thanks to [Tangible Software Solutions](http://www.tangiblesoftwaresolutions.com/ "Tangible Software Solutions") for donating a license to our project.
