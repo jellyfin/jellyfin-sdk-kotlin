@@ -1,15 +1,20 @@
 package org.jellyfin.apiclient.interaction;
 
-import org.jellyfin.apiclient.interaction.http.HttpRequest;
-import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
-import org.jellyfin.apiclient.model.logging.ILogger;
 import android.content.Context;
 
-import com.android.volley.*;
+import com.android.volley.Cache;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Network;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
+
+import org.jellyfin.apiclient.interaction.http.HttpRequest;
+import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
+import org.jellyfin.apiclient.logging.ILogger;
 
 public class VolleyHttpClient implements IAsyncHttpClient {
 
@@ -59,7 +64,7 @@ public class VolleyHttpClient implements IAsyncHttpClient {
         // set the default tag if tag is empty
         //req.setTag(TAG);
 
-        logger.Debug("Adding request to queue: %s", req.getUrl());
+        logger.debug("Adding request to queue: %s", req.getUrl());
 
         getRequestQueue().add(req);
     }

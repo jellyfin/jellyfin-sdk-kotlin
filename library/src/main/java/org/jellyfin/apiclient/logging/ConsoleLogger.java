@@ -1,42 +1,24 @@
 package org.jellyfin.apiclient.logging;
 
-import org.jellyfin.apiclient.model.logging.ILogger;
-
 public class ConsoleLogger implements ILogger {
 
     @Override
-    public void Info(String formatString, Object... paramList) {
+    public void debug(String formatString, Object... paramList) {
         System.out.println(paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString);
     }
 
     @Override
-    public void Error(String formatString, Object... paramList) {
+    public void info(String formatString, Object... paramList) {
         System.out.println(paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString);
     }
 
     @Override
-    public void Warn(String formatString, Object... paramList) {
+    public void error(String formatString, Object... paramList) {
         System.out.println(paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString);
     }
 
     @Override
-    public void Debug(String formatString, Object... paramList) {
-        System.out.println(paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString);
-    }
-
-    @Override
-    public void Fatal(String formatString, Object... paramList) {
-        System.out.println(paramList != null && paramList.length > 0 ? String.format(formatString, paramList) : formatString);
-    }
-
-    @Override
-    public void FatalException(String formatString, Exception exception, Object... paramList) {
-
-        LogException(formatString, exception, paramList);
-    }
-
-    @Override
-    public void ErrorException(String formatString, Exception exception, Object... paramList) {
+    public void error(String formatString, Exception exception, Object... paramList) {
         LogException(formatString, exception, paramList);
     }
 
@@ -47,11 +29,11 @@ public class ConsoleLogger implements ILogger {
         String exceptionMessage = exception.getMessage();
 
         if (exceptionMessage != null) {
-            msg += System.lineSeparator() +  exceptionMessage;
+            msg += System.lineSeparator() + exceptionMessage;
         }
 
         for (StackTraceElement elem : exception.getStackTrace()) {
-            msg += System.lineSeparator() +  elem.toString();
+            msg += System.lineSeparator() + elem.toString();
         }
 
         System.out.println(msg);

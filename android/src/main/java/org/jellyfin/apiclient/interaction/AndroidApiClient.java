@@ -2,7 +2,7 @@ package org.jellyfin.apiclient.interaction;
 
 import org.jellyfin.apiclient.interaction.device.IDevice;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
-import org.jellyfin.apiclient.model.logging.ILogger;
+import org.jellyfin.apiclient.logging.ILogger;
 import org.jellyfin.apiclient.serialization.IJsonSerializer;
 
 public class AndroidApiClient extends ApiClient {

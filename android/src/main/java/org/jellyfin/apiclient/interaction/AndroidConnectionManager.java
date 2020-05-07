@@ -1,16 +1,16 @@
 package org.jellyfin.apiclient.interaction;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import org.jellyfin.apiclient.interaction.connectionmanager.ConnectionManager;
 import org.jellyfin.apiclient.interaction.device.IDevice;
 import org.jellyfin.apiclient.interaction.discovery.ServerLocator;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
+import org.jellyfin.apiclient.logging.ILogger;
 import org.jellyfin.apiclient.model.apiclient.ServerInfo;
-import org.jellyfin.apiclient.model.logging.ILogger;
-import org.jellyfin.apiclient.serialization.IJsonSerializer;
 import org.jellyfin.apiclient.model.session.ClientCapabilities;
-import android.content.Context;
+import org.jellyfin.apiclient.serialization.IJsonSerializer;
 
 import java.util.ArrayList;
 

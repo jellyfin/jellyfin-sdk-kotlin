@@ -1,6 +1,6 @@
 package org.jellyfin.apiclient.interaction;
 
-import org.jellyfin.apiclient.model.logging.ILogger;
+import org.jellyfin.apiclient.logging.ILogger;
 import org.jellyfin.apiclient.serialization.IJsonSerializer;
 
 public class SerializedResponse<T> extends Response<String> {
@@ -31,7 +31,7 @@ public class SerializedResponse<T> extends Response<String> {
     public void onResponse(String result) {
 
         if (url != null) {
-            logger.Debug("Received response from %s", url);
+            logger.debug("Received response from %s", url);
         }
 
         try {

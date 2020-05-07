@@ -3,14 +3,14 @@ package org.jellyfin.apiclient.interaction.websocket;
 import org.jellyfin.apiclient.interaction.ApiClient;
 import org.jellyfin.apiclient.interaction.ApiEventListener;
 import org.jellyfin.apiclient.interaction.EmptyResponse;
+import org.jellyfin.apiclient.logging.ILogger;
 import org.jellyfin.apiclient.model.apiclient.GeneralCommandEventArgs;
 import org.jellyfin.apiclient.model.entities.LibraryUpdateInfo;
-import org.jellyfin.apiclient.model.logging.ILogger;
 import org.jellyfin.apiclient.model.net.WebSocketMessage;
-import org.jellyfin.apiclient.serialization.IJsonSerializer;
 import org.jellyfin.apiclient.model.session.BrowseRequest;
 import org.jellyfin.apiclient.model.session.GeneralCommandType;
 import org.jellyfin.apiclient.model.session.MessageCommand;
+import org.jellyfin.apiclient.serialization.IJsonSerializer;
 
 import java.net.URI;
 import java.net.URLEncoder;
@@ -48,7 +48,7 @@ public class ApiWebSocket implements ISocketListener {
 
         URI uri = URI.create(address);
 
-        logger.Debug("Connecting to web socket url: %s", address);
+        logger.debug("Connecting to web socket url: %s", address);
 
         socketClient = new JavaWebSocketClient(logger, uri, this);
 
@@ -84,7 +84,7 @@ public class ApiWebSocket implements ISocketListener {
 
     public void SendWebSocketMessage(String name, Object data, EmptyResponse response) {
 
-        logger.Debug("Sending web socket message: %s", name);
+        logger.debug("Sending web socket message: %s", name);
         WebSocketMessage<Object> msg = new WebSocketMessage<>();
 
         msg.setMessageType(name);
@@ -138,7 +138,7 @@ public class ApiWebSocket implements ISocketListener {
 
         String messageType = GetMessageType(message);
 
-        logger.Info("Received web socket message: %s", messageType);
+        logger.info("Received web socket message: %s", messageType);
 
         if ("LibraryChanged".equalsIgnoreCase(messageType))
         {

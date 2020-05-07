@@ -13,6 +13,7 @@ import org.jellyfin.apiclient.interaction.discovery.IServerLocator;
 import org.jellyfin.apiclient.interaction.http.HttpHeaders;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
+import org.jellyfin.apiclient.logging.ILogger;
 import org.jellyfin.apiclient.model.apiclient.ConnectionOptions;
 import org.jellyfin.apiclient.model.apiclient.ConnectionState;
 import org.jellyfin.apiclient.model.apiclient.ServerCredentials;
@@ -20,11 +21,10 @@ import org.jellyfin.apiclient.model.apiclient.ServerInfo;
 import org.jellyfin.apiclient.model.dto.IHasServerId;
 import org.jellyfin.apiclient.model.dto.UserDto;
 import org.jellyfin.apiclient.model.extensions.StringHelper;
-import org.jellyfin.apiclient.model.logging.ILogger;
-import org.jellyfin.apiclient.serialization.IJsonSerializer;
 import org.jellyfin.apiclient.model.session.ClientCapabilities;
 import org.jellyfin.apiclient.model.system.PublicSystemInfo;
 import org.jellyfin.apiclient.model.users.AuthenticationResult;
+import org.jellyfin.apiclient.serialization.IJsonSerializer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -103,14 +103,14 @@ public class ConnectionManager implements IConnectionManager {
     }
 
     void OnFailedConnection(Response<ConnectionResult> response) {
-        logger.Debug("No server available");
+        logger.debug("No server available");
         ConnectionResult result = new ConnectionResult();
         result.setState(ConnectionState.Unavailable);
         response.onResponse(result);
     }
 
     void OnFailedConnection(Response<ConnectionResult> response, ArrayList<ServerInfo> servers) {
-        logger.Debug("No saved authentication");
+        logger.debug("No saved authentication");
         ConnectionResult result = new ConnectionResult();
         result.setState(ConnectionState.ServerSelection);
         result.setServers(new ArrayList<>());
@@ -119,7 +119,7 @@ public class ConnectionManager implements IConnectionManager {
 
     @Override
     public void Connect(final Response<ConnectionResult> response) {
-        logger.Debug("Entering initial connection workflow");
+        logger.debug("Entering initial connection workflow");
         GetAvailableServers(new GetAvailableServersResponse(logger, this, response));
     }
 
@@ -239,7 +239,7 @@ public class ConnectionManager implements IConnectionManager {
 
         String address = addresses[current];
 
-        logger.Debug("Attempting to connect to server at %s", address);
+        logger.debug("Attempting to connect to server at %s", address);
         ServerInfo server = new ServerInfo();
         server.setAddress(address);
         Connect(server, new ConnectionOptions(), response);
@@ -253,7 +253,7 @@ public class ConnectionManager implements IConnectionManager {
 
     @Override
     public void Logout(final EmptyResponse response) {
-        logger.Debug("Logging out of all servers");
+        logger.debug("Logging out of all servers");
         LogoutAll(new LogoutAllResponse(credentialProvider, logger, response, this));
     }
 
@@ -327,7 +327,7 @@ public class ConnectionManager implements IConnectionManager {
                          final AuthenticationResult result,
                          ConnectionOptions options,
                          final boolean saveCredentials) {
-        logger.Debug("Updating credentials after local authentication");
+        logger.debug("Updating credentials after local authentication");
 
         ServerInfo server = apiClient.getServerInfo();
 
@@ -361,17 +361,17 @@ public class ConnectionManager implements IConnectionManager {
     }
 
     public void GetAvailableServers(final Response<ArrayList<ServerInfo>> response) {
-        logger.Debug("Getting saved servers via credential provider");
+        logger.debug("Getting saved servers via credential provider");
         ServerCredentials credentials;
         try {
             credentials = credentialProvider.GetCredentials();
         } catch (Exception ex) {
-            logger.ErrorException("Error getting available servers", ex);
+            logger.error("Error getting available servers", ex);
             response.onResponse(new ArrayList<>());
             return;
         }
 
-        logger.Debug("Scanning network for local servers");
+        logger.debug("Scanning network for local servers");
         Response<ArrayList<ServerInfo>> findServersResponse = new FindServersResponse(this, credentials, new ArrayList<>(), response);
         FindServers(findServersResponse);
     }

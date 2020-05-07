@@ -1,6 +1,9 @@
 plugins {
 	id("com.android.library")
 	id("com.github.dcendents.android-maven")
+
+	id("kotlin-android")
+	id("kotlin-android-extensions")
 }
 
 android {
@@ -27,6 +30,8 @@ android {
 
 dependencies {
 	api(project(":library"))
+
+	implementation(kotlin("stdlib-jdk7"))
 
 	implementation("com.android.volley:volley:1.1.1")
 }
