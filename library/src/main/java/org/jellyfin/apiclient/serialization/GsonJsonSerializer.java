@@ -1,14 +1,14 @@
 package org.jellyfin.apiclient.serialization;
 
-import org.jellyfin.apiclient.model.apiclient.ServerInfo;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import org.jellyfin.apiclient.model.apiclient.ServerInfo;
 
 import java.io.InputStream;
 
 public class GsonJsonSerializer implements IJsonSerializer {
-    private final Gson gson;
+    public final Gson gson;
 
     public GsonJsonSerializer() {
         gson = new GsonBuilder()

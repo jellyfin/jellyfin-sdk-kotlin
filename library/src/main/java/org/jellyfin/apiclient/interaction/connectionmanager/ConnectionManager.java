@@ -1,5 +1,7 @@
 package org.jellyfin.apiclient.interaction.connectionmanager;
 
+import org.jellyfin.apiclient.discovery.JavaNetBroadcastAddressesProvider;
+import org.jellyfin.apiclient.discovery.ServerDiscovery;
 import org.jellyfin.apiclient.interaction.ApiClient;
 import org.jellyfin.apiclient.interaction.ApiEventListener;
 import org.jellyfin.apiclient.interaction.ConnectionResult;
@@ -21,7 +23,7 @@ import org.jellyfin.apiclient.model.dto.UserDto;
 import org.jellyfin.apiclient.model.session.ClientCapabilities;
 import org.jellyfin.apiclient.model.system.PublicSystemInfo;
 import org.jellyfin.apiclient.model.users.AuthenticationResult;
-import org.jellyfin.apiclient.serialization.IJsonSerializer;
+import org.jellyfin.apiclient.serialization.GsonJsonSerializer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,7 +36,7 @@ public class ConnectionManager implements IConnectionManager {
     protected IAsyncHttpClient httpClient;
 
     private HashMap<String, ApiClient> apiClients = new HashMap<>();
-    protected IJsonSerializer jsonSerializer;
+    protected GsonJsonSerializer jsonSerializer;
 
     protected String applicationName;
     protected String applicationVersion;
@@ -42,8 +44,7 @@ public class ConnectionManager implements IConnectionManager {
     protected ClientCapabilities clientCapabilities;
     protected ApiEventListener apiEventListener;
 
-    public ConnectionManager(IJsonSerializer jsonSerializer,
-                             ILogger logger,
+    public ConnectionManager(ILogger logger,
                              IAsyncHttpClient httpClient,
                              String applicationName,
                              String applicationVersion,
@@ -58,7 +59,9 @@ public class ConnectionManager implements IConnectionManager {
         this.device = device;
         this.clientCapabilities = clientCapabilities;
         this.apiEventListener = apiEventListener;
-        this.jsonSerializer = jsonSerializer;
+
+        this.jsonSerializer = new GsonJsonSerializer();
+        serverDiscovery = new ServerDiscovery(jsonSerializer.gson, logger, new JavaNetBroadcastAddressesProvider());
     }
 
     public ClientCapabilities getClientCapabilities() {
