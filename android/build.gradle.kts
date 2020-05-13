@@ -16,6 +16,15 @@ android {
 		versionName = "0.6.0"
 	}
 
+	compileOptions {
+		sourceCompatibility = JavaVersion.VERSION_1_8
+		targetCompatibility = JavaVersion.VERSION_1_8
+	}
+
+	kotlinOptions {
+		jvmTarget = JavaVersion.VERSION_1_8.toString()
+	}
+
 	buildTypes {
 		getByName("release") {
 			isMinifyEnabled = false
@@ -30,7 +39,10 @@ android {
 dependencies {
 	api(project(":library"))
 
-	implementation(kotlin("stdlib-jdk7"))
+	implementation(kotlin("stdlib-jdk8"))
+
+	implementation("androidx.core:core-ktx:1.2.0")
+	implementation("androidx.annotation:annotation:1.1.0")
 
 	implementation("com.android.volley:volley:1.1.1")
 }
