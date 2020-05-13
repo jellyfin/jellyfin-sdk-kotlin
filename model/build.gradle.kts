@@ -9,7 +9,7 @@ val sourcesJar by tasks.creating(Jar::class) {
 	from(sourceSets.getByName("main").allSource)
 }
 
-publishing.publications.create<MavenPublication>("maven") {
+publishing.publications.create<MavenPublication>("default") {
 	from(components["java"])
 
 	artifact(sourcesJar)

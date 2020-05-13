@@ -29,7 +29,8 @@ allprojects {
 	}
 
 	publishing.repositories.maven {
-		url = uri("https://api.bintray.com/maven/nielsvanvelzen/jellyfin-apiclient-java/jellyfin-apiclient-java/;publish=0")
+		name = "bintray"
+		url = uri("https://api.bintray.com/maven/nielsvanvelzen/jellyfin-apiclient-java/jellyfin-apiclient-java;publish=0;override=1")
 
 		credentials {
 			username = getProperty("bintray.user") as String?

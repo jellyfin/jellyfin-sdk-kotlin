@@ -38,7 +38,7 @@ dependencies {
 // Because of limitations in the android plugin
 // the publishing definition should be inside the "afterEvaluate" block
 afterEvaluate {
-	publishing.publications.create<MavenPublication>("maven") {
+	publishing.publications.create<MavenPublication>("default") {
 		// Should be the same as the build type
 		from(components["release"])
 	}
