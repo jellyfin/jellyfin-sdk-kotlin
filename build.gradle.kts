@@ -28,16 +28,12 @@ allprojects {
 		jcenter()
 	}
 
-	publishing {
-		repositories {
-			maven {
-				url = uri("https://api.bintray.com/maven/nielsvanvelzen/jellyfin-apiclient-java/jellyfin-apiclient-java/;publish=0")
+	publishing.repositories.maven {
+		url = uri("https://api.bintray.com/maven/nielsvanvelzen/jellyfin-apiclient-java/jellyfin-apiclient-java/;publish=0")
 
-				credentials {
-					username = getProperty("bintray.user") as String?
-					password = getProperty("bintray.key") as String?
-				}
-			}
+		credentials {
+			username = getProperty("bintray.user") as String?
+			password = getProperty("bintray.key") as String?
 		}
 	}
 }
