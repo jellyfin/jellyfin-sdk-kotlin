@@ -31,7 +31,6 @@ import java.util.regex.Pattern;
 
 public class ConnectionManager implements IConnectionManager {
     protected ILogger logger;
-    private IServerLocator serverDiscovery;
     protected IAsyncHttpClient httpClient;
 
     private HashMap<String, ApiClient> apiClients = new HashMap<>();
@@ -45,7 +44,6 @@ public class ConnectionManager implements IConnectionManager {
 
     public ConnectionManager(IJsonSerializer jsonSerializer,
                              ILogger logger,
-                             IServerLocator serverDiscovery,
                              IAsyncHttpClient httpClient,
                              String applicationName,
                              String applicationVersion,
@@ -54,7 +52,6 @@ public class ConnectionManager implements IConnectionManager {
                              ApiEventListener apiEventListener) {
 
         this.logger = logger;
-        this.serverDiscovery = serverDiscovery;
         this.httpClient = httpClient;
         this.applicationName = applicationName;
         this.applicationVersion = applicationVersion;
@@ -308,6 +305,9 @@ public class ConnectionManager implements IConnectionManager {
         // TODO: Fire event
     }
 
+    /**
+     * @deprecated Use [FindServers]
+     */
     @Deprecated
     public void GetAvailableServers(final Response<ArrayList<ServerInfo>> response) {
         FindServers(response);
@@ -332,14 +332,6 @@ public class ConnectionManager implements IConnectionManager {
         clone.addAll(credentials.getServers());
 
         response.onResponse(clone);
-    }
-
-    protected void FindServers(final Response<ArrayList<ServerInfo>> response) {
-        FindServersInternal(response);
-    }
-
-    protected void FindServersInternal(final Response<ArrayList<ServerInfo>> response) {
-        serverDiscovery.FindServers(1000, new FindServersInnerResponse(this, response));
     }
 
     public String[] NormalizeAddress(String address) throws IllegalArgumentException {
