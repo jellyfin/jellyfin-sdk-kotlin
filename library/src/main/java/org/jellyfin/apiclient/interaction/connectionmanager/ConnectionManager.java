@@ -236,7 +236,6 @@ public class ConnectionManager implements IConnectionManager {
 
     protected ApiClient InstantiateApiClient(String serverAddress) {
         return new ApiClient(httpClient,
-                jsonSerializer,
                 logger,
                 serverAddress,
                 applicationName,

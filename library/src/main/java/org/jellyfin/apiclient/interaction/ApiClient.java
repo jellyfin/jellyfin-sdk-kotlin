@@ -87,7 +87,6 @@ import org.jellyfin.apiclient.model.sync.SyncJob;
 import org.jellyfin.apiclient.model.system.PublicSystemInfo;
 import org.jellyfin.apiclient.model.system.SystemInfo;
 import org.jellyfin.apiclient.model.users.AuthenticationResult;
-import org.jellyfin.apiclient.serialization.IJsonSerializer;
 
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
@@ -115,9 +114,9 @@ public class ApiClient extends BaseApiClient {
         return authenticatedObservable;
     }
 
-    public ApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String accessToken, ApiEventListener apiEventListener)
+    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String accessToken, ApiEventListener apiEventListener)
     {
-        super(logger, jsonSerializer, serverAddress, accessToken);
+        super(logger, serverAddress, accessToken);
 
         this.httpClient = httpClient;
         this.apiEventListener = apiEventListener;
@@ -125,9 +124,9 @@ public class ApiClient extends BaseApiClient {
         ResetHttpHeaders();
     }
 
-    public ApiClient(IAsyncHttpClient httpClient, IJsonSerializer jsonSerializer, ILogger logger, String serverAddress, String appName, String applicationVersion, IDevice device, ApiEventListener apiEventListener)
+    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String appName, String applicationVersion, IDevice device, ApiEventListener apiEventListener)
     {
-        super(logger, jsonSerializer, serverAddress, appName, device, applicationVersion);
+        super(logger, serverAddress, appName, device, applicationVersion);
 
         this.httpClient = httpClient;
         this.apiEventListener = apiEventListener;
