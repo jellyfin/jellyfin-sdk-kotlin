@@ -1,6 +1,5 @@
 plugins {
 	id("com.android.library")
-	id("com.github.dcendents.android-maven")
 
 	id("kotlin-android")
 	id("kotlin-android-extensions")
@@ -34,4 +33,13 @@ dependencies {
 	implementation(kotlin("stdlib-jdk7"))
 
 	implementation("com.android.volley:volley:1.1.1")
+}
+
+// Because of limitations in the android plugin
+// the publishing definition should be inside the "afterEvaluate" block
+afterEvaluate {
+	publishing.publications.create<MavenPublication>("default") {
+		// Should be the same as the build type
+		from(components["release"])
+	}
 }
