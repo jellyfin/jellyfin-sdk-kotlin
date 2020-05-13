@@ -1,9 +1,11 @@
 plugins {
-	id("java-library")
+	id("kotlin")
 }
 
 dependencies {
 	api(project(":model"))
+
+	implementation(kotlin("stdlib-jdk7"))
 
 	implementation("org.java-websocket:Java-WebSocket:1.4.1")
 	implementation("com.google.code.gson:gson:2.8.6")

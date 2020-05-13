@@ -1,6 +1,5 @@
 plugins {
-	id("java-library")
-	id("maven-publish")
+	id("kotlin")
 }
 
 val sourcesJar by tasks.creating(Jar::class) {
