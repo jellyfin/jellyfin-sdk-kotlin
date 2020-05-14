@@ -25,7 +25,7 @@ import org.jellyfin.apiclient.model.sync.SyncJobItemStatus;
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, Type = {Type}")] public class BaseItemDto : IHasProviderIds, IItemDto, IHasServerId, IHasSyncInfo
-public class BaseItemDto implements IHasProviderIds, IHasServerId
+public class BaseItemDto implements IHasProviderIds
 {
 	/** 
 	 Gets or sets the name.

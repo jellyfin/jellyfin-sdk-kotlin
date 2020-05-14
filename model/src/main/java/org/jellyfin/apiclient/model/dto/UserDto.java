@@ -1,12 +1,12 @@
 package org.jellyfin.apiclient.model.dto;
 
-import org.jellyfin.apiclient.model.configuration.*;
-import org.jellyfin.apiclient.model.users.*;
+import org.jellyfin.apiclient.model.configuration.UserConfiguration;
+import org.jellyfin.apiclient.model.users.UserPolicy;
 
 /** 
  Class UserDto
 */
-public class UserDto implements IHasServerId
+public class UserDto
 {
 	/** 
 	 Gets or sets the name.

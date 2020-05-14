@@ -5,7 +5,6 @@ import org.jellyfin.apiclient.interaction.ApiEventListener;
 import org.jellyfin.apiclient.interaction.ConnectionResult;
 import org.jellyfin.apiclient.interaction.EmptyResponse;
 import org.jellyfin.apiclient.interaction.IConnectionManager;
-import org.jellyfin.apiclient.interaction.ICredentialProvider;
 import org.jellyfin.apiclient.interaction.Response;
 import org.jellyfin.apiclient.interaction.SerializedResponse;
 import org.jellyfin.apiclient.interaction.device.IDevice;
@@ -18,9 +17,7 @@ import org.jellyfin.apiclient.model.apiclient.ConnectionOptions;
 import org.jellyfin.apiclient.model.apiclient.ConnectionState;
 import org.jellyfin.apiclient.model.apiclient.ServerCredentials;
 import org.jellyfin.apiclient.model.apiclient.ServerInfo;
-import org.jellyfin.apiclient.model.dto.IHasServerId;
 import org.jellyfin.apiclient.model.dto.UserDto;
-import org.jellyfin.apiclient.model.extensions.StringHelper;
 import org.jellyfin.apiclient.model.session.ClientCapabilities;
 import org.jellyfin.apiclient.model.system.PublicSystemInfo;
 import org.jellyfin.apiclient.model.users.AuthenticationResult;
@@ -33,8 +30,6 @@ import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class ConnectionManager implements IConnectionManager {
-
-    private ICredentialProvider credentialProvider;
     protected ILogger logger;
     private IServerLocator serverDiscovery;
     protected IAsyncHttpClient httpClient;
@@ -48,8 +43,7 @@ public class ConnectionManager implements IConnectionManager {
     protected ClientCapabilities clientCapabilities;
     protected ApiEventListener apiEventListener;
 
-    public ConnectionManager(ICredentialProvider credentialProvider,
-                             IJsonSerializer jsonSerializer,
+    public ConnectionManager(IJsonSerializer jsonSerializer,
                              ILogger logger,
                              IServerLocator serverDiscovery,
                              IAsyncHttpClient httpClient,
@@ -59,7 +53,6 @@ public class ConnectionManager implements IConnectionManager {
                              ClientCapabilities clientCapabilities,
                              ApiEventListener apiEventListener) {
 
-        this.credentialProvider = credentialProvider;
         this.logger = logger;
         this.serverDiscovery = serverDiscovery;
         this.httpClient = httpClient;
@@ -74,29 +67,6 @@ public class ConnectionManager implements IConnectionManager {
     public ClientCapabilities getClientCapabilities() {
         return clientCapabilities;
     }
-
-    @Override
-    public ApiClient GetApiClient(IHasServerId item) {
-        return GetApiClient(item.getServerId());
-    }
-
-    @Override
-    public ApiClient GetApiClient(String serverId) {
-        return apiClients.get(serverId);
-    }
-
-    @Override
-    public ServerInfo getServerInfo(String serverId) {
-        final ServerCredentials credentials = credentialProvider.GetCredentials();
-        for (ServerInfo server : credentials.getServers()) {
-            if (StringHelper.equalsIgnoreCase(server.getId(), serverId)) {
-                return server;
-            }
-        }
-
-        return null;
-    }
-
     @Override
     public IDevice getDevice() {
         return this.device;
@@ -121,12 +91,6 @@ public class ConnectionManager implements IConnectionManager {
     public void Connect(final Response<ConnectionResult> response) {
         logger.debug("Entering initial connection workflow");
         GetAvailableServers(new GetAvailableServersResponse(logger, this, response));
-    }
-
-    @Override
-    public void GetSavedServers(final Response<ArrayList<ServerInfo>> response) {
-        final ServerCredentials credentials = credentialProvider.GetCredentials();
-        response.onResponse(credentials.getServers());
     }
 
     void Connect(final ArrayList<ServerInfo> servers, final Response<ConnectionResult> response) {
@@ -176,18 +140,16 @@ public class ConnectionManager implements IConnectionManager {
             throw new IllegalArgumentException();
         }
 
-        ServerCredentials credentials = credentialProvider.GetCredentials();
-        AfterConnectValidated(server, credentials, systemInfo, true, connectionOptions, response);
+        AfterConnectValidated(server, systemInfo, true, connectionOptions, response);
     }
 
     void AfterConnectValidated(final ServerInfo server,
-                               final ServerCredentials credentials,
                                final PublicSystemInfo systemInfo,
                                boolean verifyLocalAuthentication,
                                final ConnectionOptions options,
                                final Response<ConnectionResult> response) {
         if (verifyLocalAuthentication && !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getAccessToken())) {
-            ValidateAuthentication(server, new AfterConnectValidatedResponse(this, server, credentials, systemInfo, options, response));
+            ValidateAuthentication(server, new AfterConnectValidatedResponse(this, server, systemInfo, options, response));
             return;
         }
 
@@ -196,9 +158,6 @@ public class ConnectionManager implements IConnectionManager {
         if (options.getUpdateDateLastAccessed()) {
             server.setDateLastAccessed(new Date());
         }
-
-        credentials.AddOrUpdateServer(server);
-        credentialProvider.SaveCredentials(credentials);
 
         ConnectionResult result = new ConnectionResult();
         result.setApiClient(GetOrAddApiClient(server));
@@ -249,12 +208,6 @@ public class ConnectionManager implements IConnectionManager {
     public void Connect(final String address, final Response<ConnectionResult> response) {
         final String[] normalizedAddresses = NormalizeAddress(address);
         ConnectMultiple(normalizedAddresses, 0, response);
-    }
-
-    @Override
-    public void Logout(final EmptyResponse response) {
-        logger.debug("Logging out of all servers");
-        LogoutAll(new LogoutAllResponse(credentialProvider, logger, response, this));
     }
 
     private void ValidateAuthentication(final ServerInfo server, final EmptyResponse response) {
@@ -331,8 +284,6 @@ public class ConnectionManager implements IConnectionManager {
 
         ServerInfo server = apiClient.getServerInfo();
 
-        ServerCredentials credentials = credentialProvider.GetCredentials();
-
         if (options.getUpdateDateLastAccessed()) {
             server.setDateLastAccessed(new Date());
         }
@@ -344,9 +295,6 @@ public class ConnectionManager implements IConnectionManager {
             server.setUserId(null);
             server.setAccessToken(null);
         }
-
-        credentials.AddOrUpdateServer(server);
-        credentialProvider.SaveCredentials(credentials);
 
         AfterConnected(apiClient, options);
         OnLocalUserSignIn(result.getUser());
@@ -361,19 +309,6 @@ public class ConnectionManager implements IConnectionManager {
     }
 
     public void GetAvailableServers(final Response<ArrayList<ServerInfo>> response) {
-        logger.debug("Getting saved servers via credential provider");
-        ServerCredentials credentials;
-        try {
-            credentials = credentialProvider.GetCredentials();
-        } catch (Exception ex) {
-            logger.error("Error getting available servers", ex);
-            response.onResponse(new ArrayList<>());
-            return;
-        }
-
-        logger.debug("Scanning network for local servers");
-        Response<ArrayList<ServerInfo>> findServersResponse = new FindServersResponse(this, credentials, new ArrayList<>(), response);
-        FindServers(findServersResponse);
     }
 
     void OnGetServerResponse(ServerCredentials credentials,
@@ -390,8 +325,6 @@ public class ConnectionManager implements IConnectionManager {
         Collections.reverse(servers);
 
         credentials.setServers(servers);
-
-        credentialProvider.SaveCredentials(credentials);
 
         ArrayList<ServerInfo> clone = new ArrayList<>();
         clone.addAll(credentials.getServers());
@@ -424,62 +357,5 @@ public class ConnectionManager implements IConnectionManager {
                 "https://" + address,
                 "http://" + address
         };
-    }
-
-    private void LogoutAll(final EmptyResponse response) {
-        Object[] clientList = apiClients.values().toArray();
-
-        final int count = clientList.length;
-        if (count == 0) {
-            response.onResponse();
-            return;
-        }
-
-        final ArrayList<Integer> doneList = new ArrayList<>();
-        for (Object clientObj : clientList) {
-            ApiClient client = (ApiClient) clientObj;
-            ApiClientLogoutResponse logoutResponse = new ApiClientLogoutResponse(doneList, count, response, this, client);
-            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(client.getAccessToken())) {
-                client.Logout(logoutResponse);
-            } else {
-                logoutResponse.onResponse(false);
-            }
-        }
-    }
-
-    public void DeleteServer(final String id, final EmptyResponse response) {
-        ServerCredentials credentials = credentialProvider.GetCredentials();
-        ArrayList<ServerInfo> existing = credentials.getServers();
-
-        ServerInfo server = null;
-        for (ServerInfo current : existing) {
-            if (StringHelper.equalsIgnoreCase(current.getId(), id)) {
-                server = current;
-                break;
-            }
-        }
-
-        if (server == null) {
-            response.onResponse();
-            return;
-        }
-
-        OnServerDeleteResponse(id, response);
-    }
-
-    private void OnServerDeleteResponse(String id, EmptyResponse response) {
-        ServerCredentials credentials = credentialProvider.GetCredentials();
-        ArrayList<ServerInfo> existing = credentials.getServers();
-        ArrayList<ServerInfo> newList = new ArrayList<>();
-
-        for (ServerInfo current : existing) {
-            if (!StringHelper.equalsIgnoreCase(current.getId(), id)) {
-                newList.add(current);
-            }
-        }
-
-        credentials.setServers(newList);
-        credentialProvider.SaveCredentials(credentials);
-        response.onResponse();
     }
 }
