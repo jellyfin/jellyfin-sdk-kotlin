@@ -46,7 +46,6 @@ public class AndroidConnectionManager extends ConnectionManager {
     @Override
     protected ApiClient InstantiateApiClient(String serverAddress) {
         return new AndroidApiClient(httpClient,
-                jsonSerializer,
                 logger,
                 serverAddress,
                 applicationName,
