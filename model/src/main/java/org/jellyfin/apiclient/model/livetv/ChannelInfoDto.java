@@ -1,15 +1,17 @@
 package org.jellyfin.apiclient.model.livetv;
 
-import org.jellyfin.apiclient.model.dto.*;
-import org.jellyfin.apiclient.model.entities.*;
-import org.jellyfin.apiclient.model.library.*;
+import org.jellyfin.apiclient.model.dto.BaseItemDto;
+import org.jellyfin.apiclient.model.dto.MediaSourceInfo;
+import org.jellyfin.apiclient.model.dto.UserItemDataDto;
+import org.jellyfin.apiclient.model.entities.ImageType;
+import org.jellyfin.apiclient.model.library.PlayAccess;
 
 /** 
  Class ChannelInfoDto
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, Number = {Number}")] public class ChannelInfoDto : IItemDto, IHasServerId
-public class ChannelInfoDto implements IHasServerId
+public class ChannelInfoDto
 {
 	/** 
 	 Gets or sets the name.

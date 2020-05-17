@@ -6,8 +6,8 @@ import org.jellyfin.apiclient.interaction.Response;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
 import org.jellyfin.apiclient.model.apiclient.ServerInfo;
-import org.jellyfin.apiclient.serialization.IJsonSerializer;
 import org.jellyfin.apiclient.model.system.SystemInfo;
+import org.jellyfin.apiclient.serialization.IJsonSerializer;
 
 public class ValidateAuthenticationResponse extends Response<String> {
     private ConnectionManager connectionManager;
@@ -35,7 +35,7 @@ public class ValidateAuthenticationResponse extends Response<String> {
 
         if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getUserId()) &&
                 !tangible.DotNetToJavaStringHelper.isNullOrEmpty(server.getId())) {
-            ApiClient client = connectionManager.GetApiClient(server.getId());
+            ApiClient client = connectionManager.InstantiateApiClient(server.getAddress());
             if (client != null) {
                 String apiUrl = client.GetApiUrl("Users/" + server.getUserId());
                 apiUrl = client.AddDataFormat(apiUrl);

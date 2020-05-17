@@ -1,8 +1,6 @@
 package org.jellyfin.apiclient.model.livetv;
 
-import org.jellyfin.apiclient.model.dto.*;
-
-public class BaseTimerInfoDto implements IHasServerId
+public class BaseTimerInfoDto
 {
 	/** 
 	 Id of the recording.

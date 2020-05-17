@@ -16,6 +16,6 @@ public class FindServersRunnable implements Runnable {
 
     @Override
     public void run() {
-        connectionManager.FindServersAndroid(response);
+        connectionManager.FindServers(response);
     }
 }
