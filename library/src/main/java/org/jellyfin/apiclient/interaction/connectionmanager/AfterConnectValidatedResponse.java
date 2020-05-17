@@ -4,7 +4,6 @@ import org.jellyfin.apiclient.interaction.ConnectionResult;
 import org.jellyfin.apiclient.interaction.EmptyResponse;
 import org.jellyfin.apiclient.interaction.Response;
 import org.jellyfin.apiclient.model.apiclient.ConnectionOptions;
-import org.jellyfin.apiclient.model.apiclient.ServerCredentials;
 import org.jellyfin.apiclient.model.apiclient.ServerInfo;
 import org.jellyfin.apiclient.model.system.PublicSystemInfo;
 
@@ -15,7 +14,6 @@ public class AfterConnectValidatedResponse extends EmptyResponse {
 
     private ConnectionManager connectionManager;
     private ServerInfo server;
-    private ServerCredentials credentials;
     private PublicSystemInfo systemInfo;
     private ConnectionOptions options;
     private Response<ConnectionResult> response;

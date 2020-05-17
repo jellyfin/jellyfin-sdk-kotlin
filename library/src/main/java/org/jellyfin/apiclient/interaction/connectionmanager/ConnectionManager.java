@@ -308,7 +308,9 @@ public class ConnectionManager implements IConnectionManager {
         // TODO: Fire event
     }
 
+    @Deprecated
     public void GetAvailableServers(final Response<ArrayList<ServerInfo>> response) {
+        FindServers(response);
     }
 
     void OnGetServerResponse(ServerCredentials credentials,
