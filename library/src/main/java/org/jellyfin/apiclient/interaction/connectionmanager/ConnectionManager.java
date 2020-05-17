@@ -1,7 +1,5 @@
 package org.jellyfin.apiclient.interaction.connectionmanager;
 
-import org.jellyfin.apiclient.discovery.JavaNetBroadcastAddressesProvider;
-import org.jellyfin.apiclient.discovery.ServerDiscovery;
 import org.jellyfin.apiclient.interaction.ApiClient;
 import org.jellyfin.apiclient.interaction.ApiEventListener;
 import org.jellyfin.apiclient.interaction.ConnectionResult;
@@ -10,7 +8,6 @@ import org.jellyfin.apiclient.interaction.IConnectionManager;
 import org.jellyfin.apiclient.interaction.Response;
 import org.jellyfin.apiclient.interaction.SerializedResponse;
 import org.jellyfin.apiclient.interaction.device.IDevice;
-import org.jellyfin.apiclient.interaction.discovery.IServerLocator;
 import org.jellyfin.apiclient.interaction.http.HttpHeaders;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
@@ -61,7 +58,6 @@ public class ConnectionManager implements IConnectionManager {
         this.apiEventListener = apiEventListener;
 
         this.jsonSerializer = new GsonJsonSerializer();
-        serverDiscovery = new ServerDiscovery(jsonSerializer.gson, logger, new JavaNetBroadcastAddressesProvider());
     }
 
     public ClientCapabilities getClientCapabilities() {
@@ -308,11 +304,11 @@ public class ConnectionManager implements IConnectionManager {
     }
 
     /**
-     * @deprecated Use [FindServers]
+     * @deprecated Use new discovery class
      */
     @Deprecated
     public void GetAvailableServers(final Response<ArrayList<ServerInfo>> response) {
-        FindServers(response);
+        response.onError(new Exception("Deprecated function"));
     }
 
     void OnGetServerResponse(ServerCredentials credentials,

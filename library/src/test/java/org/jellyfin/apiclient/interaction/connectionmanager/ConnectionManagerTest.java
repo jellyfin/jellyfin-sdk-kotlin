@@ -10,7 +10,7 @@ public class ConnectionManagerTest {
     @Test
     public void testNormalizeAddress() {
         // The normalizeAddress method doesn't use those parameters so it's safe to null everything
-        ConnectionManager connectionManager = new ConnectionManager(null, new ConsoleLogger(), null, null, null, null, null);
+        ConnectionManager connectionManager = new ConnectionManager(new ConsoleLogger(), null, null, null, null, null, null);
 
         // Tests for urls providing HTTP or HTTPS protocol
         assertArrayEquals(new String[]{"https://demo.jellyfin.org/stable"}, connectionManager.NormalizeAddress("https://demo.jellyfin.org/stable"));
