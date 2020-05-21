@@ -2,8 +2,6 @@ package org.jellyfin.apiclient.interaction;
 
 import android.content.Context;
 
-import org.jellyfin.apiclient.discovery.AndroidBroadcastAddressesProvider;
-import org.jellyfin.apiclient.discovery.ServerDiscovery;
 import org.jellyfin.apiclient.interaction.connectionmanager.ConnectionManager;
 import org.jellyfin.apiclient.interaction.device.IDevice;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
