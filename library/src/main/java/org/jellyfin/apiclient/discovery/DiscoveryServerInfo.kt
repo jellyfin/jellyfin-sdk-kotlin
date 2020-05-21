@@ -1,6 +1,9 @@
 package org.jellyfin.apiclient.discovery
 
-//TODO: Move to model package
+/**
+ * Contains the information exposed by the server on discovery
+ * Used by [ServerDiscovery]
+ */
 data class DiscoveryServerInfo(
 	val id: String,
 	val address: String,

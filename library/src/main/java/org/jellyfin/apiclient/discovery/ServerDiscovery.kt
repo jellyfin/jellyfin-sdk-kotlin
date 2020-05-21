@@ -1,14 +1,21 @@
 package org.jellyfin.apiclient.discovery
 
 import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.isActive
 import org.jellyfin.apiclient.logging.ILogger
+import java.io.IOException
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.InetAddress
 
+/**
+ * A class used to discover Jellyfin servers in the local network.
+ *
+ * Use the [discover] function to retrieve a flow of servers until the timeout or maximum server count is hit,
+ */
 class ServerDiscovery(
 	private val gson: Gson,
 	private val logger: ILogger,
@@ -55,9 +62,13 @@ class ServerDiscovery(
 				info = info.copy(endpointAddress = socket.remoteSocketAddress.toString())
 
 			info
-		} catch (err: Exception) {
-			// Unable to receive/parse
+		} catch (err: IOException) {
+			// Unable to receive
 			logger.error("Discovery: Unable to receive message", err)
+			null
+		} catch (err: JsonSyntaxException) {
+			// Unable to parse
+			logger.error("Discovery: Unable to deserialize message", err)
 			null
 		}
 	}
@@ -69,7 +80,7 @@ class ServerDiscovery(
 		timeout: Int = DISCOVERY_TIMEOUT,
 		maxServers: Int = DISCOVERY_MAX_SERVERS
 	) = flow {
-		logger.debug("Discovery: Starting discovery with timeout of %sms", timeout)
+		logger.info("Discovery: Starting discovery with timeout of %sms", timeout)
 
 		val socket = DatagramSocket().apply {
 			broadcast = true
