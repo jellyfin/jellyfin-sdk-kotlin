@@ -55,13 +55,10 @@ logger = new NullLogger();
 // The underlying http stack. Developers can inject their own if desired
 IAsyncHttpClient httpClient = new VolleyHttpClient(logger, getApplicationContext());
 
-// The JSON serializer. Developers can inject their own if desired.
-IJsonSerializer jsonSerializer = new GsonJsonSerializer();
-
 // Android developers should use AndroidDevice
 IDevice device = new Device("deviceId", "deviceName");
 
-ApiClient apiClient = new ApiClient(httpClient, jsonSerializer, logger, "http://localhost:8096", "My app name", "app version 123", device, new ApiEventListener());
+ApiClient apiClient = new ApiClient(httpClient, logger, "http://localhost:8096", "My app name", "app version 123", device, new ApiEventListener());
 
 apiClient.AuthenticateUserAsync("username", "password", new Response<AuthenticationResult>() {
     @Override
@@ -76,8 +73,6 @@ apiClient.AuthenticateUserAsync("username", "password", new Response<Authenticat
 });
 ```
 
-The **ServerLocator** class can be used to discover servers on the local network, although it is recommended to handle that via a **ConnectionManager**, which is discussed later on in this document.
-
 ## Service Apps
 
 If your app is some kind of service or utility (e.g. Sickbeard), you should construct ApiClient with an API key supplied by your users.
@@ -89,11 +84,8 @@ logger = new NullLogger();
 // The underlying http stack. Developers can inject their own if desired
 IAsyncHttpClient httpClient = new VolleyHttpClient(logger, getApplicationContext());
 
-// The JSON serializer. Developers can inject their own if desired.
-IJsonSerializer jsonSerializer = new GsonJsonSerializer();
-
 // Services should just authenticate using their api key
-ApiClient apiClient = new ApiClient(httpClient, jsonSerializer, logger, "http://localhost:8096", "apikey", new ApiEventListener());
+ApiClient apiClient = new ApiClient(httpClient, logger, "http://localhost:8096", "apikey", new ApiEventListener());
 ```
 
 ## Web Socket
@@ -129,13 +121,8 @@ ICredentialProvider credentialProvider = new CredentialProvider();
 
 INetworkConnection networkConnection = new NetworkConnection(logger);
 
-// The JSON serializer. Developers can inject their own if desired.
-IJsonSerializer jsonSerializer = new GsonJsonSerializer();
-
 // Developers are encouraged to create their own ILogger implementation
 ILogger logger = new NullLogger();
-
-IServerLocator serverLocator = new ServerLocator(logger);
 
 // The underlying http stack. Developers can inject their own if desired
 IAsyncHttpClient httpClient = new VolleyHttpClient(logger, getApplicationContext());
@@ -152,7 +139,6 @@ ApiEventListener eventListener = new ApiEventListener();
 IConnectionManager connectionManager = new ConnectionManager(credentialProvider,
     networkConnection,
     logger,
-    serverLocator,
     httpClient,
     "My app name"
     "1.0.0.0",

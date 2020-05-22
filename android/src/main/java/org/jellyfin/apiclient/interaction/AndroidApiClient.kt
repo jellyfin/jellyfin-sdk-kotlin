@@ -5,7 +5,6 @@ import org.jellyfin.apiclient.interaction.device.IDevice
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient
 import org.jellyfin.apiclient.logging.AndroidLogger
 import org.jellyfin.apiclient.logging.ILogger
-import org.jellyfin.apiclient.serialization.GsonJsonSerializer
 
 class AndroidApiClient(
 	httpClient: IAsyncHttpClient,
@@ -17,7 +16,6 @@ class AndroidApiClient(
 	apiEventListener: ApiEventListener = ApiEventListener()
 ) : ApiClient(
 	httpClient,
-	GsonJsonSerializer(),
 	logger,
 	serverAddress,
 	clientName,

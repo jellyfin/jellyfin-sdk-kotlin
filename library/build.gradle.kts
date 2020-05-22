@@ -6,6 +6,7 @@ dependencies {
 	api(project(":model"))
 
 	implementation(kotlin("stdlib-jdk7"))
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5")
 
 	implementation("org.java-websocket:Java-WebSocket:1.4.1")
 	implementation("com.google.code.gson:gson:2.8.6")

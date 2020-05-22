@@ -8,7 +8,6 @@ import org.jellyfin.apiclient.interaction.IConnectionManager;
 import org.jellyfin.apiclient.interaction.Response;
 import org.jellyfin.apiclient.interaction.SerializedResponse;
 import org.jellyfin.apiclient.interaction.device.IDevice;
-import org.jellyfin.apiclient.interaction.discovery.IServerLocator;
 import org.jellyfin.apiclient.interaction.http.HttpHeaders;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
@@ -21,7 +20,7 @@ import org.jellyfin.apiclient.model.dto.UserDto;
 import org.jellyfin.apiclient.model.session.ClientCapabilities;
 import org.jellyfin.apiclient.model.system.PublicSystemInfo;
 import org.jellyfin.apiclient.model.users.AuthenticationResult;
-import org.jellyfin.apiclient.serialization.IJsonSerializer;
+import org.jellyfin.apiclient.serialization.GsonJsonSerializer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,11 +30,10 @@ import java.util.regex.Pattern;
 
 public class ConnectionManager implements IConnectionManager {
     protected ILogger logger;
-    private IServerLocator serverDiscovery;
     protected IAsyncHttpClient httpClient;
 
     private HashMap<String, ApiClient> apiClients = new HashMap<>();
-    protected IJsonSerializer jsonSerializer;
+    protected GsonJsonSerializer jsonSerializer;
 
     protected String applicationName;
     protected String applicationVersion;
@@ -43,9 +41,7 @@ public class ConnectionManager implements IConnectionManager {
     protected ClientCapabilities clientCapabilities;
     protected ApiEventListener apiEventListener;
 
-    public ConnectionManager(IJsonSerializer jsonSerializer,
-                             ILogger logger,
-                             IServerLocator serverDiscovery,
+    public ConnectionManager(ILogger logger,
                              IAsyncHttpClient httpClient,
                              String applicationName,
                              String applicationVersion,
@@ -54,14 +50,14 @@ public class ConnectionManager implements IConnectionManager {
                              ApiEventListener apiEventListener) {
 
         this.logger = logger;
-        this.serverDiscovery = serverDiscovery;
         this.httpClient = httpClient;
         this.applicationName = applicationName;
         this.applicationVersion = applicationVersion;
         this.device = device;
         this.clientCapabilities = clientCapabilities;
         this.apiEventListener = apiEventListener;
-        this.jsonSerializer = jsonSerializer;
+
+        this.jsonSerializer = new GsonJsonSerializer();
     }
 
     public ClientCapabilities getClientCapabilities() {
@@ -239,7 +235,6 @@ public class ConnectionManager implements IConnectionManager {
 
     protected ApiClient InstantiateApiClient(String serverAddress) {
         return new ApiClient(httpClient,
-                jsonSerializer,
                 logger,
                 serverAddress,
                 applicationName,
@@ -308,9 +303,12 @@ public class ConnectionManager implements IConnectionManager {
         // TODO: Fire event
     }
 
+    /**
+     * @deprecated Use new discovery class
+     */
     @Deprecated
     public void GetAvailableServers(final Response<ArrayList<ServerInfo>> response) {
-        FindServers(response);
+        response.onError(new Exception("Deprecated function"));
     }
 
     void OnGetServerResponse(ServerCredentials credentials,
@@ -332,14 +330,6 @@ public class ConnectionManager implements IConnectionManager {
         clone.addAll(credentials.getServers());
 
         response.onResponse(clone);
-    }
-
-    protected void FindServers(final Response<ArrayList<ServerInfo>> response) {
-        FindServersInternal(response);
-    }
-
-    protected void FindServersInternal(final Response<ArrayList<ServerInfo>> response) {
-        serverDiscovery.FindServers(1000, new FindServersInnerResponse(this, response));
     }
 
     public String[] NormalizeAddress(String address) throws IllegalArgumentException {

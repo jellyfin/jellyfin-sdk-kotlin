@@ -15,7 +15,7 @@ import org.jellyfin.apiclient.model.querying.ItemQuery;
 import org.jellyfin.apiclient.model.querying.ItemsByNameQuery;
 import org.jellyfin.apiclient.model.querying.NextUpQuery;
 import org.jellyfin.apiclient.model.querying.SimilarItemsQuery;
-import org.jellyfin.apiclient.serialization.IJsonSerializer;
+import org.jellyfin.apiclient.serialization.GsonJsonSerializer;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -44,12 +44,12 @@ public abstract class BaseApiClient
 	 
 	 <value>The json serializer.</value>
 	*/
-	protected IJsonSerializer jsonSerializer;
-	public final IJsonSerializer getJsonSerializer()
+	protected GsonJsonSerializer jsonSerializer;
+	public final GsonJsonSerializer getJsonSerializer()
 	{
 		return jsonSerializer;
 	}
-	public final void setJsonSerializer(IJsonSerializer value)
+	public final void setJsonSerializer(GsonJsonSerializer value)
 	{
         jsonSerializer = value;
 	}
@@ -67,22 +67,19 @@ public abstract class BaseApiClient
 		privateImageQuality = value;
 	}
 
-	protected BaseApiClient(ILogger logger, IJsonSerializer jsonSerializer, String serverAddress, String clientName, IDevice device, String applicationVersion)
+	protected BaseApiClient(ILogger logger, String serverAddress, String clientName, IDevice device, String applicationVersion)
 	{
 		if (logger == null)
 		{
 			throw new IllegalArgumentException("logger");
 		}
-		if (jsonSerializer == null)
-		{
-			throw new IllegalArgumentException("jsonSerializer");
-		}
+		
 		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(serverAddress))
 		{
 			throw new IllegalArgumentException("serverAddress");
 		}
 
-		setJsonSerializer(jsonSerializer);
+		setJsonSerializer(new GsonJsonSerializer());
         Logger = logger;
 
 		setClientName(clientName);
@@ -91,22 +88,19 @@ public abstract class BaseApiClient
 		setServerAddress(serverAddress);
 	}
 
-	protected BaseApiClient(ILogger logger, IJsonSerializer jsonSerializer, String serverAddress, String accessToken)
+	protected BaseApiClient(ILogger logger, String serverAddress, String accessToken)
 	{
 		if (logger == null)
 		{
 			throw new IllegalArgumentException("logger");
 		}
-		if (jsonSerializer == null)
-		{
-			throw new IllegalArgumentException("jsonSerializer");
-		}
+		
 		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(serverAddress))
 		{
 			throw new IllegalArgumentException("serverAddress");
 		}
 
-		setJsonSerializer(jsonSerializer);
+		setJsonSerializer(new GsonJsonSerializer());
         Logger = logger;
 
 		setAccessToken(accessToken);
