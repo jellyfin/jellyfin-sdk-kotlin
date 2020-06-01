@@ -43,6 +43,7 @@ allprojects {
 	plugins.apply("io.gitlab.arturbosch.detekt")
 	detekt {
 		buildUponDefaultConfig = true
+		ignoreFailures = true
 		config = files("$rootDir/detekt.yml")
 	}
 }
