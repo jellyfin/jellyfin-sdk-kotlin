@@ -29,6 +29,7 @@ data class AndroidDevice(
 			else "$manufacturer $model"
 		}
 
+		@JvmStatic
 		fun fromContext(context: Context) = AndroidDevice(
 			deviceId = getAutomaticId(context),
 			deviceName = getAutomaticName(context)
