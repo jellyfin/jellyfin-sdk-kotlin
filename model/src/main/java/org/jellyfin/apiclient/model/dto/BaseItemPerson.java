@@ -73,6 +73,8 @@ public class BaseItemPerson
 	}
 
 	public final PersonType getPersonType() {
+		if (Type == null) return PersonType.Other;
+
 		try {
 			return PersonType.valueOf(Type);
 		} catch (IllegalArgumentException ex) {
