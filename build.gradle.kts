@@ -1,5 +1,6 @@
 plugins {
 	id("maven-publish")
+	id("io.gitlab.arturbosch.detekt").version("1.9.1")
 }
 
 // Versioning
@@ -21,13 +22,13 @@ buildscript {
 }
 
 allprojects {
-	apply(plugin = "maven-publish")
-
 	repositories {
 		google()
 		jcenter()
 	}
 
+	// Publishing
+	plugins.apply("maven-publish")
 	publishing.repositories.maven {
 		name = "bintray"
 		url = uri("https://bintray.com/jellyfin/jellyfin-apiclient-java/jellyfin-apiclient-java;publish=1;override=1")
@@ -36,6 +37,14 @@ allprojects {
 			username = getProperty("bintray.user") as String?
 			password = getProperty("bintray.key") as String?
 		}
+	}
+
+	// Detekt
+	plugins.apply("io.gitlab.arturbosch.detekt")
+	detekt {
+		buildUponDefaultConfig = true
+		ignoreFailures = true
+		config = files("$rootDir/detekt.yml")
 	}
 }
 
