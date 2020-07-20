@@ -134,6 +134,16 @@ public class ApiClient extends BaseApiClient {
         ResetHttpHeaders();
     }
 
+    public ApiClient(IAsyncHttpClient httpClient, ILogger logger, String serverAddress, String accessToken, String appName, String applicationVersion, IDevice device, ApiEventListener apiEventListener)
+    {
+        super(logger, serverAddress, accessToken, appName, device, applicationVersion);
+
+        this.httpClient = httpClient;
+        this.apiEventListener = apiEventListener;
+
+        ResetHttpHeaders();
+    }
+
     public void EnableAutomaticNetworking(ServerInfo info)
     {
         this.serverInfo = info;

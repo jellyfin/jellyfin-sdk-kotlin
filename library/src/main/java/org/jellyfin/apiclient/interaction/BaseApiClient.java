@@ -106,6 +106,27 @@ public abstract class BaseApiClient
 		setAccessToken(accessToken);
 		setServerAddress(serverAddress);
 	}
+	protected BaseApiClient(ILogger logger, String serverAddress, String accessToken, String clientName, IDevice device, String applicationVersion)
+	{
+		if (logger == null)
+		{
+			throw new IllegalArgumentException("logger");
+		}
+
+		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(serverAddress))
+		{
+			throw new IllegalArgumentException("serverAddress");
+		}
+
+		setJsonSerializer(new GsonJsonSerializer());
+		Logger = logger;
+
+		setClientName(clientName);
+		this.device = device;
+		setApplicationVersion(applicationVersion);
+		setAccessToken(accessToken);
+		setServerAddress(serverAddress);
+	}
 
 	/** 
 	 Gets the name of the server host.

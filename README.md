@@ -44,178 +44,82 @@
 
 This library allows Java and Android applications to easily access the Jellyfin API. It is built with Volley, OkHttp, Boon, and Robolectric. The dependencies are modular and can easily be swapped out with alternate implementations when desired.
 
-## Single Server Example
+## Android Example
 
-This is an example of connecting to a single server using a fixed address from an app that has requires a user login.
+This is an example of connecting to a single server using a fixed address from an Android app that has requires a user login.
 
-``` java
-// Developers should create their own logger implementation
-logger = new NullLogger();
+```kotlin
+// Create a Jellyfin instance
+val jellyfin = Jellyfin {
+	// It is recommended to create an own logger implementation
+	logger = NullLogger()
+	android(context)
+}
 
-// The underlying http stack. Developers can inject their own if desired
-IAsyncHttpClient httpClient = new VolleyHttpClient(logger, getApplicationContext());
+// Create a new api client
+val apiClient = jellyfin.createApi(
+	serverAddress = "http://localhost:8096",
+	device = AndroidDevice.fromContext(context)
+)
 
-// Android developers should use AndroidDevice
-IDevice device = new Device("deviceId", "deviceName");
+// Call authenticate function
+apiClient.AuthenticateUserAsync("username", "password", object : Response<AuthenticationResult>() {
+	override fun onResponse(result: AuthenticationResult) {
+		// Authentication succeeded
+	}
 
-ApiClient apiClient = new ApiClient(httpClient, logger, "http://localhost:8096", "My app name", "app version 123", device, new ApiEventListener());
-
-apiClient.AuthenticateUserAsync("username", "password", new Response<AuthenticationResult>() {
-    @Override
-    public void onResponse(AuthenticationResult result) {
-        // Authentication succeeded
-    }
-
-    @Override
-    public void onError() {
-        // Authentication failed
-    }
-});
-```
-
-## Service Apps
-
-If your app is some kind of service or utility (e.g. Sickbeard), you should construct ApiClient with an API key supplied by your users.
-
-``` java
-// Developers should create their own logger implementation
-logger = new NullLogger();
-
-// The underlying http stack. Developers can inject their own if desired
-IAsyncHttpClient httpClient = new VolleyHttpClient(logger, getApplicationContext());
-
-// Services should just authenticate using their api key
-ApiClient apiClient = new ApiClient(httpClient, logger, "http://localhost:8096", "apikey", new ApiEventListener());
+	override fun onError(error: Exception) {
+		// Authentication failed
+	}
+})
 ```
 
 ## Web Socket
 
 Once you have an ApiClient instance you can easily connect to the server's web socket using the following command.
 
-``` java
-ApiClient.OpenWebSocket();
+```kotlin
+apiClient.OpenWebSocket()
 ```
 
-This will open a connection in a background thread, and periodically check to ensure it's still connected. The web socket provides various events that can be used to receive notifications from the server. Simply override the methods in ApiEventListener:
+This will open a connection in a background thread, and periodically check to ensure it's still connected. The web socket provides various events that can be used to receive notifications from the server. Simply override the methods in the ApiEventListener class which can be passed to the "createApi" function.
 
-``` java
-@Override
-public void onSetVolumeCommand(int value) {
+```kotlin
+override fun onSetVolumeCommand(value: Int) {
 }
 ```
 
-## Multi-Server Usage
+## Using Java
 
-The above examples are designed for cases when your app always connects to a single server, and you always know the address. If your app is designed to support multiple networks and/or multiple servers, then **IConnectionManager** should be used in place of the above example.
+The Jellyfin library supports both Java and Kotlin out of the box. The basic Android example in Java looks like this
 
-IConnectionManager features:
+```java
+// Create the options using the options builder
+JellyfinOptions.Builder options = new JellyfinOptions.Builder();
+options.setLogger(new NullLogger());
+JellyfinAndroidKt.android(options, context);
 
-- Supports connection to multiple servers
-- Automatic local server discovery
-- Wake on Lan
-- Automatic LAN to WAN failover
+// Create a Jellyfin instance
+Jellyfin jellyfin = new Jellyfin(options.build());
 
-``` java
-// Android developer should use AndroidCredentialProvider
-ICredentialProvider credentialProvider = new CredentialProvider();
-
-INetworkConnection networkConnection = new NetworkConnection(logger);
-
-// Developers are encouraged to create their own ILogger implementation
-ILogger logger = new NullLogger();
-
-// The underlying http stack. Developers can inject their own if desired
-IAsyncHttpClient httpClient = new VolleyHttpClient(logger, getApplicationContext());
-
-// Android developers should use AndroidDevice
-IDevice device = new Device("deviceId", "deviceName");
-
-// This describes the device capabilities
-ClientCapabilities capabilities = new ClientCapabilities();
-
-ApiEventListener eventListener = new ApiEventListener();
-
-// Android developers should use AndroidConnectionManager
-IConnectionManager connectionManager = new ConnectionManager(credentialProvider,
-    networkConnection,
-    logger,
-    httpClient,
-    "My app name"
-    "1.0.0.0",
-    device,
-    capabilities,
-    eventListener);
-```
-
-## Multi-Server Startup Workflow
-
-After you've created your instance of IConnectionManager, simply call the Connect method. It will return a result object with three properties:
-
-- State
-- ServerInfo
-- ApiClient
-
-ServerInfo and ApiClient will be null if State == Unavailable. Let's look at an example.
-
-``` java
-connectionManager.Connect(new Response<ConnectionResult>() {
-    @Override
-    public void onResponse(ConnectionResult result) {
-        switch (result.getState()) {
-            case ConnectionState.ConnectSignIn:
-                // Connect sign in screen should be presented
-                // Authenticate using LoginToConnect, then call Connect again to start over
-            case ConnectionState.ServerSignIn:
-                // A server was found and the user needs to login.
-                // Display a login screen and authenticate with the server using result.ApiClient
-            case ConnectionState.ServerSelection:
-                // Multiple servers available
-                // Display a selection screen by calling GetAvailableServers
-                // When a server is chosen, call the Connect overload that accept either a ServerInfo object or a String url.
-            case ConnectionState.SignedIn:
-                // A server was found and the user has been signed in using previously saved credentials.
-                // Ready to browse using result.ApiClient
-        }
-    }
+// Create a new api client
+ApiClient apiClient = jellyfin.createApi(
+		"http://localhost:8096",
+		null,
+		AndroidDevice.fromContext(context),
+		new ApiEventListener()
 );
+
+// Call authenticate function
+apiClient.AuthenticateUserAsync("username", "password", new Response<AuthenticationResult>() {
+	@Override
+	public void onResponse(AuthenticationResult response) {
+		// Authentication succeeded
+	}
+
+	@Override
+	public void onError(Exception exception) {
+		// Authentication failed
+	}
+});
 ```
-
-When the user wishes to logout of the individual server simply call apiClient.Logout() with no special parameters. If the user will to connect to a new server use the Connect overload which accepts an address for the new server.
-
-``` java
-String address = "http://192.168.1.174:8096";
-connectionManager.Connect(address, new Response<ConnectionResult>() {
-    @Override
-    public void onResponse(ConnectionResult result) {
-        switch (result.State) {
-            case ConnectionState.Unavailable:
-                // Server unreachable
-            case ConnectionState.ServerSignIn:
-                // A server was found and the user needs to login.
-                // Display a login screen and authenticate with the server using result.ApiClient
-            case ConnectionState.SignedIn:
-                // A server was found and the user has been signed in using previously saved credentials.
-                // Ready to browse using result.ApiClient
-        }
-    }
-);
-```
-
-If at anytime the RemoteLoggedOut event is fired, simply start the workflow all over again by calling connectionManager.Connect().
-
-ConnectionManager will handle opening and closing web socket connections at the appropiate times. All your app needs to do is use an ApiClient instance to subscribe to individual events.
-
-``` java
-@Override
-public void onSetVolumeCommand(int value) {
-}
-```
-
-With multi-server connectivity it is not recommended to keep a global ApiClient instance, or pass an ApiClient around the application. Instead keep a factory that will resolve the appropriate ApiClient instance depending on context. In order to help with this, ConnectionManager has a GetApiClient method that accepts a BaseItemDto and returns an ApiClient from the server it belongs to.
-
-## Android Usage
-
-Android is fully supported, and special subclasses are provided for it:
-
-- AndroidConnectionManager
-- AndroidApiClient
