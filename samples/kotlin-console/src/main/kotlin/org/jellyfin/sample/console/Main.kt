@@ -26,8 +26,5 @@ fun main(args: Array<String>) {
 		subcommands(Libraries(jellyfin, device))
 
 		parse(args)
-//		parse(arrayOf("discover"))
-//		parse("login --server https://demo.jellyfin.org/stable --username demo --password ".split(" ").toTypedArray())
-//		parse("libraries --server https://demo.jellyfin.org/stable --token 1d1e113ab39e4804bb42580b4323810b".split(" ").toTypedArray())
 	}
 }

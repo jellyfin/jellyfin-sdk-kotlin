@@ -13,9 +13,6 @@
 <a href="https://github.com/jellyfin/jellyfin-apiclient-java/releases">
 <img alt="Current Release" src="https://img.shields.io/github/release/jellyfin/jellyfin-apiclient-java.svg"/>
 </a>
-<a href="https://dev.azure.com/jellyfin-project/jellyfin/_build/latest?definitionId=6&branchName=master">
-<img alt="Azure DevOps builds" src="https://dev.azure.com/jellyfin-project/jellyfin/_apis/build/status/Jellyfin%20API%20Client%20Java%20CI?branchName=master">
-</a>
 <br/>
 <a href="https://opencollective.com/jellyfin">
 <img alt="Donate" src="https://img.shields.io/opencollective/all/jellyfin.svg?label=backers"/>
@@ -42,11 +39,13 @@
 
 ---
 
-This library allows Java and Android applications to easily access the Jellyfin API. It is built with Volley, OkHttp, Boon, and Robolectric. The dependencies are modular and can easily be swapped out with alternate implementations when desired.
+This library allows Java and Android applications to easily access Jellyfin servers.
+The dependencies are modular and can easily be swapped out with alternate implementations when desired.
 
 ## Android Example
 
-This is an example of connecting to a single server using a fixed address from an Android app that has requires a user login.
+This Kotlin example creates a new instance of the Jellyfin class with Android support enabled.
+It will then try to authenticate to a server with a username and password combination.
 
 ```kotlin
 // Create a Jellyfin instance
@@ -74,9 +73,9 @@ apiClient.AuthenticateUserAsync("username", "password", object : Response<Authen
 })
 ```
 
-## Web Socket
+## Websockets
 
-Once you have an ApiClient instance you can easily connect to the server's web socket using the following command.
+Once you have an ApiClient instance you can easily connect to the server's websocket using the following command.
 
 ```kotlin
 apiClient.OpenWebSocket()
@@ -91,7 +90,7 @@ override fun onSetVolumeCommand(value: Int) {
 
 ## Using Java
 
-The Jellyfin library supports both Java and Kotlin out of the box. The basic Android example in Java looks like this
+The Jellyfin library supports both Java and Kotlin out of the box. The basic Android example in Java looks like this:
 
 ```java
 // Create the options using the options builder
