@@ -96,10 +96,16 @@ class ServerDiscovery(
 		logger.debug("Discovery: Finished sending broadcasts, listening for responses")
 
 		// Try reading incoming messages but with a maximum
+		val foundServers = mutableSetOf<String>()
 		for (i in 0..maxServers) {
 			if (socket.isClosed || !GlobalScope.isActive) break
 
 			val info = receive(socket) ?: continue
+
+			// Filter duplicates
+			if (info.id in foundServers) continue
+			foundServers += info.id
+
 			emit(info)
 		}
 
