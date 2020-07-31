@@ -3,8 +3,6 @@ package org.jellyfin.apiclient.interaction;
 import org.jellyfin.apiclient.interaction.device.IDevice;
 import org.jellyfin.apiclient.interaction.http.HttpRequest;
 import org.jellyfin.apiclient.interaction.http.IAsyncHttpClient;
-import org.jellyfin.apiclient.interaction.tasks.CancellationToken;
-import org.jellyfin.apiclient.interaction.tasks.IProgress;
 import org.jellyfin.apiclient.interaction.websocket.ApiWebSocket;
 import org.jellyfin.apiclient.logging.ILogger;
 import org.jellyfin.apiclient.model.apiclient.RemoteLogoutReason;
@@ -16,7 +14,6 @@ import org.jellyfin.apiclient.model.channels.ChannelQuery;
 import org.jellyfin.apiclient.model.configuration.ServerConfiguration;
 import org.jellyfin.apiclient.model.configuration.UserConfiguration;
 import org.jellyfin.apiclient.model.devices.ContentUploadHistory;
-import org.jellyfin.apiclient.model.devices.LocalFileInfo;
 import org.jellyfin.apiclient.model.dto.BaseItemDto;
 import org.jellyfin.apiclient.model.dto.ItemCounts;
 import org.jellyfin.apiclient.model.dto.ItemIndex;
@@ -88,8 +85,6 @@ import org.jellyfin.apiclient.model.system.PublicSystemInfo;
 import org.jellyfin.apiclient.model.system.SystemInfo;
 import org.jellyfin.apiclient.model.users.AuthenticationResult;
 
-import java.io.DataOutputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -2255,111 +2250,6 @@ public class ApiClient extends BaseApiClient {
         url = AddDataFormat(url);
 
         Send(url, "GET", new SerializedResponse<>(response, jsonSerializer, ContentUploadHistory.class));
-    }
-
-    public void UploadFile(FileInputStream fileInputStream,
-                           LocalFileInfo file,
-                           IProgress<Double> progress,
-                           CancellationToken cancellationToken) throws IOException, IllegalArgumentException {
-
-        UploadFileInternal(fileInputStream, file, progress, cancellationToken);
-    }
-
-    protected void UploadFileInternal(FileInputStream fileInputStream,
-                           LocalFileInfo file,
-                           IProgress<Double> progress,
-                           CancellationToken cancellationToken) throws IOException ,IllegalArgumentException {
-
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(getDeviceId()))
-        {
-            throw new IllegalArgumentException("ApiClient.deviceId cannot be null or empty");
-        }
-
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(file.getId()))
-        {
-            throw new IllegalArgumentException("file.getId() cannot be null or empty");
-        }
-
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(file.getName()))
-        {
-            throw new IllegalArgumentException("file.getName() cannot be null or empty");
-        }
-
-        QueryStringDictionary dict = new QueryStringDictionary();
-
-        dict.Add("DeviceId", getDeviceId());
-        dict.Add("Name", file.getName());
-        dict.Add("Id", file.getId());
-        dict.AddIfNotNullOrEmpty("Album", file.getAlbum());
-
-        HttpURLConnection conn = null;
-        DataOutputStream dos = null;
-        URL url = new URL(GetApiUrl("Devices/CameraUploads", dict));
-
-        int maxBufferSize = 1 * 1024 * 1024;
-
-        try {
-
-            // Open a HTTP  connection to  the URL
-            conn = (HttpURLConnection) url.openConnection();
-            conn.setDoInput(true); // Allow Inputs
-            conn.setDoOutput(true); // Allow Outputs
-            conn.setUseCaches(false); // Don't use a Cached Copy
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Connection", "Keep-Alive");
-            conn.setRequestProperty("Content-Type", file.getMimeType());
-
-            for (String key: this.HttpHeaders.keySet()) {
-                conn.setRequestProperty(key, this.HttpHeaders.get(key));
-            }
-
-            String parameter = this.HttpHeaders.getAuthorizationParameter();
-            if (!tangible.DotNetToJavaStringHelper.isNullOrEmpty(parameter))
-            {
-                String value = this.HttpHeaders.getAuthorizationScheme() + " " + parameter;
-                conn.setRequestProperty("Authorization", value);
-            }
-
-            dos = new DataOutputStream(conn.getOutputStream());
-
-            // createUserAction a buffer of  maximum size
-            int bytesAvailable = fileInputStream.available();
-
-            int bufferSize = Math.min(bytesAvailable, maxBufferSize);
-            byte[] buffer = new byte[bufferSize];
-
-            // read file and write it into form...
-            long bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-
-            while (bytesRead > 0) {
-
-                dos.write(buffer, 0, bufferSize);
-                bytesAvailable = fileInputStream.available();
-                bufferSize = Math.min(bytesAvailable, maxBufferSize);
-                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-            }
-
-            String serverResponseMessage = conn.getResponseMessage();
-
-            int responseCode = conn.getResponseCode();
-            if (responseCode == 200 || responseCode == 204) {
-                progress.reportComplete();
-            } else {
-                HttpException ex = new HttpException(serverResponseMessage);
-                ex.setStatusCode(responseCode);
-                progress.reportError(ex);
-            }
-        } catch (Exception ex) {
-            Logger.error("Error uploading file", ex);
-            progress.reportError(new HttpException(ex.getMessage()));
-        } finally {
-            // close the streams
-            fileInputStream.close();
-            if (dos != null) {
-                dos.flush();
-                dos.close();
-            }
-        }
     }
 
     public void UpdateUserConfiguration(String userId, UserConfiguration configuration, EmptyResponse response) {
