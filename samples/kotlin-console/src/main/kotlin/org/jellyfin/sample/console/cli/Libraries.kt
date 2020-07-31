@@ -14,8 +14,8 @@ class Libraries(
 	private val jellyfin: Jellyfin,
 	private val device: IDevice
 ) : Subcommand("libraries", "List all libraries") {
-	val server by option(ArgType.String, description = "Url of the server", shortName = "s").required()
-	val token by option(ArgType.String, description = "Access token", shortName = "t").required()
+	private val server by option(ArgType.String, description = "Url of the server", shortName = "s").required()
+	private val token by option(ArgType.String, description = "Access token", shortName = "t").required()
 
 	override fun execute() = runBlocking {
 		val api = jellyfin.createApi(serverAddress = server, accessToken = token, device = device)
