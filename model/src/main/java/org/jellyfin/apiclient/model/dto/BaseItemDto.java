@@ -2,7 +2,6 @@ package org.jellyfin.apiclient.model.dto;
 
 import org.jellyfin.apiclient.model.drawing.ImageOrientation;
 import org.jellyfin.apiclient.model.entities.ExtraType;
-import org.jellyfin.apiclient.model.entities.IHasProviderIds;
 import org.jellyfin.apiclient.model.entities.ImageType;
 import org.jellyfin.apiclient.model.entities.IsoType;
 import org.jellyfin.apiclient.model.entities.LocationType;
@@ -17,7 +16,6 @@ import org.jellyfin.apiclient.model.livetv.ChannelType;
 import org.jellyfin.apiclient.model.livetv.ProgramAudio;
 import org.jellyfin.apiclient.model.livetv.RecordingStatus;
 import org.jellyfin.apiclient.model.providers.ExternalUrl;
-import org.jellyfin.apiclient.model.sync.SyncJobItemStatus;
 
 /** 
  This is strictly used as a data transfer object from the api layer.
@@ -25,7 +23,7 @@ import org.jellyfin.apiclient.model.sync.SyncJobItemStatus;
 */
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [DebuggerDisplay("Name = {Name}, ID = {Id}, Type = {Type}")] public class BaseItemDto : IHasProviderIds, IItemDto, IHasServerId, IHasSyncInfo
-public class BaseItemDto implements IHasProviderIds
+public class BaseItemDto
 {
 	/** 
 	 Gets or sets the name.
@@ -300,77 +298,6 @@ public class BaseItemDto implements IHasProviderIds
 	public final void setAnimeSeriesIndex(Integer value)
 	{
 		AnimeSeriesIndex = value;
-	}
-
-	/** 
-	 Gets or sets a value indicating whether [supports synchronize].
-	 
-	 <value><c>null</c> if [supports synchronize] contains no value, <c>true</c> if [supports synchronize]; otherwise, <c>false</c>.</value>
-	*/
-	private Boolean SupportsSync = null;
-	public final Boolean getSupportsSync()
-	{
-		return SupportsSync;
-	}
-	public final void setSupportsSync(Boolean value)
-	{
-		SupportsSync = value;
-	}
-	/** 
-	 Gets or sets a value indicating whether this instance has synchronize job.
-	 
-	 <value><c>null</c> if [has synchronize job] contains no value, <c>true</c> if [has synchronize job]; otherwise, <c>false</c>.</value>
-	*/
-	private Boolean HasSyncJob = null;
-	public final Boolean getHasSyncJob()
-	{
-		return HasSyncJob;
-	}
-	public final void setHasSyncJob(Boolean value)
-	{
-		HasSyncJob = value;
-	}
-	/** 
-	 Gets or sets a value indicating whether this instance is synced.
-	 
-	 <value><c>null</c> if [is synced] contains no value, <c>true</c> if [is synced]; otherwise, <c>false</c>.</value>
-	*/
-	private Boolean IsSynced = null;
-	public final Boolean getIsSynced()
-	{
-		return IsSynced;
-	}
-	public final void setIsSynced(Boolean value)
-	{
-		IsSynced = value;
-	}
-	/** 
-	 Gets or sets the synchronize status.
-	 
-	 <value>The synchronize status.</value>
-	*/
-	private SyncJobItemStatus SyncStatus = null;
-	public final SyncJobItemStatus getSyncStatus()
-	{
-		return SyncStatus;
-	}
-	public final void setSyncStatus(SyncJobItemStatus value)
-	{
-		SyncStatus = value;
-	}
-	/** 
-	 Gets or sets the synchronize percent.
-	 
-	 <value>The synchronize percent.</value>
-	*/
-	private Double SyncPercent = null;
-	public final Double getSyncPercent()
-	{
-		return SyncPercent;
-	}
-	public final void setSyncPercent(Double value)
-	{
-		SyncPercent = value;
 	}
 
 	private String Container;

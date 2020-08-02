@@ -1,7 +1,7 @@
 package org.jellyfin.apiclient.model.dlna;
 
-import org.jellyfin.apiclient.model.extensions.*;
-import org.jellyfin.apiclient.model.mediainfo.*;
+import org.jellyfin.apiclient.model.extensions.ListHelper;
+import org.jellyfin.apiclient.model.mediainfo.TransportStreamTimestamp;
 
 public class ConditionProcessor
 {
@@ -125,9 +125,9 @@ public class ConditionProcessor
 			case EqualsAny:
 				return ListHelper.ContainsIgnoreCase(expected.split("[|]", -1), currentValue);
 			case Equals:
-				return StringHelper.equalsIgnoreCase(currentValue, expected);
+				return currentValue.equalsIgnoreCase(expected);
 			case NotEquals:
-				return !StringHelper.equalsIgnoreCase(currentValue, expected);
+				return !currentValue.equalsIgnoreCase(expected);
 			default:
 				throw new IllegalStateException("Unexpected ProfileConditionType");
 		}
