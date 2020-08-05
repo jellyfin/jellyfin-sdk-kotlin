@@ -7,6 +7,7 @@ import org.jellyfin.apiclient.interaction.device.IDevice
 import org.jellyfin.sample.console.cli.Discover
 import org.jellyfin.sample.console.cli.Libraries
 import org.jellyfin.sample.console.cli.Login
+import org.jellyfin.sample.console.cli.Users
 import org.jellyfin.sample.console.utils.GarbageHttpClient
 
 fun main(args: Array<String>) {
@@ -24,6 +25,7 @@ fun main(args: Array<String>) {
 		subcommands(Discover(jellyfin))
 		subcommands(Login(jellyfin, device))
 		subcommands(Libraries(jellyfin, device))
+		subcommands(Users(jellyfin, device))
 
 		parse(args)
 	}
