@@ -13,7 +13,6 @@ import org.jellyfin.apiclient.model.channels.ChannelItemQuery;
 import org.jellyfin.apiclient.model.channels.ChannelQuery;
 import org.jellyfin.apiclient.model.configuration.ServerConfiguration;
 import org.jellyfin.apiclient.model.configuration.UserConfiguration;
-import org.jellyfin.apiclient.model.devices.ContentUploadHistory;
 import org.jellyfin.apiclient.model.dto.BaseItemDto;
 import org.jellyfin.apiclient.model.dto.ItemCounts;
 import org.jellyfin.apiclient.model.dto.ItemIndex;
@@ -64,7 +63,6 @@ import org.jellyfin.apiclient.model.querying.UpcomingEpisodesQuery;
 import org.jellyfin.apiclient.model.querying.UserQuery;
 import org.jellyfin.apiclient.model.results.ChannelInfoDtoResult;
 import org.jellyfin.apiclient.model.results.ItemReviewsResult;
-import org.jellyfin.apiclient.model.results.ReadySyncItemsResult;
 import org.jellyfin.apiclient.model.results.SeriesTimerInfoDtoResult;
 import org.jellyfin.apiclient.model.results.TimerInfoDtoResult;
 import org.jellyfin.apiclient.model.search.SearchHintResult;
@@ -78,9 +76,6 @@ import org.jellyfin.apiclient.model.session.PlaybackStartInfo;
 import org.jellyfin.apiclient.model.session.PlaybackStopInfo;
 import org.jellyfin.apiclient.model.session.PlaystateRequest;
 import org.jellyfin.apiclient.model.session.SessionInfoDto;
-import org.jellyfin.apiclient.model.sync.SyncDataRequest;
-import org.jellyfin.apiclient.model.sync.SyncDataResponse;
-import org.jellyfin.apiclient.model.sync.SyncJob;
 import org.jellyfin.apiclient.model.system.PublicSystemInfo;
 import org.jellyfin.apiclient.model.system.SystemInfo;
 import org.jellyfin.apiclient.model.users.AuthenticationResult;
@@ -2239,109 +2234,8 @@ public class ApiClient extends BaseApiClient {
         Send(url, "POST", json, "application/json", new SerializedResponse<>(response, jsonSerializer, LiveStreamResponse.class));
     }
 
-    public void GetContentUploadHistory(final Response<ContentUploadHistory> response)
-    {
-        QueryStringDictionary dict = new QueryStringDictionary();
-
-        dict.Add("DeviceId", getDeviceId());
-
-        String url = GetApiUrl("Devices/CameraUploads", dict);
-
-        url = AddDataFormat(url);
-
-        Send(url, "GET", new SerializedResponse<>(response, jsonSerializer, ContentUploadHistory.class));
-    }
-
     public void UpdateUserConfiguration(String userId, UserConfiguration configuration, EmptyResponse response) {
         response.onError(new UnsupportedOperationException());
-    }
-
-    public void CancelSyncJob(SyncJob job, EmptyResponse response) {
-
-        if (job == null)
-        {
-            throw new IllegalArgumentException("job");
-        }
-
-        String url = GetApiUrl("Sync/Jobs/" + job.getId());
-
-        DeleteAsync(url, response);
-    }
-
-    public void UpdateSyncJob(SyncJob job, EmptyResponse response) {
-
-        if (job == null)
-        {
-            throw new IllegalArgumentException("job");
-        }
-
-        String url = GetApiUrl("Sync/Jobs/" + job.getId());
-
-        PostAsync(url, job, response);
-    }
-
-    public void GetSyncJobItemFile(String id, Response<ResponseStreamInfo> response) {
-
-        getResponseStream(getSyncJobItemFileUrl(id), response);
-    }
-
-    public String getSyncJobItemFileUrl(String id)
-    {
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
-        {
-            throw new IllegalArgumentException("id");
-        }
-
-        return GetApiUrl("Sync/JobItems/" + id + "/File");
-    }
-
-    public void reportSyncJobItemTransferred(String id, EmptyResponse response) {
-
-        if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(id))
-        {
-            throw new IllegalArgumentException("id");
-        }
-
-        String url = GetApiUrl("Sync/JobItems/" + id + "/Transferred");
-
-        PostAsync(url, response);
-    }
-
-    public void SyncData(SyncDataRequest request, final Response<SyncDataResponse> response) {
-
-        if (request == null)
-        {
-            throw new IllegalArgumentException("request");
-        }
-
-        String url = GetApiUrl("Sync/Data");
-        url = AddDataFormat(url);
-
-        String json = getJsonSerializer().SerializeToString(request);
-        Send(url, "POST", json, "application/json", new SerializedResponse<>(response, jsonSerializer, SyncDataResponse.class));
-    }
-
-    public void getSyncJobItemAdditionalFile(String syncJobItemId, String filename, final Response<ResponseStreamInfo> response) {
-
-        QueryStringDictionary dict = new QueryStringDictionary();
-
-        dict.AddIfNotNullOrEmpty("Name", filename);
-
-        String url = GetApiUrl("Sync/JobItems/" + syncJobItemId + "/AdditionalFiles", dict);
-
-        getResponseStream(url, response);
-    }
-
-    public void getReadySyncItems(String targetId, final Response<ReadySyncItemsResult> response) {
-
-        QueryStringDictionary dict = new QueryStringDictionary();
-
-        dict.AddIfNotNullOrEmpty("TargetId", targetId);
-
-        String url = GetApiUrl("Sync/Items/Ready", dict);
-        url = AddDataFormat(url);
-
-        Send(url, "GET", new SerializedResponse<>(response, jsonSerializer, url, Logger, ReadySyncItemsResult.class));
     }
 
     public void detectBitrate(final Response<Long> response) {

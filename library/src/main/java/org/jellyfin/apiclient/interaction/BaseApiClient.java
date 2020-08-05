@@ -3,7 +3,6 @@ package org.jellyfin.apiclient.interaction;
 import org.jellyfin.apiclient.interaction.device.IDevice;
 import org.jellyfin.apiclient.interaction.http.HttpHeaders;
 import org.jellyfin.apiclient.logging.ILogger;
-import org.jellyfin.apiclient.model.apiclient.ApiHelpers;
 import org.jellyfin.apiclient.model.dto.BaseItemDto;
 import org.jellyfin.apiclient.model.dto.BaseItemPerson;
 import org.jellyfin.apiclient.model.dto.ImageOptions;
@@ -251,7 +250,12 @@ public abstract class BaseApiClient
 	*/
 	protected final String GetSlugName(String name)
 	{
-		return ApiHelpers.GetSlugName(name);
+		if (name == null || name.isEmpty())
+		{
+			throw new IllegalArgumentException("name");
+		}
+
+		return name.replace('/', '-').replace('?', '-').replace('&', '-');
 	}
 
 	/** 

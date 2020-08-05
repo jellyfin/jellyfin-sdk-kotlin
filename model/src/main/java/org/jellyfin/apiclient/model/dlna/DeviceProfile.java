@@ -1,7 +1,7 @@
 package org.jellyfin.apiclient.model.dlna;
 
-import org.jellyfin.apiclient.model.extensions.*;
-import org.jellyfin.apiclient.model.mediainfo.*;
+import org.jellyfin.apiclient.model.extensions.ListHelper;
+import org.jellyfin.apiclient.model.mediainfo.TransportStreamTimestamp;
 
 //C# TO JAVA CONVERTER TODO TASK: Java annotations will not correspond to .NET attributes:
 //ORIGINAL LINE: [XmlRoot("Profile")] public class DeviceProfile
@@ -517,7 +517,7 @@ public class DeviceProfile
 			}
 
 			String tempVar = i.getVideoCodec();
-			if (!StringHelper.equalsIgnoreCase(videoCodec, (tempVar != null) ? tempVar : ""))
+			if(videoCodec == null || !videoCodec.equalsIgnoreCase((tempVar != null) ? tempVar : ""))
 			{
 				continue;
 			}
