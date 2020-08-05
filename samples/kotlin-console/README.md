@@ -5,6 +5,7 @@ library. It's used as a showcase of the libraries abilities and is not meant for
 
 Features include:
 - Server discovery
+- List public users
 - Authenticate
 - List libraries
 
