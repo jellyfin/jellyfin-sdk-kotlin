@@ -10,8 +10,8 @@ import org.jellyfin.apiclient.model.dto.UserDto
 import org.jellyfin.sample.console.utils.callApi
 
 class Users(
-		private val jellyfin: Jellyfin,
-		private val device: IDevice
+	private val jellyfin: Jellyfin,
+	private val device: IDevice
 ) : Subcommand("users", "List all public users") {
 	private val server by option(ArgType.String, description = "Url of the server", shortName = "s").required()
 
