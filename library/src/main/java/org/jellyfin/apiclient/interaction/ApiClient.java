@@ -86,6 +86,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Observable;
 
 public class ApiClient extends BaseApiClient {
@@ -190,7 +192,6 @@ public class ApiClient extends BaseApiClient {
 
     private void Send(String url,
                       String method,
-                      QueryStringDictionary postData,
                       boolean fireGlobalEvents,
                       final Response<String> response)
     {
@@ -198,7 +199,6 @@ public class ApiClient extends BaseApiClient {
         request.setUrl(url);
         request.setMethod(method);
         request.setRequestHeaders(this.HttpHeaders);
-        request.setPostData(postData);
         SendRequest(request, fireGlobalEvents, response);
     }
 
@@ -866,17 +866,21 @@ public class ApiClient extends BaseApiClient {
         }
 
         QueryStringDictionary dict = new QueryStringDictionary();
+        Map<String, String> map = new HashMap();
 
         if (datePlayed != null)
         {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
             dict.Add("DatePlayed", formatter.format(datePlayed));
+            map.put("DatePlayed", formatter.format(datePlayed));
         }
+
+        String body = jsonSerializer.SerializeToString(map);
 
         String url = GetApiUrl("Users/" + userId + "/PlayedItems/" + itemId, dict);
         url = AddDataFormat(url);
 
-        Send(url, "POST", dict, true, new SerializedResponse<>(response, jsonSerializer, UserItemDataDto.class));
+        Send(url, "POST", body, "application/json", new SerializedResponse<>(response, jsonSerializer, UserItemDataDto.class));
     }
 
     /// <summary>
@@ -1106,7 +1110,6 @@ public class ApiClient extends BaseApiClient {
     }
 
     private void PostAsync(String url,
-                          QueryStringDictionary postBody,
                           boolean fireGlobalEvents,
                           final Response<String> response)
     {
@@ -1115,7 +1118,7 @@ public class ApiClient extends BaseApiClient {
             throw new IllegalArgumentException("url");
         }
 
-        Send(url, "POST", postBody, fireGlobalEvents, response);
+        Send(url, "POST", fireGlobalEvents, response);
     }
 
     private void PostAsync(String url, Object obj, final EmptyResponse response)
@@ -1216,10 +1219,11 @@ public class ApiClient extends BaseApiClient {
 
         String url = GetApiUrl("Users/AuthenticateByName");
 
-        QueryStringDictionary dict = new QueryStringDictionary ();
+        Map<String, String> map = new HashMap();
+        map.put("Username", username);
+        map.put("Pw", password);
 
-        dict.Add("username", username);
-        dict.Add("pw", password);
+        String body = jsonSerializer.SerializeToString(map);
 
         url = AddDataFormat(url);
         Response<String> jsonResponse = new Response<String>(response) {
@@ -1237,7 +1241,7 @@ public class ApiClient extends BaseApiClient {
             }
         };
 
-        PostAsync(url, dict, false, jsonResponse);
+        Send(url, "POST", body, "application/json", jsonResponse);
     }
 
     /// <summary>
