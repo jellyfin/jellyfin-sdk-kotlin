@@ -36,6 +36,9 @@ class GarbageHttpClient : IAsyncHttpClient {
 				if (!request.postData.isNullOrEmpty()) {
 					doOutput = true
 					outputStream.write(request.postData.GetQueryString().toByteArray())
+				} else if (request.requestContent != null) {
+					doOutput = true
+					outputStream.write(request.requestContent.toByteArray())
 				}
 			}
 
