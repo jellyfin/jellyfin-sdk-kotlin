@@ -624,6 +624,7 @@ public abstract class BaseApiClient
 		dict.AddIfNotNullOrEmpty("NameLessThan", query.getNameLessThan());
 		dict.AddIfNotNullOrEmpty("NameStartsWith", query.getNameStartsWith());
 		dict.AddIfNotNullOrEmpty("NameStartsWithOrGreater", query.getNameStartsWithOrGreater());
+		dict.AddIfNotNullOrEmpty("SearchTerm", query.getSearchTerm());
 
         dict.AddIfNotNull("EnableImages", query.getEnableImages());
         dict.AddIfNotNull("ImageTypeLimit", query.getImageTypeLimit());

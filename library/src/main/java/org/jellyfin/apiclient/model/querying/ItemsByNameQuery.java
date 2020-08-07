@@ -240,6 +240,20 @@ public class ItemsByNameQuery
 		NameLessThan = value;
 	}
 
+	/**
+	 Search characters used to find items
+	 <value>The index by.</value>
+	 */
+	private String SearchTerm;
+	public final String getSearchTerm()
+	{
+		return SearchTerm;
+	}
+	public final void setSearchTerm(String value)
+	{
+		SearchTerm = value;
+	}
+
 	/** 
 	 Gets or sets a value indicating whether this instance is played.
 	 
