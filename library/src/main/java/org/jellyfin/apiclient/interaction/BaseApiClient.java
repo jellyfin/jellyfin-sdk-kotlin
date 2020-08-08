@@ -112,11 +112,6 @@ public abstract class BaseApiClient
 			throw new IllegalArgumentException("logger");
 		}
 
-		if (tangible.DotNetToJavaStringHelper.isNullOrEmpty(serverAddress))
-		{
-			throw new IllegalArgumentException("serverAddress");
-		}
-
 		setJsonSerializer(new GsonJsonSerializer());
 		Logger = logger;
 

@@ -20,9 +20,9 @@ class Jellyfin(
 	}
 
 	fun createApi(
-		serverAddress: String,
+		serverAddress: String? = null,
 		accessToken: String? = null,
-		device: IDevice? = null,
+		device: IDevice,
 		eventListener: ApiEventListener = ApiEventListener()
 	) = ApiClient(
 		options.httpClient,
