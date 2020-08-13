@@ -1,15 +1,84 @@
+variables:
+  - group: 'jellyfin'
+
 trigger:
-- master
+  batch: true
+  branches:
+    include:
+      - master
+      - release*
+  tags:
+    include:
+      - '*'
 
-pool:
-  vmImage: 'ubuntu-latest'
+pr:
+  branches:
+    include:
+      - '*'
 
-steps:
-- task: Gradle@2
-  inputs:
-    gradleWrapperFile: 'gradlew'
-    tasks: 'build'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    sonarQubeRunAnalysis: false
+jobs:
+  - job: Test
+    displayName: 'Test'
+
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    steps:
+      - task: Gradle@2
+        displayName: 'Run Tests'
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'test'
+          publishJUnitResults: true
+          testResultsFiles: '**/TEST-*.xml'
+          javaHomeOption: 'JDKVersion'
+          sonarQubeRunAnalysis: false
+
+  - job: Build
+    displayName: 'Build'
+
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    steps:
+      - task: Gradle@2
+        displayName: 'Build'
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'distZip'
+          publishJUnitResults: false
+          testResultsFiles: '**/TEST-*.xml'
+          javaHomeOption: 'JDKVersion'
+          sonarQubeRunAnalysis: false
+
+  - job: Publish
+    displayName: 'Publish'
+
+    condition: startsWith(variables['Build.SourceBranch'], 'refs/tags')
+
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    steps:
+      - script: 'echo "##vso[task.setvariable variable=JELLYFIN_VERSION]$(git describe --tags)"'
+        displayName: 'Set Version Variable'
+
+      - task: Gradle@2
+        displayName: 'Build & Publish'
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'publish'
+          publishJUnitResults: false
+          testResultsFiles: '**/TEST-*.xml'
+          javaHomeOption: 'JDKVersion'
+          sonarQubeRunAnalysis: false
+
+      - task: GithubRelease@0
+        displayName: 'GitHub Upload'
+        inputs:
+          gitHubConnection: Jellyfin Release Download
+          repositoryName: jellyfin/jellyfin-apiclient-java
+          assets: '**/libs/*.jar'
+          action: 'edit'
+          assetUploadMode: 'replace'
+          tag: '$(JELLYFIN_VERSION)'
