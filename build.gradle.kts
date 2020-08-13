@@ -6,7 +6,7 @@ plugins {
 // Versioning
 allprojects {
 	group = "org.jellyfin.apiclient"
-	version = getProperty("jellyfin.version") ?: "SNAPSHOT"
+	version = getProperty("jellyfin.version")?.removePrefix("v") ?: "SNAPSHOT"
 }
 
 buildscript {
@@ -51,9 +51,9 @@ allprojects {
 /**
  * Helper function to retrieve configuration variable values
  */
-fun getProperty(name: String): Any? {
+fun getProperty(name: String): String? {
 	// sample.var --> SAMPLE_VAR
 	val environmentName = name.toUpperCase().replace(".", "_")
 
-	return project.findProperty(name) ?: System.getenv(environmentName) ?: null
+	return project.findProperty(name)?.toString() ?: System.getenv(environmentName) ?: null
 }
