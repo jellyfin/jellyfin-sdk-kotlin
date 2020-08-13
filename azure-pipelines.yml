@@ -81,4 +81,4 @@ jobs:
           assets: '**/libs/*.jar'
           action: 'edit'
           assetUploadMode: 'replace'
-          tag: '$(TAG)'
+          tag: '$(JELLYFIN_VERSION)'
