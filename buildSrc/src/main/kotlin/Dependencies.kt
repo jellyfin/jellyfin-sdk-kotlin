@@ -41,4 +41,4 @@ fun DependencyHandler.implementationProject(path: String) {
 /**
  * Add the Kotlin standard library as implementation
  */
-fun DependencyHandler.implementationKotlinStdlib() = kotlin("stdlib")
+fun DependencyHandler.implementationKotlinStdlib() = add("implementation", kotlin("stdlib"))
