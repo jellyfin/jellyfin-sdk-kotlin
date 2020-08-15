@@ -3,15 +3,15 @@ plugins {
 }
 
 dependencies {
-	api(project(":model"))
+	apiProject(":model")
 
-	implementation(kotlin("stdlib-jdk7"))
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5")
+	implementationKotlinStdlib()
+	implementation(Dependencies.KotlinX.coroutinesCore)
 
-	implementation("org.java-websocket:Java-WebSocket:1.4.1")
-	implementation("com.google.code.gson:gson:2.8.6")
+	implementation(Dependencies.javaWebSocket)
+	implementation(Dependencies.gson)
 
-	testImplementation("junit:junit:4.12")
+	testImplementation(Dependencies.junit)
 }
 
 val sourcesJar by tasks.creating(Jar::class) {

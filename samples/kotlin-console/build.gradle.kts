@@ -16,19 +16,19 @@ repositories {
 
 dependencies {
 	// Depend on the library project
-	implementation(project(":library"))
+	implementationProject(":library")
 
 	// Use Kotlin stdlib
-	implementation(kotlin("stdlib"))
+	implementationKotlinStdlib()
 
 	// Use Kotlin coroutines to interact with the library
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5")
+	implementation(Dependencies.KotlinX.coroutinesCore)
 
 	// The CLI library
-	implementation("org.jetbrains.kotlinx:kotlinx-cli:0.2.1")
+	implementation(Dependencies.KotlinX.cli)
 
 	// Use JSON
-	implementation("com.google.code.gson:gson:2.8.6")
+	implementation(Dependencies.gson)
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
