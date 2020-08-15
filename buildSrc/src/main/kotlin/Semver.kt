@@ -10,8 +10,7 @@
 fun getVersionCode(semver: String): Int? {
 	val parts = semver.splitToSequence('.')
 		.take(3)
-		.map { it.toIntOrNull() }
-		.filterNotNull()
+		.mapNotNull { it.toIntOrNull() }
 		.toList()
 
 	// Not a valid semver
