@@ -72,6 +72,8 @@ jobs:
           testResultsFiles: '**/TEST-*.xml'
           javaHomeOption: 'JDKVersion'
           sonarQubeRunAnalysis: false
+        env:
+          bintray_key: $(bintray_key)
 
       - task: GithubRelease@0
         displayName: 'GitHub Upload'
