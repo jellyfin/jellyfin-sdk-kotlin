@@ -29,15 +29,7 @@ allprojects {
 
 	// Publishing
 	plugins.apply("maven-publish")
-	publishing.repositories.maven {
-		name = "bintray"
-		url = uri("https://bintray.com/jellyfin/jellyfin-apiclient-java/jellyfin-apiclient-java;publish=1;override=1")
-
-		credentials {
-			username = getProperty("bintray.user") as String?
-			password = getProperty("bintray.key") as String?
-		}
-	}
+	publishing.repositories.jellyfinBintray(this)
 
 	// Detekt
 	plugins.apply("io.gitlab.arturbosch.detekt")
@@ -46,14 +38,4 @@ allprojects {
 		ignoreFailures = true
 		config = files("$rootDir/detekt.yml")
 	}
-}
-
-/**
- * Helper function to retrieve configuration variable values
- */
-fun getProperty(name: String): String? {
-	// sample.var --> SAMPLE_VAR
-	val environmentName = name.toUpperCase().replace(".", "_")
-
-	return project.findProperty(name)?.toString() ?: System.getenv(environmentName) ?: null
 }
