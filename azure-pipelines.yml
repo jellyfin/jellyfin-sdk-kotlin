@@ -64,10 +64,10 @@ jobs:
         displayName: 'Set Version Variable'
 
       - task: Gradle@2
-        displayName: 'Build & Publish'
+        displayName: 'Build, Distribute & Publish'
         inputs:
           gradleWrapperFile: 'gradlew'
-          tasks: 'publish'
+          tasks: 'publish distZip'
           publishJUnitResults: false
           testResultsFiles: '**/TEST-*.xml'
           javaHomeOption: 'JDKVersion'
@@ -80,7 +80,10 @@ jobs:
         inputs:
           gitHubConnection: Jellyfin Release Download
           repositoryName: jellyfin/jellyfin-apiclient-java
-          assets: '**/libs/*.jar'
+          assets: |
+            **/distributions/*-${JELLYFIN_VERSION}.zip
+            **/libs/*-${JELLYFIN_VERSION}.jar
+            **/libs/*-${JELLYFIN_VERSION}-sources.jar
           action: 'edit'
           assetUploadMode: 'replace'
           tag: '$(JELLYFIN_VERSION)'
