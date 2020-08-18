@@ -25,6 +25,8 @@ android {
 		jvmTarget = JavaVersion.VERSION_1_8.toString()
 	}
 
+	sourceSets["main"].java.srcDirs("src/main/kotlin")
+
 	buildTypes {
 		getByName("release") {
 			isMinifyEnabled = false
@@ -33,6 +35,23 @@ android {
 
 	lintOptions {
 		isAbortOnError = false
+	}
+}
+
+// Generate sources jar
+tasks.create<Jar>("sourcesArtifact") {
+	archiveClassifier.set("sources")
+
+	from(android.sourceSets["main"].java.srcDirs)
+}
+
+// Because of limitations in the android plugin
+// the publishing definition should be inside the "afterEvaluate" block
+afterEvaluate {
+	publishing.publications.create<MavenPublication>("default") {
+		from(components["release"])
+
+		artifact(tasks["sourcesArtifact"])
 	}
 }
 
@@ -45,13 +64,4 @@ dependencies {
 	implementation(Dependencies.AndroidX.annotation)
 
 	implementation(Dependencies.volley)
-}
-
-// Because of limitations in the android plugin
-// the publishing definition should be inside the "afterEvaluate" block
-afterEvaluate {
-	publishing.publications.create<MavenPublication>("default") {
-		// Should be the same as the build type
-		from(components["release"])
-	}
 }
