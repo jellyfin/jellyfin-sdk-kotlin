@@ -73,7 +73,7 @@ jobs:
           javaHomeOption: 'JDKVersion'
           sonarQubeRunAnalysis: false
         env:
-          bintray_key: $(bintray_key)
+          BINTRAY_KEY: $(bintray_key)
 
       - task: GithubRelease@0
         displayName: 'GitHub Upload'
