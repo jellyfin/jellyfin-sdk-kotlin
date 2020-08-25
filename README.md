@@ -122,3 +122,21 @@ apiClient.AuthenticateUserAsync("username", "password", new Response<Authenticat
 	}
 });
 ```
+
+## Include into project
+
+The Jellyfin api client is available through [Bintray/JCenter](https://bintray.com/jellyfin/jellyfin-apiclient-java/jellyfin-apiclient-java), and can be included in projects like any other dependency:
+
+```groovy
+// build.gradle
+dependencies {
+	implementation 'org.jellyfin.apiclient:android:0.7.2'
+}
+```
+
+```kotlin
+// build.gradle.kts
+dependencies {
+	implementation("org.jellyfin.apiclient:android:0.7.2")
+}
+```
