@@ -42,6 +42,44 @@
 This library allows Java and Android applications to easily access Jellyfin servers.
 The dependencies are modular and can easily be swapped out with alternate implementations when desired.
 
+## Setup
+
+The apiclient is available through [JCenter](https://bintray.com/jellyfin/jellyfin-apiclient-java/jellyfin-apiclient-java), and thus can be installed via Gradle like any other dependency:
+
+```kotlin
+// build.gradle.kts
+repositories {
+	jcenter()
+}
+
+dependencies {
+	val apiclientVersion = "…"
+
+	// For non-Android projects
+	implementation("org.jellyfin.apiclient:library:$apiclientVersion")
+
+	// For Android apps (automatically includes the library and models)
+	implementation("org.jellyfin.apiclient:android:$apiclientVersion")
+}
+```
+
+```groovy
+// build.gradle
+repositories {
+	jcenter()
+}
+
+dependencies {
+	def apiclientVersion = "…"
+
+	// For non-Android projects
+	implementation "org.jellyfin.apiclient:library:$apiclientVersion"
+
+	// For Android apps (automatically includes the library and models)
+	implementation "org.jellyfin.apiclient:android:$apiclientVersion"
+}
+```
+
 ## Android Example
 
 This Kotlin example creates a new instance of the Jellyfin class with Android support enabled.
