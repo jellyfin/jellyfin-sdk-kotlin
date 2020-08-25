@@ -53,7 +53,7 @@ repositories {
 }
 
 dependencies {
-	val apiclientVersion = "0.7.2"
+	val apiclientVersion = "…"
 
 	// For non-Android projects
 	implementation("org.jellyfin.apiclient:library:$apiclientVersion")
@@ -70,7 +70,7 @@ repositories {
 }
 
 dependencies {
-	def apiclientVersion = "0.7.2"
+	def apiclientVersion = "…"
 
 	// For non-Android projects
 	implementation "org.jellyfin.apiclient:library:$apiclientVersion"
