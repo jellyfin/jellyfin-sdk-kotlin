@@ -1654,6 +1654,12 @@ public class BaseItemDto
 		ImageTags = value;
 	}
 
+	private java.util.HashMap<ImageType, java.util.HashMap<String, String>> ImageBlurHashes;
+	public final java.util.HashMap<ImageType, java.util.HashMap<String, String>> getImageBlurHashes()
+	{
+		return ImageBlurHashes;
+	}
+
 	/**
 	 Gets or sets the backdrop image tags.
 
