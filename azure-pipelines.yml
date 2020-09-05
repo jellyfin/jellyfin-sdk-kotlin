@@ -81,9 +81,9 @@ jobs:
           gitHubConnection: Jellyfin Release Download
           repositoryName: jellyfin/jellyfin-apiclient-java
           assets: |
-            $(Build.SourcesDirectory)/**/distributions/*-${JELLYFIN_VERSION}.zip
-            $(Build.SourcesDirectory)/**/libs/*-${JELLYFIN_VERSION}.jar
-            $(Build.SourcesDirectory)/**/libs/*-${JELLYFIN_VERSION}-sources.jar
+            $(Build.SourcesDirectory)/**/distributions/*-$(JELLYFIN_VERSION).zip
+            $(Build.SourcesDirectory)/**/libs/*-$(JELLYFIN_VERSION).jar
+            $(Build.SourcesDirectory)/**/libs/*-$(JELLYFIN_VERSION)-sources.jar
           action: 'edit'
           assetUploadMode: 'replace'
           tag: '$(JELLYFIN_VERSION)'
