@@ -70,7 +70,8 @@ open class KtorClient(
 
 	suspend inline fun <reified T> request(
 		method: HttpMethod = HttpMethod.Get,
-		path: String,
+		pathTemplate: String,
+		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
 		body: Any? = null
 	): Response<T> {
@@ -81,7 +82,9 @@ open class KtorClient(
 				// Create from base URL
 				takeFrom(baseUrl)
 
-				// Assign path
+				// Replace path variables
+				val path = createPath(pathTemplate, pathParameters)
+				// Assign path making sure to remove duplicated slashes between the base and appended path
 				encodedPath = "${encodedPath.trimEnd('/')}/${path.trimStart('/')}"
 
 				// Append query parameters
@@ -110,7 +113,8 @@ open class KtorClient(
 		body: Any? = null
 	) = request<T>(
 		method = HttpMethod.Get,
-		path = createPath(pathTemplate, pathParameters),
+		pathTemplate = pathTemplate,
+		pathParameters = pathParameters,
 		queryParameters = queryParameters,
 		body = body
 	)
@@ -122,7 +126,8 @@ open class KtorClient(
 		body: Any? = null
 	) = request<T>(
 		method = HttpMethod.Post,
-		path = createPath(pathTemplate, pathParameters),
+		pathTemplate = pathTemplate,
+		pathParameters = pathParameters,
 		queryParameters = queryParameters,
 		body = body
 	)
@@ -134,7 +139,8 @@ open class KtorClient(
 		body: Any? = null
 	) = request<T>(
 		method = HttpMethod.Delete,
-		path = createPath(pathTemplate, pathParameters),
+		pathTemplate = pathTemplate,
+		pathParameters = pathParameters,
 		queryParameters = queryParameters,
 		body = body
 	)
