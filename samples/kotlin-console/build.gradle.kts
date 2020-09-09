@@ -19,7 +19,7 @@ dependencies {
 	implementationProject(":library")
 
 	// Use Kotlin stdlib
-	implementationKotlinStdlib()
+	implementation(Dependencies.Kotlin.stdlib)
 
 	// Use Kotlin coroutines to interact with the library
 	implementation(Dependencies.KotlinX.coroutinesCore)

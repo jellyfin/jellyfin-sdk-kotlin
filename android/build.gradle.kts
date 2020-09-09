@@ -58,7 +58,7 @@ afterEvaluate {
 dependencies {
 	apiProject(":library")
 
-	implementationKotlinStdlib()
+	implementation(Dependencies.Kotlin.stdlib)
 
 	implementation(Dependencies.AndroidX.core)
 	implementation(Dependencies.AndroidX.annotation)

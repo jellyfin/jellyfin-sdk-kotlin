@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-	implementation(kotlin("stdlib-jdk7"))
+	implementation(Dependencies.Kotlin.stdlib)
 }
 
 sourceSets.getByName("main").java.srcDir("src/main/kotlin-generated")
