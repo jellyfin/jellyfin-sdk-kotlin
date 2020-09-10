@@ -3,17 +3,17 @@ plugins {
 }
 
 dependencies {
-	implementation(kotlin("stdlib-jdk7"))
+	implementation(Dependencies.Kotlin.stdlib)
 
-	api(project(":model"))
+	apiProject(":model")
 
 	// HTTP
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
-	implementation("io.ktor:ktor-client-okhttp:1.3.2")
-	implementation("io.ktor:ktor-client-gson:1.3.2")
+	implementation(Dependencies.KotlinX.coroutinesCore)
+	implementation(Dependencies.Ktor.okhttp)
+	implementation(Dependencies.Ktor.gson)
 
 	// Testing
-	testImplementation(kotlin("test-junit"))
+	testImplementation(Dependencies.Kotlin.Test.junit)
 }
 
 sourceSets.getByName("main").java.srcDir("src/main/kotlin-generated")

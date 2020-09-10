@@ -8,19 +8,19 @@ application {
 }
 
 dependencies {
-	implementation(kotlin("stdlib-jdk8"))
+	implementation(Dependencies.Kotlin.stdlib)
 
 	// Reading OpenAPI
-	implementation("io.swagger.parser.v3:swagger-parser:2.0.19")
+	implementation(Dependencies.swaggerParser)
 
 	// Kotlin code generation
-	implementation("com.squareup:kotlinpoet:1.6.0")
+	implementation(Dependencies.kotlinPoet)
 
 	// Dependency Injection
-	implementation("org.koin:koin-core:2.1.6")
+	implementation(Dependencies.Koin.core)
 
 	// Testing
-	testImplementation(kotlin("test-junit"))
+	testImplementation(Dependencies.Kotlin.Test.junit)
 }
 
 task("generateSources", JavaExec::class) {

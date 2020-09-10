@@ -5,7 +5,7 @@ plugins {
 dependencies {
 	apiProject(":model")
 
-	implementationKotlinStdlib()
+	implementation(Dependencies.Kotlin.stdlib)
 	implementation(Dependencies.KotlinX.coroutinesCore)
 
 	implementation(Dependencies.javaWebSocket)
