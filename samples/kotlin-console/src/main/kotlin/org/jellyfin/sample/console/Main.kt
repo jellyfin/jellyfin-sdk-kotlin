@@ -3,7 +3,7 @@ package org.jellyfin.sample.console
 import kotlinx.cli.ArgParser
 import org.jellyfin.apiclient.AppInfo
 import org.jellyfin.apiclient.Jellyfin
-import org.jellyfin.apiclient.interaction.device.IDevice
+import org.jellyfin.apiclient.IDevice
 import org.jellyfin.sample.console.cli.Discover
 import org.jellyfin.sample.console.cli.Libraries
 import org.jellyfin.sample.console.cli.Login
