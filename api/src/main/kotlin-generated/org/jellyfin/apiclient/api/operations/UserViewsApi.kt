@@ -12,8 +12,8 @@ import kotlin.String
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.BaseItemDtoQueryResult
-import org.jellyfin.apiclient.model.SpecialViewOptionDto
+import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.SpecialViewOptionDto
 
 class UserViewsApi(
 	private val api: KtorClient

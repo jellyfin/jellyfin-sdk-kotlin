@@ -10,10 +10,10 @@ import kotlin.String
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.CountryInfo
-import org.jellyfin.apiclient.model.CultureDto
-import org.jellyfin.apiclient.model.LocalizationOption
-import org.jellyfin.apiclient.model.ParentalRating
+import org.jellyfin.apiclient.model.api.CountryInfo
+import org.jellyfin.apiclient.model.api.CultureDto
+import org.jellyfin.apiclient.model.api.LocalizationOption
+import org.jellyfin.apiclient.model.api.ParentalRating
 
 class LocalizationApi(
 	private val api: KtorClient

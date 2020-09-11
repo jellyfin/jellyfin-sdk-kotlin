@@ -13,8 +13,8 @@ import kotlin.Int
 import kotlin.String
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.BaseItemDto
-import org.jellyfin.apiclient.model.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.BaseItemDto
+import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 
 class ArtistsApi(
 	private val api: KtorClient

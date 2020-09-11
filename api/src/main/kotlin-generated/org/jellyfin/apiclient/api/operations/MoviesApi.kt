@@ -12,7 +12,7 @@ import kotlin.String
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.RecommendationDto
+import org.jellyfin.apiclient.model.api.RecommendationDto
 
 class MoviesApi(
 	private val api: KtorClient

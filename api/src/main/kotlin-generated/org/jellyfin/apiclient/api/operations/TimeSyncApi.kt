@@ -9,7 +9,7 @@ import kotlin.Any
 import kotlin.String
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.UtcTimeResponse
+import org.jellyfin.apiclient.model.api.UtcTimeResponse
 
 class TimeSyncApi(
 	private val api: KtorClient

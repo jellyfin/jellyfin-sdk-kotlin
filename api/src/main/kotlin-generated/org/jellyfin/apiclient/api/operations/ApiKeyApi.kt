@@ -10,7 +10,7 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.AuthenticationInfoQueryResult
+import org.jellyfin.apiclient.model.api.AuthenticationInfoQueryResult
 
 class ApiKeyApi(
 	private val api: KtorClient

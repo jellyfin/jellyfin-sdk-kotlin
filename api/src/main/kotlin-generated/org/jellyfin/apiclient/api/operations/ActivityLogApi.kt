@@ -12,7 +12,7 @@ import kotlin.Int
 import kotlin.String
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.ActivityLogEntryQueryResult
+import org.jellyfin.apiclient.model.api.ActivityLogEntryQueryResult
 
 class ActivityLogApi(
 	private val api: KtorClient

@@ -16,13 +16,13 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.AllThemeMediaResult
-import org.jellyfin.apiclient.model.BaseItemDto
-import org.jellyfin.apiclient.model.BaseItemDtoQueryResult
-import org.jellyfin.apiclient.model.ItemCounts
-import org.jellyfin.apiclient.model.LibraryOptionsResultDto
-import org.jellyfin.apiclient.model.MediaUpdateInfoDto
-import org.jellyfin.apiclient.model.ThemeMediaResult
+import org.jellyfin.apiclient.model.api.AllThemeMediaResult
+import org.jellyfin.apiclient.model.api.BaseItemDto
+import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.ItemCounts
+import org.jellyfin.apiclient.model.api.LibraryOptionsResultDto
+import org.jellyfin.apiclient.model.api.MediaUpdateInfoDto
+import org.jellyfin.apiclient.model.api.ThemeMediaResult
 
 class LibraryApi(
 	private val api: KtorClient

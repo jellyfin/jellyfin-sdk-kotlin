@@ -14,17 +14,17 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.AlbumInfoRemoteSearchQuery
-import org.jellyfin.apiclient.model.ArtistInfoRemoteSearchQuery
-import org.jellyfin.apiclient.model.BookInfoRemoteSearchQuery
-import org.jellyfin.apiclient.model.BoxSetInfoRemoteSearchQuery
-import org.jellyfin.apiclient.model.ExternalIdInfo
-import org.jellyfin.apiclient.model.MovieInfoRemoteSearchQuery
-import org.jellyfin.apiclient.model.MusicVideoInfoRemoteSearchQuery
-import org.jellyfin.apiclient.model.PersonLookupInfoRemoteSearchQuery
-import org.jellyfin.apiclient.model.RemoteSearchResult
-import org.jellyfin.apiclient.model.SeriesInfoRemoteSearchQuery
-import org.jellyfin.apiclient.model.TrailerInfoRemoteSearchQuery
+import org.jellyfin.apiclient.model.api.AlbumInfoRemoteSearchQuery
+import org.jellyfin.apiclient.model.api.ArtistInfoRemoteSearchQuery
+import org.jellyfin.apiclient.model.api.BookInfoRemoteSearchQuery
+import org.jellyfin.apiclient.model.api.BoxSetInfoRemoteSearchQuery
+import org.jellyfin.apiclient.model.api.ExternalIdInfo
+import org.jellyfin.apiclient.model.api.MovieInfoRemoteSearchQuery
+import org.jellyfin.apiclient.model.api.MusicVideoInfoRemoteSearchQuery
+import org.jellyfin.apiclient.model.api.PersonLookupInfoRemoteSearchQuery
+import org.jellyfin.apiclient.model.api.RemoteSearchResult
+import org.jellyfin.apiclient.model.api.SeriesInfoRemoteSearchQuery
+import org.jellyfin.apiclient.model.api.TrailerInfoRemoteSearchQuery
 
 class ItemLookupApi(
 	private val api: KtorClient

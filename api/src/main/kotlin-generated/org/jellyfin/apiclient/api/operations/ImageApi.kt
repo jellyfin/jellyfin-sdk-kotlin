@@ -16,8 +16,8 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.ImageInfo
-import org.jellyfin.apiclient.model.ImageType
+import org.jellyfin.apiclient.model.api.ImageInfo
+import org.jellyfin.apiclient.model.api.ImageType
 
 class ImageApi(
 	private val api: KtorClient

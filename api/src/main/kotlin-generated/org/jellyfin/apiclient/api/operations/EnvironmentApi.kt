@@ -13,9 +13,9 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.DefaultDirectoryBrowserInfoDto
-import org.jellyfin.apiclient.model.FileSystemEntryInfo
-import org.jellyfin.apiclient.model.ValidatePathDto
+import org.jellyfin.apiclient.model.api.DefaultDirectoryBrowserInfoDto
+import org.jellyfin.apiclient.model.api.FileSystemEntryInfo
+import org.jellyfin.apiclient.model.api.ValidatePathDto
 
 class EnvironmentApi(
 	private val api: KtorClient

@@ -11,8 +11,8 @@ import kotlin.Boolean
 import kotlin.String
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.QueryFilters
-import org.jellyfin.apiclient.model.QueryFiltersLegacy
+import org.jellyfin.apiclient.model.api.QueryFilters
+import org.jellyfin.apiclient.model.api.QueryFiltersLegacy
 
 class FilterApi(
 	private val api: KtorClient

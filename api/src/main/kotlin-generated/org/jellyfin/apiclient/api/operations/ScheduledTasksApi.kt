@@ -12,9 +12,9 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.IScheduledTaskWorker
-import org.jellyfin.apiclient.model.TaskInfo
-import org.jellyfin.apiclient.model.TaskTriggerInfo
+import org.jellyfin.apiclient.model.api.IScheduledTaskWorker
+import org.jellyfin.apiclient.model.api.TaskInfo
+import org.jellyfin.apiclient.model.api.TaskTriggerInfo
 
 class ScheduledTasksApi(
 	private val api: KtorClient

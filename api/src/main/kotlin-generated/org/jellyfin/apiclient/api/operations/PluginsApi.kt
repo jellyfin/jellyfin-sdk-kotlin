@@ -13,10 +13,10 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.BasePluginConfiguration
-import org.jellyfin.apiclient.model.MbRegistrationRecord
-import org.jellyfin.apiclient.model.PluginInfo
-import org.jellyfin.apiclient.model.PluginSecurityInfo
+import org.jellyfin.apiclient.model.api.BasePluginConfiguration
+import org.jellyfin.apiclient.model.api.MbRegistrationRecord
+import org.jellyfin.apiclient.model.api.PluginInfo
+import org.jellyfin.apiclient.model.api.PluginSecurityInfo
 
 class PluginsApi(
 	private val api: KtorClient

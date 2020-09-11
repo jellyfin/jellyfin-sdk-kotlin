@@ -10,7 +10,7 @@ import kotlin.Any
 import kotlin.String
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.ControlResponse
+import org.jellyfin.apiclient.model.api.ControlResponse
 
 class DlnaServerApi(
 	private val api: KtorClient

@@ -11,7 +11,7 @@ import kotlin.String
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.ImageByNameInfo
+import org.jellyfin.apiclient.model.api.ImageByNameInfo
 
 class ImageByNameApi(
 	private val api: KtorClient

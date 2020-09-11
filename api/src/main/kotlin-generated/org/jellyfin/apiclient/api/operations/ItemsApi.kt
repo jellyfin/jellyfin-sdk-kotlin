@@ -14,7 +14,7 @@ import kotlin.Int
 import kotlin.String
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 
 class ItemsApi(
 	private val api: KtorClient

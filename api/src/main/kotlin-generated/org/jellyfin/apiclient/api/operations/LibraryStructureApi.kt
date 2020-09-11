@@ -12,11 +12,11 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.AddVirtualFolderDto
-import org.jellyfin.apiclient.model.MediaPathDto
-import org.jellyfin.apiclient.model.MediaPathInfo
-import org.jellyfin.apiclient.model.UpdateLibraryOptionsDto
-import org.jellyfin.apiclient.model.VirtualFolderInfo
+import org.jellyfin.apiclient.model.api.AddVirtualFolderDto
+import org.jellyfin.apiclient.model.api.MediaPathDto
+import org.jellyfin.apiclient.model.api.MediaPathInfo
+import org.jellyfin.apiclient.model.api.UpdateLibraryOptionsDto
+import org.jellyfin.apiclient.model.api.VirtualFolderInfo
 
 class LibraryStructureApi(
 	private val api: KtorClient

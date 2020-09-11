@@ -16,7 +16,7 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.GroupInfoView
+import org.jellyfin.apiclient.model.api.GroupInfoView
 
 class SyncPlayApi(
 	private val api: KtorClient

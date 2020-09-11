@@ -12,7 +12,7 @@ import kotlin.Int
 import kotlin.String
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.SearchHintResult
+import org.jellyfin.apiclient.model.api.SearchHintResult
 
 class SearchApi(
 	private val api: KtorClient

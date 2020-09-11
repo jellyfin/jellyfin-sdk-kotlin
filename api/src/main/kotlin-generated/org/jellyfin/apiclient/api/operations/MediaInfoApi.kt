@@ -15,10 +15,10 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.DeviceProfileDto
-import org.jellyfin.apiclient.model.LiveStreamResponse
-import org.jellyfin.apiclient.model.OpenLiveStreamDto
-import org.jellyfin.apiclient.model.PlaybackInfoResponse
+import org.jellyfin.apiclient.model.api.DeviceProfileDto
+import org.jellyfin.apiclient.model.api.LiveStreamResponse
+import org.jellyfin.apiclient.model.api.OpenLiveStreamDto
+import org.jellyfin.apiclient.model.api.PlaybackInfoResponse
 
 class MediaInfoApi(
 	private val api: KtorClient

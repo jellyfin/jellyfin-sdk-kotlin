@@ -11,8 +11,8 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.DeviceProfile
-import org.jellyfin.apiclient.model.DeviceProfileInfo
+import org.jellyfin.apiclient.model.api.DeviceProfile
+import org.jellyfin.apiclient.model.api.DeviceProfileInfo
 
 class DlnaApi(
 	private val api: KtorClient

@@ -12,9 +12,9 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.DeviceInfo
-import org.jellyfin.apiclient.model.DeviceInfoQueryResult
-import org.jellyfin.apiclient.model.DeviceOptions
+import org.jellyfin.apiclient.model.api.DeviceInfo
+import org.jellyfin.apiclient.model.api.DeviceInfoQueryResult
+import org.jellyfin.apiclient.model.api.DeviceOptions
 
 class DevicesApi(
 	private val api: KtorClient
