@@ -1,4 +1,4 @@
-package org.jellyfin.apiclient.interaction.device
+package org.jellyfin.apiclient
 
 interface IDevice {
 	val deviceName: String

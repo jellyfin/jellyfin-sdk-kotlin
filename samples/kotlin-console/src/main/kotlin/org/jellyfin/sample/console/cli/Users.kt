@@ -5,7 +5,7 @@ import kotlinx.cli.Subcommand
 import kotlinx.cli.required
 import kotlinx.coroutines.runBlocking
 import org.jellyfin.apiclient.Jellyfin
-import org.jellyfin.apiclient.interaction.device.IDevice
+import org.jellyfin.apiclient.IDevice
 import org.jellyfin.apiclient.model.dto.UserDto
 import org.jellyfin.sample.console.utils.callApi
 

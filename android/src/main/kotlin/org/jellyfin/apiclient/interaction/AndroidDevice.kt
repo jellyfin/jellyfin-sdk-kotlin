@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.provider.Settings
-import org.jellyfin.apiclient.interaction.device.IDevice
+import org.jellyfin.apiclient.IDevice
 
 data class AndroidDevice(
 	override val deviceId: String,
