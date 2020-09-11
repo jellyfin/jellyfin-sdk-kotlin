@@ -5,22 +5,18 @@ import kotlinx.cli.Subcommand
 import kotlinx.cli.required
 import kotlinx.coroutines.runBlocking
 import org.jellyfin.apiclient.Jellyfin
-import org.jellyfin.apiclient.IDevice
-import org.jellyfin.apiclient.model.dto.UserDto
-import org.jellyfin.sample.console.utils.callApi
+import org.jellyfin.apiclient.api.operations.UserApi
 
 class Users(
-	private val jellyfin: Jellyfin,
-	private val device: IDevice
+	private val jellyfin: Jellyfin
 ) : Subcommand("users", "List all public users") {
 	private val server by option(ArgType.String, description = "Url of the server", shortName = "s").required()
 
 	override fun execute() = runBlocking {
-		val api = jellyfin.createApi(serverAddress = server, device = device)
+		val api = jellyfin.createApi(baseUrl = server)
+		val userApi = UserApi(api)
 
-		val users = callApi<Array<UserDto>> { callback ->
-			api.GetPublicUsersAsync(callback)
-		}
+		val users by userApi.getPublicUsers()
 
 		users.forEach {
 			println(it.name)
