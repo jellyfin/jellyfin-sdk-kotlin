@@ -10,9 +10,9 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.StartupConfigurationDto
-import org.jellyfin.apiclient.model.StartupRemoteAccessDto
-import org.jellyfin.apiclient.model.StartupUserDto
+import org.jellyfin.apiclient.model.api.StartupConfigurationDto
+import org.jellyfin.apiclient.model.api.StartupRemoteAccessDto
+import org.jellyfin.apiclient.model.api.StartupUserDto
 
 class StartupApi(
 	private val api: KtorClient

@@ -13,17 +13,17 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.AuthenticateUserByName
-import org.jellyfin.apiclient.model.AuthenticationResult
-import org.jellyfin.apiclient.model.CreateUserByName
-import org.jellyfin.apiclient.model.ForgotPasswordResult
-import org.jellyfin.apiclient.model.PinRedeemResult
-import org.jellyfin.apiclient.model.QuickConnectDto
-import org.jellyfin.apiclient.model.UpdateUserEasyPassword
-import org.jellyfin.apiclient.model.UpdateUserPassword
-import org.jellyfin.apiclient.model.UserConfiguration
-import org.jellyfin.apiclient.model.UserDto
-import org.jellyfin.apiclient.model.UserPolicy
+import org.jellyfin.apiclient.model.api.AuthenticateUserByName
+import org.jellyfin.apiclient.model.api.AuthenticationResult
+import org.jellyfin.apiclient.model.api.CreateUserByName
+import org.jellyfin.apiclient.model.api.ForgotPasswordResult
+import org.jellyfin.apiclient.model.api.PinRedeemResult
+import org.jellyfin.apiclient.model.api.QuickConnectDto
+import org.jellyfin.apiclient.model.api.UpdateUserEasyPassword
+import org.jellyfin.apiclient.model.api.UpdateUserPassword
+import org.jellyfin.apiclient.model.api.UserConfiguration
+import org.jellyfin.apiclient.model.api.UserDto
+import org.jellyfin.apiclient.model.api.UserPolicy
 
 class UserApi(
 	private val api: KtorClient

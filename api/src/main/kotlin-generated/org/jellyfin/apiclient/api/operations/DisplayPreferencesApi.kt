@@ -11,7 +11,7 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.DisplayPreferencesDto
+import org.jellyfin.apiclient.model.api.DisplayPreferencesDto
 
 class DisplayPreferencesApi(
 	private val api: KtorClient

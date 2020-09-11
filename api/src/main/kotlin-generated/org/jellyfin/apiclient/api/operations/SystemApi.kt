@@ -11,11 +11,11 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.EndPointInfo
-import org.jellyfin.apiclient.model.LogFile
-import org.jellyfin.apiclient.model.PublicSystemInfo
-import org.jellyfin.apiclient.model.SystemInfo
-import org.jellyfin.apiclient.model.WakeOnLanInfo
+import org.jellyfin.apiclient.model.api.EndPointInfo
+import org.jellyfin.apiclient.model.api.LogFile
+import org.jellyfin.apiclient.model.api.PublicSystemInfo
+import org.jellyfin.apiclient.model.api.SystemInfo
+import org.jellyfin.apiclient.model.api.WakeOnLanInfo
 
 class SystemApi(
 	private val api: KtorClient

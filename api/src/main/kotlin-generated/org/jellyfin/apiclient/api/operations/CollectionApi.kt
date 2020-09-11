@@ -12,7 +12,7 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.CollectionCreationResult
+import org.jellyfin.apiclient.model.api.CollectionCreationResult
 
 class CollectionApi(
 	private val api: KtorClient

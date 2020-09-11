@@ -15,12 +15,12 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.ClientCapabilities
-import org.jellyfin.apiclient.model.GeneralCommand
-import org.jellyfin.apiclient.model.NameIdPair
-import org.jellyfin.apiclient.model.PlayCommand
-import org.jellyfin.apiclient.model.PlaystateRequest
-import org.jellyfin.apiclient.model.SessionInfo
+import org.jellyfin.apiclient.model.api.ClientCapabilities
+import org.jellyfin.apiclient.model.api.GeneralCommand
+import org.jellyfin.apiclient.model.api.NameIdPair
+import org.jellyfin.apiclient.model.api.PlayCommand
+import org.jellyfin.apiclient.model.api.PlaystateRequest
+import org.jellyfin.apiclient.model.api.SessionInfo
 
 class SessionApi(
 	private val api: KtorClient

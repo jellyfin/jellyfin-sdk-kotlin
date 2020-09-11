@@ -16,8 +16,8 @@ import kotlin.String
 import kotlin.collections.Map
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.EncodingContext
-import org.jellyfin.apiclient.model.SubtitleDeliveryMethod
+import org.jellyfin.apiclient.model.api.EncodingContext
+import org.jellyfin.apiclient.model.api.SubtitleDeliveryMethod
 
 class VideoHlsApi(
 	private val api: KtorClient

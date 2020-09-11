@@ -13,9 +13,9 @@ import kotlin.String
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.BaseItemDto
-import org.jellyfin.apiclient.model.BaseItemDtoQueryResult
-import org.jellyfin.apiclient.model.UserItemDataDto
+import org.jellyfin.apiclient.model.api.BaseItemDto
+import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.UserItemDataDto
 
 class UserLibraryApi(
 	private val api: KtorClient

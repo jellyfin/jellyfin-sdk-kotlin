@@ -11,11 +11,11 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.NameIdPair
-import org.jellyfin.apiclient.model.NotificationLevel
-import org.jellyfin.apiclient.model.NotificationResultDto
-import org.jellyfin.apiclient.model.NotificationTypeInfo
-import org.jellyfin.apiclient.model.NotificationsSummaryDto
+import org.jellyfin.apiclient.model.api.NameIdPair
+import org.jellyfin.apiclient.model.api.NotificationLevel
+import org.jellyfin.apiclient.model.api.NotificationResultDto
+import org.jellyfin.apiclient.model.api.NotificationTypeInfo
+import org.jellyfin.apiclient.model.api.NotificationsSummaryDto
 
 class NotificationsApi(
 	private val api: KtorClient

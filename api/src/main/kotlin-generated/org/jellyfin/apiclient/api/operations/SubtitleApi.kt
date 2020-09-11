@@ -16,7 +16,7 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.RemoteSubtitleInfo
+import org.jellyfin.apiclient.model.api.RemoteSubtitleInfo
 
 class SubtitleApi(
 	private val api: KtorClient

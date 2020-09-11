@@ -11,8 +11,8 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.BaseItemDto
-import org.jellyfin.apiclient.model.MetadataEditorInfo
+import org.jellyfin.apiclient.model.api.BaseItemDto
+import org.jellyfin.apiclient.model.api.MetadataEditorInfo
 
 class ItemUpdateApi(
 	private val api: KtorClient

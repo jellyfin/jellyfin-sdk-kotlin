@@ -12,8 +12,8 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.PackageInfo
-import org.jellyfin.apiclient.model.RepositoryInfo
+import org.jellyfin.apiclient.model.api.PackageInfo
+import org.jellyfin.apiclient.model.api.RepositoryInfo
 
 class PackageApi(
 	private val api: KtorClient

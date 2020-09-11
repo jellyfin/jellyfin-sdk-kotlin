@@ -11,8 +11,8 @@ import kotlin.String
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.ConfigurationPageInfo
-import org.jellyfin.apiclient.model.ConfigurationPageType
+import org.jellyfin.apiclient.model.api.ConfigurationPageInfo
+import org.jellyfin.apiclient.model.api.ConfigurationPageType
 
 class DashboardApi(
 	private val api: KtorClient

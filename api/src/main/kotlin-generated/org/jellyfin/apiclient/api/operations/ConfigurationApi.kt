@@ -11,9 +11,9 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.MediaEncoderPathDto
-import org.jellyfin.apiclient.model.MetadataOptions
-import org.jellyfin.apiclient.model.ServerConfiguration
+import org.jellyfin.apiclient.model.api.MediaEncoderPathDto
+import org.jellyfin.apiclient.model.api.MetadataOptions
+import org.jellyfin.apiclient.model.api.ServerConfiguration
 
 class ConfigurationApi(
 	private val api: KtorClient

@@ -12,7 +12,7 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.MetadataRefreshMode
+import org.jellyfin.apiclient.model.api.MetadataRefreshMode
 
 class ItemRefreshApi(
 	private val api: KtorClient

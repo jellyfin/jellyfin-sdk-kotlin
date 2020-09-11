@@ -12,8 +12,8 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.QuickConnectResult
-import org.jellyfin.apiclient.model.QuickConnectState
+import org.jellyfin.apiclient.model.api.QuickConnectResult
+import org.jellyfin.apiclient.model.api.QuickConnectState
 
 class QuickConnectApi(
 	private val api: KtorClient

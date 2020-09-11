@@ -13,9 +13,9 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.BaseItemDtoQueryResult
-import org.jellyfin.apiclient.model.CreatePlaylistDto
-import org.jellyfin.apiclient.model.PlaylistCreationResult
+import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.CreatePlaylistDto
+import org.jellyfin.apiclient.model.api.PlaylistCreationResult
 
 class PlaylistsApi(
 	private val api: KtorClient

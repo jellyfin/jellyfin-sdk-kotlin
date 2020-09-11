@@ -14,5 +14,5 @@ object Packages {
 	/**
 	 * Package for the generated models
 	 */
-	const val MODEL = "org.jellyfin.apiclient.model"
+	const val MODEL = "org.jellyfin.apiclient.model.api"
 }

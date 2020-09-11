@@ -15,12 +15,12 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.PlayMethod
-import org.jellyfin.apiclient.model.PlaybackProgressInfo
-import org.jellyfin.apiclient.model.PlaybackStartInfo
-import org.jellyfin.apiclient.model.PlaybackStopInfo
-import org.jellyfin.apiclient.model.RepeatMode
-import org.jellyfin.apiclient.model.UserItemDataDto
+import org.jellyfin.apiclient.model.api.PlayMethod
+import org.jellyfin.apiclient.model.api.PlaybackProgressInfo
+import org.jellyfin.apiclient.model.api.PlaybackStartInfo
+import org.jellyfin.apiclient.model.api.PlaybackStopInfo
+import org.jellyfin.apiclient.model.api.RepeatMode
+import org.jellyfin.apiclient.model.api.UserItemDataDto
 
 class PlaystateApi(
 	private val api: KtorClient
