@@ -14,6 +14,8 @@ android {
 
 		versionCode = getVersionCode(project.version.toString()) ?: 0
 		versionName = project.version.toString()
+
+		consumerProguardFiles("proguard-rules.pro")
 	}
 
 	compileOptions {
