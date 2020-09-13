@@ -8,36 +8,48 @@ package org.jellyfin.apiclient.model.api
 import kotlin.Double
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Interface IScheduledTaskWorker.
  */
+@Serializable
 data class IScheduledTaskWorker(
+	@SerialName("ScheduledTask")
 	val scheduledTask: IScheduledTask,
+	@SerialName("LastExecutionResult")
 	val lastExecutionResult: TaskResult,
 	/**
 	 * Gets the name.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
 	/**
 	 * Gets the description.
 	 */
+	@SerialName("Description")
 	val description: String? = null,
 	/**
 	 * Gets the category.
 	 */
+	@SerialName("Category")
 	val category: String? = null,
+	@SerialName("State")
 	val state: TaskState,
 	/**
 	 * Gets the current progress.
 	 */
+	@SerialName("CurrentProgress")
 	val currentProgress: Double? = null,
 	/**
 	 * Gets the triggers that define when the task will run.
 	 */
+	@SerialName("Triggers")
 	val triggers: List<TaskTriggerInfo>? = null,
 	/**
 	 * Gets the unique id.
 	 */
+	@SerialName("Id")
 	val id: String? = null
 )

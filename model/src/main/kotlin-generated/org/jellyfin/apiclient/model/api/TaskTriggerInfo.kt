@@ -7,26 +7,34 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Long
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Class TaskTriggerInfo.
  */
+@Serializable
 data class TaskTriggerInfo(
 	/**
 	 * Gets or sets the type.
 	 */
+	@SerialName("Type")
 	val type: String? = null,
 	/**
 	 * Gets or sets the time of day.
 	 */
+	@SerialName("TimeOfDayTicks")
 	val timeOfDayTicks: Long? = null,
 	/**
 	 * Gets or sets the interval.
 	 */
+	@SerialName("IntervalTicks")
 	val intervalTicks: Long? = null,
+	@SerialName("DayOfWeek")
 	val dayOfWeek: DayOfWeek,
 	/**
 	 * Gets or sets the maximum runtime ticks.
 	 */
+	@SerialName("MaxRuntimeTicks")
 	val maxRuntimeTicks: Long? = null
 )

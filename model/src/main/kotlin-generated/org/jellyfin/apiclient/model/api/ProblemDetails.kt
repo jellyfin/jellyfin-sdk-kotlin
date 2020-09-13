@@ -7,11 +7,19 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Int
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ProblemDetails(
+	@SerialName("type")
 	val type: String? = null,
+	@SerialName("title")
 	val title: String? = null,
+	@SerialName("status")
 	val status: Int? = null,
+	@SerialName("detail")
 	val detail: String? = null,
+	@SerialName("instance")
 	val instance: String? = null
 )

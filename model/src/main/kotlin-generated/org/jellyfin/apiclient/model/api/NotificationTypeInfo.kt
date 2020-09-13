@@ -7,11 +7,19 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Boolean
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class NotificationTypeInfo(
+	@SerialName("Type")
 	val type: String? = null,
+	@SerialName("Name")
 	val name: String? = null,
+	@SerialName("Enabled")
 	val enabled: Boolean,
+	@SerialName("Category")
 	val category: String? = null,
+	@SerialName("IsBasedOnUserEvent")
 	val isBasedOnUserEvent: Boolean
 )

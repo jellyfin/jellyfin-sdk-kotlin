@@ -7,17 +7,22 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Int
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * A list of notifications with the total record count for pagination.
  */
+@Serializable
 data class NotificationResultDto(
 	/**
 	 * Gets or sets the current page of notifications.
 	 */
+	@SerialName("Notifications")
 	val notifications: List<NotificationDto>? = null,
 	/**
 	 * Gets or sets the total number of notifications.
 	 */
+	@SerialName("TotalRecordCount")
 	val totalRecordCount: Int
 )

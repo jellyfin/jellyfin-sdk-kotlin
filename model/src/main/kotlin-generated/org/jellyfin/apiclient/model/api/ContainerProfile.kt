@@ -7,9 +7,15 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ContainerProfile(
+	@SerialName("Type")
 	val type: DlnaProfileType,
+	@SerialName("Conditions")
 	val conditions: List<ProfileCondition>? = null,
+	@SerialName("Container")
 	val container: String? = null
 )

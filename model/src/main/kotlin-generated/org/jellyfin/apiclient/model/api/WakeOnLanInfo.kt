@@ -7,17 +7,22 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Int
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Provides the MAC address and port for wake-on-LAN functionality.
  */
+@Serializable
 data class WakeOnLanInfo(
 	/**
 	 * Gets the MAC address of the device.
 	 */
+	@SerialName("MacAddress")
 	val macAddress: String? = null,
 	/**
 	 * Gets or sets the wake-on-LAN port.
 	 */
+	@SerialName("Port")
 	val port: Int
 )

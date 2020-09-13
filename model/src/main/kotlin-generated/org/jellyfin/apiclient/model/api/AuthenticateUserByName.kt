@@ -6,21 +6,27 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * The authenticate user by name request body.
  */
+@Serializable
 data class AuthenticateUserByName(
 	/**
 	 * Gets or sets the username.
 	 */
+	@SerialName("Username")
 	val username: String? = null,
 	/**
 	 * Gets or sets the plain text password.
 	 */
+	@SerialName("Pw")
 	val pw: String? = null,
 	/**
 	 * Gets or sets the sha1-hashed password.
 	 */
+	@SerialName("Password")
 	val password: String? = null
 )

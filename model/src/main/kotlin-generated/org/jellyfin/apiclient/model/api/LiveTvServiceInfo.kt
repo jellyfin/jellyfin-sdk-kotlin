@@ -8,35 +8,46 @@ package org.jellyfin.apiclient.model.api
 import kotlin.Boolean
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Class ServiceInfo.
  */
+@Serializable
 data class LiveTvServiceInfo(
 	/**
 	 * Gets or sets the name.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
 	/**
 	 * Gets or sets the home page URL.
 	 */
+	@SerialName("HomePageUrl")
 	val homePageUrl: String? = null,
+	@SerialName("Status")
 	val status: LiveTvServiceStatus,
 	/**
 	 * Gets or sets the status message.
 	 */
+	@SerialName("StatusMessage")
 	val statusMessage: String? = null,
 	/**
 	 * Gets or sets the version.
 	 */
+	@SerialName("Version")
 	val version: String? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance has update available.
 	 */
+	@SerialName("HasUpdateAvailable")
 	val hasUpdateAvailable: Boolean,
 	/**
 	 * Gets or sets a value indicating whether this instance is visible.
 	 */
+	@SerialName("IsVisible")
 	val isVisible: Boolean,
+	@SerialName("Tuners")
 	val tuners: List<String>? = null
 )

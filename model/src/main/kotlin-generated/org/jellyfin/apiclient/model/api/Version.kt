@@ -6,12 +6,21 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.Int
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Version(
+	@SerialName("Major")
 	val major: Int,
+	@SerialName("Minor")
 	val minor: Int,
+	@SerialName("Build")
 	val build: Int,
+	@SerialName("Revision")
 	val revision: Int,
+	@SerialName("MajorRevision")
 	val majorRevision: Int,
+	@SerialName("MinorRevision")
 	val minorRevision: Int
 )

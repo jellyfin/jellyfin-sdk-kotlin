@@ -6,17 +6,22 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * The create user by name request body.
  */
+@Serializable
 data class CreateUserByName(
 	/**
 	 * Gets or sets the username.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
 	/**
 	 * Gets or sets the password.
 	 */
+	@SerialName("Password")
 	val password: String? = null
 )

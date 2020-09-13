@@ -7,17 +7,22 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Int
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Class SearchHintResult.
  */
+@Serializable
 data class SearchHintResult(
 	/**
 	 * Gets or sets the search hints.
 	 */
+	@SerialName("SearchHints")
 	val searchHints: List<SearchHint>? = null,
 	/**
 	 * Gets or sets the total record count.
 	 */
+	@SerialName("TotalRecordCount")
 	val totalRecordCount: Int
 )

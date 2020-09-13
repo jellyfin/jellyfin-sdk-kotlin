@@ -6,8 +6,13 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.Boolean
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class EndPointInfo(
+	@SerialName("IsLocal")
 	val isLocal: Boolean,
+	@SerialName("IsInNetwork")
 	val isInNetwork: Boolean
 )

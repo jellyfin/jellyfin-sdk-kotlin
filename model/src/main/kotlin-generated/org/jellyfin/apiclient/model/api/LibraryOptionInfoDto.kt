@@ -7,17 +7,22 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Boolean
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Library option info dto.
  */
+@Serializable
 data class LibraryOptionInfoDto(
 	/**
 	 * Gets or sets name.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
 	/**
 	 * Gets or sets a value indicating whether default enabled.
 	 */
+	@SerialName("DefaultEnabled")
 	val defaultEnabled: Boolean
 )

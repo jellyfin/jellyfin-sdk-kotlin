@@ -7,17 +7,22 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Class ImageProviderInfo.
  */
+@Serializable
 data class ImageProviderInfo(
 	/**
 	 * Gets the name.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
 	/**
 	 * Gets the supported image types.
 	 */
+	@SerialName("SupportedImages")
 	val supportedImages: List<ImageType>? = null
 )

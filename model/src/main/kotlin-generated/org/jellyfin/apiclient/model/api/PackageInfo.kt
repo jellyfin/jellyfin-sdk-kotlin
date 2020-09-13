@@ -7,38 +7,48 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Class PackageInfo.
  */
+@Serializable
 data class PackageInfo(
 	/**
 	 * Gets or sets the name.
 	 */
+	@SerialName("name")
 	val name: String? = null,
 	/**
 	 * Gets or sets a long description of the plugin containing features or helpful explanations.
 	 */
+	@SerialName("description")
 	val description: String? = null,
 	/**
 	 * Gets or sets a short overview of what the plugin does.
 	 */
+	@SerialName("overview")
 	val overview: String? = null,
 	/**
 	 * Gets or sets the owner.
 	 */
+	@SerialName("owner")
 	val owner: String? = null,
 	/**
 	 * Gets or sets the category.
 	 */
+	@SerialName("category")
 	val category: String? = null,
 	/**
 	 * The guid of the assembly associated with this plugin.
 	 * This is used to identify the proper item for automatic updates.
 	 */
+	@SerialName("guid")
 	val guid: String? = null,
 	/**
 	 * Gets or sets the versions.
 	 */
+	@SerialName("versions")
 	val versions: List<VersionInfo>? = null
 )

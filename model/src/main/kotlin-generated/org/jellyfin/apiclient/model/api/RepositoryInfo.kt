@@ -6,17 +6,22 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Class RepositoryInfo.
  */
+@Serializable
 data class RepositoryInfo(
 	/**
 	 * Gets or sets the name.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
 	/**
 	 * Gets or sets the URL.
 	 */
+	@SerialName("Url")
 	val url: String? = null
 )

@@ -7,8 +7,13 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class QueryFilters(
+	@SerialName("Genres")
 	val genres: List<NameGuidPair>? = null,
+	@SerialName("Tags")
 	val tags: List<String>? = null
 )

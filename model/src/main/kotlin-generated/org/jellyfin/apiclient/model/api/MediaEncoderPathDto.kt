@@ -6,17 +6,22 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Media Encoder Path Dto.
  */
+@Serializable
 data class MediaEncoderPathDto(
 	/**
 	 * Gets or sets media encoder path.
 	 */
+	@SerialName("Path")
 	val path: String? = null,
 	/**
 	 * Gets or sets media encoder path type.
 	 */
+	@SerialName("PathType")
 	val pathType: String? = null
 )

@@ -6,57 +6,72 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.Int
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Class LibrarySummary.
  */
+@Serializable
 data class ItemCounts(
 	/**
 	 * Gets or sets the movie count.
 	 */
+	@SerialName("MovieCount")
 	val movieCount: Int,
 	/**
 	 * Gets or sets the series count.
 	 */
+	@SerialName("SeriesCount")
 	val seriesCount: Int,
 	/**
 	 * Gets or sets the episode count.
 	 */
+	@SerialName("EpisodeCount")
 	val episodeCount: Int,
 	/**
 	 * Gets or sets the artist count.
 	 */
+	@SerialName("ArtistCount")
 	val artistCount: Int,
 	/**
 	 * Gets or sets the program count.
 	 */
+	@SerialName("ProgramCount")
 	val programCount: Int,
 	/**
 	 * Gets or sets the trailer count.
 	 */
+	@SerialName("TrailerCount")
 	val trailerCount: Int,
 	/**
 	 * Gets or sets the song count.
 	 */
+	@SerialName("SongCount")
 	val songCount: Int,
 	/**
 	 * Gets or sets the album count.
 	 */
+	@SerialName("AlbumCount")
 	val albumCount: Int,
 	/**
 	 * Gets or sets the music video count.
 	 */
+	@SerialName("MusicVideoCount")
 	val musicVideoCount: Int,
 	/**
 	 * Gets or sets the box set count.
 	 */
+	@SerialName("BoxSetCount")
 	val boxSetCount: Int,
 	/**
 	 * Gets or sets the book count.
 	 */
+	@SerialName("BookCount")
 	val bookCount: Int,
 	/**
 	 * Gets or sets the item count.
 	 */
+	@SerialName("ItemCount")
 	val itemCount: Int
 )

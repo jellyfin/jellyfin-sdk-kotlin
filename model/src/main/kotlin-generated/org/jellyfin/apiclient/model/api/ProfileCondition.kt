@@ -7,10 +7,17 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Boolean
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ProfileCondition(
+	@SerialName("Condition")
 	val condition: ProfileConditionType,
+	@SerialName("Property")
 	val property: ProfileConditionValue,
+	@SerialName("Value")
 	val value: String? = null,
+	@SerialName("IsRequired")
 	val isRequired: Boolean
 )

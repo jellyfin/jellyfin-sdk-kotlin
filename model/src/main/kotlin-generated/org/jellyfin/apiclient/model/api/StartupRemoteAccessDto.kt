@@ -6,17 +6,22 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.Boolean
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Startup remote access dto.
  */
+@Serializable
 data class StartupRemoteAccessDto(
 	/**
 	 * Gets or sets a value indicating whether enable remote access.
 	 */
+	@SerialName("EnableRemoteAccess")
 	val enableRemoteAccess: Boolean,
 	/**
 	 * Gets or sets a value indicating whether enable automatic port mapping.
 	 */
+	@SerialName("EnableAutomaticPortMapping")
 	val enableAutomaticPortMapping: Boolean
 )

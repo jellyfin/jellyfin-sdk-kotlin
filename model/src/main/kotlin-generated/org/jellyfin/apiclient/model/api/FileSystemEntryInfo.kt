@@ -6,18 +6,24 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Class FileSystemEntryInfo.
  */
+@Serializable
 data class FileSystemEntryInfo(
 	/**
 	 * Gets the name.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
 	/**
 	 * Gets the path.
 	 */
+	@SerialName("Path")
 	val path: String? = null,
+	@SerialName("Type")
 	val type: FileSystemEntryType
 )

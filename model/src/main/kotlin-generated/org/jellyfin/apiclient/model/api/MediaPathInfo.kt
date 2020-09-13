@@ -6,8 +6,13 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class MediaPathInfo(
+	@SerialName("Path")
 	val path: String? = null,
+	@SerialName("NetworkPath")
 	val networkPath: String? = null
 )

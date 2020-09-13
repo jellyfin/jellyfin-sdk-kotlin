@@ -7,18 +7,24 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Class PlaybackInfoResponse.
  */
+@Serializable
 data class PlaybackInfoResponse(
 	/**
 	 * Gets or sets the media sources.
 	 */
+	@SerialName("MediaSources")
 	val mediaSources: List<MediaSourceInfo>? = null,
 	/**
 	 * Gets or sets the play session identifier.
 	 */
+	@SerialName("PlaySessionId")
 	val playSessionId: String? = null,
+	@SerialName("ErrorCode")
 	val errorCode: PlaybackErrorCode
 )

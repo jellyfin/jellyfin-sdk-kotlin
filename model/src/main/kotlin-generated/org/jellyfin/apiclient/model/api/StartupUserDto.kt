@@ -6,17 +6,22 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * The startup user DTO.
  */
+@Serializable
 data class StartupUserDto(
 	/**
 	 * Gets or sets the username.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
 	/**
 	 * Gets or sets the user's password.
 	 */
+	@SerialName("Password")
 	val password: String? = null
 )

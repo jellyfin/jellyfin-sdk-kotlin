@@ -6,11 +6,19 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class SubtitleProfile(
+	@SerialName("Format")
 	val format: String? = null,
+	@SerialName("Method")
 	val method: SubtitleDeliveryMethod,
+	@SerialName("DidlMode")
 	val didlMode: String? = null,
+	@SerialName("Language")
 	val language: String? = null,
+	@SerialName("Container")
 	val container: String? = null
 )

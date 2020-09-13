@@ -8,38 +8,49 @@ package org.jellyfin.apiclient.model.api
 import kotlin.Int
 import kotlin.Long
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Class ImageInfo.
  */
+@Serializable
 data class ImageInfo(
+	@SerialName("ImageType")
 	val imageType: ImageType,
 	/**
 	 * Gets or sets the index of the image.
 	 */
+	@SerialName("ImageIndex")
 	val imageIndex: Int? = null,
 	/**
 	 * Gets or sets the image tag.
 	 */
+	@SerialName("ImageTag")
 	val imageTag: String? = null,
 	/**
 	 * Gets or sets the path.
 	 */
+	@SerialName("Path")
 	val path: String? = null,
 	/**
 	 * Gets or sets the blurhash.
 	 */
+	@SerialName("BlurHash")
 	val blurHash: String? = null,
 	/**
 	 * Gets or sets the height.
 	 */
+	@SerialName("Height")
 	val height: Int? = null,
 	/**
 	 * Gets or sets the width.
 	 */
+	@SerialName("Width")
 	val width: Int? = null,
 	/**
 	 * Gets or sets the size.
 	 */
+	@SerialName("Size")
 	val size: Long
 )

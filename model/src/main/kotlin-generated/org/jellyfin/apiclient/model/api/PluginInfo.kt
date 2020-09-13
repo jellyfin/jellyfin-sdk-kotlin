@@ -7,38 +7,48 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Boolean
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * This is a serializable stub class that is used by the api to provide information about installed
  * plugins.
  */
+@Serializable
 data class PluginInfo(
 	/**
 	 * Gets or sets the name.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
 	/**
 	 * Gets or sets the version.
 	 */
+	@SerialName("Version")
 	val version: String? = null,
 	/**
 	 * Gets or sets the name of the configuration file.
 	 */
+	@SerialName("ConfigurationFileName")
 	val configurationFileName: String? = null,
 	/**
 	 * Gets or sets the description.
 	 */
+	@SerialName("Description")
 	val description: String? = null,
 	/**
 	 * Gets or sets the unique id.
 	 */
+	@SerialName("Id")
 	val id: String? = null,
 	/**
 	 * Gets or sets a value indicating whether the plugin can be uninstalled.
 	 */
+	@SerialName("CanUninstall")
 	val canUninstall: Boolean,
 	/**
 	 * Gets or sets the image URL.
 	 */
+	@SerialName("ImageUrl")
 	val imageUrl: String? = null
 )

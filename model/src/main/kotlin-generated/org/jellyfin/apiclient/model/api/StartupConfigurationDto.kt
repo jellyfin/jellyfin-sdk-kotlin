@@ -6,21 +6,27 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * The startup configuration DTO.
  */
+@Serializable
 data class StartupConfigurationDto(
 	/**
 	 * Gets or sets UI language culture.
 	 */
+	@SerialName("UICulture")
 	val uiCulture: String? = null,
 	/**
 	 * Gets or sets the metadata country code.
 	 */
+	@SerialName("MetadataCountryCode")
 	val metadataCountryCode: String? = null,
 	/**
 	 * Gets or sets the preferred language for the metadata.
 	 */
+	@SerialName("PreferredMetadataLanguage")
 	val preferredMetadataLanguage: String? = null
 )

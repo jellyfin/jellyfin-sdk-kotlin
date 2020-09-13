@@ -6,14 +6,19 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.Int
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * The notification summary DTO.
  */
+@Serializable
 data class NotificationsSummaryDto(
 	/**
 	 * Gets or sets the number of unread notifications.
 	 */
+	@SerialName("UnreadCount")
 	val unreadCount: Int,
+	@SerialName("MaxUnreadNotificationLevel")
 	val maxUnreadNotificationLevel: NotificationLevel
 )

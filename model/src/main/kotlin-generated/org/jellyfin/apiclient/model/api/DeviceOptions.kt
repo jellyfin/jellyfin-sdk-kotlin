@@ -6,7 +6,11 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class DeviceOptions(
+	@SerialName("CustomName")
 	val customName: String? = null
 )

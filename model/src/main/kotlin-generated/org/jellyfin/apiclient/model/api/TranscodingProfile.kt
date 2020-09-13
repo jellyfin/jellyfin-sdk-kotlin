@@ -8,21 +8,39 @@ package org.jellyfin.apiclient.model.api
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class TranscodingProfile(
+	@SerialName("Container")
 	val container: String? = null,
+	@SerialName("Type")
 	val type: DlnaProfileType,
+	@SerialName("VideoCodec")
 	val videoCodec: String? = null,
+	@SerialName("AudioCodec")
 	val audioCodec: String? = null,
+	@SerialName("Protocol")
 	val protocol: String? = null,
+	@SerialName("EstimateContentLength")
 	val estimateContentLength: Boolean,
+	@SerialName("EnableMpegtsM2TsMode")
 	val enableMpegtsM2TsMode: Boolean,
+	@SerialName("TranscodeSeekInfo")
 	val transcodeSeekInfo: TranscodeSeekInfo,
+	@SerialName("CopyTimestamps")
 	val copyTimestamps: Boolean,
+	@SerialName("Context")
 	val context: EncodingContext,
+	@SerialName("EnableSubtitlesInManifest")
 	val enableSubtitlesInManifest: Boolean,
+	@SerialName("MaxAudioChannels")
 	val maxAudioChannels: String? = null,
+	@SerialName("MinSegments")
 	val minSegments: Int,
+	@SerialName("SegmentLength")
 	val segmentLength: Int,
+	@SerialName("BreakOnNonKeyFrames")
 	val breakOnNonKeyFrames: Boolean
 )

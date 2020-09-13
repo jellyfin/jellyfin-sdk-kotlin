@@ -9,43 +9,56 @@ import kotlin.Boolean
 import kotlin.Double
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Class TaskInfo.
  */
+@Serializable
 data class TaskInfo(
 	/**
 	 * Gets or sets the name.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
+	@SerialName("State")
 	val state: TaskState,
 	/**
 	 * Gets or sets the progress.
 	 */
+	@SerialName("CurrentProgressPercentage")
 	val currentProgressPercentage: Double? = null,
 	/**
 	 * Gets or sets the id.
 	 */
+	@SerialName("Id")
 	val id: String? = null,
+	@SerialName("LastExecutionResult")
 	val lastExecutionResult: TaskResult,
 	/**
 	 * Gets or sets the triggers.
 	 */
+	@SerialName("Triggers")
 	val triggers: List<TaskTriggerInfo>? = null,
 	/**
 	 * Gets or sets the description.
 	 */
+	@SerialName("Description")
 	val description: String? = null,
 	/**
 	 * Gets or sets the category.
 	 */
+	@SerialName("Category")
 	val category: String? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is hidden.
 	 */
+	@SerialName("IsHidden")
 	val isHidden: Boolean,
 	/**
 	 * Gets or sets the key.
 	 */
+	@SerialName("Key")
 	val key: String? = null
 )

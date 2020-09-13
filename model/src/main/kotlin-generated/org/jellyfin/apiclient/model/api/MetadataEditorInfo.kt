@@ -7,12 +7,21 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class MetadataEditorInfo(
+	@SerialName("ParentalRatingOptions")
 	val parentalRatingOptions: List<ParentalRating>? = null,
+	@SerialName("Countries")
 	val countries: List<CountryInfo>? = null,
+	@SerialName("Cultures")
 	val cultures: List<CultureDto>? = null,
+	@SerialName("ExternalIdInfos")
 	val externalIdInfos: List<ExternalIdInfo>? = null,
+	@SerialName("ContentType")
 	val contentType: String? = null,
+	@SerialName("ContentTypeOptions")
 	val contentTypeOptions: List<NameValuePair>? = null
 )

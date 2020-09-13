@@ -6,8 +6,13 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class PathSubstitution(
+	@SerialName("From")
 	val from: String? = null,
+	@SerialName("To")
 	val to: String? = null
 )

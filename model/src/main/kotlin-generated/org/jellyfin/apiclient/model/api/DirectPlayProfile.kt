@@ -6,10 +6,17 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class DirectPlayProfile(
+	@SerialName("Container")
 	val container: String? = null,
+	@SerialName("AudioCodec")
 	val audioCodec: String? = null,
+	@SerialName("VideoCodec")
 	val videoCodec: String? = null,
+	@SerialName("Type")
 	val type: DlnaProfileType
 )

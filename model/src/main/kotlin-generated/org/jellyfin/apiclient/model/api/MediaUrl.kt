@@ -6,8 +6,13 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class MediaUrl(
+	@SerialName("Url")
 	val url: String? = null,
+	@SerialName("Name")
 	val name: String? = null
 )

@@ -7,18 +7,24 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Int
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class AuthenticationInfoQueryResult(
 	/**
 	 * Gets or sets the items.
 	 */
+	@SerialName("Items")
 	val items: List<AuthenticationInfo>? = null,
 	/**
 	 * The total number of records available.
 	 */
+	@SerialName("TotalRecordCount")
 	val totalRecordCount: Int,
 	/**
 	 * The index of the first record in Items.
 	 */
+	@SerialName("StartIndex")
 	val startIndex: Int
 )

@@ -6,10 +6,17 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class TunerChannelMapping(
+	@SerialName("Name")
 	val name: String? = null,
+	@SerialName("ProviderChannelName")
 	val providerChannelName: String? = null,
+	@SerialName("ProviderChannelId")
 	val providerChannelId: String? = null,
+	@SerialName("Id")
 	val id: String? = null
 )

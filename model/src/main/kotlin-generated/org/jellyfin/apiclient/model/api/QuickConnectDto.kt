@@ -6,13 +6,17 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * The quick connect request body.
  */
+@Serializable
 data class QuickConnectDto(
 	/**
 	 * Gets or sets the quick connect token.
 	 */
+	@SerialName("Token")
 	val token: String
 )
