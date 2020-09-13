@@ -8,7 +8,7 @@
 <br/>
 <br/>
 <a href="https://github.com/jellyfin/jellyfin-apiclient-java">
-<img alt="MIT license" src="https://img.shields.io/github/license/jellyfin/jellyfin-apiclient-java.svg"/>
+<img alt="LGPL 3.0 license" src="https://img.shields.io/github/license/jellyfin/jellyfin-apiclient-java.svg"/>
 </a>
 <a href="https://github.com/jellyfin/jellyfin-apiclient-java/releases">
 <img alt="Current Release" src="https://img.shields.io/github/release/jellyfin/jellyfin-apiclient-java.svg"/>
