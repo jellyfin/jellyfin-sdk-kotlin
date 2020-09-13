@@ -87,6 +87,5 @@ class OpenApiTypeBuilder(
 
 	private fun buildBinary() = InputStream::class.asTypeName()
 
-
 	class UnknownTypeError(type: String?, format: String?) : Error("Unknown type $type with format $format")
 }

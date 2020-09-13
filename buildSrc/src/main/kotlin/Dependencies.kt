@@ -7,6 +7,7 @@ object Dependencies {
 
 		val cli = item("cli", "0.2.1")
 		val coroutinesCore = item("coroutines-core", "1.3.9")
+		val serializationCore = item("serialization-core", "1.0.0-RC")
 	}
 
 	object AndroidX {
@@ -17,7 +18,7 @@ object Dependencies {
 	}
 
 	object Kotlin {
-		private const val version = "1.3.72"
+		const val version = "1.4.10"
 		private fun item(library: String) = "org.jetbrains.kotlin:kotlin-$library:$version"
 
 		val stdlib = item("stdlib")
@@ -35,7 +36,7 @@ object Dependencies {
 		private fun item(library: String) = "io.ktor:ktor-$library:$version"
 
 		val okhttp = item("client-okhttp")
-		val gson = item("client-gson")
+		val serialization = item("client-serialization-jvm")
 	}
 
 	object Koin {

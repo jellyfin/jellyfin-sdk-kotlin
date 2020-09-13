@@ -10,7 +10,7 @@ dependencies {
 	// HTTP
 	implementation(Dependencies.KotlinX.coroutinesCore)
 	implementation(Dependencies.Ktor.okhttp)
-	implementation(Dependencies.Ktor.gson)
+	implementation(Dependencies.Ktor.serialization)
 
 	// Testing
 	testImplementation(Dependencies.Kotlin.Test.junit)

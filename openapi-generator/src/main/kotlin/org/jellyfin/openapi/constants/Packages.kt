@@ -15,4 +15,9 @@ object Packages {
 	 * Package for the generated models
 	 */
 	const val MODEL = "org.jellyfin.apiclient.model.api"
+
+	/**
+	 * Package containing all kotlinx.serialization serializers
+	 */
+	const val MODEL_SERIALIZERS = "org.jellyfin.apiclient.model.serializer"
 }

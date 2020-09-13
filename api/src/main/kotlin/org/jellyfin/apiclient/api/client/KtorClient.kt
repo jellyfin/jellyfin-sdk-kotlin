@@ -1,28 +1,19 @@
 package org.jellyfin.apiclient.api.client
 
-import com.google.gson.FieldNamingPolicy
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.features.json.*
+import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
-import org.jellyfin.apiclient.api.client.adapter.LocalDateTimeTypeAdapter
-import org.jellyfin.apiclient.api.client.adapter.UUIDTypeAdapter
-import java.time.LocalDateTime
-import java.util.*
 
 open class KtorClient(
 	var baseUrl: String
 ) {
 	val client = HttpClient {
 		install(JsonFeature) {
-			serializer = GsonSerializer {
-				setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-				serializeNulls()
-				registerTypeAdapter(UUID::class.java, UUIDTypeAdapter())
-				registerTypeAdapter(LocalDateTime::class.java, LocalDateTimeTypeAdapter())
-			}
+			serializer = KotlinxSerializer()
 		}
 	}
 

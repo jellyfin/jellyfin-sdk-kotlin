@@ -28,14 +28,11 @@ class Generator(
 	private fun createModels(schemas: Map<String, Schema<Any>>) = schemas.map { (name, schema) ->
 		if (schema.name == null) schema.name = name
 
-		openApiModelBuilder.build(schema)
-			.let { JellyFile(Packages.MODEL, it) }
-			.let(fileSpecBuilder::build)
+		openApiModelBuilder.build(schema).let(fileSpecBuilder::build)
 	}
 
 	private fun createApis(paths: Paths): List<FileSpec> = openApiApiServicesBuilder.build(paths)
 		.map(apiBuilder::build)
-		.map { JellyFile(Packages.API, it) }
 		.map(fileSpecBuilder::build)
 
 	fun generate(
