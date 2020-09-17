@@ -6,18 +6,23 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Media Update Info Dto.
  */
+@Serializable
 data class MediaUpdateInfoDto(
 	/**
 	 * Gets or sets media path.
 	 */
+	@SerialName("Path")
 	val path: String? = null,
 	/**
 	 * Gets or sets media update type.
 	 * Created, Modified, Deleted.
 	 */
+	@SerialName("UpdateType")
 	val updateType: String? = null
 )

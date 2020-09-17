@@ -8,17 +8,31 @@ package org.jellyfin.apiclient.model.api
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class TunerHostInfo(
+	@SerialName("Id")
 	val id: String? = null,
+	@SerialName("Url")
 	val url: String? = null,
+	@SerialName("Type")
 	val type: String? = null,
+	@SerialName("DeviceId")
 	val deviceId: String? = null,
+	@SerialName("FriendlyName")
 	val friendlyName: String? = null,
+	@SerialName("ImportFavoritesOnly")
 	val importFavoritesOnly: Boolean,
+	@SerialName("AllowHWTranscoding")
 	val allowHwTranscoding: Boolean,
+	@SerialName("EnableStreamLooping")
 	val enableStreamLooping: Boolean,
+	@SerialName("Source")
 	val source: String? = null,
+	@SerialName("TunerCount")
 	val tunerCount: Int,
+	@SerialName("UserAgent")
 	val userAgent: String? = null
 )

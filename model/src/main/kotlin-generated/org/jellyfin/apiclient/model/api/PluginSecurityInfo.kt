@@ -7,17 +7,22 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Boolean
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Plugin security info.
  */
+@Serializable
 data class PluginSecurityInfo(
 	/**
 	 * Gets or sets the supporter key.
 	 */
+	@SerialName("SupporterKey")
 	val supporterKey: String? = null,
 	/**
 	 * Gets or sets a value indicating whether is mb supporter.
 	 */
+	@SerialName("IsMbSupporter")
 	val isMbSupporter: Boolean
 )

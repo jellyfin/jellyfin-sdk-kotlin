@@ -5,6 +5,11 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class LiveStreamResponse(
+	@SerialName("MediaSource")
 	val mediaSource: MediaSourceInfo
 )

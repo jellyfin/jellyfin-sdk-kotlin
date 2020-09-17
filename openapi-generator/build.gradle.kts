@@ -16,6 +16,9 @@ dependencies {
 	// Kotlin code generation
 	implementation(Dependencies.kotlinPoet)
 
+	// Needed for the kotlinx.serialization annotations
+	implementation(Dependencies.KotlinX.serializationCore)
+
 	// Dependency Injection
 	implementation(Dependencies.Koin.core)
 

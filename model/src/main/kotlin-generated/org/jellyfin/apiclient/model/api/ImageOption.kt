@@ -6,15 +6,21 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.Int
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ImageOption(
+	@SerialName("Type")
 	val type: ImageType,
 	/**
 	 * Gets or sets the limit.
 	 */
+	@SerialName("Limit")
 	val limit: Int,
 	/**
 	 * Gets or sets the minimum width.
 	 */
+	@SerialName("MinWidth")
 	val minWidth: Int
 )

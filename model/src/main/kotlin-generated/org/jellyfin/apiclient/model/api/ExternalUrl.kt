@@ -6,14 +6,19 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ExternalUrl(
 	/**
 	 * Gets or sets the name.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
 	/**
 	 * Gets or sets the type of the item.
 	 */
+	@SerialName("Url")
 	val url: String? = null
 )

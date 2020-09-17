@@ -7,42 +7,54 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class DeviceIdentification(
 	/**
 	 * Gets or sets the name of the friendly.
 	 */
+	@SerialName("FriendlyName")
 	val friendlyName: String? = null,
 	/**
 	 * Gets or sets the model number.
 	 */
+	@SerialName("ModelNumber")
 	val modelNumber: String? = null,
 	/**
 	 * Gets or sets the serial number.
 	 */
+	@SerialName("SerialNumber")
 	val serialNumber: String? = null,
 	/**
 	 * Gets or sets the name of the model.
 	 */
+	@SerialName("ModelName")
 	val modelName: String? = null,
 	/**
 	 * Gets or sets the model description.
 	 */
+	@SerialName("ModelDescription")
 	val modelDescription: String? = null,
 	/**
 	 * Gets or sets the model URL.
 	 */
+	@SerialName("ModelUrl")
 	val modelUrl: String? = null,
 	/**
 	 * Gets or sets the manufacturer.
 	 */
+	@SerialName("Manufacturer")
 	val manufacturer: String? = null,
 	/**
 	 * Gets or sets the manufacturer URL.
 	 */
+	@SerialName("ManufacturerUrl")
 	val manufacturerUrl: String? = null,
 	/**
 	 * Gets or sets the headers.
 	 */
+	@SerialName("Headers")
 	val headers: List<HttpHeaderInfo>? = null
 )

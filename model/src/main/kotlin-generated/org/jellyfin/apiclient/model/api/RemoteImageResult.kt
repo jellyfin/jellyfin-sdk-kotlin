@@ -8,21 +8,27 @@ package org.jellyfin.apiclient.model.api
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Class RemoteImageResult.
  */
+@Serializable
 data class RemoteImageResult(
 	/**
 	 * Gets or sets the images.
 	 */
+	@SerialName("Images")
 	val images: List<RemoteImageInfo>? = null,
 	/**
 	 * Gets or sets the total record count.
 	 */
+	@SerialName("TotalRecordCount")
 	val totalRecordCount: Int,
 	/**
 	 * Gets or sets the providers.
 	 */
+	@SerialName("Providers")
 	val providers: List<String>? = null
 )

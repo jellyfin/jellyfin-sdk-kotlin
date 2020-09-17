@@ -7,13 +7,23 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ResponseProfile(
+	@SerialName("Container")
 	val container: String? = null,
+	@SerialName("AudioCodec")
 	val audioCodec: String? = null,
+	@SerialName("VideoCodec")
 	val videoCodec: String? = null,
+	@SerialName("Type")
 	val type: DlnaProfileType,
+	@SerialName("OrgPn")
 	val orgPn: String? = null,
+	@SerialName("MimeType")
 	val mimeType: String? = null,
+	@SerialName("Conditions")
 	val conditions: List<ProfileCondition>? = null
 )

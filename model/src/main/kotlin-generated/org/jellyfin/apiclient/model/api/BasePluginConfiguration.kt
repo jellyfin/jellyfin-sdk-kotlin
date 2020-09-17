@@ -5,7 +5,10 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.Serializable
+
 /**
  * Class BasePluginConfiguration.
  */
+@Serializable
 class BasePluginConfiguration

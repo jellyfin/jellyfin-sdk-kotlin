@@ -6,17 +6,22 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Class UtcTimeResponse.
  */
+@Serializable
 data class UtcTimeResponse(
 	/**
 	 * Gets or sets the UTC time when request has been received.
 	 */
+	@SerialName("RequestReceptionTime")
 	val requestReceptionTime: String? = null,
 	/**
 	 * Gets or sets the UTC time when response has been sent.
 	 */
+	@SerialName("ResponseTransmissionTime")
 	val responseTransmissionTime: String? = null
 )

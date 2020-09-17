@@ -9,59 +9,76 @@ import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.Map
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Defines the display preferences for any item that supports them (usually Folders).
  */
+@Serializable
 data class DisplayPreferencesDto(
 	/**
 	 * Gets or sets the user id.
 	 */
+	@SerialName("Id")
 	val id: String? = null,
 	/**
 	 * Gets or sets the type of the view.
 	 */
+	@SerialName("ViewType")
 	val viewType: String? = null,
 	/**
 	 * Gets or sets the sort by.
 	 */
+	@SerialName("SortBy")
 	val sortBy: String? = null,
 	/**
 	 * Gets or sets the index by.
 	 */
+	@SerialName("IndexBy")
 	val indexBy: String? = null,
 	/**
 	 * Gets or sets a value indicating whether [remember indexing].
 	 */
+	@SerialName("RememberIndexing")
 	val rememberIndexing: Boolean,
 	/**
 	 * Gets or sets the height of the primary image.
 	 */
+	@SerialName("PrimaryImageHeight")
 	val primaryImageHeight: Int,
 	/**
 	 * Gets or sets the width of the primary image.
 	 */
+	@SerialName("PrimaryImageWidth")
 	val primaryImageWidth: Int,
 	/**
 	 * Gets or sets the custom prefs.
 	 */
+	@SerialName("CustomPrefs")
 	val customPrefs: Map<String, String>? = null,
+	@SerialName("ScrollDirection")
 	val scrollDirection: ScrollDirection,
 	/**
 	 * Gets or sets a value indicating whether to show backdrops on this item.
 	 */
+	@SerialName("ShowBackdrop")
 	val showBackdrop: Boolean,
 	/**
 	 * Gets or sets a value indicating whether [remember sorting].
 	 */
+	@SerialName("RememberSorting")
 	val rememberSorting: Boolean,
+	@SerialName("SortOrder")
 	val sortOrder: SortOrder,
 	/**
 	 * Gets or sets a value indicating whether [show sidebar].
 	 */
+	@SerialName("ShowSidebar")
 	val showSidebar: Boolean,
 	/**
 	 * Gets or sets the client.
 	 */
+	@SerialName("Client")
 	val client: String? = null
 )

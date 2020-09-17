@@ -11,18 +11,33 @@ import kotlin.Float
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class TranscodingInfo(
+	@SerialName("AudioCodec")
 	val audioCodec: String? = null,
+	@SerialName("VideoCodec")
 	val videoCodec: String? = null,
+	@SerialName("Container")
 	val container: String? = null,
+	@SerialName("IsVideoDirect")
 	val isVideoDirect: Boolean,
+	@SerialName("IsAudioDirect")
 	val isAudioDirect: Boolean,
+	@SerialName("Bitrate")
 	val bitrate: Int? = null,
+	@SerialName("Framerate")
 	val framerate: Float? = null,
+	@SerialName("CompletionPercentage")
 	val completionPercentage: Double? = null,
+	@SerialName("Width")
 	val width: Int? = null,
+	@SerialName("Height")
 	val height: Int? = null,
+	@SerialName("AudioChannels")
 	val audioChannels: Int? = null,
+	@SerialName("TranscodeReasons")
 	val transcodeReasons: List<TranscodeReason>? = null
 )

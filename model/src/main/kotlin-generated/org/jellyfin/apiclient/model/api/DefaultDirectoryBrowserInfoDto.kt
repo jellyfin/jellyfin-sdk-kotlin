@@ -6,13 +6,17 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Default directory browser info.
  */
+@Serializable
 data class DefaultDirectoryBrowserInfoDto(
 	/**
 	 * Gets or sets the path.
 	 */
+	@SerialName("Path")
 	val path: String? = null
 )

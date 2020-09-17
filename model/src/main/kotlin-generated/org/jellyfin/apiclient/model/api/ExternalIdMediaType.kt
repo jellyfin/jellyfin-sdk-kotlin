@@ -5,9 +5,12 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.Serializable
+
 /**
  * The specific media type of an MediaBrowser.Model.Providers.ExternalIdInfo.
  */
+@Serializable
 enum class ExternalIdMediaType {
 	ALBUM,
 

@@ -10,57 +10,99 @@ import kotlin.Int
 import kotlin.Long
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class DeviceProfile(
 	/**
 	 * Gets or sets the name.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
+	@SerialName("Id")
 	val id: String? = null,
+	@SerialName("Identification")
 	val identification: DeviceIdentification,
+	@SerialName("FriendlyName")
 	val friendlyName: String? = null,
+	@SerialName("Manufacturer")
 	val manufacturer: String? = null,
+	@SerialName("ManufacturerUrl")
 	val manufacturerUrl: String? = null,
+	@SerialName("ModelName")
 	val modelName: String? = null,
+	@SerialName("ModelDescription")
 	val modelDescription: String? = null,
+	@SerialName("ModelNumber")
 	val modelNumber: String? = null,
+	@SerialName("ModelUrl")
 	val modelUrl: String? = null,
+	@SerialName("SerialNumber")
 	val serialNumber: String? = null,
+	@SerialName("EnableAlbumArtInDidl")
 	val enableAlbumArtInDidl: Boolean,
+	@SerialName("EnableSingleAlbumArtLimit")
 	val enableSingleAlbumArtLimit: Boolean,
+	@SerialName("EnableSingleSubtitleLimit")
 	val enableSingleSubtitleLimit: Boolean,
+	@SerialName("SupportedMediaTypes")
 	val supportedMediaTypes: String? = null,
+	@SerialName("UserId")
 	val userId: String? = null,
+	@SerialName("AlbumArtPn")
 	val albumArtPn: String? = null,
+	@SerialName("MaxAlbumArtWidth")
 	val maxAlbumArtWidth: Int,
+	@SerialName("MaxAlbumArtHeight")
 	val maxAlbumArtHeight: Int,
+	@SerialName("MaxIconWidth")
 	val maxIconWidth: Int? = null,
+	@SerialName("MaxIconHeight")
 	val maxIconHeight: Int? = null,
+	@SerialName("MaxStreamingBitrate")
 	val maxStreamingBitrate: Long? = null,
+	@SerialName("MaxStaticBitrate")
 	val maxStaticBitrate: Long? = null,
+	@SerialName("MusicStreamingTranscodingBitrate")
 	val musicStreamingTranscodingBitrate: Int? = null,
+	@SerialName("MaxStaticMusicBitrate")
 	val maxStaticMusicBitrate: Int? = null,
 	/**
 	 * Controls the content of the aggregationFlags element in the urn:schemas-sonycom:av namespace.
 	 */
+	@SerialName("SonyAggregationFlags")
 	val sonyAggregationFlags: String? = null,
+	@SerialName("ProtocolInfo")
 	val protocolInfo: String? = null,
+	@SerialName("TimelineOffsetSeconds")
 	val timelineOffsetSeconds: Int,
+	@SerialName("RequiresPlainVideoItems")
 	val requiresPlainVideoItems: Boolean,
+	@SerialName("RequiresPlainFolders")
 	val requiresPlainFolders: Boolean,
+	@SerialName("EnableMSMediaReceiverRegistrar")
 	val enableMsMediaReceiverRegistrar: Boolean,
+	@SerialName("IgnoreTranscodeByteRangeRequests")
 	val ignoreTranscodeByteRangeRequests: Boolean,
+	@SerialName("XmlRootAttributes")
 	val xmlRootAttributes: List<XmlAttribute>? = null,
 	/**
 	 * Gets or sets the direct play profiles.
 	 */
+	@SerialName("DirectPlayProfiles")
 	val directPlayProfiles: List<DirectPlayProfile>? = null,
 	/**
 	 * Gets or sets the transcoding profiles.
 	 */
+	@SerialName("TranscodingProfiles")
 	val transcodingProfiles: List<TranscodingProfile>? = null,
+	@SerialName("ContainerProfiles")
 	val containerProfiles: List<ContainerProfile>? = null,
+	@SerialName("CodecProfiles")
 	val codecProfiles: List<CodecProfile>? = null,
+	@SerialName("ResponseProfiles")
 	val responseProfiles: List<ResponseProfile>? = null,
+	@SerialName("SubtitleProfiles")
 	val subtitleProfiles: List<SubtitleProfile>? = null
 )

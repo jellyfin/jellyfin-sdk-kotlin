@@ -7,25 +7,32 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Channel mapping options dto.
  */
+@Serializable
 data class ChannelMappingOptionsDto(
 	/**
 	 * Gets or sets list of tuner channels.
 	 */
+	@SerialName("TunerChannels")
 	val tunerChannels: List<TunerChannelMapping>? = null,
 	/**
 	 * Gets or sets list of provider channels.
 	 */
+	@SerialName("ProviderChannels")
 	val providerChannels: List<NameIdPair>? = null,
 	/**
 	 * Gets or sets list of mappings.
 	 */
+	@SerialName("Mappings")
 	val mappings: List<NameValuePair>? = null,
 	/**
 	 * Gets or sets provider name.
 	 */
+	@SerialName("ProviderName")
 	val providerName: String? = null
 )

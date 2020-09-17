@@ -6,10 +6,17 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class AuthenticationResult(
+	@SerialName("User")
 	val user: UserDto,
+	@SerialName("SessionInfo")
 	val sessionInfo: SessionInfo,
+	@SerialName("AccessToken")
 	val accessToken: String? = null,
+	@SerialName("ServerId")
 	val serverId: String? = null
 )

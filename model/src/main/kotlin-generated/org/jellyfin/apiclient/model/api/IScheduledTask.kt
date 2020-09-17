@@ -6,25 +6,32 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Interface IScheduledTaskWorker.
  */
+@Serializable
 data class IScheduledTask(
 	/**
 	 * Gets the name of the task.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
 	/**
 	 * Gets the key of the task.
 	 */
+	@SerialName("Key")
 	val key: String? = null,
 	/**
 	 * Gets the description.
 	 */
+	@SerialName("Description")
 	val description: String? = null,
 	/**
 	 * Gets the category.
 	 */
+	@SerialName("Category")
 	val category: String? = null
 )

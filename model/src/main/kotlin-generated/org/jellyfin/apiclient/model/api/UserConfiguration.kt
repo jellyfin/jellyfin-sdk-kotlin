@@ -8,33 +8,51 @@ package org.jellyfin.apiclient.model.api
 import kotlin.Boolean
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Class UserConfiguration.
  */
+@Serializable
 data class UserConfiguration(
 	/**
 	 * Gets or sets the audio language preference.
 	 */
+	@SerialName("AudioLanguagePreference")
 	val audioLanguagePreference: String? = null,
 	/**
 	 * Gets or sets a value indicating whether [play default audio track].
 	 */
+	@SerialName("PlayDefaultAudioTrack")
 	val playDefaultAudioTrack: Boolean,
 	/**
 	 * Gets or sets the subtitle language preference.
 	 */
+	@SerialName("SubtitleLanguagePreference")
 	val subtitleLanguagePreference: String? = null,
+	@SerialName("DisplayMissingEpisodes")
 	val displayMissingEpisodes: Boolean,
+	@SerialName("GroupedFolders")
 	val groupedFolders: List<String>? = null,
+	@SerialName("SubtitleMode")
 	val subtitleMode: SubtitlePlaybackMode,
+	@SerialName("DisplayCollectionsView")
 	val displayCollectionsView: Boolean,
+	@SerialName("EnableLocalPassword")
 	val enableLocalPassword: Boolean,
+	@SerialName("OrderedViews")
 	val orderedViews: List<String>? = null,
+	@SerialName("LatestItemsExcludes")
 	val latestItemsExcludes: List<String>? = null,
+	@SerialName("MyMediaExcludes")
 	val myMediaExcludes: List<String>? = null,
+	@SerialName("HidePlayedInLatest")
 	val hidePlayedInLatest: Boolean,
+	@SerialName("RememberAudioSelections")
 	val rememberAudioSelections: Boolean,
+	@SerialName("RememberSubtitleSelections")
 	val rememberSubtitleSelections: Boolean,
+	@SerialName("EnableNextEpisodeAutoPlay")
 	val enableNextEpisodeAutoPlay: Boolean
 )

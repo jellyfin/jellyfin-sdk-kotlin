@@ -6,8 +6,13 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class LocalizationOption(
+	@SerialName("Name")
 	val name: String? = null,
+	@SerialName("Value")
 	val value: String? = null
 )

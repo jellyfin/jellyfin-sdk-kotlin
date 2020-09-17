@@ -7,34 +7,44 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Boolean
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * The configuration page info.
  */
+@Serializable
 data class ConfigurationPageInfo(
 	/**
 	 * Gets or sets the name.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
 	/**
 	 * Gets or sets a value indicating whether the configurations page is enabled in the main menu.
 	 */
+	@SerialName("EnableInMainMenu")
 	val enableInMainMenu: Boolean,
 	/**
 	 * Gets or sets the menu section.
 	 */
+	@SerialName("MenuSection")
 	val menuSection: String? = null,
 	/**
 	 * Gets or sets the menu icon.
 	 */
+	@SerialName("MenuIcon")
 	val menuIcon: String? = null,
 	/**
 	 * Gets or sets the display name.
 	 */
+	@SerialName("DisplayName")
 	val displayName: String? = null,
+	@SerialName("ConfigurationPageType")
 	val configurationPageType: ConfigurationPageType,
 	/**
 	 * Gets or sets the plugin id.
 	 */
+	@SerialName("PluginId")
 	val pluginId: String? = null
 )

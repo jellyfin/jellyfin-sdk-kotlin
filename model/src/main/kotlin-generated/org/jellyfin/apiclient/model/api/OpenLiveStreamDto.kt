@@ -6,14 +6,19 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Open live stream dto.
  */
+@Serializable
 data class OpenLiveStreamDto(
+	@SerialName("DeviceProfile")
 	val deviceProfile: DeviceProfile,
 	/**
 	 * Gets or sets the device play protocols.
 	 */
+	@SerialName("DirectPlayProtocols")
 	val directPlayProtocols: List<MediaProtocol>? = null
 )

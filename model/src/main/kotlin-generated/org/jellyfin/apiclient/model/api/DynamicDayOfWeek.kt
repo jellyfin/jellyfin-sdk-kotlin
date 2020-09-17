@@ -5,9 +5,12 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.Serializable
+
 /**
  * An enum that represents a day of the week, weekdays, weekends, or all days.
  */
+@Serializable
 enum class DynamicDayOfWeek {
 	SUNDAY,
 

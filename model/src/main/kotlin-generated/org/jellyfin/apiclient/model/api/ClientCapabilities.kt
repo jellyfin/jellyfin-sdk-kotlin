@@ -8,16 +8,29 @@ package org.jellyfin.apiclient.model.api
 import kotlin.Boolean
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ClientCapabilities(
+	@SerialName("PlayableMediaTypes")
 	val playableMediaTypes: List<String>? = null,
+	@SerialName("SupportedCommands")
 	val supportedCommands: List<String>? = null,
+	@SerialName("SupportsMediaControl")
 	val supportsMediaControl: Boolean,
+	@SerialName("SupportsContentUploading")
 	val supportsContentUploading: Boolean,
+	@SerialName("MessageCallbackUrl")
 	val messageCallbackUrl: String? = null,
+	@SerialName("SupportsPersistentIdentifier")
 	val supportsPersistentIdentifier: Boolean,
+	@SerialName("SupportsSync")
 	val supportsSync: Boolean,
+	@SerialName("DeviceProfile")
 	val deviceProfile: DeviceProfile,
+	@SerialName("AppStoreUrl")
 	val appStoreUrl: String? = null,
+	@SerialName("IconUrl")
 	val iconUrl: String? = null
 )

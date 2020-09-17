@@ -7,26 +7,34 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Long
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ImageByNameInfo(
 	/**
 	 * Gets or sets the name.
 	 */
+	@SerialName("Name")
 	val name: String? = null,
 	/**
 	 * Gets or sets the theme.
 	 */
+	@SerialName("Theme")
 	val theme: String? = null,
 	/**
 	 * Gets or sets the context.
 	 */
+	@SerialName("Context")
 	val context: String? = null,
 	/**
 	 * Gets or sets the length of the file.
 	 */
+	@SerialName("FileLength")
 	val fileLength: Long,
 	/**
 	 * Gets or sets the format.
 	 */
+	@SerialName("Format")
 	val format: String? = null
 )

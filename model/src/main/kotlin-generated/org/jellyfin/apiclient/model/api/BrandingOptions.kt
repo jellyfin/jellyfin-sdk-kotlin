@@ -6,14 +6,19 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class BrandingOptions(
 	/**
 	 * Gets or sets the login disclaimer.
 	 */
+	@SerialName("LoginDisclaimer")
 	val loginDisclaimer: String? = null,
 	/**
 	 * Gets or sets the custom CSS.
 	 */
+	@SerialName("CustomCss")
 	val customCss: String? = null
 )

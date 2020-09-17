@@ -8,18 +8,24 @@ package org.jellyfin.apiclient.model.api
 import kotlin.Boolean
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class LiveTvInfo(
 	/**
 	 * Gets or sets the services.
 	 */
+	@SerialName("Services")
 	val services: List<LiveTvServiceInfo>? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is enabled.
 	 */
+	@SerialName("IsEnabled")
 	val isEnabled: Boolean,
 	/**
 	 * Gets or sets the enabled users.
 	 */
+	@SerialName("EnabledUsers")
 	val enabledUsers: List<String>? = null
 )

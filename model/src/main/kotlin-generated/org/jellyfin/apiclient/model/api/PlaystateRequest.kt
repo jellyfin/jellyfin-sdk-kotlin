@@ -7,12 +7,18 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Long
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class PlaystateRequest(
+	@SerialName("Command")
 	val command: PlaystateCommand,
+	@SerialName("SeekPositionTicks")
 	val seekPositionTicks: Long? = null,
 	/**
 	 * Gets or sets the controlling user identifier.
 	 */
+	@SerialName("ControllingUserId")
 	val controllingUserId: String? = null
 )

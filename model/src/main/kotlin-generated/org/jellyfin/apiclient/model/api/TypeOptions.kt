@@ -7,12 +7,21 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.String
 import kotlin.collections.List
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class TypeOptions(
+	@SerialName("Type")
 	val type: String? = null,
+	@SerialName("MetadataFetchers")
 	val metadataFetchers: List<String>? = null,
+	@SerialName("MetadataFetcherOrder")
 	val metadataFetcherOrder: List<String>? = null,
+	@SerialName("ImageFetchers")
 	val imageFetchers: List<String>? = null,
+	@SerialName("ImageFetcherOrder")
 	val imageFetcherOrder: List<String>? = null,
+	@SerialName("ImageOptions")
 	val imageOptions: List<ImageOption>? = null
 )

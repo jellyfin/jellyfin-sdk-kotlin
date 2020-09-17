@@ -1,21 +1,17 @@
 package org.jellyfin.openapi.builder.openapi
 
-import com.squareup.kotlinpoet.TypeSpec
 import io.swagger.v3.oas.models.media.Schema
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.model.ModelBuilder
 import org.jellyfin.openapi.hooks.ModelTypePath
-import org.jellyfin.openapi.model.EmptyApiModel
-import org.jellyfin.openapi.model.EnumApiModel
-import org.jellyfin.openapi.model.ObjectApiModel
-import org.jellyfin.openapi.model.ObjectApiModelProperty
+import org.jellyfin.openapi.model.*
 import org.jellyfin.openapi.util.asPascalCase
 
 class OpenApiModelBuilder(
 	private val openApiTypeBuilder: OpenApiTypeBuilder,
 	private val modelBuilder: ModelBuilder
-) : Builder<Schema<Any>, TypeSpec> {
-	override fun build(data: Schema<Any>): TypeSpec {
+) : Builder<Schema<Any>, JellyFile> {
+	override fun build(data: Schema<Any>): JellyFile {
 		val model = when {
 			// Object
 			data.type == "object" -> when (data.properties.isNullOrEmpty()) {
@@ -26,6 +22,7 @@ class OpenApiModelBuilder(
 					val name = originalName.asPascalCase().toCamelCase()
 					ObjectApiModelProperty(
 						name = name,
+						originalName = originalName,
 						type = openApiTypeBuilder.build(ModelTypePath(data.name, name), property),
 						description = property.description,
 						deprecated = property.deprecated == true

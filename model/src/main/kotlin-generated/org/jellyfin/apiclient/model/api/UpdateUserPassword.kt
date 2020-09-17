@@ -7,25 +7,32 @@ package org.jellyfin.apiclient.model.api
 
 import kotlin.Boolean
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * The update user password request body.
  */
+@Serializable
 data class UpdateUserPassword(
 	/**
 	 * Gets or sets the current sha1-hashed password.
 	 */
+	@SerialName("CurrentPassword")
 	val currentPassword: String? = null,
 	/**
 	 * Gets or sets the current plain text password.
 	 */
+	@SerialName("CurrentPw")
 	val currentPw: String? = null,
 	/**
 	 * Gets or sets the new plain text password.
 	 */
+	@SerialName("NewPw")
 	val newPw: String? = null,
 	/**
 	 * Gets or sets a value indicating whether to reset the password.
 	 */
+	@SerialName("ResetPassword")
 	val resetPassword: Boolean
 )

@@ -6,18 +6,24 @@
 package org.jellyfin.apiclient.model.api
 
 import kotlin.String
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * Media Path dto.
  */
+@Serializable
 data class MediaPathDto(
 	/**
 	 * Gets or sets the name of the library.
 	 */
+	@SerialName("Name")
 	val name: String,
 	/**
 	 * Gets or sets the path to add.
 	 */
+	@SerialName("Path")
 	val path: String? = null,
+	@SerialName("PathInfo")
 	val pathInfo: MediaPathInfo
 )
