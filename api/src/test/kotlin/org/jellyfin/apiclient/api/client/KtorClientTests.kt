@@ -1,11 +1,13 @@
 package org.jellyfin.apiclient.api.client
 
+import org.jellyfin.apiclient.model.ClientInfo
+import org.jellyfin.apiclient.model.DeviceInfo
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFails
 
 class KtorClientTests {
-	private fun createClient() = KtorClient("https://demo.jellyfin.org/stable/")
+	private fun createClient() = KtorClient("https://demo.jellyfin.org/stable/", null, ClientInfo("Test", "0"), DeviceInfo("test", "test"))
 
 	@Test
 	fun `createPath replaces values`() {
