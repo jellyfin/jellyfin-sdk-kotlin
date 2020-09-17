@@ -8,6 +8,9 @@ import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
+import org.jellyfin.apiclient.model.ClientInfo
+import org.jellyfin.apiclient.model.DeviceInfo
+import kotlin.collections.set
 
 open class KtorClient(
 	var baseUrl: String? = null,
@@ -21,7 +24,7 @@ open class KtorClient(
 		}
 
 		install(HttpTimeout) {
-			requestTimeoutMillis = 5000
+			requestTimeoutMillis = 10000
 		}
 	}
 
@@ -56,7 +59,7 @@ open class KtorClient(
 		// Only set access token when it's not null
 		accessToken?.let { params["token"] = it }
 
-		// Format: `MediaBrowser "key1"="value1", "key"="value"`
+		// Format: `MediaBrowser key1="value1", key="value"`
 		return params.entries.joinToString(
 			separator = ", ",
 			prefix = "MediaBrowser ",
@@ -69,8 +72,8 @@ open class KtorClient(
 				require(!it.value.contains(',')) { "Value ${it.value} (for key ${it.key}) can not contain the , character in the authorization header" }
 				require(!it.value.startsWith('"') && !it.value.endsWith('"')) { "Value ${it.value} (for key ${it.key}) can not start or end with the \" character in the authorization header" }
 
-				// "key"="value"
-				""""${it.key.capitalize()}"="${it.value}""""
+				// key="value"
+				"""${it.key.capitalize()}="${it.value}""""
 			})
 	}
 
@@ -107,7 +110,6 @@ open class KtorClient(
 			header(HttpHeaders.Authorization, createAuthorizationHeader())
 
 			if (body != null) {
-				contentType(ContentType.Application.Json)
 				this.body = defaultSerializer().write(body)
 			}
 		}

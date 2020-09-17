@@ -4,10 +4,7 @@ import kotlinx.cli.ArgParser
 import org.jellyfin.apiclient.Jellyfin
 import org.jellyfin.apiclient.model.ClientInfo
 import org.jellyfin.apiclient.model.DeviceInfo
-import org.jellyfin.sample.console.cli.Discover
-import org.jellyfin.sample.console.cli.Libraries
-import org.jellyfin.sample.console.cli.Login
-import org.jellyfin.sample.console.cli.Users
+import org.jellyfin.sample.console.cli.*
 
 fun main(args: Array<String>) {
 	val jellyfin = Jellyfin {
@@ -20,6 +17,7 @@ fun main(args: Array<String>) {
 		subcommands(Login(jellyfin))
 		subcommands(Libraries(jellyfin))
 		subcommands(Users(jellyfin))
+		subcommands(Ping(jellyfin))
 
 		parse(args)
 	}
