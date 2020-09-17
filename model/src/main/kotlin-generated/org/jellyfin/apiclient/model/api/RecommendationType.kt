@@ -5,19 +5,26 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 enum class RecommendationType {
+	@SerialName("SimilarToRecentlyPlayed")
 	SIMILAR_TO_RECENTLY_PLAYED,
 
+	@SerialName("SimilarToLikedItem")
 	SIMILAR_TO_LIKED_ITEM,
 
+	@SerialName("HasDirectorFromRecentlyPlayed")
 	HAS_DIRECTOR_FROM_RECENTLY_PLAYED,
 
+	@SerialName("HasActorFromRecentlyPlayed")
 	HAS_ACTOR_FROM_RECENTLY_PLAYED,
 
+	@SerialName("HasLikedDirector")
 	HAS_LIKED_DIRECTOR,
 
+	@SerialName("HasLikedActor")
 	HAS_LIKED_ACTOR
 }

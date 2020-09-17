@@ -5,17 +5,23 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 enum class Video3DFormat {
+	@SerialName("HalfSideBySide")
 	HALF_SIDE_BY_SIDE,
 
+	@SerialName("FullSideBySide")
 	FULL_SIDE_BY_SIDE,
 
+	@SerialName("FullTopAndBottom")
 	FULL_TOP_AND_BOTTOM,
 
+	@SerialName("HalfTopAndBottom")
 	HALF_TOP_AND_BOTTOM,
 
+	@SerialName("MVC")
 	MVC
 }

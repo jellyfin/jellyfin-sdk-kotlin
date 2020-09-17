@@ -5,23 +5,32 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 enum class ImageOrientation {
+	@SerialName("TopLeft")
 	TOP_LEFT,
 
+	@SerialName("TopRight")
 	TOP_RIGHT,
 
+	@SerialName("BottomRight")
 	BOTTOM_RIGHT,
 
+	@SerialName("BottomLeft")
 	BOTTOM_LEFT,
 
+	@SerialName("LeftTop")
 	LEFT_TOP,
 
+	@SerialName("RightTop")
 	RIGHT_TOP,
 
+	@SerialName("RightBottom")
 	RIGHT_BOTTOM,
 
+	@SerialName("LeftBottom")
 	LEFT_BOTTOM
 }

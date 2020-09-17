@@ -5,13 +5,17 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 enum class RepeatMode {
+	@SerialName("RepeatNone")
 	REPEAT_NONE,
 
+	@SerialName("RepeatAll")
 	REPEAT_ALL,
 
+	@SerialName("RepeatOne")
 	REPEAT_ONE
 }

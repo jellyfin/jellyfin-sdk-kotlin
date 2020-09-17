@@ -5,21 +5,29 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 enum class RecordingStatus {
+	@SerialName("New")
 	NEW,
 
+	@SerialName("InProgress")
 	IN_PROGRESS,
 
+	@SerialName("Completed")
 	COMPLETED,
 
+	@SerialName("Cancelled")
 	CANCELLED,
 
+	@SerialName("ConflictedOk")
 	CONFLICTED_OK,
 
+	@SerialName("ConflictedNotOk")
 	CONFLICTED_NOT_OK,
 
+	@SerialName("Error")
 	ERROR
 }
