@@ -5,21 +5,29 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 enum class DayOfWeek {
+	@SerialName("Sunday")
 	SUNDAY,
 
+	@SerialName("Monday")
 	MONDAY,
 
+	@SerialName("Tuesday")
 	TUESDAY,
 
+	@SerialName("Wednesday")
 	WEDNESDAY,
 
+	@SerialName("Thursday")
 	THURSDAY,
 
+	@SerialName("Friday")
 	FRIDAY,
 
+	@SerialName("Saturday")
 	SATURDAY
 }

@@ -5,23 +5,32 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 enum class ChannelMediaContentType {
+	@SerialName("Clip")
 	CLIP,
 
+	@SerialName("Podcast")
 	PODCAST,
 
+	@SerialName("Trailer")
 	TRAILER,
 
+	@SerialName("Movie")
 	MOVIE,
 
+	@SerialName("Episode")
 	EPISODE,
 
+	@SerialName("Song")
 	SONG,
 
+	@SerialName("MovieExtra")
 	MOVIE_EXTRA,
 
+	@SerialName("TvExtra")
 	TV_EXTRA
 }

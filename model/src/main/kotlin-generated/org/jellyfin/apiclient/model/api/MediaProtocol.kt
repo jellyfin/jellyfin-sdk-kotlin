@@ -5,21 +5,29 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 enum class MediaProtocol {
+	@SerialName("File")
 	FILE,
 
+	@SerialName("Http")
 	HTTP,
 
+	@SerialName("Rtmp")
 	RTMP,
 
+	@SerialName("Rtsp")
 	RTSP,
 
+	@SerialName("Udp")
 	UDP,
 
+	@SerialName("Rtp")
 	RTP,
 
+	@SerialName("Ftp")
 	FTP
 }

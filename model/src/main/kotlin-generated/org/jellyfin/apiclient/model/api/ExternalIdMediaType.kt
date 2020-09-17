@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
@@ -12,27 +13,39 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 enum class ExternalIdMediaType {
+	@SerialName("Album")
 	ALBUM,
 
+	@SerialName("AlbumArtist")
 	ALBUM_ARTIST,
 
+	@SerialName("Artist")
 	ARTIST,
 
+	@SerialName("BoxSet")
 	BOX_SET,
 
+	@SerialName("Episode")
 	EPISODE,
 
+	@SerialName("Movie")
 	MOVIE,
 
+	@SerialName("OtherArtist")
 	OTHER_ARTIST,
 
+	@SerialName("Person")
 	PERSON,
 
+	@SerialName("ReleaseGroup")
 	RELEASE_GROUP,
 
+	@SerialName("Season")
 	SEASON,
 
+	@SerialName("Series")
 	SERIES,
 
+	@SerialName("Track")
 	TRACK
 }

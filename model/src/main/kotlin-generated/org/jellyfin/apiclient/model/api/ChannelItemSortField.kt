@@ -5,21 +5,29 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 enum class ChannelItemSortField {
+	@SerialName("Name")
 	NAME,
 
+	@SerialName("CommunityRating")
 	COMMUNITY_RATING,
 
+	@SerialName("PremiereDate")
 	PREMIERE_DATE,
 
+	@SerialName("DateCreated")
 	DATE_CREATED,
 
+	@SerialName("Runtime")
 	RUNTIME,
 
+	@SerialName("PlayCount")
 	PLAY_COUNT,
 
+	@SerialName("CommunityPlayCount")
 	COMMUNITY_PLAY_COUNT
 }

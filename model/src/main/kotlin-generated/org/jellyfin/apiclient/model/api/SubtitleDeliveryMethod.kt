@@ -5,15 +5,20 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 enum class SubtitleDeliveryMethod {
+	@SerialName("Encode")
 	ENCODE,
 
+	@SerialName("Embed")
 	EMBED,
 
+	@SerialName("External")
 	EXTERNAL,
 
+	@SerialName("Hls")
 	HLS
 }

@@ -5,15 +5,20 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 enum class Architecture {
+	@SerialName("X86")
 	X_86,
 
+	@SerialName("X64")
 	X_64,
 
+	@SerialName("Arm")
 	ARM,
 
+	@SerialName("Arm64")
 	ARM_64
 }

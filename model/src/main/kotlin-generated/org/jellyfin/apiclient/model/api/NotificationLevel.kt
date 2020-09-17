@@ -5,13 +5,17 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 enum class NotificationLevel {
+	@SerialName("Normal")
 	NORMAL,
 
+	@SerialName("Warning")
 	WARNING,
 
+	@SerialName("Error")
 	ERROR
 }

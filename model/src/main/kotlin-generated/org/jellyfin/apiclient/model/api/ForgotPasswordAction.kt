@@ -5,13 +5,17 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 enum class ForgotPasswordAction {
+	@SerialName("ContactAdmin")
 	CONTACT_ADMIN,
 
+	@SerialName("PinCode")
 	PIN_CODE,
 
+	@SerialName("InNetworkRequired")
 	IN_NETWORK_REQUIRED
 }

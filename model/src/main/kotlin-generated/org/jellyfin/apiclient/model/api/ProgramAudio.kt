@@ -5,19 +5,26 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 enum class ProgramAudio {
+	@SerialName("Mono")
 	MONO,
 
+	@SerialName("Stereo")
 	STEREO,
 
+	@SerialName("Dolby")
 	DOLBY,
 
+	@SerialName("DolbyDigital")
 	DOLBY_DIGITAL,
 
+	@SerialName("Thx")
 	THX,
 
+	@SerialName("Atmos")
 	ATMOS
 }
