@@ -1,7 +1,9 @@
 package org.jellyfin.openapi.builder.model
 
+import com.squareup.kotlinpoet.AnnotationSpec
 import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.asTypeName
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
@@ -18,7 +20,9 @@ class EnumModelBuilder(
 		return TypeSpec.enumBuilder(data.name.asPascalCase().toPascalCase())
 			.apply {
 				data.constants.forEach {
-					addEnumConstant(it.asPascalCase().toScreamingSnakeCase())
+					addEnumConstant(it.asPascalCase().toScreamingSnakeCase(), TypeSpec.anonymousClassBuilder().apply {
+						addAnnotation(AnnotationSpec.builder(SerialName::class).addMember("%S", it).build())
+					}.build())
 				}
 				data.description?.let { addKdoc(it) }
 				if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_CLASS))
