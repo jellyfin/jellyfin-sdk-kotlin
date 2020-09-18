@@ -59,7 +59,7 @@ open class KtorClient(
 		// Only set access token when it's not null
 		accessToken?.let { params["token"] = it }
 
-		// Format: `MediaBrowser key1="value1", key="value"`
+		// Format: `MediaBrowser key1="value1", key2="value2"`
 		return params.entries.joinToString(
 			separator = ", ",
 			prefix = "MediaBrowser ",
