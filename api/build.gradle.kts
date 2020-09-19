@@ -12,7 +12,11 @@ dependencies {
 	implementation(Dependencies.Ktor.okhttp)
 	implementation(Dependencies.Ktor.serialization)
 
-	// Testing
+	// Logging
+	implementation(Dependencies.Slf4j.api)
+	testImplementation(Dependencies.Slf4j.simple)
+
+	// Unit testing
 	testImplementation(Dependencies.Kotlin.Test.junit)
 }
 

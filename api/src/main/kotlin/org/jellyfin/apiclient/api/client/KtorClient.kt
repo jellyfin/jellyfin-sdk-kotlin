@@ -5,9 +5,11 @@ import io.ktor.client.call.*
 import io.ktor.client.features.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
+import io.ktor.client.features.websocket.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
+import kotlinx.serialization.json.Json
 import org.jellyfin.apiclient.model.ClientInfo
 import org.jellyfin.apiclient.model.DeviceInfo
 import kotlin.collections.set
@@ -18,14 +20,23 @@ open class KtorClient(
 	var clientInfo: ClientInfo,
 	var deviceInfo: DeviceInfo
 ) : ApiClient {
+	val json = Json {
+		isLenient = false
+		ignoreUnknownKeys = true
+		allowSpecialFloatingPointValues = true
+		useArrayPolymorphism = false
+	}
+
 	val client = HttpClient {
 		install(JsonFeature) {
-			serializer = KotlinxSerializer()
+			serializer = KotlinxSerializer(json)
 		}
 
 		install(HttpTimeout) {
-			requestTimeoutMillis = 10000
+			connectTimeoutMillis = 10000
 		}
+
+		install(WebSockets)
 	}
 
 	override fun createPath(path: String, pathParameters: Map<String, Any?>) = path

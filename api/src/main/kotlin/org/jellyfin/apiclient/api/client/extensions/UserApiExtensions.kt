@@ -9,6 +9,6 @@ import org.jellyfin.apiclient.model.api.AuthenticateUserByName
 suspend inline fun UserApi.authenticateUserByName(username: String, password: String) = authenticateUserByName(
 	data = AuthenticateUserByName(
 		username = username,
-		password = password
+		pw = password
 	)
 )
