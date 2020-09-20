@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class OpenLiveStreamDto(
 	@SerialName("DeviceProfile")
-	val deviceProfile: DeviceProfile,
+	val deviceProfile: DeviceProfile? = null,
 	/**
 	 * Gets or sets the device play protocols.
 	 */

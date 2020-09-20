@@ -14,5 +14,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class DeviceProfileDto(
 	@SerialName("DeviceProfile")
-	val deviceProfile: DeviceProfile
+	val deviceProfile: DeviceProfile? = null
 )

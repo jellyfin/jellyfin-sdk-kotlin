@@ -16,7 +16,7 @@ data class TranscodingProfile(
 	@SerialName("Container")
 	val container: String? = null,
 	@SerialName("Type")
-	val type: DlnaProfileType,
+	val type: DlnaProfileType? = null,
 	@SerialName("VideoCodec")
 	val videoCodec: String? = null,
 	@SerialName("AudioCodec")
@@ -28,11 +28,11 @@ data class TranscodingProfile(
 	@SerialName("EnableMpegtsM2TsMode")
 	val enableMpegtsM2TsMode: Boolean,
 	@SerialName("TranscodeSeekInfo")
-	val transcodeSeekInfo: TranscodeSeekInfo,
+	val transcodeSeekInfo: TranscodeSeekInfo? = null,
 	@SerialName("CopyTimestamps")
 	val copyTimestamps: Boolean,
 	@SerialName("Context")
-	val context: EncodingContext,
+	val context: EncodingContext? = null,
 	@SerialName("EnableSubtitlesInManifest")
 	val enableSubtitlesInManifest: Boolean,
 	@SerialName("MaxAudioChannels")

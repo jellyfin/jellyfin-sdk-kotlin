@@ -49,7 +49,7 @@ data class RemoteSearchResult(
 	@SerialName("Overview")
 	val overview: String? = null,
 	@SerialName("AlbumArtist")
-	val albumArtist: RemoteSearchResult,
+	val albumArtist: RemoteSearchResult? = null,
 	@SerialName("Artists")
 	val artists: List<RemoteSearchResult>? = null
 )

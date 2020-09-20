@@ -31,7 +31,7 @@ data class AccessSchedule(
 	@SerialName("UserId")
 	val userId: UUID,
 	@SerialName("DayOfWeek")
-	val dayOfWeek: DynamicDayOfWeek,
+	val dayOfWeek: DynamicDayOfWeek? = null,
 	/**
 	 * Gets or sets the start hour.
 	 */

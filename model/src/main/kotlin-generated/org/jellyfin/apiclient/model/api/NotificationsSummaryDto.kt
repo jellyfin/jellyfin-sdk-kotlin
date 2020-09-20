@@ -20,5 +20,5 @@ data class NotificationsSummaryDto(
 	@SerialName("UnreadCount")
 	val unreadCount: Int,
 	@SerialName("MaxUnreadNotificationLevel")
-	val maxUnreadNotificationLevel: NotificationLevel
+	val maxUnreadNotificationLevel: NotificationLevel? = null
 )

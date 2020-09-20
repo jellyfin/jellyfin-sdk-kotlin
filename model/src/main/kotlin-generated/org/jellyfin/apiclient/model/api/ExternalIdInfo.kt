@@ -25,7 +25,7 @@ data class ExternalIdInfo(
 	@SerialName("Key")
 	val key: String? = null,
 	@SerialName("Type")
-	val type: ExternalIdMediaType,
+	val type: ExternalIdMediaType? = null,
 	/**
 	 * Gets or sets the URL format string.
 	 */

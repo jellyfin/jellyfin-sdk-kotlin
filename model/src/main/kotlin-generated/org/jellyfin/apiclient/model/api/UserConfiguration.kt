@@ -36,7 +36,7 @@ data class UserConfiguration(
 	@SerialName("GroupedFolders")
 	val groupedFolders: List<String>? = null,
 	@SerialName("SubtitleMode")
-	val subtitleMode: SubtitlePlaybackMode,
+	val subtitleMode: SubtitlePlaybackMode? = null,
 	@SerialName("DisplayCollectionsView")
 	val displayCollectionsView: Boolean,
 	@SerialName("EnableLocalPassword")

@@ -23,7 +23,7 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 @Serializable
 data class PlaybackStopInfo(
 	@SerialName("Item")
-	val item: BaseItemDto,
+	val item: BaseItemDto? = null,
 	/**
 	 * Gets or sets the item identifier.
 	 */

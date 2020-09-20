@@ -24,5 +24,5 @@ data class UpdateLibraryOptionsDto(
 	@SerialName("Id")
 	val id: UUID,
 	@SerialName("LibraryOptions")
-	val libraryOptions: LibraryOptions
+	val libraryOptions: LibraryOptions? = null
 )

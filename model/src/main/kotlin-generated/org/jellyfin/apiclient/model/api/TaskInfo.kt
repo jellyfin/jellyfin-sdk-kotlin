@@ -23,7 +23,7 @@ data class TaskInfo(
 	@SerialName("Name")
 	val name: String? = null,
 	@SerialName("State")
-	val state: TaskState,
+	val state: TaskState? = null,
 	/**
 	 * Gets or sets the progress.
 	 */
@@ -35,7 +35,7 @@ data class TaskInfo(
 	@SerialName("Id")
 	val id: String? = null,
 	@SerialName("LastExecutionResult")
-	val lastExecutionResult: TaskResult,
+	val lastExecutionResult: TaskResult? = null,
 	/**
 	 * Gets or sets the triggers.
 	 */

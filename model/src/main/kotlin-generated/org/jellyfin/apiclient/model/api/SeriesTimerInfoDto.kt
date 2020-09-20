@@ -53,7 +53,7 @@ data class SeriesTimerInfoDto(
 	@SerialName("Days")
 	val days: List<DayOfWeek>? = null,
 	@SerialName("DayPattern")
-	val dayPattern: DayPattern,
+	val dayPattern: DayPattern? = null,
 	/**
 	 * Gets or sets the image tags.
 	 */
@@ -184,5 +184,5 @@ data class SeriesTimerInfoDto(
 	@SerialName("IsPostPaddingRequired")
 	val isPostPaddingRequired: Boolean,
 	@SerialName("KeepUntil")
-	val keepUntil: KeepUntil
+	val keepUntil: KeepUntil? = null
 )

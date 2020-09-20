@@ -13,7 +13,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class PlaystateRequest(
 	@SerialName("Command")
-	val command: PlaystateCommand,
+	val command: PlaystateCommand? = null,
 	@SerialName("SeekPositionTicks")
 	val seekPositionTicks: Long? = null,
 	/**

@@ -16,5 +16,5 @@ data class HttpHeaderInfo(
 	@SerialName("Value")
 	val value: String? = null,
 	@SerialName("Match")
-	val match: HeaderMatchType
+	val match: HeaderMatchType? = null
 )

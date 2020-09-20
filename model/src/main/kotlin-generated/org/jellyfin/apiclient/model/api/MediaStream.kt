@@ -166,7 +166,7 @@ data class MediaStream(
 	@SerialName("Profile")
 	val profile: String? = null,
 	@SerialName("Type")
-	val type: MediaStreamType,
+	val type: MediaStreamType? = null,
 	/**
 	 * Gets or sets the aspect ratio.
 	 */
@@ -188,7 +188,7 @@ data class MediaStream(
 	@SerialName("IsExternal")
 	val isExternal: Boolean,
 	@SerialName("DeliveryMethod")
-	val deliveryMethod: SubtitleDeliveryMethod,
+	val deliveryMethod: SubtitleDeliveryMethod? = null,
 	/**
 	 * Gets or sets the delivery URL.
 	 */

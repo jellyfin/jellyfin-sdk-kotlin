@@ -25,5 +25,5 @@ data class MediaPathDto(
 	@SerialName("Path")
 	val path: String? = null,
 	@SerialName("PathInfo")
-	val pathInfo: MediaPathInfo
+	val pathInfo: MediaPathInfo? = null
 )

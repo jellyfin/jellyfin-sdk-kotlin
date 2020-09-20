@@ -13,9 +13,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ProfileCondition(
 	@SerialName("Condition")
-	val condition: ProfileConditionType,
+	val condition: ProfileConditionType? = null,
 	@SerialName("Property")
-	val property: ProfileConditionValue,
+	val property: ProfileConditionValue? = null,
 	@SerialName("Value")
 	val value: String? = null,
 	@SerialName("IsRequired")

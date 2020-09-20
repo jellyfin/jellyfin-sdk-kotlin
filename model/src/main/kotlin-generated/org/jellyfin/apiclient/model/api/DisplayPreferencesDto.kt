@@ -58,7 +58,7 @@ data class DisplayPreferencesDto(
 	@SerialName("CustomPrefs")
 	val customPrefs: Map<String, String>? = null,
 	@SerialName("ScrollDirection")
-	val scrollDirection: ScrollDirection,
+	val scrollDirection: ScrollDirection? = null,
 	/**
 	 * Gets or sets a value indicating whether to show backdrops on this item.
 	 */
@@ -70,7 +70,7 @@ data class DisplayPreferencesDto(
 	@SerialName("RememberSorting")
 	val rememberSorting: Boolean,
 	@SerialName("SortOrder")
-	val sortOrder: SortOrder,
+	val sortOrder: SortOrder? = null,
 	/**
 	 * Gets or sets a value indicating whether [show sidebar].
 	 */

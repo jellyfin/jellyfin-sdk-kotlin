@@ -83,9 +83,9 @@ data class UserDto(
 	@SerialName("LastActivityDate")
 	val lastActivityDate: LocalDateTime? = null,
 	@SerialName("Configuration")
-	val configuration: UserConfiguration,
+	val configuration: UserConfiguration? = null,
 	@SerialName("Policy")
-	val policy: UserPolicy,
+	val policy: UserPolicy? = null,
 	/**
 	 * Gets or sets the primary image aspect ratio.
 	 */

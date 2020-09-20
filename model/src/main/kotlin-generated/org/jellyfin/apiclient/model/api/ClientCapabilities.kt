@@ -28,7 +28,7 @@ data class ClientCapabilities(
 	@SerialName("SupportsSync")
 	val supportsSync: Boolean,
 	@SerialName("DeviceProfile")
-	val deviceProfile: DeviceProfile,
+	val deviceProfile: DeviceProfile? = null,
 	@SerialName("AppStoreUrl")
 	val appStoreUrl: String? = null,
 	@SerialName("IconUrl")

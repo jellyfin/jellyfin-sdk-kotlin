@@ -17,9 +17,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class IScheduledTaskWorker(
 	@SerialName("ScheduledTask")
-	val scheduledTask: IScheduledTask,
+	val scheduledTask: IScheduledTask? = null,
 	@SerialName("LastExecutionResult")
-	val lastExecutionResult: TaskResult,
+	val lastExecutionResult: TaskResult? = null,
 	/**
 	 * Gets the name.
 	 */
@@ -36,7 +36,7 @@ data class IScheduledTaskWorker(
 	@SerialName("Category")
 	val category: String? = null,
 	@SerialName("State")
-	val state: TaskState,
+	val state: TaskState? = null,
 	/**
 	 * Gets the current progress.
 	 */

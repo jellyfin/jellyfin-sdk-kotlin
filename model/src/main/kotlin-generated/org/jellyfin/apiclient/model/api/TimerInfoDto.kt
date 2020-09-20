@@ -26,7 +26,7 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 @Serializable
 data class TimerInfoDto(
 	@SerialName("Status")
-	val status: RecordingStatus,
+	val status: RecordingStatus? = null,
 	/**
 	 * Gets or sets the series timer identifier.
 	 */
@@ -43,7 +43,7 @@ data class TimerInfoDto(
 	@SerialName("RunTimeTicks")
 	val runTimeTicks: Long? = null,
 	@SerialName("ProgramInfo")
-	val programInfo: BaseItemDto,
+	val programInfo: BaseItemDto? = null,
 	/**
 	 * Id of the recording.
 	 */
@@ -149,5 +149,5 @@ data class TimerInfoDto(
 	@SerialName("IsPostPaddingRequired")
 	val isPostPaddingRequired: Boolean,
 	@SerialName("KeepUntil")
-	val keepUntil: KeepUntil
+	val keepUntil: KeepUntil? = null
 )

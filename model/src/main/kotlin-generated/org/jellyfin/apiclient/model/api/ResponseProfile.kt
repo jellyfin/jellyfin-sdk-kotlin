@@ -19,7 +19,7 @@ data class ResponseProfile(
 	@SerialName("VideoCodec")
 	val videoCodec: String? = null,
 	@SerialName("Type")
-	val type: DlnaProfileType,
+	val type: DlnaProfileType? = null,
 	@SerialName("OrgPn")
 	val orgPn: String? = null,
 	@SerialName("MimeType")

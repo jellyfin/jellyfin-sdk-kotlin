@@ -13,7 +13,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ContainerProfile(
 	@SerialName("Type")
-	val type: DlnaProfileType,
+	val type: DlnaProfileType? = null,
 	@SerialName("Conditions")
 	val conditions: List<ProfileCondition>? = null,
 	@SerialName("Container")

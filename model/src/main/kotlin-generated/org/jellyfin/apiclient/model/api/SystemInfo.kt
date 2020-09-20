@@ -97,9 +97,9 @@ data class SystemInfo(
 	@SerialName("HasUpdateAvailable")
 	val hasUpdateAvailable: Boolean,
 	@SerialName("EncoderLocation")
-	val encoderLocation: FFmpegLocation,
+	val encoderLocation: FFmpegLocation? = null,
 	@SerialName("SystemArchitecture")
-	val systemArchitecture: Architecture,
+	val systemArchitecture: Architecture? = null,
 	/**
 	 * Gets or sets the local address.
 	 */

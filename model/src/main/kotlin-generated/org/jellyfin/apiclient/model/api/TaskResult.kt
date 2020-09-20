@@ -30,7 +30,7 @@ data class TaskResult(
 	@SerialName("EndTimeUtc")
 	val endTimeUtc: LocalDateTime,
 	@SerialName("Status")
-	val status: TaskCompletionStatus,
+	val status: TaskCompletionStatus? = null,
 	/**
 	 * Gets or sets the name.
 	 */
