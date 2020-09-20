@@ -17,18 +17,18 @@ class OpenApiTypeBuilder(
 	private val hooks: Collection<TypeBuilderHook>
 ) {
 	fun build(path: TypePath, schema: Schema<*>): TypeName =
-		buildWithHooks(path, schema) ?: buildWithSchema(schema)
+		buildWithHooks(path, schema) ?: buildSchema(schema)
 
 	private fun buildWithHooks(path: TypePath, data: Schema<*>): TypeName? {
 		for (hook in hooks) {
-			val result = hook.onBuildType(path, data)
+			val result = hook.onBuildType(path, data, this)
 			if (result != null) return result
 		}
 
 		return null
 	}
 
-	private fun buildWithSchema(schema: Schema<*>): TypeName = when {
+	fun buildSchema(schema: Schema<*>): TypeName = when {
 		// Use referenced type
 		schema.`$ref` != null -> buildReference(schema.`$ref`)
 		// Use binary type for everything that identifies as file
@@ -57,7 +57,7 @@ class OpenApiTypeBuilder(
 		)
 	}
 
-	private fun buildNumber(schema: Schema<*>) = when (schema.format) {
+	fun buildNumber(schema: Schema<*>) = when (schema.format) {
 		"int32" -> Int::class
 		"int64" -> Long::class
 		"double" -> Double::class
@@ -65,19 +65,19 @@ class OpenApiTypeBuilder(
 		else -> throw UnknownTypeError(schema.type, schema.format)
 	}.asTypeName()
 
-	private fun buildString() = String::class.asTypeName()
-	private fun buildBoolean() = Boolean::class.asTypeName()
-	private fun buildDateTime() = LocalDateTime::class.asTypeName()
-	private fun buildUUIDType() = UUID::class.asTypeName()
+	fun buildString() = String::class.asTypeName()
+	fun buildBoolean() = Boolean::class.asTypeName()
+	fun buildDateTime() = LocalDateTime::class.asTypeName()
+	fun buildUUIDType() = UUID::class.asTypeName()
 
-	private fun buildArrayType(schema: ArraySchema) = List::class.asTypeName()
-		.plusParameter(buildWithSchema(schema.items as Schema<*>))
+	fun buildArrayType(schema: ArraySchema) = List::class.asTypeName()
+		.plusParameter(buildSchema(schema.items as Schema<*>))
 
-	private fun buildMapType(schema: MapSchema) = Map::class.asTypeName()
+	fun buildMapType(schema: MapSchema) = Map::class.asTypeName()
 		.plusParameter(String::class.asTypeName())
-		.plusParameter(buildWithSchema(schema.additionalProperties as Schema<*>))
+		.plusParameter(buildSchema(schema.additionalProperties as Schema<*>))
 
-	private fun buildReference(reference: String) = ClassName(
+	fun buildReference(reference: String) = ClassName(
 		Packages.MODEL,
 		reference
 			.removePrefix("#/components/schemas/")
@@ -85,7 +85,7 @@ class OpenApiTypeBuilder(
 			.toPascalCase()
 	)
 
-	private fun buildBinary() = InputStream::class.asTypeName()
+	fun buildBinary() = InputStream::class.asTypeName()
 
 	class UnknownTypeError(type: String?, format: String?) : Error("Unknown type $type with format $format")
 }
