@@ -14,7 +14,7 @@ data class SubtitleProfile(
 	@SerialName("Format")
 	val format: String? = null,
 	@SerialName("Method")
-	val method: SubtitleDeliveryMethod,
+	val method: SubtitleDeliveryMethod? = null,
 	@SerialName("DidlMode")
 	val didlMode: String? = null,
 	@SerialName("Language")

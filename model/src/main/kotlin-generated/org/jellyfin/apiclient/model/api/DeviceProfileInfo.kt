@@ -22,5 +22,5 @@ data class DeviceProfileInfo(
 	@SerialName("Name")
 	val name: String? = null,
 	@SerialName("Type")
-	val type: DeviceProfileType
+	val type: DeviceProfileType? = null
 )

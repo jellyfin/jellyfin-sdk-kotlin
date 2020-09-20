@@ -23,7 +23,7 @@ data class DeviceProfile(
 	@SerialName("Id")
 	val id: String? = null,
 	@SerialName("Identification")
-	val identification: DeviceIdentification,
+	val identification: DeviceIdentification? = null,
 	@SerialName("FriendlyName")
 	val friendlyName: String? = null,
 	@SerialName("Manufacturer")

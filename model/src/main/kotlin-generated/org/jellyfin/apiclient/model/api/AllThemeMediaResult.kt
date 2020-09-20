@@ -11,9 +11,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class AllThemeMediaResult(
 	@SerialName("ThemeVideosResult")
-	val themeVideosResult: ThemeMediaResult,
+	val themeVideosResult: ThemeMediaResult? = null,
 	@SerialName("ThemeSongsResult")
-	val themeSongsResult: ThemeMediaResult,
+	val themeSongsResult: ThemeMediaResult? = null,
 	@SerialName("SoundtrackSongsResult")
-	val soundtrackSongsResult: ThemeMediaResult
+	val soundtrackSongsResult: ThemeMediaResult? = null
 )

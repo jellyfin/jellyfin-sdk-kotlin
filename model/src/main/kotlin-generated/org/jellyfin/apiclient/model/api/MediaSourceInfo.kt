@@ -17,7 +17,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class MediaSourceInfo(
 	@SerialName("Protocol")
-	val protocol: MediaProtocol,
+	val protocol: MediaProtocol? = null,
 	@SerialName("Id")
 	val id: String? = null,
 	@SerialName("Path")
@@ -25,9 +25,9 @@ data class MediaSourceInfo(
 	@SerialName("EncoderPath")
 	val encoderPath: String? = null,
 	@SerialName("EncoderProtocol")
-	val encoderProtocol: MediaProtocol,
+	val encoderProtocol: MediaProtocol? = null,
 	@SerialName("Type")
-	val type: MediaSourceType,
+	val type: MediaSourceType? = null,
 	@SerialName("Container")
 	val container: String? = null,
 	@SerialName("Size")
@@ -74,11 +74,11 @@ data class MediaSourceInfo(
 	@SerialName("SupportsProbing")
 	val supportsProbing: Boolean,
 	@SerialName("VideoType")
-	val videoType: VideoType,
+	val videoType: VideoType? = null,
 	@SerialName("IsoType")
-	val isoType: IsoType,
+	val isoType: IsoType? = null,
 	@SerialName("Video3DFormat")
-	val video3DFormat: Video3DFormat,
+	val video3DFormat: Video3DFormat? = null,
 	@SerialName("MediaStreams")
 	val mediaStreams: List<MediaStream>? = null,
 	@SerialName("MediaAttachments")
@@ -88,7 +88,7 @@ data class MediaSourceInfo(
 	@SerialName("Bitrate")
 	val bitrate: Int? = null,
 	@SerialName("Timestamp")
-	val timestamp: TransportStreamTimestamp,
+	val timestamp: TransportStreamTimestamp? = null,
 	@SerialName("RequiredHttpHeaders")
 	val requiredHttpHeaders: Map<String, String>? = null,
 	@SerialName("TranscodingUrl")

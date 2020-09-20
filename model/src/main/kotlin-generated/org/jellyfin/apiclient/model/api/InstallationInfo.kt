@@ -30,7 +30,7 @@ data class InstallationInfo(
 	@SerialName("Name")
 	val name: String? = null,
 	@SerialName("Version")
-	val version: Version,
+	val version: Version? = null,
 	/**
 	 * Gets or sets the changelog for this version.
 	 */

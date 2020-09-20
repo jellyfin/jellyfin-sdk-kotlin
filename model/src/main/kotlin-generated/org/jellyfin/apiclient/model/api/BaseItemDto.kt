@@ -104,7 +104,7 @@ data class BaseItemDto(
 	@SerialName("ForcedSortName")
 	val forcedSortName: String? = null,
 	@SerialName("Video3DFormat")
-	val video3DFormat: Video3DFormat,
+	val video3DFormat: Video3DFormat? = null,
 	/**
 	 * Gets or sets the premiere date.
 	 */
@@ -182,7 +182,7 @@ data class BaseItemDto(
 	@SerialName("RunTimeTicks")
 	val runTimeTicks: Long? = null,
 	@SerialName("PlayAccess")
-	val playAccess: PlayAccess,
+	val playAccess: PlayAccess? = null,
 	/**
 	 * Gets or sets the aspect ratio.
 	 */
@@ -283,7 +283,7 @@ data class BaseItemDto(
 	@SerialName("LocalTrailerCount")
 	val localTrailerCount: Int? = null,
 	@SerialName("UserData")
-	val userData: UserItemDataDto,
+	val userData: UserItemDataDto? = null,
 	/**
 	 * Gets or sets the recursive item count.
 	 */
@@ -405,7 +405,7 @@ data class BaseItemDto(
 	@SerialName("MediaStreams")
 	val mediaStreams: List<MediaStream>? = null,
 	@SerialName("VideoType")
-	val videoType: VideoType,
+	val videoType: VideoType? = null,
 	/**
 	 * Gets or sets the part count.
 	 */
@@ -485,9 +485,9 @@ data class BaseItemDto(
 	@SerialName("Chapters")
 	val chapters: List<ChapterInfo>? = null,
 	@SerialName("LocationType")
-	val locationType: LocationType,
+	val locationType: LocationType? = null,
 	@SerialName("IsoType")
-	val isoType: IsoType,
+	val isoType: IsoType? = null,
 	/**
 	 * Gets or sets the type of the media.
 	 */
@@ -562,7 +562,7 @@ data class BaseItemDto(
 	@SerialName("FocalLength")
 	val focalLength: Double? = null,
 	@SerialName("ImageOrientation")
-	val imageOrientation: ImageOrientation,
+	val imageOrientation: ImageOrientation? = null,
 	@SerialName("Aperture")
 	val aperture: Double? = null,
 	@SerialName("ShutterSpeed")
@@ -611,9 +611,9 @@ data class BaseItemDto(
 	@SerialName("EpisodeTitle")
 	val episodeTitle: String? = null,
 	@SerialName("ChannelType")
-	val channelType: ChannelType,
+	val channelType: ChannelType? = null,
 	@SerialName("Audio")
-	val audio: ProgramAudio,
+	val audio: ProgramAudio? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is movie.
 	 */
@@ -655,5 +655,5 @@ data class BaseItemDto(
 	@SerialName("TimerId")
 	val timerId: String? = null,
 	@SerialName("CurrentProgram")
-	val currentProgram: BaseItemDto
+	val currentProgram: BaseItemDto? = null
 )

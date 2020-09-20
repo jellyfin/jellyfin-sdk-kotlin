@@ -56,5 +56,5 @@ data class NotificationDto(
 	@SerialName("Url")
 	val url: String? = null,
 	@SerialName("Level")
-	val level: NotificationLevel
+	val level: NotificationLevel? = null
 )

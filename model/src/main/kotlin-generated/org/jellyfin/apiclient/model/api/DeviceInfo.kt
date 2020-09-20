@@ -54,7 +54,7 @@ data class DeviceInfo(
 	@SerialName("DateLastActivity")
 	val dateLastActivity: LocalDateTime,
 	@SerialName("Capabilities")
-	val capabilities: ClientCapabilities,
+	val capabilities: ClientCapabilities? = null,
 	@SerialName("IconUrl")
 	val iconUrl: String? = null
 )

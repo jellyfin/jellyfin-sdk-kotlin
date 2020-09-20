@@ -57,7 +57,7 @@ data class RemoteImageInfo(
 	@SerialName("Language")
 	val language: String? = null,
 	@SerialName("Type")
-	val type: ImageType,
+	val type: ImageType? = null,
 	@SerialName("RatingType")
-	val ratingType: RatingType
+	val ratingType: RatingType? = null
 )

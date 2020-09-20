@@ -17,7 +17,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ImageInfo(
 	@SerialName("ImageType")
-	val imageType: ImageType,
+	val imageType: ImageType? = null,
 	/**
 	 * Gets or sets the index of the image.
 	 */

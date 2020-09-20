@@ -70,5 +70,5 @@ data class ActivityLogEntry(
 	@SerialName("UserPrimaryImageTag")
 	val userPrimaryImageTag: String? = null,
 	@SerialName("Severity")
-	val severity: LogLevel
+	val severity: LogLevel? = null
 )

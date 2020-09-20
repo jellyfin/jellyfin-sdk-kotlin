@@ -55,7 +55,7 @@ data class PlayerStateInfo(
 	@SerialName("MediaSourceId")
 	val mediaSourceId: String? = null,
 	@SerialName("PlayMethod")
-	val playMethod: PlayMethod,
+	val playMethod: PlayMethod? = null,
 	@SerialName("RepeatMode")
-	val repeatMode: RepeatMode
+	val repeatMode: RepeatMode? = null
 )

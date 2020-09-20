@@ -31,7 +31,7 @@ data class TaskTriggerInfo(
 	@SerialName("IntervalTicks")
 	val intervalTicks: Long? = null,
 	@SerialName("DayOfWeek")
-	val dayOfWeek: DayOfWeek,
+	val dayOfWeek: DayOfWeek? = null,
 	/**
 	 * Gets or sets the maximum runtime ticks.
 	 */

@@ -155,7 +155,7 @@ data class ServerConfiguration(
 	@SerialName("EnableDashboardResponseCaching")
 	val enableDashboardResponseCaching: Boolean,
 	@SerialName("ImageSavingConvention")
-	val imageSavingConvention: ImageSavingConvention,
+	val imageSavingConvention: ImageSavingConvention? = null,
 	@SerialName("MetadataOptions")
 	val metadataOptions: List<MetadataOptions>? = null,
 	@SerialName("SkipDeserializationForBasicTypes")
@@ -240,7 +240,7 @@ data class ServerConfiguration(
 	@SerialName("CachePath")
 	val cachePath: String? = null,
 	@SerialName("PreviousVersion")
-	val previousVersion: Version,
+	val previousVersion: Version? = null,
 	/**
 	 * Gets or sets the stringified PreviousVersion to be stored/loaded,
 	 * because System.Version itself isn't xml-serializable.

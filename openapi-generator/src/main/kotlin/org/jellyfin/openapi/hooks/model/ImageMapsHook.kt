@@ -4,6 +4,7 @@ import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.plusParameter
 import com.squareup.kotlinpoet.asTypeName
 import io.swagger.v3.oas.models.media.Schema
+import org.jellyfin.openapi.builder.openapi.OpenApiTypeBuilder
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.hooks.ModelTypePath
 import org.jellyfin.openapi.hooks.TypeBuilderHook
@@ -14,7 +15,7 @@ import org.jellyfin.openapi.hooks.TypePath
  * The map uses the type Map<ImageType, String> for images and Map<ImageType, Map<String, String>> for blurhashes
  */
 class ImageMapsHook : TypeBuilderHook {
-	override fun onBuildType(path: TypePath, schema: Schema<*>) = when (path) {
+	override fun onBuildType(path: TypePath, schema: Schema<*>, typeBuilder: OpenApiTypeBuilder) = when (path) {
 		ModelTypePath("BaseItemDto", "imageTags") -> buildImageTags()
 		ModelTypePath("BaseItemDto", "imageBlurHashes") -> buildImageBlurHashes()
 		ModelTypePath("BaseItemPerson", "imageBlurHashes") -> buildImageBlurHashes()

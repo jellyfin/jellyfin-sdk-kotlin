@@ -14,5 +14,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class AddVirtualFolderDto(
 	@SerialName("LibraryOptions")
-	val libraryOptions: LibraryOptions
+	val libraryOptions: LibraryOptions? = null
 )

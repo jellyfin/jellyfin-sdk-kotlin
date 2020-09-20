@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ImageOption(
 	@SerialName("Type")
-	val type: ImageType,
+	val type: ImageType? = null,
 	/**
 	 * Gets or sets the limit.
 	 */

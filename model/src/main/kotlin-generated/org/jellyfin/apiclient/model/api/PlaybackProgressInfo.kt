@@ -29,7 +29,7 @@ data class PlaybackProgressInfo(
 	@SerialName("CanSeek")
 	val canSeek: Boolean,
 	@SerialName("Item")
-	val item: BaseItemDto,
+	val item: BaseItemDto? = null,
 	/**
 	 * Gets or sets the item identifier.
 	 */
@@ -82,7 +82,7 @@ data class PlaybackProgressInfo(
 	@SerialName("AspectRatio")
 	val aspectRatio: String? = null,
 	@SerialName("PlayMethod")
-	val playMethod: PlayMethod,
+	val playMethod: PlayMethod? = null,
 	/**
 	 * Gets or sets the live stream identifier.
 	 */
@@ -94,7 +94,7 @@ data class PlaybackProgressInfo(
 	@SerialName("PlaySessionId")
 	val playSessionId: String? = null,
 	@SerialName("RepeatMode")
-	val repeatMode: RepeatMode,
+	val repeatMode: RepeatMode? = null,
 	@SerialName("NowPlayingQueue")
 	val nowPlayingQueue: List<QueueItem>? = null,
 	@SerialName("PlaylistItemId")

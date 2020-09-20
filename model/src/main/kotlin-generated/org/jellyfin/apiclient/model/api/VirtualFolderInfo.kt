@@ -32,7 +32,7 @@ data class VirtualFolderInfo(
 	@SerialName("CollectionType")
 	val collectionType: String? = null,
 	@SerialName("LibraryOptions")
-	val libraryOptions: LibraryOptions,
+	val libraryOptions: LibraryOptions? = null,
 	/**
 	 * Gets or sets the item identifier.
 	 */
