@@ -10,5 +10,4 @@ include(":android")
 include(":openapi-generator")
 
 // Samples
-// TODO: Disabled until new api is implemented
-// include(":samples:kotlin-console")
+include(":samples:kotlin-console")

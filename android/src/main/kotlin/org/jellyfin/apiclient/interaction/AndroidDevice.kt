@@ -4,35 +4,26 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.provider.Settings
-import org.jellyfin.apiclient.IDevice
+import org.jellyfin.apiclient.model.DeviceInfo
 
-data class AndroidDevice(
-	override val deviceId: String,
-	override val deviceName: String
-) : IDevice {
-	companion object {
-		@SuppressLint("HardwareIds")
-		fun getAutomaticId(context: Context): String =
-			Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
+@SuppressLint("HardwareIds")
+fun androidDevice(context: Context): DeviceInfo {
+	val id = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
 
-		fun getAutomaticName(context: Context): String {
-			// Use name from device settings
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
-				return Settings.Global.getString(context.contentResolver, Settings.Global.DEVICE_NAME)
-			}
+	// Use name from device settings
+	val name = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
+		Settings.Global.getString(context.contentResolver, Settings.Global.DEVICE_NAME)
+	} else {
+		// Concatenate the name based on manufacturer and model
+		val manufacturer = Build.MANUFACTURER
+		val model = Build.MODEL
 
-			// Concatenate the name based on manufacturer and model
-			val manufacturer = Build.MANUFACTURER
-			val model = Build.MODEL
-
-			return if (model.startsWith(manufacturer)) model
-			else "$manufacturer $model"
-		}
-
-		@JvmStatic
-		fun fromContext(context: Context) = AndroidDevice(
-			deviceId = getAutomaticId(context),
-			deviceName = getAutomaticName(context)
-		)
+		if (model.startsWith(manufacturer)) model
+		else "$manufacturer $model"
 	}
+
+	return DeviceInfo(
+		id = id,
+		name = name
+	)
 }

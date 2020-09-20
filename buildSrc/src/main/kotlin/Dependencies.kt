@@ -32,7 +32,7 @@ object Dependencies {
 	}
 
 	object Ktor {
-		private const val version = "1.3.2"
+		private const val version = "1.4.0"
 		private fun item(library: String) = "io.ktor:ktor-$library:$version"
 
 		val okhttp = item("client-okhttp")

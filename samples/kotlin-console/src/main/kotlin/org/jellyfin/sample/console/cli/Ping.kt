@@ -5,21 +5,21 @@ import kotlinx.cli.Subcommand
 import kotlinx.cli.required
 import kotlinx.coroutines.runBlocking
 import org.jellyfin.apiclient.Jellyfin
-import org.jellyfin.apiclient.api.operations.UserApi
+import org.jellyfin.apiclient.api.operations.SystemApi
 
-class Users(
+class Ping(
 	private val jellyfin: Jellyfin
-) : Subcommand("users", "List all public users") {
+) : Subcommand("ping", "Pings a given server and retrieve basic system information") {
 	private val server by option(ArgType.String, description = "Url of the server", shortName = "s").required()
 
 	override fun execute() = runBlocking {
 		val api = jellyfin.createApi(baseUrl = server)
-		val userApi = UserApi(api)
+		val systemApi = SystemApi(api)
 
-		val users by userApi.getPublicUsers()
+		val result by systemApi.getPublicSystemInfo()
 
-		users.forEach {
-			println(it.name)
-		}
+		println("id: ${result.id}")
+		println("name: ${result.serverName}")
+		println("version: ${result.version}")
 	}
 }

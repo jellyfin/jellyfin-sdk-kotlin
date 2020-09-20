@@ -3,6 +3,7 @@ plugins {
 }
 
 dependencies {
+	apiProject(":api")
 	apiProject(":model")
 
 	implementation(Dependencies.Kotlin.stdlib)
