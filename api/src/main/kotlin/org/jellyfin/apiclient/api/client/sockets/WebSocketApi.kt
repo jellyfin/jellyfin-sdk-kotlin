@@ -11,6 +11,8 @@ import kotlinx.coroutines.channels.Channel.Factory.BUFFERED
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.channels.SendChannel
 import kotlinx.coroutines.flow.*
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.*
 import kotlinx.serialization.serializer
@@ -29,17 +31,19 @@ import org.slf4j.LoggerFactory
  */
 @FlowPreview
 @ExperimentalCoroutinesApi
+@ExperimentalSerializationApi
 class WebSocketApi(
 	private val api: KtorClient
 ) {
 	private val logger = LoggerFactory.getLogger("WebSocketApi")
 
 	private val json = Json {
+		// Based on DefaultJson
 		isLenient = false
 		ignoreUnknownKeys = true
 		allowSpecialFloatingPointValues = true
 		useArrayPolymorphism = false
-		encodeDefaults = false
+		encodeDefaults = true
 	}
 
 	private var socketJob: Job? = null
@@ -49,7 +53,7 @@ class WebSocketApi(
 	}
 
 	private val outgoingMessageChannel by lazy {
-		Channel<OutgoingSocketMessage>(BUFFERED)
+		Channel<String>(BUFFERED)
 	}
 
 	private suspend fun ReceiveChannel<Frame>.read() = consumeAsFlow()
@@ -70,9 +74,8 @@ class WebSocketApi(
 
 	private suspend fun SendChannel<Frame>.write() = outgoingMessageChannel
 		.receiveAsFlow()
-		.onEach {
-			val text = json.encodeToString(it)
-			println("OUT $text")
+		.onEach { text ->
+			logger.info("Sending message {}", text)
 			send(Frame.Text(text))
 		}
 		.catch { it.printStackTrace() }
@@ -125,7 +128,7 @@ class WebSocketApi(
 		logger.info("Received message {}", text)
 
 		// Read JSON object from text
-		val json = Json.parseToJsonElement(text)
+		val json = json.parseToJsonElement(text)
 		require(json is JsonObject)
 
 		// Read id
@@ -156,9 +159,25 @@ class WebSocketApi(
 		return api.json.decodeFromJsonElement(dataSerializer, modifiedJson) as? IncomingSocketMessage
 	}
 
-	suspend fun <T : Any> publish(message: OutgoingSocketMessage) {
-		ensureConnected()
-		outgoingMessageChannel.send(message)
+	suspend inline fun <reified T : OutgoingSocketMessage> publish(message: T) = publish(message, serializer())
+
+	suspend fun <T : OutgoingSocketMessage> publish(message: T, serializer: KSerializer<T>) {
+		val jsonObject = json.encodeToJsonElement(serializer, message).jsonObject
+		val messageType = serializer.descriptor.serialName
+
+		val text = json.encodeToString(buildJsonObject {
+			put("MessageType", messageType)
+
+			val data = jsonObject["Data"]
+			if (data != null) put("Data", data)
+			else putJsonObject("Data") {
+				jsonObject.entries
+					.filterNot { (key, _) -> key == "MessageType" }
+					.forEach { (key, value) -> put(key, value) }
+			}
+		})
+
+		outgoingMessageChannel.send(text)
 	}
 
 	suspend fun subscribe(): Flow<IncomingSocketMessage> {
