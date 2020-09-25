@@ -171,8 +171,32 @@ class WebSocketApi(
 			"ForceKeepAlive" to serializer<ForceKeepAliveMessage>(),
 			"GeneralCommand" to serializer<GeneralCommandMessage>(),
 			"UserDataChanged" to serializer<UserDataChangedMessage>(),
-			"Sessions" to serializer<SessionsMessage>()
+			"Sessions" to serializer<SessionsMessage>(),
+			"Play" to serializer<PlayMessage>(),
+			"SyncPlayCommand" to serializer<SyncPlayCommandMessage>(),
+			"SyncPlayGroupUpdate" to serializer<SyncPlayGroupUpdateMessage>(),
+			"PlayState" to serializer<PlayStateMessage>(),
+			"RestartRequired" to serializer<RestartRequiredMessage>(),
+			"ServerShuttingDown" to serializer<ServerShuttingDownMessage>(),
+			"ServerRestarting" to serializer<ServerRestartingMessage>(),
+			"LibraryChanged" to serializer<LibraryChangedMessage>(),
+			"UserDeleted" to serializer<UserDeletedMessage>(),
+			"UserUpdated" to serializer<UserUpdatedMessage>(),
+			"SeriesTimerCreated" to serializer<SeriesTimerCreatedMessage>(),
+			"TimerCreated" to serializer<TimerCreatedMessage>(),
+			"SeriesTimerCancelled" to serializer<SeriesTimerCancelledMessage>(),
+			"TimerCancelled" to serializer<TimerCancelledMessage>(),
+			"RefreshProgress" to serializer<RefreshProgressMessage>(),
+			"ScheduledTaskEnded" to serializer<ScheduledTaskEndedMessage>(),
+			"PackageInstallationCancelled" to serializer<PackageInstallationCancelledMessage>(),
+			"PackageInstallationFailed" to serializer<PackageInstallationFailedMessage>(),
+			"PackageInstallationCompleted" to serializer<PackageInstallationCompletedMessage>(),
+			"PackageInstalling" to serializer<PackageInstallingMessage>(),
+			"PackageUninstalled" to serializer<PackageUninstalledMessage>(),
+			"ActivityLogEntry" to serializer<ActivityLogEntryMessage>(),
+			"ScheduledTasksInfo" to serializer<ScheduledTasksInfoMessage>(),
+
+			"KeepAlive" to serializer<KeepAliveMessage>(),
 		)
 	}
 }
-
