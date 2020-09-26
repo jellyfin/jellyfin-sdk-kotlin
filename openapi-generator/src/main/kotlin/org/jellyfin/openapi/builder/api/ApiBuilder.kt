@@ -4,11 +4,14 @@ import com.squareup.kotlinpoet.*
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.constants.Classes
 import org.jellyfin.openapi.constants.Packages
+import org.jellyfin.openapi.hooks.OperationUrlHook
 import org.jellyfin.openapi.model.ApiService
 import org.jellyfin.openapi.model.JellyFile
 
 class ApiBuilder(
-	private val operationBuilder: OperationBuilder
+	private val operationBuilder: OperationBuilder,
+	private val operationUrlBuilder: OperationUrlBuilder,
+	private val operationUrlHooks: Collection<OperationUrlHook>
 ) : Builder<ApiService, JellyFile> {
 	override fun build(data: ApiService): JellyFile = TypeSpec.classBuilder(data.name).apply {
 		// Add "api" value to constructor
@@ -17,6 +20,11 @@ class ApiBuilder(
 		primaryConstructor(FunSpec.constructorBuilder().addParameter("api", apiClientType).build())
 
 		// Add operations
-		data.operations.forEach { namedOperation -> addFunction(operationBuilder.build(namedOperation)) }
+		data.operations.forEach { namedOperation ->
+			addFunction(operationBuilder.build(namedOperation))
+
+			if (operationUrlHooks.any { it.shouldOperationBuildUrlFun(data, namedOperation) })
+				addFunction(operationUrlBuilder.build(namedOperation))
+		}
 	}.build().let { JellyFile(Packages.API, emptySet(), it) }
 }

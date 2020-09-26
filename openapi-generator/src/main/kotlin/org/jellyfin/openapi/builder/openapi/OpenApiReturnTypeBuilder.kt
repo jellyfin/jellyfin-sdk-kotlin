@@ -21,21 +21,27 @@ class OpenApiReturnTypeBuilder(
 			MimeType.TEXT_XML in supportedReturnMimeTypes ||
 			MimeType.TEXT_HTML in supportedReturnMimeTypes ||
 			MimeType.APPLICATION_X_JAVASCRIPT in supportedReturnMimeTypes ->
-				String::class.asTypeName()
+				TYPE_STRING
 			// Binary types
 			MimeType.AUDIO_ALL in supportedReturnMimeTypes ||
 			MimeType.VIDEO_ALL in supportedReturnMimeTypes ||
 			MimeType.IMAGE_ALL in supportedReturnMimeTypes ||
 			MimeType.APPLICATION_X_MPEG_URL in supportedReturnMimeTypes ||
 			MimeType.APPLICATION_OCTET_STREAM in supportedReturnMimeTypes ->
-				InputStream::class.asTypeName()
+				TYPE_BINARY
 			// JSON (restful) types
 			MimeType.APPLICATION_JSON in supportedReturnMimeTypes -> {
 				val schema = response!!.content[MimeType.APPLICATION_JSON]!!.schema
 				openApiTypeBuilder.build(path, schema)
 			}
 			// Default to no response
-			else -> Unit::class.asTypeName()
+			else -> TYPE_NONE
 		}
+	}
+
+	companion object {
+		val TYPE_STRING = String::class.asTypeName()
+		val TYPE_BINARY = InputStream::class.asTypeName()
+		val TYPE_NONE = Unit::class.asTypeName()
 	}
 }
