@@ -106,6 +106,69 @@ class UniversalAudioApi(
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param enableRedirection Whether to enable redirection. Defaults to true.
 	 */
+	fun getUniversalAudioStreamUrl(
+		itemId: UUID,
+		container: String,
+		mediaSourceId: String? = null,
+		deviceId: String? = null,
+		userId: UUID? = null,
+		audioCodec: String? = null,
+		maxAudioChannels: Int? = null,
+		transcodingAudioChannels: Int? = null,
+		maxStreamingBitrate: Long? = null,
+		startTimeTicks: Long? = null,
+		transcodingContainer: String? = null,
+		transcodingProtocol: String? = null,
+		maxAudioSampleRate: Int? = null,
+		maxAudioBitDepth: Int? = null,
+		enableRemoteMedia: Boolean? = null,
+		breakOnNonKeyFrames: Boolean,
+		enableRedirection: Boolean
+	): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		pathParameters["container"] = container
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["mediaSourceId"] = mediaSourceId
+		queryParameters["deviceId"] = deviceId
+		queryParameters["userId"] = userId
+		queryParameters["audioCodec"] = audioCodec
+		queryParameters["maxAudioChannels"] = maxAudioChannels
+		queryParameters["transcodingAudioChannels"] = transcodingAudioChannels
+		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
+		queryParameters["startTimeTicks"] = startTimeTicks
+		queryParameters["transcodingContainer"] = transcodingContainer
+		queryParameters["transcodingProtocol"] = transcodingProtocol
+		queryParameters["maxAudioSampleRate"] = maxAudioSampleRate
+		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
+		queryParameters["enableRemoteMedia"] = enableRemoteMedia
+		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
+		queryParameters["enableRedirection"] = enableRedirection
+		return api.createUrl("/Audio/{itemId}/universal", pathParameters, queryParameters)
+	}
+
+	/**
+	 * Gets an audio stream.
+	 *
+	 * @param itemId The item id.
+	 * @param container Optional. The audio container.
+	 * @param mediaSourceId The media version id, if playing an alternate version.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
+	 * needed.
+	 * @param userId Optional. The user id.
+	 * @param audioCodec Optional. The audio codec to transcode to.
+	 * @param maxAudioChannels Optional. The maximum number of audio channels.
+	 * @param transcodingAudioChannels Optional. The number of how many audio channels to transcode to.
+	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
+	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
+	 * @param transcodingContainer Optional. The container to transcode to.
+	 * @param transcodingProtocol Optional. The transcoding protocol.
+	 * @param maxAudioSampleRate Optional. The maximum audio sample rate.
+	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
+	 * @param enableRemoteMedia Optional. Whether to enable remote media.
+	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
+	 * @param enableRedirection Whether to enable redirection. Defaults to true.
+	 */
 	suspend fun getUniversalAudioStream_2(
 		itemId: UUID,
 		container: String,
@@ -148,5 +211,68 @@ class UniversalAudioApi(
 		val response = api.get<InputStream>("/Audio/{itemId}/universal.{container}", pathParameters,
 				queryParameters, data)
 		return response
+	}
+
+	/**
+	 * Gets an audio stream.
+	 *
+	 * @param itemId The item id.
+	 * @param container Optional. The audio container.
+	 * @param mediaSourceId The media version id, if playing an alternate version.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
+	 * needed.
+	 * @param userId Optional. The user id.
+	 * @param audioCodec Optional. The audio codec to transcode to.
+	 * @param maxAudioChannels Optional. The maximum number of audio channels.
+	 * @param transcodingAudioChannels Optional. The number of how many audio channels to transcode to.
+	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
+	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
+	 * @param transcodingContainer Optional. The container to transcode to.
+	 * @param transcodingProtocol Optional. The transcoding protocol.
+	 * @param maxAudioSampleRate Optional. The maximum audio sample rate.
+	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
+	 * @param enableRemoteMedia Optional. Whether to enable remote media.
+	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
+	 * @param enableRedirection Whether to enable redirection. Defaults to true.
+	 */
+	fun getUniversalAudioStream_2Url(
+		itemId: UUID,
+		container: String,
+		mediaSourceId: String? = null,
+		deviceId: String? = null,
+		userId: UUID? = null,
+		audioCodec: String? = null,
+		maxAudioChannels: Int? = null,
+		transcodingAudioChannels: Int? = null,
+		maxStreamingBitrate: Long? = null,
+		startTimeTicks: Long? = null,
+		transcodingContainer: String? = null,
+		transcodingProtocol: String? = null,
+		maxAudioSampleRate: Int? = null,
+		maxAudioBitDepth: Int? = null,
+		enableRemoteMedia: Boolean? = null,
+		breakOnNonKeyFrames: Boolean,
+		enableRedirection: Boolean
+	): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		pathParameters["container"] = container
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["mediaSourceId"] = mediaSourceId
+		queryParameters["deviceId"] = deviceId
+		queryParameters["userId"] = userId
+		queryParameters["audioCodec"] = audioCodec
+		queryParameters["maxAudioChannels"] = maxAudioChannels
+		queryParameters["transcodingAudioChannels"] = transcodingAudioChannels
+		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
+		queryParameters["startTimeTicks"] = startTimeTicks
+		queryParameters["transcodingContainer"] = transcodingContainer
+		queryParameters["transcodingProtocol"] = transcodingProtocol
+		queryParameters["maxAudioSampleRate"] = maxAudioSampleRate
+		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
+		queryParameters["enableRemoteMedia"] = enableRemoteMedia
+		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
+		queryParameters["enableRedirection"] = enableRedirection
+		return api.createUrl("/Audio/{itemId}/universal.{container}", pathParameters, queryParameters)
 	}
 }

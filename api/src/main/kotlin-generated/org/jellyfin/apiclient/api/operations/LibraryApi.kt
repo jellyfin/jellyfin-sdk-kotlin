@@ -139,7 +139,7 @@ class LibraryApi(
 	/**
 	 * Gets critic review for an item.
 	 */
-	@Deprecated("Deprecated in OpenAPI specification")
+	@Deprecated("This member is deprecated and may be removed in the future")
 	suspend fun getCriticReviews(itemId: String): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -166,6 +166,18 @@ class LibraryApi(
 	}
 
 	/**
+	 * Downloads item media.
+	 *
+	 * @param itemId The item id.
+	 */
+	fun getDownloadUrl(itemId: UUID): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Items/{itemId}/Download", pathParameters, queryParameters)
+	}
+
+	/**
 	 * Get the original file of an item.
 	 *
 	 * @param itemId The item id.
@@ -177,6 +189,18 @@ class LibraryApi(
 		val data = null
 		val response = api.get<InputStream>("/Items/{itemId}/File", pathParameters, queryParameters, data)
 		return response
+	}
+
+	/**
+	 * Get the original file of an item.
+	 *
+	 * @param itemId The item id.
+	 */
+	fun getFileUrl(itemId: UUID): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Items/{itemId}/File", pathParameters, queryParameters)
 	}
 
 	/**

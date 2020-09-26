@@ -38,4 +38,25 @@ class VideoAttachmentsApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get video attachment.
+	 *
+	 * @param videoId Video ID.
+	 * @param mediaSourceId Media Source ID.
+	 * @param index Attachment Index.
+	 */
+	fun getAttachmentUrl(
+		videoId: UUID,
+		mediaSourceId: String,
+		index: Int
+	): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["videoId"] = videoId
+		pathParameters["mediaSourceId"] = mediaSourceId
+		pathParameters["index"] = index
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Videos/{videoId}/{mediaSourceId}/Attachments/{index}", pathParameters,
+				queryParameters)
+	}
 }

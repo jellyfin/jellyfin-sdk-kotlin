@@ -46,6 +46,20 @@ class ImageByNameApi(
 	}
 
 	/**
+	 * Get General Image.
+	 *
+	 * @param name The name of the image.
+	 * @param type Image Type (primary, backdrop, logo, etc).
+	 */
+	fun getGeneralImageUrl(name: String, type: String): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["name"] = name
+		pathParameters["type"] = type
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Images/General/{name}/{type}", pathParameters, queryParameters)
+	}
+
+	/**
 	 * Get all media info images.
 	 */
 	suspend fun getMediaInfoImages(): Response<List<ImageByNameInfo>> {
@@ -75,6 +89,20 @@ class ImageByNameApi(
 	}
 
 	/**
+	 * Get media info image.
+	 *
+	 * @param theme The theme to get the image from.
+	 * @param name The name of the image.
+	 */
+	fun getMediaInfoImageUrl(theme: String, name: String): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["theme"] = theme
+		pathParameters["name"] = name
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Images/MediaInfo/{theme}/{name}", pathParameters, queryParameters)
+	}
+
+	/**
 	 * Get all general images.
 	 */
 	suspend fun getRatingImages(): Response<List<ImageByNameInfo>> {
@@ -101,5 +129,19 @@ class ImageByNameApi(
 		val response = api.get<InputStream>("/Images/Ratings/{theme}/{name}", pathParameters,
 				queryParameters, data)
 		return response
+	}
+
+	/**
+	 * Get rating image.
+	 *
+	 * @param theme The theme to get the image from.
+	 * @param name The name of the image.
+	 */
+	fun getRatingImageUrl(theme: String, name: String): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["theme"] = theme
+		pathParameters["name"] = name
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Images/Ratings/{theme}/{name}", pathParameters, queryParameters)
 	}
 }

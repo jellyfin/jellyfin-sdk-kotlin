@@ -183,6 +183,20 @@ class DlnaServerApi(
 	}
 
 	/**
+	 * Gets a server icon.
+	 *
+	 * @param serverId Server UUID.
+	 * @param fileName The icon filename.
+	 */
+	fun getIconIdUrl(serverId: String, fileName: String): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["serverId"] = serverId
+		pathParameters["fileName"] = fileName
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Dlna/{serverId}/icons/{fileName}", pathParameters, queryParameters)
+	}
+
+	/**
 	 * Gets Dlna media receiver registrar xml.
 	 *
 	 * @param serverId Server UUID.
@@ -257,5 +271,17 @@ class DlnaServerApi(
 		val response = api.get<InputStream>("/Dlna/icons/{fileName}", pathParameters, queryParameters,
 				data)
 		return response
+	}
+
+	/**
+	 * Gets a server icon.
+	 *
+	 * @param fileName The icon filename.
+	 */
+	fun getIconUrl(fileName: String): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["fileName"] = fileName
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Dlna/icons/{fileName}", pathParameters, queryParameters)
 	}
 }

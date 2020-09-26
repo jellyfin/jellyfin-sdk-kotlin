@@ -286,6 +286,16 @@ class LiveTvApi(
 	}
 
 	/**
+	 * Gets available countries.
+	 */
+	fun getSchedulesDirectCountriesUrl(): String {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/LiveTv/ListingProviders/SchedulesDirect/Countries", pathParameters,
+				queryParameters)
+	}
+
+	/**
 	 * Gets a live tv recording stream.
 	 *
 	 * @param recordingId Recording id.
@@ -298,6 +308,19 @@ class LiveTvApi(
 		val response = api.get<InputStream>("/LiveTv/LiveRecordings/{recordingId}/stream", pathParameters,
 				queryParameters, data)
 		return response
+	}
+
+	/**
+	 * Gets a live tv recording stream.
+	 *
+	 * @param recordingId Recording id.
+	 */
+	fun getLiveRecordingFileUrl(recordingId: String): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["recordingId"] = recordingId
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/LiveTv/LiveRecordings/{recordingId}/stream", pathParameters,
+				queryParameters)
 	}
 
 	/**
@@ -315,6 +338,21 @@ class LiveTvApi(
 		val response = api.get<InputStream>("/LiveTv/LiveStreamFiles/{streamId}/stream.{container}",
 				pathParameters, queryParameters, data)
 		return response
+	}
+
+	/**
+	 * Gets a live tv channel stream.
+	 *
+	 * @param streamId Stream id.
+	 * @param container Container type.
+	 */
+	fun getLiveStreamFileUrl(streamId: String, container: String): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["streamId"] = streamId
+		pathParameters["container"] = container
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/LiveTv/LiveStreamFiles/{streamId}/stream.{container}", pathParameters,
+				queryParameters)
 	}
 
 	/**
@@ -637,7 +675,7 @@ class LiveTvApi(
 	 *
 	 * @param userId Optional. Filter by user and attach user data.
 	 */
-	@Deprecated("Deprecated in OpenAPI specification")
+	@Deprecated("This member is deprecated and may be removed in the future")
 	suspend fun getRecordingGroups(userId: UUID? = null): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -653,7 +691,7 @@ class LiveTvApi(
 	 *
 	 * @param groupId Group id.
 	 */
-	@Deprecated("Deprecated in OpenAPI specification")
+	@Deprecated("This member is deprecated and may be removed in the future")
 	suspend fun getRecordingGroup(groupId: UUID): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["groupId"] = groupId
@@ -686,7 +724,7 @@ class LiveTvApi(
 	 * @param enableUserData Optional. Include user data.
 	 * @param enableTotalRecordCount Optional. Return total record count.
 	 */
-	@Deprecated("Deprecated in OpenAPI specification")
+	@Deprecated("This member is deprecated and may be removed in the future")
 	suspend fun getRecordingsSeries(
 		channelId: String? = null,
 		userId: UUID? = null,
