@@ -17,7 +17,7 @@ open class KtorClient(
 	var accessToken: String? = null,
 	var clientInfo: ClientInfo,
 	var deviceInfo: DeviceInfo
-): ApiClient {
+) : ApiClient {
 	val client = HttpClient {
 		install(JsonFeature) {
 			serializer = KotlinxSerializer()
@@ -104,15 +104,15 @@ open class KtorClient(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
-		body: Any? = null
+		requestBody: Any? = null
 	): Response<T> {
 		val response = client.request<HttpResponse> {
 			this.method = method
 			url(createUrl(pathTemplate, pathParameters, queryParameters))
 			header(HttpHeaders.Authorization, createAuthorizationHeader())
 
-			if (body != null)
-				this.body = defaultSerializer().write(body)
+			if (requestBody != null)
+				body = defaultSerializer().write(requestBody)
 		}
 
 		return Response(response.receive())
@@ -122,38 +122,38 @@ open class KtorClient(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
-		body: Any? = null
+		requestBody: Any? = null
 	) = request<T>(
 		method = HttpMethod.Get,
 		pathTemplate = pathTemplate,
 		pathParameters = pathParameters,
 		queryParameters = queryParameters,
-		body = body
+		requestBody = requestBody
 	)
 
 	suspend inline fun <reified T> post(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
-		body: Any? = null
+		requestBody: Any? = null
 	) = request<T>(
 		method = HttpMethod.Post,
 		pathTemplate = pathTemplate,
 		pathParameters = pathParameters,
 		queryParameters = queryParameters,
-		body = body
+		requestBody = requestBody
 	)
 
 	suspend inline fun <reified T> delete(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
-		body: Any? = null
+		requestBody: Any? = null
 	) = request<T>(
 		method = HttpMethod.Delete,
 		pathTemplate = pathTemplate,
 		pathParameters = pathParameters,
 		queryParameters = queryParameters,
-		body = body
+		requestBody = requestBody
 	)
 }
