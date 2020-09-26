@@ -795,8 +795,7 @@ class ImageApi(
 		queryParameters["blur"] = blur
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
-		return
-				api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
+		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
 				pathParameters, queryParameters)
 	}
 

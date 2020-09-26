@@ -59,7 +59,7 @@ class OperationUrlBuilder(
 
 		// Call API
 		addStatement(
-			"return api.createUrl(%S, pathParameters, queryParameters)",
+			"return·api.createUrl(%S, pathParameters, queryParameters)",
 			data.pathTemplate
 		)
 	}.build()
