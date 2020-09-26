@@ -67,7 +67,7 @@ class WebSocketApi(
 		.onCompletion {
 			// Reconnect
 			// TODO Only reconnect if listeners exist
-			println("END")
+			logger.debug("Socket receiver completed")
 			reconnect()
 		}
 		.collect()
@@ -81,41 +81,45 @@ class WebSocketApi(
 		.catch { it.printStackTrace() }
 		.collect()
 
-	private fun ensureConnected() {
+	private suspend fun ensureConnected() {
+		logger.debug("Validating connection")
+
 		if (socketJob == null) reconnect()
 	}
 
-	fun reconnect() {
+	suspend fun reconnect() {
 		// Get base url and access token and check if they're set
 		val baseUrl = checkNotNull(api.baseUrl)
 		val accessToken = checkNotNull(api.accessToken)
 
-		println("RECONNECT")
+		logger.debug("Reconnect requested")
 
 		// Close existing socket
 		socketJob?.cancel()
 
 		// Open socket
-		socketJob = GlobalScope.launch(Dispatchers.IO) {
-			// Create web socket connection
-			api.client.ws({
-				url {
-					// Create from base URL
-					takeFrom(baseUrl.replace("^http".toRegex(), "ws"))
+		withContext(Dispatchers.Unconfined) {
+			socketJob = launch {
+				// Create web socket connection
+				api.client.ws({
+					url {
+						// Create from base URL
+						takeFrom(baseUrl.replace("^http".toRegex(), "ws"))
 
-					// Assign path making sure to remove duplicated slashes between the base and appended path
-					encodedPath = "${encodedPath.trimEnd('/')}/socket"
+						// Assign path making sure to remove duplicated slashes between the base and appended path
+						encodedPath = "${encodedPath.trimEnd('/')}/socket"
 
-					// Add required parameters
-					parameter("api_key", accessToken)
-					parameter("deviceId", api.deviceInfo.id)
+						// Add required parameters
+						parameter("api_key", accessToken)
+						parameter("deviceId", api.deviceInfo.id)
+					}
+				}) {
+					// Bind to messaging channels
+					joinAll(
+						launch { incoming.read() },
+						launch { outgoing.write() },
+					)
 				}
-			}) {
-				// Bind to messaging channels
-				joinAll(
-					launch { incoming.read() },
-					launch { outgoing.write() },
-				)
 			}
 		}
 	}
@@ -182,6 +186,7 @@ class WebSocketApi(
 
 	suspend fun subscribe(): Flow<IncomingSocketMessage> {
 		ensureConnected()
+
 		return incomingMessageChannel.asFlow()
 	}
 
