@@ -1,8 +1,7 @@
 package org.jellyfin.apiclient
 
-import com.google.gson.FieldNamingPolicy
-import com.google.gson.GsonBuilder
 import org.jellyfin.apiclient.api.client.KtorClient
+import org.jellyfin.apiclient.discovery.DiscoveryService
 import org.jellyfin.apiclient.model.ClientInfo
 import org.jellyfin.apiclient.model.DeviceInfo
 
@@ -11,12 +10,8 @@ class Jellyfin(
 ) {
 	constructor(initOptions: JellyfinOptions.Builder.() -> Unit) : this(JellyfinOptions.build(initOptions))
 
-	private val gson = GsonBuilder()
-		.setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-		.create()
-
 	val discovery by lazy {
-		DiscoveryService(gson, options.logger, options.discoverBroadcastAddressesProvider)
+		DiscoveryService(options.discoverBroadcastAddressesProvider)
 	}
 
 	/**

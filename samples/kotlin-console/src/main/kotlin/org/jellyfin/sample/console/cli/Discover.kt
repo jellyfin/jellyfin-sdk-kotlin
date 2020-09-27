@@ -12,7 +12,7 @@ class Discover(
 	override fun execute() = runBlocking {
 		println("Starting discovery")
 
-		jellyfin.discovery.discover().onEach {
+		jellyfin.discovery.discoverLocalServers().onEach {
 			println("Server ${it.name} was found at address ${it.address}:")
 			println("  $it")
 		}.collect()

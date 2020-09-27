@@ -1,25 +1,25 @@
 package org.jellyfin.apiclient.discovery
 
-import com.google.gson.Gson
-import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.isActive
-import org.jellyfin.apiclient.logging.ILogger
+import kotlinx.serialization.SerializationException
+import kotlinx.serialization.json.Json
+import org.jellyfin.apiclient.model.discovery.DiscoveryServerInfo
+import org.slf4j.LoggerFactory
 import java.io.IOException
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.InetAddress
 
 /**
- * A class used to discover Jellyfin servers in the local network.
+ * Used to discover Jellyfin servers in the local network.
  *
- * Use the [discover] function to retrieve a flow of servers until the timeout or maximum server count is hit,
+ * Use the [discover] function to retrieve a flow of servers until the timeout is exceeded or
+ * the maximum amount of servers has been retrieved.
  */
-class ServerDiscovery(
-	private val gson: Gson,
-	private val logger: ILogger,
-	private val discoveryBroadcastAddressesProvider: IDiscoveryBroadcastAddressesProvider = JavaNetBroadcastAddressesProvider()
+class LocalServerDiscovery(
+	private val discoveryBroadcastAddressesProvider: DiscoveryBroadcastAddressesProvider = JavaNetBroadcastAddressesProvider()
 ) {
 	companion object {
 		const val DISCOVERY_MESSAGE = "who is JellyfinServer?"
@@ -28,6 +28,8 @@ class ServerDiscovery(
 		const val DISCOVERY_TIMEOUT = 30 // seconds
 		const val DISCOVERY_MAX_SERVERS = 15
 	}
+
+	private val logger = LoggerFactory.getLogger("LocalServerDiscovery")
 
 	/**
 	 * Send our broadcast message to a given address
@@ -57,16 +59,14 @@ class ServerDiscovery(
 			logger.debug("""Discovery: Received message "%s"""", message)
 
 			// Read as JSON
-			var info = gson.fromJson(message, DiscoveryServerInfo::class.java)
-			if (info.endpointAddress == null && socket.remoteSocketAddress != null)
-				info = info.copy(endpointAddress = socket.remoteSocketAddress.toString())
+			val info = Json.decodeFromString(DiscoveryServerInfo.serializer(), message)
 
 			info
 		} catch (err: IOException) {
 			// Unable to receive
 			logger.error("Discovery: Unable to receive message", err)
 			null
-		} catch (err: JsonSyntaxException) {
+		} catch (err: SerializationException) {
 			// Unable to parse
 			logger.error("Discovery: Unable to deserialize message", err)
 			null
