@@ -13,11 +13,11 @@ import org.jellyfin.apiclient.model.DeviceInfo
 import kotlin.collections.set
 
 open class KtorClient(
-	var baseUrl: String? = null,
+	override var baseUrl: String? = null,
 	var accessToken: String? = null,
 	var clientInfo: ClientInfo,
 	var deviceInfo: DeviceInfo
-) {
+) : ApiClient {
 	val client = HttpClient {
 		install(JsonFeature) {
 			serializer = KotlinxSerializer()
@@ -28,11 +28,7 @@ open class KtorClient(
 		}
 	}
 
-	/**
-	 * Replaces the variables in a path with the values in the map.
-	 * Will also remove trailing and repeated slashes
-	 */
-	fun createPath(path: String, pathParameters: Map<String, Any?>) = path
+	override fun createPath(path: String, pathParameters: Map<String, Any?>) = path
 		.split('/')
 		.filterNot { it.isEmpty() }
 		.map { rawName ->
@@ -48,7 +44,33 @@ open class KtorClient(
 		}
 		.joinToString("/")
 
-	fun createAuthorizationHeader(): String? {
+	override fun createUrl(
+		pathTemplate: String,
+		pathParameters: Map<String, Any?>,
+		queryParameters: Map<String, Any?>,
+	): String {
+		// Check if the base url is not null
+		val baseUrl = checkNotNull(baseUrl)
+
+		return URLBuilder(baseUrl).apply {
+			// Create from base URL
+			takeFrom(baseUrl)
+
+			// Replace path variables
+			val path = createPath(pathTemplate, pathParameters)
+			// Assign path making sure to remove duplicated slashes between the base and appended path
+			encodedPath = "${encodedPath.trimEnd('/')}/${path.trimStart('/')}"
+
+			// Append query parameters
+			queryParameters
+				.filterNot { it.value == null }
+				.forEach {
+					parameters.append(it.key, it.value.toString())
+				}
+		}.buildString()
+	}
+
+	override fun createAuthorizationHeader(): String? {
 		val params = mutableMapOf(
 			"client" to clientInfo.name,
 			"version" to clientInfo.version,
@@ -82,36 +104,15 @@ open class KtorClient(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
-		body: Any? = null
+		requestBody: Any? = null
 	): Response<T> {
-		// Check if the base url is not null
-		val baseUrl = checkNotNull(baseUrl)
-
 		val response = client.request<HttpResponse> {
 			this.method = method
-
-			url {
-				// Create from base URL
-				takeFrom(baseUrl)
-
-				// Replace path variables
-				val path = createPath(pathTemplate, pathParameters)
-				// Assign path making sure to remove duplicated slashes between the base and appended path
-				encodedPath = "${encodedPath.trimEnd('/')}/${path.trimStart('/')}"
-
-				// Append query parameters
-				queryParameters
-					.filterNot { it.value == null }
-					.forEach {
-						parameters.append(it.key, it.value.toString())
-					}
-			}
-
+			url(createUrl(pathTemplate, pathParameters, queryParameters))
 			header(HttpHeaders.Authorization, createAuthorizationHeader())
 
-			if (body != null) {
-				this.body = defaultSerializer().write(body)
-			}
+			if (requestBody != null)
+				body = defaultSerializer().write(requestBody)
 		}
 
 		return Response(response.receive())
@@ -121,38 +122,38 @@ open class KtorClient(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
-		body: Any? = null
+		requestBody: Any? = null
 	) = request<T>(
 		method = HttpMethod.Get,
 		pathTemplate = pathTemplate,
 		pathParameters = pathParameters,
 		queryParameters = queryParameters,
-		body = body
+		requestBody = requestBody
 	)
 
 	suspend inline fun <reified T> post(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
-		body: Any? = null
+		requestBody: Any? = null
 	) = request<T>(
 		method = HttpMethod.Post,
 		pathTemplate = pathTemplate,
 		pathParameters = pathParameters,
 		queryParameters = queryParameters,
-		body = body
+		requestBody = requestBody
 	)
 
 	suspend inline fun <reified T> delete(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
-		body: Any? = null
+		requestBody: Any? = null
 	) = request<T>(
 		method = HttpMethod.Delete,
 		pathTemplate = pathTemplate,
 		pathParameters = pathParameters,
 		queryParameters = queryParameters,
-		body = body
+		requestBody = requestBody
 	)
 }

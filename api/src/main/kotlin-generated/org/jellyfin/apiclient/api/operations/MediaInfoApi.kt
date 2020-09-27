@@ -174,4 +174,16 @@ class MediaInfoApi(
 				data)
 		return response
 	}
+
+	/**
+	 * Tests the network with a request with the size of the bitrate.
+	 *
+	 * @param size The bitrate. Defaults to 102400.
+	 */
+	fun getBitrateTestBytesUrl(size: Int): String {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["size"] = size
+		return api.createUrl("/Playback/BitrateTest", pathParameters, queryParameters)
+	}
 }

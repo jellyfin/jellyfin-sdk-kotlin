@@ -71,7 +71,7 @@ class EnvironmentApi(
 	/**
 	 * Gets network paths.
 	 */
-	@Deprecated("Deprecated in OpenAPI specification")
+	@Deprecated("This member is deprecated and may be removed in the future")
 	suspend fun getNetworkShares(): Response<List<FileSystemEntryInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()

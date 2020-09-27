@@ -37,6 +37,18 @@ class RemoteImageApi(
 	}
 
 	/**
+	 * Gets a remote image.
+	 *
+	 * @param imageUrl The image url.
+	 */
+	fun getRemoteImageUrl(imageUrl: String): String {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["imageUrl"] = imageUrl
+		return api.createUrl("/Images/Remote", pathParameters, queryParameters)
+	}
+
+	/**
 	 * Gets available remote images for an item.
 	 *
 	 * @param itemId Item Id.

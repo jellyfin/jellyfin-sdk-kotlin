@@ -183,6 +183,30 @@ class SubtitleApi(
 	}
 
 	/**
+	 * Gets an HLS subtitle playlist.
+	 *
+	 * @param itemId The item id.
+	 * @param index The subtitle stream index.
+	 * @param mediaSourceId The media source id.
+	 * @param segmentLength The subtitle segment length.
+	 */
+	fun getSubtitlePlaylistUrl(
+		itemId: UUID,
+		index: Int,
+		mediaSourceId: String,
+		segmentLength: Int
+	): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		pathParameters["index"] = index
+		pathParameters["mediaSourceId"] = mediaSourceId
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["segmentLength"] = segmentLength
+		return api.createUrl("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8",
+				pathParameters, queryParameters)
+	}
+
+	/**
 	 * Deletes an external subtitle file.
 	 *
 	 * @param itemId The item id.

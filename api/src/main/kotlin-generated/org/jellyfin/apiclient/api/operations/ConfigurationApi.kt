@@ -56,6 +56,18 @@ class ConfigurationApi(
 	}
 
 	/**
+	 * Gets a named configuration.
+	 *
+	 * @param key Configuration key.
+	 */
+	fun getNamedConfigurationUrl(key: String): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["key"] = key
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/System/Configuration/{key}", pathParameters, queryParameters)
+	}
+
+	/**
 	 * Updates named configuration.
 	 *
 	 * @param key Configuration key.

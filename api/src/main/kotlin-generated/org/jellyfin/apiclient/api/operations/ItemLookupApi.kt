@@ -108,6 +108,20 @@ class ItemLookupApi(
 	}
 
 	/**
+	 * Gets a remote image.
+	 *
+	 * @param imageUrl The image url.
+	 * @param providerName The provider name.
+	 */
+	fun getRemoteSearchImageUrl(imageUrl: String, providerName: String): String {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["imageUrl"] = imageUrl
+		queryParameters["providerName"] = providerName
+		return api.createUrl("/Items/RemoteSearch/Image", pathParameters, queryParameters)
+	}
+
+	/**
 	 * Get movie remote search.
 	 */
 	suspend fun getMovieRemoteSearchResults(data: MovieInfoRemoteSearchQuery):

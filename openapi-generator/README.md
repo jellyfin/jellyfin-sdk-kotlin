@@ -16,15 +16,21 @@ OpenAPI specification changes.
 Hooks are classes that will modify the output of the generator. They should be registered in the
 `HookModule.kt` file. The following hooks are available:
 
-- **TypeBuilderHook**  
-  A hook that can intercept the TypeBuilder which converts OpenAPI schemas to Kotlin types. It
-   receives the schema and a type path. The path is unique across the whole document and can be used
-   to identified specific properties. This hook is called when generating types for:
-   
-   - model properties
-   - api operation parameters
-   - api operation bodies
-   - api operation return types
+  - **TypeBuilderHook**  
+    A hook that can intercept the TypeBuilder which converts OpenAPI schemas to Kotlin types. It
+    receives the schema and a type path. The path is unique across the whole document and can be used
+    to identified specific properties. This hook is called when generating types for:
+     
+      - model properties
+      - api operation parameters
+      - api operation bodies
+      - api operation return types
+
+  - **OperationUrlHook**
+    A hook that can request a url function to be added for an API operation. It receives the model for
+    a complete api service and a single operation. If any hook returns `true` the generator will add
+    a special function called `[operation]Url` (like "GetImageUrl") that will return a string
+    containing the request url. 
 
 ## Phases
 

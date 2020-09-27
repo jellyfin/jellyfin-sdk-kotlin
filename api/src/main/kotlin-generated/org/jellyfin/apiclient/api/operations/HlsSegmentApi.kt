@@ -38,6 +38,21 @@ class HlsSegmentApi(
 	 * @param itemId The item id.
 	 * @param segmentId The segment id.
 	 */
+	fun getHlsAudioSegmentLegacyAacUrl(itemId: String, segmentId: String): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		pathParameters["segmentId"] = segmentId
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Audio/{itemId}/hls/{segmentId}/stream.aac", pathParameters,
+				queryParameters)
+	}
+
+	/**
+	 * Gets the specified audio segment for an audio item.
+	 *
+	 * @param itemId The item id.
+	 * @param segmentId The segment id.
+	 */
 	suspend fun getHlsAudioSegmentLegacyMp3(itemId: String, segmentId: String): Response<InputStream> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -47,6 +62,21 @@ class HlsSegmentApi(
 		val response = api.get<InputStream>("/Audio/{itemId}/hls/{segmentId}/stream.mp3", pathParameters,
 				queryParameters, data)
 		return response
+	}
+
+	/**
+	 * Gets the specified audio segment for an audio item.
+	 *
+	 * @param itemId The item id.
+	 * @param segmentId The segment id.
+	 */
+	fun getHlsAudioSegmentLegacyMp3Url(itemId: String, segmentId: String): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		pathParameters["segmentId"] = segmentId
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Audio/{itemId}/hls/{segmentId}/stream.mp3", pathParameters,
+				queryParameters)
 	}
 
 	/**
@@ -77,6 +107,30 @@ class HlsSegmentApi(
 	}
 
 	/**
+	 * Gets a hls video segment.
+	 *
+	 * @param itemId The item id.
+	 * @param playlistId The playlist id.
+	 * @param segmentId The segment id.
+	 * @param segmentContainer The segment container.
+	 */
+	fun getHlsVideoSegmentLegacyUrl(
+		itemId: String,
+		playlistId: String,
+		segmentId: String,
+		segmentContainer: String
+	): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		pathParameters["playlistId"] = playlistId
+		pathParameters["segmentId"] = segmentId
+		pathParameters["segmentContainer"] = segmentContainer
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Videos/{itemId}/hls/{playlistId}/{segmentId}.{segmentContainer}",
+				pathParameters, queryParameters)
+	}
+
+	/**
 	 * Gets a hls video playlist.
 	 *
 	 * @param itemId The video id.
@@ -91,6 +145,21 @@ class HlsSegmentApi(
 		val response = api.get<InputStream>("/Videos/{itemId}/hls/{playlistId}/stream.m3u8",
 				pathParameters, queryParameters, data)
 		return response
+	}
+
+	/**
+	 * Gets a hls video playlist.
+	 *
+	 * @param itemId The video id.
+	 * @param playlistId The playlist id.
+	 */
+	fun getHlsPlaylistLegacyUrl(itemId: String, playlistId: String): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		pathParameters["playlistId"] = playlistId
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Videos/{itemId}/hls/{playlistId}/stream.m3u8", pathParameters,
+				queryParameters)
 	}
 
 	/**

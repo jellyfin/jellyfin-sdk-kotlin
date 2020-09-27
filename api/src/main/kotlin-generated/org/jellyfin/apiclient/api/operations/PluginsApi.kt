@@ -81,7 +81,7 @@ class PluginsApi(
 	 *
 	 * @param name Feature name.
 	 */
-	@Deprecated("Deprecated in OpenAPI specification")
+	@Deprecated("This member is deprecated and may be removed in the future")
 	suspend fun getRegistrationStatus(name: String): Response<MbRegistrationRecord> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -97,7 +97,7 @@ class PluginsApi(
 	 *
 	 * @param name Feature name.
 	 */
-	@Deprecated("Deprecated in OpenAPI specification")
+	@Deprecated("This member is deprecated and may be removed in the future")
 	suspend fun getRegistration(name: String): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -111,7 +111,7 @@ class PluginsApi(
 	/**
 	 * Get plugin security info.
 	 */
-	@Deprecated("Deprecated in OpenAPI specification")
+	@Deprecated("This member is deprecated and may be removed in the future")
 	suspend fun getPluginSecurityInfo(): Response<PluginSecurityInfo> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
@@ -124,7 +124,7 @@ class PluginsApi(
 	/**
 	 * Updates plugin security info.
 	 */
-	@Deprecated("Deprecated in OpenAPI specification")
+	@Deprecated("This member is deprecated and may be removed in the future")
 	suspend fun updatePluginSecurityInfo(data: PluginSecurityInfo): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()

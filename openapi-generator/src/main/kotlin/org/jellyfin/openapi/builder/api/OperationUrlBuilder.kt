@@ -1,25 +1,17 @@
 package org.jellyfin.openapi.builder.api
 
-import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FunSpec
-import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.ParameterSpec
-import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.plusParameter
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
-import org.jellyfin.openapi.constants.Classes
-import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
 
-class OperationBuilder(
+class OperationUrlBuilder(
 	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder
 ) : Builder<ApiServiceOperation, FunSpec> {
-	private fun buildFunctionShell(data: ApiServiceOperation) = FunSpec.builder(data.name).apply {
-		// Make function suspended
-		addModifiers(KModifier.SUSPEND)
-
+	private fun buildFunctionShell(data: ApiServiceOperation) = FunSpec.builder(data.name + "Url").apply {
 		// Add description
 		data.description?.let { addKdoc("%L", it) }
 
@@ -27,7 +19,7 @@ class OperationBuilder(
 		if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_MEMBER))
 
 		// Set return type
-		returns(ClassName(Packages.API_CLIENT, Classes.API_RESPONSE).plusParameter(data.returnType))
+		returns(String::class)
 	}
 
 	private fun buildParameter(data: ApiServiceOperationParameter) = ParameterSpec.builder(data.name, data.type).apply {
@@ -65,19 +57,10 @@ class OperationBuilder(
 		addParameterMapStatements("pathParameters", data.pathParameters)
 		addParameterMapStatements("queryParameters", data.queryParameters)
 
-		// Add request body
-		if (data.bodyType != null) addParameter(ParameterSpec("data", data.bodyType))
-		else addStatement("val data = null")
-
 		// Call API
 		addStatement(
-			"val response = api.%N<%T>(%S, pathParameters, queryParameters, data)",
-			data.method.toString().toLowerCase(),
-			data.returnType,
+			"return·api.createUrl(%S, pathParameters, queryParameters)",
 			data.pathTemplate
 		)
-
-		// Return response
-		addStatement("return·response")
 	}.build()
 }

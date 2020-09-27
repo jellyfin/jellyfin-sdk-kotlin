@@ -3,6 +3,7 @@ package org.jellyfin.openapi
 import org.jellyfin.openapi.builder.api.ApiBuilder
 import org.jellyfin.openapi.builder.api.ApiNameBuilder
 import org.jellyfin.openapi.builder.api.OperationBuilder
+import org.jellyfin.openapi.builder.api.OperationUrlBuilder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.FileSpecBuilder
 import org.jellyfin.openapi.builder.extra.TypeSerializerBuilder
@@ -28,7 +29,8 @@ val mainModule = module {
 	// API
 	single { ApiNameBuilder() }
 	single { OperationBuilder(get()) }
-	single { ApiBuilder(get()) }
+	single { OperationUrlBuilder(get()) }
+	single { ApiBuilder(get(), get(), getAll()) }
 
 	// Models
 	single { ModelBuilder(get(), get(), get()) }
