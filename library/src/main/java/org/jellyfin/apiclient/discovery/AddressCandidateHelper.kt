@@ -87,7 +87,7 @@ class AddressCandidateHelper(
 	}
 
 	/**
-	 * Add a base url ([JF_BASE_URL]) for each candidate with a root or no path
+	 * Add a base url ([JF_BASE_URL]) for each candidate with a root or no path.
 	 */
 	fun addBaseUrlCandidates() {
 		logger.debug("Adding base url candidates")
@@ -149,11 +149,10 @@ class AddressCandidateHelper(
 	}
 
 	/**
-	 * Return all candidate URLs as string
+	 * Get all deduplicated candidate URLs as strings.
+	 * Call [prioritize] before if a sorted list is desired.
 	 */
 	fun getCandidates(): Collection<String> = candidates
-		// Convert to strings
 		.map { it.toString() }
-		// Remove duplicates
 		.distinct()
 }
