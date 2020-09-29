@@ -11,6 +11,7 @@ import java.io.IOException
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.InetAddress
+import java.net.SocketTimeoutException
 
 /**
  * Used to discover Jellyfin servers in the local network.
@@ -62,6 +63,10 @@ class LocalServerDiscovery(
 			val info = Json.decodeFromString(DiscoveryServerInfo.serializer(), message)
 
 			info
+		} catch (err: SocketTimeoutException) {
+			// Unable to receive due too timeout, which is common for non-Jellyfin devices
+			// Just ignore
+			null
 		} catch (err: IOException) {
 			// Unable to receive
 			logger.error("Discovery: Unable to receive message", err)
