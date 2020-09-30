@@ -26,9 +26,6 @@ dependencies {
 
 	// The CLI library
 	implementation(Dependencies.KotlinX.cli)
-
-	// Use JSON
-	implementation(Dependencies.gson)
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {

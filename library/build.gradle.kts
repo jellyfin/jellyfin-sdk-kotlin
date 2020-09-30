@@ -8,11 +8,16 @@ dependencies {
 
 	implementation(Dependencies.Kotlin.stdlib)
 	implementation(Dependencies.KotlinX.coroutinesCore)
+	implementation(Dependencies.KotlinX.serializationCore)
 
-	implementation(Dependencies.javaWebSocket)
-	implementation(Dependencies.gson)
+	implementation(Dependencies.Ktor.http)
 
-	testImplementation(Dependencies.junit)
+	// Logging
+	implementation(Dependencies.Slf4j.api)
+	testImplementation(Dependencies.Slf4j.simple)
+
+	// Testing
+	testImplementation(Dependencies.Kotlin.Test.junit)
 }
 
 val sourcesJar by tasks.creating(Jar::class) {

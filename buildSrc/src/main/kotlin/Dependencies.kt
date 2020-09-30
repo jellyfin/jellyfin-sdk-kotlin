@@ -37,6 +37,8 @@ object Dependencies {
 
 		val okhttp = item("client-okhttp")
 		val serialization = item("client-serialization-jvm")
+
+		val http = item("http")
 	}
 
 	object Koin {
@@ -46,12 +48,16 @@ object Dependencies {
 		val core = item("core")
 	}
 
+	object Slf4j {
+		private const val version = "1.6.1"
+		private fun item(module: String) = "org.slf4j:slf4j-$module:$version"
+
+		val api = item("api")
+		val simple = item("simple")
+	}
+
 	// Non-categorised dependencies
 	const val androidBuildTools = "com.android.tools.build:gradle:4.0.1"
-	const val volley = "com.android.volley:volley:1.1.1"
-	const val gson = "com.google.code.gson:gson:2.8.6"
-	const val javaWebSocket = "org.java-websocket:Java-WebSocket:1.4.1"
-	const val junit = "junit:junit:4.12"
 	const val swaggerParser = "io.swagger.parser.v3:swagger-parser:2.0.19"
 	const val kotlinPoet = "com.squareup:kotlinpoet:1.6.0"
 }

@@ -11,9 +11,10 @@ import java.net.InetAddress
  */
 class AndroidBroadcastAddressesProvider(
 	private val context: Context
-) : IDiscoveryBroadcastAddressesProvider {
+) : DiscoveryBroadcastAddressesProvider {
 	/**
-	 * Retrieve the broadcast address using the Android WifiManager
+	 * Retrieve the broadcast address using the Android WifiManager.
+	 * Required the ACCESS_WIFI_STATE permission which is not enabled by default.
 	 */
 	@RequiresPermission("android.permission.ACCESS_WIFI_STATE")
 	override suspend fun getBroadcastAddresses(): Collection<InetAddress> {

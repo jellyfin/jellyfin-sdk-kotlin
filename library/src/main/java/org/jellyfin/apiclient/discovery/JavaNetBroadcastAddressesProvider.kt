@@ -6,7 +6,7 @@ import java.net.NetworkInterface
 /**
  * A broadcast address provider that works in the default JVM but not on Android
  */
-class JavaNetBroadcastAddressesProvider : IDiscoveryBroadcastAddressesProvider {
+class JavaNetBroadcastAddressesProvider : DiscoveryBroadcastAddressesProvider {
 	override suspend fun getBroadcastAddresses(): Collection<InetAddress> =
 		NetworkInterface.getNetworkInterfaces().toList()
 			.filter { !it.isLoopback && it.isUp }

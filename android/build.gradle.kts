@@ -64,6 +64,4 @@ dependencies {
 
 	implementation(Dependencies.AndroidX.core)
 	implementation(Dependencies.AndroidX.annotation)
-
-	implementation(Dependencies.volley)
 }

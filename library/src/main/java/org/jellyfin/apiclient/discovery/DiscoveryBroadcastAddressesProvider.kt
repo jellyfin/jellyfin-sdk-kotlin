@@ -3,9 +3,10 @@ package org.jellyfin.apiclient.discovery
 import java.net.InetAddress
 
 /**
- * Interface for broadcast address providers to support different platforms to use server discovery
+ * Broadcast address provider definition that can be implemented to support different platforms for
+ * server discovery.
  */
-interface IDiscoveryBroadcastAddressesProvider {
+interface DiscoveryBroadcastAddressesProvider {
 	/**
 	 * Provide broadcast addresses
 	 */
