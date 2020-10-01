@@ -1075,7 +1075,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The audio container."
+              "description": "The audio container.",
+              "nullable": true
             }
           },
           {
@@ -1606,7 +1607,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The audio container."
+              "description": "The audio container.",
+              "nullable": true
             }
           },
           {
@@ -2139,7 +2141,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The audio container."
+              "description": "The audio container.",
+              "nullable": true
             }
           },
           {
@@ -2670,7 +2673,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The audio container."
+              "description": "The audio container.",
+              "nullable": true
             }
           },
           {
@@ -5470,7 +5474,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv."
+              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.",
+              "nullable": true
             }
           },
           {
@@ -5997,16 +6002,6 @@
             }
           },
           {
-            "name": "container",
-            "in": "path",
-            "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv."
-            }
-          },
-          {
             "name": "static",
             "in": "query",
             "description": "Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.",
@@ -6527,16 +6522,6 @@
               "type": "string",
               "description": "The item id.",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "container",
-            "in": "path",
-            "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv."
             }
           },
           {
@@ -7068,16 +7053,6 @@
               "type": "string",
               "description": "The item id.",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "container",
-            "in": "path",
-            "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv."
             }
           },
           {
@@ -7641,7 +7616,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv."
+              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.",
+              "nullable": true
             }
           },
           {
@@ -8168,16 +8144,6 @@
             }
           },
           {
-            "name": "container",
-            "in": "path",
-            "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv."
-            }
-          },
-          {
             "name": "static",
             "in": "query",
             "description": "Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.",
@@ -8698,16 +8664,6 @@
               "type": "string",
               "description": "The item id.",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "container",
-            "in": "path",
-            "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv."
             }
           },
           {
@@ -9239,16 +9195,6 @@
               "type": "string",
               "description": "The item id.",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "container",
-            "in": "path",
-            "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv."
             }
           },
           {
@@ -10905,66 +10851,66 @@
           },
           {
             "name": "tag",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers."
+              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
+              "nullable": true
             }
           },
           {
             "name": "format",
-            "in": "path",
+            "in": "query",
             "description": "Determines the output format of the image - original,gif,jpg,png.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Determines the output format of the image - original,gif,jpg,png."
+              "description": "Determines the output format of the image - original,gif,jpg,png.",
+              "nullable": true
             }
           },
           {
             "name": "maxWidth",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image width to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image width to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "maxHeight",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image height to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image height to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "percentPlayed",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Percent to render for the percent played overlay.",
-            "required": true,
             "schema": {
               "type": "number",
               "description": "Optional. Percent to render for the percent played overlay.",
-              "format": "double"
+              "format": "double",
+              "nullable": true
             }
           },
           {
             "name": "unplayedCount",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Unplayed count overlay to render.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "Optional. Unplayed count overlay to render.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -11124,66 +11070,66 @@
           },
           {
             "name": "tag",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers."
+              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
+              "nullable": true
             }
           },
           {
             "name": "format",
-            "in": "path",
+            "in": "query",
             "description": "Determines the output format of the image - original,gif,jpg,png.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Determines the output format of the image - original,gif,jpg,png."
+              "description": "Determines the output format of the image - original,gif,jpg,png.",
+              "nullable": true
             }
           },
           {
             "name": "maxWidth",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image width to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image width to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "maxHeight",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image height to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image height to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "percentPlayed",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Percent to render for the percent played overlay.",
-            "required": true,
             "schema": {
               "type": "number",
               "description": "Optional. Percent to render for the percent played overlay.",
-              "format": "double"
+              "format": "double",
+              "nullable": true
             }
           },
           {
             "name": "unplayedCount",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Unplayed count overlay to render.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "Optional. Unplayed count overlay to render.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -11345,66 +11291,66 @@
           },
           {
             "name": "tag",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers."
+              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
+              "nullable": true
             }
           },
           {
             "name": "format",
-            "in": "path",
+            "in": "query",
             "description": "Determines the output format of the image - original,gif,jpg,png.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Determines the output format of the image - original,gif,jpg,png."
+              "description": "Determines the output format of the image - original,gif,jpg,png.",
+              "nullable": true
             }
           },
           {
             "name": "maxWidth",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image width to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image width to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "maxHeight",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image height to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image height to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "percentPlayed",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Percent to render for the percent played overlay.",
-            "required": true,
             "schema": {
               "type": "number",
               "description": "Optional. Percent to render for the percent played overlay.",
-              "format": "double"
+              "format": "double",
+              "nullable": true
             }
           },
           {
             "name": "unplayedCount",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Unplayed count overlay to render.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "Optional. Unplayed count overlay to render.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -11499,7 +11445,8 @@
             "schema": {
               "type": "integer",
               "description": "Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -11564,66 +11511,66 @@
           },
           {
             "name": "tag",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers."
+              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
+              "nullable": true
             }
           },
           {
             "name": "format",
-            "in": "path",
+            "in": "query",
             "description": "Determines the output format of the image - original,gif,jpg,png.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Determines the output format of the image - original,gif,jpg,png."
+              "description": "Determines the output format of the image - original,gif,jpg,png.",
+              "nullable": true
             }
           },
           {
             "name": "maxWidth",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image width to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image width to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "maxHeight",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image height to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image height to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "percentPlayed",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Percent to render for the percent played overlay.",
-            "required": true,
             "schema": {
               "type": "number",
               "description": "Optional. Percent to render for the percent played overlay.",
-              "format": "double"
+              "format": "double",
+              "nullable": true
             }
           },
           {
             "name": "unplayedCount",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Unplayed count overlay to render.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "Optional. Unplayed count overlay to render.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -11718,7 +11665,8 @@
             "schema": {
               "type": "integer",
               "description": "Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -11865,7 +11813,8 @@
             "schema": {
               "type": "integer",
               "description": "The image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -11930,7 +11879,8 @@
             "schema": {
               "type": "integer",
               "description": "(Unused) Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -11989,24 +11939,24 @@
           },
           {
             "name": "maxWidth",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image width to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image width to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "maxHeight",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image height to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image height to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -12143,7 +12093,8 @@
             "schema": {
               "type": "integer",
               "description": "Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -12209,24 +12160,24 @@
           },
           {
             "name": "maxWidth",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image width to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image width to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "maxHeight",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image height to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image height to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -12363,7 +12314,8 @@
             "schema": {
               "type": "integer",
               "description": "Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -12437,7 +12389,8 @@
             "schema": {
               "type": "integer",
               "description": "The image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -12502,7 +12455,8 @@
             "schema": {
               "type": "integer",
               "description": "(Unused) Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -12561,24 +12515,24 @@
           },
           {
             "name": "maxWidth",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image width to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image width to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "maxHeight",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image height to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image height to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -12715,7 +12669,8 @@
             "schema": {
               "type": "integer",
               "description": "Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -12781,24 +12736,24 @@
           },
           {
             "name": "maxWidth",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image width to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image width to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "maxHeight",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image height to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image height to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -12935,7 +12890,8 @@
             "schema": {
               "type": "integer",
               "description": "Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -13521,66 +13477,66 @@
           },
           {
             "name": "tag",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers."
+              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
+              "nullable": true
             }
           },
           {
             "name": "format",
-            "in": "path",
+            "in": "query",
             "description": "Determines the output format of the image - original,gif,jpg,png.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Determines the output format of the image - original,gif,jpg,png."
+              "description": "Determines the output format of the image - original,gif,jpg,png.",
+              "nullable": true
             }
           },
           {
             "name": "maxWidth",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image width to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image width to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "maxHeight",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image height to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image height to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "percentPlayed",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Percent to render for the percent played overlay.",
-            "required": true,
             "schema": {
               "type": "number",
               "description": "Optional. Percent to render for the percent played overlay.",
-              "format": "double"
+              "format": "double",
+              "nullable": true
             }
           },
           {
             "name": "unplayedCount",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Unplayed count overlay to render.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "Optional. Unplayed count overlay to render.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -13675,7 +13631,8 @@
             "schema": {
               "type": "integer",
               "description": "Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -13740,66 +13697,66 @@
           },
           {
             "name": "tag",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers."
+              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
+              "nullable": true
             }
           },
           {
             "name": "format",
-            "in": "path",
+            "in": "query",
             "description": "Determines the output format of the image - original,gif,jpg,png.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Determines the output format of the image - original,gif,jpg,png."
+              "description": "Determines the output format of the image - original,gif,jpg,png.",
+              "nullable": true
             }
           },
           {
             "name": "maxWidth",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image width to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image width to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "maxHeight",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image height to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image height to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "percentPlayed",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Percent to render for the percent played overlay.",
-            "required": true,
             "schema": {
               "type": "number",
               "description": "Optional. Percent to render for the percent played overlay.",
-              "format": "double"
+              "format": "double",
+              "nullable": true
             }
           },
           {
             "name": "unplayedCount",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Unplayed count overlay to render.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "Optional. Unplayed count overlay to render.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -13894,7 +13851,8 @@
             "schema": {
               "type": "integer",
               "description": "Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -13961,66 +13919,66 @@
           },
           {
             "name": "tag",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers."
+              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
+              "nullable": true
             }
           },
           {
             "name": "format",
-            "in": "path",
+            "in": "query",
             "description": "Determines the output format of the image - original,gif,jpg,png.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Determines the output format of the image - original,gif,jpg,png."
+              "description": "Determines the output format of the image - original,gif,jpg,png.",
+              "nullable": true
             }
           },
           {
             "name": "maxWidth",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image width to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image width to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "maxHeight",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image height to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image height to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "percentPlayed",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Percent to render for the percent played overlay.",
-            "required": true,
             "schema": {
               "type": "number",
               "description": "Optional. Percent to render for the percent played overlay.",
-              "format": "double"
+              "format": "double",
+              "nullable": true
             }
           },
           {
             "name": "unplayedCount",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Unplayed count overlay to render.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "Optional. Unplayed count overlay to render.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -14115,7 +14073,8 @@
             "schema": {
               "type": "integer",
               "description": "Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -14180,66 +14139,66 @@
           },
           {
             "name": "tag",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers."
+              "description": "Optional. Supply the cache tag from the item object to receive strong caching headers.",
+              "nullable": true
             }
           },
           {
             "name": "format",
-            "in": "path",
+            "in": "query",
             "description": "Determines the output format of the image - original,gif,jpg,png.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Determines the output format of the image - original,gif,jpg,png."
+              "description": "Determines the output format of the image - original,gif,jpg,png.",
+              "nullable": true
             }
           },
           {
             "name": "maxWidth",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image width to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image width to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "maxHeight",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image height to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image height to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "percentPlayed",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Percent to render for the percent played overlay.",
-            "required": true,
             "schema": {
               "type": "number",
               "description": "Optional. Percent to render for the percent played overlay.",
-              "format": "double"
+              "format": "double",
+              "nullable": true
             }
           },
           {
             "name": "unplayedCount",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Unplayed count overlay to render.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "Optional. Unplayed count overlay to render.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -14334,7 +14293,8 @@
             "schema": {
               "type": "integer",
               "description": "Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -14421,46 +14381,46 @@
           },
           {
             "name": "maxWidth",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image width to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image width to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "maxHeight",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image height to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image height to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "percentPlayed",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Percent to render for the percent played overlay.",
-            "required": true,
             "schema": {
               "type": "number",
               "description": "Optional. Percent to render for the percent played overlay.",
-              "format": "double"
+              "format": "double",
+              "nullable": true
             }
           },
           {
             "name": "unplayedCount",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Unplayed count overlay to render.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "Optional. Unplayed count overlay to render.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -14555,7 +14515,8 @@
             "schema": {
               "type": "integer",
               "description": "Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -14640,46 +14601,46 @@
           },
           {
             "name": "maxWidth",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image width to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image width to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "maxHeight",
-            "in": "path",
+            "in": "query",
             "description": "The maximum image height to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "The maximum image height to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "percentPlayed",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Percent to render for the percent played overlay.",
-            "required": true,
             "schema": {
               "type": "number",
               "description": "Optional. Percent to render for the percent played overlay.",
-              "format": "double"
+              "format": "double",
+              "nullable": true
             }
           },
           {
             "name": "unplayedCount",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Unplayed count overlay to render.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "Optional. Unplayed count overlay to render.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -14774,7 +14735,8 @@
             "schema": {
               "type": "integer",
               "description": "Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -14848,7 +14810,8 @@
             "schema": {
               "type": "integer",
               "description": "(Unused) Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -15063,7 +15026,8 @@
             "schema": {
               "type": "integer",
               "description": "Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -15283,7 +15247,8 @@
             "schema": {
               "type": "integer",
               "description": "Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -15357,7 +15322,8 @@
             "schema": {
               "type": "integer",
               "description": "(Unused) Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           }
         ],
@@ -15424,7 +15390,8 @@
             "schema": {
               "type": "integer",
               "description": "(Unused) Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -15499,7 +15466,8 @@
             "schema": {
               "type": "integer",
               "description": "(Unused) Image index.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
@@ -16753,7 +16721,7 @@
         }
       }
     },
-    "/Items/RemoteSearch/Apply/{id}": {
+    "/Items/RemoteSearch/Apply/{itemId}": {
       "post": {
         "tags": [
           "ItemLookup"
@@ -16780,14 +16748,6 @@
               "type": "boolean",
               "description": "Optional. Whether or not to replace all images. Default: True.",
               "default": true
-            }
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -17510,7 +17470,8 @@
             "schema": {
               "type": "string",
               "description": "The user id supplied in the /Users/{uid}/Items.",
-              "format": "uuid"
+              "format": "uuid",
+              "nullable": true
             }
           },
           {
@@ -18414,7 +18375,8 @@
             "schema": {
               "type": "string",
               "description": "The user id supplied in the /Users/{uid}/Items.",
-              "format": "uuid"
+              "format": "uuid",
+              "nullable": true
             }
           },
           {
@@ -19572,10 +19534,10 @@
             "name": "contentType",
             "in": "query",
             "description": "The content type of the item.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "The content type of the item."
+              "description": "The content type of the item.",
+              "nullable": true
             }
           }
         ],
@@ -20616,22 +20578,22 @@
         "parameters": [
           {
             "name": "tmdbId",
-            "in": "path",
+            "in": "query",
             "description": "The tmdbId.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "The tmdbId."
+              "description": "The tmdbId.",
+              "nullable": true
             }
           },
           {
             "name": "imdbId",
-            "in": "path",
+            "in": "query",
             "description": "The imdbId.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "The imdbId."
+              "description": "The imdbId.",
+              "nullable": true
             }
           }
         ],
@@ -20652,22 +20614,22 @@
         "parameters": [
           {
             "name": "tmdbId",
-            "in": "path",
+            "in": "query",
             "description": "The tmdbId.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "The tmdbId."
+              "description": "The tmdbId.",
+              "nullable": true
             }
           },
           {
             "name": "imdbId",
-            "in": "path",
+            "in": "query",
             "description": "The imdbId.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "The imdbId."
+              "description": "The imdbId.",
+              "nullable": true
             }
           }
         ],
@@ -25747,6 +25709,16 @@
               "description": "Optional version. Defaults to latest version.",
               "nullable": true
             }
+          },
+          {
+            "name": "repositoryUrl",
+            "in": "query",
+            "description": "Optional. Specify the repository to install from.",
+            "schema": {
+              "type": "string",
+              "description": "Optional. Specify the repository to install from.",
+              "nullable": true
+            }
           }
         ],
         "responses": {
@@ -26456,7 +26428,7 @@
           },
           {
             "name": "userId",
-            "in": "path",
+            "in": "query",
             "description": "User id.",
             "required": true,
             "schema": {
@@ -26467,75 +26439,75 @@
           },
           {
             "name": "startIndex",
-            "in": "path",
+            "in": "query",
             "description": "Optional. The record index to start at. All items with a lower index will be dropped from the results.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "Optional. The record index to start at. All items with a lower index will be dropped from the results.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "limit",
-            "in": "path",
+            "in": "query",
             "description": "Optional. The maximum number of records to return.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "Optional. The maximum number of records to return.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "fields",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines."
+              "description": "Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines.",
+              "nullable": true
             }
           },
           {
             "name": "enableImages",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Include image information in output.",
-            "required": true,
             "schema": {
               "type": "boolean",
-              "description": "Optional. Include image information in output."
+              "description": "Optional. Include image information in output.",
+              "nullable": true
             }
           },
           {
             "name": "enableUserData",
-            "in": "path",
+            "in": "query",
             "description": "Optional. Include user data.",
-            "required": true,
             "schema": {
               "type": "boolean",
-              "description": "Optional. Include user data."
+              "description": "Optional. Include user data.",
+              "nullable": true
             }
           },
           {
             "name": "imageTypeLimit",
-            "in": "path",
+            "in": "query",
             "description": "Optional. The max number of images to return, per image type.",
-            "required": true,
             "schema": {
               "type": "integer",
               "description": "Optional. The max number of images to return, per image type.",
-              "format": "int32"
+              "format": "int32",
+              "nullable": true
             }
           },
           {
             "name": "enableImageTypes",
-            "in": "path",
+            "in": "query",
             "description": "Optional. The image types to include in the output.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "Optional. The image types to include in the output."
+              "description": "Optional. The image types to include in the output.",
+              "nullable": true
             }
           }
         ],
@@ -28866,8 +28838,7 @@
             "description": "The command to send.",
             "required": true,
             "schema": {
-              "type": "string",
-              "description": "The command to send."
+              "$ref": "#/components/schemas/GeneralCommandType"
             }
           }
         ],
@@ -28910,10 +28881,10 @@
             "name": "header",
             "in": "query",
             "description": "The message header.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "The message header."
+              "description": "The message header.",
+              "nullable": true
             }
           },
           {
@@ -28954,17 +28925,22 @@
             }
           },
           {
+            "name": "playCommand",
+            "in": "query",
+            "description": "The type of play command to issue (PlayNow, PlayNext, PlayLast). Clients who have not yet implemented play next and play last may play now.",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/PlayCommand"
+            }
+          },
+          {
             "name": "itemIds",
             "in": "query",
             "description": "The ids of the items to play, comma delimited.",
+            "required": true,
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "description": "The ids of the items to play, comma delimited.",
-              "nullable": true
+              "type": "string",
+              "description": "The ids of the items to play, comma delimited."
             }
           },
           {
@@ -28976,14 +28952,6 @@
               "description": "The starting position of the first item.",
               "format": "int64",
               "nullable": true
-            }
-          },
-          {
-            "name": "playCommand",
-            "in": "query",
-            "description": "The type of play command to issue (PlayNow, PlayNext, PlayLast). Clients who have not yet implemented play next and play last may play now.",
-            "schema": {
-              "$ref": "#/components/schemas/PlayCommand"
             }
           }
         ],
@@ -29015,32 +28983,34 @@
           {
             "name": "command",
             "in": "path",
+            "description": "The MediaBrowser.Model.Session.PlaystateCommand.",
             "required": true,
             "schema": {
-              "type": "string"
+              "$ref": "#/components/schemas/PlaystateCommand"
+            }
+          },
+          {
+            "name": "seekPositionTicks",
+            "in": "query",
+            "description": "The optional position ticks.",
+            "schema": {
+              "type": "integer",
+              "description": "The optional position ticks.",
+              "format": "int64",
+              "nullable": true
+            }
+          },
+          {
+            "name": "controllingUserId",
+            "in": "query",
+            "description": "The optional controlling user id.",
+            "schema": {
+              "type": "string",
+              "description": "The optional controlling user id.",
+              "nullable": true
             }
           }
         ],
-        "requestBody": {
-          "description": "The MediaBrowser.Model.Session.PlaystateRequest.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PlaystateRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PlaystateRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PlaystateRequest"
-              }
-            }
-          }
-        },
         "responses": {
           "204": {
             "description": "Playstate command sent to session."
@@ -29072,8 +29042,7 @@
             "description": "The command to send.",
             "required": true,
             "schema": {
-              "type": "string",
-              "description": "The command to send."
+              "$ref": "#/components/schemas/GeneralCommandType"
             }
           }
         ],
@@ -29224,10 +29193,10 @@
             "name": "id",
             "in": "query",
             "description": "The session id.",
-            "required": true,
             "schema": {
               "type": "string",
-              "description": "The session id."
+              "description": "The session id.",
+              "nullable": true
             }
           },
           {
@@ -29371,10 +29340,10 @@
             "name": "itemId",
             "in": "query",
             "description": "The item id.",
+            "required": true,
             "schema": {
               "type": "string",
-              "description": "The item id.",
-              "nullable": true
+              "description": "The item id."
             }
           }
         ],
@@ -31983,11 +31952,11 @@
             "name": "userId",
             "in": "query",
             "description": "The user id.",
-            "required": true,
             "schema": {
               "type": "string",
               "description": "The user id.",
-              "format": "uuid"
+              "format": "uuid",
+              "nullable": true
             }
           },
           {
@@ -32191,11 +32160,11 @@
             "name": "userId",
             "in": "query",
             "description": "The user id.",
-            "required": true,
             "schema": {
               "type": "string",
               "description": "The user id.",
-              "format": "uuid"
+              "format": "uuid",
+              "nullable": true
             }
           },
           {
@@ -32336,11 +32305,11 @@
             "name": "userId",
             "in": "query",
             "description": "The user id of the user to get the next up episodes for.",
-            "required": true,
             "schema": {
               "type": "string",
               "description": "The user id of the user to get the next up episodes for.",
-              "format": "uuid"
+              "format": "uuid",
+              "nullable": true
             }
           },
           {
@@ -32483,11 +32452,11 @@
             "name": "userId",
             "in": "query",
             "description": "The user id of the user to get the upcoming episodes for.",
-            "required": true,
             "schema": {
               "type": "string",
               "description": "The user id of the user to get the upcoming episodes for.",
-              "format": "uuid"
+              "format": "uuid",
+              "nullable": true
             }
           },
           {
@@ -32624,7 +32593,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Optional. The audio container."
+              "description": "Optional. The audio container.",
+              "nullable": true
             }
           },
           {
@@ -32825,7 +32795,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Optional. The audio container."
+              "description": "Optional. The audio container.",
+              "nullable": true
             }
           },
           {
@@ -33028,7 +32999,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Optional. The audio container."
+              "description": "Optional. The audio container.",
+              "nullable": true
             }
           },
           {
@@ -33229,7 +33201,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Optional. The audio container."
+              "description": "Optional. The audio container.",
+              "nullable": true
             }
           },
           {
@@ -34209,30 +34182,25 @@
         "summary": "Initiates the forgot password process for a local user.",
         "operationId": "ForgotPassword",
         "requestBody": {
-          "description": "The entered username.",
+          "description": "The forgot password request containing the entered username.",
           "content": {
             "application/json": {
               "schema": {
-                "type": "string",
-                "description": "The entered username.",
-                "nullable": true
+                "$ref": "#/components/schemas/ForgotPasswordDto"
               }
             },
             "text/json": {
               "schema": {
-                "type": "string",
-                "description": "The entered username.",
-                "nullable": true
+                "$ref": "#/components/schemas/ForgotPasswordDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "string",
-                "description": "The entered username.",
-                "nullable": true
+                "$ref": "#/components/schemas/ForgotPasswordDto"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -35887,7 +35855,7 @@
           "Videos"
         ],
         "summary": "Gets a video stream.",
-        "operationId": "GetVideoStream_2",
+        "operationId": "GetVideoStreamWithExt",
         "parameters": [
           {
             "name": "itemId",
@@ -35907,7 +35875,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv."
+              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.",
+              "nullable": true
             }
           },
           {
@@ -36426,7 +36395,7 @@
           "Videos"
         ],
         "summary": "Gets a video stream.",
-        "operationId": "HeadVideoStream_2",
+        "operationId": "HeadVideoStreamWithExt",
         "parameters": [
           {
             "name": "itemId",
@@ -36446,7 +36415,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv."
+              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.",
+              "nullable": true
             }
           },
           {
@@ -37089,7 +37059,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv."
+              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.",
+              "nullable": true
             }
           },
           {
@@ -37620,7 +37591,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv."
+              "description": "The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.",
+              "nullable": true
             }
           },
           {
@@ -40668,6 +40640,42 @@
         },
         "additionalProperties": false
       },
+      "Version": {
+        "type": "object",
+        "properties": {
+          "Major": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "Minor": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "Build": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "Revision": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "MajorRevision": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "MinorRevision": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ImageSavingConvention": {
         "enum": [
           "Legacy",
@@ -40775,45 +40783,31 @@
         },
         "additionalProperties": false
       },
-      "Version": {
-        "type": "object",
-        "properties": {
-          "Major": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "Minor": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "Build": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "Revision": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "MajorRevision": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "MinorRevision": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
       "ServerConfiguration": {
         "type": "object",
         "properties": {
+          "LogFileRetentionDays": {
+            "type": "integer",
+            "description": "Gets or sets the number of days we should retain log files.",
+            "format": "int32"
+          },
+          "IsStartupWizardCompleted": {
+            "type": "boolean",
+            "description": "Gets or sets a value indicating whether this instance is first run."
+          },
+          "CachePath": {
+            "type": "string",
+            "description": "Gets or sets the cache path.",
+            "nullable": true
+          },
+          "PreviousVersion": {
+            "$ref": "#/components/schemas/Version"
+          },
+          "PreviousVersionStr": {
+            "type": "string",
+            "description": "Gets or sets the stringified PreviousVersion to be stored/loaded,\r\nbecause System.Version itself isn't xml-serializable.",
+            "nullable": true
+          },
           "EnableUPnP": {
             "type": "boolean",
             "description": "Gets or sets a value indicating whether to enable automatic port forwarding."
@@ -40866,9 +40860,6 @@
           "QuickConnectAvailable": {
             "type": "boolean",
             "description": "Gets or sets if quick connect is available for use on this server."
-          },
-          "AutoRunWebApp": {
-            "type": "boolean"
           },
           "EnableRemoteAccess": {
             "type": "boolean"
@@ -41084,26 +41075,12 @@
             "description": "Gets or sets the cors hosts.",
             "nullable": true
           },
-          "LogFileRetentionDays": {
-            "type": "integer",
-            "description": "Gets or sets the number of days we should retain log files.",
-            "format": "int32"
-          },
-          "IsStartupWizardCompleted": {
-            "type": "boolean",
-            "description": "Gets or sets a value indicating whether this instance is first run."
-          },
-          "CachePath": {
-            "type": "string",
-            "description": "Gets or sets the cache path.",
-            "nullable": true
-          },
-          "PreviousVersion": {
-            "$ref": "#/components/schemas/Version"
-          },
-          "PreviousVersionStr": {
-            "type": "string",
-            "description": "Gets or sets the stringified PreviousVersion to be stored/loaded,\r\nbecause System.Version itself isn't xml-serializable.",
+          "KnownProxies": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Gets or sets the known proxies.",
             "nullable": true
           }
         },
@@ -41152,10 +41129,7 @@
             "nullable": true
           }
         },
-        "additionalProperties": {
-          "type": "object",
-          "additionalProperties": false
-        }
+        "additionalProperties": { }
       },
       "ConfigurationPageType": {
         "enum": [
@@ -42347,10 +42321,6 @@
       "BookInfo": {
         "type": "object",
         "properties": {
-          "SeriesName": {
-            "type": "string",
-            "nullable": true
-          },
           "Name": {
             "type": "string",
             "description": "Gets or sets the name.",
@@ -42402,6 +42372,10 @@
           },
           "IsAutomated": {
             "type": "boolean"
+          },
+          "SeriesName": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -42591,24 +42565,6 @@
       "SongInfo": {
         "type": "object",
         "properties": {
-          "AlbumArtists": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "Album": {
-            "type": "string",
-            "nullable": true
-          },
-          "Artists": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
           "Name": {
             "type": "string",
             "description": "Gets or sets the name.",
@@ -42660,6 +42616,24 @@
           },
           "IsAutomated": {
             "type": "boolean"
+          },
+          "AlbumArtists": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "Album": {
+            "type": "string",
+            "nullable": true
+          },
+          "Artists": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -42667,6 +42641,58 @@
       "AlbumInfo": {
         "type": "object",
         "properties": {
+          "Name": {
+            "type": "string",
+            "description": "Gets or sets the name.",
+            "nullable": true
+          },
+          "Path": {
+            "type": "string",
+            "description": "Gets or sets the path.",
+            "nullable": true
+          },
+          "MetadataLanguage": {
+            "type": "string",
+            "description": "Gets or sets the metadata language.",
+            "nullable": true
+          },
+          "MetadataCountryCode": {
+            "type": "string",
+            "description": "Gets or sets the metadata country code.",
+            "nullable": true
+          },
+          "ProviderIds": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Gets or sets the provider ids.",
+            "nullable": true
+          },
+          "Year": {
+            "type": "integer",
+            "description": "Gets or sets the year.",
+            "format": "int32",
+            "nullable": true
+          },
+          "IndexNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ParentIndexNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "PremiereDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "IsAutomated": {
+            "type": "boolean"
+          },
           "AlbumArtists": {
             "type": "array",
             "items": {
@@ -42689,58 +42715,6 @@
               "$ref": "#/components/schemas/SongInfo"
             },
             "nullable": true
-          },
-          "Name": {
-            "type": "string",
-            "description": "Gets or sets the name.",
-            "nullable": true
-          },
-          "Path": {
-            "type": "string",
-            "description": "Gets or sets the path.",
-            "nullable": true
-          },
-          "MetadataLanguage": {
-            "type": "string",
-            "description": "Gets or sets the metadata language.",
-            "nullable": true
-          },
-          "MetadataCountryCode": {
-            "type": "string",
-            "description": "Gets or sets the metadata country code.",
-            "nullable": true
-          },
-          "ProviderIds": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "Gets or sets the provider ids.",
-            "nullable": true
-          },
-          "Year": {
-            "type": "integer",
-            "description": "Gets or sets the year.",
-            "format": "int32",
-            "nullable": true
-          },
-          "IndexNumber": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "ParentIndexNumber": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "PremiereDate": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "IsAutomated": {
-            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -42770,13 +42744,6 @@
       "ArtistInfo": {
         "type": "object",
         "properties": {
-          "SongInfos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SongInfo"
-            },
-            "nullable": true
-          },
           "Name": {
             "type": "string",
             "description": "Gets or sets the name.",
@@ -42828,6 +42795,13 @@
           },
           "IsAutomated": {
             "type": "boolean"
+          },
+          "SongInfos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SongInfo"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -42857,13 +42831,6 @@
       "MusicVideoInfo": {
         "type": "object",
         "properties": {
-          "Artists": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
           "Name": {
             "type": "string",
             "description": "Gets or sets the name.",
@@ -42915,6 +42882,13 @@
           },
           "IsAutomated": {
             "type": "boolean"
+          },
+          "Artists": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -43317,11 +43291,6 @@
       "ThemeMediaResult": {
         "type": "object",
         "properties": {
-          "OwnerId": {
-            "type": "string",
-            "description": "Gets or sets the owner id.",
-            "format": "uuid"
-          },
           "Items": {
             "type": "array",
             "items": {
@@ -43339,6 +43308,11 @@
             "type": "integer",
             "description": "The index of the first record in Items.",
             "format": "int32"
+          },
+          "OwnerId": {
+            "type": "string",
+            "description": "Gets or sets the owner id.",
+            "format": "uuid"
           }
         },
         "additionalProperties": false,
@@ -44262,14 +44236,6 @@
         ],
         "type": "string"
       },
-      "DayPattern": {
-        "enum": [
-          "Daily",
-          "Weekdays",
-          "Weekends"
-        ],
-        "type": "string"
-      },
       "KeepUntil": {
         "enum": [
           "UntilDeleted",
@@ -44279,9 +44245,129 @@
         ],
         "type": "string"
       },
+      "DayPattern": {
+        "enum": [
+          "Daily",
+          "Weekdays",
+          "Weekends"
+        ],
+        "type": "string"
+      },
       "SeriesTimerInfoDto": {
         "type": "object",
         "properties": {
+          "Id": {
+            "type": "string",
+            "description": "Id of the recording.",
+            "nullable": true
+          },
+          "Type": {
+            "type": "string",
+            "nullable": true
+          },
+          "ServerId": {
+            "type": "string",
+            "description": "Gets or sets the server identifier.",
+            "nullable": true
+          },
+          "ExternalId": {
+            "type": "string",
+            "description": "Gets or sets the external identifier.",
+            "nullable": true
+          },
+          "ChannelId": {
+            "type": "string",
+            "description": "ChannelId of the recording.",
+            "format": "uuid"
+          },
+          "ExternalChannelId": {
+            "type": "string",
+            "description": "Gets or sets the external channel identifier.",
+            "nullable": true
+          },
+          "ChannelName": {
+            "type": "string",
+            "description": "ChannelName of the recording.",
+            "nullable": true
+          },
+          "ChannelPrimaryImageTag": {
+            "type": "string",
+            "nullable": true
+          },
+          "ProgramId": {
+            "type": "string",
+            "description": "Gets or sets the program identifier.",
+            "nullable": true
+          },
+          "ExternalProgramId": {
+            "type": "string",
+            "description": "Gets or sets the external program identifier.",
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "description": "Name of the recording.",
+            "nullable": true
+          },
+          "Overview": {
+            "type": "string",
+            "description": "Description of the recording.",
+            "nullable": true
+          },
+          "StartDate": {
+            "type": "string",
+            "description": "The start date of the recording, in UTC.",
+            "format": "date-time"
+          },
+          "EndDate": {
+            "type": "string",
+            "description": "The end date of the recording, in UTC.",
+            "format": "date-time"
+          },
+          "ServiceName": {
+            "type": "string",
+            "description": "Gets or sets the name of the service.",
+            "nullable": true
+          },
+          "Priority": {
+            "type": "integer",
+            "description": "Gets or sets the priority.",
+            "format": "int32"
+          },
+          "PrePaddingSeconds": {
+            "type": "integer",
+            "description": "Gets or sets the pre padding seconds.",
+            "format": "int32"
+          },
+          "PostPaddingSeconds": {
+            "type": "integer",
+            "description": "Gets or sets the post padding seconds.",
+            "format": "int32"
+          },
+          "IsPrePaddingRequired": {
+            "type": "boolean",
+            "description": "Gets or sets a value indicating whether this instance is pre padding required."
+          },
+          "ParentBackdropItemId": {
+            "type": "string",
+            "description": "If the item does not have any backdrops, this will hold the Id of the Parent that has one.",
+            "nullable": true
+          },
+          "ParentBackdropImageTags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Gets or sets the parent backdrop image tags.",
+            "nullable": true
+          },
+          "IsPostPaddingRequired": {
+            "type": "boolean",
+            "description": "Gets or sets a value indicating whether this instance is post padding required."
+          },
+          "KeepUntil": {
+            "$ref": "#/components/schemas/KeepUntil"
+          },
           "RecordAnyTime": {
             "type": "boolean",
             "description": "Gets or sets a value indicating whether [record any time]."
@@ -44390,118 +44476,6 @@
             "type": "string",
             "description": "Gets or sets the parent primary image tag.",
             "nullable": true
-          },
-          "Id": {
-            "type": "string",
-            "description": "Id of the recording.",
-            "nullable": true
-          },
-          "Type": {
-            "type": "string",
-            "nullable": true
-          },
-          "ServerId": {
-            "type": "string",
-            "description": "Gets or sets the server identifier.",
-            "nullable": true
-          },
-          "ExternalId": {
-            "type": "string",
-            "description": "Gets or sets the external identifier.",
-            "nullable": true
-          },
-          "ChannelId": {
-            "type": "string",
-            "description": "ChannelId of the recording.",
-            "format": "uuid"
-          },
-          "ExternalChannelId": {
-            "type": "string",
-            "description": "Gets or sets the external channel identifier.",
-            "nullable": true
-          },
-          "ChannelName": {
-            "type": "string",
-            "description": "ChannelName of the recording.",
-            "nullable": true
-          },
-          "ChannelPrimaryImageTag": {
-            "type": "string",
-            "nullable": true
-          },
-          "ProgramId": {
-            "type": "string",
-            "description": "Gets or sets the program identifier.",
-            "nullable": true
-          },
-          "ExternalProgramId": {
-            "type": "string",
-            "description": "Gets or sets the external program identifier.",
-            "nullable": true
-          },
-          "Name": {
-            "type": "string",
-            "description": "Name of the recording.",
-            "nullable": true
-          },
-          "Overview": {
-            "type": "string",
-            "description": "Description of the recording.",
-            "nullable": true
-          },
-          "StartDate": {
-            "type": "string",
-            "description": "The start date of the recording, in UTC.",
-            "format": "date-time"
-          },
-          "EndDate": {
-            "type": "string",
-            "description": "The end date of the recording, in UTC.",
-            "format": "date-time"
-          },
-          "ServiceName": {
-            "type": "string",
-            "description": "Gets or sets the name of the service.",
-            "nullable": true
-          },
-          "Priority": {
-            "type": "integer",
-            "description": "Gets or sets the priority.",
-            "format": "int32"
-          },
-          "PrePaddingSeconds": {
-            "type": "integer",
-            "description": "Gets or sets the pre padding seconds.",
-            "format": "int32"
-          },
-          "PostPaddingSeconds": {
-            "type": "integer",
-            "description": "Gets or sets the post padding seconds.",
-            "format": "int32"
-          },
-          "IsPrePaddingRequired": {
-            "type": "boolean",
-            "description": "Gets or sets a value indicating whether this instance is pre padding required."
-          },
-          "ParentBackdropItemId": {
-            "type": "string",
-            "description": "If the item does not have any backdrops, this will hold the Id of the Parent that has one.",
-            "nullable": true
-          },
-          "ParentBackdropImageTags": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Gets or sets the parent backdrop image tags.",
-            "nullable": true
-          },
-          "IsPostPaddingRequired": {
-            "type": "boolean",
-            "description": "Gets or sets a value indicating whether this instance is post padding required."
-          },
-          "KeepUntil": {
-            "$ref": "#/components/schemas/KeepUntil"
           }
         },
         "additionalProperties": false,
@@ -44534,28 +44508,6 @@
       "TimerInfoDto": {
         "type": "object",
         "properties": {
-          "Status": {
-            "$ref": "#/components/schemas/RecordingStatus"
-          },
-          "SeriesTimerId": {
-            "type": "string",
-            "description": "Gets or sets the series timer identifier.",
-            "nullable": true
-          },
-          "ExternalSeriesTimerId": {
-            "type": "string",
-            "description": "Gets or sets the external series timer identifier.",
-            "nullable": true
-          },
-          "RunTimeTicks": {
-            "type": "integer",
-            "description": "Gets or sets the run time ticks.",
-            "format": "int64",
-            "nullable": true
-          },
-          "ProgramInfo": {
-            "$ref": "#/components/schemas/BaseItemDto"
-          },
           "Id": {
             "type": "string",
             "description": "Id of the recording.",
@@ -44667,6 +44619,28 @@
           },
           "KeepUntil": {
             "$ref": "#/components/schemas/KeepUntil"
+          },
+          "Status": {
+            "$ref": "#/components/schemas/RecordingStatus"
+          },
+          "SeriesTimerId": {
+            "type": "string",
+            "description": "Gets or sets the series timer identifier.",
+            "nullable": true
+          },
+          "ExternalSeriesTimerId": {
+            "type": "string",
+            "description": "Gets or sets the external series timer identifier.",
+            "nullable": true
+          },
+          "RunTimeTicks": {
+            "type": "integer",
+            "description": "Gets or sets the run time ticks.",
+            "format": "int64",
+            "nullable": true
+          },
+          "ProgramInfo": {
+            "$ref": "#/components/schemas/BaseItemDto"
           }
         },
         "additionalProperties": false
@@ -45046,6 +45020,16 @@
               "$ref": "#/components/schemas/VersionInfo"
             },
             "description": "Gets or sets the versions.",
+            "nullable": true
+          },
+          "repositoryName": {
+            "type": "string",
+            "description": "Gets or sets the repository name.",
+            "nullable": true
+          },
+          "repositoryUrl": {
+            "type": "string",
+            "description": "Gets or sets the repository url.",
             "nullable": true
           }
         },
@@ -46414,12 +46398,53 @@
         "additionalProperties": false,
         "description": "Class SessionInfo."
       },
+      "GeneralCommandType": {
+        "enum": [
+          "MoveUp",
+          "MoveDown",
+          "MoveLeft",
+          "MoveRight",
+          "PageUp",
+          "PageDown",
+          "PreviousLetter",
+          "NextLetter",
+          "ToggleOsd",
+          "ToggleContextMenu",
+          "Select",
+          "Back",
+          "TakeScreenshot",
+          "SendKey",
+          "SendString",
+          "GoHome",
+          "GoToSettings",
+          "VolumeUp",
+          "VolumeDown",
+          "Mute",
+          "Unmute",
+          "ToggleMute",
+          "SetVolume",
+          "SetAudioStreamIndex",
+          "SetSubtitleStreamIndex",
+          "ToggleFullscreen",
+          "DisplayContent",
+          "GoToSearch",
+          "DisplayMessage",
+          "SetRepeatMode",
+          "ChannelUp",
+          "ChannelDown",
+          "Guide",
+          "ToggleStats",
+          "PlayMediaSource",
+          "PlayTrailers"
+        ],
+        "type": "string",
+        "description": "This exists simply to identify a set of known commands."
+      },
       "GeneralCommand": {
         "type": "object",
         "properties": {
           "Name": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/GeneralCommandType"
           },
           "ControllingUserId": {
             "type": "string",
@@ -46460,25 +46485,6 @@
         ],
         "type": "string",
         "description": "Enum PlaystateCommand."
-      },
-      "PlaystateRequest": {
-        "type": "object",
-        "properties": {
-          "Command": {
-            "$ref": "#/components/schemas/PlaystateCommand"
-          },
-          "SeekPositionTicks": {
-            "type": "integer",
-            "format": "int64",
-            "nullable": true
-          },
-          "ControllingUserId": {
-            "type": "string",
-            "description": "Gets or sets the controlling user identifier.",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
       },
       "StartupConfigurationDto": {
         "type": "object",
@@ -46695,6 +46701,40 @@
       "SystemInfo": {
         "type": "object",
         "properties": {
+          "LocalAddress": {
+            "type": "string",
+            "description": "Gets or sets the local address.",
+            "nullable": true
+          },
+          "ServerName": {
+            "type": "string",
+            "description": "Gets or sets the name of the server.",
+            "nullable": true
+          },
+          "Version": {
+            "type": "string",
+            "description": "Gets or sets the server version.",
+            "nullable": true
+          },
+          "ProductName": {
+            "type": "string",
+            "description": "Gets or sets the product name. This is the AssemblyProduct name.",
+            "nullable": true
+          },
+          "OperatingSystem": {
+            "type": "string",
+            "description": "Gets or sets the operating system.",
+            "nullable": true
+          },
+          "Id": {
+            "type": "string",
+            "description": "Gets or sets the id.",
+            "nullable": true
+          },
+          "StartupWizardCompleted": {
+            "type": "boolean",
+            "description": "Gets or sets a value indicating whether the startup wizard is completed."
+          },
           "OperatingSystemDisplayName": {
             "type": "string",
             "description": "Gets or sets the display name of the operating system.",
@@ -46780,40 +46820,6 @@
           },
           "SystemArchitecture": {
             "$ref": "#/components/schemas/Architecture"
-          },
-          "LocalAddress": {
-            "type": "string",
-            "description": "Gets or sets the local address.",
-            "nullable": true
-          },
-          "ServerName": {
-            "type": "string",
-            "description": "Gets or sets the name of the server.",
-            "nullable": true
-          },
-          "Version": {
-            "type": "string",
-            "description": "Gets or sets the server version.",
-            "nullable": true
-          },
-          "ProductName": {
-            "type": "string",
-            "description": "Gets or sets the product name. This is the AssemblyProduct name.",
-            "nullable": true
-          },
-          "OperatingSystem": {
-            "type": "string",
-            "description": "Gets or sets the operating system.",
-            "nullable": true
-          },
-          "Id": {
-            "type": "string",
-            "description": "Gets or sets the id.",
-            "nullable": true
-          },
-          "StartupWizardCompleted": {
-            "type": "boolean",
-            "description": "Gets or sets a value indicating whether the startup wizard is completed."
           }
         },
         "additionalProperties": false,
@@ -47430,6 +47436,20 @@
         "additionalProperties": false,
         "description": "The quick connect request body."
       },
+      "ForgotPasswordDto": {
+        "required": [
+          "EnteredUsername"
+        ],
+        "type": "object",
+        "properties": {
+          "EnteredUsername": {
+            "type": "string",
+            "description": "Gets or sets the entered username to have its password reset."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Forgot Password request body DTO."
+      },
       "ForgotPasswordAction": {
         "enum": [
           "ContactAdmin",
@@ -47509,6 +47529,289 @@
         },
         "additionalProperties": false,
         "description": "Special view option dto."
+      },
+      "LibraryUpdateInfo": {
+        "type": "object",
+        "properties": {
+          "FoldersAddedTo": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Gets or sets the folders added to.",
+            "nullable": true
+          },
+          "FoldersRemovedFrom": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Gets or sets the folders removed from.",
+            "nullable": true
+          },
+          "ItemsAdded": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Gets or sets the items added.",
+            "nullable": true
+          },
+          "ItemsRemoved": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Gets or sets the items removed.",
+            "nullable": true
+          },
+          "ItemsUpdated": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Gets or sets the items updated.",
+            "nullable": true
+          },
+          "CollectionFolders": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "IsEmpty": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Class LibraryUpdateInfo."
+      },
+      "IPlugin": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "Gets the name of the plugin.",
+            "nullable": true,
+            "readOnly": true
+          },
+          "Description": {
+            "type": "string",
+            "description": "Gets the description.",
+            "nullable": true,
+            "readOnly": true
+          },
+          "Id": {
+            "type": "string",
+            "description": "Gets the unique id.",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "Version": {
+            "$ref": "#/components/schemas/Version"
+          },
+          "AssemblyFilePath": {
+            "type": "string",
+            "description": "Gets the path to the assembly file.",
+            "nullable": true,
+            "readOnly": true
+          },
+          "CanUninstall": {
+            "type": "boolean",
+            "description": "Gets a value indicating whether the plugin can be uninstalled.",
+            "readOnly": true
+          },
+          "DataFolderPath": {
+            "type": "string",
+            "description": "Gets the full path to the data folder, where the plugin can store any miscellaneous files needed.",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Interface IPlugin."
+      },
+      "PlayRequest": {
+        "type": "object",
+        "properties": {
+          "ItemIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "Gets or sets the item ids.",
+            "nullable": true
+          },
+          "StartPositionTicks": {
+            "type": "integer",
+            "description": "Gets or sets the start position ticks that the first item should be played at.",
+            "format": "int64",
+            "nullable": true
+          },
+          "PlayCommand": {
+            "$ref": "#/components/schemas/PlayCommand"
+          },
+          "ControllingUserId": {
+            "type": "string",
+            "description": "Gets or sets the controlling user identifier.",
+            "format": "uuid"
+          },
+          "SubtitleStreamIndex": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "AudioStreamIndex": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "MediaSourceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "StartIndex": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Class PlayRequest."
+      },
+      "TimerEventInfo": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "ProgramId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SendCommandType": {
+        "enum": [
+          "Play",
+          "Pause",
+          "Seek"
+        ],
+        "type": "string",
+        "description": "Enum SendCommandType."
+      },
+      "SendCommand": {
+        "type": "object",
+        "properties": {
+          "GroupId": {
+            "type": "string",
+            "description": "Gets or sets the group identifier.",
+            "nullable": true
+          },
+          "When": {
+            "type": "string",
+            "description": "Gets or sets the UTC time when to execute the command.",
+            "nullable": true
+          },
+          "PositionTicks": {
+            "type": "integer",
+            "description": "Gets or sets the position ticks.",
+            "format": "int64",
+            "nullable": true
+          },
+          "Command": {
+            "$ref": "#/components/schemas/SendCommandType"
+          },
+          "EmittedAt": {
+            "type": "string",
+            "description": "Gets or sets the UTC time when this command has been emitted.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Class SendCommand."
+      },
+      "GroupUpdateType": {
+        "enum": [
+          "UserJoined",
+          "UserLeft",
+          "GroupJoined",
+          "GroupLeft",
+          "GroupWait",
+          "PrepareSession",
+          "NotInGroup",
+          "GroupDoesNotExist",
+          "CreateGroupDenied",
+          "JoinGroupDenied",
+          "LibraryAccessDenied"
+        ],
+        "type": "string",
+        "description": "Enum GroupUpdateType."
+      },
+      "StringGroupUpdate": {
+        "type": "object",
+        "properties": {
+          "GroupId": {
+            "type": "string",
+            "description": "Gets or sets the group identifier.",
+            "nullable": true
+          },
+          "Type": {
+            "$ref": "#/components/schemas/GroupUpdateType"
+          },
+          "Data": {
+            "type": "string",
+            "description": "Gets or sets the data.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Class GroupUpdate."
+      },
+      "PlayRequestGroupUpdate": {
+        "type": "object",
+        "properties": {
+          "GroupId": {
+            "type": "string",
+            "description": "Gets or sets the group identifier.",
+            "nullable": true
+          },
+          "Type": {
+            "$ref": "#/components/schemas/GroupUpdateType"
+          },
+          "Data": {
+            "$ref": "#/components/schemas/PlayRequest"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Class GroupUpdate."
+      },
+      "Int64GroupUpdate": {
+        "type": "object",
+        "properties": {
+          "GroupId": {
+            "type": "string",
+            "description": "Gets or sets the group identifier.",
+            "nullable": true
+          },
+          "Type": {
+            "$ref": "#/components/schemas/GroupUpdateType"
+          },
+          "Data": {
+            "type": "integer",
+            "description": "Gets or sets the data.",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Class GroupUpdate."
       }
     },
     "securitySchemes": {

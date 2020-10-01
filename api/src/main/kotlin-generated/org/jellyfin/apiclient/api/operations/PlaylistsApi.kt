@@ -51,25 +51,25 @@ class PlaylistsApi(
 	suspend fun getPlaylistItems(
 		playlistId: UUID,
 		userId: UUID,
-		startIndex: Int,
-		limit: Int,
-		fields: String,
-		enableImages: Boolean,
-		enableUserData: Boolean,
-		imageTypeLimit: Int,
-		enableImageTypes: String
+		startIndex: Int? = null,
+		limit: Int? = null,
+		fields: String? = null,
+		enableImages: Boolean? = null,
+		enableUserData: Boolean? = null,
+		imageTypeLimit: Int? = null,
+		enableImageTypes: String? = null
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["playlistId"] = playlistId
-		pathParameters["userId"] = userId
-		pathParameters["startIndex"] = startIndex
-		pathParameters["limit"] = limit
-		pathParameters["fields"] = fields
-		pathParameters["enableImages"] = enableImages
-		pathParameters["enableUserData"] = enableUserData
-		pathParameters["imageTypeLimit"] = imageTypeLimit
-		pathParameters["enableImageTypes"] = enableImageTypes
-		val queryParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["userId"] = userId
+		queryParameters["startIndex"] = startIndex
+		queryParameters["limit"] = limit
+		queryParameters["fields"] = fields
+		queryParameters["enableImages"] = enableImages
+		queryParameters["enableUserData"] = enableUserData
+		queryParameters["imageTypeLimit"] = imageTypeLimit
+		queryParameters["enableImageTypes"] = enableImageTypes
 		val data = null
 		val response = api.get<BaseItemDtoQueryResult>("/Playlists/{playlistId}/Items", pathParameters,
 				queryParameters, data)

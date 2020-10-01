@@ -92,7 +92,7 @@ class AudioApi(
 	 */
 	suspend fun getAudioStream(
 		itemId: UUID,
-		container: String,
+		container: String? = null,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -268,7 +268,7 @@ class AudioApi(
 	 */
 	fun getAudioStreamUrl(
 		itemId: UUID,
-		container: String,
+		container: String? = null,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -441,7 +441,7 @@ class AudioApi(
 	 */
 	suspend fun getAudioStreamByContainer(
 		itemId: UUID,
-		container: String,
+		container: String? = null,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -617,7 +617,7 @@ class AudioApi(
 	 */
 	fun getAudioStreamByContainerUrl(
 		itemId: UUID,
-		container: String,
+		container: String? = null,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,

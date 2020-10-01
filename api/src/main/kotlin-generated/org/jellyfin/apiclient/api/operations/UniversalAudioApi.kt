@@ -42,7 +42,7 @@ class UniversalAudioApi(
 	 */
 	suspend fun getUniversalAudioStream(
 		itemId: UUID,
-		container: String,
+		container: String? = null,
 		mediaSourceId: String? = null,
 		deviceId: String? = null,
 		userId: UUID? = null,
@@ -108,7 +108,7 @@ class UniversalAudioApi(
 	 */
 	fun getUniversalAudioStreamUrl(
 		itemId: UUID,
-		container: String,
+		container: String? = null,
 		mediaSourceId: String? = null,
 		deviceId: String? = null,
 		userId: UUID? = null,
@@ -171,7 +171,7 @@ class UniversalAudioApi(
 	 */
 	suspend fun getUniversalAudioStream_2(
 		itemId: UUID,
-		container: String,
+		container: String? = null,
 		mediaSourceId: String? = null,
 		deviceId: String? = null,
 		userId: UUID? = null,
@@ -237,7 +237,7 @@ class UniversalAudioApi(
 	 */
 	fun getUniversalAudioStream_2Url(
 		itemId: UUID,
-		container: String,
+		container: String? = null,
 		mediaSourceId: String? = null,
 		deviceId: String? = null,
 		userId: UUID? = null,

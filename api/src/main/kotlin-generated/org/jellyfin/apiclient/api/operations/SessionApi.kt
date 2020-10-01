@@ -17,9 +17,10 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.ClientCapabilities
 import org.jellyfin.apiclient.model.api.GeneralCommand
+import org.jellyfin.apiclient.model.api.GeneralCommandType
 import org.jellyfin.apiclient.model.api.NameIdPair
 import org.jellyfin.apiclient.model.api.PlayCommand
-import org.jellyfin.apiclient.model.api.PlaystateRequest
+import org.jellyfin.apiclient.model.api.PlaystateCommand
 import org.jellyfin.apiclient.model.api.SessionInfo
 
 class SessionApi(
@@ -90,7 +91,7 @@ class SessionApi(
 	 * @param sessionId The session id.
 	 * @param command The command to send.
 	 */
-	suspend fun sendGeneralCommand(sessionId: String, command: String): Response<Unit> {
+	suspend fun sendGeneralCommand(sessionId: String, command: GeneralCommandType): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
 		pathParameters["command"] = command
@@ -113,7 +114,7 @@ class SessionApi(
 	suspend fun sendMessageCommand(
 		sessionId: String,
 		text: String,
-		header: String,
+		header: String? = null,
 		timeoutMs: Long? = null
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -132,23 +133,23 @@ class SessionApi(
 	 * Instructs a session to play an item.
 	 *
 	 * @param sessionId The session id.
-	 * @param itemIds The ids of the items to play, comma delimited.
-	 * @param startPositionTicks The starting position of the first item.
 	 * @param playCommand The type of play command to issue (PlayNow, PlayNext, PlayLast). Clients who
 	 * have not yet implemented play next and play last may play now.
+	 * @param itemIds The ids of the items to play, comma delimited.
+	 * @param startPositionTicks The starting position of the first item.
 	 */
 	suspend fun play(
 		sessionId: String,
-		itemIds: List<UUID>? = null,
-		startPositionTicks: Long? = null,
-		playCommand: PlayCommand
+		playCommand: PlayCommand,
+		itemIds: String,
+		startPositionTicks: Long? = null
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["playCommand"] = playCommand
 		queryParameters["itemIds"] = itemIds
 		queryParameters["startPositionTicks"] = startPositionTicks
-		queryParameters["playCommand"] = playCommand
 		val data = null
 		val response = api.post<Unit>("/Sessions/{sessionId}/Playing", pathParameters, queryParameters,
 				data)
@@ -159,16 +160,23 @@ class SessionApi(
 	 * Issues a playstate command to a client.
 	 *
 	 * @param sessionId The session id.
+	 * @param command The MediaBrowser.Model.Session.PlaystateCommand.
+	 * @param seekPositionTicks The optional position ticks.
+	 * @param controllingUserId The optional controlling user id.
 	 */
 	suspend fun sendPlaystateCommand(
 		sessionId: String,
-		command: String,
-		data: PlaystateRequest
+		command: PlaystateCommand,
+		seekPositionTicks: Long? = null,
+		controllingUserId: String? = null
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
 		pathParameters["command"] = command
-		val queryParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["seekPositionTicks"] = seekPositionTicks
+		queryParameters["controllingUserId"] = controllingUserId
+		val data = null
 		val response = api.post<Unit>("/Sessions/{sessionId}/Playing/{command}", pathParameters,
 				queryParameters, data)
 		return response
@@ -180,7 +188,7 @@ class SessionApi(
 	 * @param sessionId The session id.
 	 * @param command The command to send.
 	 */
-	suspend fun sendSystemCommand(sessionId: String, command: String): Response<Unit> {
+	suspend fun sendSystemCommand(sessionId: String, command: GeneralCommandType): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
 		pathParameters["command"] = command
@@ -263,7 +271,7 @@ class SessionApi(
 	 * @param supportsPersistentIdentifier Determines whether the device supports a unique identifier.
 	 */
 	suspend fun postCapabilities(
-		id: String,
+		id: String? = null,
 		playableMediaTypes: String? = null,
 		supportedCommands: String? = null,
 		supportsMediaControl: Boolean,
@@ -314,7 +322,7 @@ class SessionApi(
 	 * @param sessionId The session id.
 	 * @param itemId The item id.
 	 */
-	suspend fun reportViewing(sessionId: String? = null, itemId: String? = null): Response<Unit> {
+	suspend fun reportViewing(sessionId: String? = null, itemId: String): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["sessionId"] = sessionId

@@ -19,6 +19,29 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ServerConfiguration(
 	/**
+	 * Gets or sets the number of days we should retain log files.
+	 */
+	@SerialName("LogFileRetentionDays")
+	val logFileRetentionDays: Int,
+	/**
+	 * Gets or sets a value indicating whether this instance is first run.
+	 */
+	@SerialName("IsStartupWizardCompleted")
+	val isStartupWizardCompleted: Boolean,
+	/**
+	 * Gets or sets the cache path.
+	 */
+	@SerialName("CachePath")
+	val cachePath: String? = null,
+	@SerialName("PreviousVersion")
+	val previousVersion: Version? = null,
+	/**
+	 * Gets or sets the stringified PreviousVersion to be stored/loaded,
+	 * because System.Version itself isn't xml-serializable.
+	 */
+	@SerialName("PreviousVersionStr")
+	val previousVersionStr: String? = null,
+	/**
 	 * Gets or sets a value indicating whether to enable automatic port forwarding.
 	 */
 	@SerialName("EnableUPnP")
@@ -76,8 +99,6 @@ data class ServerConfiguration(
 	 */
 	@SerialName("QuickConnectAvailable")
 	val quickConnectAvailable: Boolean,
-	@SerialName("AutoRunWebApp")
-	val autoRunWebApp: Boolean,
 	@SerialName("EnableRemoteAccess")
 	val enableRemoteAccess: Boolean,
 	/**
@@ -225,26 +246,8 @@ data class ServerConfiguration(
 	@SerialName("CorsHosts")
 	val corsHosts: List<String>? = null,
 	/**
-	 * Gets or sets the number of days we should retain log files.
+	 * Gets or sets the known proxies.
 	 */
-	@SerialName("LogFileRetentionDays")
-	val logFileRetentionDays: Int,
-	/**
-	 * Gets or sets a value indicating whether this instance is first run.
-	 */
-	@SerialName("IsStartupWizardCompleted")
-	val isStartupWizardCompleted: Boolean,
-	/**
-	 * Gets or sets the cache path.
-	 */
-	@SerialName("CachePath")
-	val cachePath: String? = null,
-	@SerialName("PreviousVersion")
-	val previousVersion: Version? = null,
-	/**
-	 * Gets or sets the stringified PreviousVersion to be stored/loaded,
-	 * because System.Version itself isn't xml-serializable.
-	 */
-	@SerialName("PreviousVersionStr")
-	val previousVersionStr: String? = null
+	@SerialName("KnownProxies")
+	val knownProxies: List<String>? = null
 )

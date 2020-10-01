@@ -145,7 +145,7 @@ class ItemsApi(
 	 * @param enableImages Optional, include image information in output.
 	 */
 	suspend fun getItems(
-		uId: UUID,
+		uId: UUID? = null,
 		userId: UUID? = null,
 		maxOfficialRating: String? = null,
 		hasThemeSong: Boolean? = null,
@@ -441,7 +441,7 @@ class ItemsApi(
 	 * @param enableImages Optional, include image information in output.
 	 */
 	suspend fun getItems_2(
-		uId: UUID,
+		uId: UUID? = null,
 		userId: UUID? = null,
 		maxOfficialRating: String? = null,
 		hasThemeSong: Boolean? = null,

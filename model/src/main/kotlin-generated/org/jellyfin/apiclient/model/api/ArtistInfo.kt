@@ -20,8 +20,6 @@ import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
 
 @Serializable
 data class ArtistInfo(
-	@SerialName("SongInfos")
-	val songInfos: List<SongInfo>? = null,
 	/**
 	 * Gets or sets the name.
 	 */
@@ -59,5 +57,7 @@ data class ArtistInfo(
 	@SerialName("PremiereDate")
 	val premiereDate: LocalDateTime? = null,
 	@SerialName("IsAutomated")
-	val isAutomated: Boolean
+	val isAutomated: Boolean,
+	@SerialName("SongInfos")
+	val songInfos: List<SongInfo>? = null
 )

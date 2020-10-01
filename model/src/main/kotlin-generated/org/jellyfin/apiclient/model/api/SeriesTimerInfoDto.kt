@@ -29,57 +29,6 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 @Serializable
 data class SeriesTimerInfoDto(
 	/**
-	 * Gets or sets a value indicating whether [record any time].
-	 */
-	@SerialName("RecordAnyTime")
-	val recordAnyTime: Boolean,
-	@SerialName("SkipEpisodesInLibrary")
-	val skipEpisodesInLibrary: Boolean,
-	/**
-	 * Gets or sets a value indicating whether [record any channel].
-	 */
-	@SerialName("RecordAnyChannel")
-	val recordAnyChannel: Boolean,
-	@SerialName("KeepUpTo")
-	val keepUpTo: Int,
-	/**
-	 * Gets or sets a value indicating whether [record new only].
-	 */
-	@SerialName("RecordNewOnly")
-	val recordNewOnly: Boolean,
-	/**
-	 * Gets or sets the days.
-	 */
-	@SerialName("Days")
-	val days: List<DayOfWeek>? = null,
-	@SerialName("DayPattern")
-	val dayPattern: DayPattern? = null,
-	/**
-	 * Gets or sets the image tags.
-	 */
-	@SerialName("ImageTags")
-	val imageTags: Map<ImageType, String>,
-	/**
-	 * Gets or sets the parent thumb item id.
-	 */
-	@SerialName("ParentThumbItemId")
-	val parentThumbItemId: String? = null,
-	/**
-	 * Gets or sets the parent thumb image tag.
-	 */
-	@SerialName("ParentThumbImageTag")
-	val parentThumbImageTag: String? = null,
-	/**
-	 * Gets or sets the parent primary image item identifier.
-	 */
-	@SerialName("ParentPrimaryImageItemId")
-	val parentPrimaryImageItemId: String? = null,
-	/**
-	 * Gets or sets the parent primary image tag.
-	 */
-	@SerialName("ParentPrimaryImageTag")
-	val parentPrimaryImageTag: String? = null,
-	/**
 	 * Id of the recording.
 	 */
 	@SerialName("Id")
@@ -184,5 +133,56 @@ data class SeriesTimerInfoDto(
 	@SerialName("IsPostPaddingRequired")
 	val isPostPaddingRequired: Boolean,
 	@SerialName("KeepUntil")
-	val keepUntil: KeepUntil? = null
+	val keepUntil: KeepUntil? = null,
+	/**
+	 * Gets or sets a value indicating whether [record any time].
+	 */
+	@SerialName("RecordAnyTime")
+	val recordAnyTime: Boolean,
+	@SerialName("SkipEpisodesInLibrary")
+	val skipEpisodesInLibrary: Boolean,
+	/**
+	 * Gets or sets a value indicating whether [record any channel].
+	 */
+	@SerialName("RecordAnyChannel")
+	val recordAnyChannel: Boolean,
+	@SerialName("KeepUpTo")
+	val keepUpTo: Int,
+	/**
+	 * Gets or sets a value indicating whether [record new only].
+	 */
+	@SerialName("RecordNewOnly")
+	val recordNewOnly: Boolean,
+	/**
+	 * Gets or sets the days.
+	 */
+	@SerialName("Days")
+	val days: List<DayOfWeek>? = null,
+	@SerialName("DayPattern")
+	val dayPattern: DayPattern? = null,
+	/**
+	 * Gets or sets the image tags.
+	 */
+	@SerialName("ImageTags")
+	val imageTags: Map<ImageType, String>,
+	/**
+	 * Gets or sets the parent thumb item id.
+	 */
+	@SerialName("ParentThumbItemId")
+	val parentThumbItemId: String? = null,
+	/**
+	 * Gets or sets the parent thumb image tag.
+	 */
+	@SerialName("ParentThumbImageTag")
+	val parentThumbImageTag: String? = null,
+	/**
+	 * Gets or sets the parent primary image item identifier.
+	 */
+	@SerialName("ParentPrimaryImageItemId")
+	val parentPrimaryImageItemId: String? = null,
+	/**
+	 * Gets or sets the parent primary image tag.
+	 */
+	@SerialName("ParentPrimaryImageTag")
+	val parentPrimaryImageTag: String? = null
 )

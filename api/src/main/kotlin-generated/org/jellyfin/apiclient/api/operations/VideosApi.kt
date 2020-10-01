@@ -93,9 +93,9 @@ class VideosApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	suspend fun getVideoStream_2(
+	suspend fun getVideoStreamWithExt(
 		itemId: UUID,
-		container: String,
+		container: String? = null,
 		stream: String,
 		static: Boolean? = null,
 		params: String? = null,
@@ -272,9 +272,9 @@ class VideosApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	fun getVideoStream_2Url(
+	fun getVideoStreamWithExtUrl(
 		itemId: UUID,
-		container: String,
+		container: String? = null,
 		stream: String,
 		static: Boolean? = null,
 		params: String? = null,
@@ -483,7 +483,7 @@ class VideosApi(
 	 */
 	suspend fun getVideoStream(
 		itemId: UUID,
-		container: String,
+		container: String? = null,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -660,7 +660,7 @@ class VideosApi(
 	 */
 	fun getVideoStreamUrl(
 		itemId: UUID,
-		container: String,
+		container: String? = null,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,

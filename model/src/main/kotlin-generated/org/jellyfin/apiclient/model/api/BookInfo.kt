@@ -19,8 +19,6 @@ import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
 
 @Serializable
 data class BookInfo(
-	@SerialName("SeriesName")
-	val seriesName: String? = null,
 	/**
 	 * Gets or sets the name.
 	 */
@@ -58,5 +56,7 @@ data class BookInfo(
 	@SerialName("PremiereDate")
 	val premiereDate: LocalDateTime? = null,
 	@SerialName("IsAutomated")
-	val isAutomated: Boolean
+	val isAutomated: Boolean,
+	@SerialName("SeriesName")
+	val seriesName: String? = null
 )

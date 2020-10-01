@@ -44,7 +44,7 @@ class TvShowsApi(
 	 */
 	suspend fun getEpisodes(
 		seriesId: String,
-		userId: UUID,
+		userId: UUID? = null,
 		fields: String? = null,
 		season: Int? = null,
 		seasonId: String? = null,
@@ -101,7 +101,7 @@ class TvShowsApi(
 	 */
 	suspend fun getSeasons(
 		seriesId: String,
-		userId: UUID,
+		userId: UUID? = null,
 		fields: String? = null,
 		isSpecialSeason: Boolean? = null,
 		isMissing: Boolean? = null,
@@ -150,7 +150,7 @@ class TvShowsApi(
 	 * @param enableTotalRecordCount Whether to enable the total records count. Defaults to true.
 	 */
 	suspend fun getNextUp(
-		userId: UUID,
+		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
 		fields: String? = null,
@@ -200,7 +200,7 @@ class TvShowsApi(
 	 * @param enableUserData Optional. Include user data.
 	 */
 	suspend fun getUpcomingEpisodes(
-		userId: UUID,
+		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
 		fields: String? = null,
