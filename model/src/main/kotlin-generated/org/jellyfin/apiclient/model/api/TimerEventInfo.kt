@@ -9,18 +9,15 @@ package org.jellyfin.apiclient.model.api
 
 import java.util.UUID
 import kotlin.String
-import kotlin.collections.Map
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 @Serializable
-data class GeneralCommand(
-	@SerialName("Name")
-	val name: GeneralCommandType? = null,
-	@SerialName("ControllingUserId")
-	val controllingUserId: UUID,
-	@SerialName("Arguments")
-	val arguments: Map<String, String>? = null
+data class TimerEventInfo(
+	@SerialName("Id")
+	val id: String? = null,
+	@SerialName("ProgramId")
+	val programId: UUID? = null
 )

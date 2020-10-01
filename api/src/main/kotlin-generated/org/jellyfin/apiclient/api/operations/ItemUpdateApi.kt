@@ -36,7 +36,7 @@ class ItemUpdateApi(
 	 * @param itemId The item id.
 	 * @param contentType The content type of the item.
 	 */
-	suspend fun updateItemContentType(itemId: UUID, contentType: String): Response<Unit> {
+	suspend fun updateItemContentType(itemId: UUID, contentType: String? = null): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = mutableMapOf<String, Any?>()

@@ -97,7 +97,7 @@ class DynamicHlsApi(
 		itemId: UUID,
 		playlistId: String,
 		segmentId: Int,
-		container: String,
+		container: String? = null,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -280,7 +280,7 @@ class DynamicHlsApi(
 		itemId: UUID,
 		playlistId: String,
 		segmentId: Int,
-		container: String,
+		container: String? = null,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -390,8 +390,6 @@ class DynamicHlsApi(
 	 * Gets an audio stream using HTTP live streaming.
 	 *
 	 * @param itemId The item id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param static Optional. If true, the original file will be streamed statically without any
 	 * encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
@@ -457,7 +455,6 @@ class DynamicHlsApi(
 	 */
 	suspend fun getVariantHlsAudioPlaylist(
 		itemId: UUID,
-		container: String,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -508,7 +505,6 @@ class DynamicHlsApi(
 	): Response<InputStream> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
-		pathParameters["container"] = container
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["static"] = static
 		queryParameters["params"] = params
@@ -567,8 +563,6 @@ class DynamicHlsApi(
 	 * Gets an audio stream using HTTP live streaming.
 	 *
 	 * @param itemId The item id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param static Optional. If true, the original file will be streamed statically without any
 	 * encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
@@ -634,7 +628,6 @@ class DynamicHlsApi(
 	 */
 	fun getVariantHlsAudioPlaylistUrl(
 		itemId: UUID,
-		container: String,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -685,7 +678,6 @@ class DynamicHlsApi(
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
-		pathParameters["container"] = container
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["static"] = static
 		queryParameters["params"] = params
@@ -741,8 +733,6 @@ class DynamicHlsApi(
 	 * Gets an audio hls playlist stream.
 	 *
 	 * @param itemId The item id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param static Optional. If true, the original file will be streamed statically without any
 	 * encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
@@ -809,7 +799,6 @@ class DynamicHlsApi(
 	 */
 	suspend fun getMasterHlsAudioPlaylist(
 		itemId: UUID,
-		container: String,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -861,7 +850,6 @@ class DynamicHlsApi(
 	): Response<InputStream> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
-		pathParameters["container"] = container
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["static"] = static
 		queryParameters["params"] = params
@@ -921,8 +909,6 @@ class DynamicHlsApi(
 	 * Gets an audio hls playlist stream.
 	 *
 	 * @param itemId The item id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param static Optional. If true, the original file will be streamed statically without any
 	 * encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
@@ -989,7 +975,6 @@ class DynamicHlsApi(
 	 */
 	fun getMasterHlsAudioPlaylistUrl(
 		itemId: UUID,
-		container: String,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -1041,7 +1026,6 @@ class DynamicHlsApi(
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
-		pathParameters["container"] = container
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["static"] = static
 		queryParameters["params"] = params
@@ -1169,7 +1153,7 @@ class DynamicHlsApi(
 		itemId: UUID,
 		playlistId: String,
 		segmentId: Int,
-		container: String,
+		container: String? = null,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -1352,7 +1336,7 @@ class DynamicHlsApi(
 		itemId: UUID,
 		playlistId: String,
 		segmentId: Int,
-		container: String,
+		container: String? = null,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -1462,8 +1446,6 @@ class DynamicHlsApi(
 	 * Gets a video stream using HTTP live streaming.
 	 *
 	 * @param itemId The item id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param static Optional. If true, the original file will be streamed statically without any
 	 * encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
@@ -1529,7 +1511,6 @@ class DynamicHlsApi(
 	 */
 	suspend fun getVariantHlsVideoPlaylist(
 		itemId: UUID,
-		container: String,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -1580,7 +1561,6 @@ class DynamicHlsApi(
 	): Response<InputStream> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
-		pathParameters["container"] = container
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["static"] = static
 		queryParameters["params"] = params
@@ -1639,8 +1619,6 @@ class DynamicHlsApi(
 	 * Gets a video stream using HTTP live streaming.
 	 *
 	 * @param itemId The item id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param static Optional. If true, the original file will be streamed statically without any
 	 * encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
@@ -1706,7 +1684,6 @@ class DynamicHlsApi(
 	 */
 	fun getVariantHlsVideoPlaylistUrl(
 		itemId: UUID,
-		container: String,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -1757,7 +1734,6 @@ class DynamicHlsApi(
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
-		pathParameters["container"] = container
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["static"] = static
 		queryParameters["params"] = params
@@ -1813,8 +1789,6 @@ class DynamicHlsApi(
 	 * Gets a video hls playlist stream.
 	 *
 	 * @param itemId The item id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param static Optional. If true, the original file will be streamed statically without any
 	 * encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
@@ -1881,7 +1855,6 @@ class DynamicHlsApi(
 	 */
 	suspend fun getMasterHlsVideoPlaylist(
 		itemId: UUID,
-		container: String,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -1933,7 +1906,6 @@ class DynamicHlsApi(
 	): Response<InputStream> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
-		pathParameters["container"] = container
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["static"] = static
 		queryParameters["params"] = params
@@ -1993,8 +1965,6 @@ class DynamicHlsApi(
 	 * Gets a video hls playlist stream.
 	 *
 	 * @param itemId The item id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param static Optional. If true, the original file will be streamed statically without any
 	 * encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
@@ -2061,7 +2031,6 @@ class DynamicHlsApi(
 	 */
 	fun getMasterHlsVideoPlaylistUrl(
 		itemId: UUID,
-		container: String,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -2113,7 +2082,6 @@ class DynamicHlsApi(
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
-		pathParameters["container"] = container
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["static"] = static
 		queryParameters["params"] = params

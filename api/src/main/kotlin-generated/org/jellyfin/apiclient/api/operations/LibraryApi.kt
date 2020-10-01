@@ -373,11 +373,11 @@ class LibraryApi(
 	 * @param tmdbId The tmdbId.
 	 * @param imdbId The imdbId.
 	 */
-	suspend fun postAddedMovies(tmdbId: String, imdbId: String): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["tmdbId"] = tmdbId
-		pathParameters["imdbId"] = imdbId
-		val queryParameters = emptyMap<String, Any?>()
+	suspend fun postAddedMovies(tmdbId: String? = null, imdbId: String? = null): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["tmdbId"] = tmdbId
+		queryParameters["imdbId"] = imdbId
 		val data = null
 		val response = api.post<Unit>("/Library/Movies/Added", pathParameters, queryParameters, data)
 		return response
@@ -389,11 +389,11 @@ class LibraryApi(
 	 * @param tmdbId The tmdbId.
 	 * @param imdbId The imdbId.
 	 */
-	suspend fun postUpdatedMovies(tmdbId: String, imdbId: String): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["tmdbId"] = tmdbId
-		pathParameters["imdbId"] = imdbId
-		val queryParameters = emptyMap<String, Any?>()
+	suspend fun postUpdatedMovies(tmdbId: String? = null, imdbId: String? = null): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["tmdbId"] = tmdbId
+		queryParameters["imdbId"] = imdbId
 		val data = null
 		val response = api.post<Unit>("/Library/Movies/Updated", pathParameters, queryParameters, data)
 		return response

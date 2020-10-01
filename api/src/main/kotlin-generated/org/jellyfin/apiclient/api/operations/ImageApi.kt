@@ -27,6 +27,7 @@ class ImageApi(
 	 *
 	 * @param name Artist name.
 	 * @param imageType Image type.
+	 * @param imageIndex Image index.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
@@ -34,7 +35,6 @@ class ImageApi(
 	 * @param maxHeight The maximum image height to return.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
@@ -49,13 +49,13 @@ class ImageApi(
 	suspend fun getArtistImage(
 		name: String,
 		imageType: ImageType,
-		tag: String,
-		format: String,
-		maxWidth: Int,
-		maxHeight: Int,
-		percentPlayed: Double,
-		unplayedCount: Int,
 		imageIndex: Int,
+		tag: String? = null,
+		format: String? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
+		percentPlayed: Double? = null,
+		unplayedCount: Int? = null,
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
@@ -68,14 +68,14 @@ class ImageApi(
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["imageType"] = imageType
-		pathParameters["tag"] = tag
-		pathParameters["format"] = format
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
-		pathParameters["percentPlayed"] = percentPlayed
-		pathParameters["unplayedCount"] = unplayedCount
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["tag"] = tag
+		queryParameters["format"] = format
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
+		queryParameters["percentPlayed"] = percentPlayed
+		queryParameters["unplayedCount"] = unplayedCount
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
@@ -95,6 +95,7 @@ class ImageApi(
 	 *
 	 * @param name Artist name.
 	 * @param imageType Image type.
+	 * @param imageIndex Image index.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
@@ -102,7 +103,6 @@ class ImageApi(
 	 * @param maxHeight The maximum image height to return.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
@@ -117,13 +117,13 @@ class ImageApi(
 	fun getArtistImageUrl(
 		name: String,
 		imageType: ImageType,
-		tag: String,
-		format: String,
-		maxWidth: Int,
-		maxHeight: Int,
-		percentPlayed: Double,
-		unplayedCount: Int,
 		imageIndex: Int,
+		tag: String? = null,
+		format: String? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
+		percentPlayed: Double? = null,
+		unplayedCount: Int? = null,
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
@@ -136,14 +136,14 @@ class ImageApi(
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["imageType"] = imageType
-		pathParameters["tag"] = tag
-		pathParameters["format"] = format
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
-		pathParameters["percentPlayed"] = percentPlayed
-		pathParameters["unplayedCount"] = unplayedCount
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["tag"] = tag
+		queryParameters["format"] = format
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
+		queryParameters["percentPlayed"] = percentPlayed
+		queryParameters["unplayedCount"] = unplayedCount
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
@@ -161,6 +161,7 @@ class ImageApi(
 	 *
 	 * @param name Genre name.
 	 * @param imageType Image type.
+	 * @param imageIndex Image index.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
@@ -168,7 +169,6 @@ class ImageApi(
 	 * @param maxHeight The maximum image height to return.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
@@ -183,13 +183,13 @@ class ImageApi(
 	suspend fun getGenreImage(
 		name: String,
 		imageType: ImageType,
-		tag: String,
-		format: String,
-		maxWidth: Int,
-		maxHeight: Int,
-		percentPlayed: Double,
-		unplayedCount: Int,
-		imageIndex: Int,
+		imageIndex: Int? = null,
+		tag: String? = null,
+		format: String? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
+		percentPlayed: Double? = null,
+		unplayedCount: Int? = null,
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
@@ -202,14 +202,14 @@ class ImageApi(
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["imageType"] = imageType
-		pathParameters["tag"] = tag
-		pathParameters["format"] = format
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
-		pathParameters["percentPlayed"] = percentPlayed
-		pathParameters["unplayedCount"] = unplayedCount
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["tag"] = tag
+		queryParameters["format"] = format
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
+		queryParameters["percentPlayed"] = percentPlayed
+		queryParameters["unplayedCount"] = unplayedCount
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
@@ -229,6 +229,7 @@ class ImageApi(
 	 *
 	 * @param name Genre name.
 	 * @param imageType Image type.
+	 * @param imageIndex Image index.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
@@ -236,7 +237,6 @@ class ImageApi(
 	 * @param maxHeight The maximum image height to return.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
@@ -251,13 +251,13 @@ class ImageApi(
 	fun getGenreImageUrl(
 		name: String,
 		imageType: ImageType,
-		tag: String,
-		format: String,
-		maxWidth: Int,
-		maxHeight: Int,
-		percentPlayed: Double,
-		unplayedCount: Int,
-		imageIndex: Int,
+		imageIndex: Int? = null,
+		tag: String? = null,
+		format: String? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
+		percentPlayed: Double? = null,
+		unplayedCount: Int? = null,
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
@@ -270,14 +270,14 @@ class ImageApi(
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["imageType"] = imageType
-		pathParameters["tag"] = tag
-		pathParameters["format"] = format
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
-		pathParameters["percentPlayed"] = percentPlayed
-		pathParameters["unplayedCount"] = unplayedCount
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["tag"] = tag
+		queryParameters["format"] = format
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
+		queryParameters["percentPlayed"] = percentPlayed
+		queryParameters["unplayedCount"] = unplayedCount
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
@@ -310,9 +310,9 @@ class ImageApi(
 	 *
 	 * @param itemId Item id.
 	 * @param imageType Image type.
+	 * @param imageIndex Image index.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
-	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
@@ -332,9 +332,9 @@ class ImageApi(
 	suspend fun getItemImage(
 		itemId: UUID,
 		imageType: ImageType,
-		maxWidth: Int,
-		maxHeight: Int,
-		imageIndex: Int,
+		imageIndex: Int? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
@@ -351,10 +351,10 @@ class ImageApi(
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["imageType"] = imageType
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
@@ -378,9 +378,9 @@ class ImageApi(
 	 *
 	 * @param itemId Item id.
 	 * @param imageType Image type.
+	 * @param imageIndex Image index.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
-	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
@@ -400,9 +400,9 @@ class ImageApi(
 	fun getItemImageUrl(
 		itemId: UUID,
 		imageType: ImageType,
-		maxWidth: Int,
-		maxHeight: Int,
-		imageIndex: Int,
+		imageIndex: Int? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
@@ -419,10 +419,10 @@ class ImageApi(
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["imageType"] = imageType
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
@@ -448,7 +448,7 @@ class ImageApi(
 	suspend fun setItemImage(
 		itemId: UUID,
 		imageType: ImageType,
-		imageIndex: Int
+		imageIndex: Int? = null
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -471,7 +471,7 @@ class ImageApi(
 	suspend fun deleteItemImage(
 		itemId: UUID,
 		imageType: ImageType,
-		imageIndex: Int
+		imageIndex: Int? = null
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -489,9 +489,9 @@ class ImageApi(
 	 *
 	 * @param itemId Item id.
 	 * @param imageType Image type.
+	 * @param imageIndex Image index.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
-	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
@@ -511,9 +511,9 @@ class ImageApi(
 	suspend fun getItemImage_2(
 		itemId: UUID,
 		imageType: ImageType,
-		maxWidth: Int,
-		maxHeight: Int,
-		imageIndex: Int,
+		imageIndex: Int? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
@@ -530,10 +530,10 @@ class ImageApi(
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["imageType"] = imageType
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
@@ -557,9 +557,9 @@ class ImageApi(
 	 *
 	 * @param itemId Item id.
 	 * @param imageType Image type.
+	 * @param imageIndex Image index.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
-	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
@@ -579,9 +579,9 @@ class ImageApi(
 	fun getItemImage_2Url(
 		itemId: UUID,
 		imageType: ImageType,
-		maxWidth: Int,
-		maxHeight: Int,
-		imageIndex: Int,
+		imageIndex: Int? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
@@ -598,10 +598,10 @@ class ImageApi(
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["imageType"] = imageType
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
@@ -628,7 +628,7 @@ class ImageApi(
 	suspend fun setItemImage_2(
 		itemId: UUID,
 		imageType: ImageType,
-		imageIndex: Int
+		imageIndex: Int? = null
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -651,7 +651,7 @@ class ImageApi(
 	suspend fun deleteItemImage_2(
 		itemId: UUID,
 		imageType: ImageType,
-		imageIndex: Int
+		imageIndex: Int? = null
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -830,6 +830,7 @@ class ImageApi(
 	 *
 	 * @param name Music genre name.
 	 * @param imageType Image type.
+	 * @param imageIndex Image index.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
@@ -837,7 +838,6 @@ class ImageApi(
 	 * @param maxHeight The maximum image height to return.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
@@ -852,13 +852,13 @@ class ImageApi(
 	suspend fun getMusicGenreImage(
 		name: String,
 		imageType: ImageType,
-		tag: String,
-		format: String,
-		maxWidth: Int,
-		maxHeight: Int,
-		percentPlayed: Double,
-		unplayedCount: Int,
-		imageIndex: Int,
+		imageIndex: Int? = null,
+		tag: String? = null,
+		format: String? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
+		percentPlayed: Double? = null,
+		unplayedCount: Int? = null,
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
@@ -871,14 +871,14 @@ class ImageApi(
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["imageType"] = imageType
-		pathParameters["tag"] = tag
-		pathParameters["format"] = format
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
-		pathParameters["percentPlayed"] = percentPlayed
-		pathParameters["unplayedCount"] = unplayedCount
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["tag"] = tag
+		queryParameters["format"] = format
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
+		queryParameters["percentPlayed"] = percentPlayed
+		queryParameters["unplayedCount"] = unplayedCount
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
@@ -898,6 +898,7 @@ class ImageApi(
 	 *
 	 * @param name Music genre name.
 	 * @param imageType Image type.
+	 * @param imageIndex Image index.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
@@ -905,7 +906,6 @@ class ImageApi(
 	 * @param maxHeight The maximum image height to return.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
@@ -920,13 +920,13 @@ class ImageApi(
 	fun getMusicGenreImageUrl(
 		name: String,
 		imageType: ImageType,
-		tag: String,
-		format: String,
-		maxWidth: Int,
-		maxHeight: Int,
-		percentPlayed: Double,
-		unplayedCount: Int,
-		imageIndex: Int,
+		imageIndex: Int? = null,
+		tag: String? = null,
+		format: String? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
+		percentPlayed: Double? = null,
+		unplayedCount: Int? = null,
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
@@ -939,14 +939,14 @@ class ImageApi(
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["imageType"] = imageType
-		pathParameters["tag"] = tag
-		pathParameters["format"] = format
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
-		pathParameters["percentPlayed"] = percentPlayed
-		pathParameters["unplayedCount"] = unplayedCount
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["tag"] = tag
+		queryParameters["format"] = format
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
+		queryParameters["percentPlayed"] = percentPlayed
+		queryParameters["unplayedCount"] = unplayedCount
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
@@ -964,6 +964,7 @@ class ImageApi(
 	 *
 	 * @param name Person name.
 	 * @param imageType Image type.
+	 * @param imageIndex Image index.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
@@ -971,7 +972,6 @@ class ImageApi(
 	 * @param maxHeight The maximum image height to return.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
@@ -986,13 +986,13 @@ class ImageApi(
 	suspend fun getPersonImage(
 		name: String,
 		imageType: ImageType,
-		tag: String,
-		format: String,
-		maxWidth: Int,
-		maxHeight: Int,
-		percentPlayed: Double,
-		unplayedCount: Int,
-		imageIndex: Int,
+		imageIndex: Int? = null,
+		tag: String? = null,
+		format: String? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
+		percentPlayed: Double? = null,
+		unplayedCount: Int? = null,
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
@@ -1005,14 +1005,14 @@ class ImageApi(
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["imageType"] = imageType
-		pathParameters["tag"] = tag
-		pathParameters["format"] = format
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
-		pathParameters["percentPlayed"] = percentPlayed
-		pathParameters["unplayedCount"] = unplayedCount
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["tag"] = tag
+		queryParameters["format"] = format
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
+		queryParameters["percentPlayed"] = percentPlayed
+		queryParameters["unplayedCount"] = unplayedCount
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
@@ -1032,6 +1032,7 @@ class ImageApi(
 	 *
 	 * @param name Person name.
 	 * @param imageType Image type.
+	 * @param imageIndex Image index.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
@@ -1039,7 +1040,6 @@ class ImageApi(
 	 * @param maxHeight The maximum image height to return.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
@@ -1054,13 +1054,13 @@ class ImageApi(
 	fun getPersonImageUrl(
 		name: String,
 		imageType: ImageType,
-		tag: String,
-		format: String,
-		maxWidth: Int,
-		maxHeight: Int,
-		percentPlayed: Double,
-		unplayedCount: Int,
-		imageIndex: Int,
+		imageIndex: Int? = null,
+		tag: String? = null,
+		format: String? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
+		percentPlayed: Double? = null,
+		unplayedCount: Int? = null,
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
@@ -1073,14 +1073,14 @@ class ImageApi(
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["imageType"] = imageType
-		pathParameters["tag"] = tag
-		pathParameters["format"] = format
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
-		pathParameters["percentPlayed"] = percentPlayed
-		pathParameters["unplayedCount"] = unplayedCount
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["tag"] = tag
+		queryParameters["format"] = format
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
+		queryParameters["percentPlayed"] = percentPlayed
+		queryParameters["unplayedCount"] = unplayedCount
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
@@ -1101,11 +1101,11 @@ class ImageApi(
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
+	 * @param imageIndex Image index.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
@@ -1122,11 +1122,11 @@ class ImageApi(
 		imageType: ImageType,
 		tag: String,
 		format: String,
-		maxWidth: Int,
-		maxHeight: Int,
-		percentPlayed: Double,
-		unplayedCount: Int,
-		imageIndex: Int,
+		imageIndex: Int? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
+		percentPlayed: Double? = null,
+		unplayedCount: Int? = null,
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
@@ -1141,12 +1141,12 @@ class ImageApi(
 		pathParameters["imageType"] = imageType
 		pathParameters["tag"] = tag
 		pathParameters["format"] = format
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
-		pathParameters["percentPlayed"] = percentPlayed
-		pathParameters["unplayedCount"] = unplayedCount
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
+		queryParameters["percentPlayed"] = percentPlayed
+		queryParameters["unplayedCount"] = unplayedCount
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
@@ -1169,11 +1169,11 @@ class ImageApi(
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
+	 * @param imageIndex Image index.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
@@ -1190,11 +1190,11 @@ class ImageApi(
 		imageType: ImageType,
 		tag: String,
 		format: String,
-		maxWidth: Int,
-		maxHeight: Int,
-		percentPlayed: Double,
-		unplayedCount: Int,
-		imageIndex: Int,
+		imageIndex: Int? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
+		percentPlayed: Double? = null,
+		unplayedCount: Int? = null,
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
@@ -1209,12 +1209,12 @@ class ImageApi(
 		pathParameters["imageType"] = imageType
 		pathParameters["tag"] = tag
 		pathParameters["format"] = format
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
-		pathParameters["percentPlayed"] = percentPlayed
-		pathParameters["unplayedCount"] = unplayedCount
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
+		queryParameters["percentPlayed"] = percentPlayed
+		queryParameters["unplayedCount"] = unplayedCount
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
@@ -1237,7 +1237,7 @@ class ImageApi(
 	suspend fun postUserImage(
 		userId: UUID,
 		imageType: ImageType,
-		index: Int
+		index: Int? = null
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -1277,7 +1277,7 @@ class ImageApi(
 	suspend fun getUserImage(
 		userId: UUID,
 		imageType: ImageType,
-		imageIndex: Int,
+		imageIndex: Int? = null,
 		tag: String? = null,
 		format: String? = null,
 		maxWidth: Int? = null,
@@ -1345,7 +1345,7 @@ class ImageApi(
 	fun getUserImageUrl(
 		userId: UUID,
 		imageType: ImageType,
-		imageIndex: Int,
+		imageIndex: Int? = null,
 		tag: String? = null,
 		format: String? = null,
 		maxWidth: Int? = null,
@@ -1394,7 +1394,7 @@ class ImageApi(
 	suspend fun postUserImage_2(
 		userId: UUID,
 		imageType: ImageType,
-		index: Int
+		index: Int? = null
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -1417,7 +1417,7 @@ class ImageApi(
 	suspend fun deleteUserImage(
 		userId: UUID,
 		imageType: ImageType,
-		index: Int,
+		index: Int? = null,
 		itemType: String
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -1442,7 +1442,7 @@ class ImageApi(
 	suspend fun deleteUserImage_2(
 		userId: UUID,
 		imageType: ImageType,
-		index: Int,
+		index: Int? = null,
 		itemType: String
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()

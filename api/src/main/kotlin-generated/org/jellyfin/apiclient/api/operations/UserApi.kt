@@ -16,6 +16,7 @@ import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.AuthenticateUserByName
 import org.jellyfin.apiclient.model.api.AuthenticationResult
 import org.jellyfin.apiclient.model.api.CreateUserByName
+import org.jellyfin.apiclient.model.api.ForgotPasswordDto
 import org.jellyfin.apiclient.model.api.ForgotPasswordResult
 import org.jellyfin.apiclient.model.api.PinRedeemResult
 import org.jellyfin.apiclient.model.api.QuickConnectDto
@@ -188,7 +189,7 @@ class UserApi(
 	/**
 	 * Initiates the forgot password process for a local user.
 	 */
-	suspend fun forgotPassword(data: String?): Response<ForgotPasswordResult> {
+	suspend fun forgotPassword(data: ForgotPasswordDto): Response<ForgotPasswordResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<ForgotPasswordResult>("/Users/ForgotPassword", pathParameters,

@@ -51,17 +51,20 @@ class PackageApi(
 	 * @param name Package name.
 	 * @param assemblyGuid GUID of the associated assembly.
 	 * @param version Optional version. Defaults to latest version.
+	 * @param repositoryUrl Optional. Specify the repository to install from.
 	 */
 	suspend fun installPackage(
 		name: String,
 		assemblyGuid: String? = null,
-		version: String? = null
+		version: String? = null,
+		repositoryUrl: String? = null
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["assemblyGuid"] = assemblyGuid
 		queryParameters["version"] = version
+		queryParameters["repositoryUrl"] = repositoryUrl
 		val data = null
 		val response = api.post<Unit>("/Packages/Installed/{name}", pathParameters, queryParameters, data)
 		return response

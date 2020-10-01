@@ -21,11 +21,6 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 @Serializable
 data class ThemeMediaResult(
 	/**
-	 * Gets or sets the owner id.
-	 */
-	@SerialName("OwnerId")
-	val ownerId: UUID,
-	/**
 	 * Gets or sets the items.
 	 */
 	@SerialName("Items")
@@ -39,5 +34,10 @@ data class ThemeMediaResult(
 	 * The index of the first record in Items.
 	 */
 	@SerialName("StartIndex")
-	val startIndex: Int
+	val startIndex: Int,
+	/**
+	 * Gets or sets the owner id.
+	 */
+	@SerialName("OwnerId")
+	val ownerId: UUID
 )

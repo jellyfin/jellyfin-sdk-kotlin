@@ -52,17 +52,15 @@ class ItemLookupApi(
 	 */
 	suspend fun applySearchCriteria(
 		itemId: UUID,
-		id: String,
 		replaceAllImages: Boolean,
 		data: RemoteSearchResult
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
-		pathParameters["id"] = id
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["replaceAllImages"] = replaceAllImages
-		val response = api.post<Unit>("/Items/RemoteSearch/Apply/{id}", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/Items/RemoteSearch/Apply/{itemId}", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
