@@ -5,25 +5,20 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlin.Long
 import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/**
- * Class GroupUpdate.
- */
 @Serializable
-data class StringGroupUpdate(
+data class PlaystateRequest(
+	@SerialName("Command")
+	val command: PlaystateCommand? = null,
+	@SerialName("SeekPositionTicks")
+	val seekPositionTicks: Long? = null,
 	/**
-	 * Gets or sets the group identifier.
+	 * Gets or sets the controlling user identifier.
 	 */
-	@SerialName("GroupId")
-	val groupId: String? = null,
-	@SerialName("Type")
-	val type: GroupUpdateType? = null,
-	/**
-	 * Gets or sets the data.
-	 */
-	@SerialName("Data")
-	val data: String? = null
+	@SerialName("ControllingUserId")
+	val controllingUserId: String? = null
 )

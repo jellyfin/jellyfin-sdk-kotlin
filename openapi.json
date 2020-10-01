@@ -47682,6 +47682,25 @@
         "additionalProperties": false,
         "description": "Class PlayRequest."
       },
+      "PlaystateRequest": {
+        "type": "object",
+        "properties": {
+          "Command": {
+            "$ref": "#/components/schemas/PlaystateCommand"
+          },
+          "SeekPositionTicks": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "ControllingUserId": {
+            "type": "string",
+            "description": "Gets or sets the controlling user identifier.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "TimerEventInfo": {
         "type": "object",
         "properties": {
@@ -47755,7 +47774,7 @@
         "type": "string",
         "description": "Enum GroupUpdateType."
       },
-      "StringGroupUpdate": {
+      "ObjectGroupUpdate": {
         "type": "object",
         "properties": {
           "GroupId": {
@@ -47767,47 +47786,8 @@
             "$ref": "#/components/schemas/GroupUpdateType"
           },
           "Data": {
-            "type": "string",
             "description": "Gets or sets the data.",
             "nullable": true
-          }
-        },
-        "additionalProperties": false,
-        "description": "Class GroupUpdate."
-      },
-      "PlayRequestGroupUpdate": {
-        "type": "object",
-        "properties": {
-          "GroupId": {
-            "type": "string",
-            "description": "Gets or sets the group identifier.",
-            "nullable": true
-          },
-          "Type": {
-            "$ref": "#/components/schemas/GroupUpdateType"
-          },
-          "Data": {
-            "$ref": "#/components/schemas/PlayRequest"
-          }
-        },
-        "additionalProperties": false,
-        "description": "Class GroupUpdate."
-      },
-      "Int64GroupUpdate": {
-        "type": "object",
-        "properties": {
-          "GroupId": {
-            "type": "string",
-            "description": "Gets or sets the group identifier.",
-            "nullable": true
-          },
-          "Type": {
-            "$ref": "#/components/schemas/GroupUpdateType"
-          },
-          "Data": {
-            "type": "integer",
-            "description": "Gets or sets the data.",
-            "format": "int64"
           }
         },
         "additionalProperties": false,
