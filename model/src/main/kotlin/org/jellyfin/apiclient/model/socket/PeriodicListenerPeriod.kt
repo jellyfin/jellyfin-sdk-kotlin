@@ -10,7 +10,7 @@ import kotlinx.serialization.encoding.Encoder
 @Serializable(with = PeriodicListenerPeriod.Serializer::class)
 data class PeriodicListenerPeriod(
 	val initialDelay: Long = 0,
-	val interval: Long = 1000
+	val interval: Long = 1000,
 ) {
 	override fun toString(): String {
 		return "$initialDelay,$interval"

@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 @SerialName("SessionsStart")
 data class SessionsStartMessage(
 	@SerialName("Data")
-	val period: PeriodicListenerPeriod = PeriodicListenerPeriod()
+	val period: PeriodicListenerPeriod = PeriodicListenerPeriod(),
 ) : OutgoingSocketMessage

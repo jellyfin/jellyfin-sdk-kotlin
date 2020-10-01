@@ -13,5 +13,6 @@ interface IncomingSocketMessage : SocketMessage {
 	 *
 	 * Implementation note: Copy the @SerialName notation to the implementation side
 	 */
-	@SerialName("MessageId") val messageId: UUID
+	@SerialName("MessageId")
+	val messageId: UUID
 }

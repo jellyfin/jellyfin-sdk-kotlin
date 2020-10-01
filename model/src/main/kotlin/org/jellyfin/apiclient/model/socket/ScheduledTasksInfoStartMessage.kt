@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 @SerialName("ScheduledTasksInfoStart")
 data class ScheduledTasksInfoStartMessage(
 	@SerialName("Data")
-	val period: PeriodicListenerPeriod = PeriodicListenerPeriod()
+	val period: PeriodicListenerPeriod = PeriodicListenerPeriod(),
 ) : OutgoingSocketMessage

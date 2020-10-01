@@ -9,8 +9,10 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 import java.util.*
 
 @Serializable
-// @todo implement
 data class PlayStateMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,
+
+	@SerialName("Data")
+	val request: PlaystateRequest,
 ) : IncomingSocketMessage

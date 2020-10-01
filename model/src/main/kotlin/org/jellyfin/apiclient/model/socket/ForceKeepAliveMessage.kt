@@ -12,6 +12,7 @@ import java.util.*
 data class ForceKeepAliveMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,
+
 	@SerialName("Data")
-	val value: Int
+	val value: Int,
 ) : IncomingSocketMessage

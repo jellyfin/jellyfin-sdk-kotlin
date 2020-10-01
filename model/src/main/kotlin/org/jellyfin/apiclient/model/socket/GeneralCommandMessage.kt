@@ -12,10 +12,13 @@ import java.util.*
 data class GeneralCommandMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,
+
 	@SerialName("Name")
 	val command: GeneralCommandType,
+
 	@SerialName("ControllingUserId")
 	val userId: UUID,
+
 	@SerialName("Arguments")
-	val arguments: Map<String, String> = emptyMap()
+	val arguments: Map<String, String> = emptyMap(),
 ) : IncomingSocketMessage

@@ -1,4 +1,4 @@
-package org.jellyfin.apiclient.api.client.sockets
+package org.jellyfin.apiclient.api.sockets
 
 import io.ktor.client.features.websocket.*
 import io.ktor.client.request.*
@@ -35,6 +35,42 @@ import org.slf4j.LoggerFactory
 class WebSocketApi(
 	private val api: KtorClient
 ) {
+	companion object {
+		// Mapping for types to message
+		val incomingMessageSerializers = mapOf(
+			"ForceKeepAlive" to serializer<ForceKeepAliveMessage>(),
+			"GeneralCommand" to serializer<GeneralCommandMessage>(),
+			"UserDataChanged" to serializer<UserDataChangedMessage>(),
+			"Sessions" to serializer<SessionsMessage>(),
+			"Play" to serializer<PlayMessage>(),
+			"SyncPlayCommand" to serializer<SyncPlayCommandMessage>(),
+			"SyncPlayGroupUpdate" to serializer<SyncPlayGroupUpdateMessage>(),
+			"PlayState" to serializer<PlayStateMessage>(),
+			"RestartRequired" to serializer<RestartRequiredMessage>(),
+			"ServerShuttingDown" to serializer<ServerShuttingDownMessage>(),
+			"ServerRestarting" to serializer<ServerRestartingMessage>(),
+			"LibraryChanged" to serializer<LibraryChangedMessage>(),
+			"UserDeleted" to serializer<UserDeletedMessage>(),
+			"UserUpdated" to serializer<UserUpdatedMessage>(),
+			"SeriesTimerCreated" to serializer<SeriesTimerCreatedMessage>(),
+			"TimerCreated" to serializer<TimerCreatedMessage>(),
+			"SeriesTimerCancelled" to serializer<SeriesTimerCancelledMessage>(),
+			"TimerCancelled" to serializer<TimerCancelledMessage>(),
+			"RefreshProgress" to serializer<RefreshProgressMessage>(),
+			"ScheduledTaskEnded" to serializer<ScheduledTaskEndedMessage>(),
+			"PackageInstallationCancelled" to serializer<PackageInstallationCancelledMessage>(),
+			"PackageInstallationFailed" to serializer<PackageInstallationFailedMessage>(),
+			"PackageInstallationCompleted" to serializer<PackageInstallationCompletedMessage>(),
+			"PackageInstalling" to serializer<PackageInstallingMessage>(),
+			"PackageUninstalled" to serializer<PackageUninstalledMessage>(),
+			"ActivityLogEntry" to serializer<ActivityLogEntryMessage>(),
+			"ScheduledTasksInfo" to serializer<ScheduledTasksInfoMessage>(),
+
+			// Shared type, only implemented as outgoing message
+			"KeepAlive" to serializer<KeepAliveMessage>(),
+		)
+	}
+
 	private val logger = LoggerFactory.getLogger("WebSocketApi")
 
 	private val json = Json {
@@ -98,28 +134,26 @@ class WebSocketApi(
 		socketJob?.cancel()
 
 		// Open socket
-		withContext(Dispatchers.Unconfined) {
-			socketJob = launch {
-				// Create web socket connection
-				api.client.ws({
-					url {
-						// Create from base URL
-						takeFrom(baseUrl.replace("^http".toRegex(), "ws"))
+		socketJob = GlobalScope.launch {
+			// Create web socket connection
+			api.client.ws({
+				url {
+					// Create from base URL
+					takeFrom(baseUrl.replace("^http".toRegex(), "ws"))
 
-						// Assign path making sure to remove duplicated slashes between the base and appended path
-						encodedPath = "${encodedPath.trimEnd('/')}/socket"
+					// Assign path making sure to remove duplicated slashes between the base and appended path
+					encodedPath = "${encodedPath.trimEnd('/')}/socket"
 
-						// Add required parameters
-						parameter("api_key", accessToken)
-						parameter("deviceId", api.deviceInfo.id)
-					}
-				}) {
-					// Bind to messaging channels
-					joinAll(
-						launch { incoming.read() },
-						launch { outgoing.write() },
-					)
+					// Add required parameters
+					parameter("api_key", accessToken)
+					parameter("deviceId", api.deviceInfo.id)
 				}
+			}) {
+				// Bind to messaging channels
+				joinAll(
+					launch { incoming.read() },
+					launch { outgoing.write() },
+				)
 			}
 		}
 	}
@@ -188,39 +222,5 @@ class WebSocketApi(
 		ensureConnected()
 
 		return incomingMessageChannel.asFlow()
-	}
-
-	companion object {
-		val incomingMessageSerializers = mapOf(
-			"ForceKeepAlive" to serializer<ForceKeepAliveMessage>(),
-			"GeneralCommand" to serializer<GeneralCommandMessage>(),
-			"UserDataChanged" to serializer<UserDataChangedMessage>(),
-			"Sessions" to serializer<SessionsMessage>(),
-			"Play" to serializer<PlayMessage>(),
-			"SyncPlayCommand" to serializer<SyncPlayCommandMessage>(),
-			"SyncPlayGroupUpdate" to serializer<SyncPlayGroupUpdateMessage>(),
-			"PlayState" to serializer<PlayStateMessage>(),
-			"RestartRequired" to serializer<RestartRequiredMessage>(),
-			"ServerShuttingDown" to serializer<ServerShuttingDownMessage>(),
-			"ServerRestarting" to serializer<ServerRestartingMessage>(),
-			"LibraryChanged" to serializer<LibraryChangedMessage>(),
-			"UserDeleted" to serializer<UserDeletedMessage>(),
-			"UserUpdated" to serializer<UserUpdatedMessage>(),
-			"SeriesTimerCreated" to serializer<SeriesTimerCreatedMessage>(),
-			"TimerCreated" to serializer<TimerCreatedMessage>(),
-			"SeriesTimerCancelled" to serializer<SeriesTimerCancelledMessage>(),
-			"TimerCancelled" to serializer<TimerCancelledMessage>(),
-			"RefreshProgress" to serializer<RefreshProgressMessage>(),
-			"ScheduledTaskEnded" to serializer<ScheduledTaskEndedMessage>(),
-			"PackageInstallationCancelled" to serializer<PackageInstallationCancelledMessage>(),
-			"PackageInstallationFailed" to serializer<PackageInstallationFailedMessage>(),
-			"PackageInstallationCompleted" to serializer<PackageInstallationCompletedMessage>(),
-			"PackageInstalling" to serializer<PackageInstallingMessage>(),
-			"PackageUninstalled" to serializer<PackageUninstalledMessage>(),
-			"ActivityLogEntry" to serializer<ActivityLogEntryMessage>(),
-			"ScheduledTasksInfo" to serializer<ScheduledTasksInfoMessage>(),
-
-			"KeepAlive" to serializer<KeepAliveMessage>(),
-		)
 	}
 }

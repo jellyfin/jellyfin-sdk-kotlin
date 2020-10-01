@@ -9,7 +9,6 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 import java.util.*
 
 @Serializable
-// @todo implement
 data class ServerShuttingDownMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,

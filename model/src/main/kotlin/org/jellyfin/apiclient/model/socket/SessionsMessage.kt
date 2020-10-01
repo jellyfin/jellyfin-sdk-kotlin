@@ -14,5 +14,5 @@ data class SessionsMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,
 	@SerialName("Data")
-	val Session: List<SessionInfo>
+	val Session: List<SessionInfo>,
 ) : IncomingSocketMessage

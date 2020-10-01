@@ -16,5 +16,5 @@ data class UserDataChangedMessage(
 	@SerialName("UserId")
 	val userId: UUID,
 	@SerialName("UserDataList")
-	val userDataList: List<UserItemDataDto>
+	val userDataList: List<UserItemDataDto>,
 ) : IncomingSocketMessage

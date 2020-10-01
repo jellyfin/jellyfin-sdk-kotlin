@@ -9,8 +9,10 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 import java.util.*
 
 @Serializable
-// @todo implement
 data class RefreshProgressMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,
+
+	@SerialName("Data")
+	val data: Map<String, String>,
 ) : IncomingSocketMessage
