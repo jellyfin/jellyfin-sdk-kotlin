@@ -40,7 +40,7 @@ class BrandingApi(
 	/**
 	 * Gets branding css.
 	 */
-	suspend fun getBrandingCss_2(): Response<String> {
+	suspend fun getBrandingCss2(): Response<String> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null

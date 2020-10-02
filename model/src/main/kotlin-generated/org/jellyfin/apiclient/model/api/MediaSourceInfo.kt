@@ -78,7 +78,7 @@ data class MediaSourceInfo(
 	@SerialName("IsoType")
 	val isoType: IsoType? = null,
 	@SerialName("Video3DFormat")
-	val video3DFormat: Video3DFormat? = null,
+	val video3dFormat: Video3dFormat? = null,
 	@SerialName("MediaStreams")
 	val mediaStreams: List<MediaStream>? = null,
 	@SerialName("MediaAttachments")

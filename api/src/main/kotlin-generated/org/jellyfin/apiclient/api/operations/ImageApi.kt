@@ -508,7 +508,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	suspend fun getItemImage_2(
+	suspend fun getItemImage2(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int? = null,
@@ -576,7 +576,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	fun getItemImage_2Url(
+	fun getItemImage2Url(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int? = null,
@@ -625,7 +625,7 @@ class ImageApi(
 	 * @param imageType Image type.
 	 * @param imageIndex (Unused) Image index.
 	 */
-	suspend fun setItemImage_2(
+	suspend fun setItemImage2(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int? = null
@@ -648,7 +648,7 @@ class ImageApi(
 	 * @param imageType Image type.
 	 * @param imageIndex The image index.
 	 */
-	suspend fun deleteItemImage_2(
+	suspend fun deleteItemImage2(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int? = null
@@ -1391,7 +1391,7 @@ class ImageApi(
 	 * @param imageType (Unused) Image type.
 	 * @param index (Unused) Image index.
 	 */
-	suspend fun postUserImage_2(
+	suspend fun postUserImage2(
 		userId: UUID,
 		imageType: ImageType,
 		index: Int? = null
@@ -1439,7 +1439,7 @@ class ImageApi(
 	 * @param imageType (Unused) Image type.
 	 * @param index (Unused) Image index.
 	 */
-	suspend fun deleteUserImage_2(
+	suspend fun deleteUserImage2(
 		userId: UUID,
 		imageType: ImageType,
 		index: Int? = null,
