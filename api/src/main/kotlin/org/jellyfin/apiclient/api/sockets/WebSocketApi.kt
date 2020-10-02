@@ -1,17 +1,12 @@
 package org.jellyfin.apiclient.api.sockets
 
 import io.ktor.client.features.websocket.*
-import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.http.cio.websocket.*
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.BroadcastChannel
-import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.*
 import kotlinx.coroutines.channels.Channel.Factory.BUFFERED
-import kotlinx.coroutines.channels.ReceiveChannel
-import kotlinx.coroutines.channels.SendChannel
 import kotlinx.coroutines.flow.*
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.*
@@ -29,9 +24,6 @@ import org.slf4j.LoggerFactory
  *
  * The user should verify the access token is correct as the server does not respond to bad authorization.
  */
-@FlowPreview
-@ExperimentalCoroutinesApi
-@ExperimentalSerializationApi
 class WebSocketApi(
 	private val api: KtorClient
 ) {
@@ -69,6 +61,11 @@ class WebSocketApi(
 			// Shared type, only implemented as outgoing message
 			"KeepAlive" to serializer<KeepAliveMessage>(),
 		)
+
+		private const val JSON_PROP_DATA = "Data"
+		private const val JSON_PROP_MESSAGE_ID = "MessageId"
+		private const val JSON_PROP_MESSAGE_TYPE = "MessageType"
+		private const val RECONNECT_DELAY = 3 * 1000L // milliseconds
 	}
 
 	private val logger = LoggerFactory.getLogger("WebSocketApi")
@@ -83,10 +80,7 @@ class WebSocketApi(
 	}
 
 	private var socketJob: Job? = null
-
-	private val incomingMessageChannel by lazy {
-		BroadcastChannel<IncomingSocketMessage>(BUFFERED)
-	}
+	private val subscriptions = mutableListOf<SocketSubscription>()
 
 	private val outgoingMessageChannel by lazy {
 		Channel<String>(BUFFERED)
@@ -96,15 +90,15 @@ class WebSocketApi(
 		.onEach {
 			val message = it.readSocketMessage() ?: return@onEach
 
-			// Send message
-			incomingMessageChannel.send(message)
+			// Send message to subscriptions
+			subscriptions.forEach { subscription -> subscription.callback(message) }
 		}
 		.catch { it.printStackTrace() }
 		.onCompletion {
 			// Reconnect
-			// TODO Only reconnect if listeners exist
-			logger.debug("Socket receiver completed")
-			reconnect()
+			logger.debug("Socket receiver completed, found %s subscriptions", subscriptions.size)
+			delay(RECONNECT_DELAY)
+			if (subscriptions.isNotEmpty()) reconnect()
 		}
 		.collect()
 
@@ -117,15 +111,23 @@ class WebSocketApi(
 		.catch { it.printStackTrace() }
 		.collect()
 
-	private suspend fun ensureConnected() {
-		logger.debug("Validating connection")
+	private suspend fun subscriptionsChanged() {
+		logger.debug("Subscriptions changed to %s", subscriptions.size)
 
-		if (socketJob == null) reconnect()
+		if (socketJob != null && subscriptions.isEmpty()) {
+			logger.info("Dropping connection")
+			socketJob?.cancel()
+		} else if (socketJob == null && subscriptions.isNotEmpty()) {
+			logger.info("Creating connection")
+			reconnect()
+		}
 	}
 
+	/**
+	 * Call to (re)connect the WebSocket. Does not close current listeners.
+	 */
 	suspend fun reconnect() {
-		// Get base url and access token and check if they're set
-		val baseUrl = checkNotNull(api.baseUrl)
+		// Get access token and check if it's not null
 		val accessToken = checkNotNull(api.accessToken)
 
 		logger.debug("Reconnect requested")
@@ -138,15 +140,21 @@ class WebSocketApi(
 			// Create web socket connection
 			api.client.ws({
 				url {
-					// Create from base URL
-					takeFrom(baseUrl.replace("^http".toRegex(), "ws"))
+					takeFrom(api.createUrl(
+						pathTemplate = "/socket",
+						queryParameters = mapOf(
+							"api_key" to accessToken,
+							"deviceId" to api.deviceInfo.id
+						)
+					))
 
-					// Assign path making sure to remove duplicated slashes between the base and appended path
-					encodedPath = "${encodedPath.trimEnd('/')}/socket"
+					protocol = when (protocol) {
+						URLProtocol.HTTP -> URLProtocol.WS
+						URLProtocol.HTTPS -> URLProtocol.WSS
 
-					// Add required parameters
-					parameter("api_key", accessToken)
-					parameter("deviceId", api.deviceInfo.id)
+						// Default to WS
+						else -> URLProtocol.WS
+					}
 				}
 			}) {
 				// Bind to messaging channels
@@ -170,11 +178,11 @@ class WebSocketApi(
 		require(json is JsonObject)
 
 		// Read id
-		val messageId = json["MessageId"]?.jsonPrimitive?.content
+		val messageId = json[JSON_PROP_MESSAGE_ID]?.jsonPrimitive?.content
 		require(messageId is String)
 
 		// Read type
-		val type = json["MessageType"]?.jsonPrimitive?.content
+		val type = json[JSON_PROP_MESSAGE_TYPE]?.jsonPrimitive?.content
 		require(type is String)
 
 		// Get serializer for type
@@ -186,31 +194,37 @@ class WebSocketApi(
 
 		// Modify JSON to flatten the Data object
 		val modifiedJson = buildJsonObject {
-			put("MessageId", messageId)
+			put(JSON_PROP_MESSAGE_ID, messageId)
 
 			// Flatten data object or keep it when it's not an object
-			val data = json["Data"]
+			val data = json[JSON_PROP_DATA]
 			if (data is JsonObject) data.entries.forEach { (key, value) -> put(key, value) }
-			else put("Data", data!!)
+			else put(JSON_PROP_DATA, data!!)
 		}
 
 		return api.json.decodeFromJsonElement(dataSerializer, modifiedJson) as? IncomingSocketMessage
 	}
 
+	/**
+	 * Publish a message to the server.
+	 */
 	suspend inline fun <reified T : OutgoingSocketMessage> publish(message: T) = publish(message, serializer())
 
+	/**
+	 * Publish a message to the server.
+	 */
 	suspend fun <T : OutgoingSocketMessage> publish(message: T, serializer: KSerializer<T>) {
 		val jsonObject = json.encodeToJsonElement(serializer, message).jsonObject
 		val messageType = serializer.descriptor.serialName
 
 		val text = json.encodeToString(buildJsonObject {
-			put("MessageType", messageType)
+			put(JSON_PROP_MESSAGE_TYPE, messageType)
 
-			val data = jsonObject["Data"]
-			if (data != null) put("Data", data)
-			else putJsonObject("Data") {
+			val data = jsonObject[JSON_PROP_DATA]
+			if (data != null) put(JSON_PROP_DATA, data)
+			else putJsonObject(JSON_PROP_DATA) {
 				jsonObject.entries
-					.filterNot { (key, _) -> key == "MessageType" }
+					.filterNot { (key, _) -> key == JSON_PROP_MESSAGE_TYPE }
 					.forEach { (key, value) -> put(key, value) }
 			}
 		})
@@ -218,9 +232,42 @@ class WebSocketApi(
 		outgoingMessageChannel.send(text)
 	}
 
-	suspend fun subscribe(): Flow<IncomingSocketMessage> {
-		ensureConnected()
+	/**
+	 * Start listening to messages. Calls the [block] for each incoming message until
+	 * [SocketSubscription.cancel] is invoked.
+	 */
+	suspend fun subscribe(block: (IncomingSocketMessage) -> Unit): SocketSubscription {
+		val subscription = SocketSubscription(this, block)
+		subscriptions += subscription
+		subscriptionsChanged()
 
-		return incomingMessageChannel.asFlow()
+		return subscription
+	}
+
+	/**
+	 * A [Flow] based version of a subscription.
+	 */
+	suspend fun subscribe() = callbackFlow {
+		// Create subscription and send messages to flow
+		val subscription = subscribe {
+			sendBlocking(it)
+		}
+
+		// Cancel subscription when flow closes
+		awaitClose {
+			runBlocking {
+				subscription.cancel()
+			}
+		}
+	}
+
+	/**
+	 * Cancel a subscription by removing it from the API.
+	 * Automatically closes the WebSocket if no subscriptions are left.
+	 */
+	suspend fun cancelSubscription(subscription: SocketSubscription) {
+		subscriptions -= subscription
+		subscriptionsChanged()
 	}
 }
+
