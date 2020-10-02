@@ -13,6 +13,9 @@ dependencies {
 	// Reading OpenAPI
 	implementation(Dependencies.swaggerParser)
 
+	// Capitalization helper
+	implementation(Dependencies.kasechange)
+
 	// Kotlin code generation
 	implementation(Dependencies.kotlinPoet)
 

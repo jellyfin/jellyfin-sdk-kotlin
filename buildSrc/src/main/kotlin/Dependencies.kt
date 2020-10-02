@@ -60,6 +60,7 @@ object Dependencies {
 	const val androidBuildTools = "com.android.tools.build:gradle:4.0.1"
 	const val swaggerParser = "io.swagger.parser.v3:swagger-parser:2.0.19"
 	const val kotlinPoet = "com.squareup:kotlinpoet:1.6.0"
+	const val kasechange = "net.pearx.kasechange:kasechange:1.3.0"
 }
 
 /**

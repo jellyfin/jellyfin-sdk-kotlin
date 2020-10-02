@@ -3,6 +3,8 @@ package org.jellyfin.openapi.builder.openapi
 import com.squareup.kotlinpoet.asTypeName
 import io.swagger.v3.oas.models.PathItem
 import io.swagger.v3.oas.models.Paths
+import net.pearx.kasechange.CaseFormat
+import net.pearx.kasechange.toCamelCase
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.api.ApiNameBuilder
 import org.jellyfin.openapi.constants.MimeType
@@ -12,7 +14,6 @@ import org.jellyfin.openapi.model.ApiService
 import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
 import org.jellyfin.openapi.model.HttpMethod
-import org.jellyfin.openapi.util.asPascalCase
 
 class OpenApiApiServicesBuilder(
 	private val apiNameBuilder: ApiNameBuilder,
@@ -34,13 +35,13 @@ class OpenApiApiServicesBuilder(
 				val serviceName = apiNameBuilder.build(operation.tags.firstOrNull()
 					?: Strings.DEFAULT_API_SERVICE)
 				if (serviceName !in operations) operations[serviceName] = mutableSetOf()
-				val operationName = operation.operationId.asPascalCase().toCamelCase()
+				val operationName = operation.operationId.toCamelCase(from = CaseFormat.CAPITALIZED_CAMEL)
 
 				val pathParameters = mutableListOf<ApiServiceOperationParameter>()
 				val queryParameters = mutableListOf<ApiServiceOperationParameter>()
 
 				operation.parameters?.forEach { parameterSpec ->
-					val parameterName = parameterSpec.name.asPascalCase().toCamelCase()
+					val parameterName = parameterSpec.name.toCamelCase(from = CaseFormat.CAPITALIZED_CAMEL)
 					val type = openApiTypeBuilder.build(ApiTypePath(serviceName, operationName, parameterName), parameterSpec.schema)
 
 					when (parameterSpec.`in`) {
