@@ -20,7 +20,7 @@ Hooks are classes that will modify the output of the generator. They should be r
     A hook that can intercept the TypeBuilder which converts OpenAPI schemas to Kotlin types. It
     receives the schema and a type path. The path is unique across the whole document and can be used
     to identified specific properties. This hook is called when generating types for:
-     
+    
       - model properties
       - api operation parameters
       - api operation bodies
@@ -36,18 +36,18 @@ Hooks are classes that will modify the output of the generator. They should be r
 
 The conversion happens in multiple phases. The phases in order are:
 
-1. **Parse**  
-    Reads the OpenAPI file using [swagger-parser], which also validates the document, and returns
-    the OpenAPI specification POJOs
-    
-2. **Transform**  
-    Converts the POJOs to a custom data model optimized for generating code
-    
-3. **Generate**  
-    Creates the code for the models and api operations using [KotlinPoet]
-    
-4. **Write**  
-    Writes all new code on top of the current code
+  1. **Parse**  
+     Reads the OpenAPI file using [swagger-parser], which also validates the document, and returns
+     the OpenAPI specification POJOs
+
+  2. **Transform**  
+     Converts the POJOs to a custom data model optimized for generating code
+
+  3. **Generate**  
+     Creates the code for the models and api operations using [KotlinPoet]
+
+  4. **Write**  
+     Writes all new code on top of the current code
 
 [swagger-parser]: https://github.com/swagger-api/swagger-parser
-[KotlinPoet]: https://github.com/square/kotlinpoet
+[kotlinpoet]: https://github.com/square/kotlinpoet
