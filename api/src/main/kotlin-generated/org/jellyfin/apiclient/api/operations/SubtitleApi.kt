@@ -89,7 +89,7 @@ class SubtitleApi(
 	 * @param copyTimestamps Optional. Whether to copy the timestamps.
 	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
 	 */
-	suspend fun getSubtitle_2(
+	suspend fun getSubtitle2(
 		itemId: UUID,
 		mediaSourceId: String,
 		index: Int,

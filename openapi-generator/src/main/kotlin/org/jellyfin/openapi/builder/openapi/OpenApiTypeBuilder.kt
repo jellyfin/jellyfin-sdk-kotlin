@@ -5,10 +5,11 @@ import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.plusParameter
 import com.squareup.kotlinpoet.TypeName
 import com.squareup.kotlinpoet.asTypeName
 import io.swagger.v3.oas.models.media.*
+import net.pearx.kasechange.CaseFormat
+import net.pearx.kasechange.toPascalCase
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.hooks.TypeBuilderHook
 import org.jellyfin.openapi.hooks.TypePath
-import org.jellyfin.openapi.util.asPascalCase
 import java.io.InputStream
 import java.time.LocalDateTime
 import java.util.*
@@ -81,8 +82,7 @@ class OpenApiTypeBuilder(
 		Packages.MODEL,
 		reference
 			.removePrefix("#/components/schemas/")
-			.asPascalCase()
-			.toPascalCase()
+			.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL)
 	)
 
 	fun buildBinary() = InputStream::class.asTypeName()

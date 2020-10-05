@@ -33,7 +33,7 @@ class TrailersApi(
 	 * @param parentIndexNumber Optional filter by parent index number.
 	 * @param hasParentalRating Optional filter by items that have or do not have a parental rating.
 	 * @param isHd Optional filter by items that are HD or not.
-	 * @param is4K Optional filter by items that are 4K or not.
+	 * @param is4k Optional filter by items that are 4K or not.
 	 * @param locationTypes Optional. If specified, results will be filtered based on LocationType.
 	 * This allows multiple, comma delimeted.
 	 * @param excludeLocationTypes Optional. If specified, results will be filtered based on the
@@ -126,7 +126,7 @@ class TrailersApi(
 	 * @param minHeight Optional. Filter by the minimum height of the item.
 	 * @param maxWidth Optional. Filter by the maximum width of the item.
 	 * @param maxHeight Optional. Filter by the maximum height of the item.
-	 * @param is3D Optional filter by items that are 3D, or not.
+	 * @param is3d Optional filter by items that are 3D, or not.
 	 * @param seriesStatus Optional filter by Series Status. Allows multiple, comma delimeted.
 	 * @param nameStartsWithOrGreater Optional filter by items whose name is sorted equally or greater
 	 * than a given input string.
@@ -153,7 +153,7 @@ class TrailersApi(
 		parentIndexNumber: Int? = null,
 		hasParentalRating: Boolean? = null,
 		isHd: Boolean? = null,
-		is4K: Boolean? = null,
+		is4k: Boolean? = null,
 		locationTypes: String? = null,
 		excludeLocationTypes: String? = null,
 		isMissing: Boolean? = null,
@@ -212,7 +212,7 @@ class TrailersApi(
 		minHeight: Int? = null,
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
-		is3D: Boolean? = null,
+		is3d: Boolean? = null,
 		seriesStatus: String? = null,
 		nameStartsWithOrGreater: String? = null,
 		nameStartsWith: String? = null,
@@ -235,7 +235,7 @@ class TrailersApi(
 		queryParameters["parentIndexNumber"] = parentIndexNumber
 		queryParameters["hasParentalRating"] = hasParentalRating
 		queryParameters["isHd"] = isHd
-		queryParameters["is4K"] = is4K
+		queryParameters["is4K"] = is4k
 		queryParameters["locationTypes"] = locationTypes
 		queryParameters["excludeLocationTypes"] = excludeLocationTypes
 		queryParameters["isMissing"] = isMissing
@@ -294,7 +294,7 @@ class TrailersApi(
 		queryParameters["minHeight"] = minHeight
 		queryParameters["maxWidth"] = maxWidth
 		queryParameters["maxHeight"] = maxHeight
-		queryParameters["is3D"] = is3D
+		queryParameters["is3D"] = is3d
 		queryParameters["seriesStatus"] = seriesStatus
 		queryParameters["nameStartsWithOrGreater"] = nameStartsWithOrGreater
 		queryParameters["nameStartsWith"] = nameStartsWith

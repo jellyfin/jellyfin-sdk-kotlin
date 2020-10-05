@@ -53,7 +53,7 @@ class StartupApi(
 	/**
 	 * Gets the first user.
 	 */
-	suspend fun getFirstUser_2(): Response<StartupUserDto> {
+	suspend fun getFirstUser2(): Response<StartupUserDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null

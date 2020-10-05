@@ -5,22 +5,24 @@ import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.asTypeName
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import net.pearx.kasechange.CaseFormat
+import net.pearx.kasechange.toPascalCase
+import net.pearx.kasechange.toScreamingSnakeCase
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.model.EnumApiModel
 import org.jellyfin.openapi.model.JellyFile
-import org.jellyfin.openapi.util.asPascalCase
 
 class EnumModelBuilder(
 	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder
 ) : Builder<EnumApiModel, JellyFile> {
 	override fun build(data: EnumApiModel): JellyFile {
-		return TypeSpec.enumBuilder(data.name.asPascalCase().toPascalCase())
+		return TypeSpec.enumBuilder(data.name.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL))
 			.apply {
 				data.constants.forEach {
-					addEnumConstant(it.asPascalCase().toScreamingSnakeCase(), TypeSpec.anonymousClassBuilder().apply {
+					addEnumConstant(it.toScreamingSnakeCase(from = CaseFormat.CAPITALIZED_CAMEL), TypeSpec.anonymousClassBuilder().apply {
 						addAnnotation(AnnotationSpec.builder(SerialName::class).addMember("%S", it).build())
 					}.build())
 				}

@@ -169,7 +169,7 @@ class UniversalAudioApi(
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param enableRedirection Whether to enable redirection. Defaults to true.
 	 */
-	suspend fun getUniversalAudioStream_2(
+	suspend fun getUniversalAudioStream2(
 		itemId: UUID,
 		container: String? = null,
 		mediaSourceId: String? = null,
@@ -235,7 +235,7 @@ class UniversalAudioApi(
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param enableRedirection Whether to enable redirection. Defaults to true.
 	 */
-	fun getUniversalAudioStream_2Url(
+	fun getUniversalAudioStream2Url(
 		itemId: UUID,
 		container: String? = null,
 		mediaSourceId: String? = null,

@@ -1,11 +1,12 @@
 package org.jellyfin.openapi.builder.openapi
 
 import io.swagger.v3.oas.models.media.Schema
+import net.pearx.kasechange.CaseFormat
+import net.pearx.kasechange.toCamelCase
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.model.ModelBuilder
 import org.jellyfin.openapi.hooks.ModelTypePath
 import org.jellyfin.openapi.model.*
-import org.jellyfin.openapi.util.asPascalCase
 
 class OpenApiModelBuilder(
 	private val openApiTypeBuilder: OpenApiTypeBuilder,
@@ -19,7 +20,7 @@ class OpenApiModelBuilder(
 				true -> EmptyApiModel(data.name, data.description, data.deprecated == true)
 				// Otherwise use the object model
 				false -> ObjectApiModel(data.name, data.description, data.deprecated == true, data.properties.map { (originalName, property) ->
-					val name = originalName.asPascalCase().toCamelCase()
+					val name = originalName.toCamelCase(from = CaseFormat.CAPITALIZED_CAMEL)
 					ObjectApiModelProperty(
 						name = name,
 						originalName = originalName,

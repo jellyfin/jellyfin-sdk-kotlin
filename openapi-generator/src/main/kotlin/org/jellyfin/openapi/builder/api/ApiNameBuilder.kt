@@ -1,7 +1,8 @@
 package org.jellyfin.openapi.builder.api
 
+import net.pearx.kasechange.CaseFormat
+import net.pearx.kasechange.toPascalCase
 import org.jellyfin.openapi.builder.Builder
-import org.jellyfin.openapi.util.asPascalCase
 
 /**
  * Converts strings to API service names.
@@ -12,5 +13,5 @@ import org.jellyfin.openapi.util.asPascalCase
  * helloWorld -> HelloWorldApi
  */
 class ApiNameBuilder : Builder<String, String> {
-	override fun build(data: String) = "${data.asPascalCase().toPascalCase()}Api"
+	override fun build(data: String) = "${data.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL)}Api"
 }

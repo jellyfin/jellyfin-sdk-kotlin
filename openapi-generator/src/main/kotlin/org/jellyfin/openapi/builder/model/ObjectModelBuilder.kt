@@ -4,6 +4,8 @@ import com.squareup.kotlinpoet.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
+import net.pearx.kasechange.CaseFormat
+import net.pearx.kasechange.toPascalCase
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.TypeSerializerBuilder
@@ -11,7 +13,6 @@ import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.model.JellyFile
 import org.jellyfin.openapi.model.ObjectApiModel
-import org.jellyfin.openapi.util.asPascalCase
 
 class ObjectModelBuilder(
 	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder,
@@ -63,7 +64,7 @@ class ObjectModelBuilder(
 			?: emptySet()
 
 		// Create class
-		return TypeSpec.classBuilder(data.name.asPascalCase().toPascalCase())
+		return TypeSpec.classBuilder(data.name.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL))
 			.apply {
 				modifiers += KModifier.DATA
 				data.description?.let { addKdoc(it) }

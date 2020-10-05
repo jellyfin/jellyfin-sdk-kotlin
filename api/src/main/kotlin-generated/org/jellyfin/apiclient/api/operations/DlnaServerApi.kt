@@ -35,7 +35,7 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getConnectionManager_2(serverId: String): Response<String> {
+	suspend fun getConnectionManager2(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
@@ -50,7 +50,7 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getConnectionManager_3(serverId: String): Response<String> {
+	suspend fun getConnectionManager3(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
@@ -95,7 +95,7 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getContentDirectory_2(serverId: String): Response<String> {
+	suspend fun getContentDirectory2(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
@@ -110,7 +110,7 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getContentDirectory_3(serverId: String): Response<String> {
+	suspend fun getContentDirectory3(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
@@ -155,7 +155,7 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getDescriptionXml_2(serverId: String): Response<String> {
+	suspend fun getDescriptionXml2(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
@@ -232,7 +232,7 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getMediaReceiverRegistrar_2(serverId: String): Response<String> {
+	suspend fun getMediaReceiverRegistrar2(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
@@ -247,7 +247,7 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getMediaReceiverRegistrar_3(serverId: String): Response<String> {
+	suspend fun getMediaReceiverRegistrar3(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
