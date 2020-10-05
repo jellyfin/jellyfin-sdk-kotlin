@@ -3,6 +3,7 @@ package org.jellyfin.apiclient.api.sockets
 import io.ktor.client.features.websocket.*
 import io.ktor.http.*
 import io.ktor.http.cio.websocket.*
+import io.ktor.util.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 import kotlinx.coroutines.channels.Channel.Factory.BUFFERED
@@ -93,7 +94,7 @@ class WebSocketApi(
 			// Send message to subscriptions
 			subscriptions.forEach { subscription -> subscription.callback(message) }
 		}
-		.catch { it.printStackTrace() }
+		.catch { logger.error(it) }
 		.onCompletion {
 			// Reconnect
 			logger.debug("Socket receiver completed, found %s subscriptions", subscriptions.size)
@@ -108,7 +109,7 @@ class WebSocketApi(
 			logger.info("Sending message {}", text)
 			send(Frame.Text(text))
 		}
-		.catch { it.printStackTrace() }
+		.catch { logger.error(it) }
 		.collect()
 
 	private suspend fun subscriptionsChanged() {
