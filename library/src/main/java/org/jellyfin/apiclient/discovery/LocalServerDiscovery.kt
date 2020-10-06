@@ -35,19 +35,21 @@ class LocalServerDiscovery(
 	/**
 	 * Send our broadcast message to a given address
 	 */
-	private fun discoverAddress(socket: DatagramSocket, address: InetAddress) {
+	private fun discoverAddress(socket: DatagramSocket, address: InetAddress): Unit = try {
 		val message = DISCOVERY_MESSAGE.toByteArray()
 		val packet = DatagramPacket(message, message.size, address, DISCOVERY_PORT)
 		socket.send(packet)
 
-		logger.debug("Discovery: Discovering via %s", address)
+		logger.debug("Discovering via %s", address)
+	} catch (err: IOException) {
+		logger.error("Unable to send discovery message to %s", address, err)
 	}
 
 	/**
 	 * Try reading and parsing messages sent to a given socket
 	 */
 	private fun receive(socket: DatagramSocket): DiscoveryServerInfo? {
-		logger.debug("Discovery: Reading reply...")
+		logger.debug("Reading reply...")
 
 		val buffer = ByteArray(DISCOVERY_RECEIVE_BUFFER) // Buffer to receive message in
 		val packet = DatagramPacket(buffer, buffer.size)
@@ -57,7 +59,7 @@ class LocalServerDiscovery(
 
 			// Convert message to string
 			val message = String(packet.data, 0, packet.length)
-			logger.debug("""Discovery: Received message "%s"""", message)
+			logger.debug("""Received message "%s"""", message)
 
 			// Read as JSON
 			val info = Json.decodeFromString(DiscoveryServerInfo.serializer(), message)
@@ -69,11 +71,11 @@ class LocalServerDiscovery(
 			null
 		} catch (err: IOException) {
 			// Unable to receive
-			logger.error("Discovery: Unable to receive message", err)
+			logger.error("Unable to receive message", err)
 			null
 		} catch (err: SerializationException) {
 			// Unable to parse
-			logger.error("Discovery: Unable to deserialize message", err)
+			logger.error("Unable to deserialize message", err)
 			null
 		}
 	}
@@ -85,7 +87,7 @@ class LocalServerDiscovery(
 		timeout: Int = DISCOVERY_TIMEOUT,
 		maxServers: Int = DISCOVERY_MAX_SERVERS
 	) = flow {
-		logger.info("Discovery: Starting discovery with timeout of %sms", timeout)
+		logger.info("Starting discovery with timeout of %sms", timeout)
 
 		val socket = DatagramSocket().apply {
 			broadcast = true
@@ -98,7 +100,7 @@ class LocalServerDiscovery(
 			discoverAddress(socket, address)
 		}
 
-		logger.debug("Discovery: Finished sending broadcasts, listening for responses")
+		logger.debug("Finished sending broadcasts, listening for responses")
 
 		// Try reading incoming messages but with a maximum
 		val foundServers = mutableSetOf<String>()
@@ -117,6 +119,6 @@ class LocalServerDiscovery(
 		// End
 		socket.close()
 
-		logger.debug("Discovery: End")
+		logger.debug("End")
 	}
 }
