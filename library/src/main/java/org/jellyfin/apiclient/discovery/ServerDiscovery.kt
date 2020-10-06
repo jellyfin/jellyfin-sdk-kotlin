@@ -32,12 +32,14 @@ class ServerDiscovery(
 	/**
 	 * Send our broadcast message to a given address
 	 */
-	private fun discoverAddress(socket: DatagramSocket, address: InetAddress) {
+	private fun discoverAddress(socket: DatagramSocket, address: InetAddress): Unit = try {
 		val message = DISCOVERY_MESSAGE.toByteArray()
 		val packet = DatagramPacket(message, message.size, address, DISCOVERY_PORT)
 		socket.send(packet)
 
 		logger.debug("Discovery: Discovering via %s", address)
+	} catch (err: IOException) {
+		logger.error("Discovery: Unable to send discovery message to %s", address, err)
 	}
 
 	/**
