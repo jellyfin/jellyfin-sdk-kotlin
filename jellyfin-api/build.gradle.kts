@@ -3,22 +3,24 @@ plugins {
 }
 
 dependencies {
-	apiProject(":api")
-	apiProject(":model")
-
 	implementation(Dependencies.Kotlin.stdlib)
-	implementation(Dependencies.KotlinX.coroutinesCore)
-	implementation(Dependencies.KotlinX.serializationCore)
 
-	implementation(Dependencies.Ktor.http)
+	implementationProject(":jellyfin-model")
+
+	// HTTP
+	implementation(Dependencies.KotlinX.coroutinesCore)
+	implementation(Dependencies.Ktor.okhttp)
+	implementation(Dependencies.Ktor.serialization)
 
 	// Logging
 	implementation(Dependencies.Slf4j.api)
 	testImplementation(Dependencies.Slf4j.simple)
 
-	// Testing
+	// Unit testing
 	testImplementation(Dependencies.Kotlin.Test.junit)
 }
+
+sourceSets.getByName("main").java.srcDir("src/main/kotlin-generated")
 
 val sourcesJar by tasks.creating(Jar::class) {
 	archiveClassifier.set("sources")
@@ -27,7 +29,7 @@ val sourcesJar by tasks.creating(Jar::class) {
 }
 
 publishing.publications.create<MavenPublication>("default") {
-	from(components["java"])
+	from(components["kotlin"])
 
 	artifact(sourcesJar)
 }

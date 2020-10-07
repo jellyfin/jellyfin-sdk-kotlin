@@ -3,24 +3,22 @@ plugins {
 }
 
 dependencies {
+	apiProject(":jellyfin-api")
+	apiProject(":jellyfin-model")
+
 	implementation(Dependencies.Kotlin.stdlib)
-
-	apiProject(":model")
-
-	// HTTP
 	implementation(Dependencies.KotlinX.coroutinesCore)
-	implementation(Dependencies.Ktor.okhttp)
-	implementation(Dependencies.Ktor.serialization)
+	implementation(Dependencies.KotlinX.serializationCore)
+
+	implementation(Dependencies.Ktor.http)
 
 	// Logging
 	implementation(Dependencies.Slf4j.api)
 	testImplementation(Dependencies.Slf4j.simple)
 
-	// Unit testing
+	// Testing
 	testImplementation(Dependencies.Kotlin.Test.junit)
 }
-
-sourceSets.getByName("main").java.srcDir("src/main/kotlin-generated")
 
 val sourcesJar by tasks.creating(Jar::class) {
 	archiveClassifier.set("sources")

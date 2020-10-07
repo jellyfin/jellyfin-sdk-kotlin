@@ -1,10 +1,10 @@
 // Core
-include(":library")
-include(":model")
-include(":api")
+include(":jellyfin-core")
+include(":jellyfin-model")
+include(":jellyfin-api")
 
 // Platforms
-include(":android")
+include(":jellyfin-platform-android")
 
 // Code generation
 include(":openapi-generator")
