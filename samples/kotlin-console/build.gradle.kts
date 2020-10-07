@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
 	// Depend on the library project
-	implementationProject(":library")
+	implementationProject(":jellyfin-core")
 
 	// Use Kotlin stdlib
 	implementation(Dependencies.Kotlin.stdlib)

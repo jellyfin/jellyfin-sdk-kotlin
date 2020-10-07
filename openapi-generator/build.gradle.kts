@@ -35,7 +35,7 @@ task("generateSources", JavaExec::class) {
 
 	args = mapOf(
 		"openApiFile" to file("../openapi.json"),
-		"apiOutputDir" to file("../api/src/main/kotlin-generated"),
-		"modelsOutputDir" to file("../model/src/main/kotlin-generated")
+		"apiOutputDir" to file("../jellyfin-api/src/main/kotlin-generated"),
+		"modelsOutputDir" to file("../jellyfin-model/src/main/kotlin-generated")
 	).map { listOf("--${it.key}", it.value.toString()) }.flatten()
 }

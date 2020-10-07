@@ -58,7 +58,7 @@ afterEvaluate {
 }
 
 dependencies {
-	apiProject(":library")
+	apiProject(":jellyfin-core")
 
 	implementation(Dependencies.Kotlin.stdlib)
 
