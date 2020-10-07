@@ -27,7 +27,7 @@ val sourcesJar by tasks.creating(Jar::class) {
 }
 
 publishing.publications.create<MavenPublication>("default") {
-	from(components["java"])
+	from(components["kotlin"])
 
 	artifact(sourcesJar)
 }
