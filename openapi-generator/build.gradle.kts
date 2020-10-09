@@ -8,8 +8,6 @@ application {
 }
 
 dependencies {
-	implementation(Dependencies.Kotlin.stdlib)
-
 	// Reading OpenAPI
 	implementation(Dependencies.swaggerParser)
 
@@ -20,7 +18,7 @@ dependencies {
 	implementation(Dependencies.kotlinPoet)
 
 	// Needed for the kotlinx.serialization annotations
-	implementation(Dependencies.KotlinX.serializationCore)
+	implementation(Dependencies.KotlinX.serializationJson)
 
 	// Dependency Injection
 	implementation(Dependencies.Koin.core)

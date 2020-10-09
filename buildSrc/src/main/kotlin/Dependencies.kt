@@ -2,21 +2,6 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.kotlin.dsl.project
 
 object Dependencies {
-	object KotlinX {
-		private fun item(module: String, version: String) = "org.jetbrains.kotlinx:kotlinx-${module}:${version}"
-
-		val cli = item("cli", "0.2.1")
-		val coroutinesCore = item("coroutines-core", "1.3.9")
-		val serializationCore = item("serialization-core", "1.0.0-RC")
-	}
-
-	object AndroidX {
-		private fun item(library: String, module: String = library, version: String) = "androidx.${library}:${module}:${version}"
-
-		val core = item("core", "core-ktx", "1.3.0")
-		val annotation = item("annotation", version = "1.1.0")
-	}
-
 	object Kotlin {
 		const val version = "1.4.10"
 		private fun item(library: String) = "org.jetbrains.kotlin:kotlin-$library:$version"
@@ -29,6 +14,26 @@ object Dependencies {
 
 			val junit = testItem("junit")
 		}
+	}
+
+	object KotlinX {
+		private fun item(module: String, version: String) = "org.jetbrains.kotlinx:kotlinx-${module}:${version}"
+
+		val cli = item("cli", "0.2.1")
+		val coroutinesCore = item("coroutines-core", "1.3.9")
+		val serializationJson = item("serialization-json", "1.0.0")
+	}
+
+	object Android {
+		const val buildTools = "com.android.tools.build:gradle:4.0.1"
+		const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:1.0.10"
+	}
+
+	object AndroidX {
+		private fun item(library: String, module: String = library, version: String) = "androidx.${library}:${module}:${version}"
+
+		val core = item("core", "core-ktx", "1.3.0")
+		val annotation = item("annotation", version = "1.1.0")
 	}
 
 	object Ktor {
@@ -57,7 +62,6 @@ object Dependencies {
 	}
 
 	// Non-categorised dependencies
-	const val androidBuildTools = "com.android.tools.build:gradle:4.0.1"
 	const val swaggerParser = "io.swagger.parser.v3:swagger-parser:2.0.19"
 	const val kotlinPoet = "com.squareup:kotlinpoet:1.6.0"
 	const val kasechange = "net.pearx.kasechange:kasechange:1.3.0"

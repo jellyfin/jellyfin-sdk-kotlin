@@ -6,11 +6,12 @@ plugins {
 }
 
 android {
-	compileSdkVersion(29)
+	compileSdkVersion(30)
 
 	defaultConfig {
 		minSdkVersion(19)
-		targetSdkVersion(29)
+		targetSdkVersion(30)
+		multiDexEnabled = true
 
 		versionCode = getVersionCode(project.version.toString()) ?: 0
 		versionName = project.version.toString()
@@ -19,6 +20,8 @@ android {
 	}
 
 	compileOptions {
+		coreLibraryDesugaringEnabled = true
+
 		sourceCompatibility = JavaVersion.VERSION_1_8
 		targetCompatibility = JavaVersion.VERSION_1_8
 	}
@@ -64,4 +67,6 @@ dependencies {
 
 	implementation(Dependencies.AndroidX.core)
 	implementation(Dependencies.AndroidX.annotation)
+
+	coreLibraryDesugaring(Dependencies.Android.desugarJdkLibs)
 }

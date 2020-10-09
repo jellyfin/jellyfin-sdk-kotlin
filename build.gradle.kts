@@ -16,7 +16,7 @@ buildscript {
 	}
 
 	dependencies {
-		classpath(Dependencies.androidBuildTools)
+		classpath(Dependencies.Android.buildTools)
 		classpath(Dependencies.Kotlin.gradlePlugin)
 	}
 }
