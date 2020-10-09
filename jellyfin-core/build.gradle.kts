@@ -6,9 +6,8 @@ dependencies {
 	apiProject(":jellyfin-api")
 	apiProject(":jellyfin-model")
 
-	implementation(Dependencies.Kotlin.stdlib)
 	implementation(Dependencies.KotlinX.coroutinesCore)
-	implementation(Dependencies.KotlinX.serializationCore)
+	implementation(Dependencies.KotlinX.serializationJson)
 
 	implementation(Dependencies.Ktor.http)
 

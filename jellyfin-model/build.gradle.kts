@@ -4,12 +4,11 @@ plugins {
 }
 
 dependencies {
-	implementation(Dependencies.Kotlin.stdlib)
-	compileOnly(Dependencies.KotlinX.serializationCore)
+	compileOnly(Dependencies.KotlinX.serializationJson)
 
 	// Testing
 	testImplementation(Dependencies.Kotlin.Test.junit)
-	testImplementation(Dependencies.KotlinX.serializationCore)
+	testImplementation(Dependencies.KotlinX.serializationJson)
 }
 
 sourceSets.getByName("main").java.srcDir("src/main/kotlin-generated")

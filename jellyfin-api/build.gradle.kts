@@ -3,8 +3,6 @@ plugins {
 }
 
 dependencies {
-	implementation(Dependencies.Kotlin.stdlib)
-
 	implementationProject(":jellyfin-model")
 
 	// HTTP

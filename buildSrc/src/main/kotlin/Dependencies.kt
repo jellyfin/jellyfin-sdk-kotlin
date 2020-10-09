@@ -21,7 +21,7 @@ object Dependencies {
 
 		val cli = item("cli", "0.2.1")
 		val coroutinesCore = item("coroutines-core", "1.3.9")
-		val serializationCore = item("serialization-core", "1.0.0-RC")
+		val serializationJson = item("serialization-json", "1.0.0")
 	}
 
 	object Android {
