@@ -7,7 +7,7 @@ import kotlin.coroutines.EmptyCoroutineContext
 
 abstract class JavaDataCallback<T> : Continuation<Response<T>> {
 	override val context: CoroutineContext = EmptyCoroutineContext
-	override fun resumeWith(result: Result<Response<T>>) = onData(result.getOrNull()?.getData())
+	override fun resumeWith(result: Result<Response<T>>) = onData(result.getOrNull()?.content)
 
 	abstract fun onData(data: T?)
 }

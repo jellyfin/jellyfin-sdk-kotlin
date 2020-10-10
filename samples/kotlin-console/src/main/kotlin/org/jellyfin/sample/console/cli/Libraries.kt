@@ -19,7 +19,7 @@ class Libraries(
 		val sessionApi = SessionApi(api)
 		val userViewsApi = UserViewsApi(api)
 
-		val sessionInfo = sessionApi.getSessions(deviceId = api.deviceInfo.id).getData().firstOrNull()
+		val sessionInfo = sessionApi.getSessions(deviceId = api.deviceInfo.id).content.firstOrNull()
 		if (sessionInfo == null) println("Unknown session")
 
 		val libraries by userViewsApi.getUserViews(sessionInfo!!.userId, includeHidden = false)
