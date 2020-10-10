@@ -40,9 +40,9 @@ class LocalServerDiscovery(
 		val packet = DatagramPacket(message, message.size, address, DISCOVERY_PORT)
 		socket.send(packet)
 
-		logger.debug("Discovering via %s", address)
+		logger.debug("Discovering via $address")
 	} catch (err: IOException) {
-		logger.error("Unable to send discovery message to %s", address, err)
+		logger.error("Unable to send discovery message to $address", err)
 	}
 
 	/**
@@ -59,7 +59,7 @@ class LocalServerDiscovery(
 
 			// Convert message to string
 			val message = String(packet.data, 0, packet.length)
-			logger.debug("""Received message "%s"""", message)
+			logger.debug("""Received message "$message"""")
 
 			// Read as JSON
 			val info = Json.decodeFromString(DiscoveryServerInfo.serializer(), message)
@@ -87,7 +87,7 @@ class LocalServerDiscovery(
 		timeout: Int = DISCOVERY_TIMEOUT,
 		maxServers: Int = DISCOVERY_MAX_SERVERS
 	) = flow {
-		logger.info("Starting discovery with timeout of %sms", timeout)
+		logger.info("Starting discovery with timeout of ${timeout}ms")
 
 		val socket = DatagramSocket().apply {
 			broadcast = true

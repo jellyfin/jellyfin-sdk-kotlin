@@ -152,7 +152,7 @@ class AddressCandidateHelper(
 	 * Get all deduplicated candidate URLs as strings.
 	 * Call [prioritize] before if a sorted list is desired.
 	 */
-	fun getCandidates(): Collection<String> = candidates
+	fun getCandidates(): List<String> = candidates
 		.map { it.toString() }
 		.distinct()
 }

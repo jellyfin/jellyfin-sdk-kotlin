@@ -26,6 +26,9 @@ dependencies {
 
 	// The CLI library
 	implementation(Dependencies.KotlinX.cli)
+
+	// Logging
+	implementation(Dependencies.Slf4j.simple)
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
