@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.api.operations
 
-import java.io.InputStream
+import io.ktor.utils.io.ByteReadChannel
 import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
@@ -145,7 +145,7 @@ class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
 		streamOptions: Map<String, String>? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["playlistId"] = playlistId
@@ -200,7 +200,8 @@ class DynamicHlsApi(
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
 		val data = null
-		val response = api.get<InputStream>("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}",
+		val response =
+				api.get<ByteReadChannel>("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -502,7 +503,7 @@ class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
 		streamOptions: Map<String, String>? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -554,8 +555,8 @@ class DynamicHlsApi(
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
 		val data = null
-		val response = api.get<InputStream>("/Audio/{itemId}/main.m3u8", pathParameters, queryParameters,
-				data)
+		val response = api.get<ByteReadChannel>("/Audio/{itemId}/main.m3u8", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
@@ -847,7 +848,7 @@ class DynamicHlsApi(
 		context: EncodingContext,
 		streamOptions: Map<String, String>? = null,
 		enableAdaptiveBitrateStreaming: Boolean
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -900,7 +901,7 @@ class DynamicHlsApi(
 		queryParameters["streamOptions"] = streamOptions
 		queryParameters["enableAdaptiveBitrateStreaming"] = enableAdaptiveBitrateStreaming
 		val data = null
-		val response = api.get<InputStream>("/Audio/{itemId}/master.m3u8", pathParameters,
+		val response = api.get<ByteReadChannel>("/Audio/{itemId}/master.m3u8", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -1201,7 +1202,7 @@ class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
 		streamOptions: Map<String, String>? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["playlistId"] = playlistId
@@ -1256,7 +1257,8 @@ class DynamicHlsApi(
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
 		val data = null
-		val response = api.get<InputStream>("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}",
+		val response =
+				api.get<ByteReadChannel>("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -1558,7 +1560,7 @@ class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
 		streamOptions: Map<String, String>? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -1610,8 +1612,8 @@ class DynamicHlsApi(
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
 		val data = null
-		val response = api.get<InputStream>("/Videos/{itemId}/main.m3u8", pathParameters, queryParameters,
-				data)
+		val response = api.get<ByteReadChannel>("/Videos/{itemId}/main.m3u8", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
@@ -1903,7 +1905,7 @@ class DynamicHlsApi(
 		context: EncodingContext,
 		streamOptions: Map<String, String>? = null,
 		enableAdaptiveBitrateStreaming: Boolean
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -1956,7 +1958,7 @@ class DynamicHlsApi(
 		queryParameters["streamOptions"] = streamOptions
 		queryParameters["enableAdaptiveBitrateStreaming"] = enableAdaptiveBitrateStreaming
 		val data = null
-		val response = api.get<InputStream>("/Videos/{itemId}/master.m3u8", pathParameters,
+		val response = api.get<ByteReadChannel>("/Videos/{itemId}/master.m3u8", pathParameters,
 				queryParameters, data)
 		return response
 	}

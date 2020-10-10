@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.api.operations
 
-import java.io.InputStream
+import io.ktor.utils.io.ByteReadChannel
 import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
@@ -146,7 +146,7 @@ class VideoHlsApi(
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		enableSubtitlesInManifest: Boolean? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -202,8 +202,8 @@ class VideoHlsApi(
 		queryParameters["maxHeight"] = maxHeight
 		queryParameters["enableSubtitlesInManifest"] = enableSubtitlesInManifest
 		val data = null
-		val response = api.get<InputStream>("/Videos/{itemId}/live.m3u8", pathParameters, queryParameters,
-				data)
+		val response = api.get<ByteReadChannel>("/Videos/{itemId}/live.m3u8", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
