@@ -2,10 +2,10 @@ package org.jellyfin.openapi.builder.openapi
 
 import com.squareup.kotlinpoet.TypeName
 import com.squareup.kotlinpoet.asTypeName
+import io.ktor.utils.io.*
 import io.swagger.v3.oas.models.responses.ApiResponse
 import org.jellyfin.openapi.constants.MimeType
 import org.jellyfin.openapi.hooks.ApiTypePath
-import java.io.InputStream
 
 class OpenApiReturnTypeBuilder(
 	private val openApiTypeBuilder: OpenApiTypeBuilder
@@ -41,7 +41,7 @@ class OpenApiReturnTypeBuilder(
 
 	companion object {
 		val TYPE_STRING = String::class.asTypeName()
-		val TYPE_BINARY = InputStream::class.asTypeName()
+		val TYPE_BINARY = ByteReadChannel::class.asTypeName()
 		val TYPE_NONE = Unit::class.asTypeName()
 	}
 }

@@ -7,10 +7,11 @@ import com.squareup.kotlinpoet.asTypeName
 import io.swagger.v3.oas.models.media.*
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toPascalCase
+import org.jellyfin.openapi.builder.openapi.OpenApiReturnTypeBuilder.Companion.TYPE_BINARY
+import org.jellyfin.openapi.builder.openapi.OpenApiReturnTypeBuilder.Companion.TYPE_STRING
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.hooks.TypeBuilderHook
 import org.jellyfin.openapi.hooks.TypePath
-import java.io.InputStream
 import java.time.LocalDateTime
 import java.util.*
 
@@ -66,7 +67,7 @@ class OpenApiTypeBuilder(
 		else -> throw UnknownTypeError(schema.type, schema.format)
 	}.asTypeName()
 
-	fun buildString() = String::class.asTypeName()
+	fun buildString() = TYPE_STRING
 	fun buildBoolean() = Boolean::class.asTypeName()
 	fun buildDateTime() = LocalDateTime::class.asTypeName()
 	fun buildUUIDType() = UUID::class.asTypeName()
@@ -85,7 +86,7 @@ class OpenApiTypeBuilder(
 			.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL)
 	)
 
-	fun buildBinary() = InputStream::class.asTypeName()
+	fun buildBinary() = TYPE_BINARY
 
 	class UnknownTypeError(type: String?, format: String?) : Error("Unknown type $type with format $format")
 }
