@@ -32,6 +32,7 @@ jobs:
           publishJUnitResults: true
           testResultsFiles: '**/TEST-*.xml'
           javaHomeOption: 'JDKVersion'
+          jdkVersionOption: 1.11
           sonarQubeRunAnalysis: false
 
   - job: Build
@@ -49,6 +50,7 @@ jobs:
           publishJUnitResults: false
           testResultsFiles: '**/TEST-*.xml'
           javaHomeOption: 'JDKVersion'
+          jdkVersionOption: 1.11
           sonarQubeRunAnalysis: false
 
   - job: Publish
@@ -71,19 +73,20 @@ jobs:
           publishJUnitResults: false
           testResultsFiles: '**/TEST-*.xml'
           javaHomeOption: 'JDKVersion'
+          jdkVersionOption: 1.11
           sonarQubeRunAnalysis: false
         env:
           BINTRAY_KEY: $(bintray_key)
 
-      - task: GithubRelease@0
+      - task: GitHubRelease@1
         displayName: 'GitHub Upload'
         inputs:
           gitHubConnection: Jellyfin Release Download
           repositoryName: jellyfin/jellyfin-apiclient-java
           assets: |
-            $(Build.SourcesDirectory)/**/distributions/*-$(JELLYFIN_VERSION).zip
-            $(Build.SourcesDirectory)/**/libs/*-$(JELLYFIN_VERSION).jar
-            $(Build.SourcesDirectory)/**/libs/*-$(JELLYFIN_VERSION)-sources.jar
+            $(Build.ArtifactStagingDirectory)/**/distributions/*-$(JELLYFIN_VERSION).zip
+            $(Build.ArtifactStagingDirectory)/**/libs/*-$(JELLYFIN_VERSION).jar
+            $(Build.ArtifactStagingDirectory)/**/libs/*-$(JELLYFIN_VERSION)-sources.jar
           action: 'edit'
           assetUploadMode: 'replace'
           tag: '$(JELLYFIN_VERSION)'
