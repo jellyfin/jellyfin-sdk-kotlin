@@ -9,6 +9,7 @@ import io.ktor.client.features.websocket.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
+import io.ktor.util.*
 import kotlinx.serialization.json.Json
 import org.jellyfin.apiclient.model.ClientInfo
 import org.jellyfin.apiclient.model.DeviceInfo
@@ -126,7 +127,7 @@ open class KtorClient(
 				body = defaultSerializer().write(requestBody)
 		}
 
-		return Response(response.receive())
+		return Response(response.receive(), response.status.value, response.headers.toMap())
 	}
 
 	suspend inline fun <reified T> get(
