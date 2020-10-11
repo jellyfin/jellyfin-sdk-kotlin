@@ -32,6 +32,7 @@ jobs:
           publishJUnitResults: true
           testResultsFiles: '**/TEST-*.xml'
           javaHomeOption: 'JDKVersion'
+          jdkVersionOption: 1.11
           sonarQubeRunAnalysis: false
 
   - job: Build
@@ -49,6 +50,7 @@ jobs:
           publishJUnitResults: false
           testResultsFiles: '**/TEST-*.xml'
           javaHomeOption: 'JDKVersion'
+          jdkVersionOption: 1.11
           sonarQubeRunAnalysis: false
 
   - job: Publish
@@ -71,6 +73,7 @@ jobs:
           publishJUnitResults: false
           testResultsFiles: '**/TEST-*.xml'
           javaHomeOption: 'JDKVersion'
+          jdkVersionOption: 1.11
           sonarQubeRunAnalysis: false
         env:
           BINTRAY_KEY: $(bintray_key)
