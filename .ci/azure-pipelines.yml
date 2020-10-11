@@ -78,15 +78,21 @@ jobs:
         env:
           BINTRAY_KEY: $(bintray_key)
 
+      - task: CopyFiles@2
+        displayName: 'Copy build assets'
+        inputs:
+          Contents: |
+            **/distributions/*-$(JELLYFIN_VERSION).zip
+            **/libs/*-$(JELLYFIN_VERSION).jar
+            **/libs/*-$(JELLYFIN_VERSION)-sources.jar
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          flattenFolders: true
+
       - task: GitHubRelease@1
         displayName: 'GitHub Upload'
         inputs:
           gitHubConnection: Jellyfin Release Download
           repositoryName: jellyfin/jellyfin-apiclient-java
-          assets: |
-            $(Build.ArtifactStagingDirectory)/**/distributions/*-$(JELLYFIN_VERSION).zip
-            $(Build.ArtifactStagingDirectory)/**/libs/*-$(JELLYFIN_VERSION).jar
-            $(Build.ArtifactStagingDirectory)/**/libs/*-$(JELLYFIN_VERSION)-sources.jar
           action: 'edit'
           assetUploadMode: 'replace'
           tag: 'v$(JELLYFIN_VERSION)'
