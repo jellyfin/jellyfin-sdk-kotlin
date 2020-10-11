@@ -1,7 +1,5 @@
 ## Contribution/Development Note
 
-Azure pipeline YAMLs can be validated via a Json schema.
-The Azure DevOps documentation mentions this but sends you to get the project scoped schema, which requires authorization.
-A generic schema is although also available and can be helpful to validate:
-
-https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json
+Azure Pipelines YAML files can be validated via a JSON Schema.
+The Azure DevOps documentation mentions this but asks you to get the project scoped schema, which requires authorization.
+[A generic schema](https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json) is also available however and can be helpful for validation.
