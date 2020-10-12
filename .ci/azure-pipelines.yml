@@ -85,6 +85,7 @@ jobs:
             **/distributions/*-$(JELLYFIN_VERSION).zip
             **/libs/*-$(JELLYFIN_VERSION).jar
             **/libs/*-$(JELLYFIN_VERSION)-sources.jar
+            **/outputs/aar/*.aar
           TargetFolder: '$(Build.ArtifactStagingDirectory)'
           flattenFolders: true
 
