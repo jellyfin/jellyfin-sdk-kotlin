@@ -61,10 +61,11 @@ jobs:
     pool:
       vmImage: 'ubuntu-latest'
 
-    steps:
-      - script: 'echo "##vso[task.setvariable variable=JELLYFIN_VERSION]$(git describe --tags)"'
-        displayName: 'Set Version Variable'
+    variables:
+      - name: JELLYFIN_VERSION
+        value: $[replace(variables['Build.SourceBranch'],'refs/tags/v','')]
 
+    steps:
       - task: Gradle@2
         displayName: 'Build, Distribute & Publish'
         inputs:
@@ -78,15 +79,22 @@ jobs:
         env:
           BINTRAY_KEY: $(bintray_key)
 
+      - task: CopyFiles@2
+        displayName: 'Copy build assets'
+        inputs:
+          Contents: |
+            **/distributions/*-$(JELLYFIN_VERSION).zip
+            **/libs/*-$(JELLYFIN_VERSION).jar
+            **/libs/*-$(JELLYFIN_VERSION)-sources.jar
+            **/outputs/aar/*.aar
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          flattenFolders: true
+
       - task: GitHubRelease@1
         displayName: 'GitHub Upload'
         inputs:
           gitHubConnection: Jellyfin Release Download
           repositoryName: jellyfin/jellyfin-apiclient-java
-          assets: |
-            $(Build.ArtifactStagingDirectory)/**/distributions/*-$(JELLYFIN_VERSION).zip
-            $(Build.ArtifactStagingDirectory)/**/libs/*-$(JELLYFIN_VERSION).jar
-            $(Build.ArtifactStagingDirectory)/**/libs/*-$(JELLYFIN_VERSION)-sources.jar
           action: 'edit'
           assetUploadMode: 'replace'
-          tag: '$(JELLYFIN_VERSION)'
+          tag: 'v$(JELLYFIN_VERSION)'
