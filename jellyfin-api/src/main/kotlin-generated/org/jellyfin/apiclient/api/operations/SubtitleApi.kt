@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.api.operations
 
-import java.io.InputStream
+import io.ktor.utils.io.ByteReadChannel
 import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
@@ -168,7 +168,7 @@ class SubtitleApi(
 		index: Int,
 		mediaSourceId: String,
 		segmentLength: Int
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["index"] = index
@@ -177,7 +177,7 @@ class SubtitleApi(
 		queryParameters["segmentLength"] = segmentLength
 		val data = null
 		val response =
-				api.get<InputStream>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8",
+				api.get<ByteReadChannel>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8",
 				pathParameters, queryParameters, data)
 		return response
 	}

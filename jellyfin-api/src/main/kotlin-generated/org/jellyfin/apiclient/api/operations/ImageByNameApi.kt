@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.api.operations
 
-import java.io.InputStream
+import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
 import kotlin.String
 import kotlin.collections.List
@@ -34,13 +34,13 @@ class ImageByNameApi(
 	 * @param name The name of the image.
 	 * @param type Image Type (primary, backdrop, logo, etc).
 	 */
-	suspend fun getGeneralImage(name: String, type: String): Response<InputStream> {
+	suspend fun getGeneralImage(name: String, type: String): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["type"] = type
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<InputStream>("/Images/General/{name}/{type}", pathParameters,
+		val response = api.get<ByteReadChannel>("/Images/General/{name}/{type}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -77,13 +77,13 @@ class ImageByNameApi(
 	 * @param theme The theme to get the image from.
 	 * @param name The name of the image.
 	 */
-	suspend fun getMediaInfoImage(theme: String, name: String): Response<InputStream> {
+	suspend fun getMediaInfoImage(theme: String, name: String): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["theme"] = theme
 		pathParameters["name"] = name
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<InputStream>("/Images/MediaInfo/{theme}/{name}", pathParameters,
+		val response = api.get<ByteReadChannel>("/Images/MediaInfo/{theme}/{name}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -120,13 +120,13 @@ class ImageByNameApi(
 	 * @param theme The theme to get the image from.
 	 * @param name The name of the image.
 	 */
-	suspend fun getRatingImage(theme: String, name: String): Response<InputStream> {
+	suspend fun getRatingImage(theme: String, name: String): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["theme"] = theme
 		pathParameters["name"] = name
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<InputStream>("/Images/Ratings/{theme}/{name}", pathParameters,
+		val response = api.get<ByteReadChannel>("/Images/Ratings/{theme}/{name}", pathParameters,
 				queryParameters, data)
 		return response
 	}

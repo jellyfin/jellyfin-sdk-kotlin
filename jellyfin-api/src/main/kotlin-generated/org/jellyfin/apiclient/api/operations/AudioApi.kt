@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.api.operations
 
-import java.io.InputStream
+import io.ktor.utils.io.ByteReadChannel
 import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
@@ -140,7 +140,7 @@ class AudioApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
 		streamOptions: Map<String, String>? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["container"] = container
@@ -193,7 +193,7 @@ class AudioApi(
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
 		val data = null
-		val response = api.get<InputStream>("/Audio/{itemId}/stream", pathParameters, queryParameters,
+		val response = api.get<ByteReadChannel>("/Audio/{itemId}/stream", pathParameters, queryParameters,
 				data)
 		return response
 	}
@@ -489,7 +489,7 @@ class AudioApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
 		streamOptions: Map<String, String>? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["container"] = container
@@ -542,7 +542,7 @@ class AudioApi(
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
 		val data = null
-		val response = api.get<InputStream>("/Audio/{itemId}/stream.{container}", pathParameters,
+		val response = api.get<ByteReadChannel>("/Audio/{itemId}/stream.{container}", pathParameters,
 				queryParameters, data)
 		return response
 	}

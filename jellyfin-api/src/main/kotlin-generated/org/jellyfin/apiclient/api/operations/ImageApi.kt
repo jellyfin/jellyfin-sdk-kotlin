@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.api.operations
 
-import java.io.InputStream
+import io.ktor.utils.io.ByteReadChannel
 import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
@@ -64,7 +64,7 @@ class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["imageType"] = imageType
@@ -85,7 +85,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<InputStream>("/Artists/{name}/Images/{imageType}/{imageIndex}",
+		val response = api.get<ByteReadChannel>("/Artists/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -198,7 +198,7 @@ class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["imageType"] = imageType
@@ -219,7 +219,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<InputStream>("/Genres/{name}/Images/{imageType}/{imageIndex}",
+		val response = api.get<ByteReadChannel>("/Genres/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -347,7 +347,7 @@ class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["imageType"] = imageType
@@ -368,7 +368,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<InputStream>("/Items/{itemId}/Images/{imageType}", pathParameters,
+		val response = api.get<ByteReadChannel>("/Items/{itemId}/Images/{imageType}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -526,7 +526,7 @@ class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["imageType"] = imageType
@@ -547,7 +547,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<InputStream>("/Items/{itemId}/Images/{imageType}/{imageIndex}",
+		val response = api.get<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -706,7 +706,7 @@ class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["imageType"] = imageType
@@ -728,7 +728,7 @@ class ImageApi(
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
 		val response =
-				api.get<InputStream>("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
+				api.get<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -867,7 +867,7 @@ class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["imageType"] = imageType
@@ -888,7 +888,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<InputStream>("/MusicGenres/{name}/Images/{imageType}/{imageIndex}",
+		val response = api.get<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -1001,7 +1001,7 @@ class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["imageType"] = imageType
@@ -1022,7 +1022,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<InputStream>("/Persons/{name}/Images/{imageType}/{imageIndex}",
+		val response = api.get<ByteReadChannel>("/Persons/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -1135,7 +1135,7 @@ class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["imageType"] = imageType
@@ -1156,7 +1156,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<InputStream>("/Studios/{name}/Images/{imageType}/{imageIndex}",
+		val response = api.get<ByteReadChannel>("/Studios/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -1292,7 +1292,7 @@ class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["imageType"] = imageType
@@ -1313,7 +1313,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<InputStream>("/Users/{userId}/Images/{imageType}/{imageIndex}",
+		val response = api.get<ByteReadChannel>("/Users/{userId}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
 		return response
 	}

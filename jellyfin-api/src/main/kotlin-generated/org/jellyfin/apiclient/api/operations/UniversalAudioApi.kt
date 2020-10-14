@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.api.operations
 
-import java.io.InputStream
+import io.ktor.utils.io.ByteReadChannel
 import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
@@ -58,7 +58,7 @@ class UniversalAudioApi(
 		enableRemoteMedia: Boolean? = null,
 		breakOnNonKeyFrames: Boolean,
 		enableRedirection: Boolean
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["container"] = container
@@ -79,8 +79,8 @@ class UniversalAudioApi(
 		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
 		queryParameters["enableRedirection"] = enableRedirection
 		val data = null
-		val response = api.get<InputStream>("/Audio/{itemId}/universal", pathParameters, queryParameters,
-				data)
+		val response = api.get<ByteReadChannel>("/Audio/{itemId}/universal", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
@@ -187,7 +187,7 @@ class UniversalAudioApi(
 		enableRemoteMedia: Boolean? = null,
 		breakOnNonKeyFrames: Boolean,
 		enableRedirection: Boolean
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["container"] = container
@@ -208,7 +208,7 @@ class UniversalAudioApi(
 		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
 		queryParameters["enableRedirection"] = enableRedirection
 		val data = null
-		val response = api.get<InputStream>("/Audio/{itemId}/universal.{container}", pathParameters,
+		val response = api.get<ByteReadChannel>("/Audio/{itemId}/universal.{container}", pathParameters,
 				queryParameters, data)
 		return response
 	}

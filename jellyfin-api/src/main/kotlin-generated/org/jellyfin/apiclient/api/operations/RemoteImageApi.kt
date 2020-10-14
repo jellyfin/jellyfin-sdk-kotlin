@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.api.operations
 
-import java.io.InputStream
+import io.ktor.utils.io.ByteReadChannel
 import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
@@ -27,12 +27,12 @@ class RemoteImageApi(
 	 *
 	 * @param imageUrl The image url.
 	 */
-	suspend fun getRemoteImage(imageUrl: String): Response<InputStream> {
+	suspend fun getRemoteImage(imageUrl: String): Response<ByteReadChannel> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["imageUrl"] = imageUrl
 		val data = null
-		val response = api.get<InputStream>("/Images/Remote", pathParameters, queryParameters, data)
+		val response = api.get<ByteReadChannel>("/Images/Remote", pathParameters, queryParameters, data)
 		return response
 	}
 

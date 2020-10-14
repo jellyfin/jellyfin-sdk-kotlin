@@ -20,6 +20,9 @@ dependencies {
 	// Needed for the kotlinx.serialization annotations
 	implementation(Dependencies.KotlinX.serializationJson)
 
+	// Needed for the ByteReadChannel class
+	implementation(Dependencies.Ktor.io)
+
 	// Dependency Injection
 	implementation(Dependencies.Koin.core)
 

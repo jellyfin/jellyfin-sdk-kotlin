@@ -44,6 +44,7 @@ object Dependencies {
 		val serialization = item("client-serialization-jvm")
 
 		val http = item("http")
+		val io = item("io")
 	}
 
 	object Koin {

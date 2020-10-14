@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.api.operations
 
-import java.io.InputStream
+import io.ktor.utils.io.ByteReadChannel
 import java.time.LocalDateTime
 import java.util.UUID
 import kotlin.Any
@@ -276,11 +276,11 @@ class LiveTvApi(
 	/**
 	 * Gets available countries.
 	 */
-	suspend fun getSchedulesDirectCountries(): Response<InputStream> {
+	suspend fun getSchedulesDirectCountries(): Response<ByteReadChannel> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<InputStream>("/LiveTv/ListingProviders/SchedulesDirect/Countries",
+		val response = api.get<ByteReadChannel>("/LiveTv/ListingProviders/SchedulesDirect/Countries",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -300,13 +300,13 @@ class LiveTvApi(
 	 *
 	 * @param recordingId Recording id.
 	 */
-	suspend fun getLiveRecordingFile(recordingId: String): Response<InputStream> {
+	suspend fun getLiveRecordingFile(recordingId: String): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["recordingId"] = recordingId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<InputStream>("/LiveTv/LiveRecordings/{recordingId}/stream", pathParameters,
-				queryParameters, data)
+		val response = api.get<ByteReadChannel>("/LiveTv/LiveRecordings/{recordingId}/stream",
+				pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -329,13 +329,13 @@ class LiveTvApi(
 	 * @param streamId Stream id.
 	 * @param container Container type.
 	 */
-	suspend fun getLiveStreamFile(streamId: String, container: String): Response<InputStream> {
+	suspend fun getLiveStreamFile(streamId: String, container: String): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["streamId"] = streamId
 		pathParameters["container"] = container
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<InputStream>("/LiveTv/LiveStreamFiles/{streamId}/stream.{container}",
+		val response = api.get<ByteReadChannel>("/LiveTv/LiveStreamFiles/{streamId}/stream.{container}",
 				pathParameters, queryParameters, data)
 		return response
 	}

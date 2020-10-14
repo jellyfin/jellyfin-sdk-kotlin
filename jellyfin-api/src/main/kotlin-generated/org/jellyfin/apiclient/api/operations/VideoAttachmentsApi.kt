@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.api.operations
 
-import java.io.InputStream
+import io.ktor.utils.io.ByteReadChannel
 import java.util.UUID
 import kotlin.Any
 import kotlin.Int
@@ -27,14 +27,14 @@ class VideoAttachmentsApi(
 		videoId: UUID,
 		mediaSourceId: String,
 		index: Int
-	): Response<InputStream> {
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["videoId"] = videoId
 		pathParameters["mediaSourceId"] = mediaSourceId
 		pathParameters["index"] = index
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<InputStream>("/Videos/{videoId}/{mediaSourceId}/Attachments/{index}",
+		val response = api.get<ByteReadChannel>("/Videos/{videoId}/{mediaSourceId}/Attachments/{index}",
 				pathParameters, queryParameters, data)
 		return response
 	}

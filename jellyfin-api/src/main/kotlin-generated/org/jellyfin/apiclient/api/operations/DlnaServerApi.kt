@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.api.operations
 
-import java.io.InputStream
+import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
 import kotlin.String
 import org.jellyfin.apiclient.api.client.KtorClient
@@ -171,13 +171,13 @@ class DlnaServerApi(
 	 * @param serverId Server UUID.
 	 * @param fileName The icon filename.
 	 */
-	suspend fun getIconId(serverId: String, fileName: String): Response<InputStream> {
+	suspend fun getIconId(serverId: String, fileName: String): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		pathParameters["fileName"] = fileName
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<InputStream>("/Dlna/{serverId}/icons/{fileName}", pathParameters,
+		val response = api.get<ByteReadChannel>("/Dlna/{serverId}/icons/{fileName}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -263,12 +263,12 @@ class DlnaServerApi(
 	 *
 	 * @param fileName The icon filename.
 	 */
-	suspend fun getIcon(fileName: String): Response<InputStream> {
+	suspend fun getIcon(fileName: String): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["fileName"] = fileName
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<InputStream>("/Dlna/icons/{fileName}", pathParameters, queryParameters,
+		val response = api.get<ByteReadChannel>("/Dlna/icons/{fileName}", pathParameters, queryParameters,
 				data)
 		return response
 	}
