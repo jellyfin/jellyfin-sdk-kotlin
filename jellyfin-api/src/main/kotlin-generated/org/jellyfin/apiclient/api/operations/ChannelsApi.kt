@@ -15,6 +15,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.ChannelFeatures
+import org.jellyfin.apiclient.model.api.ItemFilter
 
 class ChannelsApi(
 	private val api: KtorClient
@@ -76,9 +77,7 @@ class ChannelsApi(
 	 * dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param sortOrder Optional. Sort Order - Ascending,Descending.
-	 * @param filters Optional. Specify additional filters to apply. This allows multiple, comma
-	 * delimited. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes,
-	 * Dislikes.
+	 * @param filters Optional. Specify additional filters to apply.
 	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album,
 	 * AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount,
 	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
@@ -94,7 +93,7 @@ class ChannelsApi(
 		startIndex: Int? = null,
 		limit: Int? = null,
 		sortOrder: String? = null,
-		filters: String? = null,
+		filters: List<ItemFilter>? = null,
 		sortBy: String? = null,
 		fields: String? = null
 	): Response<BaseItemDtoQueryResult> {
@@ -134,9 +133,7 @@ class ChannelsApi(
 	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
 	 * dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param filters Optional. Specify additional filters to apply. This allows multiple, comma
-	 * delimited. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes,
-	 * Dislikes.
+	 * @param filters Optional. Specify additional filters to apply.
 	 * @param fields Optional. Specify additional fields of information to return in the output. This
 	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
@@ -147,7 +144,7 @@ class ChannelsApi(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
-		filters: String? = null,
+		filters: List<ItemFilter>? = null,
 		fields: String? = null,
 		channelIds: String? = null
 	): Response<BaseItemDtoQueryResult> {

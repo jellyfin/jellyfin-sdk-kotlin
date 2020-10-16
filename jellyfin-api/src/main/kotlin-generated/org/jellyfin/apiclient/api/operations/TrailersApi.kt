@@ -12,9 +12,12 @@ import kotlin.Boolean
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.ItemFilter
+import org.jellyfin.apiclient.model.api.LocationType
 
 class TrailersApi(
 	private val api: KtorClient
@@ -155,7 +158,7 @@ class TrailersApi(
 		isHd: Boolean? = null,
 		is4k: Boolean? = null,
 		locationTypes: String? = null,
-		excludeLocationTypes: String? = null,
+		excludeLocationTypes: List<LocationType>? = null,
 		isMissing: Boolean? = null,
 		isUnaired: Boolean? = null,
 		minCommunityRating: Double? = null,
@@ -177,7 +180,7 @@ class TrailersApi(
 		parentId: String? = null,
 		fields: String? = null,
 		excludeItemTypes: String? = null,
-		filters: String? = null,
+		filters: List<ItemFilter>? = null,
 		isFavorite: Boolean? = null,
 		mediaTypes: String? = null,
 		imageTypes: String? = null,

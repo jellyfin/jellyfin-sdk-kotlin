@@ -11,10 +11,12 @@ import kotlin.Boolean
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDto
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.ItemFilter
 
 class PersonsApi(
 	private val api: KtorClient
@@ -85,7 +87,7 @@ class PersonsApi(
 		fields: String? = null,
 		excludeItemTypes: String? = null,
 		includeItemTypes: String? = null,
-		filters: String? = null,
+		filters: List<ItemFilter>? = null,
 		isFavorite: Boolean? = null,
 		mediaTypes: String? = null,
 		genres: String? = null,

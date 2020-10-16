@@ -273,7 +273,7 @@ class SessionApi(
 	suspend fun postCapabilities(
 		id: String? = null,
 		playableMediaTypes: String? = null,
-		supportedCommands: String? = null,
+		supportedCommands: List<GeneralCommandType>? = null,
 		supportsMediaControl: Boolean,
 		supportsSync: Boolean,
 		supportsPersistentIdentifier: Boolean

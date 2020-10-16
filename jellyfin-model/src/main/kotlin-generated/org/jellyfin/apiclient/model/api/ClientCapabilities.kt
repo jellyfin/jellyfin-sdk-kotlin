@@ -16,7 +16,7 @@ data class ClientCapabilities(
 	@SerialName("PlayableMediaTypes")
 	val playableMediaTypes: List<String>? = null,
 	@SerialName("SupportedCommands")
-	val supportedCommands: List<String>? = null,
+	val supportedCommands: List<GeneralCommandType>? = null,
 	@SerialName("SupportsMediaControl")
 	val supportsMediaControl: Boolean,
 	@SerialName("SupportsContentUploading")

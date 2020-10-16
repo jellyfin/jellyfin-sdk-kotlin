@@ -11,10 +11,12 @@ import kotlin.Boolean
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDto
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.ItemFilter
 
 class StudiosApi(
 	private val api: KtorClient
@@ -37,9 +39,7 @@ class StudiosApi(
 	 * This allows multiple, comma delimited.
 	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type.
 	 * This allows multiple, comma delimited.
-	 * @param filters Optional. Specify additional filters to apply. This allows multiple, comma
-	 * delimited. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes,
-	 * Dislikes.
+	 * @param filters Optional. Specify additional filters to apply.
 	 * @param isFavorite Optional filter by items that are marked as favorite, or not.
 	 * @param mediaTypes Optional filter by MediaType. Allows multiple, comma delimited.
 	 * @param genres Optional. If specified, results will be filtered based on genre. This allows
@@ -85,7 +85,7 @@ class StudiosApi(
 		fields: String? = null,
 		excludeItemTypes: String? = null,
 		includeItemTypes: String? = null,
-		filters: String? = null,
+		filters: List<ItemFilter>? = null,
 		isFavorite: Boolean? = null,
 		mediaTypes: String? = null,
 		genres: String? = null,
