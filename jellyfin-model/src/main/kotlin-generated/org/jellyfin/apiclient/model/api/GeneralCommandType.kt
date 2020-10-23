@@ -119,5 +119,20 @@ enum class GeneralCommandType {
 	PLAY_MEDIA_SOURCE,
 
 	@SerialName("PlayTrailers")
-	PLAY_TRAILERS
+	PLAY_TRAILERS,
+
+	@SerialName("SetShuffleQueue")
+	SET_SHUFFLE_QUEUE,
+
+	@SerialName("PlayState")
+	PLAY_STATE,
+
+	@SerialName("PlayNext")
+	PLAY_NEXT,
+
+	@SerialName("ToggleOsdMenu")
+	TOGGLE_OSD_MENU,
+
+	@SerialName("Play")
+	PLAY
 }

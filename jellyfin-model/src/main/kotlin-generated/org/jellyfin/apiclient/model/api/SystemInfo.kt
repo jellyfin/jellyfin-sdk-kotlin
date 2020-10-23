@@ -51,7 +51,7 @@ data class SystemInfo(
 	 * Gets or sets a value indicating whether the startup wizard is completed.
 	 */
 	@SerialName("StartupWizardCompleted")
-	val startupWizardCompleted: Boolean,
+	val startupWizardCompleted: Boolean? = null,
 	/**
 	 * Gets or sets the display name of the operating system.
 	 */

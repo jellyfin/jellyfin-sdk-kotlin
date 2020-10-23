@@ -96,6 +96,8 @@ data class UserPolicy(
 	val invalidLoginAttemptCount: Int,
 	@SerialName("LoginAttemptsBeforeLockout")
 	val loginAttemptsBeforeLockout: Int,
+	@SerialName("MaxActiveSessions")
+	val maxActiveSessions: Int,
 	@SerialName("EnablePublicSharing")
 	val enablePublicSharing: Boolean,
 	@SerialName("BlockedMediaFolders")

@@ -16,6 +16,7 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
+import org.jellyfin.apiclient.model.api.ImageFormat
 import org.jellyfin.apiclient.model.api.ImageInfo
 import org.jellyfin.apiclient.model.api.ImageType
 
@@ -51,7 +52,7 @@ class ImageApi(
 		imageType: ImageType,
 		imageIndex: Int,
 		tag: String? = null,
-		format: String? = null,
+		format: ImageFormat,
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		percentPlayed: Double? = null,
@@ -119,7 +120,7 @@ class ImageApi(
 		imageType: ImageType,
 		imageIndex: Int,
 		tag: String? = null,
-		format: String? = null,
+		format: ImageFormat,
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		percentPlayed: Double? = null,
@@ -185,7 +186,7 @@ class ImageApi(
 		imageType: ImageType,
 		imageIndex: Int? = null,
 		tag: String? = null,
-		format: String? = null,
+		format: ImageFormat,
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		percentPlayed: Double? = null,
@@ -253,7 +254,7 @@ class ImageApi(
 		imageType: ImageType,
 		imageIndex: Int? = null,
 		tag: String? = null,
-		format: String? = null,
+		format: ImageFormat,
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		percentPlayed: Double? = null,
@@ -321,7 +322,7 @@ class ImageApi(
 	 * headers.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
+	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
@@ -340,7 +341,7 @@ class ImageApi(
 		quality: Int? = null,
 		tag: String? = null,
 		cropWhitespace: Boolean? = null,
-		format: String? = null,
+		format: ImageFormat,
 		addPlayedIndicator: Boolean? = null,
 		percentPlayed: Double? = null,
 		unplayedCount: Int? = null,
@@ -389,7 +390,7 @@ class ImageApi(
 	 * headers.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
+	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
@@ -408,7 +409,7 @@ class ImageApi(
 		quality: Int? = null,
 		tag: String? = null,
 		cropWhitespace: Boolean? = null,
-		format: String? = null,
+		format: ImageFormat,
 		addPlayedIndicator: Boolean? = null,
 		percentPlayed: Double? = null,
 		unplayedCount: Int? = null,
@@ -500,7 +501,7 @@ class ImageApi(
 	 * headers.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
+	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
@@ -519,7 +520,7 @@ class ImageApi(
 		quality: Int? = null,
 		tag: String? = null,
 		cropWhitespace: Boolean? = null,
-		format: String? = null,
+		format: ImageFormat,
 		addPlayedIndicator: Boolean? = null,
 		percentPlayed: Double? = null,
 		unplayedCount: Int? = null,
@@ -568,7 +569,7 @@ class ImageApi(
 	 * headers.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
+	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
@@ -587,7 +588,7 @@ class ImageApi(
 		quality: Int? = null,
 		tag: String? = null,
 		cropWhitespace: Boolean? = null,
-		format: String? = null,
+		format: ImageFormat,
 		addPlayedIndicator: Boolean? = null,
 		percentPlayed: Double? = null,
 		unplayedCount: Int? = null,
@@ -694,7 +695,7 @@ class ImageApi(
 		maxWidth: Int,
 		maxHeight: Int,
 		tag: String,
-		format: String,
+		format: ImageFormat,
 		percentPlayed: Double,
 		unplayedCount: Int,
 		imageIndex: Int,
@@ -763,7 +764,7 @@ class ImageApi(
 		maxWidth: Int,
 		maxHeight: Int,
 		tag: String,
-		format: String,
+		format: ImageFormat,
 		percentPlayed: Double,
 		unplayedCount: Int,
 		imageIndex: Int,
@@ -854,7 +855,7 @@ class ImageApi(
 		imageType: ImageType,
 		imageIndex: Int? = null,
 		tag: String? = null,
-		format: String? = null,
+		format: ImageFormat,
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		percentPlayed: Double? = null,
@@ -922,7 +923,7 @@ class ImageApi(
 		imageType: ImageType,
 		imageIndex: Int? = null,
 		tag: String? = null,
-		format: String? = null,
+		format: ImageFormat,
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		percentPlayed: Double? = null,
@@ -988,7 +989,7 @@ class ImageApi(
 		imageType: ImageType,
 		imageIndex: Int? = null,
 		tag: String? = null,
-		format: String? = null,
+		format: ImageFormat,
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		percentPlayed: Double? = null,
@@ -1056,7 +1057,7 @@ class ImageApi(
 		imageType: ImageType,
 		imageIndex: Int? = null,
 		tag: String? = null,
-		format: String? = null,
+		format: ImageFormat,
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		percentPlayed: Double? = null,
@@ -1121,7 +1122,7 @@ class ImageApi(
 		name: String,
 		imageType: ImageType,
 		tag: String,
-		format: String,
+		format: ImageFormat,
 		imageIndex: Int? = null,
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
@@ -1189,7 +1190,7 @@ class ImageApi(
 		name: String,
 		imageType: ImageType,
 		tag: String,
-		format: String,
+		format: ImageFormat,
 		imageIndex: Int? = null,
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
@@ -1279,7 +1280,7 @@ class ImageApi(
 		imageType: ImageType,
 		imageIndex: Int? = null,
 		tag: String? = null,
-		format: String? = null,
+		format: ImageFormat,
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		percentPlayed: Double? = null,
@@ -1347,7 +1348,7 @@ class ImageApi(
 		imageType: ImageType,
 		imageIndex: Int? = null,
 		tag: String? = null,
-		format: String? = null,
+		format: ImageFormat,
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		percentPlayed: Double? = null,

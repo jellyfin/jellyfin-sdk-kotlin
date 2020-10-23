@@ -123,5 +123,5 @@ data class SessionInfo(
 	 * Gets or sets the supported commands.
 	 */
 	@SerialName("SupportedCommands")
-	val supportedCommands: List<String>? = null
+	val supportedCommands: List<GeneralCommandType>? = null
 )

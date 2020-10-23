@@ -30,8 +30,6 @@ data class LibraryOptions(
 	val saveLocalMetadata: Boolean,
 	@SerialName("EnableInternetProviders")
 	val enableInternetProviders: Boolean,
-	@SerialName("ImportMissingEpisodes")
-	val importMissingEpisodes: Boolean,
 	@SerialName("EnableAutomaticSeriesGrouping")
 	val enableAutomaticSeriesGrouping: Boolean,
 	@SerialName("EnableEmbeddedTitles")
