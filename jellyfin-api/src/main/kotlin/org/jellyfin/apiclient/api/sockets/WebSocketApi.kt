@@ -97,7 +97,7 @@ class WebSocketApi(
 		.catch { logger.error(it) }
 		.onCompletion {
 			// Reconnect
-			logger.debug("Socket receiver completed, found %s subscriptions", subscriptions.size)
+			logger.debug("Socket receiver completed, found ${subscriptions.size} subscriptions")
 			delay(RECONNECT_DELAY)
 			if (subscriptions.isNotEmpty()) reconnect()
 		}
@@ -113,7 +113,7 @@ class WebSocketApi(
 		.collect()
 
 	private suspend fun subscriptionsChanged() {
-		logger.debug("Subscriptions changed to %s", subscriptions.size)
+		logger.debug("Subscriptions changed to ${subscriptions.size}")
 
 		if (socketJob != null && subscriptions.isEmpty()) {
 			logger.info("Dropping connection")
