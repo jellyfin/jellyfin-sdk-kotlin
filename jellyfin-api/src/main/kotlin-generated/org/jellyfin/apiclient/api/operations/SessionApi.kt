@@ -273,10 +273,10 @@ class SessionApi(
 	suspend fun postCapabilities(
 		id: String? = null,
 		playableMediaTypes: String? = null,
-		supportedCommands: List<GeneralCommandType>? = null,
-		supportsMediaControl: Boolean,
-		supportsSync: Boolean,
-		supportsPersistentIdentifier: Boolean
+		supportedCommands: List<GeneralCommandType>? = emptyList(),
+		supportsMediaControl: Boolean = false,
+		supportsSync: Boolean = false,
+		supportsPersistentIdentifier: Boolean = true
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

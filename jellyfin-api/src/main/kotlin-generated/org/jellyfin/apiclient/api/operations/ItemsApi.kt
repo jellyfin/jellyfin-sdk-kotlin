@@ -162,7 +162,7 @@ class ItemsApi(
 		isHd: Boolean? = null,
 		is4k: Boolean? = null,
 		locationTypes: String? = null,
-		excludeLocationTypes: List<LocationType>? = null,
+		excludeLocationTypes: List<LocationType>? = emptyList(),
 		isMissing: Boolean? = null,
 		isUnaired: Boolean? = null,
 		minCommunityRating: Double? = null,
@@ -185,7 +185,7 @@ class ItemsApi(
 		fields: String? = null,
 		excludeItemTypes: String? = null,
 		includeItemTypes: String? = null,
-		filters: List<ItemFilter>? = null,
+		filters: List<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
 		mediaTypes: String? = null,
 		imageTypes: String? = null,
@@ -227,8 +227,8 @@ class ItemsApi(
 		nameLessThan: String? = null,
 		studioIds: String? = null,
 		genreIds: String? = null,
-		enableTotalRecordCount: Boolean,
-		enableImages: Boolean? = null
+		enableTotalRecordCount: Boolean = true,
+		enableImages: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["uId"] = uId
@@ -458,7 +458,7 @@ class ItemsApi(
 		isHd: Boolean? = null,
 		is4k: Boolean? = null,
 		locationTypes: String? = null,
-		excludeLocationTypes: List<LocationType>? = null,
+		excludeLocationTypes: List<LocationType>? = emptyList(),
 		isMissing: Boolean? = null,
 		isUnaired: Boolean? = null,
 		minCommunityRating: Double? = null,
@@ -481,7 +481,7 @@ class ItemsApi(
 		fields: String? = null,
 		excludeItemTypes: String? = null,
 		includeItemTypes: String? = null,
-		filters: List<ItemFilter>? = null,
+		filters: List<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
 		mediaTypes: String? = null,
 		imageTypes: String? = null,
@@ -523,8 +523,8 @@ class ItemsApi(
 		nameLessThan: String? = null,
 		studioIds: String? = null,
 		genreIds: String? = null,
-		enableTotalRecordCount: Boolean,
-		enableImages: Boolean? = null
+		enableTotalRecordCount: Boolean = true,
+		enableImages: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["uId"] = uId
@@ -652,8 +652,8 @@ class ItemsApi(
 		enableImageTypes: String? = null,
 		excludeItemTypes: String? = null,
 		includeItemTypes: String? = null,
-		enableTotalRecordCount: Boolean,
-		enableImages: Boolean? = null
+		enableTotalRecordCount: Boolean = true,
+		enableImages: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId

@@ -29,7 +29,7 @@ class CollectionApi(
 		name: String? = null,
 		ids: String? = null,
 		parentId: UUID? = null,
-		isLocked: Boolean
+		isLocked: Boolean = false
 	): Response<CollectionCreationResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

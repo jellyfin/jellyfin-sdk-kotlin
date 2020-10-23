@@ -58,11 +58,11 @@ class SearchApi(
 		isNews: Boolean? = null,
 		isKids: Boolean? = null,
 		isSports: Boolean? = null,
-		includePeople: Boolean,
-		includeMedia: Boolean,
-		includeGenres: Boolean,
-		includeStudios: Boolean,
-		includeArtists: Boolean
+		includePeople: Boolean = true,
+		includeMedia: Boolean = true,
+		includeGenres: Boolean = true,
+		includeStudios: Boolean = true,
+		includeArtists: Boolean = true
 	): Response<SearchHintResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

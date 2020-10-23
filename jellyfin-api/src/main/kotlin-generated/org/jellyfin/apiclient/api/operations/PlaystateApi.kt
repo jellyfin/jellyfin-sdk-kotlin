@@ -131,7 +131,7 @@ class PlaystateApi(
 		playMethod: PlayMethod,
 		liveStreamId: String? = null,
 		playSessionId: String? = null,
-		canSeek: Boolean
+		canSeek: Boolean = false
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -215,8 +215,8 @@ class PlaystateApi(
 		liveStreamId: String? = null,
 		playSessionId: String? = null,
 		repeatMode: RepeatMode,
-		isPaused: Boolean,
-		isMuted: Boolean
+		isPaused: Boolean = false,
+		isMuted: Boolean = false
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId

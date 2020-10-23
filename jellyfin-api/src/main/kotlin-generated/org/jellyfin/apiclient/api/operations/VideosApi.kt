@@ -143,7 +143,7 @@ class VideosApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null
+		streamOptions: Map<String, String>? = emptyMap()
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -530,7 +530,7 @@ class VideosApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null
+		streamOptions: Map<String, String>? = emptyMap()
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
