@@ -1,9 +1,10 @@
 package org.jellyfin.apiclient.discovery
 
+import org.jellyfin.apiclient.Jellyfin
 import kotlin.test.Test
 
 class DiscoveryServiceTests {
-	private fun getInstance() = DiscoveryService(MockDiscoveryBroadcastAddressesProvider())
+	private fun getInstance() = DiscoveryService(Jellyfin {}, MockDiscoveryBroadcastAddressesProvider())
 
 	@Test
 	fun `getAddressCandidates prefers https`() {
