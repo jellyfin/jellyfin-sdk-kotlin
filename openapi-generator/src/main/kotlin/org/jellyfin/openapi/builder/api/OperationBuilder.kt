@@ -1,9 +1,6 @@
 package org.jellyfin.openapi.builder.api
 
-import com.squareup.kotlinpoet.ClassName
-import com.squareup.kotlinpoet.FunSpec
-import com.squareup.kotlinpoet.KModifier
-import com.squareup.kotlinpoet.ParameterSpec
+import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.plusParameter
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
@@ -31,8 +28,25 @@ class OperationBuilder(
 	}
 
 	private fun buildParameter(data: ApiServiceOperationParameter) = ParameterSpec.builder(data.name, data.type).apply {
-		// Set value to null by default for nullable values
-		if (data.type.isNullable) defaultValue("%L", "null")
+		// Determine class name without parameters
+		val typeClassName = when (data.type) {
+			is ClassName -> data.type
+			is ParameterizedTypeName -> data.type.rawType
+			else -> null
+		}
+
+		// Set default value
+		when (data.defaultValue) {
+			is String -> defaultValue("%S", data.defaultValue)
+			is Int -> defaultValue("%L", data.defaultValue)
+			is Boolean -> defaultValue("%L", data.defaultValue)
+			// Set value to null by default for nullable values
+			null -> when {
+				typeClassName == List::class.asClassName() -> defaultValue("%N()", "emptyList")
+				typeClassName == Map::class.asClassName() -> defaultValue("%N()", "emptyMap")
+				data.type.isNullable -> defaultValue("%L", "null")
+			}
+		}
 
 		// Add description
 		data.description?.let { addKdoc("%L", it) }
