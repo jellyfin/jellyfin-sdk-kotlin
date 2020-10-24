@@ -6,6 +6,18 @@ import android.os.Build
 import android.provider.Settings
 import org.jellyfin.apiclient.model.DeviceInfo
 
+/**
+ * Helper function used in [androidDevice] to normalize device names:
+ *
+ * - Removes special characters from the name.
+ * - Trims the whitespace at the start and end of the name.
+ *
+ * Returns a copy of the device with the normalized name.
+ */
+fun DeviceInfo.normalize() = copy(
+	name = name.replace("[^\\w\\s]".toRegex(), "").trim()
+)
+
 @SuppressLint("HardwareIds")
 fun androidDevice(context: Context): DeviceInfo {
 	val id = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
@@ -18,12 +30,12 @@ fun androidDevice(context: Context): DeviceInfo {
 		val manufacturer = Build.MANUFACTURER
 		val model = Build.MODEL
 
-		if (model.startsWith(manufacturer)) model
+		if (model.startsWith(manufacturer) || manufacturer.isBlank()) model
 		else "$manufacturer $model"
 	}
 
 	return DeviceInfo(
 		id = id,
 		name = name
-	)
+	).normalize()
 }
