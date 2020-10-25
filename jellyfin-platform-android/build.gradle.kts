@@ -31,6 +31,7 @@ android {
 	}
 
 	sourceSets["main"].java.srcDirs("src/main/kotlin")
+	sourceSets["test"].java.srcDirs("src/test/kotlin")
 
 	buildTypes {
 		getByName("release") {
@@ -67,6 +68,8 @@ dependencies {
 
 	implementation(Dependencies.AndroidX.core)
 	implementation(Dependencies.AndroidX.annotation)
+
+	testImplementation(Dependencies.Kotlin.Test.junit)
 
 	coreLibraryDesugaring(Dependencies.Android.desugarJdkLibs)
 }
