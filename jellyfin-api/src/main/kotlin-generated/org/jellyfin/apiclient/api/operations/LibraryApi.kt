@@ -247,7 +247,7 @@ class LibraryApi(
 	suspend fun getThemeMedia(
 		itemId: UUID,
 		userId: UUID? = null,
-		inheritFromParent: Boolean
+		inheritFromParent: Boolean = false
 	): Response<AllThemeMediaResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -271,7 +271,7 @@ class LibraryApi(
 	suspend fun getThemeSongs(
 		itemId: UUID,
 		userId: UUID? = null,
-		inheritFromParent: Boolean
+		inheritFromParent: Boolean = false
 	): Response<ThemeMediaResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -295,7 +295,7 @@ class LibraryApi(
 	suspend fun getThemeVideos(
 		itemId: UUID,
 		userId: UUID? = null,
-		inheritFromParent: Boolean
+		inheritFromParent: Boolean = false
 	): Response<ThemeMediaResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

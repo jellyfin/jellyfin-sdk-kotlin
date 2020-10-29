@@ -44,8 +44,8 @@ class LibraryStructureApi(
 	suspend fun addVirtualFolder(
 		name: String? = null,
 		collectionType: String? = null,
-		paths: List<String>? = null,
-		refreshLibrary: Boolean,
+		paths: List<String>? = emptyList(),
+		refreshLibrary: Boolean = false,
 		data: AddVirtualFolderDto
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
@@ -64,7 +64,8 @@ class LibraryStructureApi(
 	 * @param name The name of the folder.
 	 * @param refreshLibrary Whether to refresh the library.
 	 */
-	suspend fun removeVirtualFolder(name: String? = null, refreshLibrary: Boolean): Response<Unit> {
+	suspend fun removeVirtualFolder(name: String? = null, refreshLibrary: Boolean = false):
+			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["name"] = name
@@ -95,7 +96,7 @@ class LibraryStructureApi(
 	suspend fun renameVirtualFolder(
 		name: String? = null,
 		newName: String? = null,
-		refreshLibrary: Boolean
+		refreshLibrary: Boolean = false
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -113,7 +114,7 @@ class LibraryStructureApi(
 	 *
 	 * @param refreshLibrary Whether to refresh the library.
 	 */
-	suspend fun addMediaPath(refreshLibrary: Boolean, data: MediaPathDto): Response<Unit> {
+	suspend fun addMediaPath(refreshLibrary: Boolean = false, data: MediaPathDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["refreshLibrary"] = refreshLibrary
@@ -132,7 +133,7 @@ class LibraryStructureApi(
 	suspend fun removeMediaPath(
 		name: String? = null,
 		path: String? = null,
-		refreshLibrary: Boolean
+		refreshLibrary: Boolean = false
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

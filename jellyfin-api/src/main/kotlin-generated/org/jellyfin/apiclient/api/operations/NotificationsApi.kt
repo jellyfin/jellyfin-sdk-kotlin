@@ -83,8 +83,8 @@ class NotificationsApi(
 	suspend fun createAdminNotification(
 		url: String? = null,
 		level: NotificationLevel,
-		name: String? = null,
-		description: String? = null
+		name: String? = "",
+		description: String? = ""
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

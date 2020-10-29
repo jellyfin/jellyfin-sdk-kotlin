@@ -69,12 +69,12 @@ class MediaInfoApi(
 		maxAudioChannels: Int? = null,
 		mediaSourceId: String? = null,
 		liveStreamId: String? = null,
-		autoOpenLiveStream: Boolean,
-		enableDirectPlay: Boolean,
-		enableDirectStream: Boolean,
-		enableTranscoding: Boolean,
-		allowVideoStreamCopy: Boolean,
-		allowAudioStreamCopy: Boolean,
+		autoOpenLiveStream: Boolean = false,
+		enableDirectPlay: Boolean = true,
+		enableDirectStream: Boolean = true,
+		enableTranscoding: Boolean = true,
+		allowVideoStreamCopy: Boolean = true,
+		allowAudioStreamCopy: Boolean = true,
 		data: DeviceProfileDto
 	): Response<PlaybackInfoResponse> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -138,8 +138,8 @@ class MediaInfoApi(
 		subtitleStreamIndex: Int? = null,
 		maxAudioChannels: Int? = null,
 		itemId: UUID? = null,
-		enableDirectPlay: Boolean,
-		enableDirectStream: Boolean,
+		enableDirectPlay: Boolean = true,
+		enableDirectStream: Boolean = true,
 		data: OpenLiveStreamDto
 	): Response<LiveStreamResponse> {
 		val pathParameters = emptyMap<String, Any?>()
@@ -165,7 +165,7 @@ class MediaInfoApi(
 	 *
 	 * @param size The bitrate. Defaults to 102400.
 	 */
-	suspend fun getBitrateTestBytes(size: Int): Response<ByteReadChannel> {
+	suspend fun getBitrateTestBytes(size: Int = 102400): Response<ByteReadChannel> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["size"] = size

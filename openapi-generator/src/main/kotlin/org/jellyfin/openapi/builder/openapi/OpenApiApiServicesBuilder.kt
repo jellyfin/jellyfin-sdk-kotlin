@@ -52,6 +52,7 @@ class OpenApiApiServicesBuilder(
 						name = parameterName,
 						originalName = parameterSpec.name,
 						type = type,
+						defaultValue = parameterSpec.schema?.default,
 						description = parameterSpec.description,
 						deprecated = parameterSpec.deprecated == true
 					)

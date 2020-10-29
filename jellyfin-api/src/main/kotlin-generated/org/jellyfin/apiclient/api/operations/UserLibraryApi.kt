@@ -194,8 +194,8 @@ class UserLibraryApi(
 		imageTypeLimit: Int? = null,
 		enableImageTypes: String? = null,
 		enableUserData: Boolean? = null,
-		limit: Int,
-		groupItems: Boolean
+		limit: Int = 20,
+		groupItems: Boolean = true
 	): Response<List<BaseItemDto>> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId

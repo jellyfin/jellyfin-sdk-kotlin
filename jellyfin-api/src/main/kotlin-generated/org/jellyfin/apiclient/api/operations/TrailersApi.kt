@@ -158,7 +158,7 @@ class TrailersApi(
 		isHd: Boolean? = null,
 		is4k: Boolean? = null,
 		locationTypes: String? = null,
-		excludeLocationTypes: List<LocationType>? = null,
+		excludeLocationTypes: List<LocationType>? = emptyList(),
 		isMissing: Boolean? = null,
 		isUnaired: Boolean? = null,
 		minCommunityRating: Double? = null,
@@ -180,7 +180,7 @@ class TrailersApi(
 		parentId: String? = null,
 		fields: String? = null,
 		excludeItemTypes: String? = null,
-		filters: List<ItemFilter>? = null,
+		filters: List<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
 		mediaTypes: String? = null,
 		imageTypes: String? = null,
@@ -222,8 +222,8 @@ class TrailersApi(
 		nameLessThan: String? = null,
 		studioIds: String? = null,
 		genreIds: String? = null,
-		enableTotalRecordCount: Boolean,
-		enableImages: Boolean? = null
+		enableTotalRecordCount: Boolean = true,
+		enableImages: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

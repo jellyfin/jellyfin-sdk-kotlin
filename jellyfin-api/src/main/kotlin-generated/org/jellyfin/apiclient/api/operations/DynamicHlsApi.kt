@@ -144,7 +144,7 @@ class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null
+		streamOptions: Map<String, String>? = emptyMap()
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -502,7 +502,7 @@ class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null
+		streamOptions: Map<String, String>? = emptyMap()
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -846,8 +846,8 @@ class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null,
-		enableAdaptiveBitrateStreaming: Boolean
+		streamOptions: Map<String, String>? = emptyMap(),
+		enableAdaptiveBitrateStreaming: Boolean = true
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -1201,7 +1201,7 @@ class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null
+		streamOptions: Map<String, String>? = emptyMap()
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -1559,7 +1559,7 @@ class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null
+		streamOptions: Map<String, String>? = emptyMap()
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -1903,8 +1903,8 @@ class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null,
-		enableAdaptiveBitrateStreaming: Boolean
+		streamOptions: Map<String, String>? = emptyMap(),
+		enableAdaptiveBitrateStreaming: Boolean = true
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

@@ -65,7 +65,7 @@ class RemoteImageApi(
 		startIndex: Int? = null,
 		limit: Int? = null,
 		providerName: String? = null,
-		includeAllLanguages: Boolean
+		includeAllLanguages: Boolean = false
 	): Response<RemoteImageResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

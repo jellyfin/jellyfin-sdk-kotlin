@@ -52,7 +52,7 @@ class ItemLookupApi(
 	 */
 	suspend fun applySearchCriteria(
 		itemId: UUID,
-		replaceAllImages: Boolean,
+		replaceAllImages: Boolean = true,
 		data: RemoteSearchResult
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()

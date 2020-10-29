@@ -87,7 +87,7 @@ class PersonsApi(
 		fields: String? = null,
 		excludeItemTypes: String? = null,
 		includeItemTypes: String? = null,
-		filters: List<ItemFilter>? = null,
+		filters: List<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
 		mediaTypes: String? = null,
 		genres: String? = null,
@@ -107,8 +107,8 @@ class PersonsApi(
 		nameStartsWithOrGreater: String? = null,
 		nameStartsWith: String? = null,
 		nameLessThan: String? = null,
-		enableImages: Boolean? = null,
-		enableTotalRecordCount: Boolean
+		enableImages: Boolean? = true,
+		enableTotalRecordCount: Boolean = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

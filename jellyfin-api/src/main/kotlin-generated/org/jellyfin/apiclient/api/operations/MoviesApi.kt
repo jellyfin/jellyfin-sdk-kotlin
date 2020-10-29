@@ -31,8 +31,8 @@ class MoviesApi(
 		userId: UUID? = null,
 		parentId: String? = null,
 		fields: String? = null,
-		categoryLimit: Int,
-		itemLimit: Int
+		categoryLimit: Int = 5,
+		itemLimit: Int = 8
 	): Response<List<RecommendationDto>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

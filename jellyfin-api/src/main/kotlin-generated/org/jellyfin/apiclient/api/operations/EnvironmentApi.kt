@@ -42,8 +42,8 @@ class EnvironmentApi(
 	 */
 	suspend fun getDirectoryContents(
 		path: String,
-		includeFiles: Boolean,
-		includeDirectories: Boolean
+		includeFiles: Boolean = false,
+		includeDirectories: Boolean = false
 	): Response<List<FileSystemEntryInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

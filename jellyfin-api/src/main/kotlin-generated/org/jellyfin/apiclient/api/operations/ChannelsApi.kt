@@ -93,7 +93,7 @@ class ChannelsApi(
 		startIndex: Int? = null,
 		limit: Int? = null,
 		sortOrder: String? = null,
-		filters: List<ItemFilter>? = null,
+		filters: List<ItemFilter>? = emptyList(),
 		sortBy: String? = null,
 		fields: String? = null
 	): Response<BaseItemDtoQueryResult> {
@@ -144,7 +144,7 @@ class ChannelsApi(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
-		filters: List<ItemFilter>? = null,
+		filters: List<ItemFilter>? = emptyList(),
 		fields: String? = null,
 		channelIds: String? = null
 	): Response<BaseItemDtoQueryResult> {

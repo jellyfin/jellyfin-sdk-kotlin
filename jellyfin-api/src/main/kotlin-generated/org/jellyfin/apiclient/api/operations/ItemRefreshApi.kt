@@ -32,8 +32,8 @@ class ItemRefreshApi(
 		itemId: UUID,
 		metadataRefreshMode: MetadataRefreshMode,
 		imageRefreshMode: MetadataRefreshMode,
-		replaceAllMetadata: Boolean,
-		replaceAllImages: Boolean
+		replaceAllMetadata: Boolean = false,
+		replaceAllImages: Boolean = false
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

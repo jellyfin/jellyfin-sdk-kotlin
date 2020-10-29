@@ -127,8 +127,8 @@ class LiveTvApi(
 		enableUserData: Boolean? = null,
 		sortBy: String? = null,
 		sortOrder: SortOrder,
-		enableFavoriteSorting: Boolean,
-		addCurrentProgram: Boolean
+		enableFavoriteSorting: Boolean = false,
+		addCurrentProgram: Boolean = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -207,8 +207,8 @@ class LiveTvApi(
 	 */
 	suspend fun addListingProvider(
 		pw: String? = null,
-		validateListings: Boolean,
-		validateLogin: Boolean,
+		validateListings: Boolean = false,
+		validateLogin: Boolean = false,
 		data: ListingsProviderInfo
 	): Response<ListingsProviderInfo> {
 		val pathParameters = emptyMap<String, Any?>()
@@ -418,7 +418,7 @@ class LiveTvApi(
 		seriesTimerId: String? = null,
 		librarySeriesId: UUID? = null,
 		fields: String? = null,
-		enableTotalRecordCount: Boolean
+		enableTotalRecordCount: Boolean = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -522,7 +522,7 @@ class LiveTvApi(
 		genreIds: String? = null,
 		fields: String? = null,
 		enableUserData: Boolean? = null,
-		enableTotalRecordCount: Boolean
+		enableTotalRecordCount: Boolean = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -594,7 +594,7 @@ class LiveTvApi(
 		isSports: Boolean? = null,
 		isNews: Boolean? = null,
 		isLibraryItem: Boolean? = null,
-		enableTotalRecordCount: Boolean
+		enableTotalRecordCount: Boolean = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -739,7 +739,7 @@ class LiveTvApi(
 		enableImageTypes: String? = null,
 		fields: String? = null,
 		enableUserData: Boolean? = null,
-		enableTotalRecordCount: Boolean
+		enableTotalRecordCount: Boolean = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -985,7 +985,7 @@ class LiveTvApi(
 	 *
 	 * @param newDevicesOnly Only discover new tuners.
 	 */
-	suspend fun discoverTuners(newDevicesOnly: Boolean): Response<List<TunerHostInfo>> {
+	suspend fun discoverTuners(newDevicesOnly: Boolean = false): Response<List<TunerHostInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["newDevicesOnly"] = newDevicesOnly

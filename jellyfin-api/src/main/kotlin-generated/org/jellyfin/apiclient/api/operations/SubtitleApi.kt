@@ -94,10 +94,10 @@ class SubtitleApi(
 		mediaSourceId: String,
 		index: Int,
 		format: String,
-		startPositionTicks: Long,
+		startPositionTicks: Long = 0,
 		endPositionTicks: Long? = null,
-		copyTimestamps: Boolean,
-		addVttTimeMap: Boolean
+		copyTimestamps: Boolean = false,
+		addVttTimeMap: Boolean = false
 	): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -133,10 +133,10 @@ class SubtitleApi(
 		mediaSourceId: String,
 		index: Int,
 		format: String,
-		startPositionTicks: Long,
+		startPositionTicks: Long = 0,
 		endPositionTicks: Long? = null,
-		copyTimestamps: Boolean,
-		addVttTimeMap: Boolean
+		copyTimestamps: Boolean = false,
+		addVttTimeMap: Boolean = false
 	): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
