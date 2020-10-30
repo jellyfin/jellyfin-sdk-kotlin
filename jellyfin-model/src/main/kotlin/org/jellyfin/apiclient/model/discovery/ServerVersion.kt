@@ -22,25 +22,27 @@ data class ServerVersion(
 			{ it.patch }
 		)
 
+		/**
+		 * Create an instance of [ServerVersion] from a string. The string must be in the format
+		 * "\d+\.\d+\.\d+\". Example: 1.0.0 or 10.6.4. Characters are not allowed.
+		 */
 		fun fromString(str: String): ServerVersion? {
-			try {
-				val parts = str
-					.split('.') // Split into major, minor and patch
-					.also { require(it.size == 3) } // Check if we found 3 parts
-					.take(3) // Take first 3 values in case the input is bad
-					.mapNotNull(String::toIntOrNull) // Convert to integers and drop bad values
-					.also { require(it.size == 3) } // Check if we have 3 parts left to make a valid version
+			// Split into major, minor and patch
+			val stringParts = str.split('.')
+			// Check if we found 3 parts
+			if (stringParts.size != 3) return null
 
-				// Return server version
-				return ServerVersion(
-					major = parts[0],
-					minor = parts[1],
-					patch = parts[2]
-				)
-			} catch (err: IllegalArgumentException) {
-				// Invalid string
-				return null
-			}
+			// Convert to integers and drop bad values
+			val intParts = stringParts.mapNotNull(String::toIntOrNull)
+			// Check if we have 3 parts left to make a valid version
+			if (intParts.size != 3) return null
+
+			// Return server version
+			return ServerVersion(
+				major = intParts[0],
+				minor = intParts[1],
+				patch = intParts[2]
+			)
 		}
 	}
 }

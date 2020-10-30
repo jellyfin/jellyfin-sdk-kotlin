@@ -73,6 +73,11 @@ class DiscoveryService(
 		minimumScore = minimumScore
 	)
 
+	/**
+	 * Utility function that calls [getRecommendedServers] for inputted [servers] and returns the
+	 * best candidate. Returns when a server with a score of [RecommendedServerInfoScore.GOOD] is
+	 * found or otherwise collects all servers and returns the best one based on order and score.
+	 */
 	suspend fun getRecommendedServer(
 		servers: List<String>,
 		includeAppendedServers: Boolean = true
@@ -81,7 +86,7 @@ class DiscoveryService(
 
 		getRecommendedServers(servers, includeAppendedServers).takeWhile {
 			// Select if it's better than current
-			if (best == null || it.score.i > best!!.score.i)
+			if (best == null || it.score.score > best!!.score.score)
 				best = it
 
 			// Take while score is not GOOD (highest possible value)

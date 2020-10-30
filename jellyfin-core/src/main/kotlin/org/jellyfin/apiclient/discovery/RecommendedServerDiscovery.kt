@@ -28,6 +28,7 @@ class RecommendedServerDiscovery(
 		val api = SystemApi(client)
 
 		val startTime = System.currentTimeMillis()
+		@Suppress("TooGenericExceptionCaught")
 		val info = try {
 			api.getPublicSystemInfo()
 		} catch (err: ConnectException) {
@@ -50,7 +51,7 @@ class RecommendedServerDiscovery(
 		var points = 0
 
 		// Security
-		if (result.address.startsWith("https:")) points += 3
+		if (result.address.startsWith("https://")) points += 3
 
 		// Speed
 		when {
@@ -62,10 +63,10 @@ class RecommendedServerDiscovery(
 		// Compatibility
 		val version = result.systemInfo?.version?.let(ServerVersion::fromString)
 		if (version != null) {
-			points += 3
+			if (version >= Jellyfin.apiVersion) points += 1
 
-			if (version < Jellyfin.apiVersion) points -= 2
-			if (version < Jellyfin.recommendedVersion) points -= 1
+			if (version == Jellyfin.recommendedVersion) points += 2
+			else if (version > Jellyfin.recommendedVersion) points += 1
 		}
 
 		// Minimum amount of points: 0
@@ -113,7 +114,7 @@ class RecommendedServerDiscovery(
 			}.collect()
 		}.filter {
 			// Use [minimumScore] to filter out bad score matches
-			it.score.i >= minimumScore.i
+			it.score.score >= minimumScore.score
 		}
 	}
 }

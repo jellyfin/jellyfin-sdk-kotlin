@@ -14,7 +14,7 @@ class Ping(
 	private val jellyfin: Jellyfin
 ) : Subcommand("ping", "Pings a given server and retrieve basic system information") {
 	private val server by option(ArgType.String, description = "Url of the server", shortName = "s").required()
-	private val extended by option(ArgType.Boolean, description = "Normalize the URL and request", shortName = "e").default(false)
+	private val extended by option(ArgType.Boolean, description = "Find servers based on input using recommended server algorithm", shortName = "e").default(false)
 
 	override fun execute() = runBlocking {
 		if (extended) executeExtended()
