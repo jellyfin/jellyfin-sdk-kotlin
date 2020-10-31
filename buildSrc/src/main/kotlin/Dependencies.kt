@@ -20,7 +20,7 @@ object Dependencies {
 		private fun item(module: String, version: String) = "org.jetbrains.kotlinx:kotlinx-${module}:${version}"
 
 		val cli = item("cli", "0.2.1")
-		val coroutinesCore = item("coroutines-core", "1.3.9")
+		val coroutinesCore = item("coroutines-core", "1.4.0")
 		val serializationJson = item("serialization-json", "1.0.0")
 	}
 

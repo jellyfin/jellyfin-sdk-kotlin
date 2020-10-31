@@ -4,6 +4,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.discovery.DiscoveryService
 import org.jellyfin.apiclient.model.ClientInfo
 import org.jellyfin.apiclient.model.DeviceInfo
+import org.jellyfin.apiclient.model.discovery.ServerVersion
 
 class Jellyfin(
 	private val options: JellyfinOptions
@@ -11,7 +12,7 @@ class Jellyfin(
 	constructor(initOptions: JellyfinOptions.Builder.() -> Unit) : this(JellyfinOptions.build(initOptions))
 
 	val discovery by lazy {
-		DiscoveryService(options.discoverBroadcastAddressesProvider)
+		DiscoveryService(this, options.discoverBroadcastAddressesProvider)
 	}
 
 	/**
@@ -34,5 +35,10 @@ class Jellyfin(
 			clientInfo,
 			deviceInfo
 		)
+	}
+
+	companion object {
+		val recommendedVersion = ServerVersion(10, 7, 0)
+		val apiVersion = ServerVersion(10, 7, 0)
 	}
 }

@@ -32,7 +32,7 @@ class AddressCandidateHelper(
 
 	init {
 		try {
-			logger.debug("Input is %s", input)
+			logger.debug("Input is $input")
 
 			// Add the input as initial candidate
 			candidates.add(URLBuilder().apply {
@@ -45,7 +45,7 @@ class AddressCandidateHelper(
 			}.build())
 		} catch (error: URLParserException) {
 			// Input can't be parsed
-			logger.error("Input %s could not be parsed", input, error)
+			logger.error("Input $input could not be parsed", error)
 		}
 	}
 
@@ -152,7 +152,7 @@ class AddressCandidateHelper(
 	 * Get all deduplicated candidate URLs as strings.
 	 * Call [prioritize] before if a sorted list is desired.
 	 */
-	fun getCandidates(): Collection<String> = candidates
+	fun getCandidates(): List<String> = candidates
 		.map { it.toString() }
 		.distinct()
 }
