@@ -1,4 +1,4 @@
-# Kotlin Console Example
+# Kotlin CLI Example
 
 This sample project uses the kotlinx-cli library to build a command line tool that uses the Jellyfin
 library. It's used as a showcase of the libraries abilities and is not meant for general use.

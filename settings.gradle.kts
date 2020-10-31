@@ -10,4 +10,4 @@ include(":jellyfin-platform-android")
 include(":openapi-generator")
 
 // Samples
-include(":samples:kotlin-console")
+include(":samples:kotlin-cli")

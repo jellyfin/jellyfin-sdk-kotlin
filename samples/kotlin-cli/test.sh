@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function jellyfin() {
-	"$(pwd)/build/install/kotlin-console/bin/kotlin-console" "$@"
+	"$(pwd)/build/install/kotlin-cli/bin/kotlin-cli" "$@"
 }
 
 server=https://demo.jellyfin.org/stable

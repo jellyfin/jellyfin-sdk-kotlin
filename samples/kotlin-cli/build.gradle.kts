@@ -4,7 +4,7 @@ plugins {
 }
 
 application {
-	mainClassName = "org.jellyfin.sample.console.MainKt"
+	mainClassName = "org.jellyfin.sample.cli.MainKt"
 }
 
 repositories {

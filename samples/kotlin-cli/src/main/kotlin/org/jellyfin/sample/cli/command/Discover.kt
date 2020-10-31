@@ -1,4 +1,4 @@
-package org.jellyfin.sample.console.cli
+package org.jellyfin.sample.cli.command
 
 import kotlinx.cli.Subcommand
 import kotlinx.coroutines.flow.collect
