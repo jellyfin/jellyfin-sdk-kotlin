@@ -1,7 +1,7 @@
 # Kotlin CLI Example
 
-This sample project uses the kotlinx-cli library to build a command line tool that uses the Jellyfin
-library. It's used as a showcase of the libraries abilities and is not meant for general use.
+This sample project uses the Clikt library to build a command line tool that uses the Jellyfin
+apiclient. It is used as a showcase the abilities of the apiclient and is not meant for general use.
 
 Features include:
   - Server discovery
@@ -10,9 +10,13 @@ Features include:
   - List libraries
 
 ## Basic usage
-Assuming the binary is called `jellyfin` the following sample will list all libraries in the demo instance:
+Assuming the binary is called `jellyfin` the following sample will list all libraries in the demo
+instance:
 ```sh
-jellyfin libraries --server https://demo.jellyfin.org/stable --token $(jellyfin login --server https://demo.jellyfin.org/stable --username demo)
+JELLYFIN_SERVER="https://demo.jellyfin.org/stable"
+JELLYFIN_TOKEN=`jellyfin login --username demo`
+
+jellyfin libraries
 ```
 
-This command is also provided in the `test.sh` file. It requires a local install first using `./gradlew installDist`.
+This script is also provided as part of the `test.sh` script.

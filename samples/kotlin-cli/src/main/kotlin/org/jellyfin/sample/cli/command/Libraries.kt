@@ -1,20 +1,20 @@
 package org.jellyfin.sample.cli.command
 
-import kotlinx.cli.ArgType
-import kotlinx.cli.Subcommand
-import kotlinx.cli.required
+import com.github.ajalt.clikt.core.CliktCommand
 import kotlinx.coroutines.runBlocking
 import org.jellyfin.apiclient.Jellyfin
 import org.jellyfin.apiclient.api.operations.SessionApi
 import org.jellyfin.apiclient.api.operations.UserViewsApi
+import org.jellyfin.sample.cli.serverOption
+import org.jellyfin.sample.cli.tokenOption
 
 class Libraries(
 	private val jellyfin: Jellyfin
-) : Subcommand("libraries", "List all libraries") {
-	private val server by option(ArgType.String, description = "Url of the server", shortName = "s").required()
-	private val token by option(ArgType.String, description = "Access token", shortName = "t").required()
+) : CliktCommand("List all libraries") {
+	private val server by serverOption()
+	private val token by tokenOption()
 
-	override fun execute(): Unit = runBlocking {
+	override fun run(): Unit = runBlocking {
 		val api = jellyfin.createApi(baseUrl = server, accessToken = token)
 		val sessionApi = SessionApi(api)
 		val userViewsApi = UserViewsApi(api)

@@ -1,6 +1,7 @@
 package org.jellyfin.sample.cli
 
-import kotlinx.cli.ArgParser
+import com.github.ajalt.clikt.core.NoOpCliktCommand
+import com.github.ajalt.clikt.core.subcommands
 import org.jellyfin.apiclient.Jellyfin
 import org.jellyfin.apiclient.model.ClientInfo
 import org.jellyfin.apiclient.model.DeviceInfo
@@ -12,13 +13,13 @@ fun main(args: Array<String>) {
 		deviceInfo = DeviceInfo("cli", "cli")
 	}
 
-	ArgParser("jellyfin").apply {
+	val instance = NoOpCliktCommand(name = "jellyfin").apply {
 		subcommands(Discover(jellyfin))
 		subcommands(Login(jellyfin))
 		subcommands(Libraries(jellyfin))
 		subcommands(Users(jellyfin))
 		subcommands(Ping(jellyfin))
-
-		parse(args)
 	}
+
+	instance.main(args)
 }

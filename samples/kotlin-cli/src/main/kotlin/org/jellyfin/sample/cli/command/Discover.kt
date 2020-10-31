@@ -1,6 +1,6 @@
 package org.jellyfin.sample.cli.command
 
-import kotlinx.cli.Subcommand
+import com.github.ajalt.clikt.core.CliktCommand
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.runBlocking
@@ -8,8 +8,8 @@ import org.jellyfin.apiclient.Jellyfin
 
 class Discover(
 	private val jellyfin: Jellyfin
-) : Subcommand("discover", "Discover servers on the local network") {
-	override fun execute() = runBlocking {
+) : CliktCommand("Discover servers on the local network") {
+	override fun run() = runBlocking {
 		println("Starting discovery")
 
 		jellyfin.discovery.discoverLocalServers().onEach {

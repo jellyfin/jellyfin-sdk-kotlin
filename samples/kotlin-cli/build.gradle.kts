@@ -7,13 +7,6 @@ application {
 	mainClassName = "org.jellyfin.sample.cli.MainKt"
 }
 
-repositories {
-	jcenter()
-
-	// Repository needed for kotlinx-cli
-	maven("https://kotlin.bintray.com/kotlinx")
-}
-
 dependencies {
 	// Depend on the library project
 	implementationProject(":jellyfin-core")
@@ -25,12 +18,8 @@ dependencies {
 	implementation(Dependencies.KotlinX.coroutinesCore)
 
 	// The CLI library
-	implementation(Dependencies.KotlinX.cli)
+	implementation(Dependencies.clikt)
 
 	// Logging
 	implementation(Dependencies.Slf4j.simple)
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
-	kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlinx.cli.ExperimentalCli"
 }
