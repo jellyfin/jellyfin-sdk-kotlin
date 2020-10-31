@@ -9,28 +9,21 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class ImageOrientation {
+public enum class ImageOrientation {
 	@SerialName("TopLeft")
 	TOP_LEFT,
-
 	@SerialName("TopRight")
 	TOP_RIGHT,
-
 	@SerialName("BottomRight")
 	BOTTOM_RIGHT,
-
 	@SerialName("BottomLeft")
 	BOTTOM_LEFT,
-
 	@SerialName("LeftTop")
 	LEFT_TOP,
-
 	@SerialName("RightTop")
 	RIGHT_TOP,
-
 	@SerialName("RightBottom")
 	RIGHT_BOTTOM,
-
 	@SerialName("LeftBottom")
-	LEFT_BOTTOM
+	LEFT_BOTTOM,
 }

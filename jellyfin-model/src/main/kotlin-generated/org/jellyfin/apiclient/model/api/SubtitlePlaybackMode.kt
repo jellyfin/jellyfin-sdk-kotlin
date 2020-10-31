@@ -12,19 +12,15 @@ import kotlinx.serialization.Serializable
  * An enum representing a subtitle playback mode.
  */
 @Serializable
-enum class SubtitlePlaybackMode {
+public enum class SubtitlePlaybackMode {
 	@SerialName("Default")
 	DEFAULT,
-
 	@SerialName("Always")
 	ALWAYS,
-
 	@SerialName("OnlyForced")
 	ONLY_FORCED,
-
 	@SerialName("None")
 	NONE,
-
 	@SerialName("Smart")
-	SMART
+	SMART,
 }

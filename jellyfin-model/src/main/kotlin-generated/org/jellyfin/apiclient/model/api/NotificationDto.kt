@@ -19,42 +19,42 @@ import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
  * The notification DTO.
  */
 @Serializable
-data class NotificationDto(
+public data class NotificationDto(
 	/**
 	 * Gets or sets the notification ID. Defaults to an empty string.
 	 */
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	/**
 	 * Gets or sets the notification's user ID. Defaults to an empty string.
 	 */
 	@SerialName("UserId")
-	val userId: String? = null,
+	public val userId: String? = null,
 	/**
 	 * Gets or sets the notification date.
 	 */
 	@SerialName("Date")
-	val date: LocalDateTime,
+	public val date: LocalDateTime,
 	/**
 	 * Gets or sets a value indicating whether the notification has been read. Defaults to false.
 	 */
 	@SerialName("IsRead")
-	val isRead: Boolean,
+	public val isRead: Boolean,
 	/**
 	 * Gets or sets the notification's name. Defaults to an empty string.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the notification's description. Defaults to an empty string.
 	 */
 	@SerialName("Description")
-	val description: String? = null,
+	public val description: String? = null,
 	/**
 	 * Gets or sets the notification's URL. Defaults to an empty string.
 	 */
 	@SerialName("Url")
-	val url: String? = null,
+	public val url: String? = null,
 	@SerialName("Level")
-	val level: NotificationLevel? = null
+	public val level: NotificationLevel? = null
 )

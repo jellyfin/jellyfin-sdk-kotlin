@@ -14,19 +14,19 @@ import kotlinx.serialization.Serializable
  * Class MetadataOptions.
  */
 @Serializable
-data class MetadataOptions(
+public data class MetadataOptions(
 	@SerialName("ItemType")
-	val itemType: String? = null,
+	public val itemType: String? = null,
 	@SerialName("DisabledMetadataSavers")
-	val disabledMetadataSavers: List<String>? = null,
+	public val disabledMetadataSavers: List<String>? = null,
 	@SerialName("LocalMetadataReaderOrder")
-	val localMetadataReaderOrder: List<String>? = null,
+	public val localMetadataReaderOrder: List<String>? = null,
 	@SerialName("DisabledMetadataFetchers")
-	val disabledMetadataFetchers: List<String>? = null,
+	public val disabledMetadataFetchers: List<String>? = null,
 	@SerialName("MetadataFetcherOrder")
-	val metadataFetcherOrder: List<String>? = null,
+	public val metadataFetcherOrder: List<String>? = null,
 	@SerialName("DisabledImageFetchers")
-	val disabledImageFetchers: List<String>? = null,
+	public val disabledImageFetchers: List<String>? = null,
 	@SerialName("ImageFetcherOrder")
-	val imageFetcherOrder: List<String>? = null
+	public val imageFetcherOrder: List<String>? = null
 )

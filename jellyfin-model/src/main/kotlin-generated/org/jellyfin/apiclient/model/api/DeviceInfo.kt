@@ -20,41 +20,41 @@ import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 @Serializable
-data class DeviceInfo(
+public data class DeviceInfo(
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the identifier.
 	 */
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	/**
 	 * Gets or sets the last name of the user.
 	 */
 	@SerialName("LastUserName")
-	val lastUserName: String? = null,
+	public val lastUserName: String? = null,
 	/**
 	 * Gets or sets the name of the application.
 	 */
 	@SerialName("AppName")
-	val appName: String? = null,
+	public val appName: String? = null,
 	/**
 	 * Gets or sets the application version.
 	 */
 	@SerialName("AppVersion")
-	val appVersion: String? = null,
+	public val appVersion: String? = null,
 	/**
 	 * Gets or sets the last user identifier.
 	 */
 	@SerialName("LastUserId")
-	val lastUserId: UUID,
+	public val lastUserId: UUID,
 	/**
 	 * Gets or sets the date last modified.
 	 */
 	@SerialName("DateLastActivity")
-	val dateLastActivity: LocalDateTime,
+	public val dateLastActivity: LocalDateTime,
 	@SerialName("Capabilities")
-	val capabilities: ClientCapabilities? = null,
+	public val capabilities: ClientCapabilities? = null,
 	@SerialName("IconUrl")
-	val iconUrl: String? = null
+	public val iconUrl: String? = null
 )

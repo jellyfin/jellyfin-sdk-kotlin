@@ -14,15 +14,15 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
 
 @Serializable
-data class GuideInfo(
+public data class GuideInfo(
 	/**
 	 * Gets or sets the start date.
 	 */
 	@SerialName("StartDate")
-	val startDate: LocalDateTime,
+	public val startDate: LocalDateTime,
 	/**
 	 * Gets or sets the end date.
 	 */
 	@SerialName("EndDate")
-	val endDate: LocalDateTime
+	public val endDate: LocalDateTime
 )

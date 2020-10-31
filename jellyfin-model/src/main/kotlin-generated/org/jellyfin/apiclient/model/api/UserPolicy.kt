@@ -18,98 +18,98 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 @Serializable
-data class UserPolicy(
+public data class UserPolicy(
 	/**
 	 * Gets or sets a value indicating whether this instance is administrator.
 	 */
 	@SerialName("IsAdministrator")
-	val isAdministrator: Boolean,
+	public val isAdministrator: Boolean,
 	/**
 	 * Gets or sets a value indicating whether this instance is hidden.
 	 */
 	@SerialName("IsHidden")
-	val isHidden: Boolean,
+	public val isHidden: Boolean,
 	/**
 	 * Gets or sets a value indicating whether this instance is disabled.
 	 */
 	@SerialName("IsDisabled")
-	val isDisabled: Boolean,
+	public val isDisabled: Boolean,
 	/**
 	 * Gets or sets the max parental rating.
 	 */
 	@SerialName("MaxParentalRating")
-	val maxParentalRating: Int? = null,
+	public val maxParentalRating: Int? = null,
 	@SerialName("BlockedTags")
-	val blockedTags: List<String>? = null,
+	public val blockedTags: List<String>? = null,
 	@SerialName("EnableUserPreferenceAccess")
-	val enableUserPreferenceAccess: Boolean,
+	public val enableUserPreferenceAccess: Boolean,
 	@SerialName("AccessSchedules")
-	val accessSchedules: List<AccessSchedule>? = null,
+	public val accessSchedules: List<AccessSchedule>? = null,
 	@SerialName("BlockUnratedItems")
-	val blockUnratedItems: List<UnratedItem>? = null,
+	public val blockUnratedItems: List<UnratedItem>? = null,
 	@SerialName("EnableRemoteControlOfOtherUsers")
-	val enableRemoteControlOfOtherUsers: Boolean,
+	public val enableRemoteControlOfOtherUsers: Boolean,
 	@SerialName("EnableSharedDeviceControl")
-	val enableSharedDeviceControl: Boolean,
+	public val enableSharedDeviceControl: Boolean,
 	@SerialName("EnableRemoteAccess")
-	val enableRemoteAccess: Boolean,
+	public val enableRemoteAccess: Boolean,
 	@SerialName("EnableLiveTvManagement")
-	val enableLiveTvManagement: Boolean,
+	public val enableLiveTvManagement: Boolean,
 	@SerialName("EnableLiveTvAccess")
-	val enableLiveTvAccess: Boolean,
+	public val enableLiveTvAccess: Boolean,
 	@SerialName("EnableMediaPlayback")
-	val enableMediaPlayback: Boolean,
+	public val enableMediaPlayback: Boolean,
 	@SerialName("EnableAudioPlaybackTranscoding")
-	val enableAudioPlaybackTranscoding: Boolean,
+	public val enableAudioPlaybackTranscoding: Boolean,
 	@SerialName("EnableVideoPlaybackTranscoding")
-	val enableVideoPlaybackTranscoding: Boolean,
+	public val enableVideoPlaybackTranscoding: Boolean,
 	@SerialName("EnablePlaybackRemuxing")
-	val enablePlaybackRemuxing: Boolean,
+	public val enablePlaybackRemuxing: Boolean,
 	@SerialName("ForceRemoteSourceTranscoding")
-	val forceRemoteSourceTranscoding: Boolean,
+	public val forceRemoteSourceTranscoding: Boolean,
 	@SerialName("EnableContentDeletion")
-	val enableContentDeletion: Boolean,
+	public val enableContentDeletion: Boolean,
 	@SerialName("EnableContentDeletionFromFolders")
-	val enableContentDeletionFromFolders: List<String>? = null,
+	public val enableContentDeletionFromFolders: List<String>? = null,
 	@SerialName("EnableContentDownloading")
-	val enableContentDownloading: Boolean,
+	public val enableContentDownloading: Boolean,
 	/**
 	 * Gets or sets a value indicating whether [enable synchronize].
 	 */
 	@SerialName("EnableSyncTranscoding")
-	val enableSyncTranscoding: Boolean,
+	public val enableSyncTranscoding: Boolean,
 	@SerialName("EnableMediaConversion")
-	val enableMediaConversion: Boolean,
+	public val enableMediaConversion: Boolean,
 	@SerialName("EnabledDevices")
-	val enabledDevices: List<String>? = null,
+	public val enabledDevices: List<String>? = null,
 	@SerialName("EnableAllDevices")
-	val enableAllDevices: Boolean,
+	public val enableAllDevices: Boolean,
 	@SerialName("EnabledChannels")
-	val enabledChannels: List<UUID>? = null,
+	public val enabledChannels: List<UUID>? = null,
 	@SerialName("EnableAllChannels")
-	val enableAllChannels: Boolean,
+	public val enableAllChannels: Boolean,
 	@SerialName("EnabledFolders")
-	val enabledFolders: List<UUID>? = null,
+	public val enabledFolders: List<UUID>? = null,
 	@SerialName("EnableAllFolders")
-	val enableAllFolders: Boolean,
+	public val enableAllFolders: Boolean,
 	@SerialName("InvalidLoginAttemptCount")
-	val invalidLoginAttemptCount: Int,
+	public val invalidLoginAttemptCount: Int,
 	@SerialName("LoginAttemptsBeforeLockout")
-	val loginAttemptsBeforeLockout: Int,
+	public val loginAttemptsBeforeLockout: Int,
 	@SerialName("MaxActiveSessions")
-	val maxActiveSessions: Int,
+	public val maxActiveSessions: Int,
 	@SerialName("EnablePublicSharing")
-	val enablePublicSharing: Boolean,
+	public val enablePublicSharing: Boolean,
 	@SerialName("BlockedMediaFolders")
-	val blockedMediaFolders: List<UUID>? = null,
+	public val blockedMediaFolders: List<UUID>? = null,
 	@SerialName("BlockedChannels")
-	val blockedChannels: List<UUID>? = null,
+	public val blockedChannels: List<UUID>? = null,
 	@SerialName("RemoteClientBitrateLimit")
-	val remoteClientBitrateLimit: Int,
+	public val remoteClientBitrateLimit: Int,
 	@SerialName("AuthenticationProviderId")
-	val authenticationProviderId: String? = null,
+	public val authenticationProviderId: String? = null,
 	@SerialName("PasswordResetProviderId")
-	val passwordResetProviderId: String? = null,
+	public val passwordResetProviderId: String? = null,
 	@SerialName("SyncPlayAccess")
-	val syncPlayAccess: SyncPlayAccess? = null
+	public val syncPlayAccess: SyncPlayAccess? = null
 )

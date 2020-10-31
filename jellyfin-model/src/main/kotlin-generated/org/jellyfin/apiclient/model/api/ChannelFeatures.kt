@@ -13,65 +13,65 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ChannelFeatures(
+public data class ChannelFeatures(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the identifier.
 	 */
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance can search.
 	 */
 	@SerialName("CanSearch")
-	val canSearch: Boolean,
+	public val canSearch: Boolean,
 	/**
 	 * Gets or sets the media types.
 	 */
 	@SerialName("MediaTypes")
-	val mediaTypes: List<ChannelMediaType>? = null,
+	public val mediaTypes: List<ChannelMediaType>? = null,
 	/**
 	 * Gets or sets the content types.
 	 */
 	@SerialName("ContentTypes")
-	val contentTypes: List<ChannelMediaContentType>? = null,
+	public val contentTypes: List<ChannelMediaContentType>? = null,
 	/**
 	 * Represents the maximum number of records the channel allows retrieving at a time.
 	 */
 	@SerialName("MaxPageSize")
-	val maxPageSize: Int? = null,
+	public val maxPageSize: Int? = null,
 	/**
 	 * Gets or sets the automatic refresh levels.
 	 */
 	@SerialName("AutoRefreshLevels")
-	val autoRefreshLevels: Int? = null,
+	public val autoRefreshLevels: Int? = null,
 	/**
 	 * Gets or sets the default sort orders.
 	 */
 	@SerialName("DefaultSortFields")
-	val defaultSortFields: List<ChannelItemSortField>? = null,
+	public val defaultSortFields: List<ChannelItemSortField>? = null,
 	/**
 	 * Indicates if a sort ascending/descending toggle is supported or not.
 	 */
 	@SerialName("SupportsSortOrderToggle")
-	val supportsSortOrderToggle: Boolean,
+	public val supportsSortOrderToggle: Boolean,
 	/**
 	 * Gets or sets a value indicating whether [supports latest media].
 	 */
 	@SerialName("SupportsLatestMedia")
-	val supportsLatestMedia: Boolean,
+	public val supportsLatestMedia: Boolean,
 	/**
 	 * Gets or sets a value indicating whether this instance can filter.
 	 */
 	@SerialName("CanFilter")
-	val canFilter: Boolean,
+	public val canFilter: Boolean,
 	/**
 	 * Gets or sets a value indicating whether [supports content downloading].
 	 */
 	@SerialName("SupportsContentDownloading")
-	val supportsContentDownloading: Boolean
+	public val supportsContentDownloading: Boolean
 )

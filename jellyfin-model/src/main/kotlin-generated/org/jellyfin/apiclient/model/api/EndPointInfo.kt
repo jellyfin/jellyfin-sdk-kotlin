@@ -10,9 +10,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class EndPointInfo(
+public data class EndPointInfo(
 	@SerialName("IsLocal")
-	val isLocal: Boolean,
+	public val isLocal: Boolean,
 	@SerialName("IsInNetwork")
-	val isInNetwork: Boolean
+	public val isInNetwork: Boolean
 )

@@ -9,16 +9,13 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class KeepUntil {
+public enum class KeepUntil {
 	@SerialName("UntilDeleted")
 	UNTIL_DELETED,
-
 	@SerialName("UntilSpaceNeeded")
 	UNTIL_SPACE_NEEDED,
-
 	@SerialName("UntilWatched")
 	UNTIL_WATCHED,
-
 	@SerialName("UntilDate")
-	UNTIL_DATE
+	UNTIL_DATE,
 }

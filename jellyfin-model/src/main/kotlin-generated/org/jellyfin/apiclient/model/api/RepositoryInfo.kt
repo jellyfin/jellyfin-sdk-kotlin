@@ -13,15 +13,15 @@ import kotlinx.serialization.Serializable
  * Class RepositoryInfo.
  */
 @Serializable
-data class RepositoryInfo(
+public data class RepositoryInfo(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the URL.
 	 */
 	@SerialName("Url")
-	val url: String? = null
+	public val url: String? = null
 )

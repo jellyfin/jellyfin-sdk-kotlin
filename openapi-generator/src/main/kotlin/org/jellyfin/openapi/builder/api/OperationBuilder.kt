@@ -92,6 +92,6 @@ class OperationBuilder(
 		)
 
 		// Return response
-		addStatement("return·response")
+		addStatement("return response")
 	}.build()
 }

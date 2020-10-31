@@ -11,20 +11,20 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class SeriesTimerInfoDtoQueryResult(
+public data class SeriesTimerInfoDtoQueryResult(
 	/**
 	 * Gets or sets the items.
 	 */
 	@SerialName("Items")
-	val items: List<SeriesTimerInfoDto>? = null,
+	public val items: List<SeriesTimerInfoDto>? = null,
 	/**
 	 * The total number of records available.
 	 */
 	@SerialName("TotalRecordCount")
-	val totalRecordCount: Int,
+	public val totalRecordCount: Int,
 	/**
 	 * The index of the first record in Items.
 	 */
 	@SerialName("StartIndex")
-	val startIndex: Int
+	public val startIndex: Int
 )

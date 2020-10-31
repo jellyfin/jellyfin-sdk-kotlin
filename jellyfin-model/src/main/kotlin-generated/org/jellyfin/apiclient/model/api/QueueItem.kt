@@ -15,9 +15,9 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 @Serializable
-data class QueueItem(
+public data class QueueItem(
 	@SerialName("Id")
-	val id: UUID,
+	public val id: UUID,
 	@SerialName("PlaylistItemId")
-	val playlistItemId: String? = null
+	public val playlistItemId: String? = null
 )

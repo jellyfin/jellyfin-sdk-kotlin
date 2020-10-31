@@ -19,27 +19,27 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
  * An entity representing a user's access schedule.
  */
 @Serializable
-data class AccessSchedule(
+public data class AccessSchedule(
 	/**
 	 * Gets or sets the id of this instance.
 	 */
 	@SerialName("Id")
-	val id: Int,
+	public val id: Int,
 	/**
 	 * Gets or sets the id of the associated user.
 	 */
 	@SerialName("UserId")
-	val userId: UUID,
+	public val userId: UUID,
 	@SerialName("DayOfWeek")
-	val dayOfWeek: DynamicDayOfWeek? = null,
+	public val dayOfWeek: DynamicDayOfWeek? = null,
 	/**
 	 * Gets or sets the start hour.
 	 */
 	@SerialName("StartHour")
-	val startHour: Double,
+	public val startHour: Double,
 	/**
 	 * Gets or sets the end hour.
 	 */
 	@SerialName("EndHour")
-	val endHour: Double
+	public val endHour: Double
 )

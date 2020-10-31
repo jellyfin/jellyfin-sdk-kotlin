@@ -12,10 +12,9 @@ import kotlinx.serialization.Serializable
  * Enum ChannelType.
  */
 @Serializable
-enum class ChannelType {
+public enum class ChannelType {
 	@SerialName("TV")
 	TV,
-
 	@SerialName("Radio")
-	RADIO
+	RADIO,
 }

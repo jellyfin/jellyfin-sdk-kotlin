@@ -12,19 +12,15 @@ import kotlinx.serialization.Serializable
  * Enum PlayCommand.
  */
 @Serializable
-enum class PlayCommand {
+public enum class PlayCommand {
 	@SerialName("PlayNow")
 	PLAY_NOW,
-
 	@SerialName("PlayNext")
 	PLAY_NEXT,
-
 	@SerialName("PlayLast")
 	PLAY_LAST,
-
 	@SerialName("PlayInstantMix")
 	PLAY_INSTANT_MIX,
-
 	@SerialName("PlayShuffle")
-	PLAY_SHUFFLE
+	PLAY_SHUFFLE,
 }

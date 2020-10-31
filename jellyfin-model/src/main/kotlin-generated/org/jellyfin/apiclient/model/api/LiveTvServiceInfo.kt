@@ -15,39 +15,39 @@ import kotlinx.serialization.Serializable
  * Class ServiceInfo.
  */
 @Serializable
-data class LiveTvServiceInfo(
+public data class LiveTvServiceInfo(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the home page URL.
 	 */
 	@SerialName("HomePageUrl")
-	val homePageUrl: String? = null,
+	public val homePageUrl: String? = null,
 	@SerialName("Status")
-	val status: LiveTvServiceStatus? = null,
+	public val status: LiveTvServiceStatus? = null,
 	/**
 	 * Gets or sets the status message.
 	 */
 	@SerialName("StatusMessage")
-	val statusMessage: String? = null,
+	public val statusMessage: String? = null,
 	/**
 	 * Gets or sets the version.
 	 */
 	@SerialName("Version")
-	val version: String? = null,
+	public val version: String? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance has update available.
 	 */
 	@SerialName("HasUpdateAvailable")
-	val hasUpdateAvailable: Boolean,
+	public val hasUpdateAvailable: Boolean,
 	/**
 	 * Gets or sets a value indicating whether this instance is visible.
 	 */
 	@SerialName("IsVisible")
-	val isVisible: Boolean,
+	public val isVisible: Boolean,
 	@SerialName("Tuners")
-	val tuners: List<String>? = null
+	public val tuners: List<String>? = null
 )

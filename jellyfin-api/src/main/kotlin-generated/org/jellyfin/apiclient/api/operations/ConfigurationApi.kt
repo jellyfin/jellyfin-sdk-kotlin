@@ -15,17 +15,17 @@ import org.jellyfin.apiclient.model.api.MediaEncoderPathDto
 import org.jellyfin.apiclient.model.api.MetadataOptions
 import org.jellyfin.apiclient.model.api.ServerConfiguration
 
-class ConfigurationApi(
+public class ConfigurationApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Gets application configuration.
 	 */
-	suspend fun getConfiguration(): Response<ServerConfiguration> {
+	public suspend fun getConfiguration(): Response<ServerConfiguration> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<ServerConfiguration>("/System/Configuration", pathParameters,
+		val response = api.`get`<ServerConfiguration>("/System/Configuration", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -33,7 +33,7 @@ class ConfigurationApi(
 	/**
 	 * Updates application configuration.
 	 */
-	suspend fun updateConfiguration(data: ServerConfiguration): Response<Unit> {
+	public suspend fun updateConfiguration(`data`: ServerConfiguration): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/System/Configuration", pathParameters, queryParameters, data)
@@ -45,12 +45,12 @@ class ConfigurationApi(
 	 *
 	 * @param key Configuration key.
 	 */
-	suspend fun getNamedConfiguration(key: String): Response<ByteReadChannel> {
+	public suspend fun getNamedConfiguration(key: String): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["key"] = key
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<ByteReadChannel>("/System/Configuration/{key}", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/System/Configuration/{key}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -60,7 +60,7 @@ class ConfigurationApi(
 	 *
 	 * @param key Configuration key.
 	 */
-	fun getNamedConfigurationUrl(key: String): String {
+	public fun getNamedConfigurationUrl(key: String): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["key"] = key
 		val queryParameters = emptyMap<String, Any?>()
@@ -72,7 +72,7 @@ class ConfigurationApi(
 	 *
 	 * @param key Configuration key.
 	 */
-	suspend fun updateNamedConfiguration(key: String): Response<Unit> {
+	public suspend fun updateNamedConfiguration(key: String): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["key"] = key
 		val queryParameters = emptyMap<String, Any?>()
@@ -85,11 +85,11 @@ class ConfigurationApi(
 	/**
 	 * Gets a default MetadataOptions object.
 	 */
-	suspend fun getDefaultMetadataOptions(): Response<MetadataOptions> {
+	public suspend fun getDefaultMetadataOptions(): Response<MetadataOptions> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<MetadataOptions>("/System/Configuration/MetadataOptions/Default",
+		val response = api.`get`<MetadataOptions>("/System/Configuration/MetadataOptions/Default",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -97,7 +97,7 @@ class ConfigurationApi(
 	/**
 	 * Updates the path to the media encoder.
 	 */
-	suspend fun updateMediaEncoderPath(data: MediaEncoderPathDto): Response<Unit> {
+	public suspend fun updateMediaEncoderPath(`data`: MediaEncoderPathDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/System/MediaEncoder/Path", pathParameters, queryParameters, data)

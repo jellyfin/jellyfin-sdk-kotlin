@@ -13,63 +13,63 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class LibraryOptions(
+public data class LibraryOptions(
 	@SerialName("EnablePhotos")
-	val enablePhotos: Boolean,
+	public val enablePhotos: Boolean,
 	@SerialName("EnableRealtimeMonitor")
-	val enableRealtimeMonitor: Boolean,
+	public val enableRealtimeMonitor: Boolean,
 	@SerialName("EnableChapterImageExtraction")
-	val enableChapterImageExtraction: Boolean,
+	public val enableChapterImageExtraction: Boolean,
 	@SerialName("ExtractChapterImagesDuringLibraryScan")
-	val extractChapterImagesDuringLibraryScan: Boolean,
+	public val extractChapterImagesDuringLibraryScan: Boolean,
 	@SerialName("DownloadImagesInAdvance")
-	val downloadImagesInAdvance: Boolean,
+	public val downloadImagesInAdvance: Boolean,
 	@SerialName("PathInfos")
-	val pathInfos: List<MediaPathInfo>? = null,
+	public val pathInfos: List<MediaPathInfo>? = null,
 	@SerialName("SaveLocalMetadata")
-	val saveLocalMetadata: Boolean,
+	public val saveLocalMetadata: Boolean,
 	@SerialName("EnableInternetProviders")
-	val enableInternetProviders: Boolean,
+	public val enableInternetProviders: Boolean,
 	@SerialName("EnableAutomaticSeriesGrouping")
-	val enableAutomaticSeriesGrouping: Boolean,
+	public val enableAutomaticSeriesGrouping: Boolean,
 	@SerialName("EnableEmbeddedTitles")
-	val enableEmbeddedTitles: Boolean,
+	public val enableEmbeddedTitles: Boolean,
 	@SerialName("EnableEmbeddedEpisodeInfos")
-	val enableEmbeddedEpisodeInfos: Boolean,
+	public val enableEmbeddedEpisodeInfos: Boolean,
 	@SerialName("AutomaticRefreshIntervalDays")
-	val automaticRefreshIntervalDays: Int,
+	public val automaticRefreshIntervalDays: Int,
 	/**
 	 * Gets or sets the preferred metadata language.
 	 */
 	@SerialName("PreferredMetadataLanguage")
-	val preferredMetadataLanguage: String? = null,
+	public val preferredMetadataLanguage: String? = null,
 	/**
 	 * Gets or sets the metadata country code.
 	 */
 	@SerialName("MetadataCountryCode")
-	val metadataCountryCode: String? = null,
+	public val metadataCountryCode: String? = null,
 	@SerialName("SeasonZeroDisplayName")
-	val seasonZeroDisplayName: String? = null,
+	public val seasonZeroDisplayName: String? = null,
 	@SerialName("MetadataSavers")
-	val metadataSavers: List<String>? = null,
+	public val metadataSavers: List<String>? = null,
 	@SerialName("DisabledLocalMetadataReaders")
-	val disabledLocalMetadataReaders: List<String>? = null,
+	public val disabledLocalMetadataReaders: List<String>? = null,
 	@SerialName("LocalMetadataReaderOrder")
-	val localMetadataReaderOrder: List<String>? = null,
+	public val localMetadataReaderOrder: List<String>? = null,
 	@SerialName("DisabledSubtitleFetchers")
-	val disabledSubtitleFetchers: List<String>? = null,
+	public val disabledSubtitleFetchers: List<String>? = null,
 	@SerialName("SubtitleFetcherOrder")
-	val subtitleFetcherOrder: List<String>? = null,
+	public val subtitleFetcherOrder: List<String>? = null,
 	@SerialName("SkipSubtitlesIfEmbeddedSubtitlesPresent")
-	val skipSubtitlesIfEmbeddedSubtitlesPresent: Boolean,
+	public val skipSubtitlesIfEmbeddedSubtitlesPresent: Boolean,
 	@SerialName("SkipSubtitlesIfAudioTrackMatches")
-	val skipSubtitlesIfAudioTrackMatches: Boolean,
+	public val skipSubtitlesIfAudioTrackMatches: Boolean,
 	@SerialName("SubtitleDownloadLanguages")
-	val subtitleDownloadLanguages: List<String>? = null,
+	public val subtitleDownloadLanguages: List<String>? = null,
 	@SerialName("RequirePerfectSubtitleMatch")
-	val requirePerfectSubtitleMatch: Boolean,
+	public val requirePerfectSubtitleMatch: Boolean,
 	@SerialName("SaveSubtitlesWithMedia")
-	val saveSubtitlesWithMedia: Boolean,
+	public val saveSubtitlesWithMedia: Boolean,
 	@SerialName("TypeOptions")
-	val typeOptions: List<TypeOptions>? = null
+	public val typeOptions: List<TypeOptions>? = null
 )

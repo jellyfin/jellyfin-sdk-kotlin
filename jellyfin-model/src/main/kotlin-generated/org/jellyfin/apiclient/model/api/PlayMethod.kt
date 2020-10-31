@@ -9,13 +9,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class PlayMethod {
+public enum class PlayMethod {
 	@SerialName("Transcode")
 	TRANSCODE,
-
 	@SerialName("DirectStream")
 	DIRECT_STREAM,
-
 	@SerialName("DirectPlay")
-	DIRECT_PLAY
+	DIRECT_PLAY,
 }

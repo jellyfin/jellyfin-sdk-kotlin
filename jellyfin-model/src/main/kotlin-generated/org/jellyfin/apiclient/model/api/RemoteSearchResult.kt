@@ -18,38 +18,38 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
 
 @Serializable
-data class RemoteSearchResult(
+public data class RemoteSearchResult(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the provider ids.
 	 */
 	@SerialName("ProviderIds")
-	val providerIds: Map<String, String>? = null,
+	public val providerIds: Map<String, String>? = null,
 	/**
 	 * Gets or sets the year.
 	 */
 	@SerialName("ProductionYear")
-	val productionYear: Int? = null,
+	public val productionYear: Int? = null,
 	@SerialName("IndexNumber")
-	val indexNumber: Int? = null,
+	public val indexNumber: Int? = null,
 	@SerialName("IndexNumberEnd")
-	val indexNumberEnd: Int? = null,
+	public val indexNumberEnd: Int? = null,
 	@SerialName("ParentIndexNumber")
-	val parentIndexNumber: Int? = null,
+	public val parentIndexNumber: Int? = null,
 	@SerialName("PremiereDate")
-	val premiereDate: LocalDateTime? = null,
+	public val premiereDate: LocalDateTime? = null,
 	@SerialName("ImageUrl")
-	val imageUrl: String? = null,
+	public val imageUrl: String? = null,
 	@SerialName("SearchProviderName")
-	val searchProviderName: String? = null,
+	public val searchProviderName: String? = null,
 	@SerialName("Overview")
-	val overview: String? = null,
+	public val overview: String? = null,
 	@SerialName("AlbumArtist")
-	val albumArtist: RemoteSearchResult? = null,
+	public val albumArtist: RemoteSearchResult? = null,
 	@SerialName("Artists")
-	val artists: List<RemoteSearchResult>? = null
+	public val artists: List<RemoteSearchResult>? = null
 )

@@ -21,30 +21,30 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
  * Class PlayRequest.
  */
 @Serializable
-data class PlayRequest(
+public data class PlayRequest(
 	/**
 	 * Gets or sets the item ids.
 	 */
 	@SerialName("ItemIds")
-	val itemIds: List<UUID>? = null,
+	public val itemIds: List<UUID>? = null,
 	/**
 	 * Gets or sets the start position ticks that the first item should be played at.
 	 */
 	@SerialName("StartPositionTicks")
-	val startPositionTicks: Long? = null,
+	public val startPositionTicks: Long? = null,
 	@SerialName("PlayCommand")
-	val playCommand: PlayCommand? = null,
+	public val playCommand: PlayCommand? = null,
 	/**
 	 * Gets or sets the controlling user identifier.
 	 */
 	@SerialName("ControllingUserId")
-	val controllingUserId: UUID,
+	public val controllingUserId: UUID,
 	@SerialName("SubtitleStreamIndex")
-	val subtitleStreamIndex: Int? = null,
+	public val subtitleStreamIndex: Int? = null,
 	@SerialName("AudioStreamIndex")
-	val audioStreamIndex: Int? = null,
+	public val audioStreamIndex: Int? = null,
 	@SerialName("MediaSourceId")
-	val mediaSourceId: String? = null,
+	public val mediaSourceId: String? = null,
 	@SerialName("StartIndex")
-	val startIndex: Int? = null
+	public val startIndex: Int? = null
 )

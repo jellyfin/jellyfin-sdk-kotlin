@@ -25,103 +25,103 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
  * Class SessionInfo.
  */
 @Serializable
-data class SessionInfo(
+public data class SessionInfo(
 	@SerialName("PlayState")
-	val playState: PlayerStateInfo? = null,
+	public val playState: PlayerStateInfo? = null,
 	@SerialName("AdditionalUsers")
-	val additionalUsers: List<SessionUserInfo>? = null,
+	public val additionalUsers: List<SessionUserInfo>? = null,
 	@SerialName("Capabilities")
-	val capabilities: ClientCapabilities? = null,
+	public val capabilities: ClientCapabilities? = null,
 	/**
 	 * Gets or sets the remote end point.
 	 */
 	@SerialName("RemoteEndPoint")
-	val remoteEndPoint: String? = null,
+	public val remoteEndPoint: String? = null,
 	/**
 	 * Gets or sets the playable media types.
 	 */
 	@SerialName("PlayableMediaTypes")
-	val playableMediaTypes: List<String>? = null,
+	public val playableMediaTypes: List<String>? = null,
 	/**
 	 * Gets or sets the id.
 	 */
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	/**
 	 * Gets or sets the user id.
 	 */
 	@SerialName("UserId")
-	val userId: UUID,
+	public val userId: UUID,
 	/**
 	 * Gets or sets the username.
 	 */
 	@SerialName("UserName")
-	val userName: String? = null,
+	public val userName: String? = null,
 	/**
 	 * Gets or sets the type of the client.
 	 */
 	@SerialName("Client")
-	val client: String? = null,
+	public val client: String? = null,
 	/**
 	 * Gets or sets the last activity date.
 	 */
 	@SerialName("LastActivityDate")
-	val lastActivityDate: LocalDateTime,
+	public val lastActivityDate: LocalDateTime,
 	/**
 	 * Gets or sets the last playback check in.
 	 */
 	@SerialName("LastPlaybackCheckIn")
-	val lastPlaybackCheckIn: LocalDateTime,
+	public val lastPlaybackCheckIn: LocalDateTime,
 	/**
 	 * Gets or sets the name of the device.
 	 */
 	@SerialName("DeviceName")
-	val deviceName: String? = null,
+	public val deviceName: String? = null,
 	/**
 	 * Gets or sets the type of the device.
 	 */
 	@SerialName("DeviceType")
-	val deviceType: String? = null,
+	public val deviceType: String? = null,
 	@SerialName("NowPlayingItem")
-	val nowPlayingItem: BaseItemDto? = null,
+	public val nowPlayingItem: BaseItemDto? = null,
 	@SerialName("FullNowPlayingItem")
-	val fullNowPlayingItem: BaseItem? = null,
+	public val fullNowPlayingItem: BaseItem? = null,
 	@SerialName("NowViewingItem")
-	val nowViewingItem: BaseItemDto? = null,
+	public val nowViewingItem: BaseItemDto? = null,
 	/**
 	 * Gets or sets the device id.
 	 */
 	@SerialName("DeviceId")
-	val deviceId: String? = null,
+	public val deviceId: String? = null,
 	/**
 	 * Gets or sets the application version.
 	 */
 	@SerialName("ApplicationVersion")
-	val applicationVersion: String? = null,
+	public val applicationVersion: String? = null,
 	@SerialName("TranscodingInfo")
-	val transcodingInfo: TranscodingInfo? = null,
+	public val transcodingInfo: TranscodingInfo? = null,
 	/**
 	 * Gets a value indicating whether this instance is active.
 	 */
 	@SerialName("IsActive")
-	val isActive: Boolean,
+	public val isActive: Boolean,
 	@SerialName("SupportsMediaControl")
-	val supportsMediaControl: Boolean,
+	public val supportsMediaControl: Boolean,
 	@SerialName("SupportsRemoteControl")
-	val supportsRemoteControl: Boolean,
+	public val supportsRemoteControl: Boolean,
 	@SerialName("NowPlayingQueue")
-	val nowPlayingQueue: List<QueueItem>? = null,
+	public val nowPlayingQueue: List<QueueItem>? = null,
 	@SerialName("HasCustomDeviceName")
-	val hasCustomDeviceName: Boolean,
+	public val hasCustomDeviceName: Boolean,
 	@SerialName("PlaylistItemId")
-	val playlistItemId: String? = null,
+	public val playlistItemId: String? = null,
 	@SerialName("ServerId")
-	val serverId: String? = null,
+	public val serverId: String? = null,
 	@SerialName("UserPrimaryImageTag")
-	val userPrimaryImageTag: String? = null,
+	public val userPrimaryImageTag: String? = null,
 	/**
 	 * Gets or sets the supported commands.
 	 */
 	@SerialName("SupportedCommands")
-	val supportedCommands: List<GeneralCommandType>? = null
+	public val supportedCommands: List<GeneralCommandType>? = null
 )

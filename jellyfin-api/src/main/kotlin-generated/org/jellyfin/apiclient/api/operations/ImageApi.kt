@@ -20,7 +20,7 @@ import org.jellyfin.apiclient.model.api.ImageFormat
 import org.jellyfin.apiclient.model.api.ImageInfo
 import org.jellyfin.apiclient.model.api.ImageType
 
-class ImageApi(
+public class ImageApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -47,7 +47,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	suspend fun getArtistImage(
+	public suspend fun getArtistImage(
 		name: String,
 		imageType: ImageType,
 		imageIndex: Int,
@@ -86,7 +86,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<ByteReadChannel>("/Artists/{name}/Images/{imageType}/{imageIndex}",
+		val response = api.`get`<ByteReadChannel>("/Artists/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -115,7 +115,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	fun getArtistImageUrl(
+	public fun getArtistImageUrl(
 		name: String,
 		imageType: ImageType,
 		imageIndex: Int,
@@ -181,7 +181,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	suspend fun getGenreImage(
+	public suspend fun getGenreImage(
 		name: String,
 		imageType: ImageType,
 		imageIndex: Int? = null,
@@ -220,7 +220,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<ByteReadChannel>("/Genres/{name}/Images/{imageType}/{imageIndex}",
+		val response = api.`get`<ByteReadChannel>("/Genres/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -249,7 +249,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	fun getGenreImageUrl(
+	public fun getGenreImageUrl(
 		name: String,
 		imageType: ImageType,
 		imageIndex: Int? = null,
@@ -296,13 +296,13 @@ class ImageApi(
 	 *
 	 * @param itemId Item id.
 	 */
-	suspend fun getItemImageInfos(itemId: UUID): Response<List<ImageInfo>> {
+	public suspend fun getItemImageInfos(itemId: UUID): Response<List<ImageInfo>> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<ImageInfo>>("/Items/{itemId}/Images", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<List<ImageInfo>>("/Items/{itemId}/Images", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
@@ -330,7 +330,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	suspend fun getItemImage(
+	public suspend fun getItemImage(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int? = null,
@@ -369,7 +369,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<ByteReadChannel>("/Items/{itemId}/Images/{imageType}", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -398,7 +398,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	fun getItemImageUrl(
+	public fun getItemImageUrl(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int? = null,
@@ -446,7 +446,7 @@ class ImageApi(
 	 * @param imageType Image type.
 	 * @param imageIndex (Unused) Image index.
 	 */
-	suspend fun setItemImage(
+	public suspend fun setItemImage(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int? = null
@@ -469,7 +469,7 @@ class ImageApi(
 	 * @param imageType Image type.
 	 * @param imageIndex The image index.
 	 */
-	suspend fun deleteItemImage(
+	public suspend fun deleteItemImage(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int? = null
@@ -509,7 +509,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	suspend fun getItemImage2(
+	public suspend fun getItemImage2(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int? = null,
@@ -548,7 +548,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}",
+		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -577,7 +577,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	fun getItemImage2Url(
+	public fun getItemImage2Url(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int? = null,
@@ -626,7 +626,7 @@ class ImageApi(
 	 * @param imageType Image type.
 	 * @param imageIndex (Unused) Image index.
 	 */
-	suspend fun setItemImage2(
+	public suspend fun setItemImage2(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int? = null
@@ -649,7 +649,7 @@ class ImageApi(
 	 * @param imageType Image type.
 	 * @param imageIndex The image index.
 	 */
-	suspend fun deleteItemImage2(
+	public suspend fun deleteItemImage2(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int? = null
@@ -689,7 +689,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	suspend fun getItemImage2(
+	public suspend fun getItemImage2(
 		itemId: UUID,
 		imageType: ImageType,
 		maxWidth: Int,
@@ -729,7 +729,7 @@ class ImageApi(
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
 		val response =
-				api.get<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
+				api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -758,7 +758,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	fun getItemImage2Url(
+	public fun getItemImage2Url(
 		itemId: UUID,
 		imageType: ImageType,
 		maxWidth: Int,
@@ -808,7 +808,7 @@ class ImageApi(
 	 * @param imageIndex Old image index.
 	 * @param newIndex New image index.
 	 */
-	suspend fun updateItemImageIndex(
+	public suspend fun updateItemImageIndex(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int,
@@ -850,7 +850,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	suspend fun getMusicGenreImage(
+	public suspend fun getMusicGenreImage(
 		name: String,
 		imageType: ImageType,
 		imageIndex: Int? = null,
@@ -889,7 +889,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}/{imageIndex}",
+		val response = api.`get`<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -918,7 +918,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	fun getMusicGenreImageUrl(
+	public fun getMusicGenreImageUrl(
 		name: String,
 		imageType: ImageType,
 		imageIndex: Int? = null,
@@ -984,7 +984,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	suspend fun getPersonImage(
+	public suspend fun getPersonImage(
 		name: String,
 		imageType: ImageType,
 		imageIndex: Int? = null,
@@ -1023,7 +1023,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<ByteReadChannel>("/Persons/{name}/Images/{imageType}/{imageIndex}",
+		val response = api.`get`<ByteReadChannel>("/Persons/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -1052,7 +1052,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	fun getPersonImageUrl(
+	public fun getPersonImageUrl(
 		name: String,
 		imageType: ImageType,
 		imageIndex: Int? = null,
@@ -1118,7 +1118,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	suspend fun getStudioImage(
+	public suspend fun getStudioImage(
 		name: String,
 		imageType: ImageType,
 		tag: String,
@@ -1157,7 +1157,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<ByteReadChannel>("/Studios/{name}/Images/{imageType}/{imageIndex}",
+		val response = api.`get`<ByteReadChannel>("/Studios/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -1186,7 +1186,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	fun getStudioImageUrl(
+	public fun getStudioImageUrl(
 		name: String,
 		imageType: ImageType,
 		tag: String,
@@ -1235,7 +1235,7 @@ class ImageApi(
 	 * @param imageType (Unused) Image type.
 	 * @param index (Unused) Image index.
 	 */
-	suspend fun postUserImage(
+	public suspend fun postUserImage(
 		userId: UUID,
 		imageType: ImageType,
 		index: Int? = null
@@ -1275,7 +1275,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	suspend fun getUserImage(
+	public suspend fun getUserImage(
 		userId: UUID,
 		imageType: ImageType,
 		imageIndex: Int? = null,
@@ -1314,7 +1314,7 @@ class ImageApi(
 		queryParameters["backgroundColor"] = backgroundColor
 		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.get<ByteReadChannel>("/Users/{userId}/Images/{imageType}/{imageIndex}",
+		val response = api.`get`<ByteReadChannel>("/Users/{userId}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -1343,7 +1343,7 @@ class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	fun getUserImageUrl(
+	public fun getUserImageUrl(
 		userId: UUID,
 		imageType: ImageType,
 		imageIndex: Int? = null,
@@ -1392,7 +1392,7 @@ class ImageApi(
 	 * @param imageType (Unused) Image type.
 	 * @param index (Unused) Image index.
 	 */
-	suspend fun postUserImage2(
+	public suspend fun postUserImage2(
 		userId: UUID,
 		imageType: ImageType,
 		index: Int? = null
@@ -1415,7 +1415,7 @@ class ImageApi(
 	 * @param imageType (Unused) Image type.
 	 * @param index (Unused) Image index.
 	 */
-	suspend fun deleteUserImage(
+	public suspend fun deleteUserImage(
 		userId: UUID,
 		imageType: ImageType,
 		index: Int? = null,
@@ -1440,7 +1440,7 @@ class ImageApi(
 	 * @param imageType (Unused) Image type.
 	 * @param index (Unused) Image index.
 	 */
-	suspend fun deleteUserImage2(
+	public suspend fun deleteUserImage2(
 		userId: UUID,
 		imageType: ImageType,
 		index: Int? = null,

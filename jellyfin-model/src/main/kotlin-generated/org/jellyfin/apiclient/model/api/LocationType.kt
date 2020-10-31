@@ -12,16 +12,13 @@ import kotlinx.serialization.Serializable
  * Enum LocationType.
  */
 @Serializable
-enum class LocationType {
+public enum class LocationType {
 	@SerialName("FileSystem")
 	FILE_SYSTEM,
-
 	@SerialName("Remote")
 	REMOTE,
-
 	@SerialName("Virtual")
 	VIRTUAL,
-
 	@SerialName("Offline")
-	OFFLINE
+	OFFLINE,
 }

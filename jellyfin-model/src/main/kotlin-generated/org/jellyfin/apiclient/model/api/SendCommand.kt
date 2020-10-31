@@ -14,27 +14,27 @@ import kotlinx.serialization.Serializable
  * Class SendCommand.
  */
 @Serializable
-data class SendCommand(
+public data class SendCommand(
 	/**
 	 * Gets or sets the group identifier.
 	 */
 	@SerialName("GroupId")
-	val groupId: String? = null,
+	public val groupId: String? = null,
 	/**
 	 * Gets or sets the UTC time when to execute the command.
 	 */
 	@SerialName("When")
-	val `when`: String? = null,
+	public val `when`: String? = null,
 	/**
 	 * Gets or sets the position ticks.
 	 */
 	@SerialName("PositionTicks")
-	val positionTicks: Long? = null,
+	public val positionTicks: Long? = null,
 	@SerialName("Command")
-	val command: SendCommandType? = null,
+	public val command: SendCommandType? = null,
 	/**
 	 * Gets or sets the UTC time when this command has been emitted.
 	 */
 	@SerialName("EmittedAt")
-	val emittedAt: String? = null
+	public val emittedAt: String? = null
 )

@@ -13,25 +13,25 @@ import kotlinx.serialization.Serializable
  * Interface IScheduledTaskWorker.
  */
 @Serializable
-data class IScheduledTask(
+public data class IScheduledTask(
 	/**
 	 * Gets the name of the task.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets the key of the task.
 	 */
 	@SerialName("Key")
-	val key: String? = null,
+	public val key: String? = null,
 	/**
 	 * Gets the description.
 	 */
 	@SerialName("Description")
-	val description: String? = null,
+	public val description: String? = null,
 	/**
 	 * Gets the category.
 	 */
 	@SerialName("Category")
-	val category: String? = null
+	public val category: String? = null
 )

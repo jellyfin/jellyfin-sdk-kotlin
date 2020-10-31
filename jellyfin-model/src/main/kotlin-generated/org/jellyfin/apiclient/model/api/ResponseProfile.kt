@@ -11,19 +11,19 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ResponseProfile(
+public data class ResponseProfile(
 	@SerialName("Container")
-	val container: String? = null,
+	public val container: String? = null,
 	@SerialName("AudioCodec")
-	val audioCodec: String? = null,
+	public val audioCodec: String? = null,
 	@SerialName("VideoCodec")
-	val videoCodec: String? = null,
+	public val videoCodec: String? = null,
 	@SerialName("Type")
-	val type: DlnaProfileType? = null,
+	public val type: DlnaProfileType? = null,
 	@SerialName("OrgPn")
-	val orgPn: String? = null,
+	public val orgPn: String? = null,
 	@SerialName("MimeType")
-	val mimeType: String? = null,
+	public val mimeType: String? = null,
 	@SerialName("Conditions")
-	val conditions: List<ProfileCondition>? = null
+	public val conditions: List<ProfileCondition>? = null
 )

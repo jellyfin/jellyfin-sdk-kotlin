@@ -10,9 +10,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class LocalizationOption(
+public data class LocalizationOption(
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	@SerialName("Value")
-	val value: String? = null
+	public val value: String? = null
 )

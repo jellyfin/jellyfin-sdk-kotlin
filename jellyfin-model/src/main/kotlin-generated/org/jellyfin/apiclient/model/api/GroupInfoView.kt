@@ -15,30 +15,30 @@ import kotlinx.serialization.Serializable
  * Class GroupInfoView.
  */
 @Serializable
-data class GroupInfoView(
+public data class GroupInfoView(
 	/**
 	 * Gets or sets the group identifier.
 	 */
 	@SerialName("GroupId")
-	val groupId: String? = null,
+	public val groupId: String? = null,
 	/**
 	 * Gets or sets the playing item id.
 	 */
 	@SerialName("PlayingItemId")
-	val playingItemId: String? = null,
+	public val playingItemId: String? = null,
 	/**
 	 * Gets or sets the playing item name.
 	 */
 	@SerialName("PlayingItemName")
-	val playingItemName: String? = null,
+	public val playingItemName: String? = null,
 	/**
 	 * Gets or sets the position ticks.
 	 */
 	@SerialName("PositionTicks")
-	val positionTicks: Long,
+	public val positionTicks: Long,
 	/**
 	 * Gets or sets the participants.
 	 */
 	@SerialName("Participants")
-	val participants: List<String>? = null
+	public val participants: List<String>? = null
 )

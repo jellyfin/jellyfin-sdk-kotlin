@@ -9,7 +9,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class LiveStreamResponse(
+public data class LiveStreamResponse(
 	@SerialName("MediaSource")
-	val mediaSource: MediaSourceInfo? = null
+	public val mediaSource: MediaSourceInfo? = null
 )

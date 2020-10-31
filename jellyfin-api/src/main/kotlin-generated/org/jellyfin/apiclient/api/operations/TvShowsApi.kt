@@ -14,7 +14,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 
-class TvShowsApi(
+public class TvShowsApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -42,7 +42,7 @@ class TvShowsApi(
 	 * AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount,
 	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 */
-	suspend fun getEpisodes(
+	public suspend fun getEpisodes(
 		seriesId: String,
 		userId: UUID? = null,
 		fields: String? = null,
@@ -77,7 +77,7 @@ class TvShowsApi(
 		queryParameters["enableUserData"] = enableUserData
 		queryParameters["sortBy"] = sortBy
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Shows/{seriesId}/Episodes", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/{seriesId}/Episodes", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -99,7 +99,7 @@ class TvShowsApi(
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 * @param enableUserData Optional. Include user data.
 	 */
-	suspend fun getSeasons(
+	public suspend fun getSeasons(
 		seriesId: String,
 		userId: UUID? = null,
 		fields: String? = null,
@@ -124,7 +124,7 @@ class TvShowsApi(
 		queryParameters["enableImageTypes"] = enableImageTypes
 		queryParameters["enableUserData"] = enableUserData
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Shows/{seriesId}/Seasons", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/{seriesId}/Seasons", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -149,7 +149,7 @@ class TvShowsApi(
 	 * @param enableUserData Optional. Include user data.
 	 * @param enableTotalRecordCount Whether to enable the total records count. Defaults to true.
 	 */
-	suspend fun getNextUp(
+	public suspend fun getNextUp(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
@@ -176,7 +176,7 @@ class TvShowsApi(
 		queryParameters["enableUserData"] = enableUserData
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Shows/NextUp", pathParameters, queryParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/NextUp", pathParameters, queryParameters,
 				data)
 		return response
 	}
@@ -199,7 +199,7 @@ class TvShowsApi(
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 * @param enableUserData Optional. Include user data.
 	 */
-	suspend fun getUpcomingEpisodes(
+	public suspend fun getUpcomingEpisodes(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
@@ -222,8 +222,8 @@ class TvShowsApi(
 		queryParameters["enableImageTypes"] = enableImageTypes
 		queryParameters["enableUserData"] = enableUserData
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Shows/Upcoming", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/Upcoming", pathParameters,
+				queryParameters, data)
 		return response
 	}
 }

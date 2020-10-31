@@ -14,7 +14,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 
-class InstantMixApi(
+public class InstantMixApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -32,7 +32,7 @@ class InstantMixApi(
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
-	suspend fun getInstantMixFromAlbum(
+	public suspend fun getInstantMixFromAlbum(
 		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
@@ -53,7 +53,7 @@ class InstantMixApi(
 		queryParameters["imageTypeLimit"] = imageTypeLimit
 		queryParameters["enableImageTypes"] = enableImageTypes
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Albums/{id}/InstantMix", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Albums/{id}/InstantMix", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -73,7 +73,7 @@ class InstantMixApi(
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
-	suspend fun getInstantMixFromArtists(
+	public suspend fun getInstantMixFromArtists(
 		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
@@ -94,7 +94,7 @@ class InstantMixApi(
 		queryParameters["imageTypeLimit"] = imageTypeLimit
 		queryParameters["enableImageTypes"] = enableImageTypes
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Artists/InstantMix", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/InstantMix", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -114,7 +114,7 @@ class InstantMixApi(
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
-	suspend fun getInstantMixFromItem(
+	public suspend fun getInstantMixFromItem(
 		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
@@ -135,7 +135,7 @@ class InstantMixApi(
 		queryParameters["imageTypeLimit"] = imageTypeLimit
 		queryParameters["enableImageTypes"] = enableImageTypes
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Items/{id}/InstantMix", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{id}/InstantMix", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -155,7 +155,7 @@ class InstantMixApi(
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
-	suspend fun getInstantMixFromMusicGenre(
+	public suspend fun getInstantMixFromMusicGenre(
 		name: String,
 		userId: UUID? = null,
 		limit: Int? = null,
@@ -176,7 +176,7 @@ class InstantMixApi(
 		queryParameters["imageTypeLimit"] = imageTypeLimit
 		queryParameters["enableImageTypes"] = enableImageTypes
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/MusicGenres/{name}/InstantMix", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/MusicGenres/{name}/InstantMix", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -196,7 +196,7 @@ class InstantMixApi(
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
-	suspend fun getInstantMixFromMusicGenres(
+	public suspend fun getInstantMixFromMusicGenres(
 		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
@@ -217,7 +217,7 @@ class InstantMixApi(
 		queryParameters["imageTypeLimit"] = imageTypeLimit
 		queryParameters["enableImageTypes"] = enableImageTypes
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/MusicGenres/InstantMix", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/MusicGenres/InstantMix", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -237,7 +237,7 @@ class InstantMixApi(
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
-	suspend fun getInstantMixFromPlaylist(
+	public suspend fun getInstantMixFromPlaylist(
 		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
@@ -258,7 +258,7 @@ class InstantMixApi(
 		queryParameters["imageTypeLimit"] = imageTypeLimit
 		queryParameters["enableImageTypes"] = enableImageTypes
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Playlists/{id}/InstantMix", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Playlists/{id}/InstantMix", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -278,7 +278,7 @@ class InstantMixApi(
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
-	suspend fun getInstantMixFromSong(
+	public suspend fun getInstantMixFromSong(
 		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
@@ -299,7 +299,7 @@ class InstantMixApi(
 		queryParameters["imageTypeLimit"] = imageTypeLimit
 		queryParameters["enableImageTypes"] = enableImageTypes
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Songs/{id}/InstantMix", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Songs/{id}/InstantMix", pathParameters,
 				queryParameters, data)
 		return response
 	}

@@ -9,25 +9,19 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class DayOfWeek {
+public enum class DayOfWeek {
 	@SerialName("Sunday")
 	SUNDAY,
-
 	@SerialName("Monday")
 	MONDAY,
-
 	@SerialName("Tuesday")
 	TUESDAY,
-
 	@SerialName("Wednesday")
 	WEDNESDAY,
-
 	@SerialName("Thursday")
 	THURSDAY,
-
 	@SerialName("Friday")
 	FRIDAY,
-
 	@SerialName("Saturday")
-	SATURDAY
+	SATURDAY,
 }

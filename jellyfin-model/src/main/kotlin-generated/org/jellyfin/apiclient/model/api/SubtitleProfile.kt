@@ -10,15 +10,15 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class SubtitleProfile(
+public data class SubtitleProfile(
 	@SerialName("Format")
-	val format: String? = null,
+	public val format: String? = null,
 	@SerialName("Method")
-	val method: SubtitleDeliveryMethod? = null,
+	public val method: SubtitleDeliveryMethod? = null,
 	@SerialName("DidlMode")
-	val didlMode: String? = null,
+	public val didlMode: String? = null,
 	@SerialName("Language")
-	val language: String? = null,
+	public val language: String? = null,
 	@SerialName("Container")
-	val container: String? = null
+	public val container: String? = null
 )

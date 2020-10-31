@@ -18,7 +18,7 @@ import org.jellyfin.apiclient.model.api.BaseItemDto
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.ItemFilter
 
-class GenresApi(
+public class GenresApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -76,7 +76,7 @@ class GenresApi(
 	 * @param enableImages Optional, include image information in output.
 	 * @param enableTotalRecordCount Optional. Include total record count.
 	 */
-	suspend fun getGenres(
+	public suspend fun getGenres(
 		minCommunityRating: Double? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
@@ -141,7 +141,7 @@ class GenresApi(
 		queryParameters["enableImages"] = enableImages
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Genres", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Genres", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -151,13 +151,14 @@ class GenresApi(
 	 * @param genreName The genre name.
 	 * @param userId The user id.
 	 */
-	suspend fun getGenre(genreName: String, userId: UUID? = null): Response<BaseItemDto> {
+	public suspend fun getGenre(genreName: String, userId: UUID? = null): Response<BaseItemDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["genreName"] = genreName
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["userId"] = userId
 		val data = null
-		val response = api.get<BaseItemDto>("/Genres/{genreName}", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDto>("/Genres/{genreName}", pathParameters, queryParameters,
+				data)
 		return response
 	}
 }

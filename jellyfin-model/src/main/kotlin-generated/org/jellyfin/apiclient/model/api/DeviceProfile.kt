@@ -14,95 +14,95 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DeviceProfile(
+public data class DeviceProfile(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	@SerialName("Identification")
-	val identification: DeviceIdentification? = null,
+	public val identification: DeviceIdentification? = null,
 	@SerialName("FriendlyName")
-	val friendlyName: String? = null,
+	public val friendlyName: String? = null,
 	@SerialName("Manufacturer")
-	val manufacturer: String? = null,
+	public val manufacturer: String? = null,
 	@SerialName("ManufacturerUrl")
-	val manufacturerUrl: String? = null,
+	public val manufacturerUrl: String? = null,
 	@SerialName("ModelName")
-	val modelName: String? = null,
+	public val modelName: String? = null,
 	@SerialName("ModelDescription")
-	val modelDescription: String? = null,
+	public val modelDescription: String? = null,
 	@SerialName("ModelNumber")
-	val modelNumber: String? = null,
+	public val modelNumber: String? = null,
 	@SerialName("ModelUrl")
-	val modelUrl: String? = null,
+	public val modelUrl: String? = null,
 	@SerialName("SerialNumber")
-	val serialNumber: String? = null,
+	public val serialNumber: String? = null,
 	@SerialName("EnableAlbumArtInDidl")
-	val enableAlbumArtInDidl: Boolean,
+	public val enableAlbumArtInDidl: Boolean,
 	@SerialName("EnableSingleAlbumArtLimit")
-	val enableSingleAlbumArtLimit: Boolean,
+	public val enableSingleAlbumArtLimit: Boolean,
 	@SerialName("EnableSingleSubtitleLimit")
-	val enableSingleSubtitleLimit: Boolean,
+	public val enableSingleSubtitleLimit: Boolean,
 	@SerialName("SupportedMediaTypes")
-	val supportedMediaTypes: String? = null,
+	public val supportedMediaTypes: String? = null,
 	@SerialName("UserId")
-	val userId: String? = null,
+	public val userId: String? = null,
 	@SerialName("AlbumArtPn")
-	val albumArtPn: String? = null,
+	public val albumArtPn: String? = null,
 	@SerialName("MaxAlbumArtWidth")
-	val maxAlbumArtWidth: Int,
+	public val maxAlbumArtWidth: Int,
 	@SerialName("MaxAlbumArtHeight")
-	val maxAlbumArtHeight: Int,
+	public val maxAlbumArtHeight: Int,
 	@SerialName("MaxIconWidth")
-	val maxIconWidth: Int? = null,
+	public val maxIconWidth: Int? = null,
 	@SerialName("MaxIconHeight")
-	val maxIconHeight: Int? = null,
+	public val maxIconHeight: Int? = null,
 	@SerialName("MaxStreamingBitrate")
-	val maxStreamingBitrate: Long? = null,
+	public val maxStreamingBitrate: Long? = null,
 	@SerialName("MaxStaticBitrate")
-	val maxStaticBitrate: Long? = null,
+	public val maxStaticBitrate: Long? = null,
 	@SerialName("MusicStreamingTranscodingBitrate")
-	val musicStreamingTranscodingBitrate: Int? = null,
+	public val musicStreamingTranscodingBitrate: Int? = null,
 	@SerialName("MaxStaticMusicBitrate")
-	val maxStaticMusicBitrate: Int? = null,
+	public val maxStaticMusicBitrate: Int? = null,
 	/**
 	 * Controls the content of the aggregationFlags element in the urn:schemas-sonycom:av namespace.
 	 */
 	@SerialName("SonyAggregationFlags")
-	val sonyAggregationFlags: String? = null,
+	public val sonyAggregationFlags: String? = null,
 	@SerialName("ProtocolInfo")
-	val protocolInfo: String? = null,
+	public val protocolInfo: String? = null,
 	@SerialName("TimelineOffsetSeconds")
-	val timelineOffsetSeconds: Int,
+	public val timelineOffsetSeconds: Int,
 	@SerialName("RequiresPlainVideoItems")
-	val requiresPlainVideoItems: Boolean,
+	public val requiresPlainVideoItems: Boolean,
 	@SerialName("RequiresPlainFolders")
-	val requiresPlainFolders: Boolean,
+	public val requiresPlainFolders: Boolean,
 	@SerialName("EnableMSMediaReceiverRegistrar")
-	val enableMsMediaReceiverRegistrar: Boolean,
+	public val enableMsMediaReceiverRegistrar: Boolean,
 	@SerialName("IgnoreTranscodeByteRangeRequests")
-	val ignoreTranscodeByteRangeRequests: Boolean,
+	public val ignoreTranscodeByteRangeRequests: Boolean,
 	@SerialName("XmlRootAttributes")
-	val xmlRootAttributes: List<XmlAttribute>? = null,
+	public val xmlRootAttributes: List<XmlAttribute>? = null,
 	/**
 	 * Gets or sets the direct play profiles.
 	 */
 	@SerialName("DirectPlayProfiles")
-	val directPlayProfiles: List<DirectPlayProfile>? = null,
+	public val directPlayProfiles: List<DirectPlayProfile>? = null,
 	/**
 	 * Gets or sets the transcoding profiles.
 	 */
 	@SerialName("TranscodingProfiles")
-	val transcodingProfiles: List<TranscodingProfile>? = null,
+	public val transcodingProfiles: List<TranscodingProfile>? = null,
 	@SerialName("ContainerProfiles")
-	val containerProfiles: List<ContainerProfile>? = null,
+	public val containerProfiles: List<ContainerProfile>? = null,
 	@SerialName("CodecProfiles")
-	val codecProfiles: List<CodecProfile>? = null,
+	public val codecProfiles: List<CodecProfile>? = null,
 	@SerialName("ResponseProfiles")
-	val responseProfiles: List<ResponseProfile>? = null,
+	public val responseProfiles: List<ResponseProfile>? = null,
 	@SerialName("SubtitleProfiles")
-	val subtitleProfiles: List<SubtitleProfile>? = null
+	public val subtitleProfiles: List<SubtitleProfile>? = null
 )

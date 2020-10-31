@@ -9,11 +9,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class AllThemeMediaResult(
+public data class AllThemeMediaResult(
 	@SerialName("ThemeVideosResult")
-	val themeVideosResult: ThemeMediaResult? = null,
+	public val themeVideosResult: ThemeMediaResult? = null,
 	@SerialName("ThemeSongsResult")
-	val themeSongsResult: ThemeMediaResult? = null,
+	public val themeSongsResult: ThemeMediaResult? = null,
 	@SerialName("SoundtrackSongsResult")
-	val soundtrackSongsResult: ThemeMediaResult? = null
+	public val soundtrackSongsResult: ThemeMediaResult? = null
 )

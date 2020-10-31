@@ -12,40 +12,29 @@ import kotlinx.serialization.Serializable
  * The specific media type of an MediaBrowser.Model.Providers.ExternalIdInfo.
  */
 @Serializable
-enum class ExternalIdMediaType {
+public enum class ExternalIdMediaType {
 	@SerialName("Album")
 	ALBUM,
-
 	@SerialName("AlbumArtist")
 	ALBUM_ARTIST,
-
 	@SerialName("Artist")
 	ARTIST,
-
 	@SerialName("BoxSet")
 	BOX_SET,
-
 	@SerialName("Episode")
 	EPISODE,
-
 	@SerialName("Movie")
 	MOVIE,
-
 	@SerialName("OtherArtist")
 	OTHER_ARTIST,
-
 	@SerialName("Person")
 	PERSON,
-
 	@SerialName("ReleaseGroup")
 	RELEASE_GROUP,
-
 	@SerialName("Season")
 	SEASON,
-
 	@SerialName("Series")
 	SERIES,
-
 	@SerialName("Track")
-	TRACK
+	TRACK,
 }

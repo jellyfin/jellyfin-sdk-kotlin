@@ -9,19 +9,15 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class Video3dFormat {
+public enum class Video3dFormat {
 	@SerialName("HalfSideBySide")
 	HALF_SIDE_BY_SIDE,
-
 	@SerialName("FullSideBySide")
 	FULL_SIDE_BY_SIDE,
-
 	@SerialName("FullTopAndBottom")
 	FULL_TOP_AND_BOTTOM,
-
 	@SerialName("HalfTopAndBottom")
 	HALF_TOP_AND_BOTTOM,
-
 	@SerialName("MVC")
-	MVC
+	MVC,
 }

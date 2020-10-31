@@ -15,7 +15,7 @@ import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDto
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 
-class YearsApi(
+public class YearsApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -45,7 +45,7 @@ class YearsApi(
 	 * @param recursive Search recursively.
 	 * @param enableImages Optional. Include image information in output.
 	 */
-	suspend fun getYears(
+	public suspend fun getYears(
 		startIndex: Int? = null,
 		limit: Int? = null,
 		sortOrder: String? = null,
@@ -80,7 +80,7 @@ class YearsApi(
 		queryParameters["recursive"] = recursive
 		queryParameters["enableImages"] = enableImages
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Years", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Years", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -90,13 +90,13 @@ class YearsApi(
 	 * @param year The year.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 */
-	suspend fun getYear(year: Int, userId: UUID? = null): Response<BaseItemDto> {
+	public suspend fun getYear(year: Int, userId: UUID? = null): Response<BaseItemDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["year"] = year
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["userId"] = userId
 		val data = null
-		val response = api.get<BaseItemDto>("/Years/{year}", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDto>("/Years/{year}", pathParameters, queryParameters, data)
 		return response
 	}
 }

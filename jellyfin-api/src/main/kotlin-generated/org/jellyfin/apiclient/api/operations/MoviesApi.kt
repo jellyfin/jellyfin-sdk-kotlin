@@ -14,7 +14,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.RecommendationDto
 
-class MoviesApi(
+public class MoviesApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -27,7 +27,7 @@ class MoviesApi(
 	 * @param categoryLimit The max number of categories to return.
 	 * @param itemLimit The max number of items to return per category.
 	 */
-	suspend fun getMovieRecommendations(
+	public suspend fun getMovieRecommendations(
 		userId: UUID? = null,
 		parentId: String? = null,
 		fields: String? = null,
@@ -42,7 +42,7 @@ class MoviesApi(
 		queryParameters["categoryLimit"] = categoryLimit
 		queryParameters["itemLimit"] = itemLimit
 		val data = null
-		val response = api.get<List<RecommendationDto>>("/Movies/Recommendations", pathParameters,
+		val response = api.`get`<List<RecommendationDto>>("/Movies/Recommendations", pathParameters,
 				queryParameters, data)
 		return response
 	}

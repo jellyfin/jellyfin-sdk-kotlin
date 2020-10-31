@@ -14,7 +14,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.CollectionCreationResult
 
-class CollectionApi(
+public class CollectionApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -25,7 +25,7 @@ class CollectionApi(
 	 * @param parentId Optional. Create the collection within a specific folder.
 	 * @param isLocked Whether or not to lock the new collection.
 	 */
-	suspend fun createCollection(
+	public suspend fun createCollection(
 		name: String? = null,
 		ids: String? = null,
 		parentId: UUID? = null,
@@ -49,7 +49,7 @@ class CollectionApi(
 	 * @param collectionId The collection id.
 	 * @param itemIds Item ids, comma delimited.
 	 */
-	suspend fun addToCollection(collectionId: UUID, itemIds: String): Response<Unit> {
+	public suspend fun addToCollection(collectionId: UUID, itemIds: String): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["collectionId"] = collectionId
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -66,7 +66,7 @@ class CollectionApi(
 	 * @param collectionId The collection id.
 	 * @param itemIds Item ids, comma delimited.
 	 */
-	suspend fun removeFromCollection(collectionId: UUID, itemIds: String): Response<Unit> {
+	public suspend fun removeFromCollection(collectionId: UUID, itemIds: String): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["collectionId"] = collectionId
 		val queryParameters = mutableMapOf<String, Any?>()

@@ -14,35 +14,35 @@ import kotlinx.serialization.Serializable
  * This is used by the api to get information about a Person within a BaseItem.
  */
 @Serializable
-data class BaseItemPerson(
+public data class BaseItemPerson(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the identifier.
 	 */
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	/**
 	 * Gets or sets the role.
 	 */
 	@SerialName("Role")
-	val role: String? = null,
+	public val role: String? = null,
 	/**
 	 * Gets or sets the type.
 	 */
 	@SerialName("Type")
-	val type: String? = null,
+	public val type: String? = null,
 	/**
 	 * Gets or sets the primary image tag.
 	 */
 	@SerialName("PrimaryImageTag")
-	val primaryImageTag: String? = null,
+	public val primaryImageTag: String? = null,
 	/**
 	 * Gets or sets the primary image blurhash.
 	 */
 	@SerialName("ImageBlurHashes")
-	val imageBlurHashes: Map<ImageType, Map<String, String>>
+	public val imageBlurHashes: Map<ImageType, Map<String, String>>
 )

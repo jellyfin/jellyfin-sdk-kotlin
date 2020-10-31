@@ -14,37 +14,37 @@ import kotlinx.serialization.Serializable
  * The configuration page info.
  */
 @Serializable
-data class ConfigurationPageInfo(
+public data class ConfigurationPageInfo(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets a value indicating whether the configurations page is enabled in the main menu.
 	 */
 	@SerialName("EnableInMainMenu")
-	val enableInMainMenu: Boolean,
+	public val enableInMainMenu: Boolean,
 	/**
 	 * Gets or sets the menu section.
 	 */
 	@SerialName("MenuSection")
-	val menuSection: String? = null,
+	public val menuSection: String? = null,
 	/**
 	 * Gets or sets the menu icon.
 	 */
 	@SerialName("MenuIcon")
-	val menuIcon: String? = null,
+	public val menuIcon: String? = null,
 	/**
 	 * Gets or sets the display name.
 	 */
 	@SerialName("DisplayName")
-	val displayName: String? = null,
+	public val displayName: String? = null,
 	@SerialName("ConfigurationPageType")
-	val configurationPageType: ConfigurationPageType? = null,
+	public val configurationPageType: ConfigurationPageType? = null,
 	/**
 	 * Gets or sets the plugin id.
 	 */
 	@SerialName("PluginId")
-	val pluginId: String? = null
+	public val pluginId: String? = null
 )

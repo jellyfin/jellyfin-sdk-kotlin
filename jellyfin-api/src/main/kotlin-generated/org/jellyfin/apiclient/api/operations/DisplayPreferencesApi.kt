@@ -13,7 +13,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.DisplayPreferencesDto
 
-class DisplayPreferencesApi(
+public class DisplayPreferencesApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -23,7 +23,7 @@ class DisplayPreferencesApi(
 	 * @param userId User id.
 	 * @param client Client.
 	 */
-	suspend fun getDisplayPreferences(
+	public suspend fun getDisplayPreferences(
 		displayPreferencesId: String,
 		userId: UUID,
 		client: String
@@ -34,7 +34,7 @@ class DisplayPreferencesApi(
 		queryParameters["userId"] = userId
 		queryParameters["client"] = client
 		val data = null
-		val response = api.get<DisplayPreferencesDto>("/DisplayPreferences/{displayPreferencesId}",
+		val response = api.`get`<DisplayPreferencesDto>("/DisplayPreferences/{displayPreferencesId}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -46,11 +46,11 @@ class DisplayPreferencesApi(
 	 * @param userId User Id.
 	 * @param client Client.
 	 */
-	suspend fun updateDisplayPreferences(
+	public suspend fun updateDisplayPreferences(
 		displayPreferencesId: String,
 		userId: UUID,
 		client: String,
-		data: DisplayPreferencesDto
+		`data`: DisplayPreferencesDto
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["displayPreferencesId"] = displayPreferencesId

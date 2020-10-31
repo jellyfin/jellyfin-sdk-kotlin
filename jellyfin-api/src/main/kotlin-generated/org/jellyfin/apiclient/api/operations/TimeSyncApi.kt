@@ -11,17 +11,17 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.UtcTimeResponse
 
-class TimeSyncApi(
+public class TimeSyncApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Gets the current utc time.
 	 */
-	suspend fun getUtcTime(): Response<UtcTimeResponse> {
+	public suspend fun getUtcTime(): Response<UtcTimeResponse> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<UtcTimeResponse>("/GetUtcTime", pathParameters, queryParameters, data)
+		val response = api.`get`<UtcTimeResponse>("/GetUtcTime", pathParameters, queryParameters, data)
 		return response
 	}
 }

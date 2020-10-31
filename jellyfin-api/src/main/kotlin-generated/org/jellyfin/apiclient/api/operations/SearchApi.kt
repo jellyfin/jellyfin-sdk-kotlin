@@ -14,7 +14,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.SearchHintResult
 
-class SearchApi(
+public class SearchApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -44,7 +44,7 @@ class SearchApi(
 	 * @param includeStudios Optional filter whether to include studios.
 	 * @param includeArtists Optional filter whether to include artists.
 	 */
-	suspend fun get(
+	public suspend fun `get`(
 		startIndex: Int? = null,
 		limit: Int? = null,
 		userId: UUID? = null,
@@ -85,7 +85,7 @@ class SearchApi(
 		queryParameters["includeStudios"] = includeStudios
 		queryParameters["includeArtists"] = includeArtists
 		val data = null
-		val response = api.get<SearchHintResult>("/Search/Hints", pathParameters, queryParameters, data)
+		val response = api.`get`<SearchHintResult>("/Search/Hints", pathParameters, queryParameters, data)
 		return response
 	}
 }

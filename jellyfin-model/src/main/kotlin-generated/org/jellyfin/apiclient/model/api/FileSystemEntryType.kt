@@ -12,16 +12,13 @@ import kotlinx.serialization.Serializable
  * Enum FileSystemEntryType.
  */
 @Serializable
-enum class FileSystemEntryType {
+public enum class FileSystemEntryType {
 	@SerialName("File")
 	FILE,
-
 	@SerialName("Directory")
 	DIRECTORY,
-
 	@SerialName("NetworkComputer")
 	NETWORK_COMPUTER,
-
 	@SerialName("NetworkShare")
-	NETWORK_SHARE
+	NETWORK_SHARE,
 }

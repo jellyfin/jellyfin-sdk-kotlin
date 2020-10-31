@@ -21,7 +21,7 @@ import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.EncodingContext
 import org.jellyfin.apiclient.model.api.SubtitleDeliveryMethod
 
-class VideosApi(
+public class VideosApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -93,7 +93,7 @@ class VideosApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	suspend fun getVideoStreamWithExt(
+	public suspend fun getVideoStreamWithExt(
 		itemId: UUID,
 		container: String? = null,
 		stream: String,
@@ -198,7 +198,7 @@ class VideosApi(
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
 		val data = null
-		val response = api.get<ByteReadChannel>("/Videos/{itemId}/{stream}.{container}", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/{stream}.{container}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -272,7 +272,7 @@ class VideosApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	fun getVideoStreamWithExtUrl(
+	public fun getVideoStreamWithExtUrl(
 		itemId: UUID,
 		container: String? = null,
 		stream: String,
@@ -385,15 +385,15 @@ class VideosApi(
 	 * @param itemId The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 */
-	suspend fun getAdditionalPart(itemId: UUID, userId: UUID? = null):
+	public suspend fun getAdditionalPart(itemId: UUID, userId: UUID? = null):
 			Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["userId"] = userId
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Videos/{itemId}/AdditionalParts", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Videos/{itemId}/AdditionalParts",
+				pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -402,7 +402,7 @@ class VideosApi(
 	 *
 	 * @param itemId The item id.
 	 */
-	suspend fun deleteAlternateSources(itemId: UUID): Response<Unit> {
+	public suspend fun deleteAlternateSources(itemId: UUID): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
@@ -481,7 +481,7 @@ class VideosApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	suspend fun getVideoStream(
+	public suspend fun getVideoStream(
 		itemId: UUID,
 		container: String? = null,
 		static: Boolean? = null,
@@ -584,7 +584,7 @@ class VideosApi(
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
 		val data = null
-		val response = api.get<ByteReadChannel>("/Videos/{itemId}/stream", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/stream", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -658,7 +658,7 @@ class VideosApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	fun getVideoStreamUrl(
+	public fun getVideoStreamUrl(
 		itemId: UUID,
 		container: String? = null,
 		static: Boolean? = null,
@@ -768,7 +768,7 @@ class VideosApi(
 	 *
 	 * @param itemIds Item id list. This allows multiple, comma delimited.
 	 */
-	suspend fun mergeVersions(itemIds: String): Response<Unit> {
+	public suspend fun mergeVersions(itemIds: String): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["itemIds"] = itemIds

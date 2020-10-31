@@ -19,37 +19,37 @@ import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
  * Stores the result of an incoming quick connect request.
  */
 @Serializable
-data class QuickConnectResult(
+public data class QuickConnectResult(
 	/**
 	 * Gets a value indicating whether this request is authorized.
 	 */
 	@SerialName("Authenticated")
-	val authenticated: Boolean,
+	public val authenticated: Boolean,
 	/**
 	 * Gets or sets the secret value used to uniquely identify this request. Can be used to retrieve
 	 * authentication information.
 	 */
 	@SerialName("Secret")
-	val secret: String? = null,
+	public val secret: String? = null,
 	/**
 	 * Gets or sets the user facing code used so the user can quickly differentiate this request from
 	 * others.
 	 */
 	@SerialName("Code")
-	val code: String? = null,
+	public val code: String? = null,
 	/**
 	 * Gets or sets the private access token.
 	 */
 	@SerialName("Authentication")
-	val authentication: String? = null,
+	public val authentication: String? = null,
 	/**
 	 * Gets or sets an error message.
 	 */
 	@SerialName("Error")
-	val error: String? = null,
+	public val error: String? = null,
 	/**
 	 * Gets or sets the DateTime that this request was created.
 	 */
 	@SerialName("DateAdded")
-	val dateAdded: LocalDateTime? = null
+	public val dateAdded: LocalDateTime? = null
 )

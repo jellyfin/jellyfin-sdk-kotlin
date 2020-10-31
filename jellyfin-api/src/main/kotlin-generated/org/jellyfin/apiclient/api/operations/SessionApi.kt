@@ -23,17 +23,17 @@ import org.jellyfin.apiclient.model.api.PlayCommand
 import org.jellyfin.apiclient.model.api.PlaystateCommand
 import org.jellyfin.apiclient.model.api.SessionInfo
 
-class SessionApi(
+public class SessionApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Get all password reset providers.
 	 */
-	suspend fun getPasswordResetProviders(): Response<List<NameIdPair>> {
+	public suspend fun getPasswordResetProviders(): Response<List<NameIdPair>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<NameIdPair>>("/Auth/PasswordResetProviders", pathParameters,
+		val response = api.`get`<List<NameIdPair>>("/Auth/PasswordResetProviders", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -41,11 +41,12 @@ class SessionApi(
 	/**
 	 * Get all auth providers.
 	 */
-	suspend fun getAuthProviders(): Response<List<NameIdPair>> {
+	public suspend fun getAuthProviders(): Response<List<NameIdPair>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<NameIdPair>>("/Auth/Providers", pathParameters, queryParameters, data)
+		val response = api.`get`<List<NameIdPair>>("/Auth/Providers", pathParameters, queryParameters,
+				data)
 		return response
 	}
 
@@ -56,7 +57,7 @@ class SessionApi(
 	 * @param deviceId Filter by device Id.
 	 * @param activeWithinSeconds Optional. Filter by sessions that were active in the last n seconds.
 	 */
-	suspend fun getSessions(
+	public suspend fun getSessions(
 		controllableByUserId: UUID? = null,
 		deviceId: String? = null,
 		activeWithinSeconds: Int? = null
@@ -67,7 +68,7 @@ class SessionApi(
 		queryParameters["deviceId"] = deviceId
 		queryParameters["activeWithinSeconds"] = activeWithinSeconds
 		val data = null
-		val response = api.get<List<SessionInfo>>("/Sessions", pathParameters, queryParameters, data)
+		val response = api.`get`<List<SessionInfo>>("/Sessions", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -76,7 +77,8 @@ class SessionApi(
 	 *
 	 * @param sessionId The session id.
 	 */
-	suspend fun sendFullGeneralCommand(sessionId: String, data: GeneralCommand): Response<Unit> {
+	public suspend fun sendFullGeneralCommand(sessionId: String, `data`: GeneralCommand):
+			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
 		val queryParameters = emptyMap<String, Any?>()
@@ -91,7 +93,8 @@ class SessionApi(
 	 * @param sessionId The session id.
 	 * @param command The command to send.
 	 */
-	suspend fun sendGeneralCommand(sessionId: String, command: GeneralCommandType): Response<Unit> {
+	public suspend fun sendGeneralCommand(sessionId: String, command: GeneralCommandType):
+			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
 		pathParameters["command"] = command
@@ -111,7 +114,7 @@ class SessionApi(
 	 * @param timeoutMs The message timeout. If omitted the user will have to confirm viewing the
 	 * message.
 	 */
-	suspend fun sendMessageCommand(
+	public suspend fun sendMessageCommand(
 		sessionId: String,
 		text: String,
 		header: String? = null,
@@ -138,7 +141,7 @@ class SessionApi(
 	 * @param itemIds The ids of the items to play, comma delimited.
 	 * @param startPositionTicks The starting position of the first item.
 	 */
-	suspend fun play(
+	public suspend fun play(
 		sessionId: String,
 		playCommand: PlayCommand,
 		itemIds: String,
@@ -164,7 +167,7 @@ class SessionApi(
 	 * @param seekPositionTicks The optional position ticks.
 	 * @param controllingUserId The optional controlling user id.
 	 */
-	suspend fun sendPlaystateCommand(
+	public suspend fun sendPlaystateCommand(
 		sessionId: String,
 		command: PlaystateCommand,
 		seekPositionTicks: Long? = null,
@@ -188,7 +191,8 @@ class SessionApi(
 	 * @param sessionId The session id.
 	 * @param command The command to send.
 	 */
-	suspend fun sendSystemCommand(sessionId: String, command: GeneralCommandType): Response<Unit> {
+	public suspend fun sendSystemCommand(sessionId: String, command: GeneralCommandType):
+			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
 		pathParameters["command"] = command
@@ -205,7 +209,7 @@ class SessionApi(
 	 * @param sessionId The session id.
 	 * @param userId The user id.
 	 */
-	suspend fun addUserToSession(sessionId: String, userId: UUID): Response<Unit> {
+	public suspend fun addUserToSession(sessionId: String, userId: UUID): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
 		pathParameters["userId"] = userId
@@ -222,7 +226,7 @@ class SessionApi(
 	 * @param sessionId The session id.
 	 * @param userId The user id.
 	 */
-	suspend fun removeUserFromSession(sessionId: String, userId: UUID): Response<Unit> {
+	public suspend fun removeUserFromSession(sessionId: String, userId: UUID): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
 		pathParameters["userId"] = userId
@@ -241,7 +245,7 @@ class SessionApi(
 	 * @param itemId The Id of the item.
 	 * @param itemName The name of the item.
 	 */
-	suspend fun displayContent(
+	public suspend fun displayContent(
 		sessionId: String,
 		itemType: String,
 		itemId: String,
@@ -270,7 +274,7 @@ class SessionApi(
 	 * @param supportsSync Determines whether sync is supported.
 	 * @param supportsPersistentIdentifier Determines whether the device supports a unique identifier.
 	 */
-	suspend fun postCapabilities(
+	public suspend fun postCapabilities(
 		id: String? = null,
 		playableMediaTypes: String? = null,
 		supportedCommands: List<GeneralCommandType>? = emptyList(),
@@ -296,7 +300,8 @@ class SessionApi(
 	 *
 	 * @param id The session id.
 	 */
-	suspend fun postFullCapabilities(id: String? = null, data: ClientCapabilities): Response<Unit> {
+	public suspend fun postFullCapabilities(id: String? = null, `data`: ClientCapabilities):
+			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["id"] = id
@@ -308,7 +313,7 @@ class SessionApi(
 	/**
 	 * Reports that a session has ended.
 	 */
-	suspend fun reportSessionEnded(): Response<Unit> {
+	public suspend fun reportSessionEnded(): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
@@ -322,7 +327,7 @@ class SessionApi(
 	 * @param sessionId The session id.
 	 * @param itemId The item id.
 	 */
-	suspend fun reportViewing(sessionId: String? = null, itemId: String): Response<Unit> {
+	public suspend fun reportViewing(sessionId: String? = null, itemId: String): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["sessionId"] = sessionId

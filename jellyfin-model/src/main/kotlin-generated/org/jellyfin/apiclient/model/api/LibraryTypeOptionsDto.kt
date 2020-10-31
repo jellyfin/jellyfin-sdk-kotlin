@@ -14,30 +14,30 @@ import kotlinx.serialization.Serializable
  * Library type options dto.
  */
 @Serializable
-data class LibraryTypeOptionsDto(
+public data class LibraryTypeOptionsDto(
 	/**
 	 * Gets or sets the type.
 	 */
 	@SerialName("Type")
-	val type: String? = null,
+	public val type: String? = null,
 	/**
 	 * Gets or sets the metadata fetchers.
 	 */
 	@SerialName("MetadataFetchers")
-	val metadataFetchers: List<LibraryOptionInfoDto>? = null,
+	public val metadataFetchers: List<LibraryOptionInfoDto>? = null,
 	/**
 	 * Gets or sets the image fetchers.
 	 */
 	@SerialName("ImageFetchers")
-	val imageFetchers: List<LibraryOptionInfoDto>? = null,
+	public val imageFetchers: List<LibraryOptionInfoDto>? = null,
 	/**
 	 * Gets or sets the supported image types.
 	 */
 	@SerialName("SupportedImageTypes")
-	val supportedImageTypes: List<ImageType>? = null,
+	public val supportedImageTypes: List<ImageType>? = null,
 	/**
 	 * Gets or sets the default image options.
 	 */
 	@SerialName("DefaultImageOptions")
-	val defaultImageOptions: List<ImageOption>? = null
+	public val defaultImageOptions: List<ImageOption>? = null
 )

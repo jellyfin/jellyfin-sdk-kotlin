@@ -9,19 +9,15 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class ProfileConditionType {
+public enum class ProfileConditionType {
 	@SerialName("Equals")
 	EQUALS,
-
 	@SerialName("NotEquals")
 	NOT_EQUALS,
-
 	@SerialName("LessThanEqual")
 	LESS_THAN_EQUAL,
-
 	@SerialName("GreaterThanEqual")
 	GREATER_THAN_EQUAL,
-
 	@SerialName("EqualsAny")
-	EQUALS_ANY
+	EQUALS_ANY,
 }

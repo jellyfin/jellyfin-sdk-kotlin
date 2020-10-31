@@ -9,10 +9,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class EncodingContext {
+public enum class EncodingContext {
 	@SerialName("Streaming")
 	STREAMING,
-
 	@SerialName("Static")
-	STATIC
+	STATIC,
 }

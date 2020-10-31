@@ -12,10 +12,9 @@ import kotlinx.serialization.Serializable
  * Enum ConfigurationPageType.
  */
 @Serializable
-enum class ConfigurationPageType {
+public enum class ConfigurationPageType {
 	@SerialName("PluginConfiguration")
 	PLUGIN_CONFIGURATION,
-
 	@SerialName("None")
-	NONE
+	NONE,
 }

@@ -11,11 +11,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ContainerProfile(
+public data class ContainerProfile(
 	@SerialName("Type")
-	val type: DlnaProfileType? = null,
+	public val type: DlnaProfileType? = null,
 	@SerialName("Conditions")
-	val conditions: List<ProfileCondition>? = null,
+	public val conditions: List<ProfileCondition>? = null,
 	@SerialName("Container")
-	val container: String? = null
+	public val container: String? = null
 )

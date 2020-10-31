@@ -12,13 +12,13 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class QueryFiltersLegacy(
+public data class QueryFiltersLegacy(
 	@SerialName("Genres")
-	val genres: List<String>? = null,
+	public val genres: List<String>? = null,
 	@SerialName("Tags")
-	val tags: List<String>? = null,
+	public val tags: List<String>? = null,
 	@SerialName("OfficialRatings")
-	val officialRatings: List<String>? = null,
+	public val officialRatings: List<String>? = null,
 	@SerialName("Years")
-	val years: List<Int>? = null
+	public val years: List<Int>? = null
 )

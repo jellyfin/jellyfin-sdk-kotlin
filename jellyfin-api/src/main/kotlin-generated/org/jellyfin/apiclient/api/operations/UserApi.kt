@@ -26,7 +26,7 @@ import org.jellyfin.apiclient.model.api.UserConfiguration
 import org.jellyfin.apiclient.model.api.UserDto
 import org.jellyfin.apiclient.model.api.UserPolicy
 
-class UserApi(
+public class UserApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -35,14 +35,14 @@ class UserApi(
 	 * @param isHidden Optional filter by IsHidden=true or false.
 	 * @param isDisabled Optional filter by IsDisabled=true or false.
 	 */
-	suspend fun getUsers(isHidden: Boolean? = null, isDisabled: Boolean? = null):
+	public suspend fun getUsers(isHidden: Boolean? = null, isDisabled: Boolean? = null):
 			Response<List<UserDto>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["isHidden"] = isHidden
 		queryParameters["isDisabled"] = isDisabled
 		val data = null
-		val response = api.get<List<UserDto>>("/Users", pathParameters, queryParameters, data)
+		val response = api.`get`<List<UserDto>>("/Users", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -51,12 +51,12 @@ class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	suspend fun getUserById(userId: UUID): Response<UserDto> {
+	public suspend fun getUserById(userId: UUID): Response<UserDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<UserDto>("/Users/{userId}", pathParameters, queryParameters, data)
+		val response = api.`get`<UserDto>("/Users/{userId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -65,7 +65,7 @@ class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	suspend fun updateUser(userId: UUID, data: UserDto): Response<Unit> {
+	public suspend fun updateUser(userId: UUID, `data`: UserDto): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -78,7 +78,7 @@ class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	suspend fun deleteUser(userId: UUID): Response<Unit> {
+	public suspend fun deleteUser(userId: UUID): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -94,7 +94,7 @@ class UserApi(
 	 * @param pw The password as plain text.
 	 * @param password The password sha1-hash.
 	 */
-	suspend fun authenticateUser(
+	public suspend fun authenticateUser(
 		userId: UUID,
 		pw: String,
 		password: String? = null
@@ -115,7 +115,8 @@ class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	suspend fun updateUserConfiguration(userId: UUID, data: UserConfiguration): Response<Unit> {
+	public suspend fun updateUserConfiguration(userId: UUID, `data`: UserConfiguration):
+			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -129,7 +130,8 @@ class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	suspend fun updateUserEasyPassword(userId: UUID, data: UpdateUserEasyPassword): Response<Unit> {
+	public suspend fun updateUserEasyPassword(userId: UUID, `data`: UpdateUserEasyPassword):
+			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -143,7 +145,7 @@ class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	suspend fun updateUserPassword(userId: UUID, data: UpdateUserPassword): Response<Unit> {
+	public suspend fun updateUserPassword(userId: UUID, `data`: UpdateUserPassword): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -156,7 +158,7 @@ class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	suspend fun updateUserPolicy(userId: UUID, data: UserPolicy): Response<Unit> {
+	public suspend fun updateUserPolicy(userId: UUID, `data`: UserPolicy): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -167,7 +169,8 @@ class UserApi(
 	/**
 	 * Authenticates a user by name.
 	 */
-	suspend fun authenticateUserByName(data: AuthenticateUserByName): Response<AuthenticationResult> {
+	public suspend fun authenticateUserByName(`data`: AuthenticateUserByName):
+			Response<AuthenticationResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<AuthenticationResult>("/Users/AuthenticateByName", pathParameters,
@@ -178,7 +181,8 @@ class UserApi(
 	/**
 	 * Authenticates a user with quick connect.
 	 */
-	suspend fun authenticateWithQuickConnect(data: QuickConnectDto): Response<AuthenticationResult> {
+	public suspend fun authenticateWithQuickConnect(`data`: QuickConnectDto):
+			Response<AuthenticationResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<AuthenticationResult>("/Users/AuthenticateWithQuickConnect",
@@ -189,7 +193,7 @@ class UserApi(
 	/**
 	 * Initiates the forgot password process for a local user.
 	 */
-	suspend fun forgotPassword(data: ForgotPasswordDto): Response<ForgotPasswordResult> {
+	public suspend fun forgotPassword(`data`: ForgotPasswordDto): Response<ForgotPasswordResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<ForgotPasswordResult>("/Users/ForgotPassword", pathParameters,
@@ -200,7 +204,7 @@ class UserApi(
 	/**
 	 * Redeems a forgot password pin.
 	 */
-	suspend fun forgotPasswordPin(data: String?): Response<PinRedeemResult> {
+	public suspend fun forgotPasswordPin(`data`: String?): Response<PinRedeemResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<PinRedeemResult>("/Users/ForgotPassword/Pin", pathParameters,
@@ -211,7 +215,7 @@ class UserApi(
 	/**
 	 * Creates a user.
 	 */
-	suspend fun createUserByName(data: CreateUserByName): Response<UserDto> {
+	public suspend fun createUserByName(`data`: CreateUserByName): Response<UserDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<UserDto>("/Users/New", pathParameters, queryParameters, data)
@@ -221,11 +225,11 @@ class UserApi(
 	/**
 	 * Gets a list of publicly visible users for display on a login screen.
 	 */
-	suspend fun getPublicUsers(): Response<List<UserDto>> {
+	public suspend fun getPublicUsers(): Response<List<UserDto>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<UserDto>>("/Users/Public", pathParameters, queryParameters, data)
+		val response = api.`get`<List<UserDto>>("/Users/Public", pathParameters, queryParameters, data)
 		return response
 	}
 }

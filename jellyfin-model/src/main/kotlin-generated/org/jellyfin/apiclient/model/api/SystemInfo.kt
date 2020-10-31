@@ -16,123 +16,123 @@ import kotlinx.serialization.Serializable
  * Class SystemInfo.
  */
 @Serializable
-data class SystemInfo(
+public data class SystemInfo(
 	/**
 	 * Gets or sets the local address.
 	 */
 	@SerialName("LocalAddress")
-	val localAddress: String? = null,
+	public val localAddress: String? = null,
 	/**
 	 * Gets or sets the name of the server.
 	 */
 	@SerialName("ServerName")
-	val serverName: String? = null,
+	public val serverName: String? = null,
 	/**
 	 * Gets or sets the server version.
 	 */
 	@SerialName("Version")
-	val version: String? = null,
+	public val version: String? = null,
 	/**
 	 * Gets or sets the product name. This is the AssemblyProduct name.
 	 */
 	@SerialName("ProductName")
-	val productName: String? = null,
+	public val productName: String? = null,
 	/**
 	 * Gets or sets the operating system.
 	 */
 	@SerialName("OperatingSystem")
-	val operatingSystem: String? = null,
+	public val operatingSystem: String? = null,
 	/**
 	 * Gets or sets the id.
 	 */
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	/**
 	 * Gets or sets a value indicating whether the startup wizard is completed.
 	 */
 	@SerialName("StartupWizardCompleted")
-	val startupWizardCompleted: Boolean? = null,
+	public val startupWizardCompleted: Boolean? = null,
 	/**
 	 * Gets or sets the display name of the operating system.
 	 */
 	@SerialName("OperatingSystemDisplayName")
-	val operatingSystemDisplayName: String? = null,
+	public val operatingSystemDisplayName: String? = null,
 	/**
 	 * Get or sets the package name.
 	 */
 	@SerialName("PackageName")
-	val packageName: String? = null,
+	public val packageName: String? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance has pending restart.
 	 */
 	@SerialName("HasPendingRestart")
-	val hasPendingRestart: Boolean,
+	public val hasPendingRestart: Boolean,
 	@SerialName("IsShuttingDown")
-	val isShuttingDown: Boolean,
+	public val isShuttingDown: Boolean,
 	/**
 	 * Gets or sets a value indicating whether [supports library monitor].
 	 */
 	@SerialName("SupportsLibraryMonitor")
-	val supportsLibraryMonitor: Boolean,
+	public val supportsLibraryMonitor: Boolean,
 	/**
 	 * Gets or sets the web socket port number.
 	 */
 	@SerialName("WebSocketPortNumber")
-	val webSocketPortNumber: Int,
+	public val webSocketPortNumber: Int,
 	/**
 	 * Gets or sets the completed installations.
 	 */
 	@SerialName("CompletedInstallations")
-	val completedInstallations: List<InstallationInfo>? = null,
+	public val completedInstallations: List<InstallationInfo>? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance can self restart.
 	 */
 	@SerialName("CanSelfRestart")
-	val canSelfRestart: Boolean,
+	public val canSelfRestart: Boolean,
 	@SerialName("CanLaunchWebBrowser")
-	val canLaunchWebBrowser: Boolean,
+	public val canLaunchWebBrowser: Boolean,
 	/**
 	 * Gets or sets the program data path.
 	 */
 	@SerialName("ProgramDataPath")
-	val programDataPath: String? = null,
+	public val programDataPath: String? = null,
 	/**
 	 * Gets or sets the web UI resources path.
 	 */
 	@SerialName("WebPath")
-	val webPath: String? = null,
+	public val webPath: String? = null,
 	/**
 	 * Gets or sets the items by name path.
 	 */
 	@SerialName("ItemsByNamePath")
-	val itemsByNamePath: String? = null,
+	public val itemsByNamePath: String? = null,
 	/**
 	 * Gets or sets the cache path.
 	 */
 	@SerialName("CachePath")
-	val cachePath: String? = null,
+	public val cachePath: String? = null,
 	/**
 	 * Gets or sets the log path.
 	 */
 	@SerialName("LogPath")
-	val logPath: String? = null,
+	public val logPath: String? = null,
 	/**
 	 * Gets or sets the internal metadata path.
 	 */
 	@SerialName("InternalMetadataPath")
-	val internalMetadataPath: String? = null,
+	public val internalMetadataPath: String? = null,
 	/**
 	 * Gets or sets the transcode path.
 	 */
 	@SerialName("TranscodingTempPath")
-	val transcodingTempPath: String? = null,
+	public val transcodingTempPath: String? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance has update available.
 	 */
 	@SerialName("HasUpdateAvailable")
-	val hasUpdateAvailable: Boolean,
+	public val hasUpdateAvailable: Boolean,
 	@SerialName("EncoderLocation")
-	val encoderLocation: FFmpegLocation? = null,
+	public val encoderLocation: FFmpegLocation? = null,
 	@SerialName("SystemArchitecture")
-	val systemArchitecture: Architecture? = null
+	public val systemArchitecture: Architecture? = null
 )

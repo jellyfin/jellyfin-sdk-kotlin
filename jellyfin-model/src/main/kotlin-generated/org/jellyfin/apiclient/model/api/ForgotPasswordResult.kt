@@ -15,17 +15,17 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
 
 @Serializable
-data class ForgotPasswordResult(
+public data class ForgotPasswordResult(
 	@SerialName("Action")
-	val action: ForgotPasswordAction? = null,
+	public val action: ForgotPasswordAction? = null,
 	/**
 	 * Gets or sets the pin file.
 	 */
 	@SerialName("PinFile")
-	val pinFile: String? = null,
+	public val pinFile: String? = null,
 	/**
 	 * Gets or sets the pin expiration date.
 	 */
 	@SerialName("PinExpirationDate")
-	val pinExpirationDate: LocalDateTime? = null
+	public val pinExpirationDate: LocalDateTime? = null
 )

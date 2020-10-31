@@ -12,34 +12,25 @@ import kotlinx.serialization.Serializable
  * An enum that represents a day of the week, weekdays, weekends, or all days.
  */
 @Serializable
-enum class DynamicDayOfWeek {
+public enum class DynamicDayOfWeek {
 	@SerialName("Sunday")
 	SUNDAY,
-
 	@SerialName("Monday")
 	MONDAY,
-
 	@SerialName("Tuesday")
 	TUESDAY,
-
 	@SerialName("Wednesday")
 	WEDNESDAY,
-
 	@SerialName("Thursday")
 	THURSDAY,
-
 	@SerialName("Friday")
 	FRIDAY,
-
 	@SerialName("Saturday")
 	SATURDAY,
-
 	@SerialName("Everyday")
 	EVERYDAY,
-
 	@SerialName("Weekday")
 	WEEKDAY,
-
 	@SerialName("Weekend")
-	WEEKEND
+	WEEKEND,
 }

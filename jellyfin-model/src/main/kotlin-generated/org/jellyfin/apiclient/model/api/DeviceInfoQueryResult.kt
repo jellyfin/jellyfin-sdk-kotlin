@@ -11,20 +11,20 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DeviceInfoQueryResult(
+public data class DeviceInfoQueryResult(
 	/**
 	 * Gets or sets the items.
 	 */
 	@SerialName("Items")
-	val items: List<DeviceInfo>? = null,
+	public val items: List<DeviceInfo>? = null,
 	/**
 	 * The total number of records available.
 	 */
 	@SerialName("TotalRecordCount")
-	val totalRecordCount: Int,
+	public val totalRecordCount: Int,
 	/**
 	 * The index of the first record in Items.
 	 */
 	@SerialName("StartIndex")
-	val startIndex: Int
+	public val startIndex: Int
 )

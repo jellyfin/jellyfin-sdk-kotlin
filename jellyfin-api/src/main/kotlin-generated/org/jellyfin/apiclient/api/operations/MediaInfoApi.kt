@@ -20,7 +20,7 @@ import org.jellyfin.apiclient.model.api.LiveStreamResponse
 import org.jellyfin.apiclient.model.api.OpenLiveStreamDto
 import org.jellyfin.apiclient.model.api.PlaybackInfoResponse
 
-class MediaInfoApi(
+public class MediaInfoApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -29,13 +29,13 @@ class MediaInfoApi(
 	 * @param itemId The item id.
 	 * @param userId The user id.
 	 */
-	suspend fun getPlaybackInfo(itemId: UUID, userId: UUID): Response<PlaybackInfoResponse> {
+	public suspend fun getPlaybackInfo(itemId: UUID, userId: UUID): Response<PlaybackInfoResponse> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["userId"] = userId
 		val data = null
-		val response = api.get<PlaybackInfoResponse>("/Items/{itemId}/PlaybackInfo", pathParameters,
+		val response = api.`get`<PlaybackInfoResponse>("/Items/{itemId}/PlaybackInfo", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -59,7 +59,7 @@ class MediaInfoApi(
 	 * @param allowVideoStreamCopy Whether to allow to copy the video stream. Default: true.
 	 * @param allowAudioStreamCopy Whether to allow to copy the audio stream. Default: true.
 	 */
-	suspend fun getPostedPlaybackInfo(
+	public suspend fun getPostedPlaybackInfo(
 		itemId: UUID,
 		userId: UUID? = null,
 		maxStreamingBitrate: Long? = null,
@@ -75,7 +75,7 @@ class MediaInfoApi(
 		enableTranscoding: Boolean = true,
 		allowVideoStreamCopy: Boolean = true,
 		allowAudioStreamCopy: Boolean = true,
-		data: DeviceProfileDto
+		`data`: DeviceProfileDto
 	): Response<PlaybackInfoResponse> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -104,7 +104,7 @@ class MediaInfoApi(
 	 *
 	 * @param liveStreamId The livestream id.
 	 */
-	suspend fun closeLiveStream(liveStreamId: String): Response<Unit> {
+	public suspend fun closeLiveStream(liveStreamId: String): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["liveStreamId"] = liveStreamId
@@ -128,7 +128,7 @@ class MediaInfoApi(
 	 * @param enableDirectPlay Whether to enable direct play. Default: true.
 	 * @param enableDirectStream Whether to enable direct stream. Default: true.
 	 */
-	suspend fun openLiveStream(
+	public suspend fun openLiveStream(
 		openToken: String? = null,
 		userId: UUID? = null,
 		playSessionId: String? = null,
@@ -140,7 +140,7 @@ class MediaInfoApi(
 		itemId: UUID? = null,
 		enableDirectPlay: Boolean = true,
 		enableDirectStream: Boolean = true,
-		data: OpenLiveStreamDto
+		`data`: OpenLiveStreamDto
 	): Response<LiveStreamResponse> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -165,13 +165,13 @@ class MediaInfoApi(
 	 *
 	 * @param size The bitrate. Defaults to 102400.
 	 */
-	suspend fun getBitrateTestBytes(size: Int = 102400): Response<ByteReadChannel> {
+	public suspend fun getBitrateTestBytes(size: Int = 102400): Response<ByteReadChannel> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["size"] = size
 		val data = null
-		val response = api.get<ByteReadChannel>("/Playback/BitrateTest", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<ByteReadChannel>("/Playback/BitrateTest", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
@@ -180,7 +180,7 @@ class MediaInfoApi(
 	 *
 	 * @param size The bitrate. Defaults to 102400.
 	 */
-	fun getBitrateTestBytesUrl(size: Int): String {
+	public fun getBitrateTestBytesUrl(size: Int): String {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["size"] = size

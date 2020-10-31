@@ -9,25 +9,19 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class MediaProtocol {
+public enum class MediaProtocol {
 	@SerialName("File")
 	FILE,
-
 	@SerialName("Http")
 	HTTP,
-
 	@SerialName("Rtmp")
 	RTMP,
-
 	@SerialName("Rtsp")
 	RTSP,
-
 	@SerialName("Udp")
 	UDP,
-
 	@SerialName("Rtp")
 	RTP,
-
 	@SerialName("Ftp")
-	FTP
+	FTP,
 }

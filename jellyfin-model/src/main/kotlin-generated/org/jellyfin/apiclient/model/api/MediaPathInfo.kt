@@ -10,9 +10,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class MediaPathInfo(
+public data class MediaPathInfo(
 	@SerialName("Path")
-	val path: String? = null,
+	public val path: String? = null,
 	@SerialName("NetworkPath")
-	val networkPath: String? = null
+	public val networkPath: String? = null
 )

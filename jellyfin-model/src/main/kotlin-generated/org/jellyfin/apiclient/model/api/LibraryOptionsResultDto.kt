@@ -13,25 +13,25 @@ import kotlinx.serialization.Serializable
  * Library options result dto.
  */
 @Serializable
-data class LibraryOptionsResultDto(
+public data class LibraryOptionsResultDto(
 	/**
 	 * Gets or sets the metadata savers.
 	 */
 	@SerialName("MetadataSavers")
-	val metadataSavers: List<LibraryOptionInfoDto>? = null,
+	public val metadataSavers: List<LibraryOptionInfoDto>? = null,
 	/**
 	 * Gets or sets the metadata readers.
 	 */
 	@SerialName("MetadataReaders")
-	val metadataReaders: List<LibraryOptionInfoDto>? = null,
+	public val metadataReaders: List<LibraryOptionInfoDto>? = null,
 	/**
 	 * Gets or sets the subtitle fetchers.
 	 */
 	@SerialName("SubtitleFetchers")
-	val subtitleFetchers: List<LibraryOptionInfoDto>? = null,
+	public val subtitleFetchers: List<LibraryOptionInfoDto>? = null,
 	/**
 	 * Gets or sets the type options.
 	 */
 	@SerialName("TypeOptions")
-	val typeOptions: List<LibraryTypeOptionsDto>? = null
+	public val typeOptions: List<LibraryTypeOptionsDto>? = null
 )

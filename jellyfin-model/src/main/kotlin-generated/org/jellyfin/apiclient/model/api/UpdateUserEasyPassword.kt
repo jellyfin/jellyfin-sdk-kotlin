@@ -14,20 +14,20 @@ import kotlinx.serialization.Serializable
  * The update user easy password request body.
  */
 @Serializable
-data class UpdateUserEasyPassword(
+public data class UpdateUserEasyPassword(
 	/**
 	 * Gets or sets the new sha1-hashed password.
 	 */
 	@SerialName("NewPassword")
-	val newPassword: String? = null,
+	public val newPassword: String? = null,
 	/**
 	 * Gets or sets the new password.
 	 */
 	@SerialName("NewPw")
-	val newPw: String? = null,
+	public val newPw: String? = null,
 	/**
 	 * Gets or sets a value indicating whether to reset the password.
 	 */
 	@SerialName("ResetPassword")
-	val resetPassword: Boolean
+	public val resetPassword: Boolean
 )

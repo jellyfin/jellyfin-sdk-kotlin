@@ -13,7 +13,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 
-class AlbumsApi(
+public class AlbumsApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -24,7 +24,7 @@ class AlbumsApi(
 	 * @param excludeArtistIds Optional. Ids of artists to exclude.
 	 * @param limit Optional. The maximum number of records to return.
 	 */
-	suspend fun getSimilarAlbums(
+	public suspend fun getSimilarAlbums(
 		albumId: String,
 		userId: UUID? = null,
 		excludeArtistIds: String? = null,
@@ -37,7 +37,7 @@ class AlbumsApi(
 		queryParameters["excludeArtistIds"] = excludeArtistIds
 		queryParameters["limit"] = limit
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Albums/{albumId}/Similar", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Albums/{albumId}/Similar", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -50,7 +50,7 @@ class AlbumsApi(
 	 * @param excludeArtistIds Optional. Ids of artists to exclude.
 	 * @param limit Optional. The maximum number of records to return.
 	 */
-	suspend fun getSimilarArtists(
+	public suspend fun getSimilarArtists(
 		artistId: String,
 		userId: UUID? = null,
 		excludeArtistIds: String? = null,
@@ -63,7 +63,7 @@ class AlbumsApi(
 		queryParameters["excludeArtistIds"] = excludeArtistIds
 		queryParameters["limit"] = limit
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Artists/{artistId}/Similar", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/{artistId}/Similar", pathParameters,
 				queryParameters, data)
 		return response
 	}

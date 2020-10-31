@@ -9,13 +9,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class MediaSourceType {
+public enum class MediaSourceType {
 	@SerialName("Default")
 	DEFAULT,
-
 	@SerialName("Grouping")
 	GROUPING,
-
 	@SerialName("Placeholder")
-	PLACEHOLDER
+	PLACEHOLDER,
 }

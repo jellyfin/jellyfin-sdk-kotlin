@@ -19,7 +19,7 @@ import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.ItemFilter
 import org.jellyfin.apiclient.model.api.LocationType
 
-class ItemsApi(
+public class ItemsApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -147,7 +147,7 @@ class ItemsApi(
 	 * @param enableTotalRecordCount Optional. Enable the total record count.
 	 * @param enableImages Optional, include image information in output.
 	 */
-	suspend fun getItems(
+	public suspend fun getItems(
 		uId: UUID? = null,
 		userId: UUID? = null,
 		maxOfficialRating: String? = null,
@@ -314,7 +314,7 @@ class ItemsApi(
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		queryParameters["enableImages"] = enableImages
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Items", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Items", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -443,7 +443,7 @@ class ItemsApi(
 	 * @param enableTotalRecordCount Optional. Enable the total record count.
 	 * @param enableImages Optional, include image information in output.
 	 */
-	suspend fun getItems2(
+	public suspend fun getItems2(
 		uId: UUID? = null,
 		userId: UUID? = null,
 		maxOfficialRating: String? = null,
@@ -610,7 +610,7 @@ class ItemsApi(
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		queryParameters["enableImages"] = enableImages
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Users/{uId}/Items", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Users/{uId}/Items", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -639,7 +639,7 @@ class ItemsApi(
 	 * @param enableTotalRecordCount Optional. Enable the total record count.
 	 * @param enableImages Optional. Include image information in output.
 	 */
-	suspend fun getResumeItems(
+	public suspend fun getResumeItems(
 		userId: UUID,
 		startIndex: Int? = null,
 		limit: Int? = null,
@@ -672,7 +672,7 @@ class ItemsApi(
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		queryParameters["enableImages"] = enableImages
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Users/{userId}/Items/Resume", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Users/{userId}/Items/Resume", pathParameters,
 				queryParameters, data)
 		return response
 	}

@@ -21,49 +21,49 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
  * Class PlaybackStopInfo.
  */
 @Serializable
-data class PlaybackStopInfo(
+public data class PlaybackStopInfo(
 	@SerialName("Item")
-	val item: BaseItemDto? = null,
+	public val item: BaseItemDto? = null,
 	/**
 	 * Gets or sets the item identifier.
 	 */
 	@SerialName("ItemId")
-	val itemId: UUID,
+	public val itemId: UUID,
 	/**
 	 * Gets or sets the session id.
 	 */
 	@SerialName("SessionId")
-	val sessionId: String? = null,
+	public val sessionId: String? = null,
 	/**
 	 * Gets or sets the media version identifier.
 	 */
 	@SerialName("MediaSourceId")
-	val mediaSourceId: String? = null,
+	public val mediaSourceId: String? = null,
 	/**
 	 * Gets or sets the position ticks.
 	 */
 	@SerialName("PositionTicks")
-	val positionTicks: Long? = null,
+	public val positionTicks: Long? = null,
 	/**
 	 * Gets or sets the live stream identifier.
 	 */
 	@SerialName("LiveStreamId")
-	val liveStreamId: String? = null,
+	public val liveStreamId: String? = null,
 	/**
 	 * Gets or sets the play session identifier.
 	 */
 	@SerialName("PlaySessionId")
-	val playSessionId: String? = null,
+	public val playSessionId: String? = null,
 	/**
 	 * Gets or sets a value indicating whether this MediaBrowser.Model.Session.PlaybackStopInfo is
 	 * failed.
 	 */
 	@SerialName("Failed")
-	val failed: Boolean,
+	public val failed: Boolean,
 	@SerialName("NextMediaType")
-	val nextMediaType: String? = null,
+	public val nextMediaType: String? = null,
 	@SerialName("PlaylistItemId")
-	val playlistItemId: String? = null,
+	public val playlistItemId: String? = null,
 	@SerialName("NowPlayingQueue")
-	val nowPlayingQueue: List<QueueItem>? = null
+	public val nowPlayingQueue: List<QueueItem>? = null
 )

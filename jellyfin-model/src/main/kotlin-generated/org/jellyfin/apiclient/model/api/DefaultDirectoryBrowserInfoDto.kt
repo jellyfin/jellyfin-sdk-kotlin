@@ -13,10 +13,10 @@ import kotlinx.serialization.Serializable
  * Default directory browser info.
  */
 @Serializable
-data class DefaultDirectoryBrowserInfoDto(
+public data class DefaultDirectoryBrowserInfoDto(
 	/**
 	 * Gets or sets the path.
 	 */
 	@SerialName("Path")
-	val path: String? = null
+	public val path: String? = null
 )

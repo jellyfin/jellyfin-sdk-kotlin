@@ -12,10 +12,9 @@ import kotlinx.serialization.Serializable
  * An enum representing the axis that should be scrolled.
  */
 @Serializable
-enum class ScrollDirection {
+public enum class ScrollDirection {
 	@SerialName("Horizontal")
 	HORIZONTAL,
-
 	@SerialName("Vertical")
-	VERTICAL
+	VERTICAL,
 }

@@ -14,17 +14,17 @@ import kotlinx.serialization.json.JsonElement
  * Class GroupUpdate.
  */
 @Serializable
-data class ObjectGroupUpdate(
+public data class ObjectGroupUpdate(
 	/**
 	 * Gets or sets the group identifier.
 	 */
 	@SerialName("GroupId")
-	val groupId: String? = null,
+	public val groupId: String? = null,
 	@SerialName("Type")
-	val type: GroupUpdateType? = null,
+	public val type: GroupUpdateType? = null,
 	/**
 	 * Gets or sets the data.
 	 */
 	@SerialName("Data")
-	val data: JsonElement
+	public val `data`: JsonElement
 )

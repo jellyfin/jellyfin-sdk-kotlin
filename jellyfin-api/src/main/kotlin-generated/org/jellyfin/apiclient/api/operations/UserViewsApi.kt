@@ -15,7 +15,7 @@ import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.SpecialViewOptionDto
 
-class UserViewsApi(
+public class UserViewsApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -23,12 +23,12 @@ class UserViewsApi(
 	 *
 	 * @param userId User id.
 	 */
-	suspend fun getGroupingOptions(userId: UUID): Response<List<SpecialViewOptionDto>> {
+	public suspend fun getGroupingOptions(userId: UUID): Response<List<SpecialViewOptionDto>> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<SpecialViewOptionDto>>("/Users/{userId}/GroupingOptions",
+		val response = api.`get`<List<SpecialViewOptionDto>>("/Users/{userId}/GroupingOptions",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -42,7 +42,7 @@ class UserViewsApi(
 	 * @param presetViews Preset views.
 	 * @param includeHidden Whether or not to include hidden content.
 	 */
-	suspend fun getUserViews(
+	public suspend fun getUserViews(
 		userId: UUID,
 		includeExternalContent: Boolean? = null,
 		presetViews: String? = null,
@@ -55,7 +55,7 @@ class UserViewsApi(
 		queryParameters["presetViews"] = presetViews
 		queryParameters["includeHidden"] = includeHidden
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Users/{userId}/Views", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Users/{userId}/Views", pathParameters,
 				queryParameters, data)
 		return response
 	}

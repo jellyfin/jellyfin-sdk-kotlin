@@ -12,43 +12,31 @@ import kotlinx.serialization.Serializable
  * Enum ImageType.
  */
 @Serializable
-enum class ImageType {
+public enum class ImageType {
 	@SerialName("Primary")
 	PRIMARY,
-
 	@SerialName("Art")
 	ART,
-
 	@SerialName("Backdrop")
 	BACKDROP,
-
 	@SerialName("Banner")
 	BANNER,
-
 	@SerialName("Logo")
 	LOGO,
-
 	@SerialName("Thumb")
 	THUMB,
-
 	@SerialName("Disc")
 	DISC,
-
 	@SerialName("Box")
 	BOX,
-
 	@SerialName("Screenshot")
 	SCREENSHOT,
-
 	@SerialName("Menu")
 	MENU,
-
 	@SerialName("Chapter")
 	CHAPTER,
-
 	@SerialName("BoxRear")
 	BOX_REAR,
-
 	@SerialName("Profile")
-	PROFILE
+	PROFILE,
 }

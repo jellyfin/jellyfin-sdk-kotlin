@@ -13,35 +13,35 @@ import kotlinx.serialization.Serializable
  * Class PackageVersionInfo.
  */
 @Serializable
-data class VersionInfo(
+public data class VersionInfo(
 	/**
 	 * Gets or sets the version.
 	 */
 	@SerialName("version")
-	val version: String? = null,
+	public val version: String? = null,
 	/**
 	 * Gets or sets the changelog for this version.
 	 */
 	@SerialName("changelog")
-	val changelog: String? = null,
+	public val changelog: String? = null,
 	/**
 	 * Gets or sets the ABI that this version was built against.
 	 */
 	@SerialName("targetAbi")
-	val targetAbi: String? = null,
+	public val targetAbi: String? = null,
 	/**
 	 * Gets or sets the source URL.
 	 */
 	@SerialName("sourceUrl")
-	val sourceUrl: String? = null,
+	public val sourceUrl: String? = null,
 	/**
 	 * Gets or sets a checksum for the binary.
 	 */
 	@SerialName("checksum")
-	val checksum: String? = null,
+	public val checksum: String? = null,
 	/**
 	 * Gets or sets a timestamp of when the binary was built.
 	 */
 	@SerialName("timestamp")
-	val timestamp: String? = null
+	public val timestamp: String? = null
 )

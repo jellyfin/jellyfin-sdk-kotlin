@@ -14,27 +14,27 @@ import kotlinx.serialization.Serializable
  * Class TaskTriggerInfo.
  */
 @Serializable
-data class TaskTriggerInfo(
+public data class TaskTriggerInfo(
 	/**
 	 * Gets or sets the type.
 	 */
 	@SerialName("Type")
-	val type: String? = null,
+	public val type: String? = null,
 	/**
 	 * Gets or sets the time of day.
 	 */
 	@SerialName("TimeOfDayTicks")
-	val timeOfDayTicks: Long? = null,
+	public val timeOfDayTicks: Long? = null,
 	/**
 	 * Gets or sets the interval.
 	 */
 	@SerialName("IntervalTicks")
-	val intervalTicks: Long? = null,
+	public val intervalTicks: Long? = null,
 	@SerialName("DayOfWeek")
-	val dayOfWeek: DayOfWeek? = null,
+	public val dayOfWeek: DayOfWeek? = null,
 	/**
 	 * Gets or sets the maximum runtime ticks.
 	 */
 	@SerialName("MaxRuntimeTicks")
-	val maxRuntimeTicks: Long? = null
+	public val maxRuntimeTicks: Long? = null
 )

@@ -9,16 +9,13 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class MetadataRefreshMode {
+public enum class MetadataRefreshMode {
 	@SerialName("None")
 	NONE,
-
 	@SerialName("ValidationOnly")
 	VALIDATION_ONLY,
-
 	@SerialName("Default")
 	DEFAULT,
-
 	@SerialName("FullRefresh")
-	FULL_REFRESH
+	FULL_REFRESH,
 }

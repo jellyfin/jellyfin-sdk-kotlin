@@ -18,7 +18,7 @@ import org.jellyfin.apiclient.model.api.BaseItemDto
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.ItemFilter
 
-class ArtistsApi(
+public class ArtistsApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -76,7 +76,7 @@ class ArtistsApi(
 	 * @param enableImages Optional, include image information in output.
 	 * @param enableTotalRecordCount Total record count.
 	 */
-	suspend fun getArtists(
+	public suspend fun getArtists(
 		minCommunityRating: Double? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
@@ -141,7 +141,8 @@ class ArtistsApi(
 		queryParameters["enableImages"] = enableImages
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Artists", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Artists", pathParameters, queryParameters,
+				data)
 		return response
 	}
 
@@ -151,13 +152,13 @@ class ArtistsApi(
 	 * @param name Studio name.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 */
-	suspend fun getArtistByName(name: String, userId: UUID? = null): Response<BaseItemDto> {
+	public suspend fun getArtistByName(name: String, userId: UUID? = null): Response<BaseItemDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["userId"] = userId
 		val data = null
-		val response = api.get<BaseItemDto>("/Artists/{name}", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDto>("/Artists/{name}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -216,7 +217,7 @@ class ArtistsApi(
 	 * @param enableImages Optional, include image information in output.
 	 * @param enableTotalRecordCount Total record count.
 	 */
-	suspend fun getAlbumArtists(
+	public suspend fun getAlbumArtists(
 		minCommunityRating: Double? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
@@ -281,7 +282,7 @@ class ArtistsApi(
 		queryParameters["enableImages"] = enableImages
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Artists/AlbumArtists", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/AlbumArtists", pathParameters,
 				queryParameters, data)
 		return response
 	}

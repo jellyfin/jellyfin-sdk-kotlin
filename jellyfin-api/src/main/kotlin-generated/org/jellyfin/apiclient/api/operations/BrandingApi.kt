@@ -11,17 +11,17 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BrandingOptions
 
-class BrandingApi(
+public class BrandingApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Gets branding configuration.
 	 */
-	suspend fun getBrandingOptions(): Response<BrandingOptions> {
+	public suspend fun getBrandingOptions(): Response<BrandingOptions> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<BrandingOptions>("/Branding/Configuration", pathParameters,
+		val response = api.`get`<BrandingOptions>("/Branding/Configuration", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -29,22 +29,22 @@ class BrandingApi(
 	/**
 	 * Gets branding css.
 	 */
-	suspend fun getBrandingCss(): Response<String> {
+	public suspend fun getBrandingCss(): Response<String> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<String>("/Branding/Css", pathParameters, queryParameters, data)
+		val response = api.`get`<String>("/Branding/Css", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Gets branding css.
 	 */
-	suspend fun getBrandingCss2(): Response<String> {
+	public suspend fun getBrandingCss2(): Response<String> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<String>("/Branding/Css.css", pathParameters, queryParameters, data)
+		val response = api.`get`<String>("/Branding/Css.css", pathParameters, queryParameters, data)
 		return response
 	}
 }

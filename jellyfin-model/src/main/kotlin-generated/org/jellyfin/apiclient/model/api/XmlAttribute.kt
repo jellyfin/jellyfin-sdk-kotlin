@@ -10,9 +10,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class XmlAttribute(
+public data class XmlAttribute(
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	@SerialName("Value")
-	val value: String? = null
+	public val value: String? = null
 )

@@ -9,13 +9,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class RepeatMode {
+public enum class RepeatMode {
 	@SerialName("RepeatNone")
 	REPEAT_NONE,
-
 	@SerialName("RepeatAll")
 	REPEAT_ALL,
-
 	@SerialName("RepeatOne")
-	REPEAT_ONE
+	REPEAT_ONE,
 }

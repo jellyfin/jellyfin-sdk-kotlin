@@ -12,16 +12,13 @@ import kotlinx.serialization.Serializable
  * Enum VideoType.
  */
 @Serializable
-enum class VideoType {
+public enum class VideoType {
 	@SerialName("VideoFile")
 	VIDEO_FILE,
-
 	@SerialName("Iso")
 	ISO,
-
 	@SerialName("Dvd")
 	DVD,
-
 	@SerialName("BluRay")
-	BLU_RAY
+	BLU_RAY,
 }

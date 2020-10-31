@@ -12,16 +12,13 @@ import kotlinx.serialization.Serializable
  * Enum MediaStreamType.
  */
 @Serializable
-enum class MediaStreamType {
+public enum class MediaStreamType {
 	@SerialName("Audio")
 	AUDIO,
-
 	@SerialName("Video")
 	VIDEO,
-
 	@SerialName("Subtitle")
 	SUBTITLE,
-
 	@SerialName("EmbeddedImage")
-	EMBEDDED_IMAGE
+	EMBEDDED_IMAGE,
 }

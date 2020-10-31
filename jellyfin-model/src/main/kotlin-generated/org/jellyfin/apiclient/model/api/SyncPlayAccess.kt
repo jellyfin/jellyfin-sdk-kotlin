@@ -12,13 +12,11 @@ import kotlinx.serialization.Serializable
  * Enum SyncPlayAccess.
  */
 @Serializable
-enum class SyncPlayAccess {
+public enum class SyncPlayAccess {
 	@SerialName("CreateAndJoinGroups")
 	CREATE_AND_JOIN_GROUPS,
-
 	@SerialName("JoinGroups")
 	JOIN_GROUPS,
-
 	@SerialName("None")
-	NONE
+	NONE,
 }

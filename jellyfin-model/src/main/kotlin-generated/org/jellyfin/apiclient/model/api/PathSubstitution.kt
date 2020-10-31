@@ -10,9 +10,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PathSubstitution(
+public data class PathSubstitution(
 	@SerialName("From")
-	val from: String? = null,
+	public val from: String? = null,
 	@SerialName("To")
-	val to: String? = null
+	public val to: String? = null
 )

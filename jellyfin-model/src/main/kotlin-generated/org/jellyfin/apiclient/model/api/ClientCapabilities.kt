@@ -12,25 +12,25 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ClientCapabilities(
+public data class ClientCapabilities(
 	@SerialName("PlayableMediaTypes")
-	val playableMediaTypes: List<String>? = null,
+	public val playableMediaTypes: List<String>? = null,
 	@SerialName("SupportedCommands")
-	val supportedCommands: List<GeneralCommandType>? = null,
+	public val supportedCommands: List<GeneralCommandType>? = null,
 	@SerialName("SupportsMediaControl")
-	val supportsMediaControl: Boolean,
+	public val supportsMediaControl: Boolean,
 	@SerialName("SupportsContentUploading")
-	val supportsContentUploading: Boolean,
+	public val supportsContentUploading: Boolean,
 	@SerialName("MessageCallbackUrl")
-	val messageCallbackUrl: String? = null,
+	public val messageCallbackUrl: String? = null,
 	@SerialName("SupportsPersistentIdentifier")
-	val supportsPersistentIdentifier: Boolean,
+	public val supportsPersistentIdentifier: Boolean,
 	@SerialName("SupportsSync")
-	val supportsSync: Boolean,
+	public val supportsSync: Boolean,
 	@SerialName("DeviceProfile")
-	val deviceProfile: DeviceProfile? = null,
+	public val deviceProfile: DeviceProfile? = null,
 	@SerialName("AppStoreUrl")
-	val appStoreUrl: String? = null,
+	public val appStoreUrl: String? = null,
 	@SerialName("IconUrl")
-	val iconUrl: String? = null
+	public val iconUrl: String? = null
 )

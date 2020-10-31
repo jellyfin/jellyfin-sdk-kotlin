@@ -15,7 +15,7 @@ import kotlin.String
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 
-class UniversalAudioApi(
+public class UniversalAudioApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -40,7 +40,7 @@ class UniversalAudioApi(
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param enableRedirection Whether to enable redirection. Defaults to true.
 	 */
-	suspend fun getUniversalAudioStream(
+	public suspend fun getUniversalAudioStream(
 		itemId: UUID,
 		container: String? = null,
 		mediaSourceId: String? = null,
@@ -79,7 +79,7 @@ class UniversalAudioApi(
 		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
 		queryParameters["enableRedirection"] = enableRedirection
 		val data = null
-		val response = api.get<ByteReadChannel>("/Audio/{itemId}/universal", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/universal", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -106,7 +106,7 @@ class UniversalAudioApi(
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param enableRedirection Whether to enable redirection. Defaults to true.
 	 */
-	fun getUniversalAudioStreamUrl(
+	public fun getUniversalAudioStreamUrl(
 		itemId: UUID,
 		container: String? = null,
 		mediaSourceId: String? = null,
@@ -169,7 +169,7 @@ class UniversalAudioApi(
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param enableRedirection Whether to enable redirection. Defaults to true.
 	 */
-	suspend fun getUniversalAudioStream2(
+	public suspend fun getUniversalAudioStream2(
 		itemId: UUID,
 		container: String? = null,
 		mediaSourceId: String? = null,
@@ -208,7 +208,7 @@ class UniversalAudioApi(
 		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
 		queryParameters["enableRedirection"] = enableRedirection
 		val data = null
-		val response = api.get<ByteReadChannel>("/Audio/{itemId}/universal.{container}", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/universal.{container}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -235,7 +235,7 @@ class UniversalAudioApi(
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param enableRedirection Whether to enable redirection. Defaults to true.
 	 */
-	fun getUniversalAudioStream2Url(
+	public fun getUniversalAudioStream2Url(
 		itemId: UUID,
 		container: String? = null,
 		mediaSourceId: String? = null,

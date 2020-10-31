@@ -13,16 +13,16 @@ import kotlinx.serialization.Serializable
  * Media Update Info Dto.
  */
 @Serializable
-data class MediaUpdateInfoDto(
+public data class MediaUpdateInfoDto(
 	/**
 	 * Gets or sets media path.
 	 */
 	@SerialName("Path")
-	val path: String? = null,
+	public val path: String? = null,
 	/**
 	 * Gets or sets media update type.
 	 * Created, Modified, Deleted.
 	 */
 	@SerialName("UpdateType")
-	val updateType: String? = null
+	public val updateType: String? = null
 )

@@ -12,31 +12,23 @@ import kotlinx.serialization.Serializable
  * Enum PlaystateCommand.
  */
 @Serializable
-enum class PlaystateCommand {
+public enum class PlaystateCommand {
 	@SerialName("Stop")
 	STOP,
-
 	@SerialName("Pause")
 	PAUSE,
-
 	@SerialName("Unpause")
 	UNPAUSE,
-
 	@SerialName("NextTrack")
 	NEXT_TRACK,
-
 	@SerialName("PreviousTrack")
 	PREVIOUS_TRACK,
-
 	@SerialName("Seek")
 	SEEK,
-
 	@SerialName("Rewind")
 	REWIND,
-
 	@SerialName("FastForward")
 	FAST_FORWARD,
-
 	@SerialName("PlayPause")
-	PLAY_PAUSE
+	PLAY_PAUSE,
 }

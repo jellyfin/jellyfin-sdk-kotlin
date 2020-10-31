@@ -9,22 +9,17 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class ProgramAudio {
+public enum class ProgramAudio {
 	@SerialName("Mono")
 	MONO,
-
 	@SerialName("Stereo")
 	STEREO,
-
 	@SerialName("Dolby")
 	DOLBY,
-
 	@SerialName("DolbyDigital")
 	DOLBY_DIGITAL,
-
 	@SerialName("Thx")
 	THX,
-
 	@SerialName("Atmos")
-	ATMOS
+	ATMOS,
 }

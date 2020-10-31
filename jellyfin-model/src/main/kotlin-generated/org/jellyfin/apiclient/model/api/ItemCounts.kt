@@ -13,65 +13,65 @@ import kotlinx.serialization.Serializable
  * Class LibrarySummary.
  */
 @Serializable
-data class ItemCounts(
+public data class ItemCounts(
 	/**
 	 * Gets or sets the movie count.
 	 */
 	@SerialName("MovieCount")
-	val movieCount: Int,
+	public val movieCount: Int,
 	/**
 	 * Gets or sets the series count.
 	 */
 	@SerialName("SeriesCount")
-	val seriesCount: Int,
+	public val seriesCount: Int,
 	/**
 	 * Gets or sets the episode count.
 	 */
 	@SerialName("EpisodeCount")
-	val episodeCount: Int,
+	public val episodeCount: Int,
 	/**
 	 * Gets or sets the artist count.
 	 */
 	@SerialName("ArtistCount")
-	val artistCount: Int,
+	public val artistCount: Int,
 	/**
 	 * Gets or sets the program count.
 	 */
 	@SerialName("ProgramCount")
-	val programCount: Int,
+	public val programCount: Int,
 	/**
 	 * Gets or sets the trailer count.
 	 */
 	@SerialName("TrailerCount")
-	val trailerCount: Int,
+	public val trailerCount: Int,
 	/**
 	 * Gets or sets the song count.
 	 */
 	@SerialName("SongCount")
-	val songCount: Int,
+	public val songCount: Int,
 	/**
 	 * Gets or sets the album count.
 	 */
 	@SerialName("AlbumCount")
-	val albumCount: Int,
+	public val albumCount: Int,
 	/**
 	 * Gets or sets the music video count.
 	 */
 	@SerialName("MusicVideoCount")
-	val musicVideoCount: Int,
+	public val musicVideoCount: Int,
 	/**
 	 * Gets or sets the box set count.
 	 */
 	@SerialName("BoxSetCount")
-	val boxSetCount: Int,
+	public val boxSetCount: Int,
 	/**
 	 * Gets or sets the book count.
 	 */
 	@SerialName("BookCount")
-	val bookCount: Int,
+	public val bookCount: Int,
 	/**
 	 * Gets or sets the item count.
 	 */
 	@SerialName("ItemCount")
-	val itemCount: Int
+	public val itemCount: Int
 )

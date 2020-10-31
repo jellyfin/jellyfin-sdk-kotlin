@@ -14,15 +14,15 @@ import kotlinx.serialization.Serializable
  * A list of notifications with the total record count for pagination.
  */
 @Serializable
-data class NotificationResultDto(
+public data class NotificationResultDto(
 	/**
 	 * Gets or sets the current page of notifications.
 	 */
 	@SerialName("Notifications")
-	val notifications: List<NotificationDto>? = null,
+	public val notifications: List<NotificationDto>? = null,
 	/**
 	 * Gets or sets the total number of notifications.
 	 */
 	@SerialName("TotalRecordCount")
-	val totalRecordCount: Int
+	public val totalRecordCount: Int
 )

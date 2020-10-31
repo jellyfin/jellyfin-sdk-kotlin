@@ -15,41 +15,41 @@ import kotlinx.serialization.Serializable
  * Interface IScheduledTaskWorker.
  */
 @Serializable
-data class IScheduledTaskWorker(
+public data class IScheduledTaskWorker(
 	@SerialName("ScheduledTask")
-	val scheduledTask: IScheduledTask? = null,
+	public val scheduledTask: IScheduledTask? = null,
 	@SerialName("LastExecutionResult")
-	val lastExecutionResult: TaskResult? = null,
+	public val lastExecutionResult: TaskResult? = null,
 	/**
 	 * Gets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets the description.
 	 */
 	@SerialName("Description")
-	val description: String? = null,
+	public val description: String? = null,
 	/**
 	 * Gets the category.
 	 */
 	@SerialName("Category")
-	val category: String? = null,
+	public val category: String? = null,
 	@SerialName("State")
-	val state: TaskState? = null,
+	public val state: TaskState? = null,
 	/**
 	 * Gets the current progress.
 	 */
 	@SerialName("CurrentProgress")
-	val currentProgress: Double? = null,
+	public val currentProgress: Double? = null,
 	/**
 	 * Gets the triggers that define when the task will run.
 	 */
 	@SerialName("Triggers")
-	val triggers: List<TaskTriggerInfo>? = null,
+	public val triggers: List<TaskTriggerInfo>? = null,
 	/**
 	 * Gets the unique id.
 	 */
 	@SerialName("Id")
-	val id: String? = null
+	public val id: String? = null
 )

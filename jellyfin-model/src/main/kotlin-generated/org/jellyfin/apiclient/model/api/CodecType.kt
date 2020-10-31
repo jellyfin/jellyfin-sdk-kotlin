@@ -9,13 +9,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class CodecType {
+public enum class CodecType {
 	@SerialName("Video")
 	VIDEO,
-
 	@SerialName("VideoAudio")
 	VIDEO_AUDIO,
-
 	@SerialName("Audio")
-	AUDIO
+	AUDIO,
 }

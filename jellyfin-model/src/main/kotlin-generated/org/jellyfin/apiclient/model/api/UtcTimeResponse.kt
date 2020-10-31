@@ -13,15 +13,15 @@ import kotlinx.serialization.Serializable
  * Class UtcTimeResponse.
  */
 @Serializable
-data class UtcTimeResponse(
+public data class UtcTimeResponse(
 	/**
 	 * Gets or sets the UTC time when request has been received.
 	 */
 	@SerialName("RequestReceptionTime")
-	val requestReceptionTime: String? = null,
+	public val requestReceptionTime: String? = null,
 	/**
 	 * Gets or sets the UTC time when response has been sent.
 	 */
 	@SerialName("ResponseTransmissionTime")
-	val responseTransmissionTime: String? = null
+	public val responseTransmissionTime: String? = null
 )

@@ -22,60 +22,60 @@ import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
  * Class UserItemDataDto.
  */
 @Serializable
-data class UserItemDataDto(
+public data class UserItemDataDto(
 	/**
 	 * Gets or sets the rating.
 	 */
 	@SerialName("Rating")
-	val rating: Double? = null,
+	public val rating: Double? = null,
 	/**
 	 * Gets or sets the played percentage.
 	 */
 	@SerialName("PlayedPercentage")
-	val playedPercentage: Double? = null,
+	public val playedPercentage: Double? = null,
 	/**
 	 * Gets or sets the unplayed item count.
 	 */
 	@SerialName("UnplayedItemCount")
-	val unplayedItemCount: Int? = null,
+	public val unplayedItemCount: Int? = null,
 	/**
 	 * Gets or sets the playback position ticks.
 	 */
 	@SerialName("PlaybackPositionTicks")
-	val playbackPositionTicks: Long,
+	public val playbackPositionTicks: Long,
 	/**
 	 * Gets or sets the play count.
 	 */
 	@SerialName("PlayCount")
-	val playCount: Int,
+	public val playCount: Int,
 	/**
 	 * Gets or sets a value indicating whether this instance is favorite.
 	 */
 	@SerialName("IsFavorite")
-	val isFavorite: Boolean,
+	public val isFavorite: Boolean,
 	/**
 	 * Gets or sets a value indicating whether this MediaBrowser.Model.Dto.UserItemDataDto is likes.
 	 */
 	@SerialName("Likes")
-	val likes: Boolean? = null,
+	public val likes: Boolean? = null,
 	/**
 	 * Gets or sets the last played date.
 	 */
 	@SerialName("LastPlayedDate")
-	val lastPlayedDate: LocalDateTime? = null,
+	public val lastPlayedDate: LocalDateTime? = null,
 	/**
 	 * Gets or sets a value indicating whether this MediaBrowser.Model.Dto.UserItemDataDto is played.
 	 */
 	@SerialName("Played")
-	val played: Boolean,
+	public val played: Boolean,
 	/**
 	 * Gets or sets the key.
 	 */
 	@SerialName("Key")
-	val key: String? = null,
+	public val key: String? = null,
 	/**
 	 * Gets or sets the item identifier.
 	 */
 	@SerialName("ItemId")
-	val itemId: String? = null
+	public val itemId: String? = null
 )

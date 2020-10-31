@@ -10,13 +10,13 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TunerChannelMapping(
+public data class TunerChannelMapping(
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	@SerialName("ProviderChannelName")
-	val providerChannelName: String? = null,
+	public val providerChannelName: String? = null,
 	@SerialName("ProviderChannelId")
-	val providerChannelId: String? = null,
+	public val providerChannelId: String? = null,
 	@SerialName("Id")
-	val id: String? = null
+	public val id: String? = null
 )

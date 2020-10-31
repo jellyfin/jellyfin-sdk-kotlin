@@ -16,7 +16,7 @@ import org.jellyfin.apiclient.model.api.DeviceInfo
 import org.jellyfin.apiclient.model.api.DeviceInfoQueryResult
 import org.jellyfin.apiclient.model.api.DeviceOptions
 
-class DevicesApi(
+public class DevicesApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -25,14 +25,14 @@ class DevicesApi(
 	 * @param supportsSync Gets or sets a value indicating whether [supports synchronize].
 	 * @param userId Gets or sets the user identifier.
 	 */
-	suspend fun getDevices(supportsSync: Boolean? = null, userId: UUID? = null):
+	public suspend fun getDevices(supportsSync: Boolean? = null, userId: UUID? = null):
 			Response<DeviceInfoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["supportsSync"] = supportsSync
 		queryParameters["userId"] = userId
 		val data = null
-		val response = api.get<DeviceInfoQueryResult>("/Devices", pathParameters, queryParameters, data)
+		val response = api.`get`<DeviceInfoQueryResult>("/Devices", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -41,7 +41,7 @@ class DevicesApi(
 	 *
 	 * @param id Device Id.
 	 */
-	suspend fun deleteDevice(id: String): Response<Unit> {
+	public suspend fun deleteDevice(id: String): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["id"] = id
@@ -55,12 +55,12 @@ class DevicesApi(
 	 *
 	 * @param id Device Id.
 	 */
-	suspend fun getDeviceInfo(id: String): Response<DeviceInfo> {
+	public suspend fun getDeviceInfo(id: String): Response<DeviceInfo> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["id"] = id
 		val data = null
-		val response = api.get<DeviceInfo>("/Devices/Info", pathParameters, queryParameters, data)
+		val response = api.`get`<DeviceInfo>("/Devices/Info", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -69,12 +69,12 @@ class DevicesApi(
 	 *
 	 * @param id Device Id.
 	 */
-	suspend fun getDeviceOptions(id: String): Response<DeviceOptions> {
+	public suspend fun getDeviceOptions(id: String): Response<DeviceOptions> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["id"] = id
 		val data = null
-		val response = api.get<DeviceOptions>("/Devices/Options", pathParameters, queryParameters, data)
+		val response = api.`get`<DeviceOptions>("/Devices/Options", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -83,7 +83,7 @@ class DevicesApi(
 	 *
 	 * @param id Device Id.
 	 */
-	suspend fun updateDeviceOptions(id: String, data: DeviceOptions): Response<Unit> {
+	public suspend fun updateDeviceOptions(id: String, `data`: DeviceOptions): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["id"] = id

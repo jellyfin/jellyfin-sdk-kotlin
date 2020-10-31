@@ -9,13 +9,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class DlnaProfileType {
+public enum class DlnaProfileType {
 	@SerialName("Audio")
 	AUDIO,
-
 	@SerialName("Video")
 	VIDEO,
-
 	@SerialName("Photo")
-	PHOTO
+	PHOTO,
 }

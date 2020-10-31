@@ -9,25 +9,19 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class LogLevel {
+public enum class LogLevel {
 	@SerialName("Trace")
 	TRACE,
-
 	@SerialName("Debug")
 	DEBUG,
-
 	@SerialName("Information")
 	INFORMATION,
-
 	@SerialName("Warning")
 	WARNING,
-
 	@SerialName("Error")
 	ERROR,
-
 	@SerialName("Critical")
 	CRITICAL,
-
 	@SerialName("None")
-	NONE
+	NONE,
 }

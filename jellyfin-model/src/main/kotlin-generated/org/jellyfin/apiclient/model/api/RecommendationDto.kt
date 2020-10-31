@@ -16,13 +16,13 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 @Serializable
-data class RecommendationDto(
+public data class RecommendationDto(
 	@SerialName("Items")
-	val items: List<BaseItemDto>? = null,
+	public val items: List<BaseItemDto>? = null,
 	@SerialName("RecommendationType")
-	val recommendationType: RecommendationType? = null,
+	public val recommendationType: RecommendationType? = null,
 	@SerialName("BaselineItemName")
-	val baselineItemName: String? = null,
+	public val baselineItemName: String? = null,
 	@SerialName("CategoryId")
-	val categoryId: UUID
+	public val categoryId: UUID
 )

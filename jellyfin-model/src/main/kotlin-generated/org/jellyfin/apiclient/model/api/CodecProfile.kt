@@ -11,15 +11,15 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class CodecProfile(
+public data class CodecProfile(
 	@SerialName("Type")
-	val type: CodecType? = null,
+	public val type: CodecType? = null,
 	@SerialName("Conditions")
-	val conditions: List<ProfileCondition>? = null,
+	public val conditions: List<ProfileCondition>? = null,
 	@SerialName("ApplyConditions")
-	val applyConditions: List<ProfileCondition>? = null,
+	public val applyConditions: List<ProfileCondition>? = null,
 	@SerialName("Codec")
-	val codec: String? = null,
+	public val codec: String? = null,
 	@SerialName("Container")
-	val container: String? = null
+	public val container: String? = null
 )

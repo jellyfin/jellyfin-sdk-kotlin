@@ -13,15 +13,15 @@ import kotlinx.serialization.Serializable
  * The startup user DTO.
  */
 @Serializable
-data class StartupUserDto(
+public data class StartupUserDto(
 	/**
 	 * Gets or sets the username.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the user's password.
 	 */
 	@SerialName("Password")
-	val password: String? = null
+	public val password: String? = null
 )

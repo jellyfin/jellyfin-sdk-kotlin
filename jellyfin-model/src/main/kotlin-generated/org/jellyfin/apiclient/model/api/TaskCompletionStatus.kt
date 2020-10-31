@@ -12,16 +12,13 @@ import kotlinx.serialization.Serializable
  * Enum TaskCompletionStatus.
  */
 @Serializable
-enum class TaskCompletionStatus {
+public enum class TaskCompletionStatus {
 	@SerialName("Completed")
 	COMPLETED,
-
 	@SerialName("Failed")
 	FAILED,
-
 	@SerialName("Cancelled")
 	CANCELLED,
-
 	@SerialName("Aborted")
-	ABORTED
+	ABORTED,
 }

@@ -13,12 +13,12 @@ import kotlinx.serialization.Serializable
  * Open live stream dto.
  */
 @Serializable
-data class OpenLiveStreamDto(
+public data class OpenLiveStreamDto(
 	@SerialName("DeviceProfile")
-	val deviceProfile: DeviceProfile? = null,
+	public val deviceProfile: DeviceProfile? = null,
 	/**
 	 * Gets or sets the device play protocols.
 	 */
 	@SerialName("DirectPlayProtocols")
-	val directPlayProtocols: List<MediaProtocol>? = null
+	public val directPlayProtocols: List<MediaProtocol>? = null
 )

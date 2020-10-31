@@ -17,7 +17,7 @@ import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.ChannelFeatures
 import org.jellyfin.apiclient.model.api.ItemFilter
 
-class ChannelsApi(
+public class ChannelsApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -31,7 +31,7 @@ class ChannelsApi(
 	 * @param supportsMediaDeletion Optional. Filter by channels that support media deletion.
 	 * @param isFavorite Optional. Filter by channels that are favorite.
 	 */
-	suspend fun getChannels(
+	public suspend fun getChannels(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
@@ -48,7 +48,8 @@ class ChannelsApi(
 		queryParameters["supportsMediaDeletion"] = supportsMediaDeletion
 		queryParameters["isFavorite"] = isFavorite
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Channels", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Channels", pathParameters, queryParameters,
+				data)
 		return response
 	}
 
@@ -57,12 +58,12 @@ class ChannelsApi(
 	 *
 	 * @param channelId Channel id.
 	 */
-	suspend fun getChannelFeatures(channelId: String): Response<ChannelFeatures> {
+	public suspend fun getChannelFeatures(channelId: String): Response<ChannelFeatures> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["channelId"] = channelId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<ChannelFeatures>("/Channels/{channelId}/Features", pathParameters,
+		val response = api.`get`<ChannelFeatures>("/Channels/{channelId}/Features", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -86,7 +87,7 @@ class ChannelsApi(
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines.
 	 */
-	suspend fun getChannelItems(
+	public suspend fun getChannelItems(
 		channelId: UUID,
 		folderId: UUID? = null,
 		userId: UUID? = null,
@@ -109,7 +110,7 @@ class ChannelsApi(
 		queryParameters["sortBy"] = sortBy
 		queryParameters["fields"] = fields
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Channels/{channelId}/Items", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Channels/{channelId}/Items", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -117,11 +118,11 @@ class ChannelsApi(
 	/**
 	 * Get all channel features.
 	 */
-	suspend fun getAllChannelFeatures(): Response<List<ChannelFeatures>> {
+	public suspend fun getAllChannelFeatures(): Response<List<ChannelFeatures>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<ChannelFeatures>>("/Channels/Features", pathParameters,
+		val response = api.`get`<List<ChannelFeatures>>("/Channels/Features", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -140,7 +141,7 @@ class ChannelsApi(
 	 * Revenue, SortName, Studios, Taglines.
 	 * @param channelIds Optional. Specify one or more channel id's, comma delimited.
 	 */
-	suspend fun getLatestChannelItems(
+	public suspend fun getLatestChannelItems(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
@@ -157,7 +158,7 @@ class ChannelsApi(
 		queryParameters["fields"] = fields
 		queryParameters["channelIds"] = channelIds
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Channels/Items/Latest", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Channels/Items/Latest", pathParameters,
 				queryParameters, data)
 		return response
 	}

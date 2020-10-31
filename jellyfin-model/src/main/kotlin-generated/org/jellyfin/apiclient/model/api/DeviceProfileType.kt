@@ -9,10 +9,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class DeviceProfileType {
+public enum class DeviceProfileType {
 	@SerialName("System")
 	SYSTEM,
-
 	@SerialName("User")
-	USER
+	USER,
 }

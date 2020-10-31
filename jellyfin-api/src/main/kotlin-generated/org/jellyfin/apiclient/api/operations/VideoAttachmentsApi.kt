@@ -13,7 +13,7 @@ import kotlin.String
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 
-class VideoAttachmentsApi(
+public class VideoAttachmentsApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -23,7 +23,7 @@ class VideoAttachmentsApi(
 	 * @param mediaSourceId Media Source ID.
 	 * @param index Attachment Index.
 	 */
-	suspend fun getAttachment(
+	public suspend fun getAttachment(
 		videoId: UUID,
 		mediaSourceId: String,
 		index: Int
@@ -34,7 +34,7 @@ class VideoAttachmentsApi(
 		pathParameters["index"] = index
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<ByteReadChannel>("/Videos/{videoId}/{mediaSourceId}/Attachments/{index}",
+		val response = api.`get`<ByteReadChannel>("/Videos/{videoId}/{mediaSourceId}/Attachments/{index}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -46,7 +46,7 @@ class VideoAttachmentsApi(
 	 * @param mediaSourceId Media Source ID.
 	 * @param index Attachment Index.
 	 */
-	fun getAttachmentUrl(
+	public fun getAttachmentUrl(
 		videoId: UUID,
 		mediaSourceId: String,
 		index: Int

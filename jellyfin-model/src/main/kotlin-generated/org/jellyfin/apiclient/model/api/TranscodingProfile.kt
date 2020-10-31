@@ -12,35 +12,35 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TranscodingProfile(
+public data class TranscodingProfile(
 	@SerialName("Container")
-	val container: String? = null,
+	public val container: String? = null,
 	@SerialName("Type")
-	val type: DlnaProfileType? = null,
+	public val type: DlnaProfileType? = null,
 	@SerialName("VideoCodec")
-	val videoCodec: String? = null,
+	public val videoCodec: String? = null,
 	@SerialName("AudioCodec")
-	val audioCodec: String? = null,
+	public val audioCodec: String? = null,
 	@SerialName("Protocol")
-	val protocol: String? = null,
+	public val protocol: String? = null,
 	@SerialName("EstimateContentLength")
-	val estimateContentLength: Boolean,
+	public val estimateContentLength: Boolean,
 	@SerialName("EnableMpegtsM2TsMode")
-	val enableMpegtsM2TsMode: Boolean,
+	public val enableMpegtsM2TsMode: Boolean,
 	@SerialName("TranscodeSeekInfo")
-	val transcodeSeekInfo: TranscodeSeekInfo? = null,
+	public val transcodeSeekInfo: TranscodeSeekInfo? = null,
 	@SerialName("CopyTimestamps")
-	val copyTimestamps: Boolean,
+	public val copyTimestamps: Boolean,
 	@SerialName("Context")
-	val context: EncodingContext? = null,
+	public val context: EncodingContext? = null,
 	@SerialName("EnableSubtitlesInManifest")
-	val enableSubtitlesInManifest: Boolean,
+	public val enableSubtitlesInManifest: Boolean,
 	@SerialName("MaxAudioChannels")
-	val maxAudioChannels: String? = null,
+	public val maxAudioChannels: String? = null,
 	@SerialName("MinSegments")
-	val minSegments: Int,
+	public val minSegments: Int,
 	@SerialName("SegmentLength")
-	val segmentLength: Int,
+	public val segmentLength: Int,
 	@SerialName("BreakOnNonKeyFrames")
-	val breakOnNonKeyFrames: Boolean
+	public val breakOnNonKeyFrames: Boolean
 )

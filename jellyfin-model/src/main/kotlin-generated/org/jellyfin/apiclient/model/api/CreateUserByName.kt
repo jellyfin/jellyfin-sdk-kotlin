@@ -13,15 +13,15 @@ import kotlinx.serialization.Serializable
  * The create user by name request body.
  */
 @Serializable
-data class CreateUserByName(
+public data class CreateUserByName(
 	/**
 	 * Gets or sets the username.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the password.
 	 */
 	@SerialName("Password")
-	val password: String? = null
+	public val password: String? = null
 )

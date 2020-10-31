@@ -12,13 +12,11 @@ import kotlinx.serialization.Serializable
  * Quick connect state.
  */
 @Serializable
-enum class QuickConnectState {
+public enum class QuickConnectState {
 	@SerialName("Unavailable")
 	UNAVAILABLE,
-
 	@SerialName("Available")
 	AVAILABLE,
-
 	@SerialName("Active")
-	ACTIVE
+	ACTIVE,
 }

@@ -15,36 +15,36 @@ import kotlinx.serialization.Serializable
  * Used to hold information about a user's list of configured virtual folders.
  */
 @Serializable
-data class VirtualFolderInfo(
+public data class VirtualFolderInfo(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the locations.
 	 */
 	@SerialName("Locations")
-	val locations: List<String>? = null,
+	public val locations: List<String>? = null,
 	/**
 	 * Gets or sets the type of the collection.
 	 */
 	@SerialName("CollectionType")
-	val collectionType: String? = null,
+	public val collectionType: String? = null,
 	@SerialName("LibraryOptions")
-	val libraryOptions: LibraryOptions? = null,
+	public val libraryOptions: LibraryOptions? = null,
 	/**
 	 * Gets or sets the item identifier.
 	 */
 	@SerialName("ItemId")
-	val itemId: String? = null,
+	public val itemId: String? = null,
 	/**
 	 * Gets or sets the primary image item identifier.
 	 */
 	@SerialName("PrimaryImageItemId")
-	val primaryImageItemId: String? = null,
+	public val primaryImageItemId: String? = null,
 	@SerialName("RefreshProgress")
-	val refreshProgress: Double? = null,
+	public val refreshProgress: Double? = null,
 	@SerialName("RefreshStatus")
-	val refreshStatus: String? = null
+	public val refreshStatus: String? = null
 )

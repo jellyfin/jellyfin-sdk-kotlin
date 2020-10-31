@@ -14,7 +14,7 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 @Serializable
-data class CollectionCreationResult(
+public data class CollectionCreationResult(
 	@SerialName("Id")
-	val id: UUID
+	public val id: UUID
 )

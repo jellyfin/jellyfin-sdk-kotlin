@@ -10,17 +10,17 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DeviceProfileInfo(
+public data class DeviceProfileInfo(
 	/**
 	 * Gets or sets the identifier.
 	 */
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	@SerialName("Type")
-	val type: DeviceProfileType? = null
+	public val type: DeviceProfileType? = null
 )

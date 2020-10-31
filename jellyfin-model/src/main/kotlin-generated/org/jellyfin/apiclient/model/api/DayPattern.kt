@@ -9,13 +9,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class DayPattern {
+public enum class DayPattern {
 	@SerialName("Daily")
 	DAILY,
-
 	@SerialName("Weekdays")
 	WEEKDAYS,
-
 	@SerialName("Weekends")
-	WEEKENDS
+	WEEKENDS,
 }

@@ -10,7 +10,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PlaylistCreationResult(
+public data class PlaylistCreationResult(
 	@SerialName("Id")
-	val id: String? = null
+	public val id: String? = null
 )

@@ -12,31 +12,23 @@ import kotlinx.serialization.Serializable
  * An enum representing an unrated item.
  */
 @Serializable
-enum class UnratedItem {
+public enum class UnratedItem {
 	@SerialName("Movie")
 	MOVIE,
-
 	@SerialName("Trailer")
 	TRAILER,
-
 	@SerialName("Series")
 	SERIES,
-
 	@SerialName("Music")
 	MUSIC,
-
 	@SerialName("Book")
 	BOOK,
-
 	@SerialName("LiveTvChannel")
 	LIVE_TV_CHANNEL,
-
 	@SerialName("LiveTvProgram")
 	LIVE_TV_PROGRAM,
-
 	@SerialName("ChannelContent")
 	CHANNEL_CONTENT,
-
 	@SerialName("Other")
-	OTHER
+	OTHER,
 }

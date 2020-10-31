@@ -9,13 +9,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class TransportStreamTimestamp {
+public enum class TransportStreamTimestamp {
 	@SerialName("None")
 	NONE,
-
 	@SerialName("Zero")
 	ZERO,
-
 	@SerialName("Valid")
-	VALID
+	VALID,
 }

@@ -22,59 +22,59 @@ import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 @Serializable
-data class AuthenticationInfo(
+public data class AuthenticationInfo(
 	/**
 	 * Gets or sets the identifier.
 	 */
 	@SerialName("Id")
-	val id: Long,
+	public val id: Long,
 	/**
 	 * Gets or sets the access token.
 	 */
 	@SerialName("AccessToken")
-	val accessToken: String? = null,
+	public val accessToken: String? = null,
 	/**
 	 * Gets or sets the device identifier.
 	 */
 	@SerialName("DeviceId")
-	val deviceId: String? = null,
+	public val deviceId: String? = null,
 	/**
 	 * Gets or sets the name of the application.
 	 */
 	@SerialName("AppName")
-	val appName: String? = null,
+	public val appName: String? = null,
 	/**
 	 * Gets or sets the application version.
 	 */
 	@SerialName("AppVersion")
-	val appVersion: String? = null,
+	public val appVersion: String? = null,
 	/**
 	 * Gets or sets the name of the device.
 	 */
 	@SerialName("DeviceName")
-	val deviceName: String? = null,
+	public val deviceName: String? = null,
 	/**
 	 * Gets or sets the user identifier.
 	 */
 	@SerialName("UserId")
-	val userId: UUID,
+	public val userId: UUID,
 	/**
 	 * Gets or sets a value indicating whether this instance is active.
 	 */
 	@SerialName("IsActive")
-	val isActive: Boolean,
+	public val isActive: Boolean,
 	/**
 	 * Gets or sets the date created.
 	 */
 	@SerialName("DateCreated")
-	val dateCreated: LocalDateTime,
+	public val dateCreated: LocalDateTime,
 	/**
 	 * Gets or sets the date revoked.
 	 */
 	@SerialName("DateRevoked")
-	val dateRevoked: LocalDateTime? = null,
+	public val dateRevoked: LocalDateTime? = null,
 	@SerialName("DateLastActivity")
-	val dateLastActivity: LocalDateTime,
+	public val dateLastActivity: LocalDateTime,
 	@SerialName("UserName")
-	val userName: String? = null
+	public val userName: String? = null
 )

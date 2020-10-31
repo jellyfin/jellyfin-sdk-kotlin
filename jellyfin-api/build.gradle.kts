@@ -18,6 +18,10 @@ dependencies {
 	testImplementation(Dependencies.Kotlin.Test.junit)
 }
 
+kotlin {
+	explicitApiWarning()
+}
+
 sourceSets.getByName("main").java.srcDir("src/main/kotlin-generated")
 
 val sourcesJar by tasks.creating(Jar::class) {

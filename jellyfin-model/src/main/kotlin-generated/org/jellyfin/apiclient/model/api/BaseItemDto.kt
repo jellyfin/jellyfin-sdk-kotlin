@@ -31,629 +31,629 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
  * This holds information about a BaseItem in a format that is convenient for the client.
  */
 @Serializable
-data class BaseItemDto(
+public data class BaseItemDto(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	@SerialName("OriginalTitle")
-	val originalTitle: String? = null,
+	public val originalTitle: String? = null,
 	/**
 	 * Gets or sets the server identifier.
 	 */
 	@SerialName("ServerId")
-	val serverId: String? = null,
+	public val serverId: String? = null,
 	/**
 	 * Gets or sets the id.
 	 */
 	@SerialName("Id")
-	val id: UUID,
+	public val id: UUID,
 	/**
 	 * Gets or sets the etag.
 	 */
 	@SerialName("Etag")
-	val etag: String? = null,
+	public val etag: String? = null,
 	/**
 	 * Gets or sets the type of the source.
 	 */
 	@SerialName("SourceType")
-	val sourceType: String? = null,
+	public val sourceType: String? = null,
 	/**
 	 * Gets or sets the playlist item identifier.
 	 */
 	@SerialName("PlaylistItemId")
-	val playlistItemId: String? = null,
+	public val playlistItemId: String? = null,
 	/**
 	 * Gets or sets the date created.
 	 */
 	@SerialName("DateCreated")
-	val dateCreated: LocalDateTime? = null,
+	public val dateCreated: LocalDateTime? = null,
 	@SerialName("DateLastMediaAdded")
-	val dateLastMediaAdded: LocalDateTime? = null,
+	public val dateLastMediaAdded: LocalDateTime? = null,
 	@SerialName("ExtraType")
-	val extraType: String? = null,
+	public val extraType: String? = null,
 	@SerialName("AirsBeforeSeasonNumber")
-	val airsBeforeSeasonNumber: Int? = null,
+	public val airsBeforeSeasonNumber: Int? = null,
 	@SerialName("AirsAfterSeasonNumber")
-	val airsAfterSeasonNumber: Int? = null,
+	public val airsAfterSeasonNumber: Int? = null,
 	@SerialName("AirsBeforeEpisodeNumber")
-	val airsBeforeEpisodeNumber: Int? = null,
+	public val airsBeforeEpisodeNumber: Int? = null,
 	@SerialName("CanDelete")
-	val canDelete: Boolean? = null,
+	public val canDelete: Boolean? = null,
 	@SerialName("CanDownload")
-	val canDownload: Boolean? = null,
+	public val canDownload: Boolean? = null,
 	@SerialName("HasSubtitles")
-	val hasSubtitles: Boolean? = null,
+	public val hasSubtitles: Boolean? = null,
 	@SerialName("PreferredMetadataLanguage")
-	val preferredMetadataLanguage: String? = null,
+	public val preferredMetadataLanguage: String? = null,
 	@SerialName("PreferredMetadataCountryCode")
-	val preferredMetadataCountryCode: String? = null,
+	public val preferredMetadataCountryCode: String? = null,
 	/**
 	 * Gets or sets a value indicating whether [supports synchronize].
 	 */
 	@SerialName("SupportsSync")
-	val supportsSync: Boolean? = null,
+	public val supportsSync: Boolean? = null,
 	@SerialName("Container")
-	val container: String? = null,
+	public val container: String? = null,
 	/**
 	 * Gets or sets the name of the sort.
 	 */
 	@SerialName("SortName")
-	val sortName: String? = null,
+	public val sortName: String? = null,
 	@SerialName("ForcedSortName")
-	val forcedSortName: String? = null,
+	public val forcedSortName: String? = null,
 	@SerialName("Video3DFormat")
-	val video3dFormat: Video3dFormat? = null,
+	public val video3dFormat: Video3dFormat? = null,
 	/**
 	 * Gets or sets the premiere date.
 	 */
 	@SerialName("PremiereDate")
-	val premiereDate: LocalDateTime? = null,
+	public val premiereDate: LocalDateTime? = null,
 	/**
 	 * Gets or sets the external urls.
 	 */
 	@SerialName("ExternalUrls")
-	val externalUrls: List<ExternalUrl>? = null,
+	public val externalUrls: List<ExternalUrl>? = null,
 	/**
 	 * Gets or sets the media versions.
 	 */
 	@SerialName("MediaSources")
-	val mediaSources: List<MediaSourceInfo>? = null,
+	public val mediaSources: List<MediaSourceInfo>? = null,
 	/**
 	 * Gets or sets the critic rating.
 	 */
 	@SerialName("CriticRating")
-	val criticRating: Float? = null,
+	public val criticRating: Float? = null,
 	@SerialName("ProductionLocations")
-	val productionLocations: List<String>? = null,
+	public val productionLocations: List<String>? = null,
 	/**
 	 * Gets or sets the path.
 	 */
 	@SerialName("Path")
-	val path: String? = null,
+	public val path: String? = null,
 	@SerialName("EnableMediaSourceDisplay")
-	val enableMediaSourceDisplay: Boolean? = null,
+	public val enableMediaSourceDisplay: Boolean? = null,
 	/**
 	 * Gets or sets the official rating.
 	 */
 	@SerialName("OfficialRating")
-	val officialRating: String? = null,
+	public val officialRating: String? = null,
 	/**
 	 * Gets or sets the custom rating.
 	 */
 	@SerialName("CustomRating")
-	val customRating: String? = null,
+	public val customRating: String? = null,
 	/**
 	 * Gets or sets the channel identifier.
 	 */
 	@SerialName("ChannelId")
-	val channelId: UUID,
+	public val channelId: UUID,
 	@SerialName("ChannelName")
-	val channelName: String? = null,
+	public val channelName: String? = null,
 	/**
 	 * Gets or sets the overview.
 	 */
 	@SerialName("Overview")
-	val overview: String? = null,
+	public val overview: String? = null,
 	/**
 	 * Gets or sets the taglines.
 	 */
 	@SerialName("Taglines")
-	val taglines: List<String>? = null,
+	public val taglines: List<String>? = null,
 	/**
 	 * Gets or sets the genres.
 	 */
 	@SerialName("Genres")
-	val genres: List<String>? = null,
+	public val genres: List<String>? = null,
 	/**
 	 * Gets or sets the community rating.
 	 */
 	@SerialName("CommunityRating")
-	val communityRating: Float? = null,
+	public val communityRating: Float? = null,
 	/**
 	 * Gets or sets the cumulative run time ticks.
 	 */
 	@SerialName("CumulativeRunTimeTicks")
-	val cumulativeRunTimeTicks: Long? = null,
+	public val cumulativeRunTimeTicks: Long? = null,
 	/**
 	 * Gets or sets the run time ticks.
 	 */
 	@SerialName("RunTimeTicks")
-	val runTimeTicks: Long? = null,
+	public val runTimeTicks: Long? = null,
 	@SerialName("PlayAccess")
-	val playAccess: PlayAccess? = null,
+	public val playAccess: PlayAccess? = null,
 	/**
 	 * Gets or sets the aspect ratio.
 	 */
 	@SerialName("AspectRatio")
-	val aspectRatio: String? = null,
+	public val aspectRatio: String? = null,
 	/**
 	 * Gets or sets the production year.
 	 */
 	@SerialName("ProductionYear")
-	val productionYear: Int? = null,
+	public val productionYear: Int? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is place holder.
 	 */
 	@SerialName("IsPlaceHolder")
-	val isPlaceHolder: Boolean? = null,
+	public val isPlaceHolder: Boolean? = null,
 	/**
 	 * Gets or sets the number.
 	 */
 	@SerialName("Number")
-	val number: String? = null,
+	public val number: String? = null,
 	@SerialName("ChannelNumber")
-	val channelNumber: String? = null,
+	public val channelNumber: String? = null,
 	/**
 	 * Gets or sets the index number.
 	 */
 	@SerialName("IndexNumber")
-	val indexNumber: Int? = null,
+	public val indexNumber: Int? = null,
 	/**
 	 * Gets or sets the index number end.
 	 */
 	@SerialName("IndexNumberEnd")
-	val indexNumberEnd: Int? = null,
+	public val indexNumberEnd: Int? = null,
 	/**
 	 * Gets or sets the parent index number.
 	 */
 	@SerialName("ParentIndexNumber")
-	val parentIndexNumber: Int? = null,
+	public val parentIndexNumber: Int? = null,
 	/**
 	 * Gets or sets the trailer urls.
 	 */
 	@SerialName("RemoteTrailers")
-	val remoteTrailers: List<MediaUrl>? = null,
+	public val remoteTrailers: List<MediaUrl>? = null,
 	/**
 	 * Gets or sets the provider ids.
 	 */
 	@SerialName("ProviderIds")
-	val providerIds: Map<String, String>? = null,
+	public val providerIds: Map<String, String>? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is HD.
 	 */
 	@SerialName("IsHD")
-	val isHd: Boolean? = null,
+	public val isHd: Boolean? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is folder.
 	 */
 	@SerialName("IsFolder")
-	val isFolder: Boolean? = null,
+	public val isFolder: Boolean? = null,
 	/**
 	 * Gets or sets the parent id.
 	 */
 	@SerialName("ParentId")
-	val parentId: UUID,
+	public val parentId: UUID,
 	/**
 	 * Gets or sets the type.
 	 */
 	@SerialName("Type")
-	val type: String? = null,
+	public val type: String? = null,
 	/**
 	 * Gets or sets the people.
 	 */
 	@SerialName("People")
-	val people: List<BaseItemPerson>? = null,
+	public val people: List<BaseItemPerson>? = null,
 	/**
 	 * Gets or sets the studios.
 	 */
 	@SerialName("Studios")
-	val studios: List<NameGuidPair>? = null,
+	public val studios: List<NameGuidPair>? = null,
 	@SerialName("GenreItems")
-	val genreItems: List<NameGuidPair>? = null,
+	public val genreItems: List<NameGuidPair>? = null,
 	/**
 	 * If the item does not have a logo, this will hold the Id of the Parent that has one.
 	 */
 	@SerialName("ParentLogoItemId")
-	val parentLogoItemId: String? = null,
+	public val parentLogoItemId: String? = null,
 	/**
 	 * If the item does not have any backdrops, this will hold the Id of the Parent that has one.
 	 */
 	@SerialName("ParentBackdropItemId")
-	val parentBackdropItemId: String? = null,
+	public val parentBackdropItemId: String? = null,
 	/**
 	 * Gets or sets the parent backdrop image tags.
 	 */
 	@SerialName("ParentBackdropImageTags")
-	val parentBackdropImageTags: List<String>? = null,
+	public val parentBackdropImageTags: List<String>? = null,
 	/**
 	 * Gets or sets the local trailer count.
 	 */
 	@SerialName("LocalTrailerCount")
-	val localTrailerCount: Int? = null,
+	public val localTrailerCount: Int? = null,
 	@SerialName("UserData")
-	val userData: UserItemDataDto? = null,
+	public val userData: UserItemDataDto? = null,
 	/**
 	 * Gets or sets the recursive item count.
 	 */
 	@SerialName("RecursiveItemCount")
-	val recursiveItemCount: Int? = null,
+	public val recursiveItemCount: Int? = null,
 	/**
 	 * Gets or sets the child count.
 	 */
 	@SerialName("ChildCount")
-	val childCount: Int? = null,
+	public val childCount: Int? = null,
 	/**
 	 * Gets or sets the name of the series.
 	 */
 	@SerialName("SeriesName")
-	val seriesName: String? = null,
+	public val seriesName: String? = null,
 	/**
 	 * Gets or sets the series id.
 	 */
 	@SerialName("SeriesId")
-	val seriesId: UUID,
+	public val seriesId: UUID,
 	/**
 	 * Gets or sets the season identifier.
 	 */
 	@SerialName("SeasonId")
-	val seasonId: UUID,
+	public val seasonId: UUID,
 	/**
 	 * Gets or sets the special feature count.
 	 */
 	@SerialName("SpecialFeatureCount")
-	val specialFeatureCount: Int? = null,
+	public val specialFeatureCount: Int? = null,
 	/**
 	 * Gets or sets the display preferences id.
 	 */
 	@SerialName("DisplayPreferencesId")
-	val displayPreferencesId: String? = null,
+	public val displayPreferencesId: String? = null,
 	/**
 	 * Gets or sets the status.
 	 */
 	@SerialName("Status")
-	val status: String? = null,
+	public val status: String? = null,
 	/**
 	 * Gets or sets the air time.
 	 */
 	@SerialName("AirTime")
-	val airTime: String? = null,
+	public val airTime: String? = null,
 	/**
 	 * Gets or sets the air days.
 	 */
 	@SerialName("AirDays")
-	val airDays: List<DayOfWeek>? = null,
+	public val airDays: List<DayOfWeek>? = null,
 	/**
 	 * Gets or sets the tags.
 	 */
 	@SerialName("Tags")
-	val tags: List<String>? = null,
+	public val tags: List<String>? = null,
 	/**
 	 * Gets or sets the primary image aspect ratio, after image enhancements.
 	 */
 	@SerialName("PrimaryImageAspectRatio")
-	val primaryImageAspectRatio: Double? = null,
+	public val primaryImageAspectRatio: Double? = null,
 	/**
 	 * Gets or sets the artists.
 	 */
 	@SerialName("Artists")
-	val artists: List<String>? = null,
+	public val artists: List<String>? = null,
 	/**
 	 * Gets or sets the artist items.
 	 */
 	@SerialName("ArtistItems")
-	val artistItems: List<NameGuidPair>? = null,
+	public val artistItems: List<NameGuidPair>? = null,
 	/**
 	 * Gets or sets the album.
 	 */
 	@SerialName("Album")
-	val album: String? = null,
+	public val album: String? = null,
 	/**
 	 * Gets or sets the type of the collection.
 	 */
 	@SerialName("CollectionType")
-	val collectionType: String? = null,
+	public val collectionType: String? = null,
 	/**
 	 * Gets or sets the display order.
 	 */
 	@SerialName("DisplayOrder")
-	val displayOrder: String? = null,
+	public val displayOrder: String? = null,
 	/**
 	 * Gets or sets the album id.
 	 */
 	@SerialName("AlbumId")
-	val albumId: UUID,
+	public val albumId: UUID,
 	/**
 	 * Gets or sets the album image tag.
 	 */
 	@SerialName("AlbumPrimaryImageTag")
-	val albumPrimaryImageTag: String? = null,
+	public val albumPrimaryImageTag: String? = null,
 	/**
 	 * Gets or sets the series primary image tag.
 	 */
 	@SerialName("SeriesPrimaryImageTag")
-	val seriesPrimaryImageTag: String? = null,
+	public val seriesPrimaryImageTag: String? = null,
 	/**
 	 * Gets or sets the album artist.
 	 */
 	@SerialName("AlbumArtist")
-	val albumArtist: String? = null,
+	public val albumArtist: String? = null,
 	/**
 	 * Gets or sets the album artists.
 	 */
 	@SerialName("AlbumArtists")
-	val albumArtists: List<NameGuidPair>? = null,
+	public val albumArtists: List<NameGuidPair>? = null,
 	/**
 	 * Gets or sets the name of the season.
 	 */
 	@SerialName("SeasonName")
-	val seasonName: String? = null,
+	public val seasonName: String? = null,
 	/**
 	 * Gets or sets the media streams.
 	 */
 	@SerialName("MediaStreams")
-	val mediaStreams: List<MediaStream>? = null,
+	public val mediaStreams: List<MediaStream>? = null,
 	@SerialName("VideoType")
-	val videoType: VideoType? = null,
+	public val videoType: VideoType? = null,
 	/**
 	 * Gets or sets the part count.
 	 */
 	@SerialName("PartCount")
-	val partCount: Int? = null,
+	public val partCount: Int? = null,
 	@SerialName("MediaSourceCount")
-	val mediaSourceCount: Int? = null,
+	public val mediaSourceCount: Int? = null,
 	/**
 	 * Gets or sets the image tags.
 	 */
 	@SerialName("ImageTags")
-	val imageTags: Map<ImageType, String>,
+	public val imageTags: Map<ImageType, String>,
 	/**
 	 * Gets or sets the backdrop image tags.
 	 */
 	@SerialName("BackdropImageTags")
-	val backdropImageTags: List<String>? = null,
+	public val backdropImageTags: List<String>? = null,
 	/**
 	 * Gets or sets the screenshot image tags.
 	 */
 	@SerialName("ScreenshotImageTags")
-	val screenshotImageTags: List<String>? = null,
+	public val screenshotImageTags: List<String>? = null,
 	/**
 	 * Gets or sets the parent logo image tag.
 	 */
 	@SerialName("ParentLogoImageTag")
-	val parentLogoImageTag: String? = null,
+	public val parentLogoImageTag: String? = null,
 	/**
 	 * If the item does not have a art, this will hold the Id of the Parent that has one.
 	 */
 	@SerialName("ParentArtItemId")
-	val parentArtItemId: String? = null,
+	public val parentArtItemId: String? = null,
 	/**
 	 * Gets or sets the parent art image tag.
 	 */
 	@SerialName("ParentArtImageTag")
-	val parentArtImageTag: String? = null,
+	public val parentArtImageTag: String? = null,
 	/**
 	 * Gets or sets the series thumb image tag.
 	 */
 	@SerialName("SeriesThumbImageTag")
-	val seriesThumbImageTag: String? = null,
+	public val seriesThumbImageTag: String? = null,
 	/**
 	 * Gets or sets the blurhashes for the image tags.
 	 * Maps image type to dictionary mapping image tag to blurhash value.
 	 */
 	@SerialName("ImageBlurHashes")
-	val imageBlurHashes: Map<ImageType, Map<String, String>>,
+	public val imageBlurHashes: Map<ImageType, Map<String, String>>,
 	/**
 	 * Gets or sets the series studio.
 	 */
 	@SerialName("SeriesStudio")
-	val seriesStudio: String? = null,
+	public val seriesStudio: String? = null,
 	/**
 	 * Gets or sets the parent thumb item id.
 	 */
 	@SerialName("ParentThumbItemId")
-	val parentThumbItemId: String? = null,
+	public val parentThumbItemId: String? = null,
 	/**
 	 * Gets or sets the parent thumb image tag.
 	 */
 	@SerialName("ParentThumbImageTag")
-	val parentThumbImageTag: String? = null,
+	public val parentThumbImageTag: String? = null,
 	/**
 	 * Gets or sets the parent primary image item identifier.
 	 */
 	@SerialName("ParentPrimaryImageItemId")
-	val parentPrimaryImageItemId: String? = null,
+	public val parentPrimaryImageItemId: String? = null,
 	/**
 	 * Gets or sets the parent primary image tag.
 	 */
 	@SerialName("ParentPrimaryImageTag")
-	val parentPrimaryImageTag: String? = null,
+	public val parentPrimaryImageTag: String? = null,
 	/**
 	 * Gets or sets the chapters.
 	 */
 	@SerialName("Chapters")
-	val chapters: List<ChapterInfo>? = null,
+	public val chapters: List<ChapterInfo>? = null,
 	@SerialName("LocationType")
-	val locationType: LocationType? = null,
+	public val locationType: LocationType? = null,
 	@SerialName("IsoType")
-	val isoType: IsoType? = null,
+	public val isoType: IsoType? = null,
 	/**
 	 * Gets or sets the type of the media.
 	 */
 	@SerialName("MediaType")
-	val mediaType: String? = null,
+	public val mediaType: String? = null,
 	/**
 	 * Gets or sets the end date.
 	 */
 	@SerialName("EndDate")
-	val endDate: LocalDateTime? = null,
+	public val endDate: LocalDateTime? = null,
 	/**
 	 * Gets or sets the locked fields.
 	 */
 	@SerialName("LockedFields")
-	val lockedFields: List<MetadataField>? = null,
+	public val lockedFields: List<MetadataField>? = null,
 	/**
 	 * Gets or sets the trailer count.
 	 */
 	@SerialName("TrailerCount")
-	val trailerCount: Int? = null,
+	public val trailerCount: Int? = null,
 	/**
 	 * Gets or sets the movie count.
 	 */
 	@SerialName("MovieCount")
-	val movieCount: Int? = null,
+	public val movieCount: Int? = null,
 	/**
 	 * Gets or sets the series count.
 	 */
 	@SerialName("SeriesCount")
-	val seriesCount: Int? = null,
+	public val seriesCount: Int? = null,
 	@SerialName("ProgramCount")
-	val programCount: Int? = null,
+	public val programCount: Int? = null,
 	/**
 	 * Gets or sets the episode count.
 	 */
 	@SerialName("EpisodeCount")
-	val episodeCount: Int? = null,
+	public val episodeCount: Int? = null,
 	/**
 	 * Gets or sets the song count.
 	 */
 	@SerialName("SongCount")
-	val songCount: Int? = null,
+	public val songCount: Int? = null,
 	/**
 	 * Gets or sets the album count.
 	 */
 	@SerialName("AlbumCount")
-	val albumCount: Int? = null,
+	public val albumCount: Int? = null,
 	@SerialName("ArtistCount")
-	val artistCount: Int? = null,
+	public val artistCount: Int? = null,
 	/**
 	 * Gets or sets the music video count.
 	 */
 	@SerialName("MusicVideoCount")
-	val musicVideoCount: Int? = null,
+	public val musicVideoCount: Int? = null,
 	/**
 	 * Gets or sets a value indicating whether [enable internet providers].
 	 */
 	@SerialName("LockData")
-	val lockData: Boolean? = null,
+	public val lockData: Boolean? = null,
 	@SerialName("Width")
-	val width: Int? = null,
+	public val width: Int? = null,
 	@SerialName("Height")
-	val height: Int? = null,
+	public val height: Int? = null,
 	@SerialName("CameraMake")
-	val cameraMake: String? = null,
+	public val cameraMake: String? = null,
 	@SerialName("CameraModel")
-	val cameraModel: String? = null,
+	public val cameraModel: String? = null,
 	@SerialName("Software")
-	val software: String? = null,
+	public val software: String? = null,
 	@SerialName("ExposureTime")
-	val exposureTime: Double? = null,
+	public val exposureTime: Double? = null,
 	@SerialName("FocalLength")
-	val focalLength: Double? = null,
+	public val focalLength: Double? = null,
 	@SerialName("ImageOrientation")
-	val imageOrientation: ImageOrientation? = null,
+	public val imageOrientation: ImageOrientation? = null,
 	@SerialName("Aperture")
-	val aperture: Double? = null,
+	public val aperture: Double? = null,
 	@SerialName("ShutterSpeed")
-	val shutterSpeed: Double? = null,
+	public val shutterSpeed: Double? = null,
 	@SerialName("Latitude")
-	val latitude: Double? = null,
+	public val latitude: Double? = null,
 	@SerialName("Longitude")
-	val longitude: Double? = null,
+	public val longitude: Double? = null,
 	@SerialName("Altitude")
-	val altitude: Double? = null,
+	public val altitude: Double? = null,
 	@SerialName("IsoSpeedRating")
-	val isoSpeedRating: Int? = null,
+	public val isoSpeedRating: Int? = null,
 	/**
 	 * Gets or sets the series timer identifier.
 	 */
 	@SerialName("SeriesTimerId")
-	val seriesTimerId: String? = null,
+	public val seriesTimerId: String? = null,
 	/**
 	 * Gets or sets the program identifier.
 	 */
 	@SerialName("ProgramId")
-	val programId: String? = null,
+	public val programId: String? = null,
 	/**
 	 * Gets or sets the channel primary image tag.
 	 */
 	@SerialName("ChannelPrimaryImageTag")
-	val channelPrimaryImageTag: String? = null,
+	public val channelPrimaryImageTag: String? = null,
 	/**
 	 * The start date of the recording, in UTC.
 	 */
 	@SerialName("StartDate")
-	val startDate: LocalDateTime? = null,
+	public val startDate: LocalDateTime? = null,
 	/**
 	 * Gets or sets the completion percentage.
 	 */
 	@SerialName("CompletionPercentage")
-	val completionPercentage: Double? = null,
+	public val completionPercentage: Double? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is repeat.
 	 */
 	@SerialName("IsRepeat")
-	val isRepeat: Boolean? = null,
+	public val isRepeat: Boolean? = null,
 	/**
 	 * Gets or sets the episode title.
 	 */
 	@SerialName("EpisodeTitle")
-	val episodeTitle: String? = null,
+	public val episodeTitle: String? = null,
 	@SerialName("ChannelType")
-	val channelType: ChannelType? = null,
+	public val channelType: ChannelType? = null,
 	@SerialName("Audio")
-	val audio: ProgramAudio? = null,
+	public val audio: ProgramAudio? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is movie.
 	 */
 	@SerialName("IsMovie")
-	val isMovie: Boolean? = null,
+	public val isMovie: Boolean? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is sports.
 	 */
 	@SerialName("IsSports")
-	val isSports: Boolean? = null,
+	public val isSports: Boolean? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is series.
 	 */
 	@SerialName("IsSeries")
-	val isSeries: Boolean? = null,
+	public val isSeries: Boolean? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is live.
 	 */
 	@SerialName("IsLive")
-	val isLive: Boolean? = null,
+	public val isLive: Boolean? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is news.
 	 */
 	@SerialName("IsNews")
-	val isNews: Boolean? = null,
+	public val isNews: Boolean? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is kids.
 	 */
 	@SerialName("IsKids")
-	val isKids: Boolean? = null,
+	public val isKids: Boolean? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is premiere.
 	 */
 	@SerialName("IsPremiere")
-	val isPremiere: Boolean? = null,
+	public val isPremiere: Boolean? = null,
 	/**
 	 * Gets or sets the timer identifier.
 	 */
 	@SerialName("TimerId")
-	val timerId: String? = null,
+	public val timerId: String? = null,
 	@SerialName("CurrentProgram")
-	val currentProgram: BaseItemDto? = null
+	public val currentProgram: BaseItemDto? = null
 )
