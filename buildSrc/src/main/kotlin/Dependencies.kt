@@ -19,7 +19,6 @@ object Dependencies {
 	object KotlinX {
 		private fun item(module: String, version: String) = "org.jetbrains.kotlinx:kotlinx-${module}:${version}"
 
-		val cli = item("cli", "0.2.1")
 		val coroutinesCore = item("coroutines-core", "1.4.0")
 		val serializationJson = item("serialization-json", "1.0.0")
 	}
@@ -66,6 +65,7 @@ object Dependencies {
 	const val swaggerParser = "io.swagger.parser.v3:swagger-parser:2.0.19"
 	const val kotlinPoet = "com.squareup:kotlinpoet:1.6.0"
 	const val kasechange = "net.pearx.kasechange:kasechange:1.3.0"
+	const val clikt = "com.github.ajalt.clikt:clikt:3.0.1"
 }
 
 /**

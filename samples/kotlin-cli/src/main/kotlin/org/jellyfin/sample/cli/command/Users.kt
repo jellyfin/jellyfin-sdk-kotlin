@@ -1,18 +1,17 @@
-package org.jellyfin.sample.console.cli
+package org.jellyfin.sample.cli.command
 
-import kotlinx.cli.ArgType
-import kotlinx.cli.Subcommand
-import kotlinx.cli.required
+import com.github.ajalt.clikt.core.CliktCommand
 import kotlinx.coroutines.runBlocking
 import org.jellyfin.apiclient.Jellyfin
 import org.jellyfin.apiclient.api.operations.UserApi
+import org.jellyfin.sample.cli.serverOption
 
 class Users(
 	private val jellyfin: Jellyfin
-) : Subcommand("users", "List all public users") {
-	private val server by option(ArgType.String, description = "Url of the server", shortName = "s").required()
+) : CliktCommand("List all public users") {
+	private val server by serverOption()
 
-	override fun execute() = runBlocking {
+	override fun run() = runBlocking {
 		val api = jellyfin.createApi(baseUrl = server)
 		val userApi = UserApi(api)
 
