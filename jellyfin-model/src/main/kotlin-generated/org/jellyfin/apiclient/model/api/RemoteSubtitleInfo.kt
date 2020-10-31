@@ -18,27 +18,27 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
 
 @Serializable
-data class RemoteSubtitleInfo(
+public data class RemoteSubtitleInfo(
 	@SerialName("ThreeLetterISOLanguageName")
-	val threeLetterIsoLanguageName: String? = null,
+	public val threeLetterIsoLanguageName: String? = null,
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	@SerialName("ProviderName")
-	val providerName: String? = null,
+	public val providerName: String? = null,
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	@SerialName("Format")
-	val format: String? = null,
+	public val format: String? = null,
 	@SerialName("Author")
-	val author: String? = null,
+	public val author: String? = null,
 	@SerialName("Comment")
-	val comment: String? = null,
+	public val comment: String? = null,
 	@SerialName("DateCreated")
-	val dateCreated: LocalDateTime? = null,
+	public val dateCreated: LocalDateTime? = null,
 	@SerialName("CommunityRating")
-	val communityRating: Float? = null,
+	public val communityRating: Float? = null,
 	@SerialName("DownloadCount")
-	val downloadCount: Int? = null,
+	public val downloadCount: Int? = null,
 	@SerialName("IsHashMatch")
-	val isHashMatch: Boolean? = null
+	public val isHashMatch: Boolean? = null
 )

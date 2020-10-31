@@ -9,10 +9,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class TranscodeSeekInfo {
+public enum class TranscodeSeekInfo {
 	@SerialName("Auto")
 	AUTO,
-
 	@SerialName("Bytes")
-	BYTES
+	BYTES,
 }

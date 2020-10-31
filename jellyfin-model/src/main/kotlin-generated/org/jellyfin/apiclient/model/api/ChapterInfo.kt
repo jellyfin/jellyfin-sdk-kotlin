@@ -19,24 +19,24 @@ import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
  * Class ChapterInfo.
  */
 @Serializable
-data class ChapterInfo(
+public data class ChapterInfo(
 	/**
 	 * Gets or sets the start position ticks.
 	 */
 	@SerialName("StartPositionTicks")
-	val startPositionTicks: Long,
+	public val startPositionTicks: Long,
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the image path.
 	 */
 	@SerialName("ImagePath")
-	val imagePath: String? = null,
+	public val imagePath: String? = null,
 	@SerialName("ImageDateModified")
-	val imageDateModified: LocalDateTime,
+	public val imageDateModified: LocalDateTime,
 	@SerialName("ImageTag")
-	val imageTag: String? = null
+	public val imageTag: String? = null
 )

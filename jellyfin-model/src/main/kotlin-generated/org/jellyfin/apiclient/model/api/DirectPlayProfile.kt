@@ -10,13 +10,13 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DirectPlayProfile(
+public data class DirectPlayProfile(
 	@SerialName("Container")
-	val container: String? = null,
+	public val container: String? = null,
 	@SerialName("AudioCodec")
-	val audioCodec: String? = null,
+	public val audioCodec: String? = null,
 	@SerialName("VideoCodec")
-	val videoCodec: String? = null,
+	public val videoCodec: String? = null,
 	@SerialName("Type")
-	val type: DlnaProfileType? = null
+	public val type: DlnaProfileType? = null
 )

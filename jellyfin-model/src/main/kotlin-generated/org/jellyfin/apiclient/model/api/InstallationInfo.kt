@@ -18,32 +18,32 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
  * Class InstallationInfo.
  */
 @Serializable
-data class InstallationInfo(
+public data class InstallationInfo(
 	/**
 	 * Gets or sets the guid.
 	 */
 	@SerialName("Guid")
-	val guid: UUID,
+	public val guid: UUID,
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	@SerialName("Version")
-	val version: Version? = null,
+	public val version: Version? = null,
 	/**
 	 * Gets or sets the changelog for this version.
 	 */
 	@SerialName("Changelog")
-	val changelog: String? = null,
+	public val changelog: String? = null,
 	/**
 	 * Gets or sets the source URL.
 	 */
 	@SerialName("SourceUrl")
-	val sourceUrl: String? = null,
+	public val sourceUrl: String? = null,
 	/**
 	 * Gets or sets a checksum for the binary.
 	 */
 	@SerialName("Checksum")
-	val checksum: String? = null
+	public val checksum: String? = null
 )

@@ -14,15 +14,15 @@ import kotlinx.serialization.Serializable
  * Class ParentalRating.
  */
 @Serializable
-data class ParentalRating(
+public data class ParentalRating(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the value.
 	 */
 	@SerialName("Value")
-	val value: Int
+	public val value: Int
 )

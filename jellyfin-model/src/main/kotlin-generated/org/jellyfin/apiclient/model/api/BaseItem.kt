@@ -27,30 +27,30 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
  * Class BaseItem.
  */
 @Serializable
-data class BaseItem(
+public data class BaseItem(
 	@SerialName("Size")
-	val size: Long? = null,
+	public val size: Long? = null,
 	@SerialName("Container")
-	val container: String? = null,
+	public val container: String? = null,
 	@SerialName("DateLastSaved")
-	val dateLastSaved: LocalDateTime,
+	public val dateLastSaved: LocalDateTime,
 	/**
 	 * Gets or sets the remote trailers.
 	 */
 	@SerialName("RemoteTrailers")
-	val remoteTrailers: List<MediaUrl>? = null,
+	public val remoteTrailers: List<MediaUrl>? = null,
 	@SerialName("IsHD")
-	val isHd: Boolean,
+	public val isHd: Boolean,
 	@SerialName("IsShortcut")
-	val isShortcut: Boolean,
+	public val isShortcut: Boolean,
 	@SerialName("ShortcutPath")
-	val shortcutPath: String? = null,
+	public val shortcutPath: String? = null,
 	@SerialName("Width")
-	val width: Int,
+	public val width: Int,
 	@SerialName("Height")
-	val height: Int,
+	public val height: Int,
 	@SerialName("ExtraIds")
-	val extraIds: List<UUID>? = null,
+	public val extraIds: List<UUID>? = null,
 	@SerialName("SupportsExternalTransfer")
-	val supportsExternalTransfer: Boolean
+	public val supportsExternalTransfer: Boolean
 )

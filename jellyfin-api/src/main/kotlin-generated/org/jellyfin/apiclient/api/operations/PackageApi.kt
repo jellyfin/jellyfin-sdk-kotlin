@@ -15,17 +15,17 @@ import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.PackageInfo
 import org.jellyfin.apiclient.model.api.RepositoryInfo
 
-class PackageApi(
+public class PackageApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Gets available packages.
 	 */
-	suspend fun getPackages(): Response<List<PackageInfo>> {
+	public suspend fun getPackages(): Response<List<PackageInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<PackageInfo>>("/Packages", pathParameters, queryParameters, data)
+		val response = api.`get`<List<PackageInfo>>("/Packages", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -35,13 +35,14 @@ class PackageApi(
 	 * @param name The name of the package.
 	 * @param assemblyGuid The GUID of the associated assembly.
 	 */
-	suspend fun getPackageInfo(name: String, assemblyGuid: String? = null): Response<PackageInfo> {
+	public suspend fun getPackageInfo(name: String, assemblyGuid: String? = null):
+			Response<PackageInfo> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["assemblyGuid"] = assemblyGuid
 		val data = null
-		val response = api.get<PackageInfo>("/Packages/{name}", pathParameters, queryParameters, data)
+		val response = api.`get`<PackageInfo>("/Packages/{name}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -53,7 +54,7 @@ class PackageApi(
 	 * @param version Optional version. Defaults to latest version.
 	 * @param repositoryUrl Optional. Specify the repository to install from.
 	 */
-	suspend fun installPackage(
+	public suspend fun installPackage(
 		name: String,
 		assemblyGuid: String? = null,
 		version: String? = null,
@@ -75,7 +76,7 @@ class PackageApi(
 	 *
 	 * @param packageId Installation Id.
 	 */
-	suspend fun cancelPackageInstallation(packageId: UUID): Response<Unit> {
+	public suspend fun cancelPackageInstallation(packageId: UUID): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["packageId"] = packageId
 		val queryParameters = emptyMap<String, Any?>()
@@ -88,11 +89,11 @@ class PackageApi(
 	/**
 	 * Gets all package repositories.
 	 */
-	suspend fun getRepositories(): Response<List<RepositoryInfo>> {
+	public suspend fun getRepositories(): Response<List<RepositoryInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<RepositoryInfo>>("/Repositories", pathParameters, queryParameters,
+		val response = api.`get`<List<RepositoryInfo>>("/Repositories", pathParameters, queryParameters,
 				data)
 		return response
 	}

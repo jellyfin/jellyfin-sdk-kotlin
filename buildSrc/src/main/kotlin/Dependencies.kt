@@ -63,7 +63,7 @@ object Dependencies {
 
 	// Non-categorised dependencies
 	const val swaggerParser = "io.swagger.parser.v3:swagger-parser:2.0.19"
-	const val kotlinPoet = "com.squareup:kotlinpoet:1.6.0"
+	const val kotlinPoet = "com.squareup:kotlinpoet:1.7.2"
 	const val kasechange = "net.pearx.kasechange:kasechange:1.3.0"
 	const val clikt = "com.github.ajalt.clikt:clikt:3.0.1"
 }

@@ -12,13 +12,11 @@ import kotlinx.serialization.Serializable
  * Enum SendCommandType.
  */
 @Serializable
-enum class SendCommandType {
+public enum class SendCommandType {
 	@SerialName("Play")
 	PLAY,
-
 	@SerialName("Pause")
 	PAUSE,
-
 	@SerialName("Seek")
-	SEEK
+	SEEK,
 }

@@ -12,31 +12,23 @@ import kotlinx.serialization.Serializable
  * Enum MetadataFields.
  */
 @Serializable
-enum class MetadataField {
+public enum class MetadataField {
 	@SerialName("Cast")
 	CAST,
-
 	@SerialName("Genres")
 	GENRES,
-
 	@SerialName("ProductionLocations")
 	PRODUCTION_LOCATIONS,
-
 	@SerialName("Studios")
 	STUDIOS,
-
 	@SerialName("Tags")
 	TAGS,
-
 	@SerialName("Name")
 	NAME,
-
 	@SerialName("Overview")
 	OVERVIEW,
-
 	@SerialName("Runtime")
 	RUNTIME,
-
 	@SerialName("OfficialRating")
-	OFFICIAL_RATING
+	OFFICIAL_RATING,
 }

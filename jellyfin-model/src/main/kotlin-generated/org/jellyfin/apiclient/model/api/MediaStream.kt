@@ -17,213 +17,213 @@ import kotlinx.serialization.Serializable
  * Class MediaStream.
  */
 @Serializable
-data class MediaStream(
+public data class MediaStream(
 	/**
 	 * Gets or sets the codec.
 	 */
 	@SerialName("Codec")
-	val codec: String? = null,
+	public val codec: String? = null,
 	/**
 	 * Gets or sets the codec tag.
 	 */
 	@SerialName("CodecTag")
-	val codecTag: String? = null,
+	public val codecTag: String? = null,
 	/**
 	 * Gets or sets the language.
 	 */
 	@SerialName("Language")
-	val language: String? = null,
+	public val language: String? = null,
 	/**
 	 * Gets or sets the color range.
 	 */
 	@SerialName("ColorRange")
-	val colorRange: String? = null,
+	public val colorRange: String? = null,
 	/**
 	 * Gets or sets the color space.
 	 */
 	@SerialName("ColorSpace")
-	val colorSpace: String? = null,
+	public val colorSpace: String? = null,
 	/**
 	 * Gets or sets the color transfer.
 	 */
 	@SerialName("ColorTransfer")
-	val colorTransfer: String? = null,
+	public val colorTransfer: String? = null,
 	/**
 	 * Gets or sets the color primaries.
 	 */
 	@SerialName("ColorPrimaries")
-	val colorPrimaries: String? = null,
+	public val colorPrimaries: String? = null,
 	/**
 	 * Gets or sets the comment.
 	 */
 	@SerialName("Comment")
-	val comment: String? = null,
+	public val comment: String? = null,
 	/**
 	 * Gets or sets the time base.
 	 */
 	@SerialName("TimeBase")
-	val timeBase: String? = null,
+	public val timeBase: String? = null,
 	/**
 	 * Gets or sets the codec time base.
 	 */
 	@SerialName("CodecTimeBase")
-	val codecTimeBase: String? = null,
+	public val codecTimeBase: String? = null,
 	/**
 	 * Gets or sets the title.
 	 */
 	@SerialName("Title")
-	val title: String? = null,
+	public val title: String? = null,
 	/**
 	 * Gets or sets the video range.
 	 */
 	@SerialName("VideoRange")
-	val videoRange: String? = null,
+	public val videoRange: String? = null,
 	@SerialName("localizedUndefined")
-	val localizedUndefined: String? = null,
+	public val localizedUndefined: String? = null,
 	@SerialName("localizedDefault")
-	val localizedDefault: String? = null,
+	public val localizedDefault: String? = null,
 	@SerialName("localizedForced")
-	val localizedForced: String? = null,
+	public val localizedForced: String? = null,
 	@SerialName("DisplayTitle")
-	val displayTitle: String? = null,
+	public val displayTitle: String? = null,
 	@SerialName("NalLengthSize")
-	val nalLengthSize: String? = null,
+	public val nalLengthSize: String? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is interlaced.
 	 */
 	@SerialName("IsInterlaced")
-	val isInterlaced: Boolean,
+	public val isInterlaced: Boolean,
 	@SerialName("IsAVC")
-	val isAvc: Boolean? = null,
+	public val isAvc: Boolean? = null,
 	/**
 	 * Gets or sets the channel layout.
 	 */
 	@SerialName("ChannelLayout")
-	val channelLayout: String? = null,
+	public val channelLayout: String? = null,
 	/**
 	 * Gets or sets the bit rate.
 	 */
 	@SerialName("BitRate")
-	val bitRate: Int? = null,
+	public val bitRate: Int? = null,
 	/**
 	 * Gets or sets the bit depth.
 	 */
 	@SerialName("BitDepth")
-	val bitDepth: Int? = null,
+	public val bitDepth: Int? = null,
 	/**
 	 * Gets or sets the reference frames.
 	 */
 	@SerialName("RefFrames")
-	val refFrames: Int? = null,
+	public val refFrames: Int? = null,
 	/**
 	 * Gets or sets the length of the packet.
 	 */
 	@SerialName("PacketLength")
-	val packetLength: Int? = null,
+	public val packetLength: Int? = null,
 	/**
 	 * Gets or sets the channels.
 	 */
 	@SerialName("Channels")
-	val channels: Int? = null,
+	public val channels: Int? = null,
 	/**
 	 * Gets or sets the sample rate.
 	 */
 	@SerialName("SampleRate")
-	val sampleRate: Int? = null,
+	public val sampleRate: Int? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is default.
 	 */
 	@SerialName("IsDefault")
-	val isDefault: Boolean,
+	public val isDefault: Boolean,
 	/**
 	 * Gets or sets a value indicating whether this instance is forced.
 	 */
 	@SerialName("IsForced")
-	val isForced: Boolean,
+	public val isForced: Boolean,
 	/**
 	 * Gets or sets the height.
 	 */
 	@SerialName("Height")
-	val height: Int? = null,
+	public val height: Int? = null,
 	/**
 	 * Gets or sets the width.
 	 */
 	@SerialName("Width")
-	val width: Int? = null,
+	public val width: Int? = null,
 	/**
 	 * Gets or sets the average frame rate.
 	 */
 	@SerialName("AverageFrameRate")
-	val averageFrameRate: Float? = null,
+	public val averageFrameRate: Float? = null,
 	/**
 	 * Gets or sets the real frame rate.
 	 */
 	@SerialName("RealFrameRate")
-	val realFrameRate: Float? = null,
+	public val realFrameRate: Float? = null,
 	/**
 	 * Gets or sets the profile.
 	 */
 	@SerialName("Profile")
-	val profile: String? = null,
+	public val profile: String? = null,
 	@SerialName("Type")
-	val type: MediaStreamType? = null,
+	public val type: MediaStreamType? = null,
 	/**
 	 * Gets or sets the aspect ratio.
 	 */
 	@SerialName("AspectRatio")
-	val aspectRatio: String? = null,
+	public val aspectRatio: String? = null,
 	/**
 	 * Gets or sets the index.
 	 */
 	@SerialName("Index")
-	val index: Int,
+	public val index: Int,
 	/**
 	 * Gets or sets the score.
 	 */
 	@SerialName("Score")
-	val score: Int? = null,
+	public val score: Int? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is external.
 	 */
 	@SerialName("IsExternal")
-	val isExternal: Boolean,
+	public val isExternal: Boolean,
 	@SerialName("DeliveryMethod")
-	val deliveryMethod: SubtitleDeliveryMethod? = null,
+	public val deliveryMethod: SubtitleDeliveryMethod? = null,
 	/**
 	 * Gets or sets the delivery URL.
 	 */
 	@SerialName("DeliveryUrl")
-	val deliveryUrl: String? = null,
+	public val deliveryUrl: String? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is external URL.
 	 */
 	@SerialName("IsExternalUrl")
-	val isExternalUrl: Boolean? = null,
+	public val isExternalUrl: Boolean? = null,
 	@SerialName("IsTextSubtitleStream")
-	val isTextSubtitleStream: Boolean,
+	public val isTextSubtitleStream: Boolean,
 	/**
 	 * Gets or sets a value indicating whether [supports external stream].
 	 */
 	@SerialName("SupportsExternalStream")
-	val supportsExternalStream: Boolean,
+	public val supportsExternalStream: Boolean,
 	/**
 	 * Gets or sets the filename.
 	 */
 	@SerialName("Path")
-	val path: String? = null,
+	public val path: String? = null,
 	/**
 	 * Gets or sets the pixel format.
 	 */
 	@SerialName("PixelFormat")
-	val pixelFormat: String? = null,
+	public val pixelFormat: String? = null,
 	/**
 	 * Gets or sets the level.
 	 */
 	@SerialName("Level")
-	val level: Double? = null,
+	public val level: Double? = null,
 	/**
 	 * Gets a value indicating whether this instance is anamorphic.
 	 */
 	@SerialName("IsAnamorphic")
-	val isAnamorphic: Boolean? = null
+	public val isAnamorphic: Boolean? = null
 )

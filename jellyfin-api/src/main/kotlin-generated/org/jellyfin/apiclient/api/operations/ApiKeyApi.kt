@@ -12,17 +12,17 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.AuthenticationInfoQueryResult
 
-class ApiKeyApi(
+public class ApiKeyApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Get all keys.
 	 */
-	suspend fun getKeys(): Response<AuthenticationInfoQueryResult> {
+	public suspend fun getKeys(): Response<AuthenticationInfoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<AuthenticationInfoQueryResult>("/Auth/Keys", pathParameters,
+		val response = api.`get`<AuthenticationInfoQueryResult>("/Auth/Keys", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -32,7 +32,7 @@ class ApiKeyApi(
 	 *
 	 * @param app Name of the app using the authentication key.
 	 */
-	suspend fun createKey(app: String): Response<Unit> {
+	public suspend fun createKey(app: String): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["app"] = app
@@ -46,7 +46,7 @@ class ApiKeyApi(
 	 *
 	 * @param key The access token to delete.
 	 */
-	suspend fun revokeKey(key: String): Response<Unit> {
+	public suspend fun revokeKey(key: String): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["key"] = key
 		val queryParameters = emptyMap<String, Any?>()

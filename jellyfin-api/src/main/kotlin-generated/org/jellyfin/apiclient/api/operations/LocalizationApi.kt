@@ -15,17 +15,17 @@ import org.jellyfin.apiclient.model.api.CultureDto
 import org.jellyfin.apiclient.model.api.LocalizationOption
 import org.jellyfin.apiclient.model.api.ParentalRating
 
-class LocalizationApi(
+public class LocalizationApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Gets known countries.
 	 */
-	suspend fun getCountries(): Response<List<CountryInfo>> {
+	public suspend fun getCountries(): Response<List<CountryInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<CountryInfo>>("/Localization/Countries", pathParameters,
+		val response = api.`get`<List<CountryInfo>>("/Localization/Countries", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -33,11 +33,11 @@ class LocalizationApi(
 	/**
 	 * Gets known cultures.
 	 */
-	suspend fun getCultures(): Response<List<CultureDto>> {
+	public suspend fun getCultures(): Response<List<CultureDto>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<CultureDto>>("/Localization/Cultures", pathParameters,
+		val response = api.`get`<List<CultureDto>>("/Localization/Cultures", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -45,11 +45,11 @@ class LocalizationApi(
 	/**
 	 * Gets localization options.
 	 */
-	suspend fun getLocalizationOptions(): Response<List<LocalizationOption>> {
+	public suspend fun getLocalizationOptions(): Response<List<LocalizationOption>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<LocalizationOption>>("/Localization/Options", pathParameters,
+		val response = api.`get`<List<LocalizationOption>>("/Localization/Options", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -57,11 +57,11 @@ class LocalizationApi(
 	/**
 	 * Gets known parental ratings.
 	 */
-	suspend fun getParentalRatings(): Response<List<ParentalRating>> {
+	public suspend fun getParentalRatings(): Response<List<ParentalRating>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<ParentalRating>>("/Localization/ParentalRatings", pathParameters,
+		val response = api.`get`<List<ParentalRating>>("/Localization/ParentalRatings", pathParameters,
 				queryParameters, data)
 		return response
 	}

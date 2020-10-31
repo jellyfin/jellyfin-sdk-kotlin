@@ -17,18 +17,18 @@ import org.jellyfin.apiclient.model.api.NotificationResultDto
 import org.jellyfin.apiclient.model.api.NotificationTypeInfo
 import org.jellyfin.apiclient.model.api.NotificationsSummaryDto
 
-class NotificationsApi(
+public class NotificationsApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Gets a user's notifications.
 	 */
-	suspend fun getNotifications(userId: String): Response<NotificationResultDto> {
+	public suspend fun getNotifications(userId: String): Response<NotificationResultDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<NotificationResultDto>("/Notifications/{userId}", pathParameters,
+		val response = api.`get`<NotificationResultDto>("/Notifications/{userId}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -36,7 +36,7 @@ class NotificationsApi(
 	/**
 	 * Sets notifications as read.
 	 */
-	suspend fun setRead(userId: String): Response<Unit> {
+	public suspend fun setRead(userId: String): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -49,20 +49,20 @@ class NotificationsApi(
 	/**
 	 * Gets a user's notification summary.
 	 */
-	suspend fun getNotificationsSummary(userId: String): Response<NotificationsSummaryDto> {
+	public suspend fun getNotificationsSummary(userId: String): Response<NotificationsSummaryDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<NotificationsSummaryDto>("/Notifications/{userId}/Summary", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<NotificationsSummaryDto>("/Notifications/{userId}/Summary",
+				pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Sets notifications as unread.
 	 */
-	suspend fun setUnread(userId: String): Response<Unit> {
+	public suspend fun setUnread(userId: String): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -80,7 +80,7 @@ class NotificationsApi(
 	 * @param name The name of the notification.
 	 * @param description The description of the notification.
 	 */
-	suspend fun createAdminNotification(
+	public suspend fun createAdminNotification(
 		url: String? = null,
 		level: NotificationLevel,
 		name: String? = "",
@@ -100,11 +100,11 @@ class NotificationsApi(
 	/**
 	 * Gets notification services.
 	 */
-	suspend fun getNotificationServices(): Response<List<NameIdPair>> {
+	public suspend fun getNotificationServices(): Response<List<NameIdPair>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<NameIdPair>>("/Notifications/Services", pathParameters,
+		val response = api.`get`<List<NameIdPair>>("/Notifications/Services", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -112,11 +112,11 @@ class NotificationsApi(
 	/**
 	 * Gets notification types.
 	 */
-	suspend fun getNotificationTypes(): Response<List<NotificationTypeInfo>> {
+	public suspend fun getNotificationTypes(): Response<List<NotificationTypeInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<NotificationTypeInfo>>("/Notifications/Types", pathParameters,
+		val response = api.`get`<List<NotificationTypeInfo>>("/Notifications/Types", pathParameters,
 				queryParameters, data)
 		return response
 	}

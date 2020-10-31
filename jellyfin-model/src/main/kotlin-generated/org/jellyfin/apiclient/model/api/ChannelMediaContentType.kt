@@ -9,28 +9,21 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class ChannelMediaContentType {
+public enum class ChannelMediaContentType {
 	@SerialName("Clip")
 	CLIP,
-
 	@SerialName("Podcast")
 	PODCAST,
-
 	@SerialName("Trailer")
 	TRAILER,
-
 	@SerialName("Movie")
 	MOVIE,
-
 	@SerialName("Episode")
 	EPISODE,
-
 	@SerialName("Song")
 	SONG,
-
 	@SerialName("MovieExtra")
 	MOVIE_EXTRA,
-
 	@SerialName("TvExtra")
-	TV_EXTRA
+	TV_EXTRA,
 }

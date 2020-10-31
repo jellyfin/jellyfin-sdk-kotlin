@@ -12,10 +12,9 @@ import kotlinx.serialization.Serializable
  * Enum IsoType.
  */
 @Serializable
-enum class IsoType {
+public enum class IsoType {
 	@SerialName("Dvd")
 	DVD,
-
 	@SerialName("BluRay")
-	BLU_RAY
+	BLU_RAY,
 }

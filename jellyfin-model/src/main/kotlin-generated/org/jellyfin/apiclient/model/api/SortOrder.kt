@@ -12,10 +12,9 @@ import kotlinx.serialization.Serializable
  * An enum representing the sorting order.
  */
 @Serializable
-enum class SortOrder {
+public enum class SortOrder {
 	@SerialName("Ascending")
 	ASCENDING,
-
 	@SerialName("Descending")
-	DESCENDING
+	DESCENDING,
 }

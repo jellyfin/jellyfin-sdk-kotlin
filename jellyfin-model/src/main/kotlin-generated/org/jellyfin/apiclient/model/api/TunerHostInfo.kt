@@ -12,27 +12,27 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TunerHostInfo(
+public data class TunerHostInfo(
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	@SerialName("Url")
-	val url: String? = null,
+	public val url: String? = null,
 	@SerialName("Type")
-	val type: String? = null,
+	public val type: String? = null,
 	@SerialName("DeviceId")
-	val deviceId: String? = null,
+	public val deviceId: String? = null,
 	@SerialName("FriendlyName")
-	val friendlyName: String? = null,
+	public val friendlyName: String? = null,
 	@SerialName("ImportFavoritesOnly")
-	val importFavoritesOnly: Boolean,
+	public val importFavoritesOnly: Boolean,
 	@SerialName("AllowHWTranscoding")
-	val allowHwTranscoding: Boolean,
+	public val allowHwTranscoding: Boolean,
 	@SerialName("EnableStreamLooping")
-	val enableStreamLooping: Boolean,
+	public val enableStreamLooping: Boolean,
 	@SerialName("Source")
-	val source: String? = null,
+	public val source: String? = null,
 	@SerialName("TunerCount")
-	val tunerCount: Int,
+	public val tunerCount: Int,
 	@SerialName("UserAgent")
-	val userAgent: String? = null
+	public val userAgent: String? = null
 )

@@ -12,13 +12,11 @@ import kotlinx.serialization.Serializable
  * Enum TaskState.
  */
 @Serializable
-enum class TaskState {
+public enum class TaskState {
 	@SerialName("Idle")
 	IDLE,
-
 	@SerialName("Cancelling")
 	CANCELLING,
-
 	@SerialName("Running")
-	RUNNING
+	RUNNING,
 }

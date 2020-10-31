@@ -15,29 +15,29 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TranscodingInfo(
+public data class TranscodingInfo(
 	@SerialName("AudioCodec")
-	val audioCodec: String? = null,
+	public val audioCodec: String? = null,
 	@SerialName("VideoCodec")
-	val videoCodec: String? = null,
+	public val videoCodec: String? = null,
 	@SerialName("Container")
-	val container: String? = null,
+	public val container: String? = null,
 	@SerialName("IsVideoDirect")
-	val isVideoDirect: Boolean,
+	public val isVideoDirect: Boolean,
 	@SerialName("IsAudioDirect")
-	val isAudioDirect: Boolean,
+	public val isAudioDirect: Boolean,
 	@SerialName("Bitrate")
-	val bitrate: Int? = null,
+	public val bitrate: Int? = null,
 	@SerialName("Framerate")
-	val framerate: Float? = null,
+	public val framerate: Float? = null,
 	@SerialName("CompletionPercentage")
-	val completionPercentage: Double? = null,
+	public val completionPercentage: Double? = null,
 	@SerialName("Width")
-	val width: Int? = null,
+	public val width: Int? = null,
 	@SerialName("Height")
-	val height: Int? = null,
+	public val height: Int? = null,
 	@SerialName("AudioChannels")
-	val audioChannels: Int? = null,
+	public val audioChannels: Int? = null,
 	@SerialName("TranscodeReasons")
-	val transcodeReasons: List<TranscodeReason>? = null
+	public val transcodeReasons: List<TranscodeReason>? = null
 )

@@ -12,7 +12,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.ControlResponse
 
-class DlnaServerApi(
+public class DlnaServerApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -20,12 +20,12 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getConnectionManager(serverId: String): Response<String> {
+	public suspend fun getConnectionManager(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<String>("/Dlna/{serverId}/ConnectionManager", pathParameters,
+		val response = api.`get`<String>("/Dlna/{serverId}/ConnectionManager", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -35,12 +35,12 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getConnectionManager2(serverId: String): Response<String> {
+	public suspend fun getConnectionManager2(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<String>("/Dlna/{serverId}/ConnectionManager/ConnectionManager",
+		val response = api.`get`<String>("/Dlna/{serverId}/ConnectionManager/ConnectionManager",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -50,12 +50,12 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getConnectionManager3(serverId: String): Response<String> {
+	public suspend fun getConnectionManager3(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<String>("/Dlna/{serverId}/ConnectionManager/ConnectionManager.xml",
+		val response = api.`get`<String>("/Dlna/{serverId}/ConnectionManager/ConnectionManager.xml",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -65,7 +65,8 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun processConnectionManagerControlRequest(serverId: String): Response<ControlResponse> {
+	public suspend fun processConnectionManagerControlRequest(serverId: String):
+			Response<ControlResponse> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
@@ -80,12 +81,12 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getContentDirectory(serverId: String): Response<String> {
+	public suspend fun getContentDirectory(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<String>("/Dlna/{serverId}/ContentDirectory", pathParameters,
+		val response = api.`get`<String>("/Dlna/{serverId}/ContentDirectory", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -95,12 +96,12 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getContentDirectory2(serverId: String): Response<String> {
+	public suspend fun getContentDirectory2(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<String>("/Dlna/{serverId}/ContentDirectory/ContentDirectory",
+		val response = api.`get`<String>("/Dlna/{serverId}/ContentDirectory/ContentDirectory",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -110,12 +111,12 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getContentDirectory3(serverId: String): Response<String> {
+	public suspend fun getContentDirectory3(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<String>("/Dlna/{serverId}/ContentDirectory/ContentDirectory.xml",
+		val response = api.`get`<String>("/Dlna/{serverId}/ContentDirectory/ContentDirectory.xml",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -125,7 +126,8 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun processContentDirectoryControlRequest(serverId: String): Response<ControlResponse> {
+	public suspend fun processContentDirectoryControlRequest(serverId: String):
+			Response<ControlResponse> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
@@ -140,12 +142,12 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getDescriptionXml(serverId: String): Response<String> {
+	public suspend fun getDescriptionXml(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<String>("/Dlna/{serverId}/description", pathParameters, queryParameters,
+		val response = api.`get`<String>("/Dlna/{serverId}/description", pathParameters, queryParameters,
 				data)
 		return response
 	}
@@ -155,12 +157,12 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getDescriptionXml2(serverId: String): Response<String> {
+	public suspend fun getDescriptionXml2(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<String>("/Dlna/{serverId}/description.xml", pathParameters,
+		val response = api.`get`<String>("/Dlna/{serverId}/description.xml", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -171,13 +173,13 @@ class DlnaServerApi(
 	 * @param serverId Server UUID.
 	 * @param fileName The icon filename.
 	 */
-	suspend fun getIconId(serverId: String, fileName: String): Response<ByteReadChannel> {
+	public suspend fun getIconId(serverId: String, fileName: String): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		pathParameters["fileName"] = fileName
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<ByteReadChannel>("/Dlna/{serverId}/icons/{fileName}", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Dlna/{serverId}/icons/{fileName}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -188,7 +190,7 @@ class DlnaServerApi(
 	 * @param serverId Server UUID.
 	 * @param fileName The icon filename.
 	 */
-	fun getIconIdUrl(serverId: String, fileName: String): String {
+	public fun getIconIdUrl(serverId: String, fileName: String): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		pathParameters["fileName"] = fileName
@@ -201,12 +203,12 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getMediaReceiverRegistrar(serverId: String): Response<String> {
+	public suspend fun getMediaReceiverRegistrar(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<String>("/Dlna/{serverId}/MediaReceiverRegistrar", pathParameters,
+		val response = api.`get`<String>("/Dlna/{serverId}/MediaReceiverRegistrar", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -216,7 +218,7 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun processMediaReceiverRegistrarControlRequest(serverId: String):
+	public suspend fun processMediaReceiverRegistrarControlRequest(serverId: String):
 			Response<ControlResponse> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
@@ -232,12 +234,12 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getMediaReceiverRegistrar2(serverId: String): Response<String> {
+	public suspend fun getMediaReceiverRegistrar2(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<String>("/Dlna/{serverId}/MediaReceiverRegistrar/MediaReceiverRegistrar",
+		val response = api.`get`<String>("/Dlna/{serverId}/MediaReceiverRegistrar/MediaReceiverRegistrar",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -247,13 +249,13 @@ class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	suspend fun getMediaReceiverRegistrar3(serverId: String): Response<String> {
+	public suspend fun getMediaReceiverRegistrar3(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response =
-				api.get<String>("/Dlna/{serverId}/MediaReceiverRegistrar/MediaReceiverRegistrar.xml",
+				api.`get`<String>("/Dlna/{serverId}/MediaReceiverRegistrar/MediaReceiverRegistrar.xml",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -263,13 +265,13 @@ class DlnaServerApi(
 	 *
 	 * @param fileName The icon filename.
 	 */
-	suspend fun getIcon(fileName: String): Response<ByteReadChannel> {
+	public suspend fun getIcon(fileName: String): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["fileName"] = fileName
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<ByteReadChannel>("/Dlna/icons/{fileName}", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<ByteReadChannel>("/Dlna/icons/{fileName}", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
@@ -278,7 +280,7 @@ class DlnaServerApi(
 	 *
 	 * @param fileName The icon filename.
 	 */
-	fun getIconUrl(fileName: String): String {
+	public fun getIconUrl(fileName: String): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["fileName"] = fileName
 		val queryParameters = emptyMap<String, Any?>()

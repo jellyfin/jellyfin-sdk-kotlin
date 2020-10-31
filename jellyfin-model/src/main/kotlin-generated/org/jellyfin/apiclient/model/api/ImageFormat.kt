@@ -12,19 +12,15 @@ import kotlinx.serialization.Serializable
  * Enum ImageOutputFormat.
  */
 @Serializable
-enum class ImageFormat {
+public enum class ImageFormat {
 	@SerialName("Bmp")
 	BMP,
-
 	@SerialName("Gif")
 	GIF,
-
 	@SerialName("Jpg")
 	JPG,
-
 	@SerialName("Png")
 	PNG,
-
 	@SerialName("Webp")
-	WEBP
+	WEBP,
 }

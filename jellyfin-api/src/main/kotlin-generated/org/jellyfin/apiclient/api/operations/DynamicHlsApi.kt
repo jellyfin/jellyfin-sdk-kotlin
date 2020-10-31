@@ -19,7 +19,7 @@ import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.EncodingContext
 import org.jellyfin.apiclient.model.api.SubtitleDeliveryMethod
 
-class DynamicHlsApi(
+public class DynamicHlsApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -93,7 +93,7 @@ class DynamicHlsApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	suspend fun getHlsAudioSegment(
+	public suspend fun getHlsAudioSegment(
 		itemId: UUID,
 		playlistId: String,
 		segmentId: Int,
@@ -201,7 +201,7 @@ class DynamicHlsApi(
 		queryParameters["streamOptions"] = streamOptions
 		val data = null
 		val response =
-				api.get<ByteReadChannel>("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}",
+				api.`get`<ByteReadChannel>("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -277,7 +277,7 @@ class DynamicHlsApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	fun getHlsAudioSegmentUrl(
+	public fun getHlsAudioSegmentUrl(
 		itemId: UUID,
 		playlistId: String,
 		segmentId: Int,
@@ -454,7 +454,7 @@ class DynamicHlsApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	suspend fun getVariantHlsAudioPlaylist(
+	public suspend fun getVariantHlsAudioPlaylist(
 		itemId: UUID,
 		static: Boolean? = null,
 		params: String? = null,
@@ -555,7 +555,7 @@ class DynamicHlsApi(
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
 		val data = null
-		val response = api.get<ByteReadChannel>("/Audio/{itemId}/main.m3u8", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/main.m3u8", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -627,7 +627,7 @@ class DynamicHlsApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	fun getVariantHlsAudioPlaylistUrl(
+	public fun getVariantHlsAudioPlaylistUrl(
 		itemId: UUID,
 		static: Boolean? = null,
 		params: String? = null,
@@ -798,7 +798,7 @@ class DynamicHlsApi(
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
 	 */
-	suspend fun getMasterHlsAudioPlaylist(
+	public suspend fun getMasterHlsAudioPlaylist(
 		itemId: UUID,
 		static: Boolean? = null,
 		params: String? = null,
@@ -901,7 +901,7 @@ class DynamicHlsApi(
 		queryParameters["streamOptions"] = streamOptions
 		queryParameters["enableAdaptiveBitrateStreaming"] = enableAdaptiveBitrateStreaming
 		val data = null
-		val response = api.get<ByteReadChannel>("/Audio/{itemId}/master.m3u8", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/master.m3u8", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -974,7 +974,7 @@ class DynamicHlsApi(
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
 	 */
-	fun getMasterHlsAudioPlaylistUrl(
+	public fun getMasterHlsAudioPlaylistUrl(
 		itemId: UUID,
 		static: Boolean? = null,
 		params: String? = null,
@@ -1150,7 +1150,7 @@ class DynamicHlsApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	suspend fun getHlsVideoSegment(
+	public suspend fun getHlsVideoSegment(
 		itemId: UUID,
 		playlistId: String,
 		segmentId: Int,
@@ -1258,7 +1258,7 @@ class DynamicHlsApi(
 		queryParameters["streamOptions"] = streamOptions
 		val data = null
 		val response =
-				api.get<ByteReadChannel>("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}",
+				api.`get`<ByteReadChannel>("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -1334,7 +1334,7 @@ class DynamicHlsApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	fun getHlsVideoSegmentUrl(
+	public fun getHlsVideoSegmentUrl(
 		itemId: UUID,
 		playlistId: String,
 		segmentId: Int,
@@ -1511,7 +1511,7 @@ class DynamicHlsApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	suspend fun getVariantHlsVideoPlaylist(
+	public suspend fun getVariantHlsVideoPlaylist(
 		itemId: UUID,
 		static: Boolean? = null,
 		params: String? = null,
@@ -1612,7 +1612,7 @@ class DynamicHlsApi(
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
 		val data = null
-		val response = api.get<ByteReadChannel>("/Videos/{itemId}/main.m3u8", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/main.m3u8", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -1684,7 +1684,7 @@ class DynamicHlsApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	fun getVariantHlsVideoPlaylistUrl(
+	public fun getVariantHlsVideoPlaylistUrl(
 		itemId: UUID,
 		static: Boolean? = null,
 		params: String? = null,
@@ -1855,7 +1855,7 @@ class DynamicHlsApi(
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
 	 */
-	suspend fun getMasterHlsVideoPlaylist(
+	public suspend fun getMasterHlsVideoPlaylist(
 		itemId: UUID,
 		static: Boolean? = null,
 		params: String? = null,
@@ -1958,7 +1958,7 @@ class DynamicHlsApi(
 		queryParameters["streamOptions"] = streamOptions
 		queryParameters["enableAdaptiveBitrateStreaming"] = enableAdaptiveBitrateStreaming
 		val data = null
-		val response = api.get<ByteReadChannel>("/Videos/{itemId}/master.m3u8", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/master.m3u8", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -2031,7 +2031,7 @@ class DynamicHlsApi(
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
 	 */
-	fun getMasterHlsVideoPlaylistUrl(
+	public fun getMasterHlsVideoPlaylistUrl(
 		itemId: UUID,
 		static: Boolean? = null,
 		params: String? = null,

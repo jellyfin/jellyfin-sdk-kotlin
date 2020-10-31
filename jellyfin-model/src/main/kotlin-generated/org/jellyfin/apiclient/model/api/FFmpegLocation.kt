@@ -12,16 +12,13 @@ import kotlinx.serialization.Serializable
  * Enum describing the location of the FFmpeg tool.
  */
 @Serializable
-enum class FFmpegLocation {
+public enum class FFmpegLocation {
 	@SerialName("NotFound")
 	NOT_FOUND,
-
 	@SerialName("SetByArgument")
 	SET_BY_ARGUMENT,
-
 	@SerialName("Custom")
 	CUSTOM,
-
 	@SerialName("System")
-	SYSTEM
+	SYSTEM,
 }

@@ -10,7 +10,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DeviceOptions(
+public data class DeviceOptions(
 	@SerialName("CustomName")
-	val customName: String? = null
+	public val customName: String? = null
 )

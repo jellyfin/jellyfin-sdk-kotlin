@@ -9,16 +9,13 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class SubtitleDeliveryMethod {
+public enum class SubtitleDeliveryMethod {
 	@SerialName("Encode")
 	ENCODE,
-
 	@SerialName("Embed")
 	EMBED,
-
 	@SerialName("External")
 	EXTERNAL,
-
 	@SerialName("Hls")
-	HLS
+	HLS,
 }

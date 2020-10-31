@@ -9,13 +9,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class NotificationLevel {
+public enum class NotificationLevel {
 	@SerialName("Normal")
 	NORMAL,
-
 	@SerialName("Warning")
 	WARNING,
-
 	@SerialName("Error")
-	ERROR
+	ERROR,
 }

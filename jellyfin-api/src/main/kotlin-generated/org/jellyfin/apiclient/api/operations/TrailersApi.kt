@@ -19,7 +19,7 @@ import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.ItemFilter
 import org.jellyfin.apiclient.model.api.LocationType
 
-class TrailersApi(
+public class TrailersApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -144,7 +144,7 @@ class TrailersApi(
 	 * @param enableTotalRecordCount Optional. Enable the total record count.
 	 * @param enableImages Optional, include image information in output.
 	 */
-	suspend fun getTrailers(
+	public suspend fun getTrailers(
 		userId: UUID? = null,
 		maxOfficialRating: String? = null,
 		hasThemeSong: Boolean? = null,
@@ -307,7 +307,8 @@ class TrailersApi(
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		queryParameters["enableImages"] = enableImages
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Trailers", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Trailers", pathParameters, queryParameters,
+				data)
 		return response
 	}
 }

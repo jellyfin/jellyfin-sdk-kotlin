@@ -17,39 +17,39 @@ import org.jellyfin.apiclient.model.api.PublicSystemInfo
 import org.jellyfin.apiclient.model.api.SystemInfo
 import org.jellyfin.apiclient.model.api.WakeOnLanInfo
 
-class SystemApi(
+public class SystemApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Gets information about the request endpoint.
 	 */
-	suspend fun getEndpointInfo(): Response<EndPointInfo> {
+	public suspend fun getEndpointInfo(): Response<EndPointInfo> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<EndPointInfo>("/System/Endpoint", pathParameters, queryParameters, data)
+		val response = api.`get`<EndPointInfo>("/System/Endpoint", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Gets information about the server.
 	 */
-	suspend fun getSystemInfo(): Response<SystemInfo> {
+	public suspend fun getSystemInfo(): Response<SystemInfo> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<SystemInfo>("/System/Info", pathParameters, queryParameters, data)
+		val response = api.`get`<SystemInfo>("/System/Info", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Gets public information about the server.
 	 */
-	suspend fun getPublicSystemInfo(): Response<PublicSystemInfo> {
+	public suspend fun getPublicSystemInfo(): Response<PublicSystemInfo> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<PublicSystemInfo>("/System/Info/Public", pathParameters, queryParameters,
+		val response = api.`get`<PublicSystemInfo>("/System/Info/Public", pathParameters, queryParameters,
 				data)
 		return response
 	}
@@ -57,11 +57,11 @@ class SystemApi(
 	/**
 	 * Gets a list of available server log files.
 	 */
-	suspend fun getServerLogs(): Response<List<LogFile>> {
+	public suspend fun getServerLogs(): Response<List<LogFile>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<LogFile>>("/System/Logs", pathParameters, queryParameters, data)
+		val response = api.`get`<List<LogFile>>("/System/Logs", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -70,30 +70,30 @@ class SystemApi(
 	 *
 	 * @param name The name of the log file to get.
 	 */
-	suspend fun getLogFile(name: String): Response<String> {
+	public suspend fun getLogFile(name: String): Response<String> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["name"] = name
 		val data = null
-		val response = api.get<String>("/System/Logs/Log", pathParameters, queryParameters, data)
+		val response = api.`get`<String>("/System/Logs/Log", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Pings the system.
 	 */
-	suspend fun getPingSystem(): Response<String> {
+	public suspend fun getPingSystem(): Response<String> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<String>("/System/Ping", pathParameters, queryParameters, data)
+		val response = api.`get`<String>("/System/Ping", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Pings the system.
 	 */
-	suspend fun postPingSystem(): Response<String> {
+	public suspend fun postPingSystem(): Response<String> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
@@ -104,7 +104,7 @@ class SystemApi(
 	/**
 	 * Restarts the application.
 	 */
-	suspend fun restartApplication(): Response<Unit> {
+	public suspend fun restartApplication(): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
@@ -115,7 +115,7 @@ class SystemApi(
 	/**
 	 * Shuts down the application.
 	 */
-	suspend fun shutdownApplication(): Response<Unit> {
+	public suspend fun shutdownApplication(): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
@@ -126,11 +126,11 @@ class SystemApi(
 	/**
 	 * Gets wake on lan information.
 	 */
-	suspend fun getWakeOnLanInfo(): Response<List<WakeOnLanInfo>> {
+	public suspend fun getWakeOnLanInfo(): Response<List<WakeOnLanInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<WakeOnLanInfo>>("/System/WakeOnLanInfo", pathParameters,
+		val response = api.`get`<List<WakeOnLanInfo>>("/System/WakeOnLanInfo", pathParameters,
 				queryParameters, data)
 		return response
 	}

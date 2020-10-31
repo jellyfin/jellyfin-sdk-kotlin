@@ -13,17 +13,17 @@ import kotlinx.serialization.Serializable
  * Media Path dto.
  */
 @Serializable
-data class MediaPathDto(
+public data class MediaPathDto(
 	/**
 	 * Gets or sets the name of the library.
 	 */
 	@SerialName("Name")
-	val name: String,
+	public val name: String,
 	/**
 	 * Gets or sets the path to add.
 	 */
 	@SerialName("Path")
-	val path: String? = null,
+	public val path: String? = null,
 	@SerialName("PathInfo")
-	val pathInfo: MediaPathInfo? = null
+	public val pathInfo: MediaPathInfo? = null
 )

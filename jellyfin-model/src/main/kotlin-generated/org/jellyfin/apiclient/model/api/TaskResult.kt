@@ -18,42 +18,42 @@ import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
  * Class TaskExecutionInfo.
  */
 @Serializable
-data class TaskResult(
+public data class TaskResult(
 	/**
 	 * Gets or sets the start time UTC.
 	 */
 	@SerialName("StartTimeUtc")
-	val startTimeUtc: LocalDateTime,
+	public val startTimeUtc: LocalDateTime,
 	/**
 	 * Gets or sets the end time UTC.
 	 */
 	@SerialName("EndTimeUtc")
-	val endTimeUtc: LocalDateTime,
+	public val endTimeUtc: LocalDateTime,
 	@SerialName("Status")
-	val status: TaskCompletionStatus? = null,
+	public val status: TaskCompletionStatus? = null,
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the key.
 	 */
 	@SerialName("Key")
-	val key: String? = null,
+	public val key: String? = null,
 	/**
 	 * Gets or sets the id.
 	 */
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	/**
 	 * Gets or sets the error message.
 	 */
 	@SerialName("ErrorMessage")
-	val errorMessage: String? = null,
+	public val errorMessage: String? = null,
 	/**
 	 * Gets or sets the long error message.
 	 */
 	@SerialName("LongErrorMessage")
-	val longErrorMessage: String? = null
+	public val longErrorMessage: String? = null
 )

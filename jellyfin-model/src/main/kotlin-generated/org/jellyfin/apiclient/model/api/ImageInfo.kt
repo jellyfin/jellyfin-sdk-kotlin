@@ -15,42 +15,42 @@ import kotlinx.serialization.Serializable
  * Class ImageInfo.
  */
 @Serializable
-data class ImageInfo(
+public data class ImageInfo(
 	@SerialName("ImageType")
-	val imageType: ImageType? = null,
+	public val imageType: ImageType? = null,
 	/**
 	 * Gets or sets the index of the image.
 	 */
 	@SerialName("ImageIndex")
-	val imageIndex: Int? = null,
+	public val imageIndex: Int? = null,
 	/**
 	 * Gets or sets the image tag.
 	 */
 	@SerialName("ImageTag")
-	val imageTag: String? = null,
+	public val imageTag: String? = null,
 	/**
 	 * Gets or sets the path.
 	 */
 	@SerialName("Path")
-	val path: String? = null,
+	public val path: String? = null,
 	/**
 	 * Gets or sets the blurhash.
 	 */
 	@SerialName("BlurHash")
-	val blurHash: String? = null,
+	public val blurHash: String? = null,
 	/**
 	 * Gets or sets the height.
 	 */
 	@SerialName("Height")
-	val height: Int? = null,
+	public val height: Int? = null,
 	/**
 	 * Gets or sets the width.
 	 */
 	@SerialName("Width")
-	val width: Int? = null,
+	public val width: Int? = null,
 	/**
 	 * Gets or sets the size.
 	 */
 	@SerialName("Size")
-	val size: Long
+	public val size: Long
 )

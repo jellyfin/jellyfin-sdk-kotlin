@@ -9,25 +9,19 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class RecordingStatus {
+public enum class RecordingStatus {
 	@SerialName("New")
 	NEW,
-
 	@SerialName("InProgress")
 	IN_PROGRESS,
-
 	@SerialName("Completed")
 	COMPLETED,
-
 	@SerialName("Cancelled")
 	CANCELLED,
-
 	@SerialName("ConflictedOk")
 	CONFLICTED_OK,
-
 	@SerialName("ConflictedNotOk")
 	CONFLICTED_NOT_OK,
-
 	@SerialName("Error")
-	ERROR
+	ERROR,
 }

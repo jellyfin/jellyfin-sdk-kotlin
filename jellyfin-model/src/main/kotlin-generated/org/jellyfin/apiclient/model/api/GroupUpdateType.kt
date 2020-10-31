@@ -12,37 +12,27 @@ import kotlinx.serialization.Serializable
  * Enum GroupUpdateType.
  */
 @Serializable
-enum class GroupUpdateType {
+public enum class GroupUpdateType {
 	@SerialName("UserJoined")
 	USER_JOINED,
-
 	@SerialName("UserLeft")
 	USER_LEFT,
-
 	@SerialName("GroupJoined")
 	GROUP_JOINED,
-
 	@SerialName("GroupLeft")
 	GROUP_LEFT,
-
 	@SerialName("GroupWait")
 	GROUP_WAIT,
-
 	@SerialName("PrepareSession")
 	PREPARE_SESSION,
-
 	@SerialName("NotInGroup")
 	NOT_IN_GROUP,
-
 	@SerialName("GroupDoesNotExist")
 	GROUP_DOES_NOT_EXIST,
-
 	@SerialName("CreateGroupDenied")
 	CREATE_GROUP_DENIED,
-
 	@SerialName("JoinGroupDenied")
 	JOIN_GROUP_DENIED,
-
 	@SerialName("LibraryAccessDenied")
-	LIBRARY_ACCESS_DENIED
+	LIBRARY_ACCESS_DENIED,
 }

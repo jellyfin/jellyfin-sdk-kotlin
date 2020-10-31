@@ -9,10 +9,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class ImageSavingConvention {
+public enum class ImageSavingConvention {
 	@SerialName("Legacy")
 	LEGACY,
-
 	@SerialName("Compatible")
-	COMPATIBLE
+	COMPATIBLE,
 }

@@ -18,7 +18,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.GroupInfoView
 
-class SyncPlayApi(
+public class SyncPlayApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -28,7 +28,7 @@ class SyncPlayApi(
 	 * @param positionTicks The playback position in ticks.
 	 * @param bufferingDone Whether the buffering is done.
 	 */
-	suspend fun syncPlayBuffering(
+	public suspend fun syncPlayBuffering(
 		`when`: LocalDateTime,
 		positionTicks: Long,
 		bufferingDone: Boolean
@@ -48,7 +48,7 @@ class SyncPlayApi(
 	 *
 	 * @param groupId The sync play group id.
 	 */
-	suspend fun syncPlayJoinGroup(groupId: UUID): Response<Unit> {
+	public suspend fun syncPlayJoinGroup(groupId: UUID): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["groupId"] = groupId
@@ -60,7 +60,7 @@ class SyncPlayApi(
 	/**
 	 * Leave the joined SyncPlay group.
 	 */
-	suspend fun syncPlayLeaveGroup(): Response<Unit> {
+	public suspend fun syncPlayLeaveGroup(): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
@@ -73,12 +73,12 @@ class SyncPlayApi(
 	 *
 	 * @param filterItemId Optional. Filter by item id.
 	 */
-	suspend fun syncPlayGetGroups(filterItemId: UUID? = null): Response<List<GroupInfoView>> {
+	public suspend fun syncPlayGetGroups(filterItemId: UUID? = null): Response<List<GroupInfoView>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["filterItemId"] = filterItemId
 		val data = null
-		val response = api.get<List<GroupInfoView>>("/SyncPlay/List", pathParameters, queryParameters,
+		val response = api.`get`<List<GroupInfoView>>("/SyncPlay/List", pathParameters, queryParameters,
 				data)
 		return response
 	}
@@ -86,7 +86,7 @@ class SyncPlayApi(
 	/**
 	 * Create a new SyncPlay group.
 	 */
-	suspend fun syncPlayCreateGroup(): Response<Unit> {
+	public suspend fun syncPlayCreateGroup(): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
@@ -97,7 +97,7 @@ class SyncPlayApi(
 	/**
 	 * Request pause in SyncPlay group.
 	 */
-	suspend fun syncPlayPause(): Response<Unit> {
+	public suspend fun syncPlayPause(): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
@@ -110,7 +110,7 @@ class SyncPlayApi(
 	 *
 	 * @param ping The ping.
 	 */
-	suspend fun syncPlayPing(ping: Double): Response<Unit> {
+	public suspend fun syncPlayPing(ping: Double): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["ping"] = ping
@@ -122,7 +122,7 @@ class SyncPlayApi(
 	/**
 	 * Request play in SyncPlay group.
 	 */
-	suspend fun syncPlayPlay(): Response<Unit> {
+	public suspend fun syncPlayPlay(): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
@@ -135,7 +135,7 @@ class SyncPlayApi(
 	 *
 	 * @param positionTicks The playback position in ticks.
 	 */
-	suspend fun syncPlaySeek(positionTicks: Long): Response<Unit> {
+	public suspend fun syncPlaySeek(positionTicks: Long): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["positionTicks"] = positionTicks

@@ -11,17 +11,17 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TypeOptions(
+public data class TypeOptions(
 	@SerialName("Type")
-	val type: String? = null,
+	public val type: String? = null,
 	@SerialName("MetadataFetchers")
-	val metadataFetchers: List<String>? = null,
+	public val metadataFetchers: List<String>? = null,
 	@SerialName("MetadataFetcherOrder")
-	val metadataFetcherOrder: List<String>? = null,
+	public val metadataFetcherOrder: List<String>? = null,
 	@SerialName("ImageFetchers")
-	val imageFetchers: List<String>? = null,
+	public val imageFetchers: List<String>? = null,
 	@SerialName("ImageFetcherOrder")
-	val imageFetcherOrder: List<String>? = null,
+	public val imageFetcherOrder: List<String>? = null,
 	@SerialName("ImageOptions")
-	val imageOptions: List<ImageOption>? = null
+	public val imageOptions: List<ImageOption>? = null
 )

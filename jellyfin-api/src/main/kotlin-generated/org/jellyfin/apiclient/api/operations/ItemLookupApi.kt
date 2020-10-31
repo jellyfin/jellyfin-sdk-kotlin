@@ -26,7 +26,7 @@ import org.jellyfin.apiclient.model.api.RemoteSearchResult
 import org.jellyfin.apiclient.model.api.SeriesInfoRemoteSearchQuery
 import org.jellyfin.apiclient.model.api.TrailerInfoRemoteSearchQuery
 
-class ItemLookupApi(
+public class ItemLookupApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -34,12 +34,12 @@ class ItemLookupApi(
 	 *
 	 * @param itemId Item id.
 	 */
-	suspend fun getExternalIdInfos(itemId: UUID): Response<List<ExternalIdInfo>> {
+	public suspend fun getExternalIdInfos(itemId: UUID): Response<List<ExternalIdInfo>> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<ExternalIdInfo>>("/Items/{itemId}/ExternalIdInfos", pathParameters,
+		val response = api.`get`<List<ExternalIdInfo>>("/Items/{itemId}/ExternalIdInfos", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -50,10 +50,10 @@ class ItemLookupApi(
 	 * @param itemId Item id.
 	 * @param replaceAllImages Optional. Whether or not to replace all images. Default: True.
 	 */
-	suspend fun applySearchCriteria(
+	public suspend fun applySearchCriteria(
 		itemId: UUID,
 		replaceAllImages: Boolean = true,
-		data: RemoteSearchResult
+		`data`: RemoteSearchResult
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -67,7 +67,7 @@ class ItemLookupApi(
 	/**
 	 * Get book remote search.
 	 */
-	suspend fun getBookRemoteSearchResults(data: BookInfoRemoteSearchQuery):
+	public suspend fun getBookRemoteSearchResults(`data`: BookInfoRemoteSearchQuery):
 			Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
@@ -79,7 +79,7 @@ class ItemLookupApi(
 	/**
 	 * Get box set remote search.
 	 */
-	suspend fun getBoxSetRemoteSearchResults(data: BoxSetInfoRemoteSearchQuery):
+	public suspend fun getBoxSetRemoteSearchResults(`data`: BoxSetInfoRemoteSearchQuery):
 			Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
@@ -94,14 +94,14 @@ class ItemLookupApi(
 	 * @param imageUrl The image url.
 	 * @param providerName The provider name.
 	 */
-	suspend fun getRemoteSearchImage(imageUrl: String, providerName: String):
+	public suspend fun getRemoteSearchImage(imageUrl: String, providerName: String):
 			Response<ByteReadChannel> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["imageUrl"] = imageUrl
 		queryParameters["providerName"] = providerName
 		val data = null
-		val response = api.get<ByteReadChannel>("/Items/RemoteSearch/Image", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Items/RemoteSearch/Image", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -112,7 +112,7 @@ class ItemLookupApi(
 	 * @param imageUrl The image url.
 	 * @param providerName The provider name.
 	 */
-	fun getRemoteSearchImageUrl(imageUrl: String, providerName: String): String {
+	public fun getRemoteSearchImageUrl(imageUrl: String, providerName: String): String {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["imageUrl"] = imageUrl
@@ -123,7 +123,7 @@ class ItemLookupApi(
 	/**
 	 * Get movie remote search.
 	 */
-	suspend fun getMovieRemoteSearchResults(data: MovieInfoRemoteSearchQuery):
+	public suspend fun getMovieRemoteSearchResults(`data`: MovieInfoRemoteSearchQuery):
 			Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
@@ -135,7 +135,7 @@ class ItemLookupApi(
 	/**
 	 * Get music album remote search.
 	 */
-	suspend fun getMusicAlbumRemoteSearchResults(data: AlbumInfoRemoteSearchQuery):
+	public suspend fun getMusicAlbumRemoteSearchResults(`data`: AlbumInfoRemoteSearchQuery):
 			Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
@@ -147,7 +147,7 @@ class ItemLookupApi(
 	/**
 	 * Get music artist remote search.
 	 */
-	suspend fun getMusicArtistRemoteSearchResults(data: ArtistInfoRemoteSearchQuery):
+	public suspend fun getMusicArtistRemoteSearchResults(`data`: ArtistInfoRemoteSearchQuery):
 			Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
@@ -159,7 +159,7 @@ class ItemLookupApi(
 	/**
 	 * Get music video remote search.
 	 */
-	suspend fun getMusicVideoRemoteSearchResults(data: MusicVideoInfoRemoteSearchQuery):
+	public suspend fun getMusicVideoRemoteSearchResults(`data`: MusicVideoInfoRemoteSearchQuery):
 			Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
@@ -171,7 +171,7 @@ class ItemLookupApi(
 	/**
 	 * Get person remote search.
 	 */
-	suspend fun getPersonRemoteSearchResults(data: PersonLookupInfoRemoteSearchQuery):
+	public suspend fun getPersonRemoteSearchResults(`data`: PersonLookupInfoRemoteSearchQuery):
 			Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
@@ -183,7 +183,7 @@ class ItemLookupApi(
 	/**
 	 * Get series remote search.
 	 */
-	suspend fun getSeriesRemoteSearchResults(data: SeriesInfoRemoteSearchQuery):
+	public suspend fun getSeriesRemoteSearchResults(`data`: SeriesInfoRemoteSearchQuery):
 			Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
@@ -195,7 +195,7 @@ class ItemLookupApi(
 	/**
 	 * Get trailer remote search.
 	 */
-	suspend fun getTrailerRemoteSearchResults(data: TrailerInfoRemoteSearchQuery):
+	public suspend fun getTrailerRemoteSearchResults(`data`: TrailerInfoRemoteSearchQuery):
 			Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()

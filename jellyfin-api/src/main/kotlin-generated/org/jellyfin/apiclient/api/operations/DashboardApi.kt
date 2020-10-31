@@ -14,7 +14,7 @@ import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.ConfigurationPageInfo
 import org.jellyfin.apiclient.model.api.ConfigurationPageType
 
-class DashboardApi(
+public class DashboardApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -22,12 +22,12 @@ class DashboardApi(
 	 *
 	 * @param name The name of the page.
 	 */
-	suspend fun getDashboardConfigurationPage(name: String? = null): Response<String> {
+	public suspend fun getDashboardConfigurationPage(name: String? = null): Response<String> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["name"] = name
 		val data = null
-		val response = api.get<String>("/web/ConfigurationPage", pathParameters, queryParameters, data)
+		val response = api.`get`<String>("/web/ConfigurationPage", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -37,14 +37,14 @@ class DashboardApi(
 	 * @param enableInMainMenu Whether to enable in the main menu.
 	 * @param pageType The Jellyfin.Api.Models.ConfigurationPageInfo.
 	 */
-	suspend fun getConfigurationPages(enableInMainMenu: Boolean? = null,
+	public suspend fun getConfigurationPages(enableInMainMenu: Boolean? = null,
 			pageType: ConfigurationPageType): Response<List<ConfigurationPageInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["enableInMainMenu"] = enableInMainMenu
 		queryParameters["pageType"] = pageType
 		val data = null
-		val response = api.get<List<ConfigurationPageInfo>>("/web/ConfigurationPages", pathParameters,
+		val response = api.`get`<List<ConfigurationPageInfo>>("/web/ConfigurationPages", pathParameters,
 				queryParameters, data)
 		return response
 	}

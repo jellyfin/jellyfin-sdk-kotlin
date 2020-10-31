@@ -15,44 +15,44 @@ import kotlinx.serialization.Serializable
  * Class UserConfiguration.
  */
 @Serializable
-data class UserConfiguration(
+public data class UserConfiguration(
 	/**
 	 * Gets or sets the audio language preference.
 	 */
 	@SerialName("AudioLanguagePreference")
-	val audioLanguagePreference: String? = null,
+	public val audioLanguagePreference: String? = null,
 	/**
 	 * Gets or sets a value indicating whether [play default audio track].
 	 */
 	@SerialName("PlayDefaultAudioTrack")
-	val playDefaultAudioTrack: Boolean,
+	public val playDefaultAudioTrack: Boolean,
 	/**
 	 * Gets or sets the subtitle language preference.
 	 */
 	@SerialName("SubtitleLanguagePreference")
-	val subtitleLanguagePreference: String? = null,
+	public val subtitleLanguagePreference: String? = null,
 	@SerialName("DisplayMissingEpisodes")
-	val displayMissingEpisodes: Boolean,
+	public val displayMissingEpisodes: Boolean,
 	@SerialName("GroupedFolders")
-	val groupedFolders: List<String>? = null,
+	public val groupedFolders: List<String>? = null,
 	@SerialName("SubtitleMode")
-	val subtitleMode: SubtitlePlaybackMode? = null,
+	public val subtitleMode: SubtitlePlaybackMode? = null,
 	@SerialName("DisplayCollectionsView")
-	val displayCollectionsView: Boolean,
+	public val displayCollectionsView: Boolean,
 	@SerialName("EnableLocalPassword")
-	val enableLocalPassword: Boolean,
+	public val enableLocalPassword: Boolean,
 	@SerialName("OrderedViews")
-	val orderedViews: List<String>? = null,
+	public val orderedViews: List<String>? = null,
 	@SerialName("LatestItemsExcludes")
-	val latestItemsExcludes: List<String>? = null,
+	public val latestItemsExcludes: List<String>? = null,
 	@SerialName("MyMediaExcludes")
-	val myMediaExcludes: List<String>? = null,
+	public val myMediaExcludes: List<String>? = null,
 	@SerialName("HidePlayedInLatest")
-	val hidePlayedInLatest: Boolean,
+	public val hidePlayedInLatest: Boolean,
 	@SerialName("RememberAudioSelections")
-	val rememberAudioSelections: Boolean,
+	public val rememberAudioSelections: Boolean,
 	@SerialName("RememberSubtitleSelections")
-	val rememberSubtitleSelections: Boolean,
+	public val rememberSubtitleSelections: Boolean,
 	@SerialName("EnableNextEpisodeAutoPlay")
-	val enableNextEpisodeAutoPlay: Boolean
+	public val enableNextEpisodeAutoPlay: Boolean
 )

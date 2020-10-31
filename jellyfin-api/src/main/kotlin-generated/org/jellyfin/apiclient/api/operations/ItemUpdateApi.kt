@@ -14,7 +14,7 @@ import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDto
 import org.jellyfin.apiclient.model.api.MetadataEditorInfo
 
-class ItemUpdateApi(
+public class ItemUpdateApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -22,7 +22,7 @@ class ItemUpdateApi(
 	 *
 	 * @param itemId The item id.
 	 */
-	suspend fun updateItem(itemId: UUID, data: BaseItemDto): Response<Unit> {
+	public suspend fun updateItem(itemId: UUID, `data`: BaseItemDto): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
@@ -36,7 +36,8 @@ class ItemUpdateApi(
 	 * @param itemId The item id.
 	 * @param contentType The content type of the item.
 	 */
-	suspend fun updateItemContentType(itemId: UUID, contentType: String? = null): Response<Unit> {
+	public suspend fun updateItemContentType(itemId: UUID, contentType: String? = null):
+			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -52,12 +53,12 @@ class ItemUpdateApi(
 	 *
 	 * @param itemId The item id.
 	 */
-	suspend fun getMetadataEditorInfo(itemId: UUID): Response<MetadataEditorInfo> {
+	public suspend fun getMetadataEditorInfo(itemId: UUID): Response<MetadataEditorInfo> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<MetadataEditorInfo>("/Items/{itemId}/MetadataEditor", pathParameters,
+		val response = api.`get`<MetadataEditorInfo>("/Items/{itemId}/MetadataEditor", pathParameters,
 				queryParameters, data)
 		return response
 	}

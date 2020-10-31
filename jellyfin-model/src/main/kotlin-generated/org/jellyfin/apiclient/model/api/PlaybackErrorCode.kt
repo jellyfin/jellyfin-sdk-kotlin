@@ -9,13 +9,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class PlaybackErrorCode {
+public enum class PlaybackErrorCode {
 	@SerialName("NotAllowed")
 	NOT_ALLOWED,
-
 	@SerialName("NoCompatibleStream")
 	NO_COMPATIBLE_STREAM,
-
 	@SerialName("RateLimitExceeded")
-	RATE_LIMIT_EXCEEDED
+	RATE_LIMIT_EXCEEDED,
 }

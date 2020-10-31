@@ -18,17 +18,17 @@ import org.jellyfin.apiclient.model.api.MediaPathInfo
 import org.jellyfin.apiclient.model.api.UpdateLibraryOptionsDto
 import org.jellyfin.apiclient.model.api.VirtualFolderInfo
 
-class LibraryStructureApi(
+public class LibraryStructureApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Gets all virtual folders.
 	 */
-	suspend fun getVirtualFolders(): Response<List<VirtualFolderInfo>> {
+	public suspend fun getVirtualFolders(): Response<List<VirtualFolderInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<VirtualFolderInfo>>("/Library/VirtualFolders", pathParameters,
+		val response = api.`get`<List<VirtualFolderInfo>>("/Library/VirtualFolders", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -41,12 +41,12 @@ class LibraryStructureApi(
 	 * @param paths The paths of the virtual folder.
 	 * @param refreshLibrary Whether to refresh the library.
 	 */
-	suspend fun addVirtualFolder(
+	public suspend fun addVirtualFolder(
 		name: String? = null,
 		collectionType: String? = null,
 		paths: List<String>? = emptyList(),
 		refreshLibrary: Boolean = false,
-		data: AddVirtualFolderDto
+		`data`: AddVirtualFolderDto
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -64,7 +64,7 @@ class LibraryStructureApi(
 	 * @param name The name of the folder.
 	 * @param refreshLibrary Whether to refresh the library.
 	 */
-	suspend fun removeVirtualFolder(name: String? = null, refreshLibrary: Boolean = false):
+	public suspend fun removeVirtualFolder(name: String? = null, refreshLibrary: Boolean = false):
 			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -78,7 +78,7 @@ class LibraryStructureApi(
 	/**
 	 * Update library options.
 	 */
-	suspend fun updateLibraryOptions(data: UpdateLibraryOptionsDto): Response<Unit> {
+	public suspend fun updateLibraryOptions(`data`: UpdateLibraryOptionsDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Library/VirtualFolders/LibraryOptions", pathParameters,
@@ -93,7 +93,7 @@ class LibraryStructureApi(
 	 * @param newName The new name.
 	 * @param refreshLibrary Whether to refresh the library.
 	 */
-	suspend fun renameVirtualFolder(
+	public suspend fun renameVirtualFolder(
 		name: String? = null,
 		newName: String? = null,
 		refreshLibrary: Boolean = false
@@ -114,7 +114,8 @@ class LibraryStructureApi(
 	 *
 	 * @param refreshLibrary Whether to refresh the library.
 	 */
-	suspend fun addMediaPath(refreshLibrary: Boolean = false, data: MediaPathDto): Response<Unit> {
+	public suspend fun addMediaPath(refreshLibrary: Boolean = false, `data`: MediaPathDto):
+			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["refreshLibrary"] = refreshLibrary
@@ -130,7 +131,7 @@ class LibraryStructureApi(
 	 * @param path The path to remove.
 	 * @param refreshLibrary Whether to refresh the library.
 	 */
-	suspend fun removeMediaPath(
+	public suspend fun removeMediaPath(
 		name: String? = null,
 		path: String? = null,
 		refreshLibrary: Boolean = false
@@ -151,7 +152,7 @@ class LibraryStructureApi(
 	 *
 	 * @param name The name of the library.
 	 */
-	suspend fun updateMediaPath(name: String? = null, data: MediaPathInfo): Response<Unit> {
+	public suspend fun updateMediaPath(name: String? = null, `data`: MediaPathInfo): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["name"] = name

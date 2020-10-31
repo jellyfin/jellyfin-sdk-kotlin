@@ -14,15 +14,15 @@ import kotlinx.serialization.Serializable
  * Provides the MAC address and port for wake-on-LAN functionality.
  */
 @Serializable
-data class WakeOnLanInfo(
+public data class WakeOnLanInfo(
 	/**
 	 * Gets the MAC address of the device.
 	 */
 	@SerialName("MacAddress")
-	val macAddress: String? = null,
+	public val macAddress: String? = null,
 	/**
 	 * Gets or sets the wake-on-LAN port.
 	 */
 	@SerialName("Port")
-	val port: Int
+	public val port: Int
 )

@@ -14,51 +14,51 @@ import kotlinx.serialization.Serializable
  * Class PackageInfo.
  */
 @Serializable
-data class PackageInfo(
+public data class PackageInfo(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets a long description of the plugin containing features or helpful explanations.
 	 */
 	@SerialName("description")
-	val description: String? = null,
+	public val description: String? = null,
 	/**
 	 * Gets or sets a short overview of what the plugin does.
 	 */
 	@SerialName("overview")
-	val overview: String? = null,
+	public val overview: String? = null,
 	/**
 	 * Gets or sets the owner.
 	 */
 	@SerialName("owner")
-	val owner: String? = null,
+	public val owner: String? = null,
 	/**
 	 * Gets or sets the category.
 	 */
 	@SerialName("category")
-	val category: String? = null,
+	public val category: String? = null,
 	/**
 	 * The guid of the assembly associated with this plugin.
 	 * This is used to identify the proper item for automatic updates.
 	 */
 	@SerialName("guid")
-	val guid: String? = null,
+	public val guid: String? = null,
 	/**
 	 * Gets or sets the versions.
 	 */
 	@SerialName("versions")
-	val versions: List<VersionInfo>? = null,
+	public val versions: List<VersionInfo>? = null,
 	/**
 	 * Gets or sets the repository name.
 	 */
 	@SerialName("repositoryName")
-	val repositoryName: String? = null,
+	public val repositoryName: String? = null,
 	/**
 	 * Gets or sets the repository url.
 	 */
 	@SerialName("repositoryUrl")
-	val repositoryUrl: String? = null
+	public val repositoryUrl: String? = null
 )

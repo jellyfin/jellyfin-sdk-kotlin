@@ -14,15 +14,15 @@ import kotlinx.serialization.Serializable
  * Plugin security info.
  */
 @Serializable
-data class PluginSecurityInfo(
+public data class PluginSecurityInfo(
 	/**
 	 * Gets or sets the supporter key.
 	 */
 	@SerialName("SupporterKey")
-	val supporterKey: String? = null,
+	public val supporterKey: String? = null,
 	/**
 	 * Gets or sets a value indicating whether is mb supporter.
 	 */
 	@SerialName("IsMbSupporter")
-	val isMbSupporter: Boolean
+	public val isMbSupporter: Boolean
 )

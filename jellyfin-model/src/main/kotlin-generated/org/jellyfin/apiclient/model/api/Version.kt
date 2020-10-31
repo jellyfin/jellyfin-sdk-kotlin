@@ -10,17 +10,17 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Version(
+public data class Version(
 	@SerialName("Major")
-	val major: Int,
+	public val major: Int,
 	@SerialName("Minor")
-	val minor: Int,
+	public val minor: Int,
 	@SerialName("Build")
-	val build: Int,
+	public val build: Int,
 	@SerialName("Revision")
-	val revision: Int,
+	public val revision: Int,
 	@SerialName("MajorRevision")
-	val majorRevision: Int,
+	public val majorRevision: Int,
 	@SerialName("MinorRevision")
-	val minorRevision: Int
+	public val minorRevision: Int
 )

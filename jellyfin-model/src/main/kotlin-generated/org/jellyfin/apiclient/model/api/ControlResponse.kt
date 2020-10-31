@@ -12,11 +12,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ControlResponse(
+public data class ControlResponse(
 	@SerialName("Headers")
-	val headers: Map<String, String>? = null,
+	public val headers: Map<String, String>? = null,
 	@SerialName("Xml")
-	val xml: String? = null,
+	public val xml: String? = null,
 	@SerialName("IsSuccessful")
-	val isSuccessful: Boolean
+	public val isSuccessful: Boolean
 )

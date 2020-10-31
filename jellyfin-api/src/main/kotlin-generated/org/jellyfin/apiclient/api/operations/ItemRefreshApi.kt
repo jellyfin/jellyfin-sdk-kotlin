@@ -14,7 +14,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.MetadataRefreshMode
 
-class ItemRefreshApi(
+public class ItemRefreshApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -28,7 +28,7 @@ class ItemRefreshApi(
 	 * @param replaceAllImages (Optional) Determines if images should be replaced. Only applicable if
 	 * mode is FullRefresh.
 	 */
-	suspend fun post(
+	public suspend fun post(
 		itemId: UUID,
 		metadataRefreshMode: MetadataRefreshMode,
 		imageRefreshMode: MetadataRefreshMode,

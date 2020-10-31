@@ -19,49 +19,49 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
 
 @Serializable
-data class SongInfo(
+public data class SongInfo(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the path.
 	 */
 	@SerialName("Path")
-	val path: String? = null,
+	public val path: String? = null,
 	/**
 	 * Gets or sets the metadata language.
 	 */
 	@SerialName("MetadataLanguage")
-	val metadataLanguage: String? = null,
+	public val metadataLanguage: String? = null,
 	/**
 	 * Gets or sets the metadata country code.
 	 */
 	@SerialName("MetadataCountryCode")
-	val metadataCountryCode: String? = null,
+	public val metadataCountryCode: String? = null,
 	/**
 	 * Gets or sets the provider ids.
 	 */
 	@SerialName("ProviderIds")
-	val providerIds: Map<String, String>? = null,
+	public val providerIds: Map<String, String>? = null,
 	/**
 	 * Gets or sets the year.
 	 */
 	@SerialName("Year")
-	val year: Int? = null,
+	public val year: Int? = null,
 	@SerialName("IndexNumber")
-	val indexNumber: Int? = null,
+	public val indexNumber: Int? = null,
 	@SerialName("ParentIndexNumber")
-	val parentIndexNumber: Int? = null,
+	public val parentIndexNumber: Int? = null,
 	@SerialName("PremiereDate")
-	val premiereDate: LocalDateTime? = null,
+	public val premiereDate: LocalDateTime? = null,
 	@SerialName("IsAutomated")
-	val isAutomated: Boolean,
+	public val isAutomated: Boolean,
 	@SerialName("AlbumArtists")
-	val albumArtists: List<String>? = null,
+	public val albumArtists: List<String>? = null,
 	@SerialName("Album")
-	val album: String? = null,
+	public val album: String? = null,
 	@SerialName("Artists")
-	val artists: List<String>? = null
+	public val artists: List<String>? = null
 )

@@ -11,14 +11,14 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PlaystateRequest(
+public data class PlaystateRequest(
 	@SerialName("Command")
-	val command: PlaystateCommand? = null,
+	public val command: PlaystateCommand? = null,
 	@SerialName("SeekPositionTicks")
-	val seekPositionTicks: Long? = null,
+	public val seekPositionTicks: Long? = null,
 	/**
 	 * Gets or sets the controlling user identifier.
 	 */
 	@SerialName("ControllingUserId")
-	val controllingUserId: String? = null
+	public val controllingUserId: String? = null
 )

@@ -19,7 +19,7 @@ import org.jellyfin.apiclient.model.api.ImageProviderInfo
 import org.jellyfin.apiclient.model.api.ImageType
 import org.jellyfin.apiclient.model.api.RemoteImageResult
 
-class RemoteImageApi(
+public class RemoteImageApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -27,12 +27,12 @@ class RemoteImageApi(
 	 *
 	 * @param imageUrl The image url.
 	 */
-	suspend fun getRemoteImage(imageUrl: String): Response<ByteReadChannel> {
+	public suspend fun getRemoteImage(imageUrl: String): Response<ByteReadChannel> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["imageUrl"] = imageUrl
 		val data = null
-		val response = api.get<ByteReadChannel>("/Images/Remote", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Images/Remote", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -41,7 +41,7 @@ class RemoteImageApi(
 	 *
 	 * @param imageUrl The image url.
 	 */
-	fun getRemoteImageUrl(imageUrl: String): String {
+	public fun getRemoteImageUrl(imageUrl: String): String {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["imageUrl"] = imageUrl
@@ -59,7 +59,7 @@ class RemoteImageApi(
 	 * @param providerName Optional. The image provider to use.
 	 * @param includeAllLanguages Optional. Include all languages.
 	 */
-	suspend fun getRemoteImages(
+	public suspend fun getRemoteImages(
 		itemId: UUID,
 		type: ImageType,
 		startIndex: Int? = null,
@@ -76,7 +76,7 @@ class RemoteImageApi(
 		queryParameters["providerName"] = providerName
 		queryParameters["includeAllLanguages"] = includeAllLanguages
 		val data = null
-		val response = api.get<RemoteImageResult>("/Items/{itemId}/RemoteImages", pathParameters,
+		val response = api.`get`<RemoteImageResult>("/Items/{itemId}/RemoteImages", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -88,7 +88,7 @@ class RemoteImageApi(
 	 * @param type The image type.
 	 * @param imageUrl The image url.
 	 */
-	suspend fun downloadRemoteImage(
+	public suspend fun downloadRemoteImage(
 		itemId: UUID,
 		type: ImageType,
 		imageUrl: String? = null
@@ -109,12 +109,12 @@ class RemoteImageApi(
 	 *
 	 * @param itemId Item Id.
 	 */
-	suspend fun getRemoteImageProviders(itemId: UUID): Response<List<ImageProviderInfo>> {
+	public suspend fun getRemoteImageProviders(itemId: UUID): Response<List<ImageProviderInfo>> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<ImageProviderInfo>>("/Items/{itemId}/RemoteImages/Providers",
+		val response = api.`get`<List<ImageProviderInfo>>("/Items/{itemId}/RemoteImages/Providers",
 				pathParameters, queryParameters, data)
 		return response
 	}

@@ -10,11 +10,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class HttpHeaderInfo(
+public data class HttpHeaderInfo(
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	@SerialName("Value")
-	val value: String? = null,
+	public val value: String? = null,
 	@SerialName("Match")
-	val match: HeaderMatchType? = null
+	public val match: HeaderMatchType? = null
 )

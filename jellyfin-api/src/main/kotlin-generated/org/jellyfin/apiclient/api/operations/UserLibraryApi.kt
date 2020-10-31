@@ -17,7 +17,7 @@ import org.jellyfin.apiclient.model.api.BaseItemDto
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.UserItemDataDto
 
-class UserLibraryApi(
+public class UserLibraryApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -26,7 +26,7 @@ class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	suspend fun markFavoriteItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
+	public suspend fun markFavoriteItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
@@ -43,7 +43,7 @@ class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	suspend fun unmarkFavoriteItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
+	public suspend fun unmarkFavoriteItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
@@ -60,13 +60,13 @@ class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	suspend fun getItem(userId: UUID, itemId: UUID): Response<BaseItemDto> {
+	public suspend fun getItem(userId: UUID, itemId: UUID): Response<BaseItemDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<BaseItemDto>("/Users/{userId}/Items/{itemId}", pathParameters,
+		val response = api.`get`<BaseItemDto>("/Users/{userId}/Items/{itemId}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -77,13 +77,13 @@ class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	suspend fun getIntros(userId: UUID, itemId: UUID): Response<BaseItemDtoQueryResult> {
+	public suspend fun getIntros(userId: UUID, itemId: UUID): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Users/{userId}/Items/{itemId}/Intros",
+		val response = api.`get`<BaseItemDtoQueryResult>("/Users/{userId}/Items/{itemId}/Intros",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -94,13 +94,13 @@ class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	suspend fun getLocalTrailers(userId: UUID, itemId: UUID): Response<List<BaseItemDto>> {
+	public suspend fun getLocalTrailers(userId: UUID, itemId: UUID): Response<List<BaseItemDto>> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<BaseItemDto>>("/Users/{userId}/Items/{itemId}/LocalTrailers",
+		val response = api.`get`<List<BaseItemDto>>("/Users/{userId}/Items/{itemId}/LocalTrailers",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -114,7 +114,7 @@ class UserLibraryApi(
 	 * M:Jellyfin.Api.Controllers.UserLibraryController.UpdateUserItemRating(System.Guid,System.Guid,System.Nullable{System.Boolean})
 	 * is likes.
 	 */
-	suspend fun updateUserItemRating(
+	public suspend fun updateUserItemRating(
 		userId: UUID,
 		itemId: UUID,
 		likes: Boolean? = null
@@ -136,7 +136,7 @@ class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	suspend fun deleteUserItemRating(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
+	public suspend fun deleteUserItemRating(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
@@ -153,13 +153,13 @@ class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	suspend fun getSpecialFeatures(userId: UUID, itemId: UUID): Response<List<BaseItemDto>> {
+	public suspend fun getSpecialFeatures(userId: UUID, itemId: UUID): Response<List<BaseItemDto>> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<BaseItemDto>>("/Users/{userId}/Items/{itemId}/SpecialFeatures",
+		val response = api.`get`<List<BaseItemDto>>("/Users/{userId}/Items/{itemId}/SpecialFeatures",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -184,7 +184,7 @@ class UserLibraryApi(
 	 * @param limit Return item limit.
 	 * @param groupItems Whether or not to group items into a parent container.
 	 */
-	suspend fun getLatestMedia(
+	public suspend fun getLatestMedia(
 		userId: UUID,
 		parentId: UUID? = null,
 		fields: String? = null,
@@ -211,7 +211,7 @@ class UserLibraryApi(
 		queryParameters["limit"] = limit
 		queryParameters["groupItems"] = groupItems
 		val data = null
-		val response = api.get<List<BaseItemDto>>("/Users/{userId}/Items/Latest", pathParameters,
+		val response = api.`get`<List<BaseItemDto>>("/Users/{userId}/Items/Latest", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -221,13 +221,13 @@ class UserLibraryApi(
 	 *
 	 * @param userId User id.
 	 */
-	suspend fun getRootFolder(userId: UUID): Response<BaseItemDto> {
+	public suspend fun getRootFolder(userId: UUID): Response<BaseItemDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<BaseItemDto>("/Users/{userId}/Items/Root", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<BaseItemDto>("/Users/{userId}/Items/Root", pathParameters,
+				queryParameters, data)
 		return response
 	}
 }

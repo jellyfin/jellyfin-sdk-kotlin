@@ -15,92 +15,92 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class MediaSourceInfo(
+public data class MediaSourceInfo(
 	@SerialName("Protocol")
-	val protocol: MediaProtocol? = null,
+	public val protocol: MediaProtocol? = null,
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	@SerialName("Path")
-	val path: String? = null,
+	public val path: String? = null,
 	@SerialName("EncoderPath")
-	val encoderPath: String? = null,
+	public val encoderPath: String? = null,
 	@SerialName("EncoderProtocol")
-	val encoderProtocol: MediaProtocol? = null,
+	public val encoderProtocol: MediaProtocol? = null,
 	@SerialName("Type")
-	val type: MediaSourceType? = null,
+	public val type: MediaSourceType? = null,
 	@SerialName("Container")
-	val container: String? = null,
+	public val container: String? = null,
 	@SerialName("Size")
-	val size: Long? = null,
+	public val size: Long? = null,
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Differentiate internet url vs local network.
 	 */
 	@SerialName("IsRemote")
-	val isRemote: Boolean,
+	public val isRemote: Boolean,
 	@SerialName("ETag")
-	val eTag: String? = null,
+	public val eTag: String? = null,
 	@SerialName("RunTimeTicks")
-	val runTimeTicks: Long? = null,
+	public val runTimeTicks: Long? = null,
 	@SerialName("ReadAtNativeFramerate")
-	val readAtNativeFramerate: Boolean,
+	public val readAtNativeFramerate: Boolean,
 	@SerialName("IgnoreDts")
-	val ignoreDts: Boolean,
+	public val ignoreDts: Boolean,
 	@SerialName("IgnoreIndex")
-	val ignoreIndex: Boolean,
+	public val ignoreIndex: Boolean,
 	@SerialName("GenPtsInput")
-	val genPtsInput: Boolean,
+	public val genPtsInput: Boolean,
 	@SerialName("SupportsTranscoding")
-	val supportsTranscoding: Boolean,
+	public val supportsTranscoding: Boolean,
 	@SerialName("SupportsDirectStream")
-	val supportsDirectStream: Boolean,
+	public val supportsDirectStream: Boolean,
 	@SerialName("SupportsDirectPlay")
-	val supportsDirectPlay: Boolean,
+	public val supportsDirectPlay: Boolean,
 	@SerialName("IsInfiniteStream")
-	val isInfiniteStream: Boolean,
+	public val isInfiniteStream: Boolean,
 	@SerialName("RequiresOpening")
-	val requiresOpening: Boolean,
+	public val requiresOpening: Boolean,
 	@SerialName("OpenToken")
-	val openToken: String? = null,
+	public val openToken: String? = null,
 	@SerialName("RequiresClosing")
-	val requiresClosing: Boolean,
+	public val requiresClosing: Boolean,
 	@SerialName("LiveStreamId")
-	val liveStreamId: String? = null,
+	public val liveStreamId: String? = null,
 	@SerialName("BufferMs")
-	val bufferMs: Int? = null,
+	public val bufferMs: Int? = null,
 	@SerialName("RequiresLooping")
-	val requiresLooping: Boolean,
+	public val requiresLooping: Boolean,
 	@SerialName("SupportsProbing")
-	val supportsProbing: Boolean,
+	public val supportsProbing: Boolean,
 	@SerialName("VideoType")
-	val videoType: VideoType? = null,
+	public val videoType: VideoType? = null,
 	@SerialName("IsoType")
-	val isoType: IsoType? = null,
+	public val isoType: IsoType? = null,
 	@SerialName("Video3DFormat")
-	val video3dFormat: Video3dFormat? = null,
+	public val video3dFormat: Video3dFormat? = null,
 	@SerialName("MediaStreams")
-	val mediaStreams: List<MediaStream>? = null,
+	public val mediaStreams: List<MediaStream>? = null,
 	@SerialName("MediaAttachments")
-	val mediaAttachments: List<MediaAttachment>? = null,
+	public val mediaAttachments: List<MediaAttachment>? = null,
 	@SerialName("Formats")
-	val formats: List<String>? = null,
+	public val formats: List<String>? = null,
 	@SerialName("Bitrate")
-	val bitrate: Int? = null,
+	public val bitrate: Int? = null,
 	@SerialName("Timestamp")
-	val timestamp: TransportStreamTimestamp? = null,
+	public val timestamp: TransportStreamTimestamp? = null,
 	@SerialName("RequiredHttpHeaders")
-	val requiredHttpHeaders: Map<String, String>? = null,
+	public val requiredHttpHeaders: Map<String, String>? = null,
 	@SerialName("TranscodingUrl")
-	val transcodingUrl: String? = null,
+	public val transcodingUrl: String? = null,
 	@SerialName("TranscodingSubProtocol")
-	val transcodingSubProtocol: String? = null,
+	public val transcodingSubProtocol: String? = null,
 	@SerialName("TranscodingContainer")
-	val transcodingContainer: String? = null,
+	public val transcodingContainer: String? = null,
 	@SerialName("AnalyzeDurationMs")
-	val analyzeDurationMs: Int? = null,
+	public val analyzeDurationMs: Int? = null,
 	@SerialName("DefaultAudioStreamIndex")
-	val defaultAudioStreamIndex: Int? = null,
+	public val defaultAudioStreamIndex: Int? = null,
 	@SerialName("DefaultSubtitleStreamIndex")
-	val defaultSubtitleStreamIndex: Int? = null
+	public val defaultSubtitleStreamIndex: Int? = null
 )

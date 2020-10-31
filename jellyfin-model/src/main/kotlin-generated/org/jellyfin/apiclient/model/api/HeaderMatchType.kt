@@ -9,13 +9,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class HeaderMatchType {
+public enum class HeaderMatchType {
 	@SerialName("Equals")
 	EQUALS,
-
 	@SerialName("Regex")
 	REGEX,
-
 	@SerialName("Substring")
-	SUBSTRING
+	SUBSTRING,
 }

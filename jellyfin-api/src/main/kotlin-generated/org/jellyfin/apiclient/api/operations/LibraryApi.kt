@@ -24,7 +24,7 @@ import org.jellyfin.apiclient.model.api.LibraryOptionsResultDto
 import org.jellyfin.apiclient.model.api.MediaUpdateInfoDto
 import org.jellyfin.apiclient.model.api.ThemeMediaResult
 
-class LibraryApi(
+public class LibraryApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -32,7 +32,7 @@ class LibraryApi(
 	 *
 	 * @param ids The item ids.
 	 */
-	suspend fun deleteItems(ids: String? = null): Response<Unit> {
+	public suspend fun deleteItems(ids: String? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["ids"] = ids
@@ -46,7 +46,7 @@ class LibraryApi(
 	 *
 	 * @param itemId The item id.
 	 */
-	suspend fun deleteItem(itemId: UUID): Response<Unit> {
+	public suspend fun deleteItem(itemId: UUID): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
@@ -67,7 +67,7 @@ class LibraryApi(
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
-	suspend fun getSimilarAlbums2(
+	public suspend fun getSimilarAlbums2(
 		itemId: UUID,
 		excludeArtistIds: String? = null,
 		userId: UUID? = null,
@@ -82,7 +82,7 @@ class LibraryApi(
 		queryParameters["limit"] = limit
 		queryParameters["fields"] = fields
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Albums/{itemId}/Similar", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Albums/{itemId}/Similar", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -99,7 +99,7 @@ class LibraryApi(
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
-	suspend fun getSimilarArtists2(
+	public suspend fun getSimilarArtists2(
 		itemId: UUID,
 		excludeArtistIds: String? = null,
 		userId: UUID? = null,
@@ -114,7 +114,7 @@ class LibraryApi(
 		queryParameters["limit"] = limit
 		queryParameters["fields"] = fields
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Artists/{itemId}/Similar", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/{itemId}/Similar", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -125,13 +125,13 @@ class LibraryApi(
 	 * @param itemId The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 */
-	suspend fun getAncestors(itemId: UUID, userId: UUID? = null): Response<List<BaseItemDto>> {
+	public suspend fun getAncestors(itemId: UUID, userId: UUID? = null): Response<List<BaseItemDto>> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["userId"] = userId
 		val data = null
-		val response = api.get<List<BaseItemDto>>("/Items/{itemId}/Ancestors", pathParameters,
+		val response = api.`get`<List<BaseItemDto>>("/Items/{itemId}/Ancestors", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -140,12 +140,12 @@ class LibraryApi(
 	 * Gets critic review for an item.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	suspend fun getCriticReviews(itemId: String): Response<BaseItemDtoQueryResult> {
+	public suspend fun getCriticReviews(itemId: String): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Items/{itemId}/CriticReviews", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/CriticReviews", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -155,12 +155,12 @@ class LibraryApi(
 	 *
 	 * @param itemId The item id.
 	 */
-	suspend fun getDownload(itemId: UUID): Response<ByteReadChannel> {
+	public suspend fun getDownload(itemId: UUID): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<ByteReadChannel>("/Items/{itemId}/Download", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Download", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -170,7 +170,7 @@ class LibraryApi(
 	 *
 	 * @param itemId The item id.
 	 */
-	fun getDownloadUrl(itemId: UUID): String {
+	public fun getDownloadUrl(itemId: UUID): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
@@ -182,12 +182,12 @@ class LibraryApi(
 	 *
 	 * @param itemId The item id.
 	 */
-	suspend fun getFile(itemId: UUID): Response<ByteReadChannel> {
+	public suspend fun getFile(itemId: UUID): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<ByteReadChannel>("/Items/{itemId}/File", pathParameters, queryParameters,
+		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/File", pathParameters, queryParameters,
 				data)
 		return response
 	}
@@ -197,7 +197,7 @@ class LibraryApi(
 	 *
 	 * @param itemId The item id.
 	 */
-	fun getFileUrl(itemId: UUID): String {
+	public fun getFileUrl(itemId: UUID): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
@@ -216,7 +216,7 @@ class LibraryApi(
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
-	suspend fun getSimilarItems(
+	public suspend fun getSimilarItems(
 		itemId: UUID,
 		excludeArtistIds: String? = null,
 		userId: UUID? = null,
@@ -231,7 +231,7 @@ class LibraryApi(
 		queryParameters["limit"] = limit
 		queryParameters["fields"] = fields
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Items/{itemId}/Similar", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/Similar", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -244,7 +244,7 @@ class LibraryApi(
 	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
 	 * theme media.
 	 */
-	suspend fun getThemeMedia(
+	public suspend fun getThemeMedia(
 		itemId: UUID,
 		userId: UUID? = null,
 		inheritFromParent: Boolean = false
@@ -255,7 +255,7 @@ class LibraryApi(
 		queryParameters["userId"] = userId
 		queryParameters["inheritFromParent"] = inheritFromParent
 		val data = null
-		val response = api.get<AllThemeMediaResult>("/Items/{itemId}/ThemeMedia", pathParameters,
+		val response = api.`get`<AllThemeMediaResult>("/Items/{itemId}/ThemeMedia", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -268,7 +268,7 @@ class LibraryApi(
 	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
 	 * theme media.
 	 */
-	suspend fun getThemeSongs(
+	public suspend fun getThemeSongs(
 		itemId: UUID,
 		userId: UUID? = null,
 		inheritFromParent: Boolean = false
@@ -279,7 +279,7 @@ class LibraryApi(
 		queryParameters["userId"] = userId
 		queryParameters["inheritFromParent"] = inheritFromParent
 		val data = null
-		val response = api.get<ThemeMediaResult>("/Items/{itemId}/ThemeSongs", pathParameters,
+		val response = api.`get`<ThemeMediaResult>("/Items/{itemId}/ThemeSongs", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -292,7 +292,7 @@ class LibraryApi(
 	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
 	 * theme media.
 	 */
-	suspend fun getThemeVideos(
+	public suspend fun getThemeVideos(
 		itemId: UUID,
 		userId: UUID? = null,
 		inheritFromParent: Boolean = false
@@ -303,7 +303,7 @@ class LibraryApi(
 		queryParameters["userId"] = userId
 		queryParameters["inheritFromParent"] = inheritFromParent
 		val data = null
-		val response = api.get<ThemeMediaResult>("/Items/{itemId}/ThemeVideos", pathParameters,
+		val response = api.`get`<ThemeMediaResult>("/Items/{itemId}/ThemeVideos", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -314,14 +314,14 @@ class LibraryApi(
 	 * @param userId Optional. Get counts from a specific user's library.
 	 * @param isFavorite Optional. Get counts of favorite items.
 	 */
-	suspend fun getItemCounts(userId: UUID? = null, isFavorite: Boolean? = null):
+	public suspend fun getItemCounts(userId: UUID? = null, isFavorite: Boolean? = null):
 			Response<ItemCounts> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["userId"] = userId
 		queryParameters["isFavorite"] = isFavorite
 		val data = null
-		val response = api.get<ItemCounts>("/Items/Counts", pathParameters, queryParameters, data)
+		val response = api.`get`<ItemCounts>("/Items/Counts", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -331,14 +331,14 @@ class LibraryApi(
 	 * @param libraryContentType Library content type.
 	 * @param isNewLibrary Whether this is a new library.
 	 */
-	suspend fun getLibraryOptionsInfo(libraryContentType: String? = null, isNewLibrary: Boolean):
-			Response<LibraryOptionsResultDto> {
+	public suspend fun getLibraryOptionsInfo(libraryContentType: String? = null,
+			isNewLibrary: Boolean): Response<LibraryOptionsResultDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["libraryContentType"] = libraryContentType
 		queryParameters["isNewLibrary"] = isNewLibrary
 		val data = null
-		val response = api.get<LibraryOptionsResultDto>("/Libraries/AvailableOptions", pathParameters,
+		val response = api.`get`<LibraryOptionsResultDto>("/Libraries/AvailableOptions", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -346,7 +346,7 @@ class LibraryApi(
 	/**
 	 * Reports that new movies have been added by an external source.
 	 */
-	suspend fun postUpdatedMedia(data: List<MediaUpdateInfoDto>): Response<Unit> {
+	public suspend fun postUpdatedMedia(`data`: List<MediaUpdateInfoDto>): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Library/Media/Updated", pathParameters, queryParameters, data)
@@ -358,12 +358,12 @@ class LibraryApi(
 	 *
 	 * @param isHidden Optional. Filter by folders that are marked hidden, or not.
 	 */
-	suspend fun getMediaFolders(isHidden: Boolean? = null): Response<BaseItemDtoQueryResult> {
+	public suspend fun getMediaFolders(isHidden: Boolean? = null): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["isHidden"] = isHidden
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Library/MediaFolders", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Library/MediaFolders", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -374,7 +374,8 @@ class LibraryApi(
 	 * @param tmdbId The tmdbId.
 	 * @param imdbId The imdbId.
 	 */
-	suspend fun postAddedMovies(tmdbId: String? = null, imdbId: String? = null): Response<Unit> {
+	public suspend fun postAddedMovies(tmdbId: String? = null, imdbId: String? = null):
+			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["tmdbId"] = tmdbId
@@ -390,7 +391,8 @@ class LibraryApi(
 	 * @param tmdbId The tmdbId.
 	 * @param imdbId The imdbId.
 	 */
-	suspend fun postUpdatedMovies(tmdbId: String? = null, imdbId: String? = null): Response<Unit> {
+	public suspend fun postUpdatedMovies(tmdbId: String? = null, imdbId: String? = null):
+			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["tmdbId"] = tmdbId
@@ -403,11 +405,11 @@ class LibraryApi(
 	/**
 	 * Gets a list of physical paths from virtual folders.
 	 */
-	suspend fun getPhysicalPaths(): Response<List<String>> {
+	public suspend fun getPhysicalPaths(): Response<List<String>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<String>>("/Library/PhysicalPaths", pathParameters, queryParameters,
+		val response = api.`get`<List<String>>("/Library/PhysicalPaths", pathParameters, queryParameters,
 				data)
 		return response
 	}
@@ -415,11 +417,11 @@ class LibraryApi(
 	/**
 	 * Starts a library scan.
 	 */
-	suspend fun refreshLibrary(): Response<Unit> {
+	public suspend fun refreshLibrary(): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<Unit>("/Library/Refresh", pathParameters, queryParameters, data)
+		val response = api.`get`<Unit>("/Library/Refresh", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -428,7 +430,7 @@ class LibraryApi(
 	 *
 	 * @param tvdbId The tvdbId.
 	 */
-	suspend fun postAddedSeries(tvdbId: String? = null): Response<Unit> {
+	public suspend fun postAddedSeries(tvdbId: String? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["tvdbId"] = tvdbId
@@ -442,7 +444,7 @@ class LibraryApi(
 	 *
 	 * @param tvdbId The tvdbId.
 	 */
-	suspend fun postUpdatedSeries(tvdbId: String? = null): Response<Unit> {
+	public suspend fun postUpdatedSeries(tvdbId: String? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["tvdbId"] = tvdbId
@@ -463,7 +465,7 @@ class LibraryApi(
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
-	suspend fun getSimilarMovies2(
+	public suspend fun getSimilarMovies2(
 		itemId: UUID,
 		excludeArtistIds: String? = null,
 		userId: UUID? = null,
@@ -478,7 +480,7 @@ class LibraryApi(
 		queryParameters["limit"] = limit
 		queryParameters["fields"] = fields
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Movies/{itemId}/Similar", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Movies/{itemId}/Similar", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -495,7 +497,7 @@ class LibraryApi(
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
-	suspend fun getSimilarShows2(
+	public suspend fun getSimilarShows2(
 		itemId: UUID,
 		excludeArtistIds: String? = null,
 		userId: UUID? = null,
@@ -510,7 +512,7 @@ class LibraryApi(
 		queryParameters["limit"] = limit
 		queryParameters["fields"] = fields
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Shows/{itemId}/Similar", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/{itemId}/Similar", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -527,7 +529,7 @@ class LibraryApi(
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
-	suspend fun getSimilarTrailers2(
+	public suspend fun getSimilarTrailers2(
 		itemId: UUID,
 		excludeArtistIds: String? = null,
 		userId: UUID? = null,
@@ -542,7 +544,7 @@ class LibraryApi(
 		queryParameters["limit"] = limit
 		queryParameters["fields"] = fields
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Trailers/{itemId}/Similar", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Trailers/{itemId}/Similar", pathParameters,
 				queryParameters, data)
 		return response
 	}

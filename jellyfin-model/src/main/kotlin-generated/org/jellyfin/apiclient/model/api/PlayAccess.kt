@@ -9,10 +9,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class PlayAccess {
+public enum class PlayAccess {
 	@SerialName("Full")
 	FULL,
-
 	@SerialName("None")
-	NONE
+	NONE,
 }

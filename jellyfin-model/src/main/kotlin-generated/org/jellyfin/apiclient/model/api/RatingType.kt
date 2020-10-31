@@ -9,10 +9,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class RatingType {
+public enum class RatingType {
 	@SerialName("Score")
 	SCORE,
-
 	@SerialName("Likes")
-	LIKES
+	LIKES,
 }

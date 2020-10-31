@@ -18,7 +18,7 @@ import org.jellyfin.apiclient.model.api.BaseItemDto
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.ItemFilter
 
-class StudiosApi(
+public class StudiosApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -76,7 +76,7 @@ class StudiosApi(
 	 * @param enableImages Optional, include image information in output.
 	 * @param enableTotalRecordCount Total record count.
 	 */
-	suspend fun getStudios(
+	public suspend fun getStudios(
 		minCommunityRating: Double? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
@@ -141,7 +141,8 @@ class StudiosApi(
 		queryParameters["enableImages"] = enableImages
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Studios", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Studios", pathParameters, queryParameters,
+				data)
 		return response
 	}
 
@@ -151,13 +152,13 @@ class StudiosApi(
 	 * @param name Studio name.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 */
-	suspend fun getStudio(name: String, userId: UUID? = null): Response<BaseItemDto> {
+	public suspend fun getStudio(name: String, userId: UUID? = null): Response<BaseItemDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["userId"] = userId
 		val data = null
-		val response = api.get<BaseItemDto>("/Studios/{name}", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDto>("/Studios/{name}", pathParameters, queryParameters, data)
 		return response
 	}
 }

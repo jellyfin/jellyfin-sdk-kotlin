@@ -9,13 +9,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class ForgotPasswordAction {
+public enum class ForgotPasswordAction {
 	@SerialName("ContactAdmin")
 	CONTACT_ADMIN,
-
 	@SerialName("PinCode")
 	PIN_CODE,
-
 	@SerialName("InNetworkRequired")
-	IN_NETWORK_REQUIRED
+	IN_NETWORK_REQUIRED,
 }

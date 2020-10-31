@@ -19,38 +19,38 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
  * Interface IPlugin.
  */
 @Serializable
-data class IPlugin(
+public data class IPlugin(
 	/**
 	 * Gets the name of the plugin.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets the description.
 	 */
 	@SerialName("Description")
-	val description: String? = null,
+	public val description: String? = null,
 	/**
 	 * Gets the unique id.
 	 */
 	@SerialName("Id")
-	val id: UUID,
+	public val id: UUID,
 	@SerialName("Version")
-	val version: Version? = null,
+	public val version: Version? = null,
 	/**
 	 * Gets the path to the assembly file.
 	 */
 	@SerialName("AssemblyFilePath")
-	val assemblyFilePath: String? = null,
+	public val assemblyFilePath: String? = null,
 	/**
 	 * Gets a value indicating whether the plugin can be uninstalled.
 	 */
 	@SerialName("CanUninstall")
-	val canUninstall: Boolean,
+	public val canUninstall: Boolean,
 	/**
 	 * Gets the full path to the data folder, where the plugin can store any miscellaneous files
 	 * needed.
 	 */
 	@SerialName("DataFolderPath")
-	val dataFolderPath: String? = null
+	public val dataFolderPath: String? = null
 )

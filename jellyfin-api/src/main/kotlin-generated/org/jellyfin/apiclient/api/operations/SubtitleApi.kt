@@ -18,7 +18,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.RemoteSubtitleInfo
 
-class SubtitleApi(
+public class SubtitleApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -28,7 +28,7 @@ class SubtitleApi(
 	 * @param language The language of the subtitles.
 	 * @param isPerfectMatch Optional. Only show subtitles which are a perfect match.
 	 */
-	suspend fun searchRemoteSubtitles(
+	public suspend fun searchRemoteSubtitles(
 		itemId: UUID,
 		language: String,
 		isPerfectMatch: Boolean? = null
@@ -40,7 +40,7 @@ class SubtitleApi(
 		queryParameters["isPerfectMatch"] = isPerfectMatch
 		val data = null
 		val response =
-				api.get<List<RemoteSubtitleInfo>>("/Items/{itemId}/RemoteSearch/Subtitles/{language}",
+				api.`get`<List<RemoteSubtitleInfo>>("/Items/{itemId}/RemoteSearch/Subtitles/{language}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -51,7 +51,7 @@ class SubtitleApi(
 	 * @param itemId The item id.
 	 * @param subtitleId The subtitle id.
 	 */
-	suspend fun downloadRemoteSubtitles(itemId: UUID, subtitleId: String): Response<Unit> {
+	public suspend fun downloadRemoteSubtitles(itemId: UUID, subtitleId: String): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["subtitleId"] = subtitleId
@@ -67,12 +67,12 @@ class SubtitleApi(
 	 *
 	 * @param id The item id.
 	 */
-	suspend fun getRemoteSubtitles(id: String): Response<String> {
+	public suspend fun getRemoteSubtitles(id: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["id"] = id
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<String>("/Providers/Subtitles/Subtitles/{id}", pathParameters,
+		val response = api.`get`<String>("/Providers/Subtitles/Subtitles/{id}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -89,7 +89,7 @@ class SubtitleApi(
 	 * @param copyTimestamps Optional. Whether to copy the timestamps.
 	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
 	 */
-	suspend fun getSubtitle2(
+	public suspend fun getSubtitle2(
 		itemId: UUID,
 		mediaSourceId: String,
 		index: Int,
@@ -111,7 +111,7 @@ class SubtitleApi(
 		queryParameters["addVttTimeMap"] = addVttTimeMap
 		val data = null
 		val response =
-				api.get<String>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/{startPositionTicks}/Stream.{format}",
+				api.`get`<String>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/{startPositionTicks}/Stream.{format}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -128,7 +128,7 @@ class SubtitleApi(
 	 * @param copyTimestamps Optional. Whether to copy the timestamps.
 	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
 	 */
-	suspend fun getSubtitle(
+	public suspend fun getSubtitle(
 		itemId: UUID,
 		mediaSourceId: String,
 		index: Int,
@@ -150,7 +150,7 @@ class SubtitleApi(
 		queryParameters["addVttTimeMap"] = addVttTimeMap
 		val data = null
 		val response =
-				api.get<String>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/Stream.{format}",
+				api.`get`<String>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/Stream.{format}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -163,7 +163,7 @@ class SubtitleApi(
 	 * @param mediaSourceId The media source id.
 	 * @param segmentLength The subtitle segment length.
 	 */
-	suspend fun getSubtitlePlaylist(
+	public suspend fun getSubtitlePlaylist(
 		itemId: UUID,
 		index: Int,
 		mediaSourceId: String,
@@ -177,7 +177,7 @@ class SubtitleApi(
 		queryParameters["segmentLength"] = segmentLength
 		val data = null
 		val response =
-				api.get<ByteReadChannel>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8",
+				api.`get`<ByteReadChannel>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -190,7 +190,7 @@ class SubtitleApi(
 	 * @param mediaSourceId The media source id.
 	 * @param segmentLength The subtitle segment length.
 	 */
-	fun getSubtitlePlaylistUrl(
+	public fun getSubtitlePlaylistUrl(
 		itemId: UUID,
 		index: Int,
 		mediaSourceId: String,
@@ -212,7 +212,7 @@ class SubtitleApi(
 	 * @param itemId The item id.
 	 * @param index The index of the subtitle file.
 	 */
-	suspend fun deleteSubtitle(itemId: UUID, index: Int): Response<Unit> {
+	public suspend fun deleteSubtitle(itemId: UUID, index: Int): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["index"] = index

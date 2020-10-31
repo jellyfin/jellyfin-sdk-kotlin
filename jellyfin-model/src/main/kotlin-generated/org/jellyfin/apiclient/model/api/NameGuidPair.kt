@@ -15,9 +15,9 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 @Serializable
-data class NameGuidPair(
+public data class NameGuidPair(
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	@SerialName("Id")
-	val id: UUID
+	public val id: UUID
 )

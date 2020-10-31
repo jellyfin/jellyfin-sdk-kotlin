@@ -13,34 +13,17 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.ImageByNameInfo
 
-class ImageByNameApi(
+public class ImageByNameApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Get all general images.
 	 */
-	suspend fun getGeneralImages(): Response<List<ImageByNameInfo>> {
+	public suspend fun getGeneralImages(): Response<List<ImageByNameInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<ImageByNameInfo>>("/Images/General", pathParameters, queryParameters,
-				data)
-		return response
-	}
-
-	/**
-	 * Get General Image.
-	 *
-	 * @param name The name of the image.
-	 * @param type Image Type (primary, backdrop, logo, etc).
-	 */
-	suspend fun getGeneralImage(name: String, type: String): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["type"] = type
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.get<ByteReadChannel>("/Images/General/{name}/{type}", pathParameters,
+		val response = api.`get`<List<ImageByNameInfo>>("/Images/General", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -51,7 +34,24 @@ class ImageByNameApi(
 	 * @param name The name of the image.
 	 * @param type Image Type (primary, backdrop, logo, etc).
 	 */
-	fun getGeneralImageUrl(name: String, type: String): String {
+	public suspend fun getGeneralImage(name: String, type: String): Response<ByteReadChannel> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["name"] = name
+		pathParameters["type"] = type
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<ByteReadChannel>("/Images/General/{name}/{type}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Get General Image.
+	 *
+	 * @param name The name of the image.
+	 * @param type Image Type (primary, backdrop, logo, etc).
+	 */
+	public fun getGeneralImageUrl(name: String, type: String): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		pathParameters["type"] = type
@@ -62,11 +62,11 @@ class ImageByNameApi(
 	/**
 	 * Get all media info images.
 	 */
-	suspend fun getMediaInfoImages(): Response<List<ImageByNameInfo>> {
+	public suspend fun getMediaInfoImages(): Response<List<ImageByNameInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<ImageByNameInfo>>("/Images/MediaInfo", pathParameters,
+		val response = api.`get`<List<ImageByNameInfo>>("/Images/MediaInfo", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -77,13 +77,13 @@ class ImageByNameApi(
 	 * @param theme The theme to get the image from.
 	 * @param name The name of the image.
 	 */
-	suspend fun getMediaInfoImage(theme: String, name: String): Response<ByteReadChannel> {
+	public suspend fun getMediaInfoImage(theme: String, name: String): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["theme"] = theme
 		pathParameters["name"] = name
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<ByteReadChannel>("/Images/MediaInfo/{theme}/{name}", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Images/MediaInfo/{theme}/{name}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -94,7 +94,7 @@ class ImageByNameApi(
 	 * @param theme The theme to get the image from.
 	 * @param name The name of the image.
 	 */
-	fun getMediaInfoImageUrl(theme: String, name: String): String {
+	public fun getMediaInfoImageUrl(theme: String, name: String): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["theme"] = theme
 		pathParameters["name"] = name
@@ -105,28 +105,11 @@ class ImageByNameApi(
 	/**
 	 * Get all general images.
 	 */
-	suspend fun getRatingImages(): Response<List<ImageByNameInfo>> {
+	public suspend fun getRatingImages(): Response<List<ImageByNameInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<ImageByNameInfo>>("/Images/Ratings", pathParameters, queryParameters,
-				data)
-		return response
-	}
-
-	/**
-	 * Get rating image.
-	 *
-	 * @param theme The theme to get the image from.
-	 * @param name The name of the image.
-	 */
-	suspend fun getRatingImage(theme: String, name: String): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["theme"] = theme
-		pathParameters["name"] = name
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.get<ByteReadChannel>("/Images/Ratings/{theme}/{name}", pathParameters,
+		val response = api.`get`<List<ImageByNameInfo>>("/Images/Ratings", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -137,7 +120,24 @@ class ImageByNameApi(
 	 * @param theme The theme to get the image from.
 	 * @param name The name of the image.
 	 */
-	fun getRatingImageUrl(theme: String, name: String): String {
+	public suspend fun getRatingImage(theme: String, name: String): Response<ByteReadChannel> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["theme"] = theme
+		pathParameters["name"] = name
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<ByteReadChannel>("/Images/Ratings/{theme}/{name}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Get rating image.
+	 *
+	 * @param theme The theme to get the image from.
+	 * @param name The name of the image.
+	 */
+	public fun getRatingImageUrl(theme: String, name: String): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["theme"] = theme
 		pathParameters["name"] = name

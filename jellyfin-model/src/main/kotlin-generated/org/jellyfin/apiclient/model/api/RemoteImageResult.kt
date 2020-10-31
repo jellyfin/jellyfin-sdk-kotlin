@@ -15,20 +15,20 @@ import kotlinx.serialization.Serializable
  * Class RemoteImageResult.
  */
 @Serializable
-data class RemoteImageResult(
+public data class RemoteImageResult(
 	/**
 	 * Gets or sets the images.
 	 */
 	@SerialName("Images")
-	val images: List<RemoteImageInfo>? = null,
+	public val images: List<RemoteImageInfo>? = null,
 	/**
 	 * Gets or sets the total record count.
 	 */
 	@SerialName("TotalRecordCount")
-	val totalRecordCount: Int,
+	public val totalRecordCount: Int,
 	/**
 	 * Gets or sets the providers.
 	 */
 	@SerialName("Providers")
-	val providers: List<String>? = null
+	public val providers: List<String>? = null
 )

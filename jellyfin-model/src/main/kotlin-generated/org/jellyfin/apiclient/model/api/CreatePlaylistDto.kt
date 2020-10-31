@@ -18,25 +18,25 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
  * Create new playlist dto.
  */
 @Serializable
-data class CreatePlaylistDto(
+public data class CreatePlaylistDto(
 	/**
 	 * Gets or sets the name of the new playlist.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets item ids to add to the playlist.
 	 */
 	@SerialName("Ids")
-	val ids: String? = null,
+	public val ids: String? = null,
 	/**
 	 * Gets or sets the user id.
 	 */
 	@SerialName("UserId")
-	val userId: UUID,
+	public val userId: UUID,
 	/**
 	 * Gets or sets the media type.
 	 */
 	@SerialName("MediaType")
-	val mediaType: String? = null
+	public val mediaType: String? = null
 )

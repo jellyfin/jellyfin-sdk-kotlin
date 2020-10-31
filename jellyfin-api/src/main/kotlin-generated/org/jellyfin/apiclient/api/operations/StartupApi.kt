@@ -14,13 +14,13 @@ import org.jellyfin.apiclient.model.api.StartupConfigurationDto
 import org.jellyfin.apiclient.model.api.StartupRemoteAccessDto
 import org.jellyfin.apiclient.model.api.StartupUserDto
 
-class StartupApi(
+public class StartupApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Completes the startup wizard.
 	 */
-	suspend fun completeWizard(): Response<Unit> {
+	public suspend fun completeWizard(): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
@@ -31,11 +31,11 @@ class StartupApi(
 	/**
 	 * Gets the initial startup wizard configuration.
 	 */
-	suspend fun getStartupConfiguration(): Response<StartupConfigurationDto> {
+	public suspend fun getStartupConfiguration(): Response<StartupConfigurationDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<StartupConfigurationDto>("/Startup/Configuration", pathParameters,
+		val response = api.`get`<StartupConfigurationDto>("/Startup/Configuration", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -43,7 +43,7 @@ class StartupApi(
 	/**
 	 * Sets the initial startup wizard configuration.
 	 */
-	suspend fun updateInitialConfiguration(data: StartupConfigurationDto): Response<Unit> {
+	public suspend fun updateInitialConfiguration(`data`: StartupConfigurationDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Startup/Configuration", pathParameters, queryParameters, data)
@@ -53,11 +53,11 @@ class StartupApi(
 	/**
 	 * Gets the first user.
 	 */
-	suspend fun getFirstUser2(): Response<StartupUserDto> {
+	public suspend fun getFirstUser2(): Response<StartupUserDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<StartupUserDto>("/Startup/FirstUser", pathParameters, queryParameters,
+		val response = api.`get`<StartupUserDto>("/Startup/FirstUser", pathParameters, queryParameters,
 				data)
 		return response
 	}
@@ -65,7 +65,7 @@ class StartupApi(
 	/**
 	 * Sets remote access and UPnP.
 	 */
-	suspend fun setRemoteAccess(data: StartupRemoteAccessDto): Response<Unit> {
+	public suspend fun setRemoteAccess(`data`: StartupRemoteAccessDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Startup/RemoteAccess", pathParameters, queryParameters, data)
@@ -75,18 +75,18 @@ class StartupApi(
 	/**
 	 * Gets the first user.
 	 */
-	suspend fun getFirstUser(): Response<StartupUserDto> {
+	public suspend fun getFirstUser(): Response<StartupUserDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<StartupUserDto>("/Startup/User", pathParameters, queryParameters, data)
+		val response = api.`get`<StartupUserDto>("/Startup/User", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Sets the user name and password.
 	 */
-	suspend fun updateStartupUser(data: StartupUserDto): Response<Unit> {
+	public suspend fun updateStartupUser(`data`: StartupUserDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Startup/User", pathParameters, queryParameters, data)

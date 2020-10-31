@@ -13,10 +13,10 @@ import kotlinx.serialization.Serializable
  * The quick connect request body.
  */
 @Serializable
-data class QuickConnectDto(
+public data class QuickConnectDto(
 	/**
 	 * Gets or sets the quick connect token.
 	 */
 	@SerialName("Token")
-	val token: String
+	public val token: String
 )

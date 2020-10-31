@@ -16,69 +16,69 @@ import kotlinx.serialization.Serializable
  * Defines the display preferences for any item that supports them (usually Folders).
  */
 @Serializable
-data class DisplayPreferencesDto(
+public data class DisplayPreferencesDto(
 	/**
 	 * Gets or sets the user id.
 	 */
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	/**
 	 * Gets or sets the type of the view.
 	 */
 	@SerialName("ViewType")
-	val viewType: String? = null,
+	public val viewType: String? = null,
 	/**
 	 * Gets or sets the sort by.
 	 */
 	@SerialName("SortBy")
-	val sortBy: String? = null,
+	public val sortBy: String? = null,
 	/**
 	 * Gets or sets the index by.
 	 */
 	@SerialName("IndexBy")
-	val indexBy: String? = null,
+	public val indexBy: String? = null,
 	/**
 	 * Gets or sets a value indicating whether [remember indexing].
 	 */
 	@SerialName("RememberIndexing")
-	val rememberIndexing: Boolean,
+	public val rememberIndexing: Boolean,
 	/**
 	 * Gets or sets the height of the primary image.
 	 */
 	@SerialName("PrimaryImageHeight")
-	val primaryImageHeight: Int,
+	public val primaryImageHeight: Int,
 	/**
 	 * Gets or sets the width of the primary image.
 	 */
 	@SerialName("PrimaryImageWidth")
-	val primaryImageWidth: Int,
+	public val primaryImageWidth: Int,
 	/**
 	 * Gets or sets the custom prefs.
 	 */
 	@SerialName("CustomPrefs")
-	val customPrefs: Map<String, String>? = null,
+	public val customPrefs: Map<String, String>? = null,
 	@SerialName("ScrollDirection")
-	val scrollDirection: ScrollDirection? = null,
+	public val scrollDirection: ScrollDirection? = null,
 	/**
 	 * Gets or sets a value indicating whether to show backdrops on this item.
 	 */
 	@SerialName("ShowBackdrop")
-	val showBackdrop: Boolean,
+	public val showBackdrop: Boolean,
 	/**
 	 * Gets or sets a value indicating whether [remember sorting].
 	 */
 	@SerialName("RememberSorting")
-	val rememberSorting: Boolean,
+	public val rememberSorting: Boolean,
 	@SerialName("SortOrder")
-	val sortOrder: SortOrder? = null,
+	public val sortOrder: SortOrder? = null,
 	/**
 	 * Gets or sets a value indicating whether [show sidebar].
 	 */
 	@SerialName("ShowSidebar")
-	val showSidebar: Boolean,
+	public val showSidebar: Boolean,
 	/**
 	 * Gets or sets the client.
 	 */
 	@SerialName("Client")
-	val client: String? = null
+	public val client: String? = null
 )

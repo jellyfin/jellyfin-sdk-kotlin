@@ -11,4 +11,4 @@ import kotlinx.serialization.Serializable
  * Class BasePluginConfiguration.
  */
 @Serializable
-class BasePluginConfiguration
+public class BasePluginConfiguration

@@ -18,7 +18,7 @@ import org.jellyfin.apiclient.model.api.BaseItemDto
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.ItemFilter
 
-class PersonsApi(
+public class PersonsApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -78,7 +78,7 @@ class PersonsApi(
 	 * @param enableImages Optional, include image information in output.
 	 * @param enableTotalRecordCount Optional. Include total record count.
 	 */
-	suspend fun getPersons(
+	public suspend fun getPersons(
 		minCommunityRating: Double? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
@@ -143,7 +143,8 @@ class PersonsApi(
 		queryParameters["enableImages"] = enableImages
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Persons", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Persons", pathParameters, queryParameters,
+				data)
 		return response
 	}
 
@@ -153,13 +154,13 @@ class PersonsApi(
 	 * @param name Person name.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 */
-	suspend fun getPerson(name: String, userId: UUID? = null): Response<BaseItemDto> {
+	public suspend fun getPerson(name: String, userId: UUID? = null): Response<BaseItemDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["userId"] = userId
 		val data = null
-		val response = api.get<BaseItemDto>("/Persons/{name}", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDto>("/Persons/{name}", pathParameters, queryParameters, data)
 		return response
 	}
 }

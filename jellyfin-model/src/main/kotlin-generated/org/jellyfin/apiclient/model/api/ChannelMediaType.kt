@@ -9,13 +9,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class ChannelMediaType {
+public enum class ChannelMediaType {
 	@SerialName("Audio")
 	AUDIO,
-
 	@SerialName("Video")
 	VIDEO,
-
 	@SerialName("Photo")
-	PHOTO
+	PHOTO,
 }

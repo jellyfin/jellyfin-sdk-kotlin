@@ -12,7 +12,7 @@ import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 
-class HlsSegmentApi(
+public class HlsSegmentApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -21,14 +21,14 @@ class HlsSegmentApi(
 	 * @param itemId The item id.
 	 * @param segmentId The segment id.
 	 */
-	suspend fun getHlsAudioSegmentLegacyAac(itemId: String, segmentId: String):
+	public suspend fun getHlsAudioSegmentLegacyAac(itemId: String, segmentId: String):
 			Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["segmentId"] = segmentId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<ByteReadChannel>("/Audio/{itemId}/hls/{segmentId}/stream.aac",
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/hls/{segmentId}/stream.aac",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -39,7 +39,7 @@ class HlsSegmentApi(
 	 * @param itemId The item id.
 	 * @param segmentId The segment id.
 	 */
-	fun getHlsAudioSegmentLegacyAacUrl(itemId: String, segmentId: String): String {
+	public fun getHlsAudioSegmentLegacyAacUrl(itemId: String, segmentId: String): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["segmentId"] = segmentId
@@ -54,14 +54,14 @@ class HlsSegmentApi(
 	 * @param itemId The item id.
 	 * @param segmentId The segment id.
 	 */
-	suspend fun getHlsAudioSegmentLegacyMp3(itemId: String, segmentId: String):
+	public suspend fun getHlsAudioSegmentLegacyMp3(itemId: String, segmentId: String):
 			Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["segmentId"] = segmentId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<ByteReadChannel>("/Audio/{itemId}/hls/{segmentId}/stream.mp3",
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/hls/{segmentId}/stream.mp3",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -72,7 +72,7 @@ class HlsSegmentApi(
 	 * @param itemId The item id.
 	 * @param segmentId The segment id.
 	 */
-	fun getHlsAudioSegmentLegacyMp3Url(itemId: String, segmentId: String): String {
+	public fun getHlsAudioSegmentLegacyMp3Url(itemId: String, segmentId: String): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["segmentId"] = segmentId
@@ -89,7 +89,7 @@ class HlsSegmentApi(
 	 * @param segmentId The segment id.
 	 * @param segmentContainer The segment container.
 	 */
-	suspend fun getHlsVideoSegmentLegacy(
+	public suspend fun getHlsVideoSegmentLegacy(
 		itemId: String,
 		playlistId: String,
 		segmentId: String,
@@ -103,7 +103,7 @@ class HlsSegmentApi(
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response =
-				api.get<ByteReadChannel>("/Videos/{itemId}/hls/{playlistId}/{segmentId}.{segmentContainer}",
+				api.`get`<ByteReadChannel>("/Videos/{itemId}/hls/{playlistId}/{segmentId}.{segmentContainer}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -116,7 +116,7 @@ class HlsSegmentApi(
 	 * @param segmentId The segment id.
 	 * @param segmentContainer The segment container.
 	 */
-	fun getHlsVideoSegmentLegacyUrl(
+	public fun getHlsVideoSegmentLegacyUrl(
 		itemId: String,
 		playlistId: String,
 		segmentId: String,
@@ -138,13 +138,14 @@ class HlsSegmentApi(
 	 * @param itemId The video id.
 	 * @param playlistId The playlist id.
 	 */
-	suspend fun getHlsPlaylistLegacy(itemId: String, playlistId: String): Response<ByteReadChannel> {
+	public suspend fun getHlsPlaylistLegacy(itemId: String, playlistId: String):
+			Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["playlistId"] = playlistId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<ByteReadChannel>("/Videos/{itemId}/hls/{playlistId}/stream.m3u8",
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/hls/{playlistId}/stream.m3u8",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -155,7 +156,7 @@ class HlsSegmentApi(
 	 * @param itemId The video id.
 	 * @param playlistId The playlist id.
 	 */
-	fun getHlsPlaylistLegacyUrl(itemId: String, playlistId: String): String {
+	public fun getHlsPlaylistLegacyUrl(itemId: String, playlistId: String): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["playlistId"] = playlistId
@@ -171,7 +172,7 @@ class HlsSegmentApi(
 	 * needed.
 	 * @param playSessionId The play session id.
 	 */
-	suspend fun stopEncodingProcess(deviceId: String? = null, playSessionId: String? = null):
+	public suspend fun stopEncodingProcess(deviceId: String? = null, playSessionId: String? = null):
 			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

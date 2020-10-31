@@ -14,7 +14,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.ActivityLogEntryQueryResult
 
-class ActivityLogApi(
+public class ActivityLogApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -26,7 +26,7 @@ class ActivityLogApi(
 	 * @param minDate Optional. The minimum date. Format = ISO.
 	 * @param hasUserId Optional. Filter log entries if it has user id, or not.
 	 */
-	suspend fun getLogEntries(
+	public suspend fun getLogEntries(
 		startIndex: Int? = null,
 		limit: Int? = null,
 		minDate: LocalDateTime? = null,
@@ -39,8 +39,8 @@ class ActivityLogApi(
 		queryParameters["minDate"] = minDate
 		queryParameters["hasUserId"] = hasUserId
 		val data = null
-		val response = api.get<ActivityLogEntryQueryResult>("/System/ActivityLog/Entries", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ActivityLogEntryQueryResult>("/System/ActivityLog/Entries",
+				pathParameters, queryParameters, data)
 		return response
 	}
 }

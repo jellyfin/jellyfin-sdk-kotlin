@@ -18,35 +18,35 @@ import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
  * MB Registration Record.
  */
 @Serializable
-data class MbRegistrationRecord(
+public data class MbRegistrationRecord(
 	/**
 	 * Gets or sets expiration date.
 	 */
 	@SerialName("ExpirationDate")
-	val expirationDate: LocalDateTime,
+	public val expirationDate: LocalDateTime,
 	/**
 	 * Gets or sets a value indicating whether is registered.
 	 */
 	@SerialName("IsRegistered")
-	val isRegistered: Boolean,
+	public val isRegistered: Boolean,
 	/**
 	 * Gets or sets a value indicating whether reg checked.
 	 */
 	@SerialName("RegChecked")
-	val regChecked: Boolean,
+	public val regChecked: Boolean,
 	/**
 	 * Gets or sets a value indicating whether reg error.
 	 */
 	@SerialName("RegError")
-	val regError: Boolean,
+	public val regError: Boolean,
 	/**
 	 * Gets or sets a value indicating whether trial version.
 	 */
 	@SerialName("TrialVersion")
-	val trialVersion: Boolean,
+	public val trialVersion: Boolean,
 	/**
 	 * Gets or sets a value indicating whether is valid.
 	 */
 	@SerialName("IsValid")
-	val isValid: Boolean
+	public val isValid: Boolean
 )

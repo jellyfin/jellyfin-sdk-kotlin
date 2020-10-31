@@ -16,25 +16,25 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
 
 @Serializable
-data class LogFile(
+public data class LogFile(
 	/**
 	 * Gets or sets the date created.
 	 */
 	@SerialName("DateCreated")
-	val dateCreated: LocalDateTime,
+	public val dateCreated: LocalDateTime,
 	/**
 	 * Gets or sets the date modified.
 	 */
 	@SerialName("DateModified")
-	val dateModified: LocalDateTime,
+	public val dateModified: LocalDateTime,
 	/**
 	 * Gets or sets the size.
 	 */
 	@SerialName("Size")
-	val size: Long,
+	public val size: Long,
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null
+	public val name: String? = null
 )

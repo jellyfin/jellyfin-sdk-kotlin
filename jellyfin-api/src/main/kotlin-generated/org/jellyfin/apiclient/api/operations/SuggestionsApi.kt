@@ -14,7 +14,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 
-class SuggestionsApi(
+public class SuggestionsApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -27,7 +27,7 @@ class SuggestionsApi(
 	 * @param limit Optional. The limit.
 	 * @param enableTotalRecordCount Whether to enable the total record count.
 	 */
-	suspend fun getSuggestions(
+	public suspend fun getSuggestions(
 		userId: UUID,
 		mediaType: String? = null,
 		type: String? = null,
@@ -44,7 +44,7 @@ class SuggestionsApi(
 		queryParameters["limit"] = limit
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Users/{userId}/Suggestions", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Users/{userId}/Suggestions", pathParameters,
 				queryParameters, data)
 		return response
 	}

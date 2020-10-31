@@ -17,13 +17,13 @@ import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.CreatePlaylistDto
 import org.jellyfin.apiclient.model.api.PlaylistCreationResult
 
-class PlaylistsApi(
+public class PlaylistsApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Creates a new playlist.
 	 */
-	suspend fun createPlaylist(data: CreatePlaylistDto): Response<PlaylistCreationResult> {
+	public suspend fun createPlaylist(`data`: CreatePlaylistDto): Response<PlaylistCreationResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<PlaylistCreationResult>("/Playlists", pathParameters, queryParameters,
@@ -48,7 +48,7 @@ class PlaylistsApi(
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
-	suspend fun getPlaylistItems(
+	public suspend fun getPlaylistItems(
 		playlistId: UUID,
 		userId: UUID,
 		startIndex: Int? = null,
@@ -71,7 +71,7 @@ class PlaylistsApi(
 		queryParameters["imageTypeLimit"] = imageTypeLimit
 		queryParameters["enableImageTypes"] = enableImageTypes
 		val data = null
-		val response = api.get<BaseItemDtoQueryResult>("/Playlists/{playlistId}/Items", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Playlists/{playlistId}/Items", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -83,7 +83,7 @@ class PlaylistsApi(
 	 * @param ids Item id, comma delimited.
 	 * @param userId The userId.
 	 */
-	suspend fun addToPlaylist(
+	public suspend fun addToPlaylist(
 		playlistId: UUID,
 		ids: String? = null,
 		userId: UUID? = null
@@ -105,7 +105,8 @@ class PlaylistsApi(
 	 * @param playlistId The playlist id.
 	 * @param entryIds The item ids, comma delimited.
 	 */
-	suspend fun removeFromPlaylist(playlistId: String, entryIds: String? = null): Response<Unit> {
+	public suspend fun removeFromPlaylist(playlistId: String, entryIds: String? = null):
+			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["playlistId"] = playlistId
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -123,7 +124,7 @@ class PlaylistsApi(
 	 * @param itemId The item id.
 	 * @param newIndex The new index.
 	 */
-	suspend fun moveItem(
+	public suspend fun moveItem(
 		playlistId: String,
 		itemId: String,
 		newIndex: Int

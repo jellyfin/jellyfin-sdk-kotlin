@@ -9,10 +9,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class LiveTvServiceStatus {
+public enum class LiveTvServiceStatus {
 	@SerialName("Ok")
 	OK,
-
 	@SerialName("Unavailable")
-	UNAVAILABLE
+	UNAVAILABLE,
 }

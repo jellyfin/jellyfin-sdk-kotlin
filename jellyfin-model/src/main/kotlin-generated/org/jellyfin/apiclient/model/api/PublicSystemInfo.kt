@@ -11,40 +11,40 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PublicSystemInfo(
+public data class PublicSystemInfo(
 	/**
 	 * Gets or sets the local address.
 	 */
 	@SerialName("LocalAddress")
-	val localAddress: String? = null,
+	public val localAddress: String? = null,
 	/**
 	 * Gets or sets the name of the server.
 	 */
 	@SerialName("ServerName")
-	val serverName: String? = null,
+	public val serverName: String? = null,
 	/**
 	 * Gets or sets the server version.
 	 */
 	@SerialName("Version")
-	val version: String? = null,
+	public val version: String? = null,
 	/**
 	 * Gets or sets the product name. This is the AssemblyProduct name.
 	 */
 	@SerialName("ProductName")
-	val productName: String? = null,
+	public val productName: String? = null,
 	/**
 	 * Gets or sets the operating system.
 	 */
 	@SerialName("OperatingSystem")
-	val operatingSystem: String? = null,
+	public val operatingSystem: String? = null,
 	/**
 	 * Gets or sets the id.
 	 */
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	/**
 	 * Gets or sets a value indicating whether the startup wizard is completed.
 	 */
 	@SerialName("StartupWizardCompleted")
-	val startupWizardCompleted: Boolean? = null
+	public val startupWizardCompleted: Boolean? = null
 )

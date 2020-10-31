@@ -10,15 +10,15 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class NameValuePair(
+public data class NameValuePair(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the value.
 	 */
 	@SerialName("Value")
-	val value: String? = null
+	public val value: String? = null
 )

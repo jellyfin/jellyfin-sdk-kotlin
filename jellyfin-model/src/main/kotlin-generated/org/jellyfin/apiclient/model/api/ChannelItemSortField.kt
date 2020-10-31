@@ -9,25 +9,19 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class ChannelItemSortField {
+public enum class ChannelItemSortField {
 	@SerialName("Name")
 	NAME,
-
 	@SerialName("CommunityRating")
 	COMMUNITY_RATING,
-
 	@SerialName("PremiereDate")
 	PREMIERE_DATE,
-
 	@SerialName("DateCreated")
 	DATE_CREATED,
-
 	@SerialName("Runtime")
 	RUNTIME,
-
 	@SerialName("PlayCount")
 	PLAY_COUNT,
-
 	@SerialName("CommunityPlayCount")
-	COMMUNITY_PLAY_COUNT
+	COMMUNITY_PLAY_COUNT,
 }

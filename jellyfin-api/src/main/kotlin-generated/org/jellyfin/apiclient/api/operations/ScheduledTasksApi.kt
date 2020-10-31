@@ -16,7 +16,7 @@ import org.jellyfin.apiclient.model.api.IScheduledTaskWorker
 import org.jellyfin.apiclient.model.api.TaskInfo
 import org.jellyfin.apiclient.model.api.TaskTriggerInfo
 
-class ScheduledTasksApi(
+public class ScheduledTasksApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -25,14 +25,14 @@ class ScheduledTasksApi(
 	 * @param isHidden Optional filter tasks that are hidden, or not.
 	 * @param isEnabled Optional filter tasks that are enabled, or not.
 	 */
-	suspend fun getTasks(isHidden: Boolean? = null, isEnabled: Boolean? = null):
+	public suspend fun getTasks(isHidden: Boolean? = null, isEnabled: Boolean? = null):
 			Response<List<IScheduledTaskWorker>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["isHidden"] = isHidden
 		queryParameters["isEnabled"] = isEnabled
 		val data = null
-		val response = api.get<List<IScheduledTaskWorker>>("/ScheduledTasks", pathParameters,
+		val response = api.`get`<List<IScheduledTaskWorker>>("/ScheduledTasks", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -42,12 +42,12 @@ class ScheduledTasksApi(
 	 *
 	 * @param taskId Task Id.
 	 */
-	suspend fun getTask(taskId: String): Response<TaskInfo> {
+	public suspend fun getTask(taskId: String): Response<TaskInfo> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["taskId"] = taskId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<TaskInfo>("/ScheduledTasks/{taskId}", pathParameters, queryParameters,
+		val response = api.`get`<TaskInfo>("/ScheduledTasks/{taskId}", pathParameters, queryParameters,
 				data)
 		return response
 	}
@@ -57,7 +57,7 @@ class ScheduledTasksApi(
 	 *
 	 * @param taskId Task Id.
 	 */
-	suspend fun updateTask(taskId: String, data: List<TaskTriggerInfo>): Response<Unit> {
+	public suspend fun updateTask(taskId: String, `data`: List<TaskTriggerInfo>): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["taskId"] = taskId
 		val queryParameters = emptyMap<String, Any?>()
@@ -71,7 +71,7 @@ class ScheduledTasksApi(
 	 *
 	 * @param taskId Task Id.
 	 */
-	suspend fun startTask(taskId: String): Response<Unit> {
+	public suspend fun startTask(taskId: String): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["taskId"] = taskId
 		val queryParameters = emptyMap<String, Any?>()
@@ -86,7 +86,7 @@ class ScheduledTasksApi(
 	 *
 	 * @param taskId Task Id.
 	 */
-	suspend fun stopTask(taskId: String): Response<Unit> {
+	public suspend fun stopTask(taskId: String): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["taskId"] = taskId
 		val queryParameters = emptyMap<String, Any?>()

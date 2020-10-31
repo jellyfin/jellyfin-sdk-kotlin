@@ -11,6 +11,10 @@ dependencies {
 	testImplementation(Dependencies.KotlinX.serializationJson)
 }
 
+kotlin {
+	explicitApiWarning()
+}
+
 sourceSets.getByName("main").java.srcDir("src/main/kotlin-generated")
 
 val sourcesJar by tasks.creating(Jar::class) {

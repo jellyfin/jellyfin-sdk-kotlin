@@ -18,15 +18,15 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
  * Class SessionUserInfo.
  */
 @Serializable
-data class SessionUserInfo(
+public data class SessionUserInfo(
 	/**
 	 * Gets or sets the user identifier.
 	 */
 	@SerialName("UserId")
-	val userId: UUID,
+	public val userId: UUID,
 	/**
 	 * Gets or sets the name of the user.
 	 */
 	@SerialName("UserName")
-	val userName: String? = null
+	public val userName: String? = null
 )

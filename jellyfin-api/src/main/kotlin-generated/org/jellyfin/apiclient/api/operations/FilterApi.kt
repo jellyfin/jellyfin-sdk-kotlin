@@ -14,7 +14,7 @@ import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.QueryFilters
 import org.jellyfin.apiclient.model.api.QueryFiltersLegacy
 
-class FilterApi(
+public class FilterApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -26,7 +26,7 @@ class FilterApi(
 	 * This allows multiple, comma delimited.
 	 * @param mediaTypes Optional. Filter by MediaType. Allows multiple, comma delimited.
 	 */
-	suspend fun getQueryFiltersLegacy(
+	public suspend fun getQueryFiltersLegacy(
 		userId: UUID? = null,
 		parentId: String? = null,
 		includeItemTypes: String? = null,
@@ -39,7 +39,7 @@ class FilterApi(
 		queryParameters["includeItemTypes"] = includeItemTypes
 		queryParameters["mediaTypes"] = mediaTypes
 		val data = null
-		val response = api.get<QueryFiltersLegacy>("/Items/Filters", pathParameters, queryParameters,
+		val response = api.`get`<QueryFiltersLegacy>("/Items/Filters", pathParameters, queryParameters,
 				data)
 		return response
 	}
@@ -60,7 +60,7 @@ class FilterApi(
 	 * @param isSeries Optional. Is item series.
 	 * @param recursive Optional. Search recursive.
 	 */
-	suspend fun getQueryFilters(
+	public suspend fun getQueryFilters(
 		userId: UUID? = null,
 		parentId: String? = null,
 		includeItemTypes: String? = null,
@@ -85,7 +85,7 @@ class FilterApi(
 		queryParameters["isSeries"] = isSeries
 		queryParameters["recursive"] = recursive
 		val data = null
-		val response = api.get<QueryFilters>("/Items/Filters2", pathParameters, queryParameters, data)
+		val response = api.`get`<QueryFilters>("/Items/Filters2", pathParameters, queryParameters, data)
 		return response
 	}
 }

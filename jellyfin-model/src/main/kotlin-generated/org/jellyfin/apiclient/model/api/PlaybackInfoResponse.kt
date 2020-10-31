@@ -14,17 +14,17 @@ import kotlinx.serialization.Serializable
  * Class PlaybackInfoResponse.
  */
 @Serializable
-data class PlaybackInfoResponse(
+public data class PlaybackInfoResponse(
 	/**
 	 * Gets or sets the media sources.
 	 */
 	@SerialName("MediaSources")
-	val mediaSources: List<MediaSourceInfo>? = null,
+	public val mediaSources: List<MediaSourceInfo>? = null,
 	/**
 	 * Gets or sets the play session identifier.
 	 */
 	@SerialName("PlaySessionId")
-	val playSessionId: String? = null,
+	public val playSessionId: String? = null,
 	@SerialName("ErrorCode")
-	val errorCode: PlaybackErrorCode? = null
+	public val errorCode: PlaybackErrorCode? = null
 )

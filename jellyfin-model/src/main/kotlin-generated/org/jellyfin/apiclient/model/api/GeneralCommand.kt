@@ -16,11 +16,11 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 @Serializable
-data class GeneralCommand(
+public data class GeneralCommand(
 	@SerialName("Name")
-	val name: GeneralCommandType? = null,
+	public val name: GeneralCommandType? = null,
 	@SerialName("ControllingUserId")
-	val controllingUserId: UUID,
+	public val controllingUserId: UUID,
 	@SerialName("Arguments")
-	val arguments: Map<String, String>? = null
+	public val arguments: Map<String, String>? = null
 )

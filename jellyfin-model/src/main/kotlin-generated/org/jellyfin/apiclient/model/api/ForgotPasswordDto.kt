@@ -13,10 +13,10 @@ import kotlinx.serialization.Serializable
  * Forgot Password request body DTO.
  */
 @Serializable
-data class ForgotPasswordDto(
+public data class ForgotPasswordDto(
 	/**
 	 * Gets or sets the entered username to have its password reset.
 	 */
 	@SerialName("EnteredUsername")
-	val enteredUsername: String
+	public val enteredUsername: String
 )

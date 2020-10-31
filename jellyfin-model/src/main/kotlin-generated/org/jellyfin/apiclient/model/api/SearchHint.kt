@@ -28,132 +28,132 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
  * Class SearchHintResult.
  */
 @Serializable
-data class SearchHint(
+public data class SearchHint(
 	/**
 	 * Gets or sets the item id.
 	 */
 	@SerialName("ItemId")
-	val itemId: UUID,
+	public val itemId: UUID,
 	@SerialName("Id")
-	val id: UUID,
+	public val id: UUID,
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the matched term.
 	 */
 	@SerialName("MatchedTerm")
-	val matchedTerm: String? = null,
+	public val matchedTerm: String? = null,
 	/**
 	 * Gets or sets the index number.
 	 */
 	@SerialName("IndexNumber")
-	val indexNumber: Int? = null,
+	public val indexNumber: Int? = null,
 	/**
 	 * Gets or sets the production year.
 	 */
 	@SerialName("ProductionYear")
-	val productionYear: Int? = null,
+	public val productionYear: Int? = null,
 	/**
 	 * Gets or sets the parent index number.
 	 */
 	@SerialName("ParentIndexNumber")
-	val parentIndexNumber: Int? = null,
+	public val parentIndexNumber: Int? = null,
 	/**
 	 * Gets or sets the image tag.
 	 */
 	@SerialName("PrimaryImageTag")
-	val primaryImageTag: String? = null,
+	public val primaryImageTag: String? = null,
 	/**
 	 * Gets or sets the thumb image tag.
 	 */
 	@SerialName("ThumbImageTag")
-	val thumbImageTag: String? = null,
+	public val thumbImageTag: String? = null,
 	/**
 	 * Gets or sets the thumb image item identifier.
 	 */
 	@SerialName("ThumbImageItemId")
-	val thumbImageItemId: String? = null,
+	public val thumbImageItemId: String? = null,
 	/**
 	 * Gets or sets the backdrop image tag.
 	 */
 	@SerialName("BackdropImageTag")
-	val backdropImageTag: String? = null,
+	public val backdropImageTag: String? = null,
 	/**
 	 * Gets or sets the backdrop image item identifier.
 	 */
 	@SerialName("BackdropImageItemId")
-	val backdropImageItemId: String? = null,
+	public val backdropImageItemId: String? = null,
 	/**
 	 * Gets or sets the type.
 	 */
 	@SerialName("Type")
-	val type: String? = null,
+	public val type: String? = null,
 	@SerialName("IsFolder")
-	val isFolder: Boolean? = null,
+	public val isFolder: Boolean? = null,
 	/**
 	 * Gets or sets the run time ticks.
 	 */
 	@SerialName("RunTimeTicks")
-	val runTimeTicks: Long? = null,
+	public val runTimeTicks: Long? = null,
 	/**
 	 * Gets or sets the type of the media.
 	 */
 	@SerialName("MediaType")
-	val mediaType: String? = null,
+	public val mediaType: String? = null,
 	@SerialName("StartDate")
-	val startDate: LocalDateTime? = null,
+	public val startDate: LocalDateTime? = null,
 	@SerialName("EndDate")
-	val endDate: LocalDateTime? = null,
+	public val endDate: LocalDateTime? = null,
 	/**
 	 * Gets or sets the series.
 	 */
 	@SerialName("Series")
-	val series: String? = null,
+	public val series: String? = null,
 	@SerialName("Status")
-	val status: String? = null,
+	public val status: String? = null,
 	/**
 	 * Gets or sets the album.
 	 */
 	@SerialName("Album")
-	val album: String? = null,
+	public val album: String? = null,
 	@SerialName("AlbumId")
-	val albumId: UUID,
+	public val albumId: UUID,
 	/**
 	 * Gets or sets the album artist.
 	 */
 	@SerialName("AlbumArtist")
-	val albumArtist: String? = null,
+	public val albumArtist: String? = null,
 	/**
 	 * Gets or sets the artists.
 	 */
 	@SerialName("Artists")
-	val artists: List<String>? = null,
+	public val artists: List<String>? = null,
 	/**
 	 * Gets or sets the song count.
 	 */
 	@SerialName("SongCount")
-	val songCount: Int? = null,
+	public val songCount: Int? = null,
 	/**
 	 * Gets or sets the episode count.
 	 */
 	@SerialName("EpisodeCount")
-	val episodeCount: Int? = null,
+	public val episodeCount: Int? = null,
 	/**
 	 * Gets or sets the channel identifier.
 	 */
 	@SerialName("ChannelId")
-	val channelId: UUID,
+	public val channelId: UUID,
 	/**
 	 * Gets or sets the name of the channel.
 	 */
 	@SerialName("ChannelName")
-	val channelName: String? = null,
+	public val channelName: String? = null,
 	/**
 	 * Gets or sets the primary image aspect ratio.
 	 */
 	@SerialName("PrimaryImageAspectRatio")
-	val primaryImageAspectRatio: Double? = null
+	public val primaryImageAspectRatio: Double? = null
 )

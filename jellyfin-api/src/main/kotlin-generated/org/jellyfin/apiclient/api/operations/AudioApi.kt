@@ -19,7 +19,7 @@ import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.EncodingContext
 import org.jellyfin.apiclient.model.api.SubtitleDeliveryMethod
 
-class AudioApi(
+public class AudioApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -90,7 +90,7 @@ class AudioApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	suspend fun getAudioStream(
+	public suspend fun getAudioStream(
 		itemId: UUID,
 		container: String? = null,
 		static: Boolean? = null,
@@ -193,8 +193,8 @@ class AudioApi(
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
 		val data = null
-		val response = api.get<ByteReadChannel>("/Audio/{itemId}/stream", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/stream", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
@@ -266,7 +266,7 @@ class AudioApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	fun getAudioStreamUrl(
+	public fun getAudioStreamUrl(
 		itemId: UUID,
 		container: String? = null,
 		static: Boolean? = null,
@@ -439,7 +439,7 @@ class AudioApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	suspend fun getAudioStreamByContainer(
+	public suspend fun getAudioStreamByContainer(
 		itemId: UUID,
 		container: String? = null,
 		static: Boolean? = null,
@@ -542,7 +542,7 @@ class AudioApi(
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
 		val data = null
-		val response = api.get<ByteReadChannel>("/Audio/{itemId}/stream.{container}", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/stream.{container}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -615,7 +615,7 @@ class AudioApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	fun getAudioStreamByContainerUrl(
+	public fun getAudioStreamByContainerUrl(
 		itemId: UUID,
 		container: String? = null,
 		static: Boolean? = null,

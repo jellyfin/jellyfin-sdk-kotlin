@@ -22,13 +22,13 @@ import org.jellyfin.apiclient.model.api.PlaybackStopInfo
 import org.jellyfin.apiclient.model.api.RepeatMode
 import org.jellyfin.apiclient.model.api.UserItemDataDto
 
-class PlaystateApi(
+public class PlaystateApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Reports playback has started within a session.
 	 */
-	suspend fun reportPlaybackStart(data: PlaybackStartInfo): Response<Unit> {
+	public suspend fun reportPlaybackStart(`data`: PlaybackStartInfo): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Sessions/Playing", pathParameters, queryParameters, data)
@@ -40,7 +40,7 @@ class PlaystateApi(
 	 *
 	 * @param playSessionId Playback session id.
 	 */
-	suspend fun pingPlaybackSession(playSessionId: String? = null): Response<Unit> {
+	public suspend fun pingPlaybackSession(playSessionId: String? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["playSessionId"] = playSessionId
@@ -52,7 +52,7 @@ class PlaystateApi(
 	/**
 	 * Reports playback progress within a session.
 	 */
-	suspend fun reportPlaybackProgress(data: PlaybackProgressInfo): Response<Unit> {
+	public suspend fun reportPlaybackProgress(`data`: PlaybackProgressInfo): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Sessions/Playing/Progress", pathParameters, queryParameters, data)
@@ -62,7 +62,7 @@ class PlaystateApi(
 	/**
 	 * Reports playback has stopped within a session.
 	 */
-	suspend fun reportPlaybackStopped(data: PlaybackStopInfo): Response<Unit> {
+	public suspend fun reportPlaybackStopped(`data`: PlaybackStopInfo): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Sessions/Playing/Stopped", pathParameters, queryParameters, data)
@@ -76,7 +76,7 @@ class PlaystateApi(
 	 * @param itemId Item id.
 	 * @param datePlayed Optional. The date the item was played.
 	 */
-	suspend fun markPlayedItem(
+	public suspend fun markPlayedItem(
 		userId: UUID,
 		itemId: UUID,
 		datePlayed: LocalDateTime? = null
@@ -98,7 +98,7 @@ class PlaystateApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	suspend fun markUnplayedItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
+	public suspend fun markUnplayedItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
@@ -122,7 +122,7 @@ class PlaystateApi(
 	 * @param playSessionId The play session id.
 	 * @param canSeek Indicates if the client can seek.
 	 */
-	suspend fun onPlaybackStart(
+	public suspend fun onPlaybackStart(
 		userId: UUID,
 		itemId: UUID,
 		mediaSourceId: String? = null,
@@ -162,7 +162,7 @@ class PlaystateApi(
 	 * @param liveStreamId The live stream id.
 	 * @param playSessionId The play session id.
 	 */
-	suspend fun onPlaybackStopped(
+	public suspend fun onPlaybackStopped(
 		userId: UUID,
 		itemId: UUID,
 		mediaSourceId: String? = null,
@@ -203,7 +203,7 @@ class PlaystateApi(
 	 * @param isPaused Indicates if the player is paused.
 	 * @param isMuted Indicates if the player is muted.
 	 */
-	suspend fun onPlaybackProgress(
+	public suspend fun onPlaybackProgress(
 		userId: UUID,
 		itemId: UUID,
 		mediaSourceId: String? = null,

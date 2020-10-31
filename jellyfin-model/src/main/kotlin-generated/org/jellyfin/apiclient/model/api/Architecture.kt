@@ -9,16 +9,13 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class Architecture {
+public enum class Architecture {
 	@SerialName("X86")
 	X86,
-
 	@SerialName("X64")
 	X64,
-
 	@SerialName("Arm")
 	ARM,
-
 	@SerialName("Arm64")
-	ARM_64
+	ARM_64,
 }

@@ -22,53 +22,53 @@ import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 @Serializable
-data class ActivityLogEntry(
+public data class ActivityLogEntry(
 	/**
 	 * Gets or sets the identifier.
 	 */
 	@SerialName("Id")
-	val id: Long,
+	public val id: Long,
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the overview.
 	 */
 	@SerialName("Overview")
-	val overview: String? = null,
+	public val overview: String? = null,
 	/**
 	 * Gets or sets the short overview.
 	 */
 	@SerialName("ShortOverview")
-	val shortOverview: String? = null,
+	public val shortOverview: String? = null,
 	/**
 	 * Gets or sets the type.
 	 */
 	@SerialName("Type")
-	val type: String? = null,
+	public val type: String? = null,
 	/**
 	 * Gets or sets the item identifier.
 	 */
 	@SerialName("ItemId")
-	val itemId: String? = null,
+	public val itemId: String? = null,
 	/**
 	 * Gets or sets the date.
 	 */
 	@SerialName("Date")
-	val date: LocalDateTime,
+	public val date: LocalDateTime,
 	/**
 	 * Gets or sets the user identifier.
 	 */
 	@SerialName("UserId")
-	val userId: UUID,
+	public val userId: UUID,
 	/**
 	 * Gets or sets the user primary image tag.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("UserPrimaryImageTag")
-	val userPrimaryImageTag: String? = null,
+	public val userPrimaryImageTag: String? = null,
 	@SerialName("Severity")
-	val severity: LogLevel? = null
+	public val severity: LogLevel? = null
 )

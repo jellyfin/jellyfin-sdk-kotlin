@@ -13,25 +13,25 @@ import kotlinx.serialization.Serializable
  * Class CountryInfo.
  */
 @Serializable
-data class CountryInfo(
+public data class CountryInfo(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the display name.
 	 */
 	@SerialName("DisplayName")
-	val displayName: String? = null,
+	public val displayName: String? = null,
 	/**
 	 * Gets or sets the name of the two letter ISO region.
 	 */
 	@SerialName("TwoLetterISORegionName")
-	val twoLetterIsoRegionName: String? = null,
+	public val twoLetterIsoRegionName: String? = null,
 	/**
 	 * Gets or sets the name of the three letter ISO region.
 	 */
 	@SerialName("ThreeLetterISORegionName")
-	val threeLetterIsoRegionName: String? = null
+	public val threeLetterIsoRegionName: String? = null
 )

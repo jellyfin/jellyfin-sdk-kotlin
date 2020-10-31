@@ -19,7 +19,7 @@ import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.EncodingContext
 import org.jellyfin.apiclient.model.api.SubtitleDeliveryMethod
 
-class VideoHlsApi(
+public class VideoHlsApi(
 	private val api: KtorClient
 ) {
 	/**
@@ -93,7 +93,7 @@ class VideoHlsApi(
 	 * @param maxHeight Optional. The max height.
 	 * @param enableSubtitlesInManifest Optional. Whether to enable subtitles in the manifest.
 	 */
-	suspend fun getLiveHlsStream(
+	public suspend fun getLiveHlsStream(
 		itemId: UUID,
 		container: String? = null,
 		static: Boolean? = null,
@@ -202,7 +202,7 @@ class VideoHlsApi(
 		queryParameters["maxHeight"] = maxHeight
 		queryParameters["enableSubtitlesInManifest"] = enableSubtitlesInManifest
 		val data = null
-		val response = api.get<ByteReadChannel>("/Videos/{itemId}/live.m3u8", pathParameters,
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/live.m3u8", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -278,7 +278,7 @@ class VideoHlsApi(
 	 * @param maxHeight Optional. The max height.
 	 * @param enableSubtitlesInManifest Optional. Whether to enable subtitles in the manifest.
 	 */
-	fun getLiveHlsStreamUrl(
+	public fun getLiveHlsStreamUrl(
 		itemId: UUID,
 		container: String? = null,
 		static: Boolean? = null,

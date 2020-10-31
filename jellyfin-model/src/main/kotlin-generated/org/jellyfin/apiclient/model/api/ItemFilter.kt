@@ -12,31 +12,23 @@ import kotlinx.serialization.Serializable
  * Enum ItemFilter.
  */
 @Serializable
-enum class ItemFilter {
+public enum class ItemFilter {
 	@SerialName("IsFolder")
 	IS_FOLDER,
-
 	@SerialName("IsNotFolder")
 	IS_NOT_FOLDER,
-
 	@SerialName("IsUnplayed")
 	IS_UNPLAYED,
-
 	@SerialName("IsPlayed")
 	IS_PLAYED,
-
 	@SerialName("IsFavorite")
 	IS_FAVORITE,
-
 	@SerialName("IsResumable")
 	IS_RESUMABLE,
-
 	@SerialName("Likes")
 	LIKES,
-
 	@SerialName("Dislikes")
 	DISLIKES,
-
 	@SerialName("IsFavoriteOrLikes")
-	IS_FAVORITE_OR_LIKES
+	IS_FAVORITE_OR_LIKES,
 }

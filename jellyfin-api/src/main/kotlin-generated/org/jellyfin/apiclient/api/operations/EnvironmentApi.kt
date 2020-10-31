@@ -17,17 +17,17 @@ import org.jellyfin.apiclient.model.api.DefaultDirectoryBrowserInfoDto
 import org.jellyfin.apiclient.model.api.FileSystemEntryInfo
 import org.jellyfin.apiclient.model.api.ValidatePathDto
 
-class EnvironmentApi(
+public class EnvironmentApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Get Default directory browser.
 	 */
-	suspend fun getDefaultDirectoryBrowser(): Response<DefaultDirectoryBrowserInfoDto> {
+	public suspend fun getDefaultDirectoryBrowser(): Response<DefaultDirectoryBrowserInfoDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<DefaultDirectoryBrowserInfoDto>("/Environment/DefaultDirectoryBrowser",
+		val response = api.`get`<DefaultDirectoryBrowserInfoDto>("/Environment/DefaultDirectoryBrowser",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -40,7 +40,7 @@ class EnvironmentApi(
 	 * @param includeDirectories An optional filter to include or exclude folders from the results.
 	 * true/false.
 	 */
-	suspend fun getDirectoryContents(
+	public suspend fun getDirectoryContents(
 		path: String,
 		includeFiles: Boolean = false,
 		includeDirectories: Boolean = false
@@ -51,7 +51,7 @@ class EnvironmentApi(
 		queryParameters["includeFiles"] = includeFiles
 		queryParameters["includeDirectories"] = includeDirectories
 		val data = null
-		val response = api.get<List<FileSystemEntryInfo>>("/Environment/DirectoryContents",
+		val response = api.`get`<List<FileSystemEntryInfo>>("/Environment/DirectoryContents",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -59,11 +59,11 @@ class EnvironmentApi(
 	/**
 	 * Gets available drives from the server's file system.
 	 */
-	suspend fun getDrives(): Response<List<FileSystemEntryInfo>> {
+	public suspend fun getDrives(): Response<List<FileSystemEntryInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<FileSystemEntryInfo>>("/Environment/Drives", pathParameters,
+		val response = api.`get`<List<FileSystemEntryInfo>>("/Environment/Drives", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -72,11 +72,11 @@ class EnvironmentApi(
 	 * Gets network paths.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	suspend fun getNetworkShares(): Response<List<FileSystemEntryInfo>> {
+	public suspend fun getNetworkShares(): Response<List<FileSystemEntryInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<FileSystemEntryInfo>>("/Environment/NetworkShares", pathParameters,
+		val response = api.`get`<List<FileSystemEntryInfo>>("/Environment/NetworkShares", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -86,19 +86,19 @@ class EnvironmentApi(
 	 *
 	 * @param path The path.
 	 */
-	suspend fun getParentPath(path: String): Response<String> {
+	public suspend fun getParentPath(path: String): Response<String> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["path"] = path
 		val data = null
-		val response = api.get<String>("/Environment/ParentPath", pathParameters, queryParameters, data)
+		val response = api.`get`<String>("/Environment/ParentPath", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Validates path.
 	 */
-	suspend fun validatePath(data: ValidatePathDto): Response<Unit> {
+	public suspend fun validatePath(`data`: ValidatePathDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Environment/ValidatePath", pathParameters, queryParameters, data)

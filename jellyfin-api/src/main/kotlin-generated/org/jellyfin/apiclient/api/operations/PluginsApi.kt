@@ -18,17 +18,17 @@ import org.jellyfin.apiclient.model.api.MbRegistrationRecord
 import org.jellyfin.apiclient.model.api.PluginInfo
 import org.jellyfin.apiclient.model.api.PluginSecurityInfo
 
-class PluginsApi(
+public class PluginsApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Gets a list of currently installed plugins.
 	 */
-	suspend fun getPlugins(): Response<List<PluginInfo>> {
+	public suspend fun getPlugins(): Response<List<PluginInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<List<PluginInfo>>("/Plugins", pathParameters, queryParameters, data)
+		val response = api.`get`<List<PluginInfo>>("/Plugins", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -37,7 +37,7 @@ class PluginsApi(
 	 *
 	 * @param pluginId Plugin id.
 	 */
-	suspend fun uninstallPlugin(pluginId: UUID): Response<Unit> {
+	public suspend fun uninstallPlugin(pluginId: UUID): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["pluginId"] = pluginId
 		val queryParameters = emptyMap<String, Any?>()
@@ -51,12 +51,12 @@ class PluginsApi(
 	 *
 	 * @param pluginId Plugin id.
 	 */
-	suspend fun getPluginConfiguration(pluginId: UUID): Response<BasePluginConfiguration> {
+	public suspend fun getPluginConfiguration(pluginId: UUID): Response<BasePluginConfiguration> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["pluginId"] = pluginId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<BasePluginConfiguration>("/Plugins/{pluginId}/Configuration",
+		val response = api.`get`<BasePluginConfiguration>("/Plugins/{pluginId}/Configuration",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -66,7 +66,7 @@ class PluginsApi(
 	 *
 	 * @param pluginId Plugin id.
 	 */
-	suspend fun updatePluginConfiguration(pluginId: UUID): Response<Unit> {
+	public suspend fun updatePluginConfiguration(pluginId: UUID): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["pluginId"] = pluginId
 		val queryParameters = emptyMap<String, Any?>()
@@ -82,7 +82,7 @@ class PluginsApi(
 	 * @param name Feature name.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	suspend fun getRegistrationStatus(name: String): Response<MbRegistrationRecord> {
+	public suspend fun getRegistrationStatus(name: String): Response<MbRegistrationRecord> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		val queryParameters = emptyMap<String, Any?>()
@@ -98,12 +98,12 @@ class PluginsApi(
 	 * @param name Feature name.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	suspend fun getRegistration(name: String): Response<Unit> {
+	public suspend fun getRegistration(name: String): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<Unit>("/Plugins/Registrations/{name}", pathParameters, queryParameters,
+		val response = api.`get`<Unit>("/Plugins/Registrations/{name}", pathParameters, queryParameters,
 				data)
 		return response
 	}
@@ -112,11 +112,11 @@ class PluginsApi(
 	 * Get plugin security info.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	suspend fun getPluginSecurityInfo(): Response<PluginSecurityInfo> {
+	public suspend fun getPluginSecurityInfo(): Response<PluginSecurityInfo> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<PluginSecurityInfo>("/Plugins/SecurityInfo", pathParameters,
+		val response = api.`get`<PluginSecurityInfo>("/Plugins/SecurityInfo", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -125,7 +125,7 @@ class PluginsApi(
 	 * Updates plugin security info.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	suspend fun updatePluginSecurityInfo(data: PluginSecurityInfo): Response<Unit> {
+	public suspend fun updatePluginSecurityInfo(`data`: PluginSecurityInfo): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Plugins/SecurityInfo", pathParameters, queryParameters, data)

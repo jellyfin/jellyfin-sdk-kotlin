@@ -12,41 +12,41 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ListingsProviderInfo(
+public data class ListingsProviderInfo(
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	@SerialName("Type")
-	val type: String? = null,
+	public val type: String? = null,
 	@SerialName("Username")
-	val username: String? = null,
+	public val username: String? = null,
 	@SerialName("Password")
-	val password: String? = null,
+	public val password: String? = null,
 	@SerialName("ListingsId")
-	val listingsId: String? = null,
+	public val listingsId: String? = null,
 	@SerialName("ZipCode")
-	val zipCode: String? = null,
+	public val zipCode: String? = null,
 	@SerialName("Country")
-	val country: String? = null,
+	public val country: String? = null,
 	@SerialName("Path")
-	val path: String? = null,
+	public val path: String? = null,
 	@SerialName("EnabledTuners")
-	val enabledTuners: List<String>? = null,
+	public val enabledTuners: List<String>? = null,
 	@SerialName("EnableAllTuners")
-	val enableAllTuners: Boolean,
+	public val enableAllTuners: Boolean,
 	@SerialName("NewsCategories")
-	val newsCategories: List<String>? = null,
+	public val newsCategories: List<String>? = null,
 	@SerialName("SportsCategories")
-	val sportsCategories: List<String>? = null,
+	public val sportsCategories: List<String>? = null,
 	@SerialName("KidsCategories")
-	val kidsCategories: List<String>? = null,
+	public val kidsCategories: List<String>? = null,
 	@SerialName("MovieCategories")
-	val movieCategories: List<String>? = null,
+	public val movieCategories: List<String>? = null,
 	@SerialName("ChannelMappings")
-	val channelMappings: List<NameValuePair>? = null,
+	public val channelMappings: List<NameValuePair>? = null,
 	@SerialName("MoviePrefix")
-	val moviePrefix: String? = null,
+	public val moviePrefix: String? = null,
 	@SerialName("PreferredLanguage")
-	val preferredLanguage: String? = null,
+	public val preferredLanguage: String? = null,
 	@SerialName("UserAgent")
-	val userAgent: String? = null
+	public val userAgent: String? = null
 )

@@ -15,49 +15,49 @@ import kotlinx.serialization.Serializable
  * Class RemoteImageInfo.
  */
 @Serializable
-data class RemoteImageInfo(
+public data class RemoteImageInfo(
 	/**
 	 * Gets or sets the name of the provider.
 	 */
 	@SerialName("ProviderName")
-	val providerName: String? = null,
+	public val providerName: String? = null,
 	/**
 	 * Gets or sets the URL.
 	 */
 	@SerialName("Url")
-	val url: String? = null,
+	public val url: String? = null,
 	/**
 	 * Gets a url used for previewing a smaller version.
 	 */
 	@SerialName("ThumbnailUrl")
-	val thumbnailUrl: String? = null,
+	public val thumbnailUrl: String? = null,
 	/**
 	 * Gets or sets the height.
 	 */
 	@SerialName("Height")
-	val height: Int? = null,
+	public val height: Int? = null,
 	/**
 	 * Gets or sets the width.
 	 */
 	@SerialName("Width")
-	val width: Int? = null,
+	public val width: Int? = null,
 	/**
 	 * Gets or sets the community rating.
 	 */
 	@SerialName("CommunityRating")
-	val communityRating: Double? = null,
+	public val communityRating: Double? = null,
 	/**
 	 * Gets or sets the vote count.
 	 */
 	@SerialName("VoteCount")
-	val voteCount: Int? = null,
+	public val voteCount: Int? = null,
 	/**
 	 * Gets or sets the language.
 	 */
 	@SerialName("Language")
-	val language: String? = null,
+	public val language: String? = null,
 	@SerialName("Type")
-	val type: ImageType? = null,
+	public val type: ImageType? = null,
 	@SerialName("RatingType")
-	val ratingType: RatingType? = null
+	public val ratingType: RatingType? = null
 )

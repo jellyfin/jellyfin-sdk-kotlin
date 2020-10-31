@@ -16,19 +16,19 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 @Serializable
-data class BoxSetInfoRemoteSearchQuery(
+public data class BoxSetInfoRemoteSearchQuery(
 	@SerialName("SearchInfo")
-	val searchInfo: BoxSetInfo? = null,
+	public val searchInfo: BoxSetInfo? = null,
 	@SerialName("ItemId")
-	val itemId: UUID,
+	public val itemId: UUID,
 	/**
 	 * Will only search within the given provider when set.
 	 */
 	@SerialName("SearchProviderName")
-	val searchProviderName: String? = null,
+	public val searchProviderName: String? = null,
 	/**
 	 * Gets or sets a value indicating whether disabled providers should be included.
 	 */
 	@SerialName("IncludeDisabledProviders")
-	val includeDisabledProviders: Boolean
+	public val includeDisabledProviders: Boolean
 )

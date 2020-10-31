@@ -15,40 +15,40 @@ import kotlinx.serialization.Serializable
  * plugins.
  */
 @Serializable
-data class PluginInfo(
+public data class PluginInfo(
 	/**
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	val name: String? = null,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the version.
 	 */
 	@SerialName("Version")
-	val version: String? = null,
+	public val version: String? = null,
 	/**
 	 * Gets or sets the name of the configuration file.
 	 */
 	@SerialName("ConfigurationFileName")
-	val configurationFileName: String? = null,
+	public val configurationFileName: String? = null,
 	/**
 	 * Gets or sets the description.
 	 */
 	@SerialName("Description")
-	val description: String? = null,
+	public val description: String? = null,
 	/**
 	 * Gets or sets the unique id.
 	 */
 	@SerialName("Id")
-	val id: String? = null,
+	public val id: String? = null,
 	/**
 	 * Gets or sets a value indicating whether the plugin can be uninstalled.
 	 */
 	@SerialName("CanUninstall")
-	val canUninstall: Boolean,
+	public val canUninstall: Boolean,
 	/**
 	 * Gets or sets the image URL.
 	 */
 	@SerialName("ImageUrl")
-	val imageUrl: String? = null
+	public val imageUrl: String? = null
 )

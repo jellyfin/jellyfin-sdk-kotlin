@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
  * Device profile dto.
  */
 @Serializable
-data class DeviceProfileDto(
+public data class DeviceProfileDto(
 	@SerialName("DeviceProfile")
-	val deviceProfile: DeviceProfile? = null
+	public val deviceProfile: DeviceProfile? = null
 )

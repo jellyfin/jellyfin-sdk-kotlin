@@ -15,13 +15,13 @@ import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.QuickConnectResult
 import org.jellyfin.apiclient.model.api.QuickConnectState
 
-class QuickConnectApi(
+public class QuickConnectApi(
 	private val api: KtorClient
 ) {
 	/**
 	 * Temporarily activates quick connect for five minutes.
 	 */
-	suspend fun activate(): Response<Unit> {
+	public suspend fun activate(): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
@@ -34,7 +34,7 @@ class QuickConnectApi(
 	 *
 	 * @param code Quick connect code to authorize.
 	 */
-	suspend fun authorize(code: String): Response<Boolean> {
+	public suspend fun authorize(code: String): Response<Boolean> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["code"] = code
@@ -48,7 +48,7 @@ class QuickConnectApi(
 	 *
 	 * @param status New MediaBrowser.Model.QuickConnect.QuickConnectState.
 	 */
-	suspend fun available(status: QuickConnectState): Response<Unit> {
+	public suspend fun available(status: QuickConnectState): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["status"] = status
@@ -62,12 +62,12 @@ class QuickConnectApi(
 	 *
 	 * @param secret Secret previously returned from the Initiate endpoint.
 	 */
-	suspend fun connect(secret: String): Response<QuickConnectResult> {
+	public suspend fun connect(secret: String): Response<QuickConnectResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["secret"] = secret
 		val data = null
-		val response = api.get<QuickConnectResult>("/QuickConnect/Connect", pathParameters,
+		val response = api.`get`<QuickConnectResult>("/QuickConnect/Connect", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -75,7 +75,7 @@ class QuickConnectApi(
 	/**
 	 * Deauthorize all quick connect devices for the current user.
 	 */
-	suspend fun deauthorize(): Response<Int> {
+	public suspend fun deauthorize(): Response<Int> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
@@ -86,11 +86,11 @@ class QuickConnectApi(
 	/**
 	 * Initiate a new quick connect request.
 	 */
-	suspend fun initiate(): Response<QuickConnectResult> {
+	public suspend fun initiate(): Response<QuickConnectResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<QuickConnectResult>("/QuickConnect/Initiate", pathParameters,
+		val response = api.`get`<QuickConnectResult>("/QuickConnect/Initiate", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -98,12 +98,12 @@ class QuickConnectApi(
 	/**
 	 * Gets the current quick connect state.
 	 */
-	suspend fun getStatus(): Response<QuickConnectState> {
+	public suspend fun getStatus(): Response<QuickConnectState> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.get<QuickConnectState>("/QuickConnect/Status", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<QuickConnectState>("/QuickConnect/Status", pathParameters,
+				queryParameters, data)
 		return response
 	}
 }
