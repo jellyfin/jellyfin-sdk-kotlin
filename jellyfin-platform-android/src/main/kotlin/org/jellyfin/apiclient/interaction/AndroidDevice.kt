@@ -9,13 +9,14 @@ import org.jellyfin.apiclient.model.DeviceInfo
 /**
  * Helper function used in [androidDevice] to normalize device names:
  *
- * - Removes special characters from the name.
+ * - Removes non-US-ASCII-printable characters from the name.
  * - Trims the whitespace at the start and end of the name.
+ * - Removes repetitive whitespace from the name.
  *
  * Returns a copy of the device with the normalized name.
  */
 fun DeviceInfo.normalize() = copy(
-	name = name.replace("[^\\w\\s]".toRegex(), "").trim()
+	name = name.replace("[^\\x20-\\x7E]".toRegex(), "").trim().replace("\\s{2,}".toRegex(), " ")
 )
 
 @SuppressLint("HardwareIds")
