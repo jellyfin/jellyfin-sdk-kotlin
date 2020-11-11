@@ -11,7 +11,7 @@ data class AndroidDevice(
 	override val deviceName: String
 ) : IDevice {
 	companion object {
-		private fun String.normalize() = replace("[^\\w\\s]".toRegex(), "")
+		private fun String.normalize() = replace("[^\\x20-\\x7E]".toRegex(), "").trim().replace("\\s{2,}".toRegex(), " ")
 
 		@SuppressLint("HardwareIds")
 		fun getAutomaticId(context: Context): String =
