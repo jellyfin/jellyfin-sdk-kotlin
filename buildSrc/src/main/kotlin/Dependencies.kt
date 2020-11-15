@@ -24,7 +24,7 @@ object Dependencies {
 	}
 
 	object Android {
-		const val buildTools = "com.android.tools.build:gradle:4.0.1"
+		const val buildTools = "com.android.tools.build:gradle:4.1.1"
 		const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:1.1.0"
 	}
 
