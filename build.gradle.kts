@@ -1,6 +1,6 @@
 plugins {
 	id("maven-publish")
-	id("io.gitlab.arturbosch.detekt").version("1.9.1")
+	id("io.gitlab.arturbosch.detekt").version(Dependencies.detektVersion)
 }
 
 // Versioning
