@@ -14,7 +14,7 @@ import java.time.format.DateTimeParseException
 /**
  * Serializer to read zoned date times as local date time and writing it back
  */
-class LocalDateTimeSerializer : KSerializer<LocalDateTime> {
+public class LocalDateTimeSerializer : KSerializer<LocalDateTime> {
 	override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("LocalDateTime", PrimitiveKind.STRING)
 
 	override fun deserialize(decoder: Decoder): LocalDateTime = try {
@@ -25,6 +25,6 @@ class LocalDateTimeSerializer : KSerializer<LocalDateTime> {
 		LocalDateTime.MIN
 	}
 
-	override fun serialize(encoder: Encoder, value: LocalDateTime) =
+	override fun serialize(encoder: Encoder, value: LocalDateTime): Unit =
 		encoder.encodeString(value.atZone(ZoneId.systemDefault()).toString())
 }

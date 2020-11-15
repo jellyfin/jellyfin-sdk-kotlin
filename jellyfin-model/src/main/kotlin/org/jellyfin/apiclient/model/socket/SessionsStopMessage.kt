@@ -5,4 +5,4 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @SerialName("SessionsStart")
-class SessionsStopMessage : OutgoingSocketMessage
+public class SessionsStopMessage : OutgoingSocketMessage

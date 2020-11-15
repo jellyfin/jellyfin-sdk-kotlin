@@ -12,7 +12,7 @@ dependencies {
 }
 
 kotlin {
-	explicitApiWarning()
+	explicitApi()
 }
 
 sourceSets.getByName("main").java.srcDir("src/main/kotlin-generated")

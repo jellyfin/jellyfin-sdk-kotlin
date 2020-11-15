@@ -5,4 +5,4 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @SerialName("ScheduledTasksInfoStop")
-class ScheduledTasksInfoStopMessage : OutgoingSocketMessage
+public class ScheduledTasksInfoStopMessage : OutgoingSocketMessage

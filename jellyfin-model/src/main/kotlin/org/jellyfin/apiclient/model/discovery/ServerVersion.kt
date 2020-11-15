@@ -8,14 +8,14 @@ import org.jellyfin.apiclient.model.discovery.ServerVersion.Companion.fromString
  * Use [fromString] to parse strings. The format is similar to SemVer.
  */
 @Serializable
-data class ServerVersion(
+public data class ServerVersion(
 	val major: Int,
 	val minor: Int,
 	val patch: Int
 ) {
-	operator fun compareTo(other: ServerVersion) = comparator.compare(this, other)
+	public operator fun compareTo(other: ServerVersion): Int = comparator.compare(this, other)
 
-	companion object {
+	public companion object {
 		private val comparator = compareBy<ServerVersion>(
 			{ it.major },
 			{ it.minor },
@@ -26,7 +26,7 @@ data class ServerVersion(
 		 * Create an instance of [ServerVersion] from a string. The string must be in the format
 		 * "\d+\.\d+\.\d+\". Example: 1.0.0 or 10.6.4. Characters are not allowed.
 		 */
-		fun fromString(str: String): ServerVersion? {
+		public fun fromString(str: String): ServerVersion? {
 			// Split into major, minor and patch
 			val stringParts = str.split('.')
 			// Check if we found 3 parts

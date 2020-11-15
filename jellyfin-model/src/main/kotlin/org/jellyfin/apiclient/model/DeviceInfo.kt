@@ -1,6 +1,6 @@
 package org.jellyfin.apiclient.model
 
-data class DeviceInfo(
+public data class DeviceInfo(
 	val id: String,
 	val name: String
 )

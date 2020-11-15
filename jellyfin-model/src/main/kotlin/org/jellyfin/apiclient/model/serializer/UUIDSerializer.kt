@@ -11,7 +11,7 @@ import java.util.*
 /**
  * A UUID serializer that supports the GUIDs without dashes from the Jellyfin API
  */
-class UUIDSerializer : KSerializer<UUID> {
+public class UUIDSerializer : KSerializer<UUID> {
 	override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("UUID", PrimitiveKind.STRING)
 
 	override fun deserialize(decoder: Decoder): UUID {
@@ -25,7 +25,7 @@ class UUIDSerializer : KSerializer<UUID> {
 		encoder.encodeString(value.toString())
 	}
 
-	companion object {
-		val UUID_REGEX = "^([a-z\\d]{8})([a-z\\d]{4})(4[a-z\\d]{3})([a-z\\d]{4})([a-z\\d]{12})\$".toRegex()
+	private companion object {
+		private val UUID_REGEX = "^([a-z\\d]{8})([a-z\\d]{4})(4[a-z\\d]{3})([a-z\\d]{4})([a-z\\d]{12})\$".toRegex()
 	}
 }

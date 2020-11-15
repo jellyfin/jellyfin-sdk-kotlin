@@ -9,7 +9,7 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 import java.util.*
 
 @Serializable
-data class RefreshProgressMessage(
+public data class RefreshProgressMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,
 

@@ -9,7 +9,7 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 import java.util.*
 
 @Serializable
-data class ForceKeepAliveMessage(
+public data class ForceKeepAliveMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,
 

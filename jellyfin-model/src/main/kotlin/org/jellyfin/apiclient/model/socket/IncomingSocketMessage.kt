@@ -7,12 +7,12 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 import java.util.*
 
-interface IncomingSocketMessage : SocketMessage {
+public interface IncomingSocketMessage : SocketMessage {
 	/**
 	 * The id of the received message.
 	 *
 	 * Implementation note: Copy the @SerialName notation to the implementation side
 	 */
 	@SerialName("MessageId")
-	val messageId: UUID
+	public val messageId: UUID
 }

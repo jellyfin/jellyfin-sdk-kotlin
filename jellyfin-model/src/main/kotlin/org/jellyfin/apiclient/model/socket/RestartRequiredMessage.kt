@@ -9,7 +9,7 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 import java.util.*
 
 @Serializable
-data class RestartRequiredMessage(
+public data class RestartRequiredMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,
 ) : IncomingSocketMessage

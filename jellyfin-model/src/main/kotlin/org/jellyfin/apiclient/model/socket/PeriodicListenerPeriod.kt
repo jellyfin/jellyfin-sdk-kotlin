@@ -4,11 +4,12 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
+import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 @Serializable(with = PeriodicListenerPeriod.Serializer::class)
-data class PeriodicListenerPeriod(
+public data class PeriodicListenerPeriod(
 	val initialDelay: Long = 0,
 	val interval: Long = 1000,
 ) {
@@ -16,8 +17,8 @@ data class PeriodicListenerPeriod(
 		return "$initialDelay,$interval"
 	}
 
-	companion object {
-		fun fromString(str: String): PeriodicListenerPeriod? {
+	public companion object {
+		public 	fun fromString(str: String): PeriodicListenerPeriod? {
 			val values = str.split(',')
 			val dueTimeMs = values.getOrNull(0)?.toLongOrNull() ?: return null
 			val periodMs = values.getOrNull(1)?.toLongOrNull() ?: return null
@@ -29,10 +30,10 @@ data class PeriodicListenerPeriod(
 		}
 	}
 
-	class Serializer : KSerializer<PeriodicListenerPeriod> {
-		override val descriptor = PrimitiveSerialDescriptor("PeriodicListenerPeriod", PrimitiveKind.STRING)
+	public class Serializer : KSerializer<PeriodicListenerPeriod> {
+		override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("PeriodicListenerPeriod", PrimitiveKind.STRING)
 
-		override fun serialize(encoder: Encoder, value: PeriodicListenerPeriod) =
+		override fun serialize(encoder: Encoder, value: PeriodicListenerPeriod): Unit =
 			encoder.encodeString(value.toString())
 
 		override fun deserialize(decoder: Decoder): PeriodicListenerPeriod =
