@@ -10,9 +10,9 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 import java.util.*
 
 @Serializable
-data class SessionsMessage(
+public data class SessionsMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,
 	@SerialName("Data")
-	val Session: List<SessionInfo>,
+	val session: List<SessionInfo>,
 ) : IncomingSocketMessage

@@ -5,4 +5,4 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @SerialName("KeepAlive")
-class KeepAliveMessage : OutgoingSocketMessage
+public class KeepAliveMessage : OutgoingSocketMessage

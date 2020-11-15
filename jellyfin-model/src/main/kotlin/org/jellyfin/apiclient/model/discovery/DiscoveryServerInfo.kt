@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  * Contains the information exposed by the server via discovery
  */
 @Serializable
-data class DiscoveryServerInfo(
+public data class DiscoveryServerInfo(
 	/**
 	 * The unique id of this server. Usually a UUID but not guaranteed.
 	 */

@@ -10,7 +10,7 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 import java.util.*
 
 @Serializable
-data class ScheduledTaskEndedMessage(
+public data class ScheduledTaskEndedMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,
 

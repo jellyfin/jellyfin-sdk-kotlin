@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @SerialName("ActivityLogEntryStart")
-data class ActivityLogEntryStartMessage(
+public data class ActivityLogEntryStartMessage(
 	@SerialName("Data")
 	val period: PeriodicListenerPeriod = PeriodicListenerPeriod(),
 ) : OutgoingSocketMessage

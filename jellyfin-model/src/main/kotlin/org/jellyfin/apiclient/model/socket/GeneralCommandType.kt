@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-enum class GeneralCommandType {
+public enum class GeneralCommandType {
 	@SerialName("MoveUp")
 	MoveUp,
 

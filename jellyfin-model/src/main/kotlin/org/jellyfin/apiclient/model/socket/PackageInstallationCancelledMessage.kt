@@ -10,7 +10,7 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 import java.util.*
 
 @Serializable
-data class PackageInstallationCancelledMessage(
+public data class PackageInstallationCancelledMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,
 

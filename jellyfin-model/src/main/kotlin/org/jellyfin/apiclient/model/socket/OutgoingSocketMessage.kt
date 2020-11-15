@@ -1,4 +1,4 @@
 package org.jellyfin.apiclient.model.socket
 
-interface OutgoingSocketMessage : SocketMessage
+public interface OutgoingSocketMessage : SocketMessage
 

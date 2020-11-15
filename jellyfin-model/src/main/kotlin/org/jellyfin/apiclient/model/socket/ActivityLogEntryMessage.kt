@@ -10,7 +10,7 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 import java.util.*
 
 @Serializable
-data class ActivityLogEntryMessage(
+public data class ActivityLogEntryMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,
 

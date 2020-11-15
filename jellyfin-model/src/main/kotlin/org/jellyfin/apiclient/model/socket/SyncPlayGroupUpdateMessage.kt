@@ -10,7 +10,7 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 import java.util.*
 
 @Serializable
-data class SyncPlayGroupUpdateMessage(
+public data class SyncPlayGroupUpdateMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,
 

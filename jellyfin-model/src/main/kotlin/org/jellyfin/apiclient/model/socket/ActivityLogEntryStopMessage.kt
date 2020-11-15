@@ -5,4 +5,4 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @SerialName("ActivityLogEntryStop")
-class ActivityLogEntryStopMessage : OutgoingSocketMessage
+public class ActivityLogEntryStopMessage : OutgoingSocketMessage
