@@ -15,20 +15,24 @@ import org.jellyfin.apiclient.model.ClientInfo
 import org.jellyfin.apiclient.model.DeviceInfo
 import kotlin.collections.set
 
-open class KtorClient(
+public open class KtorClient(
 	override var baseUrl: String? = null,
-	var accessToken: String? = null,
-	var clientInfo: ClientInfo,
-	var deviceInfo: DeviceInfo
+	public var accessToken: String? = null,
+	public var clientInfo: ClientInfo,
+	public var deviceInfo: DeviceInfo
 ) : ApiClient {
-	val json = Json {
+	internal val json = Json {
 		isLenient = false
 		ignoreUnknownKeys = true
 		allowSpecialFloatingPointValues = true
 		useArrayPolymorphism = false
 	}
 
-	val client = HttpClient {
+	/**
+	 * Internal HTTP client. Should not be used directly. Use [request] instead.
+	 * Exposed publicly to allow inline functions to work.
+	 */
+	public val client: HttpClient = HttpClient {
 		install(JsonFeature) {
 			serializer = KotlinxSerializer(json)
 		}
@@ -40,7 +44,7 @@ open class KtorClient(
 		install(WebSockets)
 	}
 
-	override fun createPath(path: String, pathParameters: Map<String, Any?>) = path
+	override fun createPath(path: String, pathParameters: Map<String, Any?>): String = path
 		.split('/')
 		.filterNot { it.isEmpty() }
 		.map { rawName ->
@@ -111,7 +115,7 @@ open class KtorClient(
 			})
 	}
 
-	suspend inline fun <reified T> request(
+	public suspend inline fun <reified T> request(
 		method: HttpMethod = HttpMethod.Get,
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
@@ -130,12 +134,12 @@ open class KtorClient(
 		return Response(response.receive(), response.status.value, response.headers.toMap())
 	}
 
-	suspend inline fun <reified T> get(
+	public suspend inline fun <reified T> get(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
 		requestBody: Any? = null
-	) = request<T>(
+	): Response<T> = request(
 		method = HttpMethod.Get,
 		pathTemplate = pathTemplate,
 		pathParameters = pathParameters,
@@ -143,12 +147,12 @@ open class KtorClient(
 		requestBody = requestBody
 	)
 
-	suspend inline fun <reified T> post(
+	public suspend inline fun <reified T> post(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
 		requestBody: Any? = null
-	) = request<T>(
+	): Response<T> = request(
 		method = HttpMethod.Post,
 		pathTemplate = pathTemplate,
 		pathParameters = pathParameters,
@@ -156,12 +160,12 @@ open class KtorClient(
 		requestBody = requestBody
 	)
 
-	suspend inline fun <reified T> delete(
+	public suspend inline fun <reified T> delete(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
 		requestBody: Any? = null
-	) = request<T>(
+	): Response<T> = request(
 		method = HttpMethod.Delete,
 		pathTemplate = pathTemplate,
 		pathParameters = pathParameters,

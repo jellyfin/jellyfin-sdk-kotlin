@@ -8,10 +8,10 @@ import kotlin.reflect.KProperty
  *
  * @param status - See [HttpStatusCode]
  */
-class Response<T>(
-	val content: T,
-	val status: Int,
-	val headers: Map<String, List<String>>
+public class Response<T>(
+	public val content: T,
+	public val status: Int,
+	public val headers: Map<String, List<String>>
 ) {
 	/**
 	 * Get the response content using property delegation.
@@ -21,16 +21,16 @@ class Response<T>(
 	 * ```
 	 */
 	@JvmSynthetic
-	operator fun getValue(thisRef: Any?, property: KProperty<*>): T = content
+	public operator fun getValue(thisRef: Any?, property: KProperty<*>): T = content
 
 	/**
 	 * Get a header by name. If multiple headers with the name exist the first is returned.
 	 * Use [getHeaders] to get all headers with [name].
 	 */
-	fun getHeader(name: String) = headers[name]?.firstOrNull()
+	public fun getHeader(name: String): String? = getHeaders(name).firstOrNull()
 
 	/**
 	 * Get multiple headers sharing the same name. Use [getHeader] to retrieve the first occurrence.
 	 */
-	fun getHeaders(name: String) = headers[name]
+	public fun getHeaders(name: String): List<String> = headers[name].orEmpty()
 }
