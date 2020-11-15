@@ -26,6 +26,7 @@ class OpenApiReturnTypeBuilder(
 			MimeType.AUDIO_ALL in supportedReturnMimeTypes ||
 			MimeType.VIDEO_ALL in supportedReturnMimeTypes ||
 			MimeType.IMAGE_ALL in supportedReturnMimeTypes ||
+			MimeType.FONT_ALL in supportedReturnMimeTypes ||
 			MimeType.APPLICATION_X_MPEG_URL in supportedReturnMimeTypes ||
 			MimeType.APPLICATION_OCTET_STREAM in supportedReturnMimeTypes ->
 				TYPE_BINARY

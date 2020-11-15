@@ -9,6 +9,7 @@ object MimeType {
 	const val IMAGE_ALL = "image/*"
 	const val AUDIO_ALL = "audio/*"
 	const val VIDEO_ALL = "video/*"
+	const val FONT_ALL = "font/*"
 	const val APPLICATION_X_JAVASCRIPT = "application/x-javascript"
 	const val APPLICATION_X_MPEG_URL = "application/x-mpegURL"
 	const val APPLICATION_OCTET_STREAM = "application/octet-stream"
