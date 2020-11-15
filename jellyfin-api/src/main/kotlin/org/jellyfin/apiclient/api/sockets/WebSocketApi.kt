@@ -25,12 +25,12 @@ import org.slf4j.LoggerFactory
  *
  * The user should verify the access token is correct as the server does not respond to bad authorization.
  */
-class WebSocketApi(
+public class WebSocketApi(
 	private val api: KtorClient
 ) {
-	companion object {
+	private companion object {
 		// Mapping for types to message
-		val incomingMessageSerializers = mapOf(
+		private val incomingMessageSerializers = mapOf(
 			"ForceKeepAlive" to serializer<ForceKeepAliveMessage>(),
 			"GeneralCommand" to serializer<GeneralCommandMessage>(),
 			"UserDataChanged" to serializer<UserDataChangedMessage>(),
@@ -127,7 +127,7 @@ class WebSocketApi(
 	/**
 	 * Call to (re)connect the WebSocket. Does not close current listeners.
 	 */
-	suspend fun reconnect() {
+	public suspend fun reconnect() {
 		// Get access token and check if it's not null
 		val accessToken = checkNotNull(api.accessToken)
 
@@ -209,12 +209,12 @@ class WebSocketApi(
 	/**
 	 * Publish a message to the server.
 	 */
-	suspend inline fun <reified T : OutgoingSocketMessage> publish(message: T) = publish(message, serializer())
+	public suspend inline fun <reified T : OutgoingSocketMessage> publish(message: T): Unit = publish(message, serializer())
 
 	/**
 	 * Publish a message to the server.
 	 */
-	suspend fun <T : OutgoingSocketMessage> publish(message: T, serializer: KSerializer<T>) {
+	public suspend fun <T : OutgoingSocketMessage> publish(message: T, serializer: KSerializer<T>) {
 		val jsonObject = json.encodeToJsonElement(serializer, message).jsonObject
 		val messageType = serializer.descriptor.serialName
 
@@ -237,7 +237,7 @@ class WebSocketApi(
 	 * Start listening to messages. Calls the [block] for each incoming message until
 	 * [SocketSubscription.cancel] is invoked.
 	 */
-	suspend fun subscribe(block: (IncomingSocketMessage) -> Unit): SocketSubscription {
+	public suspend fun subscribe(block: (IncomingSocketMessage) -> Unit): SocketSubscription {
 		val subscription = SocketSubscription(this, block)
 		subscriptions += subscription
 		subscriptionsChanged()
@@ -248,7 +248,7 @@ class WebSocketApi(
 	/**
 	 * A [Flow] based version of a subscription.
 	 */
-	suspend fun subscribe() = callbackFlow {
+	public suspend fun subscribe(): Flow<IncomingSocketMessage> = callbackFlow {
 		// Create subscription and send messages to flow
 		val subscription = subscribe {
 			sendBlocking(it)
@@ -266,7 +266,7 @@ class WebSocketApi(
 	 * Cancel a subscription by removing it from the API.
 	 * Automatically closes the WebSocket if no subscriptions are left.
 	 */
-	suspend fun cancelSubscription(subscription: SocketSubscription) {
+	public suspend fun cancelSubscription(subscription: SocketSubscription) {
 		subscriptions -= subscription
 		subscriptionsChanged()
 	}
