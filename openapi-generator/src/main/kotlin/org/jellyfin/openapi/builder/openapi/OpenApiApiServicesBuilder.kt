@@ -57,11 +57,19 @@ class OpenApiApiServicesBuilder(
 						deprecated = parameterSpec.deprecated == true
 					)
 
-					if (parameterSpec.`in` == "path" && type.isNullable)
-						println("Path parameter $parameterName in $operationName is marked as nullable")
+					if (parameterSpec.`in` == "path") {
+						if (type.isNullable)
+							println("Path parameter $parameterName in $operationName is marked as nullable")
+
+						if (!path.contains("{${parameterName}}", ignoreCase = true))
+							println("Path parameter $parameterName in $operationName is missing in path $path")
+					}
 				}
 
-				val returnType = openApiReturnTypeBuilder.build(ApiTypePath(serviceName, operationName, ApiTypePath.PARAMETER_RETURN), operation.responses["200"])
+				val returnType = openApiReturnTypeBuilder.build(
+					ApiTypePath(serviceName, operationName, ApiTypePath.PARAMETER_RETURN),
+					operation.responses["200"]
+				)
 				if (returnType == Unit::class.asTypeName() && "200" in operation.responses)
 					println("Missing return-type for operation $operationName (status-codes: ${operation.responses.keys})")
 
