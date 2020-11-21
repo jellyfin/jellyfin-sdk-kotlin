@@ -11,6 +11,29 @@ language. For example, the "ImageBlurHashes" property in BaseItemDto can be simp
 Map, and therefor a hook is added for it. All these hooks need to be maintained and updated when the
 OpenAPI specification changes.
 
+## Running
+
+The following Gradle tasks can be used to run the generator:
+
+ - **generateSources**  
+   Reads the openapi.json files and generates Kotlin source code.
+ - **downloadApiSpecStable & downloadApiSpecUnstable**  
+   Downloads the openapi.json file from repo.jellyfin.org.
+ - **updateApiSpecStable & updateApiSpecUnstable**  
+   Runs the download task followed by the generateSources task.
+
+## Updating the repository
+
+When the repository needs to be updated for a new OpenAPI file the following shell commands are
+used:
+
+```sh
+gradlew openapi-generator:updateApiSpecStable
+git add .
+git commit -m "Update generated sources"
+git push
+```
+
 ## Hooks
 
 Hooks are classes that will modify the output of the generator. They should be registered in the
@@ -18,8 +41,8 @@ Hooks are classes that will modify the output of the generator. They should be r
 
   - **TypeBuilderHook**  
     A hook that can intercept the TypeBuilder which converts OpenAPI schemas to Kotlin types. It
-    receives the schema and a type path. The path is unique across the whole document and can be used
-    to identified specific properties. This hook is called when generating types for:
+    receives the schema and a type path. The path is unique across the whole document and can be
+    used to identified specific properties. This hook is called when generating types for:
     
       - model properties
       - api operation parameters
@@ -27,9 +50,9 @@ Hooks are classes that will modify the output of the generator. They should be r
       - api operation return types
 
   - **OperationUrlHook**
-    A hook that can request a url function to be added for an API operation. It receives the model for
-    a complete api service and a single operation. If any hook returns `true` the generator will add
-    a special function called `[operation]Url` (like "GetImageUrl") that will return a string
+    A hook that can request a url function to be added for an API operation. It receives the model
+    for a complete api service and a single operation. If any hook returns `true` the generator will
+    add a special function called `[operation]Url` (like "GetImageUrl") that will return a string
     containing the request url. 
 
 ## Phases
