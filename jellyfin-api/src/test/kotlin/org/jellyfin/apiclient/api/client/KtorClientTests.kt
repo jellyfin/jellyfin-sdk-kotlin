@@ -6,11 +6,11 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFails
 
-class KtorClientTests {
+public class KtorClientTests {
 	private fun createClient() = KtorClient("https://demo.jellyfin.org/stable/", null, ClientInfo("Test", "0"), DeviceInfo("test", "test"))
 
 	@Test
-	fun `createPath replaces values`() {
+	public fun `createPath replaces values`() {
 		val instance = createClient()
 		val path = "/test/{one}/{two}/three"
 		val parameters = mapOf(
@@ -23,7 +23,7 @@ class KtorClientTests {
 	}
 
 	@Test
-	fun `createPath removes repeated slashes`() {
+	public fun `createPath removes repeated slashes`() {
 		val instance = createClient()
 		val path = "test/1//2////three"
 
@@ -31,7 +31,7 @@ class KtorClientTests {
 	}
 
 	@Test
-	fun `createPath fails when parameters are missing`() {
+	public fun `createPath fails when parameters are missing`() {
 		val instance = createClient()
 		val path = "/test/{one}/{two}/three"
 		val parameters = mapOf(
@@ -43,7 +43,7 @@ class KtorClientTests {
 	}
 
 	@Test
-	fun `createPath replaces integers`() {
+	public fun `createPath replaces integers`() {
 		val instance = createClient()
 		val path = "/test/{one}/{two}/three"
 		val parameters = mapOf(
@@ -56,7 +56,7 @@ class KtorClientTests {
 	}
 
 	@Test
-	fun `createPath escapes values`() {
+	public fun `createPath escapes values`() {
 		val instance = createClient()
 		val path = "/test/{one}/{two}/three"
 		val parameters = mapOf(
@@ -66,5 +66,18 @@ class KtorClientTests {
 		)
 
 		assertEquals("test/1%2F0/value+with+whitespace/three", instance.createPath(path, parameters))
+	}
+
+	@Test
+	public fun `createPath removes null values`() {
+		val instance = createClient()
+		val path = "/test/{foo}/{bar}/{baz}"
+		val parameters = mapOf(
+			"foo" to "foo",
+			"bar" to null,
+			"baz" to "baz"
+		)
+
+		assertEquals("test/foo/baz", instance.createPath(path, parameters))
 	}
 }
