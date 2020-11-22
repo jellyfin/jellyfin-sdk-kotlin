@@ -5,25 +5,25 @@ import org.jellyfin.apiclient.discovery.JavaNetBroadcastAddressesProvider
 import org.jellyfin.apiclient.model.ClientInfo
 import org.jellyfin.apiclient.model.DeviceInfo
 
-data class JellyfinOptions(
+public data class JellyfinOptions(
 	val discoverBroadcastAddressesProvider: DiscoveryBroadcastAddressesProvider,
 	val clientInfo: ClientInfo?,
 	val deviceInfo: DeviceInfo?
 ) {
-	class Builder {
-		var discoveryBroadcastAddressesProvider: DiscoveryBroadcastAddressesProvider = JavaNetBroadcastAddressesProvider()
-		var clientInfo: ClientInfo? = null
-		var deviceInfo: DeviceInfo? = null
+	public class Builder {
+		public var discoveryBroadcastAddressesProvider: DiscoveryBroadcastAddressesProvider = JavaNetBroadcastAddressesProvider()
+		public var clientInfo: ClientInfo? = null
+		public var deviceInfo: DeviceInfo? = null
 
-		fun build() = JellyfinOptions(
+		public fun build(): JellyfinOptions = JellyfinOptions(
 			discoveryBroadcastAddressesProvider,
 			clientInfo,
 			deviceInfo
 		)
 	}
 
-	companion object {
-		fun build(init: Builder.() -> Unit)= Builder().run {
+	public companion object {
+		public fun build(init: Builder.() -> Unit): JellyfinOptions = Builder().run {
 			init()
 			build()
 		}

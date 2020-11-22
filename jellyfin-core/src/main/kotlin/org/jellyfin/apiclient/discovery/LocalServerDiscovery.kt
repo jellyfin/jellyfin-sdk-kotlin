@@ -1,6 +1,7 @@
 package org.jellyfin.apiclient.discovery
 
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.isActive
 import kotlinx.serialization.SerializationException
@@ -19,15 +20,15 @@ import java.net.SocketTimeoutException
  * Use the [discover] function to retrieve a flow of servers until the timeout is exceeded or
  * the maximum amount of servers has been retrieved.
  */
-class LocalServerDiscovery(
+public class LocalServerDiscovery(
 	private val discoveryBroadcastAddressesProvider: DiscoveryBroadcastAddressesProvider = JavaNetBroadcastAddressesProvider()
 ) {
-	companion object {
-		const val DISCOVERY_MESSAGE = "who is JellyfinServer?"
-		const val DISCOVERY_PORT = 7359
-		const val DISCOVERY_RECEIVE_BUFFER = 1024 // bytes
-		const val DISCOVERY_TIMEOUT = 30 // seconds
-		const val DISCOVERY_MAX_SERVERS = 15
+	public companion object {
+		public const val DISCOVERY_MESSAGE: String = "who is JellyfinServer?"
+		public const val DISCOVERY_PORT: Int = 7359
+		public const val DISCOVERY_RECEIVE_BUFFER: Int = 1024 // bytes
+		public const val DISCOVERY_TIMEOUT: Int = 30 // seconds
+		public const val DISCOVERY_MAX_SERVERS: Int = 15
 	}
 
 	private val logger = LoggerFactory.getLogger("LocalServerDiscovery")
@@ -83,10 +84,10 @@ class LocalServerDiscovery(
 	/**
 	 * Discover servers on the local network
 	 */
-	fun discover(
+	public fun discover(
 		timeout: Int = DISCOVERY_TIMEOUT,
 		maxServers: Int = DISCOVERY_MAX_SERVERS
-	) = flow {
+	): Flow<DiscoveryServerInfo> = flow {
 		logger.info("Starting discovery with timeout of ${timeout}ms")
 
 		val socket = DatagramSocket().apply {

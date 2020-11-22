@@ -3,11 +3,11 @@ package org.jellyfin.apiclient.discovery
 import org.jellyfin.apiclient.Jellyfin
 import kotlin.test.Test
 
-class DiscoveryServiceTests {
+public class DiscoveryServiceTests {
 	private fun getInstance() = DiscoveryService(Jellyfin {}, MockDiscoveryBroadcastAddressesProvider())
 
 	@Test
-	fun `getAddressCandidates prefers https`() {
+	public fun `getAddressCandidates prefers https`() {
 		val instance = getInstance()
 
 		assert(instance.getAddressCandidates("demo.jellyfin.org:433/stable/").first().startsWith("https://"))
@@ -15,7 +15,7 @@ class DiscoveryServiceTests {
 	}
 
 	@Test
-	fun `getAddressCandidates adds Jellyfin ports`() {
+	public fun `getAddressCandidates adds Jellyfin ports`() {
 		val instance = getInstance()
 
 		assert(instance.getAddressCandidates("localhost").contains("http://localhost:8096"))
@@ -23,7 +23,7 @@ class DiscoveryServiceTests {
 	}
 
 	@Test
-	fun `getAddressCandidates accepts hostnames`() {
+	public fun `getAddressCandidates accepts hostnames`() {
 		val instance = getInstance()
 
 		assert(instance.getAddressCandidates("localhost").contains("http://localhost"))
@@ -33,7 +33,7 @@ class DiscoveryServiceTests {
 	}
 
 	@Test
-	fun `getAddressCandidates accepts ipv4 addresses`() {
+	public fun `getAddressCandidates accepts ipv4 addresses`() {
 		val instance = getInstance()
 
 		assert(instance.getAddressCandidates("127.0.0.1").contains("http://127.0.0.1"))
@@ -42,7 +42,7 @@ class DiscoveryServiceTests {
 	}
 
 	@Test
-	fun `getAddressCandidates accepts ipv6 addresses`() {
+	public fun `getAddressCandidates accepts ipv6 addresses`() {
 		val instance = getInstance()
 
 		assert(instance.getAddressCandidates("[::1]").contains("http://[::1]"))
@@ -52,7 +52,7 @@ class DiscoveryServiceTests {
 	}
 
 	@Test
-	fun `getAddressCandidates fails on bad input`() {
+	public fun `getAddressCandidates fails on bad input`() {
 		val instance = getInstance()
 
 		assert(instance.getAddressCandidates("::").isEmpty())
