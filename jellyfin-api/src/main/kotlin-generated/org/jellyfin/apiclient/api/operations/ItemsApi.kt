@@ -16,8 +16,12 @@ import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.ImageType
+import org.jellyfin.apiclient.model.api.ItemFields
 import org.jellyfin.apiclient.model.api.ItemFilter
 import org.jellyfin.apiclient.model.api.LocationType
+import org.jellyfin.apiclient.model.api.SeriesStatus
+import org.jellyfin.apiclient.model.api.VideoType
 
 public class ItemsApi(
 	private val api: KtorClient
@@ -25,7 +29,6 @@ public class ItemsApi(
 	/**
 	 * Gets items based on a query.
 	 *
-	 * @param uId The user id supplied in the /Users/{uid}/Items.
 	 * @param userId The user id supplied as query parameter.
 	 * @param maxOfficialRating Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
 	 * @param hasThemeSong Optional filter by items with theme songs.
@@ -39,9 +42,9 @@ public class ItemsApi(
 	 * @param isHd Optional filter by items that are HD or not.
 	 * @param is4k Optional filter by items that are 4K or not.
 	 * @param locationTypes Optional. If specified, results will be filtered based on LocationType.
-	 * This allows multiple, comma delimeted.
+	 * This allows multiple, comma delimited.
 	 * @param excludeLocationTypes Optional. If specified, results will be filtered based on the
-	 * LocationType. This allows multiple, comma delimeted.
+	 * LocationType. This allows multiple, comma delimited.
 	 * @param isMissing Optional filter by items that are missing episodes or not.
 	 * @param isUnaired Optional filter by items that are unaired episodes or not.
 	 * @param minCommunityRating Optional filter by minimum community rating.
@@ -55,8 +58,8 @@ public class ItemsApi(
 	 * @param hasImdbId Optional filter by items that have an imdb id or not.
 	 * @param hasTmdbId Optional filter by items that have a tmdb id or not.
 	 * @param hasTvdbId Optional filter by items that have a tvdb id or not.
-	 * @param excludeItemIds Optional. If specified, results will be filtered by exxcluding item ids.
-	 * This allows multiple, comma delimeted.
+	 * @param excludeItemIds Optional. If specified, results will be filtered by excluding item ids.
+	 * This allows multiple, comma delimited.
 	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
 	 * dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
@@ -67,32 +70,32 @@ public class ItemsApi(
 	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use
 	 * the root.
 	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
+	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines.
 	 * @param excludeItemTypes Optional. If specified, results will be filtered based on item type.
-	 * This allows multiple, comma delimeted.
+	 * This allows multiple, comma delimited.
 	 * @param includeItemTypes Optional. If specified, results will be filtered based on the item type.
-	 * This allows multiple, comma delimeted.
+	 * This allows multiple, comma delimited.
 	 * @param filters Optional. Specify additional filters to apply. This allows multiple, comma
-	 * delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes,
+	 * delimited. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes,
 	 * Dislikes.
 	 * @param isFavorite Optional filter by items that are marked as favorite, or not.
 	 * @param mediaTypes Optional filter by MediaType. Allows multiple, comma delimited.
 	 * @param imageTypes Optional. If specified, results will be filtered based on those containing
 	 * image types. This allows multiple, comma delimited.
-	 * @param sortBy Optional. Specify one or more sort orders, comma delimeted. Options: Album,
+	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album,
 	 * AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount,
 	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 * @param isPlayed Optional filter by items that are played, or not.
 	 * @param genres Optional. If specified, results will be filtered based on genre. This allows
-	 * multiple, pipe delimeted.
+	 * multiple, pipe delimited.
 	 * @param officialRatings Optional. If specified, results will be filtered based on OfficialRating.
-	 * This allows multiple, pipe delimeted.
+	 * This allows multiple, pipe delimited.
 	 * @param tags Optional. If specified, results will be filtered based on tag. This allows multiple,
-	 * pipe delimeted.
+	 * pipe delimited.
 	 * @param years Optional. If specified, results will be filtered based on production year. This
-	 * allows multiple, comma delimeted.
+	 * allows multiple, comma delimited.
 	 * @param enableUserData Optional, include user data.
 	 * @param imageTypeLimit Optional, the max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
@@ -104,11 +107,11 @@ public class ItemsApi(
 	 * include only those containing the specified person and PersonType. Allows multiple,
 	 * comma-delimited.
 	 * @param studios Optional. If specified, results will be filtered based on studio. This allows
-	 * multiple, pipe delimeted.
+	 * multiple, pipe delimited.
 	 * @param artists Optional. If specified, results will be filtered based on artists. This allows
-	 * multiple, pipe delimeted.
+	 * multiple, pipe delimited.
 	 * @param excludeArtistIds Optional. If specified, results will be filtered based on artist id.
-	 * This allows multiple, pipe delimeted.
+	 * This allows multiple, pipe delimited.
 	 * @param artistIds Optional. If specified, results will be filtered to include only those
 	 * containing the specified artist id.
 	 * @param albumArtistIds Optional. If specified, results will be filtered to include only those
@@ -116,13 +119,13 @@ public class ItemsApi(
 	 * @param contributingArtistIds Optional. If specified, results will be filtered to include only
 	 * those containing the specified contributing artist id.
 	 * @param albums Optional. If specified, results will be filtered based on album. This allows
-	 * multiple, pipe delimeted.
+	 * multiple, pipe delimited.
 	 * @param albumIds Optional. If specified, results will be filtered based on album id. This allows
-	 * multiple, pipe delimeted.
+	 * multiple, pipe delimited.
 	 * @param ids Optional. If specific items are needed, specify a list of item id's to retrieve. This
 	 * allows multiple, comma delimited.
 	 * @param videoTypes Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple,
-	 * comma delimeted.
+	 * comma delimited.
 	 * @param minOfficialRating Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
 	 * @param isLocked Optional filter by items that are locked.
 	 * @param isPlaceHolder Optional filter by items that are placeholders.
@@ -133,7 +136,7 @@ public class ItemsApi(
 	 * @param maxWidth Optional. Filter by the maximum width of the item.
 	 * @param maxHeight Optional. Filter by the maximum height of the item.
 	 * @param is3d Optional filter by items that are 3D, or not.
-	 * @param seriesStatus Optional filter by Series Status. Allows multiple, comma delimeted.
+	 * @param seriesStatus Optional filter by Series Status. Allows multiple, comma delimited.
 	 * @param nameStartsWithOrGreater Optional filter by items whose name is sorted equally or greater
 	 * than a given input string.
 	 * @param nameStartsWith Optional filter by items whose name is sorted equally than a given input
@@ -141,14 +144,13 @@ public class ItemsApi(
 	 * @param nameLessThan Optional filter by items whose name is equally or lesser than a given input
 	 * string.
 	 * @param studioIds Optional. If specified, results will be filtered based on studio id. This
-	 * allows multiple, pipe delimeted.
+	 * allows multiple, pipe delimited.
 	 * @param genreIds Optional. If specified, results will be filtered based on genre id. This allows
-	 * multiple, pipe delimeted.
+	 * multiple, pipe delimited.
 	 * @param enableTotalRecordCount Optional. Enable the total record count.
 	 * @param enableImages Optional, include image information in output.
 	 */
 	public suspend fun getItems(
-		uId: UUID? = null,
 		userId: UUID? = null,
 		maxOfficialRating: String? = null,
 		hasThemeSong: Boolean? = null,
@@ -161,7 +163,7 @@ public class ItemsApi(
 		hasParentalRating: Boolean? = null,
 		isHd: Boolean? = null,
 		is4k: Boolean? = null,
-		locationTypes: String? = null,
+		locationTypes: List<LocationType>? = emptyList(),
 		excludeLocationTypes: List<LocationType>? = emptyList(),
 		isMissing: Boolean? = null,
 		isUnaired: Boolean? = null,
@@ -175,42 +177,42 @@ public class ItemsApi(
 		hasImdbId: Boolean? = null,
 		hasTmdbId: Boolean? = null,
 		hasTvdbId: Boolean? = null,
-		excludeItemIds: String? = null,
+		excludeItemIds: List<UUID>? = emptyList(),
 		startIndex: Int? = null,
 		limit: Int? = null,
 		recursive: Boolean? = null,
 		searchTerm: String? = null,
 		sortOrder: String? = null,
 		parentId: String? = null,
-		fields: String? = null,
-		excludeItemTypes: String? = null,
-		includeItemTypes: String? = null,
+		fields: List<ItemFields>? = emptyList(),
+		excludeItemTypes: List<String>? = emptyList(),
+		includeItemTypes: List<String>? = emptyList(),
 		filters: List<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
-		mediaTypes: String? = null,
-		imageTypes: String? = null,
+		mediaTypes: List<String>? = emptyList(),
+		imageTypes: List<ImageType>? = emptyList(),
 		sortBy: String? = null,
 		isPlayed: Boolean? = null,
-		genres: String? = null,
-		officialRatings: String? = null,
-		tags: String? = null,
-		years: String? = null,
+		genres: List<String>? = emptyList(),
+		officialRatings: List<String>? = emptyList(),
+		tags: List<String>? = emptyList(),
+		years: List<Int>? = emptyList(),
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
 		person: String? = null,
-		personIds: String? = null,
-		personTypes: String? = null,
-		studios: String? = null,
-		artists: String? = null,
-		excludeArtistIds: String? = null,
-		artistIds: String? = null,
-		albumArtistIds: String? = null,
-		contributingArtistIds: String? = null,
-		albums: String? = null,
-		albumIds: String? = null,
-		ids: String? = null,
-		videoTypes: String? = null,
+		personIds: List<UUID>? = emptyList(),
+		personTypes: List<String>? = emptyList(),
+		studios: List<String>? = emptyList(),
+		artists: List<String>? = emptyList(),
+		excludeArtistIds: List<UUID>? = emptyList(),
+		artistIds: List<UUID>? = emptyList(),
+		albumArtistIds: List<UUID>? = emptyList(),
+		contributingArtistIds: List<UUID>? = emptyList(),
+		albums: List<String>? = emptyList(),
+		albumIds: List<UUID>? = emptyList(),
+		ids: List<UUID>? = emptyList(),
+		videoTypes: List<VideoType>? = emptyList(),
 		minOfficialRating: String? = null,
 		isLocked: Boolean? = null,
 		isPlaceHolder: Boolean? = null,
@@ -221,17 +223,16 @@ public class ItemsApi(
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		is3d: Boolean? = null,
-		seriesStatus: String? = null,
+		seriesStatus: List<SeriesStatus>? = emptyList(),
 		nameStartsWithOrGreater: String? = null,
 		nameStartsWith: String? = null,
 		nameLessThan: String? = null,
-		studioIds: String? = null,
-		genreIds: String? = null,
+		studioIds: List<UUID>? = emptyList(),
+		genreIds: List<UUID>? = emptyList(),
 		enableTotalRecordCount: Boolean = true,
 		enableImages: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["uId"] = uId
+		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["userId"] = userId
 		queryParameters["maxOfficialRating"] = maxOfficialRating
@@ -321,7 +322,6 @@ public class ItemsApi(
 	/**
 	 * Gets items based on a query.
 	 *
-	 * @param uId The user id supplied in the /Users/{uid}/Items.
 	 * @param userId The user id supplied as query parameter.
 	 * @param maxOfficialRating Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
 	 * @param hasThemeSong Optional filter by items with theme songs.
@@ -443,9 +443,8 @@ public class ItemsApi(
 	 * @param enableTotalRecordCount Optional. Enable the total record count.
 	 * @param enableImages Optional, include image information in output.
 	 */
-	public suspend fun getItems2(
-		uId: UUID? = null,
-		userId: UUID? = null,
+	public suspend fun getItemsByUserId(
+		userId: UUID,
 		maxOfficialRating: String? = null,
 		hasThemeSong: Boolean? = null,
 		hasThemeVideo: Boolean? = null,
@@ -457,7 +456,7 @@ public class ItemsApi(
 		hasParentalRating: Boolean? = null,
 		isHd: Boolean? = null,
 		is4k: Boolean? = null,
-		locationTypes: String? = null,
+		locationTypes: List<LocationType>? = emptyList(),
 		excludeLocationTypes: List<LocationType>? = emptyList(),
 		isMissing: Boolean? = null,
 		isUnaired: Boolean? = null,
@@ -471,42 +470,42 @@ public class ItemsApi(
 		hasImdbId: Boolean? = null,
 		hasTmdbId: Boolean? = null,
 		hasTvdbId: Boolean? = null,
-		excludeItemIds: String? = null,
+		excludeItemIds: List<UUID>? = emptyList(),
 		startIndex: Int? = null,
 		limit: Int? = null,
 		recursive: Boolean? = null,
 		searchTerm: String? = null,
 		sortOrder: String? = null,
 		parentId: String? = null,
-		fields: String? = null,
-		excludeItemTypes: String? = null,
-		includeItemTypes: String? = null,
+		fields: List<ItemFields>? = emptyList(),
+		excludeItemTypes: List<String>? = emptyList(),
+		includeItemTypes: List<String>? = emptyList(),
 		filters: List<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
-		mediaTypes: String? = null,
-		imageTypes: String? = null,
+		mediaTypes: List<String>? = emptyList(),
+		imageTypes: List<ImageType>? = emptyList(),
 		sortBy: String? = null,
 		isPlayed: Boolean? = null,
-		genres: String? = null,
-		officialRatings: String? = null,
-		tags: String? = null,
-		years: String? = null,
+		genres: List<String>? = emptyList(),
+		officialRatings: List<String>? = emptyList(),
+		tags: List<String>? = emptyList(),
+		years: List<Int>? = emptyList(),
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
 		person: String? = null,
-		personIds: String? = null,
-		personTypes: String? = null,
-		studios: String? = null,
-		artists: String? = null,
-		excludeArtistIds: String? = null,
-		artistIds: String? = null,
-		albumArtistIds: String? = null,
-		contributingArtistIds: String? = null,
-		albums: String? = null,
-		albumIds: String? = null,
-		ids: String? = null,
-		videoTypes: String? = null,
+		personIds: List<UUID>? = emptyList(),
+		personTypes: List<String>? = emptyList(),
+		studios: List<String>? = emptyList(),
+		artists: List<String>? = emptyList(),
+		excludeArtistIds: List<UUID>? = emptyList(),
+		artistIds: List<UUID>? = emptyList(),
+		albumArtistIds: List<UUID>? = emptyList(),
+		contributingArtistIds: List<UUID>? = emptyList(),
+		albums: List<String>? = emptyList(),
+		albumIds: List<UUID>? = emptyList(),
+		ids: List<UUID>? = emptyList(),
+		videoTypes: List<VideoType>? = emptyList(),
 		minOfficialRating: String? = null,
 		isLocked: Boolean? = null,
 		isPlaceHolder: Boolean? = null,
@@ -517,19 +516,18 @@ public class ItemsApi(
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		is3d: Boolean? = null,
-		seriesStatus: String? = null,
+		seriesStatus: List<SeriesStatus>? = emptyList(),
 		nameStartsWithOrGreater: String? = null,
 		nameStartsWith: String? = null,
 		nameLessThan: String? = null,
-		studioIds: String? = null,
-		genreIds: String? = null,
+		studioIds: List<UUID>? = emptyList(),
+		genreIds: List<UUID>? = emptyList(),
 		enableTotalRecordCount: Boolean = true,
 		enableImages: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["uId"] = uId
+		pathParameters["userId"] = userId
 		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
 		queryParameters["maxOfficialRating"] = maxOfficialRating
 		queryParameters["hasThemeSong"] = hasThemeSong
 		queryParameters["hasThemeVideo"] = hasThemeVideo
@@ -610,7 +608,7 @@ public class ItemsApi(
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		queryParameters["enableImages"] = enableImages
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Users/{uId}/Items", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Users/{userId}/Items", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -625,7 +623,7 @@ public class ItemsApi(
 	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use
 	 * the root.
 	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
+	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines.
 	 * @param mediaTypes Optional. Filter by MediaType. Allows multiple, comma delimited.
@@ -633,9 +631,9 @@ public class ItemsApi(
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 * @param excludeItemTypes Optional. If specified, results will be filtered based on item type.
-	 * This allows multiple, comma delimeted.
+	 * This allows multiple, comma delimited.
 	 * @param includeItemTypes Optional. If specified, results will be filtered based on the item type.
-	 * This allows multiple, comma delimeted.
+	 * This allows multiple, comma delimited.
 	 * @param enableTotalRecordCount Optional. Enable the total record count.
 	 * @param enableImages Optional. Include image information in output.
 	 */
@@ -645,13 +643,13 @@ public class ItemsApi(
 		limit: Int? = null,
 		searchTerm: String? = null,
 		parentId: String? = null,
-		fields: String? = null,
-		mediaTypes: String? = null,
+		fields: List<ItemFields>? = emptyList(),
+		mediaTypes: List<String>? = emptyList(),
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
-		excludeItemTypes: String? = null,
-		includeItemTypes: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
+		excludeItemTypes: List<String>? = emptyList(),
+		includeItemTypes: List<String>? = emptyList(),
 		enableTotalRecordCount: Boolean = true,
 		enableImages: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {

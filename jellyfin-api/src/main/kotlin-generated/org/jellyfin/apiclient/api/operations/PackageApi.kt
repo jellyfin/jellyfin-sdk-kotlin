@@ -97,4 +97,14 @@ public class PackageApi(
 				data)
 		return response
 	}
+
+	/**
+	 * Sets the enabled and existing package repositories.
+	 */
+	public suspend fun setRepositories(`data`: List<RepositoryInfo>?): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Repositories", pathParameters, queryParameters, data)
+		return response
+	}
 }

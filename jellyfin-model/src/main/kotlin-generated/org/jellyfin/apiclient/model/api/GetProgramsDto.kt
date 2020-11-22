@@ -15,6 +15,7 @@ import java.util.UUID
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
@@ -30,7 +31,7 @@ public data class GetProgramsDto(
 	 * Gets or sets the channels to return guide information for.
 	 */
 	@SerialName("ChannelIds")
-	public val channelIds: String? = null,
+	public val channelIds: List<UUID>? = null,
 	/**
 	 * Gets or sets optional. Filter by user id.
 	 */
@@ -130,12 +131,12 @@ public data class GetProgramsDto(
 	 * Gets or sets the genres to return guide information for.
 	 */
 	@SerialName("Genres")
-	public val genres: String? = null,
+	public val genres: List<String>? = null,
 	/**
 	 * Gets or sets the genre ids to return guide information for.
 	 */
 	@SerialName("GenreIds")
-	public val genreIds: String? = null,
+	public val genreIds: List<UUID>? = null,
 	/**
 	 * Gets or sets include image information in output.
 	 * Optional.
@@ -158,7 +159,7 @@ public data class GetProgramsDto(
 	 * Optional.
 	 */
 	@SerialName("EnableImageTypes")
-	public val enableImageTypes: String? = null,
+	public val enableImageTypes: List<ImageType>? = null,
 	/**
 	 * Gets or sets include user data.
 	 * Optional.
@@ -185,5 +186,5 @@ public data class GetProgramsDto(
 	 * Optional.
 	 */
 	@SerialName("Fields")
-	public val fields: String? = null
+	public val fields: List<ItemFields>? = null
 )

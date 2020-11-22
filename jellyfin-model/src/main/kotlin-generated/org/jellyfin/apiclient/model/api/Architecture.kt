@@ -18,4 +18,6 @@ public enum class Architecture {
 	ARM,
 	@SerialName("Arm64")
 	ARM_64,
+	@SerialName("Wasm")
+	WASM,
 }

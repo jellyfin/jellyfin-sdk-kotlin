@@ -5,23 +5,16 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
-import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Defines the MediaBrowser.Model.Configuration.PathSubstitution.
+ * Enum SeriesStatus.
  */
 @Serializable
-public data class PathSubstitution(
-	/**
-	 * Gets or sets the value to substitute.
-	 */
-	@SerialName("From")
-	public val from: String? = null,
-	/**
-	 * Gets or sets the value to substitution with.
-	 */
-	@SerialName("To")
-	public val to: String? = null
-)
+public enum class SeriesStatus {
+	@SerialName("Continuing")
+	CONTINUING,
+	@SerialName("Ended")
+	ENDED,
+}

@@ -14,6 +14,7 @@ import kotlin.Int
 import kotlin.Long
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.List
 import kotlin.collections.Map
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
@@ -93,9 +94,9 @@ public class VideosApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	public suspend fun getVideoStreamWithExt(
+	public suspend fun getVideoStreamByContainer(
 		itemId: UUID,
-		container: String? = null,
+		container: String,
 		stream: String,
 		static: Boolean? = null,
 		params: String? = null,
@@ -272,9 +273,9 @@ public class VideosApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 */
-	public fun getVideoStreamWithExtUrl(
+	public fun getVideoStreamByContainerUrl(
 		itemId: UUID,
-		container: String? = null,
+		container: String,
 		stream: String,
 		static: Boolean? = null,
 		params: String? = null,
@@ -425,7 +426,7 @@ public class VideosApi(
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
 	 * @param playSessionId The play session id.
 	 * @param segmentContainer The segment container.
-	 * @param segmentLength The segment lenght.
+	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
@@ -465,7 +466,7 @@ public class VideosApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -534,8 +535,8 @@ public class VideosApi(
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
-		pathParameters["container"] = container
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["container"] = container
 		queryParameters["static"] = static
 		queryParameters["params"] = params
 		queryParameters["tag"] = tag
@@ -602,7 +603,7 @@ public class VideosApi(
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
 	 * @param playSessionId The play session id.
 	 * @param segmentContainer The segment container.
-	 * @param segmentLength The segment lenght.
+	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
@@ -642,7 +643,7 @@ public class VideosApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -711,8 +712,8 @@ public class VideosApi(
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
-		pathParameters["container"] = container
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["container"] = container
 		queryParameters["static"] = static
 		queryParameters["params"] = params
 		queryParameters["tag"] = tag
@@ -768,7 +769,7 @@ public class VideosApi(
 	 *
 	 * @param itemIds Item id list. This allows multiple, comma delimited.
 	 */
-	public suspend fun mergeVersions(itemIds: String): Response<Unit> {
+	public suspend fun mergeVersions(itemIds: List<UUID> = emptyList()): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["itemIds"] = itemIds

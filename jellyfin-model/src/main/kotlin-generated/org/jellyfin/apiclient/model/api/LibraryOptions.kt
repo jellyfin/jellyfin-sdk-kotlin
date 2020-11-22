@@ -22,8 +22,6 @@ public data class LibraryOptions(
 	public val enableChapterImageExtraction: Boolean,
 	@SerialName("ExtractChapterImagesDuringLibraryScan")
 	public val extractChapterImagesDuringLibraryScan: Boolean,
-	@SerialName("DownloadImagesInAdvance")
-	public val downloadImagesInAdvance: Boolean,
 	@SerialName("PathInfos")
 	public val pathInfos: List<MediaPathInfo>? = null,
 	@SerialName("SaveLocalMetadata")

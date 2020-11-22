@@ -62,7 +62,7 @@ public class MediaInfoApi(
 	public suspend fun getPostedPlaybackInfo(
 		itemId: UUID,
 		userId: UUID? = null,
-		maxStreamingBitrate: Long? = null,
+		maxStreamingBitrate: Int? = null,
 		startTimeTicks: Long? = null,
 		audioStreamIndex: Int? = null,
 		subtitleStreamIndex: Int? = null,
@@ -132,7 +132,7 @@ public class MediaInfoApi(
 		openToken: String? = null,
 		userId: UUID? = null,
 		playSessionId: String? = null,
-		maxStreamingBitrate: Long? = null,
+		maxStreamingBitrate: Int? = null,
 		startTimeTicks: Long? = null,
 		audioStreamIndex: Int? = null,
 		subtitleStreamIndex: Int? = null,

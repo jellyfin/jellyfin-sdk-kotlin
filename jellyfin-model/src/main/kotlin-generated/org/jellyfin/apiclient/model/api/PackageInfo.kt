@@ -50,15 +50,5 @@ public data class PackageInfo(
 	 * Gets or sets the versions.
 	 */
 	@SerialName("versions")
-	public val versions: List<VersionInfo>? = null,
-	/**
-	 * Gets or sets the repository name.
-	 */
-	@SerialName("repositoryName")
-	public val repositoryName: String? = null,
-	/**
-	 * Gets or sets the repository url.
-	 */
-	@SerialName("repositoryUrl")
-	public val repositoryUrl: String? = null
+	public val versions: List<VersionInfo>? = null
 )

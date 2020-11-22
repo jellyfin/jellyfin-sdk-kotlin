@@ -10,9 +10,12 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.ImageType
+import org.jellyfin.apiclient.model.api.ItemFields
 
 public class InstantMixApi(
 	private val api: KtorClient
@@ -23,10 +26,7 @@ public class InstantMixApi(
 	 * @param id The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableImages Optional. Include image information in output.
 	 * @param enableUserData Optional. Include user data.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
@@ -36,11 +36,11 @@ public class InstantMixApi(
 		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: String? = null,
+		fields: List<ItemFields>? = emptyList(),
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null
+		enableImageTypes: List<ImageType>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["id"] = id
@@ -64,10 +64,7 @@ public class InstantMixApi(
 	 * @param id The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableImages Optional. Include image information in output.
 	 * @param enableUserData Optional. Include user data.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
@@ -77,11 +74,11 @@ public class InstantMixApi(
 		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: String? = null,
+		fields: List<ItemFields>? = emptyList(),
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null
+		enableImageTypes: List<ImageType>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["id"] = id
@@ -94,7 +91,7 @@ public class InstantMixApi(
 		queryParameters["imageTypeLimit"] = imageTypeLimit
 		queryParameters["enableImageTypes"] = enableImageTypes
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/InstantMix", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/{id}/InstantMix", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -105,10 +102,7 @@ public class InstantMixApi(
 	 * @param id The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableImages Optional. Include image information in output.
 	 * @param enableUserData Optional. Include user data.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
@@ -118,11 +112,11 @@ public class InstantMixApi(
 		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: String? = null,
+		fields: List<ItemFields>? = emptyList(),
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null
+		enableImageTypes: List<ImageType>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["id"] = id
@@ -143,13 +137,48 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given song.
 	 *
+	 * @param id The item id.
+	 * @param userId Optional. Filter by user id, and attach user data.
+	 * @param limit Optional. The maximum number of records to return.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
+	 * @param enableImages Optional. Include image information in output.
+	 * @param enableUserData Optional. Include user data.
+	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
+	 * @param enableImageTypes Optional. The image types to include in the output.
+	 */
+	public suspend fun getInstantMixFromMusicGenres(
+		id: UUID,
+		userId: UUID? = null,
+		limit: Int? = null,
+		fields: List<ItemFields>? = emptyList(),
+		enableImages: Boolean? = null,
+		enableUserData: Boolean? = null,
+		imageTypeLimit: Int? = null,
+		enableImageTypes: List<ImageType>? = emptyList()
+	): Response<BaseItemDtoQueryResult> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["id"] = id
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["userId"] = userId
+		queryParameters["limit"] = limit
+		queryParameters["fields"] = fields
+		queryParameters["enableImages"] = enableImages
+		queryParameters["enableUserData"] = enableUserData
+		queryParameters["imageTypeLimit"] = imageTypeLimit
+		queryParameters["enableImageTypes"] = enableImageTypes
+		val data = null
+		val response = api.`get`<BaseItemDtoQueryResult>("/MusicGenres/{id}/InstantMix", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Creates an instant playlist based on a given song.
+	 *
 	 * @param name The genre name.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableImages Optional. Include image information in output.
 	 * @param enableUserData Optional. Include user data.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
@@ -159,11 +188,11 @@ public class InstantMixApi(
 		name: String,
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: String? = null,
+		fields: List<ItemFields>? = emptyList(),
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null
+		enableImageTypes: List<ImageType>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -187,51 +216,7 @@ public class InstantMixApi(
 	 * @param id The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
-	 * @param enableImages Optional. Include image information in output.
-	 * @param enableUserData Optional. Include user data.
-	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
-	 * @param enableImageTypes Optional. The image types to include in the output.
-	 */
-	public suspend fun getInstantMixFromMusicGenres(
-		id: UUID,
-		userId: UUID? = null,
-		limit: Int? = null,
-		fields: String? = null,
-		enableImages: Boolean? = null,
-		enableUserData: Boolean? = null,
-		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null
-	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["id"] = id
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		queryParameters["enableImages"] = enableImages
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
-		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/MusicGenres/InstantMix", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Creates an instant playlist based on a given song.
-	 *
-	 * @param id The item id.
-	 * @param userId Optional. Filter by user id, and attach user data.
-	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableImages Optional. Include image information in output.
 	 * @param enableUserData Optional. Include user data.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
@@ -241,11 +226,11 @@ public class InstantMixApi(
 		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: String? = null,
+		fields: List<ItemFields>? = emptyList(),
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null
+		enableImageTypes: List<ImageType>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["id"] = id
@@ -269,10 +254,7 @@ public class InstantMixApi(
 	 * @param id The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableImages Optional. Include image information in output.
 	 * @param enableUserData Optional. Include user data.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
@@ -282,11 +264,11 @@ public class InstantMixApi(
 		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: String? = null,
+		fields: List<ItemFields>? = emptyList(),
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null
+		enableImageTypes: List<ImageType>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["id"] = id

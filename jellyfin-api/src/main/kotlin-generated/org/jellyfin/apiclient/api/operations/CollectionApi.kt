@@ -10,6 +10,7 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.CollectionCreationResult
@@ -27,7 +28,7 @@ public class CollectionApi(
 	 */
 	public suspend fun createCollection(
 		name: String? = null,
-		ids: String? = null,
+		ids: List<String>? = emptyList(),
 		parentId: UUID? = null,
 		isLocked: Boolean = false
 	): Response<CollectionCreationResult> {
@@ -47,13 +48,14 @@ public class CollectionApi(
 	 * Adds items to a collection.
 	 *
 	 * @param collectionId The collection id.
-	 * @param itemIds Item ids, comma delimited.
+	 * @param ids Item ids, comma delimited.
 	 */
-	public suspend fun addToCollection(collectionId: UUID, itemIds: String): Response<Unit> {
+	public suspend fun addToCollection(collectionId: UUID, ids: List<UUID> = emptyList()):
+			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["collectionId"] = collectionId
 		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["itemIds"] = itemIds
+		queryParameters["ids"] = ids
 		val data = null
 		val response = api.post<Unit>("/Collections/{collectionId}/Items", pathParameters,
 				queryParameters, data)
@@ -64,13 +66,14 @@ public class CollectionApi(
 	 * Removes items from a collection.
 	 *
 	 * @param collectionId The collection id.
-	 * @param itemIds Item ids, comma delimited.
+	 * @param ids Item ids, comma delimited.
 	 */
-	public suspend fun removeFromCollection(collectionId: UUID, itemIds: String): Response<Unit> {
+	public suspend fun removeFromCollection(collectionId: UUID, ids: List<UUID> = emptyList()):
+			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["collectionId"] = collectionId
 		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["itemIds"] = itemIds
+		queryParameters["ids"] = ids
 		val data = null
 		val response = api.delete<Unit>("/Collections/{collectionId}/Items", pathParameters,
 				queryParameters, data)

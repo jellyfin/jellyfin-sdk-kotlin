@@ -16,6 +16,8 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDto
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.ImageType
+import org.jellyfin.apiclient.model.api.ItemFields
 import org.jellyfin.apiclient.model.api.ItemFilter
 
 public class ArtistsApi(
@@ -31,10 +33,7 @@ public class ArtistsApi(
 	 * @param searchTerm Optional. Search term.
 	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use
 	 * the root.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param excludeItemTypes Optional. If specified, results will be filtered out based on item type.
 	 * This allows multiple, comma delimited.
 	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type.
@@ -82,25 +81,25 @@ public class ArtistsApi(
 		limit: Int? = null,
 		searchTerm: String? = null,
 		parentId: String? = null,
-		fields: String? = null,
-		excludeItemTypes: String? = null,
-		includeItemTypes: String? = null,
+		fields: List<ItemFields>? = emptyList(),
+		excludeItemTypes: List<String>? = emptyList(),
+		includeItemTypes: List<String>? = emptyList(),
 		filters: List<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
-		mediaTypes: String? = null,
-		genres: String? = null,
-		genreIds: String? = null,
-		officialRatings: String? = null,
-		tags: String? = null,
-		years: String? = null,
+		mediaTypes: List<String>? = emptyList(),
+		genres: List<String>? = emptyList(),
+		genreIds: List<UUID>? = emptyList(),
+		officialRatings: List<String>? = emptyList(),
+		tags: List<String>? = emptyList(),
+		years: List<Int>? = emptyList(),
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
 		person: String? = null,
-		personIds: String? = null,
-		personTypes: String? = null,
-		studios: String? = null,
-		studioIds: String? = null,
+		personIds: List<UUID>? = emptyList(),
+		personTypes: List<String>? = emptyList(),
+		studios: List<String>? = emptyList(),
+		studioIds: List<UUID>? = emptyList(),
 		userId: UUID? = null,
 		nameStartsWithOrGreater: String? = null,
 		nameStartsWith: String? = null,
@@ -172,10 +171,7 @@ public class ArtistsApi(
 	 * @param searchTerm Optional. Search term.
 	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use
 	 * the root.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param excludeItemTypes Optional. If specified, results will be filtered out based on item type.
 	 * This allows multiple, comma delimited.
 	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type.
@@ -223,25 +219,25 @@ public class ArtistsApi(
 		limit: Int? = null,
 		searchTerm: String? = null,
 		parentId: String? = null,
-		fields: String? = null,
-		excludeItemTypes: String? = null,
-		includeItemTypes: String? = null,
+		fields: List<ItemFields>? = emptyList(),
+		excludeItemTypes: List<String>? = emptyList(),
+		includeItemTypes: List<String>? = emptyList(),
 		filters: List<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
-		mediaTypes: String? = null,
-		genres: String? = null,
-		genreIds: String? = null,
-		officialRatings: String? = null,
-		tags: String? = null,
-		years: String? = null,
+		mediaTypes: List<String>? = emptyList(),
+		genres: List<String>? = emptyList(),
+		genreIds: List<UUID>? = emptyList(),
+		officialRatings: List<String>? = emptyList(),
+		tags: List<String>? = emptyList(),
+		years: List<Int>? = emptyList(),
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
 		person: String? = null,
-		personIds: String? = null,
-		personTypes: String? = null,
-		studios: String? = null,
-		studioIds: String? = null,
+		personIds: List<UUID>? = emptyList(),
+		personTypes: List<String>? = emptyList(),
+		studios: List<String>? = emptyList(),
+		studioIds: List<UUID>? = emptyList(),
 		userId: UUID? = null,
 		nameStartsWithOrGreater: String? = null,
 		nameStartsWith: String? = null,

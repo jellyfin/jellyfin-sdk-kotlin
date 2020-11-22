@@ -11,10 +11,13 @@ import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.CreatePlaylistDto
+import org.jellyfin.apiclient.model.api.ImageType
+import org.jellyfin.apiclient.model.api.ItemFields
 import org.jellyfin.apiclient.model.api.PlaylistCreationResult
 
 public class PlaylistsApi(
@@ -39,10 +42,7 @@ public class PlaylistsApi(
 	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
 	 * dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableImages Optional. Include image information in output.
 	 * @param enableUserData Optional. Include user data.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
@@ -53,11 +53,11 @@ public class PlaylistsApi(
 		userId: UUID,
 		startIndex: Int? = null,
 		limit: Int? = null,
-		fields: String? = null,
+		fields: List<ItemFields>? = emptyList(),
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null
+		enableImageTypes: List<ImageType>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["playlistId"] = playlistId
@@ -85,7 +85,7 @@ public class PlaylistsApi(
 	 */
 	public suspend fun addToPlaylist(
 		playlistId: UUID,
-		ids: String? = null,
+		ids: List<UUID>? = emptyList(),
 		userId: UUID? = null
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -105,7 +105,7 @@ public class PlaylistsApi(
 	 * @param playlistId The playlist id.
 	 * @param entryIds The item ids, comma delimited.
 	 */
-	public suspend fun removeFromPlaylist(playlistId: String, entryIds: String? = null):
+	public suspend fun removeFromPlaylist(playlistId: String, entryIds: List<String>? = emptyList()):
 			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["playlistId"] = playlistId

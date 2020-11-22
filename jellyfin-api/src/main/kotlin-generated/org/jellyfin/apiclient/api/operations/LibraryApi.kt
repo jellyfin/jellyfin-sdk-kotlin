@@ -20,6 +20,7 @@ import org.jellyfin.apiclient.model.api.AllThemeMediaResult
 import org.jellyfin.apiclient.model.api.BaseItemDto
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.ItemCounts
+import org.jellyfin.apiclient.model.api.ItemFields
 import org.jellyfin.apiclient.model.api.LibraryOptionsResultDto
 import org.jellyfin.apiclient.model.api.MediaUpdateInfoDto
 import org.jellyfin.apiclient.model.api.ThemeMediaResult
@@ -32,7 +33,7 @@ public class LibraryApi(
 	 *
 	 * @param ids The item ids.
 	 */
-	public suspend fun deleteItems(ids: String? = null): Response<Unit> {
+	public suspend fun deleteItems(ids: List<String>? = emptyList()): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["ids"] = ids
@@ -67,12 +68,12 @@ public class LibraryApi(
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
-	public suspend fun getSimilarAlbums2(
+	public suspend fun getSimilarAlbums(
 		itemId: UUID,
-		excludeArtistIds: String? = null,
+		excludeArtistIds: List<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: String? = null
+		fields: List<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -99,12 +100,12 @@ public class LibraryApi(
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
-	public suspend fun getSimilarArtists2(
+	public suspend fun getSimilarArtists(
 		itemId: UUID,
-		excludeArtistIds: String? = null,
+		excludeArtistIds: List<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: String? = null
+		fields: List<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -218,10 +219,10 @@ public class LibraryApi(
 	 */
 	public suspend fun getSimilarItems(
 		itemId: UUID,
-		excludeArtistIds: String? = null,
+		excludeArtistIds: List<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: String? = null
+		fields: List<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -465,12 +466,12 @@ public class LibraryApi(
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
-	public suspend fun getSimilarMovies2(
+	public suspend fun getSimilarMovies(
 		itemId: UUID,
-		excludeArtistIds: String? = null,
+		excludeArtistIds: List<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: String? = null
+		fields: List<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -497,12 +498,12 @@ public class LibraryApi(
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
-	public suspend fun getSimilarShows2(
+	public suspend fun getSimilarShows(
 		itemId: UUID,
-		excludeArtistIds: String? = null,
+		excludeArtistIds: List<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: String? = null
+		fields: List<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -529,12 +530,12 @@ public class LibraryApi(
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
-	public suspend fun getSimilarTrailers2(
+	public suspend fun getSimilarTrailers(
 		itemId: UUID,
-		excludeArtistIds: String? = null,
+		excludeArtistIds: List<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: String? = null
+		fields: List<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

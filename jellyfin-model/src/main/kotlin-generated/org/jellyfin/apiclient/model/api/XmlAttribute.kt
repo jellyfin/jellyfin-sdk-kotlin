@@ -9,10 +9,19 @@ import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * Defines the MediaBrowser.Model.Dlna.XmlAttribute.
+ */
 @Serializable
 public data class XmlAttribute(
+	/**
+	 * Gets or sets the name of the attribute.
+	 */
 	@SerialName("Name")
 	public val name: String? = null,
+	/**
+	 * Gets or sets the value of the attribute.
+	 */
 	@SerialName("Value")
 	public val value: String? = null
 )
