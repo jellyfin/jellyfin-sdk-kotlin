@@ -28,6 +28,9 @@ android {
 
 	kotlinOptions {
 		jvmTarget = JavaVersion.VERSION_1_8.toString()
+		// The Android DSL doesn't support the explicitApi() function
+		// so we need to add it to the compiler arguments
+		freeCompilerArgs += "-Xexplicit-api=strict"
 	}
 
 	sourceSets["main"].java.srcDirs("src/main/kotlin")

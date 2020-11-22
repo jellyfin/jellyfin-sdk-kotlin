@@ -9,7 +9,7 @@ import java.net.InetAddress
 /**
  * A broadcast address provider that uses the WifiManager service to retrieve the broadcast address
  */
-class AndroidBroadcastAddressesProvider(
+public class AndroidBroadcastAddressesProvider(
 	private val context: Context
 ) : DiscoveryBroadcastAddressesProvider {
 	/**

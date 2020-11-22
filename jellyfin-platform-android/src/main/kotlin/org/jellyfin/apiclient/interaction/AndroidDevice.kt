@@ -7,7 +7,7 @@ import android.provider.Settings
 import org.jellyfin.apiclient.model.DeviceInfo
 
 @SuppressLint("HardwareIds")
-fun androidDevice(context: Context): DeviceInfo {
+public fun androidDevice(context: Context): DeviceInfo {
 	val id = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
 
 	// Use name from device settings
