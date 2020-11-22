@@ -1,3 +1,5 @@
+import de.undercouch.gradle.tasks.download.Download
+
 plugins {
 	kotlin("jvm")
 	id("application")
@@ -45,7 +47,7 @@ tasks.register("generateSources", JavaExec::class) {
 }
 
 arrayOf("stable", "unstable").forEach { flavor ->
-	tasks.register("downloadApiSpec${flavor.capitalize()}", de.undercouch.gradle.tasks.download.Download::class) {
+	tasks.register("downloadApiSpec${flavor.capitalize()}", Download::class) {
 		src("https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-${flavor}.json")
 		dest(openApiFile)
 	}
