@@ -45,7 +45,7 @@ public class UserViewsApi(
 	public suspend fun getUserViews(
 		userId: UUID,
 		includeExternalContent: Boolean? = null,
-		presetViews: String? = null,
+		presetViews: List<String>? = emptyList(),
 		includeHidden: Boolean = false
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()

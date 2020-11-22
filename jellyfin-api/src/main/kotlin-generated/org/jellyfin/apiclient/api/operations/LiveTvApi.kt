@@ -23,6 +23,8 @@ import org.jellyfin.apiclient.model.api.ChannelMappingOptionsDto
 import org.jellyfin.apiclient.model.api.ChannelType
 import org.jellyfin.apiclient.model.api.GetProgramsDto
 import org.jellyfin.apiclient.model.api.GuideInfo
+import org.jellyfin.apiclient.model.api.ImageType
+import org.jellyfin.apiclient.model.api.ItemFields
 import org.jellyfin.apiclient.model.api.ListingsProviderInfo
 import org.jellyfin.apiclient.model.api.LiveTvInfo
 import org.jellyfin.apiclient.model.api.NameIdPair
@@ -96,10 +98,7 @@ public class LiveTvApi(
 	 * @param enableImages Optional. Include image information in output.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes "Optional. The image types to include in the output.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableUserData Optional. Include user data.
 	 * @param sortBy Optional. Key to sort by.
 	 * @param sortOrder Optional. Sort order.
@@ -122,10 +121,10 @@ public class LiveTvApi(
 		isDisliked: Boolean? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
-		fields: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
+		fields: List<ItemFields>? = emptyList(),
 		enableUserData: Boolean? = null,
-		sortBy: String? = null,
+		sortBy: List<String>? = emptyList(),
 		sortOrder: SortOrder,
 		enableFavoriteSorting: Boolean = false,
 		addCurrentProgram: Boolean = true
@@ -386,14 +385,11 @@ public class LiveTvApi(
 	 * @param enableUserData Optional. Include user data.
 	 * @param seriesTimerId Optional. Filter by series timer id.
 	 * @param librarySeriesId Optional. Filter by library series id.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableTotalRecordCount Retrieve total record count.
 	 */
 	public suspend fun getLiveTvPrograms(
-		channelIds: String? = null,
+		channelIds: List<UUID>? = emptyList(),
 		userId: UUID? = null,
 		minStartDate: LocalDateTime? = null,
 		hasAired: Boolean? = null,
@@ -410,15 +406,15 @@ public class LiveTvApi(
 		limit: Int? = null,
 		sortBy: String? = null,
 		sortOrder: String? = null,
-		genres: String? = null,
-		genreIds: String? = null,
+		genres: List<String>? = emptyList(),
+		genreIds: List<UUID>? = emptyList(),
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
 		seriesTimerId: String? = null,
 		librarySeriesId: UUID? = null,
-		fields: String? = null,
+		fields: List<ItemFields>? = emptyList(),
 		enableTotalRecordCount: Boolean = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
@@ -500,10 +496,7 @@ public class LiveTvApi(
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 * @param genreIds The genres to return guide information for.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableUserData Optional. include user data.
 	 * @param enableTotalRecordCount Retrieve total record count.
 	 */
@@ -519,9 +512,9 @@ public class LiveTvApi(
 		isSports: Boolean? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
-		genreIds: String? = null,
-		fields: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
+		genreIds: List<UUID>? = emptyList(),
+		fields: List<ItemFields>? = emptyList(),
 		enableUserData: Boolean? = null,
 		enableTotalRecordCount: Boolean = true
 	): Response<BaseItemDtoQueryResult> {
@@ -563,10 +556,7 @@ public class LiveTvApi(
 	 * @param enableImages Optional. Include image information in output.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableUserData Optional. Include user data.
 	 * @param isMovie Optional. Filter for movies.
 	 * @param isSeries Optional. Filter for series.
@@ -586,8 +576,8 @@ public class LiveTvApi(
 		seriesTimerId: String? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
-		fields: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
+		fields: List<ItemFields>? = emptyList(),
 		enableUserData: Boolean? = null,
 		isMovie: Boolean? = null,
 		isSeries: Boolean? = null,
@@ -718,10 +708,7 @@ public class LiveTvApi(
 	 * @param enableImages Optional. Include image information in output.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableUserData Optional. Include user data.
 	 * @param enableTotalRecordCount Optional. Return total record count.
 	 */
@@ -737,8 +724,8 @@ public class LiveTvApi(
 		seriesTimerId: String? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
-		fields: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
+		fields: List<ItemFields>? = emptyList(),
 		enableUserData: Boolean? = null,
 		enableTotalRecordCount: Boolean = true
 	): Response<BaseItemDtoQueryResult> {
@@ -987,6 +974,22 @@ public class LiveTvApi(
 	 * @param newDevicesOnly Only discover new tuners.
 	 */
 	public suspend fun discoverTuners(newDevicesOnly: Boolean = false): Response<List<TunerHostInfo>> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["newDevicesOnly"] = newDevicesOnly
+		val data = null
+		val response = api.`get`<List<TunerHostInfo>>("/LiveTv/Tuners/Discover", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Discover tuners.
+	 *
+	 * @param newDevicesOnly Only discover new tuners.
+	 */
+	public suspend fun discvoverTuners(newDevicesOnly: Boolean = false):
+			Response<List<TunerHostInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["newDevicesOnly"] = newDevicesOnly

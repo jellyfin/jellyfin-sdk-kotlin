@@ -37,7 +37,7 @@ public class DynamicHlsApi(
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
 	 * @param playSessionId The play session id.
 	 * @param segmentContainer The segment container.
-	 * @param segmentLength The segment lenght.
+	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
@@ -51,6 +51,7 @@ public class DynamicHlsApi(
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
+	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
 	 * this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
@@ -77,7 +78,7 @@ public class DynamicHlsApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -97,7 +98,7 @@ public class DynamicHlsApi(
 		itemId: UUID,
 		playlistId: String,
 		segmentId: Int,
-		container: String? = null,
+		container: String,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -115,6 +116,7 @@ public class DynamicHlsApi(
 		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
+		maxStreamingBitrate: Int? = null,
 		audioBitRate: Int? = null,
 		audioChannels: Int? = null,
 		maxAudioChannels: Int? = null,
@@ -169,6 +171,7 @@ public class DynamicHlsApi(
 		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
 		queryParameters["audioSampleRate"] = audioSampleRate
 		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
+		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
 		queryParameters["audioBitRate"] = audioBitRate
 		queryParameters["audioChannels"] = audioChannels
 		queryParameters["maxAudioChannels"] = maxAudioChannels
@@ -221,7 +224,7 @@ public class DynamicHlsApi(
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
 	 * @param playSessionId The play session id.
 	 * @param segmentContainer The segment container.
-	 * @param segmentLength The segment lenght.
+	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
@@ -235,6 +238,7 @@ public class DynamicHlsApi(
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
+	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
 	 * this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
@@ -261,7 +265,7 @@ public class DynamicHlsApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -281,7 +285,7 @@ public class DynamicHlsApi(
 		itemId: UUID,
 		playlistId: String,
 		segmentId: Int,
-		container: String? = null,
+		container: String,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -299,6 +303,7 @@ public class DynamicHlsApi(
 		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
+		maxStreamingBitrate: Int? = null,
 		audioBitRate: Int? = null,
 		audioChannels: Int? = null,
 		maxAudioChannels: Int? = null,
@@ -353,6 +358,7 @@ public class DynamicHlsApi(
 		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
 		queryParameters["audioSampleRate"] = audioSampleRate
 		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
+		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
 		queryParameters["audioBitRate"] = audioBitRate
 		queryParameters["audioChannels"] = audioChannels
 		queryParameters["maxAudioChannels"] = maxAudioChannels
@@ -398,7 +404,7 @@ public class DynamicHlsApi(
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
 	 * @param playSessionId The play session id.
 	 * @param segmentContainer The segment container.
-	 * @param segmentLength The segment lenght.
+	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
@@ -412,6 +418,7 @@ public class DynamicHlsApi(
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
+	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
 	 * this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
@@ -438,7 +445,7 @@ public class DynamicHlsApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -473,6 +480,7 @@ public class DynamicHlsApi(
 		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
+		maxStreamingBitrate: Int? = null,
 		audioBitRate: Int? = null,
 		audioChannels: Int? = null,
 		maxAudioChannels: Int? = null,
@@ -524,6 +532,7 @@ public class DynamicHlsApi(
 		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
 		queryParameters["audioSampleRate"] = audioSampleRate
 		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
+		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
 		queryParameters["audioBitRate"] = audioBitRate
 		queryParameters["audioChannels"] = audioChannels
 		queryParameters["maxAudioChannels"] = maxAudioChannels
@@ -571,7 +580,7 @@ public class DynamicHlsApi(
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
 	 * @param playSessionId The play session id.
 	 * @param segmentContainer The segment container.
-	 * @param segmentLength The segment lenght.
+	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
@@ -585,6 +594,7 @@ public class DynamicHlsApi(
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
+	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
 	 * this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
@@ -611,7 +621,7 @@ public class DynamicHlsApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -646,6 +656,7 @@ public class DynamicHlsApi(
 		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
+		maxStreamingBitrate: Int? = null,
 		audioBitRate: Int? = null,
 		audioChannels: Int? = null,
 		maxAudioChannels: Int? = null,
@@ -697,6 +708,7 @@ public class DynamicHlsApi(
 		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
 		queryParameters["audioSampleRate"] = audioSampleRate
 		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
+		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
 		queryParameters["audioBitRate"] = audioBitRate
 		queryParameters["audioChannels"] = audioChannels
 		queryParameters["maxAudioChannels"] = maxAudioChannels
@@ -741,7 +753,7 @@ public class DynamicHlsApi(
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
 	 * @param playSessionId The play session id.
 	 * @param segmentContainer The segment container.
-	 * @param segmentLength The segment lenght.
+	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
@@ -755,6 +767,7 @@ public class DynamicHlsApi(
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
+	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
 	 * this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
@@ -781,7 +794,7 @@ public class DynamicHlsApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -817,6 +830,7 @@ public class DynamicHlsApi(
 		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
+		maxStreamingBitrate: Int? = null,
 		audioBitRate: Int? = null,
 		audioChannels: Int? = null,
 		maxAudioChannels: Int? = null,
@@ -869,6 +883,7 @@ public class DynamicHlsApi(
 		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
 		queryParameters["audioSampleRate"] = audioSampleRate
 		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
+		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
 		queryParameters["audioBitRate"] = audioBitRate
 		queryParameters["audioChannels"] = audioChannels
 		queryParameters["maxAudioChannels"] = maxAudioChannels
@@ -917,7 +932,7 @@ public class DynamicHlsApi(
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
 	 * @param playSessionId The play session id.
 	 * @param segmentContainer The segment container.
-	 * @param segmentLength The segment lenght.
+	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
@@ -931,6 +946,7 @@ public class DynamicHlsApi(
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
+	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
 	 * this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
@@ -957,7 +973,7 @@ public class DynamicHlsApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -993,6 +1009,7 @@ public class DynamicHlsApi(
 		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
+		maxStreamingBitrate: Int? = null,
 		audioBitRate: Int? = null,
 		audioChannels: Int? = null,
 		maxAudioChannels: Int? = null,
@@ -1045,6 +1062,7 @@ public class DynamicHlsApi(
 		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
 		queryParameters["audioSampleRate"] = audioSampleRate
 		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
+		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
 		queryParameters["audioBitRate"] = audioBitRate
 		queryParameters["audioChannels"] = audioChannels
 		queryParameters["maxAudioChannels"] = maxAudioChannels
@@ -1134,7 +1152,7 @@ public class DynamicHlsApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -1154,7 +1172,7 @@ public class DynamicHlsApi(
 		itemId: UUID,
 		playlistId: String,
 		segmentId: Int,
-		container: String? = null,
+		container: String,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -1318,7 +1336,7 @@ public class DynamicHlsApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -1338,7 +1356,7 @@ public class DynamicHlsApi(
 		itemId: UUID,
 		playlistId: String,
 		segmentId: Int,
-		container: String? = null,
+		container: String,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -1455,7 +1473,7 @@ public class DynamicHlsApi(
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
 	 * @param playSessionId The play session id.
 	 * @param segmentContainer The segment container.
-	 * @param segmentLength The segment lenght.
+	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
@@ -1495,7 +1513,7 @@ public class DynamicHlsApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -1628,7 +1646,7 @@ public class DynamicHlsApi(
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
 	 * @param playSessionId The play session id.
 	 * @param segmentContainer The segment container.
-	 * @param segmentLength The segment lenght.
+	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
@@ -1668,7 +1686,7 @@ public class DynamicHlsApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -1798,7 +1816,7 @@ public class DynamicHlsApi(
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
 	 * @param playSessionId The play session id.
 	 * @param segmentContainer The segment container.
-	 * @param segmentLength The segment lenght.
+	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
@@ -1838,7 +1856,7 @@ public class DynamicHlsApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -1974,7 +1992,7 @@ public class DynamicHlsApi(
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
 	 * @param playSessionId The play session id.
 	 * @param segmentContainer The segment container.
-	 * @param segmentLength The segment lenght.
+	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
@@ -2014,7 +2032,7 @@ public class DynamicHlsApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.

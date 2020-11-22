@@ -12,7 +12,6 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.api.IScheduledTaskWorker
 import org.jellyfin.apiclient.model.api.TaskInfo
 import org.jellyfin.apiclient.model.api.TaskTriggerInfo
 
@@ -26,14 +25,13 @@ public class ScheduledTasksApi(
 	 * @param isEnabled Optional filter tasks that are enabled, or not.
 	 */
 	public suspend fun getTasks(isHidden: Boolean? = null, isEnabled: Boolean? = null):
-			Response<List<IScheduledTaskWorker>> {
+			Response<List<TaskInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["isHidden"] = isHidden
 		queryParameters["isEnabled"] = isEnabled
 		val data = null
-		val response = api.`get`<List<IScheduledTaskWorker>>("/ScheduledTasks", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<TaskInfo>>("/ScheduledTasks", pathParameters, queryParameters, data)
 		return response
 	}
 

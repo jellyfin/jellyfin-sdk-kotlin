@@ -10,10 +10,13 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDto
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.ImageType
+import org.jellyfin.apiclient.model.api.ItemFields
 
 public class YearsApi(
 	private val api: KtorClient
@@ -26,10 +29,7 @@ public class YearsApi(
 	 * @param sortOrder Sort Order - Ascending,Descending.
 	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use
 	 * the root.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param excludeItemTypes Optional. If specified, results will be excluded based on item type.
 	 * This allows multiple, comma delimited.
 	 * @param includeItemTypes Optional. If specified, results will be included based on item type.
@@ -50,14 +50,14 @@ public class YearsApi(
 		limit: Int? = null,
 		sortOrder: String? = null,
 		parentId: String? = null,
-		fields: String? = null,
-		excludeItemTypes: String? = null,
-		includeItemTypes: String? = null,
-		mediaTypes: String? = null,
+		fields: List<ItemFields>? = emptyList(),
+		excludeItemTypes: List<String>? = emptyList(),
+		includeItemTypes: List<String>? = emptyList(),
+		mediaTypes: List<String>? = emptyList(),
 		sortBy: String? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
 		userId: UUID? = null,
 		recursive: Boolean = true,
 		enableImages: Boolean? = true

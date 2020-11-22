@@ -19,6 +19,8 @@ public data class VersionInfo(
 	 */
 	@SerialName("version")
 	public val version: String? = null,
+	@SerialName("VersionNumber")
+	public val versionNumber: Version? = null,
 	/**
 	 * Gets or sets the changelog for this version.
 	 */
@@ -43,5 +45,15 @@ public data class VersionInfo(
 	 * Gets or sets a timestamp of when the binary was built.
 	 */
 	@SerialName("timestamp")
-	public val timestamp: String? = null
+	public val timestamp: String? = null,
+	/**
+	 * Gets or sets the repository name.
+	 */
+	@SerialName("repositoryName")
+	public val repositoryName: String? = null,
+	/**
+	 * Gets or sets the repository url.
+	 */
+	@SerialName("repositoryUrl")
+	public val repositoryUrl: String? = null
 )

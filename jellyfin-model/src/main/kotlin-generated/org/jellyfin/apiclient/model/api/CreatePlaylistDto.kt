@@ -9,6 +9,7 @@ package org.jellyfin.apiclient.model.api
 
 import java.util.UUID
 import kotlin.String
+import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
@@ -28,7 +29,7 @@ public data class CreatePlaylistDto(
 	 * Gets or sets item ids to add to the playlist.
 	 */
 	@SerialName("Ids")
-	public val ids: String? = null,
+	public val ids: List<UUID>? = null,
 	/**
 	 * Gets or sets the user id.
 	 */

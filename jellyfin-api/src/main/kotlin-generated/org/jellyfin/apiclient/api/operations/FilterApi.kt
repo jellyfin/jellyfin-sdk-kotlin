@@ -9,6 +9,7 @@ import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
+import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.QueryFilters
@@ -29,8 +30,8 @@ public class FilterApi(
 	public suspend fun getQueryFiltersLegacy(
 		userId: UUID? = null,
 		parentId: String? = null,
-		includeItemTypes: String? = null,
-		mediaTypes: String? = null
+		includeItemTypes: List<String>? = emptyList(),
+		mediaTypes: List<String>? = emptyList()
 	): Response<QueryFiltersLegacy> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -63,7 +64,7 @@ public class FilterApi(
 	public suspend fun getQueryFilters(
 		userId: UUID? = null,
 		parentId: String? = null,
-		includeItemTypes: String? = null,
+		includeItemTypes: List<String>? = emptyList(),
 		isAiring: Boolean? = null,
 		isMovie: Boolean? = null,
 		isSports: Boolean? = null,

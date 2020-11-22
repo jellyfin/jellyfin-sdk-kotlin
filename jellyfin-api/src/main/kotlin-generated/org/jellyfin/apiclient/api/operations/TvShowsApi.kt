@@ -10,9 +10,12 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.ImageType
+import org.jellyfin.apiclient.model.api.ItemFields
 
 public class TvShowsApi(
 	private val api: KtorClient
@@ -23,7 +26,7 @@ public class TvShowsApi(
 	 * @param seriesId The series id.
 	 * @param userId The user id.
 	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
+	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 * @param season Optional filter by season number.
@@ -38,14 +41,14 @@ public class TvShowsApi(
 	 * @param imageTypeLimit Optional, the max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 * @param enableUserData Optional. Include user data.
-	 * @param sortBy Optional. Specify one or more sort orders, comma delimeted. Options: Album,
+	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album,
 	 * AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount,
 	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 */
 	public suspend fun getEpisodes(
 		seriesId: String,
 		userId: UUID? = null,
-		fields: String? = null,
+		fields: List<ItemFields>? = emptyList(),
 		season: Int? = null,
 		seasonId: String? = null,
 		isMissing: Boolean? = null,
@@ -55,7 +58,7 @@ public class TvShowsApi(
 		limit: Int? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
 		sortBy: String? = null
 	): Response<BaseItemDtoQueryResult> {
@@ -88,7 +91,7 @@ public class TvShowsApi(
 	 * @param seriesId The series id.
 	 * @param userId The user id.
 	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
+	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
 	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
 	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 * @param isSpecialSeason Optional. Filter by special season.
@@ -102,13 +105,13 @@ public class TvShowsApi(
 	public suspend fun getSeasons(
 		seriesId: String,
 		userId: UUID? = null,
-		fields: String? = null,
+		fields: List<ItemFields>? = emptyList(),
 		isSpecialSeason: Boolean? = null,
 		isMissing: Boolean? = null,
 		adjacentTo: String? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -136,10 +139,7 @@ public class TvShowsApi(
 	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
 	 * dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param seriesId Optional. Filter by series id.
 	 * @param parentId Optional. Specify this to localize the search to a specific item or folder. Omit
 	 * to use the root.
@@ -153,12 +153,12 @@ public class TvShowsApi(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
-		fields: String? = null,
+		fields: List<ItemFields>? = emptyList(),
 		seriesId: String? = null,
 		parentId: String? = null,
 		enableImges: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
 		enableTotalRecordCount: Boolean = true
 	): Response<BaseItemDtoQueryResult> {
@@ -188,10 +188,7 @@ public class TvShowsApi(
 	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
 	 * dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param parentId Optional. Specify this to localize the search to a specific item or folder. Omit
 	 * to use the root.
 	 * @param enableImges Optional. Include image information in output.
@@ -203,11 +200,11 @@ public class TvShowsApi(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
-		fields: String? = null,
+		fields: List<ItemFields>? = emptyList(),
 		parentId: String? = null,
 		enableImges: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()

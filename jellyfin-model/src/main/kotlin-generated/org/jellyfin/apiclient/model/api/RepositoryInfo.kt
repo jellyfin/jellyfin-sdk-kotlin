@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlin.Boolean
 import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -23,5 +24,10 @@ public data class RepositoryInfo(
 	 * Gets or sets the URL.
 	 */
 	@SerialName("Url")
-	public val url: String? = null
+	public val url: String? = null,
+	/**
+	 * Gets or sets a value indicating whether the repository is enabled.
+	 */
+	@SerialName("Enabled")
+	public val enabled: Boolean
 )

@@ -15,7 +15,7 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.api.ClientCapabilities
+import org.jellyfin.apiclient.model.api.ClientCapabilitiesDto
 import org.jellyfin.apiclient.model.api.GeneralCommand
 import org.jellyfin.apiclient.model.api.GeneralCommandType
 import org.jellyfin.apiclient.model.api.NameIdPair
@@ -144,7 +144,7 @@ public class SessionApi(
 	public suspend fun play(
 		sessionId: String,
 		playCommand: PlayCommand,
-		itemIds: String,
+		itemIds: List<UUID> = emptyList(),
 		startPositionTicks: Long? = null
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -276,7 +276,7 @@ public class SessionApi(
 	 */
 	public suspend fun postCapabilities(
 		id: String? = null,
-		playableMediaTypes: String? = null,
+		playableMediaTypes: List<String>? = emptyList(),
 		supportedCommands: List<GeneralCommandType>? = emptyList(),
 		supportsMediaControl: Boolean = false,
 		supportsSync: Boolean = false,
@@ -300,7 +300,7 @@ public class SessionApi(
 	 *
 	 * @param id The session id.
 	 */
-	public suspend fun postFullCapabilities(id: String? = null, `data`: ClientCapabilities):
+	public suspend fun postFullCapabilities(id: String? = null, `data`: ClientCapabilitiesDto):
 			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

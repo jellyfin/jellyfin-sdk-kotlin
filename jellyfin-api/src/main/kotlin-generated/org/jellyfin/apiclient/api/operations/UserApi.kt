@@ -213,6 +213,17 @@ public class UserApi(
 	}
 
 	/**
+	 * Gets the user based on auth token.
+	 */
+	public suspend fun getCurrentUser(): Response<UserDto> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<UserDto>("/Users/Me", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Creates a user.
 	 */
 	public suspend fun createUserByName(`data`: CreateUserByName): Response<UserDto> {

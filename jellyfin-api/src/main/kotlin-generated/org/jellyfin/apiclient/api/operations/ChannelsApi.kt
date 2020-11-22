@@ -15,6 +15,7 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.ChannelFeatures
+import org.jellyfin.apiclient.model.api.ItemFields
 import org.jellyfin.apiclient.model.api.ItemFilter
 
 public class ChannelsApi(
@@ -82,10 +83,7 @@ public class ChannelsApi(
 	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album,
 	 * AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount,
 	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 */
 	public suspend fun getChannelItems(
 		channelId: UUID,
@@ -96,7 +94,7 @@ public class ChannelsApi(
 		sortOrder: String? = null,
 		filters: List<ItemFilter>? = emptyList(),
 		sortBy: String? = null,
-		fields: String? = null
+		fields: List<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["channelId"] = channelId
@@ -135,10 +133,7 @@ public class ChannelsApi(
 	 * dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param filters Optional. Specify additional filters to apply.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param channelIds Optional. Specify one or more channel id's, comma delimited.
 	 */
 	public suspend fun getLatestChannelItems(
@@ -146,8 +141,8 @@ public class ChannelsApi(
 		startIndex: Int? = null,
 		limit: Int? = null,
 		filters: List<ItemFilter>? = emptyList(),
-		fields: String? = null,
-		channelIds: String? = null
+		fields: List<ItemFields>? = emptyList(),
+		channelIds: List<UUID>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

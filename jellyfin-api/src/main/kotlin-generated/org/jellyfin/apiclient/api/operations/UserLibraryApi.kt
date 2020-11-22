@@ -15,6 +15,8 @@ import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDto
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
+import org.jellyfin.apiclient.model.api.ImageType
+import org.jellyfin.apiclient.model.api.ItemFields
 import org.jellyfin.apiclient.model.api.UserItemDataDto
 
 public class UserLibraryApi(
@@ -170,12 +172,9 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use
 	 * the root.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimeted. Options: Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * SortName, Studios, Taglines.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type.
-	 * This allows multiple, comma delimeted.
+	 * This allows multiple, comma delimited.
 	 * @param isPlayed Filter by items that are played, or not.
 	 * @param enableImages Optional. include image information in output.
 	 * @param imageTypeLimit Optional. the max number of images to return, per image type.
@@ -187,12 +186,12 @@ public class UserLibraryApi(
 	public suspend fun getLatestMedia(
 		userId: UUID,
 		parentId: UUID? = null,
-		fields: String? = null,
-		includeItemTypes: String? = null,
+		fields: List<ItemFields>? = emptyList(),
+		includeItemTypes: List<String>? = emptyList(),
 		isPlayed: Boolean? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: String? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
 		limit: Int = 20,
 		groupItems: Boolean = true

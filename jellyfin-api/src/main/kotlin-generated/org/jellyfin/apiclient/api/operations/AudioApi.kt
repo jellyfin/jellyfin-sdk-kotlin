@@ -34,7 +34,7 @@ public class AudioApi(
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
 	 * @param playSessionId The play session id.
 	 * @param segmentContainer The segment container.
-	 * @param segmentLength The segment lenght.
+	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
@@ -74,7 +74,7 @@ public class AudioApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -143,8 +143,8 @@ public class AudioApi(
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
-		pathParameters["container"] = container
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["container"] = container
 		queryParameters["static"] = static
 		queryParameters["params"] = params
 		queryParameters["tag"] = tag
@@ -210,7 +210,7 @@ public class AudioApi(
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
 	 * @param playSessionId The play session id.
 	 * @param segmentContainer The segment container.
-	 * @param segmentLength The segment lenght.
+	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
@@ -250,7 +250,7 @@ public class AudioApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -319,8 +319,8 @@ public class AudioApi(
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
-		pathParameters["container"] = container
 		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["container"] = container
 		queryParameters["static"] = static
 		queryParameters["params"] = params
 		queryParameters["tag"] = tag
@@ -441,7 +441,7 @@ public class AudioApi(
 	 */
 	public suspend fun getAudioStreamByContainer(
 		itemId: UUID,
-		container: String? = null,
+		container: String,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,
@@ -617,7 +617,7 @@ public class AudioApi(
 	 */
 	public fun getAudioStreamByContainerUrl(
 		itemId: UUID,
-		container: String? = null,
+		container: String,
 		static: Boolean? = null,
 		params: String? = null,
 		tag: String? = null,

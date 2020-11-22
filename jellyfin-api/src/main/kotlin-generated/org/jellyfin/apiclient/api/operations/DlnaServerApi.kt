@@ -10,7 +10,6 @@ import kotlin.Any
 import kotlin.String
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.api.ControlResponse
 
 public class DlnaServerApi(
 	private val api: KtorClient
@@ -65,14 +64,13 @@ public class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	public suspend fun processConnectionManagerControlRequest(serverId: String):
-			Response<ControlResponse> {
+	public suspend fun processConnectionManagerControlRequest(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<ControlResponse>("/Dlna/{serverId}/ConnectionManager/Control",
-				pathParameters, queryParameters, data)
+		val response = api.post<String>("/Dlna/{serverId}/ConnectionManager/Control", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
@@ -126,14 +124,13 @@ public class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 */
-	public suspend fun processContentDirectoryControlRequest(serverId: String):
-			Response<ControlResponse> {
+	public suspend fun processContentDirectoryControlRequest(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<ControlResponse>("/Dlna/{serverId}/ContentDirectory/Control",
-				pathParameters, queryParameters, data)
+		val response = api.post<String>("/Dlna/{serverId}/ContentDirectory/Control", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
@@ -219,13 +216,13 @@ public class DlnaServerApi(
 	 * @param serverId Server UUID.
 	 */
 	public suspend fun processMediaReceiverRegistrarControlRequest(serverId: String):
-			Response<ControlResponse> {
+			Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<ControlResponse>("/Dlna/{serverId}/MediaReceiverRegistrar/Control",
-				pathParameters, queryParameters, data)
+		val response = api.post<String>("/Dlna/{serverId}/MediaReceiverRegistrar/Control", pathParameters,
+				queryParameters, data)
 		return response
 	}
 

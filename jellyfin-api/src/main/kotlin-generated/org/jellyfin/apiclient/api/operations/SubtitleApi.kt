@@ -16,11 +16,52 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
+import org.jellyfin.apiclient.model.api.FontFile
 import org.jellyfin.apiclient.model.api.RemoteSubtitleInfo
+import org.jellyfin.apiclient.model.api.UploadSubtitleDto
 
 public class SubtitleApi(
 	private val api: KtorClient
 ) {
+	/**
+	 * Gets a list of available fallback font files.
+	 */
+	public suspend fun getFallbackFontList(): Response<List<FontFile>> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<List<FontFile>>("/FallbackFont/Fonts", pathParameters, queryParameters,
+				data)
+		return response
+	}
+
+	/**
+	 * Gets a fallback font file.
+	 *
+	 * @param name The name of the fallback font file to get.
+	 */
+	public suspend fun getFallbackFont(name: String): Response<ByteReadChannel> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["name"] = name
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<ByteReadChannel>("/FallbackFont/Fonts/{name}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets a fallback font file.
+	 *
+	 * @param name The name of the fallback font file to get.
+	 */
+	public fun getFallbackFontUrl(name: String): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["name"] = name
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/FallbackFont/Fonts/{name}", pathParameters, queryParameters)
+	}
+
 	/**
 	 * Search remote subtitles.
 	 *
@@ -83,18 +124,18 @@ public class SubtitleApi(
 	 * @param itemId The item id.
 	 * @param mediaSourceId The media source id.
 	 * @param index The subtitle stream index.
-	 * @param format The format of the returned subtitle.
 	 * @param startPositionTicks Optional. The start position of the subtitle in ticks.
+	 * @param format The format of the returned subtitle.
 	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
 	 * @param copyTimestamps Optional. Whether to copy the timestamps.
 	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
 	 */
-	public suspend fun getSubtitle2(
+	public suspend fun getSubtitleWithTicks(
 		itemId: UUID,
 		mediaSourceId: String,
 		index: Int,
+		startPositionTicks: Long,
 		format: String,
-		startPositionTicks: Long = 0,
 		endPositionTicks: Long? = null,
 		copyTimestamps: Boolean = false,
 		addVttTimeMap: Boolean = false
@@ -103,8 +144,8 @@ public class SubtitleApi(
 		pathParameters["itemId"] = itemId
 		pathParameters["mediaSourceId"] = mediaSourceId
 		pathParameters["index"] = index
-		pathParameters["format"] = format
 		pathParameters["startPositionTicks"] = startPositionTicks
+		pathParameters["format"] = format
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["endPositionTicks"] = endPositionTicks
 		queryParameters["copyTimestamps"] = copyTimestamps
@@ -123,31 +164,31 @@ public class SubtitleApi(
 	 * @param mediaSourceId The media source id.
 	 * @param index The subtitle stream index.
 	 * @param format The format of the returned subtitle.
-	 * @param startPositionTicks Optional. The start position of the subtitle in ticks.
 	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
 	 * @param copyTimestamps Optional. Whether to copy the timestamps.
 	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
+	 * @param startPositionTicks Optional. The start position of the subtitle in ticks.
 	 */
 	public suspend fun getSubtitle(
 		itemId: UUID,
 		mediaSourceId: String,
 		index: Int,
 		format: String,
-		startPositionTicks: Long = 0,
 		endPositionTicks: Long? = null,
 		copyTimestamps: Boolean = false,
-		addVttTimeMap: Boolean = false
+		addVttTimeMap: Boolean = false,
+		startPositionTicks: Long = 0
 	): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["mediaSourceId"] = mediaSourceId
 		pathParameters["index"] = index
 		pathParameters["format"] = format
-		pathParameters["startPositionTicks"] = startPositionTicks
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["endPositionTicks"] = endPositionTicks
 		queryParameters["copyTimestamps"] = copyTimestamps
 		queryParameters["addVttTimeMap"] = addVttTimeMap
+		queryParameters["startPositionTicks"] = startPositionTicks
 		val data = null
 		val response =
 				api.`get`<String>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/Stream.{format}",
@@ -204,6 +245,19 @@ public class SubtitleApi(
 		queryParameters["segmentLength"] = segmentLength
 		return api.createUrl("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8",
 				pathParameters, queryParameters)
+	}
+
+	/**
+	 * Upload an external subtitle file.
+	 *
+	 * @param itemId The item the subtitle belongs to.
+	 */
+	public suspend fun uploadSubtitle(itemId: UUID, `data`: UploadSubtitleDto): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Videos/{itemId}/Subtitles", pathParameters, queryParameters, data)
+		return response
 	}
 
 	/**

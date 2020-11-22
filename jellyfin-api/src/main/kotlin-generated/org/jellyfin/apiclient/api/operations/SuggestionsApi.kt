@@ -10,6 +10,7 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
@@ -29,8 +30,8 @@ public class SuggestionsApi(
 	 */
 	public suspend fun getSuggestions(
 		userId: UUID,
-		mediaType: String? = null,
-		type: String? = null,
+		mediaType: List<String>? = emptyList(),
+		type: List<String>? = emptyList(),
 		startIndex: Int? = null,
 		limit: Int? = null,
 		enableTotalRecordCount: Boolean = false
