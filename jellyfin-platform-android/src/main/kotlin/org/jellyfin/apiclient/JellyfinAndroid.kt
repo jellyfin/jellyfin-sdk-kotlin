@@ -8,7 +8,7 @@ import org.jellyfin.apiclient.interaction.androidDevice
  * Add default Android configuration.
  * Only run after setting the logger.
  */
-fun JellyfinOptions.Builder.android(context: Context) {
+public fun JellyfinOptions.Builder.android(context: Context) {
 	discoveryBroadcastAddressesProvider = AndroidBroadcastAddressesProvider(context)
 	deviceInfo = androidDevice(context)
 }
