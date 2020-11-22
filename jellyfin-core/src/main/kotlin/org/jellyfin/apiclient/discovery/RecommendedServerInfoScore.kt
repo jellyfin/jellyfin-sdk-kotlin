@@ -1,7 +1,7 @@
 package org.jellyfin.apiclient.discovery
 
-enum class RecommendedServerInfoScore(
-	val score: Int
+public enum class RecommendedServerInfoScore(
+	internal val score: Int
 ) {
 	GOOD(1),
 	OK(0),

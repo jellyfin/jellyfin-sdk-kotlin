@@ -6,12 +6,12 @@ import org.jellyfin.apiclient.model.ClientInfo
 import org.jellyfin.apiclient.model.DeviceInfo
 import org.jellyfin.apiclient.model.discovery.ServerVersion
 
-class Jellyfin(
+public class Jellyfin(
 	private val options: JellyfinOptions
 ) {
-	constructor(initOptions: JellyfinOptions.Builder.() -> Unit) : this(JellyfinOptions.build(initOptions))
+	public constructor(initOptions: JellyfinOptions.Builder.() -> Unit) : this(JellyfinOptions.build(initOptions))
 
-	val discovery by lazy {
+	public val discovery: DiscoveryService by lazy {
 		DiscoveryService(this, options.discoverBroadcastAddressesProvider)
 	}
 
@@ -20,14 +20,18 @@ class Jellyfin(
 	 * The [clientInfo] and [deviceInfo] parameters are required when not passed as option in [JellyfinOptions].
 	 * The [baseUrl] is only required when HTTP calls are made.
 	 */
-	fun createApi(
+	public fun createApi(
 		baseUrl: String? = null,
 		accessToken: String? = null,
 		clientInfo: ClientInfo? = options.clientInfo,
 		deviceInfo: DeviceInfo? = options.deviceInfo
 	): KtorClient {
-		checkNotNull(clientInfo) { "ClientInfo needs to be set when calling createApi() or by providing it when constructing the Jellyfin instance" }
-		checkNotNull(deviceInfo) { "DeviceInfo needs to be set when calling createApi() or by providing it when constructing the Jellyfin instance" }
+		checkNotNull(clientInfo) {
+			"ClientInfo needs to be set when calling createApi() or by providing it when constructing the Jellyfin instance"
+		}
+		checkNotNull(deviceInfo) {
+			"DeviceInfo needs to be set when calling createApi() or by providing it when constructing the Jellyfin instance"
+		}
 
 		return KtorClient(
 			baseUrl,
@@ -37,8 +41,8 @@ class Jellyfin(
 		)
 	}
 
-	companion object {
-		val recommendedVersion = ServerVersion(10, 7, 0)
-		val apiVersion = ServerVersion(10, 7, 0)
+	public companion object {
+		public val recommendedVersion: ServerVersion = ServerVersion(10, 7, 0)
+		public val apiVersion: ServerVersion = ServerVersion(10, 7, 0)
 	}
 }

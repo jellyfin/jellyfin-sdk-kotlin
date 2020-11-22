@@ -10,7 +10,7 @@ import org.jellyfin.apiclient.model.discovery.ServerVersion
 import org.slf4j.LoggerFactory
 import java.net.ConnectException
 
-class RecommendedServerDiscovery(
+public class RecommendedServerDiscovery(
 	private val jellyfin: Jellyfin
 ) {
 	private val logger = LoggerFactory.getLogger("RecommendedServerDiscovery")
@@ -80,17 +80,17 @@ class RecommendedServerDiscovery(
 		return RecommendedServerInfo(result.address, result.responseTime, score, result.systemInfo, parentResult?.address)
 	}
 
-	suspend fun discover(
+	public suspend fun discover(
 		servers: List<String>,
 		includeAppendedServers: Boolean,
 		minimumScore: RecommendedServerInfoScore
-	) = discover(
+	): Flow<RecommendedServerInfo> = discover(
 		servers = servers.asFlow(),
 		includeAppendedServers = includeAppendedServers,
 		minimumScore = minimumScore
 	)
 
-	suspend fun discover(
+	public suspend fun discover(
 		servers: Flow<String>,
 		includeAppendedServers: Boolean,
 		minimumScore: RecommendedServerInfoScore

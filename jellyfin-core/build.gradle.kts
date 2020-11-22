@@ -2,6 +2,10 @@ plugins {
 	id("kotlin")
 }
 
+kotlin {
+	explicitApi()
+}
+
 dependencies {
 	apiProject(":jellyfin-api")
 	apiProject(":jellyfin-model")

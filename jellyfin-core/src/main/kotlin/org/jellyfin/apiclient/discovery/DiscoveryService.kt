@@ -1,12 +1,14 @@
 package org.jellyfin.apiclient.discovery
 
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.takeWhile
 import org.jellyfin.apiclient.Jellyfin
+import org.jellyfin.apiclient.model.discovery.DiscoveryServerInfo
 
 /**
  * Service for discovery related functionality
  */
-class DiscoveryService(
+public class DiscoveryService(
 	private val jellyfin: Jellyfin,
 	private val discoveryBroadcastAddressesProvider: DiscoveryBroadcastAddressesProvider
 ) {
@@ -28,7 +30,7 @@ class DiscoveryService(
 	 * The returned candidates are in order of most secure followed by most likely to work.
 	 * See [AddressCandidateHelper] for more information.
 	 */
-	fun getAddressCandidates(input: String) = AddressCandidateHelper(input).run {
+	public fun getAddressCandidates(input: String): List<String> = AddressCandidateHelper(input).run {
 		addCommonCandidates()
 		prioritize()
 		getCandidates()
@@ -50,11 +52,11 @@ class DiscoveryService(
 	 *
 	 * Optionally use [getRecommendedServer] to make this selection automatically.
 	 */
-	suspend fun getRecommendedServers(
+	public suspend fun getRecommendedServers(
 		servers: List<String>,
 		includeAppendedServers: Boolean = true,
 		minimumScore: RecommendedServerInfoScore = RecommendedServerInfoScore.BAD
-	) = recommendedServerDiscovery.discover(
+	): Flow<RecommendedServerInfo> = recommendedServerDiscovery.discover(
 		servers = servers,
 		includeAppendedServers = includeAppendedServers,
 		minimumScore = minimumScore
@@ -63,11 +65,11 @@ class DiscoveryService(
 	/**
 	 * Utility function that calls [getRecommendedServers] with the output of [getAddressCandidates].
 	 */
-	suspend fun getRecommendedServers(
+	public suspend fun getRecommendedServers(
 		input: String,
 		includeAppendedServers: Boolean = true,
 		minimumScore: RecommendedServerInfoScore = RecommendedServerInfoScore.BAD
-	) = getRecommendedServers(
+	): Flow<RecommendedServerInfo> = getRecommendedServers(
 		servers = getAddressCandidates(input),
 		includeAppendedServers = includeAppendedServers,
 		minimumScore = minimumScore
@@ -78,7 +80,7 @@ class DiscoveryService(
 	 * best candidate. Returns when a server with a score of [RecommendedServerInfoScore.GOOD] is
 	 * found or otherwise collects all servers and returns the best one based on order and score.
 	 */
-	suspend fun getRecommendedServer(
+	public suspend fun getRecommendedServer(
 		servers: List<String>,
 		includeAppendedServers: Boolean = true
 	): RecommendedServerInfo? {
@@ -100,10 +102,10 @@ class DiscoveryService(
 	 * Discover servers on the local network. Uses the [discoveryBroadcastAddressesProvider] to
 	 * find local devices to query.
 	 */
-	fun discoverLocalServers(
+	public fun discoverLocalServers(
 		timeout: Int = LocalServerDiscovery.DISCOVERY_TIMEOUT,
 		maxServers: Int = LocalServerDiscovery.DISCOVERY_MAX_SERVERS
-	) = localServerDiscovery.discover(
+	): Flow<DiscoveryServerInfo> = localServerDiscovery.discover(
 		timeout = timeout,
 		maxServers = maxServers
 	)

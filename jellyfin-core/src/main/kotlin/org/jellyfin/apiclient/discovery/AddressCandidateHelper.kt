@@ -6,24 +6,24 @@ import org.slf4j.LoggerFactory
 /**
  * Parses the given [input] and allows to fix common mistakes.
  */
-class AddressCandidateHelper(
+public class AddressCandidateHelper(
 	private val input: String
 ) {
-	companion object {
+	public companion object {
 		/**
 		 * Default HTTP port for Jellyfin
 		 */
-		const val JF_HTTP_PORT = 8096
+		public const val JF_HTTP_PORT: Int = 8096
 
 		/**
 		 * Default HTTPS port for Jellyfin
 		 */
-		const val JF_HTTPS_PORT = 8920
+		public const val JF_HTTPS_PORT: Int = 8920
 
 		/**
 		 * Default base url for Jellyfin
 		 */
-		const val JF_BASE_URL = "/jellyfin/"
+		public const val JF_BASE_URL: String = "/jellyfin/"
 	}
 
 	private val candidates = mutableListOf<Url>()
@@ -52,7 +52,7 @@ class AddressCandidateHelper(
 	/**
 	 * Add a HTTPS candidate for each HTTP candidate
 	 */
-	fun addProtocolCandidates() {
+	public fun addProtocolCandidates() {
 		logger.debug("Adding protocol candidates")
 
 		// Add HTTPS candidate for each HTTP candidate
@@ -67,7 +67,7 @@ class AddressCandidateHelper(
 	 * Add a candidate using Jellyfin ports for each candidate without a specified port or
 	 * protocol-default port.
 	 */
-	fun addPortCandidates() {
+	public fun addPortCandidates() {
 		logger.debug("Adding port candidates")
 
 		// Add HTTPS candidate for each HTTP candidate
@@ -89,7 +89,7 @@ class AddressCandidateHelper(
 	/**
 	 * Add a base url ([JF_BASE_URL]) for each candidate with a root or no path.
 	 */
-	fun addBaseUrlCandidates() {
+	public fun addBaseUrlCandidates() {
 		logger.debug("Adding base url candidates")
 
 		candidates
@@ -109,7 +109,7 @@ class AddressCandidateHelper(
 	 *
 	 *   - BaseUrl
 	 */
-	fun addCommonCandidates() {
+	public fun addCommonCandidates() {
 		logger.debug("Adding common candidates")
 
 		addProtocolCandidates()
@@ -143,7 +143,7 @@ class AddressCandidateHelper(
 	 *   - HTTPS above HTTP
 	 *   - Jellyfin ports above default ports
 	 */
-	fun prioritize() {
+	public fun prioritize() {
 		logger.debug("Prioritizing candidates")
 		candidates.sortWith(prioritizeComparator)
 	}
@@ -152,7 +152,7 @@ class AddressCandidateHelper(
 	 * Get all deduplicated candidate URLs as strings.
 	 * Call [prioritize] before if a sorted list is desired.
 	 */
-	fun getCandidates(): List<String> = candidates
+	public fun getCandidates(): List<String> = candidates
 		.map { it.toString() }
 		.distinct()
 }
