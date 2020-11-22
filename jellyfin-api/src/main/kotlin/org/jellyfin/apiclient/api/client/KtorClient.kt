@@ -47,16 +47,24 @@ public open class KtorClient(
 	override fun createPath(path: String, pathParameters: Map<String, Any?>): String = path
 		.split('/')
 		.filterNot { it.isEmpty() }
-		.map { rawName ->
+		.mapNotNull { rawName ->
 			val name = rawName.removeSurrounding(prefix = "{", suffix = "}")
 
-			// only act if the name actually is a variable
+			// Only act if the name actually is a variable
 			if (name != rawName) {
-				val value = pathParameters[name] ?: throw MissingPathVariableError(name, path)
-				return@map value.toString().encodeURLParameter(true)
+				// Check if key is set
+				if (!pathParameters.containsKey(name))
+					throw MissingPathVariableError(name, path)
+
+				// Check value
+				return@mapNotNull when (val value = pathParameters[name]) {
+					// Don't encode null values
+					null -> null
+					else -> value.toString().encodeURLParameter(true)
+				}
 			}
 
-			return@map rawName
+			return@mapNotNull rawName
 		}
 		.joinToString("/")
 
