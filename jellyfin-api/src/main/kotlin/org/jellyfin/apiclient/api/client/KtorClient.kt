@@ -72,6 +72,7 @@ public open class KtorClient(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?>,
 		queryParameters: Map<String, Any?>,
+		includeCredentials: Boolean
 	): String {
 		// Check if the base url is not null
 		val baseUrl = checkNotNull(baseUrl)
@@ -91,6 +92,9 @@ public open class KtorClient(
 				.forEach {
 					parameters.append(it.key, it.value.toString())
 				}
+
+			if (includeCredentials)
+				parameters.append("ApiKey", checkNotNull(accessToken))
 		}.buildString()
 	}
 
