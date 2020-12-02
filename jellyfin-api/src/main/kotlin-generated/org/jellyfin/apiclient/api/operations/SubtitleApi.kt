@@ -54,12 +54,14 @@ public class SubtitleApi(
 	 * Gets a fallback font file.
 	 *
 	 * @param name The name of the fallback font file to get.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getFallbackFontUrl(name: String): String {
+	public fun getFallbackFontUrl(name: String, includeCredentials: Boolean = false): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/FallbackFont/Fonts/{name}", pathParameters, queryParameters)
+		return api.createUrl("/FallbackFont/Fonts/{name}", pathParameters, queryParameters,
+				includeCredentials)
 	}
 
 	/**
@@ -230,12 +232,14 @@ public class SubtitleApi(
 	 * @param index The subtitle stream index.
 	 * @param mediaSourceId The media source id.
 	 * @param segmentLength The subtitle segment length.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getSubtitlePlaylistUrl(
 		itemId: UUID,
 		index: Int,
 		mediaSourceId: String,
-		segmentLength: Int
+		segmentLength: Int,
+		includeCredentials: Boolean = false
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -244,7 +248,7 @@ public class SubtitleApi(
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["segmentLength"] = segmentLength
 		return api.createUrl("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8",
-				pathParameters, queryParameters)
+				pathParameters, queryParameters, includeCredentials)
 	}
 
 	/**

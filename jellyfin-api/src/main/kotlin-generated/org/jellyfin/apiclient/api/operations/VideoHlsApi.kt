@@ -277,6 +277,7 @@ public class VideoHlsApi(
 	 * @param maxWidth Optional. The max width.
 	 * @param maxHeight Optional. The max height.
 	 * @param enableSubtitlesInManifest Optional. Whether to enable subtitles in the manifest.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getLiveHlsStreamUrl(
 		itemId: UUID,
@@ -330,7 +331,8 @@ public class VideoHlsApi(
 		streamOptions: Map<String, String>? = null,
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
-		enableSubtitlesInManifest: Boolean? = null
+		enableSubtitlesInManifest: Boolean? = null,
+		includeCredentials: Boolean = false
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -386,6 +388,7 @@ public class VideoHlsApi(
 		queryParameters["maxWidth"] = maxWidth
 		queryParameters["maxHeight"] = maxHeight
 		queryParameters["enableSubtitlesInManifest"] = enableSubtitlesInManifest
-		return api.createUrl("/Videos/{itemId}/live.m3u8", pathParameters, queryParameters)
+		return api.createUrl("/Videos/{itemId}/live.m3u8", pathParameters, queryParameters,
+				includeCredentials)
 	}
 }

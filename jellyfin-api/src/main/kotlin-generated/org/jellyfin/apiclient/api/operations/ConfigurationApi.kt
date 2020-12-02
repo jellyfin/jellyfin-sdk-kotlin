@@ -7,6 +7,7 @@ package org.jellyfin.apiclient.api.operations
 
 import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
@@ -59,12 +60,14 @@ public class ConfigurationApi(
 	 * Gets a named configuration.
 	 *
 	 * @param key Configuration key.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getNamedConfigurationUrl(key: String): String {
+	public fun getNamedConfigurationUrl(key: String, includeCredentials: Boolean = false): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["key"] = key
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/System/Configuration/{key}", pathParameters, queryParameters)
+		return api.createUrl("/System/Configuration/{key}", pathParameters, queryParameters,
+				includeCredentials)
 	}
 
 	/**

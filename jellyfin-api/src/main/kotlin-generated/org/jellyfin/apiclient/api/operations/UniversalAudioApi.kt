@@ -112,6 +112,7 @@ public class UniversalAudioApi(
 	 * @param enableRemoteMedia Optional. Whether to enable remote media.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param enableRedirection Whether to enable redirection. Defaults to true.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getUniversalAudioStreamUrl(
 		itemId: UUID,
@@ -131,7 +132,8 @@ public class UniversalAudioApi(
 		maxAudioBitDepth: Int? = null,
 		enableRemoteMedia: Boolean? = null,
 		breakOnNonKeyFrames: Boolean,
-		enableRedirection: Boolean
+		enableRedirection: Boolean,
+		includeCredentials: Boolean = false
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -153,6 +155,7 @@ public class UniversalAudioApi(
 		queryParameters["enableRemoteMedia"] = enableRemoteMedia
 		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
 		queryParameters["enableRedirection"] = enableRedirection
-		return api.createUrl("/Audio/{itemId}/universal", pathParameters, queryParameters)
+		return api.createUrl("/Audio/{itemId}/universal", pathParameters, queryParameters,
+				includeCredentials)
 	}
 }

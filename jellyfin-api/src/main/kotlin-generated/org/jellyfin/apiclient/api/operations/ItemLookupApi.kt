@@ -111,13 +111,19 @@ public class ItemLookupApi(
 	 *
 	 * @param imageUrl The image url.
 	 * @param providerName The provider name.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getRemoteSearchImageUrl(imageUrl: String, providerName: String): String {
+	public fun getRemoteSearchImageUrl(
+		imageUrl: String,
+		providerName: String,
+		includeCredentials: Boolean = false
+	): String {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["imageUrl"] = imageUrl
 		queryParameters["providerName"] = providerName
-		return api.createUrl("/Items/RemoteSearch/Image", pathParameters, queryParameters)
+		return api.createUrl("/Items/RemoteSearch/Image", pathParameters, queryParameters,
+				includeCredentials)
 	}
 
 	/**

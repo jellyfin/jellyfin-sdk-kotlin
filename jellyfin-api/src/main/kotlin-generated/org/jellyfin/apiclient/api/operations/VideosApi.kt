@@ -272,6 +272,7 @@ public class VideosApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getVideoStreamByContainerUrl(
 		itemId: UUID,
@@ -323,7 +324,8 @@ public class VideosApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null
+		streamOptions: Map<String, String>? = null,
+		includeCredentials: Boolean = false
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -377,7 +379,8 @@ public class VideosApi(
 		queryParameters["videoStreamIndex"] = videoStreamIndex
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
-		return api.createUrl("/Videos/{itemId}/{stream}.{container}", pathParameters, queryParameters)
+		return api.createUrl("/Videos/{itemId}/{stream}.{container}", pathParameters, queryParameters,
+				includeCredentials)
 	}
 
 	/**
@@ -658,6 +661,7 @@ public class VideosApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getVideoStreamUrl(
 		itemId: UUID,
@@ -708,7 +712,8 @@ public class VideosApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null
+		streamOptions: Map<String, String>? = null,
+		includeCredentials: Boolean = false
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -761,7 +766,8 @@ public class VideosApi(
 		queryParameters["videoStreamIndex"] = videoStreamIndex
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
-		return api.createUrl("/Videos/{itemId}/stream", pathParameters, queryParameters)
+		return api.createUrl("/Videos/{itemId}/stream", pathParameters, queryParameters,
+				includeCredentials)
 	}
 
 	/**

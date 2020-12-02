@@ -179,11 +179,12 @@ public class MediaInfoApi(
 	 * Tests the network with a request with the size of the bitrate.
 	 *
 	 * @param size The bitrate. Defaults to 102400.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getBitrateTestBytesUrl(size: Int): String {
+	public fun getBitrateTestBytesUrl(size: Int, includeCredentials: Boolean = false): String {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["size"] = size
-		return api.createUrl("/Playback/BitrateTest", pathParameters, queryParameters)
+		return api.createUrl("/Playback/BitrateTest", pathParameters, queryParameters, includeCredentials)
 	}
 }
