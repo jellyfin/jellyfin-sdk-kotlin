@@ -7,6 +7,7 @@ package org.jellyfin.apiclient.api.operations
 
 import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
+import kotlin.Boolean
 import kotlin.String
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
@@ -186,13 +187,19 @@ public class DlnaServerApi(
 	 *
 	 * @param serverId Server UUID.
 	 * @param fileName The icon filename.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getIconIdUrl(serverId: String, fileName: String): String {
+	public fun getIconIdUrl(
+		serverId: String,
+		fileName: String,
+		includeCredentials: Boolean = false
+	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId
 		pathParameters["fileName"] = fileName
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Dlna/{serverId}/icons/{fileName}", pathParameters, queryParameters)
+		return api.createUrl("/Dlna/{serverId}/icons/{fileName}", pathParameters, queryParameters,
+				includeCredentials)
 	}
 
 	/**
@@ -276,11 +283,13 @@ public class DlnaServerApi(
 	 * Gets a server icon.
 	 *
 	 * @param fileName The icon filename.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getIconUrl(fileName: String): String {
+	public fun getIconUrl(fileName: String, includeCredentials: Boolean = false): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["fileName"] = fileName
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Dlna/icons/{fileName}", pathParameters, queryParameters)
+		return api.createUrl("/Dlna/icons/{fileName}", pathParameters, queryParameters,
+				includeCredentials)
 	}
 }

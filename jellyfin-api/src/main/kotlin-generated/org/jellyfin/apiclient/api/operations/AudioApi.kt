@@ -265,6 +265,7 @@ public class AudioApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getAudioStreamUrl(
 		itemId: UUID,
@@ -315,7 +316,8 @@ public class AudioApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null
+		streamOptions: Map<String, String>? = null,
+		includeCredentials: Boolean = false
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -368,7 +370,8 @@ public class AudioApi(
 		queryParameters["videoStreamIndex"] = videoStreamIndex
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
-		return api.createUrl("/Audio/{itemId}/stream", pathParameters, queryParameters)
+		return api.createUrl("/Audio/{itemId}/stream", pathParameters, queryParameters,
+				includeCredentials)
 	}
 
 	/**
@@ -614,6 +617,7 @@ public class AudioApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getAudioStreamByContainerUrl(
 		itemId: UUID,
@@ -664,7 +668,8 @@ public class AudioApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null
+		streamOptions: Map<String, String>? = null,
+		includeCredentials: Boolean = false
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -717,6 +722,7 @@ public class AudioApi(
 		queryParameters["videoStreamIndex"] = videoStreamIndex
 		queryParameters["context"] = context
 		queryParameters["streamOptions"] = streamOptions
-		return api.createUrl("/Audio/{itemId}/stream.{container}", pathParameters, queryParameters)
+		return api.createUrl("/Audio/{itemId}/stream.{container}", pathParameters, queryParameters,
+				includeCredentials)
 	}
 }

@@ -53,13 +53,18 @@ class OperationUrlBuilder(
 			.union(data.queryParameters)
 			.forEach { parameter -> addParameter(buildParameter(parameter)) }
 
+		ParameterSpec.builder("includeCredentials", Boolean::class).apply {
+			defaultValue("%L", "false")
+			addKdoc("%L", Strings.INCLUDE_CREDENTIALS_DESCRIPTION)
+		}.build().let(::addParameter)
+
 		// Create parameter maps
 		addParameterMapStatements("pathParameters", data.pathParameters)
 		addParameterMapStatements("queryParameters", data.queryParameters)
 
 		// Call API
 		addStatement(
-			"return·api.createUrl(%S, pathParameters, queryParameters)",
+			"return·api.createUrl(%S, pathParameters, queryParameters, includeCredentials)",
 			data.pathTemplate
 		)
 	}.build()

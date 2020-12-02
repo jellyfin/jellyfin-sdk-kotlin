@@ -14,12 +14,16 @@ public interface ApiClient {
 
 	/**
 	 * Create a complete url based on the [baseUrl] and given parameters.
-	 * Uses [createPath] to create the path
+	 * Uses [createPath] to create the path.
+	 *
+	 * When [includeCredentials] is true it will add the access token to the
+	 * url to make an authenticated request.
 	 */
 	public fun createUrl(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
+		includeCredentials: Boolean = false
 	): String
 
 	public fun createAuthorizationHeader(): String?

@@ -40,12 +40,13 @@ public class RemoteImageApi(
 	 * Gets a remote image.
 	 *
 	 * @param imageUrl The image url.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getRemoteImageUrl(imageUrl: String): String {
+	public fun getRemoteImageUrl(imageUrl: String, includeCredentials: Boolean = false): String {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["imageUrl"] = imageUrl
-		return api.createUrl("/Images/Remote", pathParameters, queryParameters)
+		return api.createUrl("/Images/Remote", pathParameters, queryParameters, includeCredentials)
 	}
 
 	/**
