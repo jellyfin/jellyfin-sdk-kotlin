@@ -8,6 +8,7 @@ data class ApiServiceOperation(
 	val deprecated: Boolean,
 	val pathTemplate: String,
 	val method: HttpMethod,
+	val requireAuthentication: Boolean,
 	val returnType: TypeName,
 	val pathParameters: Collection<ApiServiceOperationParameter> = emptyList(),
 	val queryParameters: Collection<ApiServiceOperationParameter> = emptyList(),

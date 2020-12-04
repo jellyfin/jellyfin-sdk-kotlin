@@ -54,7 +54,7 @@ class OperationUrlBuilder(
 			.forEach { parameter -> addParameter(buildParameter(parameter)) }
 
 		ParameterSpec.builder("includeCredentials", Boolean::class).apply {
-			defaultValue("%L", "false")
+			defaultValue("%L", data.requireAuthentication)
 			addKdoc("%L", Strings.INCLUDE_CREDENTIALS_DESCRIPTION)
 		}.build().let(::addParameter)
 
