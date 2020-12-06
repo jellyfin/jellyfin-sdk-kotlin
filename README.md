@@ -1,5 +1,5 @@
-<h1 align="center">Jellyfin</h1>
-<h3 align="center">The Free Software Media System</h3>
+<h1 align="center">Jellyfin Java API Client</h1>
+<h3 align="center">Part of the <a href="https://jellyfin.media">Jellyfin Project</a></h3>
 
 ---
 
