@@ -41,7 +41,7 @@ The dependencies are modular and can easily be swapped out with alternate implem
 
 ## Setup
 
-The apiclient is available through [JCenter](https://bintray.com/jellyfin/jellyfin-apiclient-java/jellyfin-apiclient-java), and thus can be installed via Gradle like any other dependency:
+The API client is available through [JCenter](https://bintray.com/jellyfin/jellyfin-apiclient-java/jellyfin-apiclient-java), and thus can be installed via Gradle like any other dependency:
 
 ```kotlin
 // build.gradle.kts
@@ -77,7 +77,13 @@ dependencies {
 }
 ```
 
-## Android Example
+---
+
+## Basic Examples
+
+Here you can find some basic examples on how to use the API client library.
+
+### Android Example
 
 This Kotlin example creates a new instance of the Jellyfin class with Android support enabled.
 It will then try to authenticate to a server with a username and password combination.
@@ -108,24 +114,27 @@ apiClient.AuthenticateUserAsync("username", "password", object : Response<Authen
 })
 ```
 
-## Websockets
+### Websockets Example
 
-Once you have an ApiClient instance you can easily connect to the server's websocket using the following command.
+Once you have an API client instance you can easily connect to the server's websocket using the following command.
 
 ```kotlin
 apiClient.OpenWebSocket()
 ```
 
-This will open a connection in a background thread, and periodically check to ensure it's still connected. The web socket provides various events that can be used to receive notifications from the server. Simply override the methods in the ApiEventListener class which can be passed to the "createApi" function.
+This will open a connection in a background thread, and periodically check to ensure it's still connected.
+The web socket provides various events that can be used to receive notifications from the server.
+Simply override the methods in the ApiEventListener class which can be passed to the "createApi" function.
 
 ```kotlin
 override fun onSetVolumeCommand(value: Int) {
 }
 ```
 
-## Using Java
+### Java Example
 
-The Jellyfin library supports both Java and Kotlin out of the box. The basic Android example in Java looks like this:
+The Jellyfin library supports both Java and Kotlin out of the box.
+The basic Android example in Java looks like this:
 
 ```java
 // Create the options using the options builder
@@ -157,3 +166,26 @@ apiClient.AuthenticateUserAsync("username", "password", new Response<Authenticat
 	}
 });
 ```
+
+---
+
+## Reference Use-Cases
+
+This API client library can be utilised in any Java or Kotlin based client application and serves as an abstraction layer to interact with the API endpoints provided by a current version of Jellyfin server.
+The Jellyfin Project already uses this client library within two of its official clients and provides this utility to any other developer with the need for this library.
+You can use these reference use-cases to help in case you plan to develop your own JVM based Jellyfin client(s). 
+
+### Jellyfin Android
+
+[Jellyfin Android](https://github.com/jellyfin/jellyfin-android) is the new official Kotlin based re-implementation of the old Android client.
+Should you intend to use this library with Kotlin as your language of choice, then you can use this client as a reference.
+
+### Jellyfin Android TV
+
+[Jellyfin Android TV](https://github.com/jellyfin/jellyfin-androidtv) is the current official Android TV client.
+It mostly represents a Java-based client using this library, yet is in the process of migrating to Kotlin.
+
+### Gelli
+
+[Gelli](https://github.com/dkanada/gelli) is a music-focused 3rd party Android client developed and maintained by one of the core Jellyfin members.
+It represents a pure Java client utilising this client library.
