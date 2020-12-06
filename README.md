@@ -7,6 +7,9 @@
 <img alt="Logo Banner" src="https://raw.githubusercontent.com/jellyfin/jellyfin-ux/master/branding/SVG/banner-logo-solid.svg?sanitize=true"/>
 <br/>
 <br/>
+<a href="https://dev.azure.com/jellyfin-project/jellyfin/_build?definitionId=24&_a=summary&repositoryFilter=3&branchFilter=257%2C257%2C257%2C257%2C257%2C257%2C257%2C257%2C257%2C257">
+<img alt="Azure DevOps builds" src="https://img.shields.io/azure-devops/build/jellyfin-project/7cce6c46-d610-45e3-9fb7-65a6bfd1b671/24.svg">
+</a>
 <a href="https://github.com/jellyfin/jellyfin-apiclient-java">
 <img alt="LGPL 3.0 license" src="https://img.shields.io/github/license/jellyfin/jellyfin-apiclient-java.svg"/>
 </a>
@@ -17,14 +20,8 @@
 <a href="https://opencollective.com/jellyfin">
 <img alt="Donate" src="https://img.shields.io/opencollective/all/jellyfin.svg?label=backers"/>
 </a>
-<a href="https://features.jellyfin.org">
-<img alt="Submit Feature Requests" src="https://img.shields.io/badge/fider-vote%20on%20features-success.svg"/>
-</a>
-<a href="https://forum.jellyfin.org">
-<img alt="Discuss on our Forum" src="https://img.shields.io/discourse/https/forum.jellyfin.org/users.svg"/>
-</a>
-<a href="https://matrix.to/#/+jellyfin:matrix.org">
-<img alt="Chat on Matrix" src="https://img.shields.io/matrix/jellyfin:matrix.org.svg?logo=matrix"/>
+<a href="https://matrix.to/#/+jellyfin-android-dev:matrix.org">
+<img alt="Chat on Matrix" src="https://img.shields.io/matrix/jellyfin-android-dev:matrix.org.svg?logo=matrix"/>
 </a>
 <a href="https://www.reddit.com/r/jellyfin">
 <img alt="Join our Subreddit" src="https://img.shields.io/badge/reddit-r%2Fjellyfin-%23FF5700.svg"/>
