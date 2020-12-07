@@ -1,5 +1,5 @@
-<h1 align="center">Jellyfin</h1>
-<h3 align="center">The Free Software Media System</h3>
+<h1 align="center">Jellyfin Java API Client</h1>
+<h3 align="center">Part of the <a href="https://jellyfin.media">Jellyfin Project</a></h3>
 
 ---
 
@@ -7,24 +7,24 @@
 <img alt="Logo Banner" src="https://raw.githubusercontent.com/jellyfin/jellyfin-ux/master/branding/SVG/banner-logo-solid.svg?sanitize=true"/>
 <br/>
 <br/>
+<a href="https://dev.azure.com/jellyfin-project/jellyfin/_build?definitionId=24&_a=summary&repositoryFilter=3&branchFilter=257%2C257%2C257%2C257%2C257%2C257%2C257%2C257%2C257%2C257">
+<img alt="Azure DevOps builds" src="https://img.shields.io/azure-devops/build/jellyfin-project/7cce6c46-d610-45e3-9fb7-65a6bfd1b671/24.svg">
+</a>
 <a href="https://github.com/jellyfin/jellyfin-apiclient-java">
 <img alt="LGPL 3.0 license" src="https://img.shields.io/github/license/jellyfin/jellyfin-apiclient-java.svg"/>
 </a>
 <a href="https://github.com/jellyfin/jellyfin-apiclient-java/releases">
 <img alt="Current Release" src="https://img.shields.io/github/release/jellyfin/jellyfin-apiclient-java.svg"/>
 </a>
+<a href="https://bintray.com/jellyfin/jellyfin-apiclient-java/jellyfin-apiclient-java">
+<img alt="Bintray Release" src="https://img.shields.io/bintray/v/jellyfin/jellyfin-apiclient-java/jellyfin-apiclient-java.svg"/>
+</a>
 <br/>
 <a href="https://opencollective.com/jellyfin">
 <img alt="Donate" src="https://img.shields.io/opencollective/all/jellyfin.svg?label=backers"/>
 </a>
-<a href="https://features.jellyfin.org">
-<img alt="Submit Feature Requests" src="https://img.shields.io/badge/fider-vote%20on%20features-success.svg"/>
-</a>
-<a href="https://forum.jellyfin.org">
-<img alt="Discuss on our Forum" src="https://img.shields.io/discourse/https/forum.jellyfin.org/users.svg"/>
-</a>
-<a href="https://matrix.to/#/+jellyfin:matrix.org">
-<img alt="Chat on Matrix" src="https://img.shields.io/matrix/jellyfin:matrix.org.svg?logo=matrix"/>
+<a href="https://matrix.to/#/+jellyfin-android-dev:matrix.org">
+<img alt="Chat on Matrix" src="https://img.shields.io/matrix/jellyfin-android-dev:matrix.org.svg?logo=matrix"/>
 </a>
 <a href="https://www.reddit.com/r/jellyfin">
 <img alt="Join our Subreddit" src="https://img.shields.io/badge/reddit-r%2Fjellyfin-%23FF5700.svg"/>
@@ -44,7 +44,7 @@ The dependencies are modular and can easily be swapped out with alternate implem
 
 ## Setup
 
-The apiclient is available through [JCenter](https://bintray.com/jellyfin/jellyfin-apiclient-java/jellyfin-apiclient-java), and thus can be installed via Gradle like any other dependency:
+The API client is available through [JCenter](https://bintray.com/jellyfin/jellyfin-apiclient-java/jellyfin-apiclient-java), and thus can be installed via Gradle like any other dependency:
 
 ```kotlin
 // build.gradle.kts
@@ -80,7 +80,13 @@ dependencies {
 }
 ```
 
-## Android Example
+---
+
+## Basic Examples
+
+Here you can find some basic examples on how to use the API client library.
+
+### Android Example
 
 This Kotlin example creates a new instance of the Jellyfin class with Android support enabled.
 It will then try to authenticate to a server with a username and password combination.
@@ -111,7 +117,7 @@ apiClient.AuthenticateUserAsync("username", "password", object : Response<Authen
 })
 ```
 
-## Websockets
+### Websockets Example
 
 Once you have an ApiClient instance you can easily connect to the server's websocket using the following command.
 
@@ -119,16 +125,19 @@ Once you have an ApiClient instance you can easily connect to the server's webso
 apiClient.OpenWebSocket()
 ```
 
-This will open a connection in a background thread, and periodically check to ensure it's still connected. The web socket provides various events that can be used to receive notifications from the server. Simply override the methods in the ApiEventListener class which can be passed to the "createApi" function.
+This will open a connection in a background thread, and periodically check to ensure it's still connected.
+The web socket provides various events that can be used to receive notifications from the server.
+Simply override the methods in the ApiEventListener class which can be passed to the "createApi" function.
 
 ```kotlin
 override fun onSetVolumeCommand(value: Int) {
 }
 ```
 
-## Using Java
+### Java Example
 
-The Jellyfin library supports both Java and Kotlin out of the box. The basic Android example in Java looks like this:
+The Jellyfin library supports both Java and Kotlin out of the box.
+The basic Android example in Java looks like this:
 
 ```java
 // Create the options using the options builder
@@ -160,3 +169,22 @@ apiClient.AuthenticateUserAsync("username", "password", new Response<Authenticat
 	}
 });
 ```
+
+---
+
+## Projects using the API client
+
+This library can be utilized in any JVM or Android based application and serves as an abstraction layer to interact with the API endpoints provided by a current version of Jellyfin server.
+We already use this library within our own official clients and is is used by other third-party clients as well.
+
+### Jellyfin for Android
+
+[Jellyfin for Android](https://github.com/jellyfin/jellyfin-android) is our official Kotlin based Android client for phones and tablets.
+
+### Jellyfin for Android TV
+
+[Jellyfin for Android TV](https://github.com/jellyfin/jellyfin-androidtv) is the official Android TV client for devices running Android TV, Fire TV or Google TV.
+
+### Gelli
+
+[Gelli](https://github.com/dkanada/gelli) is a music-focused third-party Android client.
