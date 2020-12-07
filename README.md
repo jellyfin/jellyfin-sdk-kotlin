@@ -116,7 +116,7 @@ apiClient.AuthenticateUserAsync("username", "password", object : Response<Authen
 
 ### Websockets Example
 
-Once you have an API client instance you can easily connect to the server's websocket using the following command.
+Once you have an ApiClient instance you can easily connect to the server's websocket using the following command.
 
 ```kotlin
 apiClient.OpenWebSocket()
@@ -169,23 +169,19 @@ apiClient.AuthenticateUserAsync("username", "password", new Response<Authenticat
 
 ---
 
-## Reference Use-Cases
+## Projects using the API client
 
-This API client library can be utilised in any Java or Kotlin based client application and serves as an abstraction layer to interact with the API endpoints provided by a current version of Jellyfin server.
-The Jellyfin Project already uses this client library within two of its official clients and provides this utility to any other developer with the need for this library.
-You can use these reference use-cases to help in case you plan to develop your own JVM based Jellyfin client(s). 
+This library can be utilized in any JVM or Android based application and serves as an abstraction layer to interact with the API endpoints provided by a current version of Jellyfin server.
+We already use this library within our own official clients and is is used by other third-party clients as well.
 
-### Jellyfin Android
+### Jellyfin for Android
 
-[Jellyfin Android](https://github.com/jellyfin/jellyfin-android) is the new official Kotlin based re-implementation of the old Android client.
-Should you intend to use this library with Kotlin as your language of choice, then you can use this client as a reference.
+[Jellyfin for Android](https://github.com/jellyfin/jellyfin-android) is our official Kotlin based Android client for phones and tablets.
 
-### Jellyfin Android TV
+### Jellyfin for Android TV
 
-[Jellyfin Android TV](https://github.com/jellyfin/jellyfin-androidtv) is the current official Android TV client.
-It mostly represents a Java-based client using this library, yet is in the process of migrating to Kotlin.
+[Jellyfin for Android TV](https://github.com/jellyfin/jellyfin-androidtv) is the official Android TV client for devices running Android TV, Fire TV or Google TV.
 
 ### Gelli
 
-[Gelli](https://github.com/dkanada/gelli) is a music-focused 3rd party Android client developed and maintained by one of the core Jellyfin members.
-It represents a pure Java client utilising this client library.
+[Gelli](https://github.com/dkanada/gelli) is a music-focused third-party Android client.
