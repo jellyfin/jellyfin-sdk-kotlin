@@ -16,6 +16,9 @@
 <a href="https://github.com/jellyfin/jellyfin-apiclient-java/releases">
 <img alt="Current Release" src="https://img.shields.io/github/release/jellyfin/jellyfin-apiclient-java.svg"/>
 </a>
+<a href="https://bintray.com/jellyfin/jellyfin-apiclient-java/jellyfin-apiclient-java">
+<img alt="Bintray Release" src="https://img.shields.io/bintray/v/jellyfin/jellyfin-apiclient-java/jellyfin-apiclient-java.svg"/>
+</a>
 <br/>
 <a href="https://opencollective.com/jellyfin">
 <img alt="Donate" src="https://img.shields.io/opencollective/all/jellyfin.svg?label=backers"/>
