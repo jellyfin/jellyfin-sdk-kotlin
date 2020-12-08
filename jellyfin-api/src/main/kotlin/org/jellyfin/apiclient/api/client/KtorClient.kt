@@ -98,12 +98,20 @@ public open class KtorClient(
 		}.buildString()
 	}
 
+	/**
+	 * This is a temporary workaround until we have a proper way to send device names to the server.
+	 * It will filter out all special characters.
+	 */
+	private fun String.encodeAuthorizationHeaderValue() = replace("[^\\w\\s]".toRegex(), "").trim()
+
 	override fun createAuthorizationHeader(): String? {
 		val params = mutableMapOf(
 			"client" to clientInfo.name,
 			"version" to clientInfo.version,
 			"deviceId" to deviceInfo.id,
-			"device" to deviceInfo.name
+			// Only encode the device name as it is user input
+			// other fields should be validated manually by the client
+			"device" to deviceInfo.name.encodeAuthorizationHeaderValue()
 		)
 
 		// Only set access token when it's not null
