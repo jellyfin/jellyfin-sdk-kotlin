@@ -13,7 +13,7 @@ dependencies {
 	implementation(Dependencies.KotlinX.coroutinesCore)
 	implementation(Dependencies.KotlinX.serializationJson)
 
-	implementation(Dependencies.Ktor.http)
+	api(Dependencies.Ktor.http)
 
 	// Logging
 	implementation(Dependencies.Slf4j.api)
