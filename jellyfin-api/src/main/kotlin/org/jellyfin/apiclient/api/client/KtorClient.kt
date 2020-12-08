@@ -13,13 +13,14 @@ import io.ktor.util.*
 import kotlinx.serialization.json.Json
 import org.jellyfin.apiclient.model.ClientInfo
 import org.jellyfin.apiclient.model.DeviceInfo
+import org.slf4j.LoggerFactory
 import kotlin.collections.set
 
 public open class KtorClient(
 	override var baseUrl: String? = null,
 	public var accessToken: String? = null,
 	public var clientInfo: ClientInfo,
-	public var deviceInfo: DeviceInfo
+	public var deviceInfo: DeviceInfo,
 ) : ApiClient {
 	internal val json = Json {
 		isLenient = false
@@ -72,7 +73,7 @@ public open class KtorClient(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?>,
 		queryParameters: Map<String, Any?>,
-		includeCredentials: Boolean
+		includeCredentials: Boolean,
 	): String {
 		// Check if the base url is not null
 		val baseUrl = checkNotNull(baseUrl)
@@ -89,8 +90,17 @@ public open class KtorClient(
 			// Append query parameters
 			queryParameters
 				.filterNot { it.value == null }
-				.forEach {
-					parameters.append(it.key, it.value.toString())
+				.forEach { (key, rawValue) ->
+					// Determine value
+					val value = when (rawValue) {
+						// Lists should be comma-separated
+						is Collection<*> -> if (rawValue.isNotEmpty()) rawValue.joinToString(",") else null
+						else -> rawValue.toString()
+					}
+
+					// Add not-null values
+					if (value != null)
+						parameters.append(key, value)
 				}
 
 			if (includeCredentials)
@@ -132,11 +142,17 @@ public open class KtorClient(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
-		requestBody: Any? = null
+		requestBody: Any? = null,
 	): Response<T> {
+		val url = createUrl(pathTemplate, pathParameters, queryParameters)
+
+		// Log HTTP call with access token removed
+		val safeUrl = accessToken?.let { url.replace(it, "******") } ?: url
+		LoggerFactory.getLogger(this::class.java).info("$method $safeUrl")
+
 		val response = client.request<HttpResponse> {
 			this.method = method
-			url(createUrl(pathTemplate, pathParameters, queryParameters))
+			url(url)
 			header(HttpHeaders.Authorization, createAuthorizationHeader())
 
 			if (requestBody != null)
@@ -150,7 +166,7 @@ public open class KtorClient(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
-		requestBody: Any? = null
+		requestBody: Any? = null,
 	): Response<T> = request(
 		method = HttpMethod.Get,
 		pathTemplate = pathTemplate,
@@ -163,7 +179,7 @@ public open class KtorClient(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
-		requestBody: Any? = null
+		requestBody: Any? = null,
 	): Response<T> = request(
 		method = HttpMethod.Post,
 		pathTemplate = pathTemplate,
@@ -176,7 +192,7 @@ public open class KtorClient(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
-		requestBody: Any? = null
+		requestBody: Any? = null,
 	): Response<T> = request(
 		method = HttpMethod.Delete,
 		pathTemplate = pathTemplate,
