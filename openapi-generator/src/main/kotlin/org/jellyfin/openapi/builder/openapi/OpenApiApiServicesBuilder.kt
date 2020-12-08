@@ -75,8 +75,8 @@ class OpenApiApiServicesBuilder(
 					println("Missing return-type for operation $operationName (status-codes: ${operation.responses.keys})")
 
 				val requireAuthentication = operation.security
-					?.mapNotNull { it[Security.SECURITY_SCHEME] }
-					?.firstOrNull()
+					?.firstOrNull { requirement -> requirement.containsKey(Security.SECURITY_SCHEME) }
+					?.get(Security.SECURITY_SCHEME)
 					?.any(Security.AUTHENTICATION_POLICIES::contains)
 					?: false
 
