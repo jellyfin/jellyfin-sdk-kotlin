@@ -8,6 +8,7 @@ import net.pearx.kasechange.toCamelCase
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.api.ApiNameBuilder
 import org.jellyfin.openapi.constants.MimeType
+import org.jellyfin.openapi.constants.Security
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.hooks.ApiTypePath
 import org.jellyfin.openapi.model.ApiService
@@ -73,12 +74,19 @@ class OpenApiApiServicesBuilder(
 				if (returnType == Unit::class.asTypeName() && "200" in operation.responses)
 					println("Missing return-type for operation $operationName (status-codes: ${operation.responses.keys})")
 
+				val requireAuthentication = operation.security
+					?.firstOrNull { requirement -> requirement.containsKey(Security.SECURITY_SCHEME) }
+					?.get(Security.SECURITY_SCHEME)
+					?.any(Security.AUTHENTICATION_POLICIES::contains)
+					?: false
+
 				operations[serviceName]!! += ApiServiceOperation(
 					name = operationName,
 					description = operation.description ?: operation.summary,
 					deprecated = operation.deprecated == true,
 					pathTemplate = path,
 					method = method,
+					requireAuthentication = requireAuthentication,
 					returnType = returnType,
 					pathParameters = pathParameters,
 					queryParameters = queryParameters,
