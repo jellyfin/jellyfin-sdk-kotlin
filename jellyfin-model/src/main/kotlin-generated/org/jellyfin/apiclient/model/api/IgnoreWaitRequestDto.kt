@@ -5,20 +5,18 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlin.Boolean
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Enum SendCommandType.
+ * Class IgnoreWaitRequestDto.
  */
 @Serializable
-public enum class SendCommandType {
-	@SerialName("Unpause")
-	UNPAUSE,
-	@SerialName("Pause")
-	PAUSE,
-	@SerialName("Stop")
-	STOP,
-	@SerialName("Seek")
-	SEEK,
-}
+public data class IgnoreWaitRequestDto(
+	/**
+	 * Gets or sets a value indicating whether the client should be ignored.
+	 */
+	@SerialName("IgnoreWait")
+	public val ignoreWait: Boolean
+)

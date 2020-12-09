@@ -367,5 +367,15 @@ public data class ServerConfiguration(
 	 * Gets or sets the number of days we should retain activity logs.
 	 */
 	@SerialName("ActivityLogRetentionDays")
-	public val activityLogRetentionDays: Int? = null
+	public val activityLogRetentionDays: Int? = null,
+	/**
+	 * Gets or sets the how the library scan fans out.
+	 */
+	@SerialName("LibraryScanFanoutConcurrency")
+	public val libraryScanFanoutConcurrency: Int,
+	/**
+	 * Gets or sets the how many metadata refreshes can run concurrently.
+	 */
+	@SerialName("LibraryMetadataRefreshConcurrency")
+	public val libraryMetadataRefreshConcurrency: Int
 )

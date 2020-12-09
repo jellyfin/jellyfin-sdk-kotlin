@@ -15,9 +15,9 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.api.DeviceProfileDto
 import org.jellyfin.apiclient.model.api.LiveStreamResponse
 import org.jellyfin.apiclient.model.api.OpenLiveStreamDto
+import org.jellyfin.apiclient.model.api.PlaybackInfoDto
 import org.jellyfin.apiclient.model.api.PlaybackInfoResponse
 
 public class MediaInfoApi(
@@ -41,7 +41,8 @@ public class MediaInfoApi(
 	}
 
 	/**
-	 * Gets live playback media info for an item.
+	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher
+	 * precedence.
 	 *
 	 * @param itemId The item id.
 	 * @param userId The user id.
@@ -69,13 +70,13 @@ public class MediaInfoApi(
 		maxAudioChannels: Int? = null,
 		mediaSourceId: String? = null,
 		liveStreamId: String? = null,
-		autoOpenLiveStream: Boolean = false,
-		enableDirectPlay: Boolean = true,
-		enableDirectStream: Boolean = true,
-		enableTranscoding: Boolean = true,
-		allowVideoStreamCopy: Boolean = true,
-		allowAudioStreamCopy: Boolean = true,
-		`data`: DeviceProfileDto
+		autoOpenLiveStream: Boolean? = null,
+		enableDirectPlay: Boolean? = null,
+		enableDirectStream: Boolean? = null,
+		enableTranscoding: Boolean? = null,
+		allowVideoStreamCopy: Boolean? = null,
+		allowAudioStreamCopy: Boolean? = null,
+		`data`: PlaybackInfoDto
 	): Response<PlaybackInfoResponse> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -181,7 +182,7 @@ public class MediaInfoApi(
 	 * @param size The bitrate. Defaults to 102400.
 	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getBitrateTestBytesUrl(size: Int, includeCredentials: Boolean = false): String {
+	public fun getBitrateTestBytesUrl(size: Int, includeCredentials: Boolean = true): String {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["size"] = size

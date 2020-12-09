@@ -15,7 +15,7 @@ public class TimeSyncApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Gets the current utc time.
+	 * Gets the current UTC time.
 	 */
 	public suspend fun getUtcTime(): Response<UtcTimeResponse> {
 		val pathParameters = emptyMap<String, Any?>()

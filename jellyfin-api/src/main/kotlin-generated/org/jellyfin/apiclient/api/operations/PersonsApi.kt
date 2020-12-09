@@ -54,7 +54,7 @@ public class PersonsApi(
 		enableImageTypes: List<ImageType>? = emptyList(),
 		excludePersonTypes: List<String>? = emptyList(),
 		personTypes: List<String>? = emptyList(),
-		appearsInItemId: String? = null,
+		appearsInItemId: UUID? = null,
 		userId: UUID? = null,
 		enableImages: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {

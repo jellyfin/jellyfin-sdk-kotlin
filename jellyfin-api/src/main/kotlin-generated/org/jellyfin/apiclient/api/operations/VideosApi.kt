@@ -86,7 +86,7 @@ public class VideosApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
 	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
-	 * @param transcodingReasons Optional. The transcoding reason.
+	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
 	 * audio stream will be used.
 	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
@@ -140,7 +140,7 @@ public class VideosApi(
 		enableMpegtsM2TsMode: Boolean? = null,
 		videoCodec: String? = null,
 		subtitleCodec: String? = null,
-		transcodingReasons: String? = null,
+		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
@@ -193,7 +193,7 @@ public class VideosApi(
 		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
 		queryParameters["videoCodec"] = videoCodec
 		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodingReasons"] = transcodingReasons
+		queryParameters["transcodeReasons"] = transcodeReasons
 		queryParameters["audioStreamIndex"] = audioStreamIndex
 		queryParameters["videoStreamIndex"] = videoStreamIndex
 		queryParameters["context"] = context
@@ -265,7 +265,7 @@ public class VideosApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
 	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
-	 * @param transcodingReasons Optional. The transcoding reason.
+	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
 	 * audio stream will be used.
 	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
@@ -320,7 +320,7 @@ public class VideosApi(
 		enableMpegtsM2TsMode: Boolean? = null,
 		videoCodec: String? = null,
 		subtitleCodec: String? = null,
-		transcodingReasons: String? = null,
+		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
@@ -374,7 +374,7 @@ public class VideosApi(
 		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
 		queryParameters["videoCodec"] = videoCodec
 		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodingReasons"] = transcodingReasons
+		queryParameters["transcodeReasons"] = transcodeReasons
 		queryParameters["audioStreamIndex"] = audioStreamIndex
 		queryParameters["videoStreamIndex"] = videoStreamIndex
 		queryParameters["context"] = context
@@ -477,7 +477,7 @@ public class VideosApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
 	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
-	 * @param transcodingReasons Optional. The transcoding reason.
+	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
 	 * audio stream will be used.
 	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
@@ -530,7 +530,7 @@ public class VideosApi(
 		enableMpegtsM2TsMode: Boolean? = null,
 		videoCodec: String? = null,
 		subtitleCodec: String? = null,
-		transcodingReasons: String? = null,
+		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
@@ -582,7 +582,7 @@ public class VideosApi(
 		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
 		queryParameters["videoCodec"] = videoCodec
 		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodingReasons"] = transcodingReasons
+		queryParameters["transcodeReasons"] = transcodeReasons
 		queryParameters["audioStreamIndex"] = audioStreamIndex
 		queryParameters["videoStreamIndex"] = videoStreamIndex
 		queryParameters["context"] = context
@@ -654,7 +654,7 @@ public class VideosApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
 	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
-	 * @param transcodingReasons Optional. The transcoding reason.
+	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
 	 * audio stream will be used.
 	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
@@ -708,7 +708,7 @@ public class VideosApi(
 		enableMpegtsM2TsMode: Boolean? = null,
 		videoCodec: String? = null,
 		subtitleCodec: String? = null,
-		transcodingReasons: String? = null,
+		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
@@ -761,7 +761,7 @@ public class VideosApi(
 		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
 		queryParameters["videoCodec"] = videoCodec
 		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodingReasons"] = transcodingReasons
+		queryParameters["transcodeReasons"] = transcodeReasons
 		queryParameters["audioStreamIndex"] = audioStreamIndex
 		queryParameters["videoStreamIndex"] = videoStreamIndex
 		queryParameters["context"] = context
@@ -773,12 +773,12 @@ public class VideosApi(
 	/**
 	 * Merges videos into a single record.
 	 *
-	 * @param itemIds Item id list. This allows multiple, comma delimited.
+	 * @param ids Item id list. This allows multiple, comma delimited.
 	 */
-	public suspend fun mergeVersions(itemIds: List<UUID> = emptyList()): Response<Unit> {
+	public suspend fun mergeVersions(ids: List<UUID> = emptyList()): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["itemIds"] = itemIds
+		queryParameters["ids"] = ids
 		val data = null
 		val response = api.post<Unit>("/Videos/MergeVersions", pathParameters, queryParameters, data)
 		return response

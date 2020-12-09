@@ -62,7 +62,7 @@ public class ConfigurationApi(
 	 * @param key Configuration key.
 	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getNamedConfigurationUrl(key: String, includeCredentials: Boolean = false): String {
+	public fun getNamedConfigurationUrl(key: String, includeCredentials: Boolean = true): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["key"] = key
 		val queryParameters = emptyMap<String, Any?>()

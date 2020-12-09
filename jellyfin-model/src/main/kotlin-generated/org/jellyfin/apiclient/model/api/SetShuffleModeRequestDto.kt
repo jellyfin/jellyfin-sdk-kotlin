@@ -9,16 +9,10 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Enum SendCommandType.
+ * Class SetShuffleModeRequestDto.
  */
 @Serializable
-public enum class SendCommandType {
-	@SerialName("Unpause")
-	UNPAUSE,
-	@SerialName("Pause")
-	PAUSE,
-	@SerialName("Stop")
-	STOP,
-	@SerialName("Seek")
-	SEEK,
-}
+public data class SetShuffleModeRequestDto(
+	@SerialName("Mode")
+	public val mode: GroupShuffleMode? = null
+)

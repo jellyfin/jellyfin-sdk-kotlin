@@ -8,27 +8,32 @@
 package org.jellyfin.apiclient.model.api
 
 import java.util.UUID
+import kotlin.Int
+import kotlin.Long
+import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import kotlinx.serialization.json.JsonElement
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 /**
- * Class GroupUpdate.
+ * Class PlayRequestDto.
  */
 @Serializable
-public data class ObjectGroupUpdate(
+public data class PlayRequestDto(
 	/**
-	 * Gets the group identifier.
+	 * Gets or sets the playing queue.
 	 */
-	@SerialName("GroupId")
-	public val groupId: UUID,
-	@SerialName("Type")
-	public val type: GroupUpdateType? = null,
+	@SerialName("PlayingQueue")
+	public val playingQueue: List<UUID>? = null,
 	/**
-	 * Gets the update data.
+	 * Gets or sets the position of the playing item in the queue.
 	 */
-	@SerialName("Data")
-	public val `data`: JsonElement
+	@SerialName("PlayingItemPosition")
+	public val playingItemPosition: Int,
+	/**
+	 * Gets or sets the start position ticks.
+	 */
+	@SerialName("StartPositionTicks")
+	public val startPositionTicks: Long
 )

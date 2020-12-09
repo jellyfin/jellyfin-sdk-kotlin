@@ -53,7 +53,7 @@ public class StudiosApi(
 		startIndex: Int? = null,
 		limit: Int? = null,
 		searchTerm: String? = null,
-		parentId: String? = null,
+		parentId: UUID? = null,
 		fields: List<ItemFields>? = emptyList(),
 		excludeItemTypes: List<String>? = emptyList(),
 		includeItemTypes: List<String>? = emptyList(),

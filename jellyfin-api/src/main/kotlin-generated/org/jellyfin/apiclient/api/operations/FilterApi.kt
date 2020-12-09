@@ -29,7 +29,7 @@ public class FilterApi(
 	 */
 	public suspend fun getQueryFiltersLegacy(
 		userId: UUID? = null,
-		parentId: String? = null,
+		parentId: UUID? = null,
 		includeItemTypes: List<String>? = emptyList(),
 		mediaTypes: List<String>? = emptyList()
 	): Response<QueryFiltersLegacy> {
@@ -63,7 +63,7 @@ public class FilterApi(
 	 */
 	public suspend fun getQueryFilters(
 		userId: UUID? = null,
-		parentId: String? = null,
+		parentId: UUID? = null,
 		includeItemTypes: List<String>? = emptyList(),
 		isAiring: Boolean? = null,
 		isMovie: Boolean? = null,
