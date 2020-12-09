@@ -59,7 +59,7 @@ public class ChannelsApi(
 	 *
 	 * @param channelId Channel id.
 	 */
-	public suspend fun getChannelFeatures(channelId: String): Response<ChannelFeatures> {
+	public suspend fun getChannelFeatures(channelId: UUID): Response<ChannelFeatures> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["channelId"] = channelId
 		val queryParameters = emptyMap<String, Any?>()

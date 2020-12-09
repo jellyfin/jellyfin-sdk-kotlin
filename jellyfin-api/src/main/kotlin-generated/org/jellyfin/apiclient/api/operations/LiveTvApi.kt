@@ -289,7 +289,7 @@ public class LiveTvApi(
 	 *
 	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getSchedulesDirectCountriesUrl(includeCredentials: Boolean = false): String {
+	public fun getSchedulesDirectCountriesUrl(includeCredentials: Boolean = true): String {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/LiveTv/ListingProviders/SchedulesDirect/Countries", pathParameters,

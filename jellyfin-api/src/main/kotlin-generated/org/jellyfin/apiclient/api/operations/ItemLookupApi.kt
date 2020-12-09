@@ -116,7 +116,7 @@ public class ItemLookupApi(
 	public fun getRemoteSearchImageUrl(
 		imageUrl: String,
 		providerName: String,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = true
 	): String {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

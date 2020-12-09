@@ -9,16 +9,12 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Enum SendCommandType.
+ * Enum GroupShuffleMode.
  */
 @Serializable
-public enum class SendCommandType {
-	@SerialName("Unpause")
-	UNPAUSE,
-	@SerialName("Pause")
-	PAUSE,
-	@SerialName("Stop")
-	STOP,
-	@SerialName("Seek")
-	SEEK,
+public enum class GroupShuffleMode {
+	@SerialName("Sorted")
+	SORTED,
+	@SerialName("Shuffle")
+	SHUFFLE,
 }

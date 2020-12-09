@@ -33,7 +33,7 @@ public class LibraryApi(
 	 *
 	 * @param ids The item ids.
 	 */
-	public suspend fun deleteItems(ids: List<String>? = emptyList()): Response<Unit> {
+	public suspend fun deleteItems(ids: List<UUID>? = emptyList()): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["ids"] = ids
@@ -201,7 +201,7 @@ public class LibraryApi(
 	 * @param itemId The item id.
 	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getFileUrl(itemId: UUID, includeCredentials: Boolean = false): String {
+	public fun getFileUrl(itemId: UUID, includeCredentials: Boolean = true): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()

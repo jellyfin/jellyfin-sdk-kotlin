@@ -21,10 +21,10 @@ public enum class GroupUpdateType {
 	GROUP_JOINED,
 	@SerialName("GroupLeft")
 	GROUP_LEFT,
-	@SerialName("GroupWait")
-	GROUP_WAIT,
-	@SerialName("PrepareSession")
-	PREPARE_SESSION,
+	@SerialName("StateUpdate")
+	STATE_UPDATE,
+	@SerialName("PlayQueue")
+	PLAY_QUEUE,
 	@SerialName("NotInGroup")
 	NOT_IN_GROUP,
 	@SerialName("GroupDoesNotExist")

@@ -148,7 +148,7 @@ public data class BaseItemDto(
 	 * Gets or sets the channel identifier.
 	 */
 	@SerialName("ChannelId")
-	public val channelId: UUID,
+	public val channelId: UUID? = null,
 	@SerialName("ChannelName")
 	public val channelName: String? = null,
 	/**
@@ -244,7 +244,7 @@ public data class BaseItemDto(
 	 * Gets or sets the parent id.
 	 */
 	@SerialName("ParentId")
-	public val parentId: UUID,
+	public val parentId: UUID? = null,
 	/**
 	 * Gets or sets the type.
 	 */
@@ -303,12 +303,12 @@ public data class BaseItemDto(
 	 * Gets or sets the series id.
 	 */
 	@SerialName("SeriesId")
-	public val seriesId: UUID,
+	public val seriesId: UUID? = null,
 	/**
 	 * Gets or sets the season identifier.
 	 */
 	@SerialName("SeasonId")
-	public val seasonId: UUID,
+	public val seasonId: UUID? = null,
 	/**
 	 * Gets or sets the special feature count.
 	 */
@@ -373,7 +373,7 @@ public data class BaseItemDto(
 	 * Gets or sets the album id.
 	 */
 	@SerialName("AlbumId")
-	public val albumId: UUID,
+	public val albumId: UUID? = null,
 	/**
 	 * Gets or sets the album image tag.
 	 */

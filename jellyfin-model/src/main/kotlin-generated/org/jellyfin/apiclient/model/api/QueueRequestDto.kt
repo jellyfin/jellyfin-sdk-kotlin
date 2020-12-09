@@ -8,27 +8,22 @@
 package org.jellyfin.apiclient.model.api
 
 import java.util.UUID
+import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import kotlinx.serialization.json.JsonElement
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 /**
- * Class GroupUpdate.
+ * Class QueueRequestDto.
  */
 @Serializable
-public data class ObjectGroupUpdate(
+public data class QueueRequestDto(
 	/**
-	 * Gets the group identifier.
+	 * Gets or sets the items to enqueue.
 	 */
-	@SerialName("GroupId")
-	public val groupId: UUID,
-	@SerialName("Type")
-	public val type: GroupUpdateType? = null,
-	/**
-	 * Gets the update data.
-	 */
-	@SerialName("Data")
-	public val `data`: JsonElement
+	@SerialName("ItemIds")
+	public val itemIds: List<UUID>? = null,
+	@SerialName("Mode")
+	public val mode: GroupQueueMode? = null
 )

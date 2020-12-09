@@ -8,27 +8,25 @@
 package org.jellyfin.apiclient.model.api
 
 import java.util.UUID
+import kotlin.Int
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import kotlinx.serialization.json.JsonElement
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 /**
- * Class GroupUpdate.
+ * Class MovePlaylistItemRequestDto.
  */
 @Serializable
-public data class ObjectGroupUpdate(
+public data class MovePlaylistItemRequestDto(
 	/**
-	 * Gets the group identifier.
+	 * Gets or sets the playlist identifier of the item.
 	 */
-	@SerialName("GroupId")
-	public val groupId: UUID,
-	@SerialName("Type")
-	public val type: GroupUpdateType? = null,
+	@SerialName("PlaylistItemId")
+	public val playlistItemId: UUID,
 	/**
-	 * Gets the update data.
+	 * Gets or sets the new position.
 	 */
-	@SerialName("Data")
-	public val `data`: JsonElement
+	@SerialName("NewIndex")
+	public val newIndex: Int
 )

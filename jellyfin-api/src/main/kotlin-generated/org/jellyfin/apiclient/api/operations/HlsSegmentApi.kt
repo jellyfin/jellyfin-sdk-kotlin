@@ -173,7 +173,7 @@ public class HlsSegmentApi(
 	public fun getHlsPlaylistLegacyUrl(
 		itemId: String,
 		playlistId: String,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = true
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

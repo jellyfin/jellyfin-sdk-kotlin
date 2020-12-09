@@ -53,7 +53,7 @@ public class SearchApi(
 		includeItemTypes: List<String>? = emptyList(),
 		excludeItemTypes: List<String>? = emptyList(),
 		mediaTypes: List<String>? = emptyList(),
-		parentId: String? = null,
+		parentId: UUID? = null,
 		isMovie: Boolean? = null,
 		isSeries: Boolean? = null,
 		isNews: Boolean? = null,

@@ -56,7 +56,7 @@ public class SubtitleApi(
 	 * @param name The name of the fallback font file to get.
 	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getFallbackFontUrl(name: String, includeCredentials: Boolean = false): String {
+	public fun getFallbackFontUrl(name: String, includeCredentials: Boolean = true): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
 		val queryParameters = emptyMap<String, Any?>()
@@ -239,7 +239,7 @@ public class SubtitleApi(
 		index: Int,
 		mediaSourceId: String,
 		segmentLength: Int,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = true
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

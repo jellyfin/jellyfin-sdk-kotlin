@@ -12,7 +12,8 @@ package org.jellyfin.apiclient.model.api
 
 import java.time.LocalDateTime
 import java.util.UUID
-import kotlin.Long
+import kotlin.String
+import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
@@ -20,35 +21,30 @@ import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 /**
- * Class SendCommand.
+ * Class GroupInfoDto.
  */
 @Serializable
-public data class SendCommand(
+public data class GroupInfoDto(
 	/**
 	 * Gets the group identifier.
 	 */
 	@SerialName("GroupId")
 	public val groupId: UUID,
 	/**
-	 * Gets the playlist identifier of the playing item.
+	 * Gets the group name.
 	 */
-	@SerialName("PlaylistItemId")
-	public val playlistItemId: UUID,
+	@SerialName("GroupName")
+	public val groupName: String? = null,
+	@SerialName("State")
+	public val state: GroupStateType? = null,
 	/**
-	 * Gets or sets the UTC time when to execute the command.
+	 * Gets the participants.
 	 */
-	@SerialName("When")
-	public val `when`: LocalDateTime,
+	@SerialName("Participants")
+	public val participants: List<String>? = null,
 	/**
-	 * Gets the position ticks.
+	 * Gets the date when this DTO has been created.
 	 */
-	@SerialName("PositionTicks")
-	public val positionTicks: Long? = null,
-	@SerialName("Command")
-	public val command: SendCommandType? = null,
-	/**
-	 * Gets the UTC time when this command has been emitted.
-	 */
-	@SerialName("EmittedAt")
-	public val emittedAt: LocalDateTime
+	@SerialName("LastUpdatedAt")
+	public val lastUpdatedAt: LocalDateTime
 )

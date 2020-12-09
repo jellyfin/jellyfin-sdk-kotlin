@@ -5,20 +5,18 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlin.Long
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Enum SendCommandType.
+ * Class SeekRequestDto.
  */
 @Serializable
-public enum class SendCommandType {
-	@SerialName("Unpause")
-	UNPAUSE,
-	@SerialName("Pause")
-	PAUSE,
-	@SerialName("Stop")
-	STOP,
-	@SerialName("Seek")
-	SEEK,
-}
+public data class SeekRequestDto(
+	/**
+	 * Gets or sets the position ticks.
+	 */
+	@SerialName("PositionTicks")
+	public val positionTicks: Long
+)

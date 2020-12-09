@@ -49,7 +49,7 @@ public class YearsApi(
 		startIndex: Int? = null,
 		limit: Int? = null,
 		sortOrder: String? = null,
-		parentId: String? = null,
+		parentId: UUID? = null,
 		fields: List<ItemFields>? = emptyList(),
 		excludeItemTypes: List<String>? = emptyList(),
 		includeItemTypes: List<String>? = emptyList(),

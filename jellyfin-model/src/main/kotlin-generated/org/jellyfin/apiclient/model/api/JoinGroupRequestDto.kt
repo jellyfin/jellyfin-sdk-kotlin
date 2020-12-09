@@ -11,24 +11,16 @@ import java.util.UUID
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import kotlinx.serialization.json.JsonElement
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 /**
- * Class GroupUpdate.
+ * Class JoinGroupRequestDto.
  */
 @Serializable
-public data class ObjectGroupUpdate(
+public data class JoinGroupRequestDto(
 	/**
-	 * Gets the group identifier.
+	 * Gets or sets the group identifier.
 	 */
 	@SerialName("GroupId")
-	public val groupId: UUID,
-	@SerialName("Type")
-	public val type: GroupUpdateType? = null,
-	/**
-	 * Gets the update data.
-	 */
-	@SerialName("Data")
-	public val `data`: JsonElement
+	public val groupId: UUID
 )

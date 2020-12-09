@@ -5,54 +5,49 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.api.operations
 
-import java.time.LocalDateTime
-import java.util.UUID
 import kotlin.Any
-import kotlin.Boolean
-import kotlin.Double
-import kotlin.Long
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
-import org.jellyfin.apiclient.model.api.GroupInfoView
+import org.jellyfin.apiclient.model.api.BufferRequestDto
+import org.jellyfin.apiclient.model.api.GroupInfoDto
+import org.jellyfin.apiclient.model.api.IgnoreWaitRequestDto
+import org.jellyfin.apiclient.model.api.JoinGroupRequestDto
+import org.jellyfin.apiclient.model.api.MovePlaylistItemRequestDto
+import org.jellyfin.apiclient.model.api.NewGroupRequestDto
+import org.jellyfin.apiclient.model.api.NextItemRequestDto
+import org.jellyfin.apiclient.model.api.PingRequestDto
+import org.jellyfin.apiclient.model.api.PlayRequestDto
+import org.jellyfin.apiclient.model.api.PreviousItemRequestDto
+import org.jellyfin.apiclient.model.api.QueueRequestDto
+import org.jellyfin.apiclient.model.api.ReadyRequestDto
+import org.jellyfin.apiclient.model.api.RemoveFromPlaylistRequestDto
+import org.jellyfin.apiclient.model.api.SeekRequestDto
+import org.jellyfin.apiclient.model.api.SetPlaylistItemRequestDto
+import org.jellyfin.apiclient.model.api.SetRepeatModeRequestDto
+import org.jellyfin.apiclient.model.api.SetShuffleModeRequestDto
 
 public class SyncPlayApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Request group wait in SyncPlay group while buffering.
-	 *
-	 * @param when When the request has been made by the client.
-	 * @param positionTicks The playback position in ticks.
-	 * @param bufferingDone Whether the buffering is done.
+	 * Notify SyncPlay group that member is buffering.
 	 */
-	public suspend fun syncPlayBuffering(
-		`when`: LocalDateTime,
-		positionTicks: Long,
-		bufferingDone: Boolean
-	): Response<Unit> {
+	public suspend fun syncPlayBuffering(`data`: BufferRequestDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["when"] = `when`
-		queryParameters["positionTicks"] = positionTicks
-		queryParameters["bufferingDone"] = bufferingDone
-		val data = null
+		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/SyncPlay/Buffering", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Join an existing SyncPlay group.
-	 *
-	 * @param groupId The sync play group id.
 	 */
-	public suspend fun syncPlayJoinGroup(groupId: UUID): Response<Unit> {
+	public suspend fun syncPlayJoinGroup(`data`: JoinGroupRequestDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["groupId"] = groupId
-		val data = null
+		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/SyncPlay/Join", pathParameters, queryParameters, data)
 		return response
 	}
@@ -70,27 +65,43 @@ public class SyncPlayApi(
 
 	/**
 	 * Gets all SyncPlay groups.
-	 *
-	 * @param filterItemId Optional. Filter by item id.
 	 */
-	public suspend fun syncPlayGetGroups(filterItemId: UUID? = null): Response<List<GroupInfoView>> {
+	public suspend fun syncPlayGetGroups(): Response<List<GroupInfoDto>> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["filterItemId"] = filterItemId
+		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<GroupInfoView>>("/SyncPlay/List", pathParameters, queryParameters,
+		val response = api.`get`<List<GroupInfoDto>>("/SyncPlay/List", pathParameters, queryParameters,
 				data)
+		return response
+	}
+
+	/**
+	 * Request to move an item in the playlist in SyncPlay group.
+	 */
+	public suspend fun syncPlayMovePlaylistItem(`data`: MovePlaylistItemRequestDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/SyncPlay/MovePlaylistItem", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Create a new SyncPlay group.
 	 */
-	public suspend fun syncPlayCreateGroup(): Response<Unit> {
+	public suspend fun syncPlayCreateGroup(`data`: NewGroupRequestDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val data = null
 		val response = api.post<Unit>("/SyncPlay/New", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Request next item in SyncPlay group.
+	 */
+	public suspend fun syncPlayNextItem(`data`: NextItemRequestDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/SyncPlay/NextItem", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -107,40 +118,135 @@ public class SyncPlayApi(
 
 	/**
 	 * Update session ping.
-	 *
-	 * @param ping The ping.
 	 */
-	public suspend fun syncPlayPing(ping: Double): Response<Unit> {
+	public suspend fun syncPlayPing(`data`: PingRequestDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["ping"] = ping
-		val data = null
+		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/SyncPlay/Ping", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
-	 * Request play in SyncPlay group.
+	 * Request previous item in SyncPlay group.
 	 */
-	public suspend fun syncPlayPlay(): Response<Unit> {
+	public suspend fun syncPlayPreviousItem(`data`: PreviousItemRequestDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.post<Unit>("/SyncPlay/Play", pathParameters, queryParameters, data)
+		val response = api.post<Unit>("/SyncPlay/PreviousItem", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Request to queue items to the playlist of a SyncPlay group.
+	 */
+	public suspend fun syncPlayQueue(`data`: QueueRequestDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/SyncPlay/Queue", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Notify SyncPlay group that member is ready for playback.
+	 */
+	public suspend fun syncPlayReady(`data`: ReadyRequestDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/SyncPlay/Ready", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Request to remove items from the playlist in SyncPlay group.
+	 */
+	public suspend fun syncPlayRemoveFromPlaylist(`data`: RemoveFromPlaylistRequestDto):
+			Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/SyncPlay/RemoveFromPlaylist", pathParameters, queryParameters,
+				data)
 		return response
 	}
 
 	/**
 	 * Request seek in SyncPlay group.
-	 *
-	 * @param positionTicks The playback position in ticks.
 	 */
-	public suspend fun syncPlaySeek(positionTicks: Long): Response<Unit> {
+	public suspend fun syncPlaySeek(`data`: SeekRequestDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["positionTicks"] = positionTicks
-		val data = null
+		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/SyncPlay/Seek", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Request SyncPlay group to ignore member during group-wait.
+	 */
+	public suspend fun syncPlaySetIgnoreWait(`data`: IgnoreWaitRequestDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/SyncPlay/SetIgnoreWait", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Request to set new playlist in SyncPlay group.
+	 */
+	public suspend fun syncPlaySetNewQueue(`data`: PlayRequestDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/SyncPlay/SetNewQueue", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Request to change playlist item in SyncPlay group.
+	 */
+	public suspend fun syncPlaySetPlaylistItem(`data`: SetPlaylistItemRequestDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/SyncPlay/SetPlaylistItem", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Request to set repeat mode in SyncPlay group.
+	 */
+	public suspend fun syncPlaySetRepeatMode(`data`: SetRepeatModeRequestDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/SyncPlay/SetRepeatMode", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Request to set shuffle mode in SyncPlay group.
+	 */
+	public suspend fun syncPlaySetShuffleMode(`data`: SetShuffleModeRequestDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/SyncPlay/SetShuffleMode", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Request stop in SyncPlay group.
+	 */
+	public suspend fun syncPlayStop(): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.post<Unit>("/SyncPlay/Stop", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Request unpause in SyncPlay group.
+	 */
+	public suspend fun syncPlayUnpause(): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.post<Unit>("/SyncPlay/Unpause", pathParameters, queryParameters, data)
 		return response
 	}
 }

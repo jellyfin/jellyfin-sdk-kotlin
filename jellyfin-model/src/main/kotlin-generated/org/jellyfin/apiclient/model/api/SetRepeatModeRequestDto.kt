@@ -9,10 +9,10 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Device profile dto.
+ * Class SetRepeatModeRequestDto.
  */
 @Serializable
-public data class DeviceProfileDto(
-	@SerialName("DeviceProfile")
-	public val deviceProfile: DeviceProfile? = null
+public data class SetRepeatModeRequestDto(
+	@SerialName("Mode")
+	public val mode: GroupRepeatMode? = null
 )

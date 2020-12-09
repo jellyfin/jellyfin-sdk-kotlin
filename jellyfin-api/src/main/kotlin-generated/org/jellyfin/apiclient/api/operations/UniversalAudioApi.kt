@@ -133,7 +133,7 @@ public class UniversalAudioApi(
 		enableRemoteMedia: Boolean? = null,
 		breakOnNonKeyFrames: Boolean,
 		enableRedirection: Boolean,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = true
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

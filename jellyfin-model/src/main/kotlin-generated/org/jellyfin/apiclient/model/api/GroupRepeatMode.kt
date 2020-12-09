@@ -9,16 +9,14 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Enum SendCommandType.
+ * Enum GroupRepeatMode.
  */
 @Serializable
-public enum class SendCommandType {
-	@SerialName("Unpause")
-	UNPAUSE,
-	@SerialName("Pause")
-	PAUSE,
-	@SerialName("Stop")
-	STOP,
-	@SerialName("Seek")
-	SEEK,
+public enum class GroupRepeatMode {
+	@SerialName("RepeatOne")
+	REPEAT_ONE,
+	@SerialName("RepeatAll")
+	REPEAT_ALL,
+	@SerialName("RepeatNone")
+	REPEAT_NONE,
 }

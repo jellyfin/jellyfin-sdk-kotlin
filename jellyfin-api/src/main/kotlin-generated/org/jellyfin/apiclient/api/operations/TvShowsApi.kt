@@ -46,14 +46,14 @@ public class TvShowsApi(
 	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 */
 	public suspend fun getEpisodes(
-		seriesId: String,
+		seriesId: UUID,
 		userId: UUID? = null,
 		fields: List<ItemFields>? = emptyList(),
 		season: Int? = null,
-		seasonId: String? = null,
+		seasonId: UUID? = null,
 		isMissing: Boolean? = null,
 		adjacentTo: String? = null,
-		startItemId: String? = null,
+		startItemId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
 		enableImages: Boolean? = null,
@@ -103,7 +103,7 @@ public class TvShowsApi(
 	 * @param enableUserData Optional. Include user data.
 	 */
 	public suspend fun getSeasons(
-		seriesId: String,
+		seriesId: UUID,
 		userId: UUID? = null,
 		fields: List<ItemFields>? = emptyList(),
 		isSpecialSeason: Boolean? = null,
@@ -155,7 +155,7 @@ public class TvShowsApi(
 		limit: Int? = null,
 		fields: List<ItemFields>? = emptyList(),
 		seriesId: String? = null,
-		parentId: String? = null,
+		parentId: UUID? = null,
 		enableImges: Boolean? = null,
 		imageTypeLimit: Int? = null,
 		enableImageTypes: List<ImageType>? = emptyList(),
@@ -201,7 +201,7 @@ public class TvShowsApi(
 		startIndex: Int? = null,
 		limit: Int? = null,
 		fields: List<ItemFields>? = emptyList(),
-		parentId: String? = null,
+		parentId: UUID? = null,
 		enableImges: Boolean? = null,
 		imageTypeLimit: Int? = null,
 		enableImageTypes: List<ImageType>? = emptyList(),

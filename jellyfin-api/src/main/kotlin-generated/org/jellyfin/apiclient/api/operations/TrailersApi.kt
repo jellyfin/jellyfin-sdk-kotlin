@@ -181,7 +181,7 @@ public class TrailersApi(
 		recursive: Boolean? = null,
 		searchTerm: String? = null,
 		sortOrder: String? = null,
-		parentId: String? = null,
+		parentId: UUID? = null,
 		fields: List<ItemFields>? = emptyList(),
 		excludeItemTypes: List<String>? = emptyList(),
 		filters: List<ItemFilter>? = emptyList(),

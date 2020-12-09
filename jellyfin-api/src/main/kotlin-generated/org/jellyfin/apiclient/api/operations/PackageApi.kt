@@ -35,7 +35,7 @@ public class PackageApi(
 	 * @param name The name of the package.
 	 * @param assemblyGuid The GUID of the associated assembly.
 	 */
-	public suspend fun getPackageInfo(name: String, assemblyGuid: String? = null):
+	public suspend fun getPackageInfo(name: String, assemblyGuid: UUID? = null):
 			Response<PackageInfo> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -56,7 +56,7 @@ public class PackageApi(
 	 */
 	public suspend fun installPackage(
 		name: String,
-		assemblyGuid: String? = null,
+		assemblyGuid: UUID? = null,
 		version: String? = null,
 		repositoryUrl: String? = null
 	): Response<Unit> {

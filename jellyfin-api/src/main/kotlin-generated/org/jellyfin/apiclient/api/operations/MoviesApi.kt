@@ -30,7 +30,7 @@ public class MoviesApi(
 	 */
 	public suspend fun getMovieRecommendations(
 		userId: UUID? = null,
-		parentId: String? = null,
+		parentId: UUID? = null,
 		fields: List<ItemFields>? = emptyList(),
 		categoryLimit: Int = 5,
 		itemLimit: Int = 8
