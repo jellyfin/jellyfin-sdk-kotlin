@@ -1,0 +1,53 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup problem matcher
+        uses: xt0rted/markdownlint-problem-matcher@v1
+      - name: Run markdownlint
+        run: npx --package markdownlint-cli markdownlint '**/*.md'
+  code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Setup Gradle cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Run detekt linter
+        run: ./gradlew --build-cache --no-daemon --info detekt
+        continue-on-error: true
+      - name: Report Detekt linter
+        uses: jwgmeligmeyling/checkstyle-github-action@v1.2
+        with:
+          name: Detekt
+          path: '**/detekt.xml'
+
+      - name: Run Android linter
+        run: ./gradlew --build-cache --no-daemon --info jellyfin-platform-android:lint
+        continue-on-error: true
+      - name: Report Android linter
+        uses: yutailang0119/action-android-lint@v1
+        with:
+          xml_path: jellyfin-platform-android/build/reports/lint-results.xml
