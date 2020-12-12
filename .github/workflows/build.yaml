@@ -1,0 +1,22 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    matrix:
+      java: [6, 8, 11, 15]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+      - name: Run check task
+        run: ./gradlew check
