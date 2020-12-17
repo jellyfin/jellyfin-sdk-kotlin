@@ -32,6 +32,9 @@ public class LocalServerDiscovery(
 	}
 
 	private val logger = LoggerFactory.getLogger("LocalServerDiscovery")
+	private val json = Json {
+		ignoreUnknownKeys = true
+	}
 
 	/**
 	 * Send our broadcast message to a given address
@@ -63,7 +66,7 @@ public class LocalServerDiscovery(
 			logger.debug("""Received message "$message"""")
 
 			// Read as JSON
-			val info = Json.decodeFromString(DiscoveryServerInfo.serializer(), message)
+			val info = json.decodeFromString(DiscoveryServerInfo.serializer(), message)
 
 			info
 		} catch (err: SocketTimeoutException) {
