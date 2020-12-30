@@ -17,8 +17,7 @@ public class UUIDSerializer : KSerializer<UUID> {
 	override fun deserialize(decoder: Decoder): UUID {
 		val uuid = decoder.decodeString()
 
-		return if (uuid.length == 32) UUID.fromString(uuid.replace(UUID_REGEX, "$1-$2-$3-$4-$5"))
-		else UUID.fromString(uuid)
+		return UUID.fromString(uuid.replace(UUID_REGEX, "$1-$2-$3-$4-$5"))
 	}
 
 	override fun serialize(encoder: Encoder, value: UUID) {
@@ -26,6 +25,6 @@ public class UUIDSerializer : KSerializer<UUID> {
 	}
 
 	private companion object {
-		private val UUID_REGEX = "^([a-z\\d]{8})([a-z\\d]{4})(4[a-z\\d]{3})([a-z\\d]{4})([a-z\\d]{12})\$".toRegex()
+		private val UUID_REGEX = "^([a-z\\d]{8})([a-z\\d]{4})([a-z\\d]{4})([a-z\\d]{4})([a-z\\d]{12})\$".toRegex()
 	}
 }
