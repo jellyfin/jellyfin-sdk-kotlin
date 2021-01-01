@@ -31,6 +31,7 @@ import org.jellyfin.apiclient.model.api.NameIdPair
 import org.jellyfin.apiclient.model.api.RecordingStatus
 import org.jellyfin.apiclient.model.api.SeriesTimerInfoDto
 import org.jellyfin.apiclient.model.api.SeriesTimerInfoDtoQueryResult
+import org.jellyfin.apiclient.model.api.SetChannelMappingDto
 import org.jellyfin.apiclient.model.api.SortOrder
 import org.jellyfin.apiclient.model.api.TimerInfoDto
 import org.jellyfin.apiclient.model.api.TimerInfoDtoQueryResult
@@ -58,22 +59,10 @@ public class LiveTvApi(
 
 	/**
 	 * Set channel mappings.
-	 *
-	 * @param providerId Provider id.
-	 * @param tunerChannelId Tuner channel id.
-	 * @param providerChannelId Provider channel id.
 	 */
-	public suspend fun setChannelMapping(
-		providerId: String? = null,
-		tunerChannelId: String? = null,
-		providerChannelId: String? = null
-	): Response<TunerChannelMapping> {
+	public suspend fun setChannelMapping(`data`: SetChannelMappingDto): Response<TunerChannelMapping> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["providerId"] = providerId
-		queryParameters["tunerChannelId"] = tunerChannelId
-		queryParameters["providerChannelId"] = providerChannelId
-		val data = null
+		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<TunerChannelMapping>("/LiveTv/ChannelMappings", pathParameters,
 				queryParameters, data)
 		return response

@@ -24,11 +24,27 @@ public class PlaylistsApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Creates a new playlist.
+	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher
+	 * precedence.
+	 *
+	 * @param name The playlist name.
+	 * @param ids The item ids.
+	 * @param userId The user id.
+	 * @param mediaType The media type.
 	 */
-	public suspend fun createPlaylist(`data`: CreatePlaylistDto): Response<PlaylistCreationResult> {
+	public suspend fun createPlaylist(
+		name: String? = null,
+		ids: List<UUID>? = emptyList(),
+		userId: UUID? = null,
+		mediaType: String? = null,
+		`data`: CreatePlaylistDto
+	): Response<PlaylistCreationResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["name"] = name
+		queryParameters["ids"] = ids
+		queryParameters["userId"] = userId
+		queryParameters["mediaType"] = mediaType
 		val response = api.post<PlaylistCreationResult>("/Playlists", pathParameters, queryParameters,
 				data)
 		return response

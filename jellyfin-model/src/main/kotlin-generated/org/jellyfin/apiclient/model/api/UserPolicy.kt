@@ -111,5 +111,5 @@ public data class UserPolicy(
 	@SerialName("PasswordResetProviderId")
 	public val passwordResetProviderId: String? = null,
 	@SerialName("SyncPlayAccess")
-	public val syncPlayAccess: SyncPlayAccess? = null
+	public val syncPlayAccess: SyncPlayUserAccessType? = null
 )
