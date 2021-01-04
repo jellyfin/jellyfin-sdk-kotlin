@@ -34,7 +34,7 @@ public data class CreatePlaylistDto(
 	 * Gets or sets the user id.
 	 */
 	@SerialName("UserId")
-	public val userId: UUID,
+	public val userId: UUID? = null,
 	/**
 	 * Gets or sets the media type.
 	 */

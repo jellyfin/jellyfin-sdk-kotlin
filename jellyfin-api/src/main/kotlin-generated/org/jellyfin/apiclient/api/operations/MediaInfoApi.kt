@@ -139,8 +139,8 @@ public class MediaInfoApi(
 		subtitleStreamIndex: Int? = null,
 		maxAudioChannels: Int? = null,
 		itemId: UUID? = null,
-		enableDirectPlay: Boolean = true,
-		enableDirectStream: Boolean = true,
+		enableDirectPlay: Boolean? = null,
+		enableDirectStream: Boolean? = null,
 		`data`: OpenLiveStreamDto
 	): Response<LiveStreamResponse> {
 		val pathParameters = emptyMap<String, Any?>()

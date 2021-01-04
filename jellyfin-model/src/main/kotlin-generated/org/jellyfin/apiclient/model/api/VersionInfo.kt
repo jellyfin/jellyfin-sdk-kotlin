@@ -10,7 +10,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Class PackageVersionInfo.
+ * Defines the MediaBrowser.Model.Updates.VersionInfo class.
  */
 @Serializable
 public data class VersionInfo(

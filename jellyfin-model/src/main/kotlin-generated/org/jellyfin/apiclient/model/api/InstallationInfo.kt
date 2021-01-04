@@ -20,7 +20,7 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 @Serializable
 public data class InstallationInfo(
 	/**
-	 * Gets or sets the guid.
+	 * Gets or sets the Id.
 	 */
 	@SerialName("Guid")
 	public val guid: UUID,

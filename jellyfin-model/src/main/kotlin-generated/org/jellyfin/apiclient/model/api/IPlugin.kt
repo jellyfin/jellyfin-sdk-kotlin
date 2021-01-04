@@ -16,7 +16,7 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 /**
- * Interface IPlugin.
+ * Defines the MediaBrowser.Common.Plugins.IPlugin.
  */
 @Serializable
 public data class IPlugin(
@@ -26,7 +26,7 @@ public data class IPlugin(
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets the description.
+	 * Gets the Description.
 	 */
 	@SerialName("Description")
 	public val description: String? = null,

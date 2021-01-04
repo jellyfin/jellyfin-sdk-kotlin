@@ -33,8 +33,6 @@ class OpenApiTypeBuilder(
 	fun buildSchema(schema: Schema<*>): TypeName = when {
 		// Use referenced type
 		schema.`$ref` != null -> buildReference(schema.`$ref`)
-		// Use binary type for everything that identifies as file
-		schema.type == "file" -> buildBinary()
 		// Use type based on schema class
 		else -> when (schema) {
 			// Primitives
@@ -43,9 +41,12 @@ class OpenApiTypeBuilder(
 			// Numbers (will base the type on "format")
 			is NumberSchema -> buildNumber(schema)
 			is IntegerSchema -> buildNumber(schema)
-			// Time & Other
+			// Time
 			is DateTimeSchema -> buildDateTime()
+			// UUID
 			is UUIDSchema -> buildUUIDType()
+			// Binary
+			is BinarySchema -> buildBinary()
 			// Collections
 			is ArraySchema -> buildArrayType(schema)
 			is MapSchema -> buildMapType(schema)

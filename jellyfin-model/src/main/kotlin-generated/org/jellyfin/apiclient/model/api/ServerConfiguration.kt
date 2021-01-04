@@ -259,6 +259,19 @@ public data class ServerConfiguration(
 	@SerialName("MinResumeDurationSeconds")
 	public val minResumeDurationSeconds: Int,
 	/**
+	 * Gets or sets the minimum minutes of a book that must be played in order for playstate to be
+	 * updated.
+	 */
+	@SerialName("MinAudiobookResume")
+	public val minAudiobookResume: Int,
+	/**
+	 * Gets or sets the remaining minutes of a book that can be played while still saving playstate. If
+	 * this percentage is crossed playstate will be reset to the beginning and the item will be marked
+	 * watched.
+	 */
+	@SerialName("MaxAudiobookResume")
+	public val maxAudiobookResume: Int,
+	/**
 	 * Gets or sets the delay in seconds that we will wait after a file system change to try and
 	 * discover what has been added/removed
 	 * Some delay is necessary with some items because their creation is not atomic.  It involves the
@@ -377,5 +390,16 @@ public data class ServerConfiguration(
 	 * Gets or sets the how many metadata refreshes can run concurrently.
 	 */
 	@SerialName("LibraryMetadataRefreshConcurrency")
-	public val libraryMetadataRefreshConcurrency: Int
+	public val libraryMetadataRefreshConcurrency: Int,
+	/**
+	 * Gets or sets a value indicating whether older plugins should automatically be deleted from the
+	 * plugin folder.
+	 */
+	@SerialName("RemoveOldPlugins")
+	public val removeOldPlugins: Boolean,
+	/**
+	 * Gets or sets a value indicating whether plugin image should be disabled.
+	 */
+	@SerialName("DisablePluginImages")
+	public val disablePluginImages: Boolean
 )

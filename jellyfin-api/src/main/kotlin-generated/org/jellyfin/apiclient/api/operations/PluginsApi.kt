@@ -5,8 +5,10 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.api.operations
 
+import io.ktor.utils.io.ByteReadChannel
 import java.util.UUID
 import kotlin.Any
+import kotlin.Boolean
 import kotlin.Deprecated
 import kotlin.String
 import kotlin.Unit
@@ -14,9 +16,9 @@ import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.BasePluginConfiguration
-import org.jellyfin.apiclient.model.api.MbRegistrationRecord
 import org.jellyfin.apiclient.model.api.PluginInfo
 import org.jellyfin.apiclient.model.api.PluginSecurityInfo
+import org.jellyfin.apiclient.model.api.Version
 
 public class PluginsApi(
 	private val api: KtorClient
@@ -37,6 +39,7 @@ public class PluginsApi(
 	 *
 	 * @param pluginId Plugin id.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun uninstallPlugin(pluginId: UUID): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["pluginId"] = pluginId
@@ -44,6 +47,94 @@ public class PluginsApi(
 		val data = null
 		val response = api.delete<Unit>("/Plugins/{pluginId}", pathParameters, queryParameters, data)
 		return response
+	}
+
+	/**
+	 * Uninstalls a plugin by version.
+	 *
+	 * @param pluginId Plugin id.
+	 * @param version Plugin version.
+	 */
+	public suspend fun uninstallPluginByVersion(pluginId: UUID, version: Version): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["pluginId"] = pluginId
+		pathParameters["version"] = version
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.delete<Unit>("/Plugins/{pluginId}/{version}", pathParameters, queryParameters,
+				data)
+		return response
+	}
+
+	/**
+	 * Disable a plugin.
+	 *
+	 * @param pluginId Plugin id.
+	 * @param version Plugin version.
+	 */
+	public suspend fun disablePlugin(pluginId: UUID, version: Version): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["pluginId"] = pluginId
+		pathParameters["version"] = version
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.post<Unit>("/Plugins/{pluginId}/{version}/Disable", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Enables a disabled plugin.
+	 *
+	 * @param pluginId Plugin id.
+	 * @param version Plugin version.
+	 */
+	public suspend fun enablePlugin(pluginId: UUID, version: Version): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["pluginId"] = pluginId
+		pathParameters["version"] = version
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.post<Unit>("/Plugins/{pluginId}/{version}/Enable", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets a plugin's image.
+	 *
+	 * @param pluginId Plugin id.
+	 * @param version Plugin version.
+	 */
+	public suspend fun getPluginImage(pluginId: UUID, version: Version): Response<ByteReadChannel> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["pluginId"] = pluginId
+		pathParameters["version"] = version
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<ByteReadChannel>("/Plugins/{pluginId}/{version}/Image", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets a plugin's image.
+	 *
+	 * @param pluginId Plugin id.
+	 * @param version Plugin version.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
+	 */
+	public fun getPluginImageUrl(
+		pluginId: UUID,
+		version: Version,
+		includeCredentials: Boolean = true
+	): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["pluginId"] = pluginId
+		pathParameters["version"] = version
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Plugins/{pluginId}/{version}/Image", pathParameters, queryParameters,
+				includeCredentials)
 	}
 
 	/**
@@ -77,47 +168,17 @@ public class PluginsApi(
 	}
 
 	/**
-	 * Gets registration status for a feature.
+	 * Gets a plugin's manifest.
 	 *
-	 * @param name Feature name.
+	 * @param pluginId Plugin id.
 	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getRegistrationStatus(name: String): Response<MbRegistrationRecord> {
+	public suspend fun getPluginManifest(pluginId: UUID): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
+		pathParameters["pluginId"] = pluginId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<MbRegistrationRecord>("/Plugins/RegistrationRecords/{name}",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets registration status for a feature.
-	 *
-	 * @param name Feature name.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getRegistration(name: String): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<Unit>("/Plugins/Registrations/{name}", pathParameters, queryParameters,
+		val response = api.post<Unit>("/Plugins/{pluginId}/Manifest", pathParameters, queryParameters,
 				data)
-		return response
-	}
-
-	/**
-	 * Get plugin security info.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getPluginSecurityInfo(): Response<PluginSecurityInfo> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<PluginSecurityInfo>("/Plugins/SecurityInfo", pathParameters,
-				queryParameters, data)
 		return response
 	}
 

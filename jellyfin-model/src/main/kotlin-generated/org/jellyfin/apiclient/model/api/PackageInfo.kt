@@ -41,7 +41,7 @@ public data class PackageInfo(
 	@SerialName("category")
 	public val category: String? = null,
 	/**
-	 * The guid of the assembly associated with this plugin.
+	 * Gets or sets the guid of the assembly associated with this plugin.
 	 * This is used to identify the proper item for automatic updates.
 	 */
 	@SerialName("guid")
@@ -50,5 +50,10 @@ public data class PackageInfo(
 	 * Gets or sets the versions.
 	 */
 	@SerialName("versions")
-	public val versions: List<VersionInfo>? = null
+	public val versions: List<VersionInfo>? = null,
+	/**
+	 * Gets or sets the image url for the package.
+	 */
+	@SerialName("imageUrl")
+	public val imageUrl: String? = null
 )
