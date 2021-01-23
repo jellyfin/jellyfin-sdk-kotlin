@@ -125,14 +125,18 @@ public class AddressCandidateHelper(
 		// Score based on protocol
 		when (protocol) {
 			URLProtocol.HTTPS -> score += 5
-			else -> score -= 5
+			else -> score -= 5 // HTTP is less secure, try a secure option first
 		}
 
 		// Score based on port
 		when (port) {
 			JF_HTTP_PORT -> score += 2
-			80 -> score += 1
+			JF_HTTPS_PORT -> score -= 1 // Using the Jellyfin HTTPS port is not common
 		}
+
+		// Prefer default port for used protocol
+		if (protocol == URLProtocol.HTTPS && port == 443) score += 3
+		if (protocol == URLProtocol.HTTP && port == 80) score += 3
 
 		return score
 	}
