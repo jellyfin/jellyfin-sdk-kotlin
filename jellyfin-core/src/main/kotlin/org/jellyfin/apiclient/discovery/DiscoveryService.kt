@@ -1,6 +1,7 @@
 package org.jellyfin.apiclient.discovery
 
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.takeWhile
 import org.jellyfin.apiclient.Jellyfin
 import org.jellyfin.apiclient.model.discovery.DiscoveryServerInfo
@@ -93,7 +94,7 @@ public class DiscoveryService(
 
 			// Take while score is not GOOD (highest possible value)
 			best!!.score != RecommendedServerInfoScore.GOOD
-		}
+		}.collect()
 
 		return best
 	}
