@@ -204,7 +204,7 @@ public class UserApi(
 	/**
 	 * Redeems a forgot password pin.
 	 */
-	public suspend fun forgotPasswordPin(`data`: String?): Response<PinRedeemResult> {
+	public suspend fun forgotPasswordPin(`data`: String? = null): Response<PinRedeemResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<PinRedeemResult>("/Users/ForgotPassword/Pin", pathParameters,

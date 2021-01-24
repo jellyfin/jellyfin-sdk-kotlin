@@ -101,7 +101,7 @@ public class PackageApi(
 	/**
 	 * Sets the enabled and existing package repositories.
 	 */
-	public suspend fun setRepositories(`data`: List<RepositoryInfo>?): Response<Unit> {
+	public suspend fun setRepositories(`data`: List<RepositoryInfo>? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Repositories", pathParameters, queryParameters, data)
