@@ -50,9 +50,6 @@ class OperationBuilder(
 
 		// Add description
 		data.description?.let { addKdoc("%L", it) }
-
-		// Add deprecated annotation
-		if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_MEMBER))
 	}.build()
 
 

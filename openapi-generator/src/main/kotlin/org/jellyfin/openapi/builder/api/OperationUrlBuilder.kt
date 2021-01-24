@@ -11,7 +11,7 @@ import org.jellyfin.openapi.model.ApiServiceOperationParameter
 class OperationUrlBuilder(
 	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder
 ) : Builder<ApiServiceOperation, FunSpec> {
-	private fun buildFunctionShell(data: ApiServiceOperation) = FunSpec.builder(data.name + "Url").apply {
+	private fun buildFunctionShell(data: ApiServiceOperation) = FunSpec.builder(data.name  + Strings.URL_OPERATION_SUFFIX).apply {
 		// Add description
 		data.description?.let { addKdoc("%L", it) }
 
@@ -28,9 +28,6 @@ class OperationUrlBuilder(
 
 		// Add description
 		data.description?.let { addKdoc("%L", it) }
-
-		// Add deprecated annotation
-		if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_MEMBER))
 	}.build()
 
 
