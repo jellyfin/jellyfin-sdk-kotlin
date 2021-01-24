@@ -31,4 +31,14 @@ object Strings {
 	 * The description used for the "includeCredentials" parameter in API URL functions
 	 */
 	const val INCLUDE_CREDENTIALS_DESCRIPTION = "Add the access token to the url to make an authenticated request."
+
+	/**
+	 * The suffix added to the name of a deprecated operation.
+	 */
+	const val DEPRECATED_OPERATION_SUFFIX = "Deprecated"
+
+	/**
+	 * The suffix added to the name of a URL operation. Added after [URL_OPERATION_SUFFIX].
+	 */
+	const val URL_OPERATION_SUFFIX = "Url"
 }

@@ -148,6 +148,7 @@ public class TvShowsApi(
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 * @param enableUserData Optional. Include user data.
 	 * @param enableTotalRecordCount Whether to enable the total records count. Defaults to true.
+	 * @param disableFirstEpisode Whether to disable sending the first episode in a series as next up.
 	 */
 	public suspend fun getNextUp(
 		userId: UUID? = null,
@@ -160,7 +161,8 @@ public class TvShowsApi(
 		imageTypeLimit: Int? = null,
 		enableImageTypes: List<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
-		enableTotalRecordCount: Boolean = true
+		enableTotalRecordCount: Boolean = true,
+		disableFirstEpisode: Boolean = false
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -175,6 +177,7 @@ public class TvShowsApi(
 		queryParameters["enableImageTypes"] = enableImageTypes
 		queryParameters["enableUserData"] = enableUserData
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
+		queryParameters["disableFirstEpisode"] = disableFirstEpisode
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/NextUp", pathParameters, queryParameters,
 				data)
