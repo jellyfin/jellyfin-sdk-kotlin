@@ -1,6 +1,7 @@
 package org.jellyfin.openapi.hooks
 
 import org.jellyfin.openapi.hooks.api.BinaryOperationUrlHook
+import org.jellyfin.openapi.hooks.api.PlayStateServiceNameHook
 import org.jellyfin.openapi.hooks.model.ImageMapsHook
 import org.jellyfin.openapi.hooks.model.NullableReferencesHook
 import org.jellyfin.openapi.hooks.model.SyncPlayGroupUpdateHook
@@ -13,4 +14,6 @@ val hooksModule = module {
 	single { SyncPlayGroupUpdateHook() } bind TypeBuilderHook::class
 
 	single { BinaryOperationUrlHook() } bind OperationUrlHook::class
+
+	single { PlayStateServiceNameHook() } bind ServiceNameHook::class
 }
