@@ -9,6 +9,7 @@ import io.ktor.utils.io.ByteReadChannel
 import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.Deprecated
 import kotlin.Int
 import kotlin.Long
 import kotlin.String
@@ -43,6 +44,24 @@ public class MediaInfoApi(
 	/**
 	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher
 	 * precedence.
+	 * Query parameters are obsolete.
+	 *
+	 * @param itemId The item id.
+	 */
+	public suspend fun getPostedPlaybackInfo(itemId: UUID, `data`: PlaybackInfoDto):
+			Response<PlaybackInfoResponse> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<PlaybackInfoResponse>("/Items/{itemId}/PlaybackInfo", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher
+	 * precedence.
+	 * Query parameters are obsolete.
 	 *
 	 * @param itemId The item id.
 	 * @param userId The user id.
@@ -60,7 +79,8 @@ public class MediaInfoApi(
 	 * @param allowVideoStreamCopy Whether to allow to copy the video stream. Default: true.
 	 * @param allowAudioStreamCopy Whether to allow to copy the audio stream. Default: true.
 	 */
-	public suspend fun getPostedPlaybackInfo(
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getPostedPlaybackInfoDeprecated(
 		itemId: UUID,
 		userId: UUID? = null,
 		maxStreamingBitrate: Int? = null,

@@ -8,6 +8,7 @@ package org.jellyfin.apiclient.api.operations
 import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
 import kotlin.Unit
@@ -26,13 +27,28 @@ public class PlaylistsApi(
 	/**
 	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher
 	 * precedence.
+	 * Query parameters are obsolete.
+	 */
+	public suspend fun createPlaylist(`data`: CreatePlaylistDto): Response<PlaylistCreationResult> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<PlaylistCreationResult>("/Playlists", pathParameters, queryParameters,
+				data)
+		return response
+	}
+
+	/**
+	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher
+	 * precedence.
+	 * Query parameters are obsolete.
 	 *
 	 * @param name The playlist name.
 	 * @param ids The item ids.
 	 * @param userId The user id.
 	 * @param mediaType The media type.
 	 */
-	public suspend fun createPlaylist(
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun createPlaylistDeprecated(
 		name: String? = null,
 		ids: List<UUID>? = emptyList(),
 		userId: UUID? = null,
