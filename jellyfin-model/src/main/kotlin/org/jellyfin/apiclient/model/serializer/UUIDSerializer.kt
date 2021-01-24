@@ -8,6 +8,23 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 import java.util.*
 
+private val UUID_REGEX = "^([a-z\\d]{8})([a-z\\d]{4})([a-z\\d]{4})([a-z\\d]{4})([a-z\\d]{12})\$".toRegex()
+
+/**
+ * Convert string to UUID. Accepts simple and hyphenated notations.
+ */
+public fun String.toUUID(): UUID = UUID.fromString(replace(UUID_REGEX, "$1-$2-$3-$4-$5"))
+
+/**
+ * Convert string to UUID or null if the string is not a uuid.
+ * Accepts simple and hyphenated notations.
+ */
+public fun String.toUUIDOrNull(): UUID? = try {
+	toUUID()
+} catch (err: IllegalArgumentException) {
+	null
+}
+
 /**
  * A UUID serializer that supports the GUIDs without dashes from the Jellyfin API
  */
@@ -15,16 +32,10 @@ public class UUIDSerializer : KSerializer<UUID> {
 	override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("UUID", PrimitiveKind.STRING)
 
 	override fun deserialize(decoder: Decoder): UUID {
-		val uuid = decoder.decodeString()
-
-		return UUID.fromString(uuid.replace(UUID_REGEX, "$1-$2-$3-$4-$5"))
+		return decoder.decodeString().toUUID()
 	}
 
 	override fun serialize(encoder: Encoder, value: UUID) {
 		encoder.encodeString(value.toString())
-	}
-
-	private companion object {
-		private val UUID_REGEX = "^([a-z\\d]{8})([a-z\\d]{4})([a-z\\d]{4})([a-z\\d]{4})([a-z\\d]{12})\$".toRegex()
 	}
 }
