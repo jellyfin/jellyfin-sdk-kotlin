@@ -50,7 +50,13 @@ class OpenApiTypeBuilder(
 			// Collections
 			is ArraySchema -> buildArrayType(schema)
 			is MapSchema -> buildMapType(schema)
-
+			// Composed
+			is ComposedSchema -> when {
+				// Limited support for anyOf / allOf containing a single item
+				schema.anyOf?.size == 1 -> buildSchema(schema.anyOf.first())
+				schema.allOf?.size == 1 -> buildSchema(schema.allOf.first())
+				else -> throw UnknownTypeError(schema.type, schema.format)
+			}
 			else -> throw UnknownTypeError(schema.type, schema.format)
 		}.copy(
 			// Add nullability
