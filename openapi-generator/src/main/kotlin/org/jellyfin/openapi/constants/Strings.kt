@@ -41,4 +41,9 @@ object Strings {
 	 * The suffix added to the name of a URL operation. Added after [URL_OPERATION_SUFFIX].
 	 */
 	const val URL_OPERATION_SUFFIX = "Url"
+
+	/**
+	 * The suffix added to the name of a service containing API operations.
+	 */
+	const val API_SERVICE_SUFFIX = "Api"
 }

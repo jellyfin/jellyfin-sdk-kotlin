@@ -24,7 +24,7 @@ val mainModule = module {
 	single { OpenApiTypeBuilder(getAll()) }
 	single { OpenApiReturnTypeBuilder(get()) }
 	single { OpenApiModelBuilder(get(), get()) }
-	single { OpenApiApiServicesBuilder(get(), get(), get()) }
+	single { OpenApiApiServicesBuilder(get(), get(), get(), getAll()) }
 
 	// API
 	single { ApiNameBuilder() }

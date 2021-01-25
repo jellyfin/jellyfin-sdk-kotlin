@@ -22,7 +22,7 @@ import org.jellyfin.apiclient.model.api.PlaybackStopInfo
 import org.jellyfin.apiclient.model.api.RepeatMode
 import org.jellyfin.apiclient.model.api.UserItemDataDto
 
-public class PlaystateApi(
+public class PlayStateApi(
 	private val api: KtorClient
 ) {
 	/**

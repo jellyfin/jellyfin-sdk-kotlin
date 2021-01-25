@@ -49,11 +49,17 @@ Hooks are classes that will modify the output of the generator. They should be r
       - api operation bodies
       - api operation return types
 
-  - **OperationUrlHook**
+  - **OperationUrlHook**  
     A hook that can request a url function to be added for an API operation. It receives the model
     for a complete api service and a single operation. If any hook returns `true` the generator will
     add a special function called `[operation]Url` (like "GetImageUrl") that will return a string
-    containing the request url. 
+    containing the request url.
+
+  - **ServiceNameHook**  
+    A hook that can modify the name(s) of an operation. It can add, rename and delete the services
+    for an operation. When all services are removed the operation will never be generated. Can be
+    used to fix spelling, moving operations to different services or adding operations to additional
+    services.
 
 ## Phases
 
