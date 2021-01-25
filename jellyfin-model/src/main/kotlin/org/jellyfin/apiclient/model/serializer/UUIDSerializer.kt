@@ -12,11 +12,12 @@ private val UUID_REGEX = "^([a-z\\d]{8})([a-z\\d]{4})([a-z\\d]{4})([a-z\\d]{4})(
 
 /**
  * Convert string to UUID. Accepts simple and hyphenated notations.
+ * @throws IllegalArgumentException if string is not a valid UUID.
  */
 public fun String.toUUID(): UUID = UUID.fromString(replace(UUID_REGEX, "$1-$2-$3-$4-$5"))
 
 /**
- * Convert string to UUID or null if the string is not a uuid.
+ * Convert string to UUID or null if the string is not an UUID.
  * Accepts simple and hyphenated notations.
  */
 public fun String.toUUIDOrNull(): UUID? = try {
@@ -26,7 +27,7 @@ public fun String.toUUIDOrNull(): UUID? = try {
 }
 
 /**
- * A UUID serializer that supports the GUIDs without dashes from the Jellyfin API
+ * A UUID serializer that supports the GUIDs without dashes from the Jellyfin API.
  */
 public class UUIDSerializer : KSerializer<UUID> {
 	override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("UUID", PrimitiveKind.STRING)
