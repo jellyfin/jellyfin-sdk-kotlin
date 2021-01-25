@@ -77,8 +77,15 @@ class OperationBuilder(
 		addParameterMapStatements("queryParameters", data.queryParameters)
 
 		// Add request body
-		if (data.bodyType != null) addParameter(ParameterSpec("data", data.bodyType))
-		else addStatement("val data = null")
+		if (data.bodyType != null) {
+			addParameter(ParameterSpec.builder("data", data.bodyType).apply {
+				// Set default value to null if parameter is nullable
+				if (data.bodyType.isNullable) defaultValue("%L", "null")
+			}.build())
+		} else {
+			// No data parameter needed, use a null value
+			addStatement("val data = null")
+		}
 
 		// Call API
 		addStatement(
