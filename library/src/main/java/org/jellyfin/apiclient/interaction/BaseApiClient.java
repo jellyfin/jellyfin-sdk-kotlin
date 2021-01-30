@@ -152,6 +152,10 @@ public abstract class BaseApiClient
 	}
 
     private IDevice device;
+	public final void setDevice(IDevice value)
+	{
+		device = value;
+	}
     public final IDevice getDevice()
     {
         return device;
