@@ -3,7 +3,7 @@ import org.gradle.kotlin.dsl.project
 
 object Dependencies {
 	object Kotlin {
-		const val version = "1.4.10"
+		const val version = "1.4.30"
 		private fun item(library: String) = "org.jetbrains.kotlin:kotlin-$library:$version"
 
 		val stdlib = item("stdlib")
@@ -19,12 +19,12 @@ object Dependencies {
 	object KotlinX {
 		private fun item(module: String, version: String) = "org.jetbrains.kotlinx:kotlinx-${module}:${version}"
 
-		val coroutinesCore = item("coroutines-core", "1.4.1")
+		val coroutinesCore = item("coroutines-core", "1.4.2")
 		val serializationJson = item("serialization-json", "1.0.1")
 	}
 
 	object Android {
-		const val buildTools = "com.android.tools.build:gradle:4.1.1"
+		const val buildTools = "com.android.tools.build:gradle:4.1.2"
 		const val desugarJdkLibs = "com.android.tools:desugar_jdk_libs:1.1.0"
 	}
 
@@ -36,7 +36,7 @@ object Dependencies {
 	}
 
 	object Ktor {
-		private const val version = "1.4.2"
+		private const val version = "1.5.1"
 		private fun item(library: String) = "io.ktor:ktor-$library:$version"
 
 		val okhttp = item("client-okhttp")
@@ -47,7 +47,7 @@ object Dependencies {
 	}
 
 	object Koin {
-		private const val version = "2.2.0"
+		private const val version = "2.2.2"
 		private fun item(module: String) = "org.koin:koin-$module:$version"
 
 		val core = item("core")
