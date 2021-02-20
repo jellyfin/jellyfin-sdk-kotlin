@@ -1,6 +1,7 @@
 package org.jellyfin.apiclient
 
 import org.jellyfin.apiclient.api.client.KtorClient
+import org.jellyfin.apiclient.api.info.ApiConstants
 import org.jellyfin.apiclient.discovery.DiscoveryService
 import org.jellyfin.apiclient.model.ClientInfo
 import org.jellyfin.apiclient.model.DeviceInfo
@@ -42,7 +43,7 @@ public class Jellyfin(
 	}
 
 	public companion object {
-		public val recommendedVersion: ServerVersion = ServerVersion(10, 7, 0)
-		public val apiVersion: ServerVersion = ServerVersion(10, 7, 0)
+		public val recommendedVersion: ServerVersion = ServerVersion(10, 7, 0, 0)
+		public val apiVersion: ServerVersion = ServerVersion.fromString(ApiConstants.serverVersion)!!
 	}
 }
