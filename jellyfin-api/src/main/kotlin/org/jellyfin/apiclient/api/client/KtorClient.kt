@@ -18,11 +18,11 @@ import kotlin.collections.set
 
 public open class KtorClient(
 	override var baseUrl: String? = null,
-	public var accessToken: String? = null,
-	public var clientInfo: ClientInfo,
-	public var deviceInfo: DeviceInfo,
+	override var accessToken: String? = null,
+	override var clientInfo: ClientInfo,
+	override var deviceInfo: DeviceInfo,
 ) : ApiClient {
-	internal val json = Json {
+	private val json = Json {
 		isLenient = false
 		ignoreUnknownKeys = true
 		allowSpecialFloatingPointValues = true
@@ -41,8 +41,6 @@ public open class KtorClient(
 		install(HttpTimeout) {
 			connectTimeoutMillis = 10000
 		}
-
-		install(WebSockets)
 	}
 
 	override fun createPath(path: String, pathParameters: Map<String, Any?>): String = path

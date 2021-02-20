@@ -1,7 +1,29 @@
 package org.jellyfin.apiclient.api.client
 
+import org.jellyfin.apiclient.model.ClientInfo
+import org.jellyfin.apiclient.model.DeviceInfo
+
 public interface ApiClient {
+	/**
+	 * URL to use as base for API endpoints. Should include the protocol and may contain a path.
+	 */
 	public var baseUrl: String?
+
+	/**
+	 * Access token to use for requests. Appended to all requests if set.
+	 */
+	public var accessToken: String?
+
+	/**
+	 * Information about the client / application send in all API requests.
+	 */
+	public var clientInfo: ClientInfo
+
+	/**
+	 * Information about the device send in all API requests. Only a single session is allowed per
+	 * device id.
+	 */
+	public var deviceInfo: DeviceInfo
 
 	/**
 	 * Replaces the variables in a path with the values in the map.
@@ -26,5 +48,8 @@ public interface ApiClient {
 		includeCredentials: Boolean = false
 	): String
 
+	/**
+	 * Create the value of the "Authorization" header.
+	 */
 	public fun createAuthorizationHeader(): String?
 }

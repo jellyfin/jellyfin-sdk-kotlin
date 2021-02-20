@@ -1,5 +1,9 @@
 package org.jellyfin.apiclient.api.sockets
 
+import io.ktor.client.*
+import io.ktor.client.features.*
+import io.ktor.client.features.json.*
+import io.ktor.client.features.json.serializer.*
 import io.ktor.client.features.websocket.*
 import io.ktor.http.*
 import io.ktor.http.cio.websocket.*
@@ -12,7 +16,7 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.*
 import kotlinx.serialization.serializer
-import org.jellyfin.apiclient.api.client.KtorClient
+import org.jellyfin.apiclient.api.client.ApiClient
 import org.jellyfin.apiclient.model.socket.*
 import org.slf4j.LoggerFactory
 
@@ -26,7 +30,7 @@ import org.slf4j.LoggerFactory
  * The user should verify the access token is correct as the server does not respond to bad authorization.
  */
 public class WebSocketApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	private companion object {
 		// Mapping for types to message
@@ -70,6 +74,14 @@ public class WebSocketApi(
 	}
 
 	private val logger = LoggerFactory.getLogger("WebSocketApi")
+
+	private val client: HttpClient = HttpClient {
+		install(HttpTimeout) {
+			connectTimeoutMillis = 10000
+		}
+
+		install(WebSockets)
+	}
 
 	private val json = Json {
 		// Based on DefaultJson
@@ -139,7 +151,7 @@ public class WebSocketApi(
 		// Open socket
 		socketJob = GlobalScope.launch {
 			// Create web socket connection
-			api.client.ws({
+			client.ws({
 				url {
 					takeFrom(api.createUrl(
 						pathTemplate = "/socket",
@@ -175,15 +187,15 @@ public class WebSocketApi(
 		logger.info("Received message {}", text)
 
 		// Read JSON object from text
-		val json = json.parseToJsonElement(text)
-		require(json is JsonObject)
+		val message = json.parseToJsonElement(text)
+		require(message is JsonObject)
 
 		// Read id
-		val messageId = json[JSON_PROP_MESSAGE_ID]?.jsonPrimitive?.content
+		val messageId = message[JSON_PROP_MESSAGE_ID]?.jsonPrimitive?.content
 		require(messageId is String)
 
 		// Read type
-		val type = json[JSON_PROP_MESSAGE_TYPE]?.jsonPrimitive?.content
+		val type = message[JSON_PROP_MESSAGE_TYPE]?.jsonPrimitive?.content
 		require(type is String)
 
 		// Get serializer for type
@@ -198,12 +210,12 @@ public class WebSocketApi(
 			put(JSON_PROP_MESSAGE_ID, messageId)
 
 			// Flatten data object or keep it when it's not an object
-			val data = json[JSON_PROP_DATA]
+			val data = message[JSON_PROP_DATA]
 			if (data is JsonObject) data.entries.forEach { (key, value) -> put(key, value) }
 			else put(JSON_PROP_DATA, data!!)
 		}
 
-		return api.json.decodeFromJsonElement(dataSerializer, modifiedJson) as? IncomingSocketMessage
+		return json.decodeFromJsonElement(dataSerializer, modifiedJson) as? IncomingSocketMessage
 	}
 
 	/**
