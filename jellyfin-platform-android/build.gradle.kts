@@ -1,8 +1,6 @@
 plugins {
 	id("com.android.library")
-
 	id("kotlin-android")
-	id("kotlin-android-extensions")
 }
 
 android {
@@ -12,9 +10,6 @@ android {
 		minSdkVersion(19)
 		targetSdkVersion(30)
 		multiDexEnabled = true
-
-		versionCode = getVersionCode(project.version.toString()) ?: 0
-		versionName = project.version.toString()
 
 		consumerProguardFiles("proguard-rules.pro")
 	}
