@@ -19,6 +19,7 @@ fun main(args: Array<String>) {
 		subcommands(Libraries(jellyfin))
 		subcommands(Users(jellyfin))
 		subcommands(Ping(jellyfin))
+		subcommands(Observe(jellyfin))
 	}
 
 	instance.main(args)
