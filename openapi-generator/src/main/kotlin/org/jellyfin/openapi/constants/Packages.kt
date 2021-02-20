@@ -7,6 +7,11 @@ object Packages {
 	const val API = "org.jellyfin.apiclient.api.operations"
 
 	/**
+	 * Package for the generated API constants
+	 */
+	const val API_CONSTANTS = "org.jellyfin.apiclient.api.info"
+
+	/**
 	 * Package for the client implementation
 	 */
 	const val API_CLIENT = "org.jellyfin.apiclient.api.client"
