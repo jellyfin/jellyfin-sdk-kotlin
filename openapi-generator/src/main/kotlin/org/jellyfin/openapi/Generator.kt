@@ -2,6 +2,7 @@ package org.jellyfin.openapi
 
 import com.squareup.kotlinpoet.FileSpec
 import io.swagger.v3.oas.models.Paths
+import io.swagger.v3.oas.models.info.Info
 import io.swagger.v3.oas.models.media.Schema
 import io.swagger.v3.parser.OpenAPIV3Parser
 import io.swagger.v3.parser.core.models.SwaggerParseResult
@@ -35,7 +36,7 @@ class Generator(
 		.map(apiBuilder::build)
 		.map(fileSpecBuilder::build)
 
-	private fun createApiConstants(info: io.swagger.v3.oas.models.info.Info): FileSpec = openApiConstantsBuilder.build(info)
+	private fun createApiConstants(info: Info): FileSpec = openApiConstantsBuilder.build(info)
 		.let(fileSpecBuilder::build)
 
 	fun generate(
