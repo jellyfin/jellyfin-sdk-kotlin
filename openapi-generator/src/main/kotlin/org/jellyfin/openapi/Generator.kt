@@ -2,21 +2,22 @@ package org.jellyfin.openapi
 
 import com.squareup.kotlinpoet.FileSpec
 import io.swagger.v3.oas.models.Paths
+import io.swagger.v3.oas.models.info.Info
 import io.swagger.v3.oas.models.media.Schema
 import io.swagger.v3.parser.OpenAPIV3Parser
 import io.swagger.v3.parser.core.models.SwaggerParseResult
 import org.jellyfin.openapi.builder.api.ApiBuilder
 import org.jellyfin.openapi.builder.extra.FileSpecBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiApiServicesBuilder
+import org.jellyfin.openapi.builder.openapi.OpenApiConstantsBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiModelBuilder
-import org.jellyfin.openapi.constants.Packages
-import org.jellyfin.openapi.model.JellyFile
 import java.io.File
 
 class Generator(
 	private val fileSpecBuilder: FileSpecBuilder,
 	private val openApiModelBuilder: OpenApiModelBuilder,
 	private val openApiApiServicesBuilder: OpenApiApiServicesBuilder,
+	private val openApiConstantsBuilder: OpenApiConstantsBuilder,
 	private val apiBuilder: ApiBuilder
 ) {
 	private fun parse(openApiJson: String): SwaggerParseResult {
@@ -34,6 +35,9 @@ class Generator(
 	private fun createApis(paths: Paths): List<FileSpec> = openApiApiServicesBuilder.build(paths)
 		.map(apiBuilder::build)
 		.map(fileSpecBuilder::build)
+
+	private fun createApiConstants(info: Info): FileSpec = openApiConstantsBuilder.build(info)
+		.let(fileSpecBuilder::build)
 
 	fun generate(
 		openApiJson: String,
@@ -54,5 +58,7 @@ class Generator(
 		createModels(schemas).forEach { file -> file.writeTo(modelsOutputDir) }
 		// Create API operations
 		createApis(paths).forEach { file -> file.writeTo(apiOutputDir) }
+		// Create API constants
+		createApiConstants(parseResult.openAPI.info).let { file -> file.writeTo(apiOutputDir) }
 	}
 }

@@ -11,20 +11,18 @@ import org.jellyfin.openapi.builder.model.EmptyModelBuilder
 import org.jellyfin.openapi.builder.model.EnumModelBuilder
 import org.jellyfin.openapi.builder.model.ModelBuilder
 import org.jellyfin.openapi.builder.model.ObjectModelBuilder
-import org.jellyfin.openapi.builder.openapi.OpenApiApiServicesBuilder
-import org.jellyfin.openapi.builder.openapi.OpenApiModelBuilder
-import org.jellyfin.openapi.builder.openapi.OpenApiReturnTypeBuilder
-import org.jellyfin.openapi.builder.openapi.OpenApiTypeBuilder
+import org.jellyfin.openapi.builder.openapi.*
 import org.koin.dsl.module
 
 val mainModule = module {
-	single { Generator(get(), get(), get(), get()) }
+	single { Generator(get(), get(), get(), get(), get()) }
 
 	// OpenAPI
 	single { OpenApiTypeBuilder(getAll()) }
 	single { OpenApiReturnTypeBuilder(get()) }
 	single { OpenApiModelBuilder(get(), get()) }
 	single { OpenApiApiServicesBuilder(get(), get(), get(), getAll()) }
+	single { OpenApiConstantsBuilder() }
 
 	// API
 	single { ApiNameBuilder() }

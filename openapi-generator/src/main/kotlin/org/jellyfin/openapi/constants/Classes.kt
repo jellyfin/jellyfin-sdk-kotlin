@@ -8,4 +8,6 @@ object Classes {
 		const val UUID = "UUIDSerializer"
 		const val LOCAL_DATE_TIME = "LocalDateTimeSerializer"
 	}
+
+	const val CONSTANTS_OBJECT = "ApiConstants"
 }
