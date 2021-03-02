@@ -26,6 +26,9 @@ public data class PluginInfo(
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
+	/**
+	 * Gets or sets the version.
+	 */
 	@SerialName("Version")
 	public val version: Version? = null,
 	/**
@@ -53,6 +56,9 @@ public data class PluginInfo(
 	 */
 	@SerialName("HasImage")
 	public val hasImage: Boolean,
+	/**
+	 * Gets or sets a value indicating the status of the plugin.
+	 */
 	@SerialName("Status")
-	public val status: PluginStatus? = null
+	public val status: PluginStatus
 )

@@ -19,6 +19,9 @@ public data class VersionInfo(
 	 */
 	@SerialName("version")
 	public val version: String? = null,
+	/**
+	 * Gets the version as a System.Version.
+	 */
 	@SerialName("VersionNumber")
 	public val versionNumber: Version? = null,
 	/**

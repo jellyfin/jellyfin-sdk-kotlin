@@ -27,6 +27,9 @@ public data class DeviceProfile(
 	 */
 	@SerialName("Id")
 	public val id: String? = null,
+	/**
+	 * Gets or sets the Identification.
+	 */
 	@SerialName("Identification")
 	public val identification: DeviceIdentification? = null,
 	/**

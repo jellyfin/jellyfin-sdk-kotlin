@@ -110,6 +110,9 @@ public data class UserPolicy(
 	public val authenticationProviderId: String? = null,
 	@SerialName("PasswordResetProviderId")
 	public val passwordResetProviderId: String? = null,
+	/**
+	 * Enum SyncPlayUserAccessType.
+	 */
 	@SerialName("SyncPlayAccess")
-	public val syncPlayAccess: SyncPlayUserAccessType? = null
+	public val syncPlayAccess: SyncPlayUserAccessType
 )

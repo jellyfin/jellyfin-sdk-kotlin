@@ -54,8 +54,14 @@ public data class PlayerStateInfo(
 	 */
 	@SerialName("MediaSourceId")
 	public val mediaSourceId: String? = null,
+	/**
+	 * Gets or sets the play method.
+	 */
 	@SerialName("PlayMethod")
 	public val playMethod: PlayMethod? = null,
+	/**
+	 * Gets or sets the repeat mode.
+	 */
 	@SerialName("RepeatMode")
-	public val repeatMode: RepeatMode? = null
+	public val repeatMode: RepeatMode
 )

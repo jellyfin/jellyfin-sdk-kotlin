@@ -5,17 +5,25 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
-import kotlin.String
-import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public data class ContainerProfile(
-	@SerialName("Type")
-	public val type: DlnaProfileType,
-	@SerialName("Conditions")
-	public val conditions: List<ProfileCondition>? = null,
-	@SerialName("Container")
-	public val container: String? = null
-)
+public enum class CollectionTypeOptions {
+	@SerialName("Movies")
+	MOVIES,
+	@SerialName("TvShows")
+	TV_SHOWS,
+	@SerialName("Music")
+	MUSIC,
+	@SerialName("MusicVideos")
+	MUSIC_VIDEOS,
+	@SerialName("HomeVideos")
+	HOME_VIDEOS,
+	@SerialName("BoxSets")
+	BOX_SETS,
+	@SerialName("Books")
+	BOOKS,
+	@SerialName("Mixed")
+	MIXED,
+}

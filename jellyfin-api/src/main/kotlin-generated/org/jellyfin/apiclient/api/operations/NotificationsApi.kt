@@ -82,7 +82,7 @@ public class NotificationsApi(
 	 */
 	public suspend fun createAdminNotification(
 		url: String? = null,
-		level: NotificationLevel,
+		level: NotificationLevel? = null,
 		name: String? = "",
 		description: String? = ""
 	): Response<Unit> {

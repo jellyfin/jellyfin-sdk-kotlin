@@ -27,6 +27,9 @@ public data class ClientCapabilities(
 	public val supportsPersistentIdentifier: Boolean,
 	@SerialName("SupportsSync")
 	public val supportsSync: Boolean,
+	/**
+	 * Defines the MediaBrowser.Model.Dlna.DeviceProfile.
+	 */
 	@SerialName("DeviceProfile")
 	public val deviceProfile: DeviceProfile? = null,
 	@SerialName("AppStoreUrl")

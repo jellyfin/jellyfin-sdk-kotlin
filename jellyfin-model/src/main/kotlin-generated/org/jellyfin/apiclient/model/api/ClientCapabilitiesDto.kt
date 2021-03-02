@@ -51,6 +51,9 @@ public data class ClientCapabilitiesDto(
 	 */
 	@SerialName("SupportsSync")
 	public val supportsSync: Boolean,
+	/**
+	 * Gets or sets the device profile.
+	 */
 	@SerialName("DeviceProfile")
 	public val deviceProfile: DeviceProfile? = null,
 	/**

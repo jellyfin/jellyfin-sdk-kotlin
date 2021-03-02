@@ -56,8 +56,14 @@ public data class RemoteImageInfo(
 	 */
 	@SerialName("Language")
 	public val language: String? = null,
+	/**
+	 * Gets or sets the type.
+	 */
 	@SerialName("Type")
-	public val type: ImageType? = null,
+	public val type: ImageType,
+	/**
+	 * Gets or sets the type of the rating.
+	 */
 	@SerialName("RatingType")
-	public val ratingType: RatingType? = null
+	public val ratingType: RatingType
 )

@@ -22,8 +22,11 @@ public data class TaskInfo(
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
+	/**
+	 * Gets or sets the state of the task.
+	 */
 	@SerialName("State")
-	public val state: TaskState? = null,
+	public val state: TaskState,
 	/**
 	 * Gets or sets the progress.
 	 */
@@ -34,6 +37,9 @@ public data class TaskInfo(
 	 */
 	@SerialName("Id")
 	public val id: String? = null,
+	/**
+	 * Gets or sets the last execution result.
+	 */
 	@SerialName("LastExecutionResult")
 	public val lastExecutionResult: TaskResult? = null,
 	/**

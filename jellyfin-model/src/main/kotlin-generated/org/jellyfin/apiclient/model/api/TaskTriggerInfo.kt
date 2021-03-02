@@ -30,6 +30,9 @@ public data class TaskTriggerInfo(
 	 */
 	@SerialName("IntervalTicks")
 	public val intervalTicks: Long? = null,
+	/**
+	 * Gets or sets the day of week.
+	 */
 	@SerialName("DayOfWeek")
 	public val dayOfWeek: DayOfWeek? = null,
 	/**

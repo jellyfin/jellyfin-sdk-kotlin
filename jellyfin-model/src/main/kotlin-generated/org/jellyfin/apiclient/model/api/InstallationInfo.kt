@@ -29,6 +29,9 @@ public data class InstallationInfo(
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
+	/**
+	 * Gets or sets the version.
+	 */
 	@SerialName("Version")
 	public val version: Version? = null,
 	/**
@@ -45,5 +48,10 @@ public data class InstallationInfo(
 	 * Gets or sets a checksum for the binary.
 	 */
 	@SerialName("Checksum")
-	public val checksum: String? = null
+	public val checksum: String? = null,
+	/**
+	 * Gets or sets package information for the installation.
+	 */
+	@SerialName("PackageInfo")
+	public val packageInfo: PackageInfo? = null
 )

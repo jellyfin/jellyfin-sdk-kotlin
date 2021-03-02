@@ -103,6 +103,9 @@ public data class BaseItemDto(
 	public val sortName: String? = null,
 	@SerialName("ForcedSortName")
 	public val forcedSortName: String? = null,
+	/**
+	 * Gets or sets the video3 D format.
+	 */
 	@SerialName("Video3DFormat")
 	public val video3dFormat: Video3dFormat? = null,
 	/**
@@ -181,6 +184,9 @@ public data class BaseItemDto(
 	 */
 	@SerialName("RunTimeTicks")
 	public val runTimeTicks: Long? = null,
+	/**
+	 * Gets or sets the play access.
+	 */
 	@SerialName("PlayAccess")
 	public val playAccess: PlayAccess? = null,
 	/**
@@ -282,6 +288,9 @@ public data class BaseItemDto(
 	 */
 	@SerialName("LocalTrailerCount")
 	public val localTrailerCount: Int? = null,
+	/**
+	 * User data for this item based on the user it's being requested for.
+	 */
 	@SerialName("UserData")
 	public val userData: UserItemDataDto? = null,
 	/**
@@ -404,6 +413,9 @@ public data class BaseItemDto(
 	 */
 	@SerialName("MediaStreams")
 	public val mediaStreams: List<MediaStream>? = null,
+	/**
+	 * Gets or sets the type of the video.
+	 */
 	@SerialName("VideoType")
 	public val videoType: VideoType? = null,
 	/**
@@ -484,8 +496,14 @@ public data class BaseItemDto(
 	 */
 	@SerialName("Chapters")
 	public val chapters: List<ChapterInfo>? = null,
+	/**
+	 * Gets or sets the type of the location.
+	 */
 	@SerialName("LocationType")
 	public val locationType: LocationType? = null,
+	/**
+	 * Gets or sets the type of the iso.
+	 */
 	@SerialName("IsoType")
 	public val isoType: IsoType? = null,
 	/**
@@ -610,8 +628,14 @@ public data class BaseItemDto(
 	 */
 	@SerialName("EpisodeTitle")
 	public val episodeTitle: String? = null,
+	/**
+	 * Gets or sets the type of the channel.
+	 */
 	@SerialName("ChannelType")
 	public val channelType: ChannelType? = null,
+	/**
+	 * Gets or sets the audio.
+	 */
 	@SerialName("Audio")
 	public val audio: ProgramAudio? = null,
 	/**
@@ -654,6 +678,9 @@ public data class BaseItemDto(
 	 */
 	@SerialName("TimerId")
 	public val timerId: String? = null,
+	/**
+	 * Gets or sets the current program.
+	 */
 	@SerialName("CurrentProgram")
 	public val currentProgram: BaseItemDto? = null
 )

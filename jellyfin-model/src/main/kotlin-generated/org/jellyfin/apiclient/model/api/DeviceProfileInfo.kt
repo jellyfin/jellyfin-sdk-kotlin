@@ -21,6 +21,9 @@ public data class DeviceProfileInfo(
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
+	/**
+	 * Gets or sets the type.
+	 */
 	@SerialName("Type")
-	public val type: DeviceProfileType? = null
+	public val type: DeviceProfileType
 )

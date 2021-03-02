@@ -5,23 +5,18 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
-import kotlin.Int
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * The notification summary DTO.
+ * Forgot Password Pin enter request body DTO.
  */
 @Serializable
-public data class NotificationsSummaryDto(
+public data class ForgotPasswordPinDto(
 	/**
-	 * Gets or sets the number of unread notifications.
+	 * Gets or sets the entered pin to have the password reset.
 	 */
-	@SerialName("UnreadCount")
-	public val unreadCount: Int,
-	/**
-	 * Gets or sets the maximum unread notification level.
-	 */
-	@SerialName("MaxUnreadNotificationLevel")
-	public val maxUnreadNotificationLevel: NotificationLevel? = null
+	@SerialName("Pin")
+	public val pin: String
 )

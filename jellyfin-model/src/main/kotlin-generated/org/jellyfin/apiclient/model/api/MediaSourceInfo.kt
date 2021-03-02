@@ -17,7 +17,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class MediaSourceInfo(
 	@SerialName("Protocol")
-	public val protocol: MediaProtocol? = null,
+	public val protocol: MediaProtocol,
 	@SerialName("Id")
 	public val id: String? = null,
 	@SerialName("Path")
@@ -27,7 +27,7 @@ public data class MediaSourceInfo(
 	@SerialName("EncoderProtocol")
 	public val encoderProtocol: MediaProtocol? = null,
 	@SerialName("Type")
-	public val type: MediaSourceType? = null,
+	public val type: MediaSourceType,
 	@SerialName("Container")
 	public val container: String? = null,
 	@SerialName("Size")

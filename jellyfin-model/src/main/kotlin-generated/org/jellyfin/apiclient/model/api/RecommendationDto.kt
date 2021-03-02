@@ -20,7 +20,7 @@ public data class RecommendationDto(
 	@SerialName("Items")
 	public val items: List<BaseItemDto>? = null,
 	@SerialName("RecommendationType")
-	public val recommendationType: RecommendationType? = null,
+	public val recommendationType: RecommendationType,
 	@SerialName("BaselineItemName")
 	public val baselineItemName: String? = null,
 	@SerialName("CategoryId")

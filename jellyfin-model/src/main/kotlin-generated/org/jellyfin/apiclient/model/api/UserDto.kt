@@ -82,8 +82,14 @@ public data class UserDto(
 	 */
 	@SerialName("LastActivityDate")
 	public val lastActivityDate: LocalDateTime? = null,
+	/**
+	 * Gets or sets the configuration.
+	 */
 	@SerialName("Configuration")
 	public val configuration: UserConfiguration? = null,
+	/**
+	 * Gets or sets the policy.
+	 */
 	@SerialName("Policy")
 	public val policy: UserPolicy? = null,
 	/**

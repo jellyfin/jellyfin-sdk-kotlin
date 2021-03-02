@@ -13,6 +13,7 @@ import kotlin.collections.List
 import org.jellyfin.apiclient.api.client.KtorClient
 import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.AddVirtualFolderDto
+import org.jellyfin.apiclient.model.api.CollectionTypeOptions
 import org.jellyfin.apiclient.model.api.MediaPathDto
 import org.jellyfin.apiclient.model.api.MediaPathInfo
 import org.jellyfin.apiclient.model.api.UpdateLibraryOptionsDto
@@ -43,10 +44,10 @@ public class LibraryStructureApi(
 	 */
 	public suspend fun addVirtualFolder(
 		name: String? = null,
-		collectionType: String? = null,
+		collectionType: CollectionTypeOptions? = null,
 		paths: List<String>? = emptyList(),
 		refreshLibrary: Boolean = false,
-		`data`: AddVirtualFolderDto
+		`data`: AddVirtualFolderDto? = null
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -78,7 +79,7 @@ public class LibraryStructureApi(
 	/**
 	 * Update library options.
 	 */
-	public suspend fun updateLibraryOptions(`data`: UpdateLibraryOptionsDto): Response<Unit> {
+	public suspend fun updateLibraryOptions(`data`: UpdateLibraryOptionsDto? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Library/VirtualFolders/LibraryOptions", pathParameters,
@@ -152,7 +153,8 @@ public class LibraryStructureApi(
 	 *
 	 * @param name The name of the library.
 	 */
-	public suspend fun updateMediaPath(name: String? = null, `data`: MediaPathInfo): Response<Unit> {
+	public suspend fun updateMediaPath(name: String? = null, `data`: MediaPathInfo? = null):
+			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["name"] = name

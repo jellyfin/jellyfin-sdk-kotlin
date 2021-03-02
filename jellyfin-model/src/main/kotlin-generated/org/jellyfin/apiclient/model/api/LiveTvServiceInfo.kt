@@ -26,8 +26,11 @@ public data class LiveTvServiceInfo(
 	 */
 	@SerialName("HomePageUrl")
 	public val homePageUrl: String? = null,
+	/**
+	 * Gets or sets the status.
+	 */
 	@SerialName("Status")
-	public val status: LiveTvServiceStatus? = null,
+	public val status: LiveTvServiceStatus,
 	/**
 	 * Gets or sets the status message.
 	 */

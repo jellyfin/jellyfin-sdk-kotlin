@@ -35,8 +35,11 @@ public data class GroupInfoDto(
 	 */
 	@SerialName("GroupName")
 	public val groupName: String? = null,
+	/**
+	 * Gets the group state.
+	 */
 	@SerialName("State")
-	public val state: GroupStateType? = null,
+	public val state: GroupStateType,
 	/**
 	 * Gets the participants.
 	 */

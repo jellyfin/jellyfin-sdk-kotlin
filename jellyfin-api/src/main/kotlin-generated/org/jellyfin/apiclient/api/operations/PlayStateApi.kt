@@ -28,7 +28,7 @@ public class PlayStateApi(
 	/**
 	 * Reports playback has started within a session.
 	 */
-	public suspend fun reportPlaybackStart(`data`: PlaybackStartInfo): Response<Unit> {
+	public suspend fun reportPlaybackStart(`data`: PlaybackStartInfo? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Sessions/Playing", pathParameters, queryParameters, data)
@@ -52,7 +52,7 @@ public class PlayStateApi(
 	/**
 	 * Reports playback progress within a session.
 	 */
-	public suspend fun reportPlaybackProgress(`data`: PlaybackProgressInfo): Response<Unit> {
+	public suspend fun reportPlaybackProgress(`data`: PlaybackProgressInfo? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Sessions/Playing/Progress", pathParameters, queryParameters, data)
@@ -62,7 +62,7 @@ public class PlayStateApi(
 	/**
 	 * Reports playback has stopped within a session.
 	 */
-	public suspend fun reportPlaybackStopped(`data`: PlaybackStopInfo): Response<Unit> {
+	public suspend fun reportPlaybackStopped(`data`: PlaybackStopInfo? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Sessions/Playing/Stopped", pathParameters, queryParameters, data)

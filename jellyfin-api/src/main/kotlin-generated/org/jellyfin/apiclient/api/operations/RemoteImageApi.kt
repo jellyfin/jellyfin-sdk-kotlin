@@ -62,7 +62,7 @@ public class RemoteImageApi(
 	 */
 	public suspend fun getRemoteImages(
 		itemId: UUID,
-		type: ImageType,
+		type: ImageType? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
 		providerName: String? = null,

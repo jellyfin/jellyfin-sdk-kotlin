@@ -16,8 +16,11 @@ import org.jellyfin.apiclient.model.serializer.LocalDateTimeSerializer
 
 @Serializable
 public data class ForgotPasswordResult(
+	/**
+	 * Gets or sets the action.
+	 */
 	@SerialName("Action")
-	public val action: ForgotPasswordAction? = null,
+	public val action: ForgotPasswordAction,
 	/**
 	 * Gets or sets the pin file.
 	 */
