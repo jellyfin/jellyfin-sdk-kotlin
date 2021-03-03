@@ -29,7 +29,8 @@ public class PlaylistsApi(
 	 * precedence.
 	 * Query parameters are obsolete.
 	 */
-	public suspend fun createPlaylist(`data`: CreatePlaylistDto): Response<PlaylistCreationResult> {
+	public suspend fun createPlaylist(`data`: CreatePlaylistDto? = null):
+			Response<PlaylistCreationResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<PlaylistCreationResult>("/Playlists", pathParameters, queryParameters,
@@ -53,7 +54,7 @@ public class PlaylistsApi(
 		ids: List<UUID>? = emptyList(),
 		userId: UUID? = null,
 		mediaType: String? = null,
-		`data`: CreatePlaylistDto
+		`data`: CreatePlaylistDto? = null
 	): Response<PlaylistCreationResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

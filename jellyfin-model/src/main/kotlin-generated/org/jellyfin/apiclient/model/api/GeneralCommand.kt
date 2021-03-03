@@ -17,8 +17,11 @@ import org.jellyfin.apiclient.model.serializer.UUIDSerializer
 
 @Serializable
 public data class GeneralCommand(
+	/**
+	 * This exists simply to identify a set of known commands.
+	 */
 	@SerialName("Name")
-	public val name: GeneralCommandType? = null,
+	public val name: GeneralCommandType,
 	@SerialName("ControllingUserId")
 	public val controllingUserId: UUID,
 	@SerialName("Arguments")

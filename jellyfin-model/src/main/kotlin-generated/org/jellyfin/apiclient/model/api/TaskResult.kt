@@ -29,8 +29,11 @@ public data class TaskResult(
 	 */
 	@SerialName("EndTimeUtc")
 	public val endTimeUtc: LocalDateTime,
+	/**
+	 * Gets or sets the status.
+	 */
 	@SerialName("Status")
-	public val status: TaskCompletionStatus? = null,
+	public val status: TaskCompletionStatus,
 	/**
 	 * Gets or sets the name.
 	 */

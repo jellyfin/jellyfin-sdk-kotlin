@@ -78,6 +78,9 @@ public data class OpenLiveStreamDto(
 	 */
 	@SerialName("EnableDirectStream")
 	public val enableDirectStream: Boolean? = null,
+	/**
+	 * Gets or sets the device profile.
+	 */
 	@SerialName("DeviceProfile")
 	public val deviceProfile: DeviceProfile? = null,
 	/**

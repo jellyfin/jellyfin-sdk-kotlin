@@ -18,5 +18,5 @@ public data class DirectPlayProfile(
 	@SerialName("VideoCodec")
 	public val videoCodec: String? = null,
 	@SerialName("Type")
-	public val type: DlnaProfileType? = null
+	public val type: DlnaProfileType
 )

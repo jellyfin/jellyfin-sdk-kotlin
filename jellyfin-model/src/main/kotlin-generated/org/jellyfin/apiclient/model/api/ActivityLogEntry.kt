@@ -69,6 +69,9 @@ public data class ActivityLogEntry(
 	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("UserPrimaryImageTag")
 	public val userPrimaryImageTag: String? = null,
+	/**
+	 * Gets or sets the log severity.
+	 */
 	@SerialName("Severity")
-	public val severity: LogLevel? = null
+	public val severity: LogLevel
 )

@@ -44,8 +44,11 @@ public data class SendCommand(
 	 */
 	@SerialName("PositionTicks")
 	public val positionTicks: Long? = null,
+	/**
+	 * Gets the command.
+	 */
 	@SerialName("Command")
-	public val command: SendCommandType? = null,
+	public val command: SendCommandType,
 	/**
 	 * Gets the UTC time when this command has been emitted.
 	 */

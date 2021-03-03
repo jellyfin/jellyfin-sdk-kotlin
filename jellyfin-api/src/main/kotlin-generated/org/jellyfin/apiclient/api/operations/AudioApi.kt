@@ -138,7 +138,7 @@ public class AudioApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap()
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -315,7 +315,7 @@ public class AudioApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = null,
 		includeCredentials: Boolean = false
 	): String {
@@ -490,7 +490,7 @@ public class AudioApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap()
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -667,7 +667,7 @@ public class AudioApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = null,
 		includeCredentials: Boolean = false
 	): String {

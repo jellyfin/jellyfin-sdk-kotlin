@@ -25,6 +25,9 @@ public data class PlaybackInfoResponse(
 	 */
 	@SerialName("PlaySessionId")
 	public val playSessionId: String? = null,
+	/**
+	 * Gets or sets the error code.
+	 */
 	@SerialName("ErrorCode")
 	public val errorCode: PlaybackErrorCode? = null
 )

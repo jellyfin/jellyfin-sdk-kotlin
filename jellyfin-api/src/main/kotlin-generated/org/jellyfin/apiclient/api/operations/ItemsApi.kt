@@ -21,6 +21,7 @@ import org.jellyfin.apiclient.model.api.ItemFields
 import org.jellyfin.apiclient.model.api.ItemFilter
 import org.jellyfin.apiclient.model.api.LocationType
 import org.jellyfin.apiclient.model.api.SeriesStatus
+import org.jellyfin.apiclient.model.api.SortOrder
 import org.jellyfin.apiclient.model.api.VideoType
 
 public class ItemsApi(
@@ -182,7 +183,7 @@ public class ItemsApi(
 		limit: Int? = null,
 		recursive: Boolean? = null,
 		searchTerm: String? = null,
-		sortOrder: String? = null,
+		sortOrder: List<SortOrder>? = emptyList(),
 		parentId: UUID? = null,
 		fields: List<ItemFields>? = emptyList(),
 		excludeItemTypes: List<String>? = emptyList(),
@@ -191,7 +192,7 @@ public class ItemsApi(
 		isFavorite: Boolean? = null,
 		mediaTypes: List<String>? = emptyList(),
 		imageTypes: List<ImageType>? = emptyList(),
-		sortBy: String? = null,
+		sortBy: List<String>? = emptyList(),
 		isPlayed: Boolean? = null,
 		genres: List<String>? = emptyList(),
 		officialRatings: List<String>? = emptyList(),
@@ -475,7 +476,7 @@ public class ItemsApi(
 		limit: Int? = null,
 		recursive: Boolean? = null,
 		searchTerm: String? = null,
-		sortOrder: String? = null,
+		sortOrder: List<SortOrder>? = emptyList(),
 		parentId: UUID? = null,
 		fields: List<ItemFields>? = emptyList(),
 		excludeItemTypes: List<String>? = emptyList(),
@@ -484,7 +485,7 @@ public class ItemsApi(
 		isFavorite: Boolean? = null,
 		mediaTypes: List<String>? = emptyList(),
 		imageTypes: List<ImageType>? = emptyList(),
-		sortBy: String? = null,
+		sortBy: List<String>? = emptyList(),
 		isPlayed: Boolean? = null,
 		genres: List<String>? = emptyList(),
 		officialRatings: List<String>? = emptyList(),

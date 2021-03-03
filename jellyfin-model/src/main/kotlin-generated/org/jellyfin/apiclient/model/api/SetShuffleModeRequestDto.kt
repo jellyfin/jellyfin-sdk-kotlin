@@ -13,6 +13,9 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public data class SetShuffleModeRequestDto(
+	/**
+	 * Gets or sets the shuffle mode.
+	 */
 	@SerialName("Mode")
-	public val mode: GroupShuffleMode? = null
+	public val mode: GroupShuffleMode
 )

@@ -17,6 +17,7 @@ import org.jellyfin.apiclient.model.api.AuthenticateUserByName
 import org.jellyfin.apiclient.model.api.AuthenticationResult
 import org.jellyfin.apiclient.model.api.CreateUserByName
 import org.jellyfin.apiclient.model.api.ForgotPasswordDto
+import org.jellyfin.apiclient.model.api.ForgotPasswordPinDto
 import org.jellyfin.apiclient.model.api.ForgotPasswordResult
 import org.jellyfin.apiclient.model.api.PinRedeemResult
 import org.jellyfin.apiclient.model.api.QuickConnectDto
@@ -204,7 +205,7 @@ public class UserApi(
 	/**
 	 * Redeems a forgot password pin.
 	 */
-	public suspend fun forgotPasswordPin(`data`: String? = null): Response<PinRedeemResult> {
+	public suspend fun forgotPasswordPin(`data`: ForgotPasswordPinDto): Response<PinRedeemResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<PinRedeemResult>("/Users/ForgotPassword/Pin", pathParameters,

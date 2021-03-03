@@ -130,9 +130,12 @@ public data class TimerInfoDto(
 	@SerialName("IsPostPaddingRequired")
 	public val isPostPaddingRequired: Boolean,
 	@SerialName("KeepUntil")
-	public val keepUntil: KeepUntil? = null,
+	public val keepUntil: KeepUntil,
+	/**
+	 * Gets or sets the status.
+	 */
 	@SerialName("Status")
-	public val status: RecordingStatus? = null,
+	public val status: RecordingStatus,
 	/**
 	 * Gets or sets the series timer identifier.
 	 */
@@ -148,6 +151,9 @@ public data class TimerInfoDto(
 	 */
 	@SerialName("RunTimeTicks")
 	public val runTimeTicks: Long? = null,
+	/**
+	 * Gets or sets the program information.
+	 */
 	@SerialName("ProgramInfo")
 	public val programInfo: BaseItemDto? = null
 )

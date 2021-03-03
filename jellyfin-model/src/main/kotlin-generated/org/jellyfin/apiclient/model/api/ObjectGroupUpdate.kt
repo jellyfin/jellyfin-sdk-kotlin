@@ -24,8 +24,11 @@ public data class ObjectGroupUpdate(
 	 */
 	@SerialName("GroupId")
 	public val groupId: UUID,
+	/**
+	 * Gets the update type.
+	 */
 	@SerialName("Type")
-	public val type: GroupUpdateType? = null,
+	public val type: GroupUpdateType,
 	/**
 	 * Gets the update data.
 	 */

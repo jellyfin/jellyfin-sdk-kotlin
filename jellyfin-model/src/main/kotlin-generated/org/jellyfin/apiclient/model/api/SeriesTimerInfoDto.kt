@@ -133,7 +133,7 @@ public data class SeriesTimerInfoDto(
 	@SerialName("IsPostPaddingRequired")
 	public val isPostPaddingRequired: Boolean,
 	@SerialName("KeepUntil")
-	public val keepUntil: KeepUntil? = null,
+	public val keepUntil: KeepUntil,
 	/**
 	 * Gets or sets a value indicating whether [record any time].
 	 */
@@ -158,6 +158,9 @@ public data class SeriesTimerInfoDto(
 	 */
 	@SerialName("Days")
 	public val days: List<DayOfWeek>? = null,
+	/**
+	 * Gets or sets the day pattern.
+	 */
 	@SerialName("DayPattern")
 	public val dayPattern: DayPattern? = null,
 	/**

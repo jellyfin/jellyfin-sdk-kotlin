@@ -45,8 +45,11 @@ public data class ConfigurationPageInfo(
 	 */
 	@SerialName("DisplayName")
 	public val displayName: String? = null,
+	/**
+	 * Gets or sets the type of the configuration page.
+	 */
 	@SerialName("ConfigurationPageType")
-	public val configurationPageType: ConfigurationPageType? = null,
+	public val configurationPageType: ConfigurationPageType,
 	/**
 	 * Gets or sets the plugin id.
 	 */

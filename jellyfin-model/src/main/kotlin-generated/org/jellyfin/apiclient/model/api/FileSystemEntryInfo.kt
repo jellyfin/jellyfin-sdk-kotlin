@@ -24,6 +24,9 @@ public data class FileSystemEntryInfo(
 	 */
 	@SerialName("Path")
 	public val path: String? = null,
+	/**
+	 * Gets the type.
+	 */
 	@SerialName("Type")
-	public val type: FileSystemEntryType? = null
+	public val type: FileSystemEntryType
 )

@@ -121,12 +121,12 @@ public data class GetProgramsDto(
 	 * Optional.
 	 */
 	@SerialName("SortBy")
-	public val sortBy: String? = null,
+	public val sortBy: List<String>? = null,
 	/**
 	 * Gets or sets sort Order - Ascending,Descending.
 	 */
 	@SerialName("SortOrder")
-	public val sortOrder: String? = null,
+	public val sortOrder: List<SortOrder>? = null,
 	/**
 	 * Gets or sets the genres to return guide information for.
 	 */

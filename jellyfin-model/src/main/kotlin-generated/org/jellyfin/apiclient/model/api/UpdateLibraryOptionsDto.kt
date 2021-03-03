@@ -23,6 +23,9 @@ public data class UpdateLibraryOptionsDto(
 	 */
 	@SerialName("Id")
 	public val id: UUID,
+	/**
+	 * Gets or sets library options.
+	 */
 	@SerialName("LibraryOptions")
 	public val libraryOptions: LibraryOptions? = null
 )

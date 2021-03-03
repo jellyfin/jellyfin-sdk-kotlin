@@ -30,7 +30,7 @@ public data class VirtualFolderInfo(
 	 * Gets or sets the type of the collection.
 	 */
 	@SerialName("CollectionType")
-	public val collectionType: String? = null,
+	public val collectionType: CollectionTypeOptions? = null,
 	@SerialName("LibraryOptions")
 	public val libraryOptions: LibraryOptions? = null,
 	/**

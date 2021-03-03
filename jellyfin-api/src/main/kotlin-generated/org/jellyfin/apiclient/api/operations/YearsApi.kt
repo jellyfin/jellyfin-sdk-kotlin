@@ -17,6 +17,7 @@ import org.jellyfin.apiclient.model.api.BaseItemDto
 import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.ImageType
 import org.jellyfin.apiclient.model.api.ItemFields
+import org.jellyfin.apiclient.model.api.SortOrder
 
 public class YearsApi(
 	private val api: KtorClient
@@ -48,13 +49,13 @@ public class YearsApi(
 	public suspend fun getYears(
 		startIndex: Int? = null,
 		limit: Int? = null,
-		sortOrder: String? = null,
+		sortOrder: List<SortOrder>? = emptyList(),
 		parentId: UUID? = null,
 		fields: List<ItemFields>? = emptyList(),
 		excludeItemTypes: List<String>? = emptyList(),
 		includeItemTypes: List<String>? = emptyList(),
 		mediaTypes: List<String>? = emptyList(),
-		sortBy: String? = null,
+		sortBy: List<String>? = emptyList(),
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
 		enableImageTypes: List<ImageType>? = emptyList(),

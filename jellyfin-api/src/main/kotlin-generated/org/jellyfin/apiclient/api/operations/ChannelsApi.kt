@@ -17,6 +17,7 @@ import org.jellyfin.apiclient.model.api.BaseItemDtoQueryResult
 import org.jellyfin.apiclient.model.api.ChannelFeatures
 import org.jellyfin.apiclient.model.api.ItemFields
 import org.jellyfin.apiclient.model.api.ItemFilter
+import org.jellyfin.apiclient.model.api.SortOrder
 
 public class ChannelsApi(
 	private val api: KtorClient
@@ -91,9 +92,9 @@ public class ChannelsApi(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
-		sortOrder: String? = null,
+		sortOrder: List<SortOrder>? = emptyList(),
 		filters: List<ItemFilter>? = emptyList(),
-		sortBy: String? = null,
+		sortBy: List<String>? = emptyList(),
 		fields: List<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()

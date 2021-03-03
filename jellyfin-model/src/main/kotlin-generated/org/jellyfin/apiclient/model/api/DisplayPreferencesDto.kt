@@ -57,8 +57,11 @@ public data class DisplayPreferencesDto(
 	 */
 	@SerialName("CustomPrefs")
 	public val customPrefs: Map<String, String>? = null,
+	/**
+	 * An enum representing the axis that should be scrolled.
+	 */
 	@SerialName("ScrollDirection")
-	public val scrollDirection: ScrollDirection? = null,
+	public val scrollDirection: ScrollDirection,
 	/**
 	 * Gets or sets a value indicating whether to show backdrops on this item.
 	 */
@@ -69,8 +72,11 @@ public data class DisplayPreferencesDto(
 	 */
 	@SerialName("RememberSorting")
 	public val rememberSorting: Boolean,
+	/**
+	 * An enum representing the sorting order.
+	 */
 	@SerialName("SortOrder")
-	public val sortOrder: SortOrder? = null,
+	public val sortOrder: SortOrder,
 	/**
 	 * Gets or sets a value indicating whether [show sidebar].
 	 */

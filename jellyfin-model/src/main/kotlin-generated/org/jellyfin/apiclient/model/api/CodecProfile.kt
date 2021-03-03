@@ -13,7 +13,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class CodecProfile(
 	@SerialName("Type")
-	public val type: CodecType? = null,
+	public val type: CodecType,
 	@SerialName("Conditions")
 	public val conditions: List<ProfileCondition>? = null,
 	@SerialName("ApplyConditions")

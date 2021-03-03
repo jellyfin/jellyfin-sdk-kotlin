@@ -28,6 +28,9 @@ public data class PlaybackStartInfo(
 	 */
 	@SerialName("CanSeek")
 	public val canSeek: Boolean,
+	/**
+	 * Gets or sets the item.
+	 */
 	@SerialName("Item")
 	public val item: BaseItemDto? = null,
 	/**
@@ -81,8 +84,11 @@ public data class PlaybackStartInfo(
 	public val brightness: Int? = null,
 	@SerialName("AspectRatio")
 	public val aspectRatio: String? = null,
+	/**
+	 * Gets or sets the play method.
+	 */
 	@SerialName("PlayMethod")
-	public val playMethod: PlayMethod? = null,
+	public val playMethod: PlayMethod,
 	/**
 	 * Gets or sets the live stream identifier.
 	 */
@@ -93,8 +99,11 @@ public data class PlaybackStartInfo(
 	 */
 	@SerialName("PlaySessionId")
 	public val playSessionId: String? = null,
+	/**
+	 * Gets or sets the repeat mode.
+	 */
 	@SerialName("RepeatMode")
-	public val repeatMode: RepeatMode? = null,
+	public val repeatMode: RepeatMode,
 	@SerialName("NowPlayingQueue")
 	public val nowPlayingQueue: List<QueueItem>? = null,
 	@SerialName("PlaylistItemId")

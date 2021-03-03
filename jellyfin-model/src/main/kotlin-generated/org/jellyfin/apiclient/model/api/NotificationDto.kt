@@ -55,6 +55,9 @@ public data class NotificationDto(
 	 */
 	@SerialName("Url")
 	public val url: String? = null,
+	/**
+	 * Gets or sets the notification level.
+	 */
 	@SerialName("Level")
-	public val level: NotificationLevel? = null
+	public val level: NotificationLevel
 )

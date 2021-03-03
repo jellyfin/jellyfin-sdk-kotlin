@@ -38,7 +38,7 @@ public class DashboardApi(
 	 * @param pageType The Jellyfin.Api.Models.ConfigurationPageInfo.
 	 */
 	public suspend fun getConfigurationPages(enableInMainMenu: Boolean? = null,
-			pageType: ConfigurationPageType): Response<List<ConfigurationPageInfo>> {
+			pageType: ConfigurationPageType? = null): Response<List<ConfigurationPageInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["enableInMainMenu"] = enableInMainMenu

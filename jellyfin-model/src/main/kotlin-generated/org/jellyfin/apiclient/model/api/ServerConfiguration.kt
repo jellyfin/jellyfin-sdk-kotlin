@@ -33,6 +33,9 @@ public data class ServerConfiguration(
 	 */
 	@SerialName("CachePath")
 	public val cachePath: String? = null,
+	/**
+	 * Gets or sets the last known version that was ran using the configuration.
+	 */
 	@SerialName("PreviousVersion")
 	public val previousVersion: Version? = null,
 	/**
@@ -287,8 +290,11 @@ public data class ServerConfiguration(
 	 */
 	@SerialName("EnableDashboardResponseCaching")
 	public val enableDashboardResponseCaching: Boolean,
+	/**
+	 * Gets or sets the image saving convention.
+	 */
 	@SerialName("ImageSavingConvention")
-	public val imageSavingConvention: ImageSavingConvention? = null,
+	public val imageSavingConvention: ImageSavingConvention,
 	@SerialName("MetadataOptions")
 	public val metadataOptions: List<MetadataOptions>? = null,
 	@SerialName("SkipDeserializationForBasicTypes")
@@ -352,8 +358,6 @@ public data class ServerConfiguration(
 	public val imageExtractionTimeoutMs: Int,
 	@SerialName("PathSubstitutions")
 	public val pathSubstitutions: List<PathSubstitution>? = null,
-	@SerialName("EnableSimpleArtistDetection")
-	public val enableSimpleArtistDetection: Boolean,
 	@SerialName("UninstalledPlugins")
 	public val uninstalledPlugins: List<String>? = null,
 	/**
@@ -396,10 +400,5 @@ public data class ServerConfiguration(
 	 * plugin folder.
 	 */
 	@SerialName("RemoveOldPlugins")
-	public val removeOldPlugins: Boolean,
-	/**
-	 * Gets or sets a value indicating whether plugin image should be disabled.
-	 */
-	@SerialName("DisablePluginImages")
-	public val disablePluginImages: Boolean
+	public val removeOldPlugins: Boolean
 )
