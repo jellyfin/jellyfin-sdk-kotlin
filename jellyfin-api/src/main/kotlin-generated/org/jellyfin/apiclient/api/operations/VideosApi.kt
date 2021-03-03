@@ -324,7 +324,7 @@ public class VideosApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null,
+		streamOptions: Map<String, String>? = emptyMap(),
 		includeCredentials: Boolean = false
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -712,7 +712,7 @@ public class VideosApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null,
+		streamOptions: Map<String, String>? = emptyMap(),
 		includeCredentials: Boolean = false
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()

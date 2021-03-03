@@ -334,7 +334,7 @@ public class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null,
+		streamOptions: Map<String, String>? = emptyMap(),
 		includeCredentials: Boolean = true
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -689,7 +689,7 @@ public class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null,
+		streamOptions: Map<String, String>? = emptyMap(),
 		includeCredentials: Boolean = true
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -1045,8 +1045,8 @@ public class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null,
-		enableAdaptiveBitrateStreaming: Boolean,
+		streamOptions: Map<String, String>? = emptyMap(),
+		enableAdaptiveBitrateStreaming: Boolean = true,
 		includeCredentials: Boolean = true
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -1412,7 +1412,7 @@ public class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null,
+		streamOptions: Map<String, String>? = emptyMap(),
 		includeCredentials: Boolean = true
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -1761,7 +1761,7 @@ public class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null,
+		streamOptions: Map<String, String>? = emptyMap(),
 		includeCredentials: Boolean = true
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -2111,8 +2111,8 @@ public class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null,
-		enableAdaptiveBitrateStreaming: Boolean,
+		streamOptions: Map<String, String>? = emptyMap(),
+		enableAdaptiveBitrateStreaming: Boolean = true,
 		includeCredentials: Boolean = true
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()

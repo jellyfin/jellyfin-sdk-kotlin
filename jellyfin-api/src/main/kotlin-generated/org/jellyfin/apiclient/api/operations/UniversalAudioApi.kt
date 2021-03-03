@@ -116,7 +116,7 @@ public class UniversalAudioApi(
 	 */
 	public fun getUniversalAudioStreamUrl(
 		itemId: UUID,
-		container: List<String>? = null,
+		container: List<String>? = emptyList(),
 		mediaSourceId: String? = null,
 		deviceId: String? = null,
 		userId: UUID? = null,
@@ -132,7 +132,7 @@ public class UniversalAudioApi(
 		maxAudioBitDepth: Int? = null,
 		enableRemoteMedia: Boolean? = null,
 		breakOnNonKeyFrames: Boolean,
-		enableRedirection: Boolean,
+		enableRedirection: Boolean = true,
 		includeCredentials: Boolean = true
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
