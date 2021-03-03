@@ -328,7 +328,7 @@ public class VideoHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext,
-		streamOptions: Map<String, String>? = null,
+		streamOptions: Map<String, String>? = emptyMap(),
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		enableSubtitlesInManifest: Boolean? = null,

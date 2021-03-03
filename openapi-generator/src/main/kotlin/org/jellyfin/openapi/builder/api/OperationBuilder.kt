@@ -10,10 +10,10 @@ import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
 
-class OperationBuilder(
+open class OperationBuilder(
 	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder
 ) : Builder<ApiServiceOperation, FunSpec> {
-	private fun buildFunctionShell(data: ApiServiceOperation) = FunSpec.builder(data.name).apply {
+	protected open fun buildFunctionShell(data: ApiServiceOperation) = FunSpec.builder(data.name).apply {
 		// Make function suspended
 		addModifiers(KModifier.SUSPEND)
 
@@ -27,7 +27,7 @@ class OperationBuilder(
 		returns(ClassName(Packages.API_CLIENT, Classes.API_RESPONSE).plusParameter(data.returnType))
 	}
 
-	private fun buildParameter(data: ApiServiceOperationParameter) = ParameterSpec.builder(data.name, data.type).apply {
+	protected fun buildParameter(data: ApiServiceOperationParameter) = ParameterSpec.builder(data.name, data.type).apply {
 		// Determine class name without parameters
 		val typeClassName = when (data.type) {
 			is ClassName -> data.type
@@ -53,7 +53,7 @@ class OperationBuilder(
 	}.build()
 
 
-	private fun FunSpec.Builder.addParameterMapStatements(name: String, parameters: Collection<ApiServiceOperationParameter>) {
+	protected fun FunSpec.Builder.addParameterMapStatements(name: String, parameters: Collection<ApiServiceOperationParameter>) {
 		// Create map
 		// val $(name) = $("emptyMap"|"mutableMapOf")<String, Any?>()
 		val mapType = if (parameters.isEmpty()) "emptyMap" else "mutableMapOf"
