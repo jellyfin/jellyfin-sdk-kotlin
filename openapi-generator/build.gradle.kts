@@ -42,7 +42,7 @@ tasks.register("generateSources", JavaExec::class) {
 	args = mapOf(
 		"openApiFile" to openApiFile,
 		"apiOutputDir" to file("../jellyfin-api/src/main/kotlin-generated"),
-		"modelsOutputDir" to file("../jellyfin-model/src/main/kotlin-generated")
+		"modelsOutputDir" to file("../jellyfin-model/src/commonMain/kotlin-generated")
 	).map { listOf("--${it.key}", it.value.toString()) }.flatten()
 }
 

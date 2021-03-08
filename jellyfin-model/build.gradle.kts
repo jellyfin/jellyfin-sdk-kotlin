@@ -1,30 +1,43 @@
 plugins {
-	id("kotlin")
+	id("kotlin-multiplatform")
 	kotlin("plugin.serialization") version Dependencies.Kotlin.version
-}
-
-dependencies {
-	compileOnly(Dependencies.KotlinX.serializationJson)
-
-	// Testing
-	testImplementation(Dependencies.Kotlin.Test.junit)
-	testImplementation(Dependencies.KotlinX.serializationJson)
 }
 
 kotlin {
 	explicitApi()
+
+	jvm {
+		withJava()
+	}
+
+	sourceSets {
+		val commonMain by getting {
+			kotlin.srcDir("src/commonMain/kotlin-generated")
+
+			dependencies {
+				compileOnly(Dependencies.KotlinX.serializationJson)
+			}
+		}
+
+		val commonTest by getting {
+			dependencies {
+				// Testing
+				implementation(Dependencies.Kotlin.Test.junit)
+				implementation(Dependencies.KotlinX.serializationJson)
+			}
+		}
+	}
 }
 
-sourceSets.getByName("main").java.srcDir("src/main/kotlin-generated")
-
-val sourcesJar by tasks.creating(Jar::class) {
-	archiveClassifier.set("sources")
-
-	from(sourceSets.getByName("main").allSource)
-}
-
-publishing.publications.create<MavenPublication>("default") {
-	from(components["kotlin"])
-
-	artifact(sourcesJar)
-}
+// TODO
+//val sourcesJar by tasks.creating(Jar::class) {
+//	archiveClassifier.set("sources")
+//
+//	from(sourceSets.getByName("main").allSource)
+//}
+//
+//publishing.publications.create<MavenPublication>("default") {
+//	from(components["kotlin"])
+//
+//	artifact(sourcesJar)
+//}
