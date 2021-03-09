@@ -46,7 +46,7 @@ public data class ConfigurationPageInfo(
 	@SerialName("DisplayName")
 	public val displayName: String? = null,
 	/**
-	 * Gets or sets the type of the configuration page.
+	 * Enum ConfigurationPageType.
 	 */
 	@SerialName("ConfigurationPageType")
 	public val configurationPageType: ConfigurationPageType,

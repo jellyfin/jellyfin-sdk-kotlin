@@ -130,7 +130,7 @@ public class DynamicHlsApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -145,7 +145,7 @@ public class DynamicHlsApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap()
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -318,7 +318,7 @@ public class DynamicHlsApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -333,7 +333,7 @@ public class DynamicHlsApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
 		includeCredentials: Boolean = true
 	): String {
@@ -496,7 +496,7 @@ public class DynamicHlsApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -511,7 +511,7 @@ public class DynamicHlsApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap()
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -673,7 +673,7 @@ public class DynamicHlsApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -688,7 +688,7 @@ public class DynamicHlsApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
 		includeCredentials: Boolean = true
 	): String {
@@ -849,7 +849,7 @@ public class DynamicHlsApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -864,7 +864,7 @@ public class DynamicHlsApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean = true
 	): Response<ByteReadChannel> {
@@ -1029,7 +1029,7 @@ public class DynamicHlsApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -1044,7 +1044,7 @@ public class DynamicHlsApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean = true,
 		includeCredentials: Boolean = true
@@ -1211,7 +1211,7 @@ public class DynamicHlsApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -1226,7 +1226,7 @@ public class DynamicHlsApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap()
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -1396,7 +1396,7 @@ public class DynamicHlsApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -1411,7 +1411,7 @@ public class DynamicHlsApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
 		includeCredentials: Boolean = true
 	): String {
@@ -1571,7 +1571,7 @@ public class DynamicHlsApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -1586,7 +1586,7 @@ public class DynamicHlsApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap()
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -1745,7 +1745,7 @@ public class DynamicHlsApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -1760,7 +1760,7 @@ public class DynamicHlsApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
 		includeCredentials: Boolean = true
 	): String {
@@ -1918,7 +1918,7 @@ public class DynamicHlsApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -1933,7 +1933,7 @@ public class DynamicHlsApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean = true
 	): Response<ByteReadChannel> {
@@ -2095,7 +2095,7 @@ public class DynamicHlsApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -2110,7 +2110,7 @@ public class DynamicHlsApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean = true,
 		includeCredentials: Boolean = true

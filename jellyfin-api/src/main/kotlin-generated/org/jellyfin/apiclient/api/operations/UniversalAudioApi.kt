@@ -60,7 +60,7 @@ public class UniversalAudioApi(
 		maxAudioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		enableRemoteMedia: Boolean? = null,
-		breakOnNonKeyFrames: Boolean,
+		breakOnNonKeyFrames: Boolean = false,
 		enableRedirection: Boolean = true
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -131,7 +131,7 @@ public class UniversalAudioApi(
 		maxAudioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		enableRemoteMedia: Boolean? = null,
-		breakOnNonKeyFrames: Boolean,
+		breakOnNonKeyFrames: Boolean = false,
 		enableRedirection: Boolean = true,
 		includeCredentials: Boolean = true
 	): String {

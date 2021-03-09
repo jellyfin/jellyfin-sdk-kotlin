@@ -128,7 +128,7 @@ public class VideosApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -143,7 +143,7 @@ public class VideosApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap()
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -308,7 +308,7 @@ public class VideosApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -323,7 +323,7 @@ public class VideosApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
 		includeCredentials: Boolean = false
 	): String {
@@ -518,7 +518,7 @@ public class VideosApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -533,7 +533,7 @@ public class VideosApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap()
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -696,7 +696,7 @@ public class VideosApi(
 		height: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		subtitleMethod: SubtitleDeliveryMethod,
+		subtitleMethod: SubtitleDeliveryMethod? = null,
 		maxRefFrames: Int? = null,
 		maxVideoBitDepth: Int? = null,
 		requireAvc: Boolean? = null,
@@ -711,7 +711,7 @@ public class VideosApi(
 		transcodeReasons: String? = null,
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
-		context: EncodingContext,
+		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
 		includeCredentials: Boolean = false
 	): String {

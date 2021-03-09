@@ -335,8 +335,8 @@ public class LibraryApi(
 	 * @param libraryContentType Library content type.
 	 * @param isNewLibrary Whether this is a new library.
 	 */
-	public suspend fun getLibraryOptionsInfo(libraryContentType: String? = null,
-			isNewLibrary: Boolean): Response<LibraryOptionsResultDto> {
+	public suspend fun getLibraryOptionsInfo(libraryContentType: String? = null, isNewLibrary: Boolean
+			= false): Response<LibraryOptionsResultDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["libraryContentType"] = libraryContentType

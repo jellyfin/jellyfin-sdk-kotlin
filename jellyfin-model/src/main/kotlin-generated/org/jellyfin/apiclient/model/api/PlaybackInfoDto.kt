@@ -63,7 +63,7 @@ public data class PlaybackInfoDto(
 	@SerialName("LiveStreamId")
 	public val liveStreamId: String? = null,
 	/**
-	 * Gets or sets the device profile.
+	 * Defines the MediaBrowser.Model.Dlna.DeviceProfile.
 	 */
 	@SerialName("DeviceProfile")
 	public val deviceProfile: DeviceProfile? = null,
