@@ -52,7 +52,7 @@ public data class ClientCapabilitiesDto(
 	@SerialName("SupportsSync")
 	public val supportsSync: Boolean,
 	/**
-	 * Gets or sets the device profile.
+	 * Defines the MediaBrowser.Model.Dlna.DeviceProfile.
 	 */
 	@SerialName("DeviceProfile")
 	public val deviceProfile: DeviceProfile? = null,

@@ -190,8 +190,7 @@ public class HlsSegmentApi(
 	 * needed.
 	 * @param playSessionId The play session id.
 	 */
-	public suspend fun stopEncodingProcess(deviceId: String? = null, playSessionId: String? = null):
-			Response<Unit> {
+	public suspend fun stopEncodingProcess(deviceId: String, playSessionId: String): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["deviceId"] = deviceId

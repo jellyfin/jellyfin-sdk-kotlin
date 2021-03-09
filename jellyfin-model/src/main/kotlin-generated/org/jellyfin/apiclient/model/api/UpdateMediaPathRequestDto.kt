@@ -5,17 +5,23 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.apiclient.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Class SetShuffleModeRequestDto.
+ * Update library options dto.
  */
 @Serializable
-public data class SetShuffleModeRequestDto(
+public data class UpdateMediaPathRequestDto(
 	/**
-	 * Enum GroupShuffleMode.
+	 * Gets or sets the library name.
 	 */
-	@SerialName("Mode")
-	public val mode: GroupShuffleMode
+	@SerialName("Name")
+	public val name: String,
+	/**
+	 * Gets or sets library folder path information.
+	 */
+	@SerialName("PathInfo")
+	public val pathInfo: MediaPathInfo
 )

@@ -15,8 +15,8 @@ import org.jellyfin.apiclient.api.client.Response
 import org.jellyfin.apiclient.model.api.AddVirtualFolderDto
 import org.jellyfin.apiclient.model.api.CollectionTypeOptions
 import org.jellyfin.apiclient.model.api.MediaPathDto
-import org.jellyfin.apiclient.model.api.MediaPathInfo
 import org.jellyfin.apiclient.model.api.UpdateLibraryOptionsDto
+import org.jellyfin.apiclient.model.api.UpdateMediaPathRequestDto
 import org.jellyfin.apiclient.model.api.VirtualFolderInfo
 
 public class LibraryStructureApi(
@@ -150,14 +150,10 @@ public class LibraryStructureApi(
 
 	/**
 	 * Updates a media path.
-	 *
-	 * @param name The name of the library.
 	 */
-	public suspend fun updateMediaPath(name: String? = null, `data`: MediaPathInfo? = null):
-			Response<Unit> {
+	public suspend fun updateMediaPath(`data`: UpdateMediaPathRequestDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["name"] = name
+		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Library/VirtualFolders/Paths/Update", pathParameters,
 				queryParameters, data)
 		return response

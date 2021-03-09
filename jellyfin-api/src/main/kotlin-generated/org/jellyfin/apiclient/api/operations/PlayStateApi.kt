@@ -40,7 +40,7 @@ public class PlayStateApi(
 	 *
 	 * @param playSessionId Playback session id.
 	 */
-	public suspend fun pingPlaybackSession(playSessionId: String? = null): Response<Unit> {
+	public suspend fun pingPlaybackSession(playSessionId: String): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["playSessionId"] = playSessionId
@@ -128,7 +128,7 @@ public class PlayStateApi(
 		mediaSourceId: String? = null,
 		audioStreamIndex: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		playMethod: PlayMethod,
+		playMethod: PlayMethod? = null,
 		liveStreamId: String? = null,
 		playSessionId: String? = null,
 		canSeek: Boolean = false
@@ -211,10 +211,10 @@ public class PlayStateApi(
 		audioStreamIndex: Int? = null,
 		subtitleStreamIndex: Int? = null,
 		volumeLevel: Int? = null,
-		playMethod: PlayMethod,
+		playMethod: PlayMethod? = null,
 		liveStreamId: String? = null,
 		playSessionId: String? = null,
-		repeatMode: RepeatMode,
+		repeatMode: RepeatMode? = null,
 		isPaused: Boolean = false,
 		isMuted: Boolean = false
 	): Response<Unit> {
