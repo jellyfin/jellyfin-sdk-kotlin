@@ -1,0 +1,35 @@
+name: Apiclient Test
+
+on:
+  push:
+    branches:
+      - master
+      - release-*
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [8, 11, 15]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+      - name: Setup Gradle cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-java-${{ matrix.java }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-java-${{ matrix.java }}-gradle-
+            ${{ runner.os }}-java-
+      - name: Run test task
+        run: ./gradlew --build-cache --no-daemon --info test

@@ -3,10 +3,6 @@ variables:
 
 trigger:
   batch: true
-  branches:
-    include:
-      - master
-      - release*
   tags:
     include:
       - '*'
@@ -17,41 +13,6 @@ pr:
       - '*'
 
 jobs:
-  - job: Test
-    displayName: 'Test'
-
-    pool:
-      vmImage: 'ubuntu-latest'
-
-    steps:
-      - task: Gradle@2
-        displayName: 'Run Tests'
-        inputs:
-          gradleWrapperFile: 'gradlew'
-          tasks: 'test'
-          publishJUnitResults: true
-          testResultsFiles: '**/TEST-*.xml'
-          javaHomeOption: 'JDKVersion'
-          jdkVersionOption: 1.11
-          sonarQubeRunAnalysis: false
-
-  - job: Build
-    displayName: 'Build'
-
-    pool:
-      vmImage: 'ubuntu-latest'
-
-    steps:
-      - task: Gradle@2
-        displayName: 'Build'
-        inputs:
-          gradleWrapperFile: 'gradlew'
-          tasks: 'distZip'
-          publishJUnitResults: false
-          testResultsFiles: '**/TEST-*.xml'
-          javaHomeOption: 'JDKVersion'
-          jdkVersionOption: 1.11
-          sonarQubeRunAnalysis: false
 
   - job: Publish
     displayName: 'Publish'
