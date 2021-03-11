@@ -43,9 +43,11 @@ subprojects {
 			val signingKey = project.properties["signing.key"]?.toString()
 			val signingPassword = project.properties["signing.password"]?.toString()
 
-			useInMemoryPgpKeys(signingKey, signingPassword)
-			val publishing: PublishingExtension by project
-			sign(publishing.publications)
+			if (signingKey != null) {
+				useInMemoryPgpKeys(signingKey, signingPassword)
+				val publishing: PublishingExtension by project
+				sign(publishing.publications)
+			}
 		}
 
 		// Add POM to projects that use publishing
