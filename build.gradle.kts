@@ -23,14 +23,14 @@ nexusPublishing.repositories.sonatype {
 	nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
 	snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
 
-	username.set(project.properties["ossrh.username"].toString())
-	password.set(project.properties["ossrh.password"].toString())
+	username.set(getProperty("ossrh.username"))
+	password.set(getProperty("ossrh.password"))
 }
 
 subprojects {
 	// Enable required plugins
-	apply<MavenPublishPlugin>()
 	apply<SigningPlugin>()
+	apply<MavenPublishPlugin>()
 	apply<io.gitlab.arturbosch.detekt.DetektPlugin>()
 
 	// Add dependency repositories
@@ -40,8 +40,8 @@ subprojects {
 	afterEvaluate {
 		// Add signing config
 		configure<SigningExtension> {
-			val signingKey = project.properties["signing.key"]?.toString()
-			val signingPassword = project.properties["signing.password"]?.toString()
+			val signingKey = getProperty("signing.key")
+			val signingPassword = getProperty("signing.password") ?: ""
 
 			if (signingKey != null) {
 				useInMemoryPgpKeys(signingKey, signingPassword)
