@@ -1,5 +1,12 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
+import org.gradle.api.artifacts.dsl.RepositoryHandler
 import org.gradle.kotlin.dsl.project
+
+fun RepositoryHandler.defaultRepositories() {
+	google()
+	mavenCentral()
+	jcenter()
+}
 
 object Dependencies {
 	object Kotlin {
