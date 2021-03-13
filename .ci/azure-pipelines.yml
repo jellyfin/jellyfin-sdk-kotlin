@@ -7,11 +7,6 @@ trigger:
     include:
       - '*'
 
-pr:
-  branches:
-    include:
-      - '*'
-
 jobs:
 
   - job: Publish
@@ -31,7 +26,7 @@ jobs:
         displayName: 'Build, Distribute & Publish'
         inputs:
           gradleWrapperFile: 'gradlew'
-          tasks: 'publish distZip'
+          tasks: 'distZip'
           publishJUnitResults: false
           testResultsFiles: '**/TEST-*.xml'
           javaHomeOption: 'JDKVersion'
