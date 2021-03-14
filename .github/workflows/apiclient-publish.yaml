@@ -3,7 +3,7 @@ name: Apiclient Publish
 on:
   push:
     tags:
-      - '*'
+      - v*
     branches:
       - master
 
@@ -11,6 +11,7 @@ jobs:
   publish:
     runs-on: ubuntu-20.04
     environment: release
+    if: ${{ startsWith(github.ref, 'refs/tags/v') || github.repository == 'jellyfin/jellyfin-apiclient-java' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -19,11 +20,22 @@ jobs:
         with:
           java-version: 11
       - name: Set JELLYFIN_VERSION
-        if: ${{ startsWith(github.ref, 'refs/tags') }}
-        run: echo "JELLYFIN_VERSION=$(echo ${GITHUB_REF#refs/tags/} | tr / -)" >> $GITHUB_ENV
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        run: echo "JELLYFIN_VERSION=$(echo ${GITHUB_REF#refs/tags/v} | tr / -)" >> $GITHUB_ENV
       - name: Run publish task
+        if: github.repository == 'jellyfin/jellyfin-apiclient-java'
         run: ./gradlew --no-daemon --info publish
         env:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+      - name: Run build and assembleDist tasks
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        run: ./gradlew --no-daemon --info build assembleDist -x check
+      - name: Upload release assets
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        uses: alexellis/upload-assets@0.2.2
+        with:
+          asset_paths: '["**/distributions/*-${{ env.JELLYFIN_VERSION }}.zip", "**/libs/*-${{ env.JELLYFIN_VERSION }}.jar", "**/outputs/aar/*.aar"]'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
