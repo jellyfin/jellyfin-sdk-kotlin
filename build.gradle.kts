@@ -2,6 +2,7 @@ plugins {
 	id("io.github.gradle-nexus.publish-plugin").version(Dependencies.nexusPublishPluginVersion)
 	id("io.gitlab.arturbosch.detekt").version(Dependencies.detektVersion)
 	id("org.jetbrains.dokka").version(Dependencies.dokkaVersion)
+	id("org.jetbrains.kotlinx.binary-compatibility-validator").version(Dependencies.KotlinX.binaryCompatibilityValidatorVersion)
 }
 
 // Versioning
@@ -26,6 +27,11 @@ nexusPublishing.repositories.sonatype {
 
 	username.set(getProperty("ossrh.username"))
 	password.set(getProperty("ossrh.password"))
+}
+
+apiValidation {
+	// Ignore generator / samples / other non jellyfin-x modules
+	ignoredProjects.addAll(subprojects.map { it.name }.filter { !it.startsWith("jellyfin-") })
 }
 
 subprojects {

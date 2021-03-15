@@ -28,6 +28,7 @@ object Dependencies {
 
 		val coroutinesCore = item("coroutines-core", "1.4.2")
 		val serializationJson = item("serialization-json", "1.0.1")
+		const val binaryCompatibilityValidatorVersion = "0.5.0"
 	}
 
 	object Android {
