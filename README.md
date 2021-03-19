@@ -190,11 +190,11 @@ new features and can be used as a basis for your own application.
 
 ### Official Jellyfin clients
 
-- [Jellyfin for Android](https://github.com/jellyfin/jellyfin-android) is the official Android client for phones and tablets.
-- [Jellyfin for Android TV](https://github.com/jellyfin/jellyfin-androidtv) is the official Android TV client for Android TV, Nvidia Shield, Amazon Fire TV and Google TV.
+  - [Jellyfin for Android](https://github.com/jellyfin/jellyfin-android) is the official Android client for phones and tablets.
+  - [Jellyfin for Android TV](https://github.com/jellyfin/jellyfin-androidtv) is the official Android TV client for Android TV, Nvidia Shield, Amazon Fire TV and Google TV.
 
 ### Third party clients
 
-- [Gelli](https://github.com/dkanada/gelli) is a music-focused Android client.
+  - [Gelli](https://github.com/dkanada/gelli) is a music-focused Android client.
 
 _Want to add your project? Please create a pull request!_
