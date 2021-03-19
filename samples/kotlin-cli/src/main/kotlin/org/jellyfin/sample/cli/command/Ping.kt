@@ -6,8 +6,8 @@ import com.github.ajalt.clikt.parameters.options.option
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.runBlocking
-import org.jellyfin.apiclient.Jellyfin
-import org.jellyfin.apiclient.api.operations.SystemApi
+import org.jellyfin.sdk.Jellyfin
+import org.jellyfin.sdk.api.operations.SystemApi
 import org.jellyfin.sample.cli.serverOption
 
 class Ping(

@@ -2,9 +2,9 @@ package org.jellyfin.sample.cli
 
 import com.github.ajalt.clikt.core.NoOpCliktCommand
 import com.github.ajalt.clikt.core.subcommands
-import org.jellyfin.apiclient.Jellyfin
-import org.jellyfin.apiclient.model.ClientInfo
-import org.jellyfin.apiclient.model.DeviceInfo
+import org.jellyfin.sdk.Jellyfin
+import org.jellyfin.sdk.model.ClientInfo
+import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sample.cli.command.*
 
 fun main(args: Array<String>) {
