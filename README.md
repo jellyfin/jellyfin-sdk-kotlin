@@ -1,4 +1,4 @@
-<h1 align="center">Jellyfin Kotlin API Client</h1>
+<h1 align="center">Jellyfin Kotlin SDK</h1>
 <h3 align="center">Part of the <a href="https://jellyfin.org/">Jellyfin Project</a></h3>
 
 ---
@@ -7,14 +7,14 @@
 <img alt="Logo Banner" src="https://raw.githubusercontent.com/jellyfin/jellyfin-ux/master/branding/SVG/banner-logo-solid.svg?sanitize=true"/>
 <br/>
 <br/>
-<a href="https://github.com/jellyfin/jellyfin-apiclient-java">
-<img alt="LGPL 3.0 license" src="https://img.shields.io/github/license/jellyfin/jellyfin-apiclient-java.svg"/>
+<a href="https://github.com/jellyfin/jellyfin-sdk-kotlin">
+<img alt="LGPL 3.0 license" src="https://img.shields.io/github/license/jellyfin/jellyfin-sdk-kotlin.svg"/>
 </a>
-<a href="https://github.com/jellyfin/jellyfin-apiclient-java/releases">
-<img alt="Current Release" src="https://img.shields.io/github/release/jellyfin/jellyfin-apiclient-java.svg"/>
+<a href="https://github.com/jellyfin/jellyfin-sdk-kotlin/releases">
+<img alt="Current Release" src="https://img.shields.io/github/release/jellyfin/jellyfin-sdk-kotlin.svg"/>
 </a>
-<a href="https://bintray.com/jellyfin/jellyfin-apiclient-java/jellyfin-apiclient-java">
-<img alt="Bintray Release" src="https://img.shields.io/bintray/v/jellyfin/jellyfin-apiclient-java/jellyfin-apiclient-java.svg"/>
+<a href="https://bintray.com/jellyfin/jellyfin-sdk-kotlin/jellyfin-sdk-kotlin">
+<img alt="Bintray Release" src="https://img.shields.io/bintray/v/jellyfin/jellyfin-sdk-kotlin/jellyfin-sdk-kotlin.svg"/>
 </a>
 <br/>
 <a href="https://opencollective.com/jellyfin">
@@ -26,10 +26,10 @@
 <a href="https://www.reddit.com/r/jellyfin">
 <img alt="Join our Subreddit" src="https://img.shields.io/badge/reddit-r%2Fjellyfin-%23FF5700.svg"/>
 </a>
-<a href="https://github.com/jellyfin/jellyfin-apiclient-java/releases.atom">
+<a href="https://github.com/jellyfin/jellyfin-sdk-kotlin/releases.atom">
 <img alt="Release RSS Feed" src="https://img.shields.io/badge/rss-releases-ffa500?logo=rss" />
 </a>
-<a href="https://github.com/jellyfin/jellyfin-apiclient-java/commits/master.atom">
+<a href="https://github.com/jellyfin/jellyfin-sdk-kotlin/commits/master.atom">
 <img alt="Master Commits RSS Feed" src="https://img.shields.io/badge/rss-commits-ffa500?logo=rss" />
 </a>
 </p>
@@ -44,25 +44,25 @@ It is currently available for the JVM and Android platforms.
 Releases are published to `mavenCentral()`. Make sure to use the correct library depending on your
 platform.
 
-![Latest version on Maven Central](https://img.shields.io/maven-central/v/org.jelylfin.apiclient/jellyfin-core)
+![Latest version on Maven Central](https://img.shields.io/maven-central/v/org.jelylfin.sdk/jellyfin-core)
 
 **Gradle with Kotlin DSL**
 
 ```kotlin
-implementation("org.jellyfin.apiclient:jellyfin-core:$apiclientVersion")
+implementation("org.jellyfin.sdk:jellyfin-core:$sdkVersion")
 
 // Or when using Android
-implementation("org.jellyfin.apiclient:jellyfin-platform-android:$apiclientVersion")
+implementation("org.jellyfin.sdk:jellyfin-platform-android:$sdkVersion")
 ```
 
 <details>
   <summary>Gradle with Groovy</summary>
   
   ```groovy
-  implementation "org.jellyfin.apiclient:jellyfin-core:$apiclientVersion"
+  implementation "org.jellyfin.sdk:jellyfin-core:$sdkVersion"
 
   // Or when using Android
-  implementation "org.jellyfin.apiclient:jellyfin-platform-android:$apiclientVersion"
+  implementation "org.jellyfin.sdk:jellyfin-platform-android:$sdkVersion"
    ```
 </details>
 
@@ -71,16 +71,16 @@ implementation("org.jellyfin.apiclient:jellyfin-platform-android:$apiclientVersi
   
   ```xml
   <dependency>
-      <groupId>org.jellyfin.apiclient</groupId>
+      <groupId>org.jellyfin.sdk</groupId>
       <artifactId>jellyfin-core</artifactId>
-      <version>$apiclientVersion</version>
+      <version>$sdkVersion</version>
   </dependency>
 
   <!-- Or when using Android -->
   <dependency>
-      <groupId>org.jellyfin.apiclient</groupId>
+      <groupId>org.jellyfin.sdk</groupId>
       <artifactId>jellyfin-platform-android</artifactId>
-      <version>$apiclientVersion</version>
+      <version>$sdkVersion</version>
   </dependency>
    ```
 </details>
