@@ -5,7 +5,7 @@ plugins {
 
 // Versioning
 allprojects {
-	group = "org.jellyfin.apiclient"
+	group = "org.jellyfin.sdk"
 	version = getProperty("jellyfin.version")?.removePrefix("v") ?: "latest-SNAPSHOT"
 }
 
