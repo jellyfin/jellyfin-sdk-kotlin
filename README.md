@@ -37,7 +37,7 @@
 ---
 
 The Jellyfin Kotlin API Client is a library implementing the Jellyfin API to easily access servers.
-It is currently available for the JVM and Android targets.
+It is currently available for the JVM and Android platforms.
 
 ## Setup
 
