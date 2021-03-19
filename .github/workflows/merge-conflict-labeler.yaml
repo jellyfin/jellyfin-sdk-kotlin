@@ -7,7 +7,7 @@ on:
 jobs:
   triage:
     runs-on: ubuntu-20.04
-    if: github.repository == 'jellyfin/jellyfin-apiclient-java'
+    if: github.repository == 'jellyfin/jellyfin-sdk-kotlin'
     steps:
       - uses: mschilde/auto-label-merge-conflicts@v2.0
         with:
