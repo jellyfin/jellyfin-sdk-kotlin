@@ -4,7 +4,7 @@ import com.github.ajalt.clikt.core.CliktCommand
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.runBlocking
-import org.jellyfin.apiclient.Jellyfin
+import org.jellyfin.sdk.Jellyfin
 
 class Discover(
 	private val jellyfin: Jellyfin

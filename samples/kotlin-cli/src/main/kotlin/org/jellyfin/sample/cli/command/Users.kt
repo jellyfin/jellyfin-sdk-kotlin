@@ -2,8 +2,8 @@ package org.jellyfin.sample.cli.command
 
 import com.github.ajalt.clikt.core.CliktCommand
 import kotlinx.coroutines.runBlocking
-import org.jellyfin.apiclient.Jellyfin
-import org.jellyfin.apiclient.api.operations.UserApi
+import org.jellyfin.sdk.Jellyfin
+import org.jellyfin.sdk.api.operations.UserApi
 import org.jellyfin.sample.cli.serverOption
 
 class Users(

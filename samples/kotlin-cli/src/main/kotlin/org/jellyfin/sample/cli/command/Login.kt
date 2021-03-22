@@ -4,9 +4,9 @@ import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import kotlinx.coroutines.runBlocking
-import org.jellyfin.apiclient.Jellyfin
-import org.jellyfin.apiclient.api.client.extensions.authenticateUserByName
-import org.jellyfin.apiclient.api.operations.UserApi
+import org.jellyfin.sdk.Jellyfin
+import org.jellyfin.sdk.api.client.extensions.authenticateUserByName
+import org.jellyfin.sdk.api.operations.UserApi
 import org.jellyfin.sample.cli.serverOption
 
 class Login(

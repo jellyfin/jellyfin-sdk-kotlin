@@ -4,25 +4,25 @@ object Packages {
 	/**
 	 * Package for the generated API operations
 	 */
-	const val API = "org.jellyfin.apiclient.api.operations"
+	const val API = "org.jellyfin.sdk.api.operations"
 
 	/**
 	 * Package for the generated API constants
 	 */
-	const val API_CONSTANTS = "org.jellyfin.apiclient.api.info"
+	const val API_CONSTANTS = "org.jellyfin.sdk.api.info"
 
 	/**
 	 * Package for the client implementation
 	 */
-	const val API_CLIENT = "org.jellyfin.apiclient.api.client"
+	const val API_CLIENT = "org.jellyfin.sdk.api.client"
 
 	/**
 	 * Package for the generated models
 	 */
-	const val MODEL = "org.jellyfin.apiclient.model.api"
+	const val MODEL = "org.jellyfin.sdk.model.api"
 
 	/**
 	 * Package containing all kotlinx.serialization serializers
 	 */
-	const val MODEL_SERIALIZERS = "org.jellyfin.apiclient.model.serializer"
+	const val MODEL_SERIALIZERS = "org.jellyfin.sdk.model.serializer"
 }

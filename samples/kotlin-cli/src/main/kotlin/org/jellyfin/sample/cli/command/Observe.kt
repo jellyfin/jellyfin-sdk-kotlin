@@ -3,11 +3,11 @@ package org.jellyfin.sample.cli.command
 import com.github.ajalt.clikt.core.CliktCommand
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
-import org.jellyfin.apiclient.Jellyfin
-import org.jellyfin.apiclient.api.sockets.WebSocketApi
-import org.jellyfin.apiclient.model.socket.ActivityLogEntryStartMessage
-import org.jellyfin.apiclient.model.socket.ScheduledTasksInfoStartMessage
-import org.jellyfin.apiclient.model.socket.SessionsStartMessage
+import org.jellyfin.sdk.Jellyfin
+import org.jellyfin.sdk.api.sockets.WebSocketApi
+import org.jellyfin.sdk.model.socket.ActivityLogEntryStartMessage
+import org.jellyfin.sdk.model.socket.ScheduledTasksInfoStartMessage
+import org.jellyfin.sdk.model.socket.SessionsStartMessage
 import org.jellyfin.sample.cli.serverOption
 import org.jellyfin.sample.cli.tokenOption
 

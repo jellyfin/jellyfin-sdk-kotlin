@@ -1,7 +1,7 @@
 # Kotlin CLI Example
 
 This sample project uses the Clikt library to build a command line tool that uses the Jellyfin
-apiclient. It is used as a showcase the abilities of the apiclient and is not meant for general use.
+SDK. It is used as a showcase the abilities of the SDK and is not meant for general use.
 
 Features include:
   - Server discovery
