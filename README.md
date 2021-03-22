@@ -13,8 +13,8 @@
 <a href="https://github.com/jellyfin/jellyfin-sdk-kotlin/releases">
 <img alt="Current Release" src="https://img.shields.io/github/release/jellyfin/jellyfin-sdk-kotlin.svg"/>
 </a>
-<a href="https://bintray.com/jellyfin/jellyfin-sdk-kotlin/jellyfin-sdk-kotlin">
-<img alt="Bintray Release" src="https://img.shields.io/bintray/v/jellyfin/jellyfin-sdk-kotlin/jellyfin-sdk-kotlin.svg"/>
+<a href="https://search.maven.org/search?q=org.jellyfin.sdk">
+<img alt="Bintray Release" src="https://img.shields.io/maven-central/v/org.jellyfin.sdk/jellyfin-core.svg"/>
 </a>
 <br/>
 <a href="https://opencollective.com/jellyfin">
@@ -36,8 +36,8 @@
 
 ---
 
-The Jellyfin Kotlin API Client is a library implementing the Jellyfin API to easily access servers.
-It is currently available for the JVM and Android platforms.
+The Jellyfin Kotlin SDK is a library implementing the Jellyfin API to easily access servers.
+It is currently available for the JVM and Android.
 
 ## Setup
 
@@ -89,19 +89,19 @@ implementation("org.jellyfin.sdk:jellyfin-platform-android:$sdkVersion")
 
 ### Creating a Jellyfin instance
 
-Most functionality of the API Client requires an instance of the Jellyfin class. This class holds
+Most functionality of the SDK requires an instance of the Jellyfin class. This class holds
 the configuration required to make API calls and platform specific options. The Jellyfin class can
 be instantiated using a custom Kotlin DSL:
 
 ```kotlin
 val jellyfin = Jellyfin {
-    // Uncomment when using jellyfin-platform-android:
-    // android()
-
     clientInfo = ClientInfo(name = "My awesome client!", version = "1.33.7",)
     
     // Uncomment if not using jellyfin-platform-android:
-    // deviceInfo = DeviceInfo(id = UUID.randomUUID().toString(), name = "Awesome device",)   
+    // deviceInfo = DeviceInfo(id = UUID.randomUUID().toString(), name = "Awesome device",)
+
+    // Uncomment when using jellyfin-platform-android:
+    // android()
 }
 ```
 
@@ -141,13 +141,14 @@ val authenticationResult by userApi.authenticateUserByName(
 // Use access token in api instance
 api.accessToken = authenticationResult.accessToken
 
-println(authenticationResult.accessToken)
+// Print session information
+println(authenticationResult.sessionInfo)
 ```
 
 ### WebSockets
 
-Jellyfin uses WebSockets to communicate events like library changes and activities. Using this API
-can be done with the special WebSocketApi class.
+Jellyfin uses WebSockets to communicate events like library changes and activities. This API can be
+used with the special WebSocketApi class.
 
 ```kotlin
 val webSocketApi = WebSocketApi(api)
@@ -158,9 +159,9 @@ webSocketApi.publish(SessionsStartMessage())
 webSocketApi.publish(ScheduledTasksInfoStartMessage())
 
 // Listen for messages
-webSocketApi.subscribe().onEach { message ->
+webSocketApi.subscribe().collect { message ->
     println(message)
-}.collect()
+}
 ```
 
 ### Server discovery
@@ -170,9 +171,9 @@ server addresses and to determine the best server to use from a list of adresses
  
 ```kotlin
 // Discover servers on the local network
-jellyfin.discovery.discoverLocalServers().onEach {
+jellyfin.discovery.discoverLocalServers().collect {
     println("Server ${it.name} was found at address ${it.address}")
-}.collect()
+}
 
 // Get all candidates for a given input
 val candidates = jellyfin.discovery.getAddressCandidates("demo.jellyfin.org/stable")
@@ -186,7 +187,7 @@ val recommended = jellyfin.discovery.getRecommendedServer(candidates)
 We provide a few small projects in the [samples](/samples) folder. The samples are used for testing
 new features and can be used as a basis for your own application.
 
-## Projects using the API client
+## Projects using the SDK
 
 ### Official Jellyfin clients
 
