@@ -14,7 +14,7 @@
 <img alt="Current Release" src="https://img.shields.io/github/release/jellyfin/jellyfin-sdk-kotlin.svg"/>
 </a>
 <a href="https://search.maven.org/search?q=org.jellyfin.sdk">
-<img alt="Bintray Release" src="https://img.shields.io/maven-central/v/org.jellyfin.sdk/jellyfin-core.svg"/>
+<img alt="Maven Central Release" src="https://img.shields.io/maven-central/v/org.jellyfin.sdk/jellyfin-core.svg"/>
 </a>
 <br/>
 <a href="https://opencollective.com/jellyfin">
