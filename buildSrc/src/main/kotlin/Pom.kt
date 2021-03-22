@@ -2,13 +2,13 @@ import org.gradle.api.publish.maven.MavenPublication
 
 fun MavenPublication.defaultPom() = pom {
 	name.set("${groupId}:${artifactId}")
-	description.set("Kotlin API Client for Jellyfin")
-	url.set("https://github.com/jellyfin/jellyfin-apiclient-java")
+	description.set("Jellyfin Kotlin SDK")
+	url.set("https://github.com/jellyfin/jellyfin-sdk-kotlin")
 
 	scm {
-		connection.set("scm:git:git://github.com/jellyfin/jellyfin-apiclient-java.git")
-		developerConnection.set("scm:git:ssh://github.com:jellyfin/jellyfin-apiclient-java.git")
-		url.set("https://github.com/jellyfin/jellyfin-apiclient-java/tree/master")
+		connection.set("scm:git:git://github.com/jellyfin/jellyfin-sdk-kotlin.git")
+		developerConnection.set("scm:git:ssh://github.com:jellyfin/jellyfin-sdk-kotlin.git")
+		url.set("https://github.com/jellyfin/jellyfin-sdk-kotlin/tree/master")
 	}
 
 	licenses {
