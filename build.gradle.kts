@@ -1,7 +1,7 @@
 plugins {
-	id("io.github.gradle-nexus.publish-plugin") version "1.0.0"
+	id("io.github.gradle-nexus.publish-plugin").version(Dependencies.nexusPublishPluginVersion)
 	id("io.gitlab.arturbosch.detekt").version(Dependencies.detektVersion)
-	id("org.jetbrains.dokka") version "1.4.30"
+	id("org.jetbrains.dokka").version(Dependencies.dokkaVersion)
 }
 
 // Versioning

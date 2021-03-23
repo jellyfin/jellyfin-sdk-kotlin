@@ -73,7 +73,11 @@ object Dependencies {
 	const val kotlinPoet = "com.squareup:kotlinpoet:1.7.2"
 	const val kasechange = "net.pearx.kasechange:kasechange:1.3.0"
 	const val clikt = "com.github.ajalt.clikt:clikt:3.0.1"
+
+	// Gradle plugins
 	const val detektVersion = "1.14.2"
+	const val nexusPublishPluginVersion = "1.0.0"
+	const val dokkaVersion = "1.4.30"
 }
 
 /**
