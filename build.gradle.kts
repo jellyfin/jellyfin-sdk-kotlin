@@ -1,6 +1,7 @@
 plugins {
-	id("io.github.gradle-nexus.publish-plugin") version "1.0.0"
+	id("io.github.gradle-nexus.publish-plugin").version(Dependencies.nexusPublishPluginVersion)
 	id("io.gitlab.arturbosch.detekt").version(Dependencies.detektVersion)
+	id("org.jetbrains.dokka").version(Dependencies.dokkaVersion)
 }
 
 // Versioning
@@ -32,6 +33,7 @@ subprojects {
 	apply<SigningPlugin>()
 	apply<MavenPublishPlugin>()
 	apply<io.gitlab.arturbosch.detekt.DetektPlugin>()
+	apply<org.jetbrains.dokka.gradle.DokkaPlugin>()
 
 	// Add dependency repositories
 	repositories.defaultRepositories()

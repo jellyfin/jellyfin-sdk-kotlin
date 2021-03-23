@@ -2,10 +2,6 @@ plugins {
 	id("kotlin")
 }
 
-kotlin {
-	explicitApi()
-}
-
 dependencies {
 	apiProject(":jellyfin-api")
 	apiProject(":jellyfin-model")
@@ -23,14 +19,25 @@ dependencies {
 	testImplementation(Dependencies.Kotlin.Test.junit)
 }
 
+kotlin {
+	explicitApi()
+}
+
 val sourcesJar by tasks.creating(Jar::class) {
 	archiveClassifier.set("sources")
 
 	from(sourceSets.getByName("main").allSource)
 }
 
+val javadocJar by tasks.creating(Jar::class) {
+	dependsOn(tasks.getByName("dokkaJavadoc"))
+	archiveClassifier.set("javadoc")
+	from("$buildDir/dokka/javadoc")
+}
+
 publishing.publications.create<MavenPublication>("default") {
 	from(components["kotlin"])
 
 	artifact(sourcesJar)
+	artifact(javadocJar)
 }

@@ -49,6 +49,12 @@ tasks.create<Jar>("sourcesArtifact") {
 	from(android.sourceSets["main"].java.srcDirs)
 }
 
+val javadocJar by tasks.creating(Jar::class) {
+	dependsOn(tasks.getByName("dokkaJavadoc"))
+	archiveClassifier.set("javadoc")
+	from("$buildDir/dokka/javadoc")
+}
+
 // Because of limitations in the android plugin
 // the publishing definition should be inside the "afterEvaluate" block
 afterEvaluate {
@@ -56,6 +62,7 @@ afterEvaluate {
 		from(components["release"])
 
 		artifact(tasks["sourcesArtifact"])
+		artifact(tasks["javadocJar"])
 
 		defaultPom()
 	}
