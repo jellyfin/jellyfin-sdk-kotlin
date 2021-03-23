@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        java: [8, 11, 15]
+        java: [8, 11, 16]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
