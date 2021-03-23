@@ -56,6 +56,8 @@ afterEvaluate {
 		from(components["release"])
 
 		artifact(tasks["sourcesArtifact"])
+
+		defaultPom()
 	}
 }
 
