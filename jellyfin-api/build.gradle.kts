@@ -30,8 +30,15 @@ val sourcesJar by tasks.creating(Jar::class) {
 	from(sourceSets.getByName("main").allSource)
 }
 
+val javadocJar by tasks.creating(Jar::class) {
+	dependsOn(tasks.getByName("dokkaJavadoc"))
+	archiveClassifier.set("javadoc")
+	from("$buildDir/dokka/javadoc")
+}
+
 publishing.publications.create<MavenPublication>("default") {
 	from(components["kotlin"])
 
 	artifact(sourcesJar)
+	artifact(javadocJar)
 }
