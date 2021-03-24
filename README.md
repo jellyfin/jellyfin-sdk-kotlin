@@ -44,7 +44,7 @@ It is currently available for the JVM and Android.
 Releases are published to `mavenCentral()`. Make sure to use the correct library depending on your
 platform.
 
-![Latest version on Maven Central](https://img.shields.io/maven-central/v/org.jelylfin.sdk/jellyfin-core)
+![Latest version on Maven Central](https://img.shields.io/maven-central/v/org.jellyfin.sdk/jellyfin-core.svg)
 
 **Gradle with Kotlin DSL**
 
