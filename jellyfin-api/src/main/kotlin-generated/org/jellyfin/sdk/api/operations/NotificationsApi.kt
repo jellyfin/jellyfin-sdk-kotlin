@@ -11,8 +11,8 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.model.api.AdminNotificationDto
 import org.jellyfin.sdk.model.api.NameIdPair
-import org.jellyfin.sdk.model.api.NotificationLevel
 import org.jellyfin.sdk.model.api.NotificationResultDto
 import org.jellyfin.sdk.model.api.NotificationTypeInfo
 import org.jellyfin.sdk.model.api.NotificationsSummaryDto
@@ -74,25 +74,10 @@ public class NotificationsApi(
 
 	/**
 	 * Sends a notification to all admins.
-	 *
-	 * @param url The URL of the notification.
-	 * @param level The level of the notification.
-	 * @param name The name of the notification.
-	 * @param description The description of the notification.
 	 */
-	public suspend fun createAdminNotification(
-		url: String? = null,
-		level: NotificationLevel? = null,
-		name: String? = "",
-		description: String? = ""
-	): Response<Unit> {
+	public suspend fun createAdminNotification(`data`: AdminNotificationDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["url"] = url
-		queryParameters["level"] = level
-		queryParameters["name"] = name
-		queryParameters["description"] = description
-		val data = null
+		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Notifications/Admin", pathParameters, queryParameters, data)
 		return response
 	}
