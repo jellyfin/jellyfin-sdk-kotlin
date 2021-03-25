@@ -44,6 +44,6 @@ public class Jellyfin(
 
 	public companion object {
 		public val recommendedVersion: ServerVersion = ServerVersion(10, 7, 0, 0)
-		public val apiVersion: ServerVersion = ServerVersion.fromString(ApiConstants.serverVersion)!!
+		public val apiVersion: ServerVersion = ServerVersion.fromString(ApiConstants.apiVersion)!!
 	}
 }
