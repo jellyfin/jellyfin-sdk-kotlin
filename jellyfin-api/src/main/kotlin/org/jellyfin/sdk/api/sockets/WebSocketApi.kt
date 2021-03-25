@@ -17,6 +17,8 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.*
 import kotlinx.serialization.serializer
 import org.jellyfin.sdk.api.client.ApiClient
+import org.jellyfin.sdk.model.api.SessionMessageType
+import org.jellyfin.sdk.model.api.SessionMessageType.*
 import org.jellyfin.sdk.model.socket.*
 import org.slf4j.LoggerFactory
 
@@ -30,48 +32,55 @@ import org.slf4j.LoggerFactory
  * The user should verify the access token is correct as the server does not respond to bad authorization.
  */
 public class WebSocketApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) {
 	private companion object {
-		// Mapping for types to message
-		private val incomingMessageSerializers = mapOf(
-			"ForceKeepAlive" to serializer<ForceKeepAliveMessage>(),
-			"GeneralCommand" to serializer<GeneralCommandMessage>(),
-			"UserDataChanged" to serializer<UserDataChangedMessage>(),
-			"Sessions" to serializer<SessionsMessage>(),
-			"Play" to serializer<PlayMessage>(),
-			"SyncPlayCommand" to serializer<SyncPlayCommandMessage>(),
-			"SyncPlayGroupUpdate" to serializer<SyncPlayGroupUpdateMessage>(),
-			"PlayState" to serializer<PlayStateMessage>(),
-			"RestartRequired" to serializer<RestartRequiredMessage>(),
-			"ServerShuttingDown" to serializer<ServerShuttingDownMessage>(),
-			"ServerRestarting" to serializer<ServerRestartingMessage>(),
-			"LibraryChanged" to serializer<LibraryChangedMessage>(),
-			"UserDeleted" to serializer<UserDeletedMessage>(),
-			"UserUpdated" to serializer<UserUpdatedMessage>(),
-			"SeriesTimerCreated" to serializer<SeriesTimerCreatedMessage>(),
-			"TimerCreated" to serializer<TimerCreatedMessage>(),
-			"SeriesTimerCancelled" to serializer<SeriesTimerCancelledMessage>(),
-			"TimerCancelled" to serializer<TimerCancelledMessage>(),
-			"RefreshProgress" to serializer<RefreshProgressMessage>(),
-			"ScheduledTaskEnded" to serializer<ScheduledTaskEndedMessage>(),
-			"PackageInstallationCancelled" to serializer<PackageInstallationCancelledMessage>(),
-			"PackageInstallationFailed" to serializer<PackageInstallationFailedMessage>(),
-			"PackageInstallationCompleted" to serializer<PackageInstallationCompletedMessage>(),
-			"PackageInstalling" to serializer<PackageInstallingMessage>(),
-			"PackageUninstalled" to serializer<PackageUninstalledMessage>(),
-			"ActivityLogEntry" to serializer<ActivityLogEntryMessage>(),
-			"ScheduledTasksInfo" to serializer<ScheduledTasksInfoMessage>(),
-
-			// Shared type, only implemented as outgoing message
-			"KeepAlive" to serializer<KeepAliveMessage>(),
-		)
-
 		private const val JSON_PROP_DATA = "Data"
 		private const val JSON_PROP_MESSAGE_ID = "MessageId"
 		private const val JSON_PROP_MESSAGE_TYPE = "MessageType"
 		private const val RECONNECT_DELAY = 3 * 1000L // milliseconds
 	}
+
+	private fun SessionMessageType.getSerializer() = when (this) {
+		FORCE_KEEP_ALIVE -> serializer<ForceKeepAliveMessage>()
+		GENERAL_COMMAND -> serializer<GeneralCommandMessage>()
+		USER_DATA_CHANGED -> serializer<UserDataChangedMessage>()
+		SESSIONS -> serializer<SessionsMessage>()
+		PLAY -> serializer<PlayMessage>()
+		SYNC_PLAY_COMMAND -> serializer<SyncPlayCommandMessage>()
+		SYNC_PLAY_GROUP_UPDATE -> serializer<SyncPlayGroupUpdateMessage>()
+		PLAYSTATE -> serializer<PlayStateMessage>()
+		RESTART_REQUIRED -> serializer<RestartRequiredMessage>()
+		SERVER_SHUTTING_DOWN -> serializer<ServerShuttingDownMessage>()
+		SERVER_RESTARTING -> serializer<ServerRestartingMessage>()
+		LIBRARY_CHANGED -> serializer<LibraryChangedMessage>()
+		USER_DELETED -> serializer<UserDeletedMessage>()
+		USER_UPDATED -> serializer<UserUpdatedMessage>()
+		SERIES_TIMER_CREATED -> serializer<SeriesTimerCreatedMessage>()
+		TIMER_CREATED -> serializer<TimerCreatedMessage>()
+		SERIES_TIMER_CANCELLED -> serializer<SeriesTimerCancelledMessage>()
+		TIMER_CANCELLED -> serializer<TimerCancelledMessage>()
+		REFRESH_PROGRESS -> serializer<RefreshProgressMessage>()
+		SCHEDULED_TASK_ENDED -> serializer<ScheduledTaskEndedMessage>()
+		PACKAGE_INSTALLATION_CANCELLED -> serializer<PackageInstallationCancelledMessage>()
+		PACKAGE_INSTALLATION_FAILED -> serializer<PackageInstallationFailedMessage>()
+		PACKAGE_INSTALLATION_COMPLETED -> serializer<PackageInstallationCompletedMessage>()
+		PACKAGE_INSTALLING -> serializer<PackageInstallingMessage>()
+		PACKAGE_UNINSTALLED -> serializer<PackageUninstalledMessage>()
+		ACTIVITY_LOG_ENTRY -> serializer<ActivityLogEntryMessage>()
+		SCHEDULED_TASKS_INFO -> serializer<ScheduledTasksInfoMessage>()
+
+		// Shared type, only implemented as outgoing message
+		KEEP_ALIVE -> serializer<KeepAliveMessage>()
+
+		// Send only - should not be possible to receive
+		ACTIVITY_LOG_ENTRY_START -> null
+		ACTIVITY_LOG_ENTRY_STOP -> null
+		SESSIONS_START -> null
+		SESSIONS_STOP -> null
+		SCHEDULED_TASKS_INFO_START -> null
+		SCHEDULED_TASKS_INFO_STOP -> null
+	} ?: throw NotImplementedError("Messages of type $this should not be sent by the server.")
 
 	private val logger = LoggerFactory.getLogger("WebSocketApi")
 
@@ -195,15 +204,11 @@ public class WebSocketApi(
 		require(messageId is String)
 
 		// Read type
-		val type = message[JSON_PROP_MESSAGE_TYPE]?.jsonPrimitive?.content
-		require(type is String)
+		val type = message[JSON_PROP_MESSAGE_TYPE]?.let { json.decodeFromJsonElement<SessionMessageType>(it) }
+		requireNotNull(type)
 
 		// Get serializer for type
-		val dataSerializer = incomingMessageSerializers[type]
-		if (dataSerializer == null) {
-			logger.warn("Message type {} appears to be missing in the incomingMessageSerializers map.", type)
-			return null
-		}
+		val dataSerializer = type.getSerializer()
 
 		// Modify JSON to flatten the Data object
 		val modifiedJson = buildJsonObject {
