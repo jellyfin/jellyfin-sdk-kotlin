@@ -9,14 +9,14 @@ import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.model.JellyFile
 
 class OpenApiConstantsBuilder : Builder<Info, JellyFile> {
-	private fun TypeSpec.Builder.addConstant(name: String, value: String): TypeSpec.Builder = addProperty(PropertySpec.builder(name, String::class).initializer("%S", value).build())
+	private fun TypeSpec.Builder.addConstant(name: String, value: String): TypeSpec.Builder =
+		addProperty(PropertySpec.builder(name, String::class).initializer("%S", value).build())
 
 	override fun build(data: Info): JellyFile {
 		val typeSpec = TypeSpec.Companion.objectBuilder(Classes.CONSTANTS_OBJECT)
 			.addConstant("apiVersion", data.version)
-			.addConstant("serverVersion", data.extensions["x-jellyfin-version"].toString())
 			.build()
 
-		return JellyFile(Packages.API_CONSTANTS,  emptySet(), typeSpec)
+		return JellyFile(Packages.API_CONSTANTS, emptySet(), typeSpec)
 	}
 }
