@@ -350,7 +350,7 @@ public class LibraryApi(
 	/**
 	 * Reports that new movies have been added by an external source.
 	 */
-	public suspend fun postUpdatedMedia(`data`: List<MediaUpdateInfoDto>): Response<Unit> {
+	public suspend fun postUpdatedMedia(`data`: MediaUpdateInfoDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Library/Media/Updated", pathParameters, queryParameters, data)
@@ -425,7 +425,7 @@ public class LibraryApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<Unit>("/Library/Refresh", pathParameters, queryParameters, data)
+		val response = api.post<Unit>("/Library/Refresh", pathParameters, queryParameters, data)
 		return response
 	}
 

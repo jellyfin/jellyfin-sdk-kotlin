@@ -5,18 +5,24 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
-import kotlin.collections.List
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Media Update Info Dto.
+ * The media update info path.
  */
 @Serializable
-public data class MediaUpdateInfoDto(
+public data class MediaUpdateInfoPathDto(
 	/**
-	 * Gets or sets the list of updates.
+	 * Gets or sets media path.
 	 */
-	@SerialName("Updates")
-	public val updates: List<MediaUpdateInfoPathDto>? = null
+	@SerialName("Path")
+	public val path: String? = null,
+	/**
+	 * Gets or sets media update type.
+	 * Created, Modified, Deleted.
+	 */
+	@SerialName("UpdateType")
+	public val updateType: String? = null
 )
