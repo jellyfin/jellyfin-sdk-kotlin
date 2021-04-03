@@ -8,6 +8,9 @@ plugins {
 allprojects {
 	group = "org.jellyfin.sdk"
 	version = getProperty("jellyfin.version")?.removePrefix("v") ?: "latest-SNAPSHOT"
+
+	// Add default dependency repositories
+	repositories.defaultRepositories()
 }
 
 buildscript {
@@ -34,9 +37,6 @@ subprojects {
 	apply<MavenPublishPlugin>()
 	apply<io.gitlab.arturbosch.detekt.DetektPlugin>()
 	apply<org.jetbrains.dokka.gradle.DokkaPlugin>()
-
-	// Add dependency repositories
-	repositories.defaultRepositories()
 
 	// Run block after creating project specific configuration
 	afterEvaluate {
