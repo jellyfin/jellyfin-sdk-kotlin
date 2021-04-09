@@ -24,7 +24,6 @@ jobs:
         if: ${{ startsWith(github.ref, 'refs/tags/v') }}
         run: echo "JELLYFIN_VERSION=$(echo ${GITHUB_REF#refs/tags/v} | tr / -)" >> $GITHUB_ENV
       - name: Run publish task
-        if: github.repository == 'jellyfin/jellyfin-sdk-kotlin'
         run: ./gradlew --no-daemon --info publish closeAndReleaseSonatypeStagingRepository
         env:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
