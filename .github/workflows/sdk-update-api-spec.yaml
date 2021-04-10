@@ -1,0 +1,36 @@
+name: SDK Update API Spec
+
+on:
+  schedule:
+    - cron: '0 12 * * 3'
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: 11
+
+      - name: Setup Gradle cache
+        uses: actions/cache@v2.1.4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-java-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-java-gradle-
+            ${{ runner.os }}-java-
+
+      - name: Run test task
+        run: ./gradlew --build-cache --no-daemon --info updateApiSpecStable
+
+      - name: Check diff
+        run: git diff
