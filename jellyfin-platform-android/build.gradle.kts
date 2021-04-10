@@ -71,12 +71,10 @@ afterEvaluate {
 dependencies {
 	api(projects.jellyfinCore)
 
-	implementation(Dependencies.Kotlin.stdlib)
+	implementation(libs.androidx.core)
+	implementation(libs.androidx.annotation)
 
-	implementation(Dependencies.AndroidX.core)
-	implementation(Dependencies.AndroidX.annotation)
+	testImplementation(libs.kotlin.test.junit)
 
-	testImplementation(Dependencies.Kotlin.Test.junit)
-
-	coreLibraryDesugaring(Dependencies.Android.desugarJdkLibs)
+	coreLibraryDesugaring(libs.android.desugarLibs)
 }

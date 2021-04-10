@@ -13,25 +13,25 @@ application {
 
 dependencies {
 	// Reading OpenAPI
-	implementation(Dependencies.swaggerParser)
+	implementation(libs.swaggerParser)
 
 	// Capitalization helper
-	implementation(Dependencies.kasechange)
+	implementation(libs.kasechange)
 
 	// Kotlin code generation
-	implementation(Dependencies.kotlinPoet)
+	implementation(libs.kotlinPoet)
 
 	// Needed for the kotlinx.serialization annotations
-	implementation(Dependencies.KotlinX.serializationJson)
+	implementation(libs.kotlinx.serialization.json)
 
 	// Needed for the ByteReadChannel class
-	implementation(Dependencies.Ktor.io)
+	implementation(libs.ktor.io)
 
 	// Dependency Injection
-	implementation(Dependencies.Koin.core)
+	implementation(libs.koin)
 
 	// Testing
-	testImplementation(Dependencies.Kotlin.Test.junit)
+	testImplementation(libs.kotlin.test.junit)
 }
 
 val openApiFile = file("../openapi.json")

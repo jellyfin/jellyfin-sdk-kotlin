@@ -6,16 +6,16 @@ dependencies {
 	implementation(projects.jellyfinModel)
 
 	// HTTP
-	implementation(Dependencies.KotlinX.coroutinesCore)
-	implementation(Dependencies.Ktor.okhttp)
-	implementation(Dependencies.Ktor.serialization)
+	implementation(libs.kotlinx.coroutines)
+	implementation(libs.ktor.okhttp)
+	implementation(libs.ktor.serialization)
 
 	// Logging
-	implementation(Dependencies.Slf4j.api)
-	testImplementation(Dependencies.Slf4j.simple)
+	implementation(libs.slf4j.api)
+	testImplementation(libs.slf4j.simple)
 
 	// Unit testing
-	testImplementation(Dependencies.Kotlin.Test.junit)
+	testImplementation(libs.kotlin.test.junit)
 }
 
 kotlin {

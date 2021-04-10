@@ -11,15 +11,12 @@ dependencies {
 	// Depend on the library project
 	implementation(projects.jellyfinCore)
 
-	// Use Kotlin stdlib
-	implementation(Dependencies.Kotlin.stdlib)
-
 	// Use Kotlin coroutines to interact with the library
-	implementation(Dependencies.KotlinX.coroutinesCore)
+	implementation(libs.kotlinx.coroutines)
 
 	// The CLI library
-	implementation(Dependencies.clikt)
+	implementation(libs.clikt)
 
 	// Logging
-	implementation(Dependencies.Slf4j.simple)
+	implementation(libs.slf4j.simple)
 }
