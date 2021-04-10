@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-	implementationProject(":jellyfin-model")
+	implementation(projects.jellyfinModel)
 
 	// HTTP
 	implementation(Dependencies.KotlinX.coroutinesCore)

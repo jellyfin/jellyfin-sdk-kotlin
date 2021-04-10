@@ -1,3 +1,5 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 // Core
 include(":jellyfin-core")
 include(":jellyfin-model")

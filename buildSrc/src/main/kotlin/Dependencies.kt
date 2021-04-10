@@ -80,17 +80,3 @@ object Dependencies {
 	const val nexusPublishPluginVersion = "1.0.0"
 	const val dokkaVersion = "1.4.30"
 }
-
-/**
- * Add given project as api
- */
-fun DependencyHandler.apiProject(path: String) {
-	add("api", project(path))
-}
-
-/**
- * Add given project as implementation
- */
-fun DependencyHandler.implementationProject(path: String) {
-	add("implementation", project(path))
-}

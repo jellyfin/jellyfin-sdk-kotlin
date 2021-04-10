@@ -3,8 +3,8 @@ plugins {
 }
 
 dependencies {
-	apiProject(":jellyfin-api")
-	apiProject(":jellyfin-model")
+	api(projects.jellyfinApi)
+	api(projects.jellyfinModel)
 
 	implementation(Dependencies.KotlinX.coroutinesCore)
 	implementation(Dependencies.KotlinX.serializationJson)

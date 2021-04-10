@@ -9,7 +9,7 @@ application {
 
 dependencies {
 	// Depend on the library project
-	implementationProject(":jellyfin-core")
+	implementation(projects.jellyfinCore)
 
 	// Use Kotlin stdlib
 	implementation(Dependencies.Kotlin.stdlib)
