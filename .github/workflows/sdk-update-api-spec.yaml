@@ -6,18 +6,15 @@ on:
   workflow_dispatch: {}
 
 jobs:
-  build:
+  api-spec-update:
     runs-on: ubuntu-20.04
+    if: ${{ github.repository == 'jellyfin/jellyfin-sdk-kotlin' }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: 11
-
       - name: Setup Gradle cache
         uses: actions/cache@v2.1.4
         with:
@@ -28,9 +25,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-java-gradle-
             ${{ runner.os }}-java-
-
-      - name: Run test task
-        run: ./gradlew --build-cache --no-daemon --info updateApiSpecStable
-
-      - name: Check diff
-        run: git diff
+      - name: Update generated Jellyfin API spec
+        uses: technote-space/create-pr-action@v2
+        with:
+          EXECUTE_COMMANDS: ./gradlew --build-cache --no-daemon --info updateApiSpecStable
+          COMMIT_MESSAGE: 'update generated Jellyfin API spec'
+          COMMIT_NAME: 'jellyfin-bot'
+          COMMIT_EMAIL: 'team@jellyfin.org'
+          PR_BRANCH_PREFIX: 'chore/'
+          PR_BRANCH_NAME: 'api-gen-update-${PR_ID}'
+          PR_TITLE: 'chore(api-gen): update generated Jellyfin API spec'
+          GITHUB_TOKEN: ${{ github.GITHUB_TOKEN }}
