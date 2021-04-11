@@ -3,20 +3,20 @@ plugins {
 }
 
 dependencies {
-	apiProject(":jellyfin-api")
-	apiProject(":jellyfin-model")
+	api(projects.jellyfinApi)
+	api(projects.jellyfinModel)
 
-	implementation(Dependencies.KotlinX.coroutinesCore)
-	implementation(Dependencies.KotlinX.serializationJson)
+	implementation(libs.kotlinx.coroutines)
+	implementation(libs.kotlinx.serialization.json)
 
-	api(Dependencies.Ktor.http)
+	api(libs.ktor.http)
 
 	// Logging
-	implementation(Dependencies.Slf4j.api)
-	testImplementation(Dependencies.Slf4j.simple)
+	implementation(libs.slf4j.api)
+	testImplementation(libs.slf4j.simple)
 
 	// Testing
-	testImplementation(Dependencies.Kotlin.Test.junit)
+	testImplementation(libs.kotlin.test.junit)
 }
 
 kotlin {

@@ -1,14 +1,14 @@
 plugins {
 	id("kotlin")
-	kotlin("plugin.serialization") version Dependencies.Kotlin.version
+	kotlin("plugin.serialization") version Plugins.Versions.kotlin
 }
 
 dependencies {
-	compileOnly(Dependencies.KotlinX.serializationJson)
+	compileOnly(libs.kotlinx.serialization.json)
 
 	// Testing
-	testImplementation(Dependencies.Kotlin.Test.junit)
-	testImplementation(Dependencies.KotlinX.serializationJson)
+	testImplementation(libs.kotlin.test.junit)
+	testImplementation(libs.kotlinx.serialization.json)
 }
 
 kotlin {
