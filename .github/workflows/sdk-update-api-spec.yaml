@@ -2,8 +2,8 @@ name: SDK Update API Spec
 
 on:
   schedule:
-    - cron: '0 12 * * 3'
-  workflow_dispatch: {}
+    - cron: '0 4 * * *'
+  workflow_dispatch:
 
 jobs:
   api-spec-update:
@@ -21,18 +21,17 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-java-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
-            ${{ runner.os }}-java-gradle-
-            ${{ runner.os }}-java-
-      - name: Update generated Jellyfin API spec
+            ${{ runner.os }}-gradle-
+      - name: Update generated Jellyfin API from spec
         uses: technote-space/create-pr-action@v2
         with:
-          EXECUTE_COMMANDS: ./gradlew --build-cache --no-daemon --info updateApiSpecStable
+          EXECUTE_COMMANDS: ./gradlew --build-cache --no-daemon --info updateApiSpecStable apiDump
           COMMIT_MESSAGE: 'update generated Jellyfin API spec'
           COMMIT_NAME: 'jellyfin-bot'
           COMMIT_EMAIL: 'team@jellyfin.org'
-          PR_BRANCH_PREFIX: 'chore/'
-          PR_BRANCH_NAME: 'api-gen-update-${PR_ID}'
-          PR_TITLE: 'chore(api-gen): update generated Jellyfin API spec'
-          GITHUB_TOKEN: ${{ github.GITHUB_TOKEN }}
+          PR_BRANCH_PREFIX: 'openapi-update-'
+          PR_BRANCH_NAME: '${PR_ID}'
+          PR_TITLE: 'Update OpenAPI'
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
