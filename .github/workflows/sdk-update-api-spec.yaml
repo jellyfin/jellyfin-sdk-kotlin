@@ -1,4 +1,4 @@
-name: SDK Update API Spec
+name: SDK Update API from from Spec
 
 on:
   schedule:
@@ -24,14 +24,18 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Set Stable API Version EnvVar
+        run: |
+          VERSION=$(curl -sL https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-stable.json | jq -r .info.version)
+          echo "STABLE_API_VERSION=${VERSION}" >> $GITHUB_ENV
       - name: Update generated Jellyfin API from spec
         uses: technote-space/create-pr-action@v2
         with:
           EXECUTE_COMMANDS: ./gradlew --build-cache --no-daemon --info updateApiSpecStable apiDump
-          COMMIT_MESSAGE: 'update generated Jellyfin API spec'
+          COMMIT_MESSAGE: 'update generated Jellyfin API from spec'
           COMMIT_NAME: 'jellyfin-bot'
           COMMIT_EMAIL: 'team@jellyfin.org'
           PR_BRANCH_PREFIX: 'openapi-update-'
           PR_BRANCH_NAME: '${PR_ID}'
-          PR_TITLE: 'Update OpenAPI'
+          PR_TITLE: 'Update OpenAPI to ${{ env.STABLE_API_VERSION }}'
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
