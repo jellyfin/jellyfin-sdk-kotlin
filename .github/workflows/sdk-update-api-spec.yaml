@@ -1,4 +1,4 @@
-name: Update generated SDK sources
+name: SDK Update API from Spec
 
 on:
   schedule:
@@ -38,4 +38,13 @@ jobs:
           PR_BRANCH_PREFIX: 'openapi-update-'
           PR_BRANCH_NAME: '${PR_ID}'
           PR_TITLE: 'Update OpenAPI to ${{ env.STABLE_API_VERSION }}'
+          PR_BODY: |
+            ## Changed files
+
+            <details>
+              <summary>${FILES_SUMMARY}</summary>
+
+              ${FILES}
+
+            </details>
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
