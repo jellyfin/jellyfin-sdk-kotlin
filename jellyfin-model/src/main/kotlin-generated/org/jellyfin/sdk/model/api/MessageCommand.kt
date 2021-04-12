@@ -5,17 +5,17 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.Long
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/**
- * Class SetRepeatModeRequestDto.
- */
 @Serializable
-public data class SetRepeatModeRequestDto(
-	/**
-	 * Gets or sets the repeat mode.
-	 */
-	@SerialName("Mode")
-	public val mode: GroupRepeatMode
+public data class MessageCommand(
+	@SerialName("Header")
+	public val header: String? = null,
+	@SerialName("Text")
+	public val text: String,
+	@SerialName("TimeoutMs")
+	public val timeoutMs: Long? = null
 )

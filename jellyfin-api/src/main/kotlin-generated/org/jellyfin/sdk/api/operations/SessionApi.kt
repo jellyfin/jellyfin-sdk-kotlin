@@ -18,6 +18,7 @@ import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.model.api.ClientCapabilitiesDto
 import org.jellyfin.sdk.model.api.GeneralCommand
 import org.jellyfin.sdk.model.api.GeneralCommandType
+import org.jellyfin.sdk.model.api.MessageCommand
 import org.jellyfin.sdk.model.api.NameIdPair
 import org.jellyfin.sdk.model.api.PlayCommand
 import org.jellyfin.sdk.model.api.PlaystateCommand
@@ -109,24 +110,11 @@ public class SessionApi(
 	 * Issues a command to a client to display a message to the user.
 	 *
 	 * @param sessionId The session id.
-	 * @param text The message test.
-	 * @param header The message header.
-	 * @param timeoutMs The message timeout. If omitted the user will have to confirm viewing the
-	 * message.
 	 */
-	public suspend fun sendMessageCommand(
-		sessionId: String,
-		text: String,
-		header: String? = null,
-		timeoutMs: Long? = null
-	): Response<Unit> {
+	public suspend fun sendMessageCommand(sessionId: String, `data`: MessageCommand): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["text"] = text
-		queryParameters["header"] = header
-		queryParameters["timeoutMs"] = timeoutMs
-		val data = null
+		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Sessions/{sessionId}/Message", pathParameters, queryParameters,
 				data)
 		return response
@@ -140,12 +128,20 @@ public class SessionApi(
 	 * have not yet implemented play next and play last may play now.
 	 * @param itemIds The ids of the items to play, comma delimited.
 	 * @param startPositionTicks The starting position of the first item.
+	 * @param mediaSourceId Optional. The media source id.
+	 * @param audioStreamIndex Optional. The index of the audio stream to play.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to play.
+	 * @param startIndex Optional. The start index.
 	 */
 	public suspend fun play(
 		sessionId: String,
 		playCommand: PlayCommand,
 		itemIds: List<UUID> = emptyList(),
-		startPositionTicks: Long? = null
+		startPositionTicks: Long? = null,
+		mediaSourceId: String? = null,
+		audioStreamIndex: Int? = null,
+		subtitleStreamIndex: Int? = null,
+		startIndex: Int? = null
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
@@ -153,6 +149,10 @@ public class SessionApi(
 		queryParameters["playCommand"] = playCommand
 		queryParameters["itemIds"] = itemIds
 		queryParameters["startPositionTicks"] = startPositionTicks
+		queryParameters["mediaSourceId"] = mediaSourceId
+		queryParameters["audioStreamIndex"] = audioStreamIndex
+		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
+		queryParameters["startIndex"] = startIndex
 		val data = null
 		val response = api.post<Unit>("/Sessions/{sessionId}/Playing", pathParameters, queryParameters,
 				data)
