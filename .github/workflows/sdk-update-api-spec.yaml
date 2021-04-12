@@ -1,4 +1,4 @@
-name: SDK Update API from from Spec
+name: Update generated SDK sources
 
 on:
   schedule:
