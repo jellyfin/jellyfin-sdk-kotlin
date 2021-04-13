@@ -40,6 +40,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -60,6 +62,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -80,6 +84,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -108,6 +114,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -129,6 +137,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -150,6 +160,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -175,6 +187,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -195,6 +209,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -215,6 +231,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -243,6 +261,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -264,6 +284,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -285,6 +307,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -312,6 +336,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -332,6 +358,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -352,6 +380,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -380,6 +410,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -401,6 +433,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -422,6 +456,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -457,6 +493,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
@@ -478,6 +516,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		tag: String? = null,
 		cropWhitespace: Boolean? = null,
 		format: ImageFormat? = null,
@@ -498,6 +538,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["tag"] = tag
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["format"] = format
@@ -525,6 +567,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
@@ -547,6 +591,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		tag: String? = null,
 		cropWhitespace: Boolean? = null,
 		format: ImageFormat? = null,
@@ -568,6 +614,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["tag"] = tag
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["format"] = format
@@ -634,6 +682,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
@@ -655,6 +705,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		tag: String? = null,
 		cropWhitespace: Boolean? = null,
 		format: ImageFormat? = null,
@@ -675,6 +727,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["tag"] = tag
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["format"] = format
@@ -702,6 +756,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
@@ -724,6 +780,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		tag: String? = null,
 		cropWhitespace: Boolean? = null,
 		format: ImageFormat? = null,
@@ -745,6 +803,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["tag"] = tag
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["format"] = format
@@ -821,6 +881,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -841,6 +903,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -861,6 +925,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -890,6 +956,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -911,6 +979,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -932,6 +1002,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -983,6 +1055,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -1003,6 +1077,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -1023,6 +1099,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -1051,6 +1129,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -1072,6 +1152,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -1093,6 +1175,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -1120,6 +1204,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -1140,6 +1226,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -1160,6 +1248,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -1188,6 +1278,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -1209,6 +1301,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -1230,6 +1324,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -1255,6 +1351,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -1275,6 +1373,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -1295,6 +1395,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -1323,6 +1425,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -1344,6 +1448,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -1365,6 +1471,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -1392,6 +1500,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -1412,6 +1522,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -1432,6 +1544,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -1460,6 +1574,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -1481,6 +1597,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -1502,6 +1620,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -1527,6 +1647,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -1547,6 +1669,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -1567,6 +1691,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -1595,6 +1721,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -1616,6 +1744,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -1637,6 +1767,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -1664,6 +1796,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -1684,6 +1818,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -1704,6 +1840,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -1732,6 +1870,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -1753,6 +1893,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -1774,6 +1916,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -1799,6 +1943,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -1819,6 +1965,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -1839,6 +1987,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -1867,6 +2017,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -1888,6 +2040,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -1909,6 +2063,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -1982,6 +2138,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -2002,6 +2160,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -2022,6 +2182,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur
@@ -2050,6 +2212,8 @@ public class ImageApi(
 	 * @param height The fixed image height to return.
 	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
 	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
 	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
 	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
 	 * @param addPlayedIndicator Optional. Add a played indicator.
@@ -2071,6 +2235,8 @@ public class ImageApi(
 		width: Int? = null,
 		height: Int? = null,
 		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
 		cropWhitespace: Boolean? = null,
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
@@ -2092,6 +2258,8 @@ public class ImageApi(
 		queryParameters["width"] = width
 		queryParameters["height"] = height
 		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
 		queryParameters["cropWhitespace"] = cropWhitespace
 		queryParameters["addPlayedIndicator"] = addPlayedIndicator
 		queryParameters["blur"] = blur

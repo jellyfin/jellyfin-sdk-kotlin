@@ -9,6 +9,7 @@ import io.ktor.utils.io.ByteReadChannel
 import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.Deprecated
 import kotlin.Int
 import kotlin.Long
 import kotlin.String
@@ -121,84 +122,6 @@ public class SubtitleApi(
 	}
 
 	/**
-	 * Gets subtitles in a specified format.
-	 *
-	 * @param itemId The item id.
-	 * @param mediaSourceId The media source id.
-	 * @param index The subtitle stream index.
-	 * @param startPositionTicks Optional. The start position of the subtitle in ticks.
-	 * @param format The format of the returned subtitle.
-	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
-	 * @param copyTimestamps Optional. Whether to copy the timestamps.
-	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
-	 */
-	public suspend fun getSubtitleWithTicks(
-		itemId: UUID,
-		mediaSourceId: String,
-		index: Int,
-		startPositionTicks: Long,
-		format: String,
-		endPositionTicks: Long? = null,
-		copyTimestamps: Boolean = false,
-		addVttTimeMap: Boolean = false
-	): Response<String> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["mediaSourceId"] = mediaSourceId
-		pathParameters["index"] = index
-		pathParameters["startPositionTicks"] = startPositionTicks
-		pathParameters["format"] = format
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["endPositionTicks"] = endPositionTicks
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["addVttTimeMap"] = addVttTimeMap
-		val data = null
-		val response =
-				api.`get`<String>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/{startPositionTicks}/Stream.{format}",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets subtitles in a specified format.
-	 *
-	 * @param itemId The item id.
-	 * @param mediaSourceId The media source id.
-	 * @param index The subtitle stream index.
-	 * @param format The format of the returned subtitle.
-	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
-	 * @param copyTimestamps Optional. Whether to copy the timestamps.
-	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
-	 * @param startPositionTicks Optional. The start position of the subtitle in ticks.
-	 */
-	public suspend fun getSubtitle(
-		itemId: UUID,
-		mediaSourceId: String,
-		index: Int,
-		format: String,
-		endPositionTicks: Long? = null,
-		copyTimestamps: Boolean = false,
-		addVttTimeMap: Boolean = false,
-		startPositionTicks: Long = 0
-	): Response<String> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["mediaSourceId"] = mediaSourceId
-		pathParameters["index"] = index
-		pathParameters["format"] = format
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["endPositionTicks"] = endPositionTicks
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["addVttTimeMap"] = addVttTimeMap
-		queryParameters["startPositionTicks"] = startPositionTicks
-		val data = null
-		val response =
-				api.`get`<String>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/Stream.{format}",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Gets an HLS subtitle playlist.
 	 *
 	 * @param itemId The item id.
@@ -278,6 +201,191 @@ public class SubtitleApi(
 		val data = null
 		val response = api.delete<Unit>("/Videos/{itemId}/Subtitles/{index}", pathParameters,
 				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets subtitles in a specified format.
+	 *
+	 * @param routeItemId The (route) item id.
+	 * @param routeMediaSourceId The (route) media source id.
+	 * @param routeIndex The (route) subtitle stream index.
+	 * @param routeStartPositionTicks The (route) start position of the subtitle in ticks.
+	 * @param routeFormat The (route) format of the returned subtitle.
+	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
+	 * @param copyTimestamps Optional. Whether to copy the timestamps.
+	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
+	 */
+	public suspend fun getSubtitleWithTicks(
+		routeItemId: UUID,
+		routeMediaSourceId: String,
+		routeIndex: Int,
+		routeStartPositionTicks: Long,
+		routeFormat: String,
+		endPositionTicks: Long? = null,
+		copyTimestamps: Boolean = false,
+		addVttTimeMap: Boolean = false
+	): Response<String> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["routeItemId"] = routeItemId
+		pathParameters["routeMediaSourceId"] = routeMediaSourceId
+		pathParameters["routeIndex"] = routeIndex
+		pathParameters["routeStartPositionTicks"] = routeStartPositionTicks
+		pathParameters["routeFormat"] = routeFormat
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["endPositionTicks"] = endPositionTicks
+		queryParameters["copyTimestamps"] = copyTimestamps
+		queryParameters["addVttTimeMap"] = addVttTimeMap
+		val data = null
+		val response =
+				api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/{routeStartPositionTicks}/Stream.{routeFormat}",
+				pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets subtitles in a specified format.
+	 *
+	 * @param routeItemId The (route) item id.
+	 * @param routeMediaSourceId The (route) media source id.
+	 * @param routeIndex The (route) subtitle stream index.
+	 * @param routeStartPositionTicks The (route) start position of the subtitle in ticks.
+	 * @param routeFormat The (route) format of the returned subtitle.
+	 * @param itemId The item id.
+	 * @param mediaSourceId The media source id.
+	 * @param index The subtitle stream index.
+	 * @param startPositionTicks The start position of the subtitle in ticks.
+	 * @param format The format of the returned subtitle.
+	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
+	 * @param copyTimestamps Optional. Whether to copy the timestamps.
+	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getSubtitleWithTicksDeprecated(
+		routeItemId: UUID,
+		routeMediaSourceId: String,
+		routeIndex: Int,
+		routeStartPositionTicks: Long,
+		routeFormat: String,
+		itemId: UUID? = null,
+		mediaSourceId: String? = null,
+		index: Int? = null,
+		startPositionTicks: Long? = null,
+		format: String? = null,
+		endPositionTicks: Long? = null,
+		copyTimestamps: Boolean = false,
+		addVttTimeMap: Boolean = false
+	): Response<String> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["routeItemId"] = routeItemId
+		pathParameters["routeMediaSourceId"] = routeMediaSourceId
+		pathParameters["routeIndex"] = routeIndex
+		pathParameters["routeStartPositionTicks"] = routeStartPositionTicks
+		pathParameters["routeFormat"] = routeFormat
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["itemId"] = itemId
+		queryParameters["mediaSourceId"] = mediaSourceId
+		queryParameters["index"] = index
+		queryParameters["startPositionTicks"] = startPositionTicks
+		queryParameters["format"] = format
+		queryParameters["endPositionTicks"] = endPositionTicks
+		queryParameters["copyTimestamps"] = copyTimestamps
+		queryParameters["addVttTimeMap"] = addVttTimeMap
+		val data = null
+		val response =
+				api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/{routeStartPositionTicks}/Stream.{routeFormat}",
+				pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets subtitles in a specified format.
+	 *
+	 * @param routeItemId The (route) item id.
+	 * @param routeMediaSourceId The (route) media source id.
+	 * @param routeIndex The (route) subtitle stream index.
+	 * @param routeFormat The (route) format of the returned subtitle.
+	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
+	 * @param copyTimestamps Optional. Whether to copy the timestamps.
+	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
+	 * @param startPositionTicks The start position of the subtitle in ticks.
+	 */
+	public suspend fun getSubtitle(
+		routeItemId: UUID,
+		routeMediaSourceId: String,
+		routeIndex: Int,
+		routeFormat: String,
+		endPositionTicks: Long? = null,
+		copyTimestamps: Boolean = false,
+		addVttTimeMap: Boolean = false,
+		startPositionTicks: Long = 0
+	): Response<String> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["routeItemId"] = routeItemId
+		pathParameters["routeMediaSourceId"] = routeMediaSourceId
+		pathParameters["routeIndex"] = routeIndex
+		pathParameters["routeFormat"] = routeFormat
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["endPositionTicks"] = endPositionTicks
+		queryParameters["copyTimestamps"] = copyTimestamps
+		queryParameters["addVttTimeMap"] = addVttTimeMap
+		queryParameters["startPositionTicks"] = startPositionTicks
+		val data = null
+		val response =
+				api.`get`<String>("/Videos/{routeItemId}/routeMediaSourceId/Subtitles/{routeIndex}/Stream.{routeFormat}",
+				pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets subtitles in a specified format.
+	 *
+	 * @param routeItemId The (route) item id.
+	 * @param routeMediaSourceId The (route) media source id.
+	 * @param routeIndex The (route) subtitle stream index.
+	 * @param routeFormat The (route) format of the returned subtitle.
+	 * @param itemId The item id.
+	 * @param mediaSourceId The media source id.
+	 * @param index The subtitle stream index.
+	 * @param format The format of the returned subtitle.
+	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
+	 * @param copyTimestamps Optional. Whether to copy the timestamps.
+	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
+	 * @param startPositionTicks The start position of the subtitle in ticks.
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getSubtitleDeprecated(
+		routeItemId: UUID,
+		routeMediaSourceId: String,
+		routeIndex: Int,
+		routeFormat: String,
+		itemId: UUID? = null,
+		mediaSourceId: String? = null,
+		index: Int? = null,
+		format: String? = null,
+		endPositionTicks: Long? = null,
+		copyTimestamps: Boolean = false,
+		addVttTimeMap: Boolean = false,
+		startPositionTicks: Long = 0
+	): Response<String> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["routeItemId"] = routeItemId
+		pathParameters["routeMediaSourceId"] = routeMediaSourceId
+		pathParameters["routeIndex"] = routeIndex
+		pathParameters["routeFormat"] = routeFormat
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["itemId"] = itemId
+		queryParameters["mediaSourceId"] = mediaSourceId
+		queryParameters["index"] = index
+		queryParameters["format"] = format
+		queryParameters["endPositionTicks"] = endPositionTicks
+		queryParameters["copyTimestamps"] = copyTimestamps
+		queryParameters["addVttTimeMap"] = addVttTimeMap
+		queryParameters["startPositionTicks"] = startPositionTicks
+		val data = null
+		val response =
+				api.`get`<String>("/Videos/{routeItemId}/routeMediaSourceId/Subtitles/{routeIndex}/Stream.{routeFormat}",
+				pathParameters, queryParameters, data)
 		return response
 	}
 }
