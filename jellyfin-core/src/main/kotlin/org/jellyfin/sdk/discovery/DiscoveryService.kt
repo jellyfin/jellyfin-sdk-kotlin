@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.takeWhile
 import org.jellyfin.sdk.Jellyfin
-import org.jellyfin.sdk.model.discovery.DiscoveryServerInfo
+import org.jellyfin.sdk.model.api.ServerDiscoveryInfo
 
 /**
  * Service for discovery related functionality
@@ -106,7 +106,7 @@ public class DiscoveryService(
 	public fun discoverLocalServers(
 		timeout: Int = LocalServerDiscovery.DISCOVERY_TIMEOUT,
 		maxServers: Int = LocalServerDiscovery.DISCOVERY_MAX_SERVERS
-	): Flow<DiscoveryServerInfo> = localServerDiscovery.discover(
+	): Flow<ServerDiscoveryInfo> = localServerDiscovery.discover(
 		timeout = timeout,
 		maxServers = maxServers
 	)

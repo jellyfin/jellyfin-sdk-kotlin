@@ -5,8 +5,8 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
 import org.jellyfin.sdk.Jellyfin
 import org.jellyfin.sdk.api.operations.SystemApi
+import org.jellyfin.sdk.model.ServerVersion
 import org.jellyfin.sdk.model.api.PublicSystemInfo
-import org.jellyfin.sdk.model.discovery.ServerVersion
 import org.slf4j.LoggerFactory
 import java.net.ConnectException
 

@@ -1,7 +1,7 @@
-package org.jellyfin.sdk.model.discovery
+package org.jellyfin.sdk.model
 
 import kotlinx.serialization.Serializable
-import org.jellyfin.sdk.model.discovery.ServerVersion.Companion.fromString
+import org.jellyfin.sdk.model.ServerVersion.Companion.fromString
 
 /**
  * Model to help with Jellyfin server versions.
