@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.isActive
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
-import org.jellyfin.sdk.model.discovery.DiscoveryServerInfo
+import org.jellyfin.sdk.model.api.ServerDiscoveryInfo
 import org.slf4j.LoggerFactory
 import java.io.IOException
 import java.net.DatagramPacket
@@ -52,7 +52,7 @@ public class LocalServerDiscovery(
 	/**
 	 * Try reading and parsing messages sent to a given socket
 	 */
-	private fun receive(socket: DatagramSocket): DiscoveryServerInfo? {
+	private fun receive(socket: DatagramSocket): ServerDiscoveryInfo? {
 		logger.debug("Reading reply...")
 
 		val buffer = ByteArray(DISCOVERY_RECEIVE_BUFFER) // Buffer to receive message in
@@ -66,7 +66,7 @@ public class LocalServerDiscovery(
 			logger.debug("""Received message "$message"""")
 
 			// Read as JSON
-			val info = json.decodeFromString(DiscoveryServerInfo.serializer(), message)
+			val info = json.decodeFromString(ServerDiscoveryInfo.serializer(), message)
 
 			info
 		} catch (err: SocketTimeoutException) {
@@ -90,7 +90,7 @@ public class LocalServerDiscovery(
 	public fun discover(
 		timeout: Int = DISCOVERY_TIMEOUT,
 		maxServers: Int = DISCOVERY_MAX_SERVERS
-	): Flow<DiscoveryServerInfo> = flow {
+	): Flow<ServerDiscoveryInfo> = flow {
 		logger.info("Starting discovery with timeout of ${timeout}ms")
 
 		val socket = DatagramSocket().apply {
@@ -114,8 +114,8 @@ public class LocalServerDiscovery(
 			val info = receive(socket) ?: continue
 
 			// Filter duplicates
-			if (info.id in foundServers) continue
-			foundServers += info.id
+			if (info.id == null || info.id in foundServers) continue
+			foundServers += info.id!!
 
 			emit(info)
 		}

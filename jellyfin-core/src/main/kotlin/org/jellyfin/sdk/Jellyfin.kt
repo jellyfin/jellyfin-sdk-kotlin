@@ -5,7 +5,7 @@ import org.jellyfin.sdk.api.info.ApiConstants
 import org.jellyfin.sdk.discovery.DiscoveryService
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
-import org.jellyfin.sdk.model.discovery.ServerVersion
+import org.jellyfin.sdk.model.ServerVersion
 
 public class Jellyfin(
 	private val options: JellyfinOptions

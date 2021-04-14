@@ -1,5 +1,6 @@
 package org.jellyfin.sdk.model.discovery
 
+import org.jellyfin.sdk.model.ServerVersion
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull

@@ -24,6 +24,44 @@ public final class org/jellyfin/sdk/model/DeviceInfo {
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class org/jellyfin/sdk/model/ServerVersion {
+	public static final field Companion Lorg/jellyfin/sdk/model/ServerVersion$Companion;
+	public synthetic fun <init> (IIIILjava/lang/Integer;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (IIILjava/lang/Integer;)V
+	public synthetic fun <init> (IIILjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun compareTo (Lorg/jellyfin/sdk/model/ServerVersion;)I
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()Ljava/lang/Integer;
+	public final fun copy (IIILjava/lang/Integer;)Lorg/jellyfin/sdk/model/ServerVersion;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/ServerVersion;IIILjava/lang/Integer;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/ServerVersion;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBuild ()Ljava/lang/Integer;
+	public final fun getMajor ()I
+	public final fun getMinor ()I
+	public final fun getPatch ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/ServerVersion;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class org/jellyfin/sdk/model/ServerVersion$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/ServerVersion$$serializer;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/ServerVersion;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/ServerVersion;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/ServerVersion$Companion {
+	public final fun fromString (Ljava/lang/String;)Lorg/jellyfin/sdk/model/ServerVersion;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class org/jellyfin/sdk/model/api/AccessSchedule {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/AccessSchedule$Companion;
 	public synthetic fun <init> (IILjava/util/UUID;Lorg/jellyfin/sdk/model/api/DynamicDayOfWeek;DDLkotlinx/serialization/internal/SerializationConstructorMarker;)V
@@ -10770,77 +10808,6 @@ public final class org/jellyfin/sdk/model/api/XmlAttribute$$serializer : kotlinx
 }
 
 public final class org/jellyfin/sdk/model/api/XmlAttribute$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class org/jellyfin/sdk/model/discovery/DiscoveryServerInfo {
-	public static final field Companion Lorg/jellyfin/sdk/model/discovery/DiscoveryServerInfo$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-	public final fun component1 ()Ljava/lang/String;
-	public final fun component2 ()Ljava/lang/String;
-	public final fun component3 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/jellyfin/sdk/model/discovery/DiscoveryServerInfo;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/discovery/DiscoveryServerInfo;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/discovery/DiscoveryServerInfo;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getAddress ()Ljava/lang/String;
-	public final fun getId ()Ljava/lang/String;
-	public final fun getName ()Ljava/lang/String;
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-	public static final fun write$Self (Lorg/jellyfin/sdk/model/discovery/DiscoveryServerInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
-}
-
-public final class org/jellyfin/sdk/model/discovery/DiscoveryServerInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/discovery/DiscoveryServerInfo$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/discovery/DiscoveryServerInfo;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/discovery/DiscoveryServerInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class org/jellyfin/sdk/model/discovery/DiscoveryServerInfo$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class org/jellyfin/sdk/model/discovery/ServerVersion {
-	public static final field Companion Lorg/jellyfin/sdk/model/discovery/ServerVersion$Companion;
-	public synthetic fun <init> (IIIILjava/lang/Integer;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
-	public fun <init> (IIILjava/lang/Integer;)V
-	public synthetic fun <init> (IIILjava/lang/Integer;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun compareTo (Lorg/jellyfin/sdk/model/discovery/ServerVersion;)I
-	public final fun component1 ()I
-	public final fun component2 ()I
-	public final fun component3 ()I
-	public final fun component4 ()Ljava/lang/Integer;
-	public final fun copy (IIILjava/lang/Integer;)Lorg/jellyfin/sdk/model/discovery/ServerVersion;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/discovery/ServerVersion;IIILjava/lang/Integer;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/discovery/ServerVersion;
-	public fun equals (Ljava/lang/Object;)Z
-	public final fun getBuild ()Ljava/lang/Integer;
-	public final fun getMajor ()I
-	public final fun getMinor ()I
-	public final fun getPatch ()I
-	public fun hashCode ()I
-	public fun toString ()Ljava/lang/String;
-	public static final fun write$Self (Lorg/jellyfin/sdk/model/discovery/ServerVersion;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
-}
-
-public final class org/jellyfin/sdk/model/discovery/ServerVersion$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/discovery/ServerVersion$$serializer;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/discovery/ServerVersion;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/discovery/ServerVersion;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class org/jellyfin/sdk/model/discovery/ServerVersion$Companion {
-	public final fun fromString (Ljava/lang/String;)Lorg/jellyfin/sdk/model/discovery/ServerVersion;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
