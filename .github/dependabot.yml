@@ -8,6 +8,3 @@ updates:
       - ci
       - github-actions
       - dependencies
-    commit-message:
-      prefix: ci
-      include: scope
