@@ -70,5 +70,9 @@ subprojects {
 		buildUponDefaultConfig = true
 		ignoreFailures = true
 		config = files("$rootDir/detekt.yml")
+
+		reports {
+			sarif.enabled = true
+		}
 	}
 }
