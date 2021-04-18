@@ -11,7 +11,7 @@ import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
 
 open class OperationBuilder(
-	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder
+	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder,
 ) : Builder<ApiServiceOperation, FunSpec> {
 	protected open fun buildFunctionShell(data: ApiServiceOperation) = FunSpec.builder(data.name).apply {
 		// Make function suspended
@@ -53,7 +53,10 @@ open class OperationBuilder(
 	}.build()
 
 
-	protected fun FunSpec.Builder.addParameterMapStatements(name: String, parameters: Collection<ApiServiceOperationParameter>) {
+	protected fun FunSpec.Builder.addParameterMapStatements(
+		name: String,
+		parameters: Collection<ApiServiceOperationParameter>,
+	) {
 		// Create map
 		// val $(name) = $("emptyMap"|"mutableMapOf")<String, Any?>()
 		val mapType = if (parameters.isEmpty()) "emptyMap" else "mutableMapOf"

@@ -33,12 +33,14 @@ public data class ServerVersion(
 			val parts = str.split('.').map(String::toIntOrNull)
 
 			// Check if we found enough parts
+			@Suppress("MagicNumber")
 			if (parts.size != 3 && parts.size != 4) return null
 
 			// Bad value found
 			if (parts.any { it == null }) return null
 
 			// Return server version
+			@Suppress("MagicNumber")
 			return ServerVersion(
 				major = parts[0]!!,
 				minor = parts[1]!!,

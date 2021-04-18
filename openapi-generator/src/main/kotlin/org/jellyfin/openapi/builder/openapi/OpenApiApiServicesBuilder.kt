@@ -6,6 +6,7 @@ import io.swagger.v3.oas.models.PathItem
 import io.swagger.v3.oas.models.Paths
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toCamelCase
+import org.jellyfin.openapi.OpenApiGeneratorError
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.api.ApiNameBuilder
 import org.jellyfin.openapi.constants.MimeType
@@ -41,7 +42,12 @@ class OpenApiApiServicesBuilder(
 			hook.mapServiceNames(operation, serviceNames)
 		}
 
-	private fun buildOperation(operation: Operation, path: String, serviceName: String, method: HttpMethod): ApiServiceOperation {
+	private fun buildOperation(
+		operation: Operation,
+		path: String,
+		serviceName: String,
+		method: HttpMethod,
+	): ApiServiceOperation {
 		val operationName = operation.operationId.toCamelCase(from = CaseFormat.CAPITALIZED_CAMEL)
 
 		val pathParameters = mutableListOf<ApiServiceOperationParameter>()
@@ -54,7 +60,7 @@ class OpenApiApiServicesBuilder(
 			when (parameterSpec.`in`) {
 				"path" -> pathParameters
 				"query" -> queryParameters
-				else -> throw Error("""Unknown "in": ${parameterSpec.`in`}""")
+				else -> throw OpenApiGeneratorError("""Unknown "in": ${parameterSpec.`in`}""")
 			} += ApiServiceOperationParameter(
 				name = parameterName,
 				originalName = parameterSpec.name,

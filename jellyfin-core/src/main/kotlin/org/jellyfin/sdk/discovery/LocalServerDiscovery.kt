@@ -21,7 +21,8 @@ import java.net.SocketTimeoutException
  * the maximum amount of servers has been retrieved.
  */
 public class LocalServerDiscovery(
-	private val discoveryBroadcastAddressesProvider: DiscoveryBroadcastAddressesProvider = JavaNetBroadcastAddressesProvider()
+	private val discoveryBroadcastAddressesProvider: DiscoveryBroadcastAddressesProvider =
+		JavaNetBroadcastAddressesProvider(),
 ) {
 	public companion object {
 		public const val DISCOVERY_MESSAGE: String = "who is JellyfinServer?"
@@ -58,6 +59,7 @@ public class LocalServerDiscovery(
 		val buffer = ByteArray(DISCOVERY_RECEIVE_BUFFER) // Buffer to receive message in
 		val packet = DatagramPacket(buffer, buffer.size)
 
+		@Suppress("SwallowedException")
 		return try {
 			socket.receive(packet)
 
@@ -70,6 +72,7 @@ public class LocalServerDiscovery(
 
 			info
 		} catch (err: SocketTimeoutException) {
+
 			// Unable to receive due too timeout, which is common for non-Jellyfin devices
 			// Just ignore
 			null
@@ -89,7 +92,7 @@ public class LocalServerDiscovery(
 	 */
 	public fun discover(
 		timeout: Int = DISCOVERY_TIMEOUT,
-		maxServers: Int = DISCOVERY_MAX_SERVERS
+		maxServers: Int = DISCOVERY_MAX_SERVERS,
 	): Flow<ServerDiscoveryInfo> = flow {
 		logger.info("Starting discovery with timeout of ${timeout}ms")
 
@@ -108,6 +111,8 @@ public class LocalServerDiscovery(
 
 		// Try reading incoming messages but with a maximum
 		val foundServers = mutableSetOf<String>()
+
+		@Suppress("UnusedPrivateMember")
 		for (i in 0..maxServers) {
 			if (socket.isClosed || !GlobalScope.isActive) break
 

@@ -16,15 +16,18 @@ import org.jellyfin.openapi.model.EnumApiModel
 import org.jellyfin.openapi.model.JellyFile
 
 class EnumModelBuilder(
-	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder
+	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder,
 ) : Builder<EnumApiModel, JellyFile> {
 	override fun build(data: EnumApiModel): JellyFile {
 		return TypeSpec.enumBuilder(data.name.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL))
 			.apply {
 				data.constants.forEach {
-					addEnumConstant(it.toScreamingSnakeCase(from = CaseFormat.CAPITALIZED_CAMEL), TypeSpec.anonymousClassBuilder().apply {
-						addAnnotation(AnnotationSpec.builder(SerialName::class).addMember("%S", it).build())
-					}.build())
+					addEnumConstant(
+						it.toScreamingSnakeCase(from = CaseFormat.CAPITALIZED_CAMEL),
+						TypeSpec.anonymousClassBuilder().apply {
+							addAnnotation(AnnotationSpec.builder(SerialName::class).addMember("%S", it).build())
+						}.build()
+					)
 				}
 				data.description?.let { addKdoc(it) }
 				if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_CLASS))

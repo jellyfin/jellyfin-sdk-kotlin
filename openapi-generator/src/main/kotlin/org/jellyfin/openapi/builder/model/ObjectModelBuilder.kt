@@ -18,6 +18,7 @@ class ObjectModelBuilder(
 	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder,
 	private val typeSerializerBuilder: TypeSerializerBuilder
 ) : Builder<ObjectApiModel, JellyFile> {
+	@Suppress("ComplexMethod")
 	override fun build(data: ObjectApiModel): JellyFile {
 		val properties = mutableListOf<PropertySpec>()
 		val serializers = mutableSetOf<TypeName>()

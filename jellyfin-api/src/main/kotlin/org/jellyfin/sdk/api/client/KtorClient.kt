@@ -39,7 +39,8 @@ public open class KtorClient(
 		}
 
 		install(HttpTimeout) {
-			connectTimeoutMillis = 10000
+			@Suppress("MagicNumber")
+			connectTimeoutMillis = 10_000 // 10 seconds
 		}
 	}
 
@@ -131,12 +132,24 @@ public open class KtorClient(
 			prefix = "MediaBrowser ",
 			transform = {
 				// Check for bad strings to prevent endless hours debugging why the server throws http 500 errors
-				require(!it.key.contains('=')) { "Key ${it.key} can not contain the = character in the authorization header" }
-				require(!it.key.contains(',')) { "Key ${it.key} can not contain the , character in the authorization header" }
-				require(!it.key.startsWith('"') && !it.key.endsWith('"')) { "Key ${it.key} can not start or end with the \" character in the authorization header" }
-				require(!it.value.contains('=')) { "Value ${it.value} (for key ${it.key}) can not contain the = character in the authorization header" }
-				require(!it.value.contains(',')) { "Value ${it.value} (for key ${it.key}) can not contain the , character in the authorization header" }
-				require(!it.value.startsWith('"') && !it.value.endsWith('"')) { "Value ${it.value} (for key ${it.key}) can not start or end with the \" character in the authorization header" }
+				require(!it.key.contains('=')) {
+					"Key ${it.key} can not contain the = character in the authorization header"
+				}
+				require(!it.key.contains(',')) {
+					"Key ${it.key} can not contain the , character in the authorization header"
+				}
+				require(!it.key.startsWith('"') && !it.key.endsWith('"')) {
+					"Key ${it.key} can not start or end with the \" character in the authorization header"
+				}
+				require(!it.value.contains('=')) {
+					"Value ${it.value} (for key ${it.key}) can not contain the = character in the authorization header"
+				}
+				require(!it.value.contains(',')) {
+					"Value ${it.value} (for key ${it.key}) can not contain the , character in the authorization header"
+				}
+				require(!it.value.startsWith('"') && !it.value.endsWith('"')) {
+					"Value ${it.value} (for key ${it.key}) can not start or end with the \" character in the authorization header"
+				}
 
 				// key="value"
 				"""${it.key.capitalize()}="${it.value}""""

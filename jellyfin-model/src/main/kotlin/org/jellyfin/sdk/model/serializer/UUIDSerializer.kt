@@ -20,6 +20,7 @@ public fun String.toUUID(): UUID = UUID.fromString(replace(UUID_REGEX, "$1-$2-$3
  * Convert string to UUID or null if the string is not an UUID.
  * Accepts simple and hyphenated notations.
  */
+@Suppress("SwallowedException")
 public fun String.toUUIDOrNull(): UUID? = try {
 	toUUID()
 } catch (err: IllegalArgumentException) {

@@ -118,6 +118,7 @@ public class AddressCandidateHelper(
 		// addBaseUrlCandidates()
 	}
 
+	@Suppress("MagicNumber")
 	private fun Url.score(): Int {
 		// Start out with a score of 0
 		var score = 0

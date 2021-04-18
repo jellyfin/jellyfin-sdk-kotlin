@@ -5,7 +5,7 @@ import kotlin.reflect.KProperty
 typealias Arguments = Map<String, String>
 
 operator fun Arguments.getValue(thisRef: Any?, property: KProperty<*>): String =
-	this[property.name] ?: throw Error("Missing argument --${property.name}")
+	this[property.name] ?: throw OpenApiGeneratorError("Missing argument --${property.name}")
 
 fun Array<out String>.asArguments(): Arguments {
 	val iterator = iterator()

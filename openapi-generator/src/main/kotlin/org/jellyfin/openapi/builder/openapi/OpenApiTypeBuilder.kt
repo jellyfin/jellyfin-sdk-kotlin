@@ -7,6 +7,7 @@ import com.squareup.kotlinpoet.asTypeName
 import io.swagger.v3.oas.models.media.*
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toPascalCase
+import org.jellyfin.openapi.OpenApiGeneratorError
 import org.jellyfin.openapi.builder.openapi.OpenApiReturnTypeBuilder.Companion.TYPE_BINARY
 import org.jellyfin.openapi.builder.openapi.OpenApiReturnTypeBuilder.Companion.TYPE_STRING
 import org.jellyfin.openapi.constants.Packages
@@ -16,7 +17,7 @@ import java.time.LocalDateTime
 import java.util.*
 
 class OpenApiTypeBuilder(
-	private val hooks: Collection<TypeBuilderHook>
+	private val hooks: Collection<TypeBuilderHook>,
 ) {
 	fun build(path: TypePath, schema: Schema<*>): TypeName =
 		buildWithHooks(path, schema) ?: buildSchema(schema)
@@ -30,6 +31,7 @@ class OpenApiTypeBuilder(
 		return null
 	}
 
+	@Suppress("ComplexMethod")
 	fun buildSchema(schema: Schema<*>): TypeName = when {
 		// Use referenced type
 		schema.`$ref` != null -> buildReference(schema.`$ref`)
@@ -95,5 +97,8 @@ class OpenApiTypeBuilder(
 
 	fun buildBinary() = TYPE_BINARY
 
-	class UnknownTypeError(type: String?, format: String?) : Error("Unknown type $type with format $format")
+	class UnknownTypeError(
+		type: String?,
+		format: String?,
+	) : OpenApiGeneratorError("Unknown type $type with format $format")
 }

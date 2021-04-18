@@ -8,10 +8,11 @@ import org.jellyfin.sdk.model.DeviceInfo
 public data class JellyfinOptions(
 	val discoverBroadcastAddressesProvider: DiscoveryBroadcastAddressesProvider,
 	val clientInfo: ClientInfo?,
-	val deviceInfo: DeviceInfo?
+	val deviceInfo: DeviceInfo?,
 ) {
 	public class Builder {
-		public var discoveryBroadcastAddressesProvider: DiscoveryBroadcastAddressesProvider = JavaNetBroadcastAddressesProvider()
+		public var discoveryBroadcastAddressesProvider: DiscoveryBroadcastAddressesProvider =
+			JavaNetBroadcastAddressesProvider()
 		public var clientInfo: ClientInfo? = null
 		public var deviceInfo: DeviceInfo? = null
 
