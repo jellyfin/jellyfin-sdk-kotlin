@@ -41,6 +41,7 @@ public class WebSocketApi(
 		private const val RECONNECT_DELAY = 3 * 1000L // milliseconds
 	}
 
+	@Suppress("ComplexMethod")
 	private fun SessionMessageType.getSerializer() = when (this) {
 		FORCE_KEEP_ALIVE -> serializer<ForceKeepAliveMessage>()
 		GENERAL_COMMAND -> serializer<GeneralCommandMessage>()
@@ -86,7 +87,8 @@ public class WebSocketApi(
 
 	private val client: HttpClient = HttpClient {
 		install(HttpTimeout) {
-			connectTimeoutMillis = 10000
+			@Suppress("MagicNumber")
+			connectTimeoutMillis = 10_000 // 10 seconds
 		}
 
 		install(WebSockets)
@@ -226,7 +228,8 @@ public class WebSocketApi(
 	/**
 	 * Publish a message to the server.
 	 */
-	public suspend inline fun <reified T : OutgoingSocketMessage> publish(message: T): Unit = publish(message, serializer())
+	public suspend inline fun <reified T : OutgoingSocketMessage> publish(message: T): Unit =
+		publish(message, serializer())
 
 	/**
 	 * Publish a message to the server.

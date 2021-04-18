@@ -10,6 +10,7 @@ import org.jellyfin.openapi.hooks.ApiTypePath
 class OpenApiReturnTypeBuilder(
 	private val openApiTypeBuilder: OpenApiTypeBuilder
 ) {
+	@Suppress("ComplexMethod")
 	fun build(path: ApiTypePath, response: ApiResponse?): TypeName {
 		val supportedReturnMimeTypes = response?.content?.keys.orEmpty()
 

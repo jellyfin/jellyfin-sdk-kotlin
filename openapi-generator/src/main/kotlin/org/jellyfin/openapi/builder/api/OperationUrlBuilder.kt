@@ -7,9 +7,11 @@ import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.model.ApiServiceOperation
 
 class OperationUrlBuilder(
-	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder
+	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder,
 ) : OperationBuilder(deprecatedAnnotationSpecBuilder) {
-	override fun buildFunctionShell(data: ApiServiceOperation) = FunSpec.builder(data.name  + Strings.URL_OPERATION_SUFFIX).apply {
+	override fun buildFunctionShell(data: ApiServiceOperation) = FunSpec.builder(
+		data.name + Strings.URL_OPERATION_SUFFIX
+	).apply {
 		// Add description
 		data.description?.let { addKdoc("%L", it) }
 

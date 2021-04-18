@@ -32,7 +32,7 @@ public class RecommendedServerDiscovery(
 		val info = try {
 			api.getPublicSystemInfo()
 		} catch (err: ConnectException) {
-			logger.debug("Could not connect to $address")
+			logger.debug("Could not connect to $address", err)
 			null
 		} catch (err: Exception) {
 			logger.error("Could not retrieve public system info for $address", err)
@@ -40,6 +40,7 @@ public class RecommendedServerDiscovery(
 		}
 		val endTime = System.currentTimeMillis()
 
+		@Suppress("MagicNumber")
 		return SystemInfoResult(
 			address = address,
 			systemInfo = if (info != null && info.status == 200) info.content else null,
@@ -47,6 +48,7 @@ public class RecommendedServerDiscovery(
 		)
 	}
 
+	@Suppress("MagicNumber")
 	private fun assignScore(result: SystemInfoResult, parentResult: SystemInfoResult? = null): RecommendedServerInfo {
 		var points = 0
 

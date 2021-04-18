@@ -10,28 +10,42 @@ import org.jellyfin.openapi.model.*
 
 class OpenApiModelBuilder(
 	private val openApiTypeBuilder: OpenApiTypeBuilder,
-	private val modelBuilder: ModelBuilder
+	private val modelBuilder: ModelBuilder,
 ) : Builder<Schema<Any>, JellyFile> {
 	override fun build(data: Schema<Any>): JellyFile {
 		val model = when {
 			// Object
 			data.type == "object" -> when (data.properties.isNullOrEmpty()) {
 				// No properties use the empty model
-				true -> EmptyApiModel(data.name, data.description, data.deprecated == true)
+				true -> EmptyApiModel(
+					data.name,
+					data.description,
+					data.deprecated == true
+				)
 				// Otherwise use the object model
-				false -> ObjectApiModel(data.name, data.description, data.deprecated == true, data.properties.map { (originalName, property) ->
-					val name = originalName.toCamelCase(from = CaseFormat.CAPITALIZED_CAMEL)
-					ObjectApiModelProperty(
-						name = name,
-						originalName = originalName,
-						type = openApiTypeBuilder.build(ModelTypePath(data.name, name), property),
-						description = property.description,
-						deprecated = property.deprecated == true
-					)
-				}.toSet())
+				false -> ObjectApiModel(
+					data.name,
+					data.description,
+					data.deprecated == true,
+					data.properties.map { (originalName, property) ->
+						val name = originalName.toCamelCase(from = CaseFormat.CAPITALIZED_CAMEL)
+						ObjectApiModelProperty(
+							name = name,
+							originalName = originalName,
+							type = openApiTypeBuilder.build(ModelTypePath(data.name, name), property),
+							description = property.description,
+							deprecated = property.deprecated == true
+						)
+					}.toSet()
+				)
 			}
 			// Enum
-			data.enum.isNotEmpty() -> EnumApiModel(data.name, data.description, data.deprecated == true, data.enum.orEmpty().map { it.toString() }.toSet())
+			data.enum.isNotEmpty() -> EnumApiModel(
+				data.name,
+				data.description,
+				data.deprecated == true,
+				data.enum.orEmpty().map { it.toString() }.toSet()
+			)
 
 			// Unknown type
 			else -> throw NotImplementedError("Unknown top-level type: ${data.type} for ${data.name}")
