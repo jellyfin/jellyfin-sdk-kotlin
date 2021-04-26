@@ -7,7 +7,7 @@ import org.jellyfin.sdk.Jellyfin
 import org.jellyfin.sdk.model.api.ServerDiscoveryInfo
 
 /**
- * Service for discovery related functionality
+ * Service for discovery related functionality.
  */
 public class DiscoveryService(
 	private val jellyfin: Jellyfin,
