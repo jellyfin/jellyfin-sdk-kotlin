@@ -11,14 +11,20 @@ import org.slf4j.LoggerFactory
 import java.net.ConnectException
 
 public class RecommendedServerDiscovery(
-	private val jellyfin: Jellyfin
+	private val jellyfin: Jellyfin,
 ) {
 	private val logger = LoggerFactory.getLogger("RecommendedServerDiscovery")
+
+	private companion object {
+		private const val HTTP_OK = 200
+		private const val HTTPS_PREFIX = "https://"
+		private const val PRODUCT_NAME = "Jellyfin Server"
+	}
 
 	private data class SystemInfoResult(
 		val address: String,
 		val systemInfo: PublicSystemInfo?,
-		val responseTime: Long
+		val responseTime: Long,
 	)
 
 	private suspend fun getSystemInfoResult(address: String): SystemInfoResult? {
@@ -28,6 +34,7 @@ public class RecommendedServerDiscovery(
 		val api = SystemApi(client)
 
 		val startTime = System.currentTimeMillis()
+
 		@Suppress("TooGenericExceptionCaught")
 		val info = try {
 			api.getPublicSystemInfo()
@@ -40,10 +47,9 @@ public class RecommendedServerDiscovery(
 		}
 		val endTime = System.currentTimeMillis()
 
-		@Suppress("MagicNumber")
 		return SystemInfoResult(
 			address = address,
-			systemInfo = if (info != null && info.status == 200) info.content else null,
+			systemInfo = if (info != null && info.status == HTTP_OK) info.content else null,
 			responseTime = endTime - startTime,
 		)
 	}
@@ -53,7 +59,7 @@ public class RecommendedServerDiscovery(
 		var points = 0
 
 		// Security
-		if (result.address.startsWith("https://")) points += 3
+		if (result.address.startsWith(HTTPS_PREFIX)) points += 3
 
 		// Speed
 		when {
@@ -66,13 +72,14 @@ public class RecommendedServerDiscovery(
 		val version = result.systemInfo?.version?.let(ServerVersion::fromString)
 		if (version != null) {
 			if (version >= Jellyfin.apiVersion) points += 1
-
-			if (version == Jellyfin.recommendedVersion) points += 2
-			else if (version > Jellyfin.recommendedVersion) points += 1
+			if (version >= Jellyfin.minimumVersion) points += 1
 		}
 
+		val productName = result.systemInfo?.productName
+		if (productName != null && !productName.equals(PRODUCT_NAME, ignoreCase = true)) points = 0
+
 		// Minimum amount of points: 0
-		// Maximum amount of points: 9
+		// Maximum amount of points: 8
 		val score = when {
 			points < 3 -> RecommendedServerInfoScore.BAD
 			points < 6 -> RecommendedServerInfoScore.OK
@@ -85,7 +92,7 @@ public class RecommendedServerDiscovery(
 	public suspend fun discover(
 		servers: List<String>,
 		includeAppendedServers: Boolean,
-		minimumScore: RecommendedServerInfoScore
+		minimumScore: RecommendedServerInfoScore,
 	): Flow<RecommendedServerInfo> = discover(
 		servers = servers.asFlow(),
 		includeAppendedServers = includeAppendedServers,
@@ -95,7 +102,7 @@ public class RecommendedServerDiscovery(
 	public suspend fun discover(
 		servers: Flow<String>,
 		includeAppendedServers: Boolean,
-		minimumScore: RecommendedServerInfoScore
+		minimumScore: RecommendedServerInfoScore,
 	): Flow<RecommendedServerInfo> = withContext(Dispatchers.IO) {
 		flow {
 			servers.onEach parentEach@{ server ->

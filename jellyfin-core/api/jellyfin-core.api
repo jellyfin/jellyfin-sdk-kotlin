@@ -11,7 +11,7 @@ public final class org/jellyfin/sdk/Jellyfin {
 
 public final class org/jellyfin/sdk/Jellyfin$Companion {
 	public final fun getApiVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
-	public final fun getRecommendedVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
+	public final fun getMinimumVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
 }
 
 public final class org/jellyfin/sdk/JellyfinOptions {
