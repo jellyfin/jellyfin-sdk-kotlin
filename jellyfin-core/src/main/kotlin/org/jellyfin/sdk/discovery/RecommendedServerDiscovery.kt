@@ -15,6 +15,12 @@ public class RecommendedServerDiscovery(
 ) {
 	private val logger = LoggerFactory.getLogger("RecommendedServerDiscovery")
 
+	private companion object {
+		private const val HTTP_OK = 200
+		private const val HTTPS_PREFIX = "https://"
+		private const val PRODUCT_NAME = "Jellyfin Server"
+	}
+
 	private data class SystemInfoResult(
 		val address: String,
 		val systemInfo: PublicSystemInfo?,
@@ -41,10 +47,9 @@ public class RecommendedServerDiscovery(
 		}
 		val endTime = System.currentTimeMillis()
 
-		@Suppress("MagicNumber")
 		return SystemInfoResult(
 			address = address,
-			systemInfo = if (info != null && info.status == 200) info.content else null,
+			systemInfo = if (info != null && info.status == HTTP_OK) info.content else null,
 			responseTime = endTime - startTime,
 		)
 	}
@@ -54,7 +59,7 @@ public class RecommendedServerDiscovery(
 		var points = 0
 
 		// Security
-		if (result.address.startsWith("https://")) points += 3
+		if (result.address.startsWith(HTTPS_PREFIX)) points += 3
 
 		// Speed
 		when {
@@ -71,7 +76,7 @@ public class RecommendedServerDiscovery(
 		}
 
 		val productName = result.systemInfo?.productName
-		if (productName != null && !productName.equals("Jellyfin Server", ignoreCase = true)) points = 0
+		if (productName != null && !productName.equals(PRODUCT_NAME, ignoreCase = true)) points = 0
 
 		// Minimum amount of points: 0
 		// Maximum amount of points: 8
