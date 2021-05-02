@@ -5,7 +5,6 @@ import io.ktor.client.call.*
 import io.ktor.client.features.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
-import io.ktor.client.features.websocket.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
@@ -44,29 +43,76 @@ public open class KtorClient(
 		}
 	}
 
-	override fun createPath(path: String, pathParameters: Map<String, Any?>): String = path
-		.split('/')
-		.filterNot { it.isEmpty() }
-		.mapNotNull { rawName ->
-			val name = rawName.removeSurrounding(prefix = "{", suffix = "}")
+	override fun createPath(path: String, pathParameters: Map<String, Any?>): String {
+		val result = StringBuilder()
 
-			// Only act if the name actually is a variable
-			if (name != rawName) {
-				// Check if key is set
-				if (!pathParameters.containsKey(name))
-					throw MissingPathVariableError(name, path)
+		var lastStart = -1
+		var lastEnd = -1
 
-				// Check value
-				return@mapNotNull when (val value = pathParameters[name]) {
+		for (i in path.indices) {
+			when (path[i]) {
+				'/' -> {
+					check(lastStart < 0) {
+						"Unclosed path variable ${path.substring(lastStart, i)} in path $path"
+					}
+
+					// Append content from last path variable or slash up to here, eliminating duplicate slashes
+					val content = path.substring(lastEnd + 1, i + 1)
+					if (content != "/" || (result.isNotEmpty() && result.lastOrNull() != '/')) {
+						result.append(content)
+					}
+
+					lastEnd = i
+				}
+				'{' -> {
+					check(lastStart < 0) {
+						"Nested path variable at $i in path $path"
+					}
+
+					// Append content from last path variable end up to here
+					result.append(path.substring(lastEnd + 1, i))
+
+					// Set path variable start index (exclude opening brace)
+					lastStart = i + 1
+				}
+				'}' -> {
+					check(lastStart >= 0) {
+						"End of path variable without start at $i in path $path"
+					}
+					lastEnd = i
+
+					// Get path variable key
+					val name = path.substring(lastStart, lastEnd)
+
+					// Check if key is set
+					if (!pathParameters.containsKey(name)) {
+						throw MissingPathVariableError(name, path)
+					}
+
+					// Get value of path variable
+					val value = pathParameters[name]
+
 					// Don't encode null values
-					null -> null
-					else -> value.toString().encodeURLParameter(true)
+					if (value != null) {
+						result.append(value.toString().encodeURLParameter(true))
+					}
+
+					// Close path variable
+					lastStart = -1
 				}
 			}
-
-			return@mapNotNull rawName
 		}
-		.joinToString("/")
+
+		// Check for unclosed path variable
+		check(lastStart < 0) {
+			"Unclosed path variable ${path.substring(lastStart)} in path $path"
+		}
+
+		// Append rest of path to result (can be empty)
+		result.append(path.substring(lastEnd + 1))
+
+		return result.toString()
+	}
 
 	override fun createUrl(
 		pathTemplate: String,

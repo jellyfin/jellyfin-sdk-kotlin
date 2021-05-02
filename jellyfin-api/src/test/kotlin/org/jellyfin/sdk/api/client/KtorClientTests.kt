@@ -7,7 +7,8 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFails
 
 public class KtorClientTests {
-	private fun createClient() = KtorClient("https://demo.jellyfin.org/stable/", null, ClientInfo("Test", "0"), DeviceInfo("test", "test"))
+	private fun createClient() =
+		KtorClient("https://demo.jellyfin.org/stable/", null, ClientInfo("Test", "0"), DeviceInfo("test", "test"))
 
 	@Test
 	public fun `createPath replaces values`() {
@@ -20,6 +21,19 @@ public class KtorClientTests {
 		)
 
 		assertEquals("test/1/2/three", instance.createPath(path, parameters))
+	}
+
+	@Test
+	public fun `createPath replaces values not separated by a slash`() {
+		val instance = createClient()
+		val path = "/test/{twe}{lve}/three"
+		val parameters = mapOf(
+			"twe" to "1",
+			"lve" to "2",
+			"three" to "3"
+		)
+
+		assertEquals("test/12/three", instance.createPath(path, parameters))
 	}
 
 	@Test
