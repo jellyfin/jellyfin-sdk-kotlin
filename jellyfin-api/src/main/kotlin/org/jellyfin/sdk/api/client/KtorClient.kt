@@ -43,21 +43,21 @@ public open class KtorClient(
 		}
 	}
 
-	override fun createPath(path: String, pathParameters: Map<String, Any?>): String {
+	override fun createPath(pathTemplate: String, pathParameters: Map<String, Any?>): String {
 		val result = StringBuilder()
 
 		var lastStart = -1
 		var lastEnd = -1
 
-		for (i in path.indices) {
-			when (path[i]) {
+		for (i in pathTemplate.indices) {
+			when (pathTemplate[i]) {
 				'/' -> {
 					check(lastStart < 0) {
-						"Unclosed path variable ${path.substring(lastStart, i)} in path $path"
+						"Unclosed path variable ${pathTemplate.substring(lastStart, i)} in path $pathTemplate"
 					}
 
 					// Append content from last path variable or slash up to here, eliminating duplicate slashes
-					val content = path.substring(lastEnd + 1, i + 1)
+					val content = pathTemplate.substring(lastEnd + 1, i + 1)
 					if (content != "/" || (result.isNotEmpty() && result.lastOrNull() != '/')) {
 						result.append(content)
 					}
@@ -66,28 +66,26 @@ public open class KtorClient(
 				}
 				'{' -> {
 					check(lastStart < 0) {
-						"Nested path variable at $i in path $path"
+						"Nested path variable at $i in path $pathTemplate"
 					}
 
 					// Append content from last path variable end up to here
-					result.append(path.substring(lastEnd + 1, i))
+					result.append(pathTemplate.substring(lastEnd + 1, i))
 
 					// Set path variable start index (exclude opening brace)
 					lastStart = i + 1
 				}
 				'}' -> {
 					check(lastStart >= 0) {
-						"End of path variable without start at $i in path $path"
+						"End of path variable without start at $i in path $pathTemplate"
 					}
 					lastEnd = i
 
 					// Get path variable key
-					val name = path.substring(lastStart, lastEnd)
+					val name = pathTemplate.substring(lastStart, lastEnd)
 
 					// Check if key is set
-					if (!pathParameters.containsKey(name)) {
-						throw MissingPathVariableError(name, path)
-					}
+					if (!pathParameters.containsKey(name)) throw MissingPathVariableError(name, pathTemplate)
 
 					// Get value of path variable
 					val value = pathParameters[name]
@@ -105,11 +103,11 @@ public open class KtorClient(
 
 		// Check for unclosed path variable
 		check(lastStart < 0) {
-			"Unclosed path variable ${path.substring(lastStart)} in path $path"
+			"Unclosed path variable ${pathTemplate.substring(lastStart)} in path $pathTemplate"
 		}
 
 		// Append rest of path to result (can be empty)
-		result.append(path.substring(lastEnd + 1))
+		result.append(pathTemplate.substring(lastEnd + 1))
 
 		return result.toString()
 	}
