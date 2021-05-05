@@ -36,6 +36,7 @@ android {
 
 	lintOptions {
 		isAbortOnError = false
+		sarifReport = true
 	}
 }
 
