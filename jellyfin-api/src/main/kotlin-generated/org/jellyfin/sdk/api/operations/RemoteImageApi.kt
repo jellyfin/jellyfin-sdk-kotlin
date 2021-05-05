@@ -5,7 +5,6 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
@@ -22,33 +21,6 @@ import org.jellyfin.sdk.model.api.RemoteImageResult
 public class RemoteImageApi(
 	private val api: KtorClient
 ) {
-	/**
-	 * Gets a remote image.
-	 *
-	 * @param imageUrl The image url.
-	 */
-	public suspend fun getRemoteImage(imageUrl: String): Response<ByteReadChannel> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["imageUrl"] = imageUrl
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Images/Remote", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets a remote image.
-	 *
-	 * @param imageUrl The image url.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
-	 */
-	public fun getRemoteImageUrl(imageUrl: String, includeCredentials: Boolean = false): String {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["imageUrl"] = imageUrl
-		return api.createUrl("/Images/Remote", pathParameters, queryParameters, includeCredentials)
-	}
-
 	/**
 	 * Gets available remote images for an item.
 	 *

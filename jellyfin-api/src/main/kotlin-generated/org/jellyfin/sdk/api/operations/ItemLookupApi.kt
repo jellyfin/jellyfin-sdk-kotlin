@@ -5,7 +5,6 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
@@ -86,44 +85,6 @@ public class ItemLookupApi(
 		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/BoxSet", pathParameters,
 				queryParameters, data)
 		return response
-	}
-
-	/**
-	 * Gets a remote image.
-	 *
-	 * @param imageUrl The image url.
-	 * @param providerName The provider name.
-	 */
-	public suspend fun getRemoteSearchImage(imageUrl: String, providerName: String):
-			Response<ByteReadChannel> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["imageUrl"] = imageUrl
-		queryParameters["providerName"] = providerName
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Items/RemoteSearch/Image", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets a remote image.
-	 *
-	 * @param imageUrl The image url.
-	 * @param providerName The provider name.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
-	 */
-	public fun getRemoteSearchImageUrl(
-		imageUrl: String,
-		providerName: String,
-		includeCredentials: Boolean = true
-	): String {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["imageUrl"] = imageUrl
-		queryParameters["providerName"] = providerName
-		return api.createUrl("/Items/RemoteSearch/Image", pathParameters, queryParameters,
-				includeCredentials)
 	}
 
 	/**
