@@ -3,14 +3,13 @@ import org.gradle.api.artifacts.dsl.RepositoryHandler
 fun RepositoryHandler.defaultRepositories() {
 	google()
 	mavenCentral()
-	jcenter()
 }
 
 object Plugins {
 	object Versions {
 		const val kotlin = "1.4.30"
 		const val binaryCompatibilityValidatorVersion = "0.5.0"
-		const val detekt = "1.16.0"
+		const val detekt = "1.17.0-RC2"
 		const val nexusPublish = "1.0.0"
 		const val dokka = "1.4.30"
 		const val androidBuildTools = "4.1.2"
