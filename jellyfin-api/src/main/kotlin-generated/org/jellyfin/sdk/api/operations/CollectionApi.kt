@@ -19,6 +19,24 @@ public class CollectionApi(
 	private val api: KtorClient
 ) {
 	/**
+	 * Adds items to a collection.
+	 *
+	 * @param collectionId The collection id.
+	 * @param ids Item ids, comma delimited.
+	 */
+	public suspend fun addToCollection(collectionId: UUID, ids: List<UUID> = emptyList()):
+			Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["collectionId"] = collectionId
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["ids"] = ids
+		val data = null
+		val response = api.post<Unit>("/Collections/{collectionId}/Items", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Creates a new collection.
 	 *
 	 * @param name The name of the collection.
@@ -41,24 +59,6 @@ public class CollectionApi(
 		val data = null
 		val response = api.post<CollectionCreationResult>("/Collections", pathParameters, queryParameters,
 				data)
-		return response
-	}
-
-	/**
-	 * Adds items to a collection.
-	 *
-	 * @param collectionId The collection id.
-	 * @param ids Item ids, comma delimited.
-	 */
-	public suspend fun addToCollection(collectionId: UUID, ids: List<UUID> = emptyList()):
-			Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["collectionId"] = collectionId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["ids"] = ids
-		val data = null
-		val response = api.post<Unit>("/Collections/{collectionId}/Items", pathParameters,
-				queryParameters, data)
 		return response
 	}
 

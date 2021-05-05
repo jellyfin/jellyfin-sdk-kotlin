@@ -26,50 +26,6 @@ public class PlayStateApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Reports playback has started within a session.
-	 */
-	public suspend fun reportPlaybackStart(`data`: PlaybackStartInfo? = null): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Sessions/Playing", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Pings a playback session.
-	 *
-	 * @param playSessionId Playback session id.
-	 */
-	public suspend fun pingPlaybackSession(playSessionId: String): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["playSessionId"] = playSessionId
-		val data = null
-		val response = api.post<Unit>("/Sessions/Playing/Ping", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Reports playback progress within a session.
-	 */
-	public suspend fun reportPlaybackProgress(`data`: PlaybackProgressInfo? = null): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Sessions/Playing/Progress", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Reports playback has stopped within a session.
-	 */
-	public suspend fun reportPlaybackStopped(`data`: PlaybackStopInfo? = null): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Sessions/Playing/Stopped", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Marks an item as played for user.
 	 *
 	 * @param userId User id.
@@ -105,6 +61,59 @@ public class PlayStateApi(
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<UserItemDataDto>("/Users/{userId}/PlayedItems/{itemId}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Reports a user's playback progress.
+	 *
+	 * @param userId User id.
+	 * @param itemId Item id.
+	 * @param mediaSourceId The id of the MediaSource.
+	 * @param positionTicks Optional. The current position, in ticks. 1 tick = 10000 ms.
+	 * @param audioStreamIndex The audio stream index.
+	 * @param subtitleStreamIndex The subtitle stream index.
+	 * @param volumeLevel Scale of 0-100.
+	 * @param playMethod The play method.
+	 * @param liveStreamId The live stream id.
+	 * @param playSessionId The play session id.
+	 * @param repeatMode The repeat mode.
+	 * @param isPaused Indicates if the player is paused.
+	 * @param isMuted Indicates if the player is muted.
+	 */
+	public suspend fun onPlaybackProgress(
+		userId: UUID,
+		itemId: UUID,
+		mediaSourceId: String? = null,
+		positionTicks: Long? = null,
+		audioStreamIndex: Int? = null,
+		subtitleStreamIndex: Int? = null,
+		volumeLevel: Int? = null,
+		playMethod: PlayMethod? = null,
+		liveStreamId: String? = null,
+		playSessionId: String? = null,
+		repeatMode: RepeatMode? = null,
+		isPaused: Boolean = false,
+		isMuted: Boolean = false
+	): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["userId"] = userId
+		pathParameters["itemId"] = itemId
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["mediaSourceId"] = mediaSourceId
+		queryParameters["positionTicks"] = positionTicks
+		queryParameters["audioStreamIndex"] = audioStreamIndex
+		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
+		queryParameters["volumeLevel"] = volumeLevel
+		queryParameters["playMethod"] = playMethod
+		queryParameters["liveStreamId"] = liveStreamId
+		queryParameters["playSessionId"] = playSessionId
+		queryParameters["repeatMode"] = repeatMode
+		queryParameters["isPaused"] = isPaused
+		queryParameters["isMuted"] = isMuted
+		val data = null
+		val response = api.post<Unit>("/Users/{userId}/PlayingItems/{itemId}/Progress", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -187,55 +196,46 @@ public class PlayStateApi(
 	}
 
 	/**
-	 * Reports a user's playback progress.
+	 * Pings a playback session.
 	 *
-	 * @param userId User id.
-	 * @param itemId Item id.
-	 * @param mediaSourceId The id of the MediaSource.
-	 * @param positionTicks Optional. The current position, in ticks. 1 tick = 10000 ms.
-	 * @param audioStreamIndex The audio stream index.
-	 * @param subtitleStreamIndex The subtitle stream index.
-	 * @param volumeLevel Scale of 0-100.
-	 * @param playMethod The play method.
-	 * @param liveStreamId The live stream id.
-	 * @param playSessionId The play session id.
-	 * @param repeatMode The repeat mode.
-	 * @param isPaused Indicates if the player is paused.
-	 * @param isMuted Indicates if the player is muted.
+	 * @param playSessionId Playback session id.
 	 */
-	public suspend fun onPlaybackProgress(
-		userId: UUID,
-		itemId: UUID,
-		mediaSourceId: String? = null,
-		positionTicks: Long? = null,
-		audioStreamIndex: Int? = null,
-		subtitleStreamIndex: Int? = null,
-		volumeLevel: Int? = null,
-		playMethod: PlayMethod? = null,
-		liveStreamId: String? = null,
-		playSessionId: String? = null,
-		repeatMode: RepeatMode? = null,
-		isPaused: Boolean = false,
-		isMuted: Boolean = false
-	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
+	public suspend fun pingPlaybackSession(playSessionId: String): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["positionTicks"] = positionTicks
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["volumeLevel"] = volumeLevel
-		queryParameters["playMethod"] = playMethod
-		queryParameters["liveStreamId"] = liveStreamId
 		queryParameters["playSessionId"] = playSessionId
-		queryParameters["repeatMode"] = repeatMode
-		queryParameters["isPaused"] = isPaused
-		queryParameters["isMuted"] = isMuted
 		val data = null
-		val response = api.post<Unit>("/Users/{userId}/PlayingItems/{itemId}/Progress", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Sessions/Playing/Ping", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Reports playback progress within a session.
+	 */
+	public suspend fun reportPlaybackProgress(`data`: PlaybackProgressInfo? = null): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Sessions/Playing/Progress", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Reports playback has started within a session.
+	 */
+	public suspend fun reportPlaybackStart(`data`: PlaybackStartInfo? = null): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Sessions/Playing", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Reports playback has stopped within a session.
+	 */
+	public suspend fun reportPlaybackStopped(`data`: PlaybackStopInfo? = null): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Sessions/Playing/Stopped", pathParameters, queryParameters, data)
 		return response
 	}
 }

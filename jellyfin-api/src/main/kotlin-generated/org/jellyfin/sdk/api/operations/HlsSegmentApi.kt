@@ -93,6 +93,44 @@ public class HlsSegmentApi(
 	}
 
 	/**
+	 * Gets a hls video playlist.
+	 *
+	 * @param itemId The video id.
+	 * @param playlistId The playlist id.
+	 */
+	public suspend fun getHlsPlaylistLegacy(itemId: String, playlistId: String):
+			Response<ByteReadChannel> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		pathParameters["playlistId"] = playlistId
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/hls/{playlistId}/stream.m3u8",
+				pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets a hls video playlist.
+	 *
+	 * @param itemId The video id.
+	 * @param playlistId The playlist id.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
+	 */
+	public fun getHlsPlaylistLegacyUrl(
+		itemId: String,
+		playlistId: String,
+		includeCredentials: Boolean = true
+	): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		pathParameters["playlistId"] = playlistId
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Videos/{itemId}/hls/{playlistId}/stream.m3u8", pathParameters,
+				queryParameters, includeCredentials)
+	}
+
+	/**
 	 * Gets a hls video segment.
 	 *
 	 * @param itemId The item id.
@@ -143,44 +181,6 @@ public class HlsSegmentApi(
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Videos/{itemId}/hls/{playlistId}/{segmentId}.{segmentContainer}",
 				pathParameters, queryParameters, includeCredentials)
-	}
-
-	/**
-	 * Gets a hls video playlist.
-	 *
-	 * @param itemId The video id.
-	 * @param playlistId The playlist id.
-	 */
-	public suspend fun getHlsPlaylistLegacy(itemId: String, playlistId: String):
-			Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["playlistId"] = playlistId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/hls/{playlistId}/stream.m3u8",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets a hls video playlist.
-	 *
-	 * @param itemId The video id.
-	 * @param playlistId The playlist id.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
-	 */
-	public fun getHlsPlaylistLegacyUrl(
-		itemId: String,
-		playlistId: String,
-		includeCredentials: Boolean = true
-	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["playlistId"] = playlistId
-		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Videos/{itemId}/hls/{playlistId}/stream.m3u8", pathParameters,
-				queryParameters, includeCredentials)
 	}
 
 	/**

@@ -215,44 +215,6 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given genre.
 	 *
-	 * @param name The genre name.
-	 * @param userId Optional. Filter by user id, and attach user data.
-	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output.
-	 * @param enableImages Optional. Include image information in output.
-	 * @param enableUserData Optional. Include user data.
-	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
-	 * @param enableImageTypes Optional. The image types to include in the output.
-	 */
-	public suspend fun getInstantMixFromMusicGenreByName(
-		name: String,
-		userId: UUID? = null,
-		limit: Int? = null,
-		fields: List<ItemFields>? = emptyList(),
-		enableImages: Boolean? = null,
-		enableUserData: Boolean? = null,
-		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList()
-	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		queryParameters["enableImages"] = enableImages
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
-		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/MusicGenres/{name}/InstantMix", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Creates an instant playlist based on a given genre.
-	 *
 	 * @param id The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
@@ -285,6 +247,44 @@ public class InstantMixApi(
 		queryParameters["enableImageTypes"] = enableImageTypes
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/MusicGenres/InstantMix", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Creates an instant playlist based on a given genre.
+	 *
+	 * @param name The genre name.
+	 * @param userId Optional. Filter by user id, and attach user data.
+	 * @param limit Optional. The maximum number of records to return.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
+	 * @param enableImages Optional. Include image information in output.
+	 * @param enableUserData Optional. Include user data.
+	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
+	 * @param enableImageTypes Optional. The image types to include in the output.
+	 */
+	public suspend fun getInstantMixFromMusicGenreByName(
+		name: String,
+		userId: UUID? = null,
+		limit: Int? = null,
+		fields: List<ItemFields>? = emptyList(),
+		enableImages: Boolean? = null,
+		enableUserData: Boolean? = null,
+		imageTypeLimit: Int? = null,
+		enableImageTypes: List<ImageType>? = emptyList()
+	): Response<BaseItemDtoQueryResult> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["name"] = name
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["userId"] = userId
+		queryParameters["limit"] = limit
+		queryParameters["fields"] = fields
+		queryParameters["enableImages"] = enableImages
+		queryParameters["enableUserData"] = enableUserData
+		queryParameters["imageTypeLimit"] = imageTypeLimit
+		queryParameters["enableImageTypes"] = enableImageTypes
+		val data = null
+		val response = api.`get`<BaseItemDtoQueryResult>("/MusicGenres/{name}/InstantMix", pathParameters,
 				queryParameters, data)
 		return response
 	}

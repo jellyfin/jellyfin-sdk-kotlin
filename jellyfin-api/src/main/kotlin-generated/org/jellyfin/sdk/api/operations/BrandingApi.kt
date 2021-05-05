@@ -15,18 +15,6 @@ public class BrandingApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Gets branding configuration.
-	 */
-	public suspend fun getBrandingOptions(): Response<BrandingOptions> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<BrandingOptions>("/Branding/Configuration", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Gets branding css.
 	 */
 	public suspend fun getBrandingCss(): Response<String> {
@@ -45,6 +33,18 @@ public class BrandingApi(
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<String>("/Branding/Css.css", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets branding configuration.
+	 */
+	public suspend fun getBrandingOptions(): Response<BrandingOptions> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<BrandingOptions>("/Branding/Configuration", pathParameters,
+				queryParameters, data)
 		return response
 	}
 }

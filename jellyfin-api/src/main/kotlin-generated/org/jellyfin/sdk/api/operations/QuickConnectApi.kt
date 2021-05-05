@@ -84,18 +84,6 @@ public class QuickConnectApi(
 	}
 
 	/**
-	 * Initiate a new quick connect request.
-	 */
-	public suspend fun initiate(): Response<QuickConnectResult> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<QuickConnectResult>("/QuickConnect/Initiate", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Gets the current quick connect state.
 	 */
 	public suspend fun getStatus(): Response<QuickConnectState> {
@@ -103,6 +91,18 @@ public class QuickConnectApi(
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<QuickConnectState>("/QuickConnect/Status", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Initiate a new quick connect request.
+	 */
+	public suspend fun initiate(): Response<QuickConnectResult> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<QuickConnectResult>("/QuickConnect/Initiate", pathParameters,
 				queryParameters, data)
 		return response
 	}

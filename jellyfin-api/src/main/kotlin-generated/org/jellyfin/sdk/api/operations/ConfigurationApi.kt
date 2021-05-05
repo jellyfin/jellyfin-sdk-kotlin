@@ -32,12 +32,14 @@ public class ConfigurationApi(
 	}
 
 	/**
-	 * Updates application configuration.
+	 * Gets a default MetadataOptions object.
 	 */
-	public suspend fun updateConfiguration(`data`: ServerConfiguration): Response<Unit> {
+	public suspend fun getDefaultMetadataOptions(): Response<MetadataOptions> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/System/Configuration", pathParameters, queryParameters, data)
+		val data = null
+		val response = api.`get`<MetadataOptions>("/System/Configuration/MetadataOptions/Default",
+				pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -71,6 +73,26 @@ public class ConfigurationApi(
 	}
 
 	/**
+	 * Updates application configuration.
+	 */
+	public suspend fun updateConfiguration(`data`: ServerConfiguration): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/System/Configuration", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Updates the path to the media encoder.
+	 */
+	public suspend fun updateMediaEncoderPath(`data`: MediaEncoderPathDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/System/MediaEncoder/Path", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Updates named configuration.
 	 *
 	 * @param key Configuration key.
@@ -82,28 +104,6 @@ public class ConfigurationApi(
 		val data = null
 		val response = api.post<Unit>("/System/Configuration/{key}", pathParameters, queryParameters,
 				data)
-		return response
-	}
-
-	/**
-	 * Gets a default MetadataOptions object.
-	 */
-	public suspend fun getDefaultMetadataOptions(): Response<MetadataOptions> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<MetadataOptions>("/System/Configuration/MetadataOptions/Default",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Updates the path to the media encoder.
-	 */
-	public suspend fun updateMediaEncoderPath(`data`: MediaEncoderPathDto): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/System/MediaEncoder/Path", pathParameters, queryParameters, data)
 		return response
 	}
 }

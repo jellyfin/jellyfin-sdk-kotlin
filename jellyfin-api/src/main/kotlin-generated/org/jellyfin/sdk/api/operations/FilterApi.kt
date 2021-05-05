@@ -19,33 +19,6 @@ public class FilterApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Gets legacy query filters.
-	 *
-	 * @param userId Optional. User id.
-	 * @param parentId Optional. Parent id.
-	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type.
-	 * This allows multiple, comma delimited.
-	 * @param mediaTypes Optional. Filter by MediaType. Allows multiple, comma delimited.
-	 */
-	public suspend fun getQueryFiltersLegacy(
-		userId: UUID? = null,
-		parentId: UUID? = null,
-		includeItemTypes: List<String>? = emptyList(),
-		mediaTypes: List<String>? = emptyList()
-	): Response<QueryFiltersLegacy> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["parentId"] = parentId
-		queryParameters["includeItemTypes"] = includeItemTypes
-		queryParameters["mediaTypes"] = mediaTypes
-		val data = null
-		val response = api.`get`<QueryFiltersLegacy>("/Items/Filters", pathParameters, queryParameters,
-				data)
-		return response
-	}
-
-	/**
 	 * Gets query filters.
 	 *
 	 * @param userId Optional. User id.
@@ -87,6 +60,33 @@ public class FilterApi(
 		queryParameters["recursive"] = recursive
 		val data = null
 		val response = api.`get`<QueryFilters>("/Items/Filters2", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets legacy query filters.
+	 *
+	 * @param userId Optional. User id.
+	 * @param parentId Optional. Parent id.
+	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type.
+	 * This allows multiple, comma delimited.
+	 * @param mediaTypes Optional. Filter by MediaType. Allows multiple, comma delimited.
+	 */
+	public suspend fun getQueryFiltersLegacy(
+		userId: UUID? = null,
+		parentId: UUID? = null,
+		includeItemTypes: List<String>? = emptyList(),
+		mediaTypes: List<String>? = emptyList()
+	): Response<QueryFiltersLegacy> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["userId"] = userId
+		queryParameters["parentId"] = parentId
+		queryParameters["includeItemTypes"] = includeItemTypes
+		queryParameters["mediaTypes"] = mediaTypes
+		val data = null
+		val response = api.`get`<QueryFiltersLegacy>("/Items/Filters", pathParameters, queryParameters,
+				data)
 		return response
 	}
 }

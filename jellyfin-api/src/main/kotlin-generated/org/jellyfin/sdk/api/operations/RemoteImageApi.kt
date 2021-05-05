@@ -22,39 +22,6 @@ public class RemoteImageApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Gets available remote images for an item.
-	 *
-	 * @param itemId Item Id.
-	 * @param type The image type.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
-	 * @param limit Optional. The maximum number of records to return.
-	 * @param providerName Optional. The image provider to use.
-	 * @param includeAllLanguages Optional. Include all languages.
-	 */
-	public suspend fun getRemoteImages(
-		itemId: UUID,
-		type: ImageType? = null,
-		startIndex: Int? = null,
-		limit: Int? = null,
-		providerName: String? = null,
-		includeAllLanguages: Boolean = false
-	): Response<RemoteImageResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["type"] = type
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["providerName"] = providerName
-		queryParameters["includeAllLanguages"] = includeAllLanguages
-		val data = null
-		val response = api.`get`<RemoteImageResult>("/Items/{itemId}/RemoteImages", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Downloads a remote image for an item.
 	 *
 	 * @param itemId Item Id.
@@ -89,6 +56,39 @@ public class RemoteImageApi(
 		val data = null
 		val response = api.`get`<List<ImageProviderInfo>>("/Items/{itemId}/RemoteImages/Providers",
 				pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets available remote images for an item.
+	 *
+	 * @param itemId Item Id.
+	 * @param type The image type.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
+	 * dropped from the results.
+	 * @param limit Optional. The maximum number of records to return.
+	 * @param providerName Optional. The image provider to use.
+	 * @param includeAllLanguages Optional. Include all languages.
+	 */
+	public suspend fun getRemoteImages(
+		itemId: UUID,
+		type: ImageType? = null,
+		startIndex: Int? = null,
+		limit: Int? = null,
+		providerName: String? = null,
+		includeAllLanguages: Boolean = false
+	): Response<RemoteImageResult> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["type"] = type
+		queryParameters["startIndex"] = startIndex
+		queryParameters["limit"] = limit
+		queryParameters["providerName"] = providerName
+		queryParameters["includeAllLanguages"] = includeAllLanguages
+		val data = null
+		val response = api.`get`<RemoteImageResult>("/Items/{itemId}/RemoteImages", pathParameters,
+				queryParameters, data)
 		return response
 	}
 }

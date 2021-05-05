@@ -16,18 +16,6 @@ public class ApiKeyApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Get all keys.
-	 */
-	public suspend fun getKeys(): Response<AuthenticationInfoQueryResult> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<AuthenticationInfoQueryResult>("/Auth/Keys", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Create a new api key.
 	 *
 	 * @param app Name of the app using the authentication key.
@@ -38,6 +26,18 @@ public class ApiKeyApi(
 		queryParameters["app"] = app
 		val data = null
 		val response = api.post<Unit>("/Auth/Keys", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Get all keys.
+	 */
+	public suspend fun getKeys(): Response<AuthenticationInfoQueryResult> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<AuthenticationInfoQueryResult>("/Auth/Keys", pathParameters,
+				queryParameters, data)
 		return response
 	}
 

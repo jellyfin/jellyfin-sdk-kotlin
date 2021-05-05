@@ -18,6 +18,21 @@ public class ItemUpdateApi(
 	private val api: KtorClient
 ) {
 	/**
+	 * Gets metadata editor info for an item.
+	 *
+	 * @param itemId The item id.
+	 */
+	public suspend fun getMetadataEditorInfo(itemId: UUID): Response<MetadataEditorInfo> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<MetadataEditorInfo>("/Items/{itemId}/MetadataEditor", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Updates an item.
 	 *
 	 * @param itemId The item id.
@@ -45,21 +60,6 @@ public class ItemUpdateApi(
 		val data = null
 		val response = api.post<Unit>("/Items/{itemId}/ContentType", pathParameters, queryParameters,
 				data)
-		return response
-	}
-
-	/**
-	 * Gets metadata editor info for an item.
-	 *
-	 * @param itemId The item id.
-	 */
-	public suspend fun getMetadataEditorInfo(itemId: UUID): Response<MetadataEditorInfo> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<MetadataEditorInfo>("/Items/{itemId}/MetadataEditor", pathParameters,
-				queryParameters, data)
 		return response
 	}
 }

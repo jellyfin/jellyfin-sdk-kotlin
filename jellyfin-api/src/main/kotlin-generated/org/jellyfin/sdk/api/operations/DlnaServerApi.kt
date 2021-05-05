@@ -61,21 +61,6 @@ public class DlnaServerApi(
 	}
 
 	/**
-	 * Process a connection manager control request.
-	 *
-	 * @param serverId Server UUID.
-	 */
-	public suspend fun processConnectionManagerControlRequest(serverId: String): Response<String> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["serverId"] = serverId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.post<String>("/Dlna/{serverId}/ConnectionManager/Control", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Gets Dlna content directory xml.
 	 *
 	 * @param serverId Server UUID.
@@ -121,21 +106,6 @@ public class DlnaServerApi(
 	}
 
 	/**
-	 * Process a content directory control request.
-	 *
-	 * @param serverId Server UUID.
-	 */
-	public suspend fun processContentDirectoryControlRequest(serverId: String): Response<String> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["serverId"] = serverId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.post<String>("/Dlna/{serverId}/ContentDirectory/Control", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Get Description Xml.
 	 *
 	 * @param serverId Server UUID.
@@ -163,6 +133,35 @@ public class DlnaServerApi(
 		val response = api.`get`<String>("/Dlna/{serverId}/description.xml", pathParameters,
 				queryParameters, data)
 		return response
+	}
+
+	/**
+	 * Gets a server icon.
+	 *
+	 * @param fileName The icon filename.
+	 */
+	public suspend fun getIcon(fileName: String): Response<ByteReadChannel> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["fileName"] = fileName
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<ByteReadChannel>("/Dlna/icons/{fileName}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets a server icon.
+	 *
+	 * @param fileName The icon filename.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
+	 */
+	public fun getIconUrl(fileName: String, includeCredentials: Boolean = false): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["fileName"] = fileName
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Dlna/icons/{fileName}", pathParameters, queryParameters,
+				includeCredentials)
 	}
 
 	/**
@@ -218,22 +217,6 @@ public class DlnaServerApi(
 	}
 
 	/**
-	 * Process a media receiver registrar control request.
-	 *
-	 * @param serverId Server UUID.
-	 */
-	public suspend fun processMediaReceiverRegistrarControlRequest(serverId: String):
-			Response<String> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["serverId"] = serverId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.post<String>("/Dlna/{serverId}/MediaReceiverRegistrar/Control", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Gets Dlna media receiver registrar xml.
 	 *
 	 * @param serverId Server UUID.
@@ -265,31 +248,48 @@ public class DlnaServerApi(
 	}
 
 	/**
-	 * Gets a server icon.
+	 * Process a connection manager control request.
 	 *
-	 * @param fileName The icon filename.
+	 * @param serverId Server UUID.
 	 */
-	public suspend fun getIcon(fileName: String): Response<ByteReadChannel> {
+	public suspend fun processConnectionManagerControlRequest(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["fileName"] = fileName
+		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Dlna/icons/{fileName}", pathParameters,
+		val response = api.post<String>("/Dlna/{serverId}/ConnectionManager/Control", pathParameters,
 				queryParameters, data)
 		return response
 	}
 
 	/**
-	 * Gets a server icon.
+	 * Process a content directory control request.
 	 *
-	 * @param fileName The icon filename.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
+	 * @param serverId Server UUID.
 	 */
-	public fun getIconUrl(fileName: String, includeCredentials: Boolean = false): String {
+	public suspend fun processContentDirectoryControlRequest(serverId: String): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["fileName"] = fileName
+		pathParameters["serverId"] = serverId
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Dlna/icons/{fileName}", pathParameters, queryParameters,
-				includeCredentials)
+		val data = null
+		val response = api.post<String>("/Dlna/{serverId}/ContentDirectory/Control", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Process a media receiver registrar control request.
+	 *
+	 * @param serverId Server UUID.
+	 */
+	public suspend fun processMediaReceiverRegistrarControlRequest(serverId: String):
+			Response<String> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["serverId"] = serverId
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.post<String>("/Dlna/{serverId}/MediaReceiverRegistrar/Control", pathParameters,
+				queryParameters, data)
+		return response
 	}
 }

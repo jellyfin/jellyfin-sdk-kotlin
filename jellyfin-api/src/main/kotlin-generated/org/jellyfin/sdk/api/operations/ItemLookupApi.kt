@@ -29,21 +29,6 @@ public class ItemLookupApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Get the item's external id info.
-	 *
-	 * @param itemId Item id.
-	 */
-	public suspend fun getExternalIdInfos(itemId: UUID): Response<List<ExternalIdInfo>> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<List<ExternalIdInfo>>("/Items/{itemId}/ExternalIdInfos", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Applies search criteria to an item and refreshes metadata.
 	 *
 	 * @param itemId Item id.
@@ -83,6 +68,21 @@ public class ItemLookupApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/BoxSet", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Get the item's external id info.
+	 *
+	 * @param itemId Item id.
+	 */
+	public suspend fun getExternalIdInfos(itemId: UUID): Response<List<ExternalIdInfo>> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<List<ExternalIdInfo>>("/Items/{itemId}/ExternalIdInfos", pathParameters,
 				queryParameters, data)
 		return response
 	}

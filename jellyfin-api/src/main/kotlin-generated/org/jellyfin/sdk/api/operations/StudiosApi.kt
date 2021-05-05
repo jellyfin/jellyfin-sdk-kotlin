@@ -22,6 +22,22 @@ public class StudiosApi(
 	private val api: KtorClient
 ) {
 	/**
+	 * Gets a studio by name.
+	 *
+	 * @param name Studio name.
+	 * @param userId Optional. Filter by user id, and attach user data.
+	 */
+	public suspend fun getStudio(name: String, userId: UUID? = null): Response<BaseItemDto> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["name"] = name
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["userId"] = userId
+		val data = null
+		val response = api.`get`<BaseItemDto>("/Studios/{name}", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Gets all studios from a given item, folder, or the entire library.
 	 *
 	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
@@ -90,22 +106,6 @@ public class StudiosApi(
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Studios", pathParameters, queryParameters,
 				data)
-		return response
-	}
-
-	/**
-	 * Gets a studio by name.
-	 *
-	 * @param name Studio name.
-	 * @param userId Optional. Filter by user id, and attach user data.
-	 */
-	public suspend fun getStudio(name: String, userId: UUID? = null): Response<BaseItemDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		val data = null
-		val response = api.`get`<BaseItemDto>("/Studios/{name}", pathParameters, queryParameters, data)
 		return response
 	}
 }

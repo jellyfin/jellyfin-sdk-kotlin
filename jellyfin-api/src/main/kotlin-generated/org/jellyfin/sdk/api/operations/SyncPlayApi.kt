@@ -43,6 +43,28 @@ public class SyncPlayApi(
 	}
 
 	/**
+	 * Create a new SyncPlay group.
+	 */
+	public suspend fun syncPlayCreateGroup(`data`: NewGroupRequestDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/SyncPlay/New", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets all SyncPlay groups.
+	 */
+	public suspend fun syncPlayGetGroups(): Response<List<GroupInfoDto>> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<List<GroupInfoDto>>("/SyncPlay/List", pathParameters, queryParameters,
+				data)
+		return response
+	}
+
+	/**
 	 * Join an existing SyncPlay group.
 	 */
 	public suspend fun syncPlayJoinGroup(`data`: JoinGroupRequestDto): Response<Unit> {
@@ -64,34 +86,12 @@ public class SyncPlayApi(
 	}
 
 	/**
-	 * Gets all SyncPlay groups.
-	 */
-	public suspend fun syncPlayGetGroups(): Response<List<GroupInfoDto>> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<List<GroupInfoDto>>("/SyncPlay/List", pathParameters, queryParameters,
-				data)
-		return response
-	}
-
-	/**
 	 * Request to move an item in the playlist in SyncPlay group.
 	 */
 	public suspend fun syncPlayMovePlaylistItem(`data`: MovePlaylistItemRequestDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/SyncPlay/MovePlaylistItem", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Create a new SyncPlay group.
-	 */
-	public suspend fun syncPlayCreateGroup(`data`: NewGroupRequestDto): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/SyncPlay/New", pathParameters, queryParameters, data)
 		return response
 	}
 
