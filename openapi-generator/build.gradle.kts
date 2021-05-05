@@ -3,12 +3,11 @@ import de.undercouch.gradle.tasks.download.Download
 plugins {
 	kotlin("jvm")
 	id("application")
-
 	id("de.undercouch.download")
 }
 
 application {
-	mainClassName = "org.jellyfin.openapi.MainKt"
+	mainClass.set("org.jellyfin.openapi.MainKt")
 }
 
 dependencies {

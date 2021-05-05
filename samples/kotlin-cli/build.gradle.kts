@@ -4,7 +4,7 @@ plugins {
 }
 
 application {
-	mainClassName = "org.jellyfin.sample.cli.MainKt"
+	mainClass.set("org.jellyfin.sample.cli.MainKt")
 }
 
 dependencies {
