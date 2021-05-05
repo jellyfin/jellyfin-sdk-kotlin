@@ -19,13 +19,17 @@ public class PackageApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Gets available packages.
+	 * Cancels a package installation.
+	 *
+	 * @param packageId Installation Id.
 	 */
-	public suspend fun getPackages(): Response<List<PackageInfo>> {
-		val pathParameters = emptyMap<String, Any?>()
+	public suspend fun cancelPackageInstallation(packageId: UUID): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["packageId"] = packageId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<PackageInfo>>("/Packages", pathParameters, queryParameters, data)
+		val response = api.delete<Unit>("/Packages/Installing/{packageId}", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
@@ -43,6 +47,29 @@ public class PackageApi(
 		queryParameters["assemblyGuid"] = assemblyGuid
 		val data = null
 		val response = api.`get`<PackageInfo>("/Packages/{name}", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets available packages.
+	 */
+	public suspend fun getPackages(): Response<List<PackageInfo>> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<List<PackageInfo>>("/Packages", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets all package repositories.
+	 */
+	public suspend fun getRepositories(): Response<List<RepositoryInfo>> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<List<RepositoryInfo>>("/Repositories", pathParameters, queryParameters,
+				data)
 		return response
 	}
 
@@ -68,33 +95,6 @@ public class PackageApi(
 		queryParameters["repositoryUrl"] = repositoryUrl
 		val data = null
 		val response = api.post<Unit>("/Packages/Installed/{name}", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Cancels a package installation.
-	 *
-	 * @param packageId Installation Id.
-	 */
-	public suspend fun cancelPackageInstallation(packageId: UUID): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["packageId"] = packageId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.delete<Unit>("/Packages/Installing/{packageId}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets all package repositories.
-	 */
-	public suspend fun getRepositories(): Response<List<RepositoryInfo>> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<List<RepositoryInfo>>("/Repositories", pathParameters, queryParameters,
-				data)
 		return response
 	}
 

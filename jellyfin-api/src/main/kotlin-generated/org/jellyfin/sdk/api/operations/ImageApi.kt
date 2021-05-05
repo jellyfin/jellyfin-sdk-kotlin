@@ -24,6 +24,98 @@ public class ImageApi(
 	private val api: KtorClient
 ) {
 	/**
+	 * Delete an item's image.
+	 *
+	 * @param itemId Item id.
+	 * @param imageType Image type.
+	 * @param imageIndex The image index.
+	 */
+	public suspend fun deleteItemImage(
+		itemId: UUID,
+		imageType: ImageType,
+		imageIndex: Int? = null
+	): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		pathParameters["imageType"] = imageType
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["imageIndex"] = imageIndex
+		val data = null
+		val response = api.delete<Unit>("/Items/{itemId}/Images/{imageType}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Delete an item's image.
+	 *
+	 * @param itemId Item id.
+	 * @param imageType Image type.
+	 * @param imageIndex The image index.
+	 */
+	public suspend fun deleteItemImageByIndex(
+		itemId: UUID,
+		imageType: ImageType,
+		imageIndex: Int
+	): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		pathParameters["imageType"] = imageType
+		pathParameters["imageIndex"] = imageIndex
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.delete<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Delete the user's image.
+	 *
+	 * @param userId User Id.
+	 * @param imageType (Unused) Image type.
+	 * @param index (Unused) Image index.
+	 */
+	public suspend fun deleteUserImage(
+		userId: UUID,
+		imageType: ImageType,
+		index: Int? = null
+	): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["userId"] = userId
+		pathParameters["imageType"] = imageType
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["index"] = index
+		val data = null
+		val response = api.delete<Unit>("/Users/{userId}/Images/{imageType}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Delete the user's image.
+	 *
+	 * @param userId User Id.
+	 * @param imageType (Unused) Image type.
+	 * @param index (Unused) Image index.
+	 */
+	public suspend fun deleteUserImageByIndex(
+		userId: UUID,
+		imageType: ImageType,
+		index: Int
+	): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["userId"] = userId
+		pathParameters["imageType"] = imageType
+		pathParameters["index"] = index
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.delete<Unit>("/Users/{userId}/Images/{imageType}/{index}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Get artist image by name.
 	 *
 	 * @param name Artist name.
@@ -468,21 +560,6 @@ public class ImageApi(
 	}
 
 	/**
-	 * Get item image infos.
-	 *
-	 * @param itemId Item id.
-	 */
-	public suspend fun getItemImageInfos(itemId: UUID): Response<List<ImageInfo>> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<List<ImageInfo>>("/Items/{itemId}/Images", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Gets the item's image.
 	 *
 	 * @param itemId Item id.
@@ -628,240 +705,6 @@ public class ImageApi(
 		queryParameters["imageIndex"] = imageIndex
 		return api.createUrl("/Items/{itemId}/Images/{imageType}", pathParameters, queryParameters,
 				includeCredentials)
-	}
-
-	/**
-	 * Set item image.
-	 *
-	 * @param itemId Item id.
-	 * @param imageType Image type.
-	 */
-	public suspend fun setItemImage(itemId: UUID, imageType: ImageType): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Delete an item's image.
-	 *
-	 * @param itemId Item id.
-	 * @param imageType Image type.
-	 * @param imageIndex The image index.
-	 */
-	public suspend fun deleteItemImage(
-		itemId: UUID,
-		imageType: ImageType,
-		imageIndex: Int? = null
-	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["imageIndex"] = imageIndex
-		val data = null
-		val response = api.delete<Unit>("/Items/{itemId}/Images/{imageType}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets the item's image.
-	 *
-	 * @param itemId Item id.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	public suspend fun getItemImageByIndex(
-		itemId: UUID,
-		imageType: ImageType,
-		imageIndex: Int,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		tag: String? = null,
-		cropWhitespace: Boolean? = null,
-		format: ImageFormat? = null,
-		addPlayedIndicator: Boolean? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null
-	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["tag"] = tag
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["format"] = format
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets the item's image.
-	 *
-	 * @param itemId Item id.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
-	 */
-	public fun getItemImageByIndexUrl(
-		itemId: UUID,
-		imageType: ImageType,
-		imageIndex: Int,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		tag: String? = null,
-		cropWhitespace: Boolean? = null,
-		format: ImageFormat? = null,
-		addPlayedIndicator: Boolean? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false
-	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["tag"] = tag
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["format"] = format
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
-	}
-
-	/**
-	 * Set item image.
-	 *
-	 * @param itemId Item id.
-	 * @param imageType Image type.
-	 * @param imageIndex (Unused) Image index.
-	 */
-	public suspend fun setItemImageByIndex(
-		itemId: UUID,
-		imageType: ImageType,
-		imageIndex: Int
-	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Delete an item's image.
-	 *
-	 * @param itemId Item id.
-	 * @param imageType Image type.
-	 * @param imageIndex The image index.
-	 */
-	public suspend fun deleteItemImageByIndex(
-		itemId: UUID,
-		imageType: ImageType,
-		imageIndex: Int
-	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.delete<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, data)
-		return response
 	}
 
 	/**
@@ -1014,28 +857,165 @@ public class ImageApi(
 	}
 
 	/**
-	 * Updates the index for an item image.
+	 * Gets the item's image.
 	 *
 	 * @param itemId Item id.
 	 * @param imageType Image type.
-	 * @param imageIndex Old image index.
-	 * @param newIndex New image index.
+	 * @param imageIndex Image index.
+	 * @param maxWidth The maximum image width to return.
+	 * @param maxHeight The maximum image height to return.
+	 * @param width The fixed image width to return.
+	 * @param height The fixed image height to return.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
+	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
+	 * headers.
+	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
+	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
+	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
+	 * @param addPlayedIndicator Optional. Add a played indicator.
+	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
+	 * @param unplayedCount Optional. Unplayed count overlay to render.
+	 * @param blur Optional. Blur image.
+	 * @param backgroundColor Optional. Apply a background color for transparent images.
+	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
-	public suspend fun updateItemImageIndex(
+	public suspend fun getItemImageByIndex(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int,
-		newIndex: Int
-	): Response<Unit> {
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
+		width: Int? = null,
+		height: Int? = null,
+		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
+		tag: String? = null,
+		cropWhitespace: Boolean? = null,
+		format: ImageFormat? = null,
+		addPlayedIndicator: Boolean? = null,
+		percentPlayed: Double? = null,
+		unplayedCount: Int? = null,
+		blur: Int? = null,
+		backgroundColor: String? = null,
+		foregroundLayer: String? = null
+	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["imageType"] = imageType
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["newIndex"] = newIndex
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
+		queryParameters["width"] = width
+		queryParameters["height"] = height
+		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
+		queryParameters["tag"] = tag
+		queryParameters["cropWhitespace"] = cropWhitespace
+		queryParameters["format"] = format
+		queryParameters["addPlayedIndicator"] = addPlayedIndicator
+		queryParameters["percentPlayed"] = percentPlayed
+		queryParameters["unplayedCount"] = unplayedCount
+		queryParameters["blur"] = blur
+		queryParameters["backgroundColor"] = backgroundColor
+		queryParameters["foregroundLayer"] = foregroundLayer
 		val data = null
-		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}/Index",
+		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets the item's image.
+	 *
+	 * @param itemId Item id.
+	 * @param imageType Image type.
+	 * @param imageIndex Image index.
+	 * @param maxWidth The maximum image width to return.
+	 * @param maxHeight The maximum image height to return.
+	 * @param width The fixed image width to return.
+	 * @param height The fixed image height to return.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
+	 * cases.
+	 * @param fillWidth Width of box to fill.
+	 * @param fillHeight Height of box to fill.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
+	 * headers.
+	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
+	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
+	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
+	 * @param addPlayedIndicator Optional. Add a played indicator.
+	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
+	 * @param unplayedCount Optional. Unplayed count overlay to render.
+	 * @param blur Optional. Blur image.
+	 * @param backgroundColor Optional. Apply a background color for transparent images.
+	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
+	 */
+	public fun getItemImageByIndexUrl(
+		itemId: UUID,
+		imageType: ImageType,
+		imageIndex: Int,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
+		width: Int? = null,
+		height: Int? = null,
+		quality: Int? = null,
+		fillWidth: Int? = null,
+		fillHeight: Int? = null,
+		tag: String? = null,
+		cropWhitespace: Boolean? = null,
+		format: ImageFormat? = null,
+		addPlayedIndicator: Boolean? = null,
+		percentPlayed: Double? = null,
+		unplayedCount: Int? = null,
+		blur: Int? = null,
+		backgroundColor: String? = null,
+		foregroundLayer: String? = null,
+		includeCredentials: Boolean = false
+	): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		pathParameters["imageType"] = imageType
+		pathParameters["imageIndex"] = imageIndex
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
+		queryParameters["width"] = width
+		queryParameters["height"] = height
+		queryParameters["quality"] = quality
+		queryParameters["fillWidth"] = fillWidth
+		queryParameters["fillHeight"] = fillHeight
+		queryParameters["tag"] = tag
+		queryParameters["cropWhitespace"] = cropWhitespace
+		queryParameters["format"] = format
+		queryParameters["addPlayedIndicator"] = addPlayedIndicator
+		queryParameters["percentPlayed"] = percentPlayed
+		queryParameters["unplayedCount"] = unplayedCount
+		queryParameters["blur"] = blur
+		queryParameters["backgroundColor"] = backgroundColor
+		queryParameters["foregroundLayer"] = foregroundLayer
+		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
+				queryParameters, includeCredentials)
+	}
+
+	/**
+	 * Get item image infos.
+	 *
+	 * @param itemId Item id.
+	 */
+	public suspend fun getItemImageInfos(itemId: UUID): Response<List<ImageInfo>> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<List<ImageInfo>>("/Items/{itemId}/Images", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
@@ -2076,52 +2056,6 @@ public class ImageApi(
 	}
 
 	/**
-	 * Sets the user image.
-	 *
-	 * @param userId User Id.
-	 * @param imageType (Unused) Image type.
-	 * @param index (Unused) Image index.
-	 */
-	public suspend fun postUserImage(
-		userId: UUID,
-		imageType: ImageType,
-		index: Int? = null
-	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["index"] = index
-		val data = null
-		val response = api.post<Unit>("/Users/{userId}/Images/{imageType}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Delete the user's image.
-	 *
-	 * @param userId User Id.
-	 * @param imageType (Unused) Image type.
-	 * @param index (Unused) Image index.
-	 */
-	public suspend fun deleteUserImage(
-		userId: UUID,
-		imageType: ImageType,
-		index: Int? = null
-	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["index"] = index
-		val data = null
-		val response = api.delete<Unit>("/Users/{userId}/Images/{imageType}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Get user profile image.
 	 *
 	 * @param userId User id.
@@ -2276,6 +2210,29 @@ public class ImageApi(
 	 * @param imageType (Unused) Image type.
 	 * @param index (Unused) Image index.
 	 */
+	public suspend fun postUserImage(
+		userId: UUID,
+		imageType: ImageType,
+		index: Int? = null
+	): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["userId"] = userId
+		pathParameters["imageType"] = imageType
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["index"] = index
+		val data = null
+		val response = api.post<Unit>("/Users/{userId}/Images/{imageType}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Sets the user image.
+	 *
+	 * @param userId User Id.
+	 * @param imageType (Unused) Image type.
+	 * @param index (Unused) Image index.
+	 */
 	public suspend fun postUserImageByIndex(
 		userId: UUID,
 		imageType: ImageType,
@@ -2293,25 +2250,68 @@ public class ImageApi(
 	}
 
 	/**
-	 * Delete the user's image.
+	 * Set item image.
 	 *
-	 * @param userId User Id.
-	 * @param imageType (Unused) Image type.
-	 * @param index (Unused) Image index.
+	 * @param itemId Item id.
+	 * @param imageType Image type.
 	 */
-	public suspend fun deleteUserImageByIndex(
-		userId: UUID,
-		imageType: ImageType,
-		index: Int
-	): Response<Unit> {
+	public suspend fun setItemImage(itemId: UUID, imageType: ImageType): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
+		pathParameters["itemId"] = itemId
 		pathParameters["imageType"] = imageType
-		pathParameters["index"] = index
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.delete<Unit>("/Users/{userId}/Images/{imageType}/{index}", pathParameters,
+		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}", pathParameters,
 				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Set item image.
+	 *
+	 * @param itemId Item id.
+	 * @param imageType Image type.
+	 * @param imageIndex (Unused) Image index.
+	 */
+	public suspend fun setItemImageByIndex(
+		itemId: UUID,
+		imageType: ImageType,
+		imageIndex: Int
+	): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		pathParameters["imageType"] = imageType
+		pathParameters["imageIndex"] = imageIndex
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Updates the index for an item image.
+	 *
+	 * @param itemId Item id.
+	 * @param imageType Image type.
+	 * @param imageIndex Old image index.
+	 * @param newIndex New image index.
+	 */
+	public suspend fun updateItemImageIndex(
+		itemId: UUID,
+		imageType: ImageType,
+		imageIndex: Int,
+		newIndex: Int
+	): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		pathParameters["imageType"] = imageType
+		pathParameters["imageIndex"] = imageIndex
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["newIndex"] = newIndex
+		val data = null
+		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}/Index",
+				pathParameters, queryParameters, data)
 		return response
 	}
 }

@@ -23,14 +23,17 @@ public class LibraryStructureApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Gets all virtual folders.
+	 * Add a media path to a library.
+	 *
+	 * @param refreshLibrary Whether to refresh the library.
 	 */
-	public suspend fun getVirtualFolders(): Response<List<VirtualFolderInfo>> {
+	public suspend fun addMediaPath(refreshLibrary: Boolean = false, `data`: MediaPathDto):
+			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<List<VirtualFolderInfo>>("/Library/VirtualFolders", pathParameters,
-				queryParameters, data)
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["refreshLibrary"] = refreshLibrary
+		val response = api.post<Unit>("/Library/VirtualFolders/Paths", pathParameters, queryParameters,
+				data)
 		return response
 	}
 
@@ -60,6 +63,41 @@ public class LibraryStructureApi(
 	}
 
 	/**
+	 * Gets all virtual folders.
+	 */
+	public suspend fun getVirtualFolders(): Response<List<VirtualFolderInfo>> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<List<VirtualFolderInfo>>("/Library/VirtualFolders", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Remove a media path.
+	 *
+	 * @param name The name of the library.
+	 * @param path The path to remove.
+	 * @param refreshLibrary Whether to refresh the library.
+	 */
+	public suspend fun removeMediaPath(
+		name: String? = null,
+		path: String? = null,
+		refreshLibrary: Boolean = false
+	): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["name"] = name
+		queryParameters["path"] = path
+		queryParameters["refreshLibrary"] = refreshLibrary
+		val data = null
+		val response = api.delete<Unit>("/Library/VirtualFolders/Paths", pathParameters, queryParameters,
+				data)
+		return response
+	}
+
+	/**
 	 * Removes a virtual folder.
 	 *
 	 * @param name The name of the folder.
@@ -73,17 +111,6 @@ public class LibraryStructureApi(
 		queryParameters["refreshLibrary"] = refreshLibrary
 		val data = null
 		val response = api.delete<Unit>("/Library/VirtualFolders", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Update library options.
-	 */
-	public suspend fun updateLibraryOptions(`data`: UpdateLibraryOptionsDto? = null): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Library/VirtualFolders/LibraryOptions", pathParameters,
-				queryParameters, data)
 		return response
 	}
 
@@ -111,40 +138,13 @@ public class LibraryStructureApi(
 	}
 
 	/**
-	 * Add a media path to a library.
-	 *
-	 * @param refreshLibrary Whether to refresh the library.
+	 * Update library options.
 	 */
-	public suspend fun addMediaPath(refreshLibrary: Boolean = false, `data`: MediaPathDto):
-			Response<Unit> {
+	public suspend fun updateLibraryOptions(`data`: UpdateLibraryOptionsDto? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["refreshLibrary"] = refreshLibrary
-		val response = api.post<Unit>("/Library/VirtualFolders/Paths", pathParameters, queryParameters,
-				data)
-		return response
-	}
-
-	/**
-	 * Remove a media path.
-	 *
-	 * @param name The name of the library.
-	 * @param path The path to remove.
-	 * @param refreshLibrary Whether to refresh the library.
-	 */
-	public suspend fun removeMediaPath(
-		name: String? = null,
-		path: String? = null,
-		refreshLibrary: Boolean = false
-	): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["name"] = name
-		queryParameters["path"] = path
-		queryParameters["refreshLibrary"] = refreshLibrary
-		val data = null
-		val response = api.delete<Unit>("/Library/VirtualFolders/Paths", pathParameters, queryParameters,
-				data)
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Library/VirtualFolders/LibraryOptions", pathParameters,
+				queryParameters, data)
 		return response
 	}
 

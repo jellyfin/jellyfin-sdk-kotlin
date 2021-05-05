@@ -29,20 +29,6 @@ public class LibraryApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Deletes items from the library and filesystem.
-	 *
-	 * @param ids The item ids.
-	 */
-	public suspend fun deleteItems(ids: List<UUID>? = emptyList()): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["ids"] = ids
-		val data = null
-		val response = api.delete<Unit>("/Items", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Deletes an item from the library and filesystem.
 	 *
 	 * @param itemId The item id.
@@ -57,66 +43,16 @@ public class LibraryApi(
 	}
 
 	/**
-	 * Gets similar items.
+	 * Deletes items from the library and filesystem.
 	 *
-	 * @param itemId The item id.
-	 * @param excludeArtistIds Exclude artist ids.
-	 * @param userId Optional. Filter by user id, and attach user data.
-	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param ids The item ids.
 	 */
-	public suspend fun getSimilarAlbums(
-		itemId: UUID,
-		excludeArtistIds: List<UUID>? = emptyList(),
-		userId: UUID? = null,
-		limit: Int? = null,
-		fields: List<ItemFields>? = emptyList()
-	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
+	public suspend fun deleteItems(ids: List<UUID>? = emptyList()): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["excludeArtistIds"] = excludeArtistIds
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
+		queryParameters["ids"] = ids
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Albums/{itemId}/Similar", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets similar items.
-	 *
-	 * @param itemId The item id.
-	 * @param excludeArtistIds Exclude artist ids.
-	 * @param userId Optional. Filter by user id, and attach user data.
-	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
-	 */
-	public suspend fun getSimilarArtists(
-		itemId: UUID,
-		excludeArtistIds: List<UUID>? = emptyList(),
-		userId: UUID? = null,
-		limit: Int? = null,
-		fields: List<ItemFields>? = emptyList()
-	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["excludeArtistIds"] = excludeArtistIds
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/{itemId}/Similar", pathParameters,
-				queryParameters, data)
+		val response = api.delete<Unit>("/Items", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -209,110 +145,6 @@ public class LibraryApi(
 	}
 
 	/**
-	 * Gets similar items.
-	 *
-	 * @param itemId The item id.
-	 * @param excludeArtistIds Exclude artist ids.
-	 * @param userId Optional. Filter by user id, and attach user data.
-	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
-	 */
-	public suspend fun getSimilarItems(
-		itemId: UUID,
-		excludeArtistIds: List<UUID>? = emptyList(),
-		userId: UUID? = null,
-		limit: Int? = null,
-		fields: List<ItemFields>? = emptyList()
-	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["excludeArtistIds"] = excludeArtistIds
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/Similar", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get theme songs and videos for an item.
-	 *
-	 * @param itemId The item id.
-	 * @param userId Optional. Filter by user id, and attach user data.
-	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
-	 * theme media.
-	 */
-	public suspend fun getThemeMedia(
-		itemId: UUID,
-		userId: UUID? = null,
-		inheritFromParent: Boolean = false
-	): Response<AllThemeMediaResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["inheritFromParent"] = inheritFromParent
-		val data = null
-		val response = api.`get`<AllThemeMediaResult>("/Items/{itemId}/ThemeMedia", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get theme songs for an item.
-	 *
-	 * @param itemId The item id.
-	 * @param userId Optional. Filter by user id, and attach user data.
-	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
-	 * theme media.
-	 */
-	public suspend fun getThemeSongs(
-		itemId: UUID,
-		userId: UUID? = null,
-		inheritFromParent: Boolean = false
-	): Response<ThemeMediaResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["inheritFromParent"] = inheritFromParent
-		val data = null
-		val response = api.`get`<ThemeMediaResult>("/Items/{itemId}/ThemeSongs", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get theme videos for an item.
-	 *
-	 * @param itemId The item id.
-	 * @param userId Optional. Filter by user id, and attach user data.
-	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
-	 * theme media.
-	 */
-	public suspend fun getThemeVideos(
-		itemId: UUID,
-		userId: UUID? = null,
-		inheritFromParent: Boolean = false
-	): Response<ThemeMediaResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["inheritFromParent"] = inheritFromParent
-		val data = null
-		val response = api.`get`<ThemeMediaResult>("/Items/{itemId}/ThemeVideos", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Get item counts.
 	 *
 	 * @param userId Optional. Get counts from a specific user's library.
@@ -348,16 +180,6 @@ public class LibraryApi(
 	}
 
 	/**
-	 * Reports that new movies have been added by an external source.
-	 */
-	public suspend fun postUpdatedMedia(`data`: MediaUpdateInfoDto): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Library/Media/Updated", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Gets all user media folders.
 	 *
 	 * @param isHidden Optional. Filter by folders that are marked hidden, or not.
@@ -369,40 +191,6 @@ public class LibraryApi(
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Library/MediaFolders", pathParameters,
 				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Reports that new movies have been added by an external source.
-	 *
-	 * @param tmdbId The tmdbId.
-	 * @param imdbId The imdbId.
-	 */
-	public suspend fun postAddedMovies(tmdbId: String? = null, imdbId: String? = null):
-			Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tmdbId"] = tmdbId
-		queryParameters["imdbId"] = imdbId
-		val data = null
-		val response = api.post<Unit>("/Library/Movies/Added", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Reports that new movies have been added by an external source.
-	 *
-	 * @param tmdbId The tmdbId.
-	 * @param imdbId The imdbId.
-	 */
-	public suspend fun postUpdatedMovies(tmdbId: String? = null, imdbId: String? = null):
-			Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tmdbId"] = tmdbId
-		queryParameters["imdbId"] = imdbId
-		val data = null
-		val response = api.post<Unit>("/Library/Movies/Updated", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -419,41 +207,98 @@ public class LibraryApi(
 	}
 
 	/**
-	 * Starts a library scan.
+	 * Gets similar items.
+	 *
+	 * @param itemId The item id.
+	 * @param excludeArtistIds Exclude artist ids.
+	 * @param userId Optional. Filter by user id, and attach user data.
+	 * @param limit Optional. The maximum number of records to return.
+	 * @param fields Optional. Specify additional fields of information to return in the output. This
+	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
+	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
+	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
-	public suspend fun refreshLibrary(): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
+	public suspend fun getSimilarAlbums(
+		itemId: UUID,
+		excludeArtistIds: List<UUID>? = emptyList(),
+		userId: UUID? = null,
+		limit: Int? = null,
+		fields: List<ItemFields>? = emptyList()
+	): Response<BaseItemDtoQueryResult> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["excludeArtistIds"] = excludeArtistIds
+		queryParameters["userId"] = userId
+		queryParameters["limit"] = limit
+		queryParameters["fields"] = fields
 		val data = null
-		val response = api.post<Unit>("/Library/Refresh", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Albums/{itemId}/Similar", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
 	/**
-	 * Reports that new episodes of a series have been added by an external source.
+	 * Gets similar items.
 	 *
-	 * @param tvdbId The tvdbId.
+	 * @param itemId The item id.
+	 * @param excludeArtistIds Exclude artist ids.
+	 * @param userId Optional. Filter by user id, and attach user data.
+	 * @param limit Optional. The maximum number of records to return.
+	 * @param fields Optional. Specify additional fields of information to return in the output. This
+	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
+	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
+	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
-	public suspend fun postAddedSeries(tvdbId: String? = null): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
+	public suspend fun getSimilarArtists(
+		itemId: UUID,
+		excludeArtistIds: List<UUID>? = emptyList(),
+		userId: UUID? = null,
+		limit: Int? = null,
+		fields: List<ItemFields>? = emptyList()
+	): Response<BaseItemDtoQueryResult> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
 		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tvdbId"] = tvdbId
+		queryParameters["excludeArtistIds"] = excludeArtistIds
+		queryParameters["userId"] = userId
+		queryParameters["limit"] = limit
+		queryParameters["fields"] = fields
 		val data = null
-		val response = api.post<Unit>("/Library/Series/Added", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/{itemId}/Similar", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
 	/**
-	 * Reports that new episodes of a series have been added by an external source.
+	 * Gets similar items.
 	 *
-	 * @param tvdbId The tvdbId.
+	 * @param itemId The item id.
+	 * @param excludeArtistIds Exclude artist ids.
+	 * @param userId Optional. Filter by user id, and attach user data.
+	 * @param limit Optional. The maximum number of records to return.
+	 * @param fields Optional. Specify additional fields of information to return in the output. This
+	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
+	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
+	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
-	public suspend fun postUpdatedSeries(tvdbId: String? = null): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
+	public suspend fun getSimilarItems(
+		itemId: UUID,
+		excludeArtistIds: List<UUID>? = emptyList(),
+		userId: UUID? = null,
+		limit: Int? = null,
+		fields: List<ItemFields>? = emptyList()
+	): Response<BaseItemDtoQueryResult> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
 		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tvdbId"] = tvdbId
+		queryParameters["excludeArtistIds"] = excludeArtistIds
+		queryParameters["userId"] = userId
+		queryParameters["limit"] = limit
+		queryParameters["fields"] = fields
 		val data = null
-		val response = api.post<Unit>("/Library/Series/Updated", pathParameters, queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/Similar", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
@@ -550,6 +395,161 @@ public class LibraryApi(
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Trailers/{itemId}/Similar", pathParameters,
 				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Get theme songs and videos for an item.
+	 *
+	 * @param itemId The item id.
+	 * @param userId Optional. Filter by user id, and attach user data.
+	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
+	 * theme media.
+	 */
+	public suspend fun getThemeMedia(
+		itemId: UUID,
+		userId: UUID? = null,
+		inheritFromParent: Boolean = false
+	): Response<AllThemeMediaResult> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["userId"] = userId
+		queryParameters["inheritFromParent"] = inheritFromParent
+		val data = null
+		val response = api.`get`<AllThemeMediaResult>("/Items/{itemId}/ThemeMedia", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Get theme songs for an item.
+	 *
+	 * @param itemId The item id.
+	 * @param userId Optional. Filter by user id, and attach user data.
+	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
+	 * theme media.
+	 */
+	public suspend fun getThemeSongs(
+		itemId: UUID,
+		userId: UUID? = null,
+		inheritFromParent: Boolean = false
+	): Response<ThemeMediaResult> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["userId"] = userId
+		queryParameters["inheritFromParent"] = inheritFromParent
+		val data = null
+		val response = api.`get`<ThemeMediaResult>("/Items/{itemId}/ThemeSongs", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Get theme videos for an item.
+	 *
+	 * @param itemId The item id.
+	 * @param userId Optional. Filter by user id, and attach user data.
+	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
+	 * theme media.
+	 */
+	public suspend fun getThemeVideos(
+		itemId: UUID,
+		userId: UUID? = null,
+		inheritFromParent: Boolean = false
+	): Response<ThemeMediaResult> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["userId"] = userId
+		queryParameters["inheritFromParent"] = inheritFromParent
+		val data = null
+		val response = api.`get`<ThemeMediaResult>("/Items/{itemId}/ThemeVideos", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Reports that new movies have been added by an external source.
+	 *
+	 * @param tmdbId The tmdbId.
+	 * @param imdbId The imdbId.
+	 */
+	public suspend fun postAddedMovies(tmdbId: String? = null, imdbId: String? = null):
+			Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["tmdbId"] = tmdbId
+		queryParameters["imdbId"] = imdbId
+		val data = null
+		val response = api.post<Unit>("/Library/Movies/Added", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Reports that new episodes of a series have been added by an external source.
+	 *
+	 * @param tvdbId The tvdbId.
+	 */
+	public suspend fun postAddedSeries(tvdbId: String? = null): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["tvdbId"] = tvdbId
+		val data = null
+		val response = api.post<Unit>("/Library/Series/Added", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Reports that new movies have been added by an external source.
+	 */
+	public suspend fun postUpdatedMedia(`data`: MediaUpdateInfoDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Library/Media/Updated", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Reports that new movies have been added by an external source.
+	 *
+	 * @param tmdbId The tmdbId.
+	 * @param imdbId The imdbId.
+	 */
+	public suspend fun postUpdatedMovies(tmdbId: String? = null, imdbId: String? = null):
+			Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["tmdbId"] = tmdbId
+		queryParameters["imdbId"] = imdbId
+		val data = null
+		val response = api.post<Unit>("/Library/Movies/Updated", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Reports that new episodes of a series have been added by an external source.
+	 *
+	 * @param tvdbId The tvdbId.
+	 */
+	public suspend fun postUpdatedSeries(tvdbId: String? = null): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["tvdbId"] = tvdbId
+		val data = null
+		val response = api.post<Unit>("/Library/Series/Updated", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Starts a library scan.
+	 */
+	public suspend fun refreshLibrary(): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.post<Unit>("/Library/Refresh", pathParameters, queryParameters, data)
 		return response
 	}
 }

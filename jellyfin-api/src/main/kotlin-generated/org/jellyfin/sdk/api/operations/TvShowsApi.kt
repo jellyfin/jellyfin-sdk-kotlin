@@ -86,53 +86,6 @@ public class TvShowsApi(
 	}
 
 	/**
-	 * Gets seasons for a tv series.
-	 *
-	 * @param seriesId The series id.
-	 * @param userId The user id.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
-	 * @param isSpecialSeason Optional. Filter by special season.
-	 * @param isMissing Optional. Filter by items that are missing episodes or not.
-	 * @param adjacentTo Optional. Return items that are siblings of a supplied item.
-	 * @param enableImages Optional. Include image information in output.
-	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
-	 * @param enableImageTypes Optional. The image types to include in the output.
-	 * @param enableUserData Optional. Include user data.
-	 */
-	public suspend fun getSeasons(
-		seriesId: UUID,
-		userId: UUID? = null,
-		fields: List<ItemFields>? = emptyList(),
-		isSpecialSeason: Boolean? = null,
-		isMissing: Boolean? = null,
-		adjacentTo: String? = null,
-		enableImages: Boolean? = null,
-		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList(),
-		enableUserData: Boolean? = null
-	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["seriesId"] = seriesId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["fields"] = fields
-		queryParameters["isSpecialSeason"] = isSpecialSeason
-		queryParameters["isMissing"] = isMissing
-		queryParameters["adjacentTo"] = adjacentTo
-		queryParameters["enableImages"] = enableImages
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
-		queryParameters["enableUserData"] = enableUserData
-		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/{seriesId}/Seasons", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Gets a list of next up episodes.
 	 *
 	 * @param userId The user id of the user to get the next up episodes for.
@@ -181,6 +134,53 @@ public class TvShowsApi(
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/NextUp", pathParameters, queryParameters,
 				data)
+		return response
+	}
+
+	/**
+	 * Gets seasons for a tv series.
+	 *
+	 * @param seriesId The series id.
+	 * @param userId The user id.
+	 * @param fields Optional. Specify additional fields of information to return in the output. This
+	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
+	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
+	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param isSpecialSeason Optional. Filter by special season.
+	 * @param isMissing Optional. Filter by items that are missing episodes or not.
+	 * @param adjacentTo Optional. Return items that are siblings of a supplied item.
+	 * @param enableImages Optional. Include image information in output.
+	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
+	 * @param enableImageTypes Optional. The image types to include in the output.
+	 * @param enableUserData Optional. Include user data.
+	 */
+	public suspend fun getSeasons(
+		seriesId: UUID,
+		userId: UUID? = null,
+		fields: List<ItemFields>? = emptyList(),
+		isSpecialSeason: Boolean? = null,
+		isMissing: Boolean? = null,
+		adjacentTo: String? = null,
+		enableImages: Boolean? = null,
+		imageTypeLimit: Int? = null,
+		enableImageTypes: List<ImageType>? = emptyList(),
+		enableUserData: Boolean? = null
+	): Response<BaseItemDtoQueryResult> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["seriesId"] = seriesId
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["userId"] = userId
+		queryParameters["fields"] = fields
+		queryParameters["isSpecialSeason"] = isSpecialSeason
+		queryParameters["isMissing"] = isMissing
+		queryParameters["adjacentTo"] = adjacentTo
+		queryParameters["enableImages"] = enableImages
+		queryParameters["imageTypeLimit"] = imageTypeLimit
+		queryParameters["enableImageTypes"] = enableImageTypes
+		queryParameters["enableUserData"] = enableUserData
+		val data = null
+		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/{seriesId}/Seasons", pathParameters,
+				queryParameters, data)
 		return response
 	}
 

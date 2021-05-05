@@ -28,14 +28,45 @@ public class SessionApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Get all password reset providers.
+	 * Adds an additional user to a session.
+	 *
+	 * @param sessionId The session id.
+	 * @param userId The user id.
 	 */
-	public suspend fun getPasswordResetProviders(): Response<List<NameIdPair>> {
-		val pathParameters = emptyMap<String, Any?>()
+	public suspend fun addUserToSession(sessionId: String, userId: UUID): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["sessionId"] = sessionId
+		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<NameIdPair>>("/Auth/PasswordResetProviders", pathParameters,
+		val response = api.post<Unit>("/Sessions/{sessionId}/User/{userId}", pathParameters,
 				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Instructs a session to browse to an item or view.
+	 *
+	 * @param sessionId The session Id.
+	 * @param itemType The type of item to browse to.
+	 * @param itemId The Id of the item.
+	 * @param itemName The name of the item.
+	 */
+	public suspend fun displayContent(
+		sessionId: String,
+		itemType: String,
+		itemId: String,
+		itemName: String
+	): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["sessionId"] = sessionId
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["itemType"] = itemType
+		queryParameters["itemId"] = itemId
+		queryParameters["itemName"] = itemName
+		val data = null
+		val response = api.post<Unit>("/Sessions/{sessionId}/Viewing", pathParameters, queryParameters,
+				data)
 		return response
 	}
 
@@ -48,6 +79,18 @@ public class SessionApi(
 		val data = null
 		val response = api.`get`<List<NameIdPair>>("/Auth/Providers", pathParameters, queryParameters,
 				data)
+		return response
+	}
+
+	/**
+	 * Get all password reset providers.
+	 */
+	public suspend fun getPasswordResetProviders(): Response<List<NameIdPair>> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<List<NameIdPair>>("/Auth/PasswordResetProviders", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
@@ -70,53 +113,6 @@ public class SessionApi(
 		queryParameters["activeWithinSeconds"] = activeWithinSeconds
 		val data = null
 		val response = api.`get`<List<SessionInfo>>("/Sessions", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Issues a full general command to a client.
-	 *
-	 * @param sessionId The session id.
-	 */
-	public suspend fun sendFullGeneralCommand(sessionId: String, `data`: GeneralCommand):
-			Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Sessions/{sessionId}/Command", pathParameters, queryParameters,
-				data)
-		return response
-	}
-
-	/**
-	 * Issues a general command to a client.
-	 *
-	 * @param sessionId The session id.
-	 * @param command The command to send.
-	 */
-	public suspend fun sendGeneralCommand(sessionId: String, command: GeneralCommandType):
-			Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		pathParameters["command"] = command
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.post<Unit>("/Sessions/{sessionId}/Command/{command}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Issues a command to a client to display a message to the user.
-	 *
-	 * @param sessionId The session id.
-	 */
-	public suspend fun sendMessageCommand(sessionId: String, `data`: MessageCommand): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Sessions/{sessionId}/Message", pathParameters, queryParameters,
-				data)
 		return response
 	}
 
@@ -155,110 +151,6 @@ public class SessionApi(
 		queryParameters["startIndex"] = startIndex
 		val data = null
 		val response = api.post<Unit>("/Sessions/{sessionId}/Playing", pathParameters, queryParameters,
-				data)
-		return response
-	}
-
-	/**
-	 * Issues a playstate command to a client.
-	 *
-	 * @param sessionId The session id.
-	 * @param command The MediaBrowser.Model.Session.PlaystateCommand.
-	 * @param seekPositionTicks The optional position ticks.
-	 * @param controllingUserId The optional controlling user id.
-	 */
-	public suspend fun sendPlaystateCommand(
-		sessionId: String,
-		command: PlaystateCommand,
-		seekPositionTicks: Long? = null,
-		controllingUserId: String? = null
-	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		pathParameters["command"] = command
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["seekPositionTicks"] = seekPositionTicks
-		queryParameters["controllingUserId"] = controllingUserId
-		val data = null
-		val response = api.post<Unit>("/Sessions/{sessionId}/Playing/{command}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Issues a system command to a client.
-	 *
-	 * @param sessionId The session id.
-	 * @param command The command to send.
-	 */
-	public suspend fun sendSystemCommand(sessionId: String, command: GeneralCommandType):
-			Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		pathParameters["command"] = command
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.post<Unit>("/Sessions/{sessionId}/System/{command}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Adds an additional user to a session.
-	 *
-	 * @param sessionId The session id.
-	 * @param userId The user id.
-	 */
-	public suspend fun addUserToSession(sessionId: String, userId: UUID): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		pathParameters["userId"] = userId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.post<Unit>("/Sessions/{sessionId}/User/{userId}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Removes an additional user from a session.
-	 *
-	 * @param sessionId The session id.
-	 * @param userId The user id.
-	 */
-	public suspend fun removeUserFromSession(sessionId: String, userId: UUID): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		pathParameters["userId"] = userId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.delete<Unit>("/Sessions/{sessionId}/User/{userId}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Instructs a session to browse to an item or view.
-	 *
-	 * @param sessionId The session Id.
-	 * @param itemType The type of item to browse to.
-	 * @param itemId The Id of the item.
-	 * @param itemName The name of the item.
-	 */
-	public suspend fun displayContent(
-		sessionId: String,
-		itemType: String,
-		itemId: String,
-		itemName: String
-	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["itemType"] = itemType
-		queryParameters["itemId"] = itemId
-		queryParameters["itemName"] = itemName
-		val data = null
-		val response = api.post<Unit>("/Sessions/{sessionId}/Viewing", pathParameters, queryParameters,
 				data)
 		return response
 	}
@@ -311,6 +203,23 @@ public class SessionApi(
 	}
 
 	/**
+	 * Removes an additional user from a session.
+	 *
+	 * @param sessionId The session id.
+	 * @param userId The user id.
+	 */
+	public suspend fun removeUserFromSession(sessionId: String, userId: UUID): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["sessionId"] = sessionId
+		pathParameters["userId"] = userId
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.delete<Unit>("/Sessions/{sessionId}/User/{userId}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Reports that a session has ended.
 	 */
 	public suspend fun reportSessionEnded(): Response<Unit> {
@@ -334,6 +243,97 @@ public class SessionApi(
 		queryParameters["itemId"] = itemId
 		val data = null
 		val response = api.post<Unit>("/Sessions/Viewing", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Issues a full general command to a client.
+	 *
+	 * @param sessionId The session id.
+	 */
+	public suspend fun sendFullGeneralCommand(sessionId: String, `data`: GeneralCommand):
+			Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["sessionId"] = sessionId
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Sessions/{sessionId}/Command", pathParameters, queryParameters,
+				data)
+		return response
+	}
+
+	/**
+	 * Issues a general command to a client.
+	 *
+	 * @param sessionId The session id.
+	 * @param command The command to send.
+	 */
+	public suspend fun sendGeneralCommand(sessionId: String, command: GeneralCommandType):
+			Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["sessionId"] = sessionId
+		pathParameters["command"] = command
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.post<Unit>("/Sessions/{sessionId}/Command/{command}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Issues a command to a client to display a message to the user.
+	 *
+	 * @param sessionId The session id.
+	 */
+	public suspend fun sendMessageCommand(sessionId: String, `data`: MessageCommand): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["sessionId"] = sessionId
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Sessions/{sessionId}/Message", pathParameters, queryParameters,
+				data)
+		return response
+	}
+
+	/**
+	 * Issues a playstate command to a client.
+	 *
+	 * @param sessionId The session id.
+	 * @param command The MediaBrowser.Model.Session.PlaystateCommand.
+	 * @param seekPositionTicks The optional position ticks.
+	 * @param controllingUserId The optional controlling user id.
+	 */
+	public suspend fun sendPlaystateCommand(
+		sessionId: String,
+		command: PlaystateCommand,
+		seekPositionTicks: Long? = null,
+		controllingUserId: String? = null
+	): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["sessionId"] = sessionId
+		pathParameters["command"] = command
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["seekPositionTicks"] = seekPositionTicks
+		queryParameters["controllingUserId"] = controllingUserId
+		val data = null
+		val response = api.post<Unit>("/Sessions/{sessionId}/Playing/{command}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Issues a system command to a client.
+	 *
+	 * @param sessionId The session id.
+	 * @param command The command to send.
+	 */
+	public suspend fun sendSystemCommand(sessionId: String, command: GeneralCommandType):
+			Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["sessionId"] = sessionId
+		pathParameters["command"] = command
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.post<Unit>("/Sessions/{sessionId}/System/{command}", pathParameters,
+				queryParameters, data)
 		return response
 	}
 }

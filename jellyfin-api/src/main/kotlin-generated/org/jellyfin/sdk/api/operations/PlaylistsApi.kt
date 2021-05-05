@@ -25,6 +25,29 @@ public class PlaylistsApi(
 	private val api: KtorClient
 ) {
 	/**
+	 * Adds items to a playlist.
+	 *
+	 * @param playlistId The playlist id.
+	 * @param ids Item id, comma delimited.
+	 * @param userId The userId.
+	 */
+	public suspend fun addToPlaylist(
+		playlistId: UUID,
+		ids: List<UUID>? = emptyList(),
+		userId: UUID? = null
+	): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["playlistId"] = playlistId
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["ids"] = ids
+		queryParameters["userId"] = userId
+		val data = null
+		val response = api.post<Unit>("/Playlists/{playlistId}/Items", pathParameters, queryParameters,
+				data)
+		return response
+	}
+
+	/**
 	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher
 	 * precedence.
 	 * Query parameters are obsolete.
@@ -110,47 +133,6 @@ public class PlaylistsApi(
 	}
 
 	/**
-	 * Adds items to a playlist.
-	 *
-	 * @param playlistId The playlist id.
-	 * @param ids Item id, comma delimited.
-	 * @param userId The userId.
-	 */
-	public suspend fun addToPlaylist(
-		playlistId: UUID,
-		ids: List<UUID>? = emptyList(),
-		userId: UUID? = null
-	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["playlistId"] = playlistId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["ids"] = ids
-		queryParameters["userId"] = userId
-		val data = null
-		val response = api.post<Unit>("/Playlists/{playlistId}/Items", pathParameters, queryParameters,
-				data)
-		return response
-	}
-
-	/**
-	 * Removes items from a playlist.
-	 *
-	 * @param playlistId The playlist id.
-	 * @param entryIds The item ids, comma delimited.
-	 */
-	public suspend fun removeFromPlaylist(playlistId: String, entryIds: List<String>? = emptyList()):
-			Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["playlistId"] = playlistId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["entryIds"] = entryIds
-		val data = null
-		val response = api.delete<Unit>("/Playlists/{playlistId}/Items", pathParameters, queryParameters,
-				data)
-		return response
-	}
-
-	/**
 	 * Moves a playlist item.
 	 *
 	 * @param playlistId The playlist id.
@@ -170,6 +152,24 @@ public class PlaylistsApi(
 		val data = null
 		val response = api.post<Unit>("/Playlists/{playlistId}/Items/{itemId}/Move/{newIndex}",
 				pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Removes items from a playlist.
+	 *
+	 * @param playlistId The playlist id.
+	 * @param entryIds The item ids, comma delimited.
+	 */
+	public suspend fun removeFromPlaylist(playlistId: String, entryIds: List<String>? = emptyList()):
+			Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["playlistId"] = playlistId
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["entryIds"] = entryIds
+		val data = null
+		val response = api.delete<Unit>("/Playlists/{playlistId}/Items", pathParameters, queryParameters,
+				data)
 		return response
 	}
 }

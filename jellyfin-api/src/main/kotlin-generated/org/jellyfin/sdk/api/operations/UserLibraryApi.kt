@@ -23,53 +23,19 @@ public class UserLibraryApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Marks an item as a favorite.
+	 * Deletes a user's saved personal rating for an item.
 	 *
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun markFavoriteItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
+	public suspend fun deleteUserItemRating(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<UserItemDataDto>("/Users/{userId}/FavoriteItems/{itemId}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Unmarks item as a favorite.
-	 *
-	 * @param userId User id.
-	 * @param itemId Item id.
-	 */
-	public suspend fun unmarkFavoriteItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.delete<UserItemDataDto>("/Users/{userId}/FavoriteItems/{itemId}",
+		val response = api.delete<UserItemDataDto>("/Users/{userId}/Items/{itemId}/Rating",
 				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets an item from a user's library.
-	 *
-	 * @param userId User id.
-	 * @param itemId Item id.
-	 */
-	public suspend fun getItem(userId: UUID, itemId: UUID): Response<BaseItemDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<BaseItemDto>("/Users/{userId}/Items/{itemId}", pathParameters,
-				queryParameters, data)
 		return response
 	}
 
@@ -91,78 +57,19 @@ public class UserLibraryApi(
 	}
 
 	/**
-	 * Gets local trailers for an item.
+	 * Gets an item from a user's library.
 	 *
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun getLocalTrailers(userId: UUID, itemId: UUID): Response<List<BaseItemDto>> {
+	public suspend fun getItem(userId: UUID, itemId: UUID): Response<BaseItemDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<BaseItemDto>>("/Users/{userId}/Items/{itemId}/LocalTrailers",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Updates a user's rating for an item.
-	 *
-	 * @param userId User id.
-	 * @param itemId Item id.
-	 * @param likes Whether this
-	 * M:Jellyfin.Api.Controllers.UserLibraryController.UpdateUserItemRating(System.Guid,System.Guid,System.Nullable{System.Boolean})
-	 * is likes.
-	 */
-	public suspend fun updateUserItemRating(
-		userId: UUID,
-		itemId: UUID,
-		likes: Boolean? = null
-	): Response<UserItemDataDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["likes"] = likes
-		val data = null
-		val response = api.post<UserItemDataDto>("/Users/{userId}/Items/{itemId}/Rating", pathParameters,
+		val response = api.`get`<BaseItemDto>("/Users/{userId}/Items/{itemId}", pathParameters,
 				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Deletes a user's saved personal rating for an item.
-	 *
-	 * @param userId User id.
-	 * @param itemId Item id.
-	 */
-	public suspend fun deleteUserItemRating(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.delete<UserItemDataDto>("/Users/{userId}/Items/{itemId}/Rating",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets special features for an item.
-	 *
-	 * @param userId User id.
-	 * @param itemId Item id.
-	 */
-	public suspend fun getSpecialFeatures(userId: UUID, itemId: UUID): Response<List<BaseItemDto>> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<List<BaseItemDto>>("/Users/{userId}/Items/{itemId}/SpecialFeatures",
-				pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -216,6 +123,23 @@ public class UserLibraryApi(
 	}
 
 	/**
+	 * Gets local trailers for an item.
+	 *
+	 * @param userId User id.
+	 * @param itemId Item id.
+	 */
+	public suspend fun getLocalTrailers(userId: UUID, itemId: UUID): Response<List<BaseItemDto>> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["userId"] = userId
+		pathParameters["itemId"] = itemId
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<List<BaseItemDto>>("/Users/{userId}/Items/{itemId}/LocalTrailers",
+				pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Gets the root folder from a user's library.
 	 *
 	 * @param userId User id.
@@ -226,6 +150,82 @@ public class UserLibraryApi(
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<BaseItemDto>("/Users/{userId}/Items/Root", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets special features for an item.
+	 *
+	 * @param userId User id.
+	 * @param itemId Item id.
+	 */
+	public suspend fun getSpecialFeatures(userId: UUID, itemId: UUID): Response<List<BaseItemDto>> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["userId"] = userId
+		pathParameters["itemId"] = itemId
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<List<BaseItemDto>>("/Users/{userId}/Items/{itemId}/SpecialFeatures",
+				pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Marks an item as a favorite.
+	 *
+	 * @param userId User id.
+	 * @param itemId Item id.
+	 */
+	public suspend fun markFavoriteItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["userId"] = userId
+		pathParameters["itemId"] = itemId
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.post<UserItemDataDto>("/Users/{userId}/FavoriteItems/{itemId}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Unmarks item as a favorite.
+	 *
+	 * @param userId User id.
+	 * @param itemId Item id.
+	 */
+	public suspend fun unmarkFavoriteItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["userId"] = userId
+		pathParameters["itemId"] = itemId
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.delete<UserItemDataDto>("/Users/{userId}/FavoriteItems/{itemId}",
+				pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Updates a user's rating for an item.
+	 *
+	 * @param userId User id.
+	 * @param itemId Item id.
+	 * @param likes Whether this
+	 * M:Jellyfin.Api.Controllers.UserLibraryController.UpdateUserItemRating(System.Guid,System.Guid,System.Nullable{System.Boolean})
+	 * is likes.
+	 */
+	public suspend fun updateUserItemRating(
+		userId: UUID,
+		itemId: UUID,
+		likes: Boolean? = null
+	): Response<UserItemDataDto> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["userId"] = userId
+		pathParameters["itemId"] = itemId
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["likes"] = likes
+		val data = null
+		val response = api.post<UserItemDataDto>("/Users/{userId}/Items/{itemId}/Rating", pathParameters,
 				queryParameters, data)
 		return response
 	}

@@ -19,23 +19,6 @@ public class ScheduledTasksApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Get tasks.
-	 *
-	 * @param isHidden Optional filter tasks that are hidden, or not.
-	 * @param isEnabled Optional filter tasks that are enabled, or not.
-	 */
-	public suspend fun getTasks(isHidden: Boolean? = null, isEnabled: Boolean? = null):
-			Response<List<TaskInfo>> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["isHidden"] = isHidden
-		queryParameters["isEnabled"] = isEnabled
-		val data = null
-		val response = api.`get`<List<TaskInfo>>("/ScheduledTasks", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Get task by id.
 	 *
 	 * @param taskId Task Id.
@@ -51,16 +34,19 @@ public class ScheduledTasksApi(
 	}
 
 	/**
-	 * Update specified task triggers.
+	 * Get tasks.
 	 *
-	 * @param taskId Task Id.
+	 * @param isHidden Optional filter tasks that are hidden, or not.
+	 * @param isEnabled Optional filter tasks that are enabled, or not.
 	 */
-	public suspend fun updateTask(taskId: String, `data`: List<TaskTriggerInfo>): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["taskId"] = taskId
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/ScheduledTasks/{taskId}/Triggers", pathParameters,
-				queryParameters, data)
+	public suspend fun getTasks(isHidden: Boolean? = null, isEnabled: Boolean? = null):
+			Response<List<TaskInfo>> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["isHidden"] = isHidden
+		queryParameters["isEnabled"] = isEnabled
+		val data = null
+		val response = api.`get`<List<TaskInfo>>("/ScheduledTasks", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -90,6 +76,20 @@ public class ScheduledTasksApi(
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<Unit>("/ScheduledTasks/Running/{taskId}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Update specified task triggers.
+	 *
+	 * @param taskId Task Id.
+	 */
+	public suspend fun updateTask(taskId: String, `data`: List<TaskTriggerInfo>): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["taskId"] = taskId
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/ScheduledTasks/{taskId}/Triggers", pathParameters,
 				queryParameters, data)
 		return response
 	}

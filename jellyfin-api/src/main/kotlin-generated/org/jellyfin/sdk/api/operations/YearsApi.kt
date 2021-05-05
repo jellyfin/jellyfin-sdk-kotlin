@@ -23,6 +23,22 @@ public class YearsApi(
 	private val api: KtorClient
 ) {
 	/**
+	 * Gets a year.
+	 *
+	 * @param year The year.
+	 * @param userId Optional. Filter by user id, and attach user data.
+	 */
+	public suspend fun getYear(year: Int, userId: UUID? = null): Response<BaseItemDto> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["year"] = year
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["userId"] = userId
+		val data = null
+		val response = api.`get`<BaseItemDto>("/Years/{year}", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Get years.
 	 *
 	 * @param startIndex Skips over a given number of items within the results. Use for paging.
@@ -82,22 +98,6 @@ public class YearsApi(
 		queryParameters["enableImages"] = enableImages
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Years", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets a year.
-	 *
-	 * @param year The year.
-	 * @param userId Optional. Filter by user id, and attach user data.
-	 */
-	public suspend fun getYear(year: Int, userId: UUID? = null): Response<BaseItemDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["year"] = year
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		val data = null
-		val response = api.`get`<BaseItemDto>("/Years/{year}", pathParameters, queryParameters, data)
 		return response
 	}
 }

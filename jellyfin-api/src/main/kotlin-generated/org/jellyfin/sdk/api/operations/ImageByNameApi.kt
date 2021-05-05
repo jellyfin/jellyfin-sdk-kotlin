@@ -18,18 +18,6 @@ public class ImageByNameApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Get all general images.
-	 */
-	public suspend fun getGeneralImages(): Response<List<ImageByNameInfo>> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<List<ImageByNameInfo>>("/Images/General", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Get General Image.
 	 *
 	 * @param name The name of the image.
@@ -67,13 +55,13 @@ public class ImageByNameApi(
 	}
 
 	/**
-	 * Get all media info images.
+	 * Get all general images.
 	 */
-	public suspend fun getMediaInfoImages(): Response<List<ImageByNameInfo>> {
+	public suspend fun getGeneralImages(): Response<List<ImageByNameInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<ImageByNameInfo>>("/Images/MediaInfo", pathParameters,
+		val response = api.`get`<List<ImageByNameInfo>>("/Images/General", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -116,13 +104,13 @@ public class ImageByNameApi(
 	}
 
 	/**
-	 * Get all general images.
+	 * Get all media info images.
 	 */
-	public suspend fun getRatingImages(): Response<List<ImageByNameInfo>> {
+	public suspend fun getMediaInfoImages(): Response<List<ImageByNameInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<ImageByNameInfo>>("/Images/Ratings", pathParameters,
+		val response = api.`get`<List<ImageByNameInfo>>("/Images/MediaInfo", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -162,5 +150,17 @@ public class ImageByNameApi(
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Images/Ratings/{theme}/{name}", pathParameters, queryParameters,
 				includeCredentials)
+	}
+
+	/**
+	 * Get all general images.
+	 */
+	public suspend fun getRatingImages(): Response<List<ImageByNameInfo>> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<List<ImageByNameInfo>>("/Images/Ratings", pathParameters,
+				queryParameters, data)
+		return response
 	}
 }

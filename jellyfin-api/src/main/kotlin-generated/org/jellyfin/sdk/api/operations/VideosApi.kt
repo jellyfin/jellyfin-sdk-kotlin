@@ -26,6 +26,21 @@ public class VideosApi(
 	private val api: KtorClient
 ) {
 	/**
+	 * Removes alternate video sources.
+	 *
+	 * @param itemId The item id.
+	 */
+	public suspend fun deleteAlternateSources(itemId: UUID): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["itemId"] = itemId
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.delete<Unit>("/Videos/{itemId}/AlternateSources", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Gets additional parts for a video.
 	 *
 	 * @param itemId The item id.
@@ -40,21 +55,6 @@ public class VideosApi(
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Videos/{itemId}/AdditionalParts",
 				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Removes alternate video sources.
-	 *
-	 * @param itemId The item id.
-	 */
-	public suspend fun deleteAlternateSources(itemId: UUID): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.delete<Unit>("/Videos/{itemId}/AlternateSources", pathParameters,
-				queryParameters, data)
 		return response
 	}
 

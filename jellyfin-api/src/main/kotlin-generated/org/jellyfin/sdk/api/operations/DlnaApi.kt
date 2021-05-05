@@ -18,53 +18,12 @@ public class DlnaApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Get profile infos.
-	 */
-	public suspend fun getProfileInfos(): Response<List<DeviceProfileInfo>> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<List<DeviceProfileInfo>>("/Dlna/ProfileInfos", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Creates a profile.
 	 */
 	public suspend fun createProfile(`data`: DeviceProfile? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Dlna/Profiles", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets a single profile.
-	 *
-	 * @param profileId Profile Id.
-	 */
-	public suspend fun getProfile(profileId: String): Response<DeviceProfile> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["profileId"] = profileId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<DeviceProfile>("/Dlna/Profiles/{profileId}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Updates a profile.
-	 *
-	 * @param profileId Profile id.
-	 */
-	public suspend fun updateProfile(profileId: String, `data`: DeviceProfile? = null):
-			Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["profileId"] = profileId
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Dlna/Profiles/{profileId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -92,6 +51,47 @@ public class DlnaApi(
 		val data = null
 		val response = api.`get`<DeviceProfile>("/Dlna/Profiles/Default", pathParameters, queryParameters,
 				data)
+		return response
+	}
+
+	/**
+	 * Gets a single profile.
+	 *
+	 * @param profileId Profile Id.
+	 */
+	public suspend fun getProfile(profileId: String): Response<DeviceProfile> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["profileId"] = profileId
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<DeviceProfile>("/Dlna/Profiles/{profileId}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Get profile infos.
+	 */
+	public suspend fun getProfileInfos(): Response<List<DeviceProfileInfo>> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<List<DeviceProfileInfo>>("/Dlna/ProfileInfos", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Updates a profile.
+	 *
+	 * @param profileId Profile id.
+	 */
+	public suspend fun updateProfile(profileId: String, `data`: DeviceProfile? = null):
+			Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["profileId"] = profileId
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Dlna/Profiles/{profileId}", pathParameters, queryParameters, data)
 		return response
 	}
 }

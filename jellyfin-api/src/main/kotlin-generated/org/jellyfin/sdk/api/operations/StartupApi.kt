@@ -29,24 +29,13 @@ public class StartupApi(
 	}
 
 	/**
-	 * Gets the initial startup wizard configuration.
+	 * Gets the first user.
 	 */
-	public suspend fun getStartupConfiguration(): Response<StartupConfigurationDto> {
+	public suspend fun getFirstUser(): Response<StartupUserDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<StartupConfigurationDto>("/Startup/Configuration", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Sets the initial startup wizard configuration.
-	 */
-	public suspend fun updateInitialConfiguration(`data`: StartupConfigurationDto): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Startup/Configuration", pathParameters, queryParameters, data)
+		val response = api.`get`<StartupUserDto>("/Startup/User", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -63,6 +52,18 @@ public class StartupApi(
 	}
 
 	/**
+	 * Gets the initial startup wizard configuration.
+	 */
+	public suspend fun getStartupConfiguration(): Response<StartupConfigurationDto> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<StartupConfigurationDto>("/Startup/Configuration", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Sets remote access and UPnP.
 	 */
 	public suspend fun setRemoteAccess(`data`: StartupRemoteAccessDto): Response<Unit> {
@@ -73,13 +74,12 @@ public class StartupApi(
 	}
 
 	/**
-	 * Gets the first user.
+	 * Sets the initial startup wizard configuration.
 	 */
-	public suspend fun getFirstUser(): Response<StartupUserDto> {
+	public suspend fun updateInitialConfiguration(`data`: StartupConfigurationDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<StartupUserDto>("/Startup/User", pathParameters, queryParameters, data)
+		val response = api.post<Unit>("/Startup/Configuration", pathParameters, queryParameters, data)
 		return response
 	}
 

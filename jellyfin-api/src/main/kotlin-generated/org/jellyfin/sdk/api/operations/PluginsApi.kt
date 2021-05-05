@@ -24,6 +24,107 @@ public class PluginsApi(
 	private val api: KtorClient
 ) {
 	/**
+	 * Disable a plugin.
+	 *
+	 * @param pluginId Plugin id.
+	 * @param version Plugin version.
+	 */
+	public suspend fun disablePlugin(pluginId: UUID, version: Version): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["pluginId"] = pluginId
+		pathParameters["version"] = version
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.post<Unit>("/Plugins/{pluginId}/{version}/Disable", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Enables a disabled plugin.
+	 *
+	 * @param pluginId Plugin id.
+	 * @param version Plugin version.
+	 */
+	public suspend fun enablePlugin(pluginId: UUID, version: Version): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["pluginId"] = pluginId
+		pathParameters["version"] = version
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.post<Unit>("/Plugins/{pluginId}/{version}/Enable", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets plugin configuration.
+	 *
+	 * @param pluginId Plugin id.
+	 */
+	public suspend fun getPluginConfiguration(pluginId: UUID): Response<BasePluginConfiguration> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["pluginId"] = pluginId
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<BasePluginConfiguration>("/Plugins/{pluginId}/Configuration",
+				pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets a plugin's image.
+	 *
+	 * @param pluginId Plugin id.
+	 * @param version Plugin version.
+	 */
+	public suspend fun getPluginImage(pluginId: UUID, version: Version): Response<ByteReadChannel> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["pluginId"] = pluginId
+		pathParameters["version"] = version
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<ByteReadChannel>("/Plugins/{pluginId}/{version}/Image", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets a plugin's image.
+	 *
+	 * @param pluginId Plugin id.
+	 * @param version Plugin version.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
+	 */
+	public fun getPluginImageUrl(
+		pluginId: UUID,
+		version: Version,
+		includeCredentials: Boolean = true
+	): String {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["pluginId"] = pluginId
+		pathParameters["version"] = version
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/Plugins/{pluginId}/{version}/Image", pathParameters, queryParameters,
+				includeCredentials)
+	}
+
+	/**
+	 * Gets a plugin's manifest.
+	 *
+	 * @param pluginId Plugin id.
+	 */
+	public suspend fun getPluginManifest(pluginId: UUID): Response<Unit> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["pluginId"] = pluginId
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.post<Unit>("/Plugins/{pluginId}/Manifest", pathParameters, queryParameters,
+				data)
+		return response
+	}
+
+	/**
 	 * Gets a list of currently installed plugins.
 	 */
 	public suspend fun getPlugins(): Response<List<PluginInfo>> {
@@ -67,92 +168,6 @@ public class PluginsApi(
 	}
 
 	/**
-	 * Disable a plugin.
-	 *
-	 * @param pluginId Plugin id.
-	 * @param version Plugin version.
-	 */
-	public suspend fun disablePlugin(pluginId: UUID, version: Version): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
-		pathParameters["version"] = version
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.post<Unit>("/Plugins/{pluginId}/{version}/Disable", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Enables a disabled plugin.
-	 *
-	 * @param pluginId Plugin id.
-	 * @param version Plugin version.
-	 */
-	public suspend fun enablePlugin(pluginId: UUID, version: Version): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
-		pathParameters["version"] = version
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.post<Unit>("/Plugins/{pluginId}/{version}/Enable", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets a plugin's image.
-	 *
-	 * @param pluginId Plugin id.
-	 * @param version Plugin version.
-	 */
-	public suspend fun getPluginImage(pluginId: UUID, version: Version): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
-		pathParameters["version"] = version
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Plugins/{pluginId}/{version}/Image", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets a plugin's image.
-	 *
-	 * @param pluginId Plugin id.
-	 * @param version Plugin version.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
-	 */
-	public fun getPluginImageUrl(
-		pluginId: UUID,
-		version: Version,
-		includeCredentials: Boolean = true
-	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
-		pathParameters["version"] = version
-		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Plugins/{pluginId}/{version}/Image", pathParameters, queryParameters,
-				includeCredentials)
-	}
-
-	/**
-	 * Gets plugin configuration.
-	 *
-	 * @param pluginId Plugin id.
-	 */
-	public suspend fun getPluginConfiguration(pluginId: UUID): Response<BasePluginConfiguration> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<BasePluginConfiguration>("/Plugins/{pluginId}/Configuration",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Accepts plugin configuration as JSON body.
 	 *
 	 * @param pluginId Plugin id.
@@ -164,21 +179,6 @@ public class PluginsApi(
 		val data = null
 		val response = api.post<Unit>("/Plugins/{pluginId}/Configuration", pathParameters,
 				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets a plugin's manifest.
-	 *
-	 * @param pluginId Plugin id.
-	 */
-	public suspend fun getPluginManifest(pluginId: UUID): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.post<Unit>("/Plugins/{pluginId}/Manifest", pathParameters, queryParameters,
-				data)
 		return response
 	}
 

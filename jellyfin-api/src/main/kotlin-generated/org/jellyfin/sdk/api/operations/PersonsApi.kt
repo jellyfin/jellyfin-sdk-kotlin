@@ -23,6 +23,22 @@ public class PersonsApi(
 	private val api: KtorClient
 ) {
 	/**
+	 * Get person by name.
+	 *
+	 * @param name Person name.
+	 * @param userId Optional. Filter by user id, and attach user data.
+	 */
+	public suspend fun getPerson(name: String, userId: UUID? = null): Response<BaseItemDto> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["name"] = name
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["userId"] = userId
+		val data = null
+		val response = api.`get`<BaseItemDto>("/Persons/{name}", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Gets all persons.
 	 *
 	 * @param limit Optional. The maximum number of records to return.
@@ -76,22 +92,6 @@ public class PersonsApi(
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Persons", pathParameters, queryParameters,
 				data)
-		return response
-	}
-
-	/**
-	 * Get person by name.
-	 *
-	 * @param name Person name.
-	 * @param userId Optional. Filter by user id, and attach user data.
-	 */
-	public suspend fun getPerson(name: String, userId: UUID? = null): Response<BaseItemDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		val data = null
-		val response = api.`get`<BaseItemDto>("/Persons/{name}", pathParameters, queryParameters, data)
 		return response
 	}
 }

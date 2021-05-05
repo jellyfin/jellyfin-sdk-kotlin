@@ -23,35 +23,14 @@ public class ChannelsApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Gets available channels.
-	 *
-	 * @param userId User Id to filter by. Use System.Guid.Empty to not filter by user.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
-	 * @param limit Optional. The maximum number of records to return.
-	 * @param supportsLatestItems Optional. Filter by channels that support getting latest items.
-	 * @param supportsMediaDeletion Optional. Filter by channels that support media deletion.
-	 * @param isFavorite Optional. Filter by channels that are favorite.
+	 * Get all channel features.
 	 */
-	public suspend fun getChannels(
-		userId: UUID? = null,
-		startIndex: Int? = null,
-		limit: Int? = null,
-		supportsLatestItems: Boolean? = null,
-		supportsMediaDeletion: Boolean? = null,
-		isFavorite: Boolean? = null
-	): Response<BaseItemDtoQueryResult> {
+	public suspend fun getAllChannelFeatures(): Response<List<ChannelFeatures>> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["supportsLatestItems"] = supportsLatestItems
-		queryParameters["supportsMediaDeletion"] = supportsMediaDeletion
-		queryParameters["isFavorite"] = isFavorite
+		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Channels", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<List<ChannelFeatures>>("/Channels/Features", pathParameters,
+				queryParameters, data)
 		return response
 	}
 
@@ -115,14 +94,35 @@ public class ChannelsApi(
 	}
 
 	/**
-	 * Get all channel features.
+	 * Gets available channels.
+	 *
+	 * @param userId User Id to filter by. Use System.Guid.Empty to not filter by user.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
+	 * dropped from the results.
+	 * @param limit Optional. The maximum number of records to return.
+	 * @param supportsLatestItems Optional. Filter by channels that support getting latest items.
+	 * @param supportsMediaDeletion Optional. Filter by channels that support media deletion.
+	 * @param isFavorite Optional. Filter by channels that are favorite.
 	 */
-	public suspend fun getAllChannelFeatures(): Response<List<ChannelFeatures>> {
+	public suspend fun getChannels(
+		userId: UUID? = null,
+		startIndex: Int? = null,
+		limit: Int? = null,
+		supportsLatestItems: Boolean? = null,
+		supportsMediaDeletion: Boolean? = null,
+		isFavorite: Boolean? = null
+	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["userId"] = userId
+		queryParameters["startIndex"] = startIndex
+		queryParameters["limit"] = limit
+		queryParameters["supportsLatestItems"] = supportsLatestItems
+		queryParameters["supportsMediaDeletion"] = supportsMediaDeletion
+		queryParameters["isFavorite"] = isFavorite
 		val data = null
-		val response = api.`get`<List<ChannelFeatures>>("/Channels/Features", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Channels", pathParameters, queryParameters,
+				data)
 		return response
 	}
 

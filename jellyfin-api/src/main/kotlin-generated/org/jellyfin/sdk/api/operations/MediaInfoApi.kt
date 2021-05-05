@@ -25,6 +25,48 @@ public class MediaInfoApi(
 	private val api: KtorClient
 ) {
 	/**
+	 * Closes a media source.
+	 *
+	 * @param liveStreamId The livestream id.
+	 */
+	public suspend fun closeLiveStream(liveStreamId: String): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["liveStreamId"] = liveStreamId
+		val data = null
+		val response = api.post<Unit>("/LiveStreams/Close", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Tests the network with a request with the size of the bitrate.
+	 *
+	 * @param size The bitrate. Defaults to 102400.
+	 */
+	public suspend fun getBitrateTestBytes(size: Int = 102400): Response<ByteReadChannel> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["size"] = size
+		val data = null
+		val response = api.`get`<ByteReadChannel>("/Playback/BitrateTest", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Tests the network with a request with the size of the bitrate.
+	 *
+	 * @param size The bitrate. Defaults to 102400.
+	 * @param includeCredentials Add the access token to the url to make an authenticated request.
+	 */
+	public fun getBitrateTestBytesUrl(size: Int = 102400, includeCredentials: Boolean = true): String {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["size"] = size
+		return api.createUrl("/Playback/BitrateTest", pathParameters, queryParameters, includeCredentials)
+	}
+
+	/**
 	 * Gets live playback media info for an item.
 	 *
 	 * @param itemId The item id.
@@ -121,20 +163,6 @@ public class MediaInfoApi(
 	}
 
 	/**
-	 * Closes a media source.
-	 *
-	 * @param liveStreamId The livestream id.
-	 */
-	public suspend fun closeLiveStream(liveStreamId: String): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["liveStreamId"] = liveStreamId
-		val data = null
-		val response = api.post<Unit>("/LiveStreams/Close", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Opens a media source.
 	 *
 	 * @param openToken The open token.
@@ -179,33 +207,5 @@ public class MediaInfoApi(
 		val response = api.post<LiveStreamResponse>("/LiveStreams/Open", pathParameters, queryParameters,
 				data)
 		return response
-	}
-
-	/**
-	 * Tests the network with a request with the size of the bitrate.
-	 *
-	 * @param size The bitrate. Defaults to 102400.
-	 */
-	public suspend fun getBitrateTestBytes(size: Int = 102400): Response<ByteReadChannel> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["size"] = size
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Playback/BitrateTest", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Tests the network with a request with the size of the bitrate.
-	 *
-	 * @param size The bitrate. Defaults to 102400.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
-	 */
-	public fun getBitrateTestBytesUrl(size: Int = 102400, includeCredentials: Boolean = true): String {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["size"] = size
-		return api.createUrl("/Playback/BitrateTest", pathParameters, queryParameters, includeCredentials)
 	}
 }

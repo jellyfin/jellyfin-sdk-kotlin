@@ -18,20 +18,6 @@ public class DashboardApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Gets a dashboard configuration page.
-	 *
-	 * @param name The name of the page.
-	 */
-	public suspend fun getDashboardConfigurationPage(name: String? = null): Response<String> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["name"] = name
-		val data = null
-		val response = api.`get`<String>("/web/ConfigurationPage", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Gets the configuration pages.
 	 *
 	 * @param enableInMainMenu Whether to enable in the main menu.
@@ -46,6 +32,20 @@ public class DashboardApi(
 		val data = null
 		val response = api.`get`<List<ConfigurationPageInfo>>("/web/ConfigurationPages", pathParameters,
 				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets a dashboard configuration page.
+	 *
+	 * @param name The name of the page.
+	 */
+	public suspend fun getDashboardConfigurationPage(name: String? = null): Response<String> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["name"] = name
+		val data = null
+		val response = api.`get`<String>("/web/ConfigurationPage", pathParameters, queryParameters, data)
 		return response
 	}
 }

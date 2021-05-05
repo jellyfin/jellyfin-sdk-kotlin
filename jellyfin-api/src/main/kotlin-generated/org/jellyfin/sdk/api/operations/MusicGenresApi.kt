@@ -23,6 +23,23 @@ public class MusicGenresApi(
 	private val api: KtorClient
 ) {
 	/**
+	 * Gets a music genre, by name.
+	 *
+	 * @param genreName The genre name.
+	 * @param userId Optional. Filter by user id, and attach user data.
+	 */
+	public suspend fun getMusicGenre(genreName: String, userId: UUID? = null): Response<BaseItemDto> {
+		val pathParameters = mutableMapOf<String, Any?>()
+		pathParameters["genreName"] = genreName
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["userId"] = userId
+		val data = null
+		val response = api.`get`<BaseItemDto>("/MusicGenres/{genreName}", pathParameters, queryParameters,
+				data)
+		return response
+	}
+
+	/**
 	 * Gets all music genres from a given item, folder, or the entire library.
 	 *
 	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
@@ -88,23 +105,6 @@ public class MusicGenresApi(
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/MusicGenres", pathParameters, queryParameters,
-				data)
-		return response
-	}
-
-	/**
-	 * Gets a music genre, by name.
-	 *
-	 * @param genreName The genre name.
-	 * @param userId Optional. Filter by user id, and attach user data.
-	 */
-	public suspend fun getMusicGenre(genreName: String, userId: UUID? = null): Response<BaseItemDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["genreName"] = genreName
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		val data = null
-		val response = api.`get`<BaseItemDto>("/MusicGenres/{genreName}", pathParameters, queryParameters,
 				data)
 		return response
 	}

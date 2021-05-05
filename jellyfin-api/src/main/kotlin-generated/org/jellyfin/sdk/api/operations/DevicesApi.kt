@@ -20,23 +20,6 @@ public class DevicesApi(
 	private val api: KtorClient
 ) {
 	/**
-	 * Get Devices.
-	 *
-	 * @param supportsSync Gets or sets a value indicating whether [supports synchronize].
-	 * @param userId Gets or sets the user identifier.
-	 */
-	public suspend fun getDevices(supportsSync: Boolean? = null, userId: UUID? = null):
-			Response<DeviceInfoQueryResult> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["supportsSync"] = supportsSync
-		queryParameters["userId"] = userId
-		val data = null
-		val response = api.`get`<DeviceInfoQueryResult>("/Devices", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Deletes a device.
 	 *
 	 * @param id Device Id.
@@ -75,6 +58,23 @@ public class DevicesApi(
 		queryParameters["id"] = id
 		val data = null
 		val response = api.`get`<DeviceOptions>("/Devices/Options", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Get Devices.
+	 *
+	 * @param supportsSync Gets or sets a value indicating whether [supports synchronize].
+	 * @param userId Gets or sets the user identifier.
+	 */
+	public suspend fun getDevices(supportsSync: Boolean? = null, userId: UUID? = null):
+			Response<DeviceInfoQueryResult> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["supportsSync"] = supportsSync
+		queryParameters["userId"] = userId
+		val data = null
+		val response = api.`get`<DeviceInfoQueryResult>("/Devices", pathParameters, queryParameters, data)
 		return response
 	}
 
