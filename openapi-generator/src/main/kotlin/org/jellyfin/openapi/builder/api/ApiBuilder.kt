@@ -16,7 +16,7 @@ class ApiBuilder(
 ) : Builder<ApiService, JellyFile> {
 	override fun build(data: ApiService): JellyFile = TypeSpec.classBuilder(data.name).apply {
 		// Add "api" value to constructor
-		val apiClientType = ClassName(Packages.API_CLIENT,  Classes.API_CLIENT)
+		val apiClientType = ClassName(Packages.API_CLIENT, Classes.API_CLIENT)
 		addProperty(PropertySpec.builder("api", apiClientType, KModifier.PRIVATE).initializer("api").build())
 		primaryConstructor(FunSpec.constructorBuilder().addParameter("api", apiClientType).build())
 
@@ -41,11 +41,13 @@ class ApiBuilder(
 		}.flatten()
 
 		// Add operations
-		operations.forEach { namedOperation ->
-			addFunction(operationBuilder.build(namedOperation))
+		operations
+			.sortedBy { it.name }
+			.forEach { namedOperation ->
+				addFunction(operationBuilder.build(namedOperation))
 
-			if (operationUrlHooks.any { it.shouldOperationBuildUrlFun(data, namedOperation) })
-				addFunction(operationUrlBuilder.build(namedOperation))
-		}
+				if (operationUrlHooks.any { it.shouldOperationBuildUrlFun(data, namedOperation) })
+					addFunction(operationUrlBuilder.build(namedOperation))
+			}
 	}.build().let { JellyFile(Packages.API, emptySet(), it) }
 }
