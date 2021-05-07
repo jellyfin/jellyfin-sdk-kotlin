@@ -1,0 +1,50 @@
+name: SDK Unstable Branch
+
+on:
+  schedule:
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: unstable-branch
+  cancel-in-progress: true
+
+jobs:
+  unstable-branch-update:
+    runs-on: ubuntu-20.04
+    if: ${{ github.repository == 'jellyfin/jellyfin-sdk-kotlin' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          token: ${{ secrets.GH_TOKEN }}
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: 11
+      - name: Setup Gradle cache
+        uses: actions/cache@v2.1.5
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Run updateApiSpecUnstable and apiDump tasks
+        run: ./gradlew --build-cache --no-daemon --info updateApiSpecUnstable apiDump
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7.2.0
+        with:
+          add: .
+          author_name: jellyfin-bot
+          author_email: team@jellyfin.org
+          branch: openapi-unstable
+          message: 'Update OpenAPI to unstable'
+          pull_strategy: NO-PULL
+          push: origin openapi-unstable --force
