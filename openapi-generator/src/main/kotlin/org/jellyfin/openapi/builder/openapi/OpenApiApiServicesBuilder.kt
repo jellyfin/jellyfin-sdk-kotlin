@@ -55,7 +55,9 @@ class OpenApiApiServicesBuilder(
 
 		operation.parameters?.forEach { parameterSpec ->
 			val parameterName = parameterSpec.name.toCamelCase(from = CaseFormat.CAPITALIZED_CAMEL)
-			val type = openApiTypeBuilder.build(ApiTypePath(serviceName, operationName, parameterName), parameterSpec.schema)
+			val type = openApiTypeBuilder
+				.build(ApiTypePath(serviceName, operationName, parameterName), parameterSpec.schema)
+				.copy(nullable = parameterSpec.required != true)
 
 			when (parameterSpec.`in`) {
 				"path" -> pathParameters
