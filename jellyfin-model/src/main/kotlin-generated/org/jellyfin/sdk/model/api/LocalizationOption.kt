@@ -14,5 +14,5 @@ public data class LocalizationOption(
 	@SerialName("Name")
 	public val name: String? = null,
 	@SerialName("Value")
-	public val value: String? = null
+	public val `value`: String? = null
 )
