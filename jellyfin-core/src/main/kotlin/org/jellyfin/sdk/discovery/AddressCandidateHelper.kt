@@ -21,12 +21,17 @@ public class AddressCandidateHelper(
 		public const val JF_HTTPS_PORT: Int = 8920
 
 		/**
-		 * Default base url for Jellyfin
+		 * HTTP protocol prefix: http://
 		 */
-		public const val JF_BASE_URL: String = "/jellyfin/"
+		public const val PROTOCOL_HTTP: String = "http://"
+
+		/**
+		 * HTTPS protocol prefix: https://
+		 */
+		public const val PROTOCOL_HTTPS: String = "https://"
 	}
 
-	private val candidates = mutableListOf<Url>()
+	private val candidates = mutableSetOf<Url>()
 	private val prioritizeComparator = Comparator<Url> { a, b -> b.score() - a.score() }
 	private val logger = LoggerFactory.getLogger("AddressCandidateHelper")
 
@@ -38,8 +43,8 @@ public class AddressCandidateHelper(
 			candidates.add(URLBuilder().apply {
 				// Ktor doesn't like urls not starting with a protocol
 				// so we default to a http prefix
-				if (!input.startsWith("http://") && !input.startsWith("https://"))
-					takeFrom("http://$input")
+				if (!input.startsWith(PROTOCOL_HTTP) && !input.startsWith(PROTOCOL_HTTPS))
+					takeFrom(PROTOCOL_HTTP + input)
 				else
 					takeFrom(input)
 			}.build())
@@ -87,35 +92,13 @@ public class AddressCandidateHelper(
 	}
 
 	/**
-	 * Add a base url ([JF_BASE_URL]) for each candidate with a root or no path.
-	 */
-	public fun addBaseUrlCandidates() {
-		logger.debug("Adding base url candidates")
-
-		candidates
-			.filter { it.encodedPath.isEmpty() || it.encodedPath == "/" }
-			.forEach {
-				candidates.add(it.copy(encodedPath = JF_BASE_URL))
-			}
-	}
-
-	/**
-	 * Execute the fixes for common mistakes:
-	 *
-	 *   - Protocol
-	 *   - Port
-	 *
-	 * Not included:
-	 *
-	 *   - BaseUrl
+	 * Applies all fixes to the [input].
 	 */
 	public fun addCommonCandidates() {
 		logger.debug("Adding common candidates")
 
 		addProtocolCandidates()
 		addPortCandidates()
-		// Disabled by default since it doesn't affect most users
-		// addBaseUrlCandidates()
 	}
 
 	@Suppress("MagicNumber")
@@ -143,21 +126,13 @@ public class AddressCandidateHelper(
 	}
 
 	/**
-	 * Reorder all candidates based on priority.
+	 * Returns all unique candidates sorted by priority.
 	 *
-	 *   - HTTPS above HTTP
-	 *   - Jellyfin ports above default ports
-	 */
-	public fun prioritize() {
-		logger.debug("Prioritizing candidates")
-		candidates.sortWith(prioritizeComparator)
-	}
-
-	/**
-	 * Get all deduplicated candidate URLs as strings.
-	 * Call [prioritize] before if a sorted list is desired.
+	 * The priority is based on a few rules:
+	 * - HTTPS before HTTP
+	 * - Jellyfin ports before protocol default ports
 	 */
 	public fun getCandidates(): List<String> = candidates
+		.sortedWith(prioritizeComparator)
 		.map { it.toString() }
-		.distinct()
 }
