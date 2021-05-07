@@ -46,7 +46,7 @@ public class UserViewsApi(
 		userId: UUID,
 		includeExternalContent: Boolean? = null,
 		presetViews: List<String>? = emptyList(),
-		includeHidden: Boolean = false
+		includeHidden: Boolean? = false
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId

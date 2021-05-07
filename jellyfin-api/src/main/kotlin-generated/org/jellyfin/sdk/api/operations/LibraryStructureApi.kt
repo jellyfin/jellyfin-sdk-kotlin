@@ -27,7 +27,7 @@ public class LibraryStructureApi(
 	 *
 	 * @param refreshLibrary Whether to refresh the library.
 	 */
-	public suspend fun addMediaPath(refreshLibrary: Boolean = false, `data`: MediaPathDto):
+	public suspend fun addMediaPath(refreshLibrary: Boolean? = false, `data`: MediaPathDto):
 			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -49,7 +49,7 @@ public class LibraryStructureApi(
 		name: String? = null,
 		collectionType: CollectionTypeOptions? = null,
 		paths: List<String>? = emptyList(),
-		refreshLibrary: Boolean = false,
+		refreshLibrary: Boolean? = false,
 		`data`: AddVirtualFolderDto? = null
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
@@ -84,7 +84,7 @@ public class LibraryStructureApi(
 	public suspend fun removeMediaPath(
 		name: String? = null,
 		path: String? = null,
-		refreshLibrary: Boolean = false
+		refreshLibrary: Boolean? = false
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -103,7 +103,7 @@ public class LibraryStructureApi(
 	 * @param name The name of the folder.
 	 * @param refreshLibrary Whether to refresh the library.
 	 */
-	public suspend fun removeVirtualFolder(name: String? = null, refreshLibrary: Boolean = false):
+	public suspend fun removeVirtualFolder(name: String? = null, refreshLibrary: Boolean? = false):
 			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -124,7 +124,7 @@ public class LibraryStructureApi(
 	public suspend fun renameVirtualFolder(
 		name: String? = null,
 		newName: String? = null,
-		refreshLibrary: Boolean = false
+		refreshLibrary: Boolean? = false
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

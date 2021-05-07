@@ -132,9 +132,9 @@ public class SubtitleApi(
 		routeIndex: Int,
 		routeFormat: String,
 		endPositionTicks: Long? = null,
-		copyTimestamps: Boolean = false,
-		addVttTimeMap: Boolean = false,
-		startPositionTicks: Long = 0
+		copyTimestamps: Boolean? = false,
+		addVttTimeMap: Boolean? = false,
+		startPositionTicks: Long? = 0
 	): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["routeItemId"] = routeItemId
@@ -180,9 +180,9 @@ public class SubtitleApi(
 		index: Int? = null,
 		format: String? = null,
 		endPositionTicks: Long? = null,
-		copyTimestamps: Boolean = false,
-		addVttTimeMap: Boolean = false,
-		startPositionTicks: Long = 0
+		copyTimestamps: Boolean? = false,
+		addVttTimeMap: Boolean? = false,
+		startPositionTicks: Long? = 0
 	): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["routeItemId"] = routeItemId
@@ -277,8 +277,8 @@ public class SubtitleApi(
 		routeStartPositionTicks: Long,
 		routeFormat: String,
 		endPositionTicks: Long? = null,
-		copyTimestamps: Boolean = false,
-		addVttTimeMap: Boolean = false
+		copyTimestamps: Boolean? = false,
+		addVttTimeMap: Boolean? = false
 	): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["routeItemId"] = routeItemId
@@ -327,8 +327,8 @@ public class SubtitleApi(
 		startPositionTicks: Long? = null,
 		format: String? = null,
 		endPositionTicks: Long? = null,
-		copyTimestamps: Boolean = false,
-		addVttTimeMap: Boolean = false
+		copyTimestamps: Boolean? = false,
+		addVttTimeMap: Boolean? = false
 	): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["routeItemId"] = routeItemId

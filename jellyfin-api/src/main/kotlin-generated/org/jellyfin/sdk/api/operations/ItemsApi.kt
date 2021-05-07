@@ -230,7 +230,7 @@ public class ItemsApi(
 		nameLessThan: String? = null,
 		studioIds: List<UUID>? = emptyList(),
 		genreIds: List<UUID>? = emptyList(),
-		enableTotalRecordCount: Boolean = true,
+		enableTotalRecordCount: Boolean? = true,
 		enableImages: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
@@ -523,7 +523,7 @@ public class ItemsApi(
 		nameLessThan: String? = null,
 		studioIds: List<UUID>? = emptyList(),
 		genreIds: List<UUID>? = emptyList(),
-		enableTotalRecordCount: Boolean = true,
+		enableTotalRecordCount: Boolean? = true,
 		enableImages: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -651,7 +651,7 @@ public class ItemsApi(
 		enableImageTypes: List<ImageType>? = emptyList(),
 		excludeItemTypes: List<String>? = emptyList(),
 		includeItemTypes: List<String>? = emptyList(),
-		enableTotalRecordCount: Boolean = true,
+		enableTotalRecordCount: Boolean? = true,
 		enableImages: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()

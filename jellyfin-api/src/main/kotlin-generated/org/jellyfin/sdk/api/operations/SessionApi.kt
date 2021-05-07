@@ -170,9 +170,9 @@ public class SessionApi(
 		id: String? = null,
 		playableMediaTypes: List<String>? = emptyList(),
 		supportedCommands: List<GeneralCommandType>? = emptyList(),
-		supportsMediaControl: Boolean = false,
-		supportsSync: Boolean = false,
-		supportsPersistentIdentifier: Boolean = true
+		supportsMediaControl: Boolean? = false,
+		supportsSync: Boolean? = false,
+		supportsPersistentIdentifier: Boolean? = true
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

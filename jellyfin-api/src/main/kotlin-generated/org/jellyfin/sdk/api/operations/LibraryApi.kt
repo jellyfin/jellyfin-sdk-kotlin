@@ -167,7 +167,7 @@ public class LibraryApi(
 	 * @param libraryContentType Library content type.
 	 * @param isNewLibrary Whether this is a new library.
 	 */
-	public suspend fun getLibraryOptionsInfo(libraryContentType: String? = null, isNewLibrary: Boolean
+	public suspend fun getLibraryOptionsInfo(libraryContentType: String? = null, isNewLibrary: Boolean?
 			= false): Response<LibraryOptionsResultDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -409,7 +409,7 @@ public class LibraryApi(
 	public suspend fun getThemeMedia(
 		itemId: UUID,
 		userId: UUID? = null,
-		inheritFromParent: Boolean = false
+		inheritFromParent: Boolean? = false
 	): Response<AllThemeMediaResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -433,7 +433,7 @@ public class LibraryApi(
 	public suspend fun getThemeSongs(
 		itemId: UUID,
 		userId: UUID? = null,
-		inheritFromParent: Boolean = false
+		inheritFromParent: Boolean? = false
 	): Response<ThemeMediaResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -457,7 +457,7 @@ public class LibraryApi(
 	public suspend fun getThemeVideos(
 		itemId: UUID,
 		userId: UUID? = null,
-		inheritFromParent: Boolean = false
+		inheritFromParent: Boolean? = false
 	): Response<ThemeMediaResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

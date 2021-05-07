@@ -76,7 +76,7 @@ public class YearsApi(
 		imageTypeLimit: Int? = null,
 		enableImageTypes: List<ImageType>? = emptyList(),
 		userId: UUID? = null,
-		recursive: Boolean = true,
+		recursive: Boolean? = true,
 		enableImages: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()

@@ -81,7 +81,7 @@ public class GenresApi(
 		nameStartsWith: String? = null,
 		nameLessThan: String? = null,
 		enableImages: Boolean? = true,
-		enableTotalRecordCount: Boolean = true
+		enableTotalRecordCount: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
