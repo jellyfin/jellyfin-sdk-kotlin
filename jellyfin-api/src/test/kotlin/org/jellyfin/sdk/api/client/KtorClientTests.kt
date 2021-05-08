@@ -7,8 +7,13 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFails
 
 public class KtorClientTests {
-	private fun createClient() =
-		KtorClient("https://demo.jellyfin.org/stable/", null, ClientInfo("Test", "0"), DeviceInfo("test", "test"))
+	private fun createClient() = KtorClient(
+		baseUrl = "https://demo.jellyfin.org/stable/",
+		accessToken = null,
+		clientInfo = ClientInfo("Test", "0"),
+		deviceInfo = DeviceInfo("test", "test"),
+		httpClientOptions = HttpClientOptions()
+	)
 
 	@Test
 	public fun `createPath replaces values`() {

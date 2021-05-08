@@ -2,11 +2,11 @@ package org.jellyfin.sample.cli.command
 
 import com.github.ajalt.clikt.core.CliktCommand
 import kotlinx.coroutines.runBlocking
+import org.jellyfin.sample.cli.serverOption
+import org.jellyfin.sample.cli.tokenOption
 import org.jellyfin.sdk.Jellyfin
 import org.jellyfin.sdk.api.operations.SessionApi
 import org.jellyfin.sdk.api.operations.UserViewsApi
-import org.jellyfin.sample.cli.serverOption
-import org.jellyfin.sample.cli.tokenOption
 
 class Libraries(
 	private val jellyfin: Jellyfin

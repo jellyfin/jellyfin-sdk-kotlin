@@ -9,7 +9,11 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.util.*
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
+import org.jellyfin.sdk.api.client.exception.InvalidContentException
+import org.jellyfin.sdk.api.client.exception.InvalidStatusException
+import org.jellyfin.sdk.api.client.exception.TimeoutException
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.slf4j.LoggerFactory
@@ -20,6 +24,7 @@ public open class KtorClient(
 	override var accessToken: String? = null,
 	override var clientInfo: ClientInfo,
 	override var deviceInfo: DeviceInfo,
+	override val httpClientOptions: HttpClientOptions,
 ) : ApiClient {
 	private val json = Json {
 		isLenient = false
@@ -33,13 +38,15 @@ public open class KtorClient(
 	 * Exposed publicly to allow inline functions to work.
 	 */
 	public val client: HttpClient = HttpClient {
+		followRedirects = httpClientOptions.followRedirects
+		expectSuccess = false
+
 		install(JsonFeature) {
 			serializer = KotlinxSerializer(json)
 		}
 
 		install(HttpTimeout) {
-			@Suppress("MagicNumber")
-			connectTimeoutMillis = 10_000 // 10 seconds
+			connectTimeoutMillis = httpClientOptions.timeout
 		}
 	}
 
@@ -207,22 +214,39 @@ public open class KtorClient(
 		queryParameters: Map<String, Any?> = emptyMap(),
 		requestBody: Any? = null,
 	): Response<T> {
+		val logger = LoggerFactory.getLogger(this::class.java)
 		val url = createUrl(pathTemplate, pathParameters, queryParameters)
 
 		// Log HTTP call with access token removed
 		val safeUrl = accessToken?.let { url.replace(it, "******") } ?: url
-		LoggerFactory.getLogger(this::class.java).info("$method $safeUrl")
+		logger.info("$method $safeUrl")
 
-		val response = client.request<HttpResponse> {
-			this.method = method
-			url(url)
-			header(HttpHeaders.Authorization, createAuthorizationHeader())
+		@Suppress("SwallowedException")
+		try {
+			val response = client.request<HttpResponse> {
+				this.method = method
+				url(url)
+				header(HttpHeaders.Authorization, createAuthorizationHeader())
 
-			if (requestBody != null)
-				body = defaultSerializer().write(requestBody)
+				if (requestBody != null) body = defaultSerializer().write(requestBody)
+			}
+
+			// Check HTTP status
+			if (!response.status.isSuccess()) throw InvalidStatusException(response.status.value)
+			// Read response body
+			val body = response.receive<T>()
+			// Return custom response instance
+			return Response(body, response.status.value, response.headers.toMap())
+		} catch (err: HttpRequestTimeoutException) {
+			logger.debug("Connection timed out", err)
+			throw TimeoutException(err.message)
+		} catch (err: NoTransformationFoundException) {
+			logger.error("Requested model does not exist!?", err)
+			throw InvalidContentException(err.message)
+		} catch (err: SerializationException) {
+			logger.error("Deserialization failed", err)
+			throw InvalidContentException(err.message)
 		}
-
-		return Response(response.receive(), response.status.value, response.headers.toMap())
 	}
 
 	public suspend inline fun <reified T> get(

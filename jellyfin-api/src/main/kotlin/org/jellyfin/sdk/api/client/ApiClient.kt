@@ -26,11 +26,16 @@ public interface ApiClient {
 	public var deviceInfo: DeviceInfo
 
 	/**
+	 * HTTP Options for this ApiClient.
+	 */
+	public val httpClientOptions: HttpClientOptions
+
+	/**
 	 * Replaces the variables in a path with the values in the map.
 	 * Will also remove trailing and repeated slashes
 	 */
 	public fun createPath(
-		path: String,
+		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap()
 	): String
 
