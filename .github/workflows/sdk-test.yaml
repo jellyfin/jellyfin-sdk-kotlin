@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - release-*
+      - openapi-unstable
   pull_request:
 
 jobs:
