@@ -24,7 +24,7 @@ class Ping(
 		else runSimple()
 	}
 
-	suspend fun runSimple() {
+	private suspend fun runSimple() {
 		val api = jellyfin.createApi(baseUrl = server)
 		val systemApi = SystemApi(api)
 
@@ -35,10 +35,10 @@ class Ping(
 		println("version: ${result.version}")
 	}
 
-	suspend fun runExtended() {
+	private suspend fun runExtended() {
 		val servers = jellyfin.discovery.getRecommendedServers(server)
 		servers.onEach {
-			println("${it.address}: score=${it.score} duration=${it.responseTime}ms parent(${it.isAppended})=${it.parent}")
+			println("${it.address}: score=${it.score} duration=${it.responseTime}ms")
 			println("info=${it.systemInfo}")
 			println()
 		}.collect()
