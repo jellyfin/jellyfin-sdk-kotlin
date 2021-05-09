@@ -30,10 +30,10 @@ public class ItemRefreshApi(
 	 */
 	public suspend fun post(
 		itemId: UUID,
-		metadataRefreshMode: MetadataRefreshMode,
-		imageRefreshMode: MetadataRefreshMode,
-		replaceAllMetadata: Boolean = false,
-		replaceAllImages: Boolean = false
+		metadataRefreshMode: MetadataRefreshMode? = null,
+		imageRefreshMode: MetadataRefreshMode? = null,
+		replaceAllMetadata: Boolean? = false,
+		replaceAllImages: Boolean? = false
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

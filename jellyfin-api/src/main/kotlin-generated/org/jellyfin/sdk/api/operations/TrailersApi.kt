@@ -227,7 +227,7 @@ public class TrailersApi(
 		nameLessThan: String? = null,
 		studioIds: List<UUID>? = emptyList(),
 		genreIds: List<UUID>? = emptyList(),
-		enableTotalRecordCount: Boolean = true,
+		enableTotalRecordCount: Boolean? = true,
 		enableImages: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()

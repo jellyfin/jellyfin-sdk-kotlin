@@ -114,8 +114,8 @@ public class TvShowsApi(
 		imageTypeLimit: Int? = null,
 		enableImageTypes: List<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
-		enableTotalRecordCount: Boolean = true,
-		disableFirstEpisode: Boolean = false
+		enableTotalRecordCount: Boolean? = true,
+		disableFirstEpisode: Boolean? = false
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

@@ -34,7 +34,7 @@ public class SuggestionsApi(
 		type: List<String>? = emptyList(),
 		startIndex: Int? = null,
 		limit: Int? = null,
-		enableTotalRecordCount: Boolean = false
+		enableTotalRecordCount: Boolean? = false
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId

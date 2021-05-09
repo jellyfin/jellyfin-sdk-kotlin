@@ -48,7 +48,7 @@ public class QuickConnectApi(
 	 *
 	 * @param status New MediaBrowser.Model.QuickConnect.QuickConnectState.
 	 */
-	public suspend fun available(status: QuickConnectState): Response<Unit> {
+	public suspend fun available(status: QuickConnectState? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["status"] = status
