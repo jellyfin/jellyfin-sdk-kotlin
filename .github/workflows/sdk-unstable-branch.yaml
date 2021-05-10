@@ -10,7 +10,6 @@ on:
 
 concurrency:
   group: unstable-branch
-  cancel-in-progress: true
 
 jobs:
   unstable-branch-update:
@@ -39,12 +38,10 @@ jobs:
       - name: Run updateApiSpecUnstable and apiDump tasks
         run: ./gradlew --build-cache --no-daemon --info updateApiSpecUnstable apiDump
       - name: Commit changes
-        uses: EndBug/add-and-commit@v7.2.0
-        with:
-          add: .
-          author_name: jellyfin-bot
-          author_email: team@jellyfin.org
-          branch: openapi-unstable
-          message: 'Update OpenAPI to unstable'
-          pull_strategy: NO-PULL
-          push: origin openapi-unstable --force
+        run: |
+          git config user.name jellyfin-bot
+          git config user.email team@jellyfin.org
+          git checkout -B openapi-unstable
+          git add .
+          git commit --allow-empty -m "Update OpenAPI to unstable"
+          git push --force origin openapi-unstable
