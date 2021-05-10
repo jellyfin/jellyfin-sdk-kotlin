@@ -36,8 +36,9 @@
 
 ---
 
-The Jellyfin Kotlin SDK is a library implementing the Jellyfin API to easily access servers.
-It is currently available for the JVM and Android.
+The Jellyfin Kotlin SDK is a library implementing the Jellyfin API to easily access servers. It is currently available
+for the JVM and Android 4.4 and up. Java 8 or higher is required. Android versions below Android 8 should use
+[library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring).
 
 ## Setup
 
@@ -122,6 +123,7 @@ val api = jellyfin.createApi(
     // accessToken = "access token or api key"
     // clientInfo = ClientInfo(), // defaults to parent info
     // deviceInfo = DeviceInfo(), // defaults to parent info
+    // httpClientOptions = HttpClientOptions() // allows setting additional options
 )
 ```
 
@@ -133,16 +135,21 @@ group and give it your API instance.
 ```kotlin
 val userApi = UserApi(api)
 
-val authenticationResult by userApi.authenticateUserByName(
-    username = "demo", 
-    password = "",
-)
-
-// Use access token in api instance
-api.accessToken = authenticationResult.accessToken
-
-// Print session information
-println(authenticationResult.sessionInfo)
+try {
+    val authenticationResult by userApi.authenticateUserByName(
+        username = "demo", 
+        password = "",
+    )
+    
+    // Use access token in api instance
+    api.accessToken = authenticationResult.accessToken
+    
+    // Print session information
+    println(authenticationResult.sessionInfo)
+} catch(err: ApiClientException) {
+    // Catch exceptions
+    println("Something went wrong! ${err.message}")
+}
 ```
 
 ### WebSockets
@@ -178,8 +185,8 @@ jellyfin.discovery.discoverLocalServers().collect {
 // Get all candidates for a given input
 val candidates = jellyfin.discovery.getAddressCandidates("demo.jellyfin.org/stable")
 
-// Get best option from the candidates
-val recommended = jellyfin.discovery.getRecommendedServer(candidates)
+// Get a flow of potential servers to connect to
+val recommended = jellyfin.discovery.getRecommendedServers(candidates, RecommendedServerInfoScore.GOOD)
 ```
 
 ## More examples
