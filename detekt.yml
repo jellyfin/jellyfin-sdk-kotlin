@@ -19,3 +19,5 @@ style:
     maxJumpCount: 6
   ReturnCount:
     max: 6
+  ThrowsCount:
+    max: 6
