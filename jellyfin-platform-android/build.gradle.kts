@@ -14,10 +14,6 @@ android {
 		consumerProguardFiles("proguard-rules.pro")
 	}
 
-	compileOptions {
-		isCoreLibraryDesugaringEnabled = true
-	}
-
 	kotlinOptions {
 		// The Android DSL doesn't support the explicitApi() function
 		// so we need to add it to the compiler arguments
@@ -72,6 +68,4 @@ dependencies {
 	implementation(libs.androidx.annotation)
 
 	testImplementation(libs.kotlin.test.junit)
-
-	coreLibraryDesugaring(libs.android.desugarLibs)
 }
