@@ -38,4 +38,4 @@ jobs:
         with:
           asset_paths: '["**/distributions/*-${{ env.JELLYFIN_VERSION }}.zip", "**/libs/*-${{ env.JELLYFIN_VERSION }}.jar", "**/outputs/aar/*.aar"]'
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.JF_BOT_TOKEN }}
