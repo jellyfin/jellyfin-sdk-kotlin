@@ -51,12 +51,6 @@ public class org/jellyfin/sdk/api/client/KtorClient : org/jellyfin/sdk/api/clien
 	public fun setDeviceInfo (Lorg/jellyfin/sdk/model/DeviceInfo;)V
 }
 
-public final class org/jellyfin/sdk/api/client/MissingPathVariableError : java/lang/Error {
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
-	public final fun getName ()Ljava/lang/String;
-	public final fun getPath ()Ljava/lang/String;
-}
-
 public final class org/jellyfin/sdk/api/client/Response {
 	public fun <init> (Ljava/lang/Object;ILjava/util/Map;)V
 	public final fun getContent ()Ljava/lang/Object;
@@ -92,6 +86,12 @@ public final class org/jellyfin/sdk/api/client/exception/InvalidContentException
 public final class org/jellyfin/sdk/api/client/exception/InvalidStatusException : org/jellyfin/sdk/api/client/exception/ApiClientException {
 	public fun <init> (I)V
 	public final fun getStatus ()I
+}
+
+public final class org/jellyfin/sdk/api/client/exception/MissingPathVariableException : org/jellyfin/sdk/api/client/exception/ApiClientException {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun getName ()Ljava/lang/String;
+	public final fun getPath ()Ljava/lang/String;
 }
 
 public final class org/jellyfin/sdk/api/client/exception/TimeoutException : org/jellyfin/sdk/api/client/exception/ApiClientException {

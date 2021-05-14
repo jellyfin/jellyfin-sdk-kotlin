@@ -13,6 +13,7 @@ import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
+import org.jellyfin.sdk.api.client.exception.MissingPathVariableException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
@@ -92,7 +93,7 @@ public open class KtorClient(
 					val name = pathTemplate.substring(lastStart, lastEnd)
 
 					// Check if key is set
-					if (!pathParameters.containsKey(name)) throw MissingPathVariableError(name, pathTemplate)
+					if (!pathParameters.containsKey(name)) throw MissingPathVariableException(name, pathTemplate)
 
 					// Get value of path variable
 					val value = pathParameters[name]
