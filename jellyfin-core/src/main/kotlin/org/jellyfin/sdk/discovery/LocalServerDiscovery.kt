@@ -1,6 +1,5 @@
 package org.jellyfin.sdk.discovery
 
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.isActive
@@ -13,6 +12,7 @@ import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.InetAddress
 import java.net.SocketTimeoutException
+import kotlin.coroutines.coroutineContext
 
 /**
  * Used to discover Jellyfin servers in the local network.
@@ -114,7 +114,7 @@ public class LocalServerDiscovery(
 
 		@Suppress("UnusedPrivateMember")
 		for (i in 0..maxServers) {
-			if (socket.isClosed || !GlobalScope.isActive) break
+			if (socket.isClosed || !coroutineContext.isActive) break
 
 			val info = receive(socket) ?: continue
 
