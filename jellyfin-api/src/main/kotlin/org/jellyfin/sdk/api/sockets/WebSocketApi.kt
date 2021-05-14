@@ -12,6 +12,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.*
 import kotlinx.coroutines.channels.Channel.Factory.BUFFERED
 import kotlinx.coroutines.flow.*
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.*
@@ -103,6 +104,7 @@ public class WebSocketApi(
 		encodeDefaults = true
 	}
 
+	private val scope = CoroutineScope(Dispatchers.IO)
 	private var socketJob: Job? = null
 	private val subscriptions = mutableListOf<SocketSubscription>()
 
@@ -160,7 +162,7 @@ public class WebSocketApi(
 		socketJob?.cancel()
 
 		// Open socket
-		socketJob = GlobalScope.launch {
+		socketJob = scope.launch {
 			// Create web socket connection
 			client.ws({
 				url {
@@ -228,12 +230,14 @@ public class WebSocketApi(
 	/**
 	 * Publish a message to the server.
 	 */
+	@ExperimentalSerializationApi
 	public suspend inline fun <reified T : OutgoingSocketMessage> publish(message: T): Unit =
 		publish(message, serializer())
 
 	/**
 	 * Publish a message to the server.
 	 */
+	@ExperimentalSerializationApi
 	public suspend fun <T : OutgoingSocketMessage> publish(message: T, serializer: KSerializer<T>) {
 		val jsonObject = json.encodeToJsonElement(serializer, message).jsonObject
 		val messageType = serializer.descriptor.serialName
@@ -268,10 +272,11 @@ public class WebSocketApi(
 	/**
 	 * A [Flow] based version of a subscription.
 	 */
+	@ExperimentalCoroutinesApi
 	public suspend fun subscribe(): Flow<IncomingSocketMessage> = callbackFlow {
 		// Create subscription and send messages to flow
 		val subscription = subscribe {
-			sendBlocking(it)
+			trySendBlocking(it)
 		}
 
 		// Cancel subscription when flow closes
