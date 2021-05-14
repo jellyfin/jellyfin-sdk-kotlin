@@ -10883,6 +10883,17 @@ public final class org/jellyfin/sdk/model/api/XmlAttribute$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class org/jellyfin/sdk/model/extensions/PairExtensionsKt {
+	public static final fun toNameGuidPair (Lkotlin/Pair;)Lorg/jellyfin/sdk/model/api/NameGuidPair;
+	public static final fun toNameIdPair (Lkotlin/Pair;)Lorg/jellyfin/sdk/model/api/NameIdPair;
+	public static final fun toNameValuePair (Lkotlin/Pair;)Lorg/jellyfin/sdk/model/api/NameValuePair;
+	public static final fun toPair (Lorg/jellyfin/sdk/model/api/NameGuidPair;)Lkotlin/Pair;
+	public static final fun toPair (Lorg/jellyfin/sdk/model/api/NameIdPair;)Lkotlin/Pair;
+	public static final fun toPair (Lorg/jellyfin/sdk/model/api/NameValuePair;)Lkotlin/Pair;
+	public static final fun toPair (Lorg/jellyfin/sdk/model/api/XmlAttribute;)Lkotlin/Pair;
+	public static final fun toXmlAttribute (Lkotlin/Pair;)Lorg/jellyfin/sdk/model/api/XmlAttribute;
+}
+
 public final class org/jellyfin/sdk/model/serializer/LocalDateTimeSerializer : kotlinx/serialization/KSerializer {
 	public fun <init> ()V
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
