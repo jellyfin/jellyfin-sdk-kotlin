@@ -8,6 +8,7 @@ import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
+import io.ktor.network.sockets.*
 import io.ktor.util.*
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
@@ -239,7 +240,13 @@ public open class KtorClient(
 			// Return custom response instance
 			return Response(body, response.status.value, response.headers.toMap())
 		} catch (err: HttpRequestTimeoutException) {
+			logger.debug("HTTP request timed out", err)
+			throw TimeoutException(err.message)
+		} catch (err: ConnectTimeoutException) {
 			logger.debug("Connection timed out", err)
+			throw TimeoutException(err.message)
+		} catch (err: SocketTimeoutException) {
+			logger.debug("Socket timed out", err)
 			throw TimeoutException(err.message)
 		} catch (err: NoTransformationFoundException) {
 			logger.error("Requested model does not exist!?", err)
