@@ -71,7 +71,9 @@ public class RecommendedServerDiscovery(
 			baseUrl = address,
 			httpClientOptions = HttpClientOptions(
 				followRedirects = false,
-				timeout = HTTP_TIMEOUT,
+				connectTimeout = HTTP_TIMEOUT,
+				requestTimeout = HTTP_TIMEOUT,
+				socketTimeout = HTTP_TIMEOUT,
 			),
 		)
 		val api = SystemApi(client)
