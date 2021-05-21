@@ -48,7 +48,9 @@ public open class KtorClient(
 		}
 
 		install(HttpTimeout) {
-			connectTimeoutMillis = httpClientOptions.timeout
+			connectTimeoutMillis = httpClientOptions.connectTimeout
+			requestTimeoutMillis = httpClientOptions.requestTimeout
+			socketTimeoutMillis = httpClientOptions.socketTimeout
 		}
 	}
 
