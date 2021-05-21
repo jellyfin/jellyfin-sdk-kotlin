@@ -5,25 +5,31 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class CollectionTypeOptions {
+public enum class CollectionTypeOptions(
+	public val serialName: String
+) {
 	@SerialName("Movies")
-	MOVIES,
+	MOVIES("Movies"),
 	@SerialName("TvShows")
-	TV_SHOWS,
+	TV_SHOWS("TvShows"),
 	@SerialName("Music")
-	MUSIC,
+	MUSIC("Music"),
 	@SerialName("MusicVideos")
-	MUSIC_VIDEOS,
+	MUSIC_VIDEOS("MusicVideos"),
 	@SerialName("HomeVideos")
-	HOME_VIDEOS,
+	HOME_VIDEOS("HomeVideos"),
 	@SerialName("BoxSets")
-	BOX_SETS,
+	BOX_SETS("BoxSets"),
 	@SerialName("Books")
-	BOOKS,
+	BOOKS("Books"),
 	@SerialName("Mixed")
-	MIXED,
+	MIXED("Mixed"),
+	;
+
+	public override fun toString(): String = serialName
 }

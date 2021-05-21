@@ -5,15 +5,21 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class NotificationLevel {
+public enum class NotificationLevel(
+	public val serialName: String
+) {
 	@SerialName("Normal")
-	NORMAL,
+	NORMAL("Normal"),
 	@SerialName("Warning")
-	WARNING,
+	WARNING("Warning"),
 	@SerialName("Error")
-	ERROR,
+	ERROR("Error"),
+	;
+
+	public override fun toString(): String = serialName
 }

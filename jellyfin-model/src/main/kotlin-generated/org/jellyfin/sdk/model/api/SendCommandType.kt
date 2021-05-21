@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,13 +13,18 @@ import kotlinx.serialization.Serializable
  * Enum SendCommandType.
  */
 @Serializable
-public enum class SendCommandType {
+public enum class SendCommandType(
+	public val serialName: String
+) {
 	@SerialName("Unpause")
-	UNPAUSE,
+	UNPAUSE("Unpause"),
 	@SerialName("Pause")
-	PAUSE,
+	PAUSE("Pause"),
 	@SerialName("Stop")
-	STOP,
+	STOP("Stop"),
 	@SerialName("Seek")
-	SEEK,
+	SEEK("Seek"),
+	;
+
+	public override fun toString(): String = serialName
 }

@@ -5,15 +5,21 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class TransportStreamTimestamp {
+public enum class TransportStreamTimestamp(
+	public val serialName: String
+) {
 	@SerialName("None")
-	NONE,
+	NONE("None"),
 	@SerialName("Zero")
-	ZERO,
+	ZERO("Zero"),
 	@SerialName("Valid")
-	VALID,
+	VALID("Valid"),
+	;
+
+	public override fun toString(): String = serialName
 }

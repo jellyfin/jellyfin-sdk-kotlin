@@ -5,17 +5,23 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class KeepUntil {
+public enum class KeepUntil(
+	public val serialName: String
+) {
 	@SerialName("UntilDeleted")
-	UNTIL_DELETED,
+	UNTIL_DELETED("UntilDeleted"),
 	@SerialName("UntilSpaceNeeded")
-	UNTIL_SPACE_NEEDED,
+	UNTIL_SPACE_NEEDED("UntilSpaceNeeded"),
 	@SerialName("UntilWatched")
-	UNTIL_WATCHED,
+	UNTIL_WATCHED("UntilWatched"),
 	@SerialName("UntilDate")
-	UNTIL_DATE,
+	UNTIL_DATE("UntilDate"),
+	;
+
+	public override fun toString(): String = serialName
 }

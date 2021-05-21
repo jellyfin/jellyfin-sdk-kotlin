@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,31 +13,36 @@ import kotlinx.serialization.Serializable
  * Enum ImageType.
  */
 @Serializable
-public enum class ImageType {
+public enum class ImageType(
+	public val serialName: String
+) {
 	@SerialName("Primary")
-	PRIMARY,
+	PRIMARY("Primary"),
 	@SerialName("Art")
-	ART,
+	ART("Art"),
 	@SerialName("Backdrop")
-	BACKDROP,
+	BACKDROP("Backdrop"),
 	@SerialName("Banner")
-	BANNER,
+	BANNER("Banner"),
 	@SerialName("Logo")
-	LOGO,
+	LOGO("Logo"),
 	@SerialName("Thumb")
-	THUMB,
+	THUMB("Thumb"),
 	@SerialName("Disc")
-	DISC,
+	DISC("Disc"),
 	@SerialName("Box")
-	BOX,
+	BOX("Box"),
 	@SerialName("Screenshot")
-	SCREENSHOT,
+	SCREENSHOT("Screenshot"),
 	@SerialName("Menu")
-	MENU,
+	MENU("Menu"),
 	@SerialName("Chapter")
-	CHAPTER,
+	CHAPTER("Chapter"),
 	@SerialName("BoxRear")
-	BOX_REAR,
+	BOX_REAR("BoxRear"),
 	@SerialName("Profile")
-	PROFILE,
+	PROFILE("Profile"),
+	;
+
+	public override fun toString(): String = serialName
 }

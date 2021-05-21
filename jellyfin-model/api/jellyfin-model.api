@@ -381,6 +381,8 @@ public final class org/jellyfin/sdk/model/api/Architecture : java/lang/Enum {
 	public static final field WASM Lorg/jellyfin/sdk/model/api/Architecture;
 	public static final field X64 Lorg/jellyfin/sdk/model/api/Architecture;
 	public static final field X86 Lorg/jellyfin/sdk/model/api/Architecture;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/Architecture;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/Architecture;
 }
@@ -1420,6 +1422,8 @@ public final class org/jellyfin/sdk/model/api/ChannelItemSortField : java/lang/E
 	public static final field PLAY_COUNT Lorg/jellyfin/sdk/model/api/ChannelItemSortField;
 	public static final field PREMIERE_DATE Lorg/jellyfin/sdk/model/api/ChannelItemSortField;
 	public static final field RUNTIME Lorg/jellyfin/sdk/model/api/ChannelItemSortField;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ChannelItemSortField;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ChannelItemSortField;
 }
@@ -1487,6 +1491,8 @@ public final class org/jellyfin/sdk/model/api/ChannelMediaContentType : java/lan
 	public static final field SONG Lorg/jellyfin/sdk/model/api/ChannelMediaContentType;
 	public static final field TRAILER Lorg/jellyfin/sdk/model/api/ChannelMediaContentType;
 	public static final field TV_EXTRA Lorg/jellyfin/sdk/model/api/ChannelMediaContentType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ChannelMediaContentType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ChannelMediaContentType;
 }
@@ -1512,6 +1518,8 @@ public final class org/jellyfin/sdk/model/api/ChannelMediaType : java/lang/Enum 
 	public static final field Companion Lorg/jellyfin/sdk/model/api/ChannelMediaType$Companion;
 	public static final field PHOTO Lorg/jellyfin/sdk/model/api/ChannelMediaType;
 	public static final field VIDEO Lorg/jellyfin/sdk/model/api/ChannelMediaType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ChannelMediaType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ChannelMediaType;
 }
@@ -1536,6 +1544,8 @@ public final class org/jellyfin/sdk/model/api/ChannelType : java/lang/Enum {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/ChannelType$Companion;
 	public static final field RADIO Lorg/jellyfin/sdk/model/api/ChannelType;
 	public static final field TV Lorg/jellyfin/sdk/model/api/ChannelType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ChannelType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ChannelType;
 }
@@ -1733,6 +1743,8 @@ public final class org/jellyfin/sdk/model/api/CodecType : java/lang/Enum {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/CodecType$Companion;
 	public static final field VIDEO Lorg/jellyfin/sdk/model/api/CodecType;
 	public static final field VIDEO_AUDIO Lorg/jellyfin/sdk/model/api/CodecType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/CodecType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/CodecType;
 }
@@ -1792,6 +1804,8 @@ public final class org/jellyfin/sdk/model/api/CollectionTypeOptions : java/lang/
 	public static final field MUSIC Lorg/jellyfin/sdk/model/api/CollectionTypeOptions;
 	public static final field MUSIC_VIDEOS Lorg/jellyfin/sdk/model/api/CollectionTypeOptions;
 	public static final field TV_SHOWS Lorg/jellyfin/sdk/model/api/CollectionTypeOptions;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/CollectionTypeOptions;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/CollectionTypeOptions;
 }
@@ -1858,6 +1872,8 @@ public final class org/jellyfin/sdk/model/api/ConfigurationPageType : java/lang/
 	public static final field Companion Lorg/jellyfin/sdk/model/api/ConfigurationPageType$Companion;
 	public static final field NONE Lorg/jellyfin/sdk/model/api/ConfigurationPageType;
 	public static final field PLUGIN_CONFIGURATION Lorg/jellyfin/sdk/model/api/ConfigurationPageType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ConfigurationPageType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ConfigurationPageType;
 }
@@ -2101,6 +2117,8 @@ public final class org/jellyfin/sdk/model/api/DayOfWeek : java/lang/Enum {
 	public static final field THURSDAY Lorg/jellyfin/sdk/model/api/DayOfWeek;
 	public static final field TUESDAY Lorg/jellyfin/sdk/model/api/DayOfWeek;
 	public static final field WEDNESDAY Lorg/jellyfin/sdk/model/api/DayOfWeek;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DayOfWeek;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/DayOfWeek;
 }
@@ -2126,6 +2144,8 @@ public final class org/jellyfin/sdk/model/api/DayPattern : java/lang/Enum {
 	public static final field DAILY Lorg/jellyfin/sdk/model/api/DayPattern;
 	public static final field WEEKDAYS Lorg/jellyfin/sdk/model/api/DayPattern;
 	public static final field WEEKENDS Lorg/jellyfin/sdk/model/api/DayPattern;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DayPattern;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/DayPattern;
 }
@@ -2479,6 +2499,8 @@ public final class org/jellyfin/sdk/model/api/DeviceProfileType : java/lang/Enum
 	public static final field Companion Lorg/jellyfin/sdk/model/api/DeviceProfileType$Companion;
 	public static final field SYSTEM Lorg/jellyfin/sdk/model/api/DeviceProfileType;
 	public static final field USER Lorg/jellyfin/sdk/model/api/DeviceProfileType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DeviceProfileType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/DeviceProfileType;
 }
@@ -2596,6 +2618,8 @@ public final class org/jellyfin/sdk/model/api/DlnaProfileType : java/lang/Enum {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/DlnaProfileType$Companion;
 	public static final field PHOTO Lorg/jellyfin/sdk/model/api/DlnaProfileType;
 	public static final field VIDEO Lorg/jellyfin/sdk/model/api/DlnaProfileType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DlnaProfileType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/DlnaProfileType;
 }
@@ -2628,6 +2652,8 @@ public final class org/jellyfin/sdk/model/api/DynamicDayOfWeek : java/lang/Enum 
 	public static final field WEDNESDAY Lorg/jellyfin/sdk/model/api/DynamicDayOfWeek;
 	public static final field WEEKDAY Lorg/jellyfin/sdk/model/api/DynamicDayOfWeek;
 	public static final field WEEKEND Lorg/jellyfin/sdk/model/api/DynamicDayOfWeek;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DynamicDayOfWeek;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/DynamicDayOfWeek;
 }
@@ -2652,6 +2678,8 @@ public final class org/jellyfin/sdk/model/api/EncodingContext : java/lang/Enum {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/EncodingContext$Companion;
 	public static final field STATIC Lorg/jellyfin/sdk/model/api/EncodingContext;
 	public static final field STREAMING Lorg/jellyfin/sdk/model/api/EncodingContext;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/EncodingContext;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/EncodingContext;
 }
@@ -2754,6 +2782,8 @@ public final class org/jellyfin/sdk/model/api/ExternalIdMediaType : java/lang/En
 	public static final field SEASON Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
 	public static final field SERIES Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
 	public static final field TRACK Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
 }
@@ -2813,6 +2843,8 @@ public final class org/jellyfin/sdk/model/api/FFmpegLocation : java/lang/Enum {
 	public static final field NOT_FOUND Lorg/jellyfin/sdk/model/api/FFmpegLocation;
 	public static final field SET_BY_ARGUMENT Lorg/jellyfin/sdk/model/api/FFmpegLocation;
 	public static final field SYSTEM Lorg/jellyfin/sdk/model/api/FFmpegLocation;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/FFmpegLocation;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/FFmpegLocation;
 }
@@ -2873,6 +2905,8 @@ public final class org/jellyfin/sdk/model/api/FileSystemEntryType : java/lang/En
 	public static final field FILE Lorg/jellyfin/sdk/model/api/FileSystemEntryType;
 	public static final field NETWORK_COMPUTER Lorg/jellyfin/sdk/model/api/FileSystemEntryType;
 	public static final field NETWORK_SHARE Lorg/jellyfin/sdk/model/api/FileSystemEntryType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/FileSystemEntryType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/FileSystemEntryType;
 }
@@ -2934,6 +2968,8 @@ public final class org/jellyfin/sdk/model/api/ForgotPasswordAction : java/lang/E
 	public static final field Companion Lorg/jellyfin/sdk/model/api/ForgotPasswordAction$Companion;
 	public static final field IN_NETWORK_REQUIRED Lorg/jellyfin/sdk/model/api/ForgotPasswordAction;
 	public static final field PIN_CODE Lorg/jellyfin/sdk/model/api/ForgotPasswordAction;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ForgotPasswordAction;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ForgotPasswordAction;
 }
@@ -3123,6 +3159,8 @@ public final class org/jellyfin/sdk/model/api/GeneralCommandType : java/lang/Enu
 	public static final field UNMUTE Lorg/jellyfin/sdk/model/api/GeneralCommandType;
 	public static final field VOLUME_DOWN Lorg/jellyfin/sdk/model/api/GeneralCommandType;
 	public static final field VOLUME_UP Lorg/jellyfin/sdk/model/api/GeneralCommandType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GeneralCommandType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/GeneralCommandType;
 }
@@ -3267,6 +3305,8 @@ public final class org/jellyfin/sdk/model/api/GroupQueueMode : java/lang/Enum {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/GroupQueueMode$Companion;
 	public static final field QUEUE Lorg/jellyfin/sdk/model/api/GroupQueueMode;
 	public static final field QUEUE_NEXT Lorg/jellyfin/sdk/model/api/GroupQueueMode;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupQueueMode;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/GroupQueueMode;
 }
@@ -3292,6 +3332,8 @@ public final class org/jellyfin/sdk/model/api/GroupRepeatMode : java/lang/Enum {
 	public static final field REPEAT_ALL Lorg/jellyfin/sdk/model/api/GroupRepeatMode;
 	public static final field REPEAT_NONE Lorg/jellyfin/sdk/model/api/GroupRepeatMode;
 	public static final field REPEAT_ONE Lorg/jellyfin/sdk/model/api/GroupRepeatMode;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupRepeatMode;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/GroupRepeatMode;
 }
@@ -3316,6 +3358,8 @@ public final class org/jellyfin/sdk/model/api/GroupShuffleMode : java/lang/Enum 
 	public static final field Companion Lorg/jellyfin/sdk/model/api/GroupShuffleMode$Companion;
 	public static final field SHUFFLE Lorg/jellyfin/sdk/model/api/GroupShuffleMode;
 	public static final field SORTED Lorg/jellyfin/sdk/model/api/GroupShuffleMode;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupShuffleMode;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/GroupShuffleMode;
 }
@@ -3342,6 +3386,8 @@ public final class org/jellyfin/sdk/model/api/GroupStateType : java/lang/Enum {
 	public static final field PAUSED Lorg/jellyfin/sdk/model/api/GroupStateType;
 	public static final field PLAYING Lorg/jellyfin/sdk/model/api/GroupStateType;
 	public static final field WAITING Lorg/jellyfin/sdk/model/api/GroupStateType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupStateType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/GroupStateType;
 }
@@ -3375,6 +3421,8 @@ public final class org/jellyfin/sdk/model/api/GroupUpdateType : java/lang/Enum {
 	public static final field STATE_UPDATE Lorg/jellyfin/sdk/model/api/GroupUpdateType;
 	public static final field USER_JOINED Lorg/jellyfin/sdk/model/api/GroupUpdateType;
 	public static final field USER_LEFT Lorg/jellyfin/sdk/model/api/GroupUpdateType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupUpdateType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/GroupUpdateType;
 }
@@ -3431,6 +3479,8 @@ public final class org/jellyfin/sdk/model/api/HeaderMatchType : java/lang/Enum {
 	public static final field EQUALS Lorg/jellyfin/sdk/model/api/HeaderMatchType;
 	public static final field REGEX Lorg/jellyfin/sdk/model/api/HeaderMatchType;
 	public static final field SUBSTRING Lorg/jellyfin/sdk/model/api/HeaderMatchType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/HeaderMatchType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/HeaderMatchType;
 }
@@ -3601,6 +3651,8 @@ public final class org/jellyfin/sdk/model/api/ImageFormat : java/lang/Enum {
 	public static final field JPG Lorg/jellyfin/sdk/model/api/ImageFormat;
 	public static final field PNG Lorg/jellyfin/sdk/model/api/ImageFormat;
 	public static final field WEBP Lorg/jellyfin/sdk/model/api/ImageFormat;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ImageFormat;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ImageFormat;
 }
@@ -3708,6 +3760,8 @@ public final class org/jellyfin/sdk/model/api/ImageOrientation : java/lang/Enum 
 	public static final field RIGHT_TOP Lorg/jellyfin/sdk/model/api/ImageOrientation;
 	public static final field TOP_LEFT Lorg/jellyfin/sdk/model/api/ImageOrientation;
 	public static final field TOP_RIGHT Lorg/jellyfin/sdk/model/api/ImageOrientation;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ImageOrientation;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ImageOrientation;
 }
@@ -3765,6 +3819,8 @@ public final class org/jellyfin/sdk/model/api/ImageSavingConvention : java/lang/
 	public static final field COMPATIBLE Lorg/jellyfin/sdk/model/api/ImageSavingConvention;
 	public static final field Companion Lorg/jellyfin/sdk/model/api/ImageSavingConvention$Companion;
 	public static final field LEGACY Lorg/jellyfin/sdk/model/api/ImageSavingConvention;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ImageSavingConvention;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ImageSavingConvention;
 }
@@ -3800,6 +3856,8 @@ public final class org/jellyfin/sdk/model/api/ImageType : java/lang/Enum {
 	public static final field PROFILE Lorg/jellyfin/sdk/model/api/ImageType;
 	public static final field SCREENSHOT Lorg/jellyfin/sdk/model/api/ImageType;
 	public static final field THUMB Lorg/jellyfin/sdk/model/api/ImageType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ImageType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ImageType;
 }
@@ -3866,6 +3924,8 @@ public final class org/jellyfin/sdk/model/api/IsoType : java/lang/Enum {
 	public static final field BLU_RAY Lorg/jellyfin/sdk/model/api/IsoType;
 	public static final field Companion Lorg/jellyfin/sdk/model/api/IsoType$Companion;
 	public static final field DVD Lorg/jellyfin/sdk/model/api/IsoType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/IsoType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/IsoType;
 }
@@ -4000,6 +4060,8 @@ public final class org/jellyfin/sdk/model/api/ItemFields : java/lang/Enum {
 	public static final field THEME_SONG_IDS Lorg/jellyfin/sdk/model/api/ItemFields;
 	public static final field THEME_VIDEO_IDS Lorg/jellyfin/sdk/model/api/ItemFields;
 	public static final field WIDTH Lorg/jellyfin/sdk/model/api/ItemFields;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ItemFields;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ItemFields;
 }
@@ -4031,6 +4093,8 @@ public final class org/jellyfin/sdk/model/api/ItemFilter : java/lang/Enum {
 	public static final field IS_RESUMABLE Lorg/jellyfin/sdk/model/api/ItemFilter;
 	public static final field IS_UNPLAYED Lorg/jellyfin/sdk/model/api/ItemFilter;
 	public static final field LIKES Lorg/jellyfin/sdk/model/api/ItemFilter;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ItemFilter;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ItemFilter;
 }
@@ -4086,6 +4150,8 @@ public final class org/jellyfin/sdk/model/api/KeepUntil : java/lang/Enum {
 	public static final field UNTIL_DELETED Lorg/jellyfin/sdk/model/api/KeepUntil;
 	public static final field UNTIL_SPACE_NEEDED Lorg/jellyfin/sdk/model/api/KeepUntil;
 	public static final field UNTIL_WATCHED Lorg/jellyfin/sdk/model/api/KeepUntil;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/KeepUntil;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/KeepUntil;
 }
@@ -4511,6 +4577,8 @@ public final class org/jellyfin/sdk/model/api/LiveTvServiceStatus : java/lang/En
 	public static final field Companion Lorg/jellyfin/sdk/model/api/LiveTvServiceStatus$Companion;
 	public static final field OK Lorg/jellyfin/sdk/model/api/LiveTvServiceStatus;
 	public static final field UNAVAILABLE Lorg/jellyfin/sdk/model/api/LiveTvServiceStatus;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/LiveTvServiceStatus;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/LiveTvServiceStatus;
 }
@@ -4570,6 +4638,8 @@ public final class org/jellyfin/sdk/model/api/LocationType : java/lang/Enum {
 	public static final field OFFLINE Lorg/jellyfin/sdk/model/api/LocationType;
 	public static final field REMOTE Lorg/jellyfin/sdk/model/api/LocationType;
 	public static final field VIRTUAL Lorg/jellyfin/sdk/model/api/LocationType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/LocationType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/LocationType;
 }
@@ -4635,6 +4705,8 @@ public final class org/jellyfin/sdk/model/api/LogLevel : java/lang/Enum {
 	public static final field NONE Lorg/jellyfin/sdk/model/api/LogLevel;
 	public static final field TRACE Lorg/jellyfin/sdk/model/api/LogLevel;
 	public static final field WARNING Lorg/jellyfin/sdk/model/api/LogLevel;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/LogLevel;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/LogLevel;
 }
@@ -4806,6 +4878,8 @@ public final class org/jellyfin/sdk/model/api/MediaProtocol : java/lang/Enum {
 	public static final field RTP Lorg/jellyfin/sdk/model/api/MediaProtocol;
 	public static final field RTSP Lorg/jellyfin/sdk/model/api/MediaProtocol;
 	public static final field UDP Lorg/jellyfin/sdk/model/api/MediaProtocol;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MediaProtocol;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/MediaProtocol;
 }
@@ -4943,6 +5017,8 @@ public final class org/jellyfin/sdk/model/api/MediaSourceType : java/lang/Enum {
 	public static final field DEFAULT Lorg/jellyfin/sdk/model/api/MediaSourceType;
 	public static final field GROUPING Lorg/jellyfin/sdk/model/api/MediaSourceType;
 	public static final field PLACEHOLDER Lorg/jellyfin/sdk/model/api/MediaSourceType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MediaSourceType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/MediaSourceType;
 }
@@ -5091,6 +5167,8 @@ public final class org/jellyfin/sdk/model/api/MediaStreamType : java/lang/Enum {
 	public static final field EMBEDDED_IMAGE Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static final field SUBTITLE Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static final field VIDEO Lorg/jellyfin/sdk/model/api/MediaStreamType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/MediaStreamType;
 }
@@ -5294,6 +5372,8 @@ public final class org/jellyfin/sdk/model/api/MetadataField : java/lang/Enum {
 	public static final field RUNTIME Lorg/jellyfin/sdk/model/api/MetadataField;
 	public static final field STUDIOS Lorg/jellyfin/sdk/model/api/MetadataField;
 	public static final field TAGS Lorg/jellyfin/sdk/model/api/MetadataField;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MetadataField;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/MetadataField;
 }
@@ -5363,6 +5443,8 @@ public final class org/jellyfin/sdk/model/api/MetadataRefreshMode : java/lang/En
 	public static final field FULL_REFRESH Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;
 	public static final field NONE Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;
 	public static final field VALIDATION_ONLY Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;
 }
@@ -5791,6 +5873,8 @@ public final class org/jellyfin/sdk/model/api/NotificationLevel : java/lang/Enum
 	public static final field ERROR Lorg/jellyfin/sdk/model/api/NotificationLevel;
 	public static final field NORMAL Lorg/jellyfin/sdk/model/api/NotificationLevel;
 	public static final field WARNING Lorg/jellyfin/sdk/model/api/NotificationLevel;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/NotificationLevel;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/NotificationLevel;
 }
@@ -6260,6 +6344,8 @@ public final class org/jellyfin/sdk/model/api/PlayAccess : java/lang/Enum {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/PlayAccess$Companion;
 	public static final field FULL Lorg/jellyfin/sdk/model/api/PlayAccess;
 	public static final field NONE Lorg/jellyfin/sdk/model/api/PlayAccess;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlayAccess;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/PlayAccess;
 }
@@ -6287,6 +6373,8 @@ public final class org/jellyfin/sdk/model/api/PlayCommand : java/lang/Enum {
 	public static final field PLAY_NEXT Lorg/jellyfin/sdk/model/api/PlayCommand;
 	public static final field PLAY_NOW Lorg/jellyfin/sdk/model/api/PlayCommand;
 	public static final field PLAY_SHUFFLE Lorg/jellyfin/sdk/model/api/PlayCommand;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlayCommand;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/PlayCommand;
 }
@@ -6312,6 +6400,8 @@ public final class org/jellyfin/sdk/model/api/PlayMethod : java/lang/Enum {
 	public static final field DIRECT_PLAY Lorg/jellyfin/sdk/model/api/PlayMethod;
 	public static final field DIRECT_STREAM Lorg/jellyfin/sdk/model/api/PlayMethod;
 	public static final field TRANSCODE Lorg/jellyfin/sdk/model/api/PlayMethod;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlayMethod;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/PlayMethod;
 }
@@ -6415,6 +6505,8 @@ public final class org/jellyfin/sdk/model/api/PlaybackErrorCode : java/lang/Enum
 	public static final field NOT_ALLOWED Lorg/jellyfin/sdk/model/api/PlaybackErrorCode;
 	public static final field NO_COMPATIBLE_STREAM Lorg/jellyfin/sdk/model/api/PlaybackErrorCode;
 	public static final field RATE_LIMIT_EXCEEDED Lorg/jellyfin/sdk/model/api/PlaybackErrorCode;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlaybackErrorCode;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/PlaybackErrorCode;
 }
@@ -6805,6 +6897,8 @@ public final class org/jellyfin/sdk/model/api/PlaystateCommand : java/lang/Enum 
 	public static final field SEEK Lorg/jellyfin/sdk/model/api/PlaystateCommand;
 	public static final field STOP Lorg/jellyfin/sdk/model/api/PlaystateCommand;
 	public static final field UNPAUSE Lorg/jellyfin/sdk/model/api/PlaystateCommand;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlaystateCommand;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/PlaystateCommand;
 }
@@ -6944,6 +7038,8 @@ public final class org/jellyfin/sdk/model/api/PluginStatus : java/lang/Enum {
 	public static final field NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/PluginStatus;
 	public static final field RESTART Lorg/jellyfin/sdk/model/api/PluginStatus;
 	public static final field SUPERCEDED Lorg/jellyfin/sdk/model/api/PluginStatus;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PluginStatus;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/PluginStatus;
 }
@@ -7075,6 +7171,8 @@ public final class org/jellyfin/sdk/model/api/ProfileConditionType : java/lang/E
 	public static final field GREATER_THAN_EQUAL Lorg/jellyfin/sdk/model/api/ProfileConditionType;
 	public static final field LESS_THAN_EQUAL Lorg/jellyfin/sdk/model/api/ProfileConditionType;
 	public static final field NOT_EQUALS Lorg/jellyfin/sdk/model/api/ProfileConditionType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ProfileConditionType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ProfileConditionType;
 }
@@ -7120,6 +7218,8 @@ public final class org/jellyfin/sdk/model/api/ProfileConditionValue : java/lang/
 	public static final field VIDEO_PROFILE Lorg/jellyfin/sdk/model/api/ProfileConditionValue;
 	public static final field VIDEO_TIMESTAMP Lorg/jellyfin/sdk/model/api/ProfileConditionValue;
 	public static final field WIDTH Lorg/jellyfin/sdk/model/api/ProfileConditionValue;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ProfileConditionValue;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ProfileConditionValue;
 }
@@ -7148,6 +7248,8 @@ public final class org/jellyfin/sdk/model/api/ProgramAudio : java/lang/Enum {
 	public static final field MONO Lorg/jellyfin/sdk/model/api/ProgramAudio;
 	public static final field STEREO Lorg/jellyfin/sdk/model/api/ProgramAudio;
 	public static final field THX Lorg/jellyfin/sdk/model/api/ProgramAudio;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ProgramAudio;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ProgramAudio;
 }
@@ -7419,6 +7521,8 @@ public final class org/jellyfin/sdk/model/api/QuickConnectState : java/lang/Enum
 	public static final field AVAILABLE Lorg/jellyfin/sdk/model/api/QuickConnectState;
 	public static final field Companion Lorg/jellyfin/sdk/model/api/QuickConnectState$Companion;
 	public static final field UNAVAILABLE Lorg/jellyfin/sdk/model/api/QuickConnectState;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/QuickConnectState;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/QuickConnectState;
 }
@@ -7443,6 +7547,8 @@ public final class org/jellyfin/sdk/model/api/RatingType : java/lang/Enum {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/RatingType$Companion;
 	public static final field LIKES Lorg/jellyfin/sdk/model/api/RatingType;
 	public static final field SCORE Lorg/jellyfin/sdk/model/api/RatingType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/RatingType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/RatingType;
 }
@@ -7542,6 +7648,8 @@ public final class org/jellyfin/sdk/model/api/RecommendationType : java/lang/Enu
 	public static final field HAS_LIKED_DIRECTOR Lorg/jellyfin/sdk/model/api/RecommendationType;
 	public static final field SIMILAR_TO_LIKED_ITEM Lorg/jellyfin/sdk/model/api/RecommendationType;
 	public static final field SIMILAR_TO_RECENTLY_PLAYED Lorg/jellyfin/sdk/model/api/RecommendationType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/RecommendationType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/RecommendationType;
 }
@@ -7571,6 +7679,8 @@ public final class org/jellyfin/sdk/model/api/RecordingStatus : java/lang/Enum {
 	public static final field ERROR Lorg/jellyfin/sdk/model/api/RecordingStatus;
 	public static final field IN_PROGRESS Lorg/jellyfin/sdk/model/api/RecordingStatus;
 	public static final field NEW Lorg/jellyfin/sdk/model/api/RecordingStatus;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/RecordingStatus;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/RecordingStatus;
 }
@@ -7813,6 +7923,8 @@ public final class org/jellyfin/sdk/model/api/RepeatMode : java/lang/Enum {
 	public static final field REPEAT_ALL Lorg/jellyfin/sdk/model/api/RepeatMode;
 	public static final field REPEAT_NONE Lorg/jellyfin/sdk/model/api/RepeatMode;
 	public static final field REPEAT_ONE Lorg/jellyfin/sdk/model/api/RepeatMode;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/RepeatMode;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/RepeatMode;
 }
@@ -7913,6 +8025,8 @@ public final class org/jellyfin/sdk/model/api/ScrollDirection : java/lang/Enum {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/ScrollDirection$Companion;
 	public static final field HORIZONTAL Lorg/jellyfin/sdk/model/api/ScrollDirection;
 	public static final field VERTICAL Lorg/jellyfin/sdk/model/api/ScrollDirection;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ScrollDirection;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ScrollDirection;
 }
@@ -8126,6 +8240,8 @@ public final class org/jellyfin/sdk/model/api/SendCommandType : java/lang/Enum {
 	public static final field SEEK Lorg/jellyfin/sdk/model/api/SendCommandType;
 	public static final field STOP Lorg/jellyfin/sdk/model/api/SendCommandType;
 	public static final field UNPAUSE Lorg/jellyfin/sdk/model/api/SendCommandType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SendCommandType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SendCommandType;
 }
@@ -8234,6 +8350,8 @@ public final class org/jellyfin/sdk/model/api/SeriesStatus : java/lang/Enum {
 	public static final field CONTINUING Lorg/jellyfin/sdk/model/api/SeriesStatus;
 	public static final field Companion Lorg/jellyfin/sdk/model/api/SeriesStatus$Companion;
 	public static final field ENDED Lorg/jellyfin/sdk/model/api/SeriesStatus;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SeriesStatus;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SeriesStatus;
 }
@@ -8737,6 +8855,8 @@ public final class org/jellyfin/sdk/model/api/SessionMessageType : java/lang/Enu
 	public static final field USER_DATA_CHANGED Lorg/jellyfin/sdk/model/api/SessionMessageType;
 	public static final field USER_DELETED Lorg/jellyfin/sdk/model/api/SessionMessageType;
 	public static final field USER_UPDATED Lorg/jellyfin/sdk/model/api/SessionMessageType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SessionMessageType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SessionMessageType;
 }
@@ -8967,6 +9087,8 @@ public final class org/jellyfin/sdk/model/api/SortOrder : java/lang/Enum {
 	public static final field ASCENDING Lorg/jellyfin/sdk/model/api/SortOrder;
 	public static final field Companion Lorg/jellyfin/sdk/model/api/SortOrder$Companion;
 	public static final field DESCENDING Lorg/jellyfin/sdk/model/api/SortOrder;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SortOrder;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SortOrder;
 }
@@ -9125,6 +9247,8 @@ public final class org/jellyfin/sdk/model/api/SubtitleDeliveryMethod : java/lang
 	public static final field ENCODE Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;
 	public static final field EXTERNAL Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;
 	public static final field HLS Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;
 }
@@ -9152,6 +9276,8 @@ public final class org/jellyfin/sdk/model/api/SubtitlePlaybackMode : java/lang/E
 	public static final field NONE Lorg/jellyfin/sdk/model/api/SubtitlePlaybackMode;
 	public static final field ONLY_FORCED Lorg/jellyfin/sdk/model/api/SubtitlePlaybackMode;
 	public static final field SMART Lorg/jellyfin/sdk/model/api/SubtitlePlaybackMode;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SubtitlePlaybackMode;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SubtitlePlaybackMode;
 }
@@ -9215,6 +9341,8 @@ public final class org/jellyfin/sdk/model/api/SyncPlayUserAccessType : java/lang
 	public static final field Companion Lorg/jellyfin/sdk/model/api/SyncPlayUserAccessType$Companion;
 	public static final field JOIN_GROUPS Lorg/jellyfin/sdk/model/api/SyncPlayUserAccessType;
 	public static final field NONE Lorg/jellyfin/sdk/model/api/SyncPlayUserAccessType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SyncPlayUserAccessType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SyncPlayUserAccessType;
 }
@@ -9321,6 +9449,8 @@ public final class org/jellyfin/sdk/model/api/TaskCompletionStatus : java/lang/E
 	public static final field COMPLETED Lorg/jellyfin/sdk/model/api/TaskCompletionStatus;
 	public static final field Companion Lorg/jellyfin/sdk/model/api/TaskCompletionStatus$Companion;
 	public static final field FAILED Lorg/jellyfin/sdk/model/api/TaskCompletionStatus;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TaskCompletionStatus;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/TaskCompletionStatus;
 }
@@ -9438,6 +9568,8 @@ public final class org/jellyfin/sdk/model/api/TaskState : java/lang/Enum {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/TaskState$Companion;
 	public static final field IDLE Lorg/jellyfin/sdk/model/api/TaskState;
 	public static final field RUNNING Lorg/jellyfin/sdk/model/api/TaskState;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TaskState;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/TaskState;
 }
@@ -9793,6 +9925,8 @@ public final class org/jellyfin/sdk/model/api/TranscodeReason : java/lang/Enum {
 	public static final field VIDEO_LEVEL_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
 	public static final field VIDEO_PROFILE_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
 	public static final field VIDEO_RESOLUTION_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TranscodeReason;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/TranscodeReason;
 }
@@ -9817,6 +9951,8 @@ public final class org/jellyfin/sdk/model/api/TranscodeSeekInfo : java/lang/Enum
 	public static final field AUTO Lorg/jellyfin/sdk/model/api/TranscodeSeekInfo;
 	public static final field BYTES Lorg/jellyfin/sdk/model/api/TranscodeSeekInfo;
 	public static final field Companion Lorg/jellyfin/sdk/model/api/TranscodeSeekInfo$Companion;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TranscodeSeekInfo;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/TranscodeSeekInfo;
 }
@@ -9952,6 +10088,8 @@ public final class org/jellyfin/sdk/model/api/TransportStreamTimestamp : java/la
 	public static final field NONE Lorg/jellyfin/sdk/model/api/TransportStreamTimestamp;
 	public static final field VALID Lorg/jellyfin/sdk/model/api/TransportStreamTimestamp;
 	public static final field ZERO Lorg/jellyfin/sdk/model/api/TransportStreamTimestamp;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TransportStreamTimestamp;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/TransportStreamTimestamp;
 }
@@ -10111,6 +10249,8 @@ public final class org/jellyfin/sdk/model/api/UnratedItem : java/lang/Enum {
 	public static final field OTHER Lorg/jellyfin/sdk/model/api/UnratedItem;
 	public static final field SERIES Lorg/jellyfin/sdk/model/api/UnratedItem;
 	public static final field TRAILER Lorg/jellyfin/sdk/model/api/UnratedItem;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/UnratedItem;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/UnratedItem;
 }
@@ -10727,6 +10867,8 @@ public final class org/jellyfin/sdk/model/api/Video3dFormat : java/lang/Enum {
 	public static final field HALF_SIDE_BY_SIDE Lorg/jellyfin/sdk/model/api/Video3dFormat;
 	public static final field HALF_TOP_AND_BOTTOM Lorg/jellyfin/sdk/model/api/Video3dFormat;
 	public static final field MVC Lorg/jellyfin/sdk/model/api/Video3dFormat;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/Video3dFormat;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/Video3dFormat;
 }
@@ -10753,6 +10895,8 @@ public final class org/jellyfin/sdk/model/api/VideoType : java/lang/Enum {
 	public static final field DVD Lorg/jellyfin/sdk/model/api/VideoType;
 	public static final field ISO Lorg/jellyfin/sdk/model/api/VideoType;
 	public static final field VIDEO_FILE Lorg/jellyfin/sdk/model/api/VideoType;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/VideoType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/VideoType;
 }

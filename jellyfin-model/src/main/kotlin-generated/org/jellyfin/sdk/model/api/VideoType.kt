@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,13 +13,18 @@ import kotlinx.serialization.Serializable
  * Enum VideoType.
  */
 @Serializable
-public enum class VideoType {
+public enum class VideoType(
+	public val serialName: String
+) {
 	@SerialName("VideoFile")
-	VIDEO_FILE,
+	VIDEO_FILE("VideoFile"),
 	@SerialName("Iso")
-	ISO,
+	ISO("Iso"),
 	@SerialName("Dvd")
-	DVD,
+	DVD("Dvd"),
 	@SerialName("BluRay")
-	BLU_RAY,
+	BLU_RAY("BluRay"),
+	;
+
+	public override fun toString(): String = serialName
 }

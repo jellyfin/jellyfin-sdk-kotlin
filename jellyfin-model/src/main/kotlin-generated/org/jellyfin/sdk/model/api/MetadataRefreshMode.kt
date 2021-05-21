@@ -5,17 +5,23 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class MetadataRefreshMode {
+public enum class MetadataRefreshMode(
+	public val serialName: String
+) {
 	@SerialName("None")
-	NONE,
+	NONE("None"),
 	@SerialName("ValidationOnly")
-	VALIDATION_ONLY,
+	VALIDATION_ONLY("ValidationOnly"),
 	@SerialName("Default")
-	DEFAULT,
+	DEFAULT("Default"),
 	@SerialName("FullRefresh")
-	FULL_REFRESH,
+	FULL_REFRESH("FullRefresh"),
+	;
+
+	public override fun toString(): String = serialName
 }

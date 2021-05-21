@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,25 +13,30 @@ import kotlinx.serialization.Serializable
  * An enum that represents a day of the week, weekdays, weekends, or all days.
  */
 @Serializable
-public enum class DynamicDayOfWeek {
+public enum class DynamicDayOfWeek(
+	public val serialName: String
+) {
 	@SerialName("Sunday")
-	SUNDAY,
+	SUNDAY("Sunday"),
 	@SerialName("Monday")
-	MONDAY,
+	MONDAY("Monday"),
 	@SerialName("Tuesday")
-	TUESDAY,
+	TUESDAY("Tuesday"),
 	@SerialName("Wednesday")
-	WEDNESDAY,
+	WEDNESDAY("Wednesday"),
 	@SerialName("Thursday")
-	THURSDAY,
+	THURSDAY("Thursday"),
 	@SerialName("Friday")
-	FRIDAY,
+	FRIDAY("Friday"),
 	@SerialName("Saturday")
-	SATURDAY,
+	SATURDAY("Saturday"),
 	@SerialName("Everyday")
-	EVERYDAY,
+	EVERYDAY("Everyday"),
 	@SerialName("Weekday")
-	WEEKDAY,
+	WEEKDAY("Weekday"),
 	@SerialName("Weekend")
-	WEEKEND,
+	WEEKEND("Weekend"),
+	;
+
+	public override fun toString(): String = serialName
 }

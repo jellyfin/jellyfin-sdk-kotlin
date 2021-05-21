@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,13 +13,18 @@ import kotlinx.serialization.Serializable
  * Enum FileSystemEntryType.
  */
 @Serializable
-public enum class FileSystemEntryType {
+public enum class FileSystemEntryType(
+	public val serialName: String
+) {
 	@SerialName("File")
-	FILE,
+	FILE("File"),
 	@SerialName("Directory")
-	DIRECTORY,
+	DIRECTORY("Directory"),
 	@SerialName("NetworkComputer")
-	NETWORK_COMPUTER,
+	NETWORK_COMPUTER("NetworkComputer"),
 	@SerialName("NetworkShare")
-	NETWORK_SHARE,
+	NETWORK_SHARE("NetworkShare"),
+	;
+
+	public override fun toString(): String = serialName
 }

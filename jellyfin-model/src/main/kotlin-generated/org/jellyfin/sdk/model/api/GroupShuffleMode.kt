@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,9 +13,14 @@ import kotlinx.serialization.Serializable
  * Enum GroupShuffleMode.
  */
 @Serializable
-public enum class GroupShuffleMode {
+public enum class GroupShuffleMode(
+	public val serialName: String
+) {
 	@SerialName("Sorted")
-	SORTED,
+	SORTED("Sorted"),
 	@SerialName("Shuffle")
-	SHUFFLE,
+	SHUFFLE("Shuffle"),
+	;
+
+	public override fun toString(): String = serialName
 }

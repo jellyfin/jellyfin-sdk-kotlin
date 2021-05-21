@@ -5,15 +5,21 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class RepeatMode {
+public enum class RepeatMode(
+	public val serialName: String
+) {
 	@SerialName("RepeatNone")
-	REPEAT_NONE,
+	REPEAT_NONE("RepeatNone"),
 	@SerialName("RepeatAll")
-	REPEAT_ALL,
+	REPEAT_ALL("RepeatAll"),
 	@SerialName("RepeatOne")
-	REPEAT_ONE,
+	REPEAT_ONE("RepeatOne"),
+	;
+
+	public override fun toString(): String = serialName
 }

@@ -5,23 +5,29 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class MediaProtocol {
+public enum class MediaProtocol(
+	public val serialName: String
+) {
 	@SerialName("File")
-	FILE,
+	FILE("File"),
 	@SerialName("Http")
-	HTTP,
+	HTTP("Http"),
 	@SerialName("Rtmp")
-	RTMP,
+	RTMP("Rtmp"),
 	@SerialName("Rtsp")
-	RTSP,
+	RTSP("Rtsp"),
 	@SerialName("Udp")
-	UDP,
+	UDP("Udp"),
 	@SerialName("Rtp")
-	RTP,
+	RTP("Rtp"),
 	@SerialName("Ftp")
-	FTP,
+	FTP("Ftp"),
+	;
+
+	public override fun toString(): String = serialName
 }

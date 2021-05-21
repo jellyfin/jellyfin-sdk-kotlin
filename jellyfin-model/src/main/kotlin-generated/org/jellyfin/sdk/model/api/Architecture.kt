@@ -5,19 +5,25 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class Architecture {
+public enum class Architecture(
+	public val serialName: String
+) {
 	@SerialName("X86")
-	X86,
+	X86("X86"),
 	@SerialName("X64")
-	X64,
+	X64("X64"),
 	@SerialName("Arm")
-	ARM,
+	ARM("Arm"),
 	@SerialName("Arm64")
-	ARM_64,
+	ARM_64("Arm64"),
 	@SerialName("Wasm")
-	WASM,
+	WASM("Wasm"),
+	;
+
+	public override fun toString(): String = serialName
 }

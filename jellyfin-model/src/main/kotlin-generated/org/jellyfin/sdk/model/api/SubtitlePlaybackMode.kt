@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,15 +13,20 @@ import kotlinx.serialization.Serializable
  * An enum representing a subtitle playback mode.
  */
 @Serializable
-public enum class SubtitlePlaybackMode {
+public enum class SubtitlePlaybackMode(
+	public val serialName: String
+) {
 	@SerialName("Default")
-	DEFAULT,
+	DEFAULT("Default"),
 	@SerialName("Always")
-	ALWAYS,
+	ALWAYS("Always"),
 	@SerialName("OnlyForced")
-	ONLY_FORCED,
+	ONLY_FORCED("OnlyForced"),
 	@SerialName("None")
-	NONE,
+	NONE("None"),
 	@SerialName("Smart")
-	SMART,
+	SMART("Smart"),
+	;
+
+	public override fun toString(): String = serialName
 }

@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,9 +13,14 @@ import kotlinx.serialization.Serializable
  * Enum GroupQueueMode.
  */
 @Serializable
-public enum class GroupQueueMode {
+public enum class GroupQueueMode(
+	public val serialName: String
+) {
 	@SerialName("Queue")
-	QUEUE,
+	QUEUE("Queue"),
 	@SerialName("QueueNext")
-	QUEUE_NEXT,
+	QUEUE_NEXT("QueueNext"),
+	;
+
+	public override fun toString(): String = serialName
 }

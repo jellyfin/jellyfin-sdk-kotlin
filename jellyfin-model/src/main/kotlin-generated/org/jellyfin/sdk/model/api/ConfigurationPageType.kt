@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,9 +13,14 @@ import kotlinx.serialization.Serializable
  * Enum ConfigurationPageType.
  */
 @Serializable
-public enum class ConfigurationPageType {
+public enum class ConfigurationPageType(
+	public val serialName: String
+) {
 	@SerialName("PluginConfiguration")
-	PLUGIN_CONFIGURATION,
+	PLUGIN_CONFIGURATION("PluginConfiguration"),
 	@SerialName("None")
-	NONE,
+	NONE("None"),
+	;
+
+	public override fun toString(): String = serialName
 }

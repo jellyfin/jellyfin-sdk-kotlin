@@ -5,25 +5,31 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class ImageOrientation {
+public enum class ImageOrientation(
+	public val serialName: String
+) {
 	@SerialName("TopLeft")
-	TOP_LEFT,
+	TOP_LEFT("TopLeft"),
 	@SerialName("TopRight")
-	TOP_RIGHT,
+	TOP_RIGHT("TopRight"),
 	@SerialName("BottomRight")
-	BOTTOM_RIGHT,
+	BOTTOM_RIGHT("BottomRight"),
 	@SerialName("BottomLeft")
-	BOTTOM_LEFT,
+	BOTTOM_LEFT("BottomLeft"),
 	@SerialName("LeftTop")
-	LEFT_TOP,
+	LEFT_TOP("LeftTop"),
 	@SerialName("RightTop")
-	RIGHT_TOP,
+	RIGHT_TOP("RightTop"),
 	@SerialName("RightBottom")
-	RIGHT_BOTTOM,
+	RIGHT_BOTTOM("RightBottom"),
 	@SerialName("LeftBottom")
-	LEFT_BOTTOM,
+	LEFT_BOTTOM("LeftBottom"),
+	;
+
+	public override fun toString(): String = serialName
 }

@@ -5,21 +5,27 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class ProgramAudio {
+public enum class ProgramAudio(
+	public val serialName: String
+) {
 	@SerialName("Mono")
-	MONO,
+	MONO("Mono"),
 	@SerialName("Stereo")
-	STEREO,
+	STEREO("Stereo"),
 	@SerialName("Dolby")
-	DOLBY,
+	DOLBY("Dolby"),
 	@SerialName("DolbyDigital")
-	DOLBY_DIGITAL,
+	DOLBY_DIGITAL("DolbyDigital"),
 	@SerialName("Thx")
-	THX,
+	THX("Thx"),
 	@SerialName("Atmos")
-	ATMOS,
+	ATMOS("Atmos"),
+	;
+
+	public override fun toString(): String = serialName
 }

@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,23 +13,28 @@ import kotlinx.serialization.Serializable
  * Enum MetadataFields.
  */
 @Serializable
-public enum class MetadataField {
+public enum class MetadataField(
+	public val serialName: String
+) {
 	@SerialName("Cast")
-	CAST,
+	CAST("Cast"),
 	@SerialName("Genres")
-	GENRES,
+	GENRES("Genres"),
 	@SerialName("ProductionLocations")
-	PRODUCTION_LOCATIONS,
+	PRODUCTION_LOCATIONS("ProductionLocations"),
 	@SerialName("Studios")
-	STUDIOS,
+	STUDIOS("Studios"),
 	@SerialName("Tags")
-	TAGS,
+	TAGS("Tags"),
 	@SerialName("Name")
-	NAME,
+	NAME("Name"),
 	@SerialName("Overview")
-	OVERVIEW,
+	OVERVIEW("Overview"),
 	@SerialName("Runtime")
-	RUNTIME,
+	RUNTIME("Runtime"),
 	@SerialName("OfficialRating")
-	OFFICIAL_RATING,
+	OFFICIAL_RATING("OfficialRating"),
+	;
+
+	public override fun toString(): String = serialName
 }

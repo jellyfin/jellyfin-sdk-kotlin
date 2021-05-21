@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,11 +13,16 @@ import kotlinx.serialization.Serializable
  * Enum GroupRepeatMode.
  */
 @Serializable
-public enum class GroupRepeatMode {
+public enum class GroupRepeatMode(
+	public val serialName: String
+) {
 	@SerialName("RepeatOne")
-	REPEAT_ONE,
+	REPEAT_ONE("RepeatOne"),
 	@SerialName("RepeatAll")
-	REPEAT_ALL,
+	REPEAT_ALL("RepeatAll"),
 	@SerialName("RepeatNone")
-	REPEAT_NONE,
+	REPEAT_NONE("RepeatNone"),
+	;
+
+	public override fun toString(): String = serialName
 }

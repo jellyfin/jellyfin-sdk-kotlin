@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,13 +13,18 @@ import kotlinx.serialization.Serializable
  * Enum describing the location of the FFmpeg tool.
  */
 @Serializable
-public enum class FFmpegLocation {
+public enum class FFmpegLocation(
+	public val serialName: String
+) {
 	@SerialName("NotFound")
-	NOT_FOUND,
+	NOT_FOUND("NotFound"),
 	@SerialName("SetByArgument")
-	SET_BY_ARGUMENT,
+	SET_BY_ARGUMENT("SetByArgument"),
 	@SerialName("Custom")
-	CUSTOM,
+	CUSTOM("Custom"),
 	@SerialName("System")
-	SYSTEM,
+	SYSTEM("System"),
+	;
+
+	public override fun toString(): String = serialName
 }
