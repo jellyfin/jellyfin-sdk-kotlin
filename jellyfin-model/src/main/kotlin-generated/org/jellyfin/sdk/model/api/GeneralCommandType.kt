@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,87 +13,92 @@ import kotlinx.serialization.Serializable
  * This exists simply to identify a set of known commands.
  */
 @Serializable
-public enum class GeneralCommandType {
+public enum class GeneralCommandType(
+	public val serialName: String
+) {
 	@SerialName("MoveUp")
-	MOVE_UP,
+	MOVE_UP("MoveUp"),
 	@SerialName("MoveDown")
-	MOVE_DOWN,
+	MOVE_DOWN("MoveDown"),
 	@SerialName("MoveLeft")
-	MOVE_LEFT,
+	MOVE_LEFT("MoveLeft"),
 	@SerialName("MoveRight")
-	MOVE_RIGHT,
+	MOVE_RIGHT("MoveRight"),
 	@SerialName("PageUp")
-	PAGE_UP,
+	PAGE_UP("PageUp"),
 	@SerialName("PageDown")
-	PAGE_DOWN,
+	PAGE_DOWN("PageDown"),
 	@SerialName("PreviousLetter")
-	PREVIOUS_LETTER,
+	PREVIOUS_LETTER("PreviousLetter"),
 	@SerialName("NextLetter")
-	NEXT_LETTER,
+	NEXT_LETTER("NextLetter"),
 	@SerialName("ToggleOsd")
-	TOGGLE_OSD,
+	TOGGLE_OSD("ToggleOsd"),
 	@SerialName("ToggleContextMenu")
-	TOGGLE_CONTEXT_MENU,
+	TOGGLE_CONTEXT_MENU("ToggleContextMenu"),
 	@SerialName("Select")
-	SELECT,
+	SELECT("Select"),
 	@SerialName("Back")
-	BACK,
+	BACK("Back"),
 	@SerialName("TakeScreenshot")
-	TAKE_SCREENSHOT,
+	TAKE_SCREENSHOT("TakeScreenshot"),
 	@SerialName("SendKey")
-	SEND_KEY,
+	SEND_KEY("SendKey"),
 	@SerialName("SendString")
-	SEND_STRING,
+	SEND_STRING("SendString"),
 	@SerialName("GoHome")
-	GO_HOME,
+	GO_HOME("GoHome"),
 	@SerialName("GoToSettings")
-	GO_TO_SETTINGS,
+	GO_TO_SETTINGS("GoToSettings"),
 	@SerialName("VolumeUp")
-	VOLUME_UP,
+	VOLUME_UP("VolumeUp"),
 	@SerialName("VolumeDown")
-	VOLUME_DOWN,
+	VOLUME_DOWN("VolumeDown"),
 	@SerialName("Mute")
-	MUTE,
+	MUTE("Mute"),
 	@SerialName("Unmute")
-	UNMUTE,
+	UNMUTE("Unmute"),
 	@SerialName("ToggleMute")
-	TOGGLE_MUTE,
+	TOGGLE_MUTE("ToggleMute"),
 	@SerialName("SetVolume")
-	SET_VOLUME,
+	SET_VOLUME("SetVolume"),
 	@SerialName("SetAudioStreamIndex")
-	SET_AUDIO_STREAM_INDEX,
+	SET_AUDIO_STREAM_INDEX("SetAudioStreamIndex"),
 	@SerialName("SetSubtitleStreamIndex")
-	SET_SUBTITLE_STREAM_INDEX,
+	SET_SUBTITLE_STREAM_INDEX("SetSubtitleStreamIndex"),
 	@SerialName("ToggleFullscreen")
-	TOGGLE_FULLSCREEN,
+	TOGGLE_FULLSCREEN("ToggleFullscreen"),
 	@SerialName("DisplayContent")
-	DISPLAY_CONTENT,
+	DISPLAY_CONTENT("DisplayContent"),
 	@SerialName("GoToSearch")
-	GO_TO_SEARCH,
+	GO_TO_SEARCH("GoToSearch"),
 	@SerialName("DisplayMessage")
-	DISPLAY_MESSAGE,
+	DISPLAY_MESSAGE("DisplayMessage"),
 	@SerialName("SetRepeatMode")
-	SET_REPEAT_MODE,
+	SET_REPEAT_MODE("SetRepeatMode"),
 	@SerialName("ChannelUp")
-	CHANNEL_UP,
+	CHANNEL_UP("ChannelUp"),
 	@SerialName("ChannelDown")
-	CHANNEL_DOWN,
+	CHANNEL_DOWN("ChannelDown"),
 	@SerialName("Guide")
-	GUIDE,
+	GUIDE("Guide"),
 	@SerialName("ToggleStats")
-	TOGGLE_STATS,
+	TOGGLE_STATS("ToggleStats"),
 	@SerialName("PlayMediaSource")
-	PLAY_MEDIA_SOURCE,
+	PLAY_MEDIA_SOURCE("PlayMediaSource"),
 	@SerialName("PlayTrailers")
-	PLAY_TRAILERS,
+	PLAY_TRAILERS("PlayTrailers"),
 	@SerialName("SetShuffleQueue")
-	SET_SHUFFLE_QUEUE,
+	SET_SHUFFLE_QUEUE("SetShuffleQueue"),
 	@SerialName("PlayState")
-	PLAY_STATE,
+	PLAY_STATE("PlayState"),
 	@SerialName("PlayNext")
-	PLAY_NEXT,
+	PLAY_NEXT("PlayNext"),
 	@SerialName("ToggleOsdMenu")
-	TOGGLE_OSD_MENU,
+	TOGGLE_OSD_MENU("ToggleOsdMenu"),
 	@SerialName("Play")
-	PLAY,
+	PLAY("Play"),
+	;
+
+	public override fun toString(): String = serialName
 }

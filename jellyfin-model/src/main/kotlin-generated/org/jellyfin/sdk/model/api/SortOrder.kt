@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,9 +13,14 @@ import kotlinx.serialization.Serializable
  * An enum representing the sorting order.
  */
 @Serializable
-public enum class SortOrder {
+public enum class SortOrder(
+	public val serialName: String
+) {
 	@SerialName("Ascending")
-	ASCENDING,
+	ASCENDING("Ascending"),
 	@SerialName("Descending")
-	DESCENDING,
+	DESCENDING("Descending"),
+	;
+
+	public override fun toString(): String = serialName
 }

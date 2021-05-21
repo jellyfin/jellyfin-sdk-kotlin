@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,11 +13,16 @@ import kotlinx.serialization.Serializable
  * Quick connect state.
  */
 @Serializable
-public enum class QuickConnectState {
+public enum class QuickConnectState(
+	public val serialName: String
+) {
 	@SerialName("Unavailable")
-	UNAVAILABLE,
+	UNAVAILABLE("Unavailable"),
 	@SerialName("Available")
-	AVAILABLE,
+	AVAILABLE("Available"),
 	@SerialName("Active")
-	ACTIVE,
+	ACTIVE("Active"),
+	;
+
+	public override fun toString(): String = serialName
 }

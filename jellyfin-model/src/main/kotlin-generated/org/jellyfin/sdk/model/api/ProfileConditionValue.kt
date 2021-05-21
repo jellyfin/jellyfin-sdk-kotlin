@@ -5,55 +5,61 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class ProfileConditionValue {
+public enum class ProfileConditionValue(
+	public val serialName: String
+) {
 	@SerialName("AudioChannels")
-	AUDIO_CHANNELS,
+	AUDIO_CHANNELS("AudioChannels"),
 	@SerialName("AudioBitrate")
-	AUDIO_BITRATE,
+	AUDIO_BITRATE("AudioBitrate"),
 	@SerialName("AudioProfile")
-	AUDIO_PROFILE,
+	AUDIO_PROFILE("AudioProfile"),
 	@SerialName("Width")
-	WIDTH,
+	WIDTH("Width"),
 	@SerialName("Height")
-	HEIGHT,
+	HEIGHT("Height"),
 	@SerialName("Has64BitOffsets")
-	HAS_64_BIT_OFFSETS,
+	HAS_64_BIT_OFFSETS("Has64BitOffsets"),
 	@SerialName("PacketLength")
-	PACKET_LENGTH,
+	PACKET_LENGTH("PacketLength"),
 	@SerialName("VideoBitDepth")
-	VIDEO_BIT_DEPTH,
+	VIDEO_BIT_DEPTH("VideoBitDepth"),
 	@SerialName("VideoBitrate")
-	VIDEO_BITRATE,
+	VIDEO_BITRATE("VideoBitrate"),
 	@SerialName("VideoFramerate")
-	VIDEO_FRAMERATE,
+	VIDEO_FRAMERATE("VideoFramerate"),
 	@SerialName("VideoLevel")
-	VIDEO_LEVEL,
+	VIDEO_LEVEL("VideoLevel"),
 	@SerialName("VideoProfile")
-	VIDEO_PROFILE,
+	VIDEO_PROFILE("VideoProfile"),
 	@SerialName("VideoTimestamp")
-	VIDEO_TIMESTAMP,
+	VIDEO_TIMESTAMP("VideoTimestamp"),
 	@SerialName("IsAnamorphic")
-	IS_ANAMORPHIC,
+	IS_ANAMORPHIC("IsAnamorphic"),
 	@SerialName("RefFrames")
-	REF_FRAMES,
+	REF_FRAMES("RefFrames"),
 	@SerialName("NumAudioStreams")
-	NUM_AUDIO_STREAMS,
+	NUM_AUDIO_STREAMS("NumAudioStreams"),
 	@SerialName("NumVideoStreams")
-	NUM_VIDEO_STREAMS,
+	NUM_VIDEO_STREAMS("NumVideoStreams"),
 	@SerialName("IsSecondaryAudio")
-	IS_SECONDARY_AUDIO,
+	IS_SECONDARY_AUDIO("IsSecondaryAudio"),
 	@SerialName("VideoCodecTag")
-	VIDEO_CODEC_TAG,
+	VIDEO_CODEC_TAG("VideoCodecTag"),
 	@SerialName("IsAvc")
-	IS_AVC,
+	IS_AVC("IsAvc"),
 	@SerialName("IsInterlaced")
-	IS_INTERLACED,
+	IS_INTERLACED("IsInterlaced"),
 	@SerialName("AudioSampleRate")
-	AUDIO_SAMPLE_RATE,
+	AUDIO_SAMPLE_RATE("AudioSampleRate"),
 	@SerialName("AudioBitDepth")
-	AUDIO_BIT_DEPTH,
+	AUDIO_BIT_DEPTH("AudioBitDepth"),
+	;
+
+	public override fun toString(): String = serialName
 }

@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,11 +13,16 @@ import kotlinx.serialization.Serializable
  * Enum SyncPlayUserAccessType.
  */
 @Serializable
-public enum class SyncPlayUserAccessType {
+public enum class SyncPlayUserAccessType(
+	public val serialName: String
+) {
 	@SerialName("CreateAndJoinGroups")
-	CREATE_AND_JOIN_GROUPS,
+	CREATE_AND_JOIN_GROUPS("CreateAndJoinGroups"),
 	@SerialName("JoinGroups")
-	JOIN_GROUPS,
+	JOIN_GROUPS("JoinGroups"),
 	@SerialName("None")
-	NONE,
+	NONE("None"),
+	;
+
+	public override fun toString(): String = serialName
 }

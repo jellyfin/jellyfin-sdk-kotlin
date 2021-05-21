@@ -5,19 +5,25 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class ProfileConditionType {
+public enum class ProfileConditionType(
+	public val serialName: String
+) {
 	@SerialName("Equals")
-	EQUALS,
+	EQUALS("Equals"),
 	@SerialName("NotEquals")
-	NOT_EQUALS,
+	NOT_EQUALS("NotEquals"),
 	@SerialName("LessThanEqual")
-	LESS_THAN_EQUAL,
+	LESS_THAN_EQUAL("LessThanEqual"),
 	@SerialName("GreaterThanEqual")
-	GREATER_THAN_EQUAL,
+	GREATER_THAN_EQUAL("GreaterThanEqual"),
 	@SerialName("EqualsAny")
-	EQUALS_ANY,
+	EQUALS_ANY("EqualsAny"),
+	;
+
+	public override fun toString(): String = serialName
 }

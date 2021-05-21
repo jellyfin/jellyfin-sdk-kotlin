@@ -5,19 +5,25 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class Video3dFormat {
+public enum class Video3dFormat(
+	public val serialName: String
+) {
 	@SerialName("HalfSideBySide")
-	HALF_SIDE_BY_SIDE,
+	HALF_SIDE_BY_SIDE("HalfSideBySide"),
 	@SerialName("FullSideBySide")
-	FULL_SIDE_BY_SIDE,
+	FULL_SIDE_BY_SIDE("FullSideBySide"),
 	@SerialName("FullTopAndBottom")
-	FULL_TOP_AND_BOTTOM,
+	FULL_TOP_AND_BOTTOM("FullTopAndBottom"),
 	@SerialName("HalfTopAndBottom")
-	HALF_TOP_AND_BOTTOM,
+	HALF_TOP_AND_BOTTOM("HalfTopAndBottom"),
 	@SerialName("MVC")
-	MVC,
+	MVC("MVC"),
+	;
+
+	public override fun toString(): String = serialName
 }

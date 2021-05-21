@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,19 +13,24 @@ import kotlinx.serialization.Serializable
  * Plugin load status.
  */
 @Serializable
-public enum class PluginStatus {
+public enum class PluginStatus(
+	public val serialName: String
+) {
 	@SerialName("Active")
-	ACTIVE,
+	ACTIVE("Active"),
 	@SerialName("Restart")
-	RESTART,
+	RESTART("Restart"),
 	@SerialName("Deleted")
-	DELETED,
+	DELETED("Deleted"),
 	@SerialName("Superceded")
-	SUPERCEDED,
+	SUPERCEDED("Superceded"),
 	@SerialName("Malfunctioned")
-	MALFUNCTIONED,
+	MALFUNCTIONED("Malfunctioned"),
 	@SerialName("NotSupported")
-	NOT_SUPPORTED,
+	NOT_SUPPORTED("NotSupported"),
 	@SerialName("Disabled")
-	DISABLED,
+	DISABLED("Disabled"),
+	;
+
+	public override fun toString(): String = serialName
 }

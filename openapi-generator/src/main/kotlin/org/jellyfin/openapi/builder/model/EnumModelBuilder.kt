@@ -1,8 +1,6 @@
 package org.jellyfin.openapi.builder.model
 
-import com.squareup.kotlinpoet.AnnotationSpec
-import com.squareup.kotlinpoet.TypeSpec
-import com.squareup.kotlinpoet.asTypeName
+import com.squareup.kotlinpoet.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import net.pearx.kasechange.CaseFormat
@@ -21,14 +19,33 @@ class EnumModelBuilder(
 	override fun build(data: EnumApiModel): JellyFile {
 		return TypeSpec.enumBuilder(data.name.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL))
 			.apply {
+				// Constructor
+				primaryConstructor(FunSpec.constructorBuilder().apply {
+					addParameter("serialName", String::class)
+				}.build())
+				addProperty(PropertySpec.builder("serialName", String::class).apply {
+					initializer("serialName")
+				}.build())
+
+				// toString function
+				addFunction(FunSpec.builder("toString").apply {
+					returns(String::class)
+					addStatement("return serialName")
+					addModifiers(KModifier.OVERRIDE)
+				}.build())
+
+				// Members
 				data.constants.forEach {
 					addEnumConstant(
 						it.toScreamingSnakeCase(from = CaseFormat.CAPITALIZED_CAMEL),
 						TypeSpec.anonymousClassBuilder().apply {
 							addAnnotation(AnnotationSpec.builder(SerialName::class).addMember("%S", it).build())
+							addSuperclassConstructorParameter("%S", it)
 						}.build()
 					)
 				}
+
+				// Header
 				data.description?.let { addKdoc(it) }
 				if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_CLASS))
 				addAnnotation(Serializable::class.asTypeName())

@@ -5,15 +5,21 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class MediaSourceType {
+public enum class MediaSourceType(
+	public val serialName: String
+) {
 	@SerialName("Default")
-	DEFAULT,
+	DEFAULT("Default"),
 	@SerialName("Grouping")
-	GROUPING,
+	GROUPING("Grouping"),
 	@SerialName("Placeholder")
-	PLACEHOLDER,
+	PLACEHOLDER("Placeholder"),
+	;
+
+	public override fun toString(): String = serialName
 }

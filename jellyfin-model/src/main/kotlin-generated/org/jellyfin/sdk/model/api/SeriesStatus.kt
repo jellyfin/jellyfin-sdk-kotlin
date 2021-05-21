@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,9 +13,14 @@ import kotlinx.serialization.Serializable
  * Enum SeriesStatus.
  */
 @Serializable
-public enum class SeriesStatus {
+public enum class SeriesStatus(
+	public val serialName: String
+) {
 	@SerialName("Continuing")
-	CONTINUING,
+	CONTINUING("Continuing"),
 	@SerialName("Ended")
-	ENDED,
+	ENDED("Ended"),
+	;
+
+	public override fun toString(): String = serialName
 }

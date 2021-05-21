@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,23 +13,28 @@ import kotlinx.serialization.Serializable
  * An enum representing an unrated item.
  */
 @Serializable
-public enum class UnratedItem {
+public enum class UnratedItem(
+	public val serialName: String
+) {
 	@SerialName("Movie")
-	MOVIE,
+	MOVIE("Movie"),
 	@SerialName("Trailer")
-	TRAILER,
+	TRAILER("Trailer"),
 	@SerialName("Series")
-	SERIES,
+	SERIES("Series"),
 	@SerialName("Music")
-	MUSIC,
+	MUSIC("Music"),
 	@SerialName("Book")
-	BOOK,
+	BOOK("Book"),
 	@SerialName("LiveTvChannel")
-	LIVE_TV_CHANNEL,
+	LIVE_TV_CHANNEL("LiveTvChannel"),
 	@SerialName("LiveTvProgram")
-	LIVE_TV_PROGRAM,
+	LIVE_TV_PROGRAM("LiveTvProgram"),
 	@SerialName("ChannelContent")
-	CHANNEL_CONTENT,
+	CHANNEL_CONTENT("ChannelContent"),
 	@SerialName("Other")
-	OTHER,
+	OTHER("Other"),
+	;
+
+	public override fun toString(): String = serialName
 }

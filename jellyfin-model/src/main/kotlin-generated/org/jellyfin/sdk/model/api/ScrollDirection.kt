@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,9 +13,14 @@ import kotlinx.serialization.Serializable
  * An enum representing the axis that should be scrolled.
  */
 @Serializable
-public enum class ScrollDirection {
+public enum class ScrollDirection(
+	public val serialName: String
+) {
 	@SerialName("Horizontal")
-	HORIZONTAL,
+	HORIZONTAL("Horizontal"),
 	@SerialName("Vertical")
-	VERTICAL,
+	VERTICAL("Vertical"),
+	;
+
+	public override fun toString(): String = serialName
 }

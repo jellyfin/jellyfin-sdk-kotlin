@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,23 +13,28 @@ import kotlinx.serialization.Serializable
  * Enum PlaystateCommand.
  */
 @Serializable
-public enum class PlaystateCommand {
+public enum class PlaystateCommand(
+	public val serialName: String
+) {
 	@SerialName("Stop")
-	STOP,
+	STOP("Stop"),
 	@SerialName("Pause")
-	PAUSE,
+	PAUSE("Pause"),
 	@SerialName("Unpause")
-	UNPAUSE,
+	UNPAUSE("Unpause"),
 	@SerialName("NextTrack")
-	NEXT_TRACK,
+	NEXT_TRACK("NextTrack"),
 	@SerialName("PreviousTrack")
-	PREVIOUS_TRACK,
+	PREVIOUS_TRACK("PreviousTrack"),
 	@SerialName("Seek")
-	SEEK,
+	SEEK("Seek"),
 	@SerialName("Rewind")
-	REWIND,
+	REWIND("Rewind"),
 	@SerialName("FastForward")
-	FAST_FORWARD,
+	FAST_FORWARD("FastForward"),
 	@SerialName("PlayPause")
-	PLAY_PAUSE,
+	PLAY_PAUSE("PlayPause"),
+	;
+
+	public override fun toString(): String = serialName
 }

@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,23 +13,28 @@ import kotlinx.serialization.Serializable
  * Enum ItemFilter.
  */
 @Serializable
-public enum class ItemFilter {
+public enum class ItemFilter(
+	public val serialName: String
+) {
 	@SerialName("IsFolder")
-	IS_FOLDER,
+	IS_FOLDER("IsFolder"),
 	@SerialName("IsNotFolder")
-	IS_NOT_FOLDER,
+	IS_NOT_FOLDER("IsNotFolder"),
 	@SerialName("IsUnplayed")
-	IS_UNPLAYED,
+	IS_UNPLAYED("IsUnplayed"),
 	@SerialName("IsPlayed")
-	IS_PLAYED,
+	IS_PLAYED("IsPlayed"),
 	@SerialName("IsFavorite")
-	IS_FAVORITE,
+	IS_FAVORITE("IsFavorite"),
 	@SerialName("IsResumable")
-	IS_RESUMABLE,
+	IS_RESUMABLE("IsResumable"),
 	@SerialName("Likes")
-	LIKES,
+	LIKES("Likes"),
 	@SerialName("Dislikes")
-	DISLIKES,
+	DISLIKES("Dislikes"),
 	@SerialName("IsFavoriteOrLikes")
-	IS_FAVORITE_OR_LIKES,
+	IS_FAVORITE_OR_LIKES("IsFavoriteOrLikes"),
+	;
+
+	public override fun toString(): String = serialName
 }

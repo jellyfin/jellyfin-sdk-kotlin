@@ -5,23 +5,29 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class DayOfWeek {
+public enum class DayOfWeek(
+	public val serialName: String
+) {
 	@SerialName("Sunday")
-	SUNDAY,
+	SUNDAY("Sunday"),
 	@SerialName("Monday")
-	MONDAY,
+	MONDAY("Monday"),
 	@SerialName("Tuesday")
-	TUESDAY,
+	TUESDAY("Tuesday"),
 	@SerialName("Wednesday")
-	WEDNESDAY,
+	WEDNESDAY("Wednesday"),
 	@SerialName("Thursday")
-	THURSDAY,
+	THURSDAY("Thursday"),
 	@SerialName("Friday")
-	FRIDAY,
+	FRIDAY("Friday"),
 	@SerialName("Saturday")
-	SATURDAY,
+	SATURDAY("Saturday"),
+	;
+
+	public override fun toString(): String = serialName
 }

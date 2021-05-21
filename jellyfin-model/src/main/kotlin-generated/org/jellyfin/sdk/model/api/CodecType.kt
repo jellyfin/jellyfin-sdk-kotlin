@@ -5,15 +5,21 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class CodecType {
+public enum class CodecType(
+	public val serialName: String
+) {
 	@SerialName("Video")
-	VIDEO,
+	VIDEO("Video"),
 	@SerialName("VideoAudio")
-	VIDEO_AUDIO,
+	VIDEO_AUDIO("VideoAudio"),
 	@SerialName("Audio")
-	AUDIO,
+	AUDIO("Audio"),
+	;
+
+	public override fun toString(): String = serialName
 }

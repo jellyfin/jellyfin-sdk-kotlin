@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,27 +13,32 @@ import kotlinx.serialization.Serializable
  * Enum GroupUpdateType.
  */
 @Serializable
-public enum class GroupUpdateType {
+public enum class GroupUpdateType(
+	public val serialName: String
+) {
 	@SerialName("UserJoined")
-	USER_JOINED,
+	USER_JOINED("UserJoined"),
 	@SerialName("UserLeft")
-	USER_LEFT,
+	USER_LEFT("UserLeft"),
 	@SerialName("GroupJoined")
-	GROUP_JOINED,
+	GROUP_JOINED("GroupJoined"),
 	@SerialName("GroupLeft")
-	GROUP_LEFT,
+	GROUP_LEFT("GroupLeft"),
 	@SerialName("StateUpdate")
-	STATE_UPDATE,
+	STATE_UPDATE("StateUpdate"),
 	@SerialName("PlayQueue")
-	PLAY_QUEUE,
+	PLAY_QUEUE("PlayQueue"),
 	@SerialName("NotInGroup")
-	NOT_IN_GROUP,
+	NOT_IN_GROUP("NotInGroup"),
 	@SerialName("GroupDoesNotExist")
-	GROUP_DOES_NOT_EXIST,
+	GROUP_DOES_NOT_EXIST("GroupDoesNotExist"),
 	@SerialName("CreateGroupDenied")
-	CREATE_GROUP_DENIED,
+	CREATE_GROUP_DENIED("CreateGroupDenied"),
 	@SerialName("JoinGroupDenied")
-	JOIN_GROUP_DENIED,
+	JOIN_GROUP_DENIED("JoinGroupDenied"),
 	@SerialName("LibraryAccessDenied")
-	LIBRARY_ACCESS_DENIED,
+	LIBRARY_ACCESS_DENIED("LibraryAccessDenied"),
+	;
+
+	public override fun toString(): String = serialName
 }

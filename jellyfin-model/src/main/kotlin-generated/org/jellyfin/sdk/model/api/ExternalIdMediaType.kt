@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,29 +13,34 @@ import kotlinx.serialization.Serializable
  * The specific media type of an MediaBrowser.Model.Providers.ExternalIdInfo.
  */
 @Serializable
-public enum class ExternalIdMediaType {
+public enum class ExternalIdMediaType(
+	public val serialName: String
+) {
 	@SerialName("Album")
-	ALBUM,
+	ALBUM("Album"),
 	@SerialName("AlbumArtist")
-	ALBUM_ARTIST,
+	ALBUM_ARTIST("AlbumArtist"),
 	@SerialName("Artist")
-	ARTIST,
+	ARTIST("Artist"),
 	@SerialName("BoxSet")
-	BOX_SET,
+	BOX_SET("BoxSet"),
 	@SerialName("Episode")
-	EPISODE,
+	EPISODE("Episode"),
 	@SerialName("Movie")
-	MOVIE,
+	MOVIE("Movie"),
 	@SerialName("OtherArtist")
-	OTHER_ARTIST,
+	OTHER_ARTIST("OtherArtist"),
 	@SerialName("Person")
-	PERSON,
+	PERSON("Person"),
 	@SerialName("ReleaseGroup")
-	RELEASE_GROUP,
+	RELEASE_GROUP("ReleaseGroup"),
 	@SerialName("Season")
-	SEASON,
+	SEASON("Season"),
 	@SerialName("Series")
-	SERIES,
+	SERIES("Series"),
 	@SerialName("Track")
-	TRACK,
+	TRACK("Track"),
+	;
+
+	public override fun toString(): String = serialName
 }

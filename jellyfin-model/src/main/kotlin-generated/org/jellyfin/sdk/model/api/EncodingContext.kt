@@ -5,13 +5,19 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class EncodingContext {
+public enum class EncodingContext(
+	public val serialName: String
+) {
 	@SerialName("Streaming")
-	STREAMING,
+	STREAMING("Streaming"),
 	@SerialName("Static")
-	STATIC,
+	STATIC("Static"),
+	;
+
+	public override fun toString(): String = serialName
 }

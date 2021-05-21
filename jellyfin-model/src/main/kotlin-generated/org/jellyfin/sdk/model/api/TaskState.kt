@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,11 +13,16 @@ import kotlinx.serialization.Serializable
  * Enum TaskState.
  */
 @Serializable
-public enum class TaskState {
+public enum class TaskState(
+	public val serialName: String
+) {
 	@SerialName("Idle")
-	IDLE,
+	IDLE("Idle"),
 	@SerialName("Cancelling")
-	CANCELLING,
+	CANCELLING("Cancelling"),
 	@SerialName("Running")
-	RUNNING,
+	RUNNING("Running"),
+	;
+
+	public override fun toString(): String = serialName
 }

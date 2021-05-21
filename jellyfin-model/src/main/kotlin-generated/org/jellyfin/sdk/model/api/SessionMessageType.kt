@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,73 +13,78 @@ import kotlinx.serialization.Serializable
  * The different kinds of messages that are used in the WebSocket api.
  */
 @Serializable
-public enum class SessionMessageType {
+public enum class SessionMessageType(
+	public val serialName: String
+) {
 	@SerialName("ForceKeepAlive")
-	FORCE_KEEP_ALIVE,
+	FORCE_KEEP_ALIVE("ForceKeepAlive"),
 	@SerialName("GeneralCommand")
-	GENERAL_COMMAND,
+	GENERAL_COMMAND("GeneralCommand"),
 	@SerialName("UserDataChanged")
-	USER_DATA_CHANGED,
+	USER_DATA_CHANGED("UserDataChanged"),
 	@SerialName("Sessions")
-	SESSIONS,
+	SESSIONS("Sessions"),
 	@SerialName("Play")
-	PLAY,
+	PLAY("Play"),
 	@SerialName("SyncPlayCommand")
-	SYNC_PLAY_COMMAND,
+	SYNC_PLAY_COMMAND("SyncPlayCommand"),
 	@SerialName("SyncPlayGroupUpdate")
-	SYNC_PLAY_GROUP_UPDATE,
+	SYNC_PLAY_GROUP_UPDATE("SyncPlayGroupUpdate"),
 	@SerialName("Playstate")
-	PLAYSTATE,
+	PLAYSTATE("Playstate"),
 	@SerialName("RestartRequired")
-	RESTART_REQUIRED,
+	RESTART_REQUIRED("RestartRequired"),
 	@SerialName("ServerShuttingDown")
-	SERVER_SHUTTING_DOWN,
+	SERVER_SHUTTING_DOWN("ServerShuttingDown"),
 	@SerialName("ServerRestarting")
-	SERVER_RESTARTING,
+	SERVER_RESTARTING("ServerRestarting"),
 	@SerialName("LibraryChanged")
-	LIBRARY_CHANGED,
+	LIBRARY_CHANGED("LibraryChanged"),
 	@SerialName("UserDeleted")
-	USER_DELETED,
+	USER_DELETED("UserDeleted"),
 	@SerialName("UserUpdated")
-	USER_UPDATED,
+	USER_UPDATED("UserUpdated"),
 	@SerialName("SeriesTimerCreated")
-	SERIES_TIMER_CREATED,
+	SERIES_TIMER_CREATED("SeriesTimerCreated"),
 	@SerialName("TimerCreated")
-	TIMER_CREATED,
+	TIMER_CREATED("TimerCreated"),
 	@SerialName("SeriesTimerCancelled")
-	SERIES_TIMER_CANCELLED,
+	SERIES_TIMER_CANCELLED("SeriesTimerCancelled"),
 	@SerialName("TimerCancelled")
-	TIMER_CANCELLED,
+	TIMER_CANCELLED("TimerCancelled"),
 	@SerialName("RefreshProgress")
-	REFRESH_PROGRESS,
+	REFRESH_PROGRESS("RefreshProgress"),
 	@SerialName("ScheduledTaskEnded")
-	SCHEDULED_TASK_ENDED,
+	SCHEDULED_TASK_ENDED("ScheduledTaskEnded"),
 	@SerialName("PackageInstallationCancelled")
-	PACKAGE_INSTALLATION_CANCELLED,
+	PACKAGE_INSTALLATION_CANCELLED("PackageInstallationCancelled"),
 	@SerialName("PackageInstallationFailed")
-	PACKAGE_INSTALLATION_FAILED,
+	PACKAGE_INSTALLATION_FAILED("PackageInstallationFailed"),
 	@SerialName("PackageInstallationCompleted")
-	PACKAGE_INSTALLATION_COMPLETED,
+	PACKAGE_INSTALLATION_COMPLETED("PackageInstallationCompleted"),
 	@SerialName("PackageInstalling")
-	PACKAGE_INSTALLING,
+	PACKAGE_INSTALLING("PackageInstalling"),
 	@SerialName("PackageUninstalled")
-	PACKAGE_UNINSTALLED,
+	PACKAGE_UNINSTALLED("PackageUninstalled"),
 	@SerialName("ActivityLogEntry")
-	ACTIVITY_LOG_ENTRY,
+	ACTIVITY_LOG_ENTRY("ActivityLogEntry"),
 	@SerialName("ScheduledTasksInfo")
-	SCHEDULED_TASKS_INFO,
+	SCHEDULED_TASKS_INFO("ScheduledTasksInfo"),
 	@SerialName("ActivityLogEntryStart")
-	ACTIVITY_LOG_ENTRY_START,
+	ACTIVITY_LOG_ENTRY_START("ActivityLogEntryStart"),
 	@SerialName("ActivityLogEntryStop")
-	ACTIVITY_LOG_ENTRY_STOP,
+	ACTIVITY_LOG_ENTRY_STOP("ActivityLogEntryStop"),
 	@SerialName("SessionsStart")
-	SESSIONS_START,
+	SESSIONS_START("SessionsStart"),
 	@SerialName("SessionsStop")
-	SESSIONS_STOP,
+	SESSIONS_STOP("SessionsStop"),
 	@SerialName("ScheduledTasksInfoStart")
-	SCHEDULED_TASKS_INFO_START,
+	SCHEDULED_TASKS_INFO_START("ScheduledTasksInfoStart"),
 	@SerialName("ScheduledTasksInfoStop")
-	SCHEDULED_TASKS_INFO_STOP,
+	SCHEDULED_TASKS_INFO_STOP("ScheduledTasksInfoStop"),
 	@SerialName("KeepAlive")
-	KEEP_ALIVE,
+	KEEP_ALIVE("KeepAlive"),
+	;
+
+	public override fun toString(): String = serialName
 }

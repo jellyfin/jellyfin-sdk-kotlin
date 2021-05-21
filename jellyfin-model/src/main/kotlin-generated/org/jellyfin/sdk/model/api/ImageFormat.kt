@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,15 +13,20 @@ import kotlinx.serialization.Serializable
  * Enum ImageOutputFormat.
  */
 @Serializable
-public enum class ImageFormat {
+public enum class ImageFormat(
+	public val serialName: String
+) {
 	@SerialName("Bmp")
-	BMP,
+	BMP("Bmp"),
 	@SerialName("Gif")
-	GIF,
+	GIF("Gif"),
 	@SerialName("Jpg")
-	JPG,
+	JPG("Jpg"),
 	@SerialName("Png")
-	PNG,
+	PNG("Png"),
 	@SerialName("Webp")
-	WEBP,
+	WEBP("Webp"),
+	;
+
+	public override fun toString(): String = serialName
 }

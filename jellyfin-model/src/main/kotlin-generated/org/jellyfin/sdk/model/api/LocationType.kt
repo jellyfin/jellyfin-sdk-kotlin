@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,13 +13,18 @@ import kotlinx.serialization.Serializable
  * Enum LocationType.
  */
 @Serializable
-public enum class LocationType {
+public enum class LocationType(
+	public val serialName: String
+) {
 	@SerialName("FileSystem")
-	FILE_SYSTEM,
+	FILE_SYSTEM("FileSystem"),
 	@SerialName("Remote")
-	REMOTE,
+	REMOTE("Remote"),
 	@SerialName("Virtual")
-	VIRTUAL,
+	VIRTUAL("Virtual"),
 	@SerialName("Offline")
-	OFFLINE,
+	OFFLINE("Offline"),
+	;
+
+	public override fun toString(): String = serialName
 }

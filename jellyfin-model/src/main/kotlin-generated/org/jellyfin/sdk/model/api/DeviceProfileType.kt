@@ -5,13 +5,19 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class DeviceProfileType {
+public enum class DeviceProfileType(
+	public val serialName: String
+) {
 	@SerialName("System")
-	SYSTEM,
+	SYSTEM("System"),
 	@SerialName("User")
-	USER,
+	USER("User"),
+	;
+
+	public override fun toString(): String = serialName
 }

@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,127 +13,132 @@ import kotlinx.serialization.Serializable
  * Used to control the data that gets attached to DtoBaseItems.
  */
 @Serializable
-public enum class ItemFields {
+public enum class ItemFields(
+	public val serialName: String
+) {
 	@SerialName("AirTime")
-	AIR_TIME,
+	AIR_TIME("AirTime"),
 	@SerialName("CanDelete")
-	CAN_DELETE,
+	CAN_DELETE("CanDelete"),
 	@SerialName("CanDownload")
-	CAN_DOWNLOAD,
+	CAN_DOWNLOAD("CanDownload"),
 	@SerialName("ChannelInfo")
-	CHANNEL_INFO,
+	CHANNEL_INFO("ChannelInfo"),
 	@SerialName("Chapters")
-	CHAPTERS,
+	CHAPTERS("Chapters"),
 	@SerialName("ChildCount")
-	CHILD_COUNT,
+	CHILD_COUNT("ChildCount"),
 	@SerialName("CumulativeRunTimeTicks")
-	CUMULATIVE_RUN_TIME_TICKS,
+	CUMULATIVE_RUN_TIME_TICKS("CumulativeRunTimeTicks"),
 	@SerialName("CustomRating")
-	CUSTOM_RATING,
+	CUSTOM_RATING("CustomRating"),
 	@SerialName("DateCreated")
-	DATE_CREATED,
+	DATE_CREATED("DateCreated"),
 	@SerialName("DateLastMediaAdded")
-	DATE_LAST_MEDIA_ADDED,
+	DATE_LAST_MEDIA_ADDED("DateLastMediaAdded"),
 	@SerialName("DisplayPreferencesId")
-	DISPLAY_PREFERENCES_ID,
+	DISPLAY_PREFERENCES_ID("DisplayPreferencesId"),
 	@SerialName("Etag")
-	ETAG,
+	ETAG("Etag"),
 	@SerialName("ExternalUrls")
-	EXTERNAL_URLS,
+	EXTERNAL_URLS("ExternalUrls"),
 	@SerialName("Genres")
-	GENRES,
+	GENRES("Genres"),
 	@SerialName("HomePageUrl")
-	HOME_PAGE_URL,
+	HOME_PAGE_URL("HomePageUrl"),
 	@SerialName("ItemCounts")
-	ITEM_COUNTS,
+	ITEM_COUNTS("ItemCounts"),
 	@SerialName("MediaSourceCount")
-	MEDIA_SOURCE_COUNT,
+	MEDIA_SOURCE_COUNT("MediaSourceCount"),
 	@SerialName("MediaSources")
-	MEDIA_SOURCES,
+	MEDIA_SOURCES("MediaSources"),
 	@SerialName("OriginalTitle")
-	ORIGINAL_TITLE,
+	ORIGINAL_TITLE("OriginalTitle"),
 	@SerialName("Overview")
-	OVERVIEW,
+	OVERVIEW("Overview"),
 	@SerialName("ParentId")
-	PARENT_ID,
+	PARENT_ID("ParentId"),
 	@SerialName("Path")
-	PATH,
+	PATH("Path"),
 	@SerialName("People")
-	PEOPLE,
+	PEOPLE("People"),
 	@SerialName("PlayAccess")
-	PLAY_ACCESS,
+	PLAY_ACCESS("PlayAccess"),
 	@SerialName("ProductionLocations")
-	PRODUCTION_LOCATIONS,
+	PRODUCTION_LOCATIONS("ProductionLocations"),
 	@SerialName("ProviderIds")
-	PROVIDER_IDS,
+	PROVIDER_IDS("ProviderIds"),
 	@SerialName("PrimaryImageAspectRatio")
-	PRIMARY_IMAGE_ASPECT_RATIO,
+	PRIMARY_IMAGE_ASPECT_RATIO("PrimaryImageAspectRatio"),
 	@SerialName("RecursiveItemCount")
-	RECURSIVE_ITEM_COUNT,
+	RECURSIVE_ITEM_COUNT("RecursiveItemCount"),
 	@SerialName("Settings")
-	SETTINGS,
+	SETTINGS("Settings"),
 	@SerialName("ScreenshotImageTags")
-	SCREENSHOT_IMAGE_TAGS,
+	SCREENSHOT_IMAGE_TAGS("ScreenshotImageTags"),
 	@SerialName("SeriesPrimaryImage")
-	SERIES_PRIMARY_IMAGE,
+	SERIES_PRIMARY_IMAGE("SeriesPrimaryImage"),
 	@SerialName("SeriesStudio")
-	SERIES_STUDIO,
+	SERIES_STUDIO("SeriesStudio"),
 	@SerialName("SortName")
-	SORT_NAME,
+	SORT_NAME("SortName"),
 	@SerialName("SpecialEpisodeNumbers")
-	SPECIAL_EPISODE_NUMBERS,
+	SPECIAL_EPISODE_NUMBERS("SpecialEpisodeNumbers"),
 	@SerialName("Studios")
-	STUDIOS,
+	STUDIOS("Studios"),
 	@SerialName("BasicSyncInfo")
-	BASIC_SYNC_INFO,
+	BASIC_SYNC_INFO("BasicSyncInfo"),
 	@SerialName("SyncInfo")
-	SYNC_INFO,
+	SYNC_INFO("SyncInfo"),
 	@SerialName("Taglines")
-	TAGLINES,
+	TAGLINES("Taglines"),
 	@SerialName("Tags")
-	TAGS,
+	TAGS("Tags"),
 	@SerialName("RemoteTrailers")
-	REMOTE_TRAILERS,
+	REMOTE_TRAILERS("RemoteTrailers"),
 	@SerialName("MediaStreams")
-	MEDIA_STREAMS,
+	MEDIA_STREAMS("MediaStreams"),
 	@SerialName("SeasonUserData")
-	SEASON_USER_DATA,
+	SEASON_USER_DATA("SeasonUserData"),
 	@SerialName("ServiceName")
-	SERVICE_NAME,
+	SERVICE_NAME("ServiceName"),
 	@SerialName("ThemeSongIds")
-	THEME_SONG_IDS,
+	THEME_SONG_IDS("ThemeSongIds"),
 	@SerialName("ThemeVideoIds")
-	THEME_VIDEO_IDS,
+	THEME_VIDEO_IDS("ThemeVideoIds"),
 	@SerialName("ExternalEtag")
-	EXTERNAL_ETAG,
+	EXTERNAL_ETAG("ExternalEtag"),
 	@SerialName("PresentationUniqueKey")
-	PRESENTATION_UNIQUE_KEY,
+	PRESENTATION_UNIQUE_KEY("PresentationUniqueKey"),
 	@SerialName("InheritedParentalRatingValue")
-	INHERITED_PARENTAL_RATING_VALUE,
+	INHERITED_PARENTAL_RATING_VALUE("InheritedParentalRatingValue"),
 	@SerialName("ExternalSeriesId")
-	EXTERNAL_SERIES_ID,
+	EXTERNAL_SERIES_ID("ExternalSeriesId"),
 	@SerialName("SeriesPresentationUniqueKey")
-	SERIES_PRESENTATION_UNIQUE_KEY,
+	SERIES_PRESENTATION_UNIQUE_KEY("SeriesPresentationUniqueKey"),
 	@SerialName("DateLastRefreshed")
-	DATE_LAST_REFRESHED,
+	DATE_LAST_REFRESHED("DateLastRefreshed"),
 	@SerialName("DateLastSaved")
-	DATE_LAST_SAVED,
+	DATE_LAST_SAVED("DateLastSaved"),
 	@SerialName("RefreshState")
-	REFRESH_STATE,
+	REFRESH_STATE("RefreshState"),
 	@SerialName("ChannelImage")
-	CHANNEL_IMAGE,
+	CHANNEL_IMAGE("ChannelImage"),
 	@SerialName("EnableMediaSourceDisplay")
-	ENABLE_MEDIA_SOURCE_DISPLAY,
+	ENABLE_MEDIA_SOURCE_DISPLAY("EnableMediaSourceDisplay"),
 	@SerialName("Width")
-	WIDTH,
+	WIDTH("Width"),
 	@SerialName("Height")
-	HEIGHT,
+	HEIGHT("Height"),
 	@SerialName("ExtraIds")
-	EXTRA_IDS,
+	EXTRA_IDS("ExtraIds"),
 	@SerialName("LocalTrailerCount")
-	LOCAL_TRAILER_COUNT,
+	LOCAL_TRAILER_COUNT("LocalTrailerCount"),
 	@SerialName("IsHD")
-	IS_HD,
+	IS_HD("IsHD"),
 	@SerialName("SpecialFeatureCount")
-	SPECIAL_FEATURE_COUNT,
+	SPECIAL_FEATURE_COUNT("SpecialFeatureCount"),
+	;
+
+	public override fun toString(): String = serialName
 }

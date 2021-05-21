@@ -5,13 +5,19 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class TranscodeSeekInfo {
+public enum class TranscodeSeekInfo(
+	public val serialName: String
+) {
 	@SerialName("Auto")
-	AUTO,
+	AUTO("Auto"),
 	@SerialName("Bytes")
-	BYTES,
+	BYTES("Bytes"),
+	;
+
+	public override fun toString(): String = serialName
 }

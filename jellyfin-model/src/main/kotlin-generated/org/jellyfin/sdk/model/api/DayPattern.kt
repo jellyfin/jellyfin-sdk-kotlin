@@ -5,15 +5,21 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-public enum class DayPattern {
+public enum class DayPattern(
+	public val serialName: String
+) {
 	@SerialName("Daily")
-	DAILY,
+	DAILY("Daily"),
 	@SerialName("Weekdays")
-	WEEKDAYS,
+	WEEKDAYS("Weekdays"),
 	@SerialName("Weekends")
-	WEEKENDS,
+	WEEKENDS("Weekends"),
+	;
+
+	public override fun toString(): String = serialName
 }
