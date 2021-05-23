@@ -102,6 +102,11 @@ public final class org/jellyfin/sdk/api/client/exception/TimeoutException : org/
 	public fun <init> (Ljava/lang/String;)V
 }
 
+public final class org/jellyfin/sdk/api/client/extensions/MediaInfoApiExtensionsKt {
+	public static final fun detectBitrate (Lorg/jellyfin/sdk/api/operations/MediaInfoApi;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun measureBitrate (Lorg/jellyfin/sdk/api/operations/MediaInfoApi;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class org/jellyfin/sdk/api/client/extensions/UserApiExtensionsKt {
 	public static final fun authenticateUserByName (Lorg/jellyfin/sdk/api/operations/UserApi;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
