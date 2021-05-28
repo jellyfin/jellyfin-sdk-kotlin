@@ -6,6 +6,7 @@ on:
       - v*
     branches:
       - master
+      - openapi-unstable
 
 jobs:
   publish:
@@ -23,6 +24,9 @@ jobs:
       - name: Set JELLYFIN_VERSION
         if: ${{ startsWith(github.ref, 'refs/tags/v') }}
         run: echo "JELLYFIN_VERSION=$(echo ${GITHUB_REF#refs/tags/v} | tr / -)" >> $GITHUB_ENV
+      - name: Set JELLYFIN_BRANCH
+        if: ${{ startsWith(github.ref, 'refs/heads/') }}
+        run: echo "JELLYFIN_BRANCH=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
       - name: Run publish task
         run: ./gradlew --no-daemon --info publish closeAndReleaseSonatypeStagingRepository
         env:
