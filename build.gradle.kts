@@ -8,7 +8,7 @@ plugins {
 // Versioning
 allprojects {
 	group = "org.jellyfin.sdk"
-	version = getProperty("jellyfin.version")?.removePrefix("v") ?: "latest-SNAPSHOT"
+	version = createVersion()
 
 	// Add default dependency repositories
 	repositories.defaultRepositories()
