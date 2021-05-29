@@ -86,6 +86,28 @@ implementation("org.jellyfin.sdk:jellyfin-platform-android:$sdkVersion")
    ```
 </details>
 
+<details>
+  <summary>Using SNAPSHOT versions</summary>
+
+  When working on new features in your application you might need a build of the SDK targetting the next server version.
+  For this use case we publish two SNAPSHOT releases: `master-SNAPSHOT` and `openapi-unstable-SNAPSHOT`. To use the
+  snaphot versions, add the snapshot repository to your build script:
+  `https://s01.oss.sonatype.org/content/repositories/snapshots/`
+
+  An example using Gradle with Kotlin DSL that only allows the `master-SNAPSHOT` version:
+
+  ```kotlin
+  repositories {
+      maven("https://s01.oss.sonatype.org/content/repositories/snapshots/") {
+          content {
+              // Only allow SDK snapshots
+              includeVersionByRegex("org\\.jellyfin\\.sdk", ".*", "master-SNAPSHOT")
+          }
+      }
+  }
+   ```
+</details>
+
 ## Usage
 
 ### Creating a Jellyfin instance
