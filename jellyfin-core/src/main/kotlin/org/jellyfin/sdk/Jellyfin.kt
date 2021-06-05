@@ -12,6 +12,7 @@ public class Jellyfin(
 	private val options: JellyfinOptions,
 ) {
 	public constructor(initOptions: JellyfinOptions.Builder.() -> Unit) : this(JellyfinOptions.build(initOptions))
+	public constructor(optionsBuilder: JellyfinOptions.Builder) : this(optionsBuilder.build())
 
 	/**
 	 * Get the device information set when creating the Jellyfin instance or null if not set.
@@ -37,6 +38,7 @@ public class Jellyfin(
 	 *
 	 * Throws an [IllegalStateException] when the client or device information is missing.
 	 */
+	@JvmOverloads
 	public fun createApi(
 		baseUrl: String? = null,
 		accessToken: String? = null,
