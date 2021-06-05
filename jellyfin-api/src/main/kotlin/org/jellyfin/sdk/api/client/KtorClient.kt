@@ -15,11 +15,11 @@ import kotlinx.serialization.json.Json
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
+import org.jellyfin.sdk.api.client.util.AuthorizationHeaderBuilder
 import org.jellyfin.sdk.api.client.util.PathBuilder
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.slf4j.LoggerFactory
-import kotlin.collections.set
 
 public open class KtorClient(
 	override var baseUrl: String? = null,
@@ -89,57 +89,8 @@ public open class KtorClient(
 				}
 
 			if (includeCredentials)
-				parameters.append("ApiKey", checkNotNull(accessToken))
+				parameters.append(ApiClient.QUERY_ACCESS_TOKEN, checkNotNull(accessToken))
 		}.buildString()
-	}
-
-	/**
-	 * This is a temporary workaround until we have a proper way to send device names to the server.
-	 * It will filter out all special characters.
-	 */
-	private fun String.encodeAuthorizationHeaderValue() = replace("[^\\w\\s]".toRegex(), "").trim()
-
-	override fun createAuthorizationHeader(): String? {
-		val params = mutableMapOf(
-			"client" to clientInfo.name,
-			"version" to clientInfo.version,
-			"deviceId" to deviceInfo.id,
-			// Only encode the device name as it is user input
-			// other fields should be validated manually by the client
-			"device" to deviceInfo.name.encodeAuthorizationHeaderValue()
-		)
-
-		// Only set access token when it's not null
-		accessToken?.let { params["token"] = it }
-
-		// Format: `MediaBrowser key1="value1", key2="value2"`
-		return params.entries.joinToString(
-			separator = ", ",
-			prefix = "MediaBrowser ",
-			transform = {
-				// Check for bad strings to prevent endless hours debugging why the server throws http 500 errors
-				require(!it.key.contains('=')) {
-					"Key ${it.key} can not contain the = character in the authorization header"
-				}
-				require(!it.key.contains(',')) {
-					"Key ${it.key} can not contain the , character in the authorization header"
-				}
-				require(!it.key.startsWith('"') && !it.key.endsWith('"')) {
-					"Key ${it.key} can not start or end with the \" character in the authorization header"
-				}
-				require(!it.value.contains('=')) {
-					"Value ${it.value} (for key ${it.key}) can not contain the = character in the authorization header"
-				}
-				require(!it.value.contains(',')) {
-					"Value ${it.value} (for key ${it.key}) can not contain the , character in the authorization header"
-				}
-				require(!it.value.startsWith('"') && !it.value.endsWith('"')) {
-					"Value ${it.value} (for key ${it.key}) can not start or end with the \" character in the authorization header"
-				}
-
-				// key="value"
-				"""${it.key.capitalize()}="${it.value}""""
-			})
 	}
 
 	public suspend inline fun <reified T> request(
@@ -161,7 +112,16 @@ public open class KtorClient(
 			val response = client.request<HttpResponse> {
 				this.method = method
 				url(url)
-				header(HttpHeaders.Authorization, createAuthorizationHeader())
+				header(
+					key = HttpHeaders.Authorization,
+					value = AuthorizationHeaderBuilder.buildHeader(
+						clientName = clientInfo.name,
+						clientVersion = clientInfo.version,
+						deviceId = deviceInfo.id,
+						deviceName = deviceInfo.name,
+						accessToken = accessToken
+					)
+				)
 
 				if (requestBody != null) body = defaultSerializer().write(requestBody)
 			}

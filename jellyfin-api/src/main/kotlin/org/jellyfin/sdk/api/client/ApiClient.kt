@@ -4,6 +4,14 @@ import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 
 public interface ApiClient {
+	public companion object {
+		/**
+		 * The query parameter to use for access tokens. Used in the [createUrl] function when includeCredentials is
+		 * true.
+		 */
+		public const val QUERY_ACCESS_TOKEN: String = "ApiKey"
+	}
+
 	/**
 	 * URL to use as base for API endpoints. Should include the protocol and may contain a path.
 	 */
@@ -34,18 +42,13 @@ public interface ApiClient {
 	 * Create a complete url based on the [baseUrl] and given parameters.
 	 * Uses [PathBuilder] to create the path from the [pathTemplate] and [pathParameters].
 	 *
-	 * When [includeCredentials] is true it will add the access token to the
-	 * url to make an authenticated request.
+	 * When [includeCredentials] is true it will add the access token as query parameter using [QUERY_ACCESS_TOKEN]
+	 * to the url to make an authenticated request.
 	 */
 	public fun createUrl(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String
-
-	/**
-	 * Create the value of the "Authorization" header.
-	 */
-	public fun createAuthorizationHeader(): String?
 }

@@ -1,5 +1,6 @@
 public abstract interface class org/jellyfin/sdk/api/client/ApiClient {
-	public abstract fun createAuthorizationHeader ()Ljava/lang/String;
+	public static final field Companion Lorg/jellyfin/sdk/api/client/ApiClient$Companion;
+	public static final field QUERY_ACCESS_TOKEN Ljava/lang/String;
 	public abstract fun createUrl (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Z)Ljava/lang/String;
 	public abstract fun getAccessToken ()Ljava/lang/String;
 	public abstract fun getBaseUrl ()Ljava/lang/String;
@@ -10,6 +11,10 @@ public abstract interface class org/jellyfin/sdk/api/client/ApiClient {
 	public abstract fun setBaseUrl (Ljava/lang/String;)V
 	public abstract fun setClientInfo (Lorg/jellyfin/sdk/model/ClientInfo;)V
 	public abstract fun setDeviceInfo (Lorg/jellyfin/sdk/model/DeviceInfo;)V
+}
+
+public final class org/jellyfin/sdk/api/client/ApiClient$Companion {
+	public static final field QUERY_ACCESS_TOKEN Ljava/lang/String;
 }
 
 public final class org/jellyfin/sdk/api/client/ApiClient$DefaultImpls {
@@ -38,7 +43,6 @@ public final class org/jellyfin/sdk/api/client/HttpClientOptions {
 public class org/jellyfin/sdk/api/client/KtorClient : org/jellyfin/sdk/api/client/ApiClient {
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun createAuthorizationHeader ()Ljava/lang/String;
 	public fun createUrl (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Z)Ljava/lang/String;
 	public fun getAccessToken ()Ljava/lang/String;
 	public fun getBaseUrl ()Ljava/lang/String;
@@ -106,6 +110,15 @@ public final class org/jellyfin/sdk/api/client/extensions/MediaInfoApiExtensions
 
 public final class org/jellyfin/sdk/api/client/extensions/UserApiExtensionsKt {
 	public static final fun authenticateUserByName (Lorg/jellyfin/sdk/api/operations/UserApi;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class org/jellyfin/sdk/api/client/util/AuthorizationHeaderBuilder {
+	public static final field AUTHORIZATION_SCHEME Ljava/lang/String;
+	public static final field INSTANCE Lorg/jellyfin/sdk/api/client/util/AuthorizationHeaderBuilder;
+	public final fun buildHeader (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun buildHeader$default (Lorg/jellyfin/sdk/api/client/util/AuthorizationHeaderBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun buildParameter (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public final fun encodeParameterValue (Ljava/lang/String;)Ljava/lang/String;
 }
 
 public final class org/jellyfin/sdk/api/client/util/PathBuilder {
