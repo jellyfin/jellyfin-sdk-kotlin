@@ -31,17 +31,8 @@ public interface ApiClient {
 	public val httpClientOptions: HttpClientOptions
 
 	/**
-	 * Replaces the variables in a path with the values in the map.
-	 * Will also remove trailing and repeated slashes
-	 */
-	public fun createPath(
-		pathTemplate: String,
-		pathParameters: Map<String, Any?> = emptyMap()
-	): String
-
-	/**
 	 * Create a complete url based on the [baseUrl] and given parameters.
-	 * Uses [createPath] to create the path.
+	 * Uses [PathBuilder] to create the path from the [pathTemplate] and [pathParameters].
 	 *
 	 * When [includeCredentials] is true it will add the access token to the
 	 * url to make an authenticated request.

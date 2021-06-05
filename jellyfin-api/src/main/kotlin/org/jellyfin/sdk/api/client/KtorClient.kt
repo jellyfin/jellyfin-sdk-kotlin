@@ -14,8 +14,8 @@ import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
-import org.jellyfin.sdk.api.client.exception.MissingPathVariableException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
+import org.jellyfin.sdk.api.client.util.PathBuilder
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.slf4j.LoggerFactory
@@ -54,75 +54,6 @@ public open class KtorClient(
 		}
 	}
 
-	override fun createPath(pathTemplate: String, pathParameters: Map<String, Any?>): String {
-		val result = StringBuilder()
-
-		var lastStart = -1
-		var lastEnd = -1
-
-		for (i in pathTemplate.indices) {
-			when (pathTemplate[i]) {
-				'/' -> {
-					check(lastStart < 0) {
-						"Unclosed path variable ${pathTemplate.substring(lastStart, i)} in path $pathTemplate"
-					}
-
-					// Append content from last path variable or slash up to here, eliminating duplicate slashes
-					val content = pathTemplate.substring(lastEnd + 1, i + 1)
-					if (content != "/" || (result.isNotEmpty() && result.lastOrNull() != '/')) {
-						result.append(content)
-					}
-
-					lastEnd = i
-				}
-				'{' -> {
-					check(lastStart < 0) {
-						"Nested path variable at $i in path $pathTemplate"
-					}
-
-					// Append content from last path variable end up to here
-					result.append(pathTemplate.substring(lastEnd + 1, i))
-
-					// Set path variable start index (exclude opening brace)
-					lastStart = i + 1
-				}
-				'}' -> {
-					check(lastStart >= 0) {
-						"End of path variable without start at $i in path $pathTemplate"
-					}
-					lastEnd = i
-
-					// Get path variable key
-					val name = pathTemplate.substring(lastStart, lastEnd)
-
-					// Check if key is set
-					if (!pathParameters.containsKey(name)) throw MissingPathVariableException(name, pathTemplate)
-
-					// Get value of path variable
-					val value = pathParameters[name]
-
-					// Don't encode null values
-					if (value != null) {
-						result.append(value.toString().encodeURLParameter(true))
-					}
-
-					// Close path variable
-					lastStart = -1
-				}
-			}
-		}
-
-		// Check for unclosed path variable
-		check(lastStart < 0) {
-			"Unclosed path variable ${pathTemplate.substring(lastStart)} in path $pathTemplate"
-		}
-
-		// Append rest of path to result (can be empty)
-		result.append(pathTemplate.substring(lastEnd + 1))
-
-		return result.toString()
-	}
-
 	override fun createUrl(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?>,
@@ -137,7 +68,7 @@ public open class KtorClient(
 			takeFrom(baseUrl)
 
 			// Replace path variables
-			val path = createPath(pathTemplate, pathParameters)
+			val path = PathBuilder.buildPath(pathTemplate, pathParameters)
 			// Assign path making sure to remove duplicated slashes between the base and appended path
 			encodedPath = "${encodedPath.trimEnd('/')}/${path.trimStart('/')}"
 
