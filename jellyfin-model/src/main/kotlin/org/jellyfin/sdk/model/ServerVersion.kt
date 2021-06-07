@@ -16,6 +16,19 @@ public data class ServerVersion(
 ) {
 	public operator fun compareTo(other: ServerVersion): Int = comparator.compare(this, other)
 
+	/**
+	 * Convert version to string. Format is "[major].[minor].[patch].[build]".
+	 * [build] is omitted if null.
+	 * Sample output:
+	 * - 1.0.0
+	 * - 10.6.4
+	 * - 10.7.0.0
+	 */
+	override fun toString(): String = buildString {
+		append(major, '.', minor, '.', patch)
+		if (build != null) append('.', build)
+	}
+
 	public companion object {
 		private val comparator = compareBy<ServerVersion>(
 			{ it.major },
