@@ -4,6 +4,7 @@ root = true
 insert_final_newline = true
 end_of_line = lf
 max_line_length = 120
+trim_trailing_whitespace = true
 
 [{*.kts,*.kt}]
 charset = utf-8
@@ -14,3 +15,6 @@ tab_width = 4
 charset = utf-8
 indent_style = tab
 tab_width = 4
+
+[*.md]
+trim_trailing_whitespace = false
