@@ -24,8 +24,8 @@ public interface ApiClient {
 	public var accessToken: String?
 
 	/**
-	 * User id automatically used in API operations that require it.
-	 * Should be the same id as the user for [accessToken].
+	 * User identifier that will automatically be used in user-specific API operations.
+	 * Should correspond to the same user as [accessToken].
 	 */
 	public var userId: UUID?
 
