@@ -54,7 +54,6 @@ open class OperationBuilder(
 		data.description?.let { addKdoc("%L", it) }
 	}.build()
 
-
 	protected fun FunSpec.Builder.addParameterMapStatements(
 		name: String,
 		parameters: Collection<ApiServiceOperationParameter>,
@@ -94,7 +93,8 @@ open class OperationBuilder(
 
 		// Call API
 		addStatement(
-			"val response = api.%N<%T>(%S, pathParameters, queryParameters, data)",
+			"val response = %L.%N<%T>(%S, pathParameters, queryParameters, data)",
+			Strings.API_CLIENT_PARAMETER_NAME,
 			data.method.toString().toLowerCase(),
 			data.returnType,
 			data.pathTemplate

@@ -12,13 +12,15 @@ import org.jellyfin.openapi.model.JellyFile
 class ApiBuilder(
 	private val operationBuilder: OperationBuilder,
 	private val operationUrlBuilder: OperationUrlBuilder,
-	private val operationUrlHooks: Collection<OperationUrlHook>
+	private val operationUrlHooks: Collection<OperationUrlHook>,
 ) : Builder<ApiService, JellyFile> {
 	override fun build(data: ApiService): JellyFile = TypeSpec.classBuilder(data.name).apply {
 		// Add "api" value to constructor
 		val apiClientType = ClassName(Packages.API_CLIENT, Classes.API_CLIENT)
-		addProperty(PropertySpec.builder("api", apiClientType, KModifier.PRIVATE).initializer("api").build())
-		primaryConstructor(FunSpec.constructorBuilder().addParameter("api", apiClientType).build())
+		addProperty(PropertySpec.builder(Strings.API_CLIENT_PARAMETER_NAME, apiClientType, KModifier.PRIVATE)
+			.initializer(Strings.API_CLIENT_PARAMETER_NAME).build())
+		primaryConstructor(FunSpec.constructorBuilder().addParameter(Strings.API_CLIENT_PARAMETER_NAME, apiClientType)
+			.build())
 
 		// Handle deprecated members
 		val operations = data.operations.map { namedOperation ->
