@@ -2,6 +2,7 @@ package org.jellyfin.sdk.api.client
 
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
+import java.util.*
 
 public interface ApiClient {
 	public companion object {
@@ -21,6 +22,12 @@ public interface ApiClient {
 	 * Access token to use for requests. Appended to all requests if set.
 	 */
 	public var accessToken: String?
+
+	/**
+	 * User id automatically used in API operations that require it.
+	 * Should be the same id as the user for [accessToken].
+	 */
+	public var userId: UUID?
 
 	/**
 	 * Information about the client / application send in all API requests.

@@ -20,10 +20,12 @@ import org.jellyfin.sdk.api.client.util.PathBuilder
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.slf4j.LoggerFactory
+import java.util.*
 
 public open class KtorClient(
 	override var baseUrl: String? = null,
 	override var accessToken: String? = null,
+	override var userId: UUID? = null,
 	override var clientInfo: ClientInfo,
 	override var deviceInfo: DeviceInfo,
 	override val httpClientOptions: HttpClientOptions,

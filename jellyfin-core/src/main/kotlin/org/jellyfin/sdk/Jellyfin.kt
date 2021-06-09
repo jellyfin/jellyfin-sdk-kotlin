@@ -7,6 +7,7 @@ import org.jellyfin.sdk.discovery.DiscoveryService
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.ServerVersion
+import java.util.*
 
 public class Jellyfin(
 	private val options: JellyfinOptions,
@@ -39,12 +40,14 @@ public class Jellyfin(
 	 * Throws an [IllegalStateException] when the client or device information is missing.
 	 */
 	@JvmOverloads
+	@Suppress("LongParameterList")
 	public fun createApi(
 		baseUrl: String? = null,
 		accessToken: String? = null,
+		userId: UUID? = null,
 		clientInfo: ClientInfo? = options.clientInfo,
 		deviceInfo: DeviceInfo? = options.deviceInfo,
-		httpClientOptions: HttpClientOptions = HttpClientOptions()
+		httpClientOptions: HttpClientOptions = HttpClientOptions(),
 	): KtorClient {
 		checkNotNull(clientInfo) {
 			"ClientInfo needs to be set when calling createApi() or by providing it when constructing the Jellyfin instance"
@@ -54,11 +57,12 @@ public class Jellyfin(
 		}
 
 		return KtorClient(
-			baseUrl,
-			accessToken,
-			clientInfo,
-			deviceInfo,
-			httpClientOptions,
+			baseUrl = baseUrl,
+			accessToken = accessToken,
+			userId = userId,
+			clientInfo = clientInfo,
+			deviceInfo = deviceInfo,
+			httpClientOptions = httpClientOptions,
 		)
 	}
 
