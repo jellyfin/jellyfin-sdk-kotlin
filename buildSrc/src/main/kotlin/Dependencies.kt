@@ -18,7 +18,7 @@ object Dependencies {
 	}
 
 	// Non-categorised dependencies
-	const val volley = "com.android.volley:volley:1.1.1"
+	const val volley = "com.android.volley:volley:1.2.0"
 	const val gson = "com.google.code.gson:gson:2.8.6"
 	const val javaWebSocket = "org.java-websocket:Java-WebSocket:1.4.1"
 	const val junit = "junit:junit:4.12"
