@@ -1,6 +1,6 @@
 plugins {
 	id("maven-publish")
-	id("io.gitlab.arturbosch.detekt").version("1.9.1")
+//	id("io.gitlab.arturbosch.detekt").version("1.9.1")
 }
 
 // Versioning
@@ -11,31 +11,31 @@ allprojects {
 
 buildscript {
 	repositories {
+		mavenCentral()
 		google()
-		jcenter()
 	}
 
 	dependencies {
-		classpath("com.android.tools.build:gradle:4.1.1")
+		classpath("com.android.tools.build:gradle:4.0.2")
 		classpath(kotlin("gradle-plugin", "1.3.72"))
 	}
 }
 
 allprojects {
 	repositories {
+		mavenCentral()
 		google()
-		jcenter()
 	}
 
 	// Publishing
 	plugins.apply("maven-publish")
-	publishing.repositories.jellyfinBintray(this)
+//	publishing.repositories.jellyfinBintray(this)
 
 	// Detekt
-	plugins.apply("io.gitlab.arturbosch.detekt")
-	detekt {
-		buildUponDefaultConfig = true
-		ignoreFailures = true
-		config = files("$rootDir/detekt.yml")
-	}
+//	plugins.apply("io.gitlab.arturbosch.detekt")
+//	detekt {
+//		buildUponDefaultConfig = true
+//		ignoreFailures = true
+//		config = files("$rootDir/detekt.yml")
+//	}
 }

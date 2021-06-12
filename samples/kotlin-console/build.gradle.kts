@@ -8,7 +8,7 @@ application {
 }
 
 repositories {
-	jcenter()
+	mavenCentral()
 
 	// Repository needed for kotlinx-cli
 	maven("https://kotlin.bintray.com/kotlinx")
