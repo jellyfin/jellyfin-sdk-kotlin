@@ -15,6 +15,7 @@ import kotlin.String
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
@@ -445,7 +446,7 @@ public class ItemsApi(
 	 * @param enableImages Optional, include image information in output.
 	 */
 	public suspend fun getItemsByUserId(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		maxOfficialRating: String? = null,
 		hasThemeSong: Boolean? = null,
 		hasThemeVideo: Boolean? = null,
@@ -639,7 +640,7 @@ public class ItemsApi(
 	 * @param enableImages Optional. Include image information in output.
 	 */
 	public suspend fun getResumeItems(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		startIndex: Int? = null,
 		limit: Int? = null,
 		searchTerm: String? = null,

@@ -16,6 +16,7 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.model.api.LiveStreamResponse
 import org.jellyfin.sdk.model.api.OpenLiveStreamDto
 import org.jellyfin.sdk.model.api.PlaybackInfoDto
@@ -73,7 +74,8 @@ public class MediaInfoApi(
 	 * @param itemId The item id.
 	 * @param userId The user id.
 	 */
-	public suspend fun getPlaybackInfo(itemId: UUID, userId: UUID): Response<PlaybackInfoResponse> {
+	public suspend fun getPlaybackInfo(itemId: UUID, userId: UUID = api.userId ?: throw
+			MissingUserIdException()): Response<PlaybackInfoResponse> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		val queryParameters = mutableMapOf<String, Any?>()

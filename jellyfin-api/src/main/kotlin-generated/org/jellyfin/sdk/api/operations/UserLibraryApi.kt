@@ -13,6 +13,7 @@ import kotlin.String
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.model.api.BaseItemDto
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.ImageType
@@ -28,7 +29,8 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun deleteUserItemRating(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
+	public suspend fun deleteUserItemRating(userId: UUID = api.userId ?: throw
+			MissingUserIdException(), itemId: UUID): Response<UserItemDataDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
@@ -45,7 +47,8 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun getIntros(userId: UUID, itemId: UUID): Response<BaseItemDtoQueryResult> {
+	public suspend fun getIntros(userId: UUID = api.userId ?: throw MissingUserIdException(),
+			itemId: UUID): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
@@ -62,7 +65,8 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun getItem(userId: UUID, itemId: UUID): Response<BaseItemDto> {
+	public suspend fun getItem(userId: UUID = api.userId ?: throw MissingUserIdException(),
+			itemId: UUID): Response<BaseItemDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
@@ -91,7 +95,7 @@ public class UserLibraryApi(
 	 * @param groupItems Whether or not to group items into a parent container.
 	 */
 	public suspend fun getLatestMedia(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		parentId: UUID? = null,
 		fields: List<ItemFields>? = emptyList(),
 		includeItemTypes: List<String>? = emptyList(),
@@ -128,7 +132,8 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun getLocalTrailers(userId: UUID, itemId: UUID): Response<List<BaseItemDto>> {
+	public suspend fun getLocalTrailers(userId: UUID = api.userId ?: throw MissingUserIdException(),
+			itemId: UUID): Response<List<BaseItemDto>> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
@@ -144,7 +149,8 @@ public class UserLibraryApi(
 	 *
 	 * @param userId User id.
 	 */
-	public suspend fun getRootFolder(userId: UUID): Response<BaseItemDto> {
+	public suspend fun getRootFolder(userId: UUID = api.userId ?: throw MissingUserIdException()):
+			Response<BaseItemDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -160,7 +166,8 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun getSpecialFeatures(userId: UUID, itemId: UUID): Response<List<BaseItemDto>> {
+	public suspend fun getSpecialFeatures(userId: UUID = api.userId ?: throw MissingUserIdException(),
+			itemId: UUID): Response<List<BaseItemDto>> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
@@ -177,7 +184,8 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun markFavoriteItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
+	public suspend fun markFavoriteItem(userId: UUID = api.userId ?: throw MissingUserIdException(),
+			itemId: UUID): Response<UserItemDataDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
@@ -194,7 +202,8 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun unmarkFavoriteItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
+	public suspend fun unmarkFavoriteItem(userId: UUID = api.userId ?: throw MissingUserIdException(),
+			itemId: UUID): Response<UserItemDataDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
@@ -215,7 +224,7 @@ public class UserLibraryApi(
 	 * is likes.
 	 */
 	public suspend fun updateUserItemRating(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		itemId: UUID,
 		likes: Boolean? = null
 	): Response<UserItemDataDto> {

@@ -6,10 +6,11 @@ public final class org/jellyfin/sdk/Jellyfin {
 	public final fun createApi ()Lorg/jellyfin/sdk/api/client/KtorClient;
 	public final fun createApi (Ljava/lang/String;)Lorg/jellyfin/sdk/api/client/KtorClient;
 	public final fun createApi (Ljava/lang/String;Ljava/lang/String;)Lorg/jellyfin/sdk/api/client/KtorClient;
-	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;)Lorg/jellyfin/sdk/api/client/KtorClient;
-	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;)Lorg/jellyfin/sdk/api/client/KtorClient;
-	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;)Lorg/jellyfin/sdk/api/client/KtorClient;
-	public static synthetic fun createApi$default (Lorg/jellyfin/sdk/Jellyfin;Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/client/KtorClient;
+	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;)Lorg/jellyfin/sdk/api/client/KtorClient;
+	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;)Lorg/jellyfin/sdk/api/client/KtorClient;
+	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;)Lorg/jellyfin/sdk/api/client/KtorClient;
+	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;)Lorg/jellyfin/sdk/api/client/KtorClient;
+	public static synthetic fun createApi$default (Lorg/jellyfin/sdk/Jellyfin;Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/client/KtorClient;
 	public final fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
 	public final fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
 	public final fun getDiscovery ()Lorg/jellyfin/sdk/discovery/DiscoveryService;

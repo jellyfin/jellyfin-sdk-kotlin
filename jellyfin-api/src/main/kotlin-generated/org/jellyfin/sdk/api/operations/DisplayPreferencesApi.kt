@@ -11,6 +11,7 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.model.api.DisplayPreferencesDto
 
 public class DisplayPreferencesApi(
@@ -25,7 +26,7 @@ public class DisplayPreferencesApi(
 	 */
 	public suspend fun getDisplayPreferences(
 		displayPreferencesId: String,
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		client: String
 	): Response<DisplayPreferencesDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -48,7 +49,7 @@ public class DisplayPreferencesApi(
 	 */
 	public suspend fun updateDisplayPreferences(
 		displayPreferencesId: String,
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		client: String,
 		`data`: DisplayPreferencesDto
 	): Response<Unit> {

@@ -13,6 +13,7 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.model.api.AuthenticateUserByName
 import org.jellyfin.sdk.model.api.AuthenticationResult
 import org.jellyfin.sdk.model.api.CreateUserByName
@@ -38,7 +39,7 @@ public class UserApi(
 	 * @param password The password sha1-hash.
 	 */
 	public suspend fun authenticateUser(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		pw: String,
 		password: String? = null
 	): Response<AuthenticationResult> {
@@ -92,7 +93,8 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun deleteUser(userId: UUID): Response<Unit> {
+	public suspend fun deleteUser(userId: UUID = api.userId ?: throw MissingUserIdException()):
+			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -150,7 +152,8 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun getUserById(userId: UUID): Response<UserDto> {
+	public suspend fun getUserById(userId: UUID = api.userId ?: throw MissingUserIdException()):
+			Response<UserDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -181,7 +184,8 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUser(userId: UUID, `data`: UserDto): Response<Unit> {
+	public suspend fun updateUser(userId: UUID = api.userId ?: throw MissingUserIdException(),
+			`data`: UserDto): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -194,8 +198,8 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUserConfiguration(userId: UUID, `data`: UserConfiguration):
-			Response<Unit> {
+	public suspend fun updateUserConfiguration(userId: UUID = api.userId ?: throw
+			MissingUserIdException(), `data`: UserConfiguration): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -209,8 +213,8 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUserEasyPassword(userId: UUID, `data`: UpdateUserEasyPassword):
-			Response<Unit> {
+	public suspend fun updateUserEasyPassword(userId: UUID = api.userId ?: throw
+			MissingUserIdException(), `data`: UpdateUserEasyPassword): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -224,7 +228,8 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUserPassword(userId: UUID, `data`: UpdateUserPassword): Response<Unit> {
+	public suspend fun updateUserPassword(userId: UUID = api.userId ?: throw MissingUserIdException(),
+			`data`: UpdateUserPassword): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -237,7 +242,8 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUserPolicy(userId: UUID, `data`: UserPolicy): Response<Unit> {
+	public suspend fun updateUserPolicy(userId: UUID = api.userId ?: throw MissingUserIdException(),
+			`data`: UserPolicy): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
