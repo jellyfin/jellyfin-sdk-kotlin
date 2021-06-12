@@ -8,8 +8,8 @@ Changes to the http client can thus be made without updating the generator.
 
 The generator uses a special hook system to change the generated code to better suite the Kotlin
 language. For example, the "ImageBlurHashes" property in BaseItemDto can be simplified by using a
-Map, and therefor a hook is added for it. All these hooks need to be maintained and updated when the
-OpenAPI specification changes.
+Map, and thus a hook is added for it. All hooks need to be maintained and updated when the OpenAPI
+specification changes.
 
 ## Running
 
@@ -60,6 +60,11 @@ Hooks are classes that will modify the output of the generator. They should be r
     for an operation. When all services are removed the operation will never be generated. Can be
     used to fix spelling, moving operations to different services or adding operations to additional
     services.
+
+  - **DefaultValueHook**  
+    A hook that allows changing the default value of parameters in operations. The hook returns an
+    instance of `CustomDefaultValue` that contains the code builder. The generator will use the
+    default value from the JSON schema if all hooks return null.
 
 ## Phases
 

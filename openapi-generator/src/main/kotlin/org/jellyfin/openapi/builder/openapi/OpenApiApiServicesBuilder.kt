@@ -1,9 +1,11 @@
 package org.jellyfin.openapi.builder.openapi
 
+import com.squareup.kotlinpoet.TypeName
 import com.squareup.kotlinpoet.asTypeName
 import io.swagger.v3.oas.models.Operation
 import io.swagger.v3.oas.models.PathItem
 import io.swagger.v3.oas.models.Paths
+import io.swagger.v3.oas.models.parameters.Parameter
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toCamelCase
 import org.jellyfin.openapi.OpenApiGeneratorError
@@ -13,17 +15,16 @@ import org.jellyfin.openapi.constants.MimeType
 import org.jellyfin.openapi.constants.Security
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.hooks.ApiTypePath
+import org.jellyfin.openapi.hooks.DefaultValueHook
 import org.jellyfin.openapi.hooks.ServiceNameHook
-import org.jellyfin.openapi.model.ApiService
-import org.jellyfin.openapi.model.ApiServiceOperation
-import org.jellyfin.openapi.model.ApiServiceOperationParameter
-import org.jellyfin.openapi.model.HttpMethod
+import org.jellyfin.openapi.model.*
 
 class OpenApiApiServicesBuilder(
 	private val apiNameBuilder: ApiNameBuilder,
 	private val openApiTypeBuilder: OpenApiTypeBuilder,
 	private val openApiReturnTypeBuilder: OpenApiReturnTypeBuilder,
 	private val serviceNameHooks: Collection<ServiceNameHook>,
+	private val defaultValueHooks: Collection<DefaultValueHook>,
 ) : Builder<Paths, Collection<ApiService>> {
 	private fun getMethod(method: PathItem.HttpMethod) = when (method) {
 		PathItem.HttpMethod.POST -> HttpMethod.POST
@@ -42,6 +43,13 @@ class OpenApiApiServicesBuilder(
 			hook.mapServiceNames(operation, serviceNames)
 		}
 
+	/**
+	 * Returns the default value of the first hook that does not return null or use the default from the schema
+	 */
+	private fun buildDefaultValue(path: ApiTypePath, type: TypeName, parameterSpec: Parameter) = defaultValueHooks
+		.firstNotNullOfOrNull { hook -> hook.onBuildDefaultValue(path, type, parameterSpec) }
+		?: parameterSpec.schema?.default
+
 	private fun buildOperation(
 		operation: Operation,
 		path: String,
@@ -59,6 +67,8 @@ class OpenApiApiServicesBuilder(
 				.build(ApiTypePath(serviceName, operationName, parameterName), parameterSpec.schema)
 				.copy(nullable = parameterSpec.required != true)
 
+			val parameterTypePath = ApiTypePath(serviceName, operationName, parameterName)
+
 			when (parameterSpec.`in`) {
 				"path" -> pathParameters
 				"query" -> queryParameters
@@ -67,7 +77,7 @@ class OpenApiApiServicesBuilder(
 				name = parameterName,
 				originalName = parameterSpec.name,
 				type = type,
-				defaultValue = parameterSpec.schema?.default,
+				defaultValue = buildDefaultValue(parameterTypePath, type, parameterSpec),
 				description = parameterSpec.description,
 				deprecated = parameterSpec.deprecated == true
 			)

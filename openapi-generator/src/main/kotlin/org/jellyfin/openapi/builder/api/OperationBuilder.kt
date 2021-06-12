@@ -9,6 +9,7 @@ import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
+import org.jellyfin.openapi.model.CustomDefaultValue
 
 open class OperationBuilder(
 	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder,
@@ -40,6 +41,7 @@ open class OperationBuilder(
 			is String -> defaultValue("%S", data.defaultValue)
 			is Int -> defaultValue("%L", data.defaultValue)
 			is Boolean -> defaultValue("%L", data.defaultValue)
+			is CustomDefaultValue -> defaultValue(data.defaultValue.build())
 			// Set value to null by default for nullable values
 			null -> when {
 				typeClassName == List::class.asClassName() -> defaultValue("%N()", "emptyList")
