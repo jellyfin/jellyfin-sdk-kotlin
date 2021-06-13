@@ -18,10 +18,11 @@ class Generator(
 	private val openApiModelBuilder: OpenApiModelBuilder,
 	private val openApiApiServicesBuilder: OpenApiApiServicesBuilder,
 	private val openApiConstantsBuilder: OpenApiConstantsBuilder,
-	private val apiBuilder: ApiBuilder
+	private val apiBuilder: ApiBuilder,
 ) {
 	private fun parse(openApiJson: String): SwaggerParseResult {
-		val parseResult = OpenAPIV3Parser().readContents(openApiJson)
+		// Replace CRLF with LF for consistency between platforms
+		val parseResult = OpenAPIV3Parser().readContents(openApiJson.replace("\r\n", "\n"))
 		parseResult.messages.forEach { println(it) }
 		return parseResult
 	}
@@ -42,7 +43,7 @@ class Generator(
 	fun generate(
 		openApiJson: String,
 		apiOutputDir: File,
-		modelsOutputDir: File
+		modelsOutputDir: File,
 	) {
 		val parseResult = parse(openApiJson)
 
@@ -59,6 +60,6 @@ class Generator(
 		// Create API operations
 		createApis(paths).forEach { file -> file.writeTo(apiOutputDir) }
 		// Create API constants
-		createApiConstants(parseResult.openAPI.info).let { file -> file.writeTo(apiOutputDir) }
+		createApiConstants(parseResult.openAPI.info).writeTo(apiOutputDir)
 	}
 }
