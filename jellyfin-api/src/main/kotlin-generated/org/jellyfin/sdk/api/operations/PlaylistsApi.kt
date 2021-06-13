@@ -15,6 +15,7 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.CreatePlaylistDto
 import org.jellyfin.sdk.model.api.ImageType
@@ -106,7 +107,7 @@ public class PlaylistsApi(
 	 */
 	public suspend fun getPlaylistItems(
 		playlistId: UUID,
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		startIndex: Int? = null,
 		limit: Int? = null,
 		fields: List<ItemFields>? = emptyList(),

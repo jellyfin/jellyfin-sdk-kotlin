@@ -15,6 +15,7 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.model.api.ClientCapabilitiesDto
 import org.jellyfin.sdk.model.api.GeneralCommand
 import org.jellyfin.sdk.model.api.GeneralCommandType
@@ -33,7 +34,8 @@ public class SessionApi(
 	 * @param sessionId The session id.
 	 * @param userId The user id.
 	 */
-	public suspend fun addUserToSession(sessionId: String, userId: UUID): Response<Unit> {
+	public suspend fun addUserToSession(sessionId: String, userId: UUID = api.userId ?: throw
+			MissingUserIdException()): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
 		pathParameters["userId"] = userId
@@ -208,7 +210,8 @@ public class SessionApi(
 	 * @param sessionId The session id.
 	 * @param userId The user id.
 	 */
-	public suspend fun removeUserFromSession(sessionId: String, userId: UUID): Response<Unit> {
+	public suspend fun removeUserFromSession(sessionId: String, userId: UUID = api.userId ?: throw
+			MissingUserIdException()): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
 		pathParameters["userId"] = userId

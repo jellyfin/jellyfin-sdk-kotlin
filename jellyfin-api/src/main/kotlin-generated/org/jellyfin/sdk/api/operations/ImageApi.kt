@@ -16,6 +16,7 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.model.api.ImageFormat
 import org.jellyfin.sdk.model.api.ImageInfo
 import org.jellyfin.sdk.model.api.ImageType
@@ -77,7 +78,7 @@ public class ImageApi(
 	 * @param index (Unused) Image index.
 	 */
 	public suspend fun deleteUserImage(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		imageType: ImageType,
 		index: Int? = null
 	): Response<Unit> {
@@ -100,7 +101,7 @@ public class ImageApi(
 	 * @param index (Unused) Image index.
 	 */
 	public suspend fun deleteUserImageByIndex(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		imageType: ImageType,
 		index: Int
 	): Response<Unit> {
@@ -1934,7 +1935,7 @@ public class ImageApi(
 	 * @param imageIndex Image index.
 	 */
 	public suspend fun getUserImage(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		imageType: ImageType,
 		tag: String? = null,
 		format: ImageFormat? = null,
@@ -2009,7 +2010,7 @@ public class ImageApi(
 	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getUserImageUrl(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		imageType: ImageType,
 		tag: String? = null,
 		format: ImageFormat? = null,
@@ -2082,7 +2083,7 @@ public class ImageApi(
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
 	public suspend fun getUserImageByIndex(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		imageType: ImageType,
 		imageIndex: Int,
 		tag: String? = null,
@@ -2157,7 +2158,7 @@ public class ImageApi(
 	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getUserImageByIndexUrl(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		imageType: ImageType,
 		imageIndex: Int,
 		tag: String? = null,
@@ -2211,7 +2212,7 @@ public class ImageApi(
 	 * @param index (Unused) Image index.
 	 */
 	public suspend fun postUserImage(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		imageType: ImageType,
 		index: Int? = null
 	): Response<Unit> {
@@ -2234,7 +2235,7 @@ public class ImageApi(
 	 * @param index (Unused) Image index.
 	 */
 	public suspend fun postUserImageByIndex(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		imageType: ImageType,
 		index: Int
 	): Response<Unit> {

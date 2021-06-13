@@ -11,6 +11,7 @@ import kotlin.Unit
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.model.api.AdminNotificationDto
 import org.jellyfin.sdk.model.api.NameIdPair
 import org.jellyfin.sdk.model.api.NotificationResultDto
@@ -57,7 +58,8 @@ public class NotificationsApi(
 	/**
 	 * Gets a user's notifications.
 	 */
-	public suspend fun getNotifications(userId: String): Response<NotificationResultDto> {
+	public suspend fun getNotifications(userId: String = api.userId.toString() ?: throw
+			MissingUserIdException()): Response<NotificationResultDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -70,7 +72,8 @@ public class NotificationsApi(
 	/**
 	 * Gets a user's notification summary.
 	 */
-	public suspend fun getNotificationsSummary(userId: String): Response<NotificationsSummaryDto> {
+	public suspend fun getNotificationsSummary(userId: String = api.userId.toString() ?: throw
+			MissingUserIdException()): Response<NotificationsSummaryDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -83,7 +86,8 @@ public class NotificationsApi(
 	/**
 	 * Sets notifications as read.
 	 */
-	public suspend fun setRead(userId: String): Response<Unit> {
+	public suspend fun setRead(userId: String = api.userId.toString() ?: throw
+			MissingUserIdException()): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()
@@ -96,7 +100,8 @@ public class NotificationsApi(
 	/**
 	 * Sets notifications as unread.
 	 */
-	public suspend fun setUnread(userId: String): Response<Unit> {
+	public suspend fun setUnread(userId: String = api.userId.toString() ?: throw
+			MissingUserIdException()): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		val queryParameters = emptyMap<String, Any?>()

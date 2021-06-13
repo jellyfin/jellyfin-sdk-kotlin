@@ -15,6 +15,7 @@ import kotlin.String
 import kotlin.Unit
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.model.api.PlayMethod
 import org.jellyfin.sdk.model.api.PlaybackProgressInfo
 import org.jellyfin.sdk.model.api.PlaybackStartInfo
@@ -33,7 +34,7 @@ public class PlayStateApi(
 	 * @param datePlayed Optional. The date the item was played.
 	 */
 	public suspend fun markPlayedItem(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		itemId: UUID,
 		datePlayed: LocalDateTime? = null
 	): Response<UserItemDataDto> {
@@ -54,7 +55,8 @@ public class PlayStateApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun markUnplayedItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
+	public suspend fun markUnplayedItem(userId: UUID = api.userId ?: throw MissingUserIdException(),
+			itemId: UUID): Response<UserItemDataDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["itemId"] = itemId
@@ -83,7 +85,7 @@ public class PlayStateApi(
 	 * @param isMuted Indicates if the player is muted.
 	 */
 	public suspend fun onPlaybackProgress(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		itemId: UUID,
 		mediaSourceId: String? = null,
 		positionTicks: Long? = null,
@@ -132,7 +134,7 @@ public class PlayStateApi(
 	 * @param canSeek Indicates if the client can seek.
 	 */
 	public suspend fun onPlaybackStart(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		itemId: UUID,
 		mediaSourceId: String? = null,
 		audioStreamIndex: Int? = null,
@@ -172,7 +174,7 @@ public class PlayStateApi(
 	 * @param playSessionId The play session id.
 	 */
 	public suspend fun onPlaybackStopped(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		itemId: UUID,
 		mediaSourceId: String? = null,
 		nextMediaType: String? = null,

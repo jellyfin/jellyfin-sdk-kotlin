@@ -13,6 +13,7 @@ import kotlin.String
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 
 public class SuggestionsApi(
@@ -29,7 +30,7 @@ public class SuggestionsApi(
 	 * @param enableTotalRecordCount Whether to enable the total record count.
 	 */
 	public suspend fun getSuggestions(
-		userId: UUID,
+		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		mediaType: List<String>? = emptyList(),
 		type: List<String>? = emptyList(),
 		startIndex: Int? = null,
