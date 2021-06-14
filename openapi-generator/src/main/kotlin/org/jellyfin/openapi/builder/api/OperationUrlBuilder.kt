@@ -3,17 +3,21 @@ package org.jellyfin.openapi.builder.api
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.ParameterSpec
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
+import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.model.ApiServiceOperation
 
 class OperationUrlBuilder(
+	private val descriptionBuilder: DescriptionBuilder,
 	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder,
-) : OperationBuilder(deprecatedAnnotationSpecBuilder) {
+) : OperationBuilder(descriptionBuilder, deprecatedAnnotationSpecBuilder) {
 	override fun buildFunctionShell(data: ApiServiceOperation) = FunSpec.builder(
 		data.name + Strings.URL_OPERATION_SUFFIX
 	).apply {
 		// Add description
-		data.description?.let { addKdoc("%L", it) }
+		descriptionBuilder.build(data.description)?.let {
+			addKdoc("%L", it)
+		}
 
 		// Add deprecated annotation
 		if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_MEMBER))

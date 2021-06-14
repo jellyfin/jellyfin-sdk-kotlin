@@ -8,6 +8,7 @@ import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toPascalCase
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
+import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.builder.extra.TypeSerializerBuilder
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
@@ -15,6 +16,7 @@ import org.jellyfin.openapi.model.JellyFile
 import org.jellyfin.openapi.model.ObjectApiModel
 
 class ObjectModelBuilder(
+	private val descriptionBuilder: DescriptionBuilder,
 	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder,
 	private val typeSerializerBuilder: TypeSerializerBuilder
 ) : Builder<ObjectApiModel, JellyFile> {
@@ -35,7 +37,9 @@ class ObjectModelBuilder(
 					.builder(property.name, property.type)
 					.initializer(property.name)
 					.apply {
-						property.description?.let { addKdoc(it) }
+						descriptionBuilder.build(property.description)?.let {
+							addKdoc("%L", it)
+						}
 
 						if (property.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_MEMBER))
 						addAnnotation(AnnotationSpec.builder(SerialName::class).addMember("%S", property.originalName).build())
@@ -68,7 +72,9 @@ class ObjectModelBuilder(
 		return TypeSpec.classBuilder(data.name.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL))
 			.apply {
 				modifiers += KModifier.DATA
-				data.description?.let { addKdoc(it) }
+				descriptionBuilder.build(data.description)?.let {
+					addKdoc("%L", it)
+				}
 				if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_CLASS))
 				addAnnotation(AnnotationSpec.builder(Serializable::class).build())
 			}

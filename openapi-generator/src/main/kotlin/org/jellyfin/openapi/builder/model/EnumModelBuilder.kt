@@ -8,12 +8,14 @@ import net.pearx.kasechange.toPascalCase
 import net.pearx.kasechange.toScreamingSnakeCase
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
+import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.model.EnumApiModel
 import org.jellyfin.openapi.model.JellyFile
 
 class EnumModelBuilder(
+	private val descriptionBuilder: DescriptionBuilder,
 	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder,
 ) : Builder<EnumApiModel, JellyFile> {
 	override fun build(data: EnumApiModel): JellyFile {
@@ -46,7 +48,9 @@ class EnumModelBuilder(
 				}
 
 				// Header
-				data.description?.let { addKdoc(it) }
+				descriptionBuilder.build(data.description)?.let {
+					addKdoc("%L", it)
+				}
 				if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_CLASS))
 				addAnnotation(Serializable::class.asTypeName())
 			}

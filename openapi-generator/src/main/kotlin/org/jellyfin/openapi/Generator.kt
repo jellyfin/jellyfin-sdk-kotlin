@@ -21,8 +21,7 @@ class Generator(
 	private val apiBuilder: ApiBuilder,
 ) {
 	private fun parse(openApiJson: String): SwaggerParseResult {
-		// Replace CRLF with LF for consistency between platforms
-		val parseResult = OpenAPIV3Parser().readContents(openApiJson.replace("\r\n", "\n"))
+		val parseResult = OpenAPIV3Parser().readContents(openApiJson)
 		parseResult.messages.forEach { println(it) }
 		return parseResult
 	}

@@ -5,6 +5,7 @@ import org.jellyfin.openapi.builder.api.ApiNameBuilder
 import org.jellyfin.openapi.builder.api.OperationBuilder
 import org.jellyfin.openapi.builder.api.OperationUrlBuilder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
+import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.builder.extra.FileSpecBuilder
 import org.jellyfin.openapi.builder.extra.TypeSerializerBuilder
 import org.jellyfin.openapi.builder.model.EmptyModelBuilder
@@ -26,15 +27,15 @@ val mainModule = module {
 
 	// API
 	single { ApiNameBuilder() }
-	single { OperationBuilder(get()) }
-	single { OperationUrlBuilder(get()) }
+	single { OperationBuilder(get(), get()) }
+	single { OperationUrlBuilder(get(), get()) }
 	single { ApiBuilder(get(), get(), getAll()) }
 
 	// Models
 	single { ModelBuilder(get(), get(), get()) }
-	single { EmptyModelBuilder(get()) }
-	single { EnumModelBuilder(get()) }
-	single { ObjectModelBuilder(get(), get()) }
+	single { EmptyModelBuilder(get(), get()) }
+	single { EnumModelBuilder(get(), get()) }
+	single { ObjectModelBuilder(get(), get(), get()) }
 
 	// Files
 	single { FileSpecBuilder() }
@@ -42,4 +43,5 @@ val mainModule = module {
 	// Utilities
 	single { DeprecatedAnnotationSpecBuilder() }
 	single { TypeSerializerBuilder() }
+	single { DescriptionBuilder() }
 }
