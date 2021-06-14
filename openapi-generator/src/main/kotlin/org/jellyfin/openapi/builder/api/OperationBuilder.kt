@@ -4,6 +4,7 @@ import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.plusParameter
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
+import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.constants.Classes
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
@@ -12,6 +13,7 @@ import org.jellyfin.openapi.model.ApiServiceOperationParameter
 import org.jellyfin.openapi.model.CustomDefaultValue
 
 open class OperationBuilder(
+	private val descriptionBuilder: DescriptionBuilder,
 	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder,
 ) : Builder<ApiServiceOperation, FunSpec> {
 	protected open fun buildFunctionShell(data: ApiServiceOperation) = FunSpec.builder(data.name).apply {
@@ -19,7 +21,9 @@ open class OperationBuilder(
 		addModifiers(KModifier.SUSPEND)
 
 		// Add description
-		data.description?.let { addKdoc("%L", it) }
+		descriptionBuilder.build(data.description)?.let {
+			addKdoc("%L", it)
+		}
 
 		// Add deprecated annotation
 		if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_MEMBER))
@@ -51,7 +55,9 @@ open class OperationBuilder(
 		}
 
 		// Add description
-		data.description?.let { addKdoc("%L", it) }
+		descriptionBuilder.build(data.description)?.let {
+			addKdoc("%L", it)
+		}
 	}.build()
 
 	protected fun FunSpec.Builder.addParameterMapStatements(
