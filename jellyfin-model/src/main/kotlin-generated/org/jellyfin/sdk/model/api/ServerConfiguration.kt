@@ -113,8 +113,7 @@ public data class ServerConfiguration(
 	public val ignoreVirtualInterfaces: Boolean,
 	/**
 	 * Gets or sets a value indicating the interfaces that should be ignored. The list can be comma
-	 * separated. <seealso
-	 * cref="P:MediaBrowser.Model.Configuration.ServerConfiguration.IgnoreVirtualInterfaces" />.
+	 * separated. `P:MediaBrowser.Model.Configuration.ServerConfiguration.IgnoreVirtualInterfaces`.
 	 */
 	@SerialName("VirtualInterfaceNames")
 	public val virtualInterfaceNames: String? = null,
@@ -342,15 +341,15 @@ public data class ServerConfiguration(
 	@SerialName("EnableNewOmdbSupport")
 	public val enableNewOmdbSupport: Boolean,
 	/**
-	 * Gets or sets the filter for remote IP connectivity. Used in conjuntion with <seealso
-	 * cref="P:MediaBrowser.Model.Configuration.ServerConfiguration.IsRemoteIPFilterBlacklist" />.
+	 * Gets or sets the filter for remote IP connectivity. Used in conjuntion with
+	 * `P:MediaBrowser.Model.Configuration.ServerConfiguration.IsRemoteIPFilterBlacklist`.
 	 */
 	@SerialName("RemoteIPFilter")
 	public val remoteIpFilter: List<String>? = null,
 	/**
-	 * Gets or sets a value indicating whether <seealso
-	 * cref="P:MediaBrowser.Model.Configuration.ServerConfiguration.RemoteIPFilter" /> contains a
-	 * blacklist or a whitelist. Default is a whitelist.
+	 * Gets or sets a value indicating whether
+	 * `P:MediaBrowser.Model.Configuration.ServerConfiguration.RemoteIPFilter` contains a blacklist or a
+	 * whitelist. Default is a whitelist.
 	 */
 	@SerialName("IsRemoteIPFilterBlacklist")
 	public val isRemoteIpFilterBlacklist: Boolean,
