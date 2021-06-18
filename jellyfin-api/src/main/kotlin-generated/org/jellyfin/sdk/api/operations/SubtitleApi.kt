@@ -148,7 +148,7 @@ public class SubtitleApi(
 		queryParameters["startPositionTicks"] = startPositionTicks
 		val data = null
 		val response =
-				api.`get`<String>("/Videos/{routeItemId}/routeMediaSourceId/Subtitles/{routeIndex}/Stream.{routeFormat}",
+				api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/Stream.{routeFormat}",
 				pathParameters, queryParameters, data)
 		return response
 	}
@@ -200,7 +200,7 @@ public class SubtitleApi(
 		queryParameters["startPositionTicks"] = startPositionTicks
 		val data = null
 		val response =
-				api.`get`<String>("/Videos/{routeItemId}/routeMediaSourceId/Subtitles/{routeIndex}/Stream.{routeFormat}",
+				api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/Stream.{routeFormat}",
 				pathParameters, queryParameters, data)
 		return response
 	}
