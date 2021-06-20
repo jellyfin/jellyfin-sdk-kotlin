@@ -101,7 +101,7 @@ open class OperationBuilder(
 		addStatement(
 			"val response = %L.%N<%T>(%S, pathParameters, queryParameters, data)",
 			Strings.API_CLIENT_PARAMETER_NAME,
-			data.method.toString().toLowerCase(),
+			data.method.toString().lowercase(),
 			data.returnType,
 			data.pathTemplate
 		)
