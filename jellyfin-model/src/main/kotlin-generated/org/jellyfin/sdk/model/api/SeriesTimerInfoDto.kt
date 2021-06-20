@@ -167,7 +167,7 @@ public data class SeriesTimerInfoDto(
 	 * Gets or sets the image tags.
 	 */
 	@SerialName("ImageTags")
-	public val imageTags: Map<ImageType, String>,
+	public val imageTags: Map<ImageType, String>? = null,
 	/**
 	 * Gets or sets the parent thumb item id.
 	 */

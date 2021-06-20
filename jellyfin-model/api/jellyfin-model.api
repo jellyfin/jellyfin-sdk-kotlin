@@ -1077,6 +1077,7 @@ public final class org/jellyfin/sdk/model/api/BaseItemDtoQueryResult$Companion {
 
 public final class org/jellyfin/sdk/model/api/BaseItemPerson {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/BaseItemPerson$Companion;
+	public fun <init> ()V
 	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
