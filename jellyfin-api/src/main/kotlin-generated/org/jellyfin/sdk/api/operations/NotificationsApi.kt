@@ -58,7 +58,7 @@ public class NotificationsApi(
 	/**
 	 * Gets a user's notifications.
 	 */
-	public suspend fun getNotifications(userId: String = api.userId.toString() ?: throw
+	public suspend fun getNotifications(userId: String = api.userId?.toString() ?: throw
 			MissingUserIdException()): Response<NotificationResultDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -72,7 +72,7 @@ public class NotificationsApi(
 	/**
 	 * Gets a user's notification summary.
 	 */
-	public suspend fun getNotificationsSummary(userId: String = api.userId.toString() ?: throw
+	public suspend fun getNotificationsSummary(userId: String = api.userId?.toString() ?: throw
 			MissingUserIdException()): Response<NotificationsSummaryDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -86,7 +86,7 @@ public class NotificationsApi(
 	/**
 	 * Sets notifications as read.
 	 */
-	public suspend fun setRead(userId: String = api.userId.toString() ?: throw
+	public suspend fun setRead(userId: String = api.userId?.toString() ?: throw
 			MissingUserIdException()): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -100,7 +100,7 @@ public class NotificationsApi(
 	/**
 	 * Sets notifications as unread.
 	 */
-	public suspend fun setUnread(userId: String = api.userId.toString() ?: throw
+	public suspend fun setUnread(userId: String = api.userId?.toString() ?: throw
 			MissingUserIdException()): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId

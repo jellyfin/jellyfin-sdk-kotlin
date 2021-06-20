@@ -12,8 +12,8 @@ class CurrentUserIdDefaultValue(
 	override fun build() = CodeBlock.builder().apply {
 		// api.userId
 		add("%L.%L", Strings.API_CLIENT_PARAMETER_NAME, "userId")
-		// .toString()
-		if (isString) add(".%L()", "toString")
+		// ?.toString()
+		if (isString) add("?.%L()", "toString")
 		// ?: throw UserIdIsNullException()
 		add(" ?: throw %T()", ClassName(Packages.API_EXCEPTION, Classes.Exceptions.USERID_IS_NULL))
 	}.build()
