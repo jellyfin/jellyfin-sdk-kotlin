@@ -429,7 +429,7 @@ public data class BaseItemDto(
 	 * Gets or sets the image tags.
 	 */
 	@SerialName("ImageTags")
-	public val imageTags: Map<ImageType, String>,
+	public val imageTags: Map<ImageType, String>? = null,
 	/**
 	 * Gets or sets the backdrop image tags.
 	 */
@@ -465,7 +465,7 @@ public data class BaseItemDto(
 	 * Maps image type to dictionary mapping image tag to blurhash value.
 	 */
 	@SerialName("ImageBlurHashes")
-	public val imageBlurHashes: Map<ImageType, Map<String, String>>,
+	public val imageBlurHashes: Map<ImageType, Map<String, String>>? = null,
 	/**
 	 * Gets or sets the series studio.
 	 */

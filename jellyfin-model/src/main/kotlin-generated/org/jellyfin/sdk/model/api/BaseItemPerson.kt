@@ -44,5 +44,5 @@ public data class BaseItemPerson(
 	 * Gets or sets the primary image blurhash.
 	 */
 	@SerialName("ImageBlurHashes")
-	public val imageBlurHashes: Map<ImageType, Map<String, String>>
+	public val imageBlurHashes: Map<ImageType, Map<String, String>>? = null
 )
