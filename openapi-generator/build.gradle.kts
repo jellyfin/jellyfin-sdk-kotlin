@@ -10,6 +10,11 @@ application {
 	mainClass.set("org.jellyfin.openapi.MainKt")
 }
 
+java {
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 dependencies {
 	// Reading OpenAPI
 	implementation(libs.swaggerParser)
@@ -35,7 +40,7 @@ dependencies {
 
 val openApiFile = file("../openapi.json")
 tasks.register("generateSources", JavaExec::class) {
-	main = application.mainClassName
+	mainClass.set(application.mainClass)
 	classpath = sourceSets.main.get().runtimeClasspath
 
 	args = mapOf(
