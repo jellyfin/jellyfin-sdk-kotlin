@@ -21,7 +21,10 @@ class ImageMapsHook : TypeBuilderHook {
 		ModelTypePath("BaseItemPerson", "imageBlurHashes") -> buildImageBlurHashes()
 		ModelTypePath("SeriesTimerInfoDto", "imageTags") -> buildImageTags()
 		else -> null
-	}
+	}?.copy(
+		// Add nullability
+		nullable = schema.nullable ?: false
+	)
 
 	private fun buildImageBlurHashes() = Map::class.asTypeName()
 		.plusParameter(ClassName(Packages.MODEL, "ImageType"))
