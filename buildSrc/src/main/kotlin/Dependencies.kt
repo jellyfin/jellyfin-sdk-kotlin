@@ -7,9 +7,9 @@ fun RepositoryHandler.defaultRepositories() {
 
 object Plugins {
 	object Versions {
-		const val kotlin = "1.5.0"
-		const val binaryCompatibilityValidatorVersion = "0.5.0"
-		const val detekt = "1.17.0-RC2"
+		const val kotlin = "1.5.10"
+		const val binaryCompatibilityValidatorVersion = "0.6.0"
+		const val detekt = "1.17.1"
 		const val nexusPublish = "1.1.0"
 		const val dokka = "1.4.32"
 		const val androidBuildTools = "4.2.0"
