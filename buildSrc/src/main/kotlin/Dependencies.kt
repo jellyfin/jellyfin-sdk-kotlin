@@ -1,12 +1,13 @@
 import org.gradle.api.artifacts.dsl.RepositoryHandler
 
 fun RepositoryHandler.defaultRepositories() {
-	google()
 	mavenCentral()
+	google()
 }
 
 object Plugins {
 	object Versions {
+		// Kotlin version should be consistent with version catalog in /gradle/libs.versions.toml!
 		const val kotlin = "1.5.10"
 		const val binaryCompatibilityValidatorVersion = "0.6.0"
 		const val detekt = "1.17.1"
