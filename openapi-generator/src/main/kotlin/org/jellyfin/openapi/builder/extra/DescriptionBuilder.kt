@@ -9,9 +9,11 @@ class DescriptionBuilder : Builder<String?, String?> {
 		// Replace <br /> elements with new line
 		Regex("""<br\s?/?>""") to "\n",
 		// Replace <seealso> elements with their value
-		Regex("""<seealso\s+cref="(.*?)"\s?/?>""") to "`$1`",
+		Regex("""<seealso\s+cref="(.*?)"\s?/>""") to "`$1`",
+		Regex("""<seealso\s+cref="(.*?)"\s?>(.*?)</see>""") to "$2 (`$1`)",
 		// Replace <see> elements with their value
-		Regex("""<see\s+cref="(.*?)"\s?/?>""") to "`$1`",
+		Regex("""<see\s+cref="(.*?)"\s?/>""") to "`$1`",
+		Regex("""<see\s+cref="(.*?)"\s?>(.*?)</see>""") to "$2 (`$1`)",
 	)
 
 	override fun build(data: String?): String? {
