@@ -20,6 +20,7 @@ import org.jellyfin.sdk.api.client.util.PathBuilder
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.slf4j.LoggerFactory
+import java.net.UnknownHostException
 import java.util.*
 
 public open class KtorClient(
@@ -95,6 +96,7 @@ public open class KtorClient(
 		}.buildString()
 	}
 
+	@Suppress("ThrowsCount")
 	public suspend inline fun <reified T> request(
 		method: HttpMethod = HttpMethod.Get,
 		pathTemplate: String,
@@ -109,7 +111,7 @@ public open class KtorClient(
 		val safeUrl = accessToken?.let { url.replace(it, "******") } ?: url
 		logger.info("$method $safeUrl")
 
-		@Suppress("SwallowedException")
+		@Suppress("SwallowedException", "TooGenericExceptionCaught")
 		try {
 			val response = client.request<HttpResponse> {
 				this.method = method
@@ -134,6 +136,9 @@ public open class KtorClient(
 			val body = response.receive<T>()
 			// Return custom response instance
 			return Response(body, response.status.value, response.headers.toMap())
+		} catch (err: UnknownHostException) {
+			logger.debug("HTTP host unreachable", err)
+			throw TimeoutException(err.message)
 		} catch (err: HttpRequestTimeoutException) {
 			logger.debug("HTTP request timed out", err)
 			throw TimeoutException(err.message)
@@ -149,6 +154,9 @@ public open class KtorClient(
 		} catch (err: SerializationException) {
 			logger.error("Deserialization failed", err)
 			throw InvalidContentException(err.message)
+		} catch (err: Throwable) {
+			logger.error("Unknown error occurred!", err)
+			throw err
 		}
 	}
 
