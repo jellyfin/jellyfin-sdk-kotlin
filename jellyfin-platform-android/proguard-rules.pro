@@ -1,1 +1,2 @@
 -keep class org.jellyfin.sdk.model.**.* { *; }
+-keep class org.jellyfin.sdk.api.client.exception.**.* { *; }
