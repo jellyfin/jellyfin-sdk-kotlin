@@ -30,6 +30,7 @@ android {
 	}
 
 	lintOptions {
+		lintConfig = file("$rootDir/android-lint.xml")
 		isAbortOnError = false
 		sarifReport = true
 	}
