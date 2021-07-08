@@ -14,6 +14,7 @@ import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.Collection
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
@@ -406,10 +407,10 @@ public class LiveTvApi(
 		isDisliked: Boolean? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList(),
-		fields: List<ItemFields>? = emptyList(),
+		enableImageTypes: Collection<ImageType>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
 		enableUserData: Boolean? = null,
-		sortBy: List<String>? = emptyList(),
+		sortBy: Collection<String>? = emptyList(),
 		sortOrder: SortOrder? = null,
 		enableFavoriteSorting: Boolean? = false,
 		addCurrentProgram: Boolean? = true
@@ -488,7 +489,7 @@ public class LiveTvApi(
 	 * @param enableTotalRecordCount Retrieve total record count.
 	 */
 	public suspend fun getLiveTvPrograms(
-		channelIds: List<UUID>? = emptyList(),
+		channelIds: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		minStartDate: LocalDateTime? = null,
 		hasAired: Boolean? = null,
@@ -503,17 +504,17 @@ public class LiveTvApi(
 		isSports: Boolean? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
-		sortBy: List<String>? = emptyList(),
-		sortOrder: List<SortOrder>? = emptyList(),
-		genres: List<String>? = emptyList(),
-		genreIds: List<UUID>? = emptyList(),
+		sortBy: Collection<String>? = emptyList(),
+		sortOrder: Collection<SortOrder>? = emptyList(),
+		genres: Collection<String>? = emptyList(),
+		genreIds: Collection<UUID>? = emptyList(),
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList(),
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
 		seriesTimerId: String? = null,
 		librarySeriesId: UUID? = null,
-		fields: List<ItemFields>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
 		enableTotalRecordCount: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
@@ -611,9 +612,9 @@ public class LiveTvApi(
 		isSports: Boolean? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList(),
-		genreIds: List<UUID>? = emptyList(),
-		fields: List<ItemFields>? = emptyList(),
+		enableImageTypes: Collection<ImageType>? = emptyList(),
+		genreIds: Collection<UUID>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
 		enableUserData: Boolean? = null,
 		enableTotalRecordCount: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
@@ -739,8 +740,8 @@ public class LiveTvApi(
 		seriesTimerId: String? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList(),
-		fields: List<ItemFields>? = emptyList(),
+		enableImageTypes: Collection<ImageType>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
 		enableUserData: Boolean? = null,
 		isMovie: Boolean? = null,
 		isSeries: Boolean? = null,
@@ -808,8 +809,8 @@ public class LiveTvApi(
 		seriesTimerId: String? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList(),
-		fields: List<ItemFields>? = emptyList(),
+		enableImageTypes: Collection<ImageType>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
 		enableUserData: Boolean? = null,
 		enableTotalRecordCount: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {

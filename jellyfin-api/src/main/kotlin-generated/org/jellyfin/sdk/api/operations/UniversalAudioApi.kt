@@ -12,7 +12,7 @@ import kotlin.Boolean
 import kotlin.Int
 import kotlin.Long
 import kotlin.String
-import kotlin.collections.List
+import kotlin.collections.Collection
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 
@@ -45,7 +45,7 @@ public class UniversalAudioApi(
 	 */
 	public suspend fun getUniversalAudioStream(
 		itemId: UUID,
-		container: List<String>? = emptyList(),
+		container: Collection<String>? = emptyList(),
 		mediaSourceId: String? = null,
 		deviceId: String? = null,
 		userId: UUID? = null,
@@ -116,7 +116,7 @@ public class UniversalAudioApi(
 	 */
 	public fun getUniversalAudioStreamUrl(
 		itemId: UUID,
-		container: List<String>? = emptyList(),
+		container: Collection<String>? = emptyList(),
 		mediaSourceId: String? = null,
 		deviceId: String? = null,
 		userId: UUID? = null,

@@ -10,6 +10,7 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.Collection
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
@@ -97,12 +98,12 @@ public class UserLibraryApi(
 	public suspend fun getLatestMedia(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		parentId: UUID? = null,
-		fields: List<ItemFields>? = emptyList(),
-		includeItemTypes: List<String>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
+		includeItemTypes: Collection<String>? = emptyList(),
 		isPlayed: Boolean? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList(),
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
 		limit: Int? = 20,
 		groupItems: Boolean? = true

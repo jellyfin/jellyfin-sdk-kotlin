@@ -10,7 +10,7 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
-import kotlin.collections.List
+import kotlin.collections.Collection
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.model.api.BaseItemDto
@@ -65,16 +65,16 @@ public class YearsApi(
 	public suspend fun getYears(
 		startIndex: Int? = null,
 		limit: Int? = null,
-		sortOrder: List<SortOrder>? = emptyList(),
+		sortOrder: Collection<SortOrder>? = emptyList(),
 		parentId: UUID? = null,
-		fields: List<ItemFields>? = emptyList(),
-		excludeItemTypes: List<String>? = emptyList(),
-		includeItemTypes: List<String>? = emptyList(),
-		mediaTypes: List<String>? = emptyList(),
-		sortBy: List<String>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
+		excludeItemTypes: Collection<String>? = emptyList(),
+		includeItemTypes: Collection<String>? = emptyList(),
+		mediaTypes: Collection<String>? = emptyList(),
+		sortBy: Collection<String>? = emptyList(),
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList(),
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 		userId: UUID? = null,
 		recursive: Boolean? = true,
 		enableImages: Boolean? = true

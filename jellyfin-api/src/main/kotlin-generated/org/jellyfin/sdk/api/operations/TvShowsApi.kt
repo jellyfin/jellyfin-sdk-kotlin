@@ -10,7 +10,7 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
-import kotlin.collections.List
+import kotlin.collections.Collection
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
@@ -48,7 +48,7 @@ public class TvShowsApi(
 	public suspend fun getEpisodes(
 		seriesId: UUID,
 		userId: UUID? = null,
-		fields: List<ItemFields>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
 		season: Int? = null,
 		seasonId: UUID? = null,
 		isMissing: Boolean? = null,
@@ -58,7 +58,7 @@ public class TvShowsApi(
 		limit: Int? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList(),
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
 		sortBy: String? = null
 	): Response<BaseItemDtoQueryResult> {
@@ -107,12 +107,12 @@ public class TvShowsApi(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
-		fields: List<ItemFields>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
 		seriesId: String? = null,
 		parentId: UUID? = null,
 		enableImges: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList(),
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
 		enableTotalRecordCount: Boolean? = true,
 		disableFirstEpisode: Boolean? = false
@@ -157,13 +157,13 @@ public class TvShowsApi(
 	public suspend fun getSeasons(
 		seriesId: UUID,
 		userId: UUID? = null,
-		fields: List<ItemFields>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
 		isSpecialSeason: Boolean? = null,
 		isMissing: Boolean? = null,
 		adjacentTo: String? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList(),
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -203,11 +203,11 @@ public class TvShowsApi(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
-		fields: List<ItemFields>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
 		parentId: UUID? = null,
 		enableImges: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList(),
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()

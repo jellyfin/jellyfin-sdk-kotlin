@@ -10,7 +10,7 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
-import kotlin.collections.List
+import kotlin.collections.Collection
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.model.api.BaseItemDto
@@ -62,14 +62,14 @@ public class PersonsApi(
 	public suspend fun getPersons(
 		limit: Int? = null,
 		searchTerm: String? = null,
-		fields: List<ItemFields>? = emptyList(),
-		filters: List<ItemFilter>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
+		filters: Collection<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList(),
-		excludePersonTypes: List<String>? = emptyList(),
-		personTypes: List<String>? = emptyList(),
+		enableImageTypes: Collection<ImageType>? = emptyList(),
+		excludePersonTypes: Collection<String>? = emptyList(),
+		personTypes: Collection<String>? = emptyList(),
 		appearsInItemId: UUID? = null,
 		userId: UUID? = null,
 		enableImages: Boolean? = true

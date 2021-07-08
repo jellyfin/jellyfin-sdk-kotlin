@@ -10,6 +10,7 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.Collection
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
@@ -71,10 +72,10 @@ public class ChannelsApi(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
-		sortOrder: List<SortOrder>? = emptyList(),
-		filters: List<ItemFilter>? = emptyList(),
-		sortBy: List<String>? = emptyList(),
-		fields: List<ItemFields>? = emptyList()
+		sortOrder: Collection<SortOrder>? = emptyList(),
+		filters: Collection<ItemFilter>? = emptyList(),
+		sortBy: Collection<String>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["channelId"] = channelId
@@ -141,9 +142,9 @@ public class ChannelsApi(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
-		filters: List<ItemFilter>? = emptyList(),
-		fields: List<ItemFields>? = emptyList(),
-		channelIds: List<UUID>? = emptyList()
+		filters: Collection<ItemFilter>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
+		channelIds: Collection<UUID>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

@@ -9,6 +9,7 @@ import java.util.UUID
 import kotlin.Any
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.Collection
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
@@ -31,7 +32,7 @@ public class MoviesApi(
 	public suspend fun getMovieRecommendations(
 		userId: UUID? = null,
 		parentId: UUID? = null,
-		fields: List<ItemFields>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
 		categoryLimit: Int? = 5,
 		itemLimit: Int? = 8
 	): Response<List<RecommendationDto>> {

@@ -9,6 +9,7 @@ import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
+import kotlin.collections.Collection
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
@@ -47,7 +48,7 @@ public class UserViewsApi(
 	public suspend fun getUserViews(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		includeExternalContent: Boolean? = null,
-		presetViews: List<String>? = emptyList(),
+		presetViews: Collection<String>? = emptyList(),
 		includeHidden: Boolean? = false
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()

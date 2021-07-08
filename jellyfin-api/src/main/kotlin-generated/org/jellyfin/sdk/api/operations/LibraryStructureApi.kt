@@ -9,6 +9,7 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.Collection
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
@@ -48,7 +49,7 @@ public class LibraryStructureApi(
 	public suspend fun addVirtualFolder(
 		name: String? = null,
 		collectionType: CollectionTypeOptions? = null,
-		paths: List<String>? = emptyList(),
+		paths: Collection<String>? = emptyList(),
 		refreshLibrary: Boolean? = false,
 		`data`: AddVirtualFolderDto? = null
 	): Response<Unit> {

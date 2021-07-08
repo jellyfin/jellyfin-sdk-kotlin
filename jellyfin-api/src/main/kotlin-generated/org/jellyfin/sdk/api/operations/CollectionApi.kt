@@ -10,7 +10,7 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
-import kotlin.collections.List
+import kotlin.collections.Collection
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.model.api.CollectionCreationResult
@@ -24,7 +24,7 @@ public class CollectionApi(
 	 * @param collectionId The collection id.
 	 * @param ids Item ids, comma delimited.
 	 */
-	public suspend fun addToCollection(collectionId: UUID, ids: List<UUID> = emptyList()):
+	public suspend fun addToCollection(collectionId: UUID, ids: Collection<UUID> = emptyList()):
 			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["collectionId"] = collectionId
@@ -46,7 +46,7 @@ public class CollectionApi(
 	 */
 	public suspend fun createCollection(
 		name: String? = null,
-		ids: List<String>? = emptyList(),
+		ids: Collection<String>? = emptyList(),
 		parentId: UUID? = null,
 		isLocked: Boolean? = false
 	): Response<CollectionCreationResult> {
@@ -68,7 +68,7 @@ public class CollectionApi(
 	 * @param collectionId The collection id.
 	 * @param ids Item ids, comma delimited.
 	 */
-	public suspend fun removeFromCollection(collectionId: UUID, ids: List<UUID> = emptyList()):
+	public suspend fun removeFromCollection(collectionId: UUID, ids: Collection<UUID> = emptyList()):
 			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["collectionId"] = collectionId
