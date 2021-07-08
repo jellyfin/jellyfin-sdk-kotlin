@@ -1,6 +1,7 @@
 package org.jellyfin.openapi.builder.openapi
 
 import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.ParameterizedTypeName
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.plusParameter
 import com.squareup.kotlinpoet.TypeName
 import com.squareup.kotlinpoet.asTypeName
@@ -11,6 +12,7 @@ import org.jellyfin.openapi.OpenApiGeneratorError
 import org.jellyfin.openapi.builder.openapi.OpenApiReturnTypeBuilder.Companion.TYPE_BINARY
 import org.jellyfin.openapi.builder.openapi.OpenApiReturnTypeBuilder.Companion.TYPE_STRING
 import org.jellyfin.openapi.constants.Packages
+import org.jellyfin.openapi.hooks.ApiTypePath
 import org.jellyfin.openapi.hooks.TypeBuilderHook
 import org.jellyfin.openapi.hooks.TypePath
 import java.time.LocalDateTime
@@ -20,7 +22,7 @@ class OpenApiTypeBuilder(
 	private val hooks: Collection<TypeBuilderHook>,
 ) {
 	fun build(path: TypePath, schema: Schema<*>): TypeName =
-		buildWithHooks(path, schema) ?: buildSchema(schema)
+		buildWithHooks(path, schema) ?: buildSchema(path, schema)
 
 	private fun buildWithHooks(path: TypePath, data: Schema<*>): TypeName? {
 		for (hook in hooks) {
@@ -32,7 +34,7 @@ class OpenApiTypeBuilder(
 	}
 
 	@Suppress("ComplexMethod")
-	fun buildSchema(schema: Schema<*>): TypeName = when {
+	fun buildSchema(path: TypePath, schema: Schema<*>): TypeName = when {
 		// Use referenced type
 		schema.`$ref` != null -> buildReference(schema.`$ref`)
 		// Use type based on schema class
@@ -50,13 +52,13 @@ class OpenApiTypeBuilder(
 			// Binary
 			is BinarySchema -> buildBinary()
 			// Collections
-			is ArraySchema -> buildArrayType(schema)
-			is MapSchema -> buildMapType(schema)
+			is ArraySchema -> buildArrayType(path, schema)
+			is MapSchema -> buildMapType(path, schema)
 			// Composed
 			is ComposedSchema -> when {
 				// Limited support for anyOf / allOf containing a single item
-				schema.anyOf?.size == 1 -> buildSchema(schema.anyOf.first())
-				schema.allOf?.size == 1 -> buildSchema(schema.allOf.first())
+				schema.anyOf?.size == 1 -> buildSchema(path, schema.anyOf.first())
+				schema.allOf?.size == 1 -> buildSchema(path, schema.allOf.first())
 				else -> throw UnknownTypeError(schema.type, schema.format)
 			}
 			else -> throw UnknownTypeError(schema.type, schema.format)
@@ -81,12 +83,20 @@ class OpenApiTypeBuilder(
 	fun buildDateTime() = LocalDateTime::class.asTypeName()
 	fun buildUUIDType() = UUID::class.asTypeName()
 
-	fun buildArrayType(schema: ArraySchema) = List::class.asTypeName()
-		.plusParameter(buildSchema(schema.items as Schema<*>))
+	fun buildArrayType(path: TypePath, schema: ArraySchema): ParameterizedTypeName {
+		val type = when {
+			// Parameters in API operations use less-strict Collection interface
+			path is ApiTypePath && path.isParameterType() -> Collection::class
+			// Everything else uses stricter List interface
+			else -> List::class
+		}
 
-	fun buildMapType(schema: MapSchema) = Map::class.asTypeName()
+		return type.asTypeName().plusParameter(buildSchema(path, schema.items as Schema<*>))
+	}
+
+	fun buildMapType(path: TypePath, schema: MapSchema) = Map::class.asTypeName()
 		.plusParameter(String::class.asTypeName())
-		.plusParameter(buildSchema(schema.additionalProperties as Schema<*>))
+		.plusParameter(buildSchema(path, schema.additionalProperties as Schema<*>))
 
 	fun buildReference(reference: String) = ClassName(
 		Packages.MODEL,

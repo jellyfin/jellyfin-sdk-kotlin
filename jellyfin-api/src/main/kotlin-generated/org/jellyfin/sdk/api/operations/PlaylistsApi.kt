@@ -12,7 +12,7 @@ import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
 import kotlin.Unit
-import kotlin.collections.List
+import kotlin.collections.Collection
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
@@ -34,7 +34,7 @@ public class PlaylistsApi(
 	 */
 	public suspend fun addToPlaylist(
 		playlistId: UUID,
-		ids: List<UUID>? = emptyList(),
+		ids: Collection<UUID>? = emptyList(),
 		userId: UUID? = null
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -75,7 +75,7 @@ public class PlaylistsApi(
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun createPlaylistDeprecated(
 		name: String? = null,
-		ids: List<UUID>? = emptyList(),
+		ids: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		mediaType: String? = null,
 		`data`: CreatePlaylistDto? = null
@@ -110,11 +110,11 @@ public class PlaylistsApi(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		startIndex: Int? = null,
 		limit: Int? = null,
-		fields: List<ItemFields>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList()
+		enableImageTypes: Collection<ImageType>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["playlistId"] = playlistId
@@ -162,8 +162,8 @@ public class PlaylistsApi(
 	 * @param playlistId The playlist id.
 	 * @param entryIds The item ids, comma delimited.
 	 */
-	public suspend fun removeFromPlaylist(playlistId: String, entryIds: List<String>? = emptyList()):
-			Response<Unit> {
+	public suspend fun removeFromPlaylist(playlistId: String, entryIds: Collection<String>? =
+			emptyList()): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["playlistId"] = playlistId
 		val queryParameters = mutableMapOf<String, Any?>()

@@ -13,6 +13,7 @@ import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.Collection
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
@@ -47,7 +48,7 @@ public class LibraryApi(
 	 *
 	 * @param ids The item ids.
 	 */
-	public suspend fun deleteItems(ids: List<UUID>? = emptyList()): Response<Unit> {
+	public suspend fun deleteItems(ids: Collection<UUID>? = emptyList()): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["ids"] = ids
@@ -220,10 +221,10 @@ public class LibraryApi(
 	 */
 	public suspend fun getSimilarAlbums(
 		itemId: UUID,
-		excludeArtistIds: List<UUID>? = emptyList(),
+		excludeArtistIds: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: List<ItemFields>? = emptyList()
+		fields: Collection<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -252,10 +253,10 @@ public class LibraryApi(
 	 */
 	public suspend fun getSimilarArtists(
 		itemId: UUID,
-		excludeArtistIds: List<UUID>? = emptyList(),
+		excludeArtistIds: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: List<ItemFields>? = emptyList()
+		fields: Collection<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -284,10 +285,10 @@ public class LibraryApi(
 	 */
 	public suspend fun getSimilarItems(
 		itemId: UUID,
-		excludeArtistIds: List<UUID>? = emptyList(),
+		excludeArtistIds: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: List<ItemFields>? = emptyList()
+		fields: Collection<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -316,10 +317,10 @@ public class LibraryApi(
 	 */
 	public suspend fun getSimilarMovies(
 		itemId: UUID,
-		excludeArtistIds: List<UUID>? = emptyList(),
+		excludeArtistIds: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: List<ItemFields>? = emptyList()
+		fields: Collection<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -348,10 +349,10 @@ public class LibraryApi(
 	 */
 	public suspend fun getSimilarShows(
 		itemId: UUID,
-		excludeArtistIds: List<UUID>? = emptyList(),
+		excludeArtistIds: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: List<ItemFields>? = emptyList()
+		fields: Collection<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -380,10 +381,10 @@ public class LibraryApi(
 	 */
 	public suspend fun getSimilarTrailers(
 		itemId: UUID,
-		excludeArtistIds: List<UUID>? = emptyList(),
+		excludeArtistIds: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: List<ItemFields>? = emptyList()
+		fields: Collection<ItemFields>? = emptyList()
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

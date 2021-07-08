@@ -12,6 +12,7 @@ import kotlin.Int
 import kotlin.Long
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.Collection
 import kotlin.collections.List
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
@@ -134,7 +135,7 @@ public class SessionApi(
 	public suspend fun play(
 		sessionId: String,
 		playCommand: PlayCommand,
-		itemIds: List<UUID> = emptyList(),
+		itemIds: Collection<UUID> = emptyList(),
 		startPositionTicks: Long? = null,
 		mediaSourceId: String? = null,
 		audioStreamIndex: Int? = null,
@@ -170,8 +171,8 @@ public class SessionApi(
 	 */
 	public suspend fun postCapabilities(
 		id: String? = null,
-		playableMediaTypes: List<String>? = emptyList(),
-		supportedCommands: List<GeneralCommandType>? = emptyList(),
+		playableMediaTypes: Collection<String>? = emptyList(),
+		supportedCommands: Collection<GeneralCommandType>? = emptyList(),
 		supportsMediaControl: Boolean? = false,
 		supportsSync: Boolean? = false,
 		supportsPersistentIdentifier: Boolean? = true

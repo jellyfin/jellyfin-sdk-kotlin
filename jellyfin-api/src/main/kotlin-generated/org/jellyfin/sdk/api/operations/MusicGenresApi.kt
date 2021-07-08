@@ -11,7 +11,7 @@ import kotlin.Boolean
 import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
-import kotlin.collections.List
+import kotlin.collections.Collection
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.model.api.BaseItemDto
@@ -72,12 +72,12 @@ public class MusicGenresApi(
 		limit: Int? = null,
 		searchTerm: String? = null,
 		parentId: UUID? = null,
-		fields: List<ItemFields>? = emptyList(),
-		excludeItemTypes: List<String>? = emptyList(),
-		includeItemTypes: List<String>? = emptyList(),
+		fields: Collection<ItemFields>? = emptyList(),
+		excludeItemTypes: Collection<String>? = emptyList(),
+		includeItemTypes: Collection<String>? = emptyList(),
 		isFavorite: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: List<ImageType>? = emptyList(),
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 		userId: UUID? = null,
 		nameStartsWithOrGreater: String? = null,
 		nameStartsWith: String? = null,

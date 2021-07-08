@@ -10,7 +10,7 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
-import kotlin.collections.List
+import kotlin.collections.Collection
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.model.api.SearchHintResult
@@ -50,9 +50,9 @@ public class SearchApi(
 		limit: Int? = null,
 		userId: UUID? = null,
 		searchTerm: String,
-		includeItemTypes: List<String>? = emptyList(),
-		excludeItemTypes: List<String>? = emptyList(),
-		mediaTypes: List<String>? = emptyList(),
+		includeItemTypes: Collection<String>? = emptyList(),
+		excludeItemTypes: Collection<String>? = emptyList(),
+		mediaTypes: Collection<String>? = emptyList(),
 		parentId: UUID? = null,
 		isMovie: Boolean? = null,
 		isSeries: Boolean? = null,

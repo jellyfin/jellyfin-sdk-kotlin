@@ -10,7 +10,7 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
-import kotlin.collections.List
+import kotlin.collections.Collection
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
@@ -31,8 +31,8 @@ public class SuggestionsApi(
 	 */
 	public suspend fun getSuggestions(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
-		mediaType: List<String>? = emptyList(),
-		type: List<String>? = emptyList(),
+		mediaType: Collection<String>? = emptyList(),
+		type: Collection<String>? = emptyList(),
 		startIndex: Int? = null,
 		limit: Int? = null,
 		enableTotalRecordCount: Boolean? = false

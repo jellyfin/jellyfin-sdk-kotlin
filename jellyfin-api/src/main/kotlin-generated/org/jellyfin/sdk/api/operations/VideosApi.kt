@@ -14,7 +14,7 @@ import kotlin.Int
 import kotlin.Long
 import kotlin.String
 import kotlin.Unit
-import kotlin.collections.List
+import kotlin.collections.Collection
 import kotlin.collections.Map
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
@@ -771,7 +771,7 @@ public class VideosApi(
 	 *
 	 * @param ids Item id list. This allows multiple, comma delimited.
 	 */
-	public suspend fun mergeVersions(ids: List<UUID> = emptyList()): Response<Unit> {
+	public suspend fun mergeVersions(ids: Collection<UUID> = emptyList()): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["ids"] = ids
