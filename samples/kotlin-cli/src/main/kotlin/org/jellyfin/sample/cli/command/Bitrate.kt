@@ -14,6 +14,10 @@ import org.jellyfin.sdk.api.operations.MediaInfoApi
 class Bitrate(
 	private val jellyfin: Jellyfin,
 ) : CliktCommand("Detect or measure bitrate") {
+	private companion object {
+		private const val MEGABIT = 1000000
+	}
+
 	private val server by serverOption()
 	private val token by tokenOption()
 	private val bytes by option(
@@ -33,7 +37,7 @@ class Bitrate(
 		echo(buildString {
 			appendLine("Requested ${measurement.bytes} bytes from the server.")
 			appendLine("Reply took ${measurement.duration}ms.")
-			appendLine("Measured bitrate is ${measurement.bitrate} (${measurement.bitrate / 1000000} megabit).")
+			appendLine("Measured bitrate is ${measurement.bitrate} (${measurement.bitrate / MEGABIT} megabit).")
 		})
 	}
 }
