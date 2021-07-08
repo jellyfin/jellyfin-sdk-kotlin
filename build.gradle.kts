@@ -69,7 +69,7 @@ subprojects {
 	detekt {
 		buildUponDefaultConfig = true
 		ignoreFailures = true
-		config = files("$rootDir/detekt.yml")
+		config = files("$rootDir/detekt.yaml")
 		basePath = rootDir.absolutePath
 
 		reports {
