@@ -23,7 +23,10 @@ public class KtorClientTests {
 			"c" to "2"
 		)
 
-		assertEquals(instance.baseUrl + "test?a=b&c=2", instance.createUrl("test", queryParameters = parameters))
+		assertEquals(
+			instance.baseUrl + "test?a=b&c=2",
+			instance.createUrl("test", queryParameters = parameters)
+		)
 	}
 
 	@Test
@@ -35,7 +38,10 @@ public class KtorClientTests {
 			"d" to "2"
 		)
 
-		assertEquals(instance.baseUrl + "test?a=b&d=2", instance.createUrl("test", queryParameters = parameters))
+		assertEquals(
+			instance.baseUrl + "test?a=b&d=2",
+			instance.createUrl("test", queryParameters = parameters)
+		)
 	}
 
 	@Test
@@ -47,7 +53,10 @@ public class KtorClientTests {
 			"str" to "str"
 		)
 
-		assertEquals(instance.baseUrl + "test?one=1&bool=true&str=str", instance.createUrl("test", queryParameters = parameters))
+		assertEquals(
+			instance.baseUrl + "test?one=1&bool=true&str=str",
+			instance.createUrl("test", queryParameters = parameters)
+		)
 	}
 
 	@Test
@@ -58,6 +67,9 @@ public class KtorClientTests {
 			"field2" to ItemFields.DATE_CREATED,
 		)
 
-		assertEquals(instance.baseUrl + "test?field1=Chapters&field2=DateCreated", instance.createUrl("test", queryParameters = parameters))
+		assertEquals(
+			instance.baseUrl + "test?field1=Chapters&field2=DateCreated",
+			instance.createUrl("test", queryParameters = parameters)
+		)
 	}
 }
