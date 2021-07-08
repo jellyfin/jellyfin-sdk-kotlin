@@ -7,6 +7,7 @@ data class ApiTypePath(
 ) : TypePath {
 	fun isBodyType() = parameter == PARAMETER_BODY
 	fun isReturnType() = parameter == PARAMETER_RETURN
+	fun isParameterType() = !parameter.startsWith(':')
 
 	override fun toString(): String = "api.${service}.${operation}.${parameter}"
 

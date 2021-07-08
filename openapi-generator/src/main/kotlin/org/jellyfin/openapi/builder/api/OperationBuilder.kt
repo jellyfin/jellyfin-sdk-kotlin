@@ -48,6 +48,7 @@ open class OperationBuilder(
 			is CustomDefaultValue -> defaultValue(data.defaultValue.build())
 			// Set value to null by default for nullable values
 			null -> when {
+				typeClassName == Collection::class.asClassName() -> defaultValue("%N()", "emptyList")
 				typeClassName == List::class.asClassName() -> defaultValue("%N()", "emptyList")
 				typeClassName == Map::class.asClassName() -> defaultValue("%N()", "emptyMap")
 				data.type.isNullable -> defaultValue("%L", "null")
