@@ -9,6 +9,7 @@ import java.util.UUID
 import kotlin.Any
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException

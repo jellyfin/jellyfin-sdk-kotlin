@@ -10,6 +10,9 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
 import kotlin.collections.Collection
+import kotlin.collections.emptyList
+import kotlin.collections.emptyMap
+import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.model.api.QueryFilters
