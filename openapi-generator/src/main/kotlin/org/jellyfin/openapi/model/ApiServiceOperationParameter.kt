@@ -8,5 +8,6 @@ data class ApiServiceOperationParameter(
 	val type: TypeName,
 	val defaultValue: Any?,
 	val description: String?,
-	val deprecated: Boolean
+	val deprecated: Boolean,
+	val validation: ParameterValidation?,
 )

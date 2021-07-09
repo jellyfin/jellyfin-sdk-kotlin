@@ -5,6 +5,8 @@ import com.squareup.kotlinpoet.asTypeName
 import io.swagger.v3.oas.models.Operation
 import io.swagger.v3.oas.models.PathItem
 import io.swagger.v3.oas.models.Paths
+import io.swagger.v3.oas.models.media.IntegerSchema
+import io.swagger.v3.oas.models.media.Schema
 import io.swagger.v3.oas.models.parameters.Parameter
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toCamelCase
@@ -50,6 +52,14 @@ class OpenApiApiServicesBuilder(
 		.firstNotNullOfOrNull { hook -> hook.onBuildDefaultValue(path, type, parameterSpec) }
 		?: parameterSpec.schema?.default
 
+	private fun buildValidation(schema: Schema<*>): ParameterValidation? = when {
+		schema is IntegerSchema && schema.minimum != null && schema.maximum != null -> IntRangeValidation(
+			schema.minimum.intValueExact(),
+			schema.maximum.intValueExact()
+		)
+		else -> null
+	}
+
 	private fun buildOperation(
 		operation: Operation,
 		path: String,
@@ -79,7 +89,8 @@ class OpenApiApiServicesBuilder(
 				type = type,
 				defaultValue = buildDefaultValue(parameterTypePath, type, parameterSpec),
 				description = parameterSpec.description,
-				deprecated = parameterSpec.deprecated == true
+				deprecated = parameterSpec.deprecated == true,
+				validation = buildValidation(parameterSpec.schema),
 			)
 
 			if (parameterSpec.`in` == "path") {
