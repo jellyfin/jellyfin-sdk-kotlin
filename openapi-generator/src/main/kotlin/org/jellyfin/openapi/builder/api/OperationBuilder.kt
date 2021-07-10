@@ -8,9 +8,7 @@ import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.constants.Classes
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
-import org.jellyfin.openapi.model.ApiServiceOperation
-import org.jellyfin.openapi.model.ApiServiceOperationParameter
-import org.jellyfin.openapi.model.CustomDefaultValue
+import org.jellyfin.openapi.model.*
 
 open class OperationBuilder(
 	private val descriptionBuilder: DescriptionBuilder,
@@ -61,6 +59,20 @@ open class OperationBuilder(
 		}
 	}.build()
 
+	private fun FunSpec.Builder.createParameterValidation(
+		name: String,
+		validation: ParameterValidation,
+	) = when (validation) {
+		is IntRangeValidation -> addStatement(
+			"%M(%N in %L..%L) { %S }",
+			MemberName("kotlin", "require"),
+			name,
+			validation.min,
+			validation.max,
+			"Parameter \"$name\" must be in range ${validation.min}..${validation.max} (inclusive)."
+		)
+	}
+
 	protected fun FunSpec.Builder.addParameterMapStatements(
 		name: String,
 		parameters: Collection<ApiServiceOperationParameter>,
@@ -72,6 +84,8 @@ open class OperationBuilder(
 
 		// Add parameters
 		parameters.forEach { parameter ->
+			if (parameter.validation != null) createParameterValidation(parameter.name, parameter.validation)
+
 			// $(name)[$(parameter.originalName)] = parameter.name
 			addStatement("%L[%S] = %N", name, parameter.originalName, parameter.name)
 		}
