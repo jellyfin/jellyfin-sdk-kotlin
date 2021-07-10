@@ -30,7 +30,9 @@ open class OperationBuilder(
 		returns(ClassName(Packages.API_CLIENT, Classes.API_RESPONSE).plusParameter(data.returnType))
 	}
 
-	protected fun buildParameter(data: ApiServiceOperationParameter) = ParameterSpec.builder(data.name, data.type).apply {
+	protected fun buildParameter(
+		data: ApiServiceOperationParameter,
+	) = ParameterSpec.builder(data.name, data.type).apply {
 		// Determine class name without parameters
 		val typeClassName = when (data.type) {
 			is ClassName -> data.type
@@ -46,9 +48,12 @@ open class OperationBuilder(
 			is CustomDefaultValue -> defaultValue(data.defaultValue.build())
 			// Set value to null by default for nullable values
 			null -> when {
-				typeClassName == Collection::class.asClassName() -> defaultValue("%N()", "emptyList")
-				typeClassName == List::class.asClassName() -> defaultValue("%N()", "emptyList")
-				typeClassName == Map::class.asClassName() -> defaultValue("%N()", "emptyMap")
+				typeClassName == Collection::class.asClassName() ->
+					defaultValue("%M()", MemberName("kotlin.collections", "emptyList"))
+				typeClassName == List::class.asClassName() ->
+					defaultValue("%M()", MemberName("kotlin.collections", "emptyList"))
+				typeClassName == Map::class.asClassName() ->
+					defaultValue("%M()", MemberName("kotlin.collections", "emptyMap"))
 				data.type.isNullable -> defaultValue("%L", "null")
 			}
 		}
@@ -79,8 +84,8 @@ open class OperationBuilder(
 	) {
 		// Create map
 		// val $(name) = $("emptyMap"|"mutableMapOf")<String, Any?>()
-		val mapType = if (parameters.isEmpty()) "emptyMap" else "mutableMapOf"
-		addStatement("val %N = %N<%T, %T?>()", name, mapType, String::class, Any::class)
+		val mapType = MemberName("kotlin.collections", if (parameters.isEmpty()) "emptyMap" else "mutableMapOf")
+		addStatement("val %N = %M<%T, %T?>()", name, mapType, String::class, Any::class)
 
 		// Add parameters
 		parameters.forEach { parameter ->

@@ -10,6 +10,7 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.model.api.MetadataRefreshMode

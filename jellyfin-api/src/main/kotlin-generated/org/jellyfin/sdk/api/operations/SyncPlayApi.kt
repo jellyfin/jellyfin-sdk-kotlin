@@ -9,6 +9,7 @@ import kotlin.Any
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
+import kotlin.collections.emptyMap
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.model.api.BufferRequestDto
