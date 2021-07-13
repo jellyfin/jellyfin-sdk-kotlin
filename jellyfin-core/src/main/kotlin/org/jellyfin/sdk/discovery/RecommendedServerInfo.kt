@@ -6,5 +6,12 @@ public data class RecommendedServerInfo(
 	val address: String,
 	val responseTime: Long,
 	val score: RecommendedServerInfoScore,
-	val systemInfo: PublicSystemInfo?,
-)
+	val issues: Collection<RecommendedServerIssue>,
+	val systemInfo: Result<PublicSystemInfo>,
+) {
+	/**
+	 * The issues are ordered by importance. When showing a single issue to an end user you
+	 * normally want to show the first one.
+	 */
+	public fun firstIssueOrNull(): RecommendedServerIssue? = issues.firstOrNull()
+}

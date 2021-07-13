@@ -44,9 +44,15 @@ class Discover(
 				append(" (")
 				append("replied in ${it.responseTime}ms")
 				append(", ")
-				if (it.systemInfo == null) append("system information not found")
+				if (it.systemInfo.isFailure) append("system information not found")
 				else append("system information found")
 				append(")")
+				it.issues.forEach {
+					appendLine()
+					append("\t")
+					append(it)
+				}
+
 			}.let(::println)
 		}
 	}
