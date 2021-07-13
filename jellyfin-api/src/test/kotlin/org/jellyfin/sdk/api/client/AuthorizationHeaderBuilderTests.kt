@@ -10,10 +10,11 @@ public class AuthorizationHeaderBuilderTests {
 	@Test
 	public fun `encodeParameter removes special characters`() {
 		assertEquals("test", encodeParameterValue("""test"""))
-		assertEquals("test", encodeParameterValue("""test+"""))
-		assertEquals("test", encodeParameterValue("""'test'"""))
-		assertEquals("", encodeParameterValue("""今日は"""))
-		assertEquals("", encodeParameterValue("""水母"""))
+		assertEquals("test+", encodeParameterValue("""test+"""))
+		assertEquals("'test'", encodeParameterValue("""'test'"""))
+		assertEquals("???", encodeParameterValue("""今日は"""))
+		assertEquals("??", encodeParameterValue("""水母"""))
+		assertEquals("??????", encodeParameterValue("""ἈᾼᾺΆᾍᾋ"""))
 	}
 
 	@Test
