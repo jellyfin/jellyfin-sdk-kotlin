@@ -2,9 +2,17 @@ package org.jellyfin.sdk.api.client.util
 
 public object AuthorizationHeaderBuilder {
 	public const val AUTHORIZATION_SCHEME: String = "MediaBrowser"
-	private val ENCODING_REGEX = "[^\\w\\s]".toRegex()
 
-	public fun encodeParameterValue(raw: String): String = raw.replace(ENCODING_REGEX, "").trim()
+	public fun encodeParameterValue(raw: String): String = raw
+		// Trim whitespace
+		.trim()
+		// Only allow ASCII characters
+		.toByteArray(Charsets.US_ASCII)
+		.toString(Charsets.US_ASCII)
+		// Remove characters used for parsing
+		.replace('=', '?')
+		.replace(',', '?')
+		.replace('"', '?')
 
 	public fun buildParameter(key: String, value: String): String {
 		// Check for bad strings to prevent endless hours debugging why the server throws http 500 errors
