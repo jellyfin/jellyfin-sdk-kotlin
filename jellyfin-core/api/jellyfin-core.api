@@ -112,18 +112,21 @@ public final class org/jellyfin/sdk/discovery/RecommendedServerDiscovery {
 }
 
 public final class org/jellyfin/sdk/discovery/RecommendedServerInfo {
-	public fun <init> (Ljava/lang/String;JLorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Lorg/jellyfin/sdk/model/api/PublicSystemInfo;)V
+	public fun <init> (Ljava/lang/String;JLorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Ljava/util/Collection;Ljava/lang/Object;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()J
 	public final fun component3 ()Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
-	public final fun component4 ()Lorg/jellyfin/sdk/model/api/PublicSystemInfo;
-	public final fun copy (Ljava/lang/String;JLorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Lorg/jellyfin/sdk/model/api/PublicSystemInfo;)Lorg/jellyfin/sdk/discovery/RecommendedServerInfo;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerInfo;Ljava/lang/String;JLorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Lorg/jellyfin/sdk/model/api/PublicSystemInfo;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerInfo;
+	public final fun component4 ()Ljava/util/Collection;
+	public final fun component5-d1pmJ48 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/String;JLorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Ljava/util/Collection;Ljava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerInfo;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerInfo;Ljava/lang/String;JLorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Ljava/util/Collection;Lkotlin/Result;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerInfo;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun firstIssueOrNull ()Lorg/jellyfin/sdk/discovery/RecommendedServerIssue;
 	public final fun getAddress ()Ljava/lang/String;
+	public final fun getIssues ()Ljava/util/Collection;
 	public final fun getResponseTime ()J
 	public final fun getScore ()Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
-	public final fun getSystemInfo ()Lorg/jellyfin/sdk/model/api/PublicSystemInfo;
+	public final fun getSystemInfo-d1pmJ48 ()Ljava/lang/Object;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -135,5 +138,68 @@ public final class org/jellyfin/sdk/discovery/RecommendedServerInfoScore : java/
 	public static final field OK Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
 	public static fun values ()[Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
+}
+
+public abstract interface class org/jellyfin/sdk/discovery/RecommendedServerIssue {
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$InvalidProductName : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$InvalidProductName;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$InvalidProductName;Ljava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$InvalidProductName;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getProductName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$MissingSystemInfo : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$MissingSystemInfo;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$MissingSystemInfo;Ljava/lang/Throwable;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$MissingSystemInfo;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getThrowable ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$MissingVersion : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public static final field INSTANCE Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$MissingVersion;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$OutdatedServerVersion : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public fun <init> (Lorg/jellyfin/sdk/model/ServerVersion;)V
+	public final fun component1 ()Lorg/jellyfin/sdk/model/ServerVersion;
+	public final fun copy (Lorg/jellyfin/sdk/model/ServerVersion;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$OutdatedServerVersion;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$OutdatedServerVersion;Lorg/jellyfin/sdk/model/ServerVersion;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$OutdatedServerVersion;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$SlowResponse : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public fun <init> (J)V
+	public final fun component1 ()J
+	public final fun copy (J)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$SlowResponse;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$SlowResponse;JILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$SlowResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getResponseTime ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$UnsupportedServerVersion : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public fun <init> (Lorg/jellyfin/sdk/model/ServerVersion;)V
+	public final fun component1 ()Lorg/jellyfin/sdk/model/ServerVersion;
+	public final fun copy (Lorg/jellyfin/sdk/model/ServerVersion;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$UnsupportedServerVersion;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$UnsupportedServerVersion;Lorg/jellyfin/sdk/model/ServerVersion;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$UnsupportedServerVersion;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
 }
 

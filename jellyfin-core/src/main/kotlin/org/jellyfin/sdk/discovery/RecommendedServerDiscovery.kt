@@ -30,7 +30,7 @@ public class RecommendedServerDiscovery(
 
 	private data class SystemInfoResult(
 		val address: String,
-		val systemInfo: PublicSystemInfo?,
+		val systemInfo: Result<PublicSystemInfo>,
 		val responseTime: Long,
 	)
 
@@ -38,28 +38,61 @@ public class RecommendedServerDiscovery(
 
 	@Suppress("MagicNumber")
 	private fun assignScore(result: SystemInfoResult): RecommendedServerInfo {
-		val version = result.systemInfo?.version?.let(ServerVersion::fromString)
-		val score = when {
+		val systemInfo = result.systemInfo.getOrNull()
+		val version = systemInfo?.version?.let(ServerVersion::fromString)
+		val issues = mutableSetOf<RecommendedServerIssue>()
+		val scores = mutableSetOf<RecommendedServerInfoScore>()
+
+		// System Info checks
+		when {
 			// Did not reply with a valid system information
-			result.systemInfo == null -> RecommendedServerInfoScore.BAD
+			result.systemInfo.isFailure || systemInfo == null -> {
+				issues.add(RecommendedServerIssue.MissingSystemInfo(result.systemInfo.exceptionOrNull()))
+				scores.add(RecommendedServerInfoScore.BAD)
+			}
 			// Wrong product name - might be a different service on this connection
-			!result.systemInfo.productName.equals(PRODUCT_NAME) -> RecommendedServerInfoScore.BAD
-			// Version could not be parsed
-			version == null -> RecommendedServerInfoScore.BAD
-			// Server might be incompatible because it's below the minimum supported server version
-			version < Jellyfin.minimumVersion -> RecommendedServerInfoScore.OK
-			// API might differ slightly but at least above the minimum version
-			version < Jellyfin.apiVersion -> RecommendedServerInfoScore.GOOD
-			// Server is not too fast but should work
-			result.responseTime > SLOW_TIME_THRESHOLD -> RecommendedServerInfoScore.GOOD
-			// All other checks completed, server should have a great connection
-			else -> RecommendedServerInfoScore.GREAT
+			!systemInfo.productName.equals(PRODUCT_NAME) -> {
+				issues.add(RecommendedServerIssue.InvalidProductName(systemInfo.productName))
+				scores.add(RecommendedServerInfoScore.BAD)
+			}
 		}
 
+		// Version checks
+		when {
+			// Version could not be parsed
+			version == null -> {
+				issues.add(RecommendedServerIssue.MissingVersion)
+				scores.add(RecommendedServerInfoScore.BAD)
+			}
+			// Server might be incompatible because it's below the minimum supported server version
+			version < Jellyfin.minimumVersion -> {
+				issues.add(RecommendedServerIssue.UnsupportedServerVersion(version))
+				scores.add(RecommendedServerInfoScore.OK)
+			}
+			// API might differ slightly but at least above the minimum version
+			version < Jellyfin.apiVersion -> {
+				issues.add(RecommendedServerIssue.OutdatedServerVersion(version))
+				scores.add(RecommendedServerInfoScore.GOOD)
+			}
+		}
+
+		// Other checks
+		when {
+			// Server is not too fast but should work
+			result.responseTime > SLOW_TIME_THRESHOLD -> {
+				issues.add(RecommendedServerIssue.SlowResponse(result.responseTime))
+				scores.add(RecommendedServerInfoScore.GOOD)
+			}
+		}
+
+		// Calculate score, pick the lowest from the collection or use GREAT when no scores (and issues) added
+		val score = scores.minByOrNull { it.score } ?: RecommendedServerInfoScore.GREAT
+		// Return results
 		return RecommendedServerInfo(
 			result.address,
 			result.responseTime,
 			score,
+			issues,
 			result.systemInfo,
 		)
 	}
@@ -78,29 +111,31 @@ public class RecommendedServerDiscovery(
 		)
 		val api = SystemApi(client)
 
-		val info: Response<PublicSystemInfo>?
+		val info: Result<Response<PublicSystemInfo>>
 		val responseTime = measureTimeMillis {
 			@Suppress("TooGenericExceptionCaught")
 			info = try {
-				api.getPublicSystemInfo()
+				val response = api.getPublicSystemInfo()
+				if (response.status == HTTP_OK) Result.success(response)
+				else Result.failure(InvalidStatusException(response.status))
 			} catch (err: TimeoutException) {
 				logger.debug("Could not connect to $address", err)
-				null
+				Result.failure(err)
 			} catch (err: InvalidStatusException) {
 				logger.debug("Received unexpected status ${err.status} from $address", err)
-				null
+				Result.failure(err)
 			} catch (err: InvalidContentException) {
 				logger.debug("Could not parse response from $address", err)
-				null
+				Result.failure(err)
 			} catch (err: Throwable) {
 				logger.error("Could not retrieve public system info for $address", err)
-				null
+				Result.failure(err)
 			}
 		}
 
 		return SystemInfoResult(
 			address = address,
-			systemInfo = if (info != null && info.status == HTTP_OK) info.content else null,
+			systemInfo = info.map(Response<PublicSystemInfo>::content),
 			responseTime = responseTime,
 		)
 	}
