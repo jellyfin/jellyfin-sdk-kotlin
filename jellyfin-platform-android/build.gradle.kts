@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-	compileSdkVersion(30)
+	compileSdk =  30
 
 	defaultConfig {
-		minSdkVersion(19)
-		targetSdkVersion(30)
+		minSdk = 19
+		targetSdk = 30
 		multiDexEnabled = true
 
 		consumerProguardFiles("proguard-rules.pro")
@@ -29,7 +29,7 @@ android {
 		}
 	}
 
-	lintOptions {
+	lint {
 		lintConfig = file("$rootDir/android-lint.xml")
 		isAbortOnError = false
 		sarifReport = true

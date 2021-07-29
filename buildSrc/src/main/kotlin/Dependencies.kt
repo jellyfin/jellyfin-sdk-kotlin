@@ -13,7 +13,7 @@ object Plugins {
 		const val detekt = "1.17.1"
 		const val nexusPublish = "1.1.0"
 		const val dokka = "1.4.32"
-		const val androidBuildTools = "4.2.0"
+		const val androidBuildTools = "7.0.0"
 	}
 
 	const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
