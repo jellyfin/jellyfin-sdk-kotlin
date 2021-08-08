@@ -87,9 +87,12 @@ public class WebSocketApi(
 	private val logger = LoggerFactory.getLogger("WebSocketApi")
 
 	private val client: HttpClient = HttpClient {
+		followRedirects = api.httpClientOptions.followRedirects
+
 		install(HttpTimeout) {
-			@Suppress("MagicNumber")
-			connectTimeoutMillis = 10_000 // 10 seconds
+			connectTimeoutMillis = api.httpClientOptions.connectTimeout
+			requestTimeoutMillis = api.httpClientOptions.requestTimeout
+			socketTimeoutMillis = api.httpClientOptions.socketTimeout
 		}
 
 		install(WebSockets)
@@ -137,7 +140,7 @@ public class WebSocketApi(
 		.catch { logger.error(it) }
 		.collect()
 
-	private suspend fun subscriptionsChanged() {
+	private fun subscriptionsChanged() {
 		logger.debug("Subscriptions changed to ${subscriptions.size}")
 
 		if (socketJob != null && subscriptions.isEmpty()) {
@@ -152,7 +155,7 @@ public class WebSocketApi(
 	/**
 	 * Call to (re)connect the WebSocket. Does not close current listeners.
 	 */
-	public suspend fun reconnect() {
+	public fun reconnect() {
 		// Get access token and check if it's not null
 		val accessToken = checkNotNull(api.accessToken)
 
@@ -261,7 +264,7 @@ public class WebSocketApi(
 	 * Start listening to messages. Calls the [block] for each incoming message until
 	 * [SocketSubscription.cancel] is invoked.
 	 */
-	public suspend fun subscribe(block: (IncomingSocketMessage) -> Unit): SocketSubscription {
+	public fun subscribe(block: (IncomingSocketMessage) -> Unit): SocketSubscription {
 		val subscription = SocketSubscription(this, block)
 		subscriptions += subscription
 		subscriptionsChanged()
@@ -273,17 +276,15 @@ public class WebSocketApi(
 	 * A [Flow] based version of a subscription.
 	 */
 	@ExperimentalCoroutinesApi
-	public suspend fun subscribe(): Flow<IncomingSocketMessage> = callbackFlow {
+	public fun subscribe(): Flow<IncomingSocketMessage> = callbackFlow {
 		// Create subscription and send messages to flow
 		val subscription = subscribe {
-			trySendBlocking(it)
+			trySend(it)
 		}
 
 		// Cancel subscription when flow closes
 		awaitClose {
-			runBlocking {
-				subscription.cancel()
-			}
+			subscription.cancel()
 		}
 	}
 
@@ -291,7 +292,7 @@ public class WebSocketApi(
 	 * Cancel a subscription by removing it from the API.
 	 * Automatically closes the WebSocket if no subscriptions are left.
 	 */
-	public suspend fun cancelSubscription(subscription: SocketSubscription) {
+	public fun cancelSubscription(subscription: SocketSubscription) {
 		subscriptions -= subscription
 		subscriptionsChanged()
 	}

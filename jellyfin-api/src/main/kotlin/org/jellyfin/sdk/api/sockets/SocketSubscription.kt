@@ -12,5 +12,5 @@ public class SocketSubscription(
 	/**
 	 * Cancel the subscription and stop listening for messages.
 	 */
-	public suspend fun cancel(): Unit = webSocketApi.cancelSubscription(this)
+	public fun cancel(): Unit = webSocketApi.cancelSubscription(this)
 }
