@@ -7,7 +7,7 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 import java.util.*
 
-public interface IncomingSocketMessage : SocketMessage {
+public sealed interface IncomingSocketMessage : SocketMessage {
 	/**
 	 * The id of the received message.
 	 *

@@ -1,3 +1,3 @@
 package org.jellyfin.sdk.model.socket
 
-public interface SocketMessage
+public sealed interface SocketMessage
