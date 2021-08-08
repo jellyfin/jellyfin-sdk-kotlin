@@ -1069,16 +1069,16 @@ public final class org/jellyfin/sdk/api/operations/YearsApi {
 }
 
 public final class org/jellyfin/sdk/api/sockets/SocketSubscription {
-	public fun <init> (Lorg/jellyfin/sdk/api/sockets/WebSocketApi;Lkotlin/jvm/functions/Function1;)V
-	public final fun cancel (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun <init> (Lorg/jellyfin/sdk/api/sockets/WebSocketApi;Lkotlin/jvm/functions/Function2;)V
+	public final fun cancel ()V
 }
 
 public final class org/jellyfin/sdk/api/sockets/WebSocketApi {
 	public fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;)V
-	public final fun cancelSubscription (Lorg/jellyfin/sdk/api/sockets/SocketSubscription;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun cancelSubscription (Lorg/jellyfin/sdk/api/sockets/SocketSubscription;)V
 	public final fun publish (Lorg/jellyfin/sdk/model/socket/OutgoingSocketMessage;Lkotlinx/serialization/KSerializer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public final fun reconnect (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public final fun subscribe (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public final fun subscribe (Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun reconnect ()V
+	public final fun subscribe ()Lkotlinx/coroutines/flow/Flow;
+	public final fun subscribe (Lkotlin/jvm/functions/Function2;)Lorg/jellyfin/sdk/api/sockets/SocketSubscription;
 }
 
