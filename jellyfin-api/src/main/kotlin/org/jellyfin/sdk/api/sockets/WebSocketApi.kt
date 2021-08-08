@@ -264,7 +264,7 @@ public class WebSocketApi(
 	 * Start listening to messages. Calls the [block] for each incoming message until
 	 * [SocketSubscription.cancel] is invoked.
 	 */
-	public fun subscribe(block: (IncomingSocketMessage) -> Unit): SocketSubscription {
+	public fun subscribe(block: suspend (IncomingSocketMessage) -> Unit): SocketSubscription {
 		val subscription = SocketSubscription(this, block)
 		subscriptions += subscription
 		subscriptionsChanged()

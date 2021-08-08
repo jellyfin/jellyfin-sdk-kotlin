@@ -7,7 +7,7 @@ import org.jellyfin.sdk.model.socket.IncomingSocketMessage
  */
 public class SocketSubscription(
 	private val webSocketApi: WebSocketApi,
-	internal val callback: (IncomingSocketMessage) -> Unit
+	internal val callback: suspend (IncomingSocketMessage) -> Unit
 ) {
 	/**
 	 * Cancel the subscription and stop listening for messages.
