@@ -7,13 +7,12 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import kotlinx.serialization.json.JsonElement
-import java.time.LocalDateTime
 
 object Types {
 	// Custom
 	val BINARY = ByteReadChannel::class.asTypeName()
 	val UUID = ClassName(Packages.MODEL_TYPES, Classes.Types.UUID)
-	val DATETIME = LocalDateTime::class.asTypeName()
+	val DATETIME = ClassName(Packages.MODEL_TYPES, Classes.Types.DATETIME)
 	val JSON_ELEMENT = JsonElement::class.asTypeName()
 
 	// Special

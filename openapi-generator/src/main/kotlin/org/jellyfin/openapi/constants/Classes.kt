@@ -6,11 +6,12 @@ object Classes {
 
 	object Serializers {
 		const val UUID = "UUIDSerializer"
-		const val LOCAL_DATE_TIME = "LocalDateTimeSerializer"
+		const val DATETIME = "DateTimeSerializer"
 	}
 
 	object Types {
 		const val UUID = "UUID"
+		const val DATETIME = "DateTime"
 	}
 
 	const val CONSTANTS_OBJECT = "ApiConstants"

@@ -15,7 +15,7 @@ class TypeSerializerBuilder : Builder<TypeName, TypeName?> {
 	// Types should be non-nullable
 	private val serializers = mapOf(
 		Types.UUID to Classes.Serializers.UUID,
-		Types.DATETIME to Classes.Serializers.LOCAL_DATE_TIME,
+		Types.DATETIME to Classes.Serializers.DATETIME,
 	)
 
 	override fun build(data: TypeName): TypeName? {
