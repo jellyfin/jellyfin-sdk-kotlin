@@ -2,18 +2,13 @@ package org.jellyfin.openapi.constants
 
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.asTypeName
-import io.ktor.utils.io.*
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.UseSerializers
-import kotlinx.serialization.json.JsonElement
 
 object Types {
 	// Custom
-	val BINARY = ByteReadChannel::class.asTypeName()
+	val BINARY = ClassName("io.ktor.utils.io", "ByteReadChannel")
 	val UUID = ClassName(Packages.MODEL_TYPES, Classes.Types.UUID)
 	val DATETIME = ClassName(Packages.MODEL_TYPES, Classes.Types.DATETIME)
-	val JSON_ELEMENT = JsonElement::class.asTypeName()
+	val JSON_ELEMENT = ClassName("kotlinx.serialization.json", "JsonElement")
 
 	// Special
 	val ANY = Any::class.asTypeName()
@@ -34,7 +29,7 @@ object Types {
 
 	// Annotations
 	val DEPRECATED = Deprecated::class.asTypeName()
-	val SERIALIZABLE = Serializable::class.asTypeName()
-	val SERIAL_NAME = SerialName::class.asTypeName()
-	val USE_SERIALIZERs = UseSerializers::class.asTypeName()
+	val SERIALIZABLE = ClassName("kotlinx.serialization", "Serializable")
+	val SERIAL_NAME = ClassName("kotlinx.serialization", "SerialName")
+	val USE_SERIALIZERs = ClassName("kotlinx.serialization", "UseSerializers")
 }
