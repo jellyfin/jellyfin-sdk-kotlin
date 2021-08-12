@@ -5,13 +5,11 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 @file:UseSerializers(
 	UUIDSerializer::class,
-	LocalDateTimeSerializer::class
+	DateTimeSerializer::class
 )
 
 package org.jellyfin.sdk.model.api
 
-import java.time.LocalDateTime
-import java.util.UUID
 import kotlin.Boolean
 import kotlin.Double
 import kotlin.Float
@@ -23,7 +21,9 @@ import kotlin.collections.Map
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import org.jellyfin.sdk.model.serializer.LocalDateTimeSerializer
+import org.jellyfin.sdk.model.DateTime
+import org.jellyfin.sdk.model.UUID
+import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
@@ -68,9 +68,9 @@ public data class BaseItemDto(
 	 * Gets or sets the date created.
 	 */
 	@SerialName("DateCreated")
-	public val dateCreated: LocalDateTime? = null,
+	public val dateCreated: DateTime? = null,
 	@SerialName("DateLastMediaAdded")
-	public val dateLastMediaAdded: LocalDateTime? = null,
+	public val dateLastMediaAdded: DateTime? = null,
 	@SerialName("ExtraType")
 	public val extraType: String? = null,
 	@SerialName("AirsBeforeSeasonNumber")
@@ -112,7 +112,7 @@ public data class BaseItemDto(
 	 * Gets or sets the premiere date.
 	 */
 	@SerialName("PremiereDate")
-	public val premiereDate: LocalDateTime? = null,
+	public val premiereDate: DateTime? = null,
 	/**
 	 * Gets or sets the external urls.
 	 */
@@ -515,7 +515,7 @@ public data class BaseItemDto(
 	 * Gets or sets the end date.
 	 */
 	@SerialName("EndDate")
-	public val endDate: LocalDateTime? = null,
+	public val endDate: DateTime? = null,
 	/**
 	 * Gets or sets the locked fields.
 	 */
@@ -612,7 +612,7 @@ public data class BaseItemDto(
 	 * The start date of the recording, in UTC.
 	 */
 	@SerialName("StartDate")
-	public val startDate: LocalDateTime? = null,
+	public val startDate: DateTime? = null,
 	/**
 	 * Gets or sets the completion percentage.
 	 */

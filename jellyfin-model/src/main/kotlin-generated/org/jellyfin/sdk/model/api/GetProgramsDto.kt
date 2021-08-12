@@ -5,13 +5,11 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 @file:UseSerializers(
 	UUIDSerializer::class,
-	LocalDateTimeSerializer::class
+	DateTimeSerializer::class
 )
 
 package org.jellyfin.sdk.model.api
 
-import java.time.LocalDateTime
-import java.util.UUID
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
@@ -19,7 +17,9 @@ import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import org.jellyfin.sdk.model.serializer.LocalDateTimeSerializer
+import org.jellyfin.sdk.model.DateTime
+import org.jellyfin.sdk.model.UUID
+import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
@@ -42,7 +42,7 @@ public data class GetProgramsDto(
 	 * Optional.
 	 */
 	@SerialName("MinStartDate")
-	public val minStartDate: LocalDateTime? = null,
+	public val minStartDate: DateTime? = null,
 	/**
 	 * Gets or sets filter by programs that have completed airing, or not.
 	 * Optional.
@@ -60,19 +60,19 @@ public data class GetProgramsDto(
 	 * Optional.
 	 */
 	@SerialName("MaxStartDate")
-	public val maxStartDate: LocalDateTime? = null,
+	public val maxStartDate: DateTime? = null,
 	/**
 	 * Gets or sets the minimum premiere end date.
 	 * Optional.
 	 */
 	@SerialName("MinEndDate")
-	public val minEndDate: LocalDateTime? = null,
+	public val minEndDate: DateTime? = null,
 	/**
 	 * Gets or sets the maximum premiere end date.
 	 * Optional.
 	 */
 	@SerialName("MaxEndDate")
-	public val maxEndDate: LocalDateTime? = null,
+	public val maxEndDate: DateTime? = null,
 	/**
 	 * Gets or sets filter for movies.
 	 * Optional.

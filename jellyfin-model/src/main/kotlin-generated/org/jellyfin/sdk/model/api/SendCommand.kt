@@ -5,18 +5,18 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 @file:UseSerializers(
 	UUIDSerializer::class,
-	LocalDateTimeSerializer::class
+	DateTimeSerializer::class
 )
 
 package org.jellyfin.sdk.model.api
 
-import java.time.LocalDateTime
-import java.util.UUID
 import kotlin.Long
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import org.jellyfin.sdk.model.serializer.LocalDateTimeSerializer
+import org.jellyfin.sdk.model.DateTime
+import org.jellyfin.sdk.model.UUID
+import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
@@ -38,7 +38,7 @@ public data class SendCommand(
 	 * Gets or sets the UTC time when to execute the command.
 	 */
 	@SerialName("When")
-	public val `when`: LocalDateTime,
+	public val `when`: DateTime,
 	/**
 	 * Gets the position ticks.
 	 */
@@ -53,5 +53,5 @@ public data class SendCommand(
 	 * Gets the UTC time when this command has been emitted.
 	 */
 	@SerialName("EmittedAt")
-	public val emittedAt: LocalDateTime
+	public val emittedAt: DateTime
 )

@@ -5,8 +5,6 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import java.time.LocalDateTime
-import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
@@ -18,6 +16,8 @@ import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
+import org.jellyfin.sdk.model.DateTime
+import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.PlayMethod
 import org.jellyfin.sdk.model.api.PlaybackProgressInfo
 import org.jellyfin.sdk.model.api.PlaybackStartInfo
@@ -38,7 +38,7 @@ public class PlayStateApi(
 	public suspend fun markPlayedItem(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		itemId: UUID,
-		datePlayed: LocalDateTime? = null
+		datePlayed: DateTime? = null
 	): Response<UserItemDataDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId

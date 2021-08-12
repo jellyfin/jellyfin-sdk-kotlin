@@ -11053,7 +11053,7 @@ public final class org/jellyfin/sdk/model/extensions/PairExtensionsKt {
 	public static final fun toXmlAttribute (Lkotlin/Pair;)Lorg/jellyfin/sdk/model/api/XmlAttribute;
 }
 
-public final class org/jellyfin/sdk/model/serializer/LocalDateTimeSerializer : kotlinx/serialization/KSerializer {
+public final class org/jellyfin/sdk/model/serializer/DateTimeSerializer : kotlinx/serialization/KSerializer {
 	public fun <init> ()V
 	public fun <init> (Ljava/time/ZoneId;)V
 	public synthetic fun <init> (Ljava/time/ZoneId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V

@@ -6,8 +6,6 @@
 package org.jellyfin.sdk.api.operations
 
 import io.ktor.utils.io.ByteReadChannel
-import java.time.LocalDateTime
-import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
 import kotlin.Deprecated
@@ -21,6 +19,8 @@ import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.model.DateTime
+import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDto
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.ChannelMappingOptionsDto
@@ -494,12 +494,12 @@ public class LiveTvApi(
 	public suspend fun getLiveTvPrograms(
 		channelIds: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
-		minStartDate: LocalDateTime? = null,
+		minStartDate: DateTime? = null,
 		hasAired: Boolean? = null,
 		isAiring: Boolean? = null,
-		maxStartDate: LocalDateTime? = null,
-		minEndDate: LocalDateTime? = null,
-		maxEndDate: LocalDateTime? = null,
+		maxStartDate: DateTime? = null,
+		minEndDate: DateTime? = null,
+		maxEndDate: DateTime? = null,
 		isMovie: Boolean? = null,
 		isSeries: Boolean? = null,
 		isNews: Boolean? = null,

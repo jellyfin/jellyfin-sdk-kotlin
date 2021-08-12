@@ -6,7 +6,6 @@
 package org.jellyfin.sdk.api.operations
 
 import io.ktor.utils.io.ByteReadChannel
-import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
 import kotlin.Deprecated
@@ -17,6 +16,7 @@ import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BasePluginConfiguration
 import org.jellyfin.sdk.model.api.PluginInfo
 import org.jellyfin.sdk.model.api.PluginSecurityInfo

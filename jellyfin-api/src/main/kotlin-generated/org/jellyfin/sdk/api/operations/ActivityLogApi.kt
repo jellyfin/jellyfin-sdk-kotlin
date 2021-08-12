@@ -5,7 +5,6 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import java.time.LocalDateTime
 import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
@@ -14,6 +13,7 @@ import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.model.DateTime
 import org.jellyfin.sdk.model.api.ActivityLogEntryQueryResult
 
 public class ActivityLogApi(
@@ -31,7 +31,7 @@ public class ActivityLogApi(
 	public suspend fun getLogEntries(
 		startIndex: Int? = null,
 		limit: Int? = null,
-		minDate: LocalDateTime? = null,
+		minDate: DateTime? = null,
 		hasUserId: Boolean? = null
 	): Response<ActivityLogEntryQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
