@@ -4,19 +4,15 @@ import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.ParameterizedTypeName
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.plusParameter
 import com.squareup.kotlinpoet.TypeName
-import com.squareup.kotlinpoet.asTypeName
 import io.swagger.v3.oas.models.media.*
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toPascalCase
 import org.jellyfin.openapi.OpenApiGeneratorError
-import org.jellyfin.openapi.builder.openapi.OpenApiReturnTypeBuilder.Companion.TYPE_BINARY
-import org.jellyfin.openapi.builder.openapi.OpenApiReturnTypeBuilder.Companion.TYPE_STRING
 import org.jellyfin.openapi.constants.Packages
+import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.hooks.ApiTypePath
 import org.jellyfin.openapi.hooks.TypeBuilderHook
 import org.jellyfin.openapi.hooks.TypePath
-import java.time.LocalDateTime
-import java.util.*
 
 class OpenApiTypeBuilder(
 	private val hooks: Collection<TypeBuilderHook>,
@@ -71,31 +67,31 @@ class OpenApiTypeBuilder(
 	}
 
 	fun buildNumber(schema: Schema<*>) = when (schema.format) {
-		"int32" -> Int::class
-		"int64" -> Long::class
-		"double" -> Double::class
-		"float" -> Float::class
+		"int32" -> Types.INT
+		"int64" -> Types.LONG
+		"double" -> Types.DOUBLE
+		"float" -> Types.FLOAT
 		else -> throw UnknownTypeError(schema.type, schema.format)
-	}.asTypeName()
+	}
 
-	fun buildString() = TYPE_STRING
-	fun buildBoolean() = Boolean::class.asTypeName()
-	fun buildDateTime() = LocalDateTime::class.asTypeName()
-	fun buildUUIDType() = UUID::class.asTypeName()
+	fun buildString() = Types.STRING
+	fun buildBoolean() = Types.BOOLEAN
+	fun buildDateTime() = Types.DATETIME
+	fun buildUUIDType() = Types.UUID
 
 	fun buildArrayType(path: TypePath, schema: ArraySchema): ParameterizedTypeName {
 		val type = when {
 			// Parameters in API operations use less-strict Collection interface
-			path is ApiTypePath && path.isParameterType() -> Collection::class
+			path is ApiTypePath && path.isParameterType() -> Types.COLLECTION
 			// Everything else uses stricter List interface
-			else -> List::class
+			else -> Types.LIST
 		}
 
-		return type.asTypeName().plusParameter(buildSchema(path, schema.items as Schema<*>))
+		return type.plusParameter(buildSchema(path, schema.items as Schema<*>))
 	}
 
-	fun buildMapType(path: TypePath, schema: MapSchema) = Map::class.asTypeName()
-		.plusParameter(String::class.asTypeName())
+	fun buildMapType(path: TypePath, schema: MapSchema) = Types.MAP
+		.plusParameter(Types.STRING)
 		.plusParameter(buildSchema(path, schema.additionalProperties as Schema<*>))
 
 	fun buildReference(reference: String) = ClassName(
@@ -105,7 +101,7 @@ class OpenApiTypeBuilder(
 			.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL)
 	)
 
-	fun buildBinary() = TYPE_BINARY
+	fun buildBinary() = Types.BINARY
 
 	class UnknownTypeError(
 		type: String?,

@@ -1,7 +1,6 @@
 package org.jellyfin.openapi.builder.openapi
 
 import com.squareup.kotlinpoet.TypeName
-import com.squareup.kotlinpoet.asTypeName
 import io.swagger.v3.oas.models.Operation
 import io.swagger.v3.oas.models.PathItem
 import io.swagger.v3.oas.models.Paths
@@ -16,6 +15,7 @@ import org.jellyfin.openapi.builder.api.ApiNameBuilder
 import org.jellyfin.openapi.constants.MimeType
 import org.jellyfin.openapi.constants.Security
 import org.jellyfin.openapi.constants.Strings
+import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.hooks.ApiTypePath
 import org.jellyfin.openapi.hooks.DefaultValueHook
 import org.jellyfin.openapi.hooks.ServiceNameHook
@@ -106,7 +106,7 @@ class OpenApiApiServicesBuilder(
 			ApiTypePath(serviceName, operationName, ApiTypePath.PARAMETER_RETURN),
 			operation.responses["200"]
 		)
-		if (returnType == Unit::class.asTypeName() && "200" in operation.responses)
+		if (returnType == Types.NONE && "200" in operation.responses)
 			println("Missing return-type for operation $operationName (status-codes: ${operation.responses.keys})")
 
 		val requireAuthentication = operation.security

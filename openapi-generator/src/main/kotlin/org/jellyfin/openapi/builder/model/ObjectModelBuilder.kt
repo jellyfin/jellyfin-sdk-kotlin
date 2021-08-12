@@ -1,9 +1,6 @@
 package org.jellyfin.openapi.builder.model
 
 import com.squareup.kotlinpoet.*
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.UseSerializers
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toPascalCase
 import org.jellyfin.openapi.builder.Builder
@@ -12,6 +9,7 @@ import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.builder.extra.TypeSerializerBuilder
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
+import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.model.JellyFile
 import org.jellyfin.openapi.model.ObjectApiModel
 
@@ -42,7 +40,7 @@ class ObjectModelBuilder(
 						}
 
 						if (property.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_MEMBER))
-						addAnnotation(AnnotationSpec.builder(SerialName::class).addMember("%S", property.originalName).build())
+						addAnnotation(AnnotationSpec.builder(Types.SERIAL_NAME).addMember("%S", property.originalName).build())
 					}
 					.build()
 				)
@@ -57,7 +55,7 @@ class ObjectModelBuilder(
 		val useSerializersAnnotation = serializers
 			.ifEmpty { null }
 			?.let {
-				AnnotationSpec.builder(UseSerializers::class).apply {
+				AnnotationSpec.builder(Types.USE_SERIALIZERs).apply {
 					useSiteTarget(AnnotationSpec.UseSiteTarget.FILE)
 					// Add all serializers
 					serializers.forEach { serializer -> addMember("%T::class", serializer) }
@@ -76,7 +74,7 @@ class ObjectModelBuilder(
 					addKdoc("%L", it)
 				}
 				if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_CLASS))
-				addAnnotation(AnnotationSpec.builder(Serializable::class).build())
+				addAnnotation(AnnotationSpec.builder(Types.SERIALIZABLE).build())
 			}
 			.primaryConstructor(constructor)
 			.addProperties(properties)

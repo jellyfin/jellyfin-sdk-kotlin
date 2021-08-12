@@ -3,12 +3,10 @@ package org.jellyfin.openapi.builder.extra
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.ParameterizedTypeName
 import com.squareup.kotlinpoet.TypeName
-import com.squareup.kotlinpoet.asTypeName
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.constants.Classes
 import org.jellyfin.openapi.constants.Packages
-import java.time.LocalDateTime
-import java.util.*
+import org.jellyfin.openapi.constants.Types
 
 /**
  * Returns the required serializer for a given type or null if no serializer defined
@@ -16,8 +14,8 @@ import java.util.*
 class TypeSerializerBuilder : Builder<TypeName, TypeName?> {
 	// Types should be non-nullable
 	private val serializers = mapOf(
-		UUID::class.asTypeName() to Classes.Serializers.UUID,
-		LocalDateTime::class.asTypeName() to Classes.Serializers.LOCAL_DATE_TIME,
+		Types.UUID to Classes.Serializers.UUID,
+		Types.DATETIME to Classes.Serializers.LOCAL_DATE_TIME,
 	)
 
 	override fun build(data: TypeName): TypeName? {

@@ -1,10 +1,9 @@
 package org.jellyfin.openapi.builder.openapi
 
 import com.squareup.kotlinpoet.TypeName
-import com.squareup.kotlinpoet.asTypeName
-import io.ktor.utils.io.*
 import io.swagger.v3.oas.models.responses.ApiResponse
 import org.jellyfin.openapi.constants.MimeType
+import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.hooks.ApiTypePath
 
 class OpenApiReturnTypeBuilder(
@@ -22,7 +21,7 @@ class OpenApiReturnTypeBuilder(
 			MimeType.TEXT_XML in supportedReturnMimeTypes ||
 			MimeType.TEXT_HTML in supportedReturnMimeTypes ||
 			MimeType.APPLICATION_X_JAVASCRIPT in supportedReturnMimeTypes ->
-				TYPE_STRING
+				Types.STRING
 			// Binary types
 			MimeType.AUDIO_ALL in supportedReturnMimeTypes ||
 			MimeType.VIDEO_ALL in supportedReturnMimeTypes ||
@@ -30,20 +29,14 @@ class OpenApiReturnTypeBuilder(
 			MimeType.FONT_ALL in supportedReturnMimeTypes ||
 			MimeType.APPLICATION_X_MPEG_URL in supportedReturnMimeTypes ||
 			MimeType.APPLICATION_OCTET_STREAM in supportedReturnMimeTypes ->
-				TYPE_BINARY
+				Types.BINARY
 			// JSON (restful) types
 			MimeType.APPLICATION_JSON in supportedReturnMimeTypes -> {
 				val schema = response!!.content[MimeType.APPLICATION_JSON]!!.schema
 				openApiTypeBuilder.build(path, schema)
 			}
 			// Default to no response
-			else -> TYPE_NONE
+			else -> Types.NONE
 		}
-	}
-
-	companion object {
-		val TYPE_STRING = String::class.asTypeName()
-		val TYPE_BINARY = ByteReadChannel::class.asTypeName()
-		val TYPE_NONE = Unit::class.asTypeName()
 	}
 }
