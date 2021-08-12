@@ -5,20 +5,20 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 @file:UseSerializers(
 	UUIDSerializer::class,
-	LocalDateTimeSerializer::class
+	DateTimeSerializer::class
 )
 
 package org.jellyfin.sdk.model.api
 
-import java.time.LocalDateTime
-import java.util.UUID
 import kotlin.Boolean
 import kotlin.Long
 import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import org.jellyfin.sdk.model.serializer.LocalDateTimeSerializer
+import org.jellyfin.sdk.model.DateTime
+import org.jellyfin.sdk.model.UUID
+import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 @Serializable
@@ -67,14 +67,14 @@ public data class AuthenticationInfo(
 	 * Gets or sets the date created.
 	 */
 	@SerialName("DateCreated")
-	public val dateCreated: LocalDateTime,
+	public val dateCreated: DateTime,
 	/**
 	 * Gets or sets the date revoked.
 	 */
 	@SerialName("DateRevoked")
-	public val dateRevoked: LocalDateTime? = null,
+	public val dateRevoked: DateTime? = null,
 	@SerialName("DateLastActivity")
-	public val dateLastActivity: LocalDateTime,
+	public val dateLastActivity: DateTime,
 	@SerialName("UserName")
 	public val userName: String? = null
 )

@@ -8,6 +8,7 @@ import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.constants.Classes
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
+import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.model.*
 
 open class OperationBuilder(
@@ -48,11 +49,11 @@ open class OperationBuilder(
 			is CustomDefaultValue -> defaultValue(data.defaultValue.build())
 			// Set value to null by default for nullable values
 			null -> when {
-				typeClassName == Collection::class.asClassName() ->
+				typeClassName == Types.COLLECTION ->
 					defaultValue("%M()", MemberName("kotlin.collections", "emptyList"))
-				typeClassName == List::class.asClassName() ->
+				typeClassName == Types.LIST ->
 					defaultValue("%M()", MemberName("kotlin.collections", "emptyList"))
-				typeClassName == Map::class.asClassName() ->
+				typeClassName == Types.MAP ->
 					defaultValue("%M()", MemberName("kotlin.collections", "emptyMap"))
 				data.type.isNullable -> defaultValue("%L", "null")
 			}
@@ -85,7 +86,7 @@ open class OperationBuilder(
 		// Create map
 		// val $(name) = $("emptyMap"|"mutableMapOf")<String, Any?>()
 		val mapType = MemberName("kotlin.collections", if (parameters.isEmpty()) "emptyMap" else "mutableMapOf")
-		addStatement("val %N = %M<%T, %T?>()", name, mapType, String::class, Any::class)
+		addStatement("val %N = %M<%T, %T?>()", name, mapType, Types.STRING, Types.ANY)
 
 		// Add parameters
 		parameters.forEach { parameter ->

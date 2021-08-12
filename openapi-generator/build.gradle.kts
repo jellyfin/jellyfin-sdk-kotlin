@@ -25,12 +25,6 @@ dependencies {
 	// Kotlin code generation
 	implementation(libs.kotlinPoet)
 
-	// Needed for the kotlinx.serialization annotations
-	implementation(libs.kotlinx.serialization.json)
-
-	// Needed for the ByteReadChannel class
-	implementation(libs.ktor.io)
-
 	// Dependency Injection
 	implementation(libs.koin)
 

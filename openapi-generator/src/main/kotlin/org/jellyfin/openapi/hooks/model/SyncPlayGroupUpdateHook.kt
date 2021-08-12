@@ -1,9 +1,8 @@
 package org.jellyfin.openapi.hooks.model
 
-import com.squareup.kotlinpoet.asTypeName
 import io.swagger.v3.oas.models.media.Schema
-import kotlinx.serialization.json.JsonElement
 import org.jellyfin.openapi.builder.openapi.OpenApiTypeBuilder
+import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.hooks.ModelTypePath
 import org.jellyfin.openapi.hooks.TypeBuilderHook
 import org.jellyfin.openapi.hooks.TypePath
@@ -14,7 +13,7 @@ import org.jellyfin.openapi.hooks.TypePath
  */
 class SyncPlayGroupUpdateHook : TypeBuilderHook {
 	override fun onBuildType(path: TypePath, schema: Schema<*>, typeBuilder: OpenApiTypeBuilder) = when (path) {
-		ModelTypePath("ObjectGroupUpdate", "data") -> JsonElement::class.asTypeName()
+		ModelTypePath("ObjectGroupUpdate", "data") -> Types.JSON_ELEMENT
 		else -> null
 	}
 }

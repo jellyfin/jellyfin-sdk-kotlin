@@ -7,7 +7,6 @@
 
 package org.jellyfin.sdk.model.api
 
-import java.util.UUID
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
@@ -15,6 +14,7 @@ import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
+import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 @Serializable

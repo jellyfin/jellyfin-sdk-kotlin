@@ -2,10 +2,10 @@ package org.jellyfin.openapi.hooks.model
 
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.plusParameter
-import com.squareup.kotlinpoet.asTypeName
 import io.swagger.v3.oas.models.media.Schema
 import org.jellyfin.openapi.builder.openapi.OpenApiTypeBuilder
 import org.jellyfin.openapi.constants.Packages
+import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.hooks.ModelTypePath
 import org.jellyfin.openapi.hooks.TypeBuilderHook
 import org.jellyfin.openapi.hooks.TypePath
@@ -26,14 +26,14 @@ class ImageMapsHook : TypeBuilderHook {
 		nullable = schema.nullable ?: false
 	)
 
-	private fun buildImageBlurHashes() = Map::class.asTypeName()
+	private fun buildImageBlurHashes() = Types.MAP
 		.plusParameter(ClassName(Packages.MODEL, "ImageType"))
-		.plusParameter(Map::class.asTypeName()
-			.plusParameter(String::class.asTypeName())
-			.plusParameter(String::class.asTypeName())
+		.plusParameter(Types.MAP
+			.plusParameter(Types.STRING)
+			.plusParameter(Types.STRING)
 		)
 
-	private fun buildImageTags() = Map::class.asTypeName()
+	private fun buildImageTags() = Types.MAP
 		.plusParameter(ClassName(Packages.MODEL, "ImageType"))
-		.plusParameter(String::class.asTypeName())
+		.plusParameter(Types.STRING)
 }

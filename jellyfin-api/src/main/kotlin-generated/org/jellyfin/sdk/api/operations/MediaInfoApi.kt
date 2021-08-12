@@ -6,7 +6,6 @@
 package org.jellyfin.sdk.api.operations
 
 import io.ktor.utils.io.ByteReadChannel
-import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
 import kotlin.Deprecated
@@ -19,6 +18,7 @@ import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
+import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.LiveStreamResponse
 import org.jellyfin.sdk.model.api.OpenLiveStreamDto
 import org.jellyfin.sdk.model.api.PlaybackInfoDto

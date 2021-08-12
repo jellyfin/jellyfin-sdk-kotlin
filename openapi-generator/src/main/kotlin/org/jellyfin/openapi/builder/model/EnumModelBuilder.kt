@@ -1,8 +1,6 @@
 package org.jellyfin.openapi.builder.model
 
 import com.squareup.kotlinpoet.*
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toPascalCase
 import net.pearx.kasechange.toScreamingSnakeCase
@@ -11,6 +9,7 @@ import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
+import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.model.EnumApiModel
 import org.jellyfin.openapi.model.JellyFile
 
@@ -23,15 +22,15 @@ class EnumModelBuilder(
 			.apply {
 				// Constructor
 				primaryConstructor(FunSpec.constructorBuilder().apply {
-					addParameter("serialName", String::class)
+					addParameter("serialName", Types.STRING)
 				}.build())
-				addProperty(PropertySpec.builder("serialName", String::class).apply {
+				addProperty(PropertySpec.builder("serialName", Types.STRING).apply {
 					initializer("serialName")
 				}.build())
 
 				// toString function
 				addFunction(FunSpec.builder("toString").apply {
-					returns(String::class)
+					returns(Types.STRING)
 					addStatement("return serialName")
 					addModifiers(KModifier.OVERRIDE)
 				}.build())
@@ -41,7 +40,7 @@ class EnumModelBuilder(
 					addEnumConstant(
 						it.toScreamingSnakeCase(from = CaseFormat.CAPITALIZED_CAMEL),
 						TypeSpec.anonymousClassBuilder().apply {
-							addAnnotation(AnnotationSpec.builder(SerialName::class).addMember("%S", it).build())
+							addAnnotation(AnnotationSpec.builder(Types.SERIAL_NAME).addMember("%S", it).build())
 							addSuperclassConstructorParameter("%S", it)
 						}.build()
 					)
@@ -52,7 +51,7 @@ class EnumModelBuilder(
 					addKdoc("%L", it)
 				}
 				if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_CLASS))
-				addAnnotation(Serializable::class.asTypeName())
+				addAnnotation(Types.SERIALIZABLE)
 			}
 			.build()
 			.let { JellyFile(Packages.MODEL, emptySet(), it) }

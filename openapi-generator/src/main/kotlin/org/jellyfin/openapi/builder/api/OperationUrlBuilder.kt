@@ -5,6 +5,7 @@ import com.squareup.kotlinpoet.ParameterSpec
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.constants.Strings
+import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.model.ApiServiceOperation
 
 class OperationUrlBuilder(
@@ -23,7 +24,7 @@ class OperationUrlBuilder(
 		if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_MEMBER))
 
 		// Set return type
-		returns(String::class)
+		returns(Types.STRING)
 	}
 
 	override fun build(data: ApiServiceOperation): FunSpec = buildFunctionShell(data).apply {
@@ -32,7 +33,7 @@ class OperationUrlBuilder(
 			.union(data.queryParameters)
 			.forEach { parameter -> addParameter(buildParameter(parameter)) }
 
-		ParameterSpec.builder("includeCredentials", Boolean::class).apply {
+		ParameterSpec.builder("includeCredentials", Types.BOOLEAN).apply {
 			defaultValue("%L", data.requireAuthentication)
 			addKdoc("%L", Strings.INCLUDE_CREDENTIALS_DESCRIPTION)
 		}.build().let(::addParameter)

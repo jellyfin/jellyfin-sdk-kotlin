@@ -7,11 +7,12 @@ import io.swagger.v3.oas.models.info.Info
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.constants.Classes
 import org.jellyfin.openapi.constants.Packages
+import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.model.JellyFile
 
 class OpenApiConstantsBuilder : Builder<Info, JellyFile> {
 	private fun TypeSpec.Builder.addConstant(name: String, value: String): TypeSpec.Builder =
-		addProperty(PropertySpec.builder(name, String::class).initializer("%S", value).addModifiers(KModifier.CONST).build())
+		addProperty(PropertySpec.builder(name, Types.STRING).initializer("%S", value).addModifiers(KModifier.CONST).build())
 
 	override fun build(data: Info): JellyFile {
 		val typeSpec = TypeSpec.Companion.objectBuilder(Classes.CONSTANTS_OBJECT)

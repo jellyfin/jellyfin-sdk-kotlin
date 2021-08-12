@@ -2,7 +2,7 @@ package org.jellyfin.sdk.api.client
 
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
-import java.util.*
+import org.jellyfin.sdk.model.UUID
 
 public interface ApiClient {
 	public companion object {

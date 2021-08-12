@@ -19,9 +19,9 @@ import org.jellyfin.sdk.api.client.util.AuthorizationHeaderBuilder
 import org.jellyfin.sdk.api.client.util.PathBuilder
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
+import org.jellyfin.sdk.model.UUID
 import org.slf4j.LoggerFactory
 import java.net.UnknownHostException
-import java.util.*
 
 public open class KtorClient(
 	override var baseUrl: String? = null,

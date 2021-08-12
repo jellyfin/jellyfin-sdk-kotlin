@@ -5,7 +5,6 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
@@ -18,6 +17,7 @@ import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
+import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDto
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.ImageType

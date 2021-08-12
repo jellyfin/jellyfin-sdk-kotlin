@@ -5,13 +5,11 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 @file:UseSerializers(
 	UUIDSerializer::class,
-	LocalDateTimeSerializer::class
+	DateTimeSerializer::class
 )
 
 package org.jellyfin.sdk.model.api
 
-import java.time.LocalDateTime
-import java.util.UUID
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.Long
@@ -20,7 +18,9 @@ import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
-import org.jellyfin.sdk.model.serializer.LocalDateTimeSerializer
+import org.jellyfin.sdk.model.DateTime
+import org.jellyfin.sdk.model.UUID
+import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 @Serializable
@@ -83,12 +83,12 @@ public data class TimerInfoDto(
 	 * The start date of the recording, in UTC.
 	 */
 	@SerialName("StartDate")
-	public val startDate: LocalDateTime,
+	public val startDate: DateTime,
 	/**
 	 * The end date of the recording, in UTC.
 	 */
 	@SerialName("EndDate")
-	public val endDate: LocalDateTime,
+	public val endDate: DateTime,
 	/**
 	 * Gets or sets the name of the service.
 	 */

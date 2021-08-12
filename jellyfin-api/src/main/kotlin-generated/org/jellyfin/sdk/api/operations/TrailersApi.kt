@@ -5,8 +5,6 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import java.time.LocalDateTime
-import java.util.UUID
 import kotlin.Any
 import kotlin.Boolean
 import kotlin.Double
@@ -18,6 +16,8 @@ import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.model.DateTime
+import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
@@ -171,10 +171,10 @@ public class TrailersApi(
 		isUnaired: Boolean? = null,
 		minCommunityRating: Double? = null,
 		minCriticRating: Double? = null,
-		minPremiereDate: LocalDateTime? = null,
-		minDateLastSaved: LocalDateTime? = null,
-		minDateLastSavedForUser: LocalDateTime? = null,
-		maxPremiereDate: LocalDateTime? = null,
+		minPremiereDate: DateTime? = null,
+		minDateLastSaved: DateTime? = null,
+		minDateLastSavedForUser: DateTime? = null,
+		maxPremiereDate: DateTime? = null,
 		hasOverview: Boolean? = null,
 		hasImdbId: Boolean? = null,
 		hasTmdbId: Boolean? = null,
