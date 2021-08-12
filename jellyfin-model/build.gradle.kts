@@ -1,26 +1,38 @@
 plugins {
-	id("kotlin")
+	kotlin("multiplatform")
 	kotlin("plugin.serialization") version Plugins.Versions.kotlin
-}
-
-dependencies {
-	compileOnly(libs.kotlinx.serialization.json)
-
-	// Testing
-	testImplementation(libs.kotlin.test.junit)
-	testImplementation(libs.kotlinx.serialization.json)
 }
 
 kotlin {
 	explicitApi()
-}
 
-sourceSets.getByName("main").java.srcDir("src/main/kotlin-generated")
+	jvm()
 
-val sourcesJar by tasks.creating(Jar::class) {
-	archiveClassifier.set("sources")
+	sourceSets {
+		all {
+			languageSettings {
+				progressiveMode = true
+			}
+		}
 
-	from(sourceSets.getByName("main").allSource)
+		val commonMain by getting {
+			// TODO move to commonMain folder
+			kotlin.srcDir("src/main/kotlin-generated")
+			kotlin.srcDir("src/main/kotlin")
+
+			dependencies {
+				compileOnly(libs.kotlinx.serialization.json)
+			}
+		}
+
+		val commonTest by getting {
+			dependencies {
+				// Testing
+				implementation(libs.kotlin.test.junit)
+				implementation(libs.kotlinx.serialization.json)
+			}
+		}
+	}
 }
 
 val javadocJar by tasks.creating(Jar::class) {
@@ -29,9 +41,6 @@ val javadocJar by tasks.creating(Jar::class) {
 	from("$buildDir/dokka/javadoc")
 }
 
-publishing.publications.create<MavenPublication>("default") {
-	from(components["kotlin"])
-
-	artifact(sourcesJar)
+publishing.publications.withType<MavenPublication> {
 	artifact(javadocJar)
 }

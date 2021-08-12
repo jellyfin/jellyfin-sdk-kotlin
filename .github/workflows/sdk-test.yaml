@@ -34,7 +34,7 @@ jobs:
             ${{ runner.os }}-java-${{ matrix.java }}-gradle-
             ${{ runner.os }}-java-
       - name: Run test task
-        run: ./gradlew --build-cache --no-daemon --info test
+        run: ./gradlew --build-cache --no-daemon --info test allTests
 
   validate-binary-compatibility:
     runs-on: ubuntu-20.04
