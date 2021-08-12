@@ -30,4 +30,9 @@ object Packages {
 	 * Package containing all kotlinx.serialization serializers
 	 */
 	const val MODEL_SERIALIZERS = "org.jellyfin.sdk.model.serializer"
+
+	/**
+	 * Package containing all custom types like UUID
+	 */
+	const val MODEL_TYPES = "org.jellyfin.sdk.model"
 }

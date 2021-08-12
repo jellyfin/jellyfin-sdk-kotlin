@@ -5,9 +5,9 @@ package org.jellyfin.sdk.model.socket
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
+import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.PlaystateRequest
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
-import java.util.*
 
 @Serializable
 public data class PlayStateMessage(

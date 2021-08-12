@@ -1,10 +1,10 @@
 package org.jellyfin.sdk.model.extensions
 
+import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.NameGuidPair
 import org.jellyfin.sdk.model.api.NameIdPair
 import org.jellyfin.sdk.model.api.NameValuePair
 import org.jellyfin.sdk.model.api.XmlAttribute
-import java.util.*
 
 /**
  * Convert a [NameIdPair] to a [Pair] with [NameIdPair.id] as [Pair.first] and [NameIdPair.name] as [Pair.second].

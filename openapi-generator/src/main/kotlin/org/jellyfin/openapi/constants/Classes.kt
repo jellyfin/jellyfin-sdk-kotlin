@@ -9,6 +9,10 @@ object Classes {
 		const val LOCAL_DATE_TIME = "LocalDateTimeSerializer"
 	}
 
+	object Types {
+		const val UUID = "UUID"
+	}
+
 	const val CONSTANTS_OBJECT = "ApiConstants"
 
 	object Exceptions {
