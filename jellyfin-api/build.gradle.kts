@@ -1,33 +1,49 @@
 plugins {
-	id("kotlin")
-}
-
-dependencies {
-	implementation(projects.jellyfinModel)
-
-	// HTTP
-	implementation(libs.kotlinx.coroutines)
-	implementation(libs.ktor.okhttp)
-	implementation(libs.ktor.serialization)
-
-	// Logging
-	implementation(libs.kotlinlogging)
-	testImplementation(libs.slf4j.simple)
-
-	// Unit testing
-	testImplementation(libs.kotlin.test.junit)
+	kotlin("multiplatform")
 }
 
 kotlin {
 	explicitApi()
-}
 
-sourceSets.getByName("main").java.srcDir("src/main/kotlin-generated")
+	jvm()
 
-val sourcesJar by tasks.creating(Jar::class) {
-	archiveClassifier.set("sources")
+	sourceSets {
+		all {
+			languageSettings {
+				progressiveMode = true
+			}
+		}
 
-	from(sourceSets.getByName("main").allSource)
+		val commonMain by getting {
+			// TODO move to commonMain folder
+			kotlin.srcDir("src/main/kotlin-generated")
+			kotlin.srcDir("src/main/kotlin")
+
+			dependencies {
+				implementation(projects.jellyfinModel)
+
+				implementation(libs.kotlinx.coroutines)
+				implementation(libs.ktor.core)
+				implementation(libs.ktor.serialization)
+
+				implementation(libs.kotlinlogging)
+			}
+		}
+
+		val jvmMain by getting {
+			dependencies {
+				implementation(libs.ktor.okhttp)
+			}
+		}
+
+		val commonTest by getting {
+			dependencies {
+				// Testing
+				implementation(libs.kotlin.test.junit)
+				implementation(libs.slf4j.simple)
+			}
+		}
+	}
 }
 
 val javadocJar by tasks.creating(Jar::class) {
@@ -36,9 +52,6 @@ val javadocJar by tasks.creating(Jar::class) {
 	from("$buildDir/dokka/javadoc")
 }
 
-publishing.publications.create<MavenPublication>("default") {
-	from(components["kotlin"])
-
-	artifact(sourcesJar)
+publishing.publications.withType<MavenPublication> {
 	artifact(javadocJar)
 }
