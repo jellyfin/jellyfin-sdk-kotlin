@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import mu.KotlinLogging
 import org.jellyfin.sdk.Jellyfin
 import org.jellyfin.sdk.api.client.HttpClientOptions
 import org.jellyfin.sdk.api.client.Response
@@ -15,8 +16,9 @@ import org.jellyfin.sdk.api.client.exception.TimeoutException
 import org.jellyfin.sdk.api.operations.SystemApi
 import org.jellyfin.sdk.model.ServerVersion
 import org.jellyfin.sdk.model.api.PublicSystemInfo
-import org.slf4j.LoggerFactory
 import kotlin.system.measureTimeMillis
+
+private val logger = KotlinLogging.logger {}
 
 public class RecommendedServerDiscovery(
 	private val jellyfin: Jellyfin,
@@ -33,8 +35,6 @@ public class RecommendedServerDiscovery(
 		val systemInfo: Result<PublicSystemInfo>,
 		val responseTime: Long,
 	)
-
-	private val logger = LoggerFactory.getLogger("RecommendedServerDiscovery")
 
 	@Suppress("MagicNumber")
 	private fun assignScore(result: SystemInfoResult): RecommendedServerInfo {

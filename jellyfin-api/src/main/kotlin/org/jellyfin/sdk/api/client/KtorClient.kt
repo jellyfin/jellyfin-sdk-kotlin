@@ -12,6 +12,7 @@ import io.ktor.network.sockets.*
 import io.ktor.util.*
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
+import mu.KotlinLogging
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
@@ -20,7 +21,6 @@ import org.jellyfin.sdk.api.client.util.PathBuilder
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.UUID
-import org.slf4j.LoggerFactory
 import java.net.UnknownHostException
 
 public open class KtorClient(
@@ -104,12 +104,14 @@ public open class KtorClient(
 		queryParameters: Map<String, Any?> = emptyMap(),
 		requestBody: Any? = null,
 	): Response<T> {
-		val logger = LoggerFactory.getLogger(this::class.java)
 		val url = createUrl(pathTemplate, pathParameters, queryParameters)
 
 		// Log HTTP call with access token removed
-		val safeUrl = accessToken?.let { url.replace(it, "******") } ?: url
-		logger.info("$method $safeUrl")
+		val logger = KotlinLogging.logger {}
+		logger.info {
+			val safeUrl = accessToken?.let { url.replace(it, "******") } ?: url
+			"$method $safeUrl"
+		}
 
 		@Suppress("SwallowedException", "TooGenericExceptionCaught")
 		try {

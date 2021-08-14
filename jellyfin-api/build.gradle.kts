@@ -11,7 +11,7 @@ dependencies {
 	implementation(libs.ktor.serialization)
 
 	// Logging
-	implementation(libs.slf4j.api)
+	implementation(libs.kotlinlogging)
 	testImplementation(libs.slf4j.simple)
 
 	// Unit testing
