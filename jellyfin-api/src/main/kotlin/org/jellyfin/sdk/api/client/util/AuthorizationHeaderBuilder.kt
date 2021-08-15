@@ -6,13 +6,10 @@ public object AuthorizationHeaderBuilder {
 	public fun encodeParameterValue(raw: String): String = raw
 		// Trim whitespace
 		.trim()
-		// Only allow ASCII characters
-		.toByteArray(Charsets.US_ASCII)
-		.toString(Charsets.US_ASCII)
-		// Remove characters used for parsing
-		.replace('=', '?')
-		.replace(',', '?')
-		.replace('"', '?')
+		// Remove characters not allowed in HTTP headers
+		.replace(Regex("""[^\x20-\x7e]"""), "?")
+		// Remove characters that might break serverside parsing
+		.replace(Regex("""[=,"]"""), "?")
 
 	public fun buildParameter(key: String, value: String): String {
 		// Check for bad strings to prevent endless hours debugging why the server throws http 500 errors

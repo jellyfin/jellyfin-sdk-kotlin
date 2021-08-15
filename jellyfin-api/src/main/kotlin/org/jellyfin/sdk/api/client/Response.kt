@@ -1,6 +1,7 @@
 package org.jellyfin.sdk.api.client
 
 import io.ktor.http.*
+import kotlin.jvm.JvmSynthetic
 import kotlin.reflect.KProperty
 
 /**
