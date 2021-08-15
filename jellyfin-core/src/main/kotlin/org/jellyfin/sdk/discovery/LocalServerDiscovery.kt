@@ -5,14 +5,16 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.isActive
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
+import mu.KotlinLogging
 import org.jellyfin.sdk.model.api.ServerDiscoveryInfo
-import org.slf4j.LoggerFactory
 import java.io.IOException
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.InetAddress
 import java.net.SocketTimeoutException
 import kotlin.coroutines.coroutineContext
+
+private val logger = KotlinLogging.logger {}
 
 /**
  * Used to discover Jellyfin servers in the local network.
@@ -32,7 +34,6 @@ public class LocalServerDiscovery(
 		public const val DISCOVERY_MAX_SERVERS: Int = 15
 	}
 
-	private val logger = LoggerFactory.getLogger("LocalServerDiscovery")
 	private val json = Json {
 		ignoreUnknownKeys = true
 	}
@@ -65,7 +66,7 @@ public class LocalServerDiscovery(
 
 			// Convert message to string
 			val message = String(packet.data, 0, packet.length)
-			logger.debug("""Received message "$message"""")
+			logger.debug { """Received message "$message"""" }
 
 			// Read as JSON
 			val info = json.decodeFromString(ServerDiscoveryInfo.serializer(), message)

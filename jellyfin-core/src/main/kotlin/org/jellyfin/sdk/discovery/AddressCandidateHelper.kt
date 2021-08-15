@@ -1,13 +1,15 @@
 package org.jellyfin.sdk.discovery
 
 import io.ktor.http.*
-import org.slf4j.LoggerFactory
+import mu.KotlinLogging
+
+private val logger = KotlinLogging.logger {}
 
 /**
  * Parses the given [input] and allows to fix common mistakes.
  */
 public class AddressCandidateHelper(
-	private val input: String
+	private val input: String,
 ) {
 	public companion object {
 		/**
@@ -33,11 +35,10 @@ public class AddressCandidateHelper(
 
 	private val candidates = mutableSetOf<Url>()
 	private val prioritizeComparator = Comparator<Url> { a, b -> b.score() - a.score() }
-	private val logger = LoggerFactory.getLogger("AddressCandidateHelper")
 
 	init {
 		try {
-			logger.debug("Input is $input")
+			logger.debug { "Input is $input" }
 
 			// Add the input as initial candidate
 			candidates.add(URLBuilder().apply {

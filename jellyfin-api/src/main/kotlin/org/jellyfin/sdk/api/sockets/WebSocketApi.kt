@@ -17,11 +17,13 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.*
 import kotlinx.serialization.serializer
+import mu.KotlinLogging
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.model.api.SessionMessageType
 import org.jellyfin.sdk.model.api.SessionMessageType.*
 import org.jellyfin.sdk.model.socket.*
-import org.slf4j.LoggerFactory
+
+private val logger = KotlinLogging.logger {}
 
 /**
  * Provides realtime communication with the Jellyfin server.
@@ -84,8 +86,6 @@ public class WebSocketApi(
 		SCHEDULED_TASKS_INFO_STOP -> null
 	} ?: throw NotImplementedError("Messages of type $this should not be sent by the server.")
 
-	private val logger = LoggerFactory.getLogger("WebSocketApi")
-
 	private val client: HttpClient = HttpClient {
 		followRedirects = api.httpClientOptions.followRedirects
 
@@ -134,7 +134,7 @@ public class WebSocketApi(
 	private suspend fun SendChannel<Frame>.write() = outgoingMessageChannel
 		.receiveAsFlow()
 		.onEach { text ->
-			logger.info("Sending message {}", text)
+			logger.info { "Sending message $text" }
 			send(Frame.Text(text))
 		}
 		.catch { logger.error(it) }
@@ -200,7 +200,7 @@ public class WebSocketApi(
 
 		// Read text from frame
 		val text = readText()
-		logger.info("Received message {}", text)
+		logger.info { "Received message $text" }
 
 		// Read JSON object from text
 		val message = json.parseToJsonElement(text)
