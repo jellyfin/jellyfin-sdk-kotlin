@@ -9,11 +9,6 @@ public final class org/jellyfin/sdk/JellyfinAndroidKt {
 	public static final fun android (Lorg/jellyfin/sdk/JellyfinOptions$Builder;Landroid/content/Context;)V
 }
 
-public final class org/jellyfin/sdk/discovery/AndroidBroadcastAddressesProvider : org/jellyfin/sdk/discovery/DiscoveryBroadcastAddressesProvider {
-	public fun <init> (Landroid/content/Context;)V
-	public fun getBroadcastAddresses (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-}
-
 public final class org/jellyfin/sdk/interaction/AndroidDeviceKt {
 	public static final fun androidDevice (Landroid/content/Context;)Lorg/jellyfin/sdk/model/DeviceInfo;
 }

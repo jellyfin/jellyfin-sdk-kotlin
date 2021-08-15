@@ -7,12 +7,11 @@ import org.jellyfin.sdk.model.api.ServerDiscoveryInfo
 /**
  * Service for discovery related functionality.
  */
-public class DiscoveryService(
+public class DiscoveryService constructor(
 	private val jellyfin: Jellyfin,
-	private val discoveryBroadcastAddressesProvider: DiscoveryBroadcastAddressesProvider,
 ) {
 	private val localServerDiscovery by lazy {
-		LocalServerDiscovery(discoveryBroadcastAddressesProvider)
+		LocalServerDiscovery()
 	}
 
 	private val recommendedServerDiscovery by lazy {

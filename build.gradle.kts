@@ -60,7 +60,7 @@ subprojects {
 
 		// Add POM to projects that use publishing
 		configure<PublishingExtension> {
-			publications.filterIsInstance<MavenPublication>().forEach(MavenPublication::defaultPom)
+			publications.withType<MavenPublication>().forEach(MavenPublication::defaultPom)
 		}
 	}
 

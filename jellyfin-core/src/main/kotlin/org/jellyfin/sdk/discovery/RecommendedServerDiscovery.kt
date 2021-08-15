@@ -16,11 +16,11 @@ import org.jellyfin.sdk.api.client.exception.TimeoutException
 import org.jellyfin.sdk.api.operations.SystemApi
 import org.jellyfin.sdk.model.ServerVersion
 import org.jellyfin.sdk.model.api.PublicSystemInfo
-import kotlin.system.measureTimeMillis
+import org.jellyfin.sdk.util.currentTimeMillis
 
 private val logger = KotlinLogging.logger {}
 
-public class RecommendedServerDiscovery(
+public class RecommendedServerDiscovery constructor(
 	private val jellyfin: Jellyfin,
 ) {
 	private companion object {
@@ -98,7 +98,7 @@ public class RecommendedServerDiscovery(
 	}
 
 	private suspend fun getSystemInfoResult(address: String): SystemInfoResult {
-		logger.info("Requesting public system info for $address")
+		logger.info { "Requesting public system info for $address" }
 
 		val client = jellyfin.createApi(
 			baseUrl = address,
@@ -111,27 +111,27 @@ public class RecommendedServerDiscovery(
 		)
 		val api = SystemApi(client)
 
-		val info: Result<Response<PublicSystemInfo>>
-		val responseTime = measureTimeMillis {
-			@Suppress("TooGenericExceptionCaught")
-			info = try {
-				val response = api.getPublicSystemInfo()
-				if (response.status == HTTP_OK) Result.success(response)
-				else Result.failure(InvalidStatusException(response.status))
-			} catch (err: TimeoutException) {
-				logger.debug("Could not connect to $address", err)
-				Result.failure(err)
-			} catch (err: InvalidStatusException) {
-				logger.debug("Received unexpected status ${err.status} from $address", err)
-				Result.failure(err)
-			} catch (err: InvalidContentException) {
-				logger.debug("Could not parse response from $address", err)
-				Result.failure(err)
-			} catch (err: Throwable) {
-				logger.error("Could not retrieve public system info for $address", err)
-				Result.failure(err)
-			}
+		val responseTimeStart = currentTimeMillis()
+
+		@Suppress("TooGenericExceptionCaught")
+		val info: Result<Response<PublicSystemInfo>> = try {
+			val response = api.getPublicSystemInfo()
+			if (response.status == HTTP_OK) Result.success(response)
+			else Result.failure(InvalidStatusException(response.status))
+		} catch (err: TimeoutException) {
+			logger.debug(err) { "Could not connect to $address" }
+			Result.failure(err)
+		} catch (err: InvalidStatusException) {
+			logger.debug(err) { "Received unexpected status ${err.status} from $address" }
+			Result.failure(err)
+		} catch (err: InvalidContentException) {
+			logger.debug(err) { "Could not parse response from $address" }
+			Result.failure(err)
+		} catch (err: Throwable) {
+			logger.error(err) { "Could not retrieve public system info for $address" }
+			Result.failure(err)
 		}
+		val responseTime = currentTimeMillis() - responseTimeStart
 
 		return SystemInfoResult(
 			address = address,
@@ -147,7 +147,7 @@ public class RecommendedServerDiscovery(
 	public suspend fun discover(
 		servers: Flow<String>,
 		minimumScore: RecommendedServerInfoScore,
-	): Flow<RecommendedServerInfo> = withContext(Dispatchers.IO) {
+	): Flow<RecommendedServerInfo> = withContext(Dispatchers.Default) {
 		servers
 			.map(::getSystemInfoResult)
 			.map(::assignScore)
@@ -157,9 +157,6 @@ public class RecommendedServerDiscovery(
 			}
 	}
 
-	/**
-	 * Convert [servers] to a flow and calls [discover].
-	 */
 	public suspend fun discover(
 		servers: List<String>,
 		minimumScore: RecommendedServerInfoScore,

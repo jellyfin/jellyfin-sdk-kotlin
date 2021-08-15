@@ -8,6 +8,7 @@ import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.ServerVersion
 import org.jellyfin.sdk.model.UUID
+import kotlin.jvm.JvmOverloads
 
 public class Jellyfin(
 	private val options: JellyfinOptions,
@@ -29,7 +30,7 @@ public class Jellyfin(
 	 * Get the discovery service to help with normalizing server addresses and find servers in the local network.
 	 */
 	public val discovery: DiscoveryService by lazy {
-		DiscoveryService(this, options.discoverBroadcastAddressesProvider)
+		DiscoveryService(this)
 	}
 
 	/**

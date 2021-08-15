@@ -1,7 +1,7 @@
 package org.jellyfin.sdk.discovery
 
 public enum class RecommendedServerInfoScore(
-	internal val score: Int
+	internal val score: Int,
 ) {
 	/**
 	 * Same as [GOOD] but none of the scoring tests failed.
