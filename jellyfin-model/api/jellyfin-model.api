@@ -57,6 +57,7 @@ public final class org/jellyfin/sdk/model/ServerVersion {
 	public final fun getPatch ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/ServerVersion;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/ServerVersion$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -95,6 +96,7 @@ public final class org/jellyfin/sdk/model/api/AccessSchedule {
 	public final fun getUserId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/AccessSchedule;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/AccessSchedule$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -143,6 +145,7 @@ public final class org/jellyfin/sdk/model/api/ActivityLogEntry {
 	public final fun getUserPrimaryImageTag ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ActivityLogEntry;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ActivityLogEntry$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -177,6 +180,7 @@ public final class org/jellyfin/sdk/model/api/ActivityLogEntryQueryResult {
 	public final fun getTotalRecordCount ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ActivityLogEntryQueryResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ActivityLogEntryQueryResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -208,6 +212,7 @@ public final class org/jellyfin/sdk/model/api/AddVirtualFolderDto {
 	public final fun getLibraryOptions ()Lorg/jellyfin/sdk/model/api/LibraryOptions;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/AddVirtualFolderDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/AddVirtualFolderDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -245,6 +250,7 @@ public final class org/jellyfin/sdk/model/api/AdminNotificationDto {
 	public final fun getUrl ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/AdminNotificationDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/AdminNotificationDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -299,6 +305,7 @@ public final class org/jellyfin/sdk/model/api/AlbumInfo {
 	public fun hashCode ()I
 	public final fun isAutomated ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/AlbumInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/AlbumInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -335,6 +342,7 @@ public final class org/jellyfin/sdk/model/api/AlbumInfoRemoteSearchQuery {
 	public final fun getSearchProviderName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/AlbumInfoRemoteSearchQuery;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/AlbumInfoRemoteSearchQuery$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -370,6 +378,7 @@ public final class org/jellyfin/sdk/model/api/AllThemeMediaResult {
 	public final fun getThemeVideosResult ()Lorg/jellyfin/sdk/model/api/ThemeMediaResult;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/AllThemeMediaResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/AllThemeMediaResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -449,6 +458,7 @@ public final class org/jellyfin/sdk/model/api/ArtistInfo {
 	public fun hashCode ()I
 	public final fun isAutomated ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ArtistInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ArtistInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -485,6 +495,7 @@ public final class org/jellyfin/sdk/model/api/ArtistInfoRemoteSearchQuery {
 	public final fun getSearchProviderName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ArtistInfoRemoteSearchQuery;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ArtistInfoRemoteSearchQuery$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -520,6 +531,7 @@ public final class org/jellyfin/sdk/model/api/AuthenticateUserByName {
 	public final fun getUsername ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/AuthenticateUserByName;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/AuthenticateUserByName$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -572,6 +584,7 @@ public final class org/jellyfin/sdk/model/api/AuthenticationInfo {
 	public fun hashCode ()I
 	public final fun isActive ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/AuthenticationInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/AuthenticationInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -606,6 +619,7 @@ public final class org/jellyfin/sdk/model/api/AuthenticationInfoQueryResult {
 	public final fun getTotalRecordCount ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/AuthenticationInfoQueryResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/AuthenticationInfoQueryResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -643,6 +657,7 @@ public final class org/jellyfin/sdk/model/api/AuthenticationResult {
 	public final fun getUser ()Lorg/jellyfin/sdk/model/api/UserDto;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/AuthenticationResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/AuthenticationResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -693,6 +708,7 @@ public final class org/jellyfin/sdk/model/api/BaseItem {
 	public final fun isHd ()Z
 	public final fun isShortcut ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/BaseItem;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/BaseItem$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1023,6 +1039,7 @@ public final class org/jellyfin/sdk/model/api/BaseItemDto {
 	public final fun isSeries ()Ljava/lang/Boolean;
 	public final fun isSports ()Ljava/lang/Boolean;
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/BaseItemDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/BaseItemDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1057,6 +1074,7 @@ public final class org/jellyfin/sdk/model/api/BaseItemDtoQueryResult {
 	public final fun getTotalRecordCount ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/BaseItemDtoQueryResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/BaseItemDtoQueryResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1098,6 +1116,7 @@ public final class org/jellyfin/sdk/model/api/BaseItemPerson {
 	public final fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/BaseItemPerson;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/BaseItemPerson$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1120,6 +1139,7 @@ public final class org/jellyfin/sdk/model/api/BasePluginConfiguration {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/BasePluginConfiguration$Companion;
 	public fun <init> ()V
 	public synthetic fun <init> (ILkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/BasePluginConfiguration;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/BasePluginConfiguration$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1170,6 +1190,7 @@ public final class org/jellyfin/sdk/model/api/BookInfo {
 	public fun hashCode ()I
 	public final fun isAutomated ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/BookInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/BookInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1206,6 +1227,7 @@ public final class org/jellyfin/sdk/model/api/BookInfoRemoteSearchQuery {
 	public final fun getSearchProviderName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/BookInfoRemoteSearchQuery;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/BookInfoRemoteSearchQuery$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1254,6 +1276,7 @@ public final class org/jellyfin/sdk/model/api/BoxSetInfo {
 	public fun hashCode ()I
 	public final fun isAutomated ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/BoxSetInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/BoxSetInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1290,6 +1313,7 @@ public final class org/jellyfin/sdk/model/api/BoxSetInfoRemoteSearchQuery {
 	public final fun getSearchProviderName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/BoxSetInfoRemoteSearchQuery;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/BoxSetInfoRemoteSearchQuery$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1323,6 +1347,7 @@ public final class org/jellyfin/sdk/model/api/BrandingOptions {
 	public final fun getLoginDisclaimer ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/BrandingOptions;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/BrandingOptions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1358,6 +1383,7 @@ public final class org/jellyfin/sdk/model/api/BufferRequestDto {
 	public fun hashCode ()I
 	public final fun isPlaying ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/BufferRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/BufferRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1410,6 +1436,7 @@ public final class org/jellyfin/sdk/model/api/ChannelFeatures {
 	public final fun getSupportsSortOrderToggle ()Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ChannelFeatures;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ChannelFeatures$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1478,6 +1505,7 @@ public final class org/jellyfin/sdk/model/api/ChannelMappingOptionsDto {
 	public final fun getTunerChannels ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ChannelMappingOptionsDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ChannelMappingOptionsDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1601,6 +1629,7 @@ public final class org/jellyfin/sdk/model/api/ChapterInfo {
 	public final fun getStartPositionTicks ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ChapterInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ChapterInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1649,6 +1678,7 @@ public final class org/jellyfin/sdk/model/api/ClientCapabilities {
 	public final fun getSupportsSync ()Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ClientCapabilities;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ClientCapabilities$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1697,6 +1727,7 @@ public final class org/jellyfin/sdk/model/api/ClientCapabilitiesDto {
 	public final fun getSupportsSync ()Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ClientCapabilitiesDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ClientCapabilitiesDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1735,6 +1766,7 @@ public final class org/jellyfin/sdk/model/api/CodecProfile {
 	public final fun getType ()Lorg/jellyfin/sdk/model/api/CodecType;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/CodecProfile;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/CodecProfile$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1791,6 +1823,7 @@ public final class org/jellyfin/sdk/model/api/CollectionCreationResult {
 	public final fun getId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/CollectionCreationResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/CollectionCreationResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1865,6 +1898,7 @@ public final class org/jellyfin/sdk/model/api/ConfigurationPageInfo {
 	public final fun getPluginId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ConfigurationPageInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ConfigurationPageInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1925,6 +1959,7 @@ public final class org/jellyfin/sdk/model/api/ContainerProfile {
 	public final fun getType ()Lorg/jellyfin/sdk/model/api/DlnaProfileType;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ContainerProfile;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ContainerProfile$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1959,6 +1994,7 @@ public final class org/jellyfin/sdk/model/api/ControlResponse {
 	public fun hashCode ()I
 	public final fun isSuccessful ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ControlResponse;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ControlResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -1996,6 +2032,7 @@ public final class org/jellyfin/sdk/model/api/CountryInfo {
 	public final fun getTwoLetterIsoRegionName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/CountryInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/CountryInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2033,6 +2070,7 @@ public final class org/jellyfin/sdk/model/api/CreatePlaylistDto {
 	public final fun getUserId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/CreatePlaylistDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/CreatePlaylistDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2066,6 +2104,7 @@ public final class org/jellyfin/sdk/model/api/CreateUserByName {
 	public final fun getPassword ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/CreateUserByName;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/CreateUserByName$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2105,6 +2144,7 @@ public final class org/jellyfin/sdk/model/api/CultureDto {
 	public final fun getTwoLetterIsoLanguageName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/CultureDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/CultureDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2194,6 +2234,7 @@ public final class org/jellyfin/sdk/model/api/DefaultDirectoryBrowserInfoDto {
 	public final fun getPath ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/DefaultDirectoryBrowserInfoDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/DefaultDirectoryBrowserInfoDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2241,6 +2282,7 @@ public final class org/jellyfin/sdk/model/api/DeviceIdentification {
 	public final fun getSerialNumber ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/DeviceIdentification;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/DeviceIdentification$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2287,6 +2329,7 @@ public final class org/jellyfin/sdk/model/api/DeviceInfo {
 	public final fun getName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/DeviceInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/DeviceInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2321,6 +2364,7 @@ public final class org/jellyfin/sdk/model/api/DeviceInfoQueryResult {
 	public final fun getTotalRecordCount ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/DeviceInfoQueryResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/DeviceInfoQueryResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2352,6 +2396,7 @@ public final class org/jellyfin/sdk/model/api/DeviceOptions {
 	public final fun getCustomName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/DeviceOptions;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/DeviceOptions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2458,6 +2503,7 @@ public final class org/jellyfin/sdk/model/api/DeviceProfile {
 	public final fun getXmlRootAttributes ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/DeviceProfile;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/DeviceProfile$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2492,6 +2538,7 @@ public final class org/jellyfin/sdk/model/api/DeviceProfileInfo {
 	public final fun getType ()Lorg/jellyfin/sdk/model/api/DeviceProfileType;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/DeviceProfileInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/DeviceProfileInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2554,6 +2601,7 @@ public final class org/jellyfin/sdk/model/api/DirectPlayProfile {
 	public final fun getVideoCodec ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/DirectPlayProfile;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/DirectPlayProfile$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2610,6 +2658,7 @@ public final class org/jellyfin/sdk/model/api/DisplayPreferencesDto {
 	public final fun getViewType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/DisplayPreferencesDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/DisplayPreferencesDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2728,6 +2777,7 @@ public final class org/jellyfin/sdk/model/api/EndPointInfo {
 	public final fun isInNetwork ()Z
 	public final fun isLocal ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/EndPointInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/EndPointInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2765,6 +2815,7 @@ public final class org/jellyfin/sdk/model/api/ExternalIdInfo {
 	public final fun getUrlFormatString ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ExternalIdInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ExternalIdInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2834,6 +2885,7 @@ public final class org/jellyfin/sdk/model/api/ExternalUrl {
 	public final fun getUrl ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ExternalUrl;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ExternalUrl$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2896,6 +2948,7 @@ public final class org/jellyfin/sdk/model/api/FileSystemEntryInfo {
 	public final fun getType ()Lorg/jellyfin/sdk/model/api/FileSystemEntryType;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/FileSystemEntryInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/FileSystemEntryInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -2960,6 +3013,7 @@ public final class org/jellyfin/sdk/model/api/FontFile {
 	public final fun getSize ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/FontFile;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/FontFile$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3016,6 +3070,7 @@ public final class org/jellyfin/sdk/model/api/ForgotPasswordDto {
 	public final fun getEnteredUsername ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ForgotPasswordDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ForgotPasswordDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3045,6 +3100,7 @@ public final class org/jellyfin/sdk/model/api/ForgotPasswordPinDto {
 	public final fun getPin ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ForgotPasswordPinDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ForgotPasswordPinDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3079,6 +3135,7 @@ public final class org/jellyfin/sdk/model/api/ForgotPasswordResult {
 	public final fun getPinFile ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ForgotPasswordResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ForgotPasswordResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3113,6 +3170,7 @@ public final class org/jellyfin/sdk/model/api/GeneralCommand {
 	public final fun getName ()Lorg/jellyfin/sdk/model/api/GeneralCommandType;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/GeneralCommand;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/GeneralCommand$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3260,6 +3318,7 @@ public final class org/jellyfin/sdk/model/api/GetProgramsDto {
 	public final fun isSeries ()Ljava/lang/Boolean;
 	public final fun isSports ()Ljava/lang/Boolean;
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/GetProgramsDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/GetProgramsDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3298,6 +3357,7 @@ public final class org/jellyfin/sdk/model/api/GroupInfoDto {
 	public final fun getState ()Lorg/jellyfin/sdk/model/api/GroupStateType;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/GroupInfoDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/GroupInfoDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3471,6 +3531,7 @@ public final class org/jellyfin/sdk/model/api/GuideInfo {
 	public final fun getStartDate ()Ljava/time/LocalDateTime;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/GuideInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/GuideInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3532,6 +3593,7 @@ public final class org/jellyfin/sdk/model/api/HttpHeaderInfo {
 	public final fun getValue ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/HttpHeaderInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/HttpHeaderInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3574,6 +3636,7 @@ public final class org/jellyfin/sdk/model/api/IPlugin {
 	public final fun getVersion ()Lorg/jellyfin/sdk/model/api/Version;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/IPlugin;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/IPlugin$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3603,6 +3666,7 @@ public final class org/jellyfin/sdk/model/api/IgnoreWaitRequestDto {
 	public final fun getIgnoreWait ()Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/IgnoreWaitRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/IgnoreWaitRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3641,6 +3705,7 @@ public final class org/jellyfin/sdk/model/api/ImageByNameInfo {
 	public final fun getTheme ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ImageByNameInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ImageByNameInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3714,6 +3779,7 @@ public final class org/jellyfin/sdk/model/api/ImageInfo {
 	public final fun getWidth ()Ljava/lang/Integer;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ImageInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ImageInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3747,6 +3813,7 @@ public final class org/jellyfin/sdk/model/api/ImageOption {
 	public final fun getType ()Lorg/jellyfin/sdk/model/api/ImageType;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ImageOption;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ImageOption$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3812,6 +3879,7 @@ public final class org/jellyfin/sdk/model/api/ImageProviderInfo {
 	public final fun getSupportedImages ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ImageProviderInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ImageProviderInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3917,6 +3985,7 @@ public final class org/jellyfin/sdk/model/api/InstallationInfo {
 	public final fun getVersion ()Lorg/jellyfin/sdk/model/api/Version;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/InstallationInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/InstallationInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -3994,6 +4063,7 @@ public final class org/jellyfin/sdk/model/api/ItemCounts {
 	public final fun getTrailerCount ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ItemCounts;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ItemCounts$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4141,6 +4211,7 @@ public final class org/jellyfin/sdk/model/api/JoinGroupRequestDto {
 	public final fun getGroupId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/JoinGroupRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/JoinGroupRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4201,6 +4272,7 @@ public final class org/jellyfin/sdk/model/api/LibraryOptionInfoDto {
 	public final fun getName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/LibraryOptionInfoDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/LibraryOptionInfoDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4279,6 +4351,7 @@ public final class org/jellyfin/sdk/model/api/LibraryOptions {
 	public final fun getTypeOptions ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/LibraryOptions;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/LibraryOptions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4316,6 +4389,7 @@ public final class org/jellyfin/sdk/model/api/LibraryOptionsResultDto {
 	public final fun getTypeOptions ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/LibraryOptionsResultDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/LibraryOptionsResultDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4355,6 +4429,7 @@ public final class org/jellyfin/sdk/model/api/LibraryTypeOptionsDto {
 	public final fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/LibraryTypeOptionsDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/LibraryTypeOptionsDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4397,6 +4472,7 @@ public final class org/jellyfin/sdk/model/api/LibraryUpdateInfo {
 	public fun hashCode ()I
 	public final fun isEmpty ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/LibraryUpdateInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/LibraryUpdateInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4461,6 +4537,7 @@ public final class org/jellyfin/sdk/model/api/ListingsProviderInfo {
 	public final fun getZipCode ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ListingsProviderInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ListingsProviderInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4492,6 +4569,7 @@ public final class org/jellyfin/sdk/model/api/LiveStreamResponse {
 	public final fun getMediaSource ()Lorg/jellyfin/sdk/model/api/MediaSourceInfo;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/LiveStreamResponse;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/LiveStreamResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4526,6 +4604,7 @@ public final class org/jellyfin/sdk/model/api/LiveTvInfo {
 	public fun hashCode ()I
 	public final fun isEnabled ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/LiveTvInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/LiveTvInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4570,6 +4649,7 @@ public final class org/jellyfin/sdk/model/api/LiveTvServiceInfo {
 	public fun hashCode ()I
 	public final fun isVisible ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/LiveTvServiceInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/LiveTvServiceInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4629,6 +4709,7 @@ public final class org/jellyfin/sdk/model/api/LocalizationOption {
 	public final fun getValue ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/LocalizationOption;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/LocalizationOption$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4693,6 +4774,7 @@ public final class org/jellyfin/sdk/model/api/LogFile {
 	public final fun getSize ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/LogFile;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/LogFile$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4766,6 +4848,7 @@ public final class org/jellyfin/sdk/model/api/MediaAttachment {
 	public final fun getMimeType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MediaAttachment;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MediaAttachment$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4799,6 +4882,7 @@ public final class org/jellyfin/sdk/model/api/MediaEncoderPathDto {
 	public final fun getPathType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MediaEncoderPathDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MediaEncoderPathDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4833,6 +4917,7 @@ public final class org/jellyfin/sdk/model/api/MediaPathDto {
 	public final fun getPathInfo ()Lorg/jellyfin/sdk/model/api/MediaPathInfo;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MediaPathDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MediaPathDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -4866,6 +4951,7 @@ public final class org/jellyfin/sdk/model/api/MediaPathInfo {
 	public final fun getPath ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MediaPathInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MediaPathInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5009,6 +5095,7 @@ public final class org/jellyfin/sdk/model/api/MediaSourceInfo {
 	public final fun isInfiniteStream ()Z
 	public final fun isRemote ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MediaSourceInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MediaSourceInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5158,6 +5245,7 @@ public final class org/jellyfin/sdk/model/api/MediaStream {
 	public final fun isInterlaced ()Z
 	public final fun isTextSubtitleStream ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MediaStream;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MediaStream$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5217,6 +5305,7 @@ public final class org/jellyfin/sdk/model/api/MediaUpdateInfoDto {
 	public final fun getUpdates ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MediaUpdateInfoDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MediaUpdateInfoDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5250,6 +5339,7 @@ public final class org/jellyfin/sdk/model/api/MediaUpdateInfoPathDto {
 	public final fun getUpdateType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MediaUpdateInfoPathDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MediaUpdateInfoPathDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5283,6 +5373,7 @@ public final class org/jellyfin/sdk/model/api/MediaUrl {
 	public final fun getUrl ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MediaUrl;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MediaUrl$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5317,6 +5408,7 @@ public final class org/jellyfin/sdk/model/api/MessageCommand {
 	public final fun getTimeoutMs ()Ljava/lang/Long;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MessageCommand;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MessageCommand$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5358,6 +5450,7 @@ public final class org/jellyfin/sdk/model/api/MetadataEditorInfo {
 	public final fun getParentalRatingOptions ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MetadataEditorInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MetadataEditorInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5434,6 +5527,7 @@ public final class org/jellyfin/sdk/model/api/MetadataOptions {
 	public final fun getMetadataFetcherOrder ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MetadataOptions;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MetadataOptions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5493,6 +5587,7 @@ public final class org/jellyfin/sdk/model/api/MovePlaylistItemRequestDto {
 	public final fun getPlaylistItemId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MovePlaylistItemRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MovePlaylistItemRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5541,6 +5636,7 @@ public final class org/jellyfin/sdk/model/api/MovieInfo {
 	public fun hashCode ()I
 	public final fun isAutomated ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MovieInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MovieInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5577,6 +5673,7 @@ public final class org/jellyfin/sdk/model/api/MovieInfoRemoteSearchQuery {
 	public final fun getSearchProviderName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MovieInfoRemoteSearchQuery;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MovieInfoRemoteSearchQuery$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5627,6 +5724,7 @@ public final class org/jellyfin/sdk/model/api/MusicVideoInfo {
 	public fun hashCode ()I
 	public final fun isAutomated ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MusicVideoInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MusicVideoInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5663,6 +5761,7 @@ public final class org/jellyfin/sdk/model/api/MusicVideoInfoRemoteSearchQuery {
 	public final fun getSearchProviderName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MusicVideoInfoRemoteSearchQuery;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/MusicVideoInfoRemoteSearchQuery$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5695,6 +5794,7 @@ public final class org/jellyfin/sdk/model/api/NameGuidPair {
 	public final fun getName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/NameGuidPair;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/NameGuidPair$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5728,6 +5828,7 @@ public final class org/jellyfin/sdk/model/api/NameIdPair {
 	public final fun getName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/NameIdPair;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/NameIdPair$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5761,6 +5862,7 @@ public final class org/jellyfin/sdk/model/api/NameValuePair {
 	public final fun getValue ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/NameValuePair;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/NameValuePair$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5792,6 +5894,7 @@ public final class org/jellyfin/sdk/model/api/NewGroupRequestDto {
 	public final fun getGroupName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/NewGroupRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/NewGroupRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5821,6 +5924,7 @@ public final class org/jellyfin/sdk/model/api/NextItemRequestDto {
 	public final fun getPlaylistItemId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/NextItemRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/NextItemRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5865,6 +5969,7 @@ public final class org/jellyfin/sdk/model/api/NotificationDto {
 	public fun hashCode ()I
 	public final fun isRead ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/NotificationDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/NotificationDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5924,6 +6029,7 @@ public final class org/jellyfin/sdk/model/api/NotificationResultDto {
 	public final fun getTotalRecordCount ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/NotificationResultDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/NotificationResultDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5962,6 +6068,7 @@ public final class org/jellyfin/sdk/model/api/NotificationTypeInfo {
 	public fun hashCode ()I
 	public final fun isBasedOnUserEvent ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/NotificationTypeInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/NotificationTypeInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -5994,6 +6101,7 @@ public final class org/jellyfin/sdk/model/api/NotificationsSummaryDto {
 	public final fun getUnreadCount ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/NotificationsSummaryDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/NotificationsSummaryDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6027,6 +6135,7 @@ public final class org/jellyfin/sdk/model/api/ObjectGroupUpdate {
 	public final fun getType ()Lorg/jellyfin/sdk/model/api/GroupUpdateType;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ObjectGroupUpdate;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ObjectGroupUpdate$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6082,6 +6191,7 @@ public final class org/jellyfin/sdk/model/api/OpenLiveStreamDto {
 	public final fun getUserId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/OpenLiveStreamDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/OpenLiveStreamDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6127,6 +6237,7 @@ public final class org/jellyfin/sdk/model/api/PackageInfo {
 	public final fun getVersions ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PackageInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PackageInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6159,6 +6270,7 @@ public final class org/jellyfin/sdk/model/api/ParentalRating {
 	public final fun getValue ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ParentalRating;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ParentalRating$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6192,6 +6304,7 @@ public final class org/jellyfin/sdk/model/api/PathSubstitution {
 	public final fun getTo ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PathSubstitution;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PathSubstitution$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6240,6 +6353,7 @@ public final class org/jellyfin/sdk/model/api/PersonLookupInfo {
 	public fun hashCode ()I
 	public final fun isAutomated ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PersonLookupInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PersonLookupInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6276,6 +6390,7 @@ public final class org/jellyfin/sdk/model/api/PersonLookupInfoRemoteSearchQuery 
 	public final fun getSearchProviderName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PersonLookupInfoRemoteSearchQuery;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PersonLookupInfoRemoteSearchQuery$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6308,6 +6423,7 @@ public final class org/jellyfin/sdk/model/api/PinRedeemResult {
 	public final fun getUsersReset ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PinRedeemResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PinRedeemResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6337,6 +6453,7 @@ public final class org/jellyfin/sdk/model/api/PingRequestDto {
 	public final fun getPing ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PingRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PingRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6463,6 +6580,7 @@ public final class org/jellyfin/sdk/model/api/PlayRequest {
 	public final fun getSubtitleStreamIndex ()Ljava/lang/Integer;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PlayRequest;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PlayRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6497,6 +6615,7 @@ public final class org/jellyfin/sdk/model/api/PlayRequestDto {
 	public final fun getStartPositionTicks ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PlayRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PlayRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6583,6 +6702,7 @@ public final class org/jellyfin/sdk/model/api/PlaybackInfoDto {
 	public final fun getUserId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PlaybackInfoDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PlaybackInfoDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6618,6 +6738,7 @@ public final class org/jellyfin/sdk/model/api/PlaybackInfoResponse {
 	public final fun getPlaySessionId ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PlaybackInfoResponse;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PlaybackInfoResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6686,6 +6807,7 @@ public final class org/jellyfin/sdk/model/api/PlaybackProgressInfo {
 	public final fun isMuted ()Z
 	public final fun isPaused ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PlaybackProgressInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PlaybackProgressInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6754,6 +6876,7 @@ public final class org/jellyfin/sdk/model/api/PlaybackStartInfo {
 	public final fun isMuted ()Z
 	public final fun isPaused ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PlaybackStartInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PlaybackStartInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6804,6 +6927,7 @@ public final class org/jellyfin/sdk/model/api/PlaybackStopInfo {
 	public final fun getSessionId ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PlaybackStopInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PlaybackStopInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6852,6 +6976,7 @@ public final class org/jellyfin/sdk/model/api/PlayerStateInfo {
 	public final fun isMuted ()Z
 	public final fun isPaused ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PlayerStateInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PlayerStateInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6883,6 +7008,7 @@ public final class org/jellyfin/sdk/model/api/PlaylistCreationResult {
 	public final fun getId ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PlaylistCreationResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PlaylistCreationResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6950,6 +7076,7 @@ public final class org/jellyfin/sdk/model/api/PlaystateRequest {
 	public final fun getSeekPositionTicks ()Ljava/lang/Long;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PlaystateRequest;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PlaystateRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -6994,6 +7121,7 @@ public final class org/jellyfin/sdk/model/api/PluginInfo {
 	public final fun getVersion ()Lorg/jellyfin/sdk/model/api/Version;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PluginInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PluginInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7026,6 +7154,7 @@ public final class org/jellyfin/sdk/model/api/PluginSecurityInfo {
 	public fun hashCode ()I
 	public final fun isMbSupporter ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PluginSecurityInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PluginSecurityInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7086,6 +7215,7 @@ public final class org/jellyfin/sdk/model/api/PreviousItemRequestDto {
 	public final fun getPlaylistItemId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PreviousItemRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PreviousItemRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7125,6 +7255,7 @@ public final class org/jellyfin/sdk/model/api/ProblemDetails {
 	public final fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ProblemDetails;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ProblemDetails$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7161,6 +7292,7 @@ public final class org/jellyfin/sdk/model/api/ProfileCondition {
 	public fun hashCode ()I
 	public final fun isRequired ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ProfileCondition;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ProfileCondition$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7310,6 +7442,7 @@ public final class org/jellyfin/sdk/model/api/PublicSystemInfo {
 	public final fun getVersion ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/PublicSystemInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/PublicSystemInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7343,6 +7476,7 @@ public final class org/jellyfin/sdk/model/api/QueryFilters {
 	public final fun getTags ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/QueryFilters;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/QueryFilters$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7380,6 +7514,7 @@ public final class org/jellyfin/sdk/model/api/QueryFiltersLegacy {
 	public final fun getYears ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/QueryFiltersLegacy;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/QueryFiltersLegacy$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7412,6 +7547,7 @@ public final class org/jellyfin/sdk/model/api/QueueItem {
 	public final fun getPlaylistItemId ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/QueueItem;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/QueueItem$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7444,6 +7580,7 @@ public final class org/jellyfin/sdk/model/api/QueueRequestDto {
 	public final fun getMode ()Lorg/jellyfin/sdk/model/api/GroupQueueMode;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/QueueRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/QueueRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7473,6 +7610,7 @@ public final class org/jellyfin/sdk/model/api/QuickConnectDto {
 	public final fun getToken ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/QuickConnectDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/QuickConnectDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7513,6 +7651,7 @@ public final class org/jellyfin/sdk/model/api/QuickConnectResult {
 	public final fun getSecret ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/QuickConnectResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/QuickConnectResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7601,6 +7740,7 @@ public final class org/jellyfin/sdk/model/api/ReadyRequestDto {
 	public fun hashCode ()I
 	public final fun isPlaying ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ReadyRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ReadyRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7637,6 +7777,7 @@ public final class org/jellyfin/sdk/model/api/RecommendationDto {
 	public final fun getRecommendationType ()Lorg/jellyfin/sdk/model/api/RecommendationType;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/RecommendationDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/RecommendationDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7746,6 +7887,7 @@ public final class org/jellyfin/sdk/model/api/RemoteImageInfo {
 	public final fun getWidth ()Ljava/lang/Integer;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/RemoteImageInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/RemoteImageInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7780,6 +7922,7 @@ public final class org/jellyfin/sdk/model/api/RemoteImageResult {
 	public final fun getTotalRecordCount ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/RemoteImageResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/RemoteImageResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7833,6 +7976,7 @@ public final class org/jellyfin/sdk/model/api/RemoteSearchResult {
 	public final fun getSearchProviderName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/RemoteSearchResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/RemoteSearchResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7884,6 +8028,7 @@ public final class org/jellyfin/sdk/model/api/RemoteSubtitleInfo {
 	public fun hashCode ()I
 	public final fun isHashMatch ()Ljava/lang/Boolean;
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/RemoteSubtitleInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/RemoteSubtitleInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7915,6 +8060,7 @@ public final class org/jellyfin/sdk/model/api/RemoveFromPlaylistRequestDto {
 	public final fun getPlaylistItemIds ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/RemoveFromPlaylistRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/RemoveFromPlaylistRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -7976,6 +8122,7 @@ public final class org/jellyfin/sdk/model/api/RepositoryInfo {
 	public final fun getUrl ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/RepositoryInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/RepositoryInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8018,6 +8165,7 @@ public final class org/jellyfin/sdk/model/api/ResponseProfile {
 	public final fun getVideoCodec ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ResponseProfile;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ResponseProfile$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8130,6 +8278,7 @@ public final class org/jellyfin/sdk/model/api/SearchHint {
 	public fun hashCode ()I
 	public final fun isFolder ()Ljava/lang/Boolean;
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SearchHint;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SearchHint$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8162,6 +8311,7 @@ public final class org/jellyfin/sdk/model/api/SearchHintResult {
 	public final fun getTotalRecordCount ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SearchHintResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SearchHintResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8191,6 +8341,7 @@ public final class org/jellyfin/sdk/model/api/SeekRequestDto {
 	public final fun getPositionTicks ()J
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SeekRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SeekRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8231,6 +8382,7 @@ public final class org/jellyfin/sdk/model/api/SendCommand {
 	public final fun getWhen ()Ljava/time/LocalDateTime;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SendCommand;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SendCommand$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8307,6 +8459,7 @@ public final class org/jellyfin/sdk/model/api/SeriesInfo {
 	public fun hashCode ()I
 	public final fun isAutomated ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SeriesInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SeriesInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8343,6 +8496,7 @@ public final class org/jellyfin/sdk/model/api/SeriesInfoRemoteSearchQuery {
 	public final fun getSearchProviderName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SeriesInfoRemoteSearchQuery;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SeriesInfoRemoteSearchQuery$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8467,6 +8621,7 @@ public final class org/jellyfin/sdk/model/api/SeriesTimerInfoDto {
 	public final fun isPostPaddingRequired ()Z
 	public final fun isPrePaddingRequired ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SeriesTimerInfoDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SeriesTimerInfoDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8501,6 +8656,7 @@ public final class org/jellyfin/sdk/model/api/SeriesTimerInfoDtoQueryResult {
 	public final fun getTotalRecordCount ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SeriesTimerInfoDtoQueryResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SeriesTimerInfoDtoQueryResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8695,6 +8851,7 @@ public final class org/jellyfin/sdk/model/api/ServerConfiguration {
 	public final fun isRemoteIpFilterBlacklist ()Z
 	public final fun isStartupWizardCompleted ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ServerConfiguration;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ServerConfiguration$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8732,6 +8889,7 @@ public final class org/jellyfin/sdk/model/api/ServerDiscoveryInfo {
 	public final fun getName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ServerDiscoveryInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ServerDiscoveryInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8816,6 +8974,7 @@ public final class org/jellyfin/sdk/model/api/SessionInfo {
 	public fun hashCode ()I
 	public final fun isActive ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SessionInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SessionInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8906,6 +9065,7 @@ public final class org/jellyfin/sdk/model/api/SessionUserInfo {
 	public final fun getUserName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SessionUserInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SessionUserInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8939,6 +9099,7 @@ public final class org/jellyfin/sdk/model/api/SetChannelMappingDto {
 	public final fun getTunerChannelId ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SetChannelMappingDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SetChannelMappingDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8968,6 +9129,7 @@ public final class org/jellyfin/sdk/model/api/SetPlaylistItemRequestDto {
 	public final fun getPlaylistItemId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SetPlaylistItemRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SetPlaylistItemRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -8997,6 +9159,7 @@ public final class org/jellyfin/sdk/model/api/SetRepeatModeRequestDto {
 	public final fun getMode ()Lorg/jellyfin/sdk/model/api/GroupRepeatMode;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SetRepeatModeRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SetRepeatModeRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9026,6 +9189,7 @@ public final class org/jellyfin/sdk/model/api/SetShuffleModeRequestDto {
 	public final fun getMode ()Lorg/jellyfin/sdk/model/api/GroupShuffleMode;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SetShuffleModeRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SetShuffleModeRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9080,6 +9244,7 @@ public final class org/jellyfin/sdk/model/api/SongInfo {
 	public fun hashCode ()I
 	public final fun isAutomated ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SongInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SongInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9139,6 +9304,7 @@ public final class org/jellyfin/sdk/model/api/SpecialViewOptionDto {
 	public final fun getName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SpecialViewOptionDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SpecialViewOptionDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9174,6 +9340,7 @@ public final class org/jellyfin/sdk/model/api/StartupConfigurationDto {
 	public final fun getUiCulture ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/StartupConfigurationDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/StartupConfigurationDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9205,6 +9372,7 @@ public final class org/jellyfin/sdk/model/api/StartupRemoteAccessDto {
 	public final fun getEnableRemoteAccess ()Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/StartupRemoteAccessDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/StartupRemoteAccessDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9238,6 +9406,7 @@ public final class org/jellyfin/sdk/model/api/StartupUserDto {
 	public final fun getPassword ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/StartupUserDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/StartupUserDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9333,6 +9502,7 @@ public final class org/jellyfin/sdk/model/api/SubtitleProfile {
 	public final fun getMethod ()Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SubtitleProfile;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SubtitleProfile$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9440,6 +9610,7 @@ public final class org/jellyfin/sdk/model/api/SystemInfo {
 	public fun hashCode ()I
 	public final fun isShuttingDown ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SystemInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/SystemInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9516,6 +9687,7 @@ public final class org/jellyfin/sdk/model/api/TaskInfo {
 	public fun hashCode ()I
 	public final fun isHidden ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/TaskInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/TaskInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9560,6 +9732,7 @@ public final class org/jellyfin/sdk/model/api/TaskResult {
 	public final fun getStatus ()Lorg/jellyfin/sdk/model/api/TaskCompletionStatus;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/TaskResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/TaskResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9626,6 +9799,7 @@ public final class org/jellyfin/sdk/model/api/TaskTriggerInfo {
 	public final fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/TaskTriggerInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/TaskTriggerInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9662,6 +9836,7 @@ public final class org/jellyfin/sdk/model/api/ThemeMediaResult {
 	public final fun getTotalRecordCount ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ThemeMediaResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ThemeMediaResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9695,6 +9870,7 @@ public final class org/jellyfin/sdk/model/api/TimerEventInfo {
 	public final fun getProgramId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/TimerEventInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/TimerEventInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9779,6 +9955,7 @@ public final class org/jellyfin/sdk/model/api/TimerInfoDto {
 	public final fun isPostPaddingRequired ()Z
 	public final fun isPrePaddingRequired ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/TimerInfoDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/TimerInfoDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9813,6 +9990,7 @@ public final class org/jellyfin/sdk/model/api/TimerInfoDtoQueryResult {
 	public final fun getTotalRecordCount ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/TimerInfoDtoQueryResult;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/TimerInfoDtoQueryResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9861,6 +10039,7 @@ public final class org/jellyfin/sdk/model/api/TrailerInfo {
 	public fun hashCode ()I
 	public final fun isAutomated ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/TrailerInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/TrailerInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -9897,6 +10076,7 @@ public final class org/jellyfin/sdk/model/api/TrailerInfoRemoteSearchQuery {
 	public final fun getSearchProviderName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/TrailerInfoRemoteSearchQuery;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/TrailerInfoRemoteSearchQuery$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10022,6 +10202,7 @@ public final class org/jellyfin/sdk/model/api/TranscodingInfo {
 	public final fun isAudioDirect ()Z
 	public final fun isVideoDirect ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/TranscodingInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/TranscodingInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10080,6 +10261,7 @@ public final class org/jellyfin/sdk/model/api/TranscodingProfile {
 	public final fun getVideoCodec ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/TranscodingProfile;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/TranscodingProfile$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10144,6 +10326,7 @@ public final class org/jellyfin/sdk/model/api/TunerChannelMapping {
 	public final fun getProviderChannelName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/TunerChannelMapping;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/TunerChannelMapping$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10194,6 +10377,7 @@ public final class org/jellyfin/sdk/model/api/TunerHostInfo {
 	public final fun getUserAgent ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/TunerHostInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/TunerHostInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10235,6 +10419,7 @@ public final class org/jellyfin/sdk/model/api/TypeOptions {
 	public final fun getType ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/TypeOptions;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/TypeOptions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10300,6 +10485,7 @@ public final class org/jellyfin/sdk/model/api/UpdateLibraryOptionsDto {
 	public final fun getLibraryOptions ()Lorg/jellyfin/sdk/model/api/LibraryOptions;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/UpdateLibraryOptionsDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/UpdateLibraryOptionsDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10331,6 +10517,7 @@ public final class org/jellyfin/sdk/model/api/UpdateMediaPathRequestDto {
 	public final fun getPathInfo ()Lorg/jellyfin/sdk/model/api/MediaPathInfo;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/UpdateMediaPathRequestDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/UpdateMediaPathRequestDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10365,6 +10552,7 @@ public final class org/jellyfin/sdk/model/api/UpdateUserEasyPassword {
 	public final fun getResetPassword ()Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/UpdateUserEasyPassword;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/UpdateUserEasyPassword$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10401,6 +10589,7 @@ public final class org/jellyfin/sdk/model/api/UpdateUserPassword {
 	public final fun getResetPassword ()Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/UpdateUserPassword;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/UpdateUserPassword$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10436,6 +10625,7 @@ public final class org/jellyfin/sdk/model/api/UploadSubtitleDto {
 	public fun hashCode ()I
 	public final fun isForced ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/UploadSubtitleDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/UploadSubtitleDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10494,6 +10684,7 @@ public final class org/jellyfin/sdk/model/api/UserConfiguration {
 	public final fun getSubtitleMode ()Lorg/jellyfin/sdk/model/api/SubtitlePlaybackMode;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/UserConfiguration;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/UserConfiguration$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10550,6 +10741,7 @@ public final class org/jellyfin/sdk/model/api/UserDto {
 	public final fun getServerName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/UserDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/UserDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10600,6 +10792,7 @@ public final class org/jellyfin/sdk/model/api/UserItemDataDto {
 	public fun hashCode ()I
 	public final fun isFavorite ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/UserItemDataDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/UserItemDataDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10706,6 +10899,7 @@ public final class org/jellyfin/sdk/model/api/UserPolicy {
 	public final fun isDisabled ()Z
 	public final fun isHidden ()Z
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/UserPolicy;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/UserPolicy$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10737,6 +10931,7 @@ public final class org/jellyfin/sdk/model/api/UtcTimeResponse {
 	public final fun getResponseTransmissionTime ()Ljava/time/LocalDateTime;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/UtcTimeResponse;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/UtcTimeResponse$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10771,6 +10966,7 @@ public final class org/jellyfin/sdk/model/api/ValidatePathDto {
 	public fun hashCode ()I
 	public final fun isFile ()Ljava/lang/Boolean;
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/ValidatePathDto;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/ValidatePathDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10810,6 +11006,7 @@ public final class org/jellyfin/sdk/model/api/Version {
 	public final fun getRevision ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/Version;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/Version$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10857,6 +11054,7 @@ public final class org/jellyfin/sdk/model/api/VersionInfo {
 	public final fun getVersionNumber ()Lorg/jellyfin/sdk/model/api/Version;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/VersionInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/VersionInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10959,6 +11157,7 @@ public final class org/jellyfin/sdk/model/api/VirtualFolderInfo {
 	public final fun getRefreshStatus ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/VirtualFolderInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/VirtualFolderInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -10991,6 +11190,7 @@ public final class org/jellyfin/sdk/model/api/WakeOnLanInfo {
 	public final fun getPort ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/WakeOnLanInfo;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/WakeOnLanInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11024,6 +11224,7 @@ public final class org/jellyfin/sdk/model/api/XmlAttribute {
 	public final fun getValue ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/XmlAttribute;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/api/XmlAttribute$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11091,6 +11292,7 @@ public final class org/jellyfin/sdk/model/socket/ActivityLogEntryMessage : org/j
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/ActivityLogEntryMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/ActivityLogEntryMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11122,6 +11324,7 @@ public final class org/jellyfin/sdk/model/socket/ActivityLogEntryStartMessage : 
 	public final fun getPeriod ()Lorg/jellyfin/sdk/model/socket/PeriodicListenerPeriod;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/ActivityLogEntryStartMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/ActivityLogEntryStartMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11144,6 +11347,7 @@ public final class org/jellyfin/sdk/model/socket/ActivityLogEntryStopMessage : o
 	public static final field Companion Lorg/jellyfin/sdk/model/socket/ActivityLogEntryStopMessage$Companion;
 	public fun <init> ()V
 	public synthetic fun <init> (ILkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/ActivityLogEntryStopMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/ActivityLogEntryStopMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11175,6 +11379,7 @@ public final class org/jellyfin/sdk/model/socket/ForceKeepAliveMessage : org/jel
 	public final fun getValue ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/ForceKeepAliveMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/ForceKeepAliveMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11211,6 +11416,7 @@ public final class org/jellyfin/sdk/model/socket/GeneralCommandMessage : org/jel
 	public final fun getUserId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/GeneralCommandMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/GeneralCommandMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11296,6 +11502,7 @@ public final class org/jellyfin/sdk/model/socket/KeepAliveMessage : org/jellyfin
 	public static final field Companion Lorg/jellyfin/sdk/model/socket/KeepAliveMessage$Companion;
 	public fun <init> ()V
 	public synthetic fun <init> (ILkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/KeepAliveMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/KeepAliveMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11327,6 +11534,7 @@ public final class org/jellyfin/sdk/model/socket/LibraryChangedMessage : org/jel
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/LibraryChangedMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/LibraryChangedMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11361,6 +11569,7 @@ public final class org/jellyfin/sdk/model/socket/PackageInstallationCancelledMes
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/PackageInstallationCancelledMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/PackageInstallationCancelledMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11392,6 +11601,7 @@ public final class org/jellyfin/sdk/model/socket/PackageInstallationCompletedMes
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/PackageInstallationCompletedMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/PackageInstallationCompletedMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11423,6 +11633,7 @@ public final class org/jellyfin/sdk/model/socket/PackageInstallationFailedMessag
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/PackageInstallationFailedMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/PackageInstallationFailedMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11454,6 +11665,7 @@ public final class org/jellyfin/sdk/model/socket/PackageInstallingMessage : org/
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/PackageInstallingMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/PackageInstallingMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11485,6 +11697,7 @@ public final class org/jellyfin/sdk/model/socket/PackageUninstalledMessage : org
 	public final fun getPlugin ()Lorg/jellyfin/sdk/model/api/IPlugin;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/PackageUninstalledMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/PackageUninstalledMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11546,6 +11759,7 @@ public final class org/jellyfin/sdk/model/socket/PlayMessage : org/jellyfin/sdk/
 	public final fun getRequest ()Lorg/jellyfin/sdk/model/api/PlayRequest;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/PlayMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/PlayMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11577,6 +11791,7 @@ public final class org/jellyfin/sdk/model/socket/PlayStateMessage : org/jellyfin
 	public final fun getRequest ()Lorg/jellyfin/sdk/model/api/PlaystateRequest;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/PlayStateMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/PlayStateMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11608,6 +11823,7 @@ public final class org/jellyfin/sdk/model/socket/RefreshProgressMessage : org/je
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/RefreshProgressMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/RefreshProgressMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11637,6 +11853,7 @@ public final class org/jellyfin/sdk/model/socket/RestartRequiredMessage : org/je
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/RestartRequiredMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/RestartRequiredMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11668,6 +11885,7 @@ public final class org/jellyfin/sdk/model/socket/ScheduledTaskEndedMessage : org
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/ScheduledTaskEndedMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/ScheduledTaskEndedMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11699,6 +11917,7 @@ public final class org/jellyfin/sdk/model/socket/ScheduledTasksInfoMessage : org
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/ScheduledTasksInfoMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/ScheduledTasksInfoMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11730,6 +11949,7 @@ public final class org/jellyfin/sdk/model/socket/ScheduledTasksInfoStartMessage 
 	public final fun getPeriod ()Lorg/jellyfin/sdk/model/socket/PeriodicListenerPeriod;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/ScheduledTasksInfoStartMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/ScheduledTasksInfoStartMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11752,6 +11972,7 @@ public final class org/jellyfin/sdk/model/socket/ScheduledTasksInfoStopMessage :
 	public static final field Companion Lorg/jellyfin/sdk/model/socket/ScheduledTasksInfoStopMessage$Companion;
 	public fun <init> ()V
 	public synthetic fun <init> (ILkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/ScheduledTasksInfoStopMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/ScheduledTasksInfoStopMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11783,6 +12004,7 @@ public final class org/jellyfin/sdk/model/socket/SeriesTimerCancelledMessage : o
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/SeriesTimerCancelledMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/SeriesTimerCancelledMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11814,6 +12036,7 @@ public final class org/jellyfin/sdk/model/socket/SeriesTimerCreatedMessage : org
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/SeriesTimerCreatedMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/SeriesTimerCreatedMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11843,6 +12066,7 @@ public final class org/jellyfin/sdk/model/socket/ServerRestartingMessage : org/j
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/ServerRestartingMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/ServerRestartingMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11872,6 +12096,7 @@ public final class org/jellyfin/sdk/model/socket/ServerShuttingDownMessage : org
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/ServerShuttingDownMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/ServerShuttingDownMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11903,6 +12128,7 @@ public final class org/jellyfin/sdk/model/socket/SessionsMessage : org/jellyfin/
 	public final fun getSession ()Ljava/util/List;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/SessionsMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/SessionsMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11934,6 +12160,7 @@ public final class org/jellyfin/sdk/model/socket/SessionsStartMessage : org/jell
 	public final fun getPeriod ()Lorg/jellyfin/sdk/model/socket/PeriodicListenerPeriod;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/SessionsStartMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/SessionsStartMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11956,6 +12183,7 @@ public final class org/jellyfin/sdk/model/socket/SessionsStopMessage : org/jelly
 	public static final field Companion Lorg/jellyfin/sdk/model/socket/SessionsStopMessage$Companion;
 	public fun <init> ()V
 	public synthetic fun <init> (ILkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/SessionsStopMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/SessionsStopMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -11990,6 +12218,7 @@ public final class org/jellyfin/sdk/model/socket/SyncPlayCommandMessage : org/je
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/SyncPlayCommandMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/SyncPlayCommandMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -12021,6 +12250,7 @@ public final class org/jellyfin/sdk/model/socket/SyncPlayGroupUpdateMessage : or
 	public final fun getUpdate ()Lorg/jellyfin/sdk/model/api/ObjectGroupUpdate;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/SyncPlayGroupUpdateMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/SyncPlayGroupUpdateMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -12052,6 +12282,7 @@ public final class org/jellyfin/sdk/model/socket/TimerCancelledMessage : org/jel
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/TimerCancelledMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/TimerCancelledMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -12083,6 +12314,7 @@ public final class org/jellyfin/sdk/model/socket/TimerCreatedMessage : org/jelly
 	public fun getMessageId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/TimerCreatedMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/TimerCreatedMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -12116,6 +12348,7 @@ public final class org/jellyfin/sdk/model/socket/UserDataChangedMessage : org/je
 	public final fun getUserId ()Ljava/util/UUID;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/UserDataChangedMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/UserDataChangedMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -12147,6 +12380,7 @@ public final class org/jellyfin/sdk/model/socket/UserDeletedMessage : org/jellyf
 	public final fun getUserId ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/UserDeletedMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/UserDeletedMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
@@ -12178,6 +12412,7 @@ public final class org/jellyfin/sdk/model/socket/UserUpdatedMessage : org/jellyf
 	public final fun getUser ()Lorg/jellyfin/sdk/model/api/UserDto;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/socket/UserUpdatedMessage;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
 }
 
 public final class org/jellyfin/sdk/model/socket/UserUpdatedMessage$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
