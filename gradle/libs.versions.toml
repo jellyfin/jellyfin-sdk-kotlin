@@ -9,7 +9,7 @@ slf4j = "1.7.31"
 [plugins]
 binarycompatibilityvalidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.6.0" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.17.1" }
-dokka = { id = "org.jetbrains.dokka", version = "1.4.32" }
+dokka = { id = "org.jetbrains.dokka", version = "1.5.0" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 nexuspublish = { id = "io.github.gradle-nexus.publish-plugin", version = "1.1.0" }
 
