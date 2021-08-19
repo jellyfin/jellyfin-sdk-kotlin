@@ -26,7 +26,7 @@ kotlin {
 				implementation(libs.ktor.core)
 				implementation(libs.ktor.serialization)
 
-				implementation(libs.kotlinlogging)
+				implementation(libs.kotlin.logging)
 			}
 		}
 

@@ -1,8 +1,8 @@
 plugins {
-	id("io.github.gradle-nexus.publish-plugin").version(Plugins.Versions.nexusPublish)
-	id("io.gitlab.arturbosch.detekt").version(Plugins.Versions.detekt)
-	id("org.jetbrains.dokka").version(Plugins.Versions.dokka)
-	id("org.jetbrains.kotlinx.binary-compatibility-validator").version(Plugins.Versions.binaryCompatibilityValidatorVersion)
+	alias(libs.plugins.nexuspublish)
+	alias(libs.plugins.detekt)
+	alias(libs.plugins.dokka)
+	alias(libs.plugins.binarycompatibilityvalidator)
 }
 
 // Versioning
@@ -18,8 +18,8 @@ buildscript {
 	repositories.defaultRepositories()
 
 	dependencies {
-		classpath(Plugins.androidBuildTools)
-		classpath(Plugins.kotlin)
+		classpath(libs.android.gradle)
+		classpath(libs.kotlin.gradle)
 	}
 }
 
