@@ -23,7 +23,7 @@ dependencies {
 	implementation(libs.kasechange)
 
 	// Kotlin code generation
-	implementation(libs.kotlinPoet)
+	implementation(libs.kotlinpoet)
 
 	// Dependency Injection
 	implementation(libs.koin)

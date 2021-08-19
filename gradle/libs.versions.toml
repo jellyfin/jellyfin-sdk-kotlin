@@ -1,20 +1,29 @@
 [versions]
 kotlin = "1.5.10"
-kotlinlogging = "2.0.10"
+kotlin-logging = "2.0.10"
 kotlinx-coroutines = "1.5.0"
 kotlinx-serialization = "1.2.1"
 ktor = "1.6.0"
 slf4j = "1.7.31"
 
+[plugins]
+binarycompatibilityvalidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.6.0" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.17.1" }
+dokka = { id = "org.jetbrains.dokka", version = "1.4.32" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+nexuspublish = { id = "io.github.gradle-nexus.publish-plugin", version = "1.1.0" }
+
 [libraries]
+android-gradle = { module = "com.android.tools.build:gradle", version = "7.0.0" }
 androidx-annotation = { module = "androidx.annotation:annotation", version = "1.2.0" }
 androidx-core = { module = "androidx.core:core-ktx", version = "1.5.0" }
 clikt = { module = "com.github.ajalt.clikt:clikt", version = "3.2.0" }
 kasechange = { module = "net.pearx.kasechange:kasechange", version = "1.3.0" }
 koin = { module = "io.insert-koin:koin-core", version = "3.1.0" }
-kotlinlogging = { module = "io.github.microutils:kotlin-logging", version.ref = "kotlinlogging" }
+kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-logging = { module = "io.github.microutils:kotlin-logging", version.ref = "kotlin-logging" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
-kotlinPoet = { module = "com.squareup:kotlinpoet", version = "1.8.0" }
+kotlinpoet = { module = "com.squareup:kotlinpoet", version = "1.8.0" }
 kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }

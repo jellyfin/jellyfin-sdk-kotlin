@@ -12,7 +12,7 @@ dependencies {
 	api(libs.ktor.http)
 
 	// Logging
-	implementation(libs.kotlinlogging)
+	implementation(libs.kotlin.logging)
 	testImplementation(libs.slf4j.simple)
 
 	// Testing
