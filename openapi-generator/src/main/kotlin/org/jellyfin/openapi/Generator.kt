@@ -6,6 +6,7 @@ import io.swagger.v3.oas.models.info.Info
 import io.swagger.v3.oas.models.media.Schema
 import io.swagger.v3.parser.OpenAPIV3Parser
 import io.swagger.v3.parser.core.models.SwaggerParseResult
+import mu.KotlinLogging
 import org.jellyfin.openapi.builder.api.ApiBuilder
 import org.jellyfin.openapi.builder.extra.FileSpecBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiApiServicesBuilder
@@ -13,6 +14,8 @@ import org.jellyfin.openapi.builder.openapi.OpenApiConstantsBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiModelBuilder
 import org.jellyfin.openapi.model.GeneratorResult
 import java.io.File
+
+private val logger = KotlinLogging.logger { }
 
 class Generator(
 	private val fileSpecBuilder: FileSpecBuilder,
@@ -23,7 +26,7 @@ class Generator(
 ) {
 	private fun parse(openApiJson: String): SwaggerParseResult {
 		val parseResult = OpenAPIV3Parser().readContents(openApiJson)
-		parseResult.messages.forEach { println(it) }
+		parseResult.messages.forEach { message -> logger.warn { message } }
 		return parseResult
 	}
 
