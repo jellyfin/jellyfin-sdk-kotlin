@@ -17,6 +17,8 @@ The following Gradle tasks can be used to run the generator:
 
  - **generateSources**  
    Reads the openapi.json files and generates Kotlin source code.
+ - **verifySources**  
+   Reads the openapi.json files and verifies existing files.
  - **downloadApiSpecStable & downloadApiSpecUnstable**  
    Downloads the openapi.json file from repo.jellyfin.org.
  - **updateApiSpecStable & updateApiSpecUnstable**  
