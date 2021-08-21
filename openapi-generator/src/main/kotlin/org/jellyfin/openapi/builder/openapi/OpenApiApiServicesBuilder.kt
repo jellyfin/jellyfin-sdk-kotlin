@@ -7,6 +7,7 @@ import io.swagger.v3.oas.models.Paths
 import io.swagger.v3.oas.models.media.IntegerSchema
 import io.swagger.v3.oas.models.media.Schema
 import io.swagger.v3.oas.models.parameters.Parameter
+import mu.KotlinLogging
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toCamelCase
 import org.jellyfin.openapi.OpenApiGeneratorError
@@ -20,6 +21,8 @@ import org.jellyfin.openapi.hooks.ApiTypePath
 import org.jellyfin.openapi.hooks.DefaultValueHook
 import org.jellyfin.openapi.hooks.ServiceNameHook
 import org.jellyfin.openapi.model.*
+
+private val logger = KotlinLogging.logger { }
 
 class OpenApiApiServicesBuilder(
 	private val apiNameBuilder: ApiNameBuilder,
@@ -95,10 +98,10 @@ class OpenApiApiServicesBuilder(
 
 			if (parameterSpec.`in` == "path") {
 				if (type.isNullable)
-					println("Path parameter $parameterName in $operationName is marked as nullable")
+					logger.warn { "Path parameter $parameterName in $operationName is marked as nullable" }
 
 				if (!path.contains("{${parameterName}}", ignoreCase = true))
-					println("Path parameter $parameterName in $operationName is missing in path $path")
+					logger.warn { "Path parameter $parameterName in $operationName is missing in path $path" }
 			}
 		}
 
@@ -107,7 +110,7 @@ class OpenApiApiServicesBuilder(
 			operation.responses["200"]
 		)
 		if (returnType == Types.NONE && "200" in operation.responses)
-			println("Missing return-type for operation $operationName (status-codes: ${operation.responses.keys})")
+			logger.warn { "Missing return-type for operation $operationName (status-codes: ${operation.responses.keys})" }
 
 		val requireAuthentication = operation.security
 			?.firstOrNull { requirement -> requirement.containsKey(Security.SECURITY_SCHEME) }

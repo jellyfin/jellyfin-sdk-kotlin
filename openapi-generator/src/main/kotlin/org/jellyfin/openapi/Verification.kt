@@ -1,6 +1,7 @@
 package org.jellyfin.openapi
 
 import com.squareup.kotlinpoet.FileSpec
+import mu.KotlinLogging
 import org.jellyfin.openapi.model.GeneratorResult
 import java.io.File
 import java.nio.file.Files
@@ -11,6 +12,8 @@ import kotlin.io.path.isRegularFile
 import kotlin.io.path.readText
 import kotlin.io.path.relativeTo
 import kotlin.streams.asSequence
+
+private val logger = KotlinLogging.logger { }
 
 class Verification(
 	apiOutputDir: File,
@@ -59,10 +62,18 @@ class Verification(
 			.intersect(new.keys)
 			.filter { key -> !current[key].contentEquals(new[key]) }
 
-		removedKeys.forEach { key -> println("$key: removed from sources.") }
-		newKeys.forEach { key -> println("$key: added to sources.") }
+		removedKeys.forEach { key ->
+			logger.error { "$key: removed from sources." }
+		}
+
+		newKeys.forEach { key ->
+			logger.error { "$key: added to sources." }
+		}
+
 		modifiedKeys.forEach { key ->
-			println("$key: modified (${current[key].toMd5String()} -> ${new[key].toMd5String()}).")
+			logger.error {
+				"$key: modified (${current[key].toMd5String()} -> ${new[key].toMd5String()})."
+			}
 		}
 
 		return removedKeys.isEmpty() && newKeys.isEmpty() && modifiedKeys.isEmpty()

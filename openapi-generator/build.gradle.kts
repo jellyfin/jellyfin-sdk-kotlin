@@ -28,6 +28,10 @@ dependencies {
 	// Dependency Injection
 	implementation(libs.koin)
 
+	// Logging
+	implementation(libs.kotlin.logging)
+	runtimeOnly(libs.slf4j.simple)
+
 	// Testing
 	testImplementation(libs.kotlin.test.junit)
 }
