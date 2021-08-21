@@ -1,12 +1,12 @@
 package org.jellyfin.sdk.discovery
 
-import org.jellyfin.sdk.Jellyfin
+import org.jellyfin.sdk.createJellyfin
 import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertTrue
 
 public class DiscoveryServiceTests {
-	private fun getInstance() = DiscoveryService(Jellyfin {})
+	private fun getInstance() = DiscoveryService(createJellyfin {})
 
 	@Test
 	public fun `getAddressCandidates prefers https`() {

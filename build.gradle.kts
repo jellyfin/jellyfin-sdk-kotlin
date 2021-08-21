@@ -35,6 +35,7 @@ nexusPublishing.repositories.sonatype {
 apiValidation {
 	// Ignore generator / samples / other non jellyfin-x modules
 	ignoredProjects.addAll(subprojects.map { it.name }.filter { !it.startsWith("jellyfin-") })
+	ignoredProjects.add("jellyfin-core") // TODO: Fails - see https://github.com/kotlin/binary-compatibility-validator/issues/47
 }
 
 subprojects {

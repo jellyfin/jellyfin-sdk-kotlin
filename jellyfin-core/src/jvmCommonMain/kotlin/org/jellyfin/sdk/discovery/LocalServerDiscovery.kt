@@ -6,6 +6,7 @@ import kotlinx.coroutines.isActive
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import mu.KotlinLogging
+import org.jellyfin.sdk.JellyfinOptions
 import org.jellyfin.sdk.model.api.ServerDiscoveryInfo
 import java.io.IOException
 import java.net.DatagramPacket
@@ -22,8 +23,8 @@ private val logger = KotlinLogging.logger {}
  * Use the [discover] function to retrieve a flow of servers until the timeout is exceeded or
  * the maximum amount of servers has been retrieved.
  */
-public actual class LocalServerDiscovery {
-	private val discoveryBroadcastAddressesProvider = DiscoveryBroadcastAddressesProvider()
+public actual class LocalServerDiscovery actual constructor(jellyfinOptions: JellyfinOptions) {
+	private val discoveryBroadcastAddressesProvider = DiscoveryBroadcastAddressesProvider(jellyfinOptions)
 
 	public actual companion object {
 		public const val DISCOVERY_MESSAGE: String = "who is JellyfinServer?"
@@ -98,6 +99,7 @@ public actual class LocalServerDiscovery {
 		}
 
 		// Send
+		@Suppress("MissingPermission")
 		val addresses = discoveryBroadcastAddressesProvider.getBroadcastAddresses()
 		addresses.forEach { address ->
 			discoverAddress(socket, address)

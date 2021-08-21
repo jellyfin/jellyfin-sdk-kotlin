@@ -1,4 +1,4 @@
-package org.jellyfin.sdk.interaction
+package org.jellyfin.sdk.android
 
 import android.annotation.SuppressLint
 import android.content.Context

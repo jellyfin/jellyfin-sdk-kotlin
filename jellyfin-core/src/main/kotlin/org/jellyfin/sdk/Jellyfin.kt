@@ -11,9 +11,8 @@ import org.jellyfin.sdk.model.UUID
 import kotlin.jvm.JvmOverloads
 
 public class Jellyfin(
-	private val options: JellyfinOptions,
+	public val options: JellyfinOptions,
 ) {
-	public constructor(initOptions: JellyfinOptions.Builder.() -> Unit) : this(JellyfinOptions.build(initOptions))
 	public constructor(optionsBuilder: JellyfinOptions.Builder) : this(optionsBuilder.build())
 
 	/**
@@ -79,3 +78,7 @@ public class Jellyfin(
 		public val apiVersion: ServerVersion = ServerVersion.fromString(ApiConstants.apiVersion)!!
 	}
 }
+
+public inline fun createJellyfin(
+	init: JellyfinOptions.Builder.() -> Unit,
+): Jellyfin = Jellyfin(createJellyfinOptions(init))

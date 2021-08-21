@@ -11,7 +11,7 @@ public class DiscoveryService constructor(
 	private val jellyfin: Jellyfin,
 ) {
 	private val localServerDiscovery by lazy {
-		LocalServerDiscovery()
+		LocalServerDiscovery(jellyfin.options)
 	}
 
 	private val recommendedServerDiscovery by lazy {
