@@ -19,9 +19,6 @@ kotlin {
 		}
 
 		val commonMain by getting {
-			// TODO move to commonMain folder
-			kotlin.srcDir("src/main/kotlin")
-
 			dependencies {
 				api(projects.jellyfinApi)
 				api(projects.jellyfinModel)
