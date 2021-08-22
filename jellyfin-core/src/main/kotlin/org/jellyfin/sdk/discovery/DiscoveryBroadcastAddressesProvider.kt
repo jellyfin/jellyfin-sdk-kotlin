@@ -1,12 +1,13 @@
 package org.jellyfin.sdk.discovery
 
-import java.net.InetAddress
+import org.jellyfin.sdk.JellyfinOptions
+import org.jellyfin.sdk.util.InetAddress
 
 /**
  * Broadcast address provider definition that can be implemented to support different platforms for
  * server discovery.
  */
-public interface DiscoveryBroadcastAddressesProvider {
+public expect class DiscoveryBroadcastAddressesProvider(jellyfinOptions: JellyfinOptions) {
 	/**
 	 * Provide broadcast addresses
 	 */

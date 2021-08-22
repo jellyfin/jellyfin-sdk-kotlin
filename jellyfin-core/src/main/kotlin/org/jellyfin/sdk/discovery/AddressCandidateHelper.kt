@@ -51,7 +51,7 @@ public class AddressCandidateHelper(
 			}.build())
 		} catch (error: URLParserException) {
 			// Input can't be parsed
-			logger.error("Input $input could not be parsed", error)
+			logger.error(error) { "Input $input could not be parsed" }
 		}
 	}
 
@@ -59,7 +59,7 @@ public class AddressCandidateHelper(
 	 * Add a HTTPS candidate for each HTTP candidate
 	 */
 	public fun addProtocolCandidates() {
-		logger.debug("Adding protocol candidates")
+		logger.debug { "Adding protocol candidates" }
 
 		// Add HTTPS candidate for each HTTP candidate
 		candidates
@@ -74,7 +74,7 @@ public class AddressCandidateHelper(
 	 * protocol-default port.
 	 */
 	public fun addPortCandidates() {
-		logger.debug("Adding port candidates")
+		logger.debug { "Adding port candidates" }
 
 		// Add HTTPS candidate for each HTTP candidate
 		candidates
@@ -96,7 +96,7 @@ public class AddressCandidateHelper(
 	 * Applies all fixes to the [input].
 	 */
 	public fun addCommonCandidates() {
-		logger.debug("Adding common candidates")
+		logger.debug { "Adding common candidates" }
 
 		addProtocolCandidates()
 		addPortCandidates()

@@ -23,10 +23,10 @@ import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.UUID
 import java.net.UnknownHostException
 
-public actual open class KtorClient(
-	override var baseUrl: String? = null,
-	override var accessToken: String? = null,
-	override var userId: UUID? = null,
+public actual open class KtorClient actual constructor(
+	override var baseUrl: String?,
+	override var accessToken: String?,
+	override var userId: UUID?,
 	override var clientInfo: ClientInfo,
 	override var deviceInfo: DeviceInfo,
 	override val httpClientOptions: HttpClientOptions,

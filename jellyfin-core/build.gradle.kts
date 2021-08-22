@@ -1,43 +1,104 @@
 plugins {
-	id("kotlin")
-}
-
-dependencies {
-	api(projects.jellyfinApi)
-	api(projects.jellyfinModel)
-
-	implementation(libs.kotlinx.coroutines)
-	implementation(libs.kotlinx.serialization.json)
-
-	api(libs.ktor.http)
-
-	// Logging
-	implementation(libs.kotlin.logging)
-	testImplementation(libs.slf4j.simple)
-
-	// Testing
-	testImplementation(libs.kotlin.test.junit)
+	kotlin("multiplatform")
+	id("com.android.library")
 }
 
 kotlin {
 	explicitApi()
+
+	jvm()
+	android {
+		publishAllLibraryVariants()
+	}
+
+	sourceSets {
+		all {
+			languageSettings {
+				progressiveMode = true
+			}
+		}
+
+		val commonMain by getting {
+			// TODO move to commonMain folder
+			kotlin.srcDir("src/main/kotlin")
+
+			dependencies {
+				api(projects.jellyfinApi)
+				api(projects.jellyfinModel)
+
+				implementation(libs.kotlinx.coroutines)
+				implementation(libs.kotlinx.serialization.json)
+
+				api(libs.ktor.http)
+
+				// Logging
+				implementation(libs.kotlin.logging)
+			}
+		}
+
+		val commonTest by getting {
+			dependencies {
+				implementation(libs.slf4j.simple)
+				implementation(libs.kotlin.test.junit)
+			}
+		}
+
+		// Not actually used due too IntelliJ issue
+		// sub-sourcesets depend on source folder directly
+		val jvmCommonMain by creating {
+			dependsOn(commonMain)
+		}
+
+		val jvmMain by getting {
+			// dependsOn(jvmCommonMain)
+			kotlin.srcDir("src/jvmCommonMain/kotlin")
+		}
+
+		val androidMain by getting {
+			// dependsOn(jvmCommonMain)
+			kotlin.srcDir("src/jvmCommonMain/kotlin")
+
+			dependencies {
+				implementation(libs.androidx.core)
+				implementation(libs.androidx.annotation)
+			}
+		}
+	}
 }
 
-val sourcesJar by tasks.creating(Jar::class) {
-	archiveClassifier.set("sources")
+android {
+	compileSdk = 30
 
-	from(sourceSets.getByName("main").allSource)
+	sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
+	defaultConfig {
+		minSdk = 19
+		targetSdk = 30
+		multiDexEnabled = true
+
+		consumerProguardFiles("proguard-rules.pro")
+	}
+
+	buildTypes {
+		getByName("release") {
+			isMinifyEnabled = false
+		}
+	}
+
+	lint {
+		lintConfig = file("$rootDir/android-lint.xml")
+		isAbortOnError = false
+		sarifReport = true
+	}
 }
 
 val javadocJar by tasks.creating(Jar::class) {
-	dependsOn(tasks.getByName("dokkaJavadoc"))
+	// FIXME: Dokka is failing for this module - temporarily disabled
+	// dependsOn(tasks.getByName("dokkaHtml"))
 	archiveClassifier.set("javadoc")
-	from("$buildDir/dokka/javadoc")
+	// from("$buildDir/dokka/html")
 }
 
-publishing.publications.create<MavenPublication>("default") {
-	from(components["kotlin"])
-
-	artifact(sourcesJar)
+publishing.publications.withType<MavenPublication> {
 	artifact(javadocJar)
 }

@@ -1,25 +1,25 @@
 package org.jellyfin.sdk.discovery
 
-import android.content.Context
 import android.net.wifi.WifiManager
 import androidx.annotation.RequiresPermission
 import androidx.core.content.getSystemService
-import java.net.InetAddress
+import org.jellyfin.sdk.JellyfinOptions
+import org.jellyfin.sdk.util.InetAddress
 
 /**
  * A broadcast address provider that uses the WifiManager service to retrieve the broadcast address
  */
-public class AndroidBroadcastAddressesProvider(
-	private val context: Context
-) : DiscoveryBroadcastAddressesProvider {
+public actual class DiscoveryBroadcastAddressesProvider actual constructor(
+	private val jellyfinOptions: JellyfinOptions,
+) {
 	/**
 	 * Retrieve the broadcast address using the Android WifiManager.
-	 * Required the ACCESS_WIFI_STATE permission which is not enabled by default.
+	 * Requires the ACCESS_WIFI_STATE permission which is not enabled by default.
 	 */
 	@RequiresPermission("android.permission.ACCESS_WIFI_STATE")
 	@Suppress("MagicNumber")
-	override suspend fun getBroadcastAddresses(): Collection<InetAddress> {
-		val wifi = context.getSystemService<WifiManager>()
+	public actual suspend fun getBroadcastAddresses(): Collection<InetAddress> {
+		val wifi = jellyfinOptions.context.getSystemService<WifiManager>()
 		val dhcp = wifi?.dhcpInfo ?: return emptyList()
 		val broadcast = dhcp.ipAddress and dhcp.netmask or dhcp.netmask.inv()
 		val quads = ByteArray(4)

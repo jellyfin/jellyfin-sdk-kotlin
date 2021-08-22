@@ -27,7 +27,6 @@ kotlin {
 
 		val commonTest by getting {
 			dependencies {
-				// Testing
 				implementation(libs.kotlin.test.junit)
 				implementation(libs.kotlinx.serialization.json)
 			}
