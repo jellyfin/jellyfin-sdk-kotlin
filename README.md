@@ -51,9 +51,6 @@ platform.
 
 ```kotlin
 implementation("org.jellyfin.sdk:jellyfin-core:$sdkVersion")
-
-// Or when using Android
-implementation("org.jellyfin.sdk:jellyfin-platform-android:$sdkVersion")
 ```
 
 <details>
@@ -61,9 +58,6 @@ implementation("org.jellyfin.sdk:jellyfin-platform-android:$sdkVersion")
   
   ```groovy
   implementation "org.jellyfin.sdk:jellyfin-core:$sdkVersion"
-
-  // Or when using Android
-  implementation "org.jellyfin.sdk:jellyfin-platform-android:$sdkVersion"
    ```
 </details>
 
@@ -74,13 +68,6 @@ implementation("org.jellyfin.sdk:jellyfin-platform-android:$sdkVersion")
   <dependency>
       <groupId>org.jellyfin.sdk</groupId>
       <artifactId>jellyfin-core</artifactId>
-      <version>$sdkVersion</version>
-  </dependency>
-
-  <!-- Or when using Android -->
-  <dependency>
-      <groupId>org.jellyfin.sdk</groupId>
-      <artifactId>jellyfin-platform-android</artifactId>
       <version>$sdkVersion</version>
   </dependency>
    ```
@@ -117,20 +104,16 @@ the configuration required to make API calls and platform specific options. The 
 be instantiated using a custom Kotlin DSL:
 
 ```kotlin
-val jellyfin = Jellyfin {
+val jellyfin = createJellyfin {
     clientInfo = ClientInfo(name = "My awesome client!", version = "1.33.7",)
-    
-    // Uncomment if not using jellyfin-platform-android:
-    // deviceInfo = DeviceInfo(id = UUID.randomUUID().toString(), name = "Awesome device",)
 
-    // Uncomment when using jellyfin-platform-android:
-    // android()
+    // Uncomment when using android:
+    // context = /* Android Context */
 }
 ```
 
-Make sure to supply the client and device information if you want to make API calls. Use the
-`android()` helper function when targeting Android to enable server discovery and set the device
-information automatically. 
+Make sure to supply the client information if you want to make API calls. The context is required for Android
+applications. 
 
 ### Creating an API instance
 
