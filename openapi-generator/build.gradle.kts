@@ -38,8 +38,8 @@ dependencies {
 
 val defaultConfig = mapOf(
 	"openApiFile" to file("../openapi.json"),
-	"apiOutputDir" to file("../jellyfin-api/src/main/kotlin-generated"),
-	"modelsOutputDir" to file("../jellyfin-model/src/main/kotlin-generated")
+	"apiOutputDir" to file("../jellyfin-api/src/commonMain/kotlin-generated"),
+	"modelsOutputDir" to file("../jellyfin-model/src/commonMain/kotlin-generated")
 )
 
 tasks.register("generateSources", JavaExec::class) {

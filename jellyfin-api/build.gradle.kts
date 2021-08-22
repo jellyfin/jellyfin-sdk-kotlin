@@ -15,9 +15,7 @@ kotlin {
 		}
 
 		val commonMain by getting {
-			// TODO move to commonMain folder
-			kotlin.srcDir("src/main/kotlin-generated")
-			kotlin.srcDir("src/main/kotlin")
+			kotlin.srcDir("src/commonMain/kotlin-generated")
 
 			dependencies {
 				implementation(projects.jellyfinModel)
