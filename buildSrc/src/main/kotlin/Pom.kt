@@ -1,8 +1,8 @@
 import org.gradle.api.publish.maven.MavenPublication
 
 fun MavenPublication.defaultPom() = pom {
-	name.set("${groupId}:${artifactId}")
-	description.set("Jellyfin Kotlin SDK")
+	name.set("Jellyfin Kotlin SDK - $artifactId")
+	description.set("Official Kotlin/Java SDK for Jellyfin. ${groupId}:${artifactId}")
 	url.set("https://github.com/jellyfin/jellyfin-sdk-kotlin")
 
 	scm {
