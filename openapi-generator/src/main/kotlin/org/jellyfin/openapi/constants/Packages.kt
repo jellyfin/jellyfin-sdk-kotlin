@@ -22,6 +22,11 @@ object Packages {
 	const val API_EXCEPTION = "org.jellyfin.sdk.api.client.exception"
 
 	/**
+	 * Package for the API method extension functions
+	 */
+	const val API_METHODS = "org.jellyfin.sdk.api.client.extensions"
+
+	/**
 	 * Package for the generated models
 	 */
 	const val MODEL = "org.jellyfin.sdk.model.api"

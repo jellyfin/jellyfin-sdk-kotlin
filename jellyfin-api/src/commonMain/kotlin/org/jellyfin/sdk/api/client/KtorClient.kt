@@ -22,30 +22,8 @@ public expect open class KtorClient(
 	 */
 	public val client: HttpClient
 
-	@Suppress("ThrowsCount")
 	public suspend inline fun <reified T> request(
 		method: HttpMethod = HttpMethod.Get,
-		pathTemplate: String,
-		pathParameters: Map<String, Any?> = emptyMap(),
-		queryParameters: Map<String, Any?> = emptyMap(),
-		requestBody: Any? = null,
-	): Response<T>
-
-	public suspend inline fun <reified T> get(
-		pathTemplate: String,
-		pathParameters: Map<String, Any?> = emptyMap(),
-		queryParameters: Map<String, Any?> = emptyMap(),
-		requestBody: Any? = null,
-	): Response<T>
-
-	public suspend inline fun <reified T> post(
-		pathTemplate: String,
-		pathParameters: Map<String, Any?> = emptyMap(),
-		queryParameters: Map<String, Any?> = emptyMap(),
-		requestBody: Any? = null,
-	): Response<T>
-
-	public suspend inline fun <reified T> delete(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
