@@ -57,6 +57,7 @@ public actual open class KtorClient actual constructor(
 		}
 	}
 
+	@OptIn(InternalAPI::class) // Required for Ktor URLBuilder
 	override fun createUrl(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?>,
