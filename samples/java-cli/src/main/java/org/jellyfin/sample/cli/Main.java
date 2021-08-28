@@ -2,7 +2,7 @@ package org.jellyfin.sample.cli;
 
 import org.jellyfin.sdk.Jellyfin;
 import org.jellyfin.sdk.JellyfinOptions;
-import org.jellyfin.sdk.api.client.KtorClient;
+import org.jellyfin.sdk.api.client.ApiClient;
 import org.jellyfin.sdk.api.client.compatibility.JavaDataCallback;
 import org.jellyfin.sdk.api.operations.UserApi;
 import org.jellyfin.sdk.model.ClientInfo;
@@ -24,7 +24,7 @@ public class Main {
 
         // TODO Replace below with a proper CLI that compares to the kotlin-cli sample
         Logger logger = LoggerFactory.getLogger(Main.class);
-        KtorClient client = jellyfin.createApi("https://demo.jellyfin.org/stable/");
+        ApiClient client = jellyfin.createApi("https://demo.jellyfin.org/stable/");
 
         CountDownLatch latch = new CountDownLatch(1);
         UserApi userApi = new UserApi(client);
