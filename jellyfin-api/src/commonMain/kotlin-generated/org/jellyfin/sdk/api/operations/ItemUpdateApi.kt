@@ -10,14 +10,16 @@ import kotlin.String
 import kotlin.Unit
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.extensions.`get`
+import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDto
 import org.jellyfin.sdk.model.api.MetadataEditorInfo
 
 public class ItemUpdateApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Gets metadata editor info for an item.

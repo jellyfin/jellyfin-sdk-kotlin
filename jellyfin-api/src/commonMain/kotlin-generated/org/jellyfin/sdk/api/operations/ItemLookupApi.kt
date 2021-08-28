@@ -12,8 +12,10 @@ import kotlin.Unit
 import kotlin.collections.List
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.extensions.`get`
+import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.AlbumInfoRemoteSearchQuery
 import org.jellyfin.sdk.model.api.ArtistInfoRemoteSearchQuery
@@ -28,7 +30,7 @@ import org.jellyfin.sdk.model.api.SeriesInfoRemoteSearchQuery
 import org.jellyfin.sdk.model.api.TrailerInfoRemoteSearchQuery
 
 public class ItemLookupApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Applies search criteria to an item and refreshes metadata.

@@ -14,8 +14,11 @@ import kotlin.collections.List
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.extensions.`get`
+import org.jellyfin.sdk.api.client.extensions.delete
+import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.api.AddVirtualFolderDto
 import org.jellyfin.sdk.model.api.CollectionTypeOptions
 import org.jellyfin.sdk.model.api.MediaPathDto
@@ -24,7 +27,7 @@ import org.jellyfin.sdk.model.api.UpdateMediaPathRequestDto
 import org.jellyfin.sdk.model.api.VirtualFolderInfo
 
 public class LibraryStructureApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Add a media path to a library.

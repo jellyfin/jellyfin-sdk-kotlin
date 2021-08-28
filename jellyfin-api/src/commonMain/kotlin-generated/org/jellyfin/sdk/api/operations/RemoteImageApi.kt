@@ -13,15 +13,17 @@ import kotlin.Unit
 import kotlin.collections.List
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.extensions.`get`
+import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.ImageProviderInfo
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.RemoteImageResult
 
 public class RemoteImageApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Downloads a remote image for an item.

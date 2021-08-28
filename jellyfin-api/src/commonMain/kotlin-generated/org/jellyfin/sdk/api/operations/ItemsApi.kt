@@ -14,9 +14,10 @@ import kotlin.collections.Collection
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
+import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.DateTime
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
@@ -29,7 +30,7 @@ import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.api.VideoType
 
 public class ItemsApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Gets items based on a query.

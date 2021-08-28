@@ -12,12 +12,13 @@ import kotlin.Int
 import kotlin.String
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 
 public class VideoAttachmentsApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Get video attachment.

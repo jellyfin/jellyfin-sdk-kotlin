@@ -10,13 +10,14 @@ import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.mutableMapOf
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.MetadataRefreshMode
 
 public class ItemRefreshApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Refreshes metadata for an item.

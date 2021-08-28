@@ -12,9 +12,12 @@ import kotlin.Unit
 import kotlin.collections.List
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
+import org.jellyfin.sdk.api.client.extensions.`get`
+import org.jellyfin.sdk.api.client.extensions.delete
+import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.AuthenticateUserByName
 import org.jellyfin.sdk.model.api.AuthenticationResult
@@ -31,7 +34,7 @@ import org.jellyfin.sdk.model.api.UserDto
 import org.jellyfin.sdk.model.api.UserPolicy
 
 public class UserApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Authenticates a user.

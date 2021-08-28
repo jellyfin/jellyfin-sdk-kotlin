@@ -11,13 +11,16 @@ import kotlin.Unit
 import kotlin.collections.List
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.extensions.`get`
+import org.jellyfin.sdk.api.client.extensions.delete
+import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.api.DeviceProfile
 import org.jellyfin.sdk.model.api.DeviceProfileInfo
 
 public class DlnaApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Creates a profile.

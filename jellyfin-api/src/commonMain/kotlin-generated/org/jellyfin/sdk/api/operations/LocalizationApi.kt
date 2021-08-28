@@ -9,15 +9,16 @@ import kotlin.Any
 import kotlin.String
 import kotlin.collections.List
 import kotlin.collections.emptyMap
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.api.CountryInfo
 import org.jellyfin.sdk.model.api.CultureDto
 import org.jellyfin.sdk.model.api.LocalizationOption
 import org.jellyfin.sdk.model.api.ParentalRating
 
 public class LocalizationApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Gets known countries.
