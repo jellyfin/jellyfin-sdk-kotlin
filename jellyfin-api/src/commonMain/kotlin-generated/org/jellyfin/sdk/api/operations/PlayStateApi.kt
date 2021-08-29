@@ -13,9 +13,11 @@ import kotlin.String
 import kotlin.Unit
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
+import org.jellyfin.sdk.api.client.extensions.delete
+import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.DateTime
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.PlayMethod
@@ -26,7 +28,7 @@ import org.jellyfin.sdk.model.api.RepeatMode
 import org.jellyfin.sdk.model.api.UserItemDataDto
 
 public class PlayStateApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Marks an item as played for user.

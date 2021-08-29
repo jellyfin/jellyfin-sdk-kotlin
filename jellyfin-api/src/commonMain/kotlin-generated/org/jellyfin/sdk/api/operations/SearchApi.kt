@@ -13,13 +13,14 @@ import kotlin.collections.Collection
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.SearchHintResult
 
 public class SearchApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Gets the search hint result.

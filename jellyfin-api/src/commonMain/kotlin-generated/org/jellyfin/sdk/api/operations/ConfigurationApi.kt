@@ -12,14 +12,16 @@ import kotlin.String
 import kotlin.Unit
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.extensions.`get`
+import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.api.MediaEncoderPathDto
 import org.jellyfin.sdk.model.api.MetadataOptions
 import org.jellyfin.sdk.model.api.ServerConfiguration
 
 public class ConfigurationApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Gets application configuration.

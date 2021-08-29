@@ -11,9 +11,11 @@ import kotlin.Unit
 import kotlin.collections.List
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
+import org.jellyfin.sdk.api.client.extensions.`get`
+import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.api.AdminNotificationDto
 import org.jellyfin.sdk.model.api.NameIdPair
 import org.jellyfin.sdk.model.api.NotificationResultDto
@@ -21,7 +23,7 @@ import org.jellyfin.sdk.model.api.NotificationTypeInfo
 import org.jellyfin.sdk.model.api.NotificationsSummaryDto
 
 public class NotificationsApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Sends a notification to all admins.

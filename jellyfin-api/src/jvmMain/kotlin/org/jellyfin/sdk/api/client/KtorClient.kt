@@ -162,43 +162,4 @@ public actual open class KtorClient actual constructor(
 			throw err
 		}
 	}
-
-	public actual suspend inline fun <reified T> get(
-		pathTemplate: String,
-		pathParameters: Map<String, Any?>,
-		queryParameters: Map<String, Any?>,
-		requestBody: Any?,
-	): Response<T> = request(
-		method = HttpMethod.Get,
-		pathTemplate = pathTemplate,
-		pathParameters = pathParameters,
-		queryParameters = queryParameters,
-		requestBody = requestBody
-	)
-
-	public actual suspend inline fun <reified T> post(
-		pathTemplate: String,
-		pathParameters: Map<String, Any?>,
-		queryParameters: Map<String, Any?>,
-		requestBody: Any?,
-	): Response<T> = request(
-		method = HttpMethod.Post,
-		pathTemplate = pathTemplate,
-		pathParameters = pathParameters,
-		queryParameters = queryParameters,
-		requestBody = requestBody
-	)
-
-	public actual suspend inline fun <reified T> delete(
-		pathTemplate: String,
-		pathParameters: Map<String, Any?>,
-		queryParameters: Map<String, Any?>,
-		requestBody: Any?,
-	): Response<T> = request(
-		method = HttpMethod.Delete,
-		pathTemplate = pathTemplate,
-		pathParameters = pathParameters,
-		queryParameters = queryParameters,
-		requestBody = requestBody
-	)
 }

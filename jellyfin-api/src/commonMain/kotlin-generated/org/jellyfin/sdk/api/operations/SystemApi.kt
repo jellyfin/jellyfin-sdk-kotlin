@@ -11,8 +11,10 @@ import kotlin.Unit
 import kotlin.collections.List
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.extensions.`get`
+import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.api.EndPointInfo
 import org.jellyfin.sdk.model.api.LogFile
 import org.jellyfin.sdk.model.api.PublicSystemInfo
@@ -20,7 +22,7 @@ import org.jellyfin.sdk.model.api.SystemInfo
 import org.jellyfin.sdk.model.api.WakeOnLanInfo
 
 public class SystemApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Gets information about the request endpoint.

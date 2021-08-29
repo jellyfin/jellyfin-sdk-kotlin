@@ -8,12 +8,13 @@ package org.jellyfin.sdk.api.operations
 import kotlin.Any
 import kotlin.String
 import kotlin.collections.emptyMap
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.api.BrandingOptions
 
 public class BrandingApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Gets branding css.

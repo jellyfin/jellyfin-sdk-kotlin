@@ -10,8 +10,10 @@ import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
 import kotlin.collections.emptyMap
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.extensions.`get`
+import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.api.BufferRequestDto
 import org.jellyfin.sdk.model.api.GroupInfoDto
 import org.jellyfin.sdk.model.api.IgnoreWaitRequestDto
@@ -31,7 +33,7 @@ import org.jellyfin.sdk.model.api.SetRepeatModeRequestDto
 import org.jellyfin.sdk.model.api.SetShuffleModeRequestDto
 
 public class SyncPlayApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Notify SyncPlay group that member is buffering.

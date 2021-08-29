@@ -9,14 +9,16 @@ import kotlin.Any
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.emptyMap
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.extensions.`get`
+import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.api.StartupConfigurationDto
 import org.jellyfin.sdk.model.api.StartupRemoteAccessDto
 import org.jellyfin.sdk.model.api.StartupUserDto
 
 public class StartupApi(
-	private val api: KtorClient
+	private val api: ApiClient
 ) {
 	/**
 	 * Completes the startup wizard.

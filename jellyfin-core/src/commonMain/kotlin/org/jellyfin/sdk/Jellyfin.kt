@@ -1,5 +1,6 @@
 package org.jellyfin.sdk
 
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.HttpClientOptions
 import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.info.ApiConstants
@@ -48,7 +49,7 @@ public class Jellyfin(
 		clientInfo: ClientInfo? = options.clientInfo,
 		deviceInfo: DeviceInfo? = options.deviceInfo,
 		httpClientOptions: HttpClientOptions = HttpClientOptions(),
-	): KtorClient {
+	): ApiClient {
 		checkNotNull(clientInfo) {
 			"ClientInfo needs to be set when calling createApi() or by providing it when constructing the Jellyfin instance"
 		}
