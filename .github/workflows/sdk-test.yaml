@@ -21,18 +21,9 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
+          distribution: adopt
           java-version: ${{ matrix.java }}
-      - name: Setup Gradle cache
-        uses: actions/cache@v2.1.6
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-java-${{ matrix.java }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-java-${{ matrix.java }}-gradle-
-            ${{ runner.os }}-java-
+          cache: gradle
       - name: Run test task
         run: ./gradlew --build-cache --no-daemon --info test allTests
 
@@ -44,17 +35,9 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
+          distribution: adopt
           java-version: 11
-      - name: Setup Gradle cache
-        uses: actions/cache@v2.1.6
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+          cache: gradle
       - name: Run apiCheck task
         run: ./gradlew --build-cache --no-daemon --info apiCheck
 
@@ -68,17 +51,9 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
+          distribution: adopt
           java-version: 11
-      - name: Setup Gradle cache
-        uses: actions/cache@v2.1.6
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+          cache: gradle
       - name: Run verifySources task
         run: ./gradlew --build-cache --no-daemon --info verifySources
 
