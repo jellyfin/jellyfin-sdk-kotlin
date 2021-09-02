@@ -1,12 +1,50 @@
 package org.jellyfin.sdk.api.client.util
 
 import io.ktor.http.*
+import io.ktor.util.*
 import org.jellyfin.sdk.api.client.exception.MissingPathVariableException
 
-public object PathBuilder {
-	public const val TOKEN_SEPARATOR: Char = '/'
-	public const val TOKEN_BRACKET_OPEN: Char = '{'
-	public const val TOKEN_BRACKET_CLOSE: Char = '}'
+public object UrlBuilder {
+	private const val TOKEN_SEPARATOR: Char = '/'
+	private const val TOKEN_BRACKET_OPEN: Char = '{'
+	private const val TOKEN_BRACKET_CLOSE: Char = '}'
+
+	/**
+	 * Create a complete url based on the [baseUrl] and given parameters.
+	 * Uses [buildPath] to create the path from the [pathTemplate] and [pathParameters].
+	 */
+	public fun buildUrl(
+		baseUrl: String,
+		pathTemplate: String = "/",
+		pathParameters: Map<String, Any?> = mapOf(),
+		queryParameters: Map<String, Any?> = mapOf(),
+	): String {
+		return URLBuilder(baseUrl).apply {
+			// Create from base URL
+			takeFrom(baseUrl)
+
+			// Replace path variables
+			val path = buildPath(pathTemplate, pathParameters)
+			// Assign path making sure to remove duplicated slashes between the base and appended path
+			encodedPath = "${encodedPath.trimEnd('/')}/${path.trimStart('/')}"
+
+			// Append query parameters
+			queryParameters
+				.filterNot { it.value == null }
+				.map { (key, rawValue) ->
+					// Determine value
+					val value = when (rawValue) {
+						// Lists should be comma-separated
+						is Collection<*> -> if (rawValue.isNotEmpty()) rawValue.joinToString(",") else null
+						else -> rawValue.toString()
+					}
+
+					// Add not-null values
+					@OptIn(InternalAPI::class) // Required for Ktor URLBuilder
+					if (value != null) parameters.append(key, value)
+				}
+		}.buildString()
+	}
 
 	public fun buildPath(template: String, parameters: Map<String, Any?>): String = buildString {
 		var lastStart = -1
@@ -75,4 +113,5 @@ public object PathBuilder {
 }
 
 @Suppress("NOTHING_TO_INLINE")
-public inline fun String.buildPath(parameters: Map<String, Any?>): String = PathBuilder.buildPath(this, parameters)
+public inline fun String.buildPath(parameters: Map<String, Any?>): String = UrlBuilder.buildPath(this, parameters)
+

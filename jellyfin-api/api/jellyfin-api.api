@@ -20,6 +20,7 @@ public final class org/jellyfin/sdk/api/client/ApiClient$Companion {
 }
 
 public final class org/jellyfin/sdk/api/client/ApiClient$DefaultImpls {
+	public static fun createUrl (Lorg/jellyfin/sdk/api/client/ApiClient;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Z)Ljava/lang/String;
 	public static synthetic fun createUrl$default (Lorg/jellyfin/sdk/api/client/ApiClient;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;ZILjava/lang/Object;)Ljava/lang/String;
 }
 
@@ -129,15 +130,14 @@ public final class org/jellyfin/sdk/api/client/util/AuthorizationHeaderBuilder {
 	public final fun encodeParameterValue (Ljava/lang/String;)Ljava/lang/String;
 }
 
-public final class org/jellyfin/sdk/api/client/util/PathBuilder {
-	public static final field INSTANCE Lorg/jellyfin/sdk/api/client/util/PathBuilder;
-	public static final field TOKEN_BRACKET_CLOSE C
-	public static final field TOKEN_BRACKET_OPEN C
-	public static final field TOKEN_SEPARATOR C
+public final class org/jellyfin/sdk/api/client/util/UrlBuilder {
+	public static final field INSTANCE Lorg/jellyfin/sdk/api/client/util/UrlBuilder;
 	public final fun buildPath (Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
+	public final fun buildUrl (Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)Ljava/lang/String;
+	public static synthetic fun buildUrl$default (Lorg/jellyfin/sdk/api/client/util/UrlBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Ljava/lang/String;
 }
 
-public final class org/jellyfin/sdk/api/client/util/PathBuilderKt {
+public final class org/jellyfin/sdk/api/client/util/UrlBuilderKt {
 	public static final fun buildPath (Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
 }
 

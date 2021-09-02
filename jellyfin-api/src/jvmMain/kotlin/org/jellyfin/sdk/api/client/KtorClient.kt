@@ -17,7 +17,6 @@ import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
 import org.jellyfin.sdk.api.client.util.AuthorizationHeaderBuilder
-import org.jellyfin.sdk.api.client.util.PathBuilder
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.UUID
@@ -55,46 +54,6 @@ public actual open class KtorClient actual constructor(
 			requestTimeoutMillis = httpClientOptions.requestTimeout
 			socketTimeoutMillis = httpClientOptions.socketTimeout
 		}
-	}
-
-	@OptIn(InternalAPI::class) // Required for Ktor URLBuilder
-	override fun createUrl(
-		pathTemplate: String,
-		pathParameters: Map<String, Any?>,
-		queryParameters: Map<String, Any?>,
-		includeCredentials: Boolean,
-	): String {
-		// Check if the base url is not null
-		val baseUrl = checkNotNull(baseUrl)
-
-		return URLBuilder(baseUrl).apply {
-			// Create from base URL
-			takeFrom(baseUrl)
-
-			// Replace path variables
-			val path = PathBuilder.buildPath(pathTemplate, pathParameters)
-			// Assign path making sure to remove duplicated slashes between the base and appended path
-			encodedPath = "${encodedPath.trimEnd('/')}/${path.trimStart('/')}"
-
-			// Append query parameters
-			queryParameters
-				.filterNot { it.value == null }
-				.forEach { (key, rawValue) ->
-					// Determine value
-					val value = when (rawValue) {
-						// Lists should be comma-separated
-						is Collection<*> -> if (rawValue.isNotEmpty()) rawValue.joinToString(",") else null
-						else -> rawValue.toString()
-					}
-
-					// Add not-null values
-					if (value != null)
-						parameters.append(key, value)
-				}
-
-			if (includeCredentials)
-				parameters.append(ApiClient.QUERY_ACCESS_TOKEN, checkNotNull(accessToken))
-		}.buildString()
 	}
 
 	@Suppress("ThrowsCount")
