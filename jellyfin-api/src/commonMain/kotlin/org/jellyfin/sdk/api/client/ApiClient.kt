@@ -1,5 +1,6 @@
 package org.jellyfin.sdk.api.client
 
+import org.jellyfin.sdk.api.client.util.UrlBuilder
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.UUID
@@ -47,7 +48,7 @@ public interface ApiClient {
 
 	/**
 	 * Create a complete url based on the [baseUrl] and given parameters.
-	 * Uses [PathBuilder] to create the path from the [pathTemplate] and [pathParameters].
+	 * Uses [UrlBuilder] to create the path from the [pathTemplate] and [pathParameters].
 	 *
 	 * When [includeCredentials] is true it will add the access token as query parameter using [QUERY_ACCESS_TOKEN]
 	 * to the url to make an authenticated request.
@@ -57,5 +58,13 @@ public interface ApiClient {
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
 		includeCredentials: Boolean = false,
-	): String
+	): String = UrlBuilder.buildUrl(
+		requireNotNull(baseUrl),
+		pathTemplate,
+		pathParameters,
+		queryParameters.run {
+			if (includeCredentials) plus(QUERY_ACCESS_TOKEN to checkNotNull(accessToken))
+			else this
+		}
+	)
 }
