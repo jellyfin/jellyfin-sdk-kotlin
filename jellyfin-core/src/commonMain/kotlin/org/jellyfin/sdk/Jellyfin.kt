@@ -2,7 +2,6 @@ package org.jellyfin.sdk
 
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.HttpClientOptions
-import org.jellyfin.sdk.api.client.KtorClient
 import org.jellyfin.sdk.api.info.ApiConstants
 import org.jellyfin.sdk.discovery.DiscoveryService
 import org.jellyfin.sdk.model.ClientInfo
@@ -57,7 +56,7 @@ public class Jellyfin(
 			"DeviceInfo needs to be set when calling createApi() or by providing it when constructing the Jellyfin instance"
 		}
 
-		return KtorClient(
+		return options.apiClientFactory.create(
 			baseUrl = baseUrl,
 			accessToken = accessToken,
 			userId = userId,
