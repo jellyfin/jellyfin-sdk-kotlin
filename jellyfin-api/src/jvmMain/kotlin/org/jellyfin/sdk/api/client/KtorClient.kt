@@ -3,24 +3,24 @@ package org.jellyfin.sdk.api.client
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.features.*
-import io.ktor.client.features.json.*
-import io.ktor.client.features.json.serializer.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
+import io.ktor.content.*
 import io.ktor.http.*
 import io.ktor.network.sockets.*
 import io.ktor.util.*
 import kotlinx.serialization.SerializationException
-import kotlinx.serialization.json.Json
 import mu.KotlinLogging
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
+import org.jellyfin.sdk.api.client.util.ApiSerializer
 import org.jellyfin.sdk.api.client.util.AuthorizationHeaderBuilder
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.UUID
 import java.net.UnknownHostException
+import io.ktor.http.HttpMethod as KtorHttpMethod
 
 public actual open class KtorClient actual constructor(
 	override var baseUrl: String?,
@@ -30,24 +30,9 @@ public actual open class KtorClient actual constructor(
 	override var deviceInfo: DeviceInfo,
 	override val httpClientOptions: HttpClientOptions,
 ) : ApiClient {
-	private val json = Json {
-		isLenient = false
-		ignoreUnknownKeys = true
-		allowSpecialFloatingPointValues = true
-		useArrayPolymorphism = false
-	}
-
-	/**
-	 * Internal HTTP client. Should not be used directly. Use [request] instead.
-	 * Exposed publicly to allow inline functions to work.
-	 */
-	public actual val client: HttpClient = HttpClient {
+	private val client: HttpClient = HttpClient {
 		followRedirects = httpClientOptions.followRedirects
 		expectSuccess = false
-
-		install(JsonFeature) {
-			serializer = KotlinxSerializer(json)
-		}
 
 		install(HttpTimeout) {
 			connectTimeoutMillis = httpClientOptions.connectTimeout
@@ -57,13 +42,13 @@ public actual open class KtorClient actual constructor(
 	}
 
 	@Suppress("ThrowsCount")
-	public actual suspend inline fun <reified T> request(
+	public actual override suspend fun request(
 		method: HttpMethod,
 		pathTemplate: String,
 		pathParameters: Map<String, Any?>,
 		queryParameters: Map<String, Any?>,
 		requestBody: Any?,
-	): Response<T> {
+	): RawResponse {
 		val url = createUrl(pathTemplate, pathParameters, queryParameters)
 
 		// Log HTTP call with access token removed
@@ -75,9 +60,9 @@ public actual open class KtorClient actual constructor(
 
 		@Suppress("SwallowedException", "TooGenericExceptionCaught")
 		try {
-			val response = client.request<HttpResponse> {
-				this.method = method
-				url(url)
+			val response = client.request<HttpResponse>(url) {
+				this.method = method.asKtorHttpMethod()
+
 				header(
 					key = HttpHeaders.Authorization,
 					value = AuthorizationHeaderBuilder.buildHeader(
@@ -89,15 +74,15 @@ public actual open class KtorClient actual constructor(
 					)
 				)
 
-				if (requestBody != null) body = defaultSerializer().write(requestBody)
+				ApiSerializer.encodeRequestBody(requestBody)?.let { encodedRequestBody ->
+					body = TextContent(encodedRequestBody, ContentType.Application.Json)
+				}
 			}
 
 			// Check HTTP status
 			if (!response.status.isSuccess()) throw InvalidStatusException(response.status.value)
-			// Read response body
-			val body = response.receive<T>()
 			// Return custom response instance
-			return Response(body, response.status.value, response.headers.toMap())
+			return RawResponse(response.content, response.status.value, response.headers.toMap())
 		} catch (err: UnknownHostException) {
 			logger.debug(err) { "HTTP host unreachable" }
 			throw TimeoutException(err.message)
@@ -120,5 +105,11 @@ public actual open class KtorClient actual constructor(
 			logger.error(err) { "Unknown error occurred!" }
 			throw err
 		}
+	}
+
+	private fun HttpMethod.asKtorHttpMethod(): KtorHttpMethod = when (this) {
+		HttpMethod.GET -> KtorHttpMethod.Get
+		HttpMethod.POST -> KtorHttpMethod.Post
+		HttpMethod.DELETE -> KtorHttpMethod.Delete
 	}
 }

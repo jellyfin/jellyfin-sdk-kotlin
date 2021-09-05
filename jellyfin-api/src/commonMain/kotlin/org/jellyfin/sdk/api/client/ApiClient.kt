@@ -67,4 +67,12 @@ public interface ApiClient {
 			else this
 		}
 	)
+
+	public suspend fun request(
+		method: HttpMethod = HttpMethod.GET,
+		pathTemplate: String,
+		pathParameters: Map<String, Any?> = emptyMap(),
+		queryParameters: Map<String, Any?> = emptyMap(),
+		requestBody: Any? = null,
+	): RawResponse
 }
