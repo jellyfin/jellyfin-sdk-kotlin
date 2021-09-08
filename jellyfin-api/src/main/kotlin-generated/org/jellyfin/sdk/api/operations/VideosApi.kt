@@ -102,6 +102,8 @@ public class VideosApi(
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
+	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
+	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
 	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
 	 * will be left to encoder defaults.
 	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
@@ -158,6 +160,8 @@ public class VideosApi(
 		startTimeTicks: Long? = null,
 		width: Int? = null,
 		height: Int? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
 		subtitleMethod: SubtitleDeliveryMethod? = null,
@@ -210,6 +214,8 @@ public class VideosApi(
 		queryParameters["startTimeTicks"] = startTimeTicks
 		queryParameters["width"] = width
 		queryParameters["height"] = height
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
 		queryParameters["videoBitRate"] = videoBitRate
 		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
 		queryParameters["subtitleMethod"] = subtitleMethod
@@ -279,6 +285,8 @@ public class VideosApi(
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
+	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
+	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
 	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
 	 * will be left to encoder defaults.
 	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
@@ -336,6 +344,8 @@ public class VideosApi(
 		startTimeTicks: Long? = null,
 		width: Int? = null,
 		height: Int? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
 		subtitleMethod: SubtitleDeliveryMethod? = null,
@@ -389,6 +399,8 @@ public class VideosApi(
 		queryParameters["startTimeTicks"] = startTimeTicks
 		queryParameters["width"] = width
 		queryParameters["height"] = height
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
 		queryParameters["videoBitRate"] = videoBitRate
 		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
 		queryParameters["subtitleMethod"] = subtitleMethod
@@ -456,6 +468,8 @@ public class VideosApi(
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
+	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
+	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
 	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
 	 * will be left to encoder defaults.
 	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
@@ -512,6 +526,8 @@ public class VideosApi(
 		startTimeTicks: Long? = null,
 		width: Int? = null,
 		height: Int? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
 		subtitleMethod: SubtitleDeliveryMethod? = null,
@@ -564,6 +580,8 @@ public class VideosApi(
 		queryParameters["startTimeTicks"] = startTimeTicks
 		queryParameters["width"] = width
 		queryParameters["height"] = height
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
 		queryParameters["videoBitRate"] = videoBitRate
 		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
 		queryParameters["subtitleMethod"] = subtitleMethod
@@ -633,6 +651,8 @@ public class VideosApi(
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
+	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
+	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
 	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
 	 * will be left to encoder defaults.
 	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
@@ -690,6 +710,8 @@ public class VideosApi(
 		startTimeTicks: Long? = null,
 		width: Int? = null,
 		height: Int? = null,
+		maxWidth: Int? = null,
+		maxHeight: Int? = null,
 		videoBitRate: Int? = null,
 		subtitleStreamIndex: Int? = null,
 		subtitleMethod: SubtitleDeliveryMethod? = null,
@@ -743,6 +765,8 @@ public class VideosApi(
 		queryParameters["startTimeTicks"] = startTimeTicks
 		queryParameters["width"] = width
 		queryParameters["height"] = height
+		queryParameters["maxWidth"] = maxWidth
+		queryParameters["maxHeight"] = maxHeight
 		queryParameters["videoBitRate"] = videoBitRate
 		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
 		queryParameters["subtitleMethod"] = subtitleMethod
