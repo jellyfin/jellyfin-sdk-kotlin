@@ -15,8 +15,8 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
-          distribution: adopt
-          java-version: 11
+          distribution: temurin
+          java-version: 17
           cache: gradle
       - name: Set STABLE_API_VERSION
         run: |
