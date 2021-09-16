@@ -18,6 +18,7 @@ import kotlinx.serialization.serializer
 import mu.KotlinLogging
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.util.ApiSerializer
+import org.jellyfin.sdk.api.operations.Api
 import org.jellyfin.sdk.model.api.SessionMessageType
 import org.jellyfin.sdk.model.api.SessionMessageType.*
 import org.jellyfin.sdk.model.socket.*
@@ -35,7 +36,7 @@ private val logger = KotlinLogging.logger {}
  */
 public class WebSocketApi(
 	private val api: ApiClient,
-) {
+) : Api {
 	private companion object {
 		private const val JSON_PROP_DATA = "Data"
 		private const val JSON_PROP_MESSAGE_ID = "MessageId"
