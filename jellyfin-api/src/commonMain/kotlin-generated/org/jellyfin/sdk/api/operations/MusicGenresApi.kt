@@ -25,7 +25,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 
 public class MusicGenresApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets a music genre, by name.
 	 *

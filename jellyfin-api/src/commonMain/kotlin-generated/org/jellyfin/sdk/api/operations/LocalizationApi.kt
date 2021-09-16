@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.api.ParentalRating
 
 public class LocalizationApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets known countries.
 	 */

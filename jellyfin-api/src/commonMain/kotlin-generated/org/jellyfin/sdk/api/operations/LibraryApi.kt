@@ -34,7 +34,7 @@ import org.jellyfin.sdk.model.api.ThemeMediaResult
 
 public class LibraryApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Deletes an item from the library and filesystem.
 	 *

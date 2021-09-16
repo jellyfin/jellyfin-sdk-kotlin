@@ -23,7 +23,7 @@ import org.jellyfin.sdk.model.api.SpecialViewOptionDto
 
 public class UserViewsApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Get user view grouping options.
 	 *

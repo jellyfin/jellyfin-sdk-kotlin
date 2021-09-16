@@ -28,7 +28,7 @@ import org.jellyfin.sdk.model.api.PlaybackInfoResponse
 
 public class MediaInfoApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Closes a media source.
 	 *

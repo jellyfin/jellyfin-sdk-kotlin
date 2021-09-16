@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.api.QueryFiltersLegacy
 
 public class FilterApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets query filters.
 	 *

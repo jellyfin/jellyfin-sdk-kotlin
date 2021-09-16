@@ -26,7 +26,7 @@ import org.jellyfin.sdk.model.api.SortOrder
 
 public class ChannelsApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Get all channel features.
 	 */

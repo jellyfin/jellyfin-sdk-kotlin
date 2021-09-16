@@ -28,7 +28,7 @@ import org.jellyfin.sdk.model.api.ImageType
 
 public class ImageApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Delete an item's image.
 	 *

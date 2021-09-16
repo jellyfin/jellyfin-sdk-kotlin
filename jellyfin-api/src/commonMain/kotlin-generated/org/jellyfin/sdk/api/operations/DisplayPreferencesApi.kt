@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.api.DisplayPreferencesDto
 
 public class DisplayPreferencesApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Get Display Preferences.
 	 *

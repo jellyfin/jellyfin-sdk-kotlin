@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.api.AuthenticationInfoQueryResult
 
 public class ApiKeyApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Create a new api key.
 	 *

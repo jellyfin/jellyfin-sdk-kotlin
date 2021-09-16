@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.api.ActivityLogEntryQueryResult
 
 public class ActivityLogApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets activity log entries.
 	 *

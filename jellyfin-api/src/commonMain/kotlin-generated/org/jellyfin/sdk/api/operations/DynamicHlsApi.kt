@@ -24,7 +24,7 @@ import org.jellyfin.sdk.model.api.SubtitleDeliveryMethod
 
 public class DynamicHlsApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets a video stream using HTTP live streaming.
 	 *

@@ -19,7 +19,7 @@ import org.jellyfin.sdk.api.client.extensions.delete
 
 public class HlsSegmentApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets the specified audio segment for an audio item.
 	 *

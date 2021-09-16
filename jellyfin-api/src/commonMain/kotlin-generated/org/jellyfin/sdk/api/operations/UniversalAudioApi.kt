@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.UUID
 
 public class UniversalAudioApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets an audio stream.
 	 *

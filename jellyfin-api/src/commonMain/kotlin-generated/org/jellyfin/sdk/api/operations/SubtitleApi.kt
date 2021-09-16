@@ -28,7 +28,7 @@ import org.jellyfin.sdk.model.api.UploadSubtitleDto
 
 public class SubtitleApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Deletes an external subtitle file.
 	 *

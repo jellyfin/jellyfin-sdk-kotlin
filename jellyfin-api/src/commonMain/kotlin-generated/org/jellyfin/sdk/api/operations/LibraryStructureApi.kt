@@ -28,7 +28,7 @@ import org.jellyfin.sdk.model.api.VirtualFolderInfo
 
 public class LibraryStructureApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Add a media path to a library.
 	 *

@@ -22,7 +22,7 @@ import org.jellyfin.sdk.model.api.RecommendationDto
 
 public class MoviesApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets movie recommendations.
 	 *

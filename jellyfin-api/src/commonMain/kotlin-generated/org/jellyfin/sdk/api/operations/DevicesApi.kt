@@ -23,7 +23,7 @@ import org.jellyfin.sdk.model.api.DeviceOptions
 
 public class DevicesApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Deletes a device.
 	 *

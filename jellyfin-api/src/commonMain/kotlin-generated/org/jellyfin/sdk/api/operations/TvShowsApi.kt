@@ -23,7 +23,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 
 public class TvShowsApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets episodes for a tv season.
 	 *

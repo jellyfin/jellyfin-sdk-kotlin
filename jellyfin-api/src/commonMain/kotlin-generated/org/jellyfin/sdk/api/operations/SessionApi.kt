@@ -34,7 +34,7 @@ import org.jellyfin.sdk.model.api.SessionInfo
 
 public class SessionApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Adds an additional user to a session.
 	 *

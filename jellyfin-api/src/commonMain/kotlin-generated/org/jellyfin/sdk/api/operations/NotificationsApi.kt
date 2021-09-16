@@ -24,7 +24,7 @@ import org.jellyfin.sdk.model.api.NotificationsSummaryDto
 
 public class NotificationsApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Sends a notification to all admins.
 	 */

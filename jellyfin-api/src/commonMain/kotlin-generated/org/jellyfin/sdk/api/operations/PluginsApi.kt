@@ -27,7 +27,7 @@ import org.jellyfin.sdk.model.api.Version
 
 public class PluginsApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Disable a plugin.
 	 *

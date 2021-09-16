@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.api.ConfigurationPageType
 
 public class DashboardApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets the configuration pages.
 	 *

@@ -22,7 +22,7 @@ import org.jellyfin.sdk.model.api.RepositoryInfo
 
 public class PackageApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Cancels a package installation.
 	 *

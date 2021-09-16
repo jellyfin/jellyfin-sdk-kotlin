@@ -29,7 +29,7 @@ import org.jellyfin.sdk.model.api.UserItemDataDto
 
 public class PlayStateApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Marks an item as played for user.
 	 *

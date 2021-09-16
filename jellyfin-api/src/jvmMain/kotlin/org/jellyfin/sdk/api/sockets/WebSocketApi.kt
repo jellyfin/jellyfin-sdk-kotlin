@@ -202,7 +202,9 @@ public class WebSocketApi(
 		require(messageId is String)
 
 		// Read type
-		val type = message[JSON_PROP_MESSAGE_TYPE]?.let { ApiSerializer.json.decodeFromJsonElement<SessionMessageType>(it) }
+		val type = message[JSON_PROP_MESSAGE_TYPE]?.let {
+			ApiSerializer.json.decodeFromJsonElement<SessionMessageType>(it)
+		}
 		requireNotNull(type)
 
 		// Get serializer for type

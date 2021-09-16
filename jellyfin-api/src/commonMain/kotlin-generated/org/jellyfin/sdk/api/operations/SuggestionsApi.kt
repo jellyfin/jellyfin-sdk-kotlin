@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 
 public class SuggestionsApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets suggestions.
 	 *

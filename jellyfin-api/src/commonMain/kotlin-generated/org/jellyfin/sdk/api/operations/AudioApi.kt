@@ -24,7 +24,7 @@ import org.jellyfin.sdk.model.api.SubtitleDeliveryMethod
 
 public class AudioApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets an audio stream.
 	 *

@@ -18,7 +18,7 @@ import org.jellyfin.sdk.api.client.extensions.post
 
 public class DlnaServerApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets Dlna media receiver registrar xml.
 	 *

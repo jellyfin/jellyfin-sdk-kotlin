@@ -24,7 +24,7 @@ import org.jellyfin.sdk.model.api.RemoteImageResult
 
 public class RemoteImageApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Downloads a remote image for an item.
 	 *
