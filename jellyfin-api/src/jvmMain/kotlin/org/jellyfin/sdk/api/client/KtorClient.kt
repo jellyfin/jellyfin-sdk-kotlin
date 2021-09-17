@@ -29,7 +29,7 @@ public actual open class KtorClient actual constructor(
 	override var clientInfo: ClientInfo,
 	override var deviceInfo: DeviceInfo,
 	override val httpClientOptions: HttpClientOptions,
-) : ApiClient {
+) : ApiClient() {
 	private val client: HttpClient = HttpClient {
 		followRedirects = httpClientOptions.followRedirects
 		expectSuccess = false

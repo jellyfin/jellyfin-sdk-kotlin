@@ -1,14 +1,18 @@
-public abstract interface class org/jellyfin/sdk/api/client/ApiClient {
+public abstract class org/jellyfin/sdk/api/client/ApiClient {
 	public static final field Companion Lorg/jellyfin/sdk/api/client/ApiClient$Companion;
 	public static final field QUERY_ACCESS_TOKEN Ljava/lang/String;
-	public abstract fun createUrl (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Z)Ljava/lang/String;
+	public fun <init> ()V
+	public fun createUrl (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Z)Ljava/lang/String;
+	public static synthetic fun createUrl$default (Lorg/jellyfin/sdk/api/client/ApiClient;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;ZILjava/lang/Object;)Ljava/lang/String;
 	public abstract fun getAccessToken ()Ljava/lang/String;
 	public abstract fun getBaseUrl ()Ljava/lang/String;
 	public abstract fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
 	public abstract fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
 	public abstract fun getHttpClientOptions ()Lorg/jellyfin/sdk/api/client/HttpClientOptions;
+	public final fun getOrCreateApi (Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/api/operations/Api;
 	public abstract fun getUserId ()Ljava/util/UUID;
 	public abstract fun request (Lorg/jellyfin/sdk/api/client/HttpMethod;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun request$default (Lorg/jellyfin/sdk/api/client/ApiClient;Lorg/jellyfin/sdk/api/client/HttpMethod;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Object;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public abstract fun setAccessToken (Ljava/lang/String;)V
 	public abstract fun setBaseUrl (Ljava/lang/String;)V
 	public abstract fun setClientInfo (Lorg/jellyfin/sdk/model/ClientInfo;)V
@@ -17,13 +21,6 @@ public abstract interface class org/jellyfin/sdk/api/client/ApiClient {
 }
 
 public final class org/jellyfin/sdk/api/client/ApiClient$Companion {
-	public static final field QUERY_ACCESS_TOKEN Ljava/lang/String;
-}
-
-public final class org/jellyfin/sdk/api/client/ApiClient$DefaultImpls {
-	public static fun createUrl (Lorg/jellyfin/sdk/api/client/ApiClient;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Z)Ljava/lang/String;
-	public static synthetic fun createUrl$default (Lorg/jellyfin/sdk/api/client/ApiClient;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;ZILjava/lang/Object;)Ljava/lang/String;
-	public static synthetic fun request$default (Lorg/jellyfin/sdk/api/client/ApiClient;Lorg/jellyfin/sdk/api/client/HttpMethod;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Object;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class org/jellyfin/sdk/api/client/HttpClientOptions {
@@ -56,7 +53,6 @@ public final class org/jellyfin/sdk/api/client/HttpMethod : java/lang/Enum {
 public class org/jellyfin/sdk/api/client/KtorClient : org/jellyfin/sdk/api/client/ApiClient {
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun createUrl (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Z)Ljava/lang/String;
 	public fun getAccessToken ()Ljava/lang/String;
 	public fun getBaseUrl ()Ljava/lang/String;
 	public fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
