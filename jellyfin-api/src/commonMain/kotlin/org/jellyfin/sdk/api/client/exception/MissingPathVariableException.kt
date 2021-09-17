@@ -5,5 +5,6 @@ package org.jellyfin.sdk.api.client.exception
  */
 public class MissingPathVariableException(
 	public val name: String,
-	public val path: String
-) : ApiClientException("Missing path variable $name for path $path")
+	public val path: String,
+	cause: Throwable? = null,
+) : ApiClientException("Missing path variable $name for path $path", cause)

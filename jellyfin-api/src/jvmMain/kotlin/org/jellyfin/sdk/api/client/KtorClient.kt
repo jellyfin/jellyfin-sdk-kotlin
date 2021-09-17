@@ -11,6 +11,7 @@ import io.ktor.network.sockets.*
 import io.ktor.util.*
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
+import org.jellyfin.sdk.api.client.exception.ApiClientException
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
@@ -58,7 +59,7 @@ public actual open class KtorClient actual constructor(
 			"$method $safeUrl"
 		}
 
-		@Suppress("SwallowedException", "TooGenericExceptionCaught")
+		@Suppress("TooGenericExceptionCaught")
 		try {
 			val response = client.request<HttpResponse>(url) {
 				this.method = method.asKtorHttpMethod()
@@ -85,25 +86,25 @@ public actual open class KtorClient actual constructor(
 			return RawResponse(response.content, response.status.value, response.headers.toMap())
 		} catch (err: UnknownHostException) {
 			logger.debug(err) { "HTTP host unreachable" }
-			throw TimeoutException(err.message)
+			throw TimeoutException("HTTP host unreachable", err)
 		} catch (err: HttpRequestTimeoutException) {
 			logger.debug(err) { "HTTP request timed out" }
-			throw TimeoutException(err.message)
+			throw TimeoutException("HTTP request timed out", err)
 		} catch (err: ConnectTimeoutException) {
 			logger.debug(err) { "Connection timed out" }
-			throw TimeoutException(err.message)
+			throw TimeoutException("Connection timed out", err)
 		} catch (err: SocketTimeoutException) {
 			logger.debug(err) { "Socket timed out" }
-			throw TimeoutException(err.message)
+			throw TimeoutException("Socket timed out", err)
 		} catch (err: NoTransformationFoundException) {
 			logger.error(err) { "Requested model does not exist!?" }
-			throw InvalidContentException(err.message)
+			throw InvalidContentException("Requested model does not exist!?", err)
 		} catch (err: SerializationException) {
 			logger.error(err) { "Deserialization failed" }
-			throw InvalidContentException(err.message)
+			throw InvalidContentException("Deserialization failed", err)
 		} catch (err: Throwable) {
 			logger.error(err) { "Unknown error occurred!" }
-			throw err
+			throw ApiClientException(message = "Unknown error occurred!", cause = err)
 		}
 	}
 

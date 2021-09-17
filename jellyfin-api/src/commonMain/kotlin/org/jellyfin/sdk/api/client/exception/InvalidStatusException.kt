@@ -5,4 +5,5 @@ package org.jellyfin.sdk.api.client.exception
  */
 public class InvalidStatusException(
 	public val status: Int,
-) : ApiClientException("Invalid HTTP status in response: $status")
+	cause: Throwable? = null,
+) : ApiClientException("Invalid HTTP status in response: $status", cause)
