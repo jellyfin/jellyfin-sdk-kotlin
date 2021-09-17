@@ -125,6 +125,69 @@ public final class org/jellyfin/sdk/api/client/exception/TimeoutException : org/
 	public fun <init> (Ljava/lang/String;)V
 }
 
+public final class org/jellyfin/sdk/api/client/extensions/ApiClientExtensionsKt {
+	public static final fun getActivityLog (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/ActivityLogApi;
+	public static final fun getApiKey (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/ApiKeyApi;
+	public static final fun getArtists (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/ArtistsApi;
+	public static final fun getAudio (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/AudioApi;
+	public static final fun getBranding (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/BrandingApi;
+	public static final fun getChannels (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/ChannelsApi;
+	public static final fun getCollection (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/CollectionApi;
+	public static final fun getConfiguration (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/ConfigurationApi;
+	public static final fun getDashboard (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/DashboardApi;
+	public static final fun getDevices (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/DevicesApi;
+	public static final fun getDisplayPreferences (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/DisplayPreferencesApi;
+	public static final fun getDlna (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/DlnaApi;
+	public static final fun getDlnaServer (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/DlnaServerApi;
+	public static final fun getDynamicHls (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/DynamicHlsApi;
+	public static final fun getEnvironment (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/EnvironmentApi;
+	public static final fun getFilter (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/FilterApi;
+	public static final fun getGenres (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/GenresApi;
+	public static final fun getHlsSegment (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/HlsSegmentApi;
+	public static final fun getImage (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/ImageApi;
+	public static final fun getImageByName (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/ImageByNameApi;
+	public static final fun getInstantMix (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/InstantMixApi;
+	public static final fun getItemLookup (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/ItemLookupApi;
+	public static final fun getItemRefresh (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/ItemRefreshApi;
+	public static final fun getItemUpdate (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/ItemUpdateApi;
+	public static final fun getItems (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/ItemsApi;
+	public static final fun getLibrary (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/LibraryApi;
+	public static final fun getLibraryStructure (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/LibraryStructureApi;
+	public static final fun getLiveTv (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/LiveTvApi;
+	public static final fun getLocalization (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/LocalizationApi;
+	public static final fun getMediaInfo (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/MediaInfoApi;
+	public static final fun getMovies (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/MoviesApi;
+	public static final fun getMusicGenres (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/MusicGenresApi;
+	public static final fun getNotifications (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/NotificationsApi;
+	public static final fun getPackage (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/PackageApi;
+	public static final fun getPersons (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/PersonsApi;
+	public static final fun getPlayState (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/PlayStateApi;
+	public static final fun getPlaylists (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/PlaylistsApi;
+	public static final fun getPlugins (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/PluginsApi;
+	public static final fun getQuickConnect (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/QuickConnectApi;
+	public static final fun getRemoteImage (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/RemoteImageApi;
+	public static final fun getScheduledTasks (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/ScheduledTasksApi;
+	public static final fun getSearch (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/SearchApi;
+	public static final fun getSession (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/SessionApi;
+	public static final fun getStartup (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/StartupApi;
+	public static final fun getStudios (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/StudiosApi;
+	public static final fun getSubtitle (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/SubtitleApi;
+	public static final fun getSuggestions (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/SuggestionsApi;
+	public static final fun getSyncPlay (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/SyncPlayApi;
+	public static final fun getSystem (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/SystemApi;
+	public static final fun getTimeSync (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/TimeSyncApi;
+	public static final fun getTrailers (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/TrailersApi;
+	public static final fun getTvShows (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/TvShowsApi;
+	public static final fun getUniversalAudio (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/UniversalAudioApi;
+	public static final fun getUser (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/UserApi;
+	public static final fun getUserLibrary (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/UserLibraryApi;
+	public static final fun getUserViews (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/UserViewsApi;
+	public static final fun getVideoAttachments (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/VideoAttachmentsApi;
+	public static final fun getVideoHls (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/VideoHlsApi;
+	public static final fun getVideos (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/VideosApi;
+	public static final fun getYears (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/YearsApi;
+}
+
 public final class org/jellyfin/sdk/api/client/extensions/MediaInfoApiExtensionsKt {
 	public static final fun detectBitrate (Lorg/jellyfin/sdk/api/operations/MediaInfoApi;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static final fun measureBitrate (Lorg/jellyfin/sdk/api/operations/MediaInfoApi;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
