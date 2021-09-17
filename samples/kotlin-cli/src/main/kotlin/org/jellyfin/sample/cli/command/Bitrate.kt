@@ -7,9 +7,9 @@ import kotlinx.coroutines.runBlocking
 import org.jellyfin.sample.cli.serverOption
 import org.jellyfin.sample.cli.tokenOption
 import org.jellyfin.sdk.Jellyfin
-import org.jellyfin.sdk.api.client.extensions.detectBitrate
-import org.jellyfin.sdk.api.client.extensions.measureBitrate
 import org.jellyfin.sdk.api.client.extensions.mediaInfo
+import org.jellyfin.sdk.api.extensions.detectBitrate
+import org.jellyfin.sdk.api.extensions.measureBitrate
 
 class Bitrate(
 	private val jellyfin: Jellyfin,

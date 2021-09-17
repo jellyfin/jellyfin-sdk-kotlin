@@ -2,6 +2,7 @@ package org.jellyfin.sample.cli.command
 
 import com.github.ajalt.clikt.core.CliktCommand
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.flow.collect
 import org.jellyfin.sample.cli.serverOption
 import org.jellyfin.sample.cli.tokenOption
 import org.jellyfin.sdk.Jellyfin

@@ -8,7 +8,6 @@ import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.extra.FileSpecBuilder
 import org.jellyfin.openapi.constants.Classes
 import org.jellyfin.openapi.constants.Packages
-import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.model.ApiService
 
 class ApiClientExtensionsBuilder(
@@ -23,7 +22,7 @@ class ApiClientExtensionsBuilder(
 
 	fun buildExtensionProperty(api: ApiService): PropertySpec {
 		val apiType = ClassName(Packages.API, api.name)
-		val propertyName = api.name.removeSuffix(Strings.API_SERVICE_SUFFIX).replaceFirstChar(Char::lowercase)
+		val propertyName = api.name.replaceFirstChar(Char::lowercase)
 
 		return PropertySpec.builder(propertyName, apiType).apply {
 			receiver(ClassName(Packages.API_CLIENT, Classes.API_CLIENT))
