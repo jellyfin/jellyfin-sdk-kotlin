@@ -8,6 +8,7 @@ import io.swagger.v3.parser.OpenAPIV3Parser
 import io.swagger.v3.parser.core.models.SwaggerParseResult
 import mu.KotlinLogging
 import org.jellyfin.openapi.builder.api.ApiBuilder
+import org.jellyfin.openapi.builder.api.ApiClientExtensionsBuilder
 import org.jellyfin.openapi.builder.extra.FileSpecBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiApiServicesBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiConstantsBuilder
@@ -23,6 +24,7 @@ class Generator(
 	private val openApiApiServicesBuilder: OpenApiApiServicesBuilder,
 	private val openApiConstantsBuilder: OpenApiConstantsBuilder,
 	private val apiBuilder: ApiBuilder,
+	private val apiClientExtensionsBuilder: ApiClientExtensionsBuilder,
 ) {
 	private fun parse(openApiJson: String): SwaggerParseResult {
 		val parseResult = OpenAPIV3Parser().readContents(openApiJson)
@@ -36,9 +38,12 @@ class Generator(
 		openApiModelBuilder.build(schema).let(fileSpecBuilder::build)
 	}
 
-	private fun createApis(paths: Paths): List<FileSpec> = openApiApiServicesBuilder.build(paths)
-		.map(apiBuilder::build)
-		.map(fileSpecBuilder::build)
+	private fun createApis(paths: Paths): List<FileSpec> = openApiApiServicesBuilder.build(paths).let { services ->
+		services
+			.map(apiBuilder::build)
+			.map(fileSpecBuilder::build)
+			.plus(services.let(apiClientExtensionsBuilder::build))
+	}
 
 	private fun createApiConstants(info: Info): FileSpec = openApiConstantsBuilder.build(info)
 		.let(fileSpecBuilder::build)

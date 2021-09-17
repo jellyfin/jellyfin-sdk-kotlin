@@ -2,6 +2,7 @@ package org.jellyfin.openapi.constants
 
 object Classes {
 	const val API_CLIENT = "ApiClient"
+	const val API_CLIENT_EXTENSIONS = "ApiClientExtensions"
 	const val API_RESPONSE = "Response"
 	const val API_INTERFACE = "Api"
 
