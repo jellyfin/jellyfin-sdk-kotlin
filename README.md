@@ -134,11 +134,14 @@ val api = jellyfin.createApi(
 
 ### Authenticating a user
 
-All API operations are grouped. To make use of an operation you need to construct an instance of the
-group and give it your API instance.
+All API operations are grouped. To make use of an operation you need to first get the group from your ApiClient
+instance. All groups are defined as extension functions and you can alternatively construct the API instances
+manually.
 
 ```kotlin
-val userApi = api.user
+val userApi = api.userApi
+// or
+val userApi = UserApi(api)
 
 try {
     val authenticationResult by userApi.authenticateUserByName(
@@ -163,8 +166,6 @@ Jellyfin uses WebSockets to communicate events like library changes and activiti
 used with the special WebSocketApi class.
 
 ```kotlin
-val webSocketApi = api.webSocket
-
 // Publish messages
 webSocketApi.publish(ActivityLogEntryStartMessage())
 webSocketApi.publish(SessionsStartMessage())

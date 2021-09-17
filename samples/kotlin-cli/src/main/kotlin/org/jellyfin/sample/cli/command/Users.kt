@@ -4,7 +4,7 @@ import com.github.ajalt.clikt.core.CliktCommand
 import kotlinx.coroutines.runBlocking
 import org.jellyfin.sample.cli.serverOption
 import org.jellyfin.sdk.Jellyfin
-import org.jellyfin.sdk.api.client.extensions.user
+import org.jellyfin.sdk.api.client.extensions.userApi
 
 class Users(
 	private val jellyfin: Jellyfin
@@ -13,9 +13,8 @@ class Users(
 
 	override fun run() = runBlocking {
 		val api = jellyfin.createApi(baseUrl = server)
-		val userApi = api.user
 
-		val users by userApi.getPublicUsers()
+		val users by api.userApi.getPublicUsers()
 
 		users.forEach {
 			println(it.name)

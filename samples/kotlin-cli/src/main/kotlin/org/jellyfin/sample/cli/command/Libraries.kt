@@ -5,8 +5,8 @@ import kotlinx.coroutines.runBlocking
 import org.jellyfin.sample.cli.serverOption
 import org.jellyfin.sample.cli.tokenOption
 import org.jellyfin.sdk.Jellyfin
-import org.jellyfin.sdk.api.client.extensions.session
-import org.jellyfin.sdk.api.client.extensions.userViews
+import org.jellyfin.sdk.api.client.extensions.sessionApi
+import org.jellyfin.sdk.api.client.extensions.userViewsApi
 
 class Libraries(
 	private val jellyfin: Jellyfin
@@ -16,14 +16,12 @@ class Libraries(
 
 	override fun run(): Unit = runBlocking {
 		val api = jellyfin.createApi(baseUrl = server, accessToken = token)
-		val sessionApi = api.session
-		val userViewsApi = api.userViews
 
-		val sessionInfo = sessionApi.getSessions(deviceId = api.deviceInfo.id).content.firstOrNull()
+		val sessionInfo = api.sessionApi.getSessions(deviceId = api.deviceInfo.id).content.firstOrNull()
 		if (sessionInfo == null) println("Unknown session")
 		api.userId = sessionInfo?.userId
 
-		val libraries by userViewsApi.getUserViews(includeHidden = false)
+		val libraries by api.userViewsApi.getUserViews(includeHidden = false)
 
 		if (libraries.items.isNullOrEmpty()) println("No libraries found")
 

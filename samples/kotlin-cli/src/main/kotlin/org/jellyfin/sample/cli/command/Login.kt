@@ -7,7 +7,7 @@ import kotlinx.coroutines.runBlocking
 import org.jellyfin.sample.cli.serverOption
 import org.jellyfin.sdk.Jellyfin
 import org.jellyfin.sdk.api.client.extensions.authenticateUserByName
-import org.jellyfin.sdk.api.client.extensions.user
+import org.jellyfin.sdk.api.client.extensions.userApi
 
 class Login(
 	private val jellyfin: Jellyfin
@@ -18,9 +18,8 @@ class Login(
 
 	override fun run() = runBlocking {
 		val api = jellyfin.createApi(baseUrl = server)
-		val userApi = api.user
 
-		val result by userApi.authenticateUserByName(username, password.orEmpty())
+		val result by api.userApi.authenticateUserByName(username, password.orEmpty())
 
 		if (result.accessToken != null) println(result.accessToken)
 	}

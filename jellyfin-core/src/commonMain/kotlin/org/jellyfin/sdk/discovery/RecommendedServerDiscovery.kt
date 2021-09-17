@@ -13,7 +13,7 @@ import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
-import org.jellyfin.sdk.api.client.extensions.system
+import org.jellyfin.sdk.api.client.extensions.systemApi
 import org.jellyfin.sdk.model.ServerVersion
 import org.jellyfin.sdk.model.api.PublicSystemInfo
 import org.jellyfin.sdk.util.currentTimeMillis
@@ -114,7 +114,7 @@ public class RecommendedServerDiscovery constructor(
 
 		@Suppress("TooGenericExceptionCaught")
 		val info: Result<Response<PublicSystemInfo>> = try {
-			val response = client.system.getPublicSystemInfo()
+			val response = client.systemApi.getPublicSystemInfo()
 			if (response.status == HTTP_OK) Result.success(response)
 			else Result.failure(InvalidStatusException(response.status))
 		} catch (err: TimeoutException) {

@@ -67,182 +67,182 @@ import org.jellyfin.sdk.api.operations.VideoHlsApi
 import org.jellyfin.sdk.api.operations.VideosApi
 import org.jellyfin.sdk.api.operations.YearsApi
 
-public val ApiClient.activityLog: ActivityLogApi
+public val ApiClient.activityLogApi: ActivityLogApi
 	get() = getOrCreateApi { ActivityLogApi(it) }
 
-public val ApiClient.apiKey: ApiKeyApi
+public val ApiClient.apiKeyApi: ApiKeyApi
 	get() = getOrCreateApi { ApiKeyApi(it) }
 
-public val ApiClient.artists: ArtistsApi
+public val ApiClient.artistsApi: ArtistsApi
 	get() = getOrCreateApi { ArtistsApi(it) }
 
-public val ApiClient.audio: AudioApi
+public val ApiClient.audioApi: AudioApi
 	get() = getOrCreateApi { AudioApi(it) }
 
-public val ApiClient.branding: BrandingApi
+public val ApiClient.brandingApi: BrandingApi
 	get() = getOrCreateApi { BrandingApi(it) }
 
-public val ApiClient.channels: ChannelsApi
+public val ApiClient.channelsApi: ChannelsApi
 	get() = getOrCreateApi { ChannelsApi(it) }
 
-public val ApiClient.collection: CollectionApi
+public val ApiClient.collectionApi: CollectionApi
 	get() = getOrCreateApi { CollectionApi(it) }
 
-public val ApiClient.configuration: ConfigurationApi
+public val ApiClient.configurationApi: ConfigurationApi
 	get() = getOrCreateApi { ConfigurationApi(it) }
 
-public val ApiClient.dashboard: DashboardApi
+public val ApiClient.dashboardApi: DashboardApi
 	get() = getOrCreateApi { DashboardApi(it) }
 
-public val ApiClient.devices: DevicesApi
+public val ApiClient.devicesApi: DevicesApi
 	get() = getOrCreateApi { DevicesApi(it) }
 
-public val ApiClient.displayPreferences: DisplayPreferencesApi
+public val ApiClient.displayPreferencesApi: DisplayPreferencesApi
 	get() = getOrCreateApi { DisplayPreferencesApi(it) }
 
-public val ApiClient.dlna: DlnaApi
+public val ApiClient.dlnaApi: DlnaApi
 	get() = getOrCreateApi { DlnaApi(it) }
 
-public val ApiClient.dlnaServer: DlnaServerApi
+public val ApiClient.dlnaServerApi: DlnaServerApi
 	get() = getOrCreateApi { DlnaServerApi(it) }
 
-public val ApiClient.dynamicHls: DynamicHlsApi
+public val ApiClient.dynamicHlsApi: DynamicHlsApi
 	get() = getOrCreateApi { DynamicHlsApi(it) }
 
-public val ApiClient.environment: EnvironmentApi
+public val ApiClient.environmentApi: EnvironmentApi
 	get() = getOrCreateApi { EnvironmentApi(it) }
 
-public val ApiClient.filter: FilterApi
+public val ApiClient.filterApi: FilterApi
 	get() = getOrCreateApi { FilterApi(it) }
 
-public val ApiClient.genres: GenresApi
+public val ApiClient.genresApi: GenresApi
 	get() = getOrCreateApi { GenresApi(it) }
 
-public val ApiClient.hlsSegment: HlsSegmentApi
+public val ApiClient.hlsSegmentApi: HlsSegmentApi
 	get() = getOrCreateApi { HlsSegmentApi(it) }
 
-public val ApiClient.image: ImageApi
+public val ApiClient.imageApi: ImageApi
 	get() = getOrCreateApi { ImageApi(it) }
 
-public val ApiClient.imageByName: ImageByNameApi
+public val ApiClient.imageByNameApi: ImageByNameApi
 	get() = getOrCreateApi { ImageByNameApi(it) }
 
-public val ApiClient.instantMix: InstantMixApi
+public val ApiClient.instantMixApi: InstantMixApi
 	get() = getOrCreateApi { InstantMixApi(it) }
 
-public val ApiClient.itemLookup: ItemLookupApi
+public val ApiClient.itemLookupApi: ItemLookupApi
 	get() = getOrCreateApi { ItemLookupApi(it) }
 
-public val ApiClient.itemRefresh: ItemRefreshApi
+public val ApiClient.itemRefreshApi: ItemRefreshApi
 	get() = getOrCreateApi { ItemRefreshApi(it) }
 
-public val ApiClient.items: ItemsApi
+public val ApiClient.itemsApi: ItemsApi
 	get() = getOrCreateApi { ItemsApi(it) }
 
-public val ApiClient.library: LibraryApi
+public val ApiClient.libraryApi: LibraryApi
 	get() = getOrCreateApi { LibraryApi(it) }
 
-public val ApiClient.itemUpdate: ItemUpdateApi
+public val ApiClient.itemUpdateApi: ItemUpdateApi
 	get() = getOrCreateApi { ItemUpdateApi(it) }
 
-public val ApiClient.libraryStructure: LibraryStructureApi
+public val ApiClient.libraryStructureApi: LibraryStructureApi
 	get() = getOrCreateApi { LibraryStructureApi(it) }
 
-public val ApiClient.liveTv: LiveTvApi
+public val ApiClient.liveTvApi: LiveTvApi
 	get() = getOrCreateApi { LiveTvApi(it) }
 
-public val ApiClient.localization: LocalizationApi
+public val ApiClient.localizationApi: LocalizationApi
 	get() = getOrCreateApi { LocalizationApi(it) }
 
-public val ApiClient.mediaInfo: MediaInfoApi
+public val ApiClient.mediaInfoApi: MediaInfoApi
 	get() = getOrCreateApi { MediaInfoApi(it) }
 
-public val ApiClient.movies: MoviesApi
+public val ApiClient.moviesApi: MoviesApi
 	get() = getOrCreateApi { MoviesApi(it) }
 
-public val ApiClient.musicGenres: MusicGenresApi
+public val ApiClient.musicGenresApi: MusicGenresApi
 	get() = getOrCreateApi { MusicGenresApi(it) }
 
-public val ApiClient.notifications: NotificationsApi
+public val ApiClient.notificationsApi: NotificationsApi
 	get() = getOrCreateApi { NotificationsApi(it) }
 
-public val ApiClient.`package`: PackageApi
+public val ApiClient.packageApi: PackageApi
 	get() = getOrCreateApi { PackageApi(it) }
 
-public val ApiClient.persons: PersonsApi
+public val ApiClient.personsApi: PersonsApi
 	get() = getOrCreateApi { PersonsApi(it) }
 
-public val ApiClient.playlists: PlaylistsApi
+public val ApiClient.playlistsApi: PlaylistsApi
 	get() = getOrCreateApi { PlaylistsApi(it) }
 
-public val ApiClient.playState: PlayStateApi
+public val ApiClient.playStateApi: PlayStateApi
 	get() = getOrCreateApi { PlayStateApi(it) }
 
-public val ApiClient.plugins: PluginsApi
+public val ApiClient.pluginsApi: PluginsApi
 	get() = getOrCreateApi { PluginsApi(it) }
 
-public val ApiClient.quickConnect: QuickConnectApi
+public val ApiClient.quickConnectApi: QuickConnectApi
 	get() = getOrCreateApi { QuickConnectApi(it) }
 
-public val ApiClient.remoteImage: RemoteImageApi
+public val ApiClient.remoteImageApi: RemoteImageApi
 	get() = getOrCreateApi { RemoteImageApi(it) }
 
-public val ApiClient.scheduledTasks: ScheduledTasksApi
+public val ApiClient.scheduledTasksApi: ScheduledTasksApi
 	get() = getOrCreateApi { ScheduledTasksApi(it) }
 
-public val ApiClient.search: SearchApi
+public val ApiClient.searchApi: SearchApi
 	get() = getOrCreateApi { SearchApi(it) }
 
-public val ApiClient.session: SessionApi
+public val ApiClient.sessionApi: SessionApi
 	get() = getOrCreateApi { SessionApi(it) }
 
-public val ApiClient.startup: StartupApi
+public val ApiClient.startupApi: StartupApi
 	get() = getOrCreateApi { StartupApi(it) }
 
-public val ApiClient.studios: StudiosApi
+public val ApiClient.studiosApi: StudiosApi
 	get() = getOrCreateApi { StudiosApi(it) }
 
-public val ApiClient.subtitle: SubtitleApi
+public val ApiClient.subtitleApi: SubtitleApi
 	get() = getOrCreateApi { SubtitleApi(it) }
 
-public val ApiClient.suggestions: SuggestionsApi
+public val ApiClient.suggestionsApi: SuggestionsApi
 	get() = getOrCreateApi { SuggestionsApi(it) }
 
-public val ApiClient.syncPlay: SyncPlayApi
+public val ApiClient.syncPlayApi: SyncPlayApi
 	get() = getOrCreateApi { SyncPlayApi(it) }
 
-public val ApiClient.system: SystemApi
+public val ApiClient.systemApi: SystemApi
 	get() = getOrCreateApi { SystemApi(it) }
 
-public val ApiClient.timeSync: TimeSyncApi
+public val ApiClient.timeSyncApi: TimeSyncApi
 	get() = getOrCreateApi { TimeSyncApi(it) }
 
-public val ApiClient.trailers: TrailersApi
+public val ApiClient.trailersApi: TrailersApi
 	get() = getOrCreateApi { TrailersApi(it) }
 
-public val ApiClient.tvShows: TvShowsApi
+public val ApiClient.tvShowsApi: TvShowsApi
 	get() = getOrCreateApi { TvShowsApi(it) }
 
-public val ApiClient.universalAudio: UniversalAudioApi
+public val ApiClient.universalAudioApi: UniversalAudioApi
 	get() = getOrCreateApi { UniversalAudioApi(it) }
 
-public val ApiClient.user: UserApi
+public val ApiClient.userApi: UserApi
 	get() = getOrCreateApi { UserApi(it) }
 
-public val ApiClient.userLibrary: UserLibraryApi
+public val ApiClient.userLibraryApi: UserLibraryApi
 	get() = getOrCreateApi { UserLibraryApi(it) }
 
-public val ApiClient.userViews: UserViewsApi
+public val ApiClient.userViewsApi: UserViewsApi
 	get() = getOrCreateApi { UserViewsApi(it) }
 
-public val ApiClient.videoAttachments: VideoAttachmentsApi
+public val ApiClient.videoAttachmentsApi: VideoAttachmentsApi
 	get() = getOrCreateApi { VideoAttachmentsApi(it) }
 
-public val ApiClient.videoHls: VideoHlsApi
+public val ApiClient.videoHlsApi: VideoHlsApi
 	get() = getOrCreateApi { VideoHlsApi(it) }
 
-public val ApiClient.videos: VideosApi
+public val ApiClient.videosApi: VideosApi
 	get() = getOrCreateApi { VideosApi(it) }
 
-public val ApiClient.years: YearsApi
+public val ApiClient.yearsApi: YearsApi
 	get() = getOrCreateApi { YearsApi(it) }
