@@ -138,7 +138,7 @@ All API operations are grouped. To make use of an operation you need to construc
 group and give it your API instance.
 
 ```kotlin
-val userApi = UserApi(api)
+val userApi = api.user
 
 try {
     val authenticationResult by userApi.authenticateUserByName(
@@ -163,7 +163,7 @@ Jellyfin uses WebSockets to communicate events like library changes and activiti
 used with the special WebSocketApi class.
 
 ```kotlin
-val webSocketApi = WebSocketApi(api)
+val webSocketApi = api.webSocket
 
 // Publish messages
 webSocketApi.publish(ActivityLogEntryStartMessage())

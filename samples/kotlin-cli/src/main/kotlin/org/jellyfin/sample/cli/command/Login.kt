@@ -4,10 +4,10 @@ import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import kotlinx.coroutines.runBlocking
+import org.jellyfin.sample.cli.serverOption
 import org.jellyfin.sdk.Jellyfin
 import org.jellyfin.sdk.api.client.extensions.authenticateUserByName
-import org.jellyfin.sdk.api.operations.UserApi
-import org.jellyfin.sample.cli.serverOption
+import org.jellyfin.sdk.api.client.extensions.user
 
 class Login(
 	private val jellyfin: Jellyfin
@@ -18,7 +18,7 @@ class Login(
 
 	override fun run() = runBlocking {
 		val api = jellyfin.createApi(baseUrl = server)
-		val userApi = UserApi(api)
+		val userApi = api.user
 
 		val result by userApi.authenticateUserByName(username, password.orEmpty())
 

@@ -5,8 +5,8 @@ import kotlinx.coroutines.runBlocking
 import org.jellyfin.sample.cli.serverOption
 import org.jellyfin.sample.cli.tokenOption
 import org.jellyfin.sdk.Jellyfin
-import org.jellyfin.sdk.api.operations.SessionApi
-import org.jellyfin.sdk.api.operations.UserViewsApi
+import org.jellyfin.sdk.api.client.extensions.session
+import org.jellyfin.sdk.api.client.extensions.userViews
 
 class Libraries(
 	private val jellyfin: Jellyfin
@@ -16,8 +16,8 @@ class Libraries(
 
 	override fun run(): Unit = runBlocking {
 		val api = jellyfin.createApi(baseUrl = server, accessToken = token)
-		val sessionApi = SessionApi(api)
-		val userViewsApi = UserViewsApi(api)
+		val sessionApi = api.session
+		val userViewsApi = api.userViews
 
 		val sessionInfo = sessionApi.getSessions(deviceId = api.deviceInfo.id).content.firstOrNull()
 		if (sessionInfo == null) println("Unknown session")

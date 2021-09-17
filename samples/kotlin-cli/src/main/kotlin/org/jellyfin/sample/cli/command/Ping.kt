@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.runBlocking
 import org.jellyfin.sample.cli.serverOption
 import org.jellyfin.sdk.Jellyfin
-import org.jellyfin.sdk.api.operations.SystemApi
+import org.jellyfin.sdk.api.client.extensions.system
 
 class Ping(
 	private val jellyfin: Jellyfin,
@@ -26,7 +26,7 @@ class Ping(
 
 	private suspend fun runSimple() {
 		val api = jellyfin.createApi(baseUrl = server)
-		val systemApi = SystemApi(api)
+		val systemApi = api.system
 
 		val result by systemApi.getPublicSystemInfo()
 

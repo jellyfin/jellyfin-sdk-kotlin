@@ -1,15 +1,14 @@
 package org.jellyfin.sample.cli.command
 
 import com.github.ajalt.clikt.core.CliktCommand
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
+import org.jellyfin.sample.cli.serverOption
+import org.jellyfin.sample.cli.tokenOption
 import org.jellyfin.sdk.Jellyfin
-import org.jellyfin.sdk.api.sockets.WebSocketApi
+import org.jellyfin.sdk.api.client.extensions.webSocket
 import org.jellyfin.sdk.model.socket.ActivityLogEntryStartMessage
 import org.jellyfin.sdk.model.socket.ScheduledTasksInfoStartMessage
 import org.jellyfin.sdk.model.socket.SessionsStartMessage
-import org.jellyfin.sample.cli.serverOption
-import org.jellyfin.sample.cli.tokenOption
 
 class Observe(
 	private val jellyfin: Jellyfin
@@ -19,7 +18,7 @@ class Observe(
 
 	override fun run() = runBlocking {
 		val api = jellyfin.createApi(baseUrl = server, accessToken = token)
-		val webSocketApi = WebSocketApi(api)
+		val webSocketApi = api.webSocket
 
 		println("Starting subscription")
 

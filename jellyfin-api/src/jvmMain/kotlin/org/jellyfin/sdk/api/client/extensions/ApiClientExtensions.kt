@@ -1,4 +1,4 @@
-package org.jellyfin.sdk.api.extensions
+package org.jellyfin.sdk.api.client.extensions
 
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.sockets.WebSocketApi
