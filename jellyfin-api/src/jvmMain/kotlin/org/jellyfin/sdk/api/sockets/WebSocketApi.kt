@@ -2,8 +2,6 @@ package org.jellyfin.sdk.api.sockets
 
 import io.ktor.client.*
 import io.ktor.client.features.*
-import io.ktor.client.features.json.*
-import io.ktor.client.features.json.serializer.*
 import io.ktor.client.features.websocket.*
 import io.ktor.http.*
 import io.ktor.http.cio.websocket.*
@@ -19,6 +17,7 @@ import kotlinx.serialization.json.*
 import kotlinx.serialization.serializer
 import mu.KotlinLogging
 import org.jellyfin.sdk.api.client.ApiClient
+import org.jellyfin.sdk.api.client.util.ApiSerializer
 import org.jellyfin.sdk.model.api.SessionMessageType
 import org.jellyfin.sdk.model.api.SessionMessageType.*
 import org.jellyfin.sdk.model.socket.*
@@ -96,15 +95,6 @@ public class WebSocketApi(
 		}
 
 		install(WebSockets)
-	}
-
-	private val json = Json {
-		// Based on DefaultJson
-		isLenient = false
-		ignoreUnknownKeys = true
-		allowSpecialFloatingPointValues = true
-		useArrayPolymorphism = false
-		encodeDefaults = true
 	}
 
 	private val scope = CoroutineScope(Dispatchers.IO)
@@ -203,7 +193,7 @@ public class WebSocketApi(
 		logger.info { "Received message $text" }
 
 		// Read JSON object from text
-		val message = json.parseToJsonElement(text)
+		val message = ApiSerializer.json.parseToJsonElement(text)
 		require(message is JsonObject)
 
 		// Read id
@@ -211,7 +201,7 @@ public class WebSocketApi(
 		require(messageId is String)
 
 		// Read type
-		val type = message[JSON_PROP_MESSAGE_TYPE]?.let { json.decodeFromJsonElement<SessionMessageType>(it) }
+		val type = message[JSON_PROP_MESSAGE_TYPE]?.let { ApiSerializer.json.decodeFromJsonElement<SessionMessageType>(it) }
 		requireNotNull(type)
 
 		// Get serializer for type
@@ -227,7 +217,7 @@ public class WebSocketApi(
 			else put(JSON_PROP_DATA, data!!)
 		}
 
-		return json.decodeFromJsonElement(dataSerializer, modifiedJson) as? IncomingSocketMessage
+		return ApiSerializer.json.decodeFromJsonElement(dataSerializer, modifiedJson) as? IncomingSocketMessage
 	}
 
 	/**
@@ -242,10 +232,10 @@ public class WebSocketApi(
 	 */
 	@ExperimentalSerializationApi
 	public suspend fun <T : OutgoingSocketMessage> publish(message: T, serializer: KSerializer<T>) {
-		val jsonObject = json.encodeToJsonElement(serializer, message).jsonObject
+		val jsonObject = ApiSerializer.json.encodeToJsonElement(serializer, message).jsonObject
 		val messageType = serializer.descriptor.serialName
 
-		val text = json.encodeToString(buildJsonObject {
+		val text = ApiSerializer.json.encodeToString(buildJsonObject {
 			put(JSON_PROP_MESSAGE_TYPE, messageType)
 
 			val data = jsonObject[JSON_PROP_DATA]

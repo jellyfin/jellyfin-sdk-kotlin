@@ -21,8 +21,8 @@ kotlin {
 				implementation(projects.jellyfinModel)
 
 				implementation(libs.kotlinx.coroutines)
+				implementation(libs.kotlinx.serialization.json)
 				implementation(libs.ktor.core)
-				implementation(libs.ktor.serialization)
 
 				implementation(libs.kotlin.logging)
 			}

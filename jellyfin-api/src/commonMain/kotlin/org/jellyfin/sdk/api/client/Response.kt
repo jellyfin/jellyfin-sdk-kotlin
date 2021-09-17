@@ -1,18 +1,15 @@
 package org.jellyfin.sdk.api.client
 
-import io.ktor.http.*
 import kotlin.jvm.JvmSynthetic
 import kotlin.reflect.KProperty
 
 /**
  * Response from a HTTP class in the [ApiClient].
- *
- * @param status - See [HttpStatusCode]
  */
 public class Response<T>(
 	public val content: T,
 	public val status: Int,
-	public val headers: Map<String, List<String>>
+	public val headers: Map<String, List<String>>,
 ) {
 	/**
 	 * Get the response content using property delegation.
