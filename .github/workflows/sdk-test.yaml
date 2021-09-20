@@ -14,14 +14,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        java: [11, 16]
+        java: [11, 17]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
-          distribution: adopt
+          distribution: temurin
           java-version: ${{ matrix.java }}
           cache: gradle
       - name: Run test task
@@ -35,8 +35,8 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
-          distribution: adopt
-          java-version: 11
+          distribution: temurin
+          java-version: 17
           cache: gradle
       - name: Run apiCheck task
         run: ./gradlew --build-cache --no-daemon --info apiCheck
@@ -51,8 +51,8 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
-          distribution: adopt
-          java-version: 11
+          distribution: temurin
+          java-version: 17
           cache: gradle
       - name: Run verifySources task
         run: ./gradlew --build-cache --no-daemon --info verifySources

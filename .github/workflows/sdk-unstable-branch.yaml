@@ -24,8 +24,8 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
-          distribution: adopt
-          java-version: 11
+          distribution: temurin
+          java-version: 17
           cache: gradle
       - name: Run updateApiSpecUnstable and apiDump tasks
         run: ./gradlew --build-cache --no-daemon --info updateApiSpecUnstable apiDump
