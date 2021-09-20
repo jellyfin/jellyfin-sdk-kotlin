@@ -1,11 +1,13 @@
 package org.jellyfin.sdk.api.client
 
 import org.jellyfin.sdk.api.client.util.UrlBuilder
+import org.jellyfin.sdk.api.operations.Api
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.UUID
+import kotlin.reflect.KClass
 
-public interface ApiClient {
+public abstract class ApiClient {
 	public companion object {
 		/**
 		 * The query parameter to use for access tokens. Used in the [createUrl] function when includeCredentials is
@@ -17,34 +19,34 @@ public interface ApiClient {
 	/**
 	 * URL to use as base for API endpoints. Should include the protocol and may contain a path.
 	 */
-	public var baseUrl: String?
+	public abstract var baseUrl: String?
 
 	/**
 	 * Access token to use for requests. Appended to all requests if set.
 	 */
-	public var accessToken: String?
+	public abstract var accessToken: String?
 
 	/**
 	 * User identifier that will automatically be used in user-specific API operations.
 	 * Should correspond to the same user as [accessToken].
 	 */
-	public var userId: UUID?
+	public abstract var userId: UUID?
 
 	/**
 	 * Information about the client / application send in all API requests.
 	 */
-	public var clientInfo: ClientInfo
+	public abstract var clientInfo: ClientInfo
 
 	/**
 	 * Information about the device send in all API requests. Only a single session is allowed per
 	 * device id.
 	 */
-	public var deviceInfo: DeviceInfo
+	public abstract var deviceInfo: DeviceInfo
 
 	/**
 	 * HTTP Options for this ApiClient.
 	 */
-	public val httpClientOptions: HttpClientOptions
+	public abstract val httpClientOptions: HttpClientOptions
 
 	/**
 	 * Create a complete url based on the [baseUrl] and given parameters.
@@ -53,7 +55,7 @@ public interface ApiClient {
 	 * When [includeCredentials] is true it will add the access token as query parameter using [QUERY_ACCESS_TOKEN]
 	 * to the url to make an authenticated request.
 	 */
-	public fun createUrl(
+	public open fun createUrl(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
@@ -68,11 +70,22 @@ public interface ApiClient {
 		}
 	)
 
-	public suspend fun request(
+	public abstract suspend fun request(
 		method: HttpMethod = HttpMethod.GET,
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
 		requestBody: Any? = null,
 	): RawResponse
+
+	private val apiInstances = mutableMapOf<KClass<out Api>, Api>()
+
+	@Suppress("UNCHECKED_CAST")
+	public fun <T : Api> getOrCreateApi(kclass: KClass<T>, create: (apiClient: ApiClient) -> T): T =
+		apiInstances.getOrPut(kclass) {
+			create(this)
+		} as T
+
+	public inline fun <reified T : Api> getOrCreateApi(noinline create: (apiClient: ApiClient) -> T): T =
+		getOrCreateApi(T::class, create)
 }

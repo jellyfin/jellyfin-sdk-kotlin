@@ -18,7 +18,7 @@ import org.jellyfin.sdk.model.api.MetadataRefreshMode
 
 public class ItemRefreshApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Refreshes metadata for an item.
 	 *

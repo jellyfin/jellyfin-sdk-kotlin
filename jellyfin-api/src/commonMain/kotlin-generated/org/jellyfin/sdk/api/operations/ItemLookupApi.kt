@@ -31,7 +31,7 @@ import org.jellyfin.sdk.model.api.TrailerInfoRemoteSearchQuery
 
 public class ItemLookupApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Applies search criteria to an item and refreshes metadata.
 	 *

@@ -30,7 +30,7 @@ import org.jellyfin.sdk.model.api.VideoType
 
 public class TrailersApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Finds movies and trailers similar to a given trailer.
 	 *

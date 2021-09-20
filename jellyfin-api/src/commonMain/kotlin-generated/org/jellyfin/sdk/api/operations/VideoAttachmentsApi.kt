@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.UUID
 
 public class VideoAttachmentsApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Get video attachment.
 	 *

@@ -7,9 +7,9 @@ import kotlinx.coroutines.runBlocking
 import org.jellyfin.sample.cli.serverOption
 import org.jellyfin.sample.cli.tokenOption
 import org.jellyfin.sdk.Jellyfin
-import org.jellyfin.sdk.api.client.extensions.detectBitrate
-import org.jellyfin.sdk.api.client.extensions.measureBitrate
-import org.jellyfin.sdk.api.operations.MediaInfoApi
+import org.jellyfin.sdk.api.client.extensions.mediaInfoApi
+import org.jellyfin.sdk.api.extensions.detectBitrate
+import org.jellyfin.sdk.api.extensions.measureBitrate
 
 class Bitrate(
 	private val jellyfin: Jellyfin,
@@ -27,11 +27,10 @@ class Bitrate(
 
 	override fun run(): Unit = runBlocking {
 		val api = jellyfin.createApi(baseUrl = server, accessToken = token)
-		val mediaInfoApi = MediaInfoApi(api)
 
 		val measurement = when {
-			bytes != null -> mediaInfoApi.measureBitrate(bytes!!)
-			else -> mediaInfoApi.detectBitrate()
+			bytes != null -> api.mediaInfoApi.measureBitrate(bytes!!)
+			else -> api.mediaInfoApi.detectBitrate()
 		}
 
 		echo(buildString {

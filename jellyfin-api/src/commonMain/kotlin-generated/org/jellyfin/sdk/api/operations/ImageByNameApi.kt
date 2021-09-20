@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.api.ImageByNameInfo
 
 public class ImageByNameApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Get General Image.
 	 *

@@ -25,7 +25,7 @@ import org.jellyfin.sdk.model.api.ItemFilter
 
 public class PersonsApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Get person by name.
 	 *

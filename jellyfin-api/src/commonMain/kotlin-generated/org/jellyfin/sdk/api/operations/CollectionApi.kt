@@ -22,7 +22,7 @@ import org.jellyfin.sdk.model.api.CollectionCreationResult
 
 public class CollectionApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Adds items to a collection.
 	 *

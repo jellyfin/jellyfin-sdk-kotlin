@@ -30,7 +30,7 @@ import org.jellyfin.sdk.model.api.PlaylistCreationResult
 
 public class PlaylistsApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Adds items to a playlist.
 	 *

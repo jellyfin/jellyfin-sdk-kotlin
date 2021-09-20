@@ -47,7 +47,7 @@ import org.jellyfin.sdk.model.api.TunerHostInfo
 
 public class LiveTvApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Adds a listings provider.
 	 *

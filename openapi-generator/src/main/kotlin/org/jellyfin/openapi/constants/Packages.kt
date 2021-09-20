@@ -17,6 +17,11 @@ object Packages {
 	const val API_CLIENT = "org.jellyfin.sdk.api.client"
 
 	/**
+	 * Package for client extensions
+	 */
+	const val API_CLIENT_EXTENSIONS = "org.jellyfin.sdk.api.client.extensions"
+
+	/**
 	 * Package for the API exceptions
 	 */
 	const val API_EXCEPTION = "org.jellyfin.sdk.api.client.exception"

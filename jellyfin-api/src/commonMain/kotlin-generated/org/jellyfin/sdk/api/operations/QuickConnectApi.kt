@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.api.QuickConnectState
 
 public class QuickConnectApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Temporarily activates quick connect for five minutes.
 	 */

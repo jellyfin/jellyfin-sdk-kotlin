@@ -1,4 +1,4 @@
-package org.jellyfin.sdk.api.client.extensions
+package org.jellyfin.sdk.api.extensions
 
 import org.jellyfin.sdk.api.operations.MediaInfoApi
 import org.jellyfin.sdk.model.BitrateMeasurement

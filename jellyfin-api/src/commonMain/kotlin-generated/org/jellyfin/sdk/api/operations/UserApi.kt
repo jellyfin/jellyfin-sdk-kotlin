@@ -35,7 +35,7 @@ import org.jellyfin.sdk.model.api.UserPolicy
 
 public class UserApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Authenticates a user.
 	 *

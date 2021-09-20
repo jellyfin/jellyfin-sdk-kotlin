@@ -24,7 +24,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 
 public class InstantMixApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Creates an instant playlist based on a given album.
 	 *

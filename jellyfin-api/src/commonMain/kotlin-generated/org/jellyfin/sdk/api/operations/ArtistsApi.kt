@@ -26,7 +26,7 @@ import org.jellyfin.sdk.model.api.ItemFilter
 
 public class ArtistsApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets all album artists from a given item, folder, or the entire library.
 	 *

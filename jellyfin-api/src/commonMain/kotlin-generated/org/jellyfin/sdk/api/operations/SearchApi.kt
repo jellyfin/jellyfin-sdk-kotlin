@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.api.SearchHintResult
 
 public class SearchApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets the search hint result.
 	 *

@@ -31,7 +31,7 @@ import org.jellyfin.sdk.model.api.VideoType
 
 public class ItemsApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets items based on a query.
 	 *

@@ -15,6 +15,9 @@ class ApiBuilder(
 	private val operationUrlHooks: Collection<OperationUrlHook>,
 ) : Builder<ApiService, JellyFile> {
 	override fun build(data: ApiService): JellyFile = TypeSpec.classBuilder(data.name).apply {
+		// Add "Api" interface as super
+		addSuperinterface(ClassName(Packages.API, Classes.API_INTERFACE))
+
 		// Add "api" value to constructor
 		val apiClientType = ClassName(Packages.API_CLIENT, Classes.API_CLIENT)
 		addProperty(PropertySpec.builder(Strings.API_CLIENT_PARAMETER_NAME, apiClientType, KModifier.PRIVATE)

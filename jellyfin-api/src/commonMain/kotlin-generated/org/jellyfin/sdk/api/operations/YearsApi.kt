@@ -25,7 +25,7 @@ import org.jellyfin.sdk.model.api.SortOrder
 
 public class YearsApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets a year.
 	 *

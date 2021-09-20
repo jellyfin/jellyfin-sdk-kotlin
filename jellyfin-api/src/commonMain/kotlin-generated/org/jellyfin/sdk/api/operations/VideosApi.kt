@@ -30,7 +30,7 @@ import org.jellyfin.sdk.model.api.SubtitleDeliveryMethod
 
 public class VideosApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Removes alternate video sources.
 	 *

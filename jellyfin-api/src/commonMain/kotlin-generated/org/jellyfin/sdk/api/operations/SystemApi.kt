@@ -23,7 +23,7 @@ import org.jellyfin.sdk.model.api.WakeOnLanInfo
 
 public class SystemApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Gets information about the request endpoint.
 	 */

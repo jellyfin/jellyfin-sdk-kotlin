@@ -1,9 +1,6 @@
 package org.jellyfin.openapi
 
-import org.jellyfin.openapi.builder.api.ApiBuilder
-import org.jellyfin.openapi.builder.api.ApiNameBuilder
-import org.jellyfin.openapi.builder.api.OperationBuilder
-import org.jellyfin.openapi.builder.api.OperationUrlBuilder
+import org.jellyfin.openapi.builder.api.*
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.builder.extra.FileSpecBuilder
@@ -16,7 +13,7 @@ import org.jellyfin.openapi.builder.openapi.*
 import org.koin.dsl.module
 
 val mainModule = module {
-	single { Generator(get(), get(), get(), get(), get()) }
+	single { Generator(get(), get(), get(), get(), get(), get()) }
 
 	// OpenAPI
 	single { OpenApiTypeBuilder(getAll()) }
@@ -30,6 +27,7 @@ val mainModule = module {
 	single { OperationBuilder(get(), get()) }
 	single { OperationUrlBuilder(get(), get()) }
 	single { ApiBuilder(get(), get(), getAll()) }
+	single { ApiClientExtensionsBuilder(get()) }
 
 	// Models
 	single { ModelBuilder(get(), get(), get()) }

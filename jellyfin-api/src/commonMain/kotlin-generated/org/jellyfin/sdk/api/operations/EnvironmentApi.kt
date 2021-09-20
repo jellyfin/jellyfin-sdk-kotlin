@@ -23,7 +23,7 @@ import org.jellyfin.sdk.model.api.ValidatePathDto
 
 public class EnvironmentApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Get Default directory browser.
 	 */

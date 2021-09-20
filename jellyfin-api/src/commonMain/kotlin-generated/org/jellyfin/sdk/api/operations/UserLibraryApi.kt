@@ -29,7 +29,7 @@ import org.jellyfin.sdk.model.api.UserItemDataDto
 
 public class UserLibraryApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Deletes a user's saved personal rating for an item.
 	 *

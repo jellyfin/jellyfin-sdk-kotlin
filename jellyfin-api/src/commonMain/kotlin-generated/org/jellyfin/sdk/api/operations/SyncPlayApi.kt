@@ -34,7 +34,7 @@ import org.jellyfin.sdk.model.api.SetShuffleModeRequestDto
 
 public class SyncPlayApi(
 	private val api: ApiClient
-) {
+) : Api {
 	/**
 	 * Notify SyncPlay group that member is buffering.
 	 */

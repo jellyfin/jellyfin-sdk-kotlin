@@ -8,10 +8,15 @@ import org.jellyfin.openapi.model.JellyFile
 class FileSpecBuilder : Builder<JellyFile, FileSpec> {
 	override fun build(data: JellyFile): FileSpec {
 		return FileSpec.builder(data.namespace, data.typeSpec.name!!).apply {
-			indent("\t")
-			addComment(Strings.FILE_TOP_WARNING)
+			buildHeader(this)
+
 			data.annotations.forEach { addAnnotation(it) }
 			addType(data.typeSpec)
 		}.build()
+	}
+
+	fun buildHeader(data: FileSpec.Builder) = data.apply {
+		indent("\t")
+		addComment(Strings.FILE_TOP_WARNING)
 	}
 }
