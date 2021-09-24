@@ -69,7 +69,7 @@ public data class ServerConfiguration(
 	 * Gets or sets client udp port range.
 	 */
 	@SerialName("UDPPortRange")
-	public val udpPortRange: String? = null,
+	public val udpPortRange: String,
 	/**
 	 * Gets or sets a value indicating whether IPV6 capability is enabled.
 	 */
@@ -93,7 +93,7 @@ public data class ServerConfiguration(
 	 * work.
 	 */
 	@SerialName("SSDPTracingFilter")
-	public val ssdpTracingFilter: String? = null,
+	public val ssdpTracingFilter: String,
 	/**
 	 * Gets or sets the number of times SSDP UDP messages are sent.
 	 */
@@ -116,7 +116,7 @@ public data class ServerConfiguration(
 	 * separated. `P:MediaBrowser.Model.Configuration.ServerConfiguration.IgnoreVirtualInterfaces`.
 	 */
 	@SerialName("VirtualInterfaceNames")
-	public val virtualInterfaceNames: String? = null,
+	public val virtualInterfaceNames: String,
 	/**
 	 * Gets or sets the time (in seconds) between the pings of SSDP gateway monitor.
 	 */
@@ -138,12 +138,12 @@ public data class ServerConfiguration(
 	 * Gets or sets the ports that HDHomerun uses.
 	 */
 	@SerialName("HDHomerunPortRange")
-	public val hdHomerunPortRange: String? = null,
+	public val hdHomerunPortRange: String,
 	/**
 	 * Gets or sets PublishedServerUri to advertise for specific subnets.
 	 */
 	@SerialName("PublishedServerUriBySubnet")
-	public val publishedServerUriBySubnet: List<String>? = null,
+	public val publishedServerUriBySubnet: List<String>,
 	/**
 	 * Gets or sets a value indicating whether Autodiscovery tracing is enabled.
 	 */
@@ -180,13 +180,13 @@ public data class ServerConfiguration(
 	 * Gets or sets the filesystem path of an X.509 certificate to use for SSL.
 	 */
 	@SerialName("CertificatePath")
-	public val certificatePath: String? = null,
+	public val certificatePath: String,
 	/**
 	 * Gets or sets the password required to access the X.509 certificate data in the file specified by
 	 * MediaBrowser.Model.Configuration.ServerConfiguration.CertificatePath.
 	 */
 	@SerialName("CertificatePassword")
-	public val certificatePassword: String? = null,
+	public val certificatePassword: String,
 	/**
 	 * Gets or sets a value indicating whether this instance is port authorized.
 	 */
@@ -213,34 +213,34 @@ public data class ServerConfiguration(
 	 * Gets or sets the metadata path.
 	 */
 	@SerialName("MetadataPath")
-	public val metadataPath: String? = null,
+	public val metadataPath: String,
 	@SerialName("MetadataNetworkPath")
-	public val metadataNetworkPath: String? = null,
+	public val metadataNetworkPath: String,
 	/**
 	 * Gets or sets the preferred metadata language.
 	 */
 	@SerialName("PreferredMetadataLanguage")
-	public val preferredMetadataLanguage: String? = null,
+	public val preferredMetadataLanguage: String,
 	/**
 	 * Gets or sets the metadata country code.
 	 */
 	@SerialName("MetadataCountryCode")
-	public val metadataCountryCode: String? = null,
+	public val metadataCountryCode: String,
 	/**
 	 * Gets or sets characters to be replaced with a ' ' in strings to create a sort name.
 	 */
 	@SerialName("SortReplaceCharacters")
-	public val sortReplaceCharacters: List<String>? = null,
+	public val sortReplaceCharacters: List<String>,
 	/**
 	 * Gets or sets characters to be removed from strings to create a sort name.
 	 */
 	@SerialName("SortRemoveCharacters")
-	public val sortRemoveCharacters: List<String>? = null,
+	public val sortRemoveCharacters: List<String>,
 	/**
 	 * Gets or sets words to be removed from strings to create a sort name.
 	 */
 	@SerialName("SortRemoveWords")
-	public val sortRemoveWords: List<String>? = null,
+	public val sortRemoveWords: List<String>,
 	/**
 	 * Gets or sets the minimum percentage of an item that must be played in order for playstate to be
 	 * updated.
@@ -295,19 +295,19 @@ public data class ServerConfiguration(
 	@SerialName("ImageSavingConvention")
 	public val imageSavingConvention: ImageSavingConvention,
 	@SerialName("MetadataOptions")
-	public val metadataOptions: List<MetadataOptions>? = null,
+	public val metadataOptions: List<MetadataOptions>,
 	@SerialName("SkipDeserializationForBasicTypes")
 	public val skipDeserializationForBasicTypes: Boolean,
 	@SerialName("ServerName")
-	public val serverName: String? = null,
+	public val serverName: String,
 	@SerialName("BaseUrl")
-	public val baseUrl: String? = null,
+	public val baseUrl: String,
 	@SerialName("UICulture")
-	public val uiCulture: String? = null,
+	public val uiCulture: String,
 	@SerialName("SaveMetadataHidden")
 	public val saveMetadataHidden: Boolean,
 	@SerialName("ContentTypes")
-	public val contentTypes: List<NameValuePair>? = null,
+	public val contentTypes: List<NameValuePair>,
 	@SerialName("RemoteClientBitrateLimit")
 	public val remoteClientBitrateLimit: Int,
 	@SerialName("EnableFolderView")
@@ -320,17 +320,17 @@ public data class ServerConfiguration(
 	 * Gets or sets the subnets that are deemed to make up the LAN.
 	 */
 	@SerialName("LocalNetworkSubnets")
-	public val localNetworkSubnets: List<String>? = null,
+	public val localNetworkSubnets: List<String>,
 	/**
 	 * Gets or sets the interface addresses which Jellyfin will bind to. If empty, all interfaces will
 	 * be used.
 	 */
 	@SerialName("LocalNetworkAddresses")
-	public val localNetworkAddresses: List<String>? = null,
+	public val localNetworkAddresses: List<String>,
 	@SerialName("CodecsUsed")
-	public val codecsUsed: List<String>? = null,
+	public val codecsUsed: List<String>,
 	@SerialName("PluginRepositories")
-	public val pluginRepositories: List<RepositoryInfo>? = null,
+	public val pluginRepositories: List<RepositoryInfo>,
 	@SerialName("EnableExternalContentInSuggestions")
 	public val enableExternalContentInSuggestions: Boolean,
 	/**
@@ -345,7 +345,7 @@ public data class ServerConfiguration(
 	 * `P:MediaBrowser.Model.Configuration.ServerConfiguration.IsRemoteIPFilterBlacklist`.
 	 */
 	@SerialName("RemoteIPFilter")
-	public val remoteIpFilter: List<String>? = null,
+	public val remoteIpFilter: List<String>,
 	/**
 	 * Gets or sets a value indicating whether
 	 * `P:MediaBrowser.Model.Configuration.ServerConfiguration.RemoteIPFilter` contains a blacklist or a
@@ -356,9 +356,9 @@ public data class ServerConfiguration(
 	@SerialName("ImageExtractionTimeoutMs")
 	public val imageExtractionTimeoutMs: Int,
 	@SerialName("PathSubstitutions")
-	public val pathSubstitutions: List<PathSubstitution>? = null,
+	public val pathSubstitutions: List<PathSubstitution>,
 	@SerialName("UninstalledPlugins")
-	public val uninstalledPlugins: List<String>? = null,
+	public val uninstalledPlugins: List<String>,
 	/**
 	 * Gets or sets a value indicating whether slow server responses should be logged as a warning.
 	 */
@@ -373,12 +373,12 @@ public data class ServerConfiguration(
 	 * Gets or sets the cors hosts.
 	 */
 	@SerialName("CorsHosts")
-	public val corsHosts: List<String>? = null,
+	public val corsHosts: List<String>,
 	/**
 	 * Gets or sets the known proxies.
 	 */
 	@SerialName("KnownProxies")
-	public val knownProxies: List<String>? = null,
+	public val knownProxies: List<String>,
 	/**
 	 * Gets or sets the number of days we should retain activity logs.
 	 */

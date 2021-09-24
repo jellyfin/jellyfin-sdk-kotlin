@@ -27,7 +27,7 @@ public data class RemoteImageInfo(
 	@SerialName("Url")
 	public val url: String? = null,
 	/**
-	 * Gets a url used for previewing a smaller version.
+	 * Gets or sets a url used for previewing a smaller version.
 	 */
 	@SerialName("ThumbnailUrl")
 	public val thumbnailUrl: String? = null,

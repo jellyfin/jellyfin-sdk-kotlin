@@ -17,5 +17,5 @@ public data class ContainerProfile(
 	@SerialName("Conditions")
 	public val conditions: List<ProfileCondition>? = null,
 	@SerialName("Container")
-	public val container: String? = null
+	public val container: String
 )

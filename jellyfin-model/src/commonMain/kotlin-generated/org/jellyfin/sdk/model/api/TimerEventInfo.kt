@@ -17,7 +17,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class TimerEventInfo(
 	@SerialName("Id")
-	public val id: String? = null,
+	public val id: String,
 	@SerialName("ProgramId")
 	public val programId: UUID? = null
 )

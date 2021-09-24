@@ -18,12 +18,12 @@ public data class ExternalIdInfo(
 	 * Gets or sets the display name of the external id provider (IE: IMDB, MusicBrainz, etc).
 	 */
 	@SerialName("Name")
-	public val name: String? = null,
+	public val name: String,
 	/**
 	 * Gets or sets the unique key for this id. This key should be unique across all providers.
 	 */
 	@SerialName("Key")
-	public val key: String? = null,
+	public val key: String,
 	/**
 	 * Gets or sets the specific media type for this id. This is used to distinguish between the
 	 * different
@@ -38,5 +38,5 @@ public data class ExternalIdInfo(
 	 * Gets or sets the URL format string.
 	 */
 	@SerialName("UrlFormatString")
-	public val urlFormatString: String? = null
+	public val urlFormatString: String
 )

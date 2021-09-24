@@ -40,7 +40,7 @@ public data class ChannelFeatures(
 	@SerialName("ContentTypes")
 	public val contentTypes: List<ChannelMediaContentType>? = null,
 	/**
-	 * Represents the maximum number of records the channel allows retrieving at a time.
+	 * Gets or sets the maximum number of records the channel allows retrieving at a time.
 	 */
 	@SerialName("MaxPageSize")
 	public val maxPageSize: Int? = null,
@@ -55,7 +55,7 @@ public data class ChannelFeatures(
 	@SerialName("DefaultSortFields")
 	public val defaultSortFields: List<ChannelItemSortField>? = null,
 	/**
-	 * Indicates if a sort ascending/descending toggle is supported or not.
+	 * Gets or sets a value indicating whether a sort ascending/descending toggle is supported.
 	 */
 	@SerialName("SupportsSortOrderToggle")
 	public val supportsSortOrderToggle: Boolean,

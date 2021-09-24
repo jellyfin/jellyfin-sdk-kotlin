@@ -31,7 +31,7 @@ public data class CultureDto(
 	@SerialName("TwoLetterISOLanguageName")
 	public val twoLetterIsoLanguageName: String? = null,
 	/**
-	 * Gets or sets the name of the three letter ISO language.
+	 * Gets the name of the three letter ISO language.
 	 */
 	@SerialName("ThreeLetterISOLanguageName")
 	public val threeLetterIsoLanguageName: String? = null,

@@ -13,12 +13,22 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Defines the MediaBrowser.Model.Dlna.DeviceProfile.
+ * A MediaBrowser.Model.Dlna.DeviceProfile represents a set of metadata which determines which
+ * content a certain device is able to play.
+ *
+ *
+ * Specifically, it defines the supported containers
+ * (`P:MediaBrowser.Model.Dlna.DeviceProfile.ContainerProfiles`) and
+ * codecs (`P:MediaBrowser.Model.Dlna.DeviceProfile.CodecProfiles`) (video and/or audio, including
+ * codec profiles and levels)
+ * the device is able to direct play (without transcoding or remuxing),
+ * as well as which containers/codecs to transcode to
+ * (`P:MediaBrowser.Model.Dlna.DeviceProfile.TranscodingProfiles`) in case it isn't.
  */
 @Serializable
 public data class DeviceProfile(
 	/**
-	 * Gets or sets the Name.
+	 * Gets or sets the name of this device profile.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
@@ -33,32 +43,32 @@ public data class DeviceProfile(
 	@SerialName("Identification")
 	public val identification: DeviceIdentification? = null,
 	/**
-	 * Gets or sets the FriendlyName.
+	 * Gets or sets the friendly name of the device profile, which can be shown to users.
 	 */
 	@SerialName("FriendlyName")
 	public val friendlyName: String? = null,
 	/**
-	 * Gets or sets the Manufacturer.
+	 * Gets or sets the manufacturer of the device which this profile represents.
 	 */
 	@SerialName("Manufacturer")
 	public val manufacturer: String? = null,
 	/**
-	 * Gets or sets the ManufacturerUrl.
+	 * Gets or sets an url for the manufacturer of the device which this profile represents.
 	 */
 	@SerialName("ManufacturerUrl")
 	public val manufacturerUrl: String? = null,
 	/**
-	 * Gets or sets the ModelName.
+	 * Gets or sets the model name of the device which this profile represents.
 	 */
 	@SerialName("ModelName")
 	public val modelName: String? = null,
 	/**
-	 * Gets or sets the ModelDescription.
+	 * Gets or sets the model description of the device which this profile represents.
 	 */
 	@SerialName("ModelDescription")
 	public val modelDescription: String? = null,
 	/**
-	 * Gets or sets the ModelNumber.
+	 * Gets or sets the model number of the device which this profile represents.
 	 */
 	@SerialName("ModelNumber")
 	public val modelNumber: String? = null,
@@ -68,7 +78,7 @@ public data class DeviceProfile(
 	@SerialName("ModelUrl")
 	public val modelUrl: String? = null,
 	/**
-	 * Gets or sets the SerialNumber.
+	 * Gets or sets the serial number of the device which this profile represents.
 	 */
 	@SerialName("SerialNumber")
 	public val serialNumber: String? = null,
@@ -91,7 +101,7 @@ public data class DeviceProfile(
 	 * Gets or sets the SupportedMediaTypes.
 	 */
 	@SerialName("SupportedMediaTypes")
-	public val supportedMediaTypes: String? = null,
+	public val supportedMediaTypes: String,
 	/**
 	 * Gets or sets the UserId.
 	 */
@@ -106,39 +116,40 @@ public data class DeviceProfile(
 	 * Gets or sets the MaxAlbumArtWidth.
 	 */
 	@SerialName("MaxAlbumArtWidth")
-	public val maxAlbumArtWidth: Int,
+	public val maxAlbumArtWidth: Int? = null,
 	/**
 	 * Gets or sets the MaxAlbumArtHeight.
 	 */
 	@SerialName("MaxAlbumArtHeight")
-	public val maxAlbumArtHeight: Int,
+	public val maxAlbumArtHeight: Int? = null,
 	/**
-	 * Gets or sets the MaxIconWidth.
+	 * Gets or sets the maximum allowed width of embedded icons.
 	 */
 	@SerialName("MaxIconWidth")
 	public val maxIconWidth: Int? = null,
 	/**
-	 * Gets or sets the MaxIconHeight.
+	 * Gets or sets the maximum allowed height of embedded icons.
 	 */
 	@SerialName("MaxIconHeight")
 	public val maxIconHeight: Int? = null,
 	/**
-	 * Gets or sets the MaxStreamingBitrate.
+	 * Gets or sets the maximum allowed bitrate for all streamed content.
 	 */
 	@SerialName("MaxStreamingBitrate")
 	public val maxStreamingBitrate: Int? = null,
 	/**
-	 * Gets or sets the MaxStaticBitrate.
+	 * Gets or sets the maximum allowed bitrate for statically streamed content (= direct played
+	 * files).
 	 */
 	@SerialName("MaxStaticBitrate")
 	public val maxStaticBitrate: Int? = null,
 	/**
-	 * Gets or sets the MusicStreamingTranscodingBitrate.
+	 * Gets or sets the maximum allowed bitrate for transcoded music streams.
 	 */
 	@SerialName("MusicStreamingTranscodingBitrate")
 	public val musicStreamingTranscodingBitrate: Int? = null,
 	/**
-	 * Gets or sets the MaxStaticMusicBitrate.
+	 * Gets or sets the maximum allowed bitrate for statically streamed (= direct played) music files.
 	 */
 	@SerialName("MaxStaticMusicBitrate")
 	public val maxStaticMusicBitrate: Int? = null,
@@ -182,35 +193,35 @@ public data class DeviceProfile(
 	 * Gets or sets the XmlRootAttributes.
 	 */
 	@SerialName("XmlRootAttributes")
-	public val xmlRootAttributes: List<XmlAttribute>? = null,
+	public val xmlRootAttributes: List<XmlAttribute>,
 	/**
 	 * Gets or sets the direct play profiles.
 	 */
 	@SerialName("DirectPlayProfiles")
-	public val directPlayProfiles: List<DirectPlayProfile>? = null,
+	public val directPlayProfiles: List<DirectPlayProfile>,
 	/**
 	 * Gets or sets the transcoding profiles.
 	 */
 	@SerialName("TranscodingProfiles")
-	public val transcodingProfiles: List<TranscodingProfile>? = null,
+	public val transcodingProfiles: List<TranscodingProfile>,
 	/**
-	 * Gets or sets the ContainerProfiles.
+	 * Gets or sets the container profiles.
 	 */
 	@SerialName("ContainerProfiles")
-	public val containerProfiles: List<ContainerProfile>? = null,
+	public val containerProfiles: List<ContainerProfile>,
 	/**
-	 * Gets or sets the CodecProfiles.
+	 * Gets or sets the codec profiles.
 	 */
 	@SerialName("CodecProfiles")
-	public val codecProfiles: List<CodecProfile>? = null,
+	public val codecProfiles: List<CodecProfile>,
 	/**
 	 * Gets or sets the ResponseProfiles.
 	 */
 	@SerialName("ResponseProfiles")
-	public val responseProfiles: List<ResponseProfile>? = null,
+	public val responseProfiles: List<ResponseProfile>,
 	/**
-	 * Gets or sets the SubtitleProfiles.
+	 * Gets or sets the subtitle profiles.
 	 */
 	@SerialName("SubtitleProfiles")
-	public val subtitleProfiles: List<SubtitleProfile>? = null
+	public val subtitleProfiles: List<SubtitleProfile>
 )

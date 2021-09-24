@@ -10,16 +10,28 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Enum ConfigurationPageType.
+ * Enum HardwareEncodingType.
  */
 @Serializable
-public enum class ConfigurationPageType(
+public enum class HardwareEncodingType(
 	public val serialName: String
 ) {
-	@SerialName("PluginConfiguration")
-	PLUGIN_CONFIGURATION("PluginConfiguration"),
-	@SerialName("None")
-	NONE("None"),
+	@SerialName("AMF")
+	AMF("AMF"),
+	@SerialName("QSV")
+	QSV("QSV"),
+	@SerialName("NVENC")
+	NVENC("NVENC"),
+	@SerialName("OMX")
+	OMX("OMX"),
+	@SerialName("V4L2M2M")
+	V4L2M2M("V4L2M2M"),
+	@SerialName("MediaCodec")
+	MEDIA_CODEC("MediaCodec"),
+	@SerialName("VAAPI")
+	VAAPI("VAAPI"),
+	@SerialName("VideoToolBox")
+	VIDEO_TOOL_BOX("VideoToolBox"),
 	;
 
 	public override fun toString(): String = serialName

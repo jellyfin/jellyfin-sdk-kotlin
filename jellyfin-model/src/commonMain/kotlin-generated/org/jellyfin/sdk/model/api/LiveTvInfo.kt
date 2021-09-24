@@ -17,7 +17,7 @@ public data class LiveTvInfo(
 	 * Gets or sets the services.
 	 */
 	@SerialName("Services")
-	public val services: List<LiveTvServiceInfo>? = null,
+	public val services: List<LiveTvServiceInfo>,
 	/**
 	 * Gets or sets a value indicating whether this instance is enabled.
 	 */
@@ -27,5 +27,5 @@ public data class LiveTvInfo(
 	 * Gets or sets the enabled users.
 	 */
 	@SerialName("EnabledUsers")
-	public val enabledUsers: List<String>? = null
+	public val enabledUsers: List<String>
 )

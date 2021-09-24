@@ -89,7 +89,7 @@ public class StartupApi(
 	/**
 	 * Sets the user name and password.
 	 */
-	public suspend fun updateStartupUser(`data`: StartupUserDto? = null): Response<Unit> {
+	public suspend fun updateStartupUser(`data`: StartupUserDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Startup/User", pathParameters, queryParameters, data)

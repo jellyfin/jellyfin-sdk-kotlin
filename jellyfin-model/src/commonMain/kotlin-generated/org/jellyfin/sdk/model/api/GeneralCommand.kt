@@ -25,5 +25,5 @@ public data class GeneralCommand(
 	@SerialName("ControllingUserId")
 	public val controllingUserId: UUID,
 	@SerialName("Arguments")
-	public val arguments: Map<String, String>? = null
+	public val arguments: Map<String, String>
 )

@@ -38,7 +38,7 @@ public data class SessionInfo(
 	@SerialName("RemoteEndPoint")
 	public val remoteEndPoint: String? = null,
 	/**
-	 * Gets or sets the playable media types.
+	 * Gets the playable media types.
 	 */
 	@SerialName("PlayableMediaTypes")
 	public val playableMediaTypes: List<String>? = null,
@@ -83,7 +83,8 @@ public data class SessionInfo(
 	@SerialName("DeviceType")
 	public val deviceType: String? = null,
 	/**
-	 * Gets or sets the now playing item.
+	 * This is strictly used as a data transfer object from the api layer.
+	 * This holds information about a BaseItem in a format that is convenient for the client.
 	 */
 	@SerialName("NowPlayingItem")
 	public val nowPlayingItem: BaseItemDto? = null,
@@ -130,7 +131,7 @@ public data class SessionInfo(
 	@SerialName("UserPrimaryImageTag")
 	public val userPrimaryImageTag: String? = null,
 	/**
-	 * Gets or sets the supported commands.
+	 * Gets the supported commands.
 	 */
 	@SerialName("SupportedCommands")
 	public val supportedCommands: List<GeneralCommandType>? = null

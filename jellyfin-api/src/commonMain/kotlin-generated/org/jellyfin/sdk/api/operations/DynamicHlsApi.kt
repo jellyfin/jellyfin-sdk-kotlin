@@ -459,7 +459,8 @@ public class DynamicHlsApi(
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
+	 * (deprecated), wmv.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -643,7 +644,8 @@ public class DynamicHlsApi(
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
+	 * (deprecated), wmv.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -823,7 +825,8 @@ public class DynamicHlsApi(
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
+	 * (deprecated), wmv.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -1002,7 +1005,8 @@ public class DynamicHlsApi(
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
+	 * (deprecated), wmv.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -1180,7 +1184,8 @@ public class DynamicHlsApi(
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
+	 * (deprecated), wmv.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -1356,7 +1361,8 @@ public class DynamicHlsApi(
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
+	 * (deprecated), wmv.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -1884,7 +1890,8 @@ public class DynamicHlsApi(
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
+	 * (deprecated), wmv.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -2057,7 +2064,8 @@ public class DynamicHlsApi(
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
+	 * (deprecated), wmv.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first

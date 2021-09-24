@@ -26,12 +26,12 @@ public data class ThemeMediaResult(
 	@SerialName("Items")
 	public val items: List<BaseItemDto>? = null,
 	/**
-	 * The total number of records available.
+	 * Gets or sets the total number of records available.
 	 */
 	@SerialName("TotalRecordCount")
 	public val totalRecordCount: Int,
 	/**
-	 * The index of the first record in Items.
+	 * Gets or sets the index of the first record in Items.
 	 */
 	@SerialName("StartIndex")
 	public val startIndex: Int,

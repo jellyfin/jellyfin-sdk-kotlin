@@ -20,6 +20,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.DeviceInfo
 import org.jellyfin.sdk.model.api.DeviceInfoQueryResult
 import org.jellyfin.sdk.model.api.DeviceOptions
+import org.jellyfin.sdk.model.api.DeviceOptionsDto
 
 public class DevicesApi(
 	private val api: ApiClient
@@ -88,7 +89,7 @@ public class DevicesApi(
 	 *
 	 * @param id Device Id.
 	 */
-	public suspend fun updateDeviceOptions(id: String, `data`: DeviceOptions): Response<Unit> {
+	public suspend fun updateDeviceOptions(id: String, `data`: DeviceOptionsDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["id"] = id

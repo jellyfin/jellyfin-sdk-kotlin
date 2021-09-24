@@ -16,6 +16,7 @@ import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
+import org.jellyfin.sdk.model.DateTime
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.ImageType
@@ -104,6 +105,7 @@ public class TvShowsApi(
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 * @param enableUserData Optional. Include user data.
+	 * @param nextUpDateCutoff Optional. Starting date of shows to show in Next Up section.
 	 * @param enableTotalRecordCount Whether to enable the total records count. Defaults to true.
 	 * @param disableFirstEpisode Whether to disable sending the first episode in a series as next up.
 	 */
@@ -118,6 +120,7 @@ public class TvShowsApi(
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
+		nextUpDateCutoff: DateTime? = null,
 		enableTotalRecordCount: Boolean? = true,
 		disableFirstEpisode: Boolean? = false
 	): Response<BaseItemDtoQueryResult> {
@@ -133,6 +136,7 @@ public class TvShowsApi(
 		queryParameters["imageTypeLimit"] = imageTypeLimit
 		queryParameters["enableImageTypes"] = enableImageTypes
 		queryParameters["enableUserData"] = enableUserData
+		queryParameters["nextUpDateCutoff"] = nextUpDateCutoff
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		queryParameters["disableFirstEpisode"] = disableFirstEpisode
 		val data = null

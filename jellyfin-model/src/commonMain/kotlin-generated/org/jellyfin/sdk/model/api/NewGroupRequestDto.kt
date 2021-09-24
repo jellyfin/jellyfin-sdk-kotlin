@@ -18,5 +18,5 @@ public data class NewGroupRequestDto(
 	 * Gets or sets the group name.
 	 */
 	@SerialName("GroupName")
-	public val groupName: String? = null
+	public val groupName: String
 )

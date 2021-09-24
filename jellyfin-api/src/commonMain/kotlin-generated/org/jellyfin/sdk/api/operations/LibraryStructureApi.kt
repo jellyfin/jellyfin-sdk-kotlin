@@ -57,7 +57,7 @@ public class LibraryStructureApi(
 		collectionType: CollectionTypeOptions? = null,
 		paths: Collection<String>? = emptyList(),
 		refreshLibrary: Boolean? = false,
-		`data`: AddVirtualFolderDto? = null
+		`data`: AddVirtualFolderDto
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -147,7 +147,7 @@ public class LibraryStructureApi(
 	/**
 	 * Update library options.
 	 */
-	public suspend fun updateLibraryOptions(`data`: UpdateLibraryOptionsDto? = null): Response<Unit> {
+	public suspend fun updateLibraryOptions(`data`: UpdateLibraryOptionsDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Library/VirtualFolders/LibraryOptions", pathParameters,

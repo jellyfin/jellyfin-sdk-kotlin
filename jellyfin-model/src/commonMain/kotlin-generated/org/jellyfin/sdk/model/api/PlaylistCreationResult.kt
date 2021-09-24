@@ -12,5 +12,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class PlaylistCreationResult(
 	@SerialName("Id")
-	public val id: String? = null
+	public val id: String
 )
