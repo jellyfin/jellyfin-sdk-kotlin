@@ -1,19 +1,19 @@
 public final class org/jellyfin/sdk/Jellyfin {
 	public static final field Companion Lorg/jellyfin/sdk/Jellyfin$Companion;
-	public fun <init> (Lkotlin/jvm/functions/Function1;)V
 	public fun <init> (Lorg/jellyfin/sdk/JellyfinOptions$Builder;)V
 	public fun <init> (Lorg/jellyfin/sdk/JellyfinOptions;)V
-	public final fun createApi ()Lorg/jellyfin/sdk/api/client/KtorClient;
-	public final fun createApi (Ljava/lang/String;)Lorg/jellyfin/sdk/api/client/KtorClient;
-	public final fun createApi (Ljava/lang/String;Ljava/lang/String;)Lorg/jellyfin/sdk/api/client/KtorClient;
-	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;)Lorg/jellyfin/sdk/api/client/KtorClient;
-	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;)Lorg/jellyfin/sdk/api/client/KtorClient;
-	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;)Lorg/jellyfin/sdk/api/client/KtorClient;
-	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;)Lorg/jellyfin/sdk/api/client/KtorClient;
-	public static synthetic fun createApi$default (Lorg/jellyfin/sdk/Jellyfin;Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/client/KtorClient;
+	public final fun createApi ()Lorg/jellyfin/sdk/api/client/ApiClient;
+	public final fun createApi (Ljava/lang/String;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public final fun createApi (Ljava/lang/String;Ljava/lang/String;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public static synthetic fun createApi$default (Lorg/jellyfin/sdk/Jellyfin;Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/client/ApiClient;
 	public final fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
 	public final fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
 	public final fun getDiscovery ()Lorg/jellyfin/sdk/discovery/DiscoveryService;
+	public final fun getOptions ()Lorg/jellyfin/sdk/JellyfinOptions;
 }
 
 public final class org/jellyfin/sdk/Jellyfin$Companion {
@@ -21,14 +21,20 @@ public final class org/jellyfin/sdk/Jellyfin$Companion {
 	public final fun getMinimumVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
 }
 
+public final class org/jellyfin/sdk/JellyfinKt {
+	public static final fun createJellyfin (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/Jellyfin;
+}
+
 public final class org/jellyfin/sdk/JellyfinOptions {
 	public static final field Companion Lorg/jellyfin/sdk/JellyfinOptions$Companion;
-	public fun <init> (Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;)V
+	public fun <init> (Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;)V
 	public final fun component1 ()Lorg/jellyfin/sdk/model/ClientInfo;
 	public final fun component2 ()Lorg/jellyfin/sdk/model/DeviceInfo;
-	public final fun copy (Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;)Lorg/jellyfin/sdk/JellyfinOptions;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/JellyfinOptions;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;ILjava/lang/Object;)Lorg/jellyfin/sdk/JellyfinOptions;
+	public final fun component3 ()Lorg/jellyfin/sdk/util/ApiClientFactory;
+	public final fun copy (Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;)Lorg/jellyfin/sdk/JellyfinOptions;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/JellyfinOptions;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;ILjava/lang/Object;)Lorg/jellyfin/sdk/JellyfinOptions;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApiClientFactory ()Lorg/jellyfin/sdk/util/ApiClientFactory;
 	public final fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
 	public final fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
 	public fun hashCode ()I
@@ -38,14 +44,19 @@ public final class org/jellyfin/sdk/JellyfinOptions {
 public final class org/jellyfin/sdk/JellyfinOptions$Builder {
 	public fun <init> ()V
 	public final fun build ()Lorg/jellyfin/sdk/JellyfinOptions;
+	public final fun getApiClientFactory ()Lorg/jellyfin/sdk/util/ApiClientFactory;
 	public final fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
 	public final fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
+	public final fun setApiClientFactory (Lorg/jellyfin/sdk/util/ApiClientFactory;)V
 	public final fun setClientInfo (Lorg/jellyfin/sdk/model/ClientInfo;)V
 	public final fun setDeviceInfo (Lorg/jellyfin/sdk/model/DeviceInfo;)V
 }
 
 public final class org/jellyfin/sdk/JellyfinOptions$Companion {
-	public final fun build (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/JellyfinOptions;
+}
+
+public final class org/jellyfin/sdk/JellyfinOptionsKt {
+	public static final fun createJellyfinOptions (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/JellyfinOptions;
 }
 
 public final class org/jellyfin/sdk/discovery/AddressCandidateHelper {
@@ -65,7 +76,7 @@ public final class org/jellyfin/sdk/discovery/AddressCandidateHelper$Companion {
 }
 
 public final class org/jellyfin/sdk/discovery/DiscoveryBroadcastAddressesProvider {
-	public fun <init> ()V
+	public fun <init> (Lorg/jellyfin/sdk/JellyfinOptions;)V
 	public final fun getBroadcastAddresses (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
@@ -85,7 +96,7 @@ public final class org/jellyfin/sdk/discovery/LocalServerDiscovery {
 	public static final field DISCOVERY_MESSAGE Ljava/lang/String;
 	public static final field DISCOVERY_PORT I
 	public static final field DISCOVERY_RECEIVE_BUFFER I
-	public fun <init> ()V
+	public fun <init> (Lorg/jellyfin/sdk/JellyfinOptions;)V
 	public final fun discover (II)Lkotlinx/coroutines/flow/Flow;
 	public static synthetic fun discover$default (Lorg/jellyfin/sdk/discovery/LocalServerDiscovery;IIILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 }
@@ -191,5 +202,9 @@ public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$Unsupported
 	public final fun getVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class org/jellyfin/sdk/util/ApiClientFactory {
+	public abstract fun create (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;)Lorg/jellyfin/sdk/api/client/ApiClient;
 }
 
