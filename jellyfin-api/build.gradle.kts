@@ -37,15 +37,6 @@ kotlin {
 		val commonTest by getting {
 			dependencies {
 				implementation(projects.testutils)
-				implementation(libs.kotlin.test.annotations.common)
-				implementation(libs.kotlin.test.common)
-			}
-		}
-
-		val jvmTest by getting {
-			dependencies {
-				implementation(libs.kotlin.test.junit)
-				implementation(libs.slf4j.simple)
 			}
 		}
 	}

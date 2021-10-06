@@ -35,8 +35,7 @@ kotlin {
 
 		val commonTest by getting {
 			dependencies {
-				implementation(libs.slf4j.simple)
-				implementation(libs.kotlin.test.junit)
+				implementation(projects.testutils)
 			}
 		}
 

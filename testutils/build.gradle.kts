@@ -17,9 +17,16 @@ kotlin {
 		val commonMain by getting {
 			dependencies {
 				api(libs.kotlinx.coroutines)
+				api(libs.kotlin.test.common)
+				api(libs.kotlin.test.annotations.common)
 			}
 		}
 
-		val jvmMain by getting {}
+		val jvmMain by getting {
+			dependencies {
+				implementation(libs.slf4j.simple)
+				api(libs.kotlin.test.junit)
+			}
+		}
 	}
 }
