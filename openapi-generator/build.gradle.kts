@@ -33,7 +33,7 @@ dependencies {
 	runtimeOnly(libs.slf4j.simple)
 
 	// Testing
-	testImplementation(libs.kotlin.test.junit)
+	testImplementation(projects.testutils)
 }
 
 val defaultConfig = mapOf(
