@@ -19,8 +19,9 @@ public object ApiSerializer {
 		return json.encodeToString(requestBody::class.serializer() as KSerializer<Any>, requestBody)
 	}
 
-	public suspend inline fun <reified T : Any> decodeResponseBody(responseBody: ByteReadChannel): T = when (T::class) {
-		is ByteReadChannel -> responseBody as T
+	public suspend inline fun <reified T : Any> decodeResponseBody(responseBody: ByteReadChannel): T = when {
+		T::class == Unit::class -> Unit as T
+		T::class == ByteReadChannel::class -> responseBody as T
 		else -> json.decodeFromString(responseBody.readRemaining().readText())
 	}
 }

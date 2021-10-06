@@ -12,3 +12,6 @@ include(":openapi-generator")
 // Samples
 include(":samples:kotlin-cli")
 include(":samples:java-cli")
+
+// Utilities
+include(":testutils")
