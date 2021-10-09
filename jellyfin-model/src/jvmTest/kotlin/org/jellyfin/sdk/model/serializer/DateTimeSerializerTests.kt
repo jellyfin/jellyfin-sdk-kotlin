@@ -6,9 +6,9 @@ import java.time.ZoneId
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-public class DateTimeSerializerTests {
+class DateTimeSerializerTests {
 	@Test
-	public fun `Encodes dates and times (UTC)`() {
+	fun `Encodes dates and times (UTC)`() {
 		val instance = DateTimeSerializer(ZoneId.of("UTC"))
 
 		assertEquals(
@@ -18,7 +18,7 @@ public class DateTimeSerializerTests {
 	}
 
 	@Test
-	public fun `Encodes dates and times (Offset)`() {
+	fun `Encodes dates and times (Offset)`() {
 		val instance = DateTimeSerializer(ZoneId.of("UTC+01:00"))
 
 		assertEquals(
@@ -28,14 +28,14 @@ public class DateTimeSerializerTests {
 	}
 
 	@Test
-	public fun `Parses minimum value`() {
+	fun `Parses minimum value`() {
 		val instance = DateTimeSerializer(ZoneId.of("UTC"))
 
 		assertEquals(LocalDateTime.MIN, Json.decodeFromString(instance, """"0001-01-01T00:00:00""""))
 	}
 
 	@Test
-	public fun `Parses dates and times (UTC)`() {
+	fun `Parses dates and times (UTC)`() {
 		val instance = DateTimeSerializer(ZoneId.of("UTC"))
 
 		assertEquals(
@@ -49,7 +49,7 @@ public class DateTimeSerializerTests {
 	}
 
 	@Test
-	public fun `Parses dates and times (Offset)`() {
+	fun `Parses dates and times (Offset)`() {
 		val instance = DateTimeSerializer(ZoneId.of("UTC+01:00"))
 
 		assertEquals(

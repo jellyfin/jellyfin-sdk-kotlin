@@ -1,7 +1,5 @@
-package org.jellyfin.sdk.api.client
+package org.jellyfin.sdk.api.client.util
 
-import org.jellyfin.sdk.api.client.util.UrlBuilder
-import org.jellyfin.sdk.api.client.util.buildPath
 import org.jellyfin.sdk.model.api.ItemFields
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -71,7 +69,8 @@ class UrlBuilderTests {
 			"three" to 3
 		)
 
-		assertEquals("test/1%2F0/value+with+whitespace/three", UrlBuilder.buildPath(path, parameters))
+		assertEquals("test/1%2F0/value+with+whitespace/three",
+			UrlBuilder.buildPath(path, parameters))
 	}
 
 	@Test
@@ -108,7 +107,9 @@ class UrlBuilderTests {
 
 		assertEquals(
 			baseUrl + "test?a=b&c=2",
-			UrlBuilder.buildUrl(baseUrl = baseUrl, pathTemplate = "test", queryParameters = parameters)
+			UrlBuilder.buildUrl(baseUrl = baseUrl,
+				pathTemplate = "test",
+				queryParameters = parameters)
 		)
 	}
 
@@ -123,7 +124,9 @@ class UrlBuilderTests {
 
 		assertEquals(
 			baseUrl + "test?a=b&d=2",
-			UrlBuilder.buildUrl(baseUrl = baseUrl, pathTemplate = "test", queryParameters = parameters)
+			UrlBuilder.buildUrl(baseUrl = baseUrl,
+				pathTemplate = "test",
+				queryParameters = parameters)
 		)
 	}
 
@@ -138,7 +141,9 @@ class UrlBuilderTests {
 
 		assertEquals(
 			baseUrl + "test?one=1&bool=true&str=str",
-			UrlBuilder.buildUrl(baseUrl = baseUrl, pathTemplate = "test", queryParameters = parameters)
+			UrlBuilder.buildUrl(baseUrl = baseUrl,
+				pathTemplate = "test",
+				queryParameters = parameters)
 		)
 	}
 
@@ -152,7 +157,9 @@ class UrlBuilderTests {
 
 		assertEquals(
 			baseUrl + "test?field1=Chapters&field2=DateCreated",
-			UrlBuilder.buildUrl(baseUrl = baseUrl, pathTemplate = "test", queryParameters = parameters)
+			UrlBuilder.buildUrl(baseUrl = baseUrl,
+				pathTemplate = "test",
+				queryParameters = parameters)
 		)
 	}
 

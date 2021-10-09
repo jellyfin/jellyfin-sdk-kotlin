@@ -6,9 +6,9 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-public class ServerVersionTests {
+class ServerVersionTests {
 	@Test
-	public fun `Parses correct version strings`() {
+	fun `Parses correct version strings`() {
 		assertEquals(ServerVersion.fromString("10.6.4"), ServerVersion(10, 6, 4, null))
 		assertEquals(ServerVersion.fromString("10.7.0"), ServerVersion(10, 7, 0, null))
 		assertEquals(ServerVersion.fromString("1.2.3"), ServerVersion(1, 2, 3, null))
@@ -19,7 +19,7 @@ public class ServerVersionTests {
 	}
 
 	@Test
-	public fun `Returns null for incorrect version strings`() {
+	fun `Returns null for incorrect version strings`() {
 		assertNull(ServerVersion.fromString("10.6.4-2"))
 		assertNull(ServerVersion.fromString("10.6.4.2.0"))
 		assertNull(ServerVersion.fromString("10.7"))
@@ -29,7 +29,7 @@ public class ServerVersionTests {
 	}
 
 	@Test
-	public fun `Compares to other versions`() {
+	fun `Compares to other versions`() {
 		assertTrue { ServerVersion(10, 6, 0) == ServerVersion(10, 6, 0) }
 
 		assertTrue { ServerVersion(10, 6, 0) < ServerVersion(10, 6, 1) }

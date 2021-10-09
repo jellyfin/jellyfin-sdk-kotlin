@@ -5,9 +5,9 @@ import java.util.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-public class UUIDSerializerTests {
+class UUIDSerializerTests {
 	@Test
-	public fun `Parses correctly formatted UUIDs`() {
+	fun `Parses correctly formatted UUIDs`() {
 		val instance = UUIDSerializer()
 
 		assertEquals(
@@ -21,7 +21,7 @@ public class UUIDSerializerTests {
 	}
 
 	@Test
-	public fun `Parses UUIDs formatted without dashes`() {
+	fun `Parses UUIDs formatted without dashes`() {
 		val instance = UUIDSerializer()
 
 		assertEquals(
