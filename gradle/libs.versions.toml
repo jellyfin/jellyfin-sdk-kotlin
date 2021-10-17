@@ -1,35 +1,47 @@
 [versions]
-kotlin = "1.5.30"
+android-gradle = "7.0.1"
+androidx-annotation = "1.2.0"
+androidx-core = "1.6.0"
+binarycompatibilityvalidator = "0.8.0-RC"
+clikt = "3.2.0"
+detekt = "1.18.0"
+dokka = "1.5.0"
+kasechange = "1.3.0"
+koin = "3.1.2"
 kotlin-logging = "2.0.10"
+kotlin = "1.5.30"
+kotlinpoet = "1.9.0"
 kotlinx-coroutines = "1.5.1"
 kotlinx-serialization = "1.2.2"
 ktor = "1.6.3"
+nexuspublish = "1.1.0"
 slf4j = "1.7.32"
+swagger-parser = "2.0.27"
 
 [plugins]
-binarycompatibilityvalidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.8.0-RC" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.18.0" }
-dokka = { id = "org.jetbrains.dokka", version = "1.5.0" }
+binarycompatibilityvalidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binarycompatibilityvalidator" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-nexuspublish = { id = "io.github.gradle-nexus.publish-plugin", version = "1.1.0" }
+nexuspublish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexuspublish" }
 
 [libraries]
-android-gradle = { module = "com.android.tools.build:gradle", version = "7.0.1" }
-androidx-annotation = { module = "androidx.annotation:annotation", version = "1.2.0" }
-androidx-core = { module = "androidx.core:core-ktx", version = "1.6.0" }
-clikt = { module = "com.github.ajalt.clikt:clikt", version = "3.2.0" }
-kasechange = { module = "net.pearx.kasechange:kasechange", version = "1.3.0" }
-koin = { module = "io.insert-koin:koin-core", version = "3.1.2" }
+android-gradle = { module = "com.android.tools.build:gradle", version.ref = "android-gradle" }
+androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidx-annotation" }
+androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
+clikt = { module = "com.github.ajalt.clikt:clikt", version.ref = "clikt" }
+kasechange = { module = "net.pearx.kasechange:kasechange", version.ref = "kasechange" }
+koin = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-logging = { module = "io.github.microutils:kotlin-logging", version.ref = "kotlin-logging" }
-kotlin-test-common = { module = "org.jetbrains.kotlin:kotlin-test-common", version.ref = "kotlin" }
 kotlin-test-annotations-common = { module = "org.jetbrains.kotlin:kotlin-test-annotations-common", version.ref = "kotlin" }
+kotlin-test-common = { module = "org.jetbrains.kotlin:kotlin-test-common", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
-kotlinpoet = { module = "com.squareup:kotlinpoet", version = "1.9.0" }
+kotlinpoet = { module = "com.squareup:kotlinpoet", version.ref = "kotlinpoet" }
 kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-http = { module = "io.ktor:ktor-http", version.ref = "ktor" }
 ktor-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
-swaggerParser = { module = "io.swagger.parser.v3:swagger-parser", version = "2.0.27" }
+swagger-parser = { module = "io.swagger.parser.v3:swagger-parser", version.ref = "swagger-parser" }
