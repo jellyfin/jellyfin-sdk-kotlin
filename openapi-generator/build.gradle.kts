@@ -17,7 +17,7 @@ java {
 
 dependencies {
 	// Reading OpenAPI
-	implementation(libs.swaggerParser)
+	implementation(libs.swagger.parser)
 
 	// Capitalization helper
 	implementation(libs.kasechange)
