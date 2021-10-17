@@ -1,0 +1,34 @@
+import org.gradle.api.Project
+import org.gradle.api.publish.PublishingExtension
+import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
+import org.gradle.kotlin.dsl.*
+import org.gradle.plugins.signing.SigningExtension
+import org.gradle.plugins.signing.SigningPlugin
+
+fun Project.enablePublishing(init: PublishingExtension.() -> Unit = {}) {
+	apply<SigningPlugin>()
+	apply<MavenPublishPlugin>()
+
+	extensions.getByType<PublishingExtension>().init()
+
+	// Run block after creating project specific configuration
+	afterEvaluate {
+		// Add signing config
+		configure<SigningExtension> {
+			val signingKey = getProperty("signing.key")
+			val signingPassword = getProperty("signing.password") ?: ""
+
+			if (signingKey != null) {
+				useInMemoryPgpKeys(signingKey, signingPassword)
+				val publishing: PublishingExtension by project
+				sign(publishing.publications)
+			}
+		}
+
+		// Add POM to projects that use publishing
+		configure<PublishingExtension> {
+			publications.withType<MavenPublication>().forEach(MavenPublication::defaultPom)
+		}
+	}
+}

@@ -32,12 +32,14 @@ kotlin {
 	}
 }
 
-val javadocJar by tasks.creating(Jar::class) {
-	dependsOn(tasks.getByName("dokkaHtml"))
-	archiveClassifier.set("javadoc")
-	from("$buildDir/dokka/html")
-}
+enablePublishing {
+	val javadocJar by tasks.creating(Jar::class) {
+		dependsOn(tasks.getByName("dokkaHtml"))
+		archiveClassifier.set("javadoc")
+		from("$buildDir/dokka/html")
+	}
 
-publishing.publications.withType<MavenPublication> {
-	artifact(javadocJar)
+	publications.withType<MavenPublication> {
+		artifact(javadocJar)
+	}
 }

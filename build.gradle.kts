@@ -39,30 +39,8 @@ apiValidation {
 
 subprojects {
 	// Enable required plugins
-	apply<SigningPlugin>()
-	apply<MavenPublishPlugin>()
 	apply<io.gitlab.arturbosch.detekt.DetektPlugin>()
 	apply<org.jetbrains.dokka.gradle.DokkaPlugin>()
-
-	// Run block after creating project specific configuration
-	afterEvaluate {
-		// Add signing config
-		configure<SigningExtension> {
-			val signingKey = getProperty("signing.key")
-			val signingPassword = getProperty("signing.password") ?: ""
-
-			if (signingKey != null) {
-				useInMemoryPgpKeys(signingKey, signingPassword)
-				val publishing: PublishingExtension by project
-				sign(publishing.publications)
-			}
-		}
-
-		// Add POM to projects that use publishing
-		configure<PublishingExtension> {
-			publications.withType<MavenPublication>().forEach(MavenPublication::defaultPom)
-		}
-	}
 
 	// Detekt linting
 	detekt {
