@@ -6,6 +6,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.UUID
+import org.jellyfin.sdk.model.api.GeneralCommandType
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 @Serializable

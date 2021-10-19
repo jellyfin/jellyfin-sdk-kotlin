@@ -11400,18 +11400,18 @@ public final class org/jellyfin/sdk/model/socket/ForceKeepAliveMessage$Companion
 
 public final class org/jellyfin/sdk/model/socket/GeneralCommandMessage : org/jellyfin/sdk/model/socket/IncomingSocketMessage {
 	public static final field Companion Lorg/jellyfin/sdk/model/socket/GeneralCommandMessage$Companion;
-	public synthetic fun <init> (ILjava/util/UUID;Lorg/jellyfin/sdk/model/socket/GeneralCommandType;Ljava/util/UUID;Ljava/util/Map;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
-	public fun <init> (Ljava/util/UUID;Lorg/jellyfin/sdk/model/socket/GeneralCommandType;Ljava/util/UUID;Ljava/util/Map;)V
-	public synthetic fun <init> (Ljava/util/UUID;Lorg/jellyfin/sdk/model/socket/GeneralCommandType;Ljava/util/UUID;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (ILjava/util/UUID;Lorg/jellyfin/sdk/model/api/GeneralCommandType;Ljava/util/UUID;Ljava/util/Map;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/GeneralCommandType;Ljava/util/UUID;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/GeneralCommandType;Ljava/util/UUID;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/util/UUID;
-	public final fun component2 ()Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
+	public final fun component2 ()Lorg/jellyfin/sdk/model/api/GeneralCommandType;
 	public final fun component3 ()Ljava/util/UUID;
 	public final fun component4 ()Ljava/util/Map;
-	public final fun copy (Ljava/util/UUID;Lorg/jellyfin/sdk/model/socket/GeneralCommandType;Ljava/util/UUID;Ljava/util/Map;)Lorg/jellyfin/sdk/model/socket/GeneralCommandMessage;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/socket/GeneralCommandMessage;Ljava/util/UUID;Lorg/jellyfin/sdk/model/socket/GeneralCommandType;Ljava/util/UUID;Ljava/util/Map;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/socket/GeneralCommandMessage;
+	public final fun copy (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/GeneralCommandType;Ljava/util/UUID;Ljava/util/Map;)Lorg/jellyfin/sdk/model/socket/GeneralCommandMessage;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/socket/GeneralCommandMessage;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/GeneralCommandType;Ljava/util/UUID;Ljava/util/Map;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/socket/GeneralCommandMessage;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getArguments ()Ljava/util/Map;
-	public final fun getCommand ()Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
+	public final fun getCommand ()Lorg/jellyfin/sdk/model/api/GeneralCommandType;
 	public fun getMessageId ()Ljava/util/UUID;
 	public final fun getUserId ()Ljava/util/UUID;
 	public fun hashCode ()I
@@ -11432,65 +11432,6 @@ public final class org/jellyfin/sdk/model/socket/GeneralCommandMessage$$serializ
 }
 
 public final class org/jellyfin/sdk/model/socket/GeneralCommandMessage$Companion {
-	public final fun serializer ()Lkotlinx/serialization/KSerializer;
-}
-
-public final class org/jellyfin/sdk/model/socket/GeneralCommandType : java/lang/Enum {
-	public static final field Back Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field ChannelDown Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field ChannelUp Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field Companion Lorg/jellyfin/sdk/model/socket/GeneralCommandType$Companion;
-	public static final field DisplayContent Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field DisplayMessage Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field GoHome Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field GoToSearch Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field GoToSettings Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field Guide Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field MoveDown Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field MoveLeft Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field MoveRight Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field MoveUp Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field Mute Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field NextLetter Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field PageDown Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field PageUp Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field PlayMediaSource Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field PlayTrailers Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field PreviousLetter Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field Select Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field SendKey Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field SendString Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field SetAudioStreamIndex Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field SetMaxStreamingBitrate Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field SetRepeatMode Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field SetSubtitleStreamIndex Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field SetVolume Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field TakeScreenshot Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field ToggleContextMenu Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field ToggleFullscreen Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field ToggleMute Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field ToggleOsd Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field ToggleStats Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field Unmute Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field VolumeDown Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static final field VolumeUp Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public static fun values ()[Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-}
-
-public final class org/jellyfin/sdk/model/socket/GeneralCommandType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/socket/GeneralCommandType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/socket/GeneralCommandType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/socket/GeneralCommandType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
-public final class org/jellyfin/sdk/model/socket/GeneralCommandType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
