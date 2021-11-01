@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Boolean
+import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
@@ -58,7 +59,7 @@ public data class SystemInfo(
 	@SerialName("OperatingSystemDisplayName")
 	public val operatingSystemDisplayName: String? = null,
 	/**
-	 * Get or sets the package name.
+	 * Gets or sets the package name.
 	 */
 	@SerialName("PackageName")
 	public val packageName: String? = null,
@@ -129,11 +130,13 @@ public data class SystemInfo(
 	/**
 	 * Gets or sets a value indicating whether this instance has update available.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("HasUpdateAvailable")
 	public val hasUpdateAvailable: Boolean,
 	/**
 	 * Enum describing the location of the FFmpeg tool.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("EncoderLocation")
 	public val encoderLocation: FFmpegLocation,
 	@SerialName("SystemArchitecture")

@@ -19,6 +19,7 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDto
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
+import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.SortOrder
@@ -72,8 +73,8 @@ public class YearsApi(
 		sortOrder: Collection<SortOrder>? = emptyList(),
 		parentId: UUID? = null,
 		fields: Collection<ItemFields>? = emptyList(),
-		excludeItemTypes: Collection<String>? = emptyList(),
-		includeItemTypes: Collection<String>? = emptyList(),
+		excludeItemTypes: Collection<BaseItemKind>? = emptyList(),
+		includeItemTypes: Collection<BaseItemKind>? = emptyList(),
 		mediaTypes: Collection<String>? = emptyList(),
 		sortBy: Collection<String>? = emptyList(),
 		enableUserData: Boolean? = null,

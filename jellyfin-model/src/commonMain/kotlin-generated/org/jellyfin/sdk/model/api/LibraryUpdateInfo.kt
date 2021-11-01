@@ -20,29 +20,29 @@ public data class LibraryUpdateInfo(
 	 * Gets or sets the folders added to.
 	 */
 	@SerialName("FoldersAddedTo")
-	public val foldersAddedTo: List<String>? = null,
+	public val foldersAddedTo: List<String>,
 	/**
 	 * Gets or sets the folders removed from.
 	 */
 	@SerialName("FoldersRemovedFrom")
-	public val foldersRemovedFrom: List<String>? = null,
+	public val foldersRemovedFrom: List<String>,
 	/**
 	 * Gets or sets the items added.
 	 */
 	@SerialName("ItemsAdded")
-	public val itemsAdded: List<String>? = null,
+	public val itemsAdded: List<String>,
 	/**
 	 * Gets or sets the items removed.
 	 */
 	@SerialName("ItemsRemoved")
-	public val itemsRemoved: List<String>? = null,
+	public val itemsRemoved: List<String>,
 	/**
 	 * Gets or sets the items updated.
 	 */
 	@SerialName("ItemsUpdated")
-	public val itemsUpdated: List<String>? = null,
+	public val itemsUpdated: List<String>,
 	@SerialName("CollectionFolders")
-	public val collectionFolders: List<String>? = null,
+	public val collectionFolders: List<String>,
 	@SerialName("IsEmpty")
 	public val isEmpty: Boolean
 )

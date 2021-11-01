@@ -29,7 +29,7 @@ public data class CreatePlaylistDto(
 	 * Gets or sets item ids to add to the playlist.
 	 */
 	@SerialName("Ids")
-	public val ids: List<UUID>? = null,
+	public val ids: List<UUID>,
 	/**
 	 * Gets or sets the user id.
 	 */

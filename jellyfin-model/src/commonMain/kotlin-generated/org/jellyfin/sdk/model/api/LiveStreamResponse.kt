@@ -11,5 +11,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class LiveStreamResponse(
 	@SerialName("MediaSource")
-	public val mediaSource: MediaSourceInfo? = null
+	public val mediaSource: MediaSourceInfo
 )

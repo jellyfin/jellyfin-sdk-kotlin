@@ -16,45 +16,45 @@ public data class DeviceIdentification(
 	 * Gets or sets the name of the friendly.
 	 */
 	@SerialName("FriendlyName")
-	public val friendlyName: String? = null,
+	public val friendlyName: String,
 	/**
 	 * Gets or sets the model number.
 	 */
 	@SerialName("ModelNumber")
-	public val modelNumber: String? = null,
+	public val modelNumber: String,
 	/**
 	 * Gets or sets the serial number.
 	 */
 	@SerialName("SerialNumber")
-	public val serialNumber: String? = null,
+	public val serialNumber: String,
 	/**
 	 * Gets or sets the name of the model.
 	 */
 	@SerialName("ModelName")
-	public val modelName: String? = null,
+	public val modelName: String,
 	/**
 	 * Gets or sets the model description.
 	 */
 	@SerialName("ModelDescription")
-	public val modelDescription: String? = null,
+	public val modelDescription: String,
 	/**
 	 * Gets or sets the model URL.
 	 */
 	@SerialName("ModelUrl")
-	public val modelUrl: String? = null,
+	public val modelUrl: String,
 	/**
 	 * Gets or sets the manufacturer.
 	 */
 	@SerialName("Manufacturer")
-	public val manufacturer: String? = null,
+	public val manufacturer: String,
 	/**
 	 * Gets or sets the manufacturer URL.
 	 */
 	@SerialName("ManufacturerUrl")
-	public val manufacturerUrl: String? = null,
+	public val manufacturerUrl: String,
 	/**
 	 * Gets or sets the headers.
 	 */
 	@SerialName("Headers")
-	public val headers: List<HttpHeaderInfo>? = null
+	public val headers: List<HttpHeaderInfo>
 )

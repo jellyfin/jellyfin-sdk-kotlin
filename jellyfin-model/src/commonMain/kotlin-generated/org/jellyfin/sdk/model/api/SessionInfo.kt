@@ -38,7 +38,7 @@ public data class SessionInfo(
 	@SerialName("RemoteEndPoint")
 	public val remoteEndPoint: String? = null,
 	/**
-	 * Gets or sets the playable media types.
+	 * Gets the playable media types.
 	 */
 	@SerialName("PlayableMediaTypes")
 	public val playableMediaTypes: List<String>? = null,
@@ -130,7 +130,7 @@ public data class SessionInfo(
 	@SerialName("UserPrimaryImageTag")
 	public val userPrimaryImageTag: String? = null,
 	/**
-	 * Gets or sets the supported commands.
+	 * Gets the supported commands.
 	 */
 	@SerialName("SupportedCommands")
 	public val supportedCommands: List<GeneralCommandType>? = null

@@ -23,6 +23,8 @@ public enum class Architecture(
 	ARM_64("Arm64"),
 	@SerialName("Wasm")
 	WASM("Wasm"),
+	@SerialName("S390x")
+	S39_0X("S390x"),
 	;
 
 	public override fun toString(): String = serialName

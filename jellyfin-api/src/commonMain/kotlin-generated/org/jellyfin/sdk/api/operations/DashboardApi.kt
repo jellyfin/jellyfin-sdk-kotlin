@@ -15,7 +15,6 @@ import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.api.ConfigurationPageInfo
-import org.jellyfin.sdk.model.api.ConfigurationPageType
 
 public class DashboardApi(
 	private val api: ApiClient
@@ -24,14 +23,12 @@ public class DashboardApi(
 	 * Gets the configuration pages.
 	 *
 	 * @param enableInMainMenu Whether to enable in the main menu.
-	 * @param pageType The Jellyfin.Api.Models.ConfigurationPageInfo.
 	 */
-	public suspend fun getConfigurationPages(enableInMainMenu: Boolean? = null,
-			pageType: ConfigurationPageType? = null): Response<List<ConfigurationPageInfo>> {
+	public suspend fun getConfigurationPages(enableInMainMenu: Boolean? = null):
+			Response<List<ConfigurationPageInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["enableInMainMenu"] = enableInMainMenu
-		queryParameters["pageType"] = pageType
 		val data = null
 		val response = api.`get`<List<ConfigurationPageInfo>>("/web/ConfigurationPages", pathParameters,
 				queryParameters, data)

@@ -18,12 +18,12 @@ public data class VersionInfo(
 	 * Gets or sets the version.
 	 */
 	@SerialName("version")
-	public val version: String? = null,
+	public val version: String,
 	/**
 	 * Gets the version as a System.Version.
 	 */
 	@SerialName("VersionNumber")
-	public val versionNumber: Version? = null,
+	public val versionNumber: Version,
 	/**
 	 * Gets or sets the changelog for this version.
 	 */
@@ -53,10 +53,10 @@ public data class VersionInfo(
 	 * Gets or sets the repository name.
 	 */
 	@SerialName("repositoryName")
-	public val repositoryName: String? = null,
+	public val repositoryName: String,
 	/**
 	 * Gets or sets the repository url.
 	 */
 	@SerialName("repositoryUrl")
-	public val repositoryUrl: String? = null
+	public val repositoryUrl: String
 )

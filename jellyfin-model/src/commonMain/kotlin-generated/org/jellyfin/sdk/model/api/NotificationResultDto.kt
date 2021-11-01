@@ -19,7 +19,7 @@ public data class NotificationResultDto(
 	 * Gets or sets the current page of notifications.
 	 */
 	@SerialName("Notifications")
-	public val notifications: List<NotificationDto>? = null,
+	public val notifications: List<NotificationDto>,
 	/**
 	 * Gets or sets the total number of notifications.
 	 */

@@ -19,8 +19,10 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDto
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
+import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
+import org.jellyfin.sdk.model.api.SortOrder
 
 public class GenresApi(
 	private val api: ApiClient
@@ -66,6 +68,8 @@ public class GenresApi(
 	 * string.
 	 * @param nameLessThan Optional filter by items whose name is equally or lesser than a given input
 	 * string.
+	 * @param sortBy Optional. Specify one or more sort orders, comma delimited.
+	 * @param sortOrder Sort Order - Ascending,Descending.
 	 * @param enableImages Optional, include image information in output.
 	 * @param enableTotalRecordCount Optional. Include total record count.
 	 */
@@ -75,8 +79,8 @@ public class GenresApi(
 		searchTerm: String? = null,
 		parentId: UUID? = null,
 		fields: Collection<ItemFields>? = emptyList(),
-		excludeItemTypes: Collection<String>? = emptyList(),
-		includeItemTypes: Collection<String>? = emptyList(),
+		excludeItemTypes: Collection<BaseItemKind>? = emptyList(),
+		includeItemTypes: Collection<BaseItemKind>? = emptyList(),
 		isFavorite: Boolean? = null,
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
@@ -84,6 +88,8 @@ public class GenresApi(
 		nameStartsWithOrGreater: String? = null,
 		nameStartsWith: String? = null,
 		nameLessThan: String? = null,
+		sortBy: Collection<String>? = emptyList(),
+		sortOrder: Collection<SortOrder>? = emptyList(),
 		enableImages: Boolean? = true,
 		enableTotalRecordCount: Boolean? = true
 	): Response<BaseItemDtoQueryResult> {
@@ -103,6 +109,8 @@ public class GenresApi(
 		queryParameters["nameStartsWithOrGreater"] = nameStartsWithOrGreater
 		queryParameters["nameStartsWith"] = nameStartsWith
 		queryParameters["nameLessThan"] = nameLessThan
+		queryParameters["sortBy"] = sortBy
+		queryParameters["sortOrder"] = sortOrder
 		queryParameters["enableImages"] = enableImages
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		val data = null

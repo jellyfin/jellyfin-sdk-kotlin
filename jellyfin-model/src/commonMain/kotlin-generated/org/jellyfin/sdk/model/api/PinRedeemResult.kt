@@ -23,5 +23,5 @@ public data class PinRedeemResult(
 	 * Gets or sets the users reset.
 	 */
 	@SerialName("UsersReset")
-	public val usersReset: List<String>? = null
+	public val usersReset: List<String>
 )

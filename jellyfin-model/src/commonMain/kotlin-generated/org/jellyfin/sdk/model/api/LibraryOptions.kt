@@ -23,7 +23,7 @@ public data class LibraryOptions(
 	@SerialName("ExtractChapterImagesDuringLibraryScan")
 	public val extractChapterImagesDuringLibraryScan: Boolean,
 	@SerialName("PathInfos")
-	public val pathInfos: List<MediaPathInfo>? = null,
+	public val pathInfos: List<MediaPathInfo>,
 	@SerialName("SaveLocalMetadata")
 	public val saveLocalMetadata: Boolean,
 	@SerialName("EnableInternetProviders")
@@ -47,17 +47,17 @@ public data class LibraryOptions(
 	@SerialName("MetadataCountryCode")
 	public val metadataCountryCode: String? = null,
 	@SerialName("SeasonZeroDisplayName")
-	public val seasonZeroDisplayName: String? = null,
+	public val seasonZeroDisplayName: String,
 	@SerialName("MetadataSavers")
 	public val metadataSavers: List<String>? = null,
 	@SerialName("DisabledLocalMetadataReaders")
-	public val disabledLocalMetadataReaders: List<String>? = null,
+	public val disabledLocalMetadataReaders: List<String>,
 	@SerialName("LocalMetadataReaderOrder")
 	public val localMetadataReaderOrder: List<String>? = null,
 	@SerialName("DisabledSubtitleFetchers")
-	public val disabledSubtitleFetchers: List<String>? = null,
+	public val disabledSubtitleFetchers: List<String>,
 	@SerialName("SubtitleFetcherOrder")
-	public val subtitleFetcherOrder: List<String>? = null,
+	public val subtitleFetcherOrder: List<String>,
 	@SerialName("SkipSubtitlesIfEmbeddedSubtitlesPresent")
 	public val skipSubtitlesIfEmbeddedSubtitlesPresent: Boolean,
 	@SerialName("SkipSubtitlesIfAudioTrackMatches")
@@ -69,5 +69,5 @@ public data class LibraryOptions(
 	@SerialName("SaveSubtitlesWithMedia")
 	public val saveSubtitlesWithMedia: Boolean,
 	@SerialName("TypeOptions")
-	public val typeOptions: List<TypeOptions>? = null
+	public val typeOptions: List<TypeOptions>
 )

@@ -14,9 +14,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ControlResponse(
 	@SerialName("Headers")
-	public val headers: Map<String, String>? = null,
+	public val headers: Map<String, String>,
 	@SerialName("Xml")
-	public val xml: String? = null,
+	public val xml: String,
 	@SerialName("IsSuccessful")
 	public val isSuccessful: Boolean
 )
