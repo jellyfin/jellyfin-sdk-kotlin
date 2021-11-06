@@ -7,6 +7,7 @@ import io.swagger.v3.oas.models.Paths
 import io.swagger.v3.oas.models.media.IntegerSchema
 import io.swagger.v3.oas.models.media.Schema
 import io.swagger.v3.oas.models.parameters.Parameter
+import io.swagger.v3.oas.models.parameters.RequestBody
 import mu.KotlinLogging
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toCamelCase
@@ -61,6 +62,39 @@ class OpenApiApiServicesBuilder(
 			schema.maximum.intValueExact()
 		)
 		else -> null
+	}
+
+	private fun buildRequestBody(requestBody: RequestBody, serviceName: String, operationName: String): TypeName? {
+		// Filter out duplicate JSON values
+		val requestBodyTypes = requestBody.content.keys.filterNot {
+			MimeType.IGNORED_JSON_TYPES.contains(it)
+		}
+
+		// Check amount of types
+		if (requestBodyTypes.size > 1) throw OpenApiGeneratorError("Multiple request body types are unsupported.")
+		else if (requestBodyTypes.isEmpty()) return null
+
+		// Retrieve info
+		val requestBodyType = requestBodyTypes.first()
+		val content = requestBody.content[requestBodyType]
+		val required = requestBody.required ?: false
+
+		// Determine the correct type
+		return when (requestBodyType) {
+			// JSON body - use type builder
+			MimeType.APPLICATION_JSON -> content?.schema?.let { schema ->
+				openApiTypeBuilder.build(
+					ApiTypePath(serviceName, operationName, ApiTypePath.PARAMETER_BODY),
+					schema
+				).copy(nullable = !required)
+			}
+			// Image body
+			MimeType.IMAGE_ALL -> Types.BYTE_ARRAY
+			// String body
+			MimeType.TEXT_PLAIN -> Types.STRING
+			// Unknown type
+			else -> throw OpenApiGeneratorError("""Unsupported request body type "$requestBodyType".""")
+		}
 	}
 
 	private fun buildOperation(
@@ -118,6 +152,10 @@ class OpenApiApiServicesBuilder(
 			?.any(Security.AUTHENTICATION_POLICIES::contains)
 			?: false
 
+		val bodyType = operation.requestBody?.let { requestBody ->
+			buildRequestBody(requestBody, serviceName, operationName)
+		}
+
 		return ApiServiceOperation(
 			name = operationName,
 			description = operation.description ?: operation.summary,
@@ -128,9 +166,7 @@ class OpenApiApiServicesBuilder(
 			returnType = returnType,
 			pathParameters = pathParameters,
 			queryParameters = queryParameters,
-			bodyType = operation.requestBody?.content?.get(MimeType.APPLICATION_JSON)?.schema?.let { schema ->
-				openApiTypeBuilder.build(ApiTypePath(serviceName, operationName, ApiTypePath.PARAMETER_BODY), schema)
-			}
+			bodyType = bodyType,
 		)
 	}
 

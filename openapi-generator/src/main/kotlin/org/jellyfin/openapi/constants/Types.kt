@@ -6,6 +6,7 @@ import com.squareup.kotlinpoet.asTypeName
 object Types {
 	// Custom
 	val BINARY = ClassName("io.ktor.utils.io", "ByteReadChannel")
+	val BYTE_ARRAY = ByteArray::class.asTypeName()
 	val UUID = ClassName(Packages.MODEL_TYPES, Classes.Types.UUID)
 	val DATETIME = ClassName(Packages.MODEL_TYPES, Classes.Types.DATETIME)
 	val JSON_ELEMENT = ClassName("kotlinx.serialization.json", "JsonElement")
