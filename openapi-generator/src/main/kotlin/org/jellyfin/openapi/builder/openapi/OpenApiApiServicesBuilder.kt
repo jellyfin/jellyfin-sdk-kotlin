@@ -70,12 +70,14 @@ class OpenApiApiServicesBuilder(
 			MimeType.IGNORED_JSON_TYPES.contains(it)
 		}
 
-		// Check amount of types
-		if (requestBodyTypes.size > 1) throw OpenApiGeneratorError("Multiple request body types are unsupported.")
-		else if (requestBodyTypes.isEmpty()) return null
+		// Check amount of types and get the first
+		val requestBodyType = when (requestBodyTypes.size) {
+			0 -> return null
+			1 -> requestBodyTypes.first()
+			else -> throw OpenApiGeneratorError("Multiple request body types are not supported. Found types: $requestBodyTypes")
+		}
 
 		// Retrieve info
-		val requestBodyType = requestBodyTypes.first()
 		val content = requestBody.content[requestBodyType]
 		val required = requestBody.required ?: false
 
