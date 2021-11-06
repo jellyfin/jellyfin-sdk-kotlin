@@ -8,6 +8,7 @@ package org.jellyfin.sdk.api.operations
 import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.ByteArray
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
@@ -2219,14 +2220,14 @@ public class ImageApi(
 	public suspend fun postUserImage(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		imageType: ImageType,
-		index: Int? = null
+		index: Int? = null,
+		`data`: ByteArray
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["imageType"] = imageType
 		val queryParameters = mutableMapOf<String, Any?>()
 		queryParameters["index"] = index
-		val data = null
 		val response = api.post<Unit>("/Users/{userId}/Images/{imageType}", pathParameters,
 				queryParameters, data)
 		return response
@@ -2242,14 +2243,14 @@ public class ImageApi(
 	public suspend fun postUserImageByIndex(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		imageType: ImageType,
-		index: Int
+		index: Int,
+		`data`: ByteArray
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
 		pathParameters["imageType"] = imageType
 		pathParameters["index"] = index
 		val queryParameters = emptyMap<String, Any?>()
-		val data = null
 		val response = api.post<Unit>("/Users/{userId}/Images/{imageType}/{index}", pathParameters,
 				queryParameters, data)
 		return response
@@ -2261,12 +2262,15 @@ public class ImageApi(
 	 * @param itemId Item id.
 	 * @param imageType Image type.
 	 */
-	public suspend fun setItemImage(itemId: UUID, imageType: ImageType): Response<Unit> {
+	public suspend fun setItemImage(
+		itemId: UUID,
+		imageType: ImageType,
+		`data`: ByteArray
+	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["imageType"] = imageType
 		val queryParameters = emptyMap<String, Any?>()
-		val data = null
 		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}", pathParameters,
 				queryParameters, data)
 		return response
@@ -2282,14 +2286,14 @@ public class ImageApi(
 	public suspend fun setItemImageByIndex(
 		itemId: UUID,
 		imageType: ImageType,
-		imageIndex: Int
+		imageIndex: Int,
+		`data`: ByteArray
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
 		pathParameters["imageType"] = imageType
 		pathParameters["imageIndex"] = imageIndex
 		val queryParameters = emptyMap<String, Any?>()
-		val data = null
 		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, data)
 		return response
