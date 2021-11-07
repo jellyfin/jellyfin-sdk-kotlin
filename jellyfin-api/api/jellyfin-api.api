@@ -18,6 +18,7 @@ public abstract class org/jellyfin/sdk/api/client/ApiClient {
 	public abstract fun setClientInfo (Lorg/jellyfin/sdk/model/ClientInfo;)V
 	public abstract fun setDeviceInfo (Lorg/jellyfin/sdk/model/DeviceInfo;)V
 	public abstract fun setUserId (Ljava/util/UUID;)V
+	public abstract fun ws ()Lorg/jellyfin/sdk/api/sockets/SocketInstance;
 }
 
 public final class org/jellyfin/sdk/api/client/ApiClient$Companion {
@@ -51,8 +52,8 @@ public final class org/jellyfin/sdk/api/client/HttpMethod : java/lang/Enum {
 }
 
 public class org/jellyfin/sdk/api/client/KtorClient : org/jellyfin/sdk/api/client/ApiClient {
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun getAccessToken ()Ljava/lang/String;
 	public fun getBaseUrl ()Ljava/lang/String;
 	public fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
@@ -65,6 +66,7 @@ public class org/jellyfin/sdk/api/client/KtorClient : org/jellyfin/sdk/api/clien
 	public fun setClientInfo (Lorg/jellyfin/sdk/model/ClientInfo;)V
 	public fun setDeviceInfo (Lorg/jellyfin/sdk/model/DeviceInfo;)V
 	public fun setUserId (Ljava/util/UUID;)V
+	public fun ws ()Lorg/jellyfin/sdk/api/sockets/SocketInstance;
 }
 
 public final class org/jellyfin/sdk/api/client/RawResponse {
@@ -202,8 +204,10 @@ public final class org/jellyfin/sdk/api/client/extensions/UserApiExtensionsKt {
 
 public final class org/jellyfin/sdk/api/client/util/ApiSerializer {
 	public static final field INSTANCE Lorg/jellyfin/sdk/api/client/util/ApiSerializer;
+	public final fun decodeSocketMessage (Ljava/lang/String;)Lorg/jellyfin/sdk/model/socket/IncomingSocketMessage;
 	public final fun encodeRequestBody (Ljava/lang/Object;)Ljava/lang/String;
 	public static synthetic fun encodeRequestBody$default (Lorg/jellyfin/sdk/api/client/util/ApiSerializer;Ljava/lang/Object;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun encodeSocketMessage (Lorg/jellyfin/sdk/model/socket/OutgoingSocketMessage;)Ljava/lang/String;
 	public final fun getJson ()Lkotlinx/serialization/json/Json;
 }
 
@@ -1162,6 +1166,52 @@ public final class org/jellyfin/sdk/api/operations/YearsApi : org/jellyfin/sdk/a
 	public static synthetic fun getYears$default (Lorg/jellyfin/sdk/api/operations/YearsApi;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/util/Collection;Ljava/util/UUID;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/util/Collection;Ljava/util/UUID;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
+public final class org/jellyfin/sdk/api/sockets/KtorSocketInstanceConnection : org/jellyfin/sdk/api/sockets/SocketInstanceConnection {
+	public fun <init> (Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lkotlinx/coroutines/channels/Channel;Lkotlinx/coroutines/channels/Channel;Lkotlin/coroutines/CoroutineContext;)V
+	public fun connect (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun disconnect (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class org/jellyfin/sdk/api/sockets/ListenerRegistrationKt {
+	public static final fun addGeneralCommandsListener (Lorg/jellyfin/sdk/api/sockets/SocketInstance;Ljava/util/Set;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
+	public static synthetic fun addGeneralCommandsListener$default (Lorg/jellyfin/sdk/api/sockets/SocketInstance;Ljava/util/Set;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
+	public static final fun addGlobalListener (Lorg/jellyfin/sdk/api/sockets/SocketInstance;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
+	public static synthetic fun addGlobalListener$default (Lorg/jellyfin/sdk/api/sockets/SocketInstance;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
+	public static final fun addPlayStateCommandsListener (Lorg/jellyfin/sdk/api/sockets/SocketInstance;Ljava/util/Set;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
+	public static synthetic fun addPlayStateCommandsListener$default (Lorg/jellyfin/sdk/api/sockets/SocketInstance;Ljava/util/Set;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
+	public static final fun addSyncPlayCommandsListener (Lorg/jellyfin/sdk/api/sockets/SocketInstance;Ljava/util/Set;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
+	public static synthetic fun addSyncPlayCommandsListener$default (Lorg/jellyfin/sdk/api/sockets/SocketInstance;Ljava/util/Set;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
+}
+
+public abstract interface class org/jellyfin/sdk/api/sockets/SocketConnectionFactory {
+	public abstract fun create (Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lkotlinx/coroutines/channels/Channel;Lkotlinx/coroutines/channels/Channel;Lkotlin/coroutines/CoroutineContext;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class org/jellyfin/sdk/api/sockets/SocketInstance {
+	public final fun addListenerDefinition (Lorg/jellyfin/sdk/api/sockets/listener/SocketListenerDefinition;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
+	public final fun getState ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun publish (Lorg/jellyfin/sdk/model/socket/OutgoingSocketMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun reconnect (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun removeListener (Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;)V
+	public final fun stop (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateCredentials (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class org/jellyfin/sdk/api/sockets/SocketInstanceConnection {
+	public abstract fun connect (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun disconnect (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class org/jellyfin/sdk/api/sockets/SocketInstanceState : java/lang/Enum {
+	public static final field CONNECTED Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
+	public static final field CONNECTING Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
+	public static final field DISCONNECTED Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
+	public static final field ERROR Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
+	public static final field STOPPED Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
+	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
+	public static fun values ()[Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
+}
+
 public final class org/jellyfin/sdk/api/sockets/SocketSubscription {
 	public fun <init> (Lorg/jellyfin/sdk/api/sockets/WebSocketApi;Lkotlin/jvm/functions/Function2;)V
 	public final fun cancel ()V
@@ -1174,5 +1224,66 @@ public final class org/jellyfin/sdk/api/sockets/WebSocketApi : org/jellyfin/sdk/
 	public final fun reconnect ()V
 	public final fun subscribe ()Lkotlinx/coroutines/flow/Flow;
 	public final fun subscribe (Lkotlin/jvm/functions/Function2;)Lorg/jellyfin/sdk/api/sockets/SocketSubscription;
+}
+
+public final class org/jellyfin/sdk/api/sockets/data/SubscriptionType {
+	public fun <init> (Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;)V
+	public final fun component1 ()Lkotlin/reflect/KClass;
+	public final fun component2 ()Lkotlin/jvm/functions/Function1;
+	public final fun component3 ()Lkotlin/jvm/functions/Function0;
+	public final fun copy (Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;)Lorg/jellyfin/sdk/api/sockets/data/SubscriptionType;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/api/sockets/data/SubscriptionType;Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/sockets/data/SubscriptionType;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCreateStartMessage ()Lkotlin/jvm/functions/Function1;
+	public final fun getCreateStopMessage ()Lkotlin/jvm/functions/Function0;
+	public final fun getMessageType ()Lkotlin/reflect/KClass;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/api/sockets/data/SubscriptionTypeKt {
+	public static final fun getSubscriptionType (Lkotlin/reflect/KClass;)Lorg/jellyfin/sdk/api/sockets/data/SubscriptionType;
+}
+
+public final class org/jellyfin/sdk/api/sockets/data/SubscriptionTypesKt {
+	public static final fun getSUBSCRIPTION_TYPES ()Ljava/util/Set;
+}
+
+public class org/jellyfin/sdk/api/sockets/exception/SocketException : org/jellyfin/sdk/api/client/exception/ApiClientException {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class org/jellyfin/sdk/api/sockets/exception/SocketStoppedException : org/jellyfin/sdk/api/sockets/exception/SocketException {
+	public fun <init> ()V
+}
+
+public final class org/jellyfin/sdk/api/sockets/listener/SocketListener {
+	public fun <init> (Lorg/jellyfin/sdk/api/sockets/listener/SocketListenerDefinition;Lorg/jellyfin/sdk/api/sockets/SocketInstance;)V
+	public final fun getDefinition ()Lorg/jellyfin/sdk/api/sockets/listener/SocketListenerDefinition;
+	public final fun getInstance ()Lorg/jellyfin/sdk/api/sockets/SocketInstance;
+	public final fun stop ()V
+}
+
+public final class org/jellyfin/sdk/api/sockets/listener/SocketListenerDefinition {
+	public fun <init> (Ljava/util/Set;Ljava/util/Set;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;)V
+	public final fun component1 ()Ljava/util/Set;
+	public final fun component2 ()Ljava/util/Set;
+	public final fun component3 ()Z
+	public final fun component4 ()Lorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;
+	public final fun copy (Ljava/util/Set;Ljava/util/Set;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListenerDefinition;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/api/sockets/listener/SocketListenerDefinition;Ljava/util/Set;Ljava/util/Set;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListenerDefinition;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFilterTypes ()Ljava/util/Set;
+	public final fun getListener ()Lorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;
+	public final fun getStopOnCredentialsChange ()Z
+	public final fun getSubscribesTo ()Ljava/util/Set;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class org/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver {
+	public abstract fun onReceive (Lorg/jellyfin/sdk/model/socket/IncomingSocketMessage;)V
 }
 

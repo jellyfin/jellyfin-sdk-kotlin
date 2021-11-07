@@ -27,16 +27,18 @@ public final class org/jellyfin/sdk/JellyfinKt {
 
 public final class org/jellyfin/sdk/JellyfinOptions {
 	public static final field Companion Lorg/jellyfin/sdk/JellyfinOptions$Companion;
-	public fun <init> (Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;)V
+	public fun <init> (Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)V
 	public final fun component1 ()Lorg/jellyfin/sdk/model/ClientInfo;
 	public final fun component2 ()Lorg/jellyfin/sdk/model/DeviceInfo;
 	public final fun component3 ()Lorg/jellyfin/sdk/util/ApiClientFactory;
-	public final fun copy (Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;)Lorg/jellyfin/sdk/JellyfinOptions;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/JellyfinOptions;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;ILjava/lang/Object;)Lorg/jellyfin/sdk/JellyfinOptions;
+	public final fun component4 ()Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;
+	public final fun copy (Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)Lorg/jellyfin/sdk/JellyfinOptions;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/JellyfinOptions;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;ILjava/lang/Object;)Lorg/jellyfin/sdk/JellyfinOptions;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getApiClientFactory ()Lorg/jellyfin/sdk/util/ApiClientFactory;
 	public final fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
 	public final fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
+	public final fun getSocketConnectionFactory ()Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -47,9 +49,11 @@ public final class org/jellyfin/sdk/JellyfinOptions$Builder {
 	public final fun getApiClientFactory ()Lorg/jellyfin/sdk/util/ApiClientFactory;
 	public final fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
 	public final fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
+	public final fun getSocketConnectionFactory ()Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;
 	public final fun setApiClientFactory (Lorg/jellyfin/sdk/util/ApiClientFactory;)V
 	public final fun setClientInfo (Lorg/jellyfin/sdk/model/ClientInfo;)V
 	public final fun setDeviceInfo (Lorg/jellyfin/sdk/model/DeviceInfo;)V
+	public final fun setSocketConnectionFactory (Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)V
 }
 
 public final class org/jellyfin/sdk/JellyfinOptions$Companion {
@@ -239,6 +243,6 @@ public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$Unsupported
 }
 
 public abstract interface class org/jellyfin/sdk/util/ApiClientFactory {
-	public abstract fun create (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public abstract fun create (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)Lorg/jellyfin/sdk/api/client/ApiClient;
 }
 

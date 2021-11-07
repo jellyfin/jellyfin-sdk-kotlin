@@ -13,12 +13,10 @@ public data class PeriodicListenerPeriod(
 	val initialDelay: Long = 0,
 	val interval: Long = 1000,
 ) {
-	override fun toString(): String {
-		return "$initialDelay,$interval"
-	}
+	override fun toString(): String = "$initialDelay,$interval"
 
 	public companion object {
-		public 	fun fromString(str: String): PeriodicListenerPeriod? {
+		public fun fromString(str: String): PeriodicListenerPeriod? {
 			val values = str.split(',')
 			val dueTimeMs = values.getOrNull(0)?.toLongOrNull() ?: return null
 			val periodMs = values.getOrNull(1)?.toLongOrNull() ?: return null
@@ -31,7 +29,8 @@ public data class PeriodicListenerPeriod(
 	}
 
 	public class Serializer : KSerializer<PeriodicListenerPeriod> {
-		override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("PeriodicListenerPeriod", PrimitiveKind.STRING)
+		override val descriptor: SerialDescriptor =
+			PrimitiveSerialDescriptor("PeriodicListenerPeriod", PrimitiveKind.STRING)
 
 		override fun serialize(encoder: Encoder, value: PeriodicListenerPeriod): Unit =
 			encoder.encodeString(value.toString())

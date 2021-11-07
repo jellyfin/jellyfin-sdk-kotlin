@@ -22,12 +22,15 @@ import org.jellyfin.sdk.api.client.exception.InvalidStatusException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
 import org.jellyfin.sdk.api.client.util.ApiSerializer
 import org.jellyfin.sdk.api.client.util.AuthorizationHeaderBuilder
+import org.jellyfin.sdk.api.sockets.SocketConnectionFactory
+import org.jellyfin.sdk.api.sockets.SocketInstance
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.UUID
 import java.net.UnknownHostException
 import io.ktor.http.HttpMethod as KtorHttpMethod
 
+@Suppress("LongParameterList")
 public actual open class KtorClient actual constructor(
 	override var baseUrl: String?,
 	override var accessToken: String?,
@@ -35,6 +38,7 @@ public actual open class KtorClient actual constructor(
 	override var clientInfo: ClientInfo,
 	override var deviceInfo: DeviceInfo,
 	override val httpClientOptions: HttpClientOptions,
+	private val socketConnectionFactory: SocketConnectionFactory,
 ) : ApiClient() {
 	private val client: HttpClient = HttpClient {
 		followRedirects = httpClientOptions.followRedirects
@@ -112,6 +116,8 @@ public actual open class KtorClient actual constructor(
 			throw ApiClientException("Unknown error occurred!", err)
 		}
 	}
+
+	public actual override fun ws(): SocketInstance = SocketInstance(this, socketConnectionFactory)
 
 	private fun HttpMethod.asKtorHttpMethod(): KtorHttpMethod = when (this) {
 		HttpMethod.GET -> KtorHttpMethod.Get
