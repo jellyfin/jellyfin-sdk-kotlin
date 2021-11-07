@@ -11243,6 +11243,13 @@ public final class org/jellyfin/sdk/model/api/XmlAttribute$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class org/jellyfin/sdk/model/extensions/GeneralCommandMessageExtensionsKt {
+	public static final fun contains (Lorg/jellyfin/sdk/model/socket/GeneralCommandMessage;Ljava/lang/String;)Z
+	public static final fun get (Lorg/jellyfin/sdk/model/socket/GeneralCommandMessage;Ljava/lang/String;)Ljava/lang/String;
+	public static final fun get (Lorg/jellyfin/sdk/model/socket/GeneralCommandMessage;[Ljava/lang/String;)Ljava/util/List;
+	public static final fun getValue (Lorg/jellyfin/sdk/model/socket/GeneralCommandMessage;Ljava/lang/Object;Lkotlin/reflect/KProperty;)Ljava/lang/String;
+}
+
 public final class org/jellyfin/sdk/model/extensions/PairExtensionsKt {
 	public static final fun toNameGuidPair (Lkotlin/Pair;)Lorg/jellyfin/sdk/model/api/NameGuidPair;
 	public static final fun toNameIdPair (Lkotlin/Pair;)Lorg/jellyfin/sdk/model/api/NameIdPair;
