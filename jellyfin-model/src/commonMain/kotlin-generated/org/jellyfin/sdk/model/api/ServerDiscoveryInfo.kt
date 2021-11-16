@@ -9,28 +9,25 @@ import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/**
- * The server discovery info model.
- */
 @Serializable
 public data class ServerDiscoveryInfo(
 	/**
-	 * Gets the address.
+	 * Gets or sets the address.
 	 */
 	@SerialName("Address")
-	public val address: String,
+	public val address: String? = null,
 	/**
-	 * Gets the server identifier.
+	 * Gets or sets the server identifier.
 	 */
 	@SerialName("Id")
-	public val id: String,
+	public val id: String? = null,
 	/**
-	 * Gets the name.
+	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	public val name: String,
+	public val name: String? = null,
 	/**
-	 * Gets the endpoint address.
+	 * Gets or sets the endpoint address.
 	 */
 	@SerialName("EndpointAddress")
 	public val endpointAddress: String? = null

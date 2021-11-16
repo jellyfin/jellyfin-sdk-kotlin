@@ -14,15 +14,15 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class TranscodingProfile(
 	@SerialName("Container")
-	public val container: String,
+	public val container: String? = null,
 	@SerialName("Type")
 	public val type: DlnaProfileType,
 	@SerialName("VideoCodec")
-	public val videoCodec: String,
+	public val videoCodec: String? = null,
 	@SerialName("AudioCodec")
-	public val audioCodec: String,
+	public val audioCodec: String? = null,
 	@SerialName("Protocol")
-	public val protocol: String,
+	public val protocol: String? = null,
 	@SerialName("EstimateContentLength")
 	public val estimateContentLength: Boolean,
 	@SerialName("EnableMpegtsM2TsMode")

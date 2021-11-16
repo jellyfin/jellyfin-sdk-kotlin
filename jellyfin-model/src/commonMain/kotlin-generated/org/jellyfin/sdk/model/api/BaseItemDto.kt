@@ -255,7 +255,7 @@ public data class BaseItemDto(
 	 * Gets or sets the type.
 	 */
 	@SerialName("Type")
-	public val type: BaseItemKind,
+	public val type: String? = null,
 	/**
 	 * Gets or sets the people.
 	 */
@@ -269,13 +269,12 @@ public data class BaseItemDto(
 	@SerialName("GenreItems")
 	public val genreItems: List<NameGuidPair>? = null,
 	/**
-	 * Gets or sets wether the item has a logo, this will hold the Id of the Parent that has one.
+	 * If the item does not have a logo, this will hold the Id of the Parent that has one.
 	 */
 	@SerialName("ParentLogoItemId")
 	public val parentLogoItemId: String? = null,
 	/**
-	 * Gets or sets wether the item has any backdrops, this will hold the Id of the Parent that has
-	 * one.
+	 * If the item does not have any backdrops, this will hold the Id of the Parent that has one.
 	 */
 	@SerialName("ParentBackdropItemId")
 	public val parentBackdropItemId: String? = null,
@@ -290,7 +289,7 @@ public data class BaseItemDto(
 	@SerialName("LocalTrailerCount")
 	public val localTrailerCount: Int? = null,
 	/**
-	 * Gets or sets the user data for this item based on the user it's being requested for.
+	 * User data for this item based on the user it's being requested for.
 	 */
 	@SerialName("UserData")
 	public val userData: UserItemDataDto? = null,
@@ -447,7 +446,7 @@ public data class BaseItemDto(
 	@SerialName("ParentLogoImageTag")
 	public val parentLogoImageTag: String? = null,
 	/**
-	 * Gets or sets wether the item has fan art, this will hold the Id of the Parent that has one.
+	 * If the item does not have a art, this will hold the Id of the Parent that has one.
 	 */
 	@SerialName("ParentArtItemId")
 	public val parentArtItemId: String? = null,
@@ -610,7 +609,7 @@ public data class BaseItemDto(
 	@SerialName("ChannelPrimaryImageTag")
 	public val channelPrimaryImageTag: String? = null,
 	/**
-	 * Gets or sets the start date of the recording, in UTC.
+	 * The start date of the recording, in UTC.
 	 */
 	@SerialName("StartDate")
 	public val startDate: DateTime? = null,

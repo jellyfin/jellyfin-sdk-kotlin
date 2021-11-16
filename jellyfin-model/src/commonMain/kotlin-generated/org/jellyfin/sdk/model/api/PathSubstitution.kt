@@ -18,10 +18,10 @@ public data class PathSubstitution(
 	 * Gets or sets the value to substitute.
 	 */
 	@SerialName("From")
-	public val from: String,
+	public val from: String? = null,
 	/**
 	 * Gets or sets the value to substitution with.
 	 */
 	@SerialName("To")
-	public val to: String
+	public val to: String? = null
 )

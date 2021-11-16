@@ -19,10 +19,10 @@ public data class ImageProviderInfo(
 	 * Gets the name.
 	 */
 	@SerialName("Name")
-	public val name: String,
+	public val name: String? = null,
 	/**
 	 * Gets the supported image types.
 	 */
 	@SerialName("SupportedImages")
-	public val supportedImages: List<ImageType>
+	public val supportedImages: List<ImageType>? = null
 )

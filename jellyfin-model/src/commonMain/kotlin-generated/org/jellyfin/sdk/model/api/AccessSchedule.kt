@@ -21,12 +21,12 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class AccessSchedule(
 	/**
-	 * Gets the id of this instance.
+	 * Gets or sets the id of this instance.
 	 */
 	@SerialName("Id")
 	public val id: Int,
 	/**
-	 * Gets the id of the associated user.
+	 * Gets or sets the id of the associated user.
 	 */
 	@SerialName("UserId")
 	public val userId: UUID,

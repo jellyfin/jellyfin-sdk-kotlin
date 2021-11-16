@@ -7,7 +7,6 @@
 
 package org.jellyfin.sdk.model.api
 
-import kotlin.Boolean
 import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -21,19 +20,8 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class RemoveFromPlaylistRequestDto(
 	/**
-	 * Gets or sets the playlist identifiers ot the items. Ignored when clearing the playlist.
+	 * Gets or sets the playlist identifiers ot the items.
 	 */
 	@SerialName("PlaylistItemIds")
-	public val playlistItemIds: List<UUID>,
-	/**
-	 * Gets or sets a value indicating whether the entire playlist should be cleared.
-	 */
-	@SerialName("ClearPlaylist")
-	public val clearPlaylist: Boolean,
-	/**
-	 * Gets or sets a value indicating whether the playing item should be removed as well. Used only
-	 * when clearing the playlist.
-	 */
-	@SerialName("ClearPlayingItem")
-	public val clearPlayingItem: Boolean
+	public val playlistItemIds: List<UUID>? = null
 )

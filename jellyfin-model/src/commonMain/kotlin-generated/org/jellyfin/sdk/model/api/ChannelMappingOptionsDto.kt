@@ -19,17 +19,17 @@ public data class ChannelMappingOptionsDto(
 	 * Gets or sets list of tuner channels.
 	 */
 	@SerialName("TunerChannels")
-	public val tunerChannels: List<TunerChannelMapping>,
+	public val tunerChannels: List<TunerChannelMapping>? = null,
 	/**
 	 * Gets or sets list of provider channels.
 	 */
 	@SerialName("ProviderChannels")
-	public val providerChannels: List<NameIdPair>,
+	public val providerChannels: List<NameIdPair>? = null,
 	/**
 	 * Gets or sets list of mappings.
 	 */
 	@SerialName("Mappings")
-	public val mappings: List<NameValuePair>,
+	public val mappings: List<NameValuePair>? = null,
 	/**
 	 * Gets or sets provider name.
 	 */

@@ -7,7 +7,9 @@ package org.jellyfin.sdk.api.operations
 
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.Int
 import kotlin.String
+import kotlin.Unit
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
@@ -15,10 +17,22 @@ import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.api.QuickConnectResult
+import org.jellyfin.sdk.model.api.QuickConnectState
 
 public class QuickConnectApi(
 	private val api: ApiClient
 ) : Api {
+	/**
+	 * Temporarily activates quick connect for five minutes.
+	 */
+	public suspend fun activate(): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.post<Unit>("/QuickConnect/Activate", pathParameters, queryParameters, data)
+		return response
+	}
+
 	/**
 	 * Authorizes a pending quick connect request.
 	 *
@@ -30,6 +44,20 @@ public class QuickConnectApi(
 		queryParameters["code"] = code
 		val data = null
 		val response = api.post<Boolean>("/QuickConnect/Authorize", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Enables or disables quick connect.
+	 *
+	 * @param status New MediaBrowser.Model.QuickConnect.QuickConnectState.
+	 */
+	public suspend fun available(status: QuickConnectState? = null): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = mutableMapOf<String, Any?>()
+		queryParameters["status"] = status
+		val data = null
+		val response = api.post<Unit>("/QuickConnect/Available", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -49,13 +77,25 @@ public class QuickConnectApi(
 	}
 
 	/**
-	 * Gets the current quick connect state.
+	 * Deauthorize all quick connect devices for the current user.
 	 */
-	public suspend fun getEnabled(): Response<Boolean> {
+	public suspend fun deauthorize(): Response<Int> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<Boolean>("/QuickConnect/Enabled", pathParameters, queryParameters, data)
+		val response = api.post<Int>("/QuickConnect/Deauthorize", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets the current quick connect state.
+	 */
+	public suspend fun getStatus(): Response<QuickConnectState> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<QuickConnectState>("/QuickConnect/Status", pathParameters,
+				queryParameters, data)
 		return response
 	}
 

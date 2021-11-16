@@ -59,7 +59,7 @@ public class LiveTvApi(
 		pw: String? = null,
 		validateListings: Boolean? = false,
 		validateLogin: Boolean? = false,
-		`data`: ListingsProviderInfo
+		`data`: ListingsProviderInfo? = null
 	): Response<ListingsProviderInfo> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -74,7 +74,7 @@ public class LiveTvApi(
 	/**
 	 * Adds a tuner host.
 	 */
-	public suspend fun addTunerHost(`data`: TunerHostInfo): Response<TunerHostInfo> {
+	public suspend fun addTunerHost(`data`: TunerHostInfo? = null): Response<TunerHostInfo> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<TunerHostInfo>("/LiveTv/TunerHosts", pathParameters, queryParameters,
@@ -114,7 +114,7 @@ public class LiveTvApi(
 	/**
 	 * Creates a live tv series timer.
 	 */
-	public suspend fun createSeriesTimer(`data`: SeriesTimerInfoDto): Response<Unit> {
+	public suspend fun createSeriesTimer(`data`: SeriesTimerInfoDto? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/LiveTv/SeriesTimers", pathParameters, queryParameters, data)
@@ -124,7 +124,7 @@ public class LiveTvApi(
 	/**
 	 * Creates a live tv timer.
 	 */
-	public suspend fun createTimer(`data`: TimerInfoDto): Response<Unit> {
+	public suspend fun createTimer(`data`: TimerInfoDto? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/LiveTv/Timers", pathParameters, queryParameters, data)
@@ -578,7 +578,7 @@ public class LiveTvApi(
 	/**
 	 * Gets available live tv epgs.
 	 */
-	public suspend fun getPrograms(`data`: GetProgramsDto): Response<BaseItemDtoQueryResult> {
+	public suspend fun getPrograms(`data`: GetProgramsDto? = null): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<BaseItemDtoQueryResult>("/LiveTv/Programs", pathParameters,
@@ -983,7 +983,8 @@ public class LiveTvApi(
 	 *
 	 * @param timerId Timer id.
 	 */
-	public suspend fun updateSeriesTimer(timerId: String, `data`: SeriesTimerInfoDto): Response<Unit> {
+	public suspend fun updateSeriesTimer(timerId: String, `data`: SeriesTimerInfoDto? = null):
+			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["timerId"] = timerId
 		val queryParameters = emptyMap<String, Any?>()
@@ -997,7 +998,7 @@ public class LiveTvApi(
 	 *
 	 * @param timerId Timer id.
 	 */
-	public suspend fun updateTimer(timerId: String, `data`: TimerInfoDto): Response<Unit> {
+	public suspend fun updateTimer(timerId: String, `data`: TimerInfoDto? = null): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["timerId"] = timerId
 		val queryParameters = emptyMap<String, Any?>()

@@ -18,10 +18,10 @@ public data class MediaEncoderPathDto(
 	 * Gets or sets media encoder path.
 	 */
 	@SerialName("Path")
-	public val path: String,
+	public val path: String? = null,
 	/**
 	 * Gets or sets media encoder path type.
 	 */
 	@SerialName("PathType")
-	public val pathType: String
+	public val pathType: String? = null
 )

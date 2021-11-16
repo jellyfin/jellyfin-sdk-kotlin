@@ -22,7 +22,7 @@ public data class MusicVideoInfoRemoteSearchQuery(
 	@SerialName("ItemId")
 	public val itemId: UUID,
 	/**
-	 * Gets or sets the provider name to search within if set.
+	 * Will only search within the given provider when set.
 	 */
 	@SerialName("SearchProviderName")
 	public val searchProviderName: String? = null,

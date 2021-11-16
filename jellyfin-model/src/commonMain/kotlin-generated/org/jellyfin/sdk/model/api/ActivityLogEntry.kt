@@ -21,9 +21,6 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
-/**
- * An activity log entry.
- */
 @Serializable
 public data class ActivityLogEntry(
 	/**
@@ -35,7 +32,7 @@ public data class ActivityLogEntry(
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	public val name: String,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the overview.
 	 */
@@ -50,7 +47,7 @@ public data class ActivityLogEntry(
 	 * Gets or sets the type.
 	 */
 	@SerialName("Type")
-	public val type: String,
+	public val type: String? = null,
 	/**
 	 * Gets or sets the item identifier.
 	 */

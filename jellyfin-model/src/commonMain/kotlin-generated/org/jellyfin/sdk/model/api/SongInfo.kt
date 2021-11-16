@@ -26,11 +26,6 @@ public data class SongInfo(
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the original title.
-	 */
-	@SerialName("OriginalTitle")
-	public val originalTitle: String? = null,
-	/**
 	 * Gets or sets the path.
 	 */
 	@SerialName("Path")

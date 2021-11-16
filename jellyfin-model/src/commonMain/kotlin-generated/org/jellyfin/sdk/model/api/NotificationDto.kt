@@ -24,12 +24,12 @@ public data class NotificationDto(
 	 * Gets or sets the notification ID. Defaults to an empty string.
 	 */
 	@SerialName("Id")
-	public val id: String,
+	public val id: String? = null,
 	/**
 	 * Gets or sets the notification's user ID. Defaults to an empty string.
 	 */
 	@SerialName("UserId")
-	public val userId: String,
+	public val userId: String? = null,
 	/**
 	 * Gets or sets the notification date.
 	 */
@@ -44,17 +44,17 @@ public data class NotificationDto(
 	 * Gets or sets the notification's name. Defaults to an empty string.
 	 */
 	@SerialName("Name")
-	public val name: String,
+	public val name: String? = null,
 	/**
 	 * Gets or sets the notification's description. Defaults to an empty string.
 	 */
 	@SerialName("Description")
-	public val description: String,
+	public val description: String? = null,
 	/**
 	 * Gets or sets the notification's URL. Defaults to an empty string.
 	 */
 	@SerialName("Url")
-	public val url: String,
+	public val url: String? = null,
 	/**
 	 * Gets or sets the notification level.
 	 */

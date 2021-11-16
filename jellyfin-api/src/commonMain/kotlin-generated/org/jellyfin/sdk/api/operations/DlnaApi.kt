@@ -25,7 +25,7 @@ public class DlnaApi(
 	/**
 	 * Creates a profile.
 	 */
-	public suspend fun createProfile(`data`: DeviceProfile): Response<Unit> {
+	public suspend fun createProfile(`data`: DeviceProfile? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Dlna/Profiles", pathParameters, queryParameters, data)
@@ -91,7 +91,8 @@ public class DlnaApi(
 	 *
 	 * @param profileId Profile id.
 	 */
-	public suspend fun updateProfile(profileId: String, `data`: DeviceProfile): Response<Unit> {
+	public suspend fun updateProfile(profileId: String, `data`: DeviceProfile? = null):
+			Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["profileId"] = profileId
 		val queryParameters = emptyMap<String, Any?>()

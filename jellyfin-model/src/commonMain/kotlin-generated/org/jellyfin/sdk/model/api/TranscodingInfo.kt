@@ -38,8 +38,6 @@ public data class TranscodingInfo(
 	public val height: Int? = null,
 	@SerialName("AudioChannels")
 	public val audioChannels: Int? = null,
-	@SerialName("HardwareAccelerationType")
-	public val hardwareAccelerationType: HardwareEncodingType? = null,
 	@SerialName("TranscodeReasons")
 	public val transcodeReasons: List<TranscodeReason>? = null
 )

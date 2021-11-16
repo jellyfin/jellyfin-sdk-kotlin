@@ -34,7 +34,7 @@ public data class UserConfiguration(
 	@SerialName("DisplayMissingEpisodes")
 	public val displayMissingEpisodes: Boolean,
 	@SerialName("GroupedFolders")
-	public val groupedFolders: List<String>,
+	public val groupedFolders: List<String>? = null,
 	/**
 	 * An enum representing a subtitle playback mode.
 	 */
@@ -45,11 +45,11 @@ public data class UserConfiguration(
 	@SerialName("EnableLocalPassword")
 	public val enableLocalPassword: Boolean,
 	@SerialName("OrderedViews")
-	public val orderedViews: List<String>,
+	public val orderedViews: List<String>? = null,
 	@SerialName("LatestItemsExcludes")
-	public val latestItemsExcludes: List<String>,
+	public val latestItemsExcludes: List<String>? = null,
 	@SerialName("MyMediaExcludes")
-	public val myMediaExcludes: List<String>,
+	public val myMediaExcludes: List<String>? = null,
 	@SerialName("HidePlayedInLatest")
 	public val hidePlayedInLatest: Boolean,
 	@SerialName("RememberAudioSelections")

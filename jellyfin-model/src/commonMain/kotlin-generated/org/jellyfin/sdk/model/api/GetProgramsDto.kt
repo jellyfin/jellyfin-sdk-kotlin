@@ -31,7 +31,7 @@ public data class GetProgramsDto(
 	 * Gets or sets the channels to return guide information for.
 	 */
 	@SerialName("ChannelIds")
-	public val channelIds: List<UUID>,
+	public val channelIds: List<UUID>? = null,
 	/**
 	 * Gets or sets optional. Filter by user id.
 	 */
@@ -121,22 +121,22 @@ public data class GetProgramsDto(
 	 * Optional.
 	 */
 	@SerialName("SortBy")
-	public val sortBy: List<String>,
+	public val sortBy: List<String>? = null,
 	/**
 	 * Gets or sets sort Order - Ascending,Descending.
 	 */
 	@SerialName("SortOrder")
-	public val sortOrder: List<SortOrder>,
+	public val sortOrder: List<SortOrder>? = null,
 	/**
 	 * Gets or sets the genres to return guide information for.
 	 */
 	@SerialName("Genres")
-	public val genres: List<String>,
+	public val genres: List<String>? = null,
 	/**
 	 * Gets or sets the genre ids to return guide information for.
 	 */
 	@SerialName("GenreIds")
-	public val genreIds: List<UUID>,
+	public val genreIds: List<UUID>? = null,
 	/**
 	 * Gets or sets include image information in output.
 	 * Optional.
@@ -159,7 +159,7 @@ public data class GetProgramsDto(
 	 * Optional.
 	 */
 	@SerialName("EnableImageTypes")
-	public val enableImageTypes: List<ImageType>,
+	public val enableImageTypes: List<ImageType>? = null,
 	/**
 	 * Gets or sets include user data.
 	 * Optional.
@@ -186,5 +186,5 @@ public data class GetProgramsDto(
 	 * Optional.
 	 */
 	@SerialName("Fields")
-	public val fields: List<ItemFields>
+	public val fields: List<ItemFields>? = null
 )

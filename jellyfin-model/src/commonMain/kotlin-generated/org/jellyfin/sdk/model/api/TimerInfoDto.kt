@@ -26,7 +26,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class TimerInfoDto(
 	/**
-	 * Gets or sets the Id of the recording.
+	 * Id of the recording.
 	 */
 	@SerialName("Id")
 	public val id: String? = null,
@@ -43,7 +43,7 @@ public data class TimerInfoDto(
 	@SerialName("ExternalId")
 	public val externalId: String? = null,
 	/**
-	 * Gets or sets the channel id of the recording.
+	 * ChannelId of the recording.
 	 */
 	@SerialName("ChannelId")
 	public val channelId: UUID,
@@ -53,7 +53,7 @@ public data class TimerInfoDto(
 	@SerialName("ExternalChannelId")
 	public val externalChannelId: String? = null,
 	/**
-	 * Gets or sets the channel name of the recording.
+	 * ChannelName of the recording.
 	 */
 	@SerialName("ChannelName")
 	public val channelName: String? = null,
@@ -70,22 +70,22 @@ public data class TimerInfoDto(
 	@SerialName("ExternalProgramId")
 	public val externalProgramId: String? = null,
 	/**
-	 * Gets or sets the name of the recording.
+	 * Name of the recording.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the description of the recording.
+	 * Description of the recording.
 	 */
 	@SerialName("Overview")
 	public val overview: String? = null,
 	/**
-	 * Gets or sets the start date of the recording, in UTC.
+	 * The start date of the recording, in UTC.
 	 */
 	@SerialName("StartDate")
 	public val startDate: DateTime,
 	/**
-	 * Gets or sets the end date of the recording, in UTC.
+	 * The end date of the recording, in UTC.
 	 */
 	@SerialName("EndDate")
 	public val endDate: DateTime,
@@ -115,7 +115,7 @@ public data class TimerInfoDto(
 	@SerialName("IsPrePaddingRequired")
 	public val isPrePaddingRequired: Boolean,
 	/**
-	 * Gets or sets the Id of the Parent that has a backdrop if the item does not have one.
+	 * If the item does not have any backdrops, this will hold the Id of the Parent that has one.
 	 */
 	@SerialName("ParentBackdropItemId")
 	public val parentBackdropItemId: String? = null,

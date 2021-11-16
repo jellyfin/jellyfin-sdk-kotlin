@@ -18,20 +18,20 @@ public data class LibraryOptionsResultDto(
 	 * Gets or sets the metadata savers.
 	 */
 	@SerialName("MetadataSavers")
-	public val metadataSavers: List<LibraryOptionInfoDto>,
+	public val metadataSavers: List<LibraryOptionInfoDto>? = null,
 	/**
 	 * Gets or sets the metadata readers.
 	 */
 	@SerialName("MetadataReaders")
-	public val metadataReaders: List<LibraryOptionInfoDto>,
+	public val metadataReaders: List<LibraryOptionInfoDto>? = null,
 	/**
 	 * Gets or sets the subtitle fetchers.
 	 */
 	@SerialName("SubtitleFetchers")
-	public val subtitleFetchers: List<LibraryOptionInfoDto>,
+	public val subtitleFetchers: List<LibraryOptionInfoDto>? = null,
 	/**
 	 * Gets or sets the type options.
 	 */
 	@SerialName("TypeOptions")
-	public val typeOptions: List<LibraryTypeOptionsDto>
+	public val typeOptions: List<LibraryTypeOptionsDto>? = null
 )

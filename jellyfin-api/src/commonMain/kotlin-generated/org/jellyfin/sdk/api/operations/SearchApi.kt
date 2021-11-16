@@ -17,7 +17,6 @@ import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
-import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.SearchHintResult
 
 public class SearchApi(
@@ -55,8 +54,8 @@ public class SearchApi(
 		limit: Int? = null,
 		userId: UUID? = null,
 		searchTerm: String,
-		includeItemTypes: Collection<BaseItemKind>? = emptyList(),
-		excludeItemTypes: Collection<BaseItemKind>? = emptyList(),
+		includeItemTypes: Collection<String>? = emptyList(),
+		excludeItemTypes: Collection<String>? = emptyList(),
 		mediaTypes: Collection<String>? = emptyList(),
 		parentId: UUID? = null,
 		isMovie: Boolean? = null,

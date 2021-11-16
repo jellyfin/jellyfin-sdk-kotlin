@@ -74,15 +74,15 @@ public data class MediaStream(
 	@SerialName("Title")
 	public val title: String? = null,
 	/**
-	 * Gets the video range.
+	 * Gets or sets the video range.
 	 */
 	@SerialName("VideoRange")
 	public val videoRange: String? = null,
-	@SerialName("LocalizedUndefined")
+	@SerialName("localizedUndefined")
 	public val localizedUndefined: String? = null,
-	@SerialName("LocalizedDefault")
+	@SerialName("localizedDefault")
 	public val localizedDefault: String? = null,
-	@SerialName("LocalizedForced")
+	@SerialName("localizedForced")
 	public val localizedForced: String? = null,
 	@SerialName("DisplayTitle")
 	public val displayTitle: String? = null,
@@ -228,7 +228,7 @@ public data class MediaStream(
 	@SerialName("Level")
 	public val level: Double? = null,
 	/**
-	 * Gets or sets whether this instance is anamorphic.
+	 * Gets a value indicating whether this instance is anamorphic.
 	 */
 	@SerialName("IsAnamorphic")
 	public val isAnamorphic: Boolean? = null

@@ -34,7 +34,7 @@ public data class GroupInfoDto(
 	 * Gets the group name.
 	 */
 	@SerialName("GroupName")
-	public val groupName: String,
+	public val groupName: String? = null,
 	/**
 	 * Gets the group state.
 	 */
@@ -44,7 +44,7 @@ public data class GroupInfoDto(
 	 * Gets the participants.
 	 */
 	@SerialName("Participants")
-	public val participants: List<String>,
+	public val participants: List<String>? = null,
 	/**
 	 * Gets the date when this DTO has been created.
 	 */

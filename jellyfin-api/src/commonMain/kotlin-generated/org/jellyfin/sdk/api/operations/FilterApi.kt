@@ -16,7 +16,6 @@ import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
-import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.QueryFilters
 import org.jellyfin.sdk.model.api.QueryFiltersLegacy
 
@@ -42,7 +41,7 @@ public class FilterApi(
 	public suspend fun getQueryFilters(
 		userId: UUID? = null,
 		parentId: UUID? = null,
-		includeItemTypes: Collection<BaseItemKind>? = emptyList(),
+		includeItemTypes: Collection<String>? = emptyList(),
 		isAiring: Boolean? = null,
 		isMovie: Boolean? = null,
 		isSports: Boolean? = null,
@@ -80,7 +79,7 @@ public class FilterApi(
 	public suspend fun getQueryFiltersLegacy(
 		userId: UUID? = null,
 		parentId: UUID? = null,
-		includeItemTypes: Collection<BaseItemKind>? = emptyList(),
+		includeItemTypes: Collection<String>? = emptyList(),
 		mediaTypes: Collection<String>? = emptyList()
 	): Response<QueryFiltersLegacy> {
 		val pathParameters = emptyMap<String, Any?>()

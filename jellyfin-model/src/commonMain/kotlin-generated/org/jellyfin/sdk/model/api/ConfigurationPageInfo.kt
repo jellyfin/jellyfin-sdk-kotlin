@@ -24,7 +24,7 @@ public data class ConfigurationPageInfo(
 	 * Gets or sets the name.
 	 */
 	@SerialName("Name")
-	public val name: String,
+	public val name: String? = null,
 	/**
 	 * Gets or sets a value indicating whether the configurations page is enabled in the main menu.
 	 */
@@ -45,6 +45,11 @@ public data class ConfigurationPageInfo(
 	 */
 	@SerialName("DisplayName")
 	public val displayName: String? = null,
+	/**
+	 * Gets or sets the type of the configuration page.
+	 */
+	@SerialName("ConfigurationPageType")
+	public val configurationPageType: ConfigurationPageType,
 	/**
 	 * Gets or sets the plugin id.
 	 */

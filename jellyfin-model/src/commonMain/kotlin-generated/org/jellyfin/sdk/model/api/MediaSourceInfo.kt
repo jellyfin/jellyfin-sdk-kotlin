@@ -35,7 +35,6 @@ public data class MediaSourceInfo(
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets a value indicating whether the media is remote.
 	 * Differentiate internet url vs local network.
 	 */
 	@SerialName("IsRemote")

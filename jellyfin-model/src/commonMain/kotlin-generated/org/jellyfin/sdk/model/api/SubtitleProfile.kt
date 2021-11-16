@@ -13,9 +13,6 @@ import kotlinx.serialization.Serializable
 public data class SubtitleProfile(
 	@SerialName("Format")
 	public val format: String? = null,
-	/**
-	 * Delivery method to use during playback of a specific subtitle format.
-	 */
 	@SerialName("Method")
 	public val method: SubtitleDeliveryMethod,
 	@SerialName("DidlMode")

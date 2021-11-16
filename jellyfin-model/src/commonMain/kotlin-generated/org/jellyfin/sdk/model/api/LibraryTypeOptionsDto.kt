@@ -24,20 +24,20 @@ public data class LibraryTypeOptionsDto(
 	 * Gets or sets the metadata fetchers.
 	 */
 	@SerialName("MetadataFetchers")
-	public val metadataFetchers: List<LibraryOptionInfoDto>,
+	public val metadataFetchers: List<LibraryOptionInfoDto>? = null,
 	/**
 	 * Gets or sets the image fetchers.
 	 */
 	@SerialName("ImageFetchers")
-	public val imageFetchers: List<LibraryOptionInfoDto>,
+	public val imageFetchers: List<LibraryOptionInfoDto>? = null,
 	/**
 	 * Gets or sets the supported image types.
 	 */
 	@SerialName("SupportedImageTypes")
-	public val supportedImageTypes: List<ImageType>,
+	public val supportedImageTypes: List<ImageType>? = null,
 	/**
 	 * Gets or sets the default image options.
 	 */
 	@SerialName("DefaultImageOptions")
-	public val defaultImageOptions: List<ImageOption>
+	public val defaultImageOptions: List<ImageOption>? = null
 )
