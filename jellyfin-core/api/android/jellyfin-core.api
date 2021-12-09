@@ -217,6 +217,29 @@ public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$Unsupported
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class org/jellyfin/sdk/discovery/compatibility/JavaFlow {
+	public fun <init> ()V
+	public fun <init> (Lkotlinx/coroutines/CoroutineScope;)V
+	public synthetic fun <init> (Lkotlinx/coroutines/CoroutineScope;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun close ()V
+	public final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$ResultCallback;)V
+	public final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$ResultCallback;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$CompletionCallback;)V
+	public final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$ResultCallback;)V
+	public final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$ResultCallback;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$CompletionCallback;)V
+}
+
+public abstract interface class org/jellyfin/sdk/discovery/compatibility/JavaFlow$CompletionCallback {
+	public abstract fun onCompletion (Ljava/lang/Throwable;)V
+}
+
+public abstract interface class org/jellyfin/sdk/discovery/compatibility/JavaFlow$ResultCallback {
+	public abstract fun onResult (Ljava/lang/Object;)V
+}
+
+public abstract interface class org/jellyfin/sdk/discovery/compatibility/JavaFlow$StartCallback {
+	public abstract fun onStart ()V
+}
+
 public abstract interface class org/jellyfin/sdk/util/ApiClientFactory {
 	public abstract fun create (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;)Lorg/jellyfin/sdk/api/client/ApiClient;
 }
