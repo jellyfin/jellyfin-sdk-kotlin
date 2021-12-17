@@ -17,6 +17,7 @@ kotlin {
 		val commonMain by getting {
 			dependencies {
 				api(libs.kotlinx.coroutines)
+				api(libs.kotlinx.coroutines.test)
 				api(libs.kotlin.test.common)
 				api(libs.kotlin.test.annotations.common)
 			}
