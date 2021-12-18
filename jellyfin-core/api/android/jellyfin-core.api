@@ -72,6 +72,39 @@ public final class org/jellyfin/sdk/android/AndroidDeviceKt {
 	public static final fun androidDevice (Landroid/content/Context;)Lorg/jellyfin/sdk/model/DeviceInfo;
 }
 
+public final class org/jellyfin/sdk/compatibility/JavaContinuation {
+	public static final field INSTANCE Lorg/jellyfin/sdk/compatibility/JavaContinuation;
+	public static final fun get (Ljava/util/function/BiConsumer;)Lkotlin/coroutines/Continuation;
+	public static final fun get (Ljava/util/function/BiConsumer;Lkotlinx/coroutines/CoroutineDispatcher;)Lkotlin/coroutines/Continuation;
+	public static synthetic fun get$default (Ljava/util/function/BiConsumer;Lkotlinx/coroutines/CoroutineDispatcher;ILjava/lang/Object;)Lkotlin/coroutines/Continuation;
+}
+
+public final class org/jellyfin/sdk/compatibility/JavaFlow {
+	public static final field INSTANCE Lorg/jellyfin/sdk/compatibility/JavaFlow;
+	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
+	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
+	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$CompletionCallback;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
+	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$CompletionCallback;Lkotlinx/coroutines/CoroutineScope;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
+	public static synthetic fun collect$default (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$CompletionCallback;Lkotlinx/coroutines/CoroutineScope;ILjava/lang/Object;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
+}
+
+public abstract interface class org/jellyfin/sdk/compatibility/JavaFlow$CompletionCallback {
+	public abstract fun onCompletion (Ljava/lang/Throwable;)V
+}
+
+public final class org/jellyfin/sdk/compatibility/JavaFlow$FlowJob : java/io/Closeable {
+	public fun <init> (Lkotlinx/coroutines/Job;)V
+	public fun close ()V
+}
+
+public abstract interface class org/jellyfin/sdk/compatibility/JavaFlow$ResultCallback {
+	public abstract fun onResult (Ljava/lang/Object;)V
+}
+
+public abstract interface class org/jellyfin/sdk/compatibility/JavaFlow$StartCallback {
+	public abstract fun onStart ()V
+}
+
 public final class org/jellyfin/sdk/discovery/AddressCandidateHelper {
 	public static final field Companion Lorg/jellyfin/sdk/discovery/AddressCandidateHelper$Companion;
 	public static final field JF_HTTPS_PORT I
@@ -215,32 +248,6 @@ public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$Unsupported
 	public final fun getVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
-}
-
-public final class org/jellyfin/sdk/discovery/compatibility/JavaFlow {
-	public static final field INSTANCE Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow;
-	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$ResultCallback;)Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$FlowJob;
-	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$ResultCallback;)Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$FlowJob;
-	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$ResultCallback;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$CompletionCallback;)Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$FlowJob;
-	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$ResultCallback;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$CompletionCallback;Lkotlinx/coroutines/CoroutineScope;)Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$FlowJob;
-	public static synthetic fun collect$default (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$ResultCallback;Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$CompletionCallback;Lkotlinx/coroutines/CoroutineScope;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/compatibility/JavaFlow$FlowJob;
-}
-
-public abstract interface class org/jellyfin/sdk/discovery/compatibility/JavaFlow$CompletionCallback {
-	public abstract fun onCompletion (Ljava/lang/Throwable;)V
-}
-
-public final class org/jellyfin/sdk/discovery/compatibility/JavaFlow$FlowJob : java/io/Closeable {
-	public fun <init> (Lkotlinx/coroutines/Job;)V
-	public fun close ()V
-}
-
-public abstract interface class org/jellyfin/sdk/discovery/compatibility/JavaFlow$ResultCallback {
-	public abstract fun onResult (Ljava/lang/Object;)V
-}
-
-public abstract interface class org/jellyfin/sdk/discovery/compatibility/JavaFlow$StartCallback {
-	public abstract fun onStart ()V
 }
 
 public abstract interface class org/jellyfin/sdk/util/ApiClientFactory {
