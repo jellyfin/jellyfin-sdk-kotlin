@@ -2,7 +2,7 @@ package org.jellyfin.sdk.api.client.util
 
 import io.ktor.utils.io.*
 import io.ktor.utils.io.charsets.*
-import org.jellyfin.testutils.runTest
+import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
