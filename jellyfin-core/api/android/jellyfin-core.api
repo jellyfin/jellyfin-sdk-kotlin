@@ -74,9 +74,13 @@ public final class org/jellyfin/sdk/android/AndroidDeviceKt {
 
 public final class org/jellyfin/sdk/compatibility/JavaContinuation {
 	public static final field INSTANCE Lorg/jellyfin/sdk/compatibility/JavaContinuation;
-	public static final fun get (Ljava/util/function/BiConsumer;)Lkotlin/coroutines/Continuation;
-	public static final fun get (Ljava/util/function/BiConsumer;Lkotlinx/coroutines/CoroutineDispatcher;)Lkotlin/coroutines/Continuation;
-	public static synthetic fun get$default (Ljava/util/function/BiConsumer;Lkotlinx/coroutines/CoroutineDispatcher;ILjava/lang/Object;)Lkotlin/coroutines/Continuation;
+	public static final fun get (Lorg/jellyfin/sdk/compatibility/JavaContinuation$ReturnCallback;)Lkotlin/coroutines/Continuation;
+	public static final fun get (Lorg/jellyfin/sdk/compatibility/JavaContinuation$ReturnCallback;Lkotlinx/coroutines/CoroutineDispatcher;)Lkotlin/coroutines/Continuation;
+	public static synthetic fun get$default (Lorg/jellyfin/sdk/compatibility/JavaContinuation$ReturnCallback;Lkotlinx/coroutines/CoroutineDispatcher;ILjava/lang/Object;)Lkotlin/coroutines/Continuation;
+}
+
+public abstract interface class org/jellyfin/sdk/compatibility/JavaContinuation$ReturnCallback {
+	public abstract fun onReturn (Ljava/lang/Throwable;Ljava/lang/Object;)V
 }
 
 public final class org/jellyfin/sdk/compatibility/JavaFlow {
