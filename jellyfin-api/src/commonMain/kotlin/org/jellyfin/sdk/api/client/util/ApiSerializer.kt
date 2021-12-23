@@ -2,14 +2,13 @@ package org.jellyfin.sdk.api.client.util
 
 import io.ktor.utils.io.ByteReadChannel
 import io.ktor.utils.io.readRemaining
-import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 
-@OptIn(ExperimentalSerializationApi::class, InternalSerializationApi::class)
+@OptIn(InternalSerializationApi::class)
 public object ApiSerializer {
 	public val json: Json = Json {
 		isLenient = false

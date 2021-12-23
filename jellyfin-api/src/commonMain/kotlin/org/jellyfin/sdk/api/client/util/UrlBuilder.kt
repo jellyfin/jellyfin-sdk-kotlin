@@ -3,7 +3,6 @@ package org.jellyfin.sdk.api.client.util
 import io.ktor.http.URLBuilder
 import io.ktor.http.encodeURLParameter
 import io.ktor.http.takeFrom
-import io.ktor.util.InternalAPI
 import org.jellyfin.sdk.api.client.exception.MissingPathVariableException
 
 public object UrlBuilder {
@@ -42,7 +41,6 @@ public object UrlBuilder {
 					}
 
 					// Add not-null values
-					@OptIn(InternalAPI::class) // Required for Ktor URLBuilder
 					if (value != null) parameters.append(key, value)
 				}
 		}.buildString()
