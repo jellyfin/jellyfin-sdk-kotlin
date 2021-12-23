@@ -2,7 +2,11 @@ package org.jellyfin.openapi.builder.model
 
 import org.jellyfin.openapi.OpenApiGeneratorError
 import org.jellyfin.openapi.builder.Builder
-import org.jellyfin.openapi.model.*
+import org.jellyfin.openapi.model.ApiModel
+import org.jellyfin.openapi.model.EmptyApiModel
+import org.jellyfin.openapi.model.EnumApiModel
+import org.jellyfin.openapi.model.JellyFile
+import org.jellyfin.openapi.model.ObjectApiModel
 
 class ModelBuilder(
 	private val emptyModelBuilder: EmptyModelBuilder,

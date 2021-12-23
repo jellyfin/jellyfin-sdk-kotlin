@@ -1,6 +1,10 @@
 package org.jellyfin.openapi.builder.model
 
-import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.AnnotationSpec
+import com.squareup.kotlinpoet.FunSpec
+import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.PropertySpec
+import com.squareup.kotlinpoet.TypeSpec
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toPascalCase
 import net.pearx.kasechange.toScreamingSnakeCase

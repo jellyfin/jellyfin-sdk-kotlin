@@ -13,8 +13,6 @@ complexity:
     ignoreDeprecated: true
 
 style:
-  WildcardImport:
-    active: false
   LoopWithTooManyJumpStatements:
     maxJumpCount: 6
   ReturnCount:

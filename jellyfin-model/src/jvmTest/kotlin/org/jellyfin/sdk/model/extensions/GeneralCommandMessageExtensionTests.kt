@@ -2,7 +2,7 @@ package org.jellyfin.sdk.model.extensions
 
 import org.jellyfin.sdk.model.api.GeneralCommandType
 import org.jellyfin.sdk.model.socket.GeneralCommandMessage
-import java.util.*
+import java.util.UUID
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

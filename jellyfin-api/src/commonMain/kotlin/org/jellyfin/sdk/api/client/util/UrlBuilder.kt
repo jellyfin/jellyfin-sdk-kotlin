@@ -1,7 +1,9 @@
 package org.jellyfin.sdk.api.client.util
 
-import io.ktor.http.*
-import io.ktor.util.*
+import io.ktor.http.URLBuilder
+import io.ktor.http.encodeURLParameter
+import io.ktor.http.takeFrom
+import io.ktor.util.InternalAPI
 import org.jellyfin.sdk.api.client.exception.MissingPathVariableException
 
 public object UrlBuilder {

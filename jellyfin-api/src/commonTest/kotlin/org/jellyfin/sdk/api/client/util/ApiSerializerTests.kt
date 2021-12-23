@@ -1,7 +1,7 @@
 package org.jellyfin.sdk.api.client.util
 
-import io.ktor.utils.io.*
-import io.ktor.utils.io.charsets.*
+import io.ktor.utils.io.ByteReadChannel
+import io.ktor.utils.io.charsets.Charsets
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals

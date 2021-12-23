@@ -1,6 +1,10 @@
 package org.jellyfin.sdk.discovery
 
-import io.ktor.http.*
+import io.ktor.http.URLBuilder
+import io.ktor.http.URLParserException
+import io.ktor.http.URLProtocol
+import io.ktor.http.Url
+import io.ktor.http.takeFrom
 import mu.KotlinLogging
 
 private val logger = KotlinLogging.logger {}

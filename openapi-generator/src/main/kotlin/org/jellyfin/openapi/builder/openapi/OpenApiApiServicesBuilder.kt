@@ -21,7 +21,12 @@ import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.hooks.ApiTypePath
 import org.jellyfin.openapi.hooks.DefaultValueHook
 import org.jellyfin.openapi.hooks.ServiceNameHook
-import org.jellyfin.openapi.model.*
+import org.jellyfin.openapi.model.ApiService
+import org.jellyfin.openapi.model.ApiServiceOperation
+import org.jellyfin.openapi.model.ApiServiceOperationParameter
+import org.jellyfin.openapi.model.HttpMethod
+import org.jellyfin.openapi.model.IntRangeValidation
+import org.jellyfin.openapi.model.ParameterValidation
 
 private val logger = KotlinLogging.logger { }
 

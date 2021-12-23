@@ -1,7 +1,7 @@
 package org.jellyfin.sdk.model.serializer
 
 import kotlinx.serialization.json.Json
-import java.util.*
+import java.util.UUID
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
