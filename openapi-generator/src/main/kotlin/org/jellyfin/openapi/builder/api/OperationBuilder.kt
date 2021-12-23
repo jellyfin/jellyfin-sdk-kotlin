@@ -1,6 +1,11 @@
 package org.jellyfin.openapi.builder.api
 
-import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.FunSpec
+import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.MemberName
+import com.squareup.kotlinpoet.ParameterSpec
+import com.squareup.kotlinpoet.ParameterizedTypeName
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.plusParameter
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
@@ -9,7 +14,11 @@ import org.jellyfin.openapi.constants.Classes
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.constants.Types
-import org.jellyfin.openapi.model.*
+import org.jellyfin.openapi.model.ApiServiceOperation
+import org.jellyfin.openapi.model.ApiServiceOperationParameter
+import org.jellyfin.openapi.model.CustomDefaultValue
+import org.jellyfin.openapi.model.IntRangeValidation
+import org.jellyfin.openapi.model.ParameterValidation
 
 open class OperationBuilder(
 	private val descriptionBuilder: DescriptionBuilder,

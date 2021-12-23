@@ -6,7 +6,11 @@ import net.pearx.kasechange.toCamelCase
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.model.ModelBuilder
 import org.jellyfin.openapi.hooks.ModelTypePath
-import org.jellyfin.openapi.model.*
+import org.jellyfin.openapi.model.EmptyApiModel
+import org.jellyfin.openapi.model.EnumApiModel
+import org.jellyfin.openapi.model.JellyFile
+import org.jellyfin.openapi.model.ObjectApiModel
+import org.jellyfin.openapi.model.ObjectApiModelProperty
 
 class OpenApiModelBuilder(
 	private val openApiTypeBuilder: OpenApiTypeBuilder,

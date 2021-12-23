@@ -1,7 +1,7 @@
 package org.jellyfin.sdk.model.extensions
 
 import org.jellyfin.sdk.model.api.NameGuidPair
-import java.util.*
+import java.util.UUID
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

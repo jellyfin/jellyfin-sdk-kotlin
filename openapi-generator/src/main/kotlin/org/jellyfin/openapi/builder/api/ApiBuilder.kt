@@ -1,6 +1,10 @@
 package org.jellyfin.openapi.builder.api
 
-import com.squareup.kotlinpoet.*
+import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.FunSpec
+import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.PropertySpec
+import com.squareup.kotlinpoet.TypeSpec
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.constants.Classes
 import org.jellyfin.openapi.constants.Packages

@@ -1,6 +1,6 @@
 package org.jellyfin.sdk.api.client
 
-import io.ktor.utils.io.*
+import io.ktor.utils.io.ByteReadChannel
 import org.jellyfin.sdk.api.client.util.ApiSerializer
 
 public class RawResponse(
