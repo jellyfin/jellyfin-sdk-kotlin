@@ -84,17 +84,11 @@ public final class org/jellyfin/sdk/api/client/Response {
 	public final synthetic fun getValue (Ljava/lang/Object;Lkotlin/reflect/KProperty;)Ljava/lang/Object;
 }
 
-public abstract class org/jellyfin/sdk/api/client/compatibility/JavaCallback : kotlin/coroutines/Continuation {
+public abstract class org/jellyfin/sdk/api/client/compatibility/JavaResponseContinuation : kotlin/coroutines/Continuation {
 	public fun <init> ()V
 	public fun getContext ()Lkotlin/coroutines/CoroutineContext;
-	public abstract fun onResponse (Lorg/jellyfin/sdk/api/client/Response;)V
-	public fun resumeWith (Ljava/lang/Object;)V
-}
-
-public abstract class org/jellyfin/sdk/api/client/compatibility/JavaDataCallback : kotlin/coroutines/Continuation {
-	public fun <init> ()V
-	public fun getContext ()Lkotlin/coroutines/CoroutineContext;
-	public abstract fun onData (Ljava/lang/Object;)V
+	public fun onError (Ljava/lang/Throwable;)V
+	public abstract fun onResponse (Ljava/lang/Object;)V
 	public fun resumeWith (Ljava/lang/Object;)V
 }
 
