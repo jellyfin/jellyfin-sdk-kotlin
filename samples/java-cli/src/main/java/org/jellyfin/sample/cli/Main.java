@@ -3,13 +3,13 @@ package org.jellyfin.sample.cli;
 import org.jellyfin.sdk.Jellyfin;
 import org.jellyfin.sdk.JellyfinOptions;
 import org.jellyfin.sdk.api.client.ApiClient;
-import org.jellyfin.sdk.api.client.compatibility.JavaDataCallback;
+import org.jellyfin.sdk.api.client.compatibility.JavaResponseContinuation;
 import org.jellyfin.sdk.api.operations.UserApi;
 import org.jellyfin.sdk.model.ClientInfo;
 import org.jellyfin.sdk.model.DeviceInfo;
 import org.jellyfin.sdk.model.api.AuthenticateUserByName;
 import org.jellyfin.sdk.model.api.AuthenticationResult;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,14 +28,18 @@ public class Main {
 
         CountDownLatch latch = new CountDownLatch(1);
         UserApi userApi = new UserApi(client);
-        userApi.authenticateUserByName(new AuthenticateUserByName("demo", null, ""), new JavaDataCallback<AuthenticationResult>() {
+        userApi.authenticateUserByName(new AuthenticateUserByName("demo", null, ""), new JavaResponseContinuation<AuthenticationResult>() {
             @Override
-            public void onData(@Nullable AuthenticationResult data) {
-                assert data != null;
+            public void onResponse(@NotNull AuthenticationResult response) {
+                client.setAccessToken(response.getAccessToken());
 
-                client.setAccessToken(data.getAccessToken());
+                logger.info("Got access token: {}", response.getAccessToken());
+                latch.countDown();
+            }
 
-                logger.info("Got access token: {}", data.getAccessToken());
+            @Override
+            public void onError(@NotNull Throwable error) {
+                logger.error("Unable to get access token", error);
                 latch.countDown();
             }
         });

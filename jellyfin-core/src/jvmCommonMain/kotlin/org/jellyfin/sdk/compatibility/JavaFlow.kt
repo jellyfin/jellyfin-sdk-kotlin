@@ -1,4 +1,4 @@
-package org.jellyfin.sdk.discovery.compatibility
+package org.jellyfin.sdk.compatibility
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
