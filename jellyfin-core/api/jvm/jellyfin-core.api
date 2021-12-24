@@ -62,8 +62,6 @@ public final class org/jellyfin/sdk/JellyfinOptionsKt {
 public final class org/jellyfin/sdk/compatibility/JavaContinuation {
 	public static final field INSTANCE Lorg/jellyfin/sdk/compatibility/JavaContinuation;
 	public static final fun get (Lorg/jellyfin/sdk/compatibility/JavaContinuation$ReturnCallback;)Lkotlin/coroutines/Continuation;
-	public static final fun get (Lorg/jellyfin/sdk/compatibility/JavaContinuation$ReturnCallback;Lkotlinx/coroutines/CoroutineDispatcher;)Lkotlin/coroutines/Continuation;
-	public static synthetic fun get$default (Lorg/jellyfin/sdk/compatibility/JavaContinuation$ReturnCallback;Lkotlinx/coroutines/CoroutineDispatcher;ILjava/lang/Object;)Lkotlin/coroutines/Continuation;
 }
 
 public abstract interface class org/jellyfin/sdk/compatibility/JavaContinuation$ReturnCallback {
