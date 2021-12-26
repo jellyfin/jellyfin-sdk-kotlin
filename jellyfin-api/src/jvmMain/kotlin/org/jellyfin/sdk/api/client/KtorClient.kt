@@ -97,14 +97,14 @@ public actual open class KtorClient actual constructor(
 			logger.debug(err) { "Socket timed out" }
 			throw TimeoutException("Socket timed out", err)
 		} catch (err: NoTransformationFoundException) {
-			logger.error(err) { "Requested model does not exist!?" }
-			throw InvalidContentException("Requested model does not exist!?", err)
+			logger.error(err) { "Requested model does not exist" }
+			throw InvalidContentException("Requested model does not exist", err)
 		} catch (err: SerializationException) {
-			logger.error(err) { "Deserialization failed" }
-			throw InvalidContentException("Deserialization failed", err)
+			logger.error(err) { "Serialization failed" }
+			throw InvalidContentException("Serialization failed", err)
 		} catch (err: Throwable) {
 			logger.error(err) { "Unknown error occurred!" }
-			throw ApiClientException(message = "Unknown error occurred!", cause = err)
+			throw ApiClientException("Unknown error occurred!", err)
 		}
 	}
 
