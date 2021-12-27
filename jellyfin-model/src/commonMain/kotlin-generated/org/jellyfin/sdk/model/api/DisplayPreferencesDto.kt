@@ -56,7 +56,7 @@ public data class DisplayPreferencesDto(
 	 * Gets or sets the custom prefs.
 	 */
 	@SerialName("CustomPrefs")
-	public val customPrefs: Map<String, String>? = null,
+	public val customPrefs: Map<String, String?>,
 	/**
 	 * Gets or sets the scroll direction.
 	 */
