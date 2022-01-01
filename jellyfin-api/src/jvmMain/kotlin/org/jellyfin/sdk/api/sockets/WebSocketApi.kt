@@ -121,6 +121,7 @@ private val logger = KotlinLogging.logger {}
  *
  * The user should verify the access token is correct as the server does not respond to bad authorization.
  */
+@Deprecated("Replaced with the new SocketApi. This class will be removed in the next SDK release.")
 public class WebSocketApi(
 	private val api: ApiClient,
 ) : Api {
