@@ -1,26 +1,16 @@
 package org.jellyfin.sample.cli.command
 
 import com.github.ajalt.clikt.core.CliktCommand
-import com.github.ajalt.clikt.parameters.options.option
-import com.github.ajalt.clikt.parameters.options.required
 import kotlinx.coroutines.runBlocking
-import org.jellyfin.sample.cli.serverOption
+import org.jellyfin.sample.cli.apiInstanceHolder
 import org.jellyfin.sdk.Jellyfin
-import org.jellyfin.sdk.api.client.extensions.authenticateUserByName
-import org.jellyfin.sdk.api.client.extensions.userApi
 
 class Login(
-	private val jellyfin: Jellyfin
+	jellyfin: Jellyfin
 ) : CliktCommand("Login to a given server and retrieve an access token") {
-	private val server by serverOption()
-	private val username by option("-u", "--username", help = "Username").required()
-	private val password by option("-p", "--password", help = "Password")
+	private val api by apiInstanceHolder(jellyfin)
 
 	override fun run() = runBlocking {
-		val api = jellyfin.createApi(baseUrl = server)
-
-		val result by api.userApi.authenticateUserByName(username, password.orEmpty())
-
-		if (result.accessToken != null) println(result.accessToken)
+		if (api.accessToken != null) println(api.accessToken)
 	}
 }
