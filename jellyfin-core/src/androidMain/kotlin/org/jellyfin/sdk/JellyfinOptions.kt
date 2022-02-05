@@ -16,6 +16,7 @@ public actual data class JellyfinOptions(
 	public actual class Builder {
 		public var context: Context? = null
 		public var clientInfo: ClientInfo? = null
+		public var deviceInfo: DeviceInfo? = null
 		public var apiClientFactory: ApiClientFactory = ApiClientFactory(::KtorClient)
 
 		public actual fun build(): JellyfinOptions = JellyfinOptions(
@@ -23,7 +24,7 @@ public actual data class JellyfinOptions(
 				"An Android context is required when using the jellyfin-android platform."
 			},
 			clientInfo = clientInfo,
-			deviceInfo = androidDevice(context!!),
+			deviceInfo = deviceInfo ?: androidDevice(context!!),
 			apiClientFactory = apiClientFactory,
 		)
 	}
