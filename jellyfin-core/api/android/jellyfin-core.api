@@ -56,9 +56,11 @@ public final class org/jellyfin/sdk/JellyfinOptions$Builder {
 	public final fun getApiClientFactory ()Lorg/jellyfin/sdk/util/ApiClientFactory;
 	public final fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
 	public final fun getContext ()Landroid/content/Context;
+	public final fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
 	public final fun setApiClientFactory (Lorg/jellyfin/sdk/util/ApiClientFactory;)V
 	public final fun setClientInfo (Lorg/jellyfin/sdk/model/ClientInfo;)V
 	public final fun setContext (Landroid/content/Context;)V
+	public final fun setDeviceInfo (Lorg/jellyfin/sdk/model/DeviceInfo;)V
 }
 
 public final class org/jellyfin/sdk/JellyfinOptions$Companion {
