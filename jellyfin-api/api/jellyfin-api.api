@@ -110,6 +110,12 @@ public final class org/jellyfin/sdk/api/client/exception/InvalidStatusException 
 	public final fun getStatus ()I
 }
 
+public final class org/jellyfin/sdk/api/client/exception/MissingBaseUrlException : org/jellyfin/sdk/api/client/exception/ApiClientException {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
 public final class org/jellyfin/sdk/api/client/exception/MissingPathVariableException : org/jellyfin/sdk/api/client/exception/ApiClientException {
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
