@@ -1,5 +1,6 @@
 package org.jellyfin.sdk.api.client
 
+import org.jellyfin.sdk.api.client.exception.MissingBaseUrlException
 import org.jellyfin.sdk.api.client.util.UrlBuilder
 import org.jellyfin.sdk.api.operations.Api
 import org.jellyfin.sdk.model.ClientInfo
@@ -61,7 +62,7 @@ public abstract class ApiClient {
 		queryParameters: Map<String, Any?> = emptyMap(),
 		includeCredentials: Boolean = false,
 	): String = UrlBuilder.buildUrl(
-		requireNotNull(baseUrl),
+		baseUrl ?: throw MissingBaseUrlException(),
 		pathTemplate,
 		pathParameters,
 		queryParameters.run {
