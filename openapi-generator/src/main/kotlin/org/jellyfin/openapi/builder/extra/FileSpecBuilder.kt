@@ -17,6 +17,6 @@ class FileSpecBuilder : Builder<JellyFile, FileSpec> {
 
 	fun buildHeader(data: FileSpec.Builder) = data.apply {
 		indent("\t")
-		addComment(Strings.FILE_TOP_WARNING)
+		addFileComment(Strings.FILE_TOP_WARNING)
 	}
 }
