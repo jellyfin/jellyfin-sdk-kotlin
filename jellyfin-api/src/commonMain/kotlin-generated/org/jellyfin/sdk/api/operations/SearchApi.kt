@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.SearchHintResult
 
 public class SearchApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets the search hint result.
@@ -67,7 +67,7 @@ public class SearchApi(
 		includeMedia: Boolean? = true,
 		includeGenres: Boolean? = true,
 		includeStudios: Boolean? = true,
-		includeArtists: Boolean? = true
+		includeArtists: Boolean? = true,
 	): Response<SearchHintResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

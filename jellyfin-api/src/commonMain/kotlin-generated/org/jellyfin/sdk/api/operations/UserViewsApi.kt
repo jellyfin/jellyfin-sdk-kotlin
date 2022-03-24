@@ -22,7 +22,7 @@ import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.SpecialViewOptionDto
 
 public class UserViewsApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Get user view grouping options.
@@ -53,7 +53,7 @@ public class UserViewsApi(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		includeExternalContent: Boolean? = null,
 		presetViews: Collection<String>? = emptyList(),
-		includeHidden: Boolean? = false
+		includeHidden: Boolean? = false,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId

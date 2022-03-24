@@ -18,7 +18,7 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.api.ImageByNameInfo
 
 public class ImageByNameApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Get General Image.
@@ -47,7 +47,7 @@ public class ImageByNameApi(
 	public fun getGeneralImageUrl(
 		name: String,
 		type: String,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -96,7 +96,7 @@ public class ImageByNameApi(
 	public fun getMediaInfoImageUrl(
 		theme: String,
 		name: String,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["theme"] = theme
@@ -145,7 +145,7 @@ public class ImageByNameApi(
 	public fun getRatingImageUrl(
 		theme: String,
 		name: String,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["theme"] = theme

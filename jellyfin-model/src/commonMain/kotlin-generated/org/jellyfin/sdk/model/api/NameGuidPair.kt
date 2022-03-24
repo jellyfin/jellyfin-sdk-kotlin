@@ -19,5 +19,5 @@ public data class NameGuidPair(
 	@SerialName("Name")
 	public val name: String? = null,
 	@SerialName("Id")
-	public val id: UUID
+	public val id: UUID,
 )

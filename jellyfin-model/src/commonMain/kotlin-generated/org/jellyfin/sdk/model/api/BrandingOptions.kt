@@ -20,5 +20,5 @@ public data class BrandingOptions(
 	 * Gets or sets the custom CSS.
 	 */
 	@SerialName("CustomCss")
-	public val customCss: String? = null
+	public val customCss: String? = null,
 )

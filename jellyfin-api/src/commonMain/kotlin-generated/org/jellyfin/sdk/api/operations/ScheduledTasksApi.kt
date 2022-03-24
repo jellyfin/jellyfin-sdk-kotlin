@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.api.TaskInfo
 import org.jellyfin.sdk.model.api.TaskTriggerInfo
 
 public class ScheduledTasksApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Get task by id.

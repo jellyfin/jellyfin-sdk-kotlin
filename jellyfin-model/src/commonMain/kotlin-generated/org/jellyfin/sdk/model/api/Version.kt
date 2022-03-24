@@ -22,5 +22,5 @@ public data class Version(
 	@SerialName("MajorRevision")
 	public val majorRevision: Int,
 	@SerialName("MinorRevision")
-	public val minorRevision: Int
+	public val minorRevision: Int,
 )

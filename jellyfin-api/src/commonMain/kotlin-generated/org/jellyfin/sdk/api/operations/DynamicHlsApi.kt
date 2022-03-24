@@ -23,7 +23,7 @@ import org.jellyfin.sdk.model.api.EncodingContext
 import org.jellyfin.sdk.model.api.SubtitleDeliveryMethod
 
 public class DynamicHlsApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets a video stream using HTTP live streaming.
@@ -149,7 +149,7 @@ public class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
-		streamOptions: Map<String, String>? = emptyMap()
+		streamOptions: Map<String, String>? = emptyMap(),
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -338,7 +338,7 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
-		includeCredentials: Boolean = true
+		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -520,7 +520,7 @@ public class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
-		streamOptions: Map<String, String>? = emptyMap()
+		streamOptions: Map<String, String>? = emptyMap(),
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -706,7 +706,7 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
-		includeCredentials: Boolean = true
+		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -884,7 +884,7 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
-		enableAdaptiveBitrateStreaming: Boolean? = true
+		enableAdaptiveBitrateStreaming: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -1065,7 +1065,7 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
-		includeCredentials: Boolean = true
+		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -1240,7 +1240,7 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
-		enableAdaptiveBitrateStreaming: Boolean? = true
+		enableAdaptiveBitrateStreaming: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -1418,7 +1418,7 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
-		includeCredentials: Boolean = true
+		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -1592,7 +1592,7 @@ public class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
-		streamOptions: Map<String, String>? = emptyMap()
+		streamOptions: Map<String, String>? = emptyMap(),
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -1770,7 +1770,7 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
-		includeCredentials: Boolean = true
+		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -1942,7 +1942,7 @@ public class DynamicHlsApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
-		streamOptions: Map<String, String>? = emptyMap()
+		streamOptions: Map<String, String>? = emptyMap(),
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -2117,7 +2117,7 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
-		includeCredentials: Boolean = true
+		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

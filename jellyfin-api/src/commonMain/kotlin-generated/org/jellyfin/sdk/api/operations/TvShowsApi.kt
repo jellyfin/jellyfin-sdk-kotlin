@@ -22,7 +22,7 @@ import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 
 public class TvShowsApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets episodes for a tv season.
@@ -64,7 +64,7 @@ public class TvShowsApi(
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
-		sortBy: String? = null
+		sortBy: String? = null,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["seriesId"] = seriesId
@@ -119,7 +119,7 @@ public class TvShowsApi(
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
 		enableTotalRecordCount: Boolean? = true,
-		disableFirstEpisode: Boolean? = false
+		disableFirstEpisode: Boolean? = false,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -168,7 +168,7 @@ public class TvShowsApi(
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
-		enableUserData: Boolean? = null
+		enableUserData: Boolean? = null,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["seriesId"] = seriesId
@@ -212,7 +212,7 @@ public class TvShowsApi(
 		enableImges: Boolean? = null,
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
-		enableUserData: Boolean? = null
+		enableUserData: Boolean? = null,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

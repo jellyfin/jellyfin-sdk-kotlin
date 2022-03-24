@@ -60,5 +60,5 @@ public data class PluginInfo(
 	 * Gets or sets a value indicating the status of the plugin.
 	 */
 	@SerialName("Status")
-	public val status: PluginStatus
+	public val status: PluginStatus,
 )

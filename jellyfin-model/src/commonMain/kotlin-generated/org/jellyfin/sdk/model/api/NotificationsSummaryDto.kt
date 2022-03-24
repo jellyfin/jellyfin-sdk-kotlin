@@ -23,5 +23,5 @@ public data class NotificationsSummaryDto(
 	 * Gets or sets the maximum unread notification level.
 	 */
 	@SerialName("MaxUnreadNotificationLevel")
-	public val maxUnreadNotificationLevel: NotificationLevel? = null
+	public val maxUnreadNotificationLevel: NotificationLevel? = null,
 )

@@ -29,7 +29,7 @@ import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.api.VideoType
 
 public class TrailersApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Finds movies and trailers similar to a given trailer.
@@ -232,7 +232,7 @@ public class TrailersApi(
 		studioIds: Collection<UUID>? = emptyList(),
 		genreIds: Collection<UUID>? = emptyList(),
 		enableTotalRecordCount: Boolean? = true,
-		enableImages: Boolean? = true
+		enableImages: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

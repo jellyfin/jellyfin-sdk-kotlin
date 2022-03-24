@@ -23,7 +23,7 @@ import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 
 public class GenresApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets a genre, by name.
@@ -85,7 +85,7 @@ public class GenresApi(
 		nameStartsWith: String? = null,
 		nameLessThan: String? = null,
 		enableImages: Boolean? = true,
-		enableTotalRecordCount: Boolean? = true
+		enableTotalRecordCount: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

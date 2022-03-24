@@ -14,5 +14,5 @@ public data class MediaUrl(
 	@SerialName("Url")
 	public val url: String? = null,
 	@SerialName("Name")
-	public val name: String? = null
+	public val name: String? = null,
 )

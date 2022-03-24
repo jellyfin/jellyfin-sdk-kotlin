@@ -24,5 +24,5 @@ public data class LibraryOptionInfoDto(
 	 * Gets or sets a value indicating whether default enabled.
 	 */
 	@SerialName("DefaultEnabled")
-	public val defaultEnabled: Boolean
+	public val defaultEnabled: Boolean,
 )

@@ -19,5 +19,5 @@ public data class TimerEventInfo(
 	@SerialName("Id")
 	public val id: String? = null,
 	@SerialName("ProgramId")
-	public val programId: UUID? = null
+	public val programId: UUID? = null,
 )

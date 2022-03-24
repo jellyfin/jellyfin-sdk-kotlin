@@ -96,5 +96,5 @@ public data class PlaybackInfoDto(
 	 * Gets or sets a value indicating whether to auto open the live stream.
 	 */
 	@SerialName("AutoOpenLiveStream")
-	public val autoOpenLiveStream: Boolean? = null
+	public val autoOpenLiveStream: Boolean? = null,
 )

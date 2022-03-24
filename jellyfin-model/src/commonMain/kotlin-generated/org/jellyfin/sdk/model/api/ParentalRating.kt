@@ -24,5 +24,5 @@ public data class ParentalRating(
 	 * Gets or sets the value.
 	 */
 	@SerialName("Value")
-	public val `value`: Int
+	public val `value`: Int,
 )

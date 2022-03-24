@@ -44,5 +44,5 @@ public data class AccessSchedule(
 	 * Gets or sets the end hour.
 	 */
 	@SerialName("EndHour")
-	public val endHour: Double
+	public val endHour: Double,
 )

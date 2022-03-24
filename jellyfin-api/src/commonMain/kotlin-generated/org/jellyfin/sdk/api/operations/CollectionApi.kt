@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.CollectionCreationResult
 
 public class CollectionApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Adds items to a collection.
@@ -53,7 +53,7 @@ public class CollectionApi(
 		name: String? = null,
 		ids: Collection<String>? = emptyList(),
 		parentId: UUID? = null,
-		isLocked: Boolean? = false
+		isLocked: Boolean? = false,
 	): Response<CollectionCreationResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

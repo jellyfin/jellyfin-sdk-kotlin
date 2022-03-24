@@ -66,5 +66,5 @@ public data class TaskInfo(
 	 * Gets or sets the key.
 	 */
 	@SerialName("Key")
-	public val key: String? = null
+	public val key: String? = null,
 )

@@ -33,7 +33,7 @@ import org.jellyfin.sdk.model.api.PlaystateCommand
 import org.jellyfin.sdk.model.api.SessionInfo
 
 public class SessionApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Adds an additional user to a session.
@@ -65,7 +65,7 @@ public class SessionApi(
 		sessionId: String,
 		itemType: String,
 		itemId: String,
-		itemName: String
+		itemName: String,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
@@ -113,7 +113,7 @@ public class SessionApi(
 	public suspend fun getSessions(
 		controllableByUserId: UUID? = null,
 		deviceId: String? = null,
-		activeWithinSeconds: Int? = null
+		activeWithinSeconds: Int? = null,
 	): Response<List<SessionInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -146,7 +146,7 @@ public class SessionApi(
 		mediaSourceId: String? = null,
 		audioStreamIndex: Int? = null,
 		subtitleStreamIndex: Int? = null,
-		startIndex: Int? = null
+		startIndex: Int? = null,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId
@@ -181,7 +181,7 @@ public class SessionApi(
 		supportedCommands: Collection<GeneralCommandType>? = emptyList(),
 		supportsMediaControl: Boolean? = false,
 		supportsSync: Boolean? = false,
-		supportsPersistentIdentifier: Boolean? = true
+		supportsPersistentIdentifier: Boolean? = true,
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -315,7 +315,7 @@ public class SessionApi(
 		sessionId: String,
 		command: PlaystateCommand,
 		seekPositionTicks: Long? = null,
-		controllingUserId: String? = null
+		controllingUserId: String? = null,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["sessionId"] = sessionId

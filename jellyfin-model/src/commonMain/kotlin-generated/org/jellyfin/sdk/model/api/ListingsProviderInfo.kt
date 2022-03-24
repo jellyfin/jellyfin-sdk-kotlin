@@ -48,5 +48,5 @@ public data class ListingsProviderInfo(
 	@SerialName("PreferredLanguage")
 	public val preferredLanguage: String? = null,
 	@SerialName("UserAgent")
-	public val userAgent: String? = null
+	public val userAgent: String? = null,
 )

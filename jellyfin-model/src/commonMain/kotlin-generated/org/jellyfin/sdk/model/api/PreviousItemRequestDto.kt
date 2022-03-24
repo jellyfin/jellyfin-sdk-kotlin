@@ -22,5 +22,5 @@ public data class PreviousItemRequestDto(
 	 * Gets or sets the playing item identifier.
 	 */
 	@SerialName("PlaylistItemId")
-	public val playlistItemId: UUID
+	public val playlistItemId: UUID,
 )

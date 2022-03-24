@@ -23,5 +23,5 @@ public data class TypeOptions(
 	@SerialName("ImageFetcherOrder")
 	public val imageFetcherOrder: List<String>? = null,
 	@SerialName("ImageOptions")
-	public val imageOptions: List<ImageOption>? = null
+	public val imageOptions: List<ImageOption>? = null,
 )

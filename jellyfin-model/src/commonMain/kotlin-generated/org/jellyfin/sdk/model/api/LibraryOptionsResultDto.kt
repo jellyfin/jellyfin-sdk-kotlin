@@ -33,5 +33,5 @@ public data class LibraryOptionsResultDto(
 	 * Gets or sets the type options.
 	 */
 	@SerialName("TypeOptions")
-	public val typeOptions: List<LibraryTypeOptionsDto>? = null
+	public val typeOptions: List<LibraryTypeOptionsDto>? = null,
 )

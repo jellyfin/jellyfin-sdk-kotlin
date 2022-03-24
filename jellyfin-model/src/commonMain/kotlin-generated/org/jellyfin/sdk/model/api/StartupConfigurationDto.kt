@@ -28,5 +28,5 @@ public data class StartupConfigurationDto(
 	 * Gets or sets the preferred language for the metadata.
 	 */
 	@SerialName("PreferredMetadataLanguage")
-	public val preferredMetadataLanguage: String? = null
+	public val preferredMetadataLanguage: String? = null,
 )

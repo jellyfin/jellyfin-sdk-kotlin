@@ -16,5 +16,5 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class CollectionCreationResult(
 	@SerialName("Id")
-	public val id: UUID
+	public val id: UUID,
 )

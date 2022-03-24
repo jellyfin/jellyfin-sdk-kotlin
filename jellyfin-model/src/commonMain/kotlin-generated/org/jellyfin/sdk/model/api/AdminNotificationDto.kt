@@ -33,5 +33,5 @@ public data class AdminNotificationDto(
 	 * Gets or sets the notification url.
 	 */
 	@SerialName("Url")
-	public val url: String? = null
+	public val url: String? = null,
 )

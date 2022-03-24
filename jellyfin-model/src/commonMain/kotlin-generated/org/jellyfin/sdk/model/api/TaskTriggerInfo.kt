@@ -39,5 +39,5 @@ public data class TaskTriggerInfo(
 	 * Gets or sets the maximum runtime ticks.
 	 */
 	@SerialName("MaxRuntimeTicks")
-	public val maxRuntimeTicks: Long? = null
+	public val maxRuntimeTicks: Long? = null,
 )

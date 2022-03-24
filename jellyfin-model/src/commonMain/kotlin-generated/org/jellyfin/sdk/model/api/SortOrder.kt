@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class SortOrder(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("Ascending")
 	ASCENDING("Ascending"),

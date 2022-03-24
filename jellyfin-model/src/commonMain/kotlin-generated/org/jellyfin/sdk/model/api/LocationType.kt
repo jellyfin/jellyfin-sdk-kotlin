@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class LocationType(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("FileSystem")
 	FILE_SYSTEM("FileSystem"),

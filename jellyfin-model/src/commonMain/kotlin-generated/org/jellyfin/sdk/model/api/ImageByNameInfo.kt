@@ -36,5 +36,5 @@ public data class ImageByNameInfo(
 	 * Gets or sets the format.
 	 */
 	@SerialName("Format")
-	public val format: String? = null
+	public val format: String? = null,
 )

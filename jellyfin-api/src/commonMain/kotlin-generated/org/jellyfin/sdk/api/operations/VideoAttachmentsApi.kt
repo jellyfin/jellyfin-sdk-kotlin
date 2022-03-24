@@ -18,7 +18,7 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 
 public class VideoAttachmentsApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Get video attachment.
@@ -30,7 +30,7 @@ public class VideoAttachmentsApi(
 	public suspend fun getAttachment(
 		videoId: UUID,
 		mediaSourceId: String,
-		index: Int
+		index: Int,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["videoId"] = videoId
@@ -55,7 +55,7 @@ public class VideoAttachmentsApi(
 		videoId: UUID,
 		mediaSourceId: String,
 		index: Int,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["videoId"] = videoId

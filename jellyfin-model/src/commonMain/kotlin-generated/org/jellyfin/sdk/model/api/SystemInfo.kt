@@ -137,5 +137,5 @@ public data class SystemInfo(
 	@SerialName("EncoderLocation")
 	public val encoderLocation: FFmpegLocation,
 	@SerialName("SystemArchitecture")
-	public val systemArchitecture: Architecture
+	public val systemArchitecture: Architecture,
 )

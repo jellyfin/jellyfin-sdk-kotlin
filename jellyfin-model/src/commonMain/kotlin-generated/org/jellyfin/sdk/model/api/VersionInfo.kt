@@ -58,5 +58,5 @@ public data class VersionInfo(
 	 * Gets or sets the repository url.
 	 */
 	@SerialName("repositoryUrl")
-	public val repositoryUrl: String? = null
+	public val repositoryUrl: String? = null,
 )

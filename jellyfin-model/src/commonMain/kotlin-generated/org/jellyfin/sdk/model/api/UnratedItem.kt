@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class UnratedItem(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("Movie")
 	MOVIE("Movie"),

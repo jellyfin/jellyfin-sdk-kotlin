@@ -21,5 +21,5 @@ public data class ProblemDetails(
 	@SerialName("detail")
 	public val detail: String? = null,
 	@SerialName("instance")
-	public val instance: String? = null
+	public val instance: String? = null,
 )

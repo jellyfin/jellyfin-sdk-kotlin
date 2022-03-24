@@ -28,7 +28,7 @@ import org.jellyfin.sdk.model.api.ImageInfo
 import org.jellyfin.sdk.model.api.ImageType
 
 public class ImageApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Delete an item's image.
@@ -40,7 +40,7 @@ public class ImageApi(
 	public suspend fun deleteItemImage(
 		itemId: UUID,
 		imageType: ImageType,
-		imageIndex: Int? = null
+		imageIndex: Int? = null,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -63,7 +63,7 @@ public class ImageApi(
 	public suspend fun deleteItemImageByIndex(
 		itemId: UUID,
 		imageType: ImageType,
-		imageIndex: Int
+		imageIndex: Int,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -86,7 +86,7 @@ public class ImageApi(
 	public suspend fun deleteUserImage(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		imageType: ImageType,
-		index: Int? = null
+		index: Int? = null,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -109,7 +109,7 @@ public class ImageApi(
 	public suspend fun deleteUserImageByIndex(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		imageType: ImageType,
-		index: Int
+		index: Int,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -167,7 +167,7 @@ public class ImageApi(
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
-		foregroundLayer: String? = null
+		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -243,7 +243,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -315,7 +315,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		imageIndex: Int? = null
+		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -391,7 +391,7 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -463,7 +463,7 @@ public class ImageApi(
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
-		foregroundLayer: String? = null
+		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -539,7 +539,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -611,7 +611,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		imageIndex: Int? = null
+		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -687,7 +687,7 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -759,7 +759,7 @@ public class ImageApi(
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
-		foregroundLayer: String? = null
+		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -836,7 +836,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -908,7 +908,7 @@ public class ImageApi(
 		unplayedCount: Int? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
-		foregroundLayer: String? = null
+		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -984,7 +984,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -1071,7 +1071,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		imageIndex: Int? = null
+		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -1147,7 +1147,7 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -1219,7 +1219,7 @@ public class ImageApi(
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
-		foregroundLayer: String? = null
+		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -1295,7 +1295,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -1367,7 +1367,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		imageIndex: Int? = null
+		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -1443,7 +1443,7 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -1515,7 +1515,7 @@ public class ImageApi(
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
-		foregroundLayer: String? = null
+		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -1591,7 +1591,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -1663,7 +1663,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		imageIndex: Int? = null
+		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -1739,7 +1739,7 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -1811,7 +1811,7 @@ public class ImageApi(
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
-		foregroundLayer: String? = null
+		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -1887,7 +1887,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -1959,7 +1959,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		imageIndex: Int? = null
+		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -2035,7 +2035,7 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -2107,7 +2107,7 @@ public class ImageApi(
 		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
-		foregroundLayer: String? = null
+		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -2183,7 +2183,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -2221,7 +2221,7 @@ public class ImageApi(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		imageType: ImageType,
 		index: Int? = null,
-		`data`: ByteArray
+		`data`: ByteArray,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -2244,7 +2244,7 @@ public class ImageApi(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		imageType: ImageType,
 		index: Int,
-		`data`: ByteArray
+		`data`: ByteArray,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -2265,7 +2265,7 @@ public class ImageApi(
 	public suspend fun setItemImage(
 		itemId: UUID,
 		imageType: ImageType,
-		`data`: ByteArray
+		`data`: ByteArray,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -2287,7 +2287,7 @@ public class ImageApi(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int,
-		`data`: ByteArray
+		`data`: ByteArray,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -2311,7 +2311,7 @@ public class ImageApi(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int,
-		newIndex: Int
+		newIndex: Int,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

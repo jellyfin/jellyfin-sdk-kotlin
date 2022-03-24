@@ -33,7 +33,7 @@ import org.jellyfin.sdk.model.api.MediaUpdateInfoDto
 import org.jellyfin.sdk.model.api.ThemeMediaResult
 
 public class LibraryApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Deletes an item from the library and filesystem.
@@ -230,7 +230,7 @@ public class LibraryApi(
 		excludeArtistIds: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: Collection<ItemFields>? = emptyList()
+		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -262,7 +262,7 @@ public class LibraryApi(
 		excludeArtistIds: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: Collection<ItemFields>? = emptyList()
+		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -294,7 +294,7 @@ public class LibraryApi(
 		excludeArtistIds: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: Collection<ItemFields>? = emptyList()
+		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -326,7 +326,7 @@ public class LibraryApi(
 		excludeArtistIds: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: Collection<ItemFields>? = emptyList()
+		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -358,7 +358,7 @@ public class LibraryApi(
 		excludeArtistIds: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: Collection<ItemFields>? = emptyList()
+		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -390,7 +390,7 @@ public class LibraryApi(
 		excludeArtistIds: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		limit: Int? = null,
-		fields: Collection<ItemFields>? = emptyList()
+		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -416,7 +416,7 @@ public class LibraryApi(
 	public suspend fun getThemeMedia(
 		itemId: UUID,
 		userId: UUID? = null,
-		inheritFromParent: Boolean? = false
+		inheritFromParent: Boolean? = false,
 	): Response<AllThemeMediaResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -440,7 +440,7 @@ public class LibraryApi(
 	public suspend fun getThemeSongs(
 		itemId: UUID,
 		userId: UUID? = null,
-		inheritFromParent: Boolean? = false
+		inheritFromParent: Boolean? = false,
 	): Response<ThemeMediaResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -464,7 +464,7 @@ public class LibraryApi(
 	public suspend fun getThemeVideos(
 		itemId: UUID,
 		userId: UUID? = null,
-		inheritFromParent: Boolean? = false
+		inheritFromParent: Boolean? = false,
 	): Response<ThemeMediaResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

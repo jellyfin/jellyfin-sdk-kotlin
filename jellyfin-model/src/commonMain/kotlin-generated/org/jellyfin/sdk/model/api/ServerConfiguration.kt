@@ -399,5 +399,5 @@ public data class ServerConfiguration(
 	 * plugin folder.
 	 */
 	@SerialName("RemoveOldPlugins")
-	public val removeOldPlugins: Boolean
+	public val removeOldPlugins: Boolean,
 )

@@ -20,5 +20,5 @@ public data class QueryFiltersLegacy(
 	@SerialName("OfficialRatings")
 	public val officialRatings: List<String>? = null,
 	@SerialName("Years")
-	public val years: List<Int>? = null
+	public val years: List<Int>? = null,
 )

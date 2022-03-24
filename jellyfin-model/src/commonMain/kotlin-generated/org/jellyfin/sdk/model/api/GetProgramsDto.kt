@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 @file:UseSerializers(
 	UUIDSerializer::class,
-	DateTimeSerializer::class
+	DateTimeSerializer::class,
 )
 
 package org.jellyfin.sdk.model.api
@@ -186,5 +186,5 @@ public data class GetProgramsDto(
 	 * Optional.
 	 */
 	@SerialName("Fields")
-	public val fields: List<ItemFields>? = null
+	public val fields: List<ItemFields>? = null,
 )

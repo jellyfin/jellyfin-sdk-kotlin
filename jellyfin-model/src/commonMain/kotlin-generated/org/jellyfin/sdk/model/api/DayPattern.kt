@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public enum class DayPattern(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("Daily")
 	DAILY("Daily"),

@@ -24,5 +24,5 @@ public data class AuthenticationResult(
 	@SerialName("AccessToken")
 	public val accessToken: String? = null,
 	@SerialName("ServerId")
-	public val serverId: String? = null
+	public val serverId: String? = null,
 )

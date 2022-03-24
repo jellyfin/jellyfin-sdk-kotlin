@@ -58,5 +58,5 @@ public data class TaskResult(
 	 * Gets or sets the long error message.
 	 */
 	@SerialName("LongErrorMessage")
-	public val longErrorMessage: String? = null
+	public val longErrorMessage: String? = null,
 )

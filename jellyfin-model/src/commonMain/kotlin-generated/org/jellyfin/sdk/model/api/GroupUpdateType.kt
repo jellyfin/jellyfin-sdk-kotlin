@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class GroupUpdateType(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("UserJoined")
 	USER_JOINED("UserJoined"),

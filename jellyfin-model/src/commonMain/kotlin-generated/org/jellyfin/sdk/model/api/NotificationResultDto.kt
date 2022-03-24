@@ -24,5 +24,5 @@ public data class NotificationResultDto(
 	 * Gets or sets the total number of notifications.
 	 */
 	@SerialName("TotalRecordCount")
-	public val totalRecordCount: Int
+	public val totalRecordCount: Int,
 )

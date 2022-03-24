@@ -24,7 +24,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.SortOrder
 
 public class YearsApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets a year.
@@ -81,7 +81,7 @@ public class YearsApi(
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 		userId: UUID? = null,
 		recursive: Boolean? = true,
-		enableImages: Boolean? = true
+		enableImages: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

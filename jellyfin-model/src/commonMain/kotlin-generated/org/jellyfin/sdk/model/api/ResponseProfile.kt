@@ -25,5 +25,5 @@ public data class ResponseProfile(
 	@SerialName("MimeType")
 	public val mimeType: String? = null,
 	@SerialName("Conditions")
-	public val conditions: List<ProfileCondition>? = null
+	public val conditions: List<ProfileCondition>? = null,
 )

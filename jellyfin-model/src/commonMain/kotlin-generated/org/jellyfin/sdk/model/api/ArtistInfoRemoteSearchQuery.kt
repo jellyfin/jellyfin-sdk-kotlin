@@ -30,5 +30,5 @@ public data class ArtistInfoRemoteSearchQuery(
 	 * Gets or sets a value indicating whether disabled providers should be included.
 	 */
 	@SerialName("IncludeDisabledProviders")
-	public val includeDisabledProviders: Boolean
+	public val includeDisabledProviders: Boolean,
 )

@@ -23,5 +23,5 @@ public data class PlaystateRequest(
 	 * Gets or sets the controlling user identifier.
 	 */
 	@SerialName("ControllingUserId")
-	public val controllingUserId: String? = null
+	public val controllingUserId: String? = null,
 )

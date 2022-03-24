@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class TaskCompletionStatus(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("Completed")
 	COMPLETED("Completed"),

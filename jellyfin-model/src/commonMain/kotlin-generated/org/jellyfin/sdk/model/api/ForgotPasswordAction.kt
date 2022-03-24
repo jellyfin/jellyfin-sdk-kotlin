@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public enum class ForgotPasswordAction(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("ContactAdmin")
 	CONTACT_ADMIN("ContactAdmin"),

@@ -24,7 +24,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.ItemFilter
 
 public class PersonsApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Get person by name.
@@ -76,7 +76,7 @@ public class PersonsApi(
 		personTypes: Collection<String>? = emptyList(),
 		appearsInItemId: UUID? = null,
 		userId: UUID? = null,
-		enableImages: Boolean? = true
+		enableImages: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

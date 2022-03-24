@@ -24,5 +24,5 @@ public data class AllThemeMediaResult(
 	 * Class ThemeMediaResult.
 	 */
 	@SerialName("SoundtrackSongsResult")
-	public val soundtrackSongsResult: ThemeMediaResult? = null
+	public val soundtrackSongsResult: ThemeMediaResult? = null,
 )

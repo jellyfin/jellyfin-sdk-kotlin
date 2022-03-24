@@ -23,5 +23,5 @@ public data class XmlAttribute(
 	 * Gets or sets the value of the attribute.
 	 */
 	@SerialName("Value")
-	public val `value`: String? = null
+	public val `value`: String? = null,
 )

@@ -56,5 +56,5 @@ public data class MovieInfo(
 	@SerialName("PremiereDate")
 	public val premiereDate: DateTime? = null,
 	@SerialName("IsAutomated")
-	public val isAutomated: Boolean
+	public val isAutomated: Boolean,
 )

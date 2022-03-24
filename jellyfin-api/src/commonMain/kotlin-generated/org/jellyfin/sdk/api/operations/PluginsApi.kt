@@ -26,7 +26,7 @@ import org.jellyfin.sdk.model.api.PluginSecurityInfo
 import org.jellyfin.sdk.model.api.Version
 
 public class PluginsApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Disable a plugin.
@@ -104,7 +104,7 @@ public class PluginsApi(
 	public fun getPluginImageUrl(
 		pluginId: UUID,
 		version: Version,
-		includeCredentials: Boolean = true
+		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["pluginId"] = pluginId

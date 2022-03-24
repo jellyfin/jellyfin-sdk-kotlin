@@ -29,5 +29,5 @@ public data class ValidatePathDto(
 	 * Gets or sets is path file.
 	 */
 	@SerialName("IsFile")
-	public val isFile: Boolean? = null
+	public val isFile: Boolean? = null,
 )

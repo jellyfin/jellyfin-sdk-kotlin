@@ -59,5 +59,5 @@ public data class NotificationDto(
 	 * Gets or sets the notification level.
 	 */
 	@SerialName("Level")
-	public val level: NotificationLevel
+	public val level: NotificationLevel,
 )

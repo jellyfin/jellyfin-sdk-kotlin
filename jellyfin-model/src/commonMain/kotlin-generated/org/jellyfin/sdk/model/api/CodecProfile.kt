@@ -21,5 +21,5 @@ public data class CodecProfile(
 	@SerialName("Codec")
 	public val codec: String? = null,
 	@SerialName("Container")
-	public val container: String? = null
+	public val container: String? = null,
 )

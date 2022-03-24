@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class ItemFilter(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("IsFolder")
 	IS_FOLDER("IsFolder"),

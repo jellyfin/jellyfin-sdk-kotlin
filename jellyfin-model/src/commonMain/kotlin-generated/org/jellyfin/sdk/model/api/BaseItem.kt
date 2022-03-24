@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 @file:UseSerializers(
 	DateTimeSerializer::class,
-	UUIDSerializer::class
+	UUIDSerializer::class,
 )
 
 package org.jellyfin.sdk.model.api
@@ -52,5 +52,5 @@ public data class BaseItem(
 	@SerialName("ExtraIds")
 	public val extraIds: List<UUID>? = null,
 	@SerialName("SupportsExternalTransfer")
-	public val supportsExternalTransfer: Boolean
+	public val supportsExternalTransfer: Boolean,
 )

@@ -17,5 +17,5 @@ public data class SetRepeatModeRequestDto(
 	 * Gets or sets the repeat mode.
 	 */
 	@SerialName("Mode")
-	public val mode: GroupRepeatMode
+	public val mode: GroupRepeatMode,
 )

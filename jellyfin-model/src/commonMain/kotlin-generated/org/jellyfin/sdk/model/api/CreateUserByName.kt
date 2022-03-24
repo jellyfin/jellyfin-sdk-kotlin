@@ -23,5 +23,5 @@ public data class CreateUserByName(
 	 * Gets or sets the password.
 	 */
 	@SerialName("Password")
-	public val password: String? = null
+	public val password: String? = null,
 )

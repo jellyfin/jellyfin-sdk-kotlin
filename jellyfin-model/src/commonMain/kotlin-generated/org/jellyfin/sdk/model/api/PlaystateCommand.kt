@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class PlaystateCommand(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("Stop")
 	STOP("Stop"),

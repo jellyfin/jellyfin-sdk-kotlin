@@ -20,5 +20,5 @@ public data class SubtitleProfile(
 	@SerialName("Language")
 	public val language: String? = null,
 	@SerialName("Container")
-	public val container: String? = null
+	public val container: String? = null,
 )

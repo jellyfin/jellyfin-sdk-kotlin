@@ -25,5 +25,5 @@ public data class ImageOption(
 	 * Gets or sets the minimum width.
 	 */
 	@SerialName("MinWidth")
-	public val minWidth: Int
+	public val minWidth: Int,
 )

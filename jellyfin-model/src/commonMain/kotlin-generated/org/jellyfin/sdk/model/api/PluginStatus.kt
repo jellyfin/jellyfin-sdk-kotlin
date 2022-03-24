@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class PluginStatus(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("Active")
 	ACTIVE("Active"),

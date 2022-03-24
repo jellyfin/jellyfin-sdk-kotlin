@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 @file:UseSerializers(
 	DateTimeSerializer::class,
-	UUIDSerializer::class
+	UUIDSerializer::class,
 )
 
 package org.jellyfin.sdk.model.api
@@ -73,5 +73,5 @@ public data class ActivityLogEntry(
 	 * Gets or sets the log severity.
 	 */
 	@SerialName("Severity")
-	public val severity: LogLevel
+	public val severity: LogLevel,
 )

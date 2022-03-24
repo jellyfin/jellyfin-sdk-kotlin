@@ -57,5 +57,5 @@ public data class UserConfiguration(
 	@SerialName("RememberSubtitleSelections")
 	public val rememberSubtitleSelections: Boolean,
 	@SerialName("EnableNextEpisodeAutoPlay")
-	public val enableNextEpisodeAutoPlay: Boolean
+	public val enableNextEpisodeAutoPlay: Boolean,
 )

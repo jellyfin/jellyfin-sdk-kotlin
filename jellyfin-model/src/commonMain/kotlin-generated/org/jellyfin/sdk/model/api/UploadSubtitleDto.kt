@@ -34,5 +34,5 @@ public data class UploadSubtitleDto(
 	 * Gets or sets the subtitle data.
 	 */
 	@SerialName("Data")
-	public val `data`: String
+	public val `data`: String,
 )

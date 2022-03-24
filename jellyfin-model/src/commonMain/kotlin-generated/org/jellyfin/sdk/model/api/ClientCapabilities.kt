@@ -35,5 +35,5 @@ public data class ClientCapabilities(
 	@SerialName("AppStoreUrl")
 	public val appStoreUrl: String? = null,
 	@SerialName("IconUrl")
-	public val iconUrl: String? = null
+	public val iconUrl: String? = null,
 )

@@ -30,7 +30,7 @@ import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.api.VideoType
 
 public class ItemsApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets items based on a query.
@@ -236,7 +236,7 @@ public class ItemsApi(
 		studioIds: Collection<UUID>? = emptyList(),
 		genreIds: Collection<UUID>? = emptyList(),
 		enableTotalRecordCount: Boolean? = true,
-		enableImages: Boolean? = true
+		enableImages: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -529,7 +529,7 @@ public class ItemsApi(
 		studioIds: Collection<UUID>? = emptyList(),
 		genreIds: Collection<UUID>? = emptyList(),
 		enableTotalRecordCount: Boolean? = true,
-		enableImages: Boolean? = true
+		enableImages: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -657,7 +657,7 @@ public class ItemsApi(
 		excludeItemTypes: Collection<String>? = emptyList(),
 		includeItemTypes: Collection<String>? = emptyList(),
 		enableTotalRecordCount: Boolean? = true,
-		enableImages: Boolean? = true
+		enableImages: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId

@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class PlayCommand(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("PlayNow")
 	PLAY_NOW("PlayNow"),

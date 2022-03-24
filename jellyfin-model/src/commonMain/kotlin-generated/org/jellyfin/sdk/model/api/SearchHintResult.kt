@@ -24,5 +24,5 @@ public data class SearchHintResult(
 	 * Gets or sets the total record count.
 	 */
 	@SerialName("TotalRecordCount")
-	public val totalRecordCount: Int
+	public val totalRecordCount: Int,
 )

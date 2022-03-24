@@ -24,5 +24,5 @@ public data class ImageProviderInfo(
 	 * Gets the supported image types.
 	 */
 	@SerialName("SupportedImages")
-	public val supportedImages: List<ImageType>? = null
+	public val supportedImages: List<ImageType>? = null,
 )

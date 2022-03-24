@@ -86,5 +86,5 @@ public data class DisplayPreferencesDto(
 	 * Gets or sets the client.
 	 */
 	@SerialName("Client")
-	public val client: String? = null
+	public val client: String? = null,
 )

@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.api.PackageInfo
 import org.jellyfin.sdk.model.api.RepositoryInfo
 
 public class PackageApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Cancels a package installation.
@@ -90,7 +90,7 @@ public class PackageApi(
 		name: String,
 		assemblyGuid: UUID? = null,
 		version: String? = null,
-		repositoryUrl: String? = null
+		repositoryUrl: String? = null,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name

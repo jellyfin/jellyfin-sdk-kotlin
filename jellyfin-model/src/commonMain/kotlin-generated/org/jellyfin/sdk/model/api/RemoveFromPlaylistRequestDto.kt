@@ -23,5 +23,5 @@ public data class RemoveFromPlaylistRequestDto(
 	 * Gets or sets the playlist identifiers ot the items.
 	 */
 	@SerialName("PlaylistItemIds")
-	public val playlistItemIds: List<UUID>? = null
+	public val playlistItemIds: List<UUID>? = null,
 )

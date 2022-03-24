@@ -73,5 +73,5 @@ public data class ItemCounts(
 	 * Gets or sets the item count.
 	 */
 	@SerialName("ItemCount")
-	public val itemCount: Int
+	public val itemCount: Int,
 )

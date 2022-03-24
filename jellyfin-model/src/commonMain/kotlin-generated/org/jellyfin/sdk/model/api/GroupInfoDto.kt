@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 @file:UseSerializers(
 	UUIDSerializer::class,
-	DateTimeSerializer::class
+	DateTimeSerializer::class,
 )
 
 package org.jellyfin.sdk.model.api
@@ -49,5 +49,5 @@ public data class GroupInfoDto(
 	 * Gets the date when this DTO has been created.
 	 */
 	@SerialName("LastUpdatedAt")
-	public val lastUpdatedAt: DateTime
+	public val lastUpdatedAt: DateTime,
 )

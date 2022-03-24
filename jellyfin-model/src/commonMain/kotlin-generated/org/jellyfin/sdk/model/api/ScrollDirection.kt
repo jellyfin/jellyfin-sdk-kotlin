@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class ScrollDirection(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("Horizontal")
 	HORIZONTAL("Horizontal"),

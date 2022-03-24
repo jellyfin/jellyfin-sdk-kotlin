@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 @file:UseSerializers(
 	UUIDSerializer::class,
-	DateTimeSerializer::class
+	DateTimeSerializer::class,
 )
 
 package org.jellyfin.sdk.model.api
@@ -133,5 +133,5 @@ public data class SessionInfo(
 	 * Gets or sets the supported commands.
 	 */
 	@SerialName("SupportedCommands")
-	public val supportedCommands: List<GeneralCommandType>? = null
+	public val supportedCommands: List<GeneralCommandType>? = null,
 )

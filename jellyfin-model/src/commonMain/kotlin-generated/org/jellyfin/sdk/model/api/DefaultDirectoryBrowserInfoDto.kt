@@ -18,5 +18,5 @@ public data class DefaultDirectoryBrowserInfoDto(
 	 * Gets or sets the path.
 	 */
 	@SerialName("Path")
-	public val path: String? = null
+	public val path: String? = null,
 )

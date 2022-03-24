@@ -14,7 +14,7 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.api.UtcTimeResponse
 
 public class TimeSyncApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets the current UTC time.

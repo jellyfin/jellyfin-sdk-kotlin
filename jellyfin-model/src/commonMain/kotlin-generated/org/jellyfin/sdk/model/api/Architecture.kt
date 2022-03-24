@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public enum class Architecture(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("X86")
 	X86("X86"),

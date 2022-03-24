@@ -44,5 +44,5 @@ public data class LibraryUpdateInfo(
 	@SerialName("CollectionFolders")
 	public val collectionFolders: List<String>? = null,
 	@SerialName("IsEmpty")
-	public val isEmpty: Boolean
+	public val isEmpty: Boolean,
 )

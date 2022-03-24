@@ -35,5 +35,5 @@ public data class PlayRequestDto(
 	 * Gets or sets the start position ticks.
 	 */
 	@SerialName("StartPositionTicks")
-	public val startPositionTicks: Long
+	public val startPositionTicks: Long,
 )

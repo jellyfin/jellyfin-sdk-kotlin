@@ -18,7 +18,7 @@ import org.jellyfin.sdk.model.api.StartupRemoteAccessDto
 import org.jellyfin.sdk.model.api.StartupUserDto
 
 public class StartupApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Completes the startup wizard.

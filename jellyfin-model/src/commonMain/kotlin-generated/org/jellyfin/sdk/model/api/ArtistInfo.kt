@@ -59,5 +59,5 @@ public data class ArtistInfo(
 	@SerialName("IsAutomated")
 	public val isAutomated: Boolean,
 	@SerialName("SongInfos")
-	public val songInfos: List<SongInfo>? = null
+	public val songInfos: List<SongInfo>? = null,
 )

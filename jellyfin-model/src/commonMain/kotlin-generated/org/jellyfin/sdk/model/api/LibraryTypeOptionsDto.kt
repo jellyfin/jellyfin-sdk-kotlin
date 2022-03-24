@@ -39,5 +39,5 @@ public data class LibraryTypeOptionsDto(
 	 * Gets or sets the default image options.
 	 */
 	@SerialName("DefaultImageOptions")
-	public val defaultImageOptions: List<ImageOption>? = null
+	public val defaultImageOptions: List<ImageOption>? = null,
 )

@@ -42,5 +42,5 @@ public data class TranscodingProfile(
 	@SerialName("SegmentLength")
 	public val segmentLength: Int,
 	@SerialName("BreakOnNonKeyFrames")
-	public val breakOnNonKeyFrames: Boolean
+	public val breakOnNonKeyFrames: Boolean,
 )

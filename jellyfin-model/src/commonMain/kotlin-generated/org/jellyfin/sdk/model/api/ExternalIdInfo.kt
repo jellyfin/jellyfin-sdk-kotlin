@@ -38,5 +38,5 @@ public data class ExternalIdInfo(
 	 * Gets or sets the URL format string.
 	 */
 	@SerialName("UrlFormatString")
-	public val urlFormatString: String? = null
+	public val urlFormatString: String? = null,
 )

@@ -39,5 +39,5 @@ public data class TranscodingInfo(
 	@SerialName("AudioChannels")
 	public val audioChannels: Int? = null,
 	@SerialName("TranscodeReasons")
-	public val transcodeReasons: List<TranscodeReason>? = null
+	public val transcodeReasons: List<TranscodeReason>? = null,
 )

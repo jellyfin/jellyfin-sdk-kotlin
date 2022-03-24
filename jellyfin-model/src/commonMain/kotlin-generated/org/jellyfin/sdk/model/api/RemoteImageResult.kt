@@ -30,5 +30,5 @@ public data class RemoteImageResult(
 	 * Gets or sets the providers.
 	 */
 	@SerialName("Providers")
-	public val providers: List<String>? = null
+	public val providers: List<String>? = null,
 )

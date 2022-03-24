@@ -30,5 +30,5 @@ public data class ForgotPasswordResult(
 	 * Gets or sets the pin expiration date.
 	 */
 	@SerialName("PinExpirationDate")
-	public val pinExpirationDate: DateTime? = null
+	public val pinExpirationDate: DateTime? = null,
 )

@@ -17,7 +17,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.MetadataRefreshMode
 
 public class ItemRefreshApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Refreshes metadata for an item.
@@ -35,7 +35,7 @@ public class ItemRefreshApi(
 		metadataRefreshMode: MetadataRefreshMode? = null,
 		imageRefreshMode: MetadataRefreshMode? = null,
 		replaceAllMetadata: Boolean? = false,
-		replaceAllImages: Boolean? = false
+		replaceAllImages: Boolean? = false,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

@@ -34,5 +34,5 @@ public data class UpdateUserPassword(
 	 * Gets or sets a value indicating whether to reset the password.
 	 */
 	@SerialName("ResetPassword")
-	public val resetPassword: Boolean
+	public val resetPassword: Boolean,
 )

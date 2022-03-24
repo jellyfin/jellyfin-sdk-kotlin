@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public enum class ProfileConditionValue(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("AudioChannels")
 	AUDIO_CHANNELS("AudioChannels"),

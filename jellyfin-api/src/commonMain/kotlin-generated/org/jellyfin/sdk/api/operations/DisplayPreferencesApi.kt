@@ -18,7 +18,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.DisplayPreferencesDto
 
 public class DisplayPreferencesApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Get Display Preferences.
@@ -30,7 +30,7 @@ public class DisplayPreferencesApi(
 	public suspend fun getDisplayPreferences(
 		displayPreferencesId: String,
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
-		client: String
+		client: String,
 	): Response<DisplayPreferencesDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["displayPreferencesId"] = displayPreferencesId
@@ -54,7 +54,7 @@ public class DisplayPreferencesApi(
 		displayPreferencesId: String,
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		client: String,
-		`data`: DisplayPreferencesDto
+		`data`: DisplayPreferencesDto,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["displayPreferencesId"] = displayPreferencesId

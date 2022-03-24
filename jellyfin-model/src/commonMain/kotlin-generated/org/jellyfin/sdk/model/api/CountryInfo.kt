@@ -33,5 +33,5 @@ public data class CountryInfo(
 	 * Gets or sets the name of the three letter ISO region.
 	 */
 	@SerialName("ThreeLetterISORegionName")
-	public val threeLetterIsoRegionName: String? = null
+	public val threeLetterIsoRegionName: String? = null,
 )

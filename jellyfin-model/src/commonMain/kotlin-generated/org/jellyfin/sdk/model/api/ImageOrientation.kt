@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public enum class ImageOrientation(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("TopLeft")
 	TOP_LEFT("TopLeft"),

@@ -23,5 +23,5 @@ public data class PathSubstitution(
 	 * Gets or sets the value to substitution with.
 	 */
 	@SerialName("To")
-	public val to: String? = null
+	public val to: String? = null,
 )

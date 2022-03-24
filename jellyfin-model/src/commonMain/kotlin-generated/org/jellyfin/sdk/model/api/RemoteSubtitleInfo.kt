@@ -40,5 +40,5 @@ public data class RemoteSubtitleInfo(
 	@SerialName("DownloadCount")
 	public val downloadCount: Int? = null,
 	@SerialName("IsHashMatch")
-	public val isHashMatch: Boolean? = null
+	public val isHashMatch: Boolean? = null,
 )

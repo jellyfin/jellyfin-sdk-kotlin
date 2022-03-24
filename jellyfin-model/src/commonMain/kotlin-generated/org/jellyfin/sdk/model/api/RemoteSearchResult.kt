@@ -51,5 +51,5 @@ public data class RemoteSearchResult(
 	@SerialName("AlbumArtist")
 	public val albumArtist: RemoteSearchResult? = null,
 	@SerialName("Artists")
-	public val artists: List<RemoteSearchResult>? = null
+	public val artists: List<RemoteSearchResult>? = null,
 )

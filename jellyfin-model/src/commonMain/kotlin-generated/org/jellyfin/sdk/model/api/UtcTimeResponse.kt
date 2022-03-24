@@ -27,5 +27,5 @@ public data class UtcTimeResponse(
 	 * Gets the UTC time when response has been sent.
 	 */
 	@SerialName("ResponseTransmissionTime")
-	public val responseTransmissionTime: DateTime
+	public val responseTransmissionTime: DateTime,
 )

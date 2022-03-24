@@ -18,5 +18,5 @@ public data class TunerChannelMapping(
 	@SerialName("ProviderChannelId")
 	public val providerChannelId: String? = null,
 	@SerialName("Id")
-	public val id: String? = null
+	public val id: String? = null,
 )

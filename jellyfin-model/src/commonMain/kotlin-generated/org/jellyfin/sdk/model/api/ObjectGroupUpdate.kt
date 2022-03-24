@@ -33,5 +33,5 @@ public data class ObjectGroupUpdate(
 	 * Gets the update data.
 	 */
 	@SerialName("Data")
-	public val `data`: JsonElement
+	public val `data`: JsonElement,
 )

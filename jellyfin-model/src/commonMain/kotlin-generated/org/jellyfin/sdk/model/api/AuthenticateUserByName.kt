@@ -28,5 +28,5 @@ public data class AuthenticateUserByName(
 	 * Gets or sets the sha1-hashed password.
 	 */
 	@SerialName("Password")
-	public val password: String? = null
+	public val password: String? = null,
 )

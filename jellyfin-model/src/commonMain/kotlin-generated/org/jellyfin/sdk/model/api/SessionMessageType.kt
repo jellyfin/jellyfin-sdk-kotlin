@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class SessionMessageType(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("ForceKeepAlive")
 	FORCE_KEEP_ALIVE("ForceKeepAlive"),

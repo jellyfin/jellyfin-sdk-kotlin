@@ -23,5 +23,5 @@ public data class StartupUserDto(
 	 * Gets or sets the user's password.
 	 */
 	@SerialName("Password")
-	public val password: String? = null
+	public val password: String? = null,
 )

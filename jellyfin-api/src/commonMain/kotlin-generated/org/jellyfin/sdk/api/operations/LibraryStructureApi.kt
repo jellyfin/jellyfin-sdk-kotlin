@@ -27,7 +27,7 @@ import org.jellyfin.sdk.model.api.UpdateMediaPathRequestDto
 import org.jellyfin.sdk.model.api.VirtualFolderInfo
 
 public class LibraryStructureApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Add a media path to a library.
@@ -57,7 +57,7 @@ public class LibraryStructureApi(
 		collectionType: CollectionTypeOptions? = null,
 		paths: Collection<String>? = emptyList(),
 		refreshLibrary: Boolean? = false,
-		`data`: AddVirtualFolderDto? = null
+		`data`: AddVirtualFolderDto? = null,
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -91,7 +91,7 @@ public class LibraryStructureApi(
 	public suspend fun removeMediaPath(
 		name: String? = null,
 		path: String? = null,
-		refreshLibrary: Boolean? = false
+		refreshLibrary: Boolean? = false,
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -131,7 +131,7 @@ public class LibraryStructureApi(
 	public suspend fun renameVirtualFolder(
 		name: String? = null,
 		newName: String? = null,
-		refreshLibrary: Boolean? = false
+		refreshLibrary: Boolean? = false,
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

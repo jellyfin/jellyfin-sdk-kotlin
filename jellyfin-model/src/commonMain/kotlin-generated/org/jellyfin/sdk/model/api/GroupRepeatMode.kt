@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class GroupRepeatMode(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("RepeatOne")
 	REPEAT_ONE("RepeatOne"),

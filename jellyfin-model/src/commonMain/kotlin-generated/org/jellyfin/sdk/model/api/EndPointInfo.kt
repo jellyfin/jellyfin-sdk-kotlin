@@ -14,5 +14,5 @@ public data class EndPointInfo(
 	@SerialName("IsLocal")
 	public val isLocal: Boolean,
 	@SerialName("IsInNetwork")
-	public val isInNetwork: Boolean
+	public val isInNetwork: Boolean,
 )

@@ -20,5 +20,5 @@ public data class ExternalUrl(
 	 * Gets or sets the type of the item.
 	 */
 	@SerialName("Url")
-	public val url: String? = null
+	public val url: String? = null,
 )

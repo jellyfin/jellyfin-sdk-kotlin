@@ -52,5 +52,5 @@ public data class LiveTvServiceInfo(
 	@SerialName("IsVisible")
 	public val isVisible: Boolean,
 	@SerialName("Tuners")
-	public val tuners: List<String>? = null
+	public val tuners: List<String>? = null,
 )

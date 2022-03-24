@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.api.QueryFilters
 import org.jellyfin.sdk.model.api.QueryFiltersLegacy
 
 public class FilterApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets query filters.
@@ -48,7 +48,7 @@ public class FilterApi(
 		isKids: Boolean? = null,
 		isNews: Boolean? = null,
 		isSeries: Boolean? = null,
-		recursive: Boolean? = null
+		recursive: Boolean? = null,
 	): Response<QueryFilters> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -80,7 +80,7 @@ public class FilterApi(
 		userId: UUID? = null,
 		parentId: UUID? = null,
 		includeItemTypes: Collection<String>? = emptyList(),
-		mediaTypes: Collection<String>? = emptyList()
+		mediaTypes: Collection<String>? = emptyList(),
 	): Response<QueryFiltersLegacy> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

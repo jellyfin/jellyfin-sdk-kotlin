@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.RecommendationDto
 
 public class MoviesApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets movie recommendations.
@@ -38,7 +38,7 @@ public class MoviesApi(
 		parentId: UUID? = null,
 		fields: Collection<ItemFields>? = emptyList(),
 		categoryLimit: Int? = 5,
-		itemLimit: Int? = 8
+		itemLimit: Int? = 8,
 	): Response<List<RecommendationDto>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

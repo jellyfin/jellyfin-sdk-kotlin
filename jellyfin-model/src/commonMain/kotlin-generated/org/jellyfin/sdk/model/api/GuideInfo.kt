@@ -24,5 +24,5 @@ public data class GuideInfo(
 	 * Gets or sets the end date.
 	 */
 	@SerialName("EndDate")
-	public val endDate: DateTime
+	public val endDate: DateTime,
 )

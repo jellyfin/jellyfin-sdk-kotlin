@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.api.BaseItemDto
 import org.jellyfin.sdk.model.api.MetadataEditorInfo
 
 public class ItemUpdateApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets metadata editor info for an item.
