@@ -24,5 +24,5 @@ public data class MediaUpdateInfoPathDto(
 	 * Created, Modified, Deleted.
 	 */
 	@SerialName("UpdateType")
-	public val updateType: String? = null
+	public val updateType: String? = null,
 )

@@ -20,5 +20,5 @@ public data class NameValuePair(
 	 * Gets or sets the value.
 	 */
 	@SerialName("Value")
-	public val `value`: String? = null
+	public val `value`: String? = null,
 )

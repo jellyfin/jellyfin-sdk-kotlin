@@ -114,5 +114,5 @@ public data class UserPolicy(
 	 * Gets or sets a value indicating what SyncPlay features the user can access.
 	 */
 	@SerialName("SyncPlayAccess")
-	public val syncPlayAccess: SyncPlayUserAccessType
+	public val syncPlayAccess: SyncPlayUserAccessType,
 )

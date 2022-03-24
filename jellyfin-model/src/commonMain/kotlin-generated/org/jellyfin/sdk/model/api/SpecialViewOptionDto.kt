@@ -23,5 +23,5 @@ public data class SpecialViewOptionDto(
 	 * Gets or sets view option id.
 	 */
 	@SerialName("Id")
-	public val id: String? = null
+	public val id: String? = null,
 )

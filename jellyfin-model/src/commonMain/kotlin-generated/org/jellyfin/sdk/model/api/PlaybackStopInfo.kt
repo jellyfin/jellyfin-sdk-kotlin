@@ -68,5 +68,5 @@ public data class PlaybackStopInfo(
 	@SerialName("PlaylistItemId")
 	public val playlistItemId: String? = null,
 	@SerialName("NowPlayingQueue")
-	public val nowPlayingQueue: List<QueueItem>? = null
+	public val nowPlayingQueue: List<QueueItem>? = null,
 )

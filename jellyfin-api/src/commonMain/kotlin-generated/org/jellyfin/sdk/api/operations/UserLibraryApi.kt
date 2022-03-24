@@ -28,7 +28,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.UserItemDataDto
 
 public class UserLibraryApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Deletes a user's saved personal rating for an item.
@@ -112,7 +112,7 @@ public class UserLibraryApi(
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
 		limit: Int? = 20,
-		groupItems: Boolean? = true
+		groupItems: Boolean? = true,
 	): Response<List<BaseItemDto>> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -233,7 +233,7 @@ public class UserLibraryApi(
 	public suspend fun updateUserItemRating(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		itemId: UUID,
-		likes: Boolean? = null
+		likes: Boolean? = null,
 	): Response<UserItemDataDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId

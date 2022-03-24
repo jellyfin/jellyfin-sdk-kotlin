@@ -17,5 +17,5 @@ public data class MessageCommand(
 	@SerialName("Text")
 	public val text: String,
 	@SerialName("TimeoutMs")
-	public val timeoutMs: Long? = null
+	public val timeoutMs: Long? = null,
 )

@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 @file:UseSerializers(
 	UUIDSerializer::class,
-	DateTimeSerializer::class
+	DateTimeSerializer::class,
 )
 
 package org.jellyfin.sdk.model.api
@@ -187,5 +187,5 @@ public data class SeriesTimerInfoDto(
 	 * Gets or sets the parent primary image tag.
 	 */
 	@SerialName("ParentPrimaryImageTag")
-	public val parentPrimaryImageTag: String? = null
+	public val parentPrimaryImageTag: String? = null,
 )

@@ -23,5 +23,5 @@ public data class MetadataEditorInfo(
 	@SerialName("ContentType")
 	public val contentType: String? = null,
 	@SerialName("ContentTypeOptions")
-	public val contentTypeOptions: List<NameValuePair>? = null
+	public val contentTypeOptions: List<NameValuePair>? = null,
 )

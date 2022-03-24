@@ -28,7 +28,7 @@ import org.jellyfin.sdk.model.api.RepeatMode
 import org.jellyfin.sdk.model.api.UserItemDataDto
 
 public class PlayStateApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Marks an item as played for user.
@@ -40,7 +40,7 @@ public class PlayStateApi(
 	public suspend fun markPlayedItem(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		itemId: UUID,
-		datePlayed: DateTime? = null
+		datePlayed: DateTime? = null,
 	): Response<UserItemDataDto> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -101,7 +101,7 @@ public class PlayStateApi(
 		playSessionId: String? = null,
 		repeatMode: RepeatMode? = null,
 		isPaused: Boolean? = false,
-		isMuted: Boolean? = false
+		isMuted: Boolean? = false,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -146,7 +146,7 @@ public class PlayStateApi(
 		playMethod: PlayMethod? = null,
 		liveStreamId: String? = null,
 		playSessionId: String? = null,
-		canSeek: Boolean? = false
+		canSeek: Boolean? = false,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -184,7 +184,7 @@ public class PlayStateApi(
 		nextMediaType: String? = null,
 		positionTicks: Long? = null,
 		liveStreamId: String? = null,
-		playSessionId: String? = null
+		playSessionId: String? = null,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId

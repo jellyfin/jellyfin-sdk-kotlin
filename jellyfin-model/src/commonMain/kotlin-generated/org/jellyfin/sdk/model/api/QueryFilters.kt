@@ -15,5 +15,5 @@ public data class QueryFilters(
 	@SerialName("Genres")
 	public val genres: List<NameGuidPair>? = null,
 	@SerialName("Tags")
-	public val tags: List<String>? = null
+	public val tags: List<String>? = null,
 )

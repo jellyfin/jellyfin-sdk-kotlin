@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 @file:UseSerializers(
 	DateTimeSerializer::class,
-	UUIDSerializer::class
+	UUIDSerializer::class,
 )
 
 package org.jellyfin.sdk.model.api
@@ -44,5 +44,5 @@ public data class BufferRequestDto(
 	 * Gets or sets the playlist item identifier of the playing item.
 	 */
 	@SerialName("PlaylistItemId")
-	public val playlistItemId: UUID
+	public val playlistItemId: UUID,
 )

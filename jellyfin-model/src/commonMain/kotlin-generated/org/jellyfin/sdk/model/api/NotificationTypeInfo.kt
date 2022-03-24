@@ -21,5 +21,5 @@ public data class NotificationTypeInfo(
 	@SerialName("Category")
 	public val category: String? = null,
 	@SerialName("IsBasedOnUserEvent")
-	public val isBasedOnUserEvent: Boolean
+	public val isBasedOnUserEvent: Boolean,
 )

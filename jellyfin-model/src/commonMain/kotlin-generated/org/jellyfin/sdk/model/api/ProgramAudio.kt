@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public enum class ProgramAudio(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("Mono")
 	MONO("Mono"),

@@ -19,5 +19,5 @@ public data class QueueItem(
 	@SerialName("Id")
 	public val id: UUID,
 	@SerialName("PlaylistItemId")
-	public val playlistItemId: String? = null
+	public val playlistItemId: String? = null,
 )

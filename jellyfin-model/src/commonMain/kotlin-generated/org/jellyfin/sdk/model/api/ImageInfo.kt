@@ -55,5 +55,5 @@ public data class ImageInfo(
 	 * Gets or sets the size.
 	 */
 	@SerialName("Size")
-	public val size: Long
+	public val size: Long,
 )

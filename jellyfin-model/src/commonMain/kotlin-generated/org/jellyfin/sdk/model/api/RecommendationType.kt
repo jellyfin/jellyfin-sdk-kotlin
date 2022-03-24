@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public enum class RecommendationType(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("SimilarToRecentlyPlayed")
 	SIMILAR_TO_RECENTLY_PLAYED("SimilarToRecentlyPlayed"),

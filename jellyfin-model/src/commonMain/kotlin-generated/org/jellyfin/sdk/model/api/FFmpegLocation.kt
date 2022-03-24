@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class FFmpegLocation(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("NotFound")
 	NOT_FOUND("NotFound"),

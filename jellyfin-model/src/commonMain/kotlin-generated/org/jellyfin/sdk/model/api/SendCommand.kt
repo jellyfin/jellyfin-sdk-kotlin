@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 @file:UseSerializers(
 	UUIDSerializer::class,
-	DateTimeSerializer::class
+	DateTimeSerializer::class,
 )
 
 package org.jellyfin.sdk.model.api
@@ -53,5 +53,5 @@ public data class SendCommand(
 	 * Gets the UTC time when this command has been emitted.
 	 */
 	@SerialName("EmittedAt")
-	public val emittedAt: DateTime
+	public val emittedAt: DateTime,
 )

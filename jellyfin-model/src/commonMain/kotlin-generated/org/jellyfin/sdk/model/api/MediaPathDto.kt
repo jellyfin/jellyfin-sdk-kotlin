@@ -28,5 +28,5 @@ public data class MediaPathDto(
 	 * Gets or sets the path info.
 	 */
 	@SerialName("PathInfo")
-	public val pathInfo: MediaPathInfo? = null
+	public val pathInfo: MediaPathInfo? = null,
 )

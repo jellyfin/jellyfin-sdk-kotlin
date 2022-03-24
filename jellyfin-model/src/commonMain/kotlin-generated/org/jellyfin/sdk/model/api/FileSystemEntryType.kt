@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class FileSystemEntryType(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("File")
 	FILE("File"),

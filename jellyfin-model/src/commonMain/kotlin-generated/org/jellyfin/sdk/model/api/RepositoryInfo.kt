@@ -29,5 +29,5 @@ public data class RepositoryInfo(
 	 * Gets or sets a value indicating whether the repository is enabled.
 	 */
 	@SerialName("Enabled")
-	public val enabled: Boolean
+	public val enabled: Boolean,
 )

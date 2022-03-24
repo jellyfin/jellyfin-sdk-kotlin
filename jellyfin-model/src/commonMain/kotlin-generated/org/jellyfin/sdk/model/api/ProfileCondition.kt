@@ -19,5 +19,5 @@ public data class ProfileCondition(
 	@SerialName("Value")
 	public val `value`: String? = null,
 	@SerialName("IsRequired")
-	public val isRequired: Boolean
+	public val isRequired: Boolean,
 )

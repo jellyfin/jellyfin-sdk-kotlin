@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public enum class PlaybackErrorCode(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("NotAllowed")
 	NOT_ALLOWED("NotAllowed"),

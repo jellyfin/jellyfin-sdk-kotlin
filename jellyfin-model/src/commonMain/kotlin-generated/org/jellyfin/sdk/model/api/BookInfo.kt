@@ -58,5 +58,5 @@ public data class BookInfo(
 	@SerialName("IsAutomated")
 	public val isAutomated: Boolean,
 	@SerialName("SeriesName")
-	public val seriesName: String? = null
+	public val seriesName: String? = null,
 )

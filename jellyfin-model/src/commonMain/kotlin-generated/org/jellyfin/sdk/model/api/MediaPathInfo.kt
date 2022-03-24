@@ -14,5 +14,5 @@ public data class MediaPathInfo(
 	@SerialName("Path")
 	public val path: String? = null,
 	@SerialName("NetworkPath")
-	public val networkPath: String? = null
+	public val networkPath: String? = null,
 )

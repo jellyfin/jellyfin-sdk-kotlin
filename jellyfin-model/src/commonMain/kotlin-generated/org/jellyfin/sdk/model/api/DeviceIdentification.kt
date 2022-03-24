@@ -56,5 +56,5 @@ public data class DeviceIdentification(
 	 * Gets or sets the headers.
 	 */
 	@SerialName("Headers")
-	public val headers: List<HttpHeaderInfo>? = null
+	public val headers: List<HttpHeaderInfo>? = null,
 )

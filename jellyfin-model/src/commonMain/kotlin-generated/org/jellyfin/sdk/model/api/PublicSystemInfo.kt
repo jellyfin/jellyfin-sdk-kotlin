@@ -46,5 +46,5 @@ public data class PublicSystemInfo(
 	 * Gets or sets a value indicating whether the startup wizard is completed.
 	 */
 	@SerialName("StartupWizardCompleted")
-	public val startupWizardCompleted: Boolean? = null
+	public val startupWizardCompleted: Boolean? = null,
 )

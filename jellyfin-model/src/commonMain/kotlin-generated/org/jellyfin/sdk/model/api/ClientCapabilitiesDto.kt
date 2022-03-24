@@ -65,5 +65,5 @@ public data class ClientCapabilitiesDto(
 	 * Gets or sets the icon url.
 	 */
 	@SerialName("IconUrl")
-	public val iconUrl: String? = null
+	public val iconUrl: String? = null,
 )

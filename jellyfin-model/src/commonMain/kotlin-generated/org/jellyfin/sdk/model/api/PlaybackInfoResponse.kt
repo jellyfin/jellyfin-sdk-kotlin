@@ -29,5 +29,5 @@ public data class PlaybackInfoResponse(
 	 * Gets or sets the error code.
 	 */
 	@SerialName("ErrorCode")
-	public val errorCode: PlaybackErrorCode? = null
+	public val errorCode: PlaybackErrorCode? = null,
 )

@@ -39,5 +39,5 @@ public data class FontFile(
 	 * Gets or sets the date modified.
 	 */
 	@SerialName("DateModified")
-	public val dateModified: DateTime
+	public val dateModified: DateTime,
 )

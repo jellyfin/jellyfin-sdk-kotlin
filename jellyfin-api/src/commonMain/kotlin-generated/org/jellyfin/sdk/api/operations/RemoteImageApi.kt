@@ -23,7 +23,7 @@ import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.RemoteImageResult
 
 public class RemoteImageApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Downloads a remote image for an item.
@@ -35,7 +35,7 @@ public class RemoteImageApi(
 	public suspend fun downloadRemoteImage(
 		itemId: UUID,
 		type: ImageType,
-		imageUrl: String? = null
+		imageUrl: String? = null,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -80,7 +80,7 @@ public class RemoteImageApi(
 		startIndex: Int? = null,
 		limit: Int? = null,
 		providerName: String? = null,
-		includeAllLanguages: Boolean? = false
+		includeAllLanguages: Boolean? = false,
 	): Response<RemoteImageResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

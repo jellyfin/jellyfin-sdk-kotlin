@@ -51,5 +51,5 @@ public data class QuickConnectResult(
 	 * Gets or sets the DateTime that this request was created.
 	 */
 	@SerialName("DateAdded")
-	public val dateAdded: DateTime? = null
+	public val dateAdded: DateTime? = null,
 )

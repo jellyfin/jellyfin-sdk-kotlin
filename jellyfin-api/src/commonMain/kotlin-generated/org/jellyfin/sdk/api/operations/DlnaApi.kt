@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.api.DeviceProfile
 import org.jellyfin.sdk.model.api.DeviceProfileInfo
 
 public class DlnaApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Creates a profile.

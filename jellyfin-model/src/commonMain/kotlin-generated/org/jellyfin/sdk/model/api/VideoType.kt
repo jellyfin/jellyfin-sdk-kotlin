@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class VideoType(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("VideoFile")
 	VIDEO_FILE("VideoFile"),

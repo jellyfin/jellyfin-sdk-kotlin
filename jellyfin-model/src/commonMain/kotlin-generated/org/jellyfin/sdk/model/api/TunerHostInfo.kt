@@ -34,5 +34,5 @@ public data class TunerHostInfo(
 	@SerialName("TunerCount")
 	public val tunerCount: Int,
 	@SerialName("UserAgent")
-	public val userAgent: String? = null
+	public val userAgent: String? = null,
 )

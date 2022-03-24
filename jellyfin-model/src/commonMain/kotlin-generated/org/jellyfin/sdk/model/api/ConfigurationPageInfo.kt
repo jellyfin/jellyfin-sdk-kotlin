@@ -54,5 +54,5 @@ public data class ConfigurationPageInfo(
 	 * Gets or sets the plugin id.
 	 */
 	@SerialName("PluginId")
-	public val pluginId: UUID? = null
+	public val pluginId: UUID? = null,
 )

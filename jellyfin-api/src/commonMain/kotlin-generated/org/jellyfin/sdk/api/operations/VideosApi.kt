@@ -29,7 +29,7 @@ import org.jellyfin.sdk.model.api.EncodingContext
 import org.jellyfin.sdk.model.api.SubtitleDeliveryMethod
 
 public class VideosApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Removes alternate video sources.
@@ -186,7 +186,7 @@ public class VideosApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
-		streamOptions: Map<String, String>? = emptyMap()
+		streamOptions: Map<String, String>? = emptyMap(),
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -371,7 +371,7 @@ public class VideosApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -552,7 +552,7 @@ public class VideosApi(
 		audioStreamIndex: Int? = null,
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
-		streamOptions: Map<String, String>? = emptyMap()
+		streamOptions: Map<String, String>? = emptyMap(),
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -737,7 +737,7 @@ public class VideosApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String>? = emptyMap(),
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

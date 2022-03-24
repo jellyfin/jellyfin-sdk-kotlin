@@ -23,5 +23,5 @@ public data class StartupRemoteAccessDto(
 	 * Gets or sets a value indicating whether enable automatic port mapping.
 	 */
 	@SerialName("EnableAutomaticPortMapping")
-	public val enableAutomaticPortMapping: Boolean
+	public val enableAutomaticPortMapping: Boolean,
 )

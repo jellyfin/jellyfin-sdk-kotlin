@@ -26,5 +26,5 @@ public data class DeviceInfoQueryResult(
 	 * The index of the first record in Items.
 	 */
 	@SerialName("StartIndex")
-	public val startIndex: Int
+	public val startIndex: Int,
 )

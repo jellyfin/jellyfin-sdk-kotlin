@@ -17,7 +17,7 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.post
 
 public class DlnaServerApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets Dlna media receiver registrar xml.
@@ -195,7 +195,7 @@ public class DlnaServerApi(
 	public fun getIconIdUrl(
 		serverId: String,
 		fileName: String,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["serverId"] = serverId

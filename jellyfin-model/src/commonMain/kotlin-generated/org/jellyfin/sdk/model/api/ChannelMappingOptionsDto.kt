@@ -34,5 +34,5 @@ public data class ChannelMappingOptionsDto(
 	 * Gets or sets provider name.
 	 */
 	@SerialName("ProviderName")
-	public val providerName: String? = null
+	public val providerName: String? = null,
 )

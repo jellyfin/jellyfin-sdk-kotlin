@@ -17,5 +17,5 @@ public data class AddVirtualFolderDto(
 	 * Gets or sets library options.
 	 */
 	@SerialName("LibraryOptions")
-	public val libraryOptions: LibraryOptions? = null
+	public val libraryOptions: LibraryOptions? = null,
 )

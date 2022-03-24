@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class SendCommandType(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("Unpause")
 	UNPAUSE("Unpause"),

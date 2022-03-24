@@ -18,5 +18,5 @@ public data class SeekRequestDto(
 	 * Gets or sets the position ticks.
 	 */
 	@SerialName("PositionTicks")
-	public val positionTicks: Long
+	public val positionTicks: Long,
 )

@@ -5,7 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 @file:UseSerializers(
 	UUIDSerializer::class,
-	DateTimeSerializer::class
+	DateTimeSerializer::class,
 )
 
 package org.jellyfin.sdk.model.api
@@ -76,5 +76,5 @@ public data class AuthenticationInfo(
 	@SerialName("DateLastActivity")
 	public val dateLastActivity: DateTime,
 	@SerialName("UserName")
-	public val userName: String? = null
+	public val userName: String? = null,
 )

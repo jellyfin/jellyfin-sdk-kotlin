@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class ChannelType(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("TV")
 	TV("TV"),

@@ -18,7 +18,7 @@ import org.jellyfin.sdk.model.DateTime
 import org.jellyfin.sdk.model.api.ActivityLogEntryQueryResult
 
 public class ActivityLogApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets activity log entries.
@@ -33,7 +33,7 @@ public class ActivityLogApi(
 		startIndex: Int? = null,
 		limit: Int? = null,
 		minDate: DateTime? = null,
-		hasUserId: Boolean? = null
+		hasUserId: Boolean? = null,
 	): Response<ActivityLogEntryQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

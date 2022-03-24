@@ -28,5 +28,5 @@ public data class SessionUserInfo(
 	 * Gets or sets the name of the user.
 	 */
 	@SerialName("UserName")
-	public val userName: String? = null
+	public val userName: String? = null,
 )

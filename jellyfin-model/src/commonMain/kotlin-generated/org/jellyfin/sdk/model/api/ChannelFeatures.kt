@@ -73,5 +73,5 @@ public data class ChannelFeatures(
 	 * Gets or sets a value indicating whether [supports content downloading].
 	 */
 	@SerialName("SupportsContentDownloading")
-	public val supportsContentDownloading: Boolean
+	public val supportsContentDownloading: Boolean,
 )

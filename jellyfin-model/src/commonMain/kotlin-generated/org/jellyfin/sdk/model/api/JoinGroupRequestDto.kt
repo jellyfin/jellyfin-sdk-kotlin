@@ -22,5 +22,5 @@ public data class JoinGroupRequestDto(
 	 * Gets or sets the group identifier.
 	 */
 	@SerialName("GroupId")
-	public val groupId: UUID
+	public val groupId: UUID,
 )

@@ -69,5 +69,5 @@ public data class LibraryOptions(
 	@SerialName("SaveSubtitlesWithMedia")
 	public val saveSubtitlesWithMedia: Boolean,
 	@SerialName("TypeOptions")
-	public val typeOptions: List<TypeOptions>? = null
+	public val typeOptions: List<TypeOptions>? = null,
 )

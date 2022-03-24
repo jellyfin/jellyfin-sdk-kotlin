@@ -87,5 +87,5 @@ public data class OpenLiveStreamDto(
 	 * Gets or sets the device play protocols.
 	 */
 	@SerialName("DirectPlayProtocols")
-	public val directPlayProtocols: List<MediaProtocol>? = null
+	public val directPlayProtocols: List<MediaProtocol>? = null,
 )

@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public enum class TranscodeReason(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("ContainerNotSupported")
 	CONTAINER_NOT_SUPPORTED("ContainerNotSupported"),

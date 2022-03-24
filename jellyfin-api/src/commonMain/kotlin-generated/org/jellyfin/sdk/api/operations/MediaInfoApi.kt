@@ -27,7 +27,7 @@ import org.jellyfin.sdk.model.api.PlaybackInfoDto
 import org.jellyfin.sdk.model.api.PlaybackInfoResponse
 
 public class MediaInfoApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Closes a media source.
@@ -145,7 +145,7 @@ public class MediaInfoApi(
 		enableTranscoding: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		`data`: PlaybackInfoDto? = null
+		`data`: PlaybackInfoDto? = null,
 	): Response<PlaybackInfoResponse> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -196,7 +196,7 @@ public class MediaInfoApi(
 		itemId: UUID? = null,
 		enableDirectPlay: Boolean? = null,
 		enableDirectStream: Boolean? = null,
-		`data`: OpenLiveStreamDto? = null
+		`data`: OpenLiveStreamDto? = null,
 	): Response<LiveStreamResponse> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public enum class EncodingContext(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("Streaming")
 	STREAMING("Streaming"),

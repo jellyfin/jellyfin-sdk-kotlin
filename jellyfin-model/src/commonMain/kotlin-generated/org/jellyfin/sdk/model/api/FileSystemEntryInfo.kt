@@ -28,5 +28,5 @@ public data class FileSystemEntryInfo(
 	 * Gets the type.
 	 */
 	@SerialName("Type")
-	public val type: FileSystemEntryType
+	public val type: FileSystemEntryType,
 )

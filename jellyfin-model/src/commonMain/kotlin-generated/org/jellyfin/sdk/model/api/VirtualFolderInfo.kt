@@ -46,5 +46,5 @@ public data class VirtualFolderInfo(
 	@SerialName("RefreshProgress")
 	public val refreshProgress: Double? = null,
 	@SerialName("RefreshStatus")
-	public val refreshStatus: String? = null
+	public val refreshStatus: String? = null,
 )

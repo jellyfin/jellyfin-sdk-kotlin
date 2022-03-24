@@ -36,5 +36,5 @@ public data class CultureDto(
 	@SerialName("ThreeLetterISOLanguageName")
 	public val threeLetterIsoLanguageName: String? = null,
 	@SerialName("ThreeLetterISOLanguageNames")
-	public val threeLetterIsoLanguageNames: List<String>? = null
+	public val threeLetterIsoLanguageNames: List<String>? = null,
 )

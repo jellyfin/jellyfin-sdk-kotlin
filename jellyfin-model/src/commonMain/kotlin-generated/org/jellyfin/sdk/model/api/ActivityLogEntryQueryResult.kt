@@ -26,5 +26,5 @@ public data class ActivityLogEntryQueryResult(
 	 * The index of the first record in Items.
 	 */
 	@SerialName("StartIndex")
-	public val startIndex: Int
+	public val startIndex: Int,
 )

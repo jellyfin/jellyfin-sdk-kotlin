@@ -53,5 +53,5 @@ public data class InstallationInfo(
 	 * Gets or sets package information for the installation.
 	 */
 	@SerialName("PackageInfo")
-	public val packageInfo: PackageInfo? = null
+	public val packageInfo: PackageInfo? = null,
 )

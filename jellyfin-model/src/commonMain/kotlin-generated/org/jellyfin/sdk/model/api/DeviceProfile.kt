@@ -212,5 +212,5 @@ public data class DeviceProfile(
 	 * Gets or sets the SubtitleProfiles.
 	 */
 	@SerialName("SubtitleProfiles")
-	public val subtitleProfiles: List<SubtitleProfile>? = null
+	public val subtitleProfiles: List<SubtitleProfile>? = null,
 )

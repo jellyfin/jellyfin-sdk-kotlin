@@ -38,5 +38,5 @@ public data class ChapterInfo(
 	@SerialName("ImageDateModified")
 	public val imageDateModified: DateTime,
 	@SerialName("ImageTag")
-	public val imageTag: String? = null
+	public val imageTag: String? = null,
 )

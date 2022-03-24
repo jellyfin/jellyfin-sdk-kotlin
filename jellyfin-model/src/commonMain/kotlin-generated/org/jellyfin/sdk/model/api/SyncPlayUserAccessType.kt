@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class SyncPlayUserAccessType(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("CreateAndJoinGroups")
 	CREATE_AND_JOIN_GROUPS("CreateAndJoinGroups"),

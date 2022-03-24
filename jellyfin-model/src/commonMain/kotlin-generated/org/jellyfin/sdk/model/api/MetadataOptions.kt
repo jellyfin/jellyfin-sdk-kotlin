@@ -28,5 +28,5 @@ public data class MetadataOptions(
 	@SerialName("DisabledImageFetchers")
 	public val disabledImageFetchers: List<String>? = null,
 	@SerialName("ImageFetcherOrder")
-	public val imageFetcherOrder: List<String>? = null
+	public val imageFetcherOrder: List<String>? = null,
 )

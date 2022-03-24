@@ -55,5 +55,5 @@ public data class IPlugin(
 	 * needed.
 	 */
 	@SerialName("DataFolderPath")
-	public val dataFolderPath: String? = null
+	public val dataFolderPath: String? = null,
 )

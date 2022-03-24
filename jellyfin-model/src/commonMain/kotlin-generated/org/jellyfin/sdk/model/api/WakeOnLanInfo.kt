@@ -24,5 +24,5 @@ public data class WakeOnLanInfo(
 	 * Gets or sets the wake-on-LAN port.
 	 */
 	@SerialName("Port")
-	public val port: Int
+	public val port: Int,
 )

@@ -77,5 +77,5 @@ public data class UserItemDataDto(
 	 * Gets or sets the item identifier.
 	 */
 	@SerialName("ItemId")
-	public val itemId: String? = null
+	public val itemId: String? = null,
 )

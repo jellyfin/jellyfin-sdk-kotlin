@@ -29,7 +29,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.PlaylistCreationResult
 
 public class PlaylistsApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Adds items to a playlist.
@@ -41,7 +41,7 @@ public class PlaylistsApi(
 	public suspend fun addToPlaylist(
 		playlistId: UUID,
 		ids: Collection<UUID>? = emptyList(),
-		userId: UUID? = null
+		userId: UUID? = null,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["playlistId"] = playlistId
@@ -84,7 +84,7 @@ public class PlaylistsApi(
 		ids: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 		mediaType: String? = null,
-		`data`: CreatePlaylistDto? = null
+		`data`: CreatePlaylistDto? = null,
 	): Response<PlaylistCreationResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -120,7 +120,7 @@ public class PlaylistsApi(
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: Collection<ImageType>? = emptyList()
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["playlistId"] = playlistId
@@ -149,7 +149,7 @@ public class PlaylistsApi(
 	public suspend fun moveItem(
 		playlistId: String,
 		itemId: String,
-		newIndex: Int
+		newIndex: Int,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["playlistId"] = playlistId

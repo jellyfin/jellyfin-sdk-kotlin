@@ -30,7 +30,7 @@ import org.jellyfin.sdk.model.api.SeriesInfoRemoteSearchQuery
 import org.jellyfin.sdk.model.api.TrailerInfoRemoteSearchQuery
 
 public class ItemLookupApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Applies search criteria to an item and refreshes metadata.
@@ -41,7 +41,7 @@ public class ItemLookupApi(
 	public suspend fun applySearchCriteria(
 		itemId: UUID,
 		replaceAllImages: Boolean? = true,
-		`data`: RemoteSearchResult
+		`data`: RemoteSearchResult,
 	): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

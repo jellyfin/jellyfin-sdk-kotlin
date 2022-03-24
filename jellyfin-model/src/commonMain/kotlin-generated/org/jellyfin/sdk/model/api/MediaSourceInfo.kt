@@ -102,5 +102,5 @@ public data class MediaSourceInfo(
 	@SerialName("DefaultAudioStreamIndex")
 	public val defaultAudioStreamIndex: Int? = null,
 	@SerialName("DefaultSubtitleStreamIndex")
-	public val defaultSubtitleStreamIndex: Int? = null
+	public val defaultSubtitleStreamIndex: Int? = null,
 )

@@ -49,5 +49,5 @@ public data class MediaAttachment(
 	 * Gets or sets the delivery URL.
 	 */
 	@SerialName("DeliveryUrl")
-	public val deliveryUrl: String? = null
+	public val deliveryUrl: String? = null,
 )

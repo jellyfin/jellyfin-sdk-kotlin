@@ -18,5 +18,5 @@ public data class ForgotPasswordPinDto(
 	 * Gets or sets the entered pin to have the password reset.
 	 */
 	@SerialName("Pin")
-	public val pin: String
+	public val pin: String,
 )

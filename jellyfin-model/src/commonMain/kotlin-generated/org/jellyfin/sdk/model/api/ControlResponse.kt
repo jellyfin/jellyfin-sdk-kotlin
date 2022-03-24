@@ -18,5 +18,5 @@ public data class ControlResponse(
 	@SerialName("Xml")
 	public val xml: String? = null,
 	@SerialName("IsSuccessful")
-	public val isSuccessful: Boolean
+	public val isSuccessful: Boolean,
 )

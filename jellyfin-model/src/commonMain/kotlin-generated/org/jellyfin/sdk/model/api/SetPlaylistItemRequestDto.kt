@@ -22,5 +22,5 @@ public data class SetPlaylistItemRequestDto(
 	 * Gets or sets the playlist identifier of the playing item.
 	 */
 	@SerialName("PlaylistItemId")
-	public val playlistItemId: UUID
+	public val playlistItemId: UUID,
 )

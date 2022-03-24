@@ -63,5 +63,5 @@ public data class SongInfo(
 	@SerialName("Album")
 	public val album: String? = null,
 	@SerialName("Artists")
-	public val artists: List<String>? = null
+	public val artists: List<String>? = null,
 )

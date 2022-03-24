@@ -25,7 +25,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.ItemFilter
 
 public class ArtistsApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets all album artists from a given item, folder, or the entire library.
@@ -109,7 +109,7 @@ public class ArtistsApi(
 		nameStartsWith: String? = null,
 		nameLessThan: String? = null,
 		enableImages: Boolean? = true,
-		enableTotalRecordCount: Boolean? = true
+		enableTotalRecordCount: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -247,7 +247,7 @@ public class ArtistsApi(
 		nameStartsWith: String? = null,
 		nameLessThan: String? = null,
 		enableImages: Boolean? = true,
-		enableTotalRecordCount: Boolean? = true
+		enableTotalRecordCount: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

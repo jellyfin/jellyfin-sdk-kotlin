@@ -23,7 +23,7 @@ import org.jellyfin.sdk.model.api.EncodingContext
 import org.jellyfin.sdk.model.api.SubtitleDeliveryMethod
 
 public class VideoHlsApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets a hls live stream.
@@ -148,7 +148,7 @@ public class VideoHlsApi(
 		streamOptions: Map<String, String>? = emptyMap(),
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
-		enableSubtitlesInManifest: Boolean? = null
+		enableSubtitlesInManifest: Boolean? = null,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -335,7 +335,7 @@ public class VideoHlsApi(
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		enableSubtitlesInManifest: Boolean? = null,
-		includeCredentials: Boolean = true
+		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

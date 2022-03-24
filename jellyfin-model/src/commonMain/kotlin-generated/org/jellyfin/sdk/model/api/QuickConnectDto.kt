@@ -18,5 +18,5 @@ public data class QuickConnectDto(
 	 * Gets or sets the quick connect token.
 	 */
 	@SerialName("Token")
-	public val token: String
+	public val token: String,
 )

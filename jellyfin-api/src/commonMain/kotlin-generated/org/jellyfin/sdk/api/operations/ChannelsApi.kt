@@ -25,7 +25,7 @@ import org.jellyfin.sdk.model.api.ItemFilter
 import org.jellyfin.sdk.model.api.SortOrder
 
 public class ChannelsApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Get all channel features.
@@ -79,7 +79,7 @@ public class ChannelsApi(
 		sortOrder: Collection<SortOrder>? = emptyList(),
 		filters: Collection<ItemFilter>? = emptyList(),
 		sortBy: Collection<String>? = emptyList(),
-		fields: Collection<ItemFields>? = emptyList()
+		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["channelId"] = channelId
@@ -115,7 +115,7 @@ public class ChannelsApi(
 		limit: Int? = null,
 		supportsLatestItems: Boolean? = null,
 		supportsMediaDeletion: Boolean? = null,
-		isFavorite: Boolean? = null
+		isFavorite: Boolean? = null,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -148,7 +148,7 @@ public class ChannelsApi(
 		limit: Int? = null,
 		filters: Collection<ItemFilter>? = emptyList(),
 		fields: Collection<ItemFields>? = emptyList(),
-		channelIds: Collection<UUID>? = emptyList()
+		channelIds: Collection<UUID>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

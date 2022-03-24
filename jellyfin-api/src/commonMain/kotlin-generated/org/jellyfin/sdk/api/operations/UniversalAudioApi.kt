@@ -20,7 +20,7 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 
 public class UniversalAudioApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets an audio stream.
@@ -64,7 +64,7 @@ public class UniversalAudioApi(
 		maxAudioBitDepth: Int? = null,
 		enableRemoteMedia: Boolean? = null,
 		breakOnNonKeyFrames: Boolean? = false,
-		enableRedirection: Boolean? = true
+		enableRedirection: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -136,7 +136,7 @@ public class UniversalAudioApi(
 		enableRemoteMedia: Boolean? = null,
 		breakOnNonKeyFrames: Boolean? = false,
 		enableRedirection: Boolean? = true,
-		includeCredentials: Boolean = true
+		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

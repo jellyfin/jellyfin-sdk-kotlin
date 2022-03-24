@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class ImageFormat(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("Bmp")
 	BMP("Bmp"),

@@ -28,5 +28,5 @@ public data class MovePlaylistItemRequestDto(
 	 * Gets or sets the new position.
 	 */
 	@SerialName("NewIndex")
-	public val newIndex: Int
+	public val newIndex: Int,
 )

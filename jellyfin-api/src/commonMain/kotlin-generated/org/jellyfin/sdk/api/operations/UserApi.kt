@@ -34,7 +34,7 @@ import org.jellyfin.sdk.model.api.UserDto
 import org.jellyfin.sdk.model.api.UserPolicy
 
 public class UserApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Authenticates a user.
@@ -46,7 +46,7 @@ public class UserApi(
 	public suspend fun authenticateUser(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		pw: String,
-		password: String? = null
+		password: String? = null,
 	): Response<AuthenticationResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId

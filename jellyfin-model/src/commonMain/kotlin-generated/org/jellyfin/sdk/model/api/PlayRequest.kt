@@ -49,5 +49,5 @@ public data class PlayRequest(
 	@SerialName("MediaSourceId")
 	public val mediaSourceId: String? = null,
 	@SerialName("StartIndex")
-	public val startIndex: Int? = null
+	public val startIndex: Int? = null,
 )

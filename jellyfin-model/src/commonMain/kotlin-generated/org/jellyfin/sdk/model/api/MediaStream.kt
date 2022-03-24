@@ -231,5 +231,5 @@ public data class MediaStream(
 	 * Gets a value indicating whether this instance is anamorphic.
 	 */
 	@SerialName("IsAnamorphic")
-	public val isAnamorphic: Boolean? = null
+	public val isAnamorphic: Boolean? = null,
 )

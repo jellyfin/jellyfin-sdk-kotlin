@@ -18,7 +18,7 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.delete
 
 public class HlsSegmentApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets the specified audio segment for an audio item.
@@ -48,7 +48,7 @@ public class HlsSegmentApi(
 	public fun getHlsAudioSegmentLegacyAacUrl(
 		itemId: String,
 		segmentId: String,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -86,7 +86,7 @@ public class HlsSegmentApi(
 	public fun getHlsAudioSegmentLegacyMp3Url(
 		itemId: String,
 		segmentId: String,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -124,7 +124,7 @@ public class HlsSegmentApi(
 	public fun getHlsPlaylistLegacyUrl(
 		itemId: String,
 		playlistId: String,
-		includeCredentials: Boolean = true
+		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -146,7 +146,7 @@ public class HlsSegmentApi(
 		itemId: String,
 		playlistId: String,
 		segmentId: String,
-		segmentContainer: String
+		segmentContainer: String,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -175,7 +175,7 @@ public class HlsSegmentApi(
 		playlistId: String,
 		segmentId: String,
 		segmentContainer: String,
-		includeCredentials: Boolean = false
+		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

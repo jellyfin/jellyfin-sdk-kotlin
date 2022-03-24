@@ -20,5 +20,5 @@ public data class NameIdPair(
 	 * Gets or sets the identifier.
 	 */
 	@SerialName("Id")
-	public val id: String? = null
+	public val id: String? = null,
 )

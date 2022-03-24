@@ -23,7 +23,7 @@ import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 
 public class InstantMixApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Creates an instant playlist based on a given album.
@@ -45,7 +45,7 @@ public class InstantMixApi(
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: Collection<ImageType>? = emptyList()
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["id"] = id
@@ -83,7 +83,7 @@ public class InstantMixApi(
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: Collection<ImageType>? = emptyList()
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["id"] = id
@@ -122,7 +122,7 @@ public class InstantMixApi(
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: Collection<ImageType>? = emptyList()
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -160,7 +160,7 @@ public class InstantMixApi(
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: Collection<ImageType>? = emptyList()
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["id"] = id
@@ -198,7 +198,7 @@ public class InstantMixApi(
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: Collection<ImageType>? = emptyList()
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["id"] = id
@@ -237,7 +237,7 @@ public class InstantMixApi(
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: Collection<ImageType>? = emptyList()
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -275,7 +275,7 @@ public class InstantMixApi(
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: Collection<ImageType>? = emptyList()
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["name"] = name
@@ -313,7 +313,7 @@ public class InstantMixApi(
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: Collection<ImageType>? = emptyList()
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["id"] = id
@@ -351,7 +351,7 @@ public class InstantMixApi(
 		enableImages: Boolean? = null,
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
-		enableImageTypes: Collection<ImageType>? = emptyList()
+		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["id"] = id

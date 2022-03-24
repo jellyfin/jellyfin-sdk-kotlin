@@ -24,5 +24,5 @@ public data class PluginSecurityInfo(
 	 * Gets or sets a value indicating whether is mb supporter.
 	 */
 	@SerialName("IsMbSupporter")
-	public val isMbSupporter: Boolean
+	public val isMbSupporter: Boolean,
 )

@@ -28,5 +28,5 @@ public data class SetChannelMappingDto(
 	 * Gets or sets the provider channel id.
 	 */
 	@SerialName("ProviderChannelId")
-	public val providerChannelId: String
+	public val providerChannelId: String,
 )

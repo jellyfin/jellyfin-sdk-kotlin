@@ -24,5 +24,5 @@ public data class RecommendationDto(
 	@SerialName("BaselineItemName")
 	public val baselineItemName: String? = null,
 	@SerialName("CategoryId")
-	public val categoryId: UUID
+	public val categoryId: UUID,
 )

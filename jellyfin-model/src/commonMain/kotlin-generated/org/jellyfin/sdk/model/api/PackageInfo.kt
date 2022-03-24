@@ -55,5 +55,5 @@ public data class PackageInfo(
 	 * Gets or sets the image url for the package.
 	 */
 	@SerialName("imageUrl")
-	public val imageUrl: String? = null
+	public val imageUrl: String? = null,
 )

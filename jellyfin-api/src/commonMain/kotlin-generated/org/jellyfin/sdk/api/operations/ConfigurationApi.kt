@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.api.MetadataOptions
 import org.jellyfin.sdk.model.api.ServerConfiguration
 
 public class ConfigurationApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets application configuration.

@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 public enum class ImageType(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("Primary")
 	PRIMARY("Primary"),

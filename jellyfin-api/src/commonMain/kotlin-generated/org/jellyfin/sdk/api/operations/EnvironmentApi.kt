@@ -22,7 +22,7 @@ import org.jellyfin.sdk.model.api.FileSystemEntryInfo
 import org.jellyfin.sdk.model.api.ValidatePathDto
 
 public class EnvironmentApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Get Default directory browser.
@@ -47,7 +47,7 @@ public class EnvironmentApi(
 	public suspend fun getDirectoryContents(
 		path: String,
 		includeFiles: Boolean? = false,
-		includeDirectories: Boolean? = false
+		includeDirectories: Boolean? = false,
 	): Response<List<FileSystemEntryInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()

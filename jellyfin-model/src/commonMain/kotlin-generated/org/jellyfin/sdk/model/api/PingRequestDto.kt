@@ -18,5 +18,5 @@ public data class PingRequestDto(
 	 * Gets or sets the ping time.
 	 */
 	@SerialName("Ping")
-	public val ping: Long
+	public val ping: Long,
 )

@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public enum class CodecType(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("Video")
 	VIDEO("Video"),

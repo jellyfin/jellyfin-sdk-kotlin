@@ -27,7 +27,7 @@ import org.jellyfin.sdk.model.api.RemoteSubtitleInfo
 import org.jellyfin.sdk.model.api.UploadSubtitleDto
 
 public class SubtitleApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Deletes an external subtitle file.
@@ -139,7 +139,7 @@ public class SubtitleApi(
 		endPositionTicks: Long? = null,
 		copyTimestamps: Boolean? = false,
 		addVttTimeMap: Boolean? = false,
-		startPositionTicks: Long? = 0
+		startPositionTicks: Long? = 0,
 	): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["routeItemId"] = routeItemId
@@ -187,7 +187,7 @@ public class SubtitleApi(
 		endPositionTicks: Long? = null,
 		copyTimestamps: Boolean? = false,
 		addVttTimeMap: Boolean? = false,
-		startPositionTicks: Long? = 0
+		startPositionTicks: Long? = 0,
 	): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["routeItemId"] = routeItemId
@@ -222,7 +222,7 @@ public class SubtitleApi(
 		itemId: UUID,
 		index: Int,
 		mediaSourceId: String,
-		segmentLength: Int
+		segmentLength: Int,
 	): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -251,7 +251,7 @@ public class SubtitleApi(
 		index: Int,
 		mediaSourceId: String,
 		segmentLength: Int,
-		includeCredentials: Boolean = true
+		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId
@@ -283,7 +283,7 @@ public class SubtitleApi(
 		routeFormat: String,
 		endPositionTicks: Long? = null,
 		copyTimestamps: Boolean? = false,
-		addVttTimeMap: Boolean? = false
+		addVttTimeMap: Boolean? = false,
 	): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["routeItemId"] = routeItemId
@@ -333,7 +333,7 @@ public class SubtitleApi(
 		format: String? = null,
 		endPositionTicks: Long? = null,
 		copyTimestamps: Boolean? = false,
-		addVttTimeMap: Boolean? = false
+		addVttTimeMap: Boolean? = false,
 	): Response<String> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["routeItemId"] = routeItemId
@@ -367,7 +367,7 @@ public class SubtitleApi(
 	public suspend fun searchRemoteSubtitles(
 		itemId: UUID,
 		language: String,
-		isPerfectMatch: Boolean? = null
+		isPerfectMatch: Boolean? = null,
 	): Response<List<RemoteSubtitleInfo>> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["itemId"] = itemId

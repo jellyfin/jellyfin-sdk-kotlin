@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 
 public class SuggestionsApi(
-	private val api: ApiClient
+	private val api: ApiClient,
 ) : Api {
 	/**
 	 * Gets suggestions.
@@ -38,7 +38,7 @@ public class SuggestionsApi(
 		type: Collection<String>? = emptyList(),
 		startIndex: Int? = null,
 		limit: Int? = null,
-		enableTotalRecordCount: Boolean? = false
+		enableTotalRecordCount: Boolean? = false,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId

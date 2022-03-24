@@ -39,5 +39,5 @@ public data class ThemeMediaResult(
 	 * Gets or sets the owner id.
 	 */
 	@SerialName("OwnerId")
-	public val ownerId: UUID
+	public val ownerId: UUID,
 )

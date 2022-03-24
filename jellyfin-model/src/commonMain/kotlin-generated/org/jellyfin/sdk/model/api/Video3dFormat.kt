@@ -11,7 +11,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public enum class Video3dFormat(
-	public val serialName: String
+	public val serialName: String,
 ) {
 	@SerialName("HalfSideBySide")
 	HALF_SIDE_BY_SIDE("HalfSideBySide"),

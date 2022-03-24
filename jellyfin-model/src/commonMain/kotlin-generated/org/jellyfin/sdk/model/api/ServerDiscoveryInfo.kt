@@ -30,5 +30,5 @@ public data class ServerDiscoveryInfo(
 	 * Gets or sets the endpoint address.
 	 */
 	@SerialName("EndpointAddress")
-	public val endpointAddress: String? = null
+	public val endpointAddress: String? = null,
 )

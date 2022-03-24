@@ -63,5 +63,5 @@ public data class PlayerStateInfo(
 	 * Gets or sets the repeat mode.
 	 */
 	@SerialName("RepeatMode")
-	public val repeatMode: RepeatMode
+	public val repeatMode: RepeatMode,
 )
