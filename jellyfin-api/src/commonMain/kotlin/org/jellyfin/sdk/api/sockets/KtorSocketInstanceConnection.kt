@@ -125,10 +125,8 @@ public class KtorSocketInstanceConnection(
 	override suspend fun disconnect() {
 		logger.info { "Disconnecting" }
 
-		if (connection != null) {
-			connection!!.close()
-			connection = null
-		}
+		connection?.close()
+		connection = null
 
 		coroutineScope.cancel()
 	}

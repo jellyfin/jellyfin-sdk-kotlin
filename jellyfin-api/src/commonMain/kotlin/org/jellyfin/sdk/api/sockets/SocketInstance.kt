@@ -22,6 +22,7 @@ import org.jellyfin.sdk.model.socket.ForceKeepAliveMessage
 import org.jellyfin.sdk.model.socket.OutgoingSocketMessage
 import org.jellyfin.sdk.model.socket.PeriodicListenerPeriod
 import kotlin.coroutines.CoroutineContext
+import kotlin.time.Duration.Companion.seconds
 
 private val logger = KotlinLogging.logger {}
 
@@ -230,8 +231,9 @@ public class SocketInstance internal constructor(
 
 	private fun forwardMessage(rawMessage: String) {
 		val message = ApiSerializer.decodeSocketMessage(rawMessage) ?: return
-		if (message is ForceKeepAliveMessage) return keepAliveHelper.reset(this, message.value)
-		listenerHelper.forwardMessage(message)
+
+		if (message is ForceKeepAliveMessage) keepAliveHelper.reset(this, message.value.seconds)
+		else listenerHelper.forwardMessage(message)
 	}
 
 	/**

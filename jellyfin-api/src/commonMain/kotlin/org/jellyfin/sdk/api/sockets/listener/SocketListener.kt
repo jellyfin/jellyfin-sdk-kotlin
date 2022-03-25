@@ -9,5 +9,7 @@ public class SocketListener(
 	/**
 	 * Stop listening to new messages. Listener cannot be started again.
 	 */
-	public fun stop(): Unit = instance.removeListener(this)
+	public fun stop() {
+		instance.removeListener(this)
+	}
 }

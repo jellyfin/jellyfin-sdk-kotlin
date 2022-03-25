@@ -1,7 +1,7 @@
 package org.jellyfin.sdk.api.sockets
 
 /**
- * Reusable WebSocket connection implementation.
+ * Reusable WebSocket connection. Constructed using [SocketConnectionFactory].
  */
 public interface SocketInstanceConnection {
 	/**

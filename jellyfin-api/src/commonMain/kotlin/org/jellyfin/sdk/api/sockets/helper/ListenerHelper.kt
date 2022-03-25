@@ -10,7 +10,7 @@ internal class ListenerHelper {
 	private var _listeners = mutableListOf<SocketListener>()
 	val listeners: List<SocketListener> = _listeners
 
-	val subscriptions get() = listeners.map { it.definition.subscribesTo }.flatten()
+	val subscriptions: List<SubscriptionType<*>> get() = listeners.map { it.definition.subscribesTo }.flatten()
 	var activeSubscriptions = mutableListOf<SubscriptionType<*>>()
 
 	fun reportCredentialChangedReconnect() {

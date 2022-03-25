@@ -6,7 +6,8 @@ import org.jellyfin.sdk.model.socket.PeriodicListenerPeriod
 import kotlin.reflect.KClass
 
 /**
- * This is an internal type. Do not use this in your application.
+ * Information about a subscription. Contains the incoming message type and the outgoing messages types used
+ * to start and stop the subscription.
  */
 public data class SubscriptionType<MESSAGE : IncomingSocketMessage>(
 	val messageType: KClass<MESSAGE>,
@@ -15,7 +16,7 @@ public data class SubscriptionType<MESSAGE : IncomingSocketMessage>(
 )
 
 /**
- * This is an internal type. Do not use this in your application.
+ * Create instance of [SubscriptionType].
  */
 internal inline fun <reified MESSAGE : IncomingSocketMessage> subscriptionType(
 	noinline createStartMessage: (period: PeriodicListenerPeriod) -> OutgoingSocketMessage,
@@ -23,7 +24,8 @@ internal inline fun <reified MESSAGE : IncomingSocketMessage> subscriptionType(
 ): SubscriptionType<MESSAGE> = SubscriptionType(MESSAGE::class, createStartMessage, createStopMessage)
 
 /**
- * This is an internal type. Do not use this in your application.
+ * Find the subscription type for a given [IncomingSocketMessage]. Used for automatic subscription handling in the
+ * WebSocket API.
  */
 public val KClass<out IncomingSocketMessage>.subscriptionType: SubscriptionType<out IncomingSocketMessage>?
 	get() = SUBSCRIPTION_TYPES.firstOrNull { it.messageType == this }

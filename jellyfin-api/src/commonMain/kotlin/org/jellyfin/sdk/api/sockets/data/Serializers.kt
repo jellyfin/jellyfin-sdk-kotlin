@@ -42,6 +42,7 @@ import org.jellyfin.sdk.model.socket.UserUpdatedMessage
  */
 internal val SessionMessageType.serializer
 	get() = when (this) {
+		// Receive only - should not be possible to send
 		SessionMessageType.FORCE_KEEP_ALIVE -> serializer<ForceKeepAliveMessage>()
 		SessionMessageType.GENERAL_COMMAND -> serializer<GeneralCommandMessage>()
 		SessionMessageType.USER_DATA_CHANGED -> serializer<UserDataChangedMessage>()
@@ -71,6 +72,7 @@ internal val SessionMessageType.serializer
 		SessionMessageType.SCHEDULED_TASKS_INFO -> serializer<ScheduledTasksInfoMessage>()
 
 		// Shared type, only implemented as outgoing message
+		// see comment in ApiSerializer for more info
 		SessionMessageType.KEEP_ALIVE -> serializer<KeepAliveMessage>()
 
 		// Send only - should not be possible to receive

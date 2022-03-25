@@ -1172,7 +1172,7 @@ public final class org/jellyfin/sdk/api/sockets/KtorSocketInstanceConnection : o
 	public fun disconnect (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
-public final class org/jellyfin/sdk/api/sockets/ListenerRegistrationKt {
+public final class org/jellyfin/sdk/api/sockets/ListenerRegistrationExtensionsKt {
 	public static final fun addGeneralCommandsListener (Lorg/jellyfin/sdk/api/sockets/SocketInstance;Ljava/util/Set;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
 	public static synthetic fun addGeneralCommandsListener$default (Lorg/jellyfin/sdk/api/sockets/SocketInstance;Ljava/util/Set;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
 	public static final fun addGlobalListener (Lorg/jellyfin/sdk/api/sockets/SocketInstance;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
