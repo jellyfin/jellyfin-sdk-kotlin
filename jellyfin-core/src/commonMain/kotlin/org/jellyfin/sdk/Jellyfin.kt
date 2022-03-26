@@ -63,6 +63,7 @@ public class Jellyfin(
 			clientInfo = clientInfo,
 			deviceInfo = deviceInfo,
 			httpClientOptions = httpClientOptions,
+			socketConnectionFactory = options.socketConnectionFactory,
 		)
 	}
 

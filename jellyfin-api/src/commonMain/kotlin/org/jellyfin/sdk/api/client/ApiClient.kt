@@ -3,6 +3,7 @@ package org.jellyfin.sdk.api.client
 import org.jellyfin.sdk.api.client.exception.MissingBaseUrlException
 import org.jellyfin.sdk.api.client.util.UrlBuilder
 import org.jellyfin.sdk.api.operations.Api
+import org.jellyfin.sdk.api.sockets.SocketInstance
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.UUID
@@ -78,6 +79,8 @@ public abstract class ApiClient {
 		queryParameters: Map<String, Any?> = emptyMap(),
 		requestBody: Any? = null,
 	): RawResponse
+
+	public abstract fun ws(): SocketInstance
 
 	private val apiInstances = mutableMapOf<KClass<out Api>, Api>()
 
