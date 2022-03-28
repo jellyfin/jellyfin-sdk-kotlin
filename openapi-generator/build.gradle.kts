@@ -61,13 +61,17 @@ tasks.register("verifySources", JavaExec::class) {
 		.flatten()
 }
 
-arrayOf("stable", "unstable").forEach { flavor ->
-	tasks.register("downloadApiSpec${flavor.capitalize()}", Download::class) {
+arrayOf(
+	"stable" to "Stable",
+	"stable-pre" to "Prerelease",
+	"unstable" to "Unstable",
+).forEach { (flavor, flavorPascalCase) ->
+	tasks.register("downloadApiSpec${flavorPascalCase}", Download::class) {
 		src("https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-${flavor}.json")
 		dest(defaultConfig["openApiFile"])
 	}
 
-	tasks.register("updateApiSpec${flavor.capitalize()}") {
-		dependsOn("downloadApiSpec${flavor.capitalize()}", "generateSources")
+	tasks.register("updateApiSpec${flavorPascalCase}") {
+		dependsOn("downloadApiSpec${flavorPascalCase}", "generateSources")
 	}
 }
