@@ -167,6 +167,13 @@ public class SocketInstance internal constructor(
 
 		connection?.disconnect()
 
+		// No base url set. The app might want to set it later and call [updateCredentials]
+		if (baseUrl == null) {
+			logger.info { "Cancelling reconnect because baseUrl is null" }
+			_state.value = SocketInstanceState.DISCONNECTED
+			return
+		}
+
 		connection = socketConnectionFactory.create(
 			api.httpClientOptions,
 			incomingMessages,
