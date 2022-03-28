@@ -9,6 +9,8 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import mu.KotlinLogging
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.util.ApiSerializer
@@ -57,6 +59,7 @@ public class SocketInstance internal constructor(
 	private val keepAliveHelper = KeepAliveHelper(coroutineScope)
 
 	private var messageForwardJob: Job? = null
+	private val updateConnectionStateMutex = Mutex()
 
 	/**
 	 * Update the server url and access token.
@@ -98,7 +101,7 @@ public class SocketInstance internal constructor(
 		return updateConnectionState()
 	}
 
-	private suspend fun updateConnectionState(): Boolean {
+	private suspend fun updateConnectionState(): Boolean = updateConnectionStateMutex.withLock {
 		// Don't update when an error occurred, client should manually call [reconnect]
 		if (state.value == SocketInstanceState.ERROR) {
 			logger.info { "Unable to update connection state: state is error" }
