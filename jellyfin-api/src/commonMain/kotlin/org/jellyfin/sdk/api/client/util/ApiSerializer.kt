@@ -20,7 +20,6 @@ import org.jellyfin.sdk.model.socket.IncomingSocketMessage
 import org.jellyfin.sdk.model.socket.OutgoingSocketMessage
 import org.jellyfin.sdk.model.socket.RawIncomingSocketMessage
 
-@OptIn(InternalSerializationApi::class)
 public object ApiSerializer {
 	private const val SOCKET_MESSAGE_DATA = "Data"
 	private const val SOCKET_MESSAGE_MESSAGE_ID = "MessageId"
@@ -37,6 +36,7 @@ public object ApiSerializer {
 		encodeDefaults = true
 	}
 
+	@OptIn(InternalSerializationApi::class)
 	public fun encodeRequestBody(requestBody: Any? = null): String? {
 		if (requestBody == null) return null
 
@@ -49,7 +49,7 @@ public object ApiSerializer {
 		else -> json.decodeFromString(responseBody.readRemaining().readText())
 	}
 
-	@OptIn(ExperimentalSerializationApi::class)
+	@OptIn(InternalSerializationApi::class, ExperimentalSerializationApi::class)
 	public fun encodeSocketMessage(message: OutgoingSocketMessage): String {
 		// Serialize with default serializer
 		val serializer = message::class.serializer() as KSerializer<Any>
