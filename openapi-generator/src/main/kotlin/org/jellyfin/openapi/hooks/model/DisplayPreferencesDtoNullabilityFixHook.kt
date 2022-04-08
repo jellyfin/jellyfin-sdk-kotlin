@@ -12,7 +12,6 @@ import org.jellyfin.openapi.hooks.TypePath
  * In the 10.7 API specification the value of the map is incorrectly labelled as not-null.
  * This hook changes the type to the exact type emitted from the 10.8 alpha API specification.
  */
-@OptIn(ExperimentalStdlibApi::class)
 class DisplayPreferencesDtoNullabilityFixHook : TypeBuilderHook {
 	override fun onBuildType(path: TypePath, schema: Schema<*>, typeBuilder: OpenApiTypeBuilder) = when (path) {
 		ModelTypePath("DisplayPreferencesDto", "customPrefs") -> typeNameOf<Map<String, String?>>()
