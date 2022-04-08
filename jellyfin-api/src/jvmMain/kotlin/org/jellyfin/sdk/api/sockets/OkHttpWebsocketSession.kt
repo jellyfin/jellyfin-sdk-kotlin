@@ -3,6 +3,8 @@ package org.jellyfin.sdk.api.sockets
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
@@ -36,12 +38,13 @@ public class OkHttpWebsocketSession(
 		writeTimeout(clientOptions.socketTimeout, TimeUnit.MILLISECONDS)
 	}.build()
 	private var webSocket: WebSocket? = null
-	private val state = MutableStateFlow(SocketInstanceState.DISCONNECTED)
+	private val _state = MutableStateFlow(SocketInstanceState.DISCONNECTED)
+	public override val state: StateFlow<SocketInstanceState> = _state.asStateFlow()
 
 	private val listener = object : WebSocketListener() {
 		override fun onOpen(webSocket: WebSocket, response: Response) {
 			logger.info { "WebSocket has opened" }
-			state.value = SocketInstanceState.CONNECTED
+			_state.value = SocketInstanceState.CONNECTED
 		}
 
 		override fun onMessage(webSocket: WebSocket, text: String) {
@@ -58,13 +61,13 @@ public class OkHttpWebsocketSession(
 
 		override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
 			logger.info { "WebSocket is closing, code=$code, reason=$reason" }
-			state.value = SocketInstanceState.DISCONNECTED
+			_state.value = SocketInstanceState.DISCONNECTED
 		}
 
 		@Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
 		override fun onClosed(closedWebSocket: WebSocket, code: Int, reason: String) {
 			logger.info { "WebSocket has closed, code=$code, reason=$reason" }
-			state.value = SocketInstanceState.DISCONNECTED
+			_state.value = SocketInstanceState.DISCONNECTED
 
 			if (webSocket == closedWebSocket) webSocket = null
 		}
@@ -72,7 +75,7 @@ public class OkHttpWebsocketSession(
 		@Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
 		override fun onFailure(failedWebSocket: WebSocket, t: Throwable, response: Response?) {
 			logger.warn(t) { "WebSocket has failed" }
-			state.value = SocketInstanceState.ERROR
+			_state.value = SocketInstanceState.ERROR
 
 			if (webSocket == failedWebSocket) webSocket = null
 		}
@@ -85,7 +88,7 @@ public class OkHttpWebsocketSession(
 			url(url)
 		}.build()
 
-		state.value = SocketInstanceState.CONNECTING
+		_state.value = SocketInstanceState.CONNECTING
 		webSocket = client.newWebSocket(request, listener)
 
 		return state.first { it != SocketInstanceState.CONNECTING } == SocketInstanceState.CONNECTED
@@ -115,7 +118,7 @@ public class OkHttpWebsocketSession(
 	}
 
 	override suspend fun disconnect() {
-		state.value = SocketInstanceState.DISCONNECTED
+		_state.value = SocketInstanceState.DISCONNECTED
 		webSocket?.close(CLOSE_REASON_NORMAL, null)
 		webSocket = null
 	}

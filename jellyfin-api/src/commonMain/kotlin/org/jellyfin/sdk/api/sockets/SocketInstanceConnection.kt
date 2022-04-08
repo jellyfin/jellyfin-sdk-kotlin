@@ -1,9 +1,17 @@
 package org.jellyfin.sdk.api.sockets
 
+import kotlinx.coroutines.flow.StateFlow
+
 /**
  * Reusable WebSocket connection. Constructed using [SocketConnectionFactory].
  */
 public interface SocketInstanceConnection {
+	/**
+	 * State of the connection. Requires at least the [SocketInstanceState.ERROR] and [SocketInstanceState.DISCONNECTED]
+	 * states to be implemented.
+	 */
+	public val state: StateFlow<SocketInstanceState>
+
 	/**
 	 * Connect to [url]. If there is an existing connection it will be automatically closed. After the connection is
 	 * initialized the messageListener supplied via the factory will be called until [disconnect] is called or the
