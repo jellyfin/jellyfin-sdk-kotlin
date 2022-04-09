@@ -76,9 +76,9 @@ implementation("org.jellyfin.sdk:jellyfin-core:$sdkVersion")
 <details>
   <summary>Using SNAPSHOT versions</summary>
 
-  When working on new features in your application you might need a build of the SDK targetting the next server version.
+  When working on new features in your application you might need a build of the SDK targeting the next server version.
   For this use case we publish two SNAPSHOT releases: `master-SNAPSHOT` and `openapi-unstable-SNAPSHOT`. To use the
-  snaphot versions, add the snapshot repository to your build script:
+  snapshot versions, add the snapshot repository to your build script:
   `https://s01.oss.sonatype.org/content/repositories/snapshots/`
 
   An example using Gradle with Kotlin DSL that only allows the `master-SNAPSHOT` version:
@@ -135,13 +135,11 @@ val api = jellyfin.createApi(
 ### Authenticating a user
 
 All API operations are grouped. To make use of an operation you need to first get the group from your ApiClient
-instance. All groups are defined as extension functions and you can alternatively construct the API instances
+instance. All groups are defined as extension functions, and you can alternatively construct the API instances
 manually.
 
 ```kotlin
 val userApi = api.userApi
-// or
-val userApi = UserApi(api)
 
 try {
     val authenticationResult by userApi.authenticateUserByName(
@@ -163,24 +161,20 @@ try {
 ### WebSockets
 
 Jellyfin uses WebSockets to communicate events like library changes and activities. This API can be
-used with the special WebSocketApi class.
+used with the SocketApi. Documentation is available in the [docs](/docs) folder.
 
 ```kotlin
-// Publish messages
-webSocketApi.publish(ActivityLogEntryStartMessage())
-webSocketApi.publish(SessionsStartMessage())
-webSocketApi.publish(ScheduledTasksInfoStartMessage())
+val instance = api.ws()
 
-// Listen for messages
-webSocketApi.subscribe().collect { message ->
-    println(message)
+instance.addGlobalListener { message ->
+	println(message)
 }
 ```
 
 ### Server discovery
 
 The server discovery feature can be used to find servers on the local network, normalize inputted
-server addresses and to determine the best server to use from a list of adresses.
+server addresses and to determine the best server to use from a list of addresses.
  
 ```kotlin
 // Discover servers on the local network
@@ -209,6 +203,6 @@ new features and can be used as a basis for your own application.
 
 ### Third party clients
 
-  - [Gelli](https://github.com/dkanada/gelli) is a music-focused Android client.
+  - [Findroid](https://github.com/jarnedemeulemeester/findroid) provides a native user interface to browse and play movies and series.
 
-_Want to add your project? Please create a pull request!_
+_Want to add your project? We'd love to know about it, open an issue or create pull request!_
