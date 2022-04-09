@@ -16,6 +16,14 @@ public interface SocketInstanceConnection {
 	public suspend fun connect(url: String): Boolean
 
 	/**
+	 * Send a message to this connection. Messages might still fail to send due to network issues or other reasons when
+	 * the returned value is true.
+	 *
+	 * @return false when failed to send/queue. true when it's likely the message will be sent.
+	 */
+	public suspend fun send(message: String): Boolean
+
+	/**
 	 * Disconnect the connection. Will do nothing when there is no connection.
 	 *
 	 * @see connect

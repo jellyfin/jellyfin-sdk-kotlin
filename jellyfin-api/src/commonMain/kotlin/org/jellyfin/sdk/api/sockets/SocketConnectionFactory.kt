@@ -8,7 +8,6 @@ public fun interface SocketConnectionFactory {
 	public suspend fun create(
 		clientOptions: HttpClientOptions,
 		incomingMessageChannel: Channel<String>,
-		outgoingMessageChannel: Channel<String>,
 		coroutineContext: CoroutineContext,
 	): SocketInstanceConnection
 }

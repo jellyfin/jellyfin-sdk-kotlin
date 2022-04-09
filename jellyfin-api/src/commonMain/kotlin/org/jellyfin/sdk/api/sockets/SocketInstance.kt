@@ -9,6 +9,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.plus
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import mu.KotlinLogging
@@ -52,13 +53,13 @@ public class SocketInstance internal constructor(
 	public val state: StateFlow<SocketInstanceState> = _state
 
 	private var connection: SocketInstanceConnection? = null
+	private var connectionScope: CoroutineScope? = null
 	private val incomingMessages = Channel<String>()
 	private val outgoingMessages = Channel<String>()
 
 	private val listenerHelper = ListenerHelper()
 	private val keepAliveHelper = KeepAliveHelper(coroutineScope)
 
-	private var messageForwardJob: Job? = null
 	private val updateConnectionStateMutex = Mutex()
 
 	/**
@@ -166,6 +167,7 @@ public class SocketInstance internal constructor(
 		_state.value = SocketInstanceState.CONNECTING
 
 		connection?.disconnect()
+		connectionScope?.cancel()
 
 		// No base url set. The app might want to set it later and call [updateCredentials]
 		if (baseUrl == null) {
@@ -174,34 +176,41 @@ public class SocketInstance internal constructor(
 			return
 		}
 
-		connection = socketConnectionFactory.create(
-			api.httpClientOptions,
-			incomingMessages,
-			outgoingMessages,
-			coroutineContext,
-		).apply {
-			val connected = connect(UrlBuilder.buildUrl(
-				baseUrl = requireNotNull(baseUrl),
-				pathTemplate = SOCKET_URL,
-				queryParameters = mapOf(
-					QUERY_DEVICE_ID to deviceInfo.id,
-					QUERY_ACCESS_TOKEN to accessToken,
-				)
-			).replace(Regex("^http"), "ws"))
-
-			if (connected) {
-				messageForwardJob?.cancel()
-				messageForwardJob = coroutineScope.launch {
-					for (message in incomingMessages) forwardMessage(message)
-				}
-				listenerHelper.activeSubscriptions.clear()
-				updateSubscriptions()
-				_state.value = SocketInstanceState.CONNECTED
-			} else {
-				_state.value = SocketInstanceState.ERROR
-				// TODO retry: failed connecting
-			}
+		// Create connection
+		val scope = coroutineScope + Job()
+		connectionScope = scope
+		scope.launch {
+			connection = socketConnectionFactory.create(
+				api.httpClientOptions,
+				incomingMessages,
+				coroutineContext,
+			).connectAndBind(this)
 		}
+	}
+
+	private suspend fun SocketInstanceConnection.connectAndBind(scope: CoroutineScope): SocketInstanceConnection? {
+		val connected = connect(UrlBuilder.buildUrl(
+			baseUrl = requireNotNull(baseUrl),
+			pathTemplate = SOCKET_URL,
+			queryParameters = mapOf(
+				QUERY_DEVICE_ID to deviceInfo.id,
+				QUERY_ACCESS_TOKEN to accessToken,
+			)
+		).replace(Regex("^http"), "ws"))
+
+		if (!connected) {
+			_state.value = SocketInstanceState.ERROR
+			return null
+		}
+
+		scope.launch { for (message in incomingMessages) forwardMessage(message) }
+		scope.launch { for (message in outgoingMessages) send(message) }
+
+		listenerHelper.activeSubscriptions.clear()
+		updateSubscriptions()
+		_state.value = SocketInstanceState.CONNECTED
+
+		return this
 	}
 
 	/**
@@ -212,7 +221,7 @@ public class SocketInstance internal constructor(
 		logger.info { "Stopping socket instance" }
 
 		connection?.disconnect()
-		messageForwardJob?.cancel()
+		connectionScope?.cancel()
 		listenerHelper.reset()
 		incomingMessages.close()
 		outgoingMessages.close()

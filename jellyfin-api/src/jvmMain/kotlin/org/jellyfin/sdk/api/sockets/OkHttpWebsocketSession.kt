@@ -1,7 +1,6 @@
 package org.jellyfin.sdk.api.sockets
 
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
@@ -22,7 +21,6 @@ private val logger = KotlinLogging.logger {}
 public class OkHttpWebsocketSession(
 	clientOptions: HttpClientOptions,
 	private val incomingMessageChannel: Channel<String>,
-	private val outgoingMessageChannel: Channel<String>,
 	context: CoroutineContext,
 ) : SocketInstanceConnection {
 	private companion object {
@@ -38,7 +36,6 @@ public class OkHttpWebsocketSession(
 		writeTimeout(clientOptions.socketTimeout, TimeUnit.MILLISECONDS)
 	}.build()
 	private var webSocket: WebSocket? = null
-	private var messageForwardJob: Job? = null
 	private val state = MutableStateFlow(SocketInstanceState.DISCONNECTED)
 
 	private val listener = object : WebSocketListener() {
@@ -62,9 +59,6 @@ public class OkHttpWebsocketSession(
 		override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
 			logger.info { "WebSocket is closing, code=$code, reason=$reason" }
 			state.value = SocketInstanceState.DISCONNECTED
-
-			messageForwardJob?.cancel()
-			messageForwardJob = null
 		}
 
 		@Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
@@ -80,9 +74,6 @@ public class OkHttpWebsocketSession(
 			logger.warn(t) { "WebSocket has failed" }
 			state.value = SocketInstanceState.ERROR
 
-			// When onFailure is called, the onClosing and onClosed functions are not called
-			messageForwardJob?.cancel()
-			messageForwardJob = null
 			if (webSocket == failedWebSocket) webSocket = null
 		}
 	}
@@ -97,15 +88,30 @@ public class OkHttpWebsocketSession(
 		state.value = SocketInstanceState.CONNECTING
 		webSocket = client.newWebSocket(request, listener)
 
-		messageForwardJob = coroutineScope.launch {
-			for (message in outgoingMessageChannel) {
-				logger.info { "Sending (raw) message $message" }
+		return state.first { it != SocketInstanceState.CONNECTING } == SocketInstanceState.CONNECTED
+	}
 
-				webSocket?.send(message)
-			}
+	override suspend fun send(message: String): Boolean {
+		logger.info { "Sending (raw) message $message" }
+
+		// Invalid state
+		if (state.value != SocketInstanceState.CONNECTED) {
+			logger.warn { "Unable to send message: invalid state (state=${state.value})" }
+			return false
 		}
 
-		return state.first { it != SocketInstanceState.CONNECTING } == SocketInstanceState.CONNECTED
+		val ws = webSocket
+
+		// No existing socket
+		if (ws == null) {
+			logger.warn { "Unable to send message: webSocket is null" }
+			return false
+		}
+
+		val sent = ws.send(message)
+		if (!sent) logger.warn { "Unable to send message: OkHttp returned false" }
+
+		return sent
 	}
 
 	override suspend fun disconnect() {

@@ -1184,13 +1184,14 @@ public final class org/jellyfin/sdk/api/sockets/ListenerRegistrationExtensionsKt
 }
 
 public final class org/jellyfin/sdk/api/sockets/OkHttpWebsocketSession : org/jellyfin/sdk/api/sockets/SocketInstanceConnection {
-	public fun <init> (Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lkotlinx/coroutines/channels/Channel;Lkotlinx/coroutines/channels/Channel;Lkotlin/coroutines/CoroutineContext;)V
+	public fun <init> (Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lkotlinx/coroutines/channels/Channel;Lkotlin/coroutines/CoroutineContext;)V
 	public fun connect (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun disconnect (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun send (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public abstract interface class org/jellyfin/sdk/api/sockets/SocketConnectionFactory {
-	public abstract fun create (Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lkotlinx/coroutines/channels/Channel;Lkotlinx/coroutines/channels/Channel;Lkotlin/coroutines/CoroutineContext;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun create (Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lkotlinx/coroutines/channels/Channel;Lkotlin/coroutines/CoroutineContext;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class org/jellyfin/sdk/api/sockets/SocketInstance {
@@ -1206,6 +1207,7 @@ public final class org/jellyfin/sdk/api/sockets/SocketInstance {
 public abstract interface class org/jellyfin/sdk/api/sockets/SocketInstanceConnection {
 	public abstract fun connect (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public abstract fun disconnect (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun send (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class org/jellyfin/sdk/api/sockets/SocketInstanceState : java/lang/Enum {
