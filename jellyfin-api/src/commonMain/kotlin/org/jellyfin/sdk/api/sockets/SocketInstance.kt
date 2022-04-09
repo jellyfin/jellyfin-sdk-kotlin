@@ -8,6 +8,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
 import kotlinx.coroutines.sync.Mutex
@@ -19,6 +20,7 @@ import org.jellyfin.sdk.api.client.util.UrlBuilder
 import org.jellyfin.sdk.api.sockets.exception.SocketStoppedException
 import org.jellyfin.sdk.api.sockets.helper.KeepAliveHelper
 import org.jellyfin.sdk.api.sockets.helper.ListenerHelper
+import org.jellyfin.sdk.api.sockets.helper.ReconnectHelper
 import org.jellyfin.sdk.api.sockets.listener.SocketListener
 import org.jellyfin.sdk.api.sockets.listener.SocketListenerDefinition
 import org.jellyfin.sdk.model.socket.ForceKeepAliveMessage
@@ -54,6 +56,7 @@ public class SocketInstance internal constructor(
 
 	private var connection: SocketInstanceConnection? = null
 	private var connectionScope: CoroutineScope? = null
+	private val reconnectHelper = ReconnectHelper(coroutineScope, ::reconnect)
 	private val incomingMessages = Channel<String>()
 	private val outgoingMessages = Channel<String>()
 
@@ -112,11 +115,14 @@ public class SocketInstance internal constructor(
 		// Remove listeners that don't want credential changes
 		if (credentialsChanged) listenerHelper.reportCredentialChangedReconnect()
 
-		val connected = connection != null // TODO make smarter (handle disconnect etc.)
+		val connected = connection != null
 
 		when {
 			// Stop if there's no listeners
-			listenerHelper.listeners.isEmpty() -> connection?.disconnect()
+			listenerHelper.listeners.isEmpty() -> {
+				reconnectHelper.reset()
+				connection?.disconnect()
+			}
 			// Reconnect when credentials changed or not connected
 			credentialsChanged || !connected -> reconnect()
 			// Update subscriptions when not reconnecting or disconnecting
@@ -168,6 +174,7 @@ public class SocketInstance internal constructor(
 
 		connection?.disconnect()
 		connectionScope?.cancel()
+		reconnectHelper.notifyReconnect()
 
 		// No base url set. The app might want to set it later and call [updateCredentials]
 		if (baseUrl == null) {
@@ -200,16 +207,30 @@ public class SocketInstance internal constructor(
 
 		if (!connected) {
 			_state.value = SocketInstanceState.ERROR
+			reconnectHelper.scheduleReconnect(error = true)
 			return null
 		}
 
 		scope.launch { for (message in incomingMessages) forwardMessage(message) }
 		scope.launch { for (message in outgoingMessages) send(message) }
+		scope.launch {
+			// Wait for first state change in the SocketInstanceConnection
+			val disconnectState = state.first { it != SocketInstanceState.CONNECTED }
+
+			// Only act if the SocketInstance state is CONNECTED
+			if (_state.value == SocketInstanceState.CONNECTED) {
+				val scheduled = reconnectHelper.scheduleReconnect(disconnectState == SocketInstanceState.ERROR)
+
+				_state.value = if (!scheduled) SocketInstanceState.ERROR
+				else SocketInstanceState.DISCONNECTED
+			}
+		}
 
 		listenerHelper.activeSubscriptions.clear()
 		updateSubscriptions()
 		_state.value = SocketInstanceState.CONNECTED
 
+		reconnectHelper.notifyConnected()
 		return this
 	}
 
@@ -223,6 +244,7 @@ public class SocketInstance internal constructor(
 		connection?.disconnect()
 		connectionScope?.cancel()
 		listenerHelper.reset()
+		reconnectHelper.reset()
 		incomingMessages.close()
 		outgoingMessages.close()
 		coroutineScope.cancel()
