@@ -1172,12 +1172,6 @@ public final class org/jellyfin/sdk/api/operations/YearsApi : org/jellyfin/sdk/a
 	public static synthetic fun getYears$default (Lorg/jellyfin/sdk/api/operations/YearsApi;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/util/Collection;Ljava/util/UUID;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;Ljava/util/Collection;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/util/Collection;Ljava/util/UUID;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
-public final class org/jellyfin/sdk/api/sockets/KtorSocketInstanceConnection : org/jellyfin/sdk/api/sockets/SocketInstanceConnection {
-	public fun <init> (Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lkotlinx/coroutines/channels/Channel;Lkotlinx/coroutines/channels/Channel;Lkotlin/coroutines/CoroutineContext;)V
-	public fun connect (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun disconnect (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-}
-
 public final class org/jellyfin/sdk/api/sockets/ListenerRegistrationExtensionsKt {
 	public static final fun addGeneralCommandsListener (Lorg/jellyfin/sdk/api/sockets/SocketInstance;Ljava/util/Set;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
 	public static synthetic fun addGeneralCommandsListener$default (Lorg/jellyfin/sdk/api/sockets/SocketInstance;Ljava/util/Set;ZLorg/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
