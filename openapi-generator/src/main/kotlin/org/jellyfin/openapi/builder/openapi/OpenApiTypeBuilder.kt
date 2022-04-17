@@ -24,6 +24,7 @@ import org.jellyfin.openapi.hooks.ApiTypePath
 import org.jellyfin.openapi.hooks.TypeBuilderHook
 import org.jellyfin.openapi.hooks.TypePath
 
+@Suppress("TooManyFunctions")
 class OpenApiTypeBuilder(
 	private val hooks: Collection<TypeBuilderHook>,
 ) {
@@ -67,7 +68,11 @@ class OpenApiTypeBuilder(
 				schema.allOf?.size == 1 -> buildSchema(path, schema.allOf.first())
 				else -> throw UnknownTypeError(schema.type, schema.format)
 			}
-			else -> throw UnknownTypeError(schema.type, schema.format)
+			else -> when {
+				// Special handling for empty schema - all valid JSON is allowed
+				schema.isEmpty() -> buildJsonElement()
+				else -> throw UnknownTypeError(schema.type, schema.format)
+			}
 		}.copy(
 			// Add nullability
 			nullable = schema.nullable ?: false,
@@ -112,6 +117,25 @@ class OpenApiTypeBuilder(
 	)
 
 	fun buildBinary() = Types.BINARY
+
+	fun buildJsonElement() = Types.JSON_ELEMENT
+
+	@Suppress("ComplexMethod")
+	private fun <T> Schema<T>.isEmpty(): Boolean =
+		type == null &&
+			format == null &&
+			`$ref` == null &&
+			multipleOf == null &&
+			maxProperties == null &&
+			minProperties == null &&
+			required == null &&
+			not == null &&
+			properties == null &&
+			additionalProperties == null &&
+			nullable == null &&
+			discriminator == null &&
+			xml == null &&
+			enum == null
 
 	class UnknownTypeError(
 		type: String?,
