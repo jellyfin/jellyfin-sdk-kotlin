@@ -16,6 +16,7 @@ import kotlinx.coroutines.sync.withLock
 import mu.KotlinLogging
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.util.ApiSerializer
+import org.jellyfin.sdk.api.client.util.AuthorizationHeaderBuilder
 import org.jellyfin.sdk.api.client.util.UrlBuilder
 import org.jellyfin.sdk.api.sockets.exception.SocketStoppedException
 import org.jellyfin.sdk.api.sockets.helper.KeepAliveHelper
@@ -38,8 +39,6 @@ public class SocketInstance internal constructor(
 ) {
 	private companion object {
 		private const val SOCKET_URL = "/socket"
-		private const val QUERY_ACCESS_TOKEN = "api_key"
-		private const val QUERY_DEVICE_ID = "deviceId"
 		private const val MESSAGE_INTERVAL = 1_000L // second
 	}
 
@@ -49,6 +48,7 @@ public class SocketInstance internal constructor(
 	private var credentialsChanged = false
 	private var baseUrl = api.baseUrl
 	private var accessToken = api.accessToken
+	private var clientInfo = api.clientInfo
 	private var deviceInfo = api.deviceInfo
 
 	private val _state = MutableStateFlow(SocketInstanceState.DISCONNECTED)
@@ -86,10 +86,11 @@ public class SocketInstance internal constructor(
 
 		val newBaseUrl = requireNotNull(api.baseUrl)
 		val newAccessToken = api.accessToken
+		val newClientInfo = api.clientInfo
 		val newDeviceInfo = api.deviceInfo
 
 		// No changes - do nothing
-		if (baseUrl == newBaseUrl && accessToken == newAccessToken && deviceInfo == newDeviceInfo) {
+		if (baseUrl == newBaseUrl && accessToken == newAccessToken && clientInfo == newClientInfo && deviceInfo == newDeviceInfo) {
 			logger.debug { "Unable to update credentials: credentials did not change" }
 			return false
 		}
@@ -98,6 +99,7 @@ public class SocketInstance internal constructor(
 
 		baseUrl = newBaseUrl
 		accessToken = newAccessToken
+		clientInfo = newClientInfo
 		deviceInfo = newDeviceInfo
 
 		credentialsChanged = true
@@ -196,14 +198,18 @@ public class SocketInstance internal constructor(
 	}
 
 	private suspend fun SocketInstanceConnection.connectAndBind(scope: CoroutineScope): SocketInstanceConnection? {
-		val connected = connect(UrlBuilder.buildUrl(
+		val url = UrlBuilder.buildUrl(
 			baseUrl = requireNotNull(baseUrl),
 			pathTemplate = SOCKET_URL,
-			queryParameters = mapOf(
-				QUERY_DEVICE_ID to deviceInfo.id,
-				QUERY_ACCESS_TOKEN to accessToken,
-			)
-		).replace(Regex("^http"), "ws"))
+		).replace(Regex("^http"), "ws")
+		val authorizationHeader = AuthorizationHeaderBuilder.buildHeader(
+			clientName = clientInfo.name,
+			clientVersion = clientInfo.version,
+			deviceId = deviceInfo.id,
+			deviceName = deviceInfo.name,
+			accessToken = accessToken,
+		)
+		val connected = connect(url, authorizationHeader)
 
 		if (!connected) {
 			_state.value = SocketInstanceState.ERROR

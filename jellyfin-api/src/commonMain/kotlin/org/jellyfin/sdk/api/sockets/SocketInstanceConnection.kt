@@ -21,7 +21,7 @@ public interface SocketInstanceConnection {
 	 *
 	 * @see disconnect
 	 */
-	public suspend fun connect(url: String): Boolean
+	public suspend fun connect(url: String, authorization: String): Boolean
 
 	/**
 	 * Send a message to this connection. Messages might still fail to send due to network issues or other reasons when

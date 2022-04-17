@@ -26,6 +26,7 @@ public class OkHttpWebsocketSession(
 	context: CoroutineContext,
 ) : SocketInstanceConnection {
 	private companion object {
+		private const val HEADER_AUTHORIZATION = "Authorization"
 		private const val CLOSE_REASON_NORMAL = 1000
 	}
 
@@ -81,11 +82,12 @@ public class OkHttpWebsocketSession(
 		}
 	}
 
-	override suspend fun connect(url: String): Boolean {
+	override suspend fun connect(url: String, authorization: String): Boolean {
 		if (webSocket != null) disconnect()
 
 		val request = Request.Builder().apply {
 			url(url)
+			header(HEADER_AUTHORIZATION, authorization)
 		}.build()
 
 		_state.value = SocketInstanceState.CONNECTING
