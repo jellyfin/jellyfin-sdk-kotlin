@@ -23,6 +23,7 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.delete
 import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
+import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ClientCapabilitiesDto
 import org.jellyfin.sdk.model.api.GeneralCommand
 import org.jellyfin.sdk.model.api.GeneralCommandType
@@ -63,7 +64,7 @@ public class SessionApi(
 	 */
 	public suspend fun displayContent(
 		sessionId: String,
-		itemType: String,
+		itemType: BaseItemKind,
 		itemId: String,
 		itemName: String,
 	): Response<Unit> {

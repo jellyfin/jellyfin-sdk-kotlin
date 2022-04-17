@@ -235,7 +235,7 @@ public data class BaseItemDto(
 	 * Gets or sets the provider ids.
 	 */
 	@SerialName("ProviderIds")
-	public val providerIds: Map<String, String>? = null,
+	public val providerIds: Map<String, String?>? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is HD.
 	 */
@@ -255,7 +255,7 @@ public data class BaseItemDto(
 	 * Gets or sets the type.
 	 */
 	@SerialName("Type")
-	public val type: String? = null,
+	public val type: BaseItemKind,
 	/**
 	 * Gets or sets the people.
 	 */
@@ -269,15 +269,16 @@ public data class BaseItemDto(
 	@SerialName("GenreItems")
 	public val genreItems: List<NameGuidPair>? = null,
 	/**
-	 * If the item does not have a logo, this will hold the Id of the Parent that has one.
+	 * Gets or sets wether the item has a logo, this will hold the Id of the Parent that has one.
 	 */
 	@SerialName("ParentLogoItemId")
-	public val parentLogoItemId: String? = null,
+	public val parentLogoItemId: UUID? = null,
 	/**
-	 * If the item does not have any backdrops, this will hold the Id of the Parent that has one.
+	 * Gets or sets wether the item has any backdrops, this will hold the Id of the Parent that has
+	 * one.
 	 */
 	@SerialName("ParentBackdropItemId")
-	public val parentBackdropItemId: String? = null,
+	public val parentBackdropItemId: UUID? = null,
 	/**
 	 * Gets or sets the parent backdrop image tags.
 	 */
@@ -289,7 +290,7 @@ public data class BaseItemDto(
 	@SerialName("LocalTrailerCount")
 	public val localTrailerCount: Int? = null,
 	/**
-	 * User data for this item based on the user it's being requested for.
+	 * Gets or sets the user data for this item based on the user it's being requested for.
 	 */
 	@SerialName("UserData")
 	public val userData: UserItemDataDto? = null,
@@ -446,10 +447,10 @@ public data class BaseItemDto(
 	@SerialName("ParentLogoImageTag")
 	public val parentLogoImageTag: String? = null,
 	/**
-	 * If the item does not have a art, this will hold the Id of the Parent that has one.
+	 * Gets or sets wether the item has fan art, this will hold the Id of the Parent that has one.
 	 */
 	@SerialName("ParentArtItemId")
-	public val parentArtItemId: String? = null,
+	public val parentArtItemId: UUID? = null,
 	/**
 	 * Gets or sets the parent art image tag.
 	 */
@@ -475,7 +476,7 @@ public data class BaseItemDto(
 	 * Gets or sets the parent thumb item id.
 	 */
 	@SerialName("ParentThumbItemId")
-	public val parentThumbItemId: String? = null,
+	public val parentThumbItemId: UUID? = null,
 	/**
 	 * Gets or sets the parent thumb image tag.
 	 */
@@ -609,7 +610,7 @@ public data class BaseItemDto(
 	@SerialName("ChannelPrimaryImageTag")
 	public val channelPrimaryImageTag: String? = null,
 	/**
-	 * The start date of the recording, in UTC.
+	 * Gets or sets the start date of the recording, in UTC.
 	 */
 	@SerialName("StartDate")
 	public val startDate: DateTime? = null,

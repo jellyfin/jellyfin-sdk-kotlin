@@ -9,8 +9,14 @@ import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * Client log document response dto.
+ */
 @Serializable
-public data class PlaylistCreationResult(
-	@SerialName("Id")
-	public val id: String,
+public data class ClientLogDocumentResponseDto(
+	/**
+	 * Gets the resulting filename.
+	 */
+	@SerialName("FileName")
+	public val fileName: String,
 )

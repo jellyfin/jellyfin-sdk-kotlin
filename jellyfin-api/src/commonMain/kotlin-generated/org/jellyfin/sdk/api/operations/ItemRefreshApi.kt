@@ -30,7 +30,7 @@ public class ItemRefreshApi(
 	 * @param replaceAllImages (Optional) Determines if images should be replaced. Only applicable if
 	 * mode is FullRefresh.
 	 */
-	public suspend fun post(
+	public suspend fun refreshItem(
 		itemId: UUID,
 		metadataRefreshMode: MetadataRefreshMode? = null,
 		imageRefreshMode: MetadataRefreshMode? = null,

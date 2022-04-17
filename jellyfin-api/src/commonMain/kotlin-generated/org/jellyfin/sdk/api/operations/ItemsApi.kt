@@ -21,6 +21,7 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.DateTime
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
+import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.ItemFilter
@@ -191,8 +192,8 @@ public class ItemsApi(
 		sortOrder: Collection<SortOrder>? = emptyList(),
 		parentId: UUID? = null,
 		fields: Collection<ItemFields>? = emptyList(),
-		excludeItemTypes: Collection<String>? = emptyList(),
-		includeItemTypes: Collection<String>? = emptyList(),
+		excludeItemTypes: Collection<BaseItemKind>? = emptyList(),
+		includeItemTypes: Collection<BaseItemKind>? = emptyList(),
 		filters: Collection<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
 		mediaTypes: Collection<String>? = emptyList(),
@@ -484,8 +485,8 @@ public class ItemsApi(
 		sortOrder: Collection<SortOrder>? = emptyList(),
 		parentId: UUID? = null,
 		fields: Collection<ItemFields>? = emptyList(),
-		excludeItemTypes: Collection<String>? = emptyList(),
-		includeItemTypes: Collection<String>? = emptyList(),
+		excludeItemTypes: Collection<BaseItemKind>? = emptyList(),
+		includeItemTypes: Collection<BaseItemKind>? = emptyList(),
 		filters: Collection<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
 		mediaTypes: Collection<String>? = emptyList(),
@@ -642,6 +643,7 @@ public class ItemsApi(
 	 * This allows multiple, comma delimited.
 	 * @param enableTotalRecordCount Optional. Enable the total record count.
 	 * @param enableImages Optional. Include image information in output.
+	 * @param excludeActiveSessions Optional. Whether to exclude the currently active sessions.
 	 */
 	public suspend fun getResumeItems(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
@@ -654,10 +656,11 @@ public class ItemsApi(
 		enableUserData: Boolean? = null,
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
-		excludeItemTypes: Collection<String>? = emptyList(),
-		includeItemTypes: Collection<String>? = emptyList(),
+		excludeItemTypes: Collection<BaseItemKind>? = emptyList(),
+		includeItemTypes: Collection<BaseItemKind>? = emptyList(),
 		enableTotalRecordCount: Boolean? = true,
 		enableImages: Boolean? = true,
+		excludeActiveSessions: Boolean? = false,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["userId"] = userId
@@ -675,6 +678,7 @@ public class ItemsApi(
 		queryParameters["includeItemTypes"] = includeItemTypes
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		queryParameters["enableImages"] = enableImages
+		queryParameters["excludeActiveSessions"] = excludeActiveSessions
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Users/{userId}/Items/Resume", pathParameters,
 				queryParameters, data)

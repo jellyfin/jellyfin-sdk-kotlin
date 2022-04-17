@@ -15,6 +15,7 @@ import kotlin.String
 import kotlin.Unit
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
+import kotlin.require
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
@@ -51,6 +52,7 @@ public class MediaInfoApi(
 	public suspend fun getBitrateTestBytes(size: Int? = 102400): Response<ByteReadChannel> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
+		require(size in 1..100000000) { "Parameter \"size\" must be in range 1..100000000 (inclusive)." }
 		queryParameters["size"] = size
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Playback/BitrateTest", pathParameters,
@@ -68,6 +70,7 @@ public class MediaInfoApi(
 			String {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
+		require(size in 1..100000000) { "Parameter \"size\" must be in range 1..100000000 (inclusive)." }
 		queryParameters["size"] = size
 		return api.createUrl("/Playback/BitrateTest", pathParameters, queryParameters, includeCredentials)
 	}

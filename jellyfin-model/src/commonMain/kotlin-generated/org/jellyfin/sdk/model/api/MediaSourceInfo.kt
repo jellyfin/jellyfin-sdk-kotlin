@@ -35,6 +35,7 @@ public data class MediaSourceInfo(
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
+	 * Gets or sets a value indicating whether the media is remote.
 	 * Differentiate internet url vs local network.
 	 */
 	@SerialName("IsRemote")
@@ -90,7 +91,7 @@ public data class MediaSourceInfo(
 	@SerialName("Timestamp")
 	public val timestamp: TransportStreamTimestamp? = null,
 	@SerialName("RequiredHttpHeaders")
-	public val requiredHttpHeaders: Map<String, String>? = null,
+	public val requiredHttpHeaders: Map<String, String?>? = null,
 	@SerialName("TranscodingUrl")
 	public val transcodingUrl: String? = null,
 	@SerialName("TranscodingSubProtocol")

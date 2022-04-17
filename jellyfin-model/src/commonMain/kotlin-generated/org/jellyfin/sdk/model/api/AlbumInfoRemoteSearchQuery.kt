@@ -22,7 +22,7 @@ public data class AlbumInfoRemoteSearchQuery(
 	@SerialName("ItemId")
 	public val itemId: UUID,
 	/**
-	 * Will only search within the given provider when set.
+	 * Gets or sets the provider name to search within if set.
 	 */
 	@SerialName("SearchProviderName")
 	public val searchProviderName: String? = null,

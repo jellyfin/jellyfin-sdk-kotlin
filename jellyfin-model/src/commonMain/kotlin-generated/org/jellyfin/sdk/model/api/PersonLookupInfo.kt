@@ -25,6 +25,11 @@ public data class PersonLookupInfo(
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
+	 * Gets or sets the original title.
+	 */
+	@SerialName("OriginalTitle")
+	public val originalTitle: String? = null,
+	/**
 	 * Gets or sets the path.
 	 */
 	@SerialName("Path")
@@ -43,7 +48,7 @@ public data class PersonLookupInfo(
 	 * Gets or sets the provider ids.
 	 */
 	@SerialName("ProviderIds")
-	public val providerIds: Map<String, String>? = null,
+	public val providerIds: Map<String, String?>? = null,
 	/**
 	 * Gets or sets the year.
 	 */

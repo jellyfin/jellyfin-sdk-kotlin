@@ -9,6 +9,9 @@ import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The branding options.
+ */
 @Serializable
 public data class BrandingOptions(
 	/**

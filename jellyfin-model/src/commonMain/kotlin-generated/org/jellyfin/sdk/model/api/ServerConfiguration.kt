@@ -45,148 +45,12 @@ public data class ServerConfiguration(
 	@SerialName("PreviousVersionStr")
 	public val previousVersionStr: String? = null,
 	/**
-	 * Gets or sets a value indicating whether to enable automatic port forwarding.
-	 */
-	@SerialName("EnableUPnP")
-	public val enableUPnP: Boolean,
-	/**
 	 * Gets or sets a value indicating whether to enable prometheus metrics exporting.
 	 */
 	@SerialName("EnableMetrics")
 	public val enableMetrics: Boolean,
-	/**
-	 * Gets or sets the public mapped port.
-	 */
-	@SerialName("PublicPort")
-	public val publicPort: Int,
-	/**
-	 * Gets or sets a value indicating whether the http port should be mapped as part of UPnP automatic
-	 * port forwarding.
-	 */
-	@SerialName("UPnPCreateHttpPortMap")
-	public val uPnPCreateHttpPortMap: Boolean,
-	/**
-	 * Gets or sets client udp port range.
-	 */
-	@SerialName("UDPPortRange")
-	public val udpPortRange: String? = null,
-	/**
-	 * Gets or sets a value indicating whether IPV6 capability is enabled.
-	 */
-	@SerialName("EnableIPV6")
-	public val enableIpv6: Boolean,
-	/**
-	 * Gets or sets a value indicating whether IPV4 capability is enabled.
-	 */
-	@SerialName("EnableIPV4")
-	public val enableIpv4: Boolean,
-	/**
-	 * Gets or sets a value indicating whether detailed ssdp logs are sent to the console/log.
-	 * "Emby.Dlna": "Debug" must be set in logging.default.json for this property to work.
-	 */
-	@SerialName("EnableSSDPTracing")
-	public val enableSsdpTracing: Boolean,
-	/**
-	 * Gets or sets a value indicating whether an IP address is to be used to filter the detailed ssdp
-	 * logs that are being sent to the console/log.
-	 * If the setting "Emby.Dlna": "Debug" msut be set in logging.default.json for this property to
-	 * work.
-	 */
-	@SerialName("SSDPTracingFilter")
-	public val ssdpTracingFilter: String? = null,
-	/**
-	 * Gets or sets the number of times SSDP UDP messages are sent.
-	 */
-	@SerialName("UDPSendCount")
-	public val udpSendCount: Int,
-	/**
-	 * Gets or sets the delay between each groups of SSDP messages (in ms).
-	 */
-	@SerialName("UDPSendDelay")
-	public val udpSendDelay: Int,
-	/**
-	 * Gets or sets a value indicating whether address names that match
-	 * MediaBrowser.Model.Configuration.ServerConfiguration.VirtualInterfaceNames should be Ignore for the
-	 * purposes of binding.
-	 */
-	@SerialName("IgnoreVirtualInterfaces")
-	public val ignoreVirtualInterfaces: Boolean,
-	/**
-	 * Gets or sets a value indicating the interfaces that should be ignored. The list can be comma
-	 * separated. `P:MediaBrowser.Model.Configuration.ServerConfiguration.IgnoreVirtualInterfaces`.
-	 */
-	@SerialName("VirtualInterfaceNames")
-	public val virtualInterfaceNames: String? = null,
-	/**
-	 * Gets or sets the time (in seconds) between the pings of SSDP gateway monitor.
-	 */
-	@SerialName("GatewayMonitorPeriod")
-	public val gatewayMonitorPeriod: Int,
-	/**
-	 * Gets a value indicating whether multi-socket binding is available.
-	 */
-	@SerialName("EnableMultiSocketBinding")
-	public val enableMultiSocketBinding: Boolean,
-	/**
-	 * Gets or sets a value indicating whether all IPv6 interfaces should be treated as on the internal
-	 * network.
-	 * Depending on the address range implemented ULA ranges might not be used.
-	 */
-	@SerialName("TrustAllIP6Interfaces")
-	public val trustAllIp6Interfaces: Boolean,
-	/**
-	 * Gets or sets the ports that HDHomerun uses.
-	 */
-	@SerialName("HDHomerunPortRange")
-	public val hdHomerunPortRange: String? = null,
-	/**
-	 * Gets or sets PublishedServerUri to advertise for specific subnets.
-	 */
-	@SerialName("PublishedServerUriBySubnet")
-	public val publishedServerUriBySubnet: List<String>? = null,
-	/**
-	 * Gets or sets a value indicating whether Autodiscovery tracing is enabled.
-	 */
-	@SerialName("AutoDiscoveryTracing")
-	public val autoDiscoveryTracing: Boolean,
-	/**
-	 * Gets or sets a value indicating whether Autodiscovery is enabled.
-	 */
-	@SerialName("AutoDiscovery")
-	public val autoDiscovery: Boolean,
-	/**
-	 * Gets or sets the public HTTPS port.
-	 */
-	@SerialName("PublicHttpsPort")
-	public val publicHttpsPort: Int,
-	/**
-	 * Gets or sets the HTTP server port number.
-	 */
-	@SerialName("HttpServerPortNumber")
-	public val httpServerPortNumber: Int,
-	/**
-	 * Gets or sets the HTTPS server port number.
-	 */
-	@SerialName("HttpsPortNumber")
-	public val httpsPortNumber: Int,
-	/**
-	 * Gets or sets a value indicating whether to use HTTPS.
-	 */
-	@SerialName("EnableHttps")
-	public val enableHttps: Boolean,
 	@SerialName("EnableNormalizedItemByNameIds")
 	public val enableNormalizedItemByNameIds: Boolean,
-	/**
-	 * Gets or sets the filesystem path of an X.509 certificate to use for SSL.
-	 */
-	@SerialName("CertificatePath")
-	public val certificatePath: String? = null,
-	/**
-	 * Gets or sets the password required to access the X.509 certificate data in the file specified by
-	 * MediaBrowser.Model.Configuration.ServerConfiguration.CertificatePath.
-	 */
-	@SerialName("CertificatePassword")
-	public val certificatePassword: String? = null,
 	/**
 	 * Gets or sets a value indicating whether this instance is port authorized.
 	 */
@@ -198,11 +62,6 @@ public data class ServerConfiguration(
 	@SerialName("QuickConnectAvailable")
 	public val quickConnectAvailable: Boolean,
 	/**
-	 * Gets or sets a value indicating whether access outside of the LAN is permitted.
-	 */
-	@SerialName("EnableRemoteAccess")
-	public val enableRemoteAccess: Boolean,
-	/**
 	 * Gets or sets a value indicating whether [enable case sensitive item ids].
 	 */
 	@SerialName("EnableCaseSensitiveItemIds")
@@ -213,34 +72,34 @@ public data class ServerConfiguration(
 	 * Gets or sets the metadata path.
 	 */
 	@SerialName("MetadataPath")
-	public val metadataPath: String? = null,
+	public val metadataPath: String,
 	@SerialName("MetadataNetworkPath")
-	public val metadataNetworkPath: String? = null,
+	public val metadataNetworkPath: String,
 	/**
 	 * Gets or sets the preferred metadata language.
 	 */
 	@SerialName("PreferredMetadataLanguage")
-	public val preferredMetadataLanguage: String? = null,
+	public val preferredMetadataLanguage: String,
 	/**
 	 * Gets or sets the metadata country code.
 	 */
 	@SerialName("MetadataCountryCode")
-	public val metadataCountryCode: String? = null,
+	public val metadataCountryCode: String,
 	/**
 	 * Gets or sets characters to be replaced with a ' ' in strings to create a sort name.
 	 */
 	@SerialName("SortReplaceCharacters")
-	public val sortReplaceCharacters: List<String>? = null,
+	public val sortReplaceCharacters: List<String>,
 	/**
 	 * Gets or sets characters to be removed from strings to create a sort name.
 	 */
 	@SerialName("SortRemoveCharacters")
-	public val sortRemoveCharacters: List<String>? = null,
+	public val sortRemoveCharacters: List<String>,
 	/**
 	 * Gets or sets words to be removed from strings to create a sort name.
 	 */
 	@SerialName("SortRemoveWords")
-	public val sortRemoveWords: List<String>? = null,
+	public val sortRemoveWords: List<String>,
 	/**
 	 * Gets or sets the minimum percentage of an item that must be played in order for playstate to be
 	 * updated.
@@ -283,31 +142,22 @@ public data class ServerConfiguration(
 	@SerialName("LibraryMonitorDelay")
 	public val libraryMonitorDelay: Int,
 	/**
-	 * Gets or sets a value indicating whether [enable dashboard response caching].
-	 * Allows potential contributors without visual studio to modify production dashboard code and test
-	 * changes.
-	 */
-	@SerialName("EnableDashboardResponseCaching")
-	public val enableDashboardResponseCaching: Boolean,
-	/**
 	 * Gets or sets the image saving convention.
 	 */
 	@SerialName("ImageSavingConvention")
 	public val imageSavingConvention: ImageSavingConvention,
 	@SerialName("MetadataOptions")
-	public val metadataOptions: List<MetadataOptions>? = null,
+	public val metadataOptions: List<MetadataOptions>,
 	@SerialName("SkipDeserializationForBasicTypes")
 	public val skipDeserializationForBasicTypes: Boolean,
 	@SerialName("ServerName")
-	public val serverName: String? = null,
-	@SerialName("BaseUrl")
-	public val baseUrl: String? = null,
+	public val serverName: String,
 	@SerialName("UICulture")
-	public val uiCulture: String? = null,
+	public val uiCulture: String,
 	@SerialName("SaveMetadataHidden")
 	public val saveMetadataHidden: Boolean,
 	@SerialName("ContentTypes")
-	public val contentTypes: List<NameValuePair>? = null,
+	public val contentTypes: List<NameValuePair>,
 	@SerialName("RemoteClientBitrateLimit")
 	public val remoteClientBitrateLimit: Int,
 	@SerialName("EnableFolderView")
@@ -316,49 +166,16 @@ public data class ServerConfiguration(
 	public val enableGroupingIntoCollections: Boolean,
 	@SerialName("DisplaySpecialsWithinSeasons")
 	public val displaySpecialsWithinSeasons: Boolean,
-	/**
-	 * Gets or sets the subnets that are deemed to make up the LAN.
-	 */
-	@SerialName("LocalNetworkSubnets")
-	public val localNetworkSubnets: List<String>? = null,
-	/**
-	 * Gets or sets the interface addresses which Jellyfin will bind to. If empty, all interfaces will
-	 * be used.
-	 */
-	@SerialName("LocalNetworkAddresses")
-	public val localNetworkAddresses: List<String>? = null,
 	@SerialName("CodecsUsed")
-	public val codecsUsed: List<String>? = null,
+	public val codecsUsed: List<String>,
 	@SerialName("PluginRepositories")
-	public val pluginRepositories: List<RepositoryInfo>? = null,
+	public val pluginRepositories: List<RepositoryInfo>,
 	@SerialName("EnableExternalContentInSuggestions")
 	public val enableExternalContentInSuggestions: Boolean,
-	/**
-	 * Gets or sets a value indicating whether the server should force connections over HTTPS.
-	 */
-	@SerialName("RequireHttps")
-	public val requireHttps: Boolean,
-	@SerialName("EnableNewOmdbSupport")
-	public val enableNewOmdbSupport: Boolean,
-	/**
-	 * Gets or sets the filter for remote IP connectivity. Used in conjuntion with
-	 * `P:MediaBrowser.Model.Configuration.ServerConfiguration.IsRemoteIPFilterBlacklist`.
-	 */
-	@SerialName("RemoteIPFilter")
-	public val remoteIpFilter: List<String>? = null,
-	/**
-	 * Gets or sets a value indicating whether
-	 * `P:MediaBrowser.Model.Configuration.ServerConfiguration.RemoteIPFilter` contains a blacklist or a
-	 * whitelist. Default is a whitelist.
-	 */
-	@SerialName("IsRemoteIPFilterBlacklist")
-	public val isRemoteIpFilterBlacklist: Boolean,
 	@SerialName("ImageExtractionTimeoutMs")
 	public val imageExtractionTimeoutMs: Int,
 	@SerialName("PathSubstitutions")
-	public val pathSubstitutions: List<PathSubstitution>? = null,
-	@SerialName("UninstalledPlugins")
-	public val uninstalledPlugins: List<String>? = null,
+	public val pathSubstitutions: List<PathSubstitution>,
 	/**
 	 * Gets or sets a value indicating whether slow server responses should be logged as a warning.
 	 */
@@ -373,12 +190,7 @@ public data class ServerConfiguration(
 	 * Gets or sets the cors hosts.
 	 */
 	@SerialName("CorsHosts")
-	public val corsHosts: List<String>? = null,
-	/**
-	 * Gets or sets the known proxies.
-	 */
-	@SerialName("KnownProxies")
-	public val knownProxies: List<String>? = null,
+	public val corsHosts: List<String>,
 	/**
 	 * Gets or sets the number of days we should retain activity logs.
 	 */
@@ -400,4 +212,9 @@ public data class ServerConfiguration(
 	 */
 	@SerialName("RemoveOldPlugins")
 	public val removeOldPlugins: Boolean,
+	/**
+	 * Gets or sets a value indicating whether clients should be allowed to upload logs.
+	 */
+	@SerialName("AllowClientLogUpload")
+	public val allowClientLogUpload: Boolean,
 )

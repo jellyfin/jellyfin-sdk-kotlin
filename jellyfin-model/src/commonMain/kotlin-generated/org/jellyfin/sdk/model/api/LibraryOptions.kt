@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Boolean
+import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
@@ -23,9 +24,10 @@ public data class LibraryOptions(
 	@SerialName("ExtractChapterImagesDuringLibraryScan")
 	public val extractChapterImagesDuringLibraryScan: Boolean,
 	@SerialName("PathInfos")
-	public val pathInfos: List<MediaPathInfo>? = null,
+	public val pathInfos: List<MediaPathInfo>,
 	@SerialName("SaveLocalMetadata")
 	public val saveLocalMetadata: Boolean,
+	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("EnableInternetProviders")
 	public val enableInternetProviders: Boolean,
 	@SerialName("EnableAutomaticSeriesGrouping")
@@ -47,17 +49,17 @@ public data class LibraryOptions(
 	@SerialName("MetadataCountryCode")
 	public val metadataCountryCode: String? = null,
 	@SerialName("SeasonZeroDisplayName")
-	public val seasonZeroDisplayName: String? = null,
+	public val seasonZeroDisplayName: String,
 	@SerialName("MetadataSavers")
 	public val metadataSavers: List<String>? = null,
 	@SerialName("DisabledLocalMetadataReaders")
-	public val disabledLocalMetadataReaders: List<String>? = null,
+	public val disabledLocalMetadataReaders: List<String>,
 	@SerialName("LocalMetadataReaderOrder")
 	public val localMetadataReaderOrder: List<String>? = null,
 	@SerialName("DisabledSubtitleFetchers")
-	public val disabledSubtitleFetchers: List<String>? = null,
+	public val disabledSubtitleFetchers: List<String>,
 	@SerialName("SubtitleFetcherOrder")
-	public val subtitleFetcherOrder: List<String>? = null,
+	public val subtitleFetcherOrder: List<String>,
 	@SerialName("SkipSubtitlesIfEmbeddedSubtitlesPresent")
 	public val skipSubtitlesIfEmbeddedSubtitlesPresent: Boolean,
 	@SerialName("SkipSubtitlesIfAudioTrackMatches")
@@ -68,6 +70,13 @@ public data class LibraryOptions(
 	public val requirePerfectSubtitleMatch: Boolean,
 	@SerialName("SaveSubtitlesWithMedia")
 	public val saveSubtitlesWithMedia: Boolean,
+	@SerialName("AutomaticallyAddToCollection")
+	public val automaticallyAddToCollection: Boolean,
+	/**
+	 * An enum representing the options to disable embedded subs.
+	 */
+	@SerialName("AllowEmbeddedSubtitles")
+	public val allowEmbeddedSubtitles: EmbeddedSubtitleOptions,
 	@SerialName("TypeOptions")
-	public val typeOptions: List<TypeOptions>? = null,
+	public val typeOptions: List<TypeOptions>,
 )

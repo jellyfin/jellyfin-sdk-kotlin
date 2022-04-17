@@ -23,6 +23,7 @@ import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDto
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
+import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.UserItemDataDto
@@ -105,7 +106,7 @@ public class UserLibraryApi(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		parentId: UUID? = null,
 		fields: Collection<ItemFields>? = emptyList(),
-		includeItemTypes: Collection<String>? = emptyList(),
+		includeItemTypes: Collection<BaseItemKind>? = emptyList(),
 		isPlayed: Boolean? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,

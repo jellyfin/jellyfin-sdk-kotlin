@@ -13,15 +13,15 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class MetadataEditorInfo(
 	@SerialName("ParentalRatingOptions")
-	public val parentalRatingOptions: List<ParentalRating>? = null,
+	public val parentalRatingOptions: List<ParentalRating>,
 	@SerialName("Countries")
-	public val countries: List<CountryInfo>? = null,
+	public val countries: List<CountryInfo>,
 	@SerialName("Cultures")
-	public val cultures: List<CultureDto>? = null,
+	public val cultures: List<CultureDto>,
 	@SerialName("ExternalIdInfos")
-	public val externalIdInfos: List<ExternalIdInfo>? = null,
+	public val externalIdInfos: List<ExternalIdInfo>,
 	@SerialName("ContentType")
 	public val contentType: String? = null,
 	@SerialName("ContentTypeOptions")
-	public val contentTypeOptions: List<NameValuePair>? = null,
+	public val contentTypeOptions: List<NameValuePair>,
 )
