@@ -22,7 +22,6 @@ import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BasePluginConfiguration
 import org.jellyfin.sdk.model.api.PluginInfo
-import org.jellyfin.sdk.model.api.PluginSecurityInfo
 import org.jellyfin.sdk.model.api.Version
 
 public class PluginsApi(
@@ -184,17 +183,6 @@ public class PluginsApi(
 		val data = null
 		val response = api.post<Unit>("/Plugins/{pluginId}/Configuration", pathParameters,
 				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Updates plugin security info.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun updatePluginSecurityInfo(`data`: PluginSecurityInfo): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Plugins/SecurityInfo", pathParameters, queryParameters, data)
 		return response
 	}
 }

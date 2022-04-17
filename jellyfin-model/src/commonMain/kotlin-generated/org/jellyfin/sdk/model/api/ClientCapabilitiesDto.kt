@@ -20,12 +20,12 @@ public data class ClientCapabilitiesDto(
 	 * Gets or sets the list of playable media types.
 	 */
 	@SerialName("PlayableMediaTypes")
-	public val playableMediaTypes: List<String>? = null,
+	public val playableMediaTypes: List<String>,
 	/**
 	 * Gets or sets the list of supported commands.
 	 */
 	@SerialName("SupportedCommands")
-	public val supportedCommands: List<GeneralCommandType>? = null,
+	public val supportedCommands: List<GeneralCommandType>,
 	/**
 	 * Gets or sets a value indicating whether session supports media control.
 	 */
@@ -52,7 +52,17 @@ public data class ClientCapabilitiesDto(
 	@SerialName("SupportsSync")
 	public val supportsSync: Boolean,
 	/**
-	 * Gets or sets the device profile.
+	 * A MediaBrowser.Model.Dlna.DeviceProfile represents a set of metadata which determines which
+	 * content a certain device is able to play.
+	 *
+	 *
+	 * Specifically, it defines the supported containers
+	 * (`P:MediaBrowser.Model.Dlna.DeviceProfile.ContainerProfiles`) and
+	 * codecs (`P:MediaBrowser.Model.Dlna.DeviceProfile.CodecProfiles`) (video and/or audio, including
+	 * codec profiles and levels)
+	 * the device is able to direct play (without transcoding or remuxing),
+	 * as well as which containers/codecs to transcode to
+	 * (`P:MediaBrowser.Model.Dlna.DeviceProfile.TranscodingProfiles`) in case it isn't.
 	 */
 	@SerialName("DeviceProfile")
 	public val deviceProfile: DeviceProfile? = null,

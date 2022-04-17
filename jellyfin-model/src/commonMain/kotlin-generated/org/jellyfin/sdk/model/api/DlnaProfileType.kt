@@ -19,6 +19,8 @@ public enum class DlnaProfileType(
 	VIDEO("Video"),
 	@SerialName("Photo")
 	PHOTO("Photo"),
+	@SerialName("Subtitle")
+	SUBTITLE("Subtitle"),
 	;
 
 	public override fun toString(): String = serialName

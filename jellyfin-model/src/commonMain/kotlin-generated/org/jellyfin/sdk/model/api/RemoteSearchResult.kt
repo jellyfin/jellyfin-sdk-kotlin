@@ -28,7 +28,7 @@ public data class RemoteSearchResult(
 	 * Gets or sets the provider ids.
 	 */
 	@SerialName("ProviderIds")
-	public val providerIds: Map<String, String>? = null,
+	public val providerIds: Map<String, String?>? = null,
 	/**
 	 * Gets or sets the year.
 	 */

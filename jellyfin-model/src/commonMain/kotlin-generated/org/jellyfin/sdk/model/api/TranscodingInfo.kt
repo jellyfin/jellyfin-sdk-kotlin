@@ -10,7 +10,6 @@ import kotlin.Double
 import kotlin.Float
 import kotlin.Int
 import kotlin.String
-import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -38,6 +37,8 @@ public data class TranscodingInfo(
 	public val height: Int? = null,
 	@SerialName("AudioChannels")
 	public val audioChannels: Int? = null,
+	@SerialName("HardwareAccelerationType")
+	public val hardwareAccelerationType: HardwareEncodingType? = null,
 	@SerialName("TranscodeReasons")
-	public val transcodeReasons: List<TranscodeReason>? = null,
+	public val transcodeReasons: String,
 )

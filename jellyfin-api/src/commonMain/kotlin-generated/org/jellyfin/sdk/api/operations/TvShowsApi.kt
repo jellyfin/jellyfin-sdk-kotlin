@@ -16,6 +16,7 @@ import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
+import org.jellyfin.sdk.model.DateTime
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.ImageType
@@ -100,12 +101,14 @@ public class TvShowsApi(
 	 * @param seriesId Optional. Filter by series id.
 	 * @param parentId Optional. Specify this to localize the search to a specific item or folder. Omit
 	 * to use the root.
-	 * @param enableImges Optional. Include image information in output.
+	 * @param enableImages Optional. Include image information in output.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 * @param enableUserData Optional. Include user data.
+	 * @param nextUpDateCutoff Optional. Starting date of shows to show in Next Up section.
 	 * @param enableTotalRecordCount Whether to enable the total records count. Defaults to true.
 	 * @param disableFirstEpisode Whether to disable sending the first episode in a series as next up.
+	 * @param enableRewatching Whether to include watched episode in next up results.
 	 */
 	public suspend fun getNextUp(
 		userId: UUID? = null,
@@ -114,12 +117,14 @@ public class TvShowsApi(
 		fields: Collection<ItemFields>? = emptyList(),
 		seriesId: String? = null,
 		parentId: UUID? = null,
-		enableImges: Boolean? = null,
+		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
+		nextUpDateCutoff: DateTime? = null,
 		enableTotalRecordCount: Boolean? = true,
 		disableFirstEpisode: Boolean? = false,
+		enableRewatching: Boolean? = false,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = mutableMapOf<String, Any?>()
@@ -129,12 +134,14 @@ public class TvShowsApi(
 		queryParameters["fields"] = fields
 		queryParameters["seriesId"] = seriesId
 		queryParameters["parentId"] = parentId
-		queryParameters["enableImges"] = enableImges
+		queryParameters["enableImages"] = enableImages
 		queryParameters["imageTypeLimit"] = imageTypeLimit
 		queryParameters["enableImageTypes"] = enableImageTypes
 		queryParameters["enableUserData"] = enableUserData
+		queryParameters["nextUpDateCutoff"] = nextUpDateCutoff
 		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
 		queryParameters["disableFirstEpisode"] = disableFirstEpisode
+		queryParameters["enableRewatching"] = enableRewatching
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/NextUp", pathParameters, queryParameters,
 				data)
@@ -198,7 +205,7 @@ public class TvShowsApi(
 	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param parentId Optional. Specify this to localize the search to a specific item or folder. Omit
 	 * to use the root.
-	 * @param enableImges Optional. Include image information in output.
+	 * @param enableImages Optional. Include image information in output.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 * @param enableUserData Optional. Include user data.
@@ -209,7 +216,7 @@ public class TvShowsApi(
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),
 		parentId: UUID? = null,
-		enableImges: Boolean? = null,
+		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
@@ -221,7 +228,7 @@ public class TvShowsApi(
 		queryParameters["limit"] = limit
 		queryParameters["fields"] = fields
 		queryParameters["parentId"] = parentId
-		queryParameters["enableImges"] = enableImges
+		queryParameters["enableImages"] = enableImages
 		queryParameters["imageTypeLimit"] = imageTypeLimit
 		queryParameters["enableImageTypes"] = enableImageTypes
 		queryParameters["enableUserData"] = enableUserData

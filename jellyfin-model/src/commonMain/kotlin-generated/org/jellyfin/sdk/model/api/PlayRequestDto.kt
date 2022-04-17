@@ -25,7 +25,7 @@ public data class PlayRequestDto(
 	 * Gets or sets the playing queue.
 	 */
 	@SerialName("PlayingQueue")
-	public val playingQueue: List<UUID>? = null,
+	public val playingQueue: List<UUID>,
 	/**
 	 * Gets or sets the position of the playing item in the queue.
 	 */

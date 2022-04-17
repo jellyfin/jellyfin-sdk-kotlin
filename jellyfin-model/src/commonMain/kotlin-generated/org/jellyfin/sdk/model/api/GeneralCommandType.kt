@@ -98,6 +98,8 @@ public enum class GeneralCommandType(
 	TOGGLE_OSD_MENU("ToggleOsdMenu"),
 	@SerialName("Play")
 	PLAY("Play"),
+	@SerialName("SetMaxStreamingBitrate")
+	SET_MAX_STREAMING_BITRATE("SetMaxStreamingBitrate"),
 	;
 
 	public override fun toString(): String = serialName

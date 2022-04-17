@@ -18,6 +18,7 @@ import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
+import org.jellyfin.sdk.model.api.BaseItemKind
 
 public class SuggestionsApi(
 	private val api: ApiClient,
@@ -35,7 +36,7 @@ public class SuggestionsApi(
 	public suspend fun getSuggestions(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		mediaType: Collection<String>? = emptyList(),
-		type: Collection<String>? = emptyList(),
+		type: Collection<BaseItemKind>? = emptyList(),
 		startIndex: Int? = null,
 		limit: Int? = null,
 		enableTotalRecordCount: Boolean? = false,

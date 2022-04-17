@@ -10,16 +10,20 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Enum ConfigurationPageType.
+ * An enum representing the options to disable embedded subs.
  */
 @Serializable
-public enum class ConfigurationPageType(
+public enum class EmbeddedSubtitleOptions(
 	public val serialName: String,
 ) {
-	@SerialName("PluginConfiguration")
-	PLUGIN_CONFIGURATION("PluginConfiguration"),
-	@SerialName("None")
-	NONE("None"),
+	@SerialName("AllowAll")
+	ALLOW_ALL("AllowAll"),
+	@SerialName("AllowText")
+	ALLOW_TEXT("AllowText"),
+	@SerialName("AllowImage")
+	ALLOW_IMAGE("AllowImage"),
+	@SerialName("AllowNone")
+	ALLOW_NONE("AllowNone"),
 	;
 
 	public override fun toString(): String = serialName

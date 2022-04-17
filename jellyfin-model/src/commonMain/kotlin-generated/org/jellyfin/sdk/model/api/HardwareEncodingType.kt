@@ -10,18 +10,24 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Quick connect state.
+ * Enum HardwareEncodingType.
  */
 @Serializable
-public enum class QuickConnectState(
+public enum class HardwareEncodingType(
 	public val serialName: String,
 ) {
-	@SerialName("Unavailable")
-	UNAVAILABLE("Unavailable"),
-	@SerialName("Available")
-	AVAILABLE("Available"),
-	@SerialName("Active")
-	ACTIVE("Active"),
+	@SerialName("AMF")
+	AMF("AMF"),
+	@SerialName("QSV")
+	QSV("QSV"),
+	@SerialName("NVENC")
+	NVENC("NVENC"),
+	@SerialName("V4L2M2M")
+	V4L2M2M("V4L2M2M"),
+	@SerialName("VAAPI")
+	VAAPI("VAAPI"),
+	@SerialName("VideoToolBox")
+	VIDEO_TOOL_BOX("VideoToolBox"),
 	;
 
 	public override fun toString(): String = serialName

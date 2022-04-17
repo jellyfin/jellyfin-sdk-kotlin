@@ -9,6 +9,9 @@ import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * Delivery method to use during playback of a specific subtitle format.
+ */
 @Serializable
 public enum class SubtitleDeliveryMethod(
 	public val serialName: String,
@@ -21,6 +24,8 @@ public enum class SubtitleDeliveryMethod(
 	EXTERNAL("External"),
 	@SerialName("Hls")
 	HLS("Hls"),
+	@SerialName("Drop")
+	DROP("Drop"),
 	;
 
 	public override fun toString(): String = serialName

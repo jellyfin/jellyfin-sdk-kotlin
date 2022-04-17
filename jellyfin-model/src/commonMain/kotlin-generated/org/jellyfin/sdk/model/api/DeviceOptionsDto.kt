@@ -5,24 +5,29 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
-import kotlin.Boolean
+import kotlin.Int
 import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Plugin security info.
+ * A dto representing custom options for a device.
  */
 @Serializable
-public data class PluginSecurityInfo(
+public data class DeviceOptionsDto(
 	/**
-	 * Gets or sets the supporter key.
+	 * Gets or sets the id.
 	 */
-	@SerialName("SupporterKey")
-	public val supporterKey: String? = null,
+	@SerialName("Id")
+	public val id: Int,
 	/**
-	 * Gets or sets a value indicating whether is mb supporter.
+	 * Gets or sets the device id.
 	 */
-	@SerialName("IsMbSupporter")
-	public val isMbSupporter: Boolean,
+	@SerialName("DeviceId")
+	public val deviceId: String? = null,
+	/**
+	 * Gets or sets the custom name.
+	 */
+	@SerialName("CustomName")
+	public val customName: String? = null,
 )

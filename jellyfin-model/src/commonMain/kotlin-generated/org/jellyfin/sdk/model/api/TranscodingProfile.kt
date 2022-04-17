@@ -8,21 +8,22 @@ package org.jellyfin.sdk.model.api
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 public data class TranscodingProfile(
 	@SerialName("Container")
-	public val container: String? = null,
+	public val container: String,
 	@SerialName("Type")
 	public val type: DlnaProfileType,
 	@SerialName("VideoCodec")
-	public val videoCodec: String? = null,
+	public val videoCodec: String,
 	@SerialName("AudioCodec")
-	public val audioCodec: String? = null,
+	public val audioCodec: String,
 	@SerialName("Protocol")
-	public val protocol: String? = null,
+	public val protocol: String,
 	@SerialName("EstimateContentLength")
 	public val estimateContentLength: Boolean,
 	@SerialName("EnableMpegtsM2TsMode")
@@ -43,4 +44,6 @@ public data class TranscodingProfile(
 	public val segmentLength: Int,
 	@SerialName("BreakOnNonKeyFrames")
 	public val breakOnNonKeyFrames: Boolean,
+	@SerialName("Conditions")
+	public val conditions: List<ProfileCondition>,
 )

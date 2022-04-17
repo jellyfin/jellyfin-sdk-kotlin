@@ -24,6 +24,11 @@ public data class DeviceInfo(
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
+	 * Gets or sets the access token.
+	 */
+	@SerialName("AccessToken")
+	public val accessToken: String? = null,
+	/**
 	 * Gets or sets the identifier.
 	 */
 	@SerialName("Id")

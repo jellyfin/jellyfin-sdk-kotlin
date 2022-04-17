@@ -26,6 +26,11 @@ public data class ArtistInfo(
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
+	 * Gets or sets the original title.
+	 */
+	@SerialName("OriginalTitle")
+	public val originalTitle: String? = null,
+	/**
 	 * Gets or sets the path.
 	 */
 	@SerialName("Path")
@@ -44,7 +49,7 @@ public data class ArtistInfo(
 	 * Gets or sets the provider ids.
 	 */
 	@SerialName("ProviderIds")
-	public val providerIds: Map<String, String>? = null,
+	public val providerIds: Map<String, String?>? = null,
 	/**
 	 * Gets or sets the year.
 	 */
@@ -59,5 +64,5 @@ public data class ArtistInfo(
 	@SerialName("IsAutomated")
 	public val isAutomated: Boolean,
 	@SerialName("SongInfos")
-	public val songInfos: List<SongInfo>? = null,
+	public val songInfos: List<SongInfo>,
 )
