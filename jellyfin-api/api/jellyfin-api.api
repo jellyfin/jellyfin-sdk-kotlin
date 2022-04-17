@@ -200,10 +200,6 @@ public final class org/jellyfin/sdk/api/client/extensions/ApiClientExtensionsKt 
 	public static final fun getYearsApi (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/operations/YearsApi;
 }
 
-public final class org/jellyfin/sdk/api/client/extensions/JvmApiClientExtensionsKt {
-	public static final fun getWebSocket (Lorg/jellyfin/sdk/api/client/ApiClient;)Lorg/jellyfin/sdk/api/sockets/WebSocketApi;
-}
-
 public final class org/jellyfin/sdk/api/client/extensions/UserApiExtensionsKt {
 	public static final fun authenticateUserByName (Lorg/jellyfin/sdk/api/operations/UserApi;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
@@ -1220,20 +1216,6 @@ public final class org/jellyfin/sdk/api/sockets/SocketInstanceState : java/lang/
 	public static final field STOPPED Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
 	public static fun values ()[Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
-}
-
-public final class org/jellyfin/sdk/api/sockets/SocketSubscription {
-	public fun <init> (Lorg/jellyfin/sdk/api/sockets/WebSocketApi;Lkotlin/jvm/functions/Function2;)V
-	public final fun cancel ()V
-}
-
-public final class org/jellyfin/sdk/api/sockets/WebSocketApi : org/jellyfin/sdk/api/operations/Api {
-	public fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;)V
-	public final fun cancelSubscription (Lorg/jellyfin/sdk/api/sockets/SocketSubscription;)V
-	public final fun publish (Lorg/jellyfin/sdk/model/socket/OutgoingSocketMessage;Lkotlinx/serialization/KSerializer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public final fun reconnect ()V
-	public final fun subscribe ()Lkotlinx/coroutines/flow/Flow;
-	public final fun subscribe (Lkotlin/jvm/functions/Function2;)Lorg/jellyfin/sdk/api/sockets/SocketSubscription;
 }
 
 public final class org/jellyfin/sdk/api/sockets/data/SubscriptionType {
