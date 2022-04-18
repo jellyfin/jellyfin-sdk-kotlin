@@ -12,6 +12,7 @@ import kotlin.String
 import kotlin.Unit
 import kotlin.collections.emptyMap
 import kotlin.collections.mutableMapOf
+import kotlinx.serialization.json.JsonElement
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -101,11 +102,10 @@ public class ConfigurationApi(
 	 *
 	 * @param key Configuration key.
 	 */
-	public suspend fun updateNamedConfiguration(key: String): Response<Unit> {
+	public suspend fun updateNamedConfiguration(key: String, `data`: JsonElement): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["key"] = key
 		val queryParameters = emptyMap<String, Any?>()
-		val data = null
 		val response = api.post<Unit>("/System/Configuration/{key}", pathParameters, queryParameters,
 				data)
 		return response

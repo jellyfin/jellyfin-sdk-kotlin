@@ -2826,6 +2826,57 @@ public final class org/jellyfin/sdk/model/api/DisplayPreferencesDto$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class org/jellyfin/sdk/model/api/DlnaOptions {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/DlnaOptions$Companion;
+	public synthetic fun <init> (IZZZZIIILjava/lang/String;ZZZLkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (ZZZZIIILjava/lang/String;ZZZ)V
+	public synthetic fun <init> (ZZZZIIILjava/lang/String;ZZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Z
+	public final fun component10 ()Z
+	public final fun component11 ()Z
+	public final fun component2 ()Z
+	public final fun component3 ()Z
+	public final fun component4 ()Z
+	public final fun component5 ()I
+	public final fun component6 ()I
+	public final fun component7 ()I
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Z
+	public final fun copy (ZZZZIIILjava/lang/String;ZZZ)Lorg/jellyfin/sdk/model/api/DlnaOptions;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/DlnaOptions;ZZZZIIILjava/lang/String;ZZZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/DlnaOptions;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAliveMessageIntervalSeconds ()I
+	public final fun getAutoCreatePlayToProfiles ()Z
+	public final fun getBlastAliveMessageIntervalSeconds ()I
+	public final fun getBlastAliveMessages ()Z
+	public final fun getClientDiscoveryIntervalSeconds ()I
+	public final fun getDefaultUserId ()Ljava/lang/String;
+	public final fun getEnableDebugLog ()Z
+	public final fun getEnablePlayTo ()Z
+	public final fun getEnablePlayToTracing ()Z
+	public final fun getEnableServer ()Z
+	public final fun getSendOnlyMatchedHost ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/DlnaOptions;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class org/jellyfin/sdk/model/api/DlnaOptions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/DlnaOptions$$serializer;
+	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/DlnaOptions;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/DlnaOptions;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/DlnaOptions$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class org/jellyfin/sdk/model/api/DlnaProfileType : java/lang/Enum {
 	public static final field AUDIO Lorg/jellyfin/sdk/model/api/DlnaProfileType;
 	public static final field Companion Lorg/jellyfin/sdk/model/api/DlnaProfileType$Companion;
@@ -2939,6 +2990,107 @@ public final class org/jellyfin/sdk/model/api/EncodingContext$$serializer : kotl
 }
 
 public final class org/jellyfin/sdk/model/api/EncodingContext$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/EncodingOptions {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/EncodingOptions$Companion;
+	public synthetic fun <init> (IIILjava/lang/String;Ljava/lang/String;ZDIZILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;DDDDIILjava/lang/String;ZLjava/lang/String;ZZZZZZZZZLjava/util/List;Ljava/util/List;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (ILjava/lang/String;Ljava/lang/String;ZDIZILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;DDDDIILjava/lang/String;ZLjava/lang/String;ZZZZZZZZZLjava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;ZDIZILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;DDDDIILjava/lang/String;ZLjava/lang/String;ZZZZZZZZZLjava/util/List;Ljava/util/List;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Z
+	public final fun component14 ()Z
+	public final fun component15 ()Ljava/lang/String;
+	public final fun component16 ()Ljava/lang/String;
+	public final fun component17 ()D
+	public final fun component18 ()D
+	public final fun component19 ()D
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component20 ()D
+	public final fun component21 ()I
+	public final fun component22 ()I
+	public final fun component23 ()Ljava/lang/String;
+	public final fun component24 ()Z
+	public final fun component25 ()Ljava/lang/String;
+	public final fun component26 ()Z
+	public final fun component27 ()Z
+	public final fun component28 ()Z
+	public final fun component29 ()Z
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component30 ()Z
+	public final fun component31 ()Z
+	public final fun component32 ()Z
+	public final fun component33 ()Z
+	public final fun component34 ()Z
+	public final fun component35 ()Ljava/util/List;
+	public final fun component36 ()Ljava/util/List;
+	public final fun component4 ()Z
+	public final fun component5 ()D
+	public final fun component6 ()I
+	public final fun component7 ()Z
+	public final fun component8 ()I
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (ILjava/lang/String;Ljava/lang/String;ZDIZILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;DDDDIILjava/lang/String;ZLjava/lang/String;ZZZZZZZZZLjava/util/List;Ljava/util/List;)Lorg/jellyfin/sdk/model/api/EncodingOptions;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/EncodingOptions;ILjava/lang/String;Ljava/lang/String;ZDIZILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;DDDDIILjava/lang/String;ZLjava/lang/String;ZZZZZZZZZLjava/util/List;Ljava/util/List;IILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/EncodingOptions;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAllowHevcEncoding ()Z
+	public final fun getAllowOnDemandMetadataBasedKeyframeExtractionForExtensions ()Ljava/util/List;
+	public final fun getDeinterlaceDoubleRate ()Z
+	public final fun getDeinterlaceMethod ()Ljava/lang/String;
+	public final fun getDownMixAudioBoost ()D
+	public final fun getEnableDecodingColorDepth10Hevc ()Z
+	public final fun getEnableDecodingColorDepth10Vp9 ()Z
+	public final fun getEnableEnhancedNvdecDecoder ()Z
+	public final fun getEnableFallbackFont ()Z
+	public final fun getEnableHardwareEncoding ()Z
+	public final fun getEnableIntelLowPowerH264HwEncoder ()Z
+	public final fun getEnableIntelLowPowerHevcHwEncoder ()Z
+	public final fun getEnableSubtitleExtraction ()Z
+	public final fun getEnableThrottling ()Z
+	public final fun getEnableTonemapping ()Z
+	public final fun getEnableVppTonemapping ()Z
+	public final fun getEncoderAppPath ()Ljava/lang/String;
+	public final fun getEncoderAppPathDisplay ()Ljava/lang/String;
+	public final fun getEncoderPreset ()Ljava/lang/String;
+	public final fun getEncodingThreadCount ()I
+	public final fun getFallbackFontPath ()Ljava/lang/String;
+	public final fun getH264Crf ()I
+	public final fun getH265Crf ()I
+	public final fun getHardwareAccelerationType ()Ljava/lang/String;
+	public final fun getHardwareDecodingCodecs ()Ljava/util/List;
+	public final fun getMaxMuxingQueueSize ()I
+	public final fun getPreferSystemNativeHwDecoder ()Z
+	public final fun getThrottleDelaySeconds ()I
+	public final fun getTonemappingAlgorithm ()Ljava/lang/String;
+	public final fun getTonemappingDesat ()D
+	public final fun getTonemappingParam ()D
+	public final fun getTonemappingPeak ()D
+	public final fun getTonemappingRange ()Ljava/lang/String;
+	public final fun getTonemappingThreshold ()D
+	public final fun getTranscodingTempPath ()Ljava/lang/String;
+	public final fun getVaapiDevice ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/EncodingOptions;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class org/jellyfin/sdk/model/api/EncodingOptions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/EncodingOptions$$serializer;
+	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/EncodingOptions;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/EncodingOptions;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/EncodingOptions$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3690,6 +3842,29 @@ public final class org/jellyfin/sdk/model/api/GroupUpdateType$$serializer : kotl
 }
 
 public final class org/jellyfin/sdk/model/api/GroupUpdateType$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/GuidStringValueTuple {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/GuidStringValueTuple$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/GuidStringValueTuple;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class org/jellyfin/sdk/model/api/GuidStringValueTuple$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/GuidStringValueTuple$$serializer;
+	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/GuidStringValueTuple;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GuidStringValueTuple;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/GuidStringValueTuple$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -4823,6 +4998,61 @@ public final class org/jellyfin/sdk/model/api/LiveTvInfo$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class org/jellyfin/sdk/model/api/LiveTvOptions {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/LiveTvOptions$Companion;
+	public synthetic fun <init> (ILjava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/util/List;Ljava/util/List;IILjava/util/List;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/util/List;Ljava/util/List;IILjava/util/List;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/util/List;Ljava/util/List;IILjava/util/List;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Integer;
+	public final fun component10 ()I
+	public final fun component11 ()Ljava/util/List;
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Z
+	public final fun component6 ()Z
+	public final fun component7 ()Ljava/util/List;
+	public final fun component8 ()Ljava/util/List;
+	public final fun component9 ()I
+	public final fun copy (Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/util/List;Ljava/util/List;IILjava/util/List;Ljava/lang/String;Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/LiveTvOptions;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/LiveTvOptions;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/util/List;Ljava/util/List;IILjava/util/List;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/LiveTvOptions;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEnableOriginalAudioWithEncodedRecordings ()Z
+	public final fun getEnableRecordingSubfolders ()Z
+	public final fun getGuideDays ()Ljava/lang/Integer;
+	public final fun getListingProviders ()Ljava/util/List;
+	public final fun getMediaLocationsCreated ()Ljava/util/List;
+	public final fun getMovieRecordingPath ()Ljava/lang/String;
+	public final fun getPostPaddingSeconds ()I
+	public final fun getPrePaddingSeconds ()I
+	public final fun getRecordingPath ()Ljava/lang/String;
+	public final fun getRecordingPostProcessor ()Ljava/lang/String;
+	public final fun getRecordingPostProcessorArguments ()Ljava/lang/String;
+	public final fun getSeriesRecordingPath ()Ljava/lang/String;
+	public final fun getTunerHosts ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/LiveTvOptions;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class org/jellyfin/sdk/model/api/LiveTvOptions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/LiveTvOptions$$serializer;
+	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/LiveTvOptions;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LiveTvOptions;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/LiveTvOptions$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class org/jellyfin/sdk/model/api/LiveTvServiceInfo {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/LiveTvServiceInfo$Companion;
 	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/LiveTvServiceStatus;Ljava/lang/String;Ljava/lang/String;ZZLjava/util/List;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
@@ -5624,6 +5854,36 @@ public final class org/jellyfin/sdk/model/api/MessageCommand$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class org/jellyfin/sdk/model/api/MetadataConfiguration {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/MetadataConfiguration$Companion;
+	public synthetic fun <init> (IZLkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Z)V
+	public final fun component1 ()Z
+	public final fun copy (Z)Lorg/jellyfin/sdk/model/api/MetadataConfiguration;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/MetadataConfiguration;ZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/MetadataConfiguration;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getUseFileCreationTimeForDateAdded ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MetadataConfiguration;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class org/jellyfin/sdk/model/api/MetadataConfiguration$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/MetadataConfiguration$$serializer;
+	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/MetadataConfiguration;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MetadataConfiguration;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/MetadataConfiguration$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class org/jellyfin/sdk/model/api/MetadataEditorInfo {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/MetadataEditorInfo$Companion;
 	public synthetic fun <init> (ILjava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Ljava/util/List;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
@@ -5767,6 +6027,36 @@ public final class org/jellyfin/sdk/model/api/MetadataRefreshMode$$serializer : 
 }
 
 public final class org/jellyfin/sdk/model/api/MetadataRefreshMode$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/MigrationOptions {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/MigrationOptions$Companion;
+	public synthetic fun <init> (ILjava/util/List;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lorg/jellyfin/sdk/model/api/MigrationOptions;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/MigrationOptions;Ljava/util/List;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/MigrationOptions;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApplied ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/MigrationOptions;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class org/jellyfin/sdk/model/api/MigrationOptions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/MigrationOptions$$serializer;
+	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/MigrationOptions;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MigrationOptions;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/MigrationOptions$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -6081,6 +6371,102 @@ public final class org/jellyfin/sdk/model/api/NameValuePair$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class org/jellyfin/sdk/model/api/NetworkConfiguration {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/NetworkConfiguration$Companion;
+	public synthetic fun <init> (IIZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IIIZIZLjava/lang/String;ZZZLjava/lang/String;IIZLjava/lang/String;IZZLjava/lang/String;Ljava/util/List;ZZLjava/util/List;ZZZLjava/util/List;Ljava/util/List;Ljava/util/List;ZLkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IIIZIZLjava/lang/String;ZZZLjava/lang/String;IIZLjava/lang/String;IZZLjava/lang/String;Ljava/util/List;ZZLjava/util/List;ZZZLjava/util/List;Ljava/util/List;Ljava/util/List;Z)V
+	public final fun component1 ()Z
+	public final fun component10 ()Z
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Z
+	public final fun component13 ()Z
+	public final fun component14 ()Z
+	public final fun component15 ()Ljava/lang/String;
+	public final fun component16 ()I
+	public final fun component17 ()I
+	public final fun component18 ()Z
+	public final fun component19 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component20 ()I
+	public final fun component21 ()Z
+	public final fun component22 ()Z
+	public final fun component23 ()Ljava/lang/String;
+	public final fun component24 ()Ljava/util/List;
+	public final fun component25 ()Z
+	public final fun component26 ()Z
+	public final fun component27 ()Ljava/util/List;
+	public final fun component28 ()Z
+	public final fun component29 ()Z
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component30 ()Z
+	public final fun component31 ()Ljava/util/List;
+	public final fun component32 ()Ljava/util/List;
+	public final fun component33 ()Ljava/util/List;
+	public final fun component34 ()Z
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()I
+	public final fun component6 ()I
+	public final fun component7 ()I
+	public final fun component8 ()Z
+	public final fun component9 ()I
+	public final fun copy (ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IIIZIZLjava/lang/String;ZZZLjava/lang/String;IIZLjava/lang/String;IZZLjava/lang/String;Ljava/util/List;ZZLjava/util/List;ZZZLjava/util/List;Ljava/util/List;Ljava/util/List;Z)Lorg/jellyfin/sdk/model/api/NetworkConfiguration;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/NetworkConfiguration;ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IIIZIZLjava/lang/String;ZZZLjava/lang/String;IIZLjava/lang/String;IZZLjava/lang/String;Ljava/util/List;ZZLjava/util/List;ZZZLjava/util/List;Ljava/util/List;Ljava/util/List;ZIILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/NetworkConfiguration;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAutoDiscovery ()Z
+	public final fun getAutoDiscoveryTracing ()Z
+	public final fun getBaseUrl ()Ljava/lang/String;
+	public final fun getCertificatePassword ()Ljava/lang/String;
+	public final fun getCertificatePath ()Ljava/lang/String;
+	public final fun getEnableHttps ()Z
+	public final fun getEnableIpv4 ()Z
+	public final fun getEnableIpv6 ()Z
+	public final fun getEnableMultiSocketBinding ()Z
+	public final fun getEnablePublishedServerUriByRequest ()Z
+	public final fun getEnableRemoteAccess ()Z
+	public final fun getEnableSsdpTracing ()Z
+	public final fun getEnableUPnP ()Z
+	public final fun getGatewayMonitorPeriod ()I
+	public final fun getHdHomerunPortRange ()Ljava/lang/String;
+	public final fun getHttpServerPortNumber ()I
+	public final fun getHttpsPortNumber ()I
+	public final fun getIgnoreVirtualInterfaces ()Z
+	public final fun getKnownProxies ()Ljava/util/List;
+	public final fun getLocalNetworkAddresses ()Ljava/util/List;
+	public final fun getLocalNetworkSubnets ()Ljava/util/List;
+	public final fun getPublicHttpsPort ()I
+	public final fun getPublicPort ()I
+	public final fun getPublishedServerUriBySubnet ()Ljava/util/List;
+	public final fun getRemoteIpFilter ()Ljava/util/List;
+	public final fun getRequireHttps ()Z
+	public final fun getSsdpTracingFilter ()Ljava/lang/String;
+	public final fun getTrustAllIp6Interfaces ()Z
+	public final fun getUPnPCreateHttpPortMap ()Z
+	public final fun getUdpPortRange ()Ljava/lang/String;
+	public final fun getUdpSendCount ()I
+	public final fun getUdpSendDelay ()I
+	public final fun getVirtualInterfaceNames ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isRemoteIpFilterBlacklist ()Z
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/NetworkConfiguration;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class org/jellyfin/sdk/model/api/NetworkConfiguration$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/NetworkConfiguration$$serializer;
+	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/NetworkConfiguration;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/NetworkConfiguration;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/NetworkConfiguration$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class org/jellyfin/sdk/model/api/NewGroupRequestDto {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/NewGroupRequestDto$Companion;
 	public synthetic fun <init> (ILjava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
@@ -6209,6 +6595,79 @@ public final class org/jellyfin/sdk/model/api/NotificationLevel$$serializer : ko
 }
 
 public final class org/jellyfin/sdk/model/api/NotificationLevel$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/NotificationOption {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/NotificationOption$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/util/List;Ljava/util/List;ZLjava/util/List;Lorg/jellyfin/sdk/model/api/SendToUserType;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/util/List;ZLjava/util/List;Lorg/jellyfin/sdk/model/api/SendToUserType;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;Ljava/util/List;ZLjava/util/List;Lorg/jellyfin/sdk/model/api/SendToUserType;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Z
+	public final fun component5 ()Ljava/util/List;
+	public final fun component6 ()Lorg/jellyfin/sdk/model/api/SendToUserType;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;Ljava/util/List;ZLjava/util/List;Lorg/jellyfin/sdk/model/api/SendToUserType;)Lorg/jellyfin/sdk/model/api/NotificationOption;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/NotificationOption;Ljava/lang/String;Ljava/util/List;Ljava/util/List;ZLjava/util/List;Lorg/jellyfin/sdk/model/api/SendToUserType;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/NotificationOption;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDisabledMonitorUsers ()Ljava/util/List;
+	public final fun getDisabledServices ()Ljava/util/List;
+	public final fun getEnabled ()Z
+	public final fun getSendToUserMode ()Lorg/jellyfin/sdk/model/api/SendToUserType;
+	public final fun getSendToUsers ()Ljava/util/List;
+	public final fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/NotificationOption;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class org/jellyfin/sdk/model/api/NotificationOption$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/NotificationOption$$serializer;
+	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/NotificationOption;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/NotificationOption;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/NotificationOption$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/NotificationOptions {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/NotificationOptions$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (ILjava/util/List;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lorg/jellyfin/sdk/model/api/NotificationOptions;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/NotificationOptions;Ljava/util/List;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/NotificationOptions;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getOptions ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/NotificationOptions;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class org/jellyfin/sdk/model/api/NotificationOptions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/NotificationOptions$$serializer;
+	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/NotificationOptions;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/NotificationOptions;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/NotificationOptions$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -8561,6 +9020,33 @@ public final class org/jellyfin/sdk/model/api/SendCommandType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class org/jellyfin/sdk/model/api/SendToUserType : java/lang/Enum {
+	public static final field ADMINS Lorg/jellyfin/sdk/model/api/SendToUserType;
+	public static final field ALL Lorg/jellyfin/sdk/model/api/SendToUserType;
+	public static final field CUSTOM Lorg/jellyfin/sdk/model/api/SendToUserType;
+	public static final field Companion Lorg/jellyfin/sdk/model/api/SendToUserType$Companion;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SendToUserType;
+	public static fun values ()[Lorg/jellyfin/sdk/model/api/SendToUserType;
+}
+
+public final class org/jellyfin/sdk/model/api/SendToUserType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/SendToUserType$$serializer;
+	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/SendToUserType;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SendToUserType;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/SendToUserType$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class org/jellyfin/sdk/model/api/SeriesInfo {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/SeriesInfo$Companion;
 	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/time/LocalDateTime;ZLkotlinx/serialization/internal/SerializationConstructorMarker;)V
@@ -9518,6 +10004,53 @@ public final class org/jellyfin/sdk/model/api/SubtitleDeliveryMethod$$serializer
 }
 
 public final class org/jellyfin/sdk/model/api/SubtitleDeliveryMethod$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/SubtitleOptions {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/SubtitleOptions$Companion;
+	public synthetic fun <init> (IZZLjava/util/List;ZZLjava/lang/String;Ljava/lang/String;ZZLkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (ZZLjava/util/List;ZZLjava/lang/String;Ljava/lang/String;ZZ)V
+	public synthetic fun <init> (ZZLjava/util/List;ZZLjava/lang/String;Ljava/lang/String;ZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Z
+	public final fun component2 ()Z
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Z
+	public final fun component5 ()Z
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Z
+	public final fun component9 ()Z
+	public final fun copy (ZZLjava/util/List;ZZLjava/lang/String;Ljava/lang/String;ZZ)Lorg/jellyfin/sdk/model/api/SubtitleOptions;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/SubtitleOptions;ZZLjava/util/List;ZZLjava/lang/String;Ljava/lang/String;ZZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/SubtitleOptions;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDownloadEpisodeSubtitles ()Z
+	public final fun getDownloadLanguages ()Ljava/util/List;
+	public final fun getDownloadMovieSubtitles ()Z
+	public final fun getOpenSubtitlesPasswordHash ()Ljava/lang/String;
+	public final fun getOpenSubtitlesUsername ()Ljava/lang/String;
+	public final fun getRequirePerfectMatch ()Z
+	public final fun getSkipIfAudioTrackMatches ()Z
+	public final fun getSkipIfEmbeddedSubtitlesPresent ()Z
+	public fun hashCode ()I
+	public final fun isOpenSubtitleVipAccount ()Z
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/SubtitleOptions;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class org/jellyfin/sdk/model/api/SubtitleOptions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/SubtitleOptions$$serializer;
+	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/SubtitleOptions;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SubtitleOptions;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/SubtitleOptions$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -11231,6 +11764,45 @@ public final class org/jellyfin/sdk/model/api/WakeOnLanInfo$$serializer : kotlin
 }
 
 public final class org/jellyfin/sdk/model/api/WakeOnLanInfo$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/XbmcMetadataOptions {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/XbmcMetadataOptions$Companion;
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;ZZZLkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;ZZZ)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;ZZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Z
+	public final fun component4 ()Z
+	public final fun component5 ()Z
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;ZZZ)Lorg/jellyfin/sdk/model/api/XbmcMetadataOptions;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/XbmcMetadataOptions;Ljava/lang/String;Ljava/lang/String;ZZZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/XbmcMetadataOptions;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEnableExtraThumbsDuplication ()Z
+	public final fun getEnablePathSubstitution ()Z
+	public final fun getReleaseDateFormat ()Ljava/lang/String;
+	public final fun getSaveImagePathsInNfo ()Z
+	public final fun getUserId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final fun write$Self (Lorg/jellyfin/sdk/model/api/XbmcMetadataOptions;Lkotlinx/serialization/encoding/CompositeEncoder;Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+}
+
+public final class org/jellyfin/sdk/model/api/XbmcMetadataOptions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/XbmcMetadataOptions$$serializer;
+	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/XbmcMetadataOptions;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/XbmcMetadataOptions;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/XbmcMetadataOptions$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 

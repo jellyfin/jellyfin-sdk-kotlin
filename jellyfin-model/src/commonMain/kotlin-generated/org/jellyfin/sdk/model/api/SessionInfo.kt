@@ -83,8 +83,7 @@ public data class SessionInfo(
 	@SerialName("DeviceType")
 	public val deviceType: String? = null,
 	/**
-	 * This is strictly used as a data transfer object from the api layer.
-	 * This holds information about a BaseItem in a format that is convenient for the client.
+	 * Gets or sets the now playing item.
 	 */
 	@SerialName("NowPlayingItem")
 	public val nowPlayingItem: BaseItemDto? = null,
