@@ -3,6 +3,7 @@ package org.jellyfin.sdk.model.discovery
 import org.jellyfin.sdk.model.ServerVersion
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
@@ -39,5 +40,8 @@ class ServerVersionTests {
 		assertTrue { ServerVersion(1, 2, 3) > ServerVersion(0, 0, 0) }
 
 		assertTrue { ServerVersion(1, 7, 0, 1) > ServerVersion(1, 7, 0) }
+
+		assertFalse { ServerVersion.fromString("10.8.0")!! < ServerVersion(10, 8, 0, 0) }
+		assertFalse { ServerVersion.fromString("10.8.0")!! < ServerVersion.fromString("10.8.0")!! }
 	}
 }
