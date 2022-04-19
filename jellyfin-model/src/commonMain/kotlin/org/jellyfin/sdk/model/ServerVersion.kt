@@ -34,7 +34,7 @@ public data class ServerVersion(
 			{ it.major },
 			{ it.minor },
 			{ it.patch },
-			{ it.build ?: -1 }
+			{ it.build ?: 0 }
 		)
 
 		/**
