@@ -325,7 +325,7 @@ public final class org/jellyfin/sdk/api/operations/ConfigurationApi : org/jellyf
 	public static synthetic fun getNamedConfigurationUrl$default (Lorg/jellyfin/sdk/api/operations/ConfigurationApi;Ljava/lang/String;ZILjava/lang/Object;)Ljava/lang/String;
 	public final fun updateConfiguration (Lorg/jellyfin/sdk/model/api/ServerConfiguration;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun updateMediaEncoderPath (Lorg/jellyfin/sdk/model/api/MediaEncoderPathDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public final fun updateNamedConfiguration (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateNamedConfiguration (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class org/jellyfin/sdk/api/operations/DashboardApi : org/jellyfin/sdk/api/operations/Api {
