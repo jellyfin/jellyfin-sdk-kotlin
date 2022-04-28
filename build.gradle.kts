@@ -10,12 +10,17 @@ allprojects {
 	group = "org.jellyfin.sdk"
 	version = createVersion()
 
-	// Add default dependency repositories
-	repositories.defaultRepositories()
+	repositories {
+		mavenCentral()
+		google()
+	}
 }
 
 buildscript {
-	repositories.defaultRepositories()
+	repositories {
+		mavenCentral()
+		google()
+	}
 
 	dependencies {
 		classpath(libs.android.gradle)
