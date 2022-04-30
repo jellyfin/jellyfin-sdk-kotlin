@@ -1,41 +1,38 @@
 package org.jellyfin.sdk.api.client.util
 
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.booleans.shouldBeTrue
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeTypeOf
 import io.ktor.utils.io.ByteReadChannel
 import io.ktor.utils.io.charsets.Charsets
 import kotlinx.coroutines.test.runTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertIs
 
-class ApiSerializerTests {
-	@Test
-	fun `ApiSerializer can decode Unit`() = runTest {
+class ApiSerializerTests : FunSpec({
+	test("ApiSerializer can decode Unit") {
 		val result = ApiSerializer.decodeResponseBody<Unit>(ByteReadChannel("", Charsets.UTF_8))
 
-		assertIs<Unit>(result)
+		result.shouldBeTypeOf<Unit>()
 	}
 
-	@Test
-	fun `ApiSerializer can decode ByteReadChannel`() = runTest {
+	test("ApiSerializer can decode ByteReadChannel") {
 		val channel = ByteReadChannel(byteArrayOf(0x1, 0x0, 0x1))
 		val result = ApiSerializer.decodeResponseBody<ByteReadChannel>(channel)
 
-		assertEquals(channel, result)
+		result shouldBe channel
 	}
 
-	@Test
-	fun `ApiSerializer can decode JSON`() = runTest {
+	test("ApiSerializer can decode JSON") {
 		val channel = ByteReadChannel("""{"test": true}""")
 		val result = ApiSerializer.decodeResponseBody<Map<String, Boolean>>(channel)
 
-		assertEquals(true, result["test"])
+		result["test"] shouldBe true
 	}
 
-	@Test
-	fun `ApiSerializer can decode primitive`() = runTest {
+	test("ApiSerializer can decode primitive") {
 		val channel = ByteReadChannel("""42""")
 		val result = ApiSerializer.decodeResponseBody<Int>(channel)
 
-		assertEquals(42, result)
+		result shouldBe 42
 	}
-}
+})

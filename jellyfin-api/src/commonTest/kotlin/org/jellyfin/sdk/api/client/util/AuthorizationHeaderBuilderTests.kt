@@ -1,36 +1,31 @@
 package org.jellyfin.sdk.api.client.util
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 
-class AuthorizationHeaderBuilderTests {
-	@Test
-	fun `encodeParameter removes special characters`() {
-		assertEquals("test", AuthorizationHeaderBuilder.encodeParameterValue("""test"""))
-		assertEquals("test+", AuthorizationHeaderBuilder.encodeParameterValue("""test+"""))
-		assertEquals("'test'", AuthorizationHeaderBuilder.encodeParameterValue("""'test'"""))
-		assertEquals("???", AuthorizationHeaderBuilder.encodeParameterValue("""今日は"""))
-		assertEquals("??", AuthorizationHeaderBuilder.encodeParameterValue("""水母"""))
-		assertEquals("??????", AuthorizationHeaderBuilder.encodeParameterValue("""ἈᾼᾺΆᾍᾋ"""))
+class AuthorizationHeaderBuilderTests : FunSpec({
+	test("encodeParameter removes special characters") {
+		AuthorizationHeaderBuilder.encodeParameterValue("""test""") shouldBe "test"
+		AuthorizationHeaderBuilder.encodeParameterValue("""test+""") shouldBe "test+"
+		AuthorizationHeaderBuilder.encodeParameterValue("""'test'""") shouldBe "'test'"
+		AuthorizationHeaderBuilder.encodeParameterValue("""今日は""") shouldBe "???"
+		AuthorizationHeaderBuilder.encodeParameterValue("""水母""") shouldBe "??"
+		AuthorizationHeaderBuilder.encodeParameterValue("""ἈᾼᾺΆᾍᾋ""") shouldBe "??????"
 	}
 
-	@Test
-	fun `buildParameter creates a valid header with access token`() {
-		assertEquals("""key="val"""", AuthorizationHeaderBuilder.buildParameter("key", "val"))
-		assertEquals("""one="two"""", AuthorizationHeaderBuilder.buildParameter("one", "two"))
-		assertEquals("""1="2"""", AuthorizationHeaderBuilder.buildParameter("1", "2"))
+	test("buildParameter creates a valid header with access token") {
+		AuthorizationHeaderBuilder.buildParameter("key", "val") shouldBe """key="val""""
+		AuthorizationHeaderBuilder.buildParameter("one", "two") shouldBe """one="two""""
+		AuthorizationHeaderBuilder.buildParameter("1", "2") shouldBe """1="2""""
 	}
 
-	@Test
-	fun `buildAuthorizationHeader creates a valid header with access token`() {
+	test("buildAuthorizationHeader creates a valid header with access token") {
 		val value = AuthorizationHeaderBuilder.buildHeader("a", "b", "c", "d", "e")
-		assertEquals("""MediaBrowser Client="a", Version="b", DeviceId="c", Device="d", Token="e"""",
-			value)
+		value shouldBe """MediaBrowser Client="a", Version="b", DeviceId="c", Device="d", Token="e""""
 	}
 
-	@Test
-	fun `buildAuthorizationHeader creates a valid header without access token`() {
+	test("buildAuthorizationHeader creates a valid header without access token") {
 		val value = AuthorizationHeaderBuilder.buildHeader("a", "b", "c", "d")
-		assertEquals("""MediaBrowser Client="a", Version="b", DeviceId="c", Device="d"""", value)
+		value shouldBe """MediaBrowser Client="a", Version="b", DeviceId="c", Device="d""""
 	}
-}
+})
