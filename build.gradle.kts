@@ -3,6 +3,7 @@ plugins {
 	alias(libs.plugins.detekt)
 	alias(libs.plugins.dokka)
 	alias(libs.plugins.binarycompatibilityvalidator)
+	alias(libs.plugins.kotest)
 }
 
 // Versioning
@@ -46,6 +47,7 @@ subprojects {
 	// Enable required plugins
 	apply<io.gitlab.arturbosch.detekt.DetektPlugin>()
 	apply<org.jetbrains.dokka.gradle.DokkaPlugin>()
+	apply<io.kotest.framework.multiplatform.gradle.KotestMultiplatformCompilerGradlePlugin>()
 
 	// Detekt linting
 	detekt {
@@ -57,5 +59,9 @@ subprojects {
 		reports {
 			sarif.enabled = true
 		}
+	}
+
+	tasks.withType<Test> {
+		useJUnitPlatform()
 	}
 }

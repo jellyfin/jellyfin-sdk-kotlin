@@ -3,6 +3,7 @@ package org.jellyfin.sdk.api.client.util
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
+import org.jellyfin.sdk.api.client.exception.MissingPathVariableException
 import org.jellyfin.sdk.model.api.ItemFields
 
 class UrlBuilderTests : FunSpec({
@@ -41,7 +42,7 @@ class UrlBuilderTests : FunSpec({
 			"three" to "3"
 		)
 
-		shouldThrow<IllegalStateException> { UrlBuilder.buildPath(path, parameters) }
+		shouldThrow<MissingPathVariableException> { UrlBuilder.buildPath(path, parameters) }
 	}
 
 	test("buildPath replaces integers") {

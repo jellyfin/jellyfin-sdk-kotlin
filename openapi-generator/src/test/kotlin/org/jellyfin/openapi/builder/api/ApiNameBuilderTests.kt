@@ -1,37 +1,34 @@
 package org.jellyfin.openapi.builder.api
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertTrue
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldEndWith
 
-class ApiNameBuilderTests {
-	@Test
-	fun `Names end with Api`() {
+class ApiNameBuilderTests : FunSpec({
+	test("Names end with Api") {
 		val instance = ApiNameBuilder()
 
-		assertTrue { instance.build("test").endsWith("Api") }
-		assertTrue { instance.build("api").endsWith("Api") }
-		assertTrue { instance.build("testApi").endsWith("Api") }
-		assertTrue { instance.build("fourSeemsLikeEnoughAsserts").endsWith("Api") }
+		instance.build("test") shouldEndWith "Api"
+		instance.build("api") shouldEndWith "Api"
+		instance.build("testApi") shouldEndWith "Api"
+		instance.build("fourSeemsLikeEnoughAsserts") shouldEndWith "Api"
 	}
 
-	@Test
-	fun `camelCase becomes PascalCase`() {
+	test("camelCase becomes PascalCase") {
 		val instance = ApiNameBuilder()
 
-		assertEquals("MiscApi", instance.build("misc"))
-		assertEquals("LibraryApi", instance.build("library"))
-		assertEquals("MediaInfoApi", instance.build("mediaInfo"))
-		assertEquals("UserApi", instance.build("user"))
+		instance.build("misc") shouldBe "MiscApi"
+		instance.build("library") shouldBe "LibraryApi"
+		instance.build("mediaInfo") shouldBe "MediaInfoApi"
+		instance.build("user") shouldBe "UserApi"
 	}
 
-	@Test
-	fun `PascalCase stays PascalCase`() {
+	test("PascalCase stays PascalCase") {
 		val instance = ApiNameBuilder()
 
-		assertEquals("MiscApi", instance.build("Misc"))
-		assertEquals("LibraryApi", instance.build("Library"))
-		assertEquals("MediaInfoApi", instance.build("MediaInfo"))
-		assertEquals("UserApi", instance.build("User"))
+		instance.build("Misc") shouldBe "MiscApi"
+		instance.build("Library") shouldBe "LibraryApi"
+		instance.build("MediaInfo") shouldBe "MediaInfoApi"
+		instance.build("User") shouldBe "UserApi"
 	}
-}
+})

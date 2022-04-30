@@ -18,15 +18,15 @@ kotlin {
 			dependencies {
 				api(libs.kotlinx.coroutines)
 				api(libs.kotlinx.coroutines.test)
-				api(libs.kotlin.test.common)
-				api(libs.kotlin.test.annotations.common)
+				api(libs.kotest.framework.engine)
+				api(libs.kotest.assertions)
 			}
 		}
 
 		val jvmMain by getting {
 			dependencies {
 				implementation(libs.slf4j.simple)
-				api(libs.kotlin.test.junit)
+				api(libs.kotest.runner.junit5)
 			}
 		}
 	}
