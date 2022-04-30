@@ -7,6 +7,7 @@ import io.ktor.client.features.HttpTimeout
 import io.ktor.client.request.header
 import io.ktor.client.request.request
 import io.ktor.client.statement.HttpResponse
+import io.ktor.content.ByteArrayContent
 import io.ktor.content.TextContent
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
@@ -84,8 +85,15 @@ public actual open class KtorClient actual constructor(
 					)
 				)
 
-				ApiSerializer.encodeRequestBody(requestBody)?.let { encodedRequestBody ->
-					body = TextContent(encodedRequestBody, ContentType.Application.Json)
+				when (requestBody) {
+					// String content
+					is String -> body = TextContent(requestBody, ContentType.Text.Plain)
+					// Binary content
+					is ByteArray -> body = ByteArrayContent(requestBody, ContentType.Application.OctetStream)
+					// Json content
+					else -> ApiSerializer.encodeRequestBody(requestBody)?.let { encodedRequestBody ->
+						body = TextContent(encodedRequestBody, ContentType.Application.Json)
+					}
 				}
 			}
 
