@@ -13,8 +13,8 @@ public data class ServerVersion(
 	val minor: Int,
 	val patch: Int,
 	val build: Int? = null
-) {
-	public operator fun compareTo(other: ServerVersion): Int = comparator.compare(this, other)
+) : Comparable<ServerVersion> {
+	public override operator fun compareTo(other: ServerVersion): Int = comparator.compare(this, other)
 
 	/**
 	 * Convert version to string. Format is "[major].[minor].[patch].[build]".
