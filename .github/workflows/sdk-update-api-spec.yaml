@@ -11,9 +11,9 @@ jobs:
     if: ${{ github.repository == 'jellyfin/jellyfin-sdk-kotlin' }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
       - name: Setup Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@860f60056505705214d223b91ed7a30f173f6142 # tag=v3
         with:
           distribution: temurin
           java-version: 17
@@ -23,7 +23,7 @@ jobs:
           VERSION=$(curl -sL https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-stable.json | jq -r .info.version)
           echo "STABLE_API_VERSION=${VERSION}" >> $GITHUB_ENV
       - name: Update generated sources and create pull request
-        uses: technote-space/create-pr-action@v2
+        uses: technote-space/create-pr-action@7da7ae9ed86b38dcf6bef74c2a879a900c1fe654 # tag=v2
         with:
           EXECUTE_COMMANDS: ./gradlew --build-cache --no-daemon --info updateApiSpecStable apiDump
           COMMIT_MESSAGE: 'Update generated sources to ${{ env.STABLE_API_VERSION }}'
