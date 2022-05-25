@@ -25,7 +25,7 @@ jobs:
       - name: Update generated sources and create pull request
         uses: technote-space/create-pr-action@7da7ae9ed86b38dcf6bef74c2a879a900c1fe654 # tag=v2
         with:
-          EXECUTE_COMMANDS: ./gradlew --build-cache --no-daemon --info updateApiSpecStable apiDump
+          EXECUTE_COMMANDS: ./gradlew --build-cache --no-daemon --info :openapi-generator:updateApiSpecStable apiDump
           COMMIT_MESSAGE: 'Update generated sources to ${{ env.STABLE_API_VERSION }}'
           COMMIT_NAME: 'jellyfin-bot'
           COMMIT_EMAIL: 'team@jellyfin.org'

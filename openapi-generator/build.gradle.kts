@@ -46,6 +46,9 @@ tasks.register("generateSources", JavaExec::class) {
 	mainClass.set(application.mainClass)
 	classpath = sourceSets.main.get().runtimeClasspath
 
+	inputs.file(defaultConfig["openApiFile"])
+	outputs.dirs(defaultConfig["apiOutputDir"], defaultConfig["modelsOutputDir"])
+
 	args = defaultConfig
 		.map { listOf("--${it.key}", it.value.toString()) }
 		.flatten()
@@ -69,6 +72,7 @@ arrayOf(
 	tasks.register("downloadApiSpec${flavorPascalCase}", Download::class) {
 		src("https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-${flavor}.json")
 		dest(defaultConfig["openApiFile"])
+		outputs.file(defaultConfig["openApiFile"])
 	}
 
 	tasks.register("updateApiSpec${flavorPascalCase}") {
