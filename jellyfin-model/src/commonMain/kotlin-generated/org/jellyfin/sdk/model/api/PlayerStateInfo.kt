@@ -64,4 +64,9 @@ public data class PlayerStateInfo(
 	 */
 	@SerialName("RepeatMode")
 	public val repeatMode: RepeatMode,
+	/**
+	 * Gets or sets the now playing live stream identifier.
+	 */
+	@SerialName("LiveStreamId")
+	public val liveStreamId: String? = null,
 )

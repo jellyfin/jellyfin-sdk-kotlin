@@ -37,7 +37,7 @@ public data class ServerConfiguration(
 	 * Gets or sets the last known version that was ran using the configuration.
 	 */
 	@SerialName("PreviousVersion")
-	public val previousVersion: Version? = null,
+	public val previousVersion: String? = null,
 	/**
 	 * Gets or sets the stringified PreviousVersion to be stored/loaded,
 	 * because System.Version itself isn't xml-serializable.

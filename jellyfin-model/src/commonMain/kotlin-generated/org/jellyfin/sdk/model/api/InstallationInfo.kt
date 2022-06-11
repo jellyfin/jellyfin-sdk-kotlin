@@ -33,7 +33,7 @@ public data class InstallationInfo(
 	 * Gets or sets the version.
 	 */
 	@SerialName("Version")
-	public val version: Version? = null,
+	public val version: String? = null,
 	/**
 	 * Gets or sets the changelog for this version.
 	 */

@@ -23,7 +23,7 @@ public data class VersionInfo(
 	 * Gets the version as a System.Version.
 	 */
 	@SerialName("VersionNumber")
-	public val versionNumber: Version,
+	public val versionNumber: String,
 	/**
 	 * Gets or sets the changelog for this version.
 	 */
