@@ -30,7 +30,7 @@ public data class PluginInfo(
 	 * Gets or sets the version.
 	 */
 	@SerialName("Version")
-	public val version: Version,
+	public val version: String,
 	/**
 	 * Gets or sets the name of the configuration file.
 	 */

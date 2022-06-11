@@ -22,7 +22,6 @@ import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BasePluginConfiguration
 import org.jellyfin.sdk.model.api.PluginInfo
-import org.jellyfin.sdk.model.api.Version
 
 public class PluginsApi(
 	private val api: ApiClient,
@@ -33,7 +32,7 @@ public class PluginsApi(
 	 * @param pluginId Plugin id.
 	 * @param version Plugin version.
 	 */
-	public suspend fun disablePlugin(pluginId: UUID, version: Version): Response<Unit> {
+	public suspend fun disablePlugin(pluginId: UUID, version: String): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["pluginId"] = pluginId
 		pathParameters["version"] = version
@@ -50,7 +49,7 @@ public class PluginsApi(
 	 * @param pluginId Plugin id.
 	 * @param version Plugin version.
 	 */
-	public suspend fun enablePlugin(pluginId: UUID, version: Version): Response<Unit> {
+	public suspend fun enablePlugin(pluginId: UUID, version: String): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["pluginId"] = pluginId
 		pathParameters["version"] = version
@@ -82,7 +81,7 @@ public class PluginsApi(
 	 * @param pluginId Plugin id.
 	 * @param version Plugin version.
 	 */
-	public suspend fun getPluginImage(pluginId: UUID, version: Version): Response<ByteReadChannel> {
+	public suspend fun getPluginImage(pluginId: UUID, version: String): Response<ByteReadChannel> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["pluginId"] = pluginId
 		pathParameters["version"] = version
@@ -102,7 +101,7 @@ public class PluginsApi(
 	 */
 	public fun getPluginImageUrl(
 		pluginId: UUID,
-		version: Version,
+		version: String,
 		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = mutableMapOf<String, Any?>()
@@ -160,7 +159,7 @@ public class PluginsApi(
 	 * @param pluginId Plugin id.
 	 * @param version Plugin version.
 	 */
-	public suspend fun uninstallPluginByVersion(pluginId: UUID, version: Version): Response<Unit> {
+	public suspend fun uninstallPluginByVersion(pluginId: UUID, version: String): Response<Unit> {
 		val pathParameters = mutableMapOf<String, Any?>()
 		pathParameters["pluginId"] = pluginId
 		pathParameters["version"] = version

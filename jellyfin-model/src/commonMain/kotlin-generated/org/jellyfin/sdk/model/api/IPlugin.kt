@@ -39,7 +39,7 @@ public data class IPlugin(
 	 * Gets the plugin version.
 	 */
 	@SerialName("Version")
-	public val version: Version? = null,
+	public val version: String? = null,
 	/**
 	 * Gets the path to the assembly file.
 	 */

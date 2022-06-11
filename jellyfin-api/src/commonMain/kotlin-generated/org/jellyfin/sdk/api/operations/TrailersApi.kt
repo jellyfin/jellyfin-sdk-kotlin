@@ -64,6 +64,11 @@ public class TrailersApi(
 	 * @param hasImdbId Optional filter by items that have an imdb id or not.
 	 * @param hasTmdbId Optional filter by items that have a tmdb id or not.
 	 * @param hasTvdbId Optional filter by items that have a tvdb id or not.
+	 * @param isMovie Optional filter for live tv movies.
+	 * @param isSeries Optional filter for live tv series.
+	 * @param isNews Optional filter for live tv news.
+	 * @param isKids Optional filter for live tv kids.
+	 * @param isSports Optional filter for live tv sports.
 	 * @param excludeItemIds Optional. If specified, results will be filtered by excluding item ids.
 	 * This allows multiple, comma delimited.
 	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
@@ -181,6 +186,11 @@ public class TrailersApi(
 		hasImdbId: Boolean? = null,
 		hasTmdbId: Boolean? = null,
 		hasTvdbId: Boolean? = null,
+		isMovie: Boolean? = null,
+		isSeries: Boolean? = null,
+		isNews: Boolean? = null,
+		isKids: Boolean? = null,
+		isSports: Boolean? = null,
 		excludeItemIds: Collection<UUID>? = emptyList(),
 		startIndex: Int? = null,
 		limit: Int? = null,
@@ -263,6 +273,11 @@ public class TrailersApi(
 		queryParameters["hasImdbId"] = hasImdbId
 		queryParameters["hasTmdbId"] = hasTmdbId
 		queryParameters["hasTvdbId"] = hasTvdbId
+		queryParameters["isMovie"] = isMovie
+		queryParameters["isSeries"] = isSeries
+		queryParameters["isNews"] = isNews
+		queryParameters["isKids"] = isKids
+		queryParameters["isSports"] = isSports
 		queryParameters["excludeItemIds"] = excludeItemIds
 		queryParameters["startIndex"] = startIndex
 		queryParameters["limit"] = limit
