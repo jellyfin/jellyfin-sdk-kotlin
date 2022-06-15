@@ -13,7 +13,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class MessageCommand(
 	@SerialName("Header")
-	public val header: String? = null,
+	public val `header`: String? = null,
 	@SerialName("Text")
 	public val text: String,
 	@SerialName("TimeoutMs")
