@@ -101,6 +101,7 @@ public actual class LocalServerDiscovery actual constructor(jellyfinOptions: Jel
 		// Send
 		@Suppress("MissingPermission")
 		val addresses = discoveryBroadcastAddressesProvider.getBroadcastAddresses()
+		@Suppress("NewApi") // False positive (we use the Kotlin .forEach extension function)
 		addresses.forEach { address ->
 			discoverAddress(socket, address)
 		}
