@@ -469,6 +469,7 @@ public final class org/jellyfin/sdk/api/operations/HlsSegmentApi : org/jellyfin/
 
 public final class org/jellyfin/sdk/api/operations/ImageApi : org/jellyfin/sdk/api/operations/Api {
 	public fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;)V
+	public final fun deleteCustomSplashscreen (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun deleteItemImage (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun deleteItemImage$default (Lorg/jellyfin/sdk/api/operations/ImageApi;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun deleteItemImageByIndex (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;

@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.Boolean
 import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -24,4 +25,9 @@ public data class BrandingOptions(
 	 */
 	@SerialName("CustomCss")
 	public val customCss: String? = null,
+	/**
+	 * Gets or sets a value indicating whether to enable the splashscreen.
+	 */
+	@SerialName("SplashscreenEnabled")
+	public val splashscreenEnabled: Boolean,
 )
