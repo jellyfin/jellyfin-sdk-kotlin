@@ -62,6 +62,10 @@ public data class EncodingOptions(
 	public val tonemappingPeak: Double,
 	@SerialName("TonemappingParam")
 	public val tonemappingParam: Double,
+	@SerialName("VppTonemappingBrightness")
+	public val vppTonemappingBrightness: Double,
+	@SerialName("VppTonemappingContrast")
+	public val vppTonemappingContrast: Double,
 	@SerialName("H264Crf")
 	public val h264Crf: Int,
 	@SerialName("H265Crf")

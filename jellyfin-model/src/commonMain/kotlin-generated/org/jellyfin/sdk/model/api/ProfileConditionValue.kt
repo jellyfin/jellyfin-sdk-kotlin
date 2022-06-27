@@ -59,6 +59,8 @@ public enum class ProfileConditionValue(
 	AUDIO_SAMPLE_RATE("AudioSampleRate"),
 	@SerialName("AudioBitDepth")
 	AUDIO_BIT_DEPTH("AudioBitDepth"),
+	@SerialName("VideoRangeType")
+	VIDEO_RANGE_TYPE("VideoRangeType"),
 	;
 
 	public override fun toString(): String = serialName

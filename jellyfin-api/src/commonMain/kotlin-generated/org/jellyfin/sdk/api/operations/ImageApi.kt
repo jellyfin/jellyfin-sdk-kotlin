@@ -33,6 +33,17 @@ public class ImageApi(
 	private val api: ApiClient,
 ) : Api {
 	/**
+	 * Delete a custom splashscreen.
+	 */
+	public suspend fun deleteCustomSplashscreen(): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.delete<Unit>("/Branding/Splashscreen", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Delete an item's image.
 	 *
 	 * @param itemId Item id.
@@ -4420,6 +4431,7 @@ public class ImageApi(
 
 	/**
 	 * Uploads a custom splashscreen.
+	 * The body is expected to the image contents base64 encoded.
 	 */
 	public suspend fun uploadCustomSplashscreen(`data`: ByteArray): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
