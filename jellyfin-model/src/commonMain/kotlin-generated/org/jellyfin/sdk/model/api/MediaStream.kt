@@ -54,6 +54,46 @@ public data class MediaStream(
 	@SerialName("ColorPrimaries")
 	public val colorPrimaries: String? = null,
 	/**
+	 * Gets or sets the Dolby Vision version major.
+	 */
+	@SerialName("DvVersionMajor")
+	public val dvVersionMajor: Int? = null,
+	/**
+	 * Gets or sets the Dolby Vision version minor.
+	 */
+	@SerialName("DvVersionMinor")
+	public val dvVersionMinor: Int? = null,
+	/**
+	 * Gets or sets the Dolby Vision profile.
+	 */
+	@SerialName("DvProfile")
+	public val dvProfile: Int? = null,
+	/**
+	 * Gets or sets the Dolby Vision level.
+	 */
+	@SerialName("DvLevel")
+	public val dvLevel: Int? = null,
+	/**
+	 * Gets or sets the Dolby Vision rpu present flag.
+	 */
+	@SerialName("RpuPresentFlag")
+	public val rpuPresentFlag: Int? = null,
+	/**
+	 * Gets or sets the Dolby Vision el present flag.
+	 */
+	@SerialName("ElPresentFlag")
+	public val elPresentFlag: Int? = null,
+	/**
+	 * Gets or sets the Dolby Vision bl present flag.
+	 */
+	@SerialName("BlPresentFlag")
+	public val blPresentFlag: Int? = null,
+	/**
+	 * Gets or sets the Dolby Vision bl signal compatibility id.
+	 */
+	@SerialName("DvBlSignalCompatibilityId")
+	public val dvBlSignalCompatibilityId: Int? = null,
+	/**
 	 * Gets or sets the comment.
 	 */
 	@SerialName("Comment")
@@ -78,6 +118,16 @@ public data class MediaStream(
 	 */
 	@SerialName("VideoRange")
 	public val videoRange: String? = null,
+	/**
+	 * Gets the video range type.
+	 */
+	@SerialName("VideoRangeType")
+	public val videoRangeType: String? = null,
+	/**
+	 * Gets the video dovi title.
+	 */
+	@SerialName("VideoDoViTitle")
+	public val videoDoViTitle: String? = null,
 	@SerialName("LocalizedUndefined")
 	public val localizedUndefined: String? = null,
 	@SerialName("LocalizedDefault")
