@@ -305,6 +305,8 @@ public final class org/jellyfin/sdk/api/operations/ChannelsApi : org/jellyfin/sd
 public final class org/jellyfin/sdk/api/operations/ClientLogApi : org/jellyfin/sdk/api/operations/Api {
 	public fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;)V
 	public final fun logFile (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun logFileUrl (Z)Ljava/lang/String;
+	public static synthetic fun logFileUrl$default (Lorg/jellyfin/sdk/api/operations/ClientLogApi;ZILjava/lang/Object;)Ljava/lang/String;
 }
 
 public final class org/jellyfin/sdk/api/operations/CollectionApi : org/jellyfin/sdk/api/operations/Api {
