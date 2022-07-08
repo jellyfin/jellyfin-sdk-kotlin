@@ -64,10 +64,15 @@ public class RecommendedServerDiscovery constructor(
 				issues.add(RecommendedServerIssue.MissingVersion)
 				scores.add(RecommendedServerInfoScore.BAD)
 			}
-			// Server might be incompatible because it's below the minimum supported server version
-			version < Jellyfin.minimumVersion -> {
+			// Server might be incompatible because it's below the client specified minimum supported server version
+			version < jellyfin.options.minimumServerVersion -> {
 				issues.add(RecommendedServerIssue.UnsupportedServerVersion(version))
 				scores.add(RecommendedServerInfoScore.OK)
+			}
+			// Server might be incompatible because it's below the SDK specified minimum supported server version
+			version < Jellyfin.minimumVersion -> {
+				issues.add(RecommendedServerIssue.OutdatedServerVersion(version))
+				scores.add(RecommendedServerInfoScore.GOOD)
 			}
 			// API might differ slightly but at least above the minimum version
 			version < Jellyfin.apiVersion -> {
