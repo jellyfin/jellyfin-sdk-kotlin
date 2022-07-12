@@ -2,7 +2,7 @@
 android-gradle = "7.0.4"
 androidx-annotation = "1.4.0"
 androidx-core = "1.8.0"
-binarycompatibilityvalidator = "0.10.1"
+binarycompatibilityvalidator = "0.11.0"
 clikt = "3.5.0"
 detekt = "1.20.0"
 dokka = "1.7.0"
