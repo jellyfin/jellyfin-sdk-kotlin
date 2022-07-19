@@ -28,6 +28,7 @@ import org.jellyfin.sdk.api.sockets.SocketInstance
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.UUID
+import java.net.ConnectException
 import java.net.UnknownHostException
 import io.ktor.http.HttpMethod as KtorHttpMethod
 
@@ -113,6 +114,9 @@ public actual open class KtorClient actual constructor(
 		} catch (err: SocketTimeoutException) {
 			logger.debug(err) { "Socket timed out" }
 			throw TimeoutException("Socket timed out", err)
+		} catch (err: ConnectException) {
+			logger.debug(err) { "Connection failed" }
+			throw TimeoutException("Connection failed", err)
 		} catch (err: NoTransformationFoundException) {
 			logger.error(err) { "Requested model does not exist" }
 			throw InvalidContentException("Requested model does not exist", err)
