@@ -117,7 +117,6 @@ public class RecommendedServerDiscovery constructor(
 
 		val responseTimeStart = currentTimeMillis()
 
-		@Suppress("TooGenericExceptionCaught")
 		val info: Result<Response<PublicSystemInfo>> = try {
 			val response = client.systemApi.getPublicSystemInfo()
 			if (response.status == HTTP_OK) Result.success(response)
@@ -130,9 +129,6 @@ public class RecommendedServerDiscovery constructor(
 			Result.failure(err)
 		} catch (err: InvalidContentException) {
 			logger.debug(err) { "Could not parse response from $address" }
-			Result.failure(err)
-		} catch (err: Throwable) {
-			logger.error(err) { "Could not retrieve public system info for $address" }
 			Result.failure(err)
 		}
 		val responseTime = currentTimeMillis() - responseTimeStart
