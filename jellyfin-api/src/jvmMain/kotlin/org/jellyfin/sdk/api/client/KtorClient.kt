@@ -17,7 +17,6 @@ import io.ktor.network.sockets.SocketTimeoutException
 import io.ktor.util.toMap
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
-import org.jellyfin.sdk.api.client.exception.ApiClientException
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
@@ -70,7 +69,6 @@ public actual open class KtorClient actual constructor(
 			"$method $safeUrl"
 		}
 
-		@Suppress("TooGenericExceptionCaught")
 		try {
 			val response = client.request<HttpResponse>(url) {
 				this.method = method.asKtorHttpMethod()
@@ -123,9 +121,6 @@ public actual open class KtorClient actual constructor(
 		} catch (err: SerializationException) {
 			logger.error(err) { "Serialization failed" }
 			throw InvalidContentException("Serialization failed", err)
-		} catch (err: Throwable) {
-			logger.error(err) { "Unknown error occurred!" }
-			throw ApiClientException("Unknown error occurred!", err)
 		}
 	}
 
