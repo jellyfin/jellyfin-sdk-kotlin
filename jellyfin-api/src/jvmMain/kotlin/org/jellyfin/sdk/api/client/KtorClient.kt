@@ -17,8 +17,10 @@ import io.ktor.network.sockets.SocketTimeoutException
 import io.ktor.util.toMap
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
+import org.jellyfin.sdk.api.client.exception.ApiClientException
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
+import org.jellyfin.sdk.api.client.exception.SecureConnectionException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
 import org.jellyfin.sdk.api.client.util.ApiSerializer
 import org.jellyfin.sdk.api.client.util.AuthorizationHeaderBuilder
@@ -27,8 +29,10 @@ import org.jellyfin.sdk.api.sockets.SocketInstance
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.UUID
+import java.io.IOException
 import java.net.ConnectException
 import java.net.UnknownHostException
+import javax.net.ssl.SSLException
 import io.ktor.http.HttpMethod as KtorHttpMethod
 
 @Suppress("LongParameterList")
@@ -121,6 +125,12 @@ public actual open class KtorClient actual constructor(
 		} catch (err: SerializationException) {
 			logger.error(err) { "Serialization failed" }
 			throw InvalidContentException("Serialization failed", err)
+		} catch (err: SSLException) {
+			logger.error(err) { "Unknown SSL error occurred" }
+			throw SecureConnectionException("Unknown SSL error occurred", err)
+		} catch (err: IOException) {
+			logger.error(err) { "Unknown IO error occurred!" }
+			throw ApiClientException("Unknown IO error occurred!", err)
 		}
 	}
 
