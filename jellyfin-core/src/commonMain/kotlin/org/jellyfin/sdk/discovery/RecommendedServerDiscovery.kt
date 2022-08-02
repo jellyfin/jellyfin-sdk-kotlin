@@ -10,6 +10,7 @@ import mu.KotlinLogging
 import org.jellyfin.sdk.Jellyfin
 import org.jellyfin.sdk.api.client.HttpClientOptions
 import org.jellyfin.sdk.api.client.Response
+import org.jellyfin.sdk.api.client.exception.ApiClientException
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
@@ -129,6 +130,9 @@ public class RecommendedServerDiscovery constructor(
 			Result.failure(err)
 		} catch (err: InvalidContentException) {
 			logger.debug(err) { "Could not parse response from $address" }
+			Result.failure(err)
+		} catch (err: ApiClientException) {
+			logger.debug(err) { "Unable to get response from $address" }
 			Result.failure(err)
 		}
 		val responseTime = currentTimeMillis() - responseTimeStart
