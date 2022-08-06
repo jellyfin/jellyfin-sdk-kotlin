@@ -5,6 +5,7 @@ import org.jellyfin.openapi.builder.api.ApiClientExtensionsBuilder
 import org.jellyfin.openapi.builder.api.ApiNameBuilder
 import org.jellyfin.openapi.builder.api.ApisBuilder
 import org.jellyfin.openapi.builder.api.OperationBuilder
+import org.jellyfin.openapi.builder.api.OperationParameterModelBuilder
 import org.jellyfin.openapi.builder.api.OperationUrlBuilder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.DescriptionBuilder
@@ -15,6 +16,7 @@ import org.jellyfin.openapi.builder.model.EnumModelBuilder
 import org.jellyfin.openapi.builder.model.ModelBuilder
 import org.jellyfin.openapi.builder.model.ModelsBuilder
 import org.jellyfin.openapi.builder.model.ObjectModelBuilder
+import org.jellyfin.openapi.builder.model.RequestModelBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiApiServicesBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiConstantsBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiDefaultValueBuilder
@@ -40,8 +42,9 @@ val mainModule = module {
 	single { ApiNameBuilder() }
 	single { OperationBuilder(get(), get()) }
 	single { OperationUrlBuilder(get(), get()) }
-	single { ApiBuilder(get(), get(), getAll()) }
-	single { ApisBuilder(get(), get()) }
+	single { OperationParameterModelBuilder(get(), get()) }
+	single { ApiBuilder(get(), get(), get(), get(), getAll(), getAll(), get()) }
+	single { ApisBuilder(get()) }
 	single { ApiClientExtensionsBuilder(get()) }
 
 	// Models
@@ -50,6 +53,7 @@ val mainModule = module {
 	single { EmptyModelBuilder(get(), get()) }
 	single { EnumModelBuilder(get(), get()) }
 	single { ObjectModelBuilder(get(), get(), get()) }
+	single { RequestModelBuilder(get()) }
 
 	// Files
 	single { FileSpecBuilder() }

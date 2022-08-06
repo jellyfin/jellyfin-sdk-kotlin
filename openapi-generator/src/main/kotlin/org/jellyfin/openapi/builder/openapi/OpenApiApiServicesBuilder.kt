@@ -65,9 +65,21 @@ class OpenApiApiServicesBuilder(
 		path: ApiTypePath,
 		type: TypeName,
 		parameterSpec: Parameter,
-	): DefaultValue? =
-		defaultValueHooks.firstNotNullOfOrNull { hook -> hook.onBuildDefaultValue(path, type, parameterSpec) }
-			?: openApiDefaultValueBuilder.build(context, parameterSpec.schema)
+	): DefaultValue? {
+		val hookDefault = defaultValueHooks.firstNotNullOfOrNull { hook ->
+			hook.onBuildDefaultValue(path, type, parameterSpec)
+		}
+		val generatorDefault = openApiDefaultValueBuilder.build(context, parameterSpec.schema)
+
+		if (hookDefault is DefaultValue.Conditional) {
+			return hookDefault.copy(
+				modelValue = hookDefault.modelValue ?: generatorDefault,
+				parameterValue = hookDefault.parameterValue ?: generatorDefault,
+			)
+		}
+
+		return generatorDefault
+	}
 
 	private fun buildValidation(schema: Schema<*>): ParameterValidation? = when {
 		schema is IntegerSchema && schema.minimum != null && schema.maximum != null -> IntRangeValidation(

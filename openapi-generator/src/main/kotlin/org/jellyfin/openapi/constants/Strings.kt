@@ -51,4 +51,19 @@ object Strings {
 	 * Name of the parameter used to reference the HttpClient instance in generated api classes.
 	 */
 	const val API_CLIENT_PARAMETER_NAME = "api"
+
+	/**
+	 * The suffix added to generated models containing operation parameters.
+	 */
+	const val MODEL_REQUEST_SUFFIX = "Request"
+
+	/**
+	 * Name of the parameter used for the generated request model containing operation parameters.
+	 */
+	const val MODEL_REQUEST_PARAMETER_NAME = "request"
+
+	/**
+	 * Description of the parameter used for the generated request model containing operation parameters.
+	 */
+	const val MODEL_REQUEST_PARAMETER_DESCRIPTION = "The request paramaters"
 }

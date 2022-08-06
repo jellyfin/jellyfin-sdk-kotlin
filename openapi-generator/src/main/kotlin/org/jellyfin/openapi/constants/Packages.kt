@@ -37,6 +37,11 @@ object Packages {
 	const val MODEL = "org.jellyfin.sdk.model.api"
 
 	/**
+	 * Package for the generated request models
+	 */
+	const val MODEL_REQUEST = "org.jellyfin.sdk.model.api.request"
+
+	/**
 	 * Package containing all kotlinx.serialization serializers
 	 */
 	const val MODEL_SERIALIZERS = "org.jellyfin.sdk.model.serializer"

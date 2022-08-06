@@ -29,4 +29,9 @@ sealed interface DefaultValue {
 	interface CodeBlock : DefaultValue {
 		fun build(): com.squareup.kotlinpoet.CodeBlock
 	}
+
+	data class Conditional(
+		val modelValue: DefaultValue? = null,
+		val parameterValue: DefaultValue? = null,
+	) : DefaultValue
 }

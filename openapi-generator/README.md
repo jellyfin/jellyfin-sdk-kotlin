@@ -57,6 +57,10 @@ Hooks are classes that will modify the output of the generator. They should be r
     add a special function called `[operation]Url` (like "GetImageUrl") that will return a string
     containing the request url.
 
+  - **OperationRequestModelHook**  
+    A hook that can request a request model function to be added for an API operation. Compared to the
+    default function it used a data class to contain all parameters.
+
   - **ServiceNameHook**  
     A hook that can modify the name(s) of an operation. It can add, rename and delete the services
     for an operation. When all services are removed the operation will never be generated. Can be
