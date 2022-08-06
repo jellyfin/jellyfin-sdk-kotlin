@@ -2,6 +2,7 @@ package org.jellyfin.openapi.hooks
 
 import org.jellyfin.openapi.hooks.api.BinaryOperationUrlHook
 import org.jellyfin.openapi.hooks.api.ClientLogOperationUrlHook
+import org.jellyfin.openapi.hooks.api.LargeOperationRequestModelHook
 import org.jellyfin.openapi.hooks.api.PlayStateServiceNameHook
 import org.jellyfin.openapi.hooks.model.DefaultUserIdHook
 import org.jellyfin.openapi.hooks.model.ImageMapsHook
@@ -15,6 +16,8 @@ val hooksModule = module {
 
 	single { BinaryOperationUrlHook() } bind OperationUrlHook::class
 	single { ClientLogOperationUrlHook() } bind OperationUrlHook::class
+
+	single { LargeOperationRequestModelHook() } bind OperationRequestModelHook::class
 
 	single { PlayStateServiceNameHook() } bind ServiceNameHook::class
 

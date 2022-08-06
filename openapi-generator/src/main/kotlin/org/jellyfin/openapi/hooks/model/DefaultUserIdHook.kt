@@ -6,6 +6,7 @@ import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.hooks.ApiTypePath
 import org.jellyfin.openapi.hooks.DefaultValueHook
 import org.jellyfin.openapi.model.CurrentUserIdDefaultValue
+import org.jellyfin.openapi.model.DefaultValue
 
 class DefaultUserIdHook : DefaultValueHook {
 	companion object {
@@ -20,8 +21,8 @@ class DefaultUserIdHook : DefaultValueHook {
 		// Check for name and nullability
 		path.parameter in VALID_NAMES && !type.isNullable -> when (type) {
 			// Check for supported types
-			Types.UUID -> CurrentUserIdDefaultValue(false)
-			Types.STRING -> CurrentUserIdDefaultValue(true)
+			Types.UUID -> DefaultValue.Conditional(parameterValue = CurrentUserIdDefaultValue(false))
+			Types.STRING -> DefaultValue.Conditional(parameterValue = CurrentUserIdDefaultValue(true))
 			else -> null
 		}
 		else -> null

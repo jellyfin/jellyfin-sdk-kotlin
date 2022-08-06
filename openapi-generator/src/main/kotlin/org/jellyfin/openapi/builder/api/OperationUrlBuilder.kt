@@ -13,7 +13,7 @@ class OperationUrlBuilder(
 	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder,
 ) : OperationBuilder(descriptionBuilder, deprecatedAnnotationSpecBuilder) {
 	override fun buildFunctionShell(data: ApiServiceOperation) = FunSpec.builder(
-		data.name + Strings.URL_OPERATION_SUFFIX
+		buildFunctionName(data.name)
 	).apply {
 		// Add description
 		descriptionBuilder.build(data.description)?.let {
@@ -26,6 +26,8 @@ class OperationUrlBuilder(
 		// Set return type
 		returns(Types.STRING)
 	}
+
+	fun buildFunctionName(name: String) = name + Strings.URL_OPERATION_SUFFIX
 
 	override fun build(data: ApiServiceOperation): FunSpec = buildFunctionShell(data).apply {
 		// Add parameters receivers

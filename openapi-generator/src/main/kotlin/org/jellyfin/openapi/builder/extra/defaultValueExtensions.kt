@@ -30,6 +30,7 @@ fun ParameterSpec.Builder.defaultValue(
 		is DefaultValue.Boolean -> defaultValue("%L", defaultValue.value)
 		is DefaultValue.EnumMember -> defaultValue("%T.%L", defaultValue.enumType, defaultValue.memberName)
 		is DefaultValue.CodeBlock -> defaultValue(defaultValue.build())
+		is DefaultValue.Conditional -> defaultValue(type, defaultValue.parameterValue, allowEmptyCollection)
 		// Set value to null by default for nullable values
 		null -> when {
 			typeClassName == Types.COLLECTION && allowEmptyCollection ->
