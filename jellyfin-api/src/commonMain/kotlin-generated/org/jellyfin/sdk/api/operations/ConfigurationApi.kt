@@ -10,8 +10,8 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import kotlinx.serialization.json.JsonElement
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
@@ -54,8 +54,9 @@ public class ConfigurationApi(
 	 * @param key Configuration key.
 	 */
 	public suspend fun getNamedConfiguration(key: String): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["key"] = key
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("key", key)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/System/Configuration/{key}", pathParameters,
@@ -70,8 +71,9 @@ public class ConfigurationApi(
 	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getNamedConfigurationUrl(key: String, includeCredentials: Boolean = true): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["key"] = key
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("key", key)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/System/Configuration/{key}", pathParameters, queryParameters,
 				includeCredentials)
@@ -103,8 +105,9 @@ public class ConfigurationApi(
 	 * @param key Configuration key.
 	 */
 	public suspend fun updateNamedConfiguration(key: String, `data`: JsonElement): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["key"] = key
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("key", key)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/System/Configuration/{key}", pathParameters, queryParameters,
 				data)

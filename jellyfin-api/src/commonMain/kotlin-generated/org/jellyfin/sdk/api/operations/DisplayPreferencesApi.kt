@@ -8,7 +8,7 @@ package org.jellyfin.sdk.api.operations
 import kotlin.Any
 import kotlin.String
 import kotlin.Unit
-import kotlin.collections.mutableMapOf
+import kotlin.collections.buildMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
@@ -32,11 +32,13 @@ public class DisplayPreferencesApi(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
 		client: String,
 	): Response<DisplayPreferencesDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["displayPreferencesId"] = displayPreferencesId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["client"] = client
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("displayPreferencesId", displayPreferencesId)
+		}
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("client", client)
+		}
 		val data = null
 		val response = api.`get`<DisplayPreferencesDto>("/DisplayPreferences/{displayPreferencesId}",
 				pathParameters, queryParameters, data)
@@ -56,11 +58,13 @@ public class DisplayPreferencesApi(
 		client: String,
 		`data`: DisplayPreferencesDto,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["displayPreferencesId"] = displayPreferencesId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["client"] = client
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("displayPreferencesId", displayPreferencesId)
+		}
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("client", client)
+		}
 		val response = api.post<Unit>("/DisplayPreferences/{displayPreferencesId}", pathParameters,
 				queryParameters, data)
 		return response

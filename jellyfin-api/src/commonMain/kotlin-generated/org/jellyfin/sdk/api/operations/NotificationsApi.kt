@@ -9,8 +9,8 @@ import kotlin.Any
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
@@ -64,8 +64,9 @@ public class NotificationsApi(
 	 */
 	public suspend fun getNotifications(userId: String = api.userId?.toString() ?: throw
 			MissingUserIdException()): Response<NotificationResultDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<NotificationResultDto>("/Notifications/{userId}", pathParameters,
@@ -78,8 +79,9 @@ public class NotificationsApi(
 	 */
 	public suspend fun getNotificationsSummary(userId: String = api.userId?.toString() ?: throw
 			MissingUserIdException()): Response<NotificationsSummaryDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<NotificationsSummaryDto>("/Notifications/{userId}/Summary",
@@ -92,8 +94,9 @@ public class NotificationsApi(
 	 */
 	public suspend fun setRead(userId: String = api.userId?.toString() ?: throw
 			MissingUserIdException()): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.post<Unit>("/Notifications/{userId}/Read", pathParameters, queryParameters,
@@ -106,8 +109,9 @@ public class NotificationsApi(
 	 */
 	public suspend fun setUnread(userId: String = api.userId?.toString() ?: throw
 			MissingUserIdException()): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.post<Unit>("/Notifications/{userId}/Unread", pathParameters, queryParameters,

@@ -9,8 +9,8 @@ import kotlin.Any
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -29,8 +29,9 @@ public class PackageApi(
 	 * @param packageId Installation Id.
 	 */
 	public suspend fun cancelPackageInstallation(packageId: UUID): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["packageId"] = packageId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("packageId", packageId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<Unit>("/Packages/Installing/{packageId}", pathParameters,
@@ -46,10 +47,12 @@ public class PackageApi(
 	 */
 	public suspend fun getPackageInfo(name: String, assemblyGuid: UUID? = null):
 			Response<PackageInfo> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["assemblyGuid"] = assemblyGuid
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("name", name)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("assemblyGuid", assemblyGuid)
+		}
 		val data = null
 		val response = api.`get`<PackageInfo>("/Packages/{name}", pathParameters, queryParameters, data)
 		return response
@@ -92,12 +95,14 @@ public class PackageApi(
 		version: String? = null,
 		repositoryUrl: String? = null,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["assemblyGuid"] = assemblyGuid
-		queryParameters["version"] = version
-		queryParameters["repositoryUrl"] = repositoryUrl
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("name", name)
+		}
+		val queryParameters = buildMap<String, Any?>(3) {
+			put("assemblyGuid", assemblyGuid)
+			put("version", version)
+			put("repositoryUrl", repositoryUrl)
+		}
 		val data = null
 		val response = api.post<Unit>("/Packages/Installed/{name}", pathParameters, queryParameters, data)
 		return response

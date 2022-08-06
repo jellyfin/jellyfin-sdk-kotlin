@@ -9,9 +9,9 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
 import kotlin.collections.Collection
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -52,17 +52,18 @@ public class FilterApi(
 		recursive: Boolean? = null,
 	): Response<QueryFilters> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["parentId"] = parentId
-		queryParameters["includeItemTypes"] = includeItemTypes
-		queryParameters["isAiring"] = isAiring
-		queryParameters["isMovie"] = isMovie
-		queryParameters["isSports"] = isSports
-		queryParameters["isKids"] = isKids
-		queryParameters["isNews"] = isNews
-		queryParameters["isSeries"] = isSeries
-		queryParameters["recursive"] = recursive
+		val queryParameters = buildMap<String, Any?>(10) {
+			put("userId", userId)
+			put("parentId", parentId)
+			put("includeItemTypes", includeItemTypes)
+			put("isAiring", isAiring)
+			put("isMovie", isMovie)
+			put("isSports", isSports)
+			put("isKids", isKids)
+			put("isNews", isNews)
+			put("isSeries", isSeries)
+			put("recursive", recursive)
+		}
 		val data = null
 		val response = api.`get`<QueryFilters>("/Items/Filters2", pathParameters, queryParameters, data)
 		return response
@@ -84,11 +85,12 @@ public class FilterApi(
 		mediaTypes: Collection<String>? = emptyList(),
 	): Response<QueryFiltersLegacy> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["parentId"] = parentId
-		queryParameters["includeItemTypes"] = includeItemTypes
-		queryParameters["mediaTypes"] = mediaTypes
+		val queryParameters = buildMap<String, Any?>(4) {
+			put("userId", userId)
+			put("parentId", parentId)
+			put("includeItemTypes", includeItemTypes)
+			put("mediaTypes", mediaTypes)
+		}
 		val data = null
 		val response = api.`get`<QueryFiltersLegacy>("/Items/Filters", pathParameters, queryParameters,
 				data)

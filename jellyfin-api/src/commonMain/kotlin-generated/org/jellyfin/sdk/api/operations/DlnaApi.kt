@@ -9,8 +9,8 @@ import kotlin.Any
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -38,8 +38,9 @@ public class DlnaApi(
 	 * @param profileId Profile id.
 	 */
 	public suspend fun deleteProfile(profileId: String): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["profileId"] = profileId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("profileId", profileId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<Unit>("/Dlna/Profiles/{profileId}", pathParameters, queryParameters,
@@ -65,8 +66,9 @@ public class DlnaApi(
 	 * @param profileId Profile Id.
 	 */
 	public suspend fun getProfile(profileId: String): Response<DeviceProfile> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["profileId"] = profileId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("profileId", profileId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<DeviceProfile>("/Dlna/Profiles/{profileId}", pathParameters,
@@ -93,8 +95,9 @@ public class DlnaApi(
 	 */
 	public suspend fun updateProfile(profileId: String, `data`: DeviceProfile? = null):
 			Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["profileId"] = profileId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("profileId", profileId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Dlna/Profiles/{profileId}", pathParameters, queryParameters, data)
 		return response

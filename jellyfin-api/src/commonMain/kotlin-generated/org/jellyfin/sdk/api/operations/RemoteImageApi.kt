@@ -11,8 +11,8 @@ import kotlin.Int
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -37,11 +37,13 @@ public class RemoteImageApi(
 		type: ImageType,
 		imageUrl: String? = null,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["type"] = type
-		queryParameters["imageUrl"] = imageUrl
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("type", type)
+			put("imageUrl", imageUrl)
+		}
 		val data = null
 		val response = api.post<Unit>("/Items/{itemId}/RemoteImages/Download", pathParameters,
 				queryParameters, data)
@@ -54,8 +56,9 @@ public class RemoteImageApi(
 	 * @param itemId Item Id.
 	 */
 	public suspend fun getRemoteImageProviders(itemId: UUID): Response<List<ImageProviderInfo>> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<List<ImageProviderInfo>>("/Items/{itemId}/RemoteImages/Providers",
@@ -82,14 +85,16 @@ public class RemoteImageApi(
 		providerName: String? = null,
 		includeAllLanguages: Boolean? = false,
 	): Response<RemoteImageResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["type"] = type
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["providerName"] = providerName
-		queryParameters["includeAllLanguages"] = includeAllLanguages
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(5) {
+			put("type", type)
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("providerName", providerName)
+			put("includeAllLanguages", includeAllLanguages)
+		}
 		val data = null
 		val response = api.`get`<RemoteImageResult>("/Items/{itemId}/RemoteImages", pathParameters,
 				queryParameters, data)

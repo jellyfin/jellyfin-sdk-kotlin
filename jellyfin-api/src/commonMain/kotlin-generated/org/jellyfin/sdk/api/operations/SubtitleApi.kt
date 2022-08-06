@@ -14,8 +14,8 @@ import kotlin.Long
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -36,9 +36,10 @@ public class SubtitleApi(
 	 * @param index The index of the subtitle file.
 	 */
 	public suspend fun deleteSubtitle(itemId: UUID, index: Int): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["index"] = index
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("index", index)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<Unit>("/Videos/{itemId}/Subtitles/{index}", pathParameters,
@@ -53,9 +54,10 @@ public class SubtitleApi(
 	 * @param subtitleId The subtitle id.
 	 */
 	public suspend fun downloadRemoteSubtitles(itemId: UUID, subtitleId: String): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["subtitleId"] = subtitleId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("subtitleId", subtitleId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.post<Unit>("/Items/{itemId}/RemoteSearch/Subtitles/{subtitleId}",
@@ -69,8 +71,9 @@ public class SubtitleApi(
 	 * @param name The name of the fallback font file to get.
 	 */
 	public suspend fun getFallbackFont(name: String): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("name", name)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/FallbackFont/Fonts/{name}", pathParameters,
@@ -85,8 +88,9 @@ public class SubtitleApi(
 	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getFallbackFontUrl(name: String, includeCredentials: Boolean = true): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("name", name)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/FallbackFont/Fonts/{name}", pathParameters, queryParameters,
 				includeCredentials)
@@ -110,8 +114,9 @@ public class SubtitleApi(
 	 * @param id The item id.
 	 */
 	public suspend fun getRemoteSubtitles(id: String): Response<String> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["id"] = id
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("id", id)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<String>("/Providers/Subtitles/Subtitles/{id}", pathParameters,
@@ -141,16 +146,18 @@ public class SubtitleApi(
 		addVttTimeMap: Boolean? = false,
 		startPositionTicks: Long? = 0,
 	): Response<String> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["routeItemId"] = routeItemId
-		pathParameters["routeMediaSourceId"] = routeMediaSourceId
-		pathParameters["routeIndex"] = routeIndex
-		pathParameters["routeFormat"] = routeFormat
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["endPositionTicks"] = endPositionTicks
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["addVttTimeMap"] = addVttTimeMap
-		queryParameters["startPositionTicks"] = startPositionTicks
+		val pathParameters = buildMap<String, Any?>(4) {
+			put("routeItemId", routeItemId)
+			put("routeMediaSourceId", routeMediaSourceId)
+			put("routeIndex", routeIndex)
+			put("routeFormat", routeFormat)
+		}
+		val queryParameters = buildMap<String, Any?>(4) {
+			put("endPositionTicks", endPositionTicks)
+			put("copyTimestamps", copyTimestamps)
+			put("addVttTimeMap", addVttTimeMap)
+			put("startPositionTicks", startPositionTicks)
+		}
 		val data = null
 		val response =
 				api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/Stream.{routeFormat}",
@@ -189,20 +196,22 @@ public class SubtitleApi(
 		addVttTimeMap: Boolean? = false,
 		startPositionTicks: Long? = 0,
 	): Response<String> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["routeItemId"] = routeItemId
-		pathParameters["routeMediaSourceId"] = routeMediaSourceId
-		pathParameters["routeIndex"] = routeIndex
-		pathParameters["routeFormat"] = routeFormat
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["itemId"] = itemId
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["index"] = index
-		queryParameters["format"] = format
-		queryParameters["endPositionTicks"] = endPositionTicks
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["addVttTimeMap"] = addVttTimeMap
-		queryParameters["startPositionTicks"] = startPositionTicks
+		val pathParameters = buildMap<String, Any?>(4) {
+			put("routeItemId", routeItemId)
+			put("routeMediaSourceId", routeMediaSourceId)
+			put("routeIndex", routeIndex)
+			put("routeFormat", routeFormat)
+		}
+		val queryParameters = buildMap<String, Any?>(8) {
+			put("itemId", itemId)
+			put("mediaSourceId", mediaSourceId)
+			put("index", index)
+			put("format", format)
+			put("endPositionTicks", endPositionTicks)
+			put("copyTimestamps", copyTimestamps)
+			put("addVttTimeMap", addVttTimeMap)
+			put("startPositionTicks", startPositionTicks)
+		}
 		val data = null
 		val response =
 				api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/Stream.{routeFormat}",
@@ -224,12 +233,14 @@ public class SubtitleApi(
 		mediaSourceId: String,
 		segmentLength: Int,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["index"] = index
-		pathParameters["mediaSourceId"] = mediaSourceId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["segmentLength"] = segmentLength
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("itemId", itemId)
+			put("index", index)
+			put("mediaSourceId", mediaSourceId)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("segmentLength", segmentLength)
+		}
 		val data = null
 		val response =
 				api.`get`<ByteReadChannel>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8",
@@ -253,12 +264,14 @@ public class SubtitleApi(
 		segmentLength: Int,
 		includeCredentials: Boolean = true,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["index"] = index
-		pathParameters["mediaSourceId"] = mediaSourceId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["segmentLength"] = segmentLength
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("itemId", itemId)
+			put("index", index)
+			put("mediaSourceId", mediaSourceId)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("segmentLength", segmentLength)
+		}
 		return api.createUrl("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8",
 				pathParameters, queryParameters, includeCredentials)
 	}
@@ -285,16 +298,18 @@ public class SubtitleApi(
 		copyTimestamps: Boolean? = false,
 		addVttTimeMap: Boolean? = false,
 	): Response<String> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["routeItemId"] = routeItemId
-		pathParameters["routeMediaSourceId"] = routeMediaSourceId
-		pathParameters["routeIndex"] = routeIndex
-		pathParameters["routeStartPositionTicks"] = routeStartPositionTicks
-		pathParameters["routeFormat"] = routeFormat
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["endPositionTicks"] = endPositionTicks
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["addVttTimeMap"] = addVttTimeMap
+		val pathParameters = buildMap<String, Any?>(5) {
+			put("routeItemId", routeItemId)
+			put("routeMediaSourceId", routeMediaSourceId)
+			put("routeIndex", routeIndex)
+			put("routeStartPositionTicks", routeStartPositionTicks)
+			put("routeFormat", routeFormat)
+		}
+		val queryParameters = buildMap<String, Any?>(3) {
+			put("endPositionTicks", endPositionTicks)
+			put("copyTimestamps", copyTimestamps)
+			put("addVttTimeMap", addVttTimeMap)
+		}
 		val data = null
 		val response =
 				api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/{routeStartPositionTicks}/Stream.{routeFormat}",
@@ -335,21 +350,23 @@ public class SubtitleApi(
 		copyTimestamps: Boolean? = false,
 		addVttTimeMap: Boolean? = false,
 	): Response<String> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["routeItemId"] = routeItemId
-		pathParameters["routeMediaSourceId"] = routeMediaSourceId
-		pathParameters["routeIndex"] = routeIndex
-		pathParameters["routeStartPositionTicks"] = routeStartPositionTicks
-		pathParameters["routeFormat"] = routeFormat
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["itemId"] = itemId
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["index"] = index
-		queryParameters["startPositionTicks"] = startPositionTicks
-		queryParameters["format"] = format
-		queryParameters["endPositionTicks"] = endPositionTicks
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["addVttTimeMap"] = addVttTimeMap
+		val pathParameters = buildMap<String, Any?>(5) {
+			put("routeItemId", routeItemId)
+			put("routeMediaSourceId", routeMediaSourceId)
+			put("routeIndex", routeIndex)
+			put("routeStartPositionTicks", routeStartPositionTicks)
+			put("routeFormat", routeFormat)
+		}
+		val queryParameters = buildMap<String, Any?>(8) {
+			put("itemId", itemId)
+			put("mediaSourceId", mediaSourceId)
+			put("index", index)
+			put("startPositionTicks", startPositionTicks)
+			put("format", format)
+			put("endPositionTicks", endPositionTicks)
+			put("copyTimestamps", copyTimestamps)
+			put("addVttTimeMap", addVttTimeMap)
+		}
 		val data = null
 		val response =
 				api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/{routeStartPositionTicks}/Stream.{routeFormat}",
@@ -369,11 +386,13 @@ public class SubtitleApi(
 		language: String,
 		isPerfectMatch: Boolean? = null,
 	): Response<List<RemoteSubtitleInfo>> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["language"] = language
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["isPerfectMatch"] = isPerfectMatch
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("language", language)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("isPerfectMatch", isPerfectMatch)
+		}
 		val data = null
 		val response =
 				api.`get`<List<RemoteSubtitleInfo>>("/Items/{itemId}/RemoteSearch/Subtitles/{language}",
@@ -387,8 +406,9 @@ public class SubtitleApi(
 	 * @param itemId The item the subtitle belongs to.
 	 */
 	public suspend fun uploadSubtitle(itemId: UUID, `data`: UploadSubtitleDto): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Videos/{itemId}/Subtitles", pathParameters, queryParameters, data)
 		return response

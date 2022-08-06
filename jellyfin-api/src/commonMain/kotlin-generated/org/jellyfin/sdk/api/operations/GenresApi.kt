@@ -10,9 +10,9 @@ import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.Collection
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -34,10 +34,12 @@ public class GenresApi(
 	 * @param userId The user id.
 	 */
 	public suspend fun getGenre(genreName: String, userId: UUID? = null): Response<BaseItemDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["genreName"] = genreName
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("genreName", genreName)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDto>("/Genres/{genreName}", pathParameters, queryParameters,
 				data)
@@ -94,25 +96,26 @@ public class GenresApi(
 		enableTotalRecordCount: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["searchTerm"] = searchTerm
-		queryParameters["parentId"] = parentId
-		queryParameters["fields"] = fields
-		queryParameters["excludeItemTypes"] = excludeItemTypes
-		queryParameters["includeItemTypes"] = includeItemTypes
-		queryParameters["isFavorite"] = isFavorite
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
-		queryParameters["userId"] = userId
-		queryParameters["nameStartsWithOrGreater"] = nameStartsWithOrGreater
-		queryParameters["nameStartsWith"] = nameStartsWith
-		queryParameters["nameLessThan"] = nameLessThan
-		queryParameters["sortBy"] = sortBy
-		queryParameters["sortOrder"] = sortOrder
-		queryParameters["enableImages"] = enableImages
-		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
+		val queryParameters = buildMap<String, Any?>(18) {
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("searchTerm", searchTerm)
+			put("parentId", parentId)
+			put("fields", fields)
+			put("excludeItemTypes", excludeItemTypes)
+			put("includeItemTypes", includeItemTypes)
+			put("isFavorite", isFavorite)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+			put("userId", userId)
+			put("nameStartsWithOrGreater", nameStartsWithOrGreater)
+			put("nameStartsWith", nameStartsWith)
+			put("nameLessThan", nameLessThan)
+			put("sortBy", sortBy)
+			put("sortOrder", sortOrder)
+			put("enableImages", enableImages)
+			put("enableTotalRecordCount", enableTotalRecordCount)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Genres", pathParameters, queryParameters, data)
 		return response

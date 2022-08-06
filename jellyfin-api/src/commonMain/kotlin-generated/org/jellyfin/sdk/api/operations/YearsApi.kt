@@ -10,9 +10,9 @@ import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.Collection
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -34,10 +34,12 @@ public class YearsApi(
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 */
 	public suspend fun getYear(year: Int, userId: UUID? = null): Response<BaseItemDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["year"] = year
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("year", year)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDto>("/Years/{year}", pathParameters, queryParameters, data)
 		return response
@@ -85,22 +87,23 @@ public class YearsApi(
 		enableImages: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["sortOrder"] = sortOrder
-		queryParameters["parentId"] = parentId
-		queryParameters["fields"] = fields
-		queryParameters["excludeItemTypes"] = excludeItemTypes
-		queryParameters["includeItemTypes"] = includeItemTypes
-		queryParameters["mediaTypes"] = mediaTypes
-		queryParameters["sortBy"] = sortBy
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
-		queryParameters["userId"] = userId
-		queryParameters["recursive"] = recursive
-		queryParameters["enableImages"] = enableImages
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("sortOrder", sortOrder)
+			put("parentId", parentId)
+			put("fields", fields)
+			put("excludeItemTypes", excludeItemTypes)
+			put("includeItemTypes", includeItemTypes)
+			put("mediaTypes", mediaTypes)
+			put("sortBy", sortBy)
+			put("enableUserData", enableUserData)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+			put("userId", userId)
+			put("recursive", recursive)
+			put("enableImages", enableImages)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Years", pathParameters, queryParameters, data)
 		return response

@@ -8,8 +8,8 @@ package org.jellyfin.sdk.api.operations
 import kotlin.Any
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -27,8 +27,9 @@ public class ApiKeyApi(
 	 */
 	public suspend fun createKey(app: String): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["app"] = app
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("app", app)
+		}
 		val data = null
 		val response = api.post<Unit>("/Auth/Keys", pathParameters, queryParameters, data)
 		return response
@@ -52,8 +53,9 @@ public class ApiKeyApi(
 	 * @param key The access token to delete.
 	 */
 	public suspend fun revokeKey(key: String): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["key"] = key
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("key", key)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<Unit>("/Auth/Keys/{key}", pathParameters, queryParameters, data)

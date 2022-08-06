@@ -10,9 +10,9 @@ import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.Collection
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -33,10 +33,12 @@ public class PersonsApi(
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 */
 	public suspend fun getPerson(name: String, userId: UUID? = null): Response<BaseItemDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("name", name)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDto>("/Persons/{name}", pathParameters, queryParameters, data)
 		return response
@@ -79,20 +81,21 @@ public class PersonsApi(
 		enableImages: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["limit"] = limit
-		queryParameters["searchTerm"] = searchTerm
-		queryParameters["fields"] = fields
-		queryParameters["filters"] = filters
-		queryParameters["isFavorite"] = isFavorite
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
-		queryParameters["excludePersonTypes"] = excludePersonTypes
-		queryParameters["personTypes"] = personTypes
-		queryParameters["appearsInItemId"] = appearsInItemId
-		queryParameters["userId"] = userId
-		queryParameters["enableImages"] = enableImages
+		val queryParameters = buildMap<String, Any?>(13) {
+			put("limit", limit)
+			put("searchTerm", searchTerm)
+			put("fields", fields)
+			put("filters", filters)
+			put("isFavorite", isFavorite)
+			put("enableUserData", enableUserData)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+			put("excludePersonTypes", excludePersonTypes)
+			put("personTypes", personTypes)
+			put("appearsInItemId", appearsInItemId)
+			put("userId", userId)
+			put("enableImages", enableImages)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Persons", pathParameters, queryParameters,
 				data)

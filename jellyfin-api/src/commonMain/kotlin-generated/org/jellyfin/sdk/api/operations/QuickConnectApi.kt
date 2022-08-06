@@ -8,8 +8,8 @@ package org.jellyfin.sdk.api.operations
 import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -26,8 +26,9 @@ public class QuickConnectApi(
 	 */
 	public suspend fun authorize(code: String): Response<Boolean> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["code"] = code
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("code", code)
+		}
 		val data = null
 		val response = api.post<Boolean>("/QuickConnect/Authorize", pathParameters, queryParameters, data)
 		return response
@@ -40,8 +41,9 @@ public class QuickConnectApi(
 	 */
 	public suspend fun connect(secret: String): Response<QuickConnectResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["secret"] = secret
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("secret", secret)
+		}
 		val data = null
 		val response = api.`get`<QuickConnectResult>("/QuickConnect/Connect", pathParameters,
 				queryParameters, data)

@@ -11,9 +11,9 @@ import kotlin.Int
 import kotlin.String
 import kotlin.collections.Collection
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -45,8 +45,9 @@ public class ChannelsApi(
 	 * @param channelId Channel id.
 	 */
 	public suspend fun getChannelFeatures(channelId: UUID): Response<ChannelFeatures> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["channelId"] = channelId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("channelId", channelId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<ChannelFeatures>("/Channels/{channelId}/Features", pathParameters,
@@ -81,17 +82,19 @@ public class ChannelsApi(
 		sortBy: Collection<String>? = emptyList(),
 		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["channelId"] = channelId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["folderId"] = folderId
-		queryParameters["userId"] = userId
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["sortOrder"] = sortOrder
-		queryParameters["filters"] = filters
-		queryParameters["sortBy"] = sortBy
-		queryParameters["fields"] = fields
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("channelId", channelId)
+		}
+		val queryParameters = buildMap<String, Any?>(8) {
+			put("folderId", folderId)
+			put("userId", userId)
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("sortOrder", sortOrder)
+			put("filters", filters)
+			put("sortBy", sortBy)
+			put("fields", fields)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Channels/{channelId}/Items", pathParameters,
 				queryParameters, data)
@@ -118,13 +121,14 @@ public class ChannelsApi(
 		isFavorite: Boolean? = null,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["supportsLatestItems"] = supportsLatestItems
-		queryParameters["supportsMediaDeletion"] = supportsMediaDeletion
-		queryParameters["isFavorite"] = isFavorite
+		val queryParameters = buildMap<String, Any?>(6) {
+			put("userId", userId)
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("supportsLatestItems", supportsLatestItems)
+			put("supportsMediaDeletion", supportsMediaDeletion)
+			put("isFavorite", isFavorite)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Channels", pathParameters, queryParameters,
 				data)
@@ -151,13 +155,14 @@ public class ChannelsApi(
 		channelIds: Collection<UUID>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["filters"] = filters
-		queryParameters["fields"] = fields
-		queryParameters["channelIds"] = channelIds
+		val queryParameters = buildMap<String, Any?>(6) {
+			put("userId", userId)
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("filters", filters)
+			put("fields", fields)
+			put("channelIds", channelIds)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Channels/Items/Latest", pathParameters,
 				queryParameters, data)

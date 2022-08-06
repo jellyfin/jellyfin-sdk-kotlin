@@ -9,7 +9,7 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
-import kotlin.collections.mutableMapOf
+import kotlin.collections.buildMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.post
@@ -37,13 +37,15 @@ public class ItemRefreshApi(
 		replaceAllMetadata: Boolean? = false,
 		replaceAllImages: Boolean? = false,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["metadataRefreshMode"] = metadataRefreshMode
-		queryParameters["imageRefreshMode"] = imageRefreshMode
-		queryParameters["replaceAllMetadata"] = replaceAllMetadata
-		queryParameters["replaceAllImages"] = replaceAllImages
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(4) {
+			put("metadataRefreshMode", metadataRefreshMode)
+			put("imageRefreshMode", imageRefreshMode)
+			put("replaceAllMetadata", replaceAllMetadata)
+			put("replaceAllImages", replaceAllImages)
+		}
 		val data = null
 		val response = api.post<Unit>("/Items/{itemId}/Refresh", pathParameters, queryParameters, data)
 		return response

@@ -10,8 +10,8 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -28,9 +28,10 @@ public class HlsSegmentApi(
 	 */
 	public suspend fun getHlsAudioSegmentLegacyAac(itemId: String, segmentId: String):
 			Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["segmentId"] = segmentId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("segmentId", segmentId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/hls/{segmentId}/stream.aac",
@@ -50,9 +51,10 @@ public class HlsSegmentApi(
 		segmentId: String,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["segmentId"] = segmentId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("segmentId", segmentId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Audio/{itemId}/hls/{segmentId}/stream.aac", pathParameters,
 				queryParameters, includeCredentials)
@@ -66,9 +68,10 @@ public class HlsSegmentApi(
 	 */
 	public suspend fun getHlsAudioSegmentLegacyMp3(itemId: String, segmentId: String):
 			Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["segmentId"] = segmentId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("segmentId", segmentId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/hls/{segmentId}/stream.mp3",
@@ -88,9 +91,10 @@ public class HlsSegmentApi(
 		segmentId: String,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["segmentId"] = segmentId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("segmentId", segmentId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Audio/{itemId}/hls/{segmentId}/stream.mp3", pathParameters,
 				queryParameters, includeCredentials)
@@ -104,9 +108,10 @@ public class HlsSegmentApi(
 	 */
 	public suspend fun getHlsPlaylistLegacy(itemId: String, playlistId: String):
 			Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["playlistId"] = playlistId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("playlistId", playlistId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/hls/{playlistId}/stream.m3u8",
@@ -126,9 +131,10 @@ public class HlsSegmentApi(
 		playlistId: String,
 		includeCredentials: Boolean = true,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["playlistId"] = playlistId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("playlistId", playlistId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Videos/{itemId}/hls/{playlistId}/stream.m3u8", pathParameters,
 				queryParameters, includeCredentials)
@@ -148,11 +154,12 @@ public class HlsSegmentApi(
 		segmentId: String,
 		segmentContainer: String,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["playlistId"] = playlistId
-		pathParameters["segmentId"] = segmentId
-		pathParameters["segmentContainer"] = segmentContainer
+		val pathParameters = buildMap<String, Any?>(4) {
+			put("itemId", itemId)
+			put("playlistId", playlistId)
+			put("segmentId", segmentId)
+			put("segmentContainer", segmentContainer)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response =
@@ -177,11 +184,12 @@ public class HlsSegmentApi(
 		segmentContainer: String,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["playlistId"] = playlistId
-		pathParameters["segmentId"] = segmentId
-		pathParameters["segmentContainer"] = segmentContainer
+		val pathParameters = buildMap<String, Any?>(4) {
+			put("itemId", itemId)
+			put("playlistId", playlistId)
+			put("segmentId", segmentId)
+			put("segmentContainer", segmentContainer)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Videos/{itemId}/hls/{playlistId}/{segmentId}.{segmentContainer}",
 				pathParameters, queryParameters, includeCredentials)
@@ -196,9 +204,10 @@ public class HlsSegmentApi(
 	 */
 	public suspend fun stopEncodingProcess(deviceId: String, playSessionId: String): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["deviceId"] = deviceId
-		queryParameters["playSessionId"] = playSessionId
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("deviceId", deviceId)
+			put("playSessionId", playSessionId)
+		}
 		val data = null
 		val response = api.delete<Unit>("/Videos/ActiveEncodings", pathParameters, queryParameters, data)
 		return response

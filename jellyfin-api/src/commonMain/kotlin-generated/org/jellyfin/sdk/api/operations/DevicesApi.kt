@@ -9,8 +9,8 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -32,8 +32,9 @@ public class DevicesApi(
 	 */
 	public suspend fun deleteDevice(id: String): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["id"] = id
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("id", id)
+		}
 		val data = null
 		val response = api.delete<Unit>("/Devices", pathParameters, queryParameters, data)
 		return response
@@ -46,8 +47,9 @@ public class DevicesApi(
 	 */
 	public suspend fun getDeviceInfo(id: String): Response<DeviceInfo> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["id"] = id
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("id", id)
+		}
 		val data = null
 		val response = api.`get`<DeviceInfo>("/Devices/Info", pathParameters, queryParameters, data)
 		return response
@@ -60,8 +62,9 @@ public class DevicesApi(
 	 */
 	public suspend fun getDeviceOptions(id: String): Response<DeviceOptions> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["id"] = id
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("id", id)
+		}
 		val data = null
 		val response = api.`get`<DeviceOptions>("/Devices/Options", pathParameters, queryParameters, data)
 		return response
@@ -76,9 +79,10 @@ public class DevicesApi(
 	public suspend fun getDevices(supportsSync: Boolean? = null, userId: UUID? = null):
 			Response<DeviceInfoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["supportsSync"] = supportsSync
-		queryParameters["userId"] = userId
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("supportsSync", supportsSync)
+			put("userId", userId)
+		}
 		val data = null
 		val response = api.`get`<DeviceInfoQueryResult>("/Devices", pathParameters, queryParameters, data)
 		return response
@@ -91,8 +95,9 @@ public class DevicesApi(
 	 */
 	public suspend fun updateDeviceOptions(id: String, `data`: DeviceOptionsDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["id"] = id
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("id", id)
+		}
 		val response = api.post<Unit>("/Devices/Options", pathParameters, queryParameters, data)
 		return response
 	}

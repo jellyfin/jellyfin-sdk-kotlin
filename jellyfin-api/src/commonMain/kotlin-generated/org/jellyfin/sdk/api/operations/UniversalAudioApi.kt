@@ -12,8 +12,8 @@ import kotlin.Int
 import kotlin.Long
 import kotlin.String
 import kotlin.collections.Collection
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -66,26 +66,28 @@ public class UniversalAudioApi(
 		breakOnNonKeyFrames: Boolean? = false,
 		enableRedirection: Boolean? = true,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["container"] = container
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["userId"] = userId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["transcodingAudioChannels"] = transcodingAudioChannels
-		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["transcodingContainer"] = transcodingContainer
-		queryParameters["transcodingProtocol"] = transcodingProtocol
-		queryParameters["maxAudioSampleRate"] = maxAudioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["enableRemoteMedia"] = enableRemoteMedia
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["enableRedirection"] = enableRedirection
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("container", container)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("userId", userId)
+			put("audioCodec", audioCodec)
+			put("maxAudioChannels", maxAudioChannels)
+			put("transcodingAudioChannels", transcodingAudioChannels)
+			put("maxStreamingBitrate", maxStreamingBitrate)
+			put("audioBitRate", audioBitRate)
+			put("startTimeTicks", startTimeTicks)
+			put("transcodingContainer", transcodingContainer)
+			put("transcodingProtocol", transcodingProtocol)
+			put("maxAudioSampleRate", maxAudioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("enableRemoteMedia", enableRemoteMedia)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("enableRedirection", enableRedirection)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/universal", pathParameters,
 				queryParameters, data)
@@ -138,26 +140,28 @@ public class UniversalAudioApi(
 		enableRedirection: Boolean? = true,
 		includeCredentials: Boolean = true,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["container"] = container
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["userId"] = userId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["transcodingAudioChannels"] = transcodingAudioChannels
-		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["transcodingContainer"] = transcodingContainer
-		queryParameters["transcodingProtocol"] = transcodingProtocol
-		queryParameters["maxAudioSampleRate"] = maxAudioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["enableRemoteMedia"] = enableRemoteMedia
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["enableRedirection"] = enableRedirection
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("container", container)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("userId", userId)
+			put("audioCodec", audioCodec)
+			put("maxAudioChannels", maxAudioChannels)
+			put("transcodingAudioChannels", transcodingAudioChannels)
+			put("maxStreamingBitrate", maxStreamingBitrate)
+			put("audioBitRate", audioBitRate)
+			put("startTimeTicks", startTimeTicks)
+			put("transcodingContainer", transcodingContainer)
+			put("transcodingProtocol", transcodingProtocol)
+			put("maxAudioSampleRate", maxAudioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("enableRemoteMedia", enableRemoteMedia)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("enableRedirection", enableRedirection)
+		}
 		return api.createUrl("/Audio/{itemId}/universal", pathParameters, queryParameters,
 				includeCredentials)
 	}

@@ -10,8 +10,8 @@ import kotlin.Deprecated
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -43,8 +43,9 @@ public class SystemApi(
 	 */
 	public suspend fun getLogFile(name: String): Response<String> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["name"] = name
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("name", name)
+		}
 		val data = null
 		val response = api.`get`<String>("/System/Logs/Log", pathParameters, queryParameters, data)
 		return response

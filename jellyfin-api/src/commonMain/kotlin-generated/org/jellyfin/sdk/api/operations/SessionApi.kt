@@ -13,9 +13,9 @@ import kotlin.String
 import kotlin.Unit
 import kotlin.collections.Collection
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
@@ -44,9 +44,10 @@ public class SessionApi(
 	 */
 	public suspend fun addUserToSession(sessionId: String, userId: UUID = api.userId ?: throw
 			MissingUserIdException()): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("sessionId", sessionId)
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.post<Unit>("/Sessions/{sessionId}/User/{userId}", pathParameters,
@@ -68,12 +69,14 @@ public class SessionApi(
 		itemId: String,
 		itemName: String,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["itemType"] = itemType
-		queryParameters["itemId"] = itemId
-		queryParameters["itemName"] = itemName
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("sessionId", sessionId)
+		}
+		val queryParameters = buildMap<String, Any?>(3) {
+			put("itemType", itemType)
+			put("itemId", itemId)
+			put("itemName", itemName)
+		}
 		val data = null
 		val response = api.post<Unit>("/Sessions/{sessionId}/Viewing", pathParameters, queryParameters,
 				data)
@@ -117,10 +120,11 @@ public class SessionApi(
 		activeWithinSeconds: Int? = null,
 	): Response<List<SessionInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["controllableByUserId"] = controllableByUserId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["activeWithinSeconds"] = activeWithinSeconds
+		val queryParameters = buildMap<String, Any?>(3) {
+			put("controllableByUserId", controllableByUserId)
+			put("deviceId", deviceId)
+			put("activeWithinSeconds", activeWithinSeconds)
+		}
 		val data = null
 		val response = api.`get`<List<SessionInfo>>("/Sessions", pathParameters, queryParameters, data)
 		return response
@@ -149,16 +153,18 @@ public class SessionApi(
 		subtitleStreamIndex: Int? = null,
 		startIndex: Int? = null,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["playCommand"] = playCommand
-		queryParameters["itemIds"] = itemIds
-		queryParameters["startPositionTicks"] = startPositionTicks
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["startIndex"] = startIndex
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("sessionId", sessionId)
+		}
+		val queryParameters = buildMap<String, Any?>(7) {
+			put("playCommand", playCommand)
+			put("itemIds", itemIds)
+			put("startPositionTicks", startPositionTicks)
+			put("mediaSourceId", mediaSourceId)
+			put("audioStreamIndex", audioStreamIndex)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("startIndex", startIndex)
+		}
 		val data = null
 		val response = api.post<Unit>("/Sessions/{sessionId}/Playing", pathParameters, queryParameters,
 				data)
@@ -185,13 +191,14 @@ public class SessionApi(
 		supportsPersistentIdentifier: Boolean? = true,
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["id"] = id
-		queryParameters["playableMediaTypes"] = playableMediaTypes
-		queryParameters["supportedCommands"] = supportedCommands
-		queryParameters["supportsMediaControl"] = supportsMediaControl
-		queryParameters["supportsSync"] = supportsSync
-		queryParameters["supportsPersistentIdentifier"] = supportsPersistentIdentifier
+		val queryParameters = buildMap<String, Any?>(6) {
+			put("id", id)
+			put("playableMediaTypes", playableMediaTypes)
+			put("supportedCommands", supportedCommands)
+			put("supportsMediaControl", supportsMediaControl)
+			put("supportsSync", supportsSync)
+			put("supportsPersistentIdentifier", supportsPersistentIdentifier)
+		}
 		val data = null
 		val response = api.post<Unit>("/Sessions/Capabilities", pathParameters, queryParameters, data)
 		return response
@@ -205,8 +212,9 @@ public class SessionApi(
 	public suspend fun postFullCapabilities(id: String? = null, `data`: ClientCapabilitiesDto):
 			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["id"] = id
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("id", id)
+		}
 		val response = api.post<Unit>("/Sessions/Capabilities/Full", pathParameters, queryParameters,
 				data)
 		return response
@@ -220,9 +228,10 @@ public class SessionApi(
 	 */
 	public suspend fun removeUserFromSession(sessionId: String, userId: UUID = api.userId ?: throw
 			MissingUserIdException()): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("sessionId", sessionId)
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<Unit>("/Sessions/{sessionId}/User/{userId}", pathParameters,
@@ -249,9 +258,10 @@ public class SessionApi(
 	 */
 	public suspend fun reportViewing(sessionId: String? = null, itemId: String): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["sessionId"] = sessionId
-		queryParameters["itemId"] = itemId
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("sessionId", sessionId)
+			put("itemId", itemId)
+		}
 		val data = null
 		val response = api.post<Unit>("/Sessions/Viewing", pathParameters, queryParameters, data)
 		return response
@@ -264,8 +274,9 @@ public class SessionApi(
 	 */
 	public suspend fun sendFullGeneralCommand(sessionId: String, `data`: GeneralCommand):
 			Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("sessionId", sessionId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Sessions/{sessionId}/Command", pathParameters, queryParameters,
 				data)
@@ -280,9 +291,10 @@ public class SessionApi(
 	 */
 	public suspend fun sendGeneralCommand(sessionId: String, command: GeneralCommandType):
 			Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		pathParameters["command"] = command
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("sessionId", sessionId)
+			put("command", command)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.post<Unit>("/Sessions/{sessionId}/Command/{command}", pathParameters,
@@ -296,8 +308,9 @@ public class SessionApi(
 	 * @param sessionId The session id.
 	 */
 	public suspend fun sendMessageCommand(sessionId: String, `data`: MessageCommand): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("sessionId", sessionId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Sessions/{sessionId}/Message", pathParameters, queryParameters,
 				data)
@@ -318,12 +331,14 @@ public class SessionApi(
 		seekPositionTicks: Long? = null,
 		controllingUserId: String? = null,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		pathParameters["command"] = command
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["seekPositionTicks"] = seekPositionTicks
-		queryParameters["controllingUserId"] = controllingUserId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("sessionId", sessionId)
+			put("command", command)
+		}
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("seekPositionTicks", seekPositionTicks)
+			put("controllingUserId", controllingUserId)
+		}
 		val data = null
 		val response = api.post<Unit>("/Sessions/{sessionId}/Playing/{command}", pathParameters,
 				queryParameters, data)
@@ -338,9 +353,10 @@ public class SessionApi(
 	 */
 	public suspend fun sendSystemCommand(sessionId: String, command: GeneralCommandType):
 			Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["sessionId"] = sessionId
-		pathParameters["command"] = command
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("sessionId", sessionId)
+			put("command", command)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.post<Unit>("/Sessions/{sessionId}/System/{command}", pathParameters,

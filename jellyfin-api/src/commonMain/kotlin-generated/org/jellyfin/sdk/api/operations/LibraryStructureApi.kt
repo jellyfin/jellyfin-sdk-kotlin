@@ -11,9 +11,9 @@ import kotlin.String
 import kotlin.Unit
 import kotlin.collections.Collection
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -37,8 +37,9 @@ public class LibraryStructureApi(
 	public suspend fun addMediaPath(refreshLibrary: Boolean? = false, `data`: MediaPathDto):
 			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["refreshLibrary"] = refreshLibrary
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("refreshLibrary", refreshLibrary)
+		}
 		val response = api.post<Unit>("/Library/VirtualFolders/Paths", pathParameters, queryParameters,
 				data)
 		return response
@@ -60,11 +61,12 @@ public class LibraryStructureApi(
 		`data`: AddVirtualFolderDto? = null,
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["name"] = name
-		queryParameters["collectionType"] = collectionType
-		queryParameters["paths"] = paths
-		queryParameters["refreshLibrary"] = refreshLibrary
+		val queryParameters = buildMap<String, Any?>(4) {
+			put("name", name)
+			put("collectionType", collectionType)
+			put("paths", paths)
+			put("refreshLibrary", refreshLibrary)
+		}
 		val response = api.post<Unit>("/Library/VirtualFolders", pathParameters, queryParameters, data)
 		return response
 	}
@@ -94,10 +96,11 @@ public class LibraryStructureApi(
 		refreshLibrary: Boolean? = false,
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["name"] = name
-		queryParameters["path"] = path
-		queryParameters["refreshLibrary"] = refreshLibrary
+		val queryParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("path", path)
+			put("refreshLibrary", refreshLibrary)
+		}
 		val data = null
 		val response = api.delete<Unit>("/Library/VirtualFolders/Paths", pathParameters, queryParameters,
 				data)
@@ -113,9 +116,10 @@ public class LibraryStructureApi(
 	public suspend fun removeVirtualFolder(name: String? = null, refreshLibrary: Boolean? = false):
 			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["name"] = name
-		queryParameters["refreshLibrary"] = refreshLibrary
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("refreshLibrary", refreshLibrary)
+		}
 		val data = null
 		val response = api.delete<Unit>("/Library/VirtualFolders", pathParameters, queryParameters, data)
 		return response
@@ -134,10 +138,11 @@ public class LibraryStructureApi(
 		refreshLibrary: Boolean? = false,
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["name"] = name
-		queryParameters["newName"] = newName
-		queryParameters["refreshLibrary"] = refreshLibrary
+		val queryParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("newName", newName)
+			put("refreshLibrary", refreshLibrary)
+		}
 		val data = null
 		val response = api.post<Unit>("/Library/VirtualFolders/Name", pathParameters, queryParameters,
 				data)
