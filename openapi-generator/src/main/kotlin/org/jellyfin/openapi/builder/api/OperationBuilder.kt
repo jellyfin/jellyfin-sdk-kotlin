@@ -5,19 +5,18 @@ import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterSpec
-import com.squareup.kotlinpoet.ParameterizedTypeName
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.plusParameter
 import com.squareup.kotlinpoet.buildCodeBlock
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.DescriptionBuilder
+import org.jellyfin.openapi.builder.extra.defaultValue
 import org.jellyfin.openapi.constants.Classes
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
-import org.jellyfin.openapi.model.CustomDefaultValue
 import org.jellyfin.openapi.model.IntRangeValidation
 import org.jellyfin.openapi.model.ParameterValidation
 
@@ -44,30 +43,7 @@ open class OperationBuilder(
 	protected fun buildParameter(
 		data: ApiServiceOperationParameter,
 	) = ParameterSpec.builder(data.name, data.type).apply {
-		// Determine class name without parameters
-		val typeClassName = when (data.type) {
-			is ClassName -> data.type
-			is ParameterizedTypeName -> data.type.rawType
-			else -> null
-		}
-
-		// Set default value
-		when (data.defaultValue) {
-			is String -> defaultValue("%S", data.defaultValue)
-			is Int -> defaultValue("%L", data.defaultValue)
-			is Boolean -> defaultValue("%L", data.defaultValue)
-			is CustomDefaultValue -> defaultValue(data.defaultValue.build())
-			// Set value to null by default for nullable values
-			null -> when {
-				typeClassName == Types.COLLECTION ->
-					defaultValue("%M()", MemberName("kotlin.collections", "emptyList"))
-				typeClassName == Types.LIST ->
-					defaultValue("%M()", MemberName("kotlin.collections", "emptyList"))
-				typeClassName == Types.MAP ->
-					defaultValue("%M()", MemberName("kotlin.collections", "emptyMap"))
-				data.type.isNullable -> defaultValue("%L", "null")
-			}
-		}
+		defaultValue(data)
 
 		// Add description
 		descriptionBuilder.build(data.description)?.let {

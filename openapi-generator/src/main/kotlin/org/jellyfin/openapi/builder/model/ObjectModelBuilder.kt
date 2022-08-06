@@ -13,6 +13,7 @@ import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.builder.extra.TypeSerializerBuilder
+import org.jellyfin.openapi.builder.extra.defaultValue
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.constants.Types
@@ -32,8 +33,7 @@ class ObjectModelBuilder(
 			data.properties.forEach { property ->
 				// Create constructor parameter
 				addParameter(ParameterSpec.builder(property.name, property.type).apply {
-					// Set value to null by default for nullable values
-					if (property.type.isNullable) defaultValue("%L", "null")
+					defaultValue(property)
 				}.build())
 
 				// Create class property
