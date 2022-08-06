@@ -7,6 +7,7 @@ import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.ParameterizedTypeName
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.plusParameter
+import com.squareup.kotlinpoet.buildCodeBlock
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.DescriptionBuilder
@@ -92,18 +93,25 @@ open class OperationBuilder(
 		name: String,
 		parameters: Collection<ApiServiceOperationParameter>,
 	) {
-		// Create map
-		// val $(name) = $("emptyMap"|"mutableMapOf")<String, Any?>()
-		val mapType = MemberName("kotlin.collections", if (parameters.isEmpty()) "emptyMap" else "mutableMapOf")
-		addStatement("val %N = %M<%T, %T?>()", name, mapType, Types.STRING, Types.ANY)
-
-		// Add parameters
-		parameters.forEach { parameter ->
-			if (parameter.validation != null) createParameterValidation(parameter.name, parameter.validation)
-
-			// $(name)[$(parameter.originalName)] = parameter.name
-			addStatement("%L[%S] = %N", name, parameter.originalName, parameter.name)
+		if (parameters.isEmpty()) {
+			val emptyMapType = MemberName("kotlin.collections", "emptyMap")
+			addStatement("val·%N·=·%M<%T,·%T?>()", name, emptyMapType, Types.STRING, Types.ANY)
+			return
 		}
+
+		buildCodeBlock {
+			// Parameter validation
+			parameters.forEach { parameter ->
+				if (parameter.validation != null) createParameterValidation(parameter.name, parameter.validation)
+			}
+			// Map building
+			val buildMapType = MemberName("kotlin.collections", "buildMap")
+			beginControlFlow("val·%N·= %M<%T, %T?>(%L)", name, buildMapType, Types.STRING, Types.ANY, parameters.size)
+			parameters.forEach { parameter ->
+				addStatement("put(%S, %N)", parameter.originalName, parameter.name)
+			}
+			endControlFlow()
+		}.let(::addCode)
 	}
 
 	override fun build(data: ApiServiceOperation): FunSpec = buildFunctionShell(data).apply {
