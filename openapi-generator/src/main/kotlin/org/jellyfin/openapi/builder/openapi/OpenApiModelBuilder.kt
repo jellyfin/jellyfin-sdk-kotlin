@@ -36,6 +36,7 @@ class OpenApiModelBuilder(
 						ObjectApiModelProperty(
 							name = name,
 							originalName = originalName,
+							defaultValue = property.default,
 							type = openApiTypeBuilder.build(ModelTypePath(data.name, name), property),
 							description = property.description,
 							deprecated = property.deprecated == true
