@@ -10,9 +10,9 @@ import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.Collection
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -71,25 +71,26 @@ public class SearchApi(
 		includeArtists: Boolean? = true,
 	): Response<SearchHintResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["userId"] = userId
-		queryParameters["searchTerm"] = searchTerm
-		queryParameters["includeItemTypes"] = includeItemTypes
-		queryParameters["excludeItemTypes"] = excludeItemTypes
-		queryParameters["mediaTypes"] = mediaTypes
-		queryParameters["parentId"] = parentId
-		queryParameters["isMovie"] = isMovie
-		queryParameters["isSeries"] = isSeries
-		queryParameters["isNews"] = isNews
-		queryParameters["isKids"] = isKids
-		queryParameters["isSports"] = isSports
-		queryParameters["includePeople"] = includePeople
-		queryParameters["includeMedia"] = includeMedia
-		queryParameters["includeGenres"] = includeGenres
-		queryParameters["includeStudios"] = includeStudios
-		queryParameters["includeArtists"] = includeArtists
+		val queryParameters = buildMap<String, Any?>(18) {
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("userId", userId)
+			put("searchTerm", searchTerm)
+			put("includeItemTypes", includeItemTypes)
+			put("excludeItemTypes", excludeItemTypes)
+			put("mediaTypes", mediaTypes)
+			put("parentId", parentId)
+			put("isMovie", isMovie)
+			put("isSeries", isSeries)
+			put("isNews", isNews)
+			put("isKids", isKids)
+			put("isSports", isSports)
+			put("includePeople", includePeople)
+			put("includeMedia", includeMedia)
+			put("includeGenres", includeGenres)
+			put("includeStudios", includeStudios)
+			put("includeArtists", includeArtists)
+		}
 		val data = null
 		val response = api.`get`<SearchHintResult>("/Search/Hints", pathParameters, queryParameters, data)
 		return response

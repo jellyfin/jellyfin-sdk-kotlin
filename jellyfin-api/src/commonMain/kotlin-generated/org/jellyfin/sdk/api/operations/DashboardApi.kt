@@ -9,8 +9,8 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -27,8 +27,9 @@ public class DashboardApi(
 	public suspend fun getConfigurationPages(enableInMainMenu: Boolean? = null):
 			Response<List<ConfigurationPageInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["enableInMainMenu"] = enableInMainMenu
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("enableInMainMenu", enableInMainMenu)
+		}
 		val data = null
 		val response = api.`get`<List<ConfigurationPageInfo>>("/web/ConfigurationPages", pathParameters,
 				queryParameters, data)
@@ -42,8 +43,9 @@ public class DashboardApi(
 	 */
 	public suspend fun getDashboardConfigurationPage(name: String? = null): Response<String> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["name"] = name
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("name", name)
+		}
 		val data = null
 		val response = api.`get`<String>("/web/ConfigurationPage", pathParameters, queryParameters, data)
 		return response

@@ -13,8 +13,8 @@ import kotlin.Int
 import kotlin.Long
 import kotlin.String
 import kotlin.collections.Map
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -155,62 +155,64 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["playlistId"] = playlistId
-		pathParameters["segmentId"] = segmentId
-		pathParameters["container"] = container
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["runtimeTicks"] = runtimeTicks
-		queryParameters["actualSegmentLengthTicks"] = actualSegmentLengthTicks
-		queryParameters["static"] = static
-		queryParameters["params"] = params
-		queryParameters["tag"] = tag
-		queryParameters["deviceProfileId"] = deviceProfileId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["segmentContainer"] = segmentContainer
-		queryParameters["segmentLength"] = segmentLength
-		queryParameters["minSegments"] = minSegments
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["enableAutoStreamCopy"] = enableAutoStreamCopy
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["audioSampleRate"] = audioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["audioChannels"] = audioChannels
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["profile"] = profile
-		queryParameters["level"] = level
-		queryParameters["framerate"] = framerate
-		queryParameters["maxFramerate"] = maxFramerate
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["videoBitRate"] = videoBitRate
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["subtitleMethod"] = subtitleMethod
-		queryParameters["maxRefFrames"] = maxRefFrames
-		queryParameters["maxVideoBitDepth"] = maxVideoBitDepth
-		queryParameters["requireAvc"] = requireAvc
-		queryParameters["deInterlace"] = deInterlace
-		queryParameters["requireNonAnamorphic"] = requireNonAnamorphic
-		queryParameters["transcodingMaxAudioChannels"] = transcodingMaxAudioChannels
-		queryParameters["cpuCoreLimit"] = cpuCoreLimit
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
-		queryParameters["videoCodec"] = videoCodec
-		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodeReasons"] = transcodeReasons
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["videoStreamIndex"] = videoStreamIndex
-		queryParameters["context"] = context
-		queryParameters["streamOptions"] = streamOptions
+		val pathParameters = buildMap<String, Any?>(4) {
+			put("itemId", itemId)
+			put("playlistId", playlistId)
+			put("segmentId", segmentId)
+			put("container", container)
+		}
+		val queryParameters = buildMap<String, Any?>(50) {
+			put("runtimeTicks", runtimeTicks)
+			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
+			put("static", static)
+			put("params", params)
+			put("tag", tag)
+			put("deviceProfileId", deviceProfileId)
+			put("playSessionId", playSessionId)
+			put("segmentContainer", segmentContainer)
+			put("segmentLength", segmentLength)
+			put("minSegments", minSegments)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("audioCodec", audioCodec)
+			put("enableAutoStreamCopy", enableAutoStreamCopy)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("audioSampleRate", audioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("maxStreamingBitrate", maxStreamingBitrate)
+			put("audioBitRate", audioBitRate)
+			put("audioChannels", audioChannels)
+			put("maxAudioChannels", maxAudioChannels)
+			put("profile", profile)
+			put("level", level)
+			put("framerate", framerate)
+			put("maxFramerate", maxFramerate)
+			put("copyTimestamps", copyTimestamps)
+			put("startTimeTicks", startTimeTicks)
+			put("width", width)
+			put("height", height)
+			put("videoBitRate", videoBitRate)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("subtitleMethod", subtitleMethod)
+			put("maxRefFrames", maxRefFrames)
+			put("maxVideoBitDepth", maxVideoBitDepth)
+			put("requireAvc", requireAvc)
+			put("deInterlace", deInterlace)
+			put("requireNonAnamorphic", requireNonAnamorphic)
+			put("transcodingMaxAudioChannels", transcodingMaxAudioChannels)
+			put("cpuCoreLimit", cpuCoreLimit)
+			put("liveStreamId", liveStreamId)
+			put("enableMpegtsM2TsMode", enableMpegtsM2TsMode)
+			put("videoCodec", videoCodec)
+			put("subtitleCodec", subtitleCodec)
+			put("transcodeReasons", transcodeReasons)
+			put("audioStreamIndex", audioStreamIndex)
+			put("videoStreamIndex", videoStreamIndex)
+			put("context", context)
+			put("streamOptions", streamOptions)
+		}
 		val data = null
 		val response =
 				api.`get`<ByteReadChannel>("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}",
@@ -350,62 +352,64 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		includeCredentials: Boolean = true,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["playlistId"] = playlistId
-		pathParameters["segmentId"] = segmentId
-		pathParameters["container"] = container
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["runtimeTicks"] = runtimeTicks
-		queryParameters["actualSegmentLengthTicks"] = actualSegmentLengthTicks
-		queryParameters["static"] = static
-		queryParameters["params"] = params
-		queryParameters["tag"] = tag
-		queryParameters["deviceProfileId"] = deviceProfileId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["segmentContainer"] = segmentContainer
-		queryParameters["segmentLength"] = segmentLength
-		queryParameters["minSegments"] = minSegments
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["enableAutoStreamCopy"] = enableAutoStreamCopy
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["audioSampleRate"] = audioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["audioChannels"] = audioChannels
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["profile"] = profile
-		queryParameters["level"] = level
-		queryParameters["framerate"] = framerate
-		queryParameters["maxFramerate"] = maxFramerate
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["videoBitRate"] = videoBitRate
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["subtitleMethod"] = subtitleMethod
-		queryParameters["maxRefFrames"] = maxRefFrames
-		queryParameters["maxVideoBitDepth"] = maxVideoBitDepth
-		queryParameters["requireAvc"] = requireAvc
-		queryParameters["deInterlace"] = deInterlace
-		queryParameters["requireNonAnamorphic"] = requireNonAnamorphic
-		queryParameters["transcodingMaxAudioChannels"] = transcodingMaxAudioChannels
-		queryParameters["cpuCoreLimit"] = cpuCoreLimit
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
-		queryParameters["videoCodec"] = videoCodec
-		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodeReasons"] = transcodeReasons
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["videoStreamIndex"] = videoStreamIndex
-		queryParameters["context"] = context
-		queryParameters["streamOptions"] = streamOptions
+		val pathParameters = buildMap<String, Any?>(4) {
+			put("itemId", itemId)
+			put("playlistId", playlistId)
+			put("segmentId", segmentId)
+			put("container", container)
+		}
+		val queryParameters = buildMap<String, Any?>(50) {
+			put("runtimeTicks", runtimeTicks)
+			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
+			put("static", static)
+			put("params", params)
+			put("tag", tag)
+			put("deviceProfileId", deviceProfileId)
+			put("playSessionId", playSessionId)
+			put("segmentContainer", segmentContainer)
+			put("segmentLength", segmentLength)
+			put("minSegments", minSegments)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("audioCodec", audioCodec)
+			put("enableAutoStreamCopy", enableAutoStreamCopy)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("audioSampleRate", audioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("maxStreamingBitrate", maxStreamingBitrate)
+			put("audioBitRate", audioBitRate)
+			put("audioChannels", audioChannels)
+			put("maxAudioChannels", maxAudioChannels)
+			put("profile", profile)
+			put("level", level)
+			put("framerate", framerate)
+			put("maxFramerate", maxFramerate)
+			put("copyTimestamps", copyTimestamps)
+			put("startTimeTicks", startTimeTicks)
+			put("width", width)
+			put("height", height)
+			put("videoBitRate", videoBitRate)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("subtitleMethod", subtitleMethod)
+			put("maxRefFrames", maxRefFrames)
+			put("maxVideoBitDepth", maxVideoBitDepth)
+			put("requireAvc", requireAvc)
+			put("deInterlace", deInterlace)
+			put("requireNonAnamorphic", requireNonAnamorphic)
+			put("transcodingMaxAudioChannels", transcodingMaxAudioChannels)
+			put("cpuCoreLimit", cpuCoreLimit)
+			put("liveStreamId", liveStreamId)
+			put("enableMpegtsM2TsMode", enableMpegtsM2TsMode)
+			put("videoCodec", videoCodec)
+			put("subtitleCodec", subtitleCodec)
+			put("transcodeReasons", transcodeReasons)
+			put("audioStreamIndex", audioStreamIndex)
+			put("videoStreamIndex", videoStreamIndex)
+			put("context", context)
+			put("streamOptions", streamOptions)
+		}
 		return api.createUrl("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -543,63 +547,65 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["playlistId"] = playlistId
-		pathParameters["segmentId"] = segmentId
-		pathParameters["container"] = container
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["runtimeTicks"] = runtimeTicks
-		queryParameters["actualSegmentLengthTicks"] = actualSegmentLengthTicks
-		queryParameters["static"] = static
-		queryParameters["params"] = params
-		queryParameters["tag"] = tag
-		queryParameters["deviceProfileId"] = deviceProfileId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["segmentContainer"] = segmentContainer
-		queryParameters["segmentLength"] = segmentLength
-		queryParameters["minSegments"] = minSegments
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["enableAutoStreamCopy"] = enableAutoStreamCopy
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["audioSampleRate"] = audioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["audioChannels"] = audioChannels
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["profile"] = profile
-		queryParameters["level"] = level
-		queryParameters["framerate"] = framerate
-		queryParameters["maxFramerate"] = maxFramerate
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["videoBitRate"] = videoBitRate
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["subtitleMethod"] = subtitleMethod
-		queryParameters["maxRefFrames"] = maxRefFrames
-		queryParameters["maxVideoBitDepth"] = maxVideoBitDepth
-		queryParameters["requireAvc"] = requireAvc
-		queryParameters["deInterlace"] = deInterlace
-		queryParameters["requireNonAnamorphic"] = requireNonAnamorphic
-		queryParameters["transcodingMaxAudioChannels"] = transcodingMaxAudioChannels
-		queryParameters["cpuCoreLimit"] = cpuCoreLimit
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
-		queryParameters["videoCodec"] = videoCodec
-		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodeReasons"] = transcodeReasons
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["videoStreamIndex"] = videoStreamIndex
-		queryParameters["context"] = context
-		queryParameters["streamOptions"] = streamOptions
+		val pathParameters = buildMap<String, Any?>(4) {
+			put("itemId", itemId)
+			put("playlistId", playlistId)
+			put("segmentId", segmentId)
+			put("container", container)
+		}
+		val queryParameters = buildMap<String, Any?>(51) {
+			put("runtimeTicks", runtimeTicks)
+			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
+			put("static", static)
+			put("params", params)
+			put("tag", tag)
+			put("deviceProfileId", deviceProfileId)
+			put("playSessionId", playSessionId)
+			put("segmentContainer", segmentContainer)
+			put("segmentLength", segmentLength)
+			put("minSegments", minSegments)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("audioCodec", audioCodec)
+			put("enableAutoStreamCopy", enableAutoStreamCopy)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("audioSampleRate", audioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("audioBitRate", audioBitRate)
+			put("audioChannels", audioChannels)
+			put("maxAudioChannels", maxAudioChannels)
+			put("profile", profile)
+			put("level", level)
+			put("framerate", framerate)
+			put("maxFramerate", maxFramerate)
+			put("copyTimestamps", copyTimestamps)
+			put("startTimeTicks", startTimeTicks)
+			put("width", width)
+			put("height", height)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("videoBitRate", videoBitRate)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("subtitleMethod", subtitleMethod)
+			put("maxRefFrames", maxRefFrames)
+			put("maxVideoBitDepth", maxVideoBitDepth)
+			put("requireAvc", requireAvc)
+			put("deInterlace", deInterlace)
+			put("requireNonAnamorphic", requireNonAnamorphic)
+			put("transcodingMaxAudioChannels", transcodingMaxAudioChannels)
+			put("cpuCoreLimit", cpuCoreLimit)
+			put("liveStreamId", liveStreamId)
+			put("enableMpegtsM2TsMode", enableMpegtsM2TsMode)
+			put("videoCodec", videoCodec)
+			put("subtitleCodec", subtitleCodec)
+			put("transcodeReasons", transcodeReasons)
+			put("audioStreamIndex", audioStreamIndex)
+			put("videoStreamIndex", videoStreamIndex)
+			put("context", context)
+			put("streamOptions", streamOptions)
+		}
 		val data = null
 		val response =
 				api.`get`<ByteReadChannel>("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}",
@@ -742,63 +748,65 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		includeCredentials: Boolean = true,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["playlistId"] = playlistId
-		pathParameters["segmentId"] = segmentId
-		pathParameters["container"] = container
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["runtimeTicks"] = runtimeTicks
-		queryParameters["actualSegmentLengthTicks"] = actualSegmentLengthTicks
-		queryParameters["static"] = static
-		queryParameters["params"] = params
-		queryParameters["tag"] = tag
-		queryParameters["deviceProfileId"] = deviceProfileId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["segmentContainer"] = segmentContainer
-		queryParameters["segmentLength"] = segmentLength
-		queryParameters["minSegments"] = minSegments
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["enableAutoStreamCopy"] = enableAutoStreamCopy
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["audioSampleRate"] = audioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["audioChannels"] = audioChannels
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["profile"] = profile
-		queryParameters["level"] = level
-		queryParameters["framerate"] = framerate
-		queryParameters["maxFramerate"] = maxFramerate
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["videoBitRate"] = videoBitRate
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["subtitleMethod"] = subtitleMethod
-		queryParameters["maxRefFrames"] = maxRefFrames
-		queryParameters["maxVideoBitDepth"] = maxVideoBitDepth
-		queryParameters["requireAvc"] = requireAvc
-		queryParameters["deInterlace"] = deInterlace
-		queryParameters["requireNonAnamorphic"] = requireNonAnamorphic
-		queryParameters["transcodingMaxAudioChannels"] = transcodingMaxAudioChannels
-		queryParameters["cpuCoreLimit"] = cpuCoreLimit
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
-		queryParameters["videoCodec"] = videoCodec
-		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodeReasons"] = transcodeReasons
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["videoStreamIndex"] = videoStreamIndex
-		queryParameters["context"] = context
-		queryParameters["streamOptions"] = streamOptions
+		val pathParameters = buildMap<String, Any?>(4) {
+			put("itemId", itemId)
+			put("playlistId", playlistId)
+			put("segmentId", segmentId)
+			put("container", container)
+		}
+		val queryParameters = buildMap<String, Any?>(51) {
+			put("runtimeTicks", runtimeTicks)
+			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
+			put("static", static)
+			put("params", params)
+			put("tag", tag)
+			put("deviceProfileId", deviceProfileId)
+			put("playSessionId", playSessionId)
+			put("segmentContainer", segmentContainer)
+			put("segmentLength", segmentLength)
+			put("minSegments", minSegments)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("audioCodec", audioCodec)
+			put("enableAutoStreamCopy", enableAutoStreamCopy)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("audioSampleRate", audioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("audioBitRate", audioBitRate)
+			put("audioChannels", audioChannels)
+			put("maxAudioChannels", maxAudioChannels)
+			put("profile", profile)
+			put("level", level)
+			put("framerate", framerate)
+			put("maxFramerate", maxFramerate)
+			put("copyTimestamps", copyTimestamps)
+			put("startTimeTicks", startTimeTicks)
+			put("width", width)
+			put("height", height)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("videoBitRate", videoBitRate)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("subtitleMethod", subtitleMethod)
+			put("maxRefFrames", maxRefFrames)
+			put("maxVideoBitDepth", maxVideoBitDepth)
+			put("requireAvc", requireAvc)
+			put("deInterlace", deInterlace)
+			put("requireNonAnamorphic", requireNonAnamorphic)
+			put("transcodingMaxAudioChannels", transcodingMaxAudioChannels)
+			put("cpuCoreLimit", cpuCoreLimit)
+			put("liveStreamId", liveStreamId)
+			put("enableMpegtsM2TsMode", enableMpegtsM2TsMode)
+			put("videoCodec", videoCodec)
+			put("subtitleCodec", subtitleCodec)
+			put("transcodeReasons", transcodeReasons)
+			put("audioStreamIndex", audioStreamIndex)
+			put("videoStreamIndex", videoStreamIndex)
+			put("context", context)
+			put("streamOptions", streamOptions)
+		}
 		return api.createUrl("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -929,60 +937,62 @@ public class DynamicHlsApi(
 		maxHeight: Int? = null,
 		enableSubtitlesInManifest: Boolean? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["container"] = container
-		queryParameters["static"] = static
-		queryParameters["params"] = params
-		queryParameters["tag"] = tag
-		queryParameters["deviceProfileId"] = deviceProfileId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["segmentContainer"] = segmentContainer
-		queryParameters["segmentLength"] = segmentLength
-		queryParameters["minSegments"] = minSegments
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["enableAutoStreamCopy"] = enableAutoStreamCopy
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["audioSampleRate"] = audioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["audioChannels"] = audioChannels
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["profile"] = profile
-		queryParameters["level"] = level
-		queryParameters["framerate"] = framerate
-		queryParameters["maxFramerate"] = maxFramerate
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["videoBitRate"] = videoBitRate
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["subtitleMethod"] = subtitleMethod
-		queryParameters["maxRefFrames"] = maxRefFrames
-		queryParameters["maxVideoBitDepth"] = maxVideoBitDepth
-		queryParameters["requireAvc"] = requireAvc
-		queryParameters["deInterlace"] = deInterlace
-		queryParameters["requireNonAnamorphic"] = requireNonAnamorphic
-		queryParameters["transcodingMaxAudioChannels"] = transcodingMaxAudioChannels
-		queryParameters["cpuCoreLimit"] = cpuCoreLimit
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
-		queryParameters["videoCodec"] = videoCodec
-		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodeReasons"] = transcodeReasons
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["videoStreamIndex"] = videoStreamIndex
-		queryParameters["context"] = context
-		queryParameters["streamOptions"] = streamOptions
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["enableSubtitlesInManifest"] = enableSubtitlesInManifest
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(51) {
+			put("container", container)
+			put("static", static)
+			put("params", params)
+			put("tag", tag)
+			put("deviceProfileId", deviceProfileId)
+			put("playSessionId", playSessionId)
+			put("segmentContainer", segmentContainer)
+			put("segmentLength", segmentLength)
+			put("minSegments", minSegments)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("audioCodec", audioCodec)
+			put("enableAutoStreamCopy", enableAutoStreamCopy)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("audioSampleRate", audioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("audioBitRate", audioBitRate)
+			put("audioChannels", audioChannels)
+			put("maxAudioChannels", maxAudioChannels)
+			put("profile", profile)
+			put("level", level)
+			put("framerate", framerate)
+			put("maxFramerate", maxFramerate)
+			put("copyTimestamps", copyTimestamps)
+			put("startTimeTicks", startTimeTicks)
+			put("width", width)
+			put("height", height)
+			put("videoBitRate", videoBitRate)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("subtitleMethod", subtitleMethod)
+			put("maxRefFrames", maxRefFrames)
+			put("maxVideoBitDepth", maxVideoBitDepth)
+			put("requireAvc", requireAvc)
+			put("deInterlace", deInterlace)
+			put("requireNonAnamorphic", requireNonAnamorphic)
+			put("transcodingMaxAudioChannels", transcodingMaxAudioChannels)
+			put("cpuCoreLimit", cpuCoreLimit)
+			put("liveStreamId", liveStreamId)
+			put("enableMpegtsM2TsMode", enableMpegtsM2TsMode)
+			put("videoCodec", videoCodec)
+			put("subtitleCodec", subtitleCodec)
+			put("transcodeReasons", transcodeReasons)
+			put("audioStreamIndex", audioStreamIndex)
+			put("videoStreamIndex", videoStreamIndex)
+			put("context", context)
+			put("streamOptions", streamOptions)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("enableSubtitlesInManifest", enableSubtitlesInManifest)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/live.m3u8", pathParameters,
 				queryParameters, data)
@@ -1117,60 +1127,62 @@ public class DynamicHlsApi(
 		enableSubtitlesInManifest: Boolean? = null,
 		includeCredentials: Boolean = true,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["container"] = container
-		queryParameters["static"] = static
-		queryParameters["params"] = params
-		queryParameters["tag"] = tag
-		queryParameters["deviceProfileId"] = deviceProfileId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["segmentContainer"] = segmentContainer
-		queryParameters["segmentLength"] = segmentLength
-		queryParameters["minSegments"] = minSegments
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["enableAutoStreamCopy"] = enableAutoStreamCopy
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["audioSampleRate"] = audioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["audioChannels"] = audioChannels
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["profile"] = profile
-		queryParameters["level"] = level
-		queryParameters["framerate"] = framerate
-		queryParameters["maxFramerate"] = maxFramerate
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["videoBitRate"] = videoBitRate
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["subtitleMethod"] = subtitleMethod
-		queryParameters["maxRefFrames"] = maxRefFrames
-		queryParameters["maxVideoBitDepth"] = maxVideoBitDepth
-		queryParameters["requireAvc"] = requireAvc
-		queryParameters["deInterlace"] = deInterlace
-		queryParameters["requireNonAnamorphic"] = requireNonAnamorphic
-		queryParameters["transcodingMaxAudioChannels"] = transcodingMaxAudioChannels
-		queryParameters["cpuCoreLimit"] = cpuCoreLimit
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
-		queryParameters["videoCodec"] = videoCodec
-		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodeReasons"] = transcodeReasons
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["videoStreamIndex"] = videoStreamIndex
-		queryParameters["context"] = context
-		queryParameters["streamOptions"] = streamOptions
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["enableSubtitlesInManifest"] = enableSubtitlesInManifest
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(51) {
+			put("container", container)
+			put("static", static)
+			put("params", params)
+			put("tag", tag)
+			put("deviceProfileId", deviceProfileId)
+			put("playSessionId", playSessionId)
+			put("segmentContainer", segmentContainer)
+			put("segmentLength", segmentLength)
+			put("minSegments", minSegments)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("audioCodec", audioCodec)
+			put("enableAutoStreamCopy", enableAutoStreamCopy)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("audioSampleRate", audioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("audioBitRate", audioBitRate)
+			put("audioChannels", audioChannels)
+			put("maxAudioChannels", maxAudioChannels)
+			put("profile", profile)
+			put("level", level)
+			put("framerate", framerate)
+			put("maxFramerate", maxFramerate)
+			put("copyTimestamps", copyTimestamps)
+			put("startTimeTicks", startTimeTicks)
+			put("width", width)
+			put("height", height)
+			put("videoBitRate", videoBitRate)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("subtitleMethod", subtitleMethod)
+			put("maxRefFrames", maxRefFrames)
+			put("maxVideoBitDepth", maxVideoBitDepth)
+			put("requireAvc", requireAvc)
+			put("deInterlace", deInterlace)
+			put("requireNonAnamorphic", requireNonAnamorphic)
+			put("transcodingMaxAudioChannels", transcodingMaxAudioChannels)
+			put("cpuCoreLimit", cpuCoreLimit)
+			put("liveStreamId", liveStreamId)
+			put("enableMpegtsM2TsMode", enableMpegtsM2TsMode)
+			put("videoCodec", videoCodec)
+			put("subtitleCodec", subtitleCodec)
+			put("transcodeReasons", transcodeReasons)
+			put("audioStreamIndex", audioStreamIndex)
+			put("videoStreamIndex", videoStreamIndex)
+			put("context", context)
+			put("streamOptions", streamOptions)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("enableSubtitlesInManifest", enableSubtitlesInManifest)
+		}
 		return api.createUrl("/Videos/{itemId}/live.m3u8", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -1297,58 +1309,60 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["static"] = static
-		queryParameters["params"] = params
-		queryParameters["tag"] = tag
-		queryParameters["deviceProfileId"] = deviceProfileId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["segmentContainer"] = segmentContainer
-		queryParameters["segmentLength"] = segmentLength
-		queryParameters["minSegments"] = minSegments
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["enableAutoStreamCopy"] = enableAutoStreamCopy
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["audioSampleRate"] = audioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["audioChannels"] = audioChannels
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["profile"] = profile
-		queryParameters["level"] = level
-		queryParameters["framerate"] = framerate
-		queryParameters["maxFramerate"] = maxFramerate
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["videoBitRate"] = videoBitRate
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["subtitleMethod"] = subtitleMethod
-		queryParameters["maxRefFrames"] = maxRefFrames
-		queryParameters["maxVideoBitDepth"] = maxVideoBitDepth
-		queryParameters["requireAvc"] = requireAvc
-		queryParameters["deInterlace"] = deInterlace
-		queryParameters["requireNonAnamorphic"] = requireNonAnamorphic
-		queryParameters["transcodingMaxAudioChannels"] = transcodingMaxAudioChannels
-		queryParameters["cpuCoreLimit"] = cpuCoreLimit
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
-		queryParameters["videoCodec"] = videoCodec
-		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodeReasons"] = transcodeReasons
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["videoStreamIndex"] = videoStreamIndex
-		queryParameters["context"] = context
-		queryParameters["streamOptions"] = streamOptions
-		queryParameters["enableAdaptiveBitrateStreaming"] = enableAdaptiveBitrateStreaming
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(49) {
+			put("static", static)
+			put("params", params)
+			put("tag", tag)
+			put("deviceProfileId", deviceProfileId)
+			put("playSessionId", playSessionId)
+			put("segmentContainer", segmentContainer)
+			put("segmentLength", segmentLength)
+			put("minSegments", minSegments)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("audioCodec", audioCodec)
+			put("enableAutoStreamCopy", enableAutoStreamCopy)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("audioSampleRate", audioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("maxStreamingBitrate", maxStreamingBitrate)
+			put("audioBitRate", audioBitRate)
+			put("audioChannels", audioChannels)
+			put("maxAudioChannels", maxAudioChannels)
+			put("profile", profile)
+			put("level", level)
+			put("framerate", framerate)
+			put("maxFramerate", maxFramerate)
+			put("copyTimestamps", copyTimestamps)
+			put("startTimeTicks", startTimeTicks)
+			put("width", width)
+			put("height", height)
+			put("videoBitRate", videoBitRate)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("subtitleMethod", subtitleMethod)
+			put("maxRefFrames", maxRefFrames)
+			put("maxVideoBitDepth", maxVideoBitDepth)
+			put("requireAvc", requireAvc)
+			put("deInterlace", deInterlace)
+			put("requireNonAnamorphic", requireNonAnamorphic)
+			put("transcodingMaxAudioChannels", transcodingMaxAudioChannels)
+			put("cpuCoreLimit", cpuCoreLimit)
+			put("liveStreamId", liveStreamId)
+			put("enableMpegtsM2TsMode", enableMpegtsM2TsMode)
+			put("videoCodec", videoCodec)
+			put("subtitleCodec", subtitleCodec)
+			put("transcodeReasons", transcodeReasons)
+			put("audioStreamIndex", audioStreamIndex)
+			put("videoStreamIndex", videoStreamIndex)
+			put("context", context)
+			put("streamOptions", streamOptions)
+			put("enableAdaptiveBitrateStreaming", enableAdaptiveBitrateStreaming)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/master.m3u8", pathParameters,
 				queryParameters, data)
@@ -1479,58 +1493,60 @@ public class DynamicHlsApi(
 		enableAdaptiveBitrateStreaming: Boolean? = true,
 		includeCredentials: Boolean = true,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["static"] = static
-		queryParameters["params"] = params
-		queryParameters["tag"] = tag
-		queryParameters["deviceProfileId"] = deviceProfileId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["segmentContainer"] = segmentContainer
-		queryParameters["segmentLength"] = segmentLength
-		queryParameters["minSegments"] = minSegments
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["enableAutoStreamCopy"] = enableAutoStreamCopy
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["audioSampleRate"] = audioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["audioChannels"] = audioChannels
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["profile"] = profile
-		queryParameters["level"] = level
-		queryParameters["framerate"] = framerate
-		queryParameters["maxFramerate"] = maxFramerate
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["videoBitRate"] = videoBitRate
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["subtitleMethod"] = subtitleMethod
-		queryParameters["maxRefFrames"] = maxRefFrames
-		queryParameters["maxVideoBitDepth"] = maxVideoBitDepth
-		queryParameters["requireAvc"] = requireAvc
-		queryParameters["deInterlace"] = deInterlace
-		queryParameters["requireNonAnamorphic"] = requireNonAnamorphic
-		queryParameters["transcodingMaxAudioChannels"] = transcodingMaxAudioChannels
-		queryParameters["cpuCoreLimit"] = cpuCoreLimit
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
-		queryParameters["videoCodec"] = videoCodec
-		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodeReasons"] = transcodeReasons
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["videoStreamIndex"] = videoStreamIndex
-		queryParameters["context"] = context
-		queryParameters["streamOptions"] = streamOptions
-		queryParameters["enableAdaptiveBitrateStreaming"] = enableAdaptiveBitrateStreaming
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(49) {
+			put("static", static)
+			put("params", params)
+			put("tag", tag)
+			put("deviceProfileId", deviceProfileId)
+			put("playSessionId", playSessionId)
+			put("segmentContainer", segmentContainer)
+			put("segmentLength", segmentLength)
+			put("minSegments", minSegments)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("audioCodec", audioCodec)
+			put("enableAutoStreamCopy", enableAutoStreamCopy)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("audioSampleRate", audioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("maxStreamingBitrate", maxStreamingBitrate)
+			put("audioBitRate", audioBitRate)
+			put("audioChannels", audioChannels)
+			put("maxAudioChannels", maxAudioChannels)
+			put("profile", profile)
+			put("level", level)
+			put("framerate", framerate)
+			put("maxFramerate", maxFramerate)
+			put("copyTimestamps", copyTimestamps)
+			put("startTimeTicks", startTimeTicks)
+			put("width", width)
+			put("height", height)
+			put("videoBitRate", videoBitRate)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("subtitleMethod", subtitleMethod)
+			put("maxRefFrames", maxRefFrames)
+			put("maxVideoBitDepth", maxVideoBitDepth)
+			put("requireAvc", requireAvc)
+			put("deInterlace", deInterlace)
+			put("requireNonAnamorphic", requireNonAnamorphic)
+			put("transcodingMaxAudioChannels", transcodingMaxAudioChannels)
+			put("cpuCoreLimit", cpuCoreLimit)
+			put("liveStreamId", liveStreamId)
+			put("enableMpegtsM2TsMode", enableMpegtsM2TsMode)
+			put("videoCodec", videoCodec)
+			put("subtitleCodec", subtitleCodec)
+			put("transcodeReasons", transcodeReasons)
+			put("audioStreamIndex", audioStreamIndex)
+			put("videoStreamIndex", videoStreamIndex)
+			put("context", context)
+			put("streamOptions", streamOptions)
+			put("enableAdaptiveBitrateStreaming", enableAdaptiveBitrateStreaming)
+		}
 		return api.createUrl("/Audio/{itemId}/master.m3u8", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -1659,59 +1675,61 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["static"] = static
-		queryParameters["params"] = params
-		queryParameters["tag"] = tag
-		queryParameters["deviceProfileId"] = deviceProfileId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["segmentContainer"] = segmentContainer
-		queryParameters["segmentLength"] = segmentLength
-		queryParameters["minSegments"] = minSegments
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["enableAutoStreamCopy"] = enableAutoStreamCopy
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["audioSampleRate"] = audioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["audioChannels"] = audioChannels
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["profile"] = profile
-		queryParameters["level"] = level
-		queryParameters["framerate"] = framerate
-		queryParameters["maxFramerate"] = maxFramerate
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["videoBitRate"] = videoBitRate
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["subtitleMethod"] = subtitleMethod
-		queryParameters["maxRefFrames"] = maxRefFrames
-		queryParameters["maxVideoBitDepth"] = maxVideoBitDepth
-		queryParameters["requireAvc"] = requireAvc
-		queryParameters["deInterlace"] = deInterlace
-		queryParameters["requireNonAnamorphic"] = requireNonAnamorphic
-		queryParameters["transcodingMaxAudioChannels"] = transcodingMaxAudioChannels
-		queryParameters["cpuCoreLimit"] = cpuCoreLimit
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
-		queryParameters["videoCodec"] = videoCodec
-		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodeReasons"] = transcodeReasons
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["videoStreamIndex"] = videoStreamIndex
-		queryParameters["context"] = context
-		queryParameters["streamOptions"] = streamOptions
-		queryParameters["enableAdaptiveBitrateStreaming"] = enableAdaptiveBitrateStreaming
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(50) {
+			put("static", static)
+			put("params", params)
+			put("tag", tag)
+			put("deviceProfileId", deviceProfileId)
+			put("playSessionId", playSessionId)
+			put("segmentContainer", segmentContainer)
+			put("segmentLength", segmentLength)
+			put("minSegments", minSegments)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("audioCodec", audioCodec)
+			put("enableAutoStreamCopy", enableAutoStreamCopy)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("audioSampleRate", audioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("audioBitRate", audioBitRate)
+			put("audioChannels", audioChannels)
+			put("maxAudioChannels", maxAudioChannels)
+			put("profile", profile)
+			put("level", level)
+			put("framerate", framerate)
+			put("maxFramerate", maxFramerate)
+			put("copyTimestamps", copyTimestamps)
+			put("startTimeTicks", startTimeTicks)
+			put("width", width)
+			put("height", height)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("videoBitRate", videoBitRate)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("subtitleMethod", subtitleMethod)
+			put("maxRefFrames", maxRefFrames)
+			put("maxVideoBitDepth", maxVideoBitDepth)
+			put("requireAvc", requireAvc)
+			put("deInterlace", deInterlace)
+			put("requireNonAnamorphic", requireNonAnamorphic)
+			put("transcodingMaxAudioChannels", transcodingMaxAudioChannels)
+			put("cpuCoreLimit", cpuCoreLimit)
+			put("liveStreamId", liveStreamId)
+			put("enableMpegtsM2TsMode", enableMpegtsM2TsMode)
+			put("videoCodec", videoCodec)
+			put("subtitleCodec", subtitleCodec)
+			put("transcodeReasons", transcodeReasons)
+			put("audioStreamIndex", audioStreamIndex)
+			put("videoStreamIndex", videoStreamIndex)
+			put("context", context)
+			put("streamOptions", streamOptions)
+			put("enableAdaptiveBitrateStreaming", enableAdaptiveBitrateStreaming)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/master.m3u8", pathParameters,
 				queryParameters, data)
@@ -1844,59 +1862,61 @@ public class DynamicHlsApi(
 		enableAdaptiveBitrateStreaming: Boolean? = true,
 		includeCredentials: Boolean = true,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["static"] = static
-		queryParameters["params"] = params
-		queryParameters["tag"] = tag
-		queryParameters["deviceProfileId"] = deviceProfileId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["segmentContainer"] = segmentContainer
-		queryParameters["segmentLength"] = segmentLength
-		queryParameters["minSegments"] = minSegments
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["enableAutoStreamCopy"] = enableAutoStreamCopy
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["audioSampleRate"] = audioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["audioChannels"] = audioChannels
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["profile"] = profile
-		queryParameters["level"] = level
-		queryParameters["framerate"] = framerate
-		queryParameters["maxFramerate"] = maxFramerate
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["videoBitRate"] = videoBitRate
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["subtitleMethod"] = subtitleMethod
-		queryParameters["maxRefFrames"] = maxRefFrames
-		queryParameters["maxVideoBitDepth"] = maxVideoBitDepth
-		queryParameters["requireAvc"] = requireAvc
-		queryParameters["deInterlace"] = deInterlace
-		queryParameters["requireNonAnamorphic"] = requireNonAnamorphic
-		queryParameters["transcodingMaxAudioChannels"] = transcodingMaxAudioChannels
-		queryParameters["cpuCoreLimit"] = cpuCoreLimit
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
-		queryParameters["videoCodec"] = videoCodec
-		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodeReasons"] = transcodeReasons
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["videoStreamIndex"] = videoStreamIndex
-		queryParameters["context"] = context
-		queryParameters["streamOptions"] = streamOptions
-		queryParameters["enableAdaptiveBitrateStreaming"] = enableAdaptiveBitrateStreaming
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(50) {
+			put("static", static)
+			put("params", params)
+			put("tag", tag)
+			put("deviceProfileId", deviceProfileId)
+			put("playSessionId", playSessionId)
+			put("segmentContainer", segmentContainer)
+			put("segmentLength", segmentLength)
+			put("minSegments", minSegments)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("audioCodec", audioCodec)
+			put("enableAutoStreamCopy", enableAutoStreamCopy)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("audioSampleRate", audioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("audioBitRate", audioBitRate)
+			put("audioChannels", audioChannels)
+			put("maxAudioChannels", maxAudioChannels)
+			put("profile", profile)
+			put("level", level)
+			put("framerate", framerate)
+			put("maxFramerate", maxFramerate)
+			put("copyTimestamps", copyTimestamps)
+			put("startTimeTicks", startTimeTicks)
+			put("width", width)
+			put("height", height)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("videoBitRate", videoBitRate)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("subtitleMethod", subtitleMethod)
+			put("maxRefFrames", maxRefFrames)
+			put("maxVideoBitDepth", maxVideoBitDepth)
+			put("requireAvc", requireAvc)
+			put("deInterlace", deInterlace)
+			put("requireNonAnamorphic", requireNonAnamorphic)
+			put("transcodingMaxAudioChannels", transcodingMaxAudioChannels)
+			put("cpuCoreLimit", cpuCoreLimit)
+			put("liveStreamId", liveStreamId)
+			put("enableMpegtsM2TsMode", enableMpegtsM2TsMode)
+			put("videoCodec", videoCodec)
+			put("subtitleCodec", subtitleCodec)
+			put("transcodeReasons", transcodeReasons)
+			put("audioStreamIndex", audioStreamIndex)
+			put("videoStreamIndex", videoStreamIndex)
+			put("context", context)
+			put("streamOptions", streamOptions)
+			put("enableAdaptiveBitrateStreaming", enableAdaptiveBitrateStreaming)
+		}
 		return api.createUrl("/Videos/{itemId}/master.m3u8", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -2020,57 +2040,59 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["static"] = static
-		queryParameters["params"] = params
-		queryParameters["tag"] = tag
-		queryParameters["deviceProfileId"] = deviceProfileId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["segmentContainer"] = segmentContainer
-		queryParameters["segmentLength"] = segmentLength
-		queryParameters["minSegments"] = minSegments
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["enableAutoStreamCopy"] = enableAutoStreamCopy
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["audioSampleRate"] = audioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["audioChannels"] = audioChannels
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["profile"] = profile
-		queryParameters["level"] = level
-		queryParameters["framerate"] = framerate
-		queryParameters["maxFramerate"] = maxFramerate
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["videoBitRate"] = videoBitRate
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["subtitleMethod"] = subtitleMethod
-		queryParameters["maxRefFrames"] = maxRefFrames
-		queryParameters["maxVideoBitDepth"] = maxVideoBitDepth
-		queryParameters["requireAvc"] = requireAvc
-		queryParameters["deInterlace"] = deInterlace
-		queryParameters["requireNonAnamorphic"] = requireNonAnamorphic
-		queryParameters["transcodingMaxAudioChannels"] = transcodingMaxAudioChannels
-		queryParameters["cpuCoreLimit"] = cpuCoreLimit
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
-		queryParameters["videoCodec"] = videoCodec
-		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodeReasons"] = transcodeReasons
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["videoStreamIndex"] = videoStreamIndex
-		queryParameters["context"] = context
-		queryParameters["streamOptions"] = streamOptions
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(48) {
+			put("static", static)
+			put("params", params)
+			put("tag", tag)
+			put("deviceProfileId", deviceProfileId)
+			put("playSessionId", playSessionId)
+			put("segmentContainer", segmentContainer)
+			put("segmentLength", segmentLength)
+			put("minSegments", minSegments)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("audioCodec", audioCodec)
+			put("enableAutoStreamCopy", enableAutoStreamCopy)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("audioSampleRate", audioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("maxStreamingBitrate", maxStreamingBitrate)
+			put("audioBitRate", audioBitRate)
+			put("audioChannels", audioChannels)
+			put("maxAudioChannels", maxAudioChannels)
+			put("profile", profile)
+			put("level", level)
+			put("framerate", framerate)
+			put("maxFramerate", maxFramerate)
+			put("copyTimestamps", copyTimestamps)
+			put("startTimeTicks", startTimeTicks)
+			put("width", width)
+			put("height", height)
+			put("videoBitRate", videoBitRate)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("subtitleMethod", subtitleMethod)
+			put("maxRefFrames", maxRefFrames)
+			put("maxVideoBitDepth", maxVideoBitDepth)
+			put("requireAvc", requireAvc)
+			put("deInterlace", deInterlace)
+			put("requireNonAnamorphic", requireNonAnamorphic)
+			put("transcodingMaxAudioChannels", transcodingMaxAudioChannels)
+			put("cpuCoreLimit", cpuCoreLimit)
+			put("liveStreamId", liveStreamId)
+			put("enableMpegtsM2TsMode", enableMpegtsM2TsMode)
+			put("videoCodec", videoCodec)
+			put("subtitleCodec", subtitleCodec)
+			put("transcodeReasons", transcodeReasons)
+			put("audioStreamIndex", audioStreamIndex)
+			put("videoStreamIndex", videoStreamIndex)
+			put("context", context)
+			put("streamOptions", streamOptions)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/main.m3u8", pathParameters,
 				queryParameters, data)
@@ -2198,57 +2220,59 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		includeCredentials: Boolean = true,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["static"] = static
-		queryParameters["params"] = params
-		queryParameters["tag"] = tag
-		queryParameters["deviceProfileId"] = deviceProfileId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["segmentContainer"] = segmentContainer
-		queryParameters["segmentLength"] = segmentLength
-		queryParameters["minSegments"] = minSegments
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["enableAutoStreamCopy"] = enableAutoStreamCopy
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["audioSampleRate"] = audioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["audioChannels"] = audioChannels
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["profile"] = profile
-		queryParameters["level"] = level
-		queryParameters["framerate"] = framerate
-		queryParameters["maxFramerate"] = maxFramerate
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["videoBitRate"] = videoBitRate
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["subtitleMethod"] = subtitleMethod
-		queryParameters["maxRefFrames"] = maxRefFrames
-		queryParameters["maxVideoBitDepth"] = maxVideoBitDepth
-		queryParameters["requireAvc"] = requireAvc
-		queryParameters["deInterlace"] = deInterlace
-		queryParameters["requireNonAnamorphic"] = requireNonAnamorphic
-		queryParameters["transcodingMaxAudioChannels"] = transcodingMaxAudioChannels
-		queryParameters["cpuCoreLimit"] = cpuCoreLimit
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
-		queryParameters["videoCodec"] = videoCodec
-		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodeReasons"] = transcodeReasons
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["videoStreamIndex"] = videoStreamIndex
-		queryParameters["context"] = context
-		queryParameters["streamOptions"] = streamOptions
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(48) {
+			put("static", static)
+			put("params", params)
+			put("tag", tag)
+			put("deviceProfileId", deviceProfileId)
+			put("playSessionId", playSessionId)
+			put("segmentContainer", segmentContainer)
+			put("segmentLength", segmentLength)
+			put("minSegments", minSegments)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("audioCodec", audioCodec)
+			put("enableAutoStreamCopy", enableAutoStreamCopy)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("audioSampleRate", audioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("maxStreamingBitrate", maxStreamingBitrate)
+			put("audioBitRate", audioBitRate)
+			put("audioChannels", audioChannels)
+			put("maxAudioChannels", maxAudioChannels)
+			put("profile", profile)
+			put("level", level)
+			put("framerate", framerate)
+			put("maxFramerate", maxFramerate)
+			put("copyTimestamps", copyTimestamps)
+			put("startTimeTicks", startTimeTicks)
+			put("width", width)
+			put("height", height)
+			put("videoBitRate", videoBitRate)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("subtitleMethod", subtitleMethod)
+			put("maxRefFrames", maxRefFrames)
+			put("maxVideoBitDepth", maxVideoBitDepth)
+			put("requireAvc", requireAvc)
+			put("deInterlace", deInterlace)
+			put("requireNonAnamorphic", requireNonAnamorphic)
+			put("transcodingMaxAudioChannels", transcodingMaxAudioChannels)
+			put("cpuCoreLimit", cpuCoreLimit)
+			put("liveStreamId", liveStreamId)
+			put("enableMpegtsM2TsMode", enableMpegtsM2TsMode)
+			put("videoCodec", videoCodec)
+			put("subtitleCodec", subtitleCodec)
+			put("transcodeReasons", transcodeReasons)
+			put("audioStreamIndex", audioStreamIndex)
+			put("videoStreamIndex", videoStreamIndex)
+			put("context", context)
+			put("streamOptions", streamOptions)
+		}
 		return api.createUrl("/Audio/{itemId}/main.m3u8", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -2375,58 +2399,60 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["static"] = static
-		queryParameters["params"] = params
-		queryParameters["tag"] = tag
-		queryParameters["deviceProfileId"] = deviceProfileId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["segmentContainer"] = segmentContainer
-		queryParameters["segmentLength"] = segmentLength
-		queryParameters["minSegments"] = minSegments
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["enableAutoStreamCopy"] = enableAutoStreamCopy
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["audioSampleRate"] = audioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["audioChannels"] = audioChannels
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["profile"] = profile
-		queryParameters["level"] = level
-		queryParameters["framerate"] = framerate
-		queryParameters["maxFramerate"] = maxFramerate
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["videoBitRate"] = videoBitRate
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["subtitleMethod"] = subtitleMethod
-		queryParameters["maxRefFrames"] = maxRefFrames
-		queryParameters["maxVideoBitDepth"] = maxVideoBitDepth
-		queryParameters["requireAvc"] = requireAvc
-		queryParameters["deInterlace"] = deInterlace
-		queryParameters["requireNonAnamorphic"] = requireNonAnamorphic
-		queryParameters["transcodingMaxAudioChannels"] = transcodingMaxAudioChannels
-		queryParameters["cpuCoreLimit"] = cpuCoreLimit
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
-		queryParameters["videoCodec"] = videoCodec
-		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodeReasons"] = transcodeReasons
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["videoStreamIndex"] = videoStreamIndex
-		queryParameters["context"] = context
-		queryParameters["streamOptions"] = streamOptions
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(49) {
+			put("static", static)
+			put("params", params)
+			put("tag", tag)
+			put("deviceProfileId", deviceProfileId)
+			put("playSessionId", playSessionId)
+			put("segmentContainer", segmentContainer)
+			put("segmentLength", segmentLength)
+			put("minSegments", minSegments)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("audioCodec", audioCodec)
+			put("enableAutoStreamCopy", enableAutoStreamCopy)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("audioSampleRate", audioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("audioBitRate", audioBitRate)
+			put("audioChannels", audioChannels)
+			put("maxAudioChannels", maxAudioChannels)
+			put("profile", profile)
+			put("level", level)
+			put("framerate", framerate)
+			put("maxFramerate", maxFramerate)
+			put("copyTimestamps", copyTimestamps)
+			put("startTimeTicks", startTimeTicks)
+			put("width", width)
+			put("height", height)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("videoBitRate", videoBitRate)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("subtitleMethod", subtitleMethod)
+			put("maxRefFrames", maxRefFrames)
+			put("maxVideoBitDepth", maxVideoBitDepth)
+			put("requireAvc", requireAvc)
+			put("deInterlace", deInterlace)
+			put("requireNonAnamorphic", requireNonAnamorphic)
+			put("transcodingMaxAudioChannels", transcodingMaxAudioChannels)
+			put("cpuCoreLimit", cpuCoreLimit)
+			put("liveStreamId", liveStreamId)
+			put("enableMpegtsM2TsMode", enableMpegtsM2TsMode)
+			put("videoCodec", videoCodec)
+			put("subtitleCodec", subtitleCodec)
+			put("transcodeReasons", transcodeReasons)
+			put("audioStreamIndex", audioStreamIndex)
+			put("videoStreamIndex", videoStreamIndex)
+			put("context", context)
+			put("streamOptions", streamOptions)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/main.m3u8", pathParameters,
 				queryParameters, data)
@@ -2557,58 +2583,60 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		includeCredentials: Boolean = true,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["static"] = static
-		queryParameters["params"] = params
-		queryParameters["tag"] = tag
-		queryParameters["deviceProfileId"] = deviceProfileId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["segmentContainer"] = segmentContainer
-		queryParameters["segmentLength"] = segmentLength
-		queryParameters["minSegments"] = minSegments
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["deviceId"] = deviceId
-		queryParameters["audioCodec"] = audioCodec
-		queryParameters["enableAutoStreamCopy"] = enableAutoStreamCopy
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
-		queryParameters["breakOnNonKeyFrames"] = breakOnNonKeyFrames
-		queryParameters["audioSampleRate"] = audioSampleRate
-		queryParameters["maxAudioBitDepth"] = maxAudioBitDepth
-		queryParameters["audioBitRate"] = audioBitRate
-		queryParameters["audioChannels"] = audioChannels
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["profile"] = profile
-		queryParameters["level"] = level
-		queryParameters["framerate"] = framerate
-		queryParameters["maxFramerate"] = maxFramerate
-		queryParameters["copyTimestamps"] = copyTimestamps
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["videoBitRate"] = videoBitRate
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["subtitleMethod"] = subtitleMethod
-		queryParameters["maxRefFrames"] = maxRefFrames
-		queryParameters["maxVideoBitDepth"] = maxVideoBitDepth
-		queryParameters["requireAvc"] = requireAvc
-		queryParameters["deInterlace"] = deInterlace
-		queryParameters["requireNonAnamorphic"] = requireNonAnamorphic
-		queryParameters["transcodingMaxAudioChannels"] = transcodingMaxAudioChannels
-		queryParameters["cpuCoreLimit"] = cpuCoreLimit
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["enableMpegtsM2TsMode"] = enableMpegtsM2TsMode
-		queryParameters["videoCodec"] = videoCodec
-		queryParameters["subtitleCodec"] = subtitleCodec
-		queryParameters["transcodeReasons"] = transcodeReasons
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["videoStreamIndex"] = videoStreamIndex
-		queryParameters["context"] = context
-		queryParameters["streamOptions"] = streamOptions
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(49) {
+			put("static", static)
+			put("params", params)
+			put("tag", tag)
+			put("deviceProfileId", deviceProfileId)
+			put("playSessionId", playSessionId)
+			put("segmentContainer", segmentContainer)
+			put("segmentLength", segmentLength)
+			put("minSegments", minSegments)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("audioCodec", audioCodec)
+			put("enableAutoStreamCopy", enableAutoStreamCopy)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
+			put("audioSampleRate", audioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("audioBitRate", audioBitRate)
+			put("audioChannels", audioChannels)
+			put("maxAudioChannels", maxAudioChannels)
+			put("profile", profile)
+			put("level", level)
+			put("framerate", framerate)
+			put("maxFramerate", maxFramerate)
+			put("copyTimestamps", copyTimestamps)
+			put("startTimeTicks", startTimeTicks)
+			put("width", width)
+			put("height", height)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("videoBitRate", videoBitRate)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("subtitleMethod", subtitleMethod)
+			put("maxRefFrames", maxRefFrames)
+			put("maxVideoBitDepth", maxVideoBitDepth)
+			put("requireAvc", requireAvc)
+			put("deInterlace", deInterlace)
+			put("requireNonAnamorphic", requireNonAnamorphic)
+			put("transcodingMaxAudioChannels", transcodingMaxAudioChannels)
+			put("cpuCoreLimit", cpuCoreLimit)
+			put("liveStreamId", liveStreamId)
+			put("enableMpegtsM2TsMode", enableMpegtsM2TsMode)
+			put("videoCodec", videoCodec)
+			put("subtitleCodec", subtitleCodec)
+			put("transcodeReasons", transcodeReasons)
+			put("audioStreamIndex", audioStreamIndex)
+			put("videoStreamIndex", videoStreamIndex)
+			put("context", context)
+			put("streamOptions", streamOptions)
+		}
 		return api.createUrl("/Videos/{itemId}/main.m3u8", pathParameters, queryParameters,
 				includeCredentials)
 	}

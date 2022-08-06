@@ -11,9 +11,9 @@ import kotlin.Double
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.Collection
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -246,91 +246,92 @@ public class TrailersApi(
 		enableImages: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["maxOfficialRating"] = maxOfficialRating
-		queryParameters["hasThemeSong"] = hasThemeSong
-		queryParameters["hasThemeVideo"] = hasThemeVideo
-		queryParameters["hasSubtitles"] = hasSubtitles
-		queryParameters["hasSpecialFeature"] = hasSpecialFeature
-		queryParameters["hasTrailer"] = hasTrailer
-		queryParameters["adjacentTo"] = adjacentTo
-		queryParameters["parentIndexNumber"] = parentIndexNumber
-		queryParameters["hasParentalRating"] = hasParentalRating
-		queryParameters["isHd"] = isHd
-		queryParameters["is4K"] = is4k
-		queryParameters["locationTypes"] = locationTypes
-		queryParameters["excludeLocationTypes"] = excludeLocationTypes
-		queryParameters["isMissing"] = isMissing
-		queryParameters["isUnaired"] = isUnaired
-		queryParameters["minCommunityRating"] = minCommunityRating
-		queryParameters["minCriticRating"] = minCriticRating
-		queryParameters["minPremiereDate"] = minPremiereDate
-		queryParameters["minDateLastSaved"] = minDateLastSaved
-		queryParameters["minDateLastSavedForUser"] = minDateLastSavedForUser
-		queryParameters["maxPremiereDate"] = maxPremiereDate
-		queryParameters["hasOverview"] = hasOverview
-		queryParameters["hasImdbId"] = hasImdbId
-		queryParameters["hasTmdbId"] = hasTmdbId
-		queryParameters["hasTvdbId"] = hasTvdbId
-		queryParameters["isMovie"] = isMovie
-		queryParameters["isSeries"] = isSeries
-		queryParameters["isNews"] = isNews
-		queryParameters["isKids"] = isKids
-		queryParameters["isSports"] = isSports
-		queryParameters["excludeItemIds"] = excludeItemIds
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["recursive"] = recursive
-		queryParameters["searchTerm"] = searchTerm
-		queryParameters["sortOrder"] = sortOrder
-		queryParameters["parentId"] = parentId
-		queryParameters["fields"] = fields
-		queryParameters["excludeItemTypes"] = excludeItemTypes
-		queryParameters["filters"] = filters
-		queryParameters["isFavorite"] = isFavorite
-		queryParameters["mediaTypes"] = mediaTypes
-		queryParameters["imageTypes"] = imageTypes
-		queryParameters["sortBy"] = sortBy
-		queryParameters["isPlayed"] = isPlayed
-		queryParameters["genres"] = genres
-		queryParameters["officialRatings"] = officialRatings
-		queryParameters["tags"] = tags
-		queryParameters["years"] = years
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
-		queryParameters["person"] = person
-		queryParameters["personIds"] = personIds
-		queryParameters["personTypes"] = personTypes
-		queryParameters["studios"] = studios
-		queryParameters["artists"] = artists
-		queryParameters["excludeArtistIds"] = excludeArtistIds
-		queryParameters["artistIds"] = artistIds
-		queryParameters["albumArtistIds"] = albumArtistIds
-		queryParameters["contributingArtistIds"] = contributingArtistIds
-		queryParameters["albums"] = albums
-		queryParameters["albumIds"] = albumIds
-		queryParameters["ids"] = ids
-		queryParameters["videoTypes"] = videoTypes
-		queryParameters["minOfficialRating"] = minOfficialRating
-		queryParameters["isLocked"] = isLocked
-		queryParameters["isPlaceHolder"] = isPlaceHolder
-		queryParameters["hasOfficialRating"] = hasOfficialRating
-		queryParameters["collapseBoxSetItems"] = collapseBoxSetItems
-		queryParameters["minWidth"] = minWidth
-		queryParameters["minHeight"] = minHeight
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["is3D"] = is3d
-		queryParameters["seriesStatus"] = seriesStatus
-		queryParameters["nameStartsWithOrGreater"] = nameStartsWithOrGreater
-		queryParameters["nameStartsWith"] = nameStartsWith
-		queryParameters["nameLessThan"] = nameLessThan
-		queryParameters["studioIds"] = studioIds
-		queryParameters["genreIds"] = genreIds
-		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
-		queryParameters["enableImages"] = enableImages
+		val queryParameters = buildMap<String, Any?>(84) {
+			put("userId", userId)
+			put("maxOfficialRating", maxOfficialRating)
+			put("hasThemeSong", hasThemeSong)
+			put("hasThemeVideo", hasThemeVideo)
+			put("hasSubtitles", hasSubtitles)
+			put("hasSpecialFeature", hasSpecialFeature)
+			put("hasTrailer", hasTrailer)
+			put("adjacentTo", adjacentTo)
+			put("parentIndexNumber", parentIndexNumber)
+			put("hasParentalRating", hasParentalRating)
+			put("isHd", isHd)
+			put("is4K", is4k)
+			put("locationTypes", locationTypes)
+			put("excludeLocationTypes", excludeLocationTypes)
+			put("isMissing", isMissing)
+			put("isUnaired", isUnaired)
+			put("minCommunityRating", minCommunityRating)
+			put("minCriticRating", minCriticRating)
+			put("minPremiereDate", minPremiereDate)
+			put("minDateLastSaved", minDateLastSaved)
+			put("minDateLastSavedForUser", minDateLastSavedForUser)
+			put("maxPremiereDate", maxPremiereDate)
+			put("hasOverview", hasOverview)
+			put("hasImdbId", hasImdbId)
+			put("hasTmdbId", hasTmdbId)
+			put("hasTvdbId", hasTvdbId)
+			put("isMovie", isMovie)
+			put("isSeries", isSeries)
+			put("isNews", isNews)
+			put("isKids", isKids)
+			put("isSports", isSports)
+			put("excludeItemIds", excludeItemIds)
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("recursive", recursive)
+			put("searchTerm", searchTerm)
+			put("sortOrder", sortOrder)
+			put("parentId", parentId)
+			put("fields", fields)
+			put("excludeItemTypes", excludeItemTypes)
+			put("filters", filters)
+			put("isFavorite", isFavorite)
+			put("mediaTypes", mediaTypes)
+			put("imageTypes", imageTypes)
+			put("sortBy", sortBy)
+			put("isPlayed", isPlayed)
+			put("genres", genres)
+			put("officialRatings", officialRatings)
+			put("tags", tags)
+			put("years", years)
+			put("enableUserData", enableUserData)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+			put("person", person)
+			put("personIds", personIds)
+			put("personTypes", personTypes)
+			put("studios", studios)
+			put("artists", artists)
+			put("excludeArtistIds", excludeArtistIds)
+			put("artistIds", artistIds)
+			put("albumArtistIds", albumArtistIds)
+			put("contributingArtistIds", contributingArtistIds)
+			put("albums", albums)
+			put("albumIds", albumIds)
+			put("ids", ids)
+			put("videoTypes", videoTypes)
+			put("minOfficialRating", minOfficialRating)
+			put("isLocked", isLocked)
+			put("isPlaceHolder", isPlaceHolder)
+			put("hasOfficialRating", hasOfficialRating)
+			put("collapseBoxSetItems", collapseBoxSetItems)
+			put("minWidth", minWidth)
+			put("minHeight", minHeight)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("is3D", is3d)
+			put("seriesStatus", seriesStatus)
+			put("nameStartsWithOrGreater", nameStartsWithOrGreater)
+			put("nameStartsWith", nameStartsWith)
+			put("nameLessThan", nameLessThan)
+			put("studioIds", studioIds)
+			put("genreIds", genreIds)
+			put("enableTotalRecordCount", enableTotalRecordCount)
+			put("enableImages", enableImages)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Trailers", pathParameters, queryParameters,
 				data)

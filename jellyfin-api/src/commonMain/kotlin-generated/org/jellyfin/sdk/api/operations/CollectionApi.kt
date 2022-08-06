@@ -10,9 +10,9 @@ import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.Collection
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.delete
@@ -31,10 +31,12 @@ public class CollectionApi(
 	 */
 	public suspend fun addToCollection(collectionId: UUID, ids: Collection<UUID> = emptyList()):
 			Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["collectionId"] = collectionId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["ids"] = ids
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("collectionId", collectionId)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("ids", ids)
+		}
 		val data = null
 		val response = api.post<Unit>("/Collections/{collectionId}/Items", pathParameters,
 				queryParameters, data)
@@ -56,11 +58,12 @@ public class CollectionApi(
 		isLocked: Boolean? = false,
 	): Response<CollectionCreationResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["name"] = name
-		queryParameters["ids"] = ids
-		queryParameters["parentId"] = parentId
-		queryParameters["isLocked"] = isLocked
+		val queryParameters = buildMap<String, Any?>(4) {
+			put("name", name)
+			put("ids", ids)
+			put("parentId", parentId)
+			put("isLocked", isLocked)
+		}
 		val data = null
 		val response = api.post<CollectionCreationResult>("/Collections", pathParameters, queryParameters,
 				data)
@@ -75,10 +78,12 @@ public class CollectionApi(
 	 */
 	public suspend fun removeFromCollection(collectionId: UUID, ids: Collection<UUID> = emptyList()):
 			Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["collectionId"] = collectionId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["ids"] = ids
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("collectionId", collectionId)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("ids", ids)
+		}
 		val data = null
 		val response = api.delete<Unit>("/Collections/{collectionId}/Items", pathParameters,
 				queryParameters, data)

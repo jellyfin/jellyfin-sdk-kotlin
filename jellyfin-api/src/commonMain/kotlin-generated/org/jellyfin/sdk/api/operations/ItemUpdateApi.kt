@@ -8,8 +8,8 @@ package org.jellyfin.sdk.api.operations
 import kotlin.Any
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -27,8 +27,9 @@ public class ItemUpdateApi(
 	 * @param itemId The item id.
 	 */
 	public suspend fun getMetadataEditorInfo(itemId: UUID): Response<MetadataEditorInfo> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<MetadataEditorInfo>("/Items/{itemId}/MetadataEditor", pathParameters,
@@ -42,8 +43,9 @@ public class ItemUpdateApi(
 	 * @param itemId The item id.
 	 */
 	public suspend fun updateItem(itemId: UUID, `data`: BaseItemDto): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Items/{itemId}", pathParameters, queryParameters, data)
 		return response
@@ -57,10 +59,12 @@ public class ItemUpdateApi(
 	 */
 	public suspend fun updateItemContentType(itemId: UUID, contentType: String? = null):
 			Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["contentType"] = contentType
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("contentType", contentType)
+		}
 		val data = null
 		val response = api.post<Unit>("/Items/{itemId}/ContentType", pathParameters, queryParameters,
 				data)

@@ -10,8 +10,8 @@ import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -43,10 +43,12 @@ public class ItemLookupApi(
 		replaceAllImages: Boolean? = true,
 		`data`: RemoteSearchResult,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["replaceAllImages"] = replaceAllImages
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("replaceAllImages", replaceAllImages)
+		}
 		val response = api.post<Unit>("/Items/RemoteSearch/Apply/{itemId}", pathParameters,
 				queryParameters, data)
 		return response
@@ -82,8 +84,9 @@ public class ItemLookupApi(
 	 * @param itemId Item id.
 	 */
 	public suspend fun getExternalIdInfos(itemId: UUID): Response<List<ExternalIdInfo>> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<List<ExternalIdInfo>>("/Items/{itemId}/ExternalIdInfos", pathParameters,

@@ -15,8 +15,8 @@ import kotlin.Int
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import kotlin.require
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
@@ -55,11 +55,13 @@ public class ImageApi(
 		imageType: ImageType,
 		imageIndex: Int? = null,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("imageIndex", imageIndex)
+		}
 		val data = null
 		val response = api.delete<Unit>("/Items/{itemId}/Images/{imageType}", pathParameters,
 				queryParameters, data)
@@ -78,10 +80,11 @@ public class ImageApi(
 		imageType: ImageType,
 		imageIndex: Int,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
@@ -101,11 +104,13 @@ public class ImageApi(
 		imageType: ImageType,
 		index: Int? = null,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["index"] = index
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("index", index)
+		}
 		val data = null
 		val response = api.delete<Unit>("/Users/{userId}/Images/{imageType}", pathParameters,
 				queryParameters, data)
@@ -124,10 +129,11 @@ public class ImageApi(
 		imageType: ImageType,
 		index: Int,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["imageType"] = imageType
-		pathParameters["index"] = index
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("userId", userId)
+			put("imageType", imageType)
+			put("index", index)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<Unit>("/Users/{userId}/Images/{imageType}/{index}", pathParameters,
@@ -179,26 +185,28 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Artists/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
@@ -251,26 +259,28 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/Artists/{name}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -323,27 +333,29 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Artists/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
@@ -400,27 +412,29 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/Artists/{name}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -469,26 +483,28 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Genres/{name}/Images/{imageType}", pathParameters,
 				queryParameters, data)
@@ -541,26 +557,28 @@ public class ImageApi(
 		imageIndex: Int? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		return api.createUrl("/Genres/{name}/Images/{imageType}", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -609,26 +627,28 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Genres/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
@@ -681,26 +701,28 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/Genres/{name}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -753,27 +775,29 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Genres/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
@@ -830,27 +854,29 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/Genres/{name}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -903,27 +929,29 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Genres/{name}/Images/{imageType}", pathParameters,
 				queryParameters, data)
@@ -980,27 +1008,29 @@ public class ImageApi(
 		imageIndex: Int? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		return api.createUrl("/Genres/{name}/Images/{imageType}", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -1049,26 +1079,28 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("tag", tag)
+			put("format", format)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}", pathParameters,
 				queryParameters, data)
@@ -1121,26 +1153,28 @@ public class ImageApi(
 		imageIndex: Int? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("tag", tag)
+			put("format", format)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		return api.createUrl("/Items/{itemId}/Images/{imageType}", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -1189,26 +1223,28 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
-		pathParameters["tag"] = tag
-		pathParameters["format"] = format
-		pathParameters["percentPlayed"] = percentPlayed
-		pathParameters["unplayedCount"] = unplayedCount
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(9) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("tag", tag)
+			put("format", format)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(9) {
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response =
 				api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
@@ -1262,26 +1298,28 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
-		pathParameters["tag"] = tag
-		pathParameters["format"] = format
-		pathParameters["percentPlayed"] = percentPlayed
-		pathParameters["unplayedCount"] = unplayedCount
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(9) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("tag", tag)
+			put("format", format)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(9) {
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
 				pathParameters, queryParameters, includeCredentials)
 	}
@@ -1334,27 +1372,29 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
-		pathParameters["tag"] = tag
-		pathParameters["format"] = format
-		pathParameters["percentPlayed"] = percentPlayed
-		pathParameters["unplayedCount"] = unplayedCount
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(9) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("tag", tag)
+			put("format", format)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(10) {
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response =
 				api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
@@ -1412,27 +1452,29 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["maxWidth"] = maxWidth
-		pathParameters["maxHeight"] = maxHeight
-		pathParameters["tag"] = tag
-		pathParameters["format"] = format
-		pathParameters["percentPlayed"] = percentPlayed
-		pathParameters["unplayedCount"] = unplayedCount
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(9) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("tag", tag)
+			put("format", format)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(10) {
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
 				pathParameters, queryParameters, includeCredentials)
 	}
@@ -1481,26 +1523,28 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("tag", tag)
+			put("format", format)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
@@ -1553,26 +1597,28 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("tag", tag)
+			put("format", format)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -1625,27 +1671,29 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["tag"] = tag
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["format"] = format
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("tag", tag)
+			put("cropWhitespace", cropWhitespace)
+			put("format", format)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
@@ -1702,27 +1750,29 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["tag"] = tag
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["format"] = format
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("tag", tag)
+			put("cropWhitespace", cropWhitespace)
+			put("format", format)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -1775,27 +1825,29 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["tag"] = tag
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["format"] = format
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("tag", tag)
+			put("cropWhitespace", cropWhitespace)
+			put("format", format)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}", pathParameters,
 				queryParameters, data)
@@ -1852,27 +1904,29 @@ public class ImageApi(
 		imageIndex: Int? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["tag"] = tag
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["format"] = format
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("tag", tag)
+			put("cropWhitespace", cropWhitespace)
+			put("format", format)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		return api.createUrl("/Items/{itemId}/Images/{imageType}", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -1883,8 +1937,9 @@ public class ImageApi(
 	 * @param itemId Item id.
 	 */
 	public suspend fun getItemImageInfos(itemId: UUID): Response<List<ImageInfo>> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<List<ImageInfo>>("/Items/{itemId}/Images", pathParameters,
@@ -1936,26 +1991,28 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}",
 				pathParameters, queryParameters, data)
@@ -2008,26 +2065,28 @@ public class ImageApi(
 		imageIndex: Int? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		return api.createUrl("/MusicGenres/{name}/Images/{imageType}", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -2076,26 +2135,28 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
@@ -2148,26 +2209,28 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/MusicGenres/{name}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -2220,27 +2283,29 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
@@ -2297,27 +2362,29 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/MusicGenres/{name}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -2370,27 +2437,29 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}",
 				pathParameters, queryParameters, data)
@@ -2447,27 +2516,29 @@ public class ImageApi(
 		imageIndex: Int? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		return api.createUrl("/MusicGenres/{name}/Images/{imageType}", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -2516,26 +2587,28 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Persons/{name}/Images/{imageType}", pathParameters,
 				queryParameters, data)
@@ -2588,26 +2661,28 @@ public class ImageApi(
 		imageIndex: Int? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		return api.createUrl("/Persons/{name}/Images/{imageType}", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -2656,26 +2731,28 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Persons/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
@@ -2728,26 +2805,28 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/Persons/{name}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -2800,27 +2879,29 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Persons/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
@@ -2877,27 +2958,29 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/Persons/{name}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -2950,27 +3033,29 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Persons/{name}/Images/{imageType}", pathParameters,
 				queryParameters, data)
@@ -3027,27 +3112,29 @@ public class ImageApi(
 		imageIndex: Int? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		return api.createUrl("/Persons/{name}/Images/{imageType}", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -3083,20 +3170,21 @@ public class ImageApi(
 		quality: Int? = 90,
 	): Response<ByteReadChannel> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
 		require(quality in 0..100) { "Parameter \"quality\" must be in range 0..100 (inclusive)." }
-		queryParameters["quality"] = quality
+		val queryParameters = buildMap<String, Any?>(12) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("width", width)
+			put("height", height)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("quality", quality)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Branding/Splashscreen", pathParameters,
 				queryParameters, data)
@@ -3136,20 +3224,21 @@ public class ImageApi(
 		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
 		require(quality in 0..100) { "Parameter \"quality\" must be in range 0..100 (inclusive)." }
-		queryParameters["quality"] = quality
+		val queryParameters = buildMap<String, Any?>(12) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("width", width)
+			put("height", height)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("quality", quality)
+		}
 		return api.createUrl("/Branding/Splashscreen", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -3198,26 +3287,28 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Studios/{name}/Images/{imageType}", pathParameters,
 				queryParameters, data)
@@ -3270,26 +3361,28 @@ public class ImageApi(
 		imageIndex: Int? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		return api.createUrl("/Studios/{name}/Images/{imageType}", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -3338,26 +3431,28 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Studios/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
@@ -3410,26 +3505,28 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/Studios/{name}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -3482,27 +3579,29 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Studios/{name}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
@@ -3559,27 +3658,29 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("name", name)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/Studios/{name}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -3632,27 +3733,29 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Studios/{name}/Images/{imageType}", pathParameters,
 				queryParameters, data)
@@ -3709,27 +3812,29 @@ public class ImageApi(
 		imageIndex: Int? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		return api.createUrl("/Studios/{name}/Images/{imageType}", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -3778,26 +3883,28 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Users/{userId}/Images/{imageType}", pathParameters,
 				queryParameters, data)
@@ -3850,26 +3957,28 @@ public class ImageApi(
 		imageIndex: Int? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		return api.createUrl("/Users/{userId}/Images/{imageType}", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -3918,26 +4027,28 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("userId", userId)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Users/{userId}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
@@ -3990,26 +4101,28 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("userId", userId)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(15) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/Users/{userId}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -4062,27 +4175,29 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("userId", userId)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Users/{userId}/Images/{imageType}/{imageIndex}",
 				pathParameters, queryParameters, data)
@@ -4139,27 +4254,29 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("userId", userId)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(16) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+		}
 		return api.createUrl("/Users/{userId}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, includeCredentials)
 	}
@@ -4212,27 +4329,29 @@ public class ImageApi(
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Users/{userId}/Images/{imageType}", pathParameters,
 				queryParameters, data)
@@ -4289,27 +4408,29 @@ public class ImageApi(
 		imageIndex: Int? = null,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tag"] = tag
-		queryParameters["format"] = format
-		queryParameters["maxWidth"] = maxWidth
-		queryParameters["maxHeight"] = maxHeight
-		queryParameters["percentPlayed"] = percentPlayed
-		queryParameters["unplayedCount"] = unplayedCount
-		queryParameters["width"] = width
-		queryParameters["height"] = height
-		queryParameters["quality"] = quality
-		queryParameters["fillWidth"] = fillWidth
-		queryParameters["fillHeight"] = fillHeight
-		queryParameters["cropWhitespace"] = cropWhitespace
-		queryParameters["addPlayedIndicator"] = addPlayedIndicator
-		queryParameters["blur"] = blur
-		queryParameters["backgroundColor"] = backgroundColor
-		queryParameters["foregroundLayer"] = foregroundLayer
-		queryParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("tag", tag)
+			put("format", format)
+			put("maxWidth", maxWidth)
+			put("maxHeight", maxHeight)
+			put("percentPlayed", percentPlayed)
+			put("unplayedCount", unplayedCount)
+			put("width", width)
+			put("height", height)
+			put("quality", quality)
+			put("fillWidth", fillWidth)
+			put("fillHeight", fillHeight)
+			put("cropWhitespace", cropWhitespace)
+			put("addPlayedIndicator", addPlayedIndicator)
+			put("blur", blur)
+			put("backgroundColor", backgroundColor)
+			put("foregroundLayer", foregroundLayer)
+			put("imageIndex", imageIndex)
+		}
 		return api.createUrl("/Users/{userId}/Images/{imageType}", pathParameters, queryParameters,
 				includeCredentials)
 	}
@@ -4327,11 +4448,13 @@ public class ImageApi(
 		index: Int? = null,
 		`data`: ByteArray,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["imageType"] = imageType
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["index"] = index
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("imageType", imageType)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("index", index)
+		}
 		val response = api.post<Unit>("/Users/{userId}/Images/{imageType}", pathParameters,
 				queryParameters, data)
 		return response
@@ -4350,10 +4473,11 @@ public class ImageApi(
 		index: Int,
 		`data`: ByteArray,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["imageType"] = imageType
-		pathParameters["index"] = index
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("userId", userId)
+			put("imageType", imageType)
+			put("index", index)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Users/{userId}/Images/{imageType}/{index}", pathParameters,
 				queryParameters, data)
@@ -4371,9 +4495,10 @@ public class ImageApi(
 		imageType: ImageType,
 		`data`: ByteArray,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}", pathParameters,
 				queryParameters, data)
@@ -4393,10 +4518,11 @@ public class ImageApi(
 		imageIndex: Int,
 		`data`: ByteArray,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters, data)
@@ -4417,12 +4543,14 @@ public class ImageApi(
 		imageIndex: Int,
 		newIndex: Int,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		pathParameters["imageType"] = imageType
-		pathParameters["imageIndex"] = imageIndex
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["newIndex"] = newIndex
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("itemId", itemId)
+			put("imageType", imageType)
+			put("imageIndex", imageIndex)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("newIndex", newIndex)
+		}
 		val data = null
 		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}/Index",
 				pathParameters, queryParameters, data)

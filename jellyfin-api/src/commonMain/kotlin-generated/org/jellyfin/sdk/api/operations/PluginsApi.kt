@@ -12,8 +12,8 @@ import kotlin.Deprecated
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -33,9 +33,10 @@ public class PluginsApi(
 	 * @param version Plugin version.
 	 */
 	public suspend fun disablePlugin(pluginId: UUID, version: String): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
-		pathParameters["version"] = version
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("pluginId", pluginId)
+			put("version", version)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.post<Unit>("/Plugins/{pluginId}/{version}/Disable", pathParameters,
@@ -50,9 +51,10 @@ public class PluginsApi(
 	 * @param version Plugin version.
 	 */
 	public suspend fun enablePlugin(pluginId: UUID, version: String): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
-		pathParameters["version"] = version
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("pluginId", pluginId)
+			put("version", version)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.post<Unit>("/Plugins/{pluginId}/{version}/Enable", pathParameters,
@@ -66,8 +68,9 @@ public class PluginsApi(
 	 * @param pluginId Plugin id.
 	 */
 	public suspend fun getPluginConfiguration(pluginId: UUID): Response<BasePluginConfiguration> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("pluginId", pluginId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<BasePluginConfiguration>("/Plugins/{pluginId}/Configuration",
@@ -82,9 +85,10 @@ public class PluginsApi(
 	 * @param version Plugin version.
 	 */
 	public suspend fun getPluginImage(pluginId: UUID, version: String): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
-		pathParameters["version"] = version
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("pluginId", pluginId)
+			put("version", version)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Plugins/{pluginId}/{version}/Image", pathParameters,
@@ -104,9 +108,10 @@ public class PluginsApi(
 		version: String,
 		includeCredentials: Boolean = true,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
-		pathParameters["version"] = version
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("pluginId", pluginId)
+			put("version", version)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Plugins/{pluginId}/{version}/Image", pathParameters, queryParameters,
 				includeCredentials)
@@ -118,8 +123,9 @@ public class PluginsApi(
 	 * @param pluginId Plugin id.
 	 */
 	public suspend fun getPluginManifest(pluginId: UUID): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("pluginId", pluginId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.post<Unit>("/Plugins/{pluginId}/Manifest", pathParameters, queryParameters,
@@ -145,8 +151,9 @@ public class PluginsApi(
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun uninstallPlugin(pluginId: UUID): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("pluginId", pluginId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<Unit>("/Plugins/{pluginId}", pathParameters, queryParameters, data)
@@ -160,9 +167,10 @@ public class PluginsApi(
 	 * @param version Plugin version.
 	 */
 	public suspend fun uninstallPluginByVersion(pluginId: UUID, version: String): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
-		pathParameters["version"] = version
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("pluginId", pluginId)
+			put("version", version)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<Unit>("/Plugins/{pluginId}/{version}", pathParameters, queryParameters,
@@ -176,8 +184,9 @@ public class PluginsApi(
 	 * @param pluginId Plugin id.
 	 */
 	public suspend fun updatePluginConfiguration(pluginId: UUID): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["pluginId"] = pluginId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("pluginId", pluginId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.post<Unit>("/Plugins/{pluginId}/Configuration", pathParameters,

@@ -10,8 +10,8 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.String
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -27,9 +27,10 @@ public class ImageByNameApi(
 	 * @param type Image Type (primary, backdrop, logo, etc).
 	 */
 	public suspend fun getGeneralImage(name: String, type: String): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["type"] = type
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("type", type)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Images/General/{name}/{type}", pathParameters,
@@ -49,9 +50,10 @@ public class ImageByNameApi(
 		type: String,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		pathParameters["type"] = type
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("name", name)
+			put("type", type)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Images/General/{name}/{type}", pathParameters, queryParameters,
 				includeCredentials)
@@ -76,9 +78,10 @@ public class ImageByNameApi(
 	 * @param name The name of the image.
 	 */
 	public suspend fun getMediaInfoImage(theme: String, name: String): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["theme"] = theme
-		pathParameters["name"] = name
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("theme", theme)
+			put("name", name)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Images/MediaInfo/{theme}/{name}", pathParameters,
@@ -98,9 +101,10 @@ public class ImageByNameApi(
 		name: String,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["theme"] = theme
-		pathParameters["name"] = name
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("theme", theme)
+			put("name", name)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Images/MediaInfo/{theme}/{name}", pathParameters, queryParameters,
 				includeCredentials)
@@ -125,9 +129,10 @@ public class ImageByNameApi(
 	 * @param name The name of the image.
 	 */
 	public suspend fun getRatingImage(theme: String, name: String): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["theme"] = theme
-		pathParameters["name"] = name
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("theme", theme)
+			put("name", name)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Images/Ratings/{theme}/{name}", pathParameters,
@@ -147,9 +152,10 @@ public class ImageByNameApi(
 		name: String,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["theme"] = theme
-		pathParameters["name"] = name
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("theme", theme)
+			put("name", name)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Images/Ratings/{theme}/{name}", pathParameters, queryParameters,
 				includeCredentials)

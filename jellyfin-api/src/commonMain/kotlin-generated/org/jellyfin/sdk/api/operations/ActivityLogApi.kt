@@ -9,8 +9,8 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -36,11 +36,12 @@ public class ActivityLogApi(
 		hasUserId: Boolean? = null,
 	): Response<ActivityLogEntryQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["minDate"] = minDate
-		queryParameters["hasUserId"] = hasUserId
+		val queryParameters = buildMap<String, Any?>(4) {
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("minDate", minDate)
+			put("hasUserId", hasUserId)
+		}
 		val data = null
 		val response = api.`get`<ActivityLogEntryQueryResult>("/System/ActivityLog/Entries",
 				pathParameters, queryParameters, data)

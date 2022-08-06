@@ -11,9 +11,9 @@ import kotlin.Int
 import kotlin.String
 import kotlin.collections.Collection
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
@@ -39,9 +39,10 @@ public class UserLibraryApi(
 	 */
 	public suspend fun deleteUserItemRating(userId: UUID = api.userId ?: throw
 			MissingUserIdException(), itemId: UUID): Response<UserItemDataDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<UserItemDataDto>("/Users/{userId}/Items/{itemId}/Rating",
@@ -57,9 +58,10 @@ public class UserLibraryApi(
 	 */
 	public suspend fun getIntros(userId: UUID = api.userId ?: throw MissingUserIdException(),
 			itemId: UUID): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Users/{userId}/Items/{itemId}/Intros",
@@ -75,9 +77,10 @@ public class UserLibraryApi(
 	 */
 	public suspend fun getItem(userId: UUID = api.userId ?: throw MissingUserIdException(),
 			itemId: UUID): Response<BaseItemDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<BaseItemDto>("/Users/{userId}/Items/{itemId}", pathParameters,
@@ -115,19 +118,21 @@ public class UserLibraryApi(
 		limit: Int? = 20,
 		groupItems: Boolean? = true,
 	): Response<List<BaseItemDto>> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["parentId"] = parentId
-		queryParameters["fields"] = fields
-		queryParameters["includeItemTypes"] = includeItemTypes
-		queryParameters["isPlayed"] = isPlayed
-		queryParameters["enableImages"] = enableImages
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["limit"] = limit
-		queryParameters["groupItems"] = groupItems
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
+		val queryParameters = buildMap<String, Any?>(10) {
+			put("parentId", parentId)
+			put("fields", fields)
+			put("includeItemTypes", includeItemTypes)
+			put("isPlayed", isPlayed)
+			put("enableImages", enableImages)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+			put("enableUserData", enableUserData)
+			put("limit", limit)
+			put("groupItems", groupItems)
+		}
 		val data = null
 		val response = api.`get`<List<BaseItemDto>>("/Users/{userId}/Items/Latest", pathParameters,
 				queryParameters, data)
@@ -142,9 +147,10 @@ public class UserLibraryApi(
 	 */
 	public suspend fun getLocalTrailers(userId: UUID = api.userId ?: throw MissingUserIdException(),
 			itemId: UUID): Response<List<BaseItemDto>> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<List<BaseItemDto>>("/Users/{userId}/Items/{itemId}/LocalTrailers",
@@ -159,8 +165,9 @@ public class UserLibraryApi(
 	 */
 	public suspend fun getRootFolder(userId: UUID = api.userId ?: throw MissingUserIdException()):
 			Response<BaseItemDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<BaseItemDto>("/Users/{userId}/Items/Root", pathParameters,
@@ -176,9 +183,10 @@ public class UserLibraryApi(
 	 */
 	public suspend fun getSpecialFeatures(userId: UUID = api.userId ?: throw MissingUserIdException(),
 			itemId: UUID): Response<List<BaseItemDto>> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<List<BaseItemDto>>("/Users/{userId}/Items/{itemId}/SpecialFeatures",
@@ -194,9 +202,10 @@ public class UserLibraryApi(
 	 */
 	public suspend fun markFavoriteItem(userId: UUID = api.userId ?: throw MissingUserIdException(),
 			itemId: UUID): Response<UserItemDataDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.post<UserItemDataDto>("/Users/{userId}/FavoriteItems/{itemId}", pathParameters,
@@ -212,9 +221,10 @@ public class UserLibraryApi(
 	 */
 	public suspend fun unmarkFavoriteItem(userId: UUID = api.userId ?: throw MissingUserIdException(),
 			itemId: UUID): Response<UserItemDataDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<UserItemDataDto>("/Users/{userId}/FavoriteItems/{itemId}",
@@ -236,11 +246,13 @@ public class UserLibraryApi(
 		itemId: UUID,
 		likes: Boolean? = null,
 	): Response<UserItemDataDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["likes"] = likes
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("likes", likes)
+		}
 		val data = null
 		val response = api.post<UserItemDataDto>("/Users/{userId}/Items/{itemId}/Rating", pathParameters,
 				queryParameters, data)

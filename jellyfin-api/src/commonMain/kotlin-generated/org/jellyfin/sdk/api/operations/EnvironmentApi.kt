@@ -11,8 +11,8 @@ import kotlin.Deprecated
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -50,10 +50,11 @@ public class EnvironmentApi(
 		includeDirectories: Boolean? = false,
 	): Response<List<FileSystemEntryInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["path"] = path
-		queryParameters["includeFiles"] = includeFiles
-		queryParameters["includeDirectories"] = includeDirectories
+		val queryParameters = buildMap<String, Any?>(3) {
+			put("path", path)
+			put("includeFiles", includeFiles)
+			put("includeDirectories", includeDirectories)
+		}
 		val data = null
 		val response = api.`get`<List<FileSystemEntryInfo>>("/Environment/DirectoryContents",
 				pathParameters, queryParameters, data)
@@ -92,8 +93,9 @@ public class EnvironmentApi(
 	 */
 	public suspend fun getParentPath(path: String): Response<String> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["path"] = path
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("path", path)
+		}
 		val data = null
 		val response = api.`get`<String>("/Environment/ParentPath", pathParameters, queryParameters, data)
 		return response

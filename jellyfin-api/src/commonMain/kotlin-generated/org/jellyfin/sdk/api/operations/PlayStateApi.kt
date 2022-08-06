@@ -11,8 +11,8 @@ import kotlin.Int
 import kotlin.Long
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
@@ -42,11 +42,13 @@ public class PlayStateApi(
 		itemId: UUID,
 		datePlayed: DateTime? = null,
 	): Response<UserItemDataDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["datePlayed"] = datePlayed
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("datePlayed", datePlayed)
+		}
 		val data = null
 		val response = api.post<UserItemDataDto>("/Users/{userId}/PlayedItems/{itemId}", pathParameters,
 				queryParameters, data)
@@ -61,9 +63,10 @@ public class PlayStateApi(
 	 */
 	public suspend fun markUnplayedItem(userId: UUID = api.userId ?: throw MissingUserIdException(),
 			itemId: UUID): Response<UserItemDataDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<UserItemDataDto>("/Users/{userId}/PlayedItems/{itemId}", pathParameters,
@@ -103,21 +106,23 @@ public class PlayStateApi(
 		isPaused: Boolean? = false,
 		isMuted: Boolean? = false,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["positionTicks"] = positionTicks
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["volumeLevel"] = volumeLevel
-		queryParameters["playMethod"] = playMethod
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["repeatMode"] = repeatMode
-		queryParameters["isPaused"] = isPaused
-		queryParameters["isMuted"] = isMuted
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(11) {
+			put("mediaSourceId", mediaSourceId)
+			put("positionTicks", positionTicks)
+			put("audioStreamIndex", audioStreamIndex)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("volumeLevel", volumeLevel)
+			put("playMethod", playMethod)
+			put("liveStreamId", liveStreamId)
+			put("playSessionId", playSessionId)
+			put("repeatMode", repeatMode)
+			put("isPaused", isPaused)
+			put("isMuted", isMuted)
+		}
 		val data = null
 		val response = api.post<Unit>("/Users/{userId}/PlayingItems/{itemId}/Progress", pathParameters,
 				queryParameters, data)
@@ -148,17 +153,19 @@ public class PlayStateApi(
 		playSessionId: String? = null,
 		canSeek: Boolean? = false,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["playMethod"] = playMethod
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["canSeek"] = canSeek
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(7) {
+			put("mediaSourceId", mediaSourceId)
+			put("audioStreamIndex", audioStreamIndex)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("playMethod", playMethod)
+			put("liveStreamId", liveStreamId)
+			put("playSessionId", playSessionId)
+			put("canSeek", canSeek)
+		}
 		val data = null
 		val response = api.post<Unit>("/Users/{userId}/PlayingItems/{itemId}", pathParameters,
 				queryParameters, data)
@@ -186,15 +193,17 @@ public class PlayStateApi(
 		liveStreamId: String? = null,
 		playSessionId: String? = null,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["nextMediaType"] = nextMediaType
-		queryParameters["positionTicks"] = positionTicks
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["playSessionId"] = playSessionId
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(5) {
+			put("mediaSourceId", mediaSourceId)
+			put("nextMediaType", nextMediaType)
+			put("positionTicks", positionTicks)
+			put("liveStreamId", liveStreamId)
+			put("playSessionId", playSessionId)
+		}
 		val data = null
 		val response = api.delete<Unit>("/Users/{userId}/PlayingItems/{itemId}", pathParameters,
 				queryParameters, data)
@@ -208,8 +217,9 @@ public class PlayStateApi(
 	 */
 	public suspend fun pingPlaybackSession(playSessionId: String): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["playSessionId"] = playSessionId
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("playSessionId", playSessionId)
+		}
 		val data = null
 		val response = api.post<Unit>("/Sessions/Playing/Ping", pathParameters, queryParameters, data)
 		return response

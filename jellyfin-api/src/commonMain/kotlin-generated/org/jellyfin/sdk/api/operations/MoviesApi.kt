@@ -10,9 +10,9 @@ import kotlin.Int
 import kotlin.String
 import kotlin.collections.Collection
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -41,12 +41,13 @@ public class MoviesApi(
 		itemLimit: Int? = 8,
 	): Response<List<RecommendationDto>> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["parentId"] = parentId
-		queryParameters["fields"] = fields
-		queryParameters["categoryLimit"] = categoryLimit
-		queryParameters["itemLimit"] = itemLimit
+		val queryParameters = buildMap<String, Any?>(5) {
+			put("userId", userId)
+			put("parentId", parentId)
+			put("fields", fields)
+			put("categoryLimit", categoryLimit)
+			put("itemLimit", itemLimit)
+		}
 		val data = null
 		val response = api.`get`<List<RecommendationDto>>("/Movies/Recommendations", pathParameters,
 				queryParameters, data)

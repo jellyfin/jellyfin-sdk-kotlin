@@ -11,9 +11,9 @@ import kotlin.Double
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.Collection
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -118,39 +118,40 @@ public class ArtistsApi(
 		enableTotalRecordCount: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["minCommunityRating"] = minCommunityRating
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["searchTerm"] = searchTerm
-		queryParameters["parentId"] = parentId
-		queryParameters["fields"] = fields
-		queryParameters["excludeItemTypes"] = excludeItemTypes
-		queryParameters["includeItemTypes"] = includeItemTypes
-		queryParameters["filters"] = filters
-		queryParameters["isFavorite"] = isFavorite
-		queryParameters["mediaTypes"] = mediaTypes
-		queryParameters["genres"] = genres
-		queryParameters["genreIds"] = genreIds
-		queryParameters["officialRatings"] = officialRatings
-		queryParameters["tags"] = tags
-		queryParameters["years"] = years
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
-		queryParameters["person"] = person
-		queryParameters["personIds"] = personIds
-		queryParameters["personTypes"] = personTypes
-		queryParameters["studios"] = studios
-		queryParameters["studioIds"] = studioIds
-		queryParameters["userId"] = userId
-		queryParameters["nameStartsWithOrGreater"] = nameStartsWithOrGreater
-		queryParameters["nameStartsWith"] = nameStartsWith
-		queryParameters["nameLessThan"] = nameLessThan
-		queryParameters["sortBy"] = sortBy
-		queryParameters["sortOrder"] = sortOrder
-		queryParameters["enableImages"] = enableImages
-		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
+		val queryParameters = buildMap<String, Any?>(32) {
+			put("minCommunityRating", minCommunityRating)
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("searchTerm", searchTerm)
+			put("parentId", parentId)
+			put("fields", fields)
+			put("excludeItemTypes", excludeItemTypes)
+			put("includeItemTypes", includeItemTypes)
+			put("filters", filters)
+			put("isFavorite", isFavorite)
+			put("mediaTypes", mediaTypes)
+			put("genres", genres)
+			put("genreIds", genreIds)
+			put("officialRatings", officialRatings)
+			put("tags", tags)
+			put("years", years)
+			put("enableUserData", enableUserData)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+			put("person", person)
+			put("personIds", personIds)
+			put("personTypes", personTypes)
+			put("studios", studios)
+			put("studioIds", studioIds)
+			put("userId", userId)
+			put("nameStartsWithOrGreater", nameStartsWithOrGreater)
+			put("nameStartsWith", nameStartsWith)
+			put("nameLessThan", nameLessThan)
+			put("sortBy", sortBy)
+			put("sortOrder", sortOrder)
+			put("enableImages", enableImages)
+			put("enableTotalRecordCount", enableTotalRecordCount)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/AlbumArtists", pathParameters,
 				queryParameters, data)
@@ -164,10 +165,12 @@ public class ArtistsApi(
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 */
 	public suspend fun getArtistByName(name: String, userId: UUID? = null): Response<BaseItemDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("name", name)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDto>("/Artists/{name}", pathParameters, queryParameters, data)
 		return response
@@ -262,39 +265,40 @@ public class ArtistsApi(
 		enableTotalRecordCount: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["minCommunityRating"] = minCommunityRating
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["searchTerm"] = searchTerm
-		queryParameters["parentId"] = parentId
-		queryParameters["fields"] = fields
-		queryParameters["excludeItemTypes"] = excludeItemTypes
-		queryParameters["includeItemTypes"] = includeItemTypes
-		queryParameters["filters"] = filters
-		queryParameters["isFavorite"] = isFavorite
-		queryParameters["mediaTypes"] = mediaTypes
-		queryParameters["genres"] = genres
-		queryParameters["genreIds"] = genreIds
-		queryParameters["officialRatings"] = officialRatings
-		queryParameters["tags"] = tags
-		queryParameters["years"] = years
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
-		queryParameters["person"] = person
-		queryParameters["personIds"] = personIds
-		queryParameters["personTypes"] = personTypes
-		queryParameters["studios"] = studios
-		queryParameters["studioIds"] = studioIds
-		queryParameters["userId"] = userId
-		queryParameters["nameStartsWithOrGreater"] = nameStartsWithOrGreater
-		queryParameters["nameStartsWith"] = nameStartsWith
-		queryParameters["nameLessThan"] = nameLessThan
-		queryParameters["sortBy"] = sortBy
-		queryParameters["sortOrder"] = sortOrder
-		queryParameters["enableImages"] = enableImages
-		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
+		val queryParameters = buildMap<String, Any?>(32) {
+			put("minCommunityRating", minCommunityRating)
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("searchTerm", searchTerm)
+			put("parentId", parentId)
+			put("fields", fields)
+			put("excludeItemTypes", excludeItemTypes)
+			put("includeItemTypes", includeItemTypes)
+			put("filters", filters)
+			put("isFavorite", isFavorite)
+			put("mediaTypes", mediaTypes)
+			put("genres", genres)
+			put("genreIds", genreIds)
+			put("officialRatings", officialRatings)
+			put("tags", tags)
+			put("years", years)
+			put("enableUserData", enableUserData)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+			put("person", person)
+			put("personIds", personIds)
+			put("personTypes", personTypes)
+			put("studios", studios)
+			put("studioIds", studioIds)
+			put("userId", userId)
+			put("nameStartsWithOrGreater", nameStartsWithOrGreater)
+			put("nameStartsWith", nameStartsWith)
+			put("nameLessThan", nameLessThan)
+			put("sortBy", sortBy)
+			put("sortOrder", sortOrder)
+			put("enableImages", enableImages)
+			put("enableTotalRecordCount", enableTotalRecordCount)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Artists", pathParameters, queryParameters,
 				data)

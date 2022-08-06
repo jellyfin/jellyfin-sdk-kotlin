@@ -10,8 +10,8 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -32,10 +32,11 @@ public class VideoAttachmentsApi(
 		mediaSourceId: String,
 		index: Int,
 	): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["videoId"] = videoId
-		pathParameters["mediaSourceId"] = mediaSourceId
-		pathParameters["index"] = index
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("videoId", videoId)
+			put("mediaSourceId", mediaSourceId)
+			put("index", index)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{videoId}/{mediaSourceId}/Attachments/{index}",
@@ -57,10 +58,11 @@ public class VideoAttachmentsApi(
 		index: Int,
 		includeCredentials: Boolean = false,
 	): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["videoId"] = videoId
-		pathParameters["mediaSourceId"] = mediaSourceId
-		pathParameters["index"] = index
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("videoId", videoId)
+			put("mediaSourceId", mediaSourceId)
+			put("index", index)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Videos/{videoId}/{mediaSourceId}/Attachments/{index}", pathParameters,
 				queryParameters, includeCredentials)

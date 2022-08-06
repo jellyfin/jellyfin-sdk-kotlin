@@ -11,9 +11,9 @@ import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.Collection
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -47,16 +47,18 @@ public class InstantMixApi(
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["id"] = id
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		queryParameters["enableImages"] = enableImages
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("id", id)
+		}
+		val queryParameters = buildMap<String, Any?>(7) {
+			put("userId", userId)
+			put("limit", limit)
+			put("fields", fields)
+			put("enableImages", enableImages)
+			put("enableUserData", enableUserData)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Albums/{id}/InstantMix", pathParameters,
 				queryParameters, data)
@@ -85,16 +87,18 @@ public class InstantMixApi(
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["id"] = id
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		queryParameters["enableImages"] = enableImages
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("id", id)
+		}
+		val queryParameters = buildMap<String, Any?>(7) {
+			put("userId", userId)
+			put("limit", limit)
+			put("fields", fields)
+			put("enableImages", enableImages)
+			put("enableUserData", enableUserData)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/{id}/InstantMix", pathParameters,
 				queryParameters, data)
@@ -125,15 +129,16 @@ public class InstantMixApi(
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["id"] = id
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		queryParameters["enableImages"] = enableImages
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
+		val queryParameters = buildMap<String, Any?>(8) {
+			put("id", id)
+			put("userId", userId)
+			put("limit", limit)
+			put("fields", fields)
+			put("enableImages", enableImages)
+			put("enableUserData", enableUserData)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/InstantMix", pathParameters,
 				queryParameters, data)
@@ -162,16 +167,18 @@ public class InstantMixApi(
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["id"] = id
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		queryParameters["enableImages"] = enableImages
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("id", id)
+		}
+		val queryParameters = buildMap<String, Any?>(7) {
+			put("userId", userId)
+			put("limit", limit)
+			put("fields", fields)
+			put("enableImages", enableImages)
+			put("enableUserData", enableUserData)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{id}/InstantMix", pathParameters,
 				queryParameters, data)
@@ -201,15 +208,16 @@ public class InstantMixApi(
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["id"] = id
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		queryParameters["enableImages"] = enableImages
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
+		val queryParameters = buildMap<String, Any?>(8) {
+			put("id", id)
+			put("userId", userId)
+			put("limit", limit)
+			put("fields", fields)
+			put("enableImages", enableImages)
+			put("enableUserData", enableUserData)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/MusicGenres/InstantMix", pathParameters,
 				queryParameters, data)
@@ -238,16 +246,18 @@ public class InstantMixApi(
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["name"] = name
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		queryParameters["enableImages"] = enableImages
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("name", name)
+		}
+		val queryParameters = buildMap<String, Any?>(7) {
+			put("userId", userId)
+			put("limit", limit)
+			put("fields", fields)
+			put("enableImages", enableImages)
+			put("enableUserData", enableUserData)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/MusicGenres/{name}/InstantMix", pathParameters,
 				queryParameters, data)
@@ -276,16 +286,18 @@ public class InstantMixApi(
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["id"] = id
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		queryParameters["enableImages"] = enableImages
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("id", id)
+		}
+		val queryParameters = buildMap<String, Any?>(7) {
+			put("userId", userId)
+			put("limit", limit)
+			put("fields", fields)
+			put("enableImages", enableImages)
+			put("enableUserData", enableUserData)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Playlists/{id}/InstantMix", pathParameters,
 				queryParameters, data)
@@ -314,16 +326,18 @@ public class InstantMixApi(
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["id"] = id
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		queryParameters["enableImages"] = enableImages
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("id", id)
+		}
+		val queryParameters = buildMap<String, Any?>(7) {
+			put("userId", userId)
+			put("limit", limit)
+			put("fields", fields)
+			put("enableImages", enableImages)
+			put("enableUserData", enableUserData)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Songs/{id}/InstantMix", pathParameters,
 				queryParameters, data)

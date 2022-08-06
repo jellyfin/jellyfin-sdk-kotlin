@@ -10,9 +10,9 @@ import kotlin.Boolean
 import kotlin.String
 import kotlin.collections.Collection
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
@@ -31,8 +31,9 @@ public class UserViewsApi(
 	 */
 	public suspend fun getGroupingOptions(userId: UUID = api.userId ?: throw MissingUserIdException()):
 			Response<List<SpecialViewOptionDto>> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<List<SpecialViewOptionDto>>("/Users/{userId}/GroupingOptions",
@@ -55,12 +56,14 @@ public class UserViewsApi(
 		presetViews: Collection<String>? = emptyList(),
 		includeHidden: Boolean? = false,
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["includeExternalContent"] = includeExternalContent
-		queryParameters["presetViews"] = presetViews
-		queryParameters["includeHidden"] = includeHidden
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
+		val queryParameters = buildMap<String, Any?>(3) {
+			put("includeExternalContent", includeExternalContent)
+			put("presetViews", presetViews)
+			put("includeHidden", includeHidden)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Users/{userId}/Views", pathParameters,
 				queryParameters, data)

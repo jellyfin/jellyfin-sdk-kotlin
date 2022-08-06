@@ -10,8 +10,8 @@ import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.Collection
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
@@ -41,14 +41,16 @@ public class SuggestionsApi(
 		limit: Int? = null,
 		enableTotalRecordCount: Boolean? = false,
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["mediaType"] = mediaType
-		queryParameters["type"] = type
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
+		val queryParameters = buildMap<String, Any?>(5) {
+			put("mediaType", mediaType)
+			put("type", type)
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("enableTotalRecordCount", enableTotalRecordCount)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Users/{userId}/Suggestions", pathParameters,
 				queryParameters, data)

@@ -14,9 +14,9 @@ import kotlin.String
 import kotlin.Unit
 import kotlin.collections.Collection
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -41,8 +41,9 @@ public class LibraryApi(
 	 * @param itemId The item id.
 	 */
 	public suspend fun deleteItem(itemId: UUID): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<Unit>("/Items/{itemId}", pathParameters, queryParameters, data)
@@ -56,8 +57,9 @@ public class LibraryApi(
 	 */
 	public suspend fun deleteItems(ids: Collection<UUID>? = emptyList()): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["ids"] = ids
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("ids", ids)
+		}
 		val data = null
 		val response = api.delete<Unit>("/Items", pathParameters, queryParameters, data)
 		return response
@@ -70,10 +72,12 @@ public class LibraryApi(
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 */
 	public suspend fun getAncestors(itemId: UUID, userId: UUID? = null): Response<List<BaseItemDto>> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val data = null
 		val response = api.`get`<List<BaseItemDto>>("/Items/{itemId}/Ancestors", pathParameters,
 				queryParameters, data)
@@ -85,8 +89,9 @@ public class LibraryApi(
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getCriticReviews(itemId: String): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/CriticReviews", pathParameters,
@@ -100,8 +105,9 @@ public class LibraryApi(
 	 * @param itemId The item id.
 	 */
 	public suspend fun getDownload(itemId: UUID): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Download", pathParameters,
@@ -116,8 +122,9 @@ public class LibraryApi(
 	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getDownloadUrl(itemId: UUID, includeCredentials: Boolean = false): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Items/{itemId}/Download", pathParameters, queryParameters,
 				includeCredentials)
@@ -129,8 +136,9 @@ public class LibraryApi(
 	 * @param itemId The item id.
 	 */
 	public suspend fun getFile(itemId: UUID): Response<ByteReadChannel> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/File", pathParameters, queryParameters,
@@ -145,8 +153,9 @@ public class LibraryApi(
 	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getFileUrl(itemId: UUID, includeCredentials: Boolean = true): String {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Items/{itemId}/File", pathParameters, queryParameters, includeCredentials)
 	}
@@ -160,9 +169,10 @@ public class LibraryApi(
 	public suspend fun getItemCounts(userId: UUID? = null, isFavorite: Boolean? = null):
 			Response<ItemCounts> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["isFavorite"] = isFavorite
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("isFavorite", isFavorite)
+		}
 		val data = null
 		val response = api.`get`<ItemCounts>("/Items/Counts", pathParameters, queryParameters, data)
 		return response
@@ -177,9 +187,10 @@ public class LibraryApi(
 	public suspend fun getLibraryOptionsInfo(libraryContentType: String? = null, isNewLibrary: Boolean?
 			= false): Response<LibraryOptionsResultDto> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["libraryContentType"] = libraryContentType
-		queryParameters["isNewLibrary"] = isNewLibrary
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("libraryContentType", libraryContentType)
+			put("isNewLibrary", isNewLibrary)
+		}
 		val data = null
 		val response = api.`get`<LibraryOptionsResultDto>("/Libraries/AvailableOptions", pathParameters,
 				queryParameters, data)
@@ -193,8 +204,9 @@ public class LibraryApi(
 	 */
 	public suspend fun getMediaFolders(isHidden: Boolean? = null): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["isHidden"] = isHidden
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("isHidden", isHidden)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Library/MediaFolders", pathParameters,
 				queryParameters, data)
@@ -232,13 +244,15 @@ public class LibraryApi(
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["excludeArtistIds"] = excludeArtistIds
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(4) {
+			put("excludeArtistIds", excludeArtistIds)
+			put("userId", userId)
+			put("limit", limit)
+			put("fields", fields)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Albums/{itemId}/Similar", pathParameters,
 				queryParameters, data)
@@ -264,13 +278,15 @@ public class LibraryApi(
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["excludeArtistIds"] = excludeArtistIds
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(4) {
+			put("excludeArtistIds", excludeArtistIds)
+			put("userId", userId)
+			put("limit", limit)
+			put("fields", fields)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/{itemId}/Similar", pathParameters,
 				queryParameters, data)
@@ -296,13 +312,15 @@ public class LibraryApi(
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["excludeArtistIds"] = excludeArtistIds
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(4) {
+			put("excludeArtistIds", excludeArtistIds)
+			put("userId", userId)
+			put("limit", limit)
+			put("fields", fields)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/Similar", pathParameters,
 				queryParameters, data)
@@ -328,13 +346,15 @@ public class LibraryApi(
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["excludeArtistIds"] = excludeArtistIds
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(4) {
+			put("excludeArtistIds", excludeArtistIds)
+			put("userId", userId)
+			put("limit", limit)
+			put("fields", fields)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Movies/{itemId}/Similar", pathParameters,
 				queryParameters, data)
@@ -360,13 +380,15 @@ public class LibraryApi(
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["excludeArtistIds"] = excludeArtistIds
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(4) {
+			put("excludeArtistIds", excludeArtistIds)
+			put("userId", userId)
+			put("limit", limit)
+			put("fields", fields)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/{itemId}/Similar", pathParameters,
 				queryParameters, data)
@@ -392,13 +414,15 @@ public class LibraryApi(
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["excludeArtistIds"] = excludeArtistIds
-		queryParameters["userId"] = userId
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(4) {
+			put("excludeArtistIds", excludeArtistIds)
+			put("userId", userId)
+			put("limit", limit)
+			put("fields", fields)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Trailers/{itemId}/Similar", pathParameters,
 				queryParameters, data)
@@ -418,11 +442,13 @@ public class LibraryApi(
 		userId: UUID? = null,
 		inheritFromParent: Boolean? = false,
 	): Response<AllThemeMediaResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["inheritFromParent"] = inheritFromParent
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("inheritFromParent", inheritFromParent)
+		}
 		val data = null
 		val response = api.`get`<AllThemeMediaResult>("/Items/{itemId}/ThemeMedia", pathParameters,
 				queryParameters, data)
@@ -442,11 +468,13 @@ public class LibraryApi(
 		userId: UUID? = null,
 		inheritFromParent: Boolean? = false,
 	): Response<ThemeMediaResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["inheritFromParent"] = inheritFromParent
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("inheritFromParent", inheritFromParent)
+		}
 		val data = null
 		val response = api.`get`<ThemeMediaResult>("/Items/{itemId}/ThemeSongs", pathParameters,
 				queryParameters, data)
@@ -466,11 +494,13 @@ public class LibraryApi(
 		userId: UUID? = null,
 		inheritFromParent: Boolean? = false,
 	): Response<ThemeMediaResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["inheritFromParent"] = inheritFromParent
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
+			put("inheritFromParent", inheritFromParent)
+		}
 		val data = null
 		val response = api.`get`<ThemeMediaResult>("/Items/{itemId}/ThemeVideos", pathParameters,
 				queryParameters, data)
@@ -486,9 +516,10 @@ public class LibraryApi(
 	public suspend fun postAddedMovies(tmdbId: String? = null, imdbId: String? = null):
 			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tmdbId"] = tmdbId
-		queryParameters["imdbId"] = imdbId
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("tmdbId", tmdbId)
+			put("imdbId", imdbId)
+		}
 		val data = null
 		val response = api.post<Unit>("/Library/Movies/Added", pathParameters, queryParameters, data)
 		return response
@@ -501,8 +532,9 @@ public class LibraryApi(
 	 */
 	public suspend fun postAddedSeries(tvdbId: String? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tvdbId"] = tvdbId
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("tvdbId", tvdbId)
+		}
 		val data = null
 		val response = api.post<Unit>("/Library/Series/Added", pathParameters, queryParameters, data)
 		return response
@@ -527,9 +559,10 @@ public class LibraryApi(
 	public suspend fun postUpdatedMovies(tmdbId: String? = null, imdbId: String? = null):
 			Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tmdbId"] = tmdbId
-		queryParameters["imdbId"] = imdbId
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("tmdbId", tmdbId)
+			put("imdbId", imdbId)
+		}
 		val data = null
 		val response = api.post<Unit>("/Library/Movies/Updated", pathParameters, queryParameters, data)
 		return response
@@ -542,8 +575,9 @@ public class LibraryApi(
 	 */
 	public suspend fun postUpdatedSeries(tvdbId: String? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["tvdbId"] = tvdbId
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("tvdbId", tvdbId)
+		}
 		val data = null
 		val response = api.post<Unit>("/Library/Series/Updated", pathParameters, queryParameters, data)
 		return response

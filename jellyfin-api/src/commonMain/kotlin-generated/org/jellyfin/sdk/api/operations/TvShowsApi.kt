@@ -10,9 +10,9 @@ import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.Collection
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -67,23 +67,25 @@ public class TvShowsApi(
 		enableUserData: Boolean? = null,
 		sortBy: String? = null,
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["seriesId"] = seriesId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["fields"] = fields
-		queryParameters["season"] = season
-		queryParameters["seasonId"] = seasonId
-		queryParameters["isMissing"] = isMissing
-		queryParameters["adjacentTo"] = adjacentTo
-		queryParameters["startItemId"] = startItemId
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["enableImages"] = enableImages
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["sortBy"] = sortBy
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("seriesId", seriesId)
+		}
+		val queryParameters = buildMap<String, Any?>(14) {
+			put("userId", userId)
+			put("fields", fields)
+			put("season", season)
+			put("seasonId", seasonId)
+			put("isMissing", isMissing)
+			put("adjacentTo", adjacentTo)
+			put("startItemId", startItemId)
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("enableImages", enableImages)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+			put("enableUserData", enableUserData)
+			put("sortBy", sortBy)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/{seriesId}/Episodes", pathParameters,
 				queryParameters, data)
@@ -127,21 +129,22 @@ public class TvShowsApi(
 		enableRewatching: Boolean? = false,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		queryParameters["seriesId"] = seriesId
-		queryParameters["parentId"] = parentId
-		queryParameters["enableImages"] = enableImages
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["nextUpDateCutoff"] = nextUpDateCutoff
-		queryParameters["enableTotalRecordCount"] = enableTotalRecordCount
-		queryParameters["disableFirstEpisode"] = disableFirstEpisode
-		queryParameters["enableRewatching"] = enableRewatching
+		val queryParameters = buildMap<String, Any?>(14) {
+			put("userId", userId)
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("fields", fields)
+			put("seriesId", seriesId)
+			put("parentId", parentId)
+			put("enableImages", enableImages)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+			put("enableUserData", enableUserData)
+			put("nextUpDateCutoff", nextUpDateCutoff)
+			put("enableTotalRecordCount", enableTotalRecordCount)
+			put("disableFirstEpisode", disableFirstEpisode)
+			put("enableRewatching", enableRewatching)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/NextUp", pathParameters, queryParameters,
 				data)
@@ -177,18 +180,20 @@ public class TvShowsApi(
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["seriesId"] = seriesId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["fields"] = fields
-		queryParameters["isSpecialSeason"] = isSpecialSeason
-		queryParameters["isMissing"] = isMissing
-		queryParameters["adjacentTo"] = adjacentTo
-		queryParameters["enableImages"] = enableImages
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
-		queryParameters["enableUserData"] = enableUserData
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("seriesId", seriesId)
+		}
+		val queryParameters = buildMap<String, Any?>(9) {
+			put("userId", userId)
+			put("fields", fields)
+			put("isSpecialSeason", isSpecialSeason)
+			put("isMissing", isMissing)
+			put("adjacentTo", adjacentTo)
+			put("enableImages", enableImages)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+			put("enableUserData", enableUserData)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/{seriesId}/Seasons", pathParameters,
 				queryParameters, data)
@@ -222,16 +227,17 @@ public class TvShowsApi(
 		enableUserData: Boolean? = null,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		queryParameters["parentId"] = parentId
-		queryParameters["enableImages"] = enableImages
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
-		queryParameters["enableUserData"] = enableUserData
+		val queryParameters = buildMap<String, Any?>(9) {
+			put("userId", userId)
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("fields", fields)
+			put("parentId", parentId)
+			put("enableImages", enableImages)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+			put("enableUserData", enableUserData)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/Upcoming", pathParameters,
 				queryParameters, data)

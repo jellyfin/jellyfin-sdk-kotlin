@@ -12,9 +12,9 @@ import kotlin.Int
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.Collection
+import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
@@ -43,11 +43,13 @@ public class PlaylistsApi(
 		ids: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["playlistId"] = playlistId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["ids"] = ids
-		queryParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("playlistId", playlistId)
+		}
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("ids", ids)
+			put("userId", userId)
+		}
 		val data = null
 		val response = api.post<Unit>("/Playlists/{playlistId}/Items", pathParameters, queryParameters,
 				data)
@@ -87,11 +89,12 @@ public class PlaylistsApi(
 		`data`: CreatePlaylistDto? = null,
 	): Response<PlaylistCreationResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["name"] = name
-		queryParameters["ids"] = ids
-		queryParameters["userId"] = userId
-		queryParameters["mediaType"] = mediaType
+		val queryParameters = buildMap<String, Any?>(4) {
+			put("name", name)
+			put("ids", ids)
+			put("userId", userId)
+			put("mediaType", mediaType)
+		}
 		val response = api.post<PlaylistCreationResult>("/Playlists", pathParameters, queryParameters,
 				data)
 		return response
@@ -122,17 +125,19 @@ public class PlaylistsApi(
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["playlistId"] = playlistId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["startIndex"] = startIndex
-		queryParameters["limit"] = limit
-		queryParameters["fields"] = fields
-		queryParameters["enableImages"] = enableImages
-		queryParameters["enableUserData"] = enableUserData
-		queryParameters["imageTypeLimit"] = imageTypeLimit
-		queryParameters["enableImageTypes"] = enableImageTypes
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("playlistId", playlistId)
+		}
+		val queryParameters = buildMap<String, Any?>(8) {
+			put("userId", userId)
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("fields", fields)
+			put("enableImages", enableImages)
+			put("enableUserData", enableUserData)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/Playlists/{playlistId}/Items", pathParameters,
 				queryParameters, data)
@@ -151,10 +156,11 @@ public class PlaylistsApi(
 		itemId: String,
 		newIndex: Int,
 	): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["playlistId"] = playlistId
-		pathParameters["itemId"] = itemId
-		pathParameters["newIndex"] = newIndex
+		val pathParameters = buildMap<String, Any?>(3) {
+			put("playlistId", playlistId)
+			put("itemId", itemId)
+			put("newIndex", newIndex)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.post<Unit>("/Playlists/{playlistId}/Items/{itemId}/Move/{newIndex}",
@@ -170,10 +176,12 @@ public class PlaylistsApi(
 	 */
 	public suspend fun removeFromPlaylist(playlistId: String, entryIds: Collection<String>? =
 			emptyList()): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["playlistId"] = playlistId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["entryIds"] = entryIds
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("playlistId", playlistId)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("entryIds", entryIds)
+		}
 		val data = null
 		val response = api.delete<Unit>("/Playlists/{playlistId}/Items", pathParameters, queryParameters,
 				data)

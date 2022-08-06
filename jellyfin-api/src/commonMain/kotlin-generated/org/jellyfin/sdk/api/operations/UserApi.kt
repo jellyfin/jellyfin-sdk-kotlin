@@ -10,8 +10,8 @@ import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.MissingUserIdException
@@ -48,11 +48,13 @@ public class UserApi(
 		pw: String,
 		password: String? = null,
 	): Response<AuthenticationResult> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["pw"] = pw
-		queryParameters["password"] = password
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("pw", pw)
+			put("password", password)
+		}
 		val data = null
 		val response = api.post<AuthenticationResult>("/Users/{userId}/Authenticate", pathParameters,
 				queryParameters, data)
@@ -100,8 +102,9 @@ public class UserApi(
 	 */
 	public suspend fun deleteUser(userId: UUID = api.userId ?: throw MissingUserIdException()):
 			Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<Unit>("/Users/{userId}", pathParameters, queryParameters, data)
@@ -159,8 +162,9 @@ public class UserApi(
 	 */
 	public suspend fun getUserById(userId: UUID = api.userId ?: throw MissingUserIdException()):
 			Response<UserDto> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<UserDto>("/Users/{userId}", pathParameters, queryParameters, data)
@@ -176,9 +180,10 @@ public class UserApi(
 	public suspend fun getUsers(isHidden: Boolean? = null, isDisabled: Boolean? = null):
 			Response<List<UserDto>> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["isHidden"] = isHidden
-		queryParameters["isDisabled"] = isDisabled
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("isHidden", isHidden)
+			put("isDisabled", isDisabled)
+		}
 		val data = null
 		val response = api.`get`<List<UserDto>>("/Users", pathParameters, queryParameters, data)
 		return response
@@ -191,8 +196,9 @@ public class UserApi(
 	 */
 	public suspend fun updateUser(userId: UUID = api.userId ?: throw MissingUserIdException(),
 			`data`: UserDto): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Users/{userId}", pathParameters, queryParameters, data)
 		return response
@@ -205,8 +211,9 @@ public class UserApi(
 	 */
 	public suspend fun updateUserConfiguration(userId: UUID = api.userId ?: throw
 			MissingUserIdException(), `data`: UserConfiguration): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Users/{userId}/Configuration", pathParameters, queryParameters,
 				data)
@@ -220,8 +227,9 @@ public class UserApi(
 	 */
 	public suspend fun updateUserEasyPassword(userId: UUID = api.userId ?: throw
 			MissingUserIdException(), `data`: UpdateUserEasyPassword): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Users/{userId}/EasyPassword", pathParameters, queryParameters,
 				data)
@@ -235,8 +243,9 @@ public class UserApi(
 	 */
 	public suspend fun updateUserPassword(userId: UUID = api.userId ?: throw MissingUserIdException(),
 			`data`: UpdateUserPassword): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Users/{userId}/Password", pathParameters, queryParameters, data)
 		return response
@@ -249,8 +258,9 @@ public class UserApi(
 	 */
 	public suspend fun updateUserPolicy(userId: UUID = api.userId ?: throw MissingUserIdException(),
 			`data`: UserPolicy): Response<Unit> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Users/{userId}/Policy", pathParameters, queryParameters, data)
 		return response

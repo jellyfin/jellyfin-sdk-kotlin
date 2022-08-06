@@ -13,8 +13,8 @@ import kotlin.Int
 import kotlin.Long
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.collections.mutableMapOf
 import kotlin.require
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
@@ -37,8 +37,9 @@ public class MediaInfoApi(
 	 */
 	public suspend fun closeLiveStream(liveStreamId: String): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["liveStreamId"] = liveStreamId
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("liveStreamId", liveStreamId)
+		}
 		val data = null
 		val response = api.post<Unit>("/LiveStreams/Close", pathParameters, queryParameters, data)
 		return response
@@ -51,9 +52,10 @@ public class MediaInfoApi(
 	 */
 	public suspend fun getBitrateTestBytes(size: Int? = 102400): Response<ByteReadChannel> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
 		require(size in 1..100000000) { "Parameter \"size\" must be in range 1..100000000 (inclusive)." }
-		queryParameters["size"] = size
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("size", size)
+		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Playback/BitrateTest", pathParameters,
 				queryParameters, data)
@@ -69,9 +71,10 @@ public class MediaInfoApi(
 	public fun getBitrateTestBytesUrl(size: Int? = 102400, includeCredentials: Boolean = true):
 			String {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
 		require(size in 1..100000000) { "Parameter \"size\" must be in range 1..100000000 (inclusive)." }
-		queryParameters["size"] = size
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("size", size)
+		}
 		return api.createUrl("/Playback/BitrateTest", pathParameters, queryParameters, includeCredentials)
 	}
 
@@ -83,10 +86,12 @@ public class MediaInfoApi(
 	 */
 	public suspend fun getPlaybackInfo(itemId: UUID, userId: UUID = api.userId ?: throw
 			MissingUserIdException()): Response<PlaybackInfoResponse> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val data = null
 		val response = api.`get`<PlaybackInfoResponse>("/Items/{itemId}/PlaybackInfo", pathParameters,
 				queryParameters, data)
@@ -102,8 +107,9 @@ public class MediaInfoApi(
 	 */
 	public suspend fun getPostedPlaybackInfo(itemId: UUID, `data`: PlaybackInfoDto? = null):
 			Response<PlaybackInfoResponse> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<PlaybackInfoResponse>("/Items/{itemId}/PlaybackInfo", pathParameters,
 				queryParameters, data)
@@ -150,23 +156,25 @@ public class MediaInfoApi(
 		allowAudioStreamCopy: Boolean? = null,
 		`data`: PlaybackInfoDto? = null,
 	): Response<PlaybackInfoResponse> {
-		val pathParameters = mutableMapOf<String, Any?>()
-		pathParameters["itemId"] = itemId
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["userId"] = userId
-		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["mediaSourceId"] = mediaSourceId
-		queryParameters["liveStreamId"] = liveStreamId
-		queryParameters["autoOpenLiveStream"] = autoOpenLiveStream
-		queryParameters["enableDirectPlay"] = enableDirectPlay
-		queryParameters["enableDirectStream"] = enableDirectStream
-		queryParameters["enableTranscoding"] = enableTranscoding
-		queryParameters["allowVideoStreamCopy"] = allowVideoStreamCopy
-		queryParameters["allowAudioStreamCopy"] = allowAudioStreamCopy
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(14) {
+			put("userId", userId)
+			put("maxStreamingBitrate", maxStreamingBitrate)
+			put("startTimeTicks", startTimeTicks)
+			put("audioStreamIndex", audioStreamIndex)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("maxAudioChannels", maxAudioChannels)
+			put("mediaSourceId", mediaSourceId)
+			put("liveStreamId", liveStreamId)
+			put("autoOpenLiveStream", autoOpenLiveStream)
+			put("enableDirectPlay", enableDirectPlay)
+			put("enableDirectStream", enableDirectStream)
+			put("enableTranscoding", enableTranscoding)
+			put("allowVideoStreamCopy", allowVideoStreamCopy)
+			put("allowAudioStreamCopy", allowAudioStreamCopy)
+		}
 		val response = api.post<PlaybackInfoResponse>("/Items/{itemId}/PlaybackInfo", pathParameters,
 				queryParameters, data)
 		return response
@@ -202,18 +210,19 @@ public class MediaInfoApi(
 		`data`: OpenLiveStreamDto? = null,
 	): Response<LiveStreamResponse> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = mutableMapOf<String, Any?>()
-		queryParameters["openToken"] = openToken
-		queryParameters["userId"] = userId
-		queryParameters["playSessionId"] = playSessionId
-		queryParameters["maxStreamingBitrate"] = maxStreamingBitrate
-		queryParameters["startTimeTicks"] = startTimeTicks
-		queryParameters["audioStreamIndex"] = audioStreamIndex
-		queryParameters["subtitleStreamIndex"] = subtitleStreamIndex
-		queryParameters["maxAudioChannels"] = maxAudioChannels
-		queryParameters["itemId"] = itemId
-		queryParameters["enableDirectPlay"] = enableDirectPlay
-		queryParameters["enableDirectStream"] = enableDirectStream
+		val queryParameters = buildMap<String, Any?>(11) {
+			put("openToken", openToken)
+			put("userId", userId)
+			put("playSessionId", playSessionId)
+			put("maxStreamingBitrate", maxStreamingBitrate)
+			put("startTimeTicks", startTimeTicks)
+			put("audioStreamIndex", audioStreamIndex)
+			put("subtitleStreamIndex", subtitleStreamIndex)
+			put("maxAudioChannels", maxAudioChannels)
+			put("itemId", itemId)
+			put("enableDirectPlay", enableDirectPlay)
+			put("enableDirectStream", enableDirectStream)
+		}
 		val response = api.post<LiveStreamResponse>("/LiveStreams/Open", pathParameters, queryParameters,
 				data)
 		return response
