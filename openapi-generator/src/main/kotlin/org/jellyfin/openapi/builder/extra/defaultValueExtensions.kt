@@ -10,6 +10,7 @@ import org.jellyfin.openapi.model.ApiServiceOperationParameter
 import org.jellyfin.openapi.model.CustomDefaultValue
 import org.jellyfin.openapi.model.ObjectApiModelProperty
 
+@Suppress("ComplexMethod")
 fun ParameterSpec.Builder.defaultValue(
 	type: TypeName,
 	defaultValue: Any?,
