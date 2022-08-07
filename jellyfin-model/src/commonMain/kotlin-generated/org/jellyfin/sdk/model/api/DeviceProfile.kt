@@ -86,17 +86,17 @@ public data class DeviceProfile(
 	 * Gets or sets a value indicating whether EnableAlbumArtInDidl.
 	 */
 	@SerialName("EnableAlbumArtInDidl")
-	public val enableAlbumArtInDidl: Boolean,
+	public val enableAlbumArtInDidl: Boolean = false,
 	/**
 	 * Gets or sets a value indicating whether EnableSingleAlbumArtLimit.
 	 */
 	@SerialName("EnableSingleAlbumArtLimit")
-	public val enableSingleAlbumArtLimit: Boolean,
+	public val enableSingleAlbumArtLimit: Boolean = false,
 	/**
 	 * Gets or sets a value indicating whether EnableSingleSubtitleLimit.
 	 */
 	@SerialName("EnableSingleSubtitleLimit")
-	public val enableSingleSubtitleLimit: Boolean,
+	public val enableSingleSubtitleLimit: Boolean = false,
 	/**
 	 * Gets or sets the SupportedMediaTypes.
 	 */
@@ -168,27 +168,27 @@ public data class DeviceProfile(
 	 * Gets or sets the TimelineOffsetSeconds.
 	 */
 	@SerialName("TimelineOffsetSeconds")
-	public val timelineOffsetSeconds: Int,
+	public val timelineOffsetSeconds: Int = 0,
 	/**
 	 * Gets or sets a value indicating whether RequiresPlainVideoItems.
 	 */
 	@SerialName("RequiresPlainVideoItems")
-	public val requiresPlainVideoItems: Boolean,
+	public val requiresPlainVideoItems: Boolean = false,
 	/**
 	 * Gets or sets a value indicating whether RequiresPlainFolders.
 	 */
 	@SerialName("RequiresPlainFolders")
-	public val requiresPlainFolders: Boolean,
+	public val requiresPlainFolders: Boolean = false,
 	/**
 	 * Gets or sets a value indicating whether EnableMSMediaReceiverRegistrar.
 	 */
 	@SerialName("EnableMSMediaReceiverRegistrar")
-	public val enableMsMediaReceiverRegistrar: Boolean,
+	public val enableMsMediaReceiverRegistrar: Boolean = false,
 	/**
 	 * Gets or sets a value indicating whether IgnoreTranscodeByteRangeRequests.
 	 */
 	@SerialName("IgnoreTranscodeByteRangeRequests")
-	public val ignoreTranscodeByteRangeRequests: Boolean,
+	public val ignoreTranscodeByteRangeRequests: Boolean = false,
 	/**
 	 * Gets or sets the XmlRootAttributes.
 	 */

@@ -25,25 +25,25 @@ public data class TranscodingProfile(
 	@SerialName("Protocol")
 	public val protocol: String,
 	@SerialName("EstimateContentLength")
-	public val estimateContentLength: Boolean,
+	public val estimateContentLength: Boolean = false,
 	@SerialName("EnableMpegtsM2TsMode")
-	public val enableMpegtsM2TsMode: Boolean,
+	public val enableMpegtsM2TsMode: Boolean = false,
 	@SerialName("TranscodeSeekInfo")
 	public val transcodeSeekInfo: TranscodeSeekInfo,
 	@SerialName("CopyTimestamps")
-	public val copyTimestamps: Boolean,
+	public val copyTimestamps: Boolean = false,
 	@SerialName("Context")
 	public val context: EncodingContext,
 	@SerialName("EnableSubtitlesInManifest")
-	public val enableSubtitlesInManifest: Boolean,
+	public val enableSubtitlesInManifest: Boolean = false,
 	@SerialName("MaxAudioChannels")
 	public val maxAudioChannels: String? = null,
 	@SerialName("MinSegments")
-	public val minSegments: Int,
+	public val minSegments: Int = 0,
 	@SerialName("SegmentLength")
-	public val segmentLength: Int,
+	public val segmentLength: Int = 0,
 	@SerialName("BreakOnNonKeyFrames")
-	public val breakOnNonKeyFrames: Boolean,
+	public val breakOnNonKeyFrames: Boolean = false,
 	@SerialName("Conditions")
 	public val conditions: List<ProfileCondition>,
 )
