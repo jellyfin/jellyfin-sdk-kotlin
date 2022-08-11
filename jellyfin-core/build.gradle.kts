@@ -63,13 +63,13 @@ kotlin {
 }
 
 android {
-	compileSdk = 31
+	compileSdk = 32
 
 	sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
 
 	defaultConfig {
 		minSdk = 19
-		targetSdk = 31
+		targetSdk = 32
 		multiDexEnabled = true
 
 		consumerProguardFiles("proguard-rules.pro")
