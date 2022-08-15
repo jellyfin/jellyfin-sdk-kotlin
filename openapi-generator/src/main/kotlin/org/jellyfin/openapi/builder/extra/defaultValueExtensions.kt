@@ -7,13 +7,13 @@ import com.squareup.kotlinpoet.ParameterizedTypeName
 import com.squareup.kotlinpoet.TypeName
 import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
-import org.jellyfin.openapi.model.CustomDefaultValue
+import org.jellyfin.openapi.model.DefaultValue
 import org.jellyfin.openapi.model.ObjectApiModelProperty
 
 @Suppress("ComplexMethod")
 fun ParameterSpec.Builder.defaultValue(
 	type: TypeName,
-	defaultValue: Any?,
+	defaultValue: DefaultValue?,
 	allowEmptyCollection: Boolean,
 ) {
 	// Determine class name without parameters
@@ -25,10 +25,10 @@ fun ParameterSpec.Builder.defaultValue(
 
 	// Set default value
 	when (defaultValue) {
-		is String -> defaultValue("%S", defaultValue)
-		is Int -> defaultValue("%L", defaultValue)
-		is Boolean -> defaultValue("%L", defaultValue)
-		is CustomDefaultValue -> defaultValue(defaultValue.build())
+		is DefaultValue.String -> defaultValue("%S", defaultValue.value)
+		is DefaultValue.Int -> defaultValue("%L", defaultValue.value)
+		is DefaultValue.Boolean -> defaultValue("%L", defaultValue.value)
+		is DefaultValue.CodeBlock -> defaultValue(defaultValue.build())
 		// Set value to null by default for nullable values
 		null -> when {
 			typeClassName == Types.COLLECTION && allowEmptyCollection ->

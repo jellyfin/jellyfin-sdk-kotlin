@@ -24,6 +24,7 @@ import org.jellyfin.openapi.hooks.ServiceNameHook
 import org.jellyfin.openapi.model.ApiService
 import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
+import org.jellyfin.openapi.model.DefaultValue
 import org.jellyfin.openapi.model.HttpMethod
 import org.jellyfin.openapi.model.IntRangeValidation
 import org.jellyfin.openapi.model.ParameterValidation
@@ -34,6 +35,7 @@ class OpenApiApiServicesBuilder(
 	private val apiNameBuilder: ApiNameBuilder,
 	private val openApiTypeBuilder: OpenApiTypeBuilder,
 	private val openApiReturnTypeBuilder: OpenApiReturnTypeBuilder,
+	private val openApiDefaultValueBuilder: OpenApiDefaultValueBuilder,
 	private val serviceNameHooks: Collection<ServiceNameHook>,
 	private val defaultValueHooks: Collection<DefaultValueHook>,
 ) : Builder<Paths, Collection<ApiService>> {
@@ -57,15 +59,16 @@ class OpenApiApiServicesBuilder(
 	/**
 	 * Returns the default value of the first hook that does not return null or use the default from the schema
 	 */
-	private fun buildDefaultValue(path: ApiTypePath, type: TypeName, parameterSpec: Parameter) = defaultValueHooks
-		.firstNotNullOfOrNull { hook -> hook.onBuildDefaultValue(path, type, parameterSpec) }
-		?: parameterSpec.schema?.default
+	private fun buildDefaultValue(path: ApiTypePath, type: TypeName, parameterSpec: Parameter): DefaultValue? =
+		defaultValueHooks.firstNotNullOfOrNull { hook -> hook.onBuildDefaultValue(path, type, parameterSpec) }
+			?: openApiDefaultValueBuilder.build(parameterSpec.schema)
 
 	private fun buildValidation(schema: Schema<*>): ParameterValidation? = when {
 		schema is IntegerSchema && schema.minimum != null && schema.maximum != null -> IntRangeValidation(
 			schema.minimum.intValueExact(),
 			schema.maximum.intValueExact()
 		)
+
 		else -> null
 	}
 

@@ -15,6 +15,7 @@ import org.jellyfin.openapi.model.ObjectApiModelProperty
 class OpenApiModelBuilder(
 	private val openApiTypeBuilder: OpenApiTypeBuilder,
 	private val modelBuilder: ModelBuilder,
+	private val openApiDefaultValueBuilder: OpenApiDefaultValueBuilder,
 ) : Builder<Schema<Any>, JellyFile> {
 	override fun build(data: Schema<Any>): JellyFile {
 		val model = when {
@@ -36,7 +37,7 @@ class OpenApiModelBuilder(
 						ObjectApiModelProperty(
 							name = name,
 							originalName = originalName,
-							defaultValue = property.default,
+							defaultValue = openApiDefaultValueBuilder.build(property),
 							type = openApiTypeBuilder.build(ModelTypePath(data.name, name), property),
 							description = property.description,
 							deprecated = property.deprecated == true

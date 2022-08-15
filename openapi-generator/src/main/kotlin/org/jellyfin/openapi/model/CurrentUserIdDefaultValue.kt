@@ -8,7 +8,7 @@ import org.jellyfin.openapi.constants.Strings
 
 class CurrentUserIdDefaultValue(
 	private val isString: Boolean,
-) : CustomDefaultValue {
+) : DefaultValue.CodeBlock {
 	override fun build() = CodeBlock.builder().apply {
 		// api.userId
 		add("%L.%L", Strings.API_CLIENT_PARAMETER_NAME, "userId")
