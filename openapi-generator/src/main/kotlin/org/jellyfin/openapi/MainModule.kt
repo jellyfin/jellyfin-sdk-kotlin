@@ -15,6 +15,7 @@ import org.jellyfin.openapi.builder.model.ModelBuilder
 import org.jellyfin.openapi.builder.model.ObjectModelBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiApiServicesBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiConstantsBuilder
+import org.jellyfin.openapi.builder.openapi.OpenApiDefaultValueBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiModelBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiReturnTypeBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiTypeBuilder
@@ -26,9 +27,10 @@ val mainModule = module {
 	// OpenAPI
 	single { OpenApiTypeBuilder(getAll()) }
 	single { OpenApiReturnTypeBuilder(get()) }
-	single { OpenApiModelBuilder(get(), get()) }
-	single { OpenApiApiServicesBuilder(get(), get(), get(), getAll(), getAll()) }
+	single { OpenApiModelBuilder(get(), get(), get()) }
+	single { OpenApiApiServicesBuilder(get(), get(), get(), get(), getAll(), getAll()) }
 	single { OpenApiConstantsBuilder() }
+	single { OpenApiDefaultValueBuilder() }
 
 	// API
 	single { ApiNameBuilder() }

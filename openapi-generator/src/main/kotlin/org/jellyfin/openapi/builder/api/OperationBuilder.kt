@@ -17,6 +17,7 @@ import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
+import org.jellyfin.openapi.model.DefaultValue
 import org.jellyfin.openapi.model.IntRangeValidation
 import org.jellyfin.openapi.model.ParameterValidation
 
