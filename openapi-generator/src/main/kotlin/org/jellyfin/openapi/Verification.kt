@@ -16,19 +16,16 @@ import kotlin.streams.asSequence
 private val logger = KotlinLogging.logger { }
 
 class Verification(
-	apiOutputDir: File,
-	modelsOutputDir: File,
+	private val apiOutputDir: File,
+	private val modelsOutputDir: File,
 ) {
-	private val apiFiles by getFileTree(apiOutputDir)
-	private val modelFiles by getFileTree(modelsOutputDir)
-
-	private fun getFileTree(directory: File) = lazy {
+	private fun getFileTree(directory: File): Map<String, ByteArray> {
 		assert(directory.exists() && directory.isDirectory)
 
 		val digest = MessageDigest.getInstance("MD5")
 		val path = directory.toPath()
 
-		Files
+		return Files
 			.walk(path)
 			.asSequence()
 			.filter { it.isRegularFile(LinkOption.NOFOLLOW_LINKS) }
@@ -47,12 +44,12 @@ class Verification(
 	private fun getFileTree(fileSpecs: Collection<FileSpec>) = lazy {
 		val digest = MessageDigest.getInstance("MD5")
 
-		fileSpecs.map {
+		fileSpecs.associate {
 			val obj = it.toJavaFileObject()
 			val hash = digest.digest(it.toString().toByteArray())
 
 			Path(obj.name).toString() to hash
-		}.toMap()
+		}
 	}
 
 	private fun compare(current: Map<String, ByteArray>, new: Map<String, ByteArray>): Boolean {
@@ -83,9 +80,9 @@ class Verification(
 		this?.joinToString(separator = "") { byte -> "%02x".format(byte) } ?: "null"
 
 	fun verify(result: GeneratorResult): Boolean {
-		val newModelFiles by getFileTree(result.models)
-		val newApiFiles by getFileTree(result.apis + result.constants)
+		val currentFiles = getFileTree(apiOutputDir) + getFileTree(modelsOutputDir)
+		val newFiles by getFileTree(result.files)
 
-		return compare(modelFiles, newModelFiles) && compare(apiFiles, newApiFiles)
+		return compare(currentFiles, newFiles)
 	}
 }

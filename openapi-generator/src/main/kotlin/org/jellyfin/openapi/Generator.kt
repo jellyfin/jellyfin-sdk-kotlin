@@ -1,68 +1,47 @@
 package org.jellyfin.openapi
 
-import com.squareup.kotlinpoet.FileSpec
-import io.swagger.v3.oas.models.Paths
-import io.swagger.v3.oas.models.info.Info
-import io.swagger.v3.oas.models.media.Schema
 import io.swagger.v3.parser.OpenAPIV3Parser
-import io.swagger.v3.parser.core.models.SwaggerParseResult
 import mu.KotlinLogging
-import org.jellyfin.openapi.builder.api.ApiBuilder
 import org.jellyfin.openapi.builder.api.ApiClientExtensionsBuilder
-import org.jellyfin.openapi.builder.extra.FileSpecBuilder
+import org.jellyfin.openapi.builder.api.ApisBuilder
+import org.jellyfin.openapi.builder.model.ModelsBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiApiServicesBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiConstantsBuilder
-import org.jellyfin.openapi.builder.openapi.OpenApiModelBuilder
+import org.jellyfin.openapi.builder.openapi.OpenApiModelsBuilder
+import org.jellyfin.openapi.constants.Packages
+import org.jellyfin.openapi.model.GeneratorContext
 import org.jellyfin.openapi.model.GeneratorResult
 import java.io.File
 
 private val logger = KotlinLogging.logger { }
 
 class Generator(
-	private val fileSpecBuilder: FileSpecBuilder,
-	private val openApiModelBuilder: OpenApiModelBuilder,
 	private val openApiApiServicesBuilder: OpenApiApiServicesBuilder,
-	private val openApiConstantsBuilder: OpenApiConstantsBuilder,
-	private val apiBuilder: ApiBuilder,
+	private val apisBuilder: ApisBuilder,
+	private val openApiModelsBuilder: OpenApiModelsBuilder,
+	private val modelsBuilder: ModelsBuilder,
 	private val apiClientExtensionsBuilder: ApiClientExtensionsBuilder,
+	private val openApiConstantsBuilder: OpenApiConstantsBuilder,
 ) {
-	private fun parse(openApiJson: String): SwaggerParseResult {
-		val parseResult = OpenAPIV3Parser().readContents(openApiJson)
-		parseResult.messages.forEach { message -> logger.warn { message } }
-		return parseResult
-	}
-
-	private fun createModels(schemas: Map<String, Schema<Any>>) = schemas.map { (name, schema) ->
-		if (schema.name == null) schema.name = name
-
-		openApiModelBuilder.build(schema).let(fileSpecBuilder::build)
-	}
-
-	private fun createApis(paths: Paths): List<FileSpec> = openApiApiServicesBuilder.build(paths).let { services ->
-		services
-			.map(apiBuilder::build)
-			.map(fileSpecBuilder::build)
-			.plus(services.let(apiClientExtensionsBuilder::build))
-	}
-
-	private fun createApiConstants(info: Info): FileSpec = openApiConstantsBuilder.build(info)
-		.let(fileSpecBuilder::build)
-
 	private fun generateInternal(openApiJson: String): GeneratorResult {
-		val parseResult = parse(openApiJson)
+		val openApiSpecification = OpenAPIV3Parser().readContents(openApiJson)
+		openApiSpecification.messages.forEach { message -> logger.warn { message } }
 
-		// Get relevant OpenAPI parts
-		val schemas = parseResult.openAPI.components.schemas
-		val paths = parseResult.openAPI.paths
+		val context = GeneratorContext(openApiSpecification)
 
-		// Create models
-		val models = createModels(schemas)
-		// Create API operations
-		val apis = createApis(paths)
-		// Create API constants
-		val constants = createApiConstants(parseResult.openAPI.info)
+		// Generate API
+		openApiApiServicesBuilder.build(context, context.paths)
+		apisBuilder.build(context, context.apiServices)
 
-		return GeneratorResult(models, apis, constants)
+		// Generate models
+		openApiModelsBuilder.build(context, context.schemas)
+		modelsBuilder.build(context, context.models)
+
+		// Add meta files
+		apiClientExtensionsBuilder.build(context, context.apiServices)
+		openApiConstantsBuilder.build(context, context.info)
+
+		return context.toGeneratorResult()
 	}
 
 	fun verify(
@@ -88,10 +67,15 @@ class Generator(
 		apiOutputDir.deleteRecursively()
 
 		// Create models
-		result.models.forEach { file -> file.writeTo(modelsOutputDir) }
-		// Create API operations
-		result.apis.forEach { file -> file.writeTo(apiOutputDir) }
-		// Create API constants
-		result.constants.writeTo(apiOutputDir)
+		for (file in result.files) {
+			val directory = when {
+				file.packageName.startsWith(Packages.API) -> apiOutputDir
+				file.packageName.startsWith(Packages.API_CLIENT_EXTENSIONS) -> apiOutputDir
+				file.packageName.startsWith(Packages.API_CONSTANTS) -> apiOutputDir
+				file.packageName.startsWith(Packages.MODEL) -> modelsOutputDir
+				else -> throw OpenApiGeneratorError("Unable to determine directory for package ${file.packageName}")
+			}
+			file.writeTo(directory)
+		}
 	}
 }

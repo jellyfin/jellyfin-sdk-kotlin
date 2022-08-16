@@ -12,7 +12,7 @@ import mu.KotlinLogging
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toCamelCase
 import org.jellyfin.openapi.OpenApiGeneratorError
-import org.jellyfin.openapi.builder.Builder
+import org.jellyfin.openapi.builder.ContextBuilder
 import org.jellyfin.openapi.builder.api.ApiNameBuilder
 import org.jellyfin.openapi.constants.MimeType
 import org.jellyfin.openapi.constants.Security
@@ -25,6 +25,7 @@ import org.jellyfin.openapi.model.ApiService
 import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
 import org.jellyfin.openapi.model.DefaultValue
+import org.jellyfin.openapi.model.GeneratorContext
 import org.jellyfin.openapi.model.HttpMethod
 import org.jellyfin.openapi.model.IntRangeValidation
 import org.jellyfin.openapi.model.ParameterValidation
@@ -38,7 +39,7 @@ class OpenApiApiServicesBuilder(
 	private val openApiDefaultValueBuilder: OpenApiDefaultValueBuilder,
 	private val serviceNameHooks: Collection<ServiceNameHook>,
 	private val defaultValueHooks: Collection<DefaultValueHook>,
-) : Builder<Paths, Collection<ApiService>> {
+) : ContextBuilder<Paths, Unit> {
 	private fun getMethod(method: PathItem.HttpMethod) = when (method) {
 		PathItem.HttpMethod.POST -> HttpMethod.POST
 		PathItem.HttpMethod.GET -> HttpMethod.GET
@@ -180,8 +181,8 @@ class OpenApiApiServicesBuilder(
 		)
 	}
 
-	override fun build(data: Paths): Collection<ApiService> {
-		val operations = mutableMapOf<String, MutableSet<ApiServiceOperation>>()
+	override fun build(context: GeneratorContext, data: Paths) {
+		val operationsSets = mutableMapOf<String, MutableSet<ApiServiceOperation>>()
 
 		data.forEach { path, item ->
 			item.readOperationsMap().forEach operation@{ (operationMethod, operation) ->
@@ -189,14 +190,17 @@ class OpenApiApiServicesBuilder(
 
 				buildServiceNames(operation).forEach { serviceName ->
 					// Create service name is missing
-					if (serviceName !in operations) operations[serviceName] = mutableSetOf()
+					if (serviceName !in operationsSets) operationsSets[serviceName] = mutableSetOf()
 
 					// Add operation
-					operations[serviceName]!!.add(buildOperation(operation, path, serviceName, method))
+					operationsSets[serviceName]!!.add(buildOperation(operation, path, serviceName, method))
 				}
 			}
 		}
 
-		return operations.map { (serviceName, operations) -> ApiService(serviceName, operations) }
+		for ((serviceName, operations) in operationsSets) {
+			val service = ApiService(serviceName, operations)
+			context += service
+		}
 	}
 }
