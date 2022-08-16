@@ -10,7 +10,7 @@ class OpenApiModelsBuilder(
 	override fun build(context: GeneratorContext, data: Map<String, Schema<Any>>) {
 		for ((name, schema) in data) {
 			if (schema.name == null) schema.name = name
-			context += openApiModelBuilder.build(schema)
+			context += openApiModelBuilder.build(context, schema)
 		}
 	}
 }

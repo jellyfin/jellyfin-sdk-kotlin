@@ -3,19 +3,20 @@ package org.jellyfin.openapi.builder.openapi
 import io.swagger.v3.oas.models.media.Schema
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toCamelCase
-import org.jellyfin.openapi.builder.Builder
+import org.jellyfin.openapi.builder.ContextBuilder
 import org.jellyfin.openapi.hooks.ModelTypePath
 import org.jellyfin.openapi.model.ApiModel
 import org.jellyfin.openapi.model.EmptyApiModel
 import org.jellyfin.openapi.model.EnumApiModel
+import org.jellyfin.openapi.model.GeneratorContext
 import org.jellyfin.openapi.model.ObjectApiModel
 import org.jellyfin.openapi.model.ObjectApiModelProperty
 
 class OpenApiModelBuilder(
 	private val openApiTypeBuilder: OpenApiTypeBuilder,
 	private val openApiDefaultValueBuilder: OpenApiDefaultValueBuilder,
-) : Builder<Schema<Any>, ApiModel> {
-	override fun build(data: Schema<Any>): ApiModel = when {
+) : ContextBuilder<Schema<Any>, ApiModel> {
+	override fun build(context: GeneratorContext, data: Schema<Any>): ApiModel = when {
 		// Object
 		data.type == "object" -> when (data.properties.isNullOrEmpty()) {
 			// No properties use the empty model
@@ -34,7 +35,7 @@ class OpenApiModelBuilder(
 					ObjectApiModelProperty(
 						name = name,
 						originalName = originalName,
-						defaultValue = openApiDefaultValueBuilder.build(property),
+						defaultValue = openApiDefaultValueBuilder.build(context, property),
 						type = openApiTypeBuilder.build(ModelTypePath(data.name, name), property),
 						description = property.description,
 						deprecated = property.deprecated == true

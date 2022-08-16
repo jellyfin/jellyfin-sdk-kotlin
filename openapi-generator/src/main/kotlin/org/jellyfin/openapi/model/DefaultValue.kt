@@ -1,5 +1,7 @@
 package org.jellyfin.openapi.model
 
+import com.squareup.kotlinpoet.TypeName
+
 sealed interface DefaultValue {
 	@JvmInline
 	value class String(val value: kotlin.String) : DefaultValue
@@ -9,6 +11,8 @@ sealed interface DefaultValue {
 
 	@JvmInline
 	value class Boolean(val value: kotlin.Boolean) : DefaultValue
+
+	data class EnumMember(val enumType: TypeName, val memberName: kotlin.String) : DefaultValue
 
 	/**
 	 * Custom value builder used in hooks.

@@ -29,13 +29,13 @@ class Generator(
 
 		val context = GeneratorContext(openApiSpecification)
 
-		// Generate API
-		openApiApiServicesBuilder.build(context, context.paths)
-		apisBuilder.build(context, context.apiServices)
-
-		// Generate models
+		// Generate intermediate models
 		openApiModelsBuilder.build(context, context.schemas)
+		openApiApiServicesBuilder.build(context, context.paths)
+
+		// Generate code
 		modelsBuilder.build(context, context.models)
+		apisBuilder.build(context, context.apiServices)
 
 		// Add meta files
 		apiClientExtensionsBuilder.build(context, context.apiServices)

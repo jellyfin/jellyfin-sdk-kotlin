@@ -60,9 +60,14 @@ class OpenApiApiServicesBuilder(
 	/**
 	 * Returns the default value of the first hook that does not return null or use the default from the schema
 	 */
-	private fun buildDefaultValue(path: ApiTypePath, type: TypeName, parameterSpec: Parameter): DefaultValue? =
+	private fun buildDefaultValue(
+		context: GeneratorContext,
+		path: ApiTypePath,
+		type: TypeName,
+		parameterSpec: Parameter,
+	): DefaultValue? =
 		defaultValueHooks.firstNotNullOfOrNull { hook -> hook.onBuildDefaultValue(path, type, parameterSpec) }
-			?: openApiDefaultValueBuilder.build(parameterSpec.schema)
+			?: openApiDefaultValueBuilder.build(context, parameterSpec.schema)
 
 	private fun buildValidation(schema: Schema<*>): ParameterValidation? = when {
 		schema is IntegerSchema && schema.minimum != null && schema.maximum != null -> IntRangeValidation(
@@ -109,6 +114,7 @@ class OpenApiApiServicesBuilder(
 	}
 
 	private fun buildOperation(
+		context: GeneratorContext,
 		operation: Operation,
 		path: String,
 		serviceName: String,
@@ -135,7 +141,7 @@ class OpenApiApiServicesBuilder(
 				name = parameterName,
 				originalName = parameterSpec.name,
 				type = type,
-				defaultValue = buildDefaultValue(parameterTypePath, type, parameterSpec),
+				defaultValue = buildDefaultValue(context, parameterTypePath, type, parameterSpec),
 				description = parameterSpec.description,
 				deprecated = parameterSpec.deprecated == true,
 				validation = buildValidation(parameterSpec.schema),
@@ -193,7 +199,7 @@ class OpenApiApiServicesBuilder(
 					if (serviceName !in operationsSets) operationsSets[serviceName] = mutableSetOf()
 
 					// Add operation
-					operationsSets[serviceName]!!.add(buildOperation(operation, path, serviceName, method))
+					operationsSets[serviceName]!!.add(buildOperation(context, operation, path, serviceName, method))
 				}
 			}
 		}
