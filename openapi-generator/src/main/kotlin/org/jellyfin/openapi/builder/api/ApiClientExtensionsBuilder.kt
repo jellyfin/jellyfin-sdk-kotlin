@@ -4,17 +4,18 @@ import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.PropertySpec
-import org.jellyfin.openapi.builder.Builder
+import org.jellyfin.openapi.builder.ContextBuilder
 import org.jellyfin.openapi.builder.extra.FileSpecBuilder
 import org.jellyfin.openapi.constants.Classes
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.model.ApiService
+import org.jellyfin.openapi.model.GeneratorContext
 
 class ApiClientExtensionsBuilder(
 	private val fileSpecBuilder: FileSpecBuilder,
-) : Builder<Collection<ApiService>, FileSpec> {
-	override fun build(data: Collection<ApiService>): FileSpec {
-		return FileSpec.builder(Packages.API_CLIENT_EXTENSIONS, Classes.API_CLIENT_EXTENSIONS).apply {
+) : ContextBuilder<Collection<ApiService>, Unit> {
+	override fun build(context: GeneratorContext, data: Collection<ApiService>) {
+		context += FileSpec.builder(Packages.API_CLIENT_EXTENSIONS, Classes.API_CLIENT_EXTENSIONS).apply {
 			fileSpecBuilder.buildHeader(this)
 			data.forEach { api -> addProperty(buildExtensionProperty(api)) }
 		}.build()
