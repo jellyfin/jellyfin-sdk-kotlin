@@ -28,6 +28,7 @@ fun ParameterSpec.Builder.defaultValue(
 		is DefaultValue.String -> defaultValue("%S", defaultValue.value)
 		is DefaultValue.Int -> defaultValue("%L", defaultValue.value)
 		is DefaultValue.Boolean -> defaultValue("%L", defaultValue.value)
+		is DefaultValue.EnumMember -> defaultValue("%T.%L", defaultValue.enumType, defaultValue.memberName)
 		is DefaultValue.CodeBlock -> defaultValue(defaultValue.build())
 		// Set value to null by default for nullable values
 		null -> when {
