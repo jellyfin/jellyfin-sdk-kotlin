@@ -32,8 +32,8 @@ public class ItemRefreshApi(
 	 */
 	public suspend fun refreshItem(
 		itemId: UUID,
-		metadataRefreshMode: MetadataRefreshMode? = null,
-		imageRefreshMode: MetadataRefreshMode? = null,
+		metadataRefreshMode: MetadataRefreshMode? = MetadataRefreshMode.NONE,
+		imageRefreshMode: MetadataRefreshMode? = MetadataRefreshMode.NONE,
 		replaceAllMetadata: Boolean? = false,
 		replaceAllImages: Boolean? = false,
 	): Response<Unit> {
