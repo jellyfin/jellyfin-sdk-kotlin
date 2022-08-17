@@ -29,11 +29,11 @@ public data class TranscodingProfile(
 	@SerialName("EnableMpegtsM2TsMode")
 	public val enableMpegtsM2TsMode: Boolean = false,
 	@SerialName("TranscodeSeekInfo")
-	public val transcodeSeekInfo: TranscodeSeekInfo,
+	public val transcodeSeekInfo: TranscodeSeekInfo = TranscodeSeekInfo.AUTO,
 	@SerialName("CopyTimestamps")
 	public val copyTimestamps: Boolean = false,
 	@SerialName("Context")
-	public val context: EncodingContext,
+	public val context: EncodingContext = EncodingContext.STREAMING,
 	@SerialName("EnableSubtitlesInManifest")
 	public val enableSubtitlesInManifest: Boolean = false,
 	@SerialName("MaxAudioChannels")
