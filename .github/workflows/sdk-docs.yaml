@@ -1,0 +1,27 @@
+name: SDK Documentation
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-dokka:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+      - name: Setup Java
+        uses: actions/setup-java@2c7a4878f5d120bd643426d54ae1209b29cc01a3 # tag=v3
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: gradle
+      - name: Run dokkaHtmlMultiModule task
+        run: ./gradlew --build-cache --no-daemon --info dokkaHtmlMultiModule
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@f4e69017a716d2d729b620cba1f4016257fedec6 # tag=v1
+        with:
+          path: ./build/dokka
