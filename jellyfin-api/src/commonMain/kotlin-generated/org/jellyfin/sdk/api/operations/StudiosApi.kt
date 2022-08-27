@@ -22,6 +22,7 @@ import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
+import org.jellyfin.sdk.model.api.request.GetStudiosRequest
 
 public class StudiosApi(
 	private val api: ApiClient,
@@ -116,4 +117,30 @@ public class StudiosApi(
 				data)
 		return response
 	}
+
+	/**
+	 * Gets all studios from a given item, folder, or the entire library.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getStudios(request: GetStudiosRequest = GetStudiosRequest()):
+			Response<BaseItemDtoQueryResult> = getStudios(
+		startIndex = request.startIndex,
+		limit = request.limit,
+		searchTerm = request.searchTerm,
+		parentId = request.parentId,
+		fields = request.fields,
+		excludeItemTypes = request.excludeItemTypes,
+		includeItemTypes = request.includeItemTypes,
+		isFavorite = request.isFavorite,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		userId = request.userId,
+		nameStartsWithOrGreater = request.nameStartsWithOrGreater,
+		nameStartsWith = request.nameStartsWith,
+		nameLessThan = request.nameLessThan,
+		enableImages = request.enableImages,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+	)
 }

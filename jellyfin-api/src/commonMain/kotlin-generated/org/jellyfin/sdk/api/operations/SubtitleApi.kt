@@ -25,6 +25,10 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.FontFile
 import org.jellyfin.sdk.model.api.RemoteSubtitleInfo
 import org.jellyfin.sdk.model.api.UploadSubtitleDto
+import org.jellyfin.sdk.model.api.request.GetSubtitleDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetSubtitleRequest
+import org.jellyfin.sdk.model.api.request.GetSubtitleWithTicksDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetSubtitleWithTicksRequest
 
 public class SubtitleApi(
 	private val api: ApiClient,
@@ -168,6 +172,22 @@ public class SubtitleApi(
 	/**
 	 * Gets subtitles in a specified format.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getSubtitle(request: GetSubtitleRequest): Response<String> = getSubtitle(
+		routeItemId = request.routeItemId,
+		routeMediaSourceId = request.routeMediaSourceId,
+		routeIndex = request.routeIndex,
+		routeFormat = request.routeFormat,
+		endPositionTicks = request.endPositionTicks,
+		copyTimestamps = request.copyTimestamps,
+		addVttTimeMap = request.addVttTimeMap,
+		startPositionTicks = request.startPositionTicks,
+	)
+
+	/**
+	 * Gets subtitles in a specified format.
+	 *
 	 * @param routeItemId The (route) item id.
 	 * @param routeMediaSourceId The (route) media source id.
 	 * @param routeIndex The (route) subtitle stream index.
@@ -218,6 +238,28 @@ public class SubtitleApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets subtitles in a specified format.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getSubtitleDeprecated(request: GetSubtitleDeprecatedRequest): Response<String> =
+			getSubtitleDeprecated(
+		routeItemId = request.routeItemId,
+		routeMediaSourceId = request.routeMediaSourceId,
+		routeIndex = request.routeIndex,
+		routeFormat = request.routeFormat,
+		itemId = request.itemId,
+		mediaSourceId = request.mediaSourceId,
+		index = request.index,
+		format = request.format,
+		endPositionTicks = request.endPositionTicks,
+		copyTimestamps = request.copyTimestamps,
+		addVttTimeMap = request.addVttTimeMap,
+		startPositionTicks = request.startPositionTicks,
+	)
 
 	/**
 	 * Gets an HLS subtitle playlist.
@@ -320,6 +362,23 @@ public class SubtitleApi(
 	/**
 	 * Gets subtitles in a specified format.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getSubtitleWithTicks(request: GetSubtitleWithTicksRequest): Response<String> =
+			getSubtitleWithTicks(
+		routeItemId = request.routeItemId,
+		routeMediaSourceId = request.routeMediaSourceId,
+		routeIndex = request.routeIndex,
+		routeStartPositionTicks = request.routeStartPositionTicks,
+		routeFormat = request.routeFormat,
+		endPositionTicks = request.endPositionTicks,
+		copyTimestamps = request.copyTimestamps,
+		addVttTimeMap = request.addVttTimeMap,
+	)
+
+	/**
+	 * Gets subtitles in a specified format.
+	 *
 	 * @param routeItemId The (route) item id.
 	 * @param routeMediaSourceId The (route) media source id.
 	 * @param routeIndex The (route) subtitle stream index.
@@ -373,6 +432,29 @@ public class SubtitleApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets subtitles in a specified format.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getSubtitleWithTicksDeprecated(request: GetSubtitleWithTicksDeprecatedRequest):
+			Response<String> = getSubtitleWithTicksDeprecated(
+		routeItemId = request.routeItemId,
+		routeMediaSourceId = request.routeMediaSourceId,
+		routeIndex = request.routeIndex,
+		routeStartPositionTicks = request.routeStartPositionTicks,
+		routeFormat = request.routeFormat,
+		itemId = request.itemId,
+		mediaSourceId = request.mediaSourceId,
+		index = request.index,
+		startPositionTicks = request.startPositionTicks,
+		format = request.format,
+		endPositionTicks = request.endPositionTicks,
+		copyTimestamps = request.copyTimestamps,
+		addVttTimeMap = request.addVttTimeMap,
+	)
 
 	/**
 	 * Search remote subtitles.

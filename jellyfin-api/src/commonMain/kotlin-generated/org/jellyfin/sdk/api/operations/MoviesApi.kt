@@ -19,6 +19,7 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.RecommendationDto
+import org.jellyfin.sdk.model.api.request.GetMovieRecommendationsRequest
 
 public class MoviesApi(
 	private val api: ApiClient,
@@ -53,4 +54,18 @@ public class MoviesApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets movie recommendations.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getMovieRecommendations(request: GetMovieRecommendationsRequest =
+			GetMovieRecommendationsRequest()): Response<List<RecommendationDto>> = getMovieRecommendations(
+		userId = request.userId,
+		parentId = request.parentId,
+		fields = request.fields,
+		categoryLimit = request.categoryLimit,
+		itemLimit = request.itemLimit,
+	)
 }

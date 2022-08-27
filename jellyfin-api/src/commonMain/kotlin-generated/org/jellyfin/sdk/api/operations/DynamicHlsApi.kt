@@ -21,6 +21,13 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.EncodingContext
 import org.jellyfin.sdk.model.api.SubtitleDeliveryMethod
+import org.jellyfin.sdk.model.api.request.GetHlsAudioSegmentRequest
+import org.jellyfin.sdk.model.api.request.GetHlsVideoSegmentRequest
+import org.jellyfin.sdk.model.api.request.GetLiveHlsStreamRequest
+import org.jellyfin.sdk.model.api.request.GetMasterHlsAudioPlaylistRequest
+import org.jellyfin.sdk.model.api.request.GetMasterHlsVideoPlaylistRequest
+import org.jellyfin.sdk.model.api.request.GetVariantHlsAudioPlaylistRequest
+import org.jellyfin.sdk.model.api.request.GetVariantHlsVideoPlaylistRequest
 
 public class DynamicHlsApi(
 	private val api: ApiClient,
@@ -219,6 +226,69 @@ public class DynamicHlsApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets a video stream using HTTP live streaming.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getHlsAudioSegment(request: GetHlsAudioSegmentRequest):
+			Response<ByteReadChannel> = getHlsAudioSegment(
+		itemId = request.itemId,
+		playlistId = request.playlistId,
+		segmentId = request.segmentId,
+		container = request.container,
+		runtimeTicks = request.runtimeTicks,
+		actualSegmentLengthTicks = request.actualSegmentLengthTicks,
+		static = request.static,
+		params = request.params,
+		tag = request.tag,
+		deviceProfileId = request.deviceProfileId,
+		playSessionId = request.playSessionId,
+		segmentContainer = request.segmentContainer,
+		segmentLength = request.segmentLength,
+		minSegments = request.minSegments,
+		mediaSourceId = request.mediaSourceId,
+		deviceId = request.deviceId,
+		audioCodec = request.audioCodec,
+		enableAutoStreamCopy = request.enableAutoStreamCopy,
+		allowVideoStreamCopy = request.allowVideoStreamCopy,
+		allowAudioStreamCopy = request.allowAudioStreamCopy,
+		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
+		audioSampleRate = request.audioSampleRate,
+		maxAudioBitDepth = request.maxAudioBitDepth,
+		maxStreamingBitrate = request.maxStreamingBitrate,
+		audioBitRate = request.audioBitRate,
+		audioChannels = request.audioChannels,
+		maxAudioChannels = request.maxAudioChannels,
+		profile = request.profile,
+		level = request.level,
+		framerate = request.framerate,
+		maxFramerate = request.maxFramerate,
+		copyTimestamps = request.copyTimestamps,
+		startTimeTicks = request.startTimeTicks,
+		width = request.width,
+		height = request.height,
+		videoBitRate = request.videoBitRate,
+		subtitleStreamIndex = request.subtitleStreamIndex,
+		subtitleMethod = request.subtitleMethod,
+		maxRefFrames = request.maxRefFrames,
+		maxVideoBitDepth = request.maxVideoBitDepth,
+		requireAvc = request.requireAvc,
+		deInterlace = request.deInterlace,
+		requireNonAnamorphic = request.requireNonAnamorphic,
+		transcodingMaxAudioChannels = request.transcodingMaxAudioChannels,
+		cpuCoreLimit = request.cpuCoreLimit,
+		liveStreamId = request.liveStreamId,
+		enableMpegtsM2TsMode = request.enableMpegtsM2TsMode,
+		videoCodec = request.videoCodec,
+		subtitleCodec = request.subtitleCodec,
+		transcodeReasons = request.transcodeReasons,
+		audioStreamIndex = request.audioStreamIndex,
+		videoStreamIndex = request.videoStreamIndex,
+		context = request.context,
+		streamOptions = request.streamOptions,
+	)
 
 	/**
 	 * Gets a video stream using HTTP live streaming.
@@ -616,6 +686,70 @@ public class DynamicHlsApi(
 	/**
 	 * Gets a video stream using HTTP live streaming.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getHlsVideoSegment(request: GetHlsVideoSegmentRequest):
+			Response<ByteReadChannel> = getHlsVideoSegment(
+		itemId = request.itemId,
+		playlistId = request.playlistId,
+		segmentId = request.segmentId,
+		container = request.container,
+		runtimeTicks = request.runtimeTicks,
+		actualSegmentLengthTicks = request.actualSegmentLengthTicks,
+		static = request.static,
+		params = request.params,
+		tag = request.tag,
+		deviceProfileId = request.deviceProfileId,
+		playSessionId = request.playSessionId,
+		segmentContainer = request.segmentContainer,
+		segmentLength = request.segmentLength,
+		minSegments = request.minSegments,
+		mediaSourceId = request.mediaSourceId,
+		deviceId = request.deviceId,
+		audioCodec = request.audioCodec,
+		enableAutoStreamCopy = request.enableAutoStreamCopy,
+		allowVideoStreamCopy = request.allowVideoStreamCopy,
+		allowAudioStreamCopy = request.allowAudioStreamCopy,
+		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
+		audioSampleRate = request.audioSampleRate,
+		maxAudioBitDepth = request.maxAudioBitDepth,
+		audioBitRate = request.audioBitRate,
+		audioChannels = request.audioChannels,
+		maxAudioChannels = request.maxAudioChannels,
+		profile = request.profile,
+		level = request.level,
+		framerate = request.framerate,
+		maxFramerate = request.maxFramerate,
+		copyTimestamps = request.copyTimestamps,
+		startTimeTicks = request.startTimeTicks,
+		width = request.width,
+		height = request.height,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		videoBitRate = request.videoBitRate,
+		subtitleStreamIndex = request.subtitleStreamIndex,
+		subtitleMethod = request.subtitleMethod,
+		maxRefFrames = request.maxRefFrames,
+		maxVideoBitDepth = request.maxVideoBitDepth,
+		requireAvc = request.requireAvc,
+		deInterlace = request.deInterlace,
+		requireNonAnamorphic = request.requireNonAnamorphic,
+		transcodingMaxAudioChannels = request.transcodingMaxAudioChannels,
+		cpuCoreLimit = request.cpuCoreLimit,
+		liveStreamId = request.liveStreamId,
+		enableMpegtsM2TsMode = request.enableMpegtsM2TsMode,
+		videoCodec = request.videoCodec,
+		subtitleCodec = request.subtitleCodec,
+		transcodeReasons = request.transcodeReasons,
+		audioStreamIndex = request.audioStreamIndex,
+		videoStreamIndex = request.videoStreamIndex,
+		context = request.context,
+		streamOptions = request.streamOptions,
+	)
+
+	/**
+	 * Gets a video stream using HTTP live streaming.
+	 *
 	 * @param itemId The item id.
 	 * @param playlistId The playlist id.
 	 * @param segmentId The segment id.
@@ -1002,6 +1136,67 @@ public class DynamicHlsApi(
 	/**
 	 * Gets a hls live stream.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getLiveHlsStream(request: GetLiveHlsStreamRequest): Response<ByteReadChannel> =
+			getLiveHlsStream(
+		itemId = request.itemId,
+		container = request.container,
+		static = request.static,
+		params = request.params,
+		tag = request.tag,
+		deviceProfileId = request.deviceProfileId,
+		playSessionId = request.playSessionId,
+		segmentContainer = request.segmentContainer,
+		segmentLength = request.segmentLength,
+		minSegments = request.minSegments,
+		mediaSourceId = request.mediaSourceId,
+		deviceId = request.deviceId,
+		audioCodec = request.audioCodec,
+		enableAutoStreamCopy = request.enableAutoStreamCopy,
+		allowVideoStreamCopy = request.allowVideoStreamCopy,
+		allowAudioStreamCopy = request.allowAudioStreamCopy,
+		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
+		audioSampleRate = request.audioSampleRate,
+		maxAudioBitDepth = request.maxAudioBitDepth,
+		audioBitRate = request.audioBitRate,
+		audioChannels = request.audioChannels,
+		maxAudioChannels = request.maxAudioChannels,
+		profile = request.profile,
+		level = request.level,
+		framerate = request.framerate,
+		maxFramerate = request.maxFramerate,
+		copyTimestamps = request.copyTimestamps,
+		startTimeTicks = request.startTimeTicks,
+		width = request.width,
+		height = request.height,
+		videoBitRate = request.videoBitRate,
+		subtitleStreamIndex = request.subtitleStreamIndex,
+		subtitleMethod = request.subtitleMethod,
+		maxRefFrames = request.maxRefFrames,
+		maxVideoBitDepth = request.maxVideoBitDepth,
+		requireAvc = request.requireAvc,
+		deInterlace = request.deInterlace,
+		requireNonAnamorphic = request.requireNonAnamorphic,
+		transcodingMaxAudioChannels = request.transcodingMaxAudioChannels,
+		cpuCoreLimit = request.cpuCoreLimit,
+		liveStreamId = request.liveStreamId,
+		enableMpegtsM2TsMode = request.enableMpegtsM2TsMode,
+		videoCodec = request.videoCodec,
+		subtitleCodec = request.subtitleCodec,
+		transcodeReasons = request.transcodeReasons,
+		audioStreamIndex = request.audioStreamIndex,
+		videoStreamIndex = request.videoStreamIndex,
+		context = request.context,
+		streamOptions = request.streamOptions,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		enableSubtitlesInManifest = request.enableSubtitlesInManifest,
+	)
+
+	/**
+	 * Gets a hls live stream.
+	 *
 	 * @param itemId The item id.
 	 * @param container The audio container.
 	 * @param static Optional. If true, the original file will be streamed statically without any
@@ -1368,6 +1563,65 @@ public class DynamicHlsApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets an audio hls playlist stream.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getMasterHlsAudioPlaylist(request: GetMasterHlsAudioPlaylistRequest):
+			Response<ByteReadChannel> = getMasterHlsAudioPlaylist(
+		itemId = request.itemId,
+		static = request.static,
+		params = request.params,
+		tag = request.tag,
+		deviceProfileId = request.deviceProfileId,
+		playSessionId = request.playSessionId,
+		segmentContainer = request.segmentContainer,
+		segmentLength = request.segmentLength,
+		minSegments = request.minSegments,
+		mediaSourceId = request.mediaSourceId,
+		deviceId = request.deviceId,
+		audioCodec = request.audioCodec,
+		enableAutoStreamCopy = request.enableAutoStreamCopy,
+		allowVideoStreamCopy = request.allowVideoStreamCopy,
+		allowAudioStreamCopy = request.allowAudioStreamCopy,
+		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
+		audioSampleRate = request.audioSampleRate,
+		maxAudioBitDepth = request.maxAudioBitDepth,
+		maxStreamingBitrate = request.maxStreamingBitrate,
+		audioBitRate = request.audioBitRate,
+		audioChannels = request.audioChannels,
+		maxAudioChannels = request.maxAudioChannels,
+		profile = request.profile,
+		level = request.level,
+		framerate = request.framerate,
+		maxFramerate = request.maxFramerate,
+		copyTimestamps = request.copyTimestamps,
+		startTimeTicks = request.startTimeTicks,
+		width = request.width,
+		height = request.height,
+		videoBitRate = request.videoBitRate,
+		subtitleStreamIndex = request.subtitleStreamIndex,
+		subtitleMethod = request.subtitleMethod,
+		maxRefFrames = request.maxRefFrames,
+		maxVideoBitDepth = request.maxVideoBitDepth,
+		requireAvc = request.requireAvc,
+		deInterlace = request.deInterlace,
+		requireNonAnamorphic = request.requireNonAnamorphic,
+		transcodingMaxAudioChannels = request.transcodingMaxAudioChannels,
+		cpuCoreLimit = request.cpuCoreLimit,
+		liveStreamId = request.liveStreamId,
+		enableMpegtsM2TsMode = request.enableMpegtsM2TsMode,
+		videoCodec = request.videoCodec,
+		subtitleCodec = request.subtitleCodec,
+		transcodeReasons = request.transcodeReasons,
+		audioStreamIndex = request.audioStreamIndex,
+		videoStreamIndex = request.videoStreamIndex,
+		context = request.context,
+		streamOptions = request.streamOptions,
+		enableAdaptiveBitrateStreaming = request.enableAdaptiveBitrateStreaming,
+	)
 
 	/**
 	 * Gets an audio hls playlist stream.
@@ -1739,6 +1993,66 @@ public class DynamicHlsApi(
 	/**
 	 * Gets a video hls playlist stream.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getMasterHlsVideoPlaylist(request: GetMasterHlsVideoPlaylistRequest):
+			Response<ByteReadChannel> = getMasterHlsVideoPlaylist(
+		itemId = request.itemId,
+		static = request.static,
+		params = request.params,
+		tag = request.tag,
+		deviceProfileId = request.deviceProfileId,
+		playSessionId = request.playSessionId,
+		segmentContainer = request.segmentContainer,
+		segmentLength = request.segmentLength,
+		minSegments = request.minSegments,
+		mediaSourceId = request.mediaSourceId,
+		deviceId = request.deviceId,
+		audioCodec = request.audioCodec,
+		enableAutoStreamCopy = request.enableAutoStreamCopy,
+		allowVideoStreamCopy = request.allowVideoStreamCopy,
+		allowAudioStreamCopy = request.allowAudioStreamCopy,
+		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
+		audioSampleRate = request.audioSampleRate,
+		maxAudioBitDepth = request.maxAudioBitDepth,
+		audioBitRate = request.audioBitRate,
+		audioChannels = request.audioChannels,
+		maxAudioChannels = request.maxAudioChannels,
+		profile = request.profile,
+		level = request.level,
+		framerate = request.framerate,
+		maxFramerate = request.maxFramerate,
+		copyTimestamps = request.copyTimestamps,
+		startTimeTicks = request.startTimeTicks,
+		width = request.width,
+		height = request.height,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		videoBitRate = request.videoBitRate,
+		subtitleStreamIndex = request.subtitleStreamIndex,
+		subtitleMethod = request.subtitleMethod,
+		maxRefFrames = request.maxRefFrames,
+		maxVideoBitDepth = request.maxVideoBitDepth,
+		requireAvc = request.requireAvc,
+		deInterlace = request.deInterlace,
+		requireNonAnamorphic = request.requireNonAnamorphic,
+		transcodingMaxAudioChannels = request.transcodingMaxAudioChannels,
+		cpuCoreLimit = request.cpuCoreLimit,
+		liveStreamId = request.liveStreamId,
+		enableMpegtsM2TsMode = request.enableMpegtsM2TsMode,
+		videoCodec = request.videoCodec,
+		subtitleCodec = request.subtitleCodec,
+		transcodeReasons = request.transcodeReasons,
+		audioStreamIndex = request.audioStreamIndex,
+		videoStreamIndex = request.videoStreamIndex,
+		context = request.context,
+		streamOptions = request.streamOptions,
+		enableAdaptiveBitrateStreaming = request.enableAdaptiveBitrateStreaming,
+	)
+
+	/**
+	 * Gets a video hls playlist stream.
+	 *
 	 * @param itemId The item id.
 	 * @param static Optional. If true, the original file will be streamed statically without any
 	 * encoding. Use either no url extension or the original file extension. true/false.
@@ -2102,6 +2416,64 @@ public class DynamicHlsApi(
 	/**
 	 * Gets an audio stream using HTTP live streaming.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getVariantHlsAudioPlaylist(request: GetVariantHlsAudioPlaylistRequest):
+			Response<ByteReadChannel> = getVariantHlsAudioPlaylist(
+		itemId = request.itemId,
+		static = request.static,
+		params = request.params,
+		tag = request.tag,
+		deviceProfileId = request.deviceProfileId,
+		playSessionId = request.playSessionId,
+		segmentContainer = request.segmentContainer,
+		segmentLength = request.segmentLength,
+		minSegments = request.minSegments,
+		mediaSourceId = request.mediaSourceId,
+		deviceId = request.deviceId,
+		audioCodec = request.audioCodec,
+		enableAutoStreamCopy = request.enableAutoStreamCopy,
+		allowVideoStreamCopy = request.allowVideoStreamCopy,
+		allowAudioStreamCopy = request.allowAudioStreamCopy,
+		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
+		audioSampleRate = request.audioSampleRate,
+		maxAudioBitDepth = request.maxAudioBitDepth,
+		maxStreamingBitrate = request.maxStreamingBitrate,
+		audioBitRate = request.audioBitRate,
+		audioChannels = request.audioChannels,
+		maxAudioChannels = request.maxAudioChannels,
+		profile = request.profile,
+		level = request.level,
+		framerate = request.framerate,
+		maxFramerate = request.maxFramerate,
+		copyTimestamps = request.copyTimestamps,
+		startTimeTicks = request.startTimeTicks,
+		width = request.width,
+		height = request.height,
+		videoBitRate = request.videoBitRate,
+		subtitleStreamIndex = request.subtitleStreamIndex,
+		subtitleMethod = request.subtitleMethod,
+		maxRefFrames = request.maxRefFrames,
+		maxVideoBitDepth = request.maxVideoBitDepth,
+		requireAvc = request.requireAvc,
+		deInterlace = request.deInterlace,
+		requireNonAnamorphic = request.requireNonAnamorphic,
+		transcodingMaxAudioChannels = request.transcodingMaxAudioChannels,
+		cpuCoreLimit = request.cpuCoreLimit,
+		liveStreamId = request.liveStreamId,
+		enableMpegtsM2TsMode = request.enableMpegtsM2TsMode,
+		videoCodec = request.videoCodec,
+		subtitleCodec = request.subtitleCodec,
+		transcodeReasons = request.transcodeReasons,
+		audioStreamIndex = request.audioStreamIndex,
+		videoStreamIndex = request.videoStreamIndex,
+		context = request.context,
+		streamOptions = request.streamOptions,
+	)
+
+	/**
+	 * Gets an audio stream using HTTP live streaming.
+	 *
 	 * @param itemId The item id.
 	 * @param static Optional. If true, the original file will be streamed statically without any
 	 * encoding. Use either no url extension or the original file extension. true/false.
@@ -2458,6 +2830,65 @@ public class DynamicHlsApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets a video stream using HTTP live streaming.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getVariantHlsVideoPlaylist(request: GetVariantHlsVideoPlaylistRequest):
+			Response<ByteReadChannel> = getVariantHlsVideoPlaylist(
+		itemId = request.itemId,
+		static = request.static,
+		params = request.params,
+		tag = request.tag,
+		deviceProfileId = request.deviceProfileId,
+		playSessionId = request.playSessionId,
+		segmentContainer = request.segmentContainer,
+		segmentLength = request.segmentLength,
+		minSegments = request.minSegments,
+		mediaSourceId = request.mediaSourceId,
+		deviceId = request.deviceId,
+		audioCodec = request.audioCodec,
+		enableAutoStreamCopy = request.enableAutoStreamCopy,
+		allowVideoStreamCopy = request.allowVideoStreamCopy,
+		allowAudioStreamCopy = request.allowAudioStreamCopy,
+		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
+		audioSampleRate = request.audioSampleRate,
+		maxAudioBitDepth = request.maxAudioBitDepth,
+		audioBitRate = request.audioBitRate,
+		audioChannels = request.audioChannels,
+		maxAudioChannels = request.maxAudioChannels,
+		profile = request.profile,
+		level = request.level,
+		framerate = request.framerate,
+		maxFramerate = request.maxFramerate,
+		copyTimestamps = request.copyTimestamps,
+		startTimeTicks = request.startTimeTicks,
+		width = request.width,
+		height = request.height,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		videoBitRate = request.videoBitRate,
+		subtitleStreamIndex = request.subtitleStreamIndex,
+		subtitleMethod = request.subtitleMethod,
+		maxRefFrames = request.maxRefFrames,
+		maxVideoBitDepth = request.maxVideoBitDepth,
+		requireAvc = request.requireAvc,
+		deInterlace = request.deInterlace,
+		requireNonAnamorphic = request.requireNonAnamorphic,
+		transcodingMaxAudioChannels = request.transcodingMaxAudioChannels,
+		cpuCoreLimit = request.cpuCoreLimit,
+		liveStreamId = request.liveStreamId,
+		enableMpegtsM2TsMode = request.enableMpegtsM2TsMode,
+		videoCodec = request.videoCodec,
+		subtitleCodec = request.subtitleCodec,
+		transcodeReasons = request.transcodeReasons,
+		audioStreamIndex = request.audioStreamIndex,
+		videoStreamIndex = request.videoStreamIndex,
+		context = request.context,
+		streamOptions = request.streamOptions,
+	)
 
 	/**
 	 * Gets a video stream using HTTP live streaming.

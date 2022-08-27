@@ -23,6 +23,9 @@ import org.jellyfin.sdk.model.api.ChannelFeatures
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.ItemFilter
 import org.jellyfin.sdk.model.api.SortOrder
+import org.jellyfin.sdk.model.api.request.GetChannelItemsRequest
+import org.jellyfin.sdk.model.api.request.GetChannelsRequest
+import org.jellyfin.sdk.model.api.request.GetLatestChannelItemsRequest
 
 public class ChannelsApi(
 	private val api: ApiClient,
@@ -102,6 +105,24 @@ public class ChannelsApi(
 	}
 
 	/**
+	 * Get channel items.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getChannelItems(request: GetChannelItemsRequest):
+			Response<BaseItemDtoQueryResult> = getChannelItems(
+		channelId = request.channelId,
+		folderId = request.folderId,
+		userId = request.userId,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		sortOrder = request.sortOrder,
+		filters = request.filters,
+		sortBy = request.sortBy,
+		fields = request.fields,
+	)
+
+	/**
 	 * Gets available channels.
 	 *
 	 * @param userId User Id to filter by. Use System.Guid.Empty to not filter by user.
@@ -136,6 +157,21 @@ public class ChannelsApi(
 	}
 
 	/**
+	 * Gets available channels.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getChannels(request: GetChannelsRequest = GetChannelsRequest()):
+			Response<BaseItemDtoQueryResult> = getChannels(
+		userId = request.userId,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		supportsLatestItems = request.supportsLatestItems,
+		supportsMediaDeletion = request.supportsMediaDeletion,
+		isFavorite = request.isFavorite,
+	)
+
+	/**
 	 * Gets latest channel items.
 	 *
 	 * @param userId Optional. User Id.
@@ -168,4 +204,19 @@ public class ChannelsApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets latest channel items.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getLatestChannelItems(request: GetLatestChannelItemsRequest =
+			GetLatestChannelItemsRequest()): Response<BaseItemDtoQueryResult> = getLatestChannelItems(
+		userId = request.userId,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		filters = request.filters,
+		fields = request.fields,
+		channelIds = request.channelIds,
+	)
 }

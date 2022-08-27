@@ -24,6 +24,7 @@ import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.SortOrder
+import org.jellyfin.sdk.model.api.request.GetMusicGenresRequest
 
 public class MusicGenresApi(
 	private val api: ApiClient,
@@ -123,4 +124,32 @@ public class MusicGenresApi(
 				data)
 		return response
 	}
+
+	/**
+	 * Gets all music genres from a given item, folder, or the entire library.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getMusicGenres(request: GetMusicGenresRequest = GetMusicGenresRequest()):
+			Response<BaseItemDtoQueryResult> = getMusicGenres(
+		startIndex = request.startIndex,
+		limit = request.limit,
+		searchTerm = request.searchTerm,
+		parentId = request.parentId,
+		fields = request.fields,
+		excludeItemTypes = request.excludeItemTypes,
+		includeItemTypes = request.includeItemTypes,
+		isFavorite = request.isFavorite,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		userId = request.userId,
+		nameStartsWithOrGreater = request.nameStartsWithOrGreater,
+		nameStartsWith = request.nameStartsWith,
+		nameLessThan = request.nameLessThan,
+		sortBy = request.sortBy,
+		sortOrder = request.sortOrder,
+		enableImages = request.enableImages,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+	)
 }

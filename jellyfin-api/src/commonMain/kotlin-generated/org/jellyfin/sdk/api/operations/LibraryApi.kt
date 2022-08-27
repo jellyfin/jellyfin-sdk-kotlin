@@ -31,6 +31,12 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.LibraryOptionsResultDto
 import org.jellyfin.sdk.model.api.MediaUpdateInfoDto
 import org.jellyfin.sdk.model.api.ThemeMediaResult
+import org.jellyfin.sdk.model.api.request.GetSimilarAlbumsRequest
+import org.jellyfin.sdk.model.api.request.GetSimilarArtistsRequest
+import org.jellyfin.sdk.model.api.request.GetSimilarItemsRequest
+import org.jellyfin.sdk.model.api.request.GetSimilarMoviesRequest
+import org.jellyfin.sdk.model.api.request.GetSimilarShowsRequest
+import org.jellyfin.sdk.model.api.request.GetSimilarTrailersRequest
 
 public class LibraryApi(
 	private val api: ApiClient,
@@ -262,6 +268,20 @@ public class LibraryApi(
 	/**
 	 * Gets similar items.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getSimilarAlbums(request: GetSimilarAlbumsRequest):
+			Response<BaseItemDtoQueryResult> = getSimilarAlbums(
+		itemId = request.itemId,
+		excludeArtistIds = request.excludeArtistIds,
+		userId = request.userId,
+		limit = request.limit,
+		fields = request.fields,
+	)
+
+	/**
+	 * Gets similar items.
+	 *
 	 * @param itemId The item id.
 	 * @param excludeArtistIds Exclude artist ids.
 	 * @param userId Optional. Filter by user id, and attach user data.
@@ -292,6 +312,20 @@ public class LibraryApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets similar items.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getSimilarArtists(request: GetSimilarArtistsRequest):
+			Response<BaseItemDtoQueryResult> = getSimilarArtists(
+		itemId = request.itemId,
+		excludeArtistIds = request.excludeArtistIds,
+		userId = request.userId,
+		limit = request.limit,
+		fields = request.fields,
+	)
 
 	/**
 	 * Gets similar items.
@@ -330,6 +364,20 @@ public class LibraryApi(
 	/**
 	 * Gets similar items.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getSimilarItems(request: GetSimilarItemsRequest):
+			Response<BaseItemDtoQueryResult> = getSimilarItems(
+		itemId = request.itemId,
+		excludeArtistIds = request.excludeArtistIds,
+		userId = request.userId,
+		limit = request.limit,
+		fields = request.fields,
+	)
+
+	/**
+	 * Gets similar items.
+	 *
 	 * @param itemId The item id.
 	 * @param excludeArtistIds Exclude artist ids.
 	 * @param userId Optional. Filter by user id, and attach user data.
@@ -360,6 +408,20 @@ public class LibraryApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets similar items.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getSimilarMovies(request: GetSimilarMoviesRequest):
+			Response<BaseItemDtoQueryResult> = getSimilarMovies(
+		itemId = request.itemId,
+		excludeArtistIds = request.excludeArtistIds,
+		userId = request.userId,
+		limit = request.limit,
+		fields = request.fields,
+	)
 
 	/**
 	 * Gets similar items.
@@ -398,6 +460,20 @@ public class LibraryApi(
 	/**
 	 * Gets similar items.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getSimilarShows(request: GetSimilarShowsRequest):
+			Response<BaseItemDtoQueryResult> = getSimilarShows(
+		itemId = request.itemId,
+		excludeArtistIds = request.excludeArtistIds,
+		userId = request.userId,
+		limit = request.limit,
+		fields = request.fields,
+	)
+
+	/**
+	 * Gets similar items.
+	 *
 	 * @param itemId The item id.
 	 * @param excludeArtistIds Exclude artist ids.
 	 * @param userId Optional. Filter by user id, and attach user data.
@@ -428,6 +504,20 @@ public class LibraryApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets similar items.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getSimilarTrailers(request: GetSimilarTrailersRequest):
+			Response<BaseItemDtoQueryResult> = getSimilarTrailers(
+		itemId = request.itemId,
+		excludeArtistIds = request.excludeArtistIds,
+		userId = request.userId,
+		limit = request.limit,
+		fields = request.fields,
+	)
 
 	/**
 	 * Get theme songs and videos for an item.

@@ -28,6 +28,35 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.ImageFormat
 import org.jellyfin.sdk.model.api.ImageInfo
 import org.jellyfin.sdk.model.api.ImageType
+import org.jellyfin.sdk.model.api.request.GetArtistImageDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetArtistImageRequest
+import org.jellyfin.sdk.model.api.request.GetGenreImageByIndexDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetGenreImageByIndexRequest
+import org.jellyfin.sdk.model.api.request.GetGenreImageDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetGenreImageRequest
+import org.jellyfin.sdk.model.api.request.GetItemImage2DeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetItemImage2Request
+import org.jellyfin.sdk.model.api.request.GetItemImageByIndexDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetItemImageByIndexRequest
+import org.jellyfin.sdk.model.api.request.GetItemImageDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetItemImageRequest
+import org.jellyfin.sdk.model.api.request.GetMusicGenreImageByIndexDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetMusicGenreImageByIndexRequest
+import org.jellyfin.sdk.model.api.request.GetMusicGenreImageDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetMusicGenreImageRequest
+import org.jellyfin.sdk.model.api.request.GetPersonImageByIndexDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetPersonImageByIndexRequest
+import org.jellyfin.sdk.model.api.request.GetPersonImageDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetPersonImageRequest
+import org.jellyfin.sdk.model.api.request.GetSplashscreenRequest
+import org.jellyfin.sdk.model.api.request.GetStudioImageByIndexDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetStudioImageByIndexRequest
+import org.jellyfin.sdk.model.api.request.GetStudioImageDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetStudioImageRequest
+import org.jellyfin.sdk.model.api.request.GetUserImageByIndexDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetUserImageByIndexRequest
+import org.jellyfin.sdk.model.api.request.GetUserImageDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetUserImageRequest
 
 public class ImageApi(
 	private val api: ApiClient,
@@ -216,6 +245,33 @@ public class ImageApi(
 	/**
 	 * Get artist image by name.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getArtistImage(request: GetArtistImageRequest): Response<ByteReadChannel> =
+			getArtistImage(
+		name = request.name,
+		imageType = request.imageType,
+		imageIndex = request.imageIndex,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
+
+	/**
+	 * Get artist image by name.
+	 *
 	 * @param name Artist name.
 	 * @param imageType Image type.
 	 * @param imageIndex Image index.
@@ -361,6 +417,35 @@ public class ImageApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get artist image by name.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getArtistImageDeprecated(request: GetArtistImageDeprecatedRequest):
+			Response<ByteReadChannel> = getArtistImageDeprecated(
+		name = request.name,
+		imageType = request.imageType,
+		imageIndex = request.imageIndex,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		cropWhitespace = request.cropWhitespace,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
 
 	/**
 	 * Get artist image by name.
@@ -514,6 +599,33 @@ public class ImageApi(
 	/**
 	 * Get genre image by name.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getGenreImage(request: GetGenreImageRequest): Response<ByteReadChannel> =
+			getGenreImage(
+		name = request.name,
+		imageType = request.imageType,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+		imageIndex = request.imageIndex,
+	)
+
+	/**
+	 * Get genre image by name.
+	 *
 	 * @param name Genre name.
 	 * @param imageType Image type.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
@@ -654,6 +766,33 @@ public class ImageApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get genre image by name.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getGenreImageByIndex(request: GetGenreImageByIndexRequest):
+			Response<ByteReadChannel> = getGenreImageByIndex(
+		name = request.name,
+		imageType = request.imageType,
+		imageIndex = request.imageIndex,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
 
 	/**
 	 * Get genre image by name.
@@ -803,6 +942,35 @@ public class ImageApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get genre image by name.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getGenreImageByIndexDeprecated(request: GetGenreImageByIndexDeprecatedRequest):
+			Response<ByteReadChannel> = getGenreImageByIndexDeprecated(
+		name = request.name,
+		imageType = request.imageType,
+		imageIndex = request.imageIndex,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		cropWhitespace = request.cropWhitespace,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
 
 	/**
 	 * Get genre image by name.
@@ -961,6 +1129,35 @@ public class ImageApi(
 	/**
 	 * Get genre image by name.
 	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getGenreImageDeprecated(request: GetGenreImageDeprecatedRequest):
+			Response<ByteReadChannel> = getGenreImageDeprecated(
+		name = request.name,
+		imageType = request.imageType,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		cropWhitespace = request.cropWhitespace,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+		imageIndex = request.imageIndex,
+	)
+
+	/**
+	 * Get genre image by name.
+	 *
 	 * @param name Genre name.
 	 * @param imageType Image type.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
@@ -1110,6 +1307,33 @@ public class ImageApi(
 	/**
 	 * Gets the item's image.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getItemImage(request: GetItemImageRequest): Response<ByteReadChannel> =
+			getItemImage(
+		itemId = request.itemId,
+		imageType = request.imageType,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		tag = request.tag,
+		format = request.format,
+		addPlayedIndicator = request.addPlayedIndicator,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+		imageIndex = request.imageIndex,
+	)
+
+	/**
+	 * Gets the item's image.
+	 *
 	 * @param itemId Item id.
 	 * @param imageType Image type.
 	 * @param maxWidth The maximum image width to return.
@@ -1251,6 +1475,33 @@ public class ImageApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets the item's image.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getItemImage2(request: GetItemImage2Request): Response<ByteReadChannel> =
+			getItemImage2(
+		itemId = request.itemId,
+		imageType = request.imageType,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		tag = request.tag,
+		format = request.format,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		imageIndex = request.imageIndex,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
 
 	/**
 	 * Gets the item's image.
@@ -1405,6 +1656,35 @@ public class ImageApi(
 	/**
 	 * Gets the item's image.
 	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getItemImage2Deprecated(request: GetItemImage2DeprecatedRequest):
+			Response<ByteReadChannel> = getItemImage2Deprecated(
+		itemId = request.itemId,
+		imageType = request.imageType,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		tag = request.tag,
+		format = request.format,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		imageIndex = request.imageIndex,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		cropWhitespace = request.cropWhitespace,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
+
+	/**
+	 * Gets the item's image.
+	 *
 	 * @param itemId Item id.
 	 * @param imageType Image type.
 	 * @param maxWidth The maximum image width to return.
@@ -1554,6 +1834,33 @@ public class ImageApi(
 	/**
 	 * Gets the item's image.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getItemImageByIndex(request: GetItemImageByIndexRequest):
+			Response<ByteReadChannel> = getItemImageByIndex(
+		itemId = request.itemId,
+		imageType = request.imageType,
+		imageIndex = request.imageIndex,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		tag = request.tag,
+		format = request.format,
+		addPlayedIndicator = request.addPlayedIndicator,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
+
+	/**
+	 * Gets the item's image.
+	 *
 	 * @param itemId Item id.
 	 * @param imageType Image type.
 	 * @param imageIndex Image index.
@@ -1699,6 +2006,35 @@ public class ImageApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets the item's image.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getItemImageByIndexDeprecated(request: GetItemImageByIndexDeprecatedRequest):
+			Response<ByteReadChannel> = getItemImageByIndexDeprecated(
+		itemId = request.itemId,
+		imageType = request.imageType,
+		imageIndex = request.imageIndex,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		tag = request.tag,
+		cropWhitespace = request.cropWhitespace,
+		format = request.format,
+		addPlayedIndicator = request.addPlayedIndicator,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
 
 	/**
 	 * Gets the item's image.
@@ -1853,6 +2189,35 @@ public class ImageApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets the item's image.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getItemImageDeprecated(request: GetItemImageDeprecatedRequest):
+			Response<ByteReadChannel> = getItemImageDeprecated(
+		itemId = request.itemId,
+		imageType = request.imageType,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		tag = request.tag,
+		cropWhitespace = request.cropWhitespace,
+		format = request.format,
+		addPlayedIndicator = request.addPlayedIndicator,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+		imageIndex = request.imageIndex,
+	)
 
 	/**
 	 * Gets the item's image.
@@ -2022,6 +2387,33 @@ public class ImageApi(
 	/**
 	 * Get music genre image by name.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getMusicGenreImage(request: GetMusicGenreImageRequest):
+			Response<ByteReadChannel> = getMusicGenreImage(
+		name = request.name,
+		imageType = request.imageType,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+		imageIndex = request.imageIndex,
+	)
+
+	/**
+	 * Get music genre image by name.
+	 *
 	 * @param name Music genre name.
 	 * @param imageType Image type.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
@@ -2162,6 +2554,33 @@ public class ImageApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get music genre image by name.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getMusicGenreImageByIndex(request: GetMusicGenreImageByIndexRequest):
+			Response<ByteReadChannel> = getMusicGenreImageByIndex(
+		name = request.name,
+		imageType = request.imageType,
+		imageIndex = request.imageIndex,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
 
 	/**
 	 * Get music genre image by name.
@@ -2311,6 +2730,36 @@ public class ImageApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get music genre image by name.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend
+			fun getMusicGenreImageByIndexDeprecated(request: GetMusicGenreImageByIndexDeprecatedRequest):
+			Response<ByteReadChannel> = getMusicGenreImageByIndexDeprecated(
+		name = request.name,
+		imageType = request.imageType,
+		imageIndex = request.imageIndex,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		cropWhitespace = request.cropWhitespace,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
 
 	/**
 	 * Get music genre image by name.
@@ -2469,6 +2918,35 @@ public class ImageApi(
 	/**
 	 * Get music genre image by name.
 	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getMusicGenreImageDeprecated(request: GetMusicGenreImageDeprecatedRequest):
+			Response<ByteReadChannel> = getMusicGenreImageDeprecated(
+		name = request.name,
+		imageType = request.imageType,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		cropWhitespace = request.cropWhitespace,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+		imageIndex = request.imageIndex,
+	)
+
+	/**
+	 * Get music genre image by name.
+	 *
 	 * @param name Music genre name.
 	 * @param imageType Image type.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
@@ -2618,6 +3096,33 @@ public class ImageApi(
 	/**
 	 * Get person image by name.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getPersonImage(request: GetPersonImageRequest): Response<ByteReadChannel> =
+			getPersonImage(
+		name = request.name,
+		imageType = request.imageType,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+		imageIndex = request.imageIndex,
+	)
+
+	/**
+	 * Get person image by name.
+	 *
 	 * @param name Person name.
 	 * @param imageType Image type.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
@@ -2758,6 +3263,33 @@ public class ImageApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get person image by name.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getPersonImageByIndex(request: GetPersonImageByIndexRequest):
+			Response<ByteReadChannel> = getPersonImageByIndex(
+		name = request.name,
+		imageType = request.imageType,
+		imageIndex = request.imageIndex,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
 
 	/**
 	 * Get person image by name.
@@ -2907,6 +3439,36 @@ public class ImageApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get person image by name.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend
+			fun getPersonImageByIndexDeprecated(request: GetPersonImageByIndexDeprecatedRequest):
+			Response<ByteReadChannel> = getPersonImageByIndexDeprecated(
+		name = request.name,
+		imageType = request.imageType,
+		imageIndex = request.imageIndex,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		cropWhitespace = request.cropWhitespace,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
 
 	/**
 	 * Get person image by name.
@@ -3065,6 +3627,35 @@ public class ImageApi(
 	/**
 	 * Get person image by name.
 	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getPersonImageDeprecated(request: GetPersonImageDeprecatedRequest):
+			Response<ByteReadChannel> = getPersonImageDeprecated(
+		name = request.name,
+		imageType = request.imageType,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		cropWhitespace = request.cropWhitespace,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+		imageIndex = request.imageIndex,
+	)
+
+	/**
+	 * Get person image by name.
+	 *
 	 * @param name Person name.
 	 * @param imageType Image type.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
@@ -3194,6 +3785,27 @@ public class ImageApi(
 	/**
 	 * Generates or gets the splashscreen.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getSplashscreen(request: GetSplashscreenRequest = GetSplashscreenRequest()):
+			Response<ByteReadChannel> = getSplashscreen(
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		width = request.width,
+		height = request.height,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+		quality = request.quality,
+	)
+
+	/**
+	 * Generates or gets the splashscreen.
+	 *
 	 * @param tag Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
@@ -3314,6 +3926,33 @@ public class ImageApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get studio image by name.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getStudioImage(request: GetStudioImageRequest): Response<ByteReadChannel> =
+			getStudioImage(
+		name = request.name,
+		imageType = request.imageType,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+		imageIndex = request.imageIndex,
+	)
 
 	/**
 	 * Get studio image by name.
@@ -3458,6 +4097,33 @@ public class ImageApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get studio image by name.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getStudioImageByIndex(request: GetStudioImageByIndexRequest):
+			Response<ByteReadChannel> = getStudioImageByIndex(
+		name = request.name,
+		imageType = request.imageType,
+		imageIndex = request.imageIndex,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
 
 	/**
 	 * Get studio image by name.
@@ -3607,6 +4273,36 @@ public class ImageApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get studio image by name.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend
+			fun getStudioImageByIndexDeprecated(request: GetStudioImageByIndexDeprecatedRequest):
+			Response<ByteReadChannel> = getStudioImageByIndexDeprecated(
+		name = request.name,
+		imageType = request.imageType,
+		imageIndex = request.imageIndex,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		cropWhitespace = request.cropWhitespace,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
 
 	/**
 	 * Get studio image by name.
@@ -3765,6 +4461,35 @@ public class ImageApi(
 	/**
 	 * Get studio image by name.
 	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getStudioImageDeprecated(request: GetStudioImageDeprecatedRequest):
+			Response<ByteReadChannel> = getStudioImageDeprecated(
+		name = request.name,
+		imageType = request.imageType,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		cropWhitespace = request.cropWhitespace,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+		imageIndex = request.imageIndex,
+	)
+
+	/**
+	 * Get studio image by name.
+	 *
 	 * @param name Studio name.
 	 * @param imageType Image type.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
@@ -3914,6 +4639,33 @@ public class ImageApi(
 	/**
 	 * Get user profile image.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getUserImage(request: GetUserImageRequest): Response<ByteReadChannel> =
+			getUserImage(
+		userId = request.userId,
+		imageType = request.imageType,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+		imageIndex = request.imageIndex,
+	)
+
+	/**
+	 * Get user profile image.
+	 *
 	 * @param userId User id.
 	 * @param imageType Image type.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
@@ -4054,6 +4806,33 @@ public class ImageApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get user profile image.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getUserImageByIndex(request: GetUserImageByIndexRequest):
+			Response<ByteReadChannel> = getUserImageByIndex(
+		userId = request.userId,
+		imageType = request.imageType,
+		imageIndex = request.imageIndex,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
 
 	/**
 	 * Get user profile image.
@@ -4203,6 +4982,35 @@ public class ImageApi(
 				pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get user profile image.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getUserImageByIndexDeprecated(request: GetUserImageByIndexDeprecatedRequest):
+			Response<ByteReadChannel> = getUserImageByIndexDeprecated(
+		userId = request.userId,
+		imageType = request.imageType,
+		imageIndex = request.imageIndex,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		cropWhitespace = request.cropWhitespace,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+	)
 
 	/**
 	 * Get user profile image.
@@ -4357,6 +5165,35 @@ public class ImageApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get user profile image.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getUserImageDeprecated(request: GetUserImageDeprecatedRequest):
+			Response<ByteReadChannel> = getUserImageDeprecated(
+		userId = request.userId,
+		imageType = request.imageType,
+		tag = request.tag,
+		format = request.format,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		percentPlayed = request.percentPlayed,
+		unplayedCount = request.unplayedCount,
+		width = request.width,
+		height = request.height,
+		quality = request.quality,
+		fillWidth = request.fillWidth,
+		fillHeight = request.fillHeight,
+		cropWhitespace = request.cropWhitespace,
+		addPlayedIndicator = request.addPlayedIndicator,
+		blur = request.blur,
+		backgroundColor = request.backgroundColor,
+		foregroundLayer = request.foregroundLayer,
+		imageIndex = request.imageIndex,
+	)
 
 	/**
 	 * Get user profile image.

@@ -19,6 +19,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.QueryFilters
 import org.jellyfin.sdk.model.api.QueryFiltersLegacy
+import org.jellyfin.sdk.model.api.request.GetQueryFiltersRequest
 
 public class FilterApi(
 	private val api: ApiClient,
@@ -68,6 +69,25 @@ public class FilterApi(
 		val response = api.`get`<QueryFilters>("/Items/Filters2", pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets query filters.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getQueryFilters(request: GetQueryFiltersRequest = GetQueryFiltersRequest()):
+			Response<QueryFilters> = getQueryFilters(
+		userId = request.userId,
+		parentId = request.parentId,
+		includeItemTypes = request.includeItemTypes,
+		isAiring = request.isAiring,
+		isMovie = request.isMovie,
+		isSports = request.isSports,
+		isKids = request.isKids,
+		isNews = request.isNews,
+		isSeries = request.isSeries,
+		recursive = request.recursive,
+	)
 
 	/**
 	 * Gets legacy query filters.

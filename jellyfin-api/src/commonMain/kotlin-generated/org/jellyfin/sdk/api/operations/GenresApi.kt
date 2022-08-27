@@ -23,6 +23,7 @@ import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.SortOrder
+import org.jellyfin.sdk.model.api.request.GetGenresRequest
 
 public class GenresApi(
 	private val api: ApiClient,
@@ -120,4 +121,31 @@ public class GenresApi(
 		val response = api.`get`<BaseItemDtoQueryResult>("/Genres", pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets all genres from a given item, folder, or the entire library.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getGenres(request: GetGenresRequest = GetGenresRequest()):
+			Response<BaseItemDtoQueryResult> = getGenres(
+		startIndex = request.startIndex,
+		limit = request.limit,
+		searchTerm = request.searchTerm,
+		parentId = request.parentId,
+		fields = request.fields,
+		excludeItemTypes = request.excludeItemTypes,
+		includeItemTypes = request.includeItemTypes,
+		isFavorite = request.isFavorite,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		userId = request.userId,
+		nameStartsWithOrGreater = request.nameStartsWithOrGreater,
+		nameStartsWith = request.nameStartsWith,
+		nameLessThan = request.nameLessThan,
+		sortBy = request.sortBy,
+		sortOrder = request.sortOrder,
+		enableImages = request.enableImages,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+	)
 }

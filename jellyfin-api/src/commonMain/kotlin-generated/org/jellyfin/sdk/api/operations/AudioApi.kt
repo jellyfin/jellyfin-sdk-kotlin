@@ -21,6 +21,8 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.EncodingContext
 import org.jellyfin.sdk.model.api.SubtitleDeliveryMethod
+import org.jellyfin.sdk.model.api.request.GetAudioStreamByContainerRequest
+import org.jellyfin.sdk.model.api.request.GetAudioStreamRequest
 
 public class AudioApi(
 	private val api: ApiClient,
@@ -203,6 +205,64 @@ public class AudioApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets an audio stream.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getAudioStream(request: GetAudioStreamRequest): Response<ByteReadChannel> =
+			getAudioStream(
+		itemId = request.itemId,
+		container = request.container,
+		static = request.static,
+		params = request.params,
+		tag = request.tag,
+		deviceProfileId = request.deviceProfileId,
+		playSessionId = request.playSessionId,
+		segmentContainer = request.segmentContainer,
+		segmentLength = request.segmentLength,
+		minSegments = request.minSegments,
+		mediaSourceId = request.mediaSourceId,
+		deviceId = request.deviceId,
+		audioCodec = request.audioCodec,
+		enableAutoStreamCopy = request.enableAutoStreamCopy,
+		allowVideoStreamCopy = request.allowVideoStreamCopy,
+		allowAudioStreamCopy = request.allowAudioStreamCopy,
+		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
+		audioSampleRate = request.audioSampleRate,
+		maxAudioBitDepth = request.maxAudioBitDepth,
+		audioBitRate = request.audioBitRate,
+		audioChannels = request.audioChannels,
+		maxAudioChannels = request.maxAudioChannels,
+		profile = request.profile,
+		level = request.level,
+		framerate = request.framerate,
+		maxFramerate = request.maxFramerate,
+		copyTimestamps = request.copyTimestamps,
+		startTimeTicks = request.startTimeTicks,
+		width = request.width,
+		height = request.height,
+		videoBitRate = request.videoBitRate,
+		subtitleStreamIndex = request.subtitleStreamIndex,
+		subtitleMethod = request.subtitleMethod,
+		maxRefFrames = request.maxRefFrames,
+		maxVideoBitDepth = request.maxVideoBitDepth,
+		requireAvc = request.requireAvc,
+		deInterlace = request.deInterlace,
+		requireNonAnamorphic = request.requireNonAnamorphic,
+		transcodingMaxAudioChannels = request.transcodingMaxAudioChannels,
+		cpuCoreLimit = request.cpuCoreLimit,
+		liveStreamId = request.liveStreamId,
+		enableMpegtsM2TsMode = request.enableMpegtsM2TsMode,
+		videoCodec = request.videoCodec,
+		subtitleCodec = request.subtitleCodec,
+		transcodeReasons = request.transcodeReasons,
+		audioStreamIndex = request.audioStreamIndex,
+		videoStreamIndex = request.videoStreamIndex,
+		context = request.context,
+		streamOptions = request.streamOptions,
+	)
 
 	/**
 	 * Gets an audio stream.
@@ -561,6 +621,64 @@ public class AudioApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets an audio stream.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getAudioStreamByContainer(request: GetAudioStreamByContainerRequest):
+			Response<ByteReadChannel> = getAudioStreamByContainer(
+		itemId = request.itemId,
+		container = request.container,
+		static = request.static,
+		params = request.params,
+		tag = request.tag,
+		deviceProfileId = request.deviceProfileId,
+		playSessionId = request.playSessionId,
+		segmentContainer = request.segmentContainer,
+		segmentLength = request.segmentLength,
+		minSegments = request.minSegments,
+		mediaSourceId = request.mediaSourceId,
+		deviceId = request.deviceId,
+		audioCodec = request.audioCodec,
+		enableAutoStreamCopy = request.enableAutoStreamCopy,
+		allowVideoStreamCopy = request.allowVideoStreamCopy,
+		allowAudioStreamCopy = request.allowAudioStreamCopy,
+		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
+		audioSampleRate = request.audioSampleRate,
+		maxAudioBitDepth = request.maxAudioBitDepth,
+		audioBitRate = request.audioBitRate,
+		audioChannels = request.audioChannels,
+		maxAudioChannels = request.maxAudioChannels,
+		profile = request.profile,
+		level = request.level,
+		framerate = request.framerate,
+		maxFramerate = request.maxFramerate,
+		copyTimestamps = request.copyTimestamps,
+		startTimeTicks = request.startTimeTicks,
+		width = request.width,
+		height = request.height,
+		videoBitRate = request.videoBitRate,
+		subtitleStreamIndex = request.subtitleStreamIndex,
+		subtitleMethod = request.subtitleMethod,
+		maxRefFrames = request.maxRefFrames,
+		maxVideoBitDepth = request.maxVideoBitDepth,
+		requireAvc = request.requireAvc,
+		deInterlace = request.deInterlace,
+		requireNonAnamorphic = request.requireNonAnamorphic,
+		transcodingMaxAudioChannels = request.transcodingMaxAudioChannels,
+		cpuCoreLimit = request.cpuCoreLimit,
+		liveStreamId = request.liveStreamId,
+		enableMpegtsM2TsMode = request.enableMpegtsM2TsMode,
+		videoCodec = request.videoCodec,
+		subtitleCodec = request.subtitleCodec,
+		transcodeReasons = request.transcodeReasons,
+		audioStreamIndex = request.audioStreamIndex,
+		videoStreamIndex = request.videoStreamIndex,
+		context = request.context,
+		streamOptions = request.streamOptions,
+	)
 
 	/**
 	 * Gets an audio stream.

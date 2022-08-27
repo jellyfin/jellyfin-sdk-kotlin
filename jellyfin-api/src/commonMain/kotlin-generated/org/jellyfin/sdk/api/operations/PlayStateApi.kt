@@ -26,6 +26,9 @@ import org.jellyfin.sdk.model.api.PlaybackStartInfo
 import org.jellyfin.sdk.model.api.PlaybackStopInfo
 import org.jellyfin.sdk.model.api.RepeatMode
 import org.jellyfin.sdk.model.api.UserItemDataDto
+import org.jellyfin.sdk.model.api.request.OnPlaybackProgressRequest
+import org.jellyfin.sdk.model.api.request.OnPlaybackStartRequest
+import org.jellyfin.sdk.model.api.request.OnPlaybackStoppedRequest
 
 public class PlayStateApi(
 	private val api: ApiClient,
@@ -130,6 +133,28 @@ public class PlayStateApi(
 	}
 
 	/**
+	 * Reports a user's playback progress.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun onPlaybackProgress(request: OnPlaybackProgressRequest): Response<Unit> =
+			onPlaybackProgress(
+		userId = request.userId,
+		itemId = request.itemId,
+		mediaSourceId = request.mediaSourceId,
+		positionTicks = request.positionTicks,
+		audioStreamIndex = request.audioStreamIndex,
+		subtitleStreamIndex = request.subtitleStreamIndex,
+		volumeLevel = request.volumeLevel,
+		playMethod = request.playMethod,
+		liveStreamId = request.liveStreamId,
+		playSessionId = request.playSessionId,
+		repeatMode = request.repeatMode,
+		isPaused = request.isPaused,
+		isMuted = request.isMuted,
+	)
+
+	/**
 	 * Reports that a user has begun playing an item.
 	 *
 	 * @param userId User id.
@@ -173,6 +198,24 @@ public class PlayStateApi(
 	}
 
 	/**
+	 * Reports that a user has begun playing an item.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun onPlaybackStart(request: OnPlaybackStartRequest): Response<Unit> =
+			onPlaybackStart(
+		userId = request.userId,
+		itemId = request.itemId,
+		mediaSourceId = request.mediaSourceId,
+		audioStreamIndex = request.audioStreamIndex,
+		subtitleStreamIndex = request.subtitleStreamIndex,
+		playMethod = request.playMethod,
+		liveStreamId = request.liveStreamId,
+		playSessionId = request.playSessionId,
+		canSeek = request.canSeek,
+	)
+
+	/**
 	 * Reports that a user has stopped playing an item.
 	 *
 	 * @param userId User id.
@@ -209,6 +252,22 @@ public class PlayStateApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Reports that a user has stopped playing an item.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun onPlaybackStopped(request: OnPlaybackStoppedRequest): Response<Unit> =
+			onPlaybackStopped(
+		userId = request.userId,
+		itemId = request.itemId,
+		mediaSourceId = request.mediaSourceId,
+		nextMediaType = request.nextMediaType,
+		positionTicks = request.positionTicks,
+		liveStreamId = request.liveStreamId,
+		playSessionId = request.playSessionId,
+	)
 
 	/**
 	 * Pings a playback session.

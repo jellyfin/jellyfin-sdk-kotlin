@@ -26,6 +26,8 @@ import org.jellyfin.sdk.model.api.LiveStreamResponse
 import org.jellyfin.sdk.model.api.OpenLiveStreamDto
 import org.jellyfin.sdk.model.api.PlaybackInfoDto
 import org.jellyfin.sdk.model.api.PlaybackInfoResponse
+import org.jellyfin.sdk.model.api.request.GetPostedPlaybackInfoDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.OpenLiveStreamRequest
 
 public class MediaInfoApi(
 	private val api: ApiClient,
@@ -181,6 +183,35 @@ public class MediaInfoApi(
 	}
 
 	/**
+	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher
+	 * precedence.
+	 * Query parameters are obsolete.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getPostedPlaybackInfoDeprecated(request: GetPostedPlaybackInfoDeprecatedRequest,
+			`data`: PlaybackInfoDto? = null): Response<PlaybackInfoResponse> =
+			getPostedPlaybackInfoDeprecated(
+		itemId = request.itemId,
+		userId = request.userId,
+		maxStreamingBitrate = request.maxStreamingBitrate,
+		startTimeTicks = request.startTimeTicks,
+		audioStreamIndex = request.audioStreamIndex,
+		subtitleStreamIndex = request.subtitleStreamIndex,
+		maxAudioChannels = request.maxAudioChannels,
+		mediaSourceId = request.mediaSourceId,
+		liveStreamId = request.liveStreamId,
+		autoOpenLiveStream = request.autoOpenLiveStream,
+		enableDirectPlay = request.enableDirectPlay,
+		enableDirectStream = request.enableDirectStream,
+		enableTranscoding = request.enableTranscoding,
+		allowVideoStreamCopy = request.allowVideoStreamCopy,
+		allowAudioStreamCopy = request.allowAudioStreamCopy,
+		`data` = `data`,
+	)
+
+	/**
 	 * Opens a media source.
 	 *
 	 * @param openToken The open token.
@@ -227,4 +258,25 @@ public class MediaInfoApi(
 				data)
 		return response
 	}
+
+	/**
+	 * Opens a media source.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun openLiveStream(request: OpenLiveStreamRequest = OpenLiveStreamRequest(),
+			`data`: OpenLiveStreamDto? = null): Response<LiveStreamResponse> = openLiveStream(
+		openToken = request.openToken,
+		userId = request.userId,
+		playSessionId = request.playSessionId,
+		maxStreamingBitrate = request.maxStreamingBitrate,
+		startTimeTicks = request.startTimeTicks,
+		audioStreamIndex = request.audioStreamIndex,
+		subtitleStreamIndex = request.subtitleStreamIndex,
+		maxAudioChannels = request.maxAudioChannels,
+		itemId = request.itemId,
+		enableDirectPlay = request.enableDirectPlay,
+		enableDirectStream = request.enableDirectStream,
+		`data` = `data`,
+	)
 }

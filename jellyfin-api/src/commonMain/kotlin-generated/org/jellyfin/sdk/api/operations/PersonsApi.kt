@@ -22,6 +22,7 @@ import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.ItemFilter
+import org.jellyfin.sdk.model.api.request.GetPersonsRequest
 
 public class PersonsApi(
 	private val api: ApiClient,
@@ -101,4 +102,26 @@ public class PersonsApi(
 				data)
 		return response
 	}
+
+	/**
+	 * Gets all persons.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getPersons(request: GetPersonsRequest = GetPersonsRequest()):
+			Response<BaseItemDtoQueryResult> = getPersons(
+		limit = request.limit,
+		searchTerm = request.searchTerm,
+		fields = request.fields,
+		filters = request.filters,
+		isFavorite = request.isFavorite,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		excludePersonTypes = request.excludePersonTypes,
+		personTypes = request.personTypes,
+		appearsInItemId = request.appearsInItemId,
+		userId = request.userId,
+		enableImages = request.enableImages,
+	)
 }
