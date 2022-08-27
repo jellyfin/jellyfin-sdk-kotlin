@@ -23,6 +23,7 @@ import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.SortOrder
+import org.jellyfin.sdk.model.api.request.GetYearsRequest
 
 public class YearsApi(
 	private val api: ApiClient,
@@ -108,4 +109,28 @@ public class YearsApi(
 		val response = api.`get`<BaseItemDtoQueryResult>("/Years", pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Get years.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getYears(request: GetYearsRequest = GetYearsRequest()):
+			Response<BaseItemDtoQueryResult> = getYears(
+		startIndex = request.startIndex,
+		limit = request.limit,
+		sortOrder = request.sortOrder,
+		parentId = request.parentId,
+		fields = request.fields,
+		excludeItemTypes = request.excludeItemTypes,
+		includeItemTypes = request.includeItemTypes,
+		mediaTypes = request.mediaTypes,
+		sortBy = request.sortBy,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		userId = request.userId,
+		recursive = request.recursive,
+		enableImages = request.enableImages,
+	)
 }

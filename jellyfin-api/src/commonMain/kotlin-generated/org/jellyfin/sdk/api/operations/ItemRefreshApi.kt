@@ -15,6 +15,7 @@ import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.MetadataRefreshMode
+import org.jellyfin.sdk.model.api.request.RefreshItemRequest
 
 public class ItemRefreshApi(
 	private val api: ApiClient,
@@ -50,4 +51,17 @@ public class ItemRefreshApi(
 		val response = api.post<Unit>("/Items/{itemId}/Refresh", pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Refreshes metadata for an item.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun refreshItem(request: RefreshItemRequest): Response<Unit> = refreshItem(
+		itemId = request.itemId,
+		metadataRefreshMode = request.metadataRefreshMode,
+		imageRefreshMode = request.imageRefreshMode,
+		replaceAllMetadata = request.replaceAllMetadata,
+		replaceAllImages = request.replaceAllImages,
+	)
 }

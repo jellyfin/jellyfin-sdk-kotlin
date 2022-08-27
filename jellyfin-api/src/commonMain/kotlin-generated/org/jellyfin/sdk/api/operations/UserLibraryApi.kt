@@ -27,6 +27,7 @@ import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.UserItemDataDto
+import org.jellyfin.sdk.model.api.request.GetLatestMediaRequest
 
 public class UserLibraryApi(
 	private val api: ApiClient,
@@ -138,6 +139,26 @@ public class UserLibraryApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets latest media.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getLatestMedia(request: GetLatestMediaRequest): Response<List<BaseItemDto>> =
+			getLatestMedia(
+		userId = request.userId,
+		parentId = request.parentId,
+		fields = request.fields,
+		includeItemTypes = request.includeItemTypes,
+		isPlayed = request.isPlayed,
+		enableImages = request.enableImages,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		enableUserData = request.enableUserData,
+		limit = request.limit,
+		groupItems = request.groupItems,
+	)
 
 	/**
 	 * Gets local trailers for an item.

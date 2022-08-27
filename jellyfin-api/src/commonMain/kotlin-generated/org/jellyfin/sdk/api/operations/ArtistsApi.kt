@@ -25,6 +25,8 @@ import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.ItemFilter
 import org.jellyfin.sdk.model.api.SortOrder
+import org.jellyfin.sdk.model.api.request.GetAlbumArtistsRequest
+import org.jellyfin.sdk.model.api.request.GetArtistsRequest
 
 public class ArtistsApi(
 	private val api: ApiClient,
@@ -157,6 +159,47 @@ public class ArtistsApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets all album artists from a given item, folder, or the entire library.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getAlbumArtists(request: GetAlbumArtistsRequest = GetAlbumArtistsRequest()):
+			Response<BaseItemDtoQueryResult> = getAlbumArtists(
+		minCommunityRating = request.minCommunityRating,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		searchTerm = request.searchTerm,
+		parentId = request.parentId,
+		fields = request.fields,
+		excludeItemTypes = request.excludeItemTypes,
+		includeItemTypes = request.includeItemTypes,
+		filters = request.filters,
+		isFavorite = request.isFavorite,
+		mediaTypes = request.mediaTypes,
+		genres = request.genres,
+		genreIds = request.genreIds,
+		officialRatings = request.officialRatings,
+		tags = request.tags,
+		years = request.years,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		person = request.person,
+		personIds = request.personIds,
+		personTypes = request.personTypes,
+		studios = request.studios,
+		studioIds = request.studioIds,
+		userId = request.userId,
+		nameStartsWithOrGreater = request.nameStartsWithOrGreater,
+		nameStartsWith = request.nameStartsWith,
+		nameLessThan = request.nameLessThan,
+		sortBy = request.sortBy,
+		sortOrder = request.sortOrder,
+		enableImages = request.enableImages,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+	)
 
 	/**
 	 * Gets an artist by name.
@@ -304,4 +347,45 @@ public class ArtistsApi(
 				data)
 		return response
 	}
+
+	/**
+	 * Gets all artists from a given item, folder, or the entire library.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getArtists(request: GetArtistsRequest = GetArtistsRequest()):
+			Response<BaseItemDtoQueryResult> = getArtists(
+		minCommunityRating = request.minCommunityRating,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		searchTerm = request.searchTerm,
+		parentId = request.parentId,
+		fields = request.fields,
+		excludeItemTypes = request.excludeItemTypes,
+		includeItemTypes = request.includeItemTypes,
+		filters = request.filters,
+		isFavorite = request.isFavorite,
+		mediaTypes = request.mediaTypes,
+		genres = request.genres,
+		genreIds = request.genreIds,
+		officialRatings = request.officialRatings,
+		tags = request.tags,
+		years = request.years,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		person = request.person,
+		personIds = request.personIds,
+		personTypes = request.personTypes,
+		studios = request.studios,
+		studioIds = request.studioIds,
+		userId = request.userId,
+		nameStartsWithOrGreater = request.nameStartsWithOrGreater,
+		nameStartsWith = request.nameStartsWith,
+		nameLessThan = request.nameLessThan,
+		sortBy = request.sortBy,
+		sortOrder = request.sortOrder,
+		enableImages = request.enableImages,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+	)
 }

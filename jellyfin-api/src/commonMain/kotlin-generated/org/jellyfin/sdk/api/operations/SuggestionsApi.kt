@@ -19,6 +19,7 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.BaseItemKind
+import org.jellyfin.sdk.model.api.request.GetSuggestionsRequest
 
 public class SuggestionsApi(
 	private val api: ApiClient,
@@ -56,4 +57,19 @@ public class SuggestionsApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets suggestions.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getSuggestions(request: GetSuggestionsRequest): Response<BaseItemDtoQueryResult>
+			= getSuggestions(
+		userId = request.userId,
+		mediaType = request.mediaType,
+		type = request.type,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+	)
 }

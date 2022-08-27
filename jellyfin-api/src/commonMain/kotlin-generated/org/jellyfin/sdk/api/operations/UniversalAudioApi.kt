@@ -18,6 +18,7 @@ import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
+import org.jellyfin.sdk.model.api.request.GetUniversalAudioStreamRequest
 
 public class UniversalAudioApi(
 	private val api: ApiClient,
@@ -93,6 +94,33 @@ public class UniversalAudioApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets an audio stream.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getUniversalAudioStream(request: GetUniversalAudioStreamRequest):
+			Response<ByteReadChannel> = getUniversalAudioStream(
+		itemId = request.itemId,
+		container = request.container,
+		mediaSourceId = request.mediaSourceId,
+		deviceId = request.deviceId,
+		userId = request.userId,
+		audioCodec = request.audioCodec,
+		maxAudioChannels = request.maxAudioChannels,
+		transcodingAudioChannels = request.transcodingAudioChannels,
+		maxStreamingBitrate = request.maxStreamingBitrate,
+		audioBitRate = request.audioBitRate,
+		startTimeTicks = request.startTimeTicks,
+		transcodingContainer = request.transcodingContainer,
+		transcodingProtocol = request.transcodingProtocol,
+		maxAudioSampleRate = request.maxAudioSampleRate,
+		maxAudioBitDepth = request.maxAudioBitDepth,
+		enableRemoteMedia = request.enableRemoteMedia,
+		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
+		enableRedirection = request.enableRedirection,
+	)
 
 	/**
 	 * Gets an audio stream.

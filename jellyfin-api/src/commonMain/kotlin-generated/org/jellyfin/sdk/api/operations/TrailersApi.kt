@@ -28,6 +28,7 @@ import org.jellyfin.sdk.model.api.LocationType
 import org.jellyfin.sdk.model.api.SeriesStatus
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.api.VideoType
+import org.jellyfin.sdk.model.api.request.GetTrailersRequest
 
 public class TrailersApi(
 	private val api: ApiClient,
@@ -337,4 +338,97 @@ public class TrailersApi(
 				data)
 		return response
 	}
+
+	/**
+	 * Finds movies and trailers similar to a given trailer.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getTrailers(request: GetTrailersRequest = GetTrailersRequest()):
+			Response<BaseItemDtoQueryResult> = getTrailers(
+		userId = request.userId,
+		maxOfficialRating = request.maxOfficialRating,
+		hasThemeSong = request.hasThemeSong,
+		hasThemeVideo = request.hasThemeVideo,
+		hasSubtitles = request.hasSubtitles,
+		hasSpecialFeature = request.hasSpecialFeature,
+		hasTrailer = request.hasTrailer,
+		adjacentTo = request.adjacentTo,
+		parentIndexNumber = request.parentIndexNumber,
+		hasParentalRating = request.hasParentalRating,
+		isHd = request.isHd,
+		is4k = request.is4k,
+		locationTypes = request.locationTypes,
+		excludeLocationTypes = request.excludeLocationTypes,
+		isMissing = request.isMissing,
+		isUnaired = request.isUnaired,
+		minCommunityRating = request.minCommunityRating,
+		minCriticRating = request.minCriticRating,
+		minPremiereDate = request.minPremiereDate,
+		minDateLastSaved = request.minDateLastSaved,
+		minDateLastSavedForUser = request.minDateLastSavedForUser,
+		maxPremiereDate = request.maxPremiereDate,
+		hasOverview = request.hasOverview,
+		hasImdbId = request.hasImdbId,
+		hasTmdbId = request.hasTmdbId,
+		hasTvdbId = request.hasTvdbId,
+		isMovie = request.isMovie,
+		isSeries = request.isSeries,
+		isNews = request.isNews,
+		isKids = request.isKids,
+		isSports = request.isSports,
+		excludeItemIds = request.excludeItemIds,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		recursive = request.recursive,
+		searchTerm = request.searchTerm,
+		sortOrder = request.sortOrder,
+		parentId = request.parentId,
+		fields = request.fields,
+		excludeItemTypes = request.excludeItemTypes,
+		filters = request.filters,
+		isFavorite = request.isFavorite,
+		mediaTypes = request.mediaTypes,
+		imageTypes = request.imageTypes,
+		sortBy = request.sortBy,
+		isPlayed = request.isPlayed,
+		genres = request.genres,
+		officialRatings = request.officialRatings,
+		tags = request.tags,
+		years = request.years,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		person = request.person,
+		personIds = request.personIds,
+		personTypes = request.personTypes,
+		studios = request.studios,
+		artists = request.artists,
+		excludeArtistIds = request.excludeArtistIds,
+		artistIds = request.artistIds,
+		albumArtistIds = request.albumArtistIds,
+		contributingArtistIds = request.contributingArtistIds,
+		albums = request.albums,
+		albumIds = request.albumIds,
+		ids = request.ids,
+		videoTypes = request.videoTypes,
+		minOfficialRating = request.minOfficialRating,
+		isLocked = request.isLocked,
+		isPlaceHolder = request.isPlaceHolder,
+		hasOfficialRating = request.hasOfficialRating,
+		collapseBoxSetItems = request.collapseBoxSetItems,
+		minWidth = request.minWidth,
+		minHeight = request.minHeight,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		is3d = request.is3d,
+		seriesStatus = request.seriesStatus,
+		nameStartsWithOrGreater = request.nameStartsWithOrGreater,
+		nameStartsWith = request.nameStartsWith,
+		nameLessThan = request.nameLessThan,
+		studioIds = request.studioIds,
+		genreIds = request.genreIds,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+		enableImages = request.enableImages,
+	)
 }

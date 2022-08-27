@@ -29,6 +29,9 @@ import org.jellyfin.sdk.model.api.LocationType
 import org.jellyfin.sdk.model.api.SeriesStatus
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.api.VideoType
+import org.jellyfin.sdk.model.api.request.GetItemsByUserIdRequest
+import org.jellyfin.sdk.model.api.request.GetItemsRequest
+import org.jellyfin.sdk.model.api.request.GetResumeItemsRequest
 
 public class ItemsApi(
 	private val api: ApiClient,
@@ -345,6 +348,100 @@ public class ItemsApi(
 	/**
 	 * Gets items based on a query.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getItems(request: GetItemsRequest = GetItemsRequest()):
+			Response<BaseItemDtoQueryResult> = getItems(
+		userId = request.userId,
+		maxOfficialRating = request.maxOfficialRating,
+		hasThemeSong = request.hasThemeSong,
+		hasThemeVideo = request.hasThemeVideo,
+		hasSubtitles = request.hasSubtitles,
+		hasSpecialFeature = request.hasSpecialFeature,
+		hasTrailer = request.hasTrailer,
+		adjacentTo = request.adjacentTo,
+		parentIndexNumber = request.parentIndexNumber,
+		hasParentalRating = request.hasParentalRating,
+		isHd = request.isHd,
+		is4k = request.is4k,
+		locationTypes = request.locationTypes,
+		excludeLocationTypes = request.excludeLocationTypes,
+		isMissing = request.isMissing,
+		isUnaired = request.isUnaired,
+		minCommunityRating = request.minCommunityRating,
+		minCriticRating = request.minCriticRating,
+		minPremiereDate = request.minPremiereDate,
+		minDateLastSaved = request.minDateLastSaved,
+		minDateLastSavedForUser = request.minDateLastSavedForUser,
+		maxPremiereDate = request.maxPremiereDate,
+		hasOverview = request.hasOverview,
+		hasImdbId = request.hasImdbId,
+		hasTmdbId = request.hasTmdbId,
+		hasTvdbId = request.hasTvdbId,
+		isMovie = request.isMovie,
+		isSeries = request.isSeries,
+		isNews = request.isNews,
+		isKids = request.isKids,
+		isSports = request.isSports,
+		excludeItemIds = request.excludeItemIds,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		recursive = request.recursive,
+		searchTerm = request.searchTerm,
+		sortOrder = request.sortOrder,
+		parentId = request.parentId,
+		fields = request.fields,
+		excludeItemTypes = request.excludeItemTypes,
+		includeItemTypes = request.includeItemTypes,
+		filters = request.filters,
+		isFavorite = request.isFavorite,
+		mediaTypes = request.mediaTypes,
+		imageTypes = request.imageTypes,
+		sortBy = request.sortBy,
+		isPlayed = request.isPlayed,
+		genres = request.genres,
+		officialRatings = request.officialRatings,
+		tags = request.tags,
+		years = request.years,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		person = request.person,
+		personIds = request.personIds,
+		personTypes = request.personTypes,
+		studios = request.studios,
+		artists = request.artists,
+		excludeArtistIds = request.excludeArtistIds,
+		artistIds = request.artistIds,
+		albumArtistIds = request.albumArtistIds,
+		contributingArtistIds = request.contributingArtistIds,
+		albums = request.albums,
+		albumIds = request.albumIds,
+		ids = request.ids,
+		videoTypes = request.videoTypes,
+		minOfficialRating = request.minOfficialRating,
+		isLocked = request.isLocked,
+		isPlaceHolder = request.isPlaceHolder,
+		hasOfficialRating = request.hasOfficialRating,
+		collapseBoxSetItems = request.collapseBoxSetItems,
+		minWidth = request.minWidth,
+		minHeight = request.minHeight,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		is3d = request.is3d,
+		seriesStatus = request.seriesStatus,
+		nameStartsWithOrGreater = request.nameStartsWithOrGreater,
+		nameStartsWith = request.nameStartsWith,
+		nameLessThan = request.nameLessThan,
+		studioIds = request.studioIds,
+		genreIds = request.genreIds,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+		enableImages = request.enableImages,
+	)
+
+	/**
+	 * Gets items based on a query.
+	 *
 	 * @param userId The user id supplied as query parameter.
 	 * @param maxOfficialRating Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
 	 * @param hasThemeSong Optional filter by items with theme songs.
@@ -656,6 +753,100 @@ public class ItemsApi(
 	/**
 	 * Gets items based on a query.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getItemsByUserId(request: GetItemsByUserIdRequest):
+			Response<BaseItemDtoQueryResult> = getItemsByUserId(
+		userId = request.userId,
+		maxOfficialRating = request.maxOfficialRating,
+		hasThemeSong = request.hasThemeSong,
+		hasThemeVideo = request.hasThemeVideo,
+		hasSubtitles = request.hasSubtitles,
+		hasSpecialFeature = request.hasSpecialFeature,
+		hasTrailer = request.hasTrailer,
+		adjacentTo = request.adjacentTo,
+		parentIndexNumber = request.parentIndexNumber,
+		hasParentalRating = request.hasParentalRating,
+		isHd = request.isHd,
+		is4k = request.is4k,
+		locationTypes = request.locationTypes,
+		excludeLocationTypes = request.excludeLocationTypes,
+		isMissing = request.isMissing,
+		isUnaired = request.isUnaired,
+		minCommunityRating = request.minCommunityRating,
+		minCriticRating = request.minCriticRating,
+		minPremiereDate = request.minPremiereDate,
+		minDateLastSaved = request.minDateLastSaved,
+		minDateLastSavedForUser = request.minDateLastSavedForUser,
+		maxPremiereDate = request.maxPremiereDate,
+		hasOverview = request.hasOverview,
+		hasImdbId = request.hasImdbId,
+		hasTmdbId = request.hasTmdbId,
+		hasTvdbId = request.hasTvdbId,
+		isMovie = request.isMovie,
+		isSeries = request.isSeries,
+		isNews = request.isNews,
+		isKids = request.isKids,
+		isSports = request.isSports,
+		excludeItemIds = request.excludeItemIds,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		recursive = request.recursive,
+		searchTerm = request.searchTerm,
+		sortOrder = request.sortOrder,
+		parentId = request.parentId,
+		fields = request.fields,
+		excludeItemTypes = request.excludeItemTypes,
+		includeItemTypes = request.includeItemTypes,
+		filters = request.filters,
+		isFavorite = request.isFavorite,
+		mediaTypes = request.mediaTypes,
+		imageTypes = request.imageTypes,
+		sortBy = request.sortBy,
+		isPlayed = request.isPlayed,
+		genres = request.genres,
+		officialRatings = request.officialRatings,
+		tags = request.tags,
+		years = request.years,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		person = request.person,
+		personIds = request.personIds,
+		personTypes = request.personTypes,
+		studios = request.studios,
+		artists = request.artists,
+		excludeArtistIds = request.excludeArtistIds,
+		artistIds = request.artistIds,
+		albumArtistIds = request.albumArtistIds,
+		contributingArtistIds = request.contributingArtistIds,
+		albums = request.albums,
+		albumIds = request.albumIds,
+		ids = request.ids,
+		videoTypes = request.videoTypes,
+		minOfficialRating = request.minOfficialRating,
+		isLocked = request.isLocked,
+		isPlaceHolder = request.isPlaceHolder,
+		hasOfficialRating = request.hasOfficialRating,
+		collapseBoxSetItems = request.collapseBoxSetItems,
+		minWidth = request.minWidth,
+		minHeight = request.minHeight,
+		maxWidth = request.maxWidth,
+		maxHeight = request.maxHeight,
+		is3d = request.is3d,
+		seriesStatus = request.seriesStatus,
+		nameStartsWithOrGreater = request.nameStartsWithOrGreater,
+		nameStartsWith = request.nameStartsWith,
+		nameLessThan = request.nameLessThan,
+		studioIds = request.studioIds,
+		genreIds = request.genreIds,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+		enableImages = request.enableImages,
+	)
+
+	/**
+	 * Gets items based on a query.
+	 *
 	 * @param userId The user id.
 	 * @param startIndex The start index.
 	 * @param limit The item limit.
@@ -719,4 +910,28 @@ public class ItemsApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets items based on a query.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getResumeItems(request: GetResumeItemsRequest): Response<BaseItemDtoQueryResult>
+			= getResumeItems(
+		userId = request.userId,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		searchTerm = request.searchTerm,
+		parentId = request.parentId,
+		fields = request.fields,
+		mediaTypes = request.mediaTypes,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		excludeItemTypes = request.excludeItemTypes,
+		includeItemTypes = request.includeItemTypes,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+		enableImages = request.enableImages,
+		excludeActiveSessions = request.excludeActiveSessions,
+	)
 }

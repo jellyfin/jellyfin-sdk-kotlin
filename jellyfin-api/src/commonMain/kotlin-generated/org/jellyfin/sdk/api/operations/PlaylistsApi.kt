@@ -27,6 +27,7 @@ import org.jellyfin.sdk.model.api.CreatePlaylistDto
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.PlaylistCreationResult
+import org.jellyfin.sdk.model.api.request.GetPlaylistItemsRequest
 
 public class PlaylistsApi(
 	private val api: ApiClient,
@@ -143,6 +144,24 @@ public class PlaylistsApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets the original items of a playlist.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getPlaylistItems(request: GetPlaylistItemsRequest):
+			Response<BaseItemDtoQueryResult> = getPlaylistItems(
+		playlistId = request.playlistId,
+		userId = request.userId,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		fields = request.fields,
+		enableImages = request.enableImages,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+	)
 
 	/**
 	 * Moves a playlist item.

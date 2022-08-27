@@ -21,6 +21,14 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
+import org.jellyfin.sdk.model.api.request.GetInstantMixFromAlbumRequest
+import org.jellyfin.sdk.model.api.request.GetInstantMixFromArtists2Request
+import org.jellyfin.sdk.model.api.request.GetInstantMixFromArtistsRequest
+import org.jellyfin.sdk.model.api.request.GetInstantMixFromItemRequest
+import org.jellyfin.sdk.model.api.request.GetInstantMixFromMusicGenreByIdRequest
+import org.jellyfin.sdk.model.api.request.GetInstantMixFromMusicGenreByNameRequest
+import org.jellyfin.sdk.model.api.request.GetInstantMixFromPlaylistRequest
+import org.jellyfin.sdk.model.api.request.GetInstantMixFromSongRequest
 
 public class InstantMixApi(
 	private val api: ApiClient,
@@ -66,6 +74,23 @@ public class InstantMixApi(
 	}
 
 	/**
+	 * Creates an instant playlist based on a given album.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getInstantMixFromAlbum(request: GetInstantMixFromAlbumRequest):
+			Response<BaseItemDtoQueryResult> = getInstantMixFromAlbum(
+		id = request.id,
+		userId = request.userId,
+		limit = request.limit,
+		fields = request.fields,
+		enableImages = request.enableImages,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+	)
+
+	/**
 	 * Creates an instant playlist based on a given artist.
 	 *
 	 * @param id The item id.
@@ -108,6 +133,23 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given artist.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getInstantMixFromArtists(request: GetInstantMixFromArtistsRequest):
+			Response<BaseItemDtoQueryResult> = getInstantMixFromArtists(
+		id = request.id,
+		userId = request.userId,
+		limit = request.limit,
+		fields = request.fields,
+		enableImages = request.enableImages,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+	)
+
+	/**
+	 * Creates an instant playlist based on a given artist.
+	 *
 	 * @param id The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
@@ -144,6 +186,24 @@ public class InstantMixApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Creates an instant playlist based on a given artist.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getInstantMixFromArtists2(request: GetInstantMixFromArtists2Request):
+			Response<BaseItemDtoQueryResult> = getInstantMixFromArtists2(
+		id = request.id,
+		userId = request.userId,
+		limit = request.limit,
+		fields = request.fields,
+		enableImages = request.enableImages,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+	)
 
 	/**
 	 * Creates an instant playlist based on a given item.
@@ -184,6 +244,23 @@ public class InstantMixApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Creates an instant playlist based on a given item.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getInstantMixFromItem(request: GetInstantMixFromItemRequest):
+			Response<BaseItemDtoQueryResult> = getInstantMixFromItem(
+		id = request.id,
+		userId = request.userId,
+		limit = request.limit,
+		fields = request.fields,
+		enableImages = request.enableImages,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+	)
 
 	/**
 	 * Creates an instant playlist based on a given genre.
@@ -227,6 +304,24 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given genre.
 	 *
+	 * @param request The request paramaters
+	 */
+	public suspend
+			fun getInstantMixFromMusicGenreById(request: GetInstantMixFromMusicGenreByIdRequest):
+			Response<BaseItemDtoQueryResult> = getInstantMixFromMusicGenreById(
+		id = request.id,
+		userId = request.userId,
+		limit = request.limit,
+		fields = request.fields,
+		enableImages = request.enableImages,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+	)
+
+	/**
+	 * Creates an instant playlist based on a given genre.
+	 *
 	 * @param name The genre name.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
@@ -263,6 +358,24 @@ public class InstantMixApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Creates an instant playlist based on a given genre.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend
+			fun getInstantMixFromMusicGenreByName(request: GetInstantMixFromMusicGenreByNameRequest):
+			Response<BaseItemDtoQueryResult> = getInstantMixFromMusicGenreByName(
+		name = request.name,
+		userId = request.userId,
+		limit = request.limit,
+		fields = request.fields,
+		enableImages = request.enableImages,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+	)
 
 	/**
 	 * Creates an instant playlist based on a given playlist.
@@ -305,6 +418,23 @@ public class InstantMixApi(
 	}
 
 	/**
+	 * Creates an instant playlist based on a given playlist.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getInstantMixFromPlaylist(request: GetInstantMixFromPlaylistRequest):
+			Response<BaseItemDtoQueryResult> = getInstantMixFromPlaylist(
+		id = request.id,
+		userId = request.userId,
+		limit = request.limit,
+		fields = request.fields,
+		enableImages = request.enableImages,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+	)
+
+	/**
 	 * Creates an instant playlist based on a given song.
 	 *
 	 * @param id The item id.
@@ -343,4 +473,21 @@ public class InstantMixApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Creates an instant playlist based on a given song.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getInstantMixFromSong(request: GetInstantMixFromSongRequest):
+			Response<BaseItemDtoQueryResult> = getInstantMixFromSong(
+		id = request.id,
+		userId = request.userId,
+		limit = request.limit,
+		fields = request.fields,
+		enableImages = request.enableImages,
+		enableUserData = request.enableUserData,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+	)
 }

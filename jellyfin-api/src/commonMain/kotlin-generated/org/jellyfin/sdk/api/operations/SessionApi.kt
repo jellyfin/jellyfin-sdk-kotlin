@@ -32,6 +32,8 @@ import org.jellyfin.sdk.model.api.NameIdPair
 import org.jellyfin.sdk.model.api.PlayCommand
 import org.jellyfin.sdk.model.api.PlaystateCommand
 import org.jellyfin.sdk.model.api.SessionInfo
+import org.jellyfin.sdk.model.api.request.PlayRequest
+import org.jellyfin.sdk.model.api.request.PostCapabilitiesRequest
 
 public class SessionApi(
 	private val api: ApiClient,
@@ -172,6 +174,22 @@ public class SessionApi(
 	}
 
 	/**
+	 * Instructs a session to play an item.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun play(request: PlayRequest): Response<Unit> = play(
+		sessionId = request.sessionId,
+		playCommand = request.playCommand,
+		itemIds = request.itemIds,
+		startPositionTicks = request.startPositionTicks,
+		mediaSourceId = request.mediaSourceId,
+		audioStreamIndex = request.audioStreamIndex,
+		subtitleStreamIndex = request.subtitleStreamIndex,
+		startIndex = request.startIndex,
+	)
+
+	/**
 	 * Updates capabilities for a device.
 	 *
 	 * @param id The session id.
@@ -203,6 +221,21 @@ public class SessionApi(
 		val response = api.post<Unit>("/Sessions/Capabilities", pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Updates capabilities for a device.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun postCapabilities(request: PostCapabilitiesRequest = PostCapabilitiesRequest()):
+			Response<Unit> = postCapabilities(
+		id = request.id,
+		playableMediaTypes = request.playableMediaTypes,
+		supportedCommands = request.supportedCommands,
+		supportsMediaControl = request.supportsMediaControl,
+		supportsSync = request.supportsSync,
+		supportsPersistentIdentifier = request.supportsPersistentIdentifier,
+	)
 
 	/**
 	 * Updates capabilities for a device.

@@ -21,6 +21,10 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
+import org.jellyfin.sdk.model.api.request.GetEpisodesRequest
+import org.jellyfin.sdk.model.api.request.GetNextUpRequest
+import org.jellyfin.sdk.model.api.request.GetSeasonsRequest
+import org.jellyfin.sdk.model.api.request.GetUpcomingEpisodesRequest
 
 public class TvShowsApi(
 	private val api: ApiClient,
@@ -93,6 +97,30 @@ public class TvShowsApi(
 	}
 
 	/**
+	 * Gets episodes for a tv season.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getEpisodes(request: GetEpisodesRequest): Response<BaseItemDtoQueryResult> =
+			getEpisodes(
+		seriesId = request.seriesId,
+		userId = request.userId,
+		fields = request.fields,
+		season = request.season,
+		seasonId = request.seasonId,
+		isMissing = request.isMissing,
+		adjacentTo = request.adjacentTo,
+		startItemId = request.startItemId,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		enableImages = request.enableImages,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		enableUserData = request.enableUserData,
+		sortBy = request.sortBy,
+	)
+
+	/**
 	 * Gets a list of next up episodes.
 	 *
 	 * @param userId The user id of the user to get the next up episodes for.
@@ -152,6 +180,29 @@ public class TvShowsApi(
 	}
 
 	/**
+	 * Gets a list of next up episodes.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getNextUp(request: GetNextUpRequest = GetNextUpRequest()):
+			Response<BaseItemDtoQueryResult> = getNextUp(
+		userId = request.userId,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		fields = request.fields,
+		seriesId = request.seriesId,
+		parentId = request.parentId,
+		enableImages = request.enableImages,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		enableUserData = request.enableUserData,
+		nextUpDateCutoff = request.nextUpDateCutoff,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+		disableFirstEpisode = request.disableFirstEpisode,
+		enableRewatching = request.enableRewatching,
+	)
+
+	/**
 	 * Gets seasons for a tv series.
 	 *
 	 * @param seriesId The series id.
@@ -201,6 +252,25 @@ public class TvShowsApi(
 	}
 
 	/**
+	 * Gets seasons for a tv series.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getSeasons(request: GetSeasonsRequest): Response<BaseItemDtoQueryResult> =
+			getSeasons(
+		seriesId = request.seriesId,
+		userId = request.userId,
+		fields = request.fields,
+		isSpecialSeason = request.isSpecialSeason,
+		isMissing = request.isMissing,
+		adjacentTo = request.adjacentTo,
+		enableImages = request.enableImages,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		enableUserData = request.enableUserData,
+	)
+
+	/**
 	 * Gets a list of upcoming episodes.
 	 *
 	 * @param userId The user id of the user to get the upcoming episodes for.
@@ -243,4 +313,22 @@ public class TvShowsApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets a list of upcoming episodes.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getUpcomingEpisodes(request: GetUpcomingEpisodesRequest =
+			GetUpcomingEpisodesRequest()): Response<BaseItemDtoQueryResult> = getUpcomingEpisodes(
+		userId = request.userId,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		fields = request.fields,
+		parentId = request.parentId,
+		enableImages = request.enableImages,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		enableUserData = request.enableUserData,
+	)
 }

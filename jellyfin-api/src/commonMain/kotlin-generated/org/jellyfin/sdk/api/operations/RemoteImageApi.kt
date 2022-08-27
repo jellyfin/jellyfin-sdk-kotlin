@@ -21,6 +21,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.ImageProviderInfo
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.RemoteImageResult
+import org.jellyfin.sdk.model.api.request.GetRemoteImagesRequest
 
 public class RemoteImageApi(
 	private val api: ApiClient,
@@ -100,4 +101,19 @@ public class RemoteImageApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets available remote images for an item.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getRemoteImages(request: GetRemoteImagesRequest): Response<RemoteImageResult> =
+			getRemoteImages(
+		itemId = request.itemId,
+		type = request.type,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		providerName = request.providerName,
+		includeAllLanguages = request.includeAllLanguages,
+	)
 }

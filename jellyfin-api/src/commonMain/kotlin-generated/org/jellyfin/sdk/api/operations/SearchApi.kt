@@ -19,6 +19,7 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.SearchHintResult
+import org.jellyfin.sdk.model.api.request.GetRequest
 
 public class SearchApi(
 	private val api: ApiClient,
@@ -95,4 +96,30 @@ public class SearchApi(
 		val response = api.`get`<SearchHintResult>("/Search/Hints", pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets the search hint result.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun `get`(request: GetRequest): Response<SearchHintResult> = `get`(
+		startIndex = request.startIndex,
+		limit = request.limit,
+		userId = request.userId,
+		searchTerm = request.searchTerm,
+		includeItemTypes = request.includeItemTypes,
+		excludeItemTypes = request.excludeItemTypes,
+		mediaTypes = request.mediaTypes,
+		parentId = request.parentId,
+		isMovie = request.isMovie,
+		isSeries = request.isSeries,
+		isNews = request.isNews,
+		isKids = request.isKids,
+		isSports = request.isSports,
+		includePeople = request.includePeople,
+		includeMedia = request.includeMedia,
+		includeGenres = request.includeGenres,
+		includeStudios = request.includeStudios,
+		includeArtists = request.includeArtists,
+	)
 }

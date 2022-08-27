@@ -44,6 +44,11 @@ import org.jellyfin.sdk.model.api.TimerInfoDto
 import org.jellyfin.sdk.model.api.TimerInfoDtoQueryResult
 import org.jellyfin.sdk.model.api.TunerChannelMapping
 import org.jellyfin.sdk.model.api.TunerHostInfo
+import org.jellyfin.sdk.model.api.request.GetLiveTvChannelsRequest
+import org.jellyfin.sdk.model.api.request.GetLiveTvProgramsRequest
+import org.jellyfin.sdk.model.api.request.GetRecommendedProgramsRequest
+import org.jellyfin.sdk.model.api.request.GetRecordingsRequest
+import org.jellyfin.sdk.model.api.request.GetRecordingsSeriesRequest
 
 public class LiveTvApi(
 	private val api: ApiClient,
@@ -469,6 +474,36 @@ public class LiveTvApi(
 	}
 
 	/**
+	 * Gets available live tv channels.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getLiveTvChannels(request: GetLiveTvChannelsRequest =
+			GetLiveTvChannelsRequest()): Response<BaseItemDtoQueryResult> = getLiveTvChannels(
+		type = request.type,
+		userId = request.userId,
+		startIndex = request.startIndex,
+		isMovie = request.isMovie,
+		isSeries = request.isSeries,
+		isNews = request.isNews,
+		isKids = request.isKids,
+		isSports = request.isSports,
+		limit = request.limit,
+		isFavorite = request.isFavorite,
+		isLiked = request.isLiked,
+		isDisliked = request.isDisliked,
+		enableImages = request.enableImages,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		fields = request.fields,
+		enableUserData = request.enableUserData,
+		sortBy = request.sortBy,
+		sortOrder = request.sortOrder,
+		enableFavoriteSorting = request.enableFavoriteSorting,
+		addCurrentProgram = request.addCurrentProgram,
+	)
+
+	/**
 	 * Gets available live tv services.
 	 */
 	public suspend fun getLiveTvInfo(): Response<LiveTvInfo> {
@@ -578,6 +613,42 @@ public class LiveTvApi(
 	}
 
 	/**
+	 * Gets available live tv epgs.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getLiveTvPrograms(request: GetLiveTvProgramsRequest =
+			GetLiveTvProgramsRequest()): Response<BaseItemDtoQueryResult> = getLiveTvPrograms(
+		channelIds = request.channelIds,
+		userId = request.userId,
+		minStartDate = request.minStartDate,
+		hasAired = request.hasAired,
+		isAiring = request.isAiring,
+		maxStartDate = request.maxStartDate,
+		minEndDate = request.minEndDate,
+		maxEndDate = request.maxEndDate,
+		isMovie = request.isMovie,
+		isSeries = request.isSeries,
+		isNews = request.isNews,
+		isKids = request.isKids,
+		isSports = request.isSports,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		sortBy = request.sortBy,
+		sortOrder = request.sortOrder,
+		genres = request.genres,
+		genreIds = request.genreIds,
+		enableImages = request.enableImages,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		enableUserData = request.enableUserData,
+		seriesTimerId = request.seriesTimerId,
+		librarySeriesId = request.librarySeriesId,
+		fields = request.fields,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+	)
+
+	/**
 	 * Gets a live tv program.
 	 *
 	 * @param programId Program id.
@@ -669,6 +740,31 @@ public class LiveTvApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets recommended live tv epgs.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getRecommendedPrograms(request: GetRecommendedProgramsRequest =
+			GetRecommendedProgramsRequest()): Response<BaseItemDtoQueryResult> = getRecommendedPrograms(
+		userId = request.userId,
+		limit = request.limit,
+		isAiring = request.isAiring,
+		hasAired = request.hasAired,
+		isSeries = request.isSeries,
+		isMovie = request.isMovie,
+		isNews = request.isNews,
+		isKids = request.isKids,
+		isSports = request.isSports,
+		enableImages = request.enableImages,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		genreIds = request.genreIds,
+		fields = request.fields,
+		enableUserData = request.enableUserData,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+	)
 
 	/**
 	 * Gets a live tv recording.
@@ -813,6 +909,34 @@ public class LiveTvApi(
 	}
 
 	/**
+	 * Gets live tv recordings.
+	 *
+	 * @param request The request paramaters
+	 */
+	public suspend fun getRecordings(request: GetRecordingsRequest = GetRecordingsRequest()):
+			Response<BaseItemDtoQueryResult> = getRecordings(
+		channelId = request.channelId,
+		userId = request.userId,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		status = request.status,
+		isInProgress = request.isInProgress,
+		seriesTimerId = request.seriesTimerId,
+		enableImages = request.enableImages,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		fields = request.fields,
+		enableUserData = request.enableUserData,
+		isMovie = request.isMovie,
+		isSeries = request.isSeries,
+		isKids = request.isKids,
+		isSports = request.isSports,
+		isNews = request.isNews,
+		isLibraryItem = request.isLibraryItem,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+	)
+
+	/**
 	 * Gets live tv recording series.
 	 *
 	 * @param channelId Optional. Filter by channel id.
@@ -870,6 +994,30 @@ public class LiveTvApi(
 				queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets live tv recording series.
+	 *
+	 * @param request The request paramaters
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getRecordingsSeries(request: GetRecordingsSeriesRequest =
+			GetRecordingsSeriesRequest()): Response<BaseItemDtoQueryResult> = getRecordingsSeries(
+		channelId = request.channelId,
+		userId = request.userId,
+		groupId = request.groupId,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		status = request.status,
+		isInProgress = request.isInProgress,
+		seriesTimerId = request.seriesTimerId,
+		enableImages = request.enableImages,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		fields = request.fields,
+		enableUserData = request.enableUserData,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+	)
 
 	/**
 	 * Gets available countries.
