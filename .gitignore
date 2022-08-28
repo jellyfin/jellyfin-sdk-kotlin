@@ -9,3 +9,6 @@ local.properties
 build/
 
 java_*.hprof
+
+# Docs
+node_modules
