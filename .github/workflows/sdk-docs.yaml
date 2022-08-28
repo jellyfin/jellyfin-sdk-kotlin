@@ -1,0 +1,47 @@
+name: SDK Documentation
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+      - name: Setup Java
+        uses: actions/setup-java@2c7a4878f5d120bd643426d54ae1209b29cc01a3 # tag=v3
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: gradle
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@61fd3a3cc1d0a4c8dae3bce7d897863ccdedb25d # tag=v2
+      - name: Run dokkaHtmlMultiModule task
+        run: ./gradlew --build-cache --no-daemon --info dokkaHtmlMultiModule
+      - name: Upload artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@f4e69017a716d2d729b620cba1f4016257fedec6 # tag=v1
+        with:
+          path: ./build/dokka/htmlMultiModule
+
+  deploy:
+    name: Deploy to GitHub Pages
+    if: github.event_name != 'pull_request'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@114f9cc1f8e24d8f64390960ea709a5a19d09b39 # tag=v1
