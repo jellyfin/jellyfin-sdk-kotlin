@@ -1,0 +1,10 @@
+{
+	"description": "This file is used for the documentation only",
+	"scripts": {
+		"start": "vitepress dev docs",
+		"build": "vitepress build docs"
+	},
+	"devDependencies": {
+		"vitepress": "1.0.0-alpha.12"
+	}
+}
