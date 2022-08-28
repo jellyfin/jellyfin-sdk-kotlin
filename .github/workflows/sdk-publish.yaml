@@ -21,6 +21,8 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
       - name: Set JELLYFIN_VERSION
         if: ${{ startsWith(github.ref, 'refs/tags/v') }}
         run: echo "JELLYFIN_VERSION=$(echo ${GITHUB_REF#refs/tags/v} | tr / -)" >> $GITHUB_ENV
@@ -28,14 +30,14 @@ jobs:
         if: ${{ startsWith(github.ref, 'refs/heads/') }}
         run: echo "JELLYFIN_BRANCH=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
       - name: Run publish task
-        run: ./gradlew --no-daemon --info publish closeAndReleaseSonatypeStagingRepository
+        run: ./gradlew publish closeAndReleaseSonatypeStagingRepository
         env:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
       - name: Run build and assembleDist tasks
         if: ${{ startsWith(github.ref, 'refs/tags/v') }}
-        run: ./gradlew --no-daemon --info build assembleDist -x check
+        run: ./gradlew build assembleDist -x check
       - name: Upload release assets
         if: ${{ startsWith(github.ref, 'refs/tags/v') }}
         uses: alexellis/upload-assets@5586bc227f8525a5e3525e6edf64da5350bfb5b1 # tag=0.3.0

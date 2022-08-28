@@ -18,9 +18,10 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-          cache: gradle
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
       - name: Run detekt and lint tasks
-        run: ./gradlew --build-cache --no-daemon --info detekt lint
+        run: ./gradlew detekt lint
       - name: Upload SARIF files
         uses: github/codeql-action/upload-sarif@c7f292ea4f542c473194b33813ccd4c207a6c725 # tag=v2
         if: ${{ always() }}
