@@ -14,7 +14,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3
         with:
           node-version: 16
           cache: npm
@@ -26,7 +26,7 @@ jobs:
         working-directory: ./docs/.vitepress/dist
         run: zip -v -r ../vitepress.zip *
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # tag=v3
         with:
           name: vitepress
           path: ./docs/.vitepress/vitepress.zip
@@ -42,14 +42,14 @@ jobs:
           distribution: temurin
           java-version: 17
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@cd579d970f8aec1cf0cae5f62a8e418768970015 # tag=v2
       - name: Run dokkaHtmlMultiModule task
         run: ./gradlew dokkaHtmlMultiModule
       - name: Create artifact
         working-directory: ./build/dokka/htmlMultiModule
         run: zip -v -r ../../dokka.zip *
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # tag=v3
         with:
           name: dokka
           path: ./build/dokka.zip
@@ -70,12 +70,12 @@ jobs:
       - name: Setup GitHub Pages
         uses: actions/configure-pages@61fd3a3cc1d0a4c8dae3bce7d897863ccdedb25d # tag=v2
       - name: Download Vitepress artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@fb598a63ae348fa914e94cd0ff38f362e927b741 # tag=v3
         with:
           name: vitepress
           path: ./build/github-pages
       - name: Download Dokka artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@fb598a63ae348fa914e94cd0ff38f362e927b741 # tag=v3
         with:
           name: dokka
           path: ./build/github-pages
