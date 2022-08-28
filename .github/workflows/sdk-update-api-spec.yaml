@@ -17,7 +17,8 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-          cache: gradle
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
       - name: Set STABLE_API_VERSION
         run: |
           VERSION=$(curl -sL https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-stable.json | jq -r .info.version)
@@ -25,7 +26,7 @@ jobs:
       - name: Update generated sources and create pull request
         uses: technote-space/create-pr-action@95c1e76dc9b65848afe397ea156666021f2e8243 # tag=v2
         with:
-          EXECUTE_COMMANDS: ./gradlew --build-cache --no-daemon --info :openapi-generator:updateApiSpecStable apiDump
+          EXECUTE_COMMANDS: ./gradlew :openapi-generator:updateApiSpecStable apiDump
           COMMIT_MESSAGE: 'Update generated sources to ${{ env.STABLE_API_VERSION }}'
           COMMIT_NAME: 'jellyfin-bot'
           COMMIT_EMAIL: 'team@jellyfin.org'

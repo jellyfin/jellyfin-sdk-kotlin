@@ -23,9 +23,10 @@ jobs:
         with:
           distribution: temurin
           java-version: ${{ matrix.java }}
-          cache: gradle
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
       - name: Run test task
-        run: ./gradlew --build-cache --no-daemon --info test allTests
+        run: ./gradlew test allTests
 
   validate-binary-compatibility:
     runs-on: ubuntu-20.04
@@ -37,9 +38,10 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-          cache: gradle
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
       - name: Run apiCheck task
-        run: ./gradlew --build-cache --no-daemon --info apiCheck
+        run: ./gradlew apiCheck
 
   verify-openapi-sources:
     runs-on: ubuntu-20.04
@@ -53,7 +55,8 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-          cache: gradle
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
       - name: Run verifySources task
-        run: ./gradlew --build-cache --no-daemon --info verifySources
+        run: ./gradlew verifySources
 

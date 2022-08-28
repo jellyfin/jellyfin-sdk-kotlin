@@ -26,9 +26,10 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-          cache: gradle
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
       - name: Run updateApiSpecUnstable and apiDump tasks
-        run: ./gradlew --build-cache --no-daemon --info :openapi-generator:updateApiSpecUnstable apiDump
+        run: ./gradlew :openapi-generator:updateApiSpecUnstable apiDump
       - name: Commit changes
         run: |
           git config user.name jellyfin-bot
