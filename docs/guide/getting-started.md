@@ -124,7 +124,7 @@ try {
 ### WebSockets
 
 Jellyfin uses WebSockets to communicate events like library changes and activities. This API can be
-used with the SocketApi. Documentation is available in the [docs](/docs) folder.
+used with the SocketApi.
 
 ```kotlin
 val instance = api.ws()
@@ -151,11 +151,6 @@ val candidates = jellyfin.discovery.getAddressCandidates("demo.jellyfin.org/stab
 // Get a flow of potential servers to connect to
 val recommended = jellyfin.discovery.getRecommendedServers(candidates, RecommendedServerInfoScore.GOOD)
 ```
-
-## More examples
-
-We provide a few small projects in the [samples](/samples) folder. The samples are used for testing
-new features and can be used as a basis for your own application.
 
 ## Projects using the SDK
 
