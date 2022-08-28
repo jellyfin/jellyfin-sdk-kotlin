@@ -27,7 +27,7 @@ jobs:
           distribution: temurin
           java-version: 17
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@cd579d970f8aec1cf0cae5f62a8e418768970015 # tag=v2
       - name: Run updateApiSpecUnstable and apiDump tasks
         run: ./gradlew :openapi-generator:updateApiSpecUnstable apiDump
       - name: Commit changes
