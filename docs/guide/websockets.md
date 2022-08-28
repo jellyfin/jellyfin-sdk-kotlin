@@ -173,8 +173,8 @@ The following messages types are supported in the SDK.
 - The [observe] command in the [kotlin-cli] sample uses websockets to listen for messages.
 - The [jellyfin-androidtv] app uses websockets for remote media control and realtime data updates.
 
-[observe]: /samples/kotlin-cli/src/main/kotlin/org/jellyfin/sample/cli/command/Observe.kt
+[observe]: https://github.com/jellyfin/jellyfin-sdk-kotlin/tree/master/samples/kotlin-cli/src/main/kotlin/org/jellyfin/sample/cli/command/Observe.kt
 
-[kotlin-cli]: /samples/kotlin-cli/
+[kotlin-cli]: https://github.com/jellyfin/jellyfin-sdk-kotlin/tree/master/samples/kotlin-cli/
 
 [jellyfin-androidtv]: https://github.com/jellyfin/jellyfin-androidtv
