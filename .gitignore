@@ -12,3 +12,4 @@ java_*.hprof
 
 # Docs
 node_modules
+docs/.vitepress/dist
