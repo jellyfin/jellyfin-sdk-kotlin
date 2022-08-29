@@ -25,7 +25,7 @@ export default defineConfig({
 			},
 			{
 				text: 'Dokka',
-				link: '/dokka/',
+				link: 'https://kotlin-sdk.jellyfin.org/dokka/',
 			},
 		],
 
@@ -55,7 +55,7 @@ export default defineConfig({
 				text: 'Migrations',
 				items: [
 					{
-						text: 'Migrate to 1.2',
+						text: 'Migrate to 1.1',
 						link: '/migration/v1.1',
 					},
 					{
