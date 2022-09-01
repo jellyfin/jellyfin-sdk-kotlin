@@ -117,11 +117,6 @@ public final class org/jellyfin/sdk/discovery/AddressCandidateHelper {
 public final class org/jellyfin/sdk/discovery/AddressCandidateHelper$Companion {
 }
 
-public final class org/jellyfin/sdk/discovery/DiscoveryBroadcastAddressesProvider {
-	public fun <init> (Lorg/jellyfin/sdk/JellyfinOptions;)V
-	public final fun getBroadcastAddresses (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-}
-
 public final class org/jellyfin/sdk/discovery/DiscoveryService {
 	public fun <init> (Lorg/jellyfin/sdk/Jellyfin;)V
 	public final fun discoverLocalServers (II)Lkotlinx/coroutines/flow/Flow;
