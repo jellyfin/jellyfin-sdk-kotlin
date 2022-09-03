@@ -45,6 +45,10 @@ export default defineConfig({
 				text: 'Developing',
 				items: [
 					{
+						text: 'Authentication',
+						link: '/guide/authentication',
+					},
+					{
 						text: 'WebSockets',
 						link: '/guide/websockets',
 					},
