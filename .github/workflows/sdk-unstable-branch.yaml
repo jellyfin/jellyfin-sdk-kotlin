@@ -28,8 +28,10 @@ jobs:
           java-version: 17
       - name: Setup Gradle
         uses: gradle/gradle-build-action@356abb47e7664b5505e25d7997a5a522a17c62d9 # tag=v2
-      - name: Run updateApiSpecUnstable and apiDump tasks
-        run: ./gradlew :openapi-generator:updateApiSpecUnstable apiDump
+      - name: Run updateApiSpecUnstable task
+        run: ./gradlew :openapi-generator:updateApiSpecUnstable
+      - name: Run apiDump task
+        run: ./gradlew apiDump
       - name: Commit changes
         run: |
           git config user.name jellyfin-bot
