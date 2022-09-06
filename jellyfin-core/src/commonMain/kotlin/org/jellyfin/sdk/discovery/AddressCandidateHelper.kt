@@ -45,15 +45,20 @@ public class AddressCandidateHelper(
 			logger.debug { "Input is $input" }
 
 			// Add the input as initial candidate
-			candidates.add(URLBuilder().apply {
-				// Ktor doesn't like urls not starting with a protocol
-				// so we default to a http prefix
-				if (!input.startsWith(PROTOCOL_HTTP) && !input.startsWith(PROTOCOL_HTTPS))
-					takeFrom(PROTOCOL_HTTP + input)
-				else
-					takeFrom(input)
-			}.build())
+			if (input.isNotBlank()) {
+				candidates.add(URLBuilder().apply {
+					// Ktor doesn't like urls not starting with a protocol
+					// so we default to a http prefix
+					if (!input.startsWith(PROTOCOL_HTTP) && !input.startsWith(PROTOCOL_HTTPS))
+						takeFrom(PROTOCOL_HTTP + input)
+					else
+						takeFrom(input)
+				}.build())
+			}
 		} catch (error: URLParserException) {
+			// Input can't be parsed
+			logger.error(error) { "Input $input could not be parsed" }
+		} catch (error: IllegalArgumentException) {
 			// Input can't be parsed
 			logger.error(error) { "Input $input could not be parsed" }
 		}
@@ -88,6 +93,7 @@ public class AddressCandidateHelper(
 					URLProtocol.HTTP -> {
 						candidates.add(it.copy(specifiedPort = JF_HTTP_PORT))
 					}
+
 					URLProtocol.HTTPS -> {
 						candidates.add(it.copy(specifiedPort = JF_HTTP_PORT))
 						candidates.add(it.copy(specifiedPort = JF_HTTPS_PORT))
