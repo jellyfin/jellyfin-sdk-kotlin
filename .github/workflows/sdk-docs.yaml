@@ -8,6 +8,16 @@ on:
   workflow_dispatch:
 
 jobs:
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+      - name: Setup problem matcher
+        uses: xt0rted/markdownlint-problem-matcher@v1.1.0
+      - name: Run markdownlint
+        run: npx --package markdownlint-cli markdownlint readme.md docs/**/*.md --ignore node_modules
+
   build-vitepress:
     runs-on: ubuntu-20.04
     steps:
