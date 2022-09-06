@@ -3,8 +3,6 @@ package org.jellyfin.sample.cli.command
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.runBlocking
 import org.jellyfin.sample.cli.serverOption
 import org.jellyfin.sdk.Jellyfin
@@ -36,10 +34,10 @@ class Ping(
 
 	private suspend fun runExtended() {
 		val servers = jellyfin.discovery.getRecommendedServers(server)
-		servers.onEach {
-			println("${it.address}: score=${it.score} duration=${it.responseTime}ms")
-			println("info=${it.systemInfo}")
+		for (server in servers) {
+			println("${server.address}: score=${server.score} duration=${server.responseTime}ms")
+			println("info=${server.systemInfo}")
 			println()
-		}.collect()
+		}
 	}
 }

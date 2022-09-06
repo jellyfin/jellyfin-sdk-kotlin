@@ -1,10 +1,10 @@
 package org.jellyfin.sdk.discovery
 
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.sync.Semaphore
+import kotlinx.coroutines.sync.withPermit
 import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.jellyfin.sdk.Jellyfin
@@ -27,8 +27,9 @@ public class RecommendedServerDiscovery constructor(
 	private companion object {
 		private const val HTTP_OK = 200
 		private const val PRODUCT_NAME = "Jellyfin Server"
-		private const val SLOW_TIME_THRESHOLD = 3_000
-		private const val HTTP_TIMEOUT = 5_000L
+		private const val SLOW_TIME_THRESHOLD = 1_500
+		private const val HTTP_TIMEOUT = 3_500L
+		private const val MAX_SIMULTANEOUS_RETRIEVALS = 3
 	}
 
 	private data class SystemInfoResult(
@@ -149,23 +150,23 @@ public class RecommendedServerDiscovery constructor(
 	 * Returned servers are not ordered by score. Use [minimumScore] to automatically remove bad matches.
 	 */
 	public suspend fun discover(
-		servers: Flow<String>,
+		servers: Collection<String>,
 		minimumScore: RecommendedServerInfoScore,
-	): Flow<RecommendedServerInfo> = withContext(Dispatchers.Default) {
+	): Collection<RecommendedServerInfo> = withContext(Dispatchers.IO) {
+		val semaphore = Semaphore(MAX_SIMULTANEOUS_RETRIEVALS)
+
 		servers
-			.map(::getSystemInfoResult)
-			.map(::assignScore)
+			.map { address ->
+				async {
+					semaphore.withPermit {
+						getSystemInfoResult(address).let(::assignScore)
+					}
+				}
+			}
+			.awaitAll()
 			.filter { serverInfo ->
 				// Use [minimumScore] to filter out bad score matches
 				serverInfo.score.score >= minimumScore.score
 			}
 	}
-
-	public suspend fun discover(
-		servers: List<String>,
-		minimumScore: RecommendedServerInfoScore,
-	): Flow<RecommendedServerInfo> = discover(
-		servers = servers.asFlow(),
-		minimumScore = minimumScore
-	)
 }

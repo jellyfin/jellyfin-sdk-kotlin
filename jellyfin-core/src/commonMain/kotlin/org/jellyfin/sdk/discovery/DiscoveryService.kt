@@ -24,7 +24,7 @@ public class DiscoveryService constructor(
 	 *
 	 * See [AddressCandidateHelper] for more information.
 	 */
-	public fun getAddressCandidates(input: String): List<String> = AddressCandidateHelper(input).run {
+	public fun getAddressCandidates(input: String): Collection<String> = AddressCandidateHelper(input).run {
 		addCommonCandidates()
 		getCandidates()
 	}
@@ -43,9 +43,9 @@ public class DiscoveryService constructor(
 	 * **Never just use the first result**.
 	 */
 	public suspend fun getRecommendedServers(
-		servers: List<String>,
+		servers: Collection<String>,
 		minimumScore: RecommendedServerInfoScore = RecommendedServerInfoScore.BAD,
-	): Flow<RecommendedServerInfo> = recommendedServerDiscovery.discover(
+	): Collection<RecommendedServerInfo> = recommendedServerDiscovery.discover(
 		servers = servers,
 		minimumScore = minimumScore
 	)
@@ -56,7 +56,7 @@ public class DiscoveryService constructor(
 	public suspend fun getRecommendedServers(
 		input: String,
 		minimumScore: RecommendedServerInfoScore = RecommendedServerInfoScore.BAD,
-	): Flow<RecommendedServerInfo> = getRecommendedServers(
+	): Collection<RecommendedServerInfo> = getRecommendedServers(
 		servers = getAddressCandidates(input),
 		minimumScore = minimumScore
 	)
