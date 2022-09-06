@@ -50,9 +50,17 @@ class DiscoveryServiceTests : FunSpec({
 		instance.getAddressCandidates("[0:0:0:0:0:0:0:1]:8096") shouldContain "http://[0:0:0:0:0:0:0:1]:8096"
 	}
 
-	test("getAddressCandidates fails on bad input") {
+	test("getAddressCandidates returns empty on bad input") {
 		val instance = getInstance()
 
+		// Invalid host
 		instance.getAddressCandidates("::").shouldBeEmpty()
+
+		// Empty input
+		instance.getAddressCandidates("").shouldBeEmpty()
+
+		// Port out of range
+		instance.getAddressCandidates("localhost:65536").shouldBeEmpty()
+		instance.getAddressCandidates("localhost:999999").shouldBeEmpty()
 	}
 })
