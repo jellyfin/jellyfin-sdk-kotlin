@@ -59,11 +59,11 @@ export default defineConfig({
 				text: 'Migrations',
 				items: [
 					{
-						text: 'Migrate to 1.1',
+						text: 'Migrate to v1.1',
 						link: '/migration/v1.1',
 					},
 					{
-						text: 'Migrate to 1.2',
+						text: 'Migrate to v1.2',
 						link: '/migration/v1.2',
 					},
 				]

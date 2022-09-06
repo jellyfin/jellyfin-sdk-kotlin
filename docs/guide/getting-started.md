@@ -10,7 +10,7 @@ platform.
 
 ![Latest version on Maven Central](https://img.shields.io/maven-central/v/org.jellyfin.sdk/jellyfin-core.svg)
 
-**Gradle with Kotlin DSL**
+### Gradle with Kotlin DSL
 
 ```kotlin
 implementation("org.jellyfin.sdk:jellyfin-core:$sdkVersion")
@@ -22,6 +22,7 @@ implementation("org.jellyfin.sdk:jellyfin-core:$sdkVersion")
   ```groovy
   implementation "org.jellyfin.sdk:jellyfin-core:$sdkVersion"
    ```
+
 </details>
 
 <details>
@@ -34,6 +35,7 @@ implementation("org.jellyfin.sdk:jellyfin-core:$sdkVersion")
       <version>$sdkVersion</version>
   </dependency>
    ```
+
 </details>
 
 <details>
@@ -56,6 +58,7 @@ An example using Gradle with Kotlin DSL that only allows the `master-SNAPSHOT` v
       }
   }
    ```
+
 </details>
 
 ## Usage
@@ -156,11 +159,14 @@ val recommended = jellyfin.discovery.getRecommendedServers(candidates, Recommend
 
 ### Official Jellyfin clients
 
-- [Jellyfin for Android](https://github.com/jellyfin/jellyfin-android) is the official Android client for phones and tablets.
-- [Jellyfin for Android TV](https://github.com/jellyfin/jellyfin-androidtv) is the official Android TV client for Android TV, Nvidia Shield, Amazon Fire TV and Google TV.
+- [Jellyfin for Android](https://github.com/jellyfin/jellyfin-android) is the official Android client for phones and
+  tablets.
+- [Jellyfin for Android TV](https://github.com/jellyfin/jellyfin-androidtv) is the official Android TV client for
+  Android TV, Nvidia Shield, Amazon Fire TV and Google TV.
 
 ### Third party clients
 
-- [Findroid](https://github.com/jarnedemeulemeester/findroid) provides a native user interface to browse and play movies and series.
+- [Findroid](https://github.com/jarnedemeulemeester/findroid) provides a native user interface to browse and play movies
+  and series.
 
 _Want to add your project? We'd love to know about it, open an issue or create pull request!_

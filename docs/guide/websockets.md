@@ -94,7 +94,7 @@ instance.addSyncPlayCommandsListener(
 }
 ```
 
-# Advanced listeners
+## Advanced listeners
 
 All previously mentioned functions to add listeners use the `addListenerDefinition` function under the hood. This
 function is not recommended being used directly. Use the other functions instead. The function receives a listener
