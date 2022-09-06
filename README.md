@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD033 no-inline-html -->
 <h1 align="center">Jellyfin Kotlin SDK</h1>
 <h3 align="center">Part of the <a href="https://jellyfin.org/">Jellyfin Project</a></h3>
 
