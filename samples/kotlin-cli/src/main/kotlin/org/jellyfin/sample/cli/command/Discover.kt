@@ -36,23 +36,23 @@ class Discover(
 		val candidates = jellyfin.discovery.getAddressCandidates(address)
 		println("Found ${candidates.size} candidates")
 
-		jellyfin.discovery.getRecommendedServers(candidates).collect {
+		val servers = jellyfin.discovery.getRecommendedServers(candidates)
+		for (server in servers) {
 			buildString {
-				append(it.address)
+				append(server.address)
 				append(": ")
-				append(it.score.toString())
+				append(server.score.toString())
 				append(" (")
-				append("replied in ${it.responseTime}ms")
+				append("replied in ${server.responseTime}ms")
 				append(", ")
-				if (it.systemInfo.isFailure) append("system information not found")
+				if (server.systemInfo.isFailure) append("system information not found")
 				else append("system information found")
 				append(")")
-				it.issues.forEach {
+				server.issues.forEach {
 					appendLine()
 					append("\t")
 					append(it)
 				}
-
 			}.let(::println)
 		}
 	}

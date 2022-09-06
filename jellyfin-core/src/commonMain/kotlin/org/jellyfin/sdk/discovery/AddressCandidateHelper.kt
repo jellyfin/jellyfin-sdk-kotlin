@@ -143,7 +143,7 @@ public class AddressCandidateHelper(
 	 * - HTTPS before HTTP
 	 * - Jellyfin ports before protocol default ports
 	 */
-	public fun getCandidates(): List<String> = candidates
+	public fun getCandidates(): Collection<String> = candidates
 		.sortedWith(prioritizeComparator)
 		.map { it.toString() }
 }
