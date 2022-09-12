@@ -9,17 +9,17 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
       - name: Setup problem matcher
         uses: xt0rted/markdownlint-problem-matcher@b643b0751c371f357690337d4549221347c0e1bc # tag=v1.1.0
       - name: Run markdownlint
-        run: npx --package markdownlint-cli markdownlint readme.md docs/**/*.md --ignore node_modules
+        run: npx --package markdownlint-cli markdownlint readme.md 'docs/**/*.md' --ignore node_modules
 
   build-vitepress:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
@@ -42,7 +42,7 @@ jobs:
           path: ./docs/.vitepress/vitepress.zip
 
   build-dokka:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
@@ -66,7 +66,7 @@ jobs:
 
   deploy:
     if: github.event_name != 'pull_request'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     permissions:
       pages: write
       id-token: write
