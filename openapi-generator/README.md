@@ -72,6 +72,10 @@ Hooks are classes that will modify the output of the generator. They should be r
     instance of `CustomDefaultValue` that contains the code builder. The generator will use the
     default value from the JSON schema if all hooks return null.
 
+  - **DescriptionHook**  
+    A hook that allows customization of generated descriptions for operations, parameters, models and
+    properties. The hook returns the new description or null if the description must be removed.
+
 ## Phases
 
 The conversion happens in multiple phases. The phases in order are:

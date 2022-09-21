@@ -17,6 +17,7 @@ import org.jellyfin.openapi.builder.extra.defaultValue
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.constants.Types
+import org.jellyfin.openapi.model.DescriptionType
 import org.jellyfin.openapi.model.JellyFile
 import org.jellyfin.openapi.model.ObjectApiModel
 
@@ -41,7 +42,7 @@ class ObjectModelBuilder(
 					.builder(property.name, property.type)
 					.initializer(property.name)
 					.apply {
-						descriptionBuilder.build(property.description)?.let {
+						descriptionBuilder.build(DescriptionType.MODEL_PROPERTY, property.description)?.let {
 							addKdoc("%L", it)
 						}
 
@@ -76,7 +77,7 @@ class ObjectModelBuilder(
 		return TypeSpec.classBuilder(data.name.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL))
 			.apply {
 				modifiers += KModifier.DATA
-				descriptionBuilder.build(data.description)?.let {
+				descriptionBuilder.build(DescriptionType.MODEL, data.description)?.let {
 					addKdoc("%L", it)
 				}
 				if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_CLASS))

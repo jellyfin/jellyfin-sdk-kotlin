@@ -61,5 +61,5 @@ val mainModule = module {
 	// Utilities
 	single { DeprecatedAnnotationSpecBuilder() }
 	single { TypeSerializerBuilder() }
-	single { DescriptionBuilder() }
+	single { DescriptionBuilder(getAll()) }
 }

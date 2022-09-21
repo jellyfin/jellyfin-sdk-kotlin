@@ -10,12 +10,13 @@ import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
+import org.jellyfin.openapi.model.DescriptionType
 import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
 import org.jellyfin.openapi.model.DefaultValue
 
 class OperationParameterModelBuilder(
-	descriptionBuilder: DescriptionBuilder,
+	private val descriptionBuilder: DescriptionBuilder,
 	deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder,
 ) : OperationBuilder(descriptionBuilder, deprecatedAnnotationSpecBuilder) {
 	private fun FunSpec.Builder.addOperationCall(
@@ -44,7 +45,9 @@ class OperationParameterModelBuilder(
 		val parameters = data.pathParameters + data.queryParameters
 
 		ParameterSpec.builder(Strings.MODEL_REQUEST_PARAMETER_NAME, requestParameterType).apply {
-			addKdoc("%L", Strings.MODEL_REQUEST_PARAMETER_DESCRIPTION)
+			descriptionBuilder.build(DescriptionType.OPERATION_PARAMETER, Strings.MODEL_REQUEST_PARAMETER_DESCRIPTION)?.let {
+				addKdoc("%L", it)
+			}
 
 			// Add default value is all parameters have a default
 			if (parameters.all { it.containsDefault() }) defaultValue(

@@ -6,6 +6,7 @@ import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.constants.Types
+import org.jellyfin.openapi.model.DescriptionType
 import org.jellyfin.openapi.model.ApiServiceOperation
 
 class OperationUrlBuilder(
@@ -16,7 +17,7 @@ class OperationUrlBuilder(
 		buildFunctionName(data.name)
 	).apply {
 		// Add description
-		descriptionBuilder.build(data.description)?.let {
+		descriptionBuilder.build(DescriptionType.OPERATION, data.description)?.let {
 			addKdoc("%L", it)
 		}
 
@@ -37,7 +38,9 @@ class OperationUrlBuilder(
 
 		ParameterSpec.builder("includeCredentials", Types.BOOLEAN).apply {
 			defaultValue("%L", data.requireAuthentication)
-			addKdoc("%L", Strings.INCLUDE_CREDENTIALS_DESCRIPTION)
+			descriptionBuilder.build(DescriptionType.OPERATION_PARAMETER, Strings.INCLUDE_CREDENTIALS_DESCRIPTION)?.let {
+				addKdoc("%L", it)
+			}
 		}.build().let(::addParameter)
 
 		// Create parameter maps
