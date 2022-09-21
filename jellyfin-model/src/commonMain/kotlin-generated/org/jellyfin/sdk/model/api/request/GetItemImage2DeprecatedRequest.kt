@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets the item's image.
+ * The item's image.
  */
 @Serializable
 public data class GetItemImage2DeprecatedRequest(

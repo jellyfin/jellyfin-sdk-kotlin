@@ -32,7 +32,7 @@ import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets items based on a query.
+ * Items based on a query.
  */
 @Serializable
 public data class GetItemsRequest(

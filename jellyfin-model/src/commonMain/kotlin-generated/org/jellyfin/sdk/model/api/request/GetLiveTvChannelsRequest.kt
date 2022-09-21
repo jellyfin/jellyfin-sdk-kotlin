@@ -22,7 +22,7 @@ import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets available live tv channels.
+ * Available live tv channels.
  */
 @Serializable
 public data class GetLiveTvChannelsRequest(

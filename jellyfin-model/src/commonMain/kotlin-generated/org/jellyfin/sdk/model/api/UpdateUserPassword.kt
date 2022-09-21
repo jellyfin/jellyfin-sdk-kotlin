@@ -16,22 +16,22 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class UpdateUserPassword(
 	/**
-	 * Gets or sets the current sha1-hashed password.
+	 * The current sha1-hashed password.
 	 */
 	@SerialName("CurrentPassword")
 	public val currentPassword: String? = null,
 	/**
-	 * Gets or sets the current plain text password.
+	 * The current plain text password.
 	 */
 	@SerialName("CurrentPw")
 	public val currentPw: String? = null,
 	/**
-	 * Gets or sets the new plain text password.
+	 * The new plain text password.
 	 */
 	@SerialName("NewPw")
 	public val newPw: String? = null,
 	/**
-	 * Gets or sets a value indicating whether to reset the password.
+	 * A value indicating whether to reset the password.
 	 */
 	@SerialName("ResetPassword")
 	public val resetPassword: Boolean,

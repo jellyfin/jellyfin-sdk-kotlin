@@ -18,70 +18,69 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class NetworkConfiguration(
 	/**
-	 * Gets or sets a value indicating whether the server should force connections over HTTPS.
+	 * A value indicating whether the server should force connections over HTTPS.
 	 */
 	@SerialName("RequireHttps")
 	public val requireHttps: Boolean,
 	/**
-	 * Gets or sets the filesystem path of an X.509 certificate to use for SSL.
+	 * The filesystem path of an X.509 certificate to use for SSL.
 	 */
 	@SerialName("CertificatePath")
 	public val certificatePath: String,
 	/**
-	 * Gets or sets the password required to access the X.509 certificate data in the file specified by
+	 * The password required to access the X.509 certificate data in the file specified by
 	 * Jellyfin.Networking.Configuration.NetworkConfiguration.CertificatePath.
 	 */
 	@SerialName("CertificatePassword")
 	public val certificatePassword: String,
 	/**
-	 * Gets or sets a value used to specify the URL prefix that your Jellyfin instance can be accessed
-	 * at.
+	 * A value used to specify the URL prefix that your Jellyfin instance can be accessed at.
 	 */
 	@SerialName("BaseUrl")
 	public val baseUrl: String,
 	/**
-	 * Gets or sets the public HTTPS port.
+	 * The public HTTPS port.
 	 */
 	@SerialName("PublicHttpsPort")
 	public val publicHttpsPort: Int,
 	/**
-	 * Gets or sets the HTTP server port number.
+	 * The HTTP server port number.
 	 */
 	@SerialName("HttpServerPortNumber")
 	public val httpServerPortNumber: Int,
 	/**
-	 * Gets or sets the HTTPS server port number.
+	 * The HTTPS server port number.
 	 */
 	@SerialName("HttpsPortNumber")
 	public val httpsPortNumber: Int,
 	/**
-	 * Gets or sets a value indicating whether to use HTTPS.
+	 * A value indicating whether to use HTTPS.
 	 */
 	@SerialName("EnableHttps")
 	public val enableHttps: Boolean,
 	/**
-	 * Gets or sets the public mapped port.
+	 * The public mapped port.
 	 */
 	@SerialName("PublicPort")
 	public val publicPort: Int,
 	/**
-	 * Gets or sets a value indicating whether the http port should be mapped as part of UPnP automatic
-	 * port forwarding.
+	 * A value indicating whether the http port should be mapped as part of UPnP automatic port
+	 * forwarding.
 	 */
 	@SerialName("UPnPCreateHttpPortMap")
 	public val uPnPCreateHttpPortMap: Boolean,
 	/**
-	 * Gets or sets the UDPPortRange.
+	 * The UDPPortRange.
 	 */
 	@SerialName("UDPPortRange")
 	public val udpPortRange: String,
 	/**
-	 * Gets or sets a value indicating whether gets or sets IPV6 capability.
+	 * A value indicating whether gets or sets IPV6 capability.
 	 */
 	@SerialName("EnableIPV6")
 	public val enableIpv6: Boolean,
 	/**
-	 * Gets or sets a value indicating whether gets or sets IPV4 capability.
+	 * A value indicating whether gets or sets IPV4 capability.
 	 */
 	@SerialName("EnableIPV4")
 	public val enableIpv4: Boolean,
@@ -101,35 +100,35 @@ public data class NetworkConfiguration(
 	@SerialName("SSDPTracingFilter")
 	public val ssdpTracingFilter: String,
 	/**
-	 * Gets or sets the number of times SSDP UDP messages are sent.
+	 * The number of times SSDP UDP messages are sent.
 	 */
 	@SerialName("UDPSendCount")
 	public val udpSendCount: Int,
 	/**
-	 * Gets or sets the delay between each groups of SSDP messages (in ms).
+	 * The delay between each groups of SSDP messages (in ms).
 	 */
 	@SerialName("UDPSendDelay")
 	public val udpSendDelay: Int,
 	/**
-	 * Gets or sets a value indicating whether address names that match
+	 * A value indicating whether address names that match
 	 * Jellyfin.Networking.Configuration.NetworkConfiguration.VirtualInterfaceNames should be Ignore for
 	 * the purposes of binding.
 	 */
 	@SerialName("IgnoreVirtualInterfaces")
 	public val ignoreVirtualInterfaces: Boolean,
 	/**
-	 * Gets or sets a value indicating the interfaces that should be ignored. The list can be comma
-	 * separated. `P:Jellyfin.Networking.Configuration.NetworkConfiguration.IgnoreVirtualInterfaces`.
+	 * A value indicating the interfaces that should be ignored. The list can be comma separated.
+	 * `P:Jellyfin.Networking.Configuration.NetworkConfiguration.IgnoreVirtualInterfaces`.
 	 */
 	@SerialName("VirtualInterfaceNames")
 	public val virtualInterfaceNames: String,
 	/**
-	 * Gets or sets the time (in seconds) between the pings of SSDP gateway monitor.
+	 * The time (in seconds) between the pings of SSDP gateway monitor.
 	 */
 	@SerialName("GatewayMonitorPeriod")
 	public val gatewayMonitorPeriod: Int,
 	/**
-	 * Gets a value indicating whether multi-socket binding is available.
+	 * A value indicating whether multi-socket binding is available.
 	 */
 	@SerialName("EnableMultiSocketBinding")
 	public val enableMultiSocketBinding: Boolean,
@@ -141,7 +140,7 @@ public data class NetworkConfiguration(
 	@SerialName("TrustAllIP6Interfaces")
 	public val trustAllIp6Interfaces: Boolean,
 	/**
-	 * Gets or sets the ports that HDHomerun uses.
+	 * The ports that HDHomerun uses.
 	 */
 	@SerialName("HDHomerunPortRange")
 	public val hdHomerunPortRange: String,
@@ -152,57 +151,55 @@ public data class NetworkConfiguration(
 	@SerialName("PublishedServerUriBySubnet")
 	public val publishedServerUriBySubnet: List<String>,
 	/**
-	 * Gets or sets a value indicating whether Autodiscovery tracing is enabled.
+	 * A value indicating whether Autodiscovery tracing is enabled.
 	 */
 	@SerialName("AutoDiscoveryTracing")
 	public val autoDiscoveryTracing: Boolean,
 	/**
-	 * Gets or sets a value indicating whether Autodiscovery is enabled.
+	 * A value indicating whether Autodiscovery is enabled.
 	 */
 	@SerialName("AutoDiscovery")
 	public val autoDiscovery: Boolean,
 	/**
-	 * Gets or sets the filter for remote IP connectivity. Used in conjuntion with
+	 * The filter for remote IP connectivity. Used in conjuntion with
 	 * `P:Jellyfin.Networking.Configuration.NetworkConfiguration.IsRemoteIPFilterBlacklist`.
 	 */
 	@SerialName("RemoteIPFilter")
 	public val remoteIpFilter: List<String>,
 	/**
-	 * Gets or sets a value indicating whether
+	 * A value indicating whether
 	 * `P:Jellyfin.Networking.Configuration.NetworkConfiguration.RemoteIPFilter` contains a blacklist or a
 	 * whitelist. Default is a whitelist.
 	 */
 	@SerialName("IsRemoteIPFilterBlacklist")
 	public val isRemoteIpFilterBlacklist: Boolean,
 	/**
-	 * Gets or sets a value indicating whether to enable automatic port forwarding.
+	 * A value indicating whether to enable automatic port forwarding.
 	 */
 	@SerialName("EnableUPnP")
 	public val enableUPnP: Boolean,
 	/**
-	 * Gets or sets a value indicating whether access outside of the LAN is permitted.
+	 * A value indicating whether access outside of the LAN is permitted.
 	 */
 	@SerialName("EnableRemoteAccess")
 	public val enableRemoteAccess: Boolean,
 	/**
-	 * Gets or sets the subnets that are deemed to make up the LAN.
+	 * The subnets that are deemed to make up the LAN.
 	 */
 	@SerialName("LocalNetworkSubnets")
 	public val localNetworkSubnets: List<String>,
 	/**
-	 * Gets or sets the interface addresses which Jellyfin will bind to. If empty, all interfaces will
-	 * be used.
+	 * The interface addresses which Jellyfin will bind to. If empty, all interfaces will be used.
 	 */
 	@SerialName("LocalNetworkAddresses")
 	public val localNetworkAddresses: List<String>,
 	/**
-	 * Gets or sets the known proxies. If the proxy is a network, it's added to the KnownNetworks.
+	 * The known proxies. If the proxy is a network, it's added to the KnownNetworks.
 	 */
 	@SerialName("KnownProxies")
 	public val knownProxies: List<String>,
 	/**
-	 * Gets or sets a value indicating whether the published server uri is based on information in HTTP
-	 * requests.
+	 * A value indicating whether the published server uri is based on information in HTTP requests.
 	 */
 	@SerialName("EnablePublishedServerUriByRequest")
 	public val enablePublishedServerUriByRequest: Boolean,

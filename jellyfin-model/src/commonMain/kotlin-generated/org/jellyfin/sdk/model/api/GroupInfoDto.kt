@@ -26,27 +26,27 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class GroupInfoDto(
 	/**
-	 * Gets the group identifier.
+	 * The group identifier.
 	 */
 	@SerialName("GroupId")
 	public val groupId: UUID,
 	/**
-	 * Gets the group name.
+	 * The group name.
 	 */
 	@SerialName("GroupName")
 	public val groupName: String,
 	/**
-	 * Gets the group state.
+	 * The group state.
 	 */
 	@SerialName("State")
 	public val state: GroupStateType,
 	/**
-	 * Gets the participants.
+	 * The participants.
 	 */
 	@SerialName("Participants")
 	public val participants: List<String>,
 	/**
-	 * Gets the date when this DTO has been created.
+	 * The date when this DTO has been created.
 	 */
 	@SerialName("LastUpdatedAt")
 	public val lastUpdatedAt: DateTime,

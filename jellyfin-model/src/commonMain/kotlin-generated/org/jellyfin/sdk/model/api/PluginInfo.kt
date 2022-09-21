@@ -22,42 +22,42 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class PluginInfo(
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String,
 	/**
-	 * Gets or sets the version.
+	 * The version.
 	 */
 	@SerialName("Version")
 	public val version: String,
 	/**
-	 * Gets or sets the name of the configuration file.
+	 * The name of the configuration file.
 	 */
 	@SerialName("ConfigurationFileName")
 	public val configurationFileName: String? = null,
 	/**
-	 * Gets or sets the description.
+	 * The description.
 	 */
 	@SerialName("Description")
 	public val description: String,
 	/**
-	 * Gets or sets the unique id.
+	 * The unique id.
 	 */
 	@SerialName("Id")
 	public val id: UUID,
 	/**
-	 * Gets or sets a value indicating whether the plugin can be uninstalled.
+	 * A value indicating whether the plugin can be uninstalled.
 	 */
 	@SerialName("CanUninstall")
 	public val canUninstall: Boolean,
 	/**
-	 * Gets or sets a value indicating whether this plugin has a valid image.
+	 * A value indicating whether this plugin has a valid image.
 	 */
 	@SerialName("HasImage")
 	public val hasImage: Boolean,
 	/**
-	 * Gets or sets a value indicating the status of the plugin.
+	 * A value indicating the status of the plugin.
 	 */
 	@SerialName("Status")
 	public val status: PluginStatus,

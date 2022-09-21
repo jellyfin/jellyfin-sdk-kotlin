@@ -15,12 +15,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class XmlAttribute(
 	/**
-	 * Gets or sets the name of the attribute.
+	 * The name of the attribute.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the value of the attribute.
+	 * The value of the attribute.
 	 */
 	@SerialName("Value")
 	public val `value`: String? = null,

@@ -19,12 +19,12 @@ import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 @Serializable
 public data class UtcTimeResponse(
 	/**
-	 * Gets the UTC time when request has been received.
+	 * The UTC time when request has been received.
 	 */
 	@SerialName("RequestReceptionTime")
 	public val requestReceptionTime: DateTime,
 	/**
-	 * Gets the UTC time when response has been sent.
+	 * The UTC time when response has been sent.
 	 */
 	@SerialName("ResponseTransmissionTime")
 	public val responseTransmissionTime: DateTime,

@@ -26,133 +26,133 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class TimerInfoDto(
 	/**
-	 * Gets or sets the Id of the recording.
+	 * The Id of the recording.
 	 */
 	@SerialName("Id")
 	public val id: String? = null,
 	@SerialName("Type")
 	public val type: String? = null,
 	/**
-	 * Gets or sets the server identifier.
+	 * The server identifier.
 	 */
 	@SerialName("ServerId")
 	public val serverId: String? = null,
 	/**
-	 * Gets or sets the external identifier.
+	 * The external identifier.
 	 */
 	@SerialName("ExternalId")
 	public val externalId: String? = null,
 	/**
-	 * Gets or sets the channel id of the recording.
+	 * The channel id of the recording.
 	 */
 	@SerialName("ChannelId")
 	public val channelId: UUID,
 	/**
-	 * Gets or sets the external channel identifier.
+	 * The external channel identifier.
 	 */
 	@SerialName("ExternalChannelId")
 	public val externalChannelId: String? = null,
 	/**
-	 * Gets or sets the channel name of the recording.
+	 * The channel name of the recording.
 	 */
 	@SerialName("ChannelName")
 	public val channelName: String? = null,
 	@SerialName("ChannelPrimaryImageTag")
 	public val channelPrimaryImageTag: String? = null,
 	/**
-	 * Gets or sets the program identifier.
+	 * The program identifier.
 	 */
 	@SerialName("ProgramId")
 	public val programId: String? = null,
 	/**
-	 * Gets or sets the external program identifier.
+	 * The external program identifier.
 	 */
 	@SerialName("ExternalProgramId")
 	public val externalProgramId: String? = null,
 	/**
-	 * Gets or sets the name of the recording.
+	 * The name of the recording.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the description of the recording.
+	 * The description of the recording.
 	 */
 	@SerialName("Overview")
 	public val overview: String? = null,
 	/**
-	 * Gets or sets the start date of the recording, in UTC.
+	 * The start date of the recording, in UTC.
 	 */
 	@SerialName("StartDate")
 	public val startDate: DateTime,
 	/**
-	 * Gets or sets the end date of the recording, in UTC.
+	 * The end date of the recording, in UTC.
 	 */
 	@SerialName("EndDate")
 	public val endDate: DateTime,
 	/**
-	 * Gets or sets the name of the service.
+	 * The name of the service.
 	 */
 	@SerialName("ServiceName")
 	public val serviceName: String? = null,
 	/**
-	 * Gets or sets the priority.
+	 * The priority.
 	 */
 	@SerialName("Priority")
 	public val priority: Int,
 	/**
-	 * Gets or sets the pre padding seconds.
+	 * The pre padding seconds.
 	 */
 	@SerialName("PrePaddingSeconds")
 	public val prePaddingSeconds: Int,
 	/**
-	 * Gets or sets the post padding seconds.
+	 * The post padding seconds.
 	 */
 	@SerialName("PostPaddingSeconds")
 	public val postPaddingSeconds: Int,
 	/**
-	 * Gets or sets a value indicating whether this instance is pre padding required.
+	 * A value indicating whether this instance is pre padding required.
 	 */
 	@SerialName("IsPrePaddingRequired")
 	public val isPrePaddingRequired: Boolean,
 	/**
-	 * Gets or sets the Id of the Parent that has a backdrop if the item does not have one.
+	 * The Id of the Parent that has a backdrop if the item does not have one.
 	 */
 	@SerialName("ParentBackdropItemId")
 	public val parentBackdropItemId: String? = null,
 	/**
-	 * Gets or sets the parent backdrop image tags.
+	 * The parent backdrop image tags.
 	 */
 	@SerialName("ParentBackdropImageTags")
 	public val parentBackdropImageTags: List<String>? = null,
 	/**
-	 * Gets or sets a value indicating whether this instance is post padding required.
+	 * A value indicating whether this instance is post padding required.
 	 */
 	@SerialName("IsPostPaddingRequired")
 	public val isPostPaddingRequired: Boolean,
 	@SerialName("KeepUntil")
 	public val keepUntil: KeepUntil,
 	/**
-	 * Gets or sets the status.
+	 * The status.
 	 */
 	@SerialName("Status")
 	public val status: RecordingStatus,
 	/**
-	 * Gets or sets the series timer identifier.
+	 * The series timer identifier.
 	 */
 	@SerialName("SeriesTimerId")
 	public val seriesTimerId: String? = null,
 	/**
-	 * Gets or sets the external series timer identifier.
+	 * The external series timer identifier.
 	 */
 	@SerialName("ExternalSeriesTimerId")
 	public val externalSeriesTimerId: String? = null,
 	/**
-	 * Gets or sets the run time ticks.
+	 * The run time ticks.
 	 */
 	@SerialName("RunTimeTicks")
 	public val runTimeTicks: Long? = null,
 	/**
-	 * Gets or sets the program information.
+	 * The program information.
 	 */
 	@SerialName("ProgramInfo")
 	public val programInfo: BaseItemDto? = null,

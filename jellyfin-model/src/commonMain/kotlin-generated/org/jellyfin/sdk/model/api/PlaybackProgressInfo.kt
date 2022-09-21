@@ -24,59 +24,59 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class PlaybackProgressInfo(
 	/**
-	 * Gets or sets a value indicating whether this instance can seek.
+	 * A value indicating whether this instance can seek.
 	 */
 	@SerialName("CanSeek")
 	public val canSeek: Boolean,
 	/**
-	 * Gets or sets the item.
+	 * The item.
 	 */
 	@SerialName("Item")
 	public val item: BaseItemDto? = null,
 	/**
-	 * Gets or sets the item identifier.
+	 * The item identifier.
 	 */
 	@SerialName("ItemId")
 	public val itemId: UUID,
 	/**
-	 * Gets or sets the session id.
+	 * The session id.
 	 */
 	@SerialName("SessionId")
 	public val sessionId: String? = null,
 	/**
-	 * Gets or sets the media version identifier.
+	 * The media version identifier.
 	 */
 	@SerialName("MediaSourceId")
 	public val mediaSourceId: String? = null,
 	/**
-	 * Gets or sets the index of the audio stream.
+	 * The index of the audio stream.
 	 */
 	@SerialName("AudioStreamIndex")
 	public val audioStreamIndex: Int? = null,
 	/**
-	 * Gets or sets the index of the subtitle stream.
+	 * The index of the subtitle stream.
 	 */
 	@SerialName("SubtitleStreamIndex")
 	public val subtitleStreamIndex: Int? = null,
 	/**
-	 * Gets or sets a value indicating whether this instance is paused.
+	 * A value indicating whether this instance is paused.
 	 */
 	@SerialName("IsPaused")
 	public val isPaused: Boolean,
 	/**
-	 * Gets or sets a value indicating whether this instance is muted.
+	 * A value indicating whether this instance is muted.
 	 */
 	@SerialName("IsMuted")
 	public val isMuted: Boolean,
 	/**
-	 * Gets or sets the position ticks.
+	 * The position ticks.
 	 */
 	@SerialName("PositionTicks")
 	public val positionTicks: Long? = null,
 	@SerialName("PlaybackStartTimeTicks")
 	public val playbackStartTimeTicks: Long? = null,
 	/**
-	 * Gets or sets the volume level.
+	 * The volume level.
 	 */
 	@SerialName("VolumeLevel")
 	public val volumeLevel: Int? = null,
@@ -85,22 +85,22 @@ public data class PlaybackProgressInfo(
 	@SerialName("AspectRatio")
 	public val aspectRatio: String? = null,
 	/**
-	 * Gets or sets the play method.
+	 * The play method.
 	 */
 	@SerialName("PlayMethod")
 	public val playMethod: PlayMethod,
 	/**
-	 * Gets or sets the live stream identifier.
+	 * The live stream identifier.
 	 */
 	@SerialName("LiveStreamId")
 	public val liveStreamId: String? = null,
 	/**
-	 * Gets or sets the play session identifier.
+	 * The play session identifier.
 	 */
 	@SerialName("PlaySessionId")
 	public val playSessionId: String? = null,
 	/**
-	 * Gets or sets the repeat mode.
+	 * The repeat mode.
 	 */
 	@SerialName("RepeatMode")
 	public val repeatMode: RepeatMode,

@@ -17,7 +17,7 @@ import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets query filters.
+ * Query filters.
  */
 @Serializable
 public data class GetQueryFiltersRequest(

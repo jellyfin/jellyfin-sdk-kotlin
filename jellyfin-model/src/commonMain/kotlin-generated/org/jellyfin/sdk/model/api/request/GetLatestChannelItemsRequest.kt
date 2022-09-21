@@ -18,7 +18,7 @@ import org.jellyfin.sdk.model.api.ItemFilter
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets latest channel items.
+ * Latest channel items.
  */
 @Serializable
 public data class GetLatestChannelItemsRequest(

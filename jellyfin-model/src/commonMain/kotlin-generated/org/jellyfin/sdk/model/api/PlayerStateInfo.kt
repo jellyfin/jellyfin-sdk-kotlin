@@ -15,57 +15,57 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class PlayerStateInfo(
 	/**
-	 * Gets or sets the now playing position ticks.
+	 * The now playing position ticks.
 	 */
 	@SerialName("PositionTicks")
 	public val positionTicks: Long? = null,
 	/**
-	 * Gets or sets a value indicating whether this instance can seek.
+	 * A value indicating whether this instance can seek.
 	 */
 	@SerialName("CanSeek")
 	public val canSeek: Boolean,
 	/**
-	 * Gets or sets a value indicating whether this instance is paused.
+	 * A value indicating whether this instance is paused.
 	 */
 	@SerialName("IsPaused")
 	public val isPaused: Boolean,
 	/**
-	 * Gets or sets a value indicating whether this instance is muted.
+	 * A value indicating whether this instance is muted.
 	 */
 	@SerialName("IsMuted")
 	public val isMuted: Boolean,
 	/**
-	 * Gets or sets the volume level.
+	 * The volume level.
 	 */
 	@SerialName("VolumeLevel")
 	public val volumeLevel: Int? = null,
 	/**
-	 * Gets or sets the index of the now playing audio stream.
+	 * The index of the now playing audio stream.
 	 */
 	@SerialName("AudioStreamIndex")
 	public val audioStreamIndex: Int? = null,
 	/**
-	 * Gets or sets the index of the now playing subtitle stream.
+	 * The index of the now playing subtitle stream.
 	 */
 	@SerialName("SubtitleStreamIndex")
 	public val subtitleStreamIndex: Int? = null,
 	/**
-	 * Gets or sets the now playing media version identifier.
+	 * The now playing media version identifier.
 	 */
 	@SerialName("MediaSourceId")
 	public val mediaSourceId: String? = null,
 	/**
-	 * Gets or sets the play method.
+	 * The play method.
 	 */
 	@SerialName("PlayMethod")
 	public val playMethod: PlayMethod? = null,
 	/**
-	 * Gets or sets the repeat mode.
+	 * The repeat mode.
 	 */
 	@SerialName("RepeatMode")
 	public val repeatMode: RepeatMode,
 	/**
-	 * Gets or sets the now playing live stream identifier.
+	 * The now playing live stream identifier.
 	 */
 	@SerialName("LiveStreamId")
 	public val liveStreamId: String? = null,

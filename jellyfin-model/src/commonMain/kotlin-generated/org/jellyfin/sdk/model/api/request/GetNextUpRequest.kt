@@ -25,7 +25,7 @@ import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets a list of next up episodes.
+ * A list of next up episodes.
  */
 @Serializable
 public data class GetNextUpRequest(

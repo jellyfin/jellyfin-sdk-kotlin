@@ -13,47 +13,47 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class DeviceIdentification(
 	/**
-	 * Gets or sets the name of the friendly.
+	 * The name of the friendly.
 	 */
 	@SerialName("FriendlyName")
 	public val friendlyName: String,
 	/**
-	 * Gets or sets the model number.
+	 * The model number.
 	 */
 	@SerialName("ModelNumber")
 	public val modelNumber: String,
 	/**
-	 * Gets or sets the serial number.
+	 * The serial number.
 	 */
 	@SerialName("SerialNumber")
 	public val serialNumber: String,
 	/**
-	 * Gets or sets the name of the model.
+	 * The name of the model.
 	 */
 	@SerialName("ModelName")
 	public val modelName: String,
 	/**
-	 * Gets or sets the model description.
+	 * The model description.
 	 */
 	@SerialName("ModelDescription")
 	public val modelDescription: String,
 	/**
-	 * Gets or sets the model URL.
+	 * The model URL.
 	 */
 	@SerialName("ModelUrl")
 	public val modelUrl: String,
 	/**
-	 * Gets or sets the manufacturer.
+	 * The manufacturer.
 	 */
 	@SerialName("Manufacturer")
 	public val manufacturer: String,
 	/**
-	 * Gets or sets the manufacturer URL.
+	 * The manufacturer URL.
 	 */
 	@SerialName("ManufacturerUrl")
 	public val manufacturerUrl: String,
 	/**
-	 * Gets or sets the headers.
+	 * The headers.
 	 */
 	@SerialName("Headers")
 	public val headers: List<HttpHeaderInfo>,

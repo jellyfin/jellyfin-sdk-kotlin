@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.api.ItemFilter
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets all persons.
+ * All persons.
  */
 @Serializable
 public data class GetPersonsRequest(

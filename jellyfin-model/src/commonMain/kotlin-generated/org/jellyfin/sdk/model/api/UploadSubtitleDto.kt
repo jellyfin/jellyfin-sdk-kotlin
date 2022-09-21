@@ -16,22 +16,22 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class UploadSubtitleDto(
 	/**
-	 * Gets or sets the subtitle language.
+	 * The subtitle language.
 	 */
 	@SerialName("Language")
 	public val language: String,
 	/**
-	 * Gets or sets the subtitle format.
+	 * The subtitle format.
 	 */
 	@SerialName("Format")
 	public val format: String,
 	/**
-	 * Gets or sets a value indicating whether the subtitle is forced.
+	 * A value indicating whether the subtitle is forced.
 	 */
 	@SerialName("IsForced")
 	public val isForced: Boolean,
 	/**
-	 * Gets or sets the subtitle data.
+	 * The subtitle data.
 	 */
 	@SerialName("Data")
 	public val `data`: String,

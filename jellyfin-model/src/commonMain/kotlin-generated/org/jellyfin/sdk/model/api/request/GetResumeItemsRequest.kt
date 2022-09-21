@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets items based on a query.
+ * Items based on a query.
  */
 @Serializable
 public data class GetResumeItemsRequest(

@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ForgotPasswordDto(
 	/**
-	 * Gets or sets the entered username to have its password reset.
+	 * The entered username to have its password reset.
 	 */
 	@SerialName("EnteredUsername")
 	public val enteredUsername: String,

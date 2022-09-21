@@ -16,17 +16,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class RepositoryInfo(
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the URL.
+	 * The URL.
 	 */
 	@SerialName("Url")
 	public val url: String? = null,
 	/**
-	 * Gets or sets a value indicating whether the repository is enabled.
+	 * A value indicating whether the repository is enabled.
 	 */
 	@SerialName("Enabled")
 	public val enabled: Boolean,

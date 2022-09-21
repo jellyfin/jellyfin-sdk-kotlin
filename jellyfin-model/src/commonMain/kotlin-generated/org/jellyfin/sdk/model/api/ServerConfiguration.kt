@@ -19,22 +19,22 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ServerConfiguration(
 	/**
-	 * Gets or sets the number of days we should retain log files.
+	 * The number of days we should retain log files.
 	 */
 	@SerialName("LogFileRetentionDays")
 	public val logFileRetentionDays: Int,
 	/**
-	 * Gets or sets a value indicating whether this instance is first run.
+	 * A value indicating whether this instance is first run.
 	 */
 	@SerialName("IsStartupWizardCompleted")
 	public val isStartupWizardCompleted: Boolean,
 	/**
-	 * Gets or sets the cache path.
+	 * The cache path.
 	 */
 	@SerialName("CachePath")
 	public val cachePath: String? = null,
 	/**
-	 * Gets or sets the last known version that was ran using the configuration.
+	 * The last known version that was ran using the configuration.
 	 */
 	@SerialName("PreviousVersion")
 	public val previousVersion: String? = null,
@@ -45,90 +45,85 @@ public data class ServerConfiguration(
 	@SerialName("PreviousVersionStr")
 	public val previousVersionStr: String? = null,
 	/**
-	 * Gets or sets a value indicating whether to enable prometheus metrics exporting.
+	 * A value indicating whether to enable prometheus metrics exporting.
 	 */
 	@SerialName("EnableMetrics")
 	public val enableMetrics: Boolean,
 	@SerialName("EnableNormalizedItemByNameIds")
 	public val enableNormalizedItemByNameIds: Boolean,
 	/**
-	 * Gets or sets a value indicating whether this instance is port authorized.
+	 * A value indicating whether this instance is port authorized.
 	 */
 	@SerialName("IsPortAuthorized")
 	public val isPortAuthorized: Boolean,
 	/**
-	 * Gets or sets a value indicating whether quick connect is available for use on this server.
+	 * A value indicating whether quick connect is available for use on this server.
 	 */
 	@SerialName("QuickConnectAvailable")
 	public val quickConnectAvailable: Boolean,
 	/**
-	 * Gets or sets a value indicating whether [enable case sensitive item ids].
+	 * A value indicating whether [enable case sensitive item ids].
 	 */
 	@SerialName("EnableCaseSensitiveItemIds")
 	public val enableCaseSensitiveItemIds: Boolean,
 	@SerialName("DisableLiveTvChannelUserDataName")
 	public val disableLiveTvChannelUserDataName: Boolean,
 	/**
-	 * Gets or sets the metadata path.
+	 * The metadata path.
 	 */
 	@SerialName("MetadataPath")
 	public val metadataPath: String,
 	@SerialName("MetadataNetworkPath")
 	public val metadataNetworkPath: String,
 	/**
-	 * Gets or sets the preferred metadata language.
+	 * The preferred metadata language.
 	 */
 	@SerialName("PreferredMetadataLanguage")
 	public val preferredMetadataLanguage: String,
 	/**
-	 * Gets or sets the metadata country code.
+	 * The metadata country code.
 	 */
 	@SerialName("MetadataCountryCode")
 	public val metadataCountryCode: String,
 	/**
-	 * Gets or sets characters to be replaced with a ' ' in strings to create a sort name.
+	 * Characters to be replaced with a ' ' in strings to create a sort name.
 	 */
 	@SerialName("SortReplaceCharacters")
 	public val sortReplaceCharacters: List<String>,
 	/**
-	 * Gets or sets characters to be removed from strings to create a sort name.
+	 * Characters to be removed from strings to create a sort name.
 	 */
 	@SerialName("SortRemoveCharacters")
 	public val sortRemoveCharacters: List<String>,
 	/**
-	 * Gets or sets words to be removed from strings to create a sort name.
+	 * Words to be removed from strings to create a sort name.
 	 */
 	@SerialName("SortRemoveWords")
 	public val sortRemoveWords: List<String>,
 	/**
-	 * Gets or sets the minimum percentage of an item that must be played in order for playstate to be
-	 * updated.
+	 * The minimum percentage of an item that must be played in order for playstate to be updated.
 	 */
 	@SerialName("MinResumePct")
 	public val minResumePct: Int,
 	/**
-	 * Gets or sets the maximum percentage of an item that can be played while still saving playstate.
-	 * If this percentage is crossed playstate will be reset to the beginning and the item will be marked
-	 * watched.
+	 * The maximum percentage of an item that can be played while still saving playstate. If this
+	 * percentage is crossed playstate will be reset to the beginning and the item will be marked watched.
 	 */
 	@SerialName("MaxResumePct")
 	public val maxResumePct: Int,
 	/**
-	 * Gets or sets the minimum duration that an item must have in order to be eligible for playstate
-	 * updates..
+	 * The minimum duration that an item must have in order to be eligible for playstate updates..
 	 */
 	@SerialName("MinResumeDurationSeconds")
 	public val minResumeDurationSeconds: Int,
 	/**
-	 * Gets or sets the minimum minutes of a book that must be played in order for playstate to be
-	 * updated.
+	 * The minimum minutes of a book that must be played in order for playstate to be updated.
 	 */
 	@SerialName("MinAudiobookResume")
 	public val minAudiobookResume: Int,
 	/**
-	 * Gets or sets the remaining minutes of a book that can be played while still saving playstate. If
-	 * this percentage is crossed playstate will be reset to the beginning and the item will be marked
-	 * watched.
+	 * The remaining minutes of a book that can be played while still saving playstate. If this
+	 * percentage is crossed playstate will be reset to the beginning and the item will be marked watched.
 	 */
 	@SerialName("MaxAudiobookResume")
 	public val maxAudiobookResume: Int,
@@ -142,7 +137,7 @@ public data class ServerConfiguration(
 	@SerialName("LibraryMonitorDelay")
 	public val libraryMonitorDelay: Int,
 	/**
-	 * Gets or sets the image saving convention.
+	 * The image saving convention.
 	 */
 	@SerialName("ImageSavingConvention")
 	public val imageSavingConvention: ImageSavingConvention,
@@ -177,43 +172,42 @@ public data class ServerConfiguration(
 	@SerialName("PathSubstitutions")
 	public val pathSubstitutions: List<PathSubstitution>,
 	/**
-	 * Gets or sets a value indicating whether slow server responses should be logged as a warning.
+	 * A value indicating whether slow server responses should be logged as a warning.
 	 */
 	@SerialName("EnableSlowResponseWarning")
 	public val enableSlowResponseWarning: Boolean,
 	/**
-	 * Gets or sets the threshold for the slow response time warning in ms.
+	 * The threshold for the slow response time warning in ms.
 	 */
 	@SerialName("SlowResponseThresholdMs")
 	public val slowResponseThresholdMs: Long,
 	/**
-	 * Gets or sets the cors hosts.
+	 * The cors hosts.
 	 */
 	@SerialName("CorsHosts")
 	public val corsHosts: List<String>,
 	/**
-	 * Gets or sets the number of days we should retain activity logs.
+	 * The number of days we should retain activity logs.
 	 */
 	@SerialName("ActivityLogRetentionDays")
 	public val activityLogRetentionDays: Int? = null,
 	/**
-	 * Gets or sets the how the library scan fans out.
+	 * The how the library scan fans out.
 	 */
 	@SerialName("LibraryScanFanoutConcurrency")
 	public val libraryScanFanoutConcurrency: Int,
 	/**
-	 * Gets or sets the how many metadata refreshes can run concurrently.
+	 * The how many metadata refreshes can run concurrently.
 	 */
 	@SerialName("LibraryMetadataRefreshConcurrency")
 	public val libraryMetadataRefreshConcurrency: Int,
 	/**
-	 * Gets or sets a value indicating whether older plugins should automatically be deleted from the
-	 * plugin folder.
+	 * A value indicating whether older plugins should automatically be deleted from the plugin folder.
 	 */
 	@SerialName("RemoveOldPlugins")
 	public val removeOldPlugins: Boolean,
 	/**
-	 * Gets or sets a value indicating whether clients should be allowed to upload logs.
+	 * A value indicating whether clients should be allowed to upload logs.
 	 */
 	@SerialName("AllowClientLogUpload")
 	public val allowClientLogUpload: Boolean,

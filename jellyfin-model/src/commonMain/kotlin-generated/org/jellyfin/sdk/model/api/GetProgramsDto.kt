@@ -28,12 +28,12 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class GetProgramsDto(
 	/**
-	 * Gets or sets the channels to return guide information for.
+	 * The channels to return guide information for.
 	 */
 	@SerialName("ChannelIds")
 	public val channelIds: List<UUID>,
 	/**
-	 * Gets or sets optional. Filter by user id.
+	 * Optional. Filter by user id.
 	 */
 	@SerialName("UserId")
 	public val userId: UUID,
@@ -123,17 +123,17 @@ public data class GetProgramsDto(
 	@SerialName("SortBy")
 	public val sortBy: List<String>,
 	/**
-	 * Gets or sets sort Order - Ascending,Descending.
+	 * Sort Order - Ascending,Descending.
 	 */
 	@SerialName("SortOrder")
 	public val sortOrder: List<SortOrder>,
 	/**
-	 * Gets or sets the genres to return guide information for.
+	 * The genres to return guide information for.
 	 */
 	@SerialName("Genres")
 	public val genres: List<String>,
 	/**
-	 * Gets or sets the genre ids to return guide information for.
+	 * The genre ids to return guide information for.
 	 */
 	@SerialName("GenreIds")
 	public val genreIds: List<UUID>,
@@ -144,7 +144,7 @@ public data class GetProgramsDto(
 	@SerialName("EnableImages")
 	public val enableImages: Boolean? = null,
 	/**
-	 * Gets or sets a value indicating whether retrieve total record count.
+	 * A value indicating whether retrieve total record count.
 	 */
 	@SerialName("EnableTotalRecordCount")
 	public val enableTotalRecordCount: Boolean,

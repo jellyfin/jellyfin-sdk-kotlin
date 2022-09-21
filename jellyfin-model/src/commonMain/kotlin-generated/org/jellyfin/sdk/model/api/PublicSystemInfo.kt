@@ -13,37 +13,37 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class PublicSystemInfo(
 	/**
-	 * Gets or sets the local address.
+	 * The local address.
 	 */
 	@SerialName("LocalAddress")
 	public val localAddress: String? = null,
 	/**
-	 * Gets or sets the name of the server.
+	 * The name of the server.
 	 */
 	@SerialName("ServerName")
 	public val serverName: String? = null,
 	/**
-	 * Gets or sets the server version.
+	 * The server version.
 	 */
 	@SerialName("Version")
 	public val version: String? = null,
 	/**
-	 * Gets or sets the product name. This is the AssemblyProduct name.
+	 * The product name. This is the AssemblyProduct name.
 	 */
 	@SerialName("ProductName")
 	public val productName: String? = null,
 	/**
-	 * Gets or sets the operating system.
+	 * The operating system.
 	 */
 	@SerialName("OperatingSystem")
 	public val operatingSystem: String? = null,
 	/**
-	 * Gets or sets the id.
+	 * The id.
 	 */
 	@SerialName("Id")
 	public val id: String? = null,
 	/**
-	 * Gets or sets a value indicating whether the startup wizard is completed.
+	 * A value indicating whether the startup wizard is completed.
 	 */
 	@SerialName("StartupWizardCompleted")
 	public val startupWizardCompleted: Boolean? = null,

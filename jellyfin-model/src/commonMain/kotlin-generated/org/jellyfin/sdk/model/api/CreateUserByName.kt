@@ -15,12 +15,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class CreateUserByName(
 	/**
-	 * Gets or sets the username.
+	 * The username.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the password.
+	 * The password.
 	 */
 	@SerialName("Password")
 	public val password: String? = null,

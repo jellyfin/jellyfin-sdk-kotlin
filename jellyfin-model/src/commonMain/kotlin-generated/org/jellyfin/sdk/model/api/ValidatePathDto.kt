@@ -16,17 +16,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ValidatePathDto(
 	/**
-	 * Gets or sets a value indicating whether validate if path is writable.
+	 * A value indicating whether validate if path is writable.
 	 */
 	@SerialName("ValidateWritable")
 	public val validateWritable: Boolean,
 	/**
-	 * Gets or sets the path.
+	 * The path.
 	 */
 	@SerialName("Path")
 	public val path: String? = null,
 	/**
-	 * Gets or sets is path file.
+	 * Is path file.
 	 */
 	@SerialName("IsFile")
 	public val isFile: Boolean? = null,

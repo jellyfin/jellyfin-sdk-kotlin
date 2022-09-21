@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class MediaUpdateInfoPathDto(
 	/**
-	 * Gets or sets media path.
+	 * Media path.
 	 */
 	@SerialName("Path")
 	public val path: String? = null,

@@ -22,7 +22,7 @@ import org.jellyfin.sdk.model.api.SubtitleDeliveryMethod
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets a video stream.
+ * A video stream.
  */
 @Serializable
 public data class GetVideoStreamRequest(

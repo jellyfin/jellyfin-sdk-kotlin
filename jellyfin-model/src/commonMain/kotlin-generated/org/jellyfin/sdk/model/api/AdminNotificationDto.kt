@@ -15,22 +15,22 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class AdminNotificationDto(
 	/**
-	 * Gets or sets the notification name.
+	 * The notification name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the notification description.
+	 * The notification description.
 	 */
 	@SerialName("Description")
 	public val description: String? = null,
 	/**
-	 * Gets or sets the notification level.
+	 * The notification level.
 	 */
 	@SerialName("NotificationLevel")
 	public val notificationLevel: NotificationLevel? = null,
 	/**
-	 * Gets or sets the notification url.
+	 * The notification url.
 	 */
 	@SerialName("Url")
 	public val url: String? = null,

@@ -19,116 +19,116 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class SystemInfo(
 	/**
-	 * Gets or sets the local address.
+	 * The local address.
 	 */
 	@SerialName("LocalAddress")
 	public val localAddress: String? = null,
 	/**
-	 * Gets or sets the name of the server.
+	 * The name of the server.
 	 */
 	@SerialName("ServerName")
 	public val serverName: String? = null,
 	/**
-	 * Gets or sets the server version.
+	 * The server version.
 	 */
 	@SerialName("Version")
 	public val version: String? = null,
 	/**
-	 * Gets or sets the product name. This is the AssemblyProduct name.
+	 * The product name. This is the AssemblyProduct name.
 	 */
 	@SerialName("ProductName")
 	public val productName: String? = null,
 	/**
-	 * Gets or sets the operating system.
+	 * The operating system.
 	 */
 	@SerialName("OperatingSystem")
 	public val operatingSystem: String? = null,
 	/**
-	 * Gets or sets the id.
+	 * The id.
 	 */
 	@SerialName("Id")
 	public val id: String? = null,
 	/**
-	 * Gets or sets a value indicating whether the startup wizard is completed.
+	 * A value indicating whether the startup wizard is completed.
 	 */
 	@SerialName("StartupWizardCompleted")
 	public val startupWizardCompleted: Boolean? = null,
 	/**
-	 * Gets or sets the display name of the operating system.
+	 * The display name of the operating system.
 	 */
 	@SerialName("OperatingSystemDisplayName")
 	public val operatingSystemDisplayName: String? = null,
 	/**
-	 * Gets or sets the package name.
+	 * The package name.
 	 */
 	@SerialName("PackageName")
 	public val packageName: String? = null,
 	/**
-	 * Gets or sets a value indicating whether this instance has pending restart.
+	 * A value indicating whether this instance has pending restart.
 	 */
 	@SerialName("HasPendingRestart")
 	public val hasPendingRestart: Boolean,
 	@SerialName("IsShuttingDown")
 	public val isShuttingDown: Boolean,
 	/**
-	 * Gets or sets a value indicating whether [supports library monitor].
+	 * A value indicating whether [supports library monitor].
 	 */
 	@SerialName("SupportsLibraryMonitor")
 	public val supportsLibraryMonitor: Boolean,
 	/**
-	 * Gets or sets the web socket port number.
+	 * The web socket port number.
 	 */
 	@SerialName("WebSocketPortNumber")
 	public val webSocketPortNumber: Int,
 	/**
-	 * Gets or sets the completed installations.
+	 * The completed installations.
 	 */
 	@SerialName("CompletedInstallations")
 	public val completedInstallations: List<InstallationInfo>? = null,
 	/**
-	 * Gets or sets a value indicating whether this instance can self restart.
+	 * A value indicating whether this instance can self restart.
 	 */
 	@SerialName("CanSelfRestart")
 	public val canSelfRestart: Boolean,
 	@SerialName("CanLaunchWebBrowser")
 	public val canLaunchWebBrowser: Boolean,
 	/**
-	 * Gets or sets the program data path.
+	 * The program data path.
 	 */
 	@SerialName("ProgramDataPath")
 	public val programDataPath: String? = null,
 	/**
-	 * Gets or sets the web UI resources path.
+	 * The web UI resources path.
 	 */
 	@SerialName("WebPath")
 	public val webPath: String? = null,
 	/**
-	 * Gets or sets the items by name path.
+	 * The items by name path.
 	 */
 	@SerialName("ItemsByNamePath")
 	public val itemsByNamePath: String? = null,
 	/**
-	 * Gets or sets the cache path.
+	 * The cache path.
 	 */
 	@SerialName("CachePath")
 	public val cachePath: String? = null,
 	/**
-	 * Gets or sets the log path.
+	 * The log path.
 	 */
 	@SerialName("LogPath")
 	public val logPath: String? = null,
 	/**
-	 * Gets or sets the internal metadata path.
+	 * The internal metadata path.
 	 */
 	@SerialName("InternalMetadataPath")
 	public val internalMetadataPath: String? = null,
 	/**
-	 * Gets or sets the transcode path.
+	 * The transcode path.
 	 */
 	@SerialName("TranscodingTempPath")
 	public val transcodingTempPath: String? = null,
 	/**
-	 * Gets or sets a value indicating whether this instance has update available.
+	 * A value indicating whether this instance has update available.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("HasUpdateAvailable")

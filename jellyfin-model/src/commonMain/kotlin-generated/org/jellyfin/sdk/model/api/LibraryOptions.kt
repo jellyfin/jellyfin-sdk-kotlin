@@ -39,12 +39,12 @@ public data class LibraryOptions(
 	@SerialName("AutomaticRefreshIntervalDays")
 	public val automaticRefreshIntervalDays: Int,
 	/**
-	 * Gets or sets the preferred metadata language.
+	 * The preferred metadata language.
 	 */
 	@SerialName("PreferredMetadataLanguage")
 	public val preferredMetadataLanguage: String? = null,
 	/**
-	 * Gets or sets the metadata country code.
+	 * The metadata country code.
 	 */
 	@SerialName("MetadataCountryCode")
 	public val metadataCountryCode: String? = null,

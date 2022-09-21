@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets seasons for a tv series.
+ * Seasons for a tv series.
  */
 @Serializable
 public data class GetSeasonsRequest(

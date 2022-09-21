@@ -16,22 +16,22 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class CultureDto(
 	/**
-	 * Gets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String,
 	/**
-	 * Gets the display name.
+	 * The display name.
 	 */
 	@SerialName("DisplayName")
 	public val displayName: String,
 	/**
-	 * Gets the name of the two letter ISO language.
+	 * The name of the two letter ISO language.
 	 */
 	@SerialName("TwoLetterISOLanguageName")
 	public val twoLetterIsoLanguageName: String,
 	/**
-	 * Gets the name of the three letter ISO language.
+	 * The name of the three letter ISO language.
 	 */
 	@SerialName("ThreeLetterISOLanguageName")
 	public val threeLetterIsoLanguageName: String? = null,

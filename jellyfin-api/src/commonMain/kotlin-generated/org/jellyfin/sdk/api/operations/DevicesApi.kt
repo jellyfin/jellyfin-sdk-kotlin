@@ -73,8 +73,8 @@ public class DevicesApi(
 	/**
 	 * Get Devices.
 	 *
-	 * @param supportsSync Gets or sets a value indicating whether [supports synchronize].
-	 * @param userId Gets or sets the user identifier.
+	 * @param supportsSync A value indicating whether [supports synchronize].
+	 * @param userId The user identifier.
 	 */
 	public suspend fun getDevices(supportsSync: Boolean? = null, userId: UUID? = null):
 			Response<DeviceInfoQueryResult> {

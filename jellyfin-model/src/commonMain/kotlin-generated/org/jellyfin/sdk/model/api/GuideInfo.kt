@@ -16,12 +16,12 @@ import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 @Serializable
 public data class GuideInfo(
 	/**
-	 * Gets or sets the start date.
+	 * The start date.
 	 */
 	@SerialName("StartDate")
 	public val startDate: DateTime,
 	/**
-	 * Gets or sets the end date.
+	 * The end date.
 	 */
 	@SerialName("EndDate")
 	public val endDate: DateTime,

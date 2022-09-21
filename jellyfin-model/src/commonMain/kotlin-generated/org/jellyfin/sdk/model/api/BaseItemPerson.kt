@@ -21,32 +21,32 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class BaseItemPerson(
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the identifier.
+	 * The identifier.
 	 */
 	@SerialName("Id")
 	public val id: UUID,
 	/**
-	 * Gets or sets the role.
+	 * The role.
 	 */
 	@SerialName("Role")
 	public val role: String? = null,
 	/**
-	 * Gets or sets the type.
+	 * The type.
 	 */
 	@SerialName("Type")
 	public val type: String? = null,
 	/**
-	 * Gets or sets the primary image tag.
+	 * The primary image tag.
 	 */
 	@SerialName("PrimaryImageTag")
 	public val primaryImageTag: String? = null,
 	/**
-	 * Gets or sets the primary image blurhash.
+	 * The primary image blurhash.
 	 */
 	@SerialName("ImageBlurHashes")
 	public val imageBlurHashes: Map<ImageType, Map<String, String>>? = null,

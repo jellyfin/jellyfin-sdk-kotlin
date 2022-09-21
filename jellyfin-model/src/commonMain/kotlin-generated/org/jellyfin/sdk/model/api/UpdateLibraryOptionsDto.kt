@@ -19,12 +19,12 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class UpdateLibraryOptionsDto(
 	/**
-	 * Gets or sets the library item id.
+	 * The library item id.
 	 */
 	@SerialName("Id")
 	public val id: UUID,
 	/**
-	 * Gets or sets library options.
+	 * Library options.
 	 */
 	@SerialName("LibraryOptions")
 	public val libraryOptions: LibraryOptions? = null,

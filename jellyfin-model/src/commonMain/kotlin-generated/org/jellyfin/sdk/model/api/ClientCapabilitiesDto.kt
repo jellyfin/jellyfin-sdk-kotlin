@@ -17,37 +17,37 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ClientCapabilitiesDto(
 	/**
-	 * Gets or sets the list of playable media types.
+	 * The list of playable media types.
 	 */
 	@SerialName("PlayableMediaTypes")
 	public val playableMediaTypes: List<String>,
 	/**
-	 * Gets or sets the list of supported commands.
+	 * The list of supported commands.
 	 */
 	@SerialName("SupportedCommands")
 	public val supportedCommands: List<GeneralCommandType>,
 	/**
-	 * Gets or sets a value indicating whether session supports media control.
+	 * A value indicating whether session supports media control.
 	 */
 	@SerialName("SupportsMediaControl")
 	public val supportsMediaControl: Boolean,
 	/**
-	 * Gets or sets a value indicating whether session supports content uploading.
+	 * A value indicating whether session supports content uploading.
 	 */
 	@SerialName("SupportsContentUploading")
 	public val supportsContentUploading: Boolean,
 	/**
-	 * Gets or sets the message callback url.
+	 * The message callback url.
 	 */
 	@SerialName("MessageCallbackUrl")
 	public val messageCallbackUrl: String? = null,
 	/**
-	 * Gets or sets a value indicating whether session supports a persistent identifier.
+	 * A value indicating whether session supports a persistent identifier.
 	 */
 	@SerialName("SupportsPersistentIdentifier")
 	public val supportsPersistentIdentifier: Boolean,
 	/**
-	 * Gets or sets a value indicating whether session supports sync.
+	 * A value indicating whether session supports sync.
 	 */
 	@SerialName("SupportsSync")
 	public val supportsSync: Boolean,
@@ -67,12 +67,12 @@ public data class ClientCapabilitiesDto(
 	@SerialName("DeviceProfile")
 	public val deviceProfile: DeviceProfile? = null,
 	/**
-	 * Gets or sets the app store url.
+	 * The app store url.
 	 */
 	@SerialName("AppStoreUrl")
 	public val appStoreUrl: String? = null,
 	/**
-	 * Gets or sets the icon url.
+	 * The icon url.
 	 */
 	@SerialName("IconUrl")
 	public val iconUrl: String? = null,

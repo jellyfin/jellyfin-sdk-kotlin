@@ -16,12 +16,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class LibraryOptionInfoDto(
 	/**
-	 * Gets or sets name.
+	 * Name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets a value indicating whether default enabled.
+	 * A value indicating whether default enabled.
 	 */
 	@SerialName("DefaultEnabled")
 	public val defaultEnabled: Boolean,

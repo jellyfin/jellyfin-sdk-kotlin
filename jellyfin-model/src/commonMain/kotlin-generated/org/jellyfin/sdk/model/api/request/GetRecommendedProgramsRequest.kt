@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets recommended live tv epgs.
+ * Recommended live tv epgs.
  */
 @Serializable
 public data class GetRecommendedProgramsRequest(

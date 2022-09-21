@@ -21,22 +21,22 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class ThemeMediaResult(
 	/**
-	 * Gets or sets the items.
+	 * The items.
 	 */
 	@SerialName("Items")
 	public val items: List<BaseItemDto>? = null,
 	/**
-	 * Gets or sets the total number of records available.
+	 * The total number of records available.
 	 */
 	@SerialName("TotalRecordCount")
 	public val totalRecordCount: Int,
 	/**
-	 * Gets or sets the index of the first record in Items.
+	 * The index of the first record in Items.
 	 */
 	@SerialName("StartIndex")
 	public val startIndex: Int,
 	/**
-	 * Gets or sets the owner id.
+	 * The owner id.
 	 */
 	@SerialName("OwnerId")
 	public val ownerId: UUID,

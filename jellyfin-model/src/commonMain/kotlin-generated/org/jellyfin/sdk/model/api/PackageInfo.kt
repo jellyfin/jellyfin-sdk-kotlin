@@ -21,27 +21,27 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class PackageInfo(
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("name")
 	public val name: String,
 	/**
-	 * Gets or sets a long description of the plugin containing features or helpful explanations.
+	 * A long description of the plugin containing features or helpful explanations.
 	 */
 	@SerialName("description")
 	public val description: String,
 	/**
-	 * Gets or sets a short overview of what the plugin does.
+	 * A short overview of what the plugin does.
 	 */
 	@SerialName("overview")
 	public val overview: String,
 	/**
-	 * Gets or sets the owner.
+	 * The owner.
 	 */
 	@SerialName("owner")
 	public val owner: String,
 	/**
-	 * Gets or sets the category.
+	 * The category.
 	 */
 	@SerialName("category")
 	public val category: String,
@@ -52,12 +52,12 @@ public data class PackageInfo(
 	@SerialName("guid")
 	public val guid: UUID,
 	/**
-	 * Gets or sets the versions.
+	 * The versions.
 	 */
 	@SerialName("versions")
 	public val versions: List<VersionInfo>,
 	/**
-	 * Gets or sets the image url for the package.
+	 * The image url for the package.
 	 */
 	@SerialName("imageUrl")
 	public val imageUrl: String? = null,

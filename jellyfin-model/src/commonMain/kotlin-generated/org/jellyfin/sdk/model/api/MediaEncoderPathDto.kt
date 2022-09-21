@@ -15,12 +15,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class MediaEncoderPathDto(
 	/**
-	 * Gets or sets media encoder path.
+	 * Media encoder path.
 	 */
 	@SerialName("Path")
 	public val path: String,
 	/**
-	 * Gets or sets media encoder path type.
+	 * Media encoder path type.
 	 */
 	@SerialName("PathType")
 	public val pathType: String,

@@ -17,14 +17,14 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class DlnaOptions(
 	/**
-	 * Gets or sets a value indicating whether gets or sets a value to indicate the status of the dlna
-	 * playTo subsystem.
+	 * A value indicating whether gets or sets a value to indicate the status of the dlna playTo
+	 * subsystem.
 	 */
 	@SerialName("EnablePlayTo")
 	public val enablePlayTo: Boolean,
 	/**
-	 * Gets or sets a value indicating whether gets or sets a value to indicate the status of the dlna
-	 * server subsystem.
+	 * A value indicating whether gets or sets a value to indicate the status of the dlna server
+	 * subsystem.
 	 */
 	@SerialName("EnableServer")
 	public val enableServer: Boolean,
@@ -50,28 +50,28 @@ public data class DlnaOptions(
 	@SerialName("ClientDiscoveryIntervalSeconds")
 	public val clientDiscoveryIntervalSeconds: Int,
 	/**
-	 * Gets or sets the frequency at which ssdp alive notifications are transmitted.
+	 * The frequency at which ssdp alive notifications are transmitted.
 	 */
 	@SerialName("AliveMessageIntervalSeconds")
 	public val aliveMessageIntervalSeconds: Int,
 	/**
-	 * Gets or sets the frequency at which ssdp alive notifications are transmitted. MIGRATING - TO BE
-	 * REMOVED ONCE WEB HAS BEEN ALTERED.
+	 * The frequency at which ssdp alive notifications are transmitted. MIGRATING - TO BE REMOVED ONCE
+	 * WEB HAS BEEN ALTERED.
 	 */
 	@SerialName("BlastAliveMessageIntervalSeconds")
 	public val blastAliveMessageIntervalSeconds: Int,
 	/**
-	 * Gets or sets the default user account that the dlna server uses.
+	 * The default user account that the dlna server uses.
 	 */
 	@SerialName("DefaultUserId")
 	public val defaultUserId: String? = null,
 	/**
-	 * Gets or sets a value indicating whether playTo device profiles should be created.
+	 * A value indicating whether playTo device profiles should be created.
 	 */
 	@SerialName("AutoCreatePlayToProfiles")
 	public val autoCreatePlayToProfiles: Boolean,
 	/**
-	 * Gets or sets a value indicating whether to blast alive messages.
+	 * A value indicating whether to blast alive messages.
 	 */
 	@SerialName("BlastAliveMessages")
 	public val blastAliveMessages: Boolean,

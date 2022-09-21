@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets a list of upcoming episodes.
+ * A list of upcoming episodes.
  */
 @Serializable
 public data class GetUpcomingEpisodesRequest(

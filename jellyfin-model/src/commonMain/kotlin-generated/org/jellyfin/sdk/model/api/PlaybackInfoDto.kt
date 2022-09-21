@@ -23,42 +23,42 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class PlaybackInfoDto(
 	/**
-	 * Gets or sets the playback userId.
+	 * The playback userId.
 	 */
 	@SerialName("UserId")
 	public val userId: UUID? = null,
 	/**
-	 * Gets or sets the max streaming bitrate.
+	 * The max streaming bitrate.
 	 */
 	@SerialName("MaxStreamingBitrate")
 	public val maxStreamingBitrate: Int? = null,
 	/**
-	 * Gets or sets the start time in ticks.
+	 * The start time in ticks.
 	 */
 	@SerialName("StartTimeTicks")
 	public val startTimeTicks: Long? = null,
 	/**
-	 * Gets or sets the audio stream index.
+	 * The audio stream index.
 	 */
 	@SerialName("AudioStreamIndex")
 	public val audioStreamIndex: Int? = null,
 	/**
-	 * Gets or sets the subtitle stream index.
+	 * The subtitle stream index.
 	 */
 	@SerialName("SubtitleStreamIndex")
 	public val subtitleStreamIndex: Int? = null,
 	/**
-	 * Gets or sets the max audio channels.
+	 * The max audio channels.
 	 */
 	@SerialName("MaxAudioChannels")
 	public val maxAudioChannels: Int? = null,
 	/**
-	 * Gets or sets the media source id.
+	 * The media source id.
 	 */
 	@SerialName("MediaSourceId")
 	public val mediaSourceId: String? = null,
 	/**
-	 * Gets or sets the live stream id.
+	 * The live stream id.
 	 */
 	@SerialName("LiveStreamId")
 	public val liveStreamId: String? = null,
@@ -78,32 +78,32 @@ public data class PlaybackInfoDto(
 	@SerialName("DeviceProfile")
 	public val deviceProfile: DeviceProfile? = null,
 	/**
-	 * Gets or sets a value indicating whether to enable direct play.
+	 * A value indicating whether to enable direct play.
 	 */
 	@SerialName("EnableDirectPlay")
 	public val enableDirectPlay: Boolean? = null,
 	/**
-	 * Gets or sets a value indicating whether to enable direct stream.
+	 * A value indicating whether to enable direct stream.
 	 */
 	@SerialName("EnableDirectStream")
 	public val enableDirectStream: Boolean? = null,
 	/**
-	 * Gets or sets a value indicating whether to enable transcoding.
+	 * A value indicating whether to enable transcoding.
 	 */
 	@SerialName("EnableTranscoding")
 	public val enableTranscoding: Boolean? = null,
 	/**
-	 * Gets or sets a value indicating whether to enable video stream copy.
+	 * A value indicating whether to enable video stream copy.
 	 */
 	@SerialName("AllowVideoStreamCopy")
 	public val allowVideoStreamCopy: Boolean? = null,
 	/**
-	 * Gets or sets a value indicating whether to allow audio stream copy.
+	 * A value indicating whether to allow audio stream copy.
 	 */
 	@SerialName("AllowAudioStreamCopy")
 	public val allowAudioStreamCopy: Boolean? = null,
 	/**
-	 * Gets or sets a value indicating whether to auto open the live stream.
+	 * A value indicating whether to auto open the live stream.
 	 */
 	@SerialName("AutoOpenLiveStream")
 	public val autoOpenLiveStream: Boolean? = null,

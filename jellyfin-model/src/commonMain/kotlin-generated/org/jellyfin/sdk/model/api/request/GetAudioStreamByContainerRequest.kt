@@ -22,7 +22,7 @@ import org.jellyfin.sdk.model.api.SubtitleDeliveryMethod
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets an audio stream.
+ * An audio stream.
  */
 @Serializable
 public data class GetAudioStreamByContainerRequest(

@@ -16,12 +16,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class SearchHintResult(
 	/**
-	 * Gets the search hints.
+	 * The search hints.
 	 */
 	@SerialName("SearchHints")
 	public val searchHints: List<SearchHint>,
 	/**
-	 * Gets the total record count.
+	 * The total record count.
 	 */
 	@SerialName("TotalRecordCount")
 	public val totalRecordCount: Int,

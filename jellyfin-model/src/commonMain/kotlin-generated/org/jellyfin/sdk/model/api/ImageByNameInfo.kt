@@ -13,27 +13,27 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ImageByNameInfo(
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the theme.
+	 * The theme.
 	 */
 	@SerialName("Theme")
 	public val theme: String? = null,
 	/**
-	 * Gets or sets the context.
+	 * The context.
 	 */
 	@SerialName("Context")
 	public val context: String? = null,
 	/**
-	 * Gets or sets the length of the file.
+	 * The length of the file.
 	 */
 	@SerialName("FileLength")
 	public val fileLength: Long,
 	/**
-	 * Gets or sets the format.
+	 * The format.
 	 */
 	@SerialName("Format")
 	public val format: String? = null,

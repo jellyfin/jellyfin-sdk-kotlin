@@ -27,12 +27,12 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class UserDto(
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the server identifier.
+	 * The server identifier.
 	 */
 	@SerialName("ServerId")
 	public val serverId: String? = null,
@@ -43,57 +43,57 @@ public data class UserDto(
 	@SerialName("ServerName")
 	public val serverName: String? = null,
 	/**
-	 * Gets or sets the id.
+	 * The id.
 	 */
 	@SerialName("Id")
 	public val id: UUID,
 	/**
-	 * Gets or sets the primary image tag.
+	 * The primary image tag.
 	 */
 	@SerialName("PrimaryImageTag")
 	public val primaryImageTag: String? = null,
 	/**
-	 * Gets or sets a value indicating whether this instance has password.
+	 * A value indicating whether this instance has password.
 	 */
 	@SerialName("HasPassword")
 	public val hasPassword: Boolean,
 	/**
-	 * Gets or sets a value indicating whether this instance has configured password.
+	 * A value indicating whether this instance has configured password.
 	 */
 	@SerialName("HasConfiguredPassword")
 	public val hasConfiguredPassword: Boolean,
 	/**
-	 * Gets or sets a value indicating whether this instance has configured easy password.
+	 * A value indicating whether this instance has configured easy password.
 	 */
 	@SerialName("HasConfiguredEasyPassword")
 	public val hasConfiguredEasyPassword: Boolean,
 	/**
-	 * Gets or sets whether async login is enabled or not.
+	 * Whether async login is enabled or not.
 	 */
 	@SerialName("EnableAutoLogin")
 	public val enableAutoLogin: Boolean? = null,
 	/**
-	 * Gets or sets the last login date.
+	 * The last login date.
 	 */
 	@SerialName("LastLoginDate")
 	public val lastLoginDate: DateTime? = null,
 	/**
-	 * Gets or sets the last activity date.
+	 * The last activity date.
 	 */
 	@SerialName("LastActivityDate")
 	public val lastActivityDate: DateTime? = null,
 	/**
-	 * Gets or sets the configuration.
+	 * The configuration.
 	 */
 	@SerialName("Configuration")
 	public val configuration: UserConfiguration? = null,
 	/**
-	 * Gets or sets the policy.
+	 * The policy.
 	 */
 	@SerialName("Policy")
 	public val policy: UserPolicy? = null,
 	/**
-	 * Gets or sets the primary image aspect ratio.
+	 * The primary image aspect ratio.
 	 */
 	@SerialName("PrimaryImageAspectRatio")
 	public val primaryImageAspectRatio: Double? = null,

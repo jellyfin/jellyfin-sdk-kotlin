@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.api.RecordingStatus
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets live tv recordings.
+ * Live tv recordings.
  */
 @Serializable
 public data class GetRecordingsRequest(

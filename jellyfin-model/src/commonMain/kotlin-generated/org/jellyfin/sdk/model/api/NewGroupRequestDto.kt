@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class NewGroupRequestDto(
 	/**
-	 * Gets or sets the group name.
+	 * The group name.
 	 */
 	@SerialName("GroupName")
 	public val groupName: String,

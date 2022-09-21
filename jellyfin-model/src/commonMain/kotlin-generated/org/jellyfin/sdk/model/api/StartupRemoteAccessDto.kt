@@ -15,12 +15,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class StartupRemoteAccessDto(
 	/**
-	 * Gets or sets a value indicating whether enable remote access.
+	 * A value indicating whether enable remote access.
 	 */
 	@SerialName("EnableRemoteAccess")
 	public val enableRemoteAccess: Boolean,
 	/**
-	 * Gets or sets a value indicating whether enable automatic port mapping.
+	 * A value indicating whether enable automatic port mapping.
 	 */
 	@SerialName("EnableAutomaticPortMapping")
 	public val enableAutomaticPortMapping: Boolean,

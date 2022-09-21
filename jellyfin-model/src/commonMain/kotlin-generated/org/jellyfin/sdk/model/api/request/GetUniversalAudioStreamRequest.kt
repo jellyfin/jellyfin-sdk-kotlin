@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets an audio stream.
+ * An audio stream.
  */
 @Serializable
 public data class GetUniversalAudioStreamRequest(

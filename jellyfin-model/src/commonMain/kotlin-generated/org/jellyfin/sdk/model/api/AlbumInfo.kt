@@ -21,37 +21,37 @@ import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 @Serializable
 public data class AlbumInfo(
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the original title.
+	 * The original title.
 	 */
 	@SerialName("OriginalTitle")
 	public val originalTitle: String? = null,
 	/**
-	 * Gets or sets the path.
+	 * The path.
 	 */
 	@SerialName("Path")
 	public val path: String? = null,
 	/**
-	 * Gets or sets the metadata language.
+	 * The metadata language.
 	 */
 	@SerialName("MetadataLanguage")
 	public val metadataLanguage: String? = null,
 	/**
-	 * Gets or sets the metadata country code.
+	 * The metadata country code.
 	 */
 	@SerialName("MetadataCountryCode")
 	public val metadataCountryCode: String? = null,
 	/**
-	 * Gets or sets the provider ids.
+	 * The provider ids.
 	 */
 	@SerialName("ProviderIds")
 	public val providerIds: Map<String, String?>? = null,
 	/**
-	 * Gets or sets the year.
+	 * The year.
 	 */
 	@SerialName("Year")
 	public val year: Int? = null,
@@ -64,12 +64,12 @@ public data class AlbumInfo(
 	@SerialName("IsAutomated")
 	public val isAutomated: Boolean,
 	/**
-	 * Gets or sets the album artist.
+	 * The album artist.
 	 */
 	@SerialName("AlbumArtists")
 	public val albumArtists: List<String>,
 	/**
-	 * Gets or sets the artist provider ids.
+	 * The artist provider ids.
 	 */
 	@SerialName("ArtistProviderIds")
 	public val artistProviderIds: Map<String, String?>,

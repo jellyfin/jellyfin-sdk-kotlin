@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class JoinGroupRequestDto(
 	/**
-	 * Gets or sets the group identifier.
+	 * The group identifier.
 	 */
 	@SerialName("GroupId")
 	public val groupId: UUID,

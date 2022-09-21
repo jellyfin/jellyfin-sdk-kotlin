@@ -12,12 +12,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ExternalUrl(
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the type of the item.
+	 * The type of the item.
 	 */
 	@SerialName("Url")
 	public val url: String? = null,

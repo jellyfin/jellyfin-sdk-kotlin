@@ -25,32 +25,32 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class SendCommand(
 	/**
-	 * Gets the group identifier.
+	 * The group identifier.
 	 */
 	@SerialName("GroupId")
 	public val groupId: UUID,
 	/**
-	 * Gets the playlist identifier of the playing item.
+	 * The playlist identifier of the playing item.
 	 */
 	@SerialName("PlaylistItemId")
 	public val playlistItemId: UUID,
 	/**
-	 * Gets or sets the UTC time when to execute the command.
+	 * The UTC time when to execute the command.
 	 */
 	@SerialName("When")
 	public val `when`: DateTime,
 	/**
-	 * Gets the position ticks.
+	 * The position ticks.
 	 */
 	@SerialName("PositionTicks")
 	public val positionTicks: Long? = null,
 	/**
-	 * Gets the command.
+	 * The command.
 	 */
 	@SerialName("Command")
 	public val command: SendCommandType,
 	/**
-	 * Gets the UTC time when this command has been emitted.
+	 * The UTC time when this command has been emitted.
 	 */
 	@SerialName("EmittedAt")
 	public val emittedAt: DateTime,

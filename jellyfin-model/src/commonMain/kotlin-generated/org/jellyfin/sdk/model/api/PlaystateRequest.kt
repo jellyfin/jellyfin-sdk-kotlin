@@ -20,7 +20,7 @@ public data class PlaystateRequest(
 	@SerialName("SeekPositionTicks")
 	public val seekPositionTicks: Long? = null,
 	/**
-	 * Gets or sets the controlling user identifier.
+	 * The controlling user identifier.
 	 */
 	@SerialName("ControllingUserId")
 	public val controllingUserId: String? = null,

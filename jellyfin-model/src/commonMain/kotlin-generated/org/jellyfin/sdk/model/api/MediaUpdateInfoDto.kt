@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class MediaUpdateInfoDto(
 	/**
-	 * Gets or sets the list of updates.
+	 * The list of updates.
 	 */
 	@SerialName("Updates")
 	public val updates: List<MediaUpdateInfoPathDto>,

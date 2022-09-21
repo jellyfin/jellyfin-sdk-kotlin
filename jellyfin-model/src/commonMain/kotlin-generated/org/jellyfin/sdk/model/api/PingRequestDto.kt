@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class PingRequestDto(
 	/**
-	 * Gets or sets the ping time.
+	 * The ping time.
 	 */
 	@SerialName("Ping")
 	public val ping: Long,

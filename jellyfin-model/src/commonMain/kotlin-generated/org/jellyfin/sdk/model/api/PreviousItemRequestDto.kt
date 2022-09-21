@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class PreviousItemRequestDto(
 	/**
-	 * Gets or sets the playing item identifier.
+	 * The playing item identifier.
 	 */
 	@SerialName("PlaylistItemId")
 	public val playlistItemId: UUID,

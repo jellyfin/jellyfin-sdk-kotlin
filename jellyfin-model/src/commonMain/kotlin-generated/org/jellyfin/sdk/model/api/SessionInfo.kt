@@ -33,52 +33,52 @@ public data class SessionInfo(
 	@SerialName("Capabilities")
 	public val capabilities: ClientCapabilities? = null,
 	/**
-	 * Gets or sets the remote end point.
+	 * The remote end point.
 	 */
 	@SerialName("RemoteEndPoint")
 	public val remoteEndPoint: String? = null,
 	/**
-	 * Gets the playable media types.
+	 * The playable media types.
 	 */
 	@SerialName("PlayableMediaTypes")
 	public val playableMediaTypes: List<String>? = null,
 	/**
-	 * Gets or sets the id.
+	 * The id.
 	 */
 	@SerialName("Id")
 	public val id: String? = null,
 	/**
-	 * Gets or sets the user id.
+	 * The user id.
 	 */
 	@SerialName("UserId")
 	public val userId: UUID,
 	/**
-	 * Gets or sets the username.
+	 * The username.
 	 */
 	@SerialName("UserName")
 	public val userName: String? = null,
 	/**
-	 * Gets or sets the type of the client.
+	 * The type of the client.
 	 */
 	@SerialName("Client")
 	public val client: String? = null,
 	/**
-	 * Gets or sets the last activity date.
+	 * The last activity date.
 	 */
 	@SerialName("LastActivityDate")
 	public val lastActivityDate: DateTime,
 	/**
-	 * Gets or sets the last playback check in.
+	 * The last playback check in.
 	 */
 	@SerialName("LastPlaybackCheckIn")
 	public val lastPlaybackCheckIn: DateTime,
 	/**
-	 * Gets or sets the name of the device.
+	 * The name of the device.
 	 */
 	@SerialName("DeviceName")
 	public val deviceName: String? = null,
 	/**
-	 * Gets or sets the type of the device.
+	 * The type of the device.
 	 */
 	@SerialName("DeviceType")
 	public val deviceType: String? = null,
@@ -100,19 +100,19 @@ public data class SessionInfo(
 	@SerialName("NowViewingItem")
 	public val nowViewingItem: BaseItemDto? = null,
 	/**
-	 * Gets or sets the device id.
+	 * The device id.
 	 */
 	@SerialName("DeviceId")
 	public val deviceId: String? = null,
 	/**
-	 * Gets or sets the application version.
+	 * The application version.
 	 */
 	@SerialName("ApplicationVersion")
 	public val applicationVersion: String? = null,
 	@SerialName("TranscodingInfo")
 	public val transcodingInfo: TranscodingInfo? = null,
 	/**
-	 * Gets a value indicating whether this instance is active.
+	 * A value indicating whether this instance is active.
 	 */
 	@SerialName("IsActive")
 	public val isActive: Boolean,
@@ -133,7 +133,7 @@ public data class SessionInfo(
 	@SerialName("UserPrimaryImageTag")
 	public val userPrimaryImageTag: String? = null,
 	/**
-	 * Gets the supported commands.
+	 * The supported commands.
 	 */
 	@SerialName("SupportedCommands")
 	public val supportedCommands: List<GeneralCommandType>? = null,

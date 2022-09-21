@@ -17,7 +17,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets movie recommendations.
+ * Movie recommendations.
  */
 @Serializable
 public data class GetMovieRecommendationsRequest(

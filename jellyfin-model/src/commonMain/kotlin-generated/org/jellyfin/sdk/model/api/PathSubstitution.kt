@@ -15,12 +15,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class PathSubstitution(
 	/**
-	 * Gets or sets the value to substitute.
+	 * The value to substitute.
 	 */
 	@SerialName("From")
 	public val from: String,
 	/**
-	 * Gets or sets the value to substitution with.
+	 * The value to substitution with.
 	 */
 	@SerialName("To")
 	public val to: String,

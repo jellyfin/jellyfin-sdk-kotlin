@@ -22,7 +22,7 @@ import org.jellyfin.sdk.model.api.SubtitleDeliveryMethod
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets an audio hls playlist stream.
+ * An audio hls playlist stream.
  */
 @Serializable
 public data class GetMasterHlsAudioPlaylistRequest(

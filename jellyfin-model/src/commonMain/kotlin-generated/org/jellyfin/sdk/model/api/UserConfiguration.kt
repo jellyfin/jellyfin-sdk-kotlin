@@ -17,17 +17,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class UserConfiguration(
 	/**
-	 * Gets or sets the audio language preference.
+	 * The audio language preference.
 	 */
 	@SerialName("AudioLanguagePreference")
 	public val audioLanguagePreference: String? = null,
 	/**
-	 * Gets or sets a value indicating whether [play default audio track].
+	 * A value indicating whether [play default audio track].
 	 */
 	@SerialName("PlayDefaultAudioTrack")
 	public val playDefaultAudioTrack: Boolean,
 	/**
-	 * Gets or sets the subtitle language preference.
+	 * The subtitle language preference.
 	 */
 	@SerialName("SubtitleLanguagePreference")
 	public val subtitleLanguagePreference: String? = null,
