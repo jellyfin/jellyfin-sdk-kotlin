@@ -15,12 +15,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ExternalIdInfo(
 	/**
-	 * Gets or sets the display name of the external id provider (IE: IMDB, MusicBrainz, etc).
+	 * The display name of the external id provider (IE: IMDB, MusicBrainz, etc).
 	 */
 	@SerialName("Name")
 	public val name: String,
 	/**
-	 * Gets or sets the unique key for this id. This key should be unique across all providers.
+	 * The unique key for this id. This key should be unique across all providers.
 	 */
 	@SerialName("Key")
 	public val key: String,
@@ -35,7 +35,7 @@ public data class ExternalIdInfo(
 	@SerialName("Type")
 	public val type: ExternalIdMediaType? = null,
 	/**
-	 * Gets or sets the URL format string.
+	 * The URL format string.
 	 */
 	@SerialName("UrlFormatString")
 	public val urlFormatString: String? = null,

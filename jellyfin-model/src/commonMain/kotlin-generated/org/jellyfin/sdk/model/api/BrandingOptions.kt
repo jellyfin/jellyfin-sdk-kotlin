@@ -16,17 +16,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class BrandingOptions(
 	/**
-	 * Gets or sets the login disclaimer.
+	 * The login disclaimer.
 	 */
 	@SerialName("LoginDisclaimer")
 	public val loginDisclaimer: String? = null,
 	/**
-	 * Gets or sets the custom CSS.
+	 * The custom CSS.
 	 */
 	@SerialName("CustomCss")
 	public val customCss: String? = null,
 	/**
-	 * Gets or sets a value indicating whether to enable the splashscreen.
+	 * A value indicating whether to enable the splashscreen.
 	 */
 	@SerialName("SplashscreenEnabled")
 	public val splashscreenEnabled: Boolean,

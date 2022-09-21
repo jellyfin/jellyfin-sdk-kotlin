@@ -22,17 +22,17 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class PlayRequestDto(
 	/**
-	 * Gets or sets the playing queue.
+	 * The playing queue.
 	 */
 	@SerialName("PlayingQueue")
 	public val playingQueue: List<UUID>,
 	/**
-	 * Gets or sets the position of the playing item in the queue.
+	 * The position of the playing item in the queue.
 	 */
 	@SerialName("PlayingItemPosition")
 	public val playingItemPosition: Int,
 	/**
-	 * Gets or sets the start position ticks.
+	 * The start position ticks.
 	 */
 	@SerialName("StartPositionTicks")
 	public val startPositionTicks: Long,

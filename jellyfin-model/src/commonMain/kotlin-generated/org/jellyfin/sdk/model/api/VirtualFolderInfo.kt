@@ -17,29 +17,29 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class VirtualFolderInfo(
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the locations.
+	 * The locations.
 	 */
 	@SerialName("Locations")
 	public val locations: List<String>? = null,
 	/**
-	 * Gets or sets the type of the collection.
+	 * The type of the collection.
 	 */
 	@SerialName("CollectionType")
 	public val collectionType: CollectionTypeOptions? = null,
 	@SerialName("LibraryOptions")
 	public val libraryOptions: LibraryOptions? = null,
 	/**
-	 * Gets or sets the item identifier.
+	 * The item identifier.
 	 */
 	@SerialName("ItemId")
 	public val itemId: String? = null,
 	/**
-	 * Gets or sets the primary image item identifier.
+	 * The primary image item identifier.
 	 */
 	@SerialName("PrimaryImageItemId")
 	public val primaryImageItemId: String? = null,

@@ -16,12 +16,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ImageProviderInfo(
 	/**
-	 * Gets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String,
 	/**
-	 * Gets the supported image types.
+	 * The supported image types.
 	 */
 	@SerialName("SupportedImages")
 	public val supportedImages: List<ImageType>,

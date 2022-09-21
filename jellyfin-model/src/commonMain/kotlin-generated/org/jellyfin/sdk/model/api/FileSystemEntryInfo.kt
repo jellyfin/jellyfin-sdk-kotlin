@@ -15,17 +15,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class FileSystemEntryInfo(
 	/**
-	 * Gets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String,
 	/**
-	 * Gets the path.
+	 * The path.
 	 */
 	@SerialName("Path")
 	public val path: String,
 	/**
-	 * Gets the type.
+	 * The type.
 	 */
 	@SerialName("Type")
 	public val type: FileSystemEntryType,

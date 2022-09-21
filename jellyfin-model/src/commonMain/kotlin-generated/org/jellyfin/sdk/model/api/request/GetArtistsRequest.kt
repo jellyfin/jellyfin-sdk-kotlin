@@ -24,7 +24,7 @@ import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets all artists from a given item, folder, or the entire library.
+ * All artists from a given item, folder, or the entire library.
  */
 @Serializable
 public data class GetArtistsRequest(

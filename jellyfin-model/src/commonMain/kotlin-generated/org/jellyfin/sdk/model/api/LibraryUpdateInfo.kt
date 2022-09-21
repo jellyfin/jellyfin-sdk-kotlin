@@ -17,27 +17,27 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class LibraryUpdateInfo(
 	/**
-	 * Gets or sets the folders added to.
+	 * The folders added to.
 	 */
 	@SerialName("FoldersAddedTo")
 	public val foldersAddedTo: List<String>,
 	/**
-	 * Gets or sets the folders removed from.
+	 * The folders removed from.
 	 */
 	@SerialName("FoldersRemovedFrom")
 	public val foldersRemovedFrom: List<String>,
 	/**
-	 * Gets or sets the items added.
+	 * The items added.
 	 */
 	@SerialName("ItemsAdded")
 	public val itemsAdded: List<String>,
 	/**
-	 * Gets or sets the items removed.
+	 * The items removed.
 	 */
 	@SerialName("ItemsRemoved")
 	public val itemsRemoved: List<String>,
 	/**
-	 * Gets or sets the items updated.
+	 * The items updated.
 	 */
 	@SerialName("ItemsUpdated")
 	public val itemsUpdated: List<String>,

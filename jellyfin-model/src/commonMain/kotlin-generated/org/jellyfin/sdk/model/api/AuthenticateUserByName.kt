@@ -16,17 +16,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class AuthenticateUserByName(
 	/**
-	 * Gets or sets the username.
+	 * The username.
 	 */
 	@SerialName("Username")
 	public val username: String? = null,
 	/**
-	 * Gets or sets the plain text password.
+	 * The plain text password.
 	 */
 	@SerialName("Pw")
 	public val pw: String? = null,
 	/**
-	 * Gets or sets the sha1-hashed password.
+	 * The sha1-hashed password.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("Password")

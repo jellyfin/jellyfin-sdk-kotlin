@@ -17,17 +17,17 @@ import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 @Serializable
 public data class ForgotPasswordResult(
 	/**
-	 * Gets or sets the action.
+	 * The action.
 	 */
 	@SerialName("Action")
 	public val action: ForgotPasswordAction,
 	/**
-	 * Gets or sets the pin file.
+	 * The pin file.
 	 */
 	@SerialName("PinFile")
 	public val pinFile: String? = null,
 	/**
-	 * Gets or sets the pin expiration date.
+	 * The pin expiration date.
 	 */
 	@SerialName("PinExpirationDate")
 	public val pinExpirationDate: DateTime? = null,

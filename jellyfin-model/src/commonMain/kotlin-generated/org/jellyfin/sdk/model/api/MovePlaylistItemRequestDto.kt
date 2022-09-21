@@ -20,12 +20,12 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class MovePlaylistItemRequestDto(
 	/**
-	 * Gets or sets the playlist identifier of the item.
+	 * The playlist identifier of the item.
 	 */
 	@SerialName("PlaylistItemId")
 	public val playlistItemId: UUID,
 	/**
-	 * Gets or sets the new position.
+	 * The new position.
 	 */
 	@SerialName("NewIndex")
 	public val newIndex: Int,

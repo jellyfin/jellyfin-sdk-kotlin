@@ -20,22 +20,22 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class UserPolicy(
 	/**
-	 * Gets or sets a value indicating whether this instance is administrator.
+	 * A value indicating whether this instance is administrator.
 	 */
 	@SerialName("IsAdministrator")
 	public val isAdministrator: Boolean,
 	/**
-	 * Gets or sets a value indicating whether this instance is hidden.
+	 * A value indicating whether this instance is hidden.
 	 */
 	@SerialName("IsHidden")
 	public val isHidden: Boolean,
 	/**
-	 * Gets or sets a value indicating whether this instance is disabled.
+	 * A value indicating whether this instance is disabled.
 	 */
 	@SerialName("IsDisabled")
 	public val isDisabled: Boolean,
 	/**
-	 * Gets or sets the max parental rating.
+	 * The max parental rating.
 	 */
 	@SerialName("MaxParentalRating")
 	public val maxParentalRating: Int? = null,
@@ -74,7 +74,7 @@ public data class UserPolicy(
 	@SerialName("EnableContentDownloading")
 	public val enableContentDownloading: Boolean,
 	/**
-	 * Gets or sets a value indicating whether [enable synchronize].
+	 * A value indicating whether [enable synchronize].
 	 */
 	@SerialName("EnableSyncTranscoding")
 	public val enableSyncTranscoding: Boolean,
@@ -111,7 +111,7 @@ public data class UserPolicy(
 	@SerialName("PasswordResetProviderId")
 	public val passwordResetProviderId: String? = null,
 	/**
-	 * Gets or sets a value indicating what SyncPlay features the user can access.
+	 * A value indicating what SyncPlay features the user can access.
 	 */
 	@SerialName("SyncPlayAccess")
 	public val syncPlayAccess: SyncPlayUserAccessType,

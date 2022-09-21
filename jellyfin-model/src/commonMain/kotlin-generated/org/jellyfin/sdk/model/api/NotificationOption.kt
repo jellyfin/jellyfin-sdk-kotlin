@@ -16,28 +16,27 @@ public data class NotificationOption(
 	@SerialName("Type")
 	public val type: String? = null,
 	/**
-	 * Gets or sets user Ids to not monitor (it's opt out).
+	 * User Ids to not monitor (it's opt out).
 	 */
 	@SerialName("DisabledMonitorUsers")
 	public val disabledMonitorUsers: List<String>,
 	/**
-	 * Gets or sets user Ids to send to (if SendToUserMode == Custom).
+	 * User Ids to send to (if SendToUserMode == Custom).
 	 */
 	@SerialName("SendToUsers")
 	public val sendToUsers: List<String>,
 	/**
-	 * Gets or sets a value indicating whether this MediaBrowser.Model.Notifications.NotificationOption
-	 * is enabled.
+	 * A value indicating whether this MediaBrowser.Model.Notifications.NotificationOption is enabled.
 	 */
 	@SerialName("Enabled")
 	public val enabled: Boolean,
 	/**
-	 * Gets or sets the disabled services.
+	 * The disabled services.
 	 */
 	@SerialName("DisabledServices")
 	public val disabledServices: List<String>,
 	/**
-	 * Gets or sets the send to user mode.
+	 * The send to user mode.
 	 */
 	@SerialName("SendToUserMode")
 	public val sendToUserMode: SendToUserType,

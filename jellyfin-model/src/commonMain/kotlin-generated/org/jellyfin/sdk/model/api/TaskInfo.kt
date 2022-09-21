@@ -18,52 +18,52 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class TaskInfo(
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the state of the task.
+	 * The state of the task.
 	 */
 	@SerialName("State")
 	public val state: TaskState,
 	/**
-	 * Gets or sets the progress.
+	 * The progress.
 	 */
 	@SerialName("CurrentProgressPercentage")
 	public val currentProgressPercentage: Double? = null,
 	/**
-	 * Gets or sets the id.
+	 * The id.
 	 */
 	@SerialName("Id")
 	public val id: String? = null,
 	/**
-	 * Gets or sets the last execution result.
+	 * The last execution result.
 	 */
 	@SerialName("LastExecutionResult")
 	public val lastExecutionResult: TaskResult? = null,
 	/**
-	 * Gets or sets the triggers.
+	 * The triggers.
 	 */
 	@SerialName("Triggers")
 	public val triggers: List<TaskTriggerInfo>? = null,
 	/**
-	 * Gets or sets the description.
+	 * The description.
 	 */
 	@SerialName("Description")
 	public val description: String? = null,
 	/**
-	 * Gets or sets the category.
+	 * The category.
 	 */
 	@SerialName("Category")
 	public val category: String? = null,
 	/**
-	 * Gets or sets a value indicating whether this instance is hidden.
+	 * A value indicating whether this instance is hidden.
 	 */
 	@SerialName("IsHidden")
 	public val isHidden: Boolean,
 	/**
-	 * Gets or sets the key.
+	 * The key.
 	 */
 	@SerialName("Key")
 	public val key: String? = null,

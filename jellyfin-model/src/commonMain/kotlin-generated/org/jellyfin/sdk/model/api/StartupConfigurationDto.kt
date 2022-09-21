@@ -15,17 +15,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class StartupConfigurationDto(
 	/**
-	 * Gets or sets UI language culture.
+	 * UI language culture.
 	 */
 	@SerialName("UICulture")
 	public val uiCulture: String? = null,
 	/**
-	 * Gets or sets the metadata country code.
+	 * The metadata country code.
 	 */
 	@SerialName("MetadataCountryCode")
 	public val metadataCountryCode: String? = null,
 	/**
-	 * Gets or sets the preferred language for the metadata.
+	 * The preferred language for the metadata.
 	 */
 	@SerialName("PreferredMetadataLanguage")
 	public val preferredMetadataLanguage: String? = null,

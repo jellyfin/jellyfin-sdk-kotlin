@@ -34,13 +34,12 @@ public data class EncodingOptions(
 	@SerialName("HardwareAccelerationType")
 	public val hardwareAccelerationType: String? = null,
 	/**
-	 * Gets or sets the FFmpeg path as set by the user via the UI.
+	 * The FFmpeg path as set by the user via the UI.
 	 */
 	@SerialName("EncoderAppPath")
 	public val encoderAppPath: String? = null,
 	/**
-	 * Gets or sets the current FFmpeg path being used by the system and displayed on the transcode
-	 * page.
+	 * The current FFmpeg path being used by the system and displayed on the transcode page.
 	 */
 	@SerialName("EncoderAppPathDisplay")
 	public val encoderAppPathDisplay: String? = null,

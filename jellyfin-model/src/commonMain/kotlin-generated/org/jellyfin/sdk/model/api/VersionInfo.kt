@@ -15,47 +15,47 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class VersionInfo(
 	/**
-	 * Gets or sets the version.
+	 * The version.
 	 */
 	@SerialName("version")
 	public val version: String,
 	/**
-	 * Gets the version as a System.Version.
+	 * The version as a System.Version.
 	 */
 	@SerialName("VersionNumber")
 	public val versionNumber: String,
 	/**
-	 * Gets or sets the changelog for this version.
+	 * The changelog for this version.
 	 */
 	@SerialName("changelog")
 	public val changelog: String? = null,
 	/**
-	 * Gets or sets the ABI that this version was built against.
+	 * The ABI that this version was built against.
 	 */
 	@SerialName("targetAbi")
 	public val targetAbi: String? = null,
 	/**
-	 * Gets or sets the source URL.
+	 * The source URL.
 	 */
 	@SerialName("sourceUrl")
 	public val sourceUrl: String? = null,
 	/**
-	 * Gets or sets a checksum for the binary.
+	 * A checksum for the binary.
 	 */
 	@SerialName("checksum")
 	public val checksum: String? = null,
 	/**
-	 * Gets or sets a timestamp of when the binary was built.
+	 * A timestamp of when the binary was built.
 	 */
 	@SerialName("timestamp")
 	public val timestamp: String? = null,
 	/**
-	 * Gets or sets the repository name.
+	 * The repository name.
 	 */
 	@SerialName("repositoryName")
 	public val repositoryName: String,
 	/**
-	 * Gets or sets the repository url.
+	 * The repository url.
 	 */
 	@SerialName("repositoryUrl")
 	public val repositoryUrl: String,

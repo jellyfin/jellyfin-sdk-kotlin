@@ -20,17 +20,17 @@ import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 @Serializable
 public data class RemoteSearchResult(
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the provider ids.
+	 * The provider ids.
 	 */
 	@SerialName("ProviderIds")
 	public val providerIds: Map<String, String?>? = null,
 	/**
-	 * Gets or sets the year.
+	 * The year.
 	 */
 	@SerialName("ProductionYear")
 	public val productionYear: Int? = null,

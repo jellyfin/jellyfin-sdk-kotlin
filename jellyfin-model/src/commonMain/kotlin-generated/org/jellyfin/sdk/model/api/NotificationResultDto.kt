@@ -16,12 +16,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class NotificationResultDto(
 	/**
-	 * Gets or sets the current page of notifications.
+	 * The current page of notifications.
 	 */
 	@SerialName("Notifications")
 	public val notifications: List<NotificationDto>,
 	/**
-	 * Gets or sets the total number of notifications.
+	 * The total number of notifications.
 	 */
 	@SerialName("TotalRecordCount")
 	public val totalRecordCount: Int,

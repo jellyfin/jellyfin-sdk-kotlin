@@ -21,43 +21,43 @@ import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 @Serializable
 public data class QuickConnectResult(
 	/**
-	 * Gets or sets a value indicating whether this request is authorized.
+	 * A value indicating whether this request is authorized.
 	 */
 	@SerialName("Authenticated")
 	public val authenticated: Boolean,
 	/**
-	 * Gets the secret value used to uniquely identify this request. Can be used to retrieve
-	 * authentication information.
+	 * The secret value used to uniquely identify this request. Can be used to retrieve authentication
+	 * information.
 	 */
 	@SerialName("Secret")
 	public val secret: String,
 	/**
-	 * Gets the user facing code used so the user can quickly differentiate this request from others.
+	 * The user facing code used so the user can quickly differentiate this request from others.
 	 */
 	@SerialName("Code")
 	public val code: String,
 	/**
-	 * Gets the requesting device id.
+	 * The requesting device id.
 	 */
 	@SerialName("DeviceId")
 	public val deviceId: String,
 	/**
-	 * Gets the requesting device name.
+	 * The requesting device name.
 	 */
 	@SerialName("DeviceName")
 	public val deviceName: String,
 	/**
-	 * Gets the requesting app name.
+	 * The requesting app name.
 	 */
 	@SerialName("AppName")
 	public val appName: String,
 	/**
-	 * Gets the requesting app version.
+	 * The requesting app version.
 	 */
 	@SerialName("AppVersion")
 	public val appVersion: String,
 	/**
-	 * Gets or sets the DateTime that this request was created.
+	 * The DateTime that this request was created.
 	 */
 	@SerialName("DateAdded")
 	public val dateAdded: DateTime,

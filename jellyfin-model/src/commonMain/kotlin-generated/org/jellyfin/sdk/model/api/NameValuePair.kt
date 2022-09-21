@@ -12,12 +12,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class NameValuePair(
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the value.
+	 * The value.
 	 */
 	@SerialName("Value")
 	public val `value`: String? = null,

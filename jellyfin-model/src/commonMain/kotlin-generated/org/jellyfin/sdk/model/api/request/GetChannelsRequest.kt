@@ -16,7 +16,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets available channels.
+ * Available channels.
  */
 @Serializable
 public data class GetChannelsRequest(

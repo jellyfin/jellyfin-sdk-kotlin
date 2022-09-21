@@ -15,12 +15,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class UpdateMediaPathRequestDto(
 	/**
-	 * Gets or sets the library name.
+	 * The library name.
 	 */
 	@SerialName("Name")
 	public val name: String,
 	/**
-	 * Gets or sets library folder path information.
+	 * Library folder path information.
 	 */
 	@SerialName("PathInfo")
 	public val pathInfo: MediaPathInfo,

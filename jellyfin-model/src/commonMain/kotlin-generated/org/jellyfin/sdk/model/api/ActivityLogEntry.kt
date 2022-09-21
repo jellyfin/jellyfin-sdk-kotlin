@@ -27,53 +27,53 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class ActivityLogEntry(
 	/**
-	 * Gets or sets the identifier.
+	 * The identifier.
 	 */
 	@SerialName("Id")
 	public val id: Long,
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String,
 	/**
-	 * Gets or sets the overview.
+	 * The overview.
 	 */
 	@SerialName("Overview")
 	public val overview: String? = null,
 	/**
-	 * Gets or sets the short overview.
+	 * The short overview.
 	 */
 	@SerialName("ShortOverview")
 	public val shortOverview: String? = null,
 	/**
-	 * Gets or sets the type.
+	 * The type.
 	 */
 	@SerialName("Type")
 	public val type: String,
 	/**
-	 * Gets or sets the item identifier.
+	 * The item identifier.
 	 */
 	@SerialName("ItemId")
 	public val itemId: String? = null,
 	/**
-	 * Gets or sets the date.
+	 * The date.
 	 */
 	@SerialName("Date")
 	public val date: DateTime,
 	/**
-	 * Gets or sets the user identifier.
+	 * The user identifier.
 	 */
 	@SerialName("UserId")
 	public val userId: UUID,
 	/**
-	 * Gets or sets the user primary image tag.
+	 * The user primary image tag.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("UserPrimaryImageTag")
 	public val userPrimaryImageTag: String? = null,
 	/**
-	 * Gets or sets the log severity.
+	 * The log severity.
 	 */
 	@SerialName("Severity")
 	public val severity: LogLevel,

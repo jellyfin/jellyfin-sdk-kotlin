@@ -20,17 +20,17 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class ObjectGroupUpdate(
 	/**
-	 * Gets the group identifier.
+	 * The group identifier.
 	 */
 	@SerialName("GroupId")
 	public val groupId: UUID,
 	/**
-	 * Gets the update type.
+	 * The update type.
 	 */
 	@SerialName("Type")
 	public val type: GroupUpdateType,
 	/**
-	 * Gets the update data.
+	 * The update data.
 	 */
 	@SerialName("Data")
 	public val `data`: JsonElement,

@@ -21,17 +21,17 @@ import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 @Serializable
 public data class ChapterInfo(
 	/**
-	 * Gets or sets the start position ticks.
+	 * The start position ticks.
 	 */
 	@SerialName("StartPositionTicks")
 	public val startPositionTicks: Long,
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the image path.
+	 * The image path.
 	 */
 	@SerialName("ImagePath")
 	public val imagePath: String? = null,

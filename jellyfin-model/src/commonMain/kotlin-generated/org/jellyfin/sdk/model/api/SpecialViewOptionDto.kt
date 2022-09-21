@@ -15,12 +15,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class SpecialViewOptionDto(
 	/**
-	 * Gets or sets view option name.
+	 * View option name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets view option id.
+	 * View option id.
 	 */
 	@SerialName("Id")
 	public val id: String? = null,

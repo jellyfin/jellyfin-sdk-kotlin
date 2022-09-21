@@ -18,7 +18,7 @@ import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets available remote images for an item.
+ * Available remote images for an item.
  */
 @Serializable
 public data class GetRemoteImagesRequest(

@@ -12,17 +12,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ImageOption(
 	/**
-	 * Gets or sets the type.
+	 * The type.
 	 */
 	@SerialName("Type")
 	public val type: ImageType,
 	/**
-	 * Gets or sets the limit.
+	 * The limit.
 	 */
 	@SerialName("Limit")
 	public val limit: Int,
 	/**
-	 * Gets or sets the minimum width.
+	 * The minimum width.
 	 */
 	@SerialName("MinWidth")
 	public val minWidth: Int,

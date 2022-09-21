@@ -15,12 +15,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class NotificationsSummaryDto(
 	/**
-	 * Gets or sets the number of unread notifications.
+	 * The number of unread notifications.
 	 */
 	@SerialName("UnreadCount")
 	public val unreadCount: Int,
 	/**
-	 * Gets or sets the maximum unread notification level.
+	 * The maximum unread notification level.
 	 */
 	@SerialName("MaxUnreadNotificationLevel")
 	public val maxUnreadNotificationLevel: NotificationLevel? = null,

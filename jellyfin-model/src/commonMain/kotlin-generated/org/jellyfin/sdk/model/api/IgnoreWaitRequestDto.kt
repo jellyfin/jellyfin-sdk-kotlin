@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class IgnoreWaitRequestDto(
 	/**
-	 * Gets or sets a value indicating whether the client should be ignored.
+	 * A value indicating whether the client should be ignored.
 	 */
 	@SerialName("IgnoreWait")
 	public val ignoreWait: Boolean,

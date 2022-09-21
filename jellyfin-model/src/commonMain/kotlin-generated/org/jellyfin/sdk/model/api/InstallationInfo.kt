@@ -20,37 +20,37 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class InstallationInfo(
 	/**
-	 * Gets or sets the Id.
+	 * The Id.
 	 */
 	@SerialName("Guid")
 	public val guid: UUID,
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the version.
+	 * The version.
 	 */
 	@SerialName("Version")
 	public val version: String? = null,
 	/**
-	 * Gets or sets the changelog for this version.
+	 * The changelog for this version.
 	 */
 	@SerialName("Changelog")
 	public val changelog: String? = null,
 	/**
-	 * Gets or sets the source URL.
+	 * The source URL.
 	 */
 	@SerialName("SourceUrl")
 	public val sourceUrl: String? = null,
 	/**
-	 * Gets or sets a checksum for the binary.
+	 * A checksum for the binary.
 	 */
 	@SerialName("Checksum")
 	public val checksum: String? = null,
 	/**
-	 * Gets or sets package information for the installation.
+	 * Package information for the installation.
 	 */
 	@SerialName("PackageInfo")
 	public val packageInfo: PackageInfo? = null,

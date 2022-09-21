@@ -24,42 +24,42 @@ public data class DeviceInfo(
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the access token.
+	 * The access token.
 	 */
 	@SerialName("AccessToken")
 	public val accessToken: String? = null,
 	/**
-	 * Gets or sets the identifier.
+	 * The identifier.
 	 */
 	@SerialName("Id")
 	public val id: String? = null,
 	/**
-	 * Gets or sets the last name of the user.
+	 * The last name of the user.
 	 */
 	@SerialName("LastUserName")
 	public val lastUserName: String? = null,
 	/**
-	 * Gets or sets the name of the application.
+	 * The name of the application.
 	 */
 	@SerialName("AppName")
 	public val appName: String? = null,
 	/**
-	 * Gets or sets the application version.
+	 * The application version.
 	 */
 	@SerialName("AppVersion")
 	public val appVersion: String? = null,
 	/**
-	 * Gets or sets the last user identifier.
+	 * The last user identifier.
 	 */
 	@SerialName("LastUserId")
 	public val lastUserId: UUID,
 	/**
-	 * Gets or sets the date last modified.
+	 * The date last modified.
 	 */
 	@SerialName("DateLastActivity")
 	public val dateLastActivity: DateTime,
 	/**
-	 * Gets or sets the capabilities.
+	 * The capabilities.
 	 */
 	@SerialName("Capabilities")
 	public val capabilities: ClientCapabilities? = null,

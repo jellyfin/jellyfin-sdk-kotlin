@@ -15,22 +15,22 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ServerDiscoveryInfo(
 	/**
-	 * Gets the address.
+	 * The address.
 	 */
 	@SerialName("Address")
 	public val address: String,
 	/**
-	 * Gets the server identifier.
+	 * The server identifier.
 	 */
 	@SerialName("Id")
 	public val id: String,
 	/**
-	 * Gets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String,
 	/**
-	 * Gets the endpoint address.
+	 * The endpoint address.
 	 */
 	@SerialName("EndpointAddress")
 	public val endpointAddress: String? = null,

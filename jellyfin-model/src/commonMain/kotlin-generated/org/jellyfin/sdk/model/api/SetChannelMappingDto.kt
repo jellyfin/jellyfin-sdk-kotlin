@@ -15,17 +15,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class SetChannelMappingDto(
 	/**
-	 * Gets or sets the provider id.
+	 * The provider id.
 	 */
 	@SerialName("ProviderId")
 	public val providerId: String,
 	/**
-	 * Gets or sets the tuner channel id.
+	 * The tuner channel id.
 	 */
 	@SerialName("TunerChannelId")
 	public val tunerChannelId: String,
 	/**
-	 * Gets or sets the provider channel id.
+	 * The provider channel id.
 	 */
 	@SerialName("ProviderChannelId")
 	public val providerChannelId: String,

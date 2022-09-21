@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets subtitles in a specified format.
+ * Subtitles in a specified format.
  */
 @Serializable
 public data class GetSubtitleWithTicksDeprecatedRequest(

@@ -47,7 +47,7 @@ public data class BaseItem(
 	@SerialName("DateLastSaved")
 	public val dateLastSaved: DateTime,
 	/**
-	 * Gets or sets the remote trailers.
+	 * The remote trailers.
 	 */
 	@SerialName("RemoteTrailers")
 	public val remoteTrailers: List<MediaUrl>? = null,

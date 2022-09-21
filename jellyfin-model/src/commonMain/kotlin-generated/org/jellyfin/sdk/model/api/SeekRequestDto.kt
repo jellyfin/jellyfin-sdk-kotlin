@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class SeekRequestDto(
 	/**
-	 * Gets or sets the position ticks.
+	 * The position ticks.
 	 */
 	@SerialName("PositionTicks")
 	public val positionTicks: Long,

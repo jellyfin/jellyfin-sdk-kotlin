@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets suggestions.
+ * Suggestions.
  */
 @Serializable
 public data class GetSuggestionsRequest(

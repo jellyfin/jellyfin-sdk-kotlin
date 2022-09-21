@@ -16,17 +16,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class DeviceOptionsDto(
 	/**
-	 * Gets or sets the id.
+	 * The id.
 	 */
 	@SerialName("Id")
 	public val id: Int,
 	/**
-	 * Gets or sets the device id.
+	 * The device id.
 	 */
 	@SerialName("DeviceId")
 	public val deviceId: String? = null,
 	/**
-	 * Gets or sets the custom name.
+	 * The custom name.
 	 */
 	@SerialName("CustomName")
 	public val customName: String? = null,

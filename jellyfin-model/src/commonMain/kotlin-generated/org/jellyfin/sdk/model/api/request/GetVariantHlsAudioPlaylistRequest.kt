@@ -22,7 +22,7 @@ import org.jellyfin.sdk.model.api.SubtitleDeliveryMethod
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets an audio stream using HTTP live streaming.
+ * An audio stream using HTTP live streaming.
  */
 @Serializable
 public data class GetVariantHlsAudioPlaylistRequest(

@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets the search hint result.
+ * The search hint result.
  */
 @Serializable
 public data class GetRequest(

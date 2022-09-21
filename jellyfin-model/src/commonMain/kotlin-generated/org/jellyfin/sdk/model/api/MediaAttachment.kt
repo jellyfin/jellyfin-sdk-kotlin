@@ -16,37 +16,37 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class MediaAttachment(
 	/**
-	 * Gets or sets the codec.
+	 * The codec.
 	 */
 	@SerialName("Codec")
 	public val codec: String? = null,
 	/**
-	 * Gets or sets the codec tag.
+	 * The codec tag.
 	 */
 	@SerialName("CodecTag")
 	public val codecTag: String? = null,
 	/**
-	 * Gets or sets the comment.
+	 * The comment.
 	 */
 	@SerialName("Comment")
 	public val comment: String? = null,
 	/**
-	 * Gets or sets the index.
+	 * The index.
 	 */
 	@SerialName("Index")
 	public val index: Int,
 	/**
-	 * Gets or sets the filename.
+	 * The filename.
 	 */
 	@SerialName("FileName")
 	public val fileName: String? = null,
 	/**
-	 * Gets or sets the MIME type.
+	 * The MIME type.
 	 */
 	@SerialName("MimeType")
 	public val mimeType: String? = null,
 	/**
-	 * Gets or sets the delivery URL.
+	 * The delivery URL.
 	 */
 	@SerialName("DeliveryUrl")
 	public val deliveryUrl: String? = null,

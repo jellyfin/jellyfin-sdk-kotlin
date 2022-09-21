@@ -14,17 +14,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class LiveTvInfo(
 	/**
-	 * Gets or sets the services.
+	 * The services.
 	 */
 	@SerialName("Services")
 	public val services: List<LiveTvServiceInfo>,
 	/**
-	 * Gets or sets a value indicating whether this instance is enabled.
+	 * A value indicating whether this instance is enabled.
 	 */
 	@SerialName("IsEnabled")
 	public val isEnabled: Boolean,
 	/**
-	 * Gets or sets the enabled users.
+	 * The enabled users.
 	 */
 	@SerialName("EnabledUsers")
 	public val enabledUsers: List<String>,

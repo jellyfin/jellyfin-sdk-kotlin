@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ClientLogDocumentResponseDto(
 	/**
-	 * Gets the resulting filename.
+	 * The resulting filename.
 	 */
 	@SerialName("FileName")
 	public val fileName: String,

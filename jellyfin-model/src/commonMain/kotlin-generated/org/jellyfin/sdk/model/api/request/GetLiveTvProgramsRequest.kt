@@ -26,7 +26,7 @@ import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets available live tv epgs.
+ * Available live tv epgs.
  */
 @Serializable
 public data class GetLiveTvProgramsRequest(

@@ -23,43 +23,42 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class PlaybackStopInfo(
 	/**
-	 * Gets or sets the item.
+	 * The item.
 	 */
 	@SerialName("Item")
 	public val item: BaseItemDto? = null,
 	/**
-	 * Gets or sets the item identifier.
+	 * The item identifier.
 	 */
 	@SerialName("ItemId")
 	public val itemId: UUID,
 	/**
-	 * Gets or sets the session id.
+	 * The session id.
 	 */
 	@SerialName("SessionId")
 	public val sessionId: String? = null,
 	/**
-	 * Gets or sets the media version identifier.
+	 * The media version identifier.
 	 */
 	@SerialName("MediaSourceId")
 	public val mediaSourceId: String? = null,
 	/**
-	 * Gets or sets the position ticks.
+	 * The position ticks.
 	 */
 	@SerialName("PositionTicks")
 	public val positionTicks: Long? = null,
 	/**
-	 * Gets or sets the live stream identifier.
+	 * The live stream identifier.
 	 */
 	@SerialName("LiveStreamId")
 	public val liveStreamId: String? = null,
 	/**
-	 * Gets or sets the play session identifier.
+	 * The play session identifier.
 	 */
 	@SerialName("PlaySessionId")
 	public val playSessionId: String? = null,
 	/**
-	 * Gets or sets a value indicating whether this MediaBrowser.Model.Session.PlaybackStopInfo is
-	 * failed.
+	 * A value indicating whether this MediaBrowser.Model.Session.PlaybackStopInfo is failed.
 	 */
 	@SerialName("Failed")
 	public val failed: Boolean,

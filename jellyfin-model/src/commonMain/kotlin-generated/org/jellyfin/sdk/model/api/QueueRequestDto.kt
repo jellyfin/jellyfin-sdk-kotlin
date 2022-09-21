@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class QueueRequestDto(
 	/**
-	 * Gets or sets the items to enqueue.
+	 * The items to enqueue.
 	 */
 	@SerialName("ItemIds")
 	public val itemIds: List<UUID>,

@@ -21,32 +21,32 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class ConfigurationPageInfo(
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String,
 	/**
-	 * Gets or sets a value indicating whether the configurations page is enabled in the main menu.
+	 * A value indicating whether the configurations page is enabled in the main menu.
 	 */
 	@SerialName("EnableInMainMenu")
 	public val enableInMainMenu: Boolean,
 	/**
-	 * Gets or sets the menu section.
+	 * The menu section.
 	 */
 	@SerialName("MenuSection")
 	public val menuSection: String? = null,
 	/**
-	 * Gets or sets the menu icon.
+	 * The menu icon.
 	 */
 	@SerialName("MenuIcon")
 	public val menuIcon: String? = null,
 	/**
-	 * Gets or sets the display name.
+	 * The display name.
 	 */
 	@SerialName("DisplayName")
 	public val displayName: String? = null,
 	/**
-	 * Gets or sets the plugin id.
+	 * The plugin id.
 	 */
 	@SerialName("PluginId")
 	public val pluginId: UUID? = null,

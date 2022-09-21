@@ -21,27 +21,27 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class AccessSchedule(
 	/**
-	 * Gets the id of this instance.
+	 * The id of this instance.
 	 */
 	@SerialName("Id")
 	public val id: Int,
 	/**
-	 * Gets the id of the associated user.
+	 * The id of the associated user.
 	 */
 	@SerialName("UserId")
 	public val userId: UUID,
 	/**
-	 * Gets or sets the day of week.
+	 * The day of week.
 	 */
 	@SerialName("DayOfWeek")
 	public val dayOfWeek: DynamicDayOfWeek,
 	/**
-	 * Gets or sets the start hour.
+	 * The start hour.
 	 */
 	@SerialName("StartHour")
 	public val startHour: Double,
 	/**
-	 * Gets or sets the end hour.
+	 * The end hour.
 	 */
 	@SerialName("EndHour")
 	public val endHour: Double,

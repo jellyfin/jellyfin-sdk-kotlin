@@ -22,12 +22,12 @@ public data class MovieInfoRemoteSearchQuery(
 	@SerialName("ItemId")
 	public val itemId: UUID,
 	/**
-	 * Gets or sets the provider name to search within if set.
+	 * The provider name to search within if set.
 	 */
 	@SerialName("SearchProviderName")
 	public val searchProviderName: String? = null,
 	/**
-	 * Gets or sets a value indicating whether disabled providers should be included.
+	 * A value indicating whether disabled providers should be included.
 	 */
 	@SerialName("IncludeDisabledProviders")
 	public val includeDisabledProviders: Boolean,

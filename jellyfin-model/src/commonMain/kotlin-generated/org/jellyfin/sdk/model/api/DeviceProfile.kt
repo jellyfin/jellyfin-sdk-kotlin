@@ -28,199 +28,197 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class DeviceProfile(
 	/**
-	 * Gets or sets the name of this device profile.
+	 * The name of this device profile.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the Id.
+	 * The Id.
 	 */
 	@SerialName("Id")
 	public val id: String? = null,
 	/**
-	 * Gets or sets the Identification.
+	 * The Identification.
 	 */
 	@SerialName("Identification")
 	public val identification: DeviceIdentification? = null,
 	/**
-	 * Gets or sets the friendly name of the device profile, which can be shown to users.
+	 * The friendly name of the device profile, which can be shown to users.
 	 */
 	@SerialName("FriendlyName")
 	public val friendlyName: String? = null,
 	/**
-	 * Gets or sets the manufacturer of the device which this profile represents.
+	 * The manufacturer of the device which this profile represents.
 	 */
 	@SerialName("Manufacturer")
 	public val manufacturer: String? = null,
 	/**
-	 * Gets or sets an url for the manufacturer of the device which this profile represents.
+	 * An url for the manufacturer of the device which this profile represents.
 	 */
 	@SerialName("ManufacturerUrl")
 	public val manufacturerUrl: String? = null,
 	/**
-	 * Gets or sets the model name of the device which this profile represents.
+	 * The model name of the device which this profile represents.
 	 */
 	@SerialName("ModelName")
 	public val modelName: String? = null,
 	/**
-	 * Gets or sets the model description of the device which this profile represents.
+	 * The model description of the device which this profile represents.
 	 */
 	@SerialName("ModelDescription")
 	public val modelDescription: String? = null,
 	/**
-	 * Gets or sets the model number of the device which this profile represents.
+	 * The model number of the device which this profile represents.
 	 */
 	@SerialName("ModelNumber")
 	public val modelNumber: String? = null,
 	/**
-	 * Gets or sets the ModelUrl.
+	 * The ModelUrl.
 	 */
 	@SerialName("ModelUrl")
 	public val modelUrl: String? = null,
 	/**
-	 * Gets or sets the serial number of the device which this profile represents.
+	 * The serial number of the device which this profile represents.
 	 */
 	@SerialName("SerialNumber")
 	public val serialNumber: String? = null,
 	/**
-	 * Gets or sets a value indicating whether EnableAlbumArtInDidl.
+	 * A value indicating whether EnableAlbumArtInDidl.
 	 */
 	@SerialName("EnableAlbumArtInDidl")
 	public val enableAlbumArtInDidl: Boolean = false,
 	/**
-	 * Gets or sets a value indicating whether EnableSingleAlbumArtLimit.
+	 * A value indicating whether EnableSingleAlbumArtLimit.
 	 */
 	@SerialName("EnableSingleAlbumArtLimit")
 	public val enableSingleAlbumArtLimit: Boolean = false,
 	/**
-	 * Gets or sets a value indicating whether EnableSingleSubtitleLimit.
+	 * A value indicating whether EnableSingleSubtitleLimit.
 	 */
 	@SerialName("EnableSingleSubtitleLimit")
 	public val enableSingleSubtitleLimit: Boolean = false,
 	/**
-	 * Gets or sets the SupportedMediaTypes.
+	 * The SupportedMediaTypes.
 	 */
 	@SerialName("SupportedMediaTypes")
 	public val supportedMediaTypes: String,
 	/**
-	 * Gets or sets the UserId.
+	 * The UserId.
 	 */
 	@SerialName("UserId")
 	public val userId: String? = null,
 	/**
-	 * Gets or sets the AlbumArtPn.
+	 * The AlbumArtPn.
 	 */
 	@SerialName("AlbumArtPn")
 	public val albumArtPn: String? = null,
 	/**
-	 * Gets or sets the MaxAlbumArtWidth.
+	 * The MaxAlbumArtWidth.
 	 */
 	@SerialName("MaxAlbumArtWidth")
 	public val maxAlbumArtWidth: Int? = null,
 	/**
-	 * Gets or sets the MaxAlbumArtHeight.
+	 * The MaxAlbumArtHeight.
 	 */
 	@SerialName("MaxAlbumArtHeight")
 	public val maxAlbumArtHeight: Int? = null,
 	/**
-	 * Gets or sets the maximum allowed width of embedded icons.
+	 * The maximum allowed width of embedded icons.
 	 */
 	@SerialName("MaxIconWidth")
 	public val maxIconWidth: Int? = null,
 	/**
-	 * Gets or sets the maximum allowed height of embedded icons.
+	 * The maximum allowed height of embedded icons.
 	 */
 	@SerialName("MaxIconHeight")
 	public val maxIconHeight: Int? = null,
 	/**
-	 * Gets or sets the maximum allowed bitrate for all streamed content.
+	 * The maximum allowed bitrate for all streamed content.
 	 */
 	@SerialName("MaxStreamingBitrate")
 	public val maxStreamingBitrate: Int? = null,
 	/**
-	 * Gets or sets the maximum allowed bitrate for statically streamed content (= direct played
-	 * files).
+	 * The maximum allowed bitrate for statically streamed content (= direct played files).
 	 */
 	@SerialName("MaxStaticBitrate")
 	public val maxStaticBitrate: Int? = null,
 	/**
-	 * Gets or sets the maximum allowed bitrate for transcoded music streams.
+	 * The maximum allowed bitrate for transcoded music streams.
 	 */
 	@SerialName("MusicStreamingTranscodingBitrate")
 	public val musicStreamingTranscodingBitrate: Int? = null,
 	/**
-	 * Gets or sets the maximum allowed bitrate for statically streamed (= direct played) music files.
+	 * The maximum allowed bitrate for statically streamed (= direct played) music files.
 	 */
 	@SerialName("MaxStaticMusicBitrate")
 	public val maxStaticMusicBitrate: Int? = null,
 	/**
-	 * Gets or sets the content of the aggregationFlags element in the urn:schemas-sonycom:av
-	 * namespace.
+	 * The content of the aggregationFlags element in the urn:schemas-sonycom:av namespace.
 	 */
 	@SerialName("SonyAggregationFlags")
 	public val sonyAggregationFlags: String? = null,
 	/**
-	 * Gets or sets the ProtocolInfo.
+	 * The ProtocolInfo.
 	 */
 	@SerialName("ProtocolInfo")
 	public val protocolInfo: String? = null,
 	/**
-	 * Gets or sets the TimelineOffsetSeconds.
+	 * The TimelineOffsetSeconds.
 	 */
 	@SerialName("TimelineOffsetSeconds")
 	public val timelineOffsetSeconds: Int = 0,
 	/**
-	 * Gets or sets a value indicating whether RequiresPlainVideoItems.
+	 * A value indicating whether RequiresPlainVideoItems.
 	 */
 	@SerialName("RequiresPlainVideoItems")
 	public val requiresPlainVideoItems: Boolean = false,
 	/**
-	 * Gets or sets a value indicating whether RequiresPlainFolders.
+	 * A value indicating whether RequiresPlainFolders.
 	 */
 	@SerialName("RequiresPlainFolders")
 	public val requiresPlainFolders: Boolean = false,
 	/**
-	 * Gets or sets a value indicating whether EnableMSMediaReceiverRegistrar.
+	 * A value indicating whether EnableMSMediaReceiverRegistrar.
 	 */
 	@SerialName("EnableMSMediaReceiverRegistrar")
 	public val enableMsMediaReceiverRegistrar: Boolean = false,
 	/**
-	 * Gets or sets a value indicating whether IgnoreTranscodeByteRangeRequests.
+	 * A value indicating whether IgnoreTranscodeByteRangeRequests.
 	 */
 	@SerialName("IgnoreTranscodeByteRangeRequests")
 	public val ignoreTranscodeByteRangeRequests: Boolean = false,
 	/**
-	 * Gets or sets the XmlRootAttributes.
+	 * The XmlRootAttributes.
 	 */
 	@SerialName("XmlRootAttributes")
 	public val xmlRootAttributes: List<XmlAttribute>,
 	/**
-	 * Gets or sets the direct play profiles.
+	 * The direct play profiles.
 	 */
 	@SerialName("DirectPlayProfiles")
 	public val directPlayProfiles: List<DirectPlayProfile>,
 	/**
-	 * Gets or sets the transcoding profiles.
+	 * The transcoding profiles.
 	 */
 	@SerialName("TranscodingProfiles")
 	public val transcodingProfiles: List<TranscodingProfile>,
 	/**
-	 * Gets or sets the container profiles.
+	 * The container profiles.
 	 */
 	@SerialName("ContainerProfiles")
 	public val containerProfiles: List<ContainerProfile>,
 	/**
-	 * Gets or sets the codec profiles.
+	 * The codec profiles.
 	 */
 	@SerialName("CodecProfiles")
 	public val codecProfiles: List<CodecProfile>,
 	/**
-	 * Gets or sets the ResponseProfiles.
+	 * The ResponseProfiles.
 	 */
 	@SerialName("ResponseProfiles")
 	public val responseProfiles: List<ResponseProfile>,
 	/**
-	 * Gets or sets the subtitle profiles.
+	 * The subtitle profiles.
 	 */
 	@SerialName("SubtitleProfiles")
 	public val subtitleProfiles: List<SubtitleProfile>,

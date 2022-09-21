@@ -14,13 +14,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class PinRedeemResult(
 	/**
-	 * Gets or sets a value indicating whether this MediaBrowser.Model.Users.PinRedeemResult is
-	 * success.
+	 * A value indicating whether this MediaBrowser.Model.Users.PinRedeemResult is success.
 	 */
 	@SerialName("Success")
 	public val success: Boolean,
 	/**
-	 * Gets or sets the users reset.
+	 * The users reset.
 	 */
 	@SerialName("UsersReset")
 	public val usersReset: List<String>,

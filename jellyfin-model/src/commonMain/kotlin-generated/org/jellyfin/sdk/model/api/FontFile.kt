@@ -21,22 +21,22 @@ import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 @Serializable
 public data class FontFile(
 	/**
-	 * Gets or sets the name.
+	 * The name.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * Gets or sets the size.
+	 * The size.
 	 */
 	@SerialName("Size")
 	public val size: Long,
 	/**
-	 * Gets or sets the date created.
+	 * The date created.
 	 */
 	@SerialName("DateCreated")
 	public val dateCreated: DateTime,
 	/**
-	 * Gets or sets the date modified.
+	 * The date modified.
 	 */
 	@SerialName("DateModified")
 	public val dateModified: DateTime,

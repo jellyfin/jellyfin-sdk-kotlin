@@ -22,7 +22,7 @@ import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets all genres from a given item, folder, or the entire library.
+ * All genres from a given item, folder, or the entire library.
  */
 @Serializable
 public data class GetGenresRequest(

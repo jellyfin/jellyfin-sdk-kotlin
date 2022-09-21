@@ -16,22 +16,22 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ChannelMappingOptionsDto(
 	/**
-	 * Gets or sets list of tuner channels.
+	 * List of tuner channels.
 	 */
 	@SerialName("TunerChannels")
 	public val tunerChannels: List<TunerChannelMapping>,
 	/**
-	 * Gets or sets list of provider channels.
+	 * List of provider channels.
 	 */
 	@SerialName("ProviderChannels")
 	public val providerChannels: List<NameIdPair>,
 	/**
-	 * Gets or sets list of mappings.
+	 * List of mappings.
 	 */
 	@SerialName("Mappings")
 	public val mappings: List<NameValuePair>,
 	/**
-	 * Gets or sets provider name.
+	 * Provider name.
 	 */
 	@SerialName("ProviderName")
 	public val providerName: String? = null,

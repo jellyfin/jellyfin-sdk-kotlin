@@ -19,7 +19,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets the original items of a playlist.
+ * The original items of a playlist.
  */
 @Serializable
 public data class GetPlaylistItemsRequest(

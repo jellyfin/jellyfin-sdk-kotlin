@@ -17,7 +17,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets similar items.
+ * Similar items.
  */
 @Serializable
 public data class GetSimilarMoviesRequest(

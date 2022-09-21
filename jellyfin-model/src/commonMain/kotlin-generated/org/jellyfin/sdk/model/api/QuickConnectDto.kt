@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class QuickConnectDto(
 	/**
-	 * Gets or sets the quick connect secret.
+	 * The quick connect secret.
 	 */
 	@SerialName("Secret")
 	public val secret: String,

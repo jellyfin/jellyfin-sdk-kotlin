@@ -26,22 +26,22 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class BufferRequestDto(
 	/**
-	 * Gets or sets when the request has been made by the client.
+	 * When the request has been made by the client.
 	 */
 	@SerialName("When")
 	public val `when`: DateTime,
 	/**
-	 * Gets or sets the position ticks.
+	 * The position ticks.
 	 */
 	@SerialName("PositionTicks")
 	public val positionTicks: Long,
 	/**
-	 * Gets or sets a value indicating whether the client playback is unpaused.
+	 * A value indicating whether the client playback is unpaused.
 	 */
 	@SerialName("IsPlaying")
 	public val isPlaying: Boolean,
 	/**
-	 * Gets or sets the playlist item identifier of the playing item.
+	 * The playlist item identifier of the playing item.
 	 */
 	@SerialName("PlaylistItemId")
 	public val playlistItemId: UUID,

@@ -21,7 +21,7 @@ import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Gets all studios from a given item, folder, or the entire library.
+ * All studios from a given item, folder, or the entire library.
  */
 @Serializable
 public data class GetStudiosRequest(
