@@ -14,6 +14,7 @@ import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.constants.Types
+import org.jellyfin.openapi.model.DescriptionType
 import org.jellyfin.openapi.model.EnumApiModel
 import org.jellyfin.openapi.model.JellyFile
 
@@ -51,7 +52,7 @@ class EnumModelBuilder(
 				}
 
 				// Header
-				descriptionBuilder.build(data.description)?.let {
+				descriptionBuilder.build(DescriptionType.MODEL, data.description)?.let {
 					addKdoc("%L", it)
 				}
 				if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_CLASS))

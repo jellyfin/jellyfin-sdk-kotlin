@@ -5,7 +5,9 @@ import org.jellyfin.openapi.hooks.api.ClientLogOperationUrlHook
 import org.jellyfin.openapi.hooks.api.LargeOperationRequestModelHook
 import org.jellyfin.openapi.hooks.api.PlayStateServiceNameHook
 import org.jellyfin.openapi.hooks.model.DefaultUserIdHook
+import org.jellyfin.openapi.hooks.model.DotNetDescriptionHook
 import org.jellyfin.openapi.hooks.model.ImageMapsHook
+import org.jellyfin.openapi.hooks.model.SwashbuckleDescriptionHook
 import org.jellyfin.openapi.hooks.model.SyncPlayGroupUpdateHook
 import org.koin.dsl.bind
 import org.koin.dsl.module
@@ -22,4 +24,7 @@ val hooksModule = module {
 	single { PlayStateServiceNameHook() } bind ServiceNameHook::class
 
 	single { DefaultUserIdHook() } bind DefaultValueHook::class
+
+	single { DotNetDescriptionHook() } bind DescriptionHook::class
+	single { SwashbuckleDescriptionHook() } bind DescriptionHook::class
 }

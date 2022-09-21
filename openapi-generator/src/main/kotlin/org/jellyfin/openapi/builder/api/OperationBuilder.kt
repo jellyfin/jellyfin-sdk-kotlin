@@ -15,9 +15,9 @@ import org.jellyfin.openapi.constants.Classes
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.constants.Types
+import org.jellyfin.openapi.model.DescriptionType
 import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
-import org.jellyfin.openapi.model.DefaultValue
 import org.jellyfin.openapi.model.IntRangeValidation
 import org.jellyfin.openapi.model.ParameterValidation
 
@@ -30,7 +30,7 @@ open class OperationBuilder(
 		addModifiers(KModifier.SUSPEND)
 
 		// Add description
-		descriptionBuilder.build(data.description)?.let {
+		descriptionBuilder.build(DescriptionType.OPERATION, data.description)?.let {
 			addKdoc("%L", it)
 		}
 
@@ -47,7 +47,7 @@ open class OperationBuilder(
 		defaultValue(data)
 
 		// Add description
-		descriptionBuilder.build(data.description)?.let {
+		descriptionBuilder.build(DescriptionType.OPERATION_PARAMETER, data.description)?.let {
 			addKdoc("%L", it)
 		}
 	}.build()
