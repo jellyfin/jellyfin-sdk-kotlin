@@ -1,4 +1,4 @@
-name: Gradle validate
+name: Gradle / Validate wrapper
 
 on:
   push:
@@ -8,8 +8,12 @@ on:
     paths:
       - '**/gradlе-wrapper.jar'
 
+permissions:
+  contents: read
+
 jobs:
   validate:
+    name: Validate
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
