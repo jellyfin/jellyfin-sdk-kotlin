@@ -5699,6 +5699,7 @@ public final class org/jellyfin/sdk/model/api/MediaStream$Companion {
 public final class org/jellyfin/sdk/model/api/MediaStreamType : java/lang/Enum {
 	public static final field AUDIO Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static final field Companion Lorg/jellyfin/sdk/model/api/MediaStreamType$Companion;
+	public static final field DATA Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static final field EMBEDDED_IMAGE Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static final field SUBTITLE Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static final field VIDEO Lorg/jellyfin/sdk/model/api/MediaStreamType;
