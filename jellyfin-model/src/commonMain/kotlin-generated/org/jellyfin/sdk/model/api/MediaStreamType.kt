@@ -24,6 +24,8 @@ public enum class MediaStreamType(
 	SUBTITLE("Subtitle"),
 	@SerialName("EmbeddedImage")
 	EMBEDDED_IMAGE("EmbeddedImage"),
+	@SerialName("Data")
+	DATA("Data"),
 	;
 
 	public override fun toString(): String = serialName
