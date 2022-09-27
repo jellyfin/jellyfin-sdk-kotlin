@@ -82,7 +82,7 @@ jobs:
       - build-dokka
     steps:
       - name: Setup GitHub Pages
-        uses: actions/configure-pages@45efe609374726fd94570f0e5a4c32f41675e823 # tag=v2
+        uses: actions/configure-pages@2ce6d5eaa1f7b36a30c9b424cd73fab661857cfe # tag=v2
       - name: Download Vitepress artifact
         uses: actions/download-artifact@fb598a63ae348fa914e94cd0ff38f362e927b741 # tag=v3
         with:
