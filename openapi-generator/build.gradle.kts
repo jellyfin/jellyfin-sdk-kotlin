@@ -1,9 +1,7 @@
-import de.undercouch.gradle.tasks.download.Download
-
 plugins {
+	alias(libs.plugins.download)
 	kotlin("jvm")
 	id("application")
-	id("de.undercouch.download")
 }
 
 application {
@@ -69,7 +67,7 @@ arrayOf(
 	"stable-pre" to "Prerelease",
 	"unstable" to "Unstable",
 ).forEach { (flavor, flavorPascalCase) ->
-	tasks.register("downloadApiSpec${flavorPascalCase}", Download::class) {
+	tasks.register("downloadApiSpec${flavorPascalCase}", de.undercouch.gradle.tasks.download.Download::class) {
 		src("https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-${flavor}.json")
 		dest(defaultConfig["openApiFile"])
 		outputs.file(defaultConfig["openApiFile"])
