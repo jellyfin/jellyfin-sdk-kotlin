@@ -1,9 +1,10 @@
 plugins {
-	alias(libs.plugins.nexuspublish)
+	alias(libs.plugins.binarycompatibilityvalidator)
 	alias(libs.plugins.detekt)
 	alias(libs.plugins.dokka)
-	alias(libs.plugins.binarycompatibilityvalidator)
+	alias(libs.plugins.download)
 	alias(libs.plugins.kotest)
+	alias(libs.plugins.nexuspublish)
 }
 
 // Versioning
