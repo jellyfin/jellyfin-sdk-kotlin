@@ -5,6 +5,6 @@
 		"build": "vitepress build docs"
 	},
 	"devDependencies": {
-		"vitepress": "1.0.0-alpha.20"
+		"vitepress": "1.0.0-alpha.21"
 	}
 }
