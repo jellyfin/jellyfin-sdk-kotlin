@@ -414,18 +414,6 @@ public final class org/jellyfin/sdk/model/api/Architecture : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/Architecture;
 }
 
-public final class org/jellyfin/sdk/model/api/Architecture$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/Architecture$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/Architecture;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/Architecture;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/Architecture$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -1144,18 +1132,6 @@ public final class org/jellyfin/sdk/model/api/BaseItemKind : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/BaseItemKind;
 }
 
-public final class org/jellyfin/sdk/model/api/BaseItemKind$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/BaseItemKind$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/BaseItemKind;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/BaseItemKind;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/BaseItemKind$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -1541,18 +1517,6 @@ public final class org/jellyfin/sdk/model/api/ChannelItemSortField : java/lang/E
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ChannelItemSortField;
 }
 
-public final class org/jellyfin/sdk/model/api/ChannelItemSortField$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ChannelItemSortField$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ChannelItemSortField;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ChannelItemSortField;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/ChannelItemSortField$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -1610,18 +1574,6 @@ public final class org/jellyfin/sdk/model/api/ChannelMediaContentType : java/lan
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ChannelMediaContentType;
 }
 
-public final class org/jellyfin/sdk/model/api/ChannelMediaContentType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ChannelMediaContentType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ChannelMediaContentType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ChannelMediaContentType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/ChannelMediaContentType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -1637,18 +1589,6 @@ public final class org/jellyfin/sdk/model/api/ChannelMediaType : java/lang/Enum 
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ChannelMediaType;
 }
 
-public final class org/jellyfin/sdk/model/api/ChannelMediaType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ChannelMediaType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ChannelMediaType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ChannelMediaType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/ChannelMediaType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -1661,18 +1601,6 @@ public final class org/jellyfin/sdk/model/api/ChannelType : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ChannelType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ChannelType;
-}
-
-public final class org/jellyfin/sdk/model/api/ChannelType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ChannelType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ChannelType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ChannelType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ChannelType$Companion {
@@ -1896,18 +1824,6 @@ public final class org/jellyfin/sdk/model/api/CodecType : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/CodecType;
 }
 
-public final class org/jellyfin/sdk/model/api/CodecType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/CodecType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/CodecType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/CodecType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/CodecType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -1956,18 +1872,6 @@ public final class org/jellyfin/sdk/model/api/CollectionTypeOptions : java/lang/
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/CollectionTypeOptions;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/CollectionTypeOptions;
-}
-
-public final class org/jellyfin/sdk/model/api/CollectionTypeOptions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/CollectionTypeOptions$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/CollectionTypeOptions;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/CollectionTypeOptions;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/CollectionTypeOptions$Companion {
@@ -2291,18 +2195,6 @@ public final class org/jellyfin/sdk/model/api/DayOfWeek : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/DayOfWeek;
 }
 
-public final class org/jellyfin/sdk/model/api/DayOfWeek$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/DayOfWeek$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/DayOfWeek;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/DayOfWeek;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/DayOfWeek$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -2316,18 +2208,6 @@ public final class org/jellyfin/sdk/model/api/DayPattern : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DayPattern;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/DayPattern;
-}
-
-public final class org/jellyfin/sdk/model/api/DayPattern$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/DayPattern$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/DayPattern;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/DayPattern;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/DayPattern$Companion {
@@ -2718,18 +2598,6 @@ public final class org/jellyfin/sdk/model/api/DeviceProfileType : java/lang/Enum
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/DeviceProfileType;
 }
 
-public final class org/jellyfin/sdk/model/api/DeviceProfileType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/DeviceProfileType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/DeviceProfileType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/DeviceProfileType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/DeviceProfileType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -2891,18 +2759,6 @@ public final class org/jellyfin/sdk/model/api/DlnaProfileType : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/DlnaProfileType;
 }
 
-public final class org/jellyfin/sdk/model/api/DlnaProfileType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/DlnaProfileType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/DlnaProfileType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/DlnaProfileType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/DlnaProfileType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -2925,18 +2781,6 @@ public final class org/jellyfin/sdk/model/api/DynamicDayOfWeek : java/lang/Enum 
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/DynamicDayOfWeek;
 }
 
-public final class org/jellyfin/sdk/model/api/DynamicDayOfWeek$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/DynamicDayOfWeek$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/DynamicDayOfWeek;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/DynamicDayOfWeek;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/DynamicDayOfWeek$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -2953,18 +2797,6 @@ public final class org/jellyfin/sdk/model/api/EmbeddedSubtitleOptions : java/lan
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/EmbeddedSubtitleOptions;
 }
 
-public final class org/jellyfin/sdk/model/api/EmbeddedSubtitleOptions$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/EmbeddedSubtitleOptions$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/EmbeddedSubtitleOptions;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/EmbeddedSubtitleOptions;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/EmbeddedSubtitleOptions$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -2977,18 +2809,6 @@ public final class org/jellyfin/sdk/model/api/EncodingContext : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/EncodingContext;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/EncodingContext;
-}
-
-public final class org/jellyfin/sdk/model/api/EncodingContext$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/EncodingContext$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/EncodingContext;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/EncodingContext;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/EncodingContext$Companion {
@@ -3189,18 +3009,6 @@ public final class org/jellyfin/sdk/model/api/ExternalIdMediaType : java/lang/En
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
 }
 
-public final class org/jellyfin/sdk/model/api/ExternalIdMediaType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ExternalIdMediaType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/ExternalIdMediaType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -3249,18 +3057,6 @@ public final class org/jellyfin/sdk/model/api/FFmpegLocation : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/FFmpegLocation;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/FFmpegLocation;
-}
-
-public final class org/jellyfin/sdk/model/api/FFmpegLocation$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/FFmpegLocation$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/FFmpegLocation;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/FFmpegLocation;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/FFmpegLocation$Companion {
@@ -3313,18 +3109,6 @@ public final class org/jellyfin/sdk/model/api/FileSystemEntryType : java/lang/En
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/FileSystemEntryType;
 }
 
-public final class org/jellyfin/sdk/model/api/FileSystemEntryType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/FileSystemEntryType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/FileSystemEntryType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/FileSystemEntryType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/FileSystemEntryType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -3375,18 +3159,6 @@ public final class org/jellyfin/sdk/model/api/ForgotPasswordAction : java/lang/E
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ForgotPasswordAction;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ForgotPasswordAction;
-}
-
-public final class org/jellyfin/sdk/model/api/ForgotPasswordAction$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ForgotPasswordAction$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ForgotPasswordAction;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ForgotPasswordAction;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ForgotPasswordAction$Companion {
@@ -3572,18 +3344,6 @@ public final class org/jellyfin/sdk/model/api/GeneralCommandType : java/lang/Enu
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/GeneralCommandType;
 }
 
-public final class org/jellyfin/sdk/model/api/GeneralCommandType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/GeneralCommandType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/GeneralCommandType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GeneralCommandType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/GeneralCommandType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -3719,18 +3479,6 @@ public final class org/jellyfin/sdk/model/api/GroupQueueMode : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/GroupQueueMode;
 }
 
-public final class org/jellyfin/sdk/model/api/GroupQueueMode$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/GroupQueueMode$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/GroupQueueMode;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GroupQueueMode;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/GroupQueueMode$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -3744,18 +3492,6 @@ public final class org/jellyfin/sdk/model/api/GroupRepeatMode : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupRepeatMode;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/GroupRepeatMode;
-}
-
-public final class org/jellyfin/sdk/model/api/GroupRepeatMode$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/GroupRepeatMode$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/GroupRepeatMode;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GroupRepeatMode;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/GroupRepeatMode$Companion {
@@ -3772,18 +3508,6 @@ public final class org/jellyfin/sdk/model/api/GroupShuffleMode : java/lang/Enum 
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/GroupShuffleMode;
 }
 
-public final class org/jellyfin/sdk/model/api/GroupShuffleMode$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/GroupShuffleMode$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/GroupShuffleMode;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GroupShuffleMode;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/GroupShuffleMode$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -3798,18 +3522,6 @@ public final class org/jellyfin/sdk/model/api/GroupStateType : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupStateType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/GroupStateType;
-}
-
-public final class org/jellyfin/sdk/model/api/GroupStateType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/GroupStateType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/GroupStateType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GroupStateType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/GroupStateType$Companion {
@@ -3833,18 +3545,6 @@ public final class org/jellyfin/sdk/model/api/GroupUpdateType : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupUpdateType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/GroupUpdateType;
-}
-
-public final class org/jellyfin/sdk/model/api/GroupUpdateType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/GroupUpdateType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/GroupUpdateType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GroupUpdateType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/GroupUpdateType$Companion {
@@ -3897,18 +3597,6 @@ public final class org/jellyfin/sdk/model/api/HardwareEncodingType : java/lang/E
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/HardwareEncodingType;
 }
 
-public final class org/jellyfin/sdk/model/api/HardwareEncodingType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/HardwareEncodingType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/HardwareEncodingType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/HardwareEncodingType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/HardwareEncodingType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -3922,18 +3610,6 @@ public final class org/jellyfin/sdk/model/api/HeaderMatchType : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/HeaderMatchType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/HeaderMatchType;
-}
-
-public final class org/jellyfin/sdk/model/api/HeaderMatchType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/HeaderMatchType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/HeaderMatchType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/HeaderMatchType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/HeaderMatchType$Companion {
@@ -4100,18 +3776,6 @@ public final class org/jellyfin/sdk/model/api/ImageFormat : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ImageFormat;
 }
 
-public final class org/jellyfin/sdk/model/api/ImageFormat$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ImageFormat$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ImageFormat;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ImageFormat;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/ImageFormat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -4211,18 +3875,6 @@ public final class org/jellyfin/sdk/model/api/ImageOrientation : java/lang/Enum 
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ImageOrientation;
 }
 
-public final class org/jellyfin/sdk/model/api/ImageOrientation$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ImageOrientation$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ImageOrientation;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ImageOrientation;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/ImageOrientation$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -4269,18 +3921,6 @@ public final class org/jellyfin/sdk/model/api/ImageSavingConvention : java/lang/
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ImageSavingConvention;
 }
 
-public final class org/jellyfin/sdk/model/api/ImageSavingConvention$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ImageSavingConvention$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ImageSavingConvention;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ImageSavingConvention;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/ImageSavingConvention$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -4304,18 +3944,6 @@ public final class org/jellyfin/sdk/model/api/ImageType : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ImageType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ImageType;
-}
-
-public final class org/jellyfin/sdk/model/api/ImageType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ImageType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ImageType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ImageType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ImageType$Companion {
@@ -4373,18 +4001,6 @@ public final class org/jellyfin/sdk/model/api/IsoType : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/IsoType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/IsoType;
-}
-
-public final class org/jellyfin/sdk/model/api/IsoType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/IsoType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/IsoType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/IsoType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/IsoType$Companion {
@@ -4512,18 +4128,6 @@ public final class org/jellyfin/sdk/model/api/ItemFields : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ItemFields;
 }
 
-public final class org/jellyfin/sdk/model/api/ItemFields$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ItemFields$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ItemFields;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ItemFields;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/ItemFields$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -4543,18 +4147,6 @@ public final class org/jellyfin/sdk/model/api/ItemFilter : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ItemFilter;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ItemFilter;
-}
-
-public final class org/jellyfin/sdk/model/api/ItemFilter$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ItemFilter$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ItemFilter;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ItemFilter;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ItemFilter$Companion {
@@ -4601,18 +4193,6 @@ public final class org/jellyfin/sdk/model/api/KeepUntil : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/KeepUntil;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/KeepUntil;
-}
-
-public final class org/jellyfin/sdk/model/api/KeepUntil$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/KeepUntil$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/KeepUntil;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/KeepUntil;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/KeepUntil$Companion {
@@ -5091,18 +4671,6 @@ public final class org/jellyfin/sdk/model/api/LiveTvServiceStatus : java/lang/En
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/LiveTvServiceStatus;
 }
 
-public final class org/jellyfin/sdk/model/api/LiveTvServiceStatus$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/LiveTvServiceStatus$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/LiveTvServiceStatus;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LiveTvServiceStatus;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/LiveTvServiceStatus$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -5151,18 +4719,6 @@ public final class org/jellyfin/sdk/model/api/LocationType : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/LocationType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/LocationType;
-}
-
-public final class org/jellyfin/sdk/model/api/LocationType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/LocationType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/LocationType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LocationType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LocationType$Companion {
@@ -5219,18 +4775,6 @@ public final class org/jellyfin/sdk/model/api/LogLevel : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/LogLevel;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/LogLevel;
-}
-
-public final class org/jellyfin/sdk/model/api/LogLevel$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/LogLevel$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/LogLevel;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LogLevel;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LogLevel$Companion {
@@ -5395,18 +4939,6 @@ public final class org/jellyfin/sdk/model/api/MediaProtocol : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/MediaProtocol;
 }
 
-public final class org/jellyfin/sdk/model/api/MediaProtocol$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/MediaProtocol$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/MediaProtocol;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MediaProtocol;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/MediaProtocol$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -5533,18 +5065,6 @@ public final class org/jellyfin/sdk/model/api/MediaSourceType : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MediaSourceType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/MediaSourceType;
-}
-
-public final class org/jellyfin/sdk/model/api/MediaSourceType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/MediaSourceType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/MediaSourceType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MediaSourceType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MediaSourceType$Companion {
@@ -5707,18 +5227,6 @@ public final class org/jellyfin/sdk/model/api/MediaStreamType : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/MediaStreamType;
-}
-
-public final class org/jellyfin/sdk/model/api/MediaStreamType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/MediaStreamType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/MediaStreamType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MediaStreamType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MediaStreamType$Companion {
@@ -5946,18 +5454,6 @@ public final class org/jellyfin/sdk/model/api/MetadataField : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/MetadataField;
 }
 
-public final class org/jellyfin/sdk/model/api/MetadataField$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/MetadataField$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/MetadataField;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MetadataField;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/MetadataField$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -6016,18 +5512,6 @@ public final class org/jellyfin/sdk/model/api/MetadataRefreshMode : java/lang/En
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;
-}
-
-public final class org/jellyfin/sdk/model/api/MetadataRefreshMode$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/MetadataRefreshMode$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MetadataRefreshMode$Companion {
@@ -6554,18 +6038,6 @@ public final class org/jellyfin/sdk/model/api/NotificationLevel : java/lang/Enum
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/NotificationLevel;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/NotificationLevel;
-}
-
-public final class org/jellyfin/sdk/model/api/NotificationLevel$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/NotificationLevel$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/NotificationLevel;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/NotificationLevel;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/NotificationLevel$Companion {
@@ -7108,18 +6580,6 @@ public final class org/jellyfin/sdk/model/api/PlayAccess : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/PlayAccess;
 }
 
-public final class org/jellyfin/sdk/model/api/PlayAccess$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/PlayAccess$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/PlayAccess;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlayAccess;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/PlayAccess$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -7137,18 +6597,6 @@ public final class org/jellyfin/sdk/model/api/PlayCommand : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/PlayCommand;
 }
 
-public final class org/jellyfin/sdk/model/api/PlayCommand$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/PlayCommand$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/PlayCommand;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlayCommand;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/PlayCommand$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -7162,18 +6610,6 @@ public final class org/jellyfin/sdk/model/api/PlayMethod : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlayMethod;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/PlayMethod;
-}
-
-public final class org/jellyfin/sdk/model/api/PlayMethod$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/PlayMethod$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/PlayMethod;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlayMethod;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlayMethod$Companion {
@@ -7268,18 +6704,6 @@ public final class org/jellyfin/sdk/model/api/PlaybackErrorCode : java/lang/Enum
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlaybackErrorCode;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/PlaybackErrorCode;
-}
-
-public final class org/jellyfin/sdk/model/api/PlaybackErrorCode$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/PlaybackErrorCode$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/PlaybackErrorCode;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlaybackErrorCode;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlaybackErrorCode$Companion {
@@ -7668,18 +7092,6 @@ public final class org/jellyfin/sdk/model/api/PlaystateCommand : java/lang/Enum 
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/PlaystateCommand;
 }
 
-public final class org/jellyfin/sdk/model/api/PlaystateCommand$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/PlaystateCommand$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/PlaystateCommand;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlaystateCommand;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/PlaystateCommand$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -7777,18 +7189,6 @@ public final class org/jellyfin/sdk/model/api/PluginStatus : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PluginStatus;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/PluginStatus;
-}
-
-public final class org/jellyfin/sdk/model/api/PluginStatus$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/PluginStatus$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/PluginStatus;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PluginStatus;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PluginStatus$Companion {
@@ -7915,18 +7315,6 @@ public final class org/jellyfin/sdk/model/api/ProfileConditionType : java/lang/E
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ProfileConditionType;
 }
 
-public final class org/jellyfin/sdk/model/api/ProfileConditionType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ProfileConditionType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ProfileConditionType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ProfileConditionType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/ProfileConditionType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -7963,18 +7351,6 @@ public final class org/jellyfin/sdk/model/api/ProfileConditionValue : java/lang/
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ProfileConditionValue;
 }
 
-public final class org/jellyfin/sdk/model/api/ProfileConditionValue$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ProfileConditionValue$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ProfileConditionValue;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ProfileConditionValue;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/ProfileConditionValue$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -7991,18 +7367,6 @@ public final class org/jellyfin/sdk/model/api/ProgramAudio : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ProgramAudio;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ProgramAudio;
-}
-
-public final class org/jellyfin/sdk/model/api/ProgramAudio$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ProgramAudio$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ProgramAudio;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ProgramAudio;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ProgramAudio$Companion {
@@ -8274,18 +7638,6 @@ public final class org/jellyfin/sdk/model/api/RatingType : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/RatingType;
 }
 
-public final class org/jellyfin/sdk/model/api/RatingType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/RatingType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/RatingType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/RatingType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/RatingType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -8377,18 +7729,6 @@ public final class org/jellyfin/sdk/model/api/RecommendationType : java/lang/Enu
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/RecommendationType;
 }
 
-public final class org/jellyfin/sdk/model/api/RecommendationType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/RecommendationType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/RecommendationType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/RecommendationType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/RecommendationType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -8406,18 +7746,6 @@ public final class org/jellyfin/sdk/model/api/RecordingStatus : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/RecordingStatus;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/RecordingStatus;
-}
-
-public final class org/jellyfin/sdk/model/api/RecordingStatus$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/RecordingStatus$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/RecordingStatus;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/RecordingStatus;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/RecordingStatus$Companion {
@@ -8659,18 +7987,6 @@ public final class org/jellyfin/sdk/model/api/RepeatMode : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/RepeatMode;
 }
 
-public final class org/jellyfin/sdk/model/api/RepeatMode$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/RepeatMode$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/RepeatMode;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/RepeatMode;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/RepeatMode$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -8761,18 +8077,6 @@ public final class org/jellyfin/sdk/model/api/ScrollDirection : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ScrollDirection;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/ScrollDirection;
-}
-
-public final class org/jellyfin/sdk/model/api/ScrollDirection$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/ScrollDirection$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/ScrollDirection;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ScrollDirection;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ScrollDirection$Companion {
@@ -8981,18 +8285,6 @@ public final class org/jellyfin/sdk/model/api/SendCommandType : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SendCommandType;
 }
 
-public final class org/jellyfin/sdk/model/api/SendCommandType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/SendCommandType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/SendCommandType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SendCommandType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/SendCommandType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -9006,18 +8298,6 @@ public final class org/jellyfin/sdk/model/api/SendToUserType : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SendToUserType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SendToUserType;
-}
-
-public final class org/jellyfin/sdk/model/api/SendToUserType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/SendToUserType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/SendToUserType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SendToUserType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SendToUserType$Companion {
@@ -9120,18 +8400,6 @@ public final class org/jellyfin/sdk/model/api/SeriesStatus : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SeriesStatus;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SeriesStatus;
-}
-
-public final class org/jellyfin/sdk/model/api/SeriesStatus$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/SeriesStatus$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/SeriesStatus;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SeriesStatus;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SeriesStatus$Companion {
@@ -9563,18 +8831,6 @@ public final class org/jellyfin/sdk/model/api/SessionMessageType : java/lang/Enu
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SessionMessageType;
 }
 
-public final class org/jellyfin/sdk/model/api/SessionMessageType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/SessionMessageType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/SessionMessageType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SessionMessageType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/SessionMessageType$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -9803,18 +9059,6 @@ public final class org/jellyfin/sdk/model/api/SortOrder : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SortOrder;
 }
 
-public final class org/jellyfin/sdk/model/api/SortOrder$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/SortOrder$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/SortOrder;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SortOrder;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/SortOrder$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -9968,18 +9212,6 @@ public final class org/jellyfin/sdk/model/api/SubtitleDeliveryMethod : java/lang
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;
 }
 
-public final class org/jellyfin/sdk/model/api/SubtitleDeliveryMethod$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/SubtitleDeliveryMethod$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -10044,18 +9276,6 @@ public final class org/jellyfin/sdk/model/api/SubtitlePlaybackMode : java/lang/E
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SubtitlePlaybackMode;
 }
 
-public final class org/jellyfin/sdk/model/api/SubtitlePlaybackMode$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/SubtitlePlaybackMode$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/SubtitlePlaybackMode;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SubtitlePlaybackMode;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/SubtitlePlaybackMode$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -10108,18 +9328,6 @@ public final class org/jellyfin/sdk/model/api/SyncPlayUserAccessType : java/lang
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SyncPlayUserAccessType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/SyncPlayUserAccessType;
-}
-
-public final class org/jellyfin/sdk/model/api/SyncPlayUserAccessType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/SyncPlayUserAccessType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/SyncPlayUserAccessType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SyncPlayUserAccessType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SyncPlayUserAccessType$Companion {
@@ -10217,18 +9425,6 @@ public final class org/jellyfin/sdk/model/api/TaskCompletionStatus : java/lang/E
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TaskCompletionStatus;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/TaskCompletionStatus;
-}
-
-public final class org/jellyfin/sdk/model/api/TaskCompletionStatus$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/TaskCompletionStatus$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/TaskCompletionStatus;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TaskCompletionStatus;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TaskCompletionStatus$Companion {
@@ -10338,18 +9534,6 @@ public final class org/jellyfin/sdk/model/api/TaskState : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TaskState;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/TaskState;
-}
-
-public final class org/jellyfin/sdk/model/api/TaskState$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/TaskState$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/TaskState;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TaskState;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TaskState$Companion {
@@ -10684,18 +9868,6 @@ public final class org/jellyfin/sdk/model/api/TranscodeSeekInfo : java/lang/Enum
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/TranscodeSeekInfo;
 }
 
-public final class org/jellyfin/sdk/model/api/TranscodeSeekInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/TranscodeSeekInfo$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/TranscodeSeekInfo;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TranscodeSeekInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/TranscodeSeekInfo$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -10825,18 +9997,6 @@ public final class org/jellyfin/sdk/model/api/TransportStreamTimestamp : java/la
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TransportStreamTimestamp;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/TransportStreamTimestamp;
-}
-
-public final class org/jellyfin/sdk/model/api/TransportStreamTimestamp$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/TransportStreamTimestamp$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/TransportStreamTimestamp;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TransportStreamTimestamp;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TransportStreamTimestamp$Companion {
@@ -10989,18 +10149,6 @@ public final class org/jellyfin/sdk/model/api/UnratedItem : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/UnratedItem;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/UnratedItem;
-}
-
-public final class org/jellyfin/sdk/model/api/UnratedItem$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/UnratedItem$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/UnratedItem;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UnratedItem;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UnratedItem$Companion {
@@ -11581,18 +10729,6 @@ public final class org/jellyfin/sdk/model/api/Video3dFormat : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/Video3dFormat;
 }
 
-public final class org/jellyfin/sdk/model/api/Video3dFormat$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/Video3dFormat$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/Video3dFormat;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/Video3dFormat;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
-}
-
 public final class org/jellyfin/sdk/model/api/Video3dFormat$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
@@ -11607,18 +10743,6 @@ public final class org/jellyfin/sdk/model/api/VideoType : java/lang/Enum {
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/VideoType;
 	public static fun values ()[Lorg/jellyfin/sdk/model/api/VideoType;
-}
-
-public final class org/jellyfin/sdk/model/api/VideoType$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/VideoType$$serializer;
-	public static final synthetic field descriptor Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public fun childSerializers ()[Lkotlinx/serialization/KSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/VideoType;
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/VideoType;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/VideoType$Companion {
