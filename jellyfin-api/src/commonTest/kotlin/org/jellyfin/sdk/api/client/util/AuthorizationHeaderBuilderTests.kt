@@ -17,6 +17,15 @@ class AuthorizationHeaderBuilderTests : FunSpec({
 		) { a, b -> AuthorizationHeaderBuilder.encodeParameterValue(a) shouldBe b }
 	}
 
+	test("encodeParameter removes line breaks") {
+		forAll(
+			row("with\nnewline", "with+newline"),
+			row("with trailing newline\n", "with+trailing+newline"),
+			row("\nwith prefix newline\n", "with+prefix+newline"),
+			row("\nwith\na\nlot\nof\nnewline\n", "with+a+lot+of+newline"),
+		) { a, b -> AuthorizationHeaderBuilder.encodeParameterValue(a) shouldBe b }
+	}
+
 	test("buildParameter creates a valid header with access token") {
 		AuthorizationHeaderBuilder.buildParameter("key", "val") shouldBe """key="val""""
 		AuthorizationHeaderBuilder.buildParameter("one", "two") shouldBe """one="two""""
