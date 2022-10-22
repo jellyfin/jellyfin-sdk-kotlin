@@ -1,8 +1,12 @@
-import { defineConfig } from 'vitepress';
+import {defineConfig} from 'vitepress';
 
 export default defineConfig({
 	title: 'Jellyfin Kotlin SDK',
 	description: 'Documentation for the Jellyfin Kotlin SDK.',
+
+	head: [
+		['link', { rel: 'icon', type: 'image/svg', href: '/jellyfin.svg' }],
+	],
 
 	themeConfig: {
 		logo: 'jellyfin.svg',
