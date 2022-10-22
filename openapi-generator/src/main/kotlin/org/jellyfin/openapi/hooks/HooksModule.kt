@@ -8,14 +8,12 @@ import org.jellyfin.openapi.hooks.model.DefaultUserIdHook
 import org.jellyfin.openapi.hooks.model.DotNetDescriptionHook
 import org.jellyfin.openapi.hooks.model.ImageMapsHook
 import org.jellyfin.openapi.hooks.model.SwashbuckleDescriptionHook
-import org.jellyfin.openapi.hooks.model.SyncPlayGroupUpdateHook
 import org.jellyfin.openapi.hooks.model.TranscodingInfoTranscodeReasonsHook
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val hooksModule = module {
 	single { ImageMapsHook() } bind TypeBuilderHook::class
-	single { SyncPlayGroupUpdateHook() } bind TypeBuilderHook::class
 	single { TranscodingInfoTranscodeReasonsHook() } bind TypeBuilderHook::class
 
 	single { BinaryOperationUrlHook() } bind OperationUrlHook::class
