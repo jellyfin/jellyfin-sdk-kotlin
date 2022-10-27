@@ -173,4 +173,18 @@ class UrlBuilderTests : FunSpec({
 			pathParameters = parameters
 		) shouldBe "${baseUrl}test/1/2/3"
 	}
+
+	test("buildUrl adds collections as separate query parameters") {
+		val baseUrl = "https://demo.jellyfin.org/stable/"
+		val parameters = mapOf(
+			"example" to listOf("value1", "value2"),
+			"example2" to "value3",
+		)
+
+		UrlBuilder.buildUrl(
+			baseUrl = baseUrl,
+			pathTemplate = "/test",
+			queryParameters = parameters,
+		) shouldBe "${baseUrl}test?example=value1&example=value2&example2=value3"
+	}
 })
