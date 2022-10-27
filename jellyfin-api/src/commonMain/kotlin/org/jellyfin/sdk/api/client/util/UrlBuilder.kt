@@ -33,15 +33,14 @@ public object UrlBuilder {
 			queryParameters
 				.filterNot { it.value == null }
 				.map { (key, rawValue) ->
-					// Determine value
-					val value = when (rawValue) {
-						// Lists should be comma-separated
-						is Collection<*> -> if (rawValue.isNotEmpty()) rawValue.joinToString(",") else null
-						else -> rawValue.toString()
+					// Determine values
+					val values = when (rawValue) {
+						is Collection<*> -> rawValue
+						else -> listOfNotNull(rawValue)
 					}
 
-					// Add not-null values
-					if (value != null) parameters.append(key, value)
+					// Add values
+					for (value in values) parameters.append(key, value.toString())
 				}
 		}.buildString()
 	}
