@@ -41,7 +41,7 @@ jobs:
         run: ./gradlew build assembleDist -x check
       - name: Upload release assets
         if: ${{ startsWith(github.ref, 'refs/tags/v') }}
-        uses: alexellis/upload-assets@5586bc227f8525a5e3525e6edf64da5350bfb5b1 # tag=0.3.0
+        uses: alexellis/upload-assets@259de5111cb56966d046ced998941e93f91d2c93 # tag=0.4.0
         with:
           asset_paths: '["**/distributions/*-${{ env.JELLYFIN_VERSION }}.zip", "**/libs/*-${{ env.JELLYFIN_VERSION }}.jar", "**/outputs/aar/*.aar"]'
         env:
