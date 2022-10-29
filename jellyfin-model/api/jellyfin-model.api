@@ -5219,7 +5219,6 @@ public final class org/jellyfin/sdk/model/api/MediaStream$Companion {
 public final class org/jellyfin/sdk/model/api/MediaStreamType : java/lang/Enum {
 	public static final field AUDIO Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static final field Companion Lorg/jellyfin/sdk/model/api/MediaStreamType$Companion;
-	public static final field DATA Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static final field EMBEDDED_IMAGE Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static final field SUBTITLE Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static final field VIDEO Lorg/jellyfin/sdk/model/api/MediaStreamType;
@@ -9855,6 +9854,43 @@ public final class org/jellyfin/sdk/model/api/TrailerInfoRemoteSearchQuery$$seri
 }
 
 public final class org/jellyfin/sdk/model/api/TrailerInfoRemoteSearchQuery$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/TranscodeReason : java/lang/Enum {
+	public static final field ANAMORPHIC_VIDEO_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field AUDIO_BITRATE_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field AUDIO_BIT_DEPTH_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field AUDIO_CHANNELS_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field AUDIO_CODEC_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field AUDIO_IS_EXTERNAL Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field AUDIO_PROFILE_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field AUDIO_SAMPLE_RATE_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field CONTAINER_BITRATE_EXCEEDS_LIMIT Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field CONTAINER_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field Companion Lorg/jellyfin/sdk/model/api/TranscodeReason$Companion;
+	public static final field DIRECT_PLAY_ERROR Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field INTERLACED_VIDEO_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field REF_FRAMES_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field SECONDARY_AUDIO_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field SUBTITLE_CODEC_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field UNKNOWN_AUDIO_STREAM_INFO Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field UNKNOWN_VIDEO_STREAM_INFO Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field VIDEO_BITRATE_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field VIDEO_BIT_DEPTH_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field VIDEO_CODEC_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field VIDEO_FRAMERATE_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field VIDEO_LEVEL_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field VIDEO_PROFILE_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field VIDEO_RANGE_TYPE_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static final field VIDEO_RESOLUTION_NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public static fun values ()[Lorg/jellyfin/sdk/model/api/TranscodeReason;
+}
+
+public final class org/jellyfin/sdk/model/api/TranscodeReason$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
