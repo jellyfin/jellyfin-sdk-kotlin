@@ -10,7 +10,7 @@ import kotlin.Double
 import kotlin.Float
 import kotlin.Int
 import kotlin.String
-import kotlin.collections.Collection
+import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -41,5 +41,5 @@ public data class TranscodingInfo(
 	@SerialName("HardwareAccelerationType")
 	public val hardwareAccelerationType: HardwareEncodingType? = null,
 	@SerialName("TranscodeReasons")
-	public val transcodeReasons: Collection<String>,
+	public val transcodeReasons: List<TranscodeReason>,
 )
