@@ -9910,14 +9910,14 @@ public final class org/jellyfin/sdk/model/api/TranscodeSeekInfo$Companion {
 
 public final class org/jellyfin/sdk/model/api/TranscodingInfo {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/TranscodingInfo$Companion;
-	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/Integer;Ljava/lang/Float;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Lorg/jellyfin/sdk/model/api/HardwareEncodingType;Ljava/util/Collection;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/Integer;Ljava/lang/Float;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Lorg/jellyfin/sdk/model/api/HardwareEncodingType;Ljava/util/Collection;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/Integer;Ljava/lang/Float;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Lorg/jellyfin/sdk/model/api/HardwareEncodingType;Ljava/util/Collection;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/Integer;Ljava/lang/Float;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Lorg/jellyfin/sdk/model/api/HardwareEncodingType;Ljava/util/List;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/Integer;Ljava/lang/Float;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Lorg/jellyfin/sdk/model/api/HardwareEncodingType;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/Integer;Ljava/lang/Float;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Lorg/jellyfin/sdk/model/api/HardwareEncodingType;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component10 ()Ljava/lang/Integer;
 	public final fun component11 ()Ljava/lang/Integer;
 	public final fun component12 ()Lorg/jellyfin/sdk/model/api/HardwareEncodingType;
-	public final fun component13 ()Ljava/util/Collection;
+	public final fun component13 ()Ljava/util/List;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Z
@@ -9926,8 +9926,8 @@ public final class org/jellyfin/sdk/model/api/TranscodingInfo {
 	public final fun component7 ()Ljava/lang/Float;
 	public final fun component8 ()Ljava/lang/Double;
 	public final fun component9 ()Ljava/lang/Integer;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/Integer;Ljava/lang/Float;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Lorg/jellyfin/sdk/model/api/HardwareEncodingType;Ljava/util/Collection;)Lorg/jellyfin/sdk/model/api/TranscodingInfo;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/TranscodingInfo;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/Integer;Ljava/lang/Float;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Lorg/jellyfin/sdk/model/api/HardwareEncodingType;Ljava/util/Collection;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/TranscodingInfo;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/Integer;Ljava/lang/Float;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Lorg/jellyfin/sdk/model/api/HardwareEncodingType;Ljava/util/List;)Lorg/jellyfin/sdk/model/api/TranscodingInfo;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/TranscodingInfo;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/Integer;Ljava/lang/Float;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Lorg/jellyfin/sdk/model/api/HardwareEncodingType;Ljava/util/List;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/TranscodingInfo;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAudioChannels ()Ljava/lang/Integer;
 	public final fun getAudioCodec ()Ljava/lang/String;
@@ -9937,7 +9937,7 @@ public final class org/jellyfin/sdk/model/api/TranscodingInfo {
 	public final fun getFramerate ()Ljava/lang/Float;
 	public final fun getHardwareAccelerationType ()Lorg/jellyfin/sdk/model/api/HardwareEncodingType;
 	public final fun getHeight ()Ljava/lang/Integer;
-	public final fun getTranscodeReasons ()Ljava/util/Collection;
+	public final fun getTranscodeReasons ()Ljava/util/List;
 	public final fun getVideoCodec ()Ljava/lang/String;
 	public final fun getWidth ()Ljava/lang/Integer;
 	public fun hashCode ()I
