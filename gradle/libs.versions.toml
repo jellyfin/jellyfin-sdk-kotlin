@@ -18,7 +18,7 @@ kotlinx-serialization = "1.4.1"
 ktor = "1.6.8"
 nexuspublish = "1.1.0"
 slf4j = "2.0.3"
-swagger-parser = "2.1.7"
+swagger-parser = "2.1.8"
 
 [plugins]
 binarycompatibilityvalidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binarycompatibilityvalidator" }
