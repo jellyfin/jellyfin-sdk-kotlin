@@ -96,10 +96,10 @@ public actual class LocalServerDiscovery actual constructor(jellyfinOptions: Jel
 		}
 
 		// Send
-		val multicastAddress = InetAddress.getByAddress(byteArrayOf(224.toByte(), 0.toByte(), 0.toByte(), 1.toByte()))
-		discoverAddress(socket, multicastAddress)
+		val broadcastAddress = InetAddress.getByAddress(byteArrayOf(255.toByte(), 255.toByte(), 255.toByte(), 255.toByte()))
+		discoverAddress(socket, broadcastAddress)
 
-		logger.debug { "Finished sending broadcasts, listening for responses" }
+		logger.debug { "Finished sending broadcast, listening for responses" }
 
 		// Try reading incoming messages but with a maximum
 		val foundServers = mutableSetOf<String>()
