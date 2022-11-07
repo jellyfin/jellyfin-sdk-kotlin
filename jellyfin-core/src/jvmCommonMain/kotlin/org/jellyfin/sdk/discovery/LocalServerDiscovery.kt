@@ -24,8 +24,6 @@ private val logger = KotlinLogging.logger {}
  * the maximum amount of servers has been retrieved.
  */
 public actual class LocalServerDiscovery actual constructor(jellyfinOptions: JellyfinOptions) {
-	private val discoveryBroadcastAddressesProvider = DiscoveryBroadcastAddressesProvider(jellyfinOptions)
-
 	public actual companion object {
 		public const val DISCOVERY_MESSAGE: String = "who is JellyfinServer?"
 		public const val DISCOVERY_PORT: Int = 7359
@@ -94,19 +92,14 @@ public actual class LocalServerDiscovery actual constructor(jellyfinOptions: Jel
 		logger.info { "Starting discovery with timeout of ${timeout}ms" }
 
 		val socket = DatagramSocket().apply {
-			broadcast = true
 			soTimeout = timeout
 		}
 
 		// Send
-		@Suppress("MissingPermission")
-		val addresses = discoveryBroadcastAddressesProvider.getBroadcastAddresses()
-		@Suppress("NewApi") // False positive (we use the Kotlin .forEach extension function)
-		addresses.forEach { address ->
-			discoverAddress(socket, address)
-		}
+		val broadcastAddress = InetAddress.getByAddress(byteArrayOf(255.toByte(), 255.toByte(), 255.toByte(), 255.toByte()))
+		discoverAddress(socket, broadcastAddress)
 
-		logger.debug { "Finished sending broadcasts, listening for responses" }
+		logger.debug { "Finished sending broadcast, listening for responses" }
 
 		// Try reading incoming messages but with a maximum
 		val foundServers = mutableSetOf<String>()
@@ -118,8 +111,8 @@ public actual class LocalServerDiscovery actual constructor(jellyfinOptions: Jel
 			val info = receive(socket) ?: continue
 
 			// Filter duplicates
-			if (info.id == null || info.id in foundServers) continue
-			foundServers += info.id!!
+			if (info.id in foundServers) continue
+			foundServers += info.id
 
 			emit(info)
 		}
