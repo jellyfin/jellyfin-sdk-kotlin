@@ -252,7 +252,7 @@ public data class BaseItemDto(
 	@SerialName("ParentId")
 	public val parentId: UUID? = null,
 	/**
-	 * The type.
+	 * The base item kind.
 	 */
 	@SerialName("Type")
 	public val type: BaseItemKind,
