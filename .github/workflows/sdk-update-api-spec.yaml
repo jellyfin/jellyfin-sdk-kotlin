@@ -25,7 +25,7 @@ jobs:
           VERSION=$(curl -sL https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-stable.json | jq -r .info.version)
           echo "STABLE_API_VERSION=${VERSION}" >> $GITHUB_ENV
       - name: Update generated sources and create pull request
-        uses: technote-space/create-pr-action@a4ae5ba7878ecb8495476c103437cbf429e7ad16 # tag=v2
+        uses: technote-space/create-pr-action@91114507cf92349bec0a9a501c2edf1635427bc5 # v2
         with:
           EXECUTE_COMMANDS: |
             ./gradlew :openapi-generator:updateApiSpecStable
