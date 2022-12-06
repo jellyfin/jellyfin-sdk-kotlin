@@ -70,6 +70,10 @@ export default defineConfig({
 						text: 'Migrate to v1.2',
 						link: '/migration/v1.2',
 					},
+					{
+						text: 'Migrate to v1.4',
+						link: '/migration/v1.4',
+					},
 				]
 			}
 		],
