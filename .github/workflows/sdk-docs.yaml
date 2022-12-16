@@ -101,7 +101,7 @@ jobs:
           unzip vitepress.zip -d ./dist
           unzip dokka.zip -d ./dist/dokka
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@4506126207ed04f7c31e67d0b20154fc373f2505 # v1
+        uses: actions/upload-pages-artifact@253fd476ed429e83b7aae64a92a75b4ceb1a17cf # v1
         with:
           path: ./build/github-pages/dist
       - name: Deploy to GitHub Pages
