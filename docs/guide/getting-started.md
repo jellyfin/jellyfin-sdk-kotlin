@@ -10,33 +10,25 @@ platform.
 
 ![Latest version on Maven Central](https://img.shields.io/maven-central/v/org.jellyfin.sdk/jellyfin-core.svg)
 
-### Gradle with Kotlin DSL
+::: code-group
 
-```kotlin
+```kotlin [Gradle with Kotlin]
 implementation("org.jellyfin.sdk:jellyfin-core:$sdkVersion")
 ```
 
-<details>
-  <summary>Gradle with Groovy</summary>
+```groovy [Gradle with Groovy]
+implementation "org.jellyfin.sdk:jellyfin-core:$sdkVersion"
+```
 
-  ```groovy
-  implementation "org.jellyfin.sdk:jellyfin-core:$sdkVersion"
-   ```
+```xml [Maven]
+<dependency>
+  <groupId>org.jellyfin.sdk</groupId>
+  <artifactId>jellyfin-core</artifactId>
+  <version>$sdkVersion</version>
+</dependency>
+```
 
-</details>
-
-<details>
-  <summary>Maven</summary>
-
-  ```xml
-  <dependency>
-      <groupId>org.jellyfin.sdk</groupId>
-      <artifactId>jellyfin-core</artifactId>
-      <version>$sdkVersion</version>
-  </dependency>
-   ```
-
-</details>
+:::
 
 <details>
   <summary>Using SNAPSHOT versions</summary>
