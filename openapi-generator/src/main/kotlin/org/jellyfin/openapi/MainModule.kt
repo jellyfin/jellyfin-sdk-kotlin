@@ -1,5 +1,6 @@
 package org.jellyfin.openapi
 
+import com.github.ajalt.clikt.core.CliktCommand
 import org.jellyfin.openapi.builder.api.ApiBuilder
 import org.jellyfin.openapi.builder.api.ApiClientExtensionsBuilder
 import org.jellyfin.openapi.builder.api.ApiNameBuilder
@@ -24,6 +25,10 @@ import org.jellyfin.openapi.builder.openapi.OpenApiModelBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiModelsBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiReturnTypeBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiTypeBuilder
+import org.jellyfin.openapi.cli.GenerateCommand
+import org.jellyfin.openapi.cli.MainCommand
+import org.jellyfin.openapi.cli.VerifyCommand
+import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val mainModule = module {
@@ -62,4 +67,9 @@ val mainModule = module {
 	single { DeprecatedAnnotationSpecBuilder() }
 	single { TypeSerializerBuilder() }
 	single { DescriptionBuilder(getAll()) }
+
+	// CLI
+	single { MainCommand(getAll()) }
+	single { GenerateCommand(get()) } bind CliktCommand::class
+	single { VerifyCommand(get()) } bind CliktCommand::class
 }
