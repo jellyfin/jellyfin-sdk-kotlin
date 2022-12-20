@@ -26,6 +26,9 @@ dependencies {
 	// Dependency Injection
 	implementation(libs.koin)
 
+	// CLI
+	implementation(libs.clikt)
+
 	// Logging
 	implementation(libs.kotlin.logging)
 	runtimeOnly(libs.slf4j.simple)
@@ -47,7 +50,7 @@ tasks.register("generateSources", JavaExec::class) {
 	inputs.file(defaultConfig["openApiFile"])
 	outputs.dirs(defaultConfig["apiOutputDir"], defaultConfig["modelsOutputDir"])
 
-	args = defaultConfig
+	args = listOf("generate") + defaultConfig
 		.map { listOf("--${it.key}", it.value.toString()) }
 		.flatten()
 }
@@ -56,8 +59,7 @@ tasks.register("verifySources", JavaExec::class) {
 	mainClass.set(application.mainClass)
 	classpath = sourceSets.main.get().runtimeClasspath
 
-	args = defaultConfig
-		.plus("verify" to "true")
+	args = listOf("verify") + defaultConfig
 		.map { listOf("--${it.key}", it.value.toString()) }
 		.flatten()
 }
