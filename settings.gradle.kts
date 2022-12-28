@@ -1,5 +1,7 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
+rootProject.name = "jellyfin-sdk-kotlin"
+
 // Core
 include(":jellyfin-core")
 include(":jellyfin-model")
