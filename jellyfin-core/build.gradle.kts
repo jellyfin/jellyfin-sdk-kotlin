@@ -86,6 +86,12 @@ android {
 		abortOnError = false
 		sarifReport = true
 	}
+
+	publishing {
+		multipleVariants {
+			withSourcesJar()
+		}
+	}
 }
 
 enablePublishing {
