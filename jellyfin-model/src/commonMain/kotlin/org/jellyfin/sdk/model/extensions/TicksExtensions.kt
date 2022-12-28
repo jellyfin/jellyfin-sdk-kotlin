@@ -20,3 +20,8 @@ public inline val Int.ticks: Duration get() = times(100).toDuration(DurationUnit
  * Returns a [Duration] equal to this [Double] number of ticks.
  */
 public inline val Double.ticks: Duration get() = times(100.0).toDuration(DurationUnit.NANOSECONDS)
+
+/**
+ * The value of this duration expressed as a [Long] number of ticks.
+ */
+public val Duration.inWholeTicks: Long get() = toLong(DurationUnit.NANOSECONDS).div(100L)
