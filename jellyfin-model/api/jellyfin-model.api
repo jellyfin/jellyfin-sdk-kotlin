@@ -17793,6 +17793,7 @@ public final class org/jellyfin/sdk/model/extensions/PairExtensionsKt {
 }
 
 public final class org/jellyfin/sdk/model/extensions/TicksExtensionsKt {
+	public static final fun getInWholeTicks-LRDsOJo (J)J
 	public static final fun getTicks (D)J
 	public static final fun getTicks (I)J
 	public static final fun getTicks (J)J
