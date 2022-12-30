@@ -6,7 +6,7 @@ import org.jellyfin.openapi.constants.Classes
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
 
-class CurrentUserIdDefaultValue(
+data class CurrentUserIdDefaultValue(
 	private val isString: Boolean,
 ) : DefaultValue.CodeBlock {
 	override fun build() = CodeBlock.builder().apply {
