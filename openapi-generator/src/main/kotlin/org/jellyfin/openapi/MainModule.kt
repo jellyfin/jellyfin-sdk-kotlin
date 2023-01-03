@@ -25,14 +25,28 @@ import org.jellyfin.openapi.builder.openapi.OpenApiModelBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiModelsBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiReturnTypeBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiTypeBuilder
+import org.jellyfin.openapi.cli.CompareCommand
 import org.jellyfin.openapi.cli.GenerateCommand
 import org.jellyfin.openapi.cli.MainCommand
 import org.jellyfin.openapi.cli.VerifyCommand
+import org.jellyfin.openapi.compare.InfoComparator
+import org.jellyfin.openapi.compare.ModelComparator
+import org.jellyfin.openapi.compare.OperationComparator
+import org.jellyfin.openapi.compare.reporter.CompareReporter
+import org.jellyfin.openapi.compare.reporter.JsonCompareReporter
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
 val mainModule = module {
-	single { Generator(get(), get(), get(), get(), get(), get()) }
+	single { Generator() }
+
+	// Comparators
+	single { InfoComparator() }
+	single { OperationComparator() }
+	single { ModelComparator() }
+
+	// Compare reporters
+	single { JsonCompareReporter() } bind CompareReporter::class
 
 	// OpenAPI
 	single { OpenApiTypeBuilder(getAll()) }
@@ -72,4 +86,5 @@ val mainModule = module {
 	single { MainCommand() }
 	single { GenerateCommand() } bind CliktCommand::class
 	single { VerifyCommand() } bind CliktCommand::class
+	single { CompareCommand() } bind CliktCommand::class
 }

@@ -1,5 +1,6 @@
 plugins {
 	alias(libs.plugins.download)
+	alias(libs.plugins.kotlin.serialization)
 	kotlin("jvm")
 	id("application")
 }
@@ -22,6 +23,9 @@ dependencies {
 
 	// Kotlin code generation
 	implementation(libs.kotlinpoet)
+
+	// Compare reporters
+	implementation(libs.kotlinx.serialization.json)
 
 	// Dependency Injection
 	implementation(libs.koin)
