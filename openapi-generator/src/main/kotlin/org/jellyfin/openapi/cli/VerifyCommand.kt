@@ -1,15 +1,15 @@
 package org.jellyfin.openapi.cli
 
-import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.ProgramResult
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.types.file
 import org.jellyfin.openapi.Generator
+import org.koin.core.component.inject
 
-class VerifyCommand(
-	private val generator: Generator,
-) : CliktCommand() {
+class VerifyCommand : BaseCommand() {
+	private val generator by inject<Generator>()
+
 	private val openApiFile by option(
 		"--openApiFile",
 		"-i",

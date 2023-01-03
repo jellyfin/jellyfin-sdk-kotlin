@@ -5,12 +5,10 @@ import com.github.ajalt.clikt.core.subcommands
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
 import org.jellyfin.openapi.hooks.hooksModule
-import org.koin.core.Koin
 
-class MainCommand(
-	commands: List<CliktCommand>,
-	private val koin: Koin,
-) : CliktCommand() {
+class MainCommand : BaseCommand() {
+	private val commands by lazy { getKoin().getAll<CliktCommand>() }
+
 	private val noHooks by option(
 		"--no-hooks",
 		help = "Disable all hooks"
@@ -21,6 +19,6 @@ class MainCommand(
 	}
 
 	override fun run() {
-		if (noHooks) koin.unloadModules(listOf(hooksModule))
+		if (noHooks) getKoin().unloadModules(listOf(hooksModule))
 	}
 }
