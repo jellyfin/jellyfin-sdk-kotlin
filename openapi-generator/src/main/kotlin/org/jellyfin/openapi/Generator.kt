@@ -8,22 +8,30 @@ import org.jellyfin.openapi.builder.model.ModelsBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiApiServicesBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiConstantsBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiModelsBuilder
+import org.jellyfin.openapi.compare.InfoComparator
+import org.jellyfin.openapi.compare.ModelComparator
+import org.jellyfin.openapi.compare.OperationComparator
+import org.jellyfin.openapi.compare.model.CompareResult
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.model.GeneratorContext
-import org.jellyfin.openapi.model.GeneratorResult
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import java.io.File
 
 private val logger = KotlinLogging.logger { }
 
-class Generator(
-	private val openApiApiServicesBuilder: OpenApiApiServicesBuilder,
-	private val apisBuilder: ApisBuilder,
-	private val openApiModelsBuilder: OpenApiModelsBuilder,
-	private val modelsBuilder: ModelsBuilder,
-	private val apiClientExtensionsBuilder: ApiClientExtensionsBuilder,
-	private val openApiConstantsBuilder: OpenApiConstantsBuilder,
-) {
-	private fun generateInternal(openApiJson: String): GeneratorResult {
+class Generator : KoinComponent {
+	private val openApiApiServicesBuilder by inject<OpenApiApiServicesBuilder>()
+	private val apisBuilder by inject<ApisBuilder>()
+	private val openApiModelsBuilder by inject<OpenApiModelsBuilder>()
+	private val modelsBuilder by inject<ModelsBuilder>()
+	private val apiClientExtensionsBuilder by inject<ApiClientExtensionsBuilder>()
+	private val openApiConstantsBuilder by inject<OpenApiConstantsBuilder>()
+	private val infoComparator by inject<InfoComparator>()
+	private val operationComparator by inject<OperationComparator>()
+	private val modelComparator by inject<ModelComparator>()
+
+	private fun generateInternal(openApiJson: String): GeneratorContext {
 		val openApiSpecification = OpenAPIV3Parser().readContents(openApiJson)
 		openApiSpecification.messages.forEach { message -> logger.warn { message } }
 
@@ -41,7 +49,7 @@ class Generator(
 		apiClientExtensionsBuilder.build(context, context.apiServices)
 		openApiConstantsBuilder.build(context, context.info)
 
-		return context.toGeneratorResult()
+		return context
 	}
 
 	fun verify(
@@ -52,7 +60,7 @@ class Generator(
 		val verification = Verification(apiOutputDir, modelsOutputDir)
 		val result = generateInternal(openApiJson)
 
-		return verification.verify(result)
+		return verification.verify(result.toGeneratorResult())
 	}
 
 	fun generate(
@@ -60,7 +68,7 @@ class Generator(
 		apiOutputDir: File,
 		modelsOutputDir: File,
 	) {
-		val result = generateInternal(openApiJson)
+		val result = generateInternal(openApiJson).toGeneratorResult()
 
 		// Clear output directories
 		modelsOutputDir.deleteRecursively()
@@ -77,5 +85,22 @@ class Generator(
 			}
 			file.writeTo(directory)
 		}
+	}
+
+	fun compare(
+		oldOpenApiJson: String,
+		newOpenApiJson: String,
+	): CompareResult {
+		// Create generator contexts for both schemas
+		val oldSchema = generateInternal(oldOpenApiJson)
+		val newSchema = generateInternal(newOpenApiJson)
+
+		// Construct and return compare result
+		return CompareResult(
+			binaryDifference = oldOpenApiJson != newOpenApiJson,
+			info = infoComparator.compare(oldSchema, newSchema),
+			api = operationComparator.compare(oldSchema, newSchema),
+			model = modelComparator.compare(oldSchema, newSchema),
+		)
 	}
 }
