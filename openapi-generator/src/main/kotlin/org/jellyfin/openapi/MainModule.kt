@@ -69,7 +69,7 @@ val mainModule = module {
 	single { DescriptionBuilder(getAll()) }
 
 	// CLI
-	single { MainCommand(getAll(), getKoin()) }
-	single { GenerateCommand(get()) } bind CliktCommand::class
-	single { VerifyCommand(get()) } bind CliktCommand::class
+	single { MainCommand() }
+	single { GenerateCommand() } bind CliktCommand::class
+	single { VerifyCommand() } bind CliktCommand::class
 }
