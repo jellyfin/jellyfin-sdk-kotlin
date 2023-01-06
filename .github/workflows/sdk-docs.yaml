@@ -38,7 +38,7 @@ jobs:
         working-directory: ./docs/.vitepress/dist
         run: zip -v -r ../vitepress.zip *
       - name: Upload artifact
-        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb # tag=v3
+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3
         with:
           name: vitepress
           path: ./docs/.vitepress/vitepress.zip
@@ -62,7 +62,7 @@ jobs:
         working-directory: ./build/dokka/htmlMultiModule
         run: zip -v -r ../../dokka.zip *
       - name: Upload artifact
-        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb # tag=v3
+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3
         with:
           name: dokka
           path: ./build/dokka.zip
