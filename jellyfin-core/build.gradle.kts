@@ -63,11 +63,11 @@ kotlin {
 }
 
 android {
-	compileSdk = 32
+	compileSdk = libs.versions.android.sdk.get().toInt()
 
 	defaultConfig {
 		minSdk = 19
-		targetSdk = 32
+		targetSdk = libs.versions.android.sdk.get().toInt()
 		multiDexEnabled = true
 
 		consumerProguardFiles("proguard-rules.pro")
