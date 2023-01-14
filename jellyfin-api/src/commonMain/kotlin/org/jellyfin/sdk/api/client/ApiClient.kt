@@ -16,6 +16,12 @@ public abstract class ApiClient {
 		 * true.
 		 */
 		public const val QUERY_ACCESS_TOKEN: String = "ApiKey"
+
+		/**
+		 * The recommended value for the accept header. It prefers JSON followed by octet stream and finally
+		 * everything. The "any MIME type" (* / *) is required for some endpoints in the server.
+		 */
+		public const val HEADER_ACCEPT: String = "application/json, application/octet-stream;q=0.9, */*;q=0.8"
 	}
 
 	/**
