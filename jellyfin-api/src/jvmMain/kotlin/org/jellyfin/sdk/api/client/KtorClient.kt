@@ -78,6 +78,11 @@ public actual open class KtorClient actual constructor(
 				this.method = method.asKtorHttpMethod()
 
 				header(
+					key = HttpHeaders.Accept,
+					value = HEADER_ACCEPT,
+				)
+
+				header(
 					key = HttpHeaders.Authorization,
 					value = AuthorizationHeaderBuilder.buildHeader(
 						clientName = clientInfo.name,
