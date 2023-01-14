@@ -1,5 +1,6 @@
 public abstract class org/jellyfin/sdk/api/client/ApiClient {
 	public static final field Companion Lorg/jellyfin/sdk/api/client/ApiClient$Companion;
+	public static final field HEADER_ACCEPT Ljava/lang/String;
 	public static final field QUERY_ACCESS_TOKEN Ljava/lang/String;
 	public fun <init> ()V
 	public fun createUrl (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Z)Ljava/lang/String;
