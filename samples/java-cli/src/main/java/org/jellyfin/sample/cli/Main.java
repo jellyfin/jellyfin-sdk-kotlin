@@ -4,10 +4,10 @@ import org.jellyfin.sdk.Jellyfin;
 import org.jellyfin.sdk.JellyfinOptions;
 import org.jellyfin.sdk.api.client.ApiClient;
 import org.jellyfin.sdk.api.client.compatibility.JavaResponseContinuation;
+import org.jellyfin.sdk.api.client.extensions.UserApiExtensionsKt;
 import org.jellyfin.sdk.api.operations.UserApi;
 import org.jellyfin.sdk.model.ClientInfo;
 import org.jellyfin.sdk.model.DeviceInfo;
-import org.jellyfin.sdk.model.api.AuthenticateUserByName;
 import org.jellyfin.sdk.model.api.AuthenticationResult;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -28,7 +28,7 @@ public class Main {
 
         CountDownLatch latch = new CountDownLatch(1);
         UserApi userApi = new UserApi(client);
-        userApi.authenticateUserByName(new AuthenticateUserByName("demo", null, ""), new JavaResponseContinuation<AuthenticationResult>() {
+        UserApiExtensionsKt.authenticateUserByName(userApi, "demo", "", new JavaResponseContinuation<AuthenticationResult>() {
             @Override
             public void onResponse(@NotNull AuthenticationResult response) {
                 client.setAccessToken(response.getAccessToken());
