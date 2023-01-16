@@ -24,7 +24,7 @@ public data class HttpClientOptions(
 
 	/**
 	 * Timeout between receiving or writing messages in milliseconds.
-	 * Defaults to 10 seconds.
+	 * Defaults to 30 seconds.
 	 */
-	val socketTimeout: Long = 10_000,
+	val socketTimeout: Long = 30_000,
 )
