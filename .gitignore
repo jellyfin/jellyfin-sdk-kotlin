@@ -1,0 +1,16 @@
+.DS_Store
+
+*.iml
+/.idea
+
+.gradle
+local.properties
+
+build/
+
+java_*.hprof
+
+# Docs
+node_modules
+docs/.vitepress/dist
+docs/.vitepress/cache

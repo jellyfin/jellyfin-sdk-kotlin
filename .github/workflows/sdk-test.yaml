@@ -1,0 +1,65 @@
+name: SDK / Test
+
+on:
+  push:
+    branches:
+      - master
+      - release-*
+      - openapi-unstable
+  pull_request:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [11, 17]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+      - name: Setup Java
+        uses: actions/setup-java@1df8dbefe2a8cbc99770194893dd902763bee34b # v3
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@3fbe033aaae657f011f88f29be9e65ed26bd29ef # tag=v2
+      - name: Run test task
+        run: ./gradlew test allTests
+
+  validate-binary-compatibility:
+    name: Validate binary compatibility
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+      - name: Setup Java
+        uses: actions/setup-java@1df8dbefe2a8cbc99770194893dd902763bee34b # v3
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@3fbe033aaae657f011f88f29be9e65ed26bd29ef # tag=v2
+      - name: Run apiCheck task
+        run: ./gradlew apiCheck
+
+  verify-openapi-sources:
+    name: Verify OpenAPI sources
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+        with:
+          lfs: true
+      - name: Setup Java
+        uses: actions/setup-java@1df8dbefe2a8cbc99770194893dd902763bee34b # v3
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@3fbe033aaae657f011f88f29be9e65ed26bd29ef # tag=v2
+      - name: Run verifySources task
+        run: ./gradlew verifySources
+

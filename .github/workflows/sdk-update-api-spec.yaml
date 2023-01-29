@@ -1,0 +1,48 @@
+name: SDK / Update OpenAPI
+
+on:
+  schedule:
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+
+jobs:
+  api-spec-update:
+    name: Update
+    runs-on: ubuntu-22.04
+    if: ${{ contains(github.repository_owner, 'jellyfin') }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+      - name: Setup Java
+        uses: actions/setup-java@1df8dbefe2a8cbc99770194893dd902763bee34b # v3
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@3fbe033aaae657f011f88f29be9e65ed26bd29ef # tag=v2
+      - name: Set STABLE_API_VERSION
+        run: |
+          VERSION=$(curl -sL https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-stable.json | jq -r .info.version)
+          echo "STABLE_API_VERSION=${VERSION}" >> $GITHUB_ENV
+      - name: Update generated sources and create pull request
+        uses: technote-space/create-pr-action@91114507cf92349bec0a9a501c2edf1635427bc5 # v2
+        with:
+          EXECUTE_COMMANDS: |
+            ./gradlew :openapi-generator:updateApiSpecStable
+            ./gradlew apiDump
+          COMMIT_MESSAGE: 'Update generated sources to ${{ env.STABLE_API_VERSION }}'
+          COMMIT_NAME: 'jellyfin-bot'
+          COMMIT_EMAIL: 'team@jellyfin.org'
+          PR_BRANCH_PREFIX: 'openapi-update-'
+          PR_BRANCH_NAME: '${PR_ID}'
+          PR_TITLE: 'Update OpenAPI to ${{ env.STABLE_API_VERSION }}'
+          PR_BODY: |
+            ## Changed files
+
+            <details>
+              <summary>${FILES_SUMMARY}</summary>
+
+              ${FILES}
+
+            </details>
+          GITHUB_TOKEN: ${{ secrets.JF_BOT_TOKEN }}

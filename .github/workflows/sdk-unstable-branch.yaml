@@ -1,0 +1,43 @@
+name: SDK / Unstable branch
+
+on:
+  schedule:
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: unstable-branch
+
+jobs:
+  update:
+    name: Update
+    runs-on: ubuntu-22.04
+    if: ${{ contains(github.repository_owner, 'jellyfin') }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+        with:
+          ref: master
+          token: ${{ secrets.JF_BOT_TOKEN }}
+      - name: Setup Java
+        uses: actions/setup-java@1df8dbefe2a8cbc99770194893dd902763bee34b # v3
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@3fbe033aaae657f011f88f29be9e65ed26bd29ef # tag=v2
+      - name: Run updateApiSpecUnstable task
+        run: ./gradlew :openapi-generator:updateApiSpecUnstable
+      - name: Run apiDump task
+        run: ./gradlew apiDump
+      - name: Commit changes
+        run: |
+          git config user.name jellyfin-bot
+          git config user.email team@jellyfin.org
+          git checkout -B openapi-unstable
+          git add .
+          git commit --allow-empty -m "Update OpenAPI to unstable"
+          git push --force origin openapi-unstable

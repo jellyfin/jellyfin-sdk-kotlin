@@ -1,0 +1,109 @@
+name: SDK / Documentation
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+      - name: Setup problem matcher
+        uses: xt0rted/markdownlint-problem-matcher@98d94724052d20ca2e06c091f202e4c66c3c59fb # tag=v2.0.0
+      - name: Run markdownlint
+        run: npx --package markdownlint-cli markdownlint readme.md 'docs/**/*.md' --ignore node_modules
+
+  build-vitepress:
+    name: Build Vitepress
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+      - name: Setup Node
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3
+        with:
+          node-version: 16
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Create artifact
+        working-directory: ./docs/.vitepress/dist
+        run: zip -v -r ../vitepress.zip *
+      - name: Upload artifact
+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3
+        with:
+          name: vitepress
+          path: ./docs/.vitepress/vitepress.zip
+
+  build-dokka:
+    name: Build Dokka
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+      - name: Setup Java
+        uses: actions/setup-java@1df8dbefe2a8cbc99770194893dd902763bee34b # v3
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@3fbe033aaae657f011f88f29be9e65ed26bd29ef # tag=v2
+      - name: Run dokkaHtmlMultiModule task
+        run: ./gradlew dokkaHtmlMultiModule
+      - name: Create artifact
+        working-directory: ./build/dokka/htmlMultiModule
+        run: zip -v -r ../../dokka.zip *
+      - name: Upload artifact
+        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3
+        with:
+          name: dokka
+          path: ./build/dokka.zip
+
+  deploy:
+    name: Deploy
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-22.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs:
+      - build-vitepress
+      - build-dokka
+    steps:
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@5992ce8fd557229bb0e98f78a89136a149cc9758 # v3
+      - name: Download Vitepress artifact
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
+        with:
+          name: vitepress
+          path: ./build/github-pages
+      - name: Download Dokka artifact
+        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a # v3
+        with:
+          name: dokka
+          path: ./build/github-pages
+      - name: Create pages structure
+        working-directory: ./build/github-pages
+        run: |
+          ls -la
+          mkdir -p ./dist
+          unzip vitepress.zip -d ./dist
+          unzip dokka.zip -d ./dist/dokka
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@253fd476ed429e83b7aae64a92a75b4ceb1a17cf # v1
+        with:
+          path: ./build/github-pages/dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@20a4baa1095bad40ba7d6ca0d9abbc220b76603f # v1

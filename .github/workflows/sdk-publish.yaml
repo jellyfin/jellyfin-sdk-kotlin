@@ -1,0 +1,48 @@
+name: SDK / Publish
+
+on:
+  push:
+    tags:
+      - v*
+    branches:
+      - master
+      - openapi-unstable
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-22.04
+    environment: release
+    if: ${{ startsWith(github.ref, 'refs/tags/v') || contains(github.repository_owner, 'jellyfin') }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+      - name: Setup Java
+        uses: actions/setup-java@1df8dbefe2a8cbc99770194893dd902763bee34b # v3
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@3fbe033aaae657f011f88f29be9e65ed26bd29ef # tag=v2
+      - name: Set JELLYFIN_VERSION
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        run: echo "JELLYFIN_VERSION=$(echo ${GITHUB_REF#refs/tags/v} | tr / -)" >> $GITHUB_ENV
+      - name: Set JELLYFIN_BRANCH
+        if: ${{ startsWith(github.ref, 'refs/heads/') }}
+        run: echo "JELLYFIN_BRANCH=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
+      - name: Run publish task
+        run: ./gradlew publish closeAndReleaseSonatypeStagingRepository
+        env:
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+          OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+      - name: Run build and assembleDist tasks
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        run: ./gradlew build assembleDist -x check
+      - name: Upload release assets
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        uses: alexellis/upload-assets@259de5111cb56966d046ced998941e93f91d2c93 # tag=0.4.0
+        with:
+          asset_paths: '["**/distributions/*-${{ env.JELLYFIN_VERSION }}.zip", "**/libs/*-${{ env.JELLYFIN_VERSION }}.jar", "**/outputs/aar/*.aar"]'
+        env:
+          GITHUB_TOKEN: ${{ secrets.JF_BOT_TOKEN }}

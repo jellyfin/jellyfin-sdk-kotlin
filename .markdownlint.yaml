@@ -1,0 +1,16 @@
+# MD010/hard-tabs
+MD010:
+  code_blocks: false
+
+# MD013/line-length
+MD013:
+  line_length: 120
+
+# MD028/no-blanks-blockquote
+MD028: false
+
+# MD033/no-inline-html
+MD033:
+  allowed_elements:
+    - details
+    - summary

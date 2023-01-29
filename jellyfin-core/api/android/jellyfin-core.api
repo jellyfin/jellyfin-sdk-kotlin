@@ -1,0 +1,261 @@
+public final class org/jellyfin/sdk/BuildConfig {
+	public static final field BUILD_TYPE Ljava/lang/String;
+	public static final field DEBUG Z
+	public static final field LIBRARY_PACKAGE_NAME Ljava/lang/String;
+	public fun <init> ()V
+}
+
+public final class org/jellyfin/sdk/Jellyfin {
+	public static final field Companion Lorg/jellyfin/sdk/Jellyfin$Companion;
+	public fun <init> (Lorg/jellyfin/sdk/JellyfinOptions$Builder;)V
+	public fun <init> (Lorg/jellyfin/sdk/JellyfinOptions;)V
+	public final fun createApi ()Lorg/jellyfin/sdk/api/client/ApiClient;
+	public final fun createApi (Ljava/lang/String;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public final fun createApi (Ljava/lang/String;Ljava/lang/String;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public static synthetic fun createApi$default (Lorg/jellyfin/sdk/Jellyfin;Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public final fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
+	public final fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
+	public final fun getDiscovery ()Lorg/jellyfin/sdk/discovery/DiscoveryService;
+	public final fun getOptions ()Lorg/jellyfin/sdk/JellyfinOptions;
+}
+
+public final class org/jellyfin/sdk/Jellyfin$Companion {
+	public final fun getApiVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
+	public final fun getMinimumVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
+}
+
+public final class org/jellyfin/sdk/JellyfinKt {
+	public static final fun createJellyfin (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/Jellyfin;
+}
+
+public final class org/jellyfin/sdk/JellyfinOptions {
+	public static final field Companion Lorg/jellyfin/sdk/JellyfinOptions$Companion;
+	public fun <init> (Landroid/content/Context;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;Lorg/jellyfin/sdk/model/ServerVersion;)V
+	public final fun component1 ()Landroid/content/Context;
+	public final fun component2 ()Lorg/jellyfin/sdk/model/ClientInfo;
+	public final fun component3 ()Lorg/jellyfin/sdk/model/DeviceInfo;
+	public final fun component4 ()Lorg/jellyfin/sdk/util/ApiClientFactory;
+	public final fun component5 ()Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;
+	public final fun component6 ()Lorg/jellyfin/sdk/model/ServerVersion;
+	public final fun copy (Landroid/content/Context;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;Lorg/jellyfin/sdk/model/ServerVersion;)Lorg/jellyfin/sdk/JellyfinOptions;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/JellyfinOptions;Landroid/content/Context;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;Lorg/jellyfin/sdk/model/ServerVersion;ILjava/lang/Object;)Lorg/jellyfin/sdk/JellyfinOptions;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApiClientFactory ()Lorg/jellyfin/sdk/util/ApiClientFactory;
+	public final fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
+	public final fun getContext ()Landroid/content/Context;
+	public final fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
+	public final fun getMinimumServerVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
+	public final fun getSocketConnectionFactory ()Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/JellyfinOptions$Builder {
+	public fun <init> ()V
+	public final fun build ()Lorg/jellyfin/sdk/JellyfinOptions;
+	public final fun getApiClientFactory ()Lorg/jellyfin/sdk/util/ApiClientFactory;
+	public final fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
+	public final fun getContext ()Landroid/content/Context;
+	public final fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
+	public final fun getMinimumServerVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
+	public final fun getSocketConnectionFactory ()Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;
+	public final fun setApiClientFactory (Lorg/jellyfin/sdk/util/ApiClientFactory;)V
+	public final fun setClientInfo (Lorg/jellyfin/sdk/model/ClientInfo;)V
+	public final fun setContext (Landroid/content/Context;)V
+	public final fun setDeviceInfo (Lorg/jellyfin/sdk/model/DeviceInfo;)V
+	public final fun setMinimumServerVersion (Lorg/jellyfin/sdk/model/ServerVersion;)V
+	public final fun setSocketConnectionFactory (Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)V
+}
+
+public final class org/jellyfin/sdk/JellyfinOptions$Companion {
+}
+
+public final class org/jellyfin/sdk/JellyfinOptionsKt {
+	public static final fun createJellyfinOptions (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/JellyfinOptions;
+}
+
+public final class org/jellyfin/sdk/android/AndroidDeviceKt {
+	public static final fun androidDevice (Landroid/content/Context;)Lorg/jellyfin/sdk/model/DeviceInfo;
+}
+
+public abstract class org/jellyfin/sdk/compatibility/JavaContinuation : kotlin/coroutines/Continuation {
+	public fun <init> ()V
+	public fun getContext ()Lkotlin/coroutines/CoroutineContext;
+	public fun onError (Ljava/lang/Throwable;)V
+	public abstract fun onSuccess (Ljava/lang/Object;)V
+	public fun resumeWith (Ljava/lang/Object;)V
+}
+
+public final class org/jellyfin/sdk/compatibility/JavaFlow {
+	public static final field INSTANCE Lorg/jellyfin/sdk/compatibility/JavaFlow;
+	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
+	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
+	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$CompletionCallback;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
+	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$CompletionCallback;Lkotlinx/coroutines/CoroutineScope;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
+	public static synthetic fun collect$default (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$CompletionCallback;Lkotlinx/coroutines/CoroutineScope;ILjava/lang/Object;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
+}
+
+public abstract interface class org/jellyfin/sdk/compatibility/JavaFlow$CompletionCallback {
+	public abstract fun onCompletion (Ljava/lang/Throwable;)V
+}
+
+public final class org/jellyfin/sdk/compatibility/JavaFlow$FlowJob : java/io/Closeable {
+	public fun <init> (Lkotlinx/coroutines/Job;)V
+	public fun close ()V
+}
+
+public abstract interface class org/jellyfin/sdk/compatibility/JavaFlow$ResultCallback {
+	public abstract fun onResult (Ljava/lang/Object;)V
+}
+
+public abstract interface class org/jellyfin/sdk/compatibility/JavaFlow$StartCallback {
+	public abstract fun onStart ()V
+}
+
+public final class org/jellyfin/sdk/discovery/AddressCandidateHelper {
+	public static final field Companion Lorg/jellyfin/sdk/discovery/AddressCandidateHelper$Companion;
+	public static final field JF_HTTPS_PORT I
+	public static final field JF_HTTP_PORT I
+	public static final field PROTOCOL_HTTP Ljava/lang/String;
+	public static final field PROTOCOL_HTTPS Ljava/lang/String;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun addCommonCandidates ()V
+	public final fun addPortCandidates ()V
+	public final fun addProtocolCandidates ()V
+	public final fun getCandidates ()Ljava/util/Collection;
+}
+
+public final class org/jellyfin/sdk/discovery/AddressCandidateHelper$Companion {
+}
+
+public final class org/jellyfin/sdk/discovery/DiscoveryService {
+	public fun <init> (Lorg/jellyfin/sdk/Jellyfin;)V
+	public final fun discoverLocalServers (II)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun discoverLocalServers$default (Lorg/jellyfin/sdk/discovery/DiscoveryService;IIILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+	public final fun getAddressCandidates (Ljava/lang/String;)Ljava/util/Collection;
+	public final fun getRecommendedServers (Ljava/lang/String;Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getRecommendedServers (Ljava/util/Collection;Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun getRecommendedServers$default (Lorg/jellyfin/sdk/discovery/DiscoveryService;Ljava/lang/String;Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun getRecommendedServers$default (Lorg/jellyfin/sdk/discovery/DiscoveryService;Ljava/util/Collection;Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class org/jellyfin/sdk/discovery/LocalServerDiscovery {
+	public static final field Companion Lorg/jellyfin/sdk/discovery/LocalServerDiscovery$Companion;
+	public static final field DISCOVERY_MESSAGE Ljava/lang/String;
+	public static final field DISCOVERY_PORT I
+	public static final field DISCOVERY_RECEIVE_BUFFER I
+	public fun <init> (Lorg/jellyfin/sdk/JellyfinOptions;)V
+	public final fun discover (II)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun discover$default (Lorg/jellyfin/sdk/discovery/LocalServerDiscovery;IIILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public final class org/jellyfin/sdk/discovery/LocalServerDiscovery$Companion {
+	public final fun getDISCOVERY_MAX_SERVERS ()I
+	public final fun getDISCOVERY_TIMEOUT ()I
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerDiscovery {
+	public fun <init> (Lorg/jellyfin/sdk/Jellyfin;)V
+	public final fun discover (Ljava/util/Collection;Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerInfo {
+	public fun <init> (Ljava/lang/String;JLorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Ljava/util/Collection;Ljava/lang/Object;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()J
+	public final fun component3 ()Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
+	public final fun component4 ()Ljava/util/Collection;
+	public final fun component5-d1pmJ48 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/String;JLorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Ljava/util/Collection;Ljava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerInfo;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerInfo;Ljava/lang/String;JLorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Ljava/util/Collection;Lkotlin/Result;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerInfo;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun firstIssueOrNull ()Lorg/jellyfin/sdk/discovery/RecommendedServerIssue;
+	public final fun getAddress ()Ljava/lang/String;
+	public final fun getIssues ()Ljava/util/Collection;
+	public final fun getResponseTime ()J
+	public final fun getScore ()Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
+	public final fun getSystemInfo-d1pmJ48 ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerInfoScore : java/lang/Enum {
+	public static final field BAD Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
+	public static final field GOOD Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
+	public static final field GREAT Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
+	public static final field OK Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
+	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
+	public static fun values ()[Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
+}
+
+public abstract interface class org/jellyfin/sdk/discovery/RecommendedServerIssue {
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$InvalidProductName : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$InvalidProductName;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$InvalidProductName;Ljava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$InvalidProductName;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getProductName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$MissingSystemInfo : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$MissingSystemInfo;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$MissingSystemInfo;Ljava/lang/Throwable;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$MissingSystemInfo;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getThrowable ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$MissingVersion : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public static final field INSTANCE Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$MissingVersion;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$OutdatedServerVersion : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public fun <init> (Lorg/jellyfin/sdk/model/ServerVersion;)V
+	public final fun component1 ()Lorg/jellyfin/sdk/model/ServerVersion;
+	public final fun copy (Lorg/jellyfin/sdk/model/ServerVersion;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$OutdatedServerVersion;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$OutdatedServerVersion;Lorg/jellyfin/sdk/model/ServerVersion;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$OutdatedServerVersion;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$SlowResponse : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public fun <init> (J)V
+	public final fun component1 ()J
+	public final fun copy (J)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$SlowResponse;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$SlowResponse;JILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$SlowResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getResponseTime ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$UnsupportedServerVersion : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public fun <init> (Lorg/jellyfin/sdk/model/ServerVersion;)V
+	public final fun component1 ()Lorg/jellyfin/sdk/model/ServerVersion;
+	public final fun copy (Lorg/jellyfin/sdk/model/ServerVersion;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$UnsupportedServerVersion;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$UnsupportedServerVersion;Lorg/jellyfin/sdk/model/ServerVersion;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$UnsupportedServerVersion;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class org/jellyfin/sdk/util/ApiClientFactory {
+	public abstract fun create (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)Lorg/jellyfin/sdk/api/client/ApiClient;
+}
+
