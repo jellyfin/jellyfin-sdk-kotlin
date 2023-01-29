@@ -34,9 +34,9 @@ public class OkHttpWebsocketSession(
 	private val client = OkHttpClient.Builder().apply {
 		followRedirects(clientOptions.followRedirects)
 
-		connectTimeout(clientOptions.connectTimeout, TimeUnit.MILLISECONDS)
-		readTimeout(clientOptions.socketTimeout, TimeUnit.MILLISECONDS)
-		writeTimeout(clientOptions.socketTimeout, TimeUnit.MILLISECONDS)
+		connectTimeout(clientOptions.connectTimeout.inWholeMilliseconds, TimeUnit.MILLISECONDS)
+		readTimeout(clientOptions.socketTimeout.inWholeMilliseconds, TimeUnit.MILLISECONDS)
+		writeTimeout(clientOptions.socketTimeout.inWholeMilliseconds, TimeUnit.MILLISECONDS)
 	}.build()
 	private var webSocket: WebSocket? = null
 	private val _state = MutableStateFlow(SocketInstanceState.DISCONNECTED)

@@ -50,9 +50,9 @@ public actual open class KtorClient actual constructor(
 		expectSuccess = false
 
 		install(HttpTimeout) {
-			connectTimeoutMillis = httpClientOptions.connectTimeout
-			requestTimeoutMillis = httpClientOptions.requestTimeout
-			socketTimeoutMillis = httpClientOptions.socketTimeout
+			connectTimeoutMillis = httpClientOptions.connectTimeout.inWholeMilliseconds
+			requestTimeoutMillis = httpClientOptions.requestTimeout.inWholeMilliseconds
+			socketTimeoutMillis = httpClientOptions.socketTimeout.inWholeMilliseconds
 		}
 	}
 

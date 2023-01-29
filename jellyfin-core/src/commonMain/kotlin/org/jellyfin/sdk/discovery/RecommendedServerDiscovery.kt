@@ -18,6 +18,7 @@ import org.jellyfin.sdk.api.client.extensions.systemApi
 import org.jellyfin.sdk.model.ServerVersion
 import org.jellyfin.sdk.model.api.PublicSystemInfo
 import org.jellyfin.sdk.util.currentTimeMillis
+import kotlin.time.Duration.Companion.seconds
 
 private val logger = KotlinLogging.logger {}
 
@@ -28,7 +29,7 @@ public class RecommendedServerDiscovery constructor(
 		private const val HTTP_OK = 200
 		private const val PRODUCT_NAME = "Jellyfin Server"
 		private const val SLOW_TIME_THRESHOLD = 1_500
-		private const val HTTP_TIMEOUT = 3_500L
+		private val HTTP_TIMEOUT = 3.5.seconds
 		private const val MAX_SIMULTANEOUS_RETRIEVALS = 3
 	}
 
