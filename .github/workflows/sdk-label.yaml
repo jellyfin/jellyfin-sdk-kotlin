@@ -1,6 +1,7 @@
 name: SDK / Label
 on:
   pull_request:
+    types: opened
   workflow_dispatch:
 
 jobs:
