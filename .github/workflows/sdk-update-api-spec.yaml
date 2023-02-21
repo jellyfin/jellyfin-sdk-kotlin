@@ -41,7 +41,9 @@ jobs:
           committer: 'jellyfin-bot'
           author: 'team@jellyfin.org'
           title: 'Update OpenAPI to ${{ env.STABLE_API_VERSION }}'
-          labels: enhancement
+          labels: |
+            dependencies
+            openapi
           branch: 'openapi-update-'
           branch-suffix: 'short-commit-hash'
           delete-branch: true
