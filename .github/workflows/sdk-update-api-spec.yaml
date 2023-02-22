@@ -24,25 +24,32 @@ jobs:
         run: |
           VERSION=$(curl -sL https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-stable.json | jq -r .info.version)
           echo "STABLE_API_VERSION=${VERSION}" >> $GITHUB_ENV
-      - name: Update generated sources and create pull request
-        uses: technote-space/create-pr-action@91114507cf92349bec0a9a501c2edf1635427bc5 # v2
+      - name: Update api spec
+        run: |
+          ./gradlew :openapi-generator:updateApiSpecStable
+          ./gradlew apiDump
+      - name: Set AFFECTED_FILES and AFFECTED_FILES_COUNT variables
+        run: |
+          AFFECTED_FILES=$(git status --porcelain)
+          echo "AFFECTED_FILES=${AFFECTED_FILES}" >> $GITHUB_ENV
+          echo "AFFECTED_FILES_COUNT=$(echo ${AFFECTED_FILES} | wc -l | xargs)" >> $GITHUB_ENV
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v4
         with:
-          EXECUTE_COMMANDS: |
-            ./gradlew :openapi-generator:updateApiSpecStable
-            ./gradlew apiDump
-          COMMIT_MESSAGE: 'Update generated sources to ${{ env.STABLE_API_VERSION }}'
-          COMMIT_NAME: 'jellyfin-bot'
-          COMMIT_EMAIL: 'team@jellyfin.org'
-          PR_BRANCH_PREFIX: 'openapi-update-'
-          PR_BRANCH_NAME: '${PR_ID}'
-          PR_TITLE: 'Update OpenAPI to ${{ env.STABLE_API_VERSION }}'
-          PR_BODY: |
+          token: ${{ secrets.JF_BOT_TOKEN }}
+          commit-message: 'Update generated sources to ${{ env.STABLE_API_VERSION }}'
+          committer: 'jellyfin-bot'
+          author: 'team@jellyfin.org'
+          title: 'Update OpenAPI to ${{ env.STABLE_API_VERSION }}'
+          labels: |
+            dependencies
+            openapi
+          branch: 'openapi-update-'
+          branch-suffix: 'short-commit-hash'
+          delete-branch: true
+          body: |
             ## Changed files
-
             <details>
-              <summary>${FILES_SUMMARY}</summary>
-
-              ${FILES}
-
+              <summary>Changed ${{ env.AFFECTED_FILES_COUNT }} files</summary>
+              ${{ env.AFFECTED_FILES }}
             </details>
-          GITHUB_TOKEN: ${{ secrets.JF_BOT_TOKEN }}
