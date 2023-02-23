@@ -34,7 +34,7 @@ jobs:
           echo "AFFECTED_FILES=${AFFECTED_FILES}" >> $GITHUB_ENV
           echo "AFFECTED_FILES_COUNT=$(echo ${AFFECTED_FILES} | wc -l | xargs)" >> $GITHUB_ENV
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@2b011faafdcbc9ceb11414d64d0573f37c774b04 # v4
         with:
           token: ${{ secrets.JF_BOT_TOKEN }}
           commit-message: 'Update generated sources to ${{ env.STABLE_API_VERSION }}'
