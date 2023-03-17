@@ -12,14 +12,14 @@ jobs:
     if: ${{ contains(github.repository_owner, 'jellyfin') }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+        uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3.4.0
       - name: Setup Java
-        uses: actions/setup-java@3f07048e3d294f56e9b90ac5ea2c6f74e9ad0f98 # v3
+        uses: actions/setup-java@3f07048e3d294f56e9b90ac5ea2c6f74e9ad0f98 # v3.10.0
         with:
           distribution: temurin
           java-version: 17
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@6095a76664413da4c8c134ee32e8a8ae900f0f1f # v2
+        uses: gradle/gradle-build-action@6095a76664413da4c8c134ee32e8a8ae900f0f1f # v2.4.0
       - name: Set STABLE_API_VERSION
         run: |
           VERSION=$(curl -sL https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-stable.json | jq -r .info.version)
@@ -34,7 +34,7 @@ jobs:
           echo "AFFECTED_FILES=${AFFECTED_FILES}" >> $GITHUB_ENV
           echo "AFFECTED_FILES_COUNT=$(echo ${AFFECTED_FILES} | wc -l | xargs)" >> $GITHUB_ENV
       - name: Create pull request
-        uses: peter-evans/create-pull-request@2b011faafdcbc9ceb11414d64d0573f37c774b04 # v4
+        uses: peter-evans/create-pull-request@38e0b6e68b4c852a5500a94740f0e535e0d7ba54 # v4.2.4
         with:
           token: ${{ secrets.JF_BOT_TOKEN }}
           commit-message: 'Update generated sources to ${{ env.STABLE_API_VERSION }}'
