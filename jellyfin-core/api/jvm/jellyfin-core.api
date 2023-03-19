@@ -218,6 +218,28 @@ public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$OutdatedSer
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$SecureConnectionFailed : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public fun <init> (Lorg/jellyfin/sdk/api/client/exception/SecureConnectionException;)V
+	public final fun component1 ()Lorg/jellyfin/sdk/api/client/exception/SecureConnectionException;
+	public final fun copy (Lorg/jellyfin/sdk/api/client/exception/SecureConnectionException;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$SecureConnectionFailed;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$SecureConnectionFailed;Lorg/jellyfin/sdk/api/client/exception/SecureConnectionException;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$SecureConnectionFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSslException ()Lorg/jellyfin/sdk/api/client/exception/SecureConnectionException;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$ServerUnreachable : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public fun <init> (Ljava/lang/Throwable;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun copy (Ljava/lang/Throwable;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$ServerUnreachable;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$ServerUnreachable;Ljava/lang/Throwable;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$ServerUnreachable;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getThrowable ()Ljava/lang/Throwable;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$SlowResponse : org/jellyfin/sdk/discovery/RecommendedServerIssue {
 	public fun <init> (J)V
 	public final fun component1 ()J
