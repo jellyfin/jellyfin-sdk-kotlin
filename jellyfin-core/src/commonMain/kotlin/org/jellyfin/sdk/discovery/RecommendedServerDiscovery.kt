@@ -13,6 +13,7 @@ import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.ApiClientException
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
+import org.jellyfin.sdk.api.client.exception.SecureConnectionException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
 import org.jellyfin.sdk.api.client.extensions.systemApi
 import org.jellyfin.sdk.model.ServerVersion
@@ -46,16 +47,28 @@ public class RecommendedServerDiscovery constructor(
 		val issues = mutableSetOf<RecommendedServerIssue>()
 		val scores = mutableSetOf<RecommendedServerInfoScore>()
 
-		// System Info checks
-		when {
-			// Did not reply with a valid system information
-			result.systemInfo.isFailure || systemInfo == null -> {
-				issues.add(RecommendedServerIssue.MissingSystemInfo(result.systemInfo.exceptionOrNull()))
-				scores.add(RecommendedServerInfoScore.BAD)
+		// Failure checks
+		result.systemInfo.exceptionOrNull()?.let { exception ->
+			when (exception) {
+				is SecureConnectionException -> {
+					issues.add(RecommendedServerIssue.SecureConnectionFailed(exception))
+				}
+				is TimeoutException -> {
+					issues.add(RecommendedServerIssue.ServerUnreachable(exception))
+				}
+				else -> {
+					// Did not reply with a system information
+					issues.add(RecommendedServerIssue.MissingSystemInfo(result.systemInfo.exceptionOrNull()))
+				}
 			}
+			scores.add(RecommendedServerInfoScore.BAD)
+		}
+
+		// System Info data validation
+		when {
 			// Wrong product name - might be a different service on this connection
-			!systemInfo.productName.equals(PRODUCT_NAME) -> {
-				issues.add(RecommendedServerIssue.InvalidProductName(systemInfo.productName))
+			!systemInfo?.productName.equals(PRODUCT_NAME) -> {
+				issues.add(RecommendedServerIssue.InvalidProductName(systemInfo?.productName))
 				scores.add(RecommendedServerInfoScore.BAD)
 			}
 		}
