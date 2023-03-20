@@ -18,7 +18,7 @@ kotlinx-coroutines = "1.6.4"
 kotlinx-serialization = "1.5.0"
 ktor = "1.6.8"
 nexuspublish = "1.3.0"
-slf4j = "2.0.6"
+slf4j = "2.0.7"
 swagger-parser = "2.1.12"
 
 [plugins]
