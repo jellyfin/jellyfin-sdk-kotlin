@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
-        uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3.4.0
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
       - name: Setup problem matcher
         uses: xt0rted/markdownlint-problem-matcher@98d94724052d20ca2e06c091f202e4c66c3c59fb # v2.0.0
       - name: Run markdownlint
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
-        uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3.4.0
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
       - name: Setup Node
         uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
         with:
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
-        uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3.4.0
+        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
       - name: Setup Java
         uses: actions/setup-java@3f07048e3d294f56e9b90ac5ea2c6f74e9ad0f98 # v3.10.0
         with:
@@ -101,7 +101,7 @@ jobs:
           unzip vitepress.zip -d ./dist
           unzip dokka.zip -d ./dist/dokka
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@253fd476ed429e83b7aae64a92a75b4ceb1a17cf # v1.0.7
+        uses: actions/upload-pages-artifact@64bcae551a7b18bcb9a09042ddf1960979799187 # v1.0.8
         with:
           path: ./build/github-pages/dist
       - name: Deploy to GitHub Pages
