@@ -52,9 +52,10 @@ public class MediaInfoApi(
 	 *
 	 * @param size The bitrate. Defaults to 102400.
 	 */
-	public suspend fun getBitrateTestBytes(size: Int? = 102400): Response<ByteReadChannel> {
+	public suspend fun getBitrateTestBytes(size: Int? = 102_400): Response<ByteReadChannel> {
 		val pathParameters = emptyMap<String, Any?>()
-		require(size in 1..100000000) { "Parameter \"size\" must be in range 1..100000000 (inclusive)." }
+		require(size in 1..100_000_000) { "Parameter \"size\" must be in range 1..100000000 (inclusive)."
+				}
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("size", size)
 		}
@@ -70,10 +71,11 @@ public class MediaInfoApi(
 	 * @param size The bitrate. Defaults to 102400.
 	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getBitrateTestBytesUrl(size: Int? = 102400, includeCredentials: Boolean = true):
+	public fun getBitrateTestBytesUrl(size: Int? = 102_400, includeCredentials: Boolean = true):
 			String {
 		val pathParameters = emptyMap<String, Any?>()
-		require(size in 1..100000000) { "Parameter \"size\" must be in range 1..100000000 (inclusive)." }
+		require(size in 1..100_000_000) { "Parameter \"size\" must be in range 1..100000000 (inclusive)."
+				}
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("size", size)
 		}
