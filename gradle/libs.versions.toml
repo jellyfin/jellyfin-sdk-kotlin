@@ -1,8 +1,6 @@
 [versions]
 android-gradle = "7.4.2"
 android-sdk = "33"
-androidx-annotation = "1.6.0"
-androidx-core = "1.9.0"
 binarycompatibilityvalidator = "0.13.0"
 clikt = "3.5.2"
 detekt = "1.22.0"
@@ -32,8 +30,6 @@ nexuspublish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "ne
 
 [libraries]
 android-gradle = { module = "com.android.tools.build:gradle", version.ref = "android-gradle" }
-androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidx-annotation" }
-androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
 clikt = { module = "com.github.ajalt.clikt:clikt", version.ref = "clikt" }
 kasechange = { module = "net.pearx.kasechange:kasechange", version.ref = "kasechange" }
 koin = { module = "io.insert-koin:koin-core", version.ref = "koin" }
