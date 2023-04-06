@@ -57,7 +57,7 @@ open class OperationBuilder(
 		validation: ParameterValidation,
 	) = when (validation) {
 		is IntRangeValidation -> addStatement(
-			"%M(%N in %L..%L) { %S }",
+			"%M(%N·in·%L..%L)·{·%S·}",
 			MemberName("kotlin", "require"),
 			name,
 			validation.min,
