@@ -53,11 +53,6 @@ kotlin {
 		val androidMain by getting {
 			// dependsOn(jvmCommonMain)
 			kotlin.srcDir("src/jvmCommonMain/kotlin")
-
-			dependencies {
-				implementation(libs.androidx.core)
-				implementation(libs.androidx.annotation)
-			}
 		}
 	}
 }
