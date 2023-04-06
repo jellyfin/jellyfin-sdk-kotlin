@@ -54,8 +54,7 @@ public class MediaInfoApi(
 	 */
 	public suspend fun getBitrateTestBytes(size: Int? = 102_400): Response<ByteReadChannel> {
 		val pathParameters = emptyMap<String, Any?>()
-		require(size in 1..100_000_000) { "Parameter \"size\" must be in range 1..100000000 (inclusive)."
-				}
+		require(size in 1..100_000_000) { "Parameter \"size\" must be in range 1..100000000 (inclusive)." }
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("size", size)
 		}
@@ -74,8 +73,7 @@ public class MediaInfoApi(
 	public fun getBitrateTestBytesUrl(size: Int? = 102_400, includeCredentials: Boolean = true):
 			String {
 		val pathParameters = emptyMap<String, Any?>()
-		require(size in 1..100_000_000) { "Parameter \"size\" must be in range 1..100000000 (inclusive)."
-				}
+		require(size in 1..100_000_000) { "Parameter \"size\" must be in range 1..100000000 (inclusive)." }
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("size", size)
 		}
