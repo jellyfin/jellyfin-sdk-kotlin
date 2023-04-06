@@ -63,11 +63,11 @@ kotlin {
 }
 
 android {
+	namespace = "org.jellyfin.sdk"
 	compileSdk = libs.versions.android.sdk.get().toInt()
 
 	defaultConfig {
 		minSdk = 19
-		targetSdk = libs.versions.android.sdk.get().toInt()
 		multiDexEnabled = true
 
 		consumerProguardFiles("proguard-rules.pro")
