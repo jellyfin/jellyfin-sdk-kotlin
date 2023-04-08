@@ -1,8 +1,10 @@
 package org.jellyfin.openapi.builder.model
 
 import com.squareup.kotlinpoet.AnnotationSpec
+import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import net.pearx.kasechange.CaseFormat
@@ -22,6 +24,7 @@ class EnumModelBuilder(
 	private val descriptionBuilder: DescriptionBuilder,
 	private val deprecatedAnnotationSpecBuilder: DeprecatedAnnotationSpecBuilder,
 ) : Builder<EnumApiModel, JellyFile> {
+	@Suppress("LongMethod")
 	override fun build(data: EnumApiModel): JellyFile {
 		return TypeSpec.enumBuilder(data.name.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL))
 			.apply {
@@ -57,6 +60,45 @@ class EnumModelBuilder(
 				}
 				if (data.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_CLASS))
 				addAnnotation(Types.SERIALIZABLE)
+
+				// fromString[orNull] functions
+				addType(TypeSpec.companionObjectBuilder().apply {
+					val enumClassType = ClassName(
+						Packages.MODEL,
+						data.name.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL)
+					)
+
+					// fromNameOrNull
+					addFunction(FunSpec.builder("fromNameOrNull").apply {
+						returns(enumClassType.copy(nullable = true))
+						addParameter("serialName", Types.STRING)
+
+						beginControlFlow("return when·(%N)", "serialName")
+						data.constants.forEach { member ->
+							addStatement(
+								"%S·->·%N",
+								member,
+								member.toScreamingSnakeCase(from = CaseFormat.CAPITALIZED_CAMEL)
+							)
+						}
+						addStatement("else·->·null")
+						endControlFlow()
+					}.build())
+
+					// fromName
+					addFunction(FunSpec.builder("fromName").apply {
+						returns(enumClassType)
+						addParameter("serialName", Types.STRING)
+
+						addStatement(
+							"return %M(%N(%N))·{·%P·}",
+							MemberName("kotlin", "requireNotNull"),
+							"fromNameOrNull",
+							"serialName",
+							Strings.MODEL_ENUM_MEMBER_EXCEPTION_MESSAGE
+						)
+					}.build())
+				}.build())
 			}
 			.build()
 			.let { JellyFile(Packages.MODEL, emptySet(), it) }

@@ -66,4 +66,9 @@ object Strings {
 	 * Description of the parameter used for the generated request model containing operation parameters.
 	 */
 	const val MODEL_REQUEST_PARAMETER_DESCRIPTION = "The request paramaters"
+
+	/**
+	 * Message used in the exception thrown when the serialName is invalid. Use $serialName for the input value.
+	 */
+	const val MODEL_ENUM_MEMBER_EXCEPTION_MESSAGE = "Unknown value \$serialName"
 }
