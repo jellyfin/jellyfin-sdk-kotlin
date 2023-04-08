@@ -39,6 +39,7 @@ class EnumModelBuilder(
 				// toString function
 				addFunction(FunSpec.builder("toString").apply {
 					returns(Types.STRING)
+					addKdoc("%L", Strings.MODEL_ENUM_TO_STRING_DESCRIPTION)
 					addStatement("return serialName")
 					addModifiers(KModifier.OVERRIDE)
 				}.build())
@@ -71,6 +72,7 @@ class EnumModelBuilder(
 					// fromNameOrNull
 					addFunction(FunSpec.builder("fromNameOrNull").apply {
 						returns(enumClassType.copy(nullable = true))
+						addKdoc("%L", Strings.MODEL_ENUM_FROM_NAME_OR_NULL_DESCRIPTION)
 						addParameter("serialName", Types.STRING)
 
 						beginControlFlow("return when·(%N)", "serialName")
@@ -88,6 +90,7 @@ class EnumModelBuilder(
 					// fromName
 					addFunction(FunSpec.builder("fromName").apply {
 						returns(enumClassType)
+						addKdoc("%L", Strings.MODEL_ENUM_FROM_NAME_DESCRIPTION)
 						addParameter("serialName", Types.STRING)
 
 						addStatement(
