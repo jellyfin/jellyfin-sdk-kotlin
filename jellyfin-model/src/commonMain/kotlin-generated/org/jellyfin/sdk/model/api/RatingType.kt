@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -20,4 +21,15 @@ public enum class RatingType(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): RatingType? = when (serialName) {
+			"Score" -> SCORE
+			"Likes" -> LIKES
+			else -> null
+		}
+
+		public fun fromName(serialName: String): RatingType =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

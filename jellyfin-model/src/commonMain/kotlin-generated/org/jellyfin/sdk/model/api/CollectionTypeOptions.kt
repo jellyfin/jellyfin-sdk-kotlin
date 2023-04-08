@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -32,4 +33,21 @@ public enum class CollectionTypeOptions(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): CollectionTypeOptions? = when (serialName) {
+			"Movies" -> MOVIES
+			"TvShows" -> TV_SHOWS
+			"Music" -> MUSIC
+			"MusicVideos" -> MUSIC_VIDEOS
+			"HomeVideos" -> HOME_VIDEOS
+			"BoxSets" -> BOX_SETS
+			"Books" -> BOOKS
+			"Mixed" -> MIXED
+			else -> null
+		}
+
+		public fun fromName(serialName: String): CollectionTypeOptions =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

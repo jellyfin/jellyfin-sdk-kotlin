@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -37,4 +38,22 @@ public enum class ItemFilter(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): ItemFilter? = when (serialName) {
+			"IsFolder" -> IS_FOLDER
+			"IsNotFolder" -> IS_NOT_FOLDER
+			"IsUnplayed" -> IS_UNPLAYED
+			"IsPlayed" -> IS_PLAYED
+			"IsFavorite" -> IS_FAVORITE
+			"IsResumable" -> IS_RESUMABLE
+			"Likes" -> LIKES
+			"Dislikes" -> DISLIKES
+			"IsFavoriteOrLikes" -> IS_FAVORITE_OR_LIKES
+			else -> null
+		}
+
+		public fun fromName(serialName: String): ItemFilter =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

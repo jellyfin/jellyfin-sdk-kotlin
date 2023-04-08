@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -26,4 +27,18 @@ public enum class Video3dFormat(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): Video3dFormat? = when (serialName) {
+			"HalfSideBySide" -> HALF_SIDE_BY_SIDE
+			"FullSideBySide" -> FULL_SIDE_BY_SIDE
+			"FullTopAndBottom" -> FULL_TOP_AND_BOTTOM
+			"HalfTopAndBottom" -> HALF_TOP_AND_BOTTOM
+			"MVC" -> MVC
+			else -> null
+		}
+
+		public fun fromName(serialName: String): Video3dFormat =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

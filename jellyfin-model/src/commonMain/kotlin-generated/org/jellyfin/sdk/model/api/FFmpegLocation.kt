@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -27,4 +28,17 @@ public enum class FFmpegLocation(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): FFmpegLocation? = when (serialName) {
+			"NotFound" -> NOT_FOUND
+			"SetByArgument" -> SET_BY_ARGUMENT
+			"Custom" -> CUSTOM
+			"System" -> SYSTEM
+			else -> null
+		}
+
+		public fun fromName(serialName: String): FFmpegLocation =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

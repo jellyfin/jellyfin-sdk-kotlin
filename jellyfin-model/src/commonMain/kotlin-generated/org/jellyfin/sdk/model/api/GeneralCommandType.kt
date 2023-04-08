@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -103,4 +104,55 @@ public enum class GeneralCommandType(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): GeneralCommandType? = when (serialName) {
+			"MoveUp" -> MOVE_UP
+			"MoveDown" -> MOVE_DOWN
+			"MoveLeft" -> MOVE_LEFT
+			"MoveRight" -> MOVE_RIGHT
+			"PageUp" -> PAGE_UP
+			"PageDown" -> PAGE_DOWN
+			"PreviousLetter" -> PREVIOUS_LETTER
+			"NextLetter" -> NEXT_LETTER
+			"ToggleOsd" -> TOGGLE_OSD
+			"ToggleContextMenu" -> TOGGLE_CONTEXT_MENU
+			"Select" -> SELECT
+			"Back" -> BACK
+			"TakeScreenshot" -> TAKE_SCREENSHOT
+			"SendKey" -> SEND_KEY
+			"SendString" -> SEND_STRING
+			"GoHome" -> GO_HOME
+			"GoToSettings" -> GO_TO_SETTINGS
+			"VolumeUp" -> VOLUME_UP
+			"VolumeDown" -> VOLUME_DOWN
+			"Mute" -> MUTE
+			"Unmute" -> UNMUTE
+			"ToggleMute" -> TOGGLE_MUTE
+			"SetVolume" -> SET_VOLUME
+			"SetAudioStreamIndex" -> SET_AUDIO_STREAM_INDEX
+			"SetSubtitleStreamIndex" -> SET_SUBTITLE_STREAM_INDEX
+			"ToggleFullscreen" -> TOGGLE_FULLSCREEN
+			"DisplayContent" -> DISPLAY_CONTENT
+			"GoToSearch" -> GO_TO_SEARCH
+			"DisplayMessage" -> DISPLAY_MESSAGE
+			"SetRepeatMode" -> SET_REPEAT_MODE
+			"ChannelUp" -> CHANNEL_UP
+			"ChannelDown" -> CHANNEL_DOWN
+			"Guide" -> GUIDE
+			"ToggleStats" -> TOGGLE_STATS
+			"PlayMediaSource" -> PLAY_MEDIA_SOURCE
+			"PlayTrailers" -> PLAY_TRAILERS
+			"SetShuffleQueue" -> SET_SHUFFLE_QUEUE
+			"PlayState" -> PLAY_STATE
+			"PlayNext" -> PLAY_NEXT
+			"ToggleOsdMenu" -> TOGGLE_OSD_MENU
+			"Play" -> PLAY
+			"SetMaxStreamingBitrate" -> SET_MAX_STREAMING_BITRATE
+			else -> null
+		}
+
+		public fun fromName(serialName: String): GeneralCommandType =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

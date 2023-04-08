@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -27,4 +28,17 @@ public enum class TaskCompletionStatus(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): TaskCompletionStatus? = when (serialName) {
+			"Completed" -> COMPLETED
+			"Failed" -> FAILED
+			"Cancelled" -> CANCELLED
+			"Aborted" -> ABORTED
+			else -> null
+		}
+
+		public fun fromName(serialName: String): TaskCompletionStatus =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -141,4 +142,74 @@ public enum class ItemFields(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): ItemFields? = when (serialName) {
+			"AirTime" -> AIR_TIME
+			"CanDelete" -> CAN_DELETE
+			"CanDownload" -> CAN_DOWNLOAD
+			"ChannelInfo" -> CHANNEL_INFO
+			"Chapters" -> CHAPTERS
+			"ChildCount" -> CHILD_COUNT
+			"CumulativeRunTimeTicks" -> CUMULATIVE_RUN_TIME_TICKS
+			"CustomRating" -> CUSTOM_RATING
+			"DateCreated" -> DATE_CREATED
+			"DateLastMediaAdded" -> DATE_LAST_MEDIA_ADDED
+			"DisplayPreferencesId" -> DISPLAY_PREFERENCES_ID
+			"Etag" -> ETAG
+			"ExternalUrls" -> EXTERNAL_URLS
+			"Genres" -> GENRES
+			"HomePageUrl" -> HOME_PAGE_URL
+			"ItemCounts" -> ITEM_COUNTS
+			"MediaSourceCount" -> MEDIA_SOURCE_COUNT
+			"MediaSources" -> MEDIA_SOURCES
+			"OriginalTitle" -> ORIGINAL_TITLE
+			"Overview" -> OVERVIEW
+			"ParentId" -> PARENT_ID
+			"Path" -> PATH
+			"People" -> PEOPLE
+			"PlayAccess" -> PLAY_ACCESS
+			"ProductionLocations" -> PRODUCTION_LOCATIONS
+			"ProviderIds" -> PROVIDER_IDS
+			"PrimaryImageAspectRatio" -> PRIMARY_IMAGE_ASPECT_RATIO
+			"RecursiveItemCount" -> RECURSIVE_ITEM_COUNT
+			"Settings" -> SETTINGS
+			"ScreenshotImageTags" -> SCREENSHOT_IMAGE_TAGS
+			"SeriesPrimaryImage" -> SERIES_PRIMARY_IMAGE
+			"SeriesStudio" -> SERIES_STUDIO
+			"SortName" -> SORT_NAME
+			"SpecialEpisodeNumbers" -> SPECIAL_EPISODE_NUMBERS
+			"Studios" -> STUDIOS
+			"BasicSyncInfo" -> BASIC_SYNC_INFO
+			"SyncInfo" -> SYNC_INFO
+			"Taglines" -> TAGLINES
+			"Tags" -> TAGS
+			"RemoteTrailers" -> REMOTE_TRAILERS
+			"MediaStreams" -> MEDIA_STREAMS
+			"SeasonUserData" -> SEASON_USER_DATA
+			"ServiceName" -> SERVICE_NAME
+			"ThemeSongIds" -> THEME_SONG_IDS
+			"ThemeVideoIds" -> THEME_VIDEO_IDS
+			"ExternalEtag" -> EXTERNAL_ETAG
+			"PresentationUniqueKey" -> PRESENTATION_UNIQUE_KEY
+			"InheritedParentalRatingValue" -> INHERITED_PARENTAL_RATING_VALUE
+			"ExternalSeriesId" -> EXTERNAL_SERIES_ID
+			"SeriesPresentationUniqueKey" -> SERIES_PRESENTATION_UNIQUE_KEY
+			"DateLastRefreshed" -> DATE_LAST_REFRESHED
+			"DateLastSaved" -> DATE_LAST_SAVED
+			"RefreshState" -> REFRESH_STATE
+			"ChannelImage" -> CHANNEL_IMAGE
+			"EnableMediaSourceDisplay" -> ENABLE_MEDIA_SOURCE_DISPLAY
+			"Width" -> WIDTH
+			"Height" -> HEIGHT
+			"ExtraIds" -> EXTRA_IDS
+			"LocalTrailerCount" -> LOCAL_TRAILER_COUNT
+			"IsHD" -> IS_HD
+			"SpecialFeatureCount" -> SPECIAL_FEATURE_COUNT
+			else -> null
+		}
+
+		public fun fromName(serialName: String): ItemFields =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

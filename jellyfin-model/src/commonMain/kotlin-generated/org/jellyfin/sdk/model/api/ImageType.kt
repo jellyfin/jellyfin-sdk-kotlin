@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -45,4 +46,26 @@ public enum class ImageType(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): ImageType? = when (serialName) {
+			"Primary" -> PRIMARY
+			"Art" -> ART
+			"Backdrop" -> BACKDROP
+			"Banner" -> BANNER
+			"Logo" -> LOGO
+			"Thumb" -> THUMB
+			"Disc" -> DISC
+			"Box" -> BOX
+			"Screenshot" -> SCREENSHOT
+			"Menu" -> MENU
+			"Chapter" -> CHAPTER
+			"BoxRear" -> BOX_REAR
+			"Profile" -> PROFILE
+			else -> null
+		}
+
+		public fun fromName(serialName: String): ImageType =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

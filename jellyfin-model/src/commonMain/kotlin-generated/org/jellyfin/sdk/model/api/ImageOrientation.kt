@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -32,4 +33,21 @@ public enum class ImageOrientation(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): ImageOrientation? = when (serialName) {
+			"TopLeft" -> TOP_LEFT
+			"TopRight" -> TOP_RIGHT
+			"BottomRight" -> BOTTOM_RIGHT
+			"BottomLeft" -> BOTTOM_LEFT
+			"LeftTop" -> LEFT_TOP
+			"RightTop" -> RIGHT_TOP
+			"RightBottom" -> RIGHT_BOTTOM
+			"LeftBottom" -> LEFT_BOTTOM
+			else -> null
+		}
+
+		public fun fromName(serialName: String): ImageOrientation =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

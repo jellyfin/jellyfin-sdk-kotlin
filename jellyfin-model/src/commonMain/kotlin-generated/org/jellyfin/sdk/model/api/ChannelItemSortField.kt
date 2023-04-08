@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -30,4 +31,20 @@ public enum class ChannelItemSortField(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): ChannelItemSortField? = when (serialName) {
+			"Name" -> NAME
+			"CommunityRating" -> COMMUNITY_RATING
+			"PremiereDate" -> PREMIERE_DATE
+			"DateCreated" -> DATE_CREATED
+			"Runtime" -> RUNTIME
+			"PlayCount" -> PLAY_COUNT
+			"CommunityPlayCount" -> COMMUNITY_PLAY_COUNT
+			else -> null
+		}
+
+		public fun fromName(serialName: String): ChannelItemSortField =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }
