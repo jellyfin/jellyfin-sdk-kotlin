@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -37,4 +38,22 @@ public enum class PlaystateCommand(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): PlaystateCommand? = when (serialName) {
+			"Stop" -> STOP
+			"Pause" -> PAUSE
+			"Unpause" -> UNPAUSE
+			"NextTrack" -> NEXT_TRACK
+			"PreviousTrack" -> PREVIOUS_TRACK
+			"Seek" -> SEEK
+			"Rewind" -> REWIND
+			"FastForward" -> FAST_FORWARD
+			"PlayPause" -> PLAY_PAUSE
+			else -> null
+		}
+
+		public fun fromName(serialName: String): PlaystateCommand =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

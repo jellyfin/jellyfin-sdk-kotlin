@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -93,4 +94,50 @@ public enum class BaseItemKind(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): BaseItemKind? = when (serialName) {
+			"AggregateFolder" -> AGGREGATE_FOLDER
+			"Audio" -> AUDIO
+			"AudioBook" -> AUDIO_BOOK
+			"BasePluginFolder" -> BASE_PLUGIN_FOLDER
+			"Book" -> BOOK
+			"BoxSet" -> BOX_SET
+			"Channel" -> CHANNEL
+			"ChannelFolderItem" -> CHANNEL_FOLDER_ITEM
+			"CollectionFolder" -> COLLECTION_FOLDER
+			"Episode" -> EPISODE
+			"Folder" -> FOLDER
+			"Genre" -> GENRE
+			"ManualPlaylistsFolder" -> MANUAL_PLAYLISTS_FOLDER
+			"Movie" -> MOVIE
+			"LiveTvChannel" -> LIVE_TV_CHANNEL
+			"LiveTvProgram" -> LIVE_TV_PROGRAM
+			"MusicAlbum" -> MUSIC_ALBUM
+			"MusicArtist" -> MUSIC_ARTIST
+			"MusicGenre" -> MUSIC_GENRE
+			"MusicVideo" -> MUSIC_VIDEO
+			"Person" -> PERSON
+			"Photo" -> PHOTO
+			"PhotoAlbum" -> PHOTO_ALBUM
+			"Playlist" -> PLAYLIST
+			"PlaylistsFolder" -> PLAYLISTS_FOLDER
+			"Program" -> PROGRAM
+			"Recording" -> RECORDING
+			"Season" -> SEASON
+			"Series" -> SERIES
+			"Studio" -> STUDIO
+			"Trailer" -> TRAILER
+			"TvChannel" -> TV_CHANNEL
+			"TvProgram" -> TV_PROGRAM
+			"UserRootFolder" -> USER_ROOT_FOLDER
+			"UserView" -> USER_VIEW
+			"Video" -> VIDEO
+			"Year" -> YEAR
+			else -> null
+		}
+
+		public fun fromName(serialName: String): BaseItemKind =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -29,4 +30,18 @@ public enum class SubtitleDeliveryMethod(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): SubtitleDeliveryMethod? = when (serialName) {
+			"Encode" -> ENCODE
+			"Embed" -> EMBED
+			"External" -> EXTERNAL
+			"Hls" -> HLS
+			"Drop" -> DROP
+			else -> null
+		}
+
+		public fun fromName(serialName: String): SubtitleDeliveryMethod =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

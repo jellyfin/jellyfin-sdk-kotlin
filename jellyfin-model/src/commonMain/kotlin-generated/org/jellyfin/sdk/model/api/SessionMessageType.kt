@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -87,4 +88,47 @@ public enum class SessionMessageType(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): SessionMessageType? = when (serialName) {
+			"ForceKeepAlive" -> FORCE_KEEP_ALIVE
+			"GeneralCommand" -> GENERAL_COMMAND
+			"UserDataChanged" -> USER_DATA_CHANGED
+			"Sessions" -> SESSIONS
+			"Play" -> PLAY
+			"SyncPlayCommand" -> SYNC_PLAY_COMMAND
+			"SyncPlayGroupUpdate" -> SYNC_PLAY_GROUP_UPDATE
+			"Playstate" -> PLAYSTATE
+			"RestartRequired" -> RESTART_REQUIRED
+			"ServerShuttingDown" -> SERVER_SHUTTING_DOWN
+			"ServerRestarting" -> SERVER_RESTARTING
+			"LibraryChanged" -> LIBRARY_CHANGED
+			"UserDeleted" -> USER_DELETED
+			"UserUpdated" -> USER_UPDATED
+			"SeriesTimerCreated" -> SERIES_TIMER_CREATED
+			"TimerCreated" -> TIMER_CREATED
+			"SeriesTimerCancelled" -> SERIES_TIMER_CANCELLED
+			"TimerCancelled" -> TIMER_CANCELLED
+			"RefreshProgress" -> REFRESH_PROGRESS
+			"ScheduledTaskEnded" -> SCHEDULED_TASK_ENDED
+			"PackageInstallationCancelled" -> PACKAGE_INSTALLATION_CANCELLED
+			"PackageInstallationFailed" -> PACKAGE_INSTALLATION_FAILED
+			"PackageInstallationCompleted" -> PACKAGE_INSTALLATION_COMPLETED
+			"PackageInstalling" -> PACKAGE_INSTALLING
+			"PackageUninstalled" -> PACKAGE_UNINSTALLED
+			"ActivityLogEntry" -> ACTIVITY_LOG_ENTRY
+			"ScheduledTasksInfo" -> SCHEDULED_TASKS_INFO
+			"ActivityLogEntryStart" -> ACTIVITY_LOG_ENTRY_START
+			"ActivityLogEntryStop" -> ACTIVITY_LOG_ENTRY_STOP
+			"SessionsStart" -> SESSIONS_START
+			"SessionsStop" -> SESSIONS_STOP
+			"ScheduledTasksInfoStart" -> SCHEDULED_TASKS_INFO_START
+			"ScheduledTasksInfoStop" -> SCHEDULED_TASKS_INFO_STOP
+			"KeepAlive" -> KEEP_ALIVE
+			else -> null
+		}
+
+		public fun fromName(serialName: String): SessionMessageType =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

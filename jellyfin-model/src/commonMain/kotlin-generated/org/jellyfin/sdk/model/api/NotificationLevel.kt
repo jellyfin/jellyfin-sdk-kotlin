@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -22,4 +23,16 @@ public enum class NotificationLevel(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): NotificationLevel? = when (serialName) {
+			"Normal" -> NORMAL
+			"Warning" -> WARNING
+			"Error" -> ERROR
+			else -> null
+		}
+
+		public fun fromName(serialName: String): NotificationLevel =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

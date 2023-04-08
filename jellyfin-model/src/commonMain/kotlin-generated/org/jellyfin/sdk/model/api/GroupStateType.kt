@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -27,4 +28,17 @@ public enum class GroupStateType(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): GroupStateType? = when (serialName) {
+			"Idle" -> IDLE
+			"Waiting" -> WAITING
+			"Paused" -> PAUSED
+			"Playing" -> PLAYING
+			else -> null
+		}
+
+		public fun fromName(serialName: String): GroupStateType =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

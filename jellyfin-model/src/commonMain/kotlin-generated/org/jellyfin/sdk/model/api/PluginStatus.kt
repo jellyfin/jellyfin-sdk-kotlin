@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -33,4 +34,20 @@ public enum class PluginStatus(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): PluginStatus? = when (serialName) {
+			"Active" -> ACTIVE
+			"Restart" -> RESTART
+			"Deleted" -> DELETED
+			"Superceded" -> SUPERCEDED
+			"Malfunctioned" -> MALFUNCTIONED
+			"NotSupported" -> NOT_SUPPORTED
+			"Disabled" -> DISABLED
+			else -> null
+		}
+
+		public fun fromName(serialName: String): PluginStatus =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

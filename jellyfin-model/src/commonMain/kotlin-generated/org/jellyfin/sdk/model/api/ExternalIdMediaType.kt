@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -43,4 +44,25 @@ public enum class ExternalIdMediaType(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): ExternalIdMediaType? = when (serialName) {
+			"Album" -> ALBUM
+			"AlbumArtist" -> ALBUM_ARTIST
+			"Artist" -> ARTIST
+			"BoxSet" -> BOX_SET
+			"Episode" -> EPISODE
+			"Movie" -> MOVIE
+			"OtherArtist" -> OTHER_ARTIST
+			"Person" -> PERSON
+			"ReleaseGroup" -> RELEASE_GROUP
+			"Season" -> SEASON
+			"Series" -> SERIES
+			"Track" -> TRACK
+			else -> null
+		}
+
+		public fun fromName(serialName: String): ExternalIdMediaType =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

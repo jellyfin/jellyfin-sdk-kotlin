@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -22,4 +23,16 @@ public enum class PlayMethod(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): PlayMethod? = when (serialName) {
+			"Transcode" -> TRANSCODE
+			"DirectStream" -> DIRECT_STREAM
+			"DirectPlay" -> DIRECT_PLAY
+			else -> null
+		}
+
+		public fun fromName(serialName: String): PlayMethod =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

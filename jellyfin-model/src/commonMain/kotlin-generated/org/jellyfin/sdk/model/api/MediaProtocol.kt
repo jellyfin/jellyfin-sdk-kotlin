@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -30,4 +31,20 @@ public enum class MediaProtocol(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): MediaProtocol? = when (serialName) {
+			"File" -> FILE
+			"Http" -> HTTP
+			"Rtmp" -> RTMP
+			"Rtsp" -> RTSP
+			"Udp" -> UDP
+			"Rtp" -> RTP
+			"Ftp" -> FTP
+			else -> null
+		}
+
+		public fun fromName(serialName: String): MediaProtocol =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -25,4 +26,16 @@ public enum class SyncPlayUserAccessType(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): SyncPlayUserAccessType? = when (serialName) {
+			"CreateAndJoinGroups" -> CREATE_AND_JOIN_GROUPS
+			"JoinGroups" -> JOIN_GROUPS
+			"None" -> NONE
+			else -> null
+		}
+
+		public fun fromName(serialName: String): SyncPlayUserAccessType =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

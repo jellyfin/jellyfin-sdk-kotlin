@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -29,4 +30,18 @@ public enum class SubtitlePlaybackMode(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): SubtitlePlaybackMode? = when (serialName) {
+			"Default" -> DEFAULT
+			"Always" -> ALWAYS
+			"OnlyForced" -> ONLY_FORCED
+			"None" -> NONE
+			"Smart" -> SMART
+			else -> null
+		}
+
+		public fun fromName(serialName: String): SubtitlePlaybackMode =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

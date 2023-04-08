@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -30,4 +31,20 @@ public enum class DayOfWeek(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): DayOfWeek? = when (serialName) {
+			"Sunday" -> SUNDAY
+			"Monday" -> MONDAY
+			"Tuesday" -> TUESDAY
+			"Wednesday" -> WEDNESDAY
+			"Thursday" -> THURSDAY
+			"Friday" -> FRIDAY
+			"Saturday" -> SATURDAY
+			else -> null
+		}
+
+		public fun fromName(serialName: String): DayOfWeek =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

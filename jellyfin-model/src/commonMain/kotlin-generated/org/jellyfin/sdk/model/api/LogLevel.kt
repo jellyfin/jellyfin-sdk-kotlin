@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -30,4 +31,20 @@ public enum class LogLevel(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): LogLevel? = when (serialName) {
+			"Trace" -> TRACE
+			"Debug" -> DEBUG
+			"Information" -> INFORMATION
+			"Warning" -> WARNING
+			"Error" -> ERROR
+			"Critical" -> CRITICAL
+			"None" -> NONE
+			else -> null
+		}
+
+		public fun fromName(serialName: String): LogLevel =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

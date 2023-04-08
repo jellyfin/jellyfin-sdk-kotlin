@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -66,4 +67,38 @@ public enum class TranscodeReason(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): TranscodeReason? = when (serialName) {
+			"ContainerNotSupported" -> CONTAINER_NOT_SUPPORTED
+			"VideoCodecNotSupported" -> VIDEO_CODEC_NOT_SUPPORTED
+			"AudioCodecNotSupported" -> AUDIO_CODEC_NOT_SUPPORTED
+			"SubtitleCodecNotSupported" -> SUBTITLE_CODEC_NOT_SUPPORTED
+			"AudioIsExternal" -> AUDIO_IS_EXTERNAL
+			"SecondaryAudioNotSupported" -> SECONDARY_AUDIO_NOT_SUPPORTED
+			"VideoProfileNotSupported" -> VIDEO_PROFILE_NOT_SUPPORTED
+			"VideoLevelNotSupported" -> VIDEO_LEVEL_NOT_SUPPORTED
+			"VideoResolutionNotSupported" -> VIDEO_RESOLUTION_NOT_SUPPORTED
+			"VideoBitDepthNotSupported" -> VIDEO_BIT_DEPTH_NOT_SUPPORTED
+			"VideoFramerateNotSupported" -> VIDEO_FRAMERATE_NOT_SUPPORTED
+			"RefFramesNotSupported" -> REF_FRAMES_NOT_SUPPORTED
+			"AnamorphicVideoNotSupported" -> ANAMORPHIC_VIDEO_NOT_SUPPORTED
+			"InterlacedVideoNotSupported" -> INTERLACED_VIDEO_NOT_SUPPORTED
+			"AudioChannelsNotSupported" -> AUDIO_CHANNELS_NOT_SUPPORTED
+			"AudioProfileNotSupported" -> AUDIO_PROFILE_NOT_SUPPORTED
+			"AudioSampleRateNotSupported" -> AUDIO_SAMPLE_RATE_NOT_SUPPORTED
+			"AudioBitDepthNotSupported" -> AUDIO_BIT_DEPTH_NOT_SUPPORTED
+			"ContainerBitrateExceedsLimit" -> CONTAINER_BITRATE_EXCEEDS_LIMIT
+			"VideoBitrateNotSupported" -> VIDEO_BITRATE_NOT_SUPPORTED
+			"AudioBitrateNotSupported" -> AUDIO_BITRATE_NOT_SUPPORTED
+			"UnknownVideoStreamInfo" -> UNKNOWN_VIDEO_STREAM_INFO
+			"UnknownAudioStreamInfo" -> UNKNOWN_AUDIO_STREAM_INFO
+			"DirectPlayError" -> DIRECT_PLAY_ERROR
+			"VideoRangeTypeNotSupported" -> VIDEO_RANGE_TYPE_NOT_SUPPORTED
+			else -> null
+		}
+
+		public fun fromName(serialName: String): TranscodeReason =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -24,4 +25,17 @@ public enum class KeepUntil(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): KeepUntil? = when (serialName) {
+			"UntilDeleted" -> UNTIL_DELETED
+			"UntilSpaceNeeded" -> UNTIL_SPACE_NEEDED
+			"UntilWatched" -> UNTIL_WATCHED
+			"UntilDate" -> UNTIL_DATE
+			else -> null
+		}
+
+		public fun fromName(serialName: String): KeepUntil =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

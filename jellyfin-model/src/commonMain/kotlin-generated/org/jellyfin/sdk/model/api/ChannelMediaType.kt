@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -22,4 +23,16 @@ public enum class ChannelMediaType(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): ChannelMediaType? = when (serialName) {
+			"Audio" -> AUDIO
+			"Video" -> VIDEO
+			"Photo" -> PHOTO
+			else -> null
+		}
+
+		public fun fromName(serialName: String): ChannelMediaType =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

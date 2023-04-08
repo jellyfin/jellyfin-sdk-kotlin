@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -28,4 +29,19 @@ public enum class Architecture(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): Architecture? = when (serialName) {
+			"X86" -> X86
+			"X64" -> X64
+			"Arm" -> ARM
+			"Arm64" -> ARM_64
+			"Wasm" -> WASM
+			"S390x" -> S39_0X
+			else -> null
+		}
+
+		public fun fromName(serialName: String): Architecture =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

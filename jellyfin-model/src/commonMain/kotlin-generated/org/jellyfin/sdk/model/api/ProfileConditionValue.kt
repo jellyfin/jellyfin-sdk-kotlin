@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -64,4 +65,37 @@ public enum class ProfileConditionValue(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): ProfileConditionValue? = when (serialName) {
+			"AudioChannels" -> AUDIO_CHANNELS
+			"AudioBitrate" -> AUDIO_BITRATE
+			"AudioProfile" -> AUDIO_PROFILE
+			"Width" -> WIDTH
+			"Height" -> HEIGHT
+			"Has64BitOffsets" -> HAS_64_BIT_OFFSETS
+			"PacketLength" -> PACKET_LENGTH
+			"VideoBitDepth" -> VIDEO_BIT_DEPTH
+			"VideoBitrate" -> VIDEO_BITRATE
+			"VideoFramerate" -> VIDEO_FRAMERATE
+			"VideoLevel" -> VIDEO_LEVEL
+			"VideoProfile" -> VIDEO_PROFILE
+			"VideoTimestamp" -> VIDEO_TIMESTAMP
+			"IsAnamorphic" -> IS_ANAMORPHIC
+			"RefFrames" -> REF_FRAMES
+			"NumAudioStreams" -> NUM_AUDIO_STREAMS
+			"NumVideoStreams" -> NUM_VIDEO_STREAMS
+			"IsSecondaryAudio" -> IS_SECONDARY_AUDIO
+			"VideoCodecTag" -> VIDEO_CODEC_TAG
+			"IsAvc" -> IS_AVC
+			"IsInterlaced" -> IS_INTERLACED
+			"AudioSampleRate" -> AUDIO_SAMPLE_RATE
+			"AudioBitDepth" -> AUDIO_BIT_DEPTH
+			"VideoRangeType" -> VIDEO_RANGE_TYPE
+			else -> null
+		}
+
+		public fun fromName(serialName: String): ProfileConditionValue =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

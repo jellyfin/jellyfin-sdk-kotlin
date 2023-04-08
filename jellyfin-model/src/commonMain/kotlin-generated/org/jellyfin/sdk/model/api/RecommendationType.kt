@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -28,4 +29,19 @@ public enum class RecommendationType(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): RecommendationType? = when (serialName) {
+			"SimilarToRecentlyPlayed" -> SIMILAR_TO_RECENTLY_PLAYED
+			"SimilarToLikedItem" -> SIMILAR_TO_LIKED_ITEM
+			"HasDirectorFromRecentlyPlayed" -> HAS_DIRECTOR_FROM_RECENTLY_PLAYED
+			"HasActorFromRecentlyPlayed" -> HAS_ACTOR_FROM_RECENTLY_PLAYED
+			"HasLikedDirector" -> HAS_LIKED_DIRECTOR
+			"HasLikedActor" -> HAS_LIKED_ACTOR
+			else -> null
+		}
+
+		public fun fromName(serialName: String): RecommendationType =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

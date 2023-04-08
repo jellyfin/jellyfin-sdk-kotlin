@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -41,4 +42,24 @@ public enum class GroupUpdateType(
 	;
 
 	public override fun toString(): String = serialName
+
+	public companion object {
+		public fun fromNameOrNull(serialName: String): GroupUpdateType? = when (serialName) {
+			"UserJoined" -> USER_JOINED
+			"UserLeft" -> USER_LEFT
+			"GroupJoined" -> GROUP_JOINED
+			"GroupLeft" -> GROUP_LEFT
+			"StateUpdate" -> STATE_UPDATE
+			"PlayQueue" -> PLAY_QUEUE
+			"NotInGroup" -> NOT_IN_GROUP
+			"GroupDoesNotExist" -> GROUP_DOES_NOT_EXIST
+			"CreateGroupDenied" -> CREATE_GROUP_DENIED
+			"JoinGroupDenied" -> JOIN_GROUP_DENIED
+			"LibraryAccessDenied" -> LIBRARY_ACCESS_DENIED
+			else -> null
+		}
+
+		public fun fromName(serialName: String): GroupUpdateType =
+				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+	}
 }

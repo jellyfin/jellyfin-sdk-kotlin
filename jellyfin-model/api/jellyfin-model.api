@@ -406,6 +406,8 @@ public final class org/jellyfin/sdk/model/api/Architecture : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/Architecture$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/Architecture;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/Architecture;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -1115,6 +1117,8 @@ public final class org/jellyfin/sdk/model/api/BaseItemKind : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/BaseItemKind$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/BaseItemKind;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/BaseItemKind;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -1491,6 +1495,8 @@ public final class org/jellyfin/sdk/model/api/ChannelItemSortField : java/lang/E
 }
 
 public final class org/jellyfin/sdk/model/api/ChannelItemSortField$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ChannelItemSortField;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ChannelItemSortField;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -1547,6 +1553,8 @@ public final class org/jellyfin/sdk/model/api/ChannelMediaContentType : java/lan
 }
 
 public final class org/jellyfin/sdk/model/api/ChannelMediaContentType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ChannelMediaContentType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ChannelMediaContentType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -1562,6 +1570,8 @@ public final class org/jellyfin/sdk/model/api/ChannelMediaType : java/lang/Enum 
 }
 
 public final class org/jellyfin/sdk/model/api/ChannelMediaType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ChannelMediaType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ChannelMediaType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -1576,6 +1586,8 @@ public final class org/jellyfin/sdk/model/api/ChannelType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/ChannelType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ChannelType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ChannelType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -1792,6 +1804,8 @@ public final class org/jellyfin/sdk/model/api/CodecType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/CodecType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/CodecType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/CodecType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -1841,6 +1855,8 @@ public final class org/jellyfin/sdk/model/api/CollectionTypeOptions : java/lang/
 }
 
 public final class org/jellyfin/sdk/model/api/CollectionTypeOptions$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/CollectionTypeOptions;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/CollectionTypeOptions;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -2154,6 +2170,8 @@ public final class org/jellyfin/sdk/model/api/DayOfWeek : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/DayOfWeek$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DayOfWeek;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DayOfWeek;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -2169,6 +2187,8 @@ public final class org/jellyfin/sdk/model/api/DayPattern : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/DayPattern$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DayPattern;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DayPattern;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -2549,6 +2569,8 @@ public final class org/jellyfin/sdk/model/api/DeviceProfileType : java/lang/Enum
 }
 
 public final class org/jellyfin/sdk/model/api/DeviceProfileType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DeviceProfileType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DeviceProfileType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -2707,6 +2729,8 @@ public final class org/jellyfin/sdk/model/api/DlnaProfileType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/DlnaProfileType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DlnaProfileType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DlnaProfileType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -2729,6 +2753,8 @@ public final class org/jellyfin/sdk/model/api/DynamicDayOfWeek : java/lang/Enum 
 }
 
 public final class org/jellyfin/sdk/model/api/DynamicDayOfWeek$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DynamicDayOfWeek;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/DynamicDayOfWeek;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -2745,6 +2771,8 @@ public final class org/jellyfin/sdk/model/api/EmbeddedSubtitleOptions : java/lan
 }
 
 public final class org/jellyfin/sdk/model/api/EmbeddedSubtitleOptions$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/EmbeddedSubtitleOptions;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/EmbeddedSubtitleOptions;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -2759,6 +2787,8 @@ public final class org/jellyfin/sdk/model/api/EncodingContext : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/EncodingContext$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/EncodingContext;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/EncodingContext;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -2954,6 +2984,8 @@ public final class org/jellyfin/sdk/model/api/ExternalIdMediaType : java/lang/En
 }
 
 public final class org/jellyfin/sdk/model/api/ExternalIdMediaType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3003,6 +3035,8 @@ public final class org/jellyfin/sdk/model/api/FFmpegLocation : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/FFmpegLocation$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/FFmpegLocation;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/FFmpegLocation;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3052,6 +3086,8 @@ public final class org/jellyfin/sdk/model/api/FileSystemEntryType : java/lang/En
 }
 
 public final class org/jellyfin/sdk/model/api/FileSystemEntryType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/FileSystemEntryType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/FileSystemEntryType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3103,6 +3139,8 @@ public final class org/jellyfin/sdk/model/api/ForgotPasswordAction : java/lang/E
 }
 
 public final class org/jellyfin/sdk/model/api/ForgotPasswordAction$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ForgotPasswordAction;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ForgotPasswordAction;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3282,6 +3320,8 @@ public final class org/jellyfin/sdk/model/api/GeneralCommandType : java/lang/Enu
 }
 
 public final class org/jellyfin/sdk/model/api/GeneralCommandType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GeneralCommandType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GeneralCommandType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3415,6 +3455,8 @@ public final class org/jellyfin/sdk/model/api/GroupQueueMode : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/GroupQueueMode$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupQueueMode;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupQueueMode;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3430,6 +3472,8 @@ public final class org/jellyfin/sdk/model/api/GroupRepeatMode : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/GroupRepeatMode$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupRepeatMode;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupRepeatMode;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3444,6 +3488,8 @@ public final class org/jellyfin/sdk/model/api/GroupShuffleMode : java/lang/Enum 
 }
 
 public final class org/jellyfin/sdk/model/api/GroupShuffleMode$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupShuffleMode;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupShuffleMode;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3460,6 +3506,8 @@ public final class org/jellyfin/sdk/model/api/GroupStateType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/GroupStateType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupStateType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupStateType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3483,6 +3531,8 @@ public final class org/jellyfin/sdk/model/api/GroupUpdateType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/GroupUpdateType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupUpdateType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/GroupUpdateType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3532,6 +3582,8 @@ public final class org/jellyfin/sdk/model/api/HardwareEncodingType : java/lang/E
 }
 
 public final class org/jellyfin/sdk/model/api/HardwareEncodingType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/HardwareEncodingType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/HardwareEncodingType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3547,6 +3599,8 @@ public final class org/jellyfin/sdk/model/api/HeaderMatchType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/HeaderMatchType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/HeaderMatchType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/HeaderMatchType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3707,6 +3761,8 @@ public final class org/jellyfin/sdk/model/api/ImageFormat : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/ImageFormat$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ImageFormat;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ImageFormat;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3804,6 +3860,8 @@ public final class org/jellyfin/sdk/model/api/ImageOrientation : java/lang/Enum 
 }
 
 public final class org/jellyfin/sdk/model/api/ImageOrientation$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ImageOrientation;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ImageOrientation;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3849,6 +3907,8 @@ public final class org/jellyfin/sdk/model/api/ImageSavingConvention : java/lang/
 }
 
 public final class org/jellyfin/sdk/model/api/ImageSavingConvention$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ImageSavingConvention;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ImageSavingConvention;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3874,6 +3934,8 @@ public final class org/jellyfin/sdk/model/api/ImageType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/ImageType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ImageType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ImageType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -3930,6 +3992,8 @@ public final class org/jellyfin/sdk/model/api/IsoType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/IsoType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/IsoType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/IsoType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -4054,6 +4118,8 @@ public final class org/jellyfin/sdk/model/api/ItemFields : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/ItemFields$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ItemFields;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ItemFields;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -4075,6 +4141,8 @@ public final class org/jellyfin/sdk/model/api/ItemFilter : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/ItemFilter$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ItemFilter;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ItemFilter;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -4120,6 +4188,8 @@ public final class org/jellyfin/sdk/model/api/KeepUntil : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/KeepUntil$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/KeepUntil;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/KeepUntil;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -4586,6 +4656,8 @@ public final class org/jellyfin/sdk/model/api/LiveTvServiceStatus : java/lang/En
 }
 
 public final class org/jellyfin/sdk/model/api/LiveTvServiceStatus$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/LiveTvServiceStatus;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/LiveTvServiceStatus;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -4635,6 +4707,8 @@ public final class org/jellyfin/sdk/model/api/LocationType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/LocationType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/LocationType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/LocationType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -4690,6 +4764,8 @@ public final class org/jellyfin/sdk/model/api/LogLevel : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/LogLevel$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/LogLevel;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/LogLevel;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -4848,6 +4924,8 @@ public final class org/jellyfin/sdk/model/api/MediaProtocol : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/MediaProtocol$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MediaProtocol;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MediaProtocol;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -4975,6 +5053,8 @@ public final class org/jellyfin/sdk/model/api/MediaSourceType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/MediaSourceType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MediaSourceType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MediaSourceType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -5136,6 +5216,8 @@ public final class org/jellyfin/sdk/model/api/MediaStreamType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/MediaStreamType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MediaStreamType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -5355,6 +5437,8 @@ public final class org/jellyfin/sdk/model/api/MetadataField : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/MetadataField$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MetadataField;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MetadataField;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -5414,6 +5498,8 @@ public final class org/jellyfin/sdk/model/api/MetadataRefreshMode : java/lang/En
 }
 
 public final class org/jellyfin/sdk/model/api/MetadataRefreshMode$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -5928,6 +6014,8 @@ public final class org/jellyfin/sdk/model/api/NotificationLevel : java/lang/Enum
 }
 
 public final class org/jellyfin/sdk/model/api/NotificationLevel$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/NotificationLevel;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/NotificationLevel;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -6454,6 +6542,8 @@ public final class org/jellyfin/sdk/model/api/PlayAccess : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/PlayAccess$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlayAccess;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlayAccess;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -6471,6 +6561,8 @@ public final class org/jellyfin/sdk/model/api/PlayCommand : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/PlayCommand$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlayCommand;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlayCommand;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -6486,6 +6578,8 @@ public final class org/jellyfin/sdk/model/api/PlayMethod : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/PlayMethod$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlayMethod;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlayMethod;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -6578,6 +6672,8 @@ public final class org/jellyfin/sdk/model/api/PlaybackErrorCode : java/lang/Enum
 }
 
 public final class org/jellyfin/sdk/model/api/PlaybackErrorCode$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlaybackErrorCode;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlaybackErrorCode;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -6957,6 +7053,8 @@ public final class org/jellyfin/sdk/model/api/PlaystateCommand : java/lang/Enum 
 }
 
 public final class org/jellyfin/sdk/model/api/PlaystateCommand$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlaystateCommand;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PlaystateCommand;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -7054,6 +7152,8 @@ public final class org/jellyfin/sdk/model/api/PluginStatus : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/PluginStatus$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PluginStatus;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/PluginStatus;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -7175,6 +7275,8 @@ public final class org/jellyfin/sdk/model/api/ProfileConditionType : java/lang/E
 }
 
 public final class org/jellyfin/sdk/model/api/ProfileConditionType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ProfileConditionType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ProfileConditionType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -7211,6 +7313,8 @@ public final class org/jellyfin/sdk/model/api/ProfileConditionValue : java/lang/
 }
 
 public final class org/jellyfin/sdk/model/api/ProfileConditionValue$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ProfileConditionValue;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ProfileConditionValue;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -7229,6 +7333,8 @@ public final class org/jellyfin/sdk/model/api/ProgramAudio : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/ProgramAudio$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ProgramAudio;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ProgramAudio;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -7491,6 +7597,8 @@ public final class org/jellyfin/sdk/model/api/RatingType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/RatingType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/RatingType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/RatingType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -7580,6 +7688,8 @@ public final class org/jellyfin/sdk/model/api/RecommendationType : java/lang/Enu
 }
 
 public final class org/jellyfin/sdk/model/api/RecommendationType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/RecommendationType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/RecommendationType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -7599,6 +7709,8 @@ public final class org/jellyfin/sdk/model/api/RecordingStatus : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/RecordingStatus$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/RecordingStatus;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/RecordingStatus;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -7833,6 +7945,8 @@ public final class org/jellyfin/sdk/model/api/RepeatMode : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/RepeatMode$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/RepeatMode;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/RepeatMode;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -7923,6 +8037,8 @@ public final class org/jellyfin/sdk/model/api/ScrollDirection : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/ScrollDirection$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ScrollDirection;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ScrollDirection;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -8125,6 +8241,8 @@ public final class org/jellyfin/sdk/model/api/SendCommandType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/SendCommandType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SendCommandType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SendCommandType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -8140,6 +8258,8 @@ public final class org/jellyfin/sdk/model/api/SendToUserType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/SendToUserType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SendToUserType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SendToUserType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -8240,6 +8360,8 @@ public final class org/jellyfin/sdk/model/api/SeriesStatus : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/SeriesStatus$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SeriesStatus;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SeriesStatus;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -8664,6 +8786,8 @@ public final class org/jellyfin/sdk/model/api/SessionMessageType : java/lang/Enu
 }
 
 public final class org/jellyfin/sdk/model/api/SessionMessageType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SessionMessageType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SessionMessageType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -8886,6 +9010,8 @@ public final class org/jellyfin/sdk/model/api/SortOrder : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/SortOrder$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SortOrder;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SortOrder;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -9035,6 +9161,8 @@ public final class org/jellyfin/sdk/model/api/SubtitleDeliveryMethod : java/lang
 }
 
 public final class org/jellyfin/sdk/model/api/SubtitleDeliveryMethod$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -9098,6 +9226,8 @@ public final class org/jellyfin/sdk/model/api/SubtitlePlaybackMode : java/lang/E
 }
 
 public final class org/jellyfin/sdk/model/api/SubtitlePlaybackMode$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SubtitlePlaybackMode;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SubtitlePlaybackMode;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -9151,6 +9281,8 @@ public final class org/jellyfin/sdk/model/api/SyncPlayUserAccessType : java/lang
 }
 
 public final class org/jellyfin/sdk/model/api/SyncPlayUserAccessType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SyncPlayUserAccessType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SyncPlayUserAccessType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -9247,6 +9379,8 @@ public final class org/jellyfin/sdk/model/api/TaskCompletionStatus : java/lang/E
 }
 
 public final class org/jellyfin/sdk/model/api/TaskCompletionStatus$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TaskCompletionStatus;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TaskCompletionStatus;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -9354,6 +9488,8 @@ public final class org/jellyfin/sdk/model/api/TaskState : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/TaskState$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TaskState;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TaskState;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -9702,6 +9838,8 @@ public final class org/jellyfin/sdk/model/api/TranscodeReason : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/TranscodeReason$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TranscodeReason;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TranscodeReason;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -9716,6 +9854,8 @@ public final class org/jellyfin/sdk/model/api/TranscodeSeekInfo : java/lang/Enum
 }
 
 public final class org/jellyfin/sdk/model/api/TranscodeSeekInfo$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TranscodeSeekInfo;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TranscodeSeekInfo;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -9845,6 +9985,8 @@ public final class org/jellyfin/sdk/model/api/TransportStreamTimestamp : java/la
 }
 
 public final class org/jellyfin/sdk/model/api/TransportStreamTimestamp$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TransportStreamTimestamp;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TransportStreamTimestamp;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -9994,6 +10136,8 @@ public final class org/jellyfin/sdk/model/api/UnratedItem : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/UnratedItem$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/UnratedItem;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/UnratedItem;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -10560,6 +10704,8 @@ public final class org/jellyfin/sdk/model/api/Video3dFormat : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/Video3dFormat$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/Video3dFormat;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/Video3dFormat;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -10576,6 +10722,8 @@ public final class org/jellyfin/sdk/model/api/VideoType : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/model/api/VideoType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/VideoType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/VideoType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
