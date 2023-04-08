@@ -65,10 +65,25 @@ object Strings {
 	/**
 	 * Description of the parameter used for the generated request model containing operation parameters.
 	 */
-	const val MODEL_REQUEST_PARAMETER_DESCRIPTION = "The request paramaters"
+	const val MODEL_REQUEST_PARAMETER_DESCRIPTION = "The request parameters"
 
 	/**
 	 * Message used in the exception thrown when the serialName is invalid. Use $serialName for the input value.
 	 */
 	const val MODEL_ENUM_MEMBER_EXCEPTION_MESSAGE = "Unknown value \$serialName"
+
+	/**
+	 * Function description for the `toString` function of generated enums.
+	 */
+	const val MODEL_ENUM_TO_STRING_DESCRIPTION = "Get the serial name of the enum member."
+
+	/**
+	 * Function description for the `fromName` function of generated enums.
+	 */
+	const val MODEL_ENUM_FROM_NAME_DESCRIPTION = "Find the enum member by the serial name or throw."
+
+	/**
+	 * Function description for the `fromNameOrNull` function of generated enums.
+	 */
+	const val MODEL_ENUM_FROM_NAME_OR_NULL_DESCRIPTION = "Find the enum member by the serial name or return null."
 }
