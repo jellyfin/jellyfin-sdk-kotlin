@@ -163,7 +163,7 @@ public class ArtistsApi(
 	/**
 	 * Gets all album artists from a given item, folder, or the entire library.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getAlbumArtists(request: GetAlbumArtistsRequest = GetAlbumArtistsRequest()):
 			Response<BaseItemDtoQueryResult> = getAlbumArtists(
@@ -351,7 +351,7 @@ public class ArtistsApi(
 	/**
 	 * Gets all artists from a given item, folder, or the entire library.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getArtists(request: GetArtistsRequest = GetArtistsRequest()):
 			Response<BaseItemDtoQueryResult> = getArtists(

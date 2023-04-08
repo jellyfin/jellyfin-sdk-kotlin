@@ -230,7 +230,7 @@ public class DynamicHlsApi(
 	/**
 	 * Gets a video stream using HTTP live streaming.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getHlsAudioSegment(request: GetHlsAudioSegmentRequest):
 			Response<ByteReadChannel> = getHlsAudioSegment(
@@ -686,7 +686,7 @@ public class DynamicHlsApi(
 	/**
 	 * Gets a video stream using HTTP live streaming.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getHlsVideoSegment(request: GetHlsVideoSegmentRequest):
 			Response<ByteReadChannel> = getHlsVideoSegment(
@@ -1136,7 +1136,7 @@ public class DynamicHlsApi(
 	/**
 	 * Gets a hls live stream.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getLiveHlsStream(request: GetLiveHlsStreamRequest): Response<ByteReadChannel> =
 			getLiveHlsStream(
@@ -1567,7 +1567,7 @@ public class DynamicHlsApi(
 	/**
 	 * Gets an audio hls playlist stream.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getMasterHlsAudioPlaylist(request: GetMasterHlsAudioPlaylistRequest):
 			Response<ByteReadChannel> = getMasterHlsAudioPlaylist(
@@ -1993,7 +1993,7 @@ public class DynamicHlsApi(
 	/**
 	 * Gets a video hls playlist stream.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getMasterHlsVideoPlaylist(request: GetMasterHlsVideoPlaylistRequest):
 			Response<ByteReadChannel> = getMasterHlsVideoPlaylist(
@@ -2416,7 +2416,7 @@ public class DynamicHlsApi(
 	/**
 	 * Gets an audio stream using HTTP live streaming.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getVariantHlsAudioPlaylist(request: GetVariantHlsAudioPlaylistRequest):
 			Response<ByteReadChannel> = getVariantHlsAudioPlaylist(
@@ -2834,7 +2834,7 @@ public class DynamicHlsApi(
 	/**
 	 * Gets a video stream using HTTP live streaming.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getVariantHlsVideoPlaylist(request: GetVariantHlsVideoPlaylistRequest):
 			Response<ByteReadChannel> = getVariantHlsVideoPlaylist(

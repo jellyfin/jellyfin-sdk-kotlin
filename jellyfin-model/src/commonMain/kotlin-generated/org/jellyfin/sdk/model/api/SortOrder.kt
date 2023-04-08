@@ -23,15 +23,24 @@ public enum class SortOrder(
 	DESCENDING("Descending"),
 	;
 
+	/**
+	 * Get the serial name of the enum member.
+	 */
 	public override fun toString(): String = serialName
 
 	public companion object {
+		/**
+		 * Find the enum member by the serial name or return null.
+		 */
 		public fun fromNameOrNull(serialName: String): SortOrder? = when (serialName) {
 			"Ascending" -> ASCENDING
 			"Descending" -> DESCENDING
 			else -> null
 		}
 
+		/**
+		 * Find the enum member by the serial name or throw.
+		 */
 		public fun fromName(serialName: String): SortOrder =
 				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}

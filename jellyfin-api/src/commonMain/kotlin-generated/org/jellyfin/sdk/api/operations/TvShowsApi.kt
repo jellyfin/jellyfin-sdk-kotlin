@@ -99,7 +99,7 @@ public class TvShowsApi(
 	/**
 	 * Gets episodes for a tv season.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getEpisodes(request: GetEpisodesRequest): Response<BaseItemDtoQueryResult> =
 			getEpisodes(
@@ -182,7 +182,7 @@ public class TvShowsApi(
 	/**
 	 * Gets a list of next up episodes.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getNextUp(request: GetNextUpRequest = GetNextUpRequest()):
 			Response<BaseItemDtoQueryResult> = getNextUp(
@@ -254,7 +254,7 @@ public class TvShowsApi(
 	/**
 	 * Gets seasons for a tv series.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getSeasons(request: GetSeasonsRequest): Response<BaseItemDtoQueryResult> =
 			getSeasons(
@@ -317,7 +317,7 @@ public class TvShowsApi(
 	/**
 	 * Gets a list of upcoming episodes.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getUpcomingEpisodes(request: GetUpcomingEpisodesRequest =
 			GetUpcomingEpisodesRequest()): Response<BaseItemDtoQueryResult> = getUpcomingEpisodes(

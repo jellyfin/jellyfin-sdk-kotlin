@@ -176,7 +176,7 @@ public class SessionApi(
 	/**
 	 * Instructs a session to play an item.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun play(request: PlayRequest): Response<Unit> = play(
 		sessionId = request.sessionId,
@@ -225,7 +225,7 @@ public class SessionApi(
 	/**
 	 * Updates capabilities for a device.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun postCapabilities(request: PostCapabilitiesRequest = PostCapabilitiesRequest()):
 			Response<Unit> = postCapabilities(

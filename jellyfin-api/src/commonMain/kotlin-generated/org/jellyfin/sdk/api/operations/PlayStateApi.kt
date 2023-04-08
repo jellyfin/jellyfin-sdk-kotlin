@@ -135,7 +135,7 @@ public class PlayStateApi(
 	/**
 	 * Reports a user's playback progress.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun onPlaybackProgress(request: OnPlaybackProgressRequest): Response<Unit> =
 			onPlaybackProgress(
@@ -200,7 +200,7 @@ public class PlayStateApi(
 	/**
 	 * Reports that a user has begun playing an item.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun onPlaybackStart(request: OnPlaybackStartRequest): Response<Unit> =
 			onPlaybackStart(
@@ -256,7 +256,7 @@ public class PlayStateApi(
 	/**
 	 * Reports that a user has stopped playing an item.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun onPlaybackStopped(request: OnPlaybackStoppedRequest): Response<Unit> =
 			onPlaybackStopped(

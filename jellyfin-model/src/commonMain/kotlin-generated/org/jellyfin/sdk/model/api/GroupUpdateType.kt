@@ -41,9 +41,15 @@ public enum class GroupUpdateType(
 	LIBRARY_ACCESS_DENIED("LibraryAccessDenied"),
 	;
 
+	/**
+	 * Get the serial name of the enum member.
+	 */
 	public override fun toString(): String = serialName
 
 	public companion object {
+		/**
+		 * Find the enum member by the serial name or return null.
+		 */
 		public fun fromNameOrNull(serialName: String): GroupUpdateType? = when (serialName) {
 			"UserJoined" -> USER_JOINED
 			"UserLeft" -> USER_LEFT
@@ -59,6 +65,9 @@ public enum class GroupUpdateType(
 			else -> null
 		}
 
+		/**
+		 * Find the enum member by the serial name or throw.
+		 */
 		public fun fromName(serialName: String): GroupUpdateType =
 				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}

@@ -258,7 +258,7 @@ public class VideosApi(
 	/**
 	 * Gets a video stream.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getVideoStream(request: GetVideoStreamRequest): Response<ByteReadChannel> =
 			getVideoStream(
@@ -690,7 +690,7 @@ public class VideosApi(
 	/**
 	 * Gets a video stream.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getVideoStreamByContainer(request: GetVideoStreamByContainerRequest):
 			Response<ByteReadChannel> = getVideoStreamByContainer(

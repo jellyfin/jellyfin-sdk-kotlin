@@ -107,7 +107,7 @@ public class ChannelsApi(
 	/**
 	 * Get channel items.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getChannelItems(request: GetChannelItemsRequest):
 			Response<BaseItemDtoQueryResult> = getChannelItems(
@@ -159,7 +159,7 @@ public class ChannelsApi(
 	/**
 	 * Gets available channels.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getChannels(request: GetChannelsRequest = GetChannelsRequest()):
 			Response<BaseItemDtoQueryResult> = getChannels(
@@ -208,7 +208,7 @@ public class ChannelsApi(
 	/**
 	 * Gets latest channel items.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getLatestChannelItems(request: GetLatestChannelItemsRequest =
 			GetLatestChannelItemsRequest()): Response<BaseItemDtoQueryResult> = getLatestChannelItems(

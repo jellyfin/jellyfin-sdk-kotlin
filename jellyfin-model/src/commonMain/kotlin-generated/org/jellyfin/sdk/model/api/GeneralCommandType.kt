@@ -103,9 +103,15 @@ public enum class GeneralCommandType(
 	SET_MAX_STREAMING_BITRATE("SetMaxStreamingBitrate"),
 	;
 
+	/**
+	 * Get the serial name of the enum member.
+	 */
 	public override fun toString(): String = serialName
 
 	public companion object {
+		/**
+		 * Find the enum member by the serial name or return null.
+		 */
 		public fun fromNameOrNull(serialName: String): GeneralCommandType? = when (serialName) {
 			"MoveUp" -> MOVE_UP
 			"MoveDown" -> MOVE_DOWN
@@ -152,6 +158,9 @@ public enum class GeneralCommandType(
 			else -> null
 		}
 
+		/**
+		 * Find the enum member by the serial name or throw.
+		 */
 		public fun fromName(serialName: String): GeneralCommandType =
 				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}

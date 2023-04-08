@@ -128,7 +128,7 @@ public class MusicGenresApi(
 	/**
 	 * Gets all music genres from a given item, folder, or the entire library.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getMusicGenres(request: GetMusicGenresRequest = GetMusicGenresRequest()):

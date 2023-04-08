@@ -76,7 +76,7 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given album.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getInstantMixFromAlbum(request: GetInstantMixFromAlbumRequest):
 			Response<BaseItemDtoQueryResult> = getInstantMixFromAlbum(
@@ -133,7 +133,7 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given artist.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getInstantMixFromArtists(request: GetInstantMixFromArtistsRequest):
 			Response<BaseItemDtoQueryResult> = getInstantMixFromArtists(
@@ -190,7 +190,7 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given artist.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getInstantMixFromArtists2(request: GetInstantMixFromArtists2Request):
@@ -248,7 +248,7 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given item.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getInstantMixFromItem(request: GetInstantMixFromItemRequest):
 			Response<BaseItemDtoQueryResult> = getInstantMixFromItem(
@@ -304,7 +304,7 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given genre.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend
 			fun getInstantMixFromMusicGenreById(request: GetInstantMixFromMusicGenreByIdRequest):
@@ -362,7 +362,7 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given genre.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend
 			fun getInstantMixFromMusicGenreByName(request: GetInstantMixFromMusicGenreByNameRequest):
@@ -420,7 +420,7 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given playlist.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getInstantMixFromPlaylist(request: GetInstantMixFromPlaylistRequest):
 			Response<BaseItemDtoQueryResult> = getInstantMixFromPlaylist(
@@ -477,7 +477,7 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given song.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getInstantMixFromSong(request: GetInstantMixFromSongRequest):
 			Response<BaseItemDtoQueryResult> = getInstantMixFromSong(

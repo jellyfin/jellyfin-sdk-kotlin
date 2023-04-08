@@ -348,7 +348,7 @@ public class ItemsApi(
 	/**
 	 * Gets items based on a query.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getItems(request: GetItemsRequest = GetItemsRequest()):
 			Response<BaseItemDtoQueryResult> = getItems(
@@ -753,7 +753,7 @@ public class ItemsApi(
 	/**
 	 * Gets items based on a query.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getItemsByUserId(request: GetItemsByUserIdRequest):
 			Response<BaseItemDtoQueryResult> = getItemsByUserId(
@@ -914,7 +914,7 @@ public class ItemsApi(
 	/**
 	 * Gets items based on a query.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getResumeItems(request: GetResumeItemsRequest): Response<BaseItemDtoQueryResult>
 			= getResumeItems(

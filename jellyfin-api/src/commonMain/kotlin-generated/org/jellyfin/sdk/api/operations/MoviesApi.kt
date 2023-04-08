@@ -58,7 +58,7 @@ public class MoviesApi(
 	/**
 	 * Gets movie recommendations.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getMovieRecommendations(request: GetMovieRecommendationsRequest =
 			GetMovieRecommendationsRequest()): Response<List<RecommendationDto>> = getMovieRecommendations(

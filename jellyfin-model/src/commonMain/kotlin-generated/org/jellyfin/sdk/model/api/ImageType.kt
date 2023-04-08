@@ -45,9 +45,15 @@ public enum class ImageType(
 	PROFILE("Profile"),
 	;
 
+	/**
+	 * Get the serial name of the enum member.
+	 */
 	public override fun toString(): String = serialName
 
 	public companion object {
+		/**
+		 * Find the enum member by the serial name or return null.
+		 */
 		public fun fromNameOrNull(serialName: String): ImageType? = when (serialName) {
 			"Primary" -> PRIMARY
 			"Art" -> ART
@@ -65,6 +71,9 @@ public enum class ImageType(
 			else -> null
 		}
 
+		/**
+		 * Find the enum member by the serial name or throw.
+		 */
 		public fun fromName(serialName: String): ImageType =
 				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}

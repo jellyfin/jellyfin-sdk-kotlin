@@ -32,9 +32,15 @@ public enum class ImageOrientation(
 	LEFT_BOTTOM("LeftBottom"),
 	;
 
+	/**
+	 * Get the serial name of the enum member.
+	 */
 	public override fun toString(): String = serialName
 
 	public companion object {
+		/**
+		 * Find the enum member by the serial name or return null.
+		 */
 		public fun fromNameOrNull(serialName: String): ImageOrientation? = when (serialName) {
 			"TopLeft" -> TOP_LEFT
 			"TopRight" -> TOP_RIGHT
@@ -47,6 +53,9 @@ public enum class ImageOrientation(
 			else -> null
 		}
 
+		/**
+		 * Find the enum member by the serial name or throw.
+		 */
 		public fun fromName(serialName: String): ImageOrientation =
 				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}

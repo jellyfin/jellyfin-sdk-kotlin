@@ -143,7 +143,7 @@ public class UserLibraryApi(
 	/**
 	 * Gets latest media.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getLatestMedia(request: GetLatestMediaRequest): Response<List<BaseItemDto>> =
 			getLatestMedia(

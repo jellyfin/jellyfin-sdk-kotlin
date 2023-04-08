@@ -172,7 +172,7 @@ public class SubtitleApi(
 	/**
 	 * Gets subtitles in a specified format.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getSubtitle(request: GetSubtitleRequest): Response<String> = getSubtitle(
 		routeItemId = request.routeItemId,
@@ -242,7 +242,7 @@ public class SubtitleApi(
 	/**
 	 * Gets subtitles in a specified format.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getSubtitleDeprecated(request: GetSubtitleDeprecatedRequest): Response<String> =
@@ -362,7 +362,7 @@ public class SubtitleApi(
 	/**
 	 * Gets subtitles in a specified format.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getSubtitleWithTicks(request: GetSubtitleWithTicksRequest): Response<String> =
 			getSubtitleWithTicks(
@@ -436,7 +436,7 @@ public class SubtitleApi(
 	/**
 	 * Gets subtitles in a specified format.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getSubtitleWithTicksDeprecated(request: GetSubtitleWithTicksDeprecatedRequest):

@@ -98,7 +98,7 @@ public class UniversalAudioApi(
 	/**
 	 * Gets an audio stream.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getUniversalAudioStream(request: GetUniversalAudioStreamRequest):
 			Response<ByteReadChannel> = getUniversalAudioStream(

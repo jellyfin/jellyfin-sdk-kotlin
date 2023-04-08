@@ -476,7 +476,7 @@ public class LiveTvApi(
 	/**
 	 * Gets available live tv channels.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getLiveTvChannels(request: GetLiveTvChannelsRequest =
 			GetLiveTvChannelsRequest()): Response<BaseItemDtoQueryResult> = getLiveTvChannels(
@@ -615,7 +615,7 @@ public class LiveTvApi(
 	/**
 	 * Gets available live tv epgs.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getLiveTvPrograms(request: GetLiveTvProgramsRequest =
 			GetLiveTvProgramsRequest()): Response<BaseItemDtoQueryResult> = getLiveTvPrograms(
@@ -744,7 +744,7 @@ public class LiveTvApi(
 	/**
 	 * Gets recommended live tv epgs.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getRecommendedPrograms(request: GetRecommendedProgramsRequest =
 			GetRecommendedProgramsRequest()): Response<BaseItemDtoQueryResult> = getRecommendedPrograms(
@@ -911,7 +911,7 @@ public class LiveTvApi(
 	/**
 	 * Gets live tv recordings.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getRecordings(request: GetRecordingsRequest = GetRecordingsRequest()):
 			Response<BaseItemDtoQueryResult> = getRecordings(
@@ -998,7 +998,7 @@ public class LiveTvApi(
 	/**
 	 * Gets live tv recording series.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getRecordingsSeries(request: GetRecordingsSeriesRequest =

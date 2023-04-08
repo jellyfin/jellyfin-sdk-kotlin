@@ -29,9 +29,15 @@ public enum class ImageFormat(
 	WEBP("Webp"),
 	;
 
+	/**
+	 * Get the serial name of the enum member.
+	 */
 	public override fun toString(): String = serialName
 
 	public companion object {
+		/**
+		 * Find the enum member by the serial name or return null.
+		 */
 		public fun fromNameOrNull(serialName: String): ImageFormat? = when (serialName) {
 			"Bmp" -> BMP
 			"Gif" -> GIF
@@ -41,6 +47,9 @@ public enum class ImageFormat(
 			else -> null
 		}
 
+		/**
+		 * Find the enum member by the serial name or throw.
+		 */
 		public fun fromName(serialName: String): ImageFormat =
 				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
