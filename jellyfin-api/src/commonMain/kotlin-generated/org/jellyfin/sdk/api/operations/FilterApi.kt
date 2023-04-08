@@ -73,7 +73,7 @@ public class FilterApi(
 	/**
 	 * Gets query filters.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getQueryFilters(request: GetQueryFiltersRequest = GetQueryFiltersRequest()):
 			Response<QueryFilters> = getQueryFilters(

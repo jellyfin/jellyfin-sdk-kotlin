@@ -100,7 +100,7 @@ public class SearchApi(
 	/**
 	 * Gets the search hint result.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun `get`(request: GetRequest): Response<SearchHintResult> = `get`(
 		startIndex = request.startIndex,

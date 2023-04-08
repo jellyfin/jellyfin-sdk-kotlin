@@ -28,9 +28,15 @@ public enum class RecommendationType(
 	HAS_LIKED_ACTOR("HasLikedActor"),
 	;
 
+	/**
+	 * Get the serial name of the enum member.
+	 */
 	public override fun toString(): String = serialName
 
 	public companion object {
+		/**
+		 * Find the enum member by the serial name or return null.
+		 */
 		public fun fromNameOrNull(serialName: String): RecommendationType? = when (serialName) {
 			"SimilarToRecentlyPlayed" -> SIMILAR_TO_RECENTLY_PLAYED
 			"SimilarToLikedItem" -> SIMILAR_TO_LIKED_ITEM
@@ -41,6 +47,9 @@ public enum class RecommendationType(
 			else -> null
 		}
 
+		/**
+		 * Find the enum member by the serial name or throw.
+		 */
 		public fun fromName(serialName: String): RecommendationType =
 				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}

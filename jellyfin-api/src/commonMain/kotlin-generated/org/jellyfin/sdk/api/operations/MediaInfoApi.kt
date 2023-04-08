@@ -187,7 +187,7 @@ public class MediaInfoApi(
 	 * precedence.
 	 * Query parameters are obsolete.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getPostedPlaybackInfoDeprecated(request: GetPostedPlaybackInfoDeprecatedRequest,
@@ -262,7 +262,7 @@ public class MediaInfoApi(
 	/**
 	 * Opens a media source.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun openLiveStream(request: OpenLiveStreamRequest = OpenLiveStreamRequest(),
 			`data`: OpenLiveStreamDto? = null): Response<LiveStreamResponse> = openLiveStream(

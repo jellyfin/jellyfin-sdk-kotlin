@@ -245,7 +245,7 @@ public class ImageApi(
 	/**
 	 * Get artist image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getArtistImage(request: GetArtistImageRequest): Response<ByteReadChannel> =
 			getArtistImage(
@@ -421,7 +421,7 @@ public class ImageApi(
 	/**
 	 * Get artist image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getArtistImageDeprecated(request: GetArtistImageDeprecatedRequest):
@@ -599,7 +599,7 @@ public class ImageApi(
 	/**
 	 * Get genre image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getGenreImage(request: GetGenreImageRequest): Response<ByteReadChannel> =
 			getGenreImage(
@@ -770,7 +770,7 @@ public class ImageApi(
 	/**
 	 * Get genre image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getGenreImageByIndex(request: GetGenreImageByIndexRequest):
 			Response<ByteReadChannel> = getGenreImageByIndex(
@@ -946,7 +946,7 @@ public class ImageApi(
 	/**
 	 * Get genre image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getGenreImageByIndexDeprecated(request: GetGenreImageByIndexDeprecatedRequest):
@@ -1129,7 +1129,7 @@ public class ImageApi(
 	/**
 	 * Get genre image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getGenreImageDeprecated(request: GetGenreImageDeprecatedRequest):
@@ -1307,7 +1307,7 @@ public class ImageApi(
 	/**
 	 * Gets the item's image.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getItemImage(request: GetItemImageRequest): Response<ByteReadChannel> =
 			getItemImage(
@@ -1479,7 +1479,7 @@ public class ImageApi(
 	/**
 	 * Gets the item's image.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getItemImage2(request: GetItemImage2Request): Response<ByteReadChannel> =
 			getItemImage2(
@@ -1656,7 +1656,7 @@ public class ImageApi(
 	/**
 	 * Gets the item's image.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getItemImage2Deprecated(request: GetItemImage2DeprecatedRequest):
@@ -1834,7 +1834,7 @@ public class ImageApi(
 	/**
 	 * Gets the item's image.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getItemImageByIndex(request: GetItemImageByIndexRequest):
 			Response<ByteReadChannel> = getItemImageByIndex(
@@ -2010,7 +2010,7 @@ public class ImageApi(
 	/**
 	 * Gets the item's image.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getItemImageByIndexDeprecated(request: GetItemImageByIndexDeprecatedRequest):
@@ -2193,7 +2193,7 @@ public class ImageApi(
 	/**
 	 * Gets the item's image.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getItemImageDeprecated(request: GetItemImageDeprecatedRequest):
@@ -2387,7 +2387,7 @@ public class ImageApi(
 	/**
 	 * Get music genre image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getMusicGenreImage(request: GetMusicGenreImageRequest):
 			Response<ByteReadChannel> = getMusicGenreImage(
@@ -2558,7 +2558,7 @@ public class ImageApi(
 	/**
 	 * Get music genre image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getMusicGenreImageByIndex(request: GetMusicGenreImageByIndexRequest):
 			Response<ByteReadChannel> = getMusicGenreImageByIndex(
@@ -2734,7 +2734,7 @@ public class ImageApi(
 	/**
 	 * Get music genre image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend
@@ -2918,7 +2918,7 @@ public class ImageApi(
 	/**
 	 * Get music genre image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getMusicGenreImageDeprecated(request: GetMusicGenreImageDeprecatedRequest):
@@ -3096,7 +3096,7 @@ public class ImageApi(
 	/**
 	 * Get person image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getPersonImage(request: GetPersonImageRequest): Response<ByteReadChannel> =
 			getPersonImage(
@@ -3267,7 +3267,7 @@ public class ImageApi(
 	/**
 	 * Get person image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getPersonImageByIndex(request: GetPersonImageByIndexRequest):
 			Response<ByteReadChannel> = getPersonImageByIndex(
@@ -3443,7 +3443,7 @@ public class ImageApi(
 	/**
 	 * Get person image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend
@@ -3627,7 +3627,7 @@ public class ImageApi(
 	/**
 	 * Get person image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getPersonImageDeprecated(request: GetPersonImageDeprecatedRequest):
@@ -3785,7 +3785,7 @@ public class ImageApi(
 	/**
 	 * Generates or gets the splashscreen.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getSplashscreen(request: GetSplashscreenRequest = GetSplashscreenRequest()):
 			Response<ByteReadChannel> = getSplashscreen(
@@ -3930,7 +3930,7 @@ public class ImageApi(
 	/**
 	 * Get studio image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getStudioImage(request: GetStudioImageRequest): Response<ByteReadChannel> =
 			getStudioImage(
@@ -4101,7 +4101,7 @@ public class ImageApi(
 	/**
 	 * Get studio image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getStudioImageByIndex(request: GetStudioImageByIndexRequest):
 			Response<ByteReadChannel> = getStudioImageByIndex(
@@ -4277,7 +4277,7 @@ public class ImageApi(
 	/**
 	 * Get studio image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend
@@ -4461,7 +4461,7 @@ public class ImageApi(
 	/**
 	 * Get studio image by name.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getStudioImageDeprecated(request: GetStudioImageDeprecatedRequest):
@@ -4639,7 +4639,7 @@ public class ImageApi(
 	/**
 	 * Get user profile image.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getUserImage(request: GetUserImageRequest): Response<ByteReadChannel> =
 			getUserImage(
@@ -4810,7 +4810,7 @@ public class ImageApi(
 	/**
 	 * Get user profile image.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getUserImageByIndex(request: GetUserImageByIndexRequest):
 			Response<ByteReadChannel> = getUserImageByIndex(
@@ -4986,7 +4986,7 @@ public class ImageApi(
 	/**
 	 * Get user profile image.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getUserImageByIndexDeprecated(request: GetUserImageByIndexDeprecatedRequest):
@@ -5169,7 +5169,7 @@ public class ImageApi(
 	/**
 	 * Get user profile image.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getUserImageDeprecated(request: GetUserImageDeprecatedRequest):

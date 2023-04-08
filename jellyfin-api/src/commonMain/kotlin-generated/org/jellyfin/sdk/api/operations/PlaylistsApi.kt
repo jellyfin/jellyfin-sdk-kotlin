@@ -148,7 +148,7 @@ public class PlaylistsApi(
 	/**
 	 * Gets the original items of a playlist.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getPlaylistItems(request: GetPlaylistItemsRequest):
 			Response<BaseItemDtoQueryResult> = getPlaylistItems(

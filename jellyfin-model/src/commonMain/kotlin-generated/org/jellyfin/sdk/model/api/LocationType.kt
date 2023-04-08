@@ -27,9 +27,15 @@ public enum class LocationType(
 	OFFLINE("Offline"),
 	;
 
+	/**
+	 * Get the serial name of the enum member.
+	 */
 	public override fun toString(): String = serialName
 
 	public companion object {
+		/**
+		 * Find the enum member by the serial name or return null.
+		 */
 		public fun fromNameOrNull(serialName: String): LocationType? = when (serialName) {
 			"FileSystem" -> FILE_SYSTEM
 			"Remote" -> REMOTE
@@ -38,6 +44,9 @@ public enum class LocationType(
 			else -> null
 		}
 
+		/**
+		 * Find the enum member by the serial name or throw.
+		 */
 		public fun fromName(serialName: String): LocationType =
 				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}

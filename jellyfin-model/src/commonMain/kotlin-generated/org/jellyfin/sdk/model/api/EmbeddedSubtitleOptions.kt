@@ -27,9 +27,15 @@ public enum class EmbeddedSubtitleOptions(
 	ALLOW_NONE("AllowNone"),
 	;
 
+	/**
+	 * Get the serial name of the enum member.
+	 */
 	public override fun toString(): String = serialName
 
 	public companion object {
+		/**
+		 * Find the enum member by the serial name or return null.
+		 */
 		public fun fromNameOrNull(serialName: String): EmbeddedSubtitleOptions? = when (serialName) {
 			"AllowAll" -> ALLOW_ALL
 			"AllowText" -> ALLOW_TEXT
@@ -38,6 +44,9 @@ public enum class EmbeddedSubtitleOptions(
 			else -> null
 		}
 
+		/**
+		 * Find the enum member by the serial name or throw.
+		 */
 		public fun fromName(serialName: String): EmbeddedSubtitleOptions =
 				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}

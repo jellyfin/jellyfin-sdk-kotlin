@@ -342,7 +342,7 @@ public class TrailersApi(
 	/**
 	 * Finds movies and trailers similar to a given trailer.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getTrailers(request: GetTrailersRequest = GetTrailersRequest()):
 			Response<BaseItemDtoQueryResult> = getTrailers(

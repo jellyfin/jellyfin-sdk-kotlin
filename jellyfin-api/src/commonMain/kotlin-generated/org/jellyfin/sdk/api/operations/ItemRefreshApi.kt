@@ -55,7 +55,7 @@ public class ItemRefreshApi(
 	/**
 	 * Refreshes metadata for an item.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun refreshItem(request: RefreshItemRequest): Response<Unit> = refreshItem(
 		itemId = request.itemId,

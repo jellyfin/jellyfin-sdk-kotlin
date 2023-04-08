@@ -113,7 +113,7 @@ public class YearsApi(
 	/**
 	 * Get years.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getYears(request: GetYearsRequest = GetYearsRequest()):
 			Response<BaseItemDtoQueryResult> = getYears(

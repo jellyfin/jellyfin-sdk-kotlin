@@ -106,7 +106,7 @@ public class PersonsApi(
 	/**
 	 * Gets all persons.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getPersons(request: GetPersonsRequest = GetPersonsRequest()):
 			Response<BaseItemDtoQueryResult> = getPersons(

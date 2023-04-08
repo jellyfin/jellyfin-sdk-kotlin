@@ -121,7 +121,7 @@ public class StudiosApi(
 	/**
 	 * Gets all studios from a given item, folder, or the entire library.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getStudios(request: GetStudiosRequest = GetStudiosRequest()):
 			Response<BaseItemDtoQueryResult> = getStudios(

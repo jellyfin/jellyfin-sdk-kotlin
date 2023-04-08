@@ -105,7 +105,7 @@ public class RemoteImageApi(
 	/**
 	 * Gets available remote images for an item.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getRemoteImages(request: GetRemoteImagesRequest): Response<RemoteImageResult> =
 			getRemoteImages(

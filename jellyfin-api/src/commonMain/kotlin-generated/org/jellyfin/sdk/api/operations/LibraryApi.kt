@@ -268,7 +268,7 @@ public class LibraryApi(
 	/**
 	 * Gets similar items.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getSimilarAlbums(request: GetSimilarAlbumsRequest):
 			Response<BaseItemDtoQueryResult> = getSimilarAlbums(
@@ -316,7 +316,7 @@ public class LibraryApi(
 	/**
 	 * Gets similar items.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getSimilarArtists(request: GetSimilarArtistsRequest):
 			Response<BaseItemDtoQueryResult> = getSimilarArtists(
@@ -364,7 +364,7 @@ public class LibraryApi(
 	/**
 	 * Gets similar items.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getSimilarItems(request: GetSimilarItemsRequest):
 			Response<BaseItemDtoQueryResult> = getSimilarItems(
@@ -412,7 +412,7 @@ public class LibraryApi(
 	/**
 	 * Gets similar items.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getSimilarMovies(request: GetSimilarMoviesRequest):
 			Response<BaseItemDtoQueryResult> = getSimilarMovies(
@@ -460,7 +460,7 @@ public class LibraryApi(
 	/**
 	 * Gets similar items.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getSimilarShows(request: GetSimilarShowsRequest):
 			Response<BaseItemDtoQueryResult> = getSimilarShows(
@@ -508,7 +508,7 @@ public class LibraryApi(
 	/**
 	 * Gets similar items.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getSimilarTrailers(request: GetSimilarTrailersRequest):
 			Response<BaseItemDtoQueryResult> = getSimilarTrailers(

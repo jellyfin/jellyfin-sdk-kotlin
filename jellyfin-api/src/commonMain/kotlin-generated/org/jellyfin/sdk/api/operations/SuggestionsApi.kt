@@ -61,7 +61,7 @@ public class SuggestionsApi(
 	/**
 	 * Gets suggestions.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getSuggestions(request: GetSuggestionsRequest): Response<BaseItemDtoQueryResult>
 			= getSuggestions(

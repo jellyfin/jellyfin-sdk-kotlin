@@ -26,9 +26,15 @@ public enum class Video3dFormat(
 	MVC("MVC"),
 	;
 
+	/**
+	 * Get the serial name of the enum member.
+	 */
 	public override fun toString(): String = serialName
 
 	public companion object {
+		/**
+		 * Find the enum member by the serial name or return null.
+		 */
 		public fun fromNameOrNull(serialName: String): Video3dFormat? = when (serialName) {
 			"HalfSideBySide" -> HALF_SIDE_BY_SIDE
 			"FullSideBySide" -> FULL_SIDE_BY_SIDE
@@ -38,6 +44,9 @@ public enum class Video3dFormat(
 			else -> null
 		}
 
+		/**
+		 * Find the enum member by the serial name or throw.
+		 */
 		public fun fromName(serialName: String): Video3dFormat =
 				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}

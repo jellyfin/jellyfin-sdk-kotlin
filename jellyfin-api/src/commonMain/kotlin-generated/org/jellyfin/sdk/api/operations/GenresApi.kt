@@ -125,7 +125,7 @@ public class GenresApi(
 	/**
 	 * Gets all genres from a given item, folder, or the entire library.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getGenres(request: GetGenresRequest = GetGenresRequest()):
 			Response<BaseItemDtoQueryResult> = getGenres(

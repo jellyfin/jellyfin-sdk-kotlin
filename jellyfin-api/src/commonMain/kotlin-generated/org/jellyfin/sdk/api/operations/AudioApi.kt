@@ -209,7 +209,7 @@ public class AudioApi(
 	/**
 	 * Gets an audio stream.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getAudioStream(request: GetAudioStreamRequest): Response<ByteReadChannel> =
 			getAudioStream(
@@ -625,7 +625,7 @@ public class AudioApi(
 	/**
 	 * Gets an audio stream.
 	 *
-	 * @param request The request paramaters
+	 * @param request The request parameters
 	 */
 	public suspend fun getAudioStreamByContainer(request: GetAudioStreamByContainerRequest):
 			Response<ByteReadChannel> = getAudioStreamByContainer(
