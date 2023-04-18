@@ -1,7 +1,7 @@
 [versions]
 android-gradle = "7.4.2"
 android-sdk = "33"
-binarycompatibilityvalidator = "0.13.0"
+binarycompatibilityvalidator = "0.13.1"
 clikt = "3.5.2"
 detekt = "1.22.0"
 dokka = "1.8.10"
