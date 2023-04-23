@@ -51,12 +51,12 @@ public data class EncodingOptions(
 	public val enableVppTonemapping: Boolean,
 	@SerialName("TonemappingAlgorithm")
 	public val tonemappingAlgorithm: String? = null,
+	@SerialName("TonemappingMode")
+	public val tonemappingMode: String? = null,
 	@SerialName("TonemappingRange")
 	public val tonemappingRange: String? = null,
 	@SerialName("TonemappingDesat")
 	public val tonemappingDesat: Double,
-	@SerialName("TonemappingThreshold")
-	public val tonemappingThreshold: Double,
 	@SerialName("TonemappingPeak")
 	public val tonemappingPeak: Double,
 	@SerialName("TonemappingParam")
