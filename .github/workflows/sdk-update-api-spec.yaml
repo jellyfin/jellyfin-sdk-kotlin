@@ -28,11 +28,6 @@ jobs:
         run: |
           ./gradlew :openapi-generator:updateApiSpecStable
           ./gradlew apiDump
-      - name: Set AFFECTED_FILES and AFFECTED_FILES_COUNT variables
-        run: |
-          AFFECTED_FILES=$(git status --porcelain)
-          echo "AFFECTED_FILES=${AFFECTED_FILES}" >> $GITHUB_ENV
-          echo "AFFECTED_FILES_COUNT=$(echo ${AFFECTED_FILES} | wc -l | xargs)" >> $GITHUB_ENV
       - name: Create pull request
         uses: peter-evans/create-pull-request@5b4a9f6a9e2af26e5f02351490b90d01eb8ec1e5 # v5.0.0
         with:
@@ -47,9 +42,4 @@ jobs:
           branch: 'openapi-update-'
           branch-suffix: 'short-commit-hash'
           delete-branch: true
-          body: |
-            ## Changed files
-            <details>
-              <summary>Changed ${{ env.AFFECTED_FILES_COUNT }} files</summary>
-              ${{ env.AFFECTED_FILES }}
-            </details>
+          body: 'Update OpenAPI to ${{ env.STABLE_API_VERSION }}'
