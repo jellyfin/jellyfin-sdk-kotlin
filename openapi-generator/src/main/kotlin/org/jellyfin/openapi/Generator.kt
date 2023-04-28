@@ -7,7 +7,7 @@ import org.jellyfin.openapi.builder.api.ApisBuilder
 import org.jellyfin.openapi.builder.model.ModelsBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiApiServicesBuilder
 import org.jellyfin.openapi.builder.openapi.OpenApiConstantsBuilder
-import org.jellyfin.openapi.builder.openapi.OpenApiModelsBuilder
+import org.jellyfin.openapi.builder.openapi.OpenApiModelBuilder
 import org.jellyfin.openapi.compare.InfoComparator
 import org.jellyfin.openapi.compare.ModelComparator
 import org.jellyfin.openapi.compare.OperationComparator
@@ -23,7 +23,7 @@ private val logger = KotlinLogging.logger { }
 class Generator : KoinComponent {
 	private val openApiApiServicesBuilder by inject<OpenApiApiServicesBuilder>()
 	private val apisBuilder by inject<ApisBuilder>()
-	private val openApiModelsBuilder by inject<OpenApiModelsBuilder>()
+	private val openApiModelBuilder by inject<OpenApiModelBuilder>()
 	private val modelsBuilder by inject<ModelsBuilder>()
 	private val apiClientExtensionsBuilder by inject<ApiClientExtensionsBuilder>()
 	private val openApiConstantsBuilder by inject<OpenApiConstantsBuilder>()
@@ -35,11 +35,11 @@ class Generator : KoinComponent {
 		val openApiSpecification = OpenAPIV3Parser().readContents(openApiJson)
 		openApiSpecification.messages.forEach { message -> logger.warn { message } }
 
-		val context = GeneratorContext(openApiSpecification)
+		val context = GeneratorContext(openApiSpecification, openApiModelBuilder)
 
 		// Generate intermediate models
-		openApiModelsBuilder.build(context, context.schemas)
 		openApiApiServicesBuilder.build(context, context.paths)
+		for (name in context.schemas.keys) context.getOrGenerateModel(name)
 
 		// Generate code
 		modelsBuilder.build(context, context.models)
