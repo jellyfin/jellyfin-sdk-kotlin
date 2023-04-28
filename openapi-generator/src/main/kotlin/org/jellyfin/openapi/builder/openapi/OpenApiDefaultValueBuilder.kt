@@ -4,7 +4,6 @@ import com.squareup.kotlinpoet.ClassName
 import io.swagger.v3.oas.models.media.ComposedSchema
 import io.swagger.v3.oas.models.media.Schema
 import net.pearx.kasechange.CaseFormat
-import net.pearx.kasechange.toPascalCase
 import net.pearx.kasechange.toScreamingSnakeCase
 import org.jellyfin.openapi.OpenApiGeneratorError
 import org.jellyfin.openapi.builder.ContextBuilder
@@ -29,11 +28,7 @@ class OpenApiDefaultValueBuilder : ContextBuilder<Schema<Any>, DefaultValue?> {
 		if (schemaDefault !is String) return null
 
 		val reference = getSchemaReference(schema) ?: return null
-		val modelName = reference
-			.removePrefix("#/components/schemas/")
-			.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL)
-
-		val model = context.models.firstOrNull { it.name == modelName }
+		val model = context.getOrGenerateModel(reference)
 		if (model !is EnumApiModel) return null
 		if (model.constants.none { it.equals(schemaDefault, ignoreCase = true) }) return null
 

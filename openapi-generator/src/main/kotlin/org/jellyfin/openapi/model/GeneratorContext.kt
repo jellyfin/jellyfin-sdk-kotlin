@@ -5,9 +5,13 @@ import io.swagger.v3.oas.models.Paths
 import io.swagger.v3.oas.models.info.Info
 import io.swagger.v3.oas.models.media.Schema
 import io.swagger.v3.parser.core.models.SwaggerParseResult
+import net.pearx.kasechange.CaseFormat
+import net.pearx.kasechange.toPascalCase
+import org.jellyfin.openapi.builder.openapi.OpenApiModelBuilder
 
 class GeneratorContext(
 	openApiSpecification: SwaggerParseResult,
+	private val openApiModelBuilder: OpenApiModelBuilder,
 ) {
 	// Phase 1: Parse
 	val schemas: Map<String, Schema<Any>> = openApiSpecification.openAPI.components.schemas
@@ -15,14 +19,21 @@ class GeneratorContext(
 	val info: Info = openApiSpecification.openAPI.info
 
 	// Phase 2: OpenAPI -> Intermediate model
-	private val _models = mutableListOf<ApiModel>()
-	val models: Collection<ApiModel> get() = _models
+	private val _models = mutableMapOf<String, ApiModel>()
+	val models: Collection<ApiModel> get() = _models.values
 
 	private val _apiServices = mutableListOf<ApiService>()
 	val apiServices: Collection<ApiService> get() = _apiServices
 
-	operator fun plusAssign(model: ApiModel) {
-		_models.add(model)
+	fun getOrGenerateModel(reference: String): ApiModel {
+		val name = reference.removePrefix("#/components/schemas/")
+
+		return _models.getOrPut(name) {
+			val schema = requireNotNull(schemas[name]) { "Invalid schema $reference" }
+
+			if (schema.name == null) schema.name = name.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL)
+			openApiModelBuilder.build(this, schema)
+		}
 	}
 
 	operator fun plusAssign(service: ApiService) {
