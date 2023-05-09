@@ -51,24 +51,6 @@ public final class org/jellyfin/sdk/api/client/HttpMethod : java/lang/Enum {
 	public static fun values ()[Lorg/jellyfin/sdk/api/client/HttpMethod;
 }
 
-public class org/jellyfin/sdk/api/client/KtorClient : org/jellyfin/sdk/api/client/ApiClient {
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public fun getAccessToken ()Ljava/lang/String;
-	public fun getBaseUrl ()Ljava/lang/String;
-	public fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
-	public fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
-	public fun getHttpClientOptions ()Lorg/jellyfin/sdk/api/client/HttpClientOptions;
-	public fun getUserId ()Ljava/util/UUID;
-	public fun request (Lorg/jellyfin/sdk/api/client/HttpMethod;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun setAccessToken (Ljava/lang/String;)V
-	public fun setBaseUrl (Ljava/lang/String;)V
-	public fun setClientInfo (Lorg/jellyfin/sdk/model/ClientInfo;)V
-	public fun setDeviceInfo (Lorg/jellyfin/sdk/model/DeviceInfo;)V
-	public fun setUserId (Ljava/util/UUID;)V
-	public fun ws ()Lorg/jellyfin/sdk/api/sockets/SocketInstance;
-}
-
 public final class org/jellyfin/sdk/api/client/RawResponse {
 	public fun <init> (Lio/ktor/utils/io/ByteReadChannel;ILjava/util/Map;)V
 	public final fun getBody ()Lio/ktor/utils/io/ByteReadChannel;
@@ -1384,6 +1366,8 @@ public abstract interface class org/jellyfin/sdk/api/sockets/SocketConnectionFac
 }
 
 public final class org/jellyfin/sdk/api/sockets/SocketInstance {
+	public fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;Lkotlin/coroutines/CoroutineContext;)V
+	public synthetic fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;Lkotlin/coroutines/CoroutineContext;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun addListenerDefinition (Lorg/jellyfin/sdk/api/sockets/listener/SocketListenerDefinition;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
 	public final fun getState ()Lkotlinx/coroutines/flow/StateFlow;
 	public final fun publish (Lorg/jellyfin/sdk/model/socket/OutgoingSocketMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
