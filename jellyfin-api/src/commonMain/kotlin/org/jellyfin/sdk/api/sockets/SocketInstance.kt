@@ -32,7 +32,7 @@ import kotlin.time.Duration.Companion.seconds
 
 private val logger = KotlinLogging.logger {}
 
-public class SocketInstance internal constructor(
+public class SocketInstance(
 	private val api: ApiClient,
 	private val socketConnectionFactory: SocketConnectionFactory,
 	context: CoroutineContext = Dispatchers.Default,

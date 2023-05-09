@@ -15,14 +15,12 @@ kotlin {
 		}
 
 		val commonMain by getting {
-			kotlin.srcDir("src/commonMain/kotlin-generated")
-
 			dependencies {
+				implementation(projects.jellyfinApi)
 				implementation(projects.jellyfinModel)
 
-				implementation(libs.kotlinx.coroutines)
-				implementation(libs.kotlinx.serialization.json)
-				implementation(libs.ktor.http)
+				implementation(libs.kotlinx.serialization.core)
+				implementation(libs.ktor.core)
 
 				implementation(libs.kotlin.logging)
 			}
@@ -30,7 +28,7 @@ kotlin {
 
 		val jvmMain by getting {
 			dependencies {
-				implementation(libs.okhttp)
+				implementation(libs.ktor.okhttp)
 			}
 		}
 
