@@ -7,7 +7,7 @@ import org.jellyfin.sdk.model.api.ServerDiscoveryInfo
 /**
  * Service for discovery related functionality.
  */
-public class DiscoveryService constructor(
+public class DiscoveryService(
 	private val jellyfin: Jellyfin,
 ) {
 	private val localServerDiscovery by lazy {
@@ -62,8 +62,7 @@ public class DiscoveryService constructor(
 	)
 
 	/**
-	 * Discover servers on the local network. Uses the [discoveryBroadcastAddressesProvider] to
-	 * find local devices to query.
+	 * Discover servers on the local network.
 	 */
 	public fun discoverLocalServers(
 		timeout: Int = LocalServerDiscovery.DISCOVERY_TIMEOUT,
