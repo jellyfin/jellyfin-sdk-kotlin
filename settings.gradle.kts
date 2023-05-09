@@ -6,6 +6,7 @@ rootProject.name = "jellyfin-sdk-kotlin"
 include(":jellyfin-core")
 include(":jellyfin-model")
 include(":jellyfin-api")
+include(":jellyfin-api-ktor")
 
 // Code generation
 include(":openapi-generator")

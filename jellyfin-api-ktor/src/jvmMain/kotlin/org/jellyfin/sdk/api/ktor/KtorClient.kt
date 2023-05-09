@@ -1,4 +1,4 @@
-package org.jellyfin.sdk.api.client
+package org.jellyfin.sdk.api.ktor
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.NoTransformationFoundException
@@ -17,6 +17,10 @@ import io.ktor.network.sockets.SocketTimeoutException
 import io.ktor.util.toMap
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
+import org.jellyfin.sdk.api.client.ApiClient
+import org.jellyfin.sdk.api.client.HttpClientOptions
+import org.jellyfin.sdk.api.client.HttpMethod
+import org.jellyfin.sdk.api.client.RawResponse
 import org.jellyfin.sdk.api.client.exception.ApiClientException
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException

@@ -2,7 +2,7 @@ package org.jellyfin.sdk
 
 import android.content.Context
 import org.jellyfin.sdk.android.androidDevice
-import org.jellyfin.sdk.api.client.KtorClient
+import org.jellyfin.sdk.api.ktor.KtorClient
 import org.jellyfin.sdk.api.sockets.OkHttpWebsocketSession
 import org.jellyfin.sdk.api.sockets.SocketConnectionFactory
 import org.jellyfin.sdk.model.ClientInfo

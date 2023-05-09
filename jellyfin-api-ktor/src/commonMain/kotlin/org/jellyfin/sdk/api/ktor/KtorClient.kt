@@ -1,5 +1,9 @@
-package org.jellyfin.sdk.api.client
+package org.jellyfin.sdk.api.ktor
 
+import org.jellyfin.sdk.api.client.ApiClient
+import org.jellyfin.sdk.api.client.HttpClientOptions
+import org.jellyfin.sdk.api.client.HttpMethod
+import org.jellyfin.sdk.api.client.RawResponse
 import org.jellyfin.sdk.api.sockets.SocketConnectionFactory
 import org.jellyfin.sdk.api.sockets.SocketInstance
 import org.jellyfin.sdk.model.ClientInfo
