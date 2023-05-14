@@ -1,21 +1,18 @@
 package org.jellyfin.openapi.builder.extra
 
 import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.CodeBlock
 import com.squareup.kotlinpoet.MemberName
-import com.squareup.kotlinpoet.ParameterSpec
 import com.squareup.kotlinpoet.ParameterizedTypeName
 import com.squareup.kotlinpoet.TypeName
 import org.jellyfin.openapi.constants.Types
-import org.jellyfin.openapi.model.ApiServiceOperationParameter
 import org.jellyfin.openapi.model.DefaultValue
-import org.jellyfin.openapi.model.ObjectApiModelProperty
 
 @Suppress("ComplexMethod")
-fun ParameterSpec.Builder.defaultValue(
+fun DefaultValue?.toCodeBlock(
 	type: TypeName,
-	defaultValue: DefaultValue?,
 	allowEmptyCollection: Boolean,
-) {
+): CodeBlock? {
 	// Determine class name without parameters
 	val typeClassName = when (type) {
 		is ClassName -> type
@@ -24,37 +21,26 @@ fun ParameterSpec.Builder.defaultValue(
 	}
 
 	// Set default value
-	when (defaultValue) {
-		is DefaultValue.String -> defaultValue("%S", defaultValue.value)
-		is DefaultValue.Int -> defaultValue("%L", defaultValue.value)
-		is DefaultValue.Boolean -> defaultValue("%L", defaultValue.value)
-		is DefaultValue.EnumMember -> defaultValue("%T.%L", defaultValue.enumType, defaultValue.memberName)
-		is DefaultValue.CodeBlock -> defaultValue(defaultValue.build())
-		is DefaultValue.Conditional -> defaultValue(type, defaultValue.parameterValue, allowEmptyCollection)
+	return when (this) {
+		is DefaultValue.String -> CodeBlock.of("%S", value)
+		is DefaultValue.Int -> CodeBlock.of("%L", value)
+		is DefaultValue.Boolean -> CodeBlock.of("%L", value)
+		is DefaultValue.EnumMember -> CodeBlock.of("%T.%L", enumType, memberName)
+		is DefaultValue.CodeBlock -> build()
+		is DefaultValue.Conditional -> parameterValue.toCodeBlock(type, allowEmptyCollection)
 		// Set value to null by default for nullable values
 		null -> when {
 			typeClassName == Types.COLLECTION && allowEmptyCollection ->
-				defaultValue("%M()", MemberName("kotlin.collections", "emptyList"))
+				CodeBlock.of("%M()", MemberName("kotlin.collections", "emptyList"))
 
 			typeClassName == Types.LIST && allowEmptyCollection ->
-				defaultValue("%M()", MemberName("kotlin.collections", "emptyList"))
+				CodeBlock.of("%M()", MemberName("kotlin.collections", "emptyList"))
 
 			typeClassName == Types.MAP && allowEmptyCollection ->
-				defaultValue("%M()", MemberName("kotlin.collections", "emptyMap"))
+				CodeBlock.of("%M()", MemberName("kotlin.collections", "emptyMap"))
 
-			type.isNullable -> defaultValue("%L", "null")
+			type.isNullable -> CodeBlock.of("%L", "null")
+			else -> null
 		}
 	}
 }
-
-fun ParameterSpec.Builder.defaultValue(parameter: ApiServiceOperationParameter) = defaultValue(
-	type = parameter.type,
-	defaultValue = parameter.defaultValue,
-	allowEmptyCollection = true,
-)
-
-fun ParameterSpec.Builder.defaultValue(property: ObjectApiModelProperty) = defaultValue(
-	type = property.type,
-	defaultValue = property.defaultValue,
-	allowEmptyCollection = false,
-)
