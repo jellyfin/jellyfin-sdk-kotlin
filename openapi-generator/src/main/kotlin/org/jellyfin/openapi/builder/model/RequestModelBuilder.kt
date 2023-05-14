@@ -32,6 +32,7 @@ class RequestModelBuilder(
 					},
 					description = parameter.description,
 					deprecated = parameter.deprecated,
+					static = false,
 				)
 			}.toSet()
 		)

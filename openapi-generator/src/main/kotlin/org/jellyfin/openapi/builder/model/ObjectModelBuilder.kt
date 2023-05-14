@@ -14,7 +14,7 @@ import org.jellyfin.openapi.builder.ContextBuilder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.builder.extra.TypeSerializerBuilder
-import org.jellyfin.openapi.builder.extra.defaultValue
+import org.jellyfin.openapi.builder.extra.toCodeBlock
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.constants.Types
@@ -57,16 +57,23 @@ class ObjectModelBuilder(
 
 		val constructor = FunSpec.constructorBuilder().apply {
 			data.properties.forEach { property ->
-				// Create constructor parameter
-				addParameter(ParameterSpec.builder(property.name, property.type).apply {
-					defaultValue(property)
-				}.build())
+				if (!property.static) {
+					// Create constructor parameter
+					addParameter(ParameterSpec.builder(property.name, property.type).apply {
+						defaultValue(property.defaultValue.toCodeBlock(property.type, false))
+					}.build())
+				}
 
 				// Create class property
 				properties.add(PropertySpec
 					.builder(property.name, property.type)
-					.initializer(property.name)
 					.apply {
+						if (!property.static) {
+							initializer(property.name)
+						} else if (property.defaultValue != null) {
+							initializer(property.defaultValue.toCodeBlock(property.type, false))
+						}
+
 						descriptionBuilder.build(DescriptionType.MODEL_PROPERTY, property.description)?.let {
 							addKdoc("%L", it)
 						}

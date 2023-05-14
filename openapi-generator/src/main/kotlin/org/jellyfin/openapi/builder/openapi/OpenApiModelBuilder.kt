@@ -98,13 +98,15 @@ class OpenApiModelBuilder(
 		interfaces = emptySet(),
 		properties = data.properties.map { (originalName, property) ->
 			val name = originalName.toCamelCase(from = CaseFormat.CAPITALIZED_CAMEL)
+			val defaultValue = openApiDefaultValueBuilder.build(context, property)
 			ObjectApiModelProperty(
 				name = name,
 				originalName = originalName,
-				defaultValue = openApiDefaultValueBuilder.build(context, property),
+				defaultValue = defaultValue,
 				type = openApiTypeBuilder.build(ModelTypePath(data.name, name), property),
 				description = property.description,
 				deprecated = property.deprecated == true,
+				static = property.readOnly == true && defaultValue != null,
 			)
 		}.toSet()
 	)

@@ -9,4 +9,5 @@ data class ObjectApiModelProperty(
 	val type: TypeName,
 	val description: String?,
 	val deprecated: Boolean,
+	val static: Boolean,
 )

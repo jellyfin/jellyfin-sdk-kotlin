@@ -10,14 +10,14 @@ import com.squareup.kotlinpoet.buildCodeBlock
 import org.jellyfin.openapi.builder.Builder
 import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.DescriptionBuilder
-import org.jellyfin.openapi.builder.extra.defaultValue
+import org.jellyfin.openapi.builder.extra.toCodeBlock
 import org.jellyfin.openapi.constants.Classes
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.constants.Types
-import org.jellyfin.openapi.model.DescriptionType
 import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
+import org.jellyfin.openapi.model.DescriptionType
 import org.jellyfin.openapi.model.IntRangeValidation
 import org.jellyfin.openapi.model.ParameterValidation
 
@@ -44,7 +44,7 @@ open class OperationBuilder(
 	protected fun buildParameter(
 		data: ApiServiceOperationParameter,
 	) = ParameterSpec.builder(data.name, data.type).apply {
-		defaultValue(data)
+		defaultValue(data.defaultValue.toCodeBlock(data.type, true))
 
 		// Add description
 		descriptionBuilder.build(DescriptionType.OPERATION_PARAMETER, data.description)?.let {
