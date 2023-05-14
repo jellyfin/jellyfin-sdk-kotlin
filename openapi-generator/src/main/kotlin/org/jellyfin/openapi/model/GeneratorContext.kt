@@ -7,6 +7,7 @@ import io.swagger.v3.oas.models.media.Schema
 import io.swagger.v3.parser.core.models.SwaggerParseResult
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toPascalCase
+import org.jellyfin.openapi.OpenApiGeneratorError
 import org.jellyfin.openapi.builder.openapi.OpenApiModelBuilder
 
 class GeneratorContext(
@@ -33,6 +34,18 @@ class GeneratorContext(
 
 			if (schema.name == null) schema.name = name.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL)
 			openApiModelBuilder.build(this, schema)
+		}
+	}
+
+	fun addModelInterface(model: ApiModel, interfaceName: String) {
+		val interfaces = model.interfaces + interfaceName
+		_models[model.name] = when (model) {
+			is EmptyApiModel -> model.copy(interfaces = interfaces)
+			is EnumApiModel -> model.copy(interfaces = interfaces)
+			is InterfaceApiModel -> model.copy(interfaces = interfaces)
+			is ObjectApiModel -> model.copy(interfaces = interfaces)
+
+			else -> throw OpenApiGeneratorError("Unknown model class ${model::class.qualifiedName}")
 		}
 	}
 

@@ -33,4 +33,5 @@ object Types {
 	val SERIALIZABLE = ClassName("kotlinx.serialization", "Serializable")
 	val SERIAL_NAME = ClassName("kotlinx.serialization", "SerialName")
 	val USE_SERIALIZERs = ClassName("kotlinx.serialization", "UseSerializers")
+	val JSON_DISCRIMINATOR = ClassName("kotlinx.serialization.json", "JsonClassDiscriminator")
 }

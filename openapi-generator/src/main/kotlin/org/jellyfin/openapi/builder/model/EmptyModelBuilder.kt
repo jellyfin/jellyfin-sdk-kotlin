@@ -1,5 +1,6 @@
 package org.jellyfin.openapi.builder.model
 
+import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.TypeSpec
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toPascalCase
@@ -20,6 +21,15 @@ class EmptyModelBuilder(
 	override fun build(data: EmptyApiModel): JellyFile {
 		return TypeSpec.classBuilder(data.name.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL))
 			.apply {
+				data.interfaces.forEach { interfaceName ->
+					addSuperinterface(
+						ClassName(
+							Packages.MODEL,
+							interfaceName.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL)
+						)
+					)
+				}
+
 				descriptionBuilder.build(DescriptionType.MODEL, data.description)?.let {
 					addKdoc("%L", it)
 				}
