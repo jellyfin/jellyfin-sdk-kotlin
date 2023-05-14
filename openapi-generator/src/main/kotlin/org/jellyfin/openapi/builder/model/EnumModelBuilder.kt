@@ -28,6 +28,16 @@ class EnumModelBuilder(
 	override fun build(data: EnumApiModel): JellyFile {
 		return TypeSpec.enumBuilder(data.name.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL))
 			.apply {
+				// Super
+				data.interfaces.forEach { interfaceName ->
+					addSuperinterface(
+						ClassName(
+							Packages.MODEL,
+							interfaceName.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL)
+						)
+					)
+				}
+
 				// Constructor
 				primaryConstructor(FunSpec.constructorBuilder().apply {
 					addParameter("serialName", Types.STRING)

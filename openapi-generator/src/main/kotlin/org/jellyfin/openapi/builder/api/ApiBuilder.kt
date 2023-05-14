@@ -82,7 +82,7 @@ class ApiBuilder(
 
 				// Request model variant
 				if (createRequestModelVariant) {
-					context += fileSpecBuilder.build(requestModelBuilder.build(namedOperation))
+					context += fileSpecBuilder.build(requestModelBuilder.build(context, namedOperation))
 					addFunction(operationParameterModelBuilder.build(namedOperation))
 				}
 

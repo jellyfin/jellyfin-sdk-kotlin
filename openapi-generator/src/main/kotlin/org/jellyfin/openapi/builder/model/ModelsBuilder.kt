@@ -11,7 +11,7 @@ class ModelsBuilder(
 ) : ContextBuilder<Collection<ApiModel>, Unit> {
 	override fun build(context: GeneratorContext, data: Collection<ApiModel>) {
 		for (model in data) {
-			val file = modelBuilder.build(model)
+			val file = modelBuilder.build(context, model)
 			context += fileSpecBuilder.build(file)
 		}
 	}

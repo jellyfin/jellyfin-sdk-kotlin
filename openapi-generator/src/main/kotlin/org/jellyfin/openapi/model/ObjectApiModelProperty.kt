@@ -8,5 +8,5 @@ data class ObjectApiModelProperty(
 	val defaultValue: DefaultValue?,
 	val type: TypeName,
 	val description: String?,
-	val deprecated: Boolean
+	val deprecated: Boolean,
 )

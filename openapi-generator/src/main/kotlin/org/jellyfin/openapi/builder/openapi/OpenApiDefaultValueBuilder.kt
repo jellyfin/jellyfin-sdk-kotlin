@@ -34,7 +34,8 @@ class OpenApiDefaultValueBuilder : ContextBuilder<Schema<Any>, DefaultValue?> {
 
 		return DefaultValue.EnumMember(
 			enumType = ClassName(Packages.MODEL, model.name),
-			memberName = schemaDefault.toScreamingSnakeCase(from = CaseFormat.CAPITALIZED_CAMEL)
+			memberName = schemaDefault.toScreamingSnakeCase(from = CaseFormat.CAPITALIZED_CAMEL),
+			serialName = schemaDefault,
 		)
 	}
 

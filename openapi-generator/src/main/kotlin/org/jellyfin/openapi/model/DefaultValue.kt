@@ -12,7 +12,11 @@ sealed interface DefaultValue {
 	@JvmInline
 	value class Boolean(val value: kotlin.Boolean) : DefaultValue
 
-	data class EnumMember(val enumType: TypeName, val memberName: kotlin.String) : DefaultValue
+	data class EnumMember(
+		val enumType: TypeName,
+		val memberName: kotlin.String,
+		val serialName: kotlin.String,
+	) : DefaultValue
 
 	/**
 	 * Custom value builder used in hooks.

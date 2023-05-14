@@ -9,6 +9,8 @@ import org.jellyfin.openapi.model.ApiModel
 import org.jellyfin.openapi.model.EmptyApiModel
 import org.jellyfin.openapi.model.EnumApiModel
 import org.jellyfin.openapi.model.GeneratorContext
+import org.jellyfin.openapi.model.InterfaceApiModel
+import org.jellyfin.openapi.model.InterfaceApiModelProperty
 import org.jellyfin.openapi.model.ObjectApiModel
 import org.jellyfin.openapi.model.ObjectApiModelProperty
 
@@ -16,42 +18,102 @@ class OpenApiModelBuilder(
 	private val openApiTypeBuilder: OpenApiTypeBuilder,
 	private val openApiDefaultValueBuilder: OpenApiDefaultValueBuilder,
 ) : ContextBuilder<Schema<Any>, ApiModel> {
-	override fun build(context: GeneratorContext, data: Schema<Any>): ApiModel = when {
-		// Object
-		data.type == "object" -> when (data.properties.isNullOrEmpty()) {
-			// No properties use the empty model
-			true -> EmptyApiModel(
-				data.name,
-				data.description,
-				data.deprecated == true
-			)
-			// Otherwise use the object model
-			false -> ObjectApiModel(
-				data.name,
-				data.description,
-				data.deprecated == true,
-				data.properties.map { (originalName, property) ->
-					val name = originalName.toCamelCase(from = CaseFormat.CAPITALIZED_CAMEL)
-					ObjectApiModelProperty(
-						name = name,
-						originalName = originalName,
-						defaultValue = openApiDefaultValueBuilder.build(context, property),
-						type = openApiTypeBuilder.build(ModelTypePath(data.name, name), property),
-						description = property.description,
-						deprecated = property.deprecated == true
+	override fun build(context: GeneratorContext, data: Schema<Any>): ApiModel {
+		return when {
+			// Object
+			data.type == "object" -> when {
+				// When properties set, use the object model
+				!data.properties.isNullOrEmpty() -> buildObjectModel(context, data)
+				// When oneOf set, use the interface model
+				!data.oneOf.isNullOrEmpty() -> buildInterfaceModel(context, data)
+				// Otherwise use the empty model
+				else -> buildEmptyModel(data)
+			}
+			// Enum
+			data.enum.isNotEmpty() -> buildEnumModel(data)
+
+			// Unknown type
+			else -> throw NotImplementedError("Unknown top-level type: ${data.type} for ${data.name}")
+		}
+	}
+
+	private fun buildInterfaceModel(context: GeneratorContext, data: Schema<Any>): InterfaceApiModel {
+		val referencedModels = data.oneOf.mapNotNull { it.`$ref`?.let(context::getOrGenerateModel) }
+		var sharedProperties: Set<InterfaceApiModelProperty>? = null
+
+		for ((index, model) in referencedModels.withIndex()) {
+			// Add interface to referenced model
+			context.addModelInterface(model, data.name)
+
+			// Only search for shared properties if the lookup didn't fail before this iteration
+			if (sharedProperties == null && index != 0) continue
+
+			// Find properties of current model
+			val modelProperties = when (model) {
+				is ObjectApiModel -> model.properties.map {
+					InterfaceApiModelProperty(
+						name = it.name,
+						originalName = it.originalName,
+						type = it.type,
+						description = it.description,
+						deprecated = it.deprecated,
 					)
 				}.toSet()
-			)
-		}
-		// Enum
-		data.enum.isNotEmpty() -> EnumApiModel(
-			data.name,
-			data.description,
-			data.deprecated == true,
-			data.enum.orEmpty().map { it.toString() }.toSet()
-		)
+				is InterfaceApiModel -> model.properties
+				else -> null
+			}
 
-		// Unknown type
-		else -> throw NotImplementedError("Unknown top-level type: ${data.type} for ${data.name}")
+			// Search for shared properties between previous and current iteration
+			sharedProperties = when {
+				// Unsupported model type
+				modelProperties == null -> null
+				// First iteration
+				sharedProperties == null -> modelProperties
+				// Compare with existing properties
+				else -> sharedProperties.filter { a -> modelProperties.any { b -> a.typeMatches(b) } }.toSet()
+			}
+		}
+
+		return InterfaceApiModel(
+			name = data.name,
+			description = data.description,
+			deprecated = data.deprecated == true,
+			interfaces = emptySet(),
+			polymorphicDiscriminator = data.discriminator?.propertyName,
+			properties = sharedProperties.orEmpty(),
+		)
 	}
+
+	private fun buildEmptyModel(data: Schema<Any>) = EmptyApiModel(
+		name = data.name,
+		description = data.description,
+		deprecated = data.deprecated == true,
+		interfaces = emptySet(),
+	)
+
+	private fun buildObjectModel(context: GeneratorContext, data: Schema<Any>) = ObjectApiModel(
+		name = data.name,
+		description = data.description,
+		deprecated = data.deprecated == true,
+		interfaces = emptySet(),
+		properties = data.properties.map { (originalName, property) ->
+			val name = originalName.toCamelCase(from = CaseFormat.CAPITALIZED_CAMEL)
+			ObjectApiModelProperty(
+				name = name,
+				originalName = originalName,
+				defaultValue = openApiDefaultValueBuilder.build(context, property),
+				type = openApiTypeBuilder.build(ModelTypePath(data.name, name), property),
+				description = property.description,
+				deprecated = property.deprecated == true,
+			)
+		}.toSet()
+	)
+
+	private fun buildEnumModel(data: Schema<Any>) = EnumApiModel(
+		name = data.name,
+		description = data.description,
+		deprecated = data.deprecated == true,
+		interfaces = emptySet(),
+		constants = data.enum.orEmpty().map { it.toString() }.toSet(),
+	)
 }
