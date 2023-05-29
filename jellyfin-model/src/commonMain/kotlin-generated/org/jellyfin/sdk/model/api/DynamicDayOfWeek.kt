@@ -42,7 +42,7 @@ public enum class DynamicDayOfWeek(
 	/**
 	 * Get the serial name of the enum member.
 	 */
-	public override fun toString(): String = serialName
+	override fun toString(): String = serialName
 
 	public companion object {
 		/**
