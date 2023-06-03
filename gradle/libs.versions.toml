@@ -1,5 +1,5 @@
 [versions]
-android-gradle = "7.4.2"
+android-gradle = "8.0.2"
 android-sdk = "33"
 binarycompatibilityvalidator = "0.13.1"
 clikt = "3.5.2"
