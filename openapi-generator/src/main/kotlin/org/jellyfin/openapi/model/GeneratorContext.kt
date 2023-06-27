@@ -40,7 +40,6 @@ class GeneratorContext(
 	fun addModelInterface(model: ApiModel, interfaceName: String) {
 		val interfaces = model.interfaces + interfaceName
 		_models[model.name] = when (model) {
-			is EmptyApiModel -> model.copy(interfaces = interfaces)
 			is EnumApiModel -> model.copy(interfaces = interfaces)
 			is InterfaceApiModel -> model.copy(interfaces = interfaces)
 			is ObjectApiModel -> model.copy(interfaces = interfaces)

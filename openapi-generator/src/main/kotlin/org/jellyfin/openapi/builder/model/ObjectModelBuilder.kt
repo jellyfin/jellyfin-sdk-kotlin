@@ -135,7 +135,11 @@ class ObjectModelBuilder(
 					)
 				}
 
-				modifiers += KModifier.DATA
+				if (constructor.parameters.isNotEmpty()) {
+					modifiers += KModifier.DATA
+					primaryConstructor(constructor)
+				}
+
 				descriptionBuilder.build(DescriptionType.MODEL, data.description)?.let {
 					addKdoc("%L", it)
 				}
@@ -151,7 +155,6 @@ class ObjectModelBuilder(
 					)
 				}
 			}
-			.primaryConstructor(constructor)
 			.addProperties(properties)
 			.build()
 			.let { JellyFile(Packages.MODEL, fileAnnotations, it) }
