@@ -6,7 +6,6 @@ import net.pearx.kasechange.toCamelCase
 import org.jellyfin.openapi.builder.ContextBuilder
 import org.jellyfin.openapi.hooks.ModelTypePath
 import org.jellyfin.openapi.model.ApiModel
-import org.jellyfin.openapi.model.EmptyApiModel
 import org.jellyfin.openapi.model.EnumApiModel
 import org.jellyfin.openapi.model.GeneratorContext
 import org.jellyfin.openapi.model.InterfaceApiModel
@@ -26,8 +25,8 @@ class OpenApiModelBuilder(
 				!data.properties.isNullOrEmpty() -> buildObjectModel(context, data)
 				// When oneOf set, use the interface model
 				!data.oneOf.isNullOrEmpty() -> buildInterfaceModel(context, data)
-				// Otherwise use the empty model
-				else -> buildEmptyModel(data)
+				// Otherwise use an empty object model
+				else -> buildObjectModel(context, data)
 			}
 			// Enum
 			data.enum.isNotEmpty() -> buildEnumModel(data)
@@ -84,19 +83,12 @@ class OpenApiModelBuilder(
 		)
 	}
 
-	private fun buildEmptyModel(data: Schema<Any>) = EmptyApiModel(
-		name = data.name,
-		description = data.description,
-		deprecated = data.deprecated == true,
-		interfaces = emptySet(),
-	)
-
 	private fun buildObjectModel(context: GeneratorContext, data: Schema<Any>) = ObjectApiModel(
 		name = data.name,
 		description = data.description,
 		deprecated = data.deprecated == true,
 		interfaces = emptySet(),
-		properties = data.properties.map { (originalName, property) ->
+		properties = data.properties.orEmpty().map { (originalName, property) ->
 			val name = originalName.toCamelCase(from = CaseFormat.CAPITALIZED_CAMEL)
 			val defaultValue = openApiDefaultValueBuilder.build(context, property)
 			ObjectApiModelProperty(

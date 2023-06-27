@@ -12,7 +12,6 @@ import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.builder.extra.FileSpecBuilder
 import org.jellyfin.openapi.builder.extra.TypeSerializerBuilder
-import org.jellyfin.openapi.builder.model.EmptyModelBuilder
 import org.jellyfin.openapi.builder.model.EnumModelBuilder
 import org.jellyfin.openapi.builder.model.InterfaceModelBuilder
 import org.jellyfin.openapi.builder.model.ModelBuilder
@@ -66,9 +65,8 @@ val mainModule = module {
 	single { ApiClientExtensionsBuilder(get()) }
 
 	// Models
-	single { ModelBuilder(get(), get(), get(), get()) }
+	single { ModelBuilder(get(), get(), get()) }
 	single { ModelsBuilder(get(), get()) }
-	single { EmptyModelBuilder(get(), get()) }
 	single { EnumModelBuilder(get(), get()) }
 	single { ObjectModelBuilder(get(), get(), get()) }
 	single { InterfaceModelBuilder(get(), get()) }
