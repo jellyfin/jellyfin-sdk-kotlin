@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.util.ApiSerializer
@@ -24,8 +25,8 @@ import org.jellyfin.sdk.api.sockets.helper.ListenerHelper
 import org.jellyfin.sdk.api.sockets.helper.ReconnectHelper
 import org.jellyfin.sdk.api.sockets.listener.SocketListener
 import org.jellyfin.sdk.api.sockets.listener.SocketListenerDefinition
-import org.jellyfin.sdk.model.socket.ForceKeepAliveMessage
-import org.jellyfin.sdk.model.socket.OutgoingSocketMessage
+import org.jellyfin.sdk.model.api.ForceKeepAliveMessage
+import org.jellyfin.sdk.model.api.InboundWebSocketMessage
 import org.jellyfin.sdk.model.socket.PeriodicListenerPeriod
 import kotlin.coroutines.CoroutineContext
 import kotlin.time.Duration.Companion.seconds
@@ -277,16 +278,20 @@ public class SocketInstance(
 	}
 
 	private fun forwardMessage(rawMessage: String) {
-		val message = ApiSerializer.decodeSocketMessage(rawMessage) ?: return
+		try {
+			val message = ApiSerializer.decodeSocketMessage(rawMessage)
 
-		if (message is ForceKeepAliveMessage) keepAliveHelper.reset(this, message.value.seconds)
-		else listenerHelper.forwardMessage(message)
+			if (message is ForceKeepAliveMessage) keepAliveHelper.reset(this, message.data.seconds)
+			else listenerHelper.forwardMessage(message)
+		} catch (exception: SerializationException) {
+			logger.warn(exception) { "Failed to deserialize message $rawMessage" }
+		}
 	}
 
 	/**
 	 * Send a message to the server. This function is normally not used by the application.
 	 */
-	public suspend fun publish(message: OutgoingSocketMessage) {
+	public suspend fun publish(message: InboundWebSocketMessage) {
 		outgoingMessages.send(ApiSerializer.encodeSocketMessage(message))
 	}
 }

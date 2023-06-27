@@ -5,13 +5,13 @@ import org.jellyfin.sdk.api.sockets.data.subscriptionType
 import org.jellyfin.sdk.api.sockets.listener.SocketListener
 import org.jellyfin.sdk.api.sockets.listener.SocketListenerDefinition
 import org.jellyfin.sdk.api.sockets.listener.SocketMessageReceiver
+import org.jellyfin.sdk.model.api.GeneralCommandMessage
 import org.jellyfin.sdk.model.api.GeneralCommandType
+import org.jellyfin.sdk.model.api.OutboundWebSocketMessage
 import org.jellyfin.sdk.model.api.PlaystateCommand
+import org.jellyfin.sdk.model.api.PlaystateMessage
 import org.jellyfin.sdk.model.api.SendCommandType
-import org.jellyfin.sdk.model.socket.GeneralCommandMessage
-import org.jellyfin.sdk.model.socket.IncomingSocketMessage
-import org.jellyfin.sdk.model.socket.PlayStateMessage
-import org.jellyfin.sdk.model.socket.SyncPlayCommandMessage
+import org.jellyfin.sdk.model.api.SyncPlayCommandMessage
 
 /**
  * Add a listener that listens to all message types.
@@ -20,11 +20,11 @@ import org.jellyfin.sdk.model.socket.SyncPlayCommandMessage
 @Suppress("NOTHING_TO_INLINE")
 public inline fun SocketInstance.addGlobalListener(
 	stopOnCredentialsChange: Boolean = false,
-	listener: SocketMessageReceiver<IncomingSocketMessage>,
+	listener: SocketMessageReceiver<OutboundWebSocketMessage>,
 ): SocketListener {
 	val definition = SocketListenerDefinition(
 		subscribesTo = SUBSCRIPTION_TYPES,
-		filterTypes = setOf(IncomingSocketMessage::class),
+		filterTypes = setOf(OutboundWebSocketMessage::class),
 		stopOnCredentialsChange = stopOnCredentialsChange,
 		listener = listener
 	)
@@ -34,7 +34,7 @@ public inline fun SocketInstance.addGlobalListener(
 /**
  * Add a listener that listens to a specific message type.
  */
-public inline fun <reified T : IncomingSocketMessage> SocketInstance.addListener(
+public inline fun <reified T : OutboundWebSocketMessage> SocketInstance.addListener(
 	stopOnCredentialsChange: Boolean = false,
 	listener: SocketMessageReceiver<T>,
 ): SocketListener {
@@ -64,7 +64,7 @@ public inline fun SocketInstance.addGeneralCommandsListener(
 		filterTypes = setOf(GeneralCommandMessage::class),
 		stopOnCredentialsChange = stopOnCredentialsChange,
 		listener = { message ->
-			if (message is GeneralCommandMessage && message.command in commands) {
+			if (message is GeneralCommandMessage && message.data?.name in commands) {
 				listener.onReceive(message)
 			}
 		}
@@ -73,20 +73,20 @@ public inline fun SocketInstance.addGeneralCommandsListener(
 }
 
 /**
- * Add a listener that listens to certain [PlaystateCommand] entries in the [PlayStateMessage].
+ * Add a listener that listens to certain [PlaystateCommand] entries in the [PlaystateMessage].
  */
 @Suppress("NOTHING_TO_INLINE")
 public inline fun SocketInstance.addPlayStateCommandsListener(
 	commands: Set<PlaystateCommand> = PlaystateCommand.values().toSet(),
 	stopOnCredentialsChange: Boolean = false,
-	listener: SocketMessageReceiver<PlayStateMessage>,
+	listener: SocketMessageReceiver<PlaystateMessage>,
 ): SocketListener {
 	val definition = SocketListenerDefinition(
 		subscribesTo = emptySet(),
-		filterTypes = setOf(PlayStateMessage::class),
+		filterTypes = setOf(PlaystateMessage::class),
 		stopOnCredentialsChange = stopOnCredentialsChange,
 		listener = { message ->
-			if (message is PlayStateMessage && message.request.command in commands) {
+			if (message is PlaystateMessage && message.data?.command in commands) {
 				listener.onReceive(message)
 			}
 		}
@@ -108,7 +108,7 @@ public inline fun SocketInstance.addSyncPlayCommandsListener(
 		filterTypes = setOf(SyncPlayCommandMessage::class),
 		stopOnCredentialsChange = stopOnCredentialsChange,
 		listener = { message ->
-			if (message is SyncPlayCommandMessage && message.command.command in commands) {
+			if (message is SyncPlayCommandMessage && message.data?.command in commands) {
 				listener.onReceive(message)
 			}
 		}

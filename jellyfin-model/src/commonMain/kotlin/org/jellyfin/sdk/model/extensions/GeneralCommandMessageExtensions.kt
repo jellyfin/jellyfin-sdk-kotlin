@@ -1,11 +1,11 @@
 package org.jellyfin.sdk.model.extensions
 
-import org.jellyfin.sdk.model.socket.GeneralCommandMessage
+import org.jellyfin.sdk.model.api.GeneralCommandMessage
 import kotlin.reflect.KProperty
 
 // Single get
 public operator fun GeneralCommandMessage.get(name: String): String? =
-	arguments.entries.firstOrNull { (key) ->
+	data?.arguments?.entries?.firstOrNull { (key) ->
 		key.contentEquals(name, ignoreCase = true)
 	}?.value
 
@@ -19,6 +19,6 @@ public operator fun GeneralCommandMessage.getValue(thisRef: Any?, property: KPro
 
 // Value checking
 public operator fun GeneralCommandMessage.contains(name: String): Boolean =
-	arguments.any { (key) ->
+	data?.arguments?.any { (key) ->
 		key.contentEquals(name, ignoreCase = true)
-	}
+	} ?: false
