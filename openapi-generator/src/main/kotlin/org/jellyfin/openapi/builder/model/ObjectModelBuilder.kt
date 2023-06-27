@@ -82,9 +82,12 @@ class ObjectModelBuilder(
 						if (property.name in superPropertyNames) modifiers += KModifier.OVERRIDE
 
 						if (property.deprecated) addAnnotation(deprecatedAnnotationSpecBuilder.build(Strings.DEPRECATED_MEMBER))
-						addAnnotation(
-							AnnotationSpec.builder(Types.SERIAL_NAME).addMember("%S", property.originalName).build()
-						)
+						if (property.originalName != polymorphicProperty) {
+							AnnotationSpec.builder(Types.SERIAL_NAME)
+								.addMember("%S", property.originalName)
+								.build()
+								.let(::addAnnotation)
+						}
 					}
 					.build()
 				)
