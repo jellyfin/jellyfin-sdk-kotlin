@@ -2,8 +2,9 @@ package org.jellyfin.sdk.model.extensions
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
+import org.jellyfin.sdk.model.api.GeneralCommand
+import org.jellyfin.sdk.model.api.GeneralCommandMessage
 import org.jellyfin.sdk.model.api.GeneralCommandType
-import org.jellyfin.sdk.model.socket.GeneralCommandMessage
 import java.util.UUID
 
 class GeneralCommandMessageExtensionTests : FunSpec({
@@ -14,9 +15,11 @@ class GeneralCommandMessageExtensionTests : FunSpec({
 	)
 	val message = GeneralCommandMessage(
 		messageId = UUID.randomUUID(),
-		command = GeneralCommandType.DISPLAY_MESSAGE,
-		userId = UUID.randomUUID(),
-		arguments = dataArguments
+		data = GeneralCommand(
+			name = GeneralCommandType.DISPLAY_MESSAGE,
+			controllingUserId = UUID.randomUUID(),
+			arguments = dataArguments,
+		),
 	)
 
 	test("GeneralCommandMessage allows array access for arguments") {

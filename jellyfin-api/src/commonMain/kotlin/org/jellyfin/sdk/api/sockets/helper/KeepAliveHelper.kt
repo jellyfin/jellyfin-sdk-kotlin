@@ -7,7 +7,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
 import org.jellyfin.sdk.api.sockets.SocketInstance
-import org.jellyfin.sdk.model.socket.KeepAliveMessage
+import org.jellyfin.sdk.model.api.InboundKeepAliveMessage
 import kotlin.time.Duration
 
 private val logger = KotlinLogging.logger {}
@@ -26,7 +26,7 @@ internal class KeepAliveHelper(
 		keepAliveTicker?.cancel()
 		keepAliveTicker = coroutineScope.launch(Dispatchers.Unconfined) {
 			while (true) {
-				instance.publish(KeepAliveMessage())
+				instance.publish(InboundKeepAliveMessage())
 				delay(delay)
 			}
 		}

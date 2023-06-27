@@ -1,15 +1,15 @@
 package org.jellyfin.sdk.api.sockets.data
 
-import org.jellyfin.sdk.model.socket.ActivityLogEntryMessage
-import org.jellyfin.sdk.model.socket.ActivityLogEntryStartMessage
-import org.jellyfin.sdk.model.socket.ActivityLogEntryStopMessage
-import org.jellyfin.sdk.model.socket.IncomingSocketMessage
-import org.jellyfin.sdk.model.socket.ScheduledTasksInfoMessage
-import org.jellyfin.sdk.model.socket.ScheduledTasksInfoStartMessage
-import org.jellyfin.sdk.model.socket.ScheduledTasksInfoStopMessage
-import org.jellyfin.sdk.model.socket.SessionsMessage
-import org.jellyfin.sdk.model.socket.SessionsStartMessage
-import org.jellyfin.sdk.model.socket.SessionsStopMessage
+import org.jellyfin.sdk.model.api.ActivityLogEntryMessage
+import org.jellyfin.sdk.model.api.ActivityLogEntryStartMessage
+import org.jellyfin.sdk.model.api.ActivityLogEntryStopMessage
+import org.jellyfin.sdk.model.api.OutboundWebSocketMessage
+import org.jellyfin.sdk.model.api.ScheduledTasksInfoMessage
+import org.jellyfin.sdk.model.api.ScheduledTasksInfoStartMessage
+import org.jellyfin.sdk.model.api.ScheduledTasksInfoStopMessage
+import org.jellyfin.sdk.model.api.SessionsMessage
+import org.jellyfin.sdk.model.api.SessionsStartMessage
+import org.jellyfin.sdk.model.api.SessionsStopMessage
 
 /**
  * All socket message types that require a subscription. Each type contains the message type and start/stop message
@@ -17,8 +17,20 @@ import org.jellyfin.sdk.model.socket.SessionsStopMessage
  *
  * This is an internal type. Do not use this in your application.
  */
-public val SUBSCRIPTION_TYPES: Set<SubscriptionType<out IncomingSocketMessage>> = setOf(
-	subscriptionType<SessionsMessage>(::SessionsStartMessage, ::SessionsStopMessage),
-	subscriptionType<ActivityLogEntryMessage>(::ActivityLogEntryStartMessage, ::ActivityLogEntryStopMessage),
-	subscriptionType<ScheduledTasksInfoMessage>(::ScheduledTasksInfoStartMessage, ::ScheduledTasksInfoStopMessage),
+@Suppress("MoveLambdaOutsideParentheses")
+public val SUBSCRIPTION_TYPES: Set<SubscriptionType<out OutboundWebSocketMessage>> = setOf(
+	subscriptionType<SessionsMessage>(
+		{ period -> SessionsStartMessage(period.toString()) },
+		{ SessionsStopMessage() }
+	),
+
+	subscriptionType<ActivityLogEntryMessage>(
+		{ period -> ActivityLogEntryStartMessage(period.toString()) },
+		{ ActivityLogEntryStopMessage() }
+	),
+
+	subscriptionType<ScheduledTasksInfoMessage>(
+		{ period -> ScheduledTasksInfoStartMessage(period.toString()) },
+		{ ScheduledTasksInfoStopMessage() }
+	),
 )

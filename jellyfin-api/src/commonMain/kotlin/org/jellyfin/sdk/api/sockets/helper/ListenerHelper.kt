@@ -4,7 +4,7 @@ import org.jellyfin.sdk.api.sockets.SocketInstance
 import org.jellyfin.sdk.api.sockets.data.SubscriptionType
 import org.jellyfin.sdk.api.sockets.listener.SocketListener
 import org.jellyfin.sdk.api.sockets.listener.SocketListenerDefinition
-import org.jellyfin.sdk.model.socket.IncomingSocketMessage
+import org.jellyfin.sdk.model.api.OutboundWebSocketMessage
 
 internal class ListenerHelper {
 	private var _listeners = mutableListOf<SocketListener>()
@@ -31,7 +31,7 @@ internal class ListenerHelper {
 		_listeners.clear()
 	}
 
-	fun forwardMessage(message: IncomingSocketMessage) {
+	fun forwardMessage(message: OutboundWebSocketMessage) {
 		for (listener in listeners) {
 			val acceptsMessage = listener.definition.filterTypes.any { type -> type.isInstance(message) }
 			if (acceptsMessage) listener.definition.listener.onReceive(message)
