@@ -55,7 +55,7 @@ jobs:
           distribution: temurin
           java-version: 17
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@40b6781dcdec2762ad36556682ac74e31030cfe2 # v2.5.1
+        uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
       - name: Run dokkaHtmlMultiModule task
         run: ./gradlew dokkaHtmlMultiModule
       - name: Create artifact
@@ -101,9 +101,9 @@ jobs:
           unzip vitepress.zip -d ./dist
           unzip dokka.zip -d ./dist/dokka
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@66b63f4a7de003f4f00cc8e9af4b83b8f2abdb96 # v1.0.9
+        uses: actions/upload-pages-artifact@84bb4cd4b733d5c320c9c9cfbc354937524f4d64 # v1.0.10
         with:
           path: ./build/github-pages/dist
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@ee48c7b82e077d7b8ef30b50a719e6a792a50c9a # v2.0.2
+        uses: actions/deploy-pages@12ab2b16cf43a7a061fe99da74b6f8f11fb77f5b # v2.0.3
