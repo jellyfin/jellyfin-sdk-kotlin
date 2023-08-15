@@ -1,5 +1,6 @@
 {
 	"description": "This file is used for the documentation only",
+	"type": "module",
 	"scripts": {
 		"start": "vitepress dev docs",
 		"build": "vitepress build docs"
