@@ -18,7 +18,7 @@ jobs:
     if: ${{ contains(github.repository_owner, 'jellyfin') }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
         with:
           ref: master
           token: ${{ secrets.JF_BOT_TOKEN }}
@@ -28,7 +28,7 @@ jobs:
           distribution: temurin
           java-version: 17
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@a4cf152f482c7ca97ef56ead29bf08bcd953284c # v2.7.0
+        uses: gradle/gradle-build-action@243af859f8ca30903d9d7f7936897ca0358ba691 # v2.7.1
       - name: Run updateApiSpecUnstable task
         run: ./gradlew :openapi-generator:updateApiSpecUnstable
       - name: Run apiDump task
