@@ -187,4 +187,38 @@ class UrlBuilderTests : FunSpec({
 			queryParameters = parameters,
 		) shouldBe "${baseUrl}test?example=value1&example=value2&example2=value3"
 	}
+
+	test("buildUrl keeps query parameters in pathTemplate") {
+		val baseUrl = "https://demo.jellyfin.org/stable/"
+
+		UrlBuilder.buildUrl(
+			baseUrl = baseUrl,
+			pathTemplate = "/example?foo=bar"
+		) shouldBe "${baseUrl}example?foo=bar"
+	}
+
+	test("buildUrl prevents host from changing") {
+		val baseUrl = "https://demo.jellyfin.org/stable/"
+
+		UrlBuilder.buildUrl(
+			baseUrl = baseUrl,
+			pathTemplate = "https://second.example"
+		) shouldBe "${baseUrl}https:/second.example"
+
+		UrlBuilder.buildUrl(
+			baseUrl = baseUrl,
+			pathTemplate = "https://second.example",
+			ignorePathParameters = true,
+		) shouldBe "${baseUrl}https:/second.example"
+	}
+
+	test("buildUrl ignores path parameters when ignorePathParameters is set") {
+		val baseUrl = "https://demo.jellyfin.org/stable/"
+
+		UrlBuilder.buildUrl(
+			baseUrl = baseUrl,
+			pathTemplate = "{foo}/{foo/{bar",
+			ignorePathParameters = true,
+		) shouldBe "${baseUrl}{foo}/{foo/{bar"
+	}
 })
