@@ -12,7 +12,6 @@ jobs:
   publish:
     name: Publish
     runs-on: ubuntu-22.04
-    environment: release
     if: ${{ startsWith(github.ref, 'refs/tags/v') || contains(github.repository_owner, 'jellyfin') }}
     steps:
       - name: Checkout repository
