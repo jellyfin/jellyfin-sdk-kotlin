@@ -5,6 +5,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
 private val logger = KotlinLogging.logger {}
@@ -36,13 +37,14 @@ internal class ReconnectHelper(
 	fun scheduleReconnect(error: Boolean = false): Boolean {
 		reconnectJob?.cancel()
 
-		if (attempts > RETRY_ATTEMPTS) {
-			logger.debug { "Reconnect schedule failed: exceeded maximum retry attempts" }
+		if (attempts >= RETRY_TIMINGS.size) {
+			logger.debug { "Reconnect schedule failed: exceeded maximum retry attempts of ${RETRY_TIMINGS.size}" }
 			return false
 		}
 
 		reconnectJob = coroutineScope.launch {
-			val retryAfter = if (error) RETRY_ERROR else RETRY_NORMAL
+			var retryAfter = RETRY_TIMINGS[attempts]
+			if (error) retryAfter *= ERROR_MULTIPLIER
 
 			logger.info { "Reconnect scheduled in $retryAfter (error=$error)" }
 
@@ -53,9 +55,27 @@ internal class ReconnectHelper(
 		return true
 	}
 
-	companion object {
-		val RETRY_NORMAL = 5.seconds
-		val RETRY_ERROR = 30.seconds
-		const val RETRY_ATTEMPTS = 5
+	private companion object {
+		// Timing is about 5 minutes until giving up
+		private val RETRY_TIMINGS = listOf(
+			200.milliseconds,
+			2.seconds,
+			5.seconds,
+			10.seconds,
+			15.seconds,
+			20.seconds,
+			21.seconds,
+			22.seconds,
+			23.seconds,
+			24.seconds,
+			25.seconds,
+			26.seconds,
+			27.seconds,
+			28.seconds,
+			29.seconds,
+			30.seconds,
+		)
+
+		private const val ERROR_MULTIPLIER = 3
 	}
 }
