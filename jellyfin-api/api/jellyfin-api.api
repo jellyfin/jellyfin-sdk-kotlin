@@ -233,9 +233,10 @@ public final class org/jellyfin/sdk/api/client/util/AuthorizationHeaderBuilder {
 
 public final class org/jellyfin/sdk/api/client/util/UrlBuilder {
 	public static final field INSTANCE Lorg/jellyfin/sdk/api/client/util/UrlBuilder;
-	public final fun buildPath (Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
-	public final fun buildUrl (Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)Ljava/lang/String;
-	public static synthetic fun buildUrl$default (Lorg/jellyfin/sdk/api/client/util/UrlBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun buildPath (Ljava/lang/String;Ljava/util/Map;Z)Ljava/lang/String;
+	public static synthetic fun buildPath$default (Lorg/jellyfin/sdk/api/client/util/UrlBuilder;Ljava/lang/String;Ljava/util/Map;ZILjava/lang/Object;)Ljava/lang/String;
+	public final fun buildUrl (Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Z)Ljava/lang/String;
+	public static synthetic fun buildUrl$default (Lorg/jellyfin/sdk/api/client/util/UrlBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;ZILjava/lang/Object;)Ljava/lang/String;
 }
 
 public final class org/jellyfin/sdk/api/client/util/UrlBuilderKt {
