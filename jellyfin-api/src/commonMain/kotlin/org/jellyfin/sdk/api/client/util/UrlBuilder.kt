@@ -19,13 +19,14 @@ public object UrlBuilder {
 		pathTemplate: String = "/",
 		pathParameters: Map<String, Any?> = mapOf(),
 		queryParameters: Map<String, Any?> = mapOf(),
+		ignorePathParameters: Boolean = false,
 	): String {
 		return URLBuilder(baseUrl).apply {
 			// Create from base URL
 			takeFrom(baseUrl)
 
 			// Replace path variables
-			val path = buildPath(pathTemplate, pathParameters)
+			val path = buildPath(pathTemplate, pathParameters, ignorePathParameters)
 			// Assign path making sure to remove duplicated slashes between the base and appended path
 			encodedPath = "${encodedPath.trimEnd('/')}/${path.trimStart('/')}"
 
@@ -45,7 +46,11 @@ public object UrlBuilder {
 		}.buildString()
 	}
 
-	public fun buildPath(template: String, parameters: Map<String, Any?>): String = buildString {
+	public fun buildPath(
+		template: String,
+		parameters: Map<String, Any?>,
+		ignorePathParameters: Boolean = false,
+	): String = buildString {
 		var lastStart = -1
 		var lastEnd = -1
 
@@ -64,7 +69,11 @@ public object UrlBuilder {
 
 					lastEnd = i
 				}
+
 				TOKEN_BRACKET_OPEN -> {
+					// Don't do anything when ignorePathParameters is set
+					if (ignorePathParameters) continue
+
 					check(lastStart < 0) {
 						"Nested path variable at $i in path $template"
 					}
@@ -75,7 +84,11 @@ public object UrlBuilder {
 					// Set path variable start index (exclude opening brace)
 					lastStart = i + 1
 				}
+
 				TOKEN_BRACKET_CLOSE -> {
+					// Don't do anything when ignorePathParameters is set
+					if (ignorePathParameters) continue
+
 					check(lastStart >= 0) {
 						"End of path variable without start at $i in path $template"
 					}
