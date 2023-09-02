@@ -7,5 +7,6 @@ import org.jellyfin.sdk.api.client.exception.SecureConnectionException
  * This can happen when a bad key format is given.
  */
 public class BadPeerSSLKeyException(
-	message: String, exception: Throwable
-): SecureConnectionException(message, exception)
+	message: String,
+	exception: Throwable,
+) : SecureConnectionException(message, exception)

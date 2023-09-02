@@ -10,5 +10,6 @@ import org.jellyfin.sdk.api.client.exception.SecureConnectionException
  * this exception is thrown.
  */
 public class PeerNotAuthenticatedException(
-	message: String, exception: Throwable
-): SecureConnectionException(message, exception)
+	message: String,
+	exception: Throwable,
+) : SecureConnectionException(message, exception)

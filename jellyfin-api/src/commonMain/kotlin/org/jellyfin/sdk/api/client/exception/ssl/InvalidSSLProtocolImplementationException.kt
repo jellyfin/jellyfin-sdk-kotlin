@@ -7,5 +7,6 @@ import org.jellyfin.sdk.api.client.exception.SecureConnectionException
  * Normally this indicates a flaw in one of the protocol implementations.
  */
 public class InvalidSSLProtocolImplementationException(
-	message: String, exception: Throwable
-): SecureConnectionException(message, exception)
+	message: String,
+	exception: Throwable,
+) : SecureConnectionException(message, exception)

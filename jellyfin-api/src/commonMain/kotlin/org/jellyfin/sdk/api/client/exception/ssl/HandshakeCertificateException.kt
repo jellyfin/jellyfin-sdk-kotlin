@@ -7,6 +7,6 @@ import org.jellyfin.sdk.api.client.exception.SecureConnectionException
  * Indicates that the client and server could not negotiate the desired level of security or the certificate was
  * revoked.
  */
-public class HandShakeCertificateException(
+public class HandshakeCertificateException(
 	message: String, exception: Throwable
 ): SecureConnectionException(message, exception)
