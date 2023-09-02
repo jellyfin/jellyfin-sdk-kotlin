@@ -173,6 +173,7 @@ public final class org/jellyfin/sdk/discovery/RecommendedServerInfoScore : java/
 	public static final field GOOD Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
 	public static final field GREAT Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
 	public static final field OK Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
 	public static fun values ()[Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;
 }
