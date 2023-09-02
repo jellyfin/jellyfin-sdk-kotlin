@@ -17688,6 +17688,193 @@ public final class org/jellyfin/sdk/model/constant/PersonType {
 	public static final field Writer Ljava/lang/String;
 }
 
+public final class org/jellyfin/sdk/model/deviceprofile/CodecProfileBuilder {
+	public fun <init> ()V
+	public final fun applyConditions (Lkotlin/jvm/functions/Function1;)V
+	public final fun build ()Lorg/jellyfin/sdk/model/api/CodecProfile;
+	public final fun condition ([Lorg/jellyfin/sdk/model/api/ProfileCondition;)V
+	public final fun conditions (Lkotlin/jvm/functions/Function1;)V
+	public final fun getCodec ()Ljava/lang/String;
+	public final fun getContainer ()Ljava/lang/String;
+	public final fun getType ()Lorg/jellyfin/sdk/model/api/CodecType;
+	public final fun setCodec (Ljava/lang/String;)V
+	public final fun setContainer (Ljava/lang/String;)V
+	public final fun setType (Lorg/jellyfin/sdk/model/api/CodecType;)V
+}
+
+public final class org/jellyfin/sdk/model/deviceprofile/CodecProfileBuilderKt {
+	public static final fun buildCodecProfile (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/model/api/CodecProfile;
+}
+
+public final class org/jellyfin/sdk/model/deviceprofile/ContainerProfileBuilder {
+	public fun <init> ()V
+	public final fun build ()Lorg/jellyfin/sdk/model/api/ContainerProfile;
+	public final fun conditions (Lkotlin/jvm/functions/Function1;)V
+	public final fun container ([Ljava/lang/String;)V
+}
+
+public final class org/jellyfin/sdk/model/deviceprofile/ContainerProfileBuilderKt {
+	public static final fun buildContainerProfile (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/model/api/ContainerProfile;
+}
+
+public final class org/jellyfin/sdk/model/deviceprofile/DeviceProfileBuilder {
+	public fun <init> ()V
+	public fun <init> (Lorg/jellyfin/sdk/model/api/DeviceProfile;)V
+	public synthetic fun <init> (Lorg/jellyfin/sdk/model/api/DeviceProfile;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun add (Lorg/jellyfin/sdk/model/api/CodecProfile;)Lorg/jellyfin/sdk/model/api/CodecProfile;
+	public final fun add (Lorg/jellyfin/sdk/model/api/ContainerProfile;)Lorg/jellyfin/sdk/model/api/ContainerProfile;
+	public final fun add (Lorg/jellyfin/sdk/model/api/DirectPlayProfile;)Lorg/jellyfin/sdk/model/api/DirectPlayProfile;
+	public final fun add (Lorg/jellyfin/sdk/model/api/SubtitleProfile;)Lorg/jellyfin/sdk/model/api/SubtitleProfile;
+	public final fun add (Lorg/jellyfin/sdk/model/api/TranscodingProfile;)Lorg/jellyfin/sdk/model/api/TranscodingProfile;
+	public final fun build ()Lorg/jellyfin/sdk/model/api/DeviceProfile;
+	public final fun codecProfile (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/model/api/CodecProfile;
+	public final fun containerProfile (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/model/api/ContainerProfile;
+	public final fun directPlayProfile (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/model/api/DirectPlayProfile;
+	public final fun getCodecProfiles ()Ljava/util/Collection;
+	public final fun getContainerProfiles ()Ljava/util/Collection;
+	public final fun getDirectPlayProfiles ()Ljava/util/Collection;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getMaxStaticBitrate ()Ljava/lang/Integer;
+	public final fun getMaxStaticMusicBitrate ()Ljava/lang/Integer;
+	public final fun getMaxStreamingBitrate ()Ljava/lang/Integer;
+	public final fun getMusicStreamingTranscodingBitrate ()Ljava/lang/Integer;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSubtitleProfiles ()Ljava/util/Collection;
+	public final fun getTranscodingProfiles ()Ljava/util/Collection;
+	public final fun setId (Ljava/lang/String;)V
+	public final fun setMaxStaticBitrate (Ljava/lang/Integer;)V
+	public final fun setMaxStaticMusicBitrate (Ljava/lang/Integer;)V
+	public final fun setMaxStreamingBitrate (Ljava/lang/Integer;)V
+	public final fun setMusicStreamingTranscodingBitrate (Ljava/lang/Integer;)V
+	public final fun setName (Ljava/lang/String;)V
+	public final fun subtitleProfile (Ljava/lang/String;Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SubtitleProfile;
+	public final fun subtitleProfile (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/model/api/SubtitleProfile;
+	public static synthetic fun subtitleProfile$default (Lorg/jellyfin/sdk/model/deviceprofile/DeviceProfileBuilder;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;Ljava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/SubtitleProfile;
+	public final fun transcodingProfile (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/model/api/TranscodingProfile;
+}
+
+public final class org/jellyfin/sdk/model/deviceprofile/DeviceProfileBuilderKt {
+	public static final fun buildDeviceProfile (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/model/api/DeviceProfile;
+	public static final fun buildUpon (Lorg/jellyfin/sdk/model/api/DeviceProfile;Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/model/api/DeviceProfile;
+}
+
+public final class org/jellyfin/sdk/model/deviceprofile/DirectPlayProfileBuilder {
+	public fun <init> ()V
+	public final fun audioCodec ([Ljava/lang/String;)V
+	public final fun build ()Lorg/jellyfin/sdk/model/api/DirectPlayProfile;
+	public final fun container ([Ljava/lang/String;)V
+	public final fun getType ()Lorg/jellyfin/sdk/model/api/DlnaProfileType;
+	public final fun setType (Lorg/jellyfin/sdk/model/api/DlnaProfileType;)V
+	public final fun videoCodec ([Ljava/lang/String;)V
+}
+
+public final class org/jellyfin/sdk/model/deviceprofile/DirectPlayProfileBuilderKt {
+	public static final fun buildDirectPlayProfile (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/model/api/DirectPlayProfile;
+}
+
+public final class org/jellyfin/sdk/model/deviceprofile/ProfileConditionsBuilder {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/Collection;)V
+	public synthetic fun <init> (Ljava/util/Collection;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun add (Lorg/jellyfin/sdk/model/api/ProfileCondition;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun add (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Lorg/jellyfin/sdk/model/api/ProfileConditionType;Ljava/lang/String;Z)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun addAll (Ljava/util/Collection;)Ljava/util/Collection;
+	public final fun build ()Ljava/util/Collection;
+	public final fun equals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/Number;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun equals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/Number;Z)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun equals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun equals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/String;Z)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun equals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Z)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun equals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;ZZ)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public static synthetic fun equals$default (Lorg/jellyfin/sdk/model/deviceprofile/ProfileConditionsBuilder;Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/Number;ZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public static synthetic fun equals$default (Lorg/jellyfin/sdk/model/deviceprofile/ProfileConditionsBuilder;Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/String;ZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public static synthetic fun equals$default (Lorg/jellyfin/sdk/model/deviceprofile/ProfileConditionsBuilder;Lorg/jellyfin/sdk/model/api/ProfileConditionValue;ZZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun greaterThanOrEquals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/Number;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun greaterThanOrEquals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/Number;Z)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public static synthetic fun greaterThanOrEquals$default (Lorg/jellyfin/sdk/model/deviceprofile/ProfileConditionsBuilder;Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/Number;ZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun inBooleanCollection (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/util/Collection;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun inBooleanCollection (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/util/Collection;Z)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public static synthetic fun inBooleanCollection$default (Lorg/jellyfin/sdk/model/deviceprofile/ProfileConditionsBuilder;Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/util/Collection;ZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun inNumberCollection (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/util/Collection;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun inNumberCollection (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/util/Collection;Z)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public static synthetic fun inNumberCollection$default (Lorg/jellyfin/sdk/model/deviceprofile/ProfileConditionsBuilder;Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/util/Collection;ZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun inStringCollection (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/util/Collection;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun inStringCollection (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/util/Collection;Z)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public static synthetic fun inStringCollection$default (Lorg/jellyfin/sdk/model/deviceprofile/ProfileConditionsBuilder;Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/util/Collection;ZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun lowerThanOrEquals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/Number;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun lowerThanOrEquals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/Number;Z)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public static synthetic fun lowerThanOrEquals$default (Lorg/jellyfin/sdk/model/deviceprofile/ProfileConditionsBuilder;Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/Number;ZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun notEquals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/Number;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun notEquals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/Number;Z)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun notEquals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun notEquals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/String;Z)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun notEquals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Z)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public final fun notEquals (Lorg/jellyfin/sdk/model/api/ProfileConditionValue;ZZ)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public static synthetic fun notEquals$default (Lorg/jellyfin/sdk/model/deviceprofile/ProfileConditionsBuilder;Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/Number;ZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public static synthetic fun notEquals$default (Lorg/jellyfin/sdk/model/deviceprofile/ProfileConditionsBuilder;Lorg/jellyfin/sdk/model/api/ProfileConditionValue;Ljava/lang/String;ZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+	public static synthetic fun notEquals$default (Lorg/jellyfin/sdk/model/deviceprofile/ProfileConditionsBuilder;Lorg/jellyfin/sdk/model/api/ProfileConditionValue;ZZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/ProfileCondition;
+}
+
+public final class org/jellyfin/sdk/model/deviceprofile/ProfileConditionsBuilderKt {
+	public static final fun buildProfileConditions (Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;
+	public static final fun buildUpon (Ljava/util/Collection;Lkotlin/jvm/functions/Function1;)Ljava/util/Collection;
+}
+
+public final class org/jellyfin/sdk/model/deviceprofile/SubtitleProfileBuilder {
+	public fun <init> ()V
+	public final fun build ()Lorg/jellyfin/sdk/model/api/SubtitleProfile;
+	public final fun getContainer ()Ljava/lang/String;
+	public final fun getFormat ()Ljava/lang/String;
+	public final fun getLanguage ()Ljava/lang/String;
+	public final fun getMethod ()Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;
+	public final fun setContainer (Ljava/lang/String;)V
+	public final fun setFormat (Ljava/lang/String;)V
+	public final fun setLanguage (Ljava/lang/String;)V
+	public final fun setMethod (Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;)V
+}
+
+public final class org/jellyfin/sdk/model/deviceprofile/SubtitleProfileBuilderKt {
+	public static final fun buildSubtitleProfile (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/model/api/SubtitleProfile;
+}
+
+public final class org/jellyfin/sdk/model/deviceprofile/TranscodingProfileBuilder {
+	public fun <init> ()V
+	public final fun audioCodec ([Ljava/lang/String;)V
+	public final fun build ()Lorg/jellyfin/sdk/model/api/TranscodingProfile;
+	public final fun conditions (Lkotlin/jvm/functions/Function1;)V
+	public final fun getBreakOnNonKeyFrames ()Z
+	public final fun getContainer ()Ljava/lang/String;
+	public final fun getContext ()Lorg/jellyfin/sdk/model/api/EncodingContext;
+	public final fun getCopyTimestamps ()Z
+	public final fun getEnableMpegtsM2TsMode ()Z
+	public final fun getEnableSubtitlesInManifest ()Z
+	public final fun getEstimateContentLength ()Z
+	public final fun getMaxAudioChannels ()Ljava/lang/String;
+	public final fun getMinSegments ()I
+	public final fun getProtocol ()Ljava/lang/String;
+	public final fun getSegmentLength ()I
+	public final fun getTranscodeSeekInfo ()Lorg/jellyfin/sdk/model/api/TranscodeSeekInfo;
+	public final fun getType ()Lorg/jellyfin/sdk/model/api/DlnaProfileType;
+	public final fun setBreakOnNonKeyFrames (Z)V
+	public final fun setContainer (Ljava/lang/String;)V
+	public final fun setContext (Lorg/jellyfin/sdk/model/api/EncodingContext;)V
+	public final fun setCopyTimestamps (Z)V
+	public final fun setEnableMpegtsM2TsMode (Z)V
+	public final fun setEnableSubtitlesInManifest (Z)V
+	public final fun setEstimateContentLength (Z)V
+	public final fun setMaxAudioChannels (Ljava/lang/String;)V
+	public final fun setMinSegments (I)V
+	public final fun setProtocol (Ljava/lang/String;)V
+	public final fun setSegmentLength (I)V
+	public final fun setTranscodeSeekInfo (Lorg/jellyfin/sdk/model/api/TranscodeSeekInfo;)V
+	public final fun setType (Lorg/jellyfin/sdk/model/api/DlnaProfileType;)V
+	public final fun videoCodec ([Ljava/lang/String;)V
+}
+
+public final class org/jellyfin/sdk/model/deviceprofile/TranscodingProfileBuilderKt {
+	public static final fun buildTranscodingProfile (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/model/api/TranscodingProfile;
+}
+
 public final class org/jellyfin/sdk/model/extensions/GeneralCommandMessageExtensionsKt {
 	public static final fun contains (Lorg/jellyfin/sdk/model/socket/GeneralCommandMessage;Ljava/lang/String;)Z
 	public static final fun get (Lorg/jellyfin/sdk/model/socket/GeneralCommandMessage;Ljava/lang/String;)Ljava/lang/String;
