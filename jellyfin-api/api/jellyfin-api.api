@@ -47,6 +47,7 @@ public final class org/jellyfin/sdk/api/client/HttpMethod : java/lang/Enum {
 	public static final field DELETE Lorg/jellyfin/sdk/api/client/HttpMethod;
 	public static final field GET Lorg/jellyfin/sdk/api/client/HttpMethod;
 	public static final field POST Lorg/jellyfin/sdk/api/client/HttpMethod;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/api/client/HttpMethod;
 	public static fun values ()[Lorg/jellyfin/sdk/api/client/HttpMethod;
 }
@@ -1407,6 +1408,7 @@ public final class org/jellyfin/sdk/api/sockets/SocketInstanceState : java/lang/
 	public static final field DISCONNECTED Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
 	public static final field ERROR Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
 	public static final field STOPPED Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
 	public static fun values ()[Lorg/jellyfin/sdk/api/sockets/SocketInstanceState;
 }
