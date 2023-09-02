@@ -1,18 +1,23 @@
 package org.jellyfin.sdk.discovery
 
 import org.jellyfin.sdk.api.client.exception.SecureConnectionException
+import org.jellyfin.sdk.api.client.exception.TimeoutException
 import org.jellyfin.sdk.model.ServerVersion
 
 public sealed interface RecommendedServerIssue {
-
 	/**
 	 * Failed to acquire a secure connection. This happens due to incorrect SSL configurations.
 	 */
-	public data class SecureConnectionFailed(public val sslException: SecureConnectionException) : RecommendedServerIssue
+	public data class SecureConnectionFailed(
+		public val sslException: SecureConnectionException,
+	) : RecommendedServerIssue
+
 	/**
-	 * Server is unreachable. This happens when the server is overloaded, unstable or the client is unable to establish a connection.
+	 * Server is unreachable. This happens when the server is overloaded, unstable or the client is unable to establish
+	 * a connection.
 	 */
-	public data class ServerUnreachable(public val throwable: Throwable) : RecommendedServerIssue
+	public data class ServerUnreachable(public val throwable: TimeoutException) : RecommendedServerIssue
+
 	/**
 	 * No system information found from server. Server is returning invalid system info.
 	 */

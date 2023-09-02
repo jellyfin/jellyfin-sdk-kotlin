@@ -50,25 +50,20 @@ public class RecommendedServerDiscovery constructor(
 		// Failure checks
 		result.systemInfo.exceptionOrNull()?.let { exception ->
 			when (exception) {
-				is SecureConnectionException -> {
-					issues.add(RecommendedServerIssue.SecureConnectionFailed(exception))
-				}
-				is TimeoutException -> {
-					issues.add(RecommendedServerIssue.ServerUnreachable(exception))
-				}
-				else -> {
-					// Did not reply with a system information
-					issues.add(RecommendedServerIssue.MissingSystemInfo(result.systemInfo.exceptionOrNull()))
-				}
+				is SecureConnectionException -> issues.add(RecommendedServerIssue.SecureConnectionFailed(exception))
+				is TimeoutException -> issues.add(RecommendedServerIssue.ServerUnreachable(exception))
+				// Did not reply with a system information
+				else -> issues.add(RecommendedServerIssue.MissingSystemInfo(result.systemInfo.exceptionOrNull()))
 			}
+
 			scores.add(RecommendedServerInfoScore.BAD)
 		}
 
 		// System Info data validation
 		when {
 			// Wrong product name - might be a different service on this connection
-			!systemInfo?.productName.equals(PRODUCT_NAME) -> {
-				issues.add(RecommendedServerIssue.InvalidProductName(systemInfo?.productName))
+			systemInfo != null && !systemInfo.productName.equals(PRODUCT_NAME) -> {
+				issues.add(RecommendedServerIssue.InvalidProductName(systemInfo.productName))
 				scores.add(RecommendedServerInfoScore.BAD)
 			}
 		}

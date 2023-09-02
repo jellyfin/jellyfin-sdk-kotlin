@@ -129,7 +129,7 @@ public final class org/jellyfin/sdk/api/client/exception/ssl/BadPeerSSLKeyExcept
 	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
 }
 
-public final class org/jellyfin/sdk/api/client/exception/ssl/HandShakeCertificateException : org/jellyfin/sdk/api/client/exception/SecureConnectionException {
+public final class org/jellyfin/sdk/api/client/exception/ssl/HandshakeCertificateException : org/jellyfin/sdk/api/client/exception/SecureConnectionException {
 	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
 }
 
