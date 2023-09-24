@@ -62,12 +62,15 @@ public abstract class ApiClient {
 	 *
 	 * When [includeCredentials] is true it will add the access token as query parameter using [QUERY_ACCESS_TOKEN]
 	 * to the url to make an authenticated request.
+	 *
+	 * When [ignorePathParameters] is true, the [pathParameters] will be ignored and [pathTemplate] will not be parsed.
 	 */
 	public open fun createUrl(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
 		includeCredentials: Boolean = false,
+		ignorePathParameters: Boolean = false,
 	): String = UrlBuilder.buildUrl(
 		baseUrl ?: throw MissingBaseUrlException(),
 		pathTemplate,
@@ -75,7 +78,8 @@ public abstract class ApiClient {
 		queryParameters.run {
 			if (includeCredentials) plus(QUERY_ACCESS_TOKEN to checkNotNull(accessToken))
 			else this
-		}
+		},
+		ignorePathParameters,
 	)
 
 	public abstract suspend fun request(
