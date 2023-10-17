@@ -16,7 +16,7 @@ kotlinx-coroutines = "1.7.3"
 kotlinx-serialization = "1.6.0"
 ktor = "1.6.8"
 nexuspublish = "1.3.0"
-okhttp = "4.11.0"
+okhttp = "4.12.0"
 slf4j = "2.0.9"
 swagger-parser = "2.1.16"
 
