@@ -3,6 +3,6 @@
 	"extends": [
 		"github>jellyfin/.github//renovate-presets/nodejs",
 		"github>jellyfin/.github//renovate-presets/gradle",
-		":semanticCommitsDisabled"
+		":dependencyDashboard"
 	]
 }
