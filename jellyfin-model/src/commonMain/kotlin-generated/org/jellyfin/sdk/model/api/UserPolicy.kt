@@ -111,7 +111,7 @@ public data class UserPolicy(
 	@SerialName("PasswordResetProviderId")
 	public val passwordResetProviderId: String? = null,
 	/**
-	 * Enum SyncPlayUserAccessType.
+	 * A value indicating what SyncPlay features the user can access.
 	 */
 	@SerialName("SyncPlayAccess")
 	public val syncPlayAccess: SyncPlayUserAccessType,
