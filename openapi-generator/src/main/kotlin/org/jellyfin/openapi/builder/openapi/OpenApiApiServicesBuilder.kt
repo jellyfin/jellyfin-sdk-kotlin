@@ -6,6 +6,7 @@ import io.swagger.v3.oas.models.PathItem
 import io.swagger.v3.oas.models.Paths
 import io.swagger.v3.oas.models.media.IntegerSchema
 import io.swagger.v3.oas.models.media.Schema
+import io.swagger.v3.oas.models.media.StringSchema
 import io.swagger.v3.oas.models.parameters.Parameter
 import io.swagger.v3.oas.models.parameters.RequestBody
 import mu.KotlinLogging
@@ -29,6 +30,7 @@ import org.jellyfin.openapi.model.GeneratorContext
 import org.jellyfin.openapi.model.HttpMethod
 import org.jellyfin.openapi.model.IntRangeValidation
 import org.jellyfin.openapi.model.ParameterValidation
+import org.jellyfin.openapi.model.RegexValidation
 
 private val logger = KotlinLogging.logger { }
 
@@ -86,6 +88,7 @@ class OpenApiApiServicesBuilder(
 			schema.minimum.intValueExact(),
 			schema.maximum.intValueExact()
 		)
+		schema is StringSchema && schema.pattern != null -> RegexValidation(schema.pattern)
 
 		else -> null
 	}

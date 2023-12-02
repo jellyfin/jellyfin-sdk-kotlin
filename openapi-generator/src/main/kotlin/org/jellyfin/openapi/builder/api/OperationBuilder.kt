@@ -1,6 +1,7 @@
 package org.jellyfin.openapi.builder.api
 
 import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.CodeBlock
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
 import com.squareup.kotlinpoet.MemberName
@@ -20,6 +21,7 @@ import org.jellyfin.openapi.model.ApiServiceOperationParameter
 import org.jellyfin.openapi.model.DescriptionType
 import org.jellyfin.openapi.model.IntRangeValidation
 import org.jellyfin.openapi.model.ParameterValidation
+import org.jellyfin.openapi.model.RegexValidation
 
 open class OperationBuilder(
 	private val descriptionBuilder: DescriptionBuilder,
@@ -53,17 +55,40 @@ open class OperationBuilder(
 	}.build()
 
 	private fun FunSpec.Builder.createParameterValidation(
-		name: String,
+		parameter: ApiServiceOperationParameter,
 		validation: ParameterValidation,
 	) = when (validation) {
 		is IntRangeValidation -> addStatement(
 			"%M(%N·in·%L..%L)·{·%S·}",
 			MemberName("kotlin", "require"),
-			name,
+			parameter.name,
 			validation.min,
 			validation.max,
-			"Parameter \"$name\" must be in range ${validation.min}..${validation.max} (inclusive)."
+			"Parameter \"${parameter.name}\" must be in range ${validation.min}..${validation.max} (inclusive)."
 		)
+
+		is RegexValidation -> addCode(CodeBlock.builder().apply {
+			if (parameter.type.isNullable) {
+				addStatement(
+					"%M(%N·==·null·||·%M(%P).matches(%N))·{·%P·}",
+					MemberName("kotlin", "require"),
+					parameter.name,
+					MemberName("kotlin.text", "Regex"),
+					validation.pattern,
+					parameter.name,
+					"Parameter \"${parameter.name}\" must match ${validation.pattern}."
+				)
+			} else {
+				addStatement(
+					"%M(%M(%P).matches(%N))·{·%P·}",
+					MemberName("kotlin", "require"),
+					MemberName("kotlin.text", "Regex"),
+					validation.pattern,
+					parameter.name,
+					"Parameter \"${parameter.name}\" must match ${validation.pattern}."
+				)
+			}
+		}.build())
 	}
 
 	protected fun FunSpec.Builder.addParameterMapStatements(
@@ -79,7 +104,7 @@ open class OperationBuilder(
 		buildCodeBlock {
 			// Parameter validation
 			parameters.forEach { parameter ->
-				if (parameter.validation != null) createParameterValidation(parameter.name, parameter.validation)
+				if (parameter.validation != null) createParameterValidation(parameter, parameter.validation)
 			}
 			// Map building
 			val buildMapType = MemberName("kotlin.collections", "buildMap")
