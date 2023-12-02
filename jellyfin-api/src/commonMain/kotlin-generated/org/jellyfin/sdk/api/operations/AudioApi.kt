@@ -15,6 +15,8 @@ import kotlin.String
 import kotlin.collections.Map
 import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
+import kotlin.require
+import kotlin.text.Regex
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -150,6 +152,11 @@ public class AudioApi(
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
+		require(container == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(48) {
 			put("container", container)
 			put("static", static)
@@ -389,6 +396,11 @@ public class AudioApi(
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
+		require(container == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(48) {
 			put("container", container)
 			put("static", static)
@@ -567,6 +579,10 @@ public class AudioApi(
 			put("itemId", itemId)
 			put("container", container)
 		}
+		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(47) {
 			put("static", static)
 			put("params", params)
@@ -806,6 +822,10 @@ public class AudioApi(
 			put("itemId", itemId)
 			put("container", container)
 		}
+		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(47) {
 			put("static", static)
 			put("params", params)
