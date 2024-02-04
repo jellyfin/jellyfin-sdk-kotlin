@@ -44,9 +44,9 @@ kotlin {
 
 enablePublishing {
 	val javadocJar by tasks.creating(Jar::class) {
-		dependsOn(tasks.getByName("dokkaHtml"))
-		archiveClassifier.set("javadoc")
-		from("$buildDir/dokka/html")
+		dependsOn(tasks.dokkaHtml)
+		from(tasks.dokkaHtml.flatMap { it.outputDirectory })
+		archiveClassifier.set("html-docs")
 	}
 
 	publications.withType<MavenPublication> {
