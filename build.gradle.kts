@@ -54,11 +54,11 @@ subprojects {
 	detekt {
 		buildUponDefaultConfig = true
 		ignoreFailures = true
-		config = files("$rootDir/detekt.yaml")
+		config.setFrom("$rootDir/detekt.yaml")
 		basePath = rootDir.absolutePath
 
 		reports {
-			sarif.enabled = true
+			sarif.required.set(true)
 		}
 	}
 
