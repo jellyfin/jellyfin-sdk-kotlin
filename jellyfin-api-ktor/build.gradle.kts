@@ -7,6 +7,8 @@ kotlin {
 
 	jvm()
 
+	jvmToolchain(17)
+
 	sourceSets {
 		all {
 			languageSettings {

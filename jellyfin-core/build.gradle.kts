@@ -11,6 +11,8 @@ kotlin {
 		publishAllLibraryVariants()
 	}
 
+	jvmToolchain(17)
+
 	applyDefaultHierarchyTemplate()
 
 	sourceSets {
