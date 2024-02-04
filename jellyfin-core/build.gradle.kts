@@ -7,9 +7,11 @@ kotlin {
 	explicitApi()
 
 	jvm()
-	android {
+	androidTarget {
 		publishAllLibraryVariants()
 	}
+
+	applyDefaultHierarchyTemplate()
 
 	sourceSets {
 		all {
@@ -40,20 +42,16 @@ kotlin {
 			}
 		}
 
-		// Not actually used due too IntelliJ issue
-		// sub-sourcesets depend on source folder directly
 		val jvmCommonMain by creating {
 			dependsOn(commonMain)
 		}
 
 		val jvmMain by getting {
-			// dependsOn(jvmCommonMain)
-			kotlin.srcDir("src/jvmCommonMain/kotlin")
+			 dependsOn(jvmCommonMain)
 		}
 
 		val androidMain by getting {
-			// dependsOn(jvmCommonMain)
-			kotlin.srcDir("src/jvmCommonMain/kotlin")
+			 dependsOn(jvmCommonMain)
 		}
 	}
 }
