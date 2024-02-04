@@ -9,11 +9,6 @@ application {
 	mainClass.set("org.jellyfin.openapi.MainKt")
 }
 
-java {
-	sourceCompatibility = JavaVersion.VERSION_1_8
-	targetCompatibility = JavaVersion.VERSION_1_8
-}
-
 dependencies {
 	// Reading OpenAPI
 	implementation(libs.swagger.parser)
