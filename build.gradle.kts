@@ -47,7 +47,6 @@ apiValidation {
 subprojects {
 	// Enable required plugins
 	apply<io.gitlab.arturbosch.detekt.DetektPlugin>()
-	apply<org.jetbrains.dokka.gradle.DokkaPlugin>()
 	apply<io.kotest.framework.multiplatform.gradle.KotestMultiplatformCompilerGradlePlugin>()
 
 	// Detekt linting
