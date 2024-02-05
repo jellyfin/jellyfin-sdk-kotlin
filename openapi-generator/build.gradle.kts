@@ -76,5 +76,6 @@ arrayOf(
 
 	tasks.register("updateApiSpec${flavorPascalCase}") {
 		dependsOn("downloadApiSpec${flavorPascalCase}", "generateSources")
+		tasks["generateSources"].mustRunAfter("downloadApiSpec${flavorPascalCase}")
 	}
 }
