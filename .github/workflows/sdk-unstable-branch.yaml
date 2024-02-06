@@ -34,6 +34,7 @@ jobs:
       - name: Run apiDump task
         run: ./gradlew apiDump
       - name: Commit changes
+        if: always()
         run: |
           git config user.name jellyfin-bot
           git config user.email team@jellyfin.org
