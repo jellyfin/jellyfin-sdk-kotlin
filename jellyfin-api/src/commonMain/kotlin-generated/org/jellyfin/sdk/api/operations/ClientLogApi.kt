@@ -6,7 +6,6 @@
 package org.jellyfin.sdk.api.operations
 
 import kotlin.Any
-import kotlin.Boolean
 import kotlin.String
 import kotlin.collections.emptyMap
 import org.jellyfin.sdk.api.client.ApiClient
@@ -30,12 +29,10 @@ public class ClientLogApi(
 
 	/**
 	 * Upload a document.
-	 *
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun logFileUrl(includeCredentials: Boolean = true): String {
+	public fun logFileUrl(): String {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/ClientLog/Document", pathParameters, queryParameters, includeCredentials)
+		return api.createUrl("/ClientLog/Document", pathParameters, queryParameters)
 	}
 }

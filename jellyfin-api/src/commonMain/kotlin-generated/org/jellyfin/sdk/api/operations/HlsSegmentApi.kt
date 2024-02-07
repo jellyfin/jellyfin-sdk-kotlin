@@ -7,7 +7,6 @@ package org.jellyfin.sdk.api.operations
 
 import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
-import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.buildMap
@@ -44,20 +43,15 @@ public class HlsSegmentApi(
 	 *
 	 * @param itemId The item id.
 	 * @param segmentId The segment id.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getHlsAudioSegmentLegacyAacUrl(
-		itemId: String,
-		segmentId: String,
-		includeCredentials: Boolean = false,
-	): String {
+	public fun getHlsAudioSegmentLegacyAacUrl(itemId: String, segmentId: String): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
 			put("segmentId", segmentId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Audio/{itemId}/hls/{segmentId}/stream.aac", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -84,20 +78,15 @@ public class HlsSegmentApi(
 	 *
 	 * @param itemId The item id.
 	 * @param segmentId The segment id.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getHlsAudioSegmentLegacyMp3Url(
-		itemId: String,
-		segmentId: String,
-		includeCredentials: Boolean = false,
-	): String {
+	public fun getHlsAudioSegmentLegacyMp3Url(itemId: String, segmentId: String): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
 			put("segmentId", segmentId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Audio/{itemId}/hls/{segmentId}/stream.mp3", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -124,20 +113,15 @@ public class HlsSegmentApi(
 	 *
 	 * @param itemId The video id.
 	 * @param playlistId The playlist id.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getHlsPlaylistLegacyUrl(
-		itemId: String,
-		playlistId: String,
-		includeCredentials: Boolean = true,
-	): String {
+	public fun getHlsPlaylistLegacyUrl(itemId: String, playlistId: String): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Videos/{itemId}/hls/{playlistId}/stream.m3u8", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -175,14 +159,12 @@ public class HlsSegmentApi(
 	 * @param playlistId The playlist id.
 	 * @param segmentId The segment id.
 	 * @param segmentContainer The segment container.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getHlsVideoSegmentLegacyUrl(
 		itemId: String,
 		playlistId: String,
 		segmentId: String,
 		segmentContainer: String,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
@@ -192,7 +174,7 @@ public class HlsSegmentApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Videos/{itemId}/hls/{playlistId}/{segmentId}.{segmentContainer}",
-				pathParameters, queryParameters, includeCredentials)
+				pathParameters, queryParameters)
 	}
 
 	/**

@@ -7,7 +7,6 @@ package org.jellyfin.sdk.api.operations
 
 import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
-import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.buildMap
@@ -50,13 +49,11 @@ public class VideoAttachmentsApi(
 	 * @param videoId Video ID.
 	 * @param mediaSourceId Media Source ID.
 	 * @param index Attachment Index.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getAttachmentUrl(
 		videoId: UUID,
 		mediaSourceId: String,
 		index: Int,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("videoId", videoId)
@@ -65,6 +62,6 @@ public class VideoAttachmentsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/Videos/{videoId}/{mediaSourceId}/Attachments/{index}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 }

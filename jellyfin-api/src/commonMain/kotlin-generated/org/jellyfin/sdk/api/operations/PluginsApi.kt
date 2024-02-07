@@ -7,7 +7,6 @@ package org.jellyfin.sdk.api.operations
 
 import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
-import kotlin.Boolean
 import kotlin.Deprecated
 import kotlin.String
 import kotlin.Unit
@@ -101,20 +100,14 @@ public class PluginsApi(
 	 *
 	 * @param pluginId Plugin id.
 	 * @param version Plugin version.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getPluginImageUrl(
-		pluginId: UUID,
-		version: String,
-		includeCredentials: Boolean = true,
-	): String {
+	public fun getPluginImageUrl(pluginId: UUID, version: String): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("pluginId", pluginId)
 			put("version", version)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Plugins/{pluginId}/{version}/Image", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Plugins/{pluginId}/{version}/Image", pathParameters, queryParameters)
 	}
 
 	/**

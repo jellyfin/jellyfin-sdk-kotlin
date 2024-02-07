@@ -125,15 +125,13 @@ public class LibraryApi(
 	 * Downloads item media.
 	 *
 	 * @param itemId The item id.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getDownloadUrl(itemId: UUID, includeCredentials: Boolean = false): String {
+	public fun getDownloadUrl(itemId: UUID): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Items/{itemId}/Download", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Items/{itemId}/Download", pathParameters, queryParameters)
 	}
 
 	/**
@@ -156,14 +154,13 @@ public class LibraryApi(
 	 * Get the original file of an item.
 	 *
 	 * @param itemId The item id.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getFileUrl(itemId: UUID, includeCredentials: Boolean = true): String {
+	public fun getFileUrl(itemId: UUID): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Items/{itemId}/File", pathParameters, queryParameters, includeCredentials)
+		return api.createUrl("/Items/{itemId}/File", pathParameters, queryParameters)
 	}
 
 	/**

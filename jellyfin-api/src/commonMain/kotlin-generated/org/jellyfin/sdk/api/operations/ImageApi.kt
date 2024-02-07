@@ -292,7 +292,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getArtistImageUrl(
 		name: String,
@@ -313,7 +312,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
@@ -338,7 +336,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Artists/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -472,7 +470,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getArtistImageDeprecatedUrl(
@@ -495,7 +492,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
@@ -521,7 +517,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Artists/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -646,7 +642,6 @@ public class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 * @param imageIndex Image index.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getGenreImageUrl(
 		name: String,
@@ -667,7 +662,6 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("name", name)
@@ -691,8 +685,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 			put("imageIndex", imageIndex)
 		}
-		return api.createUrl("/Genres/{name}/Images/{imageType}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Genres/{name}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -817,7 +810,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getGenreImageByIndexUrl(
 		name: String,
@@ -838,7 +830,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
@@ -863,7 +854,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Genres/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -997,7 +988,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getGenreImageByIndexDeprecatedUrl(
@@ -1020,7 +1010,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
@@ -1046,7 +1035,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Genres/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -1180,7 +1169,6 @@ public class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 * @param imageIndex Image index.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getGenreImageDeprecatedUrl(
@@ -1203,7 +1191,6 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("name", name)
@@ -1228,8 +1215,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 			put("imageIndex", imageIndex)
 		}
-		return api.createUrl("/Genres/{name}/Images/{imageType}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Genres/{name}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -1354,7 +1340,6 @@ public class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 * @param imageIndex Image index.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getItemImageUrl(
 		itemId: UUID,
@@ -1375,7 +1360,6 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
@@ -1399,8 +1383,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 			put("imageIndex", imageIndex)
 		}
-		return api.createUrl("/Items/{itemId}/Images/{imageType}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Items/{itemId}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -1526,7 +1509,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getItemImage2Url(
 		itemId: UUID,
@@ -1547,7 +1529,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(9) {
 			put("itemId", itemId)
@@ -1572,7 +1553,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
-				pathParameters, queryParameters, includeCredentials)
+				pathParameters, queryParameters)
 	}
 
 	/**
@@ -1707,7 +1688,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getItemImage2DeprecatedUrl(
@@ -1730,7 +1710,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(9) {
 			put("itemId", itemId)
@@ -1756,7 +1735,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
-				pathParameters, queryParameters, includeCredentials)
+				pathParameters, queryParameters)
 	}
 
 	/**
@@ -1881,7 +1860,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getItemImageByIndexUrl(
 		itemId: UUID,
@@ -1902,7 +1880,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("itemId", itemId)
@@ -1927,7 +1904,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -2061,7 +2038,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getItemImageByIndexDeprecatedUrl(
@@ -2084,7 +2060,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("itemId", itemId)
@@ -2110,7 +2085,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -2244,7 +2219,6 @@ public class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 * @param imageIndex Image index.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getItemImageDeprecatedUrl(
@@ -2267,7 +2241,6 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
@@ -2292,8 +2265,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 			put("imageIndex", imageIndex)
 		}
-		return api.createUrl("/Items/{itemId}/Images/{imageType}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Items/{itemId}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -2434,7 +2406,6 @@ public class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 * @param imageIndex Image index.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getMusicGenreImageUrl(
 		name: String,
@@ -2455,7 +2426,6 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("name", name)
@@ -2479,8 +2449,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 			put("imageIndex", imageIndex)
 		}
-		return api.createUrl("/MusicGenres/{name}/Images/{imageType}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/MusicGenres/{name}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -2605,7 +2574,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getMusicGenreImageByIndexUrl(
 		name: String,
@@ -2626,7 +2594,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
@@ -2651,7 +2618,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/MusicGenres/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -2786,7 +2753,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getMusicGenreImageByIndexDeprecatedUrl(
@@ -2809,7 +2775,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
@@ -2835,7 +2800,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/MusicGenres/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -2969,7 +2934,6 @@ public class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 * @param imageIndex Image index.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getMusicGenreImageDeprecatedUrl(
@@ -2992,7 +2956,6 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("name", name)
@@ -3017,8 +2980,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 			put("imageIndex", imageIndex)
 		}
-		return api.createUrl("/MusicGenres/{name}/Images/{imageType}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/MusicGenres/{name}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -3143,7 +3105,6 @@ public class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 * @param imageIndex Image index.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getPersonImageUrl(
 		name: String,
@@ -3164,7 +3125,6 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("name", name)
@@ -3188,8 +3148,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 			put("imageIndex", imageIndex)
 		}
-		return api.createUrl("/Persons/{name}/Images/{imageType}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Persons/{name}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -3314,7 +3273,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getPersonImageByIndexUrl(
 		name: String,
@@ -3335,7 +3293,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
@@ -3360,7 +3317,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Persons/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -3495,7 +3452,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getPersonImageByIndexDeprecatedUrl(
@@ -3518,7 +3474,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
@@ -3544,7 +3499,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Persons/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -3678,7 +3633,6 @@ public class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 * @param imageIndex Image index.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getPersonImageDeprecatedUrl(
@@ -3701,7 +3655,6 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("name", name)
@@ -3726,8 +3679,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 			put("imageIndex", imageIndex)
 		}
-		return api.createUrl("/Persons/{name}/Images/{imageType}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Persons/{name}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -3818,7 +3770,6 @@ public class ImageApi(
 	 * @param backgroundColor Apply a background color for transparent images.
 	 * @param foregroundLayer Apply a foreground layer on top of the image.
 	 * @param quality Quality setting, from 0-100.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getSplashscreenUrl(
 		tag: String? = null,
@@ -3833,7 +3784,6 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		quality: Int? = 90,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = emptyMap<String, Any?>()
 		require(quality in 0..100) { "Parameter \"quality\" must be in range 0..100 (inclusive)." }
@@ -3851,8 +3801,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 			put("quality", quality)
 		}
-		return api.createUrl("/Branding/Splashscreen", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Branding/Splashscreen", pathParameters, queryParameters)
 	}
 
 	/**
@@ -3977,7 +3926,6 @@ public class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 * @param imageIndex Image index.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getStudioImageUrl(
 		name: String,
@@ -3998,7 +3946,6 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("name", name)
@@ -4022,8 +3969,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 			put("imageIndex", imageIndex)
 		}
-		return api.createUrl("/Studios/{name}/Images/{imageType}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Studios/{name}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -4148,7 +4094,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getStudioImageByIndexUrl(
 		name: String,
@@ -4169,7 +4114,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
@@ -4194,7 +4138,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Studios/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -4329,7 +4273,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getStudioImageByIndexDeprecatedUrl(
@@ -4352,7 +4295,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
@@ -4378,7 +4320,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Studios/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -4512,7 +4454,6 @@ public class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 * @param imageIndex Image index.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getStudioImageDeprecatedUrl(
@@ -4535,7 +4476,6 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("name", name)
@@ -4560,8 +4500,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 			put("imageIndex", imageIndex)
 		}
-		return api.createUrl("/Studios/{name}/Images/{imageType}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Studios/{name}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -4686,7 +4625,6 @@ public class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 * @param imageIndex Image index.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getUserImageUrl(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
@@ -4707,7 +4645,6 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("userId", userId)
@@ -4731,8 +4668,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 			put("imageIndex", imageIndex)
 		}
-		return api.createUrl("/Users/{userId}/Images/{imageType}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Users/{userId}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -4857,7 +4793,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getUserImageByIndexUrl(
 		userId: UUID = api.userId ?: throw MissingUserIdException(),
@@ -4878,7 +4813,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("userId", userId)
@@ -4903,7 +4837,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Users/{userId}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -5037,7 +4971,6 @@ public class ImageApi(
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getUserImageByIndexDeprecatedUrl(
@@ -5060,7 +4993,6 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("userId", userId)
@@ -5086,7 +5018,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Users/{userId}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -5220,7 +5152,6 @@ public class ImageApi(
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 * @param imageIndex Image index.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getUserImageDeprecatedUrl(
@@ -5243,7 +5174,6 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("userId", userId)
@@ -5268,8 +5198,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 			put("imageIndex", imageIndex)
 		}
-		return api.createUrl("/Users/{userId}/Images/{imageType}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Users/{userId}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**

@@ -369,7 +369,6 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getHlsAudioSegmentUrl(
 		itemId: UUID,
@@ -426,7 +425,6 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
-		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
@@ -491,7 +489,7 @@ public class DynamicHlsApi(
 			put("streamOptions", streamOptions)
 		}
 		return api.createUrl("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -836,7 +834,6 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getHlsVideoSegmentUrl(
 		itemId: UUID,
@@ -894,7 +891,6 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
-		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
@@ -960,7 +956,7 @@ public class DynamicHlsApi(
 			put("streamOptions", streamOptions)
 		}
 		return api.createUrl("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -1288,7 +1284,6 @@ public class DynamicHlsApi(
 	 * @param maxWidth Optional. The max width.
 	 * @param maxHeight Optional. The max height.
 	 * @param enableSubtitlesInManifest Optional. Whether to enable subtitles in the manifest.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getLiveHlsStreamUrl(
 		itemId: UUID,
@@ -1343,7 +1338,6 @@ public class DynamicHlsApi(
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		enableSubtitlesInManifest: Boolean? = null,
-		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -1406,8 +1400,7 @@ public class DynamicHlsApi(
 			put("maxHeight", maxHeight)
 			put("enableSubtitlesInManifest", enableSubtitlesInManifest)
 		}
-		return api.createUrl("/Videos/{itemId}/live.m3u8", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Videos/{itemId}/live.m3u8", pathParameters, queryParameters)
 	}
 
 	/**
@@ -1724,7 +1717,6 @@ public class DynamicHlsApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getMasterHlsAudioPlaylistUrl(
 		itemId: UUID,
@@ -1777,7 +1769,6 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
-		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -1837,8 +1828,7 @@ public class DynamicHlsApi(
 			put("streamOptions", streamOptions)
 			put("enableAdaptiveBitrateStreaming", enableAdaptiveBitrateStreaming)
 		}
-		return api.createUrl("/Audio/{itemId}/master.m3u8", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Audio/{itemId}/master.m3u8", pathParameters, queryParameters)
 	}
 
 	/**
@@ -2160,7 +2150,6 @@ public class DynamicHlsApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getMasterHlsVideoPlaylistUrl(
 		itemId: UUID,
@@ -2214,7 +2203,6 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
-		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -2275,8 +2263,7 @@ public class DynamicHlsApi(
 			put("streamOptions", streamOptions)
 			put("enableAdaptiveBitrateStreaming", enableAdaptiveBitrateStreaming)
 		}
-		return api.createUrl("/Videos/{itemId}/master.m3u8", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Videos/{itemId}/master.m3u8", pathParameters, queryParameters)
 	}
 
 	/**
@@ -2586,7 +2573,6 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getVariantHlsAudioPlaylistUrl(
 		itemId: UUID,
@@ -2638,7 +2624,6 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
-		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -2697,8 +2682,7 @@ public class DynamicHlsApi(
 			put("context", context)
 			put("streamOptions", streamOptions)
 		}
-		return api.createUrl("/Audio/{itemId}/main.m3u8", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Audio/{itemId}/main.m3u8", pathParameters, queryParameters)
 	}
 
 	/**
@@ -3015,7 +2999,6 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getVariantHlsVideoPlaylistUrl(
 		itemId: UUID,
@@ -3068,7 +3051,6 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
-		includeCredentials: Boolean = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -3128,7 +3110,6 @@ public class DynamicHlsApi(
 			put("context", context)
 			put("streamOptions", streamOptions)
 		}
-		return api.createUrl("/Videos/{itemId}/main.m3u8", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Videos/{itemId}/main.m3u8", pathParameters, queryParameters)
 	}
 }

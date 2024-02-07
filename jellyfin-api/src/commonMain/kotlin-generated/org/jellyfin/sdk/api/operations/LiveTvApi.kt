@@ -341,16 +341,14 @@ public class LiveTvApi(
 	 * Gets a live tv recording stream.
 	 *
 	 * @param recordingId Recording id.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getLiveRecordingFileUrl(recordingId: String, includeCredentials: Boolean = false):
-			String {
+	public fun getLiveRecordingFileUrl(recordingId: String): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("recordingId", recordingId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/LiveTv/LiveRecordings/{recordingId}/stream", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -377,20 +375,15 @@ public class LiveTvApi(
 	 *
 	 * @param streamId Stream id.
 	 * @param container Container type.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getLiveStreamFileUrl(
-		streamId: String,
-		container: String,
-		includeCredentials: Boolean = false,
-	): String {
+	public fun getLiveStreamFileUrl(streamId: String, container: String): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("streamId", streamId)
 			put("container", container)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/LiveTv/LiveStreamFiles/{streamId}/stream.{container}", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
@@ -1033,14 +1026,12 @@ public class LiveTvApi(
 
 	/**
 	 * Gets available countries.
-	 *
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getSchedulesDirectCountriesUrl(includeCredentials: Boolean = false): String {
+	public fun getSchedulesDirectCountriesUrl(): String {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/LiveTv/ListingProviders/SchedulesDirect/Countries", pathParameters,
-				queryParameters, includeCredentials)
+				queryParameters)
 	}
 
 	/**
