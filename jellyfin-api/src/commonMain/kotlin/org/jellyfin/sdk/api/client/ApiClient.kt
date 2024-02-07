@@ -12,8 +12,7 @@ import kotlin.reflect.KClass
 public abstract class ApiClient {
 	public companion object {
 		/**
-		 * The query parameter to use for access tokens. Used in the [createUrl] function when includeCredentials is
-		 * true.
+		 * The query parameter to use for access tokens.
 		 */
 		public const val QUERY_ACCESS_TOKEN: String = "ApiKey"
 
@@ -60,25 +59,18 @@ public abstract class ApiClient {
 	 * Create a complete url based on the [baseUrl] and given parameters.
 	 * Uses [UrlBuilder] to create the path from the [pathTemplate] and [pathParameters].
 	 *
-	 * When [includeCredentials] is true it will add the access token as query parameter using [QUERY_ACCESS_TOKEN]
-	 * to the url to make an authenticated request.
-	 *
 	 * When [ignorePathParameters] is true, the [pathParameters] will be ignored and [pathTemplate] will not be parsed.
 	 */
 	public open fun createUrl(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
-		includeCredentials: Boolean = false,
 		ignorePathParameters: Boolean = false,
 	): String = UrlBuilder.buildUrl(
 		baseUrl ?: throw MissingBaseUrlException(),
 		pathTemplate,
 		pathParameters,
-		queryParameters.run {
-			if (includeCredentials) plus(QUERY_ACCESS_TOKEN to checkNotNull(accessToken))
-			else this
-		},
+		queryParameters,
 		ignorePathParameters,
 	)
 
