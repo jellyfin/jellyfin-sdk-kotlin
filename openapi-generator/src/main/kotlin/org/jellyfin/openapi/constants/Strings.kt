@@ -28,11 +28,6 @@ object Strings {
 	const val DEFAULT_API_SERVICE = "Misc"
 
 	/**
-	 * The description used for the "includeCredentials" parameter in API URL functions.
-	 */
-	const val INCLUDE_CREDENTIALS_DESCRIPTION = "Add the access token to the url to make an authenticated request."
-
-	/**
 	 * The suffix added to the name of a deprecated operation.
 	 */
 	const val DEPRECATED_OPERATION_SUFFIX = "Deprecated"
