@@ -7,7 +7,6 @@ package org.jellyfin.sdk.api.operations
 
 import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
-import kotlin.Boolean
 import kotlin.String
 import kotlin.collections.List
 import kotlin.collections.buildMap
@@ -43,20 +42,14 @@ public class ImageByNameApi(
 	 *
 	 * @param name The name of the image.
 	 * @param type Image Type (primary, backdrop, logo, etc).
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getGeneralImageUrl(
-		name: String,
-		type: String,
-		includeCredentials: Boolean = false,
-	): String {
+	public fun getGeneralImageUrl(name: String, type: String): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("name", name)
 			put("type", type)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Images/General/{name}/{type}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Images/General/{name}/{type}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -94,20 +87,14 @@ public class ImageByNameApi(
 	 *
 	 * @param theme The theme to get the image from.
 	 * @param name The name of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getMediaInfoImageUrl(
-		theme: String,
-		name: String,
-		includeCredentials: Boolean = false,
-	): String {
+	public fun getMediaInfoImageUrl(theme: String, name: String): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("theme", theme)
 			put("name", name)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Images/MediaInfo/{theme}/{name}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Images/MediaInfo/{theme}/{name}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -145,20 +132,14 @@ public class ImageByNameApi(
 	 *
 	 * @param theme The theme to get the image from.
 	 * @param name The name of the image.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
-	public fun getRatingImageUrl(
-		theme: String,
-		name: String,
-		includeCredentials: Boolean = false,
-	): String {
+	public fun getRatingImageUrl(theme: String, name: String): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("theme", theme)
 			put("name", name)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Images/Ratings/{theme}/{name}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Images/Ratings/{theme}/{name}", pathParameters, queryParameters)
 	}
 
 	/**

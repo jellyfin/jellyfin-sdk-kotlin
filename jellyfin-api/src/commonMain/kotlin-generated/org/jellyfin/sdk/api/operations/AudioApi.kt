@@ -339,7 +339,6 @@ public class AudioApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getAudioStreamUrl(
 		itemId: UUID,
@@ -391,7 +390,6 @@ public class AudioApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -451,8 +449,7 @@ public class AudioApi(
 			put("context", context)
 			put("streamOptions", streamOptions)
 		}
-		return api.createUrl("/Audio/{itemId}/stream", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Audio/{itemId}/stream", pathParameters, queryParameters)
 	}
 
 	/**
@@ -764,7 +761,6 @@ public class AudioApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
-	 * @param includeCredentials Add the access token to the url to make an authenticated request.
 	 */
 	public fun getAudioStreamByContainerUrl(
 		itemId: UUID,
@@ -816,7 +812,6 @@ public class AudioApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
-		includeCredentials: Boolean = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
@@ -875,7 +870,6 @@ public class AudioApi(
 			put("context", context)
 			put("streamOptions", streamOptions)
 		}
-		return api.createUrl("/Audio/{itemId}/stream.{container}", pathParameters, queryParameters,
-				includeCredentials)
+		return api.createUrl("/Audio/{itemId}/stream.{container}", pathParameters, queryParameters)
 	}
 }
