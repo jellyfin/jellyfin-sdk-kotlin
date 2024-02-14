@@ -241,11 +241,6 @@ public final class org/jellyfin/sdk/api/client/util/UrlBuilderKt {
 	public static final fun buildPath (Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
 }
 
-public final class org/jellyfin/sdk/api/extensions/MediaInfoApiExtensionsKt {
-	public static final fun detectBitrate (Lorg/jellyfin/sdk/api/operations/MediaInfoApi;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun measureBitrate (Lorg/jellyfin/sdk/api/operations/MediaInfoApi;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
-}
-
 public final class org/jellyfin/sdk/api/info/ApiConstants {
 	public static final field INSTANCE Lorg/jellyfin/sdk/api/info/ApiConstants;
 	public static final field apiVersion Ljava/lang/String;
