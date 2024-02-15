@@ -2,7 +2,6 @@ package org.jellyfin.sample.cli
 
 import com.github.ajalt.clikt.core.NoOpCliktCommand
 import com.github.ajalt.clikt.core.subcommands
-import org.jellyfin.sample.cli.command.Bitrate
 import org.jellyfin.sample.cli.command.Discover
 import org.jellyfin.sample.cli.command.Libraries
 import org.jellyfin.sample.cli.command.Login
@@ -20,7 +19,6 @@ fun main(args: Array<String>) {
 	}
 
 	val instance = NoOpCliktCommand(name = "jellyfin").apply {
-		subcommands(Bitrate(jellyfin))
 		subcommands(Discover(jellyfin))
 		subcommands(Libraries(jellyfin))
 		subcommands(Login(jellyfin))
