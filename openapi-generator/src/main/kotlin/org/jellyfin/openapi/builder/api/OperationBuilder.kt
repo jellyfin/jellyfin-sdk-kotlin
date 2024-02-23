@@ -18,6 +18,7 @@ import org.jellyfin.openapi.constants.Strings
 import org.jellyfin.openapi.constants.Types
 import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
+import org.jellyfin.openapi.model.ApiServiceOperationRequestBody
 import org.jellyfin.openapi.model.DescriptionType
 import org.jellyfin.openapi.model.IntRangeValidation
 import org.jellyfin.openapi.model.ParameterValidation
@@ -127,10 +128,10 @@ open class OperationBuilder(
 		addParameterMapStatements("queryParameters", data.queryParameters)
 
 		// Add request body
-		if (data.bodyType != null) {
-			addParameter(ParameterSpec.builder("data", data.bodyType).apply {
+		if (data.body != ApiServiceOperationRequestBody.None) {
+			addParameter(ParameterSpec.builder("data", data.body.type).apply {
 				// Set default value to null if parameter is nullable
-				if (data.bodyType.isNullable) defaultValue("%L", "null")
+				if (data.body.type.isNullable) defaultValue("%L", "null")
 			}.build())
 		} else {
 			// No data parameter needed, use a null value

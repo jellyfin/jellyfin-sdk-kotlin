@@ -10,10 +10,11 @@ import org.jellyfin.openapi.builder.extra.DeprecatedAnnotationSpecBuilder
 import org.jellyfin.openapi.builder.extra.DescriptionBuilder
 import org.jellyfin.openapi.constants.Packages
 import org.jellyfin.openapi.constants.Strings
-import org.jellyfin.openapi.model.DescriptionType
 import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
+import org.jellyfin.openapi.model.ApiServiceOperationRequestBody
 import org.jellyfin.openapi.model.DefaultValue
+import org.jellyfin.openapi.model.DescriptionType
 
 class OperationParameterModelBuilder(
 	private val descriptionBuilder: DescriptionBuilder,
@@ -56,11 +57,11 @@ class OperationParameterModelBuilder(
 			)
 		}.build().let(::addParameter)
 
-		val includeData = data.bodyType != null
+		val includeData = data.body != ApiServiceOperationRequestBody.None
 		if (includeData) {
-			addParameter(ParameterSpec.builder("data", data.bodyType!!).apply {
+			addParameter(ParameterSpec.builder("data", data.body.type).apply {
 				// Set default value to null if parameter is nullable
-				if (data.bodyType.isNullable) defaultValue("%L", "null")
+				if (data.body.type.isNullable) defaultValue("%L", "null")
 			}.build())
 		}
 
