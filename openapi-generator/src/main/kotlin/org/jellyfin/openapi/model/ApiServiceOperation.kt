@@ -12,5 +12,5 @@ data class ApiServiceOperation(
 	val returnType: TypeName,
 	val pathParameters: Collection<ApiServiceOperationParameter> = emptyList(),
 	val queryParameters: Collection<ApiServiceOperationParameter> = emptyList(),
-	val bodyType: TypeName?
+	val body: ApiServiceOperationRequestBody,
 )

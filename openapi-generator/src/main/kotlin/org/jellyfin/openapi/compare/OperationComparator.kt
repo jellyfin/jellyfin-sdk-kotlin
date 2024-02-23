@@ -52,7 +52,7 @@ class OperationComparator {
 			detect({ method }, "Method")
 			detect({ requireAuthentication }, "Authentication")
 			detect({ returnType }, "Return type")
-			detect({ bodyType }, "Body type")
+			detect({ body }, "Body type")
 		},
 	)
 

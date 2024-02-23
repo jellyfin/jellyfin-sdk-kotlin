@@ -25,6 +25,7 @@ import org.jellyfin.openapi.hooks.ServiceNameHook
 import org.jellyfin.openapi.model.ApiService
 import org.jellyfin.openapi.model.ApiServiceOperation
 import org.jellyfin.openapi.model.ApiServiceOperationParameter
+import org.jellyfin.openapi.model.ApiServiceOperationRequestBody
 import org.jellyfin.openapi.model.DefaultValue
 import org.jellyfin.openapi.model.GeneratorContext
 import org.jellyfin.openapi.model.HttpMethod
@@ -88,12 +89,17 @@ class OpenApiApiServicesBuilder(
 			schema.minimum.intValueExact(),
 			schema.maximum.intValueExact()
 		)
+
 		schema is StringSchema && schema.pattern != null -> RegexValidation(schema.pattern)
 
 		else -> null
 	}
 
-	private fun buildRequestBody(requestBody: RequestBody, serviceName: String, operationName: String): TypeName? {
+	private fun buildRequestBody(
+		requestBody: RequestBody,
+		serviceName: String,
+		operationName: String
+	): ApiServiceOperationRequestBody {
 		// Filter out duplicate JSON values
 		val requestBodyTypes = requestBody.content.keys.filterNot {
 			MimeType.IGNORED_JSON_TYPES.contains(it)
@@ -101,7 +107,7 @@ class OpenApiApiServicesBuilder(
 
 		// Check amount of types and get the first
 		val requestBodyType = when (requestBodyTypes.size) {
-			0 -> return null
+			0 -> return ApiServiceOperationRequestBody.None
 			1 -> requestBodyTypes.first()
 			else -> throw OpenApiGeneratorError("Multiple request body types are not supported. Found types: $requestBodyTypes")
 		}
@@ -110,19 +116,21 @@ class OpenApiApiServicesBuilder(
 		val content = requestBody.content[requestBodyType]
 		val required = requestBody.required ?: false
 
+		val model by lazy {
+			openApiTypeBuilder.build(
+				ApiTypePath(serviceName, operationName, ApiTypePath.PARAMETER_BODY),
+				requireNotNull(content?.schema)
+			).copy(nullable = !required)
+		}
+
 		// Determine the correct type
 		return when (requestBodyType) {
-			// JSON body - use type builder
-			MimeType.APPLICATION_JSON -> content?.schema?.let { schema ->
-				openApiTypeBuilder.build(
-					ApiTypePath(serviceName, operationName, ApiTypePath.PARAMETER_BODY),
-					schema
-				).copy(nullable = !required)
-			}
+			// JSON model body
+			MimeType.APPLICATION_JSON -> ApiServiceOperationRequestBody.Json(model)
 			// Image body
-			MimeType.IMAGE_ALL -> Types.BYTE_ARRAY
+			MimeType.IMAGE_ALL -> ApiServiceOperationRequestBody.Binary
 			// String body
-			MimeType.TEXT_PLAIN -> Types.STRING
+			MimeType.TEXT_PLAIN -> ApiServiceOperationRequestBody.String
 			// Unknown type
 			else -> throw OpenApiGeneratorError("""Unsupported request body type "$requestBodyType".""")
 		}
@@ -186,7 +194,7 @@ class OpenApiApiServicesBuilder(
 
 		val bodyType = operation.requestBody?.let { requestBody ->
 			buildRequestBody(requestBody, serviceName, operationName)
-		}
+		} ?: ApiServiceOperationRequestBody.None
 
 		return ApiServiceOperation(
 			name = operationName,
@@ -198,7 +206,7 @@ class OpenApiApiServicesBuilder(
 			returnType = returnType,
 			pathParameters = pathParameters,
 			queryParameters = queryParameters,
-			bodyType = bodyType,
+			body = bodyType,
 		)
 	}
 
