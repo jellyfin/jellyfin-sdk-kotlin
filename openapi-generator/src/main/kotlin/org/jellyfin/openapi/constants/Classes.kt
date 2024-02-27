@@ -17,8 +17,4 @@ object Classes {
 	}
 
 	const val CONSTANTS_OBJECT = "ApiConstants"
-
-	object Exceptions {
-		const val USERID_IS_NULL = "MissingUserIdException"
-	}
 }
