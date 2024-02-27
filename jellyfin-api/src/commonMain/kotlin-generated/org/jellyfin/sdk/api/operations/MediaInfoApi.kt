@@ -18,7 +18,6 @@ import kotlin.collections.emptyMap
 import kotlin.require
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
-import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
@@ -84,8 +83,7 @@ public class MediaInfoApi(
 	 * @param itemId The item id.
 	 * @param userId The user id.
 	 */
-	public suspend fun getPlaybackInfo(itemId: UUID, userId: UUID = api.userId ?: throw
-			MissingUserIdException()): Response<PlaybackInfoResponse> {
+	public suspend fun getPlaybackInfo(itemId: UUID, userId: UUID): Response<PlaybackInfoResponse> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}

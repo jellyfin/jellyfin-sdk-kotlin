@@ -16,7 +16,6 @@ import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
-import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.delete
 import org.jellyfin.sdk.api.client.extensions.post
@@ -38,8 +37,7 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun deleteUserItemRating(userId: UUID = api.userId ?: throw
-			MissingUserIdException(), itemId: UUID): Response<UserItemDataDto> {
+	public suspend fun deleteUserItemRating(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("userId", userId)
 			put("itemId", itemId)
@@ -57,8 +55,7 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun getIntros(userId: UUID = api.userId ?: throw MissingUserIdException(),
-			itemId: UUID): Response<BaseItemDtoQueryResult> {
+	public suspend fun getIntros(userId: UUID, itemId: UUID): Response<BaseItemDtoQueryResult> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("userId", userId)
 			put("itemId", itemId)
@@ -76,8 +73,7 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun getItem(userId: UUID = api.userId ?: throw MissingUserIdException(),
-			itemId: UUID): Response<BaseItemDto> {
+	public suspend fun getItem(userId: UUID, itemId: UUID): Response<BaseItemDto> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("userId", userId)
 			put("itemId", itemId)
@@ -107,7 +103,7 @@ public class UserLibraryApi(
 	 * @param groupItems Whether or not to group items into a parent container.
 	 */
 	public suspend fun getLatestMedia(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		parentId: UUID? = null,
 		fields: Collection<ItemFields>? = emptyList(),
 		includeItemTypes: Collection<BaseItemKind>? = emptyList(),
@@ -166,8 +162,7 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun getLocalTrailers(userId: UUID = api.userId ?: throw MissingUserIdException(),
-			itemId: UUID): Response<List<BaseItemDto>> {
+	public suspend fun getLocalTrailers(userId: UUID, itemId: UUID): Response<List<BaseItemDto>> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("userId", userId)
 			put("itemId", itemId)
@@ -184,8 +179,7 @@ public class UserLibraryApi(
 	 *
 	 * @param userId User id.
 	 */
-	public suspend fun getRootFolder(userId: UUID = api.userId ?: throw MissingUserIdException()):
-			Response<BaseItemDto> {
+	public suspend fun getRootFolder(userId: UUID): Response<BaseItemDto> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
@@ -202,8 +196,7 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun getSpecialFeatures(userId: UUID = api.userId ?: throw MissingUserIdException(),
-			itemId: UUID): Response<List<BaseItemDto>> {
+	public suspend fun getSpecialFeatures(userId: UUID, itemId: UUID): Response<List<BaseItemDto>> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("userId", userId)
 			put("itemId", itemId)
@@ -221,8 +214,7 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun markFavoriteItem(userId: UUID = api.userId ?: throw MissingUserIdException(),
-			itemId: UUID): Response<UserItemDataDto> {
+	public suspend fun markFavoriteItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("userId", userId)
 			put("itemId", itemId)
@@ -240,8 +232,7 @@ public class UserLibraryApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun unmarkFavoriteItem(userId: UUID = api.userId ?: throw MissingUserIdException(),
-			itemId: UUID): Response<UserItemDataDto> {
+	public suspend fun unmarkFavoriteItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("userId", userId)
 			put("itemId", itemId)
@@ -263,7 +254,7 @@ public class UserLibraryApi(
 	 * is likes.
 	 */
 	public suspend fun updateUserItemRating(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		itemId: UUID,
 		likes: Boolean? = null,
 	): Response<UserItemDataDto> {

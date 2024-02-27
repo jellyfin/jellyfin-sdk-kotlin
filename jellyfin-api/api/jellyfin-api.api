@@ -362,9 +362,7 @@ public final class org/jellyfin/sdk/api/operations/DevicesApi : org/jellyfin/sdk
 public final class org/jellyfin/sdk/api/operations/DisplayPreferencesApi : org/jellyfin/sdk/api/operations/Api {
 	public fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;)V
 	public final fun getDisplayPreferences (Ljava/lang/String;Ljava/util/UUID;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getDisplayPreferences$default (Lorg/jellyfin/sdk/api/operations/DisplayPreferencesApi;Ljava/lang/String;Ljava/util/UUID;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun updateDisplayPreferences (Ljava/lang/String;Ljava/util/UUID;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/DisplayPreferencesDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun updateDisplayPreferences$default (Lorg/jellyfin/sdk/api/operations/DisplayPreferencesApi;Ljava/lang/String;Ljava/util/UUID;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/DisplayPreferencesDto;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class org/jellyfin/sdk/api/operations/DlnaApi : org/jellyfin/sdk/api/operations/Api {
@@ -493,7 +491,6 @@ public final class org/jellyfin/sdk/api/operations/ImageApi : org/jellyfin/sdk/a
 	public final fun deleteUserImage (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun deleteUserImage$default (Lorg/jellyfin/sdk/api/operations/ImageApi;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;Ljava/lang/Integer;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun deleteUserImageByIndex (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun deleteUserImageByIndex$default (Lorg/jellyfin/sdk/api/operations/ImageApi;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;ILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun getArtistImage (Ljava/lang/String;Lorg/jellyfin/sdk/model/api/ImageType;ILjava/lang/String;Lorg/jellyfin/sdk/model/api/ImageFormat;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getArtistImage (Lorg/jellyfin/sdk/model/api/request/GetArtistImageRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun getArtistImage$default (Lorg/jellyfin/sdk/api/operations/ImageApi;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/ImageType;ILjava/lang/String;Lorg/jellyfin/sdk/model/api/ImageFormat;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
@@ -644,7 +641,6 @@ public final class org/jellyfin/sdk/api/operations/ImageApi : org/jellyfin/sdk/a
 	public final fun postUserImage (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;Ljava/lang/Integer;[BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun postUserImage$default (Lorg/jellyfin/sdk/api/operations/ImageApi;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;Ljava/lang/Integer;[BLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun postUserImageByIndex (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;I[BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun postUserImageByIndex$default (Lorg/jellyfin/sdk/api/operations/ImageApi;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;I[BLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun setItemImage (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;[BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun setItemImageByIndex (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;I[BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun updateItemImageIndex (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;IILkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -910,7 +906,6 @@ public final class org/jellyfin/sdk/api/operations/MediaInfoApi : org/jellyfin/s
 	public final fun getBitrateTestBytesUrl (Ljava/lang/Integer;)Ljava/lang/String;
 	public static synthetic fun getBitrateTestBytesUrl$default (Lorg/jellyfin/sdk/api/operations/MediaInfoApi;Ljava/lang/Integer;ILjava/lang/Object;)Ljava/lang/String;
 	public final fun getPlaybackInfo (Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getPlaybackInfo$default (Lorg/jellyfin/sdk/api/operations/MediaInfoApi;Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun getPostedPlaybackInfo (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/PlaybackInfoDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun getPostedPlaybackInfo$default (Lorg/jellyfin/sdk/api/operations/MediaInfoApi;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/PlaybackInfoDto;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun getPostedPlaybackInfoDeprecated (Ljava/util/UUID;Ljava/util/UUID;Ljava/lang/Integer;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lorg/jellyfin/sdk/model/api/PlaybackInfoDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -947,13 +942,9 @@ public final class org/jellyfin/sdk/api/operations/NotificationsApi : org/jellyf
 	public final fun getNotificationServices (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getNotificationTypes (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getNotifications (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getNotifications$default (Lorg/jellyfin/sdk/api/operations/NotificationsApi;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun getNotificationsSummary (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getNotificationsSummary$default (Lorg/jellyfin/sdk/api/operations/NotificationsApi;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun setRead (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun setRead$default (Lorg/jellyfin/sdk/api/operations/NotificationsApi;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun setUnread (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun setUnread$default (Lorg/jellyfin/sdk/api/operations/NotificationsApi;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class org/jellyfin/sdk/api/operations/PackageApi : org/jellyfin/sdk/api/operations/Api {
@@ -983,7 +974,6 @@ public final class org/jellyfin/sdk/api/operations/PlayStateApi : org/jellyfin/s
 	public final fun markPlayedItem (Ljava/util/UUID;Ljava/util/UUID;Ljava/time/LocalDateTime;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun markPlayedItem$default (Lorg/jellyfin/sdk/api/operations/PlayStateApi;Ljava/util/UUID;Ljava/util/UUID;Ljava/time/LocalDateTime;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun markUnplayedItem (Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun markUnplayedItem$default (Lorg/jellyfin/sdk/api/operations/PlayStateApi;Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun onPlaybackProgress (Ljava/util/UUID;Ljava/util/UUID;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Lorg/jellyfin/sdk/model/api/PlayMethod;Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/RepeatMode;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun onPlaybackProgress (Lorg/jellyfin/sdk/model/api/request/OnPlaybackProgressRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun onPlaybackProgress$default (Lorg/jellyfin/sdk/api/operations/PlayStateApi;Ljava/util/UUID;Ljava/util/UUID;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Lorg/jellyfin/sdk/model/api/PlayMethod;Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/RepeatMode;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
@@ -1070,7 +1060,6 @@ public final class org/jellyfin/sdk/api/operations/SearchApi : org/jellyfin/sdk/
 public final class org/jellyfin/sdk/api/operations/SessionApi : org/jellyfin/sdk/api/operations/Api {
 	public fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;)V
 	public final fun addUserToSession (Ljava/lang/String;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun addUserToSession$default (Lorg/jellyfin/sdk/api/operations/SessionApi;Ljava/lang/String;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun displayContent (Ljava/lang/String;Lorg/jellyfin/sdk/model/api/BaseItemKind;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getAuthProviders (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getPasswordResetProviders (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -1086,7 +1075,6 @@ public final class org/jellyfin/sdk/api/operations/SessionApi : org/jellyfin/sdk
 	public final fun postFullCapabilities (Ljava/lang/String;Lorg/jellyfin/sdk/model/api/ClientCapabilitiesDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun postFullCapabilities$default (Lorg/jellyfin/sdk/api/operations/SessionApi;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/ClientCapabilitiesDto;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun removeUserFromSession (Ljava/lang/String;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun removeUserFromSession$default (Lorg/jellyfin/sdk/api/operations/SessionApi;Ljava/lang/String;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun reportSessionEnded (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun reportViewing (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun reportViewing$default (Lorg/jellyfin/sdk/api/operations/SessionApi;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
@@ -1246,48 +1234,33 @@ public final class org/jellyfin/sdk/api/operations/UserApi : org/jellyfin/sdk/ap
 	public final fun authenticateWithQuickConnect (Lorg/jellyfin/sdk/model/api/QuickConnectDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun createUserByName (Lorg/jellyfin/sdk/model/api/CreateUserByName;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun deleteUser (Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun deleteUser$default (Lorg/jellyfin/sdk/api/operations/UserApi;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun forgotPassword (Lorg/jellyfin/sdk/model/api/ForgotPasswordDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun forgotPasswordPin (Lorg/jellyfin/sdk/model/api/ForgotPasswordPinDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getCurrentUser (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getPublicUsers (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getUserById (Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getUserById$default (Lorg/jellyfin/sdk/api/operations/UserApi;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun getUsers (Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun getUsers$default (Lorg/jellyfin/sdk/api/operations/UserApi;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun updateUser (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/UserDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun updateUser$default (Lorg/jellyfin/sdk/api/operations/UserApi;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/UserDto;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun updateUserConfiguration (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/UserConfiguration;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun updateUserConfiguration$default (Lorg/jellyfin/sdk/api/operations/UserApi;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/UserConfiguration;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun updateUserEasyPassword (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/UpdateUserEasyPassword;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun updateUserEasyPassword$default (Lorg/jellyfin/sdk/api/operations/UserApi;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/UpdateUserEasyPassword;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun updateUserPassword (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/UpdateUserPassword;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun updateUserPassword$default (Lorg/jellyfin/sdk/api/operations/UserApi;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/UpdateUserPassword;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun updateUserPolicy (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/UserPolicy;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun updateUserPolicy$default (Lorg/jellyfin/sdk/api/operations/UserApi;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/UserPolicy;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class org/jellyfin/sdk/api/operations/UserLibraryApi : org/jellyfin/sdk/api/operations/Api {
 	public fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;)V
 	public final fun deleteUserItemRating (Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun deleteUserItemRating$default (Lorg/jellyfin/sdk/api/operations/UserLibraryApi;Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun getIntros (Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getIntros$default (Lorg/jellyfin/sdk/api/operations/UserLibraryApi;Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun getItem (Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getItem$default (Lorg/jellyfin/sdk/api/operations/UserLibraryApi;Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun getLatestMedia (Ljava/util/UUID;Ljava/util/UUID;Ljava/util/Collection;Ljava/util/Collection;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/util/Collection;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getLatestMedia (Lorg/jellyfin/sdk/model/api/request/GetLatestMediaRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun getLatestMedia$default (Lorg/jellyfin/sdk/api/operations/UserLibraryApi;Ljava/util/UUID;Ljava/util/UUID;Ljava/util/Collection;Ljava/util/Collection;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/util/Collection;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun getLocalTrailers (Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getLocalTrailers$default (Lorg/jellyfin/sdk/api/operations/UserLibraryApi;Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun getRootFolder (Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getRootFolder$default (Lorg/jellyfin/sdk/api/operations/UserLibraryApi;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun getSpecialFeatures (Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getSpecialFeatures$default (Lorg/jellyfin/sdk/api/operations/UserLibraryApi;Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun markFavoriteItem (Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun markFavoriteItem$default (Lorg/jellyfin/sdk/api/operations/UserLibraryApi;Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun unmarkFavoriteItem (Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun unmarkFavoriteItem$default (Lorg/jellyfin/sdk/api/operations/UserLibraryApi;Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun updateUserItemRating (Ljava/util/UUID;Ljava/util/UUID;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun updateUserItemRating$default (Lorg/jellyfin/sdk/api/operations/UserLibraryApi;Ljava/util/UUID;Ljava/util/UUID;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
@@ -1295,7 +1268,6 @@ public final class org/jellyfin/sdk/api/operations/UserLibraryApi : org/jellyfin
 public final class org/jellyfin/sdk/api/operations/UserViewsApi : org/jellyfin/sdk/api/operations/Api {
 	public fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;)V
 	public final fun getGroupingOptions (Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getGroupingOptions$default (Lorg/jellyfin/sdk/api/operations/UserViewsApi;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun getUserViews (Ljava/util/UUID;Ljava/lang/Boolean;Ljava/util/Collection;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun getUserViews$default (Lorg/jellyfin/sdk/api/operations/UserViewsApi;Ljava/util/UUID;Ljava/lang/Boolean;Ljava/util/Collection;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }

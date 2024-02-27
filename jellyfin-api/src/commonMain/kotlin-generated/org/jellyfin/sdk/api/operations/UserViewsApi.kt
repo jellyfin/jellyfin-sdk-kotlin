@@ -15,7 +15,6 @@ import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
-import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
@@ -29,8 +28,7 @@ public class UserViewsApi(
 	 *
 	 * @param userId User id.
 	 */
-	public suspend fun getGroupingOptions(userId: UUID = api.userId ?: throw MissingUserIdException()):
-			Response<List<SpecialViewOptionDto>> {
+	public suspend fun getGroupingOptions(userId: UUID): Response<List<SpecialViewOptionDto>> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
@@ -51,7 +49,7 @@ public class UserViewsApi(
 	 * @param includeHidden Whether or not to include hidden content.
 	 */
 	public suspend fun getUserViews(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		includeExternalContent: Boolean? = null,
 		presetViews: Collection<String>? = emptyList(),
 		includeHidden: Boolean? = false,

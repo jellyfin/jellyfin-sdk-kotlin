@@ -18,7 +18,6 @@ import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
-import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.delete
 import org.jellyfin.sdk.api.client.extensions.post
@@ -44,8 +43,7 @@ public class SessionApi(
 	 * @param sessionId The session id.
 	 * @param userId The user id.
 	 */
-	public suspend fun addUserToSession(sessionId: String, userId: UUID = api.userId ?: throw
-			MissingUserIdException()): Response<Unit> {
+	public suspend fun addUserToSession(sessionId: String, userId: UUID): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("sessionId", sessionId)
 			put("userId", userId)
@@ -259,8 +257,7 @@ public class SessionApi(
 	 * @param sessionId The session id.
 	 * @param userId The user id.
 	 */
-	public suspend fun removeUserFromSession(sessionId: String, userId: UUID = api.userId ?: throw
-			MissingUserIdException()): Response<Unit> {
+	public suspend fun removeUserFromSession(sessionId: String, userId: UUID): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("sessionId", sessionId)
 			put("userId", userId)

@@ -14,7 +14,6 @@ import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
-import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.delete
 import org.jellyfin.sdk.api.client.extensions.post
@@ -44,7 +43,7 @@ public class UserApi(
 	 * @param password The password sha1-hash.
 	 */
 	public suspend fun authenticateUser(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		pw: String,
 		password: String? = null,
 	): Response<AuthenticationResult> {
@@ -100,8 +99,7 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun deleteUser(userId: UUID = api.userId ?: throw MissingUserIdException()):
-			Response<Unit> {
+	public suspend fun deleteUser(userId: UUID): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
@@ -160,8 +158,7 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun getUserById(userId: UUID = api.userId ?: throw MissingUserIdException()):
-			Response<UserDto> {
+	public suspend fun getUserById(userId: UUID): Response<UserDto> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
@@ -194,8 +191,7 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUser(userId: UUID = api.userId ?: throw MissingUserIdException(),
-			`data`: UserDto): Response<Unit> {
+	public suspend fun updateUser(userId: UUID, `data`: UserDto): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
@@ -209,8 +205,8 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUserConfiguration(userId: UUID = api.userId ?: throw
-			MissingUserIdException(), `data`: UserConfiguration): Response<Unit> {
+	public suspend fun updateUserConfiguration(userId: UUID, `data`: UserConfiguration):
+			Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
@@ -225,8 +221,8 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUserEasyPassword(userId: UUID = api.userId ?: throw
-			MissingUserIdException(), `data`: UpdateUserEasyPassword): Response<Unit> {
+	public suspend fun updateUserEasyPassword(userId: UUID, `data`: UpdateUserEasyPassword):
+			Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
@@ -241,8 +237,7 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUserPassword(userId: UUID = api.userId ?: throw MissingUserIdException(),
-			`data`: UpdateUserPassword): Response<Unit> {
+	public suspend fun updateUserPassword(userId: UUID, `data`: UpdateUserPassword): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
@@ -256,8 +251,7 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUserPolicy(userId: UUID = api.userId ?: throw MissingUserIdException(),
-			`data`: UserPolicy): Response<Unit> {
+	public suspend fun updateUserPolicy(userId: UUID, `data`: UserPolicy): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}

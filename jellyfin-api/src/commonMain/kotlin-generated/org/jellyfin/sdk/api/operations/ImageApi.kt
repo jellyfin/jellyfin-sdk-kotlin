@@ -20,7 +20,6 @@ import kotlin.collections.emptyMap
 import kotlin.require
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
-import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.delete
 import org.jellyfin.sdk.api.client.extensions.post
@@ -129,7 +128,7 @@ public class ImageApi(
 	 * @param index (Unused) Image index.
 	 */
 	public suspend fun deleteUserImage(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		imageType: ImageType,
 		index: Int? = null,
 	): Response<Unit> {
@@ -154,7 +153,7 @@ public class ImageApi(
 	 * @param index (Unused) Image index.
 	 */
 	public suspend fun deleteUserImageByIndex(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		imageType: ImageType,
 		index: Int,
 	): Response<Unit> {
@@ -4528,7 +4527,7 @@ public class ImageApi(
 	 * @param imageIndex Image index.
 	 */
 	public suspend fun getUserImage(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		imageType: ImageType,
 		tag: String? = null,
 		format: ImageFormat? = null,
@@ -4627,7 +4626,7 @@ public class ImageApi(
 	 * @param imageIndex Image index.
 	 */
 	public fun getUserImageUrl(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		imageType: ImageType,
 		tag: String? = null,
 		format: ImageFormat? = null,
@@ -4696,7 +4695,7 @@ public class ImageApi(
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
 	public suspend fun getUserImageByIndex(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		imageType: ImageType,
 		imageIndex: Int,
 		tag: String? = null,
@@ -4795,7 +4794,7 @@ public class ImageApi(
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 */
 	public fun getUserImageByIndexUrl(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		imageType: ImageType,
 		imageIndex: Int,
 		tag: String? = null,
@@ -4868,7 +4867,7 @@ public class ImageApi(
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getUserImageByIndexDeprecated(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		imageType: ImageType,
 		imageIndex: Int,
 		tag: String? = null,
@@ -4974,7 +4973,7 @@ public class ImageApi(
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getUserImageByIndexDeprecatedUrl(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		imageType: ImageType,
 		imageIndex: Int,
 		tag: String? = null,
@@ -5049,7 +5048,7 @@ public class ImageApi(
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getUserImageDeprecated(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		imageType: ImageType,
 		tag: String? = null,
 		format: ImageFormat? = null,
@@ -5155,7 +5154,7 @@ public class ImageApi(
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getUserImageDeprecatedUrl(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		imageType: ImageType,
 		tag: String? = null,
 		format: ImageFormat? = null,
@@ -5209,7 +5208,7 @@ public class ImageApi(
 	 * @param index (Unused) Image index.
 	 */
 	public suspend fun postUserImage(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		imageType: ImageType,
 		index: Int? = null,
 		`data`: ByteArray,
@@ -5234,7 +5233,7 @@ public class ImageApi(
 	 * @param index (Unused) Image index.
 	 */
 	public suspend fun postUserImageByIndex(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		imageType: ImageType,
 		index: Int,
 		`data`: ByteArray,
