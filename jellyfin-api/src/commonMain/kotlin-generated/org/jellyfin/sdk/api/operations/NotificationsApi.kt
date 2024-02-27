@@ -13,7 +13,6 @@ import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
-import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.api.AdminNotificationDto
@@ -62,8 +61,7 @@ public class NotificationsApi(
 	/**
 	 * Gets a user's notifications.
 	 */
-	public suspend fun getNotifications(userId: String = api.userId?.toString() ?: throw
-			MissingUserIdException()): Response<NotificationResultDto> {
+	public suspend fun getNotifications(userId: String): Response<NotificationResultDto> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
@@ -77,8 +75,7 @@ public class NotificationsApi(
 	/**
 	 * Gets a user's notification summary.
 	 */
-	public suspend fun getNotificationsSummary(userId: String = api.userId?.toString() ?: throw
-			MissingUserIdException()): Response<NotificationsSummaryDto> {
+	public suspend fun getNotificationsSummary(userId: String): Response<NotificationsSummaryDto> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
@@ -92,8 +89,7 @@ public class NotificationsApi(
 	/**
 	 * Sets notifications as read.
 	 */
-	public suspend fun setRead(userId: String = api.userId?.toString() ?: throw
-			MissingUserIdException()): Response<Unit> {
+	public suspend fun setRead(userId: String): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
@@ -107,8 +103,7 @@ public class NotificationsApi(
 	/**
 	 * Sets notifications as unread.
 	 */
-	public suspend fun setUnread(userId: String = api.userId?.toString() ?: throw
-			MissingUserIdException()): Response<Unit> {
+	public suspend fun setUnread(userId: String): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}

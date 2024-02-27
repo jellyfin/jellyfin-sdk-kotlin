@@ -16,7 +16,6 @@ import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
-import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.DateTime
 import org.jellyfin.sdk.model.UUID
@@ -569,7 +568,7 @@ public class ItemsApi(
 	 * @param enableImages Optional, include image information in output.
 	 */
 	public suspend fun getItemsByUserId(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		maxOfficialRating: String? = null,
 		hasThemeSong: Boolean? = null,
 		hasThemeVideo: Boolean? = null,
@@ -870,7 +869,7 @@ public class ItemsApi(
 	 * @param excludeActiveSessions Optional. Whether to exclude the currently active sessions.
 	 */
 	public suspend fun getResumeItems(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		startIndex: Int? = null,
 		limit: Int? = null,
 		searchTerm: String? = null,

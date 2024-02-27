@@ -11,7 +11,6 @@ import kotlin.Unit
 import kotlin.collections.buildMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
-import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
@@ -29,7 +28,7 @@ public class DisplayPreferencesApi(
 	 */
 	public suspend fun getDisplayPreferences(
 		displayPreferencesId: String,
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		client: String,
 	): Response<DisplayPreferencesDto> {
 		val pathParameters = buildMap<String, Any?>(1) {
@@ -54,7 +53,7 @@ public class DisplayPreferencesApi(
 	 */
 	public suspend fun updateDisplayPreferences(
 		displayPreferencesId: String,
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		client: String,
 		`data`: DisplayPreferencesDto,
 	): Response<Unit> {

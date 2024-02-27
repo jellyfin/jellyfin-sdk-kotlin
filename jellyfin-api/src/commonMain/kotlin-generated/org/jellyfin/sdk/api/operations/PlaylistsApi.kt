@@ -17,7 +17,6 @@ import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
-import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.delete
 import org.jellyfin.sdk.api.client.extensions.post
@@ -117,7 +116,7 @@ public class PlaylistsApi(
 	 */
 	public suspend fun getPlaylistItems(
 		playlistId: UUID,
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		startIndex: Int? = null,
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),

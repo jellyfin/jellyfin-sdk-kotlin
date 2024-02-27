@@ -15,7 +15,6 @@ import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
-import org.jellyfin.sdk.api.client.exception.MissingUserIdException
 import org.jellyfin.sdk.api.client.extensions.delete
 import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.DateTime
@@ -41,7 +40,7 @@ public class PlayStateApi(
 	 * @param datePlayed Optional. The date the item was played.
 	 */
 	public suspend fun markPlayedItem(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		itemId: UUID,
 		datePlayed: DateTime? = null,
 	): Response<UserItemDataDto> {
@@ -64,8 +63,7 @@ public class PlayStateApi(
 	 * @param userId User id.
 	 * @param itemId Item id.
 	 */
-	public suspend fun markUnplayedItem(userId: UUID = api.userId ?: throw MissingUserIdException(),
-			itemId: UUID): Response<UserItemDataDto> {
+	public suspend fun markUnplayedItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("userId", userId)
 			put("itemId", itemId)
@@ -95,7 +93,7 @@ public class PlayStateApi(
 	 * @param isMuted Indicates if the player is muted.
 	 */
 	public suspend fun onPlaybackProgress(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		itemId: UUID,
 		mediaSourceId: String? = null,
 		positionTicks: Long? = null,
@@ -168,7 +166,7 @@ public class PlayStateApi(
 	 * @param canSeek Indicates if the client can seek.
 	 */
 	public suspend fun onPlaybackStart(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		itemId: UUID,
 		mediaSourceId: String? = null,
 		audioStreamIndex: Int? = null,
@@ -228,7 +226,7 @@ public class PlayStateApi(
 	 * @param playSessionId The play session id.
 	 */
 	public suspend fun onPlaybackStopped(
-		userId: UUID = api.userId ?: throw MissingUserIdException(),
+		userId: UUID,
 		itemId: UUID,
 		mediaSourceId: String? = null,
 		nextMediaType: String? = null,
