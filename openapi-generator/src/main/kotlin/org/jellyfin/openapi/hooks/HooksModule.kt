@@ -4,7 +4,6 @@ import org.jellyfin.openapi.hooks.api.BinaryOperationUrlHook
 import org.jellyfin.openapi.hooks.api.ClientLogOperationUrlHook
 import org.jellyfin.openapi.hooks.api.LargeOperationRequestModelHook
 import org.jellyfin.openapi.hooks.api.PlayStateServiceNameHook
-import org.jellyfin.openapi.hooks.model.DefaultUserIdHook
 import org.jellyfin.openapi.hooks.model.DotNetDescriptionHook
 import org.jellyfin.openapi.hooks.model.ImageMapsHook
 import org.jellyfin.openapi.hooks.model.SwashbuckleDescriptionHook
@@ -20,8 +19,6 @@ val hooksModule = module {
 	single { LargeOperationRequestModelHook() } bind OperationRequestModelHook::class
 
 	single { PlayStateServiceNameHook() } bind ServiceNameHook::class
-
-	single { DefaultUserIdHook() } bind DefaultValueHook::class
 
 	single { DotNetDescriptionHook() } bind DescriptionHook::class
 	single { SwashbuckleDescriptionHook() } bind DescriptionHook::class
