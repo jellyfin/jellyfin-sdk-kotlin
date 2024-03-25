@@ -22,8 +22,12 @@ public data class TranscodingProfile(
 	public val videoCodec: String,
 	@SerialName("AudioCodec")
 	public val audioCodec: String,
+	/**
+	 * Media streaming protocol.
+	 * Lowercase for backwards compatibility.
+	 */
 	@SerialName("Protocol")
-	public val protocol: String,
+	public val protocol: MediaStreamProtocol,
 	@SerialName("EstimateContentLength")
 	public val estimateContentLength: Boolean = false,
 	@SerialName("EnableMpegtsM2TsMode")

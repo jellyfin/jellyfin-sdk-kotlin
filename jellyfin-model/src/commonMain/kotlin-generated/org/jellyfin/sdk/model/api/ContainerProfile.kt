@@ -15,7 +15,7 @@ public data class ContainerProfile(
 	@SerialName("Type")
 	public val type: DlnaProfileType,
 	@SerialName("Conditions")
-	public val conditions: List<ProfileCondition>? = null,
+	public val conditions: List<ProfileCondition>,
 	@SerialName("Container")
 	public val container: String,
 )

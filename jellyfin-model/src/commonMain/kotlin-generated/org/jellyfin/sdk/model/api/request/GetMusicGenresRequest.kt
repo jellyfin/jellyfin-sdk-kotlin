@@ -18,6 +18,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
+import org.jellyfin.sdk.model.api.ItemSortBy
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
@@ -103,7 +104,7 @@ public data class GetMusicGenresRequest(
 	 * Optional. Specify one or more sort orders, comma delimited.
 	 */
 	@SerialName("sortBy")
-	public val sortBy: Collection<String>? = null,
+	public val sortBy: Collection<ItemSortBy>? = null,
 	/**
 	 * Sort Order - Ascending,Descending.
 	 */

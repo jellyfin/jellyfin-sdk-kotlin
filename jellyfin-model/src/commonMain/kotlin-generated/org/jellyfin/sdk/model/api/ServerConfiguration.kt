@@ -128,6 +128,12 @@ public data class ServerConfiguration(
 	@SerialName("MaxAudiobookResume")
 	public val maxAudiobookResume: Int,
 	/**
+	 * Gets or sets the threshold in minutes after a inactive session gets closed automatically.
+	 * If set to 0 the check for inactive sessions gets disabled.
+	 */
+	@SerialName("InactiveSessionThreshold")
+	public val inactiveSessionThreshold: Int,
+	/**
 	 * Gets or sets the delay in seconds that we will wait after a file system change to try and
 	 * discover what has been added/removed
 	 * Some delay is necessary with some items because their creation is not atomic.  It involves the
@@ -136,6 +142,12 @@ public data class ServerConfiguration(
 	 */
 	@SerialName("LibraryMonitorDelay")
 	public val libraryMonitorDelay: Int,
+	/**
+	 * The duration in seconds that we will wait after a library updated event before executing the
+	 * library changed notification.
+	 */
+	@SerialName("LibraryUpdateDuration")
+	public val libraryUpdateDuration: Int,
 	/**
 	 * The image saving convention.
 	 */
@@ -211,4 +223,29 @@ public data class ServerConfiguration(
 	 */
 	@SerialName("AllowClientLogUpload")
 	public val allowClientLogUpload: Boolean,
+	/**
+	 * The dummy chapter duration in seconds, use 0 (zero) or less to disable generation alltogether.
+	 */
+	@SerialName("DummyChapterDuration")
+	public val dummyChapterDuration: Int,
+	/**
+	 * The chapter image resolution.
+	 */
+	@SerialName("ChapterImageResolution")
+	public val chapterImageResolution: ImageResolution,
+	/**
+	 * The limit for parallel image encoding.
+	 */
+	@SerialName("ParallelImageEncodingLimit")
+	public val parallelImageEncodingLimit: Int,
+	/**
+	 * The list of cast receiver applications.
+	 */
+	@SerialName("CastReceiverApplications")
+	public val castReceiverApplications: List<CastReceiverApplication>,
+	/**
+	 * The trickplay options.
+	 */
+	@SerialName("TrickplayOptions")
+	public val trickplayOptions: TrickplayOptions,
 )

@@ -28,7 +28,7 @@ public data class GetLatestMediaRequest(
 	 * User id.
 	 */
 	@SerialName("userId")
-	public val userId: UUID,
+	public val userId: UUID? = null,
 	/**
 	 * Specify this to localize the search to a specific item or folder. Omit to use the root.
 	 */

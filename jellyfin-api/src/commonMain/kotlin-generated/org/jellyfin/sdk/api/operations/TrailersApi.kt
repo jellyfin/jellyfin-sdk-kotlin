@@ -24,7 +24,9 @@ import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.ItemFilter
+import org.jellyfin.sdk.model.api.ItemSortBy
 import org.jellyfin.sdk.model.api.LocationType
+import org.jellyfin.sdk.model.api.MediaType
 import org.jellyfin.sdk.model.api.SeriesStatus
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.api.VideoType
@@ -36,7 +38,8 @@ public class TrailersApi(
 	/**
 	 * Finds movies and trailers similar to a given trailer.
 	 *
-	 * @param userId The user id.
+	 * @param userId The user id supplied as query parameter; this is required when not using an API
+	 * key.
 	 * @param maxOfficialRating Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
 	 * @param hasThemeSong Optional filter by items with theme songs.
 	 * @param hasThemeVideo Optional filter by items with theme videos.
@@ -62,9 +65,9 @@ public class TrailersApi(
 	 * Format = ISO.
 	 * @param maxPremiereDate Optional. The maximum premiere date. Format = ISO.
 	 * @param hasOverview Optional filter by items that have an overview or not.
-	 * @param hasImdbId Optional filter by items that have an imdb id or not.
-	 * @param hasTmdbId Optional filter by items that have a tmdb id or not.
-	 * @param hasTvdbId Optional filter by items that have a tvdb id or not.
+	 * @param hasImdbId Optional filter by items that have an IMDb id or not.
+	 * @param hasTmdbId Optional filter by items that have a TMDb id or not.
+	 * @param hasTvdbId Optional filter by items that have a TVDb id or not.
 	 * @param isMovie Optional filter for live tv movies.
 	 * @param isSeries Optional filter for live tv series.
 	 * @param isNews Optional filter for live tv news.
@@ -78,7 +81,7 @@ public class TrailersApi(
 	 * @param recursive When searching within folders, this determines whether or not the search will
 	 * be recursive. true/false.
 	 * @param searchTerm Optional. Filter based on a search term.
-	 * @param sortOrder Sort Order - Ascending,Descending.
+	 * @param sortOrder Sort Order - Ascending, Descending.
 	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use
 	 * the root.
 	 * @param fields Optional. Specify additional fields of information to return in the output. This
@@ -168,7 +171,7 @@ public class TrailersApi(
 		hasSubtitles: Boolean? = null,
 		hasSpecialFeature: Boolean? = null,
 		hasTrailer: Boolean? = null,
-		adjacentTo: String? = null,
+		adjacentTo: UUID? = null,
 		parentIndexNumber: Int? = null,
 		hasParentalRating: Boolean? = null,
 		isHd: Boolean? = null,
@@ -203,9 +206,9 @@ public class TrailersApi(
 		excludeItemTypes: Collection<BaseItemKind>? = emptyList(),
 		filters: Collection<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
-		mediaTypes: Collection<String>? = emptyList(),
+		mediaTypes: Collection<MediaType>? = emptyList(),
 		imageTypes: Collection<ImageType>? = emptyList(),
-		sortBy: Collection<String>? = emptyList(),
+		sortBy: Collection<ItemSortBy>? = emptyList(),
 		isPlayed: Boolean? = null,
 		genres: Collection<String>? = emptyList(),
 		officialRatings: Collection<String>? = emptyList(),

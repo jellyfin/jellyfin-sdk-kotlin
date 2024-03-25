@@ -35,4 +35,6 @@ public data class TunerHostInfo(
 	public val tunerCount: Int,
 	@SerialName("UserAgent")
 	public val userAgent: String? = null,
+	@SerialName("IgnoreDts")
+	public val ignoreDts: Boolean,
 )

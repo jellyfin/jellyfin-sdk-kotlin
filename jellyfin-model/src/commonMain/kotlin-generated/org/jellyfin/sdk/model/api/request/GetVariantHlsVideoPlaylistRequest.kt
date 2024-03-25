@@ -48,11 +48,6 @@ public data class GetVariantHlsVideoPlaylistRequest(
 	@SerialName("tag")
 	public val tag: String? = null,
 	/**
-	 * Optional. The dlna device profile id to utilize.
-	 */
-	@SerialName("deviceProfileId")
-	public val deviceProfileId: String? = null,
-	/**
 	 * The play session id.
 	 */
 	@SerialName("playSessionId")

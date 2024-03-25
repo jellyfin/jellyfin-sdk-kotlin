@@ -36,7 +36,7 @@ public data class GetProgramsDto(
 	 * Optional. Filter by user id.
 	 */
 	@SerialName("UserId")
-	public val userId: UUID,
+	public val userId: UUID? = null,
 	/**
 	 * Gets or sets the minimum premiere start date.
 	 * Optional.
@@ -121,7 +121,7 @@ public data class GetProgramsDto(
 	 * Optional.
 	 */
 	@SerialName("SortBy")
-	public val sortBy: List<String>,
+	public val sortBy: List<ItemSortBy>,
 	/**
 	 * Sort Order - Ascending,Descending.
 	 */

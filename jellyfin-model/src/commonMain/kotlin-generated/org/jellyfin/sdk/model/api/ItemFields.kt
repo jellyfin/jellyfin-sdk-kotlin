@@ -27,6 +27,8 @@ public enum class ItemFields(
 	CHANNEL_INFO("ChannelInfo"),
 	@SerialName("Chapters")
 	CHAPTERS("Chapters"),
+	@SerialName("Trickplay")
+	TRICKPLAY("Trickplay"),
 	@SerialName("ChildCount")
 	CHILD_COUNT("ChildCount"),
 	@SerialName("CumulativeRunTimeTicks")
@@ -87,10 +89,6 @@ public enum class ItemFields(
 	SPECIAL_EPISODE_NUMBERS("SpecialEpisodeNumbers"),
 	@SerialName("Studios")
 	STUDIOS("Studios"),
-	@SerialName("BasicSyncInfo")
-	BASIC_SYNC_INFO("BasicSyncInfo"),
-	@SerialName("SyncInfo")
-	SYNC_INFO("SyncInfo"),
 	@SerialName("Taglines")
 	TAGLINES("Taglines"),
 	@SerialName("Tags")
@@ -156,6 +154,7 @@ public enum class ItemFields(
 			"CanDownload" -> CAN_DOWNLOAD
 			"ChannelInfo" -> CHANNEL_INFO
 			"Chapters" -> CHAPTERS
+			"Trickplay" -> TRICKPLAY
 			"ChildCount" -> CHILD_COUNT
 			"CumulativeRunTimeTicks" -> CUMULATIVE_RUN_TIME_TICKS
 			"CustomRating" -> CUSTOM_RATING
@@ -186,8 +185,6 @@ public enum class ItemFields(
 			"SortName" -> SORT_NAME
 			"SpecialEpisodeNumbers" -> SPECIAL_EPISODE_NUMBERS
 			"Studios" -> STUDIOS
-			"BasicSyncInfo" -> BASIC_SYNC_INFO
-			"SyncInfo" -> SYNC_INFO
 			"Taglines" -> TAGLINES
 			"Tags" -> TAGS
 			"RemoteTrailers" -> REMOTE_TRAILERS

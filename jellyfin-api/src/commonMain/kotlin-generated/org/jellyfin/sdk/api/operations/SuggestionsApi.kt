@@ -12,12 +12,14 @@ import kotlin.String
 import kotlin.collections.Collection
 import kotlin.collections.buildMap
 import kotlin.collections.emptyList
+import kotlin.collections.emptyMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.BaseItemKind
+import org.jellyfin.sdk.model.api.MediaType
 import org.jellyfin.sdk.model.api.request.GetSuggestionsRequest
 
 public class SuggestionsApi(
@@ -34,17 +36,16 @@ public class SuggestionsApi(
 	 * @param enableTotalRecordCount Whether to enable the total record count.
 	 */
 	public suspend fun getSuggestions(
-		userId: UUID,
-		mediaType: Collection<String>? = emptyList(),
+		userId: UUID? = null,
+		mediaType: Collection<MediaType>? = emptyList(),
 		type: Collection<BaseItemKind>? = emptyList(),
 		startIndex: Int? = null,
 		limit: Int? = null,
 		enableTotalRecordCount: Boolean? = false,
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = buildMap<String, Any?>(1) {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = buildMap<String, Any?>(6) {
 			put("userId", userId)
-		}
-		val queryParameters = buildMap<String, Any?>(5) {
 			put("mediaType", mediaType)
 			put("type", type)
 			put("startIndex", startIndex)
@@ -52,7 +53,7 @@ public class SuggestionsApi(
 			put("enableTotalRecordCount", enableTotalRecordCount)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Users/{userId}/Suggestions", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Items/Suggestions", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -62,8 +63,8 @@ public class SuggestionsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getSuggestions(request: GetSuggestionsRequest): Response<BaseItemDtoQueryResult>
-			= getSuggestions(
+	public suspend fun getSuggestions(request: GetSuggestionsRequest = GetSuggestionsRequest()):
+			Response<BaseItemDtoQueryResult> = getSuggestions(
 		userId = request.userId,
 		mediaType = request.mediaType,
 		type = request.type,

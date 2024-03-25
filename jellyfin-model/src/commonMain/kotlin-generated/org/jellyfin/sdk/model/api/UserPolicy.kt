@@ -30,6 +30,21 @@ public data class UserPolicy(
 	@SerialName("IsHidden")
 	public val isHidden: Boolean,
 	/**
+	 * A value indicating whether this instance can manage collections.
+	 */
+	@SerialName("EnableCollectionManagement")
+	public val enableCollectionManagement: Boolean = false,
+	/**
+	 * A value indicating whether this instance can manage subtitles.
+	 */
+	@SerialName("EnableSubtitleManagement")
+	public val enableSubtitleManagement: Boolean = false,
+	/**
+	 * A value indicating whether this user can manage lyrics.
+	 */
+	@SerialName("EnableLyricManagement")
+	public val enableLyricManagement: Boolean = false,
+	/**
 	 * A value indicating whether this instance is disabled.
 	 */
 	@SerialName("IsDisabled")
@@ -41,6 +56,8 @@ public data class UserPolicy(
 	public val maxParentalRating: Int? = null,
 	@SerialName("BlockedTags")
 	public val blockedTags: List<String>? = null,
+	@SerialName("AllowedTags")
+	public val allowedTags: List<String>? = null,
 	@SerialName("EnableUserPreferenceAccess")
 	public val enableUserPreferenceAccess: Boolean,
 	@SerialName("AccessSchedules")
@@ -107,11 +124,11 @@ public data class UserPolicy(
 	@SerialName("RemoteClientBitrateLimit")
 	public val remoteClientBitrateLimit: Int,
 	@SerialName("AuthenticationProviderId")
-	public val authenticationProviderId: String? = null,
+	public val authenticationProviderId: String,
 	@SerialName("PasswordResetProviderId")
-	public val passwordResetProviderId: String? = null,
+	public val passwordResetProviderId: String,
 	/**
-	 * A value indicating what SyncPlay features the user can access.
+	 * Enum SyncPlayUserAccessType.
 	 */
 	@SerialName("SyncPlayAccess")
 	public val syncPlayAccess: SyncPlayUserAccessType,

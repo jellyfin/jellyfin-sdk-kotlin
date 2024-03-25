@@ -21,6 +21,7 @@ import org.jellyfin.sdk.model.DateTime
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
+import org.jellyfin.sdk.model.api.ItemSortBy
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
@@ -110,7 +111,7 @@ public data class GetLiveTvProgramsRequest(
 	 * Optional. Specify one or more sort orders, comma delimited. Options: Name, StartDate.
 	 */
 	@SerialName("sortBy")
-	public val sortBy: Collection<String>? = null,
+	public val sortBy: Collection<ItemSortBy>? = null,
 	/**
 	 * Sort Order - Ascending,Descending.
 	 */

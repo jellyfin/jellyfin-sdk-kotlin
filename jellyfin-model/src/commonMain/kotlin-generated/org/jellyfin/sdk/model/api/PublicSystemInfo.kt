@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Boolean
+import kotlin.Deprecated
 import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -35,6 +36,7 @@ public data class PublicSystemInfo(
 	/**
 	 * The operating system.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("OperatingSystem")
 	public val operatingSystem: String? = null,
 	/**

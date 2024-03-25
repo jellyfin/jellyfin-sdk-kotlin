@@ -18,8 +18,9 @@ import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemKind
+import org.jellyfin.sdk.model.api.MediaType
 import org.jellyfin.sdk.model.api.SearchHintResult
-import org.jellyfin.sdk.model.api.request.GetRequest
+import org.jellyfin.sdk.model.api.request.GetSearchHintsRequest
 
 public class SearchApi(
 	private val api: ApiClient,
@@ -34,11 +35,11 @@ public class SearchApi(
 	 * all.
 	 * @param searchTerm The search term to filter on.
 	 * @param includeItemTypes If specified, only results with the specified item types are returned.
-	 * This allows multiple, comma delimeted.
+	 * This allows multiple, comma delimited.
 	 * @param excludeItemTypes If specified, results with these item types are filtered out. This
-	 * allows multiple, comma delimeted.
+	 * allows multiple, comma delimited.
 	 * @param mediaTypes If specified, only results with the specified media types are returned. This
-	 * allows multiple, comma delimeted.
+	 * allows multiple, comma delimited.
 	 * @param parentId If specified, only children of the parent are returned.
 	 * @param isMovie Optional filter for movies.
 	 * @param isSeries Optional filter for series.
@@ -51,14 +52,14 @@ public class SearchApi(
 	 * @param includeStudios Optional filter whether to include studios.
 	 * @param includeArtists Optional filter whether to include artists.
 	 */
-	public suspend fun `get`(
+	public suspend fun getSearchHints(
 		startIndex: Int? = null,
 		limit: Int? = null,
 		userId: UUID? = null,
 		searchTerm: String,
 		includeItemTypes: Collection<BaseItemKind>? = emptyList(),
 		excludeItemTypes: Collection<BaseItemKind>? = emptyList(),
-		mediaTypes: Collection<String>? = emptyList(),
+		mediaTypes: Collection<MediaType>? = emptyList(),
 		parentId: UUID? = null,
 		isMovie: Boolean? = null,
 		isSeries: Boolean? = null,
@@ -102,7 +103,8 @@ public class SearchApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun `get`(request: GetRequest): Response<SearchHintResult> = `get`(
+	public suspend fun getSearchHints(request: GetSearchHintsRequest): Response<SearchHintResult> =
+			getSearchHints(
 		startIndex = request.startIndex,
 		limit = request.limit,
 		userId = request.userId,

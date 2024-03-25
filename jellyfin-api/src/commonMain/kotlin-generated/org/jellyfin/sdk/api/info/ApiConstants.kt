@@ -8,5 +8,5 @@ package org.jellyfin.sdk.api.info
 import kotlin.String
 
 public object ApiConstants {
-	public const val apiVersion: String = "10.8.13"
+	public const val apiVersion: String = "10.9.0"
 }

@@ -9,7 +9,6 @@ package org.jellyfin.sdk.model.api.request
 
 import kotlin.Boolean
 import kotlin.Int
-import kotlin.String
 import kotlin.collections.Collection
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -18,6 +17,8 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
+import org.jellyfin.sdk.model.api.ItemSortBy
+import org.jellyfin.sdk.model.api.MediaType
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
@@ -67,14 +68,14 @@ public data class GetYearsRequest(
 	 * Optional. Filter by MediaType. Allows multiple, comma delimited.
 	 */
 	@SerialName("mediaTypes")
-	public val mediaTypes: Collection<String>? = null,
+	public val mediaTypes: Collection<MediaType>? = null,
 	/**
 	 * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist,
 	 * Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate,
 	 * ProductionYear, SortName, Random, Revenue, Runtime.
 	 */
 	@SerialName("sortBy")
-	public val sortBy: Collection<String>? = null,
+	public val sortBy: Collection<ItemSortBy>? = null,
 	/**
 	 * Optional. Include user data.
 	 */

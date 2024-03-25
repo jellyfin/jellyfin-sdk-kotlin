@@ -16,6 +16,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.UUID
+import org.jellyfin.sdk.model.api.MediaStreamProtocol
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
@@ -88,7 +89,7 @@ public data class GetUniversalAudioStreamRequest(
 	 * Optional. The transcoding protocol.
 	 */
 	@SerialName("transcodingProtocol")
-	public val transcodingProtocol: String? = null,
+	public val transcodingProtocol: MediaStreamProtocol? = null,
 	/**
 	 * Optional. The maximum audio sample rate.
 	 */

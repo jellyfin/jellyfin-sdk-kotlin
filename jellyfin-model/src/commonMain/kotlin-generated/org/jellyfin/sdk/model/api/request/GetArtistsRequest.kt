@@ -20,6 +20,8 @@ import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.ItemFilter
+import org.jellyfin.sdk.model.api.ItemSortBy
+import org.jellyfin.sdk.model.api.MediaType
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
@@ -85,7 +87,7 @@ public data class GetArtistsRequest(
 	 * Optional filter by MediaType. Allows multiple, comma delimited.
 	 */
 	@SerialName("mediaTypes")
-	public val mediaTypes: Collection<String>? = null,
+	public val mediaTypes: Collection<MediaType>? = null,
 	/**
 	 * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe
 	 * delimited.
@@ -185,7 +187,7 @@ public data class GetArtistsRequest(
 	 * Optional. Specify one or more sort orders, comma delimited.
 	 */
 	@SerialName("sortBy")
-	public val sortBy: Collection<String>? = null,
+	public val sortBy: Collection<ItemSortBy>? = null,
 	/**
 	 * Sort Order - Ascending,Descending.
 	 */

@@ -94,8 +94,12 @@ public data class MediaSourceInfo(
 	public val requiredHttpHeaders: Map<String, String?>? = null,
 	@SerialName("TranscodingUrl")
 	public val transcodingUrl: String? = null,
+	/**
+	 * Media streaming protocol.
+	 * Lowercase for backwards compatibility.
+	 */
 	@SerialName("TranscodingSubProtocol")
-	public val transcodingSubProtocol: String? = null,
+	public val transcodingSubProtocol: MediaStreamProtocol,
 	@SerialName("TranscodingContainer")
 	public val transcodingContainer: String? = null,
 	@SerialName("AnalyzeDurationMs")

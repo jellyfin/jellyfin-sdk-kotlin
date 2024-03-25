@@ -41,6 +41,8 @@ public enum class ExternalIdMediaType(
 	SERIES("Series"),
 	@SerialName("Track")
 	TRACK("Track"),
+	@SerialName("Book")
+	BOOK("Book"),
 	;
 
 	/**
@@ -65,6 +67,7 @@ public enum class ExternalIdMediaType(
 			"Season" -> SEASON
 			"Series" -> SERIES
 			"Track" -> TRACK
+			"Book" -> BOOK
 			else -> null
 		}
 

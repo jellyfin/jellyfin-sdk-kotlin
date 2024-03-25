@@ -26,7 +26,6 @@ import org.jellyfin.sdk.model.api.ForgotPasswordPinDto
 import org.jellyfin.sdk.model.api.ForgotPasswordResult
 import org.jellyfin.sdk.model.api.PinRedeemResult
 import org.jellyfin.sdk.model.api.QuickConnectDto
-import org.jellyfin.sdk.model.api.UpdateUserEasyPassword
 import org.jellyfin.sdk.model.api.UpdateUserPassword
 import org.jellyfin.sdk.model.api.UserConfiguration
 import org.jellyfin.sdk.model.api.UserDto
@@ -35,31 +34,6 @@ import org.jellyfin.sdk.model.api.UserPolicy
 public class UserApi(
 	private val api: ApiClient,
 ) : Api {
-	/**
-	 * Authenticates a user.
-	 *
-	 * @param userId The user id.
-	 * @param pw The password as plain text.
-	 * @param password The password sha1-hash.
-	 */
-	public suspend fun authenticateUser(
-		userId: UUID,
-		pw: String,
-		password: String? = null,
-	): Response<AuthenticationResult> {
-		val pathParameters = buildMap<String, Any?>(1) {
-			put("userId", userId)
-		}
-		val queryParameters = buildMap<String, Any?>(2) {
-			put("pw", pw)
-			put("password", password)
-		}
-		val data = null
-		val response = api.post<AuthenticationResult>("/Users/{userId}/Authenticate", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
 	/**
 	 * Authenticates a user by name.
 	 */
@@ -191,12 +165,12 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUser(userId: UUID, `data`: UserDto): Response<Unit> {
-		val pathParameters = buildMap<String, Any?>(1) {
+	public suspend fun updateUser(userId: UUID? = null, `data`: UserDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Users/{userId}", pathParameters, queryParameters, data)
+		val response = api.post<Unit>("/Users", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -205,30 +179,13 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUserConfiguration(userId: UUID, `data`: UserConfiguration):
+	public suspend fun updateUserConfiguration(userId: UUID? = null, `data`: UserConfiguration):
 			Response<Unit> {
-		val pathParameters = buildMap<String, Any?>(1) {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Users/{userId}/Configuration", pathParameters, queryParameters,
-				data)
-		return response
-	}
-
-	/**
-	 * Updates a user's easy password.
-	 *
-	 * @param userId The user id.
-	 */
-	public suspend fun updateUserEasyPassword(userId: UUID, `data`: UpdateUserEasyPassword):
-			Response<Unit> {
-		val pathParameters = buildMap<String, Any?>(1) {
-			put("userId", userId)
-		}
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Users/{userId}/EasyPassword", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/Users/Configuration", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -237,12 +194,13 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUserPassword(userId: UUID, `data`: UpdateUserPassword): Response<Unit> {
-		val pathParameters = buildMap<String, Any?>(1) {
+	public suspend fun updateUserPassword(userId: UUID? = null, `data`: UpdateUserPassword):
+			Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Users/{userId}/Password", pathParameters, queryParameters, data)
+		val response = api.post<Unit>("/Users/Password", pathParameters, queryParameters, data)
 		return response
 	}
 

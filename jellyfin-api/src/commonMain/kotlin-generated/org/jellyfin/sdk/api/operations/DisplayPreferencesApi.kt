@@ -28,7 +28,7 @@ public class DisplayPreferencesApi(
 	 */
 	public suspend fun getDisplayPreferences(
 		displayPreferencesId: String,
-		userId: UUID,
+		userId: UUID? = null,
 		client: String,
 	): Response<DisplayPreferencesDto> {
 		val pathParameters = buildMap<String, Any?>(1) {
@@ -53,7 +53,7 @@ public class DisplayPreferencesApi(
 	 */
 	public suspend fun updateDisplayPreferences(
 		displayPreferencesId: String,
-		userId: UUID,
+		userId: UUID? = null,
 		client: String,
 		`data`: DisplayPreferencesDto,
 	): Response<Unit> {

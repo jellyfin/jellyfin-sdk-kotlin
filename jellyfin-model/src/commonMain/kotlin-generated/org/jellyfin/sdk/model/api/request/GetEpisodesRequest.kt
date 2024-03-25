@@ -9,7 +9,6 @@ package org.jellyfin.sdk.model.api.request
 
 import kotlin.Boolean
 import kotlin.Int
-import kotlin.String
 import kotlin.collections.Collection
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -17,6 +16,7 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
+import org.jellyfin.sdk.model.api.ItemSortBy
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
@@ -61,7 +61,7 @@ public data class GetEpisodesRequest(
 	 * Optional. Return items that are siblings of a supplied item.
 	 */
 	@SerialName("adjacentTo")
-	public val adjacentTo: String? = null,
+	public val adjacentTo: UUID? = null,
 	/**
 	 * Optional. Skip through the list until a given item is found.
 	 */
@@ -104,5 +104,5 @@ public data class GetEpisodesRequest(
 	 * ProductionYear, SortName, Random, Revenue, Runtime.
 	 */
 	@SerialName("sortBy")
-	public val sortBy: String? = null,
+	public val sortBy: ItemSortBy? = null,
 )
