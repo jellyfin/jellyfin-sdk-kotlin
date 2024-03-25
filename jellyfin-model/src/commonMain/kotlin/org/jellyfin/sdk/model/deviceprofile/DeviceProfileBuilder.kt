@@ -139,10 +139,6 @@ public class DeviceProfileBuilder(
 		containerProfiles = containerProfiles.toList(),
 		codecProfiles = codecProfiles.toList(),
 		subtitleProfiles = subtitleProfiles.toList(),
-		// DLNA only options that can be ignored
-		supportedMediaTypes = "",
-		xmlRootAttributes = emptyList(),
-		responseProfiles = emptyList(),
 	)
 }
 

@@ -2,6 +2,7 @@ package org.jellyfin.sdk.model.deviceprofile
 
 import org.jellyfin.sdk.model.api.DlnaProfileType
 import org.jellyfin.sdk.model.api.EncodingContext
+import org.jellyfin.sdk.model.api.MediaStreamProtocol
 import org.jellyfin.sdk.model.api.ProfileCondition
 import org.jellyfin.sdk.model.api.TranscodeSeekInfo
 import org.jellyfin.sdk.model.api.TranscodingProfile
@@ -25,7 +26,7 @@ public class TranscodingProfileBuilder {
 	/**
 	 * @see [TranscodingProfile.protocol]
 	 */
-	public var protocol: String = "http"
+	public var protocol: MediaStreamProtocol = MediaStreamProtocol.HTTP
 
 	/**
 	 * @see [TranscodingProfile.container]
