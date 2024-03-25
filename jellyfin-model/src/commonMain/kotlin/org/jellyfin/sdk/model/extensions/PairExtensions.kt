@@ -4,7 +4,6 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.NameGuidPair
 import org.jellyfin.sdk.model.api.NameIdPair
 import org.jellyfin.sdk.model.api.NameValuePair
-import org.jellyfin.sdk.model.api.XmlAttribute
 
 /**
  * Convert a [NameIdPair] to a [Pair] with [NameIdPair.id] as [Pair.first] and [NameIdPair.name] as [Pair.second].
@@ -39,16 +38,3 @@ public fun NameValuePair.toPair(): Pair<String?, String?> = name to value
  * [NameValuePair.value].
  */
 public fun Pair<String?, String?>.toNameValuePair(): NameValuePair = NameValuePair(name = first, value = second)
-
-
-/**
- * Convert a [XmlAttribute] to a [Pair] with [XmlAttribute.name] as [Pair.first] and [XmlAttribute.value] as
- * [Pair.second].
- */
-public fun XmlAttribute.toPair(): Pair<String?, String?> = name to value
-
-/**
- * Convert a [Pair] to a [XmlAttribute] with [Pair.first] as [XmlAttribute.name] and [Pair.second] as
- * [XmlAttribute.value].
- */
-public fun Pair<String?, String?>.toXmlAttribute(): XmlAttribute = XmlAttribute(name = first, value = second)
