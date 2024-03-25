@@ -11,6 +11,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Boolean
+import kotlin.Deprecated
 import kotlin.Double
 import kotlin.String
 import kotlinx.serialization.SerialName
@@ -65,6 +66,7 @@ public data class UserDto(
 	/**
 	 * A value indicating whether this instance has configured easy password.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("HasConfiguredEasyPassword")
 	public val hasConfiguredEasyPassword: Boolean,
 	/**

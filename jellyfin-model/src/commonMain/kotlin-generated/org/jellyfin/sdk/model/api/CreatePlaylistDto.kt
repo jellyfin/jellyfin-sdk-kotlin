@@ -39,5 +39,5 @@ public data class CreatePlaylistDto(
 	 * The media type.
 	 */
 	@SerialName("MediaType")
-	public val mediaType: String? = null,
+	public val mediaType: MediaType? = null,
 )

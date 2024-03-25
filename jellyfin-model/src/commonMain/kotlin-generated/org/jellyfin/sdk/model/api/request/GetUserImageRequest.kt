@@ -7,7 +7,6 @@
 
 package org.jellyfin.sdk.model.api.request
 
-import kotlin.Boolean
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
@@ -16,7 +15,6 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.ImageFormat
-import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
@@ -28,12 +26,7 @@ public data class GetUserImageRequest(
 	 * User id.
 	 */
 	@SerialName("userId")
-	public val userId: UUID,
-	/**
-	 * Image type.
-	 */
-	@SerialName("imageType")
-	public val imageType: ImageType,
+	public val userId: UUID? = null,
 	/**
 	 * Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 */
@@ -89,11 +82,6 @@ public data class GetUserImageRequest(
 	 */
 	@SerialName("fillHeight")
 	public val fillHeight: Int? = null,
-	/**
-	 * Optional. Add a played indicator.
-	 */
-	@SerialName("addPlayedIndicator")
-	public val addPlayedIndicator: Boolean? = null,
 	/**
 	 * Optional. Blur image.
 	 */

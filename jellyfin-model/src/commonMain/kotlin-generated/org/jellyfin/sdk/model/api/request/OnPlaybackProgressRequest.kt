@@ -20,15 +20,10 @@ import org.jellyfin.sdk.model.api.RepeatMode
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Reports a user's playback progress.
+ * Reports a session's playback progress.
  */
 @Serializable
 public data class OnPlaybackProgressRequest(
-	/**
-	 * User id.
-	 */
-	@SerialName("userId")
-	public val userId: UUID,
 	/**
 	 * Item id.
 	 */

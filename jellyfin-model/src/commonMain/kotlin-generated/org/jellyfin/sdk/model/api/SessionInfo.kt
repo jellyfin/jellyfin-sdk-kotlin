@@ -41,7 +41,7 @@ public data class SessionInfo(
 	 * The playable media types.
 	 */
 	@SerialName("PlayableMediaTypes")
-	public val playableMediaTypes: List<String>? = null,
+	public val playableMediaTypes: List<MediaType>? = null,
 	/**
 	 * The id.
 	 */
@@ -72,6 +72,11 @@ public data class SessionInfo(
 	 */
 	@SerialName("LastPlaybackCheckIn")
 	public val lastPlaybackCheckIn: DateTime,
+	/**
+	 * The last paused date.
+	 */
+	@SerialName("LastPausedDate")
+	public val lastPausedDate: DateTime? = null,
 	/**
 	 * The name of the device.
 	 */

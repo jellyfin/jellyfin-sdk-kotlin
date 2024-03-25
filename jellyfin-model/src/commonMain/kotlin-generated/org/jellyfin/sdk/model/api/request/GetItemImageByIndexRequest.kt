@@ -7,7 +7,6 @@
 
 package org.jellyfin.sdk.model.api.request
 
-import kotlin.Boolean
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
@@ -84,11 +83,6 @@ public data class GetItemImageByIndexRequest(
 	 */
 	@SerialName("format")
 	public val format: ImageFormat? = null,
-	/**
-	 * Optional. Add a played indicator.
-	 */
-	@SerialName("addPlayedIndicator")
-	public val addPlayedIndicator: Boolean? = null,
 	/**
 	 * Optional. Percent to render for the percent played overlay.
 	 */

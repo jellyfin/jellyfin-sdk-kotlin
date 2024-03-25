@@ -26,8 +26,8 @@ public data class GetInstantMixFromAlbumRequest(
 	/**
 	 * The item id.
 	 */
-	@SerialName("id")
-	public val id: UUID,
+	@SerialName("itemId")
+	public val itemId: UUID,
 	/**
 	 * Optional. Filter by user id, and attach user data.
 	 */

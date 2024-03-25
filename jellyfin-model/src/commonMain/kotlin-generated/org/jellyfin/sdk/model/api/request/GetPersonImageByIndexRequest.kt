@@ -5,7 +5,6 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api.request
 
-import kotlin.Boolean
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
@@ -89,11 +88,6 @@ public data class GetPersonImageByIndexRequest(
 	 */
 	@SerialName("fillHeight")
 	public val fillHeight: Int? = null,
-	/**
-	 * Optional. Add a played indicator.
-	 */
-	@SerialName("addPlayedIndicator")
-	public val addPlayedIndicator: Boolean? = null,
 	/**
 	 * Optional. Blur image.
 	 */

@@ -23,6 +23,8 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 public data class DeviceInfo(
 	@SerialName("Name")
 	public val name: String? = null,
+	@SerialName("CustomName")
+	public val customName: String? = null,
 	/**
 	 * The access token.
 	 */

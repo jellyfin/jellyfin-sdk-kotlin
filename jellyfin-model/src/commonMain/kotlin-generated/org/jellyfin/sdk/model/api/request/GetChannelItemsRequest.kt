@@ -8,7 +8,6 @@
 package org.jellyfin.sdk.model.api.request
 
 import kotlin.Int
-import kotlin.String
 import kotlin.collections.Collection
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -16,6 +15,7 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.ItemFilter
+import org.jellyfin.sdk.model.api.ItemSortBy
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
@@ -66,7 +66,7 @@ public data class GetChannelItemsRequest(
 	 * ProductionYear, SortName, Random, Revenue, Runtime.
 	 */
 	@SerialName("sortBy")
-	public val sortBy: Collection<String>? = null,
+	public val sortBy: Collection<ItemSortBy>? = null,
 	/**
 	 * Optional. Specify additional fields of information to return in the output.
 	 */

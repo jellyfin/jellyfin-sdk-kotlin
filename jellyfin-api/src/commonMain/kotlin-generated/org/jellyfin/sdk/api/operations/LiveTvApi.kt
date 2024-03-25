@@ -32,6 +32,7 @@ import org.jellyfin.sdk.model.api.GetProgramsDto
 import org.jellyfin.sdk.model.api.GuideInfo
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
+import org.jellyfin.sdk.model.api.ItemSortBy
 import org.jellyfin.sdk.model.api.ListingsProviderInfo
 import org.jellyfin.sdk.model.api.LiveTvInfo
 import org.jellyfin.sdk.model.api.NameIdPair
@@ -431,7 +432,7 @@ public class LiveTvApi(
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 		fields: Collection<ItemFields>? = emptyList(),
 		enableUserData: Boolean? = null,
-		sortBy: Collection<String>? = emptyList(),
+		sortBy: Collection<ItemSortBy>? = emptyList(),
 		sortOrder: SortOrder? = null,
 		enableFavoriteSorting: Boolean? = false,
 		addCurrentProgram: Boolean? = true,
@@ -556,7 +557,7 @@ public class LiveTvApi(
 		isSports: Boolean? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
-		sortBy: Collection<String>? = emptyList(),
+		sortBy: Collection<ItemSortBy>? = emptyList(),
 		sortOrder: Collection<SortOrder>? = emptyList(),
 		genres: Collection<String>? = emptyList(),
 		genreIds: Collection<UUID>? = emptyList(),

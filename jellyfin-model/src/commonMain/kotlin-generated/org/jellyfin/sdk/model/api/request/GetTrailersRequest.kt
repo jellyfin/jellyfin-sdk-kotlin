@@ -24,7 +24,9 @@ import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.ItemFilter
+import org.jellyfin.sdk.model.api.ItemSortBy
 import org.jellyfin.sdk.model.api.LocationType
+import org.jellyfin.sdk.model.api.MediaType
 import org.jellyfin.sdk.model.api.SeriesStatus
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.api.VideoType
@@ -37,7 +39,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class GetTrailersRequest(
 	/**
-	 * The user id.
+	 * The user id supplied as query parameter; this is required when not using an API key.
 	 */
 	@SerialName("userId")
 	public val userId: UUID? = null,
@@ -75,7 +77,7 @@ public data class GetTrailersRequest(
 	 * Optional. Return items that are siblings of a supplied item.
 	 */
 	@SerialName("adjacentTo")
-	public val adjacentTo: String? = null,
+	public val adjacentTo: UUID? = null,
 	/**
 	 * Optional filter by parent index number.
 	 */
@@ -154,17 +156,17 @@ public data class GetTrailersRequest(
 	@SerialName("hasOverview")
 	public val hasOverview: Boolean? = null,
 	/**
-	 * Optional filter by items that have an imdb id or not.
+	 * Optional filter by items that have an IMDb id or not.
 	 */
 	@SerialName("hasImdbId")
 	public val hasImdbId: Boolean? = null,
 	/**
-	 * Optional filter by items that have a tmdb id or not.
+	 * Optional filter by items that have a TMDb id or not.
 	 */
 	@SerialName("hasTmdbId")
 	public val hasTmdbId: Boolean? = null,
 	/**
-	 * Optional filter by items that have a tvdb id or not.
+	 * Optional filter by items that have a TVDb id or not.
 	 */
 	@SerialName("hasTvdbId")
 	public val hasTvdbId: Boolean? = null,
@@ -222,7 +224,7 @@ public data class GetTrailersRequest(
 	@SerialName("searchTerm")
 	public val searchTerm: String? = null,
 	/**
-	 * Sort Order - Ascending,Descending.
+	 * Sort Order - Ascending, Descending.
 	 */
 	@SerialName("sortOrder")
 	public val sortOrder: Collection<SortOrder>? = null,
@@ -260,7 +262,7 @@ public data class GetTrailersRequest(
 	 * Optional filter by MediaType. Allows multiple, comma delimited.
 	 */
 	@SerialName("mediaTypes")
-	public val mediaTypes: Collection<String>? = null,
+	public val mediaTypes: Collection<MediaType>? = null,
 	/**
 	 * Optional. If specified, results will be filtered based on those containing image types. This
 	 * allows multiple, comma delimited.
@@ -273,7 +275,7 @@ public data class GetTrailersRequest(
 	 * ProductionYear, SortName, Random, Revenue, Runtime.
 	 */
 	@SerialName("sortBy")
-	public val sortBy: Collection<String>? = null,
+	public val sortBy: Collection<ItemSortBy>? = null,
 	/**
 	 * Optional filter by items that are played, or not.
 	 */

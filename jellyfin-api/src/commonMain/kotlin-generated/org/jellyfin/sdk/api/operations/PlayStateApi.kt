@@ -35,24 +35,24 @@ public class PlayStateApi(
 	/**
 	 * Marks an item as played for user.
 	 *
-	 * @param userId User id.
 	 * @param itemId Item id.
+	 * @param userId User id.
 	 * @param datePlayed Optional. The date the item was played.
 	 */
 	public suspend fun markPlayedItem(
-		userId: UUID,
 		itemId: UUID,
+		userId: UUID? = null,
 		datePlayed: DateTime? = null,
 	): Response<UserItemDataDto> {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("userId", userId)
+		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
-		val queryParameters = buildMap<String, Any?>(1) {
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("userId", userId)
 			put("datePlayed", datePlayed)
 		}
 		val data = null
-		val response = api.post<UserItemDataDto>("/Users/{userId}/PlayedItems/{itemId}", pathParameters,
+		val response = api.post<UserItemDataDto>("/UserPlayedItems/{itemId}", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -60,25 +60,26 @@ public class PlayStateApi(
 	/**
 	 * Marks an item as unplayed for user.
 	 *
-	 * @param userId User id.
 	 * @param itemId Item id.
+	 * @param userId User id.
 	 */
-	public suspend fun markUnplayedItem(userId: UUID, itemId: UUID): Response<UserItemDataDto> {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("userId", userId)
+	public suspend fun markUnplayedItem(itemId: UUID, userId: UUID? = null):
+			Response<UserItemDataDto> {
+		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
-		val queryParameters = emptyMap<String, Any?>()
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("userId", userId)
+		}
 		val data = null
-		val response = api.delete<UserItemDataDto>("/Users/{userId}/PlayedItems/{itemId}", pathParameters,
+		val response = api.delete<UserItemDataDto>("/UserPlayedItems/{itemId}", pathParameters,
 				queryParameters, data)
 		return response
 	}
 
 	/**
-	 * Reports a user's playback progress.
+	 * Reports a session's playback progress.
 	 *
-	 * @param userId User id.
 	 * @param itemId Item id.
 	 * @param mediaSourceId The id of the MediaSource.
 	 * @param positionTicks Optional. The current position, in ticks. 1 tick = 10000 ms.
@@ -93,7 +94,6 @@ public class PlayStateApi(
 	 * @param isMuted Indicates if the player is muted.
 	 */
 	public suspend fun onPlaybackProgress(
-		userId: UUID,
 		itemId: UUID,
 		mediaSourceId: String? = null,
 		positionTicks: Long? = null,
@@ -107,8 +107,7 @@ public class PlayStateApi(
 		isPaused: Boolean? = false,
 		isMuted: Boolean? = false,
 	): Response<Unit> {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("userId", userId)
+		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
 		val queryParameters = buildMap<String, Any?>(11) {
@@ -125,19 +124,18 @@ public class PlayStateApi(
 			put("isMuted", isMuted)
 		}
 		val data = null
-		val response = api.post<Unit>("/Users/{userId}/PlayingItems/{itemId}/Progress", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/PlayingItems/{itemId}/Progress", pathParameters, queryParameters,
+				data)
 		return response
 	}
 
 	/**
-	 * Reports a user's playback progress.
+	 * Reports a session's playback progress.
 	 *
 	 * @param request The request parameters
 	 */
 	public suspend fun onPlaybackProgress(request: OnPlaybackProgressRequest): Response<Unit> =
 			onPlaybackProgress(
-		userId = request.userId,
 		itemId = request.itemId,
 		mediaSourceId = request.mediaSourceId,
 		positionTicks = request.positionTicks,
@@ -153,9 +151,8 @@ public class PlayStateApi(
 	)
 
 	/**
-	 * Reports that a user has begun playing an item.
+	 * Reports that a session has begun playing an item.
 	 *
-	 * @param userId User id.
 	 * @param itemId Item id.
 	 * @param mediaSourceId The id of the MediaSource.
 	 * @param audioStreamIndex The audio stream index.
@@ -166,7 +163,6 @@ public class PlayStateApi(
 	 * @param canSeek Indicates if the client can seek.
 	 */
 	public suspend fun onPlaybackStart(
-		userId: UUID,
 		itemId: UUID,
 		mediaSourceId: String? = null,
 		audioStreamIndex: Int? = null,
@@ -176,8 +172,7 @@ public class PlayStateApi(
 		playSessionId: String? = null,
 		canSeek: Boolean? = false,
 	): Response<Unit> {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("userId", userId)
+		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
 		val queryParameters = buildMap<String, Any?>(7) {
@@ -190,19 +185,17 @@ public class PlayStateApi(
 			put("canSeek", canSeek)
 		}
 		val data = null
-		val response = api.post<Unit>("/Users/{userId}/PlayingItems/{itemId}", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/PlayingItems/{itemId}", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
-	 * Reports that a user has begun playing an item.
+	 * Reports that a session has begun playing an item.
 	 *
 	 * @param request The request parameters
 	 */
 	public suspend fun onPlaybackStart(request: OnPlaybackStartRequest): Response<Unit> =
 			onPlaybackStart(
-		userId = request.userId,
 		itemId = request.itemId,
 		mediaSourceId = request.mediaSourceId,
 		audioStreamIndex = request.audioStreamIndex,
@@ -214,9 +207,8 @@ public class PlayStateApi(
 	)
 
 	/**
-	 * Reports that a user has stopped playing an item.
+	 * Reports that a session has stopped playing an item.
 	 *
-	 * @param userId User id.
 	 * @param itemId Item id.
 	 * @param mediaSourceId The id of the MediaSource.
 	 * @param nextMediaType The next media type that will play.
@@ -226,7 +218,6 @@ public class PlayStateApi(
 	 * @param playSessionId The play session id.
 	 */
 	public suspend fun onPlaybackStopped(
-		userId: UUID,
 		itemId: UUID,
 		mediaSourceId: String? = null,
 		nextMediaType: String? = null,
@@ -234,8 +225,7 @@ public class PlayStateApi(
 		liveStreamId: String? = null,
 		playSessionId: String? = null,
 	): Response<Unit> {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("userId", userId)
+		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
 		val queryParameters = buildMap<String, Any?>(5) {
@@ -246,19 +236,17 @@ public class PlayStateApi(
 			put("playSessionId", playSessionId)
 		}
 		val data = null
-		val response = api.delete<Unit>("/Users/{userId}/PlayingItems/{itemId}", pathParameters,
-				queryParameters, data)
+		val response = api.delete<Unit>("/PlayingItems/{itemId}", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
-	 * Reports that a user has stopped playing an item.
+	 * Reports that a session has stopped playing an item.
 	 *
 	 * @param request The request parameters
 	 */
 	public suspend fun onPlaybackStopped(request: OnPlaybackStoppedRequest): Response<Unit> =
 			onPlaybackStopped(
-		userId = request.userId,
 		itemId = request.itemId,
 		mediaSourceId = request.mediaSourceId,
 		nextMediaType = request.nextMediaType,

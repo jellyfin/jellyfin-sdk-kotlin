@@ -29,6 +29,8 @@ public enum class HardwareEncodingType(
 	VAAPI("VAAPI"),
 	@SerialName("VideoToolBox")
 	VIDEO_TOOL_BOX("VideoToolBox"),
+	@SerialName("RKMPP")
+	RKMPP("RKMPP"),
 	;
 
 	/**
@@ -47,6 +49,7 @@ public enum class HardwareEncodingType(
 			"V4L2M2M" -> V4L2M2M
 			"VAAPI" -> VAAPI
 			"VideoToolBox" -> VIDEO_TOOL_BOX
+			"RKMPP" -> RKMPP
 			else -> null
 		}
 

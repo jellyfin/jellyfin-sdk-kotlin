@@ -5,7 +5,6 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
-import kotlin.String
 import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -21,7 +20,7 @@ public data class MetadataEditorInfo(
 	@SerialName("ExternalIdInfos")
 	public val externalIdInfos: List<ExternalIdInfo>,
 	@SerialName("ContentType")
-	public val contentType: String? = null,
+	public val contentType: CollectionType? = null,
 	@SerialName("ContentTypeOptions")
 	public val contentTypeOptions: List<NameValuePair>,
 )

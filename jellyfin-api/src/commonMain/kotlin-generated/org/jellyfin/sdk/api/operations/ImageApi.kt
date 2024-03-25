@@ -7,9 +7,7 @@ package org.jellyfin.sdk.api.operations
 
 import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
-import kotlin.Boolean
 import kotlin.ByteArray
-import kotlin.Deprecated
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
@@ -27,34 +25,19 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.ImageFormat
 import org.jellyfin.sdk.model.api.ImageInfo
 import org.jellyfin.sdk.model.api.ImageType
-import org.jellyfin.sdk.model.api.request.GetArtistImageDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetArtistImageRequest
-import org.jellyfin.sdk.model.api.request.GetGenreImageByIndexDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetGenreImageByIndexRequest
-import org.jellyfin.sdk.model.api.request.GetGenreImageDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetGenreImageRequest
-import org.jellyfin.sdk.model.api.request.GetItemImage2DeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetItemImage2Request
-import org.jellyfin.sdk.model.api.request.GetItemImageByIndexDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetItemImageByIndexRequest
-import org.jellyfin.sdk.model.api.request.GetItemImageDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetItemImageRequest
-import org.jellyfin.sdk.model.api.request.GetMusicGenreImageByIndexDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetMusicGenreImageByIndexRequest
-import org.jellyfin.sdk.model.api.request.GetMusicGenreImageDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetMusicGenreImageRequest
-import org.jellyfin.sdk.model.api.request.GetPersonImageByIndexDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetPersonImageByIndexRequest
-import org.jellyfin.sdk.model.api.request.GetPersonImageDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetPersonImageRequest
 import org.jellyfin.sdk.model.api.request.GetSplashscreenRequest
-import org.jellyfin.sdk.model.api.request.GetStudioImageByIndexDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetStudioImageByIndexRequest
-import org.jellyfin.sdk.model.api.request.GetStudioImageDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetStudioImageRequest
-import org.jellyfin.sdk.model.api.request.GetUserImageByIndexDeprecatedRequest
-import org.jellyfin.sdk.model.api.request.GetUserImageByIndexRequest
-import org.jellyfin.sdk.model.api.request.GetUserImageDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetUserImageRequest
 
 public class ImageApi(
@@ -124,48 +107,14 @@ public class ImageApi(
 	 * Delete the user's image.
 	 *
 	 * @param userId User Id.
-	 * @param imageType (Unused) Image type.
-	 * @param index (Unused) Image index.
 	 */
-	public suspend fun deleteUserImage(
-		userId: UUID,
-		imageType: ImageType,
-		index: Int? = null,
-	): Response<Unit> {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("userId", userId)
-			put("imageType", imageType)
-		}
+	public suspend fun deleteUserImage(userId: UUID? = null): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
-			put("index", index)
-		}
-		val data = null
-		val response = api.delete<Unit>("/Users/{userId}/Images/{imageType}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Delete the user's image.
-	 *
-	 * @param userId User Id.
-	 * @param imageType (Unused) Image type.
-	 * @param index (Unused) Image index.
-	 */
-	public suspend fun deleteUserImageByIndex(
-		userId: UUID,
-		imageType: ImageType,
-		index: Int,
-	): Response<Unit> {
-		val pathParameters = buildMap<String, Any?>(3) {
 			put("userId", userId)
-			put("imageType", imageType)
-			put("index", index)
 		}
-		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.delete<Unit>("/Users/{userId}/Images/{imageType}/{index}", pathParameters,
-				queryParameters, data)
+		val response = api.delete<Unit>("/UserImage", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -188,7 +137,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -208,7 +156,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -218,7 +165,7 @@ public class ImageApi(
 			put("imageType", imageType)
 			put("imageIndex", imageIndex)
 		}
-		val queryParameters = buildMap<String, Any?>(15) {
+		val queryParameters = buildMap<String, Any?>(14) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -230,7 +177,6 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -262,7 +208,6 @@ public class ImageApi(
 		quality = request.quality,
 		fillWidth = request.fillWidth,
 		fillHeight = request.fillHeight,
-		addPlayedIndicator = request.addPlayedIndicator,
 		blur = request.blur,
 		backgroundColor = request.backgroundColor,
 		foregroundLayer = request.foregroundLayer,
@@ -287,7 +232,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -307,7 +251,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -317,7 +260,7 @@ public class ImageApi(
 			put("imageType", imageType)
 			put("imageIndex", imageIndex)
 		}
-		val queryParameters = buildMap<String, Any?>(15) {
+		val queryParameters = buildMap<String, Any?>(14) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -329,188 +272,6 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		return api.createUrl("/Artists/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters)
-	}
-
-	/**
-	 * Get artist image by name.
-	 *
-	 * @param name Artist name.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getArtistImageDeprecated(
-		name: String,
-		imageType: ImageType,
-		imageIndex: Int,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("name", name)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(16) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Artists/{name}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get artist image by name.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getArtistImageDeprecated(request: GetArtistImageDeprecatedRequest):
-			Response<ByteReadChannel> = getArtistImageDeprecated(
-		name = request.name,
-		imageType = request.imageType,
-		imageIndex = request.imageIndex,
-		tag = request.tag,
-		format = request.format,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		cropWhitespace = request.cropWhitespace,
-		addPlayedIndicator = request.addPlayedIndicator,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-	)
-
-	/**
-	 * Get artist image by name.
-	 *
-	 * @param name Artist name.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public fun getArtistImageDeprecatedUrl(
-		name: String,
-		imageType: ImageType,
-		imageIndex: Int,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("name", name)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(16) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -537,7 +298,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -557,7 +317,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -567,7 +326,7 @@ public class ImageApi(
 			put("name", name)
 			put("imageType", imageType)
 		}
-		val queryParameters = buildMap<String, Any?>(16) {
+		val queryParameters = buildMap<String, Any?>(15) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -579,7 +338,6 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -611,7 +369,6 @@ public class ImageApi(
 		quality = request.quality,
 		fillWidth = request.fillWidth,
 		fillHeight = request.fillHeight,
-		addPlayedIndicator = request.addPlayedIndicator,
 		blur = request.blur,
 		backgroundColor = request.backgroundColor,
 		foregroundLayer = request.foregroundLayer,
@@ -636,7 +393,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -656,7 +412,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -666,7 +421,7 @@ public class ImageApi(
 			put("name", name)
 			put("imageType", imageType)
 		}
-		val queryParameters = buildMap<String, Any?>(16) {
+		val queryParameters = buildMap<String, Any?>(15) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -678,7 +433,6 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -706,7 +460,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -726,7 +479,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -736,7 +488,7 @@ public class ImageApi(
 			put("imageType", imageType)
 			put("imageIndex", imageIndex)
 		}
-		val queryParameters = buildMap<String, Any?>(15) {
+		val queryParameters = buildMap<String, Any?>(14) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -748,7 +500,6 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -780,7 +531,6 @@ public class ImageApi(
 		quality = request.quality,
 		fillWidth = request.fillWidth,
 		fillHeight = request.fillHeight,
-		addPlayedIndicator = request.addPlayedIndicator,
 		blur = request.blur,
 		backgroundColor = request.backgroundColor,
 		foregroundLayer = request.foregroundLayer,
@@ -805,7 +555,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -825,7 +574,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -835,7 +583,7 @@ public class ImageApi(
 			put("imageType", imageType)
 			put("imageIndex", imageIndex)
 		}
-		val queryParameters = buildMap<String, Any?>(15) {
+		val queryParameters = buildMap<String, Any?>(14) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -847,374 +595,12 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Genres/{name}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters)
-	}
-
-	/**
-	 * Get genre image by name.
-	 *
-	 * @param name Genre name.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getGenreImageByIndexDeprecated(
-		name: String,
-		imageType: ImageType,
-		imageIndex: Int,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("name", name)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(16) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Genres/{name}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get genre image by name.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getGenreImageByIndexDeprecated(request: GetGenreImageByIndexDeprecatedRequest):
-			Response<ByteReadChannel> = getGenreImageByIndexDeprecated(
-		name = request.name,
-		imageType = request.imageType,
-		imageIndex = request.imageIndex,
-		tag = request.tag,
-		format = request.format,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		cropWhitespace = request.cropWhitespace,
-		addPlayedIndicator = request.addPlayedIndicator,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-	)
-
-	/**
-	 * Get genre image by name.
-	 *
-	 * @param name Genre name.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public fun getGenreImageByIndexDeprecatedUrl(
-		name: String,
-		imageType: ImageType,
-		imageIndex: Int,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("name", name)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(16) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		return api.createUrl("/Genres/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters)
-	}
-
-	/**
-	 * Get genre image by name.
-	 *
-	 * @param name Genre name.
-	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param imageIndex Image index.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getGenreImageDeprecated(
-		name: String,
-		imageType: ImageType,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		imageIndex: Int? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("name", name)
-			put("imageType", imageType)
-		}
-		val queryParameters = buildMap<String, Any?>(17) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("imageIndex", imageIndex)
-		}
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Genres/{name}/Images/{imageType}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get genre image by name.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getGenreImageDeprecated(request: GetGenreImageDeprecatedRequest):
-			Response<ByteReadChannel> = getGenreImageDeprecated(
-		name = request.name,
-		imageType = request.imageType,
-		tag = request.tag,
-		format = request.format,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		cropWhitespace = request.cropWhitespace,
-		addPlayedIndicator = request.addPlayedIndicator,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-		imageIndex = request.imageIndex,
-	)
-
-	/**
-	 * Get genre image by name.
-	 *
-	 * @param name Genre name.
-	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param imageIndex Image index.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public fun getGenreImageDeprecatedUrl(
-		name: String,
-		imageType: ImageType,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		imageIndex: Int? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("name", name)
-			put("imageType", imageType)
-		}
-		val queryParameters = buildMap<String, Any?>(17) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("imageIndex", imageIndex)
-		}
-		return api.createUrl("/Genres/{name}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -1233,7 +619,6 @@ public class ImageApi(
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param blur Optional. Blur image.
@@ -1253,7 +638,6 @@ public class ImageApi(
 		fillHeight: Int? = null,
 		tag: String? = null,
 		format: ImageFormat? = null,
-		addPlayedIndicator: Boolean? = null,
 		percentPlayed: Double? = null,
 		unplayedCount: Int? = null,
 		blur: Int? = null,
@@ -1265,7 +649,7 @@ public class ImageApi(
 			put("itemId", itemId)
 			put("imageType", imageType)
 		}
-		val queryParameters = buildMap<String, Any?>(16) {
+		val queryParameters = buildMap<String, Any?>(15) {
 			put("maxWidth", maxWidth)
 			put("maxHeight", maxHeight)
 			put("width", width)
@@ -1275,7 +659,6 @@ public class ImageApi(
 			put("fillHeight", fillHeight)
 			put("tag", tag)
 			put("format", format)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("percentPlayed", percentPlayed)
 			put("unplayedCount", unplayedCount)
 			put("blur", blur)
@@ -1307,7 +690,6 @@ public class ImageApi(
 		fillHeight = request.fillHeight,
 		tag = request.tag,
 		format = request.format,
-		addPlayedIndicator = request.addPlayedIndicator,
 		percentPlayed = request.percentPlayed,
 		unplayedCount = request.unplayedCount,
 		blur = request.blur,
@@ -1332,7 +714,6 @@ public class ImageApi(
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param blur Optional. Blur image.
@@ -1352,7 +733,6 @@ public class ImageApi(
 		fillHeight: Int? = null,
 		tag: String? = null,
 		format: ImageFormat? = null,
-		addPlayedIndicator: Boolean? = null,
 		percentPlayed: Double? = null,
 		unplayedCount: Int? = null,
 		blur: Int? = null,
@@ -1364,7 +744,7 @@ public class ImageApi(
 			put("itemId", itemId)
 			put("imageType", imageType)
 		}
-		val queryParameters = buildMap<String, Any?>(16) {
+		val queryParameters = buildMap<String, Any?>(15) {
 			put("maxWidth", maxWidth)
 			put("maxHeight", maxHeight)
 			put("width", width)
@@ -1374,7 +754,6 @@ public class ImageApi(
 			put("fillHeight", fillHeight)
 			put("tag", tag)
 			put("format", format)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("percentPlayed", percentPlayed)
 			put("unplayedCount", unplayedCount)
 			put("blur", blur)
@@ -1404,7 +783,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -1424,7 +802,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -1440,13 +817,12 @@ public class ImageApi(
 			put("unplayedCount", unplayedCount)
 			put("imageIndex", imageIndex)
 		}
-		val queryParameters = buildMap<String, Any?>(9) {
+		val queryParameters = buildMap<String, Any?>(8) {
 			put("width", width)
 			put("height", height)
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -1479,7 +855,6 @@ public class ImageApi(
 		quality = request.quality,
 		fillWidth = request.fillWidth,
 		fillHeight = request.fillHeight,
-		addPlayedIndicator = request.addPlayedIndicator,
 		blur = request.blur,
 		backgroundColor = request.backgroundColor,
 		foregroundLayer = request.foregroundLayer,
@@ -1504,7 +879,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -1524,7 +898,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -1540,195 +913,12 @@ public class ImageApi(
 			put("unplayedCount", unplayedCount)
 			put("imageIndex", imageIndex)
 		}
-		val queryParameters = buildMap<String, Any?>(9) {
+		val queryParameters = buildMap<String, Any?>(8) {
 			put("width", width)
 			put("height", height)
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
-				pathParameters, queryParameters)
-	}
-
-	/**
-	 * Gets the item's image.
-	 *
-	 * @param itemId Item id.
-	 * @param imageType Image type.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param imageIndex Image index.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getItemImage2Deprecated(
-		itemId: UUID,
-		imageType: ImageType,
-		maxWidth: Int,
-		maxHeight: Int,
-		tag: String,
-		format: ImageFormat,
-		percentPlayed: Double,
-		unplayedCount: Int,
-		imageIndex: Int,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(9) {
-			put("itemId", itemId)
-			put("imageType", imageType)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("tag", tag)
-			put("format", format)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(10) {
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		val data = null
-		val response =
-				api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets the item's image.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getItemImage2Deprecated(request: GetItemImage2DeprecatedRequest):
-			Response<ByteReadChannel> = getItemImage2Deprecated(
-		itemId = request.itemId,
-		imageType = request.imageType,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		tag = request.tag,
-		format = request.format,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		imageIndex = request.imageIndex,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		cropWhitespace = request.cropWhitespace,
-		addPlayedIndicator = request.addPlayedIndicator,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-	)
-
-	/**
-	 * Gets the item's image.
-	 *
-	 * @param itemId Item id.
-	 * @param imageType Image type.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param imageIndex Image index.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public fun getItemImage2DeprecatedUrl(
-		itemId: UUID,
-		imageType: ImageType,
-		maxWidth: Int,
-		maxHeight: Int,
-		tag: String,
-		format: ImageFormat,
-		percentPlayed: Double,
-		unplayedCount: Int,
-		imageIndex: Int,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(9) {
-			put("itemId", itemId)
-			put("imageType", imageType)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("tag", tag)
-			put("format", format)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(10) {
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -1754,7 +944,6 @@ public class ImageApi(
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param blur Optional. Blur image.
@@ -1774,7 +963,6 @@ public class ImageApi(
 		fillHeight: Int? = null,
 		tag: String? = null,
 		format: ImageFormat? = null,
-		addPlayedIndicator: Boolean? = null,
 		percentPlayed: Double? = null,
 		unplayedCount: Int? = null,
 		blur: Int? = null,
@@ -1786,7 +974,7 @@ public class ImageApi(
 			put("imageType", imageType)
 			put("imageIndex", imageIndex)
 		}
-		val queryParameters = buildMap<String, Any?>(15) {
+		val queryParameters = buildMap<String, Any?>(14) {
 			put("maxWidth", maxWidth)
 			put("maxHeight", maxHeight)
 			put("width", width)
@@ -1796,7 +984,6 @@ public class ImageApi(
 			put("fillHeight", fillHeight)
 			put("tag", tag)
 			put("format", format)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("percentPlayed", percentPlayed)
 			put("unplayedCount", unplayedCount)
 			put("blur", blur)
@@ -1828,7 +1015,6 @@ public class ImageApi(
 		fillHeight = request.fillHeight,
 		tag = request.tag,
 		format = request.format,
-		addPlayedIndicator = request.addPlayedIndicator,
 		percentPlayed = request.percentPlayed,
 		unplayedCount = request.unplayedCount,
 		blur = request.blur,
@@ -1853,7 +1039,6 @@ public class ImageApi(
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param blur Optional. Blur image.
@@ -1873,7 +1058,6 @@ public class ImageApi(
 		fillHeight: Int? = null,
 		tag: String? = null,
 		format: ImageFormat? = null,
-		addPlayedIndicator: Boolean? = null,
 		percentPlayed: Double? = null,
 		unplayedCount: Int? = null,
 		blur: Int? = null,
@@ -1885,7 +1069,7 @@ public class ImageApi(
 			put("imageType", imageType)
 			put("imageIndex", imageIndex)
 		}
-		val queryParameters = buildMap<String, Any?>(15) {
+		val queryParameters = buildMap<String, Any?>(14) {
 			put("maxWidth", maxWidth)
 			put("maxHeight", maxHeight)
 			put("width", width)
@@ -1895,7 +1079,6 @@ public class ImageApi(
 			put("fillHeight", fillHeight)
 			put("tag", tag)
 			put("format", format)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("percentPlayed", percentPlayed)
 			put("unplayedCount", unplayedCount)
 			put("blur", blur)
@@ -1904,367 +1087,6 @@ public class ImageApi(
 		}
 		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters)
-	}
-
-	/**
-	 * Gets the item's image.
-	 *
-	 * @param itemId Item id.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getItemImageByIndexDeprecated(
-		itemId: UUID,
-		imageType: ImageType,
-		imageIndex: Int,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		tag: String? = null,
-		cropWhitespace: Boolean? = null,
-		format: ImageFormat? = null,
-		addPlayedIndicator: Boolean? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("itemId", itemId)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(16) {
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("tag", tag)
-			put("cropWhitespace", cropWhitespace)
-			put("format", format)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets the item's image.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getItemImageByIndexDeprecated(request: GetItemImageByIndexDeprecatedRequest):
-			Response<ByteReadChannel> = getItemImageByIndexDeprecated(
-		itemId = request.itemId,
-		imageType = request.imageType,
-		imageIndex = request.imageIndex,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		tag = request.tag,
-		cropWhitespace = request.cropWhitespace,
-		format = request.format,
-		addPlayedIndicator = request.addPlayedIndicator,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-	)
-
-	/**
-	 * Gets the item's image.
-	 *
-	 * @param itemId Item id.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public fun getItemImageByIndexDeprecatedUrl(
-		itemId: UUID,
-		imageType: ImageType,
-		imageIndex: Int,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		tag: String? = null,
-		cropWhitespace: Boolean? = null,
-		format: ImageFormat? = null,
-		addPlayedIndicator: Boolean? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("itemId", itemId)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(16) {
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("tag", tag)
-			put("cropWhitespace", cropWhitespace)
-			put("format", format)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters)
-	}
-
-	/**
-	 * Gets the item's image.
-	 *
-	 * @param itemId Item id.
-	 * @param imageType Image type.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param imageIndex Image index.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getItemImageDeprecated(
-		itemId: UUID,
-		imageType: ImageType,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		tag: String? = null,
-		cropWhitespace: Boolean? = null,
-		format: ImageFormat? = null,
-		addPlayedIndicator: Boolean? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		imageIndex: Int? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("itemId", itemId)
-			put("imageType", imageType)
-		}
-		val queryParameters = buildMap<String, Any?>(17) {
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("tag", tag)
-			put("cropWhitespace", cropWhitespace)
-			put("format", format)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("imageIndex", imageIndex)
-		}
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets the item's image.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getItemImageDeprecated(request: GetItemImageDeprecatedRequest):
-			Response<ByteReadChannel> = getItemImageDeprecated(
-		itemId = request.itemId,
-		imageType = request.imageType,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		tag = request.tag,
-		cropWhitespace = request.cropWhitespace,
-		format = request.format,
-		addPlayedIndicator = request.addPlayedIndicator,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-		imageIndex = request.imageIndex,
-	)
-
-	/**
-	 * Gets the item's image.
-	 *
-	 * @param itemId Item id.
-	 * @param imageType Image type.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param imageIndex Image index.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public fun getItemImageDeprecatedUrl(
-		itemId: UUID,
-		imageType: ImageType,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		tag: String? = null,
-		cropWhitespace: Boolean? = null,
-		format: ImageFormat? = null,
-		addPlayedIndicator: Boolean? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		imageIndex: Int? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("itemId", itemId)
-			put("imageType", imageType)
-		}
-		val queryParameters = buildMap<String, Any?>(17) {
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("tag", tag)
-			put("cropWhitespace", cropWhitespace)
-			put("format", format)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("imageIndex", imageIndex)
-		}
-		return api.createUrl("/Items/{itemId}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -2301,7 +1123,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -2321,7 +1142,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -2331,7 +1151,7 @@ public class ImageApi(
 			put("name", name)
 			put("imageType", imageType)
 		}
-		val queryParameters = buildMap<String, Any?>(16) {
+		val queryParameters = buildMap<String, Any?>(15) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -2343,7 +1163,6 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -2375,7 +1194,6 @@ public class ImageApi(
 		quality = request.quality,
 		fillWidth = request.fillWidth,
 		fillHeight = request.fillHeight,
-		addPlayedIndicator = request.addPlayedIndicator,
 		blur = request.blur,
 		backgroundColor = request.backgroundColor,
 		foregroundLayer = request.foregroundLayer,
@@ -2400,7 +1218,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -2420,7 +1237,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -2430,7 +1246,7 @@ public class ImageApi(
 			put("name", name)
 			put("imageType", imageType)
 		}
-		val queryParameters = buildMap<String, Any?>(16) {
+		val queryParameters = buildMap<String, Any?>(15) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -2442,7 +1258,6 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -2470,7 +1285,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -2490,7 +1304,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -2500,7 +1313,7 @@ public class ImageApi(
 			put("imageType", imageType)
 			put("imageIndex", imageIndex)
 		}
-		val queryParameters = buildMap<String, Any?>(15) {
+		val queryParameters = buildMap<String, Any?>(14) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -2512,7 +1325,6 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -2544,7 +1356,6 @@ public class ImageApi(
 		quality = request.quality,
 		fillWidth = request.fillWidth,
 		fillHeight = request.fillHeight,
-		addPlayedIndicator = request.addPlayedIndicator,
 		blur = request.blur,
 		backgroundColor = request.backgroundColor,
 		foregroundLayer = request.foregroundLayer,
@@ -2569,7 +1380,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -2589,7 +1399,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -2599,7 +1408,7 @@ public class ImageApi(
 			put("imageType", imageType)
 			put("imageIndex", imageIndex)
 		}
-		val queryParameters = buildMap<String, Any?>(15) {
+		val queryParameters = buildMap<String, Any?>(14) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -2611,375 +1420,12 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/MusicGenres/{name}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters)
-	}
-
-	/**
-	 * Get music genre image by name.
-	 *
-	 * @param name Music genre name.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getMusicGenreImageByIndexDeprecated(
-		name: String,
-		imageType: ImageType,
-		imageIndex: Int,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("name", name)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(16) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get music genre image by name.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend
-			fun getMusicGenreImageByIndexDeprecated(request: GetMusicGenreImageByIndexDeprecatedRequest):
-			Response<ByteReadChannel> = getMusicGenreImageByIndexDeprecated(
-		name = request.name,
-		imageType = request.imageType,
-		imageIndex = request.imageIndex,
-		tag = request.tag,
-		format = request.format,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		cropWhitespace = request.cropWhitespace,
-		addPlayedIndicator = request.addPlayedIndicator,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-	)
-
-	/**
-	 * Get music genre image by name.
-	 *
-	 * @param name Music genre name.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public fun getMusicGenreImageByIndexDeprecatedUrl(
-		name: String,
-		imageType: ImageType,
-		imageIndex: Int,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("name", name)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(16) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		return api.createUrl("/MusicGenres/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters)
-	}
-
-	/**
-	 * Get music genre image by name.
-	 *
-	 * @param name Music genre name.
-	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param imageIndex Image index.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getMusicGenreImageDeprecated(
-		name: String,
-		imageType: ImageType,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		imageIndex: Int? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("name", name)
-			put("imageType", imageType)
-		}
-		val queryParameters = buildMap<String, Any?>(17) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("imageIndex", imageIndex)
-		}
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get music genre image by name.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getMusicGenreImageDeprecated(request: GetMusicGenreImageDeprecatedRequest):
-			Response<ByteReadChannel> = getMusicGenreImageDeprecated(
-		name = request.name,
-		imageType = request.imageType,
-		tag = request.tag,
-		format = request.format,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		cropWhitespace = request.cropWhitespace,
-		addPlayedIndicator = request.addPlayedIndicator,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-		imageIndex = request.imageIndex,
-	)
-
-	/**
-	 * Get music genre image by name.
-	 *
-	 * @param name Music genre name.
-	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param imageIndex Image index.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public fun getMusicGenreImageDeprecatedUrl(
-		name: String,
-		imageType: ImageType,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		imageIndex: Int? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("name", name)
-			put("imageType", imageType)
-		}
-		val queryParameters = buildMap<String, Any?>(17) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("imageIndex", imageIndex)
-		}
-		return api.createUrl("/MusicGenres/{name}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -3000,7 +1446,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -3020,7 +1465,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -3030,7 +1474,7 @@ public class ImageApi(
 			put("name", name)
 			put("imageType", imageType)
 		}
-		val queryParameters = buildMap<String, Any?>(16) {
+		val queryParameters = buildMap<String, Any?>(15) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -3042,7 +1486,6 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -3074,7 +1517,6 @@ public class ImageApi(
 		quality = request.quality,
 		fillWidth = request.fillWidth,
 		fillHeight = request.fillHeight,
-		addPlayedIndicator = request.addPlayedIndicator,
 		blur = request.blur,
 		backgroundColor = request.backgroundColor,
 		foregroundLayer = request.foregroundLayer,
@@ -3099,7 +1541,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -3119,7 +1560,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -3129,7 +1569,7 @@ public class ImageApi(
 			put("name", name)
 			put("imageType", imageType)
 		}
-		val queryParameters = buildMap<String, Any?>(16) {
+		val queryParameters = buildMap<String, Any?>(15) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -3141,7 +1581,6 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -3169,7 +1608,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -3189,7 +1627,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -3199,7 +1636,7 @@ public class ImageApi(
 			put("imageType", imageType)
 			put("imageIndex", imageIndex)
 		}
-		val queryParameters = buildMap<String, Any?>(15) {
+		val queryParameters = buildMap<String, Any?>(14) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -3211,7 +1648,6 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -3243,7 +1679,6 @@ public class ImageApi(
 		quality = request.quality,
 		fillWidth = request.fillWidth,
 		fillHeight = request.fillHeight,
-		addPlayedIndicator = request.addPlayedIndicator,
 		blur = request.blur,
 		backgroundColor = request.backgroundColor,
 		foregroundLayer = request.foregroundLayer,
@@ -3268,7 +1703,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -3288,7 +1722,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -3298,7 +1731,7 @@ public class ImageApi(
 			put("imageType", imageType)
 			put("imageIndex", imageIndex)
 		}
-		val queryParameters = buildMap<String, Any?>(15) {
+		val queryParameters = buildMap<String, Any?>(14) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -3310,375 +1743,12 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Persons/{name}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters)
-	}
-
-	/**
-	 * Get person image by name.
-	 *
-	 * @param name Person name.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getPersonImageByIndexDeprecated(
-		name: String,
-		imageType: ImageType,
-		imageIndex: Int,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("name", name)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(16) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Persons/{name}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get person image by name.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend
-			fun getPersonImageByIndexDeprecated(request: GetPersonImageByIndexDeprecatedRequest):
-			Response<ByteReadChannel> = getPersonImageByIndexDeprecated(
-		name = request.name,
-		imageType = request.imageType,
-		imageIndex = request.imageIndex,
-		tag = request.tag,
-		format = request.format,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		cropWhitespace = request.cropWhitespace,
-		addPlayedIndicator = request.addPlayedIndicator,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-	)
-
-	/**
-	 * Get person image by name.
-	 *
-	 * @param name Person name.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public fun getPersonImageByIndexDeprecatedUrl(
-		name: String,
-		imageType: ImageType,
-		imageIndex: Int,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("name", name)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(16) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		return api.createUrl("/Persons/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters)
-	}
-
-	/**
-	 * Get person image by name.
-	 *
-	 * @param name Person name.
-	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param imageIndex Image index.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getPersonImageDeprecated(
-		name: String,
-		imageType: ImageType,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		imageIndex: Int? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("name", name)
-			put("imageType", imageType)
-		}
-		val queryParameters = buildMap<String, Any?>(17) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("imageIndex", imageIndex)
-		}
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Persons/{name}/Images/{imageType}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get person image by name.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getPersonImageDeprecated(request: GetPersonImageDeprecatedRequest):
-			Response<ByteReadChannel> = getPersonImageDeprecated(
-		name = request.name,
-		imageType = request.imageType,
-		tag = request.tag,
-		format = request.format,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		cropWhitespace = request.cropWhitespace,
-		addPlayedIndicator = request.addPlayedIndicator,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-		imageIndex = request.imageIndex,
-	)
-
-	/**
-	 * Get person image by name.
-	 *
-	 * @param name Person name.
-	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param imageIndex Image index.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public fun getPersonImageDeprecatedUrl(
-		name: String,
-		imageType: ImageType,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		imageIndex: Int? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("name", name)
-			put("imageType", imageType)
-		}
-		val queryParameters = buildMap<String, Any?>(17) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("imageIndex", imageIndex)
-		}
-		return api.createUrl("/Persons/{name}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -3821,7 +1891,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -3841,7 +1910,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -3851,7 +1919,7 @@ public class ImageApi(
 			put("name", name)
 			put("imageType", imageType)
 		}
-		val queryParameters = buildMap<String, Any?>(16) {
+		val queryParameters = buildMap<String, Any?>(15) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -3863,7 +1931,6 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -3895,7 +1962,6 @@ public class ImageApi(
 		quality = request.quality,
 		fillWidth = request.fillWidth,
 		fillHeight = request.fillHeight,
-		addPlayedIndicator = request.addPlayedIndicator,
 		blur = request.blur,
 		backgroundColor = request.backgroundColor,
 		foregroundLayer = request.foregroundLayer,
@@ -3920,7 +1986,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -3940,7 +2005,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -3950,7 +2014,7 @@ public class ImageApi(
 			put("name", name)
 			put("imageType", imageType)
 		}
-		val queryParameters = buildMap<String, Any?>(16) {
+		val queryParameters = buildMap<String, Any?>(15) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -3962,7 +2026,6 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -3990,7 +2053,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -4010,7 +2072,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -4020,7 +2081,7 @@ public class ImageApi(
 			put("imageType", imageType)
 			put("imageIndex", imageIndex)
 		}
-		val queryParameters = buildMap<String, Any?>(15) {
+		val queryParameters = buildMap<String, Any?>(14) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -4032,7 +2093,6 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
@@ -4064,7 +2124,6 @@ public class ImageApi(
 		quality = request.quality,
 		fillWidth = request.fillWidth,
 		fillHeight = request.fillHeight,
-		addPlayedIndicator = request.addPlayedIndicator,
 		blur = request.blur,
 		backgroundColor = request.backgroundColor,
 		foregroundLayer = request.foregroundLayer,
@@ -4089,7 +2148,6 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
@@ -4109,7 +2167,6 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
@@ -4119,7 +2176,7 @@ public class ImageApi(
 			put("imageType", imageType)
 			put("imageIndex", imageIndex)
 		}
-		val queryParameters = buildMap<String, Any?>(15) {
+		val queryParameters = buildMap<String, Any?>(14) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -4131,382 +2188,18 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
 		}
 		return api.createUrl("/Studios/{name}/Images/{imageType}/{imageIndex}", pathParameters,
 				queryParameters)
-	}
-
-	/**
-	 * Get studio image by name.
-	 *
-	 * @param name Studio name.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getStudioImageByIndexDeprecated(
-		name: String,
-		imageType: ImageType,
-		imageIndex: Int,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("name", name)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(16) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Studios/{name}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get studio image by name.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend
-			fun getStudioImageByIndexDeprecated(request: GetStudioImageByIndexDeprecatedRequest):
-			Response<ByteReadChannel> = getStudioImageByIndexDeprecated(
-		name = request.name,
-		imageType = request.imageType,
-		imageIndex = request.imageIndex,
-		tag = request.tag,
-		format = request.format,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		cropWhitespace = request.cropWhitespace,
-		addPlayedIndicator = request.addPlayedIndicator,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-	)
-
-	/**
-	 * Get studio image by name.
-	 *
-	 * @param name Studio name.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public fun getStudioImageByIndexDeprecatedUrl(
-		name: String,
-		imageType: ImageType,
-		imageIndex: Int,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("name", name)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(16) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		return api.createUrl("/Studios/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters)
-	}
-
-	/**
-	 * Get studio image by name.
-	 *
-	 * @param name Studio name.
-	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param imageIndex Image index.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getStudioImageDeprecated(
-		name: String,
-		imageType: ImageType,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		imageIndex: Int? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("name", name)
-			put("imageType", imageType)
-		}
-		val queryParameters = buildMap<String, Any?>(17) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("imageIndex", imageIndex)
-		}
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Studios/{name}/Images/{imageType}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get studio image by name.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getStudioImageDeprecated(request: GetStudioImageDeprecatedRequest):
-			Response<ByteReadChannel> = getStudioImageDeprecated(
-		name = request.name,
-		imageType = request.imageType,
-		tag = request.tag,
-		format = request.format,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		cropWhitespace = request.cropWhitespace,
-		addPlayedIndicator = request.addPlayedIndicator,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-		imageIndex = request.imageIndex,
-	)
-
-	/**
-	 * Get studio image by name.
-	 *
-	 * @param name Studio name.
-	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param imageIndex Image index.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public fun getStudioImageDeprecatedUrl(
-		name: String,
-		imageType: ImageType,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		imageIndex: Int? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("name", name)
-			put("imageType", imageType)
-		}
-		val queryParameters = buildMap<String, Any?>(17) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("imageIndex", imageIndex)
-		}
-		return api.createUrl("/Studios/{name}/Images/{imageType}", pathParameters, queryParameters)
 	}
 
 	/**
 	 * Get user profile image.
 	 *
 	 * @param userId User id.
-	 * @param imageType Image type.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
@@ -4520,15 +2213,13 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 * @param imageIndex Image index.
 	 */
 	public suspend fun getUserImage(
-		userId: UUID,
-		imageType: ImageType,
+		userId: UUID? = null,
 		tag: String? = null,
 		format: ImageFormat? = null,
 		maxWidth: Int? = null,
@@ -4540,17 +2231,14 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
 	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("userId", userId)
-			put("imageType", imageType)
-		}
+		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(16) {
+			put("userId", userId)
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -4562,15 +2250,13 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
 			put("imageIndex", imageIndex)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Users/{userId}/Images/{imageType}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/UserImage", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -4579,10 +2265,9 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getUserImage(request: GetUserImageRequest): Response<ByteReadChannel> =
-			getUserImage(
+	public suspend fun getUserImage(request: GetUserImageRequest = GetUserImageRequest()):
+			Response<ByteReadChannel> = getUserImage(
 		userId = request.userId,
-		imageType = request.imageType,
 		tag = request.tag,
 		format = request.format,
 		maxWidth = request.maxWidth,
@@ -4594,7 +2279,6 @@ public class ImageApi(
 		quality = request.quality,
 		fillWidth = request.fillWidth,
 		fillHeight = request.fillHeight,
-		addPlayedIndicator = request.addPlayedIndicator,
 		blur = request.blur,
 		backgroundColor = request.backgroundColor,
 		foregroundLayer = request.foregroundLayer,
@@ -4605,7 +2289,6 @@ public class ImageApi(
 	 * Get user profile image.
 	 *
 	 * @param userId User id.
-	 * @param imageType Image type.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
 	 * headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
@@ -4619,15 +2302,13 @@ public class ImageApi(
 	 * cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
 	 * @param blur Optional. Blur image.
 	 * @param backgroundColor Optional. Apply a background color for transparent images.
 	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
 	 * @param imageIndex Image index.
 	 */
 	public fun getUserImageUrl(
-		userId: UUID,
-		imageType: ImageType,
+		userId: UUID? = null,
 		tag: String? = null,
 		format: ImageFormat? = null,
 		maxWidth: Int? = null,
@@ -4639,87 +2320,14 @@ public class ImageApi(
 		quality: Int? = null,
 		fillWidth: Int? = null,
 		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
 	): String {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("userId", userId)
-			put("imageType", imageType)
-		}
+		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(16) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("imageIndex", imageIndex)
-		}
-		return api.createUrl("/Users/{userId}/Images/{imageType}", pathParameters, queryParameters)
-	}
-
-	/**
-	 * Get user profile image.
-	 *
-	 * @param userId User id.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	public suspend fun getUserImageByIndex(
-		userId: UUID,
-		imageType: ImageType,
-		imageIndex: Int,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(3) {
 			put("userId", userId)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(15) {
 			put("tag", tag)
 			put("format", format)
 			put("maxWidth", maxWidth)
@@ -4731,521 +2339,25 @@ public class ImageApi(
 			put("quality", quality)
 			put("fillWidth", fillWidth)
 			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Users/{userId}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get user profile image.
-	 *
-	 * @param request The request parameters
-	 */
-	public suspend fun getUserImageByIndex(request: GetUserImageByIndexRequest):
-			Response<ByteReadChannel> = getUserImageByIndex(
-		userId = request.userId,
-		imageType = request.imageType,
-		imageIndex = request.imageIndex,
-		tag = request.tag,
-		format = request.format,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		addPlayedIndicator = request.addPlayedIndicator,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-	)
-
-	/**
-	 * Get user profile image.
-	 *
-	 * @param userId User id.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	public fun getUserImageByIndexUrl(
-		userId: UUID,
-		imageType: ImageType,
-		imageIndex: Int,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("userId", userId)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(15) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		return api.createUrl("/Users/{userId}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters)
-	}
-
-	/**
-	 * Get user profile image.
-	 *
-	 * @param userId User id.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getUserImageByIndexDeprecated(
-		userId: UUID,
-		imageType: ImageType,
-		imageIndex: Int,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("userId", userId)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(16) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Users/{userId}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get user profile image.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getUserImageByIndexDeprecated(request: GetUserImageByIndexDeprecatedRequest):
-			Response<ByteReadChannel> = getUserImageByIndexDeprecated(
-		userId = request.userId,
-		imageType = request.imageType,
-		imageIndex = request.imageIndex,
-		tag = request.tag,
-		format = request.format,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		cropWhitespace = request.cropWhitespace,
-		addPlayedIndicator = request.addPlayedIndicator,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-	)
-
-	/**
-	 * Get user profile image.
-	 *
-	 * @param userId User id.
-	 * @param imageType Image type.
-	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public fun getUserImageByIndexDeprecatedUrl(
-		userId: UUID,
-		imageType: ImageType,
-		imageIndex: Int,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(3) {
-			put("userId", userId)
-			put("imageType", imageType)
-			put("imageIndex", imageIndex)
-		}
-		val queryParameters = buildMap<String, Any?>(16) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-		}
-		return api.createUrl("/Users/{userId}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters)
-	}
-
-	/**
-	 * Get user profile image.
-	 *
-	 * @param userId User id.
-	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param imageIndex Image index.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getUserImageDeprecated(
-		userId: UUID,
-		imageType: ImageType,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		imageIndex: Int? = null,
-	): Response<ByteReadChannel> {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("userId", userId)
-			put("imageType", imageType)
-		}
-		val queryParameters = buildMap<String, Any?>(17) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
 			put("blur", blur)
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
 			put("imageIndex", imageIndex)
 		}
-		val data = null
-		val response = api.`get`<ByteReadChannel>("/Users/{userId}/Images/{imageType}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get user profile image.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getUserImageDeprecated(request: GetUserImageDeprecatedRequest):
-			Response<ByteReadChannel> = getUserImageDeprecated(
-		userId = request.userId,
-		imageType = request.imageType,
-		tag = request.tag,
-		format = request.format,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		cropWhitespace = request.cropWhitespace,
-		addPlayedIndicator = request.addPlayedIndicator,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-		imageIndex = request.imageIndex,
-	)
-
-	/**
-	 * Get user profile image.
-	 *
-	 * @param userId User id.
-	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
-	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param cropWhitespace Optional. Specify if whitespace should be cropped out of the image.
-	 * True/False. If unspecified, whitespace will be cropped from logos and clear art.
-	 * @param addPlayedIndicator Optional. Add a played indicator.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param imageIndex Image index.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public fun getUserImageDeprecatedUrl(
-		userId: UUID,
-		imageType: ImageType,
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		cropWhitespace: Boolean? = null,
-		addPlayedIndicator: Boolean? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		imageIndex: Int? = null,
-	): String {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("userId", userId)
-			put("imageType", imageType)
-		}
-		val queryParameters = buildMap<String, Any?>(17) {
-			put("tag", tag)
-			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("cropWhitespace", cropWhitespace)
-			put("addPlayedIndicator", addPlayedIndicator)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("imageIndex", imageIndex)
-		}
-		return api.createUrl("/Users/{userId}/Images/{imageType}", pathParameters, queryParameters)
+		return api.createUrl("/UserImage", pathParameters, queryParameters)
 	}
 
 	/**
 	 * Sets the user image.
 	 *
 	 * @param userId User Id.
-	 * @param imageType (Unused) Image type.
-	 * @param index (Unused) Image index.
 	 */
-	public suspend fun postUserImage(
-		userId: UUID,
-		imageType: ImageType,
-		index: Int? = null,
-		`data`: ByteArray,
-	): Response<Unit> {
-		val pathParameters = buildMap<String, Any?>(2) {
-			put("userId", userId)
-			put("imageType", imageType)
-		}
+	public suspend fun postUserImage(userId: UUID? = null, `data`: ByteArray): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
-			put("index", index)
-		}
-		val response = api.post<Unit>("/Users/{userId}/Images/{imageType}", pathParameters,
-				queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Sets the user image.
-	 *
-	 * @param userId User Id.
-	 * @param imageType (Unused) Image type.
-	 * @param index (Unused) Image index.
-	 */
-	public suspend fun postUserImageByIndex(
-		userId: UUID,
-		imageType: ImageType,
-		index: Int,
-		`data`: ByteArray,
-	): Response<Unit> {
-		val pathParameters = buildMap<String, Any?>(3) {
 			put("userId", userId)
-			put("imageType", imageType)
-			put("index", index)
 		}
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Users/{userId}/Images/{imageType}/{index}", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/UserImage", pathParameters, queryParameters, data)
 		return response
 	}
 

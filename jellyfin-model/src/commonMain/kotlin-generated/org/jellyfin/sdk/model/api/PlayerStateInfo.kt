@@ -65,6 +65,11 @@ public data class PlayerStateInfo(
 	@SerialName("RepeatMode")
 	public val repeatMode: RepeatMode,
 	/**
+	 * The playback order.
+	 */
+	@SerialName("PlaybackOrder")
+	public val playbackOrder: PlaybackOrder,
+	/**
 	 * The now playing live stream identifier.
 	 */
 	@SerialName("LiveStreamId")

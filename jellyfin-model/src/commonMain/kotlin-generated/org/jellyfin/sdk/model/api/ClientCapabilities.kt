@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Boolean
+import kotlin.Deprecated
 import kotlin.String
 import kotlin.collections.List
 import kotlinx.serialization.SerialName
@@ -14,19 +15,13 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class ClientCapabilities(
 	@SerialName("PlayableMediaTypes")
-	public val playableMediaTypes: List<String>? = null,
+	public val playableMediaTypes: List<MediaType>? = null,
 	@SerialName("SupportedCommands")
 	public val supportedCommands: List<GeneralCommandType>? = null,
 	@SerialName("SupportsMediaControl")
 	public val supportsMediaControl: Boolean,
-	@SerialName("SupportsContentUploading")
-	public val supportsContentUploading: Boolean,
-	@SerialName("MessageCallbackUrl")
-	public val messageCallbackUrl: String? = null,
 	@SerialName("SupportsPersistentIdentifier")
 	public val supportsPersistentIdentifier: Boolean,
-	@SerialName("SupportsSync")
-	public val supportsSync: Boolean,
 	/**
 	 * A MediaBrowser.Model.Dlna.DeviceProfile represents a set of metadata which determines which
 	 * content a certain device is able to play.
@@ -46,4 +41,10 @@ public data class ClientCapabilities(
 	public val appStoreUrl: String? = null,
 	@SerialName("IconUrl")
 	public val iconUrl: String? = null,
+	@Deprecated("This member is deprecated and may be removed in the future")
+	@SerialName("SupportsContentUploading")
+	public val supportsContentUploading: Boolean? = false,
+	@Deprecated("This member is deprecated and may be removed in the future")
+	@SerialName("SupportsSync")
+	public val supportsSync: Boolean? = false,
 )

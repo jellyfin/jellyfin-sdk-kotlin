@@ -21,6 +21,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
+import org.jellyfin.sdk.model.api.ItemSortBy
 import org.jellyfin.sdk.model.api.request.GetEpisodesRequest
 import org.jellyfin.sdk.model.api.request.GetNextUpRequest
 import org.jellyfin.sdk.model.api.request.GetSeasonsRequest
@@ -61,7 +62,7 @@ public class TvShowsApi(
 		season: Int? = null,
 		seasonId: UUID? = null,
 		isMissing: Boolean? = null,
-		adjacentTo: String? = null,
+		adjacentTo: UUID? = null,
 		startItemId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
@@ -69,7 +70,7 @@ public class TvShowsApi(
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 		enableUserData: Boolean? = null,
-		sortBy: String? = null,
+		sortBy: ItemSortBy? = null,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("seriesId", seriesId)
@@ -138,14 +139,15 @@ public class TvShowsApi(
 	 * @param nextUpDateCutoff Optional. Starting date of shows to show in Next Up section.
 	 * @param enableTotalRecordCount Whether to enable the total records count. Defaults to true.
 	 * @param disableFirstEpisode Whether to disable sending the first episode in a series as next up.
-	 * @param enableRewatching Whether to include watched episode in next up results.
+	 * @param enableResumable Whether to include resumable episodes in next up results.
+	 * @param enableRewatching Whether to include watched episodes in next up results.
 	 */
 	public suspend fun getNextUp(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),
-		seriesId: String? = null,
+		seriesId: UUID? = null,
 		parentId: UUID? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
@@ -154,10 +156,11 @@ public class TvShowsApi(
 		nextUpDateCutoff: DateTime? = null,
 		enableTotalRecordCount: Boolean? = true,
 		disableFirstEpisode: Boolean? = false,
+		enableResumable: Boolean? = true,
 		enableRewatching: Boolean? = false,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(14) {
+		val queryParameters = buildMap<String, Any?>(15) {
 			put("userId", userId)
 			put("startIndex", startIndex)
 			put("limit", limit)
@@ -171,6 +174,7 @@ public class TvShowsApi(
 			put("nextUpDateCutoff", nextUpDateCutoff)
 			put("enableTotalRecordCount", enableTotalRecordCount)
 			put("disableFirstEpisode", disableFirstEpisode)
+			put("enableResumable", enableResumable)
 			put("enableRewatching", enableRewatching)
 		}
 		val data = null
@@ -199,6 +203,7 @@ public class TvShowsApi(
 		nextUpDateCutoff = request.nextUpDateCutoff,
 		enableTotalRecordCount = request.enableTotalRecordCount,
 		disableFirstEpisode = request.disableFirstEpisode,
+		enableResumable = request.enableResumable,
 		enableRewatching = request.enableRewatching,
 	)
 
@@ -225,7 +230,7 @@ public class TvShowsApi(
 		fields: Collection<ItemFields>? = emptyList(),
 		isSpecialSeason: Boolean? = null,
 		isMissing: Boolean? = null,
-		adjacentTo: String? = null,
+		adjacentTo: UUID? = null,
 		enableImages: Boolean? = null,
 		imageTypeLimit: Int? = null,
 		enableImageTypes: Collection<ImageType>? = emptyList(),

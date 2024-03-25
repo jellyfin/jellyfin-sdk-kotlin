@@ -37,8 +37,18 @@ public data class RemoteSubtitleInfo(
 	public val dateCreated: DateTime? = null,
 	@SerialName("CommunityRating")
 	public val communityRating: Float? = null,
+	@SerialName("FrameRate")
+	public val frameRate: Float? = null,
 	@SerialName("DownloadCount")
 	public val downloadCount: Int? = null,
 	@SerialName("IsHashMatch")
 	public val isHashMatch: Boolean? = null,
+	@SerialName("AiTranslated")
+	public val aiTranslated: Boolean? = null,
+	@SerialName("MachineTranslated")
+	public val machineTranslated: Boolean? = null,
+	@SerialName("Forced")
+	public val forced: Boolean? = null,
+	@SerialName("HearingImpaired")
+	public val hearingImpaired: Boolean? = null,
 )

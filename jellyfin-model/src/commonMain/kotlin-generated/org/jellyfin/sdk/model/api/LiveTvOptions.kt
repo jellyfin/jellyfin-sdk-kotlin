@@ -40,4 +40,8 @@ public data class LiveTvOptions(
 	public val recordingPostProcessor: String? = null,
 	@SerialName("RecordingPostProcessorArguments")
 	public val recordingPostProcessorArguments: String? = null,
+	@SerialName("SaveRecordingNFO")
+	public val saveRecordingNfo: Boolean,
+	@SerialName("SaveRecordingImages")
+	public val saveRecordingImages: Boolean,
 )

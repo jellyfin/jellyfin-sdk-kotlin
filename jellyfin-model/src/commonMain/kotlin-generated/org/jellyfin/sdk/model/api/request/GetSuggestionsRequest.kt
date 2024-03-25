@@ -9,13 +9,13 @@ package org.jellyfin.sdk.model.api.request
 
 import kotlin.Boolean
 import kotlin.Int
-import kotlin.String
 import kotlin.collections.Collection
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemKind
+import org.jellyfin.sdk.model.api.MediaType
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
@@ -27,12 +27,12 @@ public data class GetSuggestionsRequest(
 	 * The user id.
 	 */
 	@SerialName("userId")
-	public val userId: UUID,
+	public val userId: UUID? = null,
 	/**
 	 * The media types.
 	 */
 	@SerialName("mediaType")
-	public val mediaType: Collection<String>? = null,
+	public val mediaType: Collection<MediaType>? = null,
 	/**
 	 * The type.
 	 */

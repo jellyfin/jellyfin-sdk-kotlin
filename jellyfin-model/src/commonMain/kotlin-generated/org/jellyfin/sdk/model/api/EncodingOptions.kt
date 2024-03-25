@@ -13,24 +13,74 @@ import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * Class EncodingOptions.
+ */
 @Serializable
 public data class EncodingOptions(
+	/**
+	 * The thread count used for encoding.
+	 */
 	@SerialName("EncodingThreadCount")
 	public val encodingThreadCount: Int,
+	/**
+	 * The temporary transcoding path.
+	 */
 	@SerialName("TranscodingTempPath")
 	public val transcodingTempPath: String? = null,
+	/**
+	 * The path to the fallback font.
+	 */
 	@SerialName("FallbackFontPath")
 	public val fallbackFontPath: String? = null,
+	/**
+	 * A value indicating whether to use the fallback font.
+	 */
 	@SerialName("EnableFallbackFont")
 	public val enableFallbackFont: Boolean,
+	/**
+	 * A value indicating whether audio VBR is enabled.
+	 */
+	@SerialName("EnableAudioVbr")
+	public val enableAudioVbr: Boolean,
+	/**
+	 * The audio boost applied when downmixing audio.
+	 */
 	@SerialName("DownMixAudioBoost")
 	public val downMixAudioBoost: Double,
+	/**
+	 * The algorithm used for downmixing audio to stereo.
+	 */
+	@SerialName("DownMixStereoAlgorithm")
+	public val downMixStereoAlgorithm: DownMixStereoAlgorithms,
+	/**
+	 * The maximum size of the muxing queue.
+	 */
 	@SerialName("MaxMuxingQueueSize")
 	public val maxMuxingQueueSize: Int,
+	/**
+	 * A value indicating whether throttling is enabled.
+	 */
 	@SerialName("EnableThrottling")
 	public val enableThrottling: Boolean,
+	/**
+	 * The delay after which throttling happens.
+	 */
 	@SerialName("ThrottleDelaySeconds")
 	public val throttleDelaySeconds: Int,
+	/**
+	 * A value indicating whether segment deletion is enabled.
+	 */
+	@SerialName("EnableSegmentDeletion")
+	public val enableSegmentDeletion: Boolean,
+	/**
+	 * Seconds for which segments should be kept before being deleted.
+	 */
+	@SerialName("SegmentKeepSeconds")
+	public val segmentKeepSeconds: Int,
+	/**
+	 * The hardware acceleration type.
+	 */
 	@SerialName("HardwareAccelerationType")
 	public val hardwareAccelerationType: String? = null,
 	/**
@@ -43,58 +93,154 @@ public data class EncodingOptions(
 	 */
 	@SerialName("EncoderAppPathDisplay")
 	public val encoderAppPathDisplay: String? = null,
+	/**
+	 * The VA-API device.
+	 */
 	@SerialName("VaapiDevice")
 	public val vaapiDevice: String? = null,
+	/**
+	 * A value indicating whether tonemapping is enabled.
+	 */
 	@SerialName("EnableTonemapping")
 	public val enableTonemapping: Boolean,
+	/**
+	 * A value indicating whether VPP tonemapping is enabled.
+	 */
 	@SerialName("EnableVppTonemapping")
 	public val enableVppTonemapping: Boolean,
+	/**
+	 * A value indicating whether videotoolbox tonemapping is enabled.
+	 */
+	@SerialName("EnableVideoToolboxTonemapping")
+	public val enableVideoToolboxTonemapping: Boolean,
+	/**
+	 * The tone-mapping algorithm.
+	 */
 	@SerialName("TonemappingAlgorithm")
 	public val tonemappingAlgorithm: String? = null,
+	/**
+	 * The tone-mapping mode.
+	 */
 	@SerialName("TonemappingMode")
 	public val tonemappingMode: String? = null,
+	/**
+	 * The tone-mapping range.
+	 */
 	@SerialName("TonemappingRange")
 	public val tonemappingRange: String? = null,
+	/**
+	 * The tone-mapping desaturation.
+	 */
 	@SerialName("TonemappingDesat")
 	public val tonemappingDesat: Double,
+	/**
+	 * The tone-mapping peak.
+	 */
 	@SerialName("TonemappingPeak")
 	public val tonemappingPeak: Double,
+	/**
+	 * The tone-mapping parameters.
+	 */
 	@SerialName("TonemappingParam")
 	public val tonemappingParam: Double,
+	/**
+	 * The VPP tone-mapping brightness.
+	 */
 	@SerialName("VppTonemappingBrightness")
 	public val vppTonemappingBrightness: Double,
+	/**
+	 * The VPP tone-mapping contrast.
+	 */
 	@SerialName("VppTonemappingContrast")
 	public val vppTonemappingContrast: Double,
+	/**
+	 * The H264 CRF.
+	 */
 	@SerialName("H264Crf")
 	public val h264Crf: Int,
+	/**
+	 * The H265 CRF.
+	 */
 	@SerialName("H265Crf")
 	public val h265Crf: Int,
+	/**
+	 * The encoder preset.
+	 */
 	@SerialName("EncoderPreset")
 	public val encoderPreset: String? = null,
+	/**
+	 * A value indicating whether the framerate is doubled when deinterlacing.
+	 */
 	@SerialName("DeinterlaceDoubleRate")
 	public val deinterlaceDoubleRate: Boolean,
+	/**
+	 * The deinterlace method.
+	 */
 	@SerialName("DeinterlaceMethod")
 	public val deinterlaceMethod: String? = null,
+	/**
+	 * A value indicating whether 10bit HEVC decoding is enabled.
+	 */
 	@SerialName("EnableDecodingColorDepth10Hevc")
 	public val enableDecodingColorDepth10Hevc: Boolean,
+	/**
+	 * A value indicating whether 10bit VP9 decoding is enabled.
+	 */
 	@SerialName("EnableDecodingColorDepth10Vp9")
 	public val enableDecodingColorDepth10Vp9: Boolean,
+	/**
+	 * A value indicating whether the enhanced NVDEC is enabled.
+	 */
 	@SerialName("EnableEnhancedNvdecDecoder")
 	public val enableEnhancedNvdecDecoder: Boolean,
+	/**
+	 * A value indicating whether the system native hardware decoder should be used.
+	 */
 	@SerialName("PreferSystemNativeHwDecoder")
 	public val preferSystemNativeHwDecoder: Boolean,
+	/**
+	 * A value indicating whether the Intel H264 low-power hardware encoder should be used.
+	 */
 	@SerialName("EnableIntelLowPowerH264HwEncoder")
 	public val enableIntelLowPowerH264HwEncoder: Boolean,
+	/**
+	 * A value indicating whether the Intel HEVC low-power hardware encoder should be used.
+	 */
 	@SerialName("EnableIntelLowPowerHevcHwEncoder")
 	public val enableIntelLowPowerHevcHwEncoder: Boolean,
+	/**
+	 * A value indicating whether hardware encoding is enabled.
+	 */
 	@SerialName("EnableHardwareEncoding")
 	public val enableHardwareEncoding: Boolean,
+	/**
+	 * A value indicating whether HEVC encoding is enabled.
+	 */
 	@SerialName("AllowHevcEncoding")
 	public val allowHevcEncoding: Boolean,
+	/**
+	 * A value indicating whether AV1 encoding is enabled.
+	 */
+	@SerialName("AllowAv1Encoding")
+	public val allowAv1Encoding: Boolean,
+	/**
+	 * A value indicating whether MJPEG encoding is enabled.
+	 */
+	@SerialName("AllowMjpegEncoding")
+	public val allowMjpegEncoding: Boolean,
+	/**
+	 * A value indicating whether subtitle extraction is enabled.
+	 */
 	@SerialName("EnableSubtitleExtraction")
 	public val enableSubtitleExtraction: Boolean,
+	/**
+	 * The codecs hardware encoding is used for.
+	 */
 	@SerialName("HardwareDecodingCodecs")
 	public val hardwareDecodingCodecs: List<String>? = null,
+	/**
+	 * The file extensions on-demand metadata based keyframe extraction is enabled for.
+	 */
 	@SerialName("AllowOnDemandMetadataBasedKeyframeExtractionForExtensions")
 	public val allowOnDemandMetadataBasedKeyframeExtractionForExtensions: List<String>? = null,
 )

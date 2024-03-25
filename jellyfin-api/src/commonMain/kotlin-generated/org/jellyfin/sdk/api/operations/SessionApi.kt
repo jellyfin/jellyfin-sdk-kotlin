@@ -26,6 +26,7 @@ import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ClientCapabilitiesDto
 import org.jellyfin.sdk.model.api.GeneralCommand
 import org.jellyfin.sdk.model.api.GeneralCommandType
+import org.jellyfin.sdk.model.api.MediaType
 import org.jellyfin.sdk.model.api.MessageCommand
 import org.jellyfin.sdk.model.api.NameIdPair
 import org.jellyfin.sdk.model.api.PlayCommand
@@ -195,24 +196,21 @@ public class SessionApi(
 	 * Photo.
 	 * @param supportedCommands A list of supported remote control commands, comma delimited.
 	 * @param supportsMediaControl Determines whether media can be played remotely..
-	 * @param supportsSync Determines whether sync is supported.
 	 * @param supportsPersistentIdentifier Determines whether the device supports a unique identifier.
 	 */
 	public suspend fun postCapabilities(
 		id: String? = null,
-		playableMediaTypes: Collection<String>? = emptyList(),
+		playableMediaTypes: Collection<MediaType>? = emptyList(),
 		supportedCommands: Collection<GeneralCommandType>? = emptyList(),
 		supportsMediaControl: Boolean? = false,
-		supportsSync: Boolean? = false,
 		supportsPersistentIdentifier: Boolean? = true,
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(6) {
+		val queryParameters = buildMap<String, Any?>(5) {
 			put("id", id)
 			put("playableMediaTypes", playableMediaTypes)
 			put("supportedCommands", supportedCommands)
 			put("supportsMediaControl", supportsMediaControl)
-			put("supportsSync", supportsSync)
 			put("supportsPersistentIdentifier", supportsPersistentIdentifier)
 		}
 		val data = null
@@ -231,7 +229,6 @@ public class SessionApi(
 		playableMediaTypes = request.playableMediaTypes,
 		supportedCommands = request.supportedCommands,
 		supportsMediaControl = request.supportsMediaControl,
-		supportsSync = request.supportsSync,
 		supportsPersistentIdentifier = request.supportsPersistentIdentifier,
 	)
 

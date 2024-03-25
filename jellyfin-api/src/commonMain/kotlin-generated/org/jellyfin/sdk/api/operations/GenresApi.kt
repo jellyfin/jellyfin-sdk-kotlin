@@ -22,6 +22,7 @@ import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
+import org.jellyfin.sdk.model.api.ItemSortBy
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.api.request.GetGenresRequest
 
@@ -91,7 +92,7 @@ public class GenresApi(
 		nameStartsWithOrGreater: String? = null,
 		nameStartsWith: String? = null,
 		nameLessThan: String? = null,
-		sortBy: Collection<String>? = emptyList(),
+		sortBy: Collection<ItemSortBy>? = emptyList(),
 		sortOrder: Collection<SortOrder>? = emptyList(),
 		enableImages: Boolean? = true,
 		enableTotalRecordCount: Boolean? = true,

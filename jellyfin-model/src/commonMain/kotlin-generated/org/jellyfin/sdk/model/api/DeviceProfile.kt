@@ -5,7 +5,6 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
-import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
@@ -38,101 +37,6 @@ public data class DeviceProfile(
 	@SerialName("Id")
 	public val id: String? = null,
 	/**
-	 * The Identification.
-	 */
-	@SerialName("Identification")
-	public val identification: DeviceIdentification? = null,
-	/**
-	 * The friendly name of the device profile, which can be shown to users.
-	 */
-	@SerialName("FriendlyName")
-	public val friendlyName: String? = null,
-	/**
-	 * The manufacturer of the device which this profile represents.
-	 */
-	@SerialName("Manufacturer")
-	public val manufacturer: String? = null,
-	/**
-	 * An url for the manufacturer of the device which this profile represents.
-	 */
-	@SerialName("ManufacturerUrl")
-	public val manufacturerUrl: String? = null,
-	/**
-	 * The model name of the device which this profile represents.
-	 */
-	@SerialName("ModelName")
-	public val modelName: String? = null,
-	/**
-	 * The model description of the device which this profile represents.
-	 */
-	@SerialName("ModelDescription")
-	public val modelDescription: String? = null,
-	/**
-	 * The model number of the device which this profile represents.
-	 */
-	@SerialName("ModelNumber")
-	public val modelNumber: String? = null,
-	/**
-	 * The ModelUrl.
-	 */
-	@SerialName("ModelUrl")
-	public val modelUrl: String? = null,
-	/**
-	 * The serial number of the device which this profile represents.
-	 */
-	@SerialName("SerialNumber")
-	public val serialNumber: String? = null,
-	/**
-	 * A value indicating whether EnableAlbumArtInDidl.
-	 */
-	@SerialName("EnableAlbumArtInDidl")
-	public val enableAlbumArtInDidl: Boolean = false,
-	/**
-	 * A value indicating whether EnableSingleAlbumArtLimit.
-	 */
-	@SerialName("EnableSingleAlbumArtLimit")
-	public val enableSingleAlbumArtLimit: Boolean = false,
-	/**
-	 * A value indicating whether EnableSingleSubtitleLimit.
-	 */
-	@SerialName("EnableSingleSubtitleLimit")
-	public val enableSingleSubtitleLimit: Boolean = false,
-	/**
-	 * The SupportedMediaTypes.
-	 */
-	@SerialName("SupportedMediaTypes")
-	public val supportedMediaTypes: String,
-	/**
-	 * The UserId.
-	 */
-	@SerialName("UserId")
-	public val userId: String? = null,
-	/**
-	 * The AlbumArtPn.
-	 */
-	@SerialName("AlbumArtPn")
-	public val albumArtPn: String? = null,
-	/**
-	 * The MaxAlbumArtWidth.
-	 */
-	@SerialName("MaxAlbumArtWidth")
-	public val maxAlbumArtWidth: Int? = null,
-	/**
-	 * The MaxAlbumArtHeight.
-	 */
-	@SerialName("MaxAlbumArtHeight")
-	public val maxAlbumArtHeight: Int? = null,
-	/**
-	 * The maximum allowed width of embedded icons.
-	 */
-	@SerialName("MaxIconWidth")
-	public val maxIconWidth: Int? = null,
-	/**
-	 * The maximum allowed height of embedded icons.
-	 */
-	@SerialName("MaxIconHeight")
-	public val maxIconHeight: Int? = null,
-	/**
 	 * The maximum allowed bitrate for all streamed content.
 	 */
 	@SerialName("MaxStreamingBitrate")
@@ -153,46 +57,6 @@ public data class DeviceProfile(
 	@SerialName("MaxStaticMusicBitrate")
 	public val maxStaticMusicBitrate: Int? = null,
 	/**
-	 * The content of the aggregationFlags element in the urn:schemas-sonycom:av namespace.
-	 */
-	@SerialName("SonyAggregationFlags")
-	public val sonyAggregationFlags: String? = null,
-	/**
-	 * The ProtocolInfo.
-	 */
-	@SerialName("ProtocolInfo")
-	public val protocolInfo: String? = null,
-	/**
-	 * The TimelineOffsetSeconds.
-	 */
-	@SerialName("TimelineOffsetSeconds")
-	public val timelineOffsetSeconds: Int = 0,
-	/**
-	 * A value indicating whether RequiresPlainVideoItems.
-	 */
-	@SerialName("RequiresPlainVideoItems")
-	public val requiresPlainVideoItems: Boolean = false,
-	/**
-	 * A value indicating whether RequiresPlainFolders.
-	 */
-	@SerialName("RequiresPlainFolders")
-	public val requiresPlainFolders: Boolean = false,
-	/**
-	 * A value indicating whether EnableMSMediaReceiverRegistrar.
-	 */
-	@SerialName("EnableMSMediaReceiverRegistrar")
-	public val enableMsMediaReceiverRegistrar: Boolean = false,
-	/**
-	 * A value indicating whether IgnoreTranscodeByteRangeRequests.
-	 */
-	@SerialName("IgnoreTranscodeByteRangeRequests")
-	public val ignoreTranscodeByteRangeRequests: Boolean = false,
-	/**
-	 * The XmlRootAttributes.
-	 */
-	@SerialName("XmlRootAttributes")
-	public val xmlRootAttributes: List<XmlAttribute>,
-	/**
 	 * The direct play profiles.
 	 */
 	@SerialName("DirectPlayProfiles")
@@ -212,11 +76,6 @@ public data class DeviceProfile(
 	 */
 	@SerialName("CodecProfiles")
 	public val codecProfiles: List<CodecProfile>,
-	/**
-	 * The ResponseProfiles.
-	 */
-	@SerialName("ResponseProfiles")
-	public val responseProfiles: List<ResponseProfile>,
 	/**
 	 * The subtitle profiles.
 	 */
