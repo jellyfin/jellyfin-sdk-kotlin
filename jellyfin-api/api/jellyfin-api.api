@@ -211,10 +211,10 @@ public final class org/jellyfin/sdk/api/client/extensions/UserApiExtensionsKt {
 
 public final class org/jellyfin/sdk/api/client/util/ApiSerializer {
 	public static final field INSTANCE Lorg/jellyfin/sdk/api/client/util/ApiSerializer;
-	public final fun decodeSocketMessage (Ljava/lang/String;)Lorg/jellyfin/sdk/model/socket/IncomingSocketMessage;
+	public final fun decodeSocketMessage (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/OutboundWebSocketMessage;
 	public final fun encodeRequestBody (Ljava/lang/Object;)Ljava/lang/String;
 	public static synthetic fun encodeRequestBody$default (Lorg/jellyfin/sdk/api/client/util/ApiSerializer;Ljava/lang/Object;ILjava/lang/Object;)Ljava/lang/String;
-	public final fun encodeSocketMessage (Lorg/jellyfin/sdk/model/socket/OutgoingSocketMessage;)Ljava/lang/String;
+	public final fun encodeSocketMessage (Lorg/jellyfin/sdk/model/api/InboundWebSocketMessage;)Ljava/lang/String;
 	public final fun getJson ()Lkotlinx/serialization/json/Json;
 }
 
@@ -1289,7 +1289,7 @@ public final class org/jellyfin/sdk/api/sockets/SocketInstance {
 	public synthetic fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;Lkotlin/coroutines/CoroutineContext;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun addListenerDefinition (Lorg/jellyfin/sdk/api/sockets/listener/SocketListenerDefinition;)Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;
 	public final fun getState ()Lkotlinx/coroutines/flow/StateFlow;
-	public final fun publish (Lorg/jellyfin/sdk/model/socket/OutgoingSocketMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun publish (Lorg/jellyfin/sdk/model/api/InboundWebSocketMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun reconnect (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun removeListener (Lorg/jellyfin/sdk/api/sockets/listener/SocketListener;)V
 	public final fun stop (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -1372,6 +1372,6 @@ public final class org/jellyfin/sdk/api/sockets/listener/SocketListenerDefinitio
 }
 
 public abstract interface class org/jellyfin/sdk/api/sockets/listener/SocketMessageReceiver {
-	public abstract fun onReceive (Lorg/jellyfin/sdk/model/socket/IncomingSocketMessage;)V
+	public abstract fun onReceive (Lorg/jellyfin/sdk/model/api/OutboundWebSocketMessage;)V
 }
 
