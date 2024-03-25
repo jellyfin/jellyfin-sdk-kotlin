@@ -4,7 +4,6 @@ import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import org.jellyfin.sdk.model.api.NameIdPair
 import org.jellyfin.sdk.model.api.NameValuePair
-import org.jellyfin.sdk.model.api.XmlAttribute
 
 class PairExtensionTests : FunSpec({
 	test("NameIdPair to Pair") {
@@ -37,21 +36,5 @@ class PairExtensionTests : FunSpec({
 		Pair(null, "value").toNameValuePair() shouldBe NameValuePair(name = null, value = "value")
 		Pair(null, null).toNameValuePair() shouldBe NameValuePair(name = null, value = null)
 		Pair("name", "value").toNameValuePair() shouldBe NameValuePair("name", "value")
-	}
-
-	test("XmlAttribute to Pair") {
-		XmlAttribute(name = "name", value = "value").toPair() shouldBe Pair("name", "value")
-		XmlAttribute(name = "name", value = null).toPair() shouldBe Pair("name", null)
-		XmlAttribute(name = null, value = "value").toPair() shouldBe Pair(null, "value")
-		XmlAttribute(name = null, value = null).toPair() shouldBe Pair(null, null)
-		XmlAttribute("name", "value").toPair() shouldBe Pair("name", "value")
-	}
-
-	test("Pair to XmlAttribute") {
-		Pair("name", "value").toXmlAttribute() shouldBe XmlAttribute(name = "name", value = "value")
-		Pair("name", null).toXmlAttribute() shouldBe XmlAttribute(name = "name", value = null)
-		Pair(null, "value").toXmlAttribute() shouldBe XmlAttribute(name = null, value = "value")
-		Pair(null, null).toXmlAttribute() shouldBe XmlAttribute(name = null, value = null)
-		Pair("name", "value").toXmlAttribute() shouldBe XmlAttribute("name", "value")
 	}
 })
