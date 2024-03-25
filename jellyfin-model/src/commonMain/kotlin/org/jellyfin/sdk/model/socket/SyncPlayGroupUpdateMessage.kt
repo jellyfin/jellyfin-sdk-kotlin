@@ -6,14 +6,10 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.UUID
-import org.jellyfin.sdk.model.api.ObjectGroupUpdate
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 @Serializable
 public data class SyncPlayGroupUpdateMessage(
 	@SerialName("MessageId")
 	override val messageId: UUID,
-
-	@SerialName("Data")
-	val update: ObjectGroupUpdate,
 ) : IncomingSocketMessage
