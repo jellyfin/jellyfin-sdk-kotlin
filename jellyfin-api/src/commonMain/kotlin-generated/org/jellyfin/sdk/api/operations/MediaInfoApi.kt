@@ -83,8 +83,7 @@ public class MediaInfoApi(
 	 * @param itemId The item id.
 	 * @param userId The user id.
 	 */
-	public suspend fun getPlaybackInfo(itemId: UUID, userId: UUID? = null):
-			Response<PlaybackInfoResponse> {
+	public suspend fun getPlaybackInfo(itemId: UUID, userId: UUID): Response<PlaybackInfoResponse> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}

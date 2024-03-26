@@ -11,7 +11,6 @@ import kotlin.collections.Collection
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.jellyfin.sdk.model.api.GeneralCommandType
-import org.jellyfin.sdk.model.api.MediaType
 
 /**
  * Updates capabilities for a device.
@@ -27,7 +26,7 @@ public data class PostCapabilitiesRequest(
 	 * A list of playable media types, comma delimited. Audio, Video, Book, Photo.
 	 */
 	@SerialName("playableMediaTypes")
-	public val playableMediaTypes: Collection<MediaType>? = null,
+	public val playableMediaTypes: Collection<String>? = null,
 	/**
 	 * A list of supported remote control commands, comma delimited.
 	 */
@@ -38,6 +37,11 @@ public data class PostCapabilitiesRequest(
 	 */
 	@SerialName("supportsMediaControl")
 	public val supportsMediaControl: Boolean? = false,
+	/**
+	 * Determines whether sync is supported.
+	 */
+	@SerialName("supportsSync")
+	public val supportsSync: Boolean? = false,
 	/**
 	 * Determines whether the device supports a unique identifier.
 	 */

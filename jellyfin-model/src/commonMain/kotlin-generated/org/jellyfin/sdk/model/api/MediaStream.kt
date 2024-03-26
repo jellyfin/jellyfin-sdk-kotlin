@@ -114,15 +114,15 @@ public data class MediaStream(
 	@SerialName("Title")
 	public val title: String? = null,
 	/**
-	 * An enum representing video ranges.
+	 * The video range.
 	 */
 	@SerialName("VideoRange")
-	public val videoRange: VideoRange,
+	public val videoRange: String? = null,
 	/**
-	 * An enum representing types of video ranges.
+	 * The video range type.
 	 */
 	@SerialName("VideoRangeType")
-	public val videoRangeType: VideoRangeType,
+	public val videoRangeType: String? = null,
 	/**
 	 * The video dovi title.
 	 */
@@ -136,8 +136,6 @@ public data class MediaStream(
 	public val localizedForced: String? = null,
 	@SerialName("LocalizedExternal")
 	public val localizedExternal: String? = null,
-	@SerialName("LocalizedHearingImpaired")
-	public val localizedHearingImpaired: String? = null,
 	@SerialName("DisplayTitle")
 	public val displayTitle: String? = null,
 	@SerialName("NalLengthSize")
@@ -194,11 +192,6 @@ public data class MediaStream(
 	 */
 	@SerialName("IsForced")
 	public val isForced: Boolean,
-	/**
-	 * A value indicating whether this instance is for the hearing impaired.
-	 */
-	@SerialName("IsHearingImpaired")
-	public val isHearingImpaired: Boolean,
 	/**
 	 * The height.
 	 */
@@ -291,10 +284,4 @@ public data class MediaStream(
 	 */
 	@SerialName("IsAnamorphic")
 	public val isAnamorphic: Boolean? = null,
-) {
-	/**
-	 * An enum representing formats of spatial audio.
-	 */
-	@SerialName("AudioSpatialFormat")
-	public val audioSpatialFormat: AudioSpatialFormat = AudioSpatialFormat.NONE
-}
+)

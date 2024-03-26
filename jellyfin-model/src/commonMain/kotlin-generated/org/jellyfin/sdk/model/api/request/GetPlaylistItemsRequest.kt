@@ -32,7 +32,7 @@ public data class GetPlaylistItemsRequest(
 	 * User id.
 	 */
 	@SerialName("userId")
-	public val userId: UUID? = null,
+	public val userId: UUID,
 	/**
 	 * Optional. The record index to start at. All items with a lower index will be dropped from the
 	 * results.

@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.api.operations
 
 import kotlin.Any
+import kotlin.Boolean
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.buildMap
@@ -72,11 +73,14 @@ public class DevicesApi(
 	/**
 	 * Get Devices.
 	 *
+	 * @param supportsSync A value indicating whether [supports synchronize].
 	 * @param userId The user identifier.
 	 */
-	public suspend fun getDevices(userId: UUID? = null): Response<DeviceInfoQueryResult> {
+	public suspend fun getDevices(supportsSync: Boolean? = null, userId: UUID? = null):
+			Response<DeviceInfoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(1) {
+		val queryParameters = buildMap<String, Any?>(2) {
+			put("supportsSync", supportsSync)
 			put("userId", userId)
 		}
 		val data = null

@@ -7,6 +7,7 @@ package org.jellyfin.sdk.api.operations
 
 import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
+import kotlin.Deprecated
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.buildMap
@@ -89,6 +90,7 @@ public class ConfigurationApi(
 	/**
 	 * Updates the path to the media encoder.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun updateMediaEncoderPath(`data`: MediaEncoderPathDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()

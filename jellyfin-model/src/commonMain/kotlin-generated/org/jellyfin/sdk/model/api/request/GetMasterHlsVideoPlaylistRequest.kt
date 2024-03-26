@@ -48,6 +48,11 @@ public data class GetMasterHlsVideoPlaylistRequest(
 	@SerialName("tag")
 	public val tag: String? = null,
 	/**
+	 * Optional. The dlna device profile id to utilize.
+	 */
+	@SerialName("deviceProfileId")
+	public val deviceProfileId: String? = null,
+	/**
 	 * The play session id.
 	 */
 	@SerialName("playSessionId")
@@ -284,9 +289,4 @@ public data class GetMasterHlsVideoPlaylistRequest(
 	 */
 	@SerialName("enableAdaptiveBitrateStreaming")
 	public val enableAdaptiveBitrateStreaming: Boolean? = true,
-	/**
-	 * Enable trickplay image playlists being added to master playlist.
-	 */
-	@SerialName("enableTrickplay")
-	public val enableTrickplay: Boolean? = true,
 )

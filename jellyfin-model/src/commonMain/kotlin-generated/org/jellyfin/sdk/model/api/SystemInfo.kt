@@ -41,7 +41,6 @@ public data class SystemInfo(
 	/**
 	 * The operating system.
 	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("OperatingSystem")
 	public val operatingSystem: String? = null,
 	/**
@@ -57,7 +56,6 @@ public data class SystemInfo(
 	/**
 	 * The display name of the operating system.
 	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("OperatingSystemDisplayName")
 	public val operatingSystemDisplayName: String? = null,
 	/**
@@ -90,12 +88,10 @@ public data class SystemInfo(
 	/**
 	 * A value indicating whether this instance can self restart.
 	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("CanSelfRestart")
-	public val canSelfRestart: Boolean = true,
-	@Deprecated("This member is deprecated and may be removed in the future")
+	public val canSelfRestart: Boolean,
 	@SerialName("CanLaunchWebBrowser")
-	public val canLaunchWebBrowser: Boolean = false,
+	public val canLaunchWebBrowser: Boolean,
 	/**
 	 * The program data path.
 	 */
@@ -132,20 +128,17 @@ public data class SystemInfo(
 	@SerialName("TranscodingTempPath")
 	public val transcodingTempPath: String? = null,
 	/**
-	 * The list of cast receiver applications.
-	 */
-	@SerialName("CastReceiverApplications")
-	public val castReceiverApplications: List<CastReceiverApplication>? = null,
-	/**
 	 * A value indicating whether this instance has update available.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("HasUpdateAvailable")
-	public val hasUpdateAvailable: Boolean = false,
+	public val hasUpdateAvailable: Boolean,
+	/**
+	 * Enum describing the location of the FFmpeg tool.
+	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("EncoderLocation")
-	public val encoderLocation: String? = "System",
-	@Deprecated("This member is deprecated and may be removed in the future")
+	public val encoderLocation: FFmpegLocation,
 	@SerialName("SystemArchitecture")
-	public val systemArchitecture: String? = "X64",
+	public val systemArchitecture: Architecture,
 )

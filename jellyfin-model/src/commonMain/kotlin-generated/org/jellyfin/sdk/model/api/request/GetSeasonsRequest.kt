@@ -9,6 +9,7 @@ package org.jellyfin.sdk.model.api.request
 
 import kotlin.Boolean
 import kotlin.Int
+import kotlin.String
 import kotlin.collections.Collection
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -55,7 +56,7 @@ public data class GetSeasonsRequest(
 	 * Optional. Return items that are siblings of a supplied item.
 	 */
 	@SerialName("adjacentTo")
-	public val adjacentTo: UUID? = null,
+	public val adjacentTo: String? = null,
 	/**
 	 * Optional. Include image information in output.
 	 */

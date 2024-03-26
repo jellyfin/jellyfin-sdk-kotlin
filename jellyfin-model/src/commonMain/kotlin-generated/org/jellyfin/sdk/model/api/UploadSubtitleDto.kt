@@ -31,11 +31,6 @@ public data class UploadSubtitleDto(
 	@SerialName("IsForced")
 	public val isForced: Boolean,
 	/**
-	 * A value indicating whether the subtitle is for hearing impaired.
-	 */
-	@SerialName("IsHearingImpaired")
-	public val isHearingImpaired: Boolean,
-	/**
 	 * The subtitle data.
 	 */
 	@SerialName("Data")

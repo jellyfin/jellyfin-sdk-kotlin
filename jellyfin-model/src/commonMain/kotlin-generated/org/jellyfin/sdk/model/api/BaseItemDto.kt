@@ -83,14 +83,17 @@ public data class BaseItemDto(
 	public val canDelete: Boolean? = null,
 	@SerialName("CanDownload")
 	public val canDownload: Boolean? = null,
-	@SerialName("HasLyrics")
-	public val hasLyrics: Boolean? = null,
 	@SerialName("HasSubtitles")
 	public val hasSubtitles: Boolean? = null,
 	@SerialName("PreferredMetadataLanguage")
 	public val preferredMetadataLanguage: String? = null,
 	@SerialName("PreferredMetadataCountryCode")
 	public val preferredMetadataCountryCode: String? = null,
+	/**
+	 * A value indicating whether [supports synchronize].
+	 */
+	@SerialName("SupportsSync")
+	public val supportsSync: Boolean? = null,
 	@SerialName("Container")
 	public val container: String? = null,
 	/**
@@ -249,7 +252,7 @@ public data class BaseItemDto(
 	@SerialName("ParentId")
 	public val parentId: UUID? = null,
 	/**
-	 * The base item kind.
+	 * The type.
 	 */
 	@SerialName("Type")
 	public val type: BaseItemKind,
@@ -266,12 +269,12 @@ public data class BaseItemDto(
 	@SerialName("GenreItems")
 	public val genreItems: List<NameGuidPair>? = null,
 	/**
-	 * Whether the item has a logo, this will hold the Id of the Parent that has one.
+	 * Wether the item has a logo, this will hold the Id of the Parent that has one.
 	 */
 	@SerialName("ParentLogoItemId")
 	public val parentLogoItemId: UUID? = null,
 	/**
-	 * Whether the item has any backdrops, this will hold the Id of the Parent that has one.
+	 * Wether the item has any backdrops, this will hold the Id of the Parent that has one.
 	 */
 	@SerialName("ParentBackdropItemId")
 	public val parentBackdropItemId: UUID? = null,
@@ -369,7 +372,7 @@ public data class BaseItemDto(
 	 * The type of the collection.
 	 */
 	@SerialName("CollectionType")
-	public val collectionType: CollectionType? = null,
+	public val collectionType: String? = null,
 	/**
 	 * The display order.
 	 */
@@ -443,7 +446,7 @@ public data class BaseItemDto(
 	@SerialName("ParentLogoImageTag")
 	public val parentLogoImageTag: String? = null,
 	/**
-	 * Whether the item has fan art, this will hold the Id of the Parent that has one.
+	 * Wether the item has fan art, this will hold the Id of the Parent that has one.
 	 */
 	@SerialName("ParentArtItemId")
 	public val parentArtItemId: UUID? = null,
@@ -494,11 +497,6 @@ public data class BaseItemDto(
 	@SerialName("Chapters")
 	public val chapters: List<ChapterInfo>? = null,
 	/**
-	 * The trickplay manifest.
-	 */
-	@SerialName("Trickplay")
-	public val trickplay: Map<String, Map<String, TrickplayInfo>>? = null,
-	/**
 	 * The type of the location.
 	 */
 	@SerialName("LocationType")
@@ -509,10 +507,10 @@ public data class BaseItemDto(
 	@SerialName("IsoType")
 	public val isoType: IsoType? = null,
 	/**
-	 * Media types.
+	 * The type of the media.
 	 */
 	@SerialName("MediaType")
-	public val mediaType: MediaType,
+	public val mediaType: String? = null,
 	/**
 	 * The end date.
 	 */
@@ -680,11 +678,6 @@ public data class BaseItemDto(
 	 */
 	@SerialName("TimerId")
 	public val timerId: String? = null,
-	/**
-	 * The LUFS value.
-	 */
-	@SerialName("LUFS")
-	public val lufs: Float? = null,
 	/**
 	 * The current program.
 	 */
