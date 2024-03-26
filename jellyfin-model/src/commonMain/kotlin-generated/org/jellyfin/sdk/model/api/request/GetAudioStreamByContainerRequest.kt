@@ -53,6 +53,11 @@ public data class GetAudioStreamByContainerRequest(
 	@SerialName("tag")
 	public val tag: String? = null,
 	/**
+	 * Optional. The dlna device profile id to utilize.
+	 */
+	@SerialName("deviceProfileId")
+	public val deviceProfileId: String? = null,
+	/**
 	 * The play session id.
 	 */
 	@SerialName("playSessionId")
@@ -63,7 +68,7 @@ public data class GetAudioStreamByContainerRequest(
 	@SerialName("segmentContainer")
 	public val segmentContainer: String? = null,
 	/**
-	 * The segment length.
+	 * The segment lenght.
 	 */
 	@SerialName("segmentLength")
 	public val segmentLength: Int? = null,

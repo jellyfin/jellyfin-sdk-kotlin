@@ -24,8 +24,6 @@ import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.ItemFilter
-import org.jellyfin.sdk.model.api.ItemSortBy
-import org.jellyfin.sdk.model.api.MediaType
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.api.request.GetAlbumArtistsRequest
 import org.jellyfin.sdk.model.api.request.GetArtistsRequest
@@ -98,7 +96,7 @@ public class ArtistsApi(
 		includeItemTypes: Collection<BaseItemKind>? = emptyList(),
 		filters: Collection<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
-		mediaTypes: Collection<MediaType>? = emptyList(),
+		mediaTypes: Collection<String>? = emptyList(),
 		genres: Collection<String>? = emptyList(),
 		genreIds: Collection<UUID>? = emptyList(),
 		officialRatings: Collection<String>? = emptyList(),
@@ -116,7 +114,7 @@ public class ArtistsApi(
 		nameStartsWithOrGreater: String? = null,
 		nameStartsWith: String? = null,
 		nameLessThan: String? = null,
-		sortBy: Collection<ItemSortBy>? = emptyList(),
+		sortBy: Collection<String>? = emptyList(),
 		sortOrder: Collection<SortOrder>? = emptyList(),
 		enableImages: Boolean? = true,
 		enableTotalRecordCount: Boolean? = true,
@@ -286,7 +284,7 @@ public class ArtistsApi(
 		includeItemTypes: Collection<BaseItemKind>? = emptyList(),
 		filters: Collection<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
-		mediaTypes: Collection<MediaType>? = emptyList(),
+		mediaTypes: Collection<String>? = emptyList(),
 		genres: Collection<String>? = emptyList(),
 		genreIds: Collection<UUID>? = emptyList(),
 		officialRatings: Collection<String>? = emptyList(),
@@ -304,7 +302,7 @@ public class ArtistsApi(
 		nameStartsWithOrGreater: String? = null,
 		nameStartsWith: String? = null,
 		nameLessThan: String? = null,
-		sortBy: Collection<ItemSortBy>? = emptyList(),
+		sortBy: Collection<String>? = emptyList(),
 		sortOrder: Collection<SortOrder>? = emptyList(),
 		enableImages: Boolean? = true,
 		enableTotalRecordCount: Boolean? = true,

@@ -51,4 +51,6 @@ public data class BaseItem(
 	 */
 	@SerialName("RemoteTrailers")
 	public val remoteTrailers: List<MediaUrl>? = null,
+	@SerialName("SupportsExternalTransfer")
+	public val supportsExternalTransfer: Boolean,
 )

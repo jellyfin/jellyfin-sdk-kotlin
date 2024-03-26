@@ -12,6 +12,7 @@ package org.jellyfin.sdk.model.api.request
 
 import kotlin.Boolean
 import kotlin.Int
+import kotlin.String
 import kotlin.collections.Collection
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -53,7 +54,7 @@ public data class GetNextUpRequest(
 	 * Optional. Filter by series id.
 	 */
 	@SerialName("seriesId")
-	public val seriesId: UUID? = null,
+	public val seriesId: String? = null,
 	/**
 	 * Optional. Specify this to localize the search to a specific item or folder. Omit to use the
 	 * root.
@@ -96,12 +97,7 @@ public data class GetNextUpRequest(
 	@SerialName("disableFirstEpisode")
 	public val disableFirstEpisode: Boolean? = false,
 	/**
-	 * Whether to include resumable episodes in next up results.
-	 */
-	@SerialName("enableResumable")
-	public val enableResumable: Boolean? = true,
-	/**
-	 * Whether to include watched episodes in next up results.
+	 * Whether to include watched episode in next up results.
 	 */
 	@SerialName("enableRewatching")
 	public val enableRewatching: Boolean? = false,

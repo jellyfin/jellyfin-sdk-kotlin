@@ -15,24 +15,14 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public data class LibraryOptions(
-	@SerialName("Enabled")
-	public val enabled: Boolean,
 	@SerialName("EnablePhotos")
 	public val enablePhotos: Boolean,
 	@SerialName("EnableRealtimeMonitor")
 	public val enableRealtimeMonitor: Boolean,
-	@SerialName("EnableLUFSScan")
-	public val enableLufsScan: Boolean,
-	@SerialName("UseReplayGainTags")
-	public val useReplayGainTags: Boolean,
 	@SerialName("EnableChapterImageExtraction")
 	public val enableChapterImageExtraction: Boolean,
 	@SerialName("ExtractChapterImagesDuringLibraryScan")
 	public val extractChapterImagesDuringLibraryScan: Boolean,
-	@SerialName("EnableTrickplayImageExtraction")
-	public val enableTrickplayImageExtraction: Boolean,
-	@SerialName("ExtractTrickplayImagesDuringLibraryScan")
-	public val extractTrickplayImagesDuringLibraryScan: Boolean,
 	@SerialName("PathInfos")
 	public val pathInfos: List<MediaPathInfo>,
 	@SerialName("SaveLocalMetadata")
@@ -44,8 +34,6 @@ public data class LibraryOptions(
 	public val enableAutomaticSeriesGrouping: Boolean,
 	@SerialName("EnableEmbeddedTitles")
 	public val enableEmbeddedTitles: Boolean,
-	@SerialName("EnableEmbeddedExtrasTitles")
-	public val enableEmbeddedExtrasTitles: Boolean,
 	@SerialName("EnableEmbeddedEpisodeInfos")
 	public val enableEmbeddedEpisodeInfos: Boolean,
 	@SerialName("AutomaticRefreshIntervalDays")
@@ -82,8 +70,6 @@ public data class LibraryOptions(
 	public val requirePerfectSubtitleMatch: Boolean,
 	@SerialName("SaveSubtitlesWithMedia")
 	public val saveSubtitlesWithMedia: Boolean,
-	@SerialName("SaveLyricsWithMedia")
-	public val saveLyricsWithMedia: Boolean = true,
 	@SerialName("AutomaticallyAddToCollection")
 	public val automaticallyAddToCollection: Boolean,
 	/**

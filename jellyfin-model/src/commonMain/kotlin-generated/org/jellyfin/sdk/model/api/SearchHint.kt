@@ -11,7 +11,6 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Boolean
-import kotlin.Deprecated
 import kotlin.Double
 import kotlin.Int
 import kotlin.Long
@@ -33,24 +32,20 @@ public data class SearchHint(
 	/**
 	 * The item id.
 	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("ItemId")
 	public val itemId: UUID,
-	/**
-	 * The item id.
-	 */
 	@SerialName("Id")
 	public val id: UUID,
 	/**
 	 * The name.
 	 */
 	@SerialName("Name")
-	public val name: String,
+	public val name: String? = null,
 	/**
 	 * The matched term.
 	 */
 	@SerialName("MatchedTerm")
-	public val matchedTerm: String,
+	public val matchedTerm: String? = null,
 	/**
 	 * The index number.
 	 */
@@ -92,13 +87,10 @@ public data class SearchHint(
 	@SerialName("BackdropImageItemId")
 	public val backdropImageItemId: String? = null,
 	/**
-	 * The base item kind.
+	 * The type.
 	 */
 	@SerialName("Type")
-	public val type: BaseItemKind,
-	/**
-	 * A value indicating whether this instance is folder.
-	 */
+	public val type: String? = null,
 	@SerialName("IsFolder")
 	public val isFolder: Boolean? = null,
 	/**
@@ -107,18 +99,12 @@ public data class SearchHint(
 	@SerialName("RunTimeTicks")
 	public val runTimeTicks: Long? = null,
 	/**
-	 * Media types.
+	 * The type of the media.
 	 */
 	@SerialName("MediaType")
-	public val mediaType: MediaType,
-	/**
-	 * The start date.
-	 */
+	public val mediaType: String? = null,
 	@SerialName("StartDate")
 	public val startDate: DateTime? = null,
-	/**
-	 * The end date.
-	 */
 	@SerialName("EndDate")
 	public val endDate: DateTime? = null,
 	/**
@@ -126,9 +112,6 @@ public data class SearchHint(
 	 */
 	@SerialName("Series")
 	public val series: String? = null,
-	/**
-	 * The status.
-	 */
 	@SerialName("Status")
 	public val status: String? = null,
 	/**
@@ -136,11 +119,8 @@ public data class SearchHint(
 	 */
 	@SerialName("Album")
 	public val album: String? = null,
-	/**
-	 * The album id.
-	 */
 	@SerialName("AlbumId")
-	public val albumId: UUID? = null,
+	public val albumId: UUID,
 	/**
 	 * The album artist.
 	 */
@@ -150,7 +130,7 @@ public data class SearchHint(
 	 * The artists.
 	 */
 	@SerialName("Artists")
-	public val artists: List<String>,
+	public val artists: List<String>? = null,
 	/**
 	 * The song count.
 	 */
@@ -165,7 +145,7 @@ public data class SearchHint(
 	 * The channel identifier.
 	 */
 	@SerialName("ChannelId")
-	public val channelId: UUID? = null,
+	public val channelId: UUID,
 	/**
 	 * The name of the channel.
 	 */
