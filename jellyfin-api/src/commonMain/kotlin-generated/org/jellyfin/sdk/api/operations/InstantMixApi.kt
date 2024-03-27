@@ -36,7 +36,7 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given album.
 	 *
-	 * @param itemId The item id.
+	 * @param id The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
@@ -46,7 +46,7 @@ public class InstantMixApi(
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
 	public suspend fun getInstantMixFromAlbum(
-		itemId: UUID,
+		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),
@@ -56,7 +56,7 @@ public class InstantMixApi(
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = buildMap<String, Any?>(1) {
-			put("itemId", itemId)
+			put("id", id)
 		}
 		val queryParameters = buildMap<String, Any?>(7) {
 			put("userId", userId)
@@ -68,7 +68,7 @@ public class InstantMixApi(
 			put("enableImageTypes", enableImageTypes)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Albums/{itemId}/InstantMix", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Albums/{id}/InstantMix", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -80,7 +80,7 @@ public class InstantMixApi(
 	 */
 	public suspend fun getInstantMixFromAlbum(request: GetInstantMixFromAlbumRequest):
 			Response<BaseItemDtoQueryResult> = getInstantMixFromAlbum(
-		itemId = request.itemId,
+		id = request.id,
 		userId = request.userId,
 		limit = request.limit,
 		fields = request.fields,
@@ -93,7 +93,7 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given artist.
 	 *
-	 * @param itemId The item id.
+	 * @param id The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
@@ -103,7 +103,7 @@ public class InstantMixApi(
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
 	public suspend fun getInstantMixFromArtists(
-		itemId: UUID,
+		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),
@@ -113,7 +113,7 @@ public class InstantMixApi(
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = buildMap<String, Any?>(1) {
-			put("itemId", itemId)
+			put("id", id)
 		}
 		val queryParameters = buildMap<String, Any?>(7) {
 			put("userId", userId)
@@ -125,7 +125,7 @@ public class InstantMixApi(
 			put("enableImageTypes", enableImageTypes)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/{itemId}/InstantMix", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/{id}/InstantMix", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -137,7 +137,7 @@ public class InstantMixApi(
 	 */
 	public suspend fun getInstantMixFromArtists(request: GetInstantMixFromArtistsRequest):
 			Response<BaseItemDtoQueryResult> = getInstantMixFromArtists(
-		itemId = request.itemId,
+		id = request.id,
 		userId = request.userId,
 		limit = request.limit,
 		fields = request.fields,
@@ -208,7 +208,7 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given item.
 	 *
-	 * @param itemId The item id.
+	 * @param id The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
@@ -218,7 +218,7 @@ public class InstantMixApi(
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
 	public suspend fun getInstantMixFromItem(
-		itemId: UUID,
+		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),
@@ -228,7 +228,7 @@ public class InstantMixApi(
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = buildMap<String, Any?>(1) {
-			put("itemId", itemId)
+			put("id", id)
 		}
 		val queryParameters = buildMap<String, Any?>(7) {
 			put("userId", userId)
@@ -240,7 +240,7 @@ public class InstantMixApi(
 			put("enableImageTypes", enableImageTypes)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/InstantMix", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{id}/InstantMix", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -252,7 +252,7 @@ public class InstantMixApi(
 	 */
 	public suspend fun getInstantMixFromItem(request: GetInstantMixFromItemRequest):
 			Response<BaseItemDtoQueryResult> = getInstantMixFromItem(
-		itemId = request.itemId,
+		id = request.id,
 		userId = request.userId,
 		limit = request.limit,
 		fields = request.fields,
@@ -380,7 +380,7 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given playlist.
 	 *
-	 * @param itemId The item id.
+	 * @param id The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
@@ -390,7 +390,7 @@ public class InstantMixApi(
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
 	public suspend fun getInstantMixFromPlaylist(
-		itemId: UUID,
+		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),
@@ -400,7 +400,7 @@ public class InstantMixApi(
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = buildMap<String, Any?>(1) {
-			put("itemId", itemId)
+			put("id", id)
 		}
 		val queryParameters = buildMap<String, Any?>(7) {
 			put("userId", userId)
@@ -412,7 +412,7 @@ public class InstantMixApi(
 			put("enableImageTypes", enableImageTypes)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Playlists/{itemId}/InstantMix", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Playlists/{id}/InstantMix", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -424,7 +424,7 @@ public class InstantMixApi(
 	 */
 	public suspend fun getInstantMixFromPlaylist(request: GetInstantMixFromPlaylistRequest):
 			Response<BaseItemDtoQueryResult> = getInstantMixFromPlaylist(
-		itemId = request.itemId,
+		id = request.id,
 		userId = request.userId,
 		limit = request.limit,
 		fields = request.fields,
@@ -437,7 +437,7 @@ public class InstantMixApi(
 	/**
 	 * Creates an instant playlist based on a given song.
 	 *
-	 * @param itemId The item id.
+	 * @param id The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
@@ -447,7 +447,7 @@ public class InstantMixApi(
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
 	public suspend fun getInstantMixFromSong(
-		itemId: UUID,
+		id: UUID,
 		userId: UUID? = null,
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),
@@ -457,7 +457,7 @@ public class InstantMixApi(
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = buildMap<String, Any?>(1) {
-			put("itemId", itemId)
+			put("id", id)
 		}
 		val queryParameters = buildMap<String, Any?>(7) {
 			put("userId", userId)
@@ -469,7 +469,7 @@ public class InstantMixApi(
 			put("enableImageTypes", enableImageTypes)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Songs/{itemId}/InstantMix", pathParameters,
+		val response = api.`get`<BaseItemDtoQueryResult>("/Songs/{id}/InstantMix", pathParameters,
 				queryParameters, data)
 		return response
 	}
@@ -481,7 +481,7 @@ public class InstantMixApi(
 	 */
 	public suspend fun getInstantMixFromSong(request: GetInstantMixFromSongRequest):
 			Response<BaseItemDtoQueryResult> = getInstantMixFromSong(
-		itemId = request.itemId,
+		id = request.id,
 		userId = request.userId,
 		limit = request.limit,
 		fields = request.fields,

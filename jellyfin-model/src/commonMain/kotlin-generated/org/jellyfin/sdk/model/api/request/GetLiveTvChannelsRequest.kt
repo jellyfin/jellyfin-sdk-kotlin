@@ -9,6 +9,7 @@ package org.jellyfin.sdk.model.api.request
 
 import kotlin.Boolean
 import kotlin.Int
+import kotlin.String
 import kotlin.collections.Collection
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -17,7 +18,6 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.ChannelType
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
-import org.jellyfin.sdk.model.api.ItemSortBy
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
@@ -116,7 +116,7 @@ public data class GetLiveTvChannelsRequest(
 	 * Optional. Key to sort by.
 	 */
 	@SerialName("sortBy")
-	public val sortBy: Collection<ItemSortBy>? = null,
+	public val sortBy: Collection<String>? = null,
 	/**
 	 * Optional. Sort order.
 	 */

@@ -25,7 +25,6 @@ import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.CreatePlaylistDto
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
-import org.jellyfin.sdk.model.api.MediaType
 import org.jellyfin.sdk.model.api.PlaylistCreationResult
 import org.jellyfin.sdk.model.api.request.GetPlaylistItemsRequest
 
@@ -86,7 +85,7 @@ public class PlaylistsApi(
 		name: String? = null,
 		ids: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
-		mediaType: MediaType? = null,
+		mediaType: String? = null,
 		`data`: CreatePlaylistDto? = null,
 	): Response<PlaylistCreationResult> {
 		val pathParameters = emptyMap<String, Any?>()
@@ -117,7 +116,7 @@ public class PlaylistsApi(
 	 */
 	public suspend fun getPlaylistItems(
 		playlistId: UUID,
-		userId: UUID? = null,
+		userId: UUID,
 		startIndex: Int? = null,
 		limit: Int? = null,
 		fields: Collection<ItemFields>? = emptyList(),

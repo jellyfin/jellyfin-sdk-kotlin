@@ -113,15 +113,15 @@ public class SubtitleApi(
 	/**
 	 * Gets the remote subtitles.
 	 *
-	 * @param subtitleId The item id.
+	 * @param id The item id.
 	 */
-	public suspend fun getRemoteSubtitles(subtitleId: String): Response<String> {
+	public suspend fun getRemoteSubtitles(id: String): Response<String> {
 		val pathParameters = buildMap<String, Any?>(1) {
-			put("subtitleId", subtitleId)
+			put("id", id)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<String>("/Providers/Subtitles/Subtitles/{subtitleId}", pathParameters,
+		val response = api.`get`<String>("/Providers/Subtitles/Subtitles/{id}", pathParameters,
 				queryParameters, data)
 		return response
 	}

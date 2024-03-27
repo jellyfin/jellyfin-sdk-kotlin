@@ -22,7 +22,6 @@ import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.ChannelFeatures
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.ItemFilter
-import org.jellyfin.sdk.model.api.ItemSortBy
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.api.request.GetChannelItemsRequest
 import org.jellyfin.sdk.model.api.request.GetChannelsRequest
@@ -83,7 +82,7 @@ public class ChannelsApi(
 		limit: Int? = null,
 		sortOrder: Collection<SortOrder>? = emptyList(),
 		filters: Collection<ItemFilter>? = emptyList(),
-		sortBy: Collection<ItemSortBy>? = emptyList(),
+		sortBy: Collection<String>? = emptyList(),
 		fields: Collection<ItemFields>? = emptyList(),
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = buildMap<String, Any?>(1) {

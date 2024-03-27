@@ -7,6 +7,7 @@
 
 package org.jellyfin.sdk.model.api.request
 
+import kotlin.Boolean
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
@@ -93,6 +94,11 @@ public data class GetItemImage2Request(
 	 */
 	@SerialName("fillHeight")
 	public val fillHeight: Int? = null,
+	/**
+	 * Optional. Add a played indicator.
+	 */
+	@SerialName("addPlayedIndicator")
+	public val addPlayedIndicator: Boolean? = null,
 	/**
 	 * Optional. Blur image.
 	 */

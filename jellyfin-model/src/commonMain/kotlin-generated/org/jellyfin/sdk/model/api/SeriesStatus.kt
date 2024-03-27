@@ -11,7 +11,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * The status of a series.
+ * Enum SeriesStatus.
  */
 @Serializable
 public enum class SeriesStatus(
@@ -21,8 +21,6 @@ public enum class SeriesStatus(
 	CONTINUING("Continuing"),
 	@SerialName("Ended")
 	ENDED("Ended"),
-	@SerialName("Unreleased")
-	UNRELEASED("Unreleased"),
 	;
 
 	/**
@@ -37,7 +35,6 @@ public enum class SeriesStatus(
 		public fun fromNameOrNull(serialName: String): SeriesStatus? = when (serialName) {
 			"Continuing" -> CONTINUING
 			"Ended" -> ENDED
-			"Unreleased" -> UNRELEASED
 			else -> null
 		}
 
