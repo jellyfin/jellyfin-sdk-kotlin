@@ -27,8 +27,6 @@ public enum class ImageFormat(
 	PNG("Png"),
 	@SerialName("Webp")
 	WEBP("Webp"),
-	@SerialName("Svg")
-	SVG("Svg"),
 	;
 
 	/**
@@ -46,7 +44,6 @@ public enum class ImageFormat(
 			"Jpg" -> JPG
 			"Png" -> PNG
 			"Webp" -> WEBP
-			"Svg" -> SVG
 			else -> null
 		}
 

@@ -27,8 +27,6 @@ public enum class MediaStreamType(
 	EMBEDDED_IMAGE("EmbeddedImage"),
 	@SerialName("Data")
 	DATA("Data"),
-	@SerialName("Lyric")
-	LYRIC("Lyric"),
 	;
 
 	/**
@@ -46,7 +44,6 @@ public enum class MediaStreamType(
 			"Subtitle" -> SUBTITLE
 			"EmbeddedImage" -> EMBEDDED_IMAGE
 			"Data" -> DATA
-			"Lyric" -> LYRIC
 			else -> null
 		}
 

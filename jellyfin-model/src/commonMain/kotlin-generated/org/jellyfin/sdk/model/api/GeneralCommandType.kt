@@ -101,8 +101,6 @@ public enum class GeneralCommandType(
 	PLAY("Play"),
 	@SerialName("SetMaxStreamingBitrate")
 	SET_MAX_STREAMING_BITRATE("SetMaxStreamingBitrate"),
-	@SerialName("SetPlaybackOrder")
-	SET_PLAYBACK_ORDER("SetPlaybackOrder"),
 	;
 
 	/**
@@ -157,7 +155,6 @@ public enum class GeneralCommandType(
 			"ToggleOsdMenu" -> TOGGLE_OSD_MENU
 			"Play" -> PLAY
 			"SetMaxStreamingBitrate" -> SET_MAX_STREAMING_BITRATE
-			"SetPlaybackOrder" -> SET_PLAYBACK_ORDER
 			else -> null
 		}
 

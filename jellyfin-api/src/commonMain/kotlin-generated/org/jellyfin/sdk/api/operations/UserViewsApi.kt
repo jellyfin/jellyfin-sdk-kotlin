@@ -18,7 +18,6 @@ import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
-import org.jellyfin.sdk.model.api.CollectionType
 import org.jellyfin.sdk.model.api.SpecialViewOptionDto
 
 public class UserViewsApi(
@@ -29,14 +28,14 @@ public class UserViewsApi(
 	 *
 	 * @param userId User id.
 	 */
-	public suspend fun getGroupingOptions(userId: UUID? = null): Response<List<SpecialViewOptionDto>> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(1) {
+	public suspend fun getGroupingOptions(userId: UUID): Response<List<SpecialViewOptionDto>> {
+		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
+		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<SpecialViewOptionDto>>("/UserViews/GroupingOptions", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<SpecialViewOptionDto>>("/Users/{userId}/GroupingOptions",
+				pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -50,21 +49,22 @@ public class UserViewsApi(
 	 * @param includeHidden Whether or not to include hidden content.
 	 */
 	public suspend fun getUserViews(
-		userId: UUID? = null,
+		userId: UUID,
 		includeExternalContent: Boolean? = null,
-		presetViews: Collection<CollectionType>? = emptyList(),
+		presetViews: Collection<String>? = emptyList(),
 		includeHidden: Boolean? = false,
 	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(4) {
+		val pathParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
+		}
+		val queryParameters = buildMap<String, Any?>(3) {
 			put("includeExternalContent", includeExternalContent)
 			put("presetViews", presetViews)
 			put("includeHidden", includeHidden)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/UserViews", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Users/{userId}/Views", pathParameters,
+				queryParameters, data)
 		return response
 	}
 }

@@ -18,7 +18,6 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.BaseItemKind
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
-import org.jellyfin.sdk.model.api.MediaType
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
@@ -30,7 +29,7 @@ public data class GetResumeItemsRequest(
 	 * The user id.
 	 */
 	@SerialName("userId")
-	public val userId: UUID? = null,
+	public val userId: UUID,
 	/**
 	 * The start index.
 	 */
@@ -63,7 +62,7 @@ public data class GetResumeItemsRequest(
 	 * Optional. Filter by MediaType. Allows multiple, comma delimited.
 	 */
 	@SerialName("mediaTypes")
-	public val mediaTypes: Collection<MediaType>? = null,
+	public val mediaTypes: Collection<String>? = null,
 	/**
 	 * Optional. Include user data.
 	 */

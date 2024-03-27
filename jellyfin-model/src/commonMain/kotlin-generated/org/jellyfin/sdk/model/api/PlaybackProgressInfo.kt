@@ -104,11 +104,6 @@ public data class PlaybackProgressInfo(
 	 */
 	@SerialName("RepeatMode")
 	public val repeatMode: RepeatMode,
-	/**
-	 * The playback order.
-	 */
-	@SerialName("PlaybackOrder")
-	public val playbackOrder: PlaybackOrder,
 	@SerialName("NowPlayingQueue")
 	public val nowPlayingQueue: List<QueueItem>? = null,
 	@SerialName("PlaylistItemId")

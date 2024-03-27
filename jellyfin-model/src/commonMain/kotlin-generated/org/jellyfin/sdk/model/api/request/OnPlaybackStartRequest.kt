@@ -18,10 +18,15 @@ import org.jellyfin.sdk.model.api.PlayMethod
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Reports that a session has begun playing an item.
+ * Reports that a user has begun playing an item.
  */
 @Serializable
 public data class OnPlaybackStartRequest(
+	/**
+	 * User id.
+	 */
+	@SerialName("userId")
+	public val userId: UUID,
 	/**
 	 * Item id.
 	 */

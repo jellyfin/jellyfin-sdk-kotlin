@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.Deprecated
 import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -24,4 +25,10 @@ public data class AuthenticateUserByName(
 	 */
 	@SerialName("Pw")
 	public val pw: String? = null,
+	/**
+	 * The sha1-hashed password.
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	@SerialName("Password")
+	public val password: String? = null,
 )

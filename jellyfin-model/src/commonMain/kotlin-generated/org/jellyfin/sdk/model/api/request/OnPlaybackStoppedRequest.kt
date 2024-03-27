@@ -16,10 +16,15 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Reports that a session has stopped playing an item.
+ * Reports that a user has stopped playing an item.
  */
 @Serializable
 public data class OnPlaybackStoppedRequest(
+	/**
+	 * User id.
+	 */
+	@SerialName("userId")
+	public val userId: UUID,
 	/**
 	 * Item id.
 	 */

@@ -26,7 +26,6 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.AllThemeMediaResult
 import org.jellyfin.sdk.model.api.BaseItemDto
 import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
-import org.jellyfin.sdk.model.api.CollectionType
 import org.jellyfin.sdk.model.api.ItemCounts
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.LibraryOptionsResultDto
@@ -188,8 +187,8 @@ public class LibraryApi(
 	 * @param libraryContentType Library content type.
 	 * @param isNewLibrary Whether this is a new library.
 	 */
-	public suspend fun getLibraryOptionsInfo(libraryContentType: CollectionType? = null,
-			isNewLibrary: Boolean? = false): Response<LibraryOptionsResultDto> {
+	public suspend fun getLibraryOptionsInfo(libraryContentType: String? = null, isNewLibrary: Boolean?
+			= false): Response<LibraryOptionsResultDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(2) {
 			put("libraryContentType", libraryContentType)

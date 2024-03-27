@@ -26,8 +26,8 @@ public data class GetInstantMixFromItemRequest(
 	/**
 	 * The item id.
 	 */
-	@SerialName("itemId")
-	public val itemId: UUID,
+	@SerialName("id")
+	public val id: UUID,
 	/**
 	 * Optional. Filter by user id, and attach user data.
 	 */

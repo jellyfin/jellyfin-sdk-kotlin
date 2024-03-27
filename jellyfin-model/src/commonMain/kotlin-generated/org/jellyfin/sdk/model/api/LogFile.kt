@@ -36,5 +36,5 @@ public data class LogFile(
 	 * The name.
 	 */
 	@SerialName("Name")
-	public val name: String,
+	public val name: String? = null,
 )

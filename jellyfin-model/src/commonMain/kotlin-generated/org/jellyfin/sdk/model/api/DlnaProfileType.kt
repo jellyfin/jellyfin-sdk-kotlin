@@ -22,8 +22,6 @@ public enum class DlnaProfileType(
 	PHOTO("Photo"),
 	@SerialName("Subtitle")
 	SUBTITLE("Subtitle"),
-	@SerialName("Lyric")
-	LYRIC("Lyric"),
 	;
 
 	/**
@@ -40,7 +38,6 @@ public enum class DlnaProfileType(
 			"Video" -> VIDEO
 			"Photo" -> PHOTO
 			"Subtitle" -> SUBTITLE
-			"Lyric" -> LYRIC
 			else -> null
 		}
 
