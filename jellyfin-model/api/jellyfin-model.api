@@ -2750,6 +2750,7 @@ public final class org/jellyfin/sdk/model/api/DlnaOptions$Companion {
 public final class org/jellyfin/sdk/model/api/DlnaProfileType : java/lang/Enum {
 	public static final field AUDIO Lorg/jellyfin/sdk/model/api/DlnaProfileType;
 	public static final field Companion Lorg/jellyfin/sdk/model/api/DlnaProfileType$Companion;
+	public static final field LYRIC Lorg/jellyfin/sdk/model/api/DlnaProfileType;
 	public static final field PHOTO Lorg/jellyfin/sdk/model/api/DlnaProfileType;
 	public static final field SUBTITLE Lorg/jellyfin/sdk/model/api/DlnaProfileType;
 	public static final field VIDEO Lorg/jellyfin/sdk/model/api/DlnaProfileType;
@@ -2993,6 +2994,7 @@ public final class org/jellyfin/sdk/model/api/ExternalIdMediaType : java/lang/En
 	public static final field ALBUM Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
 	public static final field ALBUM_ARTIST Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
 	public static final field ARTIST Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
+	public static final field BOOK Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
 	public static final field BOX_SET Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
 	public static final field Companion Lorg/jellyfin/sdk/model/api/ExternalIdMediaType$Companion;
 	public static final field EPISODE Lorg/jellyfin/sdk/model/api/ExternalIdMediaType;
@@ -3324,6 +3326,7 @@ public final class org/jellyfin/sdk/model/api/GeneralCommandType : java/lang/Enu
 	public static final field SEND_STRING Lorg/jellyfin/sdk/model/api/GeneralCommandType;
 	public static final field SET_AUDIO_STREAM_INDEX Lorg/jellyfin/sdk/model/api/GeneralCommandType;
 	public static final field SET_MAX_STREAMING_BITRATE Lorg/jellyfin/sdk/model/api/GeneralCommandType;
+	public static final field SET_PLAYBACK_ORDER Lorg/jellyfin/sdk/model/api/GeneralCommandType;
 	public static final field SET_REPEAT_MODE Lorg/jellyfin/sdk/model/api/GeneralCommandType;
 	public static final field SET_SHUFFLE_QUEUE Lorg/jellyfin/sdk/model/api/GeneralCommandType;
 	public static final field SET_SUBTITLE_STREAM_INDEX Lorg/jellyfin/sdk/model/api/GeneralCommandType;
@@ -3588,6 +3591,7 @@ public final class org/jellyfin/sdk/model/api/HardwareEncodingType : java/lang/E
 	public static final field Companion Lorg/jellyfin/sdk/model/api/HardwareEncodingType$Companion;
 	public static final field NVENC Lorg/jellyfin/sdk/model/api/HardwareEncodingType;
 	public static final field QSV Lorg/jellyfin/sdk/model/api/HardwareEncodingType;
+	public static final field RKMPP Lorg/jellyfin/sdk/model/api/HardwareEncodingType;
 	public static final field V4L2M2M Lorg/jellyfin/sdk/model/api/HardwareEncodingType;
 	public static final field VAAPI Lorg/jellyfin/sdk/model/api/HardwareEncodingType;
 	public static final field VIDEO_TOOL_BOX Lorg/jellyfin/sdk/model/api/HardwareEncodingType;
@@ -3769,6 +3773,7 @@ public final class org/jellyfin/sdk/model/api/ImageFormat : java/lang/Enum {
 	public static final field GIF Lorg/jellyfin/sdk/model/api/ImageFormat;
 	public static final field JPG Lorg/jellyfin/sdk/model/api/ImageFormat;
 	public static final field PNG Lorg/jellyfin/sdk/model/api/ImageFormat;
+	public static final field SVG Lorg/jellyfin/sdk/model/api/ImageFormat;
 	public static final field WEBP Lorg/jellyfin/sdk/model/api/ImageFormat;
 	public final fun getSerialName ()Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
@@ -4121,6 +4126,7 @@ public final class org/jellyfin/sdk/model/api/ItemFields : java/lang/Enum {
 	public static final field TAGS Lorg/jellyfin/sdk/model/api/ItemFields;
 	public static final field THEME_SONG_IDS Lorg/jellyfin/sdk/model/api/ItemFields;
 	public static final field THEME_VIDEO_IDS Lorg/jellyfin/sdk/model/api/ItemFields;
+	public static final field TRICKPLAY Lorg/jellyfin/sdk/model/api/ItemFields;
 	public static final field WIDTH Lorg/jellyfin/sdk/model/api/ItemFields;
 	public final fun getSerialName ()Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
@@ -5221,6 +5227,7 @@ public final class org/jellyfin/sdk/model/api/MediaStreamType : java/lang/Enum {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/MediaStreamType$Companion;
 	public static final field DATA Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static final field EMBEDDED_IMAGE Lorg/jellyfin/sdk/model/api/MediaStreamType;
+	public static final field LYRIC Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static final field SUBTITLE Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public static final field VIDEO Lorg/jellyfin/sdk/model/api/MediaStreamType;
 	public final fun getSerialName ()Ljava/lang/String;
@@ -8396,6 +8403,7 @@ public final class org/jellyfin/sdk/model/api/SeriesStatus : java/lang/Enum {
 	public static final field CONTINUING Lorg/jellyfin/sdk/model/api/SeriesStatus;
 	public static final field Companion Lorg/jellyfin/sdk/model/api/SeriesStatus$Companion;
 	public static final field ENDED Lorg/jellyfin/sdk/model/api/SeriesStatus;
+	public static final field UNRELEASED Lorg/jellyfin/sdk/model/api/SeriesStatus;
 	public final fun getSerialName ()Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/SeriesStatus;

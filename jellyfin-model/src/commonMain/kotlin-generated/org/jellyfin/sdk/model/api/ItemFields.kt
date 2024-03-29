@@ -138,6 +138,8 @@ public enum class ItemFields(
 	IS_HD("IsHD"),
 	@SerialName("SpecialFeatureCount")
 	SPECIAL_FEATURE_COUNT("SpecialFeatureCount"),
+	@SerialName("Trickplay")
+	TRICKPLAY("Trickplay"),
 	;
 
 	public override fun toString(): String = serialName

@@ -28,6 +28,8 @@ public enum class HardwareEncodingType(
 	VAAPI("VAAPI"),
 	@SerialName("VideoToolBox")
 	VIDEO_TOOL_BOX("VideoToolBox"),
+	@SerialName("RKMPP")
+	RKMPP("RKMPP"),
 	;
 
 	public override fun toString(): String = serialName

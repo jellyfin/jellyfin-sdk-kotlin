@@ -40,6 +40,8 @@ public enum class ExternalIdMediaType(
 	SERIES("Series"),
 	@SerialName("Track")
 	TRACK("Track"),
+	@SerialName("Book")
+	BOOK("Book"),
 	;
 
 	public override fun toString(): String = serialName
