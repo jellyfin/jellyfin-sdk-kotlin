@@ -20,6 +20,8 @@ public enum class SeriesStatus(
 	CONTINUING("Continuing"),
 	@SerialName("Ended")
 	ENDED("Ended"),
+	@SerialName("Unreleased")
+	UNRELEASED("Unreleased"),
 	;
 
 	public override fun toString(): String = serialName

@@ -26,6 +26,8 @@ public enum class ImageFormat(
 	PNG("Png"),
 	@SerialName("Webp")
 	WEBP("Webp"),
+	@SerialName("Svg")
+	SVG("Svg"),
 	;
 
 	public override fun toString(): String = serialName

@@ -21,6 +21,8 @@ public enum class DlnaProfileType(
 	PHOTO("Photo"),
 	@SerialName("Subtitle")
 	SUBTITLE("Subtitle"),
+	@SerialName("Lyric")
+	LYRIC("Lyric"),
 	;
 
 	public override fun toString(): String = serialName
