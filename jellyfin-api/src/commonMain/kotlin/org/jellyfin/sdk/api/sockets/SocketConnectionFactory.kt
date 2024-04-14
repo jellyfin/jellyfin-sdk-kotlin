@@ -1,13 +1,14 @@
 package org.jellyfin.sdk.api.sockets
 
-import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.CoroutineScope
 import org.jellyfin.sdk.api.client.HttpClientOptions
-import kotlin.coroutines.CoroutineContext
 
+/**
+ * The factory to create a [SocketConnection].
+ */
 public fun interface SocketConnectionFactory {
-	public suspend fun create(
+	public fun create(
 		clientOptions: HttpClientOptions,
-		incomingMessageChannel: Channel<String>,
-		coroutineContext: CoroutineContext,
-	): SocketInstanceConnection
+		scope: CoroutineScope,
+	): SocketConnection
 }

@@ -7,23 +7,26 @@ import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 
 @Serializable(with = PeriodicListenerPeriod.Serializer::class)
 public data class PeriodicListenerPeriod(
-	val initialDelay: Long = 0,
-	val interval: Long = 1000,
+	val initialDelay: Duration = Duration.ZERO,
+	val interval: Duration = 1.seconds,
 ) {
-	override fun toString(): String = "$initialDelay,$interval"
+	override fun toString(): String = "${initialDelay.inWholeMilliseconds},${interval.inWholeMilliseconds}"
 
 	public companion object {
 		public fun fromString(str: String): PeriodicListenerPeriod? {
 			val values = str.split(',')
-			val dueTimeMs = values.getOrNull(0)?.toLongOrNull() ?: return null
-			val periodMs = values.getOrNull(1)?.toLongOrNull() ?: return null
+			val initialDelay = values.getOrNull(0)?.toLongOrNull()?.milliseconds ?: return null
+			val interval = values.getOrNull(1)?.toLongOrNull()?.milliseconds ?: return null
 
 			return PeriodicListenerPeriod(
-				initialDelay = dueTimeMs,
-				interval = periodMs,
+				initialDelay = initialDelay,
+				interval = interval,
 			)
 		}
 	}

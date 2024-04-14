@@ -1,13 +1,17 @@
 package org.jellyfin.sample.cli.command
 
 import com.github.ajalt.clikt.core.CliktCommand
-import kotlinx.coroutines.awaitCancellation
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.jellyfin.sample.cli.apiInstanceHolder
 import org.jellyfin.sample.cli.logger
 import org.jellyfin.sdk.Jellyfin
-import org.jellyfin.sdk.api.sockets.addGlobalListener
+import org.jellyfin.sdk.api.client.extensions.sessionApi
+import org.jellyfin.sdk.model.api.ClientCapabilitiesDto
+import org.jellyfin.sdk.model.api.GeneralCommandType
+import org.jellyfin.sdk.model.api.MediaType
 
 class Observe(
 	jellyfin: Jellyfin,
@@ -15,23 +19,32 @@ class Observe(
 	private val logger by logger()
 	private val api by apiInstanceHolder(jellyfin)
 
-	override fun run() = runBlocking {
+	override fun run(): Unit = runBlocking {
 		logger.info("Starting subscription")
 
-		val connection = api.ws()
+		// Report all capabilities
+		if (api.accessToken != null) {
+			api.sessionApi.postFullCapabilities(
+				data = ClientCapabilitiesDto(
+					playableMediaTypes = MediaType.entries,
+					supportedCommands = GeneralCommandType.entries,
+					supportsMediaControl = true,
+					supportsPersistentIdentifier = true,
+				)
+			)
+		}
 
 		launch {
-			connection.state.collect { state ->
-				logger.info("State $state")
-			}
-		}
+			// Watch connection state
+			api.webSocket.state.onEach { state ->
+				logger.info("State: $state")
+			}.launchIn(this)
 
-		// Listen for messages
-		// this automatically subscribes to activity log entries etc.
-		connection.addGlobalListener { message ->
-			logger.info("Received $message")
+			// Listen for messages
+			// this automatically subscribes to activity log entries etc.
+			api.webSocket.subscribeAll().onEach { message ->
+				logger.info("Received $message")
+			}.launchIn(this)
 		}
-
-		awaitCancellation()
 	}
 }

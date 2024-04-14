@@ -1,7 +1,6 @@
 package org.jellyfin.sdk.api.sockets
 
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,24 +12,20 @@ import okhttp3.Request
 import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
-import okio.ByteString
 import org.jellyfin.sdk.api.client.HttpClientOptions
 import java.util.concurrent.TimeUnit
-import kotlin.coroutines.CoroutineContext
 
 private val logger = KotlinLogging.logger {}
 
-public class OkHttpWebsocketSession(
+public class OkHttpSocketConnection(
 	clientOptions: HttpClientOptions,
-	private val incomingMessageChannel: Channel<String>,
-	context: CoroutineContext,
-) : SocketInstanceConnection {
+	scope: CoroutineScope,
+) : SocketConnection {
 	private companion object {
 		private const val HEADER_AUTHORIZATION = "Authorization"
 		private const val CLOSE_REASON_NORMAL = 1000
 	}
 
-	private val coroutineScope = CoroutineScope(context)
 	private val client = OkHttpClient.Builder().apply {
 		followRedirects(clientOptions.followRedirects)
 
@@ -39,36 +34,30 @@ public class OkHttpWebsocketSession(
 		writeTimeout(clientOptions.socketTimeout.inWholeMilliseconds, TimeUnit.MILLISECONDS)
 	}.build()
 	private var webSocket: WebSocket? = null
-	private val _state = MutableStateFlow(SocketInstanceState.DISCONNECTED)
-	public override val state: StateFlow<SocketInstanceState> = _state.asStateFlow()
+	private val _state = MutableStateFlow<SocketConnectionState>(SocketConnectionState.DISCONNECTED())
+	public override val state: StateFlow<SocketConnectionState> = _state.asStateFlow()
 
 	private val listener = object : WebSocketListener() {
 		override fun onOpen(webSocket: WebSocket, response: Response) {
-			logger.info { "WebSocket has opened" }
-			_state.value = SocketInstanceState.CONNECTED
+			logger.debug { "WebSocket has opened" }
 		}
 
 		override fun onMessage(webSocket: WebSocket, text: String) {
-			logger.info { "Receiving (raw) message $text" }
+			logger.debug { "Receiving (raw) message $text" }
 
-			coroutineScope.launch {
-				incomingMessageChannel.send(text)
+			scope.launch {
+				_state.value = SocketConnectionState.MESSAGE(text)
 			}
 		}
 
-		override fun onMessage(webSocket: WebSocket, bytes: ByteString) {
-			logger.warn { "Ignoring a binary message" }
-		}
-
 		override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
-			logger.info { "WebSocket is closing, code=$code, reason=$reason" }
-			_state.value = SocketInstanceState.DISCONNECTED
+			logger.debug { "WebSocket is closing, code=$code, reason=$reason" }
 		}
 
 		@Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
 		override fun onClosed(closedWebSocket: WebSocket, code: Int, reason: String) {
-			logger.info { "WebSocket has closed, code=$code, reason=$reason" }
-			_state.value = SocketInstanceState.DISCONNECTED
+			logger.debug { "WebSocket has closed, code=$code, reason=$reason" }
+			_state.value = SocketConnectionState.DISCONNECTED()
 
 			if (webSocket == closedWebSocket) webSocket = null
 		}
@@ -76,7 +65,7 @@ public class OkHttpWebsocketSession(
 		@Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
 		override fun onFailure(failedWebSocket: WebSocket, t: Throwable, response: Response?) {
 			logger.warn(t) { "WebSocket has failed" }
-			_state.value = SocketInstanceState.ERROR
+			_state.value = SocketConnectionState.DISCONNECTED(t)
 
 			if (webSocket == failedWebSocket) webSocket = null
 		}
@@ -90,20 +79,17 @@ public class OkHttpWebsocketSession(
 			header(HEADER_AUTHORIZATION, authorization)
 		}.build()
 
-		_state.value = SocketInstanceState.CONNECTING
+		_state.value = SocketConnectionState.CONNECTING
+		logger.info { "Connecting to $url" }
 		webSocket = client.newWebSocket(request, listener)
 
-		return state.first { it != SocketInstanceState.CONNECTING } == SocketInstanceState.CONNECTED
+		// Wait until the first non-connect message and check if it is not disconnected
+		// to ensure we have a valid connection
+		return state.first { it != SocketConnectionState.CONNECTING } !is SocketConnectionState.DISCONNECTED
 	}
 
 	override suspend fun send(message: String): Boolean {
-		logger.info { "Sending (raw) message $message" }
-
-		// Invalid state
-		if (state.value != SocketInstanceState.CONNECTED) {
-			logger.warn { "Unable to send message: invalid state (state=${state.value})" }
-			return false
-		}
+		logger.debug { "Sending (raw) message $message" }
 
 		val ws = webSocket
 
@@ -120,8 +106,10 @@ public class OkHttpWebsocketSession(
 	}
 
 	override suspend fun disconnect() {
-		_state.value = SocketInstanceState.DISCONNECTED
-		webSocket?.close(CLOSE_REASON_NORMAL, null)
-		webSocket = null
+		if (webSocket != null) {
+			logger.info { "Disconnecting" }
+			webSocket?.close(CLOSE_REASON_NORMAL, null)
+			webSocket = null
+		}
 	}
 }
