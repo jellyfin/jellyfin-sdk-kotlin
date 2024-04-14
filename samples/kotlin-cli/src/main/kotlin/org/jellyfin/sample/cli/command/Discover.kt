@@ -6,11 +6,14 @@ import com.github.ajalt.clikt.parameters.arguments.default
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.runBlocking
+import org.jellyfin.sample.cli.logger
 import org.jellyfin.sdk.Jellyfin
 
 class Discover(
 	private val jellyfin: Jellyfin
 ) : CliktCommand("Discover servers on the local network") {
+	private val logger by logger()
+
 	private val address by argument(
 		name = "address",
 		help = "Address to discover servers for. \"local\" to discovery servers in the local network."
@@ -22,19 +25,19 @@ class Discover(
 	}
 
 	private suspend fun runLocal() {
-		println("Starting local network discovery")
+		logger.info("Starting local network discovery")
 
 		jellyfin.discovery.discoverLocalServers().onEach {
-			println("Server ${it.name} was found at address ${it.address}:")
-			println("  $it")
+			logger.info("Server ${it.name} was found at address ${it.address}:")
+			logger.info("  $it")
 		}.collect()
 	}
 
 	private suspend fun runAddress(address: String) {
-		println("Starting discovery for $address")
+		logger.info("Starting discovery for $address")
 
 		val candidates = jellyfin.discovery.getAddressCandidates(address)
-		println("Found ${candidates.size} candidates")
+		logger.info("Found ${candidates.size} candidates")
 
 		val servers = jellyfin.discovery.getRecommendedServers(candidates)
 		for (server in servers) {
@@ -53,7 +56,7 @@ class Discover(
 					append("\t")
 					append(it)
 				}
-			}.let(::println)
+			}.let(logger::info)
 		}
 	}
 }
