@@ -1,7 +1,7 @@
 package org.jellyfin.sdk
 
 import org.jellyfin.sdk.api.ktor.KtorClient
-import org.jellyfin.sdk.api.sockets.OkHttpWebsocketSession
+import org.jellyfin.sdk.api.sockets.OkHttpSocketConnection
 import org.jellyfin.sdk.api.sockets.SocketConnectionFactory
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
@@ -19,7 +19,7 @@ public actual data class JellyfinOptions(
 		public var clientInfo: ClientInfo? = null
 		public var deviceInfo: DeviceInfo? = null
 		public var apiClientFactory: ApiClientFactory = ApiClientFactory(::KtorClient)
-		public var socketConnectionFactory: SocketConnectionFactory = SocketConnectionFactory(::OkHttpWebsocketSession)
+		public var socketConnectionFactory: SocketConnectionFactory = SocketConnectionFactory(::OkHttpSocketConnection)
 		public var minimumServerVersion: ServerVersion = Jellyfin.minimumVersion
 
 		public actual fun build(): JellyfinOptions = JellyfinOptions(

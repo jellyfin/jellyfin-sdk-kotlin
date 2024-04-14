@@ -9,7 +9,7 @@ import kotlin.reflect.KClass
  * Information about a subscription. Contains the incoming message type and the outgoing messages types used
  * to start and stop the subscription.
  */
-public data class SubscriptionType<MESSAGE : OutboundWebSocketMessage>(
+internal data class SubscriptionType<MESSAGE : OutboundWebSocketMessage>(
 	val messageType: KClass<MESSAGE>,
 	val createStartMessage: (period: PeriodicListenerPeriod) -> InboundWebSocketMessage,
 	val createStopMessage: () -> InboundWebSocketMessage,
@@ -24,8 +24,8 @@ internal inline fun <reified MESSAGE : OutboundWebSocketMessage> subscriptionTyp
 ): SubscriptionType<MESSAGE> = SubscriptionType(MESSAGE::class, createStartMessage, createStopMessage)
 
 /**
- * Find the subscription type for a given [IncomingSocketMessage]. Used for automatic subscription handling in the
+ * Find the subscription type for a given [OutboundWebSocketMessage]. Used for automatic subscription handling in the
  * WebSocket API.
  */
-public val KClass<out OutboundWebSocketMessage>.subscriptionType: SubscriptionType<out OutboundWebSocketMessage>?
+internal val KClass<out OutboundWebSocketMessage>.subscriptionType: SubscriptionType<out OutboundWebSocketMessage>?
 	get() = SUBSCRIPTION_TYPES.firstOrNull { it.messageType == this }

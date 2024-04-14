@@ -42,7 +42,7 @@ fun ParameterHolder.apiInstanceHolder(jellyfin: Jellyfin): Lazy<ApiClient> {
 			// Authenticate manually if access token is not provided
 			if (api.accessToken == null && username.value != null) {
 				val response by api.userApi.authenticateUserByName(username.value.orEmpty(), password.value.orEmpty())
-				api.accessToken = response.accessToken
+				api.update(accessToken = response.accessToken)
 			}
 
 			// Return

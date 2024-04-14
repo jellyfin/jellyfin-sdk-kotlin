@@ -3,7 +3,7 @@ package org.jellyfin.sdk.api.client
 import org.jellyfin.sdk.api.client.exception.MissingBaseUrlException
 import org.jellyfin.sdk.api.client.util.UrlBuilder
 import org.jellyfin.sdk.api.operations.Api
-import org.jellyfin.sdk.api.sockets.SocketInstance
+import org.jellyfin.sdk.api.sockets.SocketApi
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import kotlin.reflect.KClass
@@ -93,7 +93,11 @@ public abstract class ApiClient {
 		requestBody: Any? = null,
 	): RawResponse
 
-	public abstract fun ws(): SocketInstance
+	/**
+	 * Get the instance of the SocketApi for this ApiClient.
+	 * @see SocketApi
+	 */
+	public abstract val webSocket: SocketApi
 
 	private val apiInstances = mutableMapOf<KClass<out Api>, Api>()
 

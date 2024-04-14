@@ -1,5 +1,6 @@
 package org.jellyfin.sdk.api.client
 
+import org.jellyfin.sdk.api.sockets.SocketReconnectPolicy
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 
@@ -30,4 +31,10 @@ public data class HttpClientOptions(
 	 * Defaults to 30 seconds.
 	 */
 	val socketTimeout: Duration = 30.seconds,
+
+	/**
+	 * Policy to use for WebSocket reconnections.
+	 * Defaults to [SocketReconnectPolicy.ExponentialDelayReconnect].
+	 */
+	val socketReconnectPolicy: SocketReconnectPolicy = SocketReconnectPolicy.ExponentialDelayReconnect(),
 )

@@ -5,7 +5,6 @@ import org.jellyfin.sdk.api.client.HttpClientOptions
 import org.jellyfin.sdk.api.client.HttpMethod
 import org.jellyfin.sdk.api.client.RawResponse
 import org.jellyfin.sdk.api.sockets.SocketConnectionFactory
-import org.jellyfin.sdk.api.sockets.SocketInstance
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 
@@ -25,6 +24,4 @@ public expect open class KtorClient(
 		queryParameters: Map<String, Any?>,
 		requestBody: Any?,
 	): RawResponse
-
-	public override fun ws(): SocketInstance
 }

@@ -14,11 +14,8 @@ import org.jellyfin.sdk.model.api.SessionsStopMessage
 /**
  * All socket message types that require a subscription. Each type contains the message type and start/stop message
  * constructors. If a message type does not exist in this set it does not need a start/stop message.
- *
- * This is an internal type. Do not use this in your application.
  */
-@Suppress("MoveLambdaOutsideParentheses")
-public val SUBSCRIPTION_TYPES: Set<SubscriptionType<out OutboundWebSocketMessage>> = setOf(
+internal val SUBSCRIPTION_TYPES: Set<SubscriptionType<out OutboundWebSocketMessage>> = setOf(
 	subscriptionType<SessionsMessage>(
 		{ period -> SessionsStartMessage(period.toString()) },
 		{ SessionsStopMessage() }

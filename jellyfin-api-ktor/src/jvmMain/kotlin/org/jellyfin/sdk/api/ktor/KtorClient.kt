@@ -33,8 +33,9 @@ import org.jellyfin.sdk.api.client.exception.ssl.InvalidSSLProtocolImplementatio
 import org.jellyfin.sdk.api.client.exception.ssl.PeerNotAuthenticatedException
 import org.jellyfin.sdk.api.client.util.ApiSerializer
 import org.jellyfin.sdk.api.client.util.AuthorizationHeaderBuilder
+import org.jellyfin.sdk.api.sockets.DefaultSocketApi
+import org.jellyfin.sdk.api.sockets.SocketApi
 import org.jellyfin.sdk.api.sockets.SocketConnectionFactory
-import org.jellyfin.sdk.api.sockets.SocketInstance
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import java.io.IOException
@@ -56,7 +57,7 @@ public actual open class KtorClient actual constructor(
 	override val httpClientOptions: HttpClientOptions,
 	private val socketConnectionFactory: SocketConnectionFactory,
 ) : ApiClient() {
-	private val client: HttpClient = HttpClient {
+	private val _client: HttpClient = HttpClient {
 		followRedirects = httpClientOptions.followRedirects
 		expectSuccess = false
 
@@ -67,11 +68,18 @@ public actual open class KtorClient actual constructor(
 		}
 	}
 
+	private val _webSocket = lazy {
+		DefaultSocketApi(this, httpClientOptions.socketReconnectPolicy, socketConnectionFactory)
+	}
+
 	override fun update(baseUrl: String?, accessToken: String?, clientInfo: ClientInfo, deviceInfo: DeviceInfo) {
 		this.baseUrl = baseUrl
 		this.accessToken = accessToken
 		this.clientInfo = clientInfo
 		this.deviceInfo = deviceInfo
+
+		// Notify websocket only if initialized
+		if (_webSocket.isInitialized()) _webSocket.value.notifyApiClientUpdate()
 	}
 
 	@Suppress("ThrowsCount")
@@ -92,7 +100,7 @@ public actual open class KtorClient actual constructor(
 		}
 
 		try {
-			val response = client.request(url) {
+			val response = _client.request(url) {
 				this.method = method.asKtorHttpMethod()
 
 				header(
@@ -169,7 +177,7 @@ public actual open class KtorClient actual constructor(
 		}
 	}
 
-	public actual override fun ws(): SocketInstance = SocketInstance(this, socketConnectionFactory)
+	override val webSocket: SocketApi by _webSocket
 
 	private fun HttpMethod.asKtorHttpMethod(): KtorHttpMethod = when (this) {
 		HttpMethod.GET -> KtorHttpMethod.Get
