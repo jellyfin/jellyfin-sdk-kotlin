@@ -7,8 +7,9 @@
 
 package org.jellyfin.sdk.model.api
 
+import kotlin.Boolean
 import kotlin.String
-import kotlin.collections.Map
+import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
@@ -16,38 +17,29 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * This is used by the api to get information about a Person within a BaseItem.
+ * Update existing playlist dto. Fields set to `null` will not be updated and keep their current
+ * values.
  */
 @Serializable
-public data class BaseItemPerson(
+public data class UpdatePlaylistDto(
 	/**
-	 * The name.
+	 * The name of the new playlist.
 	 */
 	@SerialName("Name")
 	public val name: String? = null,
 	/**
-	 * The identifier.
+	 * Item ids of the playlist.
 	 */
-	@SerialName("Id")
-	public val id: UUID,
+	@SerialName("Ids")
+	public val ids: List<UUID>? = null,
 	/**
-	 * The role.
+	 * The playlist users.
 	 */
-	@SerialName("Role")
-	public val role: String? = null,
+	@SerialName("Users")
+	public val users: List<PlaylistUserPermissions>? = null,
 	/**
-	 * The type.
+	 * A value indicating whether the playlist is public.
 	 */
-	@SerialName("Type")
-	public val type: PersonKind,
-	/**
-	 * The primary image tag.
-	 */
-	@SerialName("PrimaryImageTag")
-	public val primaryImageTag: String? = null,
-	/**
-	 * The primary image blurhash.
-	 */
-	@SerialName("ImageBlurHashes")
-	public val imageBlurHashes: Map<ImageType, Map<String, String>>? = null,
+	@SerialName("IsPublic")
+	public val isPublic: Boolean? = null,
 )

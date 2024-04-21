@@ -10,26 +10,29 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The collection type options.
+ */
 @Serializable
 public enum class CollectionTypeOptions(
 	public val serialName: String,
 ) {
-	@SerialName("Movies")
-	MOVIES("Movies"),
-	@SerialName("TvShows")
-	TV_SHOWS("TvShows"),
-	@SerialName("Music")
-	MUSIC("Music"),
-	@SerialName("MusicVideos")
-	MUSIC_VIDEOS("MusicVideos"),
-	@SerialName("HomeVideos")
-	HOME_VIDEOS("HomeVideos"),
-	@SerialName("BoxSets")
-	BOX_SETS("BoxSets"),
-	@SerialName("Books")
-	BOOKS("Books"),
-	@SerialName("Mixed")
-	MIXED("Mixed"),
+	@SerialName("movies")
+	MOVIES("movies"),
+	@SerialName("tvshows")
+	TVSHOWS("tvshows"),
+	@SerialName("music")
+	MUSIC("music"),
+	@SerialName("musicvideos")
+	MUSICVIDEOS("musicvideos"),
+	@SerialName("homevideos")
+	HOMEVIDEOS("homevideos"),
+	@SerialName("boxsets")
+	BOXSETS("boxsets"),
+	@SerialName("books")
+	BOOKS("books"),
+	@SerialName("mixed")
+	MIXED("mixed"),
 	;
 
 	/**
@@ -42,14 +45,14 @@ public enum class CollectionTypeOptions(
 		 * Find the enum member by the serial name or return null.
 		 */
 		public fun fromNameOrNull(serialName: String): CollectionTypeOptions? = when (serialName) {
-			"Movies" -> MOVIES
-			"TvShows" -> TV_SHOWS
-			"Music" -> MUSIC
-			"MusicVideos" -> MUSIC_VIDEOS
-			"HomeVideos" -> HOME_VIDEOS
-			"BoxSets" -> BOX_SETS
-			"Books" -> BOOKS
-			"Mixed" -> MIXED
+			"movies" -> MOVIES
+			"tvshows" -> TVSHOWS
+			"music" -> MUSIC
+			"musicvideos" -> MUSICVIDEOS
+			"homevideos" -> HOMEVIDEOS
+			"boxsets" -> BOXSETS
+			"books" -> BOOKS
+			"mixed" -> MIXED
 			else -> null
 		}
 

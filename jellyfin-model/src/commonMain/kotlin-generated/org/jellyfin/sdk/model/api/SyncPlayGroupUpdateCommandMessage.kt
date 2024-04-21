@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @SerialName("SyncPlayGroupUpdate")
 public data class SyncPlayGroupUpdateCommandMessage(
 	/**
-	 * The data.
+	 * Group update without data.
 	 */
 	@SerialName("Data")
 	public val `data`: GroupUpdate? = null,

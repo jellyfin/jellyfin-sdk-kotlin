@@ -345,7 +345,6 @@ public final class org/jellyfin/sdk/api/operations/ConfigurationApi : org/jellyf
 	public final fun getNamedConfiguration (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getNamedConfigurationUrl (Ljava/lang/String;)Ljava/lang/String;
 	public final fun updateConfiguration (Lorg/jellyfin/sdk/model/api/ServerConfiguration;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public final fun updateMediaEncoderPath (Lorg/jellyfin/sdk/model/api/MediaEncoderPathDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun updateNamedConfiguration (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
@@ -919,8 +918,8 @@ public final class org/jellyfin/sdk/api/operations/PlayStateApi : org/jellyfin/s
 
 public final class org/jellyfin/sdk/api/operations/PlaylistsApi : org/jellyfin/sdk/api/operations/Api {
 	public fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;)V
-	public final fun addToPlaylist (Ljava/util/UUID;Ljava/util/Collection;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun addToPlaylist$default (Lorg/jellyfin/sdk/api/operations/PlaylistsApi;Ljava/util/UUID;Ljava/util/Collection;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun addItemToPlaylist (Ljava/util/UUID;Ljava/util/Collection;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun addItemToPlaylist$default (Lorg/jellyfin/sdk/api/operations/PlaylistsApi;Ljava/util/UUID;Ljava/util/Collection;Ljava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun createPlaylist (Lorg/jellyfin/sdk/model/api/CreatePlaylistDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun createPlaylist$default (Lorg/jellyfin/sdk/api/operations/PlaylistsApi;Lorg/jellyfin/sdk/model/api/CreatePlaylistDto;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun createPlaylistDeprecated (Ljava/lang/String;Ljava/util/Collection;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/MediaType;Lorg/jellyfin/sdk/model/api/CreatePlaylistDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
@@ -928,9 +927,14 @@ public final class org/jellyfin/sdk/api/operations/PlaylistsApi : org/jellyfin/s
 	public final fun getPlaylistItems (Ljava/util/UUID;Ljava/util/UUID;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/util/Collection;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/util/Collection;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getPlaylistItems (Lorg/jellyfin/sdk/model/api/request/GetPlaylistItemsRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun getPlaylistItems$default (Lorg/jellyfin/sdk/api/operations/PlaylistsApi;Ljava/util/UUID;Ljava/util/UUID;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/util/Collection;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/util/Collection;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun getPlaylistUser (Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getPlaylistUsers (Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun moveItem (Ljava/lang/String;Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public final fun removeFromPlaylist (Ljava/lang/String;Ljava/util/Collection;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun removeFromPlaylist$default (Lorg/jellyfin/sdk/api/operations/PlaylistsApi;Ljava/lang/String;Ljava/util/Collection;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun removeItemFromPlaylist (Ljava/lang/String;Ljava/util/Collection;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun removeItemFromPlaylist$default (Lorg/jellyfin/sdk/api/operations/PlaylistsApi;Ljava/lang/String;Ljava/util/Collection;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun removeUserFromPlaylist (Ljava/util/UUID;Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updatePlaylist (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/UpdatePlaylistDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updatePlaylistUser (Ljava/util/UUID;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/UpdatePlaylistUserDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class org/jellyfin/sdk/api/operations/PluginsApi : org/jellyfin/sdk/api/operations/Api {

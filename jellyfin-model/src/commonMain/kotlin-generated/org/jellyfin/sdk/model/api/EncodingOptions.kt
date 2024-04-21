@@ -224,11 +224,6 @@ public data class EncodingOptions(
 	@SerialName("AllowAv1Encoding")
 	public val allowAv1Encoding: Boolean,
 	/**
-	 * A value indicating whether MJPEG encoding is enabled.
-	 */
-	@SerialName("AllowMjpegEncoding")
-	public val allowMjpegEncoding: Boolean,
-	/**
 	 * A value indicating whether subtitle extraction is enabled.
 	 */
 	@SerialName("EnableSubtitleExtraction")
