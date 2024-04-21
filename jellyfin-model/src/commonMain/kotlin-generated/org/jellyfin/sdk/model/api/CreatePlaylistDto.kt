@@ -7,6 +7,7 @@
 
 package org.jellyfin.sdk.model.api
 
+import kotlin.Boolean
 import kotlin.String
 import kotlin.collections.List
 import kotlinx.serialization.SerialName
@@ -24,7 +25,7 @@ public data class CreatePlaylistDto(
 	 * The name of the new playlist.
 	 */
 	@SerialName("Name")
-	public val name: String? = null,
+	public val name: String,
 	/**
 	 * Item ids to add to the playlist.
 	 */
@@ -40,4 +41,14 @@ public data class CreatePlaylistDto(
 	 */
 	@SerialName("MediaType")
 	public val mediaType: MediaType? = null,
+	/**
+	 * The playlist users.
+	 */
+	@SerialName("Users")
+	public val users: List<PlaylistUserPermissions>,
+	/**
+	 * A value indicating whether the playlist is public.
+	 */
+	@SerialName("IsPublic")
+	public val isPublic: Boolean,
 )

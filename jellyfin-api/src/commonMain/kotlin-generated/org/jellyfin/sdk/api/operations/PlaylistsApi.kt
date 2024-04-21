@@ -12,6 +12,7 @@ import kotlin.Int
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.Collection
+import kotlin.collections.List
 import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
@@ -27,6 +28,9 @@ import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.MediaType
 import org.jellyfin.sdk.model.api.PlaylistCreationResult
+import org.jellyfin.sdk.model.api.PlaylistUserPermissions
+import org.jellyfin.sdk.model.api.UpdatePlaylistDto
+import org.jellyfin.sdk.model.api.UpdatePlaylistUserDto
 import org.jellyfin.sdk.model.api.request.GetPlaylistItemsRequest
 
 public class PlaylistsApi(
@@ -39,7 +43,7 @@ public class PlaylistsApi(
 	 * @param ids Item id, comma delimited.
 	 * @param userId The userId.
 	 */
-	public suspend fun addToPlaylist(
+	public suspend fun addItemToPlaylist(
 		playlistId: UUID,
 		ids: Collection<UUID>? = emptyList(),
 		userId: UUID? = null,
@@ -164,6 +168,41 @@ public class PlaylistsApi(
 	)
 
 	/**
+	 * Get a playlist user.
+	 *
+	 * @param playlistId The playlist id.
+	 * @param userId The user id.
+	 */
+	public suspend fun getPlaylistUser(playlistId: UUID, userId: UUID):
+			Response<PlaylistUserPermissions> {
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("playlistId", playlistId)
+			put("userId", userId)
+		}
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<PlaylistUserPermissions>("/Playlists/{playlistId}/Users/{userId}",
+				pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Get a playlist's users.
+	 *
+	 * @param playlistId The playlist id.
+	 */
+	public suspend fun getPlaylistUsers(playlistId: UUID): Response<List<PlaylistUserPermissions>> {
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("playlistId", playlistId)
+		}
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<List<PlaylistUserPermissions>>("/Playlists/{playlistId}/Users",
+				pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Moves a playlist item.
 	 *
 	 * @param playlistId The playlist id.
@@ -193,7 +232,7 @@ public class PlaylistsApi(
 	 * @param playlistId The playlist id.
 	 * @param entryIds The item ids, comma delimited.
 	 */
-	public suspend fun removeFromPlaylist(playlistId: String, entryIds: Collection<String>? =
+	public suspend fun removeItemFromPlaylist(playlistId: String, entryIds: Collection<String>? =
 			emptyList()): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("playlistId", playlistId)
@@ -204,6 +243,59 @@ public class PlaylistsApi(
 		val data = null
 		val response = api.delete<Unit>("/Playlists/{playlistId}/Items", pathParameters, queryParameters,
 				data)
+		return response
+	}
+
+	/**
+	 * Remove a user from a playlist's users.
+	 *
+	 * @param playlistId The playlist id.
+	 * @param userId The user id.
+	 */
+	public suspend fun removeUserFromPlaylist(playlistId: UUID, userId: UUID): Response<Unit> {
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("playlistId", playlistId)
+			put("userId", userId)
+		}
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.delete<Unit>("/Playlists/{playlistId}/Users/{userId}", pathParameters,
+				queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Updates a playlist.
+	 *
+	 * @param playlistId The playlist id.
+	 */
+	public suspend fun updatePlaylist(playlistId: UUID, `data`: UpdatePlaylistDto): Response<Unit> {
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("playlistId", playlistId)
+		}
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Playlists/{playlistId}", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Modify a user of a playlist's users.
+	 *
+	 * @param playlistId The playlist id.
+	 * @param userId The user id.
+	 */
+	public suspend fun updatePlaylistUser(
+		playlistId: UUID,
+		userId: UUID,
+		`data`: UpdatePlaylistUserDto,
+	): Response<Unit> {
+		val pathParameters = buildMap<String, Any?>(2) {
+			put("playlistId", playlistId)
+			put("userId", userId)
+		}
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Playlists/{playlistId}/Users/{userId}", pathParameters,
+				queryParameters, data)
 		return response
 	}
 }

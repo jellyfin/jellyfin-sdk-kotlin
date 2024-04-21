@@ -22,6 +22,11 @@ public data class TrickplayOptions(
 	@SerialName("EnableHwAcceleration")
 	public val enableHwAcceleration: Boolean,
 	/**
+	 * A value indicating whether or not to use HW accelerated MJPEG encoding.
+	 */
+	@SerialName("EnableHwEncoding")
+	public val enableHwEncoding: Boolean,
+	/**
 	 * The behavior used by trickplay provider on library scan/update.
 	 */
 	@SerialName("ScanBehavior")

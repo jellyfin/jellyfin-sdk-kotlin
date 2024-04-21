@@ -16,7 +16,6 @@ import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.post
-import org.jellyfin.sdk.model.api.MediaEncoderPathDto
 import org.jellyfin.sdk.model.api.MetadataOptions
 import org.jellyfin.sdk.model.api.ServerConfiguration
 
@@ -83,16 +82,6 @@ public class ConfigurationApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/System/Configuration", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Updates the path to the media encoder.
-	 */
-	public suspend fun updateMediaEncoderPath(`data`: MediaEncoderPathDto): Response<Unit> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/System/MediaEncoder/Path", pathParameters, queryParameters, data)
 		return response
 	}
 

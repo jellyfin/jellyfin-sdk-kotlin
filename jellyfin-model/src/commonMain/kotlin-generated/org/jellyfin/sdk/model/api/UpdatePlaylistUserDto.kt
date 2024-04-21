@@ -5,23 +5,19 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
-import kotlin.String
+import kotlin.Boolean
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Media Encoder Path Dto.
+ * Update existing playlist user dto. Fields set to `null` will not be updated and keep their
+ * current values.
  */
 @Serializable
-public data class MediaEncoderPathDto(
+public data class UpdatePlaylistUserDto(
 	/**
-	 * Media encoder path.
+	 * A value indicating whether the user can edit the playlist.
 	 */
-	@SerialName("Path")
-	public val path: String,
-	/**
-	 * Media encoder path type.
-	 */
-	@SerialName("PathType")
-	public val pathType: String,
+	@SerialName("CanEdit")
+	public val canEdit: Boolean? = null,
 )

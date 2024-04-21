@@ -14,6 +14,8 @@ import kotlin.String
 import kotlin.collections.Collection
 import kotlin.collections.buildMap
 import kotlin.collections.emptyList
+import kotlin.require
+import kotlin.text.Regex
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -71,6 +73,8 @@ public class UniversalAudioApi(
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
+		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(transcodingContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(transcodingContainer)) { """Parameter "transcodingContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(17) {
 			put("container", container)
 			put("mediaSourceId", mediaSourceId)
@@ -170,6 +174,8 @@ public class UniversalAudioApi(
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
+		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(transcodingContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(transcodingContainer)) { """Parameter "transcodingContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(17) {
 			put("container", container)
 			put("mediaSourceId", mediaSourceId)

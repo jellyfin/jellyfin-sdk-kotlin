@@ -7,6 +7,7 @@
 
 package org.jellyfin.sdk.model.api
 
+import kotlin.Boolean
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
@@ -14,24 +15,18 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Plugin installation completed message.
+ * Class to hold data on user permissions for playlists.
  */
 @Serializable
-@SerialName("PackageInstallationCompleted")
-public data class PluginInstallationCompletedMessage(
+public data class PlaylistUserPermissions(
 	/**
-	 * Class InstallationInfo.
+	 * The user id.
 	 */
-	@SerialName("Data")
-	public val `data`: InstallationInfo? = null,
+	@SerialName("UserId")
+	public val userId: UUID,
 	/**
-	 * The message id.
+	 * A value indicating whether the user has edit permissions.
 	 */
-	@SerialName("MessageId")
-	override val messageId: UUID,
-) : OutboundWebSocketMessage {
-	/**
-	 * The different kinds of messages that are used in the WebSocket api.
-	 */
-	override val messageType: SessionMessageType = SessionMessageType.PACKAGE_INSTALLATION_COMPLETED
-}
+	@SerialName("CanEdit")
+	public val canEdit: Boolean,
+)
