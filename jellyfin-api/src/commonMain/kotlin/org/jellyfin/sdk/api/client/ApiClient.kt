@@ -8,6 +8,10 @@ import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import kotlin.reflect.KClass
 
+private const val UPDATE_DEPRECATION_MESSAGE =
+	"This property should not be set directly as changes are not propagated to the WebSocket connection." +
+		" Migrate to using the update() function instead."
+
 public abstract class ApiClient {
 	public companion object {
 		/**
@@ -26,27 +30,41 @@ public abstract class ApiClient {
 	 * URL to use as base for API endpoints. Should include the protocol and may contain a path.
 	 */
 	public abstract var baseUrl: String?
+		@Deprecated(UPDATE_DEPRECATION_MESSAGE) set
 
 	/**
 	 * Access token to use for requests. Appended to all requests if set.
 	 */
 	public abstract var accessToken: String?
+		@Deprecated(UPDATE_DEPRECATION_MESSAGE) set
 
 	/**
 	 * Information about the client / application send in all API requests.
 	 */
 	public abstract var clientInfo: ClientInfo
+		@Deprecated(UPDATE_DEPRECATION_MESSAGE) set
 
 	/**
 	 * Information about the device send in all API requests. Only a single session is allowed per
 	 * device id.
 	 */
 	public abstract var deviceInfo: DeviceInfo
+		@Deprecated(UPDATE_DEPRECATION_MESSAGE) set
 
 	/**
 	 * HTTP Options for this ApiClient.
 	 */
 	public abstract val httpClientOptions: HttpClientOptions
+
+	/**
+	 * Change the authorization values used in this ApiClient instance.
+	 */
+	public abstract fun update(
+		baseUrl: String? = this.baseUrl,
+		accessToken: String? = this.accessToken,
+		clientInfo: ClientInfo = this.clientInfo,
+		deviceInfo: DeviceInfo = this.deviceInfo,
+	)
 
 	/**
 	 * Create a complete url based on the [baseUrl] and given parameters.
