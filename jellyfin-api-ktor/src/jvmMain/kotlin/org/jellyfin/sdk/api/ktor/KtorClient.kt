@@ -36,7 +36,6 @@ import org.jellyfin.sdk.api.sockets.SocketConnectionFactory
 import org.jellyfin.sdk.api.sockets.SocketInstance
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
-import org.jellyfin.sdk.model.UUID
 import java.io.IOException
 import java.net.ConnectException
 import java.net.UnknownHostException
@@ -51,7 +50,6 @@ import io.ktor.http.HttpMethod as KtorHttpMethod
 public actual open class KtorClient actual constructor(
 	override var baseUrl: String?,
 	override var accessToken: String?,
-	override var userId: UUID?,
 	override var clientInfo: ClientInfo,
 	override var deviceInfo: DeviceInfo,
 	override val httpClientOptions: HttpClientOptions,
