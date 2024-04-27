@@ -7,7 +7,6 @@ import org.jellyfin.sdk.discovery.DiscoveryService
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.ServerVersion
-import org.jellyfin.sdk.model.UUID
 
 public class Jellyfin(
 	public val options: JellyfinOptions,
@@ -43,7 +42,6 @@ public class Jellyfin(
 	public fun createApi(
 		baseUrl: String? = null,
 		accessToken: String? = null,
-		userId: UUID? = null,
 		clientInfo: ClientInfo? = options.clientInfo,
 		deviceInfo: DeviceInfo? = options.deviceInfo,
 		httpClientOptions: HttpClientOptions = HttpClientOptions(),
@@ -58,7 +56,6 @@ public class Jellyfin(
 		return options.apiClientFactory.create(
 			baseUrl = baseUrl,
 			accessToken = accessToken,
-			userId = userId,
 			clientInfo = clientInfo,
 			deviceInfo = deviceInfo,
 			httpClientOptions = httpClientOptions,
