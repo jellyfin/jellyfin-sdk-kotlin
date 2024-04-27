@@ -66,6 +66,13 @@ public actual open class KtorClient actual constructor(
 		}
 	}
 
+	override fun update(baseUrl: String?, accessToken: String?, clientInfo: ClientInfo, deviceInfo: DeviceInfo) {
+		this.baseUrl = baseUrl
+		this.accessToken = accessToken
+		this.clientInfo = clientInfo
+		this.deviceInfo = deviceInfo
+	}
+
 	@Suppress("ThrowsCount")
 	public actual override suspend fun request(
 		method: HttpMethod,
