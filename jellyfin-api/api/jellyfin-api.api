@@ -17,6 +17,8 @@ public abstract class org/jellyfin/sdk/api/client/ApiClient {
 	public abstract fun setBaseUrl (Ljava/lang/String;)V
 	public abstract fun setClientInfo (Lorg/jellyfin/sdk/model/ClientInfo;)V
 	public abstract fun setDeviceInfo (Lorg/jellyfin/sdk/model/DeviceInfo;)V
+	public abstract fun update (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;)V
+	public static synthetic fun update$default (Lorg/jellyfin/sdk/api/client/ApiClient;Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;ILjava/lang/Object;)V
 	public abstract fun ws ()Lorg/jellyfin/sdk/api/sockets/SocketInstance;
 }
 
