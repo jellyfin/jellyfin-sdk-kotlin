@@ -74,7 +74,10 @@ public class AddressCandidateHelper(
 		candidates
 			.filter { it.protocol == URLProtocol.HTTP }
 			.forEach {
-				candidates.add(URLBuilder(it).apply { protocol = URLProtocol.HTTPS }.build())
+				candidates.add(URLBuilder(it).apply {
+					protocol = URLProtocol.HTTPS
+					if (port == URLProtocol.HTTP.defaultPort) port = URLProtocol.HTTPS.defaultPort
+				}.build())
 			}
 	}
 
