@@ -2,6 +2,7 @@ package org.jellyfin.sdk.api.client.util
 
 import io.ktor.http.URLBuilder
 import io.ktor.http.encodeURLParameter
+import io.ktor.http.encodedPath
 import io.ktor.http.takeFrom
 import org.jellyfin.sdk.api.client.exception.MissingPathVariableException
 
