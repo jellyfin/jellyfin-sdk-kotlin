@@ -74,7 +74,7 @@ public class AddressCandidateHelper(
 		candidates
 			.filter { it.protocol == URLProtocol.HTTP }
 			.forEach {
-				candidates.add(it.copy(protocol = URLProtocol.HTTPS))
+				candidates.add(URLBuilder(it).apply { protocol = URLProtocol.HTTPS }.build())
 			}
 	}
 
@@ -91,12 +91,12 @@ public class AddressCandidateHelper(
 			.forEach {
 				when (it.protocol) {
 					URLProtocol.HTTP -> {
-						candidates.add(it.copy(specifiedPort = JF_HTTP_PORT))
+						candidates.add(URLBuilder(it).apply { port = JF_HTTP_PORT }.build())
 					}
 
 					URLProtocol.HTTPS -> {
-						candidates.add(it.copy(specifiedPort = JF_HTTP_PORT))
-						candidates.add(it.copy(specifiedPort = JF_HTTPS_PORT))
+						candidates.add(URLBuilder(it).apply { port = JF_HTTP_PORT }.build())
+						candidates.add(URLBuilder(it).apply { port = JF_HTTPS_PORT }.build())
 					}
 				}
 			}
