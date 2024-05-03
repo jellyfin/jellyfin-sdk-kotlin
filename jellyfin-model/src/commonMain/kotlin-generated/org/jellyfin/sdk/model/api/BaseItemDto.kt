@@ -681,10 +681,10 @@ public data class BaseItemDto(
 	@SerialName("TimerId")
 	public val timerId: String? = null,
 	/**
-	 * The LUFS value.
+	 * The gain required for audio normalization.
 	 */
-	@SerialName("LUFS")
-	public val lufs: Float? = null,
+	@SerialName("NormalizationGain")
+	public val normalizationGain: Float? = null,
 	/**
 	 * The current program.
 	 */
