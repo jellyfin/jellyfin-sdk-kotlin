@@ -23,8 +23,6 @@ public data class LibraryOptions(
 	public val enableRealtimeMonitor: Boolean,
 	@SerialName("EnableLUFSScan")
 	public val enableLufsScan: Boolean,
-	@SerialName("UseReplayGainTags")
-	public val useReplayGainTags: Boolean,
 	@SerialName("EnableChapterImageExtraction")
 	public val enableChapterImageExtraction: Boolean,
 	@SerialName("ExtractChapterImagesDuringLibraryScan")
