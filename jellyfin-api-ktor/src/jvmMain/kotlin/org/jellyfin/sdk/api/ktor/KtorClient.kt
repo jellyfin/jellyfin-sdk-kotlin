@@ -2,18 +2,19 @@ package org.jellyfin.sdk.api.ktor
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.NoTransformationFoundException
-import io.ktor.client.features.HttpRequestTimeoutException
-import io.ktor.client.features.HttpTimeout
+import io.ktor.client.network.sockets.ConnectTimeoutException
+import io.ktor.client.network.sockets.SocketTimeoutException
+import io.ktor.client.plugins.HttpRequestTimeoutException
+import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.request.header
 import io.ktor.client.request.request
-import io.ktor.client.statement.HttpResponse
+import io.ktor.client.request.setBody
+import io.ktor.client.statement.bodyAsChannel
 import io.ktor.content.ByteArrayContent
 import io.ktor.content.TextContent
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.isSuccess
-import io.ktor.network.sockets.ConnectTimeoutException
-import io.ktor.network.sockets.SocketTimeoutException
 import io.ktor.util.toMap
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
@@ -91,7 +92,7 @@ public actual open class KtorClient actual constructor(
 		}
 
 		try {
-			val response = client.request<HttpResponse>(url) {
+			val response = client.request(url) {
 				this.method = method.asKtorHttpMethod()
 
 				header(
@@ -112,12 +113,12 @@ public actual open class KtorClient actual constructor(
 
 				when (requestBody) {
 					// String content
-					is String -> body = TextContent(requestBody, ContentType.Text.Plain)
+					is String -> setBody(TextContent(requestBody, ContentType.Text.Plain))
 					// Binary content
-					is ByteArray -> body = ByteArrayContent(requestBody, ContentType.Application.OctetStream)
+					is ByteArray -> setBody(ByteArrayContent(requestBody, ContentType.Application.OctetStream))
 					// Json content
 					else -> ApiSerializer.encodeRequestBody(requestBody)?.let { encodedRequestBody ->
-						body = TextContent(encodedRequestBody, ContentType.Application.Json)
+						setBody(TextContent(encodedRequestBody, ContentType.Application.Json))
 					}
 				}
 			}
@@ -125,7 +126,7 @@ public actual open class KtorClient actual constructor(
 			// Check HTTP status
 			if (!response.status.isSuccess()) throw InvalidStatusException(response.status.value)
 			// Return custom response instance
-			return RawResponse(response.content, response.status.value, response.headers.toMap())
+			return RawResponse(response.bodyAsChannel(), response.status.value, response.headers.toMap())
 		} catch (err: UnknownHostException) {
 			logger.debug(err) { "HTTP host unreachable" }
 			throw TimeoutException("HTTP host unreachable", err)
