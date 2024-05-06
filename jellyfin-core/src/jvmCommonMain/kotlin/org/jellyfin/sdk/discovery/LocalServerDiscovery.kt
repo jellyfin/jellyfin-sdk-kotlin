@@ -1,7 +1,9 @@
 package org.jellyfin.sdk.discovery
 
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.isActive
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
@@ -121,5 +123,5 @@ public actual class LocalServerDiscovery actual constructor(jellyfinOptions: Jel
 		socket.close()
 
 		logger.debug { "End" }
-	}
+	}.flowOn(Dispatchers.IO)
 }
