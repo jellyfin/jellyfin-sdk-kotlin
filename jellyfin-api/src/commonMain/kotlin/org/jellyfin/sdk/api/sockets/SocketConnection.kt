@@ -24,6 +24,7 @@ public interface SocketConnection {
 
 	/**
 	 * Send a message to this connection. Messages may be added to an internal queue and be slightly delayed.
+	 * The implementation must enqueue messages send while still connecting.
 	 *
 	 * @return false when failed to send/queue. true when it's likely the message will be sent. It may still be possible
 	 * that a message fails to send from a queue to the server.

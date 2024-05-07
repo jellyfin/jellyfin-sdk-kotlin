@@ -7,6 +7,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.WhileSubscribed
@@ -86,18 +87,18 @@ public class DefaultSocketApi(
 	/**
 	 * Supervisor scope used for coroutines launched as part of the WebSocket connection.
 	 */
-	private val _scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
+	private val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
 
 	/**
 	 * Instance of the actual socket connection.
 	 */
-	private val _socketConnection = socketConnectionFactory.create(api.httpClientOptions, _scope)
+	private val socketConnection = socketConnectionFactory.create(api.httpClientOptions, scope)
 
 	/**
 	 * Reference for the keep alive job.
 	 * @see resetKeepAliveTicker
 	 */
-	private var _keepAliveTicker: Job? = null
+	private var keepAliveTicker: Job? = null
 
 	/**
 	 * Count of active subscriptions. Used to safely close WebSocket connections.
@@ -122,27 +123,27 @@ public class DefaultSocketApi(
 	/**
 	 * Flow indicating the current status of the WebSocket connection.
 	 */
-	override val state: StateFlow<SocketApiState> = _socketConnection
+	override val state: StateFlow<SocketApiState> = socketConnection
 		.state
 		.map { connectionState ->
 			when (connectionState) {
-				SocketConnectionState.CONNECTING -> SocketApiState.CONNECTING
-				is SocketConnectionState.DISCONNECTED -> SocketApiState.DISCONNECTED(connectionState.error)
-				is SocketConnectionState.MESSAGE -> SocketApiState.CONNECTED
+				SocketConnectionState.Connecting -> SocketApiState.Connecting
+				is SocketConnectionState.Disconnected -> SocketApiState.Disconnected(connectionState.error)
+				is SocketConnectionState.Message -> SocketApiState.Connected
 			}
 		}
 		.distinctUntilChanged()
-		.stateIn(_scope, SharingStarted.WhileSubscribed(), SocketApiState.DISCONNECTED())
+		.stateIn(scope, SharingStarted.WhileSubscribed(), SocketApiState.Disconnected())
 
 	/**
 	 * Internal message flow. This implements most of the behavior for connecting, reconnecting, keep alive messages and
 	 * stopping the actual connection.
 	 */
-	private val _messages = _socketConnection
+	private val messages: SharedFlow<OutboundWebSocketMessage> = socketConnection
 		.state
 		.onEach { connectionState ->
 			// Automatically reconnect when the socket is closed while subscriptions are active
-			if (_subscriptionCount > 0 && _currentCredentials != null && connectionState is SocketConnectionState.DISCONNECTED) {
+			if (_subscriptionCount > 0 && _currentCredentials != null && connectionState is SocketConnectionState.Disconnected) {
 				socketReconnectPolicy.notifyDisconnected()
 
 				val reconnectDelay = socketReconnectPolicy.getReconnectDelay()
@@ -153,21 +154,19 @@ public class DefaultSocketApi(
 					}
 				} else {
 					logger.debug {
-
 						"WebSocket connection closed with $_subscriptionCount active subscriptions. " +
 							"Reconnect policy suggests waiting for $reconnectDelay."
 					}
 
-
 					// Schedule reconnect for 5 seconds
-					_scope.launch {
+					scope.launch {
 						delay(reconnectDelay)
 						reconnect()
 					}
 				}
 			}
 		}
-		.filterIsInstance<SocketConnectionState.MESSAGE>()
+		.filterIsInstance<SocketConnectionState.Message>()
 		.map { connectionState -> ApiSerializer.decodeSocketMessage(connectionState.message) }
 		.filter { message ->
 			// Intercept ForceKeepAliveMessage and filter it out
@@ -182,15 +181,15 @@ public class DefaultSocketApi(
 		}
 		.onStart { reconnect() }
 		.onCompletion {
-			_keepAliveTicker?.cancel()
-			_socketConnection.disconnect()
+			keepAliveTicker?.cancel()
+			socketConnection.disconnect()
 		}
-		.shareIn(_scope, SharingStarted.WhileSubscribed(stopTimeout = 5.seconds))
-
-	private val _connected get() = _socketConnection.state.value is SocketConnectionState.MESSAGE
+		.shareIn(scope, SharingStarted.WhileSubscribed(stopTimeout = 5.seconds))
 
 	/**
-	 * Function to register a subscription used by [subscribe] and [subscribeAll].
+	 * Function to register a subscription used by [subscribe] and [subscribeAll]. Returns a function that when invoked,
+	 * cancels the subscriptions again. The start and stop messages will automatically be sent based on the amount of
+	 * active subscriptions for each subscription type.
 	 */
 	private fun initializeSubscription(subscriptionTypes: Set<SubscriptionType<*>>): () -> Unit {
 		// Increase subscription count
@@ -200,12 +199,8 @@ public class DefaultSocketApi(
 		// Send start messages
 		for (type in subscriptionTypes) {
 			val currentUsage = _currentSubscriptionTypes.getOrDefault(type, 0)
-			if (currentUsage == 0 && _connected) _scope.launch {
-				publish(
-					type.createStartMessage(
-						SUBSCRIPTION_PERIOD
-					)
-				)
+			if (currentUsage == 0 && socketConnection.state.value is SocketConnectionState.Message) {
+				scope.launch { publish(type.createStartMessage(SUBSCRIPTION_PERIOD)) }
 			}
 			_currentSubscriptionTypes[type] = currentUsage + 1
 		}
@@ -218,20 +213,20 @@ public class DefaultSocketApi(
 
 			// Disconnect when subscription count reaches zero
 			val stopping = _subscriptionCount == 0
-			if (stopping) _scope.launch { _socketConnection.disconnect() }
+			if (stopping) scope.launch { socketConnection.disconnect() }
 
 			// Send stop messages
 			for (type in subscriptionTypes) {
 				val newUsage = _currentSubscriptionTypes.getOrDefault(type, 0) - 1
 				_currentSubscriptionTypes[type] = newUsage
 
-				if (newUsage == 0 && !stopping) _scope.launch { publish(type.createStopMessage()) }
+				if (newUsage == 0 && !stopping) scope.launch { publish(type.createStopMessage()) }
 			}
 		}
 	}
 
 	/**
-	 * Reset the keep alive ticker stored in [_keepAliveTicker]. Called automatically in the [_messages] flow filter.
+	 * Reset the keep alive ticker stored in [keepAliveTicker]. Called automatically in the [messages] flow filter.
 	 */
 	private fun resetKeepAliveTicker(lostTimeout: Duration) {
 		// The server considers a socket lost after [lostTimeout] seconds
@@ -239,8 +234,8 @@ public class DefaultSocketApi(
 		// 2 to get the delay between sending KeepAlive messages
 		val delay = lostTimeout / 2
 		logger.debug { "Using a KeepAlive message delay of ${delay.inWholeSeconds} seconds" }
-		_keepAliveTicker?.cancel()
-		_keepAliveTicker = _scope.launch(Dispatchers.Unconfined) {
+		keepAliveTicker?.cancel()
+		keepAliveTicker = scope.launch(Dispatchers.Unconfined) {
 			while (true) {
 				publish(InboundKeepAliveMessage())
 				delay(delay)
@@ -271,11 +266,11 @@ public class DefaultSocketApi(
 
 		// Make sure we have no connection when there are no valid credentials.
 		if (newCredentials == null) {
-			_socketConnection.disconnect()
-			_keepAliveTicker?.cancel()
+			socketConnection.disconnect()
+			keepAliveTicker?.cancel()
 		} else {
 			// Attempt connection
-			val connected = _socketConnection.connect(newCredentials.url, newCredentials.authorizationHeader)
+			val connected = socketConnection.connect(newCredentials.url, newCredentials.authorizationHeader)
 
 			if (connected) {
 				socketReconnectPolicy.notifyConnected()
@@ -289,11 +284,12 @@ public class DefaultSocketApi(
 	}
 
 	/**
-	 * Publish a message.
+	 * Publish a message to the server. Messages must be enqueued by the [socketConnection] implementation when the
+	 * WebSocket is still connecting. The queue is dropped on error/disconnect.
 	 */
 	private suspend fun publish(message: InboundWebSocketMessage) {
 		val encoded = ApiSerializer.encodeSocketMessage(message)
-		_socketConnection.send(encoded)
+		socketConnection.send(encoded)
 	}
 
 	/**
@@ -310,22 +306,22 @@ public class DefaultSocketApi(
 
 		// Initialize reconnect with new credentials
 		socketReconnectPolicy.notifyUpdated()
-		_scope.launch { reconnect() }
+		scope.launch { reconnect() }
 	}
 
 	/**
-	 * Subscribe to all incoming WebSocket messages.
+	 * Subscribe to all incoming WebSocket messages. Returns a flow that emits each deserialized message.
 	 * @see subscribe
 	 */
 	override fun subscribeAll(): Flow<OutboundWebSocketMessage> = flow {
 		val onComplete = initializeSubscription(SUBSCRIPTION_TYPES)
 		currentCoroutineContext().job.invokeOnCompletion { onComplete() }
 
-		_messages.collect { emit(it) }
+		messages.collect { emit(it) }
 	}
 
 	/**
-	 * Subscribe to a specific WebSocket message type.
+	 * Subscribe to a specific WebSocket message type. Returns a flow that emits each deserialized message of type [T].
 	 * @see subscribeAll
 	 */
 	override fun <T : OutboundWebSocketMessage> subscribe(messageType: KClass<T>): Flow<T> = flow {
@@ -333,6 +329,6 @@ public class DefaultSocketApi(
 		val onComplete = initializeSubscription(if (subscriptionType == null) emptySet() else setOf(subscriptionType))
 		currentCoroutineContext().job.invokeOnCompletion { onComplete() }
 
-		_messages.filterIsInstance(messageType).collect { emit(it) }
+		messages.filterIsInstance(messageType).collect { emit(it) }
 	}
 }

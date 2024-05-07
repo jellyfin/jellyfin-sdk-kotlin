@@ -57,7 +57,7 @@ public actual open class KtorClient actual constructor(
 	override val httpClientOptions: HttpClientOptions,
 	private val socketConnectionFactory: SocketConnectionFactory,
 ) : ApiClient() {
-	private val _client: HttpClient = HttpClient {
+	private val client: HttpClient = HttpClient {
 		followRedirects = httpClientOptions.followRedirects
 		expectSuccess = false
 
@@ -79,7 +79,9 @@ public actual open class KtorClient actual constructor(
 		this.deviceInfo = deviceInfo
 
 		// Notify websocket only if initialized
-		if (_webSocket.isInitialized()) _webSocket.value.notifyApiClientUpdate()
+		if (_webSocket.isInitialized()) {
+			_webSocket.value.notifyApiClientUpdate()
+		}
 	}
 
 	@Suppress("ThrowsCount")
@@ -100,7 +102,7 @@ public actual open class KtorClient actual constructor(
 		}
 
 		try {
-			val response = _client.request(url) {
+			val response = client.request(url) {
 				this.method = method.asKtorHttpMethod()
 
 				header(

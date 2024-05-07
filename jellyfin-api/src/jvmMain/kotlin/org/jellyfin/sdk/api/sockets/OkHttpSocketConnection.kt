@@ -34,7 +34,7 @@ public class OkHttpSocketConnection(
 		writeTimeout(clientOptions.socketTimeout.inWholeMilliseconds, TimeUnit.MILLISECONDS)
 	}.build()
 	private var webSocket: WebSocket? = null
-	private val _state = MutableStateFlow<SocketConnectionState>(SocketConnectionState.DISCONNECTED())
+	private val _state = MutableStateFlow<SocketConnectionState>(SocketConnectionState.Disconnected())
 	public override val state: StateFlow<SocketConnectionState> = _state.asStateFlow()
 
 	private val listener = object : WebSocketListener() {
@@ -46,7 +46,7 @@ public class OkHttpSocketConnection(
 			logger.debug { "Receiving (raw) message $text" }
 
 			scope.launch {
-				_state.value = SocketConnectionState.MESSAGE(text)
+				_state.value = SocketConnectionState.Message(text)
 			}
 		}
 
@@ -57,7 +57,7 @@ public class OkHttpSocketConnection(
 		@Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
 		override fun onClosed(closedWebSocket: WebSocket, code: Int, reason: String) {
 			logger.debug { "WebSocket has closed, code=$code, reason=$reason" }
-			_state.value = SocketConnectionState.DISCONNECTED()
+			_state.value = SocketConnectionState.Disconnected()
 
 			if (webSocket == closedWebSocket) webSocket = null
 		}
@@ -65,7 +65,7 @@ public class OkHttpSocketConnection(
 		@Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
 		override fun onFailure(failedWebSocket: WebSocket, t: Throwable, response: Response?) {
 			logger.warn(t) { "WebSocket has failed" }
-			_state.value = SocketConnectionState.DISCONNECTED(t)
+			_state.value = SocketConnectionState.Disconnected(t)
 
 			if (webSocket == failedWebSocket) webSocket = null
 		}
@@ -79,13 +79,13 @@ public class OkHttpSocketConnection(
 			header(HEADER_AUTHORIZATION, authorization)
 		}.build()
 
-		_state.value = SocketConnectionState.CONNECTING
+		_state.value = SocketConnectionState.Connecting
 		logger.info { "Connecting to $url" }
 		webSocket = client.newWebSocket(request, listener)
 
 		// Wait until the first non-connect message and check if it is not disconnected
 		// to ensure we have a valid connection
-		return state.first { it != SocketConnectionState.CONNECTING } !is SocketConnectionState.DISCONNECTED
+		return state.first { it != SocketConnectionState.Connecting } !is SocketConnectionState.Disconnected
 	}
 
 	override suspend fun send(message: String): Boolean {
