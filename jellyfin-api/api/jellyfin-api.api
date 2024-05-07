@@ -1286,27 +1286,27 @@ public abstract interface class org/jellyfin/sdk/api/sockets/SocketApi {
 public abstract class org/jellyfin/sdk/api/sockets/SocketApiState {
 }
 
-public final class org/jellyfin/sdk/api/sockets/SocketApiState$CONNECTED : org/jellyfin/sdk/api/sockets/SocketApiState {
-	public static final field INSTANCE Lorg/jellyfin/sdk/api/sockets/SocketApiState$CONNECTED;
+public final class org/jellyfin/sdk/api/sockets/SocketApiState$Connected : org/jellyfin/sdk/api/sockets/SocketApiState {
+	public static final field INSTANCE Lorg/jellyfin/sdk/api/sockets/SocketApiState$Connected;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class org/jellyfin/sdk/api/sockets/SocketApiState$CONNECTING : org/jellyfin/sdk/api/sockets/SocketApiState {
-	public static final field INSTANCE Lorg/jellyfin/sdk/api/sockets/SocketApiState$CONNECTING;
+public final class org/jellyfin/sdk/api/sockets/SocketApiState$Connecting : org/jellyfin/sdk/api/sockets/SocketApiState {
+	public static final field INSTANCE Lorg/jellyfin/sdk/api/sockets/SocketApiState$Connecting;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class org/jellyfin/sdk/api/sockets/SocketApiState$DISCONNECTED : org/jellyfin/sdk/api/sockets/SocketApiState {
+public final class org/jellyfin/sdk/api/sockets/SocketApiState$Disconnected : org/jellyfin/sdk/api/sockets/SocketApiState {
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/Throwable;)V
 	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/Throwable;
-	public final fun copy (Ljava/lang/Throwable;)Lorg/jellyfin/sdk/api/sockets/SocketApiState$DISCONNECTED;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/api/sockets/SocketApiState$DISCONNECTED;Ljava/lang/Throwable;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/sockets/SocketApiState$DISCONNECTED;
+	public final fun copy (Ljava/lang/Throwable;)Lorg/jellyfin/sdk/api/sockets/SocketApiState$Disconnected;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/api/sockets/SocketApiState$Disconnected;Ljava/lang/Throwable;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/sockets/SocketApiState$Disconnected;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getError ()Ljava/lang/Throwable;
 	public fun hashCode ()I
@@ -1327,31 +1327,31 @@ public abstract interface class org/jellyfin/sdk/api/sockets/SocketConnectionFac
 public abstract class org/jellyfin/sdk/api/sockets/SocketConnectionState {
 }
 
-public final class org/jellyfin/sdk/api/sockets/SocketConnectionState$CONNECTING : org/jellyfin/sdk/api/sockets/SocketConnectionState {
-	public static final field INSTANCE Lorg/jellyfin/sdk/api/sockets/SocketConnectionState$CONNECTING;
+public final class org/jellyfin/sdk/api/sockets/SocketConnectionState$Connecting : org/jellyfin/sdk/api/sockets/SocketConnectionState {
+	public static final field INSTANCE Lorg/jellyfin/sdk/api/sockets/SocketConnectionState$Connecting;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class org/jellyfin/sdk/api/sockets/SocketConnectionState$DISCONNECTED : org/jellyfin/sdk/api/sockets/SocketConnectionState {
+public final class org/jellyfin/sdk/api/sockets/SocketConnectionState$Disconnected : org/jellyfin/sdk/api/sockets/SocketConnectionState {
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/Throwable;)V
 	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/Throwable;
-	public final fun copy (Ljava/lang/Throwable;)Lorg/jellyfin/sdk/api/sockets/SocketConnectionState$DISCONNECTED;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/api/sockets/SocketConnectionState$DISCONNECTED;Ljava/lang/Throwable;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/sockets/SocketConnectionState$DISCONNECTED;
+	public final fun copy (Ljava/lang/Throwable;)Lorg/jellyfin/sdk/api/sockets/SocketConnectionState$Disconnected;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/api/sockets/SocketConnectionState$Disconnected;Ljava/lang/Throwable;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/sockets/SocketConnectionState$Disconnected;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getError ()Ljava/lang/Throwable;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class org/jellyfin/sdk/api/sockets/SocketConnectionState$MESSAGE : org/jellyfin/sdk/api/sockets/SocketConnectionState {
+public final class org/jellyfin/sdk/api/sockets/SocketConnectionState$Message : org/jellyfin/sdk/api/sockets/SocketConnectionState {
 	public fun <init> (Ljava/lang/String;)V
 	public final fun component1 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;)Lorg/jellyfin/sdk/api/sockets/SocketConnectionState$MESSAGE;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/api/sockets/SocketConnectionState$MESSAGE;Ljava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/sockets/SocketConnectionState$MESSAGE;
+	public final fun copy (Ljava/lang/String;)Lorg/jellyfin/sdk/api/sockets/SocketConnectionState$Message;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/api/sockets/SocketConnectionState$Message;Ljava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/sockets/SocketConnectionState$Message;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getMessage ()Ljava/lang/String;
 	public fun hashCode ()I
