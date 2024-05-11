@@ -81,7 +81,7 @@ public data class LibraryOptions(
 	@SerialName("SaveSubtitlesWithMedia")
 	public val saveSubtitlesWithMedia: Boolean,
 	@SerialName("SaveLyricsWithMedia")
-	public val saveLyricsWithMedia: Boolean = true,
+	public val saveLyricsWithMedia: Boolean = false,
 	@SerialName("AutomaticallyAddToCollection")
 	public val automaticallyAddToCollection: Boolean,
 	/**
