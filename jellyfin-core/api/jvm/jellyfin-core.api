@@ -204,6 +204,8 @@ public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$MissingSyst
 
 public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$MissingVersion : org/jellyfin/sdk/discovery/RecommendedServerIssue {
 	public static final field INSTANCE Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$MissingVersion;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
 
