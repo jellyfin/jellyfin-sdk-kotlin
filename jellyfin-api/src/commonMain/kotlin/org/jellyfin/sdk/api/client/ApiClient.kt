@@ -91,12 +91,14 @@ public abstract class ApiClient {
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
 		requestBody: Any? = null,
+		expectedResponseCodes: IntRange = 200 until 300
 	): RawResponse
 
 	public abstract suspend fun headRequest(
-		pathTemplate: String,
+		pathTemplate: String = "",
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
+		expectedResponseCodes: IntRange = 300 until 400
 	): HeadResponse
 
 	/**

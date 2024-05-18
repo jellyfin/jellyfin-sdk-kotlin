@@ -24,11 +24,13 @@ public expect open class KtorClient(
 		pathParameters: Map<String, Any?>,
 		queryParameters: Map<String, Any?>,
 		requestBody: Any?,
+		expectedResponseCodes: IntRange,
 	): RawResponse
 
 	public override suspend fun headRequest(
 		pathTemplate: String,
 		pathParameters: Map<String, Any?>,
 		queryParameters: Map<String, Any?>,
+		expectedResponseCodes: IntRange,
 	): HeadResponse
 }

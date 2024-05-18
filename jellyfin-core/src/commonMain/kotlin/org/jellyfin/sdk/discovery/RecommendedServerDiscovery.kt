@@ -2,7 +2,6 @@ package org.jellyfin.sdk.discovery
 
 import io.ktor.http.HttpHeaders
 import io.ktor.http.URLBuilder
-import io.ktor.http.encodedPath
 import io.ktor.http.isRelativePath
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -21,6 +20,7 @@ import org.jellyfin.sdk.api.client.exception.NoRedirectException
 import org.jellyfin.sdk.api.client.exception.SecureConnectionException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
 import org.jellyfin.sdk.api.client.extensions.systemApi
+import org.jellyfin.sdk.api.client.util.UrlBuilder.buildUrl
 import org.jellyfin.sdk.model.ServerVersion
 import org.jellyfin.sdk.model.api.PublicSystemInfo
 import org.jellyfin.sdk.util.currentTimeMillis
@@ -28,7 +28,7 @@ import kotlin.time.Duration.Companion.seconds
 
 private val logger = KotlinLogging.logger {}
 
-public class RecommendedServerDiscovery constructor(
+public class RecommendedServerDiscovery(
 	private val jellyfin: Jellyfin,
 ) {
 	private companion object {
@@ -189,15 +189,14 @@ public class RecommendedServerDiscovery constructor(
 		)
 
 		val headersResult = try {
-			val response = client.headRequest("")
-			if (response.status in (300 until 400)) Result.success(response.headers)
-			else Result.failure(NoRedirectException(response.status))
+			val response = client.headRequest()
+			Result.success(response.headers)
 		} catch (err: TimeoutException) {
 			logger.debug(err) { "Could not connect to $server" }
 			Result.failure(err)
 		} catch (err: InvalidStatusException) {
-			logger.debug(err) { "Received unexpected status ${err.status} from $server" }
-			Result.failure(err)
+			logger.debug(err) { "Received non-redirect status ${err.status} from $server" }
+			Result.failure(NoRedirectException(err.status))
 		} catch (err: InvalidContentException) {
 			logger.debug(err) { "Could not parse response from $server" }
 			Result.failure(err)
@@ -212,17 +211,12 @@ public class RecommendedServerDiscovery constructor(
 		// make sure there is a Location header and extract it from the map
 		val location = headers[HttpHeaders.Location] ?: return null
 
-		// only follow the redirect for subpaths
+		// only follow the redirect if on the same host
 		val locationUrl = URLBuilder(location).build()
+		if (locationUrl.isRelativePath) return RedirectInfo(server, buildUrl(server, location))
 		val serverUrl = URLBuilder(server).build()
-		if (locationUrl.isRelativePath) {
-			return RedirectInfo(server, URLBuilder(server).apply {
-				this.encodedPath = locationUrl.encodedPath
-			}.buildString())
-		}
-		if (locationUrl.host == serverUrl.host) {
-			return RedirectInfo(server, location)
-		}
+		if (locationUrl.host == serverUrl.host) return RedirectInfo(server, location)
+
 		return null
 	}
 
@@ -274,7 +268,7 @@ public class RecommendedServerDiscovery constructor(
 					}
 				}
 				.awaitAll()
-			allServers = allServers.plus(redirects.filterNotNull())
+			allServers = allServers.plus(redirects.filterNotNull()).distinctBy { it.getAddress() }
 		}
 
 		discover(allServers, minimumScore)

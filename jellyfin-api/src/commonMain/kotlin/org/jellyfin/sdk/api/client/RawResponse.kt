@@ -1,5 +1,7 @@
 package org.jellyfin.sdk.api.client
 
+import io.ktor.http.Headers
+import io.ktor.util.toMap
 import io.ktor.utils.io.ByteReadChannel
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
@@ -9,7 +11,7 @@ import org.jellyfin.sdk.api.client.util.ApiSerializer
 public class RawResponse(
 	public val body: ByteReadChannel,
 	public val status: Int,
-	public val headers: Map<String, List<String>>,
+	public val headers: Headers,
 ) {
 	public suspend inline fun <reified T : Any> createContent(): T {
 		val logger = KotlinLogging.logger {}
@@ -23,5 +25,8 @@ public class RawResponse(
 	}
 
 	public suspend inline fun <reified T : Any> createResponse(): Response<T> =
-		Response(createContent(), status, headers)
+		Response(createContent(), status, headers.toMap())
+
+	public fun createHeadResponse(): HeadResponse =
+		HeadResponse(status, headers)
 }

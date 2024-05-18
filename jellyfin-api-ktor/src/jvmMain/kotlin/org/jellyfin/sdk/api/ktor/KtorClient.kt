@@ -14,8 +14,6 @@ import io.ktor.content.ByteArrayContent
 import io.ktor.content.TextContent
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
-import io.ktor.http.isSuccess
-import io.ktor.util.toMap
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
 import org.jellyfin.sdk.api.client.ApiClient
@@ -26,7 +24,6 @@ import org.jellyfin.sdk.api.client.RawResponse
 import org.jellyfin.sdk.api.client.exception.ApiClientException
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
-import org.jellyfin.sdk.api.client.exception.NoRedirectException
 import org.jellyfin.sdk.api.client.exception.SecureConnectionException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
 import org.jellyfin.sdk.api.client.exception.ssl.BadPeerSSLKeyException
@@ -86,26 +83,53 @@ public actual open class KtorClient actual constructor(
 		}
 	}
 
-	@Suppress("ThrowsCount")
 	public actual override suspend fun request(
 		method: HttpMethod,
 		pathTemplate: String,
 		pathParameters: Map<String, Any?>,
 		queryParameters: Map<String, Any?>,
 		requestBody: Any?,
+		expectedResponseCodes: IntRange,
 	): RawResponse {
-		val url = createUrl(pathTemplate, pathParameters, queryParameters)
+		return generalRequest(
+			method = method.asKtorHttpMethod(),
+			url = createUrl(pathTemplate, pathParameters, queryParameters),
+			requestBody = requestBody,
+			expectedResponseCodes = 200 until 300,
+		)
+	}
 
+	public actual override suspend fun headRequest(
+		pathTemplate: String,
+		pathParameters: Map<String, Any?>,
+		queryParameters: Map<String, Any?>,
+		expectedResponseCodes: IntRange,
+	): HeadResponse {
+		return generalRequest(
+			method = KtorHttpMethod.Head,
+			url = createUrl(pathTemplate, pathParameters, queryParameters),
+			requestBody = null,
+			expectedResponseCodes = expectedResponseCodes,
+		).createHeadResponse()
+	}
+
+	@Suppress("ThrowsCount")
+	private suspend fun generalRequest(
+		method: KtorHttpMethod,
+		url: String,
+		requestBody: Any?,
+		expectedResponseCodes: IntRange,
+	) : RawResponse {
 		// Log HTTP call with access token removed
 		val logger = KotlinLogging.logger {}
 		logger.info {
 			val safeUrl = accessToken?.let { url.replace(it, "******") } ?: url
-			"$method $safeUrl"
+			"${method.value} $safeUrl"
 		}
 
 		try {
 			val response = client.request(url) {
-				this.method = method.asKtorHttpMethod()
+				this.method = method
 
 				header(
 					key = HttpHeaders.Accept,
@@ -136,90 +160,9 @@ public actual open class KtorClient actual constructor(
 			}
 
 			// Check HTTP status
-			if (!response.status.isSuccess()) throw InvalidStatusException(response.status.value)
+			if (response.status.value !in expectedResponseCodes) throw InvalidStatusException(response.status.value)
 			// Return custom response instance
-			return RawResponse(response.bodyAsChannel(), response.status.value, response.headers.toMap())
-		} catch (err: UnknownHostException) {
-			logger.debug(err) { "HTTP host unreachable" }
-			throw TimeoutException("HTTP host unreachable", err)
-		} catch (err: HttpRequestTimeoutException) {
-			logger.debug(err) { "HTTP request timed out" }
-			throw TimeoutException("HTTP request timed out", err)
-		} catch (err: ConnectTimeoutException) {
-			logger.debug(err) { "Connection timed out" }
-			throw TimeoutException("Connection timed out", err)
-		} catch (err: SocketTimeoutException) {
-			logger.debug(err) { "Socket timed out" }
-			throw TimeoutException("Socket timed out", err)
-		} catch (err: ConnectException) {
-			logger.debug(err) { "Connection failed" }
-			throw TimeoutException("Connection failed", err)
-		} catch (err: NoTransformationFoundException) {
-			logger.error(err) { "Requested model does not exist" }
-			throw InvalidContentException("Requested model does not exist", err)
-		} catch (err: SerializationException) {
-			logger.error(err) { "Serialization failed" }
-			throw InvalidContentException("Serialization failed", err)
-		} catch (err: SSLKeyException) {
-			logger.error(err) { "Invalid SSL peer key format" }
-			throw BadPeerSSLKeyException("Invalid SSL peer key format", err)
-		} catch (err: SSLPeerUnverifiedException) {
-			logger.error(err) { "Couldn't authenticate peer" }
-			throw PeerNotAuthenticatedException("Couldn't authenticate peer", err)
-		} catch (err: SSLHandshakeException) {
-			logger.error(err) { "SSL Invalid handshake" }
-			throw HandshakeCertificateException("Invalid handshake", err)
-		} catch (err: SSLProtocolException) {
-			logger.error(err) { "Invalid SSL protocol implementation" }
-			throw InvalidSSLProtocolImplementationException("Invalid SSL protocol implementation", err)
-		} catch (err: SSLException) {
-			logger.error(err) { "Unknown SSL error occurred" }
-			throw SecureConnectionException("Unknown SSL error occurred", err)
-		} catch (err: IOException) {
-			logger.error(err) { "Unknown IO error occurred!" }
-			throw ApiClientException("Unknown IO error occurred!", err)
-		}
-	}
-
-	public actual override suspend fun headRequest(
-		pathTemplate: String,
-		pathParameters: Map<String, Any?>,
-		queryParameters: Map<String, Any?>,
-	): HeadResponse {
-		val url = createUrl(pathTemplate, pathParameters, queryParameters)
-
-		// Log HTTP call with access token removed
-		val logger = KotlinLogging.logger {}
-		logger.info {
-			val safeUrl = accessToken?.let { url.replace(it, "******") } ?: url
-			"HEAD $safeUrl"
-		}
-
-		try {
-			val response = client.request(url) {
-				this.method = KtorHttpMethod.Head
-
-				header(
-					key = HttpHeaders.Accept,
-					value = HEADER_ACCEPT,
-				)
-
-				header(
-					key = HttpHeaders.Authorization,
-					value = AuthorizationHeaderBuilder.buildHeader(
-						clientName = clientInfo.name,
-						clientVersion = clientInfo.version,
-						deviceId = deviceInfo.id,
-						deviceName = deviceInfo.name,
-						accessToken = accessToken
-					)
-				)
-			}
-
-			// Check HTTP status for a redirect
-			if (response.status.value !in (300 until 400)) throw NoRedirectException(response.status.value)
-			// Return custom response instance
-			return HeadResponse(response.status.value, response.headers)
+			return RawResponse(response.bodyAsChannel(), response.status.value, response.headers)
 		} catch (err: UnknownHostException) {
 			logger.debug(err) { "HTTP host unreachable" }
 			throw TimeoutException("HTTP host unreachable", err)
