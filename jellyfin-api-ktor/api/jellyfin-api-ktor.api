@@ -7,8 +7,8 @@ public class org/jellyfin/sdk/api/ktor/KtorClient : org/jellyfin/sdk/api/client/
 	public fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
 	public fun getHttpClientOptions ()Lorg/jellyfin/sdk/api/client/HttpClientOptions;
 	public fun getWebSocket ()Lorg/jellyfin/sdk/api/sockets/SocketApi;
-	public fun headRequest (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public fun request (Lorg/jellyfin/sdk/api/client/HttpMethod;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun headRequest (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lkotlin/ranges/IntRange;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun request (Lorg/jellyfin/sdk/api/client/HttpMethod;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Object;Lkotlin/ranges/IntRange;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun setAccessToken (Ljava/lang/String;)V
 	public fun setBaseUrl (Ljava/lang/String;)V
 	public fun setClientInfo (Lorg/jellyfin/sdk/model/ClientInfo;)V
