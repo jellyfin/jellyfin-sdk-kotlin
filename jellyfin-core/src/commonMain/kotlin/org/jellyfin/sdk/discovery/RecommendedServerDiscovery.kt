@@ -2,8 +2,8 @@ package org.jellyfin.sdk.discovery
 
 import io.ktor.http.HttpHeaders
 import io.ktor.http.URLBuilder
+import io.ktor.http.encodedPath
 import io.ktor.http.isRelativePath
-import io.ktor.http.takeFrom
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -209,14 +209,16 @@ public class RecommendedServerDiscovery constructor(
 		// make sure there are headers
 		val headers = headersResult.getOrElse { return null }
 
-		// make sure there is a Location header and extract it from the List
-		val location = headers[HttpHeaders.Location]?.firstOrNull() ?: return null
+		// make sure there is a Location header and extract it from the map
+		val location = headers[HttpHeaders.Location] ?: return null
 
 		// only follow the redirect for subpaths
 		val locationUrl = URLBuilder(location).build()
 		val serverUrl = URLBuilder(server).build()
 		if (locationUrl.isRelativePath) {
-			return RedirectInfo(server, URLBuilder(serverUrl).takeFrom(serverUrl).buildString())
+			return RedirectInfo(server, URLBuilder(server).apply {
+				this.encodedPath = locationUrl.encodedPath
+			}.buildString())
 		}
 		if (locationUrl.host == serverUrl.host) {
 			return RedirectInfo(server, location)
@@ -231,6 +233,7 @@ public class RecommendedServerDiscovery constructor(
 		servers: Collection<RedirectInfo>,
 		minimumScore: RecommendedServerInfoScore,
 	): Collection<RecommendedServerInfo> = withContext(Dispatchers.IO) {
+		logger.info("Ranking ${servers.size} addresses")
 		val semaphore = Semaphore(MAX_SIMULTANEOUS_RETRIEVALS)
 
 		servers

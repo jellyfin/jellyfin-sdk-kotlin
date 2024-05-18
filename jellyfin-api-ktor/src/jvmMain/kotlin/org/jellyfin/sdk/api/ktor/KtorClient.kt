@@ -219,7 +219,7 @@ public actual open class KtorClient actual constructor(
 			// Check HTTP status for a redirect
 			if (response.status.value !in (300 until 400)) throw NoRedirectException(response.status.value)
 			// Return custom response instance
-			return HeadResponse(response.status.value, response.headers.toMap())
+			return HeadResponse(response.status.value, response.headers)
 		} catch (err: UnknownHostException) {
 			logger.debug(err) { "HTTP host unreachable" }
 			throw TimeoutException("HTTP host unreachable", err)
