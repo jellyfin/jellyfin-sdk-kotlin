@@ -1,6 +1,7 @@
 package org.jellyfin.sdk.api.ktor
 
 import org.jellyfin.sdk.api.client.ApiClient
+import org.jellyfin.sdk.api.client.HeadResponse
 import org.jellyfin.sdk.api.client.HttpClientOptions
 import org.jellyfin.sdk.api.client.HttpMethod
 import org.jellyfin.sdk.api.client.RawResponse
@@ -24,4 +25,10 @@ public expect open class KtorClient(
 		queryParameters: Map<String, Any?>,
 		requestBody: Any?,
 	): RawResponse
+
+	public override suspend fun headRequest(
+		pathTemplate: String,
+		pathParameters: Map<String, Any?>,
+		queryParameters: Map<String, Any?>,
+	): HeadResponse
 }

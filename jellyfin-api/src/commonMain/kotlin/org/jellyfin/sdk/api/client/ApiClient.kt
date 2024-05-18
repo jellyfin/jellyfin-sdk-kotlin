@@ -93,6 +93,12 @@ public abstract class ApiClient {
 		requestBody: Any? = null,
 	): RawResponse
 
+	public abstract suspend fun headRequest(
+		pathTemplate: String,
+		pathParameters: Map<String, Any?> = emptyMap(),
+		queryParameters: Map<String, Any?> = emptyMap(),
+	): HeadResponse
+
 	/**
 	 * Get the instance of the SocketApi for this ApiClient.
 	 * @see SocketApi

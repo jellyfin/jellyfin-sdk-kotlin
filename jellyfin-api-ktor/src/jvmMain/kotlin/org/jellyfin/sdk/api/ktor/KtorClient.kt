@@ -19,12 +19,14 @@ import io.ktor.util.toMap
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
 import org.jellyfin.sdk.api.client.ApiClient
+import org.jellyfin.sdk.api.client.HeadResponse
 import org.jellyfin.sdk.api.client.HttpClientOptions
 import org.jellyfin.sdk.api.client.HttpMethod
 import org.jellyfin.sdk.api.client.RawResponse
 import org.jellyfin.sdk.api.client.exception.ApiClientException
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
+import org.jellyfin.sdk.api.client.exception.NoRedirectException
 import org.jellyfin.sdk.api.client.exception.SecureConnectionException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
 import org.jellyfin.sdk.api.client.exception.ssl.BadPeerSSLKeyException
@@ -137,6 +139,87 @@ public actual open class KtorClient actual constructor(
 			if (!response.status.isSuccess()) throw InvalidStatusException(response.status.value)
 			// Return custom response instance
 			return RawResponse(response.bodyAsChannel(), response.status.value, response.headers.toMap())
+		} catch (err: UnknownHostException) {
+			logger.debug(err) { "HTTP host unreachable" }
+			throw TimeoutException("HTTP host unreachable", err)
+		} catch (err: HttpRequestTimeoutException) {
+			logger.debug(err) { "HTTP request timed out" }
+			throw TimeoutException("HTTP request timed out", err)
+		} catch (err: ConnectTimeoutException) {
+			logger.debug(err) { "Connection timed out" }
+			throw TimeoutException("Connection timed out", err)
+		} catch (err: SocketTimeoutException) {
+			logger.debug(err) { "Socket timed out" }
+			throw TimeoutException("Socket timed out", err)
+		} catch (err: ConnectException) {
+			logger.debug(err) { "Connection failed" }
+			throw TimeoutException("Connection failed", err)
+		} catch (err: NoTransformationFoundException) {
+			logger.error(err) { "Requested model does not exist" }
+			throw InvalidContentException("Requested model does not exist", err)
+		} catch (err: SerializationException) {
+			logger.error(err) { "Serialization failed" }
+			throw InvalidContentException("Serialization failed", err)
+		} catch (err: SSLKeyException) {
+			logger.error(err) { "Invalid SSL peer key format" }
+			throw BadPeerSSLKeyException("Invalid SSL peer key format", err)
+		} catch (err: SSLPeerUnverifiedException) {
+			logger.error(err) { "Couldn't authenticate peer" }
+			throw PeerNotAuthenticatedException("Couldn't authenticate peer", err)
+		} catch (err: SSLHandshakeException) {
+			logger.error(err) { "SSL Invalid handshake" }
+			throw HandshakeCertificateException("Invalid handshake", err)
+		} catch (err: SSLProtocolException) {
+			logger.error(err) { "Invalid SSL protocol implementation" }
+			throw InvalidSSLProtocolImplementationException("Invalid SSL protocol implementation", err)
+		} catch (err: SSLException) {
+			logger.error(err) { "Unknown SSL error occurred" }
+			throw SecureConnectionException("Unknown SSL error occurred", err)
+		} catch (err: IOException) {
+			logger.error(err) { "Unknown IO error occurred!" }
+			throw ApiClientException("Unknown IO error occurred!", err)
+		}
+	}
+
+	public actual override suspend fun headRequest(
+		pathTemplate: String,
+		pathParameters: Map<String, Any?>,
+		queryParameters: Map<String, Any?>,
+	): HeadResponse {
+		val url = createUrl(pathTemplate, pathParameters, queryParameters)
+
+		// Log HTTP call with access token removed
+		val logger = KotlinLogging.logger {}
+		logger.info {
+			val safeUrl = accessToken?.let { url.replace(it, "******") } ?: url
+			"HEAD $safeUrl"
+		}
+
+		try {
+			val response = client.request(url) {
+				this.method = KtorHttpMethod.Head
+
+				header(
+					key = HttpHeaders.Accept,
+					value = HEADER_ACCEPT,
+				)
+
+				header(
+					key = HttpHeaders.Authorization,
+					value = AuthorizationHeaderBuilder.buildHeader(
+						clientName = clientInfo.name,
+						clientVersion = clientInfo.version,
+						deviceId = deviceInfo.id,
+						deviceName = deviceInfo.name,
+						accessToken = accessToken
+					)
+				)
+			}
+
+			// Check HTTP status for a redirect
+			if (response.status.value !in (300 until 400)) throw NoRedirectException(response.status.value)
+			// Return custom response instance
+			return HeadResponse(response.status.value, response.headers.toMap())
 		} catch (err: UnknownHostException) {
 			logger.debug(err) { "HTTP host unreachable" }
 			throw TimeoutException("HTTP host unreachable", err)

@@ -50,4 +50,9 @@ public sealed interface RecommendedServerIssue {
 	 * The system information response was slow.
 	 */
 	public data class SlowResponse(public val responseTime: Long) : RecommendedServerIssue
+
+	/**
+	 * The address was the result of a redirect
+	 */
+	public data class RedirectedResponse(public val isRedirect: Boolean = true) : RecommendedServerIssue
 }
