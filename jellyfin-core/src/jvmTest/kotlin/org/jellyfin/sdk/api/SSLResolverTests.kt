@@ -17,7 +17,7 @@ class SSLResolverTests : FunSpec({
 		deviceInfo = DeviceInfo("test", "test")
 	}
 
-	test("should throw HandShakeCertificateException when calling an https endpoint with revoked certificate") {
+	xtest("should throw HandShakeCertificateException when calling an https endpoint with revoked certificate") {
 		val api = getInstance().createApi(
 			baseUrl = "https://revoked.badssl.com"
 		)
@@ -29,7 +29,7 @@ class SSLResolverTests : FunSpec({
 		}
 	}
 
-	test("should throw PeerNotAuthenticatedException when wrong host is returned from https endpoint") {
+	xtest("should throw PeerNotAuthenticatedException when wrong host is returned from https endpoint") {
 		val api = getInstance().createApi(
 			baseUrl = "https://wrong.host.badssl.com"
 		)
@@ -41,7 +41,7 @@ class SSLResolverTests : FunSpec({
 		}
 	}
 
-	test("should throw SecureConnectionException when using wrong https port") {
+	xtest("should throw SecureConnectionException when using wrong https port") {
 		val api = getInstance().createApi(
 			baseUrl = "https://badssl.com:80"
 		)

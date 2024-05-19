@@ -31,7 +31,7 @@ public sealed interface RecommendedServerIssue {
 	/**
 	 * No version found in system information.
 	 */
-	public object MissingVersion : RecommendedServerIssue {
+	public data object MissingVersion : RecommendedServerIssue {
 		override fun toString(): String = this::class.simpleName!!
 	}
 
