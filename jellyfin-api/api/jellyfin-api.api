@@ -119,12 +119,6 @@ public final class org/jellyfin/sdk/api/client/exception/MissingPathVariableExce
 	public final fun getPath ()Ljava/lang/String;
 }
 
-public final class org/jellyfin/sdk/api/client/exception/NoRedirectException : org/jellyfin/sdk/api/client/exception/ApiClientException {
-	public fun <init> (ILjava/lang/Throwable;)V
-	public synthetic fun <init> (ILjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun getStatus ()I
-}
-
 public class org/jellyfin/sdk/api/client/exception/SecureConnectionException : org/jellyfin/sdk/api/client/exception/ApiClientException {
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
