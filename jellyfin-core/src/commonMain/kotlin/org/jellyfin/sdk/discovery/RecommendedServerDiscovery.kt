@@ -11,12 +11,12 @@ import kotlinx.coroutines.sync.withPermit
 import kotlinx.coroutines.withContext
 import mu.KotlinLogging
 import org.jellyfin.sdk.Jellyfin
+import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.HttpClientOptions
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.exception.ApiClientException
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
-import org.jellyfin.sdk.api.client.exception.NoRedirectException
 import org.jellyfin.sdk.api.client.exception.SecureConnectionException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
 import org.jellyfin.sdk.api.client.extensions.systemApi
@@ -37,6 +37,12 @@ public class RecommendedServerDiscovery(
 		private const val SLOW_TIME_THRESHOLD = 1_500
 		private val HTTP_TIMEOUT = 3.5.seconds
 		private const val MAX_SIMULTANEOUS_RETRIEVALS = 3
+		private val httpClientOptions = HttpClientOptions(
+			followRedirects = false,
+			connectTimeout = HTTP_TIMEOUT,
+			requestTimeout = HTTP_TIMEOUT,
+			socketTimeout = HTTP_TIMEOUT,
+		)
 	}
 
 	private data class SystemInfoResult(
@@ -51,6 +57,23 @@ public class RecommendedServerDiscovery(
 	) {
 		fun isRedirect() = redirectAddress != null && originalAddress != redirectAddress
 		fun getAddress() = redirectAddress ?: originalAddress
+	}
+
+	private fun createClient(address: String): ApiClient =
+		jellyfin.createApi(
+			baseUrl = address,
+			httpClientOptions = httpClientOptions,
+		)
+
+	private fun handleApiClientException(err: ApiClientException, address: String): Result<Nothing> {
+		when (err) {
+			is SecureConnectionException -> logger.debug(err) { "SSL error when connecting to $address" }
+			is TimeoutException -> logger.debug(err) { "Timed out connecting to $address" }
+			is InvalidStatusException -> logger.debug(err) { "Received unexpected status ${err.status} from $address" }
+			is InvalidContentException -> logger.debug(err) { "Could not parse response from $address" }
+			else -> logger.debug(err) { "Unexpected error" }
+		}
+		return Result.failure(err)
 	}
 
 	@Suppress("MagicNumber")
@@ -137,34 +160,15 @@ public class RecommendedServerDiscovery(
 		val address = server.getAddress()
 		logger.info { "Requesting public system info for $address" }
 
-		val client = jellyfin.createApi(
-			baseUrl = address,
-			httpClientOptions = HttpClientOptions(
-				followRedirects = false,
-				connectTimeout = HTTP_TIMEOUT,
-				requestTimeout = HTTP_TIMEOUT,
-				socketTimeout = HTTP_TIMEOUT,
-			),
-		)
+		val client = createClient(address)
 
 		val responseTimeStart = currentTimeMillis()
-
 		val info: Result<Response<PublicSystemInfo>> = try {
 			val response = client.systemApi.getPublicSystemInfo()
 			if (response.status == HTTP_OK) Result.success(response)
 			else Result.failure(InvalidStatusException(response.status))
-		} catch (err: TimeoutException) {
-			logger.debug(err) { "Could not connect to $address" }
-			Result.failure(err)
-		} catch (err: InvalidStatusException) {
-			logger.debug(err) { "Received unexpected status ${err.status} from $address" }
-			Result.failure(err)
-		} catch (err: InvalidContentException) {
-			logger.debug(err) { "Could not parse response from $address" }
-			Result.failure(err)
 		} catch (err: ApiClientException) {
-			logger.debug(err) { "Unable to get response from $address" }
-			Result.failure(err)
+			handleApiClientException(err, address)
 		}
 		val responseTime = currentTimeMillis() - responseTimeStart
 
@@ -175,55 +179,38 @@ public class RecommendedServerDiscovery(
 		)
 	}
 
-	private suspend fun getRedirectInfo(server: String): RedirectInfo? {
-		logger.info { "Requesting header info for $server" }
+	private suspend fun getRedirectInfo(address: String): RedirectInfo? {
+		logger.info { "Requesting header info for $address" }
 
-		val client = jellyfin.createApi(
-			baseUrl = server,
-			httpClientOptions = HttpClientOptions(
-				followRedirects = false,
-				connectTimeout = HTTP_TIMEOUT,
-				requestTimeout = HTTP_TIMEOUT,
-				socketTimeout = HTTP_TIMEOUT,
-			),
-		)
+		val client = createClient(address)
 
 		val headersResult = try {
 			val response = client.headRequest()
 			Result.success(response.headers)
-		} catch (err: TimeoutException) {
-			logger.debug(err) { "Could not connect to $server" }
-			Result.failure(err)
-		} catch (err: InvalidStatusException) {
-			logger.debug(err) { "Received non-redirect status ${err.status} from $server" }
-			Result.failure(NoRedirectException(err.status))
-		} catch (err: InvalidContentException) {
-			logger.debug(err) { "Could not parse response from $server" }
-			Result.failure(err)
 		} catch (err: ApiClientException) {
-			logger.debug(err) { "Unable to get response from $server" }
-			Result.failure(err)
+			handleApiClientException(err, address)
 		}
 
-		// make sure there are headers
+		// get the headers or exit
 		val headers = headersResult.getOrElse { return null }
 
-		// make sure there is a Location header and extract it from the map
+		// get the Location header or exit
 		val location = headers[HttpHeaders.Location] ?: return null
 
 		// only follow the redirect if on the same host
 		val locationUrl = URLBuilder(location).build()
-		if (locationUrl.isRelativePath) return RedirectInfo(server, buildUrl(server, location))
-		val serverUrl = URLBuilder(server).build()
-		if (locationUrl.host == serverUrl.host) return RedirectInfo(server, location)
+		if (locationUrl.isRelativePath) return RedirectInfo(address, buildUrl(address, location))
+		val serverUrl = URLBuilder(address).build()
+		if (locationUrl.host == serverUrl.host) return RedirectInfo(address, location)
 
+		// host didn't match
 		return null
 	}
 
 	/**
 	 * Test and score each server, including any discovered through redirects
 	 */
-	private suspend fun discover(
+	private suspend fun testAndScoreServers(
 		servers: Collection<RedirectInfo>,
 		minimumScore: RecommendedServerInfoScore,
 	): Collection<RecommendedServerInfo> = withContext(Dispatchers.IO) {
@@ -271,6 +258,6 @@ public class RecommendedServerDiscovery(
 			allServers = allServers.plus(redirects.filterNotNull()).distinctBy { it.getAddress() }
 		}
 
-		discover(allServers, minimumScore)
+		testAndScoreServers(allServers, minimumScore)
 	}
 }
