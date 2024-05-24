@@ -160,5 +160,6 @@ val recommended = jellyfin.discovery.getRecommendedServers(candidates, Recommend
 
 - [Findroid](https://github.com/jarnedemeulemeester/findroid) provides a native user interface to browse and play movies
   and series.
+- [Homedia](https://github.com/valmnt/homedia) provides a native user interface for Android TV, utilizing the latest Android technologies, including Jetpack Compose
 
 _Want to add your project? We'd love to know about it, open an issue or create pull request!_
