@@ -27,10 +27,6 @@ import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
 import org.jellyfin.sdk.api.client.exception.SecureConnectionException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
-import org.jellyfin.sdk.api.client.exception.ssl.BadPeerSSLKeyException
-import org.jellyfin.sdk.api.client.exception.ssl.HandshakeCertificateException
-import org.jellyfin.sdk.api.client.exception.ssl.InvalidSSLProtocolImplementationException
-import org.jellyfin.sdk.api.client.exception.ssl.PeerNotAuthenticatedException
 import org.jellyfin.sdk.api.client.util.ApiSerializer
 import org.jellyfin.sdk.api.client.util.AuthorizationHeaderBuilder
 import org.jellyfin.sdk.api.sockets.DefaultSocketApi
@@ -42,10 +38,6 @@ import java.io.IOException
 import java.net.ConnectException
 import java.net.UnknownHostException
 import javax.net.ssl.SSLException
-import javax.net.ssl.SSLHandshakeException
-import javax.net.ssl.SSLKeyException
-import javax.net.ssl.SSLPeerUnverifiedException
-import javax.net.ssl.SSLProtocolException
 import io.ktor.http.HttpMethod as KtorHttpMethod
 
 @Suppress("LongParameterList")
@@ -158,18 +150,6 @@ public actual open class KtorClient actual constructor(
 		} catch (err: SerializationException) {
 			logger.error(err) { "Serialization failed" }
 			throw InvalidContentException("Serialization failed", err)
-		} catch (err: SSLKeyException) {
-			logger.error(err) { "Invalid SSL peer key format" }
-			throw BadPeerSSLKeyException("Invalid SSL peer key format", err)
-		} catch (err: SSLPeerUnverifiedException) {
-			logger.error(err) { "Couldn't authenticate peer" }
-			throw PeerNotAuthenticatedException("Couldn't authenticate peer", err)
-		} catch (err: SSLHandshakeException) {
-			logger.error(err) { "SSL Invalid handshake" }
-			throw HandshakeCertificateException("Invalid handshake", err)
-		} catch (err: SSLProtocolException) {
-			logger.error(err) { "Invalid SSL protocol implementation" }
-			throw InvalidSSLProtocolImplementationException("Invalid SSL protocol implementation", err)
 		} catch (err: SSLException) {
 			logger.error(err) { "Unknown SSL error occurred" }
 			throw SecureConnectionException("Unknown SSL error occurred", err)
