@@ -110,7 +110,7 @@ public final class org/jellyfin/sdk/api/client/exception/MissingPathVariableExce
 	public final fun getPath ()Ljava/lang/String;
 }
 
-public class org/jellyfin/sdk/api/client/exception/SecureConnectionException : org/jellyfin/sdk/api/client/exception/ApiClientException {
+public final class org/jellyfin/sdk/api/client/exception/SecureConnectionException : org/jellyfin/sdk/api/client/exception/ApiClientException {
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -120,22 +120,6 @@ public final class org/jellyfin/sdk/api/client/exception/TimeoutException : org/
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-}
-
-public final class org/jellyfin/sdk/api/client/exception/ssl/BadPeerSSLKeyException : org/jellyfin/sdk/api/client/exception/SecureConnectionException {
-	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
-}
-
-public final class org/jellyfin/sdk/api/client/exception/ssl/HandshakeCertificateException : org/jellyfin/sdk/api/client/exception/SecureConnectionException {
-	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
-}
-
-public final class org/jellyfin/sdk/api/client/exception/ssl/InvalidSSLProtocolImplementationException : org/jellyfin/sdk/api/client/exception/SecureConnectionException {
-	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
-}
-
-public final class org/jellyfin/sdk/api/client/exception/ssl/PeerNotAuthenticatedException : org/jellyfin/sdk/api/client/exception/SecureConnectionException {
-	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
 }
 
 public final class org/jellyfin/sdk/api/client/extensions/ApiClientExtensionsKt {
