@@ -36,7 +36,7 @@ public data class BaseItemPerson(
 	@SerialName("Role")
 	public val role: String? = null,
 	/**
-	 * The type.
+	 * The person kind.
 	 */
 	@SerialName("Type")
 	public val type: PersonKind,
