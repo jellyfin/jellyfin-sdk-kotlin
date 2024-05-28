@@ -91,6 +91,7 @@ public abstract class ApiClient {
 		pathParameters: Map<String, Any?> = emptyMap(),
 		queryParameters: Map<String, Any?> = emptyMap(),
 		requestBody: Any? = null,
+		expectedResponse: IntRange = 200 until 300,
 	): RawResponse
 
 	/**

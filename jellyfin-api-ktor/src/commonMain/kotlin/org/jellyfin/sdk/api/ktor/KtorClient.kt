@@ -23,5 +23,6 @@ public expect open class KtorClient(
 		pathParameters: Map<String, Any?>,
 		queryParameters: Map<String, Any?>,
 		requestBody: Any?,
+		expectedResponse: IntRange,
 	): RawResponse
 }

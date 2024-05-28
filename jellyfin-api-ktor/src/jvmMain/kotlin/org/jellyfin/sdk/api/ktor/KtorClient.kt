@@ -83,6 +83,7 @@ public actual open class KtorClient actual constructor(
 		pathParameters: Map<String, Any?>,
 		queryParameters: Map<String, Any?>,
 		requestBody: Any?,
+		expectedResponse: IntRange,
 	): RawResponse {
 		val url = createUrl(pathTemplate, pathParameters, queryParameters)
 
