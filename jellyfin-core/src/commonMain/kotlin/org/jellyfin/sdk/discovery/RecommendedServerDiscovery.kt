@@ -129,6 +129,7 @@ public class RecommendedServerDiscovery constructor(
 			score,
 			issues,
 			result.systemInfo,
+			if (result.address.isRedirect()) result.address.originalAddress else null,
 		)
 	}
 
