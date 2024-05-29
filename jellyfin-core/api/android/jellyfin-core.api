@@ -130,9 +130,9 @@ public final class org/jellyfin/sdk/discovery/DiscoveryService {
 	public static synthetic fun discoverLocalServers$default (Lorg/jellyfin/sdk/discovery/DiscoveryService;IIILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 	public final fun getAddressCandidates (Ljava/lang/String;)Ljava/util/Collection;
 	public final fun getRecommendedServers (Ljava/lang/String;Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public final fun getRecommendedServers (Ljava/util/Collection;Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getRecommendedServers (Ljava/util/Collection;Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun getRecommendedServers$default (Lorg/jellyfin/sdk/discovery/DiscoveryService;Ljava/lang/String;Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public static synthetic fun getRecommendedServers$default (Lorg/jellyfin/sdk/discovery/DiscoveryService;Ljava/util/Collection;Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun getRecommendedServers$default (Lorg/jellyfin/sdk/discovery/DiscoveryService;Ljava/util/Collection;Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class org/jellyfin/sdk/discovery/LocalServerDiscovery {
@@ -152,7 +152,8 @@ public final class org/jellyfin/sdk/discovery/LocalServerDiscovery$Companion {
 
 public final class org/jellyfin/sdk/discovery/RecommendedServerDiscovery {
 	public fun <init> (Lorg/jellyfin/sdk/Jellyfin;)V
-	public final fun discover (Ljava/util/Collection;Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun discover (Ljava/util/Collection;Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun discover$default (Lorg/jellyfin/sdk/discovery/RecommendedServerDiscovery;Ljava/util/Collection;Lorg/jellyfin/sdk/discovery/RecommendedServerInfoScore;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class org/jellyfin/sdk/discovery/RecommendedServerInfo {
@@ -224,6 +225,19 @@ public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$OutdatedSer
 	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$OutdatedServerVersion;Lorg/jellyfin/sdk/model/ServerVersion;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$OutdatedServerVersion;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$RedirectedResponse : org/jellyfin/sdk/discovery/RecommendedServerIssue {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$RedirectedResponse;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$RedirectedResponse;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/discovery/RecommendedServerIssue$RedirectedResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFinalAddress ()Ljava/lang/String;
+	public final fun getOriginalAddress ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
