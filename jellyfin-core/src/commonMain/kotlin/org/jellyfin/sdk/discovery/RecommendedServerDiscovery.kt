@@ -188,7 +188,6 @@ public class RecommendedServerDiscovery constructor(
 
 		val info = try {
 			val response = client.head<Unit>(pathTemplate = "")
-			logger.debug { "response = $response" }
 			Result.success(response)
 		} catch (err: TimeoutException) {
 			logger.debug(err) { "Could not connect to $address" }
@@ -199,7 +198,7 @@ public class RecommendedServerDiscovery constructor(
 		}
 
 		// get the Location header or exit
-		val location = info.getOrElse { return null }.getHeader(HttpHeaders.Location) ?: return null
+		val location = info.getOrElse { return null }.getHeader(HttpHeaders.Location.lowercase()) ?: return null
 
 		// only follow the redirect if on the same host
 		val locationUrl = URLBuilder(location).build()

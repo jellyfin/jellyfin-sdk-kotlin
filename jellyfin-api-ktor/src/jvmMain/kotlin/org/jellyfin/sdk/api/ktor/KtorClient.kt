@@ -14,7 +14,6 @@ import io.ktor.content.ByteArrayContent
 import io.ktor.content.TextContent
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
-import io.ktor.http.isSuccess
 import io.ktor.util.toMap
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
