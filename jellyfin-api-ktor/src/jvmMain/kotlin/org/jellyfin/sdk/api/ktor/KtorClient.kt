@@ -127,7 +127,7 @@ public actual open class KtorClient actual constructor(
 			}
 
 			// Check HTTP status
-			if (!response.status.isSuccess()) throw InvalidStatusException(response.status.value)
+			if (response.status.value !in expectedResponse) throw InvalidStatusException(response.status.value)
 			// Return custom response instance
 			return RawResponse(response.bodyAsChannel(), response.status.value, response.headers.toMap())
 		} catch (err: UnknownHostException) {
@@ -166,5 +166,6 @@ public actual open class KtorClient actual constructor(
 		HttpMethod.GET -> KtorHttpMethod.Get
 		HttpMethod.POST -> KtorHttpMethod.Post
 		HttpMethod.DELETE -> KtorHttpMethod.Delete
+		HttpMethod.HEAD -> KtorHttpMethod.Head
 	}
 }
