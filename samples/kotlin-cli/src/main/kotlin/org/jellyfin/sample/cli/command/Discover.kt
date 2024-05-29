@@ -39,7 +39,7 @@ class Discover(
 		val candidates = jellyfin.discovery.getAddressCandidates(address)
 		logger.info("Found ${candidates.size} candidates")
 
-		val servers = jellyfin.discovery.getRecommendedServers(candidates)
+		val servers = jellyfin.discovery.getRecommendedServers(candidates, followRedirects = true)
 		for (server in servers) {
 			buildString {
 				append(server.address)

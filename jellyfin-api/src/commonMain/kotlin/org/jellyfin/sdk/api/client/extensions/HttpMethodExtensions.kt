@@ -53,5 +53,6 @@ public suspend inline fun <reified T : Any> ApiClient.head(
 	pathTemplate = pathTemplate,
 	pathParameters = pathParameters,
 	queryParameters = queryParameters,
-	requestBody = requestBody
+	requestBody = requestBody,
+	expectedResponse = 300 until 400
 ).createResponse()

@@ -1,5 +1,8 @@
 package org.jellyfin.sdk.discovery
 
+import io.ktor.http.HttpHeaders
+import io.ktor.http.URLBuilder
+import io.ktor.http.isRelativePath
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -15,7 +18,9 @@ import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.exception.InvalidStatusException
 import org.jellyfin.sdk.api.client.exception.SecureConnectionException
 import org.jellyfin.sdk.api.client.exception.TimeoutException
+import org.jellyfin.sdk.api.client.extensions.head
 import org.jellyfin.sdk.api.client.extensions.systemApi
+import org.jellyfin.sdk.api.client.util.UrlBuilder.buildUrl
 import org.jellyfin.sdk.model.ServerVersion
 import org.jellyfin.sdk.model.api.PublicSystemInfo
 import org.jellyfin.sdk.util.currentTimeMillis
@@ -35,10 +40,18 @@ public class RecommendedServerDiscovery constructor(
 	}
 
 	private data class SystemInfoResult(
-		val address: String,
+		val address: RedirectInfo,
 		val systemInfo: Result<PublicSystemInfo>,
 		val responseTime: Long,
 	)
+
+	private data class RedirectInfo(
+		val originalAddress: String,
+		val redirectAddress: String? = null,
+	) {
+		fun isRedirect() = redirectAddress != null && originalAddress != redirectAddress
+		fun getAddress() = redirectAddress ?: originalAddress
+	}
 
 	@Suppress("MagicNumber")
 	private fun assignScore(result: SystemInfoResult): RecommendedServerInfo {
@@ -101,11 +114,17 @@ public class RecommendedServerDiscovery constructor(
 			}
 		}
 
+		// prefer non-redirected addresses
+		if (result.address.isRedirect()) {
+			issues.add(RecommendedServerIssue.RedirectedResponse(result.address.originalAddress, result.address.getAddress()))
+			scores.add(RecommendedServerInfoScore.GOOD)
+		}
+
 		// Calculate score, pick the lowest from the collection or use GREAT when no scores (and issues) added
 		val score = scores.minByOrNull { it.score } ?: RecommendedServerInfoScore.GREAT
 		// Return results
 		return RecommendedServerInfo(
-			result.address,
+			result.address.getAddress(),
 			result.responseTime,
 			score,
 			issues,
@@ -113,11 +132,11 @@ public class RecommendedServerDiscovery constructor(
 		)
 	}
 
-	private suspend fun getSystemInfoResult(address: String): SystemInfoResult {
+	private suspend fun getSystemInfoResult(address: RedirectInfo): SystemInfoResult {
 		logger.info { "Requesting public system info for $address" }
 
 		val client = jellyfin.createApi(
-			baseUrl = address,
+			baseUrl = address.getAddress(),
 			httpClientOptions = HttpClientOptions(
 				followRedirects = false,
 				connectTimeout = HTTP_TIMEOUT,
@@ -154,12 +173,46 @@ public class RecommendedServerDiscovery constructor(
 		)
 	}
 
-	/**
-	 * Discover all servers in the [servers] flow and retrieve the public system information to assign a score.
-	 * Returned servers are not ordered by score. Use [minimumScore] to automatically remove bad matches.
-	 */
-	public suspend fun discover(
-		servers: Collection<String>,
+	private suspend fun getRedirectInfo(address: String): RedirectInfo? {
+		logger.info { "Requesting header info for $address" }
+
+		val client = jellyfin.createApi(
+			baseUrl = address,
+			httpClientOptions = HttpClientOptions(
+				followRedirects = false,
+				connectTimeout = HTTP_TIMEOUT,
+				requestTimeout = HTTP_TIMEOUT,
+				socketTimeout = HTTP_TIMEOUT,
+			),
+		)
+
+		val info = try {
+			val response = client.head<Unit>(pathTemplate = "")
+			logger.debug { "response = $response" }
+			Result.success(response)
+		} catch (err: TimeoutException) {
+			logger.debug(err) { "Could not connect to $address" }
+			Result.failure(err)
+		} catch (err: ApiClientException) {
+			logger.debug(err) { "Unable to get response from $address" }
+			Result.failure(err)
+		}
+
+		// get the Location header or exit
+		val location = info.getOrElse { return null }.getHeader(HttpHeaders.Location) ?: return null
+
+		// only follow the redirect if on the same host
+		val locationUrl = URLBuilder(location).build()
+		if (locationUrl.isRelativePath) return RedirectInfo(address, buildUrl(address, location))
+		val serverUrl = URLBuilder(address).build()
+		if (locationUrl.host == serverUrl.host) return RedirectInfo(address, location)
+
+		// host didn't match
+		return null
+	}
+
+	private suspend fun testAndScore(
+		servers: Collection<RedirectInfo>,
 		minimumScore: RecommendedServerInfoScore,
 	): Collection<RecommendedServerInfo> = withContext(Dispatchers.IO) {
 		val semaphore = Semaphore(MAX_SIMULTANEOUS_RETRIEVALS)
@@ -177,5 +230,34 @@ public class RecommendedServerDiscovery constructor(
 				// Use [minimumScore] to filter out bad score matches
 				serverInfo.score.score >= minimumScore.score
 			}
+	}
+
+	/**
+	 * Discover all servers in the [servers] flow and retrieve the public system information to assign a score.
+	 * Returned servers are not ordered by score. Use [minimumScore] to automatically remove bad matches.
+	 */
+	public suspend fun discover(
+		servers: Collection<String>,
+		minimumScore: RecommendedServerInfoScore,
+		followRedirects: Boolean = false,
+	): Collection<RecommendedServerInfo> = withContext(Dispatchers.IO) {
+		val semaphore = Semaphore(MAX_SIMULTANEOUS_RETRIEVALS)
+		var allServers = servers.map { RedirectInfo(it) }
+
+		if (followRedirects) {
+			val redirects = servers
+				.map { address ->
+					async {
+						semaphore.withPermit {
+							getRedirectInfo(address)
+						}
+					}
+				}
+				.awaitAll()
+			allServers = allServers.plus(redirects.filterNotNull()).distinctBy { it.getAddress() }
+		}
+
+		logger.debug { "allServers = $allServers" }
+		testAndScore(allServers, minimumScore)
 	}
 }
