@@ -7,7 +7,6 @@ package org.jellyfin.sdk.api.operations
 
 import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
-import kotlin.ByteArray
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
@@ -21,6 +20,7 @@ import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.delete
 import org.jellyfin.sdk.api.client.extensions.post
+import org.jellyfin.sdk.model.FileInfo
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.ImageFormat
 import org.jellyfin.sdk.model.api.ImageInfo
@@ -2352,7 +2352,7 @@ public class ImageApi(
 	 *
 	 * @param userId User Id.
 	 */
-	public suspend fun postUserImage(userId: UUID? = null, `data`: ByteArray): Response<Unit> {
+	public suspend fun postUserImage(userId: UUID? = null, `data`: FileInfo): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
@@ -2370,7 +2370,7 @@ public class ImageApi(
 	public suspend fun setItemImage(
 		itemId: UUID,
 		imageType: ImageType,
-		`data`: ByteArray,
+		`data`: FileInfo,
 	): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
@@ -2393,7 +2393,7 @@ public class ImageApi(
 		itemId: UUID,
 		imageType: ImageType,
 		imageIndex: Int,
-		`data`: ByteArray,
+		`data`: FileInfo,
 	): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("itemId", itemId)
@@ -2438,7 +2438,7 @@ public class ImageApi(
 	 * Uploads a custom splashscreen.
 	 * The body is expected to the image contents base64 encoded.
 	 */
-	public suspend fun uploadCustomSplashscreen(`data`: ByteArray): Response<Unit> {
+	public suspend fun uploadCustomSplashscreen(`data`: FileInfo): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/Branding/Splashscreen", pathParameters, queryParameters, data)
