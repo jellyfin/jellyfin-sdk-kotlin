@@ -128,9 +128,9 @@ class OpenApiApiServicesBuilder(
 			// JSON model body
 			MimeType.APPLICATION_JSON -> ApiServiceOperationRequestBody.Json(model)
 			// Image body
-			MimeType.IMAGE_ALL -> ApiServiceOperationRequestBody.Binary
+			MimeType.IMAGE_ALL -> ApiServiceOperationRequestBody.Binary(requestBodyType)
 			// String body
-			MimeType.TEXT_PLAIN -> ApiServiceOperationRequestBody.String
+			MimeType.TEXT_PLAIN -> ApiServiceOperationRequestBody.Text
 			// Unknown type
 			else -> throw OpenApiGeneratorError("""Unsupported request body type "$requestBodyType".""")
 		}

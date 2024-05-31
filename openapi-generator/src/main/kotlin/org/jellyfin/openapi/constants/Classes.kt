@@ -14,6 +14,7 @@ object Classes {
 	object Types {
 		const val UUID = "UUID"
 		const val DATETIME = "DateTime"
+		const val FILE_INFO = "FileInfo"
 	}
 
 	const val CONSTANTS_OBJECT = "ApiConstants"
