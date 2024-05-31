@@ -24,6 +24,18 @@ public final class org/jellyfin/sdk/model/DeviceInfo {
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class org/jellyfin/sdk/model/FileInfo {
+	public fun <init> ([BLjava/lang/String;)V
+	public synthetic fun <init> ([BLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getContent ()[B
+	public final fun getMediaType ()Ljava/lang/String;
+}
+
+public final class org/jellyfin/sdk/model/FileInfoKt {
+	public static final fun toFileInfo ([BLjava/lang/String;)Lorg/jellyfin/sdk/model/FileInfo;
+	public static synthetic fun toFileInfo$default ([BLjava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/FileInfo;
+}
+
 public final class org/jellyfin/sdk/model/ServerVersion : java/lang/Comparable {
 	public static final field Companion Lorg/jellyfin/sdk/model/ServerVersion$Companion;
 	public fun <init> (IIILjava/lang/Integer;)V

@@ -553,12 +553,12 @@ public final class org/jellyfin/sdk/api/operations/ImageApi : org/jellyfin/sdk/a
 	public static synthetic fun getUserImage$default (Lorg/jellyfin/sdk/api/operations/ImageApi;Lorg/jellyfin/sdk/model/api/request/GetUserImageRequest;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun getUserImageUrl (Ljava/util/UUID;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/ImageFormat;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;)Ljava/lang/String;
 	public static synthetic fun getUserImageUrl$default (Lorg/jellyfin/sdk/api/operations/ImageApi;Ljava/util/UUID;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/ImageFormat;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;ILjava/lang/Object;)Ljava/lang/String;
-	public final fun postUserImage (Ljava/util/UUID;[BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun postUserImage$default (Lorg/jellyfin/sdk/api/operations/ImageApi;Ljava/util/UUID;[BLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public final fun setItemImage (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;[BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public final fun setItemImageByIndex (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;I[BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun postUserImage (Ljava/util/UUID;Lorg/jellyfin/sdk/model/FileInfo;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun postUserImage$default (Lorg/jellyfin/sdk/api/operations/ImageApi;Ljava/util/UUID;Lorg/jellyfin/sdk/model/FileInfo;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun setItemImage (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;Lorg/jellyfin/sdk/model/FileInfo;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun setItemImageByIndex (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;ILorg/jellyfin/sdk/model/FileInfo;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun updateItemImageIndex (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/ImageType;IILkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public final fun uploadCustomSplashscreen ([BLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun uploadCustomSplashscreen (Lorg/jellyfin/sdk/model/FileInfo;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 
 public final class org/jellyfin/sdk/api/operations/InstantMixApi : org/jellyfin/sdk/api/operations/Api {
