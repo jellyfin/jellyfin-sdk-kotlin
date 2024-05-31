@@ -9,6 +9,7 @@ object Types {
 	val BYTE_ARRAY = ByteArray::class.asTypeName()
 	val UUID = ClassName(Packages.MODEL_TYPES, Classes.Types.UUID)
 	val DATETIME = ClassName(Packages.MODEL_TYPES, Classes.Types.DATETIME)
+	val FILE_INFO = ClassName(Packages.MODEL_TYPES, Classes.Types.FILE_INFO)
 	val JSON_ELEMENT = ClassName("kotlinx.serialization.json", "JsonElement")
 
 	// Special

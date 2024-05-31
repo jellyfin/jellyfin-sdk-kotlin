@@ -34,6 +34,7 @@ import org.jellyfin.sdk.api.sockets.SocketApi
 import org.jellyfin.sdk.api.sockets.SocketConnectionFactory
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
+import org.jellyfin.sdk.model.FileInfo
 import java.io.IOException
 import java.net.ConnectException
 import java.net.UnknownHostException
@@ -116,6 +117,8 @@ public actual open class KtorClient actual constructor(
 				when (requestBody) {
 					// String content
 					is String -> setBody(TextContent(requestBody, ContentType.Text.Plain))
+					// File content
+					is FileInfo -> setBody(ByteArrayContent(requestBody.content, ContentType.parse(requestBody.mediaType)))
 					// Binary content
 					is ByteArray -> setBody(ByteArrayContent(requestBody, ContentType.Application.OctetStream))
 					// Json content
