@@ -106,7 +106,7 @@ try {
     )
     
     // Use access token in api instance
-    api.accessToken = authenticationResult.accessToken
+    api.update(accessToken = authenticationResult.accessToken)
     
     // Print session information
     println(authenticationResult.sessionInfo)
@@ -122,9 +122,7 @@ Jellyfin uses WebSockets to communicate events like library changes and activiti
 used with the SocketApi.
 
 ```kotlin
-val instance = api.ws()
-
-instance.addGlobalListener { message ->
+api.webSocket.subscribeAll().collect { message ->
 	println(message)
 }
 ```
@@ -162,4 +160,4 @@ val recommended = jellyfin.discovery.getRecommendedServers(candidates, Recommend
   and series.
 - [Homedia](https://github.com/valmnt/homedia) provides a native user interface for Android TV using Jetpack Compose.
 
-_Want to add your project? We'd love to know about it, open an issue or create pull request!_
+_Want to add your project? We'd love to know about it, please open a pull request to add it!_
