@@ -24,7 +24,7 @@ val api = jellyfin.createApi(
 Change the token in an existing API client instance like so:
 
 ```kotlin
-api.accessToken = "02a7174a4d1843448b6d177d8288efd0"
+api.update(accessToken = "02a7174a4d1843448b6d177d8288efd0")
 ```
 
 ## Password login
@@ -43,7 +43,7 @@ try {
 	)
 
 	// Use access token in api instance
-	api.accessToken = authenticationResult.accessToken
+	api.update(accessToken = authenticationResult.accessToken)
 
 	// Print session information
 	println(authenticationResult.sessionInfo)
@@ -70,19 +70,19 @@ the new one.
 The Quick Connect functionality may be disabled by a server. In those cases the server responds with an HTTP 401
 response. You can check if QuickConnect is enabled first or deal with it when trying to use it.
 
-To start a Quick Connect session you need to request a Quick Connect code with the initiate function. This returns a
-state object which can be updated by calling the connect method.
+To start a Quick Connect session you need to request a Quick Connect code with the initiateQuickConnect function. This
+returns a state object which can be updated by calling the getQuickConnectState method.
 
 ```kotlin
 val api = jellyfin.createApi(/* .. */)
 
 // Check if Quick Connect is enabled (this is optional)
-val enabled by api.quickConnectApi.getEnabled()
+val enabled by api.quickConnectApi.getQuickConnectEnabled()
 if (!enabled) println("QuickConnect is disabled in the server!")
 
 // Create a Quick Connect session and store the state
 try {
-	var quickConnectState by api.quickConnectApi.initiate()
+	val quickConnectState by api.quickConnectApi.initiateQuickConnect()
 } catch (err: InvalidStatusException) {
 	if (err.status == 401) {
 		// Quick Connect is disabled
@@ -99,13 +99,12 @@ The Quick Connect state contains a few values that are of interest:
 - The `code` is for the user to input in a different app
 
 The next step is to show the code to the user. Depending on your app you might want to either show a "next" button to
-press
-when the user authorized the app or automatically update the Quick Connect state. In the latter example we recommend
-updating every 5 seconds.
+press when the user authorized the app or automatically update the Quick Connect state. In the latter example we
+recommend updating every 5 seconds.
 
 ```kotlin
 // Update the Quick Connect session state
-quickConnectState = api.quickConnectApi.connect(
+quickConnectState = api.quickConnectApi.getQuickConnectState(
 	secret = quickConnectState.secret,
 )
 ```
@@ -119,7 +118,7 @@ val authenticationResult by api.userApi.authenticateWithQuickConnect(
 )
 
 // Use access token in api instance
-api.accessToken = authenticationResult.accessToken
+api.update(accessToken = authenticationResult.accessToken)
 
 // Print session information
 println(authenticationResult.sessionInfo)
