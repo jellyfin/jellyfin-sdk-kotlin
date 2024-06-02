@@ -10,7 +10,7 @@ public class FileInfo(
 	public val content: ByteArray,
 
 	/**
-	 * The media type of the file. Defaults to "
+	 * The media type of the file.
 	 */
 	public val mediaType: String = "application/octet-stream",
 )
