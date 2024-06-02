@@ -71,21 +71,21 @@ open class OperationBuilder(
 		is RegexValidation -> addCode(CodeBlock.builder().apply {
 			if (parameter.type.isNullable) {
 				addStatement(
-					"%M(%N·==·null·||·%M(%P).matches(%N))·{·%P·}",
+					"%M(%N·==·null·||·%M.matches(%N,%P))·{·%P·}",
 					MemberName("kotlin", "require"),
 					parameter.name,
-					MemberName("kotlin.text", "Regex"),
-					validation.pattern,
+					MemberName("org.jellyfin.sdk.model", "RegexValidator"),
 					parameter.name,
+					validation.pattern,
 					"Parameter \"${parameter.name}\" must match ${validation.pattern}."
 				)
 			} else {
 				addStatement(
-					"%M(%M(%P).matches(%N))·{·%P·}",
+					"%M(%M.matches(%N,%P))·{·%P·}",
 					MemberName("kotlin", "require"),
-					MemberName("kotlin.text", "Regex"),
-					validation.pattern,
+					MemberName("org.jellyfin.sdk.model", "RegexValidator"),
 					parameter.name,
+					validation.pattern,
 					"Parameter \"${parameter.name}\" must match ${validation.pattern}."
 				)
 			}

@@ -24,6 +24,11 @@ public final class org/jellyfin/sdk/model/DeviceInfo {
 	public fun toString ()Ljava/lang/String;
 }
 
+public final class org/jellyfin/sdk/model/RegexValidator {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/RegexValidator;
+	public final fun matches (Ljava/lang/String;Ljava/lang/String;)Z
+}
+
 public final class org/jellyfin/sdk/model/ServerVersion : java/lang/Comparable {
 	public static final field Companion Lorg/jellyfin/sdk/model/ServerVersion$Companion;
 	public fun <init> (IIILjava/lang/Integer;)V
