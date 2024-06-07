@@ -10,12 +10,12 @@ sealed interface ApiServiceOperationRequestBody {
 		override val type: TypeName
 	) : ApiServiceOperationRequestBody
 
-	data object String : ApiServiceOperationRequestBody {
+	data object Text : ApiServiceOperationRequestBody {
 		override val type: TypeName = Types.STRING
 	}
 
-	data object Binary : ApiServiceOperationRequestBody {
-		override val type: TypeName = Types.BYTE_ARRAY
+	data class Binary(val mediaType: String) : ApiServiceOperationRequestBody {
+		override val type: TypeName = Types.FILE_INFO
 	}
 
 	data object None : ApiServiceOperationRequestBody {
