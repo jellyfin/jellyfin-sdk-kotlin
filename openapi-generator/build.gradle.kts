@@ -69,7 +69,7 @@ arrayOf(
 	"unstable" to "Unstable",
 ).forEach { (flavor, flavorPascalCase) ->
 	tasks.register("downloadApiSpec${flavorPascalCase}", de.undercouch.gradle.tasks.download.Download::class) {
-		src("https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-${flavor}.json")
+		src("https://api.jellyfin.org/openapi/jellyfin-openapi-${flavor}.json")
 		dest(defaultConfig["openApiFile"])
 		outputs.file(defaultConfig["openApiFile"]!!)
 	}
