@@ -65,7 +65,6 @@ tasks.register("verifySources", JavaExec::class) {
 
 arrayOf(
 	"stable" to "Stable",
-	"stable-pre" to "Prerelease",
 	"unstable" to "Unstable",
 ).forEach { (flavor, flavorPascalCase) ->
 	tasks.register("downloadApiSpec${flavorPascalCase}", de.undercouch.gradle.tasks.download.Download::class) {
