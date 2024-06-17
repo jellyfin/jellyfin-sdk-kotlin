@@ -35,6 +35,7 @@ import org.jellyfin.sdk.api.sockets.data.subscriptionType
 import org.jellyfin.sdk.model.api.ForceKeepAliveMessage
 import org.jellyfin.sdk.model.api.InboundKeepAliveMessage
 import org.jellyfin.sdk.model.api.InboundWebSocketMessage
+import org.jellyfin.sdk.model.api.OutboundKeepAliveMessage
 import org.jellyfin.sdk.model.api.OutboundWebSocketMessage
 import org.jellyfin.sdk.model.socket.PeriodicListenerPeriod
 import kotlin.reflect.KClass
@@ -169,13 +170,17 @@ public class DefaultSocketApi(
 		.filterIsInstance<SocketConnectionState.Message>()
 		.map { connectionState -> ApiSerializer.decodeSocketMessage(connectionState.message) }
 		.filter { message ->
-			// Intercept ForceKeepAliveMessage and filter it out
 			when (message) {
+				// Intercept ForceKeepAliveMessage and reset the timer
 				is ForceKeepAliveMessage -> {
 					resetKeepAliveTicker(message.data.seconds)
 					false
 				}
 
+				// Ignore keep alive messages
+				is OutboundKeepAliveMessage -> false
+
+				// Keep all other message types
 				else -> true
 			}
 		}
