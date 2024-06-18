@@ -46,7 +46,7 @@ public data class TimerInfoDto(
 	 * The channel id of the recording.
 	 */
 	@SerialName("ChannelId")
-	public val channelId: UUID,
+	public val channelId: UUID? = null,
 	/**
 	 * The external channel identifier.
 	 */
@@ -83,12 +83,12 @@ public data class TimerInfoDto(
 	 * The start date of the recording, in UTC.
 	 */
 	@SerialName("StartDate")
-	public val startDate: DateTime,
+	public val startDate: DateTime? = null,
 	/**
 	 * The end date of the recording, in UTC.
 	 */
 	@SerialName("EndDate")
-	public val endDate: DateTime,
+	public val endDate: DateTime? = null,
 	/**
 	 * The name of the service.
 	 */
@@ -98,22 +98,22 @@ public data class TimerInfoDto(
 	 * The priority.
 	 */
 	@SerialName("Priority")
-	public val priority: Int,
+	public val priority: Int? = null,
 	/**
 	 * The pre padding seconds.
 	 */
 	@SerialName("PrePaddingSeconds")
-	public val prePaddingSeconds: Int,
+	public val prePaddingSeconds: Int? = null,
 	/**
 	 * The post padding seconds.
 	 */
 	@SerialName("PostPaddingSeconds")
-	public val postPaddingSeconds: Int,
+	public val postPaddingSeconds: Int? = null,
 	/**
 	 * A value indicating whether this instance is pre padding required.
 	 */
 	@SerialName("IsPrePaddingRequired")
-	public val isPrePaddingRequired: Boolean,
+	public val isPrePaddingRequired: Boolean? = null,
 	/**
 	 * The Id of the Parent that has a backdrop if the item does not have one.
 	 */
@@ -128,14 +128,14 @@ public data class TimerInfoDto(
 	 * A value indicating whether this instance is post padding required.
 	 */
 	@SerialName("IsPostPaddingRequired")
-	public val isPostPaddingRequired: Boolean,
+	public val isPostPaddingRequired: Boolean? = null,
 	@SerialName("KeepUntil")
-	public val keepUntil: KeepUntil,
+	public val keepUntil: KeepUntil? = null,
 	/**
 	 * The status.
 	 */
 	@SerialName("Status")
-	public val status: RecordingStatus,
+	public val status: RecordingStatus? = null,
 	/**
 	 * The series timer identifier.
 	 */
