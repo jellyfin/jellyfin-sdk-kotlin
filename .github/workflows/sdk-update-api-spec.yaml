@@ -12,14 +12,14 @@ jobs:
     if: ${{ contains(github.repository_owner, 'jellyfin') }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Setup Java
         uses: actions/setup-java@99b8673ff64fbf99d8d325f52d9a5bdedb8483e9 # v4.2.1
         with:
           distribution: temurin
           java-version: 17
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@db19848a5fa7950289d3668fb053140cf3028d43 # v3.3.2
+        uses: gradle/actions/setup-gradle@dbbdc275be76ac10734476cc723d82dfe7ec6eda # v3.4.2
       - name: Set STABLE_API_VERSION
         run: |
           VERSION=$(curl -sL https://repo.jellyfin.org/releases/openapi/jellyfin-openapi-stable.json | jq -r .info.version)
@@ -30,7 +30,7 @@ jobs:
           ./gradlew apiDump
       - name: Create pull request
         if: always()
-        uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e # v6.0.5
+        uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6.1.0
         with:
           token: ${{ secrets.JF_BOT_TOKEN }}
           commit-message: 'Update generated sources to ${{ env.STABLE_API_VERSION }}'
