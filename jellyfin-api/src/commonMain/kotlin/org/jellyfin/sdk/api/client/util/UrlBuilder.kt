@@ -5,6 +5,9 @@ import io.ktor.http.encodeURLParameter
 import io.ktor.http.encodedPath
 import io.ktor.http.takeFrom
 import org.jellyfin.sdk.api.client.exception.MissingPathVariableException
+import org.jellyfin.sdk.model.DateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 public object UrlBuilder {
 	private const val TOKEN_SEPARATOR: Char = '/'
@@ -42,7 +45,17 @@ public object UrlBuilder {
 					}
 
 					// Add values
-					for (value in values) parameters.append(key, value.toString())
+					for (value in values) {
+						val stringValue = when (value) {
+							is DateTime -> value
+								.atZone(ZoneId.systemDefault())
+								.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+
+							else -> value.toString()
+						}
+
+						parameters.append(key, stringValue)
+					}
 				}
 		}.buildString()
 	}
