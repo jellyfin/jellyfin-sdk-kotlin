@@ -57,5 +57,10 @@ class DateTimeSerializerTests : FunSpec({
 			instance,
 			""""2021-06-30T01:33:07.420+01:00""""
 		) shouldBe LocalDateTime.of(2021, 6, 30, 1, 33, 7, 420000000)
+
+		Json.decodeFromString(
+			instance,
+			""""2024-07-23T20:25:24.420Z""""
+		) shouldBe LocalDateTime.of(2024, 7, 23, 21, 25, 24, 420000000)
 	}
 })

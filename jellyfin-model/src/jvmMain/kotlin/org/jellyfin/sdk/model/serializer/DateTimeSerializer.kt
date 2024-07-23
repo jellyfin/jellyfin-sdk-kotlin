@@ -18,7 +18,7 @@ public actual class DateTimeSerializer(
 	actual override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("LocalDateTime", PrimitiveKind.STRING)
 
 	actual override fun deserialize(decoder: Decoder): DateTime = try {
-		ZonedDateTime.parse(decoder.decodeString()).toLocalDateTime()
+		ZonedDateTime.parse(decoder.decodeString()).withZoneSameInstant(zoneId).toLocalDateTime()
 	} catch (err: DateTimeParseException) {
 		// Server will sometimes return 0001-01-01T00:00:00
 		// but java.time can't parse that
