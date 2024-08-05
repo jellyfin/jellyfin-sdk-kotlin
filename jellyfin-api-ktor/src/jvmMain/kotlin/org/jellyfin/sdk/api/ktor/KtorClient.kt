@@ -14,7 +14,6 @@ import io.ktor.content.ByteArrayContent
 import io.ktor.content.TextContent
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
-import io.ktor.http.isSuccess
 import io.ktor.util.toMap
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
@@ -84,6 +83,7 @@ public actual open class KtorClient actual constructor(
 		pathParameters: Map<String, Any?>,
 		queryParameters: Map<String, Any?>,
 		requestBody: Any?,
+		expectedResponse: IntRange,
 	): RawResponse {
 		val url = createUrl(pathTemplate, pathParameters, queryParameters)
 
@@ -129,7 +129,7 @@ public actual open class KtorClient actual constructor(
 			}
 
 			// Check HTTP status
-			if (!response.status.isSuccess()) throw InvalidStatusException(response.status.value)
+			if (response.status.value !in expectedResponse) throw InvalidStatusException(response.status.value)
 			// Return custom response instance
 			return RawResponse(response.bodyAsChannel(), response.status.value, response.headers.toMap())
 		} catch (err: UnknownHostException) {
@@ -168,5 +168,6 @@ public actual open class KtorClient actual constructor(
 		HttpMethod.GET -> KtorHttpMethod.Get
 		HttpMethod.POST -> KtorHttpMethod.Post
 		HttpMethod.DELETE -> KtorHttpMethod.Delete
+		HttpMethod.HEAD -> KtorHttpMethod.Head
 	}
 }

@@ -12,8 +12,8 @@ public abstract class org/jellyfin/sdk/api/client/ApiClient {
 	public abstract fun getHttpClientOptions ()Lorg/jellyfin/sdk/api/client/HttpClientOptions;
 	public final fun getOrCreateApi (Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/api/operations/Api;
 	public abstract fun getWebSocket ()Lorg/jellyfin/sdk/api/sockets/SocketApi;
-	public abstract fun request (Lorg/jellyfin/sdk/api/client/HttpMethod;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun request$default (Lorg/jellyfin/sdk/api/client/ApiClient;Lorg/jellyfin/sdk/api/client/HttpMethod;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Object;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public abstract fun request (Lorg/jellyfin/sdk/api/client/HttpMethod;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Object;Lkotlin/ranges/IntRange;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun request$default (Lorg/jellyfin/sdk/api/client/ApiClient;Lorg/jellyfin/sdk/api/client/HttpMethod;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Object;Lkotlin/ranges/IntRange;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public abstract fun setAccessToken (Ljava/lang/String;)V
 	public abstract fun setBaseUrl (Ljava/lang/String;)V
 	public abstract fun setClientInfo (Lorg/jellyfin/sdk/model/ClientInfo;)V
@@ -48,6 +48,7 @@ public final class org/jellyfin/sdk/api/client/HttpClientOptions {
 public final class org/jellyfin/sdk/api/client/HttpMethod : java/lang/Enum {
 	public static final field DELETE Lorg/jellyfin/sdk/api/client/HttpMethod;
 	public static final field GET Lorg/jellyfin/sdk/api/client/HttpMethod;
+	public static final field HEAD Lorg/jellyfin/sdk/api/client/HttpMethod;
 	public static final field POST Lorg/jellyfin/sdk/api/client/HttpMethod;
 	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/api/client/HttpMethod;
