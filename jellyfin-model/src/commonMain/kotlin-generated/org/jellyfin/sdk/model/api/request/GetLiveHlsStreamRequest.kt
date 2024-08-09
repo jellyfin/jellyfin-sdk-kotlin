@@ -289,4 +289,9 @@ public data class GetLiveHlsStreamRequest(
 	 */
 	@SerialName("enableSubtitlesInManifest")
 	public val enableSubtitlesInManifest: Boolean? = null,
+	/**
+	 * Optional. Whether to enable Audio Encoding.
+	 */
+	@SerialName("enableAudioVbrEncoding")
+	public val enableAudioVbrEncoding: Boolean? = true,
 )

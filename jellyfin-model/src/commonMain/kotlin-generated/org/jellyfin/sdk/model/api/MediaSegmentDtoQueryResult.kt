@@ -14,12 +14,12 @@ import kotlinx.serialization.Serializable
  * Query result container.
  */
 @Serializable
-public data class TimerInfoDtoQueryResult(
+public data class MediaSegmentDtoQueryResult(
 	/**
 	 * The items.
 	 */
 	@SerialName("Items")
-	public val items: List<TimerInfoDto>,
+	public val items: List<MediaSegmentDto>,
 	/**
 	 * The total number of records available.
 	 */

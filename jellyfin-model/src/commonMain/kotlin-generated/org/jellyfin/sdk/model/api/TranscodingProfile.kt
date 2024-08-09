@@ -50,4 +50,6 @@ public data class TranscodingProfile(
 	public val breakOnNonKeyFrames: Boolean = false,
 	@SerialName("Conditions")
 	public val conditions: List<ProfileCondition>,
+	@SerialName("EnableAudioVbrEncoding")
+	public val enableAudioVbrEncoding: Boolean = true,
 )

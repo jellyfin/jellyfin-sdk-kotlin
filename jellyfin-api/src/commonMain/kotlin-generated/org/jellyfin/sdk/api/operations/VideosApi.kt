@@ -143,6 +143,7 @@ public class VideosApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	public suspend fun getVideoStream(
 		itemId: UUID,
@@ -195,6 +196,7 @@ public class VideosApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -204,7 +206,7 @@ public class VideosApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -254,6 +256,7 @@ public class VideosApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/stream", pathParameters,
@@ -318,6 +321,7 @@ public class VideosApi(
 		videoStreamIndex = request.videoStreamIndex,
 		context = request.context,
 		streamOptions = request.streamOptions,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
 	)
 
 	/**
@@ -390,6 +394,7 @@ public class VideosApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	public fun getVideoStreamUrl(
 		itemId: UUID,
@@ -442,6 +447,7 @@ public class VideosApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -451,7 +457,7 @@ public class VideosApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -501,6 +507,7 @@ public class VideosApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		return api.createUrl("/Videos/{itemId}/stream", pathParameters, queryParameters)
 	}
@@ -576,6 +583,7 @@ public class VideosApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	public suspend fun getVideoStreamByContainer(
 		itemId: UUID,
@@ -629,6 +637,7 @@ public class VideosApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
@@ -638,7 +647,7 @@ public class VideosApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -688,6 +697,7 @@ public class VideosApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/stream.{container}", pathParameters,
@@ -753,6 +763,7 @@ public class VideosApi(
 		videoStreamIndex = request.videoStreamIndex,
 		context = request.context,
 		streamOptions = request.streamOptions,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
 	)
 
 	/**
@@ -826,6 +837,7 @@ public class VideosApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	public fun getVideoStreamByContainerUrl(
 		itemId: UUID,
@@ -879,6 +891,7 @@ public class VideosApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
@@ -888,7 +901,7 @@ public class VideosApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -938,6 +951,7 @@ public class VideosApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		return api.createUrl("/Videos/{itemId}/stream.{container}", pathParameters, queryParameters)
 	}
@@ -1013,6 +1027,7 @@ public class VideosApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getVideoStreamDeprecated(
@@ -1067,6 +1082,7 @@ public class VideosApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -1076,7 +1092,7 @@ public class VideosApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(51) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -1127,6 +1143,7 @@ public class VideosApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/stream", pathParameters,
@@ -1193,6 +1210,7 @@ public class VideosApi(
 		videoStreamIndex = request.videoStreamIndex,
 		context = request.context,
 		streamOptions = request.streamOptions,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
 	)
 
 	/**
@@ -1266,6 +1284,7 @@ public class VideosApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getVideoStreamDeprecatedUrl(
@@ -1320,6 +1339,7 @@ public class VideosApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -1329,7 +1349,7 @@ public class VideosApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(51) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -1380,6 +1400,7 @@ public class VideosApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		return api.createUrl("/Videos/{itemId}/stream", pathParameters, queryParameters)
 	}

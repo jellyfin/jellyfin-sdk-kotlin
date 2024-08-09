@@ -10,13 +10,16 @@ import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * Query result container.
+ */
 @Serializable
 public data class AuthenticationInfoQueryResult(
 	/**
 	 * The items.
 	 */
 	@SerialName("Items")
-	public val items: List<AuthenticationInfo>? = null,
+	public val items: List<AuthenticationInfo>,
 	/**
 	 * The total number of records available.
 	 */

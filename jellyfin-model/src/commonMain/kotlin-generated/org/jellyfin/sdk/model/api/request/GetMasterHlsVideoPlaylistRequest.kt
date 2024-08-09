@@ -289,4 +289,9 @@ public data class GetMasterHlsVideoPlaylistRequest(
 	 */
 	@SerialName("enableTrickplay")
 	public val enableTrickplay: Boolean? = true,
+	/**
+	 * Whether to enable Audio Encoding.
+	 */
+	@SerialName("enableAudioVbrEncoding")
+	public val enableAudioVbrEncoding: Boolean? = true,
 )

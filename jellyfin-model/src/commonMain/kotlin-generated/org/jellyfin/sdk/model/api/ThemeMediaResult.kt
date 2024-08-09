@@ -24,7 +24,7 @@ public data class ThemeMediaResult(
 	 * The items.
 	 */
 	@SerialName("Items")
-	public val items: List<BaseItemDto>? = null,
+	public val items: List<BaseItemDto>,
 	/**
 	 * The total number of records available.
 	 */

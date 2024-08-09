@@ -281,4 +281,9 @@ public data class GetAudioStreamDeprecatedRequest(
 	 */
 	@SerialName("streamOptions")
 	public val streamOptions: Map<String, String?>? = null,
+	/**
+	 * Optional. Whether to enable Audio Encoding.
+	 */
+	@SerialName("enableAudioVbrEncoding")
+	public val enableAudioVbrEncoding: Boolean? = true,
 )

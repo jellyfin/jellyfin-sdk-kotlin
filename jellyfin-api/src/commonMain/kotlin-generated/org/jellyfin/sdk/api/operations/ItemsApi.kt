@@ -70,6 +70,7 @@ public class ItemsApi(
 	 * @param hasSpecialFeature Optional filter by items with special features.
 	 * @param hasTrailer Optional filter by items with trailers.
 	 * @param adjacentTo Optional. Return items that are siblings of a supplied item.
+	 * @param indexNumber Optional filter by index number.
 	 * @param parentIndexNumber Optional filter by parent index number.
 	 * @param hasParentalRating Optional filter by items that have or do not have a parental rating.
 	 * @param isHd Optional filter by items that are HD or not.
@@ -197,6 +198,7 @@ public class ItemsApi(
 		hasSpecialFeature: Boolean? = null,
 		hasTrailer: Boolean? = null,
 		adjacentTo: UUID? = null,
+		indexNumber: Int? = null,
 		parentIndexNumber: Int? = null,
 		hasParentalRating: Boolean? = null,
 		isHd: Boolean? = null,
@@ -276,7 +278,7 @@ public class ItemsApi(
 		enableImages: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(85) {
+		val queryParameters = buildMap<String, Any?>(86) {
 			put("userId", userId)
 			put("maxOfficialRating", maxOfficialRating)
 			put("hasThemeSong", hasThemeSong)
@@ -285,6 +287,7 @@ public class ItemsApi(
 			put("hasSpecialFeature", hasSpecialFeature)
 			put("hasTrailer", hasTrailer)
 			put("adjacentTo", adjacentTo)
+			put("indexNumber", indexNumber)
 			put("parentIndexNumber", parentIndexNumber)
 			put("hasParentalRating", hasParentalRating)
 			put("isHd", isHd)
@@ -383,6 +386,7 @@ public class ItemsApi(
 		hasSpecialFeature = request.hasSpecialFeature,
 		hasTrailer = request.hasTrailer,
 		adjacentTo = request.adjacentTo,
+		indexNumber = request.indexNumber,
 		parentIndexNumber = request.parentIndexNumber,
 		hasParentalRating = request.hasParentalRating,
 		isHd = request.isHd,

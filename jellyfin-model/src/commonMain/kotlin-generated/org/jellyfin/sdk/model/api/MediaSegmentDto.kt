@@ -7,7 +7,7 @@
 
 package org.jellyfin.sdk.model.api
 
-import kotlin.collections.List
+import kotlin.Long
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
@@ -15,18 +15,33 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Class UserDataChangeInfo.
+ * Api model for MediaSegment's.
  */
 @Serializable
-public data class UserDataChangeInfo(
+public data class MediaSegmentDto(
 	/**
-	 * The user id.
+	 * The id of the media segment.
 	 */
-	@SerialName("UserId")
-	public val userId: UUID,
+	@SerialName("Id")
+	public val id: UUID,
 	/**
-	 * The user data list.
+	 * The id of the associated item.
 	 */
-	@SerialName("UserDataList")
-	public val userDataList: List<UserItemDataDto>,
+	@SerialName("ItemId")
+	public val itemId: UUID,
+	/**
+	 * The type of content this segment defines.
+	 */
+	@SerialName("Type")
+	public val type: MediaSegmentType,
+	/**
+	 * The start of the segment.
+	 */
+	@SerialName("StartTicks")
+	public val startTicks: Long,
+	/**
+	 * The end of the segment.
+	 */
+	@SerialName("EndTicks")
+	public val endTicks: Long,
 )

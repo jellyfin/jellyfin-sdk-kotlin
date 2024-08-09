@@ -286,4 +286,9 @@ public data class GetMasterHlsAudioPlaylistDeprecatedRequest(
 	 */
 	@SerialName("enableAdaptiveBitrateStreaming")
 	public val enableAdaptiveBitrateStreaming: Boolean? = true,
+	/**
+	 * Optional. Whether to enable Audio Encoding.
+	 */
+	@SerialName("enableAudioVbrEncoding")
+	public val enableAudioVbrEncoding: Boolean? = true,
 )

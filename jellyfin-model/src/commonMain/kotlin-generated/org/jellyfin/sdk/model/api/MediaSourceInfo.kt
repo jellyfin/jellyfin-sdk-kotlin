@@ -108,4 +108,6 @@ public data class MediaSourceInfo(
 	public val defaultAudioStreamIndex: Int? = null,
 	@SerialName("DefaultSubtitleStreamIndex")
 	public val defaultSubtitleStreamIndex: Int? = null,
+	@SerialName("HasSegments")
+	public val hasSegments: Boolean,
 )
