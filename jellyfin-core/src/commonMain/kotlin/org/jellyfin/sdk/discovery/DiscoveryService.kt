@@ -45,9 +45,11 @@ public class DiscoveryService(
 	public suspend fun getRecommendedServers(
 		servers: Collection<String>,
 		minimumScore: RecommendedServerInfoScore = RecommendedServerInfoScore.BAD,
+		followRedirects: Boolean = false,
 	): Collection<RecommendedServerInfo> = recommendedServerDiscovery.discover(
 		servers = servers,
-		minimumScore = minimumScore
+		minimumScore = minimumScore,
+		followRedirects = followRedirects
 	)
 
 	/**

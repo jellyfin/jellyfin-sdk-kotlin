@@ -42,3 +42,17 @@ public suspend inline fun <reified T : Any> ApiClient.delete(
 	queryParameters = queryParameters,
 	requestBody = requestBody
 ).createResponse()
+
+public suspend inline fun <reified T : Any> ApiClient.head(
+	pathTemplate: String,
+	pathParameters: Map<String, Any?> = emptyMap(),
+	queryParameters: Map<String, Any?> = emptyMap(),
+	requestBody: Any? = null,
+): Response<T> = request(
+	method = HttpMethod.HEAD,
+	pathTemplate = pathTemplate,
+	pathParameters = pathParameters,
+	queryParameters = queryParameters,
+	requestBody = requestBody,
+	expectedResponse = 300 until 400
+).createResponse()
