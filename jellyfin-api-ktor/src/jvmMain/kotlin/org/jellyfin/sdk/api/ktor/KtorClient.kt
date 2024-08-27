@@ -42,7 +42,7 @@ import javax.net.ssl.SSLException
 import io.ktor.http.HttpMethod as KtorHttpMethod
 
 @Suppress("LongParameterList")
-public actual open class KtorClient actual constructor(
+public open class KtorClient(
 	override var baseUrl: String?,
 	override var accessToken: String?,
 	override var clientInfo: ClientInfo,
@@ -78,7 +78,7 @@ public actual open class KtorClient actual constructor(
 	}
 
 	@Suppress("ThrowsCount")
-	public actual override suspend fun request(
+	public override suspend fun request(
 		method: HttpMethod,
 		pathTemplate: String,
 		pathParameters: Map<String, Any?>,
