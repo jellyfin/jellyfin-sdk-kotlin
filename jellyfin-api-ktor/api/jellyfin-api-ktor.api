@@ -1,6 +1,5 @@
 public class org/jellyfin/sdk/api/ktor/KtorClient : org/jellyfin/sdk/api/client/ApiClient {
 	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public fun getAccessToken ()Ljava/lang/String;
 	public fun getBaseUrl ()Ljava/lang/String;
 	public fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
