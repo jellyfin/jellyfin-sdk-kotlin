@@ -20,7 +20,7 @@ public actual fun String.toUUIDOrNull(): UUID? = try {
 }
 
 public actual class UUIDSerializer : KSerializer<UUID> {
-	actual override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("UUID", PrimitiveKind.STRING)
+	actual override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("org.jellyfin.UUID", PrimitiveKind.STRING)
 
 	actual override fun deserialize(decoder: Decoder): UUID {
 		return decoder.decodeString().toUUID()

@@ -15,7 +15,7 @@ import java.time.format.DateTimeParseException
 public actual class DateTimeSerializer(
 	private val zoneId: ZoneId = ZoneId.systemDefault(),
 ) : KSerializer<DateTime> {
-	actual override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("LocalDateTime", PrimitiveKind.STRING)
+	actual override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor("org.jellyfin.LocalDateTime", PrimitiveKind.STRING)
 
 	actual override fun deserialize(decoder: Decoder): DateTime = try {
 		ZonedDateTime.parse(decoder.decodeString()).withZoneSameInstant(zoneId).toLocalDateTime()
