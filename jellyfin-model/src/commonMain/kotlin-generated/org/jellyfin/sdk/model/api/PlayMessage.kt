@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @SerialName("Play")
 public data class PlayMessage(
 	/**
-	 * The data.
+	 * Class PlayRequest.
 	 */
 	@SerialName("Data")
 	public val `data`: PlayRequest? = null,
