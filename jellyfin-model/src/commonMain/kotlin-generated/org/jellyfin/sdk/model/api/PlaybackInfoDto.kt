@@ -107,4 +107,9 @@ public data class PlaybackInfoDto(
 	 */
 	@SerialName("AutoOpenLiveStream")
 	public val autoOpenLiveStream: Boolean? = null,
+	/**
+	 * A value indicating whether always burn in subtitles when transcoding.
+	 */
+	@SerialName("AlwaysBurnInSubtitleWhenTranscoding")
+	public val alwaysBurnInSubtitleWhenTranscoding: Boolean? = null,
 )

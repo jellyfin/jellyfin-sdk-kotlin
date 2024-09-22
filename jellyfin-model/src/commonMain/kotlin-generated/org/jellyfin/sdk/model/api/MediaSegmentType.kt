@@ -11,22 +11,24 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * An enum representing an algorithm to downmix surround sound to stereo.
+ * Defines the types of content an individual Jellyfin.Data.Entities.MediaSegment represents.
  */
 @Serializable
-public enum class DownMixStereoAlgorithms(
+public enum class MediaSegmentType(
 	public val serialName: String,
 ) {
-	@SerialName("None")
-	NONE("None"),
-	@SerialName("Dave750")
-	DAVE_750("Dave750"),
-	@SerialName("NightmodeDialogue")
-	NIGHTMODE_DIALOGUE("NightmodeDialogue"),
-	@SerialName("Rfc7845")
-	RFC_7845("Rfc7845"),
-	@SerialName("Ac4")
-	AC_4("Ac4"),
+	@SerialName("Unknown")
+	UNKNOWN("Unknown"),
+	@SerialName("Commercial")
+	COMMERCIAL("Commercial"),
+	@SerialName("Preview")
+	PREVIEW("Preview"),
+	@SerialName("Recap")
+	RECAP("Recap"),
+	@SerialName("Outro")
+	OUTRO("Outro"),
+	@SerialName("Intro")
+	INTRO("Intro"),
 	;
 
 	/**
@@ -38,19 +40,20 @@ public enum class DownMixStereoAlgorithms(
 		/**
 		 * Find the enum member by the serial name or return null.
 		 */
-		public fun fromNameOrNull(serialName: String): DownMixStereoAlgorithms? = when (serialName) {
-			"None" -> NONE
-			"Dave750" -> DAVE_750
-			"NightmodeDialogue" -> NIGHTMODE_DIALOGUE
-			"Rfc7845" -> RFC_7845
-			"Ac4" -> AC_4
+		public fun fromNameOrNull(serialName: String): MediaSegmentType? = when (serialName) {
+			"Unknown" -> UNKNOWN
+			"Commercial" -> COMMERCIAL
+			"Preview" -> PREVIEW
+			"Recap" -> RECAP
+			"Outro" -> OUTRO
+			"Intro" -> INTRO
 			else -> null
 		}
 
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): DownMixStereoAlgorithms =
+		public fun fromName(serialName: String): MediaSegmentType =
 				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }

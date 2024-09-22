@@ -60,6 +60,8 @@ public data class MediaSourceInfo(
 	public val supportsDirectPlay: Boolean,
 	@SerialName("IsInfiniteStream")
 	public val isInfiniteStream: Boolean,
+	@SerialName("UseMostCompatibleTranscodingProfile")
+	public val useMostCompatibleTranscodingProfile: Boolean = false,
 	@SerialName("RequiresOpening")
 	public val requiresOpening: Boolean,
 	@SerialName("OpenToken")
@@ -88,6 +90,8 @@ public data class MediaSourceInfo(
 	public val formats: List<String>? = null,
 	@SerialName("Bitrate")
 	public val bitrate: Int? = null,
+	@SerialName("FallbackMaxStreamingBitrate")
+	public val fallbackMaxStreamingBitrate: Int? = null,
 	@SerialName("Timestamp")
 	public val timestamp: TransportStreamTimestamp? = null,
 	@SerialName("RequiredHttpHeaders")
@@ -108,4 +112,6 @@ public data class MediaSourceInfo(
 	public val defaultAudioStreamIndex: Int? = null,
 	@SerialName("DefaultSubtitleStreamIndex")
 	public val defaultSubtitleStreamIndex: Int? = null,
+	@SerialName("HasSegments")
+	public val hasSegments: Boolean,
 )

@@ -77,4 +77,9 @@ public data class OpenLiveStreamRequest(
 	 */
 	@SerialName("enableDirectStream")
 	public val enableDirectStream: Boolean? = null,
+	/**
+	 * Always burn-in subtitle when transcoding.
+	 */
+	@SerialName("alwaysBurnInSubtitleWhenTranscoding")
+	public val alwaysBurnInSubtitleWhenTranscoding: Boolean? = null,
 )

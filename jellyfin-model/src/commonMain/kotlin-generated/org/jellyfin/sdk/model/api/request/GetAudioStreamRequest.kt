@@ -83,8 +83,8 @@ public data class GetAudioStreamRequest(
 	@SerialName("deviceId")
 	public val deviceId: String? = null,
 	/**
-	 * Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server will auto-select
-	 * using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * Optional. Specify an audio codec to encode to, e.g. mp3. If omitted the server will auto-select
+	 * using the url's extension.
 	 */
 	@SerialName("audioCodec")
 	public val audioCodec: String? = null,
@@ -240,7 +240,7 @@ public data class GetAudioStreamRequest(
 	public val enableMpegtsM2TsMode: Boolean? = null,
 	/**
 	 * Optional. Specify a video codec to encode to, e.g. h264. If omitted the server will auto-select
-	 * using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx (deprecated), wmv.
+	 * using the url's extension.
 	 */
 	@SerialName("videoCodec")
 	public val videoCodec: String? = null,
@@ -274,4 +274,9 @@ public data class GetAudioStreamRequest(
 	 */
 	@SerialName("streamOptions")
 	public val streamOptions: Map<String, String?>? = null,
+	/**
+	 * Optional. Whether to enable Audio Encoding.
+	 */
+	@SerialName("enableAudioVbrEncoding")
+	public val enableAudioVbrEncoding: Boolean? = true,
 )

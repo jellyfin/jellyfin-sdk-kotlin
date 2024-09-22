@@ -10,13 +10,16 @@ import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * Query result container.
+ */
 @Serializable
-public data class DeviceInfoQueryResult(
+public data class DeviceInfoDtoQueryResult(
 	/**
 	 * The items.
 	 */
 	@SerialName("Items")
-	public val items: List<DeviceInfo>? = null,
+	public val items: List<DeviceInfoDto>,
 	/**
 	 * The total number of records available.
 	 */
