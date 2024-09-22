@@ -31,7 +31,7 @@ public class Main {
         UserApiExtensionsKt.authenticateUserByName(userApi, "demo", "", new JavaResponseContinuation<AuthenticationResult>() {
             @Override
             public void onResponse(@NotNull AuthenticationResult response) {
-                client.setAccessToken(response.getAccessToken());
+                client.update(client.getBaseUrl(), response.getAccessToken(), client.getClientInfo(), client.getDeviceInfo());
 
                 logger.info("Got access token: {}", response.getAccessToken());
                 latch.countDown();

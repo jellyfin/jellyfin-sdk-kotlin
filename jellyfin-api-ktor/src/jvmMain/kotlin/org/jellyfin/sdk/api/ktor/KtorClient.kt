@@ -42,14 +42,23 @@ import javax.net.ssl.SSLException
 import io.ktor.http.HttpMethod as KtorHttpMethod
 
 @Suppress("LongParameterList")
-public open class KtorClient(
-	override var baseUrl: String?,
-	override var accessToken: String?,
-	override var clientInfo: ClientInfo,
-	override var deviceInfo: DeviceInfo,
+public class KtorClient(
+	initialBaseUrl: String?,
+	initialAccessToken: String?,
+	initialClientInfo: ClientInfo,
+	initialDeviceInfo: DeviceInfo,
 	override val httpClientOptions: HttpClientOptions,
 	private val socketConnectionFactory: SocketConnectionFactory,
 ) : ApiClient() {
+	public override var baseUrl: String? = initialBaseUrl
+		private set
+	public override var accessToken: String? = initialAccessToken
+		private set
+	public override var clientInfo: ClientInfo = initialClientInfo
+		private set
+	public override var deviceInfo: DeviceInfo = initialDeviceInfo
+		private set
+
 	private val client: HttpClient = HttpClient {
 		followRedirects = httpClientOptions.followRedirects
 		expectSuccess = false
@@ -118,7 +127,12 @@ public open class KtorClient(
 					// String content
 					is String -> setBody(TextContent(requestBody, ContentType.Text.Plain))
 					// File content
-					is FileInfo -> setBody(ByteArrayContent(requestBody.content, ContentType.parse(requestBody.mediaType)))
+					is FileInfo -> setBody(
+						ByteArrayContent(
+							requestBody.content,
+							ContentType.parse(requestBody.mediaType)
+						)
+					)
 					// Binary content
 					is ByteArray -> setBody(ByteArrayContent(requestBody, ContentType.Application.OctetStream))
 					// Json content
