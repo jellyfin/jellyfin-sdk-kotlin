@@ -1,6 +1,7 @@
 package org.jellyfin.sample.cli.command
 
 import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.core.Context
 import com.github.ajalt.clikt.parameters.arguments.argument
 import com.github.ajalt.clikt.parameters.arguments.default
 import kotlinx.coroutines.flow.collect
@@ -11,13 +12,15 @@ import org.jellyfin.sdk.Jellyfin
 
 class Discover(
 	private val jellyfin: Jellyfin
-) : CliktCommand("Discover servers on the local network") {
+) : CliktCommand(name = "discover") {
 	private val logger by logger()
 
 	private val address by argument(
 		name = "address",
 		help = "Address to discover servers for. \"local\" to discovery servers in the local network."
 	).default("local")
+
+	override fun help(context: Context): String = "Discover servers on the local network"
 
 	override fun run() = runBlocking {
 		if (address == "local") runLocal()

@@ -1,6 +1,7 @@
 package org.jellyfin.sample.cli.command
 
 import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.core.Context
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
 import kotlinx.coroutines.runBlocking
@@ -11,13 +12,15 @@ import org.jellyfin.sdk.api.client.extensions.systemApi
 
 class Ping(
 	private val jellyfin: Jellyfin,
-) : CliktCommand("Pings a given server and retrieve basic system information") {
+) : CliktCommand(name = "ping") {
 	private val logger by logger()
 	private val server by serverOption()
 	private val extended by option(
 		"-e", "--extended",
 		help = "Find servers based on input using recommended server algorithm"
 	).flag(default = false)
+
+	override fun help(context: Context): String = "Pings a given server and retrieve basic system information"
 
 	override fun run() = runBlocking {
 		if (extended) runExtended()

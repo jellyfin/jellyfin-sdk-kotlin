@@ -1,5 +1,6 @@
 package org.jellyfin.openapi
 
+import com.github.ajalt.clikt.core.main
 import org.jellyfin.openapi.cli.MainCommand
 import org.jellyfin.openapi.hooks.hooksModule
 import org.koin.core.context.startKoin
