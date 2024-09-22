@@ -70,6 +70,10 @@ public data class LibraryOptions(
 	public val disabledSubtitleFetchers: List<String>,
 	@SerialName("SubtitleFetcherOrder")
 	public val subtitleFetcherOrder: List<String>,
+	@SerialName("DisabledMediaSegmentProviders")
+	public val disabledMediaSegmentProviders: List<String>,
+	@SerialName("MediaSegmentProvideOrder")
+	public val mediaSegmentProvideOrder: List<String>,
 	@SerialName("SkipSubtitlesIfEmbeddedSubtitlesPresent")
 	public val skipSubtitlesIfEmbeddedSubtitlesPresent: Boolean,
 	@SerialName("SkipSubtitlesIfAudioTrackMatches")
@@ -82,6 +86,20 @@ public data class LibraryOptions(
 	public val saveSubtitlesWithMedia: Boolean,
 	@SerialName("SaveLyricsWithMedia")
 	public val saveLyricsWithMedia: Boolean = false,
+	@SerialName("SaveTrickplayWithMedia")
+	public val saveTrickplayWithMedia: Boolean = false,
+	@SerialName("DisabledLyricFetchers")
+	public val disabledLyricFetchers: List<String>,
+	@SerialName("LyricFetcherOrder")
+	public val lyricFetcherOrder: List<String>,
+	@SerialName("PreferNonstandardArtistsTag")
+	public val preferNonstandardArtistsTag: Boolean = false,
+	@SerialName("UseCustomTagDelimiters")
+	public val useCustomTagDelimiters: Boolean = false,
+	@SerialName("CustomTagDelimiters")
+	public val customTagDelimiters: List<String>,
+	@SerialName("DelimiterWhitelist")
+	public val delimiterWhitelist: List<String>,
 	@SerialName("AutomaticallyAddToCollection")
 	public val automaticallyAddToCollection: Boolean,
 	/**

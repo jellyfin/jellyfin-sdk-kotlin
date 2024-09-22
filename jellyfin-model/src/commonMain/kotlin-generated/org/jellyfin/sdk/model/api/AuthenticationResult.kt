@@ -9,20 +9,29 @@ import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * A class representing an authentication result.
+ */
 @Serializable
 public data class AuthenticationResult(
 	/**
-	 * Class UserDto.
+	 * The user.
 	 */
 	@SerialName("User")
 	public val user: UserDto? = null,
 	/**
-	 * Class SessionInfo.
+	 * The session info.
 	 */
 	@SerialName("SessionInfo")
-	public val sessionInfo: SessionInfo? = null,
+	public val sessionInfo: SessionInfoDto? = null,
+	/**
+	 * The access token.
+	 */
 	@SerialName("AccessToken")
 	public val accessToken: String? = null,
+	/**
+	 * The server id.
+	 */
 	@SerialName("ServerId")
 	public val serverId: String? = null,
 )

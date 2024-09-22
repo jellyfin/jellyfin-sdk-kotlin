@@ -30,6 +30,11 @@ public data class LibraryOptionsResultDto(
 	@SerialName("SubtitleFetchers")
 	public val subtitleFetchers: List<LibraryOptionInfoDto>,
 	/**
+	 * The list of lyric fetchers.
+	 */
+	@SerialName("LyricFetchers")
+	public val lyricFetchers: List<LibraryOptionInfoDto>,
+	/**
 	 * The type options.
 	 */
 	@SerialName("TypeOptions")

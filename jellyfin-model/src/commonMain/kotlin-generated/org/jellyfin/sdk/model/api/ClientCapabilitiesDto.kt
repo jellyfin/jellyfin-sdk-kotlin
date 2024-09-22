@@ -6,7 +6,6 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Boolean
-import kotlin.Deprecated
 import kotlin.String
 import kotlin.collections.List
 import kotlinx.serialization.SerialName
@@ -38,17 +37,7 @@ public data class ClientCapabilitiesDto(
 	@SerialName("SupportsPersistentIdentifier")
 	public val supportsPersistentIdentifier: Boolean,
 	/**
-	 * A MediaBrowser.Model.Dlna.DeviceProfile represents a set of metadata which determines which
-	 * content a certain device is able to play.
-	 *
-	 *
-	 * Specifically, it defines the supported containers
-	 * (`P:MediaBrowser.Model.Dlna.DeviceProfile.ContainerProfiles`) and
-	 * codecs (`P:MediaBrowser.Model.Dlna.DeviceProfile.CodecProfiles`) (video and/or audio, including
-	 * codec profiles and levels)
-	 * the device is able to direct play (without transcoding or remuxing),
-	 * as well as which containers/codecs to transcode to
-	 * (`P:MediaBrowser.Model.Dlna.DeviceProfile.TranscodingProfiles`) in case it isn't.
+	 * The device profile.
 	 */
 	@SerialName("DeviceProfile")
 	public val deviceProfile: DeviceProfile? = null,
@@ -62,10 +51,4 @@ public data class ClientCapabilitiesDto(
 	 */
 	@SerialName("IconUrl")
 	public val iconUrl: String? = null,
-	@Deprecated("This member is deprecated and may be removed in the future")
-	@SerialName("SupportsContentUploading")
-	public val supportsContentUploading: Boolean? = false,
-	@Deprecated("This member is deprecated and may be removed in the future")
-	@SerialName("SupportsSync")
-	public val supportsSync: Boolean? = false,
 )

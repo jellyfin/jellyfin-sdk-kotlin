@@ -90,8 +90,8 @@ public class VideosApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3. If omitted the server
+	 * will auto-select using the url's extension.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -133,8 +133,7 @@ public class VideosApi(
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * will auto-select using the url's extension.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -143,6 +142,7 @@ public class VideosApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	public suspend fun getVideoStream(
 		itemId: UUID,
@@ -195,6 +195,7 @@ public class VideosApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -204,7 +205,7 @@ public class VideosApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -254,6 +255,7 @@ public class VideosApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/stream", pathParameters,
@@ -318,6 +320,7 @@ public class VideosApi(
 		videoStreamIndex = request.videoStreamIndex,
 		context = request.context,
 		streamOptions = request.streamOptions,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
 	)
 
 	/**
@@ -337,8 +340,8 @@ public class VideosApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3. If omitted the server
+	 * will auto-select using the url's extension.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -380,8 +383,7 @@ public class VideosApi(
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * will auto-select using the url's extension.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -390,6 +392,7 @@ public class VideosApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	public fun getVideoStreamUrl(
 		itemId: UUID,
@@ -442,6 +445,7 @@ public class VideosApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -451,7 +455,7 @@ public class VideosApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -501,6 +505,7 @@ public class VideosApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		return api.createUrl("/Videos/{itemId}/stream", pathParameters, queryParameters)
 	}
@@ -523,8 +528,8 @@ public class VideosApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3. If omitted the server
+	 * will auto-select using the url's extension.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -566,8 +571,7 @@ public class VideosApi(
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * will auto-select using the url's extension.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -576,6 +580,7 @@ public class VideosApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	public suspend fun getVideoStreamByContainer(
 		itemId: UUID,
@@ -629,6 +634,7 @@ public class VideosApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
@@ -638,7 +644,7 @@ public class VideosApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -688,6 +694,7 @@ public class VideosApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/stream.{container}", pathParameters,
@@ -753,6 +760,7 @@ public class VideosApi(
 		videoStreamIndex = request.videoStreamIndex,
 		context = request.context,
 		streamOptions = request.streamOptions,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
 	)
 
 	/**
@@ -773,8 +781,8 @@ public class VideosApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3. If omitted the server
+	 * will auto-select using the url's extension.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -816,8 +824,7 @@ public class VideosApi(
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * will auto-select using the url's extension.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -826,6 +833,7 @@ public class VideosApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	public fun getVideoStreamByContainerUrl(
 		itemId: UUID,
@@ -879,6 +887,7 @@ public class VideosApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
@@ -888,7 +897,7 @@ public class VideosApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -938,6 +947,7 @@ public class VideosApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		return api.createUrl("/Videos/{itemId}/stream.{container}", pathParameters, queryParameters)
 	}
@@ -960,8 +970,8 @@ public class VideosApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3. If omitted the server
+	 * will auto-select using the url's extension.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -1003,8 +1013,7 @@ public class VideosApi(
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * will auto-select using the url's extension.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -1013,6 +1022,7 @@ public class VideosApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getVideoStreamDeprecated(
@@ -1067,6 +1077,7 @@ public class VideosApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -1076,7 +1087,7 @@ public class VideosApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(51) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -1127,6 +1138,7 @@ public class VideosApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/stream", pathParameters,
@@ -1193,6 +1205,7 @@ public class VideosApi(
 		videoStreamIndex = request.videoStreamIndex,
 		context = request.context,
 		streamOptions = request.streamOptions,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
 	)
 
 	/**
@@ -1213,8 +1226,8 @@ public class VideosApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3. If omitted the server
+	 * will auto-select using the url's extension.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -1256,8 +1269,7 @@ public class VideosApi(
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * will auto-select using the url's extension.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -1266,6 +1278,7 @@ public class VideosApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getVideoStreamDeprecatedUrl(
@@ -1320,6 +1333,7 @@ public class VideosApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -1329,7 +1343,7 @@ public class VideosApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(51) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -1380,6 +1394,7 @@ public class VideosApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		return api.createUrl("/Videos/{itemId}/stream", pathParameters, queryParameters)
 	}

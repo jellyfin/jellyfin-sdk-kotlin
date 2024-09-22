@@ -74,7 +74,7 @@ public class TrickplayApi(
 	 * @param index The index of the desired tile.
 	 * @param mediaSourceId The media version id, if using an alternate version.
 	 */
-	public suspend fun getTrickplayTileImage(
+	public suspend fun getTrickplayTileImageAsync(
 		itemId: UUID,
 		width: Int,
 		index: Int,
@@ -102,7 +102,7 @@ public class TrickplayApi(
 	 * @param index The index of the desired tile.
 	 * @param mediaSourceId The media version id, if using an alternate version.
 	 */
-	public fun getTrickplayTileImageUrl(
+	public fun getTrickplayTileImageAsyncUrl(
 		itemId: UUID,
 		width: Int,
 		index: Int,

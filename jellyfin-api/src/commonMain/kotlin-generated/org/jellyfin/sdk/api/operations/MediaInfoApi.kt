@@ -222,6 +222,7 @@ public class MediaInfoApi(
 	 * @param itemId The item id.
 	 * @param enableDirectPlay Whether to enable direct play. Default: true.
 	 * @param enableDirectStream Whether to enable direct stream. Default: true.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Always burn-in subtitle when transcoding.
 	 */
 	public suspend fun openLiveStream(
 		openToken: String? = null,
@@ -235,10 +236,11 @@ public class MediaInfoApi(
 		itemId: UUID? = null,
 		enableDirectPlay: Boolean? = null,
 		enableDirectStream: Boolean? = null,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = null,
 		`data`: OpenLiveStreamDto? = null,
 	): Response<LiveStreamResponse> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(11) {
+		val queryParameters = buildMap<String, Any?>(12) {
 			put("openToken", openToken)
 			put("userId", userId)
 			put("playSessionId", playSessionId)
@@ -250,6 +252,7 @@ public class MediaInfoApi(
 			put("itemId", itemId)
 			put("enableDirectPlay", enableDirectPlay)
 			put("enableDirectStream", enableDirectStream)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val response = api.post<LiveStreamResponse>("/LiveStreams/Open", pathParameters, queryParameters,
 				data)
@@ -274,6 +277,7 @@ public class MediaInfoApi(
 		itemId = request.itemId,
 		enableDirectPlay = request.enableDirectPlay,
 		enableDirectStream = request.enableDirectStream,
+		alwaysBurnInSubtitleWhenTranscoding = request.alwaysBurnInSubtitleWhenTranscoding,
 		`data` = `data`,
 	)
 }

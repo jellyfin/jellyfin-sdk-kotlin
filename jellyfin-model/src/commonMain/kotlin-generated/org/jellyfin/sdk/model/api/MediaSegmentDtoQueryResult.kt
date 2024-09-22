@@ -6,28 +6,28 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Int
-import kotlin.String
+import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * An entity representing custom options for a device.
+ * Query result container.
  */
 @Serializable
-public data class DeviceOptions(
+public data class MediaSegmentDtoQueryResult(
 	/**
-	 * The id.
+	 * The items.
 	 */
-	@SerialName("Id")
-	public val id: Int,
+	@SerialName("Items")
+	public val items: List<MediaSegmentDto>,
 	/**
-	 * The device id.
+	 * The total number of records available.
 	 */
-	@SerialName("DeviceId")
-	public val deviceId: String,
+	@SerialName("TotalRecordCount")
+	public val totalRecordCount: Int,
 	/**
-	 * The custom name.
+	 * The index of the first record in Items.
 	 */
-	@SerialName("CustomName")
-	public val customName: String? = null,
+	@SerialName("StartIndex")
+	public val startIndex: Int,
 )

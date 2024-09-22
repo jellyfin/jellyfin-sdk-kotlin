@@ -63,8 +63,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -104,8 +103,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -114,6 +112,7 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	public suspend fun getHlsAudioSegment(
 		itemId: UUID,
@@ -169,6 +168,7 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
@@ -180,7 +180,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -230,6 +230,7 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
 		val response =
@@ -298,6 +299,7 @@ public class DynamicHlsApi(
 		videoStreamIndex = request.videoStreamIndex,
 		context = request.context,
 		streamOptions = request.streamOptions,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
 	)
 
 	/**
@@ -321,8 +323,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -362,8 +363,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -372,6 +372,7 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	public fun getHlsAudioSegmentUrl(
 		itemId: UUID,
@@ -427,6 +428,7 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
@@ -438,7 +440,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -488,6 +490,7 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		return api.createUrl("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters,
 				queryParameters)
@@ -515,8 +518,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -556,8 +558,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -566,6 +567,7 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getHlsAudioSegmentDeprecated(
@@ -623,6 +625,7 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
@@ -634,7 +637,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(51) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -685,6 +688,7 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
 		val response =
@@ -755,6 +759,7 @@ public class DynamicHlsApi(
 		videoStreamIndex = request.videoStreamIndex,
 		context = request.context,
 		streamOptions = request.streamOptions,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
 	)
 
 	/**
@@ -779,8 +784,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -820,8 +824,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -830,6 +833,7 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getHlsAudioSegmentDeprecatedUrl(
@@ -887,6 +891,7 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
@@ -898,7 +903,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(51) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -949,6 +954,7 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		return api.createUrl("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters,
 				queryParameters)
@@ -975,8 +981,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -1017,9 +1022,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -1028,6 +1031,8 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	public suspend fun getHlsVideoSegment(
 		itemId: UUID,
@@ -1084,6 +1089,8 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
@@ -1095,7 +1102,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(52) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -1146,6 +1153,8 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
 		val response =
@@ -1215,6 +1224,8 @@ public class DynamicHlsApi(
 		videoStreamIndex = request.videoStreamIndex,
 		context = request.context,
 		streamOptions = request.streamOptions,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
+		alwaysBurnInSubtitleWhenTranscoding = request.alwaysBurnInSubtitleWhenTranscoding,
 	)
 
 	/**
@@ -1238,8 +1249,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -1280,9 +1290,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -1291,6 +1299,8 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	public fun getHlsVideoSegmentUrl(
 		itemId: UUID,
@@ -1347,6 +1357,8 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
@@ -1358,7 +1370,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(52) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -1409,6 +1421,8 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		return api.createUrl("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters,
 				queryParameters)
@@ -1436,8 +1450,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -1478,9 +1491,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -1489,6 +1500,8 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getHlsVideoSegmentDeprecated(
@@ -1547,6 +1560,8 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
@@ -1558,7 +1573,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(51) {
+		val queryParameters = buildMap<String, Any?>(53) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -1610,6 +1625,8 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
 		val response =
@@ -1681,6 +1698,8 @@ public class DynamicHlsApi(
 		videoStreamIndex = request.videoStreamIndex,
 		context = request.context,
 		streamOptions = request.streamOptions,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
+		alwaysBurnInSubtitleWhenTranscoding = request.alwaysBurnInSubtitleWhenTranscoding,
 	)
 
 	/**
@@ -1705,8 +1724,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -1747,9 +1765,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -1758,6 +1774,8 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getHlsVideoSegmentDeprecatedUrl(
@@ -1816,6 +1834,8 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
@@ -1827,7 +1847,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(51) {
+		val queryParameters = buildMap<String, Any?>(53) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -1879,6 +1899,8 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		return api.createUrl("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters,
 				queryParameters)
@@ -1900,8 +1922,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -1940,9 +1961,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -1954,6 +1973,8 @@ public class DynamicHlsApi(
 	 * @param maxWidth Optional. The max width.
 	 * @param maxHeight Optional. The max height.
 	 * @param enableSubtitlesInManifest Optional. Whether to enable subtitles in the manifest.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	public suspend fun getLiveHlsStream(
 		itemId: UUID,
@@ -2007,6 +2028,8 @@ public class DynamicHlsApi(
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		enableSubtitlesInManifest: Boolean? = null,
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -2016,7 +2039,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(52) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -2067,6 +2090,8 @@ public class DynamicHlsApi(
 			put("maxWidth", maxWidth)
 			put("maxHeight", maxHeight)
 			put("enableSubtitlesInManifest", enableSubtitlesInManifest)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/live.m3u8", pathParameters,
@@ -2132,6 +2157,8 @@ public class DynamicHlsApi(
 		maxWidth = request.maxWidth,
 		maxHeight = request.maxHeight,
 		enableSubtitlesInManifest = request.enableSubtitlesInManifest,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
+		alwaysBurnInSubtitleWhenTranscoding = request.alwaysBurnInSubtitleWhenTranscoding,
 	)
 
 	/**
@@ -2150,8 +2177,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -2190,9 +2216,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -2204,6 +2228,8 @@ public class DynamicHlsApi(
 	 * @param maxWidth Optional. The max width.
 	 * @param maxHeight Optional. The max height.
 	 * @param enableSubtitlesInManifest Optional. Whether to enable subtitles in the manifest.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	public fun getLiveHlsStreamUrl(
 		itemId: UUID,
@@ -2257,6 +2283,8 @@ public class DynamicHlsApi(
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		enableSubtitlesInManifest: Boolean? = null,
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -2266,7 +2294,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(52) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -2317,6 +2345,8 @@ public class DynamicHlsApi(
 			put("maxWidth", maxWidth)
 			put("maxHeight", maxHeight)
 			put("enableSubtitlesInManifest", enableSubtitlesInManifest)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		return api.createUrl("/Videos/{itemId}/live.m3u8", pathParameters, queryParameters)
 	}
@@ -2338,8 +2368,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -2378,9 +2407,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -2392,6 +2419,8 @@ public class DynamicHlsApi(
 	 * @param maxWidth Optional. The max width.
 	 * @param maxHeight Optional. The max height.
 	 * @param enableSubtitlesInManifest Optional. Whether to enable subtitles in the manifest.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getLiveHlsStreamDeprecated(
@@ -2447,6 +2476,8 @@ public class DynamicHlsApi(
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		enableSubtitlesInManifest: Boolean? = null,
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -2456,7 +2487,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(51) {
+		val queryParameters = buildMap<String, Any?>(53) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -2508,6 +2539,8 @@ public class DynamicHlsApi(
 			put("maxWidth", maxWidth)
 			put("maxHeight", maxHeight)
 			put("enableSubtitlesInManifest", enableSubtitlesInManifest)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/live.m3u8", pathParameters,
@@ -2575,6 +2608,8 @@ public class DynamicHlsApi(
 		maxWidth = request.maxWidth,
 		maxHeight = request.maxHeight,
 		enableSubtitlesInManifest = request.enableSubtitlesInManifest,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
+		alwaysBurnInSubtitleWhenTranscoding = request.alwaysBurnInSubtitleWhenTranscoding,
 	)
 
 	/**
@@ -2594,8 +2629,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -2634,9 +2668,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -2648,6 +2680,8 @@ public class DynamicHlsApi(
 	 * @param maxWidth Optional. The max width.
 	 * @param maxHeight Optional. The max height.
 	 * @param enableSubtitlesInManifest Optional. Whether to enable subtitles in the manifest.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getLiveHlsStreamDeprecatedUrl(
@@ -2703,6 +2737,8 @@ public class DynamicHlsApi(
 		maxWidth: Int? = null,
 		maxHeight: Int? = null,
 		enableSubtitlesInManifest: Boolean? = null,
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -2712,7 +2748,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(51) {
+		val queryParameters = buildMap<String, Any?>(53) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -2764,6 +2800,8 @@ public class DynamicHlsApi(
 			put("maxWidth", maxWidth)
 			put("maxHeight", maxHeight)
 			put("enableSubtitlesInManifest", enableSubtitlesInManifest)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		return api.createUrl("/Videos/{itemId}/live.m3u8", pathParameters, queryParameters)
 	}
@@ -2783,8 +2821,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -2824,9 +2861,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -2836,6 +2871,7 @@ public class DynamicHlsApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	public suspend fun getMasterHlsAudioPlaylist(
 		itemId: UUID,
@@ -2887,6 +2923,7 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
+		enableAudioVbrEncoding: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -2895,7 +2932,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(48) {
+		val queryParameters = buildMap<String, Any?>(49) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -2944,6 +2981,7 @@ public class DynamicHlsApi(
 			put("context", context)
 			put("streamOptions", streamOptions)
 			put("enableAdaptiveBitrateStreaming", enableAdaptiveBitrateStreaming)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/master.m3u8", pathParameters,
@@ -3007,6 +3045,7 @@ public class DynamicHlsApi(
 		context = request.context,
 		streamOptions = request.streamOptions,
 		enableAdaptiveBitrateStreaming = request.enableAdaptiveBitrateStreaming,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
 	)
 
 	/**
@@ -3024,8 +3063,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -3065,9 +3103,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -3077,6 +3113,7 @@ public class DynamicHlsApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	public fun getMasterHlsAudioPlaylistUrl(
 		itemId: UUID,
@@ -3128,6 +3165,7 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
+		enableAudioVbrEncoding: Boolean? = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -3136,7 +3174,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(48) {
+		val queryParameters = buildMap<String, Any?>(49) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -3185,6 +3223,7 @@ public class DynamicHlsApi(
 			put("context", context)
 			put("streamOptions", streamOptions)
 			put("enableAdaptiveBitrateStreaming", enableAdaptiveBitrateStreaming)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		return api.createUrl("/Audio/{itemId}/master.m3u8", pathParameters, queryParameters)
 	}
@@ -3205,8 +3244,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -3246,9 +3284,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -3258,6 +3294,7 @@ public class DynamicHlsApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getMasterHlsAudioPlaylistDeprecated(
@@ -3311,6 +3348,7 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
+		enableAudioVbrEncoding: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -3319,7 +3357,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -3369,6 +3407,7 @@ public class DynamicHlsApi(
 			put("context", context)
 			put("streamOptions", streamOptions)
 			put("enableAdaptiveBitrateStreaming", enableAdaptiveBitrateStreaming)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/master.m3u8", pathParameters,
@@ -3435,6 +3474,7 @@ public class DynamicHlsApi(
 		context = request.context,
 		streamOptions = request.streamOptions,
 		enableAdaptiveBitrateStreaming = request.enableAdaptiveBitrateStreaming,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
 	)
 
 	/**
@@ -3453,8 +3493,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -3494,9 +3533,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -3506,6 +3543,7 @@ public class DynamicHlsApi(
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getMasterHlsAudioPlaylistDeprecatedUrl(
@@ -3559,6 +3597,7 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
+		enableAudioVbrEncoding: Boolean? = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -3567,7 +3606,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -3617,6 +3656,7 @@ public class DynamicHlsApi(
 			put("context", context)
 			put("streamOptions", streamOptions)
 			put("enableAdaptiveBitrateStreaming", enableAdaptiveBitrateStreaming)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		return api.createUrl("/Audio/{itemId}/master.m3u8", pathParameters, queryParameters)
 	}
@@ -3636,8 +3676,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -3678,9 +3717,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -3691,6 +3728,8 @@ public class DynamicHlsApi(
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
 	 * @param enableTrickplay Enable trickplay image playlists being added to master playlist.
+	 * @param enableAudioVbrEncoding Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	public suspend fun getMasterHlsVideoPlaylist(
 		itemId: UUID,
@@ -3744,6 +3783,8 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
 		enableTrickplay: Boolean? = true,
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -3752,7 +3793,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(52) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -3803,6 +3844,8 @@ public class DynamicHlsApi(
 			put("streamOptions", streamOptions)
 			put("enableAdaptiveBitrateStreaming", enableAdaptiveBitrateStreaming)
 			put("enableTrickplay", enableTrickplay)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/master.m3u8", pathParameters,
@@ -3868,6 +3911,8 @@ public class DynamicHlsApi(
 		streamOptions = request.streamOptions,
 		enableAdaptiveBitrateStreaming = request.enableAdaptiveBitrateStreaming,
 		enableTrickplay = request.enableTrickplay,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
+		alwaysBurnInSubtitleWhenTranscoding = request.alwaysBurnInSubtitleWhenTranscoding,
 	)
 
 	/**
@@ -3885,8 +3930,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -3927,9 +3971,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -3940,6 +3982,8 @@ public class DynamicHlsApi(
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
 	 * @param enableTrickplay Enable trickplay image playlists being added to master playlist.
+	 * @param enableAudioVbrEncoding Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	public fun getMasterHlsVideoPlaylistUrl(
 		itemId: UUID,
@@ -3993,6 +4037,8 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
 		enableTrickplay: Boolean? = true,
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -4001,7 +4047,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(52) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -4052,6 +4098,8 @@ public class DynamicHlsApi(
 			put("streamOptions", streamOptions)
 			put("enableAdaptiveBitrateStreaming", enableAdaptiveBitrateStreaming)
 			put("enableTrickplay", enableTrickplay)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		return api.createUrl("/Videos/{itemId}/master.m3u8", pathParameters, queryParameters)
 	}
@@ -4072,8 +4120,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -4114,9 +4161,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -4127,6 +4172,8 @@ public class DynamicHlsApi(
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
 	 * @param enableTrickplay Enable trickplay image playlists being added to master playlist.
+	 * @param enableAudioVbrEncoding Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getMasterHlsVideoPlaylistDeprecated(
@@ -4182,6 +4229,8 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
 		enableTrickplay: Boolean? = true,
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -4190,7 +4239,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(51) {
+		val queryParameters = buildMap<String, Any?>(53) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -4242,6 +4291,8 @@ public class DynamicHlsApi(
 			put("streamOptions", streamOptions)
 			put("enableAdaptiveBitrateStreaming", enableAdaptiveBitrateStreaming)
 			put("enableTrickplay", enableTrickplay)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/master.m3u8", pathParameters,
@@ -4310,6 +4361,8 @@ public class DynamicHlsApi(
 		streamOptions = request.streamOptions,
 		enableAdaptiveBitrateStreaming = request.enableAdaptiveBitrateStreaming,
 		enableTrickplay = request.enableTrickplay,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
+		alwaysBurnInSubtitleWhenTranscoding = request.alwaysBurnInSubtitleWhenTranscoding,
 	)
 
 	/**
@@ -4328,8 +4381,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -4370,9 +4422,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -4383,6 +4433,8 @@ public class DynamicHlsApi(
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
 	 * @param enableTrickplay Enable trickplay image playlists being added to master playlist.
+	 * @param enableAudioVbrEncoding Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getMasterHlsVideoPlaylistDeprecatedUrl(
@@ -4438,6 +4490,8 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
 		enableTrickplay: Boolean? = true,
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -4446,7 +4500,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(51) {
+		val queryParameters = buildMap<String, Any?>(53) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -4498,6 +4552,8 @@ public class DynamicHlsApi(
 			put("streamOptions", streamOptions)
 			put("enableAdaptiveBitrateStreaming", enableAdaptiveBitrateStreaming)
 			put("enableTrickplay", enableTrickplay)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		return api.createUrl("/Videos/{itemId}/master.m3u8", pathParameters, queryParameters)
 	}
@@ -4517,8 +4573,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -4558,8 +4613,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -4568,6 +4622,7 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	public suspend fun getVariantHlsAudioPlaylist(
 		itemId: UUID,
@@ -4618,6 +4673,7 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -4626,7 +4682,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(47) {
+		val queryParameters = buildMap<String, Any?>(48) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -4674,6 +4730,7 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/main.m3u8", pathParameters,
@@ -4736,6 +4793,7 @@ public class DynamicHlsApi(
 		videoStreamIndex = request.videoStreamIndex,
 		context = request.context,
 		streamOptions = request.streamOptions,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
 	)
 
 	/**
@@ -4753,8 +4811,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -4794,8 +4851,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -4804,6 +4860,7 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	public fun getVariantHlsAudioPlaylistUrl(
 		itemId: UUID,
@@ -4854,6 +4911,7 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -4862,7 +4920,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(47) {
+		val queryParameters = buildMap<String, Any?>(48) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -4910,6 +4968,7 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		return api.createUrl("/Audio/{itemId}/main.m3u8", pathParameters, queryParameters)
 	}
@@ -4930,8 +4989,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -4971,8 +5029,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -4981,6 +5038,7 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getVariantHlsAudioPlaylistDeprecated(
@@ -5033,6 +5091,7 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -5041,7 +5100,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(48) {
+		val queryParameters = buildMap<String, Any?>(49) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -5090,6 +5149,7 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/main.m3u8", pathParameters,
@@ -5155,6 +5215,7 @@ public class DynamicHlsApi(
 		videoStreamIndex = request.videoStreamIndex,
 		context = request.context,
 		streamOptions = request.streamOptions,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
 	)
 
 	/**
@@ -5173,8 +5234,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -5214,8 +5274,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vpx, wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -5224,6 +5283,7 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getVariantHlsAudioPlaylistDeprecatedUrl(
@@ -5276,6 +5336,7 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -5284,7 +5345,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(48) {
+		val queryParameters = buildMap<String, Any?>(49) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -5333,6 +5394,7 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		return api.createUrl("/Audio/{itemId}/main.m3u8", pathParameters, queryParameters)
 	}
@@ -5352,8 +5414,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -5394,9 +5455,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -5405,6 +5464,8 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	public suspend fun getVariantHlsVideoPlaylist(
 		itemId: UUID,
@@ -5456,6 +5517,8 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -5464,7 +5527,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(48) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -5513,6 +5576,8 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/main.m3u8", pathParameters,
@@ -5576,6 +5641,8 @@ public class DynamicHlsApi(
 		videoStreamIndex = request.videoStreamIndex,
 		context = request.context,
 		streamOptions = request.streamOptions,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
+		alwaysBurnInSubtitleWhenTranscoding = request.alwaysBurnInSubtitleWhenTranscoding,
 	)
 
 	/**
@@ -5593,8 +5660,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -5635,9 +5701,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -5646,6 +5710,8 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	public fun getVariantHlsVideoPlaylistUrl(
 		itemId: UUID,
@@ -5697,6 +5763,8 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -5705,7 +5773,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(48) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -5754,6 +5822,8 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		return api.createUrl("/Videos/{itemId}/main.m3u8", pathParameters, queryParameters)
 	}
@@ -5774,8 +5844,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -5816,9 +5885,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -5827,6 +5894,8 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getVariantHlsVideoPlaylistDeprecated(
@@ -5880,6 +5949,8 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -5888,7 +5959,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(51) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -5938,6 +6009,8 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
 		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/main.m3u8", pathParameters,
@@ -6004,6 +6077,8 @@ public class DynamicHlsApi(
 		videoStreamIndex = request.videoStreamIndex,
 		context = request.context,
 		streamOptions = request.streamOptions,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
+		alwaysBurnInSubtitleWhenTranscoding = request.alwaysBurnInSubtitleWhenTranscoding,
 	)
 
 	/**
@@ -6022,8 +6097,7 @@ public class DynamicHlsApi(
 	 * @param mediaSourceId The media version id, if playing an alternate version.
 	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
 	 * needed.
-	 * @param audioCodec Optional. Specify a audio codec to encode to, e.g. mp3. If omitted the server
-	 * will auto-select using the url's extension. Options: aac, mp3, vorbis, wma.
+	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
 	 * match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
@@ -6064,9 +6138,7 @@ public class DynamicHlsApi(
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
 	 * @param enableMpegtsM2TsMode Optional. Whether to enable the MpegtsM2Ts mode.
-	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264. If omitted the server
-	 * will auto-select using the url's extension. Options: h265, h264, mpeg4, theora, vp8, vp9, vpx
-	 * (deprecated), wmv.
+	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
 	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
@@ -6075,6 +6147,8 @@ public class DynamicHlsApi(
 	 * video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
+	 * @param alwaysBurnInSubtitleWhenTranscoding Whether to always burn in subtitles when transcoding.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getVariantHlsVideoPlaylistDeprecatedUrl(
@@ -6128,6 +6202,8 @@ public class DynamicHlsApi(
 		videoStreamIndex: Int? = null,
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
+		enableAudioVbrEncoding: Boolean? = true,
+		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
@@ -6136,7 +6212,7 @@ public class DynamicHlsApi(
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(51) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -6186,6 +6262,8 @@ public class DynamicHlsApi(
 			put("videoStreamIndex", videoStreamIndex)
 			put("context", context)
 			put("streamOptions", streamOptions)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		return api.createUrl("/Videos/{itemId}/main.m3u8", pathParameters, queryParameters)
 	}

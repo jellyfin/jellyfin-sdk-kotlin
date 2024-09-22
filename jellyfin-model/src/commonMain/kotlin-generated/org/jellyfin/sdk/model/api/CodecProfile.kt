@@ -10,16 +10,39 @@ import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * Defines the MediaBrowser.Model.Dlna.CodecProfile.
+ */
 @Serializable
 public data class CodecProfile(
+	/**
+	 * The MediaBrowser.Model.Dlna.CodecType which this container must meet.
+	 */
 	@SerialName("Type")
 	public val type: CodecType,
+	/**
+	 * The list of MediaBrowser.Model.Dlna.ProfileCondition which this profile must meet.
+	 */
 	@SerialName("Conditions")
-	public val conditions: List<ProfileCondition>? = null,
+	public val conditions: List<ProfileCondition>,
+	/**
+	 * The list of MediaBrowser.Model.Dlna.ProfileCondition to apply if this profile is met.
+	 */
 	@SerialName("ApplyConditions")
-	public val applyConditions: List<ProfileCondition>? = null,
+	public val applyConditions: List<ProfileCondition>,
+	/**
+	 * The codec(s) that this profile applies to.
+	 */
 	@SerialName("Codec")
 	public val codec: String? = null,
+	/**
+	 * The container(s) which this profile will be applied to.
+	 */
 	@SerialName("Container")
 	public val container: String? = null,
+	/**
+	 * The sub-container(s) which this profile will be applied to.
+	 */
+	@SerialName("SubContainer")
+	public val subContainer: String? = null,
 )

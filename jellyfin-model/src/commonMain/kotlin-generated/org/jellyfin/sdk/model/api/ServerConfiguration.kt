@@ -73,8 +73,6 @@ public data class ServerConfiguration(
 	 */
 	@SerialName("MetadataPath")
 	public val metadataPath: String,
-	@SerialName("MetadataNetworkPath")
-	public val metadataNetworkPath: String,
 	/**
 	 * The preferred metadata language.
 	 */

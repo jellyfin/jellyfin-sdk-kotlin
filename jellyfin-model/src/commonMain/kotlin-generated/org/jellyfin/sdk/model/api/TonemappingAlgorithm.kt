@@ -11,22 +11,28 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * An enum representing an algorithm to downmix surround sound to stereo.
+ * Enum containing tonemapping algorithms.
  */
 @Serializable
-public enum class DownMixStereoAlgorithms(
+public enum class TonemappingAlgorithm(
 	public val serialName: String,
 ) {
-	@SerialName("None")
-	NONE("None"),
-	@SerialName("Dave750")
-	DAVE_750("Dave750"),
-	@SerialName("NightmodeDialogue")
-	NIGHTMODE_DIALOGUE("NightmodeDialogue"),
-	@SerialName("Rfc7845")
-	RFC_7845("Rfc7845"),
-	@SerialName("Ac4")
-	AC_4("Ac4"),
+	@SerialName("none")
+	NONE("none"),
+	@SerialName("clip")
+	CLIP("clip"),
+	@SerialName("linear")
+	LINEAR("linear"),
+	@SerialName("gamma")
+	GAMMA("gamma"),
+	@SerialName("reinhard")
+	REINHARD("reinhard"),
+	@SerialName("hable")
+	HABLE("hable"),
+	@SerialName("mobius")
+	MOBIUS("mobius"),
+	@SerialName("bt2390")
+	BT_2390("bt2390"),
 	;
 
 	/**
@@ -38,19 +44,22 @@ public enum class DownMixStereoAlgorithms(
 		/**
 		 * Find the enum member by the serial name or return null.
 		 */
-		public fun fromNameOrNull(serialName: String): DownMixStereoAlgorithms? = when (serialName) {
-			"None" -> NONE
-			"Dave750" -> DAVE_750
-			"NightmodeDialogue" -> NIGHTMODE_DIALOGUE
-			"Rfc7845" -> RFC_7845
-			"Ac4" -> AC_4
+		public fun fromNameOrNull(serialName: String): TonemappingAlgorithm? = when (serialName) {
+			"none" -> NONE
+			"clip" -> CLIP
+			"linear" -> LINEAR
+			"gamma" -> GAMMA
+			"reinhard" -> REINHARD
+			"hable" -> HABLE
+			"mobius" -> MOBIUS
+			"bt2390" -> BT_2390
 			else -> null
 		}
 
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): DownMixStereoAlgorithms =
+		public fun fromName(serialName: String): TonemappingAlgorithm =
 				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }

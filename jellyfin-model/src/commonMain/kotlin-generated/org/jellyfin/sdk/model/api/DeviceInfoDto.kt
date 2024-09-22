@@ -19,10 +19,19 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
+/**
+ * A DTO representing device information.
+ */
 @Serializable
-public data class DeviceInfo(
+public data class DeviceInfoDto(
+	/**
+	 * The name.
+	 */
 	@SerialName("Name")
 	public val name: String? = null,
+	/**
+	 * The custom name.
+	 */
 	@SerialName("CustomName")
 	public val customName: String? = null,
 	/**
@@ -54,17 +63,20 @@ public data class DeviceInfo(
 	 * The last user identifier.
 	 */
 	@SerialName("LastUserId")
-	public val lastUserId: UUID,
+	public val lastUserId: UUID? = null,
 	/**
 	 * The date last modified.
 	 */
 	@SerialName("DateLastActivity")
-	public val dateLastActivity: DateTime,
+	public val dateLastActivity: DateTime? = null,
 	/**
 	 * The capabilities.
 	 */
 	@SerialName("Capabilities")
-	public val capabilities: ClientCapabilities? = null,
+	public val capabilities: ClientCapabilitiesDto,
+	/**
+	 * The icon URL.
+	 */
 	@SerialName("IconUrl")
 	public val iconUrl: String? = null,
 )
