@@ -1,5 +1,6 @@
 package org.jellyfin.sdk.model.deviceprofile
 
+import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.CodecProfile
 import org.jellyfin.sdk.model.api.ContainerProfile
 import org.jellyfin.sdk.model.api.DeviceProfile
@@ -15,7 +16,7 @@ public class DeviceProfileBuilder(
 	/**
 	 * @see [DeviceProfile.id].
 	 */
-	public var id: String? = null
+	public var id: UUID? = null
 
 	/**
 	 * @see [DeviceProfile.name].
