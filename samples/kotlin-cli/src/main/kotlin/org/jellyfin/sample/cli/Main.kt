@@ -1,6 +1,7 @@
 package org.jellyfin.sample.cli
 
 import com.github.ajalt.clikt.core.NoOpCliktCommand
+import com.github.ajalt.clikt.core.main
 import com.github.ajalt.clikt.core.subcommands
 import org.jellyfin.sample.cli.command.Discover
 import org.jellyfin.sample.cli.command.Libraries
@@ -26,7 +27,6 @@ fun main(args: Array<String>) {
 		subcommands(Ping(jellyfin))
 		subcommands(Users(jellyfin))
 	}
-
 
 	instance.main(args)
 }

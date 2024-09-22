@@ -1,6 +1,7 @@
 package org.jellyfin.sample.cli.command
 
 import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.core.Context
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -15,9 +16,11 @@ import org.jellyfin.sdk.model.api.MediaType
 
 class Observe(
 	jellyfin: Jellyfin,
-) : CliktCommand("Create a WebSocket connection and listen to all events") {
+) : CliktCommand(name = "observe") {
 	private val logger by logger()
 	private val api by apiInstanceHolder(jellyfin)
+
+	override fun help(context: Context): String = "Create a WebSocket connection and listen to all events"
 
 	override fun run(): Unit = runBlocking {
 		logger.info("Starting subscription")
