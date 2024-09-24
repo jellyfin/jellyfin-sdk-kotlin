@@ -12,29 +12,14 @@ import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/**
- * Client capabilities dto.
- */
 @Serializable
-public data class ClientCapabilitiesDto(
-	/**
-	 * The list of playable media types.
-	 */
+public data class ClientCapabilities(
 	@SerialName("PlayableMediaTypes")
-	public val playableMediaTypes: List<MediaType>,
-	/**
-	 * The list of supported commands.
-	 */
+	public val playableMediaTypes: List<MediaType>? = null,
 	@SerialName("SupportedCommands")
-	public val supportedCommands: List<GeneralCommandType>,
-	/**
-	 * A value indicating whether session supports media control.
-	 */
+	public val supportedCommands: List<GeneralCommandType>? = null,
 	@SerialName("SupportsMediaControl")
 	public val supportsMediaControl: Boolean,
-	/**
-	 * A value indicating whether session supports a persistent identifier.
-	 */
 	@SerialName("SupportsPersistentIdentifier")
 	public val supportsPersistentIdentifier: Boolean,
 	/**
@@ -52,14 +37,8 @@ public data class ClientCapabilitiesDto(
 	 */
 	@SerialName("DeviceProfile")
 	public val deviceProfile: DeviceProfile? = null,
-	/**
-	 * The app store url.
-	 */
 	@SerialName("AppStoreUrl")
 	public val appStoreUrl: String? = null,
-	/**
-	 * The icon url.
-	 */
 	@SerialName("IconUrl")
 	public val iconUrl: String? = null,
 	@Deprecated("This member is deprecated and may be removed in the future")

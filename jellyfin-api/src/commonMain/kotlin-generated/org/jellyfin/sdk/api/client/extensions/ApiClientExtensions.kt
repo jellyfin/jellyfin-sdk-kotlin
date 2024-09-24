@@ -35,7 +35,6 @@ import org.jellyfin.sdk.api.operations.LiveTvApi
 import org.jellyfin.sdk.api.operations.LocalizationApi
 import org.jellyfin.sdk.api.operations.LyricsApi
 import org.jellyfin.sdk.api.operations.MediaInfoApi
-import org.jellyfin.sdk.api.operations.MediaSegmentsApi
 import org.jellyfin.sdk.api.operations.MoviesApi
 import org.jellyfin.sdk.api.operations.MusicGenresApi
 import org.jellyfin.sdk.api.operations.PackageApi
@@ -156,9 +155,6 @@ public val ApiClient.lyricsApi: LyricsApi
 
 public val ApiClient.mediaInfoApi: MediaInfoApi
 	get() = getOrCreateApi { MediaInfoApi(it) }
-
-public val ApiClient.mediaSegmentsApi: MediaSegmentsApi
-	get() = getOrCreateApi { MediaSegmentsApi(it) }
 
 public val ApiClient.moviesApi: MoviesApi
 	get() = getOrCreateApi { MoviesApi(it) }

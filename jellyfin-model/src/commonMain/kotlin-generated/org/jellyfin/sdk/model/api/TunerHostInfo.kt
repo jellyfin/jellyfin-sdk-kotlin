@@ -27,12 +27,6 @@ public data class TunerHostInfo(
 	public val importFavoritesOnly: Boolean,
 	@SerialName("AllowHWTranscoding")
 	public val allowHwTranscoding: Boolean,
-	@SerialName("AllowFmp4TranscodingContainer")
-	public val allowFmp4TranscodingContainer: Boolean,
-	@SerialName("AllowStreamSharing")
-	public val allowStreamSharing: Boolean,
-	@SerialName("FallbackMaxStreamingBitrate")
-	public val fallbackMaxStreamingBitrate: Int,
 	@SerialName("EnableStreamLooping")
 	public val enableStreamLooping: Boolean,
 	@SerialName("Source")

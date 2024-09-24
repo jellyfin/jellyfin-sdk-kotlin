@@ -9,34 +9,19 @@ import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/**
- * A class for subtitle profile information.
- */
 @Serializable
 public data class SubtitleProfile(
-	/**
-	 * The format.
-	 */
 	@SerialName("Format")
 	public val format: String? = null,
 	/**
-	 * The delivery method.
+	 * Delivery method to use during playback of a specific subtitle format.
 	 */
 	@SerialName("Method")
 	public val method: SubtitleDeliveryMethod,
-	/**
-	 * The DIDL mode.
-	 */
 	@SerialName("DidlMode")
 	public val didlMode: String? = null,
-	/**
-	 * The language.
-	 */
 	@SerialName("Language")
 	public val language: String? = null,
-	/**
-	 * The container.
-	 */
 	@SerialName("Container")
 	public val container: String? = null,
 )

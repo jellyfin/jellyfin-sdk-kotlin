@@ -106,11 +106,6 @@ public data class GetUniversalAudioStreamRequest(
 	@SerialName("enableRemoteMedia")
 	public val enableRemoteMedia: Boolean? = null,
 	/**
-	 * Optional. Whether to enable Audio Encoding.
-	 */
-	@SerialName("enableAudioVbrEncoding")
-	public val enableAudioVbrEncoding: Boolean? = true,
-	/**
 	 * Optional. Whether to break on non key frames.
 	 */
 	@SerialName("breakOnNonKeyFrames")

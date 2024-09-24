@@ -31,99 +31,115 @@ public data class GetProgramsDto(
 	 * The channels to return guide information for.
 	 */
 	@SerialName("ChannelIds")
-	public val channelIds: List<UUID>? = null,
+	public val channelIds: List<UUID>,
 	/**
 	 * Optional. Filter by user id.
 	 */
 	@SerialName("UserId")
 	public val userId: UUID? = null,
 	/**
-	 * The minimum premiere start date.
+	 * Gets or sets the minimum premiere start date.
+	 * Optional.
 	 */
 	@SerialName("MinStartDate")
 	public val minStartDate: DateTime? = null,
 	/**
-	 * Filter by programs that have completed airing, or not.
+	 * Gets or sets filter by programs that have completed airing, or not.
+	 * Optional.
 	 */
 	@SerialName("HasAired")
 	public val hasAired: Boolean? = null,
 	/**
-	 * Filter by programs that are currently airing, or not.
+	 * Gets or sets filter by programs that are currently airing, or not.
+	 * Optional.
 	 */
 	@SerialName("IsAiring")
 	public val isAiring: Boolean? = null,
 	/**
-	 * The maximum premiere start date.
+	 * Gets or sets the maximum premiere start date.
+	 * Optional.
 	 */
 	@SerialName("MaxStartDate")
 	public val maxStartDate: DateTime? = null,
 	/**
-	 * The minimum premiere end date.
+	 * Gets or sets the minimum premiere end date.
+	 * Optional.
 	 */
 	@SerialName("MinEndDate")
 	public val minEndDate: DateTime? = null,
 	/**
-	 * The maximum premiere end date.
+	 * Gets or sets the maximum premiere end date.
+	 * Optional.
 	 */
 	@SerialName("MaxEndDate")
 	public val maxEndDate: DateTime? = null,
 	/**
-	 * Filter for movies.
+	 * Gets or sets filter for movies.
+	 * Optional.
 	 */
 	@SerialName("IsMovie")
 	public val isMovie: Boolean? = null,
 	/**
-	 * Filter for series.
+	 * Gets or sets filter for series.
+	 * Optional.
 	 */
 	@SerialName("IsSeries")
 	public val isSeries: Boolean? = null,
 	/**
-	 * Filter for news.
+	 * Gets or sets filter for news.
+	 * Optional.
 	 */
 	@SerialName("IsNews")
 	public val isNews: Boolean? = null,
 	/**
-	 * Filter for kids.
+	 * Gets or sets filter for kids.
+	 * Optional.
 	 */
 	@SerialName("IsKids")
 	public val isKids: Boolean? = null,
 	/**
-	 * Filter for sports.
+	 * Gets or sets filter for sports.
+	 * Optional.
 	 */
 	@SerialName("IsSports")
 	public val isSports: Boolean? = null,
 	/**
-	 * The record index to start at. All items with a lower index will be dropped from the results.
+	 * Gets or sets the record index to start at. All items with a lower index will be dropped from the
+	 * results.
+	 * Optional.
 	 */
 	@SerialName("StartIndex")
 	public val startIndex: Int? = null,
 	/**
-	 * The maximum number of records to return.
+	 * Gets or sets the maximum number of records to return.
+	 * Optional.
 	 */
 	@SerialName("Limit")
 	public val limit: Int? = null,
 	/**
-	 * Specify one or more sort orders, comma delimited. Options: Name, StartDate.
+	 * Gets or sets specify one or more sort orders, comma delimited. Options: Name, StartDate.
+	 * Optional.
 	 */
 	@SerialName("SortBy")
-	public val sortBy: List<ItemSortBy>? = null,
+	public val sortBy: List<ItemSortBy>,
 	/**
-	 * Sort order.
+	 * Sort Order - Ascending,Descending.
 	 */
 	@SerialName("SortOrder")
-	public val sortOrder: List<SortOrder>? = null,
+	public val sortOrder: List<SortOrder>,
 	/**
 	 * The genres to return guide information for.
 	 */
 	@SerialName("Genres")
-	public val genres: List<String>? = null,
+	public val genres: List<String>,
 	/**
 	 * The genre ids to return guide information for.
 	 */
 	@SerialName("GenreIds")
-	public val genreIds: List<UUID>? = null,
+	public val genreIds: List<UUID>,
 	/**
-	 * Include image information in output.
+	 * Gets or sets include image information in output.
+	 * Optional.
 	 */
 	@SerialName("EnableImages")
 	public val enableImages: Boolean? = null,
@@ -131,35 +147,44 @@ public data class GetProgramsDto(
 	 * A value indicating whether retrieve total record count.
 	 */
 	@SerialName("EnableTotalRecordCount")
-	public val enableTotalRecordCount: Boolean = true,
+	public val enableTotalRecordCount: Boolean,
 	/**
-	 * The max number of images to return, per image type.
+	 * Gets or sets the max number of images to return, per image type.
+	 * Optional.
 	 */
 	@SerialName("ImageTypeLimit")
 	public val imageTypeLimit: Int? = null,
 	/**
-	 * The image types to include in the output.
+	 * Gets or sets the image types to include in the output.
+	 * Optional.
 	 */
 	@SerialName("EnableImageTypes")
-	public val enableImageTypes: List<ImageType>? = null,
+	public val enableImageTypes: List<ImageType>,
 	/**
-	 * Include user data.
+	 * Gets or sets include user data.
+	 * Optional.
 	 */
 	@SerialName("EnableUserData")
 	public val enableUserData: Boolean? = null,
 	/**
-	 * Filter by series timer id.
+	 * Gets or sets filter by series timer id.
+	 * Optional.
 	 */
 	@SerialName("SeriesTimerId")
 	public val seriesTimerId: String? = null,
 	/**
-	 * Filter by library series id.
+	 * Gets or sets filter by library series id.
+	 * Optional.
 	 */
 	@SerialName("LibrarySeriesId")
-	public val librarySeriesId: UUID? = null,
+	public val librarySeriesId: UUID,
 	/**
-	 * Specify additional fields of information to return in the output.
+	 * Gets or sets specify additional fields of information to return in the output. This allows
+	 * multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
+	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
+	 * Revenue, SortName, Studios, Taglines.
+	 * Optional.
 	 */
 	@SerialName("Fields")
-	public val fields: List<ItemFields>? = null,
+	public val fields: List<ItemFields>,
 )

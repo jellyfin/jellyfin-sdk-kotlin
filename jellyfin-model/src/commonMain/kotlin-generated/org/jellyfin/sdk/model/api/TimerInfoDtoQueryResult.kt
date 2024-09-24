@@ -10,16 +10,13 @@ import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/**
- * Query result container.
- */
 @Serializable
 public data class TimerInfoDtoQueryResult(
 	/**
 	 * The items.
 	 */
 	@SerialName("Items")
-	public val items: List<TimerInfoDto>,
+	public val items: List<TimerInfoDto>? = null,
 	/**
 	 * The total number of records available.
 	 */

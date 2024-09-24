@@ -31,7 +31,7 @@ import org.jellyfin.sdk.model.api.MessageCommand
 import org.jellyfin.sdk.model.api.NameIdPair
 import org.jellyfin.sdk.model.api.PlayCommand
 import org.jellyfin.sdk.model.api.PlaystateCommand
-import org.jellyfin.sdk.model.api.SessionInfoDto
+import org.jellyfin.sdk.model.api.SessionInfo
 import org.jellyfin.sdk.model.api.request.PlayRequest
 import org.jellyfin.sdk.model.api.request.PostCapabilitiesRequest
 
@@ -119,7 +119,7 @@ public class SessionApi(
 		controllableByUserId: UUID? = null,
 		deviceId: String? = null,
 		activeWithinSeconds: Int? = null,
-	): Response<List<SessionInfoDto>> {
+	): Response<List<SessionInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(3) {
 			put("controllableByUserId", controllableByUserId)
@@ -127,7 +127,7 @@ public class SessionApi(
 			put("activeWithinSeconds", activeWithinSeconds)
 		}
 		val data = null
-		val response = api.`get`<List<SessionInfoDto>>("/Sessions", pathParameters, queryParameters, data)
+		val response = api.`get`<List<SessionInfo>>("/Sessions", pathParameters, queryParameters, data)
 		return response
 	}
 

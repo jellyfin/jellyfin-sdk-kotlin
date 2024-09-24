@@ -64,8 +64,6 @@ public enum class TranscodeReason(
 	DIRECT_PLAY_ERROR("DirectPlayError"),
 	@SerialName("VideoRangeTypeNotSupported")
 	VIDEO_RANGE_TYPE_NOT_SUPPORTED("VideoRangeTypeNotSupported"),
-	@SerialName("VideoCodecTagNotSupported")
-	VIDEO_CODEC_TAG_NOT_SUPPORTED("VideoCodecTagNotSupported"),
 	;
 
 	/**
@@ -103,7 +101,6 @@ public enum class TranscodeReason(
 			"UnknownAudioStreamInfo" -> UNKNOWN_AUDIO_STREAM_INFO
 			"DirectPlayError" -> DIRECT_PLAY_ERROR
 			"VideoRangeTypeNotSupported" -> VIDEO_RANGE_TYPE_NOT_SUPPORTED
-			"VideoCodecTagNotSupported" -> VIDEO_CODEC_TAG_NOT_SUPPORTED
 			else -> null
 		}
 

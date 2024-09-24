@@ -16,8 +16,9 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.delete
 import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
-import org.jellyfin.sdk.model.api.DeviceInfoDto
-import org.jellyfin.sdk.model.api.DeviceInfoDtoQueryResult
+import org.jellyfin.sdk.model.api.DeviceInfo
+import org.jellyfin.sdk.model.api.DeviceInfoQueryResult
+import org.jellyfin.sdk.model.api.DeviceOptions
 import org.jellyfin.sdk.model.api.DeviceOptionsDto
 
 public class DevicesApi(
@@ -43,13 +44,13 @@ public class DevicesApi(
 	 *
 	 * @param id Device Id.
 	 */
-	public suspend fun getDeviceInfo(id: String): Response<DeviceInfoDto> {
+	public suspend fun getDeviceInfo(id: String): Response<DeviceInfo> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("id", id)
 		}
 		val data = null
-		val response = api.`get`<DeviceInfoDto>("/Devices/Info", pathParameters, queryParameters, data)
+		val response = api.`get`<DeviceInfo>("/Devices/Info", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -58,14 +59,13 @@ public class DevicesApi(
 	 *
 	 * @param id Device Id.
 	 */
-	public suspend fun getDeviceOptions(id: String): Response<DeviceOptionsDto> {
+	public suspend fun getDeviceOptions(id: String): Response<DeviceOptions> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("id", id)
 		}
 		val data = null
-		val response = api.`get`<DeviceOptionsDto>("/Devices/Options", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<DeviceOptions>("/Devices/Options", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -74,14 +74,13 @@ public class DevicesApi(
 	 *
 	 * @param userId The user identifier.
 	 */
-	public suspend fun getDevices(userId: UUID? = null): Response<DeviceInfoDtoQueryResult> {
+	public suspend fun getDevices(userId: UUID? = null): Response<DeviceInfoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.`get`<DeviceInfoDtoQueryResult>("/Devices", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<DeviceInfoQueryResult>("/Devices", pathParameters, queryParameters, data)
 		return response
 	}
 

@@ -29,10 +29,8 @@ import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.CollectionType
 import org.jellyfin.sdk.model.api.ItemCounts
 import org.jellyfin.sdk.model.api.ItemFields
-import org.jellyfin.sdk.model.api.ItemSortBy
 import org.jellyfin.sdk.model.api.LibraryOptionsResultDto
 import org.jellyfin.sdk.model.api.MediaUpdateInfoDto
-import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.api.ThemeMediaResult
 import org.jellyfin.sdk.model.api.request.GetSimilarAlbumsRequest
 import org.jellyfin.sdk.model.api.request.GetSimilarArtistsRequest
@@ -40,9 +38,6 @@ import org.jellyfin.sdk.model.api.request.GetSimilarItemsRequest
 import org.jellyfin.sdk.model.api.request.GetSimilarMoviesRequest
 import org.jellyfin.sdk.model.api.request.GetSimilarShowsRequest
 import org.jellyfin.sdk.model.api.request.GetSimilarTrailersRequest
-import org.jellyfin.sdk.model.api.request.GetThemeMediaRequest
-import org.jellyfin.sdk.model.api.request.GetThemeSongsRequest
-import org.jellyfin.sdk.model.api.request.GetThemeVideosRequest
 
 public class LibraryApi(
 	private val api: ApiClient,
@@ -529,26 +524,18 @@ public class LibraryApi(
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
 	 * theme media.
-	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album,
-	 * AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount,
-	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
-	 * @param sortOrder Optional. Sort Order - Ascending, Descending.
 	 */
 	public suspend fun getThemeMedia(
 		itemId: UUID,
 		userId: UUID? = null,
 		inheritFromParent: Boolean? = false,
-		sortBy: Collection<ItemSortBy>? = emptyList(),
-		sortOrder: Collection<SortOrder>? = emptyList(),
 	): Response<AllThemeMediaResult> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
-		val queryParameters = buildMap<String, Any?>(4) {
+		val queryParameters = buildMap<String, Any?>(2) {
 			put("userId", userId)
 			put("inheritFromParent", inheritFromParent)
-			put("sortBy", sortBy)
-			put("sortOrder", sortOrder)
 		}
 		val data = null
 		val response = api.`get`<AllThemeMediaResult>("/Items/{itemId}/ThemeMedia", pathParameters,
@@ -557,46 +544,24 @@ public class LibraryApi(
 	}
 
 	/**
-	 * Get theme songs and videos for an item.
-	 *
-	 * @param request The request parameters
-	 */
-	public suspend fun getThemeMedia(request: GetThemeMediaRequest): Response<AllThemeMediaResult> =
-			getThemeMedia(
-		itemId = request.itemId,
-		userId = request.userId,
-		inheritFromParent = request.inheritFromParent,
-		sortBy = request.sortBy,
-		sortOrder = request.sortOrder,
-	)
-
-	/**
 	 * Get theme songs for an item.
 	 *
 	 * @param itemId The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
 	 * theme media.
-	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album,
-	 * AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount,
-	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
-	 * @param sortOrder Optional. Sort Order - Ascending, Descending.
 	 */
 	public suspend fun getThemeSongs(
 		itemId: UUID,
 		userId: UUID? = null,
 		inheritFromParent: Boolean? = false,
-		sortBy: Collection<ItemSortBy>? = emptyList(),
-		sortOrder: Collection<SortOrder>? = emptyList(),
 	): Response<ThemeMediaResult> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
-		val queryParameters = buildMap<String, Any?>(4) {
+		val queryParameters = buildMap<String, Any?>(2) {
 			put("userId", userId)
 			put("inheritFromParent", inheritFromParent)
-			put("sortBy", sortBy)
-			put("sortOrder", sortOrder)
 		}
 		val data = null
 		val response = api.`get`<ThemeMediaResult>("/Items/{itemId}/ThemeSongs", pathParameters,
@@ -605,66 +570,30 @@ public class LibraryApi(
 	}
 
 	/**
-	 * Get theme songs for an item.
-	 *
-	 * @param request The request parameters
-	 */
-	public suspend fun getThemeSongs(request: GetThemeSongsRequest): Response<ThemeMediaResult> =
-			getThemeSongs(
-		itemId = request.itemId,
-		userId = request.userId,
-		inheritFromParent = request.inheritFromParent,
-		sortBy = request.sortBy,
-		sortOrder = request.sortOrder,
-	)
-
-	/**
 	 * Get theme videos for an item.
 	 *
 	 * @param itemId The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
 	 * theme media.
-	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album,
-	 * AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount,
-	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
-	 * @param sortOrder Optional. Sort Order - Ascending, Descending.
 	 */
 	public suspend fun getThemeVideos(
 		itemId: UUID,
 		userId: UUID? = null,
 		inheritFromParent: Boolean? = false,
-		sortBy: Collection<ItemSortBy>? = emptyList(),
-		sortOrder: Collection<SortOrder>? = emptyList(),
 	): Response<ThemeMediaResult> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
-		val queryParameters = buildMap<String, Any?>(4) {
+		val queryParameters = buildMap<String, Any?>(2) {
 			put("userId", userId)
 			put("inheritFromParent", inheritFromParent)
-			put("sortBy", sortBy)
-			put("sortOrder", sortOrder)
 		}
 		val data = null
 		val response = api.`get`<ThemeMediaResult>("/Items/{itemId}/ThemeVideos", pathParameters,
 				queryParameters, data)
 		return response
 	}
-
-	/**
-	 * Get theme videos for an item.
-	 *
-	 * @param request The request parameters
-	 */
-	public suspend fun getThemeVideos(request: GetThemeVideosRequest): Response<ThemeMediaResult> =
-			getThemeVideos(
-		itemId = request.itemId,
-		userId = request.userId,
-		inheritFromParent = request.inheritFromParent,
-		sortBy = request.sortBy,
-		sortOrder = request.sortOrder,
-	)
 
 	/**
 	 * Reports that new movies have been added by an external source.

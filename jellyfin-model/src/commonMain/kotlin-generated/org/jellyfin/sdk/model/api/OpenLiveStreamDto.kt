@@ -79,11 +79,6 @@ public data class OpenLiveStreamDto(
 	@SerialName("EnableDirectStream")
 	public val enableDirectStream: Boolean? = null,
 	/**
-	 * A value indicating whether always burn in subtitles when transcoding.
-	 */
-	@SerialName("AlwaysBurnInSubtitleWhenTranscoding")
-	public val alwaysBurnInSubtitleWhenTranscoding: Boolean? = null,
-	/**
 	 * A MediaBrowser.Model.Dlna.DeviceProfile represents a set of metadata which determines which
 	 * content a certain device is able to play.
 	 *

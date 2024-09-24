@@ -10,29 +10,12 @@ import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/**
- * Defines the MediaBrowser.Model.Dlna.ContainerProfile.
- */
 @Serializable
 public data class ContainerProfile(
-	/**
-	 * The MediaBrowser.Model.Dlna.DlnaProfileType which this container must meet.
-	 */
 	@SerialName("Type")
 	public val type: DlnaProfileType,
-	/**
-	 * The list of MediaBrowser.Model.Dlna.ProfileCondition which this container will be applied to.
-	 */
 	@SerialName("Conditions")
 	public val conditions: List<ProfileCondition>,
-	/**
-	 * The container(s) which this container must meet.
-	 */
 	@SerialName("Container")
-	public val container: String? = null,
-	/**
-	 * The sub container(s) which this container must meet.
-	 */
-	@SerialName("SubContainer")
-	public val subContainer: String? = null,
+	public val container: String,
 )

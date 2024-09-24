@@ -14,74 +14,32 @@ import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/**
- * Class holding information on a runnning transcode.
- */
 @Serializable
 public data class TranscodingInfo(
-	/**
-	 * The thread count used for encoding.
-	 */
 	@SerialName("AudioCodec")
 	public val audioCodec: String? = null,
-	/**
-	 * The thread count used for encoding.
-	 */
 	@SerialName("VideoCodec")
 	public val videoCodec: String? = null,
-	/**
-	 * The thread count used for encoding.
-	 */
 	@SerialName("Container")
 	public val container: String? = null,
-	/**
-	 * A value indicating whether the video is passed through.
-	 */
 	@SerialName("IsVideoDirect")
 	public val isVideoDirect: Boolean,
-	/**
-	 * A value indicating whether the audio is passed through.
-	 */
 	@SerialName("IsAudioDirect")
 	public val isAudioDirect: Boolean,
-	/**
-	 * The bitrate.
-	 */
 	@SerialName("Bitrate")
 	public val bitrate: Int? = null,
-	/**
-	 * The framerate.
-	 */
 	@SerialName("Framerate")
 	public val framerate: Float? = null,
-	/**
-	 * The completion percentage.
-	 */
 	@SerialName("CompletionPercentage")
 	public val completionPercentage: Double? = null,
-	/**
-	 * The video width.
-	 */
 	@SerialName("Width")
 	public val width: Int? = null,
-	/**
-	 * The video height.
-	 */
 	@SerialName("Height")
 	public val height: Int? = null,
-	/**
-	 * The audio channels.
-	 */
 	@SerialName("AudioChannels")
 	public val audioChannels: Int? = null,
-	/**
-	 * The hardware acceleration type.
-	 */
 	@SerialName("HardwareAccelerationType")
-	public val hardwareAccelerationType: HardwareAccelerationType? = null,
-	/**
-	 * The transcode reasons.
-	 */
+	public val hardwareAccelerationType: HardwareEncodingType? = null,
 	@SerialName("TranscodeReasons")
 	public val transcodeReasons: List<TranscodeReason>,
 )

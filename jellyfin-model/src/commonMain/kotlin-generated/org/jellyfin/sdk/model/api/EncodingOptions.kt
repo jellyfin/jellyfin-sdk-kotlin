@@ -82,7 +82,7 @@ public data class EncodingOptions(
 	 * The hardware acceleration type.
 	 */
 	@SerialName("HardwareAccelerationType")
-	public val hardwareAccelerationType: HardwareAccelerationType,
+	public val hardwareAccelerationType: String? = null,
 	/**
 	 * The FFmpeg path as set by the user via the UI.
 	 */
@@ -98,11 +98,6 @@ public data class EncodingOptions(
 	 */
 	@SerialName("VaapiDevice")
 	public val vaapiDevice: String? = null,
-	/**
-	 * The QSV device.
-	 */
-	@SerialName("QsvDevice")
-	public val qsvDevice: String? = null,
 	/**
 	 * A value indicating whether tonemapping is enabled.
 	 */
@@ -122,17 +117,17 @@ public data class EncodingOptions(
 	 * The tone-mapping algorithm.
 	 */
 	@SerialName("TonemappingAlgorithm")
-	public val tonemappingAlgorithm: TonemappingAlgorithm,
+	public val tonemappingAlgorithm: String? = null,
 	/**
 	 * The tone-mapping mode.
 	 */
 	@SerialName("TonemappingMode")
-	public val tonemappingMode: TonemappingMode,
+	public val tonemappingMode: String? = null,
 	/**
 	 * The tone-mapping range.
 	 */
 	@SerialName("TonemappingRange")
-	public val tonemappingRange: TonemappingRange,
+	public val tonemappingRange: String? = null,
 	/**
 	 * The tone-mapping desaturation.
 	 */
@@ -172,7 +167,7 @@ public data class EncodingOptions(
 	 * The encoder preset.
 	 */
 	@SerialName("EncoderPreset")
-	public val encoderPreset: EncoderPreset? = null,
+	public val encoderPreset: String? = null,
 	/**
 	 * A value indicating whether the framerate is doubled when deinterlacing.
 	 */
@@ -182,7 +177,7 @@ public data class EncodingOptions(
 	 * The deinterlace method.
 	 */
 	@SerialName("DeinterlaceMethod")
-	public val deinterlaceMethod: DeinterlaceMethod,
+	public val deinterlaceMethod: String? = null,
 	/**
 	 * A value indicating whether 10bit HEVC decoding is enabled.
 	 */
@@ -193,16 +188,6 @@ public data class EncodingOptions(
 	 */
 	@SerialName("EnableDecodingColorDepth10Vp9")
 	public val enableDecodingColorDepth10Vp9: Boolean,
-	/**
-	 * A value indicating whether 8/10bit HEVC RExt decoding is enabled.
-	 */
-	@SerialName("EnableDecodingColorDepth10HevcRext")
-	public val enableDecodingColorDepth10HevcRext: Boolean,
-	/**
-	 * A value indicating whether 12bit HEVC RExt decoding is enabled.
-	 */
-	@SerialName("EnableDecodingColorDepth12HevcRext")
-	public val enableDecodingColorDepth12HevcRext: Boolean,
 	/**
 	 * A value indicating whether the enhanced NVDEC is enabled.
 	 */

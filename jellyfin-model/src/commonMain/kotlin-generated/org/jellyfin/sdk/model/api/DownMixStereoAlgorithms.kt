@@ -11,7 +11,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * An enum representing an algorithm to downmix surround sound to stereo.
+ * An enum representing an algorithm to downmix 6ch+ to stereo.
+ * Algorithms sourced from
+ * https://superuser.com/questions/852400/properly-downmix-5-1-to-stereo-using-ffmpeg/1410620#1410620.
  */
 @Serializable
 public enum class DownMixStereoAlgorithms(
@@ -23,10 +25,6 @@ public enum class DownMixStereoAlgorithms(
 	DAVE_750("Dave750"),
 	@SerialName("NightmodeDialogue")
 	NIGHTMODE_DIALOGUE("NightmodeDialogue"),
-	@SerialName("Rfc7845")
-	RFC_7845("Rfc7845"),
-	@SerialName("Ac4")
-	AC_4("Ac4"),
 	;
 
 	/**
@@ -42,8 +40,6 @@ public enum class DownMixStereoAlgorithms(
 			"None" -> NONE
 			"Dave750" -> DAVE_750
 			"NightmodeDialogue" -> NIGHTMODE_DIALOGUE
-			"Rfc7845" -> RFC_7845
-			"Ac4" -> AC_4
 			else -> null
 		}
 

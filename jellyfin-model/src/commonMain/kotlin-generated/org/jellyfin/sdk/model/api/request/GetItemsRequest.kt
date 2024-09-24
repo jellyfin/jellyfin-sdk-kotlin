@@ -79,11 +79,6 @@ public data class GetItemsRequest(
 	@SerialName("adjacentTo")
 	public val adjacentTo: UUID? = null,
 	/**
-	 * Optional filter by index number.
-	 */
-	@SerialName("indexNumber")
-	public val indexNumber: Int? = null,
-	/**
 	 * Optional filter by parent index number.
 	 */
 	@SerialName("parentIndexNumber")

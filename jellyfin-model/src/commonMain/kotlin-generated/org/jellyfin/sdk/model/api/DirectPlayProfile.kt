@@ -9,29 +9,14 @@ import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-/**
- * Defines the MediaBrowser.Model.Dlna.DirectPlayProfile.
- */
 @Serializable
 public data class DirectPlayProfile(
-	/**
-	 * The container.
-	 */
 	@SerialName("Container")
-	public val container: String,
-	/**
-	 * The audio codec.
-	 */
+	public val container: String? = null,
 	@SerialName("AudioCodec")
 	public val audioCodec: String? = null,
-	/**
-	 * The video codec.
-	 */
 	@SerialName("VideoCodec")
 	public val videoCodec: String? = null,
-	/**
-	 * The Dlna profile type.
-	 */
 	@SerialName("Type")
 	public val type: DlnaProfileType,
 )

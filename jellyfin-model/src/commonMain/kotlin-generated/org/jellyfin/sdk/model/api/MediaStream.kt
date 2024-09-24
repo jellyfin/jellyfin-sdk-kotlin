@@ -94,11 +94,6 @@ public data class MediaStream(
 	@SerialName("DvBlSignalCompatibilityId")
 	public val dvBlSignalCompatibilityId: Int? = null,
 	/**
-	 * The Rotation in degrees.
-	 */
-	@SerialName("Rotation")
-	public val rotation: Int? = null,
-	/**
 	 * The comment.
 	 */
 	@SerialName("Comment")
@@ -224,13 +219,6 @@ public data class MediaStream(
 	 */
 	@SerialName("RealFrameRate")
 	public val realFrameRate: Float? = null,
-	/**
-	 * Gets the framerate used as reference.
-	 * Prefer AverageFrameRate, if that is null or an unrealistic value
-	 * then fallback to RealFrameRate.
-	 */
-	@SerialName("ReferenceFrameRate")
-	public val referenceFrameRate: Float? = null,
 	/**
 	 * The profile.
 	 */

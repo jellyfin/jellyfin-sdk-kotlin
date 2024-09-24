@@ -27,12 +27,6 @@ public data class TrickplayOptions(
 	@SerialName("EnableHwEncoding")
 	public val enableHwEncoding: Boolean,
 	/**
-	 * Gets or sets a value indicating whether to only extract key frames.
-	 * Significantly faster, but is not compatible with all decoders and/or video files.
-	 */
-	@SerialName("EnableKeyFrameOnlyExtraction")
-	public val enableKeyFrameOnlyExtraction: Boolean,
-	/**
 	 * The behavior used by trickplay provider on library scan/update.
 	 */
 	@SerialName("ScanBehavior")

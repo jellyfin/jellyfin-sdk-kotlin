@@ -11,28 +11,26 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Enum containing hardware acceleration types.
+ * Enum HardwareEncodingType.
  */
 @Serializable
-public enum class HardwareAccelerationType(
+public enum class HardwareEncodingType(
 	public val serialName: String,
 ) {
-	@SerialName("none")
-	NONE("none"),
-	@SerialName("amf")
-	AMF("amf"),
-	@SerialName("qsv")
-	QSV("qsv"),
-	@SerialName("nvenc")
-	NVENC("nvenc"),
-	@SerialName("v4l2m2m")
-	V_4L_2M_2M("v4l2m2m"),
-	@SerialName("vaapi")
-	VAAPI("vaapi"),
-	@SerialName("videotoolbox")
-	VIDEOTOOLBOX("videotoolbox"),
-	@SerialName("rkmpp")
-	RKMPP("rkmpp"),
+	@SerialName("AMF")
+	AMF("AMF"),
+	@SerialName("QSV")
+	QSV("QSV"),
+	@SerialName("NVENC")
+	NVENC("NVENC"),
+	@SerialName("V4L2M2M")
+	V4L2M2M("V4L2M2M"),
+	@SerialName("VAAPI")
+	VAAPI("VAAPI"),
+	@SerialName("VideoToolBox")
+	VIDEO_TOOL_BOX("VideoToolBox"),
+	@SerialName("RKMPP")
+	RKMPP("RKMPP"),
 	;
 
 	/**
@@ -44,22 +42,21 @@ public enum class HardwareAccelerationType(
 		/**
 		 * Find the enum member by the serial name or return null.
 		 */
-		public fun fromNameOrNull(serialName: String): HardwareAccelerationType? = when (serialName) {
-			"none" -> NONE
-			"amf" -> AMF
-			"qsv" -> QSV
-			"nvenc" -> NVENC
-			"v4l2m2m" -> V_4L_2M_2M
-			"vaapi" -> VAAPI
-			"videotoolbox" -> VIDEOTOOLBOX
-			"rkmpp" -> RKMPP
+		public fun fromNameOrNull(serialName: String): HardwareEncodingType? = when (serialName) {
+			"AMF" -> AMF
+			"QSV" -> QSV
+			"NVENC" -> NVENC
+			"V4L2M2M" -> V4L2M2M
+			"VAAPI" -> VAAPI
+			"VideoToolBox" -> VIDEO_TOOL_BOX
+			"RKMPP" -> RKMPP
 			else -> null
 		}
 
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): HardwareAccelerationType =
+		public fun fromName(serialName: String): HardwareEncodingType =
 				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }
