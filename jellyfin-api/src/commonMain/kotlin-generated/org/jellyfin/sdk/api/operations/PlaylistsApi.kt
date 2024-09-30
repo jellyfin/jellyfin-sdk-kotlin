@@ -28,6 +28,7 @@ import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.MediaType
 import org.jellyfin.sdk.model.api.PlaylistCreationResult
+import org.jellyfin.sdk.model.api.PlaylistDto
 import org.jellyfin.sdk.model.api.PlaylistUserPermissions
 import org.jellyfin.sdk.model.api.UpdatePlaylistDto
 import org.jellyfin.sdk.model.api.UpdatePlaylistUserDto
@@ -101,6 +102,22 @@ public class PlaylistsApi(
 			put("mediaType", mediaType)
 		}
 		val response = api.post<PlaylistCreationResult>("/Playlists", pathParameters, queryParameters,
+				data)
+		return response
+	}
+
+	/**
+	 * Get a playlist.
+	 *
+	 * @param playlistId The playlist id.
+	 */
+	public suspend fun getPlaylist(playlistId: UUID): Response<PlaylistDto> {
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("playlistId", playlistId)
+		}
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<PlaylistDto>("/Playlists/{playlistId}", pathParameters, queryParameters,
 				data)
 		return response
 	}

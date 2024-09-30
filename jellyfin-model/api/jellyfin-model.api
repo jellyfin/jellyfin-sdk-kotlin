@@ -7121,6 +7121,37 @@ public final class org/jellyfin/sdk/model/api/PlaylistCreationResult$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
+public final class org/jellyfin/sdk/model/api/PlaylistDto {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/PlaylistDto$Companion;
+	public fun <init> (ZLjava/util/List;Ljava/util/List;)V
+	public final fun component1 ()Z
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/util/List;
+	public final fun copy (ZLjava/util/List;Ljava/util/List;)Lorg/jellyfin/sdk/model/api/PlaylistDto;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/PlaylistDto;ZLjava/util/List;Ljava/util/List;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/PlaylistDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getItemIds ()Ljava/util/List;
+	public final fun getOpenAccess ()Z
+	public final fun getShares ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public synthetic class org/jellyfin/sdk/model/api/PlaylistDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/PlaylistDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/PlaylistDto;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlaylistDto;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/PlaylistDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
 public final class org/jellyfin/sdk/model/api/PlaylistUserPermissions {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/PlaylistUserPermissions$Companion;
 	public fun <init> (Ljava/util/UUID;Z)V
