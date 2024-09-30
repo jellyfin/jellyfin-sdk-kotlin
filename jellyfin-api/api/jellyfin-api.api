@@ -834,8 +834,8 @@ public final class org/jellyfin/sdk/api/operations/MediaInfoApi : org/jellyfin/s
 
 public final class org/jellyfin/sdk/api/operations/MediaSegmentsApi : org/jellyfin/sdk/api/operations/Api {
 	public fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;)V
-	public final fun getSegmentsAsync (Ljava/util/UUID;Ljava/util/Collection;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getSegmentsAsync$default (Lorg/jellyfin/sdk/api/operations/MediaSegmentsApi;Ljava/util/UUID;Ljava/util/Collection;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun getItemSegments (Ljava/util/UUID;Ljava/util/Collection;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun getItemSegments$default (Lorg/jellyfin/sdk/api/operations/MediaSegmentsApi;Ljava/util/UUID;Ljava/util/Collection;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class org/jellyfin/sdk/api/operations/MoviesApi : org/jellyfin/sdk/api/operations/Api {
@@ -910,6 +910,7 @@ public final class org/jellyfin/sdk/api/operations/PlaylistsApi : org/jellyfin/s
 	public static synthetic fun createPlaylist$default (Lorg/jellyfin/sdk/api/operations/PlaylistsApi;Lorg/jellyfin/sdk/model/api/CreatePlaylistDto;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun createPlaylistDeprecated (Ljava/lang/String;Ljava/util/Collection;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/MediaType;Lorg/jellyfin/sdk/model/api/CreatePlaylistDto;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun createPlaylistDeprecated$default (Lorg/jellyfin/sdk/api/operations/PlaylistsApi;Ljava/lang/String;Ljava/util/Collection;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/MediaType;Lorg/jellyfin/sdk/model/api/CreatePlaylistDto;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun getPlaylist (Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getPlaylistItems (Ljava/util/UUID;Ljava/util/UUID;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/util/Collection;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/util/Collection;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getPlaylistItems (Lorg/jellyfin/sdk/model/api/request/GetPlaylistItemsRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public static synthetic fun getPlaylistItems$default (Lorg/jellyfin/sdk/api/operations/PlaylistsApi;Ljava/util/UUID;Ljava/util/UUID;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/util/Collection;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Integer;Ljava/util/Collection;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
@@ -1122,10 +1123,10 @@ public final class org/jellyfin/sdk/api/operations/TrickplayApi : org/jellyfin/s
 	public static synthetic fun getTrickplayHlsPlaylist$default (Lorg/jellyfin/sdk/api/operations/TrickplayApi;Ljava/util/UUID;ILjava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 	public final fun getTrickplayHlsPlaylistUrl (Ljava/util/UUID;ILjava/util/UUID;)Ljava/lang/String;
 	public static synthetic fun getTrickplayHlsPlaylistUrl$default (Lorg/jellyfin/sdk/api/operations/TrickplayApi;Ljava/util/UUID;ILjava/util/UUID;ILjava/lang/Object;)Ljava/lang/String;
-	public final fun getTrickplayTileImageAsync (Ljava/util/UUID;IILjava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getTrickplayTileImageAsync$default (Lorg/jellyfin/sdk/api/operations/TrickplayApi;Ljava/util/UUID;IILjava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
-	public final fun getTrickplayTileImageAsyncUrl (Ljava/util/UUID;IILjava/util/UUID;)Ljava/lang/String;
-	public static synthetic fun getTrickplayTileImageAsyncUrl$default (Lorg/jellyfin/sdk/api/operations/TrickplayApi;Ljava/util/UUID;IILjava/util/UUID;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun getTrickplayTileImage (Ljava/util/UUID;IILjava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun getTrickplayTileImage$default (Lorg/jellyfin/sdk/api/operations/TrickplayApi;Ljava/util/UUID;IILjava/util/UUID;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun getTrickplayTileImageUrl (Ljava/util/UUID;IILjava/util/UUID;)Ljava/lang/String;
+	public static synthetic fun getTrickplayTileImageUrl$default (Lorg/jellyfin/sdk/api/operations/TrickplayApi;Ljava/util/UUID;IILjava/util/UUID;ILjava/lang/Object;)Ljava/lang/String;
 }
 
 public final class org/jellyfin/sdk/api/operations/TvShowsApi : org/jellyfin/sdk/api/operations/Api {
