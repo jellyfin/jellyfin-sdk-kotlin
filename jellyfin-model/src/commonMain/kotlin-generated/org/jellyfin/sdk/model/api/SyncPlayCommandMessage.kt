@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @SerialName("SyncPlayCommand")
 public data class SyncPlayCommandMessage(
 	/**
-	 * The data.
+	 * Class SendCommand.
 	 */
 	@SerialName("Data")
 	public val `data`: SendCommand? = null,
