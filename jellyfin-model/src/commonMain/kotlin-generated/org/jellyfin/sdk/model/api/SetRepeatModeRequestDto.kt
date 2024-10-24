@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class SetRepeatModeRequestDto(
 	/**
-	 * Enum GroupRepeatMode.
+	 * The repeat mode.
 	 */
 	@SerialName("Mode")
 	public val mode: GroupRepeatMode,
