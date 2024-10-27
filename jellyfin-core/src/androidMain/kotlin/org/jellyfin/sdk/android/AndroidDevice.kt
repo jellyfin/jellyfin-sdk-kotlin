@@ -10,7 +10,7 @@ private fun Context.getDeviceName(): String {
 	// Use name from device settings
 	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
 		val name = Settings.Global.getString(contentResolver, Settings.Global.DEVICE_NAME)
-		if (name != null) return name
+		if (!name.isNullOrBlank()) return name
 	}
 
 	// Concatenate the name based on manufacturer and model
