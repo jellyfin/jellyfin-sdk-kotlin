@@ -30,6 +30,8 @@ public class ItemRefreshApi(
 	 * if mode is FullRefresh.
 	 * @param replaceAllImages (Optional) Determines if images should be replaced. Only applicable if
 	 * mode is FullRefresh.
+	 * @param regenerateTrickplay (Optional) Determines if trickplay images should be replaced. Only
+	 * applicable if mode is FullRefresh.
 	 */
 	public suspend fun refreshItem(
 		itemId: UUID,
@@ -37,15 +39,17 @@ public class ItemRefreshApi(
 		imageRefreshMode: MetadataRefreshMode? = MetadataRefreshMode.NONE,
 		replaceAllMetadata: Boolean? = false,
 		replaceAllImages: Boolean? = false,
+		regenerateTrickplay: Boolean? = false,
 	): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
-		val queryParameters = buildMap<String, Any?>(4) {
+		val queryParameters = buildMap<String, Any?>(5) {
 			put("metadataRefreshMode", metadataRefreshMode)
 			put("imageRefreshMode", imageRefreshMode)
 			put("replaceAllMetadata", replaceAllMetadata)
 			put("replaceAllImages", replaceAllImages)
+			put("regenerateTrickplay", regenerateTrickplay)
 		}
 		val data = null
 		val response = api.post<Unit>("/Items/{itemId}/Refresh", pathParameters, queryParameters, data)
@@ -63,5 +67,6 @@ public class ItemRefreshApi(
 		imageRefreshMode = request.imageRefreshMode,
 		replaceAllMetadata = request.replaceAllMetadata,
 		replaceAllImages = request.replaceAllImages,
+		regenerateTrickplay = request.regenerateTrickplay,
 	)
 }
