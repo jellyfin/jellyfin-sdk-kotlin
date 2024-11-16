@@ -45,4 +45,10 @@ public data class RefreshItemRequest(
 	 */
 	@SerialName("replaceAllImages")
 	public val replaceAllImages: Boolean? = false,
+	/**
+	 * (Optional) Determines if trickplay images should be replaced. Only applicable if mode is
+	 * FullRefresh.
+	 */
+	@SerialName("regenerateTrickplay")
+	public val regenerateTrickplay: Boolean? = false,
 )

@@ -604,9 +604,9 @@ public final class org/jellyfin/sdk/api/operations/ItemLookupApi : org/jellyfin/
 
 public final class org/jellyfin/sdk/api/operations/ItemRefreshApi : org/jellyfin/sdk/api/operations/Api {
 	public fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;)V
-	public final fun refreshItem (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun refreshItem (Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun refreshItem (Lorg/jellyfin/sdk/model/api/request/RefreshItemRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun refreshItem$default (Lorg/jellyfin/sdk/api/operations/ItemRefreshApi;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun refreshItem$default (Lorg/jellyfin/sdk/api/operations/ItemRefreshApi;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;Lorg/jellyfin/sdk/model/api/MetadataRefreshMode;Ljava/lang/Boolean;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public final class org/jellyfin/sdk/api/operations/ItemUpdateApi : org/jellyfin/sdk/api/operations/Api {
