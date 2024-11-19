@@ -144,7 +144,7 @@ public class DefaultSocketApi(
 		.state
 		.onEach { connectionState ->
 			// Automatically reconnect when the socket is closed while subscriptions are active
-			if (_subscriptionCount > 0 && _currentCredentials != null && connectionState is SocketConnectionState.Disconnected) {
+			if (_subscriptionCount > 0 && _currentCredentials != null && connectionState is SocketConnectionState.Disconnected && !reconnectMutex.isLocked) {
 				socketReconnectPolicy.notifyDisconnected()
 
 				val reconnectDelay = socketReconnectPolicy.getReconnectDelay()
