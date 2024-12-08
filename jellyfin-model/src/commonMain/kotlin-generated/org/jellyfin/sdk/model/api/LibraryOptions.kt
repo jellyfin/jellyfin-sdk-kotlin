@@ -72,8 +72,8 @@ public data class LibraryOptions(
 	public val subtitleFetcherOrder: List<String>,
 	@SerialName("DisabledMediaSegmentProviders")
 	public val disabledMediaSegmentProviders: List<String>,
-	@SerialName("MediaSegmentProvideOrder")
-	public val mediaSegmentProvideOrder: List<String>,
+	@SerialName("MediaSegmentProviderOrder")
+	public val mediaSegmentProviderOrder: List<String>,
 	@SerialName("SkipSubtitlesIfEmbeddedSubtitlesPresent")
 	public val skipSubtitlesIfEmbeddedSubtitlesPresent: Boolean,
 	@SerialName("SkipSubtitlesIfAudioTrackMatches")
