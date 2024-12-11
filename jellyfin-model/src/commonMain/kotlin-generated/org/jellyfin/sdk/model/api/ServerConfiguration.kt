@@ -212,11 +212,6 @@ public data class ServerConfiguration(
 	@SerialName("LibraryMetadataRefreshConcurrency")
 	public val libraryMetadataRefreshConcurrency: Int,
 	/**
-	 * A value indicating whether older plugins should automatically be deleted from the plugin folder.
-	 */
-	@SerialName("RemoveOldPlugins")
-	public val removeOldPlugins: Boolean,
-	/**
 	 * A value indicating whether clients should be allowed to upload logs.
 	 */
 	@SerialName("AllowClientLogUpload")
