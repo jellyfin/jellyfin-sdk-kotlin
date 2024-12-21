@@ -285,7 +285,7 @@ public class LiveTvApi(
 	}
 
 	/**
-	 * Get guid info.
+	 * Get guide info.
 	 */
 	public suspend fun getGuideInfo(): Response<GuideInfo> {
 		val pathParameters = emptyMap<String, Any?>()
