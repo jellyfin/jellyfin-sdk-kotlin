@@ -2,11 +2,6 @@ public final class org/jellyfin/sdk/Jellyfin {
 	public static final field Companion Lorg/jellyfin/sdk/Jellyfin$Companion;
 	public fun <init> (Lorg/jellyfin/sdk/JellyfinOptions$Builder;)V
 	public fun <init> (Lorg/jellyfin/sdk/JellyfinOptions;)V
-	public final fun createApi ()Lorg/jellyfin/sdk/api/client/ApiClient;
-	public final fun createApi (Ljava/lang/String;)Lorg/jellyfin/sdk/api/client/ApiClient;
-	public final fun createApi (Ljava/lang/String;Ljava/lang/String;)Lorg/jellyfin/sdk/api/client/ApiClient;
-	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;)Lorg/jellyfin/sdk/api/client/ApiClient;
-	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;)Lorg/jellyfin/sdk/api/client/ApiClient;
 	public final fun createApi (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;)Lorg/jellyfin/sdk/api/client/ApiClient;
 	public static synthetic fun createApi$default (Lorg/jellyfin/sdk/Jellyfin;Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;ILjava/lang/Object;)Lorg/jellyfin/sdk/api/client/ApiClient;
 	public final fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
@@ -64,40 +59,6 @@ public final class org/jellyfin/sdk/JellyfinOptions$Companion {
 
 public final class org/jellyfin/sdk/JellyfinOptionsKt {
 	public static final fun createJellyfinOptions (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/JellyfinOptions;
-}
-
-public abstract class org/jellyfin/sdk/compatibility/JavaContinuation : kotlin/coroutines/Continuation {
-	public fun <init> ()V
-	public fun getContext ()Lkotlin/coroutines/CoroutineContext;
-	public fun onError (Ljava/lang/Throwable;)V
-	public abstract fun onSuccess (Ljava/lang/Object;)V
-	public fun resumeWith (Ljava/lang/Object;)V
-}
-
-public final class org/jellyfin/sdk/compatibility/JavaFlow {
-	public static final field INSTANCE Lorg/jellyfin/sdk/compatibility/JavaFlow;
-	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
-	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
-	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$CompletionCallback;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
-	public static final fun collect (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$CompletionCallback;Lkotlinx/coroutines/CoroutineScope;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
-	public static synthetic fun collect$default (Lkotlinx/coroutines/flow/Flow;Lorg/jellyfin/sdk/compatibility/JavaFlow$StartCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$ResultCallback;Lorg/jellyfin/sdk/compatibility/JavaFlow$CompletionCallback;Lkotlinx/coroutines/CoroutineScope;ILjava/lang/Object;)Lorg/jellyfin/sdk/compatibility/JavaFlow$FlowJob;
-}
-
-public abstract interface class org/jellyfin/sdk/compatibility/JavaFlow$CompletionCallback {
-	public abstract fun onCompletion (Ljava/lang/Throwable;)V
-}
-
-public final class org/jellyfin/sdk/compatibility/JavaFlow$FlowJob : java/io/Closeable {
-	public fun <init> (Lkotlinx/coroutines/Job;)V
-	public fun close ()V
-}
-
-public abstract interface class org/jellyfin/sdk/compatibility/JavaFlow$ResultCallback {
-	public abstract fun onResult (Ljava/lang/Object;)V
-}
-
-public abstract interface class org/jellyfin/sdk/compatibility/JavaFlow$StartCallback {
-	public abstract fun onStart ()V
 }
 
 public final class org/jellyfin/sdk/discovery/AddressCandidateHelper {
