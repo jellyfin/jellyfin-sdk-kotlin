@@ -48,12 +48,10 @@ public class DynamicHlsApi(
 	 * @param itemId The item id.
 	 * @param playlistId The playlist id.
 	 * @param segmentId The segment id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
+	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param runtimeTicks The position of the requested segment in ticks.
 	 * @param actualSegmentLengthTicks The length of the requested segment in ticks.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param playSessionId The play session id.
@@ -61,38 +59,28 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -106,10 +94,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -233,9 +219,7 @@ public class DynamicHlsApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response =
-				api.`get`<ByteReadChannel>("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -244,8 +228,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getHlsAudioSegment(request: GetHlsAudioSegmentRequest):
-			Response<ByteReadChannel> = getHlsAudioSegment(
+	public suspend fun getHlsAudioSegment(request: GetHlsAudioSegmentRequest): Response<ByteReadChannel> = getHlsAudioSegment(
 		itemId = request.itemId,
 		playlistId = request.playlistId,
 		segmentId = request.segmentId,
@@ -308,12 +291,10 @@ public class DynamicHlsApi(
 	 * @param itemId The item id.
 	 * @param playlistId The playlist id.
 	 * @param segmentId The segment id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
+	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param runtimeTicks The position of the requested segment in ticks.
 	 * @param actualSegmentLengthTicks The length of the requested segment in ticks.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param playSessionId The play session id.
@@ -321,38 +302,28 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -366,10 +337,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -492,8 +461,7 @@ public class DynamicHlsApi(
 			put("streamOptions", streamOptions)
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
-		return api.createUrl("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters,
-				queryParameters)
+		return api.createUrl("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -502,12 +470,10 @@ public class DynamicHlsApi(
 	 * @param itemId The item id.
 	 * @param playlistId The playlist id.
 	 * @param segmentId The segment id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
+	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param runtimeTicks The position of the requested segment in ticks.
 	 * @param actualSegmentLengthTicks The length of the requested segment in ticks.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
@@ -516,38 +482,28 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -561,10 +517,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -691,9 +645,7 @@ public class DynamicHlsApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response =
-				api.`get`<ByteReadChannel>("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -703,8 +655,7 @@ public class DynamicHlsApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getHlsAudioSegmentDeprecated(request: GetHlsAudioSegmentDeprecatedRequest):
-			Response<ByteReadChannel> = getHlsAudioSegmentDeprecated(
+	public suspend fun getHlsAudioSegmentDeprecated(request: GetHlsAudioSegmentDeprecatedRequest): Response<ByteReadChannel> = getHlsAudioSegmentDeprecated(
 		itemId = request.itemId,
 		playlistId = request.playlistId,
 		segmentId = request.segmentId,
@@ -768,12 +719,10 @@ public class DynamicHlsApi(
 	 * @param itemId The item id.
 	 * @param playlistId The playlist id.
 	 * @param segmentId The segment id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
+	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param runtimeTicks The position of the requested segment in ticks.
 	 * @param actualSegmentLengthTicks The length of the requested segment in ticks.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
@@ -782,38 +731,28 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -827,10 +766,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -956,8 +893,7 @@ public class DynamicHlsApi(
 			put("streamOptions", streamOptions)
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
-		return api.createUrl("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters,
-				queryParameters)
+		return api.createUrl("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -966,12 +902,10 @@ public class DynamicHlsApi(
 	 * @param itemId The item id.
 	 * @param playlistId The playlist id.
 	 * @param segmentId The segment id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
+	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param runtimeTicks The position of the requested segment in ticks.
 	 * @param actualSegmentLengthTicks The length of the requested segment in ticks.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param playSessionId The play session id.
@@ -979,39 +913,29 @@ public class DynamicHlsApi(
 	 * @param segmentLength The desired segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
 	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
 	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -1025,10 +949,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -1157,9 +1079,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response =
-				api.`get`<ByteReadChannel>("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1168,8 +1088,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getHlsVideoSegment(request: GetHlsVideoSegmentRequest):
-			Response<ByteReadChannel> = getHlsVideoSegment(
+	public suspend fun getHlsVideoSegment(request: GetHlsVideoSegmentRequest): Response<ByteReadChannel> = getHlsVideoSegment(
 		itemId = request.itemId,
 		playlistId = request.playlistId,
 		segmentId = request.segmentId,
@@ -1234,12 +1153,10 @@ public class DynamicHlsApi(
 	 * @param itemId The item id.
 	 * @param playlistId The playlist id.
 	 * @param segmentId The segment id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
+	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param runtimeTicks The position of the requested segment in ticks.
 	 * @param actualSegmentLengthTicks The length of the requested segment in ticks.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param playSessionId The play session id.
@@ -1247,39 +1164,29 @@ public class DynamicHlsApi(
 	 * @param segmentLength The desired segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
 	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
 	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -1293,10 +1200,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -1424,8 +1329,7 @@ public class DynamicHlsApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
-		return api.createUrl("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters,
-				queryParameters)
+		return api.createUrl("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -1434,12 +1338,10 @@ public class DynamicHlsApi(
 	 * @param itemId The item id.
 	 * @param playlistId The playlist id.
 	 * @param segmentId The segment id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
+	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param runtimeTicks The position of the requested segment in ticks.
 	 * @param actualSegmentLengthTicks The length of the requested segment in ticks.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
@@ -1448,39 +1350,29 @@ public class DynamicHlsApi(
 	 * @param segmentLength The desired segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
 	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
 	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -1494,10 +1386,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -1629,9 +1519,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response =
-				api.`get`<ByteReadChannel>("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1641,8 +1529,7 @@ public class DynamicHlsApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getHlsVideoSegmentDeprecated(request: GetHlsVideoSegmentDeprecatedRequest):
-			Response<ByteReadChannel> = getHlsVideoSegmentDeprecated(
+	public suspend fun getHlsVideoSegmentDeprecated(request: GetHlsVideoSegmentDeprecatedRequest): Response<ByteReadChannel> = getHlsVideoSegmentDeprecated(
 		itemId = request.itemId,
 		playlistId = request.playlistId,
 		segmentId = request.segmentId,
@@ -1708,12 +1595,10 @@ public class DynamicHlsApi(
 	 * @param itemId The item id.
 	 * @param playlistId The playlist id.
 	 * @param segmentId The segment id.
-	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v,
-	 * mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
+	 * @param container The video container. Possible values are: ts, webm, asf, wmv, ogv, mp4, m4v, mkv, mpeg, mpg, avi, 3gp, wmv, wtv, m2ts, mov, iso, flv.
 	 * @param runtimeTicks The position of the requested segment in ticks.
 	 * @param actualSegmentLengthTicks The length of the requested segment in ticks.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
@@ -1722,39 +1607,29 @@ public class DynamicHlsApi(
 	 * @param segmentLength The desired segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
 	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
 	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -1768,10 +1643,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -1902,8 +1775,7 @@ public class DynamicHlsApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
-		return api.createUrl("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters,
-				queryParameters)
+		return api.createUrl("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -1911,8 +1783,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param itemId The item id.
 	 * @param container The audio container.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param playSessionId The play session id.
@@ -1920,37 +1791,27 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -1964,10 +1825,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param maxWidth Optional. The max width.
@@ -2094,8 +1953,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/live.m3u8", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/live.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -2104,8 +1962,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getLiveHlsStream(request: GetLiveHlsStreamRequest): Response<ByteReadChannel> =
-			getLiveHlsStream(
+	public suspend fun getLiveHlsStream(request: GetLiveHlsStreamRequest): Response<ByteReadChannel> = getLiveHlsStream(
 		itemId = request.itemId,
 		container = request.container,
 		static = request.static,
@@ -2166,8 +2023,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param itemId The item id.
 	 * @param container The audio container.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param playSessionId The play session id.
@@ -2175,37 +2031,27 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -2219,10 +2065,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param maxWidth Optional. The max width.
@@ -2356,8 +2200,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param itemId The item id.
 	 * @param container The audio container.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
@@ -2366,37 +2209,27 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -2410,10 +2243,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param maxWidth Optional. The max width.
@@ -2543,8 +2374,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/live.m3u8", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/live.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -2554,8 +2384,7 @@ public class DynamicHlsApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getLiveHlsStreamDeprecated(request: GetLiveHlsStreamDeprecatedRequest):
-			Response<ByteReadChannel> = getLiveHlsStreamDeprecated(
+	public suspend fun getLiveHlsStreamDeprecated(request: GetLiveHlsStreamDeprecatedRequest): Response<ByteReadChannel> = getLiveHlsStreamDeprecated(
 		itemId = request.itemId,
 		container = request.container,
 		static = request.static,
@@ -2617,8 +2446,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param itemId The item id.
 	 * @param container The audio container.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
@@ -2627,37 +2455,27 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -2671,10 +2489,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param maxWidth Optional. The max width.
@@ -2810,8 +2626,7 @@ public class DynamicHlsApi(
 	 * Gets an audio hls playlist stream.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param playSessionId The play session id.
@@ -2819,38 +2634,28 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -2864,10 +2669,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
@@ -2984,8 +2787,7 @@ public class DynamicHlsApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/master.m3u8", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/master.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -2994,8 +2796,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getMasterHlsAudioPlaylist(request: GetMasterHlsAudioPlaylistRequest):
-			Response<ByteReadChannel> = getMasterHlsAudioPlaylist(
+	public suspend fun getMasterHlsAudioPlaylist(request: GetMasterHlsAudioPlaylistRequest): Response<ByteReadChannel> = getMasterHlsAudioPlaylist(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -3052,8 +2853,7 @@ public class DynamicHlsApi(
 	 * Gets an audio hls playlist stream.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param playSessionId The play session id.
@@ -3061,38 +2861,28 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -3106,10 +2896,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
@@ -3232,8 +3020,7 @@ public class DynamicHlsApi(
 	 * Gets an audio hls playlist stream.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
@@ -3242,38 +3029,28 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -3287,10 +3064,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
@@ -3410,8 +3185,7 @@ public class DynamicHlsApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/master.m3u8", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/master.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -3421,9 +3195,7 @@ public class DynamicHlsApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend
-			fun getMasterHlsAudioPlaylistDeprecated(request: GetMasterHlsAudioPlaylistDeprecatedRequest):
-			Response<ByteReadChannel> = getMasterHlsAudioPlaylistDeprecated(
+	public suspend fun getMasterHlsAudioPlaylistDeprecated(request: GetMasterHlsAudioPlaylistDeprecatedRequest): Response<ByteReadChannel> = getMasterHlsAudioPlaylistDeprecated(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -3481,8 +3253,7 @@ public class DynamicHlsApi(
 	 * Gets an audio hls playlist stream.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
@@ -3491,38 +3262,28 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -3536,10 +3297,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
@@ -3665,8 +3424,7 @@ public class DynamicHlsApi(
 	 * Gets a video hls playlist stream.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param playSessionId The play session id.
@@ -3674,39 +3432,29 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
 	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
 	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -3720,10 +3468,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
@@ -3848,8 +3594,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/master.m3u8", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/master.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -3858,8 +3603,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getMasterHlsVideoPlaylist(request: GetMasterHlsVideoPlaylistRequest):
-			Response<ByteReadChannel> = getMasterHlsVideoPlaylist(
+	public suspend fun getMasterHlsVideoPlaylist(request: GetMasterHlsVideoPlaylistRequest): Response<ByteReadChannel> = getMasterHlsVideoPlaylist(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -3919,8 +3663,7 @@ public class DynamicHlsApi(
 	 * Gets a video hls playlist stream.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param playSessionId The play session id.
@@ -3928,39 +3671,29 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
 	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
 	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -3974,10 +3707,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
@@ -4108,8 +3839,7 @@ public class DynamicHlsApi(
 	 * Gets a video hls playlist stream.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
@@ -4118,39 +3848,29 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
 	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
 	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -4164,10 +3884,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
@@ -4295,8 +4013,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/master.m3u8", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/master.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -4306,9 +4023,7 @@ public class DynamicHlsApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend
-			fun getMasterHlsVideoPlaylistDeprecated(request: GetMasterHlsVideoPlaylistDeprecatedRequest):
-			Response<ByteReadChannel> = getMasterHlsVideoPlaylistDeprecated(
+	public suspend fun getMasterHlsVideoPlaylistDeprecated(request: GetMasterHlsVideoPlaylistDeprecatedRequest): Response<ByteReadChannel> = getMasterHlsVideoPlaylistDeprecated(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -4369,8 +4084,7 @@ public class DynamicHlsApi(
 	 * Gets a video hls playlist stream.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
@@ -4379,39 +4093,29 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
 	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
 	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -4425,10 +4129,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAdaptiveBitrateStreaming Enable adaptive bitrate streaming.
@@ -4562,8 +4264,7 @@ public class DynamicHlsApi(
 	 * Gets an audio stream using HTTP live streaming.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param playSessionId The play session id.
@@ -4571,38 +4272,28 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -4616,10 +4307,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -4733,8 +4422,7 @@ public class DynamicHlsApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/main.m3u8", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/main.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -4743,8 +4431,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getVariantHlsAudioPlaylist(request: GetVariantHlsAudioPlaylistRequest):
-			Response<ByteReadChannel> = getVariantHlsAudioPlaylist(
+	public suspend fun getVariantHlsAudioPlaylist(request: GetVariantHlsAudioPlaylistRequest): Response<ByteReadChannel> = getVariantHlsAudioPlaylist(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -4800,8 +4487,7 @@ public class DynamicHlsApi(
 	 * Gets an audio stream using HTTP live streaming.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param playSessionId The play session id.
@@ -4809,38 +4495,28 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -4854,10 +4530,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -4977,8 +4651,7 @@ public class DynamicHlsApi(
 	 * Gets an audio stream using HTTP live streaming.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
@@ -4987,38 +4660,28 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -5032,10 +4695,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -5152,8 +4813,7 @@ public class DynamicHlsApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/main.m3u8", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/main.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -5163,9 +4823,7 @@ public class DynamicHlsApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend
-			fun getVariantHlsAudioPlaylistDeprecated(request: GetVariantHlsAudioPlaylistDeprecatedRequest):
-			Response<ByteReadChannel> = getVariantHlsAudioPlaylistDeprecated(
+	public suspend fun getVariantHlsAudioPlaylistDeprecated(request: GetVariantHlsAudioPlaylistDeprecatedRequest): Response<ByteReadChannel> = getVariantHlsAudioPlaylistDeprecated(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -5222,8 +4880,7 @@ public class DynamicHlsApi(
 	 * Gets an audio stream using HTTP live streaming.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
@@ -5232,38 +4889,28 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -5277,10 +4924,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -5403,8 +5048,7 @@ public class DynamicHlsApi(
 	 * Gets a video stream using HTTP live streaming.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param playSessionId The play session id.
@@ -5412,39 +5056,29 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
 	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
 	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -5458,10 +5092,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -5580,8 +5212,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/main.m3u8", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/main.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -5590,8 +5221,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getVariantHlsVideoPlaylist(request: GetVariantHlsVideoPlaylistRequest):
-			Response<ByteReadChannel> = getVariantHlsVideoPlaylist(
+	public suspend fun getVariantHlsVideoPlaylist(request: GetVariantHlsVideoPlaylistRequest): Response<ByteReadChannel> = getVariantHlsVideoPlaylist(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -5649,8 +5279,7 @@ public class DynamicHlsApi(
 	 * Gets a video stream using HTTP live streaming.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param playSessionId The play session id.
@@ -5658,39 +5287,29 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
 	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
 	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -5704,10 +5323,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -5832,8 +5449,7 @@ public class DynamicHlsApi(
 	 * Gets a video stream using HTTP live streaming.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
@@ -5842,39 +5458,29 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
 	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
 	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -5888,10 +5494,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
@@ -6013,8 +5617,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/main.m3u8", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/main.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -6024,9 +5627,7 @@ public class DynamicHlsApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend
-			fun getVariantHlsVideoPlaylistDeprecated(request: GetVariantHlsVideoPlaylistDeprecatedRequest):
-			Response<ByteReadChannel> = getVariantHlsVideoPlaylistDeprecated(
+	public suspend fun getVariantHlsVideoPlaylistDeprecated(request: GetVariantHlsVideoPlaylistDeprecatedRequest): Response<ByteReadChannel> = getVariantHlsVideoPlaylistDeprecated(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -6085,8 +5686,7 @@ public class DynamicHlsApi(
 	 * Gets a video stream using HTTP live streaming.
 	 *
 	 * @param itemId The item id.
-	 * @param static Optional. If true, the original file will be streamed statically without any
-	 * encoding. Use either no url extension or the original file extension. true/false.
+	 * @param static Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 * @param params The streaming parameters.
 	 * @param tag The tag.
 	 * @param deviceProfileId Optional. The dlna device profile id to utilize.
@@ -6095,39 +5695,29 @@ public class DynamicHlsApi(
 	 * @param segmentLength The segment length.
 	 * @param minSegments The minimum number of segments.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param audioCodec Optional. Specify an audio codec to encode to, e.g. mp3.
-	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values
-	 * match the original source. Defaults to true.
+	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
 	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param audioChannels Optional. Specify a specific number of audio channels to encode to, e.g. 2.
-	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g.
-	 * 2.
-	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main,
-	 * baseline, high.
+	 * @param maxAudioChannels Optional. Specify a maximum number of audio channels to encode to, e.g. 2.
+	 * @param profile Optional. Specify a specific an encoder profile (varies by encoder), e.g. main, baseline, high.
 	 * @param level Optional. Specify a level for the encoder profile (varies by encoder), e.g. 3, 3.1.
-	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this
-	 * should be omitted unless the device has specific requirements.
-	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976.
-	 * Generally this should be omitted unless the device has specific requirements.
-	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset.
-	 * Defaults to false.
+	 * @param framerate Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param maxFramerate Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
+	 * @param copyTimestamps Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param width Optional. The fixed horizontal resolution of the encoded video.
 	 * @param height Optional. The fixed vertical resolution of the encoded video.
 	 * @param maxWidth Optional. The maximum horizontal resolution of the encoded video.
 	 * @param maxHeight Optional. The maximum vertical resolution of the encoded video.
-	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this
-	 * will be left to encoder defaults.
-	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no
-	 * subtitles will be used.
+	 * @param videoBitRate Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
+	 * @param subtitleStreamIndex Optional. The index of the subtitle stream to use. If omitted no subtitles will be used.
 	 * @param subtitleMethod Optional. Specify the subtitle delivery method.
 	 * @param maxRefFrames Optional.
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
@@ -6141,10 +5731,8 @@ public class DynamicHlsApi(
 	 * @param videoCodec Optional. Specify a video codec to encode to, e.g. h264.
 	 * @param subtitleCodec Optional. Specify a subtitle codec to encode to.
 	 * @param transcodeReasons Optional. The transcoding reason.
-	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first
-	 * audio stream will be used.
-	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first
-	 * video stream will be used.
+	 * @param audioStreamIndex Optional. The index of the audio stream to use. If omitted the first audio stream will be used.
+	 * @param videoStreamIndex Optional. The index of the video stream to use. If omitted the first video stream will be used.
 	 * @param context Optional. The MediaBrowser.Model.Dlna.EncodingContext.
 	 * @param streamOptions Optional. The streaming options.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.

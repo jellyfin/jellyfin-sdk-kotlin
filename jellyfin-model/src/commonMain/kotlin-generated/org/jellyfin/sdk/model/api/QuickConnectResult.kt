@@ -26,8 +26,7 @@ public data class QuickConnectResult(
 	@SerialName("Authenticated")
 	public val authenticated: Boolean,
 	/**
-	 * The secret value used to uniquely identify this request. Can be used to retrieve authentication
-	 * information.
+	 * The secret value used to uniquely identify this request. Can be used to retrieve authentication information.
 	 */
 	@SerialName("Secret")
 	public val secret: String,

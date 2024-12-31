@@ -27,14 +27,12 @@ public data class GetQueryFiltersRequest(
 	@SerialName("userId")
 	public val userId: UUID? = null,
 	/**
-	 * Optional. Specify this to localize the search to a specific item or folder. Omit to use the
-	 * root.
+	 * Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
 	 */
 	@SerialName("parentId")
 	public val parentId: UUID? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on item type. This allows multiple, comma
-	 * delimited.
+	 * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
 	 */
 	@SerialName("includeItemTypes")
 	public val includeItemTypes: Collection<BaseItemKind>? = null,

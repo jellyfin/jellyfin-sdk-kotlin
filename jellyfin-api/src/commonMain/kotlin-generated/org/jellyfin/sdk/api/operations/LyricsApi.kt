@@ -51,8 +51,7 @@ public class LyricsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<LyricDto>("/Audio/{itemId}/RemoteSearch/Lyrics/{lyricId}", pathParameters,
-				queryParameters, data)
+		val response = api.post<LyricDto>("/Audio/{itemId}/RemoteSearch/Lyrics/{lyricId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -67,8 +66,7 @@ public class LyricsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<LyricDto>("/Audio/{itemId}/Lyrics", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<LyricDto>("/Audio/{itemId}/Lyrics", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -83,8 +81,7 @@ public class LyricsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<LyricDto>("/Providers/Lyrics/{lyricId}", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<LyricDto>("/Providers/Lyrics/{lyricId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -99,8 +96,7 @@ public class LyricsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<RemoteLyricInfoDto>>("/Audio/{itemId}/RemoteSearch/Lyrics",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<List<RemoteLyricInfoDto>>("/Audio/{itemId}/RemoteSearch/Lyrics", pathParameters, queryParameters, data)
 		return response
 	}
 

@@ -42,10 +42,7 @@ public data class GetSimilarArtistsRequest(
 	@SerialName("limit")
 	public val limit: Int? = null,
 	/**
-	 * Optional. Specify additional fields of information to return in the output. This allows
-	 * multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
 	@SerialName("fields")
 	public val fields: Collection<ItemFields>? = null,

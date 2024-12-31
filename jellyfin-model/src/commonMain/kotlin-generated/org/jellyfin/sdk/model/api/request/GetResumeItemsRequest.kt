@@ -52,10 +52,7 @@ public data class GetResumeItemsRequest(
 	@SerialName("parentId")
 	public val parentId: UUID? = null,
 	/**
-	 * Optional. Specify additional fields of information to return in the output. This allows
-	 * multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines.
+	 * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines.
 	 */
 	@SerialName("fields")
 	public val fields: Collection<ItemFields>? = null,
@@ -80,14 +77,12 @@ public data class GetResumeItemsRequest(
 	@SerialName("enableImageTypes")
 	public val enableImageTypes: Collection<ImageType>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on item type. This allows multiple, comma
-	 * delimited.
+	 * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
 	 */
 	@SerialName("excludeItemTypes")
 	public val excludeItemTypes: Collection<BaseItemKind>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on the item type. This allows multiple,
-	 * comma delimited.
+	 * Optional. If specified, results will be filtered based on the item type. This allows multiple, comma delimited.
 	 */
 	@SerialName("includeItemTypes")
 	public val includeItemTypes: Collection<BaseItemKind>? = null,

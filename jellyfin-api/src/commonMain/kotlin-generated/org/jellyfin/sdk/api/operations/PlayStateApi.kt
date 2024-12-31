@@ -52,8 +52,7 @@ public class PlayStateApi(
 			put("datePlayed", datePlayed)
 		}
 		val data = null
-		val response = api.post<UserItemDataDto>("/UserPlayedItems/{itemId}", pathParameters,
-				queryParameters, data)
+		val response = api.post<UserItemDataDto>("/UserPlayedItems/{itemId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -63,8 +62,7 @@ public class PlayStateApi(
 	 * @param itemId Item id.
 	 * @param userId User id.
 	 */
-	public suspend fun markUnplayedItem(itemId: UUID, userId: UUID? = null):
-			Response<UserItemDataDto> {
+	public suspend fun markUnplayedItem(itemId: UUID, userId: UUID? = null): Response<UserItemDataDto> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -72,8 +70,7 @@ public class PlayStateApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.delete<UserItemDataDto>("/UserPlayedItems/{itemId}", pathParameters,
-				queryParameters, data)
+		val response = api.delete<UserItemDataDto>("/UserPlayedItems/{itemId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -124,8 +121,7 @@ public class PlayStateApi(
 			put("isMuted", isMuted)
 		}
 		val data = null
-		val response = api.post<Unit>("/PlayingItems/{itemId}/Progress", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/PlayingItems/{itemId}/Progress", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -134,8 +130,7 @@ public class PlayStateApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun onPlaybackProgress(request: OnPlaybackProgressRequest): Response<Unit> =
-			onPlaybackProgress(
+	public suspend fun onPlaybackProgress(request: OnPlaybackProgressRequest): Response<Unit> = onPlaybackProgress(
 		itemId = request.itemId,
 		mediaSourceId = request.mediaSourceId,
 		positionTicks = request.positionTicks,
@@ -194,8 +189,7 @@ public class PlayStateApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun onPlaybackStart(request: OnPlaybackStartRequest): Response<Unit> =
-			onPlaybackStart(
+	public suspend fun onPlaybackStart(request: OnPlaybackStartRequest): Response<Unit> = onPlaybackStart(
 		itemId = request.itemId,
 		mediaSourceId = request.mediaSourceId,
 		audioStreamIndex = request.audioStreamIndex,
@@ -212,8 +206,7 @@ public class PlayStateApi(
 	 * @param itemId Item id.
 	 * @param mediaSourceId The id of the MediaSource.
 	 * @param nextMediaType The next media type that will play.
-	 * @param positionTicks Optional. The position, in ticks, where playback stopped. 1 tick = 10000
-	 * ms.
+	 * @param positionTicks Optional. The position, in ticks, where playback stopped. 1 tick = 10000 ms.
 	 * @param liveStreamId The live stream id.
 	 * @param playSessionId The play session id.
 	 */
@@ -245,8 +238,7 @@ public class PlayStateApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun onPlaybackStopped(request: OnPlaybackStoppedRequest): Response<Unit> =
-			onPlaybackStopped(
+	public suspend fun onPlaybackStopped(request: OnPlaybackStoppedRequest): Response<Unit> = onPlaybackStopped(
 		itemId = request.itemId,
 		mediaSourceId = request.mediaSourceId,
 		nextMediaType = request.nextMediaType,

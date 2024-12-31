@@ -31,8 +31,7 @@ public data class RemoveFromPlaylistRequestDto(
 	@SerialName("ClearPlaylist")
 	public val clearPlaylist: Boolean,
 	/**
-	 * A value indicating whether the playing item should be removed as well. Used only when clearing
-	 * the playlist.
+	 * A value indicating whether the playing item should be removed as well. Used only when clearing the playlist.
 	 */
 	@SerialName("ClearPlayingItem")
 	public val clearPlayingItem: Boolean,

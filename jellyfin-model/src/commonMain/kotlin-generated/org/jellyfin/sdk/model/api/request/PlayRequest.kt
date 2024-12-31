@@ -29,8 +29,7 @@ public data class PlayRequest(
 	@SerialName("sessionId")
 	public val sessionId: String,
 	/**
-	 * The type of play command to issue (PlayNow, PlayNext, PlayLast). Clients who have not yet
-	 * implemented play next and play last may play now.
+	 * The type of play command to issue (PlayNow, PlayNext, PlayLast). Clients who have not yet implemented play next and play last may play now.
 	 */
 	@SerialName("playCommand")
 	public val playCommand: PlayCommand,

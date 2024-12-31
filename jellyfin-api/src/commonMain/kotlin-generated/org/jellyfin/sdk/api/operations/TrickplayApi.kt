@@ -38,8 +38,7 @@ public class TrickplayApi(
 			put("mediaSourceId", mediaSourceId)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/Trickplay/{width}/tiles.m3u8",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/Trickplay/{width}/tiles.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -62,8 +61,7 @@ public class TrickplayApi(
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("mediaSourceId", mediaSourceId)
 		}
-		return api.createUrl("/Videos/{itemId}/Trickplay/{width}/tiles.m3u8", pathParameters,
-				queryParameters)
+		return api.createUrl("/Videos/{itemId}/Trickplay/{width}/tiles.m3u8", pathParameters, queryParameters)
 	}
 
 	/**
@@ -89,8 +87,7 @@ public class TrickplayApi(
 			put("mediaSourceId", mediaSourceId)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/Trickplay/{width}/{index}.jpg",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/Trickplay/{width}/{index}.jpg", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -116,7 +113,6 @@ public class TrickplayApi(
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("mediaSourceId", mediaSourceId)
 		}
-		return api.createUrl("/Videos/{itemId}/Trickplay/{width}/{index}.jpg", pathParameters,
-				queryParameters)
+		return api.createUrl("/Videos/{itemId}/Trickplay/{width}/{index}.jpg", pathParameters, queryParameters)
 	}
 }

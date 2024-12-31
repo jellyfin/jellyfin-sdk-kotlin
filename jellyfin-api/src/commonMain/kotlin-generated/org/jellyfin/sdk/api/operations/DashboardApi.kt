@@ -24,15 +24,13 @@ public class DashboardApi(
 	 *
 	 * @param enableInMainMenu Whether to enable in the main menu.
 	 */
-	public suspend fun getConfigurationPages(enableInMainMenu: Boolean? = null):
-			Response<List<ConfigurationPageInfo>> {
+	public suspend fun getConfigurationPages(enableInMainMenu: Boolean? = null): Response<List<ConfigurationPageInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("enableInMainMenu", enableInMainMenu)
 		}
 		val data = null
-		val response = api.`get`<List<ConfigurationPageInfo>>("/web/ConfigurationPages", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<ConfigurationPageInfo>>("/web/ConfigurationPages", pathParameters, queryParameters, data)
 		return response
 	}
 

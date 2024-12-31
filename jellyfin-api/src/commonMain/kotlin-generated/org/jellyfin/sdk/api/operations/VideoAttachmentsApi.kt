@@ -38,8 +38,7 @@ public class VideoAttachmentsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{videoId}/{mediaSourceId}/Attachments/{index}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Videos/{videoId}/{mediaSourceId}/Attachments/{index}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -61,7 +60,6 @@ public class VideoAttachmentsApi(
 			put("index", index)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Videos/{videoId}/{mediaSourceId}/Attachments/{index}", pathParameters,
-				queryParameters)
+		return api.createUrl("/Videos/{videoId}/{mediaSourceId}/Attachments/{index}", pathParameters, queryParameters)
 	}
 }

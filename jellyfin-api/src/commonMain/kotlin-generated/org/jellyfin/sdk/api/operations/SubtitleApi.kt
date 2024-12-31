@@ -46,8 +46,7 @@ public class SubtitleApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.delete<Unit>("/Videos/{itemId}/Subtitles/{index}", pathParameters,
-				queryParameters, data)
+		val response = api.delete<Unit>("/Videos/{itemId}/Subtitles/{index}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -64,8 +63,7 @@ public class SubtitleApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<Unit>("/Items/{itemId}/RemoteSearch/Subtitles/{subtitleId}",
-				pathParameters, queryParameters, data)
+		val response = api.post<Unit>("/Items/{itemId}/RemoteSearch/Subtitles/{subtitleId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -80,8 +78,7 @@ public class SubtitleApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/FallbackFont/Fonts/{name}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/FallbackFont/Fonts/{name}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -105,8 +102,7 @@ public class SubtitleApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<FontFile>>("/FallbackFont/Fonts", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<List<FontFile>>("/FallbackFont/Fonts", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -121,8 +117,7 @@ public class SubtitleApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<String>("/Providers/Subtitles/Subtitles/{subtitleId}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<String>("/Providers/Subtitles/Subtitles/{subtitleId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -161,9 +156,7 @@ public class SubtitleApi(
 			put("startPositionTicks", startPositionTicks)
 		}
 		val data = null
-		val response =
-				api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/Stream.{routeFormat}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/Stream.{routeFormat}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -231,9 +224,7 @@ public class SubtitleApi(
 			put("startPositionTicks", startPositionTicks)
 		}
 		val data = null
-		val response =
-				api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/Stream.{routeFormat}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/Stream.{routeFormat}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -243,8 +234,7 @@ public class SubtitleApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getSubtitleDeprecated(request: GetSubtitleDeprecatedRequest): Response<String> =
-			getSubtitleDeprecated(
+	public suspend fun getSubtitleDeprecated(request: GetSubtitleDeprecatedRequest): Response<String> = getSubtitleDeprecated(
 		routeItemId = request.routeItemId,
 		routeMediaSourceId = request.routeMediaSourceId,
 		routeIndex = request.routeIndex,
@@ -282,9 +272,7 @@ public class SubtitleApi(
 			put("segmentLength", segmentLength)
 		}
 		val data = null
-		val response =
-				api.`get`<ByteReadChannel>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -310,8 +298,7 @@ public class SubtitleApi(
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("segmentLength", segmentLength)
 		}
-		return api.createUrl("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8",
-				pathParameters, queryParameters)
+		return api.createUrl("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8", pathParameters, queryParameters)
 	}
 
 	/**
@@ -349,9 +336,7 @@ public class SubtitleApi(
 			put("addVttTimeMap", addVttTimeMap)
 		}
 		val data = null
-		val response =
-				api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/{routeStartPositionTicks}/Stream.{routeFormat}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/{routeStartPositionTicks}/Stream.{routeFormat}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -360,8 +345,7 @@ public class SubtitleApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getSubtitleWithTicks(request: GetSubtitleWithTicksRequest): Response<String> =
-			getSubtitleWithTicks(
+	public suspend fun getSubtitleWithTicks(request: GetSubtitleWithTicksRequest): Response<String> = getSubtitleWithTicks(
 		routeItemId = request.routeItemId,
 		routeMediaSourceId = request.routeMediaSourceId,
 		routeIndex = request.routeIndex,
@@ -423,9 +407,7 @@ public class SubtitleApi(
 			put("addVttTimeMap", addVttTimeMap)
 		}
 		val data = null
-		val response =
-				api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/{routeStartPositionTicks}/Stream.{routeFormat}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/{routeStartPositionTicks}/Stream.{routeFormat}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -435,8 +417,7 @@ public class SubtitleApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getSubtitleWithTicksDeprecated(request: GetSubtitleWithTicksDeprecatedRequest):
-			Response<String> = getSubtitleWithTicksDeprecated(
+	public suspend fun getSubtitleWithTicksDeprecated(request: GetSubtitleWithTicksDeprecatedRequest): Response<String> = getSubtitleWithTicksDeprecated(
 		routeItemId = request.routeItemId,
 		routeMediaSourceId = request.routeMediaSourceId,
 		routeIndex = request.routeIndex,
@@ -472,9 +453,7 @@ public class SubtitleApi(
 			put("isPerfectMatch", isPerfectMatch)
 		}
 		val data = null
-		val response =
-				api.`get`<List<RemoteSubtitleInfo>>("/Items/{itemId}/RemoteSearch/Subtitles/{language}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<List<RemoteSubtitleInfo>>("/Items/{itemId}/RemoteSearch/Subtitles/{language}", pathParameters, queryParameters, data)
 		return response
 	}
 

@@ -16,8 +16,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * This is a serializable stub class that is used by the api to provide information about installed
- * plugins.
+ * This is a serializable stub class that is used by the api to provide information about installed plugins.
  */
 @Serializable
 public data class PluginInfo(

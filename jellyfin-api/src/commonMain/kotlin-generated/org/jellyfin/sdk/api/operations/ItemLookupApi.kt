@@ -49,32 +49,27 @@ public class ItemLookupApi(
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("replaceAllImages", replaceAllImages)
 		}
-		val response = api.post<Unit>("/Items/RemoteSearch/Apply/{itemId}", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Items/RemoteSearch/Apply/{itemId}", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Get book remote search.
 	 */
-	public suspend fun getBookRemoteSearchResults(`data`: BookInfoRemoteSearchQuery):
-			Response<List<RemoteSearchResult>> {
+	public suspend fun getBookRemoteSearchResults(`data`: BookInfoRemoteSearchQuery): Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/Book", pathParameters,
-				queryParameters, data)
+		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/Book", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Get box set remote search.
 	 */
-	public suspend fun getBoxSetRemoteSearchResults(`data`: BoxSetInfoRemoteSearchQuery):
-			Response<List<RemoteSearchResult>> {
+	public suspend fun getBoxSetRemoteSearchResults(`data`: BoxSetInfoRemoteSearchQuery): Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/BoxSet", pathParameters,
-				queryParameters, data)
+		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/BoxSet", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -89,92 +84,77 @@ public class ItemLookupApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<ExternalIdInfo>>("/Items/{itemId}/ExternalIdInfos", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<ExternalIdInfo>>("/Items/{itemId}/ExternalIdInfos", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Get movie remote search.
 	 */
-	public suspend fun getMovieRemoteSearchResults(`data`: MovieInfoRemoteSearchQuery):
-			Response<List<RemoteSearchResult>> {
+	public suspend fun getMovieRemoteSearchResults(`data`: MovieInfoRemoteSearchQuery): Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/Movie", pathParameters,
-				queryParameters, data)
+		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/Movie", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Get music album remote search.
 	 */
-	public suspend fun getMusicAlbumRemoteSearchResults(`data`: AlbumInfoRemoteSearchQuery):
-			Response<List<RemoteSearchResult>> {
+	public suspend fun getMusicAlbumRemoteSearchResults(`data`: AlbumInfoRemoteSearchQuery): Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/MusicAlbum",
-				pathParameters, queryParameters, data)
+		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/MusicAlbum", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Get music artist remote search.
 	 */
-	public suspend fun getMusicArtistRemoteSearchResults(`data`: ArtistInfoRemoteSearchQuery):
-			Response<List<RemoteSearchResult>> {
+	public suspend fun getMusicArtistRemoteSearchResults(`data`: ArtistInfoRemoteSearchQuery): Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/MusicArtist",
-				pathParameters, queryParameters, data)
+		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/MusicArtist", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Get music video remote search.
 	 */
-	public suspend fun getMusicVideoRemoteSearchResults(`data`: MusicVideoInfoRemoteSearchQuery):
-			Response<List<RemoteSearchResult>> {
+	public suspend fun getMusicVideoRemoteSearchResults(`data`: MusicVideoInfoRemoteSearchQuery): Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/MusicVideo",
-				pathParameters, queryParameters, data)
+		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/MusicVideo", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Get person remote search.
 	 */
-	public suspend fun getPersonRemoteSearchResults(`data`: PersonLookupInfoRemoteSearchQuery):
-			Response<List<RemoteSearchResult>> {
+	public suspend fun getPersonRemoteSearchResults(`data`: PersonLookupInfoRemoteSearchQuery): Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/Person", pathParameters,
-				queryParameters, data)
+		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/Person", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Get series remote search.
 	 */
-	public suspend fun getSeriesRemoteSearchResults(`data`: SeriesInfoRemoteSearchQuery):
-			Response<List<RemoteSearchResult>> {
+	public suspend fun getSeriesRemoteSearchResults(`data`: SeriesInfoRemoteSearchQuery): Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/Series", pathParameters,
-				queryParameters, data)
+		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/Series", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Get trailer remote search.
 	 */
-	public suspend fun getTrailerRemoteSearchResults(`data`: TrailerInfoRemoteSearchQuery):
-			Response<List<RemoteSearchResult>> {
+	public suspend fun getTrailerRemoteSearchResults(`data`: TrailerInfoRemoteSearchQuery): Response<List<RemoteSearchResult>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/Trailer", pathParameters,
-				queryParameters, data)
+		val response = api.post<List<RemoteSearchResult>>("/Items/RemoteSearch/Trailer", pathParameters, queryParameters, data)
 		return response
 	}
 }

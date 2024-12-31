@@ -17,8 +17,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Update existing playlist dto. Fields set to `null` will not be updated and keep their current
- * values.
+ * Update existing playlist dto. Fields set to `null` will not be updated and keep their current values.
  */
 @Serializable
 public data class UpdatePlaylistDto(

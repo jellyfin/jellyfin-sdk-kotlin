@@ -38,8 +38,7 @@ public data class NetworkConfiguration(
 	@SerialName("CertificatePath")
 	public val certificatePath: String,
 	/**
-	 * The password required to access the X.509 certificate data in the file specified by
-	 * MediaBrowser.Common.Net.NetworkConfiguration.CertificatePath.
+	 * The password required to access the X.509 certificate data in the file specified by MediaBrowser.Common.Net.NetworkConfiguration.CertificatePath.
 	 */
 	@SerialName("CertificatePassword")
 	public val certificatePassword: String,
@@ -104,16 +103,12 @@ public data class NetworkConfiguration(
 	@SerialName("KnownProxies")
 	public val knownProxies: List<String>,
 	/**
-	 * A value indicating whether address names that match
-	 * MediaBrowser.Common.Net.NetworkConfiguration.VirtualInterfaceNames should be ignored for the
-	 * purposes of binding.
+	 * A value indicating whether address names that match MediaBrowser.Common.Net.NetworkConfiguration.VirtualInterfaceNames should be ignored for the purposes of binding.
 	 */
 	@SerialName("IgnoreVirtualInterfaces")
 	public val ignoreVirtualInterfaces: Boolean,
 	/**
-	 * A value indicating the interface name prefixes that should be ignored. The list can be comma
-	 * separated and values are case-insensitive.
-	 * `P:MediaBrowser.Common.Net.NetworkConfiguration.IgnoreVirtualInterfaces`.
+	 * A value indicating the interface name prefixes that should be ignored. The list can be comma separated and values are case-insensitive. `P:MediaBrowser.Common.Net.NetworkConfiguration.IgnoreVirtualInterfaces`.
 	 */
 	@SerialName("VirtualInterfaceNames")
 	public val virtualInterfaceNames: List<String>,
@@ -129,14 +124,12 @@ public data class NetworkConfiguration(
 	@SerialName("PublishedServerUriBySubnet")
 	public val publishedServerUriBySubnet: List<String>,
 	/**
-	 * The filter for remote IP connectivity. Used in conjunction with
-	 * `P:MediaBrowser.Common.Net.NetworkConfiguration.IsRemoteIPFilterBlacklist`.
+	 * The filter for remote IP connectivity. Used in conjunction with `P:MediaBrowser.Common.Net.NetworkConfiguration.IsRemoteIPFilterBlacklist`.
 	 */
 	@SerialName("RemoteIPFilter")
 	public val remoteIpFilter: List<String>,
 	/**
-	 * A value indicating whether `P:MediaBrowser.Common.Net.NetworkConfiguration.RemoteIPFilter`
-	 * contains a blacklist or a whitelist. Default is a whitelist.
+	 * A value indicating whether `P:MediaBrowser.Common.Net.NetworkConfiguration.RemoteIPFilter` contains a blacklist or a whitelist. Default is a whitelist.
 	 */
 	@SerialName("IsRemoteIPFilterBlacklist")
 	public val isRemoteIpFilterBlacklist: Boolean,

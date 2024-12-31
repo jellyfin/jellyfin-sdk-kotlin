@@ -65,7 +65,6 @@ public enum class DynamicDayOfWeek(
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): DynamicDayOfWeek =
-				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+		public fun fromName(serialName: String): DynamicDayOfWeek = requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }

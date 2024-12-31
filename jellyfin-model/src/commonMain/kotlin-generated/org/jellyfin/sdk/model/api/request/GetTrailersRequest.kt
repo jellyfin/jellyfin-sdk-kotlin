@@ -99,14 +99,12 @@ public data class GetTrailersRequest(
 	@SerialName("is4K")
 	public val is4k: Boolean? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on LocationType. This allows multiple,
-	 * comma delimited.
+	 * Optional. If specified, results will be filtered based on LocationType. This allows multiple, comma delimited.
 	 */
 	@SerialName("locationTypes")
 	public val locationTypes: Collection<LocationType>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on the LocationType. This allows
-	 * multiple, comma delimited.
+	 * Optional. If specified, results will be filtered based on the LocationType. This allows multiple, comma delimited.
 	 */
 	@SerialName("excludeLocationTypes")
 	public val excludeLocationTypes: Collection<LocationType>? = null,
@@ -196,14 +194,12 @@ public data class GetTrailersRequest(
 	@SerialName("isSports")
 	public val isSports: Boolean? = null,
 	/**
-	 * Optional. If specified, results will be filtered by excluding item ids. This allows multiple,
-	 * comma delimited.
+	 * Optional. If specified, results will be filtered by excluding item ids. This allows multiple, comma delimited.
 	 */
 	@SerialName("excludeItemIds")
 	public val excludeItemIds: Collection<UUID>? = null,
 	/**
-	 * Optional. The record index to start at. All items with a lower index will be dropped from the
-	 * results.
+	 * Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 */
 	@SerialName("startIndex")
 	public val startIndex: Int? = null,
@@ -213,8 +209,7 @@ public data class GetTrailersRequest(
 	@SerialName("limit")
 	public val limit: Int? = null,
 	/**
-	 * When searching within folders, this determines whether or not the search will be recursive.
-	 * true/false.
+	 * When searching within folders, this determines whether or not the search will be recursive. true/false.
 	 */
 	@SerialName("recursive")
 	public val recursive: Boolean? = null,
@@ -234,22 +229,17 @@ public data class GetTrailersRequest(
 	@SerialName("parentId")
 	public val parentId: UUID? = null,
 	/**
-	 * Optional. Specify additional fields of information to return in the output. This allows
-	 * multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines.
+	 * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines.
 	 */
 	@SerialName("fields")
 	public val fields: Collection<ItemFields>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on item type. This allows multiple, comma
-	 * delimited.
+	 * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
 	 */
 	@SerialName("excludeItemTypes")
 	public val excludeItemTypes: Collection<BaseItemKind>? = null,
 	/**
-	 * Optional. Specify additional filters to apply. This allows multiple, comma delimited. Options:
-	 * IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes.
+	 * Optional. Specify additional filters to apply. This allows multiple, comma delimited. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes.
 	 */
 	@SerialName("filters")
 	public val filters: Collection<ItemFilter>? = null,
@@ -264,15 +254,12 @@ public data class GetTrailersRequest(
 	@SerialName("mediaTypes")
 	public val mediaTypes: Collection<MediaType>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on those containing image types. This
-	 * allows multiple, comma delimited.
+	 * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
 	 */
 	@SerialName("imageTypes")
 	public val imageTypes: Collection<ImageType>? = null,
 	/**
-	 * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist,
-	 * Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate,
-	 * ProductionYear, SortName, Random, Revenue, Runtime.
+	 * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 */
 	@SerialName("sortBy")
 	public val sortBy: Collection<ItemSortBy>? = null,
@@ -282,26 +269,22 @@ public data class GetTrailersRequest(
 	@SerialName("isPlayed")
 	public val isPlayed: Boolean? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe
-	 * delimited.
+	 * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimited.
 	 */
 	@SerialName("genres")
 	public val genres: Collection<String>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple,
-	 * pipe delimited.
+	 * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimited.
 	 */
 	@SerialName("officialRatings")
 	public val officialRatings: Collection<String>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe
-	 * delimited.
+	 * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimited.
 	 */
 	@SerialName("tags")
 	public val tags: Collection<String>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on production year. This allows multiple,
-	 * comma delimited.
+	 * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimited.
 	 */
 	@SerialName("years")
 	public val years: Collection<Int>? = null,
@@ -321,74 +304,62 @@ public data class GetTrailersRequest(
 	@SerialName("enableImageTypes")
 	public val enableImageTypes: Collection<ImageType>? = null,
 	/**
-	 * Optional. If specified, results will be filtered to include only those containing the specified
-	 * person.
+	 * Optional. If specified, results will be filtered to include only those containing the specified person.
 	 */
 	@SerialName("person")
 	public val person: String? = null,
 	/**
-	 * Optional. If specified, results will be filtered to include only those containing the specified
-	 * person id.
+	 * Optional. If specified, results will be filtered to include only those containing the specified person id.
 	 */
 	@SerialName("personIds")
 	public val personIds: Collection<UUID>? = null,
 	/**
-	 * Optional. If specified, along with Person, results will be filtered to include only those
-	 * containing the specified person and PersonType. Allows multiple, comma-delimited.
+	 * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited.
 	 */
 	@SerialName("personTypes")
 	public val personTypes: Collection<String>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe
-	 * delimited.
+	 * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimited.
 	 */
 	@SerialName("studios")
 	public val studios: Collection<String>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on artists. This allows multiple, pipe
-	 * delimited.
+	 * Optional. If specified, results will be filtered based on artists. This allows multiple, pipe delimited.
 	 */
 	@SerialName("artists")
 	public val artists: Collection<String>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on artist id. This allows multiple, pipe
-	 * delimited.
+	 * Optional. If specified, results will be filtered based on artist id. This allows multiple, pipe delimited.
 	 */
 	@SerialName("excludeArtistIds")
 	public val excludeArtistIds: Collection<UUID>? = null,
 	/**
-	 * Optional. If specified, results will be filtered to include only those containing the specified
-	 * artist id.
+	 * Optional. If specified, results will be filtered to include only those containing the specified artist id.
 	 */
 	@SerialName("artistIds")
 	public val artistIds: Collection<UUID>? = null,
 	/**
-	 * Optional. If specified, results will be filtered to include only those containing the specified
-	 * album artist id.
+	 * Optional. If specified, results will be filtered to include only those containing the specified album artist id.
 	 */
 	@SerialName("albumArtistIds")
 	public val albumArtistIds: Collection<UUID>? = null,
 	/**
-	 * Optional. If specified, results will be filtered to include only those containing the specified
-	 * contributing artist id.
+	 * Optional. If specified, results will be filtered to include only those containing the specified contributing artist id.
 	 */
 	@SerialName("contributingArtistIds")
 	public val contributingArtistIds: Collection<UUID>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on album. This allows multiple, pipe
-	 * delimited.
+	 * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimited.
 	 */
 	@SerialName("albums")
 	public val albums: Collection<String>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on album id. This allows multiple, pipe
-	 * delimited.
+	 * Optional. If specified, results will be filtered based on album id. This allows multiple, pipe delimited.
 	 */
 	@SerialName("albumIds")
 	public val albumIds: Collection<UUID>? = null,
 	/**
-	 * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows
-	 * multiple, comma delimited.
+	 * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
 	 */
 	@SerialName("ids")
 	public val ids: Collection<UUID>? = null,
@@ -468,14 +439,12 @@ public data class GetTrailersRequest(
 	@SerialName("nameLessThan")
 	public val nameLessThan: String? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on studio id. This allows multiple, pipe
-	 * delimited.
+	 * Optional. If specified, results will be filtered based on studio id. This allows multiple, pipe delimited.
 	 */
 	@SerialName("studioIds")
 	public val studioIds: Collection<UUID>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on genre id. This allows multiple, pipe
-	 * delimited.
+	 * Optional. If specified, results will be filtered based on genre id. This allows multiple, pipe delimited.
 	 */
 	@SerialName("genreIds")
 	public val genreIds: Collection<UUID>? = null,

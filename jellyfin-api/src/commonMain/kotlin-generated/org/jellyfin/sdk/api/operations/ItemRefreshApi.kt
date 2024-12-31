@@ -26,12 +26,9 @@ public class ItemRefreshApi(
 	 * @param itemId Item id.
 	 * @param metadataRefreshMode (Optional) Specifies the metadata refresh mode.
 	 * @param imageRefreshMode (Optional) Specifies the image refresh mode.
-	 * @param replaceAllMetadata (Optional) Determines if metadata should be replaced. Only applicable
-	 * if mode is FullRefresh.
-	 * @param replaceAllImages (Optional) Determines if images should be replaced. Only applicable if
-	 * mode is FullRefresh.
-	 * @param regenerateTrickplay (Optional) Determines if trickplay images should be replaced. Only
-	 * applicable if mode is FullRefresh.
+	 * @param replaceAllMetadata (Optional) Determines if metadata should be replaced. Only applicable if mode is FullRefresh.
+	 * @param replaceAllImages (Optional) Determines if images should be replaced. Only applicable if mode is FullRefresh.
+	 * @param regenerateTrickplay (Optional) Determines if trickplay images should be replaced. Only applicable if mode is FullRefresh.
 	 */
 	public suspend fun refreshItem(
 		itemId: UUID,

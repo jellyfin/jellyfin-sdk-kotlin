@@ -34,14 +34,12 @@ public class LibraryStructureApi(
 	 *
 	 * @param refreshLibrary Whether to refresh the library.
 	 */
-	public suspend fun addMediaPath(refreshLibrary: Boolean? = false, `data`: MediaPathDto):
-			Response<Unit> {
+	public suspend fun addMediaPath(refreshLibrary: Boolean? = false, `data`: MediaPathDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("refreshLibrary", refreshLibrary)
 		}
-		val response = api.post<Unit>("/Library/VirtualFolders/Paths", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/Library/VirtualFolders/Paths", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -78,8 +76,7 @@ public class LibraryStructureApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<VirtualFolderInfo>>("/Library/VirtualFolders", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<VirtualFolderInfo>>("/Library/VirtualFolders", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -102,8 +99,7 @@ public class LibraryStructureApi(
 			put("refreshLibrary", refreshLibrary)
 		}
 		val data = null
-		val response = api.delete<Unit>("/Library/VirtualFolders/Paths", pathParameters, queryParameters,
-				data)
+		val response = api.delete<Unit>("/Library/VirtualFolders/Paths", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -113,8 +109,7 @@ public class LibraryStructureApi(
 	 * @param name The name of the folder.
 	 * @param refreshLibrary Whether to refresh the library.
 	 */
-	public suspend fun removeVirtualFolder(name: String? = null, refreshLibrary: Boolean? = false):
-			Response<Unit> {
+	public suspend fun removeVirtualFolder(name: String? = null, refreshLibrary: Boolean? = false): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(2) {
 			put("name", name)
@@ -144,8 +139,7 @@ public class LibraryStructureApi(
 			put("refreshLibrary", refreshLibrary)
 		}
 		val data = null
-		val response = api.post<Unit>("/Library/VirtualFolders/Name", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/Library/VirtualFolders/Name", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -155,8 +149,7 @@ public class LibraryStructureApi(
 	public suspend fun updateLibraryOptions(`data`: UpdateLibraryOptionsDto? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Library/VirtualFolders/LibraryOptions", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Library/VirtualFolders/LibraryOptions", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -166,8 +159,7 @@ public class LibraryStructureApi(
 	public suspend fun updateMediaPath(`data`: UpdateMediaPathRequestDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Library/VirtualFolders/Paths/Update", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Library/VirtualFolders/Paths/Update", pathParameters, queryParameters, data)
 		return response
 	}
 }
