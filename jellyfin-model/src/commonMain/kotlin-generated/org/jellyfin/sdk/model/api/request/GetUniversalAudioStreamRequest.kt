@@ -70,8 +70,7 @@ public data class GetUniversalAudioStreamRequest(
 	@SerialName("maxStreamingBitrate")
 	public val maxStreamingBitrate: Int? = null,
 	/**
-	 * Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to
-	 * encoder defaults.
+	 * Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 */
 	@SerialName("audioBitRate")
 	public val audioBitRate: Int? = null,

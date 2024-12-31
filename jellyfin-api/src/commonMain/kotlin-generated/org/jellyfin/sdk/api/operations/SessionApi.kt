@@ -51,8 +51,7 @@ public class SessionApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<Unit>("/Sessions/{sessionId}/User/{userId}", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Sessions/{sessionId}/User/{userId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -79,8 +78,7 @@ public class SessionApi(
 			put("itemName", itemName)
 		}
 		val data = null
-		val response = api.post<Unit>("/Sessions/{sessionId}/Viewing", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/Sessions/{sessionId}/Viewing", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -91,8 +89,7 @@ public class SessionApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<NameIdPair>>("/Auth/Providers", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<List<NameIdPair>>("/Auth/Providers", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -103,8 +100,7 @@ public class SessionApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<NameIdPair>>("/Auth/PasswordResetProviders", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<NameIdPair>>("/Auth/PasswordResetProviders", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -135,8 +131,7 @@ public class SessionApi(
 	 * Instructs a session to play an item.
 	 *
 	 * @param sessionId The session id.
-	 * @param playCommand The type of play command to issue (PlayNow, PlayNext, PlayLast). Clients who
-	 * have not yet implemented play next and play last may play now.
+	 * @param playCommand The type of play command to issue (PlayNow, PlayNext, PlayLast). Clients who have not yet implemented play next and play last may play now.
 	 * @param itemIds The ids of the items to play, comma delimited.
 	 * @param startPositionTicks The starting position of the first item.
 	 * @param mediaSourceId Optional. The media source id.
@@ -167,8 +162,7 @@ public class SessionApi(
 			put("startIndex", startIndex)
 		}
 		val data = null
-		val response = api.post<Unit>("/Sessions/{sessionId}/Playing", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/Sessions/{sessionId}/Playing", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -192,8 +186,7 @@ public class SessionApi(
 	 * Updates capabilities for a device.
 	 *
 	 * @param id The session id.
-	 * @param playableMediaTypes A list of playable media types, comma delimited. Audio, Video, Book,
-	 * Photo.
+	 * @param playableMediaTypes A list of playable media types, comma delimited. Audio, Video, Book, Photo.
 	 * @param supportedCommands A list of supported remote control commands, comma delimited.
 	 * @param supportsMediaControl Determines whether media can be played remotely..
 	 * @param supportsPersistentIdentifier Determines whether the device supports a unique identifier.
@@ -223,8 +216,7 @@ public class SessionApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun postCapabilities(request: PostCapabilitiesRequest = PostCapabilitiesRequest()):
-			Response<Unit> = postCapabilities(
+	public suspend fun postCapabilities(request: PostCapabilitiesRequest = PostCapabilitiesRequest()): Response<Unit> = postCapabilities(
 		id = request.id,
 		playableMediaTypes = request.playableMediaTypes,
 		supportedCommands = request.supportedCommands,
@@ -237,14 +229,12 @@ public class SessionApi(
 	 *
 	 * @param id The session id.
 	 */
-	public suspend fun postFullCapabilities(id: String? = null, `data`: ClientCapabilitiesDto):
-			Response<Unit> {
+	public suspend fun postFullCapabilities(id: String? = null, `data`: ClientCapabilitiesDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("id", id)
 		}
-		val response = api.post<Unit>("/Sessions/Capabilities/Full", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/Sessions/Capabilities/Full", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -261,8 +251,7 @@ public class SessionApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.delete<Unit>("/Sessions/{sessionId}/User/{userId}", pathParameters,
-				queryParameters, data)
+		val response = api.delete<Unit>("/Sessions/{sessionId}/User/{userId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -299,14 +288,12 @@ public class SessionApi(
 	 *
 	 * @param sessionId The session id.
 	 */
-	public suspend fun sendFullGeneralCommand(sessionId: String, `data`: GeneralCommand):
-			Response<Unit> {
+	public suspend fun sendFullGeneralCommand(sessionId: String, `data`: GeneralCommand): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("sessionId", sessionId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Sessions/{sessionId}/Command", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/Sessions/{sessionId}/Command", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -316,16 +303,14 @@ public class SessionApi(
 	 * @param sessionId The session id.
 	 * @param command The command to send.
 	 */
-	public suspend fun sendGeneralCommand(sessionId: String, command: GeneralCommandType):
-			Response<Unit> {
+	public suspend fun sendGeneralCommand(sessionId: String, command: GeneralCommandType): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("sessionId", sessionId)
 			put("command", command)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<Unit>("/Sessions/{sessionId}/Command/{command}", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Sessions/{sessionId}/Command/{command}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -339,8 +324,7 @@ public class SessionApi(
 			put("sessionId", sessionId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Sessions/{sessionId}/Message", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/Sessions/{sessionId}/Message", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -367,8 +351,7 @@ public class SessionApi(
 			put("controllingUserId", controllingUserId)
 		}
 		val data = null
-		val response = api.post<Unit>("/Sessions/{sessionId}/Playing/{command}", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Sessions/{sessionId}/Playing/{command}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -378,16 +361,14 @@ public class SessionApi(
 	 * @param sessionId The session id.
 	 * @param command The command to send.
 	 */
-	public suspend fun sendSystemCommand(sessionId: String, command: GeneralCommandType):
-			Response<Unit> {
+	public suspend fun sendSystemCommand(sessionId: String, command: GeneralCommandType): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("sessionId", sessionId)
 			put("command", command)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<Unit>("/Sessions/{sessionId}/System/{command}", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Sessions/{sessionId}/System/{command}", pathParameters, queryParameters, data)
 		return response
 	}
 }

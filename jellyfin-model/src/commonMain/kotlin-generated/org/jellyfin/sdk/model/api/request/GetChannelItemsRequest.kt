@@ -40,8 +40,7 @@ public data class GetChannelItemsRequest(
 	@SerialName("userId")
 	public val userId: UUID? = null,
 	/**
-	 * Optional. The record index to start at. All items with a lower index will be dropped from the
-	 * results.
+	 * Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 */
 	@SerialName("startIndex")
 	public val startIndex: Int? = null,
@@ -61,9 +60,7 @@ public data class GetChannelItemsRequest(
 	@SerialName("filters")
 	public val filters: Collection<ItemFilter>? = null,
 	/**
-	 * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist,
-	 * Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate,
-	 * ProductionYear, SortName, Random, Revenue, Runtime.
+	 * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 */
 	@SerialName("sortBy")
 	public val sortBy: Collection<ItemSortBy>? = null,

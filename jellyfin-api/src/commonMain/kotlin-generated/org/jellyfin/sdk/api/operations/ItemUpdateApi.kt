@@ -32,8 +32,7 @@ public class ItemUpdateApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<MetadataEditorInfo>("/Items/{itemId}/MetadataEditor", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<MetadataEditorInfo>("/Items/{itemId}/MetadataEditor", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -57,8 +56,7 @@ public class ItemUpdateApi(
 	 * @param itemId The item id.
 	 * @param contentType The content type of the item.
 	 */
-	public suspend fun updateItemContentType(itemId: UUID, contentType: String? = null):
-			Response<Unit> {
+	public suspend fun updateItemContentType(itemId: UUID, contentType: String? = null): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -66,8 +64,7 @@ public class ItemUpdateApi(
 			put("contentType", contentType)
 		}
 		val data = null
-		val response = api.post<Unit>("/Items/{itemId}/ContentType", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/Items/{itemId}/ContentType", pathParameters, queryParameters, data)
 		return response
 	}
 }

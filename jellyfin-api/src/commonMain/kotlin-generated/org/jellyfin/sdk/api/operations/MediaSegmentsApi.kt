@@ -26,8 +26,7 @@ public class MediaSegmentsApi(
 	 * @param itemId The ItemId.
 	 * @param includeSegmentTypes Optional filter of requested segment types.
 	 */
-	public suspend fun getItemSegments(itemId: UUID, includeSegmentTypes: Collection<MediaSegmentType>?
-			= emptyList()): Response<MediaSegmentDtoQueryResult> {
+	public suspend fun getItemSegments(itemId: UUID, includeSegmentTypes: Collection<MediaSegmentType>? = emptyList()): Response<MediaSegmentDtoQueryResult> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -35,8 +34,7 @@ public class MediaSegmentsApi(
 			put("includeSegmentTypes", includeSegmentTypes)
 		}
 		val data = null
-		val response = api.`get`<MediaSegmentDtoQueryResult>("/MediaSegments/{itemId}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<MediaSegmentDtoQueryResult>("/MediaSegments/{itemId}", pathParameters, queryParameters, data)
 		return response
 	}
 }

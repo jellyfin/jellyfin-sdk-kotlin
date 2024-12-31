@@ -27,8 +27,7 @@ public class LocalizationApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<CountryInfo>>("/Localization/Countries", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<CountryInfo>>("/Localization/Countries", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -39,8 +38,7 @@ public class LocalizationApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<CultureDto>>("/Localization/Cultures", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<CultureDto>>("/Localization/Cultures", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -51,8 +49,7 @@ public class LocalizationApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<LocalizationOption>>("/Localization/Options", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<LocalizationOption>>("/Localization/Options", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -63,8 +60,7 @@ public class LocalizationApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<ParentalRating>>("/Localization/ParentalRatings", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<ParentalRating>>("/Localization/ParentalRatings", pathParameters, queryParameters, data)
 		return response
 	}
 }

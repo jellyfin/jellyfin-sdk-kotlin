@@ -53,8 +53,7 @@ public class SuggestionsApi(
 			put("enableTotalRecordCount", enableTotalRecordCount)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Items/Suggestions", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Items/Suggestions", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -63,8 +62,7 @@ public class SuggestionsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getSuggestions(request: GetSuggestionsRequest = GetSuggestionsRequest()):
-			Response<BaseItemDtoQueryResult> = getSuggestions(
+	public suspend fun getSuggestions(request: GetSuggestionsRequest = GetSuggestionsRequest()): Response<BaseItemDtoQueryResult> = getSuggestions(
 		userId = request.userId,
 		mediaType = request.mediaType,
 		type = request.type,

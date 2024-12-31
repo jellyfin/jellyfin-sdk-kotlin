@@ -47,7 +47,6 @@ public enum class SendCommandType(
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): SendCommandType =
-				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+		public fun fromName(serialName: String): SendCommandType = requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }

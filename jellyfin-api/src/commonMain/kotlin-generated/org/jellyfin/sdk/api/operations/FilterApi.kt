@@ -29,10 +29,8 @@ public class FilterApi(
 	 * Gets query filters.
 	 *
 	 * @param userId Optional. User id.
-	 * @param parentId Optional. Specify this to localize the search to a specific item or folder. Omit
-	 * to use the root.
-	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type.
-	 * This allows multiple, comma delimited.
+	 * @param parentId Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
+	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
 	 * @param isAiring Optional. Is item airing.
 	 * @param isMovie Optional. Is item movie.
 	 * @param isSports Optional. Is item sports.
@@ -76,8 +74,7 @@ public class FilterApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getQueryFilters(request: GetQueryFiltersRequest = GetQueryFiltersRequest()):
-			Response<QueryFilters> = getQueryFilters(
+	public suspend fun getQueryFilters(request: GetQueryFiltersRequest = GetQueryFiltersRequest()): Response<QueryFilters> = getQueryFilters(
 		userId = request.userId,
 		parentId = request.parentId,
 		includeItemTypes = request.includeItemTypes,
@@ -95,8 +92,7 @@ public class FilterApi(
 	 *
 	 * @param userId Optional. User id.
 	 * @param parentId Optional. Parent id.
-	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type.
-	 * This allows multiple, comma delimited.
+	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
 	 * @param mediaTypes Optional. Filter by MediaType. Allows multiple, comma delimited.
 	 */
 	public suspend fun getQueryFiltersLegacy(
@@ -113,8 +109,7 @@ public class FilterApi(
 			put("mediaTypes", mediaTypes)
 		}
 		val data = null
-		val response = api.`get`<QueryFiltersLegacy>("/Items/Filters", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<QueryFiltersLegacy>("/Items/Filters", pathParameters, queryParameters, data)
 		return response
 	}
 }

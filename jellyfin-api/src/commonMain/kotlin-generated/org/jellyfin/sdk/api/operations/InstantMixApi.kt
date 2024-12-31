@@ -68,8 +68,7 @@ public class InstantMixApi(
 			put("enableImageTypes", enableImageTypes)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Albums/{itemId}/InstantMix", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Albums/{itemId}/InstantMix", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -78,8 +77,7 @@ public class InstantMixApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getInstantMixFromAlbum(request: GetInstantMixFromAlbumRequest):
-			Response<BaseItemDtoQueryResult> = getInstantMixFromAlbum(
+	public suspend fun getInstantMixFromAlbum(request: GetInstantMixFromAlbumRequest): Response<BaseItemDtoQueryResult> = getInstantMixFromAlbum(
 		itemId = request.itemId,
 		userId = request.userId,
 		limit = request.limit,
@@ -125,8 +123,7 @@ public class InstantMixApi(
 			put("enableImageTypes", enableImageTypes)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/{itemId}/InstantMix", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/{itemId}/InstantMix", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -135,8 +132,7 @@ public class InstantMixApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getInstantMixFromArtists(request: GetInstantMixFromArtistsRequest):
-			Response<BaseItemDtoQueryResult> = getInstantMixFromArtists(
+	public suspend fun getInstantMixFromArtists(request: GetInstantMixFromArtistsRequest): Response<BaseItemDtoQueryResult> = getInstantMixFromArtists(
 		itemId = request.itemId,
 		userId = request.userId,
 		limit = request.limit,
@@ -182,8 +178,7 @@ public class InstantMixApi(
 			put("enableImageTypes", enableImageTypes)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/InstantMix", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/InstantMix", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -193,8 +188,7 @@ public class InstantMixApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getInstantMixFromArtists2(request: GetInstantMixFromArtists2Request):
-			Response<BaseItemDtoQueryResult> = getInstantMixFromArtists2(
+	public suspend fun getInstantMixFromArtists2(request: GetInstantMixFromArtists2Request): Response<BaseItemDtoQueryResult> = getInstantMixFromArtists2(
 		id = request.id,
 		userId = request.userId,
 		limit = request.limit,
@@ -240,8 +234,7 @@ public class InstantMixApi(
 			put("enableImageTypes", enableImageTypes)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/InstantMix", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/InstantMix", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -250,8 +243,7 @@ public class InstantMixApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getInstantMixFromItem(request: GetInstantMixFromItemRequest):
-			Response<BaseItemDtoQueryResult> = getInstantMixFromItem(
+	public suspend fun getInstantMixFromItem(request: GetInstantMixFromItemRequest): Response<BaseItemDtoQueryResult> = getInstantMixFromItem(
 		itemId = request.itemId,
 		userId = request.userId,
 		limit = request.limit,
@@ -296,8 +288,7 @@ public class InstantMixApi(
 			put("enableImageTypes", enableImageTypes)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/MusicGenres/InstantMix", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/MusicGenres/InstantMix", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -306,9 +297,7 @@ public class InstantMixApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend
-			fun getInstantMixFromMusicGenreById(request: GetInstantMixFromMusicGenreByIdRequest):
-			Response<BaseItemDtoQueryResult> = getInstantMixFromMusicGenreById(
+	public suspend fun getInstantMixFromMusicGenreById(request: GetInstantMixFromMusicGenreByIdRequest): Response<BaseItemDtoQueryResult> = getInstantMixFromMusicGenreById(
 		id = request.id,
 		userId = request.userId,
 		limit = request.limit,
@@ -354,8 +343,7 @@ public class InstantMixApi(
 			put("enableImageTypes", enableImageTypes)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/MusicGenres/{name}/InstantMix", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/MusicGenres/{name}/InstantMix", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -364,9 +352,7 @@ public class InstantMixApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend
-			fun getInstantMixFromMusicGenreByName(request: GetInstantMixFromMusicGenreByNameRequest):
-			Response<BaseItemDtoQueryResult> = getInstantMixFromMusicGenreByName(
+	public suspend fun getInstantMixFromMusicGenreByName(request: GetInstantMixFromMusicGenreByNameRequest): Response<BaseItemDtoQueryResult> = getInstantMixFromMusicGenreByName(
 		name = request.name,
 		userId = request.userId,
 		limit = request.limit,
@@ -412,8 +398,7 @@ public class InstantMixApi(
 			put("enableImageTypes", enableImageTypes)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Playlists/{itemId}/InstantMix", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Playlists/{itemId}/InstantMix", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -422,8 +407,7 @@ public class InstantMixApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getInstantMixFromPlaylist(request: GetInstantMixFromPlaylistRequest):
-			Response<BaseItemDtoQueryResult> = getInstantMixFromPlaylist(
+	public suspend fun getInstantMixFromPlaylist(request: GetInstantMixFromPlaylistRequest): Response<BaseItemDtoQueryResult> = getInstantMixFromPlaylist(
 		itemId = request.itemId,
 		userId = request.userId,
 		limit = request.limit,
@@ -469,8 +453,7 @@ public class InstantMixApi(
 			put("enableImageTypes", enableImageTypes)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Songs/{itemId}/InstantMix", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Songs/{itemId}/InstantMix", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -479,8 +462,7 @@ public class InstantMixApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getInstantMixFromSong(request: GetInstantMixFromSongRequest):
-			Response<BaseItemDtoQueryResult> = getInstantMixFromSong(
+	public suspend fun getInstantMixFromSong(request: GetInstantMixFromSongRequest): Response<BaseItemDtoQueryResult> = getInstantMixFromSong(
 		itemId = request.itemId,
 		userId = request.userId,
 		limit = request.limit,

@@ -29,8 +29,7 @@ public class ConfigurationApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ServerConfiguration>("/System/Configuration", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ServerConfiguration>("/System/Configuration", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -41,8 +40,7 @@ public class ConfigurationApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<MetadataOptions>("/System/Configuration/MetadataOptions/Default",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<MetadataOptions>("/System/Configuration/MetadataOptions/Default", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -57,8 +55,7 @@ public class ConfigurationApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/System/Configuration/{key}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/System/Configuration/{key}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -95,8 +92,7 @@ public class ConfigurationApi(
 			put("key", key)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/System/Configuration/{key}", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/System/Configuration/{key}", pathParameters, queryParameters, data)
 		return response
 	}
 }

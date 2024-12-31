@@ -38,7 +38,6 @@ public enum class TranscodeSeekInfo(
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): TranscodeSeekInfo =
-				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+		public fun fromName(serialName: String): TranscodeSeekInfo = requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }

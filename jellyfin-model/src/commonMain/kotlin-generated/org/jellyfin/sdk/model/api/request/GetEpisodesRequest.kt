@@ -35,10 +35,7 @@ public data class GetEpisodesRequest(
 	@SerialName("userId")
 	public val userId: UUID? = null,
 	/**
-	 * Optional. Specify additional fields of information to return in the output. This allows
-	 * multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
 	@SerialName("fields")
 	public val fields: Collection<ItemFields>? = null,
@@ -68,8 +65,7 @@ public data class GetEpisodesRequest(
 	@SerialName("startItemId")
 	public val startItemId: UUID? = null,
 	/**
-	 * Optional. The record index to start at. All items with a lower index will be dropped from the
-	 * results.
+	 * Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 */
 	@SerialName("startIndex")
 	public val startIndex: Int? = null,
@@ -99,9 +95,7 @@ public data class GetEpisodesRequest(
 	@SerialName("enableUserData")
 	public val enableUserData: Boolean? = null,
 	/**
-	 * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist,
-	 * Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate,
-	 * ProductionYear, SortName, Random, Revenue, Runtime.
+	 * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 */
 	@SerialName("sortBy")
 	public val sortBy: ItemSortBy? = null,

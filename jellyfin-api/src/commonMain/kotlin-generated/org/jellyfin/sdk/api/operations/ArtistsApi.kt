@@ -37,51 +37,33 @@ public class ArtistsApi(
 	 * Gets all album artists from a given item, folder, or the entire library.
 	 *
 	 * @param minCommunityRating Optional filter by minimum community rating.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param searchTerm Optional. Search term.
-	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use
-	 * the root.
+	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use the root.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
-	 * @param excludeItemTypes Optional. If specified, results will be filtered out based on item type.
-	 * This allows multiple, comma delimited.
-	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type.
-	 * This allows multiple, comma delimited.
+	 * @param excludeItemTypes Optional. If specified, results will be filtered out based on item type. This allows multiple, comma delimited.
+	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
 	 * @param filters Optional. Specify additional filters to apply.
 	 * @param isFavorite Optional filter by items that are marked as favorite, or not.
 	 * @param mediaTypes Optional filter by MediaType. Allows multiple, comma delimited.
-	 * @param genres Optional. If specified, results will be filtered based on genre. This allows
-	 * multiple, pipe delimited.
-	 * @param genreIds Optional. If specified, results will be filtered based on genre id. This allows
-	 * multiple, pipe delimited.
-	 * @param officialRatings Optional. If specified, results will be filtered based on OfficialRating.
-	 * This allows multiple, pipe delimited.
-	 * @param tags Optional. If specified, results will be filtered based on tag. This allows multiple,
-	 * pipe delimited.
-	 * @param years Optional. If specified, results will be filtered based on production year. This
-	 * allows multiple, comma delimited.
+	 * @param genres Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimited.
+	 * @param genreIds Optional. If specified, results will be filtered based on genre id. This allows multiple, pipe delimited.
+	 * @param officialRatings Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimited.
+	 * @param tags Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimited.
+	 * @param years Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimited.
 	 * @param enableUserData Optional, include user data.
 	 * @param imageTypeLimit Optional, the max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
-	 * @param person Optional. If specified, results will be filtered to include only those containing
-	 * the specified person.
-	 * @param personIds Optional. If specified, results will be filtered to include only those
-	 * containing the specified person ids.
-	 * @param personTypes Optional. If specified, along with Person, results will be filtered to
-	 * include only those containing the specified person and PersonType. Allows multiple,
-	 * comma-delimited.
-	 * @param studios Optional. If specified, results will be filtered based on studio. This allows
-	 * multiple, pipe delimited.
-	 * @param studioIds Optional. If specified, results will be filtered based on studio id. This
-	 * allows multiple, pipe delimited.
+	 * @param person Optional. If specified, results will be filtered to include only those containing the specified person.
+	 * @param personIds Optional. If specified, results will be filtered to include only those containing the specified person ids.
+	 * @param personTypes Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited.
+	 * @param studios Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimited.
+	 * @param studioIds Optional. If specified, results will be filtered based on studio id. This allows multiple, pipe delimited.
 	 * @param userId User id.
-	 * @param nameStartsWithOrGreater Optional filter by items whose name is sorted equally or greater
-	 * than a given input string.
-	 * @param nameStartsWith Optional filter by items whose name is sorted equally than a given input
-	 * string.
-	 * @param nameLessThan Optional filter by items whose name is equally or lesser than a given input
-	 * string.
+	 * @param nameStartsWithOrGreater Optional filter by items whose name is sorted equally or greater than a given input string.
+	 * @param nameStartsWith Optional filter by items whose name is sorted equally than a given input string.
+	 * @param nameLessThan Optional filter by items whose name is equally or lesser than a given input string.
 	 * @param sortBy Optional. Specify one or more sort orders, comma delimited.
 	 * @param sortOrder Sort Order - Ascending,Descending.
 	 * @param enableImages Optional, include image information in output.
@@ -157,8 +139,7 @@ public class ArtistsApi(
 			put("enableTotalRecordCount", enableTotalRecordCount)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/AlbumArtists", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/AlbumArtists", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -167,8 +148,7 @@ public class ArtistsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getAlbumArtists(request: GetAlbumArtistsRequest = GetAlbumArtistsRequest()):
-			Response<BaseItemDtoQueryResult> = getAlbumArtists(
+	public suspend fun getAlbumArtists(request: GetAlbumArtistsRequest = GetAlbumArtistsRequest()): Response<BaseItemDtoQueryResult> = getAlbumArtists(
 		minCommunityRating = request.minCommunityRating,
 		startIndex = request.startIndex,
 		limit = request.limit,
@@ -225,51 +205,33 @@ public class ArtistsApi(
 	 * Gets all artists from a given item, folder, or the entire library.
 	 *
 	 * @param minCommunityRating Optional filter by minimum community rating.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param searchTerm Optional. Search term.
-	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use
-	 * the root.
+	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use the root.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
-	 * @param excludeItemTypes Optional. If specified, results will be filtered out based on item type.
-	 * This allows multiple, comma delimited.
-	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type.
-	 * This allows multiple, comma delimited.
+	 * @param excludeItemTypes Optional. If specified, results will be filtered out based on item type. This allows multiple, comma delimited.
+	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
 	 * @param filters Optional. Specify additional filters to apply.
 	 * @param isFavorite Optional filter by items that are marked as favorite, or not.
 	 * @param mediaTypes Optional filter by MediaType. Allows multiple, comma delimited.
-	 * @param genres Optional. If specified, results will be filtered based on genre. This allows
-	 * multiple, pipe delimited.
-	 * @param genreIds Optional. If specified, results will be filtered based on genre id. This allows
-	 * multiple, pipe delimited.
-	 * @param officialRatings Optional. If specified, results will be filtered based on OfficialRating.
-	 * This allows multiple, pipe delimited.
-	 * @param tags Optional. If specified, results will be filtered based on tag. This allows multiple,
-	 * pipe delimited.
-	 * @param years Optional. If specified, results will be filtered based on production year. This
-	 * allows multiple, comma delimited.
+	 * @param genres Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimited.
+	 * @param genreIds Optional. If specified, results will be filtered based on genre id. This allows multiple, pipe delimited.
+	 * @param officialRatings Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimited.
+	 * @param tags Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimited.
+	 * @param years Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimited.
 	 * @param enableUserData Optional, include user data.
 	 * @param imageTypeLimit Optional, the max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
-	 * @param person Optional. If specified, results will be filtered to include only those containing
-	 * the specified person.
-	 * @param personIds Optional. If specified, results will be filtered to include only those
-	 * containing the specified person ids.
-	 * @param personTypes Optional. If specified, along with Person, results will be filtered to
-	 * include only those containing the specified person and PersonType. Allows multiple,
-	 * comma-delimited.
-	 * @param studios Optional. If specified, results will be filtered based on studio. This allows
-	 * multiple, pipe delimited.
-	 * @param studioIds Optional. If specified, results will be filtered based on studio id. This
-	 * allows multiple, pipe delimited.
+	 * @param person Optional. If specified, results will be filtered to include only those containing the specified person.
+	 * @param personIds Optional. If specified, results will be filtered to include only those containing the specified person ids.
+	 * @param personTypes Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited.
+	 * @param studios Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimited.
+	 * @param studioIds Optional. If specified, results will be filtered based on studio id. This allows multiple, pipe delimited.
 	 * @param userId User id.
-	 * @param nameStartsWithOrGreater Optional filter by items whose name is sorted equally or greater
-	 * than a given input string.
-	 * @param nameStartsWith Optional filter by items whose name is sorted equally than a given input
-	 * string.
-	 * @param nameLessThan Optional filter by items whose name is equally or lesser than a given input
-	 * string.
+	 * @param nameStartsWithOrGreater Optional filter by items whose name is sorted equally or greater than a given input string.
+	 * @param nameStartsWith Optional filter by items whose name is sorted equally than a given input string.
+	 * @param nameLessThan Optional filter by items whose name is equally or lesser than a given input string.
 	 * @param sortBy Optional. Specify one or more sort orders, comma delimited.
 	 * @param sortOrder Sort Order - Ascending,Descending.
 	 * @param enableImages Optional, include image information in output.
@@ -345,8 +307,7 @@ public class ArtistsApi(
 			put("enableTotalRecordCount", enableTotalRecordCount)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Artists", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Artists", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -355,8 +316,7 @@ public class ArtistsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getArtists(request: GetArtistsRequest = GetArtistsRequest()):
-			Response<BaseItemDtoQueryResult> = getArtists(
+	public suspend fun getArtists(request: GetArtistsRequest = GetArtistsRequest()): Response<BaseItemDtoQueryResult> = getArtists(
 		minCommunityRating = request.minCommunityRating,
 		startIndex = request.startIndex,
 		limit = request.limit,

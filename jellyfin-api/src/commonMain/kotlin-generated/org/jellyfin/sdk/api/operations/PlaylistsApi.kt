@@ -57,28 +57,23 @@ public class PlaylistsApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.post<Unit>("/Playlists/{playlistId}/Items", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/Playlists/{playlistId}/Items", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
-	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher
-	 * precedence.
+	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher precedence.
 	 * Query parameters are obsolete.
 	 */
-	public suspend fun createPlaylist(`data`: CreatePlaylistDto? = null):
-			Response<PlaylistCreationResult> {
+	public suspend fun createPlaylist(`data`: CreatePlaylistDto? = null): Response<PlaylistCreationResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<PlaylistCreationResult>("/Playlists", pathParameters, queryParameters,
-				data)
+		val response = api.post<PlaylistCreationResult>("/Playlists", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
-	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher
-	 * precedence.
+	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher precedence.
 	 * Query parameters are obsolete.
 	 *
 	 * @param name The playlist name.
@@ -101,8 +96,7 @@ public class PlaylistsApi(
 			put("userId", userId)
 			put("mediaType", mediaType)
 		}
-		val response = api.post<PlaylistCreationResult>("/Playlists", pathParameters, queryParameters,
-				data)
+		val response = api.post<PlaylistCreationResult>("/Playlists", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -117,8 +111,7 @@ public class PlaylistsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<PlaylistDto>("/Playlists/{playlistId}", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<PlaylistDto>("/Playlists/{playlistId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -127,8 +120,7 @@ public class PlaylistsApi(
 	 *
 	 * @param playlistId The playlist id.
 	 * @param userId User id.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableImages Optional. Include image information in output.
@@ -161,8 +153,7 @@ public class PlaylistsApi(
 			put("enableImageTypes", enableImageTypes)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Playlists/{playlistId}/Items", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Playlists/{playlistId}/Items", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -171,8 +162,7 @@ public class PlaylistsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getPlaylistItems(request: GetPlaylistItemsRequest):
-			Response<BaseItemDtoQueryResult> = getPlaylistItems(
+	public suspend fun getPlaylistItems(request: GetPlaylistItemsRequest): Response<BaseItemDtoQueryResult> = getPlaylistItems(
 		playlistId = request.playlistId,
 		userId = request.userId,
 		startIndex = request.startIndex,
@@ -190,16 +180,14 @@ public class PlaylistsApi(
 	 * @param playlistId The playlist id.
 	 * @param userId The user id.
 	 */
-	public suspend fun getPlaylistUser(playlistId: UUID, userId: UUID):
-			Response<PlaylistUserPermissions> {
+	public suspend fun getPlaylistUser(playlistId: UUID, userId: UUID): Response<PlaylistUserPermissions> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("playlistId", playlistId)
 			put("userId", userId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<PlaylistUserPermissions>("/Playlists/{playlistId}/Users/{userId}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<PlaylistUserPermissions>("/Playlists/{playlistId}/Users/{userId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -214,8 +202,7 @@ public class PlaylistsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<PlaylistUserPermissions>>("/Playlists/{playlistId}/Users",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<List<PlaylistUserPermissions>>("/Playlists/{playlistId}/Users", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -238,8 +225,7 @@ public class PlaylistsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<Unit>("/Playlists/{playlistId}/Items/{itemId}/Move/{newIndex}",
-				pathParameters, queryParameters, data)
+		val response = api.post<Unit>("/Playlists/{playlistId}/Items/{itemId}/Move/{newIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -249,8 +235,7 @@ public class PlaylistsApi(
 	 * @param playlistId The playlist id.
 	 * @param entryIds The item ids, comma delimited.
 	 */
-	public suspend fun removeItemFromPlaylist(playlistId: String, entryIds: Collection<String>? =
-			emptyList()): Response<Unit> {
+	public suspend fun removeItemFromPlaylist(playlistId: String, entryIds: Collection<String>? = emptyList()): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("playlistId", playlistId)
 		}
@@ -258,8 +243,7 @@ public class PlaylistsApi(
 			put("entryIds", entryIds)
 		}
 		val data = null
-		val response = api.delete<Unit>("/Playlists/{playlistId}/Items", pathParameters, queryParameters,
-				data)
+		val response = api.delete<Unit>("/Playlists/{playlistId}/Items", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -276,8 +260,7 @@ public class PlaylistsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.delete<Unit>("/Playlists/{playlistId}/Users/{userId}", pathParameters,
-				queryParameters, data)
+		val response = api.delete<Unit>("/Playlists/{playlistId}/Users/{userId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -311,8 +294,7 @@ public class PlaylistsApi(
 			put("userId", userId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Playlists/{playlistId}/Users/{userId}", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Playlists/{playlistId}/Users/{userId}", pathParameters, queryParameters, data)
 		return response
 	}
 }

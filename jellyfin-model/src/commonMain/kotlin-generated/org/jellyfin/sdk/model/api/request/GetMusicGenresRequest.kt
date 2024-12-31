@@ -28,8 +28,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class GetMusicGenresRequest(
 	/**
-	 * Optional. The record index to start at. All items with a lower index will be dropped from the
-	 * results.
+	 * Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 */
 	@SerialName("startIndex")
 	public val startIndex: Int? = null,
@@ -54,14 +53,12 @@ public data class GetMusicGenresRequest(
 	@SerialName("fields")
 	public val fields: Collection<ItemFields>? = null,
 	/**
-	 * Optional. If specified, results will be filtered out based on item type. This allows multiple,
-	 * comma delimited.
+	 * Optional. If specified, results will be filtered out based on item type. This allows multiple, comma delimited.
 	 */
 	@SerialName("excludeItemTypes")
 	public val excludeItemTypes: Collection<BaseItemKind>? = null,
 	/**
-	 * Optional. If specified, results will be filtered in based on item type. This allows multiple,
-	 * comma delimited.
+	 * Optional. If specified, results will be filtered in based on item type. This allows multiple, comma delimited.
 	 */
 	@SerialName("includeItemTypes")
 	public val includeItemTypes: Collection<BaseItemKind>? = null,

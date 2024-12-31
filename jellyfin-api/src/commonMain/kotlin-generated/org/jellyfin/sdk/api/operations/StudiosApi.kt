@@ -48,28 +48,21 @@ public class StudiosApi(
 	/**
 	 * Gets all studios from a given item, folder, or the entire library.
 	 *
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param searchTerm Optional. Search term.
-	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use
-	 * the root.
+	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use the root.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
-	 * @param excludeItemTypes Optional. If specified, results will be filtered out based on item type.
-	 * This allows multiple, comma delimited.
-	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type.
-	 * This allows multiple, comma delimited.
+	 * @param excludeItemTypes Optional. If specified, results will be filtered out based on item type. This allows multiple, comma delimited.
+	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
 	 * @param isFavorite Optional filter by items that are marked as favorite, or not.
 	 * @param enableUserData Optional, include user data.
 	 * @param imageTypeLimit Optional, the max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 * @param userId User id.
-	 * @param nameStartsWithOrGreater Optional filter by items whose name is sorted equally or greater
-	 * than a given input string.
-	 * @param nameStartsWith Optional filter by items whose name is sorted equally than a given input
-	 * string.
-	 * @param nameLessThan Optional filter by items whose name is equally or lesser than a given input
-	 * string.
+	 * @param nameStartsWithOrGreater Optional filter by items whose name is sorted equally or greater than a given input string.
+	 * @param nameStartsWith Optional filter by items whose name is sorted equally than a given input string.
+	 * @param nameLessThan Optional filter by items whose name is equally or lesser than a given input string.
 	 * @param enableImages Optional, include image information in output.
 	 * @param enableTotalRecordCount Total record count.
 	 */
@@ -113,8 +106,7 @@ public class StudiosApi(
 			put("enableTotalRecordCount", enableTotalRecordCount)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Studios", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Studios", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -123,8 +115,7 @@ public class StudiosApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getStudios(request: GetStudiosRequest = GetStudiosRequest()):
-			Response<BaseItemDtoQueryResult> = getStudios(
+	public suspend fun getStudios(request: GetStudiosRequest = GetStudiosRequest()): Response<BaseItemDtoQueryResult> = getStudios(
 		startIndex = request.startIndex,
 		limit = request.limit,
 		searchTerm = request.searchTerm,

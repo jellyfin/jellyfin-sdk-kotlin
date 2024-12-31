@@ -35,8 +35,7 @@ public class UserViewsApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.`get`<List<SpecialViewOptionDto>>("/UserViews/GroupingOptions", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<SpecialViewOptionDto>>("/UserViews/GroupingOptions", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -44,8 +43,7 @@ public class UserViewsApi(
 	 * Get user views.
 	 *
 	 * @param userId User id.
-	 * @param includeExternalContent Whether or not to include external views such as channels or live
-	 * tv.
+	 * @param includeExternalContent Whether or not to include external views such as channels or live tv.
 	 * @param presetViews Preset views.
 	 * @param includeHidden Whether or not to include hidden content.
 	 */
@@ -63,8 +61,7 @@ public class UserViewsApi(
 			put("includeHidden", includeHidden)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/UserViews", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/UserViews", pathParameters, queryParameters, data)
 		return response
 	}
 }
