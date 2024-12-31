@@ -1,6 +1,5 @@
 package org.jellyfin.sdk.api.client
 
-import kotlin.jvm.JvmSynthetic
 import kotlin.reflect.KProperty
 
 /**
@@ -18,7 +17,6 @@ public class Response<T>(
 	 * val content by response
 	 * ```
 	 */
-	@JvmSynthetic
 	public operator fun getValue(thisRef: Any?, property: KProperty<*>): T = content
 
 	/**
