@@ -1,5 +1,6 @@
 package org.jellyfin.sdk
 
+import org.jellyfin.sdk.Jellyfin.Companion.minimumVersion
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.HttpClientOptions
 import org.jellyfin.sdk.api.info.ApiConstants
@@ -37,7 +38,6 @@ public class Jellyfin(
 	 *
 	 * Throws an [IllegalStateException] when the client or device information is missing.
 	 */
-	@JvmOverloads
 	@Suppress("LongParameterList")
 	public fun createApi(
 		baseUrl: String? = null,
