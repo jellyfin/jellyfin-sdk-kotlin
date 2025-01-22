@@ -14,6 +14,8 @@ import kotlinx.serialization.Serializable
 
 /**
  * A class for transcoding profile information.
+ * Note for client developers: Conditions defined in MediaBrowser.Model.Dlna.CodecProfile has higher
+ * priority and can override values defined here.
  */
 @Serializable
 public data class TranscodingProfile(
