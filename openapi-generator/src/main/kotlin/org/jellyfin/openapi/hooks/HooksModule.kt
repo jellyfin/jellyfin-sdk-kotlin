@@ -4,6 +4,7 @@ import org.jellyfin.openapi.hooks.api.BinaryOperationUrlHook
 import org.jellyfin.openapi.hooks.api.ClientLogOperationUrlHook
 import org.jellyfin.openapi.hooks.api.LargeOperationRequestModelHook
 import org.jellyfin.openapi.hooks.api.PlayStateServiceNameHook
+import org.jellyfin.openapi.hooks.api.SubtitleOperationUrlHook
 import org.jellyfin.openapi.hooks.model.DotNetDescriptionHook
 import org.jellyfin.openapi.hooks.model.ImageMapsHook
 import org.jellyfin.openapi.hooks.model.LiveTVModelsHook
@@ -17,6 +18,7 @@ val hooksModule = module {
 
 	single { BinaryOperationUrlHook() } bind OperationUrlHook::class
 	single { ClientLogOperationUrlHook() } bind OperationUrlHook::class
+	single { SubtitleOperationUrlHook() } bind OperationUrlHook::class
 
 	single { LargeOperationRequestModelHook() } bind OperationRequestModelHook::class
 
