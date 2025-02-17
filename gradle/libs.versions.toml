@@ -2,7 +2,7 @@
 android-gradle = "8.7.3"
 android-sdk = "33"
 binarycompatibilityvalidator = "0.17.0"
-clikt = "5.0.2"
+clikt = "5.0.3"
 detekt = "1.23.7"
 dokka = "2.0.0"
 download = "5.6.0"
