@@ -11,28 +11,20 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Plugin load status.
+ * Enum TaskTriggerInfoType.
  */
 @Serializable
-public enum class PluginStatus(
+public enum class TaskTriggerInfoType(
 	public val serialName: String,
 ) {
-	@SerialName("Active")
-	ACTIVE("Active"),
-	@SerialName("Restart")
-	RESTART("Restart"),
-	@SerialName("Deleted")
-	DELETED("Deleted"),
-	@SerialName("Superseded")
-	SUPERSEDED("Superseded"),
-	@SerialName("Superceded")
-	SUPERCEDED("Superceded"),
-	@SerialName("Malfunctioned")
-	MALFUNCTIONED("Malfunctioned"),
-	@SerialName("NotSupported")
-	NOT_SUPPORTED("NotSupported"),
-	@SerialName("Disabled")
-	DISABLED("Disabled"),
+	@SerialName("DailyTrigger")
+	DAILY_TRIGGER("DailyTrigger"),
+	@SerialName("WeeklyTrigger")
+	WEEKLY_TRIGGER("WeeklyTrigger"),
+	@SerialName("IntervalTrigger")
+	INTERVAL_TRIGGER("IntervalTrigger"),
+	@SerialName("StartupTrigger")
+	STARTUP_TRIGGER("StartupTrigger"),
 	;
 
 	/**
@@ -44,22 +36,18 @@ public enum class PluginStatus(
 		/**
 		 * Find the enum member by the serial name or return null.
 		 */
-		public fun fromNameOrNull(serialName: String): PluginStatus? = when (serialName) {
-			"Active" -> ACTIVE
-			"Restart" -> RESTART
-			"Deleted" -> DELETED
-			"Superseded" -> SUPERSEDED
-			"Superceded" -> SUPERCEDED
-			"Malfunctioned" -> MALFUNCTIONED
-			"NotSupported" -> NOT_SUPPORTED
-			"Disabled" -> DISABLED
+		public fun fromNameOrNull(serialName: String): TaskTriggerInfoType? = when (serialName) {
+			"DailyTrigger" -> DAILY_TRIGGER
+			"WeeklyTrigger" -> WEEKLY_TRIGGER
+			"IntervalTrigger" -> INTERVAL_TRIGGER
+			"StartupTrigger" -> STARTUP_TRIGGER
 			else -> null
 		}
 
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): PluginStatus =
+		public fun fromName(serialName: String): TaskTriggerInfoType =
 				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }

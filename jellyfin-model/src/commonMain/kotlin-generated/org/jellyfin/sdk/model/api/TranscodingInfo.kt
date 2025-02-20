@@ -15,7 +15,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Class holding information on a runnning transcode.
+ * Class holding information on a running transcode.
  */
 @Serializable
 public data class TranscodingInfo(

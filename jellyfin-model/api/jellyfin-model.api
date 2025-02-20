@@ -4047,10 +4047,8 @@ public final class org/jellyfin/sdk/model/api/ItemSortBy : java/lang/Enum {
 	public static final field PRODUCTION_YEAR Lorg/jellyfin/sdk/model/api/ItemSortBy;
 	public static final field RANDOM Lorg/jellyfin/sdk/model/api/ItemSortBy;
 	public static final field RUNTIME Lorg/jellyfin/sdk/model/api/ItemSortBy;
-	public static final field SEARCH_SCORE Lorg/jellyfin/sdk/model/api/ItemSortBy;
 	public static final field SERIES_DATE_PLAYED Lorg/jellyfin/sdk/model/api/ItemSortBy;
 	public static final field SERIES_SORT_NAME Lorg/jellyfin/sdk/model/api/ItemSortBy;
-	public static final field SIMILARITY_SCORE Lorg/jellyfin/sdk/model/api/ItemSortBy;
 	public static final field SORT_NAME Lorg/jellyfin/sdk/model/api/ItemSortBy;
 	public static final field START_DATE Lorg/jellyfin/sdk/model/api/ItemSortBy;
 	public static final field STUDIO Lorg/jellyfin/sdk/model/api/ItemSortBy;
@@ -4248,7 +4246,7 @@ public final class org/jellyfin/sdk/model/api/LibraryOptions {
 	public final fun getExtractTrickplayImagesDuringLibraryScan ()Z
 	public final fun getLocalMetadataReaderOrder ()Ljava/util/List;
 	public final fun getLyricFetcherOrder ()Ljava/util/List;
-	public final fun getMediaSegmentProvideOrder ()Ljava/util/List;
+	public final fun getMediaSegmentProviderOrder ()Ljava/util/List;
 	public final fun getMetadataCountryCode ()Ljava/lang/String;
 	public final fun getMetadataSavers ()Ljava/util/List;
 	public final fun getPathInfos ()Ljava/util/List;
@@ -4287,16 +4285,18 @@ public final class org/jellyfin/sdk/model/api/LibraryOptions$Companion {
 
 public final class org/jellyfin/sdk/model/api/LibraryOptionsResultDto {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/LibraryOptionsResultDto$Companion;
-	public fun <init> (Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
+	public fun <init> (Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
 	public final fun component1 ()Ljava/util/List;
 	public final fun component2 ()Ljava/util/List;
 	public final fun component3 ()Ljava/util/List;
 	public final fun component4 ()Ljava/util/List;
 	public final fun component5 ()Ljava/util/List;
-	public final fun copy (Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;)Lorg/jellyfin/sdk/model/api/LibraryOptionsResultDto;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/LibraryOptionsResultDto;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/LibraryOptionsResultDto;
+	public final fun component6 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;)Lorg/jellyfin/sdk/model/api/LibraryOptionsResultDto;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/LibraryOptionsResultDto;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/LibraryOptionsResultDto;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getLyricFetchers ()Ljava/util/List;
+	public final fun getMediaSegmentProviders ()Ljava/util/List;
 	public final fun getMetadataReaders ()Ljava/util/List;
 	public final fun getMetadataSavers ()Ljava/util/List;
 	public final fun getSubtitleFetchers ()Ljava/util/List;
@@ -7443,6 +7443,7 @@ public final class org/jellyfin/sdk/model/api/PluginStatus : java/lang/Enum {
 	public static final field NOT_SUPPORTED Lorg/jellyfin/sdk/model/api/PluginStatus;
 	public static final field RESTART Lorg/jellyfin/sdk/model/api/PluginStatus;
 	public static final field SUPERCEDED Lorg/jellyfin/sdk/model/api/PluginStatus;
+	public static final field SUPERSEDED Lorg/jellyfin/sdk/model/api/PluginStatus;
 	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public final fun getSerialName ()Ljava/lang/String;
 	public fun toString ()Ljava/lang/String;
@@ -9025,8 +9026,8 @@ public final class org/jellyfin/sdk/model/api/SeriesTimerInfoDtoQueryResult$Comp
 
 public final class org/jellyfin/sdk/model/api/ServerConfiguration {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/ServerConfiguration$Companion;
-	public fun <init> (IZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;IIIIIIIILorg/jellyfin/sdk/model/api/ImageSavingConvention;Ljava/util/List;ZLjava/lang/String;Ljava/lang/String;ZLjava/util/List;IZZZLjava/util/List;Ljava/util/List;ZILjava/util/List;ZJLjava/util/List;Ljava/lang/Integer;IIZZILorg/jellyfin/sdk/model/api/ImageResolution;ILjava/util/List;Lorg/jellyfin/sdk/model/api/TrickplayOptions;)V
-	public synthetic fun <init> (IZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;IIIIIIIILorg/jellyfin/sdk/model/api/ImageSavingConvention;Ljava/util/List;ZLjava/lang/String;Ljava/lang/String;ZLjava/util/List;IZZZLjava/util/List;Ljava/util/List;ZILjava/util/List;ZJLjava/util/List;Ljava/lang/Integer;IIZZILorg/jellyfin/sdk/model/api/ImageResolution;ILjava/util/List;Lorg/jellyfin/sdk/model/api/TrickplayOptions;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (IZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;IIIIIIIILorg/jellyfin/sdk/model/api/ImageSavingConvention;Ljava/util/List;ZLjava/lang/String;Ljava/lang/String;ZLjava/util/List;IZZZLjava/util/List;Ljava/util/List;ZILjava/util/List;ZJLjava/util/List;Ljava/lang/Integer;IIZILorg/jellyfin/sdk/model/api/ImageResolution;ILjava/util/List;Lorg/jellyfin/sdk/model/api/TrickplayOptions;Z)V
+	public synthetic fun <init> (IZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;IIIIIIIILorg/jellyfin/sdk/model/api/ImageSavingConvention;Ljava/util/List;ZLjava/lang/String;Ljava/lang/String;ZLjava/util/List;IZZZLjava/util/List;Ljava/util/List;ZILjava/util/List;ZJLjava/util/List;Ljava/lang/Integer;IIZILorg/jellyfin/sdk/model/api/ImageResolution;ILjava/util/List;Lorg/jellyfin/sdk/model/api/TrickplayOptions;ZIILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()I
 	public final fun component10 ()Z
 	public final fun component11 ()Z
@@ -9070,19 +9071,19 @@ public final class org/jellyfin/sdk/model/api/ServerConfiguration {
 	public final fun component46 ()I
 	public final fun component47 ()I
 	public final fun component48 ()Z
-	public final fun component49 ()Z
+	public final fun component49 ()I
 	public final fun component5 ()Ljava/lang/String;
-	public final fun component50 ()I
-	public final fun component51 ()Lorg/jellyfin/sdk/model/api/ImageResolution;
-	public final fun component52 ()I
-	public final fun component53 ()Ljava/util/List;
-	public final fun component54 ()Lorg/jellyfin/sdk/model/api/TrickplayOptions;
+	public final fun component50 ()Lorg/jellyfin/sdk/model/api/ImageResolution;
+	public final fun component51 ()I
+	public final fun component52 ()Ljava/util/List;
+	public final fun component53 ()Lorg/jellyfin/sdk/model/api/TrickplayOptions;
+	public final fun component54 ()Z
 	public final fun component6 ()Z
 	public final fun component7 ()Z
 	public final fun component8 ()Z
 	public final fun component9 ()Z
-	public final fun copy (IZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;IIIIIIIILorg/jellyfin/sdk/model/api/ImageSavingConvention;Ljava/util/List;ZLjava/lang/String;Ljava/lang/String;ZLjava/util/List;IZZZLjava/util/List;Ljava/util/List;ZILjava/util/List;ZJLjava/util/List;Ljava/lang/Integer;IIZZILorg/jellyfin/sdk/model/api/ImageResolution;ILjava/util/List;Lorg/jellyfin/sdk/model/api/TrickplayOptions;)Lorg/jellyfin/sdk/model/api/ServerConfiguration;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/ServerConfiguration;IZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;IIIIIIIILorg/jellyfin/sdk/model/api/ImageSavingConvention;Ljava/util/List;ZLjava/lang/String;Ljava/lang/String;ZLjava/util/List;IZZZLjava/util/List;Ljava/util/List;ZILjava/util/List;ZJLjava/util/List;Ljava/lang/Integer;IIZZILorg/jellyfin/sdk/model/api/ImageResolution;ILjava/util/List;Lorg/jellyfin/sdk/model/api/TrickplayOptions;IILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/ServerConfiguration;
+	public final fun copy (IZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;IIIIIIIILorg/jellyfin/sdk/model/api/ImageSavingConvention;Ljava/util/List;ZLjava/lang/String;Ljava/lang/String;ZLjava/util/List;IZZZLjava/util/List;Ljava/util/List;ZILjava/util/List;ZJLjava/util/List;Ljava/lang/Integer;IIZILorg/jellyfin/sdk/model/api/ImageResolution;ILjava/util/List;Lorg/jellyfin/sdk/model/api/TrickplayOptions;Z)Lorg/jellyfin/sdk/model/api/ServerConfiguration;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/ServerConfiguration;IZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZZZZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;IIIIIIIILorg/jellyfin/sdk/model/api/ImageSavingConvention;Ljava/util/List;ZLjava/lang/String;Ljava/lang/String;ZLjava/util/List;IZZZLjava/util/List;Ljava/util/List;ZILjava/util/List;ZJLjava/util/List;Ljava/lang/Integer;IIZILorg/jellyfin/sdk/model/api/ImageResolution;ILjava/util/List;Lorg/jellyfin/sdk/model/api/TrickplayOptions;ZIILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/ServerConfiguration;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getActivityLogRetentionDays ()Ljava/lang/Integer;
 	public final fun getAllowClientLogUpload ()Z
@@ -9099,6 +9100,7 @@ public final class org/jellyfin/sdk/model/api/ServerConfiguration {
 	public final fun getEnableExternalContentInSuggestions ()Z
 	public final fun getEnableFolderView ()Z
 	public final fun getEnableGroupingIntoCollections ()Z
+	public final fun getEnableLegacyAuthorization ()Z
 	public final fun getEnableMetrics ()Z
 	public final fun getEnableNormalizedItemByNameIds ()Z
 	public final fun getEnableSlowResponseWarning ()Z
@@ -9126,7 +9128,6 @@ public final class org/jellyfin/sdk/model/api/ServerConfiguration {
 	public final fun getPreviousVersionStr ()Ljava/lang/String;
 	public final fun getQuickConnectAvailable ()Z
 	public final fun getRemoteClientBitrateLimit ()I
-	public final fun getRemoveOldPlugins ()Z
 	public final fun getSaveMetadataHidden ()Z
 	public final fun getServerName ()Ljava/lang/String;
 	public final fun getSkipDeserializationForBasicTypes ()Z
@@ -10266,22 +10267,21 @@ public final class org/jellyfin/sdk/model/api/TaskState$Companion {
 
 public final class org/jellyfin/sdk/model/api/TaskTriggerInfo {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/TaskTriggerInfo$Companion;
-	public fun <init> ()V
-	public fun <init> (Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Lorg/jellyfin/sdk/model/api/DayOfWeek;Ljava/lang/Long;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Lorg/jellyfin/sdk/model/api/DayOfWeek;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun component1 ()Ljava/lang/String;
+	public fun <init> (Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType;Ljava/lang/Long;Ljava/lang/Long;Lorg/jellyfin/sdk/model/api/DayOfWeek;Ljava/lang/Long;)V
+	public synthetic fun <init> (Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType;Ljava/lang/Long;Ljava/lang/Long;Lorg/jellyfin/sdk/model/api/DayOfWeek;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType;
 	public final fun component2 ()Ljava/lang/Long;
 	public final fun component3 ()Ljava/lang/Long;
 	public final fun component4 ()Lorg/jellyfin/sdk/model/api/DayOfWeek;
 	public final fun component5 ()Ljava/lang/Long;
-	public final fun copy (Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Lorg/jellyfin/sdk/model/api/DayOfWeek;Ljava/lang/Long;)Lorg/jellyfin/sdk/model/api/TaskTriggerInfo;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/TaskTriggerInfo;Ljava/lang/String;Ljava/lang/Long;Ljava/lang/Long;Lorg/jellyfin/sdk/model/api/DayOfWeek;Ljava/lang/Long;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/TaskTriggerInfo;
+	public final fun copy (Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType;Ljava/lang/Long;Ljava/lang/Long;Lorg/jellyfin/sdk/model/api/DayOfWeek;Ljava/lang/Long;)Lorg/jellyfin/sdk/model/api/TaskTriggerInfo;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/TaskTriggerInfo;Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType;Ljava/lang/Long;Ljava/lang/Long;Lorg/jellyfin/sdk/model/api/DayOfWeek;Ljava/lang/Long;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/TaskTriggerInfo;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getDayOfWeek ()Lorg/jellyfin/sdk/model/api/DayOfWeek;
 	public final fun getIntervalTicks ()Ljava/lang/Long;
 	public final fun getMaxRuntimeTicks ()Ljava/lang/Long;
 	public final fun getTimeOfDayTicks ()Ljava/lang/Long;
-	public final fun getType ()Ljava/lang/String;
+	public final fun getType ()Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
 }
@@ -10298,6 +10298,25 @@ public synthetic class org/jellyfin/sdk/model/api/TaskTriggerInfo$$serializer : 
 }
 
 public final class org/jellyfin/sdk/model/api/TaskTriggerInfo$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class org/jellyfin/sdk/model/api/TaskTriggerInfoType : java/lang/Enum {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType$Companion;
+	public static final field DAILY_TRIGGER Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType;
+	public static final field INTERVAL_TRIGGER Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType;
+	public static final field STARTUP_TRIGGER Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType;
+	public static final field WEEKLY_TRIGGER Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getSerialName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType;
+	public static fun values ()[Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType;
+}
+
+public final class org/jellyfin/sdk/model/api/TaskTriggerInfoType$Companion {
+	public final fun fromName (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType;
+	public final fun fromNameOrNull (Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/TaskTriggerInfoType;
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
