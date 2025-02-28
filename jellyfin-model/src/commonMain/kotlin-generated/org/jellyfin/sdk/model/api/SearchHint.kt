@@ -92,7 +92,7 @@ public data class SearchHint(
 	@SerialName("BackdropImageItemId")
 	public val backdropImageItemId: String? = null,
 	/**
-	 * The base item kind.
+	 * The type.
 	 */
 	@SerialName("Type")
 	public val type: BaseItemKind,
@@ -107,7 +107,7 @@ public data class SearchHint(
 	@SerialName("RunTimeTicks")
 	public val runTimeTicks: Long? = null,
 	/**
-	 * Media types.
+	 * The type of the media.
 	 */
 	@SerialName("MediaType")
 	public val mediaType: MediaType,
