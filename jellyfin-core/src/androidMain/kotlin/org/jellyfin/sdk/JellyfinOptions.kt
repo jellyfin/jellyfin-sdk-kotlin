@@ -2,7 +2,7 @@ package org.jellyfin.sdk
 
 import android.content.Context
 import org.jellyfin.sdk.android.androidDevice
-import org.jellyfin.sdk.api.ktor.KtorClient
+import org.jellyfin.sdk.api.okhttp.OkHttpClient
 import org.jellyfin.sdk.api.sockets.OkHttpSocketConnection
 import org.jellyfin.sdk.api.sockets.SocketConnectionFactory
 import org.jellyfin.sdk.model.ClientInfo
@@ -22,7 +22,7 @@ public actual data class JellyfinOptions(
 		public var context: Context? = null
 		public var clientInfo: ClientInfo? = null
 		public var deviceInfo: DeviceInfo? = null
-		public var apiClientFactory: ApiClientFactory = ApiClientFactory(::KtorClient)
+		public var apiClientFactory: ApiClientFactory = ApiClientFactory(::OkHttpClient)
 		public var socketConnectionFactory: SocketConnectionFactory = SocketConnectionFactory(::OkHttpSocketConnection)
 		public var minimumServerVersion: ServerVersion = Jellyfin.minimumVersion
 

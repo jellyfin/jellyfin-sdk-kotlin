@@ -26,7 +26,7 @@ kotlin {
 		val commonMain by getting {
 			dependencies {
 				api(projects.jellyfinApi)
-				api(projects.jellyfinApiKtor)
+				api(projects.jellyfinApiOkhttp)
 				api(projects.jellyfinModel)
 
 				implementation(libs.kotlinx.coroutines)
