@@ -60,7 +60,7 @@ open class OperationBuilder(
 		validation: ParameterValidation,
 	) = when (validation) {
 		is IntRangeValidation -> addStatement(
-			"%M(%N·in·%L..%L)·{·%S·}",
+			"%M(%N in %L..%L) { %S }",
 			MemberName("kotlin", "require"),
 			parameter.name,
 			validation.min,
@@ -71,7 +71,7 @@ open class OperationBuilder(
 		is RegexValidation -> addCode(CodeBlock.builder().apply {
 			if (parameter.type.isNullable) {
 				addStatement(
-					"%M(%N·==·null·||·%M(%P).matches(%N))·{·%P·}",
+					"%M(%N == null || %M(%P).matches(%N)) { %P }",
 					MemberName("kotlin", "require"),
 					parameter.name,
 					MemberName("kotlin.text", "Regex"),
@@ -81,7 +81,7 @@ open class OperationBuilder(
 				)
 			} else {
 				addStatement(
-					"%M(%M(%P).matches(%N))·{·%P·}",
+					"%M(%M(%P).matches(%N)) { %P }",
 					MemberName("kotlin", "require"),
 					MemberName("kotlin.text", "Regex"),
 					validation.pattern,
@@ -98,7 +98,7 @@ open class OperationBuilder(
 	) {
 		if (parameters.isEmpty()) {
 			val emptyMapType = MemberName("kotlin.collections", "emptyMap")
-			addStatement("val·%N·=·%M<%T,·%T?>()", name, emptyMapType, Types.STRING, Types.ANY)
+			addStatement("val %N = %M<%T, %T?>()", name, emptyMapType, Types.STRING, Types.ANY)
 			return
 		}
 
@@ -109,7 +109,7 @@ open class OperationBuilder(
 			}
 			// Map building
 			val buildMapType = MemberName("kotlin.collections", "buildMap")
-			beginControlFlow("val·%N·= %M<%T, %T?>(%L)", name, buildMapType, Types.STRING, Types.ANY, parameters.size)
+			beginControlFlow("val %N = %M<%T, %T?>(%L)", name, buildMapType, Types.STRING, Types.ANY, parameters.size)
 			parameters.forEach { parameter ->
 				addStatement("put(%S, %N)", parameter.originalName, parameter.name)
 			}
