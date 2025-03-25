@@ -85,15 +85,15 @@ class EnumModelBuilder(
 						addKdoc("%L", Strings.MODEL_ENUM_FROM_NAME_OR_NULL_DESCRIPTION)
 						addParameter("serialName", Types.STRING)
 
-						beginControlFlow("return when·(%N)", "serialName")
+						beginControlFlow("return when (%N)", "serialName")
 						data.constants.forEach { member ->
 							addStatement(
-								"%S·->·%N",
+								"%S -> %N",
 								member,
 								member.toScreamingSnakeCase(from = CaseFormat.CAPITALIZED_CAMEL)
 							)
 						}
-						addStatement("else·->·null")
+						addStatement("else -> null")
 						endControlFlow()
 					}.build())
 
@@ -104,7 +104,7 @@ class EnumModelBuilder(
 						addParameter("serialName", Types.STRING)
 
 						addStatement(
-							"return %M(%N(%N))·{·%P·}",
+							"return %M(%N(%N)) { %P }",
 							MemberName("kotlin", "requireNotNull"),
 							"fromNameOrNull",
 							"serialName",

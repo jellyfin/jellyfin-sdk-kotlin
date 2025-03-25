@@ -28,12 +28,12 @@ class OperationParameterModelBuilder(
 	) = buildCodeBlock {
 		require(parameters.isNotEmpty()) { "At least 1 parameter expected to generate a valid function call" }
 
-		add("return·%N(\n", operationName)
+		add("return %N(\n", operationName)
 		withIndent {
 			parameters.forEach { parameter ->
-				addStatement("%1N·=·%2N.%1N,", parameter, requestParameterName)
+				addStatement("%1N = %2N.%1N,", parameter, requestParameterName)
 			}
-			if (includeData) addStatement("%1N·=·%1N,", "data")
+			if (includeData) addStatement("%1N = %1N,", "data")
 		}
 		add(")\n")
 	}.let(::addCode)
