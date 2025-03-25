@@ -219,6 +219,6 @@ class UrlBuilderTests : FunSpec({
 			baseUrl = baseUrl,
 			pathTemplate = "{foo}/{foo/{bar",
 			ignorePathParameters = true,
-		) shouldBe "${baseUrl}{foo}/{foo/{bar"
+		) shouldBe "${baseUrl}%7Bfoo%7D/%7Bfoo/%7Bbar"
 	}
 })
