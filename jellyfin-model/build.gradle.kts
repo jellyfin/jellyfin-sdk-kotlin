@@ -36,7 +36,7 @@ kotlin {
 }
 
 enablePublishing {
-	val javadocJar by tasks.creating(Jar::class) {
+	val javadocJar by tasks.registering(Jar::class) {
 		dependsOn(tasks.dokkaHtml)
 		from(tasks.dokkaHtml.flatMap { it.outputDirectory })
 		archiveClassifier.set("javadoc")
