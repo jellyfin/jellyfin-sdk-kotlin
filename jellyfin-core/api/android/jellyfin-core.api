@@ -73,8 +73,6 @@ public final class org/jellyfin/sdk/discovery/AddressCandidateHelper {
 	public static final field Companion Lorg/jellyfin/sdk/discovery/AddressCandidateHelper$Companion;
 	public static final field JF_HTTPS_PORT I
 	public static final field JF_HTTP_PORT I
-	public static final field PROTOCOL_HTTP Ljava/lang/String;
-	public static final field PROTOCOL_HTTPS Ljava/lang/String;
 	public fun <init> (Ljava/lang/String;)V
 	public final fun addCommonCandidates ()V
 	public final fun addPortCandidates ()V
