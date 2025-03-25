@@ -51,8 +51,8 @@ public final class org/jellyfin/sdk/api/client/HttpMethod : java/lang/Enum {
 }
 
 public final class org/jellyfin/sdk/api/client/RawResponse {
-	public fun <init> (Lio/ktor/utils/io/ByteReadChannel;ILjava/util/Map;)V
-	public final fun getBody ()Lio/ktor/utils/io/ByteReadChannel;
+	public fun <init> ([BILjava/util/Map;)V
+	public final fun getBody ()[B
 	public final fun getHeaders ()Ljava/util/Map;
 	public final fun getStatus ()I
 }
