@@ -29,8 +29,7 @@ public class CollectionApi(
 	 * @param collectionId The collection id.
 	 * @param ids Item ids, comma delimited.
 	 */
-	public suspend fun addToCollection(collectionId: UUID, ids: Collection<UUID> = emptyList()):
-			Response<Unit> {
+	public suspend fun addToCollection(collectionId: UUID, ids: Collection<UUID> = emptyList()): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("collectionId", collectionId)
 		}
@@ -38,8 +37,7 @@ public class CollectionApi(
 			put("ids", ids)
 		}
 		val data = null
-		val response = api.post<Unit>("/Collections/{collectionId}/Items", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Collections/{collectionId}/Items", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -65,8 +63,7 @@ public class CollectionApi(
 			put("isLocked", isLocked)
 		}
 		val data = null
-		val response = api.post<CollectionCreationResult>("/Collections", pathParameters, queryParameters,
-				data)
+		val response = api.post<CollectionCreationResult>("/Collections", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -76,8 +73,7 @@ public class CollectionApi(
 	 * @param collectionId The collection id.
 	 * @param ids Item ids, comma delimited.
 	 */
-	public suspend fun removeFromCollection(collectionId: UUID, ids: Collection<UUID> = emptyList()):
-			Response<Unit> {
+	public suspend fun removeFromCollection(collectionId: UUID, ids: Collection<UUID> = emptyList()): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("collectionId", collectionId)
 		}
@@ -85,8 +81,7 @@ public class CollectionApi(
 			put("ids", ids)
 		}
 		val data = null
-		val response = api.delete<Unit>("/Collections/{collectionId}/Items", pathParameters,
-				queryParameters, data)
+		val response = api.delete<Unit>("/Collections/{collectionId}/Items", pathParameters, queryParameters, data)
 		return response
 	}
 }

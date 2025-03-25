@@ -40,8 +40,7 @@ public data class GetLatestMediaRequest(
 	@SerialName("fields")
 	public val fields: Collection<ItemFields>? = null,
 	/**
-	 * Optional. If specified, results will be filtered based on item type. This allows multiple, comma
-	 * delimited.
+	 * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
 	 */
 	@SerialName("includeItemTypes")
 	public val includeItemTypes: Collection<BaseItemKind>? = null,

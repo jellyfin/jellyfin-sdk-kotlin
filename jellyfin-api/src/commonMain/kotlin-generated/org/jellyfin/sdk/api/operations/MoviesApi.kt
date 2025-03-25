@@ -28,8 +28,7 @@ public class MoviesApi(
 	 * Gets movie recommendations.
 	 *
 	 * @param userId Optional. Filter by user id, and attach user data.
-	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use
-	 * the root.
+	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use the root.
 	 * @param fields Optional. The fields to return.
 	 * @param categoryLimit The max number of categories to return.
 	 * @param itemLimit The max number of items to return per category.
@@ -50,8 +49,7 @@ public class MoviesApi(
 			put("itemLimit", itemLimit)
 		}
 		val data = null
-		val response = api.`get`<List<RecommendationDto>>("/Movies/Recommendations", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<RecommendationDto>>("/Movies/Recommendations", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -60,8 +58,7 @@ public class MoviesApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getMovieRecommendations(request: GetMovieRecommendationsRequest =
-			GetMovieRecommendationsRequest()): Response<List<RecommendationDto>> = getMovieRecommendations(
+	public suspend fun getMovieRecommendations(request: GetMovieRecommendationsRequest = GetMovieRecommendationsRequest()): Response<List<RecommendationDto>> = getMovieRecommendations(
 		userId = request.userId,
 		parentId = request.parentId,
 		fields = request.fields,

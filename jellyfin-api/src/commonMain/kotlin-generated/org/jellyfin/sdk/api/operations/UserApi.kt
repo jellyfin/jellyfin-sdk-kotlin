@@ -37,24 +37,20 @@ public class UserApi(
 	/**
 	 * Authenticates a user by name.
 	 */
-	public suspend fun authenticateUserByName(`data`: AuthenticateUserByName):
-			Response<AuthenticationResult> {
+	public suspend fun authenticateUserByName(`data`: AuthenticateUserByName): Response<AuthenticationResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<AuthenticationResult>("/Users/AuthenticateByName", pathParameters,
-				queryParameters, data)
+		val response = api.post<AuthenticationResult>("/Users/AuthenticateByName", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
 	 * Authenticates a user with quick connect.
 	 */
-	public suspend fun authenticateWithQuickConnect(`data`: QuickConnectDto):
-			Response<AuthenticationResult> {
+	public suspend fun authenticateWithQuickConnect(`data`: QuickConnectDto): Response<AuthenticationResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<AuthenticationResult>("/Users/AuthenticateWithQuickConnect",
-				pathParameters, queryParameters, data)
+		val response = api.post<AuthenticationResult>("/Users/AuthenticateWithQuickConnect", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -89,8 +85,7 @@ public class UserApi(
 	public suspend fun forgotPassword(`data`: ForgotPasswordDto): Response<ForgotPasswordResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<ForgotPasswordResult>("/Users/ForgotPassword", pathParameters,
-				queryParameters, data)
+		val response = api.post<ForgotPasswordResult>("/Users/ForgotPassword", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -100,8 +95,7 @@ public class UserApi(
 	public suspend fun forgotPasswordPin(`data`: ForgotPasswordPinDto): Response<PinRedeemResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<PinRedeemResult>("/Users/ForgotPassword/Pin", pathParameters,
-				queryParameters, data)
+		val response = api.post<PinRedeemResult>("/Users/ForgotPassword/Pin", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -148,8 +142,7 @@ public class UserApi(
 	 * @param isHidden Optional filter by IsHidden=true or false.
 	 * @param isDisabled Optional filter by IsDisabled=true or false.
 	 */
-	public suspend fun getUsers(isHidden: Boolean? = null, isDisabled: Boolean? = null):
-			Response<List<UserDto>> {
+	public suspend fun getUsers(isHidden: Boolean? = null, isDisabled: Boolean? = null): Response<List<UserDto>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(2) {
 			put("isHidden", isHidden)
@@ -179,8 +172,7 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUserConfiguration(userId: UUID? = null, `data`: UserConfiguration):
-			Response<Unit> {
+	public suspend fun updateUserConfiguration(userId: UUID? = null, `data`: UserConfiguration): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)
@@ -194,8 +186,7 @@ public class UserApi(
 	 *
 	 * @param userId The user id.
 	 */
-	public suspend fun updateUserPassword(userId: UUID? = null, `data`: UpdateUserPassword):
-			Response<Unit> {
+	public suspend fun updateUserPassword(userId: UUID? = null, `data`: UpdateUserPassword): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("userId", userId)

@@ -28,18 +28,13 @@ public class SearchApi(
 	/**
 	 * Gets the search hint result.
 	 *
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param userId Optional. Supply a user id to search within a user's library or omit to search
-	 * all.
+	 * @param userId Optional. Supply a user id to search within a user's library or omit to search all.
 	 * @param searchTerm The search term to filter on.
-	 * @param includeItemTypes If specified, only results with the specified item types are returned.
-	 * This allows multiple, comma delimited.
-	 * @param excludeItemTypes If specified, results with these item types are filtered out. This
-	 * allows multiple, comma delimited.
-	 * @param mediaTypes If specified, only results with the specified media types are returned. This
-	 * allows multiple, comma delimited.
+	 * @param includeItemTypes If specified, only results with the specified item types are returned. This allows multiple, comma delimited.
+	 * @param excludeItemTypes If specified, results with these item types are filtered out. This allows multiple, comma delimited.
+	 * @param mediaTypes If specified, only results with the specified media types are returned. This allows multiple, comma delimited.
 	 * @param parentId If specified, only children of the parent are returned.
 	 * @param isMovie Optional filter for movies.
 	 * @param isSeries Optional filter for series.
@@ -103,8 +98,7 @@ public class SearchApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getSearchHints(request: GetSearchHintsRequest): Response<SearchHintResult> =
-			getSearchHints(
+	public suspend fun getSearchHints(request: GetSearchHintsRequest): Response<SearchHintResult> = getSearchHints(
 		startIndex = request.startIndex,
 		limit = request.limit,
 		userId = request.userId,

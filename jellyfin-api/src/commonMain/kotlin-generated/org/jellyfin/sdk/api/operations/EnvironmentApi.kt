@@ -31,8 +31,7 @@ public class EnvironmentApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<DefaultDirectoryBrowserInfoDto>("/Environment/DefaultDirectoryBrowser",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<DefaultDirectoryBrowserInfoDto>("/Environment/DefaultDirectoryBrowser", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -41,8 +40,7 @@ public class EnvironmentApi(
 	 *
 	 * @param path The path.
 	 * @param includeFiles An optional filter to include or exclude files from the results. true/false.
-	 * @param includeDirectories An optional filter to include or exclude folders from the results.
-	 * true/false.
+	 * @param includeDirectories An optional filter to include or exclude folders from the results. true/false.
 	 */
 	public suspend fun getDirectoryContents(
 		path: String,
@@ -56,8 +54,7 @@ public class EnvironmentApi(
 			put("includeDirectories", includeDirectories)
 		}
 		val data = null
-		val response = api.`get`<List<FileSystemEntryInfo>>("/Environment/DirectoryContents",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<List<FileSystemEntryInfo>>("/Environment/DirectoryContents", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -68,8 +65,7 @@ public class EnvironmentApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<FileSystemEntryInfo>>("/Environment/Drives", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<FileSystemEntryInfo>>("/Environment/Drives", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -81,8 +77,7 @@ public class EnvironmentApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<FileSystemEntryInfo>>("/Environment/NetworkShares", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<FileSystemEntryInfo>>("/Environment/NetworkShares", pathParameters, queryParameters, data)
 		return response
 	}
 

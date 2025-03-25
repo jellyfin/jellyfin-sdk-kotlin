@@ -25,8 +25,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class GetSearchHintsRequest(
 	/**
-	 * Optional. The record index to start at. All items with a lower index will be dropped from the
-	 * results.
+	 * Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 */
 	@SerialName("startIndex")
 	public val startIndex: Int? = null,
@@ -46,20 +45,17 @@ public data class GetSearchHintsRequest(
 	@SerialName("searchTerm")
 	public val searchTerm: String,
 	/**
-	 * If specified, only results with the specified item types are returned. This allows multiple,
-	 * comma delimited.
+	 * If specified, only results with the specified item types are returned. This allows multiple, comma delimited.
 	 */
 	@SerialName("includeItemTypes")
 	public val includeItemTypes: Collection<BaseItemKind>? = null,
 	/**
-	 * If specified, results with these item types are filtered out. This allows multiple, comma
-	 * delimited.
+	 * If specified, results with these item types are filtered out. This allows multiple, comma delimited.
 	 */
 	@SerialName("excludeItemTypes")
 	public val excludeItemTypes: Collection<BaseItemKind>? = null,
 	/**
-	 * If specified, only results with the specified media types are returned. This allows multiple,
-	 * comma delimited.
+	 * If specified, only results with the specified media types are returned. This allows multiple, comma delimited.
 	 */
 	@SerialName("mediaTypes")
 	public val mediaTypes: Collection<MediaType>? = null,

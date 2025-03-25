@@ -50,7 +50,6 @@ public enum class MediaType(
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): MediaType =
-				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+		public fun fromName(serialName: String): MediaType = requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }

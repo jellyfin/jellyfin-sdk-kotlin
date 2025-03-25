@@ -32,15 +32,13 @@ public class UniversalAudioApi(
 	 * @param itemId The item id.
 	 * @param container Optional. The audio container.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param userId Optional. The user id.
 	 * @param audioCodec Optional. The audio codec to transcode to.
 	 * @param maxAudioChannels Optional. The maximum number of audio channels.
 	 * @param transcodingAudioChannels Optional. The number of how many audio channels to transcode to.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param transcodingContainer Optional. The container to transcode to.
 	 * @param transcodingProtocol Optional. The transcoding protocol.
@@ -98,8 +96,7 @@ public class UniversalAudioApi(
 			put("enableRedirection", enableRedirection)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/universal", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/universal", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -108,8 +105,7 @@ public class UniversalAudioApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getUniversalAudioStream(request: GetUniversalAudioStreamRequest):
-			Response<ByteReadChannel> = getUniversalAudioStream(
+	public suspend fun getUniversalAudioStream(request: GetUniversalAudioStreamRequest): Response<ByteReadChannel> = getUniversalAudioStream(
 		itemId = request.itemId,
 		container = request.container,
 		mediaSourceId = request.mediaSourceId,
@@ -137,15 +133,13 @@ public class UniversalAudioApi(
 	 * @param itemId The item id.
 	 * @param container Optional. The audio container.
 	 * @param mediaSourceId The media version id, if playing an alternate version.
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param userId Optional. The user id.
 	 * @param audioCodec Optional. The audio codec to transcode to.
 	 * @param maxAudioChannels Optional. The maximum number of audio channels.
 	 * @param transcodingAudioChannels Optional. The number of how many audio channels to transcode to.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
-	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted
-	 * this will be left to encoder defaults.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
 	 * @param transcodingContainer Optional. The container to transcode to.
 	 * @param transcodingProtocol Optional. The transcoding protocol.

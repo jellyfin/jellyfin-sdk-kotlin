@@ -54,17 +54,12 @@ public class YearsApi(
 	 * @param startIndex Skips over a given number of items within the results. Use for paging.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param sortOrder Sort Order - Ascending,Descending.
-	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use
-	 * the root.
+	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use the root.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
-	 * @param excludeItemTypes Optional. If specified, results will be excluded based on item type.
-	 * This allows multiple, comma delimited.
-	 * @param includeItemTypes Optional. If specified, results will be included based on item type.
-	 * This allows multiple, comma delimited.
+	 * @param excludeItemTypes Optional. If specified, results will be excluded based on item type. This allows multiple, comma delimited.
+	 * @param includeItemTypes Optional. If specified, results will be included based on item type. This allows multiple, comma delimited.
 	 * @param mediaTypes Optional. Filter by MediaType. Allows multiple, comma delimited.
-	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album,
-	 * AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount,
-	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 * @param enableUserData Optional. Include user data.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
@@ -117,8 +112,7 @@ public class YearsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getYears(request: GetYearsRequest = GetYearsRequest()):
-			Response<BaseItemDtoQueryResult> = getYears(
+	public suspend fun getYears(request: GetYearsRequest = GetYearsRequest()): Response<BaseItemDtoQueryResult> = getYears(
 		startIndex = request.startIndex,
 		limit = request.limit,
 		sortOrder = request.sortOrder,

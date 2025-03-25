@@ -74,8 +74,7 @@ public class ImageApi(
 			put("imageIndex", imageIndex)
 		}
 		val data = null
-		val response = api.delete<Unit>("/Items/{itemId}/Images/{imageType}", pathParameters,
-				queryParameters, data)
+		val response = api.delete<Unit>("/Items/{itemId}/Images/{imageType}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -98,8 +97,7 @@ public class ImageApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.delete<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, data)
+		val response = api.delete<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -124,8 +122,7 @@ public class ImageApi(
 	 * @param name Artist name.
 	 * @param imageType Image type.
 	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -133,8 +130,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -182,8 +178,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Artists/{name}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Artists/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -192,8 +187,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getArtistImage(request: GetArtistImageRequest): Response<ByteReadChannel> =
-			getArtistImage(
+	public suspend fun getArtistImage(request: GetArtistImageRequest): Response<ByteReadChannel> = getArtistImage(
 		name = request.name,
 		imageType = request.imageType,
 		imageIndex = request.imageIndex,
@@ -219,8 +213,7 @@ public class ImageApi(
 	 * @param name Artist name.
 	 * @param imageType Image type.
 	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -228,8 +221,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -276,8 +268,7 @@ public class ImageApi(
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
 		}
-		return api.createUrl("/Artists/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters)
+		return api.createUrl("/Artists/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -285,8 +276,7 @@ public class ImageApi(
 	 *
 	 * @param name Genre name.
 	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -294,8 +284,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -344,8 +333,7 @@ public class ImageApi(
 			put("imageIndex", imageIndex)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Genres/{name}/Images/{imageType}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Genres/{name}/Images/{imageType}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -354,8 +342,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getGenreImage(request: GetGenreImageRequest): Response<ByteReadChannel> =
-			getGenreImage(
+	public suspend fun getGenreImage(request: GetGenreImageRequest): Response<ByteReadChannel> = getGenreImage(
 		name = request.name,
 		imageType = request.imageType,
 		tag = request.tag,
@@ -380,8 +367,7 @@ public class ImageApi(
 	 *
 	 * @param name Genre name.
 	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -389,8 +375,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -447,8 +432,7 @@ public class ImageApi(
 	 * @param name Genre name.
 	 * @param imageType Image type.
 	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -456,8 +440,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -505,8 +488,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Genres/{name}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Genres/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -515,8 +497,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getGenreImageByIndex(request: GetGenreImageByIndexRequest):
-			Response<ByteReadChannel> = getGenreImageByIndex(
+	public suspend fun getGenreImageByIndex(request: GetGenreImageByIndexRequest): Response<ByteReadChannel> = getGenreImageByIndex(
 		name = request.name,
 		imageType = request.imageType,
 		imageIndex = request.imageIndex,
@@ -542,8 +523,7 @@ public class ImageApi(
 	 * @param name Genre name.
 	 * @param imageType Image type.
 	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -551,8 +531,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -599,8 +578,7 @@ public class ImageApi(
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
 		}
-		return api.createUrl("/Genres/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters)
+		return api.createUrl("/Genres/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -612,12 +590,10 @@ public class ImageApi(
 	 * @param maxHeight The maximum image height to return.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
@@ -667,8 +643,7 @@ public class ImageApi(
 			put("imageIndex", imageIndex)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -677,8 +652,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getItemImage(request: GetItemImageRequest): Response<ByteReadChannel> =
-			getItemImage(
+	public suspend fun getItemImage(request: GetItemImageRequest): Response<ByteReadChannel> = getItemImage(
 		itemId = request.itemId,
 		imageType = request.imageType,
 		maxWidth = request.maxWidth,
@@ -707,12 +681,10 @@ public class ImageApi(
 	 * @param maxHeight The maximum image height to return.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
@@ -771,16 +743,14 @@ public class ImageApi(
 	 * @param imageType Image type.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -828,9 +798,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		val data = null
-		val response =
-				api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -839,8 +807,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getItemImage2(request: GetItemImage2Request): Response<ByteReadChannel> =
-			getItemImage2(
+	public suspend fun getItemImage2(request: GetItemImage2Request): Response<ByteReadChannel> = getItemImage2(
 		itemId = request.itemId,
 		imageType = request.imageType,
 		maxWidth = request.maxWidth,
@@ -867,16 +834,14 @@ public class ImageApi(
 	 * @param imageType Image type.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param imageIndex Image index.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -923,8 +888,7 @@ public class ImageApi(
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
 		}
-		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}",
-				pathParameters, queryParameters)
+		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -937,12 +901,10 @@ public class ImageApi(
 	 * @param maxHeight The maximum image height to return.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
@@ -991,8 +953,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1001,8 +962,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getItemImageByIndex(request: GetItemImageByIndexRequest):
-			Response<ByteReadChannel> = getItemImageByIndex(
+	public suspend fun getItemImageByIndex(request: GetItemImageByIndexRequest): Response<ByteReadChannel> = getItemImageByIndex(
 		itemId = request.itemId,
 		imageType = request.imageType,
 		imageIndex = request.imageIndex,
@@ -1032,12 +992,10 @@ public class ImageApi(
 	 * @param maxHeight The maximum image height to return.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Optional. The MediaBrowser.Model.Drawing.ImageFormat of the returned image.
 	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
@@ -1085,8 +1043,7 @@ public class ImageApi(
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
 		}
-		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters)
+		return api.createUrl("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -1100,8 +1057,7 @@ public class ImageApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<ImageInfo>>("/Items/{itemId}/Images", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<ImageInfo>>("/Items/{itemId}/Images", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1110,8 +1066,7 @@ public class ImageApi(
 	 *
 	 * @param name Music genre name.
 	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -1119,8 +1074,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -1169,8 +1123,7 @@ public class ImageApi(
 			put("imageIndex", imageIndex)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1179,8 +1132,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getMusicGenreImage(request: GetMusicGenreImageRequest):
-			Response<ByteReadChannel> = getMusicGenreImage(
+	public suspend fun getMusicGenreImage(request: GetMusicGenreImageRequest): Response<ByteReadChannel> = getMusicGenreImage(
 		name = request.name,
 		imageType = request.imageType,
 		tag = request.tag,
@@ -1205,8 +1157,7 @@ public class ImageApi(
 	 *
 	 * @param name Music genre name.
 	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -1214,8 +1165,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -1272,8 +1222,7 @@ public class ImageApi(
 	 * @param name Music genre name.
 	 * @param imageType Image type.
 	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -1281,8 +1230,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -1330,8 +1278,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1340,8 +1287,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getMusicGenreImageByIndex(request: GetMusicGenreImageByIndexRequest):
-			Response<ByteReadChannel> = getMusicGenreImageByIndex(
+	public suspend fun getMusicGenreImageByIndex(request: GetMusicGenreImageByIndexRequest): Response<ByteReadChannel> = getMusicGenreImageByIndex(
 		name = request.name,
 		imageType = request.imageType,
 		imageIndex = request.imageIndex,
@@ -1367,8 +1313,7 @@ public class ImageApi(
 	 * @param name Music genre name.
 	 * @param imageType Image type.
 	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -1376,8 +1321,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -1424,8 +1368,7 @@ public class ImageApi(
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
 		}
-		return api.createUrl("/MusicGenres/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters)
+		return api.createUrl("/MusicGenres/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -1433,8 +1376,7 @@ public class ImageApi(
 	 *
 	 * @param name Person name.
 	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -1442,8 +1384,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -1492,8 +1433,7 @@ public class ImageApi(
 			put("imageIndex", imageIndex)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Persons/{name}/Images/{imageType}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Persons/{name}/Images/{imageType}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1502,8 +1442,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getPersonImage(request: GetPersonImageRequest): Response<ByteReadChannel> =
-			getPersonImage(
+	public suspend fun getPersonImage(request: GetPersonImageRequest): Response<ByteReadChannel> = getPersonImage(
 		name = request.name,
 		imageType = request.imageType,
 		tag = request.tag,
@@ -1528,8 +1467,7 @@ public class ImageApi(
 	 *
 	 * @param name Person name.
 	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -1537,8 +1475,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -1595,8 +1532,7 @@ public class ImageApi(
 	 * @param name Person name.
 	 * @param imageType Image type.
 	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -1604,8 +1540,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -1653,8 +1588,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Persons/{name}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Persons/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1663,8 +1597,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getPersonImageByIndex(request: GetPersonImageByIndexRequest):
-			Response<ByteReadChannel> = getPersonImageByIndex(
+	public suspend fun getPersonImageByIndex(request: GetPersonImageByIndexRequest): Response<ByteReadChannel> = getPersonImageByIndex(
 		name = request.name,
 		imageType = request.imageType,
 		imageIndex = request.imageIndex,
@@ -1690,8 +1623,7 @@ public class ImageApi(
 	 * @param name Person name.
 	 * @param imageType Image type.
 	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -1699,8 +1631,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -1747,8 +1678,7 @@ public class ImageApi(
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
 		}
-		return api.createUrl("/Persons/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters)
+		return api.createUrl("/Persons/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -1798,8 +1728,7 @@ public class ImageApi(
 			put("quality", quality)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Branding/Splashscreen", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Branding/Splashscreen", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1808,8 +1737,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getSplashscreen(request: GetSplashscreenRequest = GetSplashscreenRequest()):
-			Response<ByteReadChannel> = getSplashscreen(
+	public suspend fun getSplashscreen(request: GetSplashscreenRequest = GetSplashscreenRequest()): Response<ByteReadChannel> = getSplashscreen(
 		tag = request.tag,
 		format = request.format,
 		maxWidth = request.maxWidth,
@@ -1878,8 +1806,7 @@ public class ImageApi(
 	 *
 	 * @param name Studio name.
 	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -1887,8 +1814,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -1937,8 +1863,7 @@ public class ImageApi(
 			put("imageIndex", imageIndex)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Studios/{name}/Images/{imageType}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Studios/{name}/Images/{imageType}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1947,8 +1872,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getStudioImage(request: GetStudioImageRequest): Response<ByteReadChannel> =
-			getStudioImage(
+	public suspend fun getStudioImage(request: GetStudioImageRequest): Response<ByteReadChannel> = getStudioImage(
 		name = request.name,
 		imageType = request.imageType,
 		tag = request.tag,
@@ -1973,8 +1897,7 @@ public class ImageApi(
 	 *
 	 * @param name Studio name.
 	 * @param imageType Image type.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -1982,8 +1905,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -2040,8 +1962,7 @@ public class ImageApi(
 	 * @param name Studio name.
 	 * @param imageType Image type.
 	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -2049,8 +1970,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -2098,8 +2018,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Studios/{name}/Images/{imageType}/{imageIndex}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Studios/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -2108,8 +2027,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getStudioImageByIndex(request: GetStudioImageByIndexRequest):
-			Response<ByteReadChannel> = getStudioImageByIndex(
+	public suspend fun getStudioImageByIndex(request: GetStudioImageByIndexRequest): Response<ByteReadChannel> = getStudioImageByIndex(
 		name = request.name,
 		imageType = request.imageType,
 		imageIndex = request.imageIndex,
@@ -2135,8 +2053,7 @@ public class ImageApi(
 	 * @param name Studio name.
 	 * @param imageType Image type.
 	 * @param imageIndex Image index.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -2144,8 +2061,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -2192,16 +2108,14 @@ public class ImageApi(
 			put("backgroundColor", backgroundColor)
 			put("foregroundLayer", foregroundLayer)
 		}
-		return api.createUrl("/Studios/{name}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters)
+		return api.createUrl("/Studios/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters)
 	}
 
 	/**
 	 * Get user profile image.
 	 *
 	 * @param userId User id.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -2209,8 +2123,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -2265,8 +2178,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getUserImage(request: GetUserImageRequest = GetUserImageRequest()):
-			Response<ByteReadChannel> = getUserImage(
+	public suspend fun getUserImage(request: GetUserImageRequest = GetUserImageRequest()): Response<ByteReadChannel> = getUserImage(
 		userId = request.userId,
 		tag = request.tag,
 		format = request.format,
@@ -2289,8 +2201,7 @@ public class ImageApi(
 	 * Get user profile image.
 	 *
 	 * @param userId User id.
-	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching
-	 * headers.
+	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
 	 * @param maxWidth The maximum image width to return.
 	 * @param maxHeight The maximum image height to return.
@@ -2298,8 +2209,7 @@ public class ImageApi(
 	 * @param unplayedCount Optional. Unplayed count overlay to render.
 	 * @param width The fixed image width to return.
 	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most
-	 * cases.
+	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
 	 * @param fillWidth Width of box to fill.
 	 * @param fillHeight Height of box to fill.
 	 * @param blur Optional. Blur image.
@@ -2377,8 +2287,7 @@ public class ImageApi(
 			put("imageType", imageType)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -2401,8 +2310,7 @@ public class ImageApi(
 			put("imageIndex", imageIndex)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -2429,8 +2337,7 @@ public class ImageApi(
 			put("newIndex", newIndex)
 		}
 		val data = null
-		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}/Index",
-				pathParameters, queryParameters, data)
+		val response = api.post<Unit>("/Items/{itemId}/Images/{imageType}/{imageIndex}/Index", pathParameters, queryParameters, data)
 		return response
 	}
 

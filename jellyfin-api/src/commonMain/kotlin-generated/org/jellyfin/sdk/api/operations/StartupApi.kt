@@ -49,8 +49,7 @@ public class StartupApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<StartupUserDto>("/Startup/FirstUser", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<StartupUserDto>("/Startup/FirstUser", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -61,8 +60,7 @@ public class StartupApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<StartupConfigurationDto>("/Startup/Configuration", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<StartupConfigurationDto>("/Startup/Configuration", pathParameters, queryParameters, data)
 		return response
 	}
 

@@ -23,8 +23,7 @@ public class TmdbApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ConfigImageTypes>("/Tmdb/ClientConfiguration", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ConfigImageTypes>("/Tmdb/ClientConfiguration", pathParameters, queryParameters, data)
 		return response
 	}
 }

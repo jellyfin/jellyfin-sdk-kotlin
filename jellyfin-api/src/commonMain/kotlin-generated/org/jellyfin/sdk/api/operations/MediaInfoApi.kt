@@ -58,8 +58,7 @@ public class MediaInfoApi(
 			put("size", size)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Playback/BitrateTest", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Playback/BitrateTest", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -83,8 +82,7 @@ public class MediaInfoApi(
 	 * @param itemId The item id.
 	 * @param userId The user id.
 	 */
-	public suspend fun getPlaybackInfo(itemId: UUID, userId: UUID? = null):
-			Response<PlaybackInfoResponse> {
+	public suspend fun getPlaybackInfo(itemId: UUID, userId: UUID? = null): Response<PlaybackInfoResponse> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -92,32 +90,27 @@ public class MediaInfoApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.`get`<PlaybackInfoResponse>("/Items/{itemId}/PlaybackInfo", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<PlaybackInfoResponse>("/Items/{itemId}/PlaybackInfo", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
-	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher
-	 * precedence.
+	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher precedence.
 	 * Query parameters are obsolete.
 	 *
 	 * @param itemId The item id.
 	 */
-	public suspend fun getPostedPlaybackInfo(itemId: UUID, `data`: PlaybackInfoDto? = null):
-			Response<PlaybackInfoResponse> {
+	public suspend fun getPostedPlaybackInfo(itemId: UUID, `data`: PlaybackInfoDto? = null): Response<PlaybackInfoResponse> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<PlaybackInfoResponse>("/Items/{itemId}/PlaybackInfo", pathParameters,
-				queryParameters, data)
+		val response = api.post<PlaybackInfoResponse>("/Items/{itemId}/PlaybackInfo", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
-	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher
-	 * precedence.
+	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher precedence.
 	 * Query parameters are obsolete.
 	 *
 	 * @param itemId The item id.
@@ -174,22 +167,18 @@ public class MediaInfoApi(
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
 		}
-		val response = api.post<PlaybackInfoResponse>("/Items/{itemId}/PlaybackInfo", pathParameters,
-				queryParameters, data)
+		val response = api.post<PlaybackInfoResponse>("/Items/{itemId}/PlaybackInfo", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
-	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher
-	 * precedence.
+	 * For backwards compatibility parameters can be sent via Query or Body, with Query having higher precedence.
 	 * Query parameters are obsolete.
 	 *
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getPostedPlaybackInfoDeprecated(request: GetPostedPlaybackInfoDeprecatedRequest,
-			`data`: PlaybackInfoDto? = null): Response<PlaybackInfoResponse> =
-			getPostedPlaybackInfoDeprecated(
+	public suspend fun getPostedPlaybackInfoDeprecated(request: GetPostedPlaybackInfoDeprecatedRequest, `data`: PlaybackInfoDto? = null): Response<PlaybackInfoResponse> = getPostedPlaybackInfoDeprecated(
 		itemId = request.itemId,
 		userId = request.userId,
 		maxStreamingBitrate = request.maxStreamingBitrate,
@@ -254,8 +243,7 @@ public class MediaInfoApi(
 			put("enableDirectStream", enableDirectStream)
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
-		val response = api.post<LiveStreamResponse>("/LiveStreams/Open", pathParameters, queryParameters,
-				data)
+		val response = api.post<LiveStreamResponse>("/LiveStreams/Open", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -264,8 +252,7 @@ public class MediaInfoApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun openLiveStream(request: OpenLiveStreamRequest = OpenLiveStreamRequest(),
-			`data`: OpenLiveStreamDto? = null): Response<LiveStreamResponse> = openLiveStream(
+	public suspend fun openLiveStream(request: OpenLiveStreamRequest = OpenLiveStreamRequest(), `data`: OpenLiveStreamDto? = null): Response<LiveStreamResponse> = openLiveStream(
 		openToken = request.openToken,
 		userId = request.userId,
 		playSessionId = request.playSessionId,

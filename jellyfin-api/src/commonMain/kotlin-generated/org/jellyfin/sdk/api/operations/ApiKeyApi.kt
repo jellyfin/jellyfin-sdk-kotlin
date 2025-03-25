@@ -42,8 +42,7 @@ public class ApiKeyApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<AuthenticationInfoQueryResult>("/Auth/Keys", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<AuthenticationInfoQueryResult>("/Auth/Keys", pathParameters, queryParameters, data)
 		return response
 	}
 

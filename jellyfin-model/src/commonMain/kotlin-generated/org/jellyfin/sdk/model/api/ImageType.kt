@@ -74,7 +74,6 @@ public enum class ImageType(
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): ImageType =
-				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+		public fun fromName(serialName: String): ImageType = requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }

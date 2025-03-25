@@ -66,14 +66,12 @@ public data class GetPersonsRequest(
 	@SerialName("enableImageTypes")
 	public val enableImageTypes: Collection<ImageType>? = null,
 	/**
-	 * Optional. If specified results will be filtered to exclude those containing the specified
-	 * PersonType. Allows multiple, comma-delimited.
+	 * Optional. If specified results will be filtered to exclude those containing the specified PersonType. Allows multiple, comma-delimited.
 	 */
 	@SerialName("excludePersonTypes")
 	public val excludePersonTypes: Collection<String>? = null,
 	/**
-	 * Optional. If specified results will be filtered to include only those containing the specified
-	 * PersonType. Allows multiple, comma-delimited.
+	 * Optional. If specified results will be filtered to include only those containing the specified PersonType. Allows multiple, comma-delimited.
 	 */
 	@SerialName("personTypes")
 	public val personTypes: Collection<String>? = null,
