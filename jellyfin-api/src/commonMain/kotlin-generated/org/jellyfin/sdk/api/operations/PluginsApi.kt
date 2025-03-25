@@ -5,8 +5,8 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
+import kotlin.ByteArray
 import kotlin.Deprecated
 import kotlin.String
 import kotlin.Unit
@@ -80,14 +80,14 @@ public class PluginsApi(
 	 * @param pluginId Plugin id.
 	 * @param version Plugin version.
 	 */
-	public suspend fun getPluginImage(pluginId: UUID, version: String): Response<ByteReadChannel> {
+	public suspend fun getPluginImage(pluginId: UUID, version: String): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("pluginId", pluginId)
 			put("version", version)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Plugins/{pluginId}/{version}/Image", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Plugins/{pluginId}/{version}/Image", pathParameters, queryParameters, data)
 		return response
 	}
 

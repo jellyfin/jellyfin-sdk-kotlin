@@ -5,9 +5,9 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.ByteArray
 import kotlin.Int
 import kotlin.Long
 import kotlin.String
@@ -69,7 +69,7 @@ public class UniversalAudioApi(
 		enableAudioVbrEncoding: Boolean? = true,
 		breakOnNonKeyFrames: Boolean? = false,
 		enableRedirection: Boolean? = true,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -96,7 +96,7 @@ public class UniversalAudioApi(
 			put("enableRedirection", enableRedirection)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/universal", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Audio/{itemId}/universal", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -105,7 +105,7 @@ public class UniversalAudioApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getUniversalAudioStream(request: GetUniversalAudioStreamRequest): Response<ByteReadChannel> = getUniversalAudioStream(
+	public suspend fun getUniversalAudioStream(request: GetUniversalAudioStreamRequest): Response<ByteArray> = getUniversalAudioStream(
 		itemId = request.itemId,
 		container = request.container,
 		mediaSourceId = request.mediaSourceId,

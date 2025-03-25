@@ -5,9 +5,9 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.ByteArray
 import kotlin.Deprecated
 import kotlin.Int
 import kotlin.Long
@@ -51,14 +51,14 @@ public class MediaInfoApi(
 	 *
 	 * @param size The bitrate. Defaults to 102400.
 	 */
-	public suspend fun getBitrateTestBytes(size: Int? = 102_400): Response<ByteReadChannel> {
+	public suspend fun getBitrateTestBytes(size: Int? = 102_400): Response<ByteArray> {
 		val pathParameters = emptyMap<String, Any?>()
 		require(size in 1..100_000_000) { "Parameter \"size\" must be in range 1..100000000 (inclusive)." }
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("size", size)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Playback/BitrateTest", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Playback/BitrateTest", pathParameters, queryParameters, data)
 		return response
 	}
 

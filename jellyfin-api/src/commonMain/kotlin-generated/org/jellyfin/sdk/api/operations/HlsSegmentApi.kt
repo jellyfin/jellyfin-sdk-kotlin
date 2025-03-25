@@ -5,8 +5,8 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
+import kotlin.ByteArray
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.buildMap
@@ -25,14 +25,14 @@ public class HlsSegmentApi(
 	 * @param itemId The item id.
 	 * @param segmentId The segment id.
 	 */
-	public suspend fun getHlsAudioSegmentLegacyAac(itemId: String, segmentId: String): Response<ByteReadChannel> {
+	public suspend fun getHlsAudioSegmentLegacyAac(itemId: String, segmentId: String): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
 			put("segmentId", segmentId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/hls/{segmentId}/stream.aac", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Audio/{itemId}/hls/{segmentId}/stream.aac", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -57,14 +57,14 @@ public class HlsSegmentApi(
 	 * @param itemId The item id.
 	 * @param segmentId The segment id.
 	 */
-	public suspend fun getHlsAudioSegmentLegacyMp3(itemId: String, segmentId: String): Response<ByteReadChannel> {
+	public suspend fun getHlsAudioSegmentLegacyMp3(itemId: String, segmentId: String): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
 			put("segmentId", segmentId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/hls/{segmentId}/stream.mp3", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Audio/{itemId}/hls/{segmentId}/stream.mp3", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -89,14 +89,14 @@ public class HlsSegmentApi(
 	 * @param itemId The video id.
 	 * @param playlistId The playlist id.
 	 */
-	public suspend fun getHlsPlaylistLegacy(itemId: String, playlistId: String): Response<ByteReadChannel> {
+	public suspend fun getHlsPlaylistLegacy(itemId: String, playlistId: String): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/hls/{playlistId}/stream.m3u8", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/hls/{playlistId}/stream.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -128,7 +128,7 @@ public class HlsSegmentApi(
 		playlistId: String,
 		segmentId: String,
 		segmentContainer: String,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
@@ -137,7 +137,7 @@ public class HlsSegmentApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/hls/{playlistId}/{segmentId}.{segmentContainer}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/hls/{playlistId}/{segmentId}.{segmentContainer}", pathParameters, queryParameters, data)
 		return response
 	}
 

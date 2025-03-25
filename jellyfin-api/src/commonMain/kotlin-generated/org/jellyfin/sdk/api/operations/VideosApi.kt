@@ -5,9 +5,9 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.ByteArray
 import kotlin.Deprecated
 import kotlin.Float
 import kotlin.Int
@@ -177,7 +177,7 @@ public class VideosApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -239,7 +239,7 @@ public class VideosApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/stream", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/stream", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -248,7 +248,7 @@ public class VideosApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getVideoStream(request: GetVideoStreamRequest): Response<ByteReadChannel> = getVideoStream(
+	public suspend fun getVideoStream(request: GetVideoStreamRequest): Response<ByteArray> = getVideoStream(
 		itemId = request.itemId,
 		container = request.container,
 		static = request.static,
@@ -582,7 +582,7 @@ public class VideosApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
 			put("container", container)
@@ -644,7 +644,7 @@ public class VideosApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/stream.{container}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/stream.{container}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -653,7 +653,7 @@ public class VideosApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getVideoStreamByContainer(request: GetVideoStreamByContainerRequest): Response<ByteReadChannel> = getVideoStreamByContainer(
+	public suspend fun getVideoStreamByContainer(request: GetVideoStreamByContainerRequest): Response<ByteArray> = getVideoStreamByContainer(
 		itemId = request.itemId,
 		container = request.container,
 		static = request.static,
@@ -991,7 +991,7 @@ public class VideosApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -1054,7 +1054,7 @@ public class VideosApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/stream", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/stream", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1064,7 +1064,7 @@ public class VideosApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getVideoStreamDeprecated(request: GetVideoStreamDeprecatedRequest): Response<ByteReadChannel> = getVideoStreamDeprecated(
+	public suspend fun getVideoStreamDeprecated(request: GetVideoStreamDeprecatedRequest): Response<ByteArray> = getVideoStreamDeprecated(
 		itemId = request.itemId,
 		container = request.container,
 		static = request.static,

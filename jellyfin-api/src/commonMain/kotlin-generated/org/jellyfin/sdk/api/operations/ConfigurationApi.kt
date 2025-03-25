@@ -5,8 +5,8 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
+import kotlin.ByteArray
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.buildMap
@@ -49,13 +49,13 @@ public class ConfigurationApi(
 	 *
 	 * @param key Configuration key.
 	 */
-	public suspend fun getNamedConfiguration(key: String): Response<ByteReadChannel> {
+	public suspend fun getNamedConfiguration(key: String): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("key", key)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/System/Configuration/{key}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/System/Configuration/{key}", pathParameters, queryParameters, data)
 		return response
 	}
 
