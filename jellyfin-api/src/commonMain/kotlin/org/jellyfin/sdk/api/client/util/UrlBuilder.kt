@@ -1,10 +1,8 @@
 package org.jellyfin.sdk.api.client.util
 
-import io.ktor.http.URLBuilder
-import io.ktor.http.encodeURLParameter
-import io.ktor.http.encodedPath
-import io.ktor.http.takeFrom
+import okhttp3.HttpUrl.Companion.toHttpUrl
 import org.jellyfin.sdk.api.client.exception.MissingPathVariableException
+import org.jellyfin.sdk.api.client.util.UrlBuilder.buildPath
 import org.jellyfin.sdk.model.DateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -25,14 +23,18 @@ public object UrlBuilder {
 		queryParameters: Map<String, Any?> = mapOf(),
 		ignorePathParameters: Boolean = false,
 	): String {
-		return URLBuilder(baseUrl).apply {
-			// Create from base URL
-			takeFrom(baseUrl)
-
+		val url = baseUrl.toHttpUrl()
+		return url.newBuilder().apply {
 			// Replace path variables
-			val path = buildPath(pathTemplate, pathParameters, ignorePathParameters)
+			val (path, pathQuerystring) = buildPath(
+				pathTemplate,
+				pathParameters,
+				ignorePathParameters
+			).extractQuerystring()
+
 			// Assign path making sure to remove duplicated slashes between the base and appended path
-			encodedPath = "${encodedPath.trimEnd('/')}/${path.trimStart('/')}"
+			encodedPath("${url.encodedPath.trimEnd('/')}/${path.trimStart('/')}")
+			encodedQuery(pathQuerystring)
 
 			// Append query parameters
 			queryParameters
@@ -54,10 +56,10 @@ public object UrlBuilder {
 							else -> value.toString()
 						}
 
-						parameters.append(key, stringValue)
+						addQueryParameter(key, stringValue)
 					}
 				}
-		}.buildString()
+		}.build().toString()
 	}
 
 	public fun buildPath(
@@ -119,7 +121,7 @@ public object UrlBuilder {
 
 					// Don't encode null values
 					if (value != null) {
-						append(value.toString().encodeURLParameter(true))
+						append(value.toString().encodeURLPathPart())
 					}
 
 					// Close path variable
@@ -136,8 +138,26 @@ public object UrlBuilder {
 		// Append rest of path to result (can be empty)
 		append(template.substring(lastEnd + 1))
 	}
+
+	private fun String.encodeURLPathPart(): String = buildString {
+		this@encodeURLPathPart.forEach { char ->
+			when {
+				char.isUnreserved() -> append(char)
+				char == ' ' -> append('+')
+				else -> append("%${char.code.toString(16).uppercase()}")
+			}
+		}
+	}
+
+	private fun Char.isUnreserved() = isLetterOrDigit() || this in arrayOf('-', '_', '.', '~')
+
+	private fun String.extractQuerystring(): Pair<String, String?> {
+		val path = substringBefore('?')
+		val querystring = if (path.length < length) substring(path.length + 1) else null
+
+		return path to querystring
+	}
 }
 
 @Suppress("NOTHING_TO_INLINE")
 public inline fun String.buildPath(parameters: Map<String, Any?>): String = UrlBuilder.buildPath(this, parameters)
-
