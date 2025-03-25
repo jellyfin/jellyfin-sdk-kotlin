@@ -5,9 +5,9 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.ByteArray
 import kotlin.Deprecated
 import kotlin.Int
 import kotlin.Long
@@ -72,13 +72,13 @@ public class SubtitleApi(
 	 *
 	 * @param name The name of the fallback font file to get.
 	 */
-	public suspend fun getFallbackFont(name: String): Response<ByteReadChannel> {
+	public suspend fun getFallbackFont(name: String): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("name", name)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/FallbackFont/Fonts/{name}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/FallbackFont/Fonts/{name}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -349,7 +349,7 @@ public class SubtitleApi(
 		index: Int,
 		mediaSourceId: String,
 		segmentLength: Int,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("itemId", itemId)
 			put("index", index)
@@ -359,7 +359,7 @@ public class SubtitleApi(
 			put("segmentLength", segmentLength)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 

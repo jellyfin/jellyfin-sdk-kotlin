@@ -5,9 +5,9 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.ByteArray
 import kotlin.Deprecated
 import kotlin.Float
 import kotlin.Int
@@ -155,7 +155,7 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
@@ -219,7 +219,7 @@ public class DynamicHlsApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -228,7 +228,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getHlsAudioSegment(request: GetHlsAudioSegmentRequest): Response<ByteReadChannel> = getHlsAudioSegment(
+	public suspend fun getHlsAudioSegment(request: GetHlsAudioSegmentRequest): Response<ByteArray> = getHlsAudioSegment(
 		itemId = request.itemId,
 		playlistId = request.playlistId,
 		segmentId = request.segmentId,
@@ -580,7 +580,7 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
@@ -645,7 +645,7 @@ public class DynamicHlsApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Audio/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -655,7 +655,7 @@ public class DynamicHlsApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getHlsAudioSegmentDeprecated(request: GetHlsAudioSegmentDeprecatedRequest): Response<ByteReadChannel> = getHlsAudioSegmentDeprecated(
+	public suspend fun getHlsAudioSegmentDeprecated(request: GetHlsAudioSegmentDeprecatedRequest): Response<ByteArray> = getHlsAudioSegmentDeprecated(
 		itemId = request.itemId,
 		playlistId = request.playlistId,
 		segmentId = request.segmentId,
@@ -1013,7 +1013,7 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
 		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
@@ -1079,7 +1079,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1088,7 +1088,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getHlsVideoSegment(request: GetHlsVideoSegmentRequest): Response<ByteReadChannel> = getHlsVideoSegment(
+	public suspend fun getHlsVideoSegment(request: GetHlsVideoSegmentRequest): Response<ByteArray> = getHlsVideoSegment(
 		itemId = request.itemId,
 		playlistId = request.playlistId,
 		segmentId = request.segmentId,
@@ -1452,7 +1452,7 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
 		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
@@ -1519,7 +1519,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/hls1/{playlistId}/{segmentId}.{container}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1529,7 +1529,7 @@ public class DynamicHlsApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getHlsVideoSegmentDeprecated(request: GetHlsVideoSegmentDeprecatedRequest): Response<ByteReadChannel> = getHlsVideoSegmentDeprecated(
+	public suspend fun getHlsVideoSegmentDeprecated(request: GetHlsVideoSegmentDeprecatedRequest): Response<ByteArray> = getHlsVideoSegmentDeprecated(
 		itemId = request.itemId,
 		playlistId = request.playlistId,
 		segmentId = request.segmentId,
@@ -1889,7 +1889,7 @@ public class DynamicHlsApi(
 		enableSubtitlesInManifest: Boolean? = null,
 		enableAudioVbrEncoding: Boolean? = true,
 		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -1953,7 +1953,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/live.m3u8", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/live.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1962,7 +1962,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getLiveHlsStream(request: GetLiveHlsStreamRequest): Response<ByteReadChannel> = getLiveHlsStream(
+	public suspend fun getLiveHlsStream(request: GetLiveHlsStreamRequest): Response<ByteArray> = getLiveHlsStream(
 		itemId = request.itemId,
 		container = request.container,
 		static = request.static,
@@ -2309,7 +2309,7 @@ public class DynamicHlsApi(
 		enableSubtitlesInManifest: Boolean? = null,
 		enableAudioVbrEncoding: Boolean? = true,
 		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -2374,7 +2374,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/live.m3u8", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/live.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -2384,7 +2384,7 @@ public class DynamicHlsApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getLiveHlsStreamDeprecated(request: GetLiveHlsStreamDeprecatedRequest): Response<ByteReadChannel> = getLiveHlsStreamDeprecated(
+	public suspend fun getLiveHlsStreamDeprecated(request: GetLiveHlsStreamDeprecatedRequest): Response<ByteArray> = getLiveHlsStreamDeprecated(
 		itemId = request.itemId,
 		container = request.container,
 		static = request.static,
@@ -2727,7 +2727,7 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
 		enableAudioVbrEncoding: Boolean? = true,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -2787,7 +2787,7 @@ public class DynamicHlsApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/master.m3u8", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Audio/{itemId}/master.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -2796,7 +2796,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getMasterHlsAudioPlaylist(request: GetMasterHlsAudioPlaylistRequest): Response<ByteReadChannel> = getMasterHlsAudioPlaylist(
+	public suspend fun getMasterHlsAudioPlaylist(request: GetMasterHlsAudioPlaylistRequest): Response<ByteArray> = getMasterHlsAudioPlaylist(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -3124,7 +3124,7 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAdaptiveBitrateStreaming: Boolean? = true,
 		enableAudioVbrEncoding: Boolean? = true,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -3185,7 +3185,7 @@ public class DynamicHlsApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/master.m3u8", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Audio/{itemId}/master.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -3195,7 +3195,7 @@ public class DynamicHlsApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getMasterHlsAudioPlaylistDeprecated(request: GetMasterHlsAudioPlaylistDeprecatedRequest): Response<ByteReadChannel> = getMasterHlsAudioPlaylistDeprecated(
+	public suspend fun getMasterHlsAudioPlaylistDeprecated(request: GetMasterHlsAudioPlaylistDeprecatedRequest): Response<ByteArray> = getMasterHlsAudioPlaylistDeprecated(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -3531,7 +3531,7 @@ public class DynamicHlsApi(
 		enableTrickplay: Boolean? = true,
 		enableAudioVbrEncoding: Boolean? = true,
 		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -3594,7 +3594,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/master.m3u8", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/master.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -3603,7 +3603,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getMasterHlsVideoPlaylist(request: GetMasterHlsVideoPlaylistRequest): Response<ByteReadChannel> = getMasterHlsVideoPlaylist(
+	public suspend fun getMasterHlsVideoPlaylist(request: GetMasterHlsVideoPlaylistRequest): Response<ByteArray> = getMasterHlsVideoPlaylist(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -3949,7 +3949,7 @@ public class DynamicHlsApi(
 		enableTrickplay: Boolean? = true,
 		enableAudioVbrEncoding: Boolean? = true,
 		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -4013,7 +4013,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/master.m3u8", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/master.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -4023,7 +4023,7 @@ public class DynamicHlsApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getMasterHlsVideoPlaylistDeprecated(request: GetMasterHlsVideoPlaylistDeprecatedRequest): Response<ByteReadChannel> = getMasterHlsVideoPlaylistDeprecated(
+	public suspend fun getMasterHlsVideoPlaylistDeprecated(request: GetMasterHlsVideoPlaylistDeprecatedRequest): Response<ByteArray> = getMasterHlsVideoPlaylistDeprecated(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -4363,7 +4363,7 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -4422,7 +4422,7 @@ public class DynamicHlsApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/main.m3u8", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Audio/{itemId}/main.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -4431,7 +4431,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getVariantHlsAudioPlaylist(request: GetVariantHlsAudioPlaylistRequest): Response<ByteReadChannel> = getVariantHlsAudioPlaylist(
+	public suspend fun getVariantHlsAudioPlaylist(request: GetVariantHlsAudioPlaylistRequest): Response<ByteArray> = getVariantHlsAudioPlaylist(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -4753,7 +4753,7 @@ public class DynamicHlsApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -4813,7 +4813,7 @@ public class DynamicHlsApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/main.m3u8", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Audio/{itemId}/main.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -4823,7 +4823,7 @@ public class DynamicHlsApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getVariantHlsAudioPlaylistDeprecated(request: GetVariantHlsAudioPlaylistDeprecatedRequest): Response<ByteReadChannel> = getVariantHlsAudioPlaylistDeprecated(
+	public suspend fun getVariantHlsAudioPlaylistDeprecated(request: GetVariantHlsAudioPlaylistDeprecatedRequest): Response<ByteArray> = getVariantHlsAudioPlaylistDeprecated(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -5151,7 +5151,7 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
 		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -5212,7 +5212,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/main.m3u8", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/main.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -5221,7 +5221,7 @@ public class DynamicHlsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getVariantHlsVideoPlaylist(request: GetVariantHlsVideoPlaylistRequest): Response<ByteReadChannel> = getVariantHlsVideoPlaylist(
+	public suspend fun getVariantHlsVideoPlaylist(request: GetVariantHlsVideoPlaylistRequest): Response<ByteArray> = getVariantHlsVideoPlaylist(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,
@@ -5555,7 +5555,7 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
 		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -5617,7 +5617,7 @@ public class DynamicHlsApi(
 			put("alwaysBurnInSubtitleWhenTranscoding", alwaysBurnInSubtitleWhenTranscoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/main.m3u8", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/main.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -5627,7 +5627,7 @@ public class DynamicHlsApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getVariantHlsVideoPlaylistDeprecated(request: GetVariantHlsVideoPlaylistDeprecatedRequest): Response<ByteReadChannel> = getVariantHlsVideoPlaylistDeprecated(
+	public suspend fun getVariantHlsVideoPlaylistDeprecated(request: GetVariantHlsVideoPlaylistDeprecatedRequest): Response<ByteArray> = getVariantHlsVideoPlaylistDeprecated(
 		itemId = request.itemId,
 		static = request.static,
 		params = request.params,

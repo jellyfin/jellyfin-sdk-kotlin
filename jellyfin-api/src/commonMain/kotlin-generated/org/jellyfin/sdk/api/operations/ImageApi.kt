@@ -5,8 +5,8 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
+import kotlin.ByteArray
 import kotlin.Double
 import kotlin.Int
 import kotlin.String
@@ -155,7 +155,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
 			put("imageType", imageType)
@@ -178,7 +178,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Artists/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Artists/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -187,7 +187,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getArtistImage(request: GetArtistImageRequest): Response<ByteReadChannel> = getArtistImage(
+	public suspend fun getArtistImage(request: GetArtistImageRequest): Response<ByteArray> = getArtistImage(
 		name = request.name,
 		imageType = request.imageType,
 		imageIndex = request.imageIndex,
@@ -310,7 +310,7 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("name", name)
 			put("imageType", imageType)
@@ -333,7 +333,7 @@ public class ImageApi(
 			put("imageIndex", imageIndex)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Genres/{name}/Images/{imageType}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Genres/{name}/Images/{imageType}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -342,7 +342,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getGenreImage(request: GetGenreImageRequest): Response<ByteReadChannel> = getGenreImage(
+	public suspend fun getGenreImage(request: GetGenreImageRequest): Response<ByteArray> = getGenreImage(
 		name = request.name,
 		imageType = request.imageType,
 		tag = request.tag,
@@ -465,7 +465,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
 			put("imageType", imageType)
@@ -488,7 +488,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Genres/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Genres/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -497,7 +497,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getGenreImageByIndex(request: GetGenreImageByIndexRequest): Response<ByteReadChannel> = getGenreImageByIndex(
+	public suspend fun getGenreImageByIndex(request: GetGenreImageByIndexRequest): Response<ByteArray> = getGenreImageByIndex(
 		name = request.name,
 		imageType = request.imageType,
 		imageIndex = request.imageIndex,
@@ -620,7 +620,7 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
 			put("imageType", imageType)
@@ -643,7 +643,7 @@ public class ImageApi(
 			put("imageIndex", imageIndex)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Items/{itemId}/Images/{imageType}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -652,7 +652,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getItemImage(request: GetItemImageRequest): Response<ByteReadChannel> = getItemImage(
+	public suspend fun getItemImage(request: GetItemImageRequest): Response<ByteArray> = getItemImage(
 		itemId = request.itemId,
 		imageType = request.imageType,
 		maxWidth = request.maxWidth,
@@ -775,7 +775,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(9) {
 			put("itemId", itemId)
 			put("imageType", imageType)
@@ -798,7 +798,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Items/{itemId}/Images/{imageType}/{imageIndex}/{tag}/{format}/{maxWidth}/{maxHeight}/{percentPlayed}/{unplayedCount}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -807,7 +807,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getItemImage2(request: GetItemImage2Request): Response<ByteReadChannel> = getItemImage2(
+	public suspend fun getItemImage2(request: GetItemImage2Request): Response<ByteArray> = getItemImage2(
 		itemId = request.itemId,
 		imageType = request.imageType,
 		maxWidth = request.maxWidth,
@@ -930,7 +930,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("itemId", itemId)
 			put("imageType", imageType)
@@ -953,7 +953,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Items/{itemId}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -962,7 +962,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getItemImageByIndex(request: GetItemImageByIndexRequest): Response<ByteReadChannel> = getItemImageByIndex(
+	public suspend fun getItemImageByIndex(request: GetItemImageByIndexRequest): Response<ByteArray> = getItemImageByIndex(
 		itemId = request.itemId,
 		imageType = request.imageType,
 		imageIndex = request.imageIndex,
@@ -1100,7 +1100,7 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("name", name)
 			put("imageType", imageType)
@@ -1123,7 +1123,7 @@ public class ImageApi(
 			put("imageIndex", imageIndex)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/MusicGenres/{name}/Images/{imageType}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1132,7 +1132,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getMusicGenreImage(request: GetMusicGenreImageRequest): Response<ByteReadChannel> = getMusicGenreImage(
+	public suspend fun getMusicGenreImage(request: GetMusicGenreImageRequest): Response<ByteArray> = getMusicGenreImage(
 		name = request.name,
 		imageType = request.imageType,
 		tag = request.tag,
@@ -1255,7 +1255,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
 			put("imageType", imageType)
@@ -1278,7 +1278,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/MusicGenres/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/MusicGenres/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1287,7 +1287,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getMusicGenreImageByIndex(request: GetMusicGenreImageByIndexRequest): Response<ByteReadChannel> = getMusicGenreImageByIndex(
+	public suspend fun getMusicGenreImageByIndex(request: GetMusicGenreImageByIndexRequest): Response<ByteArray> = getMusicGenreImageByIndex(
 		name = request.name,
 		imageType = request.imageType,
 		imageIndex = request.imageIndex,
@@ -1410,7 +1410,7 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("name", name)
 			put("imageType", imageType)
@@ -1433,7 +1433,7 @@ public class ImageApi(
 			put("imageIndex", imageIndex)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Persons/{name}/Images/{imageType}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Persons/{name}/Images/{imageType}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1442,7 +1442,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getPersonImage(request: GetPersonImageRequest): Response<ByteReadChannel> = getPersonImage(
+	public suspend fun getPersonImage(request: GetPersonImageRequest): Response<ByteArray> = getPersonImage(
 		name = request.name,
 		imageType = request.imageType,
 		tag = request.tag,
@@ -1565,7 +1565,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
 			put("imageType", imageType)
@@ -1588,7 +1588,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Persons/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Persons/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1597,7 +1597,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getPersonImageByIndex(request: GetPersonImageByIndexRequest): Response<ByteReadChannel> = getPersonImageByIndex(
+	public suspend fun getPersonImageByIndex(request: GetPersonImageByIndexRequest): Response<ByteArray> = getPersonImageByIndex(
 		name = request.name,
 		imageType = request.imageType,
 		imageIndex = request.imageIndex,
@@ -1710,7 +1710,7 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		quality: Int? = 90,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = emptyMap<String, Any?>()
 		require(quality in 0..100) { "Parameter \"quality\" must be in range 0..100 (inclusive)." }
 		val queryParameters = buildMap<String, Any?>(12) {
@@ -1728,7 +1728,7 @@ public class ImageApi(
 			put("quality", quality)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Branding/Splashscreen", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Branding/Splashscreen", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1737,7 +1737,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getSplashscreen(request: GetSplashscreenRequest = GetSplashscreenRequest()): Response<ByteReadChannel> = getSplashscreen(
+	public suspend fun getSplashscreen(request: GetSplashscreenRequest = GetSplashscreenRequest()): Response<ByteArray> = getSplashscreen(
 		tag = request.tag,
 		format = request.format,
 		maxWidth = request.maxWidth,
@@ -1840,7 +1840,7 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("name", name)
 			put("imageType", imageType)
@@ -1863,7 +1863,7 @@ public class ImageApi(
 			put("imageIndex", imageIndex)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Studios/{name}/Images/{imageType}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Studios/{name}/Images/{imageType}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1872,7 +1872,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getStudioImage(request: GetStudioImageRequest): Response<ByteReadChannel> = getStudioImage(
+	public suspend fun getStudioImage(request: GetStudioImageRequest): Response<ByteArray> = getStudioImage(
 		name = request.name,
 		imageType = request.imageType,
 		tag = request.tag,
@@ -1995,7 +1995,7 @@ public class ImageApi(
 		blur: Int? = null,
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("name", name)
 			put("imageType", imageType)
@@ -2018,7 +2018,7 @@ public class ImageApi(
 			put("foregroundLayer", foregroundLayer)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Studios/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Studios/{name}/Images/{imageType}/{imageIndex}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -2027,7 +2027,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getStudioImageByIndex(request: GetStudioImageByIndexRequest): Response<ByteReadChannel> = getStudioImageByIndex(
+	public suspend fun getStudioImageByIndex(request: GetStudioImageByIndexRequest): Response<ByteArray> = getStudioImageByIndex(
 		name = request.name,
 		imageType = request.imageType,
 		imageIndex = request.imageIndex,
@@ -2148,7 +2148,7 @@ public class ImageApi(
 		backgroundColor: String? = null,
 		foregroundLayer: String? = null,
 		imageIndex: Int? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(16) {
 			put("userId", userId)
@@ -2169,7 +2169,7 @@ public class ImageApi(
 			put("imageIndex", imageIndex)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/UserImage", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/UserImage", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -2178,7 +2178,7 @@ public class ImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getUserImage(request: GetUserImageRequest = GetUserImageRequest()): Response<ByteReadChannel> = getUserImage(
+	public suspend fun getUserImage(request: GetUserImageRequest = GetUserImageRequest()): Response<ByteArray> = getUserImage(
 		userId = request.userId,
 		tag = request.tag,
 		format = request.format,

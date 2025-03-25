@@ -5,9 +5,9 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.ByteArray
 import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
@@ -313,13 +313,13 @@ public class LiveTvApi(
 	 *
 	 * @param recordingId Recording id.
 	 */
-	public suspend fun getLiveRecordingFile(recordingId: String): Response<ByteReadChannel> {
+	public suspend fun getLiveRecordingFile(recordingId: String): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("recordingId", recordingId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/LiveTv/LiveRecordings/{recordingId}/stream", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/LiveTv/LiveRecordings/{recordingId}/stream", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -342,14 +342,14 @@ public class LiveTvApi(
 	 * @param streamId Stream id.
 	 * @param container Container type.
 	 */
-	public suspend fun getLiveStreamFile(streamId: String, container: String): Response<ByteReadChannel> {
+	public suspend fun getLiveStreamFile(streamId: String, container: String): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("streamId", streamId)
 			put("container", container)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/LiveTv/LiveStreamFiles/{streamId}/stream.{container}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/LiveTv/LiveStreamFiles/{streamId}/stream.{container}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -975,11 +975,11 @@ public class LiveTvApi(
 	/**
 	 * Gets available countries.
 	 */
-	public suspend fun getSchedulesDirectCountries(): Response<ByteReadChannel> {
+	public suspend fun getSchedulesDirectCountries(): Response<ByteArray> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/LiveTv/ListingProviders/SchedulesDirect/Countries", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/LiveTv/ListingProviders/SchedulesDirect/Countries", pathParameters, queryParameters, data)
 		return response
 	}
 

@@ -5,9 +5,9 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.ByteArray
 import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
@@ -114,13 +114,13 @@ public class LibraryApi(
 	 *
 	 * @param itemId The item id.
 	 */
-	public suspend fun getDownload(itemId: UUID): Response<ByteReadChannel> {
+	public suspend fun getDownload(itemId: UUID): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Download", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Items/{itemId}/Download", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -142,13 +142,13 @@ public class LibraryApi(
 	 *
 	 * @param itemId The item id.
 	 */
-	public suspend fun getFile(itemId: UUID): Response<ByteReadChannel> {
+	public suspend fun getFile(itemId: UUID): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/File", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Items/{itemId}/File", pathParameters, queryParameters, data)
 		return response
 	}
 

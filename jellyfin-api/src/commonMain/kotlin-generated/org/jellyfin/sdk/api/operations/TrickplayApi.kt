@@ -5,8 +5,8 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
+import kotlin.ByteArray
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.buildMap
@@ -29,7 +29,7 @@ public class TrickplayApi(
 		itemId: UUID,
 		width: Int,
 		mediaSourceId: UUID? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
 			put("width", width)
@@ -38,7 +38,7 @@ public class TrickplayApi(
 			put("mediaSourceId", mediaSourceId)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/Trickplay/{width}/tiles.m3u8", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/Trickplay/{width}/tiles.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -77,7 +77,7 @@ public class TrickplayApi(
 		width: Int,
 		index: Int,
 		mediaSourceId: UUID? = null,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("itemId", itemId)
 			put("width", width)
@@ -87,7 +87,7 @@ public class TrickplayApi(
 			put("mediaSourceId", mediaSourceId)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/Trickplay/{width}/{index}.jpg", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Videos/{itemId}/Trickplay/{width}/{index}.jpg", pathParameters, queryParameters, data)
 		return response
 	}
 

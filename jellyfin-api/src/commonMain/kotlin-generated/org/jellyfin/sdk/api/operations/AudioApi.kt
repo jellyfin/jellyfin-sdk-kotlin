@@ -5,9 +5,9 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.api.operations
 
-import io.ktor.utils.io.ByteReadChannel
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.ByteArray
 import kotlin.Deprecated
 import kotlin.Float
 import kotlin.Int
@@ -135,7 +135,7 @@ public class AudioApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -195,7 +195,7 @@ public class AudioApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/stream", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Audio/{itemId}/stream", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -204,7 +204,7 @@ public class AudioApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getAudioStream(request: GetAudioStreamRequest): Response<ByteReadChannel> = getAudioStream(
+	public suspend fun getAudioStream(request: GetAudioStreamRequest): Response<ByteArray> = getAudioStream(
 		itemId = request.itemId,
 		container = request.container,
 		static = request.static,
@@ -524,7 +524,7 @@ public class AudioApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
 			put("container", container)
@@ -583,7 +583,7 @@ public class AudioApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/stream.{container}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Audio/{itemId}/stream.{container}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -592,7 +592,7 @@ public class AudioApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getAudioStreamByContainer(request: GetAudioStreamByContainerRequest): Response<ByteReadChannel> = getAudioStreamByContainer(
+	public suspend fun getAudioStreamByContainer(request: GetAudioStreamByContainerRequest): Response<ByteArray> = getAudioStreamByContainer(
 		itemId = request.itemId,
 		container = request.container,
 		static = request.static,
@@ -914,7 +914,7 @@ public class AudioApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
 			put("container", container)
@@ -974,7 +974,7 @@ public class AudioApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/stream.{container}", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Audio/{itemId}/stream.{container}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -984,7 +984,7 @@ public class AudioApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getAudioStreamByContainerDeprecated(request: GetAudioStreamByContainerDeprecatedRequest): Response<ByteReadChannel> = getAudioStreamByContainerDeprecated(
+	public suspend fun getAudioStreamByContainerDeprecated(request: GetAudioStreamByContainerDeprecatedRequest): Response<ByteArray> = getAudioStreamByContainerDeprecated(
 		itemId = request.itemId,
 		container = request.container,
 		static = request.static,
@@ -1311,7 +1311,7 @@ public class AudioApi(
 		context: EncodingContext? = null,
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
-	): Response<ByteReadChannel> {
+	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -1372,7 +1372,7 @@ public class AudioApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/stream", pathParameters, queryParameters, data)
+		val response = api.`get`<ByteArray>("/Audio/{itemId}/stream", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1382,7 +1382,7 @@ public class AudioApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getAudioStreamDeprecated(request: GetAudioStreamDeprecatedRequest): Response<ByteReadChannel> = getAudioStreamDeprecated(
+	public suspend fun getAudioStreamDeprecated(request: GetAudioStreamDeprecatedRequest): Response<ByteArray> = getAudioStreamDeprecated(
 		itemId = request.itemId,
 		container = request.container,
 		static = request.static,
