@@ -65,7 +65,6 @@ public synthetic class org/jellyfin/sdk/model/ServerVersion$$serializer : kotlin
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/ServerVersion;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/ServerVersion$Companion {
@@ -101,7 +100,6 @@ public synthetic class org/jellyfin/sdk/model/api/AccessSchedule$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/AccessSchedule;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/AccessSchedule$Companion {
@@ -147,7 +145,6 @@ public synthetic class org/jellyfin/sdk/model/api/ActivityLogEntry$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ActivityLogEntry;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ActivityLogEntry$Companion {
@@ -178,7 +175,6 @@ public synthetic class org/jellyfin/sdk/model/api/ActivityLogEntryMessage$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ActivityLogEntryMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ActivityLogEntryMessage$Companion {
@@ -209,7 +205,6 @@ public synthetic class org/jellyfin/sdk/model/api/ActivityLogEntryQueryResult$$s
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ActivityLogEntryQueryResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ActivityLogEntryQueryResult$Companion {
@@ -239,7 +234,6 @@ public synthetic class org/jellyfin/sdk/model/api/ActivityLogEntryStartMessage$$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ActivityLogEntryStartMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ActivityLogEntryStartMessage$Companion {
@@ -260,7 +254,6 @@ public synthetic class org/jellyfin/sdk/model/api/ActivityLogEntryStopMessage$$s
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ActivityLogEntryStopMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ActivityLogEntryStopMessage$Companion {
@@ -289,7 +282,6 @@ public synthetic class org/jellyfin/sdk/model/api/AddVirtualFolderDto$$serialize
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/AddVirtualFolderDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/AddVirtualFolderDto$Companion {
@@ -343,7 +335,6 @@ public synthetic class org/jellyfin/sdk/model/api/AlbumInfo$$serializer : kotlin
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/AlbumInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/AlbumInfo$Companion {
@@ -377,7 +368,6 @@ public synthetic class org/jellyfin/sdk/model/api/AlbumInfoRemoteSearchQuery$$se
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/AlbumInfoRemoteSearchQuery;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/AlbumInfoRemoteSearchQuery$Companion {
@@ -410,7 +400,6 @@ public synthetic class org/jellyfin/sdk/model/api/AllThemeMediaResult$$serialize
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/AllThemeMediaResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/AllThemeMediaResult$Companion {
@@ -460,7 +449,6 @@ public synthetic class org/jellyfin/sdk/model/api/ArtistInfo$$serializer : kotli
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ArtistInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ArtistInfo$Companion {
@@ -494,7 +482,6 @@ public synthetic class org/jellyfin/sdk/model/api/ArtistInfoRemoteSearchQuery$$s
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ArtistInfoRemoteSearchQuery;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ArtistInfoRemoteSearchQuery$Companion {
@@ -543,7 +530,6 @@ public synthetic class org/jellyfin/sdk/model/api/AuthenticateUserByName$$serial
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/AuthenticateUserByName;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/AuthenticateUserByName$Companion {
@@ -593,7 +579,6 @@ public synthetic class org/jellyfin/sdk/model/api/AuthenticationInfo$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/AuthenticationInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/AuthenticationInfo$Companion {
@@ -624,7 +609,6 @@ public synthetic class org/jellyfin/sdk/model/api/AuthenticationInfoQueryResult$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/AuthenticationInfoQueryResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/AuthenticationInfoQueryResult$Companion {
@@ -659,7 +643,6 @@ public synthetic class org/jellyfin/sdk/model/api/AuthenticationResult$$serializ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/AuthenticationResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/AuthenticationResult$Companion {
@@ -991,7 +974,6 @@ public synthetic class org/jellyfin/sdk/model/api/BaseItemDto$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/BaseItemDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/BaseItemDto$Companion {
@@ -1022,7 +1004,6 @@ public synthetic class org/jellyfin/sdk/model/api/BaseItemDtoQueryResult$$serial
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/BaseItemDtoQueryResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/BaseItemDtoQueryResult$Companion {
@@ -1112,7 +1093,6 @@ public synthetic class org/jellyfin/sdk/model/api/BaseItemPerson$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/BaseItemPerson;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/BaseItemPerson$Companion {
@@ -1132,7 +1112,6 @@ public synthetic class org/jellyfin/sdk/model/api/BasePluginConfiguration$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/BasePluginConfiguration;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/BasePluginConfiguration$Companion {
@@ -1182,7 +1161,6 @@ public synthetic class org/jellyfin/sdk/model/api/BookInfo$$serializer : kotlinx
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/BookInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/BookInfo$Companion {
@@ -1216,7 +1194,6 @@ public synthetic class org/jellyfin/sdk/model/api/BookInfoRemoteSearchQuery$$ser
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/BookInfoRemoteSearchQuery;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/BookInfoRemoteSearchQuery$Companion {
@@ -1264,7 +1241,6 @@ public synthetic class org/jellyfin/sdk/model/api/BoxSetInfo$$serializer : kotli
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/BoxSetInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/BoxSetInfo$Companion {
@@ -1298,7 +1274,6 @@ public synthetic class org/jellyfin/sdk/model/api/BoxSetInfoRemoteSearchQuery$$s
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/BoxSetInfoRemoteSearchQuery;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/BoxSetInfoRemoteSearchQuery$Companion {
@@ -1330,7 +1305,6 @@ public synthetic class org/jellyfin/sdk/model/api/BrandingOptions$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/BrandingOptions;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/BrandingOptions$Companion {
@@ -1363,7 +1337,6 @@ public synthetic class org/jellyfin/sdk/model/api/BufferRequestDto$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/BufferRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/BufferRequestDto$Companion {
@@ -1392,7 +1365,6 @@ public synthetic class org/jellyfin/sdk/model/api/CastReceiverApplication$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/CastReceiverApplication;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/CastReceiverApplication$Companion {
@@ -1442,7 +1414,6 @@ public synthetic class org/jellyfin/sdk/model/api/ChannelFeatures$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ChannelFeatures;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ChannelFeatures$Companion {
@@ -1498,7 +1469,6 @@ public synthetic class org/jellyfin/sdk/model/api/ChannelMappingOptionsDto$$seri
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ChannelMappingOptionsDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ChannelMappingOptionsDto$Companion {
@@ -1592,7 +1562,6 @@ public synthetic class org/jellyfin/sdk/model/api/ChapterInfo$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ChapterInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ChapterInfo$Companion {
@@ -1632,7 +1601,6 @@ public synthetic class org/jellyfin/sdk/model/api/ClientCapabilitiesDto$$seriali
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ClientCapabilitiesDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ClientCapabilitiesDto$Companion {
@@ -1659,7 +1627,6 @@ public synthetic class org/jellyfin/sdk/model/api/ClientLogDocumentResponseDto$$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ClientLogDocumentResponseDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ClientLogDocumentResponseDto$Companion {
@@ -1697,7 +1664,6 @@ public synthetic class org/jellyfin/sdk/model/api/CodecProfile$$serializer : kot
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/CodecProfile;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/CodecProfile$Companion {
@@ -1742,7 +1708,6 @@ public synthetic class org/jellyfin/sdk/model/api/CollectionCreationResult$$seri
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/CollectionCreationResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/CollectionCreationResult$Companion {
@@ -1834,7 +1799,6 @@ public synthetic class org/jellyfin/sdk/model/api/ConfigImageTypes$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ConfigImageTypes;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ConfigImageTypes$Companion {
@@ -1872,7 +1836,6 @@ public synthetic class org/jellyfin/sdk/model/api/ConfigurationPageInfo$$seriali
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ConfigurationPageInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ConfigurationPageInfo$Companion {
@@ -1906,7 +1869,6 @@ public synthetic class org/jellyfin/sdk/model/api/ContainerProfile$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ContainerProfile;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ContainerProfile$Companion {
@@ -1941,7 +1903,6 @@ public synthetic class org/jellyfin/sdk/model/api/CountryInfo$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/CountryInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/CountryInfo$Companion {
@@ -1979,7 +1940,6 @@ public synthetic class org/jellyfin/sdk/model/api/CreatePlaylistDto$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/CreatePlaylistDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/CreatePlaylistDto$Companion {
@@ -2009,7 +1969,6 @@ public synthetic class org/jellyfin/sdk/model/api/CreateUserByName$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/CreateUserByName;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/CreateUserByName$Companion {
@@ -2045,7 +2004,6 @@ public synthetic class org/jellyfin/sdk/model/api/CultureDto$$serializer : kotli
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/CultureDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/CultureDto$Companion {
@@ -2114,7 +2072,6 @@ public synthetic class org/jellyfin/sdk/model/api/DefaultDirectoryBrowserInfoDto
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/DefaultDirectoryBrowserInfoDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/DefaultDirectoryBrowserInfoDto$Companion {
@@ -2179,7 +2136,6 @@ public synthetic class org/jellyfin/sdk/model/api/DeviceInfoDto$$serializer : ko
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/DeviceInfoDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/DeviceInfoDto$Companion {
@@ -2210,7 +2166,6 @@ public synthetic class org/jellyfin/sdk/model/api/DeviceInfoDtoQueryResult$$seri
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/DeviceInfoDtoQueryResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/DeviceInfoDtoQueryResult$Companion {
@@ -2242,7 +2197,6 @@ public synthetic class org/jellyfin/sdk/model/api/DeviceOptionsDto$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/DeviceOptionsDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/DeviceOptionsDto$Companion {
@@ -2290,7 +2244,6 @@ public synthetic class org/jellyfin/sdk/model/api/DeviceProfile$$serializer : ko
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/DeviceProfile;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/DeviceProfile$Companion {
@@ -2324,7 +2277,6 @@ public synthetic class org/jellyfin/sdk/model/api/DirectPlayProfile$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/DirectPlayProfile;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/DirectPlayProfile$Companion {
@@ -2378,7 +2330,6 @@ public synthetic class org/jellyfin/sdk/model/api/DisplayPreferencesDto$$seriali
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/DisplayPreferencesDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/DisplayPreferencesDto$Companion {
@@ -2625,7 +2576,6 @@ public synthetic class org/jellyfin/sdk/model/api/EncodingOptions$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/EncodingOptions;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/EncodingOptions$Companion {
@@ -2654,7 +2604,6 @@ public synthetic class org/jellyfin/sdk/model/api/EndPointInfo$$serializer : kot
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/EndPointInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/EndPointInfo$Companion {
@@ -2688,7 +2637,6 @@ public synthetic class org/jellyfin/sdk/model/api/ExternalIdInfo$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ExternalIdInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ExternalIdInfo$Companion {
@@ -2747,7 +2695,6 @@ public synthetic class org/jellyfin/sdk/model/api/ExternalUrl$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ExternalUrl;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ExternalUrl$Companion {
@@ -2805,7 +2752,6 @@ public synthetic class org/jellyfin/sdk/model/api/FileSystemEntryInfo$$serialize
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/FileSystemEntryInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/FileSystemEntryInfo$Companion {
@@ -2858,7 +2804,6 @@ public synthetic class org/jellyfin/sdk/model/api/FontFile$$serializer : kotlinx
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/FontFile;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/FontFile$Companion {
@@ -2888,7 +2833,6 @@ public synthetic class org/jellyfin/sdk/model/api/ForceKeepAliveMessage$$seriali
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ForceKeepAliveMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ForceKeepAliveMessage$Companion {
@@ -2933,7 +2877,6 @@ public synthetic class org/jellyfin/sdk/model/api/ForgotPasswordDto$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ForgotPasswordDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ForgotPasswordDto$Companion {
@@ -2960,7 +2903,6 @@ public synthetic class org/jellyfin/sdk/model/api/ForgotPasswordPinDto$$serializ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ForgotPasswordPinDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ForgotPasswordPinDto$Companion {
@@ -2992,7 +2934,6 @@ public synthetic class org/jellyfin/sdk/model/api/ForgotPasswordResult$$serializ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ForgotPasswordResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ForgotPasswordResult$Companion {
@@ -3023,7 +2964,6 @@ public synthetic class org/jellyfin/sdk/model/api/GeneralCommand$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GeneralCommand;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/GeneralCommand$Companion {
@@ -3054,7 +2994,6 @@ public synthetic class org/jellyfin/sdk/model/api/GeneralCommandMessage$$seriali
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GeneralCommandMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/GeneralCommandMessage$Companion {
@@ -3193,7 +3132,6 @@ public synthetic class org/jellyfin/sdk/model/api/GetProgramsDto$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GetProgramsDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/GetProgramsDto$Companion {
@@ -3228,7 +3166,6 @@ public synthetic class org/jellyfin/sdk/model/api/GroupInfoDto$$serializer : kot
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GroupInfoDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/GroupInfoDto$Companion {
@@ -3259,7 +3196,6 @@ public synthetic class org/jellyfin/sdk/model/api/GroupInfoDtoGroupUpdate$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GroupInfoDtoGroupUpdate;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/GroupInfoDtoGroupUpdate$Companion {
@@ -3359,7 +3295,6 @@ public synthetic class org/jellyfin/sdk/model/api/GroupStateUpdate$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GroupStateUpdate;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/GroupStateUpdate$Companion {
@@ -3390,7 +3325,6 @@ public synthetic class org/jellyfin/sdk/model/api/GroupStateUpdateGroupUpdate$$s
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GroupStateUpdateGroupUpdate;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/GroupStateUpdateGroupUpdate$Companion {
@@ -3419,7 +3353,6 @@ public synthetic class org/jellyfin/sdk/model/api/GroupUpdate$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GroupUpdate;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/GroupUpdate$Companion {
@@ -3474,7 +3407,6 @@ public synthetic class org/jellyfin/sdk/model/api/GuideInfo$$serializer : kotlin
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/GuideInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/GuideInfo$Companion {
@@ -3537,7 +3469,6 @@ public synthetic class org/jellyfin/sdk/model/api/IPlugin$$serializer : kotlinx/
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/IPlugin;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/IPlugin$Companion {
@@ -3564,7 +3495,6 @@ public synthetic class org/jellyfin/sdk/model/api/IgnoreWaitRequestDto$$serializ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/IgnoreWaitRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/IgnoreWaitRequestDto$Companion {
@@ -3627,7 +3557,6 @@ public synthetic class org/jellyfin/sdk/model/api/ImageInfo$$serializer : kotlin
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ImageInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ImageInfo$Companion {
@@ -3658,7 +3587,6 @@ public synthetic class org/jellyfin/sdk/model/api/ImageOption$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ImageOption;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ImageOption$Companion {
@@ -3710,7 +3638,6 @@ public synthetic class org/jellyfin/sdk/model/api/ImageProviderInfo$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ImageProviderInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ImageProviderInfo$Companion {
@@ -3800,7 +3727,6 @@ public synthetic class org/jellyfin/sdk/model/api/InboundKeepAliveMessage$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/InboundKeepAliveMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/InboundKeepAliveMessage$Companion {
@@ -3849,7 +3775,6 @@ public synthetic class org/jellyfin/sdk/model/api/InstallationInfo$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/InstallationInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/InstallationInfo$Companion {
@@ -3915,7 +3840,6 @@ public synthetic class org/jellyfin/sdk/model/api/ItemCounts$$serializer : kotli
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ItemCounts;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ItemCounts$Companion {
@@ -4088,7 +4012,6 @@ public synthetic class org/jellyfin/sdk/model/api/JoinGroupRequestDto$$serialize
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/JoinGroupRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/JoinGroupRequestDto$Companion {
@@ -4138,7 +4061,6 @@ public synthetic class org/jellyfin/sdk/model/api/LibraryChangedMessage$$seriali
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LibraryChangedMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LibraryChangedMessage$Companion {
@@ -4168,7 +4090,6 @@ public synthetic class org/jellyfin/sdk/model/api/LibraryOptionInfoDto$$serializ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LibraryOptionInfoDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LibraryOptionInfoDto$Companion {
@@ -4278,7 +4199,6 @@ public synthetic class org/jellyfin/sdk/model/api/LibraryOptions$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LibraryOptions;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LibraryOptions$Companion {
@@ -4313,7 +4233,6 @@ public synthetic class org/jellyfin/sdk/model/api/LibraryOptionsResultDto$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LibraryOptionsResultDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LibraryOptionsResultDto$Companion {
@@ -4349,7 +4268,6 @@ public synthetic class org/jellyfin/sdk/model/api/LibraryTypeOptionsDto$$seriali
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LibraryTypeOptionsDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LibraryTypeOptionsDto$Companion {
@@ -4388,7 +4306,6 @@ public synthetic class org/jellyfin/sdk/model/api/LibraryUpdateInfo$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LibraryUpdateInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LibraryUpdateInfo$Companion {
@@ -4450,7 +4367,6 @@ public synthetic class org/jellyfin/sdk/model/api/ListingsProviderInfo$$serializ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ListingsProviderInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ListingsProviderInfo$Companion {
@@ -4477,7 +4393,6 @@ public synthetic class org/jellyfin/sdk/model/api/LiveStreamResponse$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LiveStreamResponse;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LiveStreamResponse$Companion {
@@ -4508,7 +4423,6 @@ public synthetic class org/jellyfin/sdk/model/api/LiveTvInfo$$serializer : kotli
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LiveTvInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LiveTvInfo$Companion {
@@ -4564,7 +4478,6 @@ public synthetic class org/jellyfin/sdk/model/api/LiveTvOptions$$serializer : ko
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LiveTvOptions;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LiveTvOptions$Companion {
@@ -4606,7 +4519,6 @@ public synthetic class org/jellyfin/sdk/model/api/LiveTvServiceInfo$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LiveTvServiceInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LiveTvServiceInfo$Companion {
@@ -4654,7 +4566,6 @@ public synthetic class org/jellyfin/sdk/model/api/LocalizationOption$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LocalizationOption;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LocalizationOption$Companion {
@@ -4706,7 +4617,6 @@ public synthetic class org/jellyfin/sdk/model/api/LogFile$$serializer : kotlinx/
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LogFile;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LogFile$Companion {
@@ -4757,7 +4667,6 @@ public synthetic class org/jellyfin/sdk/model/api/LyricDto$$serializer : kotlinx
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LyricDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LyricDto$Companion {
@@ -4787,7 +4696,6 @@ public synthetic class org/jellyfin/sdk/model/api/LyricLine$$serializer : kotlin
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LyricLine;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LyricLine$Companion {
@@ -4834,7 +4742,6 @@ public synthetic class org/jellyfin/sdk/model/api/LyricMetadata$$serializer : ko
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/LyricMetadata;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/LyricMetadata$Companion {
@@ -4874,7 +4781,6 @@ public synthetic class org/jellyfin/sdk/model/api/MediaAttachment$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MediaAttachment;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MediaAttachment$Companion {
@@ -4906,7 +4812,6 @@ public synthetic class org/jellyfin/sdk/model/api/MediaPathDto$$serializer : kot
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MediaPathDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MediaPathDto$Companion {
@@ -4933,7 +4838,6 @@ public synthetic class org/jellyfin/sdk/model/api/MediaPathInfo$$serializer : ko
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MediaPathInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MediaPathInfo$Companion {
@@ -4990,7 +4894,6 @@ public synthetic class org/jellyfin/sdk/model/api/MediaSegmentDto$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MediaSegmentDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MediaSegmentDto$Companion {
@@ -5021,7 +4924,6 @@ public synthetic class org/jellyfin/sdk/model/api/MediaSegmentDtoQueryResult$$se
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MediaSegmentDtoQueryResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MediaSegmentDtoQueryResult$Companion {
@@ -5158,7 +5060,6 @@ public synthetic class org/jellyfin/sdk/model/api/MediaSourceInfo$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MediaSourceInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MediaSourceInfo$Companion {
@@ -5327,7 +5228,6 @@ public synthetic class org/jellyfin/sdk/model/api/MediaStream$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MediaStream;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MediaStream$Companion {
@@ -5412,7 +5312,6 @@ public synthetic class org/jellyfin/sdk/model/api/MediaUpdateInfoDto$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MediaUpdateInfoDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MediaUpdateInfoDto$Companion {
@@ -5443,7 +5342,6 @@ public synthetic class org/jellyfin/sdk/model/api/MediaUpdateInfoPathDto$$serial
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MediaUpdateInfoPathDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MediaUpdateInfoPathDto$Companion {
@@ -5474,7 +5372,6 @@ public synthetic class org/jellyfin/sdk/model/api/MediaUrl$$serializer : kotlinx
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MediaUrl;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MediaUrl$Companion {
@@ -5506,7 +5403,6 @@ public synthetic class org/jellyfin/sdk/model/api/MessageCommand$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MessageCommand;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MessageCommand$Companion {
@@ -5533,7 +5429,6 @@ public synthetic class org/jellyfin/sdk/model/api/MetadataConfiguration$$seriali
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MetadataConfiguration;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MetadataConfiguration$Companion {
@@ -5571,7 +5466,6 @@ public synthetic class org/jellyfin/sdk/model/api/MetadataEditorInfo$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MetadataEditorInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MetadataEditorInfo$Companion {
@@ -5636,7 +5530,6 @@ public synthetic class org/jellyfin/sdk/model/api/MetadataOptions$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MetadataOptions;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MetadataOptions$Companion {
@@ -5684,7 +5577,6 @@ public synthetic class org/jellyfin/sdk/model/api/MovePlaylistItemRequestDto$$se
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MovePlaylistItemRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MovePlaylistItemRequestDto$Companion {
@@ -5732,7 +5624,6 @@ public synthetic class org/jellyfin/sdk/model/api/MovieInfo$$serializer : kotlin
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MovieInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MovieInfo$Companion {
@@ -5766,7 +5657,6 @@ public synthetic class org/jellyfin/sdk/model/api/MovieInfoRemoteSearchQuery$$se
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MovieInfoRemoteSearchQuery;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MovieInfoRemoteSearchQuery$Companion {
@@ -5816,7 +5706,6 @@ public synthetic class org/jellyfin/sdk/model/api/MusicVideoInfo$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MusicVideoInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MusicVideoInfo$Companion {
@@ -5850,7 +5739,6 @@ public synthetic class org/jellyfin/sdk/model/api/MusicVideoInfoRemoteSearchQuer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/MusicVideoInfoRemoteSearchQuery;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/MusicVideoInfoRemoteSearchQuery$Companion {
@@ -5880,7 +5768,6 @@ public synthetic class org/jellyfin/sdk/model/api/NameGuidPair$$serializer : kot
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/NameGuidPair;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/NameGuidPair$Companion {
@@ -5911,7 +5798,6 @@ public synthetic class org/jellyfin/sdk/model/api/NameIdPair$$serializer : kotli
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/NameIdPair;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/NameIdPair$Companion {
@@ -5942,7 +5828,6 @@ public synthetic class org/jellyfin/sdk/model/api/NameValuePair$$serializer : ko
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/NameValuePair;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/NameValuePair$Companion {
@@ -6013,7 +5898,6 @@ public synthetic class org/jellyfin/sdk/model/api/NetworkConfiguration$$serializ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/NetworkConfiguration;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/NetworkConfiguration$Companion {
@@ -6040,7 +5924,6 @@ public synthetic class org/jellyfin/sdk/model/api/NewGroupRequestDto$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/NewGroupRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/NewGroupRequestDto$Companion {
@@ -6067,7 +5950,6 @@ public synthetic class org/jellyfin/sdk/model/api/NextItemRequestDto$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/NextItemRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/NextItemRequestDto$Companion {
@@ -6121,7 +6003,6 @@ public synthetic class org/jellyfin/sdk/model/api/OpenLiveStreamDto$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/OpenLiveStreamDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/OpenLiveStreamDto$Companion {
@@ -6149,7 +6030,6 @@ public synthetic class org/jellyfin/sdk/model/api/OutboundKeepAliveMessage$$seri
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/OutboundKeepAliveMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/OutboundKeepAliveMessage$Companion {
@@ -6201,7 +6081,6 @@ public synthetic class org/jellyfin/sdk/model/api/PackageInfo$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PackageInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PackageInfo$Companion {
@@ -6232,7 +6111,6 @@ public synthetic class org/jellyfin/sdk/model/api/ParentalRating$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ParentalRating;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ParentalRating$Companion {
@@ -6261,7 +6139,6 @@ public synthetic class org/jellyfin/sdk/model/api/PathSubstitution$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PathSubstitution;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PathSubstitution$Companion {
@@ -6349,7 +6226,6 @@ public synthetic class org/jellyfin/sdk/model/api/PersonLookupInfo$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PersonLookupInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PersonLookupInfo$Companion {
@@ -6383,7 +6259,6 @@ public synthetic class org/jellyfin/sdk/model/api/PersonLookupInfoRemoteSearchQu
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PersonLookupInfoRemoteSearchQuery;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PersonLookupInfoRemoteSearchQuery$Companion {
@@ -6412,7 +6287,6 @@ public synthetic class org/jellyfin/sdk/model/api/PinRedeemResult$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PinRedeemResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PinRedeemResult$Companion {
@@ -6439,7 +6313,6 @@ public synthetic class org/jellyfin/sdk/model/api/PingRequestDto$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PingRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PingRequestDto$Companion {
@@ -6507,7 +6380,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlayMessage$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlayMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlayMessage$Companion {
@@ -6566,7 +6438,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlayQueueUpdate$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlayQueueUpdate;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlayQueueUpdate$Companion {
@@ -6597,7 +6468,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlayQueueUpdateGroupUpdate$$se
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlayQueueUpdateGroupUpdate;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlayQueueUpdateGroupUpdate$Companion {
@@ -6664,7 +6534,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlayRequest$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlayRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlayRequest$Companion {
@@ -6695,7 +6564,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlayRequestDto$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlayRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlayRequestDto$Companion {
@@ -6772,7 +6640,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlaybackInfoDto$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlaybackInfoDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlaybackInfoDto$Companion {
@@ -6804,7 +6671,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlaybackInfoResponse$$serializ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlaybackInfoResponse;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlaybackInfoResponse$Companion {
@@ -6889,7 +6755,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlaybackProgressInfo$$serializ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlaybackProgressInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlaybackProgressInfo$Companion {
@@ -6989,7 +6854,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlaybackStartInfo$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlaybackStartInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlaybackStartInfo$Companion {
@@ -7037,7 +6901,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlaybackStopInfo$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlaybackStopInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlaybackStopInfo$Companion {
@@ -7087,7 +6950,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlayerStateInfo$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlayerStateInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlayerStateInfo$Companion {
@@ -7114,7 +6976,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlaylistCreationResult$$serial
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlaylistCreationResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlaylistCreationResult$Companion {
@@ -7145,7 +7006,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlaylistDto$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlaylistDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlaylistDto$Companion {
@@ -7174,7 +7034,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlaylistUserPermissions$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlaylistUserPermissions;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlaylistUserPermissions$Companion {
@@ -7229,7 +7088,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlaystateMessage$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlaystateMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlaystateMessage$Companion {
@@ -7261,7 +7119,6 @@ public synthetic class org/jellyfin/sdk/model/api/PlaystateRequest$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PlaystateRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PlaystateRequest$Companion {
@@ -7303,7 +7160,6 @@ public synthetic class org/jellyfin/sdk/model/api/PluginInfo$$serializer : kotli
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PluginInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PluginInfo$Companion {
@@ -7334,7 +7190,6 @@ public synthetic class org/jellyfin/sdk/model/api/PluginInstallationCancelledMes
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PluginInstallationCancelledMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PluginInstallationCancelledMessage$Companion {
@@ -7365,7 +7220,6 @@ public synthetic class org/jellyfin/sdk/model/api/PluginInstallationCompletedMes
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PluginInstallationCompletedMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PluginInstallationCompletedMessage$Companion {
@@ -7396,7 +7250,6 @@ public synthetic class org/jellyfin/sdk/model/api/PluginInstallationFailedMessag
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PluginInstallationFailedMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PluginInstallationFailedMessage$Companion {
@@ -7427,7 +7280,6 @@ public synthetic class org/jellyfin/sdk/model/api/PluginInstallingMessage$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PluginInstallingMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PluginInstallingMessage$Companion {
@@ -7480,7 +7332,6 @@ public synthetic class org/jellyfin/sdk/model/api/PluginUninstalledMessage$$seri
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PluginUninstalledMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PluginUninstalledMessage$Companion {
@@ -7507,7 +7358,6 @@ public synthetic class org/jellyfin/sdk/model/api/PreviousItemRequestDto$$serial
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PreviousItemRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PreviousItemRequestDto$Companion {
@@ -7544,7 +7394,6 @@ public synthetic class org/jellyfin/sdk/model/api/ProblemDetails$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ProblemDetails;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ProblemDetails$Companion {
@@ -7599,7 +7448,6 @@ public synthetic class org/jellyfin/sdk/model/api/ProfileCondition$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ProfileCondition;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ProfileCondition$Companion {
@@ -7720,7 +7568,6 @@ public synthetic class org/jellyfin/sdk/model/api/PublicSystemInfo$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/PublicSystemInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/PublicSystemInfo$Companion {
@@ -7751,7 +7598,6 @@ public synthetic class org/jellyfin/sdk/model/api/QueryFilters$$serializer : kot
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/QueryFilters;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/QueryFilters$Companion {
@@ -7786,7 +7632,6 @@ public synthetic class org/jellyfin/sdk/model/api/QueryFiltersLegacy$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/QueryFiltersLegacy;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/QueryFiltersLegacy$Companion {
@@ -7816,7 +7661,6 @@ public synthetic class org/jellyfin/sdk/model/api/QueueItem$$serializer : kotlin
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/QueueItem;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/QueueItem$Companion {
@@ -7845,7 +7689,6 @@ public synthetic class org/jellyfin/sdk/model/api/QueueRequestDto$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/QueueRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/QueueRequestDto$Companion {
@@ -7872,7 +7715,6 @@ public synthetic class org/jellyfin/sdk/model/api/QuickConnectDto$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/QuickConnectDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/QuickConnectDto$Companion {
@@ -7913,7 +7755,6 @@ public synthetic class org/jellyfin/sdk/model/api/QuickConnectResult$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/QuickConnectResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/QuickConnectResult$Companion {
@@ -7963,7 +7804,6 @@ public synthetic class org/jellyfin/sdk/model/api/ReadyRequestDto$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ReadyRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ReadyRequestDto$Companion {
@@ -7997,7 +7837,6 @@ public synthetic class org/jellyfin/sdk/model/api/RecommendationDto$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/RecommendationDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/RecommendationDto$Companion {
@@ -8071,7 +7910,6 @@ public synthetic class org/jellyfin/sdk/model/api/RefreshProgressMessage$$serial
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/RefreshProgressMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/RefreshProgressMessage$Companion {
@@ -8117,7 +7955,6 @@ public synthetic class org/jellyfin/sdk/model/api/RemoteImageInfo$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/RemoteImageInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/RemoteImageInfo$Companion {
@@ -8149,7 +7986,6 @@ public synthetic class org/jellyfin/sdk/model/api/RemoteImageResult$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/RemoteImageResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/RemoteImageResult$Companion {
@@ -8180,7 +8016,6 @@ public synthetic class org/jellyfin/sdk/model/api/RemoteLyricInfoDto$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/RemoteLyricInfoDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/RemoteLyricInfoDto$Companion {
@@ -8231,7 +8066,6 @@ public synthetic class org/jellyfin/sdk/model/api/RemoteSearchResult$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/RemoteSearchResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/RemoteSearchResult$Companion {
@@ -8290,7 +8124,6 @@ public synthetic class org/jellyfin/sdk/model/api/RemoteSubtitleInfo$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/RemoteSubtitleInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/RemoteSubtitleInfo$Companion {
@@ -8321,7 +8154,6 @@ public synthetic class org/jellyfin/sdk/model/api/RemoveFromPlaylistRequestDto$$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/RemoveFromPlaylistRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/RemoveFromPlaylistRequestDto$Companion {
@@ -8371,7 +8203,6 @@ public synthetic class org/jellyfin/sdk/model/api/RepositoryInfo$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/RepositoryInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/RepositoryInfo$Companion {
@@ -8399,7 +8230,6 @@ public synthetic class org/jellyfin/sdk/model/api/RestartRequiredMessage$$serial
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/RestartRequiredMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/RestartRequiredMessage$Companion {
@@ -8430,7 +8260,6 @@ public synthetic class org/jellyfin/sdk/model/api/ScheduledTaskEndedMessage$$ser
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ScheduledTaskEndedMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ScheduledTaskEndedMessage$Companion {
@@ -8461,7 +8290,6 @@ public synthetic class org/jellyfin/sdk/model/api/ScheduledTasksInfoMessage$$ser
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ScheduledTasksInfoMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ScheduledTasksInfoMessage$Companion {
@@ -8491,7 +8319,6 @@ public synthetic class org/jellyfin/sdk/model/api/ScheduledTasksInfoStartMessage
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ScheduledTasksInfoStartMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ScheduledTasksInfoStartMessage$Companion {
@@ -8512,7 +8339,6 @@ public synthetic class org/jellyfin/sdk/model/api/ScheduledTasksInfoStopMessage$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ScheduledTasksInfoStopMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ScheduledTasksInfoStopMessage$Companion {
@@ -8613,7 +8439,6 @@ public synthetic class org/jellyfin/sdk/model/api/SearchHint$$serializer : kotli
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SearchHint;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SearchHint$Companion {
@@ -8642,7 +8467,6 @@ public synthetic class org/jellyfin/sdk/model/api/SearchHintResult$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SearchHintResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SearchHintResult$Companion {
@@ -8669,7 +8493,6 @@ public synthetic class org/jellyfin/sdk/model/api/SeekRequestDto$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SeekRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SeekRequestDto$Companion {
@@ -8707,7 +8530,6 @@ public synthetic class org/jellyfin/sdk/model/api/SendCommand$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SendCommand;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SendCommand$Companion {
@@ -8774,7 +8596,6 @@ public synthetic class org/jellyfin/sdk/model/api/SeriesInfo$$serializer : kotli
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SeriesInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SeriesInfo$Companion {
@@ -8808,7 +8629,6 @@ public synthetic class org/jellyfin/sdk/model/api/SeriesInfoRemoteSearchQuery$$s
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SeriesInfoRemoteSearchQuery;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SeriesInfoRemoteSearchQuery$Companion {
@@ -8857,7 +8677,6 @@ public synthetic class org/jellyfin/sdk/model/api/SeriesTimerCancelledMessage$$s
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SeriesTimerCancelledMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SeriesTimerCancelledMessage$Companion {
@@ -8888,7 +8707,6 @@ public synthetic class org/jellyfin/sdk/model/api/SeriesTimerCreatedMessage$$ser
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SeriesTimerCreatedMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SeriesTimerCreatedMessage$Companion {
@@ -8985,7 +8803,6 @@ public synthetic class org/jellyfin/sdk/model/api/SeriesTimerInfoDto$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SeriesTimerInfoDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SeriesTimerInfoDto$Companion {
@@ -9016,7 +8833,6 @@ public synthetic class org/jellyfin/sdk/model/api/SeriesTimerInfoDtoQueryResult$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SeriesTimerInfoDtoQueryResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SeriesTimerInfoDtoQueryResult$Companion {
@@ -9150,7 +8966,6 @@ public synthetic class org/jellyfin/sdk/model/api/ServerConfiguration$$serialize
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ServerConfiguration;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ServerConfiguration$Companion {
@@ -9184,7 +8999,6 @@ public synthetic class org/jellyfin/sdk/model/api/ServerDiscoveryInfo$$serialize
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ServerDiscoveryInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ServerDiscoveryInfo$Companion {
@@ -9212,7 +9026,6 @@ public synthetic class org/jellyfin/sdk/model/api/ServerRestartingMessage$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ServerRestartingMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ServerRestartingMessage$Companion {
@@ -9240,7 +9053,6 @@ public synthetic class org/jellyfin/sdk/model/api/ServerShuttingDownMessage$$ser
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ServerShuttingDownMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ServerShuttingDownMessage$Companion {
@@ -9324,7 +9136,6 @@ public synthetic class org/jellyfin/sdk/model/api/SessionInfoDto$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SessionInfoDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SessionInfoDto$Companion {
@@ -9403,7 +9214,6 @@ public synthetic class org/jellyfin/sdk/model/api/SessionUserInfo$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SessionUserInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SessionUserInfo$Companion {
@@ -9434,7 +9244,6 @@ public synthetic class org/jellyfin/sdk/model/api/SessionsMessage$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SessionsMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SessionsMessage$Companion {
@@ -9464,7 +9273,6 @@ public synthetic class org/jellyfin/sdk/model/api/SessionsStartMessage$$serializ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SessionsStartMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SessionsStartMessage$Companion {
@@ -9485,7 +9293,6 @@ public synthetic class org/jellyfin/sdk/model/api/SessionsStopMessage$$serialize
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SessionsStopMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SessionsStopMessage$Companion {
@@ -9516,7 +9323,6 @@ public synthetic class org/jellyfin/sdk/model/api/SetChannelMappingDto$$serializ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SetChannelMappingDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SetChannelMappingDto$Companion {
@@ -9543,7 +9349,6 @@ public synthetic class org/jellyfin/sdk/model/api/SetPlaylistItemRequestDto$$ser
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SetPlaylistItemRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SetPlaylistItemRequestDto$Companion {
@@ -9570,7 +9375,6 @@ public synthetic class org/jellyfin/sdk/model/api/SetRepeatModeRequestDto$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SetRepeatModeRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SetRepeatModeRequestDto$Companion {
@@ -9597,7 +9401,6 @@ public synthetic class org/jellyfin/sdk/model/api/SetShuffleModeRequestDto$$seri
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SetShuffleModeRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SetShuffleModeRequestDto$Companion {
@@ -9651,7 +9454,6 @@ public synthetic class org/jellyfin/sdk/model/api/SongInfo$$serializer : kotlinx
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SongInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SongInfo$Companion {
@@ -9699,7 +9501,6 @@ public synthetic class org/jellyfin/sdk/model/api/SpecialViewOptionDto$$serializ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SpecialViewOptionDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SpecialViewOptionDto$Companion {
@@ -9732,7 +9533,6 @@ public synthetic class org/jellyfin/sdk/model/api/StartupConfigurationDto$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/StartupConfigurationDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/StartupConfigurationDto$Companion {
@@ -9761,7 +9561,6 @@ public synthetic class org/jellyfin/sdk/model/api/StartupRemoteAccessDto$$serial
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/StartupRemoteAccessDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/StartupRemoteAccessDto$Companion {
@@ -9792,7 +9591,6 @@ public synthetic class org/jellyfin/sdk/model/api/StartupUserDto$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/StartupUserDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/StartupUserDto$Companion {
@@ -9823,7 +9621,6 @@ public synthetic class org/jellyfin/sdk/model/api/StringGroupUpdate$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/StringGroupUpdate;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/StringGroupUpdate$Companion {
@@ -9887,7 +9684,6 @@ public synthetic class org/jellyfin/sdk/model/api/SubtitleOptions$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SubtitleOptions;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SubtitleOptions$Companion {
@@ -9943,7 +9739,6 @@ public synthetic class org/jellyfin/sdk/model/api/SubtitleProfile$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SubtitleProfile;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SubtitleProfile$Companion {
@@ -9974,7 +9769,6 @@ public synthetic class org/jellyfin/sdk/model/api/SyncPlayCommandMessage$$serial
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SyncPlayCommandMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SyncPlayCommandMessage$Companion {
@@ -10005,7 +9799,6 @@ public synthetic class org/jellyfin/sdk/model/api/SyncPlayGroupUpdateCommandMess
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SyncPlayGroupUpdateCommandMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SyncPlayGroupUpdateCommandMessage$Companion {
@@ -10034,7 +9827,6 @@ public synthetic class org/jellyfin/sdk/model/api/SyncPlayQueueItem$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SyncPlayQueueItem;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SyncPlayQueueItem$Companion {
@@ -10132,7 +9924,6 @@ public synthetic class org/jellyfin/sdk/model/api/SystemInfo$$serializer : kotli
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/SystemInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/SystemInfo$Companion {
@@ -10197,7 +9988,6 @@ public synthetic class org/jellyfin/sdk/model/api/TaskInfo$$serializer : kotlinx
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TaskInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TaskInfo$Companion {
@@ -10239,7 +10029,6 @@ public synthetic class org/jellyfin/sdk/model/api/TaskResult$$serializer : kotli
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TaskResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TaskResult$Companion {
@@ -10294,7 +10083,6 @@ public synthetic class org/jellyfin/sdk/model/api/TaskTriggerInfo$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TaskTriggerInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TaskTriggerInfo$Companion {
@@ -10327,7 +10115,6 @@ public synthetic class org/jellyfin/sdk/model/api/ThemeMediaResult$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ThemeMediaResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ThemeMediaResult$Companion {
@@ -10358,7 +10145,6 @@ public synthetic class org/jellyfin/sdk/model/api/TimerCancelledMessage$$seriali
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TimerCancelledMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TimerCancelledMessage$Companion {
@@ -10389,7 +10175,6 @@ public synthetic class org/jellyfin/sdk/model/api/TimerCreatedMessage$$serialize
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TimerCreatedMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TimerCreatedMessage$Companion {
@@ -10419,7 +10204,6 @@ public synthetic class org/jellyfin/sdk/model/api/TimerEventInfo$$serializer : k
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TimerEventInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TimerEventInfo$Companion {
@@ -10502,7 +10286,6 @@ public synthetic class org/jellyfin/sdk/model/api/TimerInfoDto$$serializer : kot
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TimerInfoDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TimerInfoDto$Companion {
@@ -10533,7 +10316,6 @@ public synthetic class org/jellyfin/sdk/model/api/TimerInfoDtoQueryResult$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TimerInfoDtoQueryResult;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TimerInfoDtoQueryResult$Companion {
@@ -10642,7 +10424,6 @@ public synthetic class org/jellyfin/sdk/model/api/TrailerInfo$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TrailerInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TrailerInfo$Companion {
@@ -10676,7 +10457,6 @@ public synthetic class org/jellyfin/sdk/model/api/TrailerInfoRemoteSearchQuery$$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TrailerInfoRemoteSearchQuery;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TrailerInfoRemoteSearchQuery$Companion {
@@ -10786,7 +10566,6 @@ public synthetic class org/jellyfin/sdk/model/api/TranscodingInfo$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TranscodingInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TranscodingInfo$Companion {
@@ -10846,7 +10625,6 @@ public synthetic class org/jellyfin/sdk/model/api/TranscodingProfile$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TranscodingProfile;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TranscodingProfile$Companion {
@@ -10903,7 +10681,6 @@ public synthetic class org/jellyfin/sdk/model/api/TrickplayInfo$$serializer : ko
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TrickplayInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TrickplayInfo$Companion {
@@ -10952,7 +10729,6 @@ public synthetic class org/jellyfin/sdk/model/api/TrickplayOptions$$serializer :
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TrickplayOptions;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TrickplayOptions$Companion {
@@ -11004,7 +10780,6 @@ public synthetic class org/jellyfin/sdk/model/api/TunerChannelMapping$$serialize
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TunerChannelMapping;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TunerChannelMapping$Companion {
@@ -11060,7 +10835,6 @@ public synthetic class org/jellyfin/sdk/model/api/TunerHostInfo$$serializer : ko
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TunerHostInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TunerHostInfo$Companion {
@@ -11099,7 +10873,6 @@ public synthetic class org/jellyfin/sdk/model/api/TypeOptions$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TypeOptions;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/TypeOptions$Companion {
@@ -11153,7 +10926,6 @@ public synthetic class org/jellyfin/sdk/model/api/UpdateLibraryOptionsDto$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UpdateLibraryOptionsDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UpdateLibraryOptionsDto$Companion {
@@ -11182,7 +10954,6 @@ public synthetic class org/jellyfin/sdk/model/api/UpdateMediaPathRequestDto$$ser
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UpdateMediaPathRequestDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UpdateMediaPathRequestDto$Companion {
@@ -11217,7 +10988,6 @@ public synthetic class org/jellyfin/sdk/model/api/UpdatePlaylistDto$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UpdatePlaylistDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UpdatePlaylistDto$Companion {
@@ -11246,7 +11016,6 @@ public synthetic class org/jellyfin/sdk/model/api/UpdatePlaylistUserDto$$seriali
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UpdatePlaylistUserDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UpdatePlaylistUserDto$Companion {
@@ -11295,7 +11064,6 @@ public synthetic class org/jellyfin/sdk/model/api/UpdateUserItemDataDto$$seriali
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UpdateUserItemDataDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UpdateUserItemDataDto$Companion {
@@ -11329,7 +11097,6 @@ public synthetic class org/jellyfin/sdk/model/api/UpdateUserPassword$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UpdateUserPassword;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UpdateUserPassword$Companion {
@@ -11364,7 +11131,6 @@ public synthetic class org/jellyfin/sdk/model/api/UploadSubtitleDto$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UploadSubtitleDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UploadSubtitleDto$Companion {
@@ -11422,7 +11188,6 @@ public synthetic class org/jellyfin/sdk/model/api/UserConfiguration$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UserConfiguration;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UserConfiguration$Companion {
@@ -11451,7 +11216,6 @@ public synthetic class org/jellyfin/sdk/model/api/UserDataChangeInfo$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UserDataChangeInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UserDataChangeInfo$Companion {
@@ -11482,7 +11246,6 @@ public synthetic class org/jellyfin/sdk/model/api/UserDataChangedMessage$$serial
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UserDataChangedMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UserDataChangedMessage$Companion {
@@ -11512,7 +11275,6 @@ public synthetic class org/jellyfin/sdk/model/api/UserDeletedMessage$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UserDeletedMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UserDeletedMessage$Companion {
@@ -11566,7 +11328,6 @@ public synthetic class org/jellyfin/sdk/model/api/UserDto$$serializer : kotlinx/
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UserDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UserDto$Companion {
@@ -11614,7 +11375,6 @@ public synthetic class org/jellyfin/sdk/model/api/UserItemDataDto$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UserItemDataDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UserItemDataDto$Companion {
@@ -11726,7 +11486,6 @@ public synthetic class org/jellyfin/sdk/model/api/UserPolicy$$serializer : kotli
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UserPolicy;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UserPolicy$Companion {
@@ -11757,7 +11516,6 @@ public synthetic class org/jellyfin/sdk/model/api/UserUpdatedMessage$$serializer
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UserUpdatedMessage;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UserUpdatedMessage$Companion {
@@ -11786,7 +11544,6 @@ public synthetic class org/jellyfin/sdk/model/api/UtcTimeResponse$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/UtcTimeResponse;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/UtcTimeResponse$Companion {
@@ -11818,7 +11575,6 @@ public synthetic class org/jellyfin/sdk/model/api/ValidatePathDto$$serializer : 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/ValidatePathDto;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/ValidatePathDto$Companion {
@@ -11862,7 +11618,6 @@ public synthetic class org/jellyfin/sdk/model/api/VersionInfo$$serializer : kotl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/VersionInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/VersionInfo$Companion {
@@ -11986,7 +11741,6 @@ public synthetic class org/jellyfin/sdk/model/api/VirtualFolderInfo$$serializer 
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/VirtualFolderInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/VirtualFolderInfo$Companion {
@@ -12016,7 +11770,6 @@ public synthetic class org/jellyfin/sdk/model/api/WakeOnLanInfo$$serializer : ko
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/WakeOnLanInfo;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/WakeOnLanInfo$Companion {
@@ -12056,7 +11809,6 @@ public synthetic class org/jellyfin/sdk/model/api/XbmcMetadataOptions$$serialize
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/XbmcMetadataOptions;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/XbmcMetadataOptions$Companion {
@@ -12147,7 +11899,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetAlbumArtistsRequest
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetAlbumArtistsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetAlbumArtistsRequest$Companion {
@@ -12207,7 +11958,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetArtistImageRequest$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetArtistImageRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetArtistImageRequest$Companion {
@@ -12298,7 +12048,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetArtistsRequest$$ser
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetArtistsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetArtistsRequest$Companion {
@@ -12424,7 +12173,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetAudioStreamByContai
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetAudioStreamByContainerDeprecatedRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetAudioStreamByContainerDeprecatedRequest$Companion {
@@ -12548,7 +12296,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetAudioStreamByContai
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetAudioStreamByContainerRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetAudioStreamByContainerRequest$Companion {
@@ -12674,7 +12421,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetAudioStreamDeprecat
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetAudioStreamDeprecatedRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetAudioStreamDeprecatedRequest$Companion {
@@ -12798,7 +12544,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetAudioStreamRequest$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetAudioStreamRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetAudioStreamRequest$Companion {
@@ -12842,7 +12587,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetChannelItemsRequest
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetChannelItemsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetChannelItemsRequest$Companion {
@@ -12881,7 +12625,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetChannelsRequest$$se
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetChannelsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetChannelsRequest$Companion {
@@ -12937,7 +12680,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetEpisodesRequest$$se
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetEpisodesRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetEpisodesRequest$Companion {
@@ -12997,7 +12739,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetGenreImageByIndexRe
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetGenreImageByIndexRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetGenreImageByIndexRequest$Companion {
@@ -13057,7 +12798,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetGenreImageRequest$$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetGenreImageRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetGenreImageRequest$Companion {
@@ -13120,7 +12860,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetGenresRequest$$seri
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetGenresRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetGenresRequest$Companion {
@@ -13256,7 +12995,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetHlsAudioSegmentDepr
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetHlsAudioSegmentDeprecatedRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetHlsAudioSegmentDeprecatedRequest$Companion {
@@ -13390,7 +13128,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetHlsAudioSegmentRequ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetHlsAudioSegmentRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetHlsAudioSegmentRequest$Companion {
@@ -13530,7 +13267,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetHlsVideoSegmentDepr
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetHlsVideoSegmentDeprecatedRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetHlsVideoSegmentDeprecatedRequest$Companion {
@@ -13668,7 +13404,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetHlsVideoSegmentRequ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetHlsVideoSegmentRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetHlsVideoSegmentRequest$Companion {
@@ -13710,7 +13445,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetInstantMixFromAlbum
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetInstantMixFromAlbumRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetInstantMixFromAlbumRequest$Companion {
@@ -13752,7 +13486,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetInstantMixFromArtis
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetInstantMixFromArtists2Request;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetInstantMixFromArtists2Request$Companion {
@@ -13794,7 +13527,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetInstantMixFromArtis
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetInstantMixFromArtistsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetInstantMixFromArtistsRequest$Companion {
@@ -13836,7 +13568,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetInstantMixFromItemR
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetInstantMixFromItemRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetInstantMixFromItemRequest$Companion {
@@ -13878,7 +13609,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetInstantMixFromMusic
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetInstantMixFromMusicGenreByIdRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetInstantMixFromMusicGenreByIdRequest$Companion {
@@ -13920,7 +13650,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetInstantMixFromMusic
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetInstantMixFromMusicGenreByNameRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetInstantMixFromMusicGenreByNameRequest$Companion {
@@ -13962,7 +13691,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetInstantMixFromPlayl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetInstantMixFromPlaylistRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetInstantMixFromPlaylistRequest$Companion {
@@ -14004,7 +13732,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetInstantMixFromSongR
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetInstantMixFromSongRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetInstantMixFromSongRequest$Companion {
@@ -14064,7 +13791,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetItemImage2Request$$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetItemImage2Request;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetItemImage2Request$Companion {
@@ -14124,7 +13850,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetItemImageByIndexReq
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetItemImageByIndexRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetItemImageByIndexRequest$Companion {
@@ -14184,7 +13909,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetItemImageRequest$$s
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetItemImageRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetItemImageRequest$Companion {
@@ -14383,7 +14107,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetItemsRequest$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetItemsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetItemsRequest$Companion {
@@ -14422,7 +14145,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetLatestChannelItemsR
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetLatestChannelItemsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetLatestChannelItemsRequest$Companion {
@@ -14471,7 +14193,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetLatestMediaRequest$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetLatestMediaRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetLatestMediaRequest$Companion {
@@ -14605,7 +14326,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetLiveHlsStreamDeprec
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetLiveHlsStreamDeprecatedRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetLiveHlsStreamDeprecatedRequest$Companion {
@@ -14737,7 +14457,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetLiveHlsStreamReques
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetLiveHlsStreamRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetLiveHlsStreamRequest$Companion {
@@ -14806,7 +14525,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetLiveTvChannelsReque
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetLiveTvChannelsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetLiveTvChannelsRequest$Companion {
@@ -14887,7 +14605,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetLiveTvProgramsReque
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetLiveTvProgramsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetLiveTvProgramsRequest$Companion {
@@ -15015,7 +14732,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetMasterHlsAudioPlayl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetMasterHlsAudioPlaylistDeprecatedRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetMasterHlsAudioPlaylistDeprecatedRequest$Companion {
@@ -15141,7 +14857,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetMasterHlsAudioPlayl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetMasterHlsAudioPlaylistRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetMasterHlsAudioPlaylistRequest$Companion {
@@ -15275,7 +14990,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetMasterHlsVideoPlayl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetMasterHlsVideoPlaylistDeprecatedRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetMasterHlsVideoPlaylistDeprecatedRequest$Companion {
@@ -15407,7 +15121,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetMasterHlsVideoPlayl
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetMasterHlsVideoPlaylistRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetMasterHlsVideoPlaylistRequest$Companion {
@@ -15444,7 +15157,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetMovieRecommendation
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetMovieRecommendationsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetMovieRecommendationsRequest$Companion {
@@ -15504,7 +15216,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetMusicGenreImageByIn
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetMusicGenreImageByIndexRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetMusicGenreImageByIndexRequest$Companion {
@@ -15564,7 +15275,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetMusicGenreImageRequ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetMusicGenreImageRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetMusicGenreImageRequest$Companion {
@@ -15627,7 +15337,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetMusicGenresRequest$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetMusicGenresRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetMusicGenresRequest$Companion {
@@ -15684,7 +15393,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetNextUpRequest$$seri
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetNextUpRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetNextUpRequest$Companion {
@@ -15744,7 +15452,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetPersonImageByIndexR
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetPersonImageByIndexRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetPersonImageByIndexRequest$Companion {
@@ -15804,7 +15511,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetPersonImageRequest$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetPersonImageRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetPersonImageRequest$Companion {
@@ -15857,7 +15563,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetPersonsRequest$$ser
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetPersonsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetPersonsRequest$Companion {
@@ -15901,7 +15606,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetPlaylistItemsReques
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetPlaylistItemsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetPlaylistItemsRequest$Companion {
@@ -15957,7 +15661,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetPostedPlaybackInfoD
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetPostedPlaybackInfoDeprecatedRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetPostedPlaybackInfoDeprecatedRequest$Companion {
@@ -16004,7 +15707,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetQueryFiltersRequest
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetQueryFiltersRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetQueryFiltersRequest$Companion {
@@ -16063,7 +15765,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetRecommendedPrograms
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetRecommendedProgramsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetRecommendedProgramsRequest$Companion {
@@ -16128,7 +15829,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetRecordingsRequest$$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetRecordingsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetRecordingsRequest$Companion {
@@ -16183,7 +15883,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetRecordingsSeriesReq
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetRecordingsSeriesRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetRecordingsSeriesRequest$Companion {
@@ -16221,7 +15920,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetRemoteImagesRequest
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetRemoteImagesRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetRemoteImagesRequest$Companion {
@@ -16278,7 +15976,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetResumeItemsRequest$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetResumeItemsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetResumeItemsRequest$Companion {
@@ -16340,7 +16037,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetSearchHintsRequest$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetSearchHintsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetSearchHintsRequest$Companion {
@@ -16386,7 +16082,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetSeasonsRequest$$ser
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetSeasonsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetSeasonsRequest$Companion {
@@ -16422,7 +16117,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetSimilarAlbumsReques
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetSimilarAlbumsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetSimilarAlbumsRequest$Companion {
@@ -16458,7 +16152,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetSimilarArtistsReque
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetSimilarArtistsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetSimilarArtistsRequest$Companion {
@@ -16494,7 +16187,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetSimilarItemsRequest
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetSimilarItemsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetSimilarItemsRequest$Companion {
@@ -16530,7 +16222,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetSimilarMoviesReques
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetSimilarMoviesRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetSimilarMoviesRequest$Companion {
@@ -16566,7 +16257,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetSimilarShowsRequest
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetSimilarShowsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetSimilarShowsRequest$Companion {
@@ -16602,7 +16292,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetSimilarTrailersRequ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetSimilarTrailersRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetSimilarTrailersRequest$Companion {
@@ -16653,7 +16342,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetSplashscreenRequest
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetSplashscreenRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetSplashscreenRequest$Companion {
@@ -16713,7 +16401,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetStudioImageByIndexR
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetStudioImageByIndexRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetStudioImageByIndexRequest$Companion {
@@ -16773,7 +16460,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetStudioImageRequest$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetStudioImageRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetStudioImageRequest$Companion {
@@ -16834,7 +16520,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetStudiosRequest$$ser
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetStudiosRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetStudiosRequest$Companion {
@@ -16884,7 +16569,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetSubtitleDeprecatedR
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetSubtitleDeprecatedRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetSubtitleDeprecatedRequest$Companion {
@@ -16926,7 +16610,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetSubtitleRequest$$se
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetSubtitleRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetSubtitleRequest$Companion {
@@ -16978,7 +16661,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetSubtitleWithTicksDe
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetSubtitleWithTicksDeprecatedRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetSubtitleWithTicksDeprecatedRequest$Companion {
@@ -17020,7 +16702,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetSubtitleWithTicksRe
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetSubtitleWithTicksRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetSubtitleWithTicksRequest$Companion {
@@ -17059,7 +16740,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetSuggestionsRequest$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetSuggestionsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetSuggestionsRequest$Companion {
@@ -17095,7 +16775,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetThemeMediaRequest$$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetThemeMediaRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetThemeMediaRequest$Companion {
@@ -17131,7 +16810,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetThemeSongsRequest$$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetThemeSongsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetThemeSongsRequest$Companion {
@@ -17167,7 +16845,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetThemeVideosRequest$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetThemeVideosRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetThemeVideosRequest$Companion {
@@ -17362,7 +17039,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetTrailersRequest$$se
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetTrailersRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetTrailersRequest$Companion {
@@ -17426,7 +17102,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetUniversalAudioStrea
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetUniversalAudioStreamRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetUniversalAudioStreamRequest$Companion {
@@ -17471,7 +17146,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetUpcomingEpisodesReq
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetUpcomingEpisodesRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetUpcomingEpisodesRequest$Companion {
@@ -17530,7 +17204,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetUserImageRequest$$s
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetUserImageRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetUserImageRequest$Companion {
@@ -17656,7 +17329,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetVariantHlsAudioPlay
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetVariantHlsAudioPlaylistDeprecatedRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetVariantHlsAudioPlaylistDeprecatedRequest$Companion {
@@ -17780,7 +17452,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetVariantHlsAudioPlay
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetVariantHlsAudioPlaylistRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetVariantHlsAudioPlaylistRequest$Companion {
@@ -17910,7 +17581,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetVariantHlsVideoPlay
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetVariantHlsVideoPlaylistDeprecatedRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetVariantHlsVideoPlaylistDeprecatedRequest$Companion {
@@ -18038,7 +17708,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetVariantHlsVideoPlay
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetVariantHlsVideoPlaylistRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetVariantHlsVideoPlaylistRequest$Companion {
@@ -18168,7 +17837,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetVideoStreamByContai
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetVideoStreamByContainerRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetVideoStreamByContainerRequest$Companion {
@@ -18298,7 +17966,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetVideoStreamDeprecat
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetVideoStreamDeprecatedRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetVideoStreamDeprecatedRequest$Companion {
@@ -18426,7 +18093,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetVideoStreamRequest$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetVideoStreamRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetVideoStreamRequest$Companion {
@@ -18483,7 +18149,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/GetYearsRequest$$seria
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/GetYearsRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/GetYearsRequest$Companion {
@@ -18533,7 +18198,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/OnPlaybackProgressRequ
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/OnPlaybackProgressRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/OnPlaybackProgressRequest$Companion {
@@ -18575,7 +18239,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/OnPlaybackStartRequest
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/OnPlaybackStartRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/OnPlaybackStartRequest$Companion {
@@ -18613,7 +18276,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/OnPlaybackStoppedReque
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/OnPlaybackStoppedRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/OnPlaybackStoppedRequest$Companion {
@@ -18664,7 +18326,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/OpenLiveStreamRequest$
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/OpenLiveStreamRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/OpenLiveStreamRequest$Companion {
@@ -18706,7 +18367,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/PlayRequest$$serialize
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/PlayRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/PlayRequest$Companion {
@@ -18743,7 +18403,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/PostCapabilitiesReques
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/PostCapabilitiesRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/PostCapabilitiesRequest$Companion {
@@ -18781,7 +18440,6 @@ public synthetic class org/jellyfin/sdk/model/api/request/RefreshItemRequest$$se
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/request/RefreshItemRequest;)V
-	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
 public final class org/jellyfin/sdk/model/api/request/RefreshItemRequest$Companion {
