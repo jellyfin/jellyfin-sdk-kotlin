@@ -57,7 +57,7 @@ class OpenApiTypeBuilder(
 			// UUID
 			is UUIDSchema -> buildUUIDType()
 			// Binary
-			is BinarySchema -> buildBinary(path)
+			is BinarySchema -> buildBinary()
 			// Collections
 			is ArraySchema -> buildArrayType(path, schema)
 			is MapSchema -> buildMapType(path, schema)
@@ -116,10 +116,7 @@ class OpenApiTypeBuilder(
 			.toPascalCase(from = CaseFormat.CAPITALIZED_CAMEL)
 	)
 
-	fun buildBinary(path: TypePath) = when {
-		path is ApiTypePath && path.isReturnType() -> Types.BINARY
-		else -> Types.BYTE_ARRAY
-	}
+	fun buildBinary() = Types.BYTE_ARRAY
 
 	fun buildJsonElement() = Types.JSON_ELEMENT
 

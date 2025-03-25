@@ -29,7 +29,7 @@ class OpenApiReturnTypeBuilder(
 			MimeType.FONT_ALL in supportedReturnMimeTypes ||
 			MimeType.APPLICATION_X_MPEG_URL in supportedReturnMimeTypes ||
 			MimeType.APPLICATION_OCTET_STREAM in supportedReturnMimeTypes ->
-				Types.BINARY
+				Types.BYTE_ARRAY
 			// JSON (restful) types
 			MimeType.APPLICATION_JSON in supportedReturnMimeTypes -> {
 				val schema = response!!.content[MimeType.APPLICATION_JSON]!!.schema

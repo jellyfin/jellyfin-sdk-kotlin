@@ -1,6 +1,5 @@
 package org.jellyfin.sdk.api.client
 
-import io.ktor.utils.io.ByteReadChannel
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
@@ -18,7 +17,6 @@ public class RawResponse(
 			when {
 				T::class == Unit::class -> Unit as T
 				T::class == ByteArray::class -> body as T
-				T::class == ByteReadChannel::class -> ByteReadChannel(body) as T
 				else -> ApiSerializer.decodeResponseBody(body.decodeToString())
 			}
 		} catch (err: SerializationException) {

@@ -8,5 +8,5 @@ import org.jellyfin.openapi.model.HttpMethod
 
 class BinaryOperationUrlHook : OperationUrlHook {
 	override fun shouldOperationBuildUrlFun(api: ApiService, operation: ApiServiceOperation) =
-		operation.method == HttpMethod.GET && operation.returnType == Types.BINARY
+		operation.method == HttpMethod.GET && operation.returnType == Types.BYTE_ARRAY
 }
