@@ -1,0 +1,12 @@
+public final class org/jellyfin/sdk/api/okhttp/OkHttpClient : org/jellyfin/sdk/api/client/ApiClient {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)V
+	public fun getAccessToken ()Ljava/lang/String;
+	public fun getBaseUrl ()Ljava/lang/String;
+	public fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
+	public fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
+	public fun getHttpClientOptions ()Lorg/jellyfin/sdk/api/client/HttpClientOptions;
+	public fun getWebSocket ()Lorg/jellyfin/sdk/api/sockets/SocketApi;
+	public fun request (Lorg/jellyfin/sdk/api/client/HttpMethod;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun update (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;)V
+}
+
