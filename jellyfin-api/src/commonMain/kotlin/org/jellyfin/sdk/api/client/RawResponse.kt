@@ -7,7 +7,7 @@ import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.util.ApiSerializer
 
 public class RawResponse(
-	public val body: ByteReadChannel,
+	public val body: ByteArray,
 	public val status: Int,
 	public val headers: Map<String, List<String>>,
 ) {
@@ -15,7 +15,12 @@ public class RawResponse(
 		val logger = KotlinLogging.logger {}
 
 		return try {
-			ApiSerializer.decodeResponseBody(body)
+			when {
+				T::class == Unit::class -> Unit as T
+				T::class == ByteArray::class -> body as T
+				T::class == ByteReadChannel::class -> ByteReadChannel(body) as T
+				else -> ApiSerializer.decodeResponseBody(body.decodeToString())
+			}
 		} catch (err: SerializationException) {
 			logger.error(err) { "Deserialization failed" }
 			throw InvalidContentException("Deserialization failed", err)

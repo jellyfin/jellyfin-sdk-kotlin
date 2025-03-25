@@ -15,6 +15,7 @@ import io.ktor.content.TextContent
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.isSuccess
+import io.ktor.util.toByteArray
 import io.ktor.util.toMap
 import kotlinx.serialization.SerializationException
 import mu.KotlinLogging
@@ -145,7 +146,7 @@ public class KtorClient(
 			// Check HTTP status
 			if (!response.status.isSuccess()) throw InvalidStatusException(response.status.value)
 			// Return custom response instance
-			return RawResponse(response.bodyAsChannel(), response.status.value, response.headers.toMap())
+			return RawResponse(response.bodyAsChannel().toByteArray(), response.status.value, response.headers.toMap())
 		} catch (err: UnknownHostException) {
 			logger.debug(err) { "HTTP host unreachable" }
 			throw TimeoutException("HTTP host unreachable", err)
