@@ -1,11 +1,8 @@
 package org.jellyfin.sdk.discovery
 
-import io.ktor.http.URLBuilder
-import io.ktor.http.URLParserException
-import io.ktor.http.URLProtocol
-import io.ktor.http.Url
-import io.ktor.http.takeFrom
 import mu.KotlinLogging
+import okhttp3.HttpUrl
+import okhttp3.HttpUrl.Companion.toHttpUrl
 
 private val logger = KotlinLogging.logger {}
 
@@ -19,12 +16,12 @@ public actual class AddressCandidateHelper actual constructor(
 		/**
 		 * Default HTTP port for Jellyfin
 		 */
-		public const actual val JF_HTTP_PORT: Int = 8096
+		public actual const val JF_HTTP_PORT: Int = 8096
 
 		/**
 		 * Default HTTPS port for Jellyfin
 		 */
-		public const actual val JF_HTTPS_PORT: Int = 8920
+		public actual const val JF_HTTPS_PORT: Int = 8920
 
 		/**
 		 * HTTP protocol prefix: http://
@@ -37,8 +34,8 @@ public actual class AddressCandidateHelper actual constructor(
 		private const val PROTOCOL_HTTPS: String = "https://"
 	}
 
-	private val candidates = mutableSetOf<Url>()
-	private val prioritizeComparator = Comparator<Url> { a, b -> b.score() - a.score() }
+	private val candidates = mutableSetOf<HttpUrl>()
+	private val prioritizeComparator = Comparator<HttpUrl> { a, b -> b.score() - a.score() }
 
 	init {
 		try {
@@ -46,18 +43,12 @@ public actual class AddressCandidateHelper actual constructor(
 
 			// Add the input as initial candidate
 			if (input.isNotBlank()) {
-				candidates.add(URLBuilder().apply {
-					// Ktor doesn't like urls not starting with a protocol
-					// so we default to a http prefix
-					if (!input.startsWith(PROTOCOL_HTTP) && !input.startsWith(PROTOCOL_HTTPS))
-						takeFrom(PROTOCOL_HTTP + input)
-					else
-						takeFrom(input)
-				}.build())
+				if (input.startsWith(PROTOCOL_HTTP) || input.startsWith(PROTOCOL_HTTPS)) {
+					candidates.add(input.toHttpUrl())
+				} else {
+					candidates.add((PROTOCOL_HTTP + input).toHttpUrl())
+				}
 			}
-		} catch (error: URLParserException) {
-			// Input can't be parsed
-			logger.error(error) { "Input $input could not be parsed" }
 		} catch (error: IllegalArgumentException) {
 			// Input can't be parsed
 			logger.error(error) { "Input $input could not be parsed" }
@@ -72,11 +63,11 @@ public actual class AddressCandidateHelper actual constructor(
 
 		// Add HTTPS candidate for each HTTP candidate
 		candidates
-			.filter { it.protocol == URLProtocol.Companion.HTTP }
+			.filterNot { it.isHttps }
 			.forEach {
-				candidates.add(URLBuilder(it).apply {
-					protocol = URLProtocol.Companion.HTTPS
-					if (port == URLProtocol.Companion.HTTP.defaultPort) port = URLProtocol.Companion.HTTPS.defaultPort
+				candidates.add(it.newBuilder().apply {
+					scheme("https")
+					if (it.port == HttpUrl.defaultPort("http")) port(HttpUrl.defaultPort("https"))
 				}.build())
 			}
 	}
@@ -90,16 +81,16 @@ public actual class AddressCandidateHelper actual constructor(
 
 		// Add HTTPS candidate for each HTTP candidate
 		candidates
-			.filter { it.port == it.protocol.defaultPort }
+			.filter { it.port == HttpUrl.defaultPort(it.scheme) }
 			.forEach {
-				when (it.protocol) {
-					URLProtocol.Companion.HTTP -> {
-						candidates.add(URLBuilder(it).apply { port = JF_HTTP_PORT }.build())
+				when {
+					it.isHttps -> {
+						candidates.add(it.newBuilder().apply { port(JF_HTTP_PORT) }.build())
+						candidates.add(it.newBuilder().apply { port(JF_HTTPS_PORT) }.build())
 					}
 
-					URLProtocol.Companion.HTTPS -> {
-						candidates.add(URLBuilder(it).apply { port = JF_HTTP_PORT }.build())
-						candidates.add(URLBuilder(it).apply { port = JF_HTTPS_PORT }.build())
+					else -> {
+						candidates.add(it.newBuilder().apply { port(JF_HTTP_PORT) }.build())
 					}
 				}
 			}
@@ -116,13 +107,13 @@ public actual class AddressCandidateHelper actual constructor(
 	}
 
 	@Suppress("MagicNumber")
-	private fun Url.score(): Int {
+	private fun HttpUrl.score(): Int {
 		// Start out with a score of 0
 		var score = 0
 
 		// Score based on protocol
-		when (protocol) {
-			URLProtocol.Companion.HTTPS -> score += 5
+		when {
+			isHttps -> score += 5
 			else -> score -= 5 // HTTP is less secure, try a secure option first
 		}
 
@@ -133,8 +124,8 @@ public actual class AddressCandidateHelper actual constructor(
 		}
 
 		// Prefer default port for used protocol
-		if (protocol == URLProtocol.Companion.HTTPS && port == 443) score += 3
-		if (protocol == URLProtocol.Companion.HTTP && port == 80) score += 3
+		if (isHttps && port == 443) score += 3
+		if (!isHttps && port == 80) score += 3
 
 		return score
 	}
@@ -148,5 +139,5 @@ public actual class AddressCandidateHelper actual constructor(
 	 */
 	public actual fun getCandidates(): Collection<String> = candidates
 		.sortedWith(prioritizeComparator)
-		.map { it.toString() }
+		.map { it.toString().trimEnd('/') }
 }
