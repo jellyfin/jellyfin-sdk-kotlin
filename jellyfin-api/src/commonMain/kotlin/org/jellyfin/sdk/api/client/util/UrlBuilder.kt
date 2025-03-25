@@ -121,7 +121,7 @@ public object UrlBuilder {
 
 					// Don't encode null values
 					if (value != null) {
-						append(value.toString().encodeURLPathPart())
+						append(value.toString().encodeURLPart())
 					}
 
 					// Close path variable
@@ -137,25 +137,6 @@ public object UrlBuilder {
 
 		// Append rest of path to result (can be empty)
 		append(template.substring(lastEnd + 1))
-	}
-
-	private fun String.encodeURLPathPart(): String = buildString {
-		this@encodeURLPathPart.forEach { char ->
-			when {
-				char.isUnreserved() -> append(char)
-				char == ' ' -> append('+')
-				else -> append("%${char.code.toString(16).uppercase()}")
-			}
-		}
-	}
-
-	private fun Char.isUnreserved() = isLetterOrDigit() || this in arrayOf('-', '_', '.', '~')
-
-	private fun String.extractQuerystring(): Pair<String, String?> {
-		val path = substringBefore('?')
-		val querystring = if (path.length < length) substring(path.length + 1) else null
-
-		return path to querystring
 	}
 }
 

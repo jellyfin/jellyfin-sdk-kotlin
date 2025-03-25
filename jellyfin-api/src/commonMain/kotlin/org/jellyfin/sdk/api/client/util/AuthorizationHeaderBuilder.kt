@@ -1,14 +1,12 @@
 package org.jellyfin.sdk.api.client.util
 
-import io.ktor.http.encodeURLParameter
-
 public object AuthorizationHeaderBuilder {
 	public const val AUTHORIZATION_SCHEME: String = "MediaBrowser"
 
 	public fun encodeParameterValue(raw: String): String = raw
 		.trim()
 		.replace(Regex("\\n"), " ")
-		.encodeURLParameter(spaceToPlus = true)
+		.encodeURLPart()
 
 	public fun buildParameter(key: String, value: String): String {
 		// Check for bad strings to prevent endless hours debugging why the server throws http 500 errors
