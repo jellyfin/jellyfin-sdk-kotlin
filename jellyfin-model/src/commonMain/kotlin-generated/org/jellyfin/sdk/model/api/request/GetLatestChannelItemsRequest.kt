@@ -28,8 +28,7 @@ public data class GetLatestChannelItemsRequest(
 	@SerialName("userId")
 	public val userId: UUID? = null,
 	/**
-	 * Optional. The record index to start at. All items with a lower index will be dropped from the
-	 * results.
+	 * Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 */
 	@SerialName("startIndex")
 	public val startIndex: Int? = null,

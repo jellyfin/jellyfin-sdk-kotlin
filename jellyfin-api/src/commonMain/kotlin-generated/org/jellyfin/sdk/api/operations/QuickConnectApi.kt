@@ -59,8 +59,7 @@ public class QuickConnectApi(
 			put("secret", secret)
 		}
 		val data = null
-		val response = api.`get`<QuickConnectResult>("/QuickConnect/Connect", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<QuickConnectResult>("/QuickConnect/Connect", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -71,8 +70,7 @@ public class QuickConnectApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<QuickConnectResult>("/QuickConnect/Initiate", pathParameters,
-				queryParameters, data)
+		val response = api.post<QuickConnectResult>("/QuickConnect/Initiate", pathParameters, queryParameters, data)
 		return response
 	}
 }

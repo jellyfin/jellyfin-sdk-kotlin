@@ -10,8 +10,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Update existing playlist user dto. Fields set to `null` will not be updated and keep their
- * current values.
+ * Update existing playlist user dto. Fields set to `null` will not be updated and keep their current values.
  */
 @Serializable
 public data class UpdatePlaylistUserDto(

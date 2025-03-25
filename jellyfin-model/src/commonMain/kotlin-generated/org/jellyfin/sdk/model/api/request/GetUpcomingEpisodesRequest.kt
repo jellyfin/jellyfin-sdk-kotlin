@@ -29,8 +29,7 @@ public data class GetUpcomingEpisodesRequest(
 	@SerialName("userId")
 	public val userId: UUID? = null,
 	/**
-	 * Optional. The record index to start at. All items with a lower index will be dropped from the
-	 * results.
+	 * Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 */
 	@SerialName("startIndex")
 	public val startIndex: Int? = null,
@@ -45,8 +44,7 @@ public data class GetUpcomingEpisodesRequest(
 	@SerialName("fields")
 	public val fields: Collection<ItemFields>? = null,
 	/**
-	 * Optional. Specify this to localize the search to a specific item or folder. Omit to use the
-	 * root.
+	 * Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
 	 */
 	@SerialName("parentId")
 	public val parentId: UUID? = null,

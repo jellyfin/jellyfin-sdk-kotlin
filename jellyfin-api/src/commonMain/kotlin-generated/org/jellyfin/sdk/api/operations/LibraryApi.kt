@@ -91,8 +91,7 @@ public class LibraryApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.`get`<List<BaseItemDto>>("/Items/{itemId}/Ancestors", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<BaseItemDto>>("/Items/{itemId}/Ancestors", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -106,8 +105,7 @@ public class LibraryApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/CriticReviews", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/CriticReviews", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -122,8 +120,7 @@ public class LibraryApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Download", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/Download", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -151,8 +148,7 @@ public class LibraryApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/File", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<ByteReadChannel>("/Items/{itemId}/File", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -175,8 +171,7 @@ public class LibraryApi(
 	 * @param userId Optional. Get counts from a specific user's library.
 	 * @param isFavorite Optional. Get counts of favorite items.
 	 */
-	public suspend fun getItemCounts(userId: UUID? = null, isFavorite: Boolean? = null):
-			Response<ItemCounts> {
+	public suspend fun getItemCounts(userId: UUID? = null, isFavorite: Boolean? = null): Response<ItemCounts> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(2) {
 			put("userId", userId)
@@ -193,16 +188,14 @@ public class LibraryApi(
 	 * @param libraryContentType Library content type.
 	 * @param isNewLibrary Whether this is a new library.
 	 */
-	public suspend fun getLibraryOptionsInfo(libraryContentType: CollectionType? = null,
-			isNewLibrary: Boolean? = false): Response<LibraryOptionsResultDto> {
+	public suspend fun getLibraryOptionsInfo(libraryContentType: CollectionType? = null, isNewLibrary: Boolean? = false): Response<LibraryOptionsResultDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(2) {
 			put("libraryContentType", libraryContentType)
 			put("isNewLibrary", isNewLibrary)
 		}
 		val data = null
-		val response = api.`get`<LibraryOptionsResultDto>("/Libraries/AvailableOptions", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<LibraryOptionsResultDto>("/Libraries/AvailableOptions", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -217,8 +210,7 @@ public class LibraryApi(
 			put("isHidden", isHidden)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Library/MediaFolders", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Library/MediaFolders", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -229,8 +221,7 @@ public class LibraryApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<String>>("/Library/PhysicalPaths", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<List<String>>("/Library/PhysicalPaths", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -241,10 +232,7 @@ public class LibraryApi(
 	 * @param excludeArtistIds Exclude artist ids.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
 	public suspend fun getSimilarAlbums(
 		itemId: UUID,
@@ -263,8 +251,7 @@ public class LibraryApi(
 			put("fields", fields)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Albums/{itemId}/Similar", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Albums/{itemId}/Similar", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -273,8 +260,7 @@ public class LibraryApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getSimilarAlbums(request: GetSimilarAlbumsRequest):
-			Response<BaseItemDtoQueryResult> = getSimilarAlbums(
+	public suspend fun getSimilarAlbums(request: GetSimilarAlbumsRequest): Response<BaseItemDtoQueryResult> = getSimilarAlbums(
 		itemId = request.itemId,
 		excludeArtistIds = request.excludeArtistIds,
 		userId = request.userId,
@@ -289,10 +275,7 @@ public class LibraryApi(
 	 * @param excludeArtistIds Exclude artist ids.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
 	public suspend fun getSimilarArtists(
 		itemId: UUID,
@@ -311,8 +294,7 @@ public class LibraryApi(
 			put("fields", fields)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/{itemId}/Similar", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/{itemId}/Similar", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -321,8 +303,7 @@ public class LibraryApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getSimilarArtists(request: GetSimilarArtistsRequest):
-			Response<BaseItemDtoQueryResult> = getSimilarArtists(
+	public suspend fun getSimilarArtists(request: GetSimilarArtistsRequest): Response<BaseItemDtoQueryResult> = getSimilarArtists(
 		itemId = request.itemId,
 		excludeArtistIds = request.excludeArtistIds,
 		userId = request.userId,
@@ -337,10 +318,7 @@ public class LibraryApi(
 	 * @param excludeArtistIds Exclude artist ids.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
 	public suspend fun getSimilarItems(
 		itemId: UUID,
@@ -359,8 +337,7 @@ public class LibraryApi(
 			put("fields", fields)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/Similar", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/Similar", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -369,8 +346,7 @@ public class LibraryApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getSimilarItems(request: GetSimilarItemsRequest):
-			Response<BaseItemDtoQueryResult> = getSimilarItems(
+	public suspend fun getSimilarItems(request: GetSimilarItemsRequest): Response<BaseItemDtoQueryResult> = getSimilarItems(
 		itemId = request.itemId,
 		excludeArtistIds = request.excludeArtistIds,
 		userId = request.userId,
@@ -385,10 +361,7 @@ public class LibraryApi(
 	 * @param excludeArtistIds Exclude artist ids.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
 	public suspend fun getSimilarMovies(
 		itemId: UUID,
@@ -407,8 +380,7 @@ public class LibraryApi(
 			put("fields", fields)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Movies/{itemId}/Similar", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Movies/{itemId}/Similar", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -417,8 +389,7 @@ public class LibraryApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getSimilarMovies(request: GetSimilarMoviesRequest):
-			Response<BaseItemDtoQueryResult> = getSimilarMovies(
+	public suspend fun getSimilarMovies(request: GetSimilarMoviesRequest): Response<BaseItemDtoQueryResult> = getSimilarMovies(
 		itemId = request.itemId,
 		excludeArtistIds = request.excludeArtistIds,
 		userId = request.userId,
@@ -433,10 +404,7 @@ public class LibraryApi(
 	 * @param excludeArtistIds Exclude artist ids.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
 	public suspend fun getSimilarShows(
 		itemId: UUID,
@@ -455,8 +423,7 @@ public class LibraryApi(
 			put("fields", fields)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/{itemId}/Similar", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/{itemId}/Similar", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -465,8 +432,7 @@ public class LibraryApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getSimilarShows(request: GetSimilarShowsRequest):
-			Response<BaseItemDtoQueryResult> = getSimilarShows(
+	public suspend fun getSimilarShows(request: GetSimilarShowsRequest): Response<BaseItemDtoQueryResult> = getSimilarShows(
 		itemId = request.itemId,
 		excludeArtistIds = request.excludeArtistIds,
 		userId = request.userId,
@@ -481,10 +447,7 @@ public class LibraryApi(
 	 * @param excludeArtistIds Exclude artist ids.
 	 * @param userId Optional. Filter by user id, and attach user data.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 */
 	public suspend fun getSimilarTrailers(
 		itemId: UUID,
@@ -503,8 +466,7 @@ public class LibraryApi(
 			put("fields", fields)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Trailers/{itemId}/Similar", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Trailers/{itemId}/Similar", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -513,8 +475,7 @@ public class LibraryApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getSimilarTrailers(request: GetSimilarTrailersRequest):
-			Response<BaseItemDtoQueryResult> = getSimilarTrailers(
+	public suspend fun getSimilarTrailers(request: GetSimilarTrailersRequest): Response<BaseItemDtoQueryResult> = getSimilarTrailers(
 		itemId = request.itemId,
 		excludeArtistIds = request.excludeArtistIds,
 		userId = request.userId,
@@ -527,11 +488,8 @@ public class LibraryApi(
 	 *
 	 * @param itemId The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
-	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
-	 * theme media.
-	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album,
-	 * AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount,
-	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for theme media.
+	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 * @param sortOrder Optional. Sort Order - Ascending, Descending.
 	 */
 	public suspend fun getThemeMedia(
@@ -551,8 +509,7 @@ public class LibraryApi(
 			put("sortOrder", sortOrder)
 		}
 		val data = null
-		val response = api.`get`<AllThemeMediaResult>("/Items/{itemId}/ThemeMedia", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<AllThemeMediaResult>("/Items/{itemId}/ThemeMedia", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -561,8 +518,7 @@ public class LibraryApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getThemeMedia(request: GetThemeMediaRequest): Response<AllThemeMediaResult> =
-			getThemeMedia(
+	public suspend fun getThemeMedia(request: GetThemeMediaRequest): Response<AllThemeMediaResult> = getThemeMedia(
 		itemId = request.itemId,
 		userId = request.userId,
 		inheritFromParent = request.inheritFromParent,
@@ -575,11 +531,8 @@ public class LibraryApi(
 	 *
 	 * @param itemId The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
-	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
-	 * theme media.
-	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album,
-	 * AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount,
-	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for theme media.
+	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 * @param sortOrder Optional. Sort Order - Ascending, Descending.
 	 */
 	public suspend fun getThemeSongs(
@@ -599,8 +552,7 @@ public class LibraryApi(
 			put("sortOrder", sortOrder)
 		}
 		val data = null
-		val response = api.`get`<ThemeMediaResult>("/Items/{itemId}/ThemeSongs", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ThemeMediaResult>("/Items/{itemId}/ThemeSongs", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -609,8 +561,7 @@ public class LibraryApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getThemeSongs(request: GetThemeSongsRequest): Response<ThemeMediaResult> =
-			getThemeSongs(
+	public suspend fun getThemeSongs(request: GetThemeSongsRequest): Response<ThemeMediaResult> = getThemeSongs(
 		itemId = request.itemId,
 		userId = request.userId,
 		inheritFromParent = request.inheritFromParent,
@@ -623,11 +574,8 @@ public class LibraryApi(
 	 *
 	 * @param itemId The item id.
 	 * @param userId Optional. Filter by user id, and attach user data.
-	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for
-	 * theme media.
-	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album,
-	 * AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount,
-	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+	 * @param inheritFromParent Optional. Determines whether or not parent items should be searched for theme media.
+	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 * @param sortOrder Optional. Sort Order - Ascending, Descending.
 	 */
 	public suspend fun getThemeVideos(
@@ -647,8 +595,7 @@ public class LibraryApi(
 			put("sortOrder", sortOrder)
 		}
 		val data = null
-		val response = api.`get`<ThemeMediaResult>("/Items/{itemId}/ThemeVideos", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ThemeMediaResult>("/Items/{itemId}/ThemeVideos", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -657,8 +604,7 @@ public class LibraryApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getThemeVideos(request: GetThemeVideosRequest): Response<ThemeMediaResult> =
-			getThemeVideos(
+	public suspend fun getThemeVideos(request: GetThemeVideosRequest): Response<ThemeMediaResult> = getThemeVideos(
 		itemId = request.itemId,
 		userId = request.userId,
 		inheritFromParent = request.inheritFromParent,
@@ -672,8 +618,7 @@ public class LibraryApi(
 	 * @param tmdbId The tmdbId.
 	 * @param imdbId The imdbId.
 	 */
-	public suspend fun postAddedMovies(tmdbId: String? = null, imdbId: String? = null):
-			Response<Unit> {
+	public suspend fun postAddedMovies(tmdbId: String? = null, imdbId: String? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(2) {
 			put("tmdbId", tmdbId)
@@ -715,8 +660,7 @@ public class LibraryApi(
 	 * @param tmdbId The tmdbId.
 	 * @param imdbId The imdbId.
 	 */
-	public suspend fun postUpdatedMovies(tmdbId: String? = null, imdbId: String? = null):
-			Response<Unit> {
+	public suspend fun postUpdatedMovies(tmdbId: String? = null, imdbId: String? = null): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(2) {
 			put("tmdbId", tmdbId)

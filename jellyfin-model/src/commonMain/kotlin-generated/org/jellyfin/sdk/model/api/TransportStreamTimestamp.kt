@@ -41,7 +41,6 @@ public enum class TransportStreamTimestamp(
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): TransportStreamTimestamp =
-				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+		public fun fromName(serialName: String): TransportStreamTimestamp = requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }

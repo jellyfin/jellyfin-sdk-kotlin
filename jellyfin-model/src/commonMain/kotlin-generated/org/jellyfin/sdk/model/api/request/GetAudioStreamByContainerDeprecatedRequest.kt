@@ -38,8 +38,7 @@ public data class GetAudioStreamByContainerDeprecatedRequest(
 	@SerialName("container")
 	public val container: String,
 	/**
-	 * Optional. If true, the original file will be streamed statically without any encoding. Use
-	 * either no url extension or the original file extension. true/false.
+	 * Optional. If true, the original file will be streamed statically without any encoding. Use either no url extension or the original file extension. true/false.
 	 */
 	@SerialName("static")
 	public val static: Boolean? = null,
@@ -90,14 +89,12 @@ public data class GetAudioStreamByContainerDeprecatedRequest(
 	@SerialName("deviceId")
 	public val deviceId: String? = null,
 	/**
-	 * Optional. Specify an audio codec to encode to, e.g. mp3. If omitted the server will auto-select
-	 * using the url's extension.
+	 * Optional. Specify an audio codec to encode to, e.g. mp3. If omitted the server will auto-select using the url's extension.
 	 */
 	@SerialName("audioCodec")
 	public val audioCodec: String? = null,
 	/**
-	 * Whether or not to allow automatic stream copy if requested values match the original source.
-	 * Defaults to true.
+	 * Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 */
 	@SerialName("enableAutoStreamCopy")
 	public val enableAutoStreamCopy: Boolean? = null,
@@ -127,8 +124,7 @@ public data class GetAudioStreamByContainerDeprecatedRequest(
 	@SerialName("maxAudioBitDepth")
 	public val maxAudioBitDepth: Int? = null,
 	/**
-	 * Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to
-	 * encoder defaults.
+	 * Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
 	 */
 	@SerialName("audioBitRate")
 	public val audioBitRate: Int? = null,
@@ -153,14 +149,12 @@ public data class GetAudioStreamByContainerDeprecatedRequest(
 	@SerialName("level")
 	public val level: String? = null,
 	/**
-	 * Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted
-	 * unless the device has specific requirements.
+	 * Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
 	 */
 	@SerialName("framerate")
 	public val framerate: Float? = null,
 	/**
-	 * Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be
-	 * omitted unless the device has specific requirements.
+	 * Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
 	 */
 	@SerialName("maxFramerate")
 	public val maxFramerate: Float? = null,
@@ -185,8 +179,7 @@ public data class GetAudioStreamByContainerDeprecatedRequest(
 	@SerialName("height")
 	public val height: Int? = null,
 	/**
-	 * Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to
-	 * encoder defaults.
+	 * Optional. Specify a video bitrate to encode to, e.g. 500000. If omitted this will be left to encoder defaults.
 	 */
 	@SerialName("videoBitRate")
 	public val videoBitRate: Int? = null,
@@ -246,8 +239,7 @@ public data class GetAudioStreamByContainerDeprecatedRequest(
 	@SerialName("enableMpegtsM2TsMode")
 	public val enableMpegtsM2TsMode: Boolean? = null,
 	/**
-	 * Optional. Specify a video codec to encode to, e.g. h264. If omitted the server will auto-select
-	 * using the url's extension.
+	 * Optional. Specify a video codec to encode to, e.g. h264. If omitted the server will auto-select using the url's extension.
 	 */
 	@SerialName("videoCodec")
 	public val videoCodec: String? = null,

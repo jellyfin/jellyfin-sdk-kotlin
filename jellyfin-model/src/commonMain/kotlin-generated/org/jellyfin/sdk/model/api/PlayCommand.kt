@@ -50,7 +50,6 @@ public enum class PlayCommand(
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): PlayCommand =
-				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+		public fun fromName(serialName: String): PlayCommand = requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }

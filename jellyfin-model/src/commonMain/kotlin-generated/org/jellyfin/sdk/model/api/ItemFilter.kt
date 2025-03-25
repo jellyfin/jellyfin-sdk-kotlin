@@ -62,7 +62,6 @@ public enum class ItemFilter(
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): ItemFilter =
-				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+		public fun fromName(serialName: String): ItemFilter = requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }

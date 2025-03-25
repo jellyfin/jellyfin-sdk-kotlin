@@ -104,8 +104,7 @@ public data class ServerConfiguration(
 	@SerialName("MinResumePct")
 	public val minResumePct: Int,
 	/**
-	 * The maximum percentage of an item that can be played while still saving playstate. If this
-	 * percentage is crossed playstate will be reset to the beginning and the item will be marked watched.
+	 * The maximum percentage of an item that can be played while still saving playstate. If this percentage is crossed playstate will be reset to the beginning and the item will be marked watched.
 	 */
 	@SerialName("MaxResumePct")
 	public val maxResumePct: Int,
@@ -120,8 +119,7 @@ public data class ServerConfiguration(
 	@SerialName("MinAudiobookResume")
 	public val minAudiobookResume: Int,
 	/**
-	 * The remaining minutes of a book that can be played while still saving playstate. If this
-	 * percentage is crossed playstate will be reset to the beginning and the item will be marked watched.
+	 * The remaining minutes of a book that can be played while still saving playstate. If this percentage is crossed playstate will be reset to the beginning and the item will be marked watched.
 	 */
 	@SerialName("MaxAudiobookResume")
 	public val maxAudiobookResume: Int,
@@ -132,17 +130,14 @@ public data class ServerConfiguration(
 	@SerialName("InactiveSessionThreshold")
 	public val inactiveSessionThreshold: Int,
 	/**
-	 * Gets or sets the delay in seconds that we will wait after a file system change to try and
-	 * discover what has been added/removed
-	 * Some delay is necessary with some items because their creation is not atomic.  It involves the
-	 * creation of several
+	 * Gets or sets the delay in seconds that we will wait after a file system change to try and discover what has been added/removed
+	 * Some delay is necessary with some items because their creation is not atomic.  It involves the creation of several
 	 * different directories and files.
 	 */
 	@SerialName("LibraryMonitorDelay")
 	public val libraryMonitorDelay: Int,
 	/**
-	 * The duration in seconds that we will wait after a library updated event before executing the
-	 * library changed notification.
+	 * The duration in seconds that we will wait after a library updated event before executing the library changed notification.
 	 */
 	@SerialName("LibraryUpdateDuration")
 	public val libraryUpdateDuration: Int,

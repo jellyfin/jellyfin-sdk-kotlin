@@ -23,8 +23,7 @@ public class ActivityLogApi(
 	/**
 	 * Gets activity log entries.
 	 *
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param minDate Optional. The minimum date. Format = ISO.
 	 * @param hasUserId Optional. Filter log entries if it has user id, or not.
@@ -43,8 +42,7 @@ public class ActivityLogApi(
 			put("hasUserId", hasUserId)
 		}
 		val data = null
-		val response = api.`get`<ActivityLogEntryQueryResult>("/System/ActivityLog/Entries",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ActivityLogEntryQueryResult>("/System/ActivityLog/Entries", pathParameters, queryParameters, data)
 		return response
 	}
 }

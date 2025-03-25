@@ -73,8 +73,7 @@ public class LiveTvApi(
 			put("validateListings", validateListings)
 			put("validateLogin", validateLogin)
 		}
-		val response = api.post<ListingsProviderInfo>("/LiveTv/ListingProviders", pathParameters,
-				queryParameters, data)
+		val response = api.post<ListingsProviderInfo>("/LiveTv/ListingProviders", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -84,8 +83,7 @@ public class LiveTvApi(
 	public suspend fun addTunerHost(`data`: TunerHostInfo? = null): Response<TunerHostInfo> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<TunerHostInfo>("/LiveTv/TunerHosts", pathParameters, queryParameters,
-				data)
+		val response = api.post<TunerHostInfo>("/LiveTv/TunerHosts", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -100,8 +98,7 @@ public class LiveTvApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.delete<Unit>("/LiveTv/SeriesTimers/{timerId}", pathParameters, queryParameters,
-				data)
+		val response = api.delete<Unit>("/LiveTv/SeriesTimers/{timerId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -166,8 +163,7 @@ public class LiveTvApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.delete<Unit>("/LiveTv/Recordings/{recordingId}", pathParameters,
-				queryParameters, data)
+		val response = api.delete<Unit>("/LiveTv/Recordings/{recordingId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -191,15 +187,13 @@ public class LiveTvApi(
 	 *
 	 * @param newDevicesOnly Only discover new tuners.
 	 */
-	public suspend fun discoverTuners(newDevicesOnly: Boolean? = false):
-			Response<List<TunerHostInfo>> {
+	public suspend fun discoverTuners(newDevicesOnly: Boolean? = false): Response<List<TunerHostInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("newDevicesOnly", newDevicesOnly)
 		}
 		val data = null
-		val response = api.`get`<List<TunerHostInfo>>("/LiveTv/Tuners/Discover", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<TunerHostInfo>>("/LiveTv/Tuners/Discover", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -208,15 +202,13 @@ public class LiveTvApi(
 	 *
 	 * @param newDevicesOnly Only discover new tuners.
 	 */
-	public suspend fun discvoverTuners(newDevicesOnly: Boolean? = false):
-			Response<List<TunerHostInfo>> {
+	public suspend fun discvoverTuners(newDevicesOnly: Boolean? = false): Response<List<TunerHostInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("newDevicesOnly", newDevicesOnly)
 		}
 		val data = null
-		val response = api.`get`<List<TunerHostInfo>>("/LiveTv/Tuners/Discvover", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<TunerHostInfo>>("/LiveTv/Tuners/Discvover", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -234,8 +226,7 @@ public class LiveTvApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDto>("/LiveTv/Channels/{channelId}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDto>("/LiveTv/Channels/{channelId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -244,15 +235,13 @@ public class LiveTvApi(
 	 *
 	 * @param providerId Provider id.
 	 */
-	public suspend fun getChannelMappingOptions(providerId: String? = null):
-			Response<ChannelMappingOptionsDto> {
+	public suspend fun getChannelMappingOptions(providerId: String? = null): Response<ChannelMappingOptionsDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("providerId", providerId)
 		}
 		val data = null
-		val response = api.`get`<ChannelMappingOptionsDto>("/LiveTv/ChannelMappingOptions",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ChannelMappingOptionsDto>("/LiveTv/ChannelMappingOptions", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -263,8 +252,7 @@ public class LiveTvApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ListingsProviderInfo>("/LiveTv/ListingProviders/Default", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ListingsProviderInfo>("/LiveTv/ListingProviders/Default", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -279,8 +267,7 @@ public class LiveTvApi(
 			put("programId", programId)
 		}
 		val data = null
-		val response = api.`get`<SeriesTimerInfoDto>("/LiveTv/Timers/Defaults", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<SeriesTimerInfoDto>("/LiveTv/Timers/Defaults", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -317,8 +304,7 @@ public class LiveTvApi(
 			put("country", country)
 		}
 		val data = null
-		val response = api.`get`<List<NameIdPair>>("/LiveTv/ListingProviders/Lineups", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<NameIdPair>>("/LiveTv/ListingProviders/Lineups", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -333,8 +319,7 @@ public class LiveTvApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/LiveTv/LiveRecordings/{recordingId}/stream",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/LiveTv/LiveRecordings/{recordingId}/stream", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -348,8 +333,7 @@ public class LiveTvApi(
 			put("recordingId", recordingId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/LiveTv/LiveRecordings/{recordingId}/stream", pathParameters,
-				queryParameters)
+		return api.createUrl("/LiveTv/LiveRecordings/{recordingId}/stream", pathParameters, queryParameters)
 	}
 
 	/**
@@ -358,16 +342,14 @@ public class LiveTvApi(
 	 * @param streamId Stream id.
 	 * @param container Container type.
 	 */
-	public suspend fun getLiveStreamFile(streamId: String, container: String):
-			Response<ByteReadChannel> {
+	public suspend fun getLiveStreamFile(streamId: String, container: String): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("streamId", streamId)
 			put("container", container)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/LiveTv/LiveStreamFiles/{streamId}/stream.{container}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/LiveTv/LiveStreamFiles/{streamId}/stream.{container}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -383,8 +365,7 @@ public class LiveTvApi(
 			put("container", container)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/LiveTv/LiveStreamFiles/{streamId}/stream.{container}", pathParameters,
-				queryParameters)
+		return api.createUrl("/LiveTv/LiveStreamFiles/{streamId}/stream.{container}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -392,8 +373,7 @@ public class LiveTvApi(
 	 *
 	 * @param type Optional. Filter by channel type.
 	 * @param userId Optional. Filter by user and attach user data.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param isMovie Optional. Filter for movies.
 	 * @param isSeries Optional. Filter for series.
 	 * @param isNews Optional. Filter for news.
@@ -410,8 +390,7 @@ public class LiveTvApi(
 	 * @param enableUserData Optional. Include user data.
 	 * @param sortBy Optional. Key to sort by.
 	 * @param sortOrder Optional. Sort order.
-	 * @param enableFavoriteSorting Optional. Incorporate favorite and like status into channel
-	 * sorting.
+	 * @param enableFavoriteSorting Optional. Incorporate favorite and like status into channel sorting.
 	 * @param addCurrentProgram Optional. Adds current program info to each channel.
 	 */
 	public suspend fun getLiveTvChannels(
@@ -462,8 +441,7 @@ public class LiveTvApi(
 			put("addCurrentProgram", addCurrentProgram)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Channels", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Channels", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -472,8 +450,7 @@ public class LiveTvApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getLiveTvChannels(request: GetLiveTvChannelsRequest =
-			GetLiveTvChannelsRequest()): Response<BaseItemDtoQueryResult> = getLiveTvChannels(
+	public suspend fun getLiveTvChannels(request: GetLiveTvChannelsRequest = GetLiveTvChannelsRequest()): Response<BaseItemDtoQueryResult> = getLiveTvChannels(
 		type = request.type,
 		userId = request.userId,
 		startIndex = request.startIndex,
@@ -524,11 +501,9 @@ public class LiveTvApi(
 	 * @param isNews Optional. Filter for news.
 	 * @param isKids Optional. Filter for kids.
 	 * @param isSports Optional. Filter for sports.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
-	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Name,
-	 * StartDate.
+	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Name, StartDate.
 	 * @param sortOrder Sort Order - Ascending,Descending.
 	 * @param genres The genres to return guide information for.
 	 * @param genreIds The genre ids to return guide information for.
@@ -601,8 +576,7 @@ public class LiveTvApi(
 			put("enableTotalRecordCount", enableTotalRecordCount)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Programs", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Programs", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -611,8 +585,7 @@ public class LiveTvApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getLiveTvPrograms(request: GetLiveTvProgramsRequest =
-			GetLiveTvProgramsRequest()): Response<BaseItemDtoQueryResult> = getLiveTvPrograms(
+	public suspend fun getLiveTvPrograms(request: GetLiveTvProgramsRequest = GetLiveTvProgramsRequest()): Response<BaseItemDtoQueryResult> = getLiveTvPrograms(
 		channelIds = request.channelIds,
 		userId = request.userId,
 		minStartDate = request.minStartDate,
@@ -656,8 +629,7 @@ public class LiveTvApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDto>("/LiveTv/Programs/{programId}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDto>("/LiveTv/Programs/{programId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -667,8 +639,7 @@ public class LiveTvApi(
 	public suspend fun getPrograms(`data`: GetProgramsDto? = null): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<BaseItemDtoQueryResult>("/LiveTv/Programs", pathParameters,
-				queryParameters, data)
+		val response = api.post<BaseItemDtoQueryResult>("/LiveTv/Programs", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -730,8 +701,7 @@ public class LiveTvApi(
 			put("enableTotalRecordCount", enableTotalRecordCount)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Programs/Recommended", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Programs/Recommended", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -740,8 +710,7 @@ public class LiveTvApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getRecommendedPrograms(request: GetRecommendedProgramsRequest =
-			GetRecommendedProgramsRequest()): Response<BaseItemDtoQueryResult> = getRecommendedPrograms(
+	public suspend fun getRecommendedPrograms(request: GetRecommendedProgramsRequest = GetRecommendedProgramsRequest()): Response<BaseItemDtoQueryResult> = getRecommendedPrograms(
 		userId = request.userId,
 		limit = request.limit,
 		isAiring = request.isAiring,
@@ -774,8 +743,7 @@ public class LiveTvApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDto>("/LiveTv/Recordings/{recordingId}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDto>("/LiveTv/Recordings/{recordingId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -790,8 +758,7 @@ public class LiveTvApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Recordings/Folders", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Recordings/Folders", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -807,8 +774,7 @@ public class LiveTvApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<Unit>("/LiveTv/Recordings/Groups/{groupId}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<Unit>("/LiveTv/Recordings/Groups/{groupId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -824,8 +790,7 @@ public class LiveTvApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Recordings/Groups", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Recordings/Groups", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -834,8 +799,7 @@ public class LiveTvApi(
 	 *
 	 * @param channelId Optional. Filter by channel id.
 	 * @param userId Optional. Filter by user and attach user data.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param status Optional. Filter by recording status.
 	 * @param isInProgress Optional. Filter by recordings that are in progress, or not.
@@ -897,8 +861,7 @@ public class LiveTvApi(
 			put("enableTotalRecordCount", enableTotalRecordCount)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Recordings", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Recordings", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -907,8 +870,7 @@ public class LiveTvApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getRecordings(request: GetRecordingsRequest = GetRecordingsRequest()):
-			Response<BaseItemDtoQueryResult> = getRecordings(
+	public suspend fun getRecordings(request: GetRecordingsRequest = GetRecordingsRequest()): Response<BaseItemDtoQueryResult> = getRecordings(
 		channelId = request.channelId,
 		userId = request.userId,
 		startIndex = request.startIndex,
@@ -936,8 +898,7 @@ public class LiveTvApi(
 	 * @param channelId Optional. Filter by channel id.
 	 * @param userId Optional. Filter by user and attach user data.
 	 * @param groupId Optional. Filter by recording group.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param status Optional. Filter by recording status.
 	 * @param isInProgress Optional. Filter by recordings that are in progress, or not.
@@ -984,8 +945,7 @@ public class LiveTvApi(
 			put("enableTotalRecordCount", enableTotalRecordCount)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Recordings/Series", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Recordings/Series", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -995,8 +955,7 @@ public class LiveTvApi(
 	 * @param request The request parameters
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getRecordingsSeries(request: GetRecordingsSeriesRequest =
-			GetRecordingsSeriesRequest()): Response<BaseItemDtoQueryResult> = getRecordingsSeries(
+	public suspend fun getRecordingsSeries(request: GetRecordingsSeriesRequest = GetRecordingsSeriesRequest()): Response<BaseItemDtoQueryResult> = getRecordingsSeries(
 		channelId = request.channelId,
 		userId = request.userId,
 		groupId = request.groupId,
@@ -1020,8 +979,7 @@ public class LiveTvApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/LiveTv/ListingProviders/SchedulesDirect/Countries",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/LiveTv/ListingProviders/SchedulesDirect/Countries", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1031,8 +989,7 @@ public class LiveTvApi(
 	public fun getSchedulesDirectCountriesUrl(): String {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/LiveTv/ListingProviders/SchedulesDirect/Countries", pathParameters,
-				queryParameters)
+		return api.createUrl("/LiveTv/ListingProviders/SchedulesDirect/Countries", pathParameters, queryParameters)
 	}
 
 	/**
@@ -1046,8 +1003,7 @@ public class LiveTvApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<SeriesTimerInfoDto>("/LiveTv/SeriesTimers/{timerId}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<SeriesTimerInfoDto>("/LiveTv/SeriesTimers/{timerId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1057,16 +1013,14 @@ public class LiveTvApi(
 	 * @param sortBy Optional. Sort by SortName or Priority.
 	 * @param sortOrder Optional. Sort in Ascending or Descending order.
 	 */
-	public suspend fun getSeriesTimers(sortBy: String? = null, sortOrder: SortOrder? = null):
-			Response<SeriesTimerInfoDtoQueryResult> {
+	public suspend fun getSeriesTimers(sortBy: String? = null, sortOrder: SortOrder? = null): Response<SeriesTimerInfoDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(2) {
 			put("sortBy", sortBy)
 			put("sortOrder", sortOrder)
 		}
 		val data = null
-		val response = api.`get`<SeriesTimerInfoDtoQueryResult>("/LiveTv/SeriesTimers", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<SeriesTimerInfoDtoQueryResult>("/LiveTv/SeriesTimers", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1081,8 +1035,7 @@ public class LiveTvApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<TimerInfoDto>("/LiveTv/Timers/{timerId}", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<TimerInfoDto>("/LiveTv/Timers/{timerId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1108,8 +1061,7 @@ public class LiveTvApi(
 			put("isScheduled", isScheduled)
 		}
 		val data = null
-		val response = api.`get`<TimerInfoDtoQueryResult>("/LiveTv/Timers", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<TimerInfoDtoQueryResult>("/LiveTv/Timers", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1120,8 +1072,7 @@ public class LiveTvApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<NameIdPair>>("/LiveTv/TunerHosts/Types", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<NameIdPair>>("/LiveTv/TunerHosts/Types", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1136,8 +1087,7 @@ public class LiveTvApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<Unit>("/LiveTv/Tuners/{tunerId}/Reset", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/LiveTv/Tuners/{tunerId}/Reset", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1147,8 +1097,7 @@ public class LiveTvApi(
 	public suspend fun setChannelMapping(`data`: SetChannelMappingDto): Response<TunerChannelMapping> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<TunerChannelMapping>("/LiveTv/ChannelMappings", pathParameters,
-				queryParameters, data)
+		val response = api.post<TunerChannelMapping>("/LiveTv/ChannelMappings", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -1157,14 +1106,12 @@ public class LiveTvApi(
 	 *
 	 * @param timerId Timer id.
 	 */
-	public suspend fun updateSeriesTimer(timerId: String, `data`: SeriesTimerInfoDto? = null):
-			Response<Unit> {
+	public suspend fun updateSeriesTimer(timerId: String, `data`: SeriesTimerInfoDto? = null): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("timerId", timerId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/LiveTv/SeriesTimers/{timerId}", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/LiveTv/SeriesTimers/{timerId}", pathParameters, queryParameters, data)
 		return response
 	}
 

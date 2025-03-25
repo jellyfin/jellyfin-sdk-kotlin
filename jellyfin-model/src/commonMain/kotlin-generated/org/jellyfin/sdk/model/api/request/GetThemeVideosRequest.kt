@@ -38,9 +38,7 @@ public data class GetThemeVideosRequest(
 	@SerialName("inheritFromParent")
 	public val inheritFromParent: Boolean? = false,
 	/**
-	 * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist,
-	 * Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate,
-	 * ProductionYear, SortName, Random, Revenue, Runtime.
+	 * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 */
 	@SerialName("sortBy")
 	public val sortBy: Collection<ItemSortBy>? = null,

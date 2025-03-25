@@ -25,16 +25,14 @@ public class HlsSegmentApi(
 	 * @param itemId The item id.
 	 * @param segmentId The segment id.
 	 */
-	public suspend fun getHlsAudioSegmentLegacyAac(itemId: String, segmentId: String):
-			Response<ByteReadChannel> {
+	public suspend fun getHlsAudioSegmentLegacyAac(itemId: String, segmentId: String): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
 			put("segmentId", segmentId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/hls/{segmentId}/stream.aac",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/hls/{segmentId}/stream.aac", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -50,8 +48,7 @@ public class HlsSegmentApi(
 			put("segmentId", segmentId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Audio/{itemId}/hls/{segmentId}/stream.aac", pathParameters,
-				queryParameters)
+		return api.createUrl("/Audio/{itemId}/hls/{segmentId}/stream.aac", pathParameters, queryParameters)
 	}
 
 	/**
@@ -60,16 +57,14 @@ public class HlsSegmentApi(
 	 * @param itemId The item id.
 	 * @param segmentId The segment id.
 	 */
-	public suspend fun getHlsAudioSegmentLegacyMp3(itemId: String, segmentId: String):
-			Response<ByteReadChannel> {
+	public suspend fun getHlsAudioSegmentLegacyMp3(itemId: String, segmentId: String): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
 			put("segmentId", segmentId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/hls/{segmentId}/stream.mp3",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Audio/{itemId}/hls/{segmentId}/stream.mp3", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -85,8 +80,7 @@ public class HlsSegmentApi(
 			put("segmentId", segmentId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Audio/{itemId}/hls/{segmentId}/stream.mp3", pathParameters,
-				queryParameters)
+		return api.createUrl("/Audio/{itemId}/hls/{segmentId}/stream.mp3", pathParameters, queryParameters)
 	}
 
 	/**
@@ -95,16 +89,14 @@ public class HlsSegmentApi(
 	 * @param itemId The video id.
 	 * @param playlistId The playlist id.
 	 */
-	public suspend fun getHlsPlaylistLegacy(itemId: String, playlistId: String):
-			Response<ByteReadChannel> {
+	public suspend fun getHlsPlaylistLegacy(itemId: String, playlistId: String): Response<ByteReadChannel> {
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/hls/{playlistId}/stream.m3u8",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/hls/{playlistId}/stream.m3u8", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -120,8 +112,7 @@ public class HlsSegmentApi(
 			put("playlistId", playlistId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Videos/{itemId}/hls/{playlistId}/stream.m3u8", pathParameters,
-				queryParameters)
+		return api.createUrl("/Videos/{itemId}/hls/{playlistId}/stream.m3u8", pathParameters, queryParameters)
 	}
 
 	/**
@@ -146,9 +137,7 @@ public class HlsSegmentApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response =
-				api.`get`<ByteReadChannel>("/Videos/{itemId}/hls/{playlistId}/{segmentId}.{segmentContainer}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Videos/{itemId}/hls/{playlistId}/{segmentId}.{segmentContainer}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -173,15 +162,13 @@ public class HlsSegmentApi(
 			put("segmentContainer", segmentContainer)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/Videos/{itemId}/hls/{playlistId}/{segmentId}.{segmentContainer}",
-				pathParameters, queryParameters)
+		return api.createUrl("/Videos/{itemId}/hls/{playlistId}/{segmentId}.{segmentContainer}", pathParameters, queryParameters)
 	}
 
 	/**
 	 * Stops an active encoding.
 	 *
-	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when
-	 * needed.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
 	 * @param playSessionId The play session id.
 	 */
 	public suspend fun stopEncodingProcess(deviceId: String, playSessionId: String): Response<Unit> {

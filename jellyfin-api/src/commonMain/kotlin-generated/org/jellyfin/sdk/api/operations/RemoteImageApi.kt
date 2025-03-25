@@ -46,8 +46,7 @@ public class RemoteImageApi(
 			put("imageUrl", imageUrl)
 		}
 		val data = null
-		val response = api.post<Unit>("/Items/{itemId}/RemoteImages/Download", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Items/{itemId}/RemoteImages/Download", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -62,8 +61,7 @@ public class RemoteImageApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<ImageProviderInfo>>("/Items/{itemId}/RemoteImages/Providers",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<List<ImageProviderInfo>>("/Items/{itemId}/RemoteImages/Providers", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -72,8 +70,7 @@ public class RemoteImageApi(
 	 *
 	 * @param itemId Item Id.
 	 * @param type The image type.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param providerName Optional. The image provider to use.
 	 * @param includeAllLanguages Optional. Include all languages.
@@ -97,8 +94,7 @@ public class RemoteImageApi(
 			put("includeAllLanguages", includeAllLanguages)
 		}
 		val data = null
-		val response = api.`get`<RemoteImageResult>("/Items/{itemId}/RemoteImages", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<RemoteImageResult>("/Items/{itemId}/RemoteImages", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -107,8 +103,7 @@ public class RemoteImageApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getRemoteImages(request: GetRemoteImagesRequest): Response<RemoteImageResult> =
-			getRemoteImages(
+	public suspend fun getRemoteImages(request: GetRemoteImagesRequest): Response<RemoteImageResult> = getRemoteImages(
 		itemId = request.itemId,
 		type = request.type,
 		startIndex = request.startIndex,

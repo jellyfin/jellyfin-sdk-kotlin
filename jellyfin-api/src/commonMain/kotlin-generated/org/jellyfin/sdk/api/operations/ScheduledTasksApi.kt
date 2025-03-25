@@ -34,8 +34,7 @@ public class ScheduledTasksApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<TaskInfo>("/ScheduledTasks/{taskId}", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<TaskInfo>("/ScheduledTasks/{taskId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -45,8 +44,7 @@ public class ScheduledTasksApi(
 	 * @param isHidden Optional filter tasks that are hidden, or not.
 	 * @param isEnabled Optional filter tasks that are enabled, or not.
 	 */
-	public suspend fun getTasks(isHidden: Boolean? = null, isEnabled: Boolean? = null):
-			Response<List<TaskInfo>> {
+	public suspend fun getTasks(isHidden: Boolean? = null, isEnabled: Boolean? = null): Response<List<TaskInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(2) {
 			put("isHidden", isHidden)
@@ -68,8 +66,7 @@ public class ScheduledTasksApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<Unit>("/ScheduledTasks/Running/{taskId}", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/ScheduledTasks/Running/{taskId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -84,8 +81,7 @@ public class ScheduledTasksApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.delete<Unit>("/ScheduledTasks/Running/{taskId}", pathParameters,
-				queryParameters, data)
+		val response = api.delete<Unit>("/ScheduledTasks/Running/{taskId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -99,8 +95,7 @@ public class ScheduledTasksApi(
 			put("taskId", taskId)
 		}
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/ScheduledTasks/{taskId}/Triggers", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/ScheduledTasks/{taskId}/Triggers", pathParameters, queryParameters, data)
 		return response
 	}
 }

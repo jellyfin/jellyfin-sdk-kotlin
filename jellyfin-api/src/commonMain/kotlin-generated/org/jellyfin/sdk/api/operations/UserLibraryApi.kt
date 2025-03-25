@@ -37,8 +37,7 @@ public class UserLibraryApi(
 	 * @param itemId Item id.
 	 * @param userId User id.
 	 */
-	public suspend fun deleteUserItemRating(itemId: UUID, userId: UUID? = null):
-			Response<UserItemDataDto> {
+	public suspend fun deleteUserItemRating(itemId: UUID, userId: UUID? = null): Response<UserItemDataDto> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -46,8 +45,7 @@ public class UserLibraryApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.delete<UserItemDataDto>("/UserItems/{itemId}/Rating", pathParameters,
-				queryParameters, data)
+		val response = api.delete<UserItemDataDto>("/UserItems/{itemId}/Rating", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -57,8 +55,7 @@ public class UserLibraryApi(
 	 * @param itemId Item id.
 	 * @param userId User id.
 	 */
-	public suspend fun getIntros(itemId: UUID, userId: UUID? = null):
-			Response<BaseItemDtoQueryResult> {
+	public suspend fun getIntros(itemId: UUID, userId: UUID? = null): Response<BaseItemDtoQueryResult> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -66,8 +63,7 @@ public class UserLibraryApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/Intros", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/Intros", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -93,11 +89,9 @@ public class UserLibraryApi(
 	 * Gets latest media.
 	 *
 	 * @param userId User id.
-	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use
-	 * the root.
+	 * @param parentId Specify this to localize the search to a specific item or folder. Omit to use the root.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
-	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type.
-	 * This allows multiple, comma delimited.
+	 * @param includeItemTypes Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimited.
 	 * @param isPlayed Filter by items that are played, or not.
 	 * @param enableImages Optional. include image information in output.
 	 * @param imageTypeLimit Optional. the max number of images to return, per image type.
@@ -134,8 +128,7 @@ public class UserLibraryApi(
 			put("groupItems", groupItems)
 		}
 		val data = null
-		val response = api.`get`<List<BaseItemDto>>("/Items/Latest", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<List<BaseItemDto>>("/Items/Latest", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -144,8 +137,7 @@ public class UserLibraryApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getLatestMedia(request: GetLatestMediaRequest = GetLatestMediaRequest()):
-			Response<List<BaseItemDto>> = getLatestMedia(
+	public suspend fun getLatestMedia(request: GetLatestMediaRequest = GetLatestMediaRequest()): Response<List<BaseItemDto>> = getLatestMedia(
 		userId = request.userId,
 		parentId = request.parentId,
 		fields = request.fields,
@@ -165,8 +157,7 @@ public class UserLibraryApi(
 	 * @param itemId Item id.
 	 * @param userId User id.
 	 */
-	public suspend fun getLocalTrailers(itemId: UUID, userId: UUID? = null):
-			Response<List<BaseItemDto>> {
+	public suspend fun getLocalTrailers(itemId: UUID, userId: UUID? = null): Response<List<BaseItemDto>> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -174,8 +165,7 @@ public class UserLibraryApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.`get`<List<BaseItemDto>>("/Items/{itemId}/LocalTrailers", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<BaseItemDto>>("/Items/{itemId}/LocalTrailers", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -200,8 +190,7 @@ public class UserLibraryApi(
 	 * @param itemId Item id.
 	 * @param userId User id.
 	 */
-	public suspend fun getSpecialFeatures(itemId: UUID, userId: UUID? = null):
-			Response<List<BaseItemDto>> {
+	public suspend fun getSpecialFeatures(itemId: UUID, userId: UUID? = null): Response<List<BaseItemDto>> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -209,8 +198,7 @@ public class UserLibraryApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.`get`<List<BaseItemDto>>("/Items/{itemId}/SpecialFeatures", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<BaseItemDto>>("/Items/{itemId}/SpecialFeatures", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -220,8 +208,7 @@ public class UserLibraryApi(
 	 * @param itemId Item id.
 	 * @param userId User id.
 	 */
-	public suspend fun markFavoriteItem(itemId: UUID, userId: UUID? = null):
-			Response<UserItemDataDto> {
+	public suspend fun markFavoriteItem(itemId: UUID, userId: UUID? = null): Response<UserItemDataDto> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -229,8 +216,7 @@ public class UserLibraryApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.post<UserItemDataDto>("/UserFavoriteItems/{itemId}", pathParameters,
-				queryParameters, data)
+		val response = api.post<UserItemDataDto>("/UserFavoriteItems/{itemId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -240,8 +226,7 @@ public class UserLibraryApi(
 	 * @param itemId Item id.
 	 * @param userId User id.
 	 */
-	public suspend fun unmarkFavoriteItem(itemId: UUID, userId: UUID? = null):
-			Response<UserItemDataDto> {
+	public suspend fun unmarkFavoriteItem(itemId: UUID, userId: UUID? = null): Response<UserItemDataDto> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("itemId", itemId)
 		}
@@ -249,8 +234,7 @@ public class UserLibraryApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.delete<UserItemDataDto>("/UserFavoriteItems/{itemId}", pathParameters,
-				queryParameters, data)
+		val response = api.delete<UserItemDataDto>("/UserFavoriteItems/{itemId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -259,9 +243,7 @@ public class UserLibraryApi(
 	 *
 	 * @param itemId Item id.
 	 * @param userId User id.
-	 * @param likes Whether this
-	 * M:Jellyfin.Api.Controllers.UserLibraryController.UpdateUserItemRating(System.Nullable{System.Guid},System.Guid,System.Nullable{System.Boolean})
-	 * is likes.
+	 * @param likes Whether this M:Jellyfin.Api.Controllers.UserLibraryController.UpdateUserItemRating(System.Nullable{System.Guid},System.Guid,System.Nullable{System.Boolean}) is likes.
 	 */
 	public suspend fun updateUserItemRating(
 		itemId: UUID,
@@ -276,8 +258,7 @@ public class UserLibraryApi(
 			put("likes", likes)
 		}
 		val data = null
-		val response = api.post<UserItemDataDto>("/UserItems/{itemId}/Rating", pathParameters,
-				queryParameters, data)
+		val response = api.post<UserItemDataDto>("/UserItems/{itemId}/Rating", pathParameters, queryParameters, data)
 		return response
 	}
 }

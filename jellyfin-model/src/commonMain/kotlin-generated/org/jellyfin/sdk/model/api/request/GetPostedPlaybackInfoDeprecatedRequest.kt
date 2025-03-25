@@ -19,8 +19,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * For backwards compatibility parameters can be sent via Query or Body, with Query having higher
- * precedence.
+ * For backwards compatibility parameters can be sent via Query or Body, with Query having higher precedence.
  * Query parameters are obsolete.
  */
 @Serializable

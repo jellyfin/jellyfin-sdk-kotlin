@@ -41,7 +41,6 @@ public enum class ScrollDirection(
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): ScrollDirection =
-				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+		public fun fromName(serialName: String): ScrollDirection = requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }

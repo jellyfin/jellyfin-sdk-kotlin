@@ -38,8 +38,7 @@ public class PluginsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<Unit>("/Plugins/{pluginId}/{version}/Disable", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Plugins/{pluginId}/{version}/Disable", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -56,8 +55,7 @@ public class PluginsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<Unit>("/Plugins/{pluginId}/{version}/Enable", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Plugins/{pluginId}/{version}/Enable", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -72,8 +70,7 @@ public class PluginsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<BasePluginConfiguration>("/Plugins/{pluginId}/Configuration",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<BasePluginConfiguration>("/Plugins/{pluginId}/Configuration", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -90,8 +87,7 @@ public class PluginsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteReadChannel>("/Plugins/{pluginId}/{version}/Image", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ByteReadChannel>("/Plugins/{pluginId}/{version}/Image", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -121,8 +117,7 @@ public class PluginsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<Unit>("/Plugins/{pluginId}/Manifest", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/Plugins/{pluginId}/Manifest", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -166,8 +161,7 @@ public class PluginsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.delete<Unit>("/Plugins/{pluginId}/{version}", pathParameters, queryParameters,
-				data)
+		val response = api.delete<Unit>("/Plugins/{pluginId}/{version}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -182,8 +176,7 @@ public class PluginsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.post<Unit>("/Plugins/{pluginId}/Configuration", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/Plugins/{pluginId}/Configuration", pathParameters, queryParameters, data)
 		return response
 	}
 }

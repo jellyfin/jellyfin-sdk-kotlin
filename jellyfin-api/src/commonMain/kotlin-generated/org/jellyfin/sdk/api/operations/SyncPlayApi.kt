@@ -62,8 +62,7 @@ public class SyncPlayApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<GroupInfoDto>>("/SyncPlay/List", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<List<GroupInfoDto>>("/SyncPlay/List", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -162,12 +161,10 @@ public class SyncPlayApi(
 	/**
 	 * Request to remove items from the playlist in SyncPlay group.
 	 */
-	public suspend fun syncPlayRemoveFromPlaylist(`data`: RemoveFromPlaylistRequestDto):
-			Response<Unit> {
+	public suspend fun syncPlayRemoveFromPlaylist(`data`: RemoveFromPlaylistRequestDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/SyncPlay/RemoveFromPlaylist", pathParameters, queryParameters,
-				data)
+		val response = api.post<Unit>("/SyncPlay/RemoveFromPlaylist", pathParameters, queryParameters, data)
 		return response
 	}
 

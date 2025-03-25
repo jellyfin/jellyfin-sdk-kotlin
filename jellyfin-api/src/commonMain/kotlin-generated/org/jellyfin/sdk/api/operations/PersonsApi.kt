@@ -52,17 +52,13 @@ public class PersonsApi(
 	 * @param searchTerm The search term.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param filters Optional. Specify additional filters to apply.
-	 * @param isFavorite Optional filter by items that are marked as favorite, or not. userId is
-	 * required.
+	 * @param isFavorite Optional filter by items that are marked as favorite, or not. userId is required.
 	 * @param enableUserData Optional, include user data.
 	 * @param imageTypeLimit Optional, the max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
-	 * @param excludePersonTypes Optional. If specified results will be filtered to exclude those
-	 * containing the specified PersonType. Allows multiple, comma-delimited.
-	 * @param personTypes Optional. If specified results will be filtered to include only those
-	 * containing the specified PersonType. Allows multiple, comma-delimited.
-	 * @param appearsInItemId Optional. If specified, person results will be filtered on items related
-	 * to said persons.
+	 * @param excludePersonTypes Optional. If specified results will be filtered to exclude those containing the specified PersonType. Allows multiple, comma-delimited.
+	 * @param personTypes Optional. If specified results will be filtered to include only those containing the specified PersonType. Allows multiple, comma-delimited.
+	 * @param appearsInItemId Optional. If specified, person results will be filtered on items related to said persons.
 	 * @param userId User id.
 	 * @param enableImages Optional, include image information in output.
 	 */
@@ -98,8 +94,7 @@ public class PersonsApi(
 			put("enableImages", enableImages)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Persons", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Persons", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -108,8 +103,7 @@ public class PersonsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getPersons(request: GetPersonsRequest = GetPersonsRequest()):
-			Response<BaseItemDtoQueryResult> = getPersons(
+	public suspend fun getPersons(request: GetPersonsRequest = GetPersonsRequest()): Response<BaseItemDtoQueryResult> = getPersons(
 		limit = request.limit,
 		searchTerm = request.searchTerm,
 		fields = request.fields,

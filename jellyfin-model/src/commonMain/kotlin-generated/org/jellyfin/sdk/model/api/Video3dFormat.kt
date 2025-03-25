@@ -47,7 +47,6 @@ public enum class Video3dFormat(
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): Video3dFormat =
-				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+		public fun fromName(serialName: String): Video3dFormat = requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }

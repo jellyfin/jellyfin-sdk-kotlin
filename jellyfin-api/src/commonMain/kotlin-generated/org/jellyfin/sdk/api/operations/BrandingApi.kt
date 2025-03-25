@@ -45,8 +45,7 @@ public class BrandingApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<BrandingOptions>("/Branding/Configuration", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BrandingOptions>("/Branding/Configuration", pathParameters, queryParameters, data)
 		return response
 	}
 }

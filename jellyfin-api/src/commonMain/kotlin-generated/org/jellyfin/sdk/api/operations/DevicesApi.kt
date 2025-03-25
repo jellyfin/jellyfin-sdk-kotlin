@@ -64,8 +64,7 @@ public class DevicesApi(
 			put("id", id)
 		}
 		val data = null
-		val response = api.`get`<DeviceOptionsDto>("/Devices/Options", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<DeviceOptionsDto>("/Devices/Options", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -80,8 +79,7 @@ public class DevicesApi(
 			put("userId", userId)
 		}
 		val data = null
-		val response = api.`get`<DeviceInfoDtoQueryResult>("/Devices", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<DeviceInfoDtoQueryResult>("/Devices", pathParameters, queryParameters, data)
 		return response
 	}
 

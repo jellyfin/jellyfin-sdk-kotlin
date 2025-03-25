@@ -39,8 +39,7 @@ public class DisplayPreferencesApi(
 			put("client", client)
 		}
 		val data = null
-		val response = api.`get`<DisplayPreferencesDto>("/DisplayPreferences/{displayPreferencesId}",
-				pathParameters, queryParameters, data)
+		val response = api.`get`<DisplayPreferencesDto>("/DisplayPreferences/{displayPreferencesId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -64,8 +63,7 @@ public class DisplayPreferencesApi(
 			put("userId", userId)
 			put("client", client)
 		}
-		val response = api.post<Unit>("/DisplayPreferences/{displayPreferencesId}", pathParameters,
-				queryParameters, data)
+		val response = api.post<Unit>("/DisplayPreferences/{displayPreferencesId}", pathParameters, queryParameters, data)
 		return response
 	}
 }

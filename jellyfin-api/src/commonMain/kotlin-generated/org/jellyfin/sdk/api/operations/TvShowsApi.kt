@@ -35,25 +35,19 @@ public class TvShowsApi(
 	 *
 	 * @param seriesId The series id.
 	 * @param userId The user id.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 * @param season Optional filter by season number.
 	 * @param seasonId Optional. Filter by season id.
 	 * @param isMissing Optional. Filter by items that are missing episodes or not.
 	 * @param adjacentTo Optional. Return items that are siblings of a supplied item.
 	 * @param startItemId Optional. Skip through the list until a given item is found.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param enableImages Optional, include image information in output.
 	 * @param imageTypeLimit Optional, the max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 * @param enableUserData Optional. Include user data.
-	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album,
-	 * AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount,
-	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 */
 	public suspend fun getEpisodes(
 		seriesId: UUID,
@@ -92,8 +86,7 @@ public class TvShowsApi(
 			put("sortBy", sortBy)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/{seriesId}/Episodes", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/{seriesId}/Episodes", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -102,8 +95,7 @@ public class TvShowsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getEpisodes(request: GetEpisodesRequest): Response<BaseItemDtoQueryResult> =
-			getEpisodes(
+	public suspend fun getEpisodes(request: GetEpisodesRequest): Response<BaseItemDtoQueryResult> = getEpisodes(
 		seriesId = request.seriesId,
 		userId = request.userId,
 		fields = request.fields,
@@ -125,13 +117,11 @@ public class TvShowsApi(
 	 * Gets a list of next up episodes.
 	 *
 	 * @param userId The user id of the user to get the next up episodes for.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param seriesId Optional. Filter by series id.
-	 * @param parentId Optional. Specify this to localize the search to a specific item or folder. Omit
-	 * to use the root.
+	 * @param parentId Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
 	 * @param enableImages Optional. Include image information in output.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
@@ -178,8 +168,7 @@ public class TvShowsApi(
 			put("enableRewatching", enableRewatching)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/NextUp", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/NextUp", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -188,8 +177,7 @@ public class TvShowsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getNextUp(request: GetNextUpRequest = GetNextUpRequest()):
-			Response<BaseItemDtoQueryResult> = getNextUp(
+	public suspend fun getNextUp(request: GetNextUpRequest = GetNextUpRequest()): Response<BaseItemDtoQueryResult> = getNextUp(
 		userId = request.userId,
 		startIndex = request.startIndex,
 		limit = request.limit,
@@ -212,10 +200,7 @@ public class TvShowsApi(
 	 *
 	 * @param seriesId The series id.
 	 * @param userId The user id.
-	 * @param fields Optional. Specify additional fields of information to return in the output. This
-	 * allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl,
-	 * IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio,
-	 * Revenue, SortName, Studios, Taglines, TrailerUrls.
+	 * @param fields Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimited. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls.
 	 * @param isSpecialSeason Optional. Filter by special season.
 	 * @param isMissing Optional. Filter by items that are missing episodes or not.
 	 * @param adjacentTo Optional. Return items that are siblings of a supplied item.
@@ -251,8 +236,7 @@ public class TvShowsApi(
 			put("enableUserData", enableUserData)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/{seriesId}/Seasons", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/{seriesId}/Seasons", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -261,8 +245,7 @@ public class TvShowsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getSeasons(request: GetSeasonsRequest): Response<BaseItemDtoQueryResult> =
-			getSeasons(
+	public suspend fun getSeasons(request: GetSeasonsRequest): Response<BaseItemDtoQueryResult> = getSeasons(
 		seriesId = request.seriesId,
 		userId = request.userId,
 		fields = request.fields,
@@ -279,12 +262,10 @@ public class TvShowsApi(
 	 * Gets a list of upcoming episodes.
 	 *
 	 * @param userId The user id of the user to get the upcoming episodes for.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
-	 * @param parentId Optional. Specify this to localize the search to a specific item or folder. Omit
-	 * to use the root.
+	 * @param parentId Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
 	 * @param enableImages Optional. Include image information in output.
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
@@ -314,8 +295,7 @@ public class TvShowsApi(
 			put("enableUserData", enableUserData)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/Upcoming", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/Upcoming", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -324,8 +304,7 @@ public class TvShowsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getUpcomingEpisodes(request: GetUpcomingEpisodesRequest =
-			GetUpcomingEpisodesRequest()): Response<BaseItemDtoQueryResult> = getUpcomingEpisodes(
+	public suspend fun getUpcomingEpisodes(request: GetUpcomingEpisodesRequest = GetUpcomingEpisodesRequest()): Response<BaseItemDtoQueryResult> = getUpcomingEpisodes(
 		userId = request.userId,
 		startIndex = request.startIndex,
 		limit = request.limit,

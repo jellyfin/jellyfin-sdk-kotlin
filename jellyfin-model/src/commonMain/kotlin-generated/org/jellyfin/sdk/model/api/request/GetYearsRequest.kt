@@ -53,14 +53,12 @@ public data class GetYearsRequest(
 	@SerialName("fields")
 	public val fields: Collection<ItemFields>? = null,
 	/**
-	 * Optional. If specified, results will be excluded based on item type. This allows multiple, comma
-	 * delimited.
+	 * Optional. If specified, results will be excluded based on item type. This allows multiple, comma delimited.
 	 */
 	@SerialName("excludeItemTypes")
 	public val excludeItemTypes: Collection<BaseItemKind>? = null,
 	/**
-	 * Optional. If specified, results will be included based on item type. This allows multiple, comma
-	 * delimited.
+	 * Optional. If specified, results will be included based on item type. This allows multiple, comma delimited.
 	 */
 	@SerialName("includeItemTypes")
 	public val includeItemTypes: Collection<BaseItemKind>? = null,
@@ -70,9 +68,7 @@ public data class GetYearsRequest(
 	@SerialName("mediaTypes")
 	public val mediaTypes: Collection<MediaType>? = null,
 	/**
-	 * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist,
-	 * Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate,
-	 * ProductionYear, SortName, Random, Revenue, Runtime.
+	 * Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 */
 	@SerialName("sortBy")
 	public val sortBy: Collection<ItemSortBy>? = null,

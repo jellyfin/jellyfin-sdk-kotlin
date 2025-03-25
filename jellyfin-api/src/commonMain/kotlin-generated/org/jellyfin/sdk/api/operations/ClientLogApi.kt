@@ -22,8 +22,7 @@ public class ClientLogApi(
 	public suspend fun logFile(`data`: String): Response<ClientLogDocumentResponseDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<ClientLogDocumentResponseDto>("/ClientLog/Document", pathParameters,
-				queryParameters, data)
+		val response = api.post<ClientLogDocumentResponseDto>("/ClientLog/Document", pathParameters, queryParameters, data)
 		return response
 	}
 

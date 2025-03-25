@@ -38,7 +38,6 @@ public enum class PlayAccess(
 		/**
 		 * Find the enum member by the serial name or throw.
 		 */
-		public fun fromName(serialName: String): PlayAccess =
-				requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
+		public fun fromName(serialName: String): PlayAccess = requireNotNull(fromNameOrNull(serialName)) { """Unknown value $serialName""" }
 	}
 }

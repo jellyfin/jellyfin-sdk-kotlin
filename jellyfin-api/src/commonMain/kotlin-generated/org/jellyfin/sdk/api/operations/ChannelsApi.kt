@@ -38,8 +38,7 @@ public class ChannelsApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<ChannelFeatures>>("/Channels/Features", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<List<ChannelFeatures>>("/Channels/Features", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -54,8 +53,7 @@ public class ChannelsApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ChannelFeatures>("/Channels/{channelId}/Features", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<ChannelFeatures>("/Channels/{channelId}/Features", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -65,14 +63,11 @@ public class ChannelsApi(
 	 * @param channelId Channel Id.
 	 * @param folderId Optional. Folder Id.
 	 * @param userId Optional. User Id.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param sortOrder Optional. Sort Order - Ascending,Descending.
 	 * @param filters Optional. Specify additional filters to apply.
-	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album,
-	 * AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount,
-	 * PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
+	 * @param sortBy Optional. Specify one or more sort orders, comma delimited. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 */
 	public suspend fun getChannelItems(
@@ -100,8 +95,7 @@ public class ChannelsApi(
 			put("fields", fields)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Channels/{channelId}/Items", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Channels/{channelId}/Items", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -110,8 +104,7 @@ public class ChannelsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getChannelItems(request: GetChannelItemsRequest):
-			Response<BaseItemDtoQueryResult> = getChannelItems(
+	public suspend fun getChannelItems(request: GetChannelItemsRequest): Response<BaseItemDtoQueryResult> = getChannelItems(
 		channelId = request.channelId,
 		folderId = request.folderId,
 		userId = request.userId,
@@ -127,8 +120,7 @@ public class ChannelsApi(
 	 * Gets available channels.
 	 *
 	 * @param userId User Id to filter by. Use System.Guid.Empty to not filter by user.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param supportsLatestItems Optional. Filter by channels that support getting latest items.
 	 * @param supportsMediaDeletion Optional. Filter by channels that support media deletion.
@@ -152,8 +144,7 @@ public class ChannelsApi(
 			put("isFavorite", isFavorite)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Channels", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Channels", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -162,8 +153,7 @@ public class ChannelsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getChannels(request: GetChannelsRequest = GetChannelsRequest()):
-			Response<BaseItemDtoQueryResult> = getChannels(
+	public suspend fun getChannels(request: GetChannelsRequest = GetChannelsRequest()): Response<BaseItemDtoQueryResult> = getChannels(
 		userId = request.userId,
 		startIndex = request.startIndex,
 		limit = request.limit,
@@ -176,8 +166,7 @@ public class ChannelsApi(
 	 * Gets latest channel items.
 	 *
 	 * @param userId Optional. User Id.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be
-	 * dropped from the results.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param filters Optional. Specify additional filters to apply.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
@@ -201,8 +190,7 @@ public class ChannelsApi(
 			put("channelIds", channelIds)
 		}
 		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Channels/Items/Latest", pathParameters,
-				queryParameters, data)
+		val response = api.`get`<BaseItemDtoQueryResult>("/Channels/Items/Latest", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -211,8 +199,7 @@ public class ChannelsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getLatestChannelItems(request: GetLatestChannelItemsRequest =
-			GetLatestChannelItemsRequest()): Response<BaseItemDtoQueryResult> = getLatestChannelItems(
+	public suspend fun getLatestChannelItems(request: GetLatestChannelItemsRequest = GetLatestChannelItemsRequest()): Response<BaseItemDtoQueryResult> = getLatestChannelItems(
 		userId = request.userId,
 		startIndex = request.startIndex,
 		limit = request.limit,

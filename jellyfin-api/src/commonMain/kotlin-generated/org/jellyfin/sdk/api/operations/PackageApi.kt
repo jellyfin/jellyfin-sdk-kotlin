@@ -34,8 +34,7 @@ public class PackageApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.delete<Unit>("/Packages/Installing/{packageId}", pathParameters,
-				queryParameters, data)
+		val response = api.delete<Unit>("/Packages/Installing/{packageId}", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -45,8 +44,7 @@ public class PackageApi(
 	 * @param name The name of the package.
 	 * @param assemblyGuid The GUID of the associated assembly.
 	 */
-	public suspend fun getPackageInfo(name: String, assemblyGuid: UUID? = null):
-			Response<PackageInfo> {
+	public suspend fun getPackageInfo(name: String, assemblyGuid: UUID? = null): Response<PackageInfo> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("name", name)
 		}
@@ -76,8 +74,7 @@ public class PackageApi(
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<List<RepositoryInfo>>("/Repositories", pathParameters, queryParameters,
-				data)
+		val response = api.`get`<List<RepositoryInfo>>("/Repositories", pathParameters, queryParameters, data)
 		return response
 	}
 
