@@ -3,6 +3,7 @@ package org.jellyfin.sdk.discovery
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.collections.shouldContain
+import io.kotest.matchers.collections.shouldNotContain
 import io.kotest.matchers.shouldBe
 import org.jellyfin.sdk.createJellyfin
 
@@ -45,9 +46,10 @@ class DiscoveryServiceTests : FunSpec({
 		val instance = getInstance()
 
 		instance.getAddressCandidates("[::1]") shouldContain "http://[::1]"
-		instance.getAddressCandidates("[0:0:0:0:0:0:0:1]") shouldContain "http://[0:0:0:0:0:0:0:1]"
+		instance.getAddressCandidates("[0:0:0:0:0:0:0:1]") shouldNotContain "http://[0:0:0:0:0:0:0:1]"
+		instance.getAddressCandidates("[0:0:0:0:0:0:0:1]") shouldContain "http://[::1]"
 		instance.getAddressCandidates("[::1]:8096") shouldContain "http://[::1]:8096"
-		instance.getAddressCandidates("[0:0:0:0:0:0:0:1]:8096") shouldContain "http://[0:0:0:0:0:0:0:1]:8096"
+		instance.getAddressCandidates("[0:0:0:0:0:0:0:1]:8096") shouldContain "http://[::1]:8096"
 	}
 
 	test("getAddressCandidates returns empty on bad input") {

@@ -32,7 +32,7 @@ kotlin {
 				implementation(libs.kotlinx.coroutines)
 				implementation(libs.kotlinx.serialization.json)
 
-				api(libs.ktor.http)
+				implementation(libs.okhttp)
 
 				// Logging
 				implementation(libs.kotlin.logging)
