@@ -21,6 +21,10 @@ public abstract class org/jellyfin/sdk/api/client/ApiClient {
 public final class org/jellyfin/sdk/api/client/ApiClient$Companion {
 }
 
+public abstract interface class org/jellyfin/sdk/api/client/ApiClientFactory {
+	public abstract fun create (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)Lorg/jellyfin/sdk/api/client/ApiClient;
+}
+
 public final class org/jellyfin/sdk/api/client/HttpClientOptions {
 	public synthetic fun <init> (ZJJJLorg/jellyfin/sdk/api/sockets/SocketReconnectPolicy;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun <init> (ZJJJLorg/jellyfin/sdk/api/sockets/SocketReconnectPolicy;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
@@ -1261,7 +1265,7 @@ public final class org/jellyfin/sdk/api/sockets/DefaultSocketApi : org/jellyfin/
 }
 
 public final class org/jellyfin/sdk/api/sockets/OkHttpSocketConnection : org/jellyfin/sdk/api/sockets/SocketConnection {
-	public fun <init> (Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lkotlinx/coroutines/CoroutineScope;)V
+	public fun <init> (Lokhttp3/OkHttpClient;Lkotlinx/coroutines/CoroutineScope;)V
 	public fun connect (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun disconnect (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getState ()Lkotlinx/coroutines/flow/StateFlow;

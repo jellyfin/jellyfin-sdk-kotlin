@@ -1,12 +1,11 @@
 package org.jellyfin.sdk
 
-import org.jellyfin.sdk.api.okhttp.OkHttpClient
-import org.jellyfin.sdk.api.sockets.OkHttpSocketConnection
+import org.jellyfin.sdk.api.client.ApiClientFactory
+import org.jellyfin.sdk.api.okhttp.OkHttpFactory
 import org.jellyfin.sdk.api.sockets.SocketConnectionFactory
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.ServerVersion
-import org.jellyfin.sdk.util.ApiClientFactory
 
 public actual data class JellyfinOptions(
 	public actual val clientInfo: ClientInfo?,
@@ -18,15 +17,17 @@ public actual data class JellyfinOptions(
 	public actual class Builder {
 		public var clientInfo: ClientInfo? = null
 		public var deviceInfo: DeviceInfo? = null
-		public var apiClientFactory: ApiClientFactory = ApiClientFactory(::OkHttpClient)
-		public var socketConnectionFactory: SocketConnectionFactory = SocketConnectionFactory(::OkHttpSocketConnection)
+		public var apiClientFactory: ApiClientFactory? = null
+		public var socketConnectionFactory: SocketConnectionFactory? = null
 		public var minimumServerVersion: ServerVersion = Jellyfin.minimumVersion
+
+		private val defaultClientFactory by lazy { OkHttpFactory() }
 
 		public actual fun build(): JellyfinOptions = JellyfinOptions(
 			clientInfo = clientInfo,
 			deviceInfo = deviceInfo,
-			apiClientFactory = apiClientFactory,
-			socketConnectionFactory = socketConnectionFactory,
+			apiClientFactory = apiClientFactory ?: defaultClientFactory,
+			socketConnectionFactory = socketConnectionFactory ?: defaultClientFactory,
 			minimumServerVersion = minimumServerVersion,
 		)
 	}

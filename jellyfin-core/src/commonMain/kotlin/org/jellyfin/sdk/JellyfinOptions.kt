@@ -1,10 +1,10 @@
 package org.jellyfin.sdk
 
+import org.jellyfin.sdk.api.client.ApiClientFactory
 import org.jellyfin.sdk.api.sockets.SocketConnectionFactory
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.ServerVersion
-import org.jellyfin.sdk.util.ApiClientFactory
 
 public expect class JellyfinOptions {
 	public val clientInfo: ClientInfo?

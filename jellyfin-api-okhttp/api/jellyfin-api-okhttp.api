@@ -1,5 +1,5 @@
 public final class org/jellyfin/sdk/api/okhttp/OkHttpClient : org/jellyfin/sdk/api/client/ApiClient {
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)V
+	public fun <init> (Lokhttp3/OkHttpClient;Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)V
 	public fun getAccessToken ()Ljava/lang/String;
 	public fun getBaseUrl ()Ljava/lang/String;
 	public fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
@@ -8,5 +8,15 @@ public final class org/jellyfin/sdk/api/okhttp/OkHttpClient : org/jellyfin/sdk/a
 	public fun getWebSocket ()Lorg/jellyfin/sdk/api/sockets/SocketApi;
 	public fun request (Lorg/jellyfin/sdk/api/client/HttpMethod;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun update (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;)V
+}
+
+public final class org/jellyfin/sdk/api/okhttp/OkHttpFactory : org/jellyfin/sdk/api/client/ApiClientFactory, org/jellyfin/sdk/api/sockets/SocketConnectionFactory {
+	public fun <init> ()V
+	public fun <init> (Lokhttp3/OkHttpClient;)V
+	public synthetic fun <init> (Lokhttp3/OkHttpClient;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun create (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)Lorg/jellyfin/sdk/api/client/ApiClient;
+	public fun create (Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lkotlinx/coroutines/CoroutineScope;)Lorg/jellyfin/sdk/api/sockets/SocketConnection;
+	public final fun createClient (Lorg/jellyfin/sdk/api/client/HttpClientOptions;)Lokhttp3/OkHttpClient;
+	public final fun getBase ()Lokhttp3/OkHttpClient;
 }
 

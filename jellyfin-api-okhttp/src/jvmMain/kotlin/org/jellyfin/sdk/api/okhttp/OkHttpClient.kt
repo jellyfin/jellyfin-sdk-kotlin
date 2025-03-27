@@ -6,7 +6,6 @@ import mu.KotlinLogging
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
@@ -34,10 +33,10 @@ import java.net.UnknownHostException
 import javax.net.ssl.SSLException
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
-import kotlin.time.toJavaDuration
 
 @Suppress("LongParameterList")
 public class OkHttpClient(
+	private val client: okhttp3.OkHttpClient,
 	initialBaseUrl: String?,
 	initialAccessToken: String?,
 	initialClientInfo: ClientInfo,
@@ -53,16 +52,6 @@ public class OkHttpClient(
 		private set
 	public override var deviceInfo: DeviceInfo = initialDeviceInfo
 		private set
-
-	private val client by lazy {
-		OkHttpClient.Builder()
-			.followRedirects(httpClientOptions.followRedirects)
-			.connectTimeout(httpClientOptions.connectTimeout.toJavaDuration())
-			.callTimeout(httpClientOptions.requestTimeout.toJavaDuration())
-			.readTimeout(httpClientOptions.socketTimeout.toJavaDuration())
-			.writeTimeout(httpClientOptions.socketTimeout.toJavaDuration())
-			.build()
-	}
 
 	private val _webSocket = lazy {
 		DefaultSocketApi(this, httpClientOptions.socketReconnectPolicy, socketConnectionFactory)
