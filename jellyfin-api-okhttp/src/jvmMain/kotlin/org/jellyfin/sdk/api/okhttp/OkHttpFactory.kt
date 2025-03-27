@@ -4,7 +4,6 @@ import kotlinx.coroutines.CoroutineScope
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.ApiClientFactory
 import org.jellyfin.sdk.api.client.HttpClientOptions
-import org.jellyfin.sdk.api.sockets.OkHttpSocketConnection
 import org.jellyfin.sdk.api.sockets.SocketConnection
 import org.jellyfin.sdk.api.sockets.SocketConnectionFactory
 import org.jellyfin.sdk.model.ClientInfo

@@ -1,4 +1,4 @@
-package org.jellyfin.sdk.api.sockets
+package org.jellyfin.sdk.api.okhttp
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,6 +12,8 @@ import okhttp3.Request
 import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
+import org.jellyfin.sdk.api.sockets.SocketConnection
+import org.jellyfin.sdk.api.sockets.SocketConnectionState
 
 private val logger = KotlinLogging.logger {}
 
