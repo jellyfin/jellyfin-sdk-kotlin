@@ -21,17 +21,17 @@ public final class org/jellyfin/sdk/JellyfinKt {
 
 public final class org/jellyfin/sdk/JellyfinOptions {
 	public static final field Companion Lorg/jellyfin/sdk/JellyfinOptions$Companion;
-	public fun <init> (Landroid/content/Context;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;Lorg/jellyfin/sdk/model/ServerVersion;)V
+	public fun <init> (Landroid/content/Context;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/ApiClientFactory;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;Lorg/jellyfin/sdk/model/ServerVersion;)V
 	public final fun component1 ()Landroid/content/Context;
 	public final fun component2 ()Lorg/jellyfin/sdk/model/ClientInfo;
 	public final fun component3 ()Lorg/jellyfin/sdk/model/DeviceInfo;
-	public final fun component4 ()Lorg/jellyfin/sdk/util/ApiClientFactory;
+	public final fun component4 ()Lorg/jellyfin/sdk/api/client/ApiClientFactory;
 	public final fun component5 ()Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;
 	public final fun component6 ()Lorg/jellyfin/sdk/model/ServerVersion;
-	public final fun copy (Landroid/content/Context;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;Lorg/jellyfin/sdk/model/ServerVersion;)Lorg/jellyfin/sdk/JellyfinOptions;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/JellyfinOptions;Landroid/content/Context;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/util/ApiClientFactory;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;Lorg/jellyfin/sdk/model/ServerVersion;ILjava/lang/Object;)Lorg/jellyfin/sdk/JellyfinOptions;
+	public final fun copy (Landroid/content/Context;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/ApiClientFactory;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;Lorg/jellyfin/sdk/model/ServerVersion;)Lorg/jellyfin/sdk/JellyfinOptions;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/JellyfinOptions;Landroid/content/Context;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/ApiClientFactory;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;Lorg/jellyfin/sdk/model/ServerVersion;ILjava/lang/Object;)Lorg/jellyfin/sdk/JellyfinOptions;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun getApiClientFactory ()Lorg/jellyfin/sdk/util/ApiClientFactory;
+	public final fun getApiClientFactory ()Lorg/jellyfin/sdk/api/client/ApiClientFactory;
 	public final fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
 	public final fun getContext ()Landroid/content/Context;
 	public final fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
@@ -44,13 +44,13 @@ public final class org/jellyfin/sdk/JellyfinOptions {
 public final class org/jellyfin/sdk/JellyfinOptions$Builder {
 	public fun <init> ()V
 	public final fun build ()Lorg/jellyfin/sdk/JellyfinOptions;
-	public final fun getApiClientFactory ()Lorg/jellyfin/sdk/util/ApiClientFactory;
+	public final fun getApiClientFactory ()Lorg/jellyfin/sdk/api/client/ApiClientFactory;
 	public final fun getClientInfo ()Lorg/jellyfin/sdk/model/ClientInfo;
 	public final fun getContext ()Landroid/content/Context;
 	public final fun getDeviceInfo ()Lorg/jellyfin/sdk/model/DeviceInfo;
 	public final fun getMinimumServerVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
 	public final fun getSocketConnectionFactory ()Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;
-	public final fun setApiClientFactory (Lorg/jellyfin/sdk/util/ApiClientFactory;)V
+	public final fun setApiClientFactory (Lorg/jellyfin/sdk/api/client/ApiClientFactory;)V
 	public final fun setClientInfo (Lorg/jellyfin/sdk/model/ClientInfo;)V
 	public final fun setContext (Landroid/content/Context;)V
 	public final fun setDeviceInfo (Lorg/jellyfin/sdk/model/DeviceInfo;)V
@@ -229,9 +229,5 @@ public final class org/jellyfin/sdk/discovery/RecommendedServerIssue$Unsupported
 	public final fun getVersion ()Lorg/jellyfin/sdk/model/ServerVersion;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
-}
-
-public abstract interface class org/jellyfin/sdk/util/ApiClientFactory {
-	public abstract fun create (Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/ClientInfo;Lorg/jellyfin/sdk/model/DeviceInfo;Lorg/jellyfin/sdk/api/client/HttpClientOptions;Lorg/jellyfin/sdk/api/sockets/SocketConnectionFactory;)Lorg/jellyfin/sdk/api/client/ApiClient;
 }
 

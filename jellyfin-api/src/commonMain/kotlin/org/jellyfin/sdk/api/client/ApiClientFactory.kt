@@ -1,7 +1,5 @@
-package org.jellyfin.sdk.util
+package org.jellyfin.sdk.api.client
 
-import org.jellyfin.sdk.api.client.ApiClient
-import org.jellyfin.sdk.api.client.HttpClientOptions
 import org.jellyfin.sdk.api.sockets.SocketConnectionFactory
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo

@@ -12,13 +12,11 @@ import okhttp3.Request
 import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
-import org.jellyfin.sdk.api.client.HttpClientOptions
-import java.util.concurrent.TimeUnit
 
 private val logger = KotlinLogging.logger {}
 
 public class OkHttpSocketConnection(
-	clientOptions: HttpClientOptions,
+	private val client: OkHttpClient,
 	scope: CoroutineScope,
 ) : SocketConnection {
 	private companion object {
@@ -26,13 +24,6 @@ public class OkHttpSocketConnection(
 		private const val CLOSE_REASON_NORMAL = 1000
 	}
 
-	private val client = OkHttpClient.Builder().apply {
-		followRedirects(clientOptions.followRedirects)
-
-		connectTimeout(clientOptions.connectTimeout.inWholeMilliseconds, TimeUnit.MILLISECONDS)
-		readTimeout(clientOptions.socketTimeout.inWholeMilliseconds, TimeUnit.MILLISECONDS)
-		writeTimeout(clientOptions.socketTimeout.inWholeMilliseconds, TimeUnit.MILLISECONDS)
-	}.build()
 	private var webSocket: WebSocket? = null
 	private val _state = MutableStateFlow<SocketConnectionState>(SocketConnectionState.Disconnected())
 	public override val state: StateFlow<SocketConnectionState> = _state.asStateFlow()
