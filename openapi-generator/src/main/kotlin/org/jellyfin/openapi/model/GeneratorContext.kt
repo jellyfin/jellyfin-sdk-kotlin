@@ -37,12 +37,20 @@ class GeneratorContext(
 		}
 	}
 
-	fun addModelInterface(model: ApiModel, interfaceName: String) {
+	fun addModelInterface(model: ApiModel, interfaceName: String, polymorphicDiscriminator: String?) {
 		val interfaces = model.interfaces + interfaceName
 		_models[model.name] = when (model) {
 			is EnumApiModel -> model.copy(interfaces = interfaces)
 			is InterfaceApiModel -> model.copy(interfaces = interfaces)
-			is ObjectApiModel -> model.copy(interfaces = interfaces)
+			is ObjectApiModel -> model.copy(
+				interfaces = interfaces,
+				properties = if (polymorphicDiscriminator == null) model.properties
+				else model.properties.map { property ->
+					// Mark property as static (immutable) if it is used as polymorphic discriminator
+					val isPolymorphicDiscriminator = property.name.equals(polymorphicDiscriminator, ignoreCase = true)
+					property.copy(static = isPolymorphicDiscriminator && property.defaultValue != null)
+				}.toSet()
+			)
 
 			else -> throw OpenApiGeneratorError("Unknown model class ${model::class.qualifiedName}")
 		}
