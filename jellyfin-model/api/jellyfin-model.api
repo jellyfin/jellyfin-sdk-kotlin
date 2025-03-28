@@ -5185,8 +5185,8 @@ public final class org/jellyfin/sdk/model/api/MediaSourceType$Companion {
 
 public final class org/jellyfin/sdk/model/api/MediaStream {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/MediaStream$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/VideoRange;Lorg/jellyfin/sdk/model/api/VideoRangeType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;ZZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/MediaStreamType;Ljava/lang/String;ILjava/lang/Integer;ZLorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;Ljava/lang/String;Ljava/lang/Boolean;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Boolean;)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/VideoRange;Lorg/jellyfin/sdk/model/api/VideoRangeType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;ZZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/MediaStreamType;Ljava/lang/String;ILjava/lang/Integer;ZLorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;Ljava/lang/String;Ljava/lang/Boolean;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Boolean;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/VideoRange;Lorg/jellyfin/sdk/model/api/VideoRangeType;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/AudioSpatialFormat;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;ZZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/MediaStreamType;Ljava/lang/String;ILjava/lang/Integer;ZLorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;Ljava/lang/String;Ljava/lang/Boolean;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Boolean;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/VideoRange;Lorg/jellyfin/sdk/model/api/VideoRangeType;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/AudioSpatialFormat;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;ZZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/MediaStreamType;Ljava/lang/String;ILjava/lang/Integer;ZLorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;Ljava/lang/String;Ljava/lang/Boolean;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Boolean;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component10 ()Ljava/lang/Integer;
 	public final fun component11 ()Ljava/lang/Integer;
@@ -5203,7 +5203,7 @@ public final class org/jellyfin/sdk/model/api/MediaStream {
 	public final fun component21 ()Lorg/jellyfin/sdk/model/api/VideoRange;
 	public final fun component22 ()Lorg/jellyfin/sdk/model/api/VideoRangeType;
 	public final fun component23 ()Ljava/lang/String;
-	public final fun component24 ()Ljava/lang/String;
+	public final fun component24 ()Lorg/jellyfin/sdk/model/api/AudioSpatialFormat;
 	public final fun component25 ()Ljava/lang/String;
 	public final fun component26 ()Ljava/lang/String;
 	public final fun component27 ()Ljava/lang/String;
@@ -5211,46 +5211,47 @@ public final class org/jellyfin/sdk/model/api/MediaStream {
 	public final fun component29 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component30 ()Ljava/lang/String;
-	public final fun component31 ()Z
-	public final fun component32 ()Ljava/lang/Boolean;
-	public final fun component33 ()Ljava/lang/String;
-	public final fun component34 ()Ljava/lang/Integer;
+	public final fun component31 ()Ljava/lang/String;
+	public final fun component32 ()Z
+	public final fun component33 ()Ljava/lang/Boolean;
+	public final fun component34 ()Ljava/lang/String;
 	public final fun component35 ()Ljava/lang/Integer;
 	public final fun component36 ()Ljava/lang/Integer;
 	public final fun component37 ()Ljava/lang/Integer;
 	public final fun component38 ()Ljava/lang/Integer;
 	public final fun component39 ()Ljava/lang/Integer;
 	public final fun component4 ()Ljava/lang/String;
-	public final fun component40 ()Z
+	public final fun component40 ()Ljava/lang/Integer;
 	public final fun component41 ()Z
 	public final fun component42 ()Z
-	public final fun component43 ()Ljava/lang/Integer;
+	public final fun component43 ()Z
 	public final fun component44 ()Ljava/lang/Integer;
-	public final fun component45 ()Ljava/lang/Float;
+	public final fun component45 ()Ljava/lang/Integer;
 	public final fun component46 ()Ljava/lang/Float;
 	public final fun component47 ()Ljava/lang/Float;
-	public final fun component48 ()Ljava/lang/String;
-	public final fun component49 ()Lorg/jellyfin/sdk/model/api/MediaStreamType;
+	public final fun component48 ()Ljava/lang/Float;
+	public final fun component49 ()Ljava/lang/String;
 	public final fun component5 ()Ljava/lang/String;
-	public final fun component50 ()Ljava/lang/String;
-	public final fun component51 ()I
-	public final fun component52 ()Ljava/lang/Integer;
-	public final fun component53 ()Z
-	public final fun component54 ()Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;
-	public final fun component55 ()Ljava/lang/String;
-	public final fun component56 ()Ljava/lang/Boolean;
-	public final fun component57 ()Z
+	public final fun component50 ()Lorg/jellyfin/sdk/model/api/MediaStreamType;
+	public final fun component51 ()Ljava/lang/String;
+	public final fun component52 ()I
+	public final fun component53 ()Ljava/lang/Integer;
+	public final fun component54 ()Z
+	public final fun component55 ()Lorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;
+	public final fun component56 ()Ljava/lang/String;
+	public final fun component57 ()Ljava/lang/Boolean;
 	public final fun component58 ()Z
-	public final fun component59 ()Ljava/lang/String;
+	public final fun component59 ()Z
 	public final fun component6 ()Ljava/lang/String;
 	public final fun component60 ()Ljava/lang/String;
-	public final fun component61 ()Ljava/lang/Double;
-	public final fun component62 ()Ljava/lang/Boolean;
+	public final fun component61 ()Ljava/lang/String;
+	public final fun component62 ()Ljava/lang/Double;
+	public final fun component63 ()Ljava/lang/Boolean;
 	public final fun component7 ()Ljava/lang/String;
 	public final fun component8 ()Ljava/lang/Integer;
 	public final fun component9 ()Ljava/lang/Integer;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/VideoRange;Lorg/jellyfin/sdk/model/api/VideoRangeType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;ZZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/MediaStreamType;Ljava/lang/String;ILjava/lang/Integer;ZLorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;Ljava/lang/String;Ljava/lang/Boolean;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Boolean;)Lorg/jellyfin/sdk/model/api/MediaStream;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/MediaStream;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/VideoRange;Lorg/jellyfin/sdk/model/api/VideoRangeType;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;ZZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/MediaStreamType;Ljava/lang/String;ILjava/lang/Integer;ZLorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;Ljava/lang/String;Ljava/lang/Boolean;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Boolean;IILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/MediaStream;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/VideoRange;Lorg/jellyfin/sdk/model/api/VideoRangeType;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/AudioSpatialFormat;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;ZZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/MediaStreamType;Ljava/lang/String;ILjava/lang/Integer;ZLorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;Ljava/lang/String;Ljava/lang/Boolean;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Boolean;)Lorg/jellyfin/sdk/model/api/MediaStream;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/MediaStream;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/VideoRange;Lorg/jellyfin/sdk/model/api/VideoRangeType;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/AudioSpatialFormat;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/Boolean;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;ZZZLjava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/Float;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/MediaStreamType;Ljava/lang/String;ILjava/lang/Integer;ZLorg/jellyfin/sdk/model/api/SubtitleDeliveryMethod;Ljava/lang/String;Ljava/lang/Boolean;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/Double;Ljava/lang/Boolean;IILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/MediaStream;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAspectRatio ()Ljava/lang/String;
 	public final fun getAudioSpatialFormat ()Lorg/jellyfin/sdk/model/api/AudioSpatialFormat;
