@@ -39,10 +39,11 @@ class OpenApiModelBuilder(
 	private fun buildInterfaceModel(context: GeneratorContext, data: Schema<Any>): InterfaceApiModel {
 		val referencedModels = data.oneOf.mapNotNull { it.`$ref`?.let(context::getOrGenerateModel) }
 		var sharedProperties: Set<InterfaceApiModelProperty>? = null
+		val polymorphicDiscriminator = data.discriminator?.propertyName
 
 		for ((index, model) in referencedModels.withIndex()) {
 			// Add interface to referenced model
-			context.addModelInterface(model, data.name)
+			context.addModelInterface(model, data.name, polymorphicDiscriminator)
 
 			// Only search for shared properties if the lookup didn't fail before this iteration
 			if (sharedProperties == null && index != 0) continue
@@ -78,7 +79,7 @@ class OpenApiModelBuilder(
 			description = data.description,
 			deprecated = data.deprecated == true,
 			interfaces = emptySet(),
-			polymorphicDiscriminator = data.discriminator?.propertyName,
+			polymorphicDiscriminator = polymorphicDiscriminator,
 			properties = sharedProperties.orEmpty(),
 		)
 	}
@@ -98,7 +99,7 @@ class OpenApiModelBuilder(
 				type = openApiTypeBuilder.build(ModelTypePath(data.name, name), property),
 				description = property.description,
 				deprecated = property.deprecated == true,
-				static = property.readOnly == true && defaultValue != null,
+				static = false,
 			)
 		}.toSet()
 	)
