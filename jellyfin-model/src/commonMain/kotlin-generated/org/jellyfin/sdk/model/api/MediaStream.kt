@@ -133,6 +133,11 @@ public data class MediaStream(
 	 */
 	@SerialName("VideoDoViTitle")
 	public val videoDoViTitle: String? = null,
+	/**
+	 * An enum representing formats of spatial audio.
+	 */
+	@SerialName("AudioSpatialFormat")
+	public val audioSpatialFormat: AudioSpatialFormat = AudioSpatialFormat.NONE,
 	@SerialName("LocalizedUndefined")
 	public val localizedUndefined: String? = null,
 	@SerialName("LocalizedDefault")
@@ -303,10 +308,4 @@ public data class MediaStream(
 	 */
 	@SerialName("IsAnamorphic")
 	public val isAnamorphic: Boolean? = null,
-) {
-	/**
-	 * An enum representing formats of spatial audio.
-	 */
-	@SerialName("AudioSpatialFormat")
-	public val audioSpatialFormat: AudioSpatialFormat = AudioSpatialFormat.NONE
-}
+)
