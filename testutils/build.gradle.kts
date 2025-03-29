@@ -7,7 +7,7 @@ kotlin {
 
 	jvm()
 
-	jvmToolchain(8)
+	jvmToolchain(21)
 
 	sourceSets {
 		all {
