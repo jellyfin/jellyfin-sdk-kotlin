@@ -12,7 +12,7 @@ kotlin {
 		publishAllLibraryVariants()
 	}
 
-	jvmToolchain(23)
+	jvmToolchain(21)
 
 	applyDefaultHierarchyTemplate()
 
