@@ -55,7 +55,8 @@ subprojects {
 		ignoreFailures = true
 		config.setFrom("$rootDir/detekt.yaml")
 		basePath = rootDir.absolutePath
-
+	}
+	tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
 		reports {
 			sarif.required.set(true)
 		}
