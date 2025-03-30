@@ -48,12 +48,6 @@ kotlin {
 			}
 		}
 
-		val commonTest by getting {
-			dependencies {
-				implementation(projects.testutils)
-			}
-		}
-
 		val jvmCommonMain by creating {
 			dependsOn(commonMain)
 		}
@@ -64,6 +58,31 @@ kotlin {
 
 		val androidMain by getting {
 			dependsOn(jvmCommonMain)
+		}
+
+		val commonTest by getting {
+			dependencies {
+				implementation(libs.kotlinx.coroutines)
+				implementation(libs.kotlinx.coroutines.test)
+				implementation(libs.kotest.framework.engine)
+				implementation(libs.kotest.assertions)
+			}
+		}
+
+		val jvmCommonTest by creating {
+			dependsOn(commonTest)
+			dependencies {
+				implementation(libs.slf4j.simple)
+				implementation(libs.kotest.runner.junit5)
+			}
+		}
+
+		val jvmTest by getting {
+			dependsOn(jvmCommonTest)
+		}
+
+		val androidUnitTest by getting {
+			dependsOn(jvmCommonTest)
 		}
 	}
 }

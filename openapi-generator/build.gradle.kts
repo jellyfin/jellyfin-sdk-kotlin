@@ -33,7 +33,12 @@ dependencies {
 	runtimeOnly(libs.slf4j.simple)
 
 	// Testing
-	testImplementation(projects.testutils)
+	testImplementation(libs.kotlinx.coroutines)
+	testImplementation(libs.kotlinx.coroutines.test)
+	testImplementation(libs.kotest.framework.engine)
+	testImplementation(libs.kotest.assertions)
+	testImplementation(libs.slf4j.simple)
+	testImplementation(libs.kotest.runner.junit5)
 }
 
 val defaultConfig = mapOf(

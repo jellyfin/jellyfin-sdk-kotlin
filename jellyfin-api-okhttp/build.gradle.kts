@@ -38,7 +38,17 @@ kotlin {
 
 		val commonTest by getting {
 			dependencies {
-				implementation(projects.testutils)
+				implementation(libs.kotlinx.coroutines)
+				implementation(libs.kotlinx.coroutines.test)
+				implementation(libs.kotest.framework.engine)
+				implementation(libs.kotest.assertions)
+			}
+		}
+
+		val jvmTest by getting {
+			dependencies {
+				implementation(libs.slf4j.simple)
+				implementation(libs.kotest.runner.junit5)
 			}
 		}
 	}
