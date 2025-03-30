@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
 	kotlin("multiplatform")
 	id("com.android.library")
@@ -7,12 +9,19 @@ plugins {
 kotlin {
 	explicitApi()
 
-	jvm()
+	jvm {
+		compilerOptions {
+			jvmTarget = JvmTarget.JVM_1_8
+		}
+	}
 	androidTarget {
 		publishAllLibraryVariants()
+		compilerOptions {
+			jvmTarget = JvmTarget.JVM_1_8
+		}
 	}
 
-	jvmToolchain(8)
+	jvmToolchain(21)
 
 	applyDefaultHierarchyTemplate()
 

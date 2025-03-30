@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
 	kotlin("multiplatform")
 }
@@ -5,9 +7,13 @@ plugins {
 kotlin {
 	explicitApi()
 
-	jvm()
+	jvm {
+		compilerOptions {
+			jvmTarget = JvmTarget.JVM_1_8
+		}
+	}
 
-	jvmToolchain(8)
+	jvmToolchain(21)
 
 	sourceSets {
 		all {
