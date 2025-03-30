@@ -10,12 +10,15 @@ kotlin {
 	explicitApi()
 
 	jvm {
-		compilerOptions{
+		compilerOptions {
 			jvmTarget = JvmTarget.JVM_1_8
 		}
 	}
 	androidTarget {
 		publishAllLibraryVariants()
+		compilerOptions {
+			jvmTarget = JvmTarget.JVM_1_8
+		}
 	}
 
 	jvmToolchain(21)
