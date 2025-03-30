@@ -9,12 +9,11 @@ plugins {
 kotlin {
 	explicitApi()
 
-	jvm{
+	jvm {
 		compilerOptions{
 			jvmTarget = JvmTarget.JVM_1_8
 		}
 	}
-	jvm()
 
 	jvmToolchain(21)
 
