@@ -119,22 +119,22 @@ public data class MediaStream(
 	@SerialName("Title")
 	public val title: String? = null,
 	/**
-	 * An enum representing video ranges.
+	 * The video range.
 	 */
 	@SerialName("VideoRange")
-	public val videoRange: VideoRange,
+	public val videoRange: VideoRange = VideoRange.UNKNOWN,
 	/**
-	 * An enum representing types of video ranges.
+	 * The video range type.
 	 */
 	@SerialName("VideoRangeType")
-	public val videoRangeType: VideoRangeType,
+	public val videoRangeType: VideoRangeType = VideoRangeType.UNKNOWN,
 	/**
 	 * The video dovi title.
 	 */
 	@SerialName("VideoDoViTitle")
 	public val videoDoViTitle: String? = null,
 	/**
-	 * An enum representing formats of spatial audio.
+	 * The audio spatial format.
 	 */
 	@SerialName("AudioSpatialFormat")
 	public val audioSpatialFormat: AudioSpatialFormat = AudioSpatialFormat.NONE,
