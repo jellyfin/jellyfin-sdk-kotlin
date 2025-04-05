@@ -36,10 +36,10 @@ public data class BaseItemPerson(
 	@SerialName("Role")
 	public val role: String? = null,
 	/**
-	 * The person kind.
+	 * The type.
 	 */
 	@SerialName("Type")
-	public val type: PersonKind,
+	public val type: PersonKind = PersonKind.UNKNOWN,
 	/**
 	 * The primary image tag.
 	 */

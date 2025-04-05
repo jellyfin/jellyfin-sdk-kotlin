@@ -156,6 +156,7 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
 	): Response<ByteArray> {
+		require(Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
@@ -164,6 +165,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(50) {
@@ -399,6 +401,7 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
 	): String {
+		require(Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
@@ -407,6 +410,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(50) {
@@ -581,6 +585,7 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
 	): Response<ByteArray> {
+		require(Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
@@ -589,6 +594,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(51) {
@@ -830,6 +836,7 @@ public class DynamicHlsApi(
 		streamOptions: Map<String, String?>? = emptyMap(),
 		enableAudioVbrEncoding: Boolean? = true,
 	): String {
+		require(Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
@@ -838,6 +845,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(51) {
@@ -1014,6 +1022,7 @@ public class DynamicHlsApi(
 		enableAudioVbrEncoding: Boolean? = true,
 		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): Response<ByteArray> {
+		require(Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
@@ -1022,6 +1031,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(52) {
@@ -1265,6 +1275,7 @@ public class DynamicHlsApi(
 		enableAudioVbrEncoding: Boolean? = true,
 		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): String {
+		require(Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
@@ -1273,6 +1284,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(52) {
@@ -1453,6 +1465,7 @@ public class DynamicHlsApi(
 		enableAudioVbrEncoding: Boolean? = true,
 		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): Response<ByteArray> {
+		require(Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
@@ -1461,6 +1474,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(53) {
@@ -1710,6 +1724,7 @@ public class DynamicHlsApi(
 		enableAudioVbrEncoding: Boolean? = true,
 		alwaysBurnInSubtitleWhenTranscoding: Boolean? = false,
 	): String {
+		require(Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val pathParameters = buildMap<String, Any?>(4) {
 			put("itemId", itemId)
 			put("playlistId", playlistId)
@@ -1718,6 +1733,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(53) {
@@ -1896,6 +1912,7 @@ public class DynamicHlsApi(
 		require(container == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(52) {
@@ -2136,6 +2153,7 @@ public class DynamicHlsApi(
 		require(container == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(52) {
@@ -2316,6 +2334,7 @@ public class DynamicHlsApi(
 		require(container == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(53) {
@@ -2562,6 +2581,7 @@ public class DynamicHlsApi(
 		require(container == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(53) {
@@ -2733,6 +2753,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(49) {
@@ -2960,6 +2981,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(49) {
@@ -3130,6 +3152,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(50) {
@@ -3363,6 +3386,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(50) {
@@ -3537,6 +3561,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(52) {
@@ -3776,6 +3801,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(52) {
@@ -3955,6 +3981,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(53) {
@@ -4200,6 +4227,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(53) {
@@ -4369,6 +4397,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(48) {
@@ -4592,6 +4621,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(48) {
@@ -4759,6 +4789,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(49) {
@@ -4988,6 +5019,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(49) {
@@ -5157,6 +5189,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(50) {
@@ -5388,6 +5421,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(50) {
@@ -5561,6 +5595,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(51) {
@@ -5798,6 +5833,7 @@ public class DynamicHlsApi(
 		}
 		require(segmentContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(segmentContainer)) { """Parameter "segmentContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val queryParameters = buildMap<String, Any?>(51) {

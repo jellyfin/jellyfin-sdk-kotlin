@@ -249,7 +249,7 @@ public data class BaseItemDto(
 	@SerialName("ParentId")
 	public val parentId: UUID? = null,
 	/**
-	 * The base item kind.
+	 * The type.
 	 */
 	@SerialName("Type")
 	public val type: BaseItemKind,
@@ -509,10 +509,10 @@ public data class BaseItemDto(
 	@SerialName("IsoType")
 	public val isoType: IsoType? = null,
 	/**
-	 * Media types.
+	 * The type of the media.
 	 */
 	@SerialName("MediaType")
-	public val mediaType: MediaType,
+	public val mediaType: MediaType = MediaType.UNKNOWN,
 	/**
 	 * The end date.
 	 */
