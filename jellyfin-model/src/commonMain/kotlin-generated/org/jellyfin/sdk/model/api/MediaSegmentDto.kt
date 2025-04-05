@@ -30,10 +30,10 @@ public data class MediaSegmentDto(
 	@SerialName("ItemId")
 	public val itemId: UUID,
 	/**
-	 * Defines the types of content an individual Jellyfin.Data.Entities.MediaSegment represents.
+	 * The type of content this segment defines.
 	 */
 	@SerialName("Type")
-	public val type: MediaSegmentType,
+	public val type: MediaSegmentType = MediaSegmentType.UNKNOWN,
 	/**
 	 * The start of the segment.
 	 */

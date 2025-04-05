@@ -4869,6 +4869,7 @@ public final class org/jellyfin/sdk/model/api/MediaProtocol$Companion {
 public final class org/jellyfin/sdk/model/api/MediaSegmentDto {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/MediaSegmentDto$Companion;
 	public fun <init> (Ljava/util/UUID;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/MediaSegmentType;JJ)V
+	public synthetic fun <init> (Ljava/util/UUID;Ljava/util/UUID;Lorg/jellyfin/sdk/model/api/MediaSegmentType;JJILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/util/UUID;
 	public final fun component2 ()Ljava/util/UUID;
 	public final fun component3 ()Lorg/jellyfin/sdk/model/api/MediaSegmentType;

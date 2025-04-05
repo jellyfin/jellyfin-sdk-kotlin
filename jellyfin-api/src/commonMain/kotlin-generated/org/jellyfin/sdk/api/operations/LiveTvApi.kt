@@ -17,6 +17,8 @@ import kotlin.collections.List
 import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
+import kotlin.require
+import kotlin.text.Regex
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -343,6 +345,7 @@ public class LiveTvApi(
 	 * @param container Container type.
 	 */
 	public suspend fun getLiveStreamFile(streamId: String, container: String): Response<ByteArray> {
+		require(Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("streamId", streamId)
 			put("container", container)
@@ -360,6 +363,7 @@ public class LiveTvApi(
 	 * @param container Container type.
 	 */
 	public fun getLiveStreamFileUrl(streamId: String, container: String): String {
+		require(Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(container)) { """Parameter "container" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		val pathParameters = buildMap<String, Any?>(2) {
 			put("streamId", streamId)
 			put("container", container)
