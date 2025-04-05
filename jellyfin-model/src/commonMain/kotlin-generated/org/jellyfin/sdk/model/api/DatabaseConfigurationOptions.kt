@@ -5,24 +5,18 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
-import kotlin.Int
 import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Provides the MAC address and port for wake-on-LAN functionality.
+ * Options to configure jellyfins managed database.
  */
 @Serializable
-public data class WakeOnLanInfo(
+public data class DatabaseConfigurationOptions(
 	/**
-	 * The MAC address of the device.
+	 * Or Sets the type of database jellyfin should use.
 	 */
-	@SerialName("MacAddress")
-	public val macAddress: String? = null,
-	/**
-	 * The wake-on-LAN port.
-	 */
-	@SerialName("Port")
-	public val port: Int,
+	@SerialName("DatabaseType")
+	public val databaseType: String,
 )

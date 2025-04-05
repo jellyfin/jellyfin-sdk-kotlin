@@ -11,6 +11,7 @@
 package org.jellyfin.sdk.model.api.request
 
 import kotlin.Boolean
+import kotlin.Deprecated
 import kotlin.Int
 import kotlin.collections.Collection
 import kotlinx.serialization.SerialName
@@ -27,7 +28,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
  * A list of next up episodes.
  */
 @Serializable
-public data class GetNextUpRequest(
+public data class GetNextUpDeprecatedRequest(
 	/**
 	 * The user id of the user to get the next up episodes for.
 	 */
@@ -88,6 +89,12 @@ public data class GetNextUpRequest(
 	 */
 	@SerialName("enableTotalRecordCount")
 	public val enableTotalRecordCount: Boolean? = true,
+	/**
+	 * Whether to disable sending the first episode in a series as next up.
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	@SerialName("disableFirstEpisode")
+	public val disableFirstEpisode: Boolean? = false,
 	/**
 	 * Whether to include resumable episodes in next up results.
 	 */
