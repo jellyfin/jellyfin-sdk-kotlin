@@ -6,28 +6,22 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Int
-import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Class ParentalRating.
+ * A class representing an parental rating score.
  */
 @Serializable
-public data class ParentalRating(
+public data class ParentalRatingScore(
 	/**
-	 * The name.
+	 * The score.
 	 */
-	@SerialName("Name")
-	public val name: String,
+	@SerialName("score")
+	public val score: Int,
 	/**
-	 * The value.
+	 * The sub score.
 	 */
-	@SerialName("Value")
-	public val `value`: Int? = null,
-	/**
-	 * The rating score.
-	 */
-	@SerialName("RatingScore")
-	public val ratingScore: ParentalRatingScore? = null,
+	@SerialName("subScore")
+	public val subScore: Int? = null,
 )

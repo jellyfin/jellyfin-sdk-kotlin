@@ -6,7 +6,6 @@
 package org.jellyfin.sdk.api.operations
 
 import kotlin.Any
-import kotlin.Deprecated
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
@@ -20,7 +19,6 @@ import org.jellyfin.sdk.model.api.EndPointInfo
 import org.jellyfin.sdk.model.api.LogFile
 import org.jellyfin.sdk.model.api.PublicSystemInfo
 import org.jellyfin.sdk.model.api.SystemInfo
-import org.jellyfin.sdk.model.api.WakeOnLanInfo
 
 public class SystemApi(
 	private val api: ApiClient,
@@ -92,18 +90,6 @@ public class SystemApi(
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<SystemInfo>("/System/Info", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets wake on lan information.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getWakeOnLanInfo(): Response<List<WakeOnLanInfo>> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<List<WakeOnLanInfo>>("/System/WakeOnLanInfo", pathParameters, queryParameters, data)
 		return response
 	}
 

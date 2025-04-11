@@ -54,6 +54,8 @@ public data class UserPolicy(
 	 */
 	@SerialName("MaxParentalRating")
 	public val maxParentalRating: Int? = null,
+	@SerialName("MaxParentalSubRating")
+	public val maxParentalSubRating: Int? = null,
 	@SerialName("BlockedTags")
 	public val blockedTags: List<String>? = null,
 	@SerialName("AllowedTags")
@@ -128,7 +130,7 @@ public data class UserPolicy(
 	@SerialName("PasswordResetProviderId")
 	public val passwordResetProviderId: String,
 	/**
-	 * A value indicating what SyncPlay features the user can access.
+	 * Enum SyncPlayUserAccessType.
 	 */
 	@SerialName("SyncPlayAccess")
 	public val syncPlayAccess: SyncPlayUserAccessType,

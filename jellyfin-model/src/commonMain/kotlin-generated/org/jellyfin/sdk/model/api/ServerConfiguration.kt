@@ -62,7 +62,7 @@ public data class ServerConfiguration(
 	@SerialName("QuickConnectAvailable")
 	public val quickConnectAvailable: Boolean,
 	/**
-	 * A value indicating whether [enable case sensitive item ids].
+	 * A value indicating whether [enable case-sensitive item ids].
 	 */
 	@SerialName("EnableCaseSensitiveItemIds")
 	public val enableCaseSensitiveItemIds: Boolean,
@@ -142,6 +142,11 @@ public data class ServerConfiguration(
 	@SerialName("LibraryUpdateDuration")
 	public val libraryUpdateDuration: Int,
 	/**
+	 * The maximum amount of items to cache.
+	 */
+	@SerialName("CacheSize")
+	public val cacheSize: Int,
+	/**
 	 * The image saving convention.
 	 */
 	@SerialName("ImageSavingConvention")
@@ -162,8 +167,10 @@ public data class ServerConfiguration(
 	public val remoteClientBitrateLimit: Int,
 	@SerialName("EnableFolderView")
 	public val enableFolderView: Boolean,
-	@SerialName("EnableGroupingIntoCollections")
-	public val enableGroupingIntoCollections: Boolean,
+	@SerialName("EnableGroupingMoviesIntoCollections")
+	public val enableGroupingMoviesIntoCollections: Boolean,
+	@SerialName("EnableGroupingShowsIntoCollections")
+	public val enableGroupingShowsIntoCollections: Boolean,
 	@SerialName("DisplaySpecialsWithinSeasons")
 	public val displaySpecialsWithinSeasons: Boolean,
 	@SerialName("CodecsUsed")
@@ -207,17 +214,12 @@ public data class ServerConfiguration(
 	@SerialName("LibraryMetadataRefreshConcurrency")
 	public val libraryMetadataRefreshConcurrency: Int,
 	/**
-	 * A value indicating whether older plugins should automatically be deleted from the plugin folder.
-	 */
-	@SerialName("RemoveOldPlugins")
-	public val removeOldPlugins: Boolean,
-	/**
 	 * A value indicating whether clients should be allowed to upload logs.
 	 */
 	@SerialName("AllowClientLogUpload")
 	public val allowClientLogUpload: Boolean,
 	/**
-	 * The dummy chapter duration in seconds, use 0 (zero) or less to disable generation alltogether.
+	 * The dummy chapter duration in seconds, use 0 (zero) or less to disable generation altogether.
 	 */
 	@SerialName("DummyChapterDuration")
 	public val dummyChapterDuration: Int,
@@ -241,4 +243,9 @@ public data class ServerConfiguration(
 	 */
 	@SerialName("TrickplayOptions")
 	public val trickplayOptions: TrickplayOptions,
+	/**
+	 * A value indicating whether old authorization methods are allowed.
+	 */
+	@SerialName("EnableLegacyAuthorization")
+	public val enableLegacyAuthorization: Boolean,
 )
