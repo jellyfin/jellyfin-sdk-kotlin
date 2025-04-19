@@ -270,7 +270,7 @@ public data class GetMasterHlsAudioPlaylistRequest(
 	 * Enable adaptive bitrate streaming.
 	 */
 	@SerialName("enableAdaptiveBitrateStreaming")
-	public val enableAdaptiveBitrateStreaming: Boolean? = true,
+	public val enableAdaptiveBitrateStreaming: Boolean? = false,
 	/**
 	 * Optional. Whether to enable Audio Encoding.
 	 */

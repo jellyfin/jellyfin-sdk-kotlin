@@ -118,6 +118,8 @@ public data class MediaStream(
 	 */
 	@SerialName("Title")
 	public val title: String? = null,
+	@SerialName("Hdr10PlusPresentFlag")
+	public val hdr10PlusPresentFlag: Boolean? = null,
 	/**
 	 * The video range.
 	 */
