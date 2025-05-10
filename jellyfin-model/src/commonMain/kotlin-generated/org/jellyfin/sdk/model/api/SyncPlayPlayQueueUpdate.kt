@@ -13,25 +13,22 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
-/**
- * Plugin installation completed message.
- */
 @Serializable
-@SerialName("PackageInstallationCompleted")
-public data class PluginInstallationCompletedMessage(
+@SerialName("PlayQueue")
+public data class SyncPlayPlayQueueUpdate(
 	/**
-	 * Class InstallationInfo.
+	 * The group identifier.
+	 */
+	@SerialName("GroupId")
+	override val groupId: UUID,
+	/**
+	 * The update data.
 	 */
 	@SerialName("Data")
-	public val `data`: InstallationInfo? = null,
+	public val `data`: PlayQueueUpdate,
+) : GroupUpdate {
 	/**
-	 * The message id.
+	 * Enum GroupUpdateType.
 	 */
-	@SerialName("MessageId")
-	override val messageId: UUID,
-) : OutboundWebSocketMessage {
-	/**
-	 * The different kinds of messages that are used in the WebSocket api.
-	 */
-	override val messageType: SessionMessageType = SessionMessageType.PACKAGE_INSTALLATION_COMPLETED
+	override val type: GroupUpdateType = GroupUpdateType.PLAY_QUEUE
 }

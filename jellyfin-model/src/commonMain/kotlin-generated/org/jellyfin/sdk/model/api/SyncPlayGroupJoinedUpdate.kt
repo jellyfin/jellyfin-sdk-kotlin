@@ -13,24 +13,22 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
-/**
- * Class GroupUpdate.
- */
 @Serializable
-public data class GroupStateUpdateGroupUpdate(
+@SerialName("GroupJoined")
+public data class SyncPlayGroupJoinedUpdate(
 	/**
 	 * The group identifier.
 	 */
 	@SerialName("GroupId")
-	public val groupId: UUID,
-	/**
-	 * The update type.
-	 */
-	@SerialName("Type")
-	public val type: GroupUpdateType,
+	override val groupId: UUID,
 	/**
 	 * The update data.
 	 */
 	@SerialName("Data")
-	public val `data`: GroupStateUpdate,
-)
+	public val `data`: GroupInfoDto,
+) : GroupUpdate {
+	/**
+	 * Enum GroupUpdateType.
+	 */
+	override val type: GroupUpdateType = GroupUpdateType.GROUP_JOINED
+}

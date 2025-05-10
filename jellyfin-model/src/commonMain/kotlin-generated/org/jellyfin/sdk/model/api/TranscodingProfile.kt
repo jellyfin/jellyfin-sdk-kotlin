@@ -39,7 +39,8 @@ public data class TranscodingProfile(
 	@SerialName("AudioCodec")
 	public val audioCodec: String,
 	/**
-	 * The protocol.
+	 * Media streaming protocol.
+	 * Lowercase for backwards compatibility.
 	 */
 	@SerialName("Protocol")
 	public val protocol: MediaStreamProtocol,

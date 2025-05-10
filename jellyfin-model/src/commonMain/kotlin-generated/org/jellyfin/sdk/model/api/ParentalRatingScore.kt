@@ -5,17 +5,23 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.Int
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Class SetShuffleModeRequestDto.
+ * A class representing an parental rating score.
  */
 @Serializable
-public data class SetShuffleModeRequestDto(
+public data class ParentalRatingScore(
 	/**
-	 * The shuffle mode.
+	 * The score.
 	 */
-	@SerialName("Mode")
-	public val mode: GroupShuffleMode,
+	@SerialName("score")
+	public val score: Int,
+	/**
+	 * The sub score.
+	 */
+	@SerialName("subScore")
+	public val subScore: Int? = null,
 )

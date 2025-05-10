@@ -45,7 +45,7 @@ public data class TrickplayInfo(
 	@SerialName("Interval")
 	public val interval: Int,
 	/**
-	 * Peak bandwith usage in bits per second.
+	 * Peak bandwidth usage in bits per second.
 	 */
 	@SerialName("Bandwidth")
 	public val bandwidth: Int,
