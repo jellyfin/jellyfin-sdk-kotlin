@@ -5,30 +5,29 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.Int
 import kotlin.Long
-import kotlin.String
-import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Lyric model.
+ * LyricLineCue model, holds information about the timing of words within a LyricLine.
  */
 @Serializable
-public data class LyricLine(
+public data class LyricLineCue(
 	/**
-	 * The text of this lyric line.
+	 * The character index of the lyric.
 	 */
-	@SerialName("Text")
-	public val text: String,
+	@SerialName("Position")
+	public val position: Int,
 	/**
-	 * The start time in ticks.
+	 * The timestamp the lyric is synced to in ticks.
 	 */
 	@SerialName("Start")
-	public val start: Long? = null,
+	public val start: Long,
 	/**
-	 * The time-aligned cues for the song's lyrics.
+	 * The end timestamp the lyric is synced to in ticks.
 	 */
-	@SerialName("Cues")
-	public val cues: List<LyricLineCue>? = null,
+	@SerialName("End")
+	public val end: Long? = null,
 )

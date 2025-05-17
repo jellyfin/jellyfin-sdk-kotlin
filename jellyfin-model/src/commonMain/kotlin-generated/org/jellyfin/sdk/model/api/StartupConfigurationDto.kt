@@ -15,6 +15,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class StartupConfigurationDto(
 	/**
+	 * The server name.
+	 */
+	@SerialName("ServerName")
+	public val serverName: String? = null,
+	/**
 	 * UI language culture.
 	 */
 	@SerialName("UICulture")
