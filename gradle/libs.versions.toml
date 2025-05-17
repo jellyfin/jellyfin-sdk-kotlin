@@ -18,7 +18,7 @@ ktor = "3.1.2"
 nexuspublish = "2.0.0"
 okhttp = "4.12.0"
 slf4j = "2.0.17"
-swagger-parser = "2.1.26"
+swagger-parser = "2.1.28"
 
 [plugins]
 binarycompatibilityvalidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binarycompatibilityvalidator" }
