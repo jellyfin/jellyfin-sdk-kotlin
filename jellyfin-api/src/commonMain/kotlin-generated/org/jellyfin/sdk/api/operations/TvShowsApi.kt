@@ -7,6 +7,7 @@ package org.jellyfin.sdk.api.operations
 
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.Collection
@@ -23,6 +24,7 @@ import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.ItemSortBy
 import org.jellyfin.sdk.model.api.request.GetEpisodesRequest
+import org.jellyfin.sdk.model.api.request.GetNextUpDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetNextUpRequest
 import org.jellyfin.sdk.model.api.request.GetSeasonsRequest
 import org.jellyfin.sdk.model.api.request.GetUpcomingEpisodesRequest
@@ -128,11 +130,90 @@ public class TvShowsApi(
 	 * @param enableUserData Optional. Include user data.
 	 * @param nextUpDateCutoff Optional. Starting date of shows to show in Next Up section.
 	 * @param enableTotalRecordCount Whether to enable the total records count. Defaults to true.
-	 * @param disableFirstEpisode Whether to disable sending the first episode in a series as next up.
 	 * @param enableResumable Whether to include resumable episodes in next up results.
 	 * @param enableRewatching Whether to include watched episodes in next up results.
 	 */
 	public suspend fun getNextUp(
+		userId: UUID? = null,
+		startIndex: Int? = null,
+		limit: Int? = null,
+		fields: Collection<ItemFields>? = emptyList(),
+		seriesId: UUID? = null,
+		parentId: UUID? = null,
+		enableImages: Boolean? = null,
+		imageTypeLimit: Int? = null,
+		enableImageTypes: Collection<ImageType>? = emptyList(),
+		enableUserData: Boolean? = null,
+		nextUpDateCutoff: DateTime? = null,
+		enableTotalRecordCount: Boolean? = true,
+		enableResumable: Boolean? = true,
+		enableRewatching: Boolean? = false,
+	): Response<BaseItemDtoQueryResult> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = buildMap<String, Any?>(14) {
+			put("userId", userId)
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("fields", fields)
+			put("seriesId", seriesId)
+			put("parentId", parentId)
+			put("enableImages", enableImages)
+			put("imageTypeLimit", imageTypeLimit)
+			put("enableImageTypes", enableImageTypes)
+			put("enableUserData", enableUserData)
+			put("nextUpDateCutoff", nextUpDateCutoff)
+			put("enableTotalRecordCount", enableTotalRecordCount)
+			put("enableResumable", enableResumable)
+			put("enableRewatching", enableRewatching)
+		}
+		val data = null
+		val response = api.`get`<BaseItemDtoQueryResult>("/Shows/NextUp", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets a list of next up episodes.
+	 *
+	 * @param request The request parameters
+	 */
+	public suspend fun getNextUp(request: GetNextUpRequest = GetNextUpRequest()): Response<BaseItemDtoQueryResult> = getNextUp(
+		userId = request.userId,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		fields = request.fields,
+		seriesId = request.seriesId,
+		parentId = request.parentId,
+		enableImages = request.enableImages,
+		imageTypeLimit = request.imageTypeLimit,
+		enableImageTypes = request.enableImageTypes,
+		enableUserData = request.enableUserData,
+		nextUpDateCutoff = request.nextUpDateCutoff,
+		enableTotalRecordCount = request.enableTotalRecordCount,
+		enableResumable = request.enableResumable,
+		enableRewatching = request.enableRewatching,
+	)
+
+	/**
+	 * Gets a list of next up episodes.
+	 *
+	 * @param userId The user id of the user to get the next up episodes for.
+	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
+	 * @param limit Optional. The maximum number of records to return.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
+	 * @param seriesId Optional. Filter by series id.
+	 * @param parentId Optional. Specify this to localize the search to a specific item or folder. Omit to use the root.
+	 * @param enableImages Optional. Include image information in output.
+	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
+	 * @param enableImageTypes Optional. The image types to include in the output.
+	 * @param enableUserData Optional. Include user data.
+	 * @param nextUpDateCutoff Optional. Starting date of shows to show in Next Up section.
+	 * @param enableTotalRecordCount Whether to enable the total records count. Defaults to true.
+	 * @param disableFirstEpisode Whether to disable sending the first episode in a series as next up.
+	 * @param enableResumable Whether to include resumable episodes in next up results.
+	 * @param enableRewatching Whether to include watched episodes in next up results.
+	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getNextUpDeprecated(
 		userId: UUID? = null,
 		startIndex: Int? = null,
 		limit: Int? = null,
@@ -177,7 +258,8 @@ public class TvShowsApi(
 	 *
 	 * @param request The request parameters
 	 */
-	public suspend fun getNextUp(request: GetNextUpRequest = GetNextUpRequest()): Response<BaseItemDtoQueryResult> = getNextUp(
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getNextUpDeprecated(request: GetNextUpDeprecatedRequest = GetNextUpDeprecatedRequest()): Response<BaseItemDtoQueryResult> = getNextUpDeprecated(
 		userId = request.userId,
 		startIndex = request.startIndex,
 		limit = request.limit,

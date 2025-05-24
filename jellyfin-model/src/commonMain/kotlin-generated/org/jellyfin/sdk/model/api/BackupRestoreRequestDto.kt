@@ -5,30 +5,18 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
-import kotlin.Long
 import kotlin.String
-import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Lyric model.
+ * Defines properties used to start a restore process.
  */
 @Serializable
-public data class LyricLine(
+public data class BackupRestoreRequestDto(
 	/**
-	 * The text of this lyric line.
+	 * Or Sets the name of the backup archive to restore from. Must be present in MediaBrowser.Common.Configuration.IApplicationPaths.BackupPath.
 	 */
-	@SerialName("Text")
-	public val text: String,
-	/**
-	 * The start time in ticks.
-	 */
-	@SerialName("Start")
-	public val start: Long? = null,
-	/**
-	 * The time-aligned cues for the song's lyrics.
-	 */
-	@SerialName("Cues")
-	public val cues: List<LyricLineCue>? = null,
+	@SerialName("ArchiveFileName")
+	public val archiveFileName: String,
 )

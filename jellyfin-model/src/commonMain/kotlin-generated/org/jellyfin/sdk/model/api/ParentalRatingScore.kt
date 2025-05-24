@@ -5,23 +5,23 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.Int
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonClassDiscriminator
-import org.jellyfin.sdk.model.UUID
 
 /**
- * Represents the list of possible group update types
+ * A class representing an parental rating score.
  */
 @Serializable
-@JsonClassDiscriminator("Type")
-public sealed interface GroupUpdate {
+public data class ParentalRatingScore(
 	/**
-	 * The group identifier.
+	 * The score.
 	 */
-	public val groupId: UUID
-
+	@SerialName("score")
+	public val score: Int,
 	/**
-	 * Enum GroupUpdateType.
+	 * The sub score.
 	 */
-	public val type: GroupUpdateType
-}
+	@SerialName("subScore")
+	public val subScore: Int? = null,
+)

@@ -99,36 +99,43 @@ public data class SystemInfo(
 	/**
 	 * The program data path.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("ProgramDataPath")
 	public val programDataPath: String? = null,
 	/**
 	 * The web UI resources path.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("WebPath")
 	public val webPath: String? = null,
 	/**
 	 * The items by name path.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("ItemsByNamePath")
 	public val itemsByNamePath: String? = null,
 	/**
 	 * The cache path.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("CachePath")
 	public val cachePath: String? = null,
 	/**
 	 * The log path.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("LogPath")
 	public val logPath: String? = null,
 	/**
 	 * The internal metadata path.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("InternalMetadataPath")
 	public val internalMetadataPath: String? = null,
 	/**
 	 * The transcode path.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("TranscodingTempPath")
 	public val transcodingTempPath: String? = null,
 	/**
