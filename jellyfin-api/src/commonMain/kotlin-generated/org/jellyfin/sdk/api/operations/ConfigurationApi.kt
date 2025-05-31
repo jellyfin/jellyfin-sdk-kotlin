@@ -16,6 +16,7 @@ import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.post
+import org.jellyfin.sdk.model.api.BrandingOptionsDto
 import org.jellyfin.sdk.model.api.MetadataOptions
 import org.jellyfin.sdk.model.api.ServerConfiguration
 
@@ -70,6 +71,16 @@ public class ConfigurationApi(
 		}
 		val queryParameters = emptyMap<String, Any?>()
 		return api.createUrl("/System/Configuration/{key}", pathParameters, queryParameters)
+	}
+
+	/**
+	 * Updates branding configuration.
+	 */
+	public suspend fun updateBrandingConfiguration(`data`: BrandingOptionsDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/System/Configuration/Branding", pathParameters, queryParameters, data)
+		return response
 	}
 
 	/**

@@ -482,7 +482,7 @@ public data class BaseItemDto(
 	 * The parent primary image item identifier.
 	 */
 	@SerialName("ParentPrimaryImageItemId")
-	public val parentPrimaryImageItemId: String? = null,
+	public val parentPrimaryImageItemId: UUID? = null,
 	/**
 	 * The parent primary image tag.
 	 */

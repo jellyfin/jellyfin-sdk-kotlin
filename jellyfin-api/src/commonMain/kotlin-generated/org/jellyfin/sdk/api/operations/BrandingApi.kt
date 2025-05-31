@@ -11,7 +11,7 @@ import kotlin.collections.emptyMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
-import org.jellyfin.sdk.model.api.BrandingOptions
+import org.jellyfin.sdk.model.api.BrandingOptionsDto
 
 public class BrandingApi(
 	private val api: ApiClient,
@@ -41,11 +41,11 @@ public class BrandingApi(
 	/**
 	 * Gets branding configuration.
 	 */
-	public suspend fun getBrandingOptions(): Response<BrandingOptions> {
+	public suspend fun getBrandingOptions(): Response<BrandingOptionsDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<BrandingOptions>("/Branding/Configuration", pathParameters, queryParameters, data)
+		val response = api.`get`<BrandingOptionsDto>("/Branding/Configuration", pathParameters, queryParameters, data)
 		return response
 	}
 }

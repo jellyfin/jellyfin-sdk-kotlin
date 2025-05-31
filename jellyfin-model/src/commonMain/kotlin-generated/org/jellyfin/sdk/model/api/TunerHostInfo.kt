@@ -43,4 +43,6 @@ public data class TunerHostInfo(
 	public val userAgent: String? = null,
 	@SerialName("IgnoreDts")
 	public val ignoreDts: Boolean,
+	@SerialName("ReadAtNativeFramerate")
+	public val readAtNativeFramerate: Boolean,
 )
