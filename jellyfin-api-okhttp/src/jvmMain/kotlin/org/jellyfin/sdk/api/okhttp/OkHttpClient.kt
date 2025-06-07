@@ -27,11 +27,10 @@ import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.FileInfo
 import java.io.IOException
+import java.io.InterruptedIOException
 import java.net.ConnectException
-import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import javax.net.ssl.SSLException
-import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
 @Suppress("LongParameterList")
@@ -126,9 +125,9 @@ public class OkHttpClient(
 		} catch (err: UnknownHostException) {
 			logger.debug(err) { "HTTP host unreachable" }
 			throw TimeoutException("HTTP host unreachable", err)
-		} catch (err: SocketTimeoutException) {
-			logger.debug(err) { "Socket timed out" }
-			throw TimeoutException("Socket timed out", err)
+		} catch (err: InterruptedIOException) {
+			logger.debug(err) { "Connection timed out or was interrupted" }
+			throw TimeoutException("Connection timed out or was interrupted", err)
 		} catch (err: ConnectException) {
 			logger.debug(err) { "Connection failed" }
 			throw TimeoutException("Connection failed", err)
@@ -147,20 +146,18 @@ public class OkHttpClient(
 	private suspend fun Call.await(): Response = suspendCancellableCoroutine { continuation ->
 		enqueue(object : Callback {
 			override fun onResponse(call: Call, response: Response) {
-				continuation.resume(response)
+				continuation.resume(response) { cause, response, _ ->
+					response.close()
+				}
 			}
 
 			override fun onFailure(call: Call, e: IOException) {
-				if (!call.isCanceled()) {
-					continuation.resumeWithException(e)
-				}
+				continuation.resumeWithException(e)
 			}
 		})
 
 		continuation.invokeOnCancellation {
-			runCatching {
-				cancel()
-			}
+			cancel()
 		}
 	}
 }
