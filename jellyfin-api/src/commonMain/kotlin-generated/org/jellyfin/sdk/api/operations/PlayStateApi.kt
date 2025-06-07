@@ -7,6 +7,7 @@ package org.jellyfin.sdk.api.operations
 
 import kotlin.Any
 import kotlin.Boolean
+import kotlin.Deprecated
 import kotlin.Int
 import kotlin.Long
 import kotlin.String
@@ -90,6 +91,7 @@ public class PlayStateApi(
 	 * @param isPaused Indicates if the player is paused.
 	 * @param isMuted Indicates if the player is muted.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun onPlaybackProgress(
 		itemId: UUID,
 		mediaSourceId: String? = null,
@@ -130,6 +132,7 @@ public class PlayStateApi(
 	 *
 	 * @param request The request parameters
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun onPlaybackProgress(request: OnPlaybackProgressRequest): Response<Unit> = onPlaybackProgress(
 		itemId = request.itemId,
 		mediaSourceId = request.mediaSourceId,
@@ -157,6 +160,7 @@ public class PlayStateApi(
 	 * @param playSessionId The play session id.
 	 * @param canSeek Indicates if the client can seek.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun onPlaybackStart(
 		itemId: UUID,
 		mediaSourceId: String? = null,
@@ -189,6 +193,7 @@ public class PlayStateApi(
 	 *
 	 * @param request The request parameters
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun onPlaybackStart(request: OnPlaybackStartRequest): Response<Unit> = onPlaybackStart(
 		itemId = request.itemId,
 		mediaSourceId = request.mediaSourceId,
@@ -210,6 +215,7 @@ public class PlayStateApi(
 	 * @param liveStreamId The live stream id.
 	 * @param playSessionId The play session id.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun onPlaybackStopped(
 		itemId: UUID,
 		mediaSourceId: String? = null,
@@ -238,6 +244,7 @@ public class PlayStateApi(
 	 *
 	 * @param request The request parameters
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun onPlaybackStopped(request: OnPlaybackStoppedRequest): Response<Unit> = onPlaybackStopped(
 		itemId = request.itemId,
 		mediaSourceId = request.mediaSourceId,

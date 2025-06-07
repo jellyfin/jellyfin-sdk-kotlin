@@ -249,7 +249,7 @@ public data class BaseItemDto(
 	@SerialName("ParentId")
 	public val parentId: UUID? = null,
 	/**
-	 * The type.
+	 * The base item kind.
 	 */
 	@SerialName("Type")
 	public val type: BaseItemKind,
@@ -482,7 +482,7 @@ public data class BaseItemDto(
 	 * The parent primary image item identifier.
 	 */
 	@SerialName("ParentPrimaryImageItemId")
-	public val parentPrimaryImageItemId: String? = null,
+	public val parentPrimaryImageItemId: UUID? = null,
 	/**
 	 * The parent primary image tag.
 	 */
@@ -509,7 +509,7 @@ public data class BaseItemDto(
 	@SerialName("IsoType")
 	public val isoType: IsoType? = null,
 	/**
-	 * The type of the media.
+	 * Media types.
 	 */
 	@SerialName("MediaType")
 	public val mediaType: MediaType = MediaType.UNKNOWN,
