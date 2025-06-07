@@ -74,7 +74,7 @@ public data class OpenLiveStreamDto(
 	@SerialName("EnableDirectPlay")
 	public val enableDirectPlay: Boolean? = null,
 	/**
-	 * A value indicating whether to enale direct stream.
+	 * A value indicating whether to enable direct stream.
 	 */
 	@SerialName("EnableDirectStream")
 	public val enableDirectStream: Boolean? = null,
@@ -84,13 +84,7 @@ public data class OpenLiveStreamDto(
 	@SerialName("AlwaysBurnInSubtitleWhenTranscoding")
 	public val alwaysBurnInSubtitleWhenTranscoding: Boolean? = null,
 	/**
-	 * A MediaBrowser.Model.Dlna.DeviceProfile represents a set of metadata which determines which content a certain device is able to play.
-	 *
-	 *
-	 * Specifically, it defines the supported containers (`P:MediaBrowser.Model.Dlna.DeviceProfile.ContainerProfiles`) and
-	 * codecs (`P:MediaBrowser.Model.Dlna.DeviceProfile.CodecProfiles`) (video and/or audio, including codec profiles and levels)
-	 * the device is able to direct play (without transcoding or remuxing),
-	 * as well as which containers/codecs to transcode to (`P:MediaBrowser.Model.Dlna.DeviceProfile.TranscodingProfiles`) in case it isn't.
+	 * The device profile.
 	 */
 	@SerialName("DeviceProfile")
 	public val deviceProfile: DeviceProfile? = null,

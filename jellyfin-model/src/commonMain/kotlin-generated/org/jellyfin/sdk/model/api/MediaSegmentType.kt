@@ -11,7 +11,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Defines the types of content an individual Jellyfin.Data.Entities.MediaSegment represents.
+ * Defines the types of content an individual Jellyfin.Database.Implementations.Entities.MediaSegment represents.
  */
 @Serializable
 public enum class MediaSegmentType(
