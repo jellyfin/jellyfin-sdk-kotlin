@@ -67,7 +67,7 @@ public class Jellyfin(
 		/**
 		 * The minimum server version expected to work. Lower versions may work but are not supported.
 		 */
-		public val minimumVersion: ServerVersion = ServerVersion(10, 10, 0, 0)
+		public val minimumVersion: ServerVersion = ServerVersion(10, 11, 0, 0)
 
 		/**
 		 * The exact server version used to generate the API. Should be equal or higher than [minimumVersion].
