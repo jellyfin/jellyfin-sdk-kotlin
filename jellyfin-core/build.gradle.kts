@@ -15,7 +15,7 @@ kotlin {
 		}
 	}
 	androidTarget {
-		publishAllLibraryVariants()
+		publishLibraryVariants("release", "debug")
 		compilerOptions {
 			jvmTarget = JvmTarget.JVM_1_8
 		}
