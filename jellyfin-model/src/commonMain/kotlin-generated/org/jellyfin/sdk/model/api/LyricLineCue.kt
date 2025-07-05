@@ -16,10 +16,15 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class LyricLineCue(
 	/**
-	 * The character index of the lyric.
+	 * The start character index of the cue.
 	 */
 	@SerialName("Position")
 	public val position: Int,
+	/**
+	 * The end character index of the cue.
+	 */
+	@SerialName("EndPosition")
+	public val endPosition: Int,
 	/**
 	 * The timestamp the lyric is synced to in ticks.
 	 */
