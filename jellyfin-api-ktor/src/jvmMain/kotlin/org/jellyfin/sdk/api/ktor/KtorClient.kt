@@ -123,6 +123,11 @@ public class KtorClient(
 					)
 				)
 
+				header(
+					key = HttpHeaders.UserAgent,
+					value = "${clientInfo.name}/${clientInfo.version} via jellyfin-sdk-kotlin (Ktor)"
+				)
+
 				when (requestBody) {
 					// String content
 					is String -> setBody(TextContent(requestBody, ContentType.Text.Plain))

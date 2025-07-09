@@ -275,7 +275,14 @@ public class DefaultSocketApi(
 			keepAliveTicker?.cancel()
 		} else {
 			// Attempt connection
-			val connected = socketConnection.connect(newCredentials.url, newCredentials.authorizationHeader)
+			val connected = socketConnection.connect(
+				url = newCredentials.url,
+				clientName = newCredentials.clientName,
+				clientVersion = newCredentials.clientVersion,
+				deviceId = newCredentials.deviceId,
+				deviceName = newCredentials.deviceName,
+				accessToken = newCredentials.accessToken,
+			)
 
 			if (connected) {
 				socketReconnectPolicy.notifyConnected()
