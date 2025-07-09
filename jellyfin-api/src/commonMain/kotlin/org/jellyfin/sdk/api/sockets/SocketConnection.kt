@@ -20,7 +20,14 @@ public interface SocketConnection {
 	 *
 	 * @see disconnect
 	 */
-	public suspend fun connect(url: String, authorization: String): Boolean
+	public suspend fun connect(
+		url: String,
+		clientName: String,
+		clientVersion: String,
+		deviceId: String,
+		deviceName: String,
+		accessToken: String,
+	): Boolean
 
 	/**
 	 * Send a message to this connection. Messages may be added to an internal queue and be slightly delayed.

@@ -7,11 +7,13 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import mu.KotlinLogging
+import okhttp3.OkHttp
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
+import org.jellyfin.sdk.api.client.util.AuthorizationHeaderBuilder
 import org.jellyfin.sdk.api.sockets.SocketConnection
 import org.jellyfin.sdk.api.sockets.SocketConnectionState
 
@@ -22,7 +24,6 @@ public class OkHttpSocketConnection(
 	scope: CoroutineScope,
 ) : SocketConnection {
 	private companion object {
-		private const val HEADER_AUTHORIZATION = "Authorization"
 		private const val CLOSE_REASON_NORMAL = 1000
 	}
 
@@ -64,12 +65,27 @@ public class OkHttpSocketConnection(
 		}
 	}
 
-	override suspend fun connect(url: String, authorization: String): Boolean {
+	override suspend fun connect(
+		url: String,
+		clientName: String,
+		clientVersion: String,
+		deviceId: String,
+		deviceName: String,
+		accessToken: String,
+	): Boolean {
 		if (webSocket != null) disconnect()
 
 		val request = Request.Builder().apply {
 			url(url)
-			header(HEADER_AUTHORIZATION, authorization)
+			val authorization = AuthorizationHeaderBuilder.buildHeader(
+				clientName = clientName,
+				clientVersion = clientVersion,
+				deviceId = deviceId,
+				deviceName = deviceName,
+				accessToken = accessToken,
+			)
+			header("Authorization", authorization)
+			header("User-Agent", "${clientName}/${clientVersion} via jellyfin-sdk-kotlin (OkHttp/${OkHttp.VERSION})")
 		}.build()
 
 		_state.value = SocketConnectionState.Connecting
