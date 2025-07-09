@@ -22,7 +22,7 @@ public final class org/jellyfin/sdk/api/okhttp/OkHttpFactory : org/jellyfin/sdk/
 
 public final class org/jellyfin/sdk/api/okhttp/OkHttpSocketConnection : org/jellyfin/sdk/api/sockets/SocketConnection {
 	public fun <init> (Lokhttp3/OkHttpClient;Lkotlinx/coroutines/CoroutineScope;)V
-	public fun connect (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun connect (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun disconnect (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public fun getState ()Lkotlinx/coroutines/flow/StateFlow;
 	public fun send (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
