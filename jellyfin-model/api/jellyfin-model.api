@@ -4977,15 +4977,17 @@ public final class org/jellyfin/sdk/model/api/LyricLine$Companion {
 
 public final class org/jellyfin/sdk/model/api/LyricLineCue {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/LyricLineCue$Companion;
-	public fun <init> (IJLjava/lang/Long;)V
-	public synthetic fun <init> (IJLjava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (IIJLjava/lang/Long;)V
+	public synthetic fun <init> (IIJLjava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()I
-	public final fun component2 ()J
-	public final fun component3 ()Ljava/lang/Long;
-	public final fun copy (IJLjava/lang/Long;)Lorg/jellyfin/sdk/model/api/LyricLineCue;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/LyricLineCue;IJLjava/lang/Long;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/LyricLineCue;
+	public final fun component2 ()I
+	public final fun component3 ()J
+	public final fun component4 ()Ljava/lang/Long;
+	public final fun copy (IIJLjava/lang/Long;)Lorg/jellyfin/sdk/model/api/LyricLineCue;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/LyricLineCue;IIJLjava/lang/Long;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/LyricLineCue;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getEnd ()Ljava/lang/Long;
+	public final fun getEndPosition ()I
 	public final fun getPosition ()I
 	public final fun getStart ()J
 	public fun hashCode ()I
@@ -11394,24 +11396,22 @@ public final class org/jellyfin/sdk/model/api/TransportStreamTimestamp$Companion
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class org/jellyfin/sdk/model/api/TrickplayInfo {
-	public static final field Companion Lorg/jellyfin/sdk/model/api/TrickplayInfo$Companion;
-	public fun <init> (Ljava/util/UUID;IIIIIII)V
-	public final fun component1 ()Ljava/util/UUID;
+public final class org/jellyfin/sdk/model/api/TrickplayInfoDto {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/TrickplayInfoDto$Companion;
+	public fun <init> (IIIIIII)V
+	public final fun component1 ()I
 	public final fun component2 ()I
 	public final fun component3 ()I
 	public final fun component4 ()I
 	public final fun component5 ()I
 	public final fun component6 ()I
 	public final fun component7 ()I
-	public final fun component8 ()I
-	public final fun copy (Ljava/util/UUID;IIIIIII)Lorg/jellyfin/sdk/model/api/TrickplayInfo;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/TrickplayInfo;Ljava/util/UUID;IIIIIIIILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/TrickplayInfo;
+	public final fun copy (IIIIIII)Lorg/jellyfin/sdk/model/api/TrickplayInfoDto;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/TrickplayInfoDto;IIIIIIIILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/TrickplayInfoDto;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getBandwidth ()I
 	public final fun getHeight ()I
 	public final fun getInterval ()I
-	public final fun getItemId ()Ljava/util/UUID;
 	public final fun getThumbnailCount ()I
 	public final fun getTileHeight ()I
 	public final fun getTileWidth ()I
@@ -11420,18 +11420,18 @@ public final class org/jellyfin/sdk/model/api/TrickplayInfo {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final synthetic class org/jellyfin/sdk/model/api/TrickplayInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/TrickplayInfo$$serializer;
+public final synthetic class org/jellyfin/sdk/model/api/TrickplayInfoDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/TrickplayInfoDto$$serializer;
 	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/TrickplayInfo;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/TrickplayInfoDto;
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TrickplayInfo;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/TrickplayInfoDto;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
-public final class org/jellyfin/sdk/model/api/TrickplayInfo$Companion {
+public final class org/jellyfin/sdk/model/api/TrickplayInfoDto$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
