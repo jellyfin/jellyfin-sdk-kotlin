@@ -497,7 +497,7 @@ public data class BaseItemDto(
 	 * The trickplay manifest.
 	 */
 	@SerialName("Trickplay")
-	public val trickplay: Map<String, Map<String, TrickplayInfo>>? = null,
+	public val trickplay: Map<String, Map<String, TrickplayInfoDto>>? = null,
 	/**
 	 * The type of the location.
 	 */
