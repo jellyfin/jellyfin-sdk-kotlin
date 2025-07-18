@@ -143,8 +143,11 @@ public class DefaultSocketApi(
 	private val messages: SharedFlow<OutboundWebSocketMessage> = socketConnection
 		.state
 		.onEach { connectionState ->
+			// Cancel keep alive messaging when connection dropped
+			if (connectionState is SocketConnectionState.Disconnected) keepAliveTicker?.cancel()
+
 			// Automatically reconnect when the socket is closed while subscriptions are active
-			if (_subscriptionCount > 0 && _currentCredentials != null && connectionState is SocketConnectionState.Disconnected && !reconnectMutex.isLocked) {
+			if (_subscriptionCount > 0 && _currentCredentials != null && connectionState is SocketConnectionState.Disconnected && connectionState.error != null) {
 				socketReconnectPolicy.notifyDisconnected()
 
 				val reconnectDelay = socketReconnectPolicy.getReconnectDelay()
@@ -159,7 +162,7 @@ public class DefaultSocketApi(
 							"Reconnect policy suggests waiting for $reconnectDelay."
 					}
 
-					// Schedule reconnect for 5 seconds
+					// Schedule reconnect
 					scope.launch {
 						delay(reconnectDelay)
 						reconnect()
