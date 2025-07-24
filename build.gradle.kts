@@ -44,23 +44,26 @@ apiValidation {
 	ignoredProjects.addAll(subprojects.map { it.name }.filter { !it.startsWith("jellyfin-") })
 }
 
-subprojects {
-	// Enable required plugins
-	apply<io.gitlab.arturbosch.detekt.DetektPlugin>()
-	apply<io.kotest.framework.multiplatform.gradle.KotestMultiplatformCompilerGradlePlugin>()
+detekt {
+	buildUponDefaultConfig = true
+	ignoreFailures = true
+	config.setFrom(files("$rootDir/detekt.yaml"))
+	basePath = rootDir.absolutePath
+	parallel = true
 
-	// Detekt linting
-	detekt {
-		buildUponDefaultConfig = true
-		ignoreFailures = true
-		config.setFrom("$rootDir/detekt.yaml")
-		basePath = rootDir.absolutePath
+	source.setFrom(fileTree(projectDir) {
+		include("**/*.kt", "**/*.kts")
+	})
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
+	reports {
+		sarif.required.set(true)
 	}
-	tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
-		reports {
-			sarif.required.set(true)
-		}
-	}
+}
+
+subprojects {
+	apply<io.kotest.framework.multiplatform.gradle.KotestMultiplatformCompilerGradlePlugin>()
 
 	tasks.withType<Test> {
 		useJUnitPlatform()
