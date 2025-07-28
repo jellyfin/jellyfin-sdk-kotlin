@@ -111,7 +111,13 @@ open class OperationBuilder(
 			val buildMapType = MemberName("kotlin.collections", "buildMap")
 			beginControlFlow("val %N = %M<%T, %T?>(%L)", name, buildMapType, Types.STRING, Types.ANY, parameters.size)
 			parameters.forEach { parameter ->
-				addStatement("put(%S, %N)", parameter.originalName, parameter.name)
+				if (parameter.type.isNullable) {
+					beginControlFlow("if (%N != null)", parameter.name)
+					addStatement("put(%S, %N)", parameter.originalName, parameter.name)
+					endControlFlow()
+				} else {
+					addStatement("put(%S, %N)", parameter.originalName, parameter.name)
+				}
 			}
 			endControlFlow()
 		}.let(::addCode)
