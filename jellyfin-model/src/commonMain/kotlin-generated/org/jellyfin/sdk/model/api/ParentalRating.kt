@@ -19,15 +19,10 @@ public data class ParentalRating(
 	 * The name.
 	 */
 	@SerialName("Name")
-	public val name: String,
+	public val name: String? = null,
 	/**
 	 * The value.
 	 */
 	@SerialName("Value")
 	public val `value`: Int? = null,
-	/**
-	 * The rating score.
-	 */
-	@SerialName("RatingScore")
-	public val ratingScore: ParentalRatingScore? = null,
 )

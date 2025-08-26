@@ -10,7 +10,6 @@ import org.jellyfin.sdk.api.operations.ActivityLogApi
 import org.jellyfin.sdk.api.operations.ApiKeyApi
 import org.jellyfin.sdk.api.operations.ArtistsApi
 import org.jellyfin.sdk.api.operations.AudioApi
-import org.jellyfin.sdk.api.operations.BackupApi
 import org.jellyfin.sdk.api.operations.BrandingApi
 import org.jellyfin.sdk.api.operations.ChannelsApi
 import org.jellyfin.sdk.api.operations.ClientLogApi
@@ -79,9 +78,6 @@ public val ApiClient.artistsApi: ArtistsApi
 
 public val ApiClient.audioApi: AudioApi
 	get() = getOrCreateApi { AudioApi(it) }
-
-public val ApiClient.backupApi: BackupApi
-	get() = getOrCreateApi { BackupApi(it) }
 
 public val ApiClient.brandingApi: BrandingApi
 	get() = getOrCreateApi { BrandingApi(it) }

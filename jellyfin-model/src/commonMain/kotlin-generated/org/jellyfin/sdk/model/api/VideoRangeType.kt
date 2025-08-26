@@ -33,14 +33,6 @@ public enum class VideoRangeType(
 	DOVI_WITH_HLG("DOVIWithHLG"),
 	@SerialName("DOVIWithSDR")
 	DOVI_WITH_SDR("DOVIWithSDR"),
-	@SerialName("DOVIWithEL")
-	DOVI_WITH_EL("DOVIWithEL"),
-	@SerialName("DOVIWithHDR10Plus")
-	DOVI_WITH_HDR10_PLUS("DOVIWithHDR10Plus"),
-	@SerialName("DOVIWithELHDR10Plus")
-	DOVI_WITH_ELHDR10_PLUS("DOVIWithELHDR10Plus"),
-	@SerialName("DOVIInvalid")
-	DOVI_INVALID("DOVIInvalid"),
 	@SerialName("HDR10Plus")
 	HDR10_PLUS("HDR10Plus"),
 	;
@@ -63,10 +55,6 @@ public enum class VideoRangeType(
 			"DOVIWithHDR10" -> DOVI_WITH_HDR10
 			"DOVIWithHLG" -> DOVI_WITH_HLG
 			"DOVIWithSDR" -> DOVI_WITH_SDR
-			"DOVIWithEL" -> DOVI_WITH_EL
-			"DOVIWithHDR10Plus" -> DOVI_WITH_HDR10_PLUS
-			"DOVIWithELHDR10Plus" -> DOVI_WITH_ELHDR10_PLUS
-			"DOVIInvalid" -> DOVI_INVALID
 			"HDR10Plus" -> HDR10_PLUS
 			else -> null
 		}

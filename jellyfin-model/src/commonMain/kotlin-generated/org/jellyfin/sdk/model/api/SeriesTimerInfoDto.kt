@@ -182,7 +182,7 @@ public data class SeriesTimerInfoDto(
 	 * The parent primary image item identifier.
 	 */
 	@SerialName("ParentPrimaryImageItemId")
-	public val parentPrimaryImageItemId: UUID? = null,
+	public val parentPrimaryImageItemId: String? = null,
 	/**
 	 * The parent primary image tag.
 	 */

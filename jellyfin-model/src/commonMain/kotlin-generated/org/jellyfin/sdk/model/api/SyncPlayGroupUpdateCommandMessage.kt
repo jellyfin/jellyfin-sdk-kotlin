@@ -13,22 +13,25 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
+/**
+ * Untyped sync play command.
+ */
 @Serializable
-@SerialName("StateUpdate")
-public data class SyncPlayStateUpdate(
+@SerialName("SyncPlayGroupUpdate")
+public data class SyncPlayGroupUpdateCommandMessage(
 	/**
-	 * The group identifier.
-	 */
-	@SerialName("GroupId")
-	override val groupId: UUID,
-	/**
-	 * The update data.
+	 * The data.
 	 */
 	@SerialName("Data")
-	public val `data`: GroupStateUpdate,
-) : GroupUpdate {
+	public val `data`: GroupUpdate? = null,
 	/**
-	 * Enum GroupUpdateType.
+	 * The message id.
 	 */
-	override val type: GroupUpdateType = GroupUpdateType.STATE_UPDATE
+	@SerialName("MessageId")
+	override val messageId: UUID,
+) : OutboundWebSocketMessage {
+	/**
+	 * The different kinds of messages that are used in the WebSocket api.
+	 */
+	override val messageType: SessionMessageType = SessionMessageType.SYNC_PLAY_GROUP_UPDATE
 }

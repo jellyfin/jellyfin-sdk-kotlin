@@ -33,6 +33,10 @@ public enum class GroupUpdateType(
 	NOT_IN_GROUP("NotInGroup"),
 	@SerialName("GroupDoesNotExist")
 	GROUP_DOES_NOT_EXIST("GroupDoesNotExist"),
+	@SerialName("CreateGroupDenied")
+	CREATE_GROUP_DENIED("CreateGroupDenied"),
+	@SerialName("JoinGroupDenied")
+	JOIN_GROUP_DENIED("JoinGroupDenied"),
 	@SerialName("LibraryAccessDenied")
 	LIBRARY_ACCESS_DENIED("LibraryAccessDenied"),
 	;
@@ -55,6 +59,8 @@ public enum class GroupUpdateType(
 			"PlayQueue" -> PLAY_QUEUE
 			"NotInGroup" -> NOT_IN_GROUP
 			"GroupDoesNotExist" -> GROUP_DOES_NOT_EXIST
+			"CreateGroupDenied" -> CREATE_GROUP_DENIED
+			"JoinGroupDenied" -> JOIN_GROUP_DENIED
 			"LibraryAccessDenied" -> LIBRARY_ACCESS_DENIED
 			else -> null
 		}

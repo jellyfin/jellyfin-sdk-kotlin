@@ -275,7 +275,7 @@ public data class GetMasterHlsVideoPlaylistRequest(
 	 * Enable adaptive bitrate streaming.
 	 */
 	@SerialName("enableAdaptiveBitrateStreaming")
-	public val enableAdaptiveBitrateStreaming: Boolean? = false,
+	public val enableAdaptiveBitrateStreaming: Boolean? = true,
 	/**
 	 * Enable trickplay image playlists being added to master playlist.
 	 */
