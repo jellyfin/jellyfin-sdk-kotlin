@@ -274,7 +274,7 @@ public class LiveTvApi(
 	}
 
 	/**
-	 * Get guide info.
+	 * Get guid info.
 	 */
 	public suspend fun getGuideInfo(): Response<GuideInfo> {
 		val pathParameters = emptyMap<String, Any?>()
@@ -651,7 +651,6 @@ public class LiveTvApi(
 	 * Gets recommended live tv epgs.
 	 *
 	 * @param userId Optional. filter by user id.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param isAiring Optional. Filter by programs that are currently airing, or not.
 	 * @param hasAired Optional. Filter by programs that have completed airing, or not.
@@ -670,7 +669,6 @@ public class LiveTvApi(
 	 */
 	public suspend fun getRecommendedPrograms(
 		userId: UUID? = null,
-		startIndex: Int? = null,
 		limit: Int? = null,
 		isAiring: Boolean? = null,
 		hasAired: Boolean? = null,
@@ -688,9 +686,8 @@ public class LiveTvApi(
 		enableTotalRecordCount: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(17) {
+		val queryParameters = buildMap<String, Any?>(16) {
 			put("userId", userId)
-			put("startIndex", startIndex)
 			put("limit", limit)
 			put("isAiring", isAiring)
 			put("hasAired", hasAired)
@@ -719,7 +716,6 @@ public class LiveTvApi(
 	 */
 	public suspend fun getRecommendedPrograms(request: GetRecommendedProgramsRequest = GetRecommendedProgramsRequest()): Response<BaseItemDtoQueryResult> = getRecommendedPrograms(
 		userId = request.userId,
-		startIndex = request.startIndex,
 		limit = request.limit,
 		isAiring = request.isAiring,
 		hasAired = request.hasAired,

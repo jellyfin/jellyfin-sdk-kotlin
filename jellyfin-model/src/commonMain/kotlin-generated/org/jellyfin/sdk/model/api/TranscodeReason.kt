@@ -66,8 +66,6 @@ public enum class TranscodeReason(
 	VIDEO_RANGE_TYPE_NOT_SUPPORTED("VideoRangeTypeNotSupported"),
 	@SerialName("VideoCodecTagNotSupported")
 	VIDEO_CODEC_TAG_NOT_SUPPORTED("VideoCodecTagNotSupported"),
-	@SerialName("StreamCountExceedsLimit")
-	STREAM_COUNT_EXCEEDS_LIMIT("StreamCountExceedsLimit"),
 	;
 
 	/**
@@ -106,7 +104,6 @@ public enum class TranscodeReason(
 			"DirectPlayError" -> DIRECT_PLAY_ERROR
 			"VideoRangeTypeNotSupported" -> VIDEO_RANGE_TYPE_NOT_SUPPORTED
 			"VideoCodecTagNotSupported" -> VIDEO_CODEC_TAG_NOT_SUPPORTED
-			"StreamCountExceedsLimit" -> STREAM_COUNT_EXCEEDS_LIMIT
 			else -> null
 		}
 

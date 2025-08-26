@@ -7,7 +7,6 @@ package org.jellyfin.sdk.model.api
 
 import kotlin.Long
 import kotlin.String
-import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -26,9 +25,4 @@ public data class LyricLine(
 	 */
 	@SerialName("Start")
 	public val start: Long? = null,
-	/**
-	 * The time-aligned cues for the song's lyrics.
-	 */
-	@SerialName("Cues")
-	public val cues: List<LyricLineCue>? = null,
 )

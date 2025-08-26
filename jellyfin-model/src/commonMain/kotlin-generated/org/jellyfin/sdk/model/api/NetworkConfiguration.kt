@@ -6,7 +6,6 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Boolean
-import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
@@ -71,7 +70,6 @@ public data class NetworkConfiguration(
 	/**
 	 * A value indicating whether to enable automatic port forwarding.
 	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("EnableUPnP")
 	public val enableUPnP: Boolean,
 	/**
