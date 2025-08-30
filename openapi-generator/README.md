@@ -39,7 +39,7 @@ git push
 ## Hooks
 
 Hooks are classes that will modify the output of the generator. They should be registered in the
-`HookModule.kt` file. The following hooks are available:
+`HooksModule.kt` file. The following hooks are available:
 
   - **TypeBuilderHook**  
     A hook that can intercept the TypeBuilder which converts OpenAPI schemas to Kotlin types. It
