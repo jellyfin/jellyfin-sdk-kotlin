@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @SerialName("PackageInstallationFailed")
 public data class PluginInstallationFailedMessage(
 	/**
-	 * Class InstallationInfo.
+	 * The data.
 	 */
 	@SerialName("Data")
 	public val `data`: InstallationInfo? = null,
