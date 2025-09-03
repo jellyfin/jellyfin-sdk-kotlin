@@ -53,6 +53,8 @@ public class OkHttpClient(
 	public override var deviceInfo: DeviceInfo = initialDeviceInfo
 		private set
 
+	private val logger = KotlinLogging.logger {}
+
 	private val _webSocket = lazy {
 		DefaultSocketApi(this, httpClientOptions.socketReconnectPolicy, socketConnectionFactory)
 	}
@@ -82,7 +84,6 @@ public class OkHttpClient(
 		val url = createUrl(pathTemplate, pathParameters, queryParameters)
 
 		// Log HTTP call with access token removed
-		val logger = KotlinLogging.logger {}
 		logger.info {
 			val safeUrl = accessToken?.let { url.replace(it, "******") } ?: url
 			"$method $safeUrl"
@@ -117,7 +118,10 @@ public class OkHttpClient(
 				accessToken = accessToken
 			)
 			header("Authorization", authorization)
-			header("User-Agent", "${clientInfo.name}/${clientInfo.version} via jellyfin-sdk-kotlin (OkHttp/${OkHttp.VERSION})")
+			header(
+				"User-Agent",
+				"${clientInfo.name}/${clientInfo.version} via jellyfin-sdk-kotlin (OkHttp/${OkHttp.VERSION})"
+			)
 		}.build()
 
 		try {
