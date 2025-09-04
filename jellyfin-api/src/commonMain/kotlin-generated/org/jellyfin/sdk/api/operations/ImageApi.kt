@@ -14,7 +14,6 @@ import kotlin.Unit
 import kotlin.collections.List
 import kotlin.collections.buildMap
 import kotlin.collections.emptyMap
-import kotlin.require
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -35,10 +34,8 @@ import org.jellyfin.sdk.model.api.request.GetMusicGenreImageByIndexRequest
 import org.jellyfin.sdk.model.api.request.GetMusicGenreImageRequest
 import org.jellyfin.sdk.model.api.request.GetPersonImageByIndexRequest
 import org.jellyfin.sdk.model.api.request.GetPersonImageRequest
-import org.jellyfin.sdk.model.api.request.GetSplashscreenRequest
 import org.jellyfin.sdk.model.api.request.GetStudioImageByIndexRequest
 import org.jellyfin.sdk.model.api.request.GetStudioImageRequest
-import org.jellyfin.sdk.model.api.request.GetUserImageRequest
 
 public class ImageApi(
 	private val api: ApiClient,
@@ -1686,46 +1683,12 @@ public class ImageApi(
 	 *
 	 * @param tag Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param blur Blur image.
-	 * @param backgroundColor Apply a background color for transparent images.
-	 * @param foregroundLayer Apply a foreground layer on top of the image.
-	 * @param quality Quality setting, from 0-100.
 	 */
-	public suspend fun getSplashscreen(
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		quality: Int? = 90,
-	): Response<ByteArray> {
+	public suspend fun getSplashscreen(tag: String? = null, format: ImageFormat? = null): Response<ByteArray> {
 		val pathParameters = emptyMap<String, Any?>()
-		require(quality in 0..100) { "Parameter \"quality\" must be in range 0..100 (inclusive)." }
-		val queryParameters = buildMap<String, Any?>(12) {
+		val queryParameters = buildMap<String, Any?>(2) {
 			put("tag", tag)
 			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("width", width)
-			put("height", height)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("quality", quality)
 		}
 		val data = null
 		val response = api.`get`<ByteArray>("/Branding/Splashscreen", pathParameters, queryParameters, data)
@@ -1735,68 +1698,14 @@ public class ImageApi(
 	/**
 	 * Generates or gets the splashscreen.
 	 *
-	 * @param request The request parameters
-	 */
-	public suspend fun getSplashscreen(request: GetSplashscreenRequest = GetSplashscreenRequest()): Response<ByteArray> = getSplashscreen(
-		tag = request.tag,
-		format = request.format,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		width = request.width,
-		height = request.height,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-		quality = request.quality,
-	)
-
-	/**
-	 * Generates or gets the splashscreen.
-	 *
 	 * @param tag Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param blur Blur image.
-	 * @param backgroundColor Apply a background color for transparent images.
-	 * @param foregroundLayer Apply a foreground layer on top of the image.
-	 * @param quality Quality setting, from 0-100.
 	 */
-	public fun getSplashscreenUrl(
-		tag: String? = null,
-		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		quality: Int? = 90,
-	): String {
+	public fun getSplashscreenUrl(tag: String? = null, format: ImageFormat? = null): String {
 		val pathParameters = emptyMap<String, Any?>()
-		require(quality in 0..100) { "Parameter \"quality\" must be in range 0..100 (inclusive)." }
-		val queryParameters = buildMap<String, Any?>(12) {
+		val queryParameters = buildMap<String, Any?>(2) {
 			put("tag", tag)
 			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("width", width)
-			put("height", height)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("quality", quality)
 		}
 		return api.createUrl("/Branding/Splashscreen", pathParameters, queryParameters)
 	}
@@ -2117,56 +2026,17 @@ public class ImageApi(
 	 * @param userId User id.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param imageIndex Image index.
 	 */
 	public suspend fun getUserImage(
 		userId: UUID? = null,
 		tag: String? = null,
 		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		imageIndex: Int? = null,
 	): Response<ByteArray> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(16) {
+		val queryParameters = buildMap<String, Any?>(3) {
 			put("userId", userId)
 			put("tag", tag)
 			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("imageIndex", imageIndex)
 		}
 		val data = null
 		val response = api.`get`<ByteArray>("/UserImage", pathParameters, queryParameters, data)
@@ -2176,83 +2046,20 @@ public class ImageApi(
 	/**
 	 * Get user profile image.
 	 *
-	 * @param request The request parameters
-	 */
-	public suspend fun getUserImage(request: GetUserImageRequest = GetUserImageRequest()): Response<ByteArray> = getUserImage(
-		userId = request.userId,
-		tag = request.tag,
-		format = request.format,
-		maxWidth = request.maxWidth,
-		maxHeight = request.maxHeight,
-		percentPlayed = request.percentPlayed,
-		unplayedCount = request.unplayedCount,
-		width = request.width,
-		height = request.height,
-		quality = request.quality,
-		fillWidth = request.fillWidth,
-		fillHeight = request.fillHeight,
-		blur = request.blur,
-		backgroundColor = request.backgroundColor,
-		foregroundLayer = request.foregroundLayer,
-		imageIndex = request.imageIndex,
-	)
-
-	/**
-	 * Get user profile image.
-	 *
 	 * @param userId User id.
 	 * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
 	 * @param format Determines the output format of the image - original,gif,jpg,png.
-	 * @param maxWidth The maximum image width to return.
-	 * @param maxHeight The maximum image height to return.
-	 * @param percentPlayed Optional. Percent to render for the percent played overlay.
-	 * @param unplayedCount Optional. Unplayed count overlay to render.
-	 * @param width The fixed image width to return.
-	 * @param height The fixed image height to return.
-	 * @param quality Optional. Quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
-	 * @param fillWidth Width of box to fill.
-	 * @param fillHeight Height of box to fill.
-	 * @param blur Optional. Blur image.
-	 * @param backgroundColor Optional. Apply a background color for transparent images.
-	 * @param foregroundLayer Optional. Apply a foreground layer on top of the image.
-	 * @param imageIndex Image index.
 	 */
 	public fun getUserImageUrl(
 		userId: UUID? = null,
 		tag: String? = null,
 		format: ImageFormat? = null,
-		maxWidth: Int? = null,
-		maxHeight: Int? = null,
-		percentPlayed: Double? = null,
-		unplayedCount: Int? = null,
-		width: Int? = null,
-		height: Int? = null,
-		quality: Int? = null,
-		fillWidth: Int? = null,
-		fillHeight: Int? = null,
-		blur: Int? = null,
-		backgroundColor: String? = null,
-		foregroundLayer: String? = null,
-		imageIndex: Int? = null,
 	): String {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(16) {
+		val queryParameters = buildMap<String, Any?>(3) {
 			put("userId", userId)
 			put("tag", tag)
 			put("format", format)
-			put("maxWidth", maxWidth)
-			put("maxHeight", maxHeight)
-			put("percentPlayed", percentPlayed)
-			put("unplayedCount", unplayedCount)
-			put("width", width)
-			put("height", height)
-			put("quality", quality)
-			put("fillWidth", fillWidth)
-			put("fillHeight", fillHeight)
-			put("blur", blur)
-			put("backgroundColor", backgroundColor)
-			put("foregroundLayer", foregroundLayer)
-			put("imageIndex", imageIndex)
 		}
 		return api.createUrl("/UserImage", pathParameters, queryParameters)
 	}
