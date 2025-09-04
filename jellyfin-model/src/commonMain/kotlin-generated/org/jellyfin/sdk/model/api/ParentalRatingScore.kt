@@ -6,23 +6,22 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Int
-import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Provides the MAC address and port for wake-on-LAN functionality.
+ * A class representing an parental rating score.
  */
 @Serializable
-public data class WakeOnLanInfo(
+public data class ParentalRatingScore(
 	/**
-	 * The MAC address of the device.
+	 * The score.
 	 */
-	@SerialName("MacAddress")
-	public val macAddress: String? = null,
+	@SerialName("score")
+	public val score: Int,
 	/**
-	 * The wake-on-LAN port.
+	 * The sub score.
 	 */
-	@SerialName("Port")
-	public val port: Int,
+	@SerialName("subScore")
+	public val subScore: Int? = null,
 )

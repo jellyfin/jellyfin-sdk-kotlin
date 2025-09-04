@@ -8,6 +8,7 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.String
+import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
@@ -15,23 +16,23 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Class GroupUpdate.
+ * Contains informations about a libraries storage informations.
  */
 @Serializable
-public data class StringGroupUpdate(
+public data class LibraryStorageDto(
 	/**
-	 * The group identifier.
+	 * The Library Id.
 	 */
-	@SerialName("GroupId")
-	public val groupId: UUID,
+	@SerialName("Id")
+	public val id: UUID,
 	/**
-	 * The update type.
+	 * The name of the library.
 	 */
-	@SerialName("Type")
-	public val type: GroupUpdateType,
+	@SerialName("Name")
+	public val name: String,
 	/**
-	 * The update data.
+	 * The storage informations about the folders used in a library.
 	 */
-	@SerialName("Data")
-	public val `data`: String,
+	@SerialName("Folders")
+	public val folders: List<FolderStorageDto>,
 )

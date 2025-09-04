@@ -62,6 +62,8 @@ public enum class ProfileConditionValue(
 	AUDIO_BIT_DEPTH("AudioBitDepth"),
 	@SerialName("VideoRangeType")
 	VIDEO_RANGE_TYPE("VideoRangeType"),
+	@SerialName("NumStreams")
+	NUM_STREAMS("NumStreams"),
 	;
 
 	/**
@@ -98,6 +100,7 @@ public enum class ProfileConditionValue(
 			"AudioSampleRate" -> AUDIO_SAMPLE_RATE
 			"AudioBitDepth" -> AUDIO_BIT_DEPTH
 			"VideoRangeType" -> VIDEO_RANGE_TYPE
+			"NumStreams" -> NUM_STREAMS
 			else -> null
 		}
 
