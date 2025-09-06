@@ -47,8 +47,6 @@ public enum class ItemFields(
 	EXTERNAL_URLS("ExternalUrls"),
 	@SerialName("Genres")
 	GENRES("Genres"),
-	@SerialName("HomePageUrl")
-	HOME_PAGE_URL("HomePageUrl"),
 	@SerialName("ItemCounts")
 	ITEM_COUNTS("ItemCounts"),
 	@SerialName("MediaSourceCount")
@@ -77,10 +75,6 @@ public enum class ItemFields(
 	RECURSIVE_ITEM_COUNT("RecursiveItemCount"),
 	@SerialName("Settings")
 	SETTINGS("Settings"),
-	@SerialName("ScreenshotImageTags")
-	SCREENSHOT_IMAGE_TAGS("ScreenshotImageTags"),
-	@SerialName("SeriesPrimaryImage")
-	SERIES_PRIMARY_IMAGE("SeriesPrimaryImage"),
 	@SerialName("SeriesStudio")
 	SERIES_STUDIO("SeriesStudio"),
 	@SerialName("SortName")
@@ -99,22 +93,6 @@ public enum class ItemFields(
 	MEDIA_STREAMS("MediaStreams"),
 	@SerialName("SeasonUserData")
 	SEASON_USER_DATA("SeasonUserData"),
-	@SerialName("ServiceName")
-	SERVICE_NAME("ServiceName"),
-	@SerialName("ThemeSongIds")
-	THEME_SONG_IDS("ThemeSongIds"),
-	@SerialName("ThemeVideoIds")
-	THEME_VIDEO_IDS("ThemeVideoIds"),
-	@SerialName("ExternalEtag")
-	EXTERNAL_ETAG("ExternalEtag"),
-	@SerialName("PresentationUniqueKey")
-	PRESENTATION_UNIQUE_KEY("PresentationUniqueKey"),
-	@SerialName("InheritedParentalRatingValue")
-	INHERITED_PARENTAL_RATING_VALUE("InheritedParentalRatingValue"),
-	@SerialName("ExternalSeriesId")
-	EXTERNAL_SERIES_ID("ExternalSeriesId"),
-	@SerialName("SeriesPresentationUniqueKey")
-	SERIES_PRESENTATION_UNIQUE_KEY("SeriesPresentationUniqueKey"),
 	@SerialName("DateLastRefreshed")
 	DATE_LAST_REFRESHED("DateLastRefreshed"),
 	@SerialName("DateLastSaved")
@@ -164,7 +142,6 @@ public enum class ItemFields(
 			"Etag" -> ETAG
 			"ExternalUrls" -> EXTERNAL_URLS
 			"Genres" -> GENRES
-			"HomePageUrl" -> HOME_PAGE_URL
 			"ItemCounts" -> ITEM_COUNTS
 			"MediaSourceCount" -> MEDIA_SOURCE_COUNT
 			"MediaSources" -> MEDIA_SOURCES
@@ -179,8 +156,6 @@ public enum class ItemFields(
 			"PrimaryImageAspectRatio" -> PRIMARY_IMAGE_ASPECT_RATIO
 			"RecursiveItemCount" -> RECURSIVE_ITEM_COUNT
 			"Settings" -> SETTINGS
-			"ScreenshotImageTags" -> SCREENSHOT_IMAGE_TAGS
-			"SeriesPrimaryImage" -> SERIES_PRIMARY_IMAGE
 			"SeriesStudio" -> SERIES_STUDIO
 			"SortName" -> SORT_NAME
 			"SpecialEpisodeNumbers" -> SPECIAL_EPISODE_NUMBERS
@@ -190,14 +165,6 @@ public enum class ItemFields(
 			"RemoteTrailers" -> REMOTE_TRAILERS
 			"MediaStreams" -> MEDIA_STREAMS
 			"SeasonUserData" -> SEASON_USER_DATA
-			"ServiceName" -> SERVICE_NAME
-			"ThemeSongIds" -> THEME_SONG_IDS
-			"ThemeVideoIds" -> THEME_VIDEO_IDS
-			"ExternalEtag" -> EXTERNAL_ETAG
-			"PresentationUniqueKey" -> PRESENTATION_UNIQUE_KEY
-			"InheritedParentalRatingValue" -> INHERITED_PARENTAL_RATING_VALUE
-			"ExternalSeriesId" -> EXTERNAL_SERIES_ID
-			"SeriesPresentationUniqueKey" -> SERIES_PRESENTATION_UNIQUE_KEY
 			"DateLastRefreshed" -> DATE_LAST_REFRESHED
 			"DateLastSaved" -> DATE_LAST_SAVED
 			"RefreshState" -> REFRESH_STATE

@@ -77,10 +77,6 @@ public enum class ItemSortBy(
 	PARENT_INDEX_NUMBER("ParentIndexNumber"),
 	@SerialName("IndexNumber")
 	INDEX_NUMBER("IndexNumber"),
-	@SerialName("SimilarityScore")
-	SIMILARITY_SCORE("SimilarityScore"),
-	@SerialName("SearchScore")
-	SEARCH_SCORE("SearchScore"),
 	;
 
 	/**
@@ -123,8 +119,6 @@ public enum class ItemSortBy(
 			"SeriesDatePlayed" -> SERIES_DATE_PLAYED
 			"ParentIndexNumber" -> PARENT_INDEX_NUMBER
 			"IndexNumber" -> INDEX_NUMBER
-			"SimilarityScore" -> SIMILARITY_SCORE
-			"SearchScore" -> SEARCH_SCORE
 			else -> null
 		}
 
