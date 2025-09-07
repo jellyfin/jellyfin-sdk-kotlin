@@ -23,8 +23,6 @@ public enum class PluginStatus(
 	RESTART("Restart"),
 	@SerialName("Deleted")
 	DELETED("Deleted"),
-	@SerialName("Superseded")
-	SUPERSEDED("Superseded"),
 	@SerialName("Superceded")
 	SUPERCEDED("Superceded"),
 	@SerialName("Malfunctioned")
@@ -48,7 +46,6 @@ public enum class PluginStatus(
 			"Active" -> ACTIVE
 			"Restart" -> RESTART
 			"Deleted" -> DELETED
-			"Superseded" -> SUPERSEDED
 			"Superceded" -> SUPERCEDED
 			"Malfunctioned" -> MALFUNCTIONED
 			"NotSupported" -> NOT_SUPPORTED

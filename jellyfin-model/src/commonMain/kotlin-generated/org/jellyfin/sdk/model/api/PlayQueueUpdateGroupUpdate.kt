@@ -14,24 +14,23 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Untyped sync play command.
+ * Class GroupUpdate.
  */
 @Serializable
-@SerialName("SyncPlayGroupUpdate")
-public data class SyncPlayGroupUpdateMessage(
+public data class PlayQueueUpdateGroupUpdate(
 	/**
-	 * Group update data
+	 * The group identifier.
+	 */
+	@SerialName("GroupId")
+	public val groupId: UUID,
+	/**
+	 * The update type.
+	 */
+	@SerialName("Type")
+	public val type: GroupUpdateType,
+	/**
+	 * The update data.
 	 */
 	@SerialName("Data")
-	public val `data`: GroupUpdate,
-	/**
-	 * The message id.
-	 */
-	@SerialName("MessageId")
-	override val messageId: UUID,
-) : OutboundWebSocketMessage {
-	/**
-	 * The different kinds of messages that are used in the WebSocket api.
-	 */
-	override val messageType: SessionMessageType = SessionMessageType.SYNC_PLAY_GROUP_UPDATE
-}
+	public val `data`: PlayQueueUpdate,
+)

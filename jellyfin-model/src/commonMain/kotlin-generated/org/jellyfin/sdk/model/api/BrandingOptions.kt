@@ -11,11 +11,10 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * The branding options DTO for API use.
- * This DTO excludes SplashscreenLocation to prevent it from being updated via API.
+ * The branding options.
  */
 @Serializable
-public data class BrandingOptionsDto(
+public data class BrandingOptions(
 	/**
 	 * The login disclaimer.
 	 */

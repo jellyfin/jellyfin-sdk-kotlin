@@ -249,7 +249,7 @@ public data class BaseItemDto(
 	@SerialName("ParentId")
 	public val parentId: UUID? = null,
 	/**
-	 * The base item kind.
+	 * The type.
 	 */
 	@SerialName("Type")
 	public val type: BaseItemKind,
@@ -482,7 +482,7 @@ public data class BaseItemDto(
 	 * The parent primary image item identifier.
 	 */
 	@SerialName("ParentPrimaryImageItemId")
-	public val parentPrimaryImageItemId: UUID? = null,
+	public val parentPrimaryImageItemId: String? = null,
 	/**
 	 * The parent primary image tag.
 	 */
@@ -497,7 +497,7 @@ public data class BaseItemDto(
 	 * The trickplay manifest.
 	 */
 	@SerialName("Trickplay")
-	public val trickplay: Map<String, Map<String, TrickplayInfoDto>>? = null,
+	public val trickplay: Map<String, Map<String, TrickplayInfo>>? = null,
 	/**
 	 * The type of the location.
 	 */
@@ -509,7 +509,7 @@ public data class BaseItemDto(
 	@SerialName("IsoType")
 	public val isoType: IsoType? = null,
 	/**
-	 * Media types.
+	 * The type of the media.
 	 */
 	@SerialName("MediaType")
 	public val mediaType: MediaType = MediaType.UNKNOWN,

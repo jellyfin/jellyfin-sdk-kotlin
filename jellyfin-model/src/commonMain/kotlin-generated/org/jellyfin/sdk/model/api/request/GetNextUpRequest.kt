@@ -89,6 +89,11 @@ public data class GetNextUpRequest(
 	@SerialName("enableTotalRecordCount")
 	public val enableTotalRecordCount: Boolean? = true,
 	/**
+	 * Whether to disable sending the first episode in a series as next up.
+	 */
+	@SerialName("disableFirstEpisode")
+	public val disableFirstEpisode: Boolean? = false,
+	/**
 	 * Whether to include resumable episodes in next up results.
 	 */
 	@SerialName("enableResumable")

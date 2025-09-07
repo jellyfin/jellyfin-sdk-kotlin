@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.api.operations
 
 import kotlin.Any
+import kotlin.Deprecated
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
@@ -19,7 +20,7 @@ import org.jellyfin.sdk.model.api.EndPointInfo
 import org.jellyfin.sdk.model.api.LogFile
 import org.jellyfin.sdk.model.api.PublicSystemInfo
 import org.jellyfin.sdk.model.api.SystemInfo
-import org.jellyfin.sdk.model.api.SystemStorageDto
+import org.jellyfin.sdk.model.api.WakeOnLanInfo
 
 public class SystemApi(
 	private val api: ApiClient,
@@ -95,13 +96,14 @@ public class SystemApi(
 	}
 
 	/**
-	 * Gets information about the server.
+	 * Gets wake on lan information.
 	 */
-	public suspend fun getSystemStorage(): Response<SystemStorageDto> {
+	@Deprecated("This member is deprecated and may be removed in the future")
+	public suspend fun getWakeOnLanInfo(): Response<List<WakeOnLanInfo>> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<SystemStorageDto>("/System/Info/Storage", pathParameters, queryParameters, data)
+		val response = api.`get`<List<WakeOnLanInfo>>("/System/WakeOnLanInfo", pathParameters, queryParameters, data)
 		return response
 	}
 

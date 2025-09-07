@@ -54,8 +54,6 @@ public data class UserPolicy(
 	 */
 	@SerialName("MaxParentalRating")
 	public val maxParentalRating: Int? = null,
-	@SerialName("MaxParentalSubRating")
-	public val maxParentalSubRating: Int? = null,
 	@SerialName("BlockedTags")
 	public val blockedTags: List<String>? = null,
 	@SerialName("AllowedTags")

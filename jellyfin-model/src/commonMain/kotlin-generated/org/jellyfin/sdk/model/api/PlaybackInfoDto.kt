@@ -18,7 +18,7 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 /**
- * Playback info dto.
+ * Plabyback info dto.
  */
 @Serializable
 public data class PlaybackInfoDto(

@@ -74,7 +74,7 @@ public data class OpenLiveStreamDto(
 	@SerialName("EnableDirectPlay")
 	public val enableDirectPlay: Boolean? = null,
 	/**
-	 * A value indicating whether to enable direct stream.
+	 * A value indicating whether to enale direct stream.
 	 */
 	@SerialName("EnableDirectStream")
 	public val enableDirectStream: Boolean? = null,

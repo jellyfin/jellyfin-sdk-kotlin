@@ -28,7 +28,7 @@ kotlin {
 			kotlin.srcDir("src/commonMain/kotlin-generated")
 
 			dependencies {
-				compileOnly(libs.kotlinx.serialization.json)
+				implementation(libs.kotlinx.serialization.json)
 			}
 		}
 

@@ -35,11 +35,6 @@ public data class LibraryOptionsResultDto(
 	@SerialName("LyricFetchers")
 	public val lyricFetchers: List<LibraryOptionInfoDto>,
 	/**
-	 * The list of MediaSegment Providers.
-	 */
-	@SerialName("MediaSegmentProviders")
-	public val mediaSegmentProviders: List<LibraryOptionInfoDto>,
-	/**
 	 * The type options.
 	 */
 	@SerialName("TypeOptions")
