@@ -10,42 +10,42 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * An entity representing the metadata for a group of trickplay tiles.
+ * The trickplay api model.
  */
 @Serializable
-public data class TrickplayInfo(
+public data class TrickplayInfoDto(
 	/**
-	 * Width of an individual thumbnail.
+	 * The width of an individual thumbnail.
 	 */
 	@SerialName("Width")
 	public val width: Int,
 	/**
-	 * Height of an individual thumbnail.
+	 * The height of an individual thumbnail.
 	 */
 	@SerialName("Height")
 	public val height: Int,
 	/**
-	 * Amount of thumbnails per row.
+	 * The amount of thumbnails per row.
 	 */
 	@SerialName("TileWidth")
 	public val tileWidth: Int,
 	/**
-	 * Amount of thumbnails per column.
+	 * The amount of thumbnails per column.
 	 */
 	@SerialName("TileHeight")
 	public val tileHeight: Int,
 	/**
-	 * Total amount of non-black thumbnails.
+	 * The total amount of non-black thumbnails.
 	 */
 	@SerialName("ThumbnailCount")
 	public val thumbnailCount: Int,
 	/**
-	 * Interval in milliseconds between each trickplay thumbnail.
+	 * The interval in milliseconds between each trickplay thumbnail.
 	 */
 	@SerialName("Interval")
 	public val interval: Int,
 	/**
-	 * Peak bandwith usage in bits per second.
+	 * The peak bandwidth usage in bits per second.
 	 */
 	@SerialName("Bandwidth")
 	public val bandwidth: Int,

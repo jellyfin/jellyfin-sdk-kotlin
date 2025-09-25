@@ -207,7 +207,7 @@ public data class GetAudioStreamByContainerRequest(
 	@SerialName("deInterlace")
 	public val deInterlace: Boolean? = null,
 	/**
-	 * Optional. Whether to require a non anamporphic stream.
+	 * Optional. Whether to require a non anamorphic stream.
 	 */
 	@SerialName("requireNonAnamorphic")
 	public val requireNonAnamorphic: Boolean? = null,
