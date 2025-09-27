@@ -59,6 +59,8 @@ public class KtorClient(
 	public override var deviceInfo: DeviceInfo = initialDeviceInfo
 		private set
 
+	private val logger = KotlinLogging.logger {}
+
 	private val client: HttpClient = HttpClient {
 		followRedirects = httpClientOptions.followRedirects
 		expectSuccess = false
@@ -73,6 +75,8 @@ public class KtorClient(
 	private val _webSocket = lazy {
 		DefaultSocketApi(this, httpClientOptions.socketReconnectPolicy, socketConnectionFactory)
 	}
+
+	override val webSocket: SocketApi by _webSocket
 
 	override fun update(baseUrl: String?, accessToken: String?, clientInfo: ClientInfo, deviceInfo: DeviceInfo) {
 		this.baseUrl = baseUrl
@@ -97,7 +101,6 @@ public class KtorClient(
 		val url = createUrl(pathTemplate, pathParameters, queryParameters)
 
 		// Log HTTP call with access token removed
-		val logger = KotlinLogging.logger {}
 		logger.info {
 			val safeUrl = accessToken?.let { url.replace(it, "******") } ?: url
 			"$method $safeUrl"
@@ -180,8 +183,6 @@ public class KtorClient(
 			throw ApiClientException("Unknown IO error occurred!", err)
 		}
 	}
-
-	override val webSocket: SocketApi by _webSocket
 
 	private fun HttpMethod.asKtorHttpMethod(): KtorHttpMethod = when (this) {
 		HttpMethod.GET -> KtorHttpMethod.Get
