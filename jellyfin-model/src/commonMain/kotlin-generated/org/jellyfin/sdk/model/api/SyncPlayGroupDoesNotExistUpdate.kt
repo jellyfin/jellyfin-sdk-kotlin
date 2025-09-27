@@ -7,30 +7,29 @@
 
 package org.jellyfin.sdk.model.api
 
+import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
-/**
- * Class GroupUpdate.
- */
 @Serializable
-public data class GroupInfoDtoGroupUpdate(
+@SerialName("GroupDoesNotExist")
+public data class SyncPlayGroupDoesNotExistUpdate(
 	/**
 	 * The group identifier.
 	 */
 	@SerialName("GroupId")
-	public val groupId: UUID,
-	/**
-	 * The update type.
-	 */
-	@SerialName("Type")
-	public val type: GroupUpdateType,
+	override val groupId: UUID,
 	/**
 	 * The update data.
 	 */
 	@SerialName("Data")
-	public val `data`: GroupInfoDto,
-)
+	public val `data`: String,
+) : GroupUpdate {
+	/**
+	 * Enum GroupUpdateType.
+	 */
+	override val type: GroupUpdateType = GroupUpdateType.GROUP_DOES_NOT_EXIST
+}

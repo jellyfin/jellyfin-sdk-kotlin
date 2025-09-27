@@ -6,7 +6,6 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Long
-import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -19,7 +18,7 @@ public data class TaskTriggerInfo(
 	 * The type.
 	 */
 	@SerialName("Type")
-	public val type: String? = null,
+	public val type: TaskTriggerInfoType,
 	/**
 	 * The time of day.
 	 */

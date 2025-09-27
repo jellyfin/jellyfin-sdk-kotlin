@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @SerialName("UserUpdated")
 public data class UserUpdatedMessage(
 	/**
-	 * The data.
+	 * Class UserDto.
 	 */
 	@SerialName("Data")
 	public val `data`: UserDto? = null,

@@ -9,18 +9,39 @@ import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * A class representing metadata editor information.
+ */
 @Serializable
 public data class MetadataEditorInfo(
+	/**
+	 * The parental rating options.
+	 */
 	@SerialName("ParentalRatingOptions")
 	public val parentalRatingOptions: List<ParentalRating>,
+	/**
+	 * The countries.
+	 */
 	@SerialName("Countries")
 	public val countries: List<CountryInfo>,
+	/**
+	 * The cultures.
+	 */
 	@SerialName("Cultures")
 	public val cultures: List<CultureDto>,
+	/**
+	 * The external id infos.
+	 */
 	@SerialName("ExternalIdInfos")
 	public val externalIdInfos: List<ExternalIdInfo>,
+	/**
+	 * The content type.
+	 */
 	@SerialName("ContentType")
 	public val contentType: CollectionType? = null,
+	/**
+	 * The content type options.
+	 */
 	@SerialName("ContentTypeOptions")
 	public val contentTypeOptions: List<NameValuePair>,
 )
