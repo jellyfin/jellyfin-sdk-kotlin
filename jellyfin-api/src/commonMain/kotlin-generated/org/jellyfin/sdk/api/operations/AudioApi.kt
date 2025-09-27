@@ -462,7 +462,7 @@ public class AudioApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -687,7 +687,7 @@ public class AudioApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -854,7 +854,7 @@ public class AudioApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
@@ -1085,7 +1085,7 @@ public class AudioApi(
 	 * @param maxVideoBitDepth Optional. The maximum video bit depth.
 	 * @param requireAvc Optional. Whether to require avc.
 	 * @param deInterlace Optional. Whether to deinterlace the video.
-	 * @param requireNonAnamorphic Optional. Whether to require a non anamporphic stream.
+	 * @param requireNonAnamorphic Optional. Whether to require a non anamorphic stream.
 	 * @param transcodingMaxAudioChannels Optional. The maximum number of audio channels to transcode.
 	 * @param cpuCoreLimit Optional. The limit of how many cpu cores to use.
 	 * @param liveStreamId The live stream id.
