@@ -1,11 +1,13 @@
 [versions]
 android-gradle = "8.13.0"
 android-sdk = "36"
+animalsniffer = "2.0.1"
 binarycompatibilityvalidator = "0.18.1"
 clikt = "5.0.3"
 detekt = "1.23.8"
 dokka = "2.0.0"
 download = "5.6.0"
+gummybears = "0.12.0"
 kasechange = "1.4.1"
 koin = "4.1.1"
 kotest = "5.9.1"
@@ -21,6 +23,7 @@ slf4j = "2.0.17"
 swagger-parser = "2.1.34"
 
 [plugins]
+animalsniffer = { id = "ru.vyarus.animalsniffer", version.ref = "animalsniffer" }
 binarycompatibilityvalidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binarycompatibilityvalidator" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
@@ -32,6 +35,7 @@ nexuspublish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "ne
 [libraries]
 android-gradle = { module = "com.android.tools.build:gradle", version.ref = "android-gradle" }
 clikt = { module = "com.github.ajalt.clikt:clikt", version.ref = "clikt" }
+gummybears-api19 = { module = "com.toasttab.android:gummy-bears-api-19", version.ref = "gummybears" }
 kasechange = { module = "net.pearx.kasechange:kasechange", version.ref = "kasechange" }
 koin = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }

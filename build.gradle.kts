@@ -1,4 +1,5 @@
 plugins {
+	alias(libs.plugins.animalsniffer)
 	alias(libs.plugins.binarycompatibilityvalidator)
 	alias(libs.plugins.detekt)
 	alias(libs.plugins.dokka)
