@@ -1,8 +1,7 @@
 package org.jellyfin.sdk.api.client.util
 
 internal fun String.encodeURLPart(): String = buildString {
-	this@encodeURLPart.codePoints().forEach { codePoint ->
-		val char = codePoint.toChar()
+	this@encodeURLPart.forEach { char ->
 		when {
 			char.isUnreserved() -> append(char)
 			char == ' ' -> append('+')
