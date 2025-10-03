@@ -18,6 +18,17 @@ class UrlBuilderTests : FunSpec({
 		UrlBuilder.buildPath(path, parameters) shouldBe "test/1/2/three"
 	}
 
+	test("buildPath ignores path parameters") {
+		val path = "/test/{one}/{two}/three"
+		val parameters = mapOf(
+			"one" to "1",
+			"two" to "2",
+			"three" to "3"
+		)
+
+		UrlBuilder.buildPath(path, parameters, true) shouldBe "test/{one}/{two}/three"
+	}
+
 	test("buildPath replaces values not separated by a slash") {
 		val path = "/test/{twe}{lve}/three"
 		val parameters = mapOf(
@@ -87,6 +98,16 @@ class UrlBuilderTests : FunSpec({
 		)
 
 		path.buildPath(parameters) shouldBe "test/foo/baz"
+	}
+
+	test("buildUrl with empty path template uses baseUrl") {
+		val baseUrl = "https://demo.jellyfin.org/stable/"
+		UrlBuilder.buildUrl(baseUrl = baseUrl, pathTemplate = "") shouldBe baseUrl
+	}
+
+	test("buildUrl with slash only path template uses baseUrl") {
+		val baseUrl = "https://demo.jellyfin.org/stable"
+		UrlBuilder.buildUrl(baseUrl = baseUrl, pathTemplate = "/") shouldBe "$baseUrl/"
 	}
 
 	test("buildUrl appends query parameters") {
@@ -218,6 +239,17 @@ class UrlBuilderTests : FunSpec({
 		UrlBuilder.buildUrl(
 			baseUrl = baseUrl,
 			pathTemplate = "{foo}/{foo/{bar",
+			ignorePathParameters = true,
+		) shouldBe "${baseUrl}%7Bfoo%7D/%7Bfoo/%7Bbar"
+	}
+
+	test("buildUrl ignores path parameters when ignorePathParameters is set but has parameters") {
+		val baseUrl = "https://demo.jellyfin.org/stable/"
+
+		UrlBuilder.buildUrl(
+			baseUrl = baseUrl,
+			pathTemplate = "/{foo}/{foo/{bar",
+			pathParameters = mapOf("foo" to "test", "bar" to "test2"),
 			ignorePathParameters = true,
 		) shouldBe "${baseUrl}%7Bfoo%7D/%7Bfoo/%7Bbar"
 	}
