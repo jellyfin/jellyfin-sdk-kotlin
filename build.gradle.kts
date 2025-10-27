@@ -62,11 +62,3 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
 		sarif.required.set(true)
 	}
 }
-
-subprojects {
-	apply<io.kotest.framework.multiplatform.gradle.KotestMultiplatformCompilerGradlePlugin>()
-
-	tasks.withType<Test> {
-		useJUnitPlatform()
-	}
-}
