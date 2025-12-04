@@ -65,4 +65,17 @@ class DiscoveryServiceTests : FunSpec({
 		instance.getAddressCandidates("localhost:65536").shouldBeEmpty()
 		instance.getAddressCandidates("localhost:999999").shouldBeEmpty()
 	}
+
+	test("getAddressCandidates is case insensitive for protocol") {
+		val instance = getInstance()
+
+		// Lowercase
+		instance.getAddressCandidates("https://localhost") shouldContain "https://localhost"
+
+		// Uppercase
+		instance.getAddressCandidates("HTTPS://localhost") shouldContain "https://localhost"
+
+		// Mixed
+		instance.getAddressCandidates("Https://localhost") shouldContain "https://localhost"
+	}
 })
