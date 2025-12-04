@@ -43,7 +43,7 @@ public actual class AddressCandidateHelper actual constructor(
 
 			// Add the input as initial candidate
 			if (input.isNotBlank()) {
-				if (input.startsWith(PROTOCOL_HTTP) || input.startsWith(PROTOCOL_HTTPS)) {
+				if (input.startsWith(PROTOCOL_HTTP, ignoreCase = true) || input.startsWith(PROTOCOL_HTTPS, ignoreCase = true)) {
 					candidates.add(input.toHttpUrl())
 				} else {
 					candidates.add((PROTOCOL_HTTP + input).toHttpUrl())
