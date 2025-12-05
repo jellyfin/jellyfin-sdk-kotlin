@@ -1,7 +1,7 @@
 package org.jellyfin.sdk.api.client.util
 
 import io.kotest.core.spec.style.FunSpec
-import io.kotest.data.forAll
+import io.kotest.data.blocking.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
