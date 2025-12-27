@@ -244,6 +244,11 @@ public data class EncodingOptions(
 	@SerialName("EnableSubtitleExtraction")
 	public val enableSubtitleExtraction: Boolean,
 	/**
+	 * The timeout for subtitle extraction in minutes.
+	 */
+	@SerialName("SubtitleExtractionTimeoutMinutes")
+	public val subtitleExtractionTimeoutMinutes: Int,
+	/**
 	 * The codecs hardware encoding is used for.
 	 */
 	@SerialName("HardwareDecodingCodecs")
