@@ -1,7 +1,7 @@
 package org.jellyfin.sdk.api.client
 
 import kotlinx.serialization.SerializationException
-import mu.KotlinLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.jellyfin.sdk.api.client.exception.InvalidContentException
 import org.jellyfin.sdk.api.client.util.ApiSerializer
 

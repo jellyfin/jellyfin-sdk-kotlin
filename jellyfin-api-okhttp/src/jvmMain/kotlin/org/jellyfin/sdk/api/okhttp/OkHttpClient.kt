@@ -2,7 +2,7 @@ package org.jellyfin.sdk.api.okhttp
 
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.serialization.SerializationException
-import mu.KotlinLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.MediaType.Companion.toMediaType

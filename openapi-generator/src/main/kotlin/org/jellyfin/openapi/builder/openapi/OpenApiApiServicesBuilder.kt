@@ -9,7 +9,7 @@ import io.swagger.v3.oas.models.media.Schema
 import io.swagger.v3.oas.models.media.StringSchema
 import io.swagger.v3.oas.models.parameters.Parameter
 import io.swagger.v3.oas.models.parameters.RequestBody
-import mu.KotlinLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.toCamelCase
 import org.jellyfin.openapi.OpenApiGeneratorError
