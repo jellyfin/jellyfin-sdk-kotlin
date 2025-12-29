@@ -1,10 +1,10 @@
 plugins {
 	kotlin("jvm")
-	id("application")
+	application
 }
 
 application {
-	mainClass.set("org.jellyfin.sample.cli.MainKt")
+	mainClass = "org.jellyfin.sample.cli.MainKt"
 }
 
 dependencies {

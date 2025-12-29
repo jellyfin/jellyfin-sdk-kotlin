@@ -1,12 +1,14 @@
+import de.undercouch.gradle.tasks.download.Download
+
 plugins {
 	alias(libs.plugins.download)
 	alias(libs.plugins.kotlin.serialization)
 	kotlin("jvm")
-	id("application")
+	application
 }
 
 application {
-	mainClass.set("org.jellyfin.openapi.MainKt")
+	mainClass = "org.jellyfin.openapi.MainKt"
 }
 
 dependencies {
@@ -47,39 +49,42 @@ val defaultConfig = mapOf(
 	"modelsOutputDir" to file("../jellyfin-model/src/commonMain/kotlin-generated")
 )
 
-tasks.register("generateSources", JavaExec::class) {
-	mainClass.set(application.mainClass)
-	classpath = sourceSets.main.get().runtimeClasspath
+tasks {
+	register<JavaExec>("generateSources") {
+		mainClass = application.mainClass
+		classpath = sourceSets.main.get().runtimeClasspath
 
-	inputs.file(defaultConfig["openApiFile"]!!)
-	outputs.dirs(defaultConfig["apiOutputDir"], defaultConfig["modelsOutputDir"])
+		inputs.file(defaultConfig["openApiFile"]!!)
+		outputs.dirs(defaultConfig["apiOutputDir"], defaultConfig["modelsOutputDir"])
 
-	args = listOf("generate") + defaultConfig
-		.map { listOf("--${it.key}", it.value.toString()) }
-		.flatten()
-}
-
-tasks.register("verifySources", JavaExec::class) {
-	mainClass.set(application.mainClass)
-	classpath = sourceSets.main.get().runtimeClasspath
-
-	args = listOf("verify") + defaultConfig
-		.map { listOf("--${it.key}", it.value.toString()) }
-		.flatten()
-}
-
-arrayOf(
-	"stable" to "Stable",
-	"unstable" to "Unstable",
-).forEach { (flavor, flavorPascalCase) ->
-	tasks.register("downloadApiSpec${flavorPascalCase}", de.undercouch.gradle.tasks.download.Download::class) {
-		src("https://api.jellyfin.org/openapi/jellyfin-openapi-${flavor}.json")
-		dest(defaultConfig["openApiFile"])
-		outputs.file(defaultConfig["openApiFile"]!!)
+		args = listOf("generate") + defaultConfig
+			.map { listOf("--${it.key}", it.value.toString()) }
+			.flatten()
 	}
 
-	tasks.register("updateApiSpec${flavorPascalCase}") {
-		dependsOn("downloadApiSpec${flavorPascalCase}", "generateSources")
-		tasks["generateSources"].mustRunAfter("downloadApiSpec${flavorPascalCase}")
+	register<JavaExec>("verifySources") {
+		mainClass = application.mainClass
+		classpath = sourceSets.main.get().runtimeClasspath
+
+		args = listOf("verify") + defaultConfig
+			.map { listOf("--${it.key}", it.value.toString()) }
+			.flatten()
+	}
+
+	arrayOf(
+		"stable" to "Stable",
+		"unstable" to "Unstable",
+	).forEach { (flavor, flavorPascalCase) ->
+		register<Download>("downloadApiSpec${flavorPascalCase}") {
+			src("https://api.jellyfin.org/openapi/jellyfin-openapi-${flavor}.json")
+			dest(defaultConfig["openApiFile"])
+			outputs.file(defaultConfig["openApiFile"]!!)
+		}
+
+		val generateTask = findByName("generateSources")!!
+		register("updateApiSpec${flavorPascalCase}") {
+			dependsOn("downloadApiSpec${flavorPascalCase}", "generateSources")
+			generateTask.mustRunAfter("downloadApiSpec${flavorPascalCase}")
+		}
 	}
 }

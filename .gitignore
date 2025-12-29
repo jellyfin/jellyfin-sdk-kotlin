@@ -8,6 +8,8 @@ local.properties
 .kotlin
 
 build/
+openapi-generator/bin/
+samples/kotlin-cli/bin/
 
 java_*.hprof
 

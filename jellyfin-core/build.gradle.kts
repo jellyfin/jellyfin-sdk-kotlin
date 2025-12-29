@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
 	kotlin("multiplatform")
@@ -15,6 +16,7 @@ kotlin {
 			jvmTarget = JvmTarget.JVM_1_8
 		}
 	}
+
 	androidTarget {
 		publishLibraryVariants("release", "debug")
 		compilerOptions {
@@ -22,18 +24,22 @@ kotlin {
 		}
 	}
 
-	jvmToolchain(21)
+	jvmToolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+		vendor = JvmVendorSpec.ADOPTIUM
+	}
+
+	compilerOptions {
+		progressiveMode = true
+		freeCompilerArgs.addAll(
+			"-Xexpect-actual-classes",
+		)
+	}
 
 	applyDefaultHierarchyTemplate()
 
 	sourceSets {
-		all {
-			languageSettings {
-				progressiveMode = true
-			}
-		}
-
-		val commonMain by getting {
+		commonMain {
 			dependencies {
 				api(projects.jellyfinApi)
 				api(projects.jellyfinApiOkhttp)
@@ -50,18 +56,18 @@ kotlin {
 		}
 
 		val jvmCommonMain by creating {
-			dependsOn(commonMain)
+			dependsOn(commonMain.get())
 		}
 
-		val jvmMain by getting {
+		jvmMain {
 			dependsOn(jvmCommonMain)
 		}
 
-		val androidMain by getting {
+		androidMain {
 			dependsOn(jvmCommonMain)
 		}
 
-		val commonTest by getting {
+		commonTest {
 			dependencies {
 				implementation(libs.kotlinx.coroutines)
 				implementation(libs.kotlinx.coroutines.test)
@@ -71,18 +77,18 @@ kotlin {
 		}
 
 		val jvmCommonTest by creating {
-			dependsOn(commonTest)
+			dependsOn(commonTest.get())
 			dependencies {
 				implementation(libs.slf4j.simple)
 				implementation(libs.kotest.runner.junit5)
 			}
 		}
 
-		val jvmTest by getting {
+		jvmTest {
 			dependsOn(jvmCommonTest)
 		}
 
-		val androidUnitTest by getting {
+		androidUnitTest {
 			dependsOn(jvmCommonTest)
 		}
 	}
@@ -100,7 +106,7 @@ android {
 	}
 
 	buildTypes {
-		getByName("release") {
+		release {
 			isMinifyEnabled = false
 		}
 	}
@@ -120,9 +126,9 @@ android {
 
 enablePublishing {
 	val javadocJar by tasks.registering(Jar::class) {
-		dependsOn(tasks.dokkaHtml)
-		from(tasks.dokkaHtml.flatMap { it.outputDirectory })
-		archiveClassifier.set("javadoc")
+		dependsOn(tasks.named("dokkaGeneratePublicationHtml"))
+		from(layout.buildDirectory.dir("dokka/html"))
+		archiveClassifier = "javadoc"
 	}
 
 	publications.withType<MavenPublication> {
@@ -134,5 +140,12 @@ dependencies.signature(libs.gummybears.api19) {
 	artifact {
 		classifier = "coreLib2"
 		type = "signature"
+	}
+}
+
+// Compile tests with JVM 11 (required by Kotest 6.x)
+tasks.named<KotlinCompile>("compileTestKotlinJvm") {
+	compilerOptions {
+		jvmTarget = JvmTarget.JVM_11
 	}
 }
