@@ -1,29 +1,31 @@
 package org.jellyfin.sdk.api.client.util
 
 import io.kotest.core.spec.style.FunSpec
-import io.kotest.data.forAll
-import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
 class AuthorizationHeaderBuilderTests : FunSpec({
 	test("encodeParameter removes special characters") {
-		forAll(
-			row("""test""", "test"),
-			row("""test+""", "test%2B"),
-			row("""'test'""", "%27test%27"),
-			row("""今日は""", "%E4%BB%8A%E6%97%A5%E3%81%AF"),
-			row("""水母""", "%E6%B0%B4%E6%AF%8D"),
-			row("""ἈᾼᾺΆᾍᾋ""", "%E1%BC%88%E1%BE%BC%E1%BE%BA%E1%BE%BB%E1%BE%8D%E1%BE%8B"),
-		) { a, b -> AuthorizationHeaderBuilder.encodeParameterValue(a) shouldBe b }
+		listOf(
+			"test" to "test",
+			"test+" to "test%2B",
+			"'test'" to "%27test%27",
+			"今日は" to "%E4%BB%8A%E6%97%A5%E3%81%AF",
+			"水母" to "%E6%B0%B4%E6%AF%8D",
+			"ἈᾼᾺΆᾍᾋ" to "%E1%BC%88%E1%BE%BC%E1%BE%BA%CE%86%E1%BE%8D%E1%BE%8B",
+		).forEach { (input, expected) ->
+			AuthorizationHeaderBuilder.encodeParameterValue(input) shouldBe expected
+		}
 	}
 
 	test("encodeParameter removes line breaks") {
-		forAll(
-			row("with\nnewline", "with+newline"),
-			row("with trailing newline\n", "with+trailing+newline"),
-			row("\nwith prefix newline\n", "with+prefix+newline"),
-			row("\nwith\na\nlot\nof\nnewline\n", "with+a+lot+of+newline"),
-		) { a, b -> AuthorizationHeaderBuilder.encodeParameterValue(a) shouldBe b }
+		listOf(
+			"with\nnewline" to "with+newline",
+			"with trailing newline\n" to "with+trailing+newline",
+			"\nwith prefix newline\n" to "with+prefix+newline",
+			"\nwith\na\nlot\nof\nnewline\n" to "with+a+lot+of+newline",
+		).forEach { (input, expected) ->
+			AuthorizationHeaderBuilder.encodeParameterValue(input) shouldBe expected
+		}
 	}
 
 	test("buildParameter creates a valid header with access token") {

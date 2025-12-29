@@ -1,22 +1,8 @@
 plugins {
-	alias(libs.plugins.animalsniffer)
 	alias(libs.plugins.binarycompatibilityvalidator)
 	alias(libs.plugins.detekt)
 	alias(libs.plugins.dokka)
-	alias(libs.plugins.download)
-	alias(libs.plugins.kotest)
 	alias(libs.plugins.nexuspublish)
-}
-
-// Versioning
-allprojects {
-	group = "org.jellyfin.sdk"
-	version = createVersion()
-
-	repositories {
-		mavenCentral()
-		google()
-	}
 }
 
 buildscript {
@@ -31,13 +17,24 @@ buildscript {
 	}
 }
 
+// Versioning
+allprojects {
+	group = "org.jellyfin.sdk"
+	version = createVersion()
+
+	repositories {
+		mavenCentral()
+		google()
+	}
+}
+
 // Add Sonatype publishing repository
 nexusPublishing.repositories.sonatype {
-	nexusUrl.set(uri("https://ossrh-staging-api.central.sonatype.com/service/local/"))
-	snapshotRepositoryUrl.set(uri("https://central.sonatype.com/repository/maven-snapshots/"))
+	nexusUrl = uri("https://ossrh-staging-api.central.sonatype.com/service/local/")
+	snapshotRepositoryUrl = uri("https://central.sonatype.com/repository/maven-snapshots/")
 
-	username.set(getProperty("ossrh.username"))
-	password.set(getProperty("ossrh.password"))
+	username = getProperty("ossrh.username")
+	password = getProperty("ossrh.password")
 }
 
 apiValidation {
@@ -59,14 +56,20 @@ detekt {
 
 tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
 	reports {
-		sarif.required.set(true)
+		sarif.required = true
 	}
 }
 
 subprojects {
-	apply<io.kotest.framework.multiplatform.gradle.KotestMultiplatformCompilerGradlePlugin>()
-
 	tasks.withType<Test> {
 		useJUnitPlatform()
 	}
+}
+
+// Dokka multi-module aggregation
+dependencies {
+	dokka(project(":jellyfin-api"))
+	dokka(project(":jellyfin-api-okhttp"))
+	dokka(project(":jellyfin-core"))
+	dokka(project(":jellyfin-model"))
 }

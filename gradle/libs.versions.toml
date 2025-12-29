@@ -5,13 +5,15 @@ animalsniffer = "2.0.1"
 binarycompatibilityvalidator = "0.18.1"
 clikt = "5.0.3"
 detekt = "1.23.8"
-dokka = "2.0.0"
+dokka = "2.1.0"
 download = "5.6.0"
+foojay-resolver = "1.0.0"
 gummybears = "0.12.0"
 kasechange = "1.4.1"
 koin = "4.1.1"
-kotest = "5.9.1"
+kotest = "6.0.7"
 kotlin = "2.2.10"
+ksp = "2.3.4"
 kotlin-logging = "7.0.13"
 kotlinpoet = "2.2.0"
 kotlinx-coroutines = "1.10.2"
@@ -22,12 +24,17 @@ slf4j = "2.0.17"
 swagger-parser = "2.1.37"
 
 [plugins]
+android-library = { id = "com.android.library", version.ref = "android-gradle" }
 animalsniffer = { id = "ru.vyarus.animalsniffer", version.ref = "animalsniffer" }
 binarycompatibilityvalidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binarycompatibilityvalidator" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 download = { id = "de.undercouch.download", version.ref = "download" }
-kotest = { id = "io.kotest.multiplatform", version.ref = "kotest" }
+foojay-resolver = { id = "org.gradle.toolchains.foojay-resolver-convention", version.ref = "foojay-resolver" }
+kotest = { id = "io.kotest", version.ref = "kotest" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 nexuspublish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexuspublish" }
 

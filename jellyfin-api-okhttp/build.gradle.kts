@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
 	kotlin("multiplatform")
@@ -15,16 +16,17 @@ kotlin {
 		}
 	}
 
-	jvmToolchain(21)
+	jvmToolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+		vendor = JvmVendorSpec.ADOPTIUM
+	}
+
+	compilerOptions {
+		progressiveMode = true
+	}
 
 	sourceSets {
-		all {
-			languageSettings {
-				progressiveMode = true
-			}
-		}
-
-		val commonMain by getting {
+		commonMain {
 			dependencies {
 				implementation(projects.jellyfinApi)
 				implementation(projects.jellyfinModel)
@@ -37,7 +39,7 @@ kotlin {
 			}
 		}
 
-		val commonTest by getting {
+		commonTest {
 			dependencies {
 				implementation(libs.kotlinx.coroutines)
 				implementation(libs.kotlinx.coroutines.test)
@@ -46,7 +48,7 @@ kotlin {
 			}
 		}
 
-		val jvmTest by getting {
+		jvmTest {
 			dependencies {
 				implementation(libs.slf4j.simple)
 				implementation(libs.kotest.runner.junit5)
@@ -57,9 +59,9 @@ kotlin {
 
 enablePublishing {
 	val javadocJar by tasks.registering(Jar::class) {
-		dependsOn(tasks.dokkaHtml)
-		from(tasks.dokkaHtml.flatMap { it.outputDirectory })
-		archiveClassifier.set("javadoc")
+		dependsOn(tasks.named("dokkaGeneratePublicationHtml"))
+		from(layout.buildDirectory.dir("dokka/html"))
+		archiveClassifier = "javadoc"
 	}
 
 	publications.withType<MavenPublication> {
@@ -71,6 +73,13 @@ dependencies.signature(libs.gummybears.api19) {
 	artifact {
 		classifier = "coreLib2"
 		type = "signature"
+	}
+}
+
+// Compile tests with JVM 11 (required by Kotest 6.x)
+tasks.named<KotlinCompile>("compileTestKotlinJvm") {
+	compilerOptions {
+		jvmTarget = JvmTarget.JVM_11
 	}
 }
 
