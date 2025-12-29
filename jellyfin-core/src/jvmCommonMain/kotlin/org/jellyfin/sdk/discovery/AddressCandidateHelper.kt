@@ -1,6 +1,6 @@
 package org.jellyfin.sdk.discovery
 
-import mu.KotlinLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrl
 

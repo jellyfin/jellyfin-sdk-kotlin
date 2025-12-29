@@ -1,7 +1,7 @@
 package org.jellyfin.openapi
 
 import io.swagger.v3.parser.OpenAPIV3Parser
-import mu.KotlinLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.jellyfin.openapi.builder.api.ApiClientExtensionsBuilder
 import org.jellyfin.openapi.builder.api.ApisBuilder
 import org.jellyfin.openapi.builder.model.ModelsBuilder

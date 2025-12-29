@@ -1,7 +1,7 @@
 package org.jellyfin.openapi
 
 import com.squareup.kotlinpoet.FileSpec
-import mu.KotlinLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.jellyfin.openapi.model.GeneratorResult
 import java.io.File
 import java.nio.file.Files
