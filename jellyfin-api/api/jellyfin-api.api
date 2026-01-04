@@ -220,8 +220,10 @@ public final class org/jellyfin/sdk/api/info/ApiConstants {
 
 public final class org/jellyfin/sdk/api/operations/ActivityLogApi : org/jellyfin/sdk/api/operations/Api {
 	public fun <init> (Lorg/jellyfin/sdk/api/client/ApiClient;)V
-	public final fun getLogEntries (Ljava/lang/Integer;Ljava/lang/Integer;Ljava/time/LocalDateTime;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static synthetic fun getLogEntries$default (Lorg/jellyfin/sdk/api/operations/ActivityLogApi;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/time/LocalDateTime;Ljava/lang/Boolean;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun getLogEntries (Ljava/lang/Integer;Ljava/lang/Integer;Ljava/time/LocalDateTime;Ljava/time/LocalDateTime;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/LogLevel;Ljava/util/Collection;Ljava/util/Collection;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getLogEntries (Lorg/jellyfin/sdk/model/api/request/GetLogEntriesRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun getLogEntries$default (Lorg/jellyfin/sdk/api/operations/ActivityLogApi;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/time/LocalDateTime;Ljava/time/LocalDateTime;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;Ljava/lang/String;Lorg/jellyfin/sdk/model/api/LogLevel;Ljava/util/Collection;Ljava/util/Collection;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun getLogEntries$default (Lorg/jellyfin/sdk/api/operations/ActivityLogApi;Lorg/jellyfin/sdk/model/api/request/GetLogEntriesRequest;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
 }
 
 public abstract interface class org/jellyfin/sdk/api/operations/Api {
