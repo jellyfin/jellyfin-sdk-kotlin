@@ -70,3 +70,10 @@ subprojects {
 		useJUnitPlatform()
 	}
 }
+
+dependencies {
+	dokka(project(":jellyfin-core"))
+	dokka(project(":jellyfin-api"))
+	dokka(project(":jellyfin-api-okhttp"))
+	dokka(project(":jellyfin-model"))
+}
