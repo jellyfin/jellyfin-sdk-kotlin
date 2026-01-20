@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
 	kotlin("multiplatform")
@@ -135,4 +136,8 @@ dependencies.signature(libs.gummybears.api19) {
 		classifier = "coreLib2"
 		type = "signature"
 	}
+}
+
+tasks.named<KotlinCompile>("compileTestKotlinJvm") {
+	compilerOptions.jvmTarget = JvmTarget.JVM_11
 }
