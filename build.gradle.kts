@@ -64,8 +64,6 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
 }
 
 subprojects {
-	apply<io.kotest.framework.multiplatform.gradle.KotestMultiplatformCompilerGradlePlugin>()
-
 	tasks.withType<Test> {
 		useJUnitPlatform()
 	}

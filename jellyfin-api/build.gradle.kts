@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
 	kotlin("multiplatform")
@@ -48,6 +49,7 @@ kotlin {
 				implementation(libs.kotlinx.coroutines.test)
 				implementation(libs.kotest.framework.engine)
 				implementation(libs.kotest.assertions)
+				implementation(libs.kotest.assertions.table)
 			}
 		}
 
@@ -79,3 +81,6 @@ dependencies.signature(libs.gummybears.api19) {
 	}
 }
 
+tasks.named<KotlinCompile>("compileTestKotlinJvm") {
+	compilerOptions.jvmTarget = JvmTarget.JVM_11
+}
