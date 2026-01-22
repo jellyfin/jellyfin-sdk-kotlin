@@ -19450,8 +19450,6 @@ public final class org/jellyfin/sdk/model/extensions/TicksExtensionsKt {
 
 public final class org/jellyfin/sdk/model/serializer/DateTimeSerializer : kotlinx/serialization/KSerializer {
 	public fun <init> ()V
-	public fun <init> (Ljava/time/ZoneId;)V
-	public synthetic fun <init> (Ljava/time/ZoneId;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
 	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/time/LocalDateTime;
 	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
