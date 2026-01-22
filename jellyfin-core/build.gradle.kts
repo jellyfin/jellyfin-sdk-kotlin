@@ -2,9 +2,9 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	kotlin("multiplatform")
-	id("com.android.library")
+	alias(libs.plugins.kotlin.multiplatform)
 	alias(libs.plugins.dokka)
+	alias(libs.plugins.android.library)
 	alias(libs.plugins.animalsniffer)
 }
 
@@ -16,10 +16,32 @@ kotlin {
 			jvmTarget = JvmTarget.JVM_1_8
 		}
 	}
-	androidTarget {
-		publishLibraryVariants("release", "debug")
+
+	androidLibrary {
+		namespace = "org.jellyfin.sdk"
+		compileSdk = libs.versions.android.sdk.get().toInt()
+		minSdk = 19
+
 		compilerOptions {
 			jvmTarget = JvmTarget.JVM_1_8
+		}
+
+		withHostTest {}
+
+		@Suppress("UnstableApiUsage")
+		optimization {
+			minify = false
+
+			consumerKeepRules.apply {
+				publish = true
+				file("proguard-rules.pro")
+			}
+		}
+
+		lint {
+			lintConfig = file("$rootDir/android-lint.xml")
+			abortOnError = false
+			sarifReport = true
 		}
 	}
 
@@ -83,38 +105,8 @@ kotlin {
 			dependsOn(jvmCommonTest)
 		}
 
-		val androidUnitTest by getting {
+		val androidHostTest by getting {
 			dependsOn(jvmCommonTest)
-		}
-	}
-}
-
-android {
-	namespace = "org.jellyfin.sdk"
-	compileSdk = libs.versions.android.sdk.get().toInt()
-
-	defaultConfig {
-		minSdk = 19
-		multiDexEnabled = true
-
-		consumerProguardFiles("proguard-rules.pro")
-	}
-
-	buildTypes {
-		getByName("release") {
-			isMinifyEnabled = false
-		}
-	}
-
-	lint {
-		lintConfig = file("$rootDir/android-lint.xml")
-		abortOnError = false
-		sarifReport = true
-	}
-
-	publishing {
-		multipleVariants {
-			withSourcesJar()
 		}
 	}
 }

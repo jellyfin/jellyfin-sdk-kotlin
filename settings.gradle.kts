@@ -13,3 +13,11 @@ include(":openapi-generator")
 
 // Samples
 include(":samples:kotlin-cli")
+
+pluginManagement {
+	repositories {
+		gradlePluginPortal()
+		mavenCentral()
+		google()
+	}
+}

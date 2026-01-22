@@ -6,6 +6,8 @@ plugins {
 	alias(libs.plugins.download)
 	alias(libs.plugins.kotest)
 	alias(libs.plugins.nexuspublish)
+	alias(libs.plugins.kotlin.multiplatform) apply false
+	alias(libs.plugins.android.library) apply false
 }
 
 // Versioning
@@ -26,7 +28,6 @@ buildscript {
 	}
 
 	dependencies {
-		classpath(libs.android.gradle)
 		classpath(libs.kotlin.gradle)
 	}
 }
