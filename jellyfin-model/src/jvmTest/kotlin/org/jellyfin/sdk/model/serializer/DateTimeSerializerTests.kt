@@ -5,10 +5,12 @@ import io.kotest.matchers.shouldBe
 import kotlinx.serialization.json.Json
 import java.time.LocalDateTime
 import java.time.ZoneId
+import java.util.TimeZone
 
 class DateTimeSerializerTests : FunSpec({
 	test("Encodes dates and times (UTC)") {
-		val instance = DateTimeSerializer(ZoneId.of("UTC"))
+		TimeZone.setDefault(TimeZone.getTimeZone(ZoneId.of("UTC")))
+		val instance = DateTimeSerializer()
 
 		Json.encodeToString(
 			instance,
@@ -17,7 +19,8 @@ class DateTimeSerializerTests : FunSpec({
 	}
 
 	test("Encodes dates and times (Offset)") {
-		val instance = DateTimeSerializer(ZoneId.of("UTC+01:00"))
+		TimeZone.setDefault(TimeZone.getTimeZone(ZoneId.of("UTC+01:00")))
+		val instance = DateTimeSerializer()
 
 		Json.encodeToString(
 			instance,
@@ -26,13 +29,15 @@ class DateTimeSerializerTests : FunSpec({
 	}
 
 	test("Parses minimum value") {
-		val instance = DateTimeSerializer(ZoneId.of("UTC"))
+		TimeZone.setDefault(TimeZone.getTimeZone(ZoneId.of("UTC")))
+		val instance = DateTimeSerializer()
 
 		Json.decodeFromString(instance, """"0001-01-01T00:00:00"""") shouldBe LocalDateTime.MIN
 	}
 
 	test("Parses dates and times (UTC)") {
-		val instance = DateTimeSerializer(ZoneId.of("UTC"))
+		TimeZone.setDefault(TimeZone.getTimeZone(ZoneId.of("UTC")))
+		val instance = DateTimeSerializer()
 
 		Json.decodeFromString(
 			instance,
@@ -46,7 +51,8 @@ class DateTimeSerializerTests : FunSpec({
 	}
 
 	test("Parses dates and times (Offset)") {
-		val instance = DateTimeSerializer(ZoneId.of("UTC+01:00"))
+		TimeZone.setDefault(TimeZone.getTimeZone(ZoneId.of("UTC+01:00")))
+		val instance = DateTimeSerializer()
 
 		Json.decodeFromString(
 			instance,
