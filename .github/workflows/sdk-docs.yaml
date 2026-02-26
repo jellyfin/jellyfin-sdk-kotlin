@@ -38,7 +38,7 @@ jobs:
         working-directory: ./docs/.vitepress/dist
         run: zip -v -r ../vitepress.zip *
       - name: Upload artifact
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: vitepress
           path: ./docs/.vitepress/vitepress.zip
@@ -62,7 +62,7 @@ jobs:
         working-directory: ./build/dokka/html
         run: zip -v -r ../../dokka.zip *
       - name: Upload artifact
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: dokka
           path: ./build/dokka.zip
@@ -84,12 +84,12 @@ jobs:
       - name: Setup GitHub Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
       - name: Download Vitepress artifact
-        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
         with:
           name: vitepress
           path: ./build/github-pages
       - name: Download Dokka artifact
-        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
         with:
           name: dokka
           path: ./build/github-pages
