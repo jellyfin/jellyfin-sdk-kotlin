@@ -1,5 +1,5 @@
 [versions]
-android-gradle = "9.0.0"
+android-gradle = "9.0.1"
 android-sdk = "36"
 animalsniffer = "2.0.1"
 binarycompatibilityvalidator = "0.18.1"
