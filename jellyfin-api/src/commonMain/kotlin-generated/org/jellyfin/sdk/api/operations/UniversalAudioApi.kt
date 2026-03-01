@@ -46,7 +46,6 @@ public class UniversalAudioApi(
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param enableRemoteMedia Optional. Whether to enable remote media.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param enableRedirection Whether to enable redirection. Defaults to true.
 	 */
 	public suspend fun getUniversalAudioStream(
@@ -67,7 +66,6 @@ public class UniversalAudioApi(
 		maxAudioBitDepth: Int? = null,
 		enableRemoteMedia: Boolean? = null,
 		enableAudioVbrEncoding: Boolean? = true,
-		breakOnNonKeyFrames: Boolean? = false,
 		enableRedirection: Boolean? = true,
 	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(1) {
@@ -75,7 +73,7 @@ public class UniversalAudioApi(
 		}
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(transcodingContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(transcodingContainer)) { """Parameter "transcodingContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(18) {
+		val queryParameters = buildMap<String, Any?>(17) {
 			put("container", container)
 			put("mediaSourceId", mediaSourceId)
 			put("deviceId", deviceId)
@@ -92,7 +90,6 @@ public class UniversalAudioApi(
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("enableRemoteMedia", enableRemoteMedia)
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("enableRedirection", enableRedirection)
 		}
 		val data = null
@@ -123,7 +120,6 @@ public class UniversalAudioApi(
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		enableRemoteMedia = request.enableRemoteMedia,
 		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		enableRedirection = request.enableRedirection,
 	)
 
@@ -147,7 +143,6 @@ public class UniversalAudioApi(
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param enableRemoteMedia Optional. Whether to enable remote media.
 	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param enableRedirection Whether to enable redirection. Defaults to true.
 	 */
 	public fun getUniversalAudioStreamUrl(
@@ -168,7 +163,6 @@ public class UniversalAudioApi(
 		maxAudioBitDepth: Int? = null,
 		enableRemoteMedia: Boolean? = null,
 		enableAudioVbrEncoding: Boolean? = true,
-		breakOnNonKeyFrames: Boolean? = false,
 		enableRedirection: Boolean? = true,
 	): String {
 		val pathParameters = buildMap<String, Any?>(1) {
@@ -176,7 +170,7 @@ public class UniversalAudioApi(
 		}
 		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(transcodingContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(transcodingContainer)) { """Parameter "transcodingContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(18) {
+		val queryParameters = buildMap<String, Any?>(17) {
 			put("container", container)
 			put("mediaSourceId", mediaSourceId)
 			put("deviceId", deviceId)
@@ -193,7 +187,6 @@ public class UniversalAudioApi(
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("enableRemoteMedia", enableRemoteMedia)
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("enableRedirection", enableRedirection)
 		}
 		return api.createUrl("/Audio/{itemId}/universal", pathParameters, queryParameters)

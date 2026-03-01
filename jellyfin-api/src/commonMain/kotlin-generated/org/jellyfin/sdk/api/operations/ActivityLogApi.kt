@@ -9,13 +9,20 @@ import kotlin.Any
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.Collection
 import kotlin.collections.buildMap
+import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.DateTime
+import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.ActivityLogEntryQueryResult
+import org.jellyfin.sdk.model.api.ActivityLogSortBy
+import org.jellyfin.sdk.model.api.LogLevel
+import org.jellyfin.sdk.model.api.SortOrder
+import org.jellyfin.sdk.model.api.request.GetLogEntriesRequest
 
 public class ActivityLogApi(
 	private val api: ApiClient,
@@ -23,26 +30,78 @@ public class ActivityLogApi(
 	/**
 	 * Gets activity log entries.
 	 *
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
-	 * @param limit Optional. The maximum number of records to return.
-	 * @param minDate Optional. The minimum date. Format = ISO.
-	 * @param hasUserId Optional. Filter log entries if it has user id, or not.
+	 * @param startIndex The record index to start at. All items with a lower index will be dropped from the results.
+	 * @param limit The maximum number of records to return.
+	 * @param minDate The minimum date.
+	 * @param maxDate The maximum date.
+	 * @param hasUserId Filter log entries if it has user id, or not.
+	 * @param name Filter by name.
+	 * @param overview Filter by overview.
+	 * @param shortOverview Filter by short overview.
+	 * @param type Filter by type.
+	 * @param itemId Filter by item id.
+	 * @param username Filter by username.
+	 * @param severity Filter by log severity.
+	 * @param sortBy Specify one or more sort orders. Format: SortBy=Name,Type.
+	 * @param sortOrder Sort Order..
 	 */
 	public suspend fun getLogEntries(
 		startIndex: Int? = null,
 		limit: Int? = null,
 		minDate: DateTime? = null,
+		maxDate: DateTime? = null,
 		hasUserId: Boolean? = null,
+		name: String? = null,
+		overview: String? = null,
+		shortOverview: String? = null,
+		type: String? = null,
+		itemId: UUID? = null,
+		username: String? = null,
+		severity: LogLevel? = null,
+		sortBy: Collection<ActivityLogSortBy>? = emptyList(),
+		sortOrder: Collection<SortOrder>? = emptyList(),
 	): Response<ActivityLogEntryQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(4) {
+		val queryParameters = buildMap<String, Any?>(14) {
 			put("startIndex", startIndex)
 			put("limit", limit)
 			put("minDate", minDate)
+			put("maxDate", maxDate)
 			put("hasUserId", hasUserId)
+			put("name", name)
+			put("overview", overview)
+			put("shortOverview", shortOverview)
+			put("type", type)
+			put("itemId", itemId)
+			put("username", username)
+			put("severity", severity)
+			put("sortBy", sortBy)
+			put("sortOrder", sortOrder)
 		}
 		val data = null
 		val response = api.`get`<ActivityLogEntryQueryResult>("/System/ActivityLog/Entries", pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets activity log entries.
+	 *
+	 * @param request The request parameters
+	 */
+	public suspend fun getLogEntries(request: GetLogEntriesRequest = GetLogEntriesRequest()): Response<ActivityLogEntryQueryResult> = getLogEntries(
+		startIndex = request.startIndex,
+		limit = request.limit,
+		minDate = request.minDate,
+		maxDate = request.maxDate,
+		hasUserId = request.hasUserId,
+		name = request.name,
+		overview = request.overview,
+		shortOverview = request.shortOverview,
+		type = request.type,
+		itemId = request.itemId,
+		username = request.username,
+		severity = request.severity,
+		sortBy = request.sortBy,
+		sortOrder = request.sortOrder,
+	)
 }

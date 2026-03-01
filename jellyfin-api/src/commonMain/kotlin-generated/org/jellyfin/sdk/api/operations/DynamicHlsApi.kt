@@ -64,7 +64,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
@@ -120,7 +119,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		maxStreamingBitrate: Int? = null,
@@ -168,7 +166,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(49) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -184,7 +182,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("maxStreamingBitrate", maxStreamingBitrate)
@@ -250,7 +247,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		maxStreamingBitrate = request.maxStreamingBitrate,
@@ -309,7 +305,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
@@ -365,7 +360,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		maxStreamingBitrate: Int? = null,
@@ -413,7 +407,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(49) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -429,7 +423,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("maxStreamingBitrate", maxStreamingBitrate)
@@ -491,7 +484,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
@@ -549,7 +541,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		maxStreamingBitrate: Int? = null,
@@ -597,7 +588,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(51) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -614,7 +605,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("maxStreamingBitrate", maxStreamingBitrate)
@@ -682,7 +672,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		maxStreamingBitrate = request.maxStreamingBitrate,
@@ -742,7 +731,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
@@ -800,7 +788,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		maxStreamingBitrate: Int? = null,
@@ -848,7 +835,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(51) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -865,7 +852,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("maxStreamingBitrate", maxStreamingBitrate)
@@ -926,7 +912,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -984,7 +969,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -1034,7 +1018,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(52) {
+		val queryParameters = buildMap<String, Any?>(51) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -1050,7 +1034,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -1118,7 +1101,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		audioBitRate = request.audioBitRate,
@@ -1179,7 +1161,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -1237,7 +1218,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -1287,7 +1267,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(52) {
+		val queryParameters = buildMap<String, Any?>(51) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -1303,7 +1283,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -1367,7 +1346,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -1427,7 +1405,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -1477,7 +1454,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(53) {
+		val queryParameters = buildMap<String, Any?>(52) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -1494,7 +1471,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -1564,7 +1540,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		audioBitRate = request.audioBitRate,
@@ -1626,7 +1601,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -1686,7 +1660,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -1736,7 +1709,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(53) {
+		val queryParameters = buildMap<String, Any?>(52) {
 			put("runtimeTicks", runtimeTicks)
 			put("actualSegmentLengthTicks", actualSegmentLengthTicks)
 			put("static", static)
@@ -1753,7 +1726,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -1812,7 +1784,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -1867,7 +1838,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -1915,7 +1885,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(52) {
+		val queryParameters = buildMap<String, Any?>(51) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -1930,7 +1900,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -1995,7 +1964,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		audioBitRate = request.audioBitRate,
@@ -2053,7 +2021,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -2108,7 +2075,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -2156,7 +2122,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(52) {
+		val queryParameters = buildMap<String, Any?>(51) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -2171,7 +2137,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -2232,7 +2197,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -2289,7 +2253,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -2337,7 +2300,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(53) {
+		val queryParameters = buildMap<String, Any?>(52) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -2353,7 +2316,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -2420,7 +2382,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		audioBitRate = request.audioBitRate,
@@ -2479,7 +2440,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -2536,7 +2496,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -2584,7 +2543,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(53) {
+		val queryParameters = buildMap<String, Any?>(52) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -2600,7 +2559,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -2659,7 +2617,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
@@ -2711,7 +2668,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		maxStreamingBitrate: Int? = null,
@@ -2756,7 +2712,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(48) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -2770,7 +2726,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("maxStreamingBitrate", maxStreamingBitrate)
@@ -2832,7 +2787,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		maxStreamingBitrate = request.maxStreamingBitrate,
@@ -2887,7 +2841,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
@@ -2939,7 +2892,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		maxStreamingBitrate: Int? = null,
@@ -2984,7 +2936,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(48) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -2998,7 +2950,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("maxStreamingBitrate", maxStreamingBitrate)
@@ -3056,7 +3007,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
@@ -3110,7 +3060,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		maxStreamingBitrate: Int? = null,
@@ -3155,7 +3104,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(49) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -3170,7 +3119,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("maxStreamingBitrate", maxStreamingBitrate)
@@ -3234,7 +3182,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		maxStreamingBitrate = request.maxStreamingBitrate,
@@ -3290,7 +3237,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
@@ -3344,7 +3290,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		maxStreamingBitrate: Int? = null,
@@ -3389,7 +3334,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(49) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -3404,7 +3349,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("maxStreamingBitrate", maxStreamingBitrate)
@@ -3461,7 +3405,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -3516,7 +3459,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -3564,7 +3506,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(52) {
+		val queryParameters = buildMap<String, Any?>(51) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -3578,7 +3520,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -3643,7 +3584,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		audioBitRate = request.audioBitRate,
@@ -3701,7 +3641,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -3756,7 +3695,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -3804,7 +3742,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(52) {
+		val queryParameters = buildMap<String, Any?>(51) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -3818,7 +3756,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -3879,7 +3816,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -3936,7 +3872,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -3984,7 +3919,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(53) {
+		val queryParameters = buildMap<String, Any?>(52) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -3999,7 +3934,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -4066,7 +4000,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		audioBitRate = request.audioBitRate,
@@ -4125,7 +4058,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -4182,7 +4114,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -4230,7 +4161,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(53) {
+		val queryParameters = buildMap<String, Any?>(52) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -4245,7 +4176,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -4305,7 +4235,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
@@ -4356,7 +4285,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		maxStreamingBitrate: Int? = null,
@@ -4400,7 +4328,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(48) {
+		val queryParameters = buildMap<String, Any?>(47) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -4414,7 +4342,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("maxStreamingBitrate", maxStreamingBitrate)
@@ -4475,7 +4402,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		maxStreamingBitrate = request.maxStreamingBitrate,
@@ -4529,7 +4455,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
@@ -4580,7 +4505,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		maxStreamingBitrate: Int? = null,
@@ -4624,7 +4548,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(48) {
+		val queryParameters = buildMap<String, Any?>(47) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -4638,7 +4562,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("maxStreamingBitrate", maxStreamingBitrate)
@@ -4695,7 +4618,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
@@ -4748,7 +4670,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		maxStreamingBitrate: Int? = null,
@@ -4792,7 +4713,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(48) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -4807,7 +4728,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("maxStreamingBitrate", maxStreamingBitrate)
@@ -4870,7 +4790,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		maxStreamingBitrate = request.maxStreamingBitrate,
@@ -4925,7 +4844,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
@@ -4978,7 +4896,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		maxStreamingBitrate: Int? = null,
@@ -5022,7 +4939,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(48) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -5037,7 +4954,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("maxStreamingBitrate", maxStreamingBitrate)
@@ -5093,7 +5009,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -5146,7 +5061,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -5192,7 +5106,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(49) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -5206,7 +5120,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -5269,7 +5182,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		audioBitRate = request.audioBitRate,
@@ -5325,7 +5237,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -5378,7 +5289,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -5424,7 +5334,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(50) {
+		val queryParameters = buildMap<String, Any?>(49) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -5438,7 +5348,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -5497,7 +5406,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -5552,7 +5460,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -5598,7 +5505,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(51) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -5613,7 +5520,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -5678,7 +5584,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		audioBitRate = request.audioBitRate,
@@ -5735,7 +5640,6 @@ public class DynamicHlsApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -5790,7 +5694,6 @@ public class DynamicHlsApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -5836,7 +5739,7 @@ public class DynamicHlsApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(51) {
+		val queryParameters = buildMap<String, Any?>(50) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -5851,7 +5754,6 @@ public class DynamicHlsApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)

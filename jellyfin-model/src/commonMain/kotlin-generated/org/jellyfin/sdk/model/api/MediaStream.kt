@@ -150,6 +150,8 @@ public data class MediaStream(
 	public val localizedExternal: String? = null,
 	@SerialName("LocalizedHearingImpaired")
 	public val localizedHearingImpaired: String? = null,
+	@SerialName("LocalizedLanguage")
+	public val localizedLanguage: String? = null,
 	@SerialName("DisplayTitle")
 	public val displayTitle: String? = null,
 	@SerialName("NalLengthSize")

@@ -42,18 +42,21 @@ public class PlaylistsApi(
 	 *
 	 * @param playlistId The playlist id.
 	 * @param ids Item id, comma delimited.
+	 * @param position Optional. 0-based index where to place the items or at the end if `null`.
 	 * @param userId The userId.
 	 */
 	public suspend fun addItemToPlaylist(
 		playlistId: UUID,
 		ids: Collection<UUID>? = emptyList(),
+		position: Int? = null,
 		userId: UUID? = null,
 	): Response<Unit> {
 		val pathParameters = buildMap<String, Any?>(1) {
 			put("playlistId", playlistId)
 		}
-		val queryParameters = buildMap<String, Any?>(2) {
+		val queryParameters = buildMap<String, Any?>(3) {
 			put("ids", ids)
+			put("position", position)
 			put("userId", userId)
 		}
 		val data = null

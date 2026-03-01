@@ -56,19 +56,21 @@ public data class UserDto(
 	/**
 	 * A value indicating whether this instance has password.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("HasPassword")
-	public val hasPassword: Boolean,
+	public val hasPassword: Boolean? = null,
 	/**
 	 * A value indicating whether this instance has configured password.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("HasConfiguredPassword")
-	public val hasConfiguredPassword: Boolean,
+	public val hasConfiguredPassword: Boolean? = null,
 	/**
 	 * A value indicating whether this instance has configured easy password.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("HasConfiguredEasyPassword")
-	public val hasConfiguredEasyPassword: Boolean,
+	public val hasConfiguredEasyPassword: Boolean? = null,
 	/**
 	 * Whether async login is enabled or not.
 	 */
