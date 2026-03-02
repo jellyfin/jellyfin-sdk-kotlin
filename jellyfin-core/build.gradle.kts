@@ -5,7 +5,7 @@ plugins {
 	alias(libs.plugins.kotlin.multiplatform)
 	alias(libs.plugins.dokka)
 	alias(libs.plugins.android.library)
-	alias(libs.plugins.animalsniffer)
+	// alias(libs.plugins.animalsniffer)
 }
 
 kotlin {
@@ -120,13 +120,6 @@ enablePublishing {
 
 	publications.withType<MavenPublication> {
 		artifact(javadocJar)
-	}
-}
-
-dependencies.signature(libs.gummybears.api19) {
-	artifact {
-		classifier = "coreLib2"
-		type = "signature"
 	}
 }
 

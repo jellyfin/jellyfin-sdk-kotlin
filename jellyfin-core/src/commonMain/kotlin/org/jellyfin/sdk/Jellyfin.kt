@@ -8,10 +8,17 @@ import org.jellyfin.sdk.discovery.DiscoveryService
 import org.jellyfin.sdk.model.ClientInfo
 import org.jellyfin.sdk.model.DeviceInfo
 import org.jellyfin.sdk.model.ServerVersion
+import org.jellyfin.sdk.syncplay.JellyfinSyncPlay
+import org.jellyfin.sdk.syncplay.SyncPlayWebSocketClient
 
 public class Jellyfin(
 	public val options: JellyfinOptions,
 ) {
+	/**
+	 * Provides SyncPlay integration for group playback.
+	 */
+	public fun syncPlay(wsClient: SyncPlayWebSocketClient): JellyfinSyncPlay =
+		JellyfinSyncPlay(this, wsClient)
 	public constructor(optionsBuilder: JellyfinOptions.Builder) : this(optionsBuilder.build())
 
 	/**

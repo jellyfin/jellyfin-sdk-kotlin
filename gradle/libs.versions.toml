@@ -1,7 +1,6 @@
 [versions]
 android-gradle = "9.0.0"
 android-sdk = "36"
-animalsniffer = "2.0.1"
 binarycompatibilityvalidator = "0.18.1"
 clikt = "5.1.0"
 detekt = "1.23.8"
@@ -22,7 +21,6 @@ slf4j = "2.0.17"
 swagger-parser = "2.1.37"
 
 [plugins]
-animalsniffer = { id = "ru.vyarus.animalsniffer", version.ref = "animalsniffer" }
 binarycompatibilityvalidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binarycompatibilityvalidator" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }

@@ -14,6 +14,9 @@ include(":openapi-generator")
 // Samples
 include(":samples:kotlin-cli")
 
+// Integration tests
+include(":tests")
+
 pluginManagement {
 	repositories {
 		gradlePluginPortal()
