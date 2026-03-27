@@ -1,5 +1,6 @@
 package org.jellyfin.sdk.api.sockets
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -25,7 +26,6 @@ import kotlinx.coroutines.job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import io.github.oshai.kotlinlogging.KotlinLogging
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.util.ApiSerializer
 import org.jellyfin.sdk.api.client.util.AuthorizationHeaderBuilder
@@ -202,7 +202,7 @@ public class DefaultSocketApi(
 	private fun initializeSubscription(subscriptionTypes: Set<SubscriptionType<*>>): () -> Unit {
 		// Increase subscription count
 		_subscriptionCount++
-		logger.debug("Subscription count changed to $_subscriptionCount")
+		logger.debug { "Subscription count changed to $_subscriptionCount" }
 
 		// Send start messages
 		for (type in subscriptionTypes) {
@@ -217,7 +217,7 @@ public class DefaultSocketApi(
 		return {
 			// Decrease subscription count
 			_subscriptionCount--
-			logger.info("Subscription count changed to $_subscriptionCount")
+			logger.info { "Subscription count changed to $_subscriptionCount" }
 
 			// Disconnect when subscription count reaches zero
 			val stopping = _subscriptionCount == 0
