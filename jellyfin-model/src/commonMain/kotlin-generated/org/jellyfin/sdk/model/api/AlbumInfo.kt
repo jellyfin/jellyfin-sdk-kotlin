@@ -72,7 +72,7 @@ public data class AlbumInfo(
 	 * The artist provider ids.
 	 */
 	@SerialName("ArtistProviderIds")
-	public val artistProviderIds: Map<String, String?>,
+	public val artistProviderIds: Map<String, String>,
 	@SerialName("SongInfos")
 	public val songInfos: List<SongInfo>,
 )
