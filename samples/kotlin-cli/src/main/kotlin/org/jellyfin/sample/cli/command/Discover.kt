@@ -31,7 +31,7 @@ class Discover(
 		logger.info("Starting local network discovery")
 
 		jellyfin.discovery.discoverLocalServers().onEach {
-			logger.info("Server ${it.name} was found at address ${it.address}:")
+			logger.info("Server ${it.name} was found at address ${it.address} (${it.endpointAddress}):")
 			logger.info("  $it")
 		}.collect()
 	}
