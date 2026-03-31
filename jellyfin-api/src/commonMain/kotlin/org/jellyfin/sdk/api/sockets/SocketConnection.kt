@@ -27,6 +27,7 @@ public interface SocketConnection {
 		deviceId: String,
 		deviceName: String,
 		accessToken: String,
+		languages: List<String>,
 	): Boolean
 
 	/**

@@ -74,6 +74,7 @@ public class DefaultSocketApi(
 		val clientVersion: String,
 		val deviceId: String,
 		val deviceName: String,
+		val languages: List<String>,
 		val accessToken: String,
 	) {
 		val authorizationHeader = AuthorizationHeaderBuilder.buildHeader(
@@ -261,6 +262,7 @@ public class DefaultSocketApi(
 			clientVersion = api.clientInfo.version,
 			deviceId = api.deviceInfo.id,
 			deviceName = api.deviceInfo.name,
+			languages = api.deviceInfo.languages,
 			accessToken = accessToken,
 		)
 	}
@@ -285,6 +287,7 @@ public class DefaultSocketApi(
 				deviceId = newCredentials.deviceId,
 				deviceName = newCredentials.deviceName,
 				accessToken = newCredentials.accessToken,
+				languages = newCredentials.languages,
 			)
 
 			if (connected) {

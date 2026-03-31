@@ -1,8 +1,8 @@
 package org.jellyfin.sdk.api.okhttp
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.serialization.SerializationException
-import io.github.oshai.kotlinlogging.KotlinLogging
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.MediaType.Companion.toMediaType
@@ -118,6 +118,7 @@ public class OkHttpClient(
 			)
 			header("Authorization", authorization)
 			header("User-Agent", "${clientInfo.name}/${clientInfo.version} via jellyfin-sdk-kotlin (OkHttp/${OkHttp.VERSION})")
+			if (deviceInfo.languages.isNotEmpty()) header("Accept-Language", deviceInfo.languages.joinToString(","))
 		}.build()
 
 		try {

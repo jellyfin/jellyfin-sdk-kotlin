@@ -13,5 +13,11 @@ public data class DeviceInfo(
 	/**
 	 * Name of the device.
 	 */
-	val name: String
+	val name: String,
+
+	/**
+	 * List of BCP-47 formatted languages this device prefers to be used in order of most to least preferred. This is
+	 * used to request the language used in API responses. Use an empty list for server default.
+	 */
+	val languages: List<String> = emptyList(),
 )
