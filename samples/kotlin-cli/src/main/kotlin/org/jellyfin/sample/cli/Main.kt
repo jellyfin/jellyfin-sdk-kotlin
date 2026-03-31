@@ -8,6 +8,7 @@ import org.jellyfin.sample.cli.command.Libraries
 import org.jellyfin.sample.cli.command.Login
 import org.jellyfin.sample.cli.command.Observe
 import org.jellyfin.sample.cli.command.Ping
+import org.jellyfin.sample.cli.command.Tasks
 import org.jellyfin.sample.cli.command.Users
 import org.jellyfin.sdk.createJellyfin
 import org.jellyfin.sdk.model.ClientInfo
@@ -25,6 +26,7 @@ fun main(args: Array<String>) {
 		subcommands(Login(jellyfin))
 		subcommands(Observe(jellyfin))
 		subcommands(Ping(jellyfin))
+		subcommands(Tasks(jellyfin))
 		subcommands(Users(jellyfin))
 	}
 

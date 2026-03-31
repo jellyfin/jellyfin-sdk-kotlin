@@ -1,12 +1,12 @@
 package org.jellyfin.sdk.api.okhttp
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import io.github.oshai.kotlinlogging.KotlinLogging
 import okhttp3.OkHttp
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -72,6 +72,7 @@ public class OkHttpSocketConnection(
 		deviceId: String,
 		deviceName: String,
 		accessToken: String,
+		languages: List<String>,
 	): Boolean {
 		if (webSocket != null) disconnect()
 
@@ -86,6 +87,7 @@ public class OkHttpSocketConnection(
 			)
 			header("Authorization", authorization)
 			header("User-Agent", "${clientName}/${clientVersion} via jellyfin-sdk-kotlin (OkHttp/${OkHttp.VERSION})")
+			if (languages.isNotEmpty()) header("Accept-Language", languages.joinToString(","))
 		}.build()
 
 		_state.value = SocketConnectionState.Connecting

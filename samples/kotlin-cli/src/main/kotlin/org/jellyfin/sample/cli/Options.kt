@@ -1,6 +1,7 @@
 package org.jellyfin.sample.cli
 
 import com.github.ajalt.clikt.core.ParameterHolder
+import com.github.ajalt.clikt.parameters.options.multiple
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import kotlinx.coroutines.runBlocking
@@ -34,10 +35,21 @@ fun ParameterHolder.apiInstanceHolder(jellyfin: Jellyfin): Lazy<ApiClient> {
 		help = "Password"
 	).also(::registerOption)
 
+	val languages = option(
+		"--language",
+		help = "Language"
+	).multiple().also(::registerOption)
+
 	return lazy {
 		runBlocking {
 			// Create instance
-			val api = jellyfin.createApi(baseUrl = server.value, accessToken = token.value)
+			val api = jellyfin.createApi(
+				baseUrl = server.value,
+				accessToken = token.value,
+				deviceInfo = requireNotNull(jellyfin.deviceInfo).copy(
+					languages = languages.value,
+				),
+			)
 
 			// Authenticate manually if access token is not provided
 			if (api.accessToken == null && username.value != null) {
