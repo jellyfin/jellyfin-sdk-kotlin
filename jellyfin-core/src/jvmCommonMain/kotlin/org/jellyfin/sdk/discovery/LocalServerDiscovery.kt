@@ -1,5 +1,6 @@
 package org.jellyfin.sdk.discovery
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -7,7 +8,6 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.isActive
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
-import io.github.oshai.kotlinlogging.KotlinLogging
 import org.jellyfin.sdk.JellyfinOptions
 import org.jellyfin.sdk.model.api.ServerDiscoveryInfo
 import java.io.IOException
@@ -69,9 +69,12 @@ public actual class LocalServerDiscovery actual constructor(jellyfinOptions: Jel
 			logger.debug { """Received message "$message"""" }
 
 			// Read as JSON
-			val info = json.decodeFromString(ServerDiscoveryInfo.serializer(), message)
+			val info = json.decodeFromString<ServerDiscoveryInfo>(message)
 
-			info
+			// Assign the host address we contacted to the discovery info
+			info.copy(
+				endpointAddress = packet.address.hostAddress,
+			)
 		} catch (err: SocketTimeoutException) {
 			// Unable to receive due too timeout, which is common for non-Jellyfin devices
 			// Just ignore
