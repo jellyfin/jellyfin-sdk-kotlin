@@ -12,13 +12,16 @@ public final class org/jellyfin/sdk/model/ClientInfo {
 }
 
 public final class org/jellyfin/sdk/model/DeviceInfo {
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lorg/jellyfin/sdk/model/DeviceInfo;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/DeviceInfo;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/DeviceInfo;
+	public final fun component3 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Lorg/jellyfin/sdk/model/DeviceInfo;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/DeviceInfo;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/DeviceInfo;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getId ()Ljava/lang/String;
+	public final fun getLanguages ()Ljava/util/List;
 	public final fun getName ()Ljava/lang/String;
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
