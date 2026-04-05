@@ -110,11 +110,6 @@ public data class GetUniversalAudioStreamRequest(
 	@SerialName("enableAudioVbrEncoding")
 	public val enableAudioVbrEncoding: Boolean? = true,
 	/**
-	 * Optional. Whether to break on non key frames.
-	 */
-	@SerialName("breakOnNonKeyFrames")
-	public val breakOnNonKeyFrames: Boolean? = false,
-	/**
 	 * Whether to enable redirection. Defaults to true.
 	 */
 	@SerialName("enableRedirection")
