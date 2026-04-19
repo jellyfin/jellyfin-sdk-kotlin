@@ -26,6 +26,11 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @Serializable
 public data class GetPersonsRequest(
 	/**
+	 * Optional. All items with a lower index will be dropped from the response.
+	 */
+	@SerialName("startIndex")
+	public val startIndex: Int? = null,
+	/**
 	 * Optional. The maximum number of records to return.
 	 */
 	@SerialName("limit")
@@ -35,6 +40,21 @@ public data class GetPersonsRequest(
 	 */
 	@SerialName("searchTerm")
 	public val searchTerm: String? = null,
+	/**
+	 * Optional. Filter by items whose name starts with the given input string.
+	 */
+	@SerialName("nameStartsWith")
+	public val nameStartsWith: String? = null,
+	/**
+	 * Optional. Filter by items whose name will appear before this value when sorted alphabetically.
+	 */
+	@SerialName("nameLessThan")
+	public val nameLessThan: String? = null,
+	/**
+	 * Optional. Filter by items whose name will appear after this value when sorted alphabetically.
+	 */
+	@SerialName("nameStartsWithOrGreater")
+	public val nameStartsWithOrGreater: String? = null,
 	/**
 	 * Optional. Specify additional fields of information to return in the output.
 	 */
@@ -75,6 +95,11 @@ public data class GetPersonsRequest(
 	 */
 	@SerialName("personTypes")
 	public val personTypes: Collection<String>? = null,
+	/**
+	 * Optional. Specify this to localize the search to a specific library. Omit to use the root.
+	 */
+	@SerialName("parentId")
+	public val parentId: UUID? = null,
 	/**
 	 * Optional. If specified, person results will be filtered on items related to said persons.
 	 */

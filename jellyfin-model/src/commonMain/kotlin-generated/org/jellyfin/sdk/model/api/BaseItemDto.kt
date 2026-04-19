@@ -249,7 +249,7 @@ public data class BaseItemDto(
 	@SerialName("ParentId")
 	public val parentId: UUID? = null,
 	/**
-	 * The type.
+	 * The base item kind.
 	 */
 	@SerialName("Type")
 	public val type: BaseItemKind,
@@ -497,7 +497,7 @@ public data class BaseItemDto(
 	 * The trickplay manifest.
 	 */
 	@SerialName("Trickplay")
-	public val trickplay: Map<String, Map<String, TrickplayInfoDto>>? = null,
+	public val trickplay: Map<String, Map<String, TrickplayInfoDto>?>? = null,
 	/**
 	 * The type of the location.
 	 */
@@ -509,7 +509,7 @@ public data class BaseItemDto(
 	@SerialName("IsoType")
 	public val isoType: IsoType? = null,
 	/**
-	 * The type of the media.
+	 * Media types.
 	 */
 	@SerialName("MediaType")
 	public val mediaType: MediaType = MediaType.UNKNOWN,
@@ -685,6 +685,11 @@ public data class BaseItemDto(
 	 */
 	@SerialName("NormalizationGain")
 	public val normalizationGain: Float? = null,
+	/**
+	 * The gain required for audio normalization. This field is inherited from music album normalization gain.
+	 */
+	@SerialName("AlbumNormalizationGain")
+	public val albumNormalizationGain: Float? = null,
 	/**
 	 * The current program.
 	 */

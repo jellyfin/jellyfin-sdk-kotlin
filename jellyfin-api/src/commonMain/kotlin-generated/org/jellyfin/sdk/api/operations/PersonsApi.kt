@@ -48,8 +48,12 @@ public class PersonsApi(
 	/**
 	 * Gets all persons.
 	 *
+	 * @param startIndex Optional. All items with a lower index will be dropped from the response.
 	 * @param limit Optional. The maximum number of records to return.
 	 * @param searchTerm The search term.
+	 * @param nameStartsWith Optional. Filter by items whose name starts with the given input string.
+	 * @param nameLessThan Optional. Filter by items whose name will appear before this value when sorted alphabetically.
+	 * @param nameStartsWithOrGreater Optional. Filter by items whose name will appear after this value when sorted alphabetically.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param filters Optional. Specify additional filters to apply.
 	 * @param isFavorite Optional filter by items that are marked as favorite, or not. userId is required.
@@ -58,13 +62,18 @@ public class PersonsApi(
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 * @param excludePersonTypes Optional. If specified results will be filtered to exclude those containing the specified PersonType. Allows multiple, comma-delimited.
 	 * @param personTypes Optional. If specified results will be filtered to include only those containing the specified PersonType. Allows multiple, comma-delimited.
+	 * @param parentId Optional. Specify this to localize the search to a specific library. Omit to use the root.
 	 * @param appearsInItemId Optional. If specified, person results will be filtered on items related to said persons.
 	 * @param userId User id.
 	 * @param enableImages Optional, include image information in output.
 	 */
 	public suspend fun getPersons(
+		startIndex: Int? = null,
 		limit: Int? = null,
 		searchTerm: String? = null,
+		nameStartsWith: String? = null,
+		nameLessThan: String? = null,
+		nameStartsWithOrGreater: String? = null,
 		fields: Collection<ItemFields>? = emptyList(),
 		filters: Collection<ItemFilter>? = emptyList(),
 		isFavorite: Boolean? = null,
@@ -73,14 +82,19 @@ public class PersonsApi(
 		enableImageTypes: Collection<ImageType>? = emptyList(),
 		excludePersonTypes: Collection<String>? = emptyList(),
 		personTypes: Collection<String>? = emptyList(),
+		parentId: UUID? = null,
 		appearsInItemId: UUID? = null,
 		userId: UUID? = null,
 		enableImages: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(13) {
+		val queryParameters = buildMap<String, Any?>(18) {
+			put("startIndex", startIndex)
 			put("limit", limit)
 			put("searchTerm", searchTerm)
+			put("nameStartsWith", nameStartsWith)
+			put("nameLessThan", nameLessThan)
+			put("nameStartsWithOrGreater", nameStartsWithOrGreater)
 			put("fields", fields)
 			put("filters", filters)
 			put("isFavorite", isFavorite)
@@ -89,6 +103,7 @@ public class PersonsApi(
 			put("enableImageTypes", enableImageTypes)
 			put("excludePersonTypes", excludePersonTypes)
 			put("personTypes", personTypes)
+			put("parentId", parentId)
 			put("appearsInItemId", appearsInItemId)
 			put("userId", userId)
 			put("enableImages", enableImages)
@@ -104,8 +119,12 @@ public class PersonsApi(
 	 * @param request The request parameters
 	 */
 	public suspend fun getPersons(request: GetPersonsRequest = GetPersonsRequest()): Response<BaseItemDtoQueryResult> = getPersons(
+		startIndex = request.startIndex,
 		limit = request.limit,
 		searchTerm = request.searchTerm,
+		nameStartsWith = request.nameStartsWith,
+		nameLessThan = request.nameLessThan,
+		nameStartsWithOrGreater = request.nameStartsWithOrGreater,
 		fields = request.fields,
 		filters = request.filters,
 		isFavorite = request.isFavorite,
@@ -114,6 +133,7 @@ public class PersonsApi(
 		enableImageTypes = request.enableImageTypes,
 		excludePersonTypes = request.excludePersonTypes,
 		personTypes = request.personTypes,
+		parentId = request.parentId,
 		appearsInItemId = request.appearsInItemId,
 		userId = request.userId,
 		enableImages = request.enableImages,
