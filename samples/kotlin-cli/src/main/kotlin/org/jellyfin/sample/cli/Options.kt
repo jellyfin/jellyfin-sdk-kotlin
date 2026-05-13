@@ -8,7 +8,7 @@ import kotlinx.coroutines.runBlocking
 import org.jellyfin.sdk.Jellyfin
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.extensions.authenticateUserByName
-import org.jellyfin.sdk.api.client.extensions.userApi
+import org.jellyfin.sdk.api.client.extensions.authenticationApi
 
 fun ParameterHolder.serverOption() = option(
 	"-s", "--server",
@@ -53,7 +53,7 @@ fun ParameterHolder.apiInstanceHolder(jellyfin: Jellyfin): Lazy<ApiClient> {
 
 			// Authenticate manually if access token is not provided
 			if (api.accessToken == null && username.value != null) {
-				val response by api.userApi.authenticateUserByName(username.value.orEmpty(), password.value.orEmpty())
+				val response by api.authenticationApi.authenticateUserByName(username.value.orEmpty(), password.value.orEmpty())
 				api.update(accessToken = response.accessToken)
 			}
 

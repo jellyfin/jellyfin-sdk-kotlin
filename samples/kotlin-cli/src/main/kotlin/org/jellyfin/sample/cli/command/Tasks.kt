@@ -6,7 +6,7 @@ import kotlinx.coroutines.runBlocking
 import org.jellyfin.sample.cli.apiInstanceHolder
 import org.jellyfin.sample.cli.logger
 import org.jellyfin.sdk.Jellyfin
-import org.jellyfin.sdk.api.client.extensions.scheduledTasksApi
+import org.jellyfin.sdk.api.client.extensions.scheduledTaskApi
 
 class Tasks(
 	jellyfin: Jellyfin,
@@ -17,7 +17,7 @@ class Tasks(
 	override fun help(context: Context): String = "List scheduled tasks"
 
 	override fun run(): Unit = runBlocking {
-		val tasks by api.scheduledTasksApi.getTasks()
+		val tasks by api.scheduledTaskApi.getTasks()
 
 		for (task in tasks) {
 			logger.info("${task.name}: ${task.description}")

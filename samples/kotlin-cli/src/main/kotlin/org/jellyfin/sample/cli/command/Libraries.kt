@@ -6,7 +6,7 @@ import kotlinx.coroutines.runBlocking
 import org.jellyfin.sample.cli.apiInstanceHolder
 import org.jellyfin.sample.cli.logger
 import org.jellyfin.sdk.Jellyfin
-import org.jellyfin.sdk.api.client.extensions.userViewsApi
+import org.jellyfin.sdk.api.client.extensions.userViewApi
 
 class Libraries(
 	jellyfin: Jellyfin
@@ -17,11 +17,11 @@ class Libraries(
 	override fun help(context: Context): String = "List all libraries"
 
 	override fun run(): Unit = runBlocking {
-		val libraries by api.userViewsApi.getUserViews(includeHidden = false)
+		val libraries by api.userViewApi.getUserViews(includeHidden = false)
 
-		if (libraries.items.isNullOrEmpty()) logger.info("No libraries found")
+		if (libraries.items.isEmpty()) logger.info("No libraries found")
 
-		libraries.items?.forEach {
+		libraries.items.forEach {
 			logger.info(it.name)
 		}
 	}
