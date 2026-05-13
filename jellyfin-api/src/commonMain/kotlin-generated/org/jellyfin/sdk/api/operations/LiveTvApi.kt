@@ -8,7 +8,6 @@ package org.jellyfin.sdk.api.operations
 import kotlin.Any
 import kotlin.Boolean
 import kotlin.ByteArray
-import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
 import kotlin.Unit
@@ -51,7 +50,6 @@ import org.jellyfin.sdk.model.api.request.GetLiveTvChannelsRequest
 import org.jellyfin.sdk.model.api.request.GetLiveTvProgramsRequest
 import org.jellyfin.sdk.model.api.request.GetRecommendedProgramsRequest
 import org.jellyfin.sdk.model.api.request.GetRecordingsRequest
-import org.jellyfin.sdk.model.api.request.GetRecordingsSeriesRequest
 
 public class LiveTvApi(
 	private val api: ApiClient,
@@ -771,38 +769,6 @@ public class LiveTvApi(
 	}
 
 	/**
-	 * Get recording group.
-	 *
-	 * @param groupId Group id.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getRecordingGroup(groupId: UUID): Response<Unit> {
-		val pathParameters = buildMap<String, Any?>(1) {
-			put("groupId", groupId)
-		}
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<Unit>("/LiveTv/Recordings/Groups/{groupId}", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets live tv recording groups.
-	 *
-	 * @param userId Optional. Filter by user and attach user data.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getRecordingGroups(userId: UUID? = null): Response<BaseItemDtoQueryResult> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(1) {
-			put("userId", userId)
-		}
-		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Recordings/Groups", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Gets live tv recordings.
 	 *
 	 * @param channelId Optional. Filter by channel id.
@@ -897,86 +863,6 @@ public class LiveTvApi(
 		isSports = request.isSports,
 		isNews = request.isNews,
 		isLibraryItem = request.isLibraryItem,
-		enableTotalRecordCount = request.enableTotalRecordCount,
-	)
-
-	/**
-	 * Gets live tv recording series.
-	 *
-	 * @param channelId Optional. Filter by channel id.
-	 * @param userId Optional. Filter by user and attach user data.
-	 * @param groupId Optional. Filter by recording group.
-	 * @param startIndex Optional. The record index to start at. All items with a lower index will be dropped from the results.
-	 * @param limit Optional. The maximum number of records to return.
-	 * @param status Optional. Filter by recording status.
-	 * @param isInProgress Optional. Filter by recordings that are in progress, or not.
-	 * @param seriesTimerId Optional. Filter by recordings belonging to a series timer.
-	 * @param enableImages Optional. Include image information in output.
-	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
-	 * @param enableImageTypes Optional. The image types to include in the output.
-	 * @param fields Optional. Specify additional fields of information to return in the output.
-	 * @param enableUserData Optional. Include user data.
-	 * @param enableTotalRecordCount Optional. Return total record count.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getRecordingsSeries(
-		channelId: String? = null,
-		userId: UUID? = null,
-		groupId: String? = null,
-		startIndex: Int? = null,
-		limit: Int? = null,
-		status: RecordingStatus? = null,
-		isInProgress: Boolean? = null,
-		seriesTimerId: String? = null,
-		enableImages: Boolean? = null,
-		imageTypeLimit: Int? = null,
-		enableImageTypes: Collection<ImageType>? = emptyList(),
-		fields: Collection<ItemFields>? = emptyList(),
-		enableUserData: Boolean? = null,
-		enableTotalRecordCount: Boolean? = true,
-	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(14) {
-			put("channelId", channelId)
-			put("userId", userId)
-			put("groupId", groupId)
-			put("startIndex", startIndex)
-			put("limit", limit)
-			put("status", status)
-			put("isInProgress", isInProgress)
-			put("seriesTimerId", seriesTimerId)
-			put("enableImages", enableImages)
-			put("imageTypeLimit", imageTypeLimit)
-			put("enableImageTypes", enableImageTypes)
-			put("fields", fields)
-			put("enableUserData", enableUserData)
-			put("enableTotalRecordCount", enableTotalRecordCount)
-		}
-		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Recordings/Series", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets live tv recording series.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getRecordingsSeries(request: GetRecordingsSeriesRequest = GetRecordingsSeriesRequest()): Response<BaseItemDtoQueryResult> = getRecordingsSeries(
-		channelId = request.channelId,
-		userId = request.userId,
-		groupId = request.groupId,
-		startIndex = request.startIndex,
-		limit = request.limit,
-		status = request.status,
-		isInProgress = request.isInProgress,
-		seriesTimerId = request.seriesTimerId,
-		enableImages = request.enableImages,
-		imageTypeLimit = request.imageTypeLimit,
-		enableImageTypes = request.enableImageTypes,
-		fields = request.fields,
-		enableUserData = request.enableUserData,
 		enableTotalRecordCount = request.enableTotalRecordCount,
 	)
 

@@ -14,6 +14,8 @@ import kotlin.collections.List
 import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
+import kotlin.require
+import kotlin.text.Regex
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -59,6 +61,7 @@ public class LibraryStructureApi(
 		`data`: AddVirtualFolderDto? = null,
 	): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
+		require(name == null || Regex("""^(?:\S(?:.*\S)?)$""").matches(name)) { """Parameter "name" must match ^(?:\S(?:.*\S)?)$.""" }
 		val queryParameters = buildMap<String, Any?>(4) {
 			put("name", name)
 			put("collectionType", collectionType)

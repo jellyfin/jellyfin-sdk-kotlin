@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @SerialName("ScheduledTaskEnded")
 public data class ScheduledTaskEndedMessage(
 	/**
-	 * Class TaskExecutionInfo.
+	 * The data.
 	 */
 	@SerialName("Data")
 	public val `data`: TaskResult? = null,

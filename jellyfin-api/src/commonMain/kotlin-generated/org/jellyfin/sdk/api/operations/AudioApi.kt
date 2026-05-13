@@ -13,8 +13,10 @@ import kotlin.Float
 import kotlin.Int
 import kotlin.Long
 import kotlin.String
+import kotlin.collections.Collection
 import kotlin.collections.Map
 import kotlin.collections.buildMap
+import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
 import kotlin.require
 import kotlin.text.Regex
@@ -23,11 +25,13 @@ import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.EncodingContext
+import org.jellyfin.sdk.model.api.MediaStreamProtocol
 import org.jellyfin.sdk.model.api.SubtitleDeliveryMethod
 import org.jellyfin.sdk.model.api.request.GetAudioStreamByContainerDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetAudioStreamByContainerRequest
 import org.jellyfin.sdk.model.api.request.GetAudioStreamDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetAudioStreamRequest
+import org.jellyfin.sdk.model.api.request.GetUniversalAudioStreamRequest
 
 public class AudioApi(
 	private val api: ApiClient,
@@ -50,7 +54,6 @@ public class AudioApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -101,7 +104,6 @@ public class AudioApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -145,7 +147,7 @@ public class AudioApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(48) {
+		val queryParameters = buildMap<String, Any?>(47) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -160,7 +162,6 @@ public class AudioApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -221,7 +222,6 @@ public class AudioApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		audioBitRate = request.audioBitRate,
@@ -275,7 +275,6 @@ public class AudioApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -326,7 +325,6 @@ public class AudioApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -370,7 +368,7 @@ public class AudioApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(48) {
+		val queryParameters = buildMap<String, Any?>(47) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -385,7 +383,6 @@ public class AudioApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -441,7 +438,6 @@ public class AudioApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -492,7 +488,6 @@ public class AudioApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -537,7 +532,7 @@ public class AudioApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(47) {
+		val queryParameters = buildMap<String, Any?>(46) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -551,7 +546,6 @@ public class AudioApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -612,7 +606,6 @@ public class AudioApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		audioBitRate = request.audioBitRate,
@@ -666,7 +659,6 @@ public class AudioApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -717,7 +709,6 @@ public class AudioApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -762,7 +753,7 @@ public class AudioApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(47) {
+		val queryParameters = buildMap<String, Any?>(46) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -776,7 +767,6 @@ public class AudioApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -833,7 +823,6 @@ public class AudioApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -886,7 +875,6 @@ public class AudioApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -931,7 +919,7 @@ public class AudioApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(48) {
+		val queryParameters = buildMap<String, Any?>(47) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -946,7 +934,6 @@ public class AudioApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -1009,7 +996,6 @@ public class AudioApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		audioBitRate = request.audioBitRate,
@@ -1064,7 +1050,6 @@ public class AudioApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -1117,7 +1102,6 @@ public class AudioApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -1162,7 +1146,7 @@ public class AudioApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(48) {
+		val queryParameters = buildMap<String, Any?>(47) {
 			put("static", static)
 			put("params", params)
 			put("tag", tag)
@@ -1177,7 +1161,6 @@ public class AudioApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -1234,7 +1217,6 @@ public class AudioApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -1287,7 +1269,6 @@ public class AudioApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -1331,7 +1312,7 @@ public class AudioApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(48) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -1347,7 +1328,6 @@ public class AudioApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -1410,7 +1390,6 @@ public class AudioApi(
 		enableAutoStreamCopy = request.enableAutoStreamCopy,
 		allowVideoStreamCopy = request.allowVideoStreamCopy,
 		allowAudioStreamCopy = request.allowAudioStreamCopy,
-		breakOnNonKeyFrames = request.breakOnNonKeyFrames,
 		audioSampleRate = request.audioSampleRate,
 		maxAudioBitDepth = request.maxAudioBitDepth,
 		audioBitRate = request.audioBitRate,
@@ -1465,7 +1444,6 @@ public class AudioApi(
 	 * @param enableAutoStreamCopy Whether or not to allow automatic stream copy if requested values match the original source. Defaults to true.
 	 * @param allowVideoStreamCopy Whether or not to allow copying of the video stream url.
 	 * @param allowAudioStreamCopy Whether or not to allow copying of the audio stream url.
-	 * @param breakOnNonKeyFrames Optional. Whether to break on non key frames.
 	 * @param audioSampleRate Optional. Specify a specific audio sample rate, e.g. 44100.
 	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
 	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
@@ -1518,7 +1496,6 @@ public class AudioApi(
 		enableAutoStreamCopy: Boolean? = null,
 		allowVideoStreamCopy: Boolean? = null,
 		allowAudioStreamCopy: Boolean? = null,
-		breakOnNonKeyFrames: Boolean? = null,
 		audioSampleRate: Int? = null,
 		maxAudioBitDepth: Int? = null,
 		audioBitRate: Int? = null,
@@ -1562,7 +1539,7 @@ public class AudioApi(
 		require(level == null || Regex("""-?[0-9]+(?:\.[0-9]+)?""").matches(level)) { """Parameter "level" must match -?[0-9]+(?:\.[0-9]+)?.""" }
 		require(videoCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(videoCodec)) { """Parameter "videoCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
 		require(subtitleCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(subtitleCodec)) { """Parameter "subtitleCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
-		val queryParameters = buildMap<String, Any?>(49) {
+		val queryParameters = buildMap<String, Any?>(48) {
 			put("container", container)
 			put("static", static)
 			put("params", params)
@@ -1578,7 +1555,6 @@ public class AudioApi(
 			put("enableAutoStreamCopy", enableAutoStreamCopy)
 			put("allowVideoStreamCopy", allowVideoStreamCopy)
 			put("allowAudioStreamCopy", allowAudioStreamCopy)
-			put("breakOnNonKeyFrames", breakOnNonKeyFrames)
 			put("audioSampleRate", audioSampleRate)
 			put("maxAudioBitDepth", maxAudioBitDepth)
 			put("audioBitRate", audioBitRate)
@@ -1614,5 +1590,171 @@ public class AudioApi(
 			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
 		}
 		return api.createUrl("/Audio/{itemId}/stream", pathParameters, queryParameters)
+	}
+
+	/**
+	 * Gets an audio stream.
+	 *
+	 * @param itemId The item id.
+	 * @param container Optional. The audio container.
+	 * @param mediaSourceId The media version id, if playing an alternate version.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
+	 * @param userId Optional. The user id.
+	 * @param audioCodec Optional. The audio codec to transcode to.
+	 * @param maxAudioChannels Optional. The maximum number of audio channels.
+	 * @param transcodingAudioChannels Optional. The number of how many audio channels to transcode to.
+	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
+	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
+	 * @param transcodingContainer Optional. The container to transcode to.
+	 * @param transcodingProtocol Optional. The transcoding protocol.
+	 * @param maxAudioSampleRate Optional. The maximum audio sample rate.
+	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
+	 * @param enableRemoteMedia Optional. Whether to enable remote media.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
+	 * @param enableRedirection Whether to enable redirection. Defaults to true.
+	 */
+	public suspend fun getUniversalAudioStream(
+		itemId: UUID,
+		container: Collection<String>? = emptyList(),
+		mediaSourceId: String? = null,
+		deviceId: String? = null,
+		userId: UUID? = null,
+		audioCodec: String? = null,
+		maxAudioChannels: Int? = null,
+		transcodingAudioChannels: Int? = null,
+		maxStreamingBitrate: Int? = null,
+		audioBitRate: Int? = null,
+		startTimeTicks: Long? = null,
+		transcodingContainer: String? = null,
+		transcodingProtocol: MediaStreamProtocol? = null,
+		maxAudioSampleRate: Int? = null,
+		maxAudioBitDepth: Int? = null,
+		enableRemoteMedia: Boolean? = null,
+		enableAudioVbrEncoding: Boolean? = true,
+		enableRedirection: Boolean? = true,
+	): Response<ByteArray> {
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(transcodingContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(transcodingContainer)) { """Parameter "transcodingContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("container", container)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("userId", userId)
+			put("audioCodec", audioCodec)
+			put("maxAudioChannels", maxAudioChannels)
+			put("transcodingAudioChannels", transcodingAudioChannels)
+			put("maxStreamingBitrate", maxStreamingBitrate)
+			put("audioBitRate", audioBitRate)
+			put("startTimeTicks", startTimeTicks)
+			put("transcodingContainer", transcodingContainer)
+			put("transcodingProtocol", transcodingProtocol)
+			put("maxAudioSampleRate", maxAudioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("enableRemoteMedia", enableRemoteMedia)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("enableRedirection", enableRedirection)
+		}
+		val data = null
+		val response = api.`get`<ByteArray>("/Audio/{itemId}/universal", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets an audio stream.
+	 *
+	 * @param request The request parameters
+	 */
+	public suspend fun getUniversalAudioStream(request: GetUniversalAudioStreamRequest): Response<ByteArray> = getUniversalAudioStream(
+		itemId = request.itemId,
+		container = request.container,
+		mediaSourceId = request.mediaSourceId,
+		deviceId = request.deviceId,
+		userId = request.userId,
+		audioCodec = request.audioCodec,
+		maxAudioChannels = request.maxAudioChannels,
+		transcodingAudioChannels = request.transcodingAudioChannels,
+		maxStreamingBitrate = request.maxStreamingBitrate,
+		audioBitRate = request.audioBitRate,
+		startTimeTicks = request.startTimeTicks,
+		transcodingContainer = request.transcodingContainer,
+		transcodingProtocol = request.transcodingProtocol,
+		maxAudioSampleRate = request.maxAudioSampleRate,
+		maxAudioBitDepth = request.maxAudioBitDepth,
+		enableRemoteMedia = request.enableRemoteMedia,
+		enableAudioVbrEncoding = request.enableAudioVbrEncoding,
+		enableRedirection = request.enableRedirection,
+	)
+
+	/**
+	 * Gets an audio stream.
+	 *
+	 * @param itemId The item id.
+	 * @param container Optional. The audio container.
+	 * @param mediaSourceId The media version id, if playing an alternate version.
+	 * @param deviceId The device id of the client requesting. Used to stop encoding processes when needed.
+	 * @param userId Optional. The user id.
+	 * @param audioCodec Optional. The audio codec to transcode to.
+	 * @param maxAudioChannels Optional. The maximum number of audio channels.
+	 * @param transcodingAudioChannels Optional. The number of how many audio channels to transcode to.
+	 * @param maxStreamingBitrate Optional. The maximum streaming bitrate.
+	 * @param audioBitRate Optional. Specify an audio bitrate to encode to, e.g. 128000. If omitted this will be left to encoder defaults.
+	 * @param startTimeTicks Optional. Specify a starting offset, in ticks. 1 tick = 10000 ms.
+	 * @param transcodingContainer Optional. The container to transcode to.
+	 * @param transcodingProtocol Optional. The transcoding protocol.
+	 * @param maxAudioSampleRate Optional. The maximum audio sample rate.
+	 * @param maxAudioBitDepth Optional. The maximum audio bit depth.
+	 * @param enableRemoteMedia Optional. Whether to enable remote media.
+	 * @param enableAudioVbrEncoding Optional. Whether to enable Audio Encoding.
+	 * @param enableRedirection Whether to enable redirection. Defaults to true.
+	 */
+	public fun getUniversalAudioStreamUrl(
+		itemId: UUID,
+		container: Collection<String>? = emptyList(),
+		mediaSourceId: String? = null,
+		deviceId: String? = null,
+		userId: UUID? = null,
+		audioCodec: String? = null,
+		maxAudioChannels: Int? = null,
+		transcodingAudioChannels: Int? = null,
+		maxStreamingBitrate: Int? = null,
+		audioBitRate: Int? = null,
+		startTimeTicks: Long? = null,
+		transcodingContainer: String? = null,
+		transcodingProtocol: MediaStreamProtocol? = null,
+		maxAudioSampleRate: Int? = null,
+		maxAudioBitDepth: Int? = null,
+		enableRemoteMedia: Boolean? = null,
+		enableAudioVbrEncoding: Boolean? = true,
+		enableRedirection: Boolean? = true,
+	): String {
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		require(audioCodec == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(audioCodec)) { """Parameter "audioCodec" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		require(transcodingContainer == null || Regex("""^[a-zA-Z0-9\-\._,|]{0,40}$""").matches(transcodingContainer)) { """Parameter "transcodingContainer" must match ^[a-zA-Z0-9\-\._,|]{0,40}$.""" }
+		val queryParameters = buildMap<String, Any?>(17) {
+			put("container", container)
+			put("mediaSourceId", mediaSourceId)
+			put("deviceId", deviceId)
+			put("userId", userId)
+			put("audioCodec", audioCodec)
+			put("maxAudioChannels", maxAudioChannels)
+			put("transcodingAudioChannels", transcodingAudioChannels)
+			put("maxStreamingBitrate", maxStreamingBitrate)
+			put("audioBitRate", audioBitRate)
+			put("startTimeTicks", startTimeTicks)
+			put("transcodingContainer", transcodingContainer)
+			put("transcodingProtocol", transcodingProtocol)
+			put("maxAudioSampleRate", maxAudioSampleRate)
+			put("maxAudioBitDepth", maxAudioBitDepth)
+			put("enableRemoteMedia", enableRemoteMedia)
+			put("enableAudioVbrEncoding", enableAudioVbrEncoding)
+			put("enableRedirection", enableRedirection)
+		}
+		return api.createUrl("/Audio/{itemId}/universal", pathParameters, queryParameters)
 	}
 }

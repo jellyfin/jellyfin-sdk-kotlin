@@ -18,14 +18,7 @@ import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.delete
 import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
-import org.jellyfin.sdk.model.api.AuthenticateUserByName
-import org.jellyfin.sdk.model.api.AuthenticationResult
 import org.jellyfin.sdk.model.api.CreateUserByName
-import org.jellyfin.sdk.model.api.ForgotPasswordDto
-import org.jellyfin.sdk.model.api.ForgotPasswordPinDto
-import org.jellyfin.sdk.model.api.ForgotPasswordResult
-import org.jellyfin.sdk.model.api.PinRedeemResult
-import org.jellyfin.sdk.model.api.QuickConnectDto
 import org.jellyfin.sdk.model.api.UpdateUserPassword
 import org.jellyfin.sdk.model.api.UserConfiguration
 import org.jellyfin.sdk.model.api.UserDto
@@ -34,26 +27,6 @@ import org.jellyfin.sdk.model.api.UserPolicy
 public class UserApi(
 	private val api: ApiClient,
 ) : Api {
-	/**
-	 * Authenticates a user by name.
-	 */
-	public suspend fun authenticateUserByName(`data`: AuthenticateUserByName): Response<AuthenticationResult> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<AuthenticationResult>("/Users/AuthenticateByName", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Authenticates a user with quick connect.
-	 */
-	public suspend fun authenticateWithQuickConnect(`data`: QuickConnectDto): Response<AuthenticationResult> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<AuthenticationResult>("/Users/AuthenticateWithQuickConnect", pathParameters, queryParameters, data)
-		return response
-	}
-
 	/**
 	 * Creates a user.
 	 */
@@ -76,26 +49,6 @@ public class UserApi(
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<Unit>("/Users/{userId}", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Initiates the forgot password process for a local user.
-	 */
-	public suspend fun forgotPassword(`data`: ForgotPasswordDto): Response<ForgotPasswordResult> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<ForgotPasswordResult>("/Users/ForgotPassword", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Redeems a forgot password pin.
-	 */
-	public suspend fun forgotPasswordPin(`data`: ForgotPasswordPinDto): Response<PinRedeemResult> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<PinRedeemResult>("/Users/ForgotPassword/Pin", pathParameters, queryParameters, data)
 		return response
 	}
 

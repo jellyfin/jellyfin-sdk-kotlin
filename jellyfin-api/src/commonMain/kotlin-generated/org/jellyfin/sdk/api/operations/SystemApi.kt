@@ -6,24 +6,64 @@
 package org.jellyfin.sdk.api.operations
 
 import kotlin.Any
+import kotlin.Boolean
+import kotlin.ByteArray
+import kotlin.Int
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.Collection
 import kotlin.collections.List
 import kotlin.collections.buildMap
+import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
+import kotlinx.serialization.json.JsonElement
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
 import org.jellyfin.sdk.api.client.extensions.post
+import org.jellyfin.sdk.model.DateTime
+import org.jellyfin.sdk.model.UUID
+import org.jellyfin.sdk.model.api.ActivityLogEntryQueryResult
+import org.jellyfin.sdk.model.api.ActivityLogSortBy
+import org.jellyfin.sdk.model.api.BrandingOptionsDto
+import org.jellyfin.sdk.model.api.ClientLogDocumentResponseDto
 import org.jellyfin.sdk.model.api.EndPointInfo
 import org.jellyfin.sdk.model.api.LogFile
+import org.jellyfin.sdk.model.api.LogLevel
+import org.jellyfin.sdk.model.api.MetadataOptions
 import org.jellyfin.sdk.model.api.PublicSystemInfo
+import org.jellyfin.sdk.model.api.ServerConfiguration
+import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.api.SystemInfo
 import org.jellyfin.sdk.model.api.SystemStorageDto
+import org.jellyfin.sdk.model.api.UtcTimeResponse
+import org.jellyfin.sdk.model.api.request.GetLogEntriesRequest
 
 public class SystemApi(
 	private val api: ApiClient,
 ) : Api {
+	/**
+	 * Gets application configuration.
+	 */
+	public suspend fun getConfiguration(): Response<ServerConfiguration> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<ServerConfiguration>("/System/Configuration", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets a default MetadataOptions object.
+	 */
+	public suspend fun getDefaultMetadataOptions(): Response<MetadataOptions> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<MetadataOptions>("/System/Configuration/MetadataOptions/Default", pathParameters, queryParameters, data)
+		return response
+	}
+
 	/**
 	 * Gets information about the request endpoint.
 	 */
@@ -34,6 +74,84 @@ public class SystemApi(
 		val response = api.`get`<EndPointInfo>("/System/Endpoint", pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets activity log entries.
+	 *
+	 * @param startIndex The record index to start at. All items with a lower index will be dropped from the results.
+	 * @param limit The maximum number of records to return.
+	 * @param minDate The minimum date.
+	 * @param maxDate The maximum date.
+	 * @param hasUserId Filter log entries if it has user id, or not.
+	 * @param name Filter by name.
+	 * @param overview Filter by overview.
+	 * @param shortOverview Filter by short overview.
+	 * @param type Filter by type.
+	 * @param itemId Filter by item id.
+	 * @param username Filter by username.
+	 * @param severity Filter by log severity.
+	 * @param sortBy Specify one or more sort orders. Format: SortBy=Name,Type.
+	 * @param sortOrder Sort Order..
+	 */
+	public suspend fun getLogEntries(
+		startIndex: Int? = null,
+		limit: Int? = null,
+		minDate: DateTime? = null,
+		maxDate: DateTime? = null,
+		hasUserId: Boolean? = null,
+		name: String? = null,
+		overview: String? = null,
+		shortOverview: String? = null,
+		type: String? = null,
+		itemId: UUID? = null,
+		username: String? = null,
+		severity: LogLevel? = null,
+		sortBy: Collection<ActivityLogSortBy>? = emptyList(),
+		sortOrder: Collection<SortOrder>? = emptyList(),
+	): Response<ActivityLogEntryQueryResult> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = buildMap<String, Any?>(14) {
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("minDate", minDate)
+			put("maxDate", maxDate)
+			put("hasUserId", hasUserId)
+			put("name", name)
+			put("overview", overview)
+			put("shortOverview", shortOverview)
+			put("type", type)
+			put("itemId", itemId)
+			put("username", username)
+			put("severity", severity)
+			put("sortBy", sortBy)
+			put("sortOrder", sortOrder)
+		}
+		val data = null
+		val response = api.`get`<ActivityLogEntryQueryResult>("/System/ActivityLog/Entries", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets activity log entries.
+	 *
+	 * @param request The request parameters
+	 */
+	public suspend fun getLogEntries(request: GetLogEntriesRequest = GetLogEntriesRequest()): Response<ActivityLogEntryQueryResult> = getLogEntries(
+		startIndex = request.startIndex,
+		limit = request.limit,
+		minDate = request.minDate,
+		maxDate = request.maxDate,
+		hasUserId = request.hasUserId,
+		name = request.name,
+		overview = request.overview,
+		shortOverview = request.shortOverview,
+		type = request.type,
+		itemId = request.itemId,
+		username = request.username,
+		severity = request.severity,
+		sortBy = request.sortBy,
+		sortOrder = request.sortOrder,
+	)
 
 	/**
 	 * Gets a log file.
@@ -48,6 +166,34 @@ public class SystemApi(
 		val data = null
 		val response = api.`get`<String>("/System/Logs/Log", pathParameters, queryParameters, data)
 		return response
+	}
+
+	/**
+	 * Gets a named configuration.
+	 *
+	 * @param key Configuration key.
+	 */
+	public suspend fun getNamedConfiguration(key: String): Response<ByteArray> {
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("key", key)
+		}
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<ByteArray>("/System/Configuration/{key}", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets a named configuration.
+	 *
+	 * @param key Configuration key.
+	 */
+	public fun getNamedConfigurationUrl(key: String): String {
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("key", key)
+		}
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/System/Configuration/{key}", pathParameters, queryParameters)
 	}
 
 	/**
@@ -106,6 +252,27 @@ public class SystemApi(
 	}
 
 	/**
+	 * Gets the current UTC time.
+	 */
+	public suspend fun getUtcTime(): Response<UtcTimeResponse> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<UtcTimeResponse>("/GetUtcTime", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Upload a document.
+	 */
+	public suspend fun logFile(`data`: String): Response<ClientLogDocumentResponseDto> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<ClientLogDocumentResponseDto>("/ClientLog/Document", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Pings the system.
 	 */
 	public suspend fun postPingSystem(): Response<String> {
@@ -135,6 +302,40 @@ public class SystemApi(
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.post<Unit>("/System/Shutdown", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Updates branding configuration.
+	 */
+	public suspend fun updateBrandingConfiguration(`data`: BrandingOptionsDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/System/Configuration/Branding", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Updates application configuration.
+	 */
+	public suspend fun updateConfiguration(`data`: ServerConfiguration): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/System/Configuration", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Updates named configuration.
+	 *
+	 * @param key Configuration key.
+	 */
+	public suspend fun updateNamedConfiguration(key: String, `data`: JsonElement): Response<Unit> {
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("key", key)
+		}
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/System/Configuration/{key}", pathParameters, queryParameters, data)
 		return response
 	}
 }

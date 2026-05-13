@@ -6,7 +6,6 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Boolean
-import kotlin.Deprecated
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -20,10 +19,4 @@ public data class StartupRemoteAccessDto(
 	 */
 	@SerialName("EnableRemoteAccess")
 	public val enableRemoteAccess: Boolean,
-	/**
-	 * A value indicating whether enable automatic port mapping.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	@SerialName("EnableAutomaticPortMapping")
-	public val enableAutomaticPortMapping: Boolean,
 )

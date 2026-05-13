@@ -7,7 +7,6 @@ package org.jellyfin.sdk.api.operations
 
 import kotlin.Any
 import kotlin.Boolean
-import kotlin.Deprecated
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.List
@@ -66,18 +65,6 @@ public class EnvironmentApi(
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<List<FileSystemEntryInfo>>("/Environment/Drives", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Gets network paths.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getNetworkShares(): Response<List<FileSystemEntryInfo>> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<List<FileSystemEntryInfo>>("/Environment/NetworkShares", pathParameters, queryParameters, data)
 		return response
 	}
 

@@ -28,8 +28,10 @@ import org.jellyfin.sdk.model.api.GeneralCommand
 import org.jellyfin.sdk.model.api.GeneralCommandType
 import org.jellyfin.sdk.model.api.MediaType
 import org.jellyfin.sdk.model.api.MessageCommand
-import org.jellyfin.sdk.model.api.NameIdPair
 import org.jellyfin.sdk.model.api.PlayCommand
+import org.jellyfin.sdk.model.api.PlaybackProgressInfo
+import org.jellyfin.sdk.model.api.PlaybackStartInfo
+import org.jellyfin.sdk.model.api.PlaybackStopInfo
 import org.jellyfin.sdk.model.api.PlaystateCommand
 import org.jellyfin.sdk.model.api.SessionInfoDto
 import org.jellyfin.sdk.model.api.request.PlayRequest
@@ -83,28 +85,6 @@ public class SessionApi(
 	}
 
 	/**
-	 * Get all auth providers.
-	 */
-	public suspend fun getAuthProviders(): Response<List<NameIdPair>> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<List<NameIdPair>>("/Auth/Providers", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Get all password reset providers.
-	 */
-	public suspend fun getPasswordResetProviders(): Response<List<NameIdPair>> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = emptyMap<String, Any?>()
-		val data = null
-		val response = api.`get`<List<NameIdPair>>("/Auth/PasswordResetProviders", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
 	 * Gets a list of sessions.
 	 *
 	 * @param controllableByUserId Filter by sessions that a given user is allowed to remote control.
@@ -124,6 +104,21 @@ public class SessionApi(
 		}
 		val data = null
 		val response = api.`get`<List<SessionInfoDto>>("/Sessions", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Pings a playback session.
+	 *
+	 * @param playSessionId Playback session id.
+	 */
+	public suspend fun pingPlaybackSession(playSessionId: String): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = buildMap<String, Any?>(1) {
+			put("playSessionId", playSessionId)
+		}
+		val data = null
+		val response = api.post<Unit>("/Sessions/Playing/Ping", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -252,6 +247,36 @@ public class SessionApi(
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.delete<Unit>("/Sessions/{sessionId}/User/{userId}", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Reports playback progress within a session.
+	 */
+	public suspend fun reportPlaybackProgress(`data`: PlaybackProgressInfo? = null): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Sessions/Playing/Progress", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Reports playback has started within a session.
+	 */
+	public suspend fun reportPlaybackStart(`data`: PlaybackStartInfo? = null): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Sessions/Playing", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Reports playback has stopped within a session.
+	 */
+	public suspend fun reportPlaybackStopped(`data`: PlaybackStopInfo? = null): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/Sessions/Playing/Stopped", pathParameters, queryParameters, data)
 		return response
 	}
 

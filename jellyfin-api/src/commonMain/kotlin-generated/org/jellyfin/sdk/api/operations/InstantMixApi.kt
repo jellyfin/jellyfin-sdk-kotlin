@@ -22,7 +22,6 @@ import org.jellyfin.sdk.model.api.BaseItemDtoQueryResult
 import org.jellyfin.sdk.model.api.ImageType
 import org.jellyfin.sdk.model.api.ItemFields
 import org.jellyfin.sdk.model.api.request.GetInstantMixFromAlbumRequest
-import org.jellyfin.sdk.model.api.request.GetInstantMixFromArtists2Request
 import org.jellyfin.sdk.model.api.request.GetInstantMixFromArtistsRequest
 import org.jellyfin.sdk.model.api.request.GetInstantMixFromItemRequest
 import org.jellyfin.sdk.model.api.request.GetInstantMixFromMusicGenreByIdRequest
@@ -144,62 +143,6 @@ public class InstantMixApi(
 	)
 
 	/**
-	 * Creates an instant playlist based on a given artist.
-	 *
-	 * @param id The item id.
-	 * @param userId Optional. Filter by user id, and attach user data.
-	 * @param limit Optional. The maximum number of records to return.
-	 * @param fields Optional. Specify additional fields of information to return in the output.
-	 * @param enableImages Optional. Include image information in output.
-	 * @param enableUserData Optional. Include user data.
-	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
-	 * @param enableImageTypes Optional. The image types to include in the output.
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getInstantMixFromArtists2(
-		id: UUID,
-		userId: UUID? = null,
-		limit: Int? = null,
-		fields: Collection<ItemFields>? = emptyList(),
-		enableImages: Boolean? = null,
-		enableUserData: Boolean? = null,
-		imageTypeLimit: Int? = null,
-		enableImageTypes: Collection<ImageType>? = emptyList(),
-	): Response<BaseItemDtoQueryResult> {
-		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(8) {
-			put("id", id)
-			put("userId", userId)
-			put("limit", limit)
-			put("fields", fields)
-			put("enableImages", enableImages)
-			put("enableUserData", enableUserData)
-			put("imageTypeLimit", imageTypeLimit)
-			put("enableImageTypes", enableImageTypes)
-		}
-		val data = null
-		val response = api.`get`<BaseItemDtoQueryResult>("/Artists/InstantMix", pathParameters, queryParameters, data)
-		return response
-	}
-
-	/**
-	 * Creates an instant playlist based on a given artist.
-	 *
-	 * @param request The request parameters
-	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
-	public suspend fun getInstantMixFromArtists2(request: GetInstantMixFromArtists2Request): Response<BaseItemDtoQueryResult> = getInstantMixFromArtists2(
-		id = request.id,
-		userId = request.userId,
-		limit = request.limit,
-		fields = request.fields,
-		enableImages = request.enableImages,
-		enableUserData = request.enableUserData,
-		imageTypeLimit = request.imageTypeLimit,
-		enableImageTypes = request.enableImageTypes,
-	)
-
-	/**
 	 * Creates an instant playlist based on a given item.
 	 *
 	 * @param itemId The item id.
@@ -266,6 +209,7 @@ public class InstantMixApi(
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getInstantMixFromMusicGenreById(
 		id: UUID,
 		userId: UUID? = null,
@@ -297,6 +241,7 @@ public class InstantMixApi(
 	 *
 	 * @param request The request parameters
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getInstantMixFromMusicGenreById(request: GetInstantMixFromMusicGenreByIdRequest): Response<BaseItemDtoQueryResult> = getInstantMixFromMusicGenreById(
 		id = request.id,
 		userId = request.userId,
@@ -320,6 +265,7 @@ public class InstantMixApi(
 	 * @param imageTypeLimit Optional. The max number of images to return, per image type.
 	 * @param enableImageTypes Optional. The image types to include in the output.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getInstantMixFromMusicGenreByName(
 		name: String,
 		userId: UUID? = null,
@@ -352,6 +298,7 @@ public class InstantMixApi(
 	 *
 	 * @param request The request parameters
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getInstantMixFromMusicGenreByName(request: GetInstantMixFromMusicGenreByNameRequest): Response<BaseItemDtoQueryResult> = getInstantMixFromMusicGenreByName(
 		name = request.name,
 		userId = request.userId,

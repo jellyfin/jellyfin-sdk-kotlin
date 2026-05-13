@@ -28,7 +28,7 @@ public data class RemoteSearchResult(
 	 * The provider ids.
 	 */
 	@SerialName("ProviderIds")
-	public val providerIds: Map<String, String?>? = null,
+	public val providerIds: Map<String, String>,
 	/**
 	 * The year.
 	 */
@@ -51,5 +51,5 @@ public data class RemoteSearchResult(
 	@SerialName("AlbumArtist")
 	public val albumArtist: RemoteSearchResult? = null,
 	@SerialName("Artists")
-	public val artists: List<RemoteSearchResult>? = null,
+	public val artists: List<RemoteSearchResult>,
 )

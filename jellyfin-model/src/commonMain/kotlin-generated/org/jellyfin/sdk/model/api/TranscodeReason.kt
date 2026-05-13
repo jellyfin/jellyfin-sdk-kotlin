@@ -68,6 +68,8 @@ public enum class TranscodeReason(
 	VIDEO_CODEC_TAG_NOT_SUPPORTED("VideoCodecTagNotSupported"),
 	@SerialName("StreamCountExceedsLimit")
 	STREAM_COUNT_EXCEEDS_LIMIT("StreamCountExceedsLimit"),
+	@SerialName("VideoRotationNotSupported")
+	VIDEO_ROTATION_NOT_SUPPORTED("VideoRotationNotSupported"),
 	;
 
 	/**
@@ -107,6 +109,7 @@ public enum class TranscodeReason(
 			"VideoRangeTypeNotSupported" -> VIDEO_RANGE_TYPE_NOT_SUPPORTED
 			"VideoCodecTagNotSupported" -> VIDEO_CODEC_TAG_NOT_SUPPORTED
 			"StreamCountExceedsLimit" -> STREAM_COUNT_EXCEEDS_LIMIT
+			"VideoRotationNotSupported" -> VIDEO_ROTATION_NOT_SUPPORTED
 			else -> null
 		}
 

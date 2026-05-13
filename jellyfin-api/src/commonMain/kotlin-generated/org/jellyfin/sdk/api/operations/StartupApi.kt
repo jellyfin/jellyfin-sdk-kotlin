@@ -6,6 +6,7 @@
 package org.jellyfin.sdk.api.operations
 
 import kotlin.Any
+import kotlin.Deprecated
 import kotlin.String
 import kotlin.Unit
 import kotlin.collections.emptyMap
@@ -34,6 +35,7 @@ public class StartupApi(
 	/**
 	 * Gets the first user.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getFirstUser(): Response<StartupUserDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
@@ -45,6 +47,7 @@ public class StartupApi(
 	/**
 	 * Gets the first user.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getFirstUser2(): Response<StartupUserDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
@@ -56,6 +59,7 @@ public class StartupApi(
 	/**
 	 * Gets the initial startup wizard configuration.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getStartupConfiguration(): Response<StartupConfigurationDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
@@ -67,6 +71,7 @@ public class StartupApi(
 	/**
 	 * Sets remote access and UPnP.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun setRemoteAccess(`data`: StartupRemoteAccessDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
@@ -77,6 +82,7 @@ public class StartupApi(
 	/**
 	 * Sets the initial startup wizard configuration.
 	 */
+	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun updateInitialConfiguration(`data`: StartupConfigurationDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
