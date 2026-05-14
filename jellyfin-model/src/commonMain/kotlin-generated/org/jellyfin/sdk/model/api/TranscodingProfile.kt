@@ -6,7 +6,6 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Boolean
-import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
@@ -40,8 +39,7 @@ public data class TranscodingProfile(
 	@SerialName("AudioCodec")
 	public val audioCodec: String,
 	/**
-	 * Media streaming protocol.
-	 * Lowercase for backwards compatibility.
+	 * The protocol.
 	 */
 	@SerialName("Protocol")
 	public val protocol: MediaStreamProtocol,
@@ -93,9 +91,8 @@ public data class TranscodingProfile(
 	/**
 	 * A value indicating whether breaking the video stream on non-keyframes is supported.
 	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("BreakOnNonKeyFrames")
-	public val breakOnNonKeyFrames: Boolean? = false,
+	public val breakOnNonKeyFrames: Boolean = false,
 	/**
 	 * The profile conditions.
 	 */

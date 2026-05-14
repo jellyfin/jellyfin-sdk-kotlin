@@ -109,6 +109,11 @@ public data class GetAudioStreamByContainerDeprecatedRequest(
 	@SerialName("allowAudioStreamCopy")
 	public val allowAudioStreamCopy: Boolean? = null,
 	/**
+	 * Optional. Whether to break on non key frames.
+	 */
+	@SerialName("breakOnNonKeyFrames")
+	public val breakOnNonKeyFrames: Boolean? = null,
+	/**
 	 * Optional. Specify a specific audio sample rate, e.g. 44100.
 	 */
 	@SerialName("audioSampleRate")
