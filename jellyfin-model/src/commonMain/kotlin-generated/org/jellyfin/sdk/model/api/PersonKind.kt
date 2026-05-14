@@ -67,8 +67,6 @@ public enum class PersonKind(
 	EDITOR("Editor"),
 	@SerialName("Translator")
 	TRANSLATOR("Translator"),
-	@SerialName("Narrator")
-	NARRATOR("Narrator"),
 	;
 
 	/**
@@ -106,7 +104,6 @@ public enum class PersonKind(
 			"CoverArtist" -> COVER_ARTIST
 			"Editor" -> EDITOR
 			"Translator" -> TRANSLATOR
-			"Narrator" -> NARRATOR
 			else -> null
 		}
 

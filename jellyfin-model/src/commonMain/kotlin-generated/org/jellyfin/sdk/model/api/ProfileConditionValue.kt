@@ -64,8 +64,6 @@ public enum class ProfileConditionValue(
 	VIDEO_RANGE_TYPE("VideoRangeType"),
 	@SerialName("NumStreams")
 	NUM_STREAMS("NumStreams"),
-	@SerialName("VideoRotation")
-	VIDEO_ROTATION("VideoRotation"),
 	;
 
 	/**
@@ -103,7 +101,6 @@ public enum class ProfileConditionValue(
 			"AudioBitDepth" -> AUDIO_BIT_DEPTH
 			"VideoRangeType" -> VIDEO_RANGE_TYPE
 			"NumStreams" -> NUM_STREAMS
-			"VideoRotation" -> VIDEO_ROTATION
 			else -> null
 		}
 
