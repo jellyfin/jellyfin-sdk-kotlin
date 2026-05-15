@@ -40,4 +40,25 @@ class ServerVersionTests : FunSpec({
 		run { ServerVersion.fromString("10.8.0")!! < ServerVersion(10, 8, 0, 0) } shouldBe false
 		run { ServerVersion.fromString("10.8.0")!! < ServerVersion.fromString("10.8.0")!! } shouldBe false
 	}
+
+	test("Converts to string") {
+		ServerVersion(1, 0, 0).toString() shouldBe "1.0.0"
+		ServerVersion(10, 6, 4).toString() shouldBe "10.6.4"
+		ServerVersion(10, 11, 8, 2).toString() shouldBe "10.11.8.2"
+		ServerVersion(10, 11, 8).toString() shouldBe "10.11.8"
+
+		ServerVersion(12, 0, 0).toString() shouldBe "12.0"
+		ServerVersion(12, 0, 0, null).toString() shouldBe "12.0"
+		ServerVersion(12, 0, 0, 0).toString() shouldBe "12.0.0.0"
+	}
+
+	test("Converts to string with parts") {
+		val version = ServerVersion(10, 6, 4, 1)
+		version.toString(1) shouldBe "10"
+		version.toString(2) shouldBe "10.6"
+		version.toString(3) shouldBe "10.6.4"
+		version.toString(4) shouldBe "10.6.4.1"
+
+		ServerVersion(10, 6, 4, null).toString(4) shouldBe "10.6.4.0"
+	}
 })

@@ -58,6 +58,8 @@ public final class org/jellyfin/sdk/model/ServerVersion : java/lang/Comparable {
 	public final fun getPatch ()I
 	public fun hashCode ()I
 	public fun toString ()Ljava/lang/String;
+	public final fun toString (I)Ljava/lang/String;
+	public static synthetic fun toString$default (Lorg/jellyfin/sdk/model/ServerVersion;IILjava/lang/Object;)Ljava/lang/String;
 }
 
 public final synthetic class org/jellyfin/sdk/model/ServerVersion$$serializer : kotlinx/serialization/internal/GeneratedSerializer {

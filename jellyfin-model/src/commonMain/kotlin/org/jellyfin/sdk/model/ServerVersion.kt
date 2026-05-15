@@ -16,17 +16,40 @@ public data class ServerVersion(
 ) : Comparable<ServerVersion> {
 	public override operator fun compareTo(other: ServerVersion): Int = comparator.compare(this, other)
 
+	private val stringParts = when {
+		major >= 12 && patch == 0 && build == null -> 2
+		build == null -> 3
+		else -> 4
+	}
+
 	/**
 	 * Convert version to string. Format is "[major].[minor].[patch].[build]".
 	 * [build] is omitted if null.
+	 * [patch] is omitted if [major] is 12 or higher, [patch] is 0 and [build] is null.
 	 * Sample output:
 	 * - 1.0.0
 	 * - 10.6.4
 	 * - 10.7.0.0
+	 * - 12.0
 	 */
-	override fun toString(): String = buildString {
-		append(major, '.', minor, '.', patch)
-		if (build != null) append('.', build)
+	override fun toString(): String = toString(stringParts)
+
+	/**
+	 * Convert version to string. Format is "[major].[minor].[patch].[build]". The amount of parts returned is
+	 * determined by [parts] and should be between 1 and 4 (inclusive). Defaults to 2 parts.
+	 * Sample output:
+	 * - 1.0.0
+	 * - 10.6.4
+	 * - 10.7.0.0
+	 * - 12.0
+	 */
+	public fun toString(parts: Int = 2): String = buildString {
+		require(parts in 1..4) { "parts must be in range 1..4" }
+
+		append(major)
+		if (parts >= 2) append('.', minor)
+		if (parts >= 3) append('.', patch)
+		if (parts >= 4) append('.', build ?: 0)
 	}
 
 	public companion object {
