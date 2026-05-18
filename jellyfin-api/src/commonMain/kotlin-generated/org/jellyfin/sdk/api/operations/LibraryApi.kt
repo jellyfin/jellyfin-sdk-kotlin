@@ -304,6 +304,8 @@ public class LibraryApi(
 	 * @param nameLessThan Optional filter by items whose name is equally or lesser than a given input string.
 	 * @param studioIds Optional. If specified, results will be filtered based on studio id. This allows multiple, pipe delimited.
 	 * @param genreIds Optional. If specified, results will be filtered based on genre id. This allows multiple, pipe delimited.
+	 * @param audioLanguages Optional. If specified, results will be filtered based on audio language. This allows multiple, comma delimited values.
+	 * @param subtitleLanguages Optional. If specified, results will be filtered based on subtitle language. This allows multiple, comma delimited values.
 	 * @param enableTotalRecordCount Optional. Enable the total record count.
 	 * @param enableImages Optional, include image information in output.
 	 */
@@ -392,11 +394,13 @@ public class LibraryApi(
 		nameLessThan: String? = null,
 		studioIds: Collection<UUID>? = emptyList(),
 		genreIds: Collection<UUID>? = emptyList(),
+		audioLanguages: Collection<String>? = emptyList(),
+		subtitleLanguages: Collection<String>? = emptyList(),
 		enableTotalRecordCount: Boolean? = true,
 		enableImages: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(86) {
+		val queryParameters = buildMap<String, Any?>(88) {
 			put("userId", userId)
 			put("maxOfficialRating", maxOfficialRating)
 			put("hasThemeSong", hasThemeSong)
@@ -481,6 +485,8 @@ public class LibraryApi(
 			put("nameLessThan", nameLessThan)
 			put("studioIds", studioIds)
 			put("genreIds", genreIds)
+			put("audioLanguages", audioLanguages)
+			put("subtitleLanguages", subtitleLanguages)
 			put("enableTotalRecordCount", enableTotalRecordCount)
 			put("enableImages", enableImages)
 		}
@@ -579,6 +585,8 @@ public class LibraryApi(
 		nameLessThan = request.nameLessThan,
 		studioIds = request.studioIds,
 		genreIds = request.genreIds,
+		audioLanguages = request.audioLanguages,
+		subtitleLanguages = request.subtitleLanguages,
 		enableTotalRecordCount = request.enableTotalRecordCount,
 		enableImages = request.enableImages,
 	)
