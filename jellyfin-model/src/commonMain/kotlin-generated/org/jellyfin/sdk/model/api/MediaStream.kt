@@ -150,10 +150,6 @@ public data class MediaStream(
 	public val localizedExternal: String? = null,
 	@SerialName("LocalizedHearingImpaired")
 	public val localizedHearingImpaired: String? = null,
-	@SerialName("LocalizedLanguage")
-	public val localizedLanguage: String? = null,
-	@SerialName("LocalizedOriginal")
-	public val localizedOriginal: String? = null,
 	@SerialName("DisplayTitle")
 	public val displayTitle: String? = null,
 	@SerialName("NalLengthSize")
@@ -215,11 +211,6 @@ public data class MediaStream(
 	 */
 	@SerialName("IsHearingImpaired")
 	public val isHearingImpaired: Boolean,
-	/**
-	 * A value indicating whether this instance is original.
-	 */
-	@SerialName("IsOriginal")
-	public val isOriginal: Boolean,
 	/**
 	 * The height.
 	 */
