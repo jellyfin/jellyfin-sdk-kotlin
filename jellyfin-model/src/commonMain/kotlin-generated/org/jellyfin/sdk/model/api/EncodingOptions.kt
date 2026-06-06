@@ -244,11 +244,6 @@ public data class EncodingOptions(
 	@SerialName("EnableSubtitleExtraction")
 	public val enableSubtitleExtraction: Boolean,
 	/**
-	 * The timeout for subtitle extraction in minutes.
-	 */
-	@SerialName("SubtitleExtractionTimeoutMinutes")
-	public val subtitleExtractionTimeoutMinutes: Int,
-	/**
 	 * The codecs hardware encoding is used for.
 	 */
 	@SerialName("HardwareDecodingCodecs")
@@ -258,9 +253,4 @@ public data class EncodingOptions(
 	 */
 	@SerialName("AllowOnDemandMetadataBasedKeyframeExtractionForExtensions")
 	public val allowOnDemandMetadataBasedKeyframeExtractionForExtensions: List<String>? = null,
-	/**
-	 * The method used for audio seeking in HLS.
-	 */
-	@SerialName("HlsAudioSeekStrategy")
-	public val hlsAudioSeekStrategy: HlsAudioSeekStrategy = HlsAudioSeekStrategy.DISABLE_ACCURATE_SEEK,
 )

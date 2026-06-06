@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @SerialName("PackageInstalling")
 public data class PluginInstallingMessage(
 	/**
-	 * The data.
+	 * Class InstallationInfo.
 	 */
 	@SerialName("Data")
 	public val `data`: InstallationInfo? = null,

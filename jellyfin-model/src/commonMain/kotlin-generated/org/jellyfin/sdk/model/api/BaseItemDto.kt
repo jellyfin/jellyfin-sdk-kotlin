@@ -497,7 +497,7 @@ public data class BaseItemDto(
 	 * The trickplay manifest.
 	 */
 	@SerialName("Trickplay")
-	public val trickplay: Map<String, Map<String, TrickplayInfoDto>?>? = null,
+	public val trickplay: Map<String, Map<String, TrickplayInfoDto>>? = null,
 	/**
 	 * The type of the location.
 	 */
@@ -686,15 +686,8 @@ public data class BaseItemDto(
 	@SerialName("NormalizationGain")
 	public val normalizationGain: Float? = null,
 	/**
-	 * The gain required for audio normalization. This field is inherited from music album normalization gain.
-	 */
-	@SerialName("AlbumNormalizationGain")
-	public val albumNormalizationGain: Float? = null,
-	/**
 	 * The current program.
 	 */
 	@SerialName("CurrentProgram")
 	public val currentProgram: BaseItemDto? = null,
-	@SerialName("OriginalLanguage")
-	public val originalLanguage: String? = null,
 )
