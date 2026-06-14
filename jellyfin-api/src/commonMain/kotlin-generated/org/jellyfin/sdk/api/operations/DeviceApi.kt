@@ -8,7 +8,9 @@ package org.jellyfin.sdk.api.operations
 import kotlin.Any
 import kotlin.String
 import kotlin.Unit
+import kotlin.collections.Collection
 import kotlin.collections.buildMap
+import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
@@ -24,11 +26,11 @@ public class DeviceApi(
 	private val api: ApiClient,
 ) : Api {
 	/**
-	 * Deletes a device.
+	 * Deletes devices.
 	 *
-	 * @param id Device Id.
+	 * @param id Device Ids.
 	 */
-	public suspend fun deleteDevice(id: String): Response<Unit> {
+	public suspend fun deleteDevice(id: Collection<String>? = emptyList()): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("id", id)

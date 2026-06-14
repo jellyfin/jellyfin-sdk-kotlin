@@ -172,7 +172,7 @@ public data class EncodingOptions(
 	 * The encoder preset.
 	 */
 	@SerialName("EncoderPreset")
-	public val encoderPreset: EncoderPreset? = null,
+	public val encoderPreset: EncoderPreset,
 	/**
 	 * A value indicating whether the framerate is doubled when deinterlacing.
 	 */
@@ -262,5 +262,5 @@ public data class EncodingOptions(
 	 * The method used for audio seeking in HLS.
 	 */
 	@SerialName("HlsAudioSeekStrategy")
-	public val hlsAudioSeekStrategy: HlsAudioSeekStrategy = HlsAudioSeekStrategy.DISABLE_ACCURATE_SEEK,
+	public val hlsAudioSeekStrategy: HlsAudioSeekStrategy = HlsAudioSeekStrategy.TRIM_COPIED_AUDIO,
 )
