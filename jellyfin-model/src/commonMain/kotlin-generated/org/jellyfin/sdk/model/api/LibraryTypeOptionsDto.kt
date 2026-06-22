@@ -31,6 +31,11 @@ public data class LibraryTypeOptionsDto(
 	@SerialName("ImageFetchers")
 	public val imageFetchers: List<LibraryOptionInfoDto>,
 	/**
+	 * The similar item providers.
+	 */
+	@SerialName("SimilarItemProviders")
+	public val similarItemProviders: List<LibraryOptionInfoDto>,
+	/**
 	 * The supported image types.
 	 */
 	@SerialName("SupportedImageTypes")

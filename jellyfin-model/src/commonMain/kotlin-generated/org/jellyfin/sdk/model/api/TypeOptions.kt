@@ -24,4 +24,8 @@ public data class TypeOptions(
 	public val imageFetcherOrder: List<String>? = null,
 	@SerialName("ImageOptions")
 	public val imageOptions: List<ImageOption>? = null,
+	@SerialName("SimilarItemProviders")
+	public val similarItemProviders: List<String>? = null,
+	@SerialName("SimilarItemProviderOrder")
+	public val similarItemProviderOrder: List<String>? = null,
 )

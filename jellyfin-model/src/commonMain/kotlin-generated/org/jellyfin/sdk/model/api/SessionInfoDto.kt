@@ -142,12 +142,7 @@ public data class SessionInfoDto(
 	@SerialName("NowPlayingQueue")
 	public val nowPlayingQueue: List<QueueItem>? = null,
 	/**
-	 * The now playing queue full items.
-	 */
-	@SerialName("NowPlayingQueueFullItems")
-	public val nowPlayingQueueFullItems: List<BaseItemDto>? = null,
-	/**
-	 * A value indicating whether the session has a custom device name.
+	 * A value indicating whether this session has a custom device name.
 	 */
 	@SerialName("HasCustomDeviceName")
 	public val hasCustomDeviceName: Boolean,

@@ -18,8 +18,8 @@ import kotlinx.serialization.Serializable
 public enum class HlsAudioSeekStrategy(
 	public val serialName: String,
 ) {
-	@SerialName("DisableAccurateSeek")
-	DISABLE_ACCURATE_SEEK("DisableAccurateSeek"),
+	@SerialName("TrimCopiedAudio")
+	TRIM_COPIED_AUDIO("TrimCopiedAudio"),
 	@SerialName("TranscodeAudio")
 	TRANSCODE_AUDIO("TranscodeAudio"),
 	;
@@ -34,7 +34,7 @@ public enum class HlsAudioSeekStrategy(
 		 * Find the enum member by the serial name or return null.
 		 */
 		public fun fromNameOrNull(serialName: String): HlsAudioSeekStrategy? = when (serialName) {
-			"DisableAccurateSeek" -> DISABLE_ACCURATE_SEEK
+			"TrimCopiedAudio" -> TRIM_COPIED_AUDIO
 			"TranscodeAudio" -> TRANSCODE_AUDIO
 			else -> null
 		}

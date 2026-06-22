@@ -449,6 +449,16 @@ public data class GetTrailersRequest(
 	@SerialName("genreIds")
 	public val genreIds: Collection<UUID>? = null,
 	/**
+	 * Optional. If specified, results will be filtered based on audio language. This allows multiple, comma delimited values.
+	 */
+	@SerialName("audioLanguages")
+	public val audioLanguages: Collection<String>? = null,
+	/**
+	 * Optional. If specified, results will be filtered based on subtitale language. This allows multiple, comma delimited values.
+	 */
+	@SerialName("subtitleLanguages")
+	public val subtitleLanguages: Collection<String>? = null,
+	/**
 	 * Optional. Enable the total record count.
 	 */
 	@SerialName("enableTotalRecordCount")

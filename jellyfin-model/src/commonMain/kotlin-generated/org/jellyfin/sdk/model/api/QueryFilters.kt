@@ -16,4 +16,8 @@ public data class QueryFilters(
 	public val genres: List<NameGuidPair>? = null,
 	@SerialName("Tags")
 	public val tags: List<String>? = null,
+	@SerialName("AudioLanguages")
+	public val audioLanguages: List<NameValuePair>? = null,
+	@SerialName("SubtitleLanguages")
+	public val subtitleLanguages: List<NameValuePair>? = null,
 )
