@@ -43,6 +43,7 @@ import org.jellyfin.sdk.model.api.SeriesStatus
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.api.ThemeMediaResult
 import org.jellyfin.sdk.model.api.VideoType
+import org.jellyfin.sdk.model.api.request.GetItemCollectionsRequest
 import org.jellyfin.sdk.model.api.request.GetItemsRequest
 import org.jellyfin.sdk.model.api.request.GetLatestMediaRequest
 import org.jellyfin.sdk.model.api.request.GetResumeItemsRequest
@@ -201,6 +202,49 @@ public class LibraryApi(
 	}
 
 	/**
+	 * Gets the collections that include the specified item.
+	 *
+	 * @param itemId The item id.
+	 * @param userId Optional. Filter by user id, and attach user data.
+	 * @param startIndex Optional. The index of the first record in the output.
+	 * @param limit Optional. The maximum number of records to return.
+	 * @param fields Optional. Specify additional fields of information to return in the output.
+	 */
+	public suspend fun getItemCollections(
+		itemId: UUID,
+		userId: UUID? = null,
+		startIndex: Int? = null,
+		limit: Int? = null,
+		fields: Collection<ItemFields>? = emptyList(),
+	): Response<BaseItemDtoQueryResult> {
+		val pathParameters = buildMap<String, Any?>(1) {
+			put("itemId", itemId)
+		}
+		val queryParameters = buildMap<String, Any?>(4) {
+			put("userId", userId)
+			put("startIndex", startIndex)
+			put("limit", limit)
+			put("fields", fields)
+		}
+		val data = null
+		val response = api.`get`<BaseItemDtoQueryResult>("/Items/{itemId}/Collections", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets the collections that include the specified item.
+	 *
+	 * @param request The request parameters
+	 */
+	public suspend fun getItemCollections(request: GetItemCollectionsRequest): Response<BaseItemDtoQueryResult> = getItemCollections(
+		itemId = request.itemId,
+		userId = request.userId,
+		startIndex = request.startIndex,
+		limit = request.limit,
+		fields = request.fields,
+	)
+
+	/**
 	 * Get item counts.
 	 *
 	 * @param userId Optional. Get counts from a specific user's library.
@@ -304,6 +348,8 @@ public class LibraryApi(
 	 * @param nameLessThan Optional filter by items whose name is equally or lesser than a given input string.
 	 * @param studioIds Optional. If specified, results will be filtered based on studio id. This allows multiple, pipe delimited.
 	 * @param genreIds Optional. If specified, results will be filtered based on genre id. This allows multiple, pipe delimited.
+	 * @param audioLanguages Optional. If specified, results will be filtered based on audio language. This allows multiple, comma delimited values.
+	 * @param subtitleLanguages Optional. If specified, results will be filtered based on subtitle language. This allows multiple, comma delimited values.
 	 * @param enableTotalRecordCount Optional. Enable the total record count.
 	 * @param enableImages Optional, include image information in output.
 	 */
@@ -392,11 +438,13 @@ public class LibraryApi(
 		nameLessThan: String? = null,
 		studioIds: Collection<UUID>? = emptyList(),
 		genreIds: Collection<UUID>? = emptyList(),
+		audioLanguages: Collection<String>? = emptyList(),
+		subtitleLanguages: Collection<String>? = emptyList(),
 		enableTotalRecordCount: Boolean? = true,
 		enableImages: Boolean? = true,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(86) {
+		val queryParameters = buildMap<String, Any?>(88) {
 			put("userId", userId)
 			put("maxOfficialRating", maxOfficialRating)
 			put("hasThemeSong", hasThemeSong)
@@ -481,6 +529,8 @@ public class LibraryApi(
 			put("nameLessThan", nameLessThan)
 			put("studioIds", studioIds)
 			put("genreIds", genreIds)
+			put("audioLanguages", audioLanguages)
+			put("subtitleLanguages", subtitleLanguages)
 			put("enableTotalRecordCount", enableTotalRecordCount)
 			put("enableImages", enableImages)
 		}
@@ -579,6 +629,8 @@ public class LibraryApi(
 		nameLessThan = request.nameLessThan,
 		studioIds = request.studioIds,
 		genreIds = request.genreIds,
+		audioLanguages = request.audioLanguages,
+		subtitleLanguages = request.subtitleLanguages,
 		enableTotalRecordCount = request.enableTotalRecordCount,
 		enableImages = request.enableImages,
 	)
