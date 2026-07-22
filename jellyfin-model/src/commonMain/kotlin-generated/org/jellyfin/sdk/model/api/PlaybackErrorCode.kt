@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The playback error code.
+ */
 @Serializable
 public enum class PlaybackErrorCode(
 	public val serialName: String,

@@ -26,6 +26,9 @@ public data class MediaSourceInfo(
 	public val encoderPath: String? = null,
 	@SerialName("EncoderProtocol")
 	public val encoderProtocol: MediaProtocol? = null,
+	/**
+	 * The type of a media source.
+	 */
 	@SerialName("Type")
 	public val type: MediaSourceType,
 	@SerialName("Container")

@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The type of timestamps used in a transport stream.
+ */
 @Serializable
 public enum class TransportStreamTimestamp(
 	public val serialName: String,

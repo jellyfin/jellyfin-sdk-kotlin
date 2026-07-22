@@ -17,6 +17,9 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 @Serializable
 public data class BoxSetInfoRemoteSearchQuery(
+	/**
+	 * The lookup info for box sets.
+	 */
 	@SerialName("SearchInfo")
 	public val searchInfo: BoxSetInfo? = null,
 	@SerialName("ItemId")

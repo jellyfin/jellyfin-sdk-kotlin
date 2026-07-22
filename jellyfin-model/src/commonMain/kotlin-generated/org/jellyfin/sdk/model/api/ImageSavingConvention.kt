@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The convention used for naming saved images.
+ */
 @Serializable
 public enum class ImageSavingConvention(
 	public val serialName: String,

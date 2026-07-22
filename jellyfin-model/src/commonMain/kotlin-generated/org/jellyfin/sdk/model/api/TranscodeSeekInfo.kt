@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The transcode seek info.
+ */
 @Serializable
 public enum class TranscodeSeekInfo(
 	public val serialName: String,

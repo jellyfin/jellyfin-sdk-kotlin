@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The status of a live TV service.
+ */
 @Serializable
 public enum class LiveTvServiceStatus(
 	public val serialName: String,

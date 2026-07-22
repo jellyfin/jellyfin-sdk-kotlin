@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The day pattern of a recurring timer.
+ */
 @Serializable
 public enum class DayPattern(
 	public val serialName: String,
