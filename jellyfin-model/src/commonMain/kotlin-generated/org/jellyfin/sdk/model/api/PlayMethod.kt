@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The play method.
+ */
 @Serializable
 public enum class PlayMethod(
 	public val serialName: String,

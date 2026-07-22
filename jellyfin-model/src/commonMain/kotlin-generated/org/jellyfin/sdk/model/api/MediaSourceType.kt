@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The type of a media source.
+ */
 @Serializable
 public enum class MediaSourceType(
 	public val serialName: String,

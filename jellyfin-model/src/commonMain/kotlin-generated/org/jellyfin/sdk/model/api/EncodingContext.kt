@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The encoding context.
+ */
 @Serializable
 public enum class EncodingContext(
 	public val serialName: String,

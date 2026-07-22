@@ -10,12 +10,24 @@ import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * A command to display a message on a client.
+ */
 @Serializable
 public data class MessageCommand(
+	/**
+	 * The message header.
+	 */
 	@SerialName("Header")
 	public val `header`: String? = null,
+	/**
+	 * The message text.
+	 */
 	@SerialName("Text")
 	public val text: String,
+	/**
+	 * The timeout in milliseconds after which the message should be dismissed.
+	 */
 	@SerialName("TimeoutMs")
 	public val timeoutMs: Long? = null,
 )

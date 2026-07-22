@@ -10,13 +10,19 @@ import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * A request to change the playstate of a session.
+ */
 @Serializable
 public data class PlaystateRequest(
 	/**
-	 * Enum PlaystateCommand.
+	 * The playstate command.
 	 */
 	@SerialName("Command")
 	public val command: PlaystateCommand,
+	/**
+	 * The seek position in ticks.
+	 */
 	@SerialName("SeekPositionTicks")
 	public val seekPositionTicks: Long? = null,
 	/**

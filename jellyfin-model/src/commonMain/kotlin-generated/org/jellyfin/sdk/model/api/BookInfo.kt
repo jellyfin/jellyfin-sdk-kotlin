@@ -17,6 +17,9 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.DateTime
 import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 
+/**
+ * The lookup info for books.
+ */
 @Serializable
 public data class BookInfo(
 	/**
@@ -62,6 +65,9 @@ public data class BookInfo(
 	public val premiereDate: DateTime? = null,
 	@SerialName("IsAutomated")
 	public val isAutomated: Boolean,
+	/**
+	 * The name of the series the book belongs to.
+	 */
 	@SerialName("SeriesName")
 	public val seriesName: String? = null,
 )

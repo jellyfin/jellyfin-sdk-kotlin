@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The type of a community rating.
+ */
 @Serializable
 public enum class RatingType(
 	public val serialName: String,

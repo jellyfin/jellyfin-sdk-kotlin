@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The codec type of a codec profile.
+ */
 @Serializable
 public enum class CodecType(
 	public val serialName: String,
