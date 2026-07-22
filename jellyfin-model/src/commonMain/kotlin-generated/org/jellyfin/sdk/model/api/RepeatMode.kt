@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The repeat mode of a play queue.
+ */
 @Serializable
 public enum class RepeatMode(
 	public val serialName: String,

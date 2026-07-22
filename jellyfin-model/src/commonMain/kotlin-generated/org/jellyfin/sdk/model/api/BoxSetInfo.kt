@@ -17,6 +17,9 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.DateTime
 import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 
+/**
+ * The lookup info for box sets.
+ */
 @Serializable
 public data class BoxSetInfo(
 	/**

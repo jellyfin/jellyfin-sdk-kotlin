@@ -17,6 +17,9 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.DateTime
 import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 
+/**
+ * The lookup info for trailers.
+ */
 @Serializable
 public data class TrailerInfo(
 	/**

@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The play access of an item.
+ */
 @Serializable
 public enum class PlayAccess(
 	public val serialName: String,

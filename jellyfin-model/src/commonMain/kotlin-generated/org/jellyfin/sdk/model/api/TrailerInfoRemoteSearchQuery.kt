@@ -17,6 +17,9 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
 @Serializable
 public data class TrailerInfoRemoteSearchQuery(
+	/**
+	 * The lookup info for trailers.
+	 */
 	@SerialName("SearchInfo")
 	public val searchInfo: TrailerInfo? = null,
 	@SerialName("ItemId")

@@ -14,10 +14,19 @@ import kotlinx.serialization.UseSerializers
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
+/**
+ * An item in a play queue.
+ */
 @Serializable
 public data class QueueItem(
+	/**
+	 * The item id.
+	 */
 	@SerialName("Id")
 	public val id: UUID,
+	/**
+	 * The playlist item id.
+	 */
 	@SerialName("PlaylistItemId")
 	public val playlistItemId: String? = null,
 )
