@@ -20,6 +20,11 @@ public class CodecProfileBuilder {
 	public var container: String? = null
 
 	/**
+	 * @see [CodecProfile.subContainer]
+	 */
+	public var subContainer: String? = null
+
+	/**
 	 * @see [CodecProfile.codec]
 	 */
 	public var codec: String? = null
@@ -42,6 +47,7 @@ public class CodecProfileBuilder {
 		applyConditions = applyConditions,
 		codec = codec,
 		container = container,
+		subContainer = subContainer,
 	)
 }
 
