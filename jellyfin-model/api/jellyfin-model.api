@@ -19400,6 +19400,7 @@ public final class org/jellyfin/sdk/model/deviceprofile/TranscodingProfileBuilde
 	public final fun getContainer ()Ljava/lang/String;
 	public final fun getContext ()Lorg/jellyfin/sdk/model/api/EncodingContext;
 	public final fun getCopyTimestamps ()Z
+	public final fun getEnableAudioVbrEncoding ()Z
 	public final fun getEnableMpegtsM2TsMode ()Z
 	public final fun getEnableSubtitlesInManifest ()Z
 	public final fun getEstimateContentLength ()Z
@@ -19413,6 +19414,7 @@ public final class org/jellyfin/sdk/model/deviceprofile/TranscodingProfileBuilde
 	public final fun setContainer (Ljava/lang/String;)V
 	public final fun setContext (Lorg/jellyfin/sdk/model/api/EncodingContext;)V
 	public final fun setCopyTimestamps (Z)V
+	public final fun setEnableAudioVbrEncoding (Z)V
 	public final fun setEnableMpegtsM2TsMode (Z)V
 	public final fun setEnableSubtitlesInManifest (Z)V
 	public final fun setEstimateContentLength (Z)V
