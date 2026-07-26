@@ -7,10 +7,15 @@ import org.jellyfin.sdk.model.api.ProfileCondition
 @DeviceProfileBuilderDsl
 public class ContainerProfileBuilder {
 	private var containers = mutableListOf<String>()
+	private var subContainers = mutableListOf<String>()
 	private var conditions = mutableListOf<ProfileCondition>()
 
 	public fun container(vararg container: String) {
 		containers.addAll(container)
+	}
+
+	public fun subContainer(vararg subContainer: String) {
+		subContainers.addAll(subContainer)
 	}
 
 	public fun conditions(body: ProfileConditionsBuilder.() -> Unit) {
@@ -22,6 +27,7 @@ public class ContainerProfileBuilder {
 		type = DlnaProfileType.VIDEO,
 		conditions = conditions,
 		container = containers.joinToString(","),
+		subContainer = subContainers.joinToString(","),
 	)
 }
 

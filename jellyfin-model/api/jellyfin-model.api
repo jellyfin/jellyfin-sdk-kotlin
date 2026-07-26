@@ -17148,6 +17148,7 @@ public final class org/jellyfin/sdk/model/deviceprofile/ContainerProfileBuilder 
 	public final fun build ()Lorg/jellyfin/sdk/model/api/ContainerProfile;
 	public final fun conditions (Lkotlin/jvm/functions/Function1;)V
 	public final fun container ([Ljava/lang/String;)V
+	public final fun subContainer ([Ljava/lang/String;)V
 }
 
 public final class org/jellyfin/sdk/model/deviceprofile/ContainerProfileBuilderKt {
