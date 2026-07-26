@@ -78,6 +78,11 @@ public class TranscodingProfileBuilder {
 	 */
 	public var breakOnNonKeyFrames: Boolean = false
 
+	/**
+	 * @see [TranscodingProfile.enableAudioVbrEncoding]
+	 */
+	public var enableAudioVbrEncoding: Boolean = true
+
 	public fun videoCodec(vararg codec: String) {
 		videoCodecs.addAll(codec)
 	}
@@ -107,6 +112,7 @@ public class TranscodingProfileBuilder {
 		segmentLength = segmentLength,
 		breakOnNonKeyFrames = breakOnNonKeyFrames,
 		conditions = conditions,
+		enableAudioVbrEncoding = enableAudioVbrEncoding,
 	)
 }
 
