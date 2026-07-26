@@ -17131,9 +17131,11 @@ public final class org/jellyfin/sdk/model/deviceprofile/CodecProfileBuilder {
 	public final fun conditions (Lkotlin/jvm/functions/Function1;)V
 	public final fun getCodec ()Ljava/lang/String;
 	public final fun getContainer ()Ljava/lang/String;
+	public final fun getSubContainer ()Ljava/lang/String;
 	public final fun getType ()Lorg/jellyfin/sdk/model/api/CodecType;
 	public final fun setCodec (Ljava/lang/String;)V
 	public final fun setContainer (Ljava/lang/String;)V
+	public final fun setSubContainer (Ljava/lang/String;)V
 	public final fun setType (Lorg/jellyfin/sdk/model/api/CodecType;)V
 }
 
