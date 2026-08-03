@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @SerialName("PackageInstallationCancelled")
 public data class PluginInstallationCancelledMessage(
 	/**
-	 * Class InstallationInfo.
+	 * The data.
 	 */
 	@SerialName("Data")
 	public val `data`: InstallationInfo? = null,
