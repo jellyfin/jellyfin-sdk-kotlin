@@ -40,6 +40,10 @@ public expect class AddressCandidateHelper(
 	 * The priority is based on a few rules:
 	 * - HTTPS before HTTP
 	 * - Jellyfin ports before protocol default ports
+	 * - Trailing-slash form matching the user input when a subpath was supplied
+	 *
+	 * Non-root paths are returned both with and without a trailing slash so reverse
+	 * proxies that treat the two forms differently can still be discovered.
 	 */
 	public fun getCandidates(): Collection<String>
 }

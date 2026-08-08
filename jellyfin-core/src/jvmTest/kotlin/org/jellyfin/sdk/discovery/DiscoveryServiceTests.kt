@@ -78,4 +78,25 @@ class DiscoveryServiceTests : FunSpec({
 		// Mixed
 		instance.getAddressCandidates("Https://localhost") shouldContain "https://localhost"
 	}
+
+	test("getAddressCandidates keeps both trailing slash variants for subpaths") {
+		val instance = getInstance()
+
+		val withSlash = instance.getAddressCandidates("https://nas.example.com/jellyfin/")
+		withSlash shouldContain "https://nas.example.com/jellyfin/"
+		withSlash shouldContain "https://nas.example.com/jellyfin"
+		withSlash.first() shouldBe "https://nas.example.com/jellyfin/"
+
+		val withoutSlash = instance.getAddressCandidates("https://nas.example.com/jellyfin")
+		withoutSlash shouldContain "https://nas.example.com/jellyfin"
+		withoutSlash shouldContain "https://nas.example.com/jellyfin/"
+		withoutSlash.first() shouldBe "https://nas.example.com/jellyfin"
+	}
+
+	test("getAddressCandidates does not keep trailing slash on root urls") {
+		val instance = getInstance()
+
+		instance.getAddressCandidates("https://localhost/") shouldContain "https://localhost"
+		instance.getAddressCandidates("https://localhost/") shouldNotContain "https://localhost/"
+	}
 })

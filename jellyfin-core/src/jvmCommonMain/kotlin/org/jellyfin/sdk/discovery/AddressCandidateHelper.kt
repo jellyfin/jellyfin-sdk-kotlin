@@ -37,6 +37,13 @@ public actual class AddressCandidateHelper actual constructor(
 	private val candidates = mutableSetOf<HttpUrl>()
 	private val prioritizeComparator = Comparator<HttpUrl> { a, b -> b.score() - a.score() }
 
+	/**
+	 * Whether the user-supplied input ended with a trailing slash on a non-root path.
+	 * Used to prioritize that variant for reverse proxies that treat `/path` and `/path/` differently.
+	 */
+	private val preferTrailingSlash: Boolean =
+		input.isNotBlank() && input.trimEnd().endsWith('/') && !isRootOrEmptyPath(input)
+
 	init {
 		try {
 			logger.debug { "Input is $input" }
@@ -53,6 +60,18 @@ public actual class AddressCandidateHelper actual constructor(
 			// Input can't be parsed
 			logger.error(error) { "Input $input could not be parsed" }
 		}
+	}
+
+	private fun isRootOrEmptyPath(value: String): Boolean {
+		val withoutProtocol = when {
+			value.startsWith(PROTOCOL_HTTP, ignoreCase = true) -> value.substring(PROTOCOL_HTTP.length)
+			value.startsWith(PROTOCOL_HTTPS, ignoreCase = true) -> value.substring(PROTOCOL_HTTPS.length)
+			else -> value
+		}
+		val slashIndex = withoutProtocol.indexOf('/')
+		if (slashIndex < 0) return true
+		val path = withoutProtocol.substring(slashIndex).trimEnd('/')
+		return path.isEmpty()
 	}
 
 	/**
@@ -127,7 +146,33 @@ public actual class AddressCandidateHelper actual constructor(
 		if (isHttps && port == 443) score += 3
 		if (!isHttps && port == 80) score += 3
 
+		// Prefer trailing-slash form when the user supplied one (subpath reverse proxies)
+		val hasTrailingSlash = encodedPath.length > 1 && encodedPath.endsWith('/')
+		if (preferTrailingSlash == hasTrailingSlash) score += 1
+
 		return score
+	}
+
+	/**
+	 * Some reverse proxies treat `/jellyfin` and `/jellyfin/` differently.
+	 * Emit both forms for non-root paths so discovery can try either.
+	 */
+	private fun HttpUrl.trailingSlashVariants(): Collection<HttpUrl> {
+		val path = encodedPath
+		if (path == "/" || path.isEmpty()) return listOf(this)
+
+		val withoutSlash = if (path.endsWith('/')) {
+			newBuilder().encodedPath(path.trimEnd('/')).build()
+		} else {
+			this
+		}
+		val withSlash = if (path.endsWith('/')) {
+			this
+		} else {
+			newBuilder().encodedPath("$path/").build()
+		}
+
+		return listOf(withoutSlash, withSlash)
 	}
 
 	/**
@@ -136,8 +181,17 @@ public actual class AddressCandidateHelper actual constructor(
 	 * The priority is based on a few rules:
 	 * - HTTPS before HTTP
 	 * - Jellyfin ports before protocol default ports
+	 * - Trailing-slash form matching the user input when a subpath was supplied
+	 *
+	 * Non-root paths are returned both with and without a trailing slash.
 	 */
 	public actual fun getCandidates(): Collection<String> = candidates
+		.flatMap { it.trailingSlashVariants() }
 		.sortedWith(prioritizeComparator)
-		.map { it.toString().trimEnd('/') }
+		.map { url ->
+			// Normalize root URLs (`https://host/` -> `https://host`) but keep subpath slashes
+			if (url.encodedPath == "/") url.toString().trimEnd('/')
+			else url.toString()
+		}
+		.distinct()
 }
