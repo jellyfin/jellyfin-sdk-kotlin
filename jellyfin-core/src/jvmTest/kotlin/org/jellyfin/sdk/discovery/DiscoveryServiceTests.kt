@@ -78,4 +78,26 @@ class DiscoveryServiceTests : FunSpec({
 		// Mixed
 		instance.getAddressCandidates("Https://localhost") shouldContain "https://localhost"
 	}
+
+	test("getAddressCandidates keeps and normalizes paths") {
+		val instance = getInstance()
+
+		// Input with a directory style path ending
+		instance.getAddressCandidates("https://demo.jellyfin.org/stable/") shouldContain "https://demo.jellyfin.org/stable/"
+		instance.getAddressCandidates("https://demo.jellyfin.org/stable/") shouldNotContain "https://demo.jellyfin.org/stable"
+
+		// Input with a non-directory style path ending
+		instance.getAddressCandidates("https://demo.jellyfin.org/stable") shouldContain "https://demo.jellyfin.org/stable/"
+		instance.getAddressCandidates("https://demo.jellyfin.org/stable") shouldNotContain "https://demo.jellyfin.org/stable"
+		// Nested
+		instance.getAddressCandidates("https://demo.jellyfin.org/example/stable") shouldContain "https://demo.jellyfin.org/example/stable/"
+		instance.getAddressCandidates("https://demo.jellyfin.org/example/stable") shouldNotContain "https://demo.jellyfin.org/example/stable"
+
+		// Input with extraneous trailing slashes
+		instance.getAddressCandidates("https://demo.jellyfin.org/unstable//") shouldContain "https://demo.jellyfin.org/unstable/"
+		instance.getAddressCandidates("https://demo.jellyfin.org/unstable//") shouldNotContain "https://demo.jellyfin.orgun/stable"
+		instance.getAddressCandidates("https://demo.jellyfin.org/unstable//") shouldNotContain "https://demo.jellyfin.org/unstable//"
+		instance.getAddressCandidates("https://demo.jellyfin.org//") shouldContain "https://demo.jellyfin.org"
+		instance.getAddressCandidates("https://demo.jellyfin.org//") shouldNotContain "https://demo.jellyfin.org/"
+	}
 })
