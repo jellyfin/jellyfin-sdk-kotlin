@@ -139,5 +139,5 @@ public actual class AddressCandidateHelper actual constructor(
 	 */
 	public actual fun getCandidates(): Collection<String> = candidates
 		.sortedWith(prioritizeComparator)
-		.map { it.toString().trimEnd('/') }
+		.map { it.toString().trimEnd('/') + if (it.encodedPath.trimEnd('/').isNotEmpty()) '/' else "" }
 }
