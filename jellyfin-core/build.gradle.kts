@@ -17,10 +17,10 @@ kotlin {
 		}
 	}
 
-	androidLibrary {
+	android {
 		namespace = "org.jellyfin.sdk"
-		compileSdk = libs.versions.android.sdk.get().toInt()
-		minSdk = 19
+		compileSdk = libs.versions.android.sdk.compile.get().toInt()
+		minSdk = libs.versions.android.sdk.min.get().toInt()
 
 		compilerOptions {
 			jvmTarget = JvmTarget.JVM_1_8
@@ -41,7 +41,6 @@ kotlin {
 		lint {
 			lintConfig = file("$rootDir/android-lint.xml")
 			abortOnError = false
-			sarifReport = true
 		}
 	}
 
