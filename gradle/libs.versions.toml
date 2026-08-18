@@ -20,7 +20,7 @@ kotlinx-serialization = "1.11.0"
 nexuspublish = "2.0.0"
 okhttp = "5.4.0"
 slf4j = "2.0.18"
-swagger-parser = "2.1.46"
+swagger-parser = "2.1.47"
 
 [plugins]
 animalsniffer = { id = "ru.vyarus.animalsniffer", version.ref = "animalsniffer" }
