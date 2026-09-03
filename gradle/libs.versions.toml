@@ -1,5 +1,5 @@
 [versions]
-android-gradle = "9.3.1"
+android-gradle = "9.4.0"
 android-sdk-min = "21"
 android-sdk-compile = "37"
 animalsniffer = "2.0.1"
