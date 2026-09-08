@@ -220,9 +220,7 @@ public class DefaultSocketApi(
 			_subscriptionCount--
 			logger.info { "Subscription count changed to $_subscriptionCount" }
 
-			// Disconnect when subscription count reaches zero
 			val stopping = _subscriptionCount == 0
-			if (stopping) scope.launch { socketConnection.disconnect() }
 
 			// Send stop messages
 			for (type in subscriptionTypes) {
