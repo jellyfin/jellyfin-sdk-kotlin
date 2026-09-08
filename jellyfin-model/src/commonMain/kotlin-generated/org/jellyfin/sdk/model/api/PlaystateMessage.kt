@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @SerialName("Playstate")
 public data class PlaystateMessage(
 	/**
-	 * The data.
+	 * A request to change the playstate of a session.
 	 */
 	@SerialName("Data")
 	public val `data`: PlaystateRequest? = null,

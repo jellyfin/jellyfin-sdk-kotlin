@@ -15,12 +15,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 public data class AuthenticationResult(
 	/**
-	 * The user.
+	 * Class UserDto.
 	 */
 	@SerialName("User")
 	public val user: UserDto? = null,
 	/**
-	 * The session info.
+	 * Session info DTO.
 	 */
 	@SerialName("SessionInfo")
 	public val sessionInfo: SessionInfoDto? = null,
