@@ -121,12 +121,12 @@ public data class MediaStream(
 	@SerialName("Hdr10PlusPresentFlag")
 	public val hdr10PlusPresentFlag: Boolean? = null,
 	/**
-	 * The video range.
+	 * An enum representing video ranges.
 	 */
 	@SerialName("VideoRange")
 	public val videoRange: VideoRange = VideoRange.UNKNOWN,
 	/**
-	 * The video range type.
+	 * An enum representing types of video ranges.
 	 */
 	@SerialName("VideoRangeType")
 	public val videoRangeType: VideoRangeType = VideoRangeType.UNKNOWN,
@@ -136,7 +136,7 @@ public data class MediaStream(
 	@SerialName("VideoDoViTitle")
 	public val videoDoViTitle: String? = null,
 	/**
-	 * The audio spatial format.
+	 * An enum representing formats of spatial audio.
 	 */
 	@SerialName("AudioSpatialFormat")
 	public val audioSpatialFormat: AudioSpatialFormat = AudioSpatialFormat.NONE,
