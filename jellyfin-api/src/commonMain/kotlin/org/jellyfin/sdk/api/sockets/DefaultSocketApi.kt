@@ -4,8 +4,8 @@ import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharedFlow
@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.WhileSubscribed
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.flow.flow
@@ -22,10 +23,10 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.util.ApiSerializer
 import org.jellyfin.sdk.api.client.util.AuthorizationHeaderBuilder
@@ -200,7 +201,7 @@ public class DefaultSocketApi(
 	 * cancels the subscriptions again. The start and stop messages will automatically be sent based on the amount of
 	 * active subscriptions for each subscription type.
 	 */
-	private fun initializeSubscription(subscriptionTypes: Set<SubscriptionType<*>>): () -> Unit {
+	private fun initializeSubscription(subscriptionTypes: Set<SubscriptionType<*>>): suspend () -> Unit {
 		// Increase subscription count
 		_subscriptionCount++
 		logger.debug { "Subscription count changed to $_subscriptionCount" }
@@ -215,21 +216,17 @@ public class DefaultSocketApi(
 		}
 
 		// Return function to be invoked when this subscription ends
-		return {
+		return suspend {
 			// Decrease subscription count
 			_subscriptionCount--
 			logger.info { "Subscription count changed to $_subscriptionCount" }
-
-			// Disconnect when subscription count reaches zero
-			val stopping = _subscriptionCount == 0
-			if (stopping) scope.launch { socketConnection.disconnect() }
 
 			// Send stop messages
 			for (type in subscriptionTypes) {
 				val newUsage = _currentSubscriptionTypes.getOrDefault(type, 0) - 1
 				_currentSubscriptionTypes[type] = newUsage
 
-				if (newUsage == 0 && !stopping) scope.launch { publish(type.createStopMessage()) }
+				if (newUsage == 0) publish(type.createStopMessage())
 			}
 		}
 	}
@@ -307,6 +304,7 @@ public class DefaultSocketApi(
 	 */
 	private suspend fun publish(message: InboundWebSocketMessage) {
 		val encoded = ApiSerializer.encodeSocketMessage(message)
+		logger.info { "Publish $encoded" }
 		socketConnection.send(encoded)
 	}
 
@@ -333,9 +331,14 @@ public class DefaultSocketApi(
 	 */
 	override fun subscribeAll(): Flow<OutboundWebSocketMessage> = flow {
 		val onComplete = initializeSubscription(SUBSCRIPTION_TYPES)
-		currentCoroutineContext().job.invokeOnCompletion { onComplete() }
 
-		messages.collect { emit(it) }
+		try {
+			emitAll(messages)
+		} finally {
+			withContext(NonCancellable) {
+				onComplete()
+			}
+		}
 	}
 
 	/**
@@ -345,8 +348,13 @@ public class DefaultSocketApi(
 	override fun <T : OutboundWebSocketMessage> subscribe(messageType: KClass<T>): Flow<T> = flow {
 		val subscriptionType = messageType.subscriptionType
 		val onComplete = initializeSubscription(if (subscriptionType == null) emptySet() else setOf(subscriptionType))
-		currentCoroutineContext().job.invokeOnCompletion { onComplete() }
 
-		messages.filterIsInstance(messageType).collect { emit(it) }
+		try {
+			emitAll(messages.filterIsInstance(messageType))
+		} finally {
+			withContext(NonCancellable) {
+				onComplete()
+			}
+		}
 	}
 }
