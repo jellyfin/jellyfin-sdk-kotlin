@@ -25,7 +25,7 @@ public data class QueueRequestDto(
 	@SerialName("ItemIds")
 	public val itemIds: List<UUID>,
 	/**
-	 * The mode in which to add the new items.
+	 * Enum GroupQueueMode.
 	 */
 	@SerialName("Mode")
 	public val mode: GroupQueueMode,
