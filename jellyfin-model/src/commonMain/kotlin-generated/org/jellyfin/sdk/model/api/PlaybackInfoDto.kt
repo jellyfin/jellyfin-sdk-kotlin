@@ -63,7 +63,13 @@ public data class PlaybackInfoDto(
 	@SerialName("LiveStreamId")
 	public val liveStreamId: String? = null,
 	/**
-	 * The device profile.
+	 * A MediaBrowser.Model.Dlna.DeviceProfile represents a set of metadata which determines which content a certain device is able to play.
+	 *
+	 *
+	 * Specifically, it defines the supported containers (`P:MediaBrowser.Model.Dlna.DeviceProfile.ContainerProfiles`) and
+	 * codecs (`P:MediaBrowser.Model.Dlna.DeviceProfile.CodecProfiles`) (video and/or audio, including codec profiles and levels)
+	 * the device is able to direct play (without transcoding or remuxing),
+	 * as well as which containers/codecs to transcode to (`P:MediaBrowser.Model.Dlna.DeviceProfile.TranscodingProfiles`) in case it isn't.
 	 */
 	@SerialName("DeviceProfile")
 	public val deviceProfile: DeviceProfile? = null,
