@@ -577,8 +577,8 @@ public final class org/jellyfin/sdk/model/api/AuthenticateUserByName$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class org/jellyfin/sdk/model/api/AuthenticationInfo {
-	public static final field Companion Lorg/jellyfin/sdk/model/api/AuthenticationInfo$Companion;
+public final class org/jellyfin/sdk/model/api/AuthenticationInfoDto {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/AuthenticationInfoDto$Companion;
 	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;ZLjava/time/LocalDateTime;Ljava/time/LocalDateTime;Ljava/time/LocalDateTime;Ljava/lang/String;)V
 	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;ZLjava/time/LocalDateTime;Ljava/time/LocalDateTime;Ljava/time/LocalDateTime;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()J
@@ -593,8 +593,8 @@ public final class org/jellyfin/sdk/model/api/AuthenticationInfo {
 	public final fun component7 ()Ljava/util/UUID;
 	public final fun component8 ()Z
 	public final fun component9 ()Ljava/time/LocalDateTime;
-	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;ZLjava/time/LocalDateTime;Ljava/time/LocalDateTime;Ljava/time/LocalDateTime;Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/AuthenticationInfo;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/AuthenticationInfo;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;ZLjava/time/LocalDateTime;Ljava/time/LocalDateTime;Ljava/time/LocalDateTime;Ljava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/AuthenticationInfo;
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;ZLjava/time/LocalDateTime;Ljava/time/LocalDateTime;Ljava/time/LocalDateTime;Ljava/lang/String;)Lorg/jellyfin/sdk/model/api/AuthenticationInfoDto;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/AuthenticationInfoDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/UUID;ZLjava/time/LocalDateTime;Ljava/time/LocalDateTime;Ljava/time/LocalDateTime;Ljava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/AuthenticationInfoDto;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getAccessToken ()Ljava/lang/String;
 	public final fun getAppName ()Ljava/lang/String;
@@ -612,29 +612,29 @@ public final class org/jellyfin/sdk/model/api/AuthenticationInfo {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final synthetic class org/jellyfin/sdk/model/api/AuthenticationInfo$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/AuthenticationInfo$$serializer;
+public final synthetic class org/jellyfin/sdk/model/api/AuthenticationInfoDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/AuthenticationInfoDto$$serializer;
 	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/AuthenticationInfo;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/AuthenticationInfoDto;
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/AuthenticationInfo;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/AuthenticationInfoDto;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
-public final class org/jellyfin/sdk/model/api/AuthenticationInfo$Companion {
+public final class org/jellyfin/sdk/model/api/AuthenticationInfoDto$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
-public final class org/jellyfin/sdk/model/api/AuthenticationInfoQueryResult {
-	public static final field Companion Lorg/jellyfin/sdk/model/api/AuthenticationInfoQueryResult$Companion;
+public final class org/jellyfin/sdk/model/api/AuthenticationInfoDtoQueryResult {
+	public static final field Companion Lorg/jellyfin/sdk/model/api/AuthenticationInfoDtoQueryResult$Companion;
 	public fun <init> (Ljava/util/List;II)V
 	public final fun component1 ()Ljava/util/List;
 	public final fun component2 ()I
 	public final fun component3 ()I
-	public final fun copy (Ljava/util/List;II)Lorg/jellyfin/sdk/model/api/AuthenticationInfoQueryResult;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/AuthenticationInfoQueryResult;Ljava/util/List;IIILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/AuthenticationInfoQueryResult;
+	public final fun copy (Ljava/util/List;II)Lorg/jellyfin/sdk/model/api/AuthenticationInfoDtoQueryResult;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/AuthenticationInfoDtoQueryResult;Ljava/util/List;IIILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/AuthenticationInfoDtoQueryResult;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getItems ()Ljava/util/List;
 	public final fun getStartIndex ()I
@@ -643,18 +643,18 @@ public final class org/jellyfin/sdk/model/api/AuthenticationInfoQueryResult {
 	public fun toString ()Ljava/lang/String;
 }
 
-public final synthetic class org/jellyfin/sdk/model/api/AuthenticationInfoQueryResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
-	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/AuthenticationInfoQueryResult$$serializer;
+public final synthetic class org/jellyfin/sdk/model/api/AuthenticationInfoDtoQueryResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lorg/jellyfin/sdk/model/api/AuthenticationInfoDtoQueryResult$$serializer;
 	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/AuthenticationInfoQueryResult;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lorg/jellyfin/sdk/model/api/AuthenticationInfoDtoQueryResult;
 	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/AuthenticationInfoQueryResult;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lorg/jellyfin/sdk/model/api/AuthenticationInfoDtoQueryResult;)V
 	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
 }
 
-public final class org/jellyfin/sdk/model/api/AuthenticationInfoQueryResult$Companion {
+public final class org/jellyfin/sdk/model/api/AuthenticationInfoDtoQueryResult$Companion {
 	public final fun serializer ()Lkotlinx/serialization/KSerializer;
 }
 
@@ -8980,11 +8980,12 @@ public final class org/jellyfin/sdk/model/api/SendCommandType$Companion {
 
 public final class org/jellyfin/sdk/model/api/SeriesInfo {
 	public static final field Companion Lorg/jellyfin/sdk/model/api/SeriesInfo$Companion;
-	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/time/LocalDateTime;Z)V
-	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/time/LocalDateTime;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/time/LocalDateTime;ZLjava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/time/LocalDateTime;ZLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun component1 ()Ljava/lang/String;
 	public final fun component10 ()Ljava/time/LocalDateTime;
 	public final fun component11 ()Z
+	public final fun component12 ()Ljava/lang/String;
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Ljava/lang/String;
 	public final fun component4 ()Ljava/lang/String;
@@ -8993,9 +8994,10 @@ public final class org/jellyfin/sdk/model/api/SeriesInfo {
 	public final fun component7 ()Ljava/lang/Integer;
 	public final fun component8 ()Ljava/lang/Integer;
 	public final fun component9 ()Ljava/lang/Integer;
-	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/time/LocalDateTime;Z)Lorg/jellyfin/sdk/model/api/SeriesInfo;
-	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/SeriesInfo;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/time/LocalDateTime;ZILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/SeriesInfo;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/time/LocalDateTime;ZLjava/lang/String;)Lorg/jellyfin/sdk/model/api/SeriesInfo;
+	public static synthetic fun copy$default (Lorg/jellyfin/sdk/model/api/SeriesInfo;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/time/LocalDateTime;ZLjava/lang/String;ILjava/lang/Object;)Lorg/jellyfin/sdk/model/api/SeriesInfo;
 	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDisplayOrder ()Ljava/lang/String;
 	public final fun getIndexNumber ()Ljava/lang/Integer;
 	public final fun getMetadataCountryCode ()Ljava/lang/String;
 	public final fun getMetadataLanguage ()Ljava/lang/String;
