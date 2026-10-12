@@ -3,6 +3,7 @@ package org.jellyfin.sdk.model.deviceprofile
 import org.jellyfin.sdk.model.api.ProfileCondition
 import org.jellyfin.sdk.model.api.ProfileConditionType
 import org.jellyfin.sdk.model.api.ProfileConditionValue
+import kotlin.jvm.JvmName
 
 @DeviceProfileBuilderDsl
 public class ProfileConditionsBuilder(parent: Collection<ProfileCondition>? = null) {

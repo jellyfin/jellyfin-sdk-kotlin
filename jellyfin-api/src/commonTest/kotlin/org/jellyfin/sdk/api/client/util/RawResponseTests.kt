@@ -22,14 +22,14 @@ class RawResponseTests : FunSpec({
 	}
 
 	test("ApiSerializer can decode JSON") {
-		val content = """{"test": true}""".toByteArray()
+		val content = """{"test": true}""".encodeToByteArray()
 		val result = createResponse(content).createContent<Map<String, Boolean>>()
 
 		result["test"] shouldBe true
 	}
 
 	test("ApiSerializer can decode primitive") {
-		val content = """42""".toByteArray()
+		val content = """42""".encodeToByteArray()
 		val result = createResponse(content).createContent<Int>()
 
 		result shouldBe 42

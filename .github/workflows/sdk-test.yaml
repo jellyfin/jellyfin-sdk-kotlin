@@ -29,6 +29,22 @@ jobs:
       - name: Run test task
         run: ./gradlew test allTests
 
+  test-ios:
+    name: Test iOS
+    runs-on: macos-15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Setup Java
+        uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
+      - name: Run iOS test task
+        run: ./gradlew iosSimulatorArm64Test
+
   validate-binary-compatibility:
     name: Validate binary compatibility
     runs-on: ubuntu-24.04

@@ -17315,6 +17315,14 @@ public final class org/jellyfin/sdk/model/deviceprofile/TranscodingProfileBuilde
 	public static final fun buildTranscodingProfile (Lkotlin/jvm/functions/Function1;)Lorg/jellyfin/sdk/model/api/TranscodingProfile;
 }
 
+public final class org/jellyfin/sdk/model/extensions/DateTimeExtensionsKt {
+	public static final fun toIsoOffsetString (Ljava/time/LocalDateTime;)Ljava/lang/String;
+	public static final fun toJellyfinDateTime (Lkotlinx/datetime/LocalDateTime;)Ljava/time/LocalDateTime;
+	public static final fun toJellyfinUuid (Lkotlin/uuid/Uuid;)Ljava/util/UUID;
+	public static final fun toKotlinxLocalDateTime (Ljava/time/LocalDateTime;)Lkotlinx/datetime/LocalDateTime;
+	public static final fun toStdlibUuid (Ljava/util/UUID;)Lkotlin/uuid/Uuid;
+}
+
 public final class org/jellyfin/sdk/model/extensions/GeneralCommandMessageExtensionsKt {
 	public static final fun contains (Lorg/jellyfin/sdk/model/api/GeneralCommandMessage;Ljava/lang/String;)Z
 	public static final fun get (Lorg/jellyfin/sdk/model/api/GeneralCommandMessage;Ljava/lang/String;)Ljava/lang/String;

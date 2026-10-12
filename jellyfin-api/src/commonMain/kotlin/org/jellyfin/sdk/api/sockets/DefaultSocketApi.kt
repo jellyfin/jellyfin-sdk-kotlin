@@ -3,6 +3,7 @@ package org.jellyfin.sdk.api.sockets
 import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.SupervisorJob
@@ -208,7 +209,7 @@ public class DefaultSocketApi(
 
 		// Send start messages
 		for (type in subscriptionTypes) {
-			val currentUsage = _currentSubscriptionTypes.getOrDefault(type, 0)
+			val currentUsage = (_currentSubscriptionTypes[type] ?: 0)
 			if (currentUsage == 0 && socketConnection.state.value is SocketConnectionState.Message) {
 				scope.launch { publish(type.createStartMessage(SUBSCRIPTION_PERIOD)) }
 			}
@@ -223,7 +224,7 @@ public class DefaultSocketApi(
 
 			// Send stop messages
 			for (type in subscriptionTypes) {
-				val newUsage = _currentSubscriptionTypes.getOrDefault(type, 0) - 1
+				val newUsage = (_currentSubscriptionTypes[type] ?: 0) - 1
 				_currentSubscriptionTypes[type] = newUsage
 
 				if (newUsage == 0) publish(type.createStopMessage())

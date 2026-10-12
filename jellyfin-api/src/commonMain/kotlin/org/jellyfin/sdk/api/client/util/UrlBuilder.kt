@@ -1,11 +1,9 @@
 package org.jellyfin.sdk.api.client.util
 
-import okhttp3.HttpUrl.Companion.toHttpUrl
 import org.jellyfin.sdk.api.client.exception.MissingPathVariableException
 import org.jellyfin.sdk.api.client.util.UrlBuilder.buildPath
 import org.jellyfin.sdk.model.DateTime
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
+import org.jellyfin.sdk.model.extensions.toIsoOffsetString
 
 public object UrlBuilder {
 	private const val TOKEN_SEPARATOR: Char = '/'
@@ -23,43 +21,31 @@ public object UrlBuilder {
 		queryParameters: Map<String, Any?> = mapOf(),
 		ignorePathParameters: Boolean = false,
 	): String {
-		val url = baseUrl.toHttpUrl()
-		return url.newBuilder().apply {
-			// Replace path variables
-			val (path, pathQuerystring) = buildPath(
-				pathTemplate,
-				pathParameters,
-				ignorePathParameters
-			).extractQuerystring()
+		// Replace path variables
+		val (path, pathQuerystring) = buildPath(
+			pathTemplate,
+			pathParameters,
+			ignorePathParameters
+		).extractQuerystring()
 
-			// Assign path making sure to remove duplicated slashes between the base and appended path
-			encodedPath("${url.encodedPath.trimEnd('/')}/${path.trimStart('/')}")
-			encodedQuery(pathQuerystring)
+		// Determine query parameters
+		val query = queryParameters
+			.filterNot { it.value == null }
+			.flatMap { (key, rawValue) ->
+				val values = when (rawValue) {
+					is Collection<*> -> rawValue
+					else -> listOfNotNull(rawValue)
+				}
 
-			// Append query parameters
-			queryParameters
-				.filterNot { it.value == null }
-				.map { (key, rawValue) ->
-					// Determine values
-					val values = when (rawValue) {
-						is Collection<*> -> rawValue
-						else -> listOfNotNull(rawValue)
-					}
-
-					// Add values
-					for (value in values) {
-						val stringValue = when (value) {
-							is DateTime -> value
-								.atZone(ZoneId.systemDefault())
-								.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
-
-							else -> value.toString()
-						}
-
-						addQueryParameter(key, stringValue)
+				values.map { value ->
+					key to when (value) {
+						is DateTime -> value.toIsoOffsetString()
+						else -> value.toString()
 					}
 				}
-		}.build().toString()
+			}
+
+		return assembleUrl(baseUrl, path, pathQuerystring, query)
 	}
 
 	public fun buildPath(
