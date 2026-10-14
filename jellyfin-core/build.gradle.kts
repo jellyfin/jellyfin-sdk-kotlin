@@ -4,6 +4,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	alias(libs.plugins.kotlin.multiplatform)
 	alias(libs.plugins.dokka)
+	alias(libs.plugins.ksp)
+	alias(libs.plugins.kotest)
 	alias(libs.plugins.android.library)
 	alias(libs.plugins.animalsniffer)
 }
@@ -44,6 +46,10 @@ kotlin {
 		}
 	}
 
+	iosArm64()
+	iosSimulatorArm64()
+	iosX64()
+
 	jvmToolchain(21)
 
 	applyDefaultHierarchyTemplate()
@@ -58,13 +64,11 @@ kotlin {
 		val commonMain by getting {
 			dependencies {
 				api(projects.jellyfinApi)
-				api(projects.jellyfinApiOkhttp)
 				api(projects.jellyfinModel)
 
 				implementation(libs.kotlinx.coroutines)
 				implementation(libs.kotlinx.serialization.json)
-
-				implementation(libs.okhttp)
+				implementation(libs.ktor.http)
 
 				// Logging
 				implementation(libs.kotlin.logging)
@@ -73,6 +77,18 @@ kotlin {
 
 		val jvmCommonMain by creating {
 			dependsOn(commonMain)
+
+			dependencies {
+				api(projects.jellyfinApiOkhttp)
+				implementation(libs.okhttp)
+			}
+		}
+
+		val iosMain by getting {
+			dependencies {
+				api(projects.jellyfinApiKtor)
+				implementation(libs.ktor.network)
+			}
 		}
 
 		val jvmMain by getting {

@@ -1,7 +1,8 @@
 # Getting started
 
-The SDK is currently available for the JVM and Android 4.4 and up. Java 8 or higher is required. Android versions below
-Android 8 should use [library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring).
+The SDK is currently available for the JVM, Android 4.4 and up and iOS (see [iOS](./ios.md)). Java 8 or higher is
+required on the JVM. Android versions below Android 8 should use
+[library desugaring](https://developer.android.com/studio/write/java8-support#library-desugaring).
 
 ## Setup
 

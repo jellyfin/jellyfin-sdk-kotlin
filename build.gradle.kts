@@ -7,6 +7,7 @@ plugins {
 	alias(libs.plugins.kotest)
 	alias(libs.plugins.nexuspublish)
 	alias(libs.plugins.kotlin.multiplatform) apply false
+	alias(libs.plugins.ksp) apply false
 	alias(libs.plugins.android.library) apply false
 }
 
@@ -55,6 +56,7 @@ detekt {
 
 	source.setFrom(fileTree(projectDir) {
 		include("**/*.kt", "**/*.kts")
+		exclude("**/build/**")
 	})
 }
 
@@ -74,5 +76,6 @@ dependencies {
 	dokka(project(":jellyfin-core"))
 	dokka(project(":jellyfin-api"))
 	dokka(project(":jellyfin-api-okhttp"))
+	dokka(project(":jellyfin-api-ktor"))
 	dokka(project(":jellyfin-model"))
 }

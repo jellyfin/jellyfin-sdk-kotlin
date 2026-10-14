@@ -42,6 +42,10 @@ export default defineConfig({
 						text: 'Getting started',
 						link: '/guide/getting-started',
 					},
+					{
+						text: 'iOS',
+						link: '/guide/ios',
+					},
 				]
 			},
 
