@@ -56,6 +56,7 @@ detekt {
 
 	source.setFrom(fileTree(projectDir) {
 		include("**/*.kt", "**/*.kts")
+		exclude("**/build/**")
 	})
 }
 
