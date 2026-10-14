@@ -2,6 +2,7 @@ package org.jellyfin.sdk.discovery
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.http.URLBuilder
+import io.ktor.http.URLParserException
 import io.ktor.http.URLProtocol
 import io.ktor.http.Url
 import io.ktor.http.encodedPath
@@ -38,9 +39,12 @@ internal class AddressCandidates(private val input: String) {
 				val url = Url(withProtocol)
 				require(url.host.isNotBlank()) { "Missing host" }
 
-				candidates.add(URLBuilder(url).apply { host = host.lowercase() }.build())
+				candidates.add(URLBuilder(url).apply { host = canonicalHost(host) }.build())
 			}
 		} catch (error: IllegalArgumentException) {
+			// Input can't be parsed
+			logger.error(error) { "Input $input could not be parsed" }
+		} catch (error: URLParserException) {
 			// Input can't be parsed
 			logger.error(error) { "Input $input could not be parsed" }
 		}
@@ -105,4 +109,89 @@ internal class AddressCandidates(private val input: String) {
 	fun getCandidates(): Collection<String> = candidates
 		.sortedByDescending { it.score() }
 		.map { it.toString().trimEnd('/') + if (it.encodedPath.trimEnd('/').isNotEmpty()) '/' else "" }
+}
+
+private const val IPV6_GROUPS = 8
+
+/**
+ * Normalize the host the same way OkHttp does: lowercase hostnames and RFC 5952 IPv6 addresses.
+ */
+private fun canonicalHost(host: String): String {
+	if (':' !in host) return host.lowercase()
+
+	val bracketed = host.startsWith('[') && host.endsWith(']')
+	val canonical = canonicalIpv6(if (bracketed) host.substring(1, host.length - 1) else host)
+	return if (bracketed && ':' in canonical) "[$canonical]" else canonical
+}
+
+@Suppress("MagicNumber")
+private fun canonicalIpv6(address: String): String {
+	val groups = parseIpv6(address)
+
+	// IPv4-mapped addresses are written as IPv4
+	if ((0 until 5).all { groups[it] == 0 } && groups[5] == 0xffff) {
+		return listOf(groups[6] shr 8, groups[6] and 0xff, groups[7] shr 8, groups[7] and 0xff).joinToString(".")
+	}
+
+	// Compress the first longest run of at least two zero groups
+	var runStart = -1
+	var runLength = 1
+	var i = 0
+	while (i < IPV6_GROUPS) {
+		val start = i
+		while (i < IPV6_GROUPS && groups[i] == 0) i++
+		if (i - start > runLength) {
+			runStart = start
+			runLength = i - start
+		}
+		i++
+	}
+
+	if (runStart == -1) return groups.joinToString(":") { it.toString(16) }
+
+	val head = groups.take(runStart).joinToString(":") { it.toString(16) }
+	val tail = groups.drop(runStart + runLength).joinToString(":") { it.toString(16) }
+	return "$head::$tail"
+}
+
+@Suppress("MagicNumber")
+private fun parseIpv6(address: String): IntArray {
+	val sides = address.split("::")
+	require(sides.size <= 2) { "Multiple :: in $address" }
+
+	val parsed = sides.mapIndexed { sideIndex, side ->
+		if (side.isEmpty()) return@mapIndexed emptyList()
+
+		val parts = side.split(':')
+		parts.flatMapIndexed { index, part ->
+			if ('.' in part) {
+				require(index == parts.lastIndex && sideIndex == sides.lastIndex) { "Misplaced IPv4 in $address" }
+				val bytes = part.split('.').map { byte ->
+					require(byte.length in 1..3 && byte.all { it in '0'..'9' }) { "Invalid IPv4 in $address" }
+					require(byte.length == 1 || byte[0] != '0') { "Invalid IPv4 in $address" }
+					byte.toInt().also { require(it <= 255) { "Invalid IPv4 in $address" } }
+				}
+				require(bytes.size == 4) { "Invalid IPv4 in $address" }
+				listOf((bytes[0] shl 8) or bytes[1], (bytes[2] shl 8) or bytes[3])
+			} else {
+				require(part.length in 1..4) { "Invalid group in $address" }
+				listOf(part.toIntOrNull(16) ?: throw IllegalArgumentException("Invalid group in $address"))
+			}
+		}
+	}
+
+	val head = parsed[0]
+	val tail = parsed.getOrElse(1) { emptyList() }
+	val groups = IntArray(IPV6_GROUPS)
+
+	if (sides.size == 1) {
+		require(head.size == IPV6_GROUPS) { "Invalid group count in $address" }
+		head.forEachIndexed { index, group -> groups[index] = group }
+	} else {
+		require(head.size + tail.size < IPV6_GROUPS) { "Invalid group count in $address" }
+		head.forEachIndexed { index, group -> groups[index] = group }
+		tail.forEachIndexed { index, group -> groups[IPV6_GROUPS - tail.size + index] = group }
+	}
+
+	return groups
 }
