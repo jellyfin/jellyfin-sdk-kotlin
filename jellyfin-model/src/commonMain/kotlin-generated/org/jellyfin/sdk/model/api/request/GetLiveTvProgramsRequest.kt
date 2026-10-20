@@ -166,4 +166,9 @@ public data class GetLiveTvProgramsRequest(
 	 */
 	@SerialName("enableTotalRecordCount")
 	public val enableTotalRecordCount: Boolean? = true,
+	/**
+	 * Optional. Filter by the selected Live TV view.
+	 */
+	@SerialName("parentId")
+	public val parentId: UUID? = null,
 )

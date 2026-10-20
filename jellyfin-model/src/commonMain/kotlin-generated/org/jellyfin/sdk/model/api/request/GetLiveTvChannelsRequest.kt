@@ -131,4 +131,9 @@ public data class GetLiveTvChannelsRequest(
 	 */
 	@SerialName("addCurrentProgram")
 	public val addCurrentProgram: Boolean? = true,
+	/**
+	 * Optional. Filter by the selected Live TV view.
+	 */
+	@SerialName("parentId")
+	public val parentId: UUID? = null,
 )

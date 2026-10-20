@@ -162,4 +162,9 @@ public data class GetProgramsDto(
 	 */
 	@SerialName("Fields")
 	public val fields: List<ItemFields>? = null,
+	/**
+	 * The selected Live TV view identifier.
+	 */
+	@SerialName("ParentId")
+	public val parentId: UUID? = null,
 )

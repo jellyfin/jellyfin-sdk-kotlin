@@ -50,6 +50,7 @@ import org.jellyfin.sdk.model.api.request.GetLiveTvChannelsRequest
 import org.jellyfin.sdk.model.api.request.GetLiveTvProgramsRequest
 import org.jellyfin.sdk.model.api.request.GetRecommendedProgramsRequest
 import org.jellyfin.sdk.model.api.request.GetRecordingsRequest
+import org.jellyfin.sdk.model.api.request.GetTimersRequest
 
 public class LiveTvApi(
 	private val api: ApiClient,
@@ -394,6 +395,7 @@ public class LiveTvApi(
 	 * @param sortOrder Optional. Sort order.
 	 * @param enableFavoriteSorting Optional. Incorporate favorite and like status into channel sorting.
 	 * @param addCurrentProgram Optional. Adds current program info to each channel.
+	 * @param parentId Optional. Filter by the selected Live TV view.
 	 */
 	public suspend fun getLiveTvChannels(
 		type: ChannelType? = null,
@@ -417,9 +419,10 @@ public class LiveTvApi(
 		sortOrder: SortOrder? = null,
 		enableFavoriteSorting: Boolean? = false,
 		addCurrentProgram: Boolean? = true,
+		parentId: UUID? = null,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(21) {
+		val queryParameters = buildMap<String, Any?>(22) {
 			put("type", type)
 			put("userId", userId)
 			put("startIndex", startIndex)
@@ -441,6 +444,7 @@ public class LiveTvApi(
 			put("sortOrder", sortOrder)
 			put("enableFavoriteSorting", enableFavoriteSorting)
 			put("addCurrentProgram", addCurrentProgram)
+			put("parentId", parentId)
 		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Channels", pathParameters, queryParameters, data)
@@ -474,6 +478,7 @@ public class LiveTvApi(
 		sortOrder = request.sortOrder,
 		enableFavoriteSorting = request.enableFavoriteSorting,
 		addCurrentProgram = request.addCurrentProgram,
+		parentId = request.parentId,
 	)
 
 	/**
@@ -517,6 +522,7 @@ public class LiveTvApi(
 	 * @param librarySeriesId Optional. Filter by library series id.
 	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableTotalRecordCount Retrieve total record count.
+	 * @param parentId Optional. Filter by the selected Live TV view.
 	 */
 	public suspend fun getLiveTvPrograms(
 		channelIds: Collection<UUID>? = emptyList(),
@@ -546,9 +552,10 @@ public class LiveTvApi(
 		librarySeriesId: UUID? = null,
 		fields: Collection<ItemFields>? = emptyList(),
 		enableTotalRecordCount: Boolean? = true,
+		parentId: UUID? = null,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(27) {
+		val queryParameters = buildMap<String, Any?>(28) {
 			put("channelIds", channelIds)
 			put("userId", userId)
 			put("minStartDate", minStartDate)
@@ -576,6 +583,7 @@ public class LiveTvApi(
 			put("librarySeriesId", librarySeriesId)
 			put("fields", fields)
 			put("enableTotalRecordCount", enableTotalRecordCount)
+			put("parentId", parentId)
 		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Programs", pathParameters, queryParameters, data)
@@ -615,6 +623,7 @@ public class LiveTvApi(
 		librarySeriesId = request.librarySeriesId,
 		fields = request.fields,
 		enableTotalRecordCount = request.enableTotalRecordCount,
+		parentId = request.parentId,
 	)
 
 	/**
@@ -665,6 +674,7 @@ public class LiveTvApi(
 	 * @param fields Optional. Specify additional fields of information to return in the output.
 	 * @param enableUserData Optional. include user data.
 	 * @param enableTotalRecordCount Retrieve total record count.
+	 * @param parentId Optional. Filter by the selected Live TV view.
 	 */
 	public suspend fun getRecommendedPrograms(
 		userId: UUID? = null,
@@ -684,9 +694,10 @@ public class LiveTvApi(
 		fields: Collection<ItemFields>? = emptyList(),
 		enableUserData: Boolean? = null,
 		enableTotalRecordCount: Boolean? = true,
+		parentId: UUID? = null,
 	): Response<BaseItemDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(17) {
+		val queryParameters = buildMap<String, Any?>(18) {
 			put("userId", userId)
 			put("startIndex", startIndex)
 			put("limit", limit)
@@ -704,6 +715,7 @@ public class LiveTvApi(
 			put("fields", fields)
 			put("enableUserData", enableUserData)
 			put("enableTotalRecordCount", enableTotalRecordCount)
+			put("parentId", parentId)
 		}
 		val data = null
 		val response = api.`get`<BaseItemDtoQueryResult>("/LiveTv/Programs/Recommended", pathParameters, queryParameters, data)
@@ -733,6 +745,7 @@ public class LiveTvApi(
 		fields = request.fields,
 		enableUserData = request.enableUserData,
 		enableTotalRecordCount = request.enableTotalRecordCount,
+		parentId = request.parentId,
 	)
 
 	/**
@@ -906,12 +919,18 @@ public class LiveTvApi(
 	 *
 	 * @param sortBy Optional. Sort by SortName or Priority.
 	 * @param sortOrder Optional. Sort in Ascending or Descending order.
+	 * @param parentId Optional. Filter by the selected Live TV view.
 	 */
-	public suspend fun getSeriesTimers(sortBy: String? = null, sortOrder: SortOrder? = null): Response<SeriesTimerInfoDtoQueryResult> {
+	public suspend fun getSeriesTimers(
+		sortBy: String? = null,
+		sortOrder: SortOrder? = null,
+		parentId: UUID? = null,
+	): Response<SeriesTimerInfoDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(2) {
+		val queryParameters = buildMap<String, Any?>(3) {
 			put("sortBy", sortBy)
 			put("sortOrder", sortOrder)
+			put("parentId", parentId)
 		}
 		val data = null
 		val response = api.`get`<SeriesTimerInfoDtoQueryResult>("/LiveTv/SeriesTimers", pathParameters, queryParameters, data)
@@ -940,24 +959,40 @@ public class LiveTvApi(
 	 * @param seriesTimerId Optional. Filter by timers belonging to a series timer.
 	 * @param isActive Optional. Filter by timers that are active.
 	 * @param isScheduled Optional. Filter by timers that are scheduled.
+	 * @param parentId Optional. Filter by the selected Live TV view.
 	 */
 	public suspend fun getTimers(
 		channelId: String? = null,
 		seriesTimerId: String? = null,
 		isActive: Boolean? = null,
 		isScheduled: Boolean? = null,
+		parentId: UUID? = null,
 	): Response<TimerInfoDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
-		val queryParameters = buildMap<String, Any?>(4) {
+		val queryParameters = buildMap<String, Any?>(5) {
 			put("channelId", channelId)
 			put("seriesTimerId", seriesTimerId)
 			put("isActive", isActive)
 			put("isScheduled", isScheduled)
+			put("parentId", parentId)
 		}
 		val data = null
 		val response = api.`get`<TimerInfoDtoQueryResult>("/LiveTv/Timers", pathParameters, queryParameters, data)
 		return response
 	}
+
+	/**
+	 * Gets the live tv timers.
+	 *
+	 * @param request The request parameters
+	 */
+	public suspend fun getTimers(request: GetTimersRequest = GetTimersRequest()): Response<TimerInfoDtoQueryResult> = getTimers(
+		channelId = request.channelId,
+		seriesTimerId = request.seriesTimerId,
+		isActive = request.isActive,
+		isScheduled = request.isScheduled,
+		parentId = request.parentId,
+	)
 
 	/**
 	 * Get tuner host types.
