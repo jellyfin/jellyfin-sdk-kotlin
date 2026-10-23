@@ -18,7 +18,7 @@ kotlinpoet = "2.4.0"
 kotlinx-coroutines = "1.11.0"
 kotlinx-serialization = "1.11.0"
 nexuspublish = "2.0.0"
-okhttp = "5.5.0"
+okhttp = "5.5.1"
 slf4j = "2.0.20"
 swagger-parser = "2.1.48"
 
