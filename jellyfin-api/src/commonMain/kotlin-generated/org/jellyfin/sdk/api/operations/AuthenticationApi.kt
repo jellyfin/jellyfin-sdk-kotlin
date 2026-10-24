@@ -19,7 +19,8 @@ import org.jellyfin.sdk.api.client.extensions.delete
 import org.jellyfin.sdk.api.client.extensions.post
 import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.api.AuthenticateUserByName
-import org.jellyfin.sdk.model.api.AuthenticationInfoQueryResult
+import org.jellyfin.sdk.model.api.AuthenticationInfoDto
+import org.jellyfin.sdk.model.api.AuthenticationInfoDtoQueryResult
 import org.jellyfin.sdk.model.api.AuthenticationResult
 import org.jellyfin.sdk.model.api.ForgotPasswordDto
 import org.jellyfin.sdk.model.api.ForgotPasswordPinDto
@@ -74,13 +75,13 @@ public class AuthenticationApi(
 	 *
 	 * @param app Name of the app using the authentication key.
 	 */
-	public suspend fun createKey(app: String): Response<Unit> {
+	public suspend fun createKey(app: String): Response<AuthenticationInfoDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = buildMap<String, Any?>(1) {
 			put("app", app)
 		}
 		val data = null
-		val response = api.post<Unit>("/Auth/Keys", pathParameters, queryParameters, data)
+		val response = api.post<AuthenticationInfoDto>("/Auth/Keys", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -118,11 +119,11 @@ public class AuthenticationApi(
 	/**
 	 * Get all keys.
 	 */
-	public suspend fun getKeys(): Response<AuthenticationInfoQueryResult> {
+	public suspend fun getKeys(): Response<AuthenticationInfoDtoQueryResult> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<AuthenticationInfoQueryResult>("/Auth/Keys", pathParameters, queryParameters, data)
+		val response = api.`get`<AuthenticationInfoDtoQueryResult>("/Auth/Keys", pathParameters, queryParameters, data)
 		return response
 	}
 

@@ -65,4 +65,9 @@ public data class SeriesInfo(
 	public val premiereDate: DateTime? = null,
 	@SerialName("IsAutomated")
 	public val isAutomated: Boolean,
+	/**
+	 * The canned display order group.
+	 */
+	@SerialName("DisplayOrder")
+	public val displayOrder: String? = null,
 )
