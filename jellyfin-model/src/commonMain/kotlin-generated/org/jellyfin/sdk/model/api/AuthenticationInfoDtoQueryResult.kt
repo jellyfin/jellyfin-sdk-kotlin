@@ -14,12 +14,12 @@ import kotlinx.serialization.Serializable
  * Query result container.
  */
 @Serializable
-public data class AuthenticationInfoQueryResult(
+public data class AuthenticationInfoDtoQueryResult(
 	/**
 	 * The items.
 	 */
 	@SerialName("Items")
-	public val items: List<AuthenticationInfo>,
+	public val items: List<AuthenticationInfoDto>,
 	/**
 	 * The total number of records available.
 	 */

@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @SerialName("PackageUninstalled")
 public data class PluginUninstalledMessage(
 	/**
-	 * This is a serializable stub class that is used by the api to provide information about installed plugins.
+	 * The data.
 	 */
 	@SerialName("Data")
 	public val `data`: PluginInfo? = null,

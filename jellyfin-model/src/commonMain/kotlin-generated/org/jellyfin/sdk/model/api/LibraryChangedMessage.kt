@@ -20,7 +20,7 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 @SerialName("LibraryChanged")
 public data class LibraryChangedMessage(
 	/**
-	 * Class LibraryUpdateInfo.
+	 * The data.
 	 */
 	@SerialName("Data")
 	public val `data`: LibraryUpdateInfo? = null,
