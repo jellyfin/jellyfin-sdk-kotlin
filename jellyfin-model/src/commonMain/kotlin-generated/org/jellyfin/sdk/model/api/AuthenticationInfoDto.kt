@@ -21,8 +21,11 @@ import org.jellyfin.sdk.model.UUID
 import org.jellyfin.sdk.model.serializer.DateTimeSerializer
 import org.jellyfin.sdk.model.serializer.UUIDSerializer
 
+/**
+ * An API key.
+ */
 @Serializable
-public data class AuthenticationInfo(
+public data class AuthenticationInfoDto(
 	/**
 	 * The identifier.
 	 */
@@ -39,7 +42,7 @@ public data class AuthenticationInfo(
 	@SerialName("DeviceId")
 	public val deviceId: String? = null,
 	/**
-	 * The name of the application.
+	 * The name of the app using the key.
 	 */
 	@SerialName("AppName")
 	public val appName: String? = null,
@@ -64,17 +67,23 @@ public data class AuthenticationInfo(
 	@SerialName("IsActive")
 	public val isActive: Boolean,
 	/**
-	 * The date created.
+	 * The date the key was created.
 	 */
 	@SerialName("DateCreated")
 	public val dateCreated: DateTime,
 	/**
-	 * The date revoked.
+	 * The date the key was revoked.
 	 */
 	@SerialName("DateRevoked")
 	public val dateRevoked: DateTime? = null,
+	/**
+	 * The date of the last activity.
+	 */
 	@SerialName("DateLastActivity")
 	public val dateLastActivity: DateTime,
+	/**
+	 * The user name.
+	 */
 	@SerialName("UserName")
 	public val userName: String? = null,
 )
