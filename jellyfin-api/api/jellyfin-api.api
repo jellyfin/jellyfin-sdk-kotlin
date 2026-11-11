@@ -980,6 +980,7 @@ public final class org/jellyfin/sdk/api/operations/SystemApi : org/jellyfin/sdk/
 	public final fun getSystemStorage (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun getUtcTime (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun logFile (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun logFileUrl ()Ljava/lang/String;
 	public final fun postPingSystem (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun restartApplication (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun shutdownApplication (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;

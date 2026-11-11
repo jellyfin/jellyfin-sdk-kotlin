@@ -273,6 +273,15 @@ public class SystemApi(
 	}
 
 	/**
+	 * Upload a document.
+	 */
+	public fun logFileUrl(): String {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		return api.createUrl("/ClientLog/Document", pathParameters, queryParameters)
+	}
+
+	/**
 	 * Pings the system.
 	 */
 	public suspend fun postPingSystem(): Response<String> {
