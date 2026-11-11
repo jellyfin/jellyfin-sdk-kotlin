@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The media type of a channel.
+ */
 @Serializable
 public enum class ChannelMediaType(
 	public val serialName: String,

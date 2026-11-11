@@ -16,6 +16,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 public data class MediaSourceInfo(
+	/**
+	 * The protocol used to access a media source.
+	 */
 	@SerialName("Protocol")
 	public val protocol: MediaProtocol,
 	@SerialName("Id")

@@ -70,6 +70,11 @@ public data class ItemCounts(
 	@SerialName("BookCount")
 	public val bookCount: Int,
 	/**
+	 * The audio book count.
+	 */
+	@SerialName("AudioBookCount")
+	public val audioBookCount: Int,
+	/**
 	 * The item count.
 	 */
 	@SerialName("ItemCount")
