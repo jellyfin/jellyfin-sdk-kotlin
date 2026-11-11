@@ -5,7 +5,7 @@ import org.jellyfin.openapi.hooks.OperationUrlHook
 import org.jellyfin.openapi.model.ApiService
 import org.jellyfin.openapi.model.ApiServiceOperation
 
-class ClientLogOperationUrlHook : OperationUrlHook {
+class SystemApiLogFileOperationUrlHook : OperationUrlHook {
 	override fun shouldOperationBuildUrlFun(api: ApiService, operation: ApiServiceOperation) =
-		api.name == "ClientLog${Strings.API_SERVICE_SUFFIX}" && operation.name == "logFile"
+		api.name == "System${Strings.API_SERVICE_SUFFIX}" && operation.name == "logFile"
 }
