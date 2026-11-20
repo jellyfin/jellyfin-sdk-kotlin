@@ -14,10 +14,10 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Class EncodingOptions.
+ * The encoding options DTO for API use.
  */
 @Serializable
-public data class EncodingOptions(
+public data class EncodingOptionsDto(
 	/**
 	 * The thread count used for encoding.
 	 */
@@ -262,5 +262,5 @@ public data class EncodingOptions(
 	 * The method used for audio seeking in HLS.
 	 */
 	@SerialName("HlsAudioSeekStrategy")
-	public val hlsAudioSeekStrategy: HlsAudioSeekStrategy = HlsAudioSeekStrategy.TRIM_COPIED_AUDIO,
+	public val hlsAudioSeekStrategy: HlsAudioSeekStrategy,
 )

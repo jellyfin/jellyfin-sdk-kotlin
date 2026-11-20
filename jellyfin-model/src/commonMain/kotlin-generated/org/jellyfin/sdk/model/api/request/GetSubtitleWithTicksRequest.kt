@@ -62,4 +62,9 @@ public data class GetSubtitleWithTicksRequest(
 	 */
 	@SerialName("addVttTimeMap")
 	public val addVttTimeMap: Boolean? = false,
+	/**
+	 * Optional. The VTT timestamp map MPEGTS value.
+	 */
+	@SerialName("vttTimestampMapMpegts")
+	public val vttTimestampMapMpegts: Long? = 900_000,
 )

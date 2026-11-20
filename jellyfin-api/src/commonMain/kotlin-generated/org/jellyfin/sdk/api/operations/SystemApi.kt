@@ -7,7 +7,6 @@ package org.jellyfin.sdk.api.operations
 
 import kotlin.Any
 import kotlin.Boolean
-import kotlin.ByteArray
 import kotlin.Int
 import kotlin.String
 import kotlin.Unit
@@ -16,7 +15,6 @@ import kotlin.collections.List
 import kotlin.collections.buildMap
 import kotlin.collections.emptyList
 import kotlin.collections.emptyMap
-import kotlinx.serialization.json.JsonElement
 import org.jellyfin.sdk.api.client.ApiClient
 import org.jellyfin.sdk.api.client.Response
 import org.jellyfin.sdk.api.client.extensions.`get`
@@ -27,16 +25,21 @@ import org.jellyfin.sdk.model.api.ActivityLogEntryQueryResult
 import org.jellyfin.sdk.model.api.ActivityLogSortBy
 import org.jellyfin.sdk.model.api.BrandingOptionsDto
 import org.jellyfin.sdk.model.api.ClientLogDocumentResponseDto
+import org.jellyfin.sdk.model.api.EncodingOptionsDto
 import org.jellyfin.sdk.model.api.EndPointInfo
+import org.jellyfin.sdk.model.api.LiveTvOptionsDto
 import org.jellyfin.sdk.model.api.LogFile
 import org.jellyfin.sdk.model.api.LogLevel
+import org.jellyfin.sdk.model.api.MetadataConfigurationDto
 import org.jellyfin.sdk.model.api.MetadataOptions
+import org.jellyfin.sdk.model.api.NetworkConfigurationDto
 import org.jellyfin.sdk.model.api.PublicSystemInfo
-import org.jellyfin.sdk.model.api.ServerConfiguration
+import org.jellyfin.sdk.model.api.ServerConfigurationDto
 import org.jellyfin.sdk.model.api.SortOrder
 import org.jellyfin.sdk.model.api.SystemInfo
 import org.jellyfin.sdk.model.api.SystemStorageDto
 import org.jellyfin.sdk.model.api.UtcTimeResponse
+import org.jellyfin.sdk.model.api.XbmcMetadataOptionsDto
 import org.jellyfin.sdk.model.api.request.GetLogEntriesRequest
 
 public class SystemApi(
@@ -45,11 +48,11 @@ public class SystemApi(
 	/**
 	 * Gets application configuration.
 	 */
-	public suspend fun getConfiguration(): Response<ServerConfiguration> {
+	public suspend fun getConfiguration(): Response<ServerConfigurationDto> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ServerConfiguration>("/System/Configuration", pathParameters, queryParameters, data)
+		val response = api.`get`<ServerConfigurationDto>("/System/Configuration", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -65,6 +68,17 @@ public class SystemApi(
 	}
 
 	/**
+	 * Gets encoding configuration.
+	 */
+	public suspend fun getEncodingConfiguration(): Response<EncodingOptionsDto> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<EncodingOptionsDto>("/System/Configuration/Encoding", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Gets information about the request endpoint.
 	 */
 	public suspend fun getEndpointInfo(): Response<EndPointInfo> {
@@ -72,6 +86,17 @@ public class SystemApi(
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
 		val response = api.`get`<EndPointInfo>("/System/Endpoint", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Gets LiveTv configuration.
+	 */
+	public suspend fun getLiveTvConfiguration(): Response<LiveTvOptionsDto> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<LiveTvOptionsDto>("/System/Configuration/LiveTv", pathParameters, queryParameters, data)
 		return response
 	}
 
@@ -169,31 +194,25 @@ public class SystemApi(
 	}
 
 	/**
-	 * Gets a named configuration.
-	 *
-	 * @param key Configuration key.
+	 * Gets metadata configuration.
 	 */
-	public suspend fun getNamedConfiguration(key: String): Response<ByteArray> {
-		val pathParameters = buildMap<String, Any?>(1) {
-			put("key", key)
-		}
+	public suspend fun getMetadataConfiguration(): Response<MetadataConfigurationDto> {
+		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val data = null
-		val response = api.`get`<ByteArray>("/System/Configuration/{key}", pathParameters, queryParameters, data)
+		val response = api.`get`<MetadataConfigurationDto>("/System/Configuration/Metadata", pathParameters, queryParameters, data)
 		return response
 	}
 
 	/**
-	 * Gets a named configuration.
-	 *
-	 * @param key Configuration key.
+	 * Gets network configuration.
 	 */
-	public fun getNamedConfigurationUrl(key: String): String {
-		val pathParameters = buildMap<String, Any?>(1) {
-			put("key", key)
-		}
+	public suspend fun getNetworkConfiguration(): Response<NetworkConfigurationDto> {
+		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		return api.createUrl("/System/Configuration/{key}", pathParameters, queryParameters)
+		val data = null
+		val response = api.`get`<NetworkConfigurationDto>("/System/Configuration/Network", pathParameters, queryParameters, data)
+		return response
 	}
 
 	/**
@@ -263,6 +282,17 @@ public class SystemApi(
 	}
 
 	/**
+	 * Gets XbmcMetadata configuration.
+	 */
+	public suspend fun getXbmcMetadataConfiguration(): Response<XbmcMetadataOptionsDto> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val data = null
+		val response = api.`get`<XbmcMetadataOptionsDto>("/System/Configuration/XbmcMetadata", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
 	 * Upload a document.
 	 */
 	public suspend fun logFile(`data`: String): Response<ClientLogDocumentResponseDto> {
@@ -327,7 +357,7 @@ public class SystemApi(
 	/**
 	 * Updates application configuration.
 	 */
-	public suspend fun updateConfiguration(`data`: ServerConfiguration): Response<Unit> {
+	public suspend fun updateConfiguration(`data`: ServerConfigurationDto): Response<Unit> {
 		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
 		val response = api.post<Unit>("/System/Configuration", pathParameters, queryParameters, data)
@@ -335,16 +365,52 @@ public class SystemApi(
 	}
 
 	/**
-	 * Updates named configuration.
-	 *
-	 * @param key Configuration key.
+	 * Updates encoding configuration.
 	 */
-	public suspend fun updateNamedConfiguration(key: String, `data`: JsonElement): Response<Unit> {
-		val pathParameters = buildMap<String, Any?>(1) {
-			put("key", key)
-		}
+	public suspend fun updateEncodingConfiguration(`data`: EncodingOptionsDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
 		val queryParameters = emptyMap<String, Any?>()
-		val response = api.post<Unit>("/System/Configuration/{key}", pathParameters, queryParameters, data)
+		val response = api.post<Unit>("/System/Configuration/Encoding", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Updates LiveTv configuration.
+	 */
+	public suspend fun updateLiveTvConfiguration(`data`: LiveTvOptionsDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/System/Configuration/LiveTv", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Updates metadata configuration.
+	 */
+	public suspend fun updateMetadataConfiguration(`data`: MetadataConfigurationDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/System/Configuration/Metadata", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Updates network configuration.
+	 */
+	public suspend fun updateNetworkConfiguration(`data`: NetworkConfigurationDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/System/Configuration/Network", pathParameters, queryParameters, data)
+		return response
+	}
+
+	/**
+	 * Updates XbmcMetadata configuration.
+	 */
+	public suspend fun updateXbmcMetadataConfiguration(`data`: XbmcMetadataOptionsDto): Response<Unit> {
+		val pathParameters = emptyMap<String, Any?>()
+		val queryParameters = emptyMap<String, Any?>()
+		val response = api.post<Unit>("/System/Configuration/XbmcMetadata", pathParameters, queryParameters, data)
 		return response
 	}
 }

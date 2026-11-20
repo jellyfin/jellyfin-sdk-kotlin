@@ -9,8 +9,14 @@ import kotlin.Boolean
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The metadata configuration DTO for API use.
+ */
 @Serializable
-public data class MetadataConfiguration(
+public data class MetadataConfigurationDto(
+	/**
+	 * A value indicating whether to use file creation time for date added.
+	 */
 	@SerialName("UseFileCreationTimeForDateAdded")
 	public val useFileCreationTimeForDateAdded: Boolean,
 )

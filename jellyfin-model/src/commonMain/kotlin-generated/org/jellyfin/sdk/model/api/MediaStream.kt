@@ -10,6 +10,7 @@ import kotlin.Double
 import kotlin.Float
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -319,4 +320,14 @@ public data class MediaStream(
 	 */
 	@SerialName("IsAnamorphic")
 	public val isAnamorphic: Boolean? = null,
+	/**
+	 * DirectPlay errors.
+	 */
+	@SerialName("DirectPlayErrors")
+	public val directPlayErrors: List<TranscodeReason>,
+	/**
+	 * A value indicating whether this instance is compatible with the device.
+	 */
+	@SerialName("SupportsDirectPlay")
+	public val supportsDirectPlay: Boolean? = null,
 )

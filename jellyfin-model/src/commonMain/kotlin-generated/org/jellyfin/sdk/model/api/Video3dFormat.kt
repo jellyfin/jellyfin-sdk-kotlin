@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The 3D video layout format.
+ */
 @Serializable
 public enum class Video3dFormat(
 	public val serialName: String,
