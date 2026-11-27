@@ -26,6 +26,7 @@ import org.jellyfin.sdk.model.api.FontFile
 import org.jellyfin.sdk.model.api.RemoteSubtitleInfo
 import org.jellyfin.sdk.model.api.UploadSubtitleDto
 import org.jellyfin.sdk.model.api.request.GetSubtitleDeprecatedRequest
+import org.jellyfin.sdk.model.api.request.GetSubtitlePlaylistRequest
 import org.jellyfin.sdk.model.api.request.GetSubtitleRequest
 import org.jellyfin.sdk.model.api.request.GetSubtitleWithTicksDeprecatedRequest
 import org.jellyfin.sdk.model.api.request.GetSubtitleWithTicksRequest
@@ -131,6 +132,7 @@ public class SubtitleApi(
 	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
 	 * @param copyTimestamps Optional. Whether to copy the timestamps.
 	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
+	 * @param vttTimestampMapMpegts Optional. The VTT timestamp map MPEGTS value.
 	 * @param startPositionTicks The start position of the subtitle in ticks.
 	 */
 	public suspend fun getSubtitle(
@@ -141,6 +143,7 @@ public class SubtitleApi(
 		endPositionTicks: Long? = null,
 		copyTimestamps: Boolean? = false,
 		addVttTimeMap: Boolean? = false,
+		vttTimestampMapMpegts: Long? = 900_000,
 		startPositionTicks: Long? = 0,
 	): Response<String> {
 		val pathParameters = buildMap<String, Any?>(4) {
@@ -149,10 +152,11 @@ public class SubtitleApi(
 			put("routeIndex", routeIndex)
 			put("routeFormat", routeFormat)
 		}
-		val queryParameters = buildMap<String, Any?>(4) {
+		val queryParameters = buildMap<String, Any?>(5) {
 			put("endPositionTicks", endPositionTicks)
 			put("copyTimestamps", copyTimestamps)
 			put("addVttTimeMap", addVttTimeMap)
+			put("vttTimestampMapMpegts", vttTimestampMapMpegts)
 			put("startPositionTicks", startPositionTicks)
 		}
 		val data = null
@@ -173,6 +177,7 @@ public class SubtitleApi(
 		endPositionTicks = request.endPositionTicks,
 		copyTimestamps = request.copyTimestamps,
 		addVttTimeMap = request.addVttTimeMap,
+		vttTimestampMapMpegts = request.vttTimestampMapMpegts,
 		startPositionTicks = request.startPositionTicks,
 	)
 
@@ -186,6 +191,7 @@ public class SubtitleApi(
 	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
 	 * @param copyTimestamps Optional. Whether to copy the timestamps.
 	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
+	 * @param vttTimestampMapMpegts Optional. The VTT timestamp map MPEGTS value.
 	 * @param startPositionTicks The start position of the subtitle in ticks.
 	 */
 	public fun getSubtitleUrl(
@@ -196,6 +202,7 @@ public class SubtitleApi(
 		endPositionTicks: Long? = null,
 		copyTimestamps: Boolean? = false,
 		addVttTimeMap: Boolean? = false,
+		vttTimestampMapMpegts: Long? = 900_000,
 		startPositionTicks: Long? = 0,
 	): String {
 		val pathParameters = buildMap<String, Any?>(4) {
@@ -204,10 +211,11 @@ public class SubtitleApi(
 			put("routeIndex", routeIndex)
 			put("routeFormat", routeFormat)
 		}
-		val queryParameters = buildMap<String, Any?>(4) {
+		val queryParameters = buildMap<String, Any?>(5) {
 			put("endPositionTicks", endPositionTicks)
 			put("copyTimestamps", copyTimestamps)
 			put("addVttTimeMap", addVttTimeMap)
+			put("vttTimestampMapMpegts", vttTimestampMapMpegts)
 			put("startPositionTicks", startPositionTicks)
 		}
 		return api.createUrl("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/Stream.{routeFormat}", pathParameters, queryParameters)
@@ -227,6 +235,7 @@ public class SubtitleApi(
 	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
 	 * @param copyTimestamps Optional. Whether to copy the timestamps.
 	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
+	 * @param vttTimestampMapMpegts Optional. The VTT timestamp map MPEGTS value.
 	 * @param startPositionTicks The start position of the subtitle in ticks.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
@@ -242,6 +251,7 @@ public class SubtitleApi(
 		endPositionTicks: Long? = null,
 		copyTimestamps: Boolean? = false,
 		addVttTimeMap: Boolean? = false,
+		vttTimestampMapMpegts: Long? = 900_000,
 		startPositionTicks: Long? = 0,
 	): Response<String> {
 		val pathParameters = buildMap<String, Any?>(4) {
@@ -250,7 +260,7 @@ public class SubtitleApi(
 			put("routeIndex", routeIndex)
 			put("routeFormat", routeFormat)
 		}
-		val queryParameters = buildMap<String, Any?>(8) {
+		val queryParameters = buildMap<String, Any?>(9) {
 			put("itemId", itemId)
 			put("mediaSourceId", mediaSourceId)
 			put("index", index)
@@ -258,6 +268,7 @@ public class SubtitleApi(
 			put("endPositionTicks", endPositionTicks)
 			put("copyTimestamps", copyTimestamps)
 			put("addVttTimeMap", addVttTimeMap)
+			put("vttTimestampMapMpegts", vttTimestampMapMpegts)
 			put("startPositionTicks", startPositionTicks)
 		}
 		val data = null
@@ -283,6 +294,7 @@ public class SubtitleApi(
 		endPositionTicks = request.endPositionTicks,
 		copyTimestamps = request.copyTimestamps,
 		addVttTimeMap = request.addVttTimeMap,
+		vttTimestampMapMpegts = request.vttTimestampMapMpegts,
 		startPositionTicks = request.startPositionTicks,
 	)
 
@@ -300,6 +312,7 @@ public class SubtitleApi(
 	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
 	 * @param copyTimestamps Optional. Whether to copy the timestamps.
 	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
+	 * @param vttTimestampMapMpegts Optional. The VTT timestamp map MPEGTS value.
 	 * @param startPositionTicks The start position of the subtitle in ticks.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
@@ -315,6 +328,7 @@ public class SubtitleApi(
 		endPositionTicks: Long? = null,
 		copyTimestamps: Boolean? = false,
 		addVttTimeMap: Boolean? = false,
+		vttTimestampMapMpegts: Long? = 900_000,
 		startPositionTicks: Long? = 0,
 	): String {
 		val pathParameters = buildMap<String, Any?>(4) {
@@ -323,7 +337,7 @@ public class SubtitleApi(
 			put("routeIndex", routeIndex)
 			put("routeFormat", routeFormat)
 		}
-		val queryParameters = buildMap<String, Any?>(8) {
+		val queryParameters = buildMap<String, Any?>(9) {
 			put("itemId", itemId)
 			put("mediaSourceId", mediaSourceId)
 			put("index", index)
@@ -331,6 +345,7 @@ public class SubtitleApi(
 			put("endPositionTicks", endPositionTicks)
 			put("copyTimestamps", copyTimestamps)
 			put("addVttTimeMap", addVttTimeMap)
+			put("vttTimestampMapMpegts", vttTimestampMapMpegts)
 			put("startPositionTicks", startPositionTicks)
 		}
 		return api.createUrl("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/Stream.{routeFormat}", pathParameters, queryParameters)
@@ -343,20 +358,23 @@ public class SubtitleApi(
 	 * @param index The subtitle stream index.
 	 * @param mediaSourceId The media source id.
 	 * @param segmentLength The subtitle segment length.
+	 * @param vttTimestampMapMpegts Optional. The VTT timestamp map MPEGTS value.
 	 */
 	public suspend fun getSubtitlePlaylist(
 		itemId: UUID,
 		index: Int,
 		mediaSourceId: String,
 		segmentLength: Int,
+		vttTimestampMapMpegts: Long? = 900_000,
 	): Response<ByteArray> {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("itemId", itemId)
 			put("index", index)
 			put("mediaSourceId", mediaSourceId)
 		}
-		val queryParameters = buildMap<String, Any?>(1) {
+		val queryParameters = buildMap<String, Any?>(2) {
 			put("segmentLength", segmentLength)
+			put("vttTimestampMapMpegts", vttTimestampMapMpegts)
 		}
 		val data = null
 		val response = api.`get`<ByteArray>("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8", pathParameters, queryParameters, data)
@@ -366,24 +384,40 @@ public class SubtitleApi(
 	/**
 	 * Gets an HLS subtitle playlist.
 	 *
+	 * @param request The request parameters
+	 */
+	public suspend fun getSubtitlePlaylist(request: GetSubtitlePlaylistRequest): Response<ByteArray> = getSubtitlePlaylist(
+		itemId = request.itemId,
+		index = request.index,
+		mediaSourceId = request.mediaSourceId,
+		segmentLength = request.segmentLength,
+		vttTimestampMapMpegts = request.vttTimestampMapMpegts,
+	)
+
+	/**
+	 * Gets an HLS subtitle playlist.
+	 *
 	 * @param itemId The item id.
 	 * @param index The subtitle stream index.
 	 * @param mediaSourceId The media source id.
 	 * @param segmentLength The subtitle segment length.
+	 * @param vttTimestampMapMpegts Optional. The VTT timestamp map MPEGTS value.
 	 */
 	public fun getSubtitlePlaylistUrl(
 		itemId: UUID,
 		index: Int,
 		mediaSourceId: String,
 		segmentLength: Int,
+		vttTimestampMapMpegts: Long? = 900_000,
 	): String {
 		val pathParameters = buildMap<String, Any?>(3) {
 			put("itemId", itemId)
 			put("index", index)
 			put("mediaSourceId", mediaSourceId)
 		}
-		val queryParameters = buildMap<String, Any?>(1) {
+		val queryParameters = buildMap<String, Any?>(2) {
 			put("segmentLength", segmentLength)
+			put("vttTimestampMapMpegts", vttTimestampMapMpegts)
 		}
 		return api.createUrl("/Videos/{itemId}/{mediaSourceId}/Subtitles/{index}/subtitles.m3u8", pathParameters, queryParameters)
 	}
@@ -399,6 +433,7 @@ public class SubtitleApi(
 	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
 	 * @param copyTimestamps Optional. Whether to copy the timestamps.
 	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
+	 * @param vttTimestampMapMpegts Optional. The VTT timestamp map MPEGTS value.
 	 */
 	public suspend fun getSubtitleWithTicks(
 		routeItemId: UUID,
@@ -409,6 +444,7 @@ public class SubtitleApi(
 		endPositionTicks: Long? = null,
 		copyTimestamps: Boolean? = false,
 		addVttTimeMap: Boolean? = false,
+		vttTimestampMapMpegts: Long? = 900_000,
 	): Response<String> {
 		val pathParameters = buildMap<String, Any?>(5) {
 			put("routeItemId", routeItemId)
@@ -417,10 +453,11 @@ public class SubtitleApi(
 			put("routeStartPositionTicks", routeStartPositionTicks)
 			put("routeFormat", routeFormat)
 		}
-		val queryParameters = buildMap<String, Any?>(3) {
+		val queryParameters = buildMap<String, Any?>(4) {
 			put("endPositionTicks", endPositionTicks)
 			put("copyTimestamps", copyTimestamps)
 			put("addVttTimeMap", addVttTimeMap)
+			put("vttTimestampMapMpegts", vttTimestampMapMpegts)
 		}
 		val data = null
 		val response = api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/{routeStartPositionTicks}/Stream.{routeFormat}", pathParameters, queryParameters, data)
@@ -441,6 +478,7 @@ public class SubtitleApi(
 		endPositionTicks = request.endPositionTicks,
 		copyTimestamps = request.copyTimestamps,
 		addVttTimeMap = request.addVttTimeMap,
+		vttTimestampMapMpegts = request.vttTimestampMapMpegts,
 	)
 
 	/**
@@ -454,6 +492,7 @@ public class SubtitleApi(
 	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
 	 * @param copyTimestamps Optional. Whether to copy the timestamps.
 	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
+	 * @param vttTimestampMapMpegts Optional. The VTT timestamp map MPEGTS value.
 	 */
 	public fun getSubtitleWithTicksUrl(
 		routeItemId: UUID,
@@ -464,6 +503,7 @@ public class SubtitleApi(
 		endPositionTicks: Long? = null,
 		copyTimestamps: Boolean? = false,
 		addVttTimeMap: Boolean? = false,
+		vttTimestampMapMpegts: Long? = 900_000,
 	): String {
 		val pathParameters = buildMap<String, Any?>(5) {
 			put("routeItemId", routeItemId)
@@ -472,10 +512,11 @@ public class SubtitleApi(
 			put("routeStartPositionTicks", routeStartPositionTicks)
 			put("routeFormat", routeFormat)
 		}
-		val queryParameters = buildMap<String, Any?>(3) {
+		val queryParameters = buildMap<String, Any?>(4) {
 			put("endPositionTicks", endPositionTicks)
 			put("copyTimestamps", copyTimestamps)
 			put("addVttTimeMap", addVttTimeMap)
+			put("vttTimestampMapMpegts", vttTimestampMapMpegts)
 		}
 		return api.createUrl("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/{routeStartPositionTicks}/Stream.{routeFormat}", pathParameters, queryParameters)
 	}
@@ -496,6 +537,7 @@ public class SubtitleApi(
 	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
 	 * @param copyTimestamps Optional. Whether to copy the timestamps.
 	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
+	 * @param vttTimestampMapMpegts Optional. The VTT timestamp map MPEGTS value.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public suspend fun getSubtitleWithTicksDeprecated(
@@ -512,6 +554,7 @@ public class SubtitleApi(
 		endPositionTicks: Long? = null,
 		copyTimestamps: Boolean? = false,
 		addVttTimeMap: Boolean? = false,
+		vttTimestampMapMpegts: Long? = 900_000,
 	): Response<String> {
 		val pathParameters = buildMap<String, Any?>(5) {
 			put("routeItemId", routeItemId)
@@ -520,7 +563,7 @@ public class SubtitleApi(
 			put("routeStartPositionTicks", routeStartPositionTicks)
 			put("routeFormat", routeFormat)
 		}
-		val queryParameters = buildMap<String, Any?>(8) {
+		val queryParameters = buildMap<String, Any?>(9) {
 			put("itemId", itemId)
 			put("mediaSourceId", mediaSourceId)
 			put("index", index)
@@ -529,6 +572,7 @@ public class SubtitleApi(
 			put("endPositionTicks", endPositionTicks)
 			put("copyTimestamps", copyTimestamps)
 			put("addVttTimeMap", addVttTimeMap)
+			put("vttTimestampMapMpegts", vttTimestampMapMpegts)
 		}
 		val data = null
 		val response = api.`get`<String>("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/{routeStartPositionTicks}/Stream.{routeFormat}", pathParameters, queryParameters, data)
@@ -555,6 +599,7 @@ public class SubtitleApi(
 		endPositionTicks = request.endPositionTicks,
 		copyTimestamps = request.copyTimestamps,
 		addVttTimeMap = request.addVttTimeMap,
+		vttTimestampMapMpegts = request.vttTimestampMapMpegts,
 	)
 
 	/**
@@ -573,6 +618,7 @@ public class SubtitleApi(
 	 * @param endPositionTicks Optional. The end position of the subtitle in ticks.
 	 * @param copyTimestamps Optional. Whether to copy the timestamps.
 	 * @param addVttTimeMap Optional. Whether to add a VTT time map.
+	 * @param vttTimestampMapMpegts Optional. The VTT timestamp map MPEGTS value.
 	 */
 	@Deprecated("This member is deprecated and may be removed in the future")
 	public fun getSubtitleWithTicksDeprecatedUrl(
@@ -589,6 +635,7 @@ public class SubtitleApi(
 		endPositionTicks: Long? = null,
 		copyTimestamps: Boolean? = false,
 		addVttTimeMap: Boolean? = false,
+		vttTimestampMapMpegts: Long? = 900_000,
 	): String {
 		val pathParameters = buildMap<String, Any?>(5) {
 			put("routeItemId", routeItemId)
@@ -597,7 +644,7 @@ public class SubtitleApi(
 			put("routeStartPositionTicks", routeStartPositionTicks)
 			put("routeFormat", routeFormat)
 		}
-		val queryParameters = buildMap<String, Any?>(8) {
+		val queryParameters = buildMap<String, Any?>(9) {
 			put("itemId", itemId)
 			put("mediaSourceId", mediaSourceId)
 			put("index", index)
@@ -606,6 +653,7 @@ public class SubtitleApi(
 			put("endPositionTicks", endPositionTicks)
 			put("copyTimestamps", copyTimestamps)
 			put("addVttTimeMap", addVttTimeMap)
+			put("vttTimestampMapMpegts", vttTimestampMapMpegts)
 		}
 		return api.createUrl("/Videos/{routeItemId}/{routeMediaSourceId}/Subtitles/{routeIndex}/{routeStartPositionTicks}/Stream.{routeFormat}", pathParameters, queryParameters)
 	}

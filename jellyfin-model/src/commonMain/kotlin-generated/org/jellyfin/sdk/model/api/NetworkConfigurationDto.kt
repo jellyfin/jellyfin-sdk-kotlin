@@ -6,7 +6,6 @@
 package org.jellyfin.sdk.model.api
 
 import kotlin.Boolean
-import kotlin.Deprecated
 import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
@@ -14,10 +13,10 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
- * Defines the MediaBrowser.Common.Net.NetworkConfiguration.
+ * The network configuration DTO for API use.
  */
 @Serializable
-public data class NetworkConfiguration(
+public data class NetworkConfigurationDto(
 	/**
 	 * A value used to specify the URL prefix that your Jellyfin instance can be accessed at.
 	 */
@@ -37,12 +36,12 @@ public data class NetworkConfiguration(
 	 * The filesystem path of an X.509 certificate to use for SSL.
 	 */
 	@SerialName("CertificatePath")
-	public val certificatePath: String,
+	public val certificatePath: String? = null,
 	/**
-	 * The password required to access the X.509 certificate data in the file specified by MediaBrowser.Common.Net.NetworkConfiguration.CertificatePath.
+	 * The password required to access the X.509 certificate data in the file specified by MediaBrowser.Common.Net.NetworkConfigurationDto.CertificatePath.
 	 */
 	@SerialName("CertificatePassword")
-	public val certificatePassword: String,
+	public val certificatePassword: String? = null,
 	/**
 	 * The internal HTTP server port.
 	 */
@@ -71,11 +70,10 @@ public data class NetworkConfiguration(
 	/**
 	 * A value indicating whether to enable automatic port forwarding.
 	 */
-	@Deprecated("This member is deprecated and may be removed in the future")
 	@SerialName("EnableUPnP")
 	public val enableUPnP: Boolean,
 	/**
-	 * A value indicating whether IPv6 is enabled.
+	 * A value indicating whether IPv4 is enabled.
 	 */
 	@SerialName("EnableIPv4")
 	public val enableIPv4: Boolean,
@@ -105,12 +103,12 @@ public data class NetworkConfiguration(
 	@SerialName("KnownProxies")
 	public val knownProxies: List<String>,
 	/**
-	 * A value indicating whether address names that match MediaBrowser.Common.Net.NetworkConfiguration.VirtualInterfaceNames should be ignored for the purposes of binding.
+	 * A value indicating whether address names that match MediaBrowser.Common.Net.NetworkConfigurationDto.VirtualInterfaceNames should be ignored for the purposes of binding.
 	 */
 	@SerialName("IgnoreVirtualInterfaces")
 	public val ignoreVirtualInterfaces: Boolean,
 	/**
-	 * A value indicating the interface name prefixes that should be ignored. The list can be comma separated and values are case-insensitive. `P:MediaBrowser.Common.Net.NetworkConfiguration.IgnoreVirtualInterfaces`.
+	 * A value indicating the interface name prefixes that should be ignored.
 	 */
 	@SerialName("VirtualInterfaceNames")
 	public val virtualInterfaceNames: List<String>,
@@ -120,18 +118,17 @@ public data class NetworkConfiguration(
 	@SerialName("EnablePublishedServerUriByRequest")
 	public val enablePublishedServerUriByRequest: Boolean,
 	/**
-	 * Gets or sets the PublishedServerUriBySubnet
-	 * Gets or sets PublishedServerUri to advertise for specific subnets.
+	 * PublishedServerUri to advertise for specific subnets.
 	 */
 	@SerialName("PublishedServerUriBySubnet")
 	public val publishedServerUriBySubnet: List<String>,
 	/**
-	 * The filter for remote IP connectivity. Used in conjunction with `P:MediaBrowser.Common.Net.NetworkConfiguration.IsRemoteIPFilterBlacklist`.
+	 * The filter for remote IP connectivity. Used in conjunction with `P:MediaBrowser.Common.Net.NetworkConfigurationDto.IsRemoteIPFilterBlacklist`.
 	 */
 	@SerialName("RemoteIPFilter")
 	public val remoteIpFilter: List<String>,
 	/**
-	 * A value indicating whether `P:MediaBrowser.Common.Net.NetworkConfiguration.RemoteIPFilter` contains a blacklist or a whitelist. Default is a whitelist.
+	 * A value indicating whether `P:MediaBrowser.Common.Net.NetworkConfigurationDto.RemoteIPFilter` contains a blacklist or a whitelist. Default is a whitelist.
 	 */
 	@SerialName("IsRemoteIPFilterBlacklist")
 	public val isRemoteIpFilterBlacklist: Boolean,

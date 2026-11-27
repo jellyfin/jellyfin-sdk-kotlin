@@ -5,6 +5,7 @@
 // Please read the README.md file in the openapi-generator module for additional information.
 package org.jellyfin.sdk.model.api
 
+import kotlin.Int
 import kotlin.String
 import kotlin.collections.List
 import kotlinx.serialization.SerialName
@@ -20,4 +21,8 @@ public data class QueryFilters(
 	public val audioLanguages: List<NameValuePair>? = null,
 	@SerialName("SubtitleLanguages")
 	public val subtitleLanguages: List<NameValuePair>? = null,
+	@SerialName("Years")
+	public val years: List<Int>? = null,
+	@SerialName("OfficialRatings")
+	public val officialRatings: List<String>? = null,
 )

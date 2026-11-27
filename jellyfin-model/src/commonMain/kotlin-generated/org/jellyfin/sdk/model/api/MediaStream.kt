@@ -10,6 +10,7 @@ import kotlin.Double
 import kotlin.Float
 import kotlin.Int
 import kotlin.String
+import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -121,12 +122,12 @@ public data class MediaStream(
 	@SerialName("Hdr10PlusPresentFlag")
 	public val hdr10PlusPresentFlag: Boolean? = null,
 	/**
-	 * An enum representing video ranges.
+	 * The video range.
 	 */
 	@SerialName("VideoRange")
 	public val videoRange: VideoRange = VideoRange.UNKNOWN,
 	/**
-	 * An enum representing types of video ranges.
+	 * The video range type.
 	 */
 	@SerialName("VideoRangeType")
 	public val videoRangeType: VideoRangeType = VideoRangeType.UNKNOWN,
@@ -136,7 +137,7 @@ public data class MediaStream(
 	@SerialName("VideoDoViTitle")
 	public val videoDoViTitle: String? = null,
 	/**
-	 * An enum representing formats of spatial audio.
+	 * The audio spatial format.
 	 */
 	@SerialName("AudioSpatialFormat")
 	public val audioSpatialFormat: AudioSpatialFormat = AudioSpatialFormat.NONE,
@@ -319,4 +320,14 @@ public data class MediaStream(
 	 */
 	@SerialName("IsAnamorphic")
 	public val isAnamorphic: Boolean? = null,
+	/**
+	 * DirectPlay errors.
+	 */
+	@SerialName("DirectPlayErrors")
+	public val directPlayErrors: List<TranscodeReason>,
+	/**
+	 * A value indicating whether this instance is compatible with the device.
+	 */
+	@SerialName("SupportsDirectPlay")
+	public val supportsDirectPlay: Boolean? = null,
 )

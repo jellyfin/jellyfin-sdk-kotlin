@@ -10,16 +10,34 @@ import kotlin.String
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The XBMC metadata options DTO for API use.
+ */
 @Serializable
-public data class XbmcMetadataOptions(
+public data class XbmcMetadataOptionsDto(
+	/**
+	 * The user id.
+	 */
 	@SerialName("UserId")
 	public val userId: String? = null,
+	/**
+	 * The release date format.
+	 */
 	@SerialName("ReleaseDateFormat")
 	public val releaseDateFormat: String,
+	/**
+	 * A value indicating whether to save image paths in NFO.
+	 */
 	@SerialName("SaveImagePathsInNfo")
 	public val saveImagePathsInNfo: Boolean,
+	/**
+	 * A value indicating whether to enable path substitution.
+	 */
 	@SerialName("EnablePathSubstitution")
 	public val enablePathSubstitution: Boolean,
+	/**
+	 * A value indicating whether to enable extra thumbs duplication.
+	 */
 	@SerialName("EnableExtraThumbsDuplication")
 	public val enableExtraThumbsDuplication: Boolean,
 )

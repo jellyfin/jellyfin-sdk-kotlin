@@ -19,6 +19,9 @@ import org.jellyfin.sdk.model.serializer.UUIDSerializer
 public data class RecommendationDto(
 	@SerialName("Items")
 	public val items: List<BaseItemDto>? = null,
+	/**
+	 * The type of recommendation reason for an item.
+	 */
 	@SerialName("RecommendationType")
 	public val recommendationType: RecommendationType,
 	@SerialName("BaselineItemName")

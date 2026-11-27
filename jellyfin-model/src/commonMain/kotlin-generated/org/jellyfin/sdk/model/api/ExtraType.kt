@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The type of extra media associated with an item.
+ */
 @Serializable
 public enum class ExtraType(
 	public val serialName: String,

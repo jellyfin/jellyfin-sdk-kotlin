@@ -12,36 +12,84 @@ import kotlin.collections.List
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The LiveTV options DTO for API use.
+ */
 @Serializable
-public data class LiveTvOptions(
+public data class LiveTvOptionsDto(
+	/**
+	 * The guide days.
+	 */
 	@SerialName("GuideDays")
 	public val guideDays: Int? = null,
+	/**
+	 * The recording path.
+	 */
 	@SerialName("RecordingPath")
 	public val recordingPath: String? = null,
+	/**
+	 * The movie recording path.
+	 */
 	@SerialName("MovieRecordingPath")
 	public val movieRecordingPath: String? = null,
+	/**
+	 * The series recording path.
+	 */
 	@SerialName("SeriesRecordingPath")
 	public val seriesRecordingPath: String? = null,
+	/**
+	 * A value indicating whether to enable recording subfolders.
+	 */
 	@SerialName("EnableRecordingSubfolders")
 	public val enableRecordingSubfolders: Boolean,
+	/**
+	 * A value indicating whether to enable original audio with encoded recordings.
+	 */
 	@SerialName("EnableOriginalAudioWithEncodedRecordings")
 	public val enableOriginalAudioWithEncodedRecordings: Boolean,
+	/**
+	 * The tuner hosts.
+	 */
 	@SerialName("TunerHosts")
-	public val tunerHosts: List<TunerHostInfo>? = null,
+	public val tunerHosts: List<TunerHostInfo>,
+	/**
+	 * The listing providers.
+	 */
 	@SerialName("ListingProviders")
-	public val listingProviders: List<ListingsProviderInfo>? = null,
+	public val listingProviders: List<ListingsProviderInfo>,
+	/**
+	 * The pre-padding seconds.
+	 */
 	@SerialName("PrePaddingSeconds")
 	public val prePaddingSeconds: Int,
+	/**
+	 * The post-padding seconds.
+	 */
 	@SerialName("PostPaddingSeconds")
 	public val postPaddingSeconds: Int,
+	/**
+	 * The media locations created.
+	 */
 	@SerialName("MediaLocationsCreated")
-	public val mediaLocationsCreated: List<String>? = null,
+	public val mediaLocationsCreated: List<String>,
+	/**
+	 * The recording post processor.
+	 */
 	@SerialName("RecordingPostProcessor")
 	public val recordingPostProcessor: String? = null,
+	/**
+	 * The recording post processor arguments.
+	 */
 	@SerialName("RecordingPostProcessorArguments")
-	public val recordingPostProcessorArguments: String? = null,
+	public val recordingPostProcessorArguments: String,
+	/**
+	 * A value indicating whether to save recording NFO.
+	 */
 	@SerialName("SaveRecordingNFO")
 	public val saveRecordingNfo: Boolean,
+	/**
+	 * A value indicating whether to save recording images.
+	 */
 	@SerialName("SaveRecordingImages")
 	public val saveRecordingImages: Boolean,
 )

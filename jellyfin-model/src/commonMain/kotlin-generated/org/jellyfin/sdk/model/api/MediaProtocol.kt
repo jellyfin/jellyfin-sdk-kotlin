@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The protocol used to access a media source.
+ */
 @Serializable
 public enum class MediaProtocol(
 	public val serialName: String,

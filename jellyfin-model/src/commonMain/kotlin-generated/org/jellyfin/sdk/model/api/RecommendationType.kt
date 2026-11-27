@@ -10,6 +10,9 @@ import kotlin.requireNotNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * The type of recommendation reason for an item.
+ */
 @Serializable
 public enum class RecommendationType(
 	public val serialName: String,
